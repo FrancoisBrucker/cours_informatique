@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Diviser pour régner</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Diviser pour régner</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/diviser-régner/">Diviser pour régner</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/diviser-régner/principe/">Diviser pour régner</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <h2>Principe</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)">https://fr.wikipedia.org/wiki/Diviser_pour_régner_(informatique)</a></p>
+</div></div>
+
+<p>Le principe du design diviser pour régner consiste à découper le problème initial en sous-problèmes que l'on peut résoudre puis, si nécessaire, les recombiner en une solution du problème initial.</p>
+<p>L'élégance de ce principe réside dans le fait que l'on peut utiliser l'algorithme que l'on est en train de construire pour résoudre les sous-problèmes ! Toute la difficulté réside dans le fait de trouver un découpage du problème initial facile à traiter.</p>
+<h3>Sous-problème</h3>
+<p>Si l'on peut trouver <em>facilement</em> une restriction du problème dans la quelle va se trouver la solution globale, on peut utiliser le design suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">diviser</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    À partir de données créer k donnees_partielles_i <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">≤</span><span class="token number"> i </span><span class="token operator">≤</span> k<span class="token punctuation">)</span>
+    Parmi ces k donnees_partielles_i<span class="token punctuation">,</span> en choisir une que l'on nomme donnee_partielle
+
+    <span class="token keyword">rendre</span> diviser<span class="token punctuation">(</span>donnee_partielle<span class="token punctuation">)</span></code></pre>
+<p>On restreins nos données en supprimant les données superflues : c'est le principe d'un algorithme récursif où l'on restreint à chaque itération l'ensemble de nos données.</p>
+<p>On a utilisé ce principe dans :</p>
+<ul>
+<li><a href="../../projet-classiques/#dichotomie" class="interne">la dichotomie</a></li>
+<li><a href="../../projet-problemes-classiques/m%C3%A9diane" class="interne">le problème $k$-SELECT</a></li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On utilise le design <strong>diviser</strong> que lorsqu'il est <em>facile</em> (et rapide) algorithmiquement de trouver un sous-ensemble des données initiales donnant la même solution.</p>
+</div></div>
+
+<h3>Diviser puis combiner</h3>
+<p>Mais souvent, il ne suffit pas de diviser pour trouver notre solution, il faut pouvoir recombiner des solutions partielles en une solution globale. On ajoute alors une étape de combinaison pour obtenir le principe général du design diviser pour régner :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">diviser_puis_combiner</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    À partir de données créer k donnees_partielles_i <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">≤</span><span class="token number"> i </span><span class="token operator">≤</span> k<span class="token punctuation">)</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span> de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        solution_i <span class="token operator">←</span> diviser_puis_combiner<span class="token punctuation">(</span>donnees_partielles_i<span class="token punctuation">)</span>
+
+    solution <span class="token operator">←</span> combiner<span class="token punctuation">(</span>solution_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> solution_k<span class="token punctuation">)</span>
+
+    <span class="token keyword">rendre</span> solution</code></pre>
+<p>On a déjà vu ce design lorsque l'on a étudié <a href="../../probl%C3%A8me-tris/algorithme-fusion/" class="interne">le tri fusion</a> ou <a href="../../probl%C3%A8me-tris/algorithme-rapide/" class="interne">le tri rapide</a>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On utilise le design <strong>diviser pour régner</strong> que lorsqu'il est <em>facile</em> (et rapide) algorithmiquement de combiner des solutions partielles en une solution globale.</p>
+<p>Toute la difficulté réside dans le fait de trouver un découpage du problème initial facile à combiner.</p>
+</div></div>
+
+<p>On l'a utilisé pour le tri car :</p>
+<ul>
+<li>il est facile de combiner deux tableaux trié si le max de l'un est inférieur au min de l'autre (tri rapide)</li>
+<li>il est plus généralement facile de construire un tableau trié à partir de 2 sous-tableaux triés (tri fusion)</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si la seconde condition est pus générale, la première peut se faire in-place ce qui est avantageux si le tableau à trié est gigantesque.</p>
+</div></div>
+
+<h2>Complexité</h2>
+<p>Pour connaître la complexité d'un algorithme sous la forme diviser pour régner il faut connaître :</p>
+<ul>
+<li>le coût du découpage en sous-problème</li>
+<li>le nombre d'appels récursifs</li>
+<li>le coût de la combinaison des solutions partielle en une solution globale</li>
+</ul>
+<p>La forme de l'équation de récursion est toujours la même et sa valeur est donnée par le <strong><a href="https://fr.wikipedia.org/wiki/Master_theorem">Master theorem</a></strong>. Il existe plusieurs formes de ce théorème, nous donnons ici sa forme en $\mathcal{O}$ qui est la plus simple à démontrer :</p>
+<p><span id="master-theorem"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Forme O du Master Theorem</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une complexité de la forme :</p>
+<div>
+$$
+C(n) \leq a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
+$$
+</div>
+<p>Est en :</p>
+<ul>
+<li>$C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$ (équivalent à $d = \log_b(a)$)</li>
+<li>$C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a&gt;b^d$</li>
+<li>$C(n)  = \mathcal{O}(n^d)$ si si $a&lt;b^d$</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$, il existe $N_0$ tel que pour tout $n \geq N_0$, on a :</p>
+<div>
+$$
+C(n) \leq a \cdot C(\frac{n}{b}) + K\cdot n^d
+$$
+</div>
+<p>On en conclut que si $C'(n) = a \cdot C'(\frac{n}{b}) + K\cdot n^d$ alors $C(n) \leq C'(n)$ pour tout $n$ et donc si $C'(n)$ est en $\mathcal{O}(g(n))$, alors $C(n)$ le sera aussi.</p>
+<div>
+$$
+\begin{array}{lcl}
+C'(n) &=&a \cdot C'(\frac{n}{b}) + K\cdot n^d \\
+&=& a\cdot (a \cdot C'(\frac{n}{b^2}) + K\cdot (\frac{n}{b})^d) + K\cdot n^d\\
+&=& a^2 \cdot C'(\frac{n}{b^2}) + K\cdot n^d \cdot (1 + \frac{a}{b^d})\\
+&=& a^2 \cdot (a \cdot C'(\frac{n}{b^3}) + K\cdot (\frac{n}{b^2})^d) + K\cdot n^d \cdot (1 + \frac{a}{b^d})\\
+&=& a^3 \cdot C'(\frac{n}{b^3}) + K\cdot n^d \cdot (1 + \frac{a}{b^d} + (\frac{a}{b^d})^2)\\
+&=& \dots \\
+&=& a^{\log_b(n)}C'(1) + K\cdot n^d \cdot (\sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i)\\
+\end{array}
+$$
+</div>
+<p>Comme $a^{\log_b(n)} = \exp(\ln(a) \cdot \frac{\ln(n)}{\ln(b)} ) = \exp(\ln(n) \cdot \frac{\ln(a)}{\ln(b)} ) = n^{\log_b(a)}$ on en conclut, en posant $C'(1) = K'$, que :</p>
+<div>
+$$
+C'(n) = K' \cdot n^{\log_b(a)} + K\cdot n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i
+$$
+</div>
+<p>Il y a alors plusieurs cas. Commençons par étudier le cas où $\frac{a}{b^d} = 1$ (équivalent à $d = \log_b(a)$). Dans ce cas, on a :</p>
+<div>
+$$
+C'(n) = K' \cdot n^d + K\cdot n^d \cdot \sum_{i=0}^{\log_b(n)}1 = K\cdot n^d(\log_b(n) + \frac{K'}{K}) = \mathcal{O}(n^d \cdot \ln(n))
+$$
+</div>
+<p>Si $\frac{a}{b^d} \neq 1$, on peut utiliser le fait que $\sum_{i=0}^kx^k = \frac{x^{k+1} -1}{x-1}$ (cette formule  se démontre aisément par récurrence  sur $k$ et est super utile dans plein de calculs de complexité, il est bon de la connaître) pour obtenir :</p>
+<div>
+$$
+\begin{array}{lcl}
+C'(n) &=& K\cdot (\frac{K'}{K} \cdot n^{\log_b(a)} + n^d \cdot \frac{(\frac{a}{b^d})^{\log_b(n) +1} -1}{\frac{a}{b^d}-1})\\
+\frac{1}{K}\cdot C'(n) &=& \frac{K'}{K} \cdot n^{\log_b(a)} + n^d \cdot \frac{(\frac{a}{b^d})^{\log_b(n) +1} -1}{\frac{a}{b^d}-1}\\
+& = & \frac{K'}{K} \cdot n^{\log_b(a)} + n^d \cdot \frac{\frac{a}{b^d}\cdot\frac{n^{\log_b(a)}}{n^d} -1}{\frac{a}{b^d}-1}\\
+& =& \frac{K'}{K} \cdot n^{\log_b(a)} + \frac{\frac{a}{b^d}\cdot n^{\log_b(a)} - n^d}{\frac{a}{b^d}-1} \\
+& = & (\frac{K'}{K} + \frac{\frac{a}{b^d}}{\frac{a}{b^d} - 1}) \cdot n^{\log_b(a)} - \frac{1}{\frac{a}{b^d} - 1} \cdot n^d
+\end{array}
+$$
+</div>
+<p>On en déduit facilement que :</p>
+<ul>
+<li>$\frac{a}{b^d} &lt; 1$ (équivalent à $\log_b(a) &lt; d$) implique $C'(n) = \mathcal{O}(n^d)$</li>
+<li>$\frac{a}{b^d} &gt; 1$ (équivalent à $\log_b(a) &gt; d$) implique $C'(n) = \mathcal{O}(n^{\log_b(a)})$</li>
+</ul>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le master theorem est la raison pour laquelle vous verrez parfois des complexités avec des exposants non entiers</p>
+</div></div>
+
+<p>Dans le cas du tri fusion on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :</p>
+<h2>Exemples</h2>
+<h3>Somme</h3>
+<p>Soit $T$ un tableau de $n$ entiers relatifs.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez un algorithme en $\mathcal{O}(n)$ de signature <code class="language-">max_somme(T: [entier relatif], i: entier) → entier relatif</code> qui calcule :</p>
+<div>
+$$
+\max_{j\geq i}\sum_{i\leq k \leq j}T[k]
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En déduire un algorithme en $\mathcal{O}(n)$ de signature <code class="language-">max_somme2(T: [entier relatif], i: entier) → entier relatif</code> qui calcule :</p>
+<div>
+$$
+\max_{j \leq i\leq j'}\sum_{j\leq k \leq j'}T[k]
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>Les deux exercices précédents doivent vous permettre de trouver un algorithme permettant de trouver :</p>
+<div>
+$$
+\max_{0\leq j \leq j'}\sum_{j\leq k \leq j'}T[k]
+$$
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Utiliser la méthode diviser pour régner pour créer un algorithme de complexité $\mathcal{O}(n\ln(n))$ permettant de calculer la somme précédente pour un tableau de $n$ entiers relatifs.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<h3>Multiplication de matrices</h3>
+<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen">L'algorithme de Strassen</a> pour multiplier deux matrices  est le plus classique des exemples de diviser pour régner.</p>
+<p>On suppose pour cet exercice que l'on cherche à multiplier deux matrices carrées (de dimension $n$) $A$ et $B$, avec $n$ une puissance de 2.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La méthode de Strassen fonctionne de la même manière pour la multiplication de matrices non carrées ou dont le no,bre de lignes n'est pas une puissance de 2, il faut juste faire attention lorsque l'on divise par 2.</p>
+</div></div>
+
+<h4>Algorithme naif</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donner un algorithme naïf de signature <code class="language-">multiplication(A: [[entier]], B:[[entier]]) → [[entier]]</code> et de complexité $\mathcal{O}(n^3)$ permettant de multiplier deux matrices carrées de $n$ lignes.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<h4>Méthode de Strassen</h4>
+<p>La méthode de Strassen va diviser la multiplication en sous-matrices <strong>puis</strong> utiliser une astuce de calcul.</p>
+<p>Commençons par juste decomposer notre problème en sous-problèmes en écrivant la multiplication des matrices $A$ et $B$ par :</p>
+<div>
+$$
+A \cdot B =
+\begin{pmatrix}
+A_{1,1} & A_{1,2} \\
+A_{2,1} & A_{2,2}
+\end{pmatrix} \cdot
+\begin{pmatrix}
+B_{1,1} & B_{1,2} \\
+B_{2,1} & B_{2,2}
+\end{pmatrix} = \begin{pmatrix}
+A_{1,1} \cdot B_{1,1} + A_{1,2} \cdot B_{2,1} & A_{1,1} \cdot B_{1,2} + A_{1,2} \cdot B_{2,2} \\
+A_{2,1} \cdot B_{1,1} + A_{2,2} \cdot B_{2,1} & A_{2,1} \cdot B_{1,2} + A_{2,2} \cdot B_{2,2}
+\end{pmatrix} =
+\begin{pmatrix}
+C_{1,1} & C_{1,2} \\
+C_{2,1} & C_{2,2}
+\end{pmatrix}
+$$
+</div>
+<p>Avec $A_{i, j}$ et $B_{i, j}$ des matrices carrées de taille $n/2$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Exprimez ce calcule par sous matrices dans un algorithme de type diviser pour régner</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En donner l'équation de récurrence de sa complexité.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En déduire sa complexité. Conclusion ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>Pour gagner en complexité il faut faire mieux ! L'astuce est la suivante :</p>
+<p>On pose les 7 matrices suivantes :</p>
+<ul>
+<li>$M_1 = (A_{1,1} +A_{2,2}) \cdot (B_{1,1} +B_{2,2})$</li>
+<li>$M_2 = (A_{2,1} +A_{2,2}) \cdot B_{1,1}$</li>
+<li>$M_3 = A_{1,1} \cdot (B_{1,2} - B_{2,2})$</li>
+<li>$M_4 = A_{2,2} \cdot (B_{2,1} - B_{1,1})$</li>
+<li>$M_5 = (A_{1,1} +A_{1,2}) \cdot B_{2,2}$</li>
+<li>$M_6 = (A_{2,1} - A_{1,1}) \cdot (B_{1,1} +B_{1,2})$</li>
+<li>$M_7 = (A_{1,2} - A_{2,2}) \cdot (B_{2,1} +B_{2,2})$</li>
+</ul>
+<p>C'est une astuce de taille assez conséquente pour donner lui nom de son inventeur... En effet :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que :</p>
+<ul>
+<li>$C_{1, 1} = M_1 + M_4 - M_5 + M_7$</li>
+<li>$C_{1, 2} = M_3 + M_5$</li>
+<li>$C_{2, 1} = M_2 + M_4$</li>
+<li>$C_{2, 2} = M_1 - M_2 - M_3 + M_6$</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Ce nouveau calcul change l'algorithme et l'équation de récursion. Que devient-elle ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En déduire la complexité de ce nouvel algorithme. Conclusion ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>Vous voyez que gagner 1 multiplication de matrice fait fait gagner beaucoup en complexité... Et on peut faire mieux, l'exposant diminue régulièrement au fil du temps et des nouveaux algorithmes. On en est actuellement (en 2025 et à ma meilleure connaissance) a des algorithmes de complexité $\mathcal{O}(n^{2.37286})$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=DruwS2_cVys">Les méthodes de multiplications de matrices</a> par Josh Alman un des deux co-auteurs de l'algorithme le plus rapide actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$</li>
+<li><a href="https://www.youtube.com/watch?v=HdysaWNs1g8">Multiplication de matrices algorithme actuel</a>  par Virginia Vassilevska-Williams, l'autre co-auteur du record actuel</li>
+</ul>
+</div></div>
+
+<h4>Inversion de matrice</h4>
+<p>On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.</p>
+<p>Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour inverser un matrice en utilisant <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion">la formule de l'inversion par bloc</a>. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion">la formule de l'inversion par bloc</a> et le master theorem, montez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut juste calculer 2 inverses $A^{-1}$ et $(D - CA^{-1}B)^{-1}$ puis multiplier un nombre constant de fois des matrices. En utilisant l'algorithme diviser pour régner on arrive à un algorithme de complexité :</p>
+<div>
+$$
+C(n) = \mathcal{O}(n^\Omega) + 2T(n/2)
+$$
+</div>
+<p>Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{O}(n^\Omega)$.</p>
+</div>
+</details>     
+</div>
+<h4>Déterminant de matrice</h4>
+<p>On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.</p>
+<p>Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour calculer le déterminant d'un matrice en utilisant <a href="https://en.wikipedia.org/wiki/Determinant#Block_matrices">les formules de calcul d'un déterminant par bloc</a>. Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant <a href="https://en.wikipedia.org/wiki/Determinant#Block_matrices">les formules de calcul d'un déterminant par bloc</a> et le master theorem, montez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $A$ et $D$ sont non inversibles, alors le déterminant de la matrice est nul. Comme le calcul de l'inverse d'une matrice est en $\mathcal{O}(n^\Omega)$, on peut tester en $\mathcal{O}(n^\Omega)$ laquelle des deux matrice est inversible.</p>
+<p>En supposant que c'est $A$ la complexité du calcul de $A^{-1}$ et $(D - CA^{-1}B)$ est de $\mathcal{O}(n^\Omega)$. Puis il suffit de calculer 2 déterminant sur des matrices deux fois plus petites. En utilisant l'algorithme diviser pour régner on arrive à un algorithme de complexité :</p>
+<div>
+$$
+C(n) = \mathcal{O}(n^\Omega) + 2T(n/2)
+$$
+</div>
+<p>Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{O}(n^\Omega)$.</p>
+</div>
+</details>     
+</div>
+<h3>Pavage incomplet du plan</h3>
+<blockquote>
+<p>TBD exo 3 de <a href="https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf">https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf</a></p>
+</blockquote>
+<h3>Nombre d'inversion</h3>
+<blockquote>
+<p>TBD exo 4 de <a href="https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf">https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf</a></p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
