@@ -206,8 +206,8 @@ On utilise souvent `repr()`{.language-} pour du débogage (donc de l'affichage d
 
 {% note %}
 
-- on utilise `str(objet)` (crée avec la méthode `__str__`{.language-}) pour un affichage à l'écran. On transforme l'objet en un texte.
-- on utilise `repr(objet)` (crée avec la méthode `__repr__`{.language-}) pour représenter l'objet sous la forme d'une chaîne de caractères. On doit pouvoir reconstruire un objet identique avec la commande [`eval`{.language-}](https://docs.python.org/fr/3/library/functions.html#eval) (`eval(repr(objet))`{.language-} doit rendre un objet similaire à `objet`{.language-}.
+- on utilise `str(objet)` (créée avec la méthode `__str__`{.language-}) pour un affichage à l'écran. On transforme l'objet en un texte.
+- on utilise `repr(objet)` (créée avec la méthode `__repr__`{.language-}) pour représenter l'objet sous la forme d'une chaîne de caractères. On doit pouvoir reconstruire un objet identique avec la commande [`eval`{.language-}](https://docs.python.org/fr/3/library/functions.html#eval) (`eval(repr(objet))`{.language-} doit rendre un objet similaire à `objet`{.language-}.
 
 {% endnote %}
 
@@ -299,7 +299,7 @@ Codez et testez les [opérateurs de comparaisons](../classes-et-objets/#comparai
 
 {% endfaire %}
 {% info %}
-Il suffit de coder `==`{.language-} et `<`{.language-} pour obtenir toutes les comparaison.
+N'hésitez pas à utiliser des opérateurs déjà codé. Vous pouvez par exemple utiliser les fonctions `==`{.language-} et `<`{.language-} pour coder les autres les comparaisons.
 {% endinfo %}
 
 Ceci devrait être suffisant pour la deuxième user story :

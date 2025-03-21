@@ -22,14 +22,6 @@ On recherche exhaustivement toutes les solutions puis on prend la meilleur.
 
 > TBD toute les solutions potentielles
 
-## Backtracking
-
-> <https://www.geeksforgeeks.org/difference-between-backtracking-and-branch-n-bound-technique/?ref=lbp>
-> TBD brute force avec contraintes implicites
-
-{% lien %}
-[Méthode du backtrackig](https://fr.wikipedia.org/wiki/Retour_sur_trace)
-{% endlien %}
 
 ## Branch and bound
 
@@ -47,3 +39,12 @@ On recherche exhaustivement toutes les solutions puis on prend la meilleur.
 > reprendre des choses du sac à dos pour les mettre ici.
 
 branch and bound : <https://www.youtube.com/watch?v=E7hJXsywOdA>
+
+## Backtracking
+
+> <https://www.geeksforgeeks.org/difference-between-backtracking-and-branch-n-bound-technique/?ref=lbp>
+> TBD brute force avec contraintes implicites
+
+{% lien %}
+[Méthode du Backtracking](https://fr.wikipedia.org/wiki/Retour_sur_trace)
+{% endlien %}
