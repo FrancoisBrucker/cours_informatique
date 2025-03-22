@@ -3,8 +3,8 @@ layout: layout/post.njk
 title: "Projet composition d'objets : dés"
 
 eleventyNavigation:
-    prerequis:
-        - "../projet-objets-dés-accesseur/"
+  prerequis:
+    - "../projet-objets-dés/"
 
 eleventyComputed:
   eleventyNavigation:

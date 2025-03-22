@@ -403,6 +403,9 @@ Il y a $2^5 = 32$ possibilités et les seules possibilités admissibles maximale
 [Lien Wikipédia sur le _Branch and Bound_](https://fr.wikipedia.org/wiki/S%C3%A9paration_et_%C3%A9valuation)
 {% endlien %}
 
+> TBD en 1 on garde juste si c'est encore possible.
+> TBD en 2, on fait mieux en utilisant une fonction objectif.
+
 La méthode du **_Branch and Bound_** (ou **_Séparation et évaluation_** en Français) est une méthode générale permettant d'accélérer la recherche de l'optimum d'un problème d'optimisation par recherche exhaustive si l'on peut trouver facilement une borne supérieure à un sous-problème où certaines affectation (mais pas toutes) ont déjà été faites.
 
 Cette méthode est particulièrement bien adaptée au problème du sac à dos.

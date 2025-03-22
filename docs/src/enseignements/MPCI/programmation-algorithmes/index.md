@@ -466,7 +466,7 @@ Il faudra rendre un dossier contenant le projet vscode et les différents progra
 #### Mercredi : on s'entraîne
 
 {% attention %}
-Test de 15min en début de cours sur **les objets, la composition et l'agrégation**.
+Test de 15min en début de cours sur **les objets, UML et le python**.
 {% endattention %}
 {% faire %}
 Sujet du test 5
@@ -478,6 +478,20 @@ On s'entraîne :
 
 - [Projet composition d'objets : dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés/){.interne}
 - [Projet agrégation : cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes/){.interne}
+
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+
+[Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
+{% endaller %}
+{% aller %}
+On met en œuvre tout ça sur nos dés et cartes :
+
+- [Accesseur et dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur){.interne}
+- [protéger les attributs de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object){.interne}
 
 {% endaller %}
 
@@ -494,7 +508,7 @@ On s'entraîne :
 #### Mercredi : projet héritage
 
 {% attention %}
-Test de 15min en début de cours sur **les objets, la compositions, l' agrégation et l'héritage**.
+Test de 15min en début de cours sur **les objets, la composition, l' agrégation et l'héritage**.
 {% endattention %}
 {% faire %}
 Sujet du test 6

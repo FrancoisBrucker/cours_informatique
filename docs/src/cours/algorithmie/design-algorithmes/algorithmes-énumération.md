@@ -22,9 +22,11 @@ On recherche exhaustivement toutes les solutions puis on prend la meilleur.
 
 > TBD toute les solutions potentielles
 
-
 ## Branch and bound
 
+> On ne continue que si ça vaut le coup.
+> sudoku : encore possible ?
+> 
 > Pour la programmation linéaire.
 > <http://sirdeyre.free.fr/Papiers_etc/2007_Sudokus_et_programmation_lineaire_2.pdf>
 > TBD brute force et on stope l'énumération si on a déjà mieux
@@ -42,6 +44,7 @@ branch and bound : <https://www.youtube.com/watch?v=E7hJXsywOdA>
 
 ## Backtracking
 
+> récursif, on progresse le plus possible et on revient en arrière si un soucis.
 > <https://www.geeksforgeeks.org/difference-between-backtracking-and-branch-n-bound-technique/?ref=lbp>
 > TBD brute force avec contraintes implicites
 
