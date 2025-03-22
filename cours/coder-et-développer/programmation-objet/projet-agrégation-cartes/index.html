@@ -109,7 +109,7 @@
       <ul>
               
               <li>
-                <a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/">Projet : Amélioration des objets cartes</a>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-cartes/">Projet : objets cartes</a>
               </li></ul>
       
 
@@ -154,22 +154,14 @@ CARREAU <span class="token operator">=</span> <span class="token string">"carrea
 TREFLE <span class="token operator">=</span> <span class="token string">"trèfle"</span>
 
 
-VALEURS <span class="token operator">=</span> <span class="token punctuation">[</span>SEPT<span class="token punctuation">,</span> HUIT<span class="token punctuation">,</span> NEUF<span class="token punctuation">,</span> DIX<span class="token punctuation">,</span> VALET<span class="token punctuation">,</span> DAME<span class="token punctuation">,</span> ROI<span class="token punctuation">,</span> AS<span class="token punctuation">]</span>
-COULEURS <span class="token operator">=</span> <span class="token punctuation">[</span>TREFLE<span class="token punctuation">,</span> CARREAU<span class="token punctuation">,</span> COEUR<span class="token punctuation">,</span> PIQUE<span class="token punctuation">]</span>
+VALEURS <span class="token operator">=</span> <span class="token punctuation">(</span>SEPT<span class="token punctuation">,</span> HUIT<span class="token punctuation">,</span> NEUF<span class="token punctuation">,</span> DIX<span class="token punctuation">,</span> VALET<span class="token punctuation">,</span> DAME<span class="token punctuation">,</span> ROI<span class="token punctuation">,</span> AS<span class="token punctuation">)</span>
+COULEURS <span class="token operator">=</span> <span class="token punctuation">(</span>TREFLE<span class="token punctuation">,</span> CARREAU<span class="token punctuation">,</span> COEUR<span class="token punctuation">,</span> PIQUE<span class="token punctuation">)</span>
 
 
 <span class="token keyword">class</span> <span class="token class-name">Carte</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token punctuation">,</span> couleur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_couleur <span class="token operator">=</span> couleur
-        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> valeur
-
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">couleur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_couleur
-
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_valeur
+        self<span class="token punctuation">.</span>couleur <span class="token operator">=</span> couleur
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
 
     <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur <span class="token operator">+</span> <span class="token string">" de "</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>couleur
@@ -215,7 +207,7 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">[
     <span class="token keyword">assert</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>SEPT<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>TREFLE<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"Carte('sept', 'trèfle')"</span>
 
 
-<span class="token keyword">def</span> <span class="token function">test_property</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">test_attributs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>SEPT<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>TREFLE<span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">==</span> carte<span class="token punctuation">.</span>SEPT
     <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>SEPT<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>TREFLE<span class="token punctuation">)</span><span class="token punctuation">.</span>couleur <span class="token operator">==</span> carte<span class="token punctuation">.</span>TREFLE
 
