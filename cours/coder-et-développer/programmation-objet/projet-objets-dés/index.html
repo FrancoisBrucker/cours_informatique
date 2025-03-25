@@ -169,12 +169,12 @@
 <ul>
 <li>Nom : &quot;Aléatoire ?&quot;</li>
 <li>Utilisateur : un professeur.</li>
-<li>Story : On vérifie que le lancé de dé ressemble à de l'aléatoire.</li>
+<li>Story : On vérifie que le lancer de dé ressemble à de l'aléatoire.</li>
 <li>Actions :
 <ol>
 <li>créer un dé sans paramètre</li>
 <li>afficher à l'écran sa position (ça doit être 1)</li>
-<li>lancer le dé 10 fois et affiche la position du dé après chaque lancé. Quelle est la probabilité que le dé ne change jamais ?.</li>
+<li>lancer le dé 10 fois et affiche la position du dé après chaque lancer. Quelle est la probabilité que le dé ne change jamais ?.</li>
 </ol>
 </li>
 </ul>
@@ -204,7 +204,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de position en 10 lancés.</p>
+<p>Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de position en 10 lancers.</p>
 <p>La user story donnerait en python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
 
@@ -214,7 +214,7 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 <span class="token comment"># 2. afficher à l'écran sa position (ça doit être 1)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span>
 
-<span class="token comment"># 3. lancer le dé 10 fois et affiche la position du dé après chaque lancé</span>
+<span class="token comment"># 3. lancer le dé 10 fois et affiche la position du dé après chaque lancer</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
    dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
    <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span></code></pre>

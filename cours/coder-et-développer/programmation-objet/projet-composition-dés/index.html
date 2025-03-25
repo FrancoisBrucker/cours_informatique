@@ -119,7 +119,7 @@
     
   
 
-  <p>Dans <a href="../projet-objets-d%C3%A9s/" class="interne">le premier projets dés</a>, vous avez codé des classes toutes seules. Dans cette parties on va coder plusieurs classes enchevêtrées.</p>
+  <p>Dans <a href="../projet-objets-d%C3%A9s/" class="interne">le premier projets dés</a>, vous avez codé des classes toutes seules. Dans cette partie on va coder plusieurs classes enchevêtrées.</p>
 <p>Pour les besoins de ce projet, nous allons présupposer que vous avez une classe <code class="language-">Dé</code> qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.</p>
 <p><span id="code-Dé"></span></p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -173,7 +173,7 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 </div>
 </details>     
 </div>
-<p>Il va nous falloir manipuler 5 dés ensemble pour réaliser le but de notre projet :</p>
+<p>Il va nous falloir manipuler 5 dés ensemble pour atteindre le but de notre projet :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -220,7 +220,7 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 </div></div>
 
 <h2>Composition</h2>
-<p>L'utilisation d'une liste permet de groper les 5 dés, mais il faut toujours les lancer individuellement. Cela pourrait être pratique de lancer automatiquement tous les dés.</p>
+<p>L'utilisation d'une liste permet de grouper les 5 dés, mais il faut toujours les lancer individuellement. Cela pourrait être pratique de lancer automatiquement tous les dés.</p>
 <h3>Classe <code class="language-">TapisVert</code></h3>
 <p>On aimerait avoir une structure, nommée <code class="language-">TapisVert</code>, qui :</p>
 <ul>
@@ -235,7 +235,7 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Proposez une modélisation UML de cette classe, montrez la relation qu'elle entretien avec la classe <code class="language-">Dé</code>.</li>
+<li>Proposez une modélisation UML de cette classe, montrez la relation qu'elle entretient avec la classe <code class="language-">Dé</code>.</li>
 <li>modifier la user story &quot;jets de dés&quot; pour qu'elle utilise cette classe</li>
 </ol>
 </div></div>
@@ -270,8 +270,8 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 </div>
 </details>     
 </div>
-<p>Avant de commencer à coder, comprenez comment il est possible que la méthode <code class="language-">TapisVert.lancer()</code> peut utiliser la méthode <code class="language-">Dé.lancer()</code> alors que les deux méthodes ont le même nom.</p>
-<p>Maintenant que vous voyez comment faire codez là :</p>
+<p>Avant de commencer à coder, comprenez comment il est possible que la méthode <code class="language-">TapisVert.lancer()</code> puisse utiliser la méthode <code class="language-">Dé.lancer()</code> alors que les deux méthodes ont le même nom.</p>
+<p>Maintenant que vous voyez comment faire, codez-la :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -279,7 +279,7 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez le code de la classe <code class="language-">TapisVert</code> dans le fichier <code class="fichier">dé.py</code>.</p>
-<p>Ajoutez les test de cette nouvelle classe au fichier <code class="fichier">test_dé.py</code>. Vous pourrez par exemple tester  :</p>
+<p>Ajoutez les tests de cette nouvelle classe au fichier <code class="fichier">test_dé.py</code>. Vous pourrez par exemple tester  :</p>
 <ul>
 <li>qu'après la création d'un objet <code class="language-">TapisVert</code> on dispose bien de 5 dés positionnés sur 1.</li>
 <li>qu'après avoir lancé les dés, leurs positions sont toujours cohérentes avec le nombre de faces.</li>
@@ -294,7 +294,7 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 </div></div>
 
 <h3>Affichage</h3>
-<p>Afin de pouvoir coder plus rapidement nos story, il faut une méthode de représentation de nos objets.</p>
+<p>Afin de pouvoir coder plus rapidement nos stories, il faut une méthode de représentation de nos objets.</p>
 <p>Commençons par le <code class="language-">Dé</code> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -302,7 +302,7 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez une méthode <code class="language-">Dé.__str__</code> qui permettent d'écrire :</p>
+<p>Créez une méthode <code class="language-">Dé.__str__</code> qui permette d'écrire :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
 <span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> d<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">4</span>
@@ -316,7 +316,7 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utilisez les caractères : <code class="language-">&quot;⚀&quot;</code>, <code class="language-">&quot;⚁&quot;</code>, <code class="language-">&quot;⚂&quot;</code>, <code class="language-">&quot;⚃&quot;</code>, <code class="language-">&quot;⚄&quot;</code> et <code class="language-">&quot;⚅&quot;</code> pour vos représentations.</p>
+<p>Vous pourrez utiliser les caractères : <code class="language-">&quot;⚀&quot;</code>, <code class="language-">&quot;⚁&quot;</code>, <code class="language-">&quot;⚂&quot;</code>, <code class="language-">&quot;⚃&quot;</code>, <code class="language-">&quot;⚄&quot;</code> et <code class="language-">&quot;⚅&quot;</code> pour vos représentations.</p>
 </div></div>
 
 <p>On peut maintenant utiliser <code class="language-">Dé.__str__</code> pour que <code class="language-">TapisVert.__str__</code> soit facile à coder :</p>
@@ -326,7 +326,7 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez une méthode <code class="language-">TapisVert.__str__</code> qui permettent d'écrire :</p>
+<p>Créez une méthode <code class="language-">TapisVert.__str__</code> qui permette d'écrire :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert
 <span class="token operator">>></span><span class="token operator">></span> tapis_vert <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>tapis_vert<span class="token punctuation">)</span>
@@ -405,7 +405,7 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez la story dans le fichier <code class="fichier">story-formes-dés.py</code>.</p>
-<p>Pour cela, l'utilisateur pourra appuyer sur la entrée pour lancer les dés d'un objet de type <code class="language-">TapisVert</code>, afficher les 5 dés et indiquer s'il y a une paire, un brelan ou un carré avec des méthodes <code class="language-">TapisVert.possède_paire()</code>, <code class="language-">TapisVert.possède_brelan()</code>, et <code class="language-">TapisVert.possède_carré()</code> qui rendent des booléens.</p>
+<p>Pour cela, l'utilisateur pourra appuyer sur la touche entrée pour lancer les dés d'un objet de type <code class="language-">TapisVert</code>, afficher les 5 dés et indiquer s'il y a une paire, un brelan ou un carré avec des méthodes <code class="language-">TapisVert.possède_paire()</code>, <code class="language-">TapisVert.possède_brelan()</code>, et <code class="language-">TapisVert.possède_carré()</code> qui rendent des booléens.</p>
 </div></div>
 
 <p>Et maintenant le code des différentes méthodes à implémenter :</p>
@@ -415,7 +415,7 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez dans <code class="language-">TapisVert</code> les méthodes nécessaires et testez-les en simulant des lancez ayant une forme particulière.</p>
+<p>Ajoutez dans <code class="language-">TapisVert</code> les méthodes nécessaires et testez-les en simulant des lancers ayant une forme particulière.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -426,7 +426,7 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 <p>Pour coder cela de façon simple, vous pourrez coder deux méthodes supports :</p>
 <ul>
 <li>une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \leq i \leq 6$)</li>
-<li>une méthode qui prend en paramètre un nombre $n$ et qui rend <code class="language-">True</code> s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.</li>
+<li>une méthode qui prend en paramètre un nombre $n$ et qui rend <code class="language-">True</code> s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manière les différentes fonctions demandées.</li>
 </ul>
 </div></div>
 
