@@ -425,7 +425,8 @@ Ayez déjà commencé vos révisions. On répondra aux questions que vous vous p
 
 {% aller %}
 
-[Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
+- [Présentation du cours du 19 mars 2025](objets){.interne}
+- [Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
 
 {% endaller %}
 
@@ -465,7 +466,7 @@ Il faudra rendre un dossier contenant le projet vscode et les différents progra
 #### Mercredi : on s'entraîne
 
 {% attention %}
-Test de 15min en début de cours sur **les objets, la composition et l'agrégation**.
+Test de 15min en début de cours sur **les objets, UML et le python**.
 {% endattention %}
 {% faire %}
 Sujet du test 5
@@ -477,6 +478,20 @@ On s'entraîne :
 
 - [Projet composition d'objets : dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés/){.interne}
 - [Projet agrégation : cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes/){.interne}
+
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+
+[Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
+{% endaller %}
+{% aller %}
+On met en œuvre tout ça sur nos dés et cartes :
+
+- [Accesseur et dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur){.interne}
+- [protéger les attributs de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object){.interne}
 
 {% endaller %}
 
@@ -493,7 +508,7 @@ On s'entraîne :
 #### Mercredi : projet héritage
 
 {% attention %}
-Test de 15min en début de cours sur **les objets, la compositions, l' agrégation et l'héritage**.
+Test de 15min en début de cours sur **les objets, la composition, l' agrégation et l'héritage**.
 {% endattention %}
 {% faire %}
 Sujet du test 6
@@ -520,6 +535,13 @@ On refait de l'algorithmie :
 > 14/04 au 18/04
 
 {% attention %}
+Test de 15min en début de cours sur **la résolution de problèmes**.
+{% endattention %}
+{% faire %}
+Sujet du test 7
+{% endfaire %}
+
+{% attention %}
 Rendre DM3
 {% endattention %}
 {% attention %}
@@ -540,11 +562,28 @@ On se focalise sur une méthode particulière de design d'algorithme, les algori
 
 #### Mercredi : Sac à dos
 
-> 4h mercredi : résolution du sac à dos
+{% attention %}
+Test de 15min en début de cours sur **les algorithmes gloutons**.
+{% endattention %}
+{% faire %}
+Sujet du test 8
+{% endfaire %}
+
+Au programme, on prépare les vacances et son sac-à-dos :
+
+{% aller %}
+
+[Problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/){.interne}
+
+{% endaller %}
 
 #### Vendredi : Enveloppe convexe
 
-> 2h vendredi : enveloppe convexe
+{% aller %}
+
+[Problème de l'enveloppe convexe](/cours/algorithmie/enveloppes-convexes/){.interne}
+
+{% endaller %}
 
 ### Semaine 13
 

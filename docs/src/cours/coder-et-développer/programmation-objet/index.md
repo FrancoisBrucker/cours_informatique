@@ -29,16 +29,13 @@ Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'
 
 La base de la programmation objet, c'est les classes et comment elles permettent de construire (on dira instancier) des objets.
 
-[Présentation du cours du 19 mars 2025](objets.html)
+### Concevoir des classes et des objets
 
 {% aller %}
 [Classes et objets](classes-et-objets){.interne}
 {% endaller %}
 {% aller %}
 [Coder ses objets](coder-ses-objets){.interne}
-{% endaller %}
-{% aller %}
-[Améliorer ses objets](améliorer-ses-objets){.interne}
 {% endaller %}
 
 On s'entraîne à la création d'objets :
@@ -48,6 +45,21 @@ On s'entraîne à la création d'objets :
 {% endaller %}
 {% aller %}
 [Projet cartes](projet-objets-cartes){.interne}
+{% endaller %}
+
+### Améliorer ses objets
+
+{% aller %}
+[Améliorer ses objets](améliorer-ses-objets){.interne}
+{% endaller %}
+
+On s'entraîne en perfectionnant nos dés et cartes :
+
+{% aller %}
+[Accesseur et dés](projet-objets-dés-accesseur){.interne}
+{% endaller %}
+{% aller %}
+[protéger les attributs de cartes](projet-objets-cartes-value-object){.interne}
 {% endaller %}
 
 ## Combiner ses objets entre eux

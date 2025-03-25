@@ -34,7 +34,7 @@ La position du dé doit être un entier entre 1 et 6.
 2. Donnez des exemples de code qui manipulent des objets de cette classe, comme :
    - créer un objet
    - afficher sa position à l'écran
-   - modifier la valeur de sa position
+   - modifier sa position
    - lancer le dé
 
 {% endfaire %}
@@ -209,8 +209,8 @@ Créez un fichier `main.py`{.fichier} qui :
 
 1. demande à l'utilisateur :
    - la position initiale du dé
-   - la valeur pour laquelle arrêter les lancers
-2. lance le dé jusqu'à tant que la valeur demandée par l’utilisateur soit trouvée.
+   - la position pour laquelle arrêter les lancers
+2. lance le dé jusqu'à tant que sa position est différente de la position demandée par l’utilisateur soit trouvée.
 3. le programme affiche le nombre de lancer nécessaire (cela peut être 0)
 
 {% endfaire %}

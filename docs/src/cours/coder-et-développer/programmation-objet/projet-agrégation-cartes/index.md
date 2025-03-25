@@ -3,8 +3,8 @@ layout: layout/post.njk
 title: "Projet agrégation : cartes"
 
 eleventyNavigation:
-    prerequis:
-        - "../projet-objets-cartes-value-object/"
+  prerequis:
+    - "../projet-objets-cartes/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -37,22 +37,14 @@ CARREAU = "carreau"
 TREFLE = "trèfle"
 
 
-VALEURS = [SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS]
-COULEURS = [TREFLE, CARREAU, COEUR, PIQUE]
+VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)
+COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)
 
 
 class Carte:
     def __init__(self, valeur, couleur):
-        self._couleur = couleur
-        self._valeur = valeur
-
-    @property
-    def couleur(self):
-        return self._couleur
-
-    @property
-    def valeur(self):
-        return self._valeur
+        self.couleur = couleur
+        self.valeur = valeur
 
     def __str__(self):
         return self.valeur + " de " + self.couleur
@@ -102,7 +94,7 @@ def test_repr():
     assert repr(Carte(carte.SEPT, carte.TREFLE)) == "Carte('sept', 'trèfle')"
 
 
-def test_property():
+def test_attributs():
     assert Carte(carte.SEPT, carte.TREFLE).valeur == carte.SEPT
     assert Carte(carte.SEPT, carte.TREFLE).couleur == carte.TREFLE
 

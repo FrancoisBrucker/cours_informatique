@@ -21,16 +21,6 @@ Quelques exemples de problèmes algorithmiques classiques car :
 [Élément majoritaire](/enseignements/MPCI/programmation-algorithmes/annales/2023-2024/ds-1/ds1_2023_2024.pdf)
 {% endaller %}
 
-## Calcul de la médiane
-
-Un calcul optimal en temps linéaire. Fait parti selon moi des résultats les plus surprenant en algorithmie, et il y en a !
-
-{% aller %}
-
-[Calcul de la médiane](./médiane){.interne}
-
-{% endaller %}
-
 ## Autres problèmes
 
 {% aller %}

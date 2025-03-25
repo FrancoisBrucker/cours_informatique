@@ -65,6 +65,7 @@ for t in range(K):
     if d[t] > P:
         print("le train", t, "contient", d[t] - P, "passagers de trop.")
 ```
+
 {% enddetails %}
 
 On suppose maintenant que la personne $i$, si elle ne peut pas prendre le train $t_i$ parce qu’il est complet, accepte de prendre un des trains suivants (s’il y en a un).

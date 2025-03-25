@@ -25,8 +25,6 @@ Ne tartinez pas des pages et des pages de démonstration. Allez directement au f
 
 ## Sujet
 
-## Sujet
-
 ### 1 Complexités
 
 #### 1.1

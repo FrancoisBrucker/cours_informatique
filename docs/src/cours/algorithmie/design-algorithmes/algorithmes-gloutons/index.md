@@ -22,4 +22,3 @@ Les algorithmes gloutons sont au coeur de nombreux algorithmes. Leur design est 
 {% aller %}
 [Exercices](./exercices){.interne}
 {% endaller %}
-

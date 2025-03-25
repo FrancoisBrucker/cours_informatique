@@ -4,7 +4,7 @@ title: "Projet : Amélioration des objets cartes"
 
 eleventyNavigation:
   prerequis:
-    - "../projet-objets-cartes-value-object/"
+    - "../projet-objets-cartes/"
 
 eleventyComputed:
   eleventyNavigation:
