@@ -58,11 +58,11 @@ L'idée est d'écrire une succession d'actions faites par un utilisateur typique
 
 - Nom : "Aléatoire ?"
 - Utilisateur : un professeur.
-- Story : On vérifie que le lancé de dé ressemble à de l'aléatoire.
+- Story : On vérifie que le lancer de dé ressemble à de l'aléatoire.
 - Actions :
   1. créer un dé sans paramètre
   2. afficher à l'écran sa position (ça doit être 1)
-  3. lancer le dé 10 fois et affiche la position du dé après chaque lancé. Quelle est la probabilité que le dé ne change jamais ?.
+  3. lancer le dé 10 fois et affiche la position du dé après chaque lancer. Quelle est la probabilité que le dé ne change jamais ?.
 
 {% endnote %}
 
@@ -74,7 +74,7 @@ En utilisant la modélisation UML du Dé, codez la user story "Aléatoire" en py
 
 {% endexercice %}
 {% details "corrigé" %}
-Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de position en 10 lancés.
+Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de position en 10 lancers.
 
 La user story donnerait en python :
 
@@ -87,7 +87,7 @@ dé = Dé()
 # 2. afficher à l'écran sa position (ça doit être 1)
 print(dé.position)
 
-# 3. lancer le dé 10 fois et affiche la position du dé après chaque lancé
+# 3. lancer le dé 10 fois et affiche la position du dé après chaque lancer
 for i in range(10):
    dé.lancer()
    print(dé.position)

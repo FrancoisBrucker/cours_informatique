@@ -13,7 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Dans [le premier projets dés](../projet-objets-dés/){.interne}, vous avez codé des classes toutes seules. Dans cette parties on va coder plusieurs classes enchevêtrées.
+Dans [le premier projets dés](../projet-objets-dés/){.interne}, vous avez codé des classes toutes seules. Dans cette partie on va coder plusieurs classes enchevêtrées.
 
 Pour les besoins de ce projet, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
 
@@ -62,7 +62,7 @@ def test_lancer():
 
 {% enddetails %}
 
-Il va nous falloir manipuler 5 dés ensemble pour réaliser le but de notre projet :
+Il va nous falloir manipuler 5 dés ensemble pour atteindre le but de notre projet :
 
 {% note "**But du projet**" %}
 
@@ -97,7 +97,7 @@ Créez la user story dans le fichier `story_jets.py`{.fichier}
 
 ## Composition
 
-L'utilisation d'une liste permet de groper les 5 dés, mais il faut toujours les lancer individuellement. Cela pourrait être pratique de lancer automatiquement tous les dés.
+L'utilisation d'une liste permet de grouper les 5 dés, mais il faut toujours les lancer individuellement. Cela pourrait être pratique de lancer automatiquement tous les dés.
 
 ### Classe `TapisVert`{.language-}
 
@@ -109,7 +109,7 @@ On aimerait avoir une structure, nommée `TapisVert`{.language-}, qui :
 
 {% faire %}
 
-1. Proposez une modélisation UML de cette classe, montrez la relation qu'elle entretien avec la classe `Dé`{.language-}.
+1. Proposez une modélisation UML de cette classe, montrez la relation qu'elle entretient avec la classe `Dé`{.language-}.
 2. modifier la user story "jets de dés" pour qu'elle utilise cette classe
 
 {% endfaire %}
@@ -131,14 +131,14 @@ for dé in tapis_vert.dés:
 
 {% enddetails %}
 
-Avant de commencer à coder, comprenez comment il est possible que la méthode `TapisVert.lancer()`{.language-} peut utiliser la méthode `Dé.lancer()`{.language-} alors que les deux méthodes ont le même nom.
+Avant de commencer à coder, comprenez comment il est possible que la méthode `TapisVert.lancer()`{.language-} puisse utiliser la méthode `Dé.lancer()`{.language-} alors que les deux méthodes ont le même nom.
 
-Maintenant que vous voyez comment faire codez là :
+Maintenant que vous voyez comment faire, codez-la :
 
 {% faire %}
 Ajoutez le code de la classe `TapisVert`{.language-} dans le fichier `dé.py`{.fichier}.
 
-Ajoutez les test de cette nouvelle classe au fichier `test_dé.py`{.fichier}. Vous pourrez par exemple tester  :
+Ajoutez les tests de cette nouvelle classe au fichier `test_dé.py`{.fichier}. Vous pourrez par exemple tester  :
 
 - qu'après la création d'un objet `TapisVert`{.language-} on dispose bien de 5 dés positionnés sur 1.
 - qu'après avoir lancé les dés, leurs positions sont toujours cohérentes avec le nombre de faces.
@@ -151,11 +151,11 @@ Ajoutez les test de cette nouvelle classe au fichier `test_dé.py`{.fichier}. Vo
 
 ### Affichage
 
-Afin de pouvoir coder plus rapidement nos story, il faut une méthode de représentation de nos objets.
+Afin de pouvoir coder plus rapidement nos stories, il faut une méthode de représentation de nos objets.
 
 Commençons par le `Dé`{.language-} :
 {% faire %}
-Créez une méthode `Dé.__str__`{.language-} qui permettent d'écrire :
+Créez une méthode `Dé.__str__`{.language-} qui permette d'écrire :
 
 ```python
 >>> from dé import Dé
@@ -168,13 +168,13 @@ Créez une méthode `Dé.__str__`{.language-} qui permettent d'écrire :
 
 {% endfaire %}
 {% info %}
-Vous pourrez utilisez les caractères : `"⚀"`{.language-}, `"⚁"`{.language-}, `"⚂"`{.language-}, `"⚃"`{.language-}, `"⚄"`{.language-} et `"⚅"`{.language-} pour vos représentations.
+Vous pourrez utiliser les caractères : `"⚀"`{.language-}, `"⚁"`{.language-}, `"⚂"`{.language-}, `"⚃"`{.language-}, `"⚄"`{.language-} et `"⚅"`{.language-} pour vos représentations.
 {% endinfo %}
 
 On peut maintenant utiliser `Dé.__str__`{.language-} pour que `TapisVert.__str__`{.language-} soit facile à coder :
 
 {% faire %}
-Créez une méthode `TapisVert.__str__`{.language-} qui permettent d'écrire :
+Créez une méthode `TapisVert.__str__`{.language-} qui permette d'écrire :
 
 ```python
 >>> from dé import TapisVert
@@ -240,13 +240,13 @@ Pour jouer au poker d'as, il nous faudra reconnaître des formes de jets de dés
 {% faire %}
 Créez la story dans le fichier `story-formes-dés.py`{.fichier}.
 
-Pour cela, l'utilisateur pourra appuyer sur la entrée pour lancer les dés d'un objet de type `TapisVert`{.language-}, afficher les 5 dés et indiquer s'il y a une paire, un brelan ou un carré avec des méthodes `TapisVert.possède_paire()`{.language-}, `TapisVert.possède_brelan()`{.language-}, et `TapisVert.possède_carré()`{.language-} qui rendent des booléens.
+Pour cela, l'utilisateur pourra appuyer sur la touche entrée pour lancer les dés d'un objet de type `TapisVert`{.language-}, afficher les 5 dés et indiquer s'il y a une paire, un brelan ou un carré avec des méthodes `TapisVert.possède_paire()`{.language-}, `TapisVert.possède_brelan()`{.language-}, et `TapisVert.possède_carré()`{.language-} qui rendent des booléens.
 {% endfaire %}
 
 Et maintenant le code des différentes méthodes à implémenter :
 
 {% faire %}
-Ajoutez dans `TapisVert`{.language-} les méthodes nécessaires et testez-les en simulant des lancez ayant une forme particulière.
+Ajoutez dans `TapisVert`{.language-} les méthodes nécessaires et testez-les en simulant des lancers ayant une forme particulière.
 
 {% endfaire %}
 
@@ -255,6 +255,6 @@ Ajoutez dans `TapisVert`{.language-} les méthodes nécessaires et testez-les en
 Pour coder cela de façon simple, vous pourrez coder deux méthodes supports :
 
 - une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \leq i \leq 6$)
-- une méthode qui prend en paramètre un nombre $n$ et qui rend `True`{.language-} s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.
+- une méthode qui prend en paramètre un nombre $n$ et qui rend `True`{.language-} s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manière les différentes fonctions demandées.
 
 {% endinfo %}

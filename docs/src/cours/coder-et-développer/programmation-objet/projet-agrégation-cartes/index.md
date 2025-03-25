@@ -15,7 +15,7 @@ eleventyComputed:
 
 Nous allons ici continuer ce que nous avons commencé lors du projet cartes et utiliser l'agrégation pour pouvoir jouer aux cartes.
 
-Pour les besoin de ce projet, nous allons présupposer que vous avez une classe `Carte`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
+Pour les besoins de ce projet, nous allons présupposer que vous avez une classe `Carte`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obligé.e de l'utiliser.
 
 {% details "**une implémentation de la classe `Carte`{.language-}**" %}
 
@@ -114,7 +114,7 @@ Le but du projet est :
 
 {% note "**But du projet**" %}
 
-Implémenter une classe `Deck`{.language-} permettant de regrouper toutes les méthodes nécessaire au maniement d'un ensemble de cartes.
+Implémenter une classe `Deck`{.language-} permettant de regrouper toutes les méthodes nécessaires au maniement d'un ensemble de cartes.
 
 {% endnote %}
 
