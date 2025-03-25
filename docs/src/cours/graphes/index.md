@@ -25,6 +25,7 @@ eleventyComputed:
 > - [bellman-ford](./bellman-ford)
 > - [cycle-chemin](./projet-chemins-cycles)
 >
+> TBD Ramsay et cliques (friends and stranger theorem) ? Méthode probabiliste <https://www.youtube.com/watch?v=4weMmFZSBtI>
 
 Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.
 

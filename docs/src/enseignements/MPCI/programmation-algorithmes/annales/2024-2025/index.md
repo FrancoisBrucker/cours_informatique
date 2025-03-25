@@ -15,6 +15,7 @@ Tests et examens pour l'année scolaire 2023/2024
 2. [Test 2 : Code](./2_test){.interne} / [corrigé](./2_test_corrigé){.interne}
 3. [Test 3 : complexité](./3_test){.interne} / [corrigé](./3_test_corrigé){.interne}
 4. [Test 4 : tris](./4_test){.interne} / [corrigé](./4_test_corrigé){.interne}
+5. [Test 5 : objets](./5_test){.interne} / [corrigé](./5_test_corrigé){.interne}
 
 ## Devoir Maison
 

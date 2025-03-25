@@ -282,13 +282,27 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
-## Intermède : recherche universelle
+## Intermède
 
-Avant de finir cette première partie du cours, accordons nous un intermède en regardant une petite bizarrerie algorithmique. L'Algorithme pour tout résoudre :
+Avant de finir cette première partie du cours, accordons nous un intermède.
+
+### Recherche universelle
+
+Commençons par regarder une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
+
+L'Algorithme pour tout résoudre :
 
 {% aller %}
 [L'algorithme de la recherche universelle](./recherche-universelle){.interne}
 {% endaller %}
+
+### Problèmes et exercices
+
+On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
+
+> TBD on reprend tous les exos jusque là
+> TBD on ajoute les énoncés des exos durs.
+> TBD faire de l'ordre dans les autres exos.
 
 ## <span id="partie-3"></span>Partie III
 
@@ -303,6 +317,11 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 {% endaller %}
 
 ### <span id="modèle-calculs"></span>Modèle de calculs
+
+> TBD ici faire la machine avec mémoire finie et montrer que c'est de la logique = sat ; utiliser le pseudo-code de Knuth pour cela en montrant que pseudo-code = assembleur dans le modèle de Von Neuman
+> TBD remanier le début de l'algorithmie pour décaler la file récursive ?
+> 
+> TBD puis montrer que Turing = logique = sat.
 
 Nous avons jusqu'à présent utilisé le modèle du pseudo-code pour créer des algorithmes.
 
@@ -439,8 +458,9 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 
 > TBD nombre aléatoires : <https://xkcd.com/221/> et <https://imgur.com/random-number-generator-bwFWMqQ>
 
-> TBD : [projet Multiplication de matrices](./multiplication-matrices){.interne}
+> TBD : projet Multiplication de matrices randomisé calcul et vérification.: <https://www.stat.berkeley.edu/~mmahoney/f13-stat260-cs294/Lectures/lecture02.pdf> <https://eranraviv.com/randomized-matrix-multiplication/> <https://en.wikipedia.org/wiki/Freivalds%27_algorithm> <https://www.youtube.com/watch?v=z0ykhV15wLw>
 
+> TBD <https://www.youtube.com/watch?v=LUCvSsx6-EU> ?
 > TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
 > TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
