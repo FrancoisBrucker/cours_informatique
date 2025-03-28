@@ -138,6 +138,30 @@ Quelques algorithmes ont aussi à connaître :
 - problème du voyageur de commerce
 - coloration de graphe, en particulier l'algorithme glouton de Welsch et Powell (celui du cours)
 
+## X/ENS
+
+{% lien %}
+[Annales](https://diplome.di.ens.fr/informatique-ens/annales.html)
+{% endlien %}
+
+## Centrale
+
+{% lien %}
+[Programme](https://www.groupe-centrale.com/wp-content/uploads/2025/01/Programme_des_epreuves_de_la_dominante_informatique_CUEC_2025.pdf
+)
+{% endlien %}
+
+Le programme est gigantesque et regroupe tous les programmes de toutes les licences d'informatique (ainsi que de leurs options) de toute la France... Que vous n'ayez pas tout fait est normal !
+
+Ne prenez pas peur : vous allez être interrogé sur une intersection entre votre programme MPCI et leur programme.
+
+Donc :
+
+1. lisez le programme en entier
+2. faite l'intersection de ce que vous avez vu et le reste
+3. révisez l'intersection commune
+4. faire un check Wikipedia rapide sur les notions que vous n'avez pas vu, histoire de ne pas mourir idiot et de ne pas passer pour un inculte auprès de l'examinateur mais pas plus.
+
 ## Oraux/écrit Algorithmie
 
 Vous pouvez tomber sur le même exercices aux mines ou à l'X/ENS. Ce qui changera c'est les indications et le nombre de questions intermédiaires. Mais en gros tout peut tomber, c'est pourquoi faire les QCM GEI est un bon exercice pour bien asseoir les bases qui vous seront nécessaires pour résoudre les problèmes plus dur..

@@ -502,6 +502,7 @@ Est-ce réaliste ?
 
 > TBD complexité spatiale $\mathcal{O}(\max(T))$ ce qui est déraisonnable car cela peut être aussi grand que l'on veut.
 > TBD c'est même exponentiel en la taille du tableau ($\log_2(n)$ bits pour stocker l'entier $n$).
+> TBD : même si la complexité de créer un tableau de taille arbitraire est en  $\mathcal{O}(2)$, et que l'on ne fait de boucle que sur la taille du tableau, l'algorithme est tout de même en $\mathcal{O}(\max(T))$ car il faut initialiser les cases : à la création d'un tableau ses valeurs sont indéterminées.
 
 {% enddetails %}
 

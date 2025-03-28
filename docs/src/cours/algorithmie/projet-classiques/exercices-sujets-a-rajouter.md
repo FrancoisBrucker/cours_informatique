@@ -10,6 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD <https://diplome.di.ens.fr/informatique-ens/annales.html>
 > TBD <https://nstarr.people.amherst.edu/trom/intro-notsure.html> <https://www.gamepuzzles.com/3color.htm>
 
 > TBD regardez tous les exos d'avant et le remettre s'ils sont chouettes, genre ceux des piles/file, fibo, etc. Et ajouter les questions suivantes si nécessaire.

@@ -188,7 +188,7 @@ Montrer que 3-SUM' ≤ 3-SUM
 {% endexercice %}
 {% details "corrigé" %}
 
-On prend $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $[T[i] + A \vert i] + [T'[i] + 3A \vert i] + $[-T''[i] - 4A \vert i]$.
+On prend $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $[T[i] + A \\;\vert\\; i] + [T'[i] + 3A \\;\vert\\; i] + [-T''[i] - 4A \\;\vert\\; i]$.
 
 Soient $i, j, k$ tels que T[i] + T[j] + T[k] = 0$.
 
@@ -236,7 +236,3 @@ On fait le contraire. On ajoute chaque point de :
 - $(x, 2)$ dans $T' = [x | \forall (x, 2)]$
 
 {% enddetails %}
-
-### Matrices
-
-> TBD multiplication puissance et inverse équivalents (et transformations linéaire)

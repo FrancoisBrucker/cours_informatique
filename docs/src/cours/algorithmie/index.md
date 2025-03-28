@@ -303,12 +303,17 @@ On place ici quelques problèmes requérant une bonne compréhension algorithmiq
 > TBD on reprend tous les exos jusque là
 > TBD on ajoute les énoncés des exos durs.
 > TBD faire de l'ordre dans les autres exos.
+> TBD lien de : médiane en temps linéaire. alignement de séquence
+> TBD 3-SUM et Réductions (en incluant le 2-SUM de tout à l'heure).
+> TBD  ajouter Karatsuba,
 
 ## <span id="partie-3"></span>Partie III
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
 ### Chaînes de caractères
+
+> TBD premier exemple de lien encore code et structure de calcul équivalente.
 
 > TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\\{0, 1\\}^\star$ à $\\{0, 1\\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
 
@@ -318,9 +323,12 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
 ### <span id="modèle-calculs"></span>Modèle de calculs
 
+> TBD ici uniquement partie code avec assembleur.
+> TBD levin avec mémoire finie ou on veut : nb exponentiel. Mais si on peut aller que à gauche et à droite prop aux nb d'instructions.
+> 
 > TBD ici faire la machine avec mémoire finie et montrer que c'est de la logique = sat ; utiliser le pseudo-code de Knuth pour cela en montrant que pseudo-code = assembleur dans le modèle de Von Neuman
 > TBD remanier le début de l'algorithmie pour décaler la file récursive ?
-> 
+>
 > TBD puis montrer que Turing = logique = sat.
 
 Nous avons jusqu'à présent utilisé le modèle du pseudo-code pour créer des algorithmes.
