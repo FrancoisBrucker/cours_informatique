@@ -425,8 +425,13 @@ Ayez déjà commencé vos révisions. On répondra aux questions que vous vous p
 
 {% aller %}
 
-- [Présentation du cours du 19 mars 2025](objets){.interne}
-- [Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
+[Présentation du cours du 19 mars 2025](objets){.interne}
+
+{% endaller %}
+
+{% aller %}
+
+[Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
 
 {% endaller %}
 
@@ -481,24 +486,18 @@ On s'entraîne :
 
 {% endaller %}
 
-Pour aller plus loin :
-
-{% aller %}
-
-[Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
-{% endaller %}
-{% aller %}
-On met en œuvre tout ça sur nos dés et cartes :
-
-- [Accesseur et dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur){.interne}
-- [protéger les attributs de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object){.interne}
-
-{% endaller %}
-
 #### Vendredi : héritage
 
 {% aller %}
-[Héritage](/cours/coder-et-développer/programmation-objet/héritage/){.interne}
+
+[Présentation du cours du 28 mars 2025](heritage){.interne}
+
+{% endaller %}
+{% aller %}
+
+1. [Héritage](/cours/coder-et-développer/programmation-objet/héritage/){.interne}
+2. [Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
+
 {% endaller %}
 
 ### Semaine 10
@@ -514,8 +513,19 @@ Test de 15min en début de cours sur **les objets, la composition, l' agrégatio
 Sujet du test 6
 {% endfaire %}
 
+On s'entraîne sur l'héritage :
+
 {% aller %}
 [Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
+{% endaller %}
+
+Pour aller plus loin, amélioration des dès et des cartes :
+
+{% aller %}
+
+- [Accesseur et dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur){.interne}
+- [protéger les attributs de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object){.interne}
+
 {% endaller %}
 
 #### Vendredi : Méthodes de résolution de problèmes
