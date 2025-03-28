@@ -17,6 +17,16 @@ Le sujet était l'épreuve commune d'informatique pour X/ENS en 2024. C'est l'in
 
 L'idée est de faire au mieux, quite à choisir ses questions ou à ajouter des hypothèses si on en a besoin.
 
+Pour vous comparer, vous pouvez consulter : [rapport de l'épreuve 2024](https://diplome.di.ens.fr/informatique-ens/annales/2024_InfoB-rapport.pdf)
+
 ## Corrigé
+
+Nous allons écrire toutes les fonctions demandées en python.
+
+### Partie I
+
+#### Question 1
+
+
 
 > TBD
