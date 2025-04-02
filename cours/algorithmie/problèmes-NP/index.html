@@ -173,21 +173,33 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties pus longues.</p>
 <p>Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (<em>ie.</em> polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
 <h3>Exemples de vérifieurs efficaces</h3>
-<blockquote>
-<p>TBD exemples de vérifieurs simple puis le somme de sous-ensemble.</p>
-</blockquote>
 <h4>Max/min d'un tableau</h4>
-<blockquote>
-<p>TBD max/min : on vérifie tous</p>
-</blockquote>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">verif</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+
+<span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
+    <span class="token keyword">si</span> x <span class="token operator">></span> sol<span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+<span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></code></pre>
+<h4>3-SUM</h4>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">verif</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+
+i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k <span class="token operator">&lt;</span><span class="token operator">-</span> sol
+<span class="token keyword">si</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+<span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
 <h4>Tri d'un tableau</h4>
 <blockquote>
-<p>TBD le tri : croissant</p>
+<p>TBD attention., il faut aussi vérifier que c'est les mêmes tableaux.</p>
 </blockquote>
-<h4>3-SUM</h4>
-<blockquote>
-<p>TBD de la réduction</p>
-</blockquote>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">verif</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></code></pre>
+<ol>
+<li>on vérifie que sol est trié</li>
+<li>on vérifie que les éléments de sol sont ceux de T :
+<ol>
+<li>on peut considérer deux tableaux de booléen. et on parcours chaque élément de sol jusqu'à trouver un élément non vu de T</li>
+</ol>
+</li>
+</ol>
 <h4>Sac à dos</h4>
 <p>Ci-après une version du célèbre <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">problème du sac à dos</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -236,6 +248,16 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 , ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.</li>
 </ol>
 <p>La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.</p>
+<h4>Isomorphisme de graphe</h4>
+<p><a href="/cours_informatique/cours/graphes/structure/#definition-graphe" class="interne">Un graphe</a> est une structure de donnée fondamentale en algorithmie. Deux graphes sont isomorphes, s'il existe une bijection entre les deux ensembles de sommets rendant les arêtes identiques.</p>
+<blockquote>
+<p>TBD exemple Petersen : <a href="https://mathworld.wolfram.com/PetersenGraph.html">https://mathworld.wolfram.com/PetersenGraph.html</a></p>
+</blockquote>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">verif</span><span class="token punctuation">(</span>G1<span class="token punctuation">,</span> G2<span class="token punctuation">,</span> sigma<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></code></pre>
+<blockquote>
+<p>TBD utilise permutation de 2 tableaux.</p>
+</blockquote>
+<p>On voit que l'algorithme précédent permet de savoir facilement si sigma est une bijection. En revanche, on ne connaît pas d'algorithme polynomial pour trouver cette bijection.</p>
 <h3>Vérifieur efficace et algorithme de résolution</h3>
 <p>Il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.</p>
 <p>Enfin :</p>

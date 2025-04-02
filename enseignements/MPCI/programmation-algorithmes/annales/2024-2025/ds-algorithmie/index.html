@@ -94,14 +94,237 @@
 <h2>Barème</h2>
 <p>Le sujet était l'épreuve commune d'informatique pour X/ENS en 2024. C'est l'informatique commune à tous les concours (ce n'est donc <strong>pas</strong> l'épreuve uniquement réservée aux informaticiens), mais c'est tout de même un sujet long à faire en 2 heures et d'un niveau assez relevé.</p>
 <p>L'idée est de faire au mieux, quite à choisir ses questions ou à ajouter des hypothèses si on en a besoin.</p>
-<p>Pour vous comparer, vous pouvez consulter : <a href="https://diplome.di.ens.fr/informatique-ens/annales/2024_InfoB-rapport.pdf">rapport de l'épreuve 2024</a></p>
+<p>J'ai noté uniquement les questions 1 à 9 pour un total de 20 points. Une seule personne a abordé la question 10. Ce qui donne une note sur 25 répartie comme suit :</p>
+<ul>
+<li>2pt pour les questions 1 à 3</li>
+<li>2pt pour la question 4.1</li>
+<li>1pt pour la question 4.2</li>
+<li>2pt pour la question 5</li>
+<li>3pt pour la question 6</li>
+<li>2pt pour les questions 7 à 9</li>
+<li>1pt pour les questions 10 à 14</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 2 heures :</p>
+<ul>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire parfaitement les question 1 à 4.1, pour un total de 8 points. Il doit pouvoir enfin glaner quelques points dans les questions faciles suivantes (en particulier les questions 5 et 8) pour arriver à 12.</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir la question 6 qui était la plus dure du DS</li>
+<li><strong>un très bon élève</strong> à en plus parfaitement fait la question 9 qui était la seconde question la plus dure.</li>
+</ul>
+</div></div>
+
+<p>Pour vous comparer, vous pouvez consulter : <a href="https://diplome.di.ens.fr/informatique-ens/annales/2024_InfoB-rapport.pdf">rapport de l'épreuve 2024</a>. Vous voyez qu'en moyenne les élèves ont répondus à plus de questions que vous (vous 9 questions et eux 11). Il faut donc que vous gagniez en rapidité, car vous avez été noté sur 25 et non sur 20.</p>
+<h3>Ventilation des notes</h3>
+<table>
+<thead>
+<tr>
+<th>note/20</th>
+<th>&lt; 10</th>
+<th>[10, 11]</th>
+<th>]11, 13]</th>
+<th>]13, 15]</th>
+<th>]15, 18[</th>
+<th>= 18</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>6</td>
+<td>16</td>
+<td>10</td>
+<td>6</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 11.59/20</li>
+<li>écart-type : 2.87/20</li>
+<li>médiane : 11.13/20</li>
+</ul>
+<p>Je suis globalement satisfait, vous avez quasi tous la moyenne. Vous êtes encore beaucoup entre 10 et 11, si vous continuez sur cette lancée et gardez votre travail régulier vous ne pourrez que progresser et avoir une meilleure note à l'ET.</p>
+<h3>Erreurs fréquentes</h3>
+<ul>
+<li>2 : la complexité est celle la complexité de <code class="language-">case_noires</code></li>
+<li>4.1 : on suppose que les entrées sont correctes, donc sol est une liste de liste d'entiers valant 0 ou 1.</li>
+<li>6 : ne passez pas trop de temps à essayer de faire une question visiblement très dure.</li>
+<li>7 : question facile mais presque personne ne l'a tentée.</li>
+</ul>
 <h2>Corrigé</h2>
 <p>Nous allons écrire toutes les fonctions demandées en python.</p>
 <h3>Partie I</h3>
 <h4>Question 1</h4>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>On somme chaque élément de la liste de listes d'entiers passé en paramètre.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cases_noires</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    total <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> ligne <span class="token keyword">in</span> cle_l<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> nombre <span class="token keyword">in</span> ligne<span class="token punctuation">:</span>
+            total <span class="token operator">+=</span> nombre
+    <span class="token keyword">return</span> total</code></pre>
+<p>La complexité est en $\mathcal{O}(\text{nc} \cdot \text{nl})$ puisque toute les lignes sont en $\mathcal{O}(1)$ et on parcourt tous les éléments d'une matrice à $\text{nl}$ lignes et $\text{nc}$ colonnes.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si on voulait faire le malin (mais ce n'est jamais conseillé), on aurait pu écrire cette fonction :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cases_noires</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token builtin">sum</span><span class="token punctuation">(</span>ligne<span class="token punctuation">)</span> <span class="token keyword">for</span> ligne <span class="token keyword">in</span> cle_l<span class="token punctuation">)</span></code></pre>
+<p>Qui est de même complexité car la complexité de la fonction <code class="language-">sum([entier]) -&gt; entier</code> de python est de l'ordre de la taille de la liste passée en paramètre.</p>
+</div></div>
+
+<h4>Question 2</h4>
+<p>La plus simple des fonction est :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compatibles</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">,</span> cle_c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> cases_noires<span class="token punctuation">(</span>cle_l<span class="token punctuation">)</span> <span class="token operator">==</span> cases_noires<span class="token punctuation">(</span>cle_c<span class="token punctuation">)</span></code></pre>
+<p>Qui est de complexité égale à la complexité de <code class="language-">case_noires([[entier]]) -&gt; entier</code> de la question précédente.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette version est également possible, mais est très lourde et inélégante puisque le retour de <code>==</code> est déjà un booléen :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compatibles</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">,</span> cle_c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> cases_noires<span class="token punctuation">(</span>cle_l<span class="token punctuation">)</span> <span class="token operator">==</span> cases_noires<span class="token punctuation">(</span>cle_c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
+</div></div>
+
+<h4>Question 3</h4>
+<p>On compte toute les cases noires et on ajoute les cases blanches nécessaires :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">taille_minimale</span><span class="token punctuation">(</span>ligne<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>ligne<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token builtin">len</span><span class="token punctuation">(</span>ligne<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></code></pre>
+<p>Notez que l'hypothèse selon laquelle le tableau est nom vide est importante, sinon le code de la fonction précédente est faux.</p>
+<p>La complexité de la fonction est de l'ordre de celle de la fonction <code class="language-">sum([entier]) -&gt; entier</code>, c'est à dire de la taille de la liste passée en paramètre.</p>
+<h4>Question 4</h4>
+<p>Pour arriver ligne 13 il faut que :</p>
+<ol>
+<li>le <code>if</code> de la ligne 8 soit vrai</li>
+<li>le <code>if</code> de la ligne 9 soit faux</li>
+</ol>
+<ul>
+<li>l'exécution de <code class="language-">verif_ligne([[1, 0]], [[2]], 0)</code> va stopper ligne 13 par ce que <code class="language-">taille != cle_l[0][0]</code></li>
+<li><code class="language-">verif_ligne([[1, 0, 1]], [[2]], 0)</code> va stopper ligne 13 par ce que <code class="language-">i_block == len(cle_l[0])</code></li>
+</ul>
+<p>L'algorithme vérifie que la succession de blocs de la solution est compatible avec la clé. Il ne vérifie pas leur nombre. Ainsi, si la solution est vierge, l'algorithme va tout le temps répondre vrai : <code class="language-">verif_ligne([[0]], [[1]], 0)</code>.</p>
+<p>Une solution serait de ne rendre vrai que si le nombre de blocs de la solution est compatible avec celui de la clé. On peut alors remplacer la ligne 14 par :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">return</span> i_bloc <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>Notez que ceci est dans notre cas équivalent (mais c'est plus long) à vérifier que le no,bre de cases noires de la solution est identique à celui de la clé :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">return</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>sol<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<h3>Partie II</h3>
+<h4>Question 5</h4>
+<p>Les constantes $n_c$ et $n_l$ font parti du problème on peut donc les utiliser.</p>
+<p>On a dans l'exemple suivant $n_c = 6$, $n_l = 4$ et $n = 15$ (d'où $k = 2$ et $l=3$) :</p>
+<pre><code>xxxxxx
+xxxxxx
+xxx...
+......
+</code></pre>
+<p>On a donc que $n = k \cdot n_c + l$ ce qui donne les relations suivantes :</p>
+<ul>
+<li>$n \div n_c = k$ ($15 \div 6 = 2$)</li>
+<li>$n \mod n_c = l$ ($15 \mod 6 = 3$)</li>
+</ul>
+<h4>Question 6</h4>
+<p>Commençons par supposer que la fonction auxiliaire <code class="language-">liste_solution_aux</code> est créée.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">liste_solutions</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">,</span> cle_c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    solutions_valides <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    liste_solutions_aux<span class="token punctuation">(</span>init_sol<span class="token punctuation">(</span>nc<span class="token punctuation">,</span> nl<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> solutions_valides<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> solutions_valides</code></pre>
+<p>Il faut maintenant fabriquer la fonction récursive <code class="language-">liste_solutions_aux</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">liste_solutions_aux</span><span class="token punctuation">(</span>sol_partielle<span class="token punctuation">,</span> n<span class="token punctuation">,</span> solutions<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">if</span> n <span class="token operator">==</span> nc <span class="token operator">*</span> nl<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> verif<span class="token punctuation">(</span>sol_partielle<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            solutions<span class="token punctuation">.</span>append<span class="token punctuation">(</span>copy_sol<span class="token punctuation">(</span>sol_partielle<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        k <span class="token punctuation">,</span> l <span class="token operator">=</span> n <span class="token operator">//</span> nc <span class="token punctuation">,</span> n <span class="token operator">%</span> nc
+
+        sol_partielle<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        liste_solutions_aux<span class="token punctuation">(</span>sol_partielle<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> solutions<span class="token punctuation">)</span>
+
+        sol_partielle<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+        liste_solutions_aux<span class="token punctuation">(</span>sol_partielle<span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> solutions<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> solutions</code></pre>
+<p>L'équation de récurrence vérifiant <code class="language-">liste_solutions_aux</code> est :</p>
+<div>
+$$
+C(n) = \mathcal{O}(1) + 2 \cdot C(n + 1)
+$$
+</div>
+<p>et $C(n_c \cdot n_l) = \mathcal{O}(n_c \cdot n_l)$. On en déduit que $C(0) = 2^{n_c \cdot n_l} C(n_c \cdot n_l)= 2^{n_c \cdot n_l} \cdot n_c \cdot n_l$ et donc que la complexité de <code class="language-">liste_solution</code> vaut $C(0) + \mathcal{O}(1) = \mathcal{O}(n_c \cdot n_l \cdot 2^{n_c \cdot n_l})$</p>
+<h4>Question 7</h4>
+<p>Pour tous les $n$ multiple de $n_c$, on vérifie que la dernière ligne a le bon nombre de cases noires (on utilise <code class="language-">verif_ligne</code>) avant de lancer la récursion.</p>
+<p>De même, on peut également compter le nombre de cases noire de chaque colonne jusqu'à $n \div n_c$ et stopper la récursion s'il y a déjà trop de cases noires.</p>
+<h3>Partie III</h3>
+<h4>Question 8</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">conflit</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ligne <span class="token operator">=</span> sol_p <span class="token punctuation">[</span>i_ligne<span class="token punctuation">]</span> <span class="token comment"># énoncé</span>
+
+    <span class="token comment"># cas (a)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">>=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>linge<span class="token punctuation">[</span>c<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> c
+    
+    <span class="token comment"># cas (b)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> ligne<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> i
+
+    <span class="token comment"># cas (c)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">+</span> s <span class="token operator">&lt;</span> nc<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>linge<span class="token punctuation">[</span>c <span class="token operator">+</span> s<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> c <span class="token operator">+</span> s
+    
+    <span class="token keyword">return</span> nc</code></pre>
+<p>La complexité est clairement en $\mathcal{O}(s)$ et l'algorithme vérifie bien les 3 cas de conflit possible.</p>
+<h4>Question 9</h4>
+<p>On utilise itérativement <code class="language-">conflit</code> jusqu'à trouver la solution ou dépasser la ligne :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">prochain</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ligne <span class="token operator">=</span> sol_p <span class="token punctuation">[</span>i_ligne<span class="token punctuation">]</span> <span class="token comment"># énoncé</span>
+
+    c2 <span class="token operator">=</span> conflit<span class="token punctuation">(</span>c<span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+    <span class="token keyword">while</span> c2 <span class="token operator">+</span> s <span class="token operator">&lt;=</span> nc<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> c2 <span class="token operator">&lt;</span> nc<span class="token punctuation">:</span>
+            c <span class="token operator">=</span> c2 <span class="token operator">+</span> <span class="token number">1</span>
+
+        c2 <span class="token operator">=</span> conflit<span class="token punctuation">(</span>c<span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> c <span class="token operator">+</span> s <span class="token operator">></span> nc<span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+    
+    <span class="token keyword">return</span> c</code></pre>
+<p>Comme on ne revient jamais en arrière, chaque case de la ligne est examinée 1 fois : la complexité est bien en $\mathcal{O}(nc)$.</p>
+<h3>Partie IV</h3>
+<h4>Question 10</h4>
+<p>On regarde toutes les possibilités une à une en remplissant la matrice :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcul_matrice</span><span class="token punctuation">(</span>M<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ligne <span class="token operator">=</span> sol_p <span class="token punctuation">[</span>i_ligne<span class="token punctuation">]</span>
+    clés <span class="token operator">=</span> cle_l<span class="token punctuation">[</span>i_ligne<span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> c <span class="token keyword">in</span> <span class="token builtin">range</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> nc<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> b <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>clés<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> M<span class="token punctuation">[</span>c<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> ligne<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                M<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">[</span>c<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                s <span class="token operator">=</span> clés<span class="token punctuation">[</span>b<span class="token punctuation">]</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> M<span class="token punctuation">[</span>c <span class="token operator">-</span>s <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>b <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> conflit <span class="token punctuation">(</span>c <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>s<span class="token punctuation">)</span> <span class="token operator">></span> c<span class="token punctuation">:</span>
+                    M <span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> c <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span>
+                    M <span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">[</span>c<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    M<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
+<h4>Questions 11-14</h4>
+<p>Personne n'a fait ces questions.</p>
 
 
 </article>
