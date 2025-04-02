@@ -33,8 +33,9 @@ Commencez par lire tout l'énoncé et créez la représentation UML des différe
 Créez et testez une classe `Compte`{.language-} qui servira de classe mère. Cette classe doit :
 
 - posséder un titulaire (on suppose que c'est une chaine de caractères)
-- être créée sans argent de déposé.
-- permettre de retirer et de déposer de l'argent (on suppose que l'on peut être à découvert).
+- être créée sans argent déposé initialement.
+- permettre de déposer de l'argent.
+- permettre de retirer de l'argent (on suppose que l'on peut être à découvert).
 
 {% endfaire %}
 
