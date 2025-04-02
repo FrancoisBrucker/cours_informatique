@@ -17,15 +17,39 @@ Le sujet était l'épreuve commune d'informatique pour X/ENS en 2024. C'est l'in
 
 L'idée est de faire au mieux, quite à choisir ses questions ou à ajouter des hypothèses si on en a besoin.
 
-J'ai noté uniquement les questions 1 à 9 pour un total de 20 points. Une seule personne a abordé la question 10.
+J'ai noté uniquement les questions 1 à 9 pour un total de 20 points. Une seule personne a abordé la question 10. Ce qui donne une note sur 25 répartie comme suit :
 
-> TBD barème
+- 2pt pour les questions 1 à 3
+- 2pt pour la question 4.1
+- 1pt pour la question 4.2
+- 2pt pour la question 5
+- 3pt pour la question 6
+- 2pt pour les questions 7 à 9
+- 1pt pour les questions 10 à 14
 
-Pour vous comparer, vous pouvez consulter : [rapport de l'épreuve 2024](https://diplome.di.ens.fr/informatique-ens/annales/2024_InfoB-rapport.pdf)
+{% note "**Objectif du test**" %}
+
+En 2 heures :
+
+- **un élève *normal*** doit parvenir à faire parfaitement les question 1 à 4.1, pour un total de 8 points. Il doit pouvoir enfin glaner quelques points dans les questions faciles suivantes (en particulier les questions 5 et 8) pour arriver à 12.
+- **un bon élève** doit parvenir à réussir la question 6 qui était la plus dure du DS
+- **un très bon élève** à en plus parfaitement fait la question 9 qui était la seconde question la plus dure.
+
+{% endnote %}
+
+Pour vous comparer, vous pouvez consulter : [rapport de l'épreuve 2024](https://diplome.di.ens.fr/informatique-ens/annales/2024_InfoB-rapport.pdf). Vous voyez qu'en moyenne les élèves ont répondus à plus de questions que vous (vous 9 questions et eux 11). Il faut donc que vous gagniez en rapidité, car vous avez été noté sur 25 et non sur 20.
 
 ### Ventilation des notes
 
-> TBD
+|note/20  |< 10  | [10, 11] | ]11, 13]      | ]13, 15] | ]15, 18[  | = 18  
+|---------|----|------------|------------|-------------|-----------|-------
+|nombre   | 6  |  16        |  10        |  6          |  5        | 1
+
+- moyenne : 11.59/20
+- écart-type : 2.87/20
+- médiane : 11.13/20
+
+Je suis globalement satisfait, vous avez quasi tous la moyenne. Vous êtes encore beaucoup entre 10 et 11, si vous continuez sur cette lancée et gardez votre travail régulier vous ne pourrez que progresser et avoir une meilleure note à l'ET.
 
 ### Erreurs fréquentes
 
