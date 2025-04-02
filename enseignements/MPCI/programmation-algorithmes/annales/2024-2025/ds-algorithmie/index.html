@@ -306,25 +306,9 @@ $$
     <span class="token keyword">return</span> c</code></pre>
 <p>Comme on ne revient jamais en arrière, chaque case de la ligne est examinée 1 fois : la complexité est bien en $\mathcal{O}(nc)$.</p>
 <h3>Partie IV</h3>
-<h4>Question 10</h4>
-<p>On regarde toutes les possibilités une à une en remplissant la matrice :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcul_matrice</span><span class="token punctuation">(</span>M<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    ligne <span class="token operator">=</span> sol_p <span class="token punctuation">[</span>i_ligne<span class="token punctuation">]</span>
-    clés <span class="token operator">=</span> cle_l<span class="token punctuation">[</span>i_ligne<span class="token punctuation">]</span>
-
-    <span class="token keyword">for</span> c <span class="token keyword">in</span> <span class="token builtin">range</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> nc<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> b <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>clés<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> M<span class="token punctuation">[</span>c<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> ligne<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
-                M<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">[</span>c<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                s <span class="token operator">=</span> clés<span class="token punctuation">[</span>b<span class="token punctuation">]</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> M<span class="token punctuation">[</span>c <span class="token operator">-</span>s <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>b <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> conflit <span class="token punctuation">(</span>c <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span>s<span class="token punctuation">)</span> <span class="token operator">></span> c<span class="token punctuation">:</span>
-                    M <span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> c <span class="token operator">-</span> s <span class="token operator">+</span> <span class="token number">1</span>
-                    M <span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">[</span>c<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-                <span class="token keyword">else</span><span class="token punctuation">:</span>
-                    M<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
-<h4>Questions 11-14</h4>
-<p>Personne n'a fait ces questions.</p>
+<blockquote>
+<p>TBD à faire</p>
+</blockquote>
 
 
 </article>
