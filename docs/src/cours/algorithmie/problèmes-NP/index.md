@@ -86,19 +86,39 @@ Enfin, cette définition est réaliste puisque si l'on possède une solution on 
 
 ### Exemples de vérifieurs efficaces
 
-> TBD exemples de vérifieurs simple puis le somme de sous-ensemble.
-
 #### Max/min d'un tableau
 
-> TBD max/min : on vérifie tous
+```pseudocode
+algorithme verif(T: [entier], sol: entier) -> booléen:
 
-#### Tri d'un tableau
-
-> TBD le tri : croissant
+pour chaque x de T:
+    si x > sol:
+        rendre Faux
+rendre Vrai
+```
 
 #### 3-SUM
 
-> TBD de la réduction
+```pseudocode
+algorithme verif(T: [entier], sol: (entier, entier, entier)) -> booléen:
+
+i, j, k <- sol
+si T[i] + T[j] + T[k] == 0:
+    rendre Vrai
+rendre Faux
+```
+
+#### Tri d'un tableau
+
+> TBD attention., il faut aussi vérifier que c'est les mêmes tableaux.
+
+```pseudocode
+algorithme verif(T: [entier], sol: [entier]) -> booléen:
+```
+
+1. on vérifie que sol est trié
+2. on vérifie que les éléments de sol sont ceux de T :
+   1. on peut considérer deux tableaux de booléen. et on parcours chaque élément de sol jusqu'à trouver un élément non vu de T
 
 #### Sac à dos
 
@@ -141,6 +161,20 @@ Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et q
 , ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.
 
 La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.
+
+#### Isomorphisme de graphe
+
+[Un graphe](/cours/graphes/structure/#definition-graphe){.interne} est une structure de donnée fondamentale en algorithmie. Deux graphes sont isomorphes, s'il existe une bijection entre les deux ensembles de sommets rendant les arêtes identiques.
+
+> TBD exemple Petersen : <https://mathworld.wolfram.com/PetersenGraph.html>
+
+```pseudocode
+algorithme verif(G1, G2, sigma) -> booléen:
+```
+
+> TBD utilise permutation de 2 tableaux.
+
+On voit que l'algorithme précédent permet de savoir facilement si sigma est une bijection. En revanche, on ne connaît pas d'algorithme polynomial pour trouver cette bijection.
 
 ### Vérifieur efficace et algorithme de résolution
 

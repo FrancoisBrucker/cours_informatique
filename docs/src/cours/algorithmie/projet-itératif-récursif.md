@@ -257,6 +257,20 @@ algorithme maximum(t: [entier]) → entier
 
 {% enddetails %}
 
+## <span id="égalité-tableaux"></span>Égalité de tableaux
+
+{% exercice %}
+Écrivez un algorithme itératif permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
+
+C'est à dire qu'il existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : avec 1 tableaux de booléen support. On parcourt un élément jusqu'à en trouver un identique non marqué dans le second tableau. On marque l'indice et on continue.
+
+{% enddetails %}
+
 ## Récursion terminale
 
 {% lien %}

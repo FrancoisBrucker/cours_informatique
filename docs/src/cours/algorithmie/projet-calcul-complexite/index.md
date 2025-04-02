@@ -215,6 +215,20 @@ $$
 
 {% enddetails %}
 
+## Égalité de tableaux
+
+> TBD.
+
+{% exercice %}
+Écrivez un algorithme itératif permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ sont une permutation l'une de l'autre (il existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in $[0, n-1]$).
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD.
+
+{% enddetails %}
+
 ### <span id="dichotomie"></span>Dichotomie
 
 ```pseudocode

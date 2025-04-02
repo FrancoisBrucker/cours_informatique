@@ -15,7 +15,7 @@ Une méthode classique de résoudre un problème algorithmique ($P_1$) est de le
 $$
 \begin{array}{ccc}
 P_1 & \rightarrow & P_2\\
-\uparrow &  & \downarrow\\
+\Uparrow &  & \Downarrow\\
 S_1 & \leftarrow & S_2
 \end{array}
 $$
@@ -52,6 +52,9 @@ Si l'on veut utiliser la réduction pour résoudre notre problème réduit, on c
 {% note "**Définition**" %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_2$ en $P_1$ est une réduction ou les deux algorithmes $A_1$ et $A_2$ sont de complexité polynomiale.
 {% endnote %}
+{% attention %}
+Les réductions polynomiale sont les seules utilisées en algorithmie, c'est pourquoi on considérera souvent que **_réduction_** et **_réduction polynomiale_** sont équivalent, une réduction **devant être** polynomiale.
+{% endattention %}
 
 Une réduction polynomiale nous permettra d'utiliser effectivement l'algorithme résolvant $P_2$ pour résoudre $P_1$.
 
@@ -74,7 +77,7 @@ Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche
 
 {% enddetails %}
 
-## Tris
+### Tris
 
 Trier un tableau d'entier va souvent rendre les problèmes bien plus facile. ce qui fait que c'est souvent utile de faire une réduction au tri.
 
@@ -95,37 +98,6 @@ Montrez que le problème de la recherche de doublon dans un tableau d'entiers es
 On trie puis on parcourt le tableau jusqu'à trouver deux éléments successifs égaux.
 
 {% enddetails %}
-
-### Nombres premiers
-
-{% exercice %}
-Montrez que le problème de savoir si un nombre entier est premier (problème PRIME) est équivalent au problème de savoir si un nombre entier est composé (problème COMPOSÉ).
-
-{% endexercice %}
-{% details "corrigé" %}
-
-un problème est la négation de l'autre.
-
-{% enddetails %}
-
-Il existe de plus un algorithme polynomial permettant de savoir un nombre est premier, mais sa preuve dépasse le cadre de ce cours.
-
-{% lien %}
-[Article montrant que le problème PRIME est polynomial](https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf).
-{% endlien %}
-
-Cet algorithme ne permet cependant pas de déterminer les facteurs dont il est composé (problème FACTORS). On a cependant clairement COMPOSITE ≤ FACTOR.
-
-{% exercice %}
-Montrez que [l'algorithme du crible d'Ératosthène](https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne) n'est pas polynomial.
-{% endexercice %}
-{% details "corrigé" %}
-
-Il faut regarder tous les nombres jusqu'à $\sqrt{n}$ alors qu'il ne faut que $\log_2{n}$ bits pour stocker $n$. L'algorithme est donc de complexité exponentiel par rapport à la taille des entrées.
-
-{% enddetails %}
-
-On espère, mais on a aucune preuve, qu'il n'existe pas de réduction polynomiale FACTOR ≤ COMPOSITE car le problème FACTORS est à la base des algorithmes actuels de cryptographie.
 
 ### Produit et carré
 
@@ -151,7 +123,7 @@ La réciproque vient du produit remarquable $(x + y)^2 = x^2 + y^2 + 2xy$ et don
 
 {% endlien %}
 
-Reprenons le problème 3-SUM que nous avons déjà vu :
+Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous avons déjà vu :
 
 {% note "**Problème**" %}
 
@@ -236,3 +208,8 @@ On fait le contraire. On ajoute chaque point de :
 - $(x, 2)$ dans $T' = [x | \forall (x, 2)]$
 
 {% enddetails %}
+
+### Non trivial
+
+> TBD subsetsum et partition
+> TBD <https://www.youtube.com/watch?v=_mpVTPBepjY>
