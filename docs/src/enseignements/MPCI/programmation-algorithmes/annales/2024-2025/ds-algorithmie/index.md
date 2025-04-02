@@ -272,28 +272,4 @@ Comme on ne revient jamais en arrière, chaque case de la ligne est examinée 1 
 
 ### Partie IV
 
-#### Question 10
-
-On regarde toutes les possibilités une à une en remplissant la matrice :
-
-```python
-def calcul_matrice(M):
-    ligne = sol_p [i_ligne]
-    clés = cle_l[i_ligne]
-
-    for c in range (1, nc):
-        for b in range(1, len(clés)):
-            if M[c-1][b] >= 0 and ligne[c] != 1:
-                M[c][b] = M[c-1][b]
-            else:
-                s = clés[b]
-                if (c - s + 1 >= 0) and M[c -s -1][b -1] >= 0 and conflit (c - s + 1,s) > c:
-                    M [c][b] = c - s + 1
-                    M [c][b-1] = M[c-1][b-1]
-                else:
-                    M[c][b] = -1
-```
-
-#### Questions 11-14
-
-Personne n'a fait ces questions.
+> TBD à faire
