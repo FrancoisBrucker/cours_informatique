@@ -305,6 +305,16 @@ $$
 </div>
 </details>     
 </div>
+<h3>2-SUM</h3>
+<blockquote>
+<p>TBD à refaire</p>
+<p>TBD 2-SUM ≤ 2-SUM'
+TBD 2-SUM' ≤ 3-SUM
+TBD 3-SUM ≤ 3-SUM'
+TBD 3-SUM' ≤ SUBSET-SUM
+TBD SUBSET-SUM ≤ PARTITION</p>
+<p>TBD mettre les 2-SUM ≥ 2-SUM', 3-SUM ≥ 3-SUM' et géobase dans les problèmes classiques.</p>
+</blockquote>
 <h3>3-SUM</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -497,9 +507,10 @@ Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes hor
 </details>     
 </div>
 <h3>SUBSET-SUM</h3>
-<p>Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un sous-ensemble annulant la somme des indices.</p>
+<p>Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un ensemble d'indice $I$ tel que $\sum_{i \in I}T[i] = s$.</p>
 <blockquote>
-<p>TBD montrer que 3-SUM ≤ SUBSET-SUM (?)
+<p>TBD montrer que 3-SUM' ≤ SUBSET-SUM (on s'arrange pour ajouter K, K' et K'' tel que pK + p'K'+p''K'' ≠ K + K'+ K'' pour tous p, p' et p'' et très grans devant les valeurs de T. T' et T''. On cherche ensuite  s=K+K'+K'')
+TBd en déduire 3-SUM ≤ SUBSET-SUM
 TBD montrer que SUBSET-SUM ≤ <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition">PARTITION</a></p>
 </blockquote>
 <blockquote>
