@@ -207,6 +207,17 @@ La solution optimale d'un problème du sac à dos est inférieure à la solution
 La solution optimale du problème du sac à dos est une solution admissible au problème du sac à dos fractionnel, son optimum est donc nécessairement plus grand.
 {% enddetails %}
 
+## vérifieur efficace
+
+> TBD le problème est dans NP
+
+Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :
+
+1. de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un [bucket sort](https://fr.wikipedia.org/wiki/Tri_par_paquets))
+2. que la somme des prix est supérieure à $P$
+
+Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.
+
 ## Algorithme glouton
 
 Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :

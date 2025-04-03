@@ -38,13 +38,15 @@ Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P
 Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_2$ en $P_1$ on notera $P_1 \leq P_2$.
 {% endnote %}
 
-Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$ : que résoudre $B$ permet de résoudre $A$. De là, la complexité du problème $B$ ne peut être plus petite que celle du problème $A$. Par exemple :
+Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$. De là, la complexité du problème $B$ ne peut être plus petite que celle du problème $A$. Par exemple :
 
 {% exercice %}
-Montrez que le problèmes de recherche du minimum dans un tableau d'entiers relatifs et le problème de recherche du maximum dans un tableau d'entiers relatifs sont équivalent et que la réduction est linéaire.
+Montrez que le problème de recherche du minimum dans un tableau d'entiers  est plus simple que le problème de recherche du maximum dans un tableau d'entiers.
 {% endexercice %}
-{% details "corrigé", "open" %}
-Pour des entiers relatifs, il suffit de faire $T'[x] = -T[x]$.
+{% details "corrigé" %}
+
+Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = \max(T) - \max(T')$.
+
 {% enddetails %}
 
 Si l'on veut utiliser la réduction pour résoudre notre problème réduit, on cherche le couple d'algorithmes avec la complexité la plus faible, si possible linéaire (comme dans l'exercice précédent) et au mieux polynomiale :
@@ -53,7 +55,7 @@ Si l'on veut utiliser la réduction pour résoudre notre problème réduit, on c
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_2$ en $P_1$ est une réduction ou les deux algorithmes $A_1$ et $A_2$ sont de complexité polynomiale.
 {% endnote %}
 {% attention %}
-Les réductions polynomiale sont les seules utilisées en algorithmie, c'est pourquoi on considérera souvent que **_réduction_** et **_réduction polynomiale_** sont équivalent, une réduction **devant être** polynomiale.
+Les réductions polynomiales sont les seules utilisées en algorithmie, c'est pourquoi on considérera souvent que **_réduction_** et **_réduction polynomiale_** comme équivalent, une réduction **devant être** polynomiale.
 {% endattention %}
 
 Une réduction polynomiale nous permettra d'utiliser effectivement l'algorithme résolvant $P_2$ pour résoudre $P_1$.
@@ -64,18 +66,16 @@ Enfin :
 On dira que deux problèmes $P_1$ et $P_2$ sont **_équivalents_** s'il existe deux **réductions polynomiales** $P_1 \leq P_2$ et $P_2 \leq P_1$.
 {% endnote %}
 
-## Exemples et exercices
-
-### Min et max
+Par exemple :
 
 {% exercice %}
-Montrez que le problème de recherche du minimum dans un tableau d'entiers  est plus simple que le problème de recherche du maximum dans un tableau d'entiers.
+Montrez que le problèmes de recherche du minimum dans un tableau d'entiers relatifs est  le problème de recherche du maximum dans un tableau d'entiers relatifs sont équivalent et que la réduction est linéaire.
 {% endexercice %}
-{% details "corrigé" %}
-
-Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = \max(T) - \max(T')$.
-
+{% details "corrigé", "open" %}
+Pour des entiers relatifs, il suffit de faire $T'[x] = -T[x]$.
 {% enddetails %}
+
+## Exemples et exercices
 
 ### Tris
 
@@ -145,7 +145,7 @@ De nombreux problèmes lui sont équivalent comme par exemple le suivant :
 
 {% endnote %}
 
-Prouvons le :
+Prouvez le :
 
 {% exercice %}
 Montrer que 3-SUM ≤ 3-SUM'
@@ -209,7 +209,13 @@ On fait le contraire. On ajoute chaque point de :
 
 {% enddetails %}
 
-### Non trivial
+### SUBSET-SUM
 
-> TBD subsetsum et partition
-> TBD <https://www.youtube.com/watch?v=_mpVTPBepjY>
+Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un sous-ensemble annulant la somme des indices.
+
+> TBD montrer que 3-SUM ≤ SUBSET-SUM (?)
+> TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition)
+
+> TBD à montrer.
+>
+> TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>

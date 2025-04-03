@@ -500,6 +500,15 @@ On s'entraîne :
 
 {% endaller %}
 
+Pour aller plus loin, amélioration des dès et des cartes :
+
+{% aller %}
+
+- [Accesseur et dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur){.interne}
+- [protéger les attributs de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object){.interne}
+
+{% endaller %}
+
 ### Semaine 10
 
 > 31/03 au 04/04
@@ -510,15 +519,6 @@ On s'entraîne sur l'héritage :
 
 {% aller %}
 [Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
-{% endaller %}
-
-Pour aller plus loin, amélioration des dès et des cartes :
-
-{% aller %}
-
-- [Accesseur et dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur){.interne}
-- [protéger les attributs de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object){.interne}
-
 {% endaller %}
 
 #### Vendredi : Méthodes de résolution de problèmes

@@ -177,12 +177,12 @@ Enfin, très utilisée dans les langages fonctionnels et le cas o`u l'on doit su
 [Les listes chaînées](./structure-liste-chaînée){.interne}
 {% endaller %}
 
-#### Table de hashage et structures associées
+#### Fonctions de hash et structures associées
 
 Une autre structure fondamentale en algorithmie :
 
 {% aller %}
-[Tables de hashage et dictionnaires](./structure-dictionnaire){.interne}
+[Fonctions de hash et dictionnaires](./structure-dictionnaire){.interne}
 {% endaller %}
 
 #### Comparaisons des structures de conteneurs
@@ -274,7 +274,11 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
-#### Problème de l'enveloppe convexe
+## Intermède
+
+Avant de finir cette première partie du cours, accordons nous un intermède.
+
+### Problème de l'enveloppe convexe
 
 Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
 
@@ -282,13 +286,9 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
-## Intermède
-
-Avant de finir cette première partie du cours, accordons nous un intermède.
-
 ### Recherche universelle
 
-Commençons par regarder une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
+Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
 
 L'Algorithme pour tout résoudre :
 
@@ -300,12 +300,14 @@ L'Algorithme pour tout résoudre :
 
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
 
+> TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
+> TBD 3-SUM et Réductions géobase. A supprimer de partie réduction. (en incluant le 2-SUM de tout à l'heure).
+> TBD arithmétique binaire et Karatsuba,
+> TBD SUBSET-SUM par programmation dynamique <https://en.wikipedia.org/wiki/Subset_sum_problem#Pseudo-polynomial_time_dynamic_programming_solutions>
+
 > TBD on reprend tous les exos jusque là
 > TBD on ajoute les énoncés des exos durs.
 > TBD faire de l'ordre dans les autres exos.
-> TBD lien de : médiane en temps linéaire. alignement de séquence
-> TBD 3-SUM et Réductions (en incluant le 2-SUM de tout à l'heure).
-> TBD  ajouter Karatsuba,
 
 ## <span id="partie-3"></span>Partie III
 

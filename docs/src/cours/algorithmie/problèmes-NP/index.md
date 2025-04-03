@@ -49,13 +49,12 @@ Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur coura
 
 ### Vérification efficace
 
-Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :
+Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 2 pour se fixer les idées :
 
-- [somme de sous-ensemble](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles)
-- [sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos)
-- [isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes)
+- [somme de sous-ensemble](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles) qu'on a déjà vu.
+- [isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes) (exemple Petersen : <https://mathworld.wolfram.com/PetersenGraph.html>) qu'on verra dans le cours de graphe.
 
-Si l'on ne connaît pas d'algorithme polynomiaux pour résoudre les 3 problèmes ci-dessus, on peut en revanche vérifier efficacement (_ie._ polynomialement) si une solution en est une ou pas.
+Si l'on ne connaît pas d'algorithme polynomiaux pour résoudre les 2 problèmes ci-dessus, on peut en revanche vérifier efficacement (_ie._ polynomialement) si une solution en est une ou pas.
 
 <div id="vérifieur"></div>
 {% note "**Définition**" %}
@@ -80,7 +79,7 @@ Un **_vérifieur efficace d'un problème décidable_** $p$ ayant pour entrée $e
 
 Remarquez que l'on ne demande pas que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.
 
-Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties pus longues.
+Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties plus longues.
 
 Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (_ie._ polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !
 
@@ -119,32 +118,6 @@ algorithme verif(T: [entier], sol: [entier]) -> booléen:
 1. on vérifie que sol est trié
 2. on vérifie que les éléments de sol sont ceux de T :
    1. on peut considérer deux tableaux de booléen. et on parcours chaque élément de sol jusqu'à trouver un élément non vu de T
-
-#### Sac à dos
-
-Ci-après une version du célèbre [problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos) :
-
-{% note "**Problème**" %}
-Données :
-
-- On possède $n$ produits différents, chacun décrit par :
-  - sa masse en kilo : $k_i$
-  - son prix : $p_i$
-- un prix $P$ à dépasser.
-- On dispose d'un sac pouvant contenir $K$ kilos
-
-On cherche les produits à mettre dans le sac de façon à ce que :
-
-- les produits choisis tiennent dans le sac,
-- le prix du sac est supérieur à $P$
-{% endnote %}
-
-Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :
-
-1. de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un [bucket sort](https://fr.wikipedia.org/wiki/Tri_par_paquets))
-2. que la somme des prix est supérieure à $P$
-
-Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.
 
 #### SUBSET SUM
 
@@ -234,6 +207,10 @@ Nous démontrerons ceci rigoureusement plus tard. Pour l'instant contentons nous
 ![décidable](./NP-NP-2.png)
 
 Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.
+
+{% note %}
+Vous aurez remarquez que l'on a précisé qu'il existe des problèmes décidables qui ne sont pas dans NP. On le démontrera bien plus tard en montrant qu'il existe des problèmes où si l'on cherche à répondre OUI, le problème est dans NP et si l'on cherche à répondre NON au même problème, il n'y est pas.
+{% endnote %}
 
 ## Autres classes
 
