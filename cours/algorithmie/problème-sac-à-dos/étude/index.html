@@ -364,6 +364,16 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </div>
 </details>     
 </div>
+<h2>vérifieur efficace</h2>
+<blockquote>
+<p>TBD le problème est dans NP</p>
+</blockquote>
+<p>Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :</p>
+<ol>
+<li>de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un <a href="https://fr.wikipedia.org/wiki/Tri_par_paquets">bucket sort</a>)</li>
+<li>que la somme des prix est supérieure à $P$</li>
+</ol>
+<p>Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.</p>
 <h2>Algorithme glouton</h2>
 <p>Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>

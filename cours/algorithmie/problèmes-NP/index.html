@@ -133,13 +133,12 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div></div>
 
 <h3>Vérification efficace</h3>
-<p>Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :</p>
+<p>Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 2 pour se fixer les idées :</p>
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles">somme de sous-ensemble</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">sac à dos</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes">isomorphisme de graphes</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles">somme de sous-ensemble</a> qu'on a déjà vu.</li>
+<li><a href="https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes">isomorphisme de graphes</a> (exemple Petersen : <a href="https://mathworld.wolfram.com/PetersenGraph.html">https://mathworld.wolfram.com/PetersenGraph.html</a>) qu'on verra dans le cours de graphe.</li>
 </ul>
-<p>Si l'on ne connaît pas d'algorithme polynomiaux pour résoudre les 3 problèmes ci-dessus, on peut en revanche vérifier efficacement (<em>ie.</em> polynomialement) si une solution en est une ou pas.</p>
+<p>Si l'on ne connaît pas d'algorithme polynomiaux pour résoudre les 2 problèmes ci-dessus, on peut en revanche vérifier efficacement (<em>ie.</em> polynomialement) si une solution en est une ou pas.</p>
 <div id="vérifieur"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -170,7 +169,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div></div>
 
 <p>Remarquez que l'on ne demande pas que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.</p>
-<p>Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties pus longues.</p>
+<p>Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties plus longues.</p>
 <p>Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (<em>ie.</em> polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
 <h3>Exemples de vérifieurs efficaces</h3>
 <h4>Max/min d'un tableau</h4>
@@ -200,39 +199,6 @@ i<span class="token punctuation">,</span> j<span class="token punctuation">,</sp
 </ol>
 </li>
 </ol>
-<h4>Sac à dos</h4>
-<p>Ci-après une version du célèbre <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">problème du sac à dos</a> :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Données :</p>
-<ul>
-<li>On possède $n$ produits différents, chacun décrit par :
-<ul>
-<li>sa masse en kilo : $k_i$</li>
-<li>son prix : $p_i$</li>
-</ul>
-</li>
-<li>un prix $P$ à dépasser.</li>
-<li>On dispose d'un sac pouvant contenir $K$ kilos</li>
-</ul>
-<p>On cherche les produits à mettre dans le sac de façon à ce que :</p>
-<ul>
-<li>les produits choisis tiennent dans le sac,</li>
-<li>le prix du sac est supérieur à $P$</li>
-</ul>
-</div></div>
-
-<p>Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :</p>
-<ol>
-<li>de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un <a href="https://fr.wikipedia.org/wiki/Tri_par_paquets">bucket sort</a>)</li>
-<li>que la somme des prix est supérieure à $P$</li>
-</ol>
-<p>Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.</p>
 <h4>SUBSET SUM</h4>
 <blockquote>
 <p>TBD def : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles">https://fr.wikipedia.org/wiki/Problème_de_la_somme_de_sous-ensembles</a></p>
@@ -338,6 +304,14 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 <p>Nous démontrerons ceci rigoureusement plus tard. Pour l'instant contentons nous d'admettre qu'ils existent et que <strong>le problème du sac à dos est NP-complet</strong>.</p>
 <p><img src="NP-NP-2.png" alt="décidable"></p>
 <p>Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous aurez remarquez que l'on a précisé qu'il existe des problèmes décidables qui ne sont pas dans NP. On le démontrera bien plus tard en montrant qu'il existe des problèmes où si l'on cherche à répondre OUI, le problème est dans NP et si l'on cherche à répondre NON au même problème, il n'y est pas.</p>
+</div></div>
+
 <h2>Autres classes</h2>
 <p>Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souvent uniquement à ceux de $P$) mais il en existe une foultitudes d'autres. On peut par exemple citer :</p>
 <ul>
