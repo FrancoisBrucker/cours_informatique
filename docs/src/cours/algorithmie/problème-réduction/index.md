@@ -114,6 +114,18 @@ La réciproque vient du produit remarquable $(x + y)^2 = x^2 + y^2 + 2xy$ et don
 
 {% enddetails %}
 
+### 2-SUM
+
+> TBD à refaire
+>
+> TBD 2-SUM ≤ 2-SUM'
+> TBD 2-SUM' ≤ 3-SUM
+> TBD 3-SUM ≤ 3-SUM'
+> TBD 3-SUM' ≤ SUBSET-SUM
+> TBD SUBSET-SUM ≤ PARTITION
+>
+> TBD mettre les 2-SUM ≥ 2-SUM', 3-SUM ≥ 3-SUM' et géobase dans les problèmes classiques.
+
 ### 3-SUM
 
 {% lien %}
@@ -211,9 +223,10 @@ On fait le contraire. On ajoute chaque point de :
 
 ### SUBSET-SUM
 
-Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un sous-ensemble annulant la somme des indices.
+Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un ensemble d'indice $I$ tel que $\sum_{i \in I}T[i] = s$.
 
-> TBD montrer que 3-SUM ≤ SUBSET-SUM (?)
+> TBD montrer que 3-SUM' ≤ SUBSET-SUM (on s'arrange pour ajouter K, K' et K'' tel que pK + p'K'+p''K'' ≠ K + K'+ K'' pour tous p, p' et p'' et très grans devant les valeurs de T. T' et T''. On cherche ensuite  s=K+K'+K'')
+> TBd en déduire 3-SUM ≤ SUBSET-SUM
 > TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition)
 
 > TBD à montrer.
