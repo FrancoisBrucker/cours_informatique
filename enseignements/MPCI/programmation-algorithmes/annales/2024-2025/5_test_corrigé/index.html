@@ -80,9 +80,209 @@
 
   
 
-  <blockquote>
-<p>TBD</p>
-</blockquote>
+  <h2>Erreurs fréquemment rencontrées</h2>
+<h3>Question 1</h3>
+<p>Attention à bien indiquer :</p>
+<ul>
+<li>les attributs et leur type</li>
+<li>le constructeur</li>
+<li>les arguments du constructeur et des méthodes</li>
+<li>les types de sortie des méthodes (souvent oubliés)</li>
+<li>il est maladroit d'appeler l'argument du constructeur de vaut mieux l'appeler <code class="language-">coefficients</code> par exemple, ou <code class="language-">tuple_coefficients</code>.</li>
+</ul>
+<h3>Question 4</h3>
+<p>Ne pas oublier de tester le constructeur. Pour tester le type de l'instance <code class="language-">p</code> il est pratique d'appeler <code class="language-">assert isinstance(p, Polynome)</code> (certains ne l'ont pas vu en TP, à voir donc).</p>
+<h3>Question 5</h3>
+<p>Idéalement, il vaut mieux donner en arguments du constructeurs les coeﬃcients du numérateur et du dénominateur, et construire les polynômes associés dans le constructeur, car c'est une composition.</p>
+<h3>Question 6</h3>
+<p>Il vaut mieux partir d'un petit brouillon mathématique.</p>
+<p>La dérivée d'un polynôme $P =\sum_{i=0}^{d}a_iX^i$ est $Q =\sum_{i=0}^{d-1}b_{i}X^i$ avec $b_i = (i+1)\cdot a_{i+1}$.</p>
+<p>La somme de deux polynômes s'obtient en faisant la somme des coeﬃcients de même degré. Il faut gérer le cas où les deux polynômes sont de degrés diﬀérents.</p>
+<p>Le produit de deux polynômes $P =\sum_{i=0}^{n}a_iX^i$ et $Q =\sum_{j=0}^{m}b_{j}X^i$ est un peu plus compliqué.  Le degré du résultat est la somme $m + n$ des degrés de $P$ et $Q$.</p>
+<p>En notant $R =\sum_{k=0}^{n+m}c_kX^i$,  le résultat du produit $P\cdot Q$, le $k$-ième coeﬃcient est $c_k = \sum_{i=d}^{f}$ avec :</p>
+<ul>
+<li>$d = \max(0, k-m)$</li>
+<li>$f = \min(k, n)$</li>
+</ul>
+<p>Il faut sommer tous les produits $a_ib_j$ tels que $i+j = k$, donc $j=k-i$. Les indices valides sont tels que $0 \leq i \leq n$ et $0 \leq k− i \leq m$. Ce dernier encadrement se réécrit $k− m \leq i \leq k$. Donc, en réunissant les deux encadrement, on a $\max(0, k− m) \leq i \leq \min(k, n)$, d'où les bornes dans la somme qui définit $c_k$. Cette
+méthode était vraiment diﬃcile à faire dans le temps imparti.</p>
+<h2>Corrigé</h2>
+<h3>Question 1</h3>
+<p><img src="uml.png" alt="UML"></p>
+<p>La classe <code class="language-">FractionRationnelle</code> est une composition car se compose de deux instances de <code class="language-">Polynome</code>.</p>
+<h3>Question 2</h3>
+<p>Les coeﬃcients d'un polynôme sont fixés une fois pour toutes: il n'y a pas de changement possible dans leur valeur ni dans leur nombre (le degré du polynôme). Il n'y a donc aucune raison de prendre une liste plutôt qu'un tuple, et il vaut mieux faire au plus simple. On peut aussi voir un polynôme comme une composition de
+coeﬃcients, ce qui justifie le choix du tuple.</p>
+<h3>Question 3-6</h3>
+<p>Fichier <code class="fichier">polynome,py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Polynome</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> coefs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>coefs <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>coefs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> calcule_degré<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>coefs<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">def</span> évalue<span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        px <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>coefs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            px <span class="token operator">+=</span> self<span class="token punctuation">.</span>coefs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> x <span class="token operator">**</span> i
+        <span class="token keyword">return</span> px
+
+    <span class="token keyword">def</span> <span class="token function">derive</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        coefs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            coefs<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>coef<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> Polynome<span class="token punctuation">(</span>coefs<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>évalue<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__add__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        deg_self <span class="token operator">=</span> self<span class="token punctuation">.</span>calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        deg_other <span class="token operator">=</span> other<span class="token punctuation">.</span>calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> deg_self <span class="token operator">&lt;</span> deg_other<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> other <span class="token operator">+</span> self
+        somme_coefs <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>coefs<span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>coefs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            somme_coefs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> other<span class="token punctuation">.</span>coefs<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token keyword">return</span> Polynome<span class="token punctuation">(</span>somme_coefs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        deg1 <span class="token operator">=</span> self<span class="token punctuation">.</span>calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        deg2 <span class="token operator">=</span> other<span class="token punctuation">.</span>calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        degré <span class="token operator">=</span> deg1 <span class="token operator">+</span> deg2
+        coefs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>degré<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            c <span class="token operator">=</span> <span class="token number">0</span>
+            ind_start <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> k<span class="token operator">-</span>deg2<span class="token punctuation">)</span>
+            ind_end <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>deg1<span class="token punctuation">,</span> k<span class="token punctuation">)</span>
+            <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>ind_start<span class="token punctuation">,</span> ind_end<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                c <span class="token operator">+=</span> self<span class="token punctuation">.</span>coefs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> other<span class="token punctuation">.</span>coefs<span class="token punctuation">[</span>k<span class="token operator">-</span>i<span class="token punctuation">]</span>
+            coefs<span class="token punctuation">.</span>append<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span>coefs<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        s <span class="token operator">=</span> <span class="token string">''</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>coefs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+            s <span class="token operator">+=</span> <span class="token string-interpolation"><span class="token string">f'+ </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>coefs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string"> X ** </span><span class="token interpolation"><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token string"> '</span></span>
+        <span class="token keyword">return</span> s<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">str2</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        s <span class="token operator">=</span> <span class="token string">''</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>coefs<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> self<span class="token punctuation">.</span>coefs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                <span class="token keyword">continue</span>
+            <span class="token keyword">if</span> i <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                <span class="token keyword">if</span> self<span class="token punctuation">.</span>coefs<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                    s <span class="token operator">+=</span> <span class="token string">' + '</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    s <span class="token operator">+=</span> <span class="token string">' '</span>
+            s <span class="token operator">+=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>coefs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                s <span class="token operator">+=</span> <span class="token string">' X'</span>
+            <span class="token keyword">elif</span> i <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
+                s <span class="token operator">+=</span> <span class="token string-interpolation"><span class="token string">f' X ** </span><span class="token interpolation"><span class="token punctuation">{</span>i<span class="token punctuation">}</span></span><span class="token string">'</span></span>
+        <span class="token keyword">return</span> s
+
+
+<span class="token keyword">class</span> <span class="token class-name">FractionRationnelle</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> coefs_numérateur<span class="token punctuation">,</span> coefs_dénominateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>numérateur <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs_numérateur<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>dénominateur <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs_dénominateur<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> évalue<span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>numérateur<span class="token punctuation">.</span>évalue<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">/</span> self<span class="token punctuation">.</span>dénominateur<span class="token punctuation">.</span>évalue<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">__call__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>numérateur<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">/</span> self<span class="token punctuation">.</span>dénominateur<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> dérive<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        u <span class="token operator">=</span> self<span class="token punctuation">.</span>numérateur
+        v <span class="token operator">=</span> self<span class="token punctuation">.</span>dénominateur
+        <span class="token keyword">return</span> FractionRationnelle<span class="token punctuation">(</span>u<span class="token punctuation">.</span>derive<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> v <span class="token operator">-</span> u <span class="token operator">*</span> v<span class="token punctuation">.</span>derive<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> u <span class="token operator">*</span> u<span class="token punctuation">)</span>
+</code></pre>
+<p>Fichier <code class="fichier">test_polynome,py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> polynome <span class="token keyword">import</span> Polynome
+
+
+<span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> Polynome<span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>coefs<span class="token punctuation">,</span> <span class="token builtin">tuple</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">len</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>coefs<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>coefs <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Avec une liste</span>
+    p <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> Polynome<span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>coefs<span class="token punctuation">,</span> <span class="token builtin">tuple</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">len</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>coefs<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>coefs <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> test_calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">3</span>
+
+    p <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>calcule_degré<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+
+
+<span class="token keyword">def</span> test_évalue<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>évalue<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>évalue<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">3.5</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>évalue<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">24</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>évalue<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1.5</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_call</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">3.5</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">24</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1.5</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"+ 1 X ** 0 + -0.5 X ** 1 + 0 X ** 2 + 3 X ** 3"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_str2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>str2<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"3 X ** 3 -0.5 X + 1"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_sum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p1 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p2 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p <span class="token operator">=</span> p1 <span class="token operator">+</span> p2
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>coefs <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+    p1 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p2 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span>coefs<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p <span class="token operator">=</span> p1 <span class="token operator">+</span> p2
+    <span class="token keyword">assert</span> p<span class="token punctuation">.</span>coefs <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_mul</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    p1 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p2 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p12 <span class="token operator">=</span> p1 <span class="token operator">*</span> p2
+    <span class="token keyword">assert</span> p12<span class="token punctuation">.</span>coefs <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
+
+    p1 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p2 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p12 <span class="token operator">=</span> p1 <span class="token operator">*</span> p2
+    <span class="token keyword">assert</span> p12<span class="token punctuation">.</span>coefs <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    p1 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p2 <span class="token operator">=</span> Polynome<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    p12 <span class="token operator">=</span> p1 <span class="token operator">*</span> p2
+    <span class="token keyword">assert</span> p12<span class="token punctuation">.</span>coefs <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">15</span><span class="token punctuation">)</span>
+</code></pre>
 
 
 </article>
