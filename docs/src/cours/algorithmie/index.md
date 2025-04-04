@@ -296,7 +296,8 @@ L'Algorithme pour tout résoudre :
 [L'algorithme de la recherche universelle](./recherche-universelle){.interne}
 {% endaller %}
 
-### Problèmes et exercices
+
+<!-- ### Problèmes et exercices
 
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
 
@@ -308,6 +309,126 @@ On place ici quelques problèmes requérant une bonne compréhension algorithmiq
 > TBD on reprend tous les exos jusque là
 > TBD on ajoute les énoncés des exos durs.
 > TBD faire de l'ordre dans les autres exos.
+
+
+
+
+> TBD à refaire
+>
+> TBD 2-SUM ≤ 2-SUM'
+> TBD 2-SUM' ≤ 3-SUM
+> TBD 3-SUM ≤ 3-SUM'
+> TBD 3-SUM' ≤ SUBSET-SUM
+> TBD SUBSET-SUM ≤ PARTITION
+>
+> TBD mettre les 2-SUM ≥ 2-SUM', 3-SUM ≥ 3-SUM' et géobase dans les problèmes classiques.
+
+### 3-SUM
+
+{% lien %}
+
+- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>
+- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
+
+{% endlien %}
+
+Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous avons déjà vu :
+
+{% note "**Problème**" %}
+
+- **nom** : 3-SUM
+- **données** :
+  - T : un tableau de $n$ entiers relatifs
+- **question** : existe-t-il 3 indices (pouvant être égaux) tels que $T[i] + T[j] + T[k] = 0$
+
+{% endnote %}
+
+De nombreux problèmes lui sont équivalent comme par exemple le suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : 3-SUM'
+- **données** :
+  - $T$, $T'$ et $T''$ : trois tableaux d'entiers relatifs
+- **question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
+
+{% endnote %}
+
+Prouvez le :
+
+{% exercice %}
+Montrer que 3-SUM ≤ 3-SUM'
+{% endexercice %}
+{% details "corrigé" %}
+
+On prend $T = T'$ et $T''[x] = -T[x]$
+
+{% enddetails %}
+{% exercice %}
+Montrer que 3-SUM' ≤ 3-SUM
+{% endexercice %}
+{% details "corrigé" %}
+
+On prend $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $[T[i] + A \\;\vert\\; i] + [T'[i] + 3A \\;\vert\\; i] + [-T''[i] - 4A \\;\vert\\; i]$.
+
+Soient $i, j, k$ tels que T[i] + T[j] + T[k] = 0$.
+
+Pour que la somme fasse 0 il faut que les $A$ ajoutés s'annulent : donc
+obligatoirement 1 élément de chaque tableau initial $T$, $T'$ et $T''$.
+{% enddetails %}
+
+3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : Geobase
+- **données** :
+  Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes horizontales avec $y = 0$, $y = 1$ et $y = 2$
+- **question** : Existe-t-il une droite non horizontale passant par 3 points.
+{% endnote %}
+
+Montrons qu'il est équivalent à 3-SUM :
+
+{% exercice %}
+Montrer que 3-SUM' ≤ GEOBASE
+{% endexercice %}
+{% details "corrigé" %}
+
+Deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$. Comme $\vec{v}^{\perp} = (-y', x')$, $\vec{u}$ et $\vec{v}$ sont colinéaires si $xy' - yx' = 0$.
+
+Il suffit alors de construire les points :
+
+- $(T[i], 0)$
+- $(T''[i]/2, 1)$
+- $(T'[i], 2)$
+
+si trois points sont colinéaires alors il existe i, j et k tels que $T[i] + T'[j] = T''[k]$
+{% enddetails %}
+
+{% exercice %}
+Montrer que GEOBASE ≤ 3-SUM'
+{% endexercice %}
+{% details "corrigé" %}
+
+On fait le contraire. On ajoute chaque point de :
+
+- $(x, 0)$ dans $T = [x | \forall (x, 0)]$
+- $(x, 1)$ dans $T'' = [2x | \forall (x, 1)]$
+- $(x, 2)$ dans $T' = [x | \forall (x, 2)]$
+
+{% enddetails %}
+
+### SUBSET-SUM
+
+Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un ensemble d'indice $I$ tel que $\sum_{i \in I}T[i] = s$.
+
+> TBD montrer que 3-SUM' ≤ SUBSET-SUM (on s'arrange pour ajouter K, K' et K'' tel que pK + p'K'+p''K'' ≠ K + K'+ K'' pour tous p, p' et p'' et très grans devant les valeurs de T. T' et T''. On cherche ensuite  s=K+K'+K'')
+> TBd en déduire 3-SUM ≤ SUBSET-SUM
+> TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition)
+
+> TBD à montrer.
+>
+> TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
 
 ## <span id="partie-3"></span>Partie III
 

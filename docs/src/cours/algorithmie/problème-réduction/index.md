@@ -114,26 +114,46 @@ La réciproque vient du produit remarquable $(x + y)^2 = x^2 + y^2 + 2xy$ et don
 
 {% enddetails %}
 
-### 2-SUM
+### {2, 3}-SUM
 
-> TBD à refaire
->
-> TBD 2-SUM ≤ 2-SUM'
-> TBD 2-SUM' ≤ 3-SUM
-> TBD 3-SUM ≤ 3-SUM'
-> TBD 3-SUM' ≤ SUBSET-SUM
-> TBD SUBSET-SUM ≤ PARTITION
->
-> TBD mettre les 2-SUM ≥ 2-SUM', 3-SUM ≥ 3-SUM' et géobase dans les problèmes classiques.
+Nous allons voir ici une chaîne de réductions, qui nous serons utiles plus tard.
 
-### 3-SUM
+#### 2-SUM ≤ ÉGAL
 
-{% lien %}
+Commençons par [le problème 2-SUM](../projet-classiques/#2-sum){.interne} que nous avons déjà vu :
 
-- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>
-- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
+{% note "**Problème**" %}
 
-{% endlien %}
+- **nom** : 2-SUM
+- **données** :
+  - T : un tableau de $n$ entiers relatifs
+- **question** : existe-t-il 2 indices (pouvant être égaux) tels que $T[i] + T[j] = 0$
+
+{% endnote %}
+
+Regardons un problème qui lui ressemble :
+
+{% note "**Problème**" %}
+
+- **nom** : ÉGAL
+- **données** :
+  - $T$, $T'$ : deux tableaux d'entiers relatifs
+- **question** : existe-t-il 2 indices tels que $T[i] = T'[j]$
+
+{% endnote %}
+
+Montrez que :
+
+{% exercice %}
+Montrer que 2-SUM ≤ ÉGAL
+{% endexercice %}
+{% details "corrigé" %}
+
+On prend $T'$ le tableau tel que $T'[k] = -T[k]$ pour tout indice $k$
+
+{% enddetails %}
+
+#### 3-SUM ≤ 3-SUM'
 
 Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous avons déjà vu :
 
@@ -146,7 +166,7 @@ Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous a
 
 {% endnote %}
 
-De nombreux problèmes lui sont équivalent comme par exemple le suivant :
+Continuons sur notre lancée en considérant le problème suivant :
 
 {% note "**Problème**" %}
 
@@ -157,6 +177,7 @@ De nombreux problèmes lui sont équivalent comme par exemple le suivant :
 
 {% endnote %}
 
+Qui, selon toute logique doit être plus général que 3-SUM. Montrez le :
 Prouvez le :
 
 {% exercice %}
@@ -165,6 +186,51 @@ Montrer que 3-SUM ≤ 3-SUM'
 {% details "corrigé" %}
 
 On prend $T = T'$ et $T''[x] = -T[x]$
+
+{% enddetails %}
+
+#### ÉGAL ≤ 3-SUM
+
+Montrons que 3-SUM est plus général que ÉGAL, cette réduction est un peu plus dure que les précédentes :
+
+{% exercice %}
+Montrer que ÉGAL ≤ 3-SUM
+{% endexercice %}
+{% details "corrigé" %}
+
+Soit $T$ et $T'$ une instance du problème ÉGAL telle que $T.\mbox{\small longueur} = n$ et $T'.\mbox{\small longueur} = n'$.
+
+L'idée est de créer un grand tableau $T''$ de taille $n + n' + 1$
+De telle sorte que s'il existe $i$, $j$ et $k$ avec $T''[i] + T''[j] + T''[k] = 0$ alors :
+
+- $0 \leq i < n$ et est lié au tableau $T$
+- $n \leq j < n + n'$ et est lié au tableau $T'$
+- $k = n + n'$
+
+Par exemple on prend $T''$ tel que :
+
+- $T''[i] = T[i] + K$ pour tout $0 \leq i < n$
+- $T''[i + n] = -T'[i] + K'$ pour tout $0 \leq i < n'$
+- $T''[n+n'] = -K-K'$
+
+En prenant $K = \max(T) + 1$ et $K'= K + 2 \cdot (\max(T) + 2\cdot \max(T')) + 1$ on a bien que si  $T''[i] + T''[j] + T''[k] = 0$ :
+
+1. $k = n+n'$ sinon on ne peut avoir de somme égale à 0
+2. avec $k = n+n'$ comme $2K + 2\cdot\max(T) < K + K'$ on ne peut avoir $0 \leq i, j < n$
+3. avec $k = n+n'$ comme $2K' - 2\cdot\max(T') > K + K'$ on ne peut avoir $n \leq i, j < n + n'$
+
+{% enddetails %}
+
+#### Problèmes équivalents ?
+
+S'il semble impossible de montrer que 3-SUM ≤ 2-SUM, on peut en revanche montrer que les problèmes _prim_ sont  équivalents à leur pendant non prim. Prouvez le :
+
+{% exercice %}
+Montrer que ÉGAL ≤ 2-SUM
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
 
 {% enddetails %}
 {% exercice %}
@@ -179,56 +245,3 @@ Soient $i, j, k$ tels que T[i] + T[j] + T[k] = 0$.
 Pour que la somme fasse 0 il faut que les $A$ ajoutés s'annulent : donc
 obligatoirement 1 élément de chaque tableau initial $T$, $T'$ et $T''$.
 {% enddetails %}
-
-3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
-
-{% note "**Problème**" %}
-
-- **nom** : Geobase
-- **données** :
-  Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes horizontales avec $y = 0$, $y = 1$ et $y = 2$
-- **question** : Existe-t-il une droite non horizontale passant par 3 points.
-{% endnote %}
-
-Montrons qu'il est équivalent à 3-SUM :
-
-{% exercice %}
-Montrer que 3-SUM' ≤ GEOBASE
-{% endexercice %}
-{% details "corrigé" %}
-
-Deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$. Comme $\vec{v}^{\perp} = (-y', x')$, $\vec{u}$ et $\vec{v}$ sont colinéaires si $xy' - yx' = 0$.
-
-Il suffit alors de construire les points :
-
-- $(T[i], 0)$
-- $(T''[i]/2, 1)$
-- $(T'[i], 2)$
-
-si trois points sont colinéaires alors il existe i, j et k tels que $T[i] + T'[j] = T''[k]$
-{% enddetails %}
-
-{% exercice %}
-Montrer que GEOBASE ≤ 3-SUM'
-{% endexercice %}
-{% details "corrigé" %}
-
-On fait le contraire. On ajoute chaque point de :
-
-- $(x, 0)$ dans $T = [x | \forall (x, 0)]$
-- $(x, 1)$ dans $T'' = [2x | \forall (x, 1)]$
-- $(x, 2)$ dans $T' = [x | \forall (x, 2)]$
-
-{% enddetails %}
-
-### SUBSET-SUM
-
-Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un ensemble d'indice $I$ tel que $\sum_{i \in I}T[i] = s$.
-
-> TBD montrer que 3-SUM' ≤ SUBSET-SUM (on s'arrange pour ajouter K, K' et K'' tel que pK + p'K'+p''K'' ≠ K + K'+ K'' pour tous p, p' et p'' et très grans devant les valeurs de T. T' et T''. On cherche ensuite  s=K+K'+K'')
-> TBd en déduire 3-SUM ≤ SUBSET-SUM
-> TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition)
-
-> TBD à montrer.
->
-> TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
