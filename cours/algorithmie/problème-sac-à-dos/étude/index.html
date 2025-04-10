@@ -97,6 +97,7 @@
   
 
   <p>Le problème du sac à dos est un problème fondamental en algorithmie, nombre de problèmes courant pouvant se modéliser sous cette forme.</p>
+<p>Nous avons déjà rencontré le problème du sac à dos de quantité nutritive supérieure à un nombre donné, ici, nous allons étudier une variante de ce problème qui cherche un sac à dos de prix maximal.</p>
 <h2>Sac à dos fractionnel</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -114,15 +115,25 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On possède $n$ poudres différentes (ou liquide, ou tout autre produit pouvant être fractionné), chaque poudre $i$ étant décrite par :</p>
 <ul>
-<li>sa quantité disponible en kilo : $k_i$</li>
-<li>son prix total : $p_i$</li>
+<li><strong>nom</strong> : sac à dos fractionnel</li>
+<li><strong>données</strong> :
+<ul>
+<li>$n$ poudres différentes, décrites par :
+<ul>
+<li>leurs masses en kilo : $k_i$</li>
+<li>leurs prix : $p_i$</li>
 </ul>
-<p>On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :</p>
+</li>
+<li>un sac à dos pouvant contenir $K$ kilos de poudre</li>
+</ul>
+</li>
+<li><strong>question</strong> : Donnez une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :
 <ul>
 <li>on peut mettre les poudres dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
-<li>le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum</li>
+<li>le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit maximum</li>
+</ul>
+</li>
 </ul>
 </div></div>
 
@@ -312,19 +323,29 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On possède $n$ produits différents, décris par :</p>
 <ul>
-<li>sa masse en kilo : $k_i$</li>
-<li>son prix : $p_i$</li>
+<li><strong>nom</strong> : sac à dos optimal</li>
+<li><strong>données</strong> :
+<ul>
+<li>$n$ produits différentes, décris par :
+<ul>
+<li>leurs masses en kilo : $k_i$</li>
+<li>leurs prix : $p_i$</li>
 </ul>
-<p>On dispose d'un sac pouvant contenir $K$ kilos et on cherche les produits à mettre dans le sac, on note $f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon, de façon à ce que :</p>
+</li>
+<li>un sac à dos pouvant contenir $K$ kilos</li>
+</ul>
+</li>
+<li><strong>question</strong> : Donnez une liste de produits à mettre dans le sac ($f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon)  telle que :
 <ul>
-<li>les produits choisis tiennent dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
-<li>le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum</li>
+<li>on peut mettre les produits choisis dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
+<li>le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit maximum</li>
+</ul>
+</li>
 </ul>
 </div></div>
 
-<p>Ce problème se décline de plein de façons pratique :</p>
+<p>Ce problème se décline de plein de façons pratiques :</p>
 <ul>
 <li>en remplaçant le prix par la quantité nutritive et maximiser un <em>road trip</em></li>
 <li>en remplaçant la masse par le volume on peut remplir un camion de déménagement au maximum théorique</li>
@@ -364,16 +385,20 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </div>
 </details>     
 </div>
-<h2>vérifieur efficace</h2>
-<blockquote>
-<p>TBD le problème est dans NP</p>
-</blockquote>
-<p>Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :</p>
-<ol>
-<li>de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un <a href="https://fr.wikipedia.org/wiki/Tri_par_paquets">bucket sort</a>)</li>
-<li>que la somme des prix est supérieure à $P$</li>
-</ol>
-<p>Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.</p>
+<h2>Vérifieur efficace</h2>
+<p>Notez que le problème du sac à dos optimal est un problème d'optimisation : on cherche le sac à dos de prix <strong>maximum</strong>. En tant que tel, il est difficile de prouver qu'il est dans NP car comment vérifier si on a bien une solution maximale ?</p>
+<p>On peut cependant utiliser <a href="../../probl%C3%A8mes-NP/#sac-%C3%A0-dos" class="interne">le problème du sac à dos</a> qui est dans NP pour trouver l'optimum en faisant de la dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P ou double le prix et sinon on diminue le prix par deux. On aura besoin de log itération pour trouver le maximum.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>À retenir</p>
+</div><div class="pl-8 mr-8">
+<p>Les problèmes d'optimisation ne sont pas dans NP, mais leur version existentielle le sont.</p>
+<p>On trouver alors l'optimum par dichotomie.</p>
+</div></div>
+
 <h2>Algorithme glouton</h2>
 <p>Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
