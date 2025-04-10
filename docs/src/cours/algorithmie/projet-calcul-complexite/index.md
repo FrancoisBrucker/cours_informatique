@@ -73,6 +73,21 @@ La complexité totale est donc en $\mathcal{O}(\mbox{début.longueur} + \mbox{fi
 
 {% enddetails %}
 
+## <span id="égalité-tableaux"></span>Égalité de tableaux
+
+{% aller %}
+[Création et preuve de l'algorithme d'égalité de tableau](../projet-itératif-récursif/#égalité-tableaux){.interne}
+{% endaller %}
+
+{% exercice %}
+Quelle est la complexité de l'algorithme `égalité`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut exécuter l'algorithme `nombre`{.language-}, de complexité égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(t1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + t2.\mbox{\small longueur})$
+
+{% enddetails %}
+
 ## <span id="suppression-valeur"></span>Suppression de valeurs
 
 ### Itératif
@@ -198,21 +213,6 @@ C(0) & = & \mathcal{O}(1) + C(1)\\
 \end{array}
 $$
 </div>
-
-{% enddetails %}
-
-## <span id="égalité-tableaux"></span>Égalité de tableaux
-
-{% aller %}
-[Création et preuve de l'algorithme d'égalité de tableau](../projet-itératif-récursif/#égalité-tableaux){.interne}
-{% endaller %}
-
-{% exercice %}
-Quelle est la complexité de l'algorithme `égalité`{.language-} ?
-{% endexercice %}
-{% details "corrigé" %}
-
-Il faut exécuter l'algorithme `nombre`{.language-}, de complexité égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(t1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + t2.\mbox{\small longueur})$
 
 {% enddetails %}
 

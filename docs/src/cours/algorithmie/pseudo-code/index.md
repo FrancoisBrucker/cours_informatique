@@ -107,7 +107,13 @@ Terminons par un petit exercice :
 <span id="exercice-nombre-occurrences"></span>
 
 {% exercice %}
-Adaptez le pseudo code de l'algorithme `recherche((t: [entier], x: entier) → booléen)`{.language-} précédent pour créer l'algorithme : `nombre((t: [entier], x: entier) → entier)`{.language-} qui rend le nombre de fois où `x`{.language-} est présent dans `t`{.language-}
+Adaptez le pseudo code de l'algorithme `recherche((t: [entier], x: entier) → booléen)`{.language-} précédent pour créer l'algorithme :
+
+```pseudocode
+nombre((t: [entier], x: entier) → entier)
+```
+
+Cet algorithme  rend le nombre de fois où `x`{.language-} est présent dans `t`{.language-}
 {% endexercice %}
 {% details "corrigé" %}
 

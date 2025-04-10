@@ -244,6 +244,14 @@ Notez que le statut du problème de l'isomorphisme de graphe est au statut incon
 Vous aurez remarquez que l'on a précisé qu'il existe des problèmes décidables qui ne sont pas dans NP. On le démontrera bien plus tard en montrant qu'il existe des problèmes où si l'on cherche à répondre OUI, le problème est dans NP et si l'on cherche à répondre NON au même problème, il n'y est pas.
 {% endnote %}
 
+Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut _a priori_ tout vérifier car la solution peut se trouver n'importe où. A contrario des problèmes polynomiaux ou, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement parcourir.
+
+{% note "**À retenir**" %}
+Les problèmes NP-complets sont tous équivalents car ils correspondent tous à **des problèmes universels**, sans structure.
+
+Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution.
+{% endnote %}
+
 ## Autres classes
 
 Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souvent uniquement à ceux de $P$) mais il en existe une foultitudes d'autres. On peut par exemple citer :

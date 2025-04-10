@@ -109,6 +109,30 @@ Lorsque le résultat d'une boucle est évidente, il n'est n'est pas nécessaire 
 Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.
 {% endnote %}
 
+## <span id="égalité-tableaux"></span>Égalité de tableaux
+
+{% exercice %}
+Écrivez un algorithme itératif permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
+
+C'est à dire qu'il existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant [notre algorithme `nombre`{.language-}](../pseudo-code/#exercice-nombre-occurrences){.interne} Ce qui donne un l'algorithme suivant :
+
+```pseudocode
+algorithme égalité(t1: [entier], t2: [entier]) → entier
+    pour chaque e de t1:
+        si nombre(t1, e) ≠ nombre(t2, e):
+            rendre Faux
+        rendre Vrai
+```
+
+On ne peut rendre Vrai que si tous les éléments de t1 sont dans t2 avec un même montant. Donc uniquement s'il existe une existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
+
+{% enddetails %}
+
 ## <span id="suppression-valeur"></span>Suppression de valeurs
 
 Trouver un invariant permet de prouver efficacement un algorithme itératif. Pour des algorithmes simples, les bons invariants sont évidents à prouver une fois trouvé (on ne le donc fera pas explicitement) et permettent une preuve aisée. Entraînez vous avec l'exercice suivant :
@@ -258,30 +282,6 @@ Encapsulez la fonction récursive `maximum_rec(t: [réel], i: entier) → entier
 algorithme maximum(t: [entier]) → entier
     rendre maximum_rec(t, 0)
 ```
-
-{% enddetails %}
-
-## <span id="égalité-tableaux"></span>Égalité de tableaux
-
-{% exercice %}
-Écrivez un algorithme itératif permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
-
-C'est à dire qu'il existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant [notre algorithme `nombre`{.language-}](../pseudo-code/#exercice-nombre-occurrences) Ce qui donne un l'algorithme suivant :
-
-```pseudocode
-algorithme égalité(t1: [entier], t2: [entier]) → entier
-    pour chaque e de t1:
-        si nombre(t1, e) ≠ nombre(t2, e):
-            rendre Faux
-        rendre Vrai
-```
-
-On ne peut rendre Vrai que si tous les éléments de t1 sont dans t2 avec un même montant. Donc uniquement s'il existe une existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
 
 {% enddetails %}
 
