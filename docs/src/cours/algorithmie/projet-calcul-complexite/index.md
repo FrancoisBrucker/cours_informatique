@@ -18,23 +18,39 @@ Quelques exemples d'algorithme pour le calcul de la complexité. Nous allons rep
 
 Nous allons aller de plus en plus vite, à mesure que nous gagnons en automatisme.
 
+## Nombre
+
+{% exercice %}
+Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#exercice-nombre-occurrences){.interne} et donnez sa complexité
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Ligne à ligne :
+
+1. une affectation : $\mathcal{O}(1)$ opérations
+2. une boucle de $t.\mbox{\small longueur}$ itérations
+3. un test en $\mathcal{O}(1)$
+4. une affectation : $\mathcal{O}(1)$ opérations
+5. retour en $\mathcal{O}(1)$ opérations
+
+Les lignes 2,3 et 4 sont effectuées $t.\mbox{\small longueur}$ fois, la complexité totale est donc en :
+
+<div>
+$$
+\mathcal{O}(1) + t.\mbox{\small longueur} \cdot (\mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)
+$$
+</div>
+
+Ce qui donne une complexité totale de $\mathcal{O}(t.\mbox{\small longueur})$.
+
+{% enddetails %}
+
 ## Concaténation
 
-```pseudocode/
-algorithme concaténation(début: [entier], fin: [entier]) → [entier]
-    t ← tableau de taille début.longueur + fin.longueur
-    i ← -1
-
-    pour chaque j de [0, début.longueur[:
-        i ← i + 1
-        t[i] ← début[j]
-  
-    pour chaque j de [0, fin.longueur[:
-        i ← i + 1
-        t[i] ← fin[j]
-
-    rendre t
-```
+{% aller %}
+[Création et preuve de l'algorithme concaténation](../projet-itératif-récursif/#concaténation){.interne}
+{% endaller %}
 
 {% exercice %}
 Quelle est la complexité de l'algorithme `concaténation`{.language-} ?
@@ -61,22 +77,9 @@ La complexité totale est donc en $\mathcal{O}(\mbox{début.longueur} + \mbox{fi
 
 ### Itératif
 
-```pseudocode/
-algorithme supprime(t: [entier], v: entier) → [entier]
-    nombre ← 0
-    pour chaque e de t:
-        si e == v:
-            nombre ← nombre + 1
-    t2 ← tableau de taille t.longueur - nombre
-
-    j ← 0
-    pour tout i de [0, t.longueur[:
-        si t[i] ≠ v:
-            t2[j] ← t[i]
-            j ← j + 1
-    
-    rendre t2
-```
+{% aller %}
+[Création et preuve de l'algorithme suppression valeurs itératif](../projet-itératif-récursif/#suppression-valeur-itératif){.interne}
+{% endaller %}
 
 {% exercice %}
 Quelle est la complexité de l'algorithme `supprime`{.language-} ?
@@ -91,20 +94,9 @@ La complexité est donc en $\mathcal{O}(1) + 2\cdot\mathcal{O}(\mbox{t.longueur}
 
 ### Récursif
 
-```pseudocode/
-algorithme supprime_rec(t: [entier], v: entier) → [entier]
-    si t.longueur == 0:
-        rendre t
-
-    t2 ← tableau de longueur t.longueur - 1
-    pour i de [0, t2.longueur[:
-        t2[i] ← t[i + 1]
-    
-    si t[0] == v:
-        rendre concaténation([], supprime_rec(t2, v))
-    sinon:
-        rendre concaténation([t[0]], supprime_rec(t2, v))
-```
+{% aller %}
+[Création et preuve de l'algorithme suppression valeurs récursif](../projet-itératif-récursif/#suppression-valeur-récursif){.interne}
+{% endaller %}
 
 {% exercice %}
 Quelle est la complexité de l'algorithme `supprime_rec`{.language-} ?
@@ -172,15 +164,9 @@ Pour que les complexités soient comparables il faudrait pouvoir ajouter petit �
 
 ## Retournement d'un tableau
 
-```pseudocode/
-algorithme reverse_indice(t: [entier], i: entier) → ∅
-    si t.longueur - 1 - i > i:
-        temp ← t[i]
-        t[i] ← t[t.longueur - 1 - i]
-        t[t.longueur - 1 - i] ← temp
-
-        reverse_indice(t, i + 1)
-```
+{% aller %}
+[Création et preuve de l'algorithme retournement](../projet-itératif-récursif/#retournement){.interne}
+{% endaller %}
 
 {% exercice %}
 Quelle est la complexité de l'algorithme `reverse_indice`{.language-} ?
@@ -215,39 +201,26 @@ $$
 
 {% enddetails %}
 
-## Égalité de tableaux
+## <span id="égalité-tableaux"></span>Égalité de tableaux
 
-> TBD.
+{% aller %}
+[Création et preuve de l'algorithme d'égalité de tableau](../projet-itératif-récursif/#égalité-tableaux){.interne}
+{% endaller %}
 
 {% exercice %}
-Écrivez un algorithme itératif permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ sont une permutation l'une de l'autre (il existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in $[0, n-1]$).
-
+Quelle est la complexité de l'algorithme `égalité`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD.
+Il faut exécuter l'algorithme `nombre`{.language-}, de complexité égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(t1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + t2.\mbox{\small longueur})$
 
 {% enddetails %}
 
 ### <span id="dichotomie"></span>Dichotomie
 
-```pseudocode
-algorithme recherche(t: [entier], v: entier) → entier:
-    a ← 0
-    b ← t.longueur -1
-
-    tant que a ≤ b: 
-        m ← (a + b) // 2  # division entière
-        si (t[m] == v):
-            rendre m
-        si (t[m] < v):
-                a ← m + 1
-        si (t[m] > v):
-            b ← m - 1
-
-    rendre -1
-
-```
+{% aller %}
+[Création et preuve de l'algorithme de la dichotomie](../projet-itératif-récursif/#dichotomie){.interne}
+{% endaller %}
 
 {% exercice %}
 Donnez la complexité de l'algorithme itératif précédent qui effectue la recherche dichotomique d'un élément dans un tableau trié.

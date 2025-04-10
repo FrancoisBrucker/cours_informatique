@@ -49,12 +49,77 @@ Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur coura
 
 ### Vérification efficace
 
-Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 2 pour se fixer les idées :
+Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement voir si proposition de solution en est une ou pas. Citons en 2 pour se fixer les idées : [le problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos) et celui de  [l'isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes).
 
-- [somme de sous-ensemble](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles) qu'on a déjà vu.
-- [isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes) (exemple Petersen : <https://mathworld.wolfram.com/PetersenGraph.html>) qu'on verra dans le cours de graphe.
+#### Sac à dos et vérification
 
-Si l'on ne connaît pas d'algorithme polynomiaux pour résoudre les 2 problèmes ci-dessus, on peut en revanche vérifier efficacement (_ie._ polynomialement) si une solution en est une ou pas.
+Le problème du sac à dos tente de maximiser la durée d'une randonnée :
+
+{% note "**Problème**" %}
+
+- **nom** : sac à dos
+- **données** :
+  - $n$ produits différents, décris par :
+    - leurs masses en kilo : $k_i$
+    - leurs quantité nutritive : $q_i$
+  - un sac à dos pouvant contenir $K$ kilos
+  - une quantité nutritive à dépasser $Q$
+- **question** : existe-t-il un sous ensemble $I$ de l'intervalle $[1, n]$ (un ensemble de produits) tel que :
+  - $\sum_{i \in I} k_i \leq K$ : les objets tiennent dans le sac à dos
+  - $\sum_{i \in I} q_i \geq Q$ : la quantité nutritive des objets permet de survivre à la randonnée
+{% endnote %}
+
+On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :
+
+- faire la somme $\sum_{i \in I} k_i$ et de vérifier si elle est inférieure à $K$
+- faire la somme $\sum_{i \in I} q_i$ et de vérifier si elle est supérieure à $Q$
+
+Cette vérification se fait en $\mathcal{O}(n)$ quelque soit $I$.
+
+#### Isomorphisme de graphe et vérification
+
+De même considérons un autre problème classique en algorithmie, l'isomorphisme de graphe :
+
+{% note "**Problème**" %}
+
+- **nom** : isomorphisme
+- **données** : [deux graphes](https://fr.wikipedia.org/wiki/Graphe_(math%C3%A9matiques_discr%C3%A8tes)#D%C3%A9finition_et_vocables_associ%C3%A9s) :
+  - $G_1 = (V_1, E_1)$
+  - $G_2 = (V_2, E_2)$
+- **question** : existe-t-il une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\\{x, y\\}$ est une arête de $G_1$ si et seulement si $\\{\sigma(x), \sigma(y) \\}$ est une arête de $G_2$
+{% endnote %}
+
+Par exemple en considérant les 3 graphes ci dessous :
+
+![iso graphes](./iso-graphes.png)
+
+Il est clair de voir que les 2 premiers sont isomorphes ($\sigma(a) = 1$, $\sigma(b) = 2$, $\sigma(c) = 4$ et $\sigma(d) = 3$) alors que le troisième ne l'est pas.
+
+Mais c'est moins clair avec les deux suivants :
+
+![Petesen iso](./petersen-iso.png)
+
+{% exercice %}
+Montrez que les deux graphes précédents sont isomorphes
+{% endexercice %}
+{% details "corrigé" %}
+
+Le graphe en question est le graphe de Petersen, que l'on peut représenter de plein de jolis façons : <https://mathworld.wolfram.com/PetersenGraph.html>.
+
+![Petesen iso](./petersen-iso-solution.png)
+
+{% enddetails %}
+
+Pour vérifier que la deux graphes $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ sont isomorphes avec une fonction $\sigma: V_1 \to V_2$ il faut montrer que :
+
+- $\sigma$ est une bijection de $V_1$ dans $V_2$, donc que les deux tableaux $T_1 = [\sigma(x) \mbox{ pour chaque } x \in V_1]$ et $T_2 = [x \mbox{ pour chaque } x \in V_2]$ contiennent les mêmes éléments
+- que les arêtes de $V_2$ sont bien arêtes de $V_1$ envoyées via $\sigma$, donc que les deux tableaux $T'_1 = [\\{\sigma(x), \sigma(y)\\} \mbox{ pour chaque } x \in E_1]$ et $T_2 = [xy \mbox{ pour chaque } xy \in E_2]$ contiennent les mêmes éléments
+
+Ceci peut donc se faire en utilisant deux fois l'algorithme [égalité de tableaux](../projet-calcul-complexite/#égalité-tableaux){.interne} avec une complexité totale de $\mathcal{O}(\\; |\\; E_1\\; |^2\\; + \\; |\\; V_1\\; |^2\\;)$ (en supposant que $\\; |\\; E_1\\; |\\; = \\; |\\; E_2\\; |\\;$ et $\\; |\\; V_1\\; |\\; = \\; |\\; V_2\\; |\\;$).
+
+### Définition
+
+Donnons une définition formelle d'un vérifieur :
 
 <div id="vérifieur"></div>
 {% note "**Définition**" %}
@@ -109,45 +174,12 @@ rendre Faux
 
 #### Tri d'un tableau
 
-> TBD attention., il faut aussi vérifier que c'est les mêmes tableaux.
-
 ```pseudocode
 algorithme verif(T: [entier], sol: [entier]) -> booléen:
 ```
 
 1. on vérifie que sol est trié
-2. on vérifie que les éléments de sol sont ceux de T :
-   1. on peut considérer deux tableaux de booléen. et on parcours chaque élément de sol jusqu'à trouver un élément non vu de T
-
-#### SUBSET SUM
-
-> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>
-
-Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$
- en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$
- et $E'$ :
-
-1. On vérifie que $\vert E \vert \leq \vert E' \vert$ ce qui peut se faire en $\mathcal{O}(\vert E \vert)$ opérations en comptant chaque élément de $E'$
- et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque le compte dépasse strictement $\vert E \vert$.
-2. On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(\vert E \vert \cdot \vert E' \vert) = \mathcal{O}(\vert E \vert^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).
-3. On somme les éléments de $E'$ et on vérifie que la somme finale vaut $t$
-, ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.
-
-La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.
-
-#### Isomorphisme de graphe
-
-[Un graphe](/cours/graphes/structure/#definition-graphe){.interne} est une structure de donnée fondamentale en algorithmie. Deux graphes sont isomorphes, s'il existe une bijection entre les deux ensembles de sommets rendant les arêtes identiques.
-
-> TBD exemple Petersen : <https://mathworld.wolfram.com/PetersenGraph.html>
-
-```pseudocode
-algorithme verif(G1, G2, sigma) -> booléen:
-```
-
-> TBD utilise permutation de 2 tableaux.
-
-On voit que l'algorithme précédent permet de savoir facilement si sigma est une bijection. En revanche, on ne connaît pas d'algorithme polynomial pour trouver cette bijection.
+2. on vérifie que les éléments de sol sont ceux de T avec notre algorithme d'égalité de tableaux
 
 ### Vérifieur efficace et algorithme de résolution
 

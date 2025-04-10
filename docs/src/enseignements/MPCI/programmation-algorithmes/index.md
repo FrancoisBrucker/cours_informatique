@@ -378,7 +378,7 @@ N'hésitez pas à aller jeter eu coup d'œil aux exercices sur les piles et les 
 
 {% aller %}
 
-[Hachage et dictionnaires](/cours/algorithmie/structure-dictionnaire/){.interne}
+[Hash et dictionnaires](/cours/algorithmie/structure-dictionnaire/){.interne}
 
 {% endaller %}
 

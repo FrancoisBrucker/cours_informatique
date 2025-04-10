@@ -71,7 +71,7 @@ Par exemple :
 {% exercice %}
 Montrez que le problèmes de recherche du minimum dans un tableau d'entiers relatifs est  le problème de recherche du maximum dans un tableau d'entiers relatifs sont équivalent et que la réduction est linéaire.
 {% endexercice %}
-{% details "corrigé", "open" %}
+{% details "corrigé" %}
 Pour des entiers relatifs, il suffit de faire $T'[x] = -T[x]$.
 {% enddetails %}
 
@@ -127,7 +127,7 @@ Commençons par [le problème 2-SUM](../projet-classiques/#2-sum){.interne} que 
 - **nom** : 2-SUM
 - **données** :
   - T : un tableau de $n$ entiers relatifs
-- **question** : existe-t-il 2 indices (pouvant être égaux) tels que $T[i] + T[j] = 0$
+- **question** : existe-t-il 2 indices $i$ et $j$ (pouvant être égaux) tels que $T[i] + T[j] = 0$
 
 {% endnote %}
 
@@ -189,9 +189,52 @@ On prend $T = T'$ et $T''[x] = -T[x]$
 
 {% enddetails %}
 
+#### Problèmes équivalents ?
+
+Montrons que les versions alternatives des problèmes 2-SUM (ÉGAL) et 3-SUM (3-SUM') sont équivalents aux problèmes d'origine. Ces réduction vont nécessiter un peu de travail.
+
+{% exercice %}
+Montrer que ÉGAL ≤ 2-SUM
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut commencer par mettre 2 tableaux dans un seul en définissant un tableau $T''$ dont les premiers éléments sont liés a $T$ et les derniers à $T$. On ne peut prendre directement :
+
+- $T''[i] = T[i]$ pour $0 \leq i < T.\mbox{\small longueur}$
+- $T''[T.\mbox{\small longueur} + j] = T'[j]$ pour $0 \leq j < T'.\mbox{\small longueur}$
+
+Car l'égalité pourrait arriver pour deux indices du même tableau initial. On prend donc :
+
+- $T''[i] = T[i] + A$ pour $0 \leq i < T.\mbox{\small longueur}$
+- $T''[T.\mbox{\small longueur} + j] = T'[j] - A$ pour $0 \leq j < T'.\mbox{\small longueur}$
+
+Avec $A$ assez grand pour que $2A > T[i] + [j]$ et $2A > T'[i] + T'[j]$ pur tous $i$ et $j$ ce qui impliquera que si %$T''[i] + T''[j] = 0$ alors $0 \leq i < T.\mbox{\small longueur} \leq j$ (ou réciproquement).
+
+Si on prend $A = 2(\sum \vert T[i]\vert + \sum \vert T'[i]\vert) + 1$ cela va fonctionner.
+
+{% enddetails %}
+{% exercice %}
+Montrer que 3-SUM' ≤ 3-SUM
+{% endexercice %}
+{% details "corrigé" %}
+
+On procède (bien sur) comme précédemment en adaptant à trois tableaux. On choisit $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $T'''$ tel que :
+
+- $T'''[i] = T[i] + A$ pour $0 \leq i < T.\mbox{\small longueur}$
+- $T'''[T.\mbox{\small longueur} + j] = T'[j] + 3\cdot A$ pour $0 \leq j < T'.\mbox{\small longueur}$
+- $T'''[T.\mbox{\small longueur} + T'.\mbox{\small longueur} + k] = T''[k] - 4\cdot A$ pour $0 \leq k < T''.\mbox{\small longueur}$
+
+Ceci va garantir le fait que si on a 3 indices $i, j, k$ tels que T'''[i] + T'''[j] + T'''[k] = 0$. on a bien (à ue permutation prêt) :
+
+- $0 \leq i < T.\mbox{\small longueur}$
+- $T.\mbox{\small longueur} \leq j < T.\mbox{\small longueur} + T'.\mbox{\small longueur}$
+- $T.\mbox{\small longueur} + T'.\mbox{\small longueur} \leq k < T.\mbox{\small longueur} + T'.\mbox{\small longueur} + T''.\mbox{\small longueur}$
+
+{% enddetails %}
+
 #### ÉGAL ≤ 3-SUM
 
-Montrons que 3-SUM est plus général que ÉGAL, cette réduction est un peu plus dure que les précédentes :
+Terminons cette partie en montrant que 3-SUM est plus général que ÉGAL, cette réduction est un peu plus dure que les précédentes :
 
 {% exercice %}
 Montrer que ÉGAL ≤ 3-SUM
@@ -200,48 +243,23 @@ Montrer que ÉGAL ≤ 3-SUM
 
 Soit $T$ et $T'$ une instance du problème ÉGAL telle que $T.\mbox{\small longueur} = n$ et $T'.\mbox{\small longueur} = n'$.
 
-L'idée est de créer un grand tableau $T''$ de taille $n + n' + 1$
+L'idée est toujours la même : créer un grand tableau $T''$ de taille $n + n' + 1$
 De telle sorte que s'il existe $i$, $j$ et $k$ avec $T''[i] + T''[j] + T''[k] = 0$ alors :
 
 - $0 \leq i < n$ et est lié au tableau $T$
 - $n \leq j < n + n'$ et est lié au tableau $T'$
 - $k = n + n'$
 
-Par exemple on prend $T''$ tel que :
+On va pour cela éloigner fortement les valeurs des tableaux $T$ et $T'$ dans $T''$. Par exemple :
 
 - $T''[i] = T[i] + K$ pour tout $0 \leq i < n$
 - $T''[i + n] = -T'[i] + K'$ pour tout $0 \leq i < n'$
 - $T''[n+n'] = -K-K'$
 
-En prenant $K = \max(T) + 1$ et $K'= K + 2 \cdot (\max(T) + 2\cdot \max(T')) + 1$ on a bien que si  $T''[i] + T''[j] + T''[k] = 0$ :
+En prenant $K = \max_i(\\,\vert\\, T[i] \\,\vert\\,) + 1$ et $K'= K + 2 \cdot (\max_i(\\,\vert\\, T[i] \\,\vert\\,) + \max_i(\\,\vert\\, T'[i] \\,\vert\\,)) + 1$ on a bien que $T''[i] + T''[j] + T''[k] = 0$ si :
 
 1. $k = n+n'$ sinon on ne peut avoir de somme égale à 0
-2. avec $k = n+n'$ comme $2K + 2\cdot\max(T) < K + K'$ on ne peut avoir $0 \leq i, j < n$
-3. avec $k = n+n'$ comme $2K' - 2\cdot\max(T') > K + K'$ on ne peut avoir $n \leq i, j < n + n'$
+2. avec $k = n+n'$  on ne peut avoir $0 \leq i, j < n$ sinon $T''[i] + T''[j] \leq 2(K + \max_i(\\,\vert\\, T[i] \\,\vert\\,) < K + K' = T''[k]$
+3. avec $k = n+n'$ on ne peut avoir $n \leq i, j < n + n'$ sinon $T''[i] + T''[j] \geq 2(K' - \max_i(\\,\vert\\, T'[i] \\,\vert\\,)) > K + K' = T''[k]$
 
-{% enddetails %}
-
-#### Problèmes équivalents ?
-
-S'il semble impossible de montrer que 3-SUM ≤ 2-SUM, on peut en revanche montrer que les problèmes _prim_ sont  équivalents à leur pendant non prim. Prouvez le :
-
-{% exercice %}
-Montrer que ÉGAL ≤ 2-SUM
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
-
-{% enddetails %}
-{% exercice %}
-Montrer que 3-SUM' ≤ 3-SUM
-{% endexercice %}
-{% details "corrigé" %}
-
-On prend $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $[T[i] + A \\;\vert\\; i] + [T'[i] + 3A \\;\vert\\; i] + [-T''[i] - 4A \\;\vert\\; i]$.
-
-Soient $i, j, k$ tels que T[i] + T[j] + T[k] = 0$.
-
-Pour que la somme fasse 0 il faut que les $A$ ajoutés s'annulent : donc
-obligatoirement 1 élément de chaque tableau initial $T$, $T'$ et $T''$.
 {% enddetails %}

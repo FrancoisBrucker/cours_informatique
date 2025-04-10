@@ -276,7 +276,7 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 
 ## Intermède
 
-Avant de finir cette première partie du cours, accordons nous un intermède.
+Avant de finir cette première partie du cours, accordons nous un intermède en 2 actes.
 
 ### Problème de l'enveloppe convexe
 
@@ -299,6 +299,16 @@ L'Algorithme pour tout résoudre :
 
 <!-- ### Problèmes et exercices
 
+
+### super croissant
+> SAc a dos
+>
+> et piece dans le cas pas super croissant.
+> 
+> TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>
+
+### autre bidules
+
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
 
 > TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
@@ -311,7 +321,21 @@ On place ici quelques problèmes requérant une bonne compréhension algorithmiq
 > TBD faire de l'ordre dans les autres exos.
 
 
+#### SUBSET SUM
 
+> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>
+
+Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$
+ en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$
+ et $E'$ :
+
+1. On vérifie que $\vert E \vert \leq \vert E' \vert$ ce qui peut se faire en $\mathcal{O}(\vert E \vert)$ opérations en comptant chaque élément de $E'$
+ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque le compte dépasse strictement $\vert E \vert$.
+2. On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(\vert E \vert \cdot \vert E' \vert) = \mathcal{O}(\vert E \vert^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).
+3. On somme les éléments de $E'$ et on vérifie que la somme finale vaut $t$
+, ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.
+
+La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.
 
 > TBD à refaire
 >
