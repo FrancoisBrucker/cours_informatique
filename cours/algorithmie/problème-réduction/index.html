@@ -198,7 +198,7 @@ $$
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -323,7 +323,7 @@ $$
 <li>T : un tableau de $n$ entiers relatifs</li>
 </ul>
 </li>
-<li><strong>question</strong> : existe-t-il 2 indices (pouvant être égaux) tels que $T[i] + T[j] = 0$</li>
+<li><strong>question</strong> : existe-t-il 2 indices $i$ et $j$ (pouvant être égaux) tels que $T[i] + T[j] = 0$</li>
 </ul>
 </div></div>
 
@@ -442,56 +442,8 @@ Prouvez le :</p>
 </div>
 </details>     
 </div>
-<h4>ÉGAL ≤ 3-SUM</h4>
-<p>Montrons que 3-SUM est plus général que ÉGAL, cette réduction est un peu plus dure que les précédentes :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que ÉGAL ≤ 3-SUM</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Soit $T$ et $T'$ une instance du problème ÉGAL telle que $T.\mbox{\small longueur} = n$ et $T'.\mbox{\small longueur} = n'$.</p>
-<p>L'idée est de créer un grand tableau $T''$ de taille $n + n' + 1$
-De telle sorte que s'il existe $i$, $j$ et $k$ avec $T''[i] + T''[j] + T''[k] = 0$ alors :</p>
-<ul>
-<li>$0 \leq i &lt; n$ et est lié au tableau $T$</li>
-<li>$n \leq j &lt; n + n'$ et est lié au tableau $T'$</li>
-<li>$k = n + n'$</li>
-</ul>
-<p>Par exemple on prend $T''$ tel que :</p>
-<ul>
-<li>$T''[i] = T[i] + K$ pour tout $0 \leq i &lt; n$</li>
-<li>$T''[i + n] = -T'[i] + K'$ pour tout $0 \leq i &lt; n'$</li>
-<li>$T''[n+n'] = -K-K'$</li>
-</ul>
-<p>En prenant $K = \max(T) + 1$ et $K'= K + 2 \cdot (\max(T) + 2\cdot \max(T')) + 1$ on a bien que si  $T''[i] + T''[j] + T''[k] = 0$ :</p>
-<ol>
-<li>$k = n+n'$ sinon on ne peut avoir de somme égale à 0</li>
-<li>avec $k = n+n'$ comme $2K + 2\cdot\max(T) &lt; K + K'$ on ne peut avoir $0 \leq i, j &lt; n$</li>
-<li>avec $k = n+n'$ comme $2K' - 2\cdot\max(T') &gt; K + K'$ on ne peut avoir $n \leq i, j &lt; n + n'$</li>
-</ol>
-</div>
-</details>     
-</div>
 <h4>Problèmes équivalents ?</h4>
-<p>S'il semble impossible de montrer que 3-SUM ≤ 2-SUM, on peut en revanche montrer que les problèmes <em>prim</em> sont  équivalents à leur pendant non prim. Prouvez le :</p>
+<p>Montrons que les versions alternatives des problèmes 2-SUM (ÉGAL) et 3-SUM (3-SUM') sont équivalents aux problèmes d'origine. Ces réduction vont nécessiter un peu de travail.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -515,9 +467,18 @@ De telle sorte que s'il existe $i$, $j$ et $k$ avec $T''[i] + T''[j] + T''[k] = 
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Il faut commencer par mettre 2 tableaux dans un seul en définissant un tableau $T''$ dont les premiers éléments sont liés a $T$ et les derniers à $T$. On ne peut prendre directement :</p>
+<ul>
+<li>$T''[i] = T[i]$ pour $0 \leq i &lt; T.\mbox{\small longueur}$</li>
+<li>$T''[T.\mbox{\small longueur} + j] = T'[j]$ pour $0 \leq j &lt; T'.\mbox{\small longueur}$</li>
+</ul>
+<p>Car l'égalité pourrait arriver pour deux indices du même tableau initial. On prend donc :</p>
+<ul>
+<li>$T''[i] = T[i] + A$ pour $0 \leq i &lt; T.\mbox{\small longueur}$</li>
+<li>$T''[T.\mbox{\small longueur} + j] = T'[j] - A$ pour $0 \leq j &lt; T'.\mbox{\small longueur}$</li>
+</ul>
+<p>Avec $A$ assez grand pour que $2A &gt; T[i] + [j]$ et $2A &gt; T'[i] + T'[j]$ pur tous $i$ et $j$ ce qui impliquera que si %$T''[i] + T''[j] = 0$ alors $0 \leq i &lt; T.\mbox{\small longueur} \leq j$ (ou réciproquement).</p>
+<p>Si on prend $A = 2(\sum \vert T[i]\vert + \sum \vert T'[i]\vert) + 1$ cela va fonctionner.</p>
 </div>
 </details>     
 </div>
@@ -544,10 +505,66 @@ De telle sorte que s'il existe $i$, $j$ et $k$ avec $T''[i] + T''[j] + T''[k] = 
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On prend $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $[T[i] + A \;\vert\; i] + [T'[i] + 3A \;\vert\; i] + [-T''[i] - 4A \;\vert\; i]$.</p>
-<p>Soient $i, j, k$ tels que T[i] + T[j] + T[k] = 0$.</p>
-<p>Pour que la somme fasse 0 il faut que les $A$ ajoutés s'annulent : donc
-obligatoirement 1 élément de chaque tableau initial $T$, $T'$ et $T''$.</p>
+<p>On procède (bien sur) comme précédemment en adaptant à trois tableaux. On choisit $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $T'''$ tel que :</p>
+<ul>
+<li>$T'''[i] = T[i] + A$ pour $0 \leq i &lt; T.\mbox{\small longueur}$</li>
+<li>$T'''[T.\mbox{\small longueur} + j] = T'[j] + 3\cdot A$ pour $0 \leq j &lt; T'.\mbox{\small longueur}$</li>
+<li>$T'''[T.\mbox{\small longueur} + T'.\mbox{\small longueur} + k] = T''[k] - 4\cdot A$ pour $0 \leq k &lt; T''.\mbox{\small longueur}$</li>
+</ul>
+<p>Ceci va garantir le fait que si on a 3 indices $i, j, k$ tels que T'''[i] + T'''[j] + T'''[k] = 0$. on a bien (à ue permutation prêt) :</p>
+<ul>
+<li>$0 \leq i &lt; T.\mbox{\small longueur}$</li>
+<li>$T.\mbox{\small longueur} \leq j &lt; T.\mbox{\small longueur} + T'.\mbox{\small longueur}$</li>
+<li>$T.\mbox{\small longueur} + T'.\mbox{\small longueur} \leq k &lt; T.\mbox{\small longueur} + T'.\mbox{\small longueur} + T''.\mbox{\small longueur}$</li>
+</ul>
+</div>
+</details>     
+</div>
+<h4>ÉGAL ≤ 3-SUM</h4>
+<p>Terminons cette partie en montrant que 3-SUM est plus général que ÉGAL, cette réduction est un peu plus dure que les précédentes :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que ÉGAL ≤ 3-SUM</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $T$ et $T'$ une instance du problème ÉGAL telle que $T.\mbox{\small longueur} = n$ et $T'.\mbox{\small longueur} = n'$.</p>
+<p>L'idée est toujours la même : créer un grand tableau $T''$ de taille $n + n' + 1$
+De telle sorte que s'il existe $i$, $j$ et $k$ avec $T''[i] + T''[j] + T''[k] = 0$ alors :</p>
+<ul>
+<li>$0 \leq i &lt; n$ et est lié au tableau $T$</li>
+<li>$n \leq j &lt; n + n'$ et est lié au tableau $T'$</li>
+<li>$k = n + n'$</li>
+</ul>
+<p>On va pour cela éloigner fortement les valeurs des tableaux $T$ et $T'$ dans $T''$. Par exemple :</p>
+<ul>
+<li>$T''[i] = T[i] + K$ pour tout $0 \leq i &lt; n$</li>
+<li>$T''[i + n] = -T'[i] + K'$ pour tout $0 \leq i &lt; n'$</li>
+<li>$T''[n+n'] = -K-K'$</li>
+</ul>
+<p>En prenant $K = \max_i(\,\vert\, T[i] \,\vert\,) + 1$ et $K'= K + 2 \cdot (\max_i(\,\vert\, T[i] \,\vert\,) + \max_i(\,\vert\, T'[i] \,\vert\,)) + 1$ on a bien que $T''[i] + T''[j] + T''[k] = 0$ si :</p>
+<ol>
+<li>$k = n+n'$ sinon on ne peut avoir de somme égale à 0</li>
+<li>avec $k = n+n'$  on ne peut avoir $0 \leq i, j &lt; n$ sinon $T''[i] + T''[j] \leq 2(K + \max_i(\,\vert\, T[i] \,\vert\,) &lt; K + K' = T''[k]$</li>
+<li>avec $k = n+n'$ on ne peut avoir $n \leq i, j &lt; n + n'$ sinon $T''[i] + T''[j] \geq 2(K' - \max_i(\,\vert\, T'[i] \,\vert\,)) &gt; K + K' = T''[k]$</li>
+</ol>
 </div>
 </details>     
 </div>
