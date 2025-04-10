@@ -11,6 +11,8 @@ eleventyComputed:
 
 Le problème du sac à dos est un problème fondamental en algorithmie, nombre de problèmes courant pouvant se modéliser sous cette forme.
 
+Nous avons déjà rencontré le problème du sac à dos de quantité nutritive supérieure à un nombre donné, ici, nous allons étudier une variante de ce problème qui cherche un sac à dos de prix maximal.
+
 ## Sac à dos fractionnel
 
 {% lien %}
@@ -20,16 +22,17 @@ Le problème du sac à dos est un problème fondamental en algorithmie, nombre d
 Commençons par une version simplifiée du problème, dit du **_sac à dos fractionnel_** :
 
 {% note "**Problème**" %}
-On possède $n$ poudres différentes (ou liquide, ou tout autre produit pouvant être fractionné), chaque poudre $i$ étant décrite par :
 
-- sa quantité disponible en kilo : $k_i$
-- son prix total : $p_i$
-
-On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :
-
-- on peut mettre les poudres dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
-- le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum
-  {% endnote %}
+- **nom** : sac à dos fractionnel
+- **données** :
+  - $n$ poudres différentes, décrites par :
+    - leurs masses en kilo : $k_i$
+    - leurs prix : $p_i$
+  - un sac à dos pouvant contenir $K$ kilos de poudre
+- **question** : Donnez une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :
+  - on peut mettre les poudres dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
+  - le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit maximum
+{% endnote %}
 
 Par exemple, on a un sac à dos de 20kg et six poudres de paramètres :
 
@@ -177,20 +180,20 @@ Notre hypothèse arrivant à une contradiction, elle était fausse : la solution
 {% endlien %}
 
 Le fait de pouvoir fractionner les éléments est un cas particulier heureux, mais ce n'est pas la norme, pensez à un déménagement : les déménageurs ne peuvent prendre qu'un bout du canapé sous prétexte qu'il ne rentre pas en entier dans le camion... La formalisation classique du sac à dos ne permet pas de scinder des objets :
-
 {% note "**Problème**" %}
-On possède $n$ produits différents, décris par :
 
-- sa masse en kilo : $k_i$
-- son prix : $p_i$
+- **nom** : sac à dos optimal
+- **données** :
+  - $n$ produits différentes, décris par :
+    - leurs masses en kilo : $k_i$
+    - leurs prix : $p_i$
+  - un sac à dos pouvant contenir $K$ kilos
+- **question** : Donnez une liste de produits à mettre dans le sac ($f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon)  telle que :
+  - on peut mettre les produits choisis dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
+  - le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit maximum
+{% endnote %}
 
-On dispose d'un sac pouvant contenir $K$ kilos et on cherche les produits à mettre dans le sac, on note $f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon, de façon à ce que :
-
-- les produits choisis tiennent dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
-- le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum
-  {% endnote %}
-
-Ce problème se décline de plein de façons pratique :
+Ce problème se décline de plein de façons pratiques :
 
 - en remplaçant le prix par la quantité nutritive et maximiser un _road trip_
 - en remplaçant la masse par le volume on peut remplir un camion de déménagement au maximum théorique
@@ -207,16 +210,17 @@ La solution optimale d'un problème du sac à dos est inférieure à la solution
 La solution optimale du problème du sac à dos est une solution admissible au problème du sac à dos fractionnel, son optimum est donc nécessairement plus grand.
 {% enddetails %}
 
-## vérifieur efficace
+## Vérifieur efficace
 
-> TBD le problème est dans NP
+Notez que le problème du sac à dos optimal est un problème d'optimisation : on cherche le sac à dos de prix **maximum**. En tant que tel, il est difficile de prouver qu'il est dans NP car comment vérifier si on a bien une solution maximale ?
 
-Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :
+On peut cependant utiliser [le problème du sac à dos](../../problèmes-NP/#sac-à-dos){.interne} qui est dans NP pour trouver l'optimum en faisant de la dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P ou double le prix et sinon on diminue le prix par deux. On aura besoin de log itération pour trouver le maximum.
 
-1. de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un [bucket sort](https://fr.wikipedia.org/wiki/Tri_par_paquets))
-2. que la somme des prix est supérieure à $P$
+{% note "À retenir" %}
+Les problèmes d'optimisation ne sont pas dans NP, mais leur version existentielle le sont.
 
-Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.
+On trouver alors l'optimum par dichotomie.
+{% endnote %}
 
 ## Algorithme glouton
 

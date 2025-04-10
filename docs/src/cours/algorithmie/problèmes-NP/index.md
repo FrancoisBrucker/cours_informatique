@@ -51,7 +51,7 @@ Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur coura
 
 Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement voir si proposition de solution en est une ou pas. Citons en 2 pour se fixer les idées : [le problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos) et celui de  [l'isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes).
 
-#### Sac à dos et vérification
+#### <span id="sac-à-dos"></span>Sac à dos et vérification
 
 Le problème du sac à dos tente de maximiser la durée d'une randonnée :
 
