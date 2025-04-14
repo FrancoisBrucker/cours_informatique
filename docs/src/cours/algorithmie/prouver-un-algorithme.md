@@ -223,6 +223,13 @@ Pour $n = 1$ `factorielle(1)`{.language-} vaut bien bien $1 = 1!$. On suppose no
 
 ### <span id="facto-iter"></span> Algorithme itératif
 
+> TBD preuve par :
+>
+> 1. évidence
+> 2. boucle en récursion
+> 3. invariant de boucle.
+>
+
 Les preuves des algorithmes itératifs nécessitent de trouver les raisons d'être des boucles. Ceci se fait en cherchant ce qui ne va pas varier.
 
 ```pseudocode

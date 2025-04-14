@@ -16,6 +16,12 @@ eleventyComputed:
 
 Comment gérer les sources d'un projet avec git et github.
 
+> TBD ajouter à la partie comment faire en vrai :
+>
+> - <https://semver.org/>
+> - <https://leanpub.com/git-flow/read>
+>
+
 ## Gestion des sources
 
 {% lien %}
