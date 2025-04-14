@@ -341,6 +341,14 @@ $$</p>
 <p>Par récurrence sur $n$, avec $n$ entier strictement positif.</p>
 <p>Pour $n = 1$ <code class="language-">factorielle(1)</code> vaut bien bien $1 = 1!$. On suppose notre hypothèse de récurrence vraie pour $n \geq 1$. Pour $n + 1 &gt; 1$, le retour de <code class="language-">factorielle(n + 1)</code> est <code class="language-">(n + 1) * factorielle(n)</code> qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.</p>
 <h3><span id="facto-iter"></span> Algorithme itératif</h3>
+<blockquote>
+<p>TBD preuve par :</p>
+<ol>
+<li>évidence</li>
+<li>boucle en récursion</li>
+<li>invariant de boucle.</li>
+</ol>
+</blockquote>
 <p>Les preuves des algorithmes itératifs nécessitent de trouver les raisons d'être des boucles. Ceci se fait en cherchant ce qui ne va pas varier.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     r <span class="token operator">←</span> <span class="token number">1</span>
