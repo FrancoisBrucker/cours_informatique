@@ -418,7 +418,7 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 {% endlien %}
 {% enddetails %}
 
-## 2-sum et 3-sum
+## <span id="2-3-sum"></span>2-sum et 3-sum
 
 > - **Utilité** : un classique des concours !
 > - **Difficulté** : dur
@@ -431,7 +431,7 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 
 {% endinfo %}
 
-### 2-SUM
+### <span id="2-sum"></span>2-SUM
 
 {% note "Problème" %}
 
@@ -506,7 +506,7 @@ Est-ce réaliste ?
 
 {% enddetails %}
 
-### 3-SUM
+### <span id="3-sum"></span>3-SUM
 
 {% note "Problème" %}
 

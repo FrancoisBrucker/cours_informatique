@@ -102,6 +102,32 @@ Si on a besoin d'information supplémentaire pour qu'un lecteur puisse mieux com
 La description des types de paramètres est reprise du format python : <https://docs.python.org/fr/3.13/library/typing.html>
 {% endlien %}
 
+Terminons par un petit exercice :
+
+<span id="exercice-nombre-occurrences"></span>
+
+{% exercice %}
+Adaptez le pseudo code de l'algorithme `recherche((t: [entier], x: entier) → booléen)`{.language-} précédent pour créer l'algorithme :
+
+```pseudocode
+nombre((t: [entier], x: entier) → entier)
+```
+
+Cet algorithme  rend le nombre de fois où `x`{.language-} est présent dans `t`{.language-}
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme nombre(t: [entier], x: entier) → entier:
+    nombre ← 0
+    pour chaque e de t:
+        si e == x:
+            nombre ← nombre + 1
+    rendre nombre
+```
+
+{% enddetails %}
+
 ### Fonctions
 
 Un algorithme est constitué uniquement d'instructions de base. Mais rien n'empêche de réutiliser des algorithmes déjà écrit en les appelant par leur nom. Ces algorithmes intermédiaires sont appelées **_fonctions_**.

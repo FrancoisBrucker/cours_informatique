@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Projet : héritage"
 
 eleventyComputed:
@@ -9,11 +9,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 Mise en œuvre du mécanisme d'héritage.
 
 {% details "corrigé" %}
-Faites les exercices vous même avant de regarder la solution. 
+Faites les exercices vous même avant de regarder la solution.
 
 [Corrigé du code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
 {% enddetails %}
@@ -21,7 +20,6 @@ Faites les exercices vous même avant de regarder la solution.
 ## Comptes bancaires
 
 Vous allez construire une hiérarchie de produits bancaires.
-
 
 {% faire %}
 Commencez par lire tout l'énoncé et créez la représentation UML des différentes classes.
@@ -41,7 +39,6 @@ Créez et testez une classe `Compte`{.language-} qui servira de classe mère. Ce
 
 ### Compte courant
 
-
 {% faire %}
 Créez et testez une classe `CompteCourant`{.language-}. Cette classe doit :
 
@@ -55,7 +52,7 @@ Vous implémenterez également la user story suivante :
 1. je possède un compte courant avec un découvert autorisé de 1000 euros
 2. je dépose 100 euros puis je consulte mon solde
 3. je retire 700 euros puis je consulte mon solde
-3. je retire 600 euros puis je consulte mon solde
+4. je retire 600 euros puis je consulte mon solde
 
 ### Compte épargne
 
@@ -105,7 +102,7 @@ La particularité du PEL est que l'on ne peut plus déposer d'argent dessus apr�
 ```python
 p = PEL("Ada Lovelace", année_ouverture=1835)
 
-print("Dépot (1835)") 
+print("Dépot (1840)")
 p.dépose(1000, 1840)
 print(p.solde)
 
@@ -124,6 +121,7 @@ print("Retrait")
 p.retire(700)
 print(p.solde)
 ```
+
 ## Donjons et dragons
 
 ### Personnages
@@ -146,14 +144,13 @@ Créez un programme qui demande à l'utilisateur :
 - les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
 - les caractéristiques d'un magicien (points de vie, attaque et attaque magique)
 
-Puis,  faites en sorte que la guerrière et le gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux meure.
+Puis, faites en sorte que la guerrière et le gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux meure.
 
 Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 
 Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se réalise (faire un cas où le gobelin survit et un autre ou la guerrière survit).
 
 {% endfaire %}
-
 
 ## Le dé
 
@@ -198,10 +195,8 @@ Vous devez donc écrire et tester pour la classe `StatDé`{.language-} :
 
 {% endfaire %}
 
-
 ### Programme principal
 
 {% faire %}
 Modifiez la user story pour qu'elle utilise la classe `StatDé`{.language-} à la place de `Dé`{.language-}.
 {% endfaire %}
-

@@ -162,6 +162,16 @@ Les chaines étant très utilisées, des langages comme python les considèrent 
 Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).
 {% endnote %}
 
+### Matrice
+
+> TBD tableaux de tableaux.
+>
+> - exemple matrice 2D
+> - Type
+> - 3D.
+> et supérieur.
+>
+
 ## <span id="instruction"></span> Instructions de contrôle
 
 Si un des deux buts d'une instruction est de créer des objets à partir d'autres (ce que l'on vient de voir), le second but est de contrôler le flux d'instructions à exécuter. Ces instructions sont de deux types :

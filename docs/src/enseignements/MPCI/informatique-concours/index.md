@@ -138,11 +138,37 @@ Quelques algorithmes ont aussi à connaître :
 - problème du voyageur de commerce
 - coloration de graphe, en particulier l'algorithme glouton de Welsch et Powell (celui du cours)
 
-## X/ENS
+## X
+
+> TBD
+>
+
+## ENS
+
+Le programme en informatique est celui des classes prépa :
 
 {% lien %}
-[Annales](https://diplome.di.ens.fr/informatique-ens/annales.html)
+
+1. [Programme d'informatique tronc commun](https://prepas.org/ups.php?document=72)
+2. [Annales écrits prépa](https://diplome.di.ens.fr/informatique-ens/annales.html)
+
 {% endlien %}
+
+Votre programme MPCI en informatique a une très forte intersection avec lui, donc pas de soucis. La seule partie que vous n'avez que peu vu sera [la programmation fonctionnelle en Ocaml](https://fr.wikipedia.org/wiki/OCaml), mais vous devez avoir les bases nécessaire en programmation fonctionnelle avec votre cours sur le lambda calcul
+
+> TBD : tous les cours informatique MPCI à lister.
+
+Ci après une annales des écrits/oraux à l'ENS Lyon :
+
+{% lien %}
+
+[Annales écrits filière universitaire Lyon](https://banques-ecoles.fr/cms/filieres-universitaires-second-concours-scientifique/)
+
+{% endlien %}
+
+Pour vous entraîner, refaites les exercices/projets durs en algorithmie et théorie des graphes.
+
+> TBD donner la liste
 
 ## Centrale
 

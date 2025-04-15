@@ -140,6 +140,227 @@ Notez qu'il faut initialiser le cache et donc avoir une opération préalable de
 
 ## Exemples
 
+### Déplacement optimaux
+
+{% lien %}
+[Nombre de chemins (exercice 7)](https://www.mathly.fr/prog_dyn.pdf)
+{% endlien %}
+
+On suppose que l'on se trouve en $(0, 0)$ et que l'on veuille se déplacer sur la case $(n, n)$ en utilisant uniquement les déplacements $(1, 0)$ (d'une case vers le haut) et $(0, 1)$ (une case vers la droite).
+
+{% exercice %}
+Créez un algorithme utilisant la programmation dynamique permettant de calculer le nombre de chemins différents permettant d'aller de $(0, 0)$ à $(n, n)$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+On construit une matrice carrée $N$ à $n+1$ lignes telle que $N[i][j]$ contienne le nombre de chemins différents pour aller en $(i, j)$. Comme on ne peut se déplacer que vers la droite ou vert le haut, il est clair que l'on a :
+
+- $N[0][j] = j$ pour tous $0\leq j \leq n$
+- $N[i][0] = i$ pour tous $0\leq i \leq n$
+- $N[i][j] = N[i-1][j] + N[i][j-1]$ pour tous $0 < i, j \leq n$
+
+On peut alors remplir la matrice ligne à ligne (ou colonne par colonne) :
+
+```pseudocode
+algorithme nombre_chemins(n: entier) → entier:
+    N ← un tableau de [entier] de taille n+1
+    N[:] ← un tableau de n+1 entiers
+
+    pour chaque j de [0, n]:
+        N[0][j] ← j
+
+    pour chaque i de [1, n]:
+        N[1][0] ← 1
+        pour chaque j de [1, n]:
+            N[i][j] ← N[i-1][j] + N[i][j-1]
+        
+    rendre N[n][n]
+```
+
+{% enddetails %}
+
+On suppose maintenant que l'on a des points d'intérêts répartis sur la grille.
+
+{% exercice %}
+Créez un algorithme utilisant la programmation dynamique permettant de calculer le nombre maximum de points d'intérêts que l'on peut visiter pour aller de de $(0, 0)$ à $(n, n)$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Une petite modification de l'algorithme précédent permet de répondre à la question :
+
+```pseudocode
+algorithme nombre_chemins(n: entier, P: [(entier, entiers)]) → entier:
+    N ← un tableau de [entier] de taille n+1
+    N[:] ← un tableau de n+1 entiers
+
+    si (0, 0) est dans P:
+        N[0][0] ← 1
+    sinon:
+        N[0][0] ← 0
+    pour chaque k de [1, n]:
+        N[0][k] ← N[0][k - 1]
+        N[k][0] ← N[k - 1][0]
+        si (0, k) est dans P:
+            N[0][k] ← N[0][k] + 1
+        si (k, 0) est dans P:
+            N[k][0] ← N[k][0] + 1
+
+    pour chaque i de [1, n]:
+        pour chaque j de [1, n]:
+            N[i][j] ← max(N[i-1][j], N[i][j-1])
+            si (i, j) est dans P:
+                N[i][j] ← N[i][j] + 1
+
+        
+    rendre N[n][n]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Modifiez l'algorithme précédent pour qu'il puisse rendre un chemin maximisant le nombre de points d'intérêts visités.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut parcours la matrice N créé par l'algorithme de la question précédente à rebours en conservant le nombre de points d'intérêt.
+
+```algorithme chemin(N: [[entier]], P: P: [(entier, entiers)]) → [(entier, entiers)]:
+    C ← une liste de (entier, entiers)
+    n ← N.longueur - 1
+    ajouter (n, n) en début de C
+    i, j ← (n, n)
+
+    tant que (i, j) ≠ (0, 0):
+        Si (j == 0) ou (N[i-1][j] > N[i][j - 1]):
+            ajouter (i-1, j) en début de C
+            i, j ← i-1, j
+        sinon:
+            ajouter (i, j-1) en début de C
+            i, j ← i, j - 1
+
+    rendre C
+```
+
+{% enddetails %}
+
+### Découpage d'un câble
+
+{% lien %}
+[Découper un cable](https://www.youtube.com/watch?v=tufup6HlwWg)
+{% endlien %}
+
+Ce problème est un classique de la programmation dynamique. Il apparaît de manière détournée dans nombre d'autre problème, il est donc bon de connaître et le problème et sa résolution.
+
+On suppose que l'on possède un câble de $n$ mètres que l'on revendre par bouts. Pour cela on dispose d'un tableau $P$ de taille $n+1$ indiquant en $P[k]$ le prix de vendre d'une longueur de $0\leq k \leq n$ mètres de notre câble (si on ne peut pas vendre de cable de longueur $k$, on aura $P[k] = 0$).
+
+La question est de trouver un tableau $V$ de $n+1$ entiers tel que :
+
+- $\sum V[i] \leq n$
+- $M_n = \sum (V[i] \cdot P[i])$ soit maximum parmi tous les tableaux $V'$ de taille $n+1$ tels que $\sum V'[i] \leq n$.
+
+Ce tableau représente le prix maximum que l'on peut tirer de la vente de notre cable en $V[i]$ bouts de longueur $i$ pour $0\leq i \leq n$.
+
+{% exercice %}
+Exprimez $M_n$ en fonction de $M_m$ avec $m\leq n$.
+{% endexercice %}
+{% details "corrigé" %}
+On pose $M_0 = 0$ et pour $n > 0$ :
+
+<div>
+$$
+M_n = \max(\\{ M_m + P[n-m] \vert 0 \leq m < n \\})
+$$
+</div>
+
+{% enddetails %}
+{% exercice %}
+En déduire un algorithme en $\mathcal{O}(n^2)$ utilisant la programmation dynamique permettant de calculer $M_n$.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme vente(n: entier, P: [entier]) → entier:
+    M ← un tableau d'entiers de taille n + 1
+    M[0] ← 0
+
+    pour chaque m de [1, n]:
+        M[m] ← 0
+        pour chaque k de [0, m[:
+            si M[m] < M[k] + P[m-k]:
+                 M[m] ← M[k] + P[m-k]
+
+    rendre M[n]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Modifiez l'algorithme précédent pour qu'il rende $V[i]$. Assurez-vous que cet algorithme soit bien de complexité $\mathcal{O}(n^2)$ en temps et $\mathcal{O}(n)$ en espace.
+{% endexercice %}
+{% details "corrigé" %}
+
+On ajoute un tableau, `D` qui va stocker le découpage idéal $n-k$ tel que $M_n = M_k + P[n-k]$. Puis on utilise les valeurs de `D` pour créer `V`.
+
+```pseudocode
+algorithme vente(n: entier, P: [entier]) → [entier]:
+    M ← un tableau d'entiers de taille n + 1
+    M[0] ← 0
+    D ← un tableau d'entiers de taille n + 1
+    D[0] ← 0
+
+    pour chaque m de [1, n]:
+        M[m] ← 0
+        D[0] ← 0
+        pour chaque k de [0, m[:
+            si M[m] < M[k] + P[m-k]:
+                 M[m] ← M[k] + P[m-k]
+                 D[0] ← m - k
+
+    V ← un tableau d'entiers de taille n + 1
+    V[:] ← 0
+
+    pour chaque m de [0, n]:
+        V[D[m]] ← V[D[m]] + 1 
+    
+    rendre V
+```
+
+{% enddetails %}
+
+### Fiabilité maximale
+
+Un système complexe est composé de $n$ composants. Chaque composant à un coût $c_i$ et une probabilité de panne valant $p_i$.
+
+On cherche à obtenir le système le plus fiable possible, pour un coût total inférieur à $C$, en dupliquant les composants si nécessaire. Le $i$ composant étant en panne que si ses $n_i$ duplications sont en panne.
+
+{% exercice %}
+Quelle est la probabilité que les $n_i$ duplications du composant $i$ soient en panne ?
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire la probabilité de panne du système total.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+{% exercice %}
+Trouver le nombre de duplications nécessaires pour chaque composant afin de créer un système de fiabilité maximale à un coût inférieur à $C$.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
 ### Sous-suite croissante maximum
 
 {% lien %}
@@ -237,226 +458,5 @@ print(sous_suite(T))
 ```
 
 La complexité est clairement en $\mathcal{O}(n^2)$.
-
-{% enddetails %}
-
-### Découpage d'un câble
-
-{% lien %}
-[Découper un cable](https://www.youtube.com/watch?v=tufup6HlwWg)
-{% endlien %}
-
-Ce problème est un classique de la programmation dynamique. Il apparaît de manière détournée dans nombre d'autre problème, il est donc bon de connaître et le problème et sa résolution.
-
-On suppose que l'on possède un câble de $n$ mètres que l'on revendre par bouts. Pour cela on dispose d'un tableau $P$ de taille $n+1$ indiquant en $P[k]$ le prix de vendre d'une longueur de $0\leq k \leq n$ mètres de notre câble (si on ne peut pas vendre de cable de longueur $k$, on aura $P[k] = 0$).
-
-La question est de trouver un tableau $V$ de $n+1$ entiers tel que :
-
-- $\sum V[i] \leq n$
-- $M_n = \sum (V[i] \cdot P[i])$ soit maximum parmi tous les tableaux $V'$ de taille $n+1$ tels que $\sum V'[i] \leq n$.
-
-Ce tableau représente le prix maximum que l'on peut tirer de la vente de notre cable en $V[i]$ bouts de longueur $i$ pour $0\leq i \leq n$.
-
-{% exercice %}
-Exprimez $M_n$ en fonction de $M_m$ avec $m\leq n$.
-{% endexercice %}
-{% details "corrigé" %}
-On pose $M_0 = 0$ et pour $n > 0$ :
-
-<div>
-$$
-M_n = \max(\\{ M_m + P[n-m] \vert 0 \leq m < n \\})
-$$
-</div>
-
-{% enddetails %}
-{% exercice %}
-En déduire un algorithme en $\mathcal{O}(n^2)$ utilisant la programmation dynamique permettant de calculer $M_n$.
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme vente(n: entier, P: [entier]) → entier:
-    M ← un tableau d'entiers de taille n + 1
-    M[0] ← 0
-
-    pour chaque m de [1, n]:
-        M[m] ← 0
-        pour chaque k de [0, m[:
-            si M[m] < M[k] + P[m-k]:
-                 M[m] ← M[k] + P[m-k]
-
-    rendre M[n]
-```
-
-{% enddetails %}
-
-{% exercice %}
-Modifiez l'algorithme précédent pour qu'il rende $V[i]$. Assurez-vous que cet algorithme soit bien de complexité $\mathcal{O}(n^2)$ en temps et $\mathcal{O}(n)$ en espace.
-{% endexercice %}
-{% details "corrigé" %}
-
-On ajoute un tableau, `D` qui va stocker le découpage idéal $n-k$ tel que $M_n = M_k + P[n-k]$. Puis on utilise les valeurs de `D` pour créer `V`.
-
-```pseudocode
-algorithme vente(n: entier, P: [entier]) → [entier]:
-    M ← un tableau d'entiers de taille n + 1
-    M[0] ← 0
-    D ← un tableau d'entiers de taille n + 1
-    D[0] ← 0
-
-    pour chaque m de [1, n]:
-        M[m] ← 0
-        D[0] ← 0
-        pour chaque k de [0, m[:
-            si M[m] < M[k] + P[m-k]:
-                 M[m] ← M[k] + P[m-k]
-                 D[0] ← m - k
-
-    V ← un tableau d'entiers de taille n + 1
-    V[:] ← 0
-
-    pour chaque m de [0, n]:
-        V[D[m]] ← V[D[m]] + 1 
-    
-    rendre V
-```
-
-{% enddetails %}
-
-### Déplacement optimaux
-
-{% lien %}
-[Nombre de chemins (exercice 7)](https://www.mathly.fr/prog_dyn.pdf)
-{% endlien %}
-
-On suppose que l'on se trouve en $(0, 0)$ et que l'on veuille se déplacer sur la case $(n, n)$ en utilisant uniquement les déplacements $(1, 0)$ (d'une case vers le haut) et $(0, 1)$ (une case vers la droite).
-
-{% exercice %}
-Créez un algorithme utilisant la programmation dynamique permettant de calculer le nombre de chemins différents permettant d'aller de $(0, 0)$ à $(n, n)$.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-On construit une matrice carrée $N$ à $n+1$ lignes telle que $N[i][j]$ contienne le nombre de chemins différents pour aller en $(i, j)$. Comme on ne peut se déplacer que vers la droite ou vert le haut, il est clair que l'on a :
-
-- $N[0][j] = j$ pour tous $0\leq j \leq n$
-- $N[i][0] = i$ pour tous $0\leq i \leq n$
-- $N[i][j] = N[i-1][j] + N[i][j-1]$ pour tous $0 < i, j \leq n$
-
-On peut alors remplir la matrice ligne à ligne (ou colonne par colonne) :
-
-```pseudocode
-algorithme nombre_chemins(n: entier) → entier:
-    N ← un tableau de [entier] de taille n+1
-    N[:] ← un tableau de n+1 entiers
-
-    pour chaque j de [0, n]:
-        N[0][j] ← j
-
-    pour chaque i de [1, n]:
-        N[1][0] ← 1
-        pour chaque j de [1, n]:
-            N[i][j] ← N[i-1][j] + N[i][j-1]
-        
-    rendre N[n][n]
-```
-
-{% enddetails %}
-
-On suppose maintenant que l'on a des points d'intérêts répartis sur la grille.
-
-{% exercice %}
-Créez un algorithme utilisant la programmation dynamique permettant de calculer le nombre maximum de points d'intérêts que l'on peut visiter pour aller de de $(0, 0)$ à $(n, n)$.
-
-```pseudocode
-algorithme nombre_chemins(n: entier, P: [(entier, entiers)]) → entier:
-    N ← un tableau de [entier] de taille n+1
-    N[:] ← un tableau de n+1 entiers
-
-    si (0, 0) est dans P:
-        N[0][0] ← 1
-    sinon:
-        N[0][0] ← 0
-    pour chaque k de [1, n]:
-        N[0][k] ← N[0][k - 1]
-        N[k][0] ← N[k - 1][0]
-        si (0, k) est dans P:
-            N[0][k] ← N[0][k] + 1
-        si (k, 0) est dans P:
-            N[k][0] ← N[k][0] + 1
-
-    pour chaque i de [1, n]:
-        pour chaque j de [1, n]:
-            N[i][j] ← max(N[i-1][j], N[i][j-1])
-            si (i, j) est dans P:
-                N[i][j] ← N[i][j] + 1
-
-        
-    rendre N[n][n]
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-Une petite modification de l'algorithme précédent permet de répondre à la question :
-
-{% enddetails %}
-
-{% exercice %}
-Modifiez l'algorithme précédent pour qu'il puisse rendre un chemin maximisant le nombre de points d'intérêts visités.
-{% endexercice %}
-{% details "corrigé" %}
-
-Il faut parcours la matrice N créé par l'algorithme de la question précédente à rebours en conservant le nombre de points d'intérêt.
-
-```algorithme chemin(N: [[entier]], P: P: [(entier, entiers)]) → [(entier, entiers)]:
-    C ← une liste de (entier, entiers)
-    n ← N.longueur - 1
-    ajouter (n, n) en début de C
-    i, j ← (n, n)
-
-    tant que (i, j) ≠ (0, 0):
-        Si (j == 0) ou (N[i-1][j] > N[i][j - 1]):
-            ajouter (i-1, j) en début de C
-            i, j ← i-1, j
-        sinon:
-            ajouter (i, j-1) en début de C
-            i, j ← i, j - 1
-
-    rendre C
-```
-
-{% enddetails %}
-
-### Fiabilité maximale
-
-Un système complexe est composé de $n$. Chaque composant à un coût $c_i$ et une probabilité de panne valant $p_i$.
-
-On cherche à obtenir le système le plus fiable possible, pour un coût total inférieur à $C$, en dupliquant les composants si nécessaire. Le $i$ composant étant en panne que si ses $n_i$ duplications sont en panne.
-
-{% exercice %}
-Quelle est la probabilité que les $n_i$ duplications du composant $i$ soient en panne ?
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
-
-{% enddetails %}
-{% exercice %}
-En déduire la probabilité de panne du système total.
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
-
-{% enddetails %}
-
-{% exercice %}
-Trouver le nombre de duplications nécessaires pour chaque composant afin de créer un système de fiabilité maximale à un coût inférieur à $C$.
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
 
 {% enddetails %}

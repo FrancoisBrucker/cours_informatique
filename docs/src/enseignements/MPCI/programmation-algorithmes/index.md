@@ -378,7 +378,7 @@ N'hésitez pas à aller jeter eu coup d'œil aux exercices sur les piles et les 
 
 {% aller %}
 
-[Hachage et dictionnaires](/cours/algorithmie/structure-dictionnaire/){.interne}
+[Hash et dictionnaires](/cours/algorithmie/structure-dictionnaire/){.interne}
 
 {% endaller %}
 
@@ -500,6 +500,15 @@ On s'entraîne :
 
 {% endaller %}
 
+Pour aller plus loin, amélioration des dès et des cartes :
+
+{% aller %}
+
+- [Accesseur et dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur){.interne}
+- [protéger les attributs de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object){.interne}
+
+{% endaller %}
+
 ### Semaine 10
 
 > 31/03 au 04/04
@@ -512,16 +521,24 @@ On s'entraîne sur l'héritage :
 [Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
 {% endaller %}
 
-Pour aller plus loin, amélioration des dès et des cartes :
-
-{% aller %}
-
-- [Accesseur et dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur){.interne}
-- [protéger les attributs de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object){.interne}
-
-{% endaller %}
-
 #### Vendredi : Méthodes de résolution de problèmes
+
+{% attention "Sujet DM4" %}
+Pour ce DM, il vous faudra commencer par lire et comprendre le cours de  [programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne} :
+
+- lisez (et **comprenez**) [la partie principes](/cours/coder-et-développer/programmation-évènementielle/principes){.interne}
+- faites [le projet Arkanoïd](/cours/coder-et-développer/programmation-évènementielle/projet-arkanoid/){.interne} pour vous mettre dans le bain.
+
+Ensuite, le sujet de DM proprement dit (c'est le DS de code de 2021/22) est là : [DM4 sujet](./annales/2021-2022/ds_2_sujet/){.interne}
+
+Vous devrez rendre :
+
+- votre code
+- un fichier markdown avec l'explicitation des différentes étapes que vous avez effectuées
+
+Enfin, pour bien faire (mais c'est optionnel), vous pouvez faire comme les grands et utiliser [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/){.interne} dans votre projet où vous placerez uniquement les modules nécessaires au projet. Si vous décidez de faire cette partie, il faudra ajouter à votre projet le fichier `requirement.txt`{.fichier}. **N'ajoutez pas l'interpréteur !** : le but est justement de pouvoir uniquement donner ce qui est nécessaire à sa création sur différentes environnements...
+
+{% endattention %}
 
 On refait de l'algorithmie :
 
@@ -546,9 +563,6 @@ Sujet du test 6
 
 {% attention %}
 Rendre DM3
-{% endattention %}
-{% attention %}
-Sujet DM4 : programmation évènementielle.
 {% endattention %}
 
 On se focalise sur une méthode particulière de design d'algorithme, les algorithmes gloutons :
