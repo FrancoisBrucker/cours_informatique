@@ -15,7 +15,7 @@ Attention, souvent les algorithmes gloutons n'ont pas de garanties du tout. Beau
 
 ## Gloutons optimal
 
-Comme toujours lorsque l'on crée un algorithme glouton, la principale difficulté est de trouver l'ordre dans lequel considérer les objets. Une fois cet ordre trouvé les preuves sont toujours les mêmes (mais il faut tout de même la faire).
+Comme toujours lorsque l'on crée un algorithme glouton, la principale difficulté est de trouver l'ordre dans lequel considérer les objets. Une fois cet ordre trouvé les preuves sont toujours les mêmes (mais il faut tout de même les faire).
 
 ### Recouvrement
 
@@ -25,15 +25,15 @@ Donnez un algorithme glouton exhibant un nombre minimal $K$ d'intervalles unité
 {% endexercice %}
 {% details "corrigé" %}
 
-On classe les réels par ordre croissants puis pour chaque réel $x_i$ on  ajoute l'intervalle $[x_i, x_i + 1]$ s'il n'est pas déjà couvert.
+On classe les réels par ordre croissant puis pour chaque réel $x_i$ on  ajoute l'intervalle $[x_i, x_i + 1]$ s'il n'est pas déjà couvert.
 
 On utilise la preuve par l'absurde du cours. On suppose que l'algorithme glouton n'est pas optimal et choisit une solution optimale coïncidant le plus longtemps possible avec la solution de notre glouton. Soit $i$ la première tape où les choix ont divergé : c'est à dire la première étape où le glouton a ajouté l'intervalle $[x_i, x_i + 1]$ alors qu'il n'est pas dans la solution optimale considérée.
 
 On va distinguer deux cas :
 
-1. $i=1$. Ce cas est impossible car comme $x_1$ est le plus petit réel,  on peut remplacer tous ses intervalles se finissant avant $x_1 + 1$ par l'intervalle $[x_i, x_i + 1]$ dans la solution optimale pour obtenirune solution (les intervalles couvrent clairement tous les réels) avec un nombre plus petit nombre d'intervalle et coïncidant plus longtemps avec le glouton : ceci est impossible par hypothèse.
-2. $i>1$. Il existe dans la solution optimale (ou moins) un intervalle couvrant $x_i$. Nommons cet intervalle $[a, a+1]$. On a que $a< x+i$ puisque  $[x_i, x_i + 1]$ n'est pas dans la solution optimale. Mais comme il n'existe aucun réel dans $[a, x_i[$ qui ne soit pas couvert par des intervalles précédemment mis dans le glouton, ils sont aussi couvert par cette solution optimale (les deux solutions coïncident jusque là): on peut procéder comme dans le cas précédent et supprimer tous les intervalles couvrants $x_i$ dans la solution optimale et les remplacer par $[x_i, x_i + 1]$ pour continuer de couvrir tous les réels. Ceci viole notre hypothèse puisque :
-    1. le nombre d'intervalle conserver est plus petit ou égale à la solution optimale initiale : c'est donc également une solution optimale 
+1. $i=1$. Ce cas est impossible car comme $x_1$ est le plus petit réel, on peut remplacer tous les intervalles se finissant avant $x_1 + 1$ par l'intervalle $[x_i, x_i + 1]$ dans la solution optimale pour obtenir une solution (les intervalles couvrent clairement tous les réels) avec un nombre plus petit nombre d'intervalles et coïncidant plus longtemps avec le glouton : ceci est impossible par hypothèse.
+2. $i>1$. Il existe dans la solution optimale (ou moins) un intervalle couvrant $x_i$. Nommons cet intervalle $[a, a+1]$. On a que $a< x_i+1$ puisque  $[x_i, x_i + 1]$ n'est pas dans la solution optimale. Mais comme les réels dans $[a, x_i[$ sont couverts par des intervalles précédemment mis dans le glouton, ils sont aussi couverts par cette solution optimale (les deux solutions coïncident jusque-là): on peut procéder comme dans le cas précédent et supprimer tous les intervalles couvrants $x_i$ dans la solution optimale et les remplacer par $[x_i, x_i + 1]$ pour continuer de couvrir tous les réels. Ceci viole notre hypothèse puisque :
+    1. le nombre d'intervalles conservés est plus petit ou égal à la solution optimale initiale : c'est donc également une solution optimale 
     2. elle coïncide plus longtemps avec notre glouton.
 
 {% enddetails %}
@@ -85,7 +85,7 @@ for i in range(n):
 
 A chaque itération de la boucle for, le passager $i$ est placé dans le premier train possible qui part après son train initialement voulu si celui-ci est plein.
 
-Notez que cet algorithme permet de faire partir tous les voyageurs dans leur train initial s'il était non plein au d´part.
+Notez que cet algorithme permet de faire partir tous les voyageurs dans leur train initial s'il était non plein au départ.
 
 Cette solution est optimale pour la fonction $\sum_{i\geq 1}(t'[i] - t[i])$ où $t'[i]$ est le train effectivement pris par le passager $i$.
 
@@ -93,7 +93,7 @@ Cette solution est optimale pour la fonction $\sum_{i\geq 1}(t'[i] - t[i])$ où 
 
 ### Une quête d'essence
 
-Une route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. La distance du départ de la station $i$ est de $d_i$ kilomètres et on considère que $d[0] = 0$.
+Une route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. La distance du départ à la station $i$ est de $d_i$ kilomètres et on considère que $d[0] = 0$.
 
 Le but est d'atteindre la dernière station de la route avec un réservoir de $L$ litres d'essence, en considérant qu'un litre d'essence permet de faire 1 kilomètre.
 
@@ -197,7 +197,7 @@ La preuve de l'optimalité vient du fait que l'essence mise à la station $i$ pe
 
 ## Problèmes d'ordonnancements
 
-Les problèmes d'ordonnancements sont très importants car nombre de problèmes courants peuvent s'écrire sous cette forme. Nous allons voir dans cette partie quelques exemples où l'approche gloutonne est optimale.
+Les problèmes d'ordonnancement sont très importants car nombre de problèmes courants peuvent s'écrire sous cette forme. Nous allons voir dans cette partie quelques exemples où l'approche gloutonne est optimale.
 
 ### Ordonnancement avec pénalité
 
@@ -444,7 +444,7 @@ La borne peut être atteinte en utilisant uniquement deux types de caisses : des
 Montrez qu'en utilisant des caisses de volume 1 et $K/2$ l'ordre dans lequel les caisses sont examinées par le glouton peut aller du simple au (presque) double en nombre de solutions.
 {% endexercice %}
 {% details "corrigé" %}
-Si l'on a $n_1$ caisses de volume $K/2$ et $n_2$ caisses de volume 1, le nombres optimal de caisses est : $n_1 / 2 + n_2/K$. L'ordre est bien optimal puisque toutes les caisses sauf une seront remplies au maximum.
+Si l'on a $n_1$ caisses de volume $K/2$ et $n_2$ caisses de volume 1, le nombre optimal de caisses est : $n_1 / 2 + n_2/K$. L'ordre est bien optimal puisque toutes les caisses sauf une seront remplies au maximum.
 
 En examinant les caisses alternativement de volume 1 et $K/2$, et en supposant que $n_1 \geq n_2$ on aura besoin de $n_1 + (n_2-n_1)/K = n_1(1-1/K) + n_2/K$ caisses. Si $n_1 = n_2 = 2K$, le nombre optimal sera $K +2$ et celui obtenu par le glouton de $2K$. Ce rapport de l'optimum sur le glouton va tendre vers 1/2 lorsque $K$ grandit.
 {% enddetails %}

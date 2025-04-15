@@ -44,41 +44,41 @@ On voit en creux que ce type d'algorithmes :
 Ils sont très utilisés car :
 
 - ils donnent toujours un résultat
-- ils sont souvent de complexités faibles
+- ils sont souvent de complexité faible
 
 Attention cependant :
 
-- ils ne donne pas forcément le meilleur résultat : c'est souvent des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique)
+- ils ne donnent pas forcément le meilleur résultat : c'est souvent des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique)
 - il n'y pas forcément de solution unique
 
 En conclusion :
 
 {% note %}
-Ce type d'algorithmes est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec la [structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde).
+Ce type d'algorithme est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Ils sont, par exemple, en bijection avec la [structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde).
 {% endnote %}
 
 Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.
 
-### Comment designer un algorithme glouton
+### Comment concevoir un algorithme glouton
 
 1. écrire le problème comme un problème d'optimisation
 2. découper le problème en une succession d'étapes où il est facile de choisir la meilleure solution
 3. choisir un ordre de parcours des différentes étapes
 
-Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble _optimal_ d'un ensemble connu. Dans ce cas là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.
+Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble _optimal_ d'un ensemble connu. Dans ce cas-là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.
 
 ### Optimalité et glouton
 
-Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possible, une solution minimisant (ou maximisant) un critère. Par exemple :
+Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possibles, une solution minimisant (ou maximisant) un critère. Par exemple :
 
-- pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coûts tout en maximisant la qualité totale des pièces
+- pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coût tout en maximisant la qualité totale des pièces
 - parmi tous les parcours passant par un ensemble de villes donné, choisir celui qui minimise le nombre de kilomètres parcourus
 - maximiser le nombre de films projetés dans un multiplexe de cinéma
 - ...
 
-La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions ça peut prendre vraiment beaucoup de temps.
+La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions, ça peut prendre vraiment beaucoup de temps.
 
-Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée _algorithmes gloutons_.
+Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement une solution est appelée _algorithmes gloutons_.
 
 ### Condition nécessaire et suffisante d'optimalité
 
@@ -305,9 +305,9 @@ La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film 
 
 ## <span id="exemple-ordonnancement"></span>Exemple 3 : ordonnancement
 
-Les problèmes d'ordonnancement sont multiples. Certains sont durs d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
+Les problèmes d'ordonnancement sont multiples. Certains sont durs, d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
 
-Le problème suivant est résoluble par un algorithme glouton : On considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on a qu'un seul ouvrier.
+Le problème suivant est résoluble par un algorithme glouton : on considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on n'a qu'un seul ouvrier.
 
 Il faut donc trouver un sous-ensemble de produits à créer parmi la liste de toutes les possibilités (exemple : la liste de toutes les dates de match de foot ou de concerts) **et** l'ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.
 

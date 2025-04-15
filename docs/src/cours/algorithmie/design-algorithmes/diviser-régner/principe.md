@@ -21,17 +21,17 @@ L'élégance de ce principe réside dans le fait que l'on peut utiliser l'algori
 
 ### Sous-problème
 
-Si l'on peut trouver _facilement_ une restriction du problème dans la quelle va se trouver la solution globale, on peut utiliser le design suivant :
+Si l'on peut trouver _facilement_ une restriction du problème dans laquelle va se trouver la solution globale, on peut utiliser le design suivant :
 
 ```pseudocode
 algorithme diviser(données):
-    À partir de données créer k donnees_partielles_i (1 ≤ i ≤ k)
+    À partir de données créer, k donnees_partielles_i (1 ≤ i ≤ k)
     Parmi ces k donnees_partielles_i, en choisir une que l'on nomme donnee_partielle
 
     rendre diviser(donnee_partielle)
 ```
 
-On restreins nos données en supprimant les données superflues : c'est le principe d'un algorithme récursif où l'on restreint à chaque itération l'ensemble de nos données.
+On restreint nos données en supprimant les données superflues : c'est le principe d'un algorithme récursif où l'on restreint à chaque itération l'ensemble de nos données.
 
 On a utilisé ce principe dans :
 
@@ -49,7 +49,7 @@ Mais souvent, il ne suffit pas de diviser pour trouver notre solution, il faut p
 
 ```pseudocode
 algorithme diviser_puis_combiner(données):
-    À partir de données créer k donnees_partielles_i (1 ≤ i ≤ k)
+    À partir de données, créer k donnees_partielles_i (1 ≤ i ≤ k)
     pour chaque i  de [1, k]:
         solution_i ← diviser_puis_combiner(donnees_partielles_i)
 
@@ -72,7 +72,7 @@ On l'a utilisé pour le tri car :
 - il est plus généralement facile de construire un tableau trié à partir de 2 sous-tableaux triés (tri fusion)
 
 {% info %}
-Si la seconde condition est pus générale, la première peut se faire in-place ce qui est avantageux si le tableau à trié est gigantesque.
+Si la seconde condition est plus générale, la première peut se faire in-place ce qui est avantageux si le tableau à trier est gigantesque.
 {% endinfo %}
 
 ## Complexité
@@ -81,7 +81,7 @@ Pour connaître la complexité d'un algorithme sous la forme diviser pour régne
 
 - le coût du découpage en sous-problème
 - le nombre d'appels récursifs
-- le coût de la combinaison des solutions partielle en une solution globale
+- le coût de la combinaison des solutions partielles en une solution globale
 
 La forme de l'équation de récursion est toujours la même et sa valeur est donnée par le **[Master theorem](https://fr.wikipedia.org/wiki/Master_theorem)**. Il existe plusieurs formes de ce théorème, nous donnons ici sa forme en $\mathcal{O}$ qui est la plus simple à démontrer :
 
@@ -96,7 +96,7 @@ C(n) \leq a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
 $$
 </div>
 
-Est en :
+est en :
 
 - $C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$ (équivalent à $d = \log_b(a)$)
 - $C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a>b^d$
@@ -168,7 +168,7 @@ On en déduit facilement que :
 {% info %}
 Le master theorem est la raison pour laquelle vous verrez parfois des complexités avec des exposants non entiers
 {% endinfo %}
-Dans le cas du tri fusion on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :
+Dans le cas du tri fusion, on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :
 
 ## Exemples
 
@@ -231,7 +231,7 @@ Utiliser la méthode diviser pour régner pour créer un algorithme de complexit
 On suppose pour cet exercice que l'on cherche à multiplier deux matrices carrées (de dimension $n$) $A$ et $B$, avec $n$ une puissance de 2.
 
 {% info %}
-La méthode de Strassen fonctionne de la même manière pour la multiplication de matrices non carrées ou dont le no,bre de lignes n'est pas une puissance de 2, il faut juste faire attention lorsque l'on divise par 2.
+La méthode de Strassen fonctionne de la même manière pour la multiplication de matrices non carrées ou dont le nombre de lignes n'est pas une puissance de 2, il faut juste faire attention lorsque l'on divise par 2.
 {% endinfo %}
 
 #### Algorithme naif
@@ -275,7 +275,7 @@ $$
 Avec $A_{i, j}$ et $B_{i, j}$ des matrices carrées de taille $n/2$.
 
 {% exercice %}
-Exprimez ce calcule par sous matrices dans un algorithme de type diviser pour régner
+Exprimez ce calcul par sous-matrices dans un algorithme de type diviser pour régner
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -343,7 +343,7 @@ En déduire la complexité de ce nouvel algorithme. Conclusion ?
 
 {% enddetails %}
 
-Vous voyez que gagner 1 multiplication de matrice fait fait gagner beaucoup en complexité... Et on peut faire mieux, l'exposant diminue régulièrement au fil du temps et des nouveaux algorithmes. On en est actuellement (en 2025 et à ma meilleure connaissance) a des algorithmes de complexité $\mathcal{O}(n^{2.37286})$.
+Vous voyez que gagner 1 multiplication de matrice fait gagner beaucoup en complexité... Et on peut faire mieux, l'exposant diminue régulièrement au fil du temps et des nouveaux algorithmes. On en est actuellement (en 2025 et à ma meilleure connaissance) à des algorithmes de complexité $\mathcal{O}(n^{2.37286})$.
 
 {% lien %}
 
@@ -356,10 +356,10 @@ Vous voyez que gagner 1 multiplication de matrice fait fait gagner beaucoup en c
 
 On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.
 
-Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour inverser un matrice en utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion). Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
+Dans son article séminal, Strassen montre que l'on peut utiliser cet algorithme pour inverser une matrice en utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion). Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
 
 {% exercice %}
-En utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion) et le master theorem, montez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
+En utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion) et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -377,12 +377,12 @@ Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{
 
 #### Déterminant de matrice
 
-On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.
+On suppose que l'on possède un algorithme de multiplication de matrices carrées à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.
 
 Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour calculer le déterminant d'un matrice en utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices). Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
 
 {% exercice %}
-En utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices) et le master theorem, montez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
+En utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices) et le master theorem, montrez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -404,6 +404,6 @@ Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{
 
 > TBD exo 3 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>
 
-### Nombre d'inversion
+### Nombre d'inversions
 
 > TBD exo 4 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>
