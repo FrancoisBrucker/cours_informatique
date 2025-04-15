@@ -128,11 +128,11 @@ pour chaque i de 1 à n:
 <p>Ils sont très utilisés car :</p>
 <ul>
 <li>ils donnent toujours un résultat</li>
-<li>ils sont souvent de complexités faibles</li>
+<li>ils sont souvent de complexité faible</li>
 </ul>
 <p>Attention cependant :</p>
 <ul>
-<li>ils ne donne pas forcément le meilleur résultat : c'est souvent des <a href="https://fr.wikipedia.org/wiki/Heuristique">heuristiques</a></li>
+<li>ils ne donnent pas forcément le meilleur résultat : c'est souvent des <a href="https://fr.wikipedia.org/wiki/Heuristique">heuristiques</a></li>
 <li>il n'y pas forcément de solution unique</li>
 </ul>
 <p>En conclusion :</p>
@@ -141,27 +141,27 @@ pour chaque i de 1 à n:
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ce type d'algorithmes est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec la <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">structure de matroïde</a>.</p>
+<p>Ce type d'algorithme est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Ils sont, par exemple, en bijection avec la <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">structure de matroïde</a>.</p>
 </div></div>
 
 <p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.</p>
-<h3>Comment designer un algorithme glouton</h3>
+<h3>Comment concevoir un algorithme glouton</h3>
 <ol>
 <li>écrire le problème comme un problème d'optimisation</li>
 <li>découper le problème en une succession d'étapes où il est facile de choisir la meilleure solution</li>
 <li>choisir un ordre de parcours des différentes étapes</li>
 </ol>
-<p>Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble <em>optimal</em> d'un ensemble connu. Dans ce cas là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.</p>
+<p>Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble <em>optimal</em> d'un ensemble connu. Dans ce cas-là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.</p>
 <h3>Optimalité et glouton</h3>
-<p>Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possible, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
+<p>Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possibles, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
 <ul>
-<li>pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coûts tout en maximisant la qualité totale des pièces</li>
+<li>pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coût tout en maximisant la qualité totale des pièces</li>
 <li>parmi tous les parcours passant par un ensemble de villes donné, choisir celui qui minimise le nombre de kilomètres parcourus</li>
 <li>maximiser le nombre de films projetés dans un multiplexe de cinéma</li>
 <li>...</li>
 </ul>
-<p>La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions ça peut prendre vraiment beaucoup de temps.</p>
-<p>Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée <em>algorithmes gloutons</em>.</p>
+<p>La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions, ça peut prendre vraiment beaucoup de temps.</p>
+<p>Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement une solution est appelée <em>algorithmes gloutons</em>.</p>
 <h3>Condition nécessaire et suffisante d'optimalité</h3>
 <p>On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale :</p>
 <p>En reprenant le <a href=",/#sch%C3%A9ma-algo">schéma générique de l'algorithme glouton</a> on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :</p>
@@ -410,8 +410,8 @@ boucle <code class="language-">for</code>.</li>
 <h4>Preuve de l'algorithme : minimum de salles</h4>
 <p>La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n'est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.</p>
 <h2><span id="exemple-ordonnancement"></span>Exemple 3 : ordonnancement</h2>
-<p>Les problèmes d'ordonnancement sont multiples. Certains sont durs d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.</p>
-<p>Le problème suivant est résoluble par un algorithme glouton : On considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on a qu'un seul ouvrier.</p>
+<p>Les problèmes d'ordonnancement sont multiples. Certains sont durs, d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.</p>
+<p>Le problème suivant est résoluble par un algorithme glouton : on considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on n'a qu'un seul ouvrier.</p>
 <p>Il faut donc trouver un sous-ensemble de produits à créer parmi la liste de toutes les possibilités (exemple : la liste de toutes les dates de match de foot ou de concerts) <strong>et</strong> l'ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.</p>
 <p>Commençons par montrer que cet ordre est facile à trouver.</p>
 <h3>Ordre de production</h3>
