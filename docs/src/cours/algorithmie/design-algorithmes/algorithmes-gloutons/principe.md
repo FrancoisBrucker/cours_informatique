@@ -23,7 +23,7 @@ On va voir la construction et la preuve d'algorithmes gloutons pour résoudre de
 Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.
 {% endnote %}
 
-Certains problèmes permettent en effet d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée _algorithmes gloutons_.
+Certains problèmes permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée _algorithmes gloutons_.
 
 Le schéma général d'un algorithme glouton est alors le suivant :
 
@@ -60,7 +60,7 @@ Attention cependant :
 
 En conclusion :
 
-{% note "À retenir" %}
+{% note "**À retenir**" %}
 
 1. Ce type d'algorithmes est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale.
 
@@ -68,7 +68,7 @@ En conclusion :
 
 {% endnote %}
 
-Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.
+Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.
 
 ### Comment concevoir un algorithme glouton
 
@@ -119,9 +119,7 @@ Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :
 
 {% endnote %}
 
-Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre des problèmes d'optimisation.
-
-> TBD caractériser les 3 types d'exemple.
+Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation.
 
 ## <span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces
 
