@@ -47,7 +47,7 @@ La correction se fait par récurrence sur `n`{.language-} allant de `n = 0`{.lan
 
 {% enddetails %}
 
-## Concaténation
+## <span id="concaténation"></span>Concaténation
 
 {% exercice %}
 Donnez et prouvez **un algorithme itératif** de signature :
@@ -109,9 +109,35 @@ Lorsque le résultat d'une boucle est évidente, il n'est n'est pas nécessaire 
 Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.
 {% endnote %}
 
+## <span id="égalité-tableaux"></span>Égalité de tableaux
+
+{% exercice %}
+Écrivez un algorithme itératif permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
+
+C'est à dire qu'il existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant [notre algorithme `nombre`{.language-}](../pseudo-code/#exercice-nombre-occurrences){.interne} Ce qui donne un l'algorithme suivant :
+
+```pseudocode
+algorithme égalité(t1: [entier], t2: [entier]) → entier
+    pour chaque e de t1:
+        si nombre(t1, e) ≠ nombre(t2, e):
+            rendre Faux
+        rendre Vrai
+```
+
+On ne peut rendre Vrai que si tous les éléments de t1 sont dans t2 avec un même montant. Donc uniquement s'il existe une existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
+
+{% enddetails %}
+
 ## <span id="suppression-valeur"></span>Suppression de valeurs
 
 Trouver un invariant permet de prouver efficacement un algorithme itératif. Pour des algorithmes simples, les bons invariants sont évidents à prouver une fois trouvé (on ne le donc fera pas explicitement) et permettent une preuve aisée. Entraînez vous avec l'exercice suivant :
+
+<span id="suppression-valeur-itératif"></span>
 
 {% exercice %}
 Donnez et prouvez **un algorithme itératif** de signature :
@@ -157,6 +183,8 @@ La preuve de l'invariant est évidente et permet de prouver l'algorithme en se p
 
 Utilisez l'algorithme `concaténation`{.language-} de la question précédente pour résoudre l'exercice suivant :
 
+<span id="suppression-valeur-récursif"></span>
+
 {% exercice %}
 Donnez et prouvez **un algorithme récursif** de signature :
 
@@ -189,7 +217,7 @@ Pour la correction une récurrence immédiate sur la taille du tableau nous perm
 
 {% enddetails %}
 
-## Retournement d'un tableau
+## <span id="retournement"></span>Retournement d'un tableau
 
 {% exercice %}
 Donnez et prouvez **un algorithme récursif** de signature :

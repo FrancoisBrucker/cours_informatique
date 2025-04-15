@@ -33,10 +33,7 @@ algorithme diviser(données):
 
 On restreint nos données en supprimant les données superflues : c'est le principe d'un algorithme récursif où l'on restreint à chaque itération l'ensemble de nos données.
 
-On a utilisé ce principe dans :
-
-- [la dichotomie](../../projet-classiques/#dichotomie){.interne}
-- [le problème $k$-SELECT](../../projet-problemes-classiques/médiane){.interne}
+On a utilisé ce principe dans [la dichotomie](../../../projet-classiques/#dichotomie){.interne} par exemple.
 
 {% note "**À retenir**" %}
 On utilise le design **diviser** que lorsqu'il est _facile_ (et rapide) algorithmiquement de trouver un sous-ensemble des données initiales donnant la même solution.
@@ -105,7 +102,7 @@ est en :
 {% endnote %}
 {% details "preuve", "open" %}
 
-Comme $C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$, il existe $N_0$ tel que pour tout $n \geq N_0$, on a :
+Comme $C(n) \leq a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$, il existe $N_0$ tel que pour tout $n \geq N_0$, on a :
 
 <div>
 $$

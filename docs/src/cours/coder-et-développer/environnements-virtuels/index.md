@@ -29,7 +29,7 @@ Il est fortement recommandé de créer un environnement virtuel pour **chaque** 
 
 ## Environnement python
 
-[On a vu que l'interpréteur python était un fichier](../installer-python/#interpréteur-emplacement){.interne} sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.
+[On a vu que l'interpréteur python était un fichier](../version-python/#interpréteur-emplacement){.interne} sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.
 
 ### Emplacement
 

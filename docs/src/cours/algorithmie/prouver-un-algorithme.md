@@ -223,6 +223,13 @@ Pour $n = 1$ `factorielle(1)`{.language-} vaut bien bien $1 = 1!$. On suppose no
 
 ### <span id="facto-iter"></span> Algorithme itératif
 
+> TBD preuve par :
+>
+> 1. évidence
+> 2. boucle en récursion
+> 3. invariant de boucle.
+>
+
 Les preuves des algorithmes itératifs nécessitent de trouver les raisons d'être des boucles. Ceci se fait en cherchant ce qui ne va pas varier.
 
 ```pseudocode
@@ -459,7 +466,46 @@ Notre invariant est vérifié.
 
 Cette partie là est facile si on a le bon invariant. Il suffit de regarder la valeur de l'invariant à la fin de la boucle. Dans notre cas $m$ vaut le maximum de tous les éléments du tableau tableau, c'est le maximum.
 
-### À vous : division euclidienne
+## À vous
+
+### Nombre dans un tableau
+
+Commençons par une mise au point :
+
+{% attention %}
+On a pas toujours besoin d'un invariant de boucle si une récurrence immédiate fonctionne !
+{% endattention %}
+
+Pour faire ceci de façon propre, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.
+
+{% exercice %}
+Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#exercice-nombre-occurrences){.interne} et prouver qu'il fonctionne en exhibant sa version récursive.
+
+{% endexercice %}
+{% details "corrigé" %}
+On remarque que l'algorithme fonctionne de la même manière si on prend une restriction du tableau. Explicitons cela.
+
+On voit que notre algorithme itératif est équivalent au programme récursif suivant :
+
+```pseudocode
+algorithme nombre'(t: [entier], x: entier) → entier:
+    si t.longueur == 0:
+        rendre 0
+    sinon si t[-1] == x:
+        rendre nombre'(t[:-1]) + 1
+    sinon:
+        rendre nombre'(t[:-1])
+```
+
+On montre alors par récurrence que notre algorithme fonctionne :
+
+1. si t.longueur == 0 : c'est OK
+2. on suppose notre algorithme OK pour des tableaux de longueur n
+3. pour un tableau de longueur n+1, la taille de t[:-1] est de n, et notre algorithme fonctionne. On ajoute ensuite 1 que si le dernier élément du tableau vaut x : notre algorithme fonctionne pour le tableau de longueur n+1 ce qui clot la preuve par récurrence.
+
+{% enddetails %}
+
+### Division euclidienne
 
 Vous trouverez ci-après une version itérative de l'algorithme de la division euclidienne que vous allez prouver par invariant de boucle.
 

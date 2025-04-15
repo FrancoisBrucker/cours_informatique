@@ -177,12 +177,12 @@ Enfin, très utilisée dans les langages fonctionnels et le cas o`u l'on doit su
 [Les listes chaînées](./structure-liste-chaînée){.interne}
 {% endaller %}
 
-#### Table de hashage et structures associées
+#### Fonctions de hash et structures associées
 
 Une autre structure fondamentale en algorithmie :
 
 {% aller %}
-[Tables de hashage et dictionnaires](./structure-dictionnaire){.interne}
+[Fonctions de hash et dictionnaires](./structure-dictionnaire){.interne}
 {% endaller %}
 
 #### Comparaisons des structures de conteneurs
@@ -274,7 +274,11 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
-#### Problème de l'enveloppe convexe
+## Intermède
+
+Avant de finir cette première partie du cours, accordons nous un intermède en 2 actes.
+
+### Problème de l'enveloppe convexe
 
 Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
 
@@ -282,13 +286,9 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
-## Intermède
-
-Avant de finir cette première partie du cours, accordons nous un intermède.
-
 ### Recherche universelle
 
-Commençons par regarder une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
+Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
 
 L'Algorithme pour tout résoudre :
 
@@ -296,16 +296,163 @@ L'Algorithme pour tout résoudre :
 [L'algorithme de la recherche universelle](./recherche-universelle){.interne}
 {% endaller %}
 
-### Problèmes et exercices
+
+<!-- ### Problèmes et exercices
+
+
+### super croissant
+> SAc a dos
+>
+> et piece dans le cas pas super croissant.
+> 
+> TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>
+
+### autre bidules
 
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
+
+> TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
+> TBD 3-SUM et Réductions géobase. A supprimer de partie réduction. (en incluant le 2-SUM de tout à l'heure).
+> TBD arithmétique binaire et Karatsuba,
+> TBD SUBSET-SUM par programmation dynamique <https://en.wikipedia.org/wiki/Subset_sum_problem#Pseudo-polynomial_time_dynamic_programming_solutions>
 
 > TBD on reprend tous les exos jusque là
 > TBD on ajoute les énoncés des exos durs.
 > TBD faire de l'ordre dans les autres exos.
-> TBD lien de : médiane en temps linéaire. alignement de séquence
-> TBD 3-SUM et Réductions (en incluant le 2-SUM de tout à l'heure).
-> TBD  ajouter Karatsuba,
+
+
+#### SUBSET SUM
+
+> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>
+
+Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$
+ en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$
+ et $E'$ :
+
+1. On vérifie que $\vert E \vert \leq \vert E' \vert$ ce qui peut se faire en $\mathcal{O}(\vert E \vert)$ opérations en comptant chaque élément de $E'$
+ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque le compte dépasse strictement $\vert E \vert$.
+2. On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(\vert E \vert \cdot \vert E' \vert) = \mathcal{O}(\vert E \vert^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).
+3. On somme les éléments de $E'$ et on vérifie que la somme finale vaut $t$
+, ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.
+
+La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.
+
+> TBD à refaire
+>
+> TBD 2-SUM ≤ 2-SUM'
+> TBD 2-SUM' ≤ 3-SUM
+> TBD 3-SUM ≤ 3-SUM'
+> TBD 3-SUM' ≤ SUBSET-SUM
+> TBD SUBSET-SUM ≤ PARTITION
+>
+> TBD mettre les 2-SUM ≥ 2-SUM', 3-SUM ≥ 3-SUM' et géobase dans les problèmes classiques.
+
+### 3-SUM
+
+{% lien %}
+
+- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>
+- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
+
+{% endlien %}
+
+Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous avons déjà vu :
+
+{% note "**Problème**" %}
+
+- **nom** : 3-SUM
+- **données** :
+  - T : un tableau de $n$ entiers relatifs
+- **question** : existe-t-il 3 indices (pouvant être égaux) tels que $T[i] + T[j] + T[k] = 0$
+
+{% endnote %}
+
+De nombreux problèmes lui sont équivalent comme par exemple le suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : 3-SUM'
+- **données** :
+  - $T$, $T'$ et $T''$ : trois tableaux d'entiers relatifs
+- **question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
+
+{% endnote %}
+
+Prouvez le :
+
+{% exercice %}
+Montrer que 3-SUM ≤ 3-SUM'
+{% endexercice %}
+{% details "corrigé" %}
+
+On prend $T = T'$ et $T''[x] = -T[x]$
+
+{% enddetails %}
+{% exercice %}
+Montrer que 3-SUM' ≤ 3-SUM
+{% endexercice %}
+{% details "corrigé" %}
+
+On prend $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $[T[i] + A \\;\vert\\; i] + [T'[i] + 3A \\;\vert\\; i] + [-T''[i] - 4A \\;\vert\\; i]$.
+
+Soient $i, j, k$ tels que T[i] + T[j] + T[k] = 0$.
+
+Pour que la somme fasse 0 il faut que les $A$ ajoutés s'annulent : donc
+obligatoirement 1 élément de chaque tableau initial $T$, $T'$ et $T''$.
+{% enddetails %}
+
+3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : Geobase
+- **données** :
+  Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes horizontales avec $y = 0$, $y = 1$ et $y = 2$
+- **question** : Existe-t-il une droite non horizontale passant par 3 points.
+{% endnote %}
+
+Montrons qu'il est équivalent à 3-SUM :
+
+{% exercice %}
+Montrer que 3-SUM' ≤ GEOBASE
+{% endexercice %}
+{% details "corrigé" %}
+
+Deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$. Comme $\vec{v}^{\perp} = (-y', x')$, $\vec{u}$ et $\vec{v}$ sont colinéaires si $xy' - yx' = 0$.
+
+Il suffit alors de construire les points :
+
+- $(T[i], 0)$
+- $(T''[i]/2, 1)$
+- $(T'[i], 2)$
+
+si trois points sont colinéaires alors il existe i, j et k tels que $T[i] + T'[j] = T''[k]$
+{% enddetails %}
+
+{% exercice %}
+Montrer que GEOBASE ≤ 3-SUM'
+{% endexercice %}
+{% details "corrigé" %}
+
+On fait le contraire. On ajoute chaque point de :
+
+- $(x, 0)$ dans $T = [x | \forall (x, 0)]$
+- $(x, 1)$ dans $T'' = [2x | \forall (x, 1)]$
+- $(x, 2)$ dans $T' = [x | \forall (x, 2)]$
+
+{% enddetails %}
+
+### SUBSET-SUM
+
+Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un ensemble d'indice $I$ tel que $\sum_{i \in I}T[i] = s$.
+
+> TBD montrer que 3-SUM' ≤ SUBSET-SUM (on s'arrange pour ajouter K, K' et K'' tel que pK + p'K'+p''K'' ≠ K + K'+ K'' pour tous p, p' et p'' et très grans devant les valeurs de T. T' et T''. On cherche ensuite  s=K+K'+K'')
+> TBd en déduire 3-SUM ≤ SUBSET-SUM
+> TBD montrer que SUBSET-SUM ≤ [PARTITION](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_partition)
+
+> TBD à montrer.
+>
+> TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
 
 ## <span id="partie-3"></span>Partie III
 

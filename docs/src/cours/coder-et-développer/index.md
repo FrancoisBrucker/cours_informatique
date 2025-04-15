@@ -101,7 +101,7 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 
 ## Maintenir et développer du code sûr
 
-### Gestion des dépendances
+### <span id="gestion-dépendances"></span>Gestion des dépendances
 
 Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.
 Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est indispensable de pouvoir :

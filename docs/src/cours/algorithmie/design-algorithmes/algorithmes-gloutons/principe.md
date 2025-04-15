@@ -178,7 +178,9 @@ Remarques :
 - ce n'est pas la seule solution possible pour avoir un système optimal puisque les américains ont des pièces de 25c (les quarter)
 - cela peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
 
-> TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>
+{% info %}
+On peut résoudre, et vous allez le faire en exercice, le cas général avec un algorithme utilisant la programmation dynamique.
+{% endinfo %}
 
 ## <span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma
 

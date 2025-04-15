@@ -49,13 +49,77 @@ Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur coura
 
 ### Vérification efficace
 
-Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :
+Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement voir si proposition de solution en est une ou pas. Citons en 2 pour se fixer les idées : [le problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos) et celui de  [l'isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes).
 
-- [somme de sous-ensemble](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles)
-- [sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos)
-- [isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes)
+#### <span id="sac-à-dos"></span>Sac à dos et vérification
 
-Si l'on ne connaît pas d'algorithme polynomiaux pour résoudre les 3 problèmes ci-dessus, on peut en revanche vérifier efficacement (_ie._ polynomialement) si une solution en est une ou pas.
+Le problème du sac à dos tente de maximiser la durée d'une randonnée :
+
+{% note "**Problème**" %}
+
+- **nom** : sac à dos
+- **données** :
+  - $n$ produits différents, décris par :
+    - leurs masses en kilo : $k_i$
+    - leurs quantité nutritive : $q_i$
+  - un sac à dos pouvant contenir $K$ kilos
+  - une quantité nutritive à dépasser $Q$
+- **question** : existe-t-il un sous ensemble $I$ de l'intervalle $[1, n]$ (un ensemble de produits) tel que :
+  - $\sum_{i \in I} k_i \leq K$ : les objets tiennent dans le sac à dos
+  - $\sum_{i \in I} q_i \geq Q$ : la quantité nutritive des objets permet de survivre à la randonnée
+{% endnote %}
+
+On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :
+
+- faire la somme $\sum_{i \in I} k_i$ et de vérifier si elle est inférieure à $K$
+- faire la somme $\sum_{i \in I} q_i$ et de vérifier si elle est supérieure à $Q$
+
+Cette vérification se fait en $\mathcal{O}(n)$ quelque soit $I$.
+
+#### Isomorphisme de graphe et vérification
+
+De même considérons un autre problème classique en algorithmie, l'isomorphisme de graphe :
+
+{% note "**Problème**" %}
+
+- **nom** : isomorphisme
+- **données** : [deux graphes](https://fr.wikipedia.org/wiki/Graphe_(math%C3%A9matiques_discr%C3%A8tes)#D%C3%A9finition_et_vocables_associ%C3%A9s) :
+  - $G_1 = (V_1, E_1)$
+  - $G_2 = (V_2, E_2)$
+- **question** : existe-t-il une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\\{x, y\\}$ est une arête de $G_1$ si et seulement si $\\{\sigma(x), \sigma(y) \\}$ est une arête de $G_2$
+{% endnote %}
+
+Par exemple en considérant les 3 graphes ci dessous :
+
+![iso graphes](./iso-graphes.png)
+
+Il est clair de voir que les 2 premiers sont isomorphes ($\sigma(a) = 1$, $\sigma(b) = 2$, $\sigma(c) = 4$ et $\sigma(d) = 3$) alors que le troisième ne l'est pas.
+
+Mais c'est moins clair avec les deux suivants :
+
+![Petesen iso](./petersen-iso.png)
+
+{% exercice %}
+Montrez que les deux graphes précédents sont isomorphes
+{% endexercice %}
+{% details "corrigé" %}
+
+Le graphe en question est le graphe de Petersen, que l'on peut représenter de plein de jolis façons : <https://mathworld.wolfram.com/PetersenGraph.html>.
+
+![Petesen iso](./petersen-iso-solution.png)
+
+{% enddetails %}
+
+Pour vérifier que la deux graphes $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ sont isomorphes avec une fonction $\sigma: V_1 \to V_2$ il faut montrer que :
+
+- $\sigma$ est une bijection de $V_1$ dans $V_2$, donc que les deux tableaux $T_1 = [\sigma(x) \mbox{ pour chaque } x \in V_1]$ et $T_2 = [x \mbox{ pour chaque } x \in V_2]$ contiennent les mêmes éléments
+- que les arêtes de $V_2$ sont bien arêtes de $V_1$ envoyées via $\sigma$, donc que les deux tableaux $T'_1 = [\\{\sigma(x), \sigma(y)\\} \mbox{ pour chaque } x \in E_1]$ et $T_2 = [xy \mbox{ pour chaque } xy \in E_2]$ contiennent les mêmes éléments
+
+Ceci peut donc se faire en utilisant deux fois l'algorithme [égalité de tableaux](../projet-calcul-complexite/#égalité-tableaux){.interne} avec une complexité totale de $\mathcal{O}(\\; |\\; E_1\\; |^2\\; + \\; |\\; V_1\\; |^2\\;)$ (en supposant que $\\; |\\; E_1\\; |\\; = \\; |\\; E_2\\; |\\;$ et $\\; |\\; V_1\\; |\\; = \\; |\\; V_2\\; |\\;$).
+
+### Définition
+
+Donnons une définition formelle d'un vérifieur :
 
 <div id="vérifieur"></div>
 {% note "**Définition**" %}
@@ -80,67 +144,42 @@ Un **_vérifieur efficace d'un problème décidable_** $p$ ayant pour entrée $e
 
 Remarquez que l'on ne demande pas que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.
 
-Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties pus longues.
+Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties plus longues.
 
 Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (_ie._ polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !
 
 ### Exemples de vérifieurs efficaces
 
-> TBD exemples de vérifieurs simple puis le somme de sous-ensemble.
-
 #### Max/min d'un tableau
 
-> TBD max/min : on vérifie tous
+```pseudocode
+algorithme verif(T: [entier], sol: entier) -> booléen:
 
-#### Tri d'un tableau
-
-> TBD le tri : croissant
+pour chaque x de T:
+    si x > sol:
+        rendre Faux
+rendre Vrai
+```
 
 #### 3-SUM
 
-> TBD de la réduction
+```pseudocode
+algorithme verif(T: [entier], sol: (entier, entier, entier)) -> booléen:
 
-#### Sac à dos
+i, j, k <- sol
+si T[i] + T[j] + T[k] == 0:
+    rendre Vrai
+rendre Faux
+```
 
-Ci-après une version du célèbre [problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos) :
+#### Tri d'un tableau
 
-{% note "**Problème**" %}
-Données :
+```pseudocode
+algorithme verif(T: [entier], sol: [entier]) -> booléen:
+```
 
-- On possède $n$ produits différents, chacun décrit par :
-  - sa masse en kilo : $k_i$
-  - son prix : $p_i$
-- un prix $P$ à dépasser.
-- On dispose d'un sac pouvant contenir $K$ kilos
-
-On cherche les produits à mettre dans le sac de façon à ce que :
-
-- les produits choisis tiennent dans le sac,
-- le prix du sac est supérieur à $P$
-{% endnote %}
-
-Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :
-
-1. de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un [bucket sort](https://fr.wikipedia.org/wiki/Tri_par_paquets))
-2. que la somme des prix est supérieure à $P$
-
-Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.
-
-#### SUBSET SUM
-
-> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>
-
-Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$
- en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$
- et $E'$ :
-
-1. On vérifie que $\vert E \vert \leq \vert E' \vert$ ce qui peut se faire en $\mathcal{O}(\vert E \vert)$ opérations en comptant chaque élément de $E'$
- et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque le compte dépasse strictement $\vert E \vert$.
-2. On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(\vert E \vert \cdot \vert E' \vert) = \mathcal{O}(\vert E \vert^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).
-3. On somme les éléments de $E'$ et on vérifie que la somme finale vaut $t$
-, ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.
-
-La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.
+1. on vérifie que sol est trié
+2. on vérifie que les éléments de sol sont ceux de T avec notre algorithme d'égalité de tableaux
 
 ### Vérifieur efficace et algorithme de résolution
 
@@ -200,6 +239,18 @@ Nous démontrerons ceci rigoureusement plus tard. Pour l'instant contentons nous
 ![décidable](./NP-NP-2.png)
 
 Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.
+
+{% note %}
+Vous aurez remarquez que l'on a précisé qu'il existe des problèmes décidables qui ne sont pas dans NP. On le démontrera bien plus tard en montrant qu'il existe des problèmes où si l'on cherche à répondre OUI, le problème est dans NP et si l'on cherche à répondre NON au même problème, il n'y est pas.
+{% endnote %}
+
+Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut _a priori_ tout vérifier car la solution peut se trouver n'importe où. A contrario des problèmes polynomiaux ou, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement parcourir.
+
+{% note "**À retenir**" %}
+Les problèmes NP-complets sont tous équivalents car ils correspondent tous à **des problèmes universels**, sans structure.
+
+Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution.
+{% endnote %}
 
 ## Autres classes
 
