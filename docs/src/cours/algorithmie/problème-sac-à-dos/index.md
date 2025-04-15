@@ -23,9 +23,8 @@ Le problème du sac à dos est un problème fondamental en algorithmie, nombre d
 [Projet](./projet){.interne}
 {% endaller %}
 
-
-
 ## Pour aller plus loin
 
-> TBD : cas particuliers simple : super croissant.
-> TBD : sac à dos avec répétition = programmation en nombre entier != de fractionnel car que desentiers comme découpage
+> TBD : cas particuliers simple : super croissant
+>
+> TBD : sac à dos avec répétition = programmation en nombre entier != de fractionnel car que des entiers comme découpage

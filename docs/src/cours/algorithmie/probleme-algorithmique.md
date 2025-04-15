@@ -22,7 +22,7 @@ Un **_problème_** est un texte composé de 3 parties :
 
 - **nom** : le nom du problème
 - **données** : les paramètres dont on a besoin
-- **question** : ce que l'on cherche à résoudre
+- **question** : ce que l'on cherche
 
 {% endnote %}
 

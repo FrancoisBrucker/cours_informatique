@@ -9,6 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD les 8 reines en récursif et itératif, puis généralisation aux autres pièces d'échec et aux reines avec ds échiquiers plus grands et en dimensions plus élevées <https://interstices.info/le-probleme-des-8-reines-et-au-dela/>
 
 Écrire des algorithmes (simples) en pseudo-code pour résoudre des problèmes algorithmiques.
 
@@ -912,7 +913,7 @@ $\binom{n}{k}$ pour tout $0\leq k \leq n$, et vous la remplissiez en utilisant l
 [Calculer un coefficient binomial : triangle de Pascal - Terminale](https://www.youtube.com/watch?v=6JGrHD5nAoc)
 {% endlien %}
 
-Une matrice pourra être construite comme un tableau de (tableaux d'entiers). Si $M$ est est une matrice alors :
+Pour ces algorithme on utilisera [le type matrice](../pseudo-code/#type-matrice){.interne} défini lorsque l'on a parlé de pseudo-code. Une matrice $M$ est un tableau de (tableaux d'entiers)de telle sorte que :
 
 - $M$ est de type `[[entier]]`{.language-}
 - $M[i]$ est la (i+1) ème ligne de la matrice

@@ -134,12 +134,6 @@ On utilisera parfois, comme en python par exemple des sous tableaux via des **_t
 On ne peut  **pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 {% endattention %}
 
-L'instruction suivante n'est donc **pas** une instruction simple, mais nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :
-
-```pseudocode
-T' ← un nouveau tableau contenant T[i:j]  # j - i + 1 instructions en 1 ligne
-```
-
 ### <span id="str"></span>Chaînes de caractères
 
 Les chaines de caractères sont un tableau uniquement composés de caractères. Cette structure est utilisée lorsque l'on veut écrire ou représenter plus qu'un caractère, c'est à dire quasi tout le temps.
@@ -161,16 +155,6 @@ Les chaines étant très utilisées, des langages comme python les considèrent 
 {% note %}
 Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).
 {% endnote %}
-
-### Matrice
-
-> TBD tableaux de tableaux.
->
-> - exemple matrice 2D
-> - Type
-> - 3D.
-> et supérieur.
->
 
 ## <span id="instruction"></span> Instructions de contrôle
 
@@ -259,7 +243,7 @@ pour chaque élément x d'un tableau:
     instruction n
 ```
 
-On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x` vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
+On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x`{.language-pseudocode} vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
 
 Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante : à l'itération $i$ on examine le $i+1$ ème élément du tableau et on a déjà examiné les $i$ premiers.
  :
@@ -367,3 +351,14 @@ Qui correspond à :
 pour chaque i de [0, b-a[:
     T[a + i] ← T'[a' + i]
 ```
+
+{% attention %}
+Les affectations de tranches ne sont **pas** une instruction simple, mais nécessitent plusieurs instructions : ceux de la boucle sous-jacente.
+
+Ainsi, le code suivant nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :
+
+```pseudocode
+T' ← un nouveau tableau contenant T[i:j]  # j - i + 1 instructions en 1 ligne
+```
+
+{% endattention %}

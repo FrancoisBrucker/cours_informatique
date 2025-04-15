@@ -153,25 +153,48 @@ Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ce
 
 Il n'existe pas de schéma général permettant de prouver qu'un algorithme résout un problème donné mais comme l'adaptation aux données d'un algorithme se fait dans les boucles ou les récursions, une méthode qui se révèle souvent efficace consiste à trouver des propriétés qui sont conservées à chaque itération ou récursion.
 
-{% note "**Pour prouver un algorithme on cherchera à établir :**" %}
+{% note "**À retenir**" %}
 
-- une équation de récurrence plus une condition d'arrêt pour prouver un algorithme récursif.
-- [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
+Pour prouver un algorithme on cherchera prouver ce que fait chaque boucle ou récursion. Pour cela on utilisera plusieurs techniques, par ordre de difficulté :
+
+1. une relation évidente caractérisant le but de la boucle
+2. une équation de récurrence plus une condition d'arrêt pour prouver :
+   - un algorithme récursif
+   - une boucle itérative pouvant être écrite sous forme récursive
+3. [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
 
 {% endnote %}
 
-A part la recommandation ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.
+A part les recommandations ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.
 
 ## Mise en application
 
-Nous allons prouver que les deux algorithmes de calcul de factorielle calculent effectivement la factorielle. Cet exemple sera l'occasion de mener à bien deux types de preuves, une par récurrence l'autre pa invariant de boucle.
+Nous allons prouver que les deux algorithmes de calcul de factorielle calculent effectivement la factorielle. Cet exemple sera l'occasion de mener à bien les trois types de preuves préconisés.
 
-### <span id="facto-rec"></span> Algorithme récursif
+### Une relation évidente
+
+Considérons l'algorithme suivant, variation de la version itérative de factorielle précédente :
+
+```pseudocode
+algorithme factorielle(n: entier) → entier:  # n ≥ 1
+    produit ← 1
+    pour chaque i de [2, n]:
+        produit ← produit * i
+
+    rendre produit
+```
+
+1. **finitude** : puisque les boucles `pour chaque`{.language-} n'ont qu'un nombre fini d'itérations
+2. **exactitude** : à la fin de la boucle `pour chaque`{.language-} la variable `produit`{.language-} vaut clairement $\Pi_{1\leq i \leq n} i$ qui est par définition la valeur de $n!$.
+
+### Une relation de récurrence
+
+#### <span id="facto-rec"></span> Algorithme récursif
 
 Les preuves des algorithmes récursifs sont souvent les plus simples car ils sont souvent les plus proches de la définition récursive qu'ils implémentent. Reprenons une version (un peu modifiée) du programme du calcul de la factorielle récursif :
 
 ```pseudocode/
-algorithme factorielle(n: entier) → entier:
+algorithme factorielle(n: entier) → entier:  # n ≥ 1
     si n ≤ 1:
         rendre 1
     rendre n * factorielle(n-1)
@@ -189,7 +212,7 @@ Ce genre d'optimisation n'est pas nécessaire, mais si on y pense autant le fair
 
 {% enddetails %}
 
-#### Finitude de Factorielle récursif
+##### Finitude de Factorielle récursif
 
 Pour comprendre comment écrire la preuve de la finitude d'un algorithme récursif re-écrivons l'algorithme de cette façon, clairement équivalente :
 
@@ -197,21 +220,21 @@ Pour comprendre comment écrire la preuve de la finitude d'un algorithme récurs
 algorithme factorielle(n: entier) → entier:
     si n ≤ 1:
         rendre 1
-    f = factorielle(n-1)
+    f ← factorielle(n-1)
     rendre n * f
 ```
 
 L'idée est de démontrer la finitude par récurrence sur $n$.
 
 1. **initialisation** de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursion.
-2. **hypothèse de récurrence** : pour tout entier plus petit que $n\geq 1$, l'algorithme va avoir un no,bre fini de récursions.
-3. **pour $n + 1$** : `factorielle(n+1)`{.language-} va exécuter la ligne 4 (`f = factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n+1)`{.language-} va également se terminer.
+2. **hypothèse de récurrence** : pour tout entier plus petit que $n\geq 1$, l'algorithme va avoir un nombre fini de récursions.
+3. **pour $n + 1$** : `factorielle(n+1)`{.language-} va exécuter la ligne 4 (`f ← factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n+1)`{.language-} va également se terminer.
 
 La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter : tout appel récursif doit se rapprocher strictement d'un état de terminaison. Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :
 
 Si $n\geq 1$ est un entier, l'algorithme va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.
 
-#### Correction de Factorielle récursif
+##### Correction de Factorielle récursif
 
 {% note "**Schéma de preuve des algorithmes récursifs :**" %}
 Pour les preuves d'algorithme récursif, le schéma de preuve est quasi-toujours le même : faire une preuve par récurrence.
@@ -219,18 +242,13 @@ Pour les preuves d'algorithme récursif, le schéma de preuve est quasi-toujours
 
 Par récurrence sur $n$, avec $n$ entier strictement positif.
 
-Pour $n = 1$ `factorielle(1)`{.language-} vaut bien bien $1 = 1!$. On suppose notre hypothèse de récurrence vraie pour $n \geq 1$. Pour $n + 1 > 1$, le retour de `factorielle(n + 1)`{.language-} est `(n + 1) * factorielle(n)`{.language-} qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.
+1. **initialisation** : $n = 1$ `factorielle(1)`{.language-} vaut bien bien $1 = 1!$.
+2. **hypothèse de récurrence** : pour tout entier plus petit que $n\geq 1$ on a `factorielle(n) = n!`{.language-}
+3. **pour $n + 1$** : le retour de `factorielle(n + 1)`{.language-} est `(n + 1) * factorielle(n)`{.language-} qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.
 
-### <span id="facto-iter"></span> Algorithme itératif
+#### <span id="facto-iter"></span> Algorithme itératif
 
-> TBD preuve par :
->
-> 1. évidence
-> 2. boucle en récursion
-> 3. invariant de boucle.
->
-
-Les preuves des algorithmes itératifs nécessitent de trouver les raisons d'être des boucles. Ceci se fait en cherchant ce qui ne va pas varier.
+Considérons l'algorithme itératif suivant :
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
@@ -242,13 +260,59 @@ algorithme factorielle(n: entier) → entier:
     rendre r
 ```
 
-#### Finitude de Factorielle itératif
+##### Finitude
 
-Comme $i$ va croître strictement : la condition `i ≤ n`{.language-} sera fausse à une itération et le programme va s'arrêter.
+Comme $i$ va croître strictement, la condition `i ≤ n`{.language-} sera fausse à un moment donné ce qui la fera sortir de la boucle et stopper le programme.
 
-#### Correction de Factorielle itératif
+##### Correction
 
-{% note "**Schéma de preuve des algorithmes itératifs :**" %}
+Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se récrire de cette façon :
+
+```pseudocode
+algorithme factorielle'(n: entier) → entier:
+    r ← 1
+    i ← 1
+    tant que i ≤ n - 1:
+        r ← r * i
+        i ← i + 1
+    
+    r ← r * i
+    i ← i + 1
+
+    rendre r
+```
+
+Qui est aussi équivalent à :
+
+```pseudocode
+algorithme factorielle''(n: entier) → entier:
+    r ← factorielle(n-1)
+    r ← r * n
+
+    rendre r
+```
+
+De là, il est clair que si `factorielle(n-1) = (n-1)!`{.language-}, alors `factorielle(n) = factorielle''(n) = n!`{.language-}.
+
+On est ramené au cas précédent de la preuve par récurrence de l'algorithme récursif.
+
+### Preuve par invariant
+
+Lorsque l'on ne peut pas clairement et rapidement faire une preuve par récurrence, on peut chercher un invariant à la boucle : quelque chose qui est conservé à chaque itération. Cette technique de preuve n'est pas très éloignée des preuves par récurrences, elle est juste plus générale et (de l'avis des informaticiens) plus élégante.
+
+Refaisons la preuve précédente en utilisant un invariant de boucle pour montrer comment tout ceci peut se faire :
+
+```pseudocode
+algorithme factorielle(n: entier) → entier:
+    r ← 1
+    i ← 1
+    tant que i ≤ n:
+        r ← r * i
+        i ← i + 1
+    rendre r
+```
+
+{% note "**Schéma de preuve des algorithmes itératifs par invariant :**" %}
 Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiées, même si on modifie des variables. Une fois l'invariant trouvé on commence par le démontrer :
 
  1. on vérifie que l'invariant est vrai à la fin de la première itération de la boucle
@@ -294,9 +358,9 @@ Notre invariant doit donc être :
 
 L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=n+1$ et donc $r = n!$
 
-### A vous
+### A vous : invariant sur une variante
 
-L'algorithme suivant est une variante itérative de l'algorithme factoriel :
+Entraînons nous avec l'algorithme suivant, variante itérative de l'algorithme factoriel :
 
 <div id="algo-factorielle_variante"></div>
 
@@ -505,9 +569,32 @@ On montre alors par récurrence que notre algorithme fonctionne :
 
 {% enddetails %}
 
+### PGCD, encore lui
+
+```pseudocode
+algorithme PGCD(a, b):  # a, b > 0
+    si a == b:
+        rendre a
+    si a < b:
+        rendre PGCD(b, a)
+    rendre PGCD(a-b, b)
+
+```
+
+{% exercice %}
+Montrez que l'algorithme récursif précédent calcule bien le PGCD de eux entiers strictement positifs.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
 ### Division euclidienne
 
 Vous trouverez ci-après une version itérative de l'algorithme de la division euclidienne que vous allez prouver par invariant de boucle.
+
+<span id="algorithme-division-euclidienne"></span>
 
 ```pseudocode
 algorithme division_euclidienne(a: entier,

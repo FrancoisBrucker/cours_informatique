@@ -23,38 +23,49 @@ On va voir la construction et la preuve d'algorithmes gloutons pour résoudre de
 Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.
 {% endnote %}
 
+Certains problèmes permettent en effet d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée _algorithmes gloutons_.
+
 Le schéma général d'un algorithme glouton est alors le suivant :
 
 <div id="schéma-algo"></div>
 
-```text
-Ordonner E en (x_0, x_1, ..., x_n)
-S = {}
+```pseudocode
+algorithme glouton_archétypal(E: [fragments de solutions]) -> [fragments de solutions]:
+    "Ordonner" E en (x_0, x_1, ..., x_n)
+    S ← une liste de fragments de solutions
 
-pour chaque i de 1 à n:
-    si S union {x_i} est une solution possible :
-        ajouter x_i à S
+    pour chaque i de 1 à n:
+        si S + [x_i] est une "solution possible" :
+            S ← S + [x_i]
+
+    rendre S
 ```
 
-On voit en creux que ce type d'algorithmes :
+Il va y avoir tout un tas de variantes de ce schéma pour répondre au problème à résoudre, mais on voit déjà que ce type d'algorithme va nécessiter :
 
-1. va être utilisé dans des problèmes d'optimisation où l'on cherche la _meilleure solution_ parmi un ensemble de possibilités.
-2. l'ordre des étapes est primordial
+- que les solutions recherchées soient constituées d'un ensemble _maximal_ de fragments de solutions
+- de pouvoir _ordonner_ les fragments pour les étudier un à un
 
-Ils sont très utilisés car :
+Enfin, on le voit le processus de création de la solution ne revient jamais en arrière, tout choix est irrevocable.
+
+Les algorithmes gloutons sont très utilisés car une fois que l'on a une façon d'ordonner les fragments et de caractériser ce qu'est une solution :
 
 - ils donnent toujours un résultat
-- ils sont souvent de complexité faible
+- ils sont de complexités faibles
 
 Attention cependant :
 
-- ils ne donnent pas forcément le meilleur résultat : c'est souvent des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique)
+- ils ne donne pas forcément le meilleur résultat : c'est souvent des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique)
 - il n'y pas forcément de solution unique
 
 En conclusion :
 
-{% note %}
-Ce type d'algorithme est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Ils sont, par exemple, en bijection avec la [structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde).
+{% note "À retenir" %}
+
+1. Ce type d'algorithmes est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale.
+
+2. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec [la structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde)
+
 {% endnote %}
 
 Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.
@@ -62,10 +73,10 @@ Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est opt
 ### Comment concevoir un algorithme glouton
 
 1. écrire le problème comme un problème d'optimisation
-2. découper le problème en une succession d'étapes où il est facile de choisir la meilleure solution
+2. découper le problème en une succession d'étapes où il est facile de choisir le meilleur fragment de solution à ajouter à une solution partielle en construction
 3. choisir un ordre de parcours des différentes étapes
 
-Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble _optimal_ d'un ensemble connu. Dans ce cas-là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.
+Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble _optimal_ d'un ensemble connu. Dans ce cas-là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un à un, si possible, à un ensemble solution.
 
 ### Optimalité et glouton
 
@@ -82,18 +93,18 @@ Certains problèmes cependant permettent d'être résolus en construisant petit 
 
 ### Condition nécessaire et suffisante d'optimalité
 
-On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale :
+On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la preuve la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale :
 
-En reprenant le [schéma générique de l'algorithme glouton](,/#schéma-algo) on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :
+{% note "**Schéma de preuve de l'optimalité d'iun algorithme glouton**" %}
+En reprenant le [schéma générique de l'algorithme glouton](./#schéma-algo), on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :
 
-- si `S union {x_i}`{.language-} était une solution possible alors `x_i`{.language-} est aussi dans la solution optimale considérée
-- si `S union {x_i}`{.language-} n'était pas une solution possible alors `x_i`{.language-} n'est pas dans la solution optimale considérée
+- si `S + [x_i]`{.language-} était une solution possible alors `x_i`{.language-} est aussi dans la solution optimale considérée
+- si `S + [x_i]`{.language-} n'était pas une solution possible alors `x_i`{.language-} n'est pas dans la solution optimale considérée
 
 Ce qui prouvera l'optimalité de notre algorithme glouton.
+{% endnote %}
 
-### Preuve par l'absurde
-
-On prouve couramment l'optimalité du glouton par l'absurde :
+Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :
 
 {% note "schéma de preuve d'optimalité par l'absurde" %}
 
@@ -107,6 +118,10 @@ On prouve couramment l'optimalité du glouton par l'absurde :
 4. On prouve que l'on peut construire une autre solution optimale qui coïncide avec le glouton jusqu'à l'étape $i$ ce qui invalide l'hypothèse de non optimalité du glouton.
 
 {% endnote %}
+
+Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre des problèmes d'optimisation.
+
+> TBD caractériser les 3 types d'exemple.
 
 ## <span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces
 
@@ -179,17 +194,15 @@ Remarques :
 - cela peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
 
 {% info %}
-On peut résoudre, et vous allez le faire en exercice, le cas général avec un algorithme utilisant la programmation dynamique.
+On peut résoudre le cas général avec [un algorithme utilisant la programmation dynamique](http://tnsi.free.fr/documents/14.rendu_monnaie.pdf).
 {% endinfo %}
 
 ## <span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma
 
-Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Il se pose 2 problèmes :
+Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :
 
-- Quel est le nombre maximum de films que je peux voir en une journée ?
-- Quel est le nombre minimum de salles à avoir pour visionner tous les films en stock.
-
-Chaque film est décrit par un couple $(d, f)$ où $d$ est la date de début du film et $f$ la date de fin.
+- Quel est le nombre maximum de films qu'une personne peux voir en une journée ?
+- Quel est le nombre minimum de salles à construire pour qu'une personne puisse voir un film quelconque qu'elle aura choisi.
 
 ### Voir un maximum de films
 
@@ -201,6 +214,8 @@ Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix. En effet, si l'on cl
 
 - durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,
 - date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,
+
+Il faut donc classer les films par date de fin croissante.
 
 #### Algorithme : maximum de films
 
@@ -337,9 +352,9 @@ Grace à cette propriété, on est ramené à un problème glouton classique : o
 Montrons que l'algorithme glouton suivant est optimal :
 
 1. on trie les produits par prix décroissant
-2. $S = \\{\\}$
+2. $S = []$
 3. pour chaque produit $x$ examiné par ordre de prix décroissant : on ajoute $x$ à $S$ s'il reste compatible
-4. rendre $S$ (qui est un ensemble de profit maximal)
+4. rendre $S$ (qui est une liste de profit maximal)
 
 {% exercice %}
 Codez l'algorithme en python.

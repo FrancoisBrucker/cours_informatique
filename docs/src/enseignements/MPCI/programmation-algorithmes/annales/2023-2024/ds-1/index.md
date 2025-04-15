@@ -101,11 +101,11 @@ Beaucoup de personnes perdent bêtement des points sur les quesions de cours. Il
 - connaître le principe algorithmique de diviser. Vous êtes plus de la moitié à avoir oublié qu'après la division il faut recombiner et surotut que c'est cette étape qui est crutiale pour avoir une complexité faible, pas la division.
 - connaître le master theorem et son application pour le problème du tri fusion
 
-Parfois, vos arguments deviennent un peu vaseux quand ce n'est pas clair. La plupart du temps en algoirthmie, il suffit de peu de mots bien choisi pour expliciter ce qu'on fait. Si vous avez besoin de plusieurs paragraphes c'est que soit ce n'est pas clair, soit c'est faux.
+Parfois, vos arguments deviennent un peu vaseux quand ce n'est pas clair. La plupart du temps en algorithmie, il suffit de peu de mots bien choisi pour expliciter ce qu'on fait. Si vous avez besoin de plusieurs paragraphes c'est que soit ce n'est pas clair, soit c'est faux.
 
-Lorsque l'on vous demande de voir ce que fait un algorithme sur des exemples, faites le ! Beaucoup décrivent ce qu'ils pensent que leur algorithme fait et pas ce qu'il fait réllement... Il faut prendre ces questions comme une oportunité de vérifier que ce que vous avez fait est juste.
+Lorsque l'on vous demande de voir ce que fait un algorithme sur des exemples, faites le ! Beaucoup décrivent ce qu'ils pensent que leur algorithme fait et pas ce qu'il fait réellement... Il faut prendre ces questions comme une opportunité de vérifier que ce que vous avez fait est juste.
 
-### Exercice 1 : encadrement du problême
+### Exercice 1 : encadrement du problème
 
 #### 1.1
 

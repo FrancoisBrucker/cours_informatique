@@ -52,11 +52,11 @@ Règles de construction de l'algorithme utilisé :
 
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme) :
 
-- **finitude** : _Un algorithme doit toujours se terminer après un nombre fini d’étapes._
-- **définition précise** : _Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas._
-- **entrées** : _[…] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié._
-- **sortie** : _[…] des quantités ayant une relation spécifiée avec les entrées._
-- **rendement** : _[…] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon._
+- **finitude** : Un algorithme doit toujours se terminer après un nombre fini d’étapes.
+- **définition précise** : Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas.
+- **entrées** : […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié.
+- **sortie** : […] des quantités ayant une relation spécifiée avec les entrées.
+- **rendement** : […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.
 
 On peut en déduire la définition suivante : Un **_algorithme_** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
 
@@ -87,7 +87,7 @@ Demander à l'utilisateur :
   - de donner un entier que l'on appellera x
   - de donner une suite d'entiers que l'on appellera t
 
-parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+Parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
 Si on trouve un tel élément, afficher "Vrai" à l'écran.
 ```
 
@@ -106,10 +106,8 @@ Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
-
-    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
     Si on trouve un tel élément, rendre "Vrai".
-
 ```
 
 Il nous manque cependant encore une chose : si le programme s'arrête il doit rendre quelque chose, ce qui n'est pas le cas ici si on ne trouve pas `x`{.language-} dans `t`{.language-}. Modifions le :
@@ -120,11 +118,9 @@ Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
-
-    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
     Si on trouve un tel élément, rendre "Vrai".
     Sinon rendre "Faux".
-
 ```
 
 Notre programme s'arrêtant tout le temps : c'est un algorithme.
@@ -145,10 +141,12 @@ Afficher un résultat à l'écran est différent de rendre un résultat : le pre
 
 La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :
 
-1. [le pseudo-code](../../écrire-algorithmes/pseudo-code){.interne} : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.
-2. [le code](/cours/coder-et-développer/développement/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
+1. le pseudo-code : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.
+2. le code : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
 Par exemple l'algorithme recherche s'écrirait en pseudo-code de cette façon :
+
+<span id="algorithme-recherche"></span>
 
 ```pseudocode
 algorithme recherche(t: [entier],

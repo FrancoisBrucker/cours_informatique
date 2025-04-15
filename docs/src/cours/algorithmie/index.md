@@ -74,13 +74,30 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 
 ### Problème algorithmique et preuve
 
-Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètre) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Mais comment prouver qu'un algorithme répond bien au problème posé ?
+Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de "_problème_" à résoudre _via_ un algorithme :
 
 {% aller %}
 [Problème algorithmique](./probleme-algorithmique){.interne}
 {% endaller %}
 
-Mais même si on a un problème algorithmique et un algorithme, comment prouver que le second résout le premier puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](bases-théoriques/arrêt-rice/#théorème-rice){.interne} ? Il faut le faire au cas par cas. Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :
+Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver.
+
+Considérons par exemple l'algorithme suivant :
+
+```pseudocode
+algorithme PGCD(a: entier, b: entier) → entier:  # a, b ≥ 0
+    tant que min(a, b) > 0:
+        a' ← max(a, b) - min(a, b)
+        b' ← min(a, b)
+        a, b ← a', b'
+    
+    rendre max(a, b)
+```
+
+Il calcule bien le PGCD de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du PGCD que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait.
+
+Ceci est d'autant plus crucial puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](bases-théoriques/arrêt-rice/#théorème-rice){.interne} : chaque algorithme possède une preuve qui lui est propre.
+Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :
 
 {% aller %}
 [Prouver des algorithmes](./prouver-un-algorithme){.interne}
@@ -262,7 +279,7 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 [Design d'algorithmes](./design-algorithmes){.interne}
 {% endaller %}
 
-### On s’entraîne : méthodes classiques de résolution
+### Problèmes classiques
 
 Ci-après quelques exemples classique de problèmes algorithmes (NP-complet ou non) pouvant se résoudre de multiples manières. Les connaître permet de rapidement forger une solution pour un problème nouveau.
 
@@ -274,10 +291,6 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
-## Intermède
-
-Avant de finir cette première partie du cours, accordons nous un intermède en 2 actes.
-
 ### Problème de l'enveloppe convexe
 
 Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
@@ -286,18 +299,17 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
-### Recherche universelle
+<!--
 
-Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
+## Exercices
 
-L'Algorithme pour tout résoudre :
+On rappelle ici tous les exercices que l'on va voir dans les différentes parties,
 
-{% aller %}
-[L'algorithme de la recherche universelle](./recherche-universelle){.interne}
-{% endaller %}
+### Partie I
 
+### Partie II
 
-<!-- ### Problèmes et exercices
+ ### Problèmes et exercices
 
 
 ### super croissant
@@ -308,8 +320,6 @@ L'Algorithme pour tout résoudre :
 > TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>
 
 ### autre bidules
-
-On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
 
 > TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
 > TBD 3-SUM et Réductions géobase. A supprimer de partie réduction. (en incluant le 2-SUM de tout à l'heure).
@@ -453,6 +463,39 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 > TBD à montrer.
 >
 > TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
+
+## Intermède
+
+Avant de finir cette première partie du cours, accordons nous un intermède. Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
+
+### Algorithme qui résout tout
+
+{% aller %}
+[L'algorithme de la recherche universelle](./recherche-universelle){.interne}
+{% endaller %}
+
+### Jolis problèmes
+
+On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
+
+#### Fonction d'Ackermann
+
+{% aller %}
+[Fonction d'Ackermann](./ackermann.md){.interne}
+{% endaller %}
+
+#### Subsetsum
+
+> TBD 3-sum complet
+> TBD subsetsum en programmation dynamique
+
+#### Chiffrement super-croissant
+
+> -TBD chiffrage et décryptage avec un sac à dos super croissant !
+
+#### Calcul de la médiane
+
+> TBD enlever médiane du diviser pour régner et le mettre ici
 
 ## <span id="partie-3"></span>Partie III
 
@@ -611,6 +654,7 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 [Mélanger un tableau](./projet-mélange){.interne}
 {% endaller %}
 
+> TBD pi et nb aléatoire (nombre univers ?) : <https://www2.lbl.gov/Science-Articles/Archive/pi-random.html>
 > TBD nombre aléatoires : <https://xkcd.com/221/> et <https://imgur.com/random-number-generator-bwFWMqQ>
 
 > TBD : projet Multiplication de matrices randomisé calcul et vérification.: <https://www.stat.berkeley.edu/~mmahoney/f13-stat260-cs294/Lectures/lecture02.pdf> <https://eranraviv.com/randomized-matrix-multiplication/> <https://en.wikipedia.org/wiki/Freivalds%27_algorithm> <https://www.youtube.com/watch?v=z0ykhV15wLw>

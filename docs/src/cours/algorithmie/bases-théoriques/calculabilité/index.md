@@ -77,14 +77,6 @@ On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$. Cet ordre
 
 Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles par un algorithme.
 
-## Exemple de fonction calculable
-
-La plus célèbre des fonctions calculable est bien sur la fonction d'Ackermann :
-
-{% aller %}
-[Fonction d'Ackermann](./ackermann){.interne}
-{% endaller %}
-
 ## Nombres calculables
 
 {% note "**définition**" %}
@@ -136,15 +128,16 @@ Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x
 
 {% enddetails %}
 
-La proposition ci-dessus permet de montrer que la plupart des réels connus sont calculables. Par exemple $\pi$ puisqu'il est la limite de [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e). Ce résultat s'étend naturellement aux fonctions admettant [développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries) comme $cos(x)$, $sin(x)$ ou encore $\sqrt{x}$ qui sont calculables pour tout $x$ calculable.
+La proposition ci-dessus permet de montrer que la plupart des réels connus sont calculables. Par exemple $\pi$ puisqu'il est la limite de [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e).
 
-{% note %}
-Si l'on pense à un réel calculé à partir d'une fonction mathématique usuelle, il y a toute les chances qu'il soit calculable.
-{% endnote %}
+{% info %}
+On sait que $\pi$ est calculable depuis bien plus longtemps que ça. La mathématicien chinois [刘徽](https://fr.wikipedia.org/wiki/Liu_Hui) en propose un algorithme au troisième siècle :
 
-{% attention %}
-Il faut que ce soit **le même algorithme** qui est utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des [suite de speker](https://fr.wikipedia.org/wiki/Suite_de_Specker) par exemple.
-{% endattention %}
+<https://fr.wikipedia.org/wiki/Algorithme_de_Liu_Hui_pour_%CF%80>
+
+{% endinfo %}
+
+**Attention cependant**, Il faut que ce soit **le même algorithme** qui est utilisé pour chaque élément de la suite. Si on utilise un algorithme différent pour chaque $n$, le réel obtenu n'est pas forcément calculable, c'est le cas des [suite de speker](https://fr.wikipedia.org/wiki/Suite_de_Specker) par exemple.
 
 {% lien %}
 
@@ -159,6 +152,43 @@ La quasi-totalité des nombres réels utilisées en mathématiques en tant que t
 {% attention %}
 Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) et son approximation que l'on peut utiliser dans les calculs.
 {% endattention %}
+
+## Exemple de fonction calculable
+
+La plupart des fonctions connues sont calculables.
+
+Prenons la plus connue d'entre elle la fonction $\mbox{PGCD}(a, b)$ d'Euclide qui rend le plus grand commun diviseur de deux entier positifs $a$ et $b$.
+
+<span id="algorithme-euclide"></span>
+
+Euclide (environ -300) décrit son algorithme permettant de calculer le plus grand commun diviseur (PGCD) de deux nombres ainsi :
+
+```pseudocode
+le PGCD de deux nombres n'est pas changé si on remplace le plus grand d'entre eux par leur différence.
+```
+
+{% exercice %}
+Montrer que l'algorithme d'Euclide peut s'écrire sous la forme d'une équation récurrente ayant un nombre fini d'étape.
+{% endexercice %}
+{% details "corrigé" %}
+
+<div>
+$$
+\begin{equation}
+  \mbox{PGCD}(a, b) =
+  \begin{cases}
+    \max(a, b) & \text{si $\min(a, b) = 0$}\\
+    \mbox{PGCD}(\max(a, b) - \min(a, b), \min(a, b)) & \text{sinon}.
+  \end{cases}
+\end{equation}
+$$
+</div>
+
+Si $a$ et $b$ sont deux entiers positifs et tel que $\min(a, b) > 0$ alors : $\max(a, b) - \min(a, b) < \max(a, b) \geq 0$. Il arrivera donc forcément un moment ou $\min(a, b) = 0$.
+
+{% enddetails %}
+
+Un cas d'usage classique est une fonction qui admet [un développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries)   comme les fonctions trigonométriques, $\sqrt{x}$, etc etc : bref quasi toutes les fonctions mathématiques usuelles. Si vous pensez à une fonction il y a toute les chances qu'elle soit calculable.
 
 ## Cas limites
 

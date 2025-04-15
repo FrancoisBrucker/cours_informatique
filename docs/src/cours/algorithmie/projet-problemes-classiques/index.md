@@ -19,6 +19,21 @@ Quelques exemples de problèmes algorithmiques classiques car :
 {% aller %}
 
 [Élément majoritaire](/enseignements/MPCI/programmation-algorithmes/annales/2023-2024/ds-1/ds1_2023_2024.pdf)
+
+> TBD ajouter le Boyer-Moore
+
+```pseudocode
+val <— T[0]
+Nb <— 1
+for i <— 1 to len(T) - 1 :
+   if T[i] == val :
+       Nb += 1
+   Else :
+       Nb -= 1
+       if Nb == 0 :
+           val <— T[i]
+```
+
 {% endaller %}
 
 ## Autres problèmes
