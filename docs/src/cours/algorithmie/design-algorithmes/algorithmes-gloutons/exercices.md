@@ -32,14 +32,11 @@ On utilise la preuve par l'absurde du cours. On suppose que l'algorithme glouton
 On va distinguer deux cas :
 
 1. $i=1$. Ce cas est impossible car comme $x_1$ est le plus petit réel, on peut remplacer tous les intervalles se finissant avant $x_1 + 1$ par l'intervalle $[x_i, x_i + 1]$ dans la solution optimale pour obtenir une solution (les intervalles couvrent clairement tous les réels) avec un nombre plus petit nombre d'intervalles et coïncidant plus longtemps avec le glouton : ceci est impossible par hypothèse.
-2. $i>1$. Il existe dans la solution optimale (ou moins) un intervalle couvrant $x_i$. Nommons cet intervalle $[a, a+1]$. On a que $a< x_i+1$ puisque  $[x_i, x_i + 1]$ n'est pas dans la solution optimale. Mais comme les réels dans $[a, x_i[$ sont couverts par des intervalles précédemment mis dans le glouton, ils sont aussi couverts par cette solution optimale (les deux solutions coïncident jusque-là): on peut procéder comme dans le cas précédent et supprimer tous les intervalles couvrants $x_i$ dans la solution optimale et les remplacer par $[x_i, x_i + 1]$ pour continuer de couvrir tous les réels. Ceci viole notre hypothèse puisque :
-    1. le nombre d'intervalles conservés est plus petit ou égal à la solution optimale initiale : c'est donc également une solution optimale
+2. $i>1$. Il existe dans la solution optimale (ou moins) un intervalle couvrant $x_i$. Nommons cet intervalle $[a, a+1]$. On a que $a < x_i \leq a+1$ puisque  $[x_i, x_i + 1]$ n'est pas dans la solution optimale. Mais comme les réels $x_j \in [a, x_i[$ sont couverts par des intervalles précédemment mis dans le glouton, ils sont aussi couverts par cette solution optimale (les deux solutions coïncident jusque-là): on peut procéder comme dans le cas précédent et remplacer $[a, a+1]$ de la solution optimale par $[x_i, x_i + 1]$ pour continuer de couvrir tous les réels ($[a, x_i[$ est couvert par les intervalles précédents et $[x_i, a+1] \subseteq [x_i, x_i +1]$). Ceci viole notre hypothèse puisque :
+    1. le nombre d'intervalles conservés est égal à la solution optimale initiale : c'est donc également une solution optimale
     2. elle coïncide plus longtemps avec notre glouton.
-1. $i=1$. Ce cas est impossible car comme $x_1$ est le plus petit réel, on peut remplacer tous ses intervalles se finissant avant $x_1 + 1$ par l'intervalle $[x_i, x_i + 1]$ dans la solution optimale pour obtenirune solution (les intervalles couvrent clairement tous les réels) avec un nombre plus petit nombre d'intervalle et coïncidant plus longtemps avec le glouton : ceci est impossible par hypothèse.
-2. $i>1$. Il existe dans la solution optimale (ou moins) un intervalle couvrant $x_i$. Nommons cet intervalle $[a, a+1]$. On a que $a< x+i$ puisque $[x_i, x_i + 1]$ n'est pas dans la solution optimale. Mais comme il n'existe aucun réel dans $[a, x_i[$ qui ne soit pas couvert par des intervalles précédemment mis dans le glouton, ils sont aussi couvert par cette solution optimale (les deux solutions coïncident jusque là): on peut procéder comme dans le cas précédent et supprimer tous les intervalles couvrants $x_i$ dans la solution optimale et les remplacer par $[x_i, x_i + 1]$ pour continuer de couvrir tous les réels. Ceci viole notre hypothèse puisque :
-   1. le nombre d'intervalle conserver est plus petit ou égale à la solution optimale initiale : c'est donc également une solution optimale
-   2. elle coïncide plus longtemps avec notre glouton.
 
+Ces deux cas sont impossible : notre glouton est optimal.
 {% enddetails %}
 
 ### Réservation SNCF

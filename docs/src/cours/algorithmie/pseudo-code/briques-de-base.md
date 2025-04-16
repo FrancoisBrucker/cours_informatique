@@ -282,17 +282,40 @@ répéter k fois:
     ...
 ```
 
-pour :
+Pour :
 
 ```pseudocode
 pour chaque i de [1, k]:
     ...
 ```
 
+#### répétitions par borne
+
+Tout un tas de variations sont possibles, du moment que ce soit compréhensible. Par exemple :
+
+```pseudocode
+pour i de a à b:
+    ...
+```
+
+Ou encore :
+
+```pseudocode
+pour i=a à i=b:
+    ...
+```
+
+Pour :
+
+```pseudocode
+pour chaque i de [a, b]:
+    ...
+```
+
 #### répétitions à pas fixé
 
 ```pseudocode
-de i=a à i=b par par pas de k:
+pour i de a à b par par pas de k:
     ...
 ```
 

@@ -9,13 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD : écrire les algorithmes en pseudo-code
+
 L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.
-
-On va voir la construction et la preuve d'algorithmes gloutons pour résoudre des problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :
-
-1. [le rendu de pièce](./#exemple-le-rendu-de-pièces){.interne}
-2. [l'allocation de ressources](./#exemple-allocation-de-salles-de-cinéma){.interne}
-3. [ordonnancement](./#exemple-ordonnancement){.interne}
 
 ## Algorithmes gloutons
 
@@ -55,7 +51,7 @@ Les algorithmes gloutons sont très utilisés car une fois que l'on a une façon
 
 Attention cependant :
 
-- ils ne donne pas forcément le meilleur résultat : c'est souvent des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique)
+- ils ne donne pas forcément le meilleur résultat : il faut le prouver au cas pas cas
 - il n'y pas forcément de solution unique
 
 En conclusion :
@@ -69,7 +65,7 @@ En conclusion :
 
 {% endnote %}
 
-Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.
+Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique) utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.
 
 ### Comment concevoir un algorithme glouton
 
@@ -88,13 +84,13 @@ Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solution
 
 La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions, ça peut prendre vraiment beaucoup de temps.
 
-Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement une solution est appelée _algorithmes gloutons_.
+Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix et peuvent ainsi être résolu grace à un algorithme glouton. Ce sont ces problèmes que l'on va étudier maintenant.
 
 ### Condition nécessaire et suffisante d'optimalité
 
 On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la preuve la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale :
 
-{% note "**Schéma de preuve de l'optimalité d'iun algorithme glouton**" %}
+{% note "**Schéma de preuve de l'optimalité d'un algorithme glouton**" %}
 En reprenant le [schéma générique de l'algorithme glouton](./#schéma-algo), on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :
 
 - si `S + [x_i]`{.language-} était une solution possible alors `x_i`{.language-} est aussi dans la solution optimale considérée
@@ -118,11 +114,15 @@ Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :
 
 {% endnote %}
 
-Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation.
+Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :
+
+1. [le rendu de pièce](./#exemple-le-rendu-de-pièces){.interne}
+2. [l'allocation de ressources](./#exemple-allocation-de-salles-de-cinéma){.interne}
+3. [ordonnancement](./#exemple-ordonnancement){.interne}
 
 ## <span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces
 
-Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollar.
+Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollars.
 
 ### Design de l'algorithme
 
@@ -207,12 +207,10 @@ Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des
 2. **découpage en étapes** : Comme il faut trouver un sous-ensemble maximal de films, chaque étape consistera en l'examen d'un film et voir si on peut le rajouter à l'ensemble déjà constitué.
 3. **ordre d'examen des films** : date de fin croissante.
 
-Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix. En effet, si l'on classe les séances de cinéma par :
+Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix que la date de fin croissante. En effet, si l'on classe les séances de cinéma par :
 
 - durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,
 - date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,
-
-Il faut donc classer les films par date de fin croissante.
 
 #### Algorithme : maximum de films
 
