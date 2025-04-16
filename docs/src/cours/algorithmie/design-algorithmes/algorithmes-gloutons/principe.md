@@ -9,11 +9,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : écrire les algorithmes en pseudo-code
-
 L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.
 
-## Algorithmes gloutons
+> TBD équivalent discret de trouver un minimum avec le gradient.
+> TBD comme c'est discret des étapes et pas de dérivées.
+> TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.
+
+## Définition
 
 {% note %}
 Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.
@@ -67,13 +69,100 @@ En conclusion :
 
 Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique) utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.
 
-### Comment concevoir un algorithme glouton
+## Comment concevoir un algorithme glouton
+
+Pour construire un algorithme glouton on procède par étapes :
 
 1. écrire le problème comme un problème d'optimisation
 2. découper le problème en une succession d'étapes successives
 3. on construit la solution incrémentalement à chaque étape en optimisant un critère local
 
-### Optimalité et glouton
+Pour se fixer les idées regardons comment appliquer ces différentes étapes dans le cas d'un problème concret : le rendu de monnaie avec un nombre minimum de pièces de 1, 2 et 5 pokédollars.
+
+### Problème du rendu de pièces
+
+{% note "**Problème**" %}
+
+- **nom** : rendu
+- **données** : un entier $R$
+- **résultat** : trois nombres $n_1$, $n_2$ et $n_5$ tels que :
+  1. $n_1 + 2 \cdot n_2 + 5 \cdot n_5 = R$
+  2. $n_1 + n_2 + n_3 = \min(\\{ x + y + z \\,\vert \\,  x + 2 \cdot y + 5 \cdot z = R, x, y, z \in \mathbb{N} \\})$
+{% endnote %}
+
+### Design de l'algorithme rendu
+
+1. **écrire le problème comme un problème d'optimisation** : Il faut rendre un nombre minimum de pièces
+2. **découper le problème en une succession d'étapes** : si l'on doit rendre en pièces d'une valeur de $v$, il faut rendre le maximum de pièces possibles, qui correspond à la division entière de $R$ par $v$. On va donc considérer à chaque étape qu'une seule valeur $v$ de pièce, puisqu'il est facile de trouver l'optimum dans ce cas là. Notre algorithme va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée
+3. **choisir un ordre de parcours** : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes
+
+### Algorithme : rendu de pièce
+
+```pseudocode
+algorithme rendu(R: entier) → (entier, entier, entier):
+    V ← [5, 2, 1]  # les pièces sont triées par ordre décroissant
+    P ← []  # liste vide
+    
+    pour chaque v de V:
+        ajouter R // v à la fin de la liste P  # division entière
+        R ← R mod v                           # reste de la division entière
+    
+    rendre (R[0], R[1], R[2])
+```
+
+{% exercice %}
+Codez l'algorithme en python.
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+def rendu(R):
+    pieces = [5, 2, 1]
+
+    rendu = []
+    for v in pieces:
+        p = R // v
+        R = R % v
+
+        rendu.append(p)
+
+    return tuple(rendu)
+```
+
+{% enddetails %}
+
+### Optimalité de l'algorithme rendu
+
+On va analyser les propriétés d'une solution optimale et montrer que la solution de l'algorithme glouton les satisfait.
+
+Considérons une solution optimale. Elle ne **peut pas** contenir :
+
+- **plus de 2 pièces de 2**, sinon on pourrait rendre moins de pièces en échangeant 3 pièces de 2 par 1 pièce de 5 et une pièce de 1 ce qui diminuerait strictement le nombre de pièces rendues.
+- **plus de 1 pièce de 1**, sinon on échangerait 2 pièces de 1 par une pièce de 2, ce qui diminuerait strictement le nombre de pièces rendues.
+
+Enfin, cette solution optimale ne **peut pas avoir exactement 2 pièces de 2 et une pièce de 1**, sinon on les échangeraient pour une pièce de 5...
+
+On en déduit donc que la somme d'argent rendu en pièce de 2 et de 1 pour une solution optimale ne peut dépasser 4, ce qui est exactement la division entière de $R$ par 5 et est le premier choix de l'algorithme glouton.
+
+Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a plus qu'à montrer que pour les 5 cas possibles (lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre) le glouton est optimal, ce qui est évident.
+
+### Généralisation à un système de pièces quelconque ?
+
+On peut démontrer que le système de pièce européen fonctionne avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200. Mais attention, cela ne marche pas pour tous les systèmes de pièces :
+
+- exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c'est 3 + 3 le mieux.
+- 1, 6, 11, 19 ne fonctionne pas non plus pour 22 par exemple, alors que le système de pièce forme une suite super-croissante ($v_i > v_1 + \dots + v_{i-1}$ pour tout $i >1$). De quoi tordre le coup à une légende urbaine persistante qui stipule en effet que les suites super-croissante permettent un rendu de pièces optimal avec l'algorithme glouton.
+
+Remarques :
+
+- ce n'est pas la seule solution possible pour avoir un système optimal puisque les américains ont des pièces de 25c (les quarter)
+- cela peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
+
+{% info %}
+On peut résoudre le cas général avec [un algorithme utilisant la programmation dynamique](http://tnsi.free.fr/documents/14.rendu_monnaie.pdf).
+{% endinfo %}
+
+## Optimalité d'un algorithme glouton
 
 Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possibles, une solution minimisant (ou maximisant) un critère. Par exemple :
 
@@ -85,10 +174,6 @@ Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solution
 La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions, ça peut prendre vraiment beaucoup de temps.
 
 Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix et peuvent ainsi être résolu grace à un algorithme glouton. Ce sont ces problèmes que l'on va étudier maintenant.
-
-### Condition nécessaire et suffisante d'optimalité
-
-On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la preuve la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale :
 
 {% note "**Schéma de preuve de l'optimalité d'un algorithme glouton**" %}
 En reprenant le [schéma générique de l'algorithme glouton](./#schéma-algo), on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :
@@ -116,278 +201,297 @@ Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :
 
 Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :
 
-1. [le rendu de pièce](./#exemple-le-rendu-de-pièces){.interne}
-2. [l'allocation de ressources](./#exemple-allocation-de-salles-de-cinéma){.interne}
-3. [ordonnancement](./#exemple-ordonnancement){.interne}
-
-## <span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces
-
-Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollars.
-
-### Design de l'algorithme
-
-1. **écrire le problème comme un problème d'optimisation** : Il faut rendre un nombre minimum de pièces
-2. **découper le problème en une succession d'étapes** : si l'on doit rendre en pièces d'une valeur de $v$, il faut rendre le maximum de pièces possibles, qui correspond à la division entière de $R$ par $v$. On va donc considérer à chaque étape qu'une seule valeur $v$ de pièce, puisqu'il est facile de trouver l'optimum dans ce cas là. Notre algorithme va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée
-3. **choisir un ordre de parcours** : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes
-
-### Algorithme : rendu de pièce
-
-- **Problème** : "comment rendre R sous en un nombre minimum de pièces"
-- **algorithme glouton** :
-  1. choisir la plus grande valeur $v$ de pièce plus petite que $R$
-  2. donner $p$ pièces où $p$ est la division entière de $R$ par $v$ (`p = R // v`{.language-})
-  3. $R = R - p \cdot v$
-  4. revenir en 1. si $R > 0$
-- **complexité** : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l'ordre du nombre de pièces
-
-{% exercice %}
-Codez l'algorithme en python.
-{% endexercice %}
-{% details "**Solution**" %}
-
-```python
-def rendu(R, pieces=(1, 2, 5)):
-    pieces = list(pieces)
-    pieces.sort()
-    pieces.reverse()
-
-    rendu = []
-    for v in pieces:
-        p = R // v
-        R -= p * v
-
-        rendu.append((v, p))
-
-    return rendu
-```
-
-{% enddetails %}
-
-### Preuve d'optimalité pour un système de pièce valant 1, 2 et 5
-
-On a pas besoin ici de preuve par récurrence. On va analyser les propriétés d'une solution optimale et montrer que la solution de l'algorithme glouton les satisfait.
-
-Considérons une solution optimale. Elle ne **peut pas** contenir :
-
-- **plus de 2 pièces de 2**, sinon on pourrait rendre moins de pièces en échangeant 3 pièces de 2 par 1 pièce de 5 et une pièce de 1 ce qui diminuerait strictement le nombre de pièces rendues.
-- **plus de 1 pièce de 1**, sinon on échangerait 2 pièces de 1 par une pièce de 2, ce qui diminuerait strictement le nombre de pièces rendues.
-
-Enfin, cette solution optimale ne **peut pas avoir exactement 2 pièces de 2 et une pièce de 1**, sinon on les échangeraient pour une pièce de 5...
-
-On en déduit donc que la somme d'argent rendu en pièce de 2 et de 1 pour une solution optimale ne peut dépasser 4, ce qui est exactement la division entière de $R$ par 5 et est le premier choix de l'algorithme glouton.
-
-Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a plus qu'à montrer que pour les 5 cas possibles (lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre) le glouton est optimal, ce qui est évident.
-
-### Système de pièces quelconque ?
-
-On peut démontrer que le système de pièce européen fonctionne avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200. Mais attention, cela ne marche pas pour tous les systèmes de pièces :
-
-- exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c'est 3 + 3 le mieux.
-- 1, 6, 11, 19 ne fonctionne pas non plus pour 22 par exemple, alors que le système de pièce forme une suite super-croissante ($v_i > v_1 + \dots + v_{i-1}$ pour tout $i >1$). De quoi tordre le coup à une légende urbaine persistante qui stipule en effet que les suites super-croissante permettent un rendu de pièces optimal avec l'algorithme glouton.
-
-Remarques :
-
-- ce n'est pas la seule solution possible pour avoir un système optimal puisque les américains ont des pièces de 25c (les quarter)
-- cela peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.
-
-{% info %}
-On peut résoudre le cas général avec [un algorithme utilisant la programmation dynamique](http://tnsi.free.fr/documents/14.rendu_monnaie.pdf).
-{% endinfo %}
-
-## <span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma
-
-Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :
-
-- Quel est le nombre maximum de films qu'une personne peux voir en une journée ?
-- Quel est le nombre minimum de salles à construire pour qu'une personne puisse voir un film quelconque qu'elle aura choisi.
-
-### Voir un maximum de films
-
-1. **le problème d'optimisation** : on cherche à rendre une liste maximale de films à voir en une journée.
-2. **découpage en étapes** : Comme il faut trouver un sous-ensemble maximal de films, chaque étape consistera en l'examen d'un film et voir si on peut le rajouter à l'ensemble déjà constitué.
-3. **ordre d'examen des films** : date de fin croissante.
-
-Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix que la date de fin croissante. En effet, si l'on classe les séances de cinéma par :
-
-- durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,
-- date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,
-
-#### Algorithme : maximum de films
-
-- **entrée** : liste de films, chaque liste étant une liste `[depart, fin, nom]`{.language-}
-- **sortie** : liste ordonnée de films possible
-
-```python
-def nombre_films_maximal(films):
-
-    films.sort(key=lambda x: x[1])
-
-    films_a_voir = [films[0]]
-    for film in films:
-        fin_dernier_film = films_a_voir[-1][1]
-        début_nouveau_film = film[0]
-        if fin_dernier_film <= début_nouveau_film:
-            films_a_voir.append(film)
-
-    return films_a_voir
-```
-
-La sortie de l'algorithme glouton correspond à un ordre de visionnage de films maximisant le nombre de films vus.
-
-{% info %}
-On a utilisé quelques astuces de programmation python :
-
-- `l[-1]`{.language-} rend le dernier élément d'une liste.
-  boucle `for`{.language-}.
-- on a un peu fait de magie noire sur les tris en utilisant le paramètre [key](https://docs.python.org/fr/3/howto/sorting.html#key-functions) qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).
-- on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction `fonction_lambda_anonyme`{.language-} suivante :
-
-```python
-def fonction_lambda_anonyme(x):
-    return x[1]
-```
-
-{% endinfo %}
-
-#### Preuve de l'algorithme : maximum de films
-
-On prouve notre algorithme en utilisant la technique de preuve par l'absurde : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère la solution optimale à $m^\star$ films dont l'ordre de visionnage des films coïncide le plus longtemps possible avec la solution donnée par celui-ci.
-
-Soit $i$ l'indice de l'étape de la première différence. Bornons cet indice :
-
-- on ne peut pas avoir $i > m$ car par construction de l'algorithme glouton, tout film qui n'est pas choisit par lui entre en conflit avec au moins un film choisi.
-- on peut en revanche avoir $i=1$ si les deux listes ne commencent pas par le même film
-
-On a donc $1 \leq i \leq m$ et deux cas sont possibles :
-
-1. soit le film $f_i$ a été refusé par l'algorithme glouton alors qu'il est dans la solution optimale
-2. soit le film $f_i$ a été accepté par l'algorithme glouton alors qu'il n'est pas dans la solution optimale
-
-Le premier cas est impossible car s'il a été refusé par l'algorithme glouton, c'est qu'il empiète avec un film déjà accepté et comme les solutions optimale et gloutonne coïncident jusqu'à $i$ ces films sont aussi dans la solution optimale.
-
-Dans le deuxième cas, si $(f^\prime_{j})_{1 \leq j \leq m'}$ est sa liste optimale de films à voir on a :
-
-- $f'_j = f_j$ pour $j< i$
-- $f'_i \neq f_i$
-
-Par construction de l'algorithme glouton, la date de fin de $f'_i$ est plus grande que la date de fin de $f_i$. On peut alors échanger $f_i$ et $f'_i$ pour créer une nouvelle solution optimale $(f'')$ telle que :
-
-- $f''_j = f_j$ pour $j\leq  i$
-- $f''_j = f'_j$ pour $j >  i$
-
-Ceci est impossible par hypothèse (on prend la solution optimale coïncidant le plus longtemps possible avec la solution de l'algorithme glouton) : notre hypothèse était fausse, l'algorithme glouton est optimal.
-
-### Nombre minimum de salles pour placer tous les films en stock
-
-On essaie ici de trouver le nombre minimum de salles à construire pour pouvoir projeter tous les films
-
-#### Algorithme : nombre de salle minimum
-
-On va ici classer les films par date de début croissante. On commence par 0 salles de cinéma.
-
-En analysant dans cet ordre les films, on cherche s'il existe une salle à laquelle on peut rajouter le film (la date de fin du dernier film de la salle est plus tôt que le début du nouveau film). Si oui on rajoute le film à cette salle, si non on crée une nouvelle salle et l'on ajoute notre film à cette nouvelle salle.
-
-{% exercice %}
-Codez l'algorithme en python.
-{% endexercice %}
-{% details "**Solution**" %}
-
-```python
-def nombre_salles(films):
-    films.sort(key=lambda x: x[0])
-
-    salles = [[films[0]]]
-    for film in films[1:]:
-        nouvelle_salle = True
-        for salle in salles:
-            dernier_film = salle[-1]
-            if film[0] >= dernier_film[1]:
-                salle.append(film)
-                nouvelle_salle = False
-                break
-        if nouvelle_salle:
-            salles.append([film])
-```
-
-{% enddetails %}
-
-#### Preuve de l'algorithme : minimum de salles
-
-La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n'est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.
-
-## <span id="exemple-ordonnancement"></span>Exemple 3 : ordonnancement
-
-Les problèmes d'ordonnancement sont multiples. Certains sont durs, d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
-
-Le problème suivant est résoluble par un algorithme glouton : on considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on n'a qu'un seul ouvrier.
-
-Il faut donc trouver un sous-ensemble de produits à créer parmi la liste de toutes les possibilités (exemple : la liste de toutes les dates de match de foot ou de concerts) **et** l'ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.
-
-Commençons par montrer que cet ordre est facile à trouver.
-
-### Ordre de production
-
-Un ensemble de produits est dit _compatible_ s'il existe un ordonnancement de leur production permettant de tous les vendre (chaque produit est fabriqué avant sa date de péremption).
-
-On a la proposition suivante :
-
-{% note %}
-Un ensemble de produits est compatible si et seulement si la production par date $d_i$ croissante permet de tous les vendre.
+### Problème du recouvrement de nombres réels
+
+{% note "**Problème**" %}
+
+- **nom** : recouvrement
+- **données** : un tableau $T$ de $n$ nombres réels
+- **résultat** : une liste I d'intervalles $[x, x+1]$ telle que :
+  - pour tout indice $i$, il existe un indice $j$ tel que $T[i] \in I[j]$
+  - la liste d'intervalles $I$ est de taille minimum
 {% endnote %}
 
-Preuve :
+Par exemple, en prenant le tableau $T = [-.4, 0,4, 1, 2, 2.99]$ la liste $I = [[-.5, .5], [1, 2], [1.99, 1.99]]$ est une solution :
 
-- si la production par date croissante permet de tout vendre il est compatible
-- s'il existe un autre ordonnancement avec la tâche $j$ placé avant la tâche $i$ alors que $d_j > d_i$, on peut échanger la tâche $i$ et la tâche $j$ et l'ordonnancement reste compatible
+- $T[0], T[1] \in I[0]$
+- $T[2], T[3] \in I[1]$
+- $T[3] \in I[2]$
 
-Grace à cette propriété, on est ramené à un problème glouton classique : on a plus qu'un seul paramètre à optimiser : le profit.
+Notez qu'il existe de nombreuses solutions possibles. Par exemple $I = [[-.4, .6], [.5, 1.5], [1.99, 2.99]]$ ou $I = [[-.4, .6], [1, 2], [2.99, 3.99]]$ en sont deux autres.
 
-### Algorithme : ensemble compatible maximum
+C'est un cas courant en optimisation discrète : il existe de nombreuses solutions optimales et sont toutes équivalentes.
 
-Montrons que l'algorithme glouton suivant est optimal :
+### Algorithme de recouvrement
 
-1. on trie les produits par prix décroissant
-2. $S = []$
-3. pour chaque produit $x$ examiné par ordre de prix décroissant : on ajoute $x$ à $S$ s'il reste compatible
-4. rendre $S$ (qui est une liste de profit maximal)
+On classe les réels par ordre croissants puis pour chaque réel $T[i]$ on ajoute l'intervalle $[T[i], T[i] + 1]$ s'il n'est pas déjà couvert.
 
-{% exercice %}
-Codez l'algorithme en python.
-{% endexercice %}
-{% details "**Solution**" %}
+```pseudocode
+algorithme recouvrement(T: [réel]) → [(réel, réel)]:
+    trie T par ordre croissant.
+    I ← []
+    c ← ∅
 
-```python
-def produits_est_compatible(liste_produit):
-    liste_produit.sort(key=lambda x: x[0])
-
-    for date, produit in enumerate(liste_produit):
-        if date + 1 > produit[0]:
-            return False
-    return True
-
-def produits_maximum_profit(liste_produit):
-    liste_produit.sort(key=lambda x : x[1])
-    liste_produit.reverse()
-
-    ensemble_max = []
-    for produit in liste_produit:
-        if produits_est_compatible(ensemble_max + [produit]):
-            ensemble_max.append(produit)
-
-    return ensemble_max
+    pour chaque x de T:
+        si x ∉ c:
+            c ← [x, x + 1]
+            ajoute c à I
+    
+    rendre I
 ```
+
+En prenant le tableau $T = [-.4, 0,4, 1, 2, 2.99]$ l'algorithme glouton de recouvrement rend la liste $I = [[-.4, .6], [1, 2], [2.99, 3.99]]$. Notez, on va en avoir besoin dans les preuves, que pour tout $0 \leq i < I.\mbox{\small longueur}$ :
+
+- $I[i]$ est un intervalle
+- $I[i][0]$ est un élément du tableau d'origine
+
+Enfin, il est clair que tous les éléments de $T$ sont couvert par un intervalle de $I$. Il nous reste à montrer qu'il possède un nombre minimal d'intervalle pour montrer qu'il est bien une solution au problème recouvrement.
+
+Nous allons prouver cette optimalité des deux façons préconisées : par construction et par l'absurde. Vous verrez qu'elles utilisent toutes deux exactement les mêmes arguments.
+
+### Optimalité par construction
+
+On va considérer deux solutions :
+
+- $I$, la solution rendue par l'algorithme glouton
+- $I^\star$, une solution optimale ordonné par origine des intervalles croissante
+
+On va montrer que l'on peut transformer itérativement $I^\star$ en $I$ tout en conservant l'optimalité à chaque étape. Ceci démontrera que $I$ est optimal.
+
+Déjà, comme $I^\star$ est optimal on a $I^\star.\mbox{\small longueur} \leq I.\mbox{\small longueur}$. De plus si pour tout $0\leq i < I^\star.\mbox{\small longueur}$ on a $I[i] = I^\star[i]$, alors $I.\mbox{\small longueur} = I^\star.\mbox{\small longueur}$ sinon l'élément $I[I^\star.\mbox{\small longueur}][0]$ (qui est un élément de $T$) n'est pas couvert par $I^\star$ ce qui est impossible.
+
+On est donc ramené au cas où soit $I = I^\star$ et $I$ est optimal, soit il existe $i$ le plus petit indice tel que $I[i] \neq I^\star[i]$.
+
+Comme $I^\star$ est optimal, l'élément $x = I[i][0]$ de $T$ doit être couvert par un intervalle – disons $[u, u+1]$ – de $I^\star$. Par construction de l'algorithme glouton tous les éléments de $T$ strictement plus petits que $x$ sont couvert par des intervalles de $I[:i]$ et comme $u < x$ par hypothèse, on en conclut que l'on peut construire la solution $I^{\star\star}$ telle que :
+
+<div>
+$$
+I^{\star\star} = I^{\star}[:i] + [I[i]] + I^{\star}[i+1:]
+$$
+</div>
+
+En deux mots, $I^{\star\star}$ est $I^\star$ où l'on a remplacé $[u, u+1]$ par $I[i]$.
+
+Cette liste d'intervalles recouvre tous les éléments de $T$ :
+
+- les éléments de $T$ dans $[u, x[$ sont couvert par les intervalles de $I^\star[:i] = I[:i]$
+- les éléments de $T$ dans $[x, u+1]$ sont couvert par l'intervalles de $I[i]$
+- tous les autres éléments sont couvert par des intervalles de $I^\star$ différents de $I^\star[i]$
+
+Comme $I^{\star\star}$ a le même nombre d'intervalles que $I^{\star}$ c'est une solution optimale ! Et comme $I^{\star\star}[:i+1] = I[:i + 1]$, elle coïncide plus longtemps avec $I$ que $I^{\star}$.
+
+On peut alors réitérer ce process pour transformer notre solution optimale en $I$, ce qui va prouver que $I$ a bien un nombre minimum d'intervalles.
+
+### Optimalité par l'absurde
+
+Pour ce type de preuve, on va supposer que $I$ n'est pas optimal.
+
+On peut alors considérer une solution optimale $I^{\star}$ faisant les même choix que le glouton le plus longtemps possible. Une telle solution optimale existe (car il y a un nombre fini de choix) et est différente de $I$ par hypothèse.
+
+Dans le cas de l'algorithme `recouvrement`{.language-} on considère alors la première itération, disons $i$, où $I^{\star}$ à fait un choix différent de l'algorithme, c'est à dire la première itération où le glouton à créé un intervalle, $I[i]$, qui n'est pas dans $I^{\star}$.
+
+Comme avant cette itération $I^{\star}$ a effectué les mêmes choix que le glouton il possède tous les intervalles de $I[:i]$ et comme $I^{\star}$ est une solution, $x = I[i][0]$ est couvert par $I^{\star}$ avec un intervalle $[u, u+1]$ où $u < x$.
+
+On procède alors exactement de la même façon que pour la preuve constructive en créant la solution $I^{\star\star}$ où l'on a remplacé $[u, u+1]$ par $I[i]$ dans $I^\star$.
+
+Cette solution est optimale car elle couvre tous les éléments de $T$ et a le même nombre d'intervalle que $I^\star$. Mais ceci est impossible car elle coïncide avec $I$ plus longtemps que $I$ (elle possède tous les intervalles de $I[:i+1]$ alors que $I^\star$ me possède pas $I[i]$) alors que hypothèse de non optimalité de $I$ impliquait l'existence de $I^\star$,  solution optimale coïncidant le plus longtemps possible avec $I$.
+
+Notre hypothèse de départ était fausse : $I$ est optimale.
+
+## Performances garanties d'un glouton
+
+Très souvent un algorithme glouton ne va trouver une solution optimale au problème proposé, mais dans certains cas, on peut démontrer que sa solution n'est pas trop éloigné du maximum.
+
+Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer qu'ils permettent tout de même de n'être pas trop éloigné de celle-ci.
+
+{% note "**Définition**" %}
+Un algorithme est **_à performance garantie_** si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.
+{% endnote %}
+
+### Problème du _bin packing_
+
+Pour illustrer cette problématique on va utiliser [le problème du _bin packing_](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing) :
+
+{% note "**Problème**" %}
+
+- **nom** : _bin packing_
+- **données** :
+  - un tableau $T$ de $n$ entiers
+  - un entier $K$
+- **résultat** : une partition des éléments de $T$ en $m$ _boîtes_ $B_j$ ($0\leq j < m$) telle que :
+  - la somme des éléments $\sum_{i \in E_j}T[i] \leq K$ pour tout $0\leq j < m$
+  - $m$ est minimum
+{% endnote %}
+
+La somme des éléments de chaque boîte est inférieure à $K$ et c'est ces boîtes qui sont utilisées en pratique.
+
+Trouver une solution au problème du _bin packing_ n'est cependant vraiment pas évident. On peut en effet lui associer un problème d'existence NP-complet :
+
+{% note "**Problème**" %}
+
+- **nom** : _bin packing existence_
+- **données** :
+  - un tableau $T$ de $n$ entiers
+  - un entier $K$
+  - un entier $M$
+- **résultat** : rendre, si elle existe, une partition de $[0, T.\mbox{\small longueur}[$ en $m$ ensembles $E_j$ ($0\leq j < m$) telle que :
+  - la somme des éléments $\sum_{i \in E_j}T[i] \leq K$ pour tout $0\leq j < m$
+  - $m \leq M$
+{% endnote %}
+
+Les problèmes d'optimisation associés à un problème d'existence NP-complet sont dit **_NP-difficile_**. Ces deux problèmes sont reliés car :
+
+- si on a un algorithme pour résoudre le problème d'optimisation, il peut également servir à résoudre le problème d'existence
+- si on a un algorithme pour résoudre le problème d'existence, il peut également servir à résoudre le problème d'optimisation en procédant par dichotomie sur $M$.
+
+On distingue cependant les deux problèmes car le problème d'optimisation n'est pas vraiment dans NP, c'est à dire vérifiable en temps polynomial, car il faudrait avoir toutes les solutions pour comparer.
+
+Les problèmes NP-difficile sont donc impossible à résoudre de façon optimale par un algorithme glouton, de complexité polynomiale. Mais dans le cas du _bin packing_ on peut designer un algorithme glouton à performance garantie.
+
+### Algorithme glouton pour résoudre le _bin packing_
+
+Cet algorithme est extrêmement simple, on ajoute itérativement des éléments à un ensemble jusqu'à tant qu'on ne puisse plus et on crée un nouvel ensemble :
+
+```pseudocode
+algorithme bin_packing(T: [entier]) → [[entier]]
+    Es ← []
+    E ← []
+    s ← 0
+    pour chaque i de [0, T.longueur[:
+        s ← s + T[i]
+        si s ≤ K:
+            ajouter T[i] à E
+        sinon:
+            trie E par ordre croissant  # étape facultative
+            ajoute E à Es
+            E ← [T[i]]
+            s ← T[i]
+    rendre Es
+```
+
+Par exemple avec $T = [2, 11, 1, 4, 5]$ et $K = 12$ l'algorithme va rendre une liste de 3 boîtes  $[[2], [1, 11], [4, 5]]$.
+
+Remarquez que selon l'ordre des éléments de $T$, les boites et leurs nombres vont être différentes :
+
+- $[4]$, $[1, 11]$ et $[2, 5]$ si $T = [4, 11, 1, 2, 5]$
+- $[1, 11]$, $[2, 4, 5]$ si $T = [1, 11, 2, 4, 5]$
+- $[11]$, $[1, 2, 4, 5]$ si $T = [11, 2, 1, 4, 5]$
+
+{% info %}
+On ne veut pas ordonner les éléments a priori car cela correspond à un algorithme online où les éléments "arrivent" les uns après les autres comme dans un déménagement ou un flux de marchandises.
+{% endinfo %}
+
+### Performance garantie
+
+Pour prouver qu'un algorithme a une performance garantie sans connaître la valeur de la solution optimale, il faut ruser.
+
+On va chercher des propriétés de la solution optimale que l'on pourra rapprocher de propriétés de la solution gloutonne.
+
+Commençons par une propriété de la solution optimale :
+
+{% note "**Propriété**" %}
+Le nombre minimum d'ensembles de la partition est plus grand que la somme de tous les entiers divisée par $K$.
+{% endnote %}
+{% details "preuve", "open" %}
+Si l'on a $m^\star$ ensembles, on peut ranger au maximum une somme valant $K\cdot m^\star$ qui doit donc être supérieure à la somme de tous les entiers.
+{% enddetails %}
+
+Puis deux propriétés de l'algorithme glouton :
+
+{% note "**Propriété**" %}
+
+Si $B$ est la sortie de l'algorithme glouton, on a pour tout $i$ :
+
+<div>
+$$
+\sum_{x \in B[i]}x + \sum_{x \in B[i+1]}x \geq K
+$$
+<div>
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+On ne crée un nouvel ensemble que si l'entier courant ne tient pas dans l'ensemble considéré : la somme de ces deux ensembles consécutifs est donc strictement plus grande que $K$.
+{% enddetails %}
+{% note "**Propriété**" %}
+Si $m$ est le nombre de boîtes rendu par l'algorithme glouton, on a :
+
+<div>
+$$
+\sum_{i}T[i] \geq K \cdot \lfloor \frac{m}{2} \rfloor
+$$
+</div>
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Dans le cas où $m$ est pair on a, en utilisant la propriété précédente :
+
+- $\sum_{x \in B[0]}x + \sum_{x \in B[1]}x \geq K$
+- $\sum_{x \in B[2]}x + \sum_{x \in B[3]}x \geq K$
+- ...
+- $\sum_{x \in B[m-2]}x + \sum_{x \in B[m-1]}x \geq K$
+
+Et on en déduit que :
+
+<div>
+$$
+\sum_i T[i] = \sum_{i}\sum_{x \in B[i]}x \geq  K \cdot \frac{m}{2}
+$$
+</div>
+
+Si $m$ est impair, on a :
+
+- $\sum_{x \in B[0]}x + \sum_{x \in B[1]}x \geq K$
+- $\sum_{x \in B[2]}x + \sum_{x \in B[3]}x \geq K$
+- ...
+- $\sum_{x \in B[m-3]}x + \sum_{x \in B[m-2]}x \geq K$
+
+Et donc :
+
+<div>
+$$
+\sum_i T[i] = \sum_{i}\sum_{x \in B[i]}x \geq \sum_{i< m-1}\sum_{x \in B[i]}x \geq  K \cdot \lfloor \frac{m}{2} \rfloor
+$$
+</div>
 
 {% enddetails %}
 
-### Preuve : ensemble compatible maximum
+En combinant ces propriétés on a :
 
-#### <span id="init-optimisation"></span>Initialisation
+{% note "**Proposition**" %}
+L'algorithme glouton trouve au maximum 2 fois la solution optimale.
+{% endnote %}
+{% details "corrigé", "open" %}
 
-Si une solution ne contient pas l'élément de prix maximum on l'échange avec le 1er élément produit et la solution reste compatible tout en ayant un profit plus grand
+Si $m^\star$ est le nombre de boîte de la solution optimale et $m$ celui du glouton on a :
 
-#### <span id="récurrence-optimisation"></span> Récurrence
+- d'un côté : $\sum_i T[i] \leq K\cdot m^\star$
+- de l'autre côté : $\sum_{i}T[i] \geq K \cdot \lfloor \frac{m}{2} \rfloor$
 
-Si une solution optimale et la solution gloutonne coïncident au bout de $i$ étapes (les éléments pris le sont pour les deux solutions et les éléments écartés le sont aussi pour les deux solutions), à l'étape $i+1$ on a deux cas :
+Ce qui amène directement à $\lfloor \frac{m}{2} \rfloor \leq  m^\star$
+{% enddetails %}
 
-- on écarte ce produit car la solution n'est plus compatible pour la solution gloutonne. Comme La solution optimale contenait jusqu'à présent tous les éléments de la solution gloutonne, le produit de l'étape $i+1$ n'est pas on plus compatible avec la solution optimale.
-- on ajoute le produit à la solution gloutonne. Si la solution optimale ne contient pas ce produit on peut échanger n'importe quel autre élément que les $i-1$ premiers éléments de la solution avec celui-ci pour augmenter le profit.
+La borne peut être atteinte en utilisant uniquement deux types de caisses : des caisse de volume 1 et $K/2$.
+
+{% exercice "**Cas le pire**" %}
+Montrez qu'en utilisant des caisses de volume 1 et $K/2$ l'ordre dans lequel les caisses sont examinées par le glouton peut aller du simple au (presque) double en nombre de solutions.
+{% endexercice %}
+{% details "corrigé" %}
+Si l'on a $n_1$ caisses de volume $K/2$ et $n_2$ caisses de volume 1, le nombre optimal de caisses est : $n_1 / 2 + n_2/K$. L'ordre est bien optimal puisque toutes les caisses sauf une seront remplies au maximum.
+
+En examinant les caisses alternativement de volume 1 et $K/2$, et en supposant que $n_1 \geq n_2$ on aura besoin de $n_1 + (n_2-n_1)/K = n_1(1-1/K) + n_2/K$ caisses. Si $n_1 = n_2 = 2K$, le nombre optimal sera $K +2$ et celui obtenu par le glouton de $2K$. Ce rapport de l'optimum sur le glouton va tendre vers 1/2 lorsque $K$ grandit.
+{% enddetails %}
+
+L'exercice précédent montre que selon l'ordre dans lequel on examine les éléments on peut obtenir une no;bre de boite allant du simple au double !
+
+{% info %}
+On peut cependant faire mieux si l'on connaît toutes les marchandises avant de les empaqueter et en les examinant **par volume décroissant**. [Il a en effet été prouvé](https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis) que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.
+
+{% endinfo %}
+
+## Heuristique gloutonne
+
+> TBD <https://perso.liris.cnrs.fr/alain.mille/enseignements/master_ia/cours3.pdf>
+> TBD ajouter du random pour refaire.
+>

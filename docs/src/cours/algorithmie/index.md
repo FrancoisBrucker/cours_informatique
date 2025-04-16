@@ -648,6 +648,8 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 [Exemples de problèmes NP complets](./exemples-problèmes-NPC){.interne}
 {% endaller %}
 
+> TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>
+
 ### Désordre et hasard
 
 {% aller %}

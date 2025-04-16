@@ -17,27 +17,129 @@ Attention, souvent les algorithmes gloutons n'ont pas de garanties du tout. Beau
 
 Comme toujours lorsque l'on crée un algorithme glouton, la principale difficulté est de trouver l'ordre dans lequel considérer les objets. Une fois cet ordre trouvé les preuves sont toujours les mêmes (mais il faut tout de même les faire).
 
-### Recouvrement
+## <span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma
+
+> TBD à mettre sous la forme d'un exercice
+
+Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :
+
+- Quel est le nombre maximum de films qu'une personne peux voir en une journée ?
+- Quel est le nombre minimum de salles à construire pour qu'une personne puisse voir un film quelconque qu'elle aura choisi.
+
+### Voir un maximum de films
+
+1. **le problème d'optimisation** : on cherche à rendre une liste maximale de films à voir en une journée.
+2. **découpage en étapes** : Comme il faut trouver un sous-ensemble maximal de films, chaque étape consistera en l'examen d'un film et voir si on peut le rajouter à l'ensemble déjà constitué.
+3. **ordre d'examen des films** : date de fin croissante.
+
+Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix que la date de fin croissante. En effet, si l'on classe les séances de cinéma par :
+
+- durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,
+- date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,
+
+#### Algorithme : maximum de films
+
+- **entrée** : liste de films, chaque liste étant une liste `[depart, fin, nom]`{.language-}
+- **sortie** : liste ordonnée de films possible
+
+```python
+def nombre_films_maximal(films):
+
+    films.sort(key=lambda x: x[1])
+
+    films_a_voir = [films[0]]
+    for film in films:
+        fin_dernier_film = films_a_voir[-1][1]
+        début_nouveau_film = film[0]
+        if fin_dernier_film <= début_nouveau_film:
+            films_a_voir.append(film)
+
+    return films_a_voir
+```
+
+La sortie de l'algorithme glouton correspond à un ordre de visionnage de films maximisant le nombre de films vus.
+
+{% info %}
+On a utilisé quelques astuces de programmation python :
+
+- `l[-1]`{.language-} rend le dernier élément d'une liste.
+  boucle `for`{.language-}.
+- on a un peu fait de magie noire sur les tris en utilisant le paramètre [key](https://docs.python.org/fr/3/howto/sorting.html#key-functions) qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).
+- on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction `fonction_lambda_anonyme`{.language-} suivante :
+
+```python
+def fonction_lambda_anonyme(x):
+    return x[1]
+```
+
+{% endinfo %}
+
+#### Preuve de l'algorithme : maximum de films
+
+On prouve notre algorithme en utilisant la technique de preuve par l'absurde : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère la solution optimale à $m^\star$ films dont l'ordre de visionnage des films coïncide le plus longtemps possible avec la solution donnée par celui-ci.
+
+Soit $i$ l'indice de l'étape de la première différence. Bornons cet indice :
+
+- on ne peut pas avoir $i > m$ car par construction de l'algorithme glouton, tout film qui n'est pas choisit par lui entre en conflit avec au moins un film choisi.
+- on peut en revanche avoir $i=1$ si les deux listes ne commencent pas par le même film
+
+On a donc $1 \leq i \leq m$ et deux cas sont possibles :
+
+1. soit le film $f_i$ a été refusé par l'algorithme glouton alors qu'il est dans la solution optimale
+2. soit le film $f_i$ a été accepté par l'algorithme glouton alors qu'il n'est pas dans la solution optimale
+
+Le premier cas est impossible car s'il a été refusé par l'algorithme glouton, c'est qu'il empiète avec un film déjà accepté et comme les solutions optimale et gloutonne coïncident jusqu'à $i$ ces films sont aussi dans la solution optimale.
+
+Dans le deuxième cas, si $(f^\prime_{j})_{1 \leq j \leq m'}$ est sa liste optimale de films à voir on a :
+
+- $f'_j = f_j$ pour $j< i$
+- $f'_i \neq f_i$
+
+Par construction de l'algorithme glouton, la date de fin de $f'_i$ est plus grande que la date de fin de $f_i$. On peut alors échanger $f_i$ et $f'_i$ pour créer une nouvelle solution optimale $(f'')$ telle que :
+
+- $f''_j = f_j$ pour $j\leq  i$
+- $f''_j = f'_j$ pour $j >  i$
+
+Ceci est impossible par hypothèse (on prend la solution optimale coïncidant le plus longtemps possible avec la solution de l'algorithme glouton) : notre hypothèse était fausse, l'algorithme glouton est optimal.
+
+### Nombre minimum de salles pour placer tous les films en stock
+
+On essaie ici de trouver le nombre minimum de salles à construire pour pouvoir projeter tous les films
+
+#### Algorithme : nombre de salle minimum
+
+On va ici classer les films par date de début croissante. On commence par 0 salles de cinéma.
+
+En analysant dans cet ordre les films, on cherche s'il existe une salle à laquelle on peut rajouter le film (la date de fin du dernier film de la salle est plus tôt que le début du nouveau film). Si oui on rajoute le film à cette salle, si non on crée une nouvelle salle et l'on ajoute notre film à cette nouvelle salle.
 
 {% exercice %}
-Donnez un algorithme glouton exhibant un nombre minimal $K$ d'intervalles unités $I_i = [u_i, u_i+1]$ ($1\leq i \leq K$) permettant de recouvrir $n$ réels donnés $x_1, \dots, x_n$.
-
+Codez l'algorithme en python.
 {% endexercice %}
-{% details "corrigé" %}
+{% details "**Solution**" %}
 
-On classe les réels par ordre croissants puis pour chaque réel $x_i$ on ajoute l'intervalle $[x_i, x_i + 1]$ s'il n'est pas déjà couvert.
+```python
+def nombre_salles(films):
+    films.sort(key=lambda x: x[0])
 
-On utilise la preuve par l'absurde du cours. On suppose que l'algorithme glouton n'est pas optimal et choisit une solution optimale coïncidant le plus longtemps possible avec la solution de notre glouton. Soit $i$ la première tape où les choix ont divergé : c'est à dire la première étape où le glouton a ajouté l'intervalle $[x_i, x_i + 1]$ alors qu'il n'est pas dans la solution optimale considérée.
+    salles = [[films[0]]]
+    for film in films[1:]:
+        nouvelle_salle = True
+        for salle in salles:
+            dernier_film = salle[-1]
+            if film[0] >= dernier_film[1]:
+                salle.append(film)
+                nouvelle_salle = False
+                break
+        if nouvelle_salle:
+            salles.append([film])
+```
 
-On va distinguer deux cas :
-
-1. $i=1$. Ce cas est impossible car comme $x_1$ est le plus petit réel, on peut remplacer tous les intervalles se finissant avant $x_1 + 1$ par l'intervalle $[x_i, x_i + 1]$ dans la solution optimale pour obtenir une solution (les intervalles couvrent clairement tous les réels) avec un nombre plus petit nombre d'intervalles et coïncidant plus longtemps avec le glouton : ceci est impossible par hypothèse.
-2. $i>1$. Il existe dans la solution optimale (ou moins) un intervalle couvrant $x_i$. Nommons cet intervalle $[a, a+1]$. On a que $a < x_i \leq a+1$ puisque  $[x_i, x_i + 1]$ n'est pas dans la solution optimale. Mais comme les réels $x_j \in [a, x_i[$ sont couverts par des intervalles précédemment mis dans le glouton, ils sont aussi couverts par cette solution optimale (les deux solutions coïncident jusque-là): on peut procéder comme dans le cas précédent et remplacer $[a, a+1]$ de la solution optimale par $[x_i, x_i + 1]$ pour continuer de couvrir tous les réels ($[a, x_i[$ est couvert par les intervalles précédents et $[x_i, a+1] \subseteq [x_i, x_i +1]$). Ceci viole notre hypothèse puisque :
-    1. le nombre d'intervalles conservés est égal à la solution optimale initiale : c'est donc également une solution optimale
-    2. elle coïncide plus longtemps avec notre glouton.
-
-Ces deux cas sont impossible : notre glouton est optimal.
 {% enddetails %}
+
+#### Preuve de l'algorithme : minimum de salles
+
+La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n'est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.
+
 
 ### Réservation SNCF
 
@@ -373,91 +475,84 @@ Si l'on range les éléments par taille de fin demandée croissante, on est alor
 
 {% enddetails %}
 
-## Glouton pas optimal mais pas mal
+## <span id="exemple-ordonnancement"></span>Exemple 3 : ordonnancement
 
-Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer qu'ils permettent tout de même de n'être pas trop éloigné de celle-ci.
+Les problèmes d'ordonnancement sont multiples. Certains sont durs, d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
 
-{% note "**Définition**" %}
-Un algorithme est **_à performance garantie_** si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.
+Le problème suivant est résoluble par un algorithme glouton : on considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on n'a qu'un seul ouvrier.
+
+Il faut donc trouver un sous-ensemble de produits à créer parmi la liste de toutes les possibilités (exemple : la liste de toutes les dates de match de foot ou de concerts) **et** l'ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.
+
+Commençons par montrer que cet ordre est facile à trouver.
+
+### Ordre de production
+
+Un ensemble de produits est dit _compatible_ s'il existe un ordonnancement de leur production permettant de tous les vendre (chaque produit est fabriqué avant sa date de péremption).
+
+On a la proposition suivante :
+
+{% note %}
+Un ensemble de produits est compatible si et seulement si la production par date $d_i$ croissante permet de tous les vendre.
 {% endnote %}
 
-### Empaquetage
+Preuve :
 
-On veut faire une partition de $n$ entiers en $m$ ensembles telle que la somme des entiers dans chaque ensemble ne dépasse pas $K$. Le but est de minimiser $m$ sachant les $n$ entiers et la borne $K$.
+- si la production par date croissante permet de tout vendre il est compatible
+- s'il existe un autre ordonnancement avec la tâche $j$ placé avant la tâche $i$ alors que $d_j > d_i$, on peut échanger la tâche $i$ et la tâche $j$ et l'ordonnancement reste compatible
 
-Ce problème est connu comme [le problème du _bin packing_](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing) et est NP-difficile (les problèmes d'optimisation sont dit NP-difficile si trouver une solution plus petite que $m_0$ est NP-complet. Le problème d'optimisation (trouver le minimum) n'est en effet pas dans NP, c'est à dire vérifiable en temps polynomial, car il faudrait avoir toutes les solutions pour comparer). C'est dommage car il est très utile en pratique :
+Grace à cette propriété, on est ramené à un problème glouton classique : on a plus qu'un seul paramètre à optimiser : le profit.
 
-{% exercice "**Applications**" %}
-Donnez quelques cas d'application concret de ce problème.
+### Algorithme : ensemble compatible maximum
+
+Montrons que l'algorithme glouton suivant est optimal :
+
+1. on trie les produits par prix décroissant
+2. $S = []$
+3. pour chaque produit $x$ examiné par ordre de prix décroissant : on ajoute $x$ à $S$ s'il reste compatible
+4. rendre $S$ (qui est une liste de profit maximal)
+
+{% exercice %}
+Codez l'algorithme en python.
 {% endexercice %}
-{% details "corrigé" %}
-Le transport de marchandises, le déchargement d'un cargo dans des camions, ...
-{% enddetails %}
+{% details "**Solution**" %}
 
-Commencez par montrer la propriété suivante :
-{% exercice "**Solution optimale**" %}
-Le nombre minimum d'ensembles est plus grand que la somme de tous les entiers divisée par $K$.
-{% endexercice %}
-{% details "corrigé" %}
-Si l'on a $m$ ensembles, on peut ranger au maximum une somme valant $K\cdot m$ qui doit donc être supérieure à la somme de tous les entiers.
-{% enddetails %}
+```python
+def produits_est_compatible(liste_produit):
+    liste_produit.sort(key=lambda x: x[0])
 
-On va utiliser l'algorithme glouton suivant :
+    for date, produit in enumerate(liste_produit):
+        if date + 1 > produit[0]:
+            return False
+    return True
 
-```pseudocode
-Es ← []
-E ← []
-pour chaque entier ni:
-    si somme(E) + ni ≤ K:
-        ajoute ni à E
-    sinon:
-        ajoute E à Es
-        E ← [ni]
+def produits_maximum_profit(liste_produit):
+    liste_produit.sort(key=lambda x : x[1])
+    liste_produit.reverse()
+
+    ensemble_max = []
+    for produit in liste_produit:
+        if produits_est_compatible(ensemble_max + [produit]):
+            ensemble_max.append(produit)
+
+    return ensemble_max
 ```
 
-{% exercice "**Propriété**" %}
-
-1. Montrez que la somme des entiers de deux éléments successifs de `Es`{.language-} est strictement plus grand que $K$.
-2. En déduire que la somme de tous les entiers est plus grande que $K \cdot \frac{m}{2}$
-   {% endexercice %}
-   {% details "corrigé" %}
-   On ne crée un nouvel ensemble que si l'entier courant ne tient pas dans l'ensemble considéré : la somme de ces deux ensembles consécutifs est donc strictement plus grande que $K$.
-
-Dans le cas où $m$ est pair on a alors :
-
-- `somme(E[0]) + somme(E[1]) > K`{.language-}
-- `somme(E[2]) + somme(E[3]) > K`{.language-}
-- `somme(E[4]) + somme(E[5]) > K`{.language-}
-- ...
-
-Et on en déduit, si $m$ est pair, que : `somme(E[0]) + ... + somme(E[m-1]) > K * m / 2`{.language-}. Le calcul est identique si $m$ est impair.
 {% enddetails %}
 
-Les deux propriétés précédentes doivent vous permettre de prouver :
-{% exercice "**Performance garantie**" %}
-Montrez que l'algorithme précédent trouve au maximum 2 fois la solution optimale.
-{% endexercice %}
-{% details "corrigé" %}
-Clair en utilisant les 2 questions précédentes.
-{% enddetails %}
+### Preuve : ensemble compatible maximum
 
-La borne peut être atteinte en utilisant uniquement deux types de caisses : des caisse de volume 1 et $K/2$.
+#### <span id="init-optimisation"></span>Initialisation
 
-{% exercice "**Cas le pire**" %}
-Montrez qu'en utilisant des caisses de volume 1 et $K/2$ l'ordre dans lequel les caisses sont examinées par le glouton peut aller du simple au (presque) double en nombre de solutions.
-{% endexercice %}
-{% details "corrigé" %}
-Si l'on a $n_1$ caisses de volume $K/2$ et $n_2$ caisses de volume 1, le nombre optimal de caisses est : $n_1 / 2 + n_2/K$. L'ordre est bien optimal puisque toutes les caisses sauf une seront remplies au maximum.
+Si une solution ne contient pas l'élément de prix maximum on l'échange avec le 1er élément produit et la solution reste compatible tout en ayant un profit plus grand
 
-En examinant les caisses alternativement de volume 1 et $K/2$, et en supposant que $n_1 \geq n_2$ on aura besoin de $n_1 + (n_2-n_1)/K = n_1(1-1/K) + n_2/K$ caisses. Si $n_1 = n_2 = 2K$, le nombre optimal sera $K +2$ et celui obtenu par le glouton de $2K$. Ce rapport de l'optimum sur le glouton va tendre vers 1/2 lorsque $K$ grandit.
-{% enddetails %}
+#### <span id="récurrence-optimisation"></span> Récurrence
 
-La question précédente montre que quel que l'on est au pire 2 fois moins bon aue la solution optimale, quel que soit l'ordre dans lequel on regarde les marchandises !
+Si une solution optimale et la solution gloutonne coïncident au bout de $i$ étapes (les éléments pris le sont pour les deux solutions et les éléments écartés le sont aussi pour les deux solutions), à l'étape $i+1$ on a deux cas :
 
-{% info %}
-On peut cependant faire mieux si l'on connait toutes les marchandises avant de les empaqueter et en les examinant **par volume décroissant**. [Il a en effet été prouvé](https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis) que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.
+- on écarte ce produit car la solution n'est plus compatible pour la solution gloutonne. Comme La solution optimale contenait jusqu'à présent tous les éléments de la solution gloutonne, le produit de l'étape $i+1$ n'est pas on plus compatible avec la solution optimale.
+- on ajoute le produit à la solution gloutonne. Si la solution optimale ne contient pas ce produit on peut échanger n'importe quel autre élément que les $i-1$ premiers éléments de la solution avec celui-ci pour augmenter le profit.
 
-{% endinfo %}
+## Glouton pas optimal mais pas mal
 
 ### Équilibrage de charge
 

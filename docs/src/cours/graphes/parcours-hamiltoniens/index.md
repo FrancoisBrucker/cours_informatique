@@ -361,7 +361,7 @@ Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \v
 Problème vu sous l'angle algorithmique dans le cours d'algorithmie :
 
 {% aller %}
-[Chemins et cycle](/cours/algorithmie/design-algorithmes/chemins-cycles/){.interne}
+[Chemins et cycle](../projet-chemins-cycles){.interne}
 {% endaller %}
 
 > TBD formaliser ça en graphe.
