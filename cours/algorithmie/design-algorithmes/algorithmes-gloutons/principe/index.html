@@ -96,11 +96,13 @@
     
   
 
-  <blockquote>
-<p>TBD : écrire les algorithmes en pseudo-code</p>
+  <p>L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.</p>
+<blockquote>
+<p>TBD équivalent discret de trouver un minimum avec le gradient.
+TBD comme c'est discret des étapes et pas de dérivées.
+TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.</p>
 </blockquote>
-<p>L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.</p>
-<h2>Algorithmes gloutons</h2>
+<h2>Définition</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -157,13 +159,117 @@
 </div></div>
 
 <p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des <a href="https://fr.wikipedia.org/wiki/Heuristique">heuristiques</a> utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.</p>
-<h3>Comment concevoir un algorithme glouton</h3>
+<h2>Comment concevoir un algorithme glouton</h2>
+<p>Pour construire un algorithme glouton on procède par étapes :</p>
 <ol>
 <li>écrire le problème comme un problème d'optimisation</li>
 <li>découper le problème en une succession d'étapes successives</li>
 <li>on construit la solution incrémentalement à chaque étape en optimisant un critère local</li>
 </ol>
-<h3>Optimalité et glouton</h3>
+<p>Pour se fixer les idées regardons comment appliquer ces différentes étapes dans le cas d'un problème concret : le rendu de monnaie avec un nombre minimum de pièces de 1, 2 et 5 pokédollars.</p>
+<h3>Problème du rendu de pièces</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : rendu</li>
+<li><strong>données</strong> : un entier $R$</li>
+<li><strong>résultat</strong> : trois nombres $n_1$, $n_2$ et $n_5$ tels que :
+<ol>
+<li>$n_1 + 2 \cdot n_2 + 5 \cdot n_5 = R$</li>
+<li>$n_1 + n_2 + n_3 = \min(\{ x + y + z \,\vert \,  x + 2 \cdot y + 5 \cdot z = R, x, y, z \in \mathbb{N} \})$</li>
+</ol>
+</li>
+</ul>
+</div></div>
+
+<h3>Design de l'algorithme rendu</h3>
+<ol>
+<li><strong>écrire le problème comme un problème d'optimisation</strong> : Il faut rendre un nombre minimum de pièces</li>
+<li><strong>découper le problème en une succession d'étapes</strong> : si l'on doit rendre en pièces d'une valeur de $v$, il faut rendre le maximum de pièces possibles, qui correspond à la division entière de $R$ par $v$. On va donc considérer à chaque étape qu'une seule valeur $v$ de pièce, puisqu'il est facile de trouver l'optimum dans ce cas là. Notre algorithme va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée</li>
+<li><strong>choisir un ordre de parcours</strong> : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes</li>
+</ol>
+<h3>Algorithme : rendu de pièce</h3>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">rendu</span><span class="token punctuation">(</span>R<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    V <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># les pièces sont triées par ordre décroissant</span>
+    P <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># liste vide</span>
+    
+    <span class="token keyword">pour chaque</span> v de V<span class="token punctuation">:</span>
+        ajouter R <span class="token operator">//</span> v à la fin de la liste P  <span class="token comment"># division entière</span>
+        R <span class="token operator">←</span> R mod v                           <span class="token comment"># reste de la division entière</span>
+    
+    <span class="token keyword">rendre</span> <span class="token punctuation">(</span>R<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> R<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> R<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Codez l'algorithme en python.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">rendu</span><span class="token punctuation">(</span>R<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    pieces <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+
+    rendu <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> v <span class="token keyword">in</span> pieces<span class="token punctuation">:</span>
+        p <span class="token operator">=</span> R <span class="token operator">//</span> v
+        R <span class="token operator">=</span> R <span class="token operator">%</span> v
+
+        rendu<span class="token punctuation">.</span>append<span class="token punctuation">(</span>p<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>rendu<span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<h3>Optimalité de l'algorithme rendu</h3>
+<p>On va analyser les propriétés d'une solution optimale et montrer que la solution de l'algorithme glouton les satisfait.</p>
+<p>Considérons une solution optimale. Elle ne <strong>peut pas</strong> contenir :</p>
+<ul>
+<li><strong>plus de 2 pièces de 2</strong>, sinon on pourrait rendre moins de pièces en échangeant 3 pièces de 2 par 1 pièce de 5 et une pièce de 1 ce qui diminuerait strictement le nombre de pièces rendues.</li>
+<li><strong>plus de 1 pièce de 1</strong>, sinon on échangerait 2 pièces de 1 par une pièce de 2, ce qui diminuerait strictement le nombre de pièces rendues.</li>
+</ul>
+<p>Enfin, cette solution optimale ne <strong>peut pas avoir exactement 2 pièces de 2 et une pièce de 1</strong>, sinon on les échangeraient pour une pièce de 5...</p>
+<p>On en déduit donc que la somme d'argent rendu en pièce de 2 et de 1 pour une solution optimale ne peut dépasser 4, ce qui est exactement la division entière de $R$ par 5 et est le premier choix de l'algorithme glouton.</p>
+<p>Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a plus qu'à montrer que pour les 5 cas possibles (lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre) le glouton est optimal, ce qui est évident.</p>
+<h3>Généralisation à un système de pièces quelconque ?</h3>
+<p>On peut démontrer que le système de pièce européen fonctionne avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200. Mais attention, cela ne marche pas pour tous les systèmes de pièces :</p>
+<ul>
+<li>exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c'est 3 + 3 le mieux.</li>
+<li>1, 6, 11, 19 ne fonctionne pas non plus pour 22 par exemple, alors que le système de pièce forme une suite super-croissante ($v_i &gt; v_1 + \dots + v_{i-1}$ pour tout $i &gt;1$). De quoi tordre le coup à une légende urbaine persistante qui stipule en effet que les suites super-croissante permettent un rendu de pièces optimal avec l'algorithme glouton.</li>
+</ul>
+<p>Remarques :</p>
+<ul>
+<li>ce n'est pas la seule solution possible pour avoir un système optimal puisque les américains ont des pièces de 25c (les quarter)</li>
+<li>cela peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On peut résoudre le cas général avec <a href="http://tnsi.free.fr/documents/14.rendu_monnaie.pdf">un algorithme utilisant la programmation dynamique</a>.</p>
+</div></div>
+
+<h2>Optimalité d'un algorithme glouton</h2>
 <p>Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possibles, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
 <ul>
 <li>pour un ensemble de coûts de constructions possibles d'une voiture, trouver celle qui minimise le coût tout en maximisant la qualité totale des pièces</li>
@@ -173,8 +279,6 @@
 </ul>
 <p>La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions, ça peut prendre vraiment beaucoup de temps.</p>
 <p>Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix et peuvent ainsi être résolu grace à un algorithme glouton. Ce sont ces problèmes que l'on va étudier maintenant.</p>
-<h3>Condition nécessaire et suffisante d'optimalité</h3>
-<p>On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la preuve la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -217,256 +321,368 @@
 </div></div>
 
 <p>Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :</p>
-<ol>
-<li><a href="#exemple-le-rendu-de-pi%C3%A8ces" class="interne">le rendu de pièce</a></li>
-<li><a href="#exemple-allocation-de-salles-de-cin%C3%A9ma" class="interne">l'allocation de ressources</a></li>
-<li><a href="#exemple-ordonnancement" class="interne">ordonnancement</a></li>
-</ol>
-<h2><span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces</h2>
-<p>Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollars.</p>
-<h3>Design de l'algorithme</h3>
-<ol>
-<li><strong>écrire le problème comme un problème d'optimisation</strong> : Il faut rendre un nombre minimum de pièces</li>
-<li><strong>découper le problème en une succession d'étapes</strong> : si l'on doit rendre en pièces d'une valeur de $v$, il faut rendre le maximum de pièces possibles, qui correspond à la division entière de $R$ par $v$. On va donc considérer à chaque étape qu'une seule valeur $v$ de pièce, puisqu'il est facile de trouver l'optimum dans ce cas là. Notre algorithme va donc itérativement rendre le nombre maximum de pièces pour une valeur de pièce donnée</li>
-<li><strong>choisir un ordre de parcours</strong> : comme il faut rendre le minimum de pièces données, on va examiner les pièces par valeur décroissantes</li>
-</ol>
-<h3>Algorithme : rendu de pièce</h3>
-<ul>
-<li><strong>Problème</strong> : &quot;comment rendre R sous en un nombre minimum de pièces&quot;</li>
-<li><strong>algorithme glouton</strong> :
-<ol>
-<li>choisir la plus grande valeur $v$ de pièce plus petite que $R$</li>
-<li>donner $p$ pièces où $p$ est la division entière de $R$ par $v$ (<code class="language-">p = R // v</code>)</li>
-<li>$R = R - p \cdot v$</li>
-<li>revenir en 1. si $R &gt; 0$</li>
-</ol>
-</li>
-<li><strong>complexité</strong> : tri des valeur de pièce + une opération par pièce (division puis soustraction). Comme il suffit de trier une fois pour toute, la complexité peut être de l'ordre du nombre de pièces</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Codez l'algorithme en python.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p><strong>Solution</strong></p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">rendu</span><span class="token punctuation">(</span>R<span class="token punctuation">,</span> pieces<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    pieces <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>pieces<span class="token punctuation">)</span>
-    pieces<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    pieces<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    rendu <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> v <span class="token keyword">in</span> pieces<span class="token punctuation">:</span>
-        p <span class="token operator">=</span> R <span class="token operator">//</span> v
-        R <span class="token operator">-=</span> p <span class="token operator">*</span> v
-
-        rendu<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> rendu</code></pre>
-</div>
-</details>     
-</div>
-<h3>Preuve d'optimalité pour un système de pièce valant 1, 2 et 5</h3>
-<p>On a pas besoin ici de preuve par récurrence. On va analyser les propriétés d'une solution optimale et montrer que la solution de l'algorithme glouton les satisfait.</p>
-<p>Considérons une solution optimale. Elle ne <strong>peut pas</strong> contenir :</p>
-<ul>
-<li><strong>plus de 2 pièces de 2</strong>, sinon on pourrait rendre moins de pièces en échangeant 3 pièces de 2 par 1 pièce de 5 et une pièce de 1 ce qui diminuerait strictement le nombre de pièces rendues.</li>
-<li><strong>plus de 1 pièce de 1</strong>, sinon on échangerait 2 pièces de 1 par une pièce de 2, ce qui diminuerait strictement le nombre de pièces rendues.</li>
-</ul>
-<p>Enfin, cette solution optimale ne <strong>peut pas avoir exactement 2 pièces de 2 et une pièce de 1</strong>, sinon on les échangeraient pour une pièce de 5...</p>
-<p>On en déduit donc que la somme d'argent rendu en pièce de 2 et de 1 pour une solution optimale ne peut dépasser 4, ce qui est exactement la division entière de $R$ par 5 et est le premier choix de l'algorithme glouton.</p>
-<p>Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a plus qu'à montrer que pour les 5 cas possibles (lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre) le glouton est optimal, ce qui est évident.</p>
-<h3>Système de pièces quelconque ?</h3>
-<p>On peut démontrer que le système de pièce européen fonctionne avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200. Mais attention, cela ne marche pas pour tous les systèmes de pièces :</p>
-<ul>
-<li>exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c'est 3 + 3 le mieux.</li>
-<li>1, 6, 11, 19 ne fonctionne pas non plus pour 22 par exemple, alors que le système de pièce forme une suite super-croissante ($v_i &gt; v_1 + \dots + v_{i-1}$ pour tout $i &gt;1$). De quoi tordre le coup à une légende urbaine persistante qui stipule en effet que les suites super-croissante permettent un rendu de pièces optimal avec l'algorithme glouton.</li>
-</ul>
-<p>Remarques :</p>
-<ul>
-<li>ce n'est pas la seule solution possible pour avoir un système optimal puisque les américains ont des pièces de 25c (les quarter)</li>
-<li>cela peut poser des soucis : les machines à café vous indiquent qu'elles ne peuvent plus vous rendre la monnaie car il n'y a plus de pièces d'une valeur particulière, alors qu'en réalité elle disposent de la somme à rendre en utilisant une autre combinaison.</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut résoudre le cas général avec <a href="http://tnsi.free.fr/documents/14.rendu_monnaie.pdf">un algorithme utilisant la programmation dynamique</a>.</p>
-</div></div>
-
-<h2><span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma</h2>
-<p>Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :</p>
-<ul>
-<li>Quel est le nombre maximum de films qu'une personne peux voir en une journée ?</li>
-<li>Quel est le nombre minimum de salles à construire pour qu'une personne puisse voir un film quelconque qu'elle aura choisi.</li>
-</ul>
-<h3>Voir un maximum de films</h3>
-<ol>
-<li><strong>le problème d'optimisation</strong> : on cherche à rendre une liste maximale de films à voir en une journée.</li>
-<li><strong>découpage en étapes</strong> : Comme il faut trouver un sous-ensemble maximal de films, chaque étape consistera en l'examen d'un film et voir si on peut le rajouter à l'ensemble déjà constitué.</li>
-<li><strong>ordre d'examen des films</strong> : date de fin croissante.</li>
-</ol>
-<p>Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix que la date de fin croissante. En effet, si l'on classe les séances de cinéma par :</p>
-<ul>
-<li>durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,</li>
-<li>date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,</li>
-</ul>
-<h4>Algorithme : maximum de films</h4>
-<ul>
-<li><strong>entrée</strong> : liste de films, chaque liste étant une liste <code class="language-">[depart, fin, nom]</code></li>
-<li><strong>sortie</strong> : liste ordonnée de films possible</li>
-</ul>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">nombre_films_maximal</span><span class="token punctuation">(</span>films<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    films<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    films_a_voir <span class="token operator">=</span> <span class="token punctuation">[</span>films<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> film <span class="token keyword">in</span> films<span class="token punctuation">:</span>
-        fin_dernier_film <span class="token operator">=</span> films_a_voir<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-        début_nouveau_film <span class="token operator">=</span> film<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-        <span class="token keyword">if</span> fin_dernier_film <span class="token operator">&lt;=</span> début_nouveau_film<span class="token punctuation">:</span>
-            films_a_voir<span class="token punctuation">.</span>append<span class="token punctuation">(</span>film<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> films_a_voir</code></pre>
-<p>La sortie de l'algorithme glouton correspond à un ordre de visionnage de films maximisant le nombre de films vus.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On a utilisé quelques astuces de programmation python :</p>
-<ul>
-<li><code class="language-">l[-1]</code> rend le dernier élément d'une liste.
-boucle <code class="language-">for</code>.</li>
-<li>on a un peu fait de magie noire sur les tris en utilisant le paramètre <a href="https://docs.python.org/fr/3/howto/sorting.html#key-functions">key</a> qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).</li>
-<li>on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction <code class="language-">fonction_lambda_anonyme</code> suivante :</li>
-</ul>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction_lambda_anonyme</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
-</div></div>
-
-<h4>Preuve de l'algorithme : maximum de films</h4>
-<p>On prouve notre algorithme en utilisant la technique de preuve par l'absurde : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère la solution optimale à $m^\star$ films dont l'ordre de visionnage des films coïncide le plus longtemps possible avec la solution donnée par celui-ci.</p>
-<p>Soit $i$ l'indice de l'étape de la première différence. Bornons cet indice :</p>
-<ul>
-<li>on ne peut pas avoir $i &gt; m$ car par construction de l'algorithme glouton, tout film qui n'est pas choisit par lui entre en conflit avec au moins un film choisi.</li>
-<li>on peut en revanche avoir $i=1$ si les deux listes ne commencent pas par le même film</li>
-</ul>
-<p>On a donc $1 \leq i \leq m$ et deux cas sont possibles :</p>
-<ol>
-<li>soit le film $f_i$ a été refusé par l'algorithme glouton alors qu'il est dans la solution optimale</li>
-<li>soit le film $f_i$ a été accepté par l'algorithme glouton alors qu'il n'est pas dans la solution optimale</li>
-</ol>
-<p>Le premier cas est impossible car s'il a été refusé par l'algorithme glouton, c'est qu'il empiète avec un film déjà accepté et comme les solutions optimale et gloutonne coïncident jusqu'à $i$ ces films sont aussi dans la solution optimale.</p>
-<p>Dans le deuxième cas, si $(f^\prime_{j})_{1 \leq j \leq m'}$ est sa liste optimale de films à voir on a :</p>
-<ul>
-<li>$f'_j = f_j$ pour $j&lt; i$</li>
-<li>$f'_i \neq f_i$</li>
-</ul>
-<p>Par construction de l'algorithme glouton, la date de fin de $f'_i$ est plus grande que la date de fin de $f_i$. On peut alors échanger $f_i$ et $f'_i$ pour créer une nouvelle solution optimale $(f'')$ telle que :</p>
-<ul>
-<li>$f''_j = f_j$ pour $j\leq  i$</li>
-<li>$f''_j = f'_j$ pour $j &gt;  i$</li>
-</ul>
-<p>Ceci est impossible par hypothèse (on prend la solution optimale coïncidant le plus longtemps possible avec la solution de l'algorithme glouton) : notre hypothèse était fausse, l'algorithme glouton est optimal.</p>
-<h3>Nombre minimum de salles pour placer tous les films en stock</h3>
-<p>On essaie ici de trouver le nombre minimum de salles à construire pour pouvoir projeter tous les films</p>
-<h4>Algorithme : nombre de salle minimum</h4>
-<p>On va ici classer les films par date de début croissante. On commence par 0 salles de cinéma.</p>
-<p>En analysant dans cet ordre les films, on cherche s'il existe une salle à laquelle on peut rajouter le film (la date de fin du dernier film de la salle est plus tôt que le début du nouveau film). Si oui on rajoute le film à cette salle, si non on crée une nouvelle salle et l'on ajoute notre film à cette nouvelle salle.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Codez l'algorithme en python.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p><strong>Solution</strong></p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">nombre_salles</span><span class="token punctuation">(</span>films<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    films<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    salles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>films<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> film <span class="token keyword">in</span> films<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        nouvelle_salle <span class="token operator">=</span> <span class="token boolean">True</span>
-        <span class="token keyword">for</span> salle <span class="token keyword">in</span> salles<span class="token punctuation">:</span>
-            dernier_film <span class="token operator">=</span> salle<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-            <span class="token keyword">if</span> film<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">>=</span> dernier_film<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-                salle<span class="token punctuation">.</span>append<span class="token punctuation">(</span>film<span class="token punctuation">)</span>
-                nouvelle_salle <span class="token operator">=</span> <span class="token boolean">False</span>
-                <span class="token keyword">break</span>
-        <span class="token keyword">if</span> nouvelle_salle<span class="token punctuation">:</span>
-            salles<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>film<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
-</div>
-</details>     
-</div>
-<h4>Preuve de l'algorithme : minimum de salles</h4>
-<p>La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n'est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.</p>
-<h2><span id="exemple-ordonnancement"></span>Exemple 3 : ordonnancement</h2>
-<p>Les problèmes d'ordonnancement sont multiples. Certains sont durs, d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.</p>
-<p>Le problème suivant est résoluble par un algorithme glouton : on considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on n'a qu'un seul ouvrier.</p>
-<p>Il faut donc trouver un sous-ensemble de produits à créer parmi la liste de toutes les possibilités (exemple : la liste de toutes les dates de match de foot ou de concerts) <strong>et</strong> l'ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.</p>
-<p>Commençons par montrer que cet ordre est facile à trouver.</p>
-<h3>Ordre de production</h3>
-<p>Un ensemble de produits est dit <em>compatible</em> s'il existe un ordonnancement de leur production permettant de tous les vendre (chaque produit est fabriqué avant sa date de péremption).</p>
-<p>On a la proposition suivante :</p>
+<h3>Problème du recouvrement de nombres réels</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Un ensemble de produits est compatible si et seulement si la production par date $d_i$ croissante permet de tous les vendre.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : recouvrement</li>
+<li><strong>données</strong> : un tableau $T$ de $n$ nombres réels</li>
+<li><strong>résultat</strong> : une liste I d'intervalles $[x, x+1]$ telle que :
+<ul>
+<li>pour tout indice $i$, il existe un indice $j$ tel que $T[i] \in I[j]$</li>
+<li>la liste d'intervalles $I$ est de taille minimum</li>
+</ul>
+</li>
+</ul>
 </div></div>
 
-<p>Preuve :</p>
+<p>Par exemple, en prenant le tableau $T = [-.4, 0,4, 1, 2, 2.99]$ la liste $I = [[-.5, .5], [1, 2], [1.99, 1.99]]$ est une solution :</p>
 <ul>
-<li>si la production par date croissante permet de tout vendre il est compatible</li>
-<li>s'il existe un autre ordonnancement avec la tâche $j$ placé avant la tâche $i$ alors que $d_j &gt; d_i$, on peut échanger la tâche $i$ et la tâche $j$ et l'ordonnancement reste compatible</li>
+<li>$T[0], T[1] \in I[0]$</li>
+<li>$T[2], T[3] \in I[1]$</li>
+<li>$T[3] \in I[2]$</li>
 </ul>
-<p>Grace à cette propriété, on est ramené à un problème glouton classique : on a plus qu'un seul paramètre à optimiser : le profit.</p>
-<h3>Algorithme : ensemble compatible maximum</h3>
-<p>Montrons que l'algorithme glouton suivant est optimal :</p>
-<ol>
-<li>on trie les produits par prix décroissant</li>
-<li>$S = []$</li>
-<li>pour chaque produit $x$ examiné par ordre de prix décroissant : on ajoute $x$ à $S$ s'il reste compatible</li>
-<li>rendre $S$ (qui est une liste de profit maximal)</li>
-</ol>
+<p>Notez qu'il existe de nombreuses solutions possibles. Par exemple $I = [[-.4, .6], [.5, 1.5], [1.99, 2.99]]$ ou $I = [[-.4, .6], [1, 2], [2.99, 3.99]]$ en sont deux autres.</p>
+<p>C'est un cas courant en optimisation discrète : il existe de nombreuses solutions optimales et sont toutes équivalentes.</p>
+<h3>Algorithme de recouvrement</h3>
+<p>On classe les réels par ordre croissants puis pour chaque réel $T[i]$ on ajoute l'intervalle $[T[i], T[i] + 1]$ s'il n'est pas déjà couvert.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recouvrement</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">réel</span><span class="token punctuation">,</span> <span class="token builtin">réel</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    trie T par ordre croissant<span class="token punctuation">.</span>
+   <span class="token number"> I </span><span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    c <span class="token operator">←</span> ∅
+
+    <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> x ∉ c<span class="token punctuation">:</span>
+            c <span class="token operator">←</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+            ajoute c à<span class="token number"> I
+</span>    
+    <span class="token keyword">rendre</span><span class="token number"> I
+</span></code></pre>
+<p>En prenant le tableau $T = [-.4, 0,4, 1, 2, 2.99]$ l'algorithme glouton de recouvrement rend la liste $I = [[-.4, .6], [1, 2], [2.99, 3.99]]$. Notez, on va en avoir besoin dans les preuves, que pour tout $0 \leq i &lt; I.\mbox{\small longueur}$ :</p>
+<ul>
+<li>$I[i]$ est un intervalle</li>
+<li>$I[i][0]$ est un élément du tableau d'origine</li>
+</ul>
+<p>Enfin, il est clair que tous les éléments de $T$ sont couvert par un intervalle de $I$. Il nous reste à montrer qu'il possède un nombre minimal d'intervalle pour montrer qu'il est bien une solution au problème recouvrement.</p>
+<p>Nous allons prouver cette optimalité des deux façons préconisées : par construction et par l'absurde. Vous verrez qu'elles utilisent toutes deux exactement les mêmes arguments.</p>
+<h3>Optimalité par construction</h3>
+<p>On va considérer deux solutions :</p>
+<ul>
+<li>$I$, la solution rendue par l'algorithme glouton</li>
+<li>$I^\star$, une solution optimale ordonné par origine des intervalles croissante</li>
+</ul>
+<p>On va montrer que l'on peut transformer itérativement $I^\star$ en $I$ tout en conservant l'optimalité à chaque étape. Ceci démontrera que $I$ est optimal.</p>
+<p>Déjà, comme $I^\star$ est optimal on a $I^\star.\mbox{\small longueur} \leq I.\mbox{\small longueur}$. De plus si pour tout $0\leq i &lt; I^\star.\mbox{\small longueur}$ on a $I[i] = I^\star[i]$, alors $I.\mbox{\small longueur} = I^\star.\mbox{\small longueur}$ sinon l'élément $I[I^\star.\mbox{\small longueur}][0]$ (qui est un élément de $T$) n'est pas couvert par $I^\star$ ce qui est impossible.</p>
+<p>On est donc ramené au cas où soit $I = I^\star$ et $I$ est optimal, soit il existe $i$ le plus petit indice tel que $I[i] \neq I^\star[i]$.</p>
+<p>Comme $I^\star$ est optimal, l'élément $x = I[i][0]$ de $T$ doit être couvert par un intervalle – disons $[u, u+1]$ – de $I^\star$. Par construction de l'algorithme glouton tous les éléments de $T$ strictement plus petits que $x$ sont couvert par des intervalles de $I[:i]$ et comme $u &lt; x$ par hypothèse, on en conclut que l'on peut construire la solution $I^{\star\star}$ telle que :</p>
+<div>
+$$
+I^{\star\star} = I^{\star}[:i] + [I[i]] + I^{\star}[i+1:]
+$$
+</div>
+<p>En deux mots, $I^{\star\star}$ est $I^\star$ où l'on a remplacé $[u, u+1]$ par $I[i]$.</p>
+<p>Cette liste d'intervalles recouvre tous les éléments de $T$ :</p>
+<ul>
+<li>les éléments de $T$ dans $[u, x[$ sont couvert par les intervalles de $I^\star[:i] = I[:i]$</li>
+<li>les éléments de $T$ dans $[x, u+1]$ sont couvert par l'intervalles de $I[i]$</li>
+<li>tous les autres éléments sont couvert par des intervalles de $I^\star$ différents de $I^\star[i]$</li>
+</ul>
+<p>Comme $I^{\star\star}$ a le même nombre d'intervalles que $I^{\star}$ c'est une solution optimale ! Et comme $I^{\star\star}[:i+1] = I[:i + 1]$, elle coïncide plus longtemps avec $I$ que $I^{\star}$.</p>
+<p>On peut alors réitérer ce process pour transformer notre solution optimale en $I$, ce qui va prouver que $I$ a bien un nombre minimum d'intervalles.</p>
+<h3>Optimalité par l'absurde</h3>
+<p>Pour ce type de preuve, on va supposer que $I$ n'est pas optimal.</p>
+<p>On peut alors considérer une solution optimale $I^{\star}$ faisant les même choix que le glouton le plus longtemps possible. Une telle solution optimale existe (car il y a un nombre fini de choix) et est différente de $I$ par hypothèse.</p>
+<p>Dans le cas de l'algorithme <code class="language-">recouvrement</code> on considère alors la première itération, disons $i$, où $I^{\star}$ à fait un choix différent de l'algorithme, c'est à dire la première itération où le glouton à créé un intervalle, $I[i]$, qui n'est pas dans $I^{\star}$.</p>
+<p>Comme avant cette itération $I^{\star}$ a effectué les mêmes choix que le glouton il possède tous les intervalles de $I[:i]$ et comme $I^{\star}$ est une solution, $x = I[i][0]$ est couvert par $I^{\star}$ avec un intervalle $[u, u+1]$ où $u &lt; x$.</p>
+<p>On procède alors exactement de la même façon que pour la preuve constructive en créant la solution $I^{\star\star}$ où l'on a remplacé $[u, u+1]$ par $I[i]$ dans $I^\star$.</p>
+<p>Cette solution est optimale car elle couvre tous les éléments de $T$ et a le même nombre d'intervalle que $I^\star$. Mais ceci est impossible car elle coïncide avec $I$ plus longtemps que $I$ (elle possède tous les intervalles de $I[:i+1]$ alors que $I^\star$ me possède pas $I[i]$) alors que hypothèse de non optimalité de $I$ impliquait l'existence de $I^\star$,  solution optimale coïncidant le plus longtemps possible avec $I$.</p>
+<p>Notre hypothèse de départ était fausse : $I$ est optimale.</p>
+<h2>Performances garanties d'un glouton</h2>
+<p>Très souvent un algorithme glouton ne va trouver une solution optimale au problème proposé, mais dans certains cas, on peut démontrer que sa solution n'est pas trop éloigné du maximum.</p>
+<p>Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer qu'ils permettent tout de même de n'être pas trop éloigné de celle-ci.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un algorithme est <strong><em>à performance garantie</em></strong> si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.</p>
+</div></div>
+
+<h3>Problème du <em>bin packing</em></h3>
+<p>Pour illustrer cette problématique on va utiliser <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing">le problème du <em>bin packing</em></a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : <em>bin packing</em></li>
+<li><strong>données</strong> :
+<ul>
+<li>un tableau $T$ de $n$ entiers</li>
+<li>un entier $K$</li>
+</ul>
+</li>
+<li><strong>résultat</strong> : une partition des éléments de $T$ en $m$ <em>boîtes</em> $B_j$ ($0\leq j &lt; m$) telle que :
+<ul>
+<li>la somme des éléments $\sum_{i \in E_j}T[i] \leq K$ pour tout $0\leq j &lt; m$</li>
+<li>$m$ est minimum</li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<p>La somme des éléments de chaque boîte est inférieure à $K$ et c'est ces boîtes qui sont utilisées en pratique.</p>
+<p>Trouver une solution au problème du <em>bin packing</em> n'est cependant vraiment pas évident. On peut en effet lui associer un problème d'existence NP-complet :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : <em>bin packing existence</em></li>
+<li><strong>données</strong> :
+<ul>
+<li>un tableau $T$ de $n$ entiers</li>
+<li>un entier $K$</li>
+<li>un entier $M$</li>
+</ul>
+</li>
+<li><strong>résultat</strong> : rendre, si elle existe, une partition de $[0, T.\mbox{\small longueur}[$ en $m$ ensembles $E_j$ ($0\leq j &lt; m$) telle que :
+<ul>
+<li>la somme des éléments $\sum_{i \in E_j}T[i] \leq K$ pour tout $0\leq j &lt; m$</li>
+<li>$m \leq M$</li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<p>Les problèmes d'optimisation associés à un problème d'existence NP-complet sont dit <strong><em>NP-difficile</em></strong>. Ces deux problèmes sont reliés car :</p>
+<ul>
+<li>si on a un algorithme pour résoudre le problème d'optimisation, il peut également servir à résoudre le problème d'existence</li>
+<li>si on a un algorithme pour résoudre le problème d'existence, il peut également servir à résoudre le problème d'optimisation en procédant par dichotomie sur $M$.</li>
+</ul>
+<p>On distingue cependant les deux problèmes car le problème d'optimisation n'est pas vraiment dans NP, c'est à dire vérifiable en temps polynomial, car il faudrait avoir toutes les solutions pour comparer.</p>
+<p>Les problèmes NP-difficile sont donc impossible à résoudre de façon optimale par un algorithme glouton, de complexité polynomiale. Mais dans le cas du <em>bin packing</em> on peut designer un algorithme glouton à performance garantie.</p>
+<h3>Algorithme glouton pour résoudre le <em>bin packing</em></h3>
+<p>Cet algorithme est extrêmement simple, on ajoute itérativement des éléments à un ensemble jusqu'à tant qu'on ne puisse plus et on crée un nouvel ensemble :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">bin_packing</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    Es <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    E <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    s <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        s <span class="token operator">←</span> s <span class="token operator">+</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token keyword">si</span> s <span class="token operator">≤</span> K<span class="token punctuation">:</span>
+            ajouter T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> à E
+        <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+            trie E par ordre croissant  <span class="token comment"># étape facultative</span>
+            ajoute E à Es
+            E <span class="token operator">←</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
+            s <span class="token operator">←</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    <span class="token keyword">rendre</span> Es</code></pre>
+<p>Par exemple avec $T = [2, 11, 1, 4, 5]$ et $K = 12$ l'algorithme va rendre une liste de 3 boîtes  $[[2], [1, 11], [4, 5]]$.</p>
+<p>Remarquez que selon l'ordre des éléments de $T$, les boites et leurs nombres vont être différentes :</p>
+<ul>
+<li>$[4]$, $[1, 11]$ et $[2, 5]$ si $T = [4, 11, 1, 2, 5]$</li>
+<li>$[1, 11]$, $[2, 4, 5]$ si $T = [1, 11, 2, 4, 5]$</li>
+<li>$[11]$, $[1, 2, 4, 5]$ si $T = [11, 2, 1, 4, 5]$</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On ne veut pas ordonner les éléments a priori car cela correspond à un algorithme online où les éléments &quot;arrivent&quot; les uns après les autres comme dans un déménagement ou un flux de marchandises.</p>
+</div></div>
+
+<h3>Performance garantie</h3>
+<p>Pour prouver qu'un algorithme a une performance garantie sans connaître la valeur de la solution optimale, il faut ruser.</p>
+<p>On va chercher des propriétés de la solution optimale que l'on pourra rapprocher de propriétés de la solution gloutonne.</p>
+<p>Commençons par une propriété de la solution optimale :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Propriété</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le nombre minimum d'ensembles de la partition est plus grand que la somme de tous les entiers divisée par $K$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si l'on a $m^\star$ ensembles, on peut ranger au maximum une somme valant $K\cdot m^\star$ qui doit donc être supérieure à la somme de tous les entiers.</p>
+</div>
+</details>     
+</div>
+<p>Puis deux propriétés de l'algorithme glouton :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Propriété</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $B$ est la sortie de l'algorithme glouton, on a pour tout $i$ :</p>
+<div>
+$$
+\sum_{x \in B[i]}x + \sum_{x \in B[i+1]}x \geq K
+$$
+<div>
+</div></div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On ne crée un nouvel ensemble que si l'entier courant ne tient pas dans l'ensemble considéré : la somme de ces deux ensembles consécutifs est donc strictement plus grande que $K$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Propriété</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $m$ est le nombre de boîtes rendu par l'algorithme glouton, on a :</p>
+<div>
+$$
+\sum_{i}T[i] \geq K \cdot \lfloor \frac{m}{2} \rfloor
+$$
+</div>
+</div></div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Dans le cas où $m$ est pair on a, en utilisant la propriété précédente :</p>
+<ul>
+<li>$\sum_{x \in B[0]}x + \sum_{x \in B[1]}x \geq K$</li>
+<li>$\sum_{x \in B[2]}x + \sum_{x \in B[3]}x \geq K$</li>
+<li>...</li>
+<li>$\sum_{x \in B[m-2]}x + \sum_{x \in B[m-1]}x \geq K$</li>
+</ul>
+<p>Et on en déduit que :</p>
+<div>
+$$
+\sum_i T[i] = \sum_{i}\sum_{x \in B[i]}x \geq  K \cdot \frac{m}{2}
+$$
+</div>
+<p>Si $m$ est impair, on a :</p>
+<ul>
+<li>$\sum_{x \in B[0]}x + \sum_{x \in B[1]}x \geq K$</li>
+<li>$\sum_{x \in B[2]}x + \sum_{x \in B[3]}x \geq K$</li>
+<li>...</li>
+<li>$\sum_{x \in B[m-3]}x + \sum_{x \in B[m-2]}x \geq K$</li>
+</ul>
+<p>Et donc :</p>
+<div>
+$$
+\sum_i T[i] = \sum_{i}\sum_{x \in B[i]}x \geq \sum_{i< m-1}\sum_{x \in B[i]}x \geq  K \cdot \lfloor \frac{m}{2} \rfloor
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>En combinant ces propriétés on a :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'algorithme glouton trouve au maximum 2 fois la solution optimale.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $m^\star$ est le nombre de boîte de la solution optimale et $m$ celui du glouton on a :</p>
+<ul>
+<li>d'un côté : $\sum_i T[i] \leq K\cdot m^\star$</li>
+<li>de l'autre côté : $\sum_{i}T[i] \geq K \cdot \lfloor \frac{m}{2} \rfloor$</li>
+</ul>
+<p>Ce qui amène directement à $\lfloor \frac{m}{2} \rfloor \leq  m^\star$</p>
+</div>
+</details>     
+</div>
+<p>La borne peut être atteinte en utilisant uniquement deux types de caisses : des caisse de volume 1 et $K/2$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Codez l'algorithme en python.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Cas le pire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Montrez qu'en utilisant des caisses de volume 1 et $K/2$ l'ordre dans lequel les caisses sont examinées par le glouton peut aller du simple au (presque) double en nombre de solutions.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -479,43 +695,32 @@ boucle <code class="language-">for</code>.</li>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p><strong>Solution</strong></p>
+<p>corrigé</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">produits_est_compatible</span><span class="token punctuation">(</span>liste_produit<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    liste_produit<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> date<span class="token punctuation">,</span> produit <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>liste_produit<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> date <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">></span> produit<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-    <span class="token keyword">return</span> <span class="token boolean">True</span>
-
-<span class="token keyword">def</span> <span class="token function">produits_maximum_profit</span><span class="token punctuation">(</span>liste_produit<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    liste_produit<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x <span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    liste_produit<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    ensemble_max <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> produit <span class="token keyword">in</span> liste_produit<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> produits_est_compatible<span class="token punctuation">(</span>ensemble_max <span class="token operator">+</span> <span class="token punctuation">[</span>produit<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            ensemble_max<span class="token punctuation">.</span>append<span class="token punctuation">(</span>produit<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> ensemble_max</code></pre>
+<p>Si l'on a $n_1$ caisses de volume $K/2$ et $n_2$ caisses de volume 1, le nombre optimal de caisses est : $n_1 / 2 + n_2/K$. L'ordre est bien optimal puisque toutes les caisses sauf une seront remplies au maximum.</p>
+<p>En examinant les caisses alternativement de volume 1 et $K/2$, et en supposant que $n_1 \geq n_2$ on aura besoin de $n_1 + (n_2-n_1)/K = n_1(1-1/K) + n_2/K$ caisses. Si $n_1 = n_2 = 2K$, le nombre optimal sera $K +2$ et celui obtenu par le glouton de $2K$. Ce rapport de l'optimum sur le glouton va tendre vers 1/2 lorsque $K$ grandit.</p>
 </div>
 </details>     
 </div>
-<h3>Preuve : ensemble compatible maximum</h3>
-<h4><span id="init-optimisation"></span>Initialisation</h4>
-<p>Si une solution ne contient pas l'élément de prix maximum on l'échange avec le 1er élément produit et la solution reste compatible tout en ayant un profit plus grand</p>
-<h4><span id="récurrence-optimisation"></span> Récurrence</h4>
-<p>Si une solution optimale et la solution gloutonne coïncident au bout de $i$ étapes (les éléments pris le sont pour les deux solutions et les éléments écartés le sont aussi pour les deux solutions), à l'étape $i+1$ on a deux cas :</p>
-<ul>
-<li>on écarte ce produit car la solution n'est plus compatible pour la solution gloutonne. Comme La solution optimale contenait jusqu'à présent tous les éléments de la solution gloutonne, le produit de l'étape $i+1$ n'est pas on plus compatible avec la solution optimale.</li>
-<li>on ajoute le produit à la solution gloutonne. Si la solution optimale ne contient pas ce produit on peut échanger n'importe quel autre élément que les $i-1$ premiers éléments de la solution avec celui-ci pour augmenter le profit.</li>
-</ul>
+<p>L'exercice précédent montre que selon l'ordre dans lequel on examine les éléments on peut obtenir une no;bre de boite allant du simple au double !</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On peut cependant faire mieux si l'on connaît toutes les marchandises avant de les empaqueter et en les examinant <strong>par volume décroissant</strong>. <a href="https://en.wikipedia.org/wiki/First-fit-decreasing_bin_packing#Performance_analysis">Il a en effet été prouvé</a> que la solution du glouton était toujours inférieure à 11/9 fois l'optimale plus 4.</p>
+</div></div>
+
+<h2>Heuristique gloutonne</h2>
+<blockquote>
+<p>TBD <a href="https://perso.liris.cnrs.fr/alain.mille/enseignements/master_ia/cours3.pdf">https://perso.liris.cnrs.fr/alain.mille/enseignements/master_ia/cours3.pdf</a>
+TBD ajouter du random pour refaire.</p>
+</blockquote>
 
 
 </article>
