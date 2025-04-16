@@ -139,11 +139,11 @@ Programme :
 </ul>
 <p>Donald Knuth (1938-) liste, comme prérequis d'un algorithme, <a href="https://fr.wikipedia.org/wiki/Algorithme">cinq propriétés</a> :</p>
 <ul>
-<li><strong>finitude</strong> : <em>Un algorithme doit toujours se terminer après un nombre fini d’étapes.</em></li>
-<li><strong>définition précise</strong> : <em>Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas.</em></li>
-<li><strong>entrées</strong> : <em>[…] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié.</em></li>
-<li><strong>sortie</strong> : <em>[…] des quantités ayant une relation spécifiée avec les entrées.</em></li>
-<li><strong>rendement</strong> : <em>[…] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.</em></li>
+<li><strong>finitude</strong> : Un algorithme doit toujours se terminer après un nombre fini d’étapes.</li>
+<li><strong>définition précise</strong> : Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas.</li>
+<li><strong>entrées</strong> : […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié.</li>
+<li><strong>sortie</strong> : […] des quantités ayant une relation spécifiée avec les entrées.</li>
+<li><strong>rendement</strong> : […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.</li>
 </ul>
 <p>On peut en déduire la définition suivante : Un <strong><em>algorithme</em></strong> est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :</p>
 <div id="règles-générales"></div>
@@ -178,7 +178,7 @@ Programme :
   - de donner un entier que l'on appellera x
   - de donner une suite d'entiers que l'on appellera t
 
-parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+Parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
 Si on trouve un tel élément, afficher "Vrai" à l'écran.</code></pre>
 <p>Pour transformer cette description en algorithme, il faut procéder à plusieurs modifications :</p>
 <ol>
@@ -196,21 +196,17 @@ Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
-
-    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
-    Si on trouve un tel élément, rendre "Vrai".
-</code></pre>
+    Parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Si on trouve un tel élément, rendre "Vrai".</code></pre>
 <p>Il nous manque cependant encore une chose : si le programme s'arrête il doit rendre quelque chose, ce qui n'est pas le cas ici si on ne trouve pas <code class="language-">x</code> dans <code class="language-">t</code>. Modifions le :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : recherche
 Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
-
-    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
     Si on trouve un tel élément, rendre "Vrai".
-    Sinon rendre "Faux".
-</code></pre>
+    Sinon rendre "Faux".</code></pre>
 <p>Notre programme s'arrêtant tout le temps : c'est un algorithme.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -239,10 +235,11 @@ Programme :
 
 <p>La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :</p>
 <ol>
-<li><a href="../../%C3%A9crire-algorithmes/pseudo-code" class="interne">le pseudo-code</a> : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.</li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/coder" class="interne">le code</a> : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
+<li>le pseudo-code : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.</li>
+<li>le code : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
 </ol>
 <p>Par exemple l'algorithme recherche s'écrirait en pseudo-code de cette façon :</p>
+<p><span id="algorithme-recherche"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                      x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
                     <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>

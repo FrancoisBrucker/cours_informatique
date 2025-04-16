@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Annales 2023/2024</title>
+    <title>Sujet Test 6 : modélisation</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Annales 2023/2024</h1>
+  <h1>Sujet Test 6 : modélisation</h1>
   <div>
     
 
@@ -80,32 +80,45 @@
 
   
 
-  <!-- début résumé -->
-<p>Tests et examens pour l'année scolaire 2023/2024</p>
-<!-- end résumé -->
-<h2>Tests</h2>
-<ol>
-<li><a href="1_test" class="interne">Test 1 : Preuve</a> / <a href="1_test_corrig%C3%A9" class="interne">corrigé</a></li>
-<li><a href="2_test" class="interne">Test 2 : Code</a> / <a href="2_test_corrig%C3%A9" class="interne">corrigé</a></li>
-<li><a href="3_test" class="interne">Test 3 : complexité</a> / <a href="3_test_corrig%C3%A9" class="interne">corrigé</a></li>
-<li><a href="4_test" class="interne">Test 4 : tris</a> / <a href="4_test_corrig%C3%A9" class="interne">corrigé</a></li>
-<li><a href="5_test" class="interne">Test 5 : objets</a> / <a href="5_test_corrig%C3%A9" class="interne">corrigé</a></li>
-<li><a href="6_test" class="interne">Test 6 : modélisation</a> / <a href="6_test_corrig%C3%A9" class="interne">corrigé</a></li>
-</ol>
-<h2>Devoir Maison</h2>
-<ol>
-<li><a href="dm-doublons" class="interne">DM 1 : Doublons</a></li>
-<li><a href="../2023-2024/palindromes/" class="interne">DM 2 : Palindromes</a> (c'est le DM1 de l'année dernière).</li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale/" class="interne">DM 3 : Bataille navale</a></li>
-<li><a href="../2021-2022/ds_2_sujet/" class="interne interne">DM 4 : Snake</a> (c'est le DS2 de l'année 2021/22).</li>
-</ol>
-<h2>Devoirs Surveillés</h2>
-<ol>
-<li><a href="ds-algorithmie" class="interne">DS Algorithmie</a></li>
-</ol>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous avez 15min pour faire le test.</p>
+</div></div>
+
+<h2>Rendu</h2>
+<h3>Type de rendu</h3>
+<p>Rendu sur feuille.</p>
+<h3>Éléments de notation</h3>
+<p>Les principales questions sont les quatre premières (une bonne note si vous y répondez bien).</p>
+<h2>Sujet</h2>
+<p>Vous devez modéliser un système de gestion des employés dans une entreprise, où chaque employé possède un nom, un poste et un salaire. Certains employés sont des managers qui supervisent une équipe constituée d'autres employés, ses subordonnés.</p>
+<p>La classe de base est <code class="language-">Employé</code>, et la classe <code class="language-">Manager</code> hérite de cette classe. Les actions possibles sur un employé sont de retourner une description indiquant le le nom, le poste et le salaire (<code class="language-">__str__</code>) et d'augmenter le salaire d'un certain pourcentage (<code class="language-">augmenter_salaire(pourcentage)</code>). Avec un manager, il est possible d'ajouter un subordonné à son équipe (<code class="language-">ajouter_subordonné(un_employé)</code>) et la description doit mentionner également le nombre de membres dans son équipe.</p>
+<h3>Question 1</h3>
+<p>Faites un diagramme UML avec les classes <code class="language-">Employé</code> et <code class="language-">Manager</code>, et les relations entre ces classes.</p>
+<h3>Question 2</h3>
+<p>Écrivez le code de ces classes, en veillant à bien utiliser <code class="language-">super()</code>.</p>
+<h3>Question 3</h3>
+<p>Écrivez une fonction <code class="language-">créer_employés()</code> qui :</p>
+<ul>
+<li>crée d'un objet <code class="language-">Employé</code> nommé &quot;Paul&quot;, avec le poste &quot;Développeur&quot; et un salaire de 3000 euros;</li>
+<li>crée d'objet <code class="language-">Manager</code> nommé &quot;Marie&quot;, avec le poste &quot;Chef de projet&quot; et un salaire de 5000 euros;</li>
+<li>ajoute &quot;Paul&quot; comme subordonné de &quot;Marie&quot;;</li>
+<li>affiche une description de chaque objet;</li>
+<li>renvoie les deux objets.</li>
+</ul>
+<h3>Question 4</h3>
+<p>Écrivez les fonctions de tests suivant, qui appellent <code class="language-">créer_employés()</code> dans un premier temps :</p>
+<ul>
+<li>une fonction qui teste si chaque objet est de la bonne classe ;</li>
+<li>une fonction qui teste les chaînes de caractères renvoyées par <code class="language-">__str__</code> ;</li>
+<li>une fonction qui teste la taille de l'équipe de Marie, crée et ajoute un subordonné et teste à nouveau la taille de l'équipe ;</li>
+<li>une fonction qui augmente le salaire de chaque personne et vérifie le résultat.</li>
+</ul>
+<h3>Question 5</h3>
+<p>Ajoutez une méthode qui vérifie qu'il n'y a pas de boucle dans le système hiérarchique: il suffira de vérifier qu'un manager ne peut pas se superviser lui-même, même avec plusieurs niveaux hiérarchiques de distance (on suppose que cette méthode sera ensuite appelée sur chaque manager).</p>
 
 
 </article>

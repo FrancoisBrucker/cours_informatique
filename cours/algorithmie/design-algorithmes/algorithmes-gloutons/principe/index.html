@@ -96,13 +96,10 @@
     
   
 
-  <p>L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.</p>
-<p>On va voir la construction et la preuve d'algorithmes gloutons pour résoudre des problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :</p>
-<ol>
-<li><a href="#exemple-le-rendu-de-pi%C3%A8ces" class="interne">le rendu de pièce</a></li>
-<li><a href="#exemple-allocation-de-salles-de-cin%C3%A9ma" class="interne">l'allocation de ressources</a></li>
-<li><a href="#exemple-ordonnancement" class="interne">ordonnancement</a></li>
-</ol>
+  <blockquote>
+<p>TBD : écrire les algorithmes en pseudo-code</p>
+</blockquote>
+<p>L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.</p>
 <h2>Algorithmes gloutons</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -112,27 +109,32 @@
 <p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.</p>
 </div></div>
 
+<p>Certains problèmes permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement d'une solution est appelée <em>algorithmes gloutons</em>.</p>
 <p>Le schéma général d'un algorithme glouton est alors le suivant :</p>
 <div id="schéma-algo"></div>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Ordonner E en (x_0, x_1, ..., x_n)
-S = {}
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> glouton_archétypal<span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span>fragments de solutions<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span>fragments de solutions<span class="token punctuation">]</span><span class="token punctuation">:</span>  <span class="token comment"># une solution est constituée d'un ensemble de fragments</span>
+    <span class="token string">"Bien ordonner"</span> E en <span class="token punctuation">(</span>x_0<span class="token punctuation">,</span> x_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> x_n<span class="token punctuation">)</span>
+    S <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-pour chaque i de 1 à n:
-    si S union {x_i} est une solution possible :
-        ajouter x_i à S</code></pre>
-<p>On voit en creux que ce type d'algorithmes :</p>
-<ol>
-<li>va être utilisé dans des problèmes d'optimisation où l'on cherche la <em>meilleure solution</em> parmi un ensemble de possibilités.</li>
-<li>l'ordre des étapes est primordial</li>
-</ol>
-<p>Ils sont très utilisés car :</p>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token number">1</span> à n<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> S <span class="token operator">+</span> <span class="token punctuation">[</span>x_i<span class="token punctuation">]</span> est une <span class="token string">"solution possible"</span> <span class="token punctuation">:</span>
+            S <span class="token operator">←</span> S <span class="token operator">+</span> <span class="token punctuation">[</span>x_i<span class="token punctuation">]</span>
+
+    <span class="token keyword">rendre</span> S</code></pre>
+<p>Il va y avoir tout un tas de variantes de ce schéma pour trouver une solution au problème concret à résoudre, mais on voit déjà que ce type d'algorithme va nécessiter :</p>
+<ul>
+<li>que les solutions recherchées soient constituées d'un ensemble <em>maximal</em> de fragments de solutions</li>
+<li>de pouvoir <em>bien ordonner</em> les fragments pour les étudier un à un</li>
+</ul>
+<p>Le fait de bien ordonner les fragments permet de les considérer du meilleur au moins bon et ainsi de construire itérativement une solution maximale sans jamais remettre en question les choix précédents (c'est glouton, <em>greedy</em> en anglais).</p>
+<p>Les algorithmes gloutons sont très utilisés car une fois que l'on a une façon d'ordonner les fragments et de caractériser ce qu'est une solution :</p>
 <ul>
 <li>ils donnent toujours un résultat</li>
-<li>ils sont souvent de complexité faible</li>
+<li>ils sont de complexités faibles</li>
 </ul>
 <p>Attention cependant :</p>
 <ul>
-<li>ils ne donnent pas forcément le meilleur résultat : c'est souvent des <a href="https://fr.wikipedia.org/wiki/Heuristique">heuristiques</a></li>
+<li>ils ne donne pas forcément le meilleur résultat : il faut le prouver au cas pas cas</li>
 <li>il n'y pas forcément de solution unique</li>
 </ul>
 <p>En conclusion :</p>
@@ -140,18 +142,27 @@ pour chaque i de 1 à n:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Ce type d'algorithme est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Ils sont, par exemple, en bijection avec la <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">structure de matroïde</a>.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<ol>
+<li>Ce type d'algorithme est très utilisé pour :
+<ol>
+<li>résoudre des problèmes ou la solution optimale peut être construite itérativement</li>
+<li>résoudre approximativement des problèmes où la rapidité de du calcul de la solution prime sur l'optimalité (souvent des problèmes NP-complets à optimiser).</li>
+</ol>
+</li>
+<li>D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">la structure de matroïde</a></li>
+</ol>
 </div></div>
 
-<p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.</p>
+<p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des <a href="https://fr.wikipedia.org/wiki/Heuristique">heuristiques</a> utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.</p>
 <h3>Comment concevoir un algorithme glouton</h3>
 <ol>
 <li>écrire le problème comme un problème d'optimisation</li>
-<li>découper le problème en une succession d'étapes où il est facile de choisir la meilleure solution</li>
-<li>choisir un ordre de parcours des différentes étapes</li>
+<li>découper le problème en une succession d'étapes successives</li>
+<li>on construit la solution incrémentalement à chaque étape en optimisant un critère local</li>
 </ol>
-<p>Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble <em>optimal</em> d'un ensemble connu. Dans ce cas-là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un si possible à l'ensemble solution.</p>
 <h3>Optimalité et glouton</h3>
 <p>Les problèmes d'optimalité demandent de trouver, parmi un ensemble de solutions possibles, une solution minimisant (ou maximisant) un critère. Par exemple :</p>
 <ul>
@@ -161,17 +172,25 @@ pour chaque i de 1 à n:
 <li>...</li>
 </ul>
 <p>La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas trouver la meilleure solution sans les examiner toutes. Et s'il y a beaucoup de solutions, ça peut prendre vraiment beaucoup de temps.</p>
-<p>Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix. On peut alors souvent trouver très rapidement la meilleure solution possible. On peut également utiliser cette solution construite petit à petit pour trouver une solution approchée à un problème plus général. Cette classe d'algorithmes qui construit itérativement une solution est appelée <em>algorithmes gloutons</em>.</p>
+<p>Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix et peuvent ainsi être résolu grace à un algorithme glouton. Ce sont ces problèmes que l'on va étudier maintenant.</p>
 <h3>Condition nécessaire et suffisante d'optimalité</h3>
-<p>On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale :</p>
-<p>En reprenant le <a href=",/#sch%C3%A9ma-algo">schéma générique de l'algorithme glouton</a> on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :</p>
+<p>On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la preuve la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Schéma de preuve de l'optimalité d'un algorithme glouton</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En reprenant le <a href="#sch%C3%A9ma-algo">schéma générique de l'algorithme glouton</a>, on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :</p>
 <ul>
-<li>si <code class="language-">S union {x_i}</code> était une solution possible alors <code class="language-">x_i</code> est aussi dans la solution optimale considérée</li>
-<li>si <code class="language-">S union {x_i}</code> n'était pas une solution possible alors <code class="language-">x_i</code> n'est pas dans la solution optimale considérée</li>
+<li>si <code class="language-">S + [x_i]</code> était une solution possible alors <code class="language-">x_i</code> est aussi dans la solution optimale considérée</li>
+<li>si <code class="language-">S + [x_i]</code> n'était pas une solution possible alors <code class="language-">x_i</code> n'est pas dans la solution optimale considérée</li>
 </ul>
 <p>Ce qui prouvera l'optimalité de notre algorithme glouton.</p>
-<h3>Preuve par l'absurde</h3>
-<p>On prouve couramment l'optimalité du glouton par l'absurde :</p>
+</div></div>
+
+<p>Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -197,8 +216,14 @@ pour chaque i de 1 à n:
 </ol>
 </div></div>
 
+<p>Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :</p>
+<ol>
+<li><a href="#exemple-le-rendu-de-pi%C3%A8ces" class="interne">le rendu de pièce</a></li>
+<li><a href="#exemple-allocation-de-salles-de-cin%C3%A9ma" class="interne">l'allocation de ressources</a></li>
+<li><a href="#exemple-ordonnancement" class="interne">ordonnancement</a></li>
+</ol>
 <h2><span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces</h2>
-<p>Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollar.</p>
+<p>Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollars.</p>
 <h3>Design de l'algorithme</h3>
 <ol>
 <li><strong>écrire le problème comme un problème d'optimisation</strong> : Il faut rendre un nombre minimum de pièces</li>
@@ -283,23 +308,22 @@ pour chaque i de 1 à n:
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On peut résoudre, et vous allez le faire en exercice, le cas général avec un algorithme utilisant la programmation dynamique.</p>
+<p>On peut résoudre le cas général avec <a href="http://tnsi.free.fr/documents/14.rendu_monnaie.pdf">un algorithme utilisant la programmation dynamique</a>.</p>
 </div></div>
 
 <h2><span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma</h2>
-<p>Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Il se pose 2 problèmes :</p>
+<p>Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :</p>
 <ul>
-<li>Quel est le nombre maximum de films que je peux voir en une journée ?</li>
-<li>Quel est le nombre minimum de salles à avoir pour visionner tous les films en stock.</li>
+<li>Quel est le nombre maximum de films qu'une personne peux voir en une journée ?</li>
+<li>Quel est le nombre minimum de salles à construire pour qu'une personne puisse voir un film quelconque qu'elle aura choisi.</li>
 </ul>
-<p>Chaque film est décrit par un couple $(d, f)$ où $d$ est la date de début du film et $f$ la date de fin.</p>
 <h3>Voir un maximum de films</h3>
 <ol>
 <li><strong>le problème d'optimisation</strong> : on cherche à rendre une liste maximale de films à voir en une journée.</li>
 <li><strong>découpage en étapes</strong> : Comme il faut trouver un sous-ensemble maximal de films, chaque étape consistera en l'examen d'un film et voir si on peut le rajouter à l'ensemble déjà constitué.</li>
 <li><strong>ordre d'examen des films</strong> : date de fin croissante.</li>
 </ol>
-<p>Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix. En effet, si l'on classe les séances de cinéma par :</p>
+<p>Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix que la date de fin croissante. En effet, si l'on classe les séances de cinéma par :</p>
 <ul>
 <li>durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,</li>
 <li>date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,</li>
@@ -435,9 +459,9 @@ boucle <code class="language-">for</code>.</li>
 <p>Montrons que l'algorithme glouton suivant est optimal :</p>
 <ol>
 <li>on trie les produits par prix décroissant</li>
-<li>$S = \{\}$</li>
+<li>$S = []$</li>
 <li>pour chaque produit $x$ examiné par ordre de prix décroissant : on ajoute $x$ à $S$ s'il reste compatible</li>
-<li>rendre $S$ (qui est un ensemble de profit maximal)</li>
+<li>rendre $S$ (qui est une liste de profit maximal)</li>
 </ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>

@@ -108,6 +108,18 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="/cours_informatique/enseignements/MPCI/programmation-algorithmes/annales/2023-2024/ds-1/ds1_2023_2024.pdf">Élément majoritaire</a></p>
+<blockquote>
+<p>TBD ajouter le Boyer-Moore</p>
+</blockquote>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">val <span class="token operator">&lt;</span>— T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+Nb <span class="token operator">&lt;</span>— <span class="token number">1</span>
+for<span class="token number"> i </span><span class="token operator">&lt;</span>— <span class="token number">1</span> to len<span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token punctuation">:</span>
+   if T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> val <span class="token punctuation">:</span>
+       Nb <span class="token operator">+=</span> <span class="token number">1</span>
+   Else <span class="token punctuation">:</span>
+       Nb <span class="token operator">-=</span> <span class="token number">1</span>
+       if Nb <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+           val <span class="token operator">&lt;</span>— T<span class="token punctuation">[</span>i<span class="token punctuation">]</span></code></pre>
 </div></div>
 
 <h2>Autres problèmes</h2>

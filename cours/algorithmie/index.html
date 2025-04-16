@@ -217,7 +217,7 @@
 </div></div>
 
 <h3>Problème algorithmique et preuve</h3>
-<p>Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètre) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Mais comment prouver qu'un algorithme répond bien au problème posé ?</p>
+<p>Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de &quot;<em>problème</em>&quot; à résoudre <em>via</em> un algorithme :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -226,7 +226,18 @@
 <p><a href="probleme-algorithmique" class="interne">Problème algorithmique</a></p>
 </div></div>
 
-<p>Mais même si on a un problème algorithmique et un algorithme, comment prouver que le second résout le premier puisqu'il n'existe <a href="bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice" class="interne">aucune méthode générale pour savoir ce que fait un algorithme</a> ? Il faut le faire au cas par cas. Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :</p>
+<p>Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver.</p>
+<p>Considérons par exemple l'algorithme suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">PGCD</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token keyword">tant que</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        a' <span class="token operator">←</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+        b' <span class="token operator">←</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+        a<span class="token punctuation">,</span> b <span class="token operator">←</span> a'<span class="token punctuation">,</span> b'
+    
+    <span class="token keyword">rendre</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></code></pre>
+<p>Il calcule bien le PGCD de deux nombres positifs car chaque boucle <code class="language-">tant que</code> correspond exactement à une récursion de <a href="bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide" class="interne">la définition récurrente du PGCD que l'on a démontré précédemment</a>. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait.</p>
+<p>Ceci est d'autant plus crucial puisqu'il n'existe <a href="bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice" class="interne">aucune méthode générale pour savoir ce que fait un algorithme</a> : chaque algorithme possède une preuve qui lui est propre.
+Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -465,7 +476,7 @@ ajout/suppression :</p>
 <p><a href="design-algorithmes" class="interne">Design d'algorithmes</a></p>
 </div></div>
 
-<h3>On s’entraîne : méthodes classiques de résolution</h3>
+<h3>Problèmes classiques</h3>
 <p>Ci-après quelques exemples classique de problèmes algorithmes (NP-complet ou non) pouvant se résoudre de multiples manières. Les connaître permet de rapidement forger une solution pour un problème nouveau.</p>
 <h4>Problème du sac à dos</h4>
 <p>Le problème du sac à dos est notre exemple de problème NP-complet. On va le voir sous différentes coutures :</p>
@@ -477,8 +488,6 @@ ajout/suppression :</p>
 <p><a href="probl%C3%A8me-sac-%C3%A0-dos" class="interne">Problème du sac à dos</a></p>
 </div></div>
 
-<h2>Intermède</h2>
-<p>Avant de finir cette première partie du cours, accordons nous un intermède en 2 actes.</p>
 <h3>Problème de l'enveloppe convexe</h3>
 <p>Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -489,18 +498,17 @@ ajout/suppression :</p>
 <p><a href="enveloppes-convexes" class="interne">Problème de l'enveloppe convexe</a></p>
 </div></div>
 
-<h3>Recherche universelle</h3>
-<p>Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.</p>
-<p>L'Algorithme pour tout résoudre :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="recherche-universelle" class="interne">L'algorithme de la recherche universelle</a></p>
-</div></div>
+<!--
 
-<!-- ### Problèmes et exercices
+## Exercices
+
+On rappelle ici tous les exercices que l'on va voir dans les différentes parties,
+
+### Partie I
+
+### Partie II
+
+ ### Problèmes et exercices
 
 
 ### super croissant
@@ -511,8 +519,6 @@ ajout/suppression :</p>
 > TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>
 
 ### autre bidules
-
-On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
 
 > TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
 > TBD 3-SUM et Réductions géobase. A supprimer de partie réduction. (en incluant le 2-SUM de tout à l'heure).
@@ -876,6 +882,41 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 > TBD à montrer.
 >
 > TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
+<h2>Intermède</h2>
+<p>Avant de finir cette première partie du cours, accordons nous un intermède. Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.</p>
+<h3>Algorithme qui résout tout</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="recherche-universelle" class="interne">L'algorithme de la recherche universelle</a></p>
+</div></div>
+
+<h3>Jolis problèmes</h3>
+<p>On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.</p>
+<h4>Fonction d'Ackermann</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="ackermann.md" class="interne">Fonction d'Ackermann</a></p>
+</div></div>
+
+<h4>Subsetsum</h4>
+<blockquote>
+<p>TBD 3-sum complet
+TBD subsetsum en programmation dynamique</p>
+</blockquote>
+<h4>Chiffrement super-croissant</h4>
+<blockquote>
+<p>-TBD chiffrage et décryptage avec un sac à dos super croissant !</p>
+</blockquote>
+<h4>Calcul de la médiane</h4>
+<blockquote>
+<p>TBD enlever médiane du diviser pour régner et le mettre ici</p>
+</blockquote>
 <h2><span id="partie-3"></span>Partie III</h2>
 <p>Tout ce que devrait connaître tout ingénieur aimant l'informatique.</p>
 <h3>Chaînes de caractères</h3>
@@ -1086,7 +1127,8 @@ Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle
 </div></div>
 
 <blockquote>
-<p>TBD nombre aléatoires : <a href="https://xkcd.com/221/">https://xkcd.com/221/</a> et <a href="https://imgur.com/random-number-generator-bwFWMqQ">https://imgur.com/random-number-generator-bwFWMqQ</a></p>
+<p>TBD pi et nb aléatoire (nombre univers ?) : <a href="https://www2.lbl.gov/Science-Articles/Archive/pi-random.html">https://www2.lbl.gov/Science-Articles/Archive/pi-random.html</a>
+TBD nombre aléatoires : <a href="https://xkcd.com/221/">https://xkcd.com/221/</a> et <a href="https://imgur.com/random-number-generator-bwFWMqQ">https://imgur.com/random-number-generator-bwFWMqQ</a></p>
 </blockquote>
 <blockquote>
 <p>TBD : projet Multiplication de matrices randomisé calcul et vérification.: <a href="https://www.stat.berkeley.edu/~mmahoney/f13-stat260-cs294/Lectures/lecture02.pdf">https://www.stat.berkeley.edu/~mmahoney/f13-stat260-cs294/Lectures/lecture02.pdf</a> <a href="https://eranraviv.com/randomized-matrix-multiplication/">https://eranraviv.com/randomized-matrix-multiplication/</a> <a href="https://en.wikipedia.org/wiki/Freivalds%27_algorithm">https://en.wikipedia.org/wiki/Freivalds'_algorithm</a> <a href="https://www.youtube.com/watch?v=z0ykhV15wLw">https://www.youtube.com/watch?v=z0ykhV15wLw</a></p>
