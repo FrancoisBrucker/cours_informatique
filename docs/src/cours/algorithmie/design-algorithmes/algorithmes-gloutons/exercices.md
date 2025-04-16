@@ -33,7 +33,7 @@ On va distinguer deux cas :
 
 1. $i=1$. Ce cas est impossible car comme $x_1$ est le plus petit réel, on peut remplacer tous les intervalles se finissant avant $x_1 + 1$ par l'intervalle $[x_i, x_i + 1]$ dans la solution optimale pour obtenir une solution (les intervalles couvrent clairement tous les réels) avec un nombre plus petit nombre d'intervalles et coïncidant plus longtemps avec le glouton : ceci est impossible par hypothèse.
 2. $i>1$. Il existe dans la solution optimale (ou moins) un intervalle couvrant $x_i$. Nommons cet intervalle $[a, a+1]$. On a que $a< x_i+1$ puisque  $[x_i, x_i + 1]$ n'est pas dans la solution optimale. Mais comme les réels dans $[a, x_i[$ sont couverts par des intervalles précédemment mis dans le glouton, ils sont aussi couverts par cette solution optimale (les deux solutions coïncident jusque-là): on peut procéder comme dans le cas précédent et supprimer tous les intervalles couvrants $x_i$ dans la solution optimale et les remplacer par $[x_i, x_i + 1]$ pour continuer de couvrir tous les réels. Ceci viole notre hypothèse puisque :
-    1. le nombre d'intervalles conservés est plus petit ou égal à la solution optimale initiale : c'est donc également une solution optimale 
+    1. le nombre d'intervalles conservés est plus petit ou égal à la solution optimale initiale : c'est donc également une solution optimale
     2. elle coïncide plus longtemps avec notre glouton.
 1. $i=1$. Ce cas est impossible car comme $x_1$ est le plus petit réel, on peut remplacer tous ses intervalles se finissant avant $x_1 + 1$ par l'intervalle $[x_i, x_i + 1]$ dans la solution optimale pour obtenirune solution (les intervalles couvrent clairement tous les réels) avec un nombre plus petit nombre d'intervalle et coïncidant plus longtemps avec le glouton : ceci est impossible par hypothèse.
 2. $i>1$. Il existe dans la solution optimale (ou moins) un intervalle couvrant $x_i$. Nommons cet intervalle $[a, a+1]$. On a que $a< x+i$ puisque $[x_i, x_i + 1]$ n'est pas dans la solution optimale. Mais comme il n'existe aucun réel dans $[a, x_i[$ qui ne soit pas couvert par des intervalles précédemment mis dans le glouton, ils sont aussi couvert par cette solution optimale (les deux solutions coïncident jusque là): on peut procéder comme dans le cas précédent et supprimer tous les intervalles couvrants $x_i$ dans la solution optimale et les remplacer par $[x_i, x_i + 1]$ pour continuer de couvrir tous les réels. Ceci viole notre hypothèse puisque :
@@ -388,7 +388,7 @@ Un algorithme est **_à performance garantie_** si sa solution est plus grande q
 
 On veut faire une partition de $n$ entiers en $m$ ensembles telle que la somme des entiers dans chaque ensemble ne dépasse pas $K$. Le but est de minimiser $m$ sachant les $n$ entiers et la borne $K$.
 
-Ce problème est connu comme [le problème du _bin packing_](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing) et est NP-complet. C'est dommage car il est très utile en pratique :
+Ce problème est connu comme [le problème du _bin packing_](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_bin_packing) et est NP-difficile (les problèmes d'optimisation sont dit NP-difficile si trouver une solution plus petite que $m_0$ est NP-complet. Le problème d'optimisation (trouver le minimum) n'est en effet pas dans NP, c'est à dire vérifiable en temps polynomial, car il faudrait avoir toutes les solutions pour comparer). C'est dommage car il est très utile en pratique :
 
 {% exercice "**Applications**" %}
 Donnez quelques cas d'application concret de ce problème.
@@ -407,15 +407,15 @@ Si l'on a $m$ ensembles, on peut ranger au maximum une somme valant $K\cdot m$ q
 
 On va utiliser l'algorithme glouton suivant :
 
-```text
-Es = []
-E = []
+```pseudocode
+Es ← []
+E ← []
 pour chaque entier ni:
     si somme(E) + ni ≤ K:
         ajoute ni à E
     sinon:
         ajoute E à Es
-        E = [ni]
+        E ← [ni]
 ```
 
 {% exercice "**Propriété**" %}
@@ -475,7 +475,7 @@ On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité :
 La encore, ce problème est :
 
 - [crucial en pratique](https://fr.wikipedia.org/wiki/R%C3%A9partition_de_charge)
-- NP-complet
+- NP-difficile
 
 {% exercice  "**Quelques propriétés**" %}
 
@@ -544,7 +544,7 @@ Une de vos cousines se marie et vous a demandé de faire le plan de table du rep
 On ne demande pas que le nombre de tables soit minimum.
 {% endattention %}
 
-On voit tout de suite l'importance crucial de problème... NP-complet. Pour dernier exemple où l'algorithme glouton est une heuristique. Il n'est pas optimal et n'est pas à performance garantie. Mais en pratique ça va, il est utilisé intensivement pour créer des groupes projets, des équipages d'avions, dessiner des cartes de géographie, etc.
+On voit tout de suite l'importance crucial de problème... NP-difficile. Pour dernier exemple où l'algorithme glouton est une heuristique. Il n'est pas optimal et n'est pas à performance garantie. Mais en pratique ça va, il est utilisé intensivement pour créer des groupes projets, des équipages d'avions, dessiner des cartes de géographie, etc.
 
 #### Modélisation
 
