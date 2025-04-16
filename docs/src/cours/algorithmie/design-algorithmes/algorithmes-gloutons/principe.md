@@ -30,9 +30,9 @@ Le schéma général d'un algorithme glouton est alors le suivant :
 <div id="schéma-algo"></div>
 
 ```pseudocode
-algorithme glouton_archétypal(E: [fragments de solutions]) -> [fragments de solutions]:
-    "Ordonner" E en (x_0, x_1, ..., x_n)
-    S ← une liste de fragments de solutions
+algorithme glouton_archétypal(E: [fragments de solutions]) → [fragments de solutions]:  # une solution est constituée d'un ensemble de fragments
+    "Bien ordonner" E en (x_0, x_1, ..., x_n)
+    S ← []
 
     pour chaque i de 1 à n:
         si S + [x_i] est une "solution possible" :
@@ -41,12 +41,12 @@ algorithme glouton_archétypal(E: [fragments de solutions]) -> [fragments de sol
     rendre S
 ```
 
-Il va y avoir tout un tas de variantes de ce schéma pour répondre au problème à résoudre, mais on voit déjà que ce type d'algorithme va nécessiter :
+Il va y avoir tout un tas de variantes de ce schéma pour trouver une solution au problème concret à résoudre, mais on voit déjà que ce type d'algorithme va nécessiter :
 
 - que les solutions recherchées soient constituées d'un ensemble _maximal_ de fragments de solutions
-- de pouvoir _ordonner_ les fragments pour les étudier un à un
+- de pouvoir _bien ordonner_ les fragments pour les étudier un à un
 
-Enfin, on le voit le processus de création de la solution ne revient jamais en arrière, tout choix est irrevocable.
+Le fait de bien ordonner les fragments permet de les considérer du meilleur au moins bon et ainsi de construire itérativement une solution maximale sans jamais remettre en question les choix précédents (c'est glouton, _greedy_ en anglais).
 
 Les algorithmes gloutons sont très utilisés car une fois que l'on a une façon d'ordonner les fragments et de caractériser ce qu'est une solution :
 
@@ -62,8 +62,9 @@ En conclusion :
 
 {% note "**À retenir**" %}
 
-1. Ce type d'algorithmes est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale.
-
+1. Ce type d'algorithme est très utilisé pour :
+   1. résoudre des problèmes ou la solution optimale peut être construite itérativement
+   2. résoudre approximativement des problèmes où la rapidité de du calcul de la solution prime sur l'optimalité (souvent des problèmes NP-complets à optimiser).
 2. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec [la structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde)
 
 {% endnote %}
@@ -73,10 +74,8 @@ Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est opt
 ### Comment concevoir un algorithme glouton
 
 1. écrire le problème comme un problème d'optimisation
-2. découper le problème en une succession d'étapes où il est facile de choisir le meilleur fragment de solution à ajouter à une solution partielle en construction
-3. choisir un ordre de parcours des différentes étapes
-
-Un cas particulier important est lorsque le problème d'optimisation revient à trouver un sous-ensemble _optimal_ d'un ensemble connu. Dans ce cas-là, l'item 2 revient à examiner itérativement les éléments de l'ensemble et à les ajouter un à un à un, si possible, à un ensemble solution.
+2. découper le problème en une succession d'étapes successives
+3. on construit la solution incrémentalement à chaque étape en optimisant un critère local
 
 ### Optimalité et glouton
 
