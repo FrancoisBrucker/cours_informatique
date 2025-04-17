@@ -60,10 +60,10 @@ En conclusion :
 
 {% note "**À retenir**" %}
 
-1. Ce type d'algorithme est très utilisé pour :
-   1. résoudre des problèmes ou la solution optimale peut être construite itérativement
-   2. résoudre approximativement des problèmes où la rapidité de du calcul de la solution prime sur l'optimalité (souvent des problèmes NP-complets à optimiser).
-2. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec [la structure de matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde)
+Ce type d'algorithme est très utilisé pour :
+
+1. résoudre des problèmes ou la solution optimale peut être construite itérativement
+2. résoudre approximativement des problèmes où la rapidité de du calcul de la solution prime sur l'optimalité (souvent des problèmes NP-complets à optimiser).
 
 {% endnote %}
 
@@ -175,18 +175,28 @@ La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas tro
 
 Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix et peuvent ainsi être résolu grace à un algorithme glouton. Ce sont ces problèmes que l'on va étudier maintenant.
 
-{% note "**Schéma de preuve de l'optimalité d'un algorithme glouton**" %}
+{% note "**À retenir**" %}
+Prouver qu'un algorithme glouton est optimal va se faire **tout le temps** de la même façon : par échange.
+
+On va itérativement transformer une solution optimale initiale inconnue en notre sortie de l'algorithme glouton tout en gardant l'optimalité ce qui prouvera l'optimalité du glouton.
+
+Pour cela on va chercher à chaque étape à remplacer un fragment de la solution optimale par un fragment de la sorite du glouton ce qui rapprochera la solution optimale du glouton. Lorsqu'on ne pourra plus le faire la solution optimale sera égale à la sortie du glouton et on aura gagné.
+{% endnote %}
+
+Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est [un matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde), dont la principale propriété est d'être stable par échange.
+
+### Schéma de preuve d'optimalité par construction
+
 En reprenant le [schéma générique de l'algorithme glouton](./#schéma-algo), on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :
 
 - si `S + [x_i]`{.language-} était une solution possible alors `x_i`{.language-} est aussi dans la solution optimale considérée
 - si `S + [x_i]`{.language-} n'était pas une solution possible alors `x_i`{.language-} n'est pas dans la solution optimale considérée
 
 Ce qui prouvera l'optimalité de notre algorithme glouton.
-{% endnote %}
+
+### Schéma de preuve d'optimalité par l'absurde
 
 Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :
-
-{% note "schéma de preuve d'optimalité par l'absurde" %}
 
 1. on suppose que la solution donnée par l'algorithme glouton n'est pas optimale
 2. pour toute solution optimale il existe donc une étape $i$ où le glouton a :
@@ -197,11 +207,9 @@ Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :
    - pour toute autre solution optimale, la première divergence s'est passé à l'étape $i$ ou avant
 4. On prouve que l'on peut construire une autre solution optimale qui coïncide avec le glouton jusqu'à l'étape $i$ ce qui invalide l'hypothèse de non optimalité du glouton.
 
-{% endnote %}
+### Problème du recouvrement de nombres réels
 
 Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :
-
-### Problème du recouvrement de nombres réels
 
 {% note "**Problème**" %}
 
@@ -230,12 +238,13 @@ On classe les réels par ordre croissants puis pour chaque réel $T[i]$ on ajout
 algorithme recouvrement(T: [réel]) → [(réel, réel)]:
     trie T par ordre croissant.
     I ← []
-    c ← ∅
+    courant ← [T[0], T[0] + 1]
+    ajoute courant à I
 
     pour chaque x de T:
-        si x ∉ c:
-            c ← [x, x + 1]
-            ajoute c à I
+        si x ∉ courant:
+            courant ← [x, x + 1]
+            ajoute courant à I
     
     rendre I
 ```
@@ -451,7 +460,7 @@ Et donc :
 
 <div>
 $$
-\sum_i T[i] = \sum_{i}\sum_{x \in B[i]}x \geq \sum_{i< m-1}\sum_{x \in B[i]}x \geq  K \cdot \lfloor \frac{m}{2} \rfloor
+\sum_i T[i] = \sum_{i}\sum_{x \in B[i]}x \geq \sum_{i< m-1}\sum_{x \in B[i]}x \geq  K \cdot \frac{m-1}{2} = K \cdot \lfloor \frac{m}{2} \rfloor
 $$
 </div>
 
@@ -492,6 +501,143 @@ On peut cependant faire mieux si l'on connaît toutes les marchandises avant de 
 
 ## Heuristique gloutonne
 
-> TBD <https://perso.liris.cnrs.fr/alain.mille/enseignements/master_ia/cours3.pdf>
-> TBD ajouter du random pour refaire.
+Souvent, même si la solution donné par un algorithme glouton pour résoudre un problème n'est ni optimale (parce que le problème à résoudre est NP-difficile) ni à performance garantie on peut l'utiliser pur trouver une solution approchée acceptable en l'utilisant comme [une heuristique](https://fr.wikipedia.org/wiki/Heuristique).
+
+### Méthode de design d'un algorithme glouton comme heuristique
+
+1. créer un glouton pour résoudre le problème
+2. rendre l'ordonnancement aléatoire
+3. exécuter plusieurs fois l'algorithme et prendre le meilleur résultat
+
+On voit que pour que cela fonctionne il faut :
+
+- pouvoir exécuter plusieurs fois notre algorithme : il faut donc qu'il soit le plus simple possible pour qu'il ait une complexité faible (cherche à être linéaire)
+- il faut pouvoir garder la meilleur solution : on doit pouvoir ordonner les solution pour prendre la meilleure (ce qui est le cas pour un problème d'optimisation)
+- il faut que les bonnes solutions ne soient pas rares sinon l'aléatoire n'aidera pas à trouver une bonne solution (il est parfois nécessaire de faire un prétraitement sur les entrées)
+
+### Problème de la chaîne de montage
+
+Pour illustrer l'utilisation d'algorithmes gloutons pour la résolution heuristique, on va considérer [le problème de la chaîne de montage](https://www.csplib.org/Problems/prob001/).
+
+Pour créer une voiture on la déplace sur une chaîne de montage pour qu'elle puisse passer par chaque atelier. La figure suivante montre le schéma :
+
+![chaîne de montage](./chaine-montage.png)
+
+Les différentes voitures en court de construction ($v_1$, $v_2$ et $v_3$) se déplace d'une case sur la chaîne à chaque unité de temps pour passer d'un atelier à l'autre ($v_1$ est dans l'atelier 3 et $v_3$ arrivera à l'atelier 1 à l'unité de temps suivante). Le temps mis par un atelier est égal à sa longueur sur la chaîne (atelier 1 dure 4 unité de temps et l'atelier 4 une seule).
+
+Les contraintes sont les suivantes :
+
+- il y a une voiture sur chaque tronçon de la chaîne de montage et elles avancent d'un tronçon à chaque unité de temps
+- un atelier ajoute une _option_ à la voiture (vitre teintée, radar de recul, lance missile, ...) et chaque voiture a son propre jeu d'option
+- ajouter une option à une voiture nécessite un ouvrier spécialité qui va travailler le temps que la voiture est sur l'atelier. Il y a moins d'ouvrier que de temps.
+
+Ainsi s'il y 2 ouvriers dans l'atelier 1 : il ne peut y avoir que 2 voitures ayant l'option 1 sur 4 voitures consécutives sur la chaîne de montage, sinon il faudra stopper la chaîne le temps qu'un ouvrier finisse son travail pour être à nouveau disponible. Par exemple s'il n'y a qu'un ouvrier dans l'atelier 3, et que les voitures $v_2$ et $v_1$ ont l'option 3, il y aura un problème à l'unité de temps suivante : $v_2$ rentrera dans l'atelier 3 alors que l'ouvrier travaille encore sur la voiture $v_3$. Il faudra arrêter la chaîne de montage pendant 1 unité de temps le temps que l'ouvrier finisse de travailler sur $v_3$.
+
+Le problème à résoudre est donc trouver un ordre de construction des voitures de telle sorte qu'il y ait toujours assez d'ouvriers par atelier, ou au pire de minimiser les retards. C'est dire formellement :
+
+{% note "**Problème**" %}
+
+- **nom** : montage
+- **données** :
+  - un tableau $V$ de $n$ voitures
+  - chaque voiture $v = V[i]$ est une liste de $m$ 0 ou 1 ($v[j] = 1$ si $v$ possède l'option $j$)
+  - un liste $O$ de $m$ ouvriers ($O[j]$ est le nombre d'ouvriers de l'atelier $j$)
+  - un liste $T$ de $m$ temps ($T[j]$ est le temps mis par l'atelier $j$)
+- **résultat** : un ordonnancement de $V$ minimisant : $\sum_{0\leq j < m}\sum_{0\leq i < n-T[j]}\max(0, \sum_{i \leq k < i + T[j]}V[k][j] - O[j])$ (le déficit d'ouvriers pour tous les ateliers et pour la fabrication des $n$ voitures)
+{% endnote %}
+
+Prenons l'exemple donné dans [la description du problème de la chaîne de montage](https://www.csplib.org/Problems/prob001/). La chaîne de montage est de ce type :
+
+![chaîne de montage exemple](./chaine-montage-exemple.png)
+
+Et on veut construire 10 voitures :
+
+ | 0 | 1 | 2 | 3 | 4
+-|---|---|---|---|---
+0| 1 | 0 | 1 | 1 | 0
+1| 0 | 0 | 0 | 1 | 0
+2| 0 | 1 | 0 | 0 | 1
+3| 0 | 1 | 0 | 0 | 1
+4| 0 | 1 | 0 | 1 | 0
+5| 0 | 1 | 0 | 1 | 0
+6| 1 | 0 | 1 | 0 | 0
+7| 1 | 0 | 1 | 0 | 0
+8| 1 | 1 | 0 | 0 | 0
+9| 1 | 1 | 0 | 0 | 0
+
+Si on prend cet ordre de construction :
+
+- l'atelier 0 qui a une longueur de 2 et 1 ouvrier accumulera un retard de 1 aux temps 6, 7 et 8
+- l'atelier 1 qui a une longueur de 3 et 2 ouvriers accumulera un retard de 1 aux temps 2 et 3
+- l'atelier 2 qui a une longueur de 3 et 1 ouvrier accumulera un retard de 1 aux temps 5 et 6
+- l'atelier 3 qui a une longueur de 4 et 2 ouvrier n'accumulera pas de retard
+- l'atelier 4 qui a une longueur de 4 et 1 ouvrier accumulera un retard de 1 aux temps 0, 1 et 2
+
+Le retard total sera donc de 10 unités de temps.
+
+Il existe un ordre de passage sans retard pour cet exemple :
+
+ | 0 | 1 | 2 | 3 | 4
+-|---|---|---|---|---
+0| 1 | 0 | 1 | 1 | 0
+1| 0 | 0 | 0 | 1 | 0
+2| 1 | 1 | 0 | 0 | 0
+3| 0 | 1 | 0 | 0 | 1
+4| 1 | 0 | 1 | 0 | 0
+5| 0 | 1 | 0 | 1 | 0
+6| 0 | 1 | 0 | 1 | 0
+7| 1 | 0 | 1 | 0 | 0
+8| 0 | 1 | 0 | 0 | 1
+9| 1 | 1 | 0 | 0 | 0
+
+### Algorithme glouton
+
+Pour la résolution gloutonne et heuristique d'un problème NP-difficile, on a coutume de créer l'ordre au fur et à mesure du déroulement de l'algorithme. L'algorithme reste glouton car une fois choisi on ne revient pas sur le choix.
+
+L'idée de l'algorithme (les détails de l'écriture du pseudo-code sont laissés au lecteur) est alors la suivante :
+
+```pseudocode/
+algorithme ordonnancement(V: [[entier]], O: [entier], T: [entier]) → [[entier]]:
+    V' ← une nouvelle liste de [entier]
+    
+    # initialisation
+    i0 ← 0
+    ajouter V[i0] à V'
+    supprimer la ligne d'indice i0 de V
+
+    #  ajout itératif
+    tant que V est non vide:
+
+        # choix de la voiture à ajouter
+        iv ← l'indice d'une voiture de V minimisant les retards si on l'ajoute à V'
+        
+        ajouter V[iv] à V'
+        supprimer la ligne d'indice iv de V
+    
+    rendre V'
+```
+
+> TBD pseudo-code des méthodes annexes pour optimiser le code :
 >
+> - algo init pour choisir le 1er
+> - algo coût ajout qui compte que depuis le dernier
+> - algo supprime qui échange
+> calcul complexité.
+
+> TBD coder en python pour tester.
+
+### Glouton aléatoire
+
+Si on laisse l'algorithme ainsi il va trouver une solution qu'on espère acceptable : son fonctionnement interne est bon. Comme sa complexité est faible, on peut le relancer plusieurs fois en modifiant les paramètres pour augmenter nos chances d'obtenir une meilleure solution.
+
+Ce qu'on peut améliorer :
+
+1. initiation : prendre une voiture au hasard plutôt que la première
+2. choix du prochain véhicule à ajouter : plusieurs choix s'offrent à nous :
+   1. hasard parmi tous les possibles : pas efficace
+   2. hasard parmi ceux de coût d'ajout minimal : ne permet pas de sortir du chemin tracé
+   3. choisir avec une probabilité d'autant plus élevé que le coût d'ajout est faible : permet de se laisser un moyen de changer radicalement de direction
+  
+Usuellement, on choisit le premier au hasard et la prochaine voiture avec une probabilité d'autant plus élevé que le coût d'ajout est faible.
+
+> TBD test

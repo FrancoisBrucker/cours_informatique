@@ -17,130 +17,6 @@ Attention, souvent les algorithmes gloutons n'ont pas de garanties du tout. Beau
 
 Comme toujours lorsque l'on crée un algorithme glouton, la principale difficulté est de trouver l'ordre dans lequel considérer les objets. Une fois cet ordre trouvé les preuves sont toujours les mêmes (mais il faut tout de même les faire).
 
-## <span id="exemple-allocation-de-salles-de-cinéma"></span>Exemple 2 : allocation de salles de cinéma
-
-> TBD à mettre sous la forme d'un exercice
-
-Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :
-
-- Quel est le nombre maximum de films qu'une personne peux voir en une journée ?
-- Quel est le nombre minimum de salles à construire pour qu'une personne puisse voir un film quelconque qu'elle aura choisi.
-
-### Voir un maximum de films
-
-1. **le problème d'optimisation** : on cherche à rendre une liste maximale de films à voir en une journée.
-2. **découpage en étapes** : Comme il faut trouver un sous-ensemble maximal de films, chaque étape consistera en l'examen d'un film et voir si on peut le rajouter à l'ensemble déjà constitué.
-3. **ordre d'examen des films** : date de fin croissante.
-
-Pour l'ordre d'examen, il n'y a pas vraiment d'autre choix que la date de fin croissante. En effet, si l'on classe les séances de cinéma par :
-
-- durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,
-- date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple,
-
-#### Algorithme : maximum de films
-
-- **entrée** : liste de films, chaque liste étant une liste `[depart, fin, nom]`{.language-}
-- **sortie** : liste ordonnée de films possible
-
-```python
-def nombre_films_maximal(films):
-
-    films.sort(key=lambda x: x[1])
-
-    films_a_voir = [films[0]]
-    for film in films:
-        fin_dernier_film = films_a_voir[-1][1]
-        début_nouveau_film = film[0]
-        if fin_dernier_film <= début_nouveau_film:
-            films_a_voir.append(film)
-
-    return films_a_voir
-```
-
-La sortie de l'algorithme glouton correspond à un ordre de visionnage de films maximisant le nombre de films vus.
-
-{% info %}
-On a utilisé quelques astuces de programmation python :
-
-- `l[-1]`{.language-} rend le dernier élément d'une liste.
-  boucle `for`{.language-}.
-- on a un peu fait de magie noire sur les tris en utilisant le paramètre [key](https://docs.python.org/fr/3/howto/sorting.html#key-functions) qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).
-- on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction `fonction_lambda_anonyme`{.language-} suivante :
-
-```python
-def fonction_lambda_anonyme(x):
-    return x[1]
-```
-
-{% endinfo %}
-
-#### Preuve de l'algorithme : maximum de films
-
-On prouve notre algorithme en utilisant la technique de preuve par l'absurde : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère la solution optimale à $m^\star$ films dont l'ordre de visionnage des films coïncide le plus longtemps possible avec la solution donnée par celui-ci.
-
-Soit $i$ l'indice de l'étape de la première différence. Bornons cet indice :
-
-- on ne peut pas avoir $i > m$ car par construction de l'algorithme glouton, tout film qui n'est pas choisit par lui entre en conflit avec au moins un film choisi.
-- on peut en revanche avoir $i=1$ si les deux listes ne commencent pas par le même film
-
-On a donc $1 \leq i \leq m$ et deux cas sont possibles :
-
-1. soit le film $f_i$ a été refusé par l'algorithme glouton alors qu'il est dans la solution optimale
-2. soit le film $f_i$ a été accepté par l'algorithme glouton alors qu'il n'est pas dans la solution optimale
-
-Le premier cas est impossible car s'il a été refusé par l'algorithme glouton, c'est qu'il empiète avec un film déjà accepté et comme les solutions optimale et gloutonne coïncident jusqu'à $i$ ces films sont aussi dans la solution optimale.
-
-Dans le deuxième cas, si $(f^\prime_{j})_{1 \leq j \leq m'}$ est sa liste optimale de films à voir on a :
-
-- $f'_j = f_j$ pour $j< i$
-- $f'_i \neq f_i$
-
-Par construction de l'algorithme glouton, la date de fin de $f'_i$ est plus grande que la date de fin de $f_i$. On peut alors échanger $f_i$ et $f'_i$ pour créer une nouvelle solution optimale $(f'')$ telle que :
-
-- $f''_j = f_j$ pour $j\leq  i$
-- $f''_j = f'_j$ pour $j >  i$
-
-Ceci est impossible par hypothèse (on prend la solution optimale coïncidant le plus longtemps possible avec la solution de l'algorithme glouton) : notre hypothèse était fausse, l'algorithme glouton est optimal.
-
-### Nombre minimum de salles pour placer tous les films en stock
-
-On essaie ici de trouver le nombre minimum de salles à construire pour pouvoir projeter tous les films
-
-#### Algorithme : nombre de salle minimum
-
-On va ici classer les films par date de début croissante. On commence par 0 salles de cinéma.
-
-En analysant dans cet ordre les films, on cherche s'il existe une salle à laquelle on peut rajouter le film (la date de fin du dernier film de la salle est plus tôt que le début du nouveau film). Si oui on rajoute le film à cette salle, si non on crée une nouvelle salle et l'on ajoute notre film à cette nouvelle salle.
-
-{% exercice %}
-Codez l'algorithme en python.
-{% endexercice %}
-{% details "**Solution**" %}
-
-```python
-def nombre_salles(films):
-    films.sort(key=lambda x: x[0])
-
-    salles = [[films[0]]]
-    for film in films[1:]:
-        nouvelle_salle = True
-        for salle in salles:
-            dernier_film = salle[-1]
-            if film[0] >= dernier_film[1]:
-                salle.append(film)
-                nouvelle_salle = False
-                break
-        if nouvelle_salle:
-            salles.append([film])
-```
-
-{% enddetails %}
-
-#### Preuve de l'algorithme : minimum de salles
-
-La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n'est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.
-
-
 ### Réservation SNCF
 
 On suppose que $n$ personnes veulent voyager en train un jour donné. La personne $i$ veut prendre le train $t_i$.
@@ -299,108 +175,146 @@ La preuve de l'optimalité vient du fait que l'essence mise à la station $i$ pe
 
 {% enddetails %}
 
-## Problèmes d'ordonnancements
+### Allocation de salles de cinéma
 
-Les problèmes d'ordonnancement sont très importants car nombre de problèmes courants peuvent s'écrire sous cette forme. Nous allons voir dans cette partie quelques exemples où l'approche gloutonne est optimale.
+Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :
 
-### Ordonnancement avec pénalité
+- Quel est le nombre maximum de films qu'une personne peux voir en une journée ?
+- Quel est le nombre minimum de salles à construire pour qu'une personne puisse voir un film quelconque qu'elle aura choisi.
 
-[Comme dans le cours](../principe/#exemple-ordonnancement){.interne} mais chaque tâche a un coût si on ne la réalise pas à temps.
+#### Voir un maximum de films
+
+1. **le problème d'optimisation** : on cherche à rendre une liste maximale de films à voir en une journée.
+2. **découpage en étapes** : Comme il faut trouver un sous-ensemble maximal de films, chaque étape consistera en l'examen d'un film et voir si on peut le rajouter à l'ensemble déjà constitué.
+3. **ordre d'examen des films** : date de fin croissante.
 
 {% exercice %}
-Le but est de minimiser la somme des pénalités.
-{% endexercice %}
-{% details "corrigé" %}
-Tout pareil.
-
-Il suffit de dire que la pénalité est un gain qu'on cherche à maximiser : on réalisera en priorité les tâches avec la plus grande pénalité et donc on minimisera les pénalités des tâches non effectuées.
-{% enddetails %}
-
-### Ordonnancement avec départ différé
-
-On suppose que l'on a $n$ tâches à réaliser par **un unique** ouvrier et chaque tâche $1\leq i \leq n$ met $p_i$ unités de temps à être effectuée. Une fois que l'ouvrier commence une tâche, il la termine : s'il effectue la tâche $i$, il ne fait rien d'autre pendant $p_i$ unités de temps.
-
-On veut minimiser la somme des débuts de réalisations des tâches.
-
-{% exercice  "**Formalisation du problème**" %}
-En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \sigma_n$ :
-
-1. donnez le temps minimum de départ et de fin des tâches $\sigma_1$, $\sigma_2$ et $\sigma_3$
-2. en déduire que la valeur de la somme totale des temps de départ des tâches vaut $\sum_i(n-i)p_{\sigma_i}$
-   {% endexercice %}
-   {% details "corrigé" %}
-
-- la tâche $\sigma_1$ a commencé en 0 et a fini en $p_{\sigma_1}$
-- la tâche $\sigma_2$ a commencé en $p_{\sigma_1}$ et a fini en $p_{\sigma_1} + p_{\sigma_2}$
-- la tâche $\sigma_3$ a commencé en $p_{\sigma_1} + p_{\sigma_2}$ et a fini en $p_{\sigma_1} + p_{\sigma_2} + p_{\sigma_3}$
-
-On a donc la formule suivante pour donner la somme de toutes les débuts de tâches :
-
-<div>
-$$
-   T = \sum_{1\leq i \leq n}( \sum_{1\leq j < i}p_{\sigma_j}) = \sum_i(n-i)p_{\sigma_i}
-$$
-</div>
-
-{% enddetails %}
-
-{% exercice  "**Exemple**" %}
-Quel est l'ordre d'exécution des tâches minimisant la somme des débuts de tâches pour trois tâches de temps de réalisation $p_1 = 1$, $p_2 = 3$ et $p_3 =5$.
+Montrez que si l'on classe les salle de cinéma par durée croissante ou par date de début croissante le glouton ne peut pas être optimal.
 {% endexercice %}
 {% details "corrigé" %}
 
-Pour les 3 tâches, il y a 6 ordonnancements possibles qui donnent respectivement :
-
-- 1 puis 3 puis 5 : $T = 2 \cdot 1 + 1 \cdot 3 = 5$
-- 1 puis 5 puis 3 : $T = 2 \cdot 1 + 1 \cdot 5 = 7$
-- 3 puis 1 puis 5 : $T = 2 \cdot 3 + 1 \cdot 1 = 7$
-- 3 puis 5 puis 1 : $T = 2 \cdot 3 + 1 \cdot 5 = 11$
-- 5 puis 1 puis 3 : $T = 2 \cdot 5 + 1 \cdot 1 = 11$
-- 5 puis 3 puis 1 : $T = 2 \cdot 5 + 1 \cdot 3 = 13$
+- durée croissante : l'ensemble de films $[(1, 3), (3, 5), (5, 7), (2.5, 3.5), (4.5, 5.5)]$ produit un contre exemple,
+- date de début croissante : l'ensemble de films $[(1, 10), (2, 3), (3, 4)]$ produit un contre exemple
 
 {% enddetails %}
 
-L'exemple précédent a dû vous donner une idée de l'ordre associé au glouton :
-
-{% exercice  "**Ordre d'exécution des tâches**" %}
-Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal d'exécution des tâches pour minimiser la valeur moyenne des débuts de réalisations.
+{% exercice %}
+Écrivez l'algorithme glouton en utilisant comme ordre la date de fin croissante.
 {% endexercice %}
 {% details "corrigé" %}
 
-Minimiser la valeur moyenne des débuts de réalisation minimise $T/n$. Il suffit donc de minimiser $T$.
+- **entrée** : liste de films, chaque liste étant une liste `[depart, fin, nom]`{.language-}
+- **sortie** : liste ordonnée de films possible
 
-L'ordre selon lequel il faut ordonner les tâches est par durée décroissante. S'il existait en effet $i < j$ tel que $p_{\sigma_i} > p_{\sigma_j}$ changer les deux tâches diminuerait strictement $T$ puisque $n-i > n-j$. Cet ordre donne directement l'algorithme glouton :
+```python
+def nombre_films_maximal(films):
 
-```text
-On trie les tâches par durée croissante
-Pour chaque tâche dans cet ordre:
-    réaliser cette tache
+    films.sort(key=lambda x: x[1])
+
+    films_a_voir = [films[0]]
+    for film in films:
+        fin_dernier_film = films_a_voir[-1][1]
+        début_nouveau_film = film[0]
+        if fin_dernier_film <= début_nouveau_film:
+            films_a_voir.append(film)
+
+    return films_a_voir
+```
+
+La sortie de l'algorithme glouton correspond à un ordre de visionnage de films maximisant le nombre de films vus.
+
+{% info %}
+On a utilisé quelques astuces de programmation python :
+
+- `l[-1]`{.language-} rend le dernier élément d'une liste.
+  boucle `for`{.language-}.
+- on a un peu fait de magie noire sur les tris en utilisant le paramètre [key](https://docs.python.org/fr/3/howto/sorting.html#key-functions) qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).
+- on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction `fonction_lambda_anonyme`{.language-} suivante :
+
+```python
+def fonction_lambda_anonyme(x):
+    return x[1]
+```
+
+{% endinfo %}
+
+{% enddetails %}
+
+{% exercice %}
+Démontrez que l'algorithme glouton précédent permet de trouver un nombre maximal de films à voir en une journée.
+{% endexercice %}
+{% details "corrigé" %}
+
+On prouve notre algorithme en utilisant la technique de preuve par l'absurde : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère la solution optimale à $m^\star$ films dont l'ordre de visionnage des films coïncide le plus longtemps possible avec la solution donnée par celui-ci.
+
+Soit $i$ l'indice de l'étape de la première différence. Bornons cet indice :
+
+- on ne peut pas avoir $i > m$ car par construction de l'algorithme glouton, tout film qui n'est pas choisit par lui entre en conflit avec au moins un film choisi.
+- on peut en revanche avoir $i=1$ si les deux listes ne commencent pas par le même film
+
+On a donc $1 \leq i \leq m$ et deux cas sont possibles :
+
+1. soit le film $f_i$ a été refusé par l'algorithme glouton alors qu'il est dans la solution optimale
+2. soit le film $f_i$ a été accepté par l'algorithme glouton alors qu'il n'est pas dans la solution optimale
+
+Le premier cas est impossible car s'il a été refusé par l'algorithme glouton, c'est qu'il empiète avec un film déjà accepté et comme les solutions optimale et gloutonne coïncident jusqu'à $i$ ces films sont aussi dans la solution optimale.
+
+Dans le deuxième cas, si $(f^\prime_{j})_{1 \leq j \leq m'}$ est sa liste optimale de films à voir on a :
+
+- $f'_j = f_j$ pour $j< i$
+- $f'_i \neq f_i$
+
+Par construction de l'algorithme glouton, la date de fin de $f'_i$ est plus grande que la date de fin de $f_i$. On peut alors échanger $f_i$ et $f'_i$ pour créer une nouvelle solution optimale $(f'')$ telle que :
+
+- $f''_j = f_j$ pour $j\leq  i$
+- $f''_j = f'_j$ pour $j >  i$
+
+Ceci est impossible par hypothèse (on prend la solution optimale coïncidant le plus longtemps possible avec la solution de l'algorithme glouton) : notre hypothèse était fausse, l'algorithme glouton est optimal.
+{% enddetails %}
+
+#### Nombre minimum de salles pour placer tous les films en stock
+
+On essaie ici de trouver le nombre minimum de salles à construire pour pouvoir projeter tous les films. On va classer les films par date de début croissante. On commence par 0 salles de cinéma.
+
+En analysant dans cet ordre les films, on cherche s'il existe une salle à laquelle on peut rajouter le film (la date de fin du dernier film de la salle est plus tôt que le début du nouveau film). Si oui on rajoute le film à cette salle, si non on crée une nouvelle salle et l'on ajoute notre film à cette nouvelle salle.
+
+{% exercice %}
+Codez l'algorithme en python.
+{% endexercice %}
+{% details "**Solution**" %}
+
+```python
+def nombre_salles(films):
+    films.sort(key=lambda x: x[0])
+
+    salles = [[films[0]]]
+    for film in films[1:]:
+        nouvelle_salle = True
+        for salle in salles:
+            dernier_film = salle[-1]
+            if film[0] >= dernier_film[1]:
+                salle.append(film)
+                nouvelle_salle = False
+                break
+        if nouvelle_salle:
+            salles.append([film])
 ```
 
 {% enddetails %}
 
-On suppose maintenant que toutes les tâches ne sont pas immédiatement disponibles. Chaque tâche $i$ a maintenant une date $d_i$ à partir de laquelle elle peut être réalisée.
-
-{% exercice  "**Départs différés**" %}
-Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal minimisant la valeur moyenne des débuts de réalisations.
+{% exercice %}
+Démontrez que l'algorithme glouton précédent permet de trouver un nombre minimal de salles de cinéma à construire pour jouer tous les films.
 {% endexercice %}
 {% details "corrigé" %}
-
-Le même raisonnement que précédemment montre que l'on peut ordonner les tâches par $d_i + p_i$ croissants.
+La preuve est ici aisée car si on rajoute une salle pour loger un nouveau film $f$, ça veut dire que pour toutes les $k$ salles actuelles il y a un film qui n'est pas fini pendant le début du nouveau film : il existe au moins $k$ films dont le début est avant $f$ et la fin après $f$ : il faut donc au moins $k+1$ salles pour jouer tous ces films en parallèle.
 
 {% enddetails %}
 
-On suppose maintenant que l'ouvrier peut mettre en pause la réalisation d'une tâche puis la reprendre ultérieurement. Par exemple il peut commencer la tâche $i$ de temps de réalisation $p_i = 5$, la réaliser pendant 2 unités de temps, puis la mettre en pause pour réaliser la tâche $j$ puis, une fois la tâche $j$ terminée, reprendre la tâche $i$ et la finir en y passant les 3 unités de temps restantes.
+## Problèmes d'ordonnancements
 
-{% exercice  "**Tâches fragmentables**" %}
-Donnez (et prouvez) la méthode permettant de minimiser la moyenne des débuts de chaque tâche.
+Les problèmes d'ordonnancement sont très importants car nombre de problèmes courants peuvent s'écrire sous cette forme. Nous allons voir dans cette partie quelques exemples où l'approche gloutonne est optimale.
 
-{% endexercice %}
-{% details "corrigé" %}
-
-On peut à chaque unité réaliser une unité de temps de la tâche qui se finit au plus tôt parmi les tâches que l'on peut réaliser. Ceci garantit que les tâches sont bien réalisées de la plus rapide à la plus lente.
-
-{% enddetails %}
+Les problèmes d'ordonnancement sont multiples. Certains sont durs, d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
 
 ### Ordonnancement avec retard
 
@@ -475,9 +389,7 @@ Si l'on range les éléments par taille de fin demandée croissante, on est alor
 
 {% enddetails %}
 
-## <span id="exemple-ordonnancement"></span>Exemple 3 : ordonnancement
-
-Les problèmes d'ordonnancement sont multiples. Certains sont durs, d'autres faciles. Mais un algorithme glouton permet de trouver souvent une solution acceptable pour beaucoup d'entres eux et même parfois optimale pour certains problèmes.
+### Ordonnancement de tâches unitaires
 
 Le problème suivant est résoluble par un algorithme glouton : on considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on n'a qu'un seul ouvrier.
 
@@ -485,24 +397,25 @@ Il faut donc trouver un sous-ensemble de produits à créer parmi la liste de to
 
 Commençons par montrer que cet ordre est facile à trouver.
 
-### Ordre de production
+#### Ordre de production
 
 Un ensemble de produits est dit _compatible_ s'il existe un ordonnancement de leur production permettant de tous les vendre (chaque produit est fabriqué avant sa date de péremption).
 
-On a la proposition suivante :
+Démontrez la proposition suivante :
 
-{% note %}
+{% exercice %}
 Un ensemble de produits est compatible si et seulement si la production par date $d_i$ croissante permet de tous les vendre.
-{% endnote %}
-
-Preuve :
+{% endexercice %}
+{% details "corrigé" %}
 
 - si la production par date croissante permet de tout vendre il est compatible
 - s'il existe un autre ordonnancement avec la tâche $j$ placé avant la tâche $i$ alors que $d_j > d_i$, on peut échanger la tâche $i$ et la tâche $j$ et l'ordonnancement reste compatible
 
+{% enddetails %}
+
 Grace à cette propriété, on est ramené à un problème glouton classique : on a plus qu'un seul paramètre à optimiser : le profit.
 
-### Algorithme : ensemble compatible maximum
+#### Algorithme : ensemble compatible maximum
 
 Montrons que l'algorithme glouton suivant est optimal :
 
@@ -512,9 +425,21 @@ Montrons que l'algorithme glouton suivant est optimal :
 4. rendre $S$ (qui est une liste de profit maximal)
 
 {% exercice %}
+Montrez que l'algorithme précédent est optimal
+{% endexercice %}
+{% details "corrigé" %}
+
+Si une solution ne contient pas l'élément de prix maximum on l'échange avec le 1er élément produit et la solution reste compatible tout en ayant un profit plus grand.
+
+Si une solution optimale et la solution gloutonne coïncident au bout de $i$ étapes (les éléments pris le sont pour les deux solutions et les éléments écartés le sont aussi pour les deux solutions), à l'étape $i+1$ on a deux cas :
+
+- on écarte ce produit car la solution n'est plus compatible pour la solution gloutonne. Comme La solution optimale contenait jusqu'à présent tous les éléments de la solution gloutonne, le produit de l'étape $i+1$ n'est pas on plus compatible avec la solution optimale.
+- on ajoute le produit à la solution gloutonne. Si la solution optimale ne contient pas ce produit on peut échanger n'importe quel autre élément que les $i-1$ premiers éléments de la solution avec celui-ci pour augmenter le profit.
+{% enddetails %}
+{% exercice %}
 Codez l'algorithme en python.
 {% endexercice %}
-{% details "**Solution**" %}
+{% details "corrigé" %}
 
 ```python
 def produits_est_compatible(liste_produit):
@@ -539,22 +464,107 @@ def produits_maximum_profit(liste_produit):
 
 {% enddetails %}
 
-### Preuve : ensemble compatible maximum
+#### Ordonnancement avec pénalité
 
-#### <span id="init-optimisation"></span>Initialisation
+On se place maintenant dans le cas où à la place d'avoir un profit de vente, la tâche a un coût si on ne la réalise pas à temps.
 
-Si une solution ne contient pas l'élément de prix maximum on l'échange avec le 1er élément produit et la solution reste compatible tout en ayant un profit plus grand
+{% exercice %}
+Proposez un algorithme dont Le but est de minimiser la somme des pénalités.
+{% endexercice %}
+{% details "corrigé" %}
+Tout pareil.
 
-#### <span id="récurrence-optimisation"></span> Récurrence
+Il suffit de dire que la pénalité est un gain qu'on cherche à maximiser : on réalisera en priorité les tâches avec la plus grande pénalité et donc on minimisera les pénalités des tâches non effectuées.
+{% enddetails %}
 
-Si une solution optimale et la solution gloutonne coïncident au bout de $i$ étapes (les éléments pris le sont pour les deux solutions et les éléments écartés le sont aussi pour les deux solutions), à l'étape $i+1$ on a deux cas :
+### Ordonnancement avec départ différé
 
-- on écarte ce produit car la solution n'est plus compatible pour la solution gloutonne. Comme La solution optimale contenait jusqu'à présent tous les éléments de la solution gloutonne, le produit de l'étape $i+1$ n'est pas on plus compatible avec la solution optimale.
-- on ajoute le produit à la solution gloutonne. Si la solution optimale ne contient pas ce produit on peut échanger n'importe quel autre élément que les $i-1$ premiers éléments de la solution avec celui-ci pour augmenter le profit.
+On suppose que l'on a $n$ tâches à réaliser par **un unique** ouvrier et chaque tâche $1\leq i \leq n$ met $p_i$ unités de temps à être effectuée. Une fois que l'ouvrier commence une tâche, il la termine : s'il effectue la tâche $i$, il ne fait rien d'autre pendant $p_i$ unités de temps.
 
-## Glouton pas optimal mais pas mal
+On veut minimiser la somme des débuts de réalisations des tâches.
 
-### Équilibrage de charge
+{% exercice  "**Formalisation du problème**" %}
+En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \sigma_n$ :
+
+1. donnez le temps minimum de départ et de fin des tâches $\sigma_1$, $\sigma_2$ et $\sigma_3$
+2. en déduire que la valeur de la somme totale des temps de départ des tâches vaut $\sum_i(n-i)p_{\sigma_i}$
+{% endexercice %}
+
+{% details "corrigé" %}
+
+- la tâche $\sigma_1$ a commencé en 0 et a fini en $p_{\sigma_1}$
+- la tâche $\sigma_2$ a commencé en $p_{\sigma_1}$ et a fini en $p_{\sigma_1} + p_{\sigma_2}$
+- la tâche $\sigma_3$ a commencé en $p_{\sigma_1} + p_{\sigma_2}$ et a fini en $p_{\sigma_1} + p_{\sigma_2} + p_{\sigma_3}$
+
+On a donc la formule suivante pour donner la somme de toutes les débuts de tâches :
+
+<div>
+$$
+   T = \sum_{1\leq i \leq n}( \sum_{1\leq j < i}p_{\sigma_j}) = \sum_i(n-i)p_{\sigma_i}
+$$
+</div>
+
+{% enddetails %}
+
+{% exercice  "**Exemple**" %}
+Quel est l'ordre d'exécution des tâches minimisant la somme des débuts de tâches pour trois tâches de temps de réalisation $p_1 = 1$, $p_2 = 3$ et $p_3 =5$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Pour les 3 tâches, il y a 6 ordonnancements possibles qui donnent respectivement :
+
+- 1 puis 3 puis 5 : $T = 2 \cdot 1 + 1 \cdot 3 = 5$
+- 1 puis 5 puis 3 : $T = 2 \cdot 1 + 1 \cdot 5 = 7$
+- 3 puis 1 puis 5 : $T = 2 \cdot 3 + 1 \cdot 1 = 7$
+- 3 puis 5 puis 1 : $T = 2 \cdot 3 + 1 \cdot 5 = 11$
+- 5 puis 1 puis 3 : $T = 2 \cdot 5 + 1 \cdot 1 = 11$
+- 5 puis 3 puis 1 : $T = 2 \cdot 5 + 1 \cdot 3 = 13$
+
+{% enddetails %}
+
+L'exemple précédent a dû vous donner une idée de l'ordre associé au glouton :
+
+{% exercice  "**Ordre d'exécution des tâches**" %}
+Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal d'exécution des tâches pour minimiser la valeur moyenne des débuts de réalisations.
+{% endexercice %}
+{% details "corrigé" %}
+
+Minimiser la valeur moyenne des débuts de réalisation minimise $T/n$. Il suffit donc de minimiser $T$.
+
+L'ordre selon lequel il faut ordonner les tâches est par durée décroissante. S'il existait en effet $i < j$ tel que $p_{\sigma_i} > p_{\sigma_j}$ changer les deux tâches diminuerait strictement $T$ puisque $n-i > n-j$. Cet ordre donne directement l'algorithme glouton :
+
+```text
+On trie les tâches par durée croissante
+Pour chaque tâche dans cet ordre:
+    réaliser cette tache
+```
+
+{% enddetails %}
+
+On suppose maintenant que toutes les tâches ne sont pas immédiatement disponibles. Chaque tâche $i$ a maintenant une date $d_i$ à partir de laquelle elle peut être réalisée.
+
+{% exercice  "**Départs différés**" %}
+Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal minimisant la valeur moyenne des débuts de réalisations.
+{% endexercice %}
+{% details "corrigé" %}
+
+Le même raisonnement que précédemment montre que l'on peut ordonner les tâches par $d_i + p_i$ croissants.
+
+{% enddetails %}
+
+On suppose maintenant que l'ouvrier peut mettre en pause la réalisation d'une tâche puis la reprendre ultérieurement. Par exemple il peut commencer la tâche $i$ de temps de réalisation $p_i = 5$, la réaliser pendant 2 unités de temps, puis la mettre en pause pour réaliser la tâche $j$ puis, une fois la tâche $j$ terminée, reprendre la tâche $i$ et la finir en y passant les 3 unités de temps restantes.
+
+{% exercice  "**Tâches fragmentables**" %}
+Donnez (et prouvez) la méthode permettant de minimiser la moyenne des débuts de chaque tâche.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+On peut à chaque unité réaliser une unité de temps de la tâche qui se finit au plus tôt parmi les tâches que l'on peut réaliser. Ceci garantit que les tâches sont bien réalisées de la plus rapide à la plus lente.
+
+{% enddetails %}
+
+## Performances garanties : équilibre de charges
 
 On appelle **_équilibrage de charge_** (_load balancing_) le problème suivant :
 
@@ -637,8 +647,6 @@ On ne demande pas que le nombre de tables soit minimum.
 {% endattention %}
 
 On voit tout de suite l'importance crucial de problème... NP-difficile. Pour dernier exemple où l'algorithme glouton est une heuristique. Il n'est pas optimal et n'est pas à performance garantie. Mais en pratique ça va, il est utilisé intensivement pour créer des groupes projets, des équipages d'avions, dessiner des cartes de géographie, etc.
-
-#### Modélisation
 
 Un plan de table $P$ est une structure de données contenant :
 
