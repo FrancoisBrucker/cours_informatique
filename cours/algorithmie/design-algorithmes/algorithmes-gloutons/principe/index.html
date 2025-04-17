@@ -147,14 +147,10 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<ol>
-<li>Ce type d'algorithme est très utilisé pour :
+<p>Ce type d'algorithme est très utilisé pour :</p>
 <ol>
 <li>résoudre des problèmes ou la solution optimale peut être construite itérativement</li>
 <li>résoudre approximativement des problèmes où la rapidité de du calcul de la solution prime sur l'optimalité (souvent des problèmes NP-complets à optimiser).</li>
-</ol>
-</li>
-<li>D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">la structure de matroïde</a></li>
 </ol>
 </div></div>
 
@@ -284,24 +280,23 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Schéma de preuve de l'optimalité d'un algorithme glouton</strong></p>
+<p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
+<p>Prouver qu'un algorithme glouton est optimal va se faire <strong>tout le temps</strong> de la même façon : par échange.</p>
+<p>On va itérativement transformer une solution optimale initiale inconnue en notre sortie de l'algorithme glouton tout en gardant l'optimalité ce qui prouvera l'optimalité du glouton.</p>
+<p>Pour cela on va chercher à chaque étape à remplacer un fragment de la solution optimale par un fragment de la sorite du glouton ce qui rapprochera la solution optimale du glouton. Lorsqu'on ne pourra plus le faire la solution optimale sera égale à la sortie du glouton et on aura gagné.</p>
+</div></div>
+
+<p>Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">un matroïde</a>, dont la principale propriété est d'être stable par échange.</p>
+<h3>Schéma de preuve d'optimalité par construction</h3>
 <p>En reprenant le <a href="#sch%C3%A9ma-algo">schéma générique de l'algorithme glouton</a>, on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :</p>
 <ul>
 <li>si <code class="language-">S + [x_i]</code> était une solution possible alors <code class="language-">x_i</code> est aussi dans la solution optimale considérée</li>
 <li>si <code class="language-">S + [x_i]</code> n'était pas une solution possible alors <code class="language-">x_i</code> n'est pas dans la solution optimale considérée</li>
 </ul>
 <p>Ce qui prouvera l'optimalité de notre algorithme glouton.</p>
-</div></div>
-
+<h3>Schéma de preuve d'optimalité par l'absurde</h3>
 <p>Le schéma de preuve précédent, direct, est souvent utilisé par l'absurde :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p>schéma de preuve d'optimalité par l'absurde</p>
-</div><div class="pl-8 mr-8">
 <ol>
 <li>on suppose que la solution donnée par l'algorithme glouton n'est pas optimale</li>
 <li>pour toute solution optimale il existe donc une étape $i$ où le glouton a :
@@ -318,10 +313,8 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 </li>
 <li>On prouve que l'on peut construire une autre solution optimale qui coïncide avec le glouton jusqu'à l'étape $i$ ce qui invalide l'hypothèse de non optimalité du glouton.</li>
 </ol>
-</div></div>
-
-<p>Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :</p>
 <h3>Problème du recouvrement de nombres réels</h3>
+<p>Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour résoudre trois problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -354,12 +347,13 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recouvrement</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token builtin">réel</span><span class="token punctuation">,</span> <span class="token builtin">réel</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     trie T par ordre croissant<span class="token punctuation">.</span>
    <span class="token number"> I </span><span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    c <span class="token operator">←</span> ∅
-
+    courant <span class="token operator">←</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+    ajoute courant à<span class="token number"> I
+</span>
     <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> x ∉ c<span class="token punctuation">:</span>
-            c <span class="token operator">←</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
-            ajoute c à<span class="token number"> I
+        <span class="token keyword">si</span> x ∉ courant<span class="token punctuation">:</span>
+            courant <span class="token operator">←</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>
+            ajoute courant à<span class="token number"> I
 </span>    
     <span class="token keyword">rendre</span><span class="token number"> I
 </span></code></pre>
@@ -633,7 +627,7 @@ $$
 <p>Et donc :</p>
 <div>
 $$
-\sum_i T[i] = \sum_{i}\sum_{x \in B[i]}x \geq \sum_{i< m-1}\sum_{x \in B[i]}x \geq  K \cdot \lfloor \frac{m}{2} \rfloor
+\sum_i T[i] = \sum_{i}\sum_{x \in B[i]}x \geq \sum_{i< m-1}\sum_{x \in B[i]}x \geq  K \cdot \frac{m-1}{2} = K \cdot \lfloor \frac{m}{2} \rfloor
 $$
 </div>
 </div>
@@ -717,9 +711,303 @@ $$
 </div></div>
 
 <h2>Heuristique gloutonne</h2>
+<p>Souvent, même si la solution donné par un algorithme glouton pour résoudre un problème n'est ni optimale (parce que le problème à résoudre est NP-difficile) ni à performance garantie on peut l'utiliser pur trouver une solution approchée acceptable en l'utilisant comme <a href="https://fr.wikipedia.org/wiki/Heuristique">une heuristique</a>.</p>
+<h3>Méthode de design d'un algorithme glouton comme heuristique</h3>
+<ol>
+<li>créer un glouton pour résoudre le problème</li>
+<li>rendre l'ordonnancement aléatoire</li>
+<li>exécuter plusieurs fois l'algorithme et prendre le meilleur résultat</li>
+</ol>
+<p>On voit que pour que cela fonctionne il faut :</p>
+<ul>
+<li>pouvoir exécuter plusieurs fois notre algorithme : il faut donc qu'il soit le plus simple possible pour qu'il ait une complexité faible (cherche à être linéaire)</li>
+<li>il faut pouvoir garder la meilleur solution : on doit pouvoir ordonner les solution pour prendre la meilleure (ce qui est le cas pour un problème d'optimisation)</li>
+<li>il faut que les bonnes solutions ne soient pas rares sinon l'aléatoire n'aidera pas à trouver une bonne solution (il est parfois nécessaire de faire un prétraitement sur les entrées)</li>
+</ul>
+<h3>Problème de la chaîne de montage</h3>
+<p>Pour illustrer l'utilisation d'algorithmes gloutons pour la résolution heuristique, on va considérer <a href="https://www.csplib.org/Problems/prob001/">le problème de la chaîne de montage</a>.</p>
+<p>Pour créer une voiture on la déplace sur une chaîne de montage pour qu'elle puisse passer par chaque atelier. La figure suivante montre le schéma :</p>
+<p><img src="chaine-montage.png" alt="chaîne de montage"></p>
+<p>Les différentes voitures en court de construction ($v_1$, $v_2$ et $v_3$) se déplace d'une case sur la chaîne à chaque unité de temps pour passer d'un atelier à l'autre ($v_1$ est dans l'atelier 3 et $v_3$ arrivera à l'atelier 1 à l'unité de temps suivante). Le temps mis par un atelier est égal à sa longueur sur la chaîne (atelier 1 dure 4 unité de temps et l'atelier 4 une seule).</p>
+<p>Les contraintes sont les suivantes :</p>
+<ul>
+<li>il y a une voiture sur chaque tronçon de la chaîne de montage et elles avancent d'un tronçon à chaque unité de temps</li>
+<li>un atelier ajoute une <em>option</em> à la voiture (vitre teintée, radar de recul, lance missile, ...) et chaque voiture a son propre jeu d'option</li>
+<li>ajouter une option à une voiture nécessite un ouvrier spécialité qui va travailler le temps que la voiture est sur l'atelier. Il y a moins d'ouvrier que de temps.</li>
+</ul>
+<p>Ainsi s'il y 2 ouvriers dans l'atelier 1 : il ne peut y avoir que 2 voitures ayant l'option 1 sur 4 voitures consécutives sur la chaîne de montage, sinon il faudra stopper la chaîne le temps qu'un ouvrier finisse son travail pour être à nouveau disponible. Par exemple s'il n'y a qu'un ouvrier dans l'atelier 3, et que les voitures $v_2$ et $v_1$ ont l'option 3, il y aura un problème à l'unité de temps suivante : $v_2$ rentrera dans l'atelier 3 alors que l'ouvrier travaille encore sur la voiture $v_3$. Il faudra arrêter la chaîne de montage pendant 1 unité de temps le temps que l'ouvrier finisse de travailler sur $v_3$.</p>
+<p>Le problème à résoudre est donc trouver un ordre de construction des voitures de telle sorte qu'il y ait toujours assez d'ouvriers par atelier, ou au pire de minimiser les retards. C'est dire formellement :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : montage</li>
+<li><strong>données</strong> :
+<ul>
+<li>un tableau $V$ de $n$ voitures</li>
+<li>chaque voiture $v = V[i]$ est une liste de $m$ 0 ou 1 ($v[j] = 1$ si $v$ possède l'option $j$)</li>
+<li>un liste $O$ de $m$ ouvriers ($O[j]$ est le nombre d'ouvriers de l'atelier $j$)</li>
+<li>un liste $T$ de $m$ temps ($T[j]$ est le temps mis par l'atelier $j$)</li>
+</ul>
+</li>
+<li><strong>résultat</strong> : un ordonnancement de $V$ minimisant : $\sum_{0\leq j &lt; m}\sum_{0\leq i &lt; n-T[j]}\max(0, \sum_{i \leq k &lt; i + T[j]}V[k][j] - O[j])$ (le déficit d'ouvriers pour tous les ateliers et pour la fabrication des $n$ voitures)</li>
+</ul>
+</div></div>
+
+<p>Prenons l'exemple donné dans <a href="https://www.csplib.org/Problems/prob001/">la description du problème de la chaîne de montage</a>. La chaîne de montage est de ce type :</p>
+<p><img src="chaine-montage-exemple.png" alt="chaîne de montage exemple"></p>
+<p>Et on veut construire 10 voitures :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Si on prend cet ordre de construction :</p>
+<ul>
+<li>l'atelier 0 qui a une longueur de 2 et 1 ouvrier accumulera un retard de 1 aux temps 6, 7 et 8</li>
+<li>l'atelier 1 qui a une longueur de 3 et 2 ouvriers accumulera un retard de 1 aux temps 2 et 3</li>
+<li>l'atelier 2 qui a une longueur de 3 et 1 ouvrier accumulera un retard de 1 aux temps 5 et 6</li>
+<li>l'atelier 3 qui a une longueur de 4 et 2 ouvrier n'accumulera pas de retard</li>
+<li>l'atelier 4 qui a une longueur de 4 et 1 ouvrier accumulera un retard de 1 aux temps 0, 1 et 2</li>
+</ul>
+<p>Le retard total sera donc de 10 unités de temps.</p>
+<p>Il existe un ordre de passage sans retard pour cet exemple :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h3>Algorithme glouton</h3>
+<p>Pour la résolution gloutonne et heuristique d'un problème NP-difficile, on a coutume de créer l'ordre au fur et à mesure du déroulement de l'algorithme. L'algorithme reste glouton car une fois choisi on ne revient pas sur le choix.</p>
+<p>L'idée de l'algorithme (les détails de l'écriture du pseudo-code sont laissés au lecteur) est alors la suivante :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">ordonnancement</span><span class="token punctuation">(</span>V<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> O<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    V' <span class="token operator">←</span> une nouvelle liste de <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">    <span class="token comment"># initialisation</span></span>
+<span class="highlight-line">   <span class="token number"> i0 </span><span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    ajouter V<span class="token punctuation">[</span>i0<span class="token punctuation">]</span> à V'</span>
+<span class="highlight-line">    supprimer la ligne d'indice<span class="token number"> i0 </span>de V</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token comment">#  ajout itératif</span></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> V est non vide<span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token comment"># choix de la voiture à ajouter</span></span>
+<span class="highlight-line">        iv <span class="token operator">←</span> l'indice d'une voiture de V minimisant les retards <span class="token keyword">si</span> on l'ajoute à V'</span>
+<span class="highlight-line">        </span>
+<span class="highlight-line">        ajouter V<span class="token punctuation">[</span>iv<span class="token punctuation">]</span> à V'</span>
+<span class="highlight-line">        supprimer la ligne d'indice iv de V</span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> V'</span></code></pre>
 <blockquote>
-<p>TBD <a href="https://perso.liris.cnrs.fr/alain.mille/enseignements/master_ia/cours3.pdf">https://perso.liris.cnrs.fr/alain.mille/enseignements/master_ia/cours3.pdf</a>
-TBD ajouter du random pour refaire.</p>
+<p>TBD pseudo-code des méthodes annexes pour optimiser le code :</p>
+<ul>
+<li>algo init pour choisir le 1er</li>
+<li>algo coût ajout qui compte que depuis le dernier</li>
+<li>algo supprime qui échange
+calcul complexité.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>TBD coder en python pour tester.</p>
+</blockquote>
+<h3>Glouton aléatoire</h3>
+<p>Si on laisse l'algorithme ainsi il va trouver une solution qu'on espère acceptable : son fonctionnement interne est bon. Comme sa complexité est faible, on peut le relancer plusieurs fois en modifiant les paramètres pour augmenter nos chances d'obtenir une meilleure solution.</p>
+<p>Ce qu'on peut améliorer :</p>
+<ol>
+<li>initiation : prendre une voiture au hasard plutôt que la première</li>
+<li>choix du prochain véhicule à ajouter : plusieurs choix s'offrent à nous :
+<ol>
+<li>hasard parmi tous les possibles : pas efficace</li>
+<li>hasard parmi ceux de coût d'ajout minimal : ne permet pas de sortir du chemin tracé</li>
+<li>choisir avec une probabilité d'autant plus élevé que le coût d'ajout est faible : permet de se laisser un moyen de changer radicalement de direction</li>
+</ol>
+</li>
+</ol>
+<p>Usuellement, on choisit le premier au hasard et la prochaine voiture avec une probabilité d'autant plus élevé que le coût d'ajout est faible.</p>
+<blockquote>
+<p>TBD test</p>
 </blockquote>
 
 
