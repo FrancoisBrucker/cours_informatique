@@ -126,21 +126,24 @@
 <p>Si l'étape 2, prouver qu'un programme s'arrête, fait partie des problèmes indécidable en général, il est souvent facile en pratique de montrer qu'un programme donné est un algorithme. En particulier les algorithmes qui résolvent des problèmes sont sensés s'arrêter et il sera (normalement) facile de le voir.</p>
 <p>En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de lui, est parfois plus délicate.</p>
 <h2>Types d'algorithme</h2>
-<p>Il y a essentiellement deux sortes d'algorithmes :</p>
+<p>Il y a deux sortes d'algorithmes :</p>
 <ul>
-<li>de façon itérative, c'est à dire en utilisant des boucles</li>
-<li>de façon récursive, c'est à dire sous la forme d'une fonction qui s'appelle elle même.</li>
+<li>les algorithmes itératifs, c'est à dire utilisant des boucles</li>
+<li>les algorithmes récursifs, c'est à dire écrit sous la forme d'une fonction qui s'appelle elle même.</li>
 </ul>
-<p>Tout problème algorithmique pourra toujours s'écrire sous une forme itérative ou récursive, bien que certains problèmes se résolvent mieux sous une forme qu'une autre.</p>
+<p>Tout problème algorithmique pourra toujours s'écrire sous une forme itérative ou récursive, bien que certains problèmes se résolvent mieux sous une forme que l'autre.</p>
 <p>Avant de définir formellement les deux approches commençons par deux remarques d'importance :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Adaptation d'un algorithme aux données :</p>
 <ol>
-<li>pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles,</li>
-<li>pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions</li>
+<li>pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles (sinon il fera toujours la même chose),</li>
+<li>pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).</li>
 </ol>
 <p>La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.</p>
 </div></div>
@@ -155,16 +158,26 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><strong>Un algorithme récursif</strong> va gérer les 2 points d'adaptation aux données en modifiant ses paramètres d'entrée et en se rappelant lui-même. Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.</p>
+<p><strong>Un algorithme récursif</strong> va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une <strong><em>récursion</em></strong>) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une <strong><em>condition d'arrêt</em></strong>). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.</p>
 </div></div>
 
-<p>Pour le calcul de la factorielle, on va commencer par calculer $n!$ en supposant que $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$ :</p>
+<p>Pour le calcul de la factorielle, si $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$, on peut écrire l'équation de récurrence :</p>
+<div>
+$$
+n! = \begin{cases}
+1 \text{ si } n=1\\
+n \cdot (n-1)!
+\end{cases}
+$$
+</div>
+<p>Qui permet d'écrire l'algorithme récursif suivant :</p>
 <div id="fact-rec"></div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span>  <span class="token comment"># n > 1</span>
                       <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>  <span class="token comment"># condition d'arrêt</span>
         <span class="token keyword">rendre</span> <span class="token number">1</span>
-    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+    f <span class="token operator">←</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># récursion</span>
+    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> f</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -185,24 +198,26 @@ $$</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+    f <span class="token operator">=</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> n <span class="token operator">*</span>f</code></pre>
 </div>
 </details>     
 </div>
+<p>L'algorithme récursif suit directement l'équation de récurrence. Attention, il est nécessaire que la condition d'arrêt soit évaluée avant la récursion pour la stopper sin nécessaire.</p>
 <h3>Itératif</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><strong>Un algorithme itératif</strong> va gérer les 2 points d'adaptation aux données en modifiant des variables et en utilisant des boucles <code class="language-pseudocode">pour chaque</code> et <code class="language-">tant que</code>. Il va avoir tendance à aller du cas particulier vers le cas général en stockant les éléments intermédiaires dans des variables.</p>
+<p><strong>Un algorithme itératif</strong> va gérer les 2 points d'adaptation aux données en modifiant des variables locales et en utilisant des boucles <code class="language-pseudocode">pour chaque</code> et <code class="language-">tant que</code>. Il va avoir tendance à aller du cas particulier vers le cas général en stockant les éléments intermédiaires dans des variables.</p>
 </div></div>
 
-<p>Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $n! = ((n-1)!) \times n$ :</p>
+<p>Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $n! = ((n-1)!) \cdot n$ :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">←</span> <span class="token number">1</span>
+    r <span class="token operator">←</span> <span class="token number">1</span>  <span class="token comment"># initialisation</span>
    <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">1</span>
-    <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> n<span class="token punctuation">:</span>
+    <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> n<span class="token punctuation">:</span>  <span class="token comment"># condition d'arrêt</span>
         r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> i
 </span>       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
     <span class="token keyword">rendre</span> r</code></pre>
@@ -234,6 +249,7 @@ $$</p>
 </div>
 </details>     
 </div>
+<p>On voit que la forme d'un algorithme itératif est inversé par rapport à un algorithme récursif.</p>
 <h2>Preuve</h2>
 <p>Prouver qu'un programme résout un problème algorithmique nécessite deux vérifications :</p>
 <ul>
@@ -299,10 +315,12 @@ $$</p>
 <h3>Une relation de récurrence</h3>
 <h4><span id="facto-rec"></span> Algorithme récursif</h4>
 <p>Les preuves des algorithmes récursifs sont souvent les plus simples car ils sont souvent les plus proches de la définition récursive qu'ils implémentent. Reprenons une version (un peu modifiée) du programme du calcul de la factorielle récursif :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># n ≥ 1</span></span>
-<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+                      <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token number">1</span>
+    f <span class="token operator">←</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> f</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -333,19 +351,24 @@ $$</p>
 </details>     
 </div>
 <h5>Finitude de Factorielle récursif</h5>
-<p>Pour comprendre comment écrire la preuve de la finitude d'un algorithme récursif re-écrivons l'algorithme de cette façon, clairement équivalente :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
-<span class="highlight-line">    f <span class="token operator">←</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> f</span></code></pre>
 <p>L'idée est de démontrer la finitude par récurrence sur $n$.</p>
 <ol>
 <li><strong>initialisation</strong> de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursion.</li>
-<li><strong>hypothèse de récurrence</strong> : pour tout entier plus petit que $n\geq 1$, l'algorithme va avoir un nombre fini de récursions.</li>
-<li><strong>pour $n + 1$</strong> : <code class="language-">factorielle(n+1)</code> va exécuter la ligne 4 (<code class="language-">f ← factorielle(n-1)</code>) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme <code class="language-">factorielle(n+1)</code> va également se terminer.</li>
+<li><strong>hypothèse de récurrence</strong> : pour tout entier plus petit que $n-1\geq 1$, l'algorithme va avoir un nombre fini de récursions.</li>
+<li><strong>pour $n$</strong> : <code class="language-">factorielle(n)</code> va exécuter la ligne 4 (<code class="language-">f ← factorielle(n-1)</code>) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme <code class="language-">factorielle(n)</code> va également se terminer.</li>
 </ol>
-<p>La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter : tout appel récursif doit se rapprocher strictement d'un état de terminaison. Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :</p>
+<p>La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout appel récursif doit se rapprocher strictement d'un état de terminaison.</p>
+</div></div>
+
+<p>Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :</p>
 <p>Si $n\geq 1$ est un entier, l'algorithme va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.</p>
 <h5>Correction de Factorielle récursif</h5>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -355,14 +378,14 @@ $$</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Schéma de preuve des algorithmes récursifs :</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour les preuves d'algorithme récursif, le schéma de preuve est quasi-toujours le même : faire une preuve par récurrence.</p>
+<p>Pour les preuves d'algorithmes récursifs, le schéma de preuve est quasi-toujours le même : faire une preuve par récurrence.</p>
 </div></div>
 
 <p>Par récurrence sur $n$, avec $n$ entier strictement positif.</p>
 <ol>
 <li><strong>initialisation</strong> : $n = 1$ <code class="language-">factorielle(1)</code> vaut bien bien $1 = 1!$.</li>
-<li><strong>hypothèse de récurrence</strong> : pour tout entier plus petit que $n\geq 1$ on a <code class="language-">factorielle(n) = n!</code></li>
-<li><strong>pour $n + 1$</strong> : le retour de <code class="language-">factorielle(n + 1)</code> est <code class="language-">(n + 1) * factorielle(n)</code> qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.</li>
+<li><strong>hypothèse de récurrence</strong> : pour tout entier plus petit que $n-1\geq 1$ on a <code class="language-">factorielle(n-1) = (n-1)!</code></li>
+<li><strong>pour $n$</strong> : le retour de <code class="language-">factorielle(n)</code> est <code class="language-">(n) * factorielle(n-1)</code> qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.</li>
 </ol>
 <h4><span id="facto-iter"></span> Algorithme itératif</h4>
 <p>Considérons l'algorithme itératif suivant :</p>
@@ -377,25 +400,24 @@ $$</p>
 <p>Comme $i$ va croître strictement, la condition <code class="language-">i ≤ n</code> sera fausse à un moment donné ce qui la fera sortir de la boucle et stopper le programme.</p>
 <h5>Correction</h5>
 <p>Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se récrire de cette façon :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> factorielle'<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">←</span> <span class="token number">1</span>
-   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">1</span>
-    <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> factorielle'<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    r <span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
         r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> i
 </span>       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
-    
+<span class="highlight-line">    </span>
     r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> i
 </span>   <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
-
-    <span class="token keyword">rendre</span> r</code></pre>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> r</span></code></pre>
 <p>Qui est aussi équivalent à :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> factorielle''<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">←</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    r <span class="token operator">←</span> factorielle''<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
     r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> n
 </span>
     <span class="token keyword">rendre</span> r</code></pre>
-<p>De là, il est clair que si <code class="language-">factorielle(n-1) = (n-1)!</code>, alors <code class="language-">factorielle(n) = factorielle''(n) = n!</code>.</p>
-<p>On est ramené au cas précédent de la preuve par récurrence de l'algorithme récursif.</p>
+<p>La boucle se comporte comme l'algorithme récursif précédent. On est ramené au cas précédent pour en prouver sa correction.</p>
 <h3>Preuve par invariant</h3>
 <p>Lorsque l'on ne peut pas clairement et rapidement faire une preuve par récurrence, on peut chercher un invariant à la boucle : quelque chose qui est conservé à chaque itération. Cette technique de preuve n'est pas très éloignée des preuves par récurrences, elle est juste plus générale et (de l'avis des informaticiens) plus élégante.</p>
 <p>Refaisons la preuve précédente en utilisant un invariant de boucle pour montrer comment tout ceci peut se faire :</p>
@@ -609,7 +631,7 @@ $$</p>
 <li>prouver la correction de l'algorithme</li>
 </ol>
 <p>Ce qu'il faut retenir c'est que trouver l'invariant est <strong>à la fin du processus de création de la preuve</strong>.</p>
-<h3><span id="max-iter"></span> Maximum d'un tableau</h3>
+<h3><span id="algorithme-max-iter"></span> Maximum d'un tableau</h3>
 <p>On considère l'algorithme itératif suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     m <span class="token operator">←</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
@@ -703,16 +725,7 @@ $$</p>
 <p>Cette partie là est facile si on a le bon invariant. Il suffit de regarder la valeur de l'invariant à la fin de la boucle. Dans notre cas $m$ vaut le maximum de tous les éléments du tableau tableau, c'est le maximum.</p>
 <h2>À vous</h2>
 <h3>Nombre dans un tableau</h3>
-<p>Commençons par une mise au point :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On a pas toujours besoin d'un invariant de boucle si une récurrence immédiate fonctionne !</p>
-</div></div>
-
-<p>Pour faire ceci de façon propre, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.</p>
+<p>Pour faire ceci sans invariant de boucle, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -759,8 +772,9 @@ $$</p>
     <span class="token keyword">si</span> a <span class="token operator">==</span> b<span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> a
     <span class="token keyword">si</span> a <span class="token operator">&lt;</span> b<span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> PGCD<span class="token punctuation">(</span>b<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
-    <span class="token keyword">rendre</span> PGCD<span class="token punctuation">(</span>a<span class="token operator">-</span>b<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+        <span class="token keyword">rendre</span> PGCD<span class="token punctuation">(</span>b<span class="token operator">-</span>a<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token keyword">sinon</span>
+        <span class="token keyword">rendre</span> PGCD<span class="token punctuation">(</span>a<span class="token operator">-</span>b<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -785,9 +799,14 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<ul>
+<li>
+<p>terminaison : La condition de terminaison est <code class="language-">a == b</code>. Si <code class="language-">a \leq b</code>, chaque itération va diminuer strictement la quantité $\vert\, a = b \,\vert$ et donc se rapprocher strictement de la condition d'arrêt : notre programme s'arrête pour toute entrée.</p>
+</li>
+<li>
+<p>correction : si <code class="language-">a == b</code>, son PGCD est bien a (ou b) et sinon on respecte <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide" class="interne">la définition d'Euclide du PGCD</a>.</p>
+</li>
+</ul>
 </div>
 </details>     
 </div>

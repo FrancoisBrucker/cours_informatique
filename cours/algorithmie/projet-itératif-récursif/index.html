@@ -97,9 +97,11 @@
   
 
   <blockquote>
-<p>TBD les 8 reines en récursif et itératif, puis généralisation aux autres pièces d'échec et aux reines avec ds échiquiers plus grands et en dimensions plus élevées <a href="https://interstices.info/le-probleme-des-8-reines-et-au-dela/">https://interstices.info/le-probleme-des-8-reines-et-au-dela/</a></p>
+<p>TBD que les simples
+TBD mettre les classiques dans la partie classique.
+TBD decurrification à mettre plus tard. Lorsque l'on parle des listes par exemple. Et on décurrifie Ackerman avant comme exemple.
+Écrire des algorithmes (simples) en pseudo-code pour résoudre des problèmes algorithmiques.</p>
 </blockquote>
-<p>Écrire des algorithmes (simples) en pseudo-code pour résoudre des problèmes algorithmiques.</p>
 <h2>Maximum d'un tableau</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -218,6 +220,9 @@
 </div></div>
 
 <h2><span id="égalité-tableaux"></span>Égalité de tableaux</h2>
+<blockquote>
+<p>TBD commencer par dire même valeurs, puis même nombre (=permutation)</p>
+</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -780,144 +785,6 @@ $$
 </div>
 </details>     
 </div>
-<h2><span id="fibonacci"></span>Fibonacci</h2>
-<p><a href="https://fr.wikipedia.org/wiki/Suite_de_Fibonacci">La suite de Fibonacci</a>, bien connue, se définie ainsi pour tout $n&gt;0$ :</p>
-<div>
-$$
-F_n = \left\{
-    \begin{array}{ll}
-        1 & \mbox{si } n \leq 2 \\
-        F_{n-1} + F_{n-2}& \mbox{sinon.}
-    \end{array}
-\right.
-$$
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Utilisez la définition précédente pour créer un algorithme récursif calculant $F_n$ de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">fibonacci_rec<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">2</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></span></code></pre>
-<p>Il faut démontrer que ce programme est bien un algorithme car il y a plusieurs récursions !</p>
-<p>Ceci se fait facilement par une récurrence sur $n$ car chaque appel se rapproche strictement de la condition d'arrêt.</p>
-<ol>
-<li>initialisation : $\mbox{fibonacci\_rec}(n)$ admet un nombre fini de récursion pour $n\leq 2$.</li>
-<li>hypothèse de récurrence : $\mbox{fibonacci\_rec}(m)$ admet un nombre fini de récursion pour $m\leq n$.</li>
-<li>Pour $n + 1$, $\mbox{fibonacci\_rec}(n)$ et $\mbox{fibonacci\_rec}(n-1)$ se terminent en un nombre fini de récursion donc la ligne 4 de l'algorithme aura aussi un nombre fini de récursion.</li>
-</ol>
-<p>Une fois la finitude démontrée la correction est évidente, comme souvent avec les algorithmes récursif, puisque l'algorithme ne fait que transcrire l'équation de récursion.</p>
-</div>
-</details>     
-</div>
-<p>La preuve de l'exercice précédent donne une règle générale de preuve de finitude d'un programme récursif :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si tous les appels récursifs d'un programme se <em>rapprochent strictement</em> de la condition d'arrêt, alors le nombre de récursion est fini.</p>
-<p>La condition de rapprochement va dépendre des paramètres et du programme et doit être explicitée.</p>
-</div></div>
-
-<p>L'algorithme précédent n'est pas sous la forme de récursion terminale. On peut le rentre terminal en utilisant 2 accumulateurs :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Modifiez l'algorithme récursif précédent pour qu'il devienne une récursion terminale grace à l'utilisation de deux accumulateurs. Cet algorithme sera de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">fibo<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> u_i<span class="token punctuation">,</span> u_i_moins_un<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
-<p>Quels seraient les paramètres pour calculer $F_n$ ?</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> u_i<span class="token punctuation">,</span> u_i_moins_un<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> u_i
-    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> fibo<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> u_i <span class="token operator">+</span> u_i_moins_un<span class="token punctuation">,</span> u_i<span class="token punctuation">)</span></code></pre>
-<p>Pour calculer $F_n$ :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">fibo<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
-</div>
-</details>     
-</div>
-<p>Maintenant que la récursion est terminale il est facile de transformer notre algorithme récursif en un algorithme itératif :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Modifiez l'algorithme récursif précédent pour qu'il devienne itératif. Sa signature doit être :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">fibo<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    u_i <span class="token operator">←</span> <span class="token number">1</span>
-    u_i_moins_un <span class="token operator">←</span> <span class="token number">0</span>
-
-    <span class="token keyword">tant que</span><span class="token number"> n </span><span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
-        temp <span class="token operator">←</span> u_i 
-        u_i <span class="token operator">←</span> u_i <span class="token operator">+</span> u_i_moins_un
-        u_i_moins_un <span class="token operator">←</span> u_i
-    
-    <span class="token keyword">rendre</span> u_i</code></pre>
-<p>N'oubliez pas le stockage temporaire de <code class="language-">u_i</code> dans la variable <code class="language-">temp</code>.</p>
-</div>
-</details>     
-</div>
 <h2>Fonction 91 de McCarty</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1202,137 +1069,6 @@ $$
 <li>chaque appel se rapproche strictement de la condition d'arrêt</li>
 </ol>
 <p>La correction est évidente par définition de la parité.</p>
-</div>
-</details>     
-</div>
-<h2><span id="triangle-pascal"></span>Triangle de Pascal</h2>
-<p>Formule du coefficient binomial dit du <a href="https://fr.wikipedia.org/wiki/Triangle_de_Pascal">triangle de Pascal</a>, avec $1\leq k \leq n$ :</p>
-<div>
-$$
-\binom{n}{k} = \binom{n-1}{k-1} \mathrel{+} \binom{n-1}{k}
-$$
-</div>
-<p>et :</p>
-<div>
-$$
-\binom{n}{0} = \binom{n}{n} = 1
-$$
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Après avoir examiné les conditions d'arrêt, donner un algorithme récursif permettant de calculer le coefficient binomial.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :</p>
-<ul>
-<li>soit $k = 0$ et $\binom{n}{0} = 1$</li>
-<li>soit $k = n$ et $\binom{n}{n} = 1$</li>
-</ul>
-<p>On a alors le code :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> k<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> <span class="token number">1</span>
-    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> binom_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> binom_rec<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span></code></pre>
-<p>Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de la condition d'arrêt, le programme s'arrête à chaque fois : c'est un algorithme.</p>
-</div>
-</details>     
-</div>
-<p>Pas de récursion terminale garantie si double récursion. Mais on peut tout de même ici en donner une version itérative. Avant de résoudre l'exercice suivant, regardez comment vous faisiez au lycée en remplissant petit à petit chaque ligne d'une matrice. La ligne $n$ correspond aux coefficients
-$\binom{n}{k}$ pour tout $0\leq k \leq n$, et vous la remplissiez en utilisant les lignes précédentes avec l'équation. Mais si, rappelez-vous :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=6JGrHD5nAoc">Calculer un coefficient binomial : triangle de Pascal - Terminale</a></p>
-</div></div>
-
-<p>Pour ces algorithme on utilisera <a href="../pseudo-code/#type-matrice" class="interne">le type matrice</a> défini lorsque l'on a parlé de pseudo-code. Une matrice $M$ est un tableau de (tableaux d'entiers)de telle sorte que :</p>
-<ul>
-<li>$M$ est de type <code class="language-">[[entier]]</code></li>
-<li>$M[i]$ est la (i+1) ème ligne de la matrice</li>
-<li>$M[i][j]$ est le (j+1) ème élément de la (i+1) ème ligne de la matrice.</li>
-</ul>
-<p>Le code suivant crée une matrice triangulaire inférieure à $n$ lignes valant 1 à toutes les cases du tableau :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> crée_matrice<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-matrice <span class="token operator">←</span> un tableau de <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span> de taille<span class="token number"> n
-</span>
-<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    ligne <span class="token operator">←</span> un tableau d'entiers de taille<span class="token number"> i
-</span>
-    matrice<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> ligne
-    <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">:</span>
-        ligne<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span> </code></pre>
-<p>Utiliser le code précédent pour résoudre l'exercice suivant :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>En créant itérativement la matrice triangulaire inférieure, donner une version itérative de l'algorithme calculant le triangle de Pascal. Sa signature devra être :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom_matrice</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></code></pre>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Première version qui calcule toute la matrice triangulaire inférieure :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">binom_matrice</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    matrice <span class="token operator">←</span> un tableau de <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span> de taille n<span class="token operator">+</span><span class="token number">1</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        ligne <span class="token operator">←</span> un tableau d'entiers de taille i<span class="token operator">+</span><span class="token number">1</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">        matrice<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> ligne</span>
-<span class="highlight-line">        <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            <span class="token keyword">si</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">                ligne<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
-<span class="highlight-line">            <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">                précédent <span class="token operator">←</span> matrice<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">                ligne<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> précédent<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> précédent<span class="token punctuation">[</span>j<span class="token punctuation">]</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> matrice</span></code></pre>
-<p>Il y a deux boucles imbriquées, donc deux invariants à trouver !</p>
-<p>L'invariant de la boucle 4-13 peut être :</p>
-<blockquote>
-<p><strong>Invariant de la boucle 4-13</strong> : <code class="language-">matrice[i-1]</code> contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.</p>
-</blockquote>
-<p>Pour le prouver, il faut trouver un invariant à la boucle 8-13. Par exemple :</p>
-<blockquote>
-<p><strong>Invariant de la boucle 8-13</strong> : si <code class="language-">matrice[i-2]</code> contient la $i-1$ème ligne de la matrice triangulaire inférieure de Pascal, alors <code class="language-">ligne</code> contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.</p>
-</blockquote>
-<p>Ce dernier invariant est évidemment vrai par construction de la boucle (c'est la relation de récurrence). Une fois la boucle 8-13 prouvée, cela prouve l'invariant de la boucle 4-13.</p>
 </div>
 </details>     
 </div>

@@ -174,7 +174,7 @@
 <p><a href="pseudo-code" class="interne">Écrire les algorithmes en pseudo code</a></p>
 </div></div>
 
-<p>Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation">langage de programmation</a>.</p>
+<p>Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation">un langage de programmation</a>.</p>
 <p>Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -218,16 +218,53 @@
 
 <h3>Problème algorithmique et preuve</h3>
 <p>Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de &quot;<em>problème</em>&quot; à résoudre <em>via</em> un algorithme :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="probleme-algorithmique" class="interne">Problème algorithmique</a></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>problème</em></strong> est un texte composé de 3 parties :</p>
+<ul>
+<li><strong>nom</strong> : le nom du problème</li>
+<li><strong>données</strong> : les paramètres dont on a besoin</li>
+<li><strong>question</strong> : ce que l'on cherche</li>
+</ul>
 </div></div>
 
-<p>Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver.</p>
-<p>Considérons par exemple l'algorithme suivant :</p>
+<p>Par exemple :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : maximum</li>
+<li><strong>données</strong> : un tableau d'entiers</li>
+<li><strong>question</strong> : quel est l'entier maximum du tableau ?</li>
+</ul>
+</div></div>
+
+<p>Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple <a href="bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov" class="interne">la complexité de Kolmogorov</a>, <a href="https://www.youtube.com/watch?v=WtetsFQHD9A">&quot;quand est-ce qu'on mange ?&quot;</a> ou encore <a href="https://www.youtube.com/watch?v=LAwDWZoETk4">&quot;le sens de la vie ?&quot;</a>), on se restreindra ici aux problèmes algorithmiques :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong><em>Un problème est algorithmique</em></strong> s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :</p>
+<ul>
+<li>prend en paramètres les entrées du problème</li>
+<li>donne en sortie la réponse à la question.</li>
+</ul>
+</div></div>
+
+<p>Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver. Ceci est d'autant plus crucial puisqu'il n'existe <a href="bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice" class="interne">aucune méthode générale pour savoir ce que fait un algorithme</a> : chaque algorithme possède une preuve qui lui est propre.</p>
+<p>Mais rassurez-vous, cela peut être facile. Considérons par exemple l'algorithme suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">PGCD</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
     <span class="token keyword">tant que</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         a' <span class="token operator">←</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
@@ -235,9 +272,8 @@
         a<span class="token punctuation">,</span> b <span class="token operator">←</span> a'<span class="token punctuation">,</span> b'
     
     <span class="token keyword">rendre</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></code></pre>
-<p>Il calcule bien le PGCD de deux nombres positifs car chaque boucle <code class="language-">tant que</code> correspond exactement à une récursion de <a href="bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide" class="interne">la définition récurrente du PGCD que l'on a démontré précédemment</a>. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait.</p>
-<p>Ceci est d'autant plus crucial puisqu'il n'existe <a href="bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice" class="interne">aucune méthode générale pour savoir ce que fait un algorithme</a> : chaque algorithme possède une preuve qui lui est propre.
-Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :</p>
+<p>Il calcule bien le PGCD de deux nombres positifs car chaque boucle <code class="language-">tant que</code> correspond exactement à une récursion de <a href="bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide" class="interne">la définition récurrente du PGCD que l'on a démontré précédemment</a>. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.</p>
+<p>Enfin, si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -246,7 +282,7 @@ Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonct
 <p><a href="prouver-un-algorithme" class="interne">Prouver des algorithmes</a></p>
 </div></div>
 
-<h3><span id="entrainement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs</h3>
+<h3><span id="entraînement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs</h3>
 <p>Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -412,6 +448,10 @@ ajout/suppression :</p>
 <li>push/pop : O(1) si taille fixe, sinon O(1) en amorti</li>
 <li>recherche : via indice (avec le tableau sous-jacent) en O(1).</li>
 </ul>
+</blockquote>
+<h3>On s’entraîne : structures de données</h3>
+<blockquote>
+<p>TBD exo structures de données, pile et file, et récursions avec liste.</p>
 </blockquote>
 <h3>Complexité amortie</h3>
 <p>Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.</p>

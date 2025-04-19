@@ -316,6 +316,9 @@ ordre_stations<span class="token punctuation">.</span>sort<span class="token pun
 </details>     
 </div>
 <h3>Allocation de salles de cinéma</h3>
+<blockquote>
+<p>TBD rendre plus exercice. Écrire en pseudocode.</p>
+</blockquote>
 <p>Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :</p>
 <ul>
 <li>Quel est le nombre maximum de films qu'une personne peux voir en une journée ?</li>
@@ -665,6 +668,9 @@ $$
 </details>     
 </div>
 <h3>Ordonnancement de tâches unitaires</h3>
+<blockquote>
+<p>TBD rendre plus exercice. Écrire en pseudocode.</p>
+</blockquote>
 <p>Le problème suivant est résoluble par un algorithme glouton : on considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on n'a qu'un seul ouvrier.</p>
 <p>Il faut donc trouver un sous-ensemble de produits à créer parmi la liste de toutes les possibilités (exemple : la liste de toutes les dates de match de foot ou de concerts) <strong>et</strong> l'ordre dans lequel les produire. Il faut a priori optimiser deux paramètres alors que les algorithmes gloutons classiques ne sont fait que pour en optimiser un seul.</p>
 <p>Commençons par montrer que cet ordre est facile à trouver.</p>

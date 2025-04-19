@@ -163,11 +163,9 @@ Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
- 
     parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
-    Si on trouve un tel élément, rendre "Vrai".
-    Sinon rendre "Faux".
-</code></pre>
+    Si on trouve un tel élément, rendre "Vrai"
+    Sinon rendre "Faux"</code></pre>
 <p>En pseudo-code, cela va donner ça :</p>
 <div id="problème-recherche"></div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -259,7 +257,7 @@ Programme :
 <h4>Création</h4>
 <p>La création d'une matrice $M$ se fait ligne à ligne :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">creation_matrice</span><span class="token punctuation">(</span>nb_lignes<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> nb_colonnes<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    M <span class="token operator">←</span> un nouveau tableau de $n$ tableaux d'entiers
+    M <span class="token operator">←</span> un nouveau tableau de<span class="token number"> n </span>tableaux d'entiers
 
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> nb_lignes<span class="token punctuation">[</span><span class="token punctuation">:</span>
         L <span class="token operator">←</span> un nouveau tableau de nb_colonnes entiers
@@ -268,7 +266,7 @@ Programme :
 <p>La création et l'affectation initiale d'une matrice est linéaire en sa taille.</p>
 <p>Comme lors de la création de tableaux les valeurs sont indéterminées, on a coutume d'initialiser les valeurs de la matrice lors de sa création :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">creation_matrice</span><span class="token punctuation">(</span>nb_lignes<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> nb_colonnes<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    M <span class="token operator">←</span> un nouveau tableau de $l$ tableaux d'entiers
+    M <span class="token operator">←</span> un nouveau tableau de l tableaux d'entiers
 
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> nb_lignes<span class="token punctuation">[</span><span class="token punctuation">:</span>
         L <span class="token operator">←</span> un nouveau tableau de nb_colonnes entiers
@@ -279,17 +277,14 @@ Programme :
 <p>Le nombre d'opération élémentaires pour initialiser la matrice sera alors proportionnelle à sa taille, le nombre de lignes fois le nombre de colonnes.</p>
 <h4>Utilisation</h4>
 <p>Une fois la matrice créée, il est facile de lire et écrire un élément. Par exemple pour affecter puis afficher à l'écran l'élément de ligne $i$ et de colonne $j$ de la matrice $M$ :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-x <span class="token operator">←</span> un <span class="token builtin">entier</span> entré par l'utilisateur
-
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">←</span> un <span class="token builtin">entier</span> entré par l'utilisateur
 M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> x
-
 Affiche à l'écran M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span></code></pre>
 <p>Cette utilisation nous permettra d'étendre aux matrice les <em>abus</em> classique des tranches de tableaux. Ainsi <code>M[a:b][c:d]</code> correspondra à une sous matrice de $M$ allant des colonnes d'indice <code class="language-">c</code> à <code class="language-">d-1</code> pour les lignes allant de l'indice <code class="language-">a</code> à <code class="language-">b-1</code>.</p>
 <h4>Généralisation</h4>
 <p>Cette méthode se généralise aisément à des matrices de dimensions supérieures.</p>
 <p>Pour créer une matrice de dimension 3 (d1, d2 et d3) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">M3 <span class="token operator">←</span> un nouveau tableau de $n$ tableaux de tableaux
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">M3 <span class="token operator">←</span> un nouveau tableau de<span class="token number"> n </span>tableaux de tableaux
 
 <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> d1<span class="token punctuation">[</span><span class="token punctuation">:</span>
     M2 <span class="token operator">←</span> un nouveau tableau de d2 tableaux
@@ -298,11 +293,8 @@ Affiche à l'écran M<span class="token punctuation">[</span>i<span class="token
         L <span class="token operator">←</span> un nouveau tableau de d3 entiers
         M2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> L</code></pre>
 <p>Une fois la matrice créée, son utilisation est identique à une matrice en deux dimensions :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-x <span class="token operator">←</span> un <span class="token builtin">entier</span> entré par l'utilisateur
-
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">←</span> un <span class="token builtin">entier</span> entré par l'utilisateur
 M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">←</span> x
-
 Affiche à l'écran M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span></code></pre>
 <p>Son type sera un un tableau de tableaux de tableaux d'entiers :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">M<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
@@ -418,12 +410,13 @@ $$
 \end{array}
 $$
 </div>
-<p>On a que $c_1 - 1 = f(c_1, \dots, c_k) \div \prod_{1 &lt; j}d_j$ et on peut itérer le processus pour obtenir les autres composantes :</p>
+<p>On a que $c_1 - 1 = f(c_1, \dots, c_k) \div \prod_{1 &lt; j}d_j$ et on peut itérer le processus pour obtenir les autres composantes.</p>
+<p>En posant :</p>
 <ul>
 <li>$K_1 = f(c_1, \dots, c_k)$</li>
 <li>$K_{i+1} = K_i \mod \prod_{i &lt; j}d_j$</li>
-<li>$c_i = K_i \div \prod_{i &lt; j}d_j$</li>
 </ul>
+<p>On a $c_i = K_i \div \prod_{i &lt; j}d_j$</p>
 </div>
 </details>     
 </div>
