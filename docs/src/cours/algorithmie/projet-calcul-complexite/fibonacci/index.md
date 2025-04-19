@@ -26,7 +26,12 @@ Si $n > 2$ et $F(1) = F(2) = 1$
 
 Nous allons utiliser cette suite pour donner des techniques utiles pour l'étude d'algorithmes récursifs
 
-### Fibonacci récursif
+## Bornes
+
+> TBD faire encadrement exponentiel de la valeur de Fibonacci.
+> puis utiliser cette question pour la question d'après.
+
+## Fibonacci récursif
 
 ```pseudocode/
 algorithme fibonacci_rec(n: entier) → entier:
@@ -51,7 +56,7 @@ Cette partie vous donne le principe général lorsque l'on calcule des complexit
 La valeur d'[une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique) est à connaître. On en a souvent besoin en algorithmie.
 {% endinfo %}
 
-### Valeur de $F(n)$
+## Valeur de $F(n)$
 
 Montrez (par récurrence) que :
 
@@ -69,11 +74,11 @@ C'est hors programme, mais c'est la façon de résoudre [les suite linéaires r�
 
 En déduire que le nombre d'appels de la fonction récursive de la partie précédente vaut : $A(n) = \Theta(\varphi^n)$
 
-### Itératif
+## Itératif
 
 Donnez un algorithme itératif de complexité $\mathcal{O}(n)$ pour calculer $F(n)$
 
-### Récursif terminal
+## Récursif terminal
 
 L'algorithme récursif est sous optimal car il recalcule plein de fois la même chose. Pour calculer $F(n)$ il calcule deux fois $F(n-2)$, une fois dans la somme et une fois dans le calcul de $F(n-1)$.
 

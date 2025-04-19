@@ -45,7 +45,7 @@ On peut maintenant définir une grammaire permettant décrire des algorithmes so
 [Écrire les algorithmes en pseudo code](./pseudo-code){.interne}
 {% endaller %}
 
-Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
+Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant [un langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
 
 Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
 
@@ -76,13 +76,38 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 
 Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de "_problème_" à résoudre _via_ un algorithme :
 
-{% aller %}
-[Problème algorithmique](./probleme-algorithmique){.interne}
-{% endaller %}
+{% note "**Définition**" %}
+Un **_problème_** est un texte composé de 3 parties :
 
-Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver.
+- **nom** : le nom du problème
+- **données** : les paramètres dont on a besoin
+- **question** : ce que l'on cherche
 
-Considérons par exemple l'algorithme suivant :
+{% endnote %}
+
+Par exemple :
+
+{% note "**Problème**" %}
+
+- **nom** : maximum
+- **données** : un tableau d'entiers
+- **question** : quel est l'entier maximum du tableau ?
+
+{% endnote %}
+
+Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](./bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne}, ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=WtetsFQHD9A) ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4)), on se restreindra ici aux problèmes algorithmiques :
+
+{% note "**Définition**" %}
+**_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
+
+- prend en paramètres les entrées du problème
+- donne en sortie la réponse à la question.
+
+{% endnote %}
+
+Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver. Ceci est d'autant plus crucial puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} : chaque algorithme possède une preuve qui lui est propre.
+
+Mais rassurez-vous, cela peut être facile. Considérons par exemple l'algorithme suivant :
 
 ```pseudocode
 algorithme PGCD(a: entier, b: entier) → entier:  # a, b ≥ 0
@@ -94,16 +119,15 @@ algorithme PGCD(a: entier, b: entier) → entier:  # a, b ≥ 0
     rendre max(a, b)
 ```
 
-Il calcule bien le PGCD de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du PGCD que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait.
+Il calcule bien le PGCD de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du PGCD que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
 
-Ceci est d'autant plus crucial puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](bases-théoriques/arrêt-rice/#théorème-rice){.interne} : chaque algorithme possède une preuve qui lui est propre.
-Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :
+Enfin, si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :
 
 {% aller %}
 [Prouver des algorithmes](./prouver-un-algorithme){.interne}
 {% endaller %}
 
-### <span id="entrainement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs
+### <span id="entraînement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs
 
 Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
 
@@ -228,6 +252,10 @@ Une autre structure fondamentale en algorithmie :
 >
 > - push/pop : O(1) si taille fixe, sinon O(1) en amorti
 > - recherche : via indice (avec le tableau sous-jacent) en O(1).
+
+### On s’entraîne : structures de données
+
+> TBD exo structures de données, pile et file, et récursions avec liste.
 
 ### Complexité amortie
 

@@ -9,8 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD les 8 reines en récursif et itératif, puis généralisation aux autres pièces d'échec et aux reines avec ds échiquiers plus grands et en dimensions plus élevées <https://interstices.info/le-probleme-des-8-reines-et-au-dela/>
-
+> TBD que les simples
+> TBD mettre les classiques dans la partie classique.
+> TBD decurrification à mettre plus tard. Lorsque l'on parle des listes par exemple. Et on décurrifie Ackerman avant comme exemple.
 Écrire des algorithmes (simples) en pseudo-code pour résoudre des problèmes algorithmiques.
 
 ## Maximum d'un tableau
@@ -111,6 +112,8 @@ Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.
 {% endnote %}
 
 ## <span id="égalité-tableaux"></span>Égalité de tableaux
+
+> TBD commencer par dire même valeurs, puis même nombre (=permutation)
 
 {% exercice %}
 Écrivez un algorithme itératif permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
@@ -563,116 +566,6 @@ algorithme recherche(t: [entier], v: entier) → entier:
 
 {% enddetails %}
 
-## <span id="fibonacci"></span>Fibonacci
-
-[La suite de Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci), bien connue, se définie ainsi pour tout $n>0$ :
-
-<div>
-$$
-F_n = \left\{
-    \begin{array}{ll}
-        1 & \mbox{si } n \leq 2 \\
-        F_{n-1} + F_{n-2}& \mbox{sinon.}
-    \end{array}
-\right.
-$$
-</div>
-
-{% exercice %}
-Utilisez la définition précédente pour créer un algorithme récursif calculant $F_n$ de signature :
-
-```pseudocode
-fibonacci_rec(n: entier) → entier
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode/
-algorithme fibonacci_rec(n: entier) → entier:
-    si n ≤ 2:
-        rendre 1
-    rendre fibonacci_rec(n-1) + fibonacci_rec(n-2)
-```
-
-Il faut démontrer que ce programme est bien un algorithme car il y a plusieurs récursions !
-
-Ceci se fait facilement par une récurrence sur $n$ car chaque appel se rapproche strictement de la condition d'arrêt.
-
-1. initialisation : $\mbox{fibonacci\\_rec}(n)$ admet un nombre fini de récursion pour $n\leq 2$.
-2. hypothèse de récurrence : $\mbox{fibonacci\\_rec}(m)$ admet un nombre fini de récursion pour $m\leq n$.
-3. Pour $n + 1$, $\mbox{fibonacci\\_rec}(n)$ et $\mbox{fibonacci\\_rec}(n-1)$ se terminent en un nombre fini de récursion donc la ligne 4 de l'algorithme aura aussi un nombre fini de récursion.
-
-Une fois la finitude démontrée la correction est évidente, comme souvent avec les algorithmes récursif, puisque l'algorithme ne fait que transcrire l'équation de récursion.
-
-{% enddetails %}
-
-La preuve de l'exercice précédent donne une règle générale de preuve de finitude d'un programme récursif :
-
-{% note "**À retenir**" %}
-Si tous les appels récursifs d'un programme se _rapprochent strictement_ de la condition d'arrêt, alors le nombre de récursion est fini.
-
-La condition de rapprochement va dépendre des paramètres et du programme et doit être explicitée.
-{% endnote %}
-
-L'algorithme précédent n'est pas sous la forme de récursion terminale. On peut le rentre terminal en utilisant 2 accumulateurs :
-
-{% exercice %}
-Modifiez l'algorithme récursif précédent pour qu'il devienne une récursion terminale grace à l'utilisation de deux accumulateurs. Cet algorithme sera de signature :
-
-```pseudocode
-fibo(n: entier, u_i, u_i_moins_un) → entier
-```
-
-Quels seraient les paramètres pour calculer $F_n$ ?
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme fibo(n: entier, u_i, u_i_moins_un) → entier:
-    si n == 1:
-        rendre u_i
-    sinon:
-        rendre fibo(n-1, u_i + u_i_moins_un, u_i)
-```
-
-Pour calculer $F_n$ :
-
-```pseudocode
-fibo(n: entier, 1, 0)
-```
-
-{% enddetails %}
-
-Maintenant que la récursion est terminale il est facile de transformer notre algorithme récursif en un algorithme itératif :
-
-{% exercice %}
-Modifiez l'algorithme récursif précédent pour qu'il devienne itératif. Sa signature doit être :
-
-```pseudocode
-fibo(n: entier) → entier
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme fibo(n: entier) → entier:
-    u_i ← 1
-    u_i_moins_un ← 0
-
-    tant que n > 1:
-        temp ← u_i 
-        u_i ← u_i + u_i_moins_un
-        u_i_moins_un ← u_i
-    
-    rendre u_i
-```
-
-N'oubliez pas le stockage temporaire de `u_i`{.language-} dans la variable `temp`{.language-}.
-
-{% enddetails %}
-
 ## Fonction 91 de McCarty
 
 {% lien %}
@@ -860,121 +753,5 @@ La finitude est claire puisque :
 2. chaque appel se rapproche strictement de la condition d'arrêt
 
 La correction est évidente par définition de la parité.
-
-{% enddetails %}
-
-## <span id="triangle-pascal"></span>Triangle de Pascal
-
-Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
-
-<div>
-$$
-\binom{n}{k} = \binom{n-1}{k-1} \mathrel{+} \binom{n-1}{k}
-$$
-</div>
-
-et :
-
-<div>
-$$
-\binom{n}{0} = \binom{n}{n} = 1
-$$
-</div>
-
-{% exercice %}
-Après avoir examiné les conditions d'arrêt, donner un algorithme récursif permettant de calculer le coefficient binomial.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :
-
-- soit $k = 0$ et $\binom{n}{0} = 1$
-- soit $k = n$ et $\binom{n}{n} = 1$
-
-On a alors le code :
-
-```pseudocode
-algorithme binom_rec(n: entier, k: entier) → entier:
-    si (n == k) ou (k == 0):
-        rendre 1
-    sinon:
-        rendre binom_rec(n-1, k-1) + binom_rec(n - 1, k)
-```
-
-Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de la condition d'arrêt, le programme s'arrête à chaque fois : c'est un algorithme.
-
-{% enddetails %}
-
-Pas de récursion terminale garantie si double récursion. Mais on peut tout de même ici en donner une version itérative. Avant de résoudre l'exercice suivant, regardez comment vous faisiez au lycée en remplissant petit à petit chaque ligne d'une matrice. La ligne $n$ correspond aux coefficients
-$\binom{n}{k}$ pour tout $0\leq k \leq n$, et vous la remplissiez en utilisant les lignes précédentes avec l'équation. Mais si, rappelez-vous :
-
-{% lien %}
-[Calculer un coefficient binomial : triangle de Pascal - Terminale](https://www.youtube.com/watch?v=6JGrHD5nAoc)
-{% endlien %}
-
-Pour ces algorithme on utilisera [le type matrice](../pseudo-code/#type-matrice){.interne} défini lorsque l'on a parlé de pseudo-code. Une matrice $M$ est un tableau de (tableaux d'entiers)de telle sorte que :
-
-- $M$ est de type `[[entier]]`{.language-}
-- $M[i]$ est la (i+1) ème ligne de la matrice
-- $M[i][j]$ est le (j+1) ème élément de la (i+1) ème ligne de la matrice.
-
-Le code suivant crée une matrice triangulaire inférieure à $n$ lignes valant 1 à toutes les cases du tableau :
-
-```pseudocode
-algorithme crée_matrice(n: entier) → [[entier]]
-matrice ← un tableau de [entier] de taille n
-
-pour chaque i de [1, n]:
-    ligne ← un tableau d'entiers de taille i
-
-    matrice[i-1] ← ligne
-    pour chaque j de [1, i]:
-        ligne[j-1] ← 1 
-```
-
-Utiliser le code précédent pour résoudre l'exercice suivant :
-
-{% exercice %}
-En créant itérativement la matrice triangulaire inférieure, donner une version itérative de l'algorithme calculant le triangle de Pascal. Sa signature devra être :
-
-```pseudocode
-algorithme binom_matrice(n: entier) → [[entier]]:
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-Première version qui calcule toute la matrice triangulaire inférieure :
-
-```pseudocode/
-algorithme binom_matrice(n: entier) → [[entier]]:
-    matrice ← un tableau de [entier] de taille n+1
-
-    pour chaque i de [0, n]:
-        ligne ← un tableau d'entiers de taille i+1
-
-        matrice[i] ← ligne
-        pour chaque j de [0, i]:
-            si (j == i) ou (j == 0):
-                ligne[j] ← 1
-            sinon:
-                précédent ← matrice[i-1]
-                ligne[j] ← précédent[j-1] + précédent[j]
-
-    rendre matrice
-```
-
-Il y a deux boucles imbriquées, donc deux invariants à trouver !
-
-L'invariant de la boucle 4-13 peut être :
-
-> **Invariant de la boucle 4-13** : `matrice[i-1]`{.language-} contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.
-
-Pour le prouver, il faut trouver un invariant à la boucle 8-13. Par exemple :
-
-> **Invariant de la boucle 8-13** : si `matrice[i-2]`{.language-} contient la $i-1$ème ligne de la matrice triangulaire inférieure de Pascal, alors `ligne`{.language-} contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.
-
-Ce dernier invariant est évidemment vrai par construction de la boucle (c'est la relation de récurrence). Une fois la boucle 8-13 prouvée, cela prouve l'invariant de la boucle 4-13.
 
 {% enddetails %}

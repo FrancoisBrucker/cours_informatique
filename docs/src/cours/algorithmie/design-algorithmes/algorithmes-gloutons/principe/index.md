@@ -596,6 +596,8 @@ Pour la résolution gloutonne et heuristique d'un problème NP-difficile, on a c
 
 L'idée de l'algorithme (les détails de l'écriture du pseudo-code sont laissés au lecteur) est alors la suivante :
 
+> TBD refaire avec échange pour ne pas recréer de données.
+
 ```pseudocode/
 algorithme ordonnancement(V: [[entier]], O: [entier], T: [entier]) → [[entier]]:
     V' ← une nouvelle liste de [entier]

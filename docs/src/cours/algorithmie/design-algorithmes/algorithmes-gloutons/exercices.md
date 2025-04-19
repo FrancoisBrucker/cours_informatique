@@ -177,6 +177,8 @@ La preuve de l'optimalité vient du fait que l'essence mise à la station $i$ pe
 
 ### Allocation de salles de cinéma
 
+> TBD rendre plus exercice. Écrire en pseudocode.
+
 Un gérant de cinéma a en sa possession $m$ films caractérisés chacun par des couples ($d_i$, $f_i$) où $d_i$ est l'heure de début du film et $f_i$ l'heure de fin. Ces couples sont fixés et il ne peut pas les modifier. Il se pose 2 problèmes :
 
 - Quel est le nombre maximum de films qu'une personne peux voir en une journée ?
@@ -390,6 +392,8 @@ Si l'on range les éléments par taille de fin demandée croissante, on est alor
 {% enddetails %}
 
 ### Ordonnancement de tâches unitaires
+
+> TBD rendre plus exercice. Écrire en pseudocode.
 
 Le problème suivant est résoluble par un algorithme glouton : on considère $m$ produits de durée 1 à fabriquer. Si le produit $i$ est réalisée avant la date $d_i$ on peut le vendre pour un prix $p_i$, sinon il est invendable (exemple : de faux billets de match de foot ou de concerts par exemple). Proposez un algorithme permettant de maximiser les profits en considérant que l'on n'a qu'un seul ouvrier.
 

@@ -67,11 +67,9 @@ Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
- 
     parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
-    Si on trouve un tel élément, rendre "Vrai".
-    Sinon rendre "Faux".
-
+    Si on trouve un tel élément, rendre "Vrai"
+    Sinon rendre "Faux"
 ```
 
 En pseudo-code, cela va donner ça :
@@ -161,7 +159,7 @@ La création d'une matrice $M$ se fait ligne à ligne :
 
 ```pseudocode
 algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier) → [[entier]]:
-    M ← un nouveau tableau de $n$ tableaux d'entiers
+    M ← un nouveau tableau de n tableaux d'entiers
 
     pour chaque i de [0, nb_lignes[:
         L ← un nouveau tableau de nb_colonnes entiers
@@ -175,7 +173,7 @@ Comme lors de la création de tableaux les valeurs sont indéterminées, on a co
 
 ```pseudocode
 algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entier) → [[entier]]:
-    M ← un nouveau tableau de $l$ tableaux d'entiers
+    M ← un nouveau tableau de l tableaux d'entiers
 
     pour chaque i de [0, nb_lignes[:
         L ← un nouveau tableau de nb_colonnes entiers
@@ -192,11 +190,8 @@ Le nombre d'opération élémentaires pour initialiser la matrice sera alors pro
 Une fois la matrice créée, il est facile de lire et écrire un élément. Par exemple pour affecter puis afficher à l'écran l'élément de ligne $i$ et de colonne $j$ de la matrice $M$ :
 
 ```pseudocode
-
 x ← un entier entré par l'utilisateur
-
 M[i][j] ← x
-
 Affiche à l'écran M[i][j]
 ```
 
@@ -209,7 +204,7 @@ Cette méthode se généralise aisément à des matrices de dimensions supérieu
 Pour créer une matrice de dimension 3 (d1, d2 et d3) :
 
 ```pseudocode
-M3 ← un nouveau tableau de $n$ tableaux de tableaux
+M3 ← un nouveau tableau de n tableaux de tableaux
 
 pour chaque i de [0, d1[:
     M2 ← un nouveau tableau de d2 tableaux
@@ -222,11 +217,8 @@ pour chaque i de [0, d1[:
 Une fois la matrice créée, son utilisation est identique à une matrice en deux dimensions :
 
 ```pseudocode
-
 x ← un entier entré par l'utilisateur
-
 M[i][j][k] ← x
-
 Affiche à l'écran M[i][j][k]
 ```
 
@@ -304,11 +296,14 @@ $$
 $$
 </div>
 
-On a que $c_1 - 1 = f(c_1, \dots, c_k) \div \prod_{1 < j}d_j$ et on peut itérer le processus pour obtenir les autres composantes :
+On a que $c_1 - 1 = f(c_1, \dots, c_k) \div \prod_{1 < j}d_j$ et on peut itérer le processus pour obtenir les autres composantes.
+
+En posant :
 
 - $K_1 = f(c_1, \dots, c_k)$
 - $K_{i+1} = K_i \mod \prod_{i < j}d_j$
-- $c_i = K_i \div \prod_{i < j}d_j$
+
+On a $c_i = K_i \div \prod_{i < j}d_j$
 
 {% enddetails %}
 

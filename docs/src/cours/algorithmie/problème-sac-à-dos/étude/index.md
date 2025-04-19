@@ -210,19 +210,17 @@ La solution optimale d'un problème du sac à dos est inférieure à la solution
 La solution optimale du problème du sac à dos est une solution admissible au problème du sac à dos fractionnel, son optimum est donc nécessairement plus grand.
 {% enddetails %}
 
-## Vérifieur efficace
-
 Notez que le problème du sac à dos optimal est un problème d'optimisation : on cherche le sac à dos de prix **maximum**. En tant que tel, il est difficile de prouver qu'il est dans NP car comment vérifier si on a bien une solution maximale ?
 
 On peut cependant utiliser [le problème du sac à dos](../../problèmes-NP/#sac-à-dos){.interne} qui est dans NP pour trouver l'optimum en faisant de la dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P ou double le prix et sinon on diminue le prix par deux. On aura besoin de log itération pour trouver le maximum.
 
-{% note "À retenir" %}
-Les problèmes d'optimisation ne sont pas dans NP, mais leur version existentielle le sont.
+{% note "**À retenir**" %}
+Les problèmes d'optimisation ne sont pas dans NP, mais leurs versions existentielles le sont.
 
 On trouver alors l'optimum par dichotomie.
 {% endnote %}
 
-## Algorithme glouton
+## Algorithmes gloutons
 
 Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :
 
@@ -290,11 +288,7 @@ Si l'on prend $K+1$ produits :
 Le glouton privilégiera toujours le produit 1 alors que c'est le produit 2 à $K+1$ qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.
 {% enddetails %}
 
-Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu'il soit à performance garantie.
-
-## Algorithme à performance garantie
-
-Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la dernière étape, qui est la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :
+Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu'il soit à performance garantie. Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la dernière étape, qui est la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :
 
 - $\sum_{i < i^\star} k_i \leq K$
 - $\sum_{i < i^\star} k_i + k_{i^\star} > K$
@@ -325,7 +319,99 @@ $$
 
 {% enddetails %}
 
-## Solution par énumération
+## Solution par programmation dynamique
+
+{% note "**À retenir**" %}
+La technique de résolution du sac à dos par programmation dynamique est fondamentale. **Retetnez-là** car elle peut-être utilisée dans bon nombre de problèmes concrets !
+{% endnote %}
+
+Le problème du sac à dos admet une solution via la programmation dynamique simple et élégante. Soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :
+
+- soit la solution optimale contient le produit$x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$
+- soit la solution optimale ne contient pas le produit $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$
+
+La remarque ci-dessus permet de définir, tout comme pour [l'alignement de séquences](../../design-algorithmes/programmation-dynamique/alignement-séquences/étude/){.interne}, le terme général $M[i][j]$ d'une matrice à $n$ lignes et $K+1$ colonnes représentant $V([p_1, \dots, p_i], [k_1, \dots, k_i], j)$ :
+
+<div>
+$$
+M[i][j] = \max(M[i-1][j-k_i] + p_i, M[i-1][j])
+$$
+</div>
+
+Avec comme condition d'initialisation la première ligne :
+
+- $M[1][j] = 0$ si $j < k_1$
+- $M[1][j] = p_1$ si $j \geq k_1$
+
+{% exercice %}
+Reprenez l'exemple et donnez la matrice associée.
+
+On a un sac à dos de $K=20$ et 5 produits :
+
+- poudre 1 : 15kg et un prix de 135€
+- poudre 2 : 2kg et un prix de 30€
+- poudre 3 : 4kg et un prix de 32€
+- poudre 4 : 1kg et un prix de 6€
+- poudre 5 : 6kg et un prix de 18€
+
+{% endexercice %}
+{% details "corrigé" %}
+Il faut créer une matrice à 5 lignes et 21 colonnes :
+
+| 0     | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  | 18  | 19  | 20  |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **1** | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 135 | 135 | 135 | 135 | 135 | 135 |
+| **2** | 0   | 0   | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 135 | 135 | 165 | 165 | 165 | 165 |
+| **3** | 0   | 0   | 30  | 30  | 32  | 32  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 135 | 135 | 165 | 165 | 167 | 167 |
+| **4** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135 | 141 | 165 | 171 | 171 | 173 |
+| **5** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135 | 141 | 165 | 171 | 171 | 173 |
+
+Par exemple la case $M[3][16]$ représente le sac à dos de masse 16 pouvant contenir les produits 1, 2 et 3. Il vaut soit :
+
+- le maximum du sac $M[2][16]$, c'est à dire le sac maximum de masse 16 qui ne contient pas le produit 3
+- $M[2][16-2] + 30$ c'est à dire le sac à dos maximum qui contient le produit 3 et pour lequel il reste 16-2 place pour range les produits 1 et 2.
+
+{% enddetails %}
+
+Une fois la matrice complete, de la même manière que pour [l'alignement de séquences](../../design-algorithmes/programmation-dynamique/alignement-séquences/étude/){.interne}, on remonte la matrice pour trouver le sac à dos.
+
+{% exercice %}
+Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exercice précédent et déduisez en les produits à emporter dans le sac à dos.
+{% endexercice %}
+{% details "corrigé" %}
+
+On remonte depuis la dernière case en reprenant le chemin inverse pour la créer :
+
+1. $M[5][20] = \max(M[4][20 - 6] + 18, M[4][20]) = M[4][20]$ ($M[4][16] = 141$) : on ne prend pas la poudre 5
+2. $M[4][20] = \max(M[3][20 - 1] + 6, M[3][20]) = M[3][19] + 6$ ($M[3][20] = 167$) : on prend la poudre 4
+3. $M[3][19] = \max(M[2][19 - 4] + 32, M[2][19]) = M[2][15] + 32$ ($M[2][19] = 165$) : on prend la poudre 3
+4. $M[2][15] = \max(M[1][15 - 2] + 30, M[1][15]) = M[1][15] $ ($M[1][13] = 0$) : on ne prend pas la poudre 2
+5. $M[1][15] = 135$ : on prend la poudre 1
+
+| 0     | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16      | 17    | 18  | 19  | 20      |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ------- | ----- | --- | --- | ------- | ------- |
+| **1** | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | _0_ | 0   | **135** | 135   | 135 | 135 | 135     | 135     |
+| **2** | 0   | 0   | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | **135** | 135   | 165 | 165 | _165_   | 165     |
+| **3** | 0   | 0   | 30  | 30  | 32  | 32  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 135     | 135   | 165 | 165 | **167** | _167_   |
+| **4** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135     | _141_ | 165 | 171 | 171     | **173** |
+| **5** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135     | 141   | 165 | 171 | 171     | **173** |
+
+{%enddetails %}
+
+La complexité de cet algorithme est $\mathcal{O}(n\cdot K)$.
+
+{% attention %}
+La complexité de l'algorithme par programmation dynamique dépend de $n$ et de $K$. Comme $K$ peut être aussi grand qu'on veut la résolution peut être exponentielle par rapport aux nombre d'objet à à mettre dans le sac. Si $K = 2^n$ par exemple. la méthode par programmation dynamique prendra plus de temps que l'énumération de toutes les solutions possibles !
+{% endattention %}
+
+La remarque ci-dessus implique qu'on va avoir tendance à utiliser cette méthode pour des sac à dos donc la taille est petite (ou polynomiale) par rapport aux objets à y mettre. Dans le cas où l'on a de gros sac à dos et plein de petits objets, on pourra préférer la prochaine solution qui énumère toutes les solutions possibles.
+
+{% info %}
+Si on cherche à calculer la complexité par rapport à la taille des données, comme $K$ est stocké sur $\log_2(K)$ bits, l'algorithme de programmation dynamique peut être considéré comme exponentielle ! Comme c'est un cas limite et que souvent les valeurs entières sont bornées, on appelle [pseudo-polynomiale](https://fr.wikipedia.org/wiki/Temps_de_calcul_pseudo-polynomial) ce genre de complexité qui dépendent de **la valeurs d'entiers**.
+
+{% endinfo %}
+
+## Solutions par énumération
 
 Pour trouver la solution maximale à un problème d'optimisation, on peut toujours énumérer toutes les solutions. Dans le cas d'un sac à dos cela revient à énumérer tous les sous ensembles de l'ensemble des produits et de prendre celui qui maximise le sac à dos. Pour aider à l'énumération, formalisons le problème du sac à dos sous la forme d'un [problème d'optimisation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) :
 
@@ -417,9 +503,6 @@ Il y a $2^5 = 32$ possibilités et les seules possibilités admissibles maximale
 {% lien %}
 [Lien Wikipédia sur le _Branch and Bound_](https://fr.wikipedia.org/wiki/S%C3%A9paration_et_%C3%A9valuation)
 {% endlien %}
-
-> TBD en 1 on garde juste si c'est encore possible.
-> TBD en 2, on fait mieux en utilisant une fonction objectif.
 
 La méthode du **_Branch and Bound_** (ou **_Séparation et évaluation_** en Français) est une méthode générale permettant d'accélérer la recherche de l'optimum d'un problème d'optimisation par recherche exhaustive si l'on peut trouver facilement une borne supérieure à un sous-problème où certaines affectation (mais pas toutes) ont déjà été faites.
 
@@ -593,98 +676,6 @@ Enfin, on peut accélérer l'algorithme en prenant comme valeur de départ le r�
 
 {% note "**Conclusion**" %}
 L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et est en pratique extrêmement efficace.
-{% endnote %}
-
-## Solution par programmation dynamique
-
-Les sous problèmes associés au problème du sac à dos sont les même que pour le branch and bond ! En effet, soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :
-
-- soit la solution optimale contient le produit$x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$
-- soit la solution optimale ne contient pas le produit $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$
-
-La remarque ci-dessus permet de définir, tout comme pour [l'alignement de séquences](../../design-algorithmes/programmation-dynamique/alignement-séquences/étude/){.interne}, le terme général $M[i][j]$ d'une matrice à $n$ lignes et $K+1$ colonnes représentant $V([p_1, \dots, p_i], [k_1, \dots, k_i], j)$ :
-
-<div>
-$$
-M[i][j] = \max(M[i-1][j-k_i] + p_i, M[i-1][j])
-$$
-</div>
-
-Avec comme condition d'initialisation la première ligne :
-
-- $M[1][j] = 0$ si $j < k_1$
-- $M[1][j] = p_1$ si $j \geq k_1$
-
-{% exercice %}
-Reprenez l'exemple et donnez la matrice associée.
-
-On a un sac à dos de $K=20$ et 5 produits :
-
-- poudre 1 : 15kg et un prix de 135€
-- poudre 2 : 2kg et un prix de 30€
-- poudre 3 : 4kg et un prix de 32€
-- poudre 4 : 1kg et un prix de 6€
-- poudre 5 : 6kg et un prix de 18€
-
-{% endexercice %}
-{% details "corrigé" %}
-Il faut créer une matrice à 5 lignes et 21 colonnes :
-
-| 0     | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  | 18  | 19  | 20  |
-| ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **1** | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 135 | 135 | 135 | 135 | 135 | 135 |
-| **2** | 0   | 0   | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 135 | 135 | 165 | 165 | 165 | 165 |
-| **3** | 0   | 0   | 30  | 30  | 32  | 32  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 135 | 135 | 165 | 165 | 167 | 167 |
-| **4** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135 | 141 | 165 | 171 | 171 | 173 |
-| **5** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135 | 141 | 165 | 171 | 171 | 173 |
-
-Par exemple la case $M[3][16]$ représente le sac à dos de masse 16 pouvant contenir les produits 1, 2 et 3. Il vaut soit :
-
-- le maximum du sac $M[2][16]$, c'est à dire le sac maximum de masse 16 qui ne contient pas le produit 3
-- $M[2][16-2] + 30$ c'est à dire le sac à dos maximum qui contient le produit 3 et pour lequel il reste 16-2 place pour range les produits 1 et 2.
-
-{% enddetails %}
-
-Une fois la matrice complete, de la même manière que pour [l'alignement de séquences](../../design-algorithmes/programmation-dynamique/alignement-séquences/étude/){.interne}, on remonte la matrice pour trouver le sac à dos.
-
-{% exercice %}
-Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exercice précédent et déduisez en les produits à emporter dans le sac à dos.
-{% endexercice %}
-{% details "corrigé" %}
-
-On remonte depuis la dernière case en reprenant le chemin inverse pour la créer :
-
-1. $M[5][20] = \max(M[4][20 - 6] + 18, M[4][20]) = M[4][20]$ ($M[4][16] = 141$) : on ne prend pas la poudre 5
-2. $M[4][20] = \max(M[3][20 - 1] + 6, M[3][20]) = M[3][19] + 6$ ($M[3][20] = 167$) : on prend la poudre 4
-3. $M[3][19] = \max(M[2][19 - 4] + 32, M[2][19]) = M[2][15] + 32$ ($M[2][19] = 165$) : on prend la poudre 3
-4. $M[2][15] = \max(M[1][15 - 2] + 30, M[1][15]) = M[1][15] $ ($M[1][13] = 0$) : on ne prend pas la poudre 2
-5. $M[1][15] = 135$ : on prend la poudre 1
-
-| 0     | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16      | 17    | 18  | 19  | 20      |
-| ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ------- | ----- | --- | --- | ------- | ------- |
-| **1** | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | _0_ | 0   | **135** | 135   | 135 | 135 | 135     | 135     |
-| **2** | 0   | 0   | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | **135** | 135   | 165 | 165 | _165_   | 165     |
-| **3** | 0   | 0   | 30  | 30  | 32  | 32  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 135     | 135   | 165 | 165 | **167** | _167_   |
-| **4** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135     | _141_ | 165 | 171 | 171     | **173** |
-| **5** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135     | 141   | 165 | 171 | 171     | **173** |
-
-{%enddetails %}
-
-La complexité de cet algorithme est $\mathcal{O}(n\cdot K)$.
-
-{% attention %}
-La complexité de l'algorithme par programmation dynamique n'est **pas** meilleure celle par branch and bound car $K$ peut être très grand : s'il est plus grand que $2^n$ il est moins bon.
-{% endattention %}
-
-La mise en garde précédente est fondamentale, les deux algorithmes analyses tous les 2 toutes les possibilités pour une partie des données :
-
-- l'algorithme de recherche exhaustive examine tous les contenus de sac à dos possible pour un contenant de $K$ et il y en a $2^n$
-- l'algorithme de programmation dynamique examine tous les contenant de sacs à dos possible pour un contenu de $n$ objets et il y en a $K$
-
-Enfin, si l'on s'intéresse uniquement à la complexité, comme il faut $\log_2(K)$ bits pour stocker $K$ **les 2 algorithmes sont exponentiels !**
-
-{% note %}
-Souvent $K$ est petit devant le nombre d'objets et il est plus avantageux d'utiliser la programmation dynamique que le branch and bound mais ce n'est pas universel.
 {% endnote %}
 
 ## Heuristique génétique

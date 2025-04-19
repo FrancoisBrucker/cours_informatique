@@ -35,19 +35,21 @@ En revanche l'étape 3, la preuve que l'algorithme fait bien ce qu'on attend de 
 
 ## Types d'algorithme
 
-Il y a essentiellement deux sortes d'algorithmes :
+Il y a deux sortes d'algorithmes :
 
-- de façon itérative, c'est à dire en utilisant des boucles
-- de façon récursive, c'est à dire sous la forme d'une fonction qui s'appelle elle même.
+- les algorithmes itératifs, c'est à dire utilisant des boucles
+- les algorithmes récursifs, c'est à dire écrit sous la forme d'une fonction qui s'appelle elle même.
 
-Tout problème algorithmique pourra toujours s'écrire sous une forme itérative ou récursive, bien que certains problèmes se résolvent mieux sous une forme qu'une autre.
+Tout problème algorithmique pourra toujours s'écrire sous une forme itérative ou récursive, bien que certains problèmes se résolvent mieux sous une forme que l'autre.
 
 Avant de définir formellement les deux approches commençons par deux remarques d'importance :
 
-{% note %}
+{% note "**À retenir**" %}
 
-1. pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles,
-2. pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions
+Adaptation d'un algorithme aux données :
+
+1. pour que la sortie d'un algorithme dépende de ses entrées, il est nécessaire qu'il possède des instructions conditionnelles (sinon il fera toujours la même chose),
+2. pour qu'un algorithme puisse traiter des entrées de taille quelconque, il est nécessaire de répéter certaines de ses instructions (sinon il ne ne pourra traiter entièrement des données plus grandes que son nombre d'instructions).
 
 La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.
 
@@ -63,20 +65,32 @@ $$
 
 {% note %}
 
-**Un algorithme récursif** va gérer les 2 points d'adaptation aux données en modifiant ses paramètres d'entrée et en se rappelant lui-même. Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.
+**Un algorithme récursif** va gérer les 2 points d'adaptations aux données en se rappelant lui-même (une **_récursion_**) avec de nouveaux paramètres d'entrées un nombre fini de fois (nécessite une **_condition d'arrêt_**). Il va avoir tendance à aller du cas général vers le cas particulier en stockant les éléments intermédiaires dans ses paramètres d'entrées.
 
 {% endnote %}
 
-Pour le calcul de la factorielle, on va commencer par calculer $n!$ en supposant que $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$ :
+Pour le calcul de la factorielle, si $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$, on peut écrire l'équation de récurrence :
+
+<div>
+$$
+n! = \begin{cases}
+1 \text{ si } n=1\\
+n \cdot (n-1)!
+\end{cases}
+$$
+</div>
+
+Qui permet d'écrire l'algorithme récursif suivant :
 
 <div id="fact-rec"></div>
 
 ```pseudocode
 algorithme factorielle(n: entier  # n > 1
                       ) → entier:
-    si n == 1:
+    si n == 1:  # condition d'arrêt
         rendre 1
-    rendre n * factorielle(n-1)
+    f ← factorielle(n-1)  # récursion
+    rendre n * f
 ```
 
 {% details "code python" %}
@@ -85,26 +99,28 @@ algorithme factorielle(n: entier  # n > 1
 def factorielle(n):
     if n == 1:
         return 1
-    return n * factorielle(n-1)
+    f = factorielle(n-1)
+    return n *f
 ```
 
 {% enddetails %}
+
+L'algorithme récursif suit directement l'équation de récurrence. Attention, il est nécessaire que la condition d'arrêt soit évaluée avant la récursion pour la stopper sin nécessaire.
 
 ### Itératif
 
 {% note %}
 
-**Un algorithme itératif** va gérer les 2 points d'adaptation aux données en modifiant des variables et en utilisant des boucles `pour chaque`{.language-pseudocode} et `tant que`{.language-}. Il va avoir tendance à aller du cas particulier vers le cas général en stockant les éléments intermédiaires dans des variables.
-
+**Un algorithme itératif** va gérer les 2 points d'adaptation aux données en modifiant des variables locales et en utilisant des boucles `pour chaque`{.language-pseudocode} et `tant que`{.language-}. Il va avoir tendance à aller du cas particulier vers le cas général en stockant les éléments intermédiaires dans des variables.
 {% endnote %}
 
-Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $n! = ((n-1)!) \times n$ :
+Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $n! = ((n-1)!) \cdot n$ :
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r ← 1
+    r ← 1  # initialisation
     i ← 1
-    tant que i ≤ n:
+    tant que i ≤ n:  # condition d'arrêt
         r ← r * i
         i ← i + 1
     rendre r
@@ -125,6 +141,8 @@ def factorielle(n):
 On utilise la possibilité que donne python d'écrire `x += y`{.language-} (_resp._ `x -= y`{.language-}, `x *= y`{.language-} ou encore `x /= y`{.language-}) à la place de `x = x + y`{.language-} (_resp._ `x = x - y`{.language-}, `x = x * y`{.language-}, `x = x / y`{.language-}).
 
 {% enddetails %}
+
+On voit que la forme d'un algorithme itératif est inversé par rapport à un algorithme récursif.
 
 ## Preuve
 
@@ -193,11 +211,13 @@ algorithme factorielle(n: entier) → entier:  # n ≥ 1
 
 Les preuves des algorithmes récursifs sont souvent les plus simples car ils sont souvent les plus proches de la définition récursive qu'ils implémentent. Reprenons une version (un peu modifiée) du programme du calcul de la factorielle récursif :
 
-```pseudocode/
-algorithme factorielle(n: entier) → entier:  # n ≥ 1
+```pseudocode
+algorithme factorielle(n: entier
+                      ) → entier:
     si n ≤ 1:
         rendre 1
-    rendre n * factorielle(n-1)
+    f ← factorielle(n-1)
+    rendre n * f
 ```
 
 {% exercice %}
@@ -214,37 +234,33 @@ Ce genre d'optimisation n'est pas nécessaire, mais si on y pense autant le fair
 
 ##### Finitude de Factorielle récursif
 
-Pour comprendre comment écrire la preuve de la finitude d'un algorithme récursif re-écrivons l'algorithme de cette façon, clairement équivalente :
-
-```pseudocode/
-algorithme factorielle(n: entier) → entier:
-    si n ≤ 1:
-        rendre 1
-    f ← factorielle(n-1)
-    rendre n * f
-```
-
 L'idée est de démontrer la finitude par récurrence sur $n$.
 
 1. **initialisation** de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursion.
-2. **hypothèse de récurrence** : pour tout entier plus petit que $n\geq 1$, l'algorithme va avoir un nombre fini de récursions.
-3. **pour $n + 1$** : `factorielle(n+1)`{.language-} va exécuter la ligne 4 (`f ← factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n+1)`{.language-} va également se terminer.
+2. **hypothèse de récurrence** : pour tout entier plus petit que $n-1\geq 1$, l'algorithme va avoir un nombre fini de récursions.
+3. **pour $n$** : `factorielle(n)`{.language-} va exécuter la ligne 4 (`f ← factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n)`{.language-} va également se terminer.
 
-La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter : tout appel récursif doit se rapprocher strictement d'un état de terminaison. Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :
+La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter :
+
+{% note "**À retenir**" %}
+Tout appel récursif doit se rapprocher strictement d'un état de terminaison.
+{% endnote %}
+
+Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :
 
 Si $n\geq 1$ est un entier, l'algorithme va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.
 
 ##### Correction de Factorielle récursif
 
 {% note "**Schéma de preuve des algorithmes récursifs :**" %}
-Pour les preuves d'algorithme récursif, le schéma de preuve est quasi-toujours le même : faire une preuve par récurrence.
+Pour les preuves d'algorithmes récursifs, le schéma de preuve est quasi-toujours le même : faire une preuve par récurrence.
 {% endnote %}
 
 Par récurrence sur $n$, avec $n$ entier strictement positif.
 
 1. **initialisation** : $n = 1$ `factorielle(1)`{.language-} vaut bien bien $1 = 1!$.
-2. **hypothèse de récurrence** : pour tout entier plus petit que $n\geq 1$ on a `factorielle(n) = n!`{.language-}
-3. **pour $n + 1$** : le retour de `factorielle(n + 1)`{.language-} est `(n + 1) * factorielle(n)`{.language-} qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.
+2. **hypothèse de récurrence** : pour tout entier plus petit que $n-1\geq 1$ on a `factorielle(n-1) = (n-1)!`{.language-}
+3. **pour $n$** : le retour de `factorielle(n)`{.language-} est `(n) * factorielle(n-1)`{.language-} qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.
 
 #### <span id="facto-iter"></span> Algorithme itératif
 
@@ -268,7 +284,7 @@ Comme $i$ va croître strictement, la condition `i ≤ n`{.language-} sera fauss
 
 Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se récrire de cette façon :
 
-```pseudocode
+```pseudocode/
 algorithme factorielle'(n: entier) → entier:
     r ← 1
     i ← 1
@@ -286,15 +302,13 @@ Qui est aussi équivalent à :
 
 ```pseudocode
 algorithme factorielle''(n: entier) → entier:
-    r ← factorielle(n-1)
+    r ← factorielle''(n-1)
     r ← r * n
 
     rendre r
 ```
 
-De là, il est clair que si `factorielle(n-1) = (n-1)!`{.language-}, alors `factorielle(n) = factorielle''(n) = n!`{.language-}.
-
-On est ramené au cas précédent de la preuve par récurrence de l'algorithme récursif.
+La boucle se comporte comme l'algorithme récursif précédent. On est ramené au cas précédent pour en prouver sa correction.
 
 ### Preuve par invariant
 
@@ -441,7 +455,7 @@ L'idée principale pour trouver un invariant est de procéder par étapes :
 
 Ce qu'il faut retenir c'est que trouver l'invariant est **à la fin du processus de création de la preuve**.
 
-### <span id="max-iter"></span> Maximum d'un tableau
+### <span id="algorithme-max-iter"></span> Maximum d'un tableau
 
 On considère l'algorithme itératif suivant :
 
@@ -534,13 +548,7 @@ Cette partie là est facile si on a le bon invariant. Il suffit de regarder la v
 
 ### Nombre dans un tableau
 
-Commençons par une mise au point :
-
-{% attention %}
-On a pas toujours besoin d'un invariant de boucle si une récurrence immédiate fonctionne !
-{% endattention %}
-
-Pour faire ceci de façon propre, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.
+Pour faire ceci sans invariant de boucle, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.
 
 {% exercice %}
 Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#exercice-nombre-occurrences){.interne} et prouver qu'il fonctionne en exhibant sa version récursive.
@@ -576,8 +584,9 @@ algorithme PGCD(a, b):  # a, b > 0
     si a == b:
         rendre a
     si a < b:
-        rendre PGCD(b, a)
-    rendre PGCD(a-b, b)
+        rendre PGCD(b-a, a)
+    sinon
+        rendre PGCD(a-b, b)
 
 ```
 
@@ -586,7 +595,9 @@ Montrez que l'algorithme récursif précédent calcule bien le PGCD de eux entie
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+- terminaison : La condition de terminaison est `a == b`{.language-}. Si `a \leq b`{.language-}, chaque itération va diminuer strictement la quantité $\vert\\, a = b \\,\vert$ et donc se rapprocher strictement de la condition d'arrêt : notre programme s'arrête pour toute entrée.
+
+- correction : si `a == b`{.language-}, son PGCD est bien a (ou b) et sinon on respecte [la définition d'Euclide du PGCD](../bases-théoriques/calculabilité/#algorithme-euclide){.interne}.
 
 {% enddetails %}
 
