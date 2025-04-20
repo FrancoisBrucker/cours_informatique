@@ -21,7 +21,7 @@ Nous allons aller de plus en plus vite, à mesure que nous gagnons en automatism
 ## Nombre
 
 {% exercice %}
-Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#exercice-nombre-occurrences){.interne} et donnez sa complexité
+Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#algorithme-nombre-occurrences){.interne} et donnez sa complexité
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -49,7 +49,7 @@ Ce qui donne une complexité totale de $\mathcal{O}(t.\mbox{\small longueur})$.
 ## Concaténation
 
 {% aller %}
-[Création et preuve de l'algorithme concaténation](../projet-itératif-récursif/#concaténation){.interne}
+[Création et preuve de l'algorithme concaténation](../projet-itératif-récursif/#algorithme-concaténation){.interne}
 {% endaller %}
 
 {% exercice %}

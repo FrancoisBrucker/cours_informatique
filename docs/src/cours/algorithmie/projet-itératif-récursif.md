@@ -9,12 +9,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD que les simples
-> TBD mettre les classiques dans la partie classique.
-> TBD decurrification à mettre plus tard. Lorsque l'on parle des listes par exemple. Et on décurrifie Ackerman avant comme exemple.
-Écrire des algorithmes (simples) en pseudo-code pour résoudre des problèmes algorithmiques.
+Nous y verrons divers moyens de triturer des tableaux de façon itérative et récursive ainsi que deux techniques fondamentales à connaître :
+
+- [encapsulation de la récursion](./#encapsulation-récursion){.interne}
+- [recursion terminale et programme itératif](./#récursion-terminale){.interne}
 
 ## Maximum d'un tableau
+
+On a déjà vue [une version itérative de cet algorithme](../prouver-un-algorithme/#algorithme-max-tableau-iter){.interne}, voyons (ou plutôt voyez) comme en faire un version recursive :
+
+<span id="algorithme-max-tableau-rec"></span>
 
 {% exercice %}
 Donnez et prouvez **un algorithme récursif** de signature :
@@ -49,7 +53,9 @@ La correction se fait par récurrence sur `n`{.language-} allant de `n = 0`{.lan
 
 {% enddetails %}
 
-## <span id="concaténation"></span>Concaténation
+## Concaténation
+
+<span id="algorithme-concaténation"></span>
 
 {% exercice %}
 Donnez et prouvez **un algorithme itératif** de signature :
@@ -113,91 +119,173 @@ Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.
 
 ## <span id="égalité-tableaux"></span>Égalité de tableaux
 
-> TBD commencer par dire même valeurs, puis même nombre (=permutation)
+### Intersection non vide
+
+<span id="algorithme-intersection-non-vide"></span>
 
 {% exercice %}
-Écrivez un algorithme itératif permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
-
-C'est à dire qu'il existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant [notre algorithme `nombre`{.language-}](../pseudo-code/#exercice-nombre-occurrences){.interne} Ce qui donne un l'algorithme suivant :
+Écrivez **un algorithme itératif** de signature :
 
 ```pseudocode
-algorithme égalité(t1: [entier], t2: [entier]) → entier
-    pour chaque e de t1:
-        si nombre(t1, e) ≠ nombre(t2, e):
-            rendre Faux
-        rendre Vrai
+algorithme intersection_non_vide(T1: [entier], T2: [entier]) → booléen
 ```
 
-On ne peut rendre Vrai que si tous les éléments de t1 sont dans t2 avec un même montant. Donc uniquement s'il existe une existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
+Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
+{% endexercice %}
+{% info %}
+Il faut vérifier qu'il existe $0\leq i < T.\text{\small longueur}$ et $0\leq i' < T'.\text{\small longueur}$ tels que $T[i] = T'[i']$.
+{% endinfo %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme intersection_non_vide(T1: [entier], T2: [entier]) → booléen
+    pour chaque x de T1:
+        pour chaque y de T2:
+            si x == y:
+                rendre Vrai
+    rendre Faux
+```
+
+La boucle 3-5 va chercher à trouver x dans T2 : `trouvé`{.language-} ne peut valoir `Vrai`{.language-} que si c'est le cas. Si ce n'est pas le cas, `x`{.language-} n'est pas dans `T2`{.language-} et il faut chercher une autre possibilité d'égalité.
+
+Comme on répète cette boucle intérieure pour tout `x`{.language-} de `T1`{.language-}, l'algorithme ne peut arriver ligne 6 que si $x \not in T2$ pour tout $x \in T1$.
+
+Prouver cet algorithme ne nécessite pas d'invariant de boucle formel.
+
+{% enddetails %}
+
+### Même valeurs
+
+<span id="algorithme-égalité-valeurs"></span>
+
+{% exercice %}
+Écrivez **un algorithme itératif** de signature :
+
+```pseudocode
+algorithme égalité_valeurs(T1: [entier], T2: [entier]) → booléen
+```
+
+Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
+{% endexercice %}
+{% info %}
+Il faut vérifier que pour pour tout $0\leq i < T.\text{\small longueur}$ il existe $0\leq i' < T'.\text{\small longueur}$ tel que $T[i] = T'[i']$.
+{% endinfo %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme égalité_valeurs(T1: [entier], T2: [entier]) → booléen
+    pour chaque x de T1:
+        trouvé ← Faux
+        pour chaque y de T2:
+            si x == y:
+                trouvé ← Vrai
+        si trouvé == Faux:
+            rendre Faux
+
+    rendre Vrai
+```
+
+Prouver cet algorithme ne nécessite pas d'invariant de boucle formel, mais il faut faire attention à sa construction.
+
+La boucle 4-6 va chercher à trouver x dans T2 : `trouvé`{.language-} ne peut valoir `Vrai`{.language-} que si c'est le cas. Si ce n'est pas le cas, on peut sortir de l'algorithme (ligne 7-8) puisque `x`{.language-} n'est pas dans `T2`{.language-}.
+
+Comme on répète cette boucle intérieure pour tout `x`{.language-} de `T1`{.language-}, l'algorithme est bien correct.
+
+{% enddetails %}
+
+### Permutations
+
+Terminons cette partie avec l'algorithme suivant :
+
+<span id="algorithme-égalité"></span>
+
+{% exercice %}
+Écrivez **un algorithme itératif** de signature :
+
+```pseudocode
+algorithme égalité(T1: [entier], T2: [entier]) → booléen
+```
+
+Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois).
+{% endexercice %}
+{% info %}
+Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} que l'on a déjà écrit.
+{% endinfo %}
+{% details "corrigé" %}
+
+Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant [notre algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} Ce qui donne un l'algorithme suivant :
+
+```pseudocode
+algorithme égalité(T1: [entier], T2: [entier]) → entier
+    pour chaque x de T1:
+        si nombre(T1, x) ≠ nombre(T2, x):
+            rendre Faux
+    rendre Vrai
+```
+
+On ne peut rendre Vrai que si tous les éléments de T1 sont dans T2 avec un même montant. Donc uniquement s'il existe une existe une permutation $\sigma$ de $[0, n-1]$ telle que $T[i] = T[\sigma(i)]$ pour tout $i \in [0, n-1]$.
 
 {% enddetails %}
 
 ## <span id="suppression-valeur"></span>Suppression de valeurs
 
-Trouver un invariant permet de prouver efficacement un algorithme itératif. Pour des algorithmes simples, les bons invariants sont évidents à prouver une fois trouvé (on ne le donc fera pas explicitement) et permettent une preuve aisée. Entraînez vous avec l'exercice suivant :
-
-<span id="suppression-valeur-itératif"></span>
+<span id="algorithme-suppression-valeur-itératif"></span>
 
 {% exercice %}
 Donnez et prouvez **un algorithme itératif** de signature :
 
 ```pseudocode
-supprime(t: [entier], v: entier) → [entier]
+supprime(T: [entier], v: entier) → [entier]
 ```
 
 Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux valeurs différentes de `v`{.language-}.
 {% endexercice %}
+{% info %}
+Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} que l'on a déjà écrit.
+{% endinfo %}
 {% details "corrigé" %}
 
-Pour que l'algorithme fonctionne, il faut commencer par connaître la taille du tableau à créer et donc compter le nombre d’occurrences de `v`{.language-} dans `t`{.language-}. Ensuite, il sera possible de remplir le tableau.
+Pour que l'algorithme fonctionne, il faut commencer par connaître la taille du tableau à créer et donc compter le nombre d’occurrences de `v`{.language-} dans `T`{.language-}. Ensuite, il sera possible de remplir le tableau.
 
 ```pseudocode/
-algorithme supprime(t: [entier], v: entier) → [entier]
-    nombre ← 0
-    pour chaque e de t:
-        si e == v:
-            nombre ← nombre + 1
-    t2 ← tableau de taille t.longueur - nombre
+algorithme supprime(T: [entier], v: entier) → [entier]
+    T2 ← tableau de taille t.longueur - nombre(T, v)
 
     j ← 0
     pour tout i de [0, t.longueur[:
-        si t[i] ≠ v:
-            t2[j] ← t[i]
+        si T[i] ≠ v:
+            T2[j] ← t[i]
             j ← j + 1
     
-    rendre t2
+    rendre T2
 ```
 
 La finitude du programme est clair puisque l'on a que des boucles de type `pour chaque`{.language-}.
 
-On commence à avoir l'habitude des invariants, on peut donc se permettre d'uniquement écrire le résultat d'une boucle **si celle ci est évidente**. C'est le cas de la première boucle : à l'issue de la boucle des lignes 3-5 `nombre`{.language-} vaut le nombre d'occurrences de `v`{.language-} dans `t`{.language-}.
+On commence par créer un tableau permettant exactement de stocker tous les éléments de `T`{.language-} différents de `v`{.language-}. Ce que fera la boucle. On peut prouver celle-ci par l'invariant :
 
-Pour prouver la seconde boucle, l'invariant peut-être :
-
-> à la fin de chaque itération, `t2`{.language-} contient la restriction des `i + 1`{.language-} premiers éléments de `t` différents de `v`{.language-}.
+> à la fin de chaque itération, `T2`{.language-} contient la restriction des `i + 1`{.language-} premiers éléments de `T` différents de `v`{.language-}.
 
 La preuve de l'invariant est évidente et permet de prouver l'algorithme en se plaçant à la fin de la dernière itération.
 
 {% enddetails %}
 
-Utilisez l'algorithme `concaténation`{.language-} de la question précédente pour résoudre l'exercice suivant :
+Et maintenant la version récursive :
 
-<span id="suppression-valeur-récursif"></span>
+<span id="algorithme-suppression-valeur-récursif"></span>
 
 {% exercice %}
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-supprime_rec(t: [entier], v: entier) → [entier]
+supprime_rec(T: [entier], v: entier) → [entier]
 ```
 
-Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux valeurs différentes de `v`{.language-}. Le nouveau tableau aura la même taille que le tableau `t`{.language-} passé en premier paramètre.
+Qui rend **un nouveau tableau** contenant la restriction de `T`{.language-} aux valeurs différentes de `v`{.language-}.
 {% endexercice %}
+{% info %}
+Vous pourrez utiliser [l'algorithme `concaténation`{.language-}](./#algorithme-concaténation){.interne} de la question précédente.
+{% endinfo %}
 {% details "corrigé" %}
 
 ```pseudocode/
@@ -221,27 +309,124 @@ Pour la correction une récurrence immédiate sur la taille du tableau nous perm
 
 {% enddetails %}
 
-## <span id="retournement"></span>Retournement d'un tableau
+## <span id="encapsulation-récursion"></span>Encapsulation de la récursion
+
+Commençons par deux exercices préparatoires :
+
+<span id="algorithme-palindrome"></span>
+
+{% exercice %}
+Donnez et prouvez **un algorithme itératif** de signature :
+
+```pseudocode
+palindrome(T: [entier]) → booléen
+```
+
+Qui rend Vrai si le tableau est [un palindrome](https://fr.wikipedia.org/wiki/Palindrome).
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme palindrome(T: [entier]) → booléen
+    pour tout i de [0, T.longueur // 2[:
+        si T[i] ≠ T[T.longueur - 1 - i]:
+            rendre Faux
+    rendre Vrai
+```
+
+{% enddetails %}
+
+Et maintenant la version récursive :
 
 {% exercice %}
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-reverse_indice(t: [entier], i: entier) → ∅
+palindrome_rec(T: [entier], i: entier) → booléen
 ```
 
-Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte que les éléments $t[j]$ et $t[t.\mbox{longueur} - 1 - j]$ soit échangés pour tous $i \leq j < t.\mbox{longueur} - i$
+Qui rend Vrai si $T[j] = T[T.\mbox{longueur} - 1 - j]$ pour tous $i \leq j < T.\mbox{longueur} - 1 - i$
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme reverse_indice(t: [entier], i: entier) → ∅
-    si t.longueur - 1 - i > i:
-        temp ← t[i]
-        t[i] ← t[t.longueur - 1 - i]
-        t[t.longueur - 1 - i] ← temp
+algorithme palindrome_rec(T: [entier], i: entier) → booléen
+    si T.longueur - 1 - i ≤ i:
+        rendre Vrai
+    si  T[i] ≠ T[T.longueur - 1 - i]:
+        rendre Faux
+    
+    rendre palindrome_rec(T, i + 1)
+```
 
-        reverse_indice(t, i + 1)
+La premiere condition est la condition d'arrêt de la récursion puisque dans ce cas là $i$ a dépassé la moitié du tableau.
+
+Puis on utilise l'équation de récurrence :
+
+```pseudocode
+palindrome(T) = (T[0] == T[-1]) ET palindrome(T[1:-1])
+```
+
+{% enddetails %}
+
+Lorsque l'on crée des algorithmes récursif, on a souvent besoin d'initialiser les paramètres. Par exemple si on veut savoir si un tableau est un palindrome en utilisant l'algorithme récursif `palindrome_rec(T: [entier], i: entier) → booléen`{.language-}, il faut écrire `palindrome_rec(T, T.longueur)`{.language-}. Le paramètre $i$ est un paramètre important pour la récursion mais inutile pour l'appel global.
+
+Pour éviter d'avoir des paramètres inutile on _encapsulera_ la fonction récursive dans un algorithme dont le seul but est d'initialiser la récursion.
+
+{% note "**À retenir**" %}
+
+Cette technique est **à utiliser** dès que l'on a besoin de paramètres récursifs mais non utile pour l'algorithme général.
+
+{% endnote %}
+
+Pour le retournement d'un tableau, l'algorithme sera :
+
+```pseudocode
+fonction palindrome_rec(T: [entier], i: entier) → booléen
+    ...  # code de la fonction récursive
+
+algorithme palindrome(T: [entier]) → booléen
+    rendre palindrome_rec(T, T.longueur)
+```
+
+Entraînons nous :
+
+{% exercice %}
+Encapsulez la fonction récursive `maximum_rec(t: [réel], i: entier) → entier`{.language-pseudocode} du premier exercice dans une fonction permettant de rendre le maximum d'un tableau passé en paramètre.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme maximum(T: [entier]) → entier
+    rendre maximum_rec(t, T.longueur - 1)
+```
+
+{% enddetails %}
+
+## Retournement d'un tableau
+
+<span id="algorithme-retournement"></span>
+
+{% exercice %}
+Donnez et prouvez **un algorithme récursif** de signature :
+
+```pseudocode
+retournement_indice(t: [entier], i: entier) → ∅
+```
+
+Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte que les éléments $t[j]$ et $t[t.\mbox{longueur} - 1 - j]$ soient échangés pour tous $i \leq j < t.\mbox{longueur} - i$
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme retournement_indice(T: [entier], i: entier) → ∅
+    si T.longueur - 1 - i > i:
+        temp ← T[i]
+        T[i] ← T[T.longueur - 1 - i]
+        T[T.longueur - 1 - i] ← temp
+
+        retournement_indice(T, i + 1)
 ```
 
 Les lignes 3-5 permettent d'échanger les valeurs `t[i]`{.language-} et `t[t.longueur - 1 - i]`{.language-} du tableau. On peut aussi écrire `t[i], t[t.longueur - 1 - i] ← t[t.longueur - 1 - i], t[i]`{.language-}, comme on le ferait en python, si l'on autorise le fait d'affecter 2 valeurs **en même temps**.
@@ -253,7 +438,6 @@ Le finitude est claire puisque :
 
 La correction vient du fait que l'on échange bien des valeurs symétriques du tableau par rapport à l'indice du milieu du tableau qui est ici la partie entière de $t.\mbox{longueur} - 1/ 2$.
 
-{% enddetails %}
 {% attention %}
 Lorsque l'on manipule des indices de tableau il faut **toujours** :
 
@@ -261,39 +445,31 @@ Lorsque l'on manipule des indices de tableau il faut **toujours** :
 2. faire attention aux divisions entières.
 
 {% endattention %}
-
-Lorsque l'on crée des algorithmes récursif, on a souvent besoin d'initialiser les paramètres. Par exemple si l'on veut retourner complètement un tableau il faudrait écrire `reverse_indice(t: [entier], 0)`{.language-}. Le paramètre $i$ est un paramètre important pour la récursion mais inutile pour l'appel global. Pour éviter d'avoir des paramètres inutile on _encapsulera_ la fonction récursive dans un algorithme dont le seul but est d'initialiser la récursion. Pour le retournement d'un tableau, l'algorithme sera :
-
-```pseudocode
-fonction reverse_indice(t: [entier], i: entier) → ∅
-    ...  # code de la fonction récursive
-
-algorithme reverse(t: [entier]) → ∅
-    reverse_indice(t, 0)
-```
-
-La méthode ci-dessus est indispensable à connaître car lorsque l'on manipule des algorithmes récursifs les paramètres font office de variables que l'opn pourrait avoir pour des algorithmes itératifs.
-
-Entraînons nous :
+{% enddetails %}
 
 {% exercice %}
-Encapsulez la fonction récursive `maximum_rec(t: [réel], i: entier) → entier`{.language-pseudocode} du premier exercice dans une fonction permettant de rendre le maximum d'un tableau passé en paramètre.
+Encapsulez la fonction récursive `retournement_indice(t: [entier], i: entier) → ∅`{.language-pseudocode} pour qu'elle puisse retourner un tableau passer en paramètre.
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme maximum(t: [entier]) → entier
-    rendre maximum_rec(t, 0)
+fonction retournement_indice(T: [entier], i: entier) → ∅
+    ...  # code de la fonction récursive
+
+algorithme retournement(T: [entier]) → ∅
+    retournement_indice(T, 0)
 ```
 
 {% enddetails %}
 
-## Récursion terminale
+## <span id="récursion-terminale"></span>Récursion terminale
 
 {% lien %}
 [Récursion terminale](https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale)
 {% endlien %}
+
+Soit l'algorithme `f`{.language-} suivant où `c: A → Booléen`{.language-}, `g: A → B`{.language-} et `h: A → A`{.language-} sont trois fonctions parfaitement définies :
 
 ```pseudocode
 
@@ -304,9 +480,12 @@ algorithme f(n: A) → B:
         rendre f(h(n))
 ```
 
-Où `c: A → Booléen`{.language-}, `g: A → B`{.language-} et `h: A → A`{.language-} sont trois fonctions parfaitement définies.
+L'algorithme `f`{.language-} est sous la forme d'une **_récursion terminale_**, c'est à dire que :
 
-Pour que la définition de `f`{.language-} ait du sens il faut bien sur que chaque récursion sr _rapproche_ de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.
+1. **soit** il s'arrête si une condition d'arrêt est vérifiée
+2. **soit** il rend une récursion de lui même
+
+Pour que la définition de `f`{.language-} ait du sens il faut bien sur que chaque récursion se _rapproche_ de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.
 
 La récursion terminale est sympathique car équivalente à la forme itérative suivante :
 
@@ -321,24 +500,75 @@ Ce qui permet une implémentation en machine efficace (c'est ce que font les com
 
 Le type `A`{.language-} peut être de toute forme, c'est souvent un type composé comme on le verra.
 
-### Puissance de deux
+Entraînons nous.
 
 {% exercice %}
 
+L'algorithme `palindrome_rec(T: [entier], i: entier) → booléen`{.language-pseudocode} est sous forme terminale, transformez le en programme itératif.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme palindrome_pas_rec(T: [entier], i: entier) → booléen
+    tant que (T.longueur - 1 - i > i): 
+        si  T[i] ≠ T[T.longueur - 1 - i]:
+            rendre Faux
+        i ← i + 1
+    rendre Vrai
+```
+
+{% enddetails %}
+
+{% exercice %}
+
+L'algorithme `retournement_indice(T: [entier], i: entier) → ∅`{.language-pseudocode} est sous forme terminale, transformez le en programme itératif.
+
+En déduire un algorithme itératif permettant de retourner un tableau.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme retournement_indice(t: [entier], i: entier) → ∅
+    tant que (t.longueur - 1 - i > i):
+        temp ← t[i]
+        t[i] ← t[t.longueur - 1 - i]
+        t[t.longueur - 1 - i] ← temp
+
+        i ← i + 1
+```
+
+Et donc, en utilisant un petit abus de pseudocode :
+
+```pseudocode
+algorithme retournement(t: [entier], i: entier) → ∅
+    i ← 0
+    tant que (t.longueur - 1 - i > i):
+        t[i], t[t.longueur - 1 - i] ← t[t.longueur - 1 - i], t[i] 
+        i ← i + 1
+```
+
+{% enddetails %}
+
+Notez que l'opération consistant à transformer un algorithme récursif sous forme terminale en algorithme itératif est exactement l'opération inverse que l'on a faite pour prouver certains algorithmes itératifs, [comme la factorielle](../prouver-un-algorithme/#facto-iter){.interne}. On retrouve encore une fois que recursion et itération sont deux faces d'une même pièce.
+
+### Construire un algorithme sous forme terminale
+
+{% exercice %}
 Écrivez sous la forme d'une récursion terminale l'algorithme de signature :
 
 ```pseudocode
 algorithme puissance_2(m: entier, n: entier) → entier
 ```
 
-Qui rend le plus petit entier de la forme $2^p \cdot m$ plus grand que $n$.
+Qui rend le plus grand entier de la forme $2^p \cdot m$ plus petit que $n$.
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
 algorithme puissance_2(m: entier, n: entier) → entier:
-    si m ≥ n:
+    si 2 * m ≥ n:
         rendre m
     sinon:
         rendre f(2 * m, n)
@@ -348,7 +578,7 @@ C'est bien une récursion terminale puisque le code est équivalent à :
 
 ```pseudocode
 fonction c(m: entier, n: entier) → entier:
-    rendre m ≥ n
+    rendre 2 * m ≥ n
 
 fonction g(m: entier, n: entier) → entier:
     rendre m
@@ -366,20 +596,20 @@ Avec le type `A` étant un couple d'entier et `B` le type entier.
 
 ### Transformer en une forme terminale
 
-La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux paramètres. Cela semble très restrictif. Par exemple notre [fonction factorielle récursive](../prouver-un-algorithme/#fact-rec) n'est pas sous forme terminale puisque l'on fait un calcul en plus de la récursion :
+La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux paramètres. Cela semble très restrictif. Par exemple notre [fonction factorielle récursive](../prouver-un-algorithme/#algorithme-factorielle-rec) n'est pas sous forme terminale puisque l'on fait un calcul en plus de la récursion :
 
 ```pseudocode
-algorithme factorielle(n: entier  # n > 1
-                      ) → entier:
-    si n == 1:
+algorithme factorielle(n: entier) → entier:
+    si n == 1:  # condition d'arrêt
         rendre 1
-    rendre n * factorielle(n-1)
+    f ← factorielle(n-1)
+    rendre n * f
 ```
 
-Le rendre récursif terminal est impossible en ne gardant qu'un seul paramètre. L'astuce est d'ajouter un paramètre, appelé **_accumulateur_** qui va transmettre à la fonction récursive les calculs intermédiaire, dans notre cas le début du calcul de factoriel. Dans notre cas :
+Le rendre récursif terminal est impossible en ne gardant qu'un seul paramètre. L'astuce est d'ajouter un paramètre, appelé **_accumulateur_** qui va transmettre à la fonction récursive les calculs intermédiaires, dans notre cas le début du calcul de factoriel. Dans notre cas :
 
 ```pseudocode
-function factorielle_term(n: entier, acc: entier) → entier:
+fonction factorielle_term(n: entier, acc: entier) → entier:
     si n == 1:
         rendre acc
     rendre factorielle(n-1, n * acc)
@@ -468,112 +698,62 @@ algorithme u_n(n : entier,
 
 {% enddetails %}
 
-## <span id="dichotomie"></span>Dichotomie
+Transformer un algorithme récursif en un algorithme avec une récursion terminale revient à ajouter des variables à un programme récursif (ses variables sont ses paramètres).
 
-Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique) permet de savoir si un entier donné est dans un tableau d'entier trié.
+{% note "**À retenir**" %}
+La technique de l'accumulateur (_ie._ l'ajout de variables) est fondamentale pour la création d'algorithme récursif.
+{% endnote %}
 
-On cherche à savoir si l'entier $v$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $t$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
+## Récursion croisée
 
-- si $t[\lfloor (a + b)/2 \rfloor] == v$ on a trouvé l'élément
-- si $t[\lfloor (a + b)/2 \rfloor] > v$ on recommence la procédure avec $a' = \lfloor (a + b)/2 \rfloor + 1$ et $b' =b$
-- si $t[\lfloor (a + b)/2 \rfloor] < v$ on recommence la procédure avec $a' = a$ et $b' = \lfloor (a + b)/2 \rfloor - 1$
+Une dernière technique qui peut être utile est la récursion croisée qui définie une fonction par rapport à une autre et réciproquement :
+
+<span id="algorithme-pair-impair"></span>
 
 {% exercice %}
-
-Implémentez cet algorithme de façon récursive avec la signature :
+Écrire les deux fonctions récursives suivantes sans utiliser de division entière :
 
 ```pseudocode
-dichotomie_rec(t: [entier], 
-               v: entier,
-               a: entier,
-               b: entier  # b > a
-               ) → entier:  #rend -1 si v n'est pas dans t, l'indice où il est présent sinon
+algorithme pair(n: entier) → booléen
+algorithme impair(n: entier) → booléen
 ```
+
+Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pseudocode} alors que'`impair(0)`{.language-} est `Faux`{.language-pseudocode}.
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme dichotomie_rec(t: [entier], v: entier, a: entier, b: entier) → entier:
-    si b > a:
-        rendre -1
+algorithme pair(n: entier) → booléen
+    si n == 0:
+        rendre Vrai
+    rendre non impair(n - 1)
 
-    m ← (a + b) // 2  # division entière
-    si (t[m] == v):
-        rendre m
-    si (t[m] < v):
-        rendre dichotomie_rec(t, v, m + 1, b)
-    si (t[m] > v):
-        rendre dichotomie_rec(t, v, a, m - 1)
-```
-
-Pour la preuve, il suffit de montrer que l'intervalle entre $a$ et $b$ se réduit strictement. **Faites attention**, on a tendance à uniquement remplacer a ou b par m et en oubliant le +1 ou le -1, mais cela va rater si $a = b$ ou si $a + 1 = b$. Ces +1 et -1 ne sont donc pas uniquement des optimisations, ils garantissent le bon fonctionnement de l'algorithme.
-
-{% enddetails %}
-{% attention %}
-Lorsque l'on code la recherche dichotomique, il faut faire **très attention** à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
-
-{% endattention %}
-
-A priori l'algorithme précédent n'est pas terminal. Le faire :
-
-{% exercice %}
-Utilisez l'algorithme précédent pour écrire l'algorithme récursif terminal qui recherche un élément dans une liste triée de signature :
-
-```pseudocode
-recherche(t: [entier], v: entier) → entier
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme recherche(t: [entier], v: entier) → entier:
-    rendre dichotomie_rec(t, v, 0, t.longueur -1)
-```
-
-{% enddetails %}
-
-En déduire une version itérative :
-
-{% exercice %}
-Utilisez l'algorithme précédent pour écrire l'algorithme itératif qui recherche un élément dans une liste triée de signature :
-
-```pseudocode
-recherche(t: [entier], v: entier) → entier
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme recherche(t: [entier], v: entier) → entier:
-    a ← 0
-    b ← t.longueur -1
-
-    tant que a ≤ b: 
-        m ← (a + b) // 2  # division entière
-        si (t[m] == v):
-            rendre m
-        si (t[m] < v):
-                a ← m + 1
-        si (t[m] > v):
-            b ← m - 1
-
-    rendre -1
+algorithme impair(n: entier) → booléen
+    si n == 0:
+        rendre Faux
+    rendre non pair(n - 1)
 
 ```
+
+La finitude est claire puisque :
+
+1. il n'y a qu'un appel récursif
+2. chaque appel se rapproche strictement de la condition d'arrêt
+
+La correction est évidente par définition de la parité.
 
 {% enddetails %}
 
 ## Fonction 91 de McCarty
 
-{% lien %}
-[John McCarty](https://fr.wikipedia.org/wiki/John_McCarthy) fût un informaticien de renom et le créateur [du langage Lisp](https://fr.wikipedia.org/wiki/Lisp) en 1958. Lisp est le premier langage fonctionnel et a été [le deuxième langage de programmation](https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation) au monde, deux ans après le Fortran.
+Terminons cette partie par une bizarrerie algorithmique comme on les aime. Elle vient de [John McCarty](https://fr.wikipedia.org/wiki/John_McCarthy), informaticien de renom et créateur [du langage Lisp](https://fr.wikipedia.org/wiki/Lisp) en 1958. Lisp est le premier langage fonctionnel et a été [le deuxième langage de programmation](https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation) au monde, deux ans après [le Fortran](https://fr.wikipedia.org/wiki/Fortran).
 
+{% lien %}
+[La fonction 91 de McCarty](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy) :
 {% endlien %}
 
-[La fonction 91 de McCarty](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy) est définie telle que :
+Définition :
 
 <div>
 $$
@@ -586,8 +766,10 @@ M(n) = \left\{
 $$
 </div>
 
+<span id="algorithme-mc-carty"></span>
+
 {% exercice %}
-Implémentez l'algorithme récursif qui mime la définition.
+Implémentez **un algorithme récursif** qui mime la définition.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -700,7 +882,7 @@ Comme il faut un nombre fini d'itération pour passer de $M(n)$ à $M(n+1)$ on e
 {% enddetails %}
 
 {% exercice %}
-En donner un algorithme itératif simple pour la calculer.
+En déduire **un algorithme itératif** ultra simple pour la calculer.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -714,44 +896,5 @@ algorithme M(n: entier) → entier:
 ```
 
 Dans le même ordre d'idée que la fonction de Takeuchi.
-
-{% enddetails %}
-
-## Récursion croisée
-
-Une dernière technique qui peut être utile est la récursion croisée qui définie une fonction par rapport à une autre et réciproquement :
-
-{% exercice %}
-Écrire les deux fonctions récursives suivantes sans utiliser de division entière :
-
-```pseudocode
-algorithme pair(n: entier) → booléen
-algorithme impair(n: entier) → booléen
-```
-
-Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pseudocode} alors que'`impair(0)`{.language-} est `Faux`{.language-pseudocode}.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme pair(n: entier) → booléen
-    si n == 0:
-        rendre Vrai
-    rendre non impair(n - 1)
-
-algorithme impair(n: entier) → booléen
-    si n == 0:
-        rendre Faux
-    rendre non pair(n - 1)
-
-```
-
-La finitude est claire puisque :
-
-1. il n'y a qu'un appel récursif
-2. chaque appel se rapproche strictement de la condition d'arrêt
-
-La correction est évidente par définition de la parité.
 
 {% enddetails %}

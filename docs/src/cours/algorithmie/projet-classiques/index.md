@@ -18,7 +18,9 @@ eleventyComputed:
 > TBD à refaire bien
 > faire une partie énumération dans classique (compteur, permutation, 8 reines,lancer de dés).
 > TBD séparer les exos qui sont mieux avec une liste en récursif. Preparer.
-
+> TBD rendu de piece par programmation dynamique
+> TBD Ackermann et décurrification.
+> 
 > TBD les 8 reines en récursif et itératif, puis généralisation aux autres pièces d'échec et aux reines avec ds échiquiers plus grands et en dimensions plus élevées <https://interstices.info/le-probleme-des-8-reines-et-au-dela/>
 
 Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).

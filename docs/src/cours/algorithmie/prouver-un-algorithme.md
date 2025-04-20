@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le but d'un algorithme est de résoudre un problème algorithmique. Prouver un algorithme signifie qu'il fait bien ce qu'il est sensé faire :
+Prouver un algorithme c'est montrer qu'il résout bien le problème (algorithmique) auquel est est associé :
 
 {% note "**Définition**" %}
 
@@ -82,7 +82,7 @@ $$
 
 Qui permet d'écrire l'algorithme récursif suivant :
 
-<div id="fact-rec"></div>
+<div id="algorithme-factorielle-rec"></div>
 
 ```pseudocode
 algorithme factorielle(n: entier  # n > 1
@@ -115,6 +115,8 @@ L'algorithme récursif suit directement l'équation de récurrence. Attention, i
 {% endnote %}
 
 Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $n! = ((n-1)!) \cdot n$ :
+
+<div id="algorithme-factorielle-iter"></div>
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
@@ -207,7 +209,7 @@ algorithme factorielle(n: entier) → entier:  # n ≥ 1
 
 ### Une relation de récurrence
 
-#### <span id="facto-rec"></span> Algorithme récursif
+#### <span id="facto-rec"></span>Algorithme récursif
 
 Les preuves des algorithmes récursifs sont souvent les plus simples car ils sont souvent les plus proches de la définition récursive qu'ils implémentent. Reprenons une version (un peu modifiée) du programme du calcul de la factorielle récursif :
 
@@ -285,7 +287,7 @@ Comme $i$ va croître strictement, la condition `i ≤ n`{.language-} sera fauss
 Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se récrire de cette façon :
 
 ```pseudocode/
-algorithme factorielle'(n: entier) → entier:
+algorithme factorielle(n: entier) → entier:
     r ← 1
     i ← 1
     tant que i ≤ n - 1:
@@ -298,17 +300,20 @@ algorithme factorielle'(n: entier) → entier:
     rendre r
 ```
 
-Qui est aussi équivalent à :
+On retrouve la boucle de `factorielle(n-1)`{.language-} dans `factorielle(n)`{.language-} ce qui montre que le programme itératif est équivalent à :
 
 ```pseudocode
-algorithme factorielle''(n: entier) → entier:
-    r ← factorielle''(n-1)
-    r ← r * n
+algorithme factorielle(n: entier) → entier:
+    r ← factorielle(n-1)
+    i ← n
+
+    r ← r * i
+    i ← i + 1
 
     rendre r
 ```
 
-La boucle se comporte comme l'algorithme récursif précédent. On est ramené au cas précédent pour en prouver sa correction.
+On est ramené au cas précédent pour en prouver sa correction.
 
 ### Preuve par invariant
 
@@ -455,9 +460,11 @@ L'idée principale pour trouver un invariant est de procéder par étapes :
 
 Ce qu'il faut retenir c'est que trouver l'invariant est **à la fin du processus de création de la preuve**.
 
-### <span id="algorithme-max-iter"></span> Maximum d'un tableau
+### Maximum d'un tableau
 
 On considère l'algorithme itératif suivant :
+
+<span id="algorithme-max-tableau-iter"></span>
 
 ```pseudocode
 algorithme maximum(t: [entier]) → entier:
@@ -551,7 +558,7 @@ Cette partie là est facile si on a le bon invariant. Il suffit de regarder la v
 Pour faire ceci sans invariant de boucle, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.
 
 {% exercice %}
-Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#exercice-nombre-occurrences){.interne} et prouver qu'il fonctionne en exhibant sa version récursive.
+Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#algorithme-nombre-occurrences){.interne} et prouver qu'il fonctionne en exhibant sa version récursive.
 
 {% endexercice %}
 {% details "corrigé" %}

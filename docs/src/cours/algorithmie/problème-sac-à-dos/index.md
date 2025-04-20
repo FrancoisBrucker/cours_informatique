@@ -11,6 +11,8 @@ eleventyComputed:
 
 Le problème du sac à dos est un problème fondamental en algorithmie, nombre de problèmes courant pouvant se modéliser sous cette forme.
 
+> TBD mettre le python uniquement dans le projet et tout mettre en pseudo-code dans l'étude.
+
 ## Étude
 
 {% aller %}

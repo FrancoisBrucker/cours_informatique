@@ -102,7 +102,7 @@ La description des types de paramètres est reprise du format python : <https://
 
 Terminons par un petit exercice :
 
-<span id="exercice-nombre-occurrences"></span>
+<span id="algorithme-nombre-occurrences"></span>
 
 {% exercice %}
 Adaptez le pseudo code de l'algorithme `recherche((t: [entier], x: entier) → booléen)`{.language-} précédent pour créer l'algorithme :
