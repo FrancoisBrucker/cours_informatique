@@ -126,9 +126,9 @@ $$
 $$
 </div>
 <p>Si on arrive à mettre la même valeur à gauche et à droite on aura trouvé la complexité du problème :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
@@ -142,18 +142,23 @@ $$</p>
 
 <p>Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.</p>
 <h2><span id="recherche"></span>Exemple : recherche d'un élément dans un tableau</h2>
-<p>On va chercher à résoudre le problème de décision suivant :</p>
+<p>On va chercher à résoudre le problème suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Problème de décision</strong></p>
+<p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li><strong>nom</strong> : recherche</li>
-<li><strong>données</strong> : une valeur et un tableau d'entiers</li>
-<li><strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
+<li><strong>données</strong> :
+<ul>
+<li>un entier $x$</li>
+<li>un tableau d'entiers $T$</li>
+</ul>
+</li>
+<li><strong>question</strong> : existe-t-il un indice $0\leq i &lt; T.\mbox{\small longueur}$ tel que $T[i] = x$  ?</li>
 </ul>
 </div></div>
 
@@ -162,14 +167,14 @@ $$</p>
 <li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
 <li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche" class="interne">on a déjà calculé la complexité</a>) résout le problème</li>
 </ul>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
 <span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
 <h3><spans id="complexité-recherche"> Complexité du problème &quot;recherche&quot;</spans></h3>
 <p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $n$ pour répondre.</p>
-<p>Soit alors un tableau $T$ de taille $n$ qui ne contient pas <code>valeur</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
+<p>Soit alors un tableau $T$ de taille $n$ qui ne contient pas <code class="language-">x</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
 <p>On crée alors un tableau $T'$ de $n$ cases tel que :</p>
 <ul>
 <li>$T'[i] = T[i]$ si $i \neq i^\star$</li>
@@ -203,9 +208,9 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </div></div>
 
 <p>On peut en déduire une règle générale de la complexité d'un problème :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
@@ -233,8 +238,26 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">est_dans_tableau(T)</code>.</p>
 <p>Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
 <h4>Algorithme de la recherche dichotomique</h4>
-<p>On reprend <a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#dichotomie">l'algorithme récursif du calcul dichotomique</a> sous la forme récursive terminale et on le transcrit en algorithme itératif :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+<p>Le principe de <a href="https://fr.wikipedia.org/wiki/Recherche_dichotomique">la recherche dichotomique</a> permet de savoir si un entier donné est dans un tableau d'entier trié.</p>
+<p>On cherche à savoir si l'entier $v$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $t$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :</p>
+<ul>
+<li>si $t[\,\lfloor (a + b)/2 \rfloor\,] = v$ on a trouvé l'élément</li>
+<li>si $t[\,\lfloor (a + b)/2 \rfloor\,] &gt; v$, l'indice recherché est forcément <strong>avant</strong> $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+<ul>
+<li>$a = \lfloor (a + b)/2 \rfloor + 1$</li>
+<li>$b$ inchangé</li>
+</ul>
+</li>
+<li>si $t[\,\lfloor (a + b)/2 \rfloor\,] &lt; v$, l'indice recherché est forcément <strong>après</strong> $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+<ul>
+<li>$a$ inchangé</li>
+<li>$b' = \,\lfloor (a + b)/2 \rfloor\, - 1$</li>
+</ul>
+</li>
+</ul>
+<p>Ce principe donne l'algorithme suivant :</p>
+<p><span id="algorithme-dichotomie"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
   a <span class="token operator">←</span> <span class="token number">0</span>
   b <span class="token operator">←</span> t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
   <span class="token keyword">si</span> b <span class="token operator">></span> a<span class="token punctuation">:</span>
@@ -242,13 +265,13 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
     m <span class="token operator">←</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>  <span class="token comment"># division entière</span>
 
     <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">==</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> m
+        <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>  <span class="token comment"># m est l'indice</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">&lt;</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
         a <span class="token operator">←</span> m <span class="token operator">+</span> <span class="token number">1</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">></span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
         b <span class="token operator">←</span> m <span class="token operator">-</span> <span class="token number">1</span>
 
-  <span class="token keyword">rendre</span> <span class="token operator">-</span><span class="token number">1</span>
+  <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
 </code></pre>
 <p>Étudions l'algorithme :</p>
 <ul>
@@ -263,8 +286,8 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <li><strong>finitude</strong>. La quantité entière <code class="language-">b - a</code> <strong>décroît strictement</strong> à chaque itération, elle sera donc strictement négative après un nombre fini d'opération et l'algorithme s'arrêtera.</li>
 <li><strong>preuve</strong>.
 <ol>
-<li>on montre trivialement l'invariant de boucle suivant: si valeur est dans <code class="language-">t</code>, alors sa position est plus grande que <code class="language-">a</code> et plus petite que <code class="language-">b</code></li>
-<li>si l'on sort de la boucle l'invariant est toujours vérifié mais comme <code class="language-">a</code> &gt; <code class="language-">b</code>, <code class="language-">v</code> ne peut être dans <code class="language-">t</code></li>
+<li>on montre trivialement l'invariant de boucle suivant: si valeur est dans <code class="language-">T</code>, alors sa position est plus grande que <code class="language-">a</code> et plus petite que <code class="language-">b</code></li>
+<li>si l'on sort de la boucle l'invariant est toujours vérifié mais comme <code class="language-">a</code> &gt; <code class="language-">b</code>, <code class="language-">x</code> ne peut être dans <code class="language-">T</code></li>
 </ol>
 </li>
 </ul>
@@ -299,7 +322,18 @@ C(n) & = & 3 \cdot \mathcal{O}(1) + \\
 \end{array}
 $$
 </div>
-<p>Comme à chaque itération, <code class="language-">b - a</code> est divisé par 2 : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la taille du tableau) :</p>
+<p>Comme à chaque itération, <code class="language-">b - a</code> est divisé par 2, il y a autant d'itérations que l'on peut diviser $T.\mbox{\small longueur}$ par 2.</p>
+<p>Si $K$ est ce nombre d'itérations, on a que : $2^{K} \leq T.\mbox{\small longueur}$. Il existe un nombre $p$ tel que $2^p \leq T.\mbox{\small longueur} &lt; 2^{p + 1}$. On ne peut donc pas diviser $T.\mbox{\small longueur}$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(T.\mbox{\small longueur})$ puisque :</p>
+<div>
+$$
+\begin{array}{lcccl}
+    2^p &\leq &T.\mbox{\small longueur} &<& 2^{p + 1}\\
+    \log_2(2^p) &\leq &\log_2(T.\mbox{\small longueur}) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
+    p &\leq &\log_2(T.\mbox{\small longueur}) &<& p + 1
+\end{array}
+$$
+</div>
+<p>On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la taille du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -307,7 +341,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'algorithme <code class="language-">recherche_dichotomique</code> résout le problème &quot;recherche ordonnée&quot; en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)</p>
+<p>L'algorithme <code class="language-">recherche_dichotomique</code> résout le problème &quot;recherche ordonnée&quot; en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
 </div></div>
 
 <h4><span id="complexité-recherche-ordonnée"></span> Complexité du problème &quot;recherche ordonnée&quot;</h4>
@@ -321,13 +355,13 @@ $$
 <p>Remarquez bien que la preuve que l'on a donné pour la complexité de <em>&quot;recherche&quot;</em> ne fonctionne pas dans le cas de &quot;recherche ordonnée&quot;. On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.</p>
 </div></div>
 
-<p>Commençons par remarquer que <code class="language-">v</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout &quot;recherche ordonnée&quot; doit ainsi réussir à distinguer parmi $n + 1$ cas :</p>
+<p>Commençons par remarquer que <code class="language-">x</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout &quot;recherche ordonnée&quot; doit ainsi réussir à distinguer parmi $n + 1$ cas :</p>
 <ul>
-<li>soit <code class="language-">v</code> n'est pas dans tableau</li>
-<li>soit <code class="language-">v</code> est à l'indice 0 du tableau</li>
-<li>soit <code class="language-">v</code> est à l'indice 1 du tableau</li>
+<li>soit <code class="language-">x</code> n'est pas dans tableau</li>
+<li>soit <code class="language-">x</code> est à l'indice 0 du tableau</li>
+<li>soit <code class="language-">x</code> est à l'indice 1 du tableau</li>
 <li>...</li>
-<li>soit <code class="language-">v</code> est à l'indice $n-1$ du tableau</li>
+<li>soit <code class="language-">x</code> est à l'indice $n-1$ du tableau</li>
 </ul>
 <p>En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations <code>si alors sinon</code>). De là :</p>
 <ul>
@@ -359,9 +393,9 @@ $$
 </ul>
 <p>On a alors la propriété suivante :</p>
 <p><span id="n-test-2n"></span></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>

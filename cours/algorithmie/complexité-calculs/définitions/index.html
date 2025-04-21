@@ -113,34 +113,34 @@
 </div></div>
 
 <p>Par exemple le pseudo-code suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">x <span class="token operator">←</span> <span class="token number">30</span></span>
-<span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">12</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> <span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    z <span class="token operator">←</span> <span class="token string">"entre 13 et 35"</span></span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">age <span class="token operator">←</span> <span class="token number">42</span></span>
+<span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>age <span class="token operator">≥</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>age <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    personne <span class="token operator">←</span> <span class="token string">"teenager"</span></span></code></pre>
 <ul>
 <li>première ligne : 2 instructions
 <ol>
-<li>Création de l'entier valant 30 : 1 instruction</li>
-<li>on affecte l'entier à x : 1 instruction</li>
+<li>Création de l'entier valant 42 : 1 instruction</li>
+<li>on affecte l'entier à la variable <code class="language-">age</code> : 1 instruction</li>
 </ol>
 </li>
 <li>deuxième ligne : 8 instructions
 <ol>
-<li>faire <code class="language-">x &gt; 12</code>. Pour cela :
+<li>faire <code class="language-">age ≥ 12</code>. Pour cela :
 <ul>
 <li>on crée l'entier valant 12 : 1 instruction</li>
-<li>on récupère la valeur de <code class="language-">x</code> : 1 instruction</li>
+<li>on récupère la valeur de <code class="language-">age</code> : 1 instruction</li>
 <li>on effectue la comparaison : 1 instruction</li>
 </ul>
 </li>
-<li>faire <code class="language-">x &lt; 36</code>. Pour cela :
+<li>faire <code class="language-">age &lt; 20</code>. Pour cela :
 <ul>
-<li>on crée l'entier valant 36 : 1 instruction</li>
-<li>on récupère la valeur de <code class="language-">x</code> : 1 instruction</li>
+<li>on crée l'entier valant 20 : 1 instruction</li>
+<li>on récupère la valeur de <code class="language-">age</code> : 1 instruction</li>
 <li>on effectue la comparaison : 1 instruction</li>
 </ul>
 </li>
-<li>faire l'instruction <code class="language-">AND</code> : 1 instruction</li>
-<li>faire le <code class="language-">si</code> : 1 instruction</li>
+<li>faire l'instruction <code class="language-">et</code> : 1 instruction</li>
+<li>faire l'instruction <code class="language-">si</code> : 1 instruction</li>
 </ol>
 </li>
 <li>troisième ligne : 2 instructions
@@ -161,15 +161,15 @@
 <p>Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !</p>
 </div></div>
 
-<p>Prenons par exemple le code suivant et comptons les instructions utilisées au cours de son exécution :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span></span>
+<p>Reprenons par exemple <a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#algorithme-recherche" class="interne">le code de l'algorithme recherche</a> et comptons les instructions utilisées au cours de son exécution :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
 <span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">trouve <span class="token operator">←</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">T <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">trouve <span class="token operator">←</span> recherche<span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span></span>
 <span class="highlight-line">affiche à l'écran trouve</span></code></pre>
 <ol>
 <li>exécution de la ligne 7 : 8 instructions
@@ -234,7 +234,7 @@ instructions c'est à dire $41$ instructions.</p>
 <p>De là l'instruction :</p>
 <ul>
 <li>créer un tableau de taille 42 nécessite  1 instruction</li>
-<li>créer un tableau de taille $2^{42} nécessite  1 instruction</li>
+<li>créer un tableau de taille $2^{42}$ nécessite  1 instruction</li>
 <li><code class="language-">F ← un tableau de taille 42</code> nécessite 2 instructions, une pour la création, la seconde pour l'affectation</li>
 <li><code class="language-">afficher à l'écran F[3]</code> nécessite 2 instructions, une pour retrouver l'objet associé à <code class="language-">F[3]</code>, l'autre pour l'afficher</li>
 <li><code class="language-">F[3] ← 42</code> nécessite 2 instructions, une pour créer l'entier <code class="language-">42</code>, l'autre pour l'affecter</li>
@@ -376,9 +376,9 @@ $$
 </div>
 </details>     
 </div>
-<p>Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure générale. Par exemple l'algorithme suivant qui cherche si une valeur <code class="language-">v</code> est dans un tableau <code class="language-">t</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span></span>
+<p>Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure générale. Par exemple l'algorithme suivant qui cherche si une valeur <code class="language-">v</code> est dans un tableau <code class="language-">T</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
 <span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>

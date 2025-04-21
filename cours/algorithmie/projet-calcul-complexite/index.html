@@ -121,11 +121,19 @@
 
   <p>Quelques exemples d'algorithme pour le calcul de la complexité. Nous allons reprendre les algorithmes que nous avons crée précédemment dans la partie <a href="../projet-it%C3%A9ratif-r%C3%A9cursif" class="interne">calcul et preuve d'algorithmes</a> en utilisant ceux proposés dans la correction.</p>
 <p>Nous allons aller de plus en plus vite, à mesure que nous gagnons en automatisme.</p>
-<h2>Nombre</h2>
+<h2>Maximum d'un tableau</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-max-tableau-rec" class="interne">Création et preuve de l'algorithme maximum récursif</a></p>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Reprenez le premier pseudo-code que vous avez écrit : <a href="../pseudo-code/#algorithme-nombre-occurrences" class="interne">nombre d'occurrences</a> et donnez sa complexité</p>
+<p>Donnez sa complexité de l'algorithme <code class="language-">maximum_rec</code>.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -145,21 +153,13 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Ligne à ligne :</p>
-<ol>
-<li>une affectation : $\mathcal{O}(1)$ opérations</li>
-<li>une boucle de $t.\mbox{\small longueur}$ itérations</li>
-<li>un test en $\mathcal{O}(1)$</li>
-<li>une affectation : $\mathcal{O}(1)$ opérations</li>
-<li>retour en $\mathcal{O}(1)$ opérations</li>
-</ol>
-<p>Les lignes 2,3 et 4 sont effectuées $t.\mbox{\small longueur}$ fois, la complexité totale est donc en :</p>
+<p>Toutes les lignes de l'algorithme sont en $\mathcal{O}(1)$ à part la récursion. Comme la récursion est faite sur la taille du tableau, on va noter $C(n)$ sa complexité où $n$ est la taille du tableau passé en paramètre. Elle satisfait alors l'équation :</p>
 <div>
 $$
-\mathcal{O}(1) + t.\mbox{\small longueur} \cdot (\mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)
+C(n) = \mathcal{O}(1) + C(n-1)
 $$
 </div>
-<p>Ce qui donne une complexité totale de $\mathcal{O}(t.\mbox{\small longueur})$.</p>
+<p>On a vu en cours que cette équation se résout en : $C(n) = \mathcal{O}(n)$.</p>
 </div>
 </details>     
 </div>
@@ -209,18 +209,19 @@ $$
 </details>     
 </div>
 <h2><span id="égalité-tableaux"></span>Égalité de tableaux</h2>
+<h3>Intersection non vide</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#%C3%A9galit%C3%A9-tableaux" class="interne">Création et preuve de l'algorithme d'égalité de tableau</a></p>
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-intersection-non-vide" class="interne">Création et preuve de l'algorithme d'intersection non vide</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Quelle est la complexité de l'algorithme <code class="language-">égalité</code> ?</p>
+<p>Quelle est la complexité min et max de l'algorithme <code class="language-">intersection_non_vide</code> ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -240,7 +241,96 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il faut exécuter l'algorithme <code class="language-">nombre</code>, de complexité égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(t1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + t2.\mbox{\small longueur})$</p>
+<ul>
+<li>Dans le meilleur des cas, si $T1 = T2$ par exemple, le premier test d'égalité est vérifié et on rend directement <code>Vrai</code> : la complexité min est $\mathcal{O}(1)$</li>
+<li>Dans le cas le pire, si les deux tableaux ne contiennent aucune valeur commune, on rend <code>Faux</code> et on a effectué toutes les itérations des deux boucles <code>pour chaque</code> imbriquées : on a effectué $\mathcal{O}(T1.\mbox{\small longueur} \cdot T2.\mbox{\small longueur})$ opérations.</li>
+</ul>
+</div>
+</details>     
+</div>
+<h3>Mêmes valeurs</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-intersection-non-vide" class="interne">Création et preuve de l'égalités des valeurs</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité min et max de l'algorithme <code class="language-">égalité_valeurs</code> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>
+<p>Dans le meilleur des cas, si les deux tableaux ne contiennent aucune valeur commune, on rend <code>Faux</code> le plus vite possible. L'algorithme fait une seule itération de la première boucle <code class="language-">tant que</code> et toutes les itérations de la seconde : la complexité min est $\mathcal{O}(T2.\mbox{\small longueur})$</p>
+</li>
+<li>
+<p>Dans le cas le pire, si $T1 = T2$ par exemple, on rend <code>Vrai</code> et on a effectué toutes les itérations des deux boucles <code>pour chaque</code> imbriquées : on a effectué $\mathcal{O}(T1.\mbox{\small longueur} \cdot T2.\mbox{\small longueur})$ opérations.</p>
+</li>
+</ul>
+</div>
+</details>     
+</div>
+<h3>Permutations</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-intersection-non-vide" class="interne">Création et preuve de l'égalités des éléments</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité min et max de l'algorithme <code class="language-">permutation</code> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>
+<p>Dans le meilleur des cas, si les deux tableaux ne contiennent aucune valeur commune, on rend <code>Faux</code> le plus vite possible. L'algorithme fait une seule itération de la première boucle et une vérification de <code class="language-">nombre</code> : la complexité min est $\mathcal{O}(T1.\mbox{\small longueur} + T2.\mbox{\small longueur})$</p>
+</li>
+<li>
+<p>dans le cas le pire, si $T1 = T2$, il faut exécuter l'algorithme <code class="language-">nombre</code>, de complexité min et max égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(T1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + T2.\mbox{\small longueur})$</p>
+</li>
+</ul>
 </div>
 </details>     
 </div>
@@ -277,8 +367,9 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Toutes les lignes sont en $\mathcal{O}(1)$ et deux boucles de $\mathcal{O}(\mbox{t.longueur})$ itérations.</p>
-<p>La complexité est donc en $\mathcal{O}(1) + 2\cdot\mathcal{O}(\mbox{t.longueur}) = \mathcal{O}(\mbox{t.longueur})$</p>
+<p>L'algorithme <code class="language-">nombre</code> est en $\mathcal{O}(\mbox{T.longueur})$,
+toutes les autres lignes sont en $\mathcal{O}(1)$ et une boucle de $\mathcal{O}(\mbox{T.longueur})$ itérations.</p>
+<p>La complexité est donc en $\mathcal{O}(\mbox{T.longueur})$</p>
 </div>
 </details>     
 </div>
@@ -288,7 +379,7 @@ $$
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#suppression-valeur-r%C3%A9cursif" class="interne">Création et preuve de l'algorithme suppression valeurs récursif</a></p>
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-suppression-valeur-r%C3%A9cursif" class="interne">Création et preuve de l'algorithme suppression valeurs récursif</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -314,7 +405,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>L'algorithme est récursif calculer sa complexité va dépendre d'une équation récurrente. Une analyse rapide de l'algorithme nous indique que cette équation de récursion est basée sur la taille du tableau en entrée, on note alors $C(n)$ la complexité de <code class="language-">supprime_rec</code> pour un tableau de taille $n$ passé en entrée.</p>
+<p>L'algorithme est récursif, calculer sa complexité va dépendre d'une équation récurrente. Une analyse rapide de l'algorithme nous indique que cette équation de récursion est basée sur la taille du tableau en entrée, on note alors $C(n)$ la complexité de <code class="language-">supprime_rec</code> pour un tableau de taille $n$ passé en entrée.</p>
 <p>Regardons la complexité de l'algorithme ligne à ligne :</p>
 <ul>
 <li>lignes 1 à 4 : chaque ligne est en $\mathcal{O}(1)$. Complexité totale de ce paquet : $\mathcal{O}(1)$</li>
@@ -384,19 +475,112 @@ $$
 </div>
 </details>     
 </div>
+<h2><span id="encapsulation-récursion"></span>Encapsulation de la récursion</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-palindrome" class="interne">Création et preuve de l'algorithme palindrome</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de l'algorithme <code class="language-">palindrome</code> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Une boucle de $\mathcal{O}(T.\mbox{\small longueur})$ itérations et que des instructions en $\mathcal{O}(1)$ donnent une complexité totale de : $\mathcal{O}(T.\mbox{\small longueur})$</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-palindrome-r%C3%A9cursif" class="interne">Création et preuve de l'algorithme palindrome récursif</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de l'algorithme <code class="language-">palindrome_rec</code> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La relation de récurrence sur les paramètres d'entrée est :</p>
+<div>
+$$
+\begin{cases}
+C(T, i) = \mathcal{O}(1) + C(T, i+1)\\
+C(T, T.\mbox{\small longueur}) = \mathcal{O}(1)\\
+\end{cases}
+$$
+</div>
+<p>Cette équation se résout comme celle du cours:</p>
+<div>
+$$
+\begin{array}{lcl}
+C(T, i) & = & \mathcal{O}(1) + C(T, i+1)\\
+     & = & \mathcal{O}(1) + \mathcal{O}(1) + C(T, i+2)\\
+     & = & \dots\\
+     & = & \underbracket{\mathcal{O}(1) + \dots + \mathcal{O}(1)}_{T.\mbox{\small longueur}-i} + C(T, T.\mbox{\small longueur})\\
+     & = & (T.\mbox{\small longueur}-i)\cdot \mathcal{O}(1) + \mathcal{O}(1)\\
+     & = & \mathcal{O}(T.\mbox{\small longueur}-i)\\
+     & = & \mathcal{O}(T.\mbox{\small longueur})\\
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
 <h2>Retournement d'un tableau</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#retournement" class="interne">Création et preuve de l'algorithme retournement</a></p>
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-retournement" class="interne">Création et preuve de l'algorithme retournement</a></p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Quelle est la complexité de l'algorithme <code class="language-">reverse_indice</code> ?</p>
+<p>Quelle est la complexité de l'algorithme <code class="language-">retournement_indice</code> ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -425,35 +609,24 @@ C(i) & = & \mathcal{O}(1) + C(i + 1)\\
 \end{array}
 $$
 </div>
-<p>Avec $C(n/2) = \mathcal{O}(1)$ si $n$ est la taille du tableau. La complexité maximale sera atteinte pour $i = 0$ et dans ce cas :</p>
-<div>
-$$
-\begin{array}{lcl}
-C(0) & = & \mathcal{O}(1) + C(1)\\
-     & = & \mathcal{O}(1) + \mathcal{O}(1) + C(2)\\
-     & = & \dots\\
-     & = & \mathcal{O}(1) + \dots + \mathcal{O}(1) + C(n/2)\\
-     & = & \frac{n}{2}\cdot \mathcal{O}(1) + \mathcal{O}(1)\\
-     & = & \mathcal{O}(n)
-\end{array}
-$$
-</div>
+<p>Avec $C(n/2) = \mathcal{O}(1)$ si $n$ est la taille du tableau. Comme pour le calcul de la complexité du palindrome, on a : $C(i) = \mathcal{O}(n/2 - i) = \mathcal{O}(n)$.</p>
 </div>
 </details>     
 </div>
-<h3><span id="dichotomie"></span>Dichotomie</h3>
+<h2>McCarty</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#dichotomie" class="interne">Création et preuve de l'algorithme de la dichotomie</a></p>
+<p><a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#fonction-McCarty" class="interne">Définitions et propriétés de la fonction de McCarty</a></p>
 </div></div>
 
+<p>En utilisant uniquement la relation de récurrence, résolvez les exercices suivants (vous pourrez utiliser ce que l'on a démontré précédemment) :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Donnez la complexité de l'algorithme itératif précédent qui effectue la recherche dichotomique d'un élément dans un tableau trié.</p>
+<p>Montrer que le calcul de $M(n)$ passe par le calcul de $M^{k}(91)$ pour tout $n\leq 100$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -473,41 +646,13 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On a clairement que $b-a$ est divisé par 2 à chaque itération, il y a donc autant d'itérations que l'on peut diviser $t.{\small longueur}$ par 2.</p>
-<p>Si $K$ est le nombre d'itérations, on a que : $2^{K} \leq t.{\small longueur}$. Il existe un nombre $p$ tel que $2^p \leq t.{\small longueur} &lt; 2^{p + 1}$. On ne peut donc pas diviser $t.{\small longueur}$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(t.{\small longueur})$ puisque :</p>
-<div>
-$$
-\begin{array}{lcccl}
-    2^p &\leq &t.{\small longueur} &<& 2^{p + 1}\\
-    \log_2(2^p) &\leq &\log_2(t.{\small longueur}) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
-    p &\leq &\log_2(t.{\small longueur}) &<& p + 1
-\end{array}
-$$
-</div>
-<p>On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$.</p>
+<p>Dérive directement de la définition et du fait que on a démontré que :</p>
+<ul>
+<li>pour tout $90 \leq n &lt; 101$, on a $M(n) = M(n+1) = \dots = M(101) = 91$</li>
+<li>pour tout $n &lt; 101$, il existe $k\geq 1$ et $90 \leq n' &lt; 101$ tels que $M(n) = M^k(n')$</li>
+</ul>
 </div>
 </details>     
-</div>
-<h2>Fibonacci</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="fibonacci" class="interne">Suite de Fibonacci</a></p>
-</div></div>
-
-<h2>McCarty</h2>
-<p><a href="https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy">La fonction 91 de McCarty</a> est définie telle que :</p>
-<div>
-$$
-M(n) = \left\{
-    \begin{array}{ll}
-        n-10 & \mbox{si } n > 100 \\
-        M(M(n + 11))& \mbox{sinon.}
-    \end{array}
-\right.
-$$
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -590,15 +735,6 @@ max_compte <span class="token operator">=</span> <span class="token number">0</s
 </div>
 </details>     
 </div>
-<h2>Triangle de Pascal</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="triangle-pascal" class="interne">Triangle de Pascal</a></p>
-</div></div>
-
 
 
 </article>

@@ -255,7 +255,7 @@
 <p>On a donc 2 cas extrêmes pour le calcul :</p>
 <ol>
 <li>$K_i = 0$ à chaque itération et on peut considérer que $K_i = K=0$ pour tout $i$ dans le cas le plus favorable</li>
-<li>$K_i$ croit de $1$ à $n-1$ à chaque itération : <a href="../../complexit%C3%A9-calculs/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> nous indique qu'on peut considérer que $K_i = K=n-1$ pour tout $i$ dans le cas le moins favorable</li>
+<li>$K_i$ croit de $1$ à $n-1$ à chaque itération : <a href="../../complexit%C3%A9-calculs/complexit%C3%A9-algorithmes#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> nous indique qu'on peut considérer que $K_i = K=n-1$ pour tout $i$ dans le cas le moins favorable</li>
 </ol>
 <p>Ce qui donne une complexité de :</p>
 <div>
@@ -338,7 +338,7 @@ $$
 </div>
 </details>     
 </div>
-<p>On en conclut que le nombre moyen d'itérations dans la boucle <code class="language-">tant que</code>, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la <a href="../../complexit%C3%A9-calculs/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$</p>
+<p>On en conclut que le nombre moyen d'itérations dans la boucle <code class="language-">tant que</code>, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la <a href="../../complexit%C3%A9-calculs/complexit%C3%A9-algorithmes#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

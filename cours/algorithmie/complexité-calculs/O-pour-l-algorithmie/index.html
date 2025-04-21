@@ -160,16 +160,16 @@
 </ul>
 </div></div>
 
-<p>Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie <a href="../pseudo-code#complexit%C3%A9" class="interne">complexité des pseudo-code</a> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">x <span class="token operator">←</span> <span class="token number">30</span></span>
-<span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">12</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> <span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    z <span class="token operator">←</span> x <span class="token operator">*</span> <span class="token string">"coucou"</span></span></code></pre>
-<ol>
-<li>on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.</li>
-<li>un test avec 2 comparaisons et un <code class="language-">ET</code> pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.</li>
-<li>on affecte le résultat d'une opération élémentaire : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.</li>
-</ol>
-<p>Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ opérations.</p>
+<p>Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant <a href="../d%C3%A9finitions" class="interne">l'exemple initial de calcul de complexité</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">age <span class="token operator">←</span> <span class="token number">42</span></span>
+<span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>age <span class="token operator">≥</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>age <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    personne <span class="token operator">←</span> <span class="token string">"teenager"</span></span></code></pre>
+<ul>
+<li>première ligne : 2 instructions donc $\mathcal{O}(1)$ instructions.</li>
+<li>deuxième ligne : 8 instructions donc $\mathcal{O}(1)$ instructions.</li>
+<li>troisième ligne : 2 instructions  donc $\mathcal{O}(1)$ instructions.</li>
+</ul>
+<p>Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ instructions.</p>
 <p>En revanche, faites attention, cela ne marche que pour les constantes !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -240,12 +240,12 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <p>En revanche, ces deux <em>fonctions</em> asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de problèmes algorithmiques où il faudra comparer plusieurs algorithmes entre eux.</p>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
 <p>Prenons par exemple notre algorithme fétiche :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
 <span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
-<p>Cet algorithme recherche si le paramètre <code class="language-">x</code> est un élément de <code class="language-">t</code>.</p>
+<p>Cet algorithme recherche si le paramètre <code class="language-">x</code> est un élément de <code class="language-">T</code>.</p>
 <p>Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :</p>
 <ol>
 <li>définition de la fonction : $C_1 = \mathcal{O}(1)$</li>

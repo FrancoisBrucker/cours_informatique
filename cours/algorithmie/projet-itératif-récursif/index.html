@@ -108,7 +108,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donnez et prouvez <strong>un algorithme récursif</strong> de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">maximum_rec<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">maximum_rec<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
 <p>Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max({t[k] \vert 0\leq k \leq n})$.</p>
 </div></div>
 
@@ -129,22 +129,22 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">maximum_rec</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">maximum_rec</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">0</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-        x <span class="token operator">←</span> maximum_rec<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        x <span class="token operator">←</span> maximum_rec<span class="token punctuation">(</span>T<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
         <span class="token keyword">si</span> t<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">></span> t<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> x
         <span class="token keyword">sinon</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span><span class="token number"> n
 </span></code></pre>
 <p>Le paramètre <code class="language-">n</code> est un entier qui diminue strictement. Il sera donc à un moment égal à 0 ce qui stoppera la récursion.</p>
-<p>La correction se fait par récurrence sur <code class="language-">n</code> allant de <code class="language-">n = 0</code> à <code class="language-">n = t.longueur - 1</code>.</p>
+<p>La correction se fait par récurrence sur <code class="language-">n</code> allant de <code class="language-">n = 0</code> à <code class="language-">n = T.longueur - 1</code>.</p>
 <ol>
 <li>initialisation : pour <code class="language-">n = 0</code>, le résultat est clair.</li>
 <li>hypothèse de récurrence : on suppose que l'algorithme fonctionne pour <code class="language-">n - 1</code></li>
-<li>preuve pour <code class="language-">n - 1</code>. Si l'algorithme fonctionne pour <code class="language-">n - 1</code>, <code class="language-">x</code> contient l'indice max des indices allant de 0 à <code class="language-">n - 1</code> et on rend <code>x</code> si <code>t[x] &gt; t[n]</code> et <code>n</code> sinon : on rend bien l'indice de la valeur maximale du tableau.</li>
+<li>preuve pour <code class="language-">n - 1</code>. Si l'algorithme fonctionne pour <code class="language-">n - 1</code>, <code class="language-">x</code> contient l'indice max des indices allant de 0 à <code class="language-">n - 1</code> et on rend <code>x</code> si <code>T[x] &gt; T[n]</code> et <code>n</code> sinon : on rend bien l'indice de la valeur maximale du tableau.</li>
 </ol>
 </div>
 </details>     
@@ -157,6 +157,7 @@
 <p>Donnez et prouvez <strong>un algorithme itératif</strong> de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">concaténation<span class="token punctuation">(</span>début<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> fin<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></code></pre>
 <p>Qui rend <strong>un nouveau tableau</strong> contenant la concaténation de <code class="language-">début</code> et de <code class="language-">fin</code>.</p>
+<p>Vous utiliserez des invariants de boucle pour le prouver.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -192,7 +193,7 @@
 <p>La finitude est claire puisqu'il n'y a que deux boucles de type <code class="language-">pour chaque</code>.</p>
 <p>On a deux boucles, il faut donc à priori 2 invariants, un pour chaque boucle. Ici il est clair que l'on va remplir tous les éléments des tableaux <code class="language-">début</code> et <code class="language-">fin</code> dans <code class="language-">t</code>. L'invariant peut être :</p>
 <blockquote>
-<p>si $i_0$ est la valeur de $i$ à la ligne 4 (resp. 8) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. <code class="language-">fin</code>) pour tout $0\leq k \leq j$.</p>
+<p>si $i_0$ est la valeur de $i$ à la ligne 5 (resp. 9) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. <code class="language-">fin</code>) pour tout $0\leq k \leq j$.</p>
 </blockquote>
 <p>Démontrons l'invariant rigoureusement pour la première boucle.</p>
 <p>À la fin de la première itération, on a bien :</p>
@@ -269,7 +270,7 @@
 </div>
 </details>     
 </div>
-<h3>Même valeurs</h3>
+<h3>Mêmes valeurs</h3>
 <p><span id="algorithme-égalité-valeurs"></span></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -322,13 +323,13 @@
 </div>
 <h3>Permutations</h3>
 <p>Terminons cette partie avec l'algorithme suivant :</p>
-<p><span id="algorithme-égalité"></span></p>
+<p><span id="algorithme-permutation"></span></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Écrivez <strong>un algorithme itératif</strong> de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> égalité<span class="token punctuation">(</span>T1<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span></code></pre>
-<p>Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois).</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">permutation</span><span class="token punctuation">(</span>T1<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span></code></pre>
+<p>Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois), c'est à dire de savoir s'il existe une permutation $\sigma$ de $[0, T.\mbox{\small \longueur}[$ telle que $T1[i] = T2[\sigma(i)]$ pour tout $i \in [0, T.\mbox{\small \longueur}[$ (on a pas besoin de la donner).</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -336,7 +337,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser <a href="../pseudo-code/#algorithme-nombre-occurrences" class="interne">l'algorithme <code class="language-">nombre</code></a> que l'on a déjà écrit.</p>
+<p>Vous pourrez utiliser <a href="../pseudo-code/#algorithme-nombre-occurrences" class="interne">l'algorithme <code class="language-">nombre</code></a> qu'on a déjà étudié.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -356,7 +357,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant <a href="../pseudo-code/#algorithme-nombre-occurrences" class="interne">notre algorithme <code class="language-">nombre</code></a> Ce qui donne un l'algorithme suivant :</p>
+<p>Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant <code class="language-">nombre</code>, on a l'algorithme suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> égalité<span class="token punctuation">(</span>T1<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
     <span class="token keyword">pour chaque</span> x de T1<span class="token punctuation">:</span>
         <span class="token keyword">si</span> nombre<span class="token punctuation">(</span>T1<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">≠</span> nombre<span class="token punctuation">(</span>T2<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -381,7 +382,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser <a href="../pseudo-code/#algorithme-nombre-occurrences" class="interne">l'algorithme <code class="language-">nombre</code></a> que l'on a déjà écrit.</p>
+<p>Vous pourrez la encore utiliser <a href="../pseudo-code/#algorithme-nombre-occurrences" class="interne">l'algorithme <code class="language-">nombre</code></a>.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -510,6 +511,7 @@
 </details>     
 </div>
 <p>Et maintenant la version récursive :</p>
+<p><span id="algorithme-palindrome-récursif"></span></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -544,7 +546,7 @@
 <span class="highlight-line">    <span class="token keyword">rendre</span> palindrome_rec<span class="token punctuation">(</span>T<span class="token punctuation">,</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></span></code></pre>
 <p>La premiere condition est la condition d'arrêt de la récursion puisque dans ce cas là $i$ a dépassé la moitié du tableau.</p>
 <p>Puis on utilise l'équation de récurrence :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">palindrome<span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> ET palindrome<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">palindrome<span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">et</span> palindrome<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -560,7 +562,7 @@
 <p>Cette technique est <strong>à utiliser</strong> dès que l'on a besoin de paramètres récursifs mais non utile pour l'algorithme général.</p>
 </div></div>
 
-<p>Pour le retournement d'un tableau, l'algorithme sera :</p>
+<p>Pour savoir si un tableau est un palindrome, l'algorithme sera :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">palindrome_rec</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  <span class="token comment"># code de la fonction récursive</span>
 
@@ -1028,7 +1030,7 @@ $$
 </div>
 </details>     
 </div>
-<h2>Fonction 91 de McCarty</h2>
+<h2><span id="fonction-McCarty"></span>Fonction 91 de McCarty</h2>
 <p>Terminons cette partie par une bizarrerie algorithmique comme on les aime. Elle vient de <a href="https://fr.wikipedia.org/wiki/John_McCarthy">John McCarty</a>, informaticien de renom et créateur <a href="https://fr.wikipedia.org/wiki/Lisp">du langage Lisp</a> en 1958. Lisp est le premier langage fonctionnel et a été <a href="https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation">le deuxième langage de programmation</a> au monde, deux ans après <a href="https://fr.wikipedia.org/wiki/Fortran">le Fortran</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1158,13 +1160,14 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Pour $90 \leq n &lt; 101$, on a :</p>
+<p>Comme on peut écrire cette fonction comme une recursion terminale, l'écriture iterative est aisée :
+Pour $90 \leq n &lt; 101$, on a :</p>
 <div>
 $$
 \begin{array}{lcl}
 M(n) & = & M(M(n + 11))\\
-     &   & M((n + 11) - 10)\\
-     &   & M(n + 1)
+     & = & M((n + 11) - 10)\\
+     & = & M(n + 1)
 \end{array}
 $$
 </div>
@@ -1175,7 +1178,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Déduire de l'exercice précédent que pour tout $n &lt; 101$, il existe $k\geq 1$ et $90 \leq n &lt; 101$ tel que $M(n) = M^k(n')$.</p>
+<p>Déduire de l'exercice précédent que pour tout $n &lt; 101$, il existe $k\geq 1$ et $90 \leq n' &lt; 101$ tels que $M(n) = M^k(n')$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1197,13 +1200,14 @@ $$
 <div class="mx-8 pb-2">
 <div>
 $$
-\begin{array}{lcl}
-M(n) & = & M^{2}(n + 11)\\
-     &   & M(M(n + 11))\\
-     &   & M(M^{2}(n + 22))\\
-     &   & M^{3}(n + 22)\\
-     &   & \dots\\
-     &   & M^{k}(n')\\
+\begin{array}{lclr}
+M(n) & = & M^{2}(n + 11)&\\
+     & = & M(M(n + 11))&\\
+     & = & M(M^{2}(n + 22))&\\
+     & = & M^{3}(n + 22)&\\
+     & = & \dots&\\
+     & = & M^{p}(n + (p-1) \cdot 11)&\\
+     & = & M^{k}(n') &\mbox{ avec $k$ le premier entier tel que } n+(k-1)\cdot 11 \geq 90\\
 \end{array}
 $$
 </div>
@@ -1213,7 +1217,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Donnez la valeur de $M(n)$ pour tout $n&lt; 101$ et en déduire que la fonction de McCarty est bien définie pour tout entier positif (ie le calcul se fait en un no,bre fini de récursion).</p>
+<p>Donnez la valeur de $M(n)$ pour tout $n&lt; 101$ et en déduire que la fonction de McCarty est bien définie pour tout entier positif (<em>ie.</em> le calcul se fait en un nombre fini de récursion).</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1233,7 +1237,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On a $M(91) = M(91 + 1 + \dots + 1) = M(101) = 91$ et pour tout $n &lt; 90$ on il existera $k &gt; 1$ tel que $M(n) = M^k(91) = 91$</p>
+<p>On a $M(91) = M(92) = \dots = M(101) = 91$ et pour tout $n &lt; 90$ on il existera $k &gt; 1$ et $91\leq n'&lt; 101 tels que $M(n) = M^k(n') = 91$</p>
 <p>Comme il faut un nombre fini d'itération pour passer de $M(n)$ à $M(n+1)$ on en déduit qu'il faut bien un nombre fini d'itération pour calculer $M(91)$ (disons $I$), et donc également pour calculer $M^k(91)$ quelque soit $k&gt;0$ (il en faut $k\cdot I$).</p>
 </div>
 </details>     
@@ -1266,7 +1270,7 @@ $$
         <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">10</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">91</span></code></pre>
-<p>Dans le même ordre d'idée que la fonction de Takeuchi.</p>
+<p>Dans le même ordre d'idée que <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#fonction-Takeuchi" class="interne">la fonction de Takeuchi</a>, c'est un leurre.</p>
 </div>
 </details>     
 </div>
