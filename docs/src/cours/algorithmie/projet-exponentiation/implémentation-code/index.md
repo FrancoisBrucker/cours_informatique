@@ -56,7 +56,7 @@ On se force, jusqu'à que cela devienne un automatisme, à écrire du code styl�
 
 {% faire %}
 
-- dans le fichier `exponentiation.py`{.fichier} : implémentez [l'algorithme naïf itératif](../étude-algorithmique/#pseudo-code-naif) dans une fonction nommée `puissance_naif`{.language-} (utilisez des noms explicites).
+- dans le fichier `exponentiation.py`{.fichier} : implémentez [l'algorithme naïf itératif](../étude-algorithmique/#algorithme-puissance-naif) dans une fonction nommée `puissance_naif`{.language-} (utilisez des noms explicites).
 - dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf itératif :
   - vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
   - vérifiez qu'un cas général est correct (comme $2^3$ par exemple)
@@ -91,7 +91,7 @@ En utilisant le débogueur, vérifiez l'invariant de boucle (pour pourrez utilis
 
 {% faire %}
 
-- dans le fichier `exponentiation.py`{.fichier} : implémentez [l'algorithme rapide](../étude-algorithmique/#pseudo-code-rapide) dans une fonction nommée `puissance_rapide`{.language-}
+- dans le fichier `exponentiation.py`{.fichier} : implémentez [l'algorithme rapide](../étude-algorithmique/#algorithme-puissance-indienne) dans une fonction nommée `puissance_rapide`{.language-}
 - dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf.
 
 Vérifier que vos tests se lancent bien dans le terminal.
@@ -131,7 +131,7 @@ Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces _tem
 
 Le protocole de calcul sera alors le suivant :
 
-{% attention "**À retenir**" %}
+{% note "**À retenir**" %}
 
 Pour mesurer le temps d'exécution d'un algorithme :
 
@@ -140,7 +140,7 @@ Pour mesurer le temps d'exécution d'un algorithme :
 3. on note le temps $t_2$ utilisé par le programme juste après exécution l'algorithme
 
 La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
-{% endattention %}
+{% endnote %}
 
 ### Comment faire
 

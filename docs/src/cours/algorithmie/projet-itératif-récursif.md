@@ -14,6 +14,16 @@ Nous y verrons divers moyens de triturer des tableaux de façon itérative et r�
 - [encapsulation de la récursion](./#encapsulation-récursion){.interne}
 - [recursion terminale et programme itératif](./#récursion-terminale){.interne}
 
+{% note "**À retenir**" %}
+Une fois un algorithme créé, on le teste toujours sur de petites instances en se mettant à la place de l'ordinateur.
+
+- on numérote chaque ligne
+- on note sur une feuille les variables
+- on exécute ligne à ligne en notant les différents résultats
+- à la fin on vérifie que le retour de l'algorithme est bien correct
+
+{% endnote %}
+
 ## Maximum d'un tableau
 
 On a déjà vue [une version itérative de cet algorithme](../prouver-un-algorithme/#algorithme-max-tableau-iter){.interne}, voyons (ou plutôt voyez) comme en faire un version recursive :

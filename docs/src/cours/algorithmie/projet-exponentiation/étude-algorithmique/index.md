@@ -32,137 +32,41 @@ $$
 
 Bien que non nécessaire, la contrainte de positivité stricte pour $x$ et $n$ nous permet d'éviter tout cas particulier qui pourrait (tôt ou tard) advenir dans les preuves lorsque $x$ ou $n$ vaut 0.
 
-{% exercice %}
-Écrivez un algorithme récursif en python pour résoudre cette équation.
-{% endexercice %}
-{% details  "solution" %}
+L'algorithme suivant, dérivant directement de la définition (donc correct) permet de calculer la puissance de deux nombres :
 
 ```pseudocode
-algorithme puissance(nombre: entier, exposant: entier) → entier:
-    si exposant == 1:
-        rendre nombre
-    rendre nombre * puissance(nombre, exposant - 1)
+algorithme puissance(x: entier, n: entier) → entier:
+    si n == 1:
+        rendre x
+    rendre x * puissance(x, n - 1)
 ```
 
-Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
+Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons [la récursion terminale](../../projet-itératif-récursif/#récursion-terminale). Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre`r`{.language-}) :
 
-{% enddetails %}
+```pseudocode
+fonction puissance_terminale(x: entier, n: entier, r: entier) → entier:
+    si n == 1:
+        rendre r
+    rendre puissance_terminale(x, n - 1, x * r)
 
-Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs). Pour créer l'algorithme itératif à partir d'une définition récursive, il faut pouvoir stocker les résultats intermédiaires dans une variable :
+algorithme puissance(x: entier, n: entier) → entier:
+    rendre puissance_terminale(x, n, x)
+```
 
-<span id="pseudo-code-naif"></span>
+Ce permet d'écrire la version itérative par un simple jeu de réécriture :
+
+<span id="algorithme-puissance-naif"></span>
 
 ```pseudocode/
 algorithme puissance(x: entier, n: entier) → entier:
     r ← x
-    c ← n - 1
-    tant que c > 0:
+    tant que n > 1:
         r ← r * x
-        c ← c - 1
+        n ← n - 1
     rendre r
 ```
 
-C'est cet algorithme itératif que nous allons étudier maintenant.
-
-### <span id="marche-naif"></span> Est-ce que ça marche ?
-
-On teste l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :
-
-{% attention "**À retenir**" %}
-On teste toujours ses algorithmes sur de petits nombres en se mettant à la place de l'ordinateur.
-
-- on numérote chaque ligne
-- on note sur une feuille les variables
-- on exécute ligne à ligne en notant les différents résultats
-- à la fin on vérifie que le retour de l'algorithme est bien correct
-
-{% endattention %}
-
-Les cas simples que l'on peut essayer sans peine, et permet de **tester les cas limites** :
-
-- `n`{.language-} vaut 1
-- `x`{.language-} vaut 2 ou 3 (un peu plus que les cas triviaux)
-
-Puis un cas un peu plus compliqué pour **tester si les boucles fonctionnent bien** :
-
-- `n`{.language-} vaut 2 ou 3
-- `x`{.language-} vaut 2 ou 3
-
-{% faire %}
-Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
-{% endfaire %}
-
-Une fois qu'on est convaincu que ça fonctionne, on prouve sa finitude, son exactitude et on calcule sa complexité.
-
-### <span id="preuve-naif"></span> Preuve
-
-En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il calcule bien l'exponentiation.
-
-#### <span id="finitude-naif"></span> Finitude
-
-- `c`{.language-} est un entier qui diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0.
-- condition : il faut que `c`{.language-} soit un nombre positif pour que l'algorithme s'arrête. Donc `n`{.language-} doit être un nombre strictement positif.
-
-{% attention "**À retenir**" %}
-Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus petit que, plus grand que, différent de) plutôt que des conditions d'égalité. Ceci pour deux raisons majeures :
-
-- L'égalité entre réels n'existe pas en informatique, ces conditions ne fonctionneront donc pas avec eux.
-- dans l'exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme
-
-{% endattention %}
-
-#### Preuve de l'algorithme
-
-Le fonctionnement de l'algorithme est _à peu près_ clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une _jolie_ preuve en exhibant un invariant de boucle.
-
-{% note "**Invariant de boucle**" %}
-Si `x`{.language-} et `n`{.language-} sont des entiers strictement positifs, on a l'invariant de boucle : $ r \cdot x^c = x^n $
-{% endnote %}
-{% details "Comment trouver cet invariant", "open" %}
-Un invariant doit capturer en une phrase le but de la boucle. En regardant notre boucle on remarque qu'à chaque itération :
-
-- $r$ est multiplié par $x$
-- $c$ est décrémenté de 1
-
-Comme $r$ et $c$ valent initialement $x$ et $n-1$ respectivement, on en conclut un premier invariant possible (il faudra encore le démontrer rigoureusement plus tard) : "à la fin de la $i$ème itération, $c=n-i-1$ et $r = x^{i+1}$".
-
-Ceci pourrait être un invariant tout ce qu'il y a de plus correct, mais on peut faire plus élégant en injectant $i = n-c-1$, la première égalité, dans la seconde :
-
-<div>
-$$
-r = x^{n-c-1+1} = x^{n-c}
-$$
-</div>
-
-Ce qui donne l'invariant $r \cdot x^c = x^n$ qui tient en une ligne et n'a plus besoin de la variable auxiliaire $i$ qui compte le nombre d'itérations effectuées.
-
-{%enddetails %}
-{% info %}
-L'invariant est joli car il n'a pas besoin du nombre d'itérations passées pour l'exprimer. Ce ne sera pas toujours le cas.
-{% endinfo %}
-
-Prouvons cet invariant.
-
-Juste avant la première itération de la boucle, `r = x`{.language-} et `c = n-1`{.language-} notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes](../preuve-algorithme), on met un `'` aux variable après l'itération :
-
-- `x' = x`{.language-}
-- `n' = n`{.language-}
-- `r' = r * x`{.language-}
-- `c' = c - 1`{.language-}
-
-On a alors :
-
-$$
-r' \cdot {(x')}^{c'} = (r \cdot x) \cdot x^{c - 1} = r \cdot x^c = x^n = {(x')}^{n'}
-$$
-
-On a démontré notre invariant de boucle.
-
-{% note %}
-Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque `c = 0`{.language-}. Et là : $r \cdot x^c = r = x^n$
-{% endnote %}
-
-### <span id="complexité-naif"></span> Complexité de l'algorithme naif
+Comme l'algorithme est issu d'une réécriture d'un algorithme récursif correct, il l'est forcément. Il ne nous reste donc plus qu'à calculer sa complexité.
 
 Ligne à ligne :
 
@@ -211,34 +115,9 @@ x^n = \left\{
 $$
 </div>
 
-{% exercice %}
-Écrivez un algorithme récursif pour résoudre cette équation.
-{% endexercice %}
-{% details  "solution" %}
+On propose l'algorithme itératif suivant pour résoudre le problème :
 
-```pseudocode/
-algorithme puissance(x: entier, n: entier) → entier:
-    si n == 1:
-        rendre x
-    sinon si n % 2 ≠ 0:
-        rendre x * puissance(x, n - 1)
-
-    rendre puissance(x * x, n // 2)
-```
-
-On a utilisé deux choses :
-
-- L'opérateur `%`{.language-} signifie _modulo_ en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si `exposant`{.language-} est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
-- la division entière `//`{.language-} pour s'assurer que exposant reste un entier. Le type de `4 / 2`{.language-} en python est un réel alors que le type de `4 // 2`{.language-} est un entier.
-
-Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
-
-Remarquez que cette version n'est cependant par récursive terminal. On pourrit le faire en ajoutant un accumulateur comme paramètre.
-{% enddetails %}
-
-Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient :
-
-<span id="pseudo-code-rapide"></span>
+<span id="algorithme-puissance-indienne"></span>
 
 ```pseudocode/
 algorithme puissance(x: entier, n: entier) → entier:
@@ -246,7 +125,7 @@ algorithme puissance(x: entier, n: entier) → entier:
     c ← n - 1
 
     tant que c > 0:
-        si c % 2 == 1:
+        si c mod 2 == 1:
             r ← r * x
             c ← c - 1
         sinon:
@@ -256,11 +135,11 @@ algorithme puissance(x: entier, n: entier) → entier:
     rendre r
 ```
 
-C'est cet algorithme itératif que nous allons étudier maintenant.
+C'est cet algorithme que nous allons étudier maintenant.
 
 ### <span id="marche-rapide"></span> Est-ce que ça marche ?
 
-Comme pour l'algorithme naïf, on vérifie que tout fonctionne avec les cas simples :
+Commençons par vérifier que l'algorithme fonctionne sur des cas simples :
 
 - `n`{.language-} vaut 1 ou 2
 - `x`{.language-} vaut 2 ou 3 (un peu plus que les cas triviaux)
@@ -276,11 +155,11 @@ Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-de
 
 ### <span id="finitude-rapide"></span> Preuve de finitude
 
-De même que pour l'algorithme simple, `c`{.language-} diminue strictement à chaque boucle (ou il diminue de `-1`{.language-} ou il est divisé par 2). Si `n`{.language-} est un entier strictement positif en entrée, `c`{.language-} reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.
+La variable `c`{.language-} diminue strictement à chaque boucle (ou il diminue de `-1`{.language-} ou il est divisé par 2). Si `n`{.language-} est un entier strictement positif en entrée, `c`{.language-} reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.
 
 ### <span id="preuve-rapide"></span> Preuve de l’algorithme
 
-On va montrer que l'invariant de l'algorithme naïf fonctionne aussi. En notant `X`{.language-} la valeur initial de `x`{.language-} en entrée de l'algorithme, on a l'invariant suivant :
+On va montrer que l'invariant de boucle suivant fonctionne. En notant `X`{.language-} la valeur initial de `x`{.language-} en entrée de l'algorithme, on a le très élégant invariant suivant :
 
 $$
 r \cdot x^c = X^n

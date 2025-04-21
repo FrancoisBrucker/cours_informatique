@@ -166,7 +166,7 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 ### projet : problèmes liés à l'exponentiation
 
 {% aller %}
-[Calculer $x^y$](./projet-exponentiation){.interne}
+[Calculer $x^n$](./projet-exponentiation){.interne}
 {% endaller %}
 {% aller %}
 [Les suites additives](./projet-suite-additive){.interne}
