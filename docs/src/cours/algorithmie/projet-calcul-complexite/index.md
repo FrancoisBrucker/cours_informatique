@@ -18,31 +18,27 @@ Quelques exemples d'algorithme pour le calcul de la complexité. Nous allons rep
 
 Nous allons aller de plus en plus vite, à mesure que nous gagnons en automatisme.
 
-## Nombre
+## Maximum d'un tableau
+
+{% aller %}
+[Création et preuve de l'algorithme maximum récursif](../projet-itératif-récursif/#algorithme-max-tableau-rec){.interne}
+{% endaller %}
 
 {% exercice %}
-Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#algorithme-nombre-occurrences){.interne} et donnez sa complexité
+ Donnez sa complexité de l'algorithme `maximum_rec`{.language-}.
 
 {% endexercice %}
 {% details "corrigé" %}
 
-Ligne à ligne :
-
-1. une affectation : $\mathcal{O}(1)$ opérations
-2. une boucle de $t.\mbox{\small longueur}$ itérations
-3. un test en $\mathcal{O}(1)$
-4. une affectation : $\mathcal{O}(1)$ opérations
-5. retour en $\mathcal{O}(1)$ opérations
-
-Les lignes 2,3 et 4 sont effectuées $t.\mbox{\small longueur}$ fois, la complexité totale est donc en :
+Toutes les lignes de l'algorithme sont en $\mathcal{O}(1)$ à part la récursion. Comme la récursion est faite sur la taille du tableau, on va noter $C(n)$ sa complexité où $n$ est la taille du tableau passé en paramètre. Elle satisfait alors l'équation :
 
 <div>
 $$
-\mathcal{O}(1) + t.\mbox{\small longueur} \cdot (\mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)
+C(n) = \mathcal{O}(1) + C(n-1)
 $$
 </div>
 
-Ce qui donne une complexité totale de $\mathcal{O}(t.\mbox{\small longueur})$.
+On a vu en cours que cette équation se résout en : $C(n) = \mathcal{O}(n)$.
 
 {% enddetails %}
 
@@ -75,16 +71,50 @@ La complexité totale est donc en $\mathcal{O}(\mbox{début.longueur} + \mbox{fi
 
 ## <span id="égalité-tableaux"></span>Égalité de tableaux
 
-{% aller %}
-[Création et preuve de l'algorithme d'égalité de tableau](../projet-itératif-récursif/#égalité-tableaux){.interne}
-{% endaller %}
+### Intersection non vide
 
+{% aller %}
+[Création et preuve de l'algorithme d'intersection non vide](../projet-itératif-récursif/#algorithme-intersection-non-vide){.interne}
+{% endaller %}
 {% exercice %}
-Quelle est la complexité de l'algorithme `égalité`{.language-} ?
+Quelle est la complexité min et max de l'algorithme `intersection_non_vide`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
-Il faut exécuter l'algorithme `nombre`{.language-}, de complexité égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(t1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + t2.\mbox{\small longueur})$
+- Dans le meilleur des cas, si $T1 = T2$ par exemple, le premier test d'égalité est vérifié et on rend directement `Vrai` : la complexité min est $\mathcal{O}(1)$
+- Dans le cas le pire, si les deux tableaux ne contiennent aucune valeur commune, on rend `Faux` et on a effectué toutes les itérations des deux boucles `pour chaque` imbriquées : on a effectué $\mathcal{O}(T1.\mbox{\small longueur} \cdot T2.\mbox{\small longueur})$ opérations.
+
+{% enddetails %}
+
+### Mêmes valeurs
+
+{% aller %}
+[Création et preuve de l'égalités des valeurs](../projet-itératif-récursif/#algorithme-intersection-non-vide){.interne}
+{% endaller %}
+{% exercice %}
+Quelle est la complexité min et max de l'algorithme `égalité_valeurs`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
+
+- Dans le meilleur des cas, si les deux tableaux ne contiennent aucune valeur commune, on rend `Faux` le plus vite possible. L'algorithme fait une seule itération de la première boucle `tant que`{.language-} et toutes les itérations de la seconde : la complexité min est $\mathcal{O}(T2.\mbox{\small longueur})$
+
+- Dans le cas le pire, si $T1 = T2$ par exemple, on rend `Vrai` et on a effectué toutes les itérations des deux boucles `pour chaque` imbriquées : on a effectué $\mathcal{O}(T1.\mbox{\small longueur} \cdot T2.\mbox{\small longueur})$ opérations.
+
+{% enddetails %}
+
+### Permutations
+
+{% aller %}
+[Création et preuve de l'égalités des éléments](../projet-itératif-récursif/#algorithme-intersection-non-vide){.interne}
+{% endaller %}
+{% exercice %}
+Quelle est la complexité min et max de l'algorithme `permutation`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
+
+- Dans le meilleur des cas, si les deux tableaux ne contiennent aucune valeur commune, on rend `Faux` le plus vite possible. L'algorithme fait une seule itération de la première boucle et une vérification de `nombre`{.language-} : la complexité min est $\mathcal{O}(T1.\mbox{\small longueur} + T2.\mbox{\small longueur})$
+
+- dans le cas le pire, si $T1 = T2$, il faut exécuter l'algorithme `nombre`{.language-}, de complexité min et max égale a la taille du tableau en entrée, autant de fois qu'il y a d'éléments dans t1 et pour les tableaux t et t2. La complexité totale est donc de : $\mathcal{O}(T1.\mbox{\small longueur}) \cdot (t1.\mbox{\small longueur} + T2.\mbox{\small longueur})$
 
 {% enddetails %}
 
@@ -101,24 +131,24 @@ Quelle est la complexité de l'algorithme `supprime`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
-Toutes les lignes sont en $\mathcal{O}(1)$ et deux boucles de $\mathcal{O}(\mbox{t.longueur})$ itérations.
+L'algorithme `nombre`{.language-} est en $\mathcal{O}(\mbox{T.longueur})$,
+toutes les autres lignes sont en $\mathcal{O}(1)$ et une boucle de $\mathcal{O}(\mbox{T.longueur})$ itérations.
 
-La complexité est donc en $\mathcal{O}(1) + 2\cdot\mathcal{O}(\mbox{t.longueur}) = \mathcal{O}(\mbox{t.longueur})$
+La complexité est donc en $\mathcal{O}(\mbox{T.longueur})$
 
 {% enddetails %}
 
 ### Récursif
 
 {% aller %}
-[Création et preuve de l'algorithme suppression valeurs récursif](../projet-itératif-récursif/#suppression-valeur-récursif){.interne}
+[Création et preuve de l'algorithme suppression valeurs récursif](../projet-itératif-récursif/#algorithme-suppression-valeur-récursif){.interne}
 {% endaller %}
-
 {% exercice %}
 Quelle est la complexité de l'algorithme `supprime_rec`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
-L'algorithme est récursif calculer sa complexité va dépendre d'une équation récurrente. Une analyse rapide de l'algorithme nous indique que cette équation de récursion est basée sur la taille du tableau en entrée, on note alors $C(n)$ la complexité de `supprime_rec`{.language-} pour un tableau de taille $n$ passé en entrée.
+L'algorithme est récursif, calculer sa complexité va dépendre d'une équation récurrente. Une analyse rapide de l'algorithme nous indique que cette équation de récursion est basée sur la taille du tableau en entrée, on note alors $C(n)$ la complexité de `supprime_rec`{.language-} pour un tableau de taille $n$ passé en entrée.
 
 Regardons la complexité de l'algorithme ligne à ligne :
 
@@ -177,14 +207,67 @@ Pour que les complexités soient comparables il faudrait pouvoir ajouter petit �
 
 {% enddetails %}
 
-## Retournement d'un tableau
+## <span id="encapsulation-récursion"></span>Encapsulation de la récursion
 
 {% aller %}
-[Création et preuve de l'algorithme retournement](../projet-itératif-récursif/#retournement){.interne}
+[Création et preuve de l'algorithme palindrome](../projet-itératif-récursif/#algorithme-palindrome){.interne}
 {% endaller %}
 
 {% exercice %}
-Quelle est la complexité de l'algorithme `reverse_indice`{.language-} ?
+Quelle est la complexité de l'algorithme `palindrome`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
+
+Une boucle de $\mathcal{O}(T.\mbox{\small longueur})$ itérations et que des instructions en $\mathcal{O}(1)$ donnent une complexité totale de : $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% enddetails %}
+
+{% aller %}
+[Création et preuve de l'algorithme palindrome récursif](../projet-itératif-récursif/#algorithme-palindrome-récursif){.interne}
+{% endaller %}
+
+{% exercice %}
+Quelle est la complexité de l'algorithme `palindrome_rec`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
+
+La relation de récurrence sur les paramètres d'entrée est :
+
+<div>
+$$
+\begin{cases}
+C(T, i) = \mathcal{O}(1) + C(T, i+1)\\
+C(T, T.\mbox{\small longueur}) = \mathcal{O}(1)\\
+\end{cases}
+$$
+</div>
+
+Cette équation se résout comme celle du cours:
+
+<div>
+$$
+\begin{array}{lcl}
+C(T, i) & = & \mathcal{O}(1) + C(T, i+1)\\
+     & = & \mathcal{O}(1) + \mathcal{O}(1) + C(T, i+2)\\
+     & = & \dots\\
+     & = & \underbracket{\mathcal{O}(1) + \dots + \mathcal{O}(1)}_{T.\mbox{\small longueur}-i} + C(T, T.\mbox{\small longueur})\\
+     & = & (T.\mbox{\small longueur}-i)\cdot \mathcal{O}(1) + \mathcal{O}(1)\\
+     & = & \mathcal{O}(T.\mbox{\small longueur}-i)\\
+     & = & \mathcal{O}(T.\mbox{\small longueur})\\
+\end{array}
+$$
+</div>
+
+{% enddetails %}
+
+## Retournement d'un tableau
+
+{% aller %}
+[Création et preuve de l'algorithme retournement](../projet-itératif-récursif/#algorithme-retournement){.interne}
+{% endaller %}
+
+{% exercice %}
+Quelle est la complexité de l'algorithme `retournement_indice`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -199,73 +282,28 @@ C(i) & = & \mathcal{O}(1) + C(i + 1)\\
 $$
 </div>
 
-Avec $C(n/2) = \mathcal{O}(1)$ si $n$ est la taille du tableau. La complexité maximale sera atteinte pour $i = 0$ et dans ce cas :
-
-<div>
-$$
-\begin{array}{lcl}
-C(0) & = & \mathcal{O}(1) + C(1)\\
-     & = & \mathcal{O}(1) + \mathcal{O}(1) + C(2)\\
-     & = & \dots\\
-     & = & \mathcal{O}(1) + \dots + \mathcal{O}(1) + C(n/2)\\
-     & = & \frac{n}{2}\cdot \mathcal{O}(1) + \mathcal{O}(1)\\
-     & = & \mathcal{O}(n)
-\end{array}
-$$
-</div>
+Avec $C(n/2) = \mathcal{O}(1)$ si $n$ est la taille du tableau. Comme pour le calcul de la complexité du palindrome, on a : $C(i) = \mathcal{O}(n/2 - i) = \mathcal{O}(n)$.
 
 {% enddetails %}
-
-### <span id="dichotomie"></span>Dichotomie
-
-{% aller %}
-[Création et preuve de l'algorithme de la dichotomie](../projet-itératif-récursif/#dichotomie){.interne}
-{% endaller %}
-
-{% exercice %}
-Donnez la complexité de l'algorithme itératif précédent qui effectue la recherche dichotomique d'un élément dans un tableau trié.
-{% endexercice %}
-{% details "corrigé" %}
-
-On a clairement que $b-a$ est divisé par 2 à chaque itération, il y a donc autant d'itérations que l'on peut diviser $t.{\small longueur}$ par 2.
-
-Si $K$ est le nombre d'itérations, on a que : $2^{K} \leq t.{\small longueur}$. Il existe un nombre $p$ tel que $2^p \leq t.{\small longueur} < 2^{p + 1}$. On ne peut donc pas diviser $t.{\small longueur}$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(t.{\small longueur})$ puisque :
-
-<div>
-$$
-\begin{array}{lcccl}
-    2^p &\leq &t.{\small longueur} &<& 2^{p + 1}\\
-    \log_2(2^p) &\leq &\log_2(t.{\small longueur}) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
-    p &\leq &\log_2(t.{\small longueur}) &<& p + 1
-\end{array}
-$$
-</div>
-
-On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$.
-
-{% enddetails %}
-
-## Fibonacci
-
-{% aller %}
-[Suite de Fibonacci](fibonacci){.interne}
-{% endaller %}
 
 ## McCarty
 
-[La fonction 91 de McCarty](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy) est définie telle que :
+{% aller %}
+[Définitions et propriétés de la fonction de McCarty](../projet-itératif-récursif/#fonction-McCarty){.interne}
+{% endaller %}
 
-<div>
-$$
-M(n) = \left\{
-    \begin{array}{ll}
-        n-10 & \mbox{si } n > 100 \\
-        M(M(n + 11))& \mbox{sinon.}
-    \end{array}
-\right.
-$$
-</div>
+En utilisant uniquement la relation de récurrence, résolvez les exercices suivants (vous pourrez utiliser ce que l'on a démontré précédemment) :
 
+{% exercice %}
+Montrer que le calcul de $M(n)$ passe par le calcul de $M^{k}(91)$ pour tout $n\leq 100$.
+{% endexercice %}
+{% details "corrigé" %}
+Dérive directement de la définition et du fait que on a démontré que :
+
+- pour tout $90 \leq n < 101$, on a $M(n) = M(n+1) = \dots = M(101) = 91$
+- pour tout $n < 101$, il existe $k\geq 1$ et $90 \leq n' < 101$ tels que $M(n) = M^k(n')$
+
+{% enddetails %}
 {% exercice %}
 Montrer que le calcul de $M^k(91)$ passe par le calcul de $M^{k-1}(91)$ si $k>1$.
 {% endexercice %}
@@ -313,9 +351,3 @@ print("max =", max_compte)
 ```
 
 {% enddetails %}
-
-## Triangle de Pascal
-
-{% aller %}
-[Triangle de Pascal](triangle-pascal){.interne}
-{% endaller %}

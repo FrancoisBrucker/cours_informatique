@@ -40,7 +40,7 @@ $$
 
 Si on arrive à mettre la même valeur à gauche et à droite on aura trouvé la complexité du problème :
 
-{% attention "**À retenir**" %}
+{% note "**À retenir**" %}
 Si l'on arrive à encadrer le problème à gauche par un $\Omega$ et à droite par un $\mathcal{O}$ avec le même algorithme :
 
 $$
@@ -49,19 +49,21 @@ $$
 
 on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'algorithme A le résolvant})$.
 
-{% endattention %}
+{% endnote %}
 
 Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.
 
 ## <span id="recherche"></span>Exemple : recherche d'un élément dans un tableau
 
-On va chercher à résoudre le problème de décision suivant :
+On va chercher à résoudre le problème suivant :
 
-{% note "**Problème de décision**" %}
+{% note "**Problème**" %}
 
 - **nom** : recherche
-- **données** : une valeur et un tableau d'entiers
-- **question** : valeur est-elle présente dans le tableau ?
+- **données** :
+  - un entier $x$
+  - un tableau d'entiers $T$
+- **question** : existe-t-il un indice $0\leq i < T.\mbox{\small longueur}$ tel que $T[i] = x$  ?
 
 {% endnote %}
 
@@ -71,8 +73,8 @@ Ce qu'on peut déjà dire de notre problème :
 - une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche){.interne}) résout le problème
 
 ```pseudocode/
-algorithme recherche(t: [entier], x: entier):
-    pour chaque e de t:
+algorithme recherche(T: [entier], x: entier) → booléen:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
@@ -82,7 +84,7 @@ algorithme recherche(t: [entier], x: entier):
 
 Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $n$ pour répondre.
 
-Soit alors un tableau $T$ de taille $n$ qui ne contient pas `valeur`. Notre algorithme va répondre NON à la question _"est-ce que valeur est dans $T$ ?"_ en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.
+Soit alors un tableau $T$ de taille $n$ qui ne contient pas `x`{.language-}. Notre algorithme va répondre NON à la question _"est-ce que valeur est dans $T$ ?"_ en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.
 
 On crée alors un tableau $T'$ de $n$ cases tel que :
 
@@ -111,11 +113,11 @@ La complexité du problème de la recherche est en $\mathcal{O}(n)$ où $n$ est 
 
 On peut en déduire une règle générale de la complexité d'un problème :
 
-{%  attention "**À retenir**" %}
+{%  note "**À retenir**" %}
 Si les données n'ont pas de structure particulière — très souvent — la complexité d'un problème est au moins égale à la taille de ses données.
 
 Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.
-{% endattention %}
+{% endnote %}
 
 ### Cas particulier des tableaux ordonnés
 
@@ -135,10 +137,24 @@ Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.
 
 #### Algorithme de la recherche dichotomique
 
-On reprend [l'algorithme récursif du calcul dichotomique](../projet-itératif-récursif/#dichotomie) sous la forme récursive terminale et on le transcrit en algorithme itératif :
+Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique) permet de savoir si un entier donné est dans un tableau d'entier trié.
+
+On cherche à savoir si l'entier $v$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $t$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
+
+- si $t[\\,\lfloor (a + b)/2 \rfloor\\,] = v$ on a trouvé l'élément
+- si $t[\\,\lfloor (a + b)/2 \rfloor\\,] > v$, l'indice recherché est forcément **avant** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+  - $a = \lfloor (a + b)/2 \rfloor + 1$
+  - $b$ inchangé
+- si $t[\\,\lfloor (a + b)/2 \rfloor\\,] < v$, l'indice recherché est forcément **après** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+  - $a$ inchangé
+  - $b' = \\,\lfloor (a + b)/2 \rfloor\\, - 1$
+
+Ce principe donne l'algorithme suivant :
+
+<span id="algorithme-dichotomie"></span>
 
 ```pseudocode
-algorithme recherche_dichotomique(t: [entier], v: entier) → entier:
+algorithme recherche_dichotomique(T: [entier], x: entier) → booléen:
   a ← 0
   b ← t.longueur - 1
   si b > a:
@@ -146,13 +162,13 @@ algorithme recherche_dichotomique(t: [entier], v: entier) → entier:
     m ← (a + b) // 2  # division entière
 
     si (t[m] == v):
-        rendre m
+        rendre Vrai  # m est l'indice
     si (t[m] < v):
         a ← m + 1
     si (t[m] > v):
         b ← m - 1
 
-  rendre -1
+  rendre Faux
 
 ```
 
@@ -164,8 +180,8 @@ algorithme recherche_dichotomique(t: [entier], v: entier) → entier:
 - **preuve** :
   - **finitude**. La quantité entière `b - a`{.language-} **décroît strictement** à chaque itération, elle sera donc strictement négative après un nombre fini d'opération et l'algorithme s'arrêtera.
   - **preuve**.
-    1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `t`{.language-}, alors sa position est plus grande que `a`{.language-} et plus petite que `b`{.language-}
-    2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `a`{.language-} > `b`{.language-}, `v`{.language-} ne peut être dans `t`{.language-}
+    1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `T`{.language-}, alors sa position est plus grande que `a`{.language-} et plus petite que `b`{.language-}
+    2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `a`{.language-} > `b`{.language-}, `x`{.language-} ne peut être dans `T`{.language-}
 
 Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique`{.language-} résout bien le problème _"recherche ordonnée"_.
 
@@ -199,10 +215,24 @@ C(n) & = & 3 \cdot \mathcal{O}(1) + \\
 $$
 </div>
 
-Comme à chaque itération, `b - a`{.language-} est divisé par 2 : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la taille du tableau) :
+Comme à chaque itération, `b - a`{.language-} est divisé par 2, il y a autant d'itérations que l'on peut diviser $T.\mbox{\small longueur}$ par 2.
+
+Si $K$ est ce nombre d'itérations, on a que : $2^{K} \leq T.\mbox{\small longueur}$. Il existe un nombre $p$ tel que $2^p \leq T.\mbox{\small longueur} < 2^{p + 1}$. On ne peut donc pas diviser $T.\mbox{\small longueur}$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(T.\mbox{\small longueur})$ puisque :
+
+<div>
+$$
+\begin{array}{lcccl}
+    2^p &\leq &T.\mbox{\small longueur} &<& 2^{p + 1}\\
+    \log_2(2^p) &\leq &\log_2(T.\mbox{\small longueur}) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
+    p &\leq &\log_2(T.\mbox{\small longueur}) &<& p + 1
+\end{array}
+$$
+</div>
+
+On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la taille du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :
 
 {% note "**Proposition**" %}
-L'algorithme `recherche_dichotomique`{.language-} résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)
+L'algorithme `recherche_dichotomique`{.language-} résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).
 {% endnote %}
 
 #### <span id="complexité-recherche-ordonnée"></span> Complexité du problème "recherche ordonnée"
@@ -215,13 +245,13 @@ Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O
 Remarquez bien que la preuve que l'on a donné pour la complexité de _"recherche"_ ne fonctionne pas dans le cas de "recherche ordonnée". On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.
 {% endinfo %}
 
-Commençons par remarquer que `v`{.language-} peut se trouver à chaque position du tableau. Tout algorithme qui résout "recherche ordonnée" doit ainsi réussir à distinguer parmi $n + 1$ cas :
+Commençons par remarquer que `x`{.language-} peut se trouver à chaque position du tableau. Tout algorithme qui résout "recherche ordonnée" doit ainsi réussir à distinguer parmi $n + 1$ cas :
 
-- soit `v`{.language-} n'est pas dans tableau
-- soit `v`{.language-} est à l'indice 0 du tableau
-- soit `v`{.language-} est à l'indice 1 du tableau
+- soit `x`{.language-} n'est pas dans tableau
+- soit `x`{.language-} est à l'indice 0 du tableau
+- soit `x`{.language-} est à l'indice 1 du tableau
 - ...
-- soit `v`{.language-} est à l'indice $n-1$ du tableau
+- soit `x`{.language-} est à l'indice $n-1$ du tableau
 
 En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations `si alors sinon`). De là :
 
@@ -245,9 +275,9 @@ En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise
 On a alors la propriété suivante :
 
 <span id="n-test-2n"></span>
-{% attention "**À retenir**" %}
+{% note "**À retenir**" %}
 Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi en $\Omega(\ln(n))$
-{% endattention %}
+{% endnote %}
 
 Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.
 

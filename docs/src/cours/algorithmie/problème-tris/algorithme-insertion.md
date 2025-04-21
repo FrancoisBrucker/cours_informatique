@@ -132,7 +132,7 @@ Comme $K_i$ n'est pas constant pour chaque itération de la boucle `pour chaque`
 On a donc 2 cas extrêmes pour le calcul :
 
 1. $K_i = 0$ à chaque itération et on peut considérer que $K_i = K=0$ pour tout $i$ dans le cas le plus favorable
-2. $K_i$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} nous indique qu'on peut considérer que $K_i = K=n-1$ pour tout $i$ dans le cas le moins favorable
+2. $K_i$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} nous indique qu'on peut considérer que $K_i = K=n-1$ pour tout $i$ dans le cas le moins favorable
 
 Ce qui donne une complexité de :
 
@@ -191,7 +191,7 @@ $$
 </div>
 {% enddetails %}
 
-On en conclut que le nombre moyen d'itérations dans la boucle `tant que`{.language-}, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$
+On en conclut que le nombre moyen d'itérations dans la boucle `tant que`{.language-}, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$
 
 {% note %}
 La **complexité en moyenne** de l'algorithme `insertion`{.language-} est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.

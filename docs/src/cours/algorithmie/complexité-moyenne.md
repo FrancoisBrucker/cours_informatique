@@ -47,34 +47,34 @@ Si l'on a pas de modèle a priori, on considérera que chaque donnée est équip
 
 Reprenons l'exemple de [la recherche d'un élément d'un un tableau](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche){.interne} :
 
-```python
-def est_dans_tableau(valeur, tableau):
-    for x in tableau:
-        if x == valeur:
-            return True
-    return False
+```pseudocode
+algorithme recherche(T: [entier], x: entier) → booléen:
+    pour chaque e de T:
+        si e == x:
+            rendre Vrai
+    rendre Faux
 ```
 
 On avait déterminé ses complexités par rapport à la taille $n$ du tableau :
 
-- la complexité maximale de l'algorithme `est_dans_tableau`{.language-} est $\mathcal{O}(n)$ (on parcourt tout le tableau sans trouver `valeur`{.language-})
-- la complexité minimale de l'algorithme `est_dans_tableau`{.language-} est $\mathcal{O}(1)$ (`valeur`{.language-} est le premier élément du tableau)
+- la complexité maximale de l'algorithme `recherche`{.language-} est $\mathcal{O}(n)$ (on parcourt tout le tableau sans trouver `x`{.language-})
+- la complexité minimale de l'algorithme `recherche`{.language-} est $\mathcal{O}(1)$ (`x`{.language-} est le premier élément du tableau)
 
-Si l'on note $\mathcal{E}$ l'ensemble de tous les tableau de taille $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu. Pour simplifier le problème, analysons la complexité selon l'endroit où se trouve `valeur`{.language-} dans le `tableau`{.language-} :
+Si l'on note $\mathcal{E}$ l'ensemble de tous les tableau de taille $n$, il y en a une infinité. Notre calcul de la complexité en moyenne est donc ardu. Pour simplifier le problème, analysons la complexité selon l'endroit où se trouve `x`{.language-} dans `T`{.language-} :
 
-- si `valeur`{.language-} est à l'indice $0$ du tableau, il faudra $\mathcal{O}(1)$ opération pour exécuter l'algorithme
-- si `valeur`{.language-} est à l'indice $1$ du tableau, il faudra deux fois plus d'opérations que s'il était à l'indice $0$, donc  $2 \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
-- si `valeur`{.language-} est à l'indice $2$ du tableau, il faudra trois fois plus d'opérations que s'il était à l'indice $0$, donc  $3 \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $0$ du tableau, il faudra $\mathcal{O}(1)$ opération pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $1$ du tableau, il faudra deux fois plus d'opérations que s'il était à l'indice $0$, donc  $2 \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $2$ du tableau, il faudra trois fois plus d'opérations que s'il était à l'indice $0$, donc  $3 \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
 - ...
-- si `valeur`{.language-} est à l'indice $i$ du tableau, il faudra $i+1$ fois plus d'opérations que s'il était à l'indice $0$, donc  $(i+1) \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $i$ du tableau, il faudra $i+1$ fois plus d'opérations que s'il était à l'indice $0$, donc  $(i+1) \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
 - ...
-- si `valeur`{.language-} est à l'indice $n-1$ du tableau, il faudra $n$ fois plus d'opérations que s'il était à l'indice $0$, donc  $n \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
-- si `valeur`{.language-} n'est pas dans le tableau, il faudra $n+1$ fois plus d'opérations que s'il était à l'indice $0$, donc  $(n+1) \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} est à l'indice $n-1$ du tableau, il faudra $n$ fois plus d'opérations que s'il était à l'indice $0$, donc  $n \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `x`{.language-} n'est pas dans le tableau, il faudra $n+1$ fois plus d'opérations que s'il était à l'indice $0$, donc  $(n+1) \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
 
 L'ensemble $\mathcal{E}$ de tous les tableaux de taille $n$ peut alors se segmenter en $n+1$ ensembles :
 
-- les ensembles $\mathcal{E}_i$, pour $0 \leq i < n$, qui regroupent les tableaux contenant `valeur`{.language-} en position $i$
-- l'ensemble $\mathcal{E}_n$, qui regroupe tous les tableaux ne contenant pas `valeur`{.language-}
+- les ensembles $\mathcal{E}_i$, pour $0 \leq i < n$, qui regroupent les tableaux contenant `x`{.language-} en position $i$
+- l'ensemble $\mathcal{E}_n$, qui regroupe tous les tableaux ne contenant pas `x`{.language-}
 
 La complexité en moyenne s'écrit alors :
 
@@ -106,7 +106,7 @@ C & = & \sum_{0 \leq i \leq n} (p_i \cdot (i+1)\cdot \mathcal{O}(1)) \\
 $$
 </div>
 
-Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de `valeur`{.language-} dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ :
+Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de `x`{.language-} dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ :
 
 $$C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)$$
 
@@ -115,10 +115,10 @@ Comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n + 2)(n + 1)}{2}$ on en déduit que :
 $$C = \frac{n+2}{2}\mathcal{O}(1) = \mathcal{O(n)}$$
 
 {% note "**Proposition**" %}
-La **complexité en moyenne** de l'algorithme `est_dans_tableau`{.language-} est la même que la complexité maximale.
+La **complexité en moyenne** de l'algorithme `recherche`{.language-} est la même que la complexité maximale.
 {% endnote %}
 
-Pour aller plus vite dans le calcul, on aurait pu dire que si notre modèle est équiprobable, `valeur`{.language-} va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `tableau`{.language-}, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.
+Pour aller plus vite dans le calcul, on aurait pu dire que si notre modèle est équiprobable, `s`{.language-} va se trouver en moyenne au milieu de notre tableau, et donc qu'il faut parcourir de l'ordre de $\frac{n}{2}$ éléments de `T`{.language-}, la complexité en moyenne est de $\mathcal{O}(n/2) = \mathcal{O}(n)$ qui est la même que la complexité maximale.
 
 Ce n'est pas une preuve, mais ça donne une idée de ce qu'il faut prouver.
 

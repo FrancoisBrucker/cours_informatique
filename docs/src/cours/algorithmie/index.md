@@ -139,107 +139,6 @@ Une série de problème algorithmique à résoudre par des algorithmes simples e
 
 ### Complexités
 
-> TBD ici prendre comme exemple la recherche d'un élément dans un tableau. Et dichotomie si on ajoute ue contrainte à l'entrée.
->
-
-<!-- ## <span id="dichotomie"></span>Dichotomie
-
-Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique) permet de savoir si un entier donné est dans un tableau d'entier trié.
-
-On cherche à savoir si l'entier $v$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $t$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
-
-- si $t[\lfloor (a + b)/2 \rfloor] == v$ on a trouvé l'élément
-- si $t[\lfloor (a + b)/2 \rfloor] > v$ on recommence la procédure avec $a' = \lfloor (a + b)/2 \rfloor + 1$ et $b' =b$
-- si $t[\lfloor (a + b)/2 \rfloor] < v$ on recommence la procédure avec $a' = a$ et $b' = \lfloor (a + b)/2 \rfloor - 1$
-
-{% exercice %}
-
-Implémentez cet algorithme de façon récursive avec la signature :
-
-```pseudocode
-dichotomie_rec(t: [entier], 
-               v: entier,
-               a: entier,
-               b: entier  # b > a
-               ) → entier:  #rend -1 si v n'est pas dans t, l'indice où il est présent sinon
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme dichotomie_rec(t: [entier], v: entier, a: entier, b: entier) → entier:
-    si b > a:
-        rendre -1
-
-    m ← (a + b) // 2  # division entière
-    si (t[m] == v):
-        rendre m
-    si (t[m] < v):
-        rendre dichotomie_rec(t, v, m + 1, b)
-    si (t[m] > v):
-        rendre dichotomie_rec(t, v, a, m - 1)
-```
-
-Pour la preuve, il suffit de montrer que l'intervalle entre $a$ et $b$ se réduit strictement. **Faites attention**, on a tendance à uniquement remplacer a ou b par m et en oubliant le +1 ou le -1, mais cela va rater si $a = b$ ou si $a + 1 = b$. Ces +1 et -1 ne sont donc pas uniquement des optimisations, ils garantissent le bon fonctionnement de l'algorithme.
-
-{% enddetails %}
-{% attention %}
-Lorsque l'on code la recherche dichotomique, il faut faire **très attention** à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
-
-{% endattention %}
-
-A priori l'algorithme précédent n'est pas terminal. Le faire :
-
-{% exercice %}
-Utilisez l'algorithme précédent pour écrire l'algorithme récursif terminal qui recherche un élément dans une liste triée de signature :
-
-```pseudocode
-recherche(t: [entier], v: entier) → entier
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme recherche(t: [entier], v: entier) → entier:
-    rendre dichotomie_rec(t, v, 0, t.longueur -1)
-```
-
-{% enddetails %}
-
-En déduire une version itérative :
-
-{% exercice %}
-Utilisez l'algorithme précédent pour écrire l'algorithme itératif qui recherche un élément dans une liste triée de signature :
-
-```pseudocode
-recherche(t: [entier], v: entier) → entier
-```
-
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme recherche(t: [entier], v: entier) → entier:
-    a ← 0
-    b ← t.longueur -1
-
-    tant que a ≤ b: 
-        m ← (a + b) // 2  # division entière
-        si (t[m] == v):
-            rendre m
-        si (t[m] < v):
-                a ← m + 1
-        si (t[m] > v):
-            b ← m - 1
-
-    rendre -1
-
-```
-
-{% enddetails %} -->
-
 {% lien %}
 [une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12)
 {% endlien %}
@@ -258,7 +157,7 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 
 ### <span id="entrainement-complexite"></span>On s'entraîne : calcul de complexité
 
-Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./#entrainement-preuve) :
+Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif){.interne} :
 
 {% aller %}
 [Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite){.interne}
@@ -361,6 +260,7 @@ Une autre structure fondamentale en algorithmie :
 > TBD exo structures de données, pile et file, et récursions avec liste.
 > TBD suppression, parcours etc de valeur récursif dans une liste.
 > Décurrification de programmes récursif. Avec exemples
+>
 
 ### Complexité amortie
 

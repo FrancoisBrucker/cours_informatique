@@ -24,7 +24,7 @@ On a déjà vue [une version itérative de cet algorithme](../prouver-un-algorit
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-maximum_rec(t: [réel], n: entier) → entier
+maximum_rec(T: [réel], n: entier) → entier
 ```
 
 Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max(\{t[k] \vert 0\leq k \leq n\})$.
@@ -32,11 +32,11 @@ Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max(\{t[k] \vert 0\leq k \
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme maximum_rec(t: [réel], n: entier) → entier:
+algorithme maximum_rec(T: [réel], n: entier) → entier:
     si n == 0:
         rendre 0
     sinon:
-        x ← maximum_rec(t, n-1)
+        x ← maximum_rec(T, n-1)
         si t[x] > t[n]:
             rendre x
         sinon:
@@ -45,11 +45,11 @@ algorithme maximum_rec(t: [réel], n: entier) → entier:
 
 Le paramètre `n`{.language-} est un entier qui diminue strictement. Il sera donc à un moment égal à 0 ce qui stoppera la récursion.
 
-La correction se fait par récurrence sur `n`{.language-} allant de `n = 0`{.language-} à `n = t.longueur - 1`{.language-}.
+La correction se fait par récurrence sur `n`{.language-} allant de `n = 0`{.language-} à `n = T.longueur - 1`{.language-}.
 
 1. initialisation : pour `n = 0`{.language-}, le résultat est clair.
 2. hypothèse de récurrence : on suppose que l'algorithme fonctionne pour `n - 1`{.language-}
-3. preuve pour `n - 1`{.language-}. Si l'algorithme fonctionne pour `n - 1`{.language-}, `x`{.language-} contient l'indice max des indices allant de 0 à `n - 1`{.language-} et on rend `x` si `t[x] > t[n]` et `n` sinon : on rend bien l'indice de la valeur maximale du tableau.
+3. preuve pour `n - 1`{.language-}. Si l'algorithme fonctionne pour `n - 1`{.language-}, `x`{.language-} contient l'indice max des indices allant de 0 à `n - 1`{.language-} et on rend `x` si `T[x] > T[n]` et `n` sinon : on rend bien l'indice de la valeur maximale du tableau.
 
 {% enddetails %}
 
@@ -65,6 +65,8 @@ concaténation(début: [entier], fin: [entier]) → [entier]
 ```
 
 Qui rend **un nouveau tableau** contenant la concaténation de `début`{.language-} et de `fin`{.language-}.
+
+Vous utiliserez des invariants de boucle pour le prouver.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -88,7 +90,7 @@ La finitude est claire puisqu'il n'y a que deux boucles de type `pour chaque`{.l
 
 On a deux boucles, il faut donc à priori 2 invariants, un pour chaque boucle. Ici il est clair que l'on va remplir tous les éléments des tableaux `début`{.language-} et `fin`{.language-} dans `t`{.language-}. L'invariant peut être :
 
-> si $i_0$ est la valeur de $i$ à la ligne 4 (resp. 8) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. `fin`{.language-}) pour tout $0\leq k \leq j$.
+> si $i_0$ est la valeur de $i$ à la ligne 5 (resp. 9) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. `fin`{.language-}) pour tout $0\leq k \leq j$.
 
 Démontrons l'invariant rigoureusement pour la première boucle.
 
@@ -154,7 +156,7 @@ Prouver cet algorithme ne nécessite pas d'invariant de boucle formel.
 
 {% enddetails %}
 
-### Même valeurs
+### Mêmes valeurs
 
 <span id="algorithme-égalité-valeurs"></span>
 
@@ -197,23 +199,23 @@ Comme on répète cette boucle intérieure pour tout `x`{.language-} de `T1`{.la
 
 Terminons cette partie avec l'algorithme suivant :
 
-<span id="algorithme-égalité"></span>
+<span id="algorithme-permutation"></span>
 
 {% exercice %}
 Écrivez **un algorithme itératif** de signature :
 
 ```pseudocode
-algorithme égalité(T1: [entier], T2: [entier]) → booléen
+algorithme permutation(T1: [entier], T2: [entier]) → booléen
 ```
 
-Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois).
+Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois), c'est à dire de savoir s'il existe une permutation $\sigma$ de $[0, T.\mbox{\small \longueur}[$ telle que $T1[i] = T2[\sigma(i)]$ pour tout $i \in [0, T.\mbox{\small \longueur}[$ (on a pas besoin de la donner).
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} que l'on a déjà écrit.
+Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} qu'on a déjà étudié.
 {% endinfo %}
 {% details "corrigé" %}
 
-Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant [notre algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} Ce qui donne un l'algorithme suivant :
+Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'ils sont dans $T$. En utilisant `nombre`{.language-}, on a l'algorithme suivant :
 
 ```pseudocode
 algorithme égalité(T1: [entier], T2: [entier]) → entier
@@ -241,7 +243,7 @@ supprime(T: [entier], v: entier) → [entier]
 Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux valeurs différentes de `v`{.language-}.
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} que l'on a déjà écrit.
+Vous pourrez la encore utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne}.
 {% endinfo %}
 {% details "corrigé" %}
 
@@ -338,6 +340,8 @@ algorithme palindrome(T: [entier]) → booléen
 
 Et maintenant la version récursive :
 
+<span id="algorithme-palindrome-récursif"></span>
+
 {% exercice %}
 Donnez et prouvez **un algorithme récursif** de signature :
 
@@ -364,7 +368,7 @@ La premiere condition est la condition d'arrêt de la récursion puisque dans ce
 Puis on utilise l'équation de récurrence :
 
 ```pseudocode
-palindrome(T) = (T[0] == T[-1]) ET palindrome(T[1:-1])
+palindrome(T) = (T[0] == T[-1]) et palindrome(T[1:-1])
 ```
 
 {% enddetails %}
@@ -379,7 +383,7 @@ Cette technique est **à utiliser** dès que l'on a besoin de paramètres récur
 
 {% endnote %}
 
-Pour le retournement d'un tableau, l'algorithme sera :
+Pour savoir si un tableau est un palindrome, l'algorithme sera :
 
 ```pseudocode
 fonction palindrome_rec(T: [entier], i: entier) → booléen
@@ -745,7 +749,7 @@ La correction est évidente par définition de la parité.
 
 {% enddetails %}
 
-## Fonction 91 de McCarty
+## <span id="fonction-McCarty"></span>Fonction 91 de McCarty
 
 Terminons cette partie par une bizarrerie algorithmique comme on les aime. Elle vient de [John McCarty](https://fr.wikipedia.org/wiki/John_McCarthy), informaticien de renom et créateur [du langage Lisp](https://fr.wikipedia.org/wiki/Lisp) en 1958. Lisp est le premier langage fonctionnel et a été [le deuxième langage de programmation](https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation) au monde, deux ans après [le Fortran](https://fr.wikipedia.org/wiki/Fortran).
 
@@ -833,14 +837,15 @@ Démontrez que pour tout entier $n$ tel que $90 \leq n < 101$, on a $M(n) = M(n+
 {% endexercice %}
 {% details "corrigé" %}
 
+Comme on peut écrire cette fonction comme une recursion terminale, l'écriture iterative est aisée :
 Pour $90 \leq n < 101$, on a :
 
 <div>
 $$
 \begin{array}{lcl}
 M(n) & = & M(M(n + 11))\\
-     &   & M((n + 11) - 10)\\
-     &   & M(n + 1)
+     & = & M((n + 11) - 10)\\
+     & = & M(n + 1)
 \end{array}
 $$
 </div>
@@ -849,19 +854,20 @@ On arrive à ce résultat en 1 récursion : la ligne 5 de l'algorithme en pseudo
 {% enddetails %}
 
 {% exercice %}
-Déduire de l'exercice précédent que pour tout $n < 101$, il existe $k\geq 1$ et $90 \leq n < 101$ tel que $M(n) = M^k(n')$.
+Déduire de l'exercice précédent que pour tout $n < 101$, il existe $k\geq 1$ et $90 \leq n' < 101$ tels que $M(n) = M^k(n')$.
 {% endexercice %}
 {% details "corrigé" %}
 
 <div>
 $$
-\begin{array}{lcl}
-M(n) & = & M^{2}(n + 11)\\
-     &   & M(M(n + 11))\\
-     &   & M(M^{2}(n + 22))\\
-     &   & M^{3}(n + 22)\\
-     &   & \dots\\
-     &   & M^{k}(n')\\
+\begin{array}{lclr}
+M(n) & = & M^{2}(n + 11)&\\
+     & = & M(M(n + 11))&\\
+     & = & M(M^{2}(n + 22))&\\
+     & = & M^{3}(n + 22)&\\
+     & = & \dots&\\
+     & = & M^{p}(n + (p-1) \cdot 11)&\\
+     & = & M^{k}(n') &\mbox{ avec $k$ le premier entier tel que } n+(k-1)\cdot 11 \geq 90\\
 \end{array}
 $$
 
@@ -870,12 +876,12 @@ $$
 {% enddetails %}
 
 {% exercice %}
-Donnez la valeur de $M(n)$ pour tout $n< 101$ et en déduire que la fonction de McCarty est bien définie pour tout entier positif (ie le calcul se fait en un no,bre fini de récursion).
+Donnez la valeur de $M(n)$ pour tout $n< 101$ et en déduire que la fonction de McCarty est bien définie pour tout entier positif (_ie._ le calcul se fait en un nombre fini de récursion).
 
 {% endexercice %}
 {% details "corrigé" %}
 
-On a $M(91) = M(91 + 1 + \dots + 1) = M(101) = 91$ et pour tout $n < 90$ on il existera $k > 1$ tel que $M(n) = M^k(91) = 91$
+On a $M(91) = M(92) = \dots = M(101) = 91$ et pour tout $n < 90$ on il existera $k > 1$ et $91\leq n'< 101 tels que $M(n) = M^k(n') = 91$
 
 Comme il faut un nombre fini d'itération pour passer de $M(n)$ à $M(n+1)$ on en déduit qu'il faut bien un nombre fini d'itération pour calculer $M(91)$ (disons $I$), et donc également pour calculer $M^k(91)$ quelque soit $k>0$ (il en faut $k\cdot I$).
 
@@ -895,6 +901,6 @@ algorithme M(n: entier) → entier:
         rendre 91
 ```
 
-Dans le même ordre d'idée que la fonction de Takeuchi.
+Dans le même ordre d'idée que [la fonction de Takeuchi](../bases-théoriques/calculabilité/#fonction-Takeuchi){.interne}, c'est un leurre.
 
 {% enddetails %}

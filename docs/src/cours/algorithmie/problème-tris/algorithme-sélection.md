@@ -76,7 +76,7 @@ Ligne à ligne :
 6. une affectation : $\mathcal{O}(1)$
 7. deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$
 
-Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `pour chaque`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `pour chaque`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
 
 Ce qui donne une complexité de :
 

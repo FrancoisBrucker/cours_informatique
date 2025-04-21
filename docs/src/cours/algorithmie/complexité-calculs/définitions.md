@@ -24,25 +24,25 @@ La complexité d'un pseudo-code est la complexité en temps de celui-ci.
 Par exemple le pseudo-code suivant :
 
 ```pseudocode/
-x ← 30
-si ((x > 12) ET (x < 36)):
-    z ← "entre 13 et 35"
+age ← 42
+si ((age ≥ 12) et (age < 20)):
+    personne ← "teenager"
 ```
 
 - première ligne : 2 instructions
-  1. Création de l'entier valant 30 : 1 instruction
-  2. on affecte l'entier à x : 1 instruction
+  1. Création de l'entier valant 42 : 1 instruction
+  2. on affecte l'entier à la variable `age`{.language-} : 1 instruction
 - deuxième ligne : 8 instructions
-  1. faire `x > 12`{.language-}. Pour cela :
+  1. faire `age ≥ 12`{.language-}. Pour cela :
      - on crée l'entier valant 12 : 1 instruction
-     - on récupère la valeur de `x`{.language-} : 1 instruction
+     - on récupère la valeur de `age`{.language-} : 1 instruction
      - on effectue la comparaison : 1 instruction
-  2. faire `x < 36`{.language-}. Pour cela :
-       - on crée l'entier valant 36 : 1 instruction
-       - on récupère la valeur de `x`{.language-} : 1 instruction
+  2. faire `age < 20`{.language-}. Pour cela :
+       - on crée l'entier valant 20 : 1 instruction
+       - on récupère la valeur de `age`{.language-} : 1 instruction
        - on effectue la comparaison : 1 instruction
-  3. faire l'instruction `AND`{.language-} : 1 instruction
-  4. faire le `si`{.language-} : 1 instruction
+  3. faire l'instruction `et`{.language-} : 1 instruction
+  4. faire l'instruction `si`{.language-} : 1 instruction
 - troisième ligne : 2 instructions
   1. on crée la chaîne : 1 instruction
   2. puis affecte le résultat : 1 instruction
@@ -57,17 +57,17 @@ Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utili
 Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !
 {% endattention %}
 
-Prenons par exemple le code suivant et comptons les instructions utilisées au cours de son exécution :
+Reprenons par exemple [le code de l'algorithme recherche](../../bases-théoriques/définition/#algorithme-recherche){.interne} et comptons les instructions utilisées au cours de son exécution :
 
 ```pseudocode/
-fonction recherche(t: [entier], x: entier) → booléen:
-    pour chaque e de t:
+fonction recherche(T: [entier], x: entier) → booléen:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
 
-t ← [1, 2, 6]
-trouve ← recherche(t, 6)
+T ← [1, 2, 6]
+trouve ← recherche(T, 6)
 affiche à l'écran trouve
 ```
 
@@ -112,7 +112,7 @@ On considérera en algorithmie que tous les accès à un élément donné d'un t
 De là l'instruction :
 
 - créer un tableau de taille 42 nécessite  1 instruction
-- créer un tableau de taille $2^{42} nécessite  1 instruction
+- créer un tableau de taille $2^{42}$ nécessite  1 instruction
 - `F ← un tableau de taille 42`{.language-} nécessite 2 instructions, une pour la création, la seconde pour l'affectation
 - `afficher à l'écran F[3]`{.language-} nécessite 2 instructions, une pour retrouver l'objet associé à `F[3]`{.language-}, l'autre pour l'afficher
 - `F[3] ← 42`{.language-} nécessite 2 instructions, une pour créer l'entier `42`{.language-}, l'autre pour l'affecter
@@ -217,11 +217,11 @@ $$
 
 {% enddetails %}
 
-Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure générale. Par exemple l'algorithme suivant qui cherche si une valeur `v`{.language-} est dans un tableau `t`{.language-} :
+Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure générale. Par exemple l'algorithme suivant qui cherche si une valeur `v`{.language-} est dans un tableau `T`{.language-} :
 
 ```pseudocode/
-algorithme recherche(t: [entier], x: entier) → booléen:
-    pour chaque e de t:
+algorithme recherche(T: [entier], x: entier) → booléen:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux

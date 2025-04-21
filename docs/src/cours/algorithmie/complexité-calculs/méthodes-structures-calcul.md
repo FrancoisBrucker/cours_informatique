@@ -14,9 +14,9 @@ Cette partie est à utiliser lorsque l'on cherche à mesurer la complexité d'un
 
 Lorsque l'on code un algorithme, on a coutume (et c'est très bien) d'utiliser des fonctions, des méthodes ou des structures de données que l'on n'a pas écrites. Il faut en revanche bien connaître leurs complexités pour ne pas commettre d'erreur de calcul.
 
-{% attention "**À retenir**" %}
+{% note "**À retenir**" %}
 Lorsque l'on calcule la complexité d'un code, toutes les méthodes et fonctions doivent être examinées.
-{% endattention %}
+{% endnote %}
 
 ## Complexité de structure
 
@@ -24,14 +24,14 @@ En informatique, les **objets que l'on manipule ont des types**. On connaît dé
 
 Ce n'est plus le cas lorsque l'on utilise des types plus complexes, composé de types basiques comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complexité d'un algorithme les utilisant, il faut connaître les complexités de ses opérations. Souvent, les opérations suivantes suffisent :
 
-{% attention "**À retenir**" %}
+{% note "**À retenir**" %}
 Pour chaque type de donnée, il faut connaître la complexité de :
 
 - la création d'un objet de ce type
 - la suppression d'un objet de ce type
 - chaque méthode liée au type
 
-{% endattention %}
+{% endnote %}
 
 ### Tableaux
 
@@ -56,9 +56,9 @@ Le langage python ne connaît pas les tableaux. Il utilise le type [liste](https
 - **augmenter la taille** d'une liste d'un élément se fait en $\mathcal{O}(1)$ opérations
 - **supprimer le dernier élément** d'une liste se fait en $\mathcal{O}(1)$ opérations
 
-{% attention "**À retenir**" %}
+{% note "**À retenir**" %}
 Une liste peut-être vue comme un tableau dont on peut augmenter ou diminuer la taille **par la fin** en $\mathcal{O}(1)$ opérations.
-{% endattention %}
+{% endnote %}
 
 {% attention %}
 Ne confondez pas liste et [liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e) ce n'est pas du tout la même structure !

@@ -100,8 +100,10 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 [Les $\mathcal{O}$ pour l'algorithmie](./O-pour-l-algorithmie){.interne}
 {% endaller %}
 
+## Comment calculer la complexité d'algorithmes
+
 {% aller %}
-[Règles et astuces de calcul](./règles-de-calcul){.interne}
+[Calcul de complexités avec des $\mathcal{O}$](./complexité-algorithmes){.interne}
 {% endaller %}
 
 ## Complexité d'un code

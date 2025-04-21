@@ -286,7 +286,7 @@ Comme $i$ va croître strictement, la condition `i ≤ n`{.language-} sera fauss
 
 Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se récrire de cette façon :
 
-```pseudocode/
+```pseudocode
 algorithme factorielle(n: entier) → entier:
     r ← 1
     i ← 1
@@ -300,20 +300,7 @@ algorithme factorielle(n: entier) → entier:
     rendre r
 ```
 
-On retrouve la boucle de `factorielle(n-1)`{.language-} dans `factorielle(n)`{.language-} ce qui montre que le programme itératif est équivalent à :
-
-```pseudocode
-algorithme factorielle(n: entier) → entier:
-    r ← factorielle(n-1)
-    i ← n
-
-    r ← r * i
-    i ← i + 1
-
-    rendre r
-```
-
-On est ramené au cas précédent pour en prouver sa correction.
+On retrouve la boucle de `factorielle(n-1)`{.language-} dans `factorielle(n)`{.language-} ce qui montre que si `factorielle(n-1)`{.language-} fonctionne et rend $(n-1)!$ alors `factorielle(n)`{.language-} rendra bien $n\cdot (n-1)! = n!$. On est ramené à une preuve par récurrence, comme pour le cas récursif.
 
 ### Preuve par invariant
 
@@ -558,33 +545,28 @@ Cette partie là est facile si on a le bon invariant. Il suffit de regarder la v
 Pour faire ceci sans invariant de boucle, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.
 
 {% exercice %}
-Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#algorithme-nombre-occurrences){.interne} et prouver qu'il fonctionne en exhibant sa version récursive.
+Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#algorithme-nombre-occurrences){.interne} et prouver qu'il fonctionne.
 
 {% endexercice %}
 {% details "corrigé" %}
-On remarque que l'algorithme fonctionne de la même manière si on prend une restriction du tableau. Explicitons cela.
 
-On voit que notre algorithme itératif est équivalent au programme récursif suivant :
-
-```pseudocode
-algorithme nombre'(t: [entier], x: entier) → entier:
-    si t.longueur == 0:
-        rendre 0
-    sinon si t[-1] == x:
-        rendre nombre'(t[:-1]) + 1
-    sinon:
-        rendre nombre'(t[:-1])
+```pseudocode/
+algorithme nombre(T: [entier], x: entier) → entier:
+    nb ← 0
+    pour chaque e de T:
+        si e == x:
+            nb ← nb + 1
+    rendre nb
 ```
 
-On montre alors par récurrence que notre algorithme fonctionne :
-
-1. si t.longueur == 0 : c'est OK
-2. on suppose notre algorithme OK pour des tableaux de longueur n
-3. pour un tableau de longueur n+1, la taille de t[:-1] est de n, et notre algorithme fonctionne. On ajoute ensuite 1 que si le dernier élément du tableau vaut x : notre algorithme fonctionne pour le tableau de longueur n+1 ce qui clot la preuve par récurrence.
+1. **finitude** : puisque les boucles `pour chaque`{.language-} n'ont qu'un nombre fini d'itérations
+2. **exactitude** : à la fin de la boucle `pour chaque`{.language-} la variable `nb`{.language-} vaut clairement le nombre de fois où `x`{.language-} a été trouvé dans `T`{.language-}.
 
 {% enddetails %}
 
 ### PGCD, encore lui
+
+<span id="algorithme-PGCD-rec"></span>
 
 ```pseudocode
 algorithme PGCD(a, b):  # a, b > 0

@@ -144,7 +144,7 @@ algorithme binom(n: entier, k:entier) → entier:
 
 La complexité est en $\mathcal{O}(1)$ plus la complexité de la fonction `binom_matrice(n: entier) → [[entier]]`{.language-}.
 
-En utilisant [la règle de calcul de complexité sur les boucles dépendantes mais croissantes](../../complexité-calculs/règles-de-calcul/#règle-croissance){.interne}, cette complexité est en $\mathcal{O}(n^2)$.
+En utilisant [la règle de calcul de complexité sur les boucles dépendantes mais croissantes](../../complexité-calculs/complexité-algorithmes/#règle-croissance){.interne}, cette complexité est en $\mathcal{O}(n^2)$.
 
 On en déduit que la complexité de l'algorithme `binom`{.language-} est en $\mathcal{O}(n^2)$
 {% enddetails %}

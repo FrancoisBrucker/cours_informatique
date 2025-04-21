@@ -64,7 +64,7 @@ En pseudo-code, un algorithme est une suite d'instructions qui, a partir de para
 ```text
 Nom : recherche
 Entrées :
-    t : un tableau d'entiers
+    T : un tableau d'entiers
     x : un entier
 Programme :
     parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
@@ -77,11 +77,11 @@ En pseudo-code, cela va donner ça :
 <div id="problème-recherche"></div>
 
 ```pseudocode
-algorithme recherche(t: [entier],
+algorithme recherche(T: [entier],
                      x: entier     # entier recherché dans t
                     ) → booléen:   # Vrai si x est dans t
 
-    pour chaque e de t:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
@@ -105,23 +105,23 @@ Terminons par un petit exercice :
 <span id="algorithme-nombre-occurrences"></span>
 
 {% exercice %}
-Adaptez le pseudo code de l'algorithme `recherche((t: [entier], x: entier) → booléen)`{.language-} précédent pour créer l'algorithme :
+Adaptez le pseudo code de l'algorithme `recherche(T: [entier], x: entier) → booléen){.language-} précédent pour créer l'algorithme :
 
 ```pseudocode
-nombre((t: [entier], x: entier) → entier)
+nombre(T: [entier], x: entier) → entier
 ```
 
-Cet algorithme  rend le nombre de fois où `x`{.language-} est présent dans `t`{.language-}
+Cet algorithme  rend le nombre de fois où `x`{.language-} est présent dans `T`{.language-}
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme nombre(t: [entier], x: entier) → entier:
-    nombre ← 0
-    pour chaque e de t:
+algorithme nombre(T: [entier], x: entier) → entier:
+    nb ← 0
+    pour chaque e de T:
         si e == x:
-            nombre ← nombre + 1
-    rendre nombre
+            nb ← nb + 1
+    rendre nb
 ```
 
 {% enddetails %}

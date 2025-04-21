@@ -246,6 +246,8 @@ On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont pa
 
 ### Fonction écran de fumée
 
+<span id="fonction-Takeuchi"></span>
+
 La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi) est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.
 
 {% note "**Définition**" %}

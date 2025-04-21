@@ -149,11 +149,11 @@ Par exemple l'algorithme recherche s'écrirait en pseudo-code de cette façon :
 <span id="algorithme-recherche"></span>
 
 ```pseudocode
-algorithme recherche(t: [entier],
+algorithme recherche(T: [entier],
                      x: entier
                     ) → booléen:
 
-    pour chaque e de t:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
@@ -162,8 +162,8 @@ algorithme recherche(t: [entier],
 Et en code python (qui est très similaire au pseudo-code) :
 
 ```python/
-def recherche(t, x):
-    for e in t:
+def recherche(T, x):
+    for e in T:
         if e == x:
             return True
     return False

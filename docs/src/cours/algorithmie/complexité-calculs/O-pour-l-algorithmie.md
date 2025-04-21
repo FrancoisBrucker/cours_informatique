@@ -51,19 +51,19 @@ L'exécution d'**un nombre constant de fois** un bloc d'instruction :
 - de complexité $\mathcal{O}(f(N))$ nécessite $\mathcal{O}(f(N))$ opérations.
 {% endnote %}
 
-Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie [complexité des pseudo-code](../pseudo-code#complexité){.interne} :
+Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant [l'exemple initial de calcul de complexité](../définitions){.interne} :
 
 ```pseudocode/
-x ← 30
-si ((x > 12) ET (x < 36)):
-    z ← x * "coucou"
+age ← 42
+si ((age ≥ 12) et (age < 20)):
+    personne ← "teenager"
 ```
 
-1. on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.
-2. un test avec 2 comparaisons et un `ET`{.language-} pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.
-3. on affecte le résultat d'une opération élémentaire : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.
+- première ligne : 2 instructions donc $\mathcal{O}(1)$ instructions.
+- deuxième ligne : 8 instructions donc $\mathcal{O}(1)$ instructions.
+- troisième ligne : 2 instructions  donc $\mathcal{O}(1)$ instructions.
 
-Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ opérations.
+Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ instructions.
 
 En revanche, faites attention, cela ne marche que pour les constantes !
 
@@ -117,14 +117,14 @@ En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsqu
 Prenons par exemple notre algorithme fétiche :
 
 ```pseudocode/
-algorithme recherche(t: [entier], x: entier):
-    pour chaque e de t:
+algorithme recherche(T: [entier], x: entier) → booléen:
+    pour chaque e de T:
         si e == x:
             rendre Vrai
     rendre Faux
 ```
 
-Cet algorithme recherche si le paramètre `x`{.language-} est un élément de `t`{.language-}.
+Cet algorithme recherche si le paramètre `x`{.language-} est un élément de `T`{.language-}.
 
 Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :
 
