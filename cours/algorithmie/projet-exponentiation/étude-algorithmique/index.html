@@ -115,181 +115,28 @@ x^n = \left\{
 $$
 </div>
 <p>Bien que non nécessaire, la contrainte de positivité stricte pour $x$ et $n$ nous permet d'éviter tout cas particulier qui pourrait (tôt ou tard) advenir dans les preuves lorsque $x$ ou $n$ vaut 0.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Écrivez un algorithme récursif en python pour résoudre cette équation.</p>
-</div></div>
+<p>L'algorithme suivant, dérivant directement de la définition (donc correct) permet de calculer la puissance de deux nombres :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> x
+    <span class="token keyword">rendre</span> x <span class="token operator">*</span> puissance<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons <a href="../../projet-it%C3%A9ratif-r%C3%A9cursif/#r%C3%A9cursion-terminale">la récursion terminale</a>. Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre<code class="language-">r</code>) :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">puissance_terminale</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> r<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> r
+    <span class="token keyword">rendre</span> puissance_terminale<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> x <span class="token operator">*</span> r<span class="token punctuation">)</span>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> exposant<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> nombre
-    <span class="token keyword">rendre</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
-<p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
-</div>
-</details>     
-</div>
-<p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs). Pour créer l'algorithme itératif à partir d'une définition récursive, il faut pouvoir stocker les résultats intermédiaires dans une variable :</p>
-<p><span id="pseudo-code-naif"></span></p>
+<span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span> puissance_terminale<span class="token punctuation">(</span>x<span class="token punctuation">,</span> n<span class="token punctuation">,</span> x<span class="token punctuation">)</span></code></pre>
+<p>Ce permet d'écrire la version itérative par un simple jeu de réécriture :</p>
+<p><span id="algorithme-puissance-naif"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    r <span class="token operator">←</span> x</span>
-<span class="highlight-line">    c <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">tant que</span> c <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span><span class="token number"> n </span><span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        r <span class="token operator">←</span> r <span class="token operator">*</span> x</span>
-<span class="highlight-line">        c <span class="token operator">←</span> c <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">       <span class="token number"> n </span><span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> r</span></code></pre>
-<p>C'est cet algorithme itératif que nous allons étudier maintenant.</p>
-<h3><span id="marche-naif"></span> Est-ce que ça marche ?</h3>
-<p>On teste l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On teste toujours ses algorithmes sur de petits nombres en se mettant à la place de l'ordinateur.</p>
-<ul>
-<li>on numérote chaque ligne</li>
-<li>on note sur une feuille les variables</li>
-<li>on exécute ligne à ligne en notant les différents résultats</li>
-<li>à la fin on vérifie que le retour de l'algorithme est bien correct</li>
-</ul>
-</div></div>
-
-<p>Les cas simples que l'on peut essayer sans peine, et permet de <strong>tester les cas limites</strong> :</p>
-<ul>
-<li><code class="language-">n</code> vaut 1</li>
-<li><code class="language-">x</code> vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
-</ul>
-<p>Puis un cas un peu plus compliqué pour <strong>tester si les boucles fonctionnent bien</strong> :</p>
-<ul>
-<li><code class="language-">n</code> vaut 2 ou 3</li>
-<li><code class="language-">x</code> vaut 2 ou 3</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.</p>
-</div></div>
-
-<p>Une fois qu'on est convaincu que ça fonctionne, on prouve sa finitude, son exactitude et on calcule sa complexité.</p>
-<h3><span id="preuve-naif"></span> Preuve</h3>
-<p>En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il calcule bien l'exponentiation.</p>
-<h4><span id="finitude-naif"></span> Finitude</h4>
-<ul>
-<li><code class="language-">c</code> est un entier qui diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0.</li>
-<li>condition : il faut que <code class="language-">c</code> soit un nombre positif pour que l'algorithme s'arrête. Donc <code class="language-">n</code> doit être un nombre strictement positif.</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus petit que, plus grand que, différent de) plutôt que des conditions d'égalité. Ceci pour deux raisons majeures :</p>
-<ul>
-<li>L'égalité entre réels n'existe pas en informatique, ces conditions ne fonctionneront donc pas avec eux.</li>
-<li>dans l'exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme</li>
-</ul>
-</div></div>
-
-<h4>Preuve de l'algorithme</h4>
-<p>Le fonctionnement de l'algorithme est <em>à peu près</em> clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une <em>jolie</em> preuve en exhibant un invariant de boucle.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Invariant de boucle</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si <code class="language-">x</code> et <code class="language-">n</code> sont des entiers strictement positifs, on a l'invariant de boucle : $ r \cdot x^c = x^n $</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>Comment trouver cet invariant</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Un invariant doit capturer en une phrase le but de la boucle. En regardant notre boucle on remarque qu'à chaque itération :</p>
-<ul>
-<li>$r$ est multiplié par $x$</li>
-<li>$c$ est décrémenté de 1</li>
-</ul>
-<p>Comme $r$ et $c$ valent initialement $x$ et $n-1$ respectivement, on en conclut un premier invariant possible (il faudra encore le démontrer rigoureusement plus tard) : &quot;à la fin de la $i$ème itération, $c=n-i-1$ et $r = x^{i+1}$&quot;.</p>
-<p>Ceci pourrait être un invariant tout ce qu'il y a de plus correct, mais on peut faire plus élégant en injectant $i = n-c-1$, la première égalité, dans la seconde :</p>
-<div>
-$$
-r = x^{n-c-1+1} = x^{n-c}
-$$
-</div>
-<p>Ce qui donne l'invariant $r \cdot x^c = x^n$ qui tient en une ligne et n'a plus besoin de la variable auxiliaire $i$ qui compte le nombre d'itérations effectuées.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'invariant est joli car il n'a pas besoin du nombre d'itérations passées pour l'exprimer. Ce ne sera pas toujours le cas.</p>
-</div></div>
-
-<p>Prouvons cet invariant.</p>
-<p>Juste avant la première itération de la boucle, <code class="language-">r = x</code> et <code class="language-">c = n-1</code> notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les <a href="../preuve-algorithme">preuves d'algorithmes</a>, on met un <code>'</code> aux variable après l'itération :</p>
-<ul>
-<li><code class="language-">x' = x</code></li>
-<li><code class="language-">n' = n</code></li>
-<li><code class="language-">r' = r * x</code></li>
-<li><code class="language-">c' = c - 1</code></li>
-</ul>
-<p>On a alors :</p>
-<p>$$
-r' \cdot {(x')}^{c'} = (r \cdot x) \cdot x^{c - 1} = r \cdot x^c = x^n = {(x')}^{n'}
-$$</p>
-<p>On a démontré notre invariant de boucle.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque <code class="language-">c = 0</code>. Et là : $r \cdot x^c = r = x^n$</p>
-</div></div>
-
-<h3><span id="complexité-naif"></span> Complexité de l'algorithme naif</h3>
+<p>Comme l'algorithme est issu d'une réécriture d'un algorithme récursif correct, il l'est forcément. Il ne nous reste donc plus qu'à calculer sa complexité.</p>
 <p>Ligne à ligne :</p>
 <ol>
 <li>une affection : $\mathcal{O}(1)$</li>
@@ -332,54 +179,14 @@ x^n = \left\{
 \right.
 $$
 </div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Écrivez un algorithme récursif pour résoudre cette équation.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> x</span>
-<span class="highlight-line">    <span class="token keyword">sinon si</span><span class="token number"> n </span><span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> x <span class="token operator">*</span> puissance<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> puissance<span class="token punctuation">(</span>x <span class="token operator">*</span> x<span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span></span></code></pre>
-<p>On a utilisé deux choses :</p>
-<ul>
-<li>L'opérateur <code class="language-">%</code> signifie <em>modulo</em> en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si <code class="language-">exposant</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)</li>
-<li>la division entière <code class="language-">//</code> pour s'assurer que exposant reste un entier. Le type de <code class="language-">4 / 2</code> en python est un réel alors que le type de <code class="language-">4 // 2</code> est un entier.</li>
-</ul>
-<p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
-<p>Remarquez que cette version n'est cependant par récursive terminal. On pourrit le faire en ajoutant un accumulateur comme paramètre.</p>
-</div>
-</details>     
-</div>
-<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient :</p>
-<p><span id="pseudo-code-rapide"></span></p>
+<p>On propose l'algorithme itératif suivant pour résoudre le problème :</p>
+<p><span id="algorithme-puissance-indienne"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    r <span class="token operator">←</span> x</span>
 <span class="highlight-line">    c <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">tant que</span> c <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">si</span> c <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> c mod <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">            r <span class="token operator">←</span> r <span class="token operator">*</span> x</span>
 <span class="highlight-line">            c <span class="token operator">←</span> c <span class="token operator">-</span> <span class="token number">1</span></span>
 <span class="highlight-line">        <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
@@ -387,9 +194,9 @@ $$
 <span class="highlight-line">            c <span class="token operator">←</span> c <span class="token operator">/</span> <span class="token number">2</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> r</span></code></pre>
-<p>C'est cet algorithme itératif que nous allons étudier maintenant.</p>
+<p>C'est cet algorithme que nous allons étudier maintenant.</p>
 <h3><span id="marche-rapide"></span> Est-ce que ça marche ?</h3>
-<p>Comme pour l'algorithme naïf, on vérifie que tout fonctionne avec les cas simples :</p>
+<p>Commençons par vérifier que l'algorithme fonctionne sur des cas simples :</p>
 <ul>
 <li><code class="language-">n</code> vaut 1 ou 2</li>
 <li><code class="language-">x</code> vaut 2 ou 3 (un peu plus que les cas triviaux)</li>
@@ -409,9 +216,9 @@ $$
 </div></div>
 
 <h3><span id="finitude-rapide"></span> Preuve de finitude</h3>
-<p>De même que pour l'algorithme simple, <code class="language-">c</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-">-1</code> ou il est divisé par 2). Si <code class="language-">n</code> est un entier strictement positif en entrée, <code class="language-">c</code> reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.</p>
+<p>La variable <code class="language-">c</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-">-1</code> ou il est divisé par 2). Si <code class="language-">n</code> est un entier strictement positif en entrée, <code class="language-">c</code> reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.</p>
 <h3><span id="preuve-rapide"></span> Preuve de l’algorithme</h3>
-<p>On va montrer que l'invariant de l'algorithme naïf fonctionne aussi. En notant <code class="language-">X</code> la valeur initial de <code class="language-">x</code> en entrée de l'algorithme, on a l'invariant suivant :</p>
+<p>On va montrer que l'invariant de boucle suivant fonctionne. En notant <code class="language-">X</code> la valeur initial de <code class="language-">x</code> en entrée de l'algorithme, on a le très élégant invariant suivant :</p>
 <p>$$
 r \cdot x^c = X^n
 $$</p>
