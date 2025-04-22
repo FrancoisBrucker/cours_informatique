@@ -16,7 +16,7 @@ eleventyComputed:
 ---
 
 > TBD à refaire bien
-> faire une partie énumération dans classique (compteur, permutation, 8 reines,lancer de dés).
+> faire une partie énumération dans classique (compteur, permutation, 8 reines (vor ds),lancer de dés aussi ds ?).
 > TBD séparer les exos qui sont mieux avec une liste en récursif. Preparer.
 > TBD rendu de piece par programmation dynamique
 > TBD Ackermann et décurrification.

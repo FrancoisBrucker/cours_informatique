@@ -288,7 +288,7 @@ Si l'on prend $K+1$ produits :
 Le glouton privilégiera toujours le produit 1 alors que c'est le produit 2 à $K+1$ qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.
 {% enddetails %}
 
-Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu'il soit à performance garantie. Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la dernière étape, qui est la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :
+Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu'il soit à performance garantie. Considérons notre problème comme un sac à dos fractionnel et exécutons l'algorithme glouton fractionnel. Soit $i^\star$ la dernière étape, qui est la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :
 
 - $\sum_{i < i^\star} k_i \leq K$
 - $\sum_{i < i^\star} k_i + k_{i^\star} > K$
@@ -670,7 +670,7 @@ def branch_and_bound(produits, masse_totale):
     return sac_à_dos
 ```
 
-Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.
+Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possibles multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.
 
 Enfin, on peut accélérer l'algorithme en prenant comme valeur de départ le résultat de l'algorithme glouton.
 
