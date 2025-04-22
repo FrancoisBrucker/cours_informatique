@@ -246,11 +246,11 @@ Vous aurez remarquez que l'on a précisé qu'il existe des problèmes décidable
 
 Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut _a priori_ tout vérifier car la solution peut se trouver n'importe où. A contrario des problèmes polynomiaux ou, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement parcourir.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Les problèmes NP-complets sont tous équivalents car ils correspondent tous à **des problèmes universels**, sans structure.
 
 Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution.
-{% endnote %}
+{% endattention %}
 
 ## Autres classes
 

@@ -40,7 +40,7 @@ $$
 
 Si on arrive à mettre la même valeur à gauche et à droite on aura trouvé la complexité du problème :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Si l'on arrive à encadrer le problème à gauche par un $\Omega$ et à droite par un $\mathcal{O}$ avec le même algorithme :
 
 $$
@@ -49,7 +49,7 @@ $$
 
 on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'algorithme A le résolvant})$.
 
-{% endnote %}
+{% endattention %}
 
 Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.
 
@@ -113,11 +113,11 @@ La complexité du problème de la recherche est en $\mathcal{O}(n)$ où $n$ est 
 
 On peut en déduire une règle générale de la complexité d'un problème :
 
-{%  note "**À retenir**" %}
+{%  attention "**À retenir**" %}
 Si les données n'ont pas de structure particulière — très souvent — la complexité d'un problème est au moins égale à la taille de ses données.
 
 Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.
-{% endnote %}
+{% endattention %}
 
 ### Cas particulier des tableaux ordonnés
 
@@ -275,9 +275,9 @@ En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise
 On a alors la propriété suivante :
 
 <span id="n-test-2n"></span>
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi en $\Omega(\ln(n))$
-{% endnote %}
+{% endattention %}
 
 Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.
 

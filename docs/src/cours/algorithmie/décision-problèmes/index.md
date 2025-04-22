@@ -68,9 +68,9 @@ On peut représenter un algorithme sous 3 formes équivalentes :
 > TBD un même problème peut se voir sous sa forme fonction, vérifieur ou décideur.
 > TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 D'un point de vue théorique on peut donc uniquement considérer la version décideur d'un algorithme sans aucune perte de généralité.
-{% endnote %}
+{% endattention %}
 
 ### Langages et Turing
 

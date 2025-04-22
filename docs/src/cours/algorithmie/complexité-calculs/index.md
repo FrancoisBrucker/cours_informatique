@@ -84,9 +84,9 @@ L'instruction python `x = 1`{.language-} en python prendra certainement plus que
 
 Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. En effet, si les entrées sont de petites tailles c'est de toute façon rapide et lorsque les entrées deviennent grandes :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Les coefficients multiplicatifs et additifs constants sont négligeable par rapport à l'allure logarithmique, linéaire, polynomiale ou exponentielle de la complexité.
-{% endnote %}
+{% endattention %}
 
 ## Comparaisons asymptotiques
 

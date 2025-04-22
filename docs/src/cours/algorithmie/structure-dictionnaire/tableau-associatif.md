@@ -205,11 +205,11 @@ Le raisonnement est identique à la preuve des [$N$ ajouts successifs pour une l
 
 La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.
 
 La complexité maximale de ces méthodes est en $\mathcal{O}(n)$.
-{% endnote %}
+{% endattention %}
 
 ## <span id="exercice-fondamental"></span>Exercice fondamental
 

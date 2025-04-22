@@ -590,9 +590,9 @@ affiche à l'écran u($1)
 
 La seule opération que doit pouvoir faire un pseudo-assembleur pour pouvoir faire tout ce que peut faire un pseudo-code est l'opération `NAND`. Tout le reste peut être construit grâce à du code.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Les structure de contrôles, les variables en mémoire et l'unique opération `NAND` permettent de simuler toutes les structures de données possibles ainsi que leurs opérations.
-{% endnote %}
+{% endattention %}
 
 ## I/O
 
@@ -614,6 +614,6 @@ On vient de voir qu'il ne faut vraiment pas grand chose pour simuler tout ce que
 
 Tout le reste peut–être géré via du code, lui aussi est très simple puisqu'il est uniquement constitué de transfert de mémoire, d'opérations `NAND` et de sauts conditionnels.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Le pseudo-code ne peut pas faire plus que du pseudo-assembleur, c'est juste plus agréable à écrire.
-{% endnote %}
+{% endattention %}

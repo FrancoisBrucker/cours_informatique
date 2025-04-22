@@ -16,6 +16,7 @@ eleventyComputed:
 ---
 
 > TBD à refaire bien
+> TBD pgcd en moyenne. Voir Knuth
 > faire une partie énumération dans classique (compteur, permutation, 8 reines (vor ds),lancer de dés aussi ds ?).
 > TBD séparer les exos qui sont mieux avec une liste en récursif. Preparer.
 > TBD rendu de piece par programmation dynamique
@@ -75,11 +76,11 @@ Une fois la finitude démontrée la correction est évidente, comme souvent avec
 
 La preuve de l'exercice précédent donne une règle générale de preuve de finitude d'un programme récursif :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Si tous les appels récursifs d'un programme se _rapprochent strictement_ de la condition d'arrêt, alors le nombre de récursion est fini.
 
 La condition de rapprochement va dépendre des paramètres et du programme et doit être explicitée.
-{% endnote %}
+{% endattention %}
 
 L'algorithme précédent n'est pas sous la forme de récursion terminale. On peut le rentre terminal en utilisant 2 accumulateurs :
 

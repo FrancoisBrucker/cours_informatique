@@ -192,9 +192,9 @@ Ces nombres sont énormes ! Rien que les écrire va prendre du temps. Si l'on su
 - 1.6s pour $2 \uparrow^{(2)} 4$
 - $2^{65500}$ millénaires pour $2 \uparrow^{(3)} 4$
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Ce n'est pas parce que l'on peut calculer quelque chose qu'on peut le faire en pratique, du moins si on est pas immortel.
-{% endnote %}
+{% endattention %}
 {% info %}
 Lorsque l'on vous donne ce genre de grandeurs, ayez à l'esprit qu'il n'y a que de l'ordre de $10^{80}$ particules dans l'univers, ce qui est bien plus petit que $2^{65500}$.
 

@@ -125,7 +125,7 @@ Programme :
 
 Notre programme s'arrêtant tout le temps : c'est un algorithme.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Un programme **programme** possède :
 
 - un nom
@@ -134,10 +134,10 @@ Un programme **programme** possède :
 - une description qui explicite ce qu'il fait.
 
 Si le programme s'arrête quelque soient ses entrées, c'est un **algorithme**.
-{% endnote %}
-{% attention %}
-Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est _perdu_, le second peut être à nouveau utilisé par au autre programme.
 {% endattention %}
+{% info %}
+Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est _perdu_, le second peut être à nouveau utilisé par au autre programme.
+{% endinfo %}
 
 La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :
 
@@ -410,9 +410,9 @@ Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki
 
 Un bit est l'information minimale que l'on peut véhiculer puisqu'il ne peut avoir que 2 valeurs différentes. Cette unité minimale d'information est très puissante puisque les suites finies de bits permettent non seulement de stocker tous les objets que peut manipuler un algorithme mais aussi les algorithmes eux-même via le codage binaires des chaines Unicode par exemple. On en conclut que :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Un algorithme et tout ce qu'il peut manipuler est une suite finie de `0` et de `1`.
-{% endnote %}
+{% endattention %}
 
 ## Algorithmes et démonstration mathématiques
 

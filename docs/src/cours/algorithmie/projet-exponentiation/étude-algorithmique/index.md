@@ -135,8 +135,6 @@ algorithme puissance(x: entier, n: entier) → entier:
     rendre r
 ```
 
-C'est cet algorithme que nous allons étudier maintenant.
-
 ### <span id="marche-rapide"></span> Est-ce que ça marche ?
 
 Commençons par vérifier que l'algorithme fonctionne sur des cas simples :

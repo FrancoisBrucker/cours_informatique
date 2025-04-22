@@ -214,11 +214,11 @@ Notez que le problème du sac à dos optimal est un problème d'optimisation : o
 
 On peut cependant utiliser [le problème du sac à dos](../../problèmes-NP/#sac-à-dos){.interne} qui est dans NP pour trouver l'optimum en faisant de la dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P ou double le prix et sinon on diminue le prix par deux. On aura besoin de log itération pour trouver le maximum.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Les problèmes d'optimisation ne sont pas dans NP, mais leurs versions existentielles le sont.
 
 On trouver alors l'optimum par dichotomie.
-{% endnote %}
+{% endattention %}
 
 ## Algorithmes gloutons
 
@@ -321,9 +321,9 @@ $$
 
 ## Solution par programmation dynamique
 
-{% note "**À retenir**" %}
-La technique de résolution du sac à dos par programmation dynamique est fondamentale. **Retetnez-là** car elle peut-être utilisée dans bon nombre de problèmes concrets !
-{% endnote %}
+{% attention "**À retenir**" %}
+La technique de résolution du sac à dos par programmation dynamique est fondamentale. **Retenez-là** car elle peut-être utilisée dans bon nombre de problèmes concrets !
+{% endattention %}
 
 Le problème du sac à dos admet une solution via la programmation dynamique simple et élégante. Soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :
 

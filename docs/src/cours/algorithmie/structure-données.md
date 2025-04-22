@@ -43,11 +43,11 @@ affiche à l'écran p[1]  # va afficher 25
 
 En revanche, il est impossible de modifier un tuple une fois créé.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Un **_tuple_** est un regroupement fini d'objets de types pouvant être différent. On peut accéder à chaque élément d'un tuple par son indice.
 
 Un tuple est non modifiable une fois crée.
-{% endnote %}
+{% endattention %}
 
 ## Structures
 
@@ -171,7 +171,7 @@ Dans le code de l'addition, la notation pointée assure que les variables `x`{.l
 
 ### Résumé
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Une **_structure de données_** est composée :
 
 - une fonction `création`{.language-} permettant de créer un objet de cette structure
@@ -179,13 +179,13 @@ Une **_structure de données_** est composée :
 - d'**_attributs_** qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données)
 
 On accède au attributs et aux méthodes d'une structure avec la notation pointée.
-{% endnote %}
+{% endattention %}
 
 Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 On considérera toujours que la taille en mémoire d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.
-{% endnote %}
+{% endattention %}
 
 Pour qu'une structure de donnée puisse être utilisée, il est crucial de connaître la complexité de la création d'un objet de la structure ($\mathcal{O}(1)$ pour notre `Point`{.language-}) et de chaque méthode de celle-ci.
 
@@ -229,9 +229,9 @@ structure Point:
 
 Il faut garder le pseudo-code lisible donc :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 - n'utilisez pas de nom d'attribut comme variable d'une méthode
 - si le paramètre d'une méthode à le même nom qu'un attribut : c'est qu'il est directement affecté à celui-ci avec `self`{.language-}. On utilise essentiellement ça dans la fonction `création`{.language-}
 
-{% endnote %}
+{% endattention %}

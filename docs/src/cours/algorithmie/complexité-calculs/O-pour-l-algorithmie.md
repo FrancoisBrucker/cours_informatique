@@ -93,7 +93,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 
 Calculer avec les fonction asymptotiques va nous permettre de donner la complexité sous la forme d'une allure de complexité :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 On cherchera à borner la complexité par une allure de complexité :
 
@@ -102,7 +102,7 @@ On cherchera à borner la complexité par une allure de complexité :
 - ***complexité linéaire*** en $\mathcal{O}(n)$
 - ***complexité polynomiale*** en $\mathcal{O}(n^k)$ avec $k>1$ constant le plus petit possible
 - ***complexité exponentielle*** en $\mathcal{O}(k^n)$ avec $k>1$ constant le plus petit possible
-{% endnote %}
+{% endattention %}
 
 Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$), on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.
 

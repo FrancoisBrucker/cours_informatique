@@ -99,11 +99,11 @@ structure File:
 
 On voit facilement que :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Les complexités de toutes les méthodes de la structure `File`{.language-} sont en $\mathcal{O}(1)$.
 
 Utiliser une file peut se voire comme une opération élémentaire.
-{% endnote %}
+{% endattention %}
 
 > TBD exemple pour montrer que ça marche, avec des bords.
 

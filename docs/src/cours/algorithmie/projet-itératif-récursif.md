@@ -14,7 +14,7 @@ Nous y verrons divers moyens de triturer des tableaux de façon itérative et r�
 - [encapsulation de la récursion](./#encapsulation-récursion){.interne}
 - [recursion terminale et programme itératif](./#récursion-terminale){.interne}
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Une fois un algorithme créé, on le teste toujours sur de petites instances en se mettant à la place de l'ordinateur.
 
 - on numérote chaque ligne
@@ -22,7 +22,7 @@ Une fois un algorithme créé, on le teste toujours sur de petites instances en 
 - on exécute ligne à ligne en notant les différents résultats
 - à la fin on vérifie que le retour de l'algorithme est bien correct
 
-{% endnote %}
+{% endattention %}
 
 ## Maximum d'un tableau
 
@@ -387,11 +387,11 @@ Lorsque l'on crée des algorithmes récursif, on a souvent besoin d'initialiser 
 
 Pour éviter d'avoir des paramètres inutile on _encapsulera_ la fonction récursive dans un algorithme dont le seul but est d'initialiser la récursion.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 Cette technique est **à utiliser** dès que l'on a besoin de paramètres récursifs mais non utile pour l'algorithme général.
 
-{% endnote %}
+{% endattention %}
 
 Pour savoir si un tableau est un palindrome, l'algorithme sera :
 
@@ -714,9 +714,9 @@ algorithme u_n(n : entier,
 
 Transformer un algorithme récursif en un algorithme avec une récursion terminale revient à ajouter des variables à un programme récursif (ses variables sont ses paramètres).
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La technique de l'accumulateur (_ie._ l'ajout de variables) est fondamentale pour la création d'algorithme récursif.
-{% endnote %}
+{% endattention %}
 
 ## Récursion croisée
 

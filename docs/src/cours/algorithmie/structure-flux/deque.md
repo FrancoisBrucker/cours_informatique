@@ -54,10 +54,10 @@ structure Deque:
             rendre (fin - début - 1 + longueur) % longueur
 ```
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La structure de Deque permet de combiner pile et file. Souvent c'est cette structure qui est implémentée.
 
-{% endnote %}
+{% endattention %}
 {% info %}
 En python, c'est [la classe deque](https://docs.python.org/fr/3.13/library/collections.html#collections.deque) du module [collections](https://docs.python.org/fr/3.13/library/collections.html) qui contient une série de classes implémentant des structures de données utiles.
 

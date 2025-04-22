@@ -218,9 +218,9 @@ De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais ad
 
 Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.
-{% endnote %}
+{% endattention %}
 
 ### Hash de python
 

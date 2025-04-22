@@ -59,9 +59,9 @@ Examinons les complexités des méthodes de listes
 
 A la création de la liste, on crée un tableau de taille $n$, telle que $n$ soit une constante ni trop petite, ni trop grande.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La complexité de la création d'une liste est $\mathcal{O}(1)$.
-{% endnote %}
+{% endattention %}
 
 ### Ajout d'un élément
 
@@ -76,23 +76,23 @@ La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(T.\
 
 Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du $i$ème et enfin on affecte le nouvel élément à sa place. Comme il faut toujours déplacer des éléments :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La complexité de l'**insertion d'un élément à une position quelconque** dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.
-{% endnote %}
+{% endattention %}
 
 ### Suppression d'un élément
 
 Pour supprimer le dernier élément d'une liste on n'a qu'une opération à faire :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La complexité de la **suppression du dernier élément d'une liste** est $\mathcal{O}(1)$.
-{% endnote %}
+{% endattention %}
 
 Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$ :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La complexité de la suppression d'un élément à une position quelconque dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.
-{% endnote %}
+{% endattention %}
 
 ## Complexité d'ajout de $N$ éléments à la fin de la structure
 
@@ -157,10 +157,10 @@ On appelle ce genre de raisonnement [analyse en complexité amortie](../complexi
 
 La structure de liste est un cas _simple_ où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Dans nos calculs de complexité on utilisera $\mathcal{O}(1)$ comme complexité d'**ajout d'un élément en fin de liste** puisque c'est sa _complexité amortie_.
 
-{% endnote %}
+{% endattention %}
 
 ## Bilan
 

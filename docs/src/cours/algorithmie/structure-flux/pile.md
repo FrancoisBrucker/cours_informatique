@@ -134,11 +134,11 @@ Une méthode peut utiliser une autre méthode : les méthodes `pleine`{.language
 
 On voit facilement que :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Les complexités de toutes les méthodes de la structure `Pile`{.language-} sont en $\mathcal{O}(1)$.
 
 Utiliser une pile peut se voire comme une opération élémentaire.
-{% endnote %}
+{% endattention %}
 
 Notez qu'une pile s'implémente très facilement en python avec une liste  (c'est même fait pour) :
 

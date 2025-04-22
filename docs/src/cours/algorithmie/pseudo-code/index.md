@@ -138,10 +138,10 @@ Un algorithme est constitué uniquement d'instructions de base. Mais rien n'emp�
 
 Terminons cette partie en montrant que l'on peut facilement créer des matrices uniquement avec des tableaux. Ce type est tellement utilisé en algorithme qu'on le considérera souvent comme un type de base.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 Une matrice de dimension $k$ est constitué d'un tableau de matrices de dimensions $k-1$
-{% endnote %}
+{% endattention %}
 
 Une matrice entière $M$ de $n$ lignes et $p$ colonnes sera constitué d'un tableau de $n$ lignes (un tableau de $p$ entiers).
 

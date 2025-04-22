@@ -146,12 +146,12 @@ On sait que $\pi$ est calculable depuis bien plus longtemps que ça. La mathéma
 
 En conclusion :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La quasi-totalité des nombres réels utilisées en mathématiques en tant que tel ($\pi$, $e$, etc) ou comme résultat de fonctions (comme $cos$, $sin$, racine carrée, etc) sont calculables : il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.
-{% endnote %}
-{% attention %}
-Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) et son approximation que l'on peut utiliser dans les calculs.
 {% endattention %}
+{% info %}
+Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) et son approximation que l'on peut utiliser dans les calculs.
+{% endinfo %}
 
 ## Exemple de fonction calculable
 
@@ -238,9 +238,9 @@ Programme :
 
 Dans les deux cas, c'est un algorithme. Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) et donc on ne sait pas lequel des deux algorithmes est le bon.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, poussée sur le problème à résoudre pour le faire
-{% endnote %}
+{% endattention %}
 
 On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.
 
@@ -357,11 +357,11 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 
 Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez le comme un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La fonction de Takeuchi montre que pour résoudre un problème simple il existe des solutions compliquée.
 
 Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.
-{% endnote %}
+{% endattention %}
 
 ## <span id="non-calculable"></span>Non calculabilité
 

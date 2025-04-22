@@ -47,9 +47,9 @@ Notez que tous les objets basiques à part les entiers sont de taille fixe :
 
 On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce  que font les languages d programmation comme python où un entier, qui n'est pas borné pfr nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
-{% endnote %}
+{% endattention %}
 
 ### Variables
 
@@ -93,9 +93,9 @@ Si le tableau est nommé $t$ :
 
 Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 On considérera toujours que la taille d'un tableau est proportionnelle à la taille des objets qui la compose et est connue à sa création.
-{% endnote %}
+{% endattention %}
 
 Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.
 
@@ -118,9 +118,9 @@ On considère que créer un tableau prend 1 instruction car celui-ce est de tail
 
 Les opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.
-{% endnote %}
+{% endattention %}
 
 ### Tranches
 

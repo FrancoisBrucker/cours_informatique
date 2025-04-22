@@ -58,14 +58,14 @@ Attention cependant :
 
 En conclusion :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 Ce type d'algorithme est très utilisé pour :
 
 1. résoudre des problèmes ou la solution optimale peut être construite itérativement
 2. résoudre approximativement des problèmes où la rapidité de du calcul de la solution prime sur l'optimalité (souvent des problèmes NP-complets à optimiser).
 
-{% endnote %}
+{% endattention %}
 
 Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée de celui-ci. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution. Les algorithmes gloutons sont alors des [heuristiques](https://fr.wikipedia.org/wiki/Heuristique) utiles pour trouver une solution satisfaisante, mais pas forcément optimale, à un problème difficile à résoudre.
 
@@ -175,13 +175,13 @@ La difficulté de ces problèmes vient du fait que l'on ne peut a priori pas tro
 
 Certains problèmes cependant permettent d'être résolus en construisant petit à petit une solution, sans jamais remettre en cause ses choix et peuvent ainsi être résolu grace à un algorithme glouton. Ce sont ces problèmes que l'on va étudier maintenant.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Prouver qu'un algorithme glouton est optimal va se faire **tout le temps** de la même façon : par échange.
 
 On va itérativement transformer une solution optimale initiale inconnue en notre sortie de l'algorithme glouton tout en gardant l'optimalité ce qui prouvera l'optimalité du glouton.
 
 Pour cela on va chercher à chaque étape à remplacer un fragment de la solution optimale par un fragment de la sorite du glouton ce qui rapprochera la solution optimale du glouton. Lorsqu'on ne pourra plus le faire la solution optimale sera égale à la sortie du glouton et on aura gagné.
-{% endnote %}
+{% endattention %}
 
 Ceci est possible car d'u point de vue théorique un problème pouvant se résoudre avec un algorithme glouton est [un matroïde](https://fr.wikipedia.org/wiki/Matro%C3%AFde), dont la principale propriété est d'être stable par échange.
 
