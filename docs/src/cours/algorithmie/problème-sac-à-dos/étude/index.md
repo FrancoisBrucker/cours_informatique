@@ -335,6 +335,10 @@ La remarque ci-dessus permet de définir, tout comme pour [l'alignement de séqu
 <div>
 $$
 M[i][j] = \max(M[i-1][j-k_i] + p_i, M[i-1][j])
+\text{ si } k_i \leq j
+$$
+$$
+M[i][j] = M[i-1][j] \text{ sinon}
 $$
 </div>
 
