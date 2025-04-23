@@ -23,7 +23,7 @@ Commençons par définir le problème :
 {% note "**Problème**" %}
 
 - **Nom** : tri
-- **Entrées** : un tableau d'entiers
+- **Entrée** : un tableau d'entiers
 - **Sortie** : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant
 
 {% endnote %}

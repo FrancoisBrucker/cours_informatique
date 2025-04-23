@@ -579,13 +579,6 @@ On se focalise sur une méthode particulière de design d'algorithme, les algori
 
 #### Mercredi : Sac à dos
 
-{% attention %}
-Test de 15min en début de cours sur **les algorithmes gloutons**.
-{% endattention %}
-{% faire %}
-Sujet du test 7
-{% endfaire %}
-
 Au programme, on prépare les vacances et son sac-à-dos :
 
 {% aller %}

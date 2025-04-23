@@ -79,9 +79,9 @@ Un algorithme est sensé faire quelque chose : à partir de données passées en
 {% note "**Définition**" %}
 Un **_problème_** est un texte composé de 3 parties :
 
-- **nom** : le nom du problème
-- **données** : les paramètres dont on a besoin
-- **question** : ce que l'on cherche
+- **Nom** : le nom du problème
+- **Entrées** : les paramètres dont on a besoin
+- **Sortie** : le retour de l'algorithme
 
 {% endnote %}
 
@@ -89,9 +89,9 @@ Par exemple :
 
 {% note "**Problème**" %}
 
-- **nom** : maximum
-- **données** : un tableau d'entiers
-- **question** : quel est l'entier maximum du tableau ?
+- **Nom** : maximum
+- **Entrée** : un tableau d'entiers
+- **Sortie** : l'entier maximum du tableau
 
 {% endnote %}
 
@@ -406,10 +406,10 @@ Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous a
 
 {% note "**Problème**" %}
 
-- **nom** : 3-SUM
-- **données** :
+- **Nom** : 3-SUM
+- **Entrée** :
   - T : un tableau de $n$ entiers relatifs
-- **question** : existe-t-il 3 indices (pouvant être égaux) tels que $T[i] + T[j] + T[k] = 0$
+- **Question** : existe-t-il 3 indices (pouvant être égaux) tels que $T[i] + T[j] + T[k] = 0$
 
 {% endnote %}
 
@@ -417,10 +417,10 @@ De nombreux problèmes lui sont équivalent comme par exemple le suivant :
 
 {% note "**Problème**" %}
 
-- **nom** : 3-SUM'
-- **données** :
+- **Nom** : 3-SUM'
+- **Entrées** :
   - $T$, $T'$ et $T''$ : trois tableaux d'entiers relatifs
-- **question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
+- **Question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
 
 {% endnote %}
 
@@ -452,7 +452,7 @@ obligatoirement 1 élément de chaque tableau initial $T$, $T'$ et $T''$.
 {% note "**Problème**" %}
 
 - **nom** : Geobase
-- **données** :
+- **Entrées** :
   Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes horizontales avec $y = 0$, $y = 1$ et $y = 2$
 - **question** : Existe-t-il une droite non horizontale passant par 3 points.
 {% endnote %}

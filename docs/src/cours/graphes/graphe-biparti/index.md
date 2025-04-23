@@ -212,9 +212,9 @@ Le problème de cette généralisation est que le problème de reconnaissance de
 
 {% note "**Problème**" %}
 
-- nom : Reconnaissance d'un graphe $k$-parti (`Rec-k-parti`)
-- entrée : un graphe $G$
-- sortie : Oui si $G$ est $k$-parti, Non sinon.
+- **Nom** : Reconnaissance d'un graphe $k$-parti (`Rec-k-parti`)
+- **Entrée** : un graphe $G$
+- **Sortie** : Oui si $G$ est $k$-parti, Non sinon.
 
 {% endnote %}
 

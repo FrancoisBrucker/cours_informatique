@@ -354,7 +354,7 @@ Si $k = 0$ ou `P`{.language-} est vide la complexité de `k-pop(k, P)`{.language
 
 Soit $A$ un algorithme utilisant une pile $P$ via ses méthodes `nombre`{.language-} et `empiler`{.language-} et via la fonction `k-pop`{.language-}. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.
 
-{% exercice "**Problème**" %}
+{% exercice %}
 Quelle est la complexité totale de ces $m$ opérations pour $A$ ?
 {% endexercice %}
 

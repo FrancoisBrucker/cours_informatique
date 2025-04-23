@@ -125,7 +125,7 @@ Commençons par [le problème 2-SUM](../projet-classiques/#2-sum){.interne} que 
 {% note "**Problème**" %}
 
 - **nom** : 2-SUM
-- **données** :
+- **Entrée** :
   - T : un tableau de $n$ entiers relatifs
 - **question** : existe-t-il 2 indices $i$ et $j$ (pouvant être égaux) tels que $T[i] + T[j] = 0$
 
@@ -136,7 +136,7 @@ Regardons un problème qui lui ressemble :
 {% note "**Problème**" %}
 
 - **nom** : ÉGAL
-- **données** :
+- **Entrées** :
   - $T$, $T'$ : deux tableaux d'entiers relatifs
 - **question** : existe-t-il 2 indices tels que $T[i] = T'[j]$
 
@@ -160,7 +160,7 @@ Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous a
 {% note "**Problème**" %}
 
 - **nom** : 3-SUM
-- **données** :
+- **Entrées** :
   - T : un tableau de $n$ entiers relatifs
 - **question** : existe-t-il 3 indices (pouvant être égaux) tels que $T[i] + T[j] + T[k] = 0$
 
@@ -170,10 +170,10 @@ Continuons sur notre lancée en considérant le problème suivant :
 
 {% note "**Problème**" %}
 
-- **nom** : 3-SUM'
-- **données** :
+- **Nom** : 3-SUM'
+- **Entrées** :
   - $T$, $T'$ et $T''$ : trois tableaux d'entiers relatifs
-- **question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
+- **Question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
 
 {% endnote %}
 

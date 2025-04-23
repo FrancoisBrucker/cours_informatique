@@ -23,13 +23,13 @@ Commençons par une version simplifiée du problème, dit du **_sac à dos fract
 
 {% note "**Problème**" %}
 
-- **nom** : sac à dos fractionnel
-- **données** :
+- **Nom** : sac à dos fractionnel
+- **Entrées** :
   - $n$ poudres différentes, décrites par :
     - leurs masses en kilo : $k_i$
     - leurs prix : $p_i$
   - un sac à dos pouvant contenir $K$ kilos de poudre
-- **question** : Donnez une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :
+- **Sortie** : Donnez une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :
   - on peut mettre les poudres dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
   - le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit maximum
 {% endnote %}
@@ -182,13 +182,13 @@ Notre hypothèse arrivant à une contradiction, elle était fausse : la solution
 Le fait de pouvoir fractionner les éléments est un cas particulier heureux, mais ce n'est pas la norme, pensez à un déménagement : les déménageurs ne peuvent prendre qu'un bout du canapé sous prétexte qu'il ne rentre pas en entier dans le camion... La formalisation classique du sac à dos ne permet pas de scinder des objets :
 {% note "**Problème**" %}
 
-- **nom** : sac à dos optimal
-- **données** :
+- **Nom** : sac à dos optimal
+- **entrées** :
   - $n$ produits différentes, décris par :
     - leurs masses en kilo : $k_i$
     - leurs prix : $p_i$
   - un sac à dos pouvant contenir $K$ kilos
-- **question** : Donnez une liste de produits à mettre dans le sac ($f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon)  telle que :
+- **Sortie** : Donnez une liste de produits à mettre dans le sac ($f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon)  telle que :
   - on peut mettre les produits choisis dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
   - le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit maximum
 {% endnote %}

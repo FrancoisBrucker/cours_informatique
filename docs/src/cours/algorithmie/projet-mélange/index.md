@@ -19,11 +19,11 @@ Créez un projet vscode pour implémenter, tester et utiliser les différents al
 
 Commençons par identifier le problème. Nous allons utiliser le problème suivant, qui consiste à rendre une permutation des $n$ premiers entiers :
 
-{% note "**Problème** :" %}
+{% note "**Problème**" %}
 
-- **nom** : permutation
-- **entrée** : un tableau d'entiers
-- **sortie** : une permutation aléatoire du tableau en entrée
+- **Nom** : permutation
+- **Entrée** : un tableau d'entiers
+- **Sortie** : une permutation aléatoire du tableau en entrée
 
 {% endnote %}
 
@@ -31,11 +31,11 @@ Une permutation d'un tableau $T$ de taille $n$ est un tableau $\sigma(T)$ de tai
 
 L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un entier aléatoire plus petit qu'un nombre donné $n$. On va donc considérer que l'on a une fonction `randrange`{.language-} de complexité $\mathcal{O}(1)$ qui résout le problème *"randrange"* suivant :
 
-{% note "**Problème** :" %}
+{% note "**Problème**" %}
 
-- **nom** : randrange
-- **entrées** : un entier $a$
-- **sortie** : un entier aléatoire $b$ tel que $0 \leq b < a$.
+- **Nom** : randrange
+- **Entrée** : un entier $a$
+- **Sortie** : un entier aléatoire $b$ tel que $0 \leq b < a$.
 
 {% endnote %}
 

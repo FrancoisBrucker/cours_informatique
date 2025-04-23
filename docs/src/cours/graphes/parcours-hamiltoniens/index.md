@@ -153,9 +153,9 @@ Formalisons les problèmes du cycle hamiltonien dans ses versions orienté et no
 
 {% note "**Problème**" %}
 
-- **nom** : cycle (_resp._ circuit) hamiltonien
-- **données** : Un graphe (_resp._ graphe orienté) $G$
-- **question** : $G$ possède-t-il un cycle hamiltonien ?
+- **Nom** : cycle (_resp._ circuit) hamiltonien
+- **Entrée** : Un graphe (_resp._ graphe orienté) $G$
+- **Question** : $G$ possède-t-il un cycle hamiltonien ?
 
 {% endnote %}
 
@@ -163,9 +163,9 @@ Et faisons de même pour les chemins hamiltonien dans ses versions orienté et n
 
 {% note "**Problème**" %}
 
-- **nom** : chemin (_resp._ chemin orienté) hamiltonien
-- **données** : Un graphe (_resp._ graphe orienté) $G$
-- **question** : $G$ possède-t-il un chemin hamiltonien ?
+- **Nom** : chemin (_resp._ chemin orienté) hamiltonien
+- **Entrée** : Un graphe (_resp._ graphe orienté) $G$
+- **Question** : $G$ possède-t-il un chemin hamiltonien ?
 
 {% endnote %}
 
@@ -262,9 +262,9 @@ La NP-complétude des chemins et cycles hamiltoniens nous permet de conclure qu'
 
 {% note "**Problème**" %}
 
-- **nom** : chemin le plus long
-- **données** : Un graphe (_resp._ graphe orienté) $G$
-- **réponse** : Un chemin élémentaire le plus long possible.
+- **Nom** : chemin le plus long
+- **Entrée** : Un graphe (_resp._ graphe orienté) $G$
+- **Sortie** : Un chemin élémentaire le plus long possible.
 
 {% endnote %}
 

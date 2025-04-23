@@ -15,7 +15,7 @@ En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing pui
 
 ## Problèmes utilisables en pratique
 
-Un [problème algorithmique](../probleme-algorithmique/){.interne} implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problème non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne} par exemple), on peut commencer par se restreindre aux problèmes décidables :
+Un [problème algorithmique](../probleme-algorithmique/){.interne} implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne} par exemple), on peut commencer par se restreindre aux problèmes décidables :
 
 ![décidable](./NP-décidable.png)
 
@@ -57,14 +57,14 @@ Le problème du sac à dos tente de maximiser la durée d'une randonnée :
 
 {% note "**Problème**" %}
 
-- **nom** : sac à dos
-- **données** :
+- **Nom** : sac à dos
+- **entrées** :
   - $n$ produits différents, décris par :
     - leurs masses en kilo : $k_i$
     - leurs quantité nutritive : $q_i$
   - un sac à dos pouvant contenir $K$ kilos
   - une quantité nutritive à dépasser $Q$
-- **question** : existe-t-il un sous ensemble $I$ de l'intervalle $[1, n]$ (un ensemble de produits) tel que :
+- **Question** : existe-t-il un sous ensemble $I$ de l'intervalle $[1, n]$ (un ensemble de produits) tel que :
   - $\sum_{i \in I} k_i \leq K$ : les objets tiennent dans le sac à dos
   - $\sum_{i \in I} q_i \geq Q$ : la quantité nutritive des objets permet de survivre à la randonnée
 {% endnote %}
@@ -82,11 +82,11 @@ De même considérons un autre problème classique en algorithmie, l'isomorphism
 
 {% note "**Problème**" %}
 
-- **nom** : isomorphisme
-- **données** : [deux graphes](https://fr.wikipedia.org/wiki/Graphe_(math%C3%A9matiques_discr%C3%A8tes)#D%C3%A9finition_et_vocables_associ%C3%A9s) :
+- **Nom** : isomorphisme
+- **Entrées** : [deux graphes](https://fr.wikipedia.org/wiki/Graphe_(math%C3%A9matiques_discr%C3%A8tes)#D%C3%A9finition_et_vocables_associ%C3%A9s) :
   - $G_1 = (V_1, E_1)$
   - $G_2 = (V_2, E_2)$
-- **question** : existe-t-il une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\\{x, y\\}$ est une arête de $G_1$ si et seulement si $\\{\sigma(x), \sigma(y) \\}$ est une arête de $G_2$
+- **Question** : existe-t-il une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\\{x, y\\}$ est une arête de $G_1$ si et seulement si $\\{\sigma(x), \sigma(y) \\}$ est une arête de $G_2$
 {% endnote %}
 
 Par exemple en considérant les 3 graphes ci dessous :
@@ -220,7 +220,7 @@ Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. 
 
 {% endattention %}
 
-Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidable mais non dans NP.
+Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidables mais non dans NP.
 
 En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une  époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
 
@@ -228,29 +228,37 @@ Certains se demandent même si cette question est décidable (_ie._ démontrable
 
 Enfin :
 
-{% note %}
-il existe des problèmes dans NP, nommé **NP-complet**, dont la résolution permet de résoudre tout problème de NP.
+{% note "**(Gros) Théorème ([Cook & Levin en 1971](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook))**" %}
+
+Il existe des problèmes dans NP, nommé **NP-complets**, dont la résolution permet de résoudre tout problème de NP.
 
 C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une **réduction polynomiale** de $B$ vers $A$ : on a $B \leq A$.
+
 {% endnote %}
 
-Nous démontrerons ceci rigoureusement plus tard. Pour l'instant contentons nous d'admettre qu'ils existent et que **le problème du sac à dos est NP-complet**.
+{% note "**Théorème ([Karp en 1972](https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems))**" %}
+
+Le problème du sac à dos est NP-complet.
+
+{% endnote %}
+{% info %}
+Nous démontrerons ceci rigoureusement plus tard.
+{% endinfo %}
 
 ![décidable](./NP-NP-2.png)
 
-Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.
+Notez que :
 
-{% note %}
-Vous aurez remarquez que l'on a précisé qu'il existe des problèmes décidables qui ne sont pas dans NP. On le démontrera bien plus tard en montrant qu'il existe des problèmes où si l'on cherche à répondre OUI, le problème est dans NP et si l'on cherche à répondre NON au même problème, il n'y est pas.
-{% endnote %}
-
-Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut _a priori_ tout vérifier car la solution peut se trouver n'importe où. A contrario des problèmes polynomiaux ou, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement parcourir.
+- le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.
+- il existe des problèmes décidables qui ne sont pas dans NP (c'est la flèche _non vide_). On le démontrera bien plus tard en montrant qu'il existe des problèmes où si l'on cherche à répondre OUI, le problème est dans NP et si l'on cherche à répondre NON au même problème, il n'y est pas.
 
 {% attention "**À retenir**" %}
-Les problèmes NP-complets sont tous équivalents car ils correspondent tous à **des problèmes universels**, sans structure.
 
-Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution.
+Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut _a priori_ tout vérifier car la solution peut se trouver n'importe où _a contrario_ des problèmes polynomiaux où, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement (en temps polynomial) parcourir.
+
 {% endattention %}
+
+Les problèmes NP-complets sont tous équivalents car ils correspondent tous à **des problèmes universels**, sans structure. Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution.
 
 ## Autres classes
 

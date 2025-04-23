@@ -83,9 +83,9 @@ Pour se fixer les idées regardons comment appliquer ces différentes étapes da
 
 {% note "**Problème**" %}
 
-- **nom** : rendu
-- **données** : un entier $R$
-- **résultat** : trois nombres $n_1$, $n_2$ et $n_5$ tels que :
+- **Nom** : rendu
+- **Entrée** : un entier $R$
+- **Sortie** : trois nombres $n_1$, $n_2$ et $n_5$ tels que :
   1. $n_1 + 2 \cdot n_2 + 5 \cdot n_5 = R$
   2. $n_1 + n_2 + n_3 = \min(\\{ x + y + z \\,\vert \\,  x + 2 \cdot y + 5 \cdot z = R, x, y, z \in \mathbb{N} \\})$
 {% endnote %}
@@ -213,9 +213,9 @@ Fixons nous les idées en modélisant des algorithmes gloutons optimaux pour ré
 
 {% note "**Problème**" %}
 
-- **nom** : recouvrement
-- **données** : un tableau $T$ de $n$ nombres réels
-- **résultat** : une liste I d'intervalles $[x, x+1]$ telle que :
+- **Nom** : recouvrement
+- **Entrées** : un tableau $T$ de $n$ nombres réels
+- **Sortie** : une liste I d'intervalles $[x, x+1]$ telle que :
   - pour tout indice $i$, il existe un indice $j$ tel que $T[i] \in I[j]$
   - la liste d'intervalles $I$ est de taille minimum
 {% endnote %}
@@ -323,11 +323,11 @@ Pour illustrer cette problématique on va utiliser [le problème du _bin packing
 
 {% note "**Problème**" %}
 
-- **nom** : _bin packing_
-- **données** :
+- **Nom** : _bin packing_
+- **Entrée** :
   - un tableau $T$ de $n$ entiers
   - un entier $K$
-- **résultat** : une partition des éléments de $T$ en $m$ _boîtes_ $B_j$ ($0\leq j < m$) telle que :
+- **Sortie** : une partition des éléments de $T$ en $m$ _boîtes_ $B_j$ ($0\leq j < m$) telle que :
   - la somme des éléments $\sum_{i \in E_j}T[i] \leq K$ pour tout $0\leq j < m$
   - $m$ est minimum
 {% endnote %}
@@ -338,12 +338,12 @@ Trouver une solution au problème du _bin packing_ n'est cependant vraiment pas 
 
 {% note "**Problème**" %}
 
-- **nom** : _bin packing existence_
-- **données** :
+- **Nom** : _bin packing existence_
+- **Entrées** :
   - un tableau $T$ de $n$ entiers
   - un entier $K$
   - un entier $M$
-- **résultat** : rendre, si elle existe, une partition de $[0, T.\mbox{\small longueur}[$ en $m$ ensembles $E_j$ ($0\leq j < m$) telle que :
+- **Sortie** : rendre, si elle existe, une partition de $[0, T.\mbox{\small longueur}[$ en $m$ ensembles $E_j$ ($0\leq j < m$) telle que :
   - la somme des éléments $\sum_{i \in E_j}T[i] \leq K$ pour tout $0\leq j < m$
   - $m \leq M$
 {% endnote %}
@@ -537,13 +537,13 @@ Le problème à résoudre est donc trouver un ordre de construction des voitures
 
 {% note "**Problème**" %}
 
-- **nom** : montage
-- **données** :
+- **Nom** : montage
+- **Entrées** :
   - un tableau $V$ de $n$ voitures
   - chaque voiture $v = V[i]$ est une liste de $m$ 0 ou 1 ($v[j] = 1$ si $v$ possède l'option $j$)
   - un liste $O$ de $m$ ouvriers ($O[j]$ est le nombre d'ouvriers de l'atelier $j$)
   - un liste $T$ de $m$ temps ($T[j]$ est le temps mis par l'atelier $j$)
-- **résultat** : un ordonnancement de $V$ minimisant : $\sum_{0\leq j < m}\sum_{0\leq i < n-T[j]}\max(0, \sum_{i \leq k < i + T[j]}V[k][j] - O[j])$ (le déficit d'ouvriers pour tous les ateliers et pour la fabrication des $n$ voitures)
+- **Sortie** : un ordonnancement de $V$ minimisant : $\sum_{0\leq j < m}\sum_{0\leq i < n-T[j]}\max(0, \sum_{i \leq k < i + T[j]}V[k][j] - O[j])$ (le déficit d'ouvriers pour tous les ateliers et pour la fabrication des $n$ voitures)
 {% endnote %}
 
 Prenons l'exemple donné dans [la description du problème de la chaîne de montage](https://www.csplib.org/Problems/prob001/). La chaîne de montage est de ce type :

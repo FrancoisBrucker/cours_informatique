@@ -59,13 +59,18 @@ On va chercher à résoudre le problème suivant :
 
 {% note "**Problème**" %}
 
-- **nom** : recherche
-- **données** :
+- **Nom** : recherche
+- **Entrées** :
   - un entier $x$
   - un tableau d'entiers $T$
-- **question** : existe-t-il un indice $0\leq i < T.\mbox{\small longueur}$ tel que $T[i] = x$  ?
+- **Question** : existe-t-il un indice $0\leq i < T.\mbox{\small longueur}$ tel que $T[i] = x$  ?
 
 {% endnote %}
+{% info %}
+On a utilisé ici le mot clé **question** plutôt que **sortie**. On utilisera cette convention lorsque la sortie est soit OUI soit NON.
+
+On les appelle [problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision) et sont très important en informatique théorique. On le verra (bien) plus tard.
+{% endinfo %}
 
 Ce qu'on peut déjà dire de notre problème :
 
