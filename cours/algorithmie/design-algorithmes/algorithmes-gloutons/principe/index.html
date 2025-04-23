@@ -172,9 +172,9 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : rendu</li>
-<li><strong>données</strong> : un entier $R$</li>
-<li><strong>résultat</strong> : trois nombres $n_1$, $n_2$ et $n_5$ tels que :
+<li><strong>Nom</strong> : rendu</li>
+<li><strong>Entrée</strong> : un entier $R$</li>
+<li><strong>Sortie</strong> : trois nombres $n_1$, $n_2$ et $n_5$ tels que :
 <ol>
 <li>$n_1 + 2 \cdot n_2 + 5 \cdot n_5 = R$</li>
 <li>$n_1 + n_2 + n_3 = \min(\{ x + y + z \,\vert \,  x + 2 \cdot y + 5 \cdot z = R, x, y, z \in \mathbb{N} \})$</li>
@@ -323,9 +323,9 @@ TBD certain minima local = global (comme fct convexe), mais souvent pas le cas.<
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : recouvrement</li>
-<li><strong>données</strong> : un tableau $T$ de $n$ nombres réels</li>
-<li><strong>résultat</strong> : une liste I d'intervalles $[x, x+1]$ telle que :
+<li><strong>Nom</strong> : recouvrement</li>
+<li><strong>Entrées</strong> : un tableau $T$ de $n$ nombres réels</li>
+<li><strong>Sortie</strong> : une liste I d'intervalles $[x, x+1]$ telle que :
 <ul>
 <li>pour tout indice $i$, il existe un indice $j$ tel que $T[i] \in I[j]$</li>
 <li>la liste d'intervalles $I$ est de taille minimum</li>
@@ -419,14 +419,14 @@ $$
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : <em>bin packing</em></li>
-<li><strong>données</strong> :
+<li><strong>Nom</strong> : <em>bin packing</em></li>
+<li><strong>Entrée</strong> :
 <ul>
 <li>un tableau $T$ de $n$ entiers</li>
 <li>un entier $K$</li>
 </ul>
 </li>
-<li><strong>résultat</strong> : une partition des éléments de $T$ en $m$ <em>boîtes</em> $B_j$ ($0\leq j &lt; m$) telle que :
+<li><strong>Sortie</strong> : une partition des éléments de $T$ en $m$ <em>boîtes</em> $B_j$ ($0\leq j &lt; m$) telle que :
 <ul>
 <li>la somme des éléments $\sum_{i \in E_j}T[i] \leq K$ pour tout $0\leq j &lt; m$</li>
 <li>$m$ est minimum</li>
@@ -445,15 +445,15 @@ $$
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : <em>bin packing existence</em></li>
-<li><strong>données</strong> :
+<li><strong>Nom</strong> : <em>bin packing existence</em></li>
+<li><strong>Entrées</strong> :
 <ul>
 <li>un tableau $T$ de $n$ entiers</li>
 <li>un entier $K$</li>
 <li>un entier $M$</li>
 </ul>
 </li>
-<li><strong>résultat</strong> : rendre, si elle existe, une partition de $[0, T.\mbox{\small longueur}[$ en $m$ ensembles $E_j$ ($0\leq j &lt; m$) telle que :
+<li><strong>Sortie</strong> : rendre, si elle existe, une partition de $[0, T.\mbox{\small longueur}[$ en $m$ ensembles $E_j$ ($0\leq j &lt; m$) telle que :
 <ul>
 <li>la somme des éléments $\sum_{i \in E_j}T[i] \leq K$ pour tout $0\leq j &lt; m$</li>
 <li>$m \leq M$</li>
@@ -745,8 +745,8 @@ $$
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : montage</li>
-<li><strong>données</strong> :
+<li><strong>Nom</strong> : montage</li>
+<li><strong>Entrées</strong> :
 <ul>
 <li>un tableau $V$ de $n$ voitures</li>
 <li>chaque voiture $v = V[i]$ est une liste de $m$ 0 ou 1 ($v[j] = 1$ si $v$ possède l'option $j$)</li>
@@ -754,7 +754,7 @@ $$
 <li>un liste $T$ de $m$ temps ($T[j]$ est le temps mis par l'atelier $j$)</li>
 </ul>
 </li>
-<li><strong>résultat</strong> : un ordonnancement de $V$ minimisant : $\sum_{0\leq j &lt; m}\sum_{0\leq i &lt; n-T[j]}\max(0, \sum_{i \leq k &lt; i + T[j]}V[k][j] - O[j])$ (le déficit d'ouvriers pour tous les ateliers et pour la fabrication des $n$ voitures)</li>
+<li><strong>Sortie</strong> : un ordonnancement de $V$ minimisant : $\sum_{0\leq j &lt; m}\sum_{0\leq i &lt; n-T[j]}\max(0, \sum_{i \leq k &lt; i + T[j]}V[k][j] - O[j])$ (le déficit d'ouvriers pour tous les ateliers et pour la fabrication des $n$ voitures)</li>
 </ul>
 </div></div>
 

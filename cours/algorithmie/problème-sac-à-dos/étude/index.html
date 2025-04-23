@@ -116,8 +116,8 @@
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : sac à dos fractionnel</li>
-<li><strong>données</strong> :
+<li><strong>Nom</strong> : sac à dos fractionnel</li>
+<li><strong>Entrées</strong> :
 <ul>
 <li>$n$ poudres différentes, décrites par :
 <ul>
@@ -128,7 +128,7 @@
 <li>un sac à dos pouvant contenir $K$ kilos de poudre</li>
 </ul>
 </li>
-<li><strong>question</strong> : Donnez une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :
+<li><strong>Sortie</strong> : Donnez une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :
 <ul>
 <li>on peut mettre les poudres dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
 <li>le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit maximum</li>
@@ -295,12 +295,12 @@
 <p>On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac à dos.</p>
 <p>Pour notre solution, on note $(f_1, \dots, f_n)$ les proportions choisis dans l'ordre de choix de l'algorithme glouton.
 On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i &lt;n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(f_1, \dots, f_{i-1}, f'_i, \dots, f'_n)$.</p>
-<p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $f_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $f_{i-1}$.</p>
+<p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $f_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $f_{i-1}$ (cette solution existe car les inégalités sont larges : le max est encore une solution).</p>
 <p>Jusqu'à l'étape $i-1$ tous les choix sont identiques donc une fois placés les $i$ premiers produits (les produits d'indices $0$ à $i-1$) avec le même kilo, il reste la même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l'algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) les kilos $f'_i$ de la solution optimale pour le produit d'indice $i$ est forcément plus petit strictement que $f_i$.</p>
 <p>Donc :</p>
 <ul>
 <li>soit $f'_j = 0$ pour tout $j &gt; i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,</li>
-<li>soit il existe $f'_j &gt;0$ pour un $j&gt;i$. On peut alors diminuer $f_j'$ d'un $\epsilon &gt; 0$ que l'on peut ajouter à $f_i'$ pour obtenir une solution strictement meilleure que la solution optimale : c'est impossible.</li>
+<li>soit il existe $f'<em j="">j &gt;0$ pour un $j&gt;i$. On peut alors diminuer $f_j'$ d'un $\epsilon &gt; 0$ ce qui fait gagner $\epsilon \cdot k</em>$ kilo au sac à dos que l'on peut assigner à la poudre $i$ en ajoutant $\epsilon \cdot k_{j'} / k_{i}$ à $f_i'$. Cette solution est toujours optimale mais sa proportion de poudre $i$ est strictement plus grande que $f_i'$ : c'est impossible.</li>
 </ul>
 <p>Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.</p>
 </div>
@@ -324,8 +324,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : sac à dos optimal</li>
-<li><strong>données</strong> :
+<li><strong>Nom</strong> : sac à dos optimal</li>
+<li><strong>entrées</strong> :
 <ul>
 <li>$n$ produits différentes, décris par :
 <ul>
@@ -336,7 +336,7 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <li>un sac à dos pouvant contenir $K$ kilos</li>
 </ul>
 </li>
-<li><strong>question</strong> : Donnez une liste de produits à mettre dans le sac ($f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon)  telle que :
+<li><strong>Sortie</strong> : Donnez une liste de produits à mettre dans le sac ($f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon)  telle que :
 <ul>
 <li>on peut mettre les produits choisis dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
 <li>le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit maximum</li>

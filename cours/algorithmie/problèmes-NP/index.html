@@ -99,7 +99,7 @@
   <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
 <p>En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing puisqu'elle n'est pas démontrée, ici on considérera que les algorithmes sont écrit en pseudo-code.</p>
 <h2>Problèmes utilisables en pratique</h2>
-<p>Un <a href="../probleme-algorithmique/" class="interne">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problème non solvable par un algorithme (on a vu <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov" class="interne">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
+<p>Un <a href="../probleme-algorithmique/" class="interne">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov" class="interne">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
 <p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
 <h3>Résolution efficace</h3>
@@ -144,8 +144,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : sac à dos</li>
-<li><strong>données</strong> :
+<li><strong>Nom</strong> : sac à dos</li>
+<li><strong>entrées</strong> :
 <ul>
 <li>$n$ produits différents, décris par :
 <ul>
@@ -157,7 +157,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <li>une quantité nutritive à dépasser $Q$</li>
 </ul>
 </li>
-<li><strong>question</strong> : existe-t-il un sous ensemble $I$ de l'intervalle $[1, n]$ (un ensemble de produits) tel que :
+<li><strong>Question</strong> : existe-t-il un sous ensemble $I$ de l'intervalle $[1, n]$ (un ensemble de produits) tel que :
 <ul>
 <li>$\sum_{i \in I} k_i \leq K$ : les objets tiennent dans le sac à dos</li>
 <li>$\sum_{i \in I} q_i \geq Q$ : la quantité nutritive des objets permet de survivre à la randonnée</li>
@@ -182,14 +182,14 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : isomorphisme</li>
-<li><strong>données</strong> : <a href="https://fr.wikipedia.org/wiki/Graphe_(math%C3%A9matiques_discr%C3%A8tes)#D%C3%A9finition_et_vocables_associ%C3%A9s">deux graphes</a> :
+<li><strong>Nom</strong> : isomorphisme</li>
+<li><strong>Entrées</strong> : <a href="https://fr.wikipedia.org/wiki/Graphe_(math%C3%A9matiques_discr%C3%A8tes)#D%C3%A9finition_et_vocables_associ%C3%A9s">deux graphes</a> :
 <ul>
 <li>$G_1 = (V_1, E_1)$</li>
 <li>$G_2 = (V_2, E_2)$</li>
 </ul>
 </li>
-<li><strong>question</strong> : existe-t-il une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\{x, y\}$ est une arête de $G_1$ si et seulement si $\{\sigma(x), \sigma(y) \}$ est une arête de $G_2$</li>
+<li><strong>Question</strong> : existe-t-il une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\{x, y\}$ est une arête de $G_1$ si et seulement si $\{\sigma(x), \sigma(y) \}$ est une arête de $G_2$</li>
 </ul>
 </div></div>
 
@@ -351,7 +351,7 @@ i<span class="token punctuation">,</span> j<span class="token punctuation">,</sp
 </ul>
 </div></div>
 
-<p>Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidable mais non dans NP.</p>
+<p>Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidables mais non dans NP.</p>
 <p>En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une  époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
 <p>Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
 <p>Enfin :</p>
@@ -359,23 +359,37 @@ i<span class="token punctuation">,</span> j<span class="token punctuation">,</sp
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>il existe des problèmes dans NP, nommé <strong>NP-complet</strong>, dont la résolution permet de résoudre tout problème de NP.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>(Gros) Théorème (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook">Cook &amp; Levin en 1971</a>)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il existe des problèmes dans NP, nommé <strong>NP-complets</strong>, dont la résolution permet de résoudre tout problème de NP.</p>
 <p>C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une <strong>réduction polynomiale</strong> de $B$ vers $A$ : on a $B \leq A$.</p>
 </div></div>
 
-<p>Nous démontrerons ceci rigoureusement plus tard. Pour l'instant contentons nous d'admettre qu'ils existent et que <strong>le problème du sac à dos est NP-complet</strong>.</p>
-<p><img src="NP-NP-2.png" alt="décidable"></p>
-<p>Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Vous aurez remarquez que l'on a précisé qu'il existe des problèmes décidables qui ne sont pas dans NP. On le démontrera bien plus tard en montrant qu'il existe des problèmes où si l'on cherche à répondre OUI, le problème est dans NP et si l'on cherche à répondre NON au même problème, il n'y est pas.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème (<a href="https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems">Karp en 1972</a>)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le problème du sac à dos est NP-complet.</p>
 </div></div>
 
-<p>Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut <em>a priori</em> tout vérifier car la solution peut se trouver n'importe où. A contrario des problèmes polynomiaux ou, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement parcourir.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Nous démontrerons ceci rigoureusement plus tard.</p>
+</div></div>
+
+<p><img src="NP-NP-2.png" alt="décidable"></p>
+<p>Notez que :</p>
+<ul>
+<li>le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.</li>
+<li>il existe des problèmes décidables qui ne sont pas dans NP (c'est la flèche <em>non vide</em>). On le démontrera bien plus tard en montrant qu'il existe des problèmes où si l'on cherche à répondre OUI, le problème est dans NP et si l'on cherche à répondre NON au même problème, il n'y est pas.</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -383,10 +397,10 @@ i<span class="token punctuation">,</span> j<span class="token punctuation">,</sp
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Les problèmes NP-complets sont tous équivalents car ils correspondent tous à <strong>des problèmes universels</strong>, sans structure.</p>
-<p>Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution.</p>
+<p>Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut <em>a priori</em> tout vérifier car la solution peut se trouver n'importe où <em>a contrario</em> des problèmes polynomiaux où, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement (en temps polynomial) parcourir.</p>
 </div></div>
 
+<p>Les problèmes NP-complets sont tous équivalents car ils correspondent tous à <strong>des problèmes universels</strong>, sans structure. Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution.</p>
 <h2>Autres classes</h2>
 <p>Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souvent uniquement à ceux de $P$) mais il en existe une foultitudes d'autres. On peut par exemple citer :</p>
 <ul>
