@@ -13,6 +13,9 @@ Le problème du sac à dos est un problème fondamental en algorithmie, nombre d
 
 > TBD mettre le python uniquement dans le projet et tout mettre en pseudo-code dans l'étude.
 
+> TBD attention au départ de matrice à 0 pour dire aucun objet dans la programmation dynamique.
+> faire la remontée propre car ils n;ont pas forcément vu l'alignement de séquences.
+
 ## Étude
 
 {% aller %}

@@ -161,14 +161,14 @@ On peut remarquer que l'algorithme glouton prend toujours tout le produit dispon
 Pour notre solution, on note $(f_1, \dots, f_n)$ les proportions choisis dans l'ordre de choix de l'algorithme glouton.
 On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i <n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(f_1, \dots, f_{i-1}, f'_i, \dots, f'_n)$.
 
-On peut enfin, sans perte de généralité, choisir la solution optimale ayant $f_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $f_{i-1}$.
+On peut enfin, sans perte de généralité, choisir la solution optimale ayant $f_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $f_{i-1}$ (cette solution existe car les inégalités sont larges : le max est encore une solution).
 
 Jusqu'à l'étape $i-1$ tous les choix sont identiques donc une fois placés les $i$ premiers produits (les produits d'indices $0$ à $i-1$) avec le même kilo, il reste la même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l'algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) les kilos $f'_i$ de la solution optimale pour le produit d'indice $i$ est forcément plus petit strictement que $f_i$.
 
 Donc :
 
 - soit $f'_j = 0$ pour tout $j > i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,
-- soit il existe $f'_j >0$ pour un $j>i$. On peut alors diminuer $f_j'$ d'un $\epsilon > 0$ que l'on peut ajouter à $f_i'$ pour obtenir une solution strictement meilleure que la solution optimale : c'est impossible.
+- soit il existe $f'_j >0$ pour un $j>i$. On peut alors diminuer $f_j'$ d'un $\epsilon > 0$ ce qui fait gagner $\epsilon \cdot k_{j'}$ kilo au sac à dos que l'on peut assigner à la poudre $i$ en ajoutant $\epsilon \cdot k_{j'} / k_{i}$ à $f_i'$. Cette solution est toujours optimale mais sa proportion de poudre $i$ est strictement plus grande que $f_i'$ : c'est impossible.
 
 Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.
 {% enddetails %}
