@@ -569,6 +569,10 @@ $$</p>
 <div>
 $$
 M[i][j] = \max(M[i-1][j-k_i] + p_i, M[i-1][j])
+\text{ si } k_i \leq j
+$$
+$$
+M[i][j] = M[i-1][j] \text{ sinon}
 $$
 </div>
 <p>Avec comme condition d'initialisation la première ligne :</p>
