@@ -112,7 +112,7 @@
 <p>TBD montre que NPC vient du fait de remonter facile,ment aux paramètre à partir d'une solution. ie Trouver l'inverse d'une fonction. C'est la base de la crypto. Si c'est facile tout se casse la gueule.</p>
 </blockquote>
 <p>On peut considérer toutes les chaînes de caractères possibles rangées dans l'ordre lexicographique (&quot;a&quot;, &quot;b&quot;, ..., &quot;z&quot;, &quot;aa&quot;, ...). On peut toujours écrire une de ces chaines dans un fichier et tenter de l'exécuter avec l'interpréteur python. Si, par chance, on a écrit du code python l'interpréteur va exécuter le code et sinon il va planter.</p>
-<p>Si le problème que l'on cherche à résoudre est dans NP on possède un de ses vérifieur et il existe une chaîne de caractères qui correspond à un code python de l'algorithme que le résout de manière optimale. On suppose que ce code est la chaîne en position $L$ dans l'ordre lexicographique.</p>
+<p>Si le problème que l'on cherche à résoudre est dans NP on possède un de ses vérifieurs et il existe une chaîne de caractères qui correspond à un code python de l'algorithme que le résout de manière optimale. On suppose que ce code est la chaîne en position $L$ dans l'ordre lexicographique.</p>
 <p>En prenant une chaîne de caractères en position $L' &lt; L$ que peut-il se passer si on l'exécute avec l'interpréteur python :</p>
 <ol>
 <li>cela peut (vraisemblablement) planter rapidement</li>
@@ -200,6 +200,11 @@ $$</p>
 </div>
 </details>     
 </div>
+<h2>Exécution fragmenté v1</h2>
+<blockquote>
+<p>TBD à ajouter plutôt que K +1 on fait 2K
+on passe de $K^3$ à $K^2$</p>
+</blockquote>
 <h2>Exécution fragmentée générale</h2>
 <p>L'algorithme de la recherche universelle va procéder un peu de la même manière que celui d'exécution fragmentée mais pour tous les algorithmes.</p>
 <p>Un pseudo-code étant un texte, on peut considérer tous les textes rangés par ordre lexicographique. On peut tenter d'exécuter chaque texte comme un pseudo-code et voir ce qu'il se passe. Exécuter $K$ instructions d'un de ces texte peut résulter en 3 cas :</p>
@@ -341,7 +346,8 @@ $$
 <li><a href="https://gist.github.com/roachhd/dce54bec8ba55fb17d3a">https://gist.github.com/roachhd/dce54bec8ba55fb17d3a</a></li>
 <li><a href="http://nicolas.patrois.free.fr/linux/articles/brainfuck.xhtml">http://nicolas.patrois.free.fr/linux/articles/brainfuck.xhtml</a>
 <a href="https://esolangs.org/wiki/Brainfuck_algorithms">https://esolangs.org/wiki/Brainfuck_algorithms</a>
-interpréteur : <a href="https://www.dcode.fr/langage-brainfuck">https://www.dcode.fr/langage-brainfuck</a></li>
+interpréteur : <a href="https://www.dcode.fr/langage-brainfuck">https://www.dcode.fr/langage-brainfuck</a>
+taille de la mémoire pour 1 variable. Usage = 8b mais peut être aussi petit/grand qu'on veut.</li>
 </ul>
 </blockquote>
 
