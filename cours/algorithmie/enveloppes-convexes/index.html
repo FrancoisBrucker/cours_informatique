@@ -476,11 +476,11 @@ $$</p>
 $$
 \begin{array}{ccl}
 x &=& \sum_{i=1}^{m-1}\lambda_i\cdot x_i + \lambda_m \cdot x_m \\
-&=&(\sum_{i=j}^{m-1}\lambda_i) \cdot \sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i}\cdot x_i + \lambda_m \cdot x_m
+&=&(\sum_{j=1}^{m-1}\lambda_j) \cdot \sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_j}\cdot x_i + \lambda_m \cdot x_m
 \end{array}
 $$
 </div>
-<p>Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.</p>
+<p>Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_j} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_j}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.</p>
 <p>Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il y est également.</p>
 </div>
 </details>     
@@ -1574,7 +1574,7 @@ $$</p>
 C(n) = \mathcal{O}(n\log(n)) + 2\cdot C(\frac{n}{2})
 $$</p>
 <p><a href="https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_g%C3%A9n%C3%A9ral">L'énoncé général du master theorem</a> nous donne alors une complexité totale de $C(n) = \mathcal{O}(n\log^2(n))$. Ce qui est - c'était attendu - pire (mais pas de beaucoup) de la méthode 1.</p>
-<h2>Algorithme optimal</h2>
+<h2>Algorithme <em>optimal</em></h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
