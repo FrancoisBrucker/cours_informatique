@@ -56,6 +56,7 @@ Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un �
 ## <span id="recherche"></span>Exemple : recherche d'un élément dans un tableau
 
 On va chercher à résoudre le problème suivant :
+<span id="définition-problème-décision"></span>
 
 {% note "**Problème**" %}
 

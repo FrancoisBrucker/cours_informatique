@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Algorithme du tri par insertion"
 
 eleventyComputed:
@@ -9,9 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le tri par insertion est un exemple d'algorithmes dont les complexité minimum et maximum sont très différentes. Il est alors nécessaire de calculer la complexité en moyenne pour avoir une idée de la complexité attendu pour un tableau aléatoire (*ie* inconnu).
+Le tri par insertion est un exemple d'algorithmes dont les complexité minimum et maximum sont très différentes. Il est alors nécessaire de calculer la complexité en moyenne pour avoir une idée de la complexité attendu pour un tableau aléatoire (_ie_ inconnu).
 
-Cet algorithme est une extension de [l'algorithme `est_trie`{.language-}](../reconnaissance/#algo-est-trie){.interne}. Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
+Cet algorithme est une extension de [l'algorithme `est_trie`{.language-}](../reconnaissance/#algorithme-est-trie){.interne}. Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
 
 - `T[:i]`{.language-} est trié
 - et `T[i] < T[i-1]`{.language-}
@@ -27,15 +27,17 @@ Dans notre cas, toutes les conditions sont vérifiées sauf la dernière. Si l'o
 
 Cette analyse (ce n'est pas encore une preuve formelle) nous permet de dégager le principe suivant :
 
-On vérifie itérativement que `T[i] >= T[i-1]`{.language-} et si ce n'est pas le cas on fait *remonter* `T[i]`{.language-} par échanges successifs à la première place où il sera plus grand que le précédent.
+On vérifie itérativement que `T[i] >= T[i-1]`{.language-} et si ce n'est pas le cas on fait _remonter_ `T[i]`{.language-} par échanges successifs à la première place où il sera plus grand que le précédent.
 
 Ce qui se traduit en pseudo-code :
 
+<span id="algorithme-tri-insertion"></span>
+
 ```pseudocode
 algorithme insertion(T: [entier])  → ∅:
-    pour chaque i de [1, T.longueur[:
+    pour chaque i de [1, T.longueur[:  # boucle principale
         j ← i
-        tant que (j > 0) ET (T[j] < T[j - 1]):
+        tant que (j > 0) et (T[j] < T[j - 1]):  # boucle intérieure
             T[j], T[j - 1] ← T[j - 1], T[j]
             j ← j - 1
 ```
@@ -50,44 +52,30 @@ La technique [des sentinelles](https://en.wikipedia.org/wiki/Sentinel_value) est
 
 ## <span id="fonctionnement-insertion"></span> Fonctionnement
 
-Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme fonctionne pour :
+Tout comme pour l'algorithme de tri par sélection :
+
+{% faire %}
+Vérifiez que l'algorithme fonctionne pour :
 
 - un petit tableau trié : `[1, 2, 3]`{.language-}
 - un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`{.language-}
+{% endfaire %}
 
 ## <span id="preuve-insertion"></span> Preuve
 
 Le principe de programmation du tri par insertion est correct puisque `est_trie`{.language-} est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme.
 
-On a ici deux boucles imbriquée (lignes 2 et 5), il nous faut donc a priori deux invariants de boucles, le second (du `tant que`{.language-}) nous servant à prouver le premier (du `pour chaque`{.language-})
+On a ici deux boucles imbriquée (boucle principale et intérieure), il nous faut donc a priori deux invariants de boucles, le second (du `tant que`{.language-}) nous servant à prouver le premier (du `pour chaque`{.language-})
 
-Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle `pour chaque`{.language-} de la ligne 2 va être le même :
+Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle principale `pour chaque`{.language-} va être le même :
 
-{% note "**Invariant de boucle**" %}
-À la fin d'un itération de la boucle `pour chaque`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
-{% endnote %}
+> À la fin d'un itération de la boucle principale `pour chaque`{.language-}, les $i + 1$ premiers éléments du tableau sont triés.
 
-Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle `tant que`{.language-} de la ligne 5, c'est à dire lui trouver un invariant.
+Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle `tant que`{.language-} de la boucle intérieure, c'est à dire lui trouver un invariant. Chaque itération de cette boucle va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc clairement l'invariant :
 
-{% note "**Invariant de la boucle `tant que`{.language-}**" %}
-Chaque itération de la boucle `tant que`{.language-} va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :
+> A la fin de chaque itération de la boucle `tant que`{.language-} $T[j] \leq T[j+1]$ si $j <i$
 
-A la fin de chaque itération de la boucle `tant que`{.language-} $T[j] \leq T[j+1]$ si $j <i$
-
-{% endnote %}
-{% details "preuve", "open" %}
-
-Cet invariant est clairement vérifié.
-
-{% enddetails %}
-
-On peut donc maintenant démontrer l'invariant de la boucle `pour chaque`{.language-} :
-
-{% note "**Invariant de la boucle `pour chaque`{.language-}**" %}
-A la fin d'un itération de la boucle `pour chaque`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
-
-{% endnote %}
-{% details "preuve", "open" %}
+On peut donc démontrer l'invariant de la boucle principale `pour chaque`{.language-}.
 
 On a $i = 1$ pour la première itération donc à l'issue de la boucle tant que :
 
@@ -107,9 +95,8 @@ La $i$ ème itération de la boucle `pour chaque`{.language-} (ligne 2), a fonct
   3. `T[j:i]`{.language-} trié (invariant de la boucle `pour chaque`{.language-}) et `T[j] < T[j+1]`{.language-} (invariant de la boucle `tant que`{.language-})
 
 Les constatations précédentes nous montrent que $T'[:i+1]$ est trié, ce qui termine la preuve de l'invariant de la boucle `pour chaque`{.language-}.
-{% enddetails %}
 
-On conclut la preuve de l'algorithme insertion en constatant que l'invariant de la boucle `pour chaque`{.language-} est vrai en sortie de boucle où  $i=n-1$ : les $n$ premier éléments de $T$ sont triés.
+On conclut la preuve de l'algorithme insertion en constatant que l'invariant de la boucle `pour chaque`{.language-} est vrai en sortie de boucle où $i=n-1$ : les $n$ premier éléments de $T$ sont triés.
 
 ## <span id="complexités-insertion"></span> Complexités
 
@@ -119,51 +106,41 @@ Ligne à ligne :
 2. $n-1$ itérations, avec $n$ la taille du tableau
 3. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
 4. affectation d'une variable : $\mathcal{O}(1)$
-5. $K_i$ itérations ($K_i$ inconnu) et deux tests en $\mathcal{O}(1)$ pour chaque itération
+5. $K_i$ itérations ($K_i$ inconnu pour chque $i$) et deux tests en $\mathcal{O}(1)$ pour chaque itération
 6. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
 7. une soustraction et une affectation : $\mathcal{O}(1)$
 8. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
 
-Comme $K_i$ n'est pas constant pour chaque itération de la boucle `pour chaque`{.language-} il faut regarder les valeurs extrêmes que peut prendre $K$ :
+En synthétisant tout ça on arrive à une complexité valant :
 
-- si le tableau est déjà trié : on ne rentre jamais dans la boucle `tant que`{.language-} : $K = 0$ pour chaque itération.
-- si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle `pour chaque`{.language-}, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle `tant que`{.language-}).
+<div>
+$$
+C(n) = \sum_{i=1}^{n-1}(\mathcal{O}(1) + K_i \cdot \mathcal{O}(1)) = \mathcal{O}(1) + \sum_{i=1}^{n-1}\mathcal{O}(K_i)
+$$
+</div>
+
+Comme $K_i$ n'est pas constant pour chaque itération de la boucle principale `pour chaque`{.language-} il faut regarder les valeurs extrêmes que peut prendre $K$ :
+
+- si le tableau est déjà trié : on ne rentre jamais dans la boucle secondaire `tant que`{.language-} : $K = 0$ pour chaque itération.
+- si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle principale `pour chaque`{.language-}, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle secondaire `tant que`{.language-}).
 
 On a donc 2 cas extrêmes pour le calcul :
 
 1. $K_i = 0$ à chaque itération et on peut considérer que $K_i = K=0$ pour tout $i$ dans le cas le plus favorable
-2. $K_i$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} nous indique qu'on peut considérer que $K_i = K=n-1$ pour tout $i$ dans le cas le moins favorable
+2. $K_i$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} nous indique qu'on peut considérer que $K_i = K=\mathcal{O}(n)$ pour tout $i$ dans le cas le moins favorable
 
 Ce qui donne une complexité de :
-
-<div>
-$$
-\begin{array}{lcl}
-C(n) & = & \mathcal{O}(1) + \\
-&& (n-1) \cdot (\\
-&& \mathcal{O}(1) + \\
-&& \mathcal{O}(1) + \\
-&& K \cdot (\mathcal{O}(1) + \\
-&& \mathcal{O}(1) + \\
-&& \mathcal{O}(1)) + \\
-&& \mathcal{O}(1)) \\
-& = & \mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + K \cdot (\mathcal{O}(1))\\
-& = & \mathcal{O}(n \cdot (K + 1)) \\
-& = & \mathcal{O}(K \cdot n) \\
-\end{array}
-$$
-</div>
 
 {%note %}
 La complexité de l'algorithme `insertion`{.language-} est ($n$ est la taille du tableau passé en entrée) :
 
-- la **complexité min** est atteinte pour $K=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$
-- la **complexité (max)** est atteinte pour $K=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$
+- la **complexité min** est atteinte lorsque le tableau est déjà trié et vaut $\mathcal{O}(n)$
+- la **complexité (max)** est atteinte lorsque le tableau est trié par ordre décroissant et vaut $\mathcal{O}(n^2)$
 
 {% endnote %}
 
-La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaître la complexité pour des données *standard*.
-Pour savoir ce que veut dire *standard*, il faut déterminer le modèle de données : prenons le équiprobable.
+La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaître la complexité pour des données _standard_.
+Pour savoir ce que veut dire _standard_, il faut déterminer le modèle de données : prenons le équiprobable.
 
 Cela signifie que pour chaque itération $i$ :
 
@@ -199,7 +176,7 @@ La **complexité en moyenne** de l'algorithme `insertion`{.language-} est $\math
 
 Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés).
 
-Si l'on change le modèle de données et que l'on considère des tableaux *presque triées*, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$
+Si l'on change le modèle de données et que l'on considère des tableaux _presque triées_, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$
 
 {% note %}
 On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.
@@ -221,10 +198,10 @@ algorithme insertion(T: [entier])  → ∅:
     pour chaque i de [1, T.longueur[:
         courant ← T[i]
         j ← i
-        tant que (j > 0) ET (courant < T[j - 1]):
+        tant que (j > 0) et (courant < T[j - 1]):
             T[j] ← T[j - 1]
             j ← j - 1
         T[j] ← courant
 ```
 
-Remarquez qu'elle ne fait pas d'échange à chaque fois. Elle se contente de faire de la place pour l'élément que l'on va insérer en décalant uniquement les valeurs  du tableau. Une fois la place trouvée, il suffit de placer l'élément une fois. Finaud, non ?
+Remarquez qu'elle ne fait pas d'échange à chaque fois. Elle se contente de faire de la place pour l'élément que l'on va insérer en décalant uniquement les valeurs du tableau. Une fois la place trouvée, il suffit de placer l'élément une fois. Finaud, non ?

@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Reconnaissance d'un tableau trié"
 
 eleventyComputed:
@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Définissions le problème de décision associé au problème de savoir si oui ou non un tableau d'entiers est trié :
+Définissions [le problème de décision](../../complexité-problème/#définition-problème-décision){.interne} associé au problème de savoir si OUI ou NON un tableau d'entiers est trié :
 
 {% note "**Problème de décision**" %}
 
@@ -19,13 +19,12 @@ Définissions le problème de décision associé au problème de savoir si oui o
 
 {% endnote %}
 
-Il existe un algorithme très simple pour le résoudre.
+## <span id="algorithme-est-trie"></span> Algorithme
 
-## <span id="algo-est-trie"></span> Algorithme
+Il existe un algorithme très simple pour le résoudre :
 
 ```pseudocode/
 algorithme est_trie(T: [entier]) → booléen:
-
     pour chaque i de [1, T.longueur[:
         si T[i] < T[i-1]:
             rendre Faux
@@ -44,22 +43,10 @@ L'algorithme rend bien :
 
 La finitude de l'algorithme est claire puisqu'il n'y a qu'une boucle for avec autant d'itérations que la taille du tableau passé en paramètre.
 
-La preuve va être aisée si l'on démontre l'invariant suivant :
-
-{% note "**Invariant de boucle**" %}
-À la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.
-{% endnote %}
-
-1. à la fin de la première itération, si l'on est pas sorti de la boucle c'est que $T[i] \geq T[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.
-2. Si l'invariant est vrai à la fin de l'itération $i-1$, à la fin de l'itération $i$ on à $T[i] \geq T[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.
-
-Au final :
-
-- L'invariant prouve que : si on arrive à la ligne 6 de l'algorithme c'est que les $n$ premiers éléments du tableau sont triés.
-- si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec $T[i] < T[i-1]$, donc $T$ ne peut être trié.
+La preuve de correction est tout aussi évidente. Si on arrive en ligne 5 c'est que $T[i-1] \leq T[i]$ pour tout $i \in [1, T.\mbox{\small longueur}[$, donc que le tableau est trié.
 
 {% note "**Proposition**" %}
-L'algorithme `est_trie`{.language-} est une solution au problème *"est trié ?"*
+L'algorithme `est_trie`{.language-} est une solution au problème _"est trié ?"_
 {% endnote %}
 
 ### Complexité
@@ -68,21 +55,134 @@ Ligne à ligne :
 
 1. définition de la fonction $\mathcal{O}(1)$
 2. —
-3. une boucle for de $k$ itérations
+3. une boucle for de $K$ itérations
 4. un tests de deux valeurs dans un tableau : $\mathcal{O}(1)$
 5. un retour de fonction $\mathcal{O}(1)$
 6. un retour de fonction $\mathcal{O}(1)$
 
-Que l'on sorte par le retour de la ligne 5 ou 6, le complexité est : $\mathcal{O}(k)$. Dans le cas le pire, on parcourt tout le tableau, donc :
+Que l'on sorte par le retour de la ligne 5 ou 6, le complexité est : $\mathcal{O}(k)$.
 
-{% note %}
+#### Cas le pire
+
+Dans le cas le pire, on parcourt tout le tableau, donc :
+
+{% note "**Proposition**" %}
 La complexité de l'algorithme `est_trie`{.language-} est $\mathcal{O}(n)$ avec $n$ la taille du tableau en entrée.
 {% endnote %}
 
-## Complexité du problème de la reconnaissance
+#### Cas les meilleur
 
-Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [la complexité du problème de la *"recherche"*](../../complexité-problème/#complexité-recherche){.interne}, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est de $\mathcal{O}(n)$. On en conclut :
+Dans le cas le meilleur, on s'arrête dès la première itération :
 
 {% note "**Proposition**" %}
-La complexité du problème *"est trié ?"* est de $\Theta(n)$ où $n$ est la taille du tableau en entrée.
+La complexité minimale de l'algorithme `est_trie`{.language-} est $\mathcal{O}(1)$ avec $n$ la taille du tableau en entrée.
+{% endnote %}
+
+#### Complexité en moyenne
+
+La question est délicate. Il faut se demander quel est le modèle sous-jacent à notre tableau de nombres. Si on a aucune information sur la répartition des nombres, on a coutume d'utiliser le modèle suivant :
+
+{% note "**Modèle du Tableau aléatoire**" %}
+
+Un tableau $T$ d'entiers de longueur $n$ est _aléatoire_ s'il résulte de la procédure suivante :
+
+- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation) $\sigma$ de $[0, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
+- $T[i] = \sigma(i)$ pour tout $i \in [0, n-1]$
+{% endnote %}
+
+On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés que l'on aimerait avoir pour un tableau de nombres quelconques, comme :
+
+{% note "**Proposition**" %}
+Si $T$ est un tableau aléatoire, on a que la probabilité que $T[i] = k$, donc que $T[i]$ soit le $k$ plus petit élément du tableau, vaut :
+
+<div>
+$$
+\mathbb{P}(T[i] = k) = \frac{1}{n}
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
+Parmi les $n!$ permutations de $[0, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k-1$. La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.
+
+{% enddetails %}
+
+{% note "**Proposition**" %}
+Si $T$ est un tableau aléatoire :
+
+<div>
+$$
+\mathbb{P}(T[u] > T[v]) = \frac{1}{2}
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+Prenons $u$ et $v$ deux indices différents du tableau. Pour que $T[u] > T[v]$, il faut que :
+
+- $T[u]$ soit le le $n$ème plus petit élément du tableau (plus grand élément) : probabilité $\frac{1}{n}$
+- $T[u]$ soit le $n-1$ème plus petit élément du tableau (probabilité $\frac{1}{n}$) et que parmi ces tableaux, $T[v]$ ne soit pas le $n$ème plus petit élément (probabilité $\frac{1}{n-1}$) : probabilité $\frac{1}{n}\cdot \frac{1}{n}$
+- ...
+- $T[u]$ soit le $n-i$ème plus petit élément du tableau (probabilité $\frac{1}{n}$) et que parmi ces tableaux, $T[u]$ ne soit ni le $n$ème, ni $n-1$, ..., ni le $n-i + 1$ plus petit élément (probabilité $\frac{i}{n-1}$) : probabilité $\frac{1}{n}\cdot \frac{i}{n}$
+- ...
+
+En sommant toutes ces probabilités on obtient :
+
+<div>
+$$
+\mathbb{P}(T[u] > T[v]) = \sum_{i=1}^{n-1}\frac{1}{n}\cdot \frac{i}{n-1} = \frac{1}{n(n-1)}\sum_{i=1}^{n-1}i = \frac{1}{2}
+$$
+</div>
+{% enddetails %}
+
+Lea deux propriétés précédentes nous permettent de voir que pour notre algorithme de reconnaissance, si $T$ est un tableau aléatoire alors la probabilité :
+
+- $p_1$ de ne faire que 1 itération est $\mathbb{P}(T[0] > T[1])$ et vaut $1/2$
+- $p_2$ de ne faire que 2 itérations est $\mathbb{P}(T[0] < T[1], T[1] > T[2])$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ (attention, $T[0] < T[1]$ et $T[1] > T[2]$ ne sont pas indépendant, on a donc pas $\mathbb{P}(T[0] < T[1], T[1] > T[2]) = \mathbb{P}(T[0] < T[1])\cdot \mathbb{P}(T[1] > T[2])$)
+- ...
+- $p_i$ de ne faire que i itérations est la probabilité que $T[:i]$ soit trié mais que $T[:i+1]$ ne le soit pas :  : cette probabilité vaut $\frac{1}{i!} - \frac{1}{(i+1)!}$
+- ...
+- $p_i$ de ne faire que $n$ itérations est la probabilité que $T[:n]$ soit trié mais que $T$ ne le soit pas :  : cette probabilité vaut $\frac{1}{(n-1)!} - \frac{1}{n!}$
+
+Comme chaque itération est de complexité $\mathcal{O}(1)$, la complexité en moyenne sous ce modèle de probabilité vaut :
+
+<div>
+$$
+C= \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))] = \sum_{i=1}^{n-1}(\frac{1}{i!} - \frac{1}{(i+1)!}) \cdot \mathcal{O}(i)) = \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+$$
+</div>
+
+Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :
+
+<div>
+$$
+C \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2})) = \mathcal{O}(1)
+$$
+</div>
+
+{% info %}
+On a utilisé le fait, [on le démontrera](../../#sommes-classiques){.interne}, que :
+
+<div>
+$$
+\lim_{n\to\infty} \sum_{i=1}^n\frac{1}{i^2} = \frac{\pi^2}{6}
+$$
+</div>
+
+{% endinfo %}
+
+Ce résultat est remarquable sous (au moins) deux aspects :
+
+- la complexité en moyenne est égale à la complexité minimale et est en temps constant !
+- ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.
+
+{% attention "**À retenir**" %}
+Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente) est un truc utile pour démontrer qu'un algorithme est en temps constant !
+{% endattention %}
+
+## Complexité du problème de la reconnaissance
+
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [la complexité du problème de la _"recherche"_](../../complexité-problème/#complexité-recherche){.interne}, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème _"est trié ?"_ est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-} est de $\mathcal{O}(n)$. On en conclut :
+
+{% note "**Proposition**" %}
+La complexité du problème _"est trié ?"_ est de $\Theta(n)$ où $n$ est la taille du tableau en entrée.
 {% endnote %}

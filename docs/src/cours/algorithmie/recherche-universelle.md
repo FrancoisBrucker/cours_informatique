@@ -36,20 +36,35 @@ En prenant une chaîne de caractères en position $L' < L$ que peut-il se passer
 
 On ne peut donc pas parcourir et exécuter tous les programmes jusqu'à tomber sur celui qui fonctionne (en position $L$ qu'on sait exister mais dont on ne connaît pas la valeur) car cela risque de durer indéfiniment.
 
-L'idée est d'exécuter $k$ opérations des $k$ premières chaînes en vérifiant ensuite si la solution d'un des programme qui s'est arrêter satisfait notre vérifieur. Ci ce n'est pas le cas on recommence en incrémentant $k$.
+L'idée est d'exécuter $k$ opérations des $k$ premières chaînes en vérifiant ensuite si la solution d'un des programme qui s'est arrêté satisfait notre vérifieur. Ci ce n'est pas le cas on recommence en incrémentant $k$.
 
-Au bout d'un moment on aura $k \geq \max(L, C)$ (avec $C$ le nombre d'opération que met notre programme à s'exécuter) et on trouvera notre solution !
+Au bout d'un moment on aura $k \geq \max(L, C)$ (avec $C$ le nombre d'opérations que met notre programme à s'exécuter) et on trouvera notre solution !
 
 On vient de trouver un algorithme universelle pour résoudre tous les problèmes de NP ! Ce n'est pas encore optimal car sa complexité ne va pas être exactement égale à la complexité du meilleur algorithme pour résoudre notre problème.
 
-> TBD calcul de la complexité
+En posant $K = \max(L, C)$ on a que la complexité de notre algorithme universel, hors vérification vaut :
+
+<div>
+$$
+\begin{array}{lcl}
+C &=&  1 + 2 \cdot 2 + 3 \cdot 3 + \dots + K \cdot K\\
+&=& \sum_{i=1}^{K}i^2\\
+&=& \frac{K(K+1)(2K+1)}{6}\\
+&=& \mathcal{O}(K^3)
+\end{array}
+$$
+</div>
+
+À cela, il faut ajouter $K \cdot C' = \mathcal{O}(K\cdot C')$ vérifications (on ne vérifie que si le programme s'arrête et on ne le fait qu'une fois par programme).
+
+On est pas encore optimal, on va y arriver plus bas, mais on a déjà un algorithme polynomial pour résoudre tous les problèmes de P uniquement avec leurs vérifieurs.
 
 ## Exécution fragmenté d'un algorithme
 
 Pour comprendre comment fonctionne la recherche universelle, commençons par étudier l'algorithme suivant, qui prend en paramètre un algorithme `A`{.language-} et une de ses entré possible, `E`{.language-} :
 
-```python
-def exécution_fragmentée(T, A, E):
+```pseudocode
+algorithme exécution_fragmentée(T, A, E):
   I = 1
   tant que I < T:
     exécuter I instructions de A(E)
@@ -100,7 +115,7 @@ Et donc $S_n \leq S_{\infty} = 2$ ce qui nous permet de conclure que le nombre d
 
 L'algorithme de la recherche universelle va procéder un peu de la même manière que celui d'exécution fragmentée mais pour tous les algorithmes.
 
-Un pseudo-code étant un texte, on peut considérer tous les textes rangés par ordre lexico-graphique. On peut tenter d'exécuter chaque texte comme un pseudo-code et voir ce qu'il se passe. Exécuter $K$ instructions d'un de ces texte peut résulter en 3 cas :
+Un pseudo-code étant un texte, on peut considérer tous les textes rangés par ordre lexicographique. On peut tenter d'exécuter chaque texte comme un pseudo-code et voir ce qu'il se passe. Exécuter $K$ instructions d'un de ces texte peut résulter en 3 cas :
 
 1. un plantage (ce n'est pas un pseudo-code on tente d'exécuter quelque chose qui n'est pas une instruction, on fait une instruction interdite comme une division par zéro par exemple, etc)
 2. le texte est un pseudo-code valide et on a exécuté entièrement son code.On peut récupérer sa sortie.
@@ -108,8 +123,8 @@ Un pseudo-code étant un texte, on peut considérer tous les textes rangés par 
 
 On considère alors l'algorithme `next(B)`{.language-} qui, rend la chaîne $B'$ qui suit la chaîne $B$ dans l'ordre lexico-graphique.
 
-```python
-def exécution_fragmentée_universelle(A, E):
+```pseudocode
+algorithme exécution_fragmentée_universelle(A, E):
   I = 1
   tant que VRAI:
     B = ""
@@ -132,8 +147,8 @@ L'algorithme `exécution_fragmentée_universelle`{.language-} va s'arrêter lors
 
 Tout se passe alors comme si :
 
-- on avait exécuté `exécution_fragmentée(K2**L, A1, E)`{.language-} pour `A1`, le premier élément de la liste ordonnée des textes
-- on avait exécuté `exécution_fragmentée(K2**(L-1), A2, E)`{.language-} pour `A2`, le second élément de la liste ordonnée des textes
+- on avait exécuté `exécution_fragmentée(K * 2**L, A1, E)`{.language-} pour `A1`, le premier élément de la liste ordonnée des textes
+- on avait exécuté `exécution_fragmentée(K * 2**(L-1), A2, E)`{.language-} pour `A2`, le second élément de la liste ordonnée des textes
 - ...
 - on avait exécuté `exécution_fragmentée(K, AL, E)`{.language-} pour `AL`, le $L$ ème élément de la liste ordonnée des textes
 - on avait exécuté `exécution_fragmentée(K/2, A(L+1), E)`{.language-} pour `A(L+1)`, le $L+1$ ème élément élément de la liste ordonnée des textes
@@ -163,8 +178,8 @@ L'algorithme de recherche universelle est une variation de l'algorithme précéd
 
 On alors l'algorithme :
 
-```python
-def recherche_universelle(v, E):
+```pseudocode
+algorithme recherche_universelle(v, E):
   I = 1
   tant que VRAI:
     B = ""
@@ -185,9 +200,24 @@ La complexité d'exécution de l'algorithme `recherche_universelle`{.language-} 
 
 {% endnote %}
 {% details "preuve", "open" %}
-Idem que la preuve précédente. Il faut juste ajouter qu'il faut vérifier chaque pseudo-code (il y en a $L+ \log_2(C(\vert E \vert ) ))$ qui s'arrête une fois.
+Idem que la preuve précédente. Il faut juste ajouter qu'il faut vérifier chaque pseudo-code (il y en a $L+ \log_2(C(\vert E \vert ) ))$ qui s'arrêtent une fois.
 {% enddetails %}
 
-Dans de très nombreux cas, $D(n)$ est petite devant $C(n)$, par exemple si $D(n) = \Theta(n^a)$ et $C(n) = \Theta(n^b)$ avec $b>a$ puisqu'asymptotiquement $\frac{n^{\epsilon}}{\ln(n)}$ tend vers l'infini. Et on peut négliger le terme en $D(n)$, ce qui donne un algorithme optimal pour résoudre tout problème de NP !
+Dans de très nombreux cas, $D(n)$ est petite devant $C(n)$ (par exemple si $D(n) = \Theta(n^a)$ et $C(n) = \Theta(n^b)$ avec $b>a$) on peut négliger le terme en $D(n)$ ($\frac{n^{b-a}}{\ln(n)}$ tend vers l'infini pour notre exemple), ce qui donne un algorithme optimal pour résoudre tout problème de NP !
 
-Donc si $P = NP$ alors la recherche universelle est l'algorithme optimal qui résout tout. Bien sur l'arnaque se situe au niveau de la constante multiplicative, $2^L$ qui peut être gigantesque ce qui fait que même si asymptotiquement le résultat est optimal ce n'est pas le cas dans des cas d'utilisation normale des algorithme. La recherche universelle n'est donc pas une excuse pour ne pas chercher l'algorithme le plus efficace pour résoudre un problème.
+Bien sur l'arnaque se situe au niveau de la constante multiplicative, $2^L$ qui peut être gigantesque ce qui fait que même si asymptotiquement le résultat est optimal ce n'est pas le cas dans des cas d'utilisation normale des algorithmes. La recherche universelle n'est donc pas une excuse pour ne pas chercher l'algorithme le plus efficace pour résoudre un problème.
+
+## Écrire l'Algorithme en pratique
+
+> TBD voir polylog
+>
+
+> écrire les programmes en brainfuck.
+> 
+<https://fr.wikipedia.org/wiki/Brainfuck> et <https://brainfuck.org/>
+
+> TBD tuto :
+>
+> - <https://gist.github.com/roachhd/dce54bec8ba55fb17d3a>
+> - <http://nicolas.patrois.free.fr/linux/articles/brainfuck.xhtml>
+> interpréteur : <https://www.dcode.fr/langage-brainfuck>

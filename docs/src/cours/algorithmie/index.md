@@ -6,7 +6,7 @@ tags: ["cours", "algorithmie"]
 
 authors:
   - François Brucker
-resume: "Un cours d'algoritmie"
+resume: "Un cours d'algorithmie"
 
 eleventyNavigation:
   prerequis:
@@ -27,7 +27,7 @@ _L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est
 
 Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au prérequis.
 
-## <span id="partie-1"></span>Partie I
+## <span id="partie-1"></span>Partie I : algorithmes
 
 Tout ce que devrait connaître tout ingénieur de l'informatique.
 
@@ -122,6 +122,12 @@ algorithme PGCD(a: entier, b: entier) → entier:  # a, b ≥ 0
 ```
 
 Il calcule bien le PGCD de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du PGCD que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
+
+{% info %}
+On a utilisé ici le mot clé **question** plutôt que **sortie**. On utilisera cette convention lorsque la sortie est soit OUI soit NON.
+
+On les appelle [problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision) et sont très important en informatique théorique. On le verra (bien) plus tard.
+{% endinfo %}
 
 Enfin, si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :
 
@@ -272,21 +278,21 @@ Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont p
 
 ### On s'entraîne
 
-> TBD sommes classiques à connaître pour les calculs de complexités comme $\sum x^i$, $\sum i\cdot x^i$ et application pour $x =1$. Aussi connaître $\sum 1/i$ et $\sum 1/i^2$
+#### Somme classiques
 
-#### Résolution d'algorithmiques classiques
+<span id="sommes-classiques"></span>
+
+> TBD utile en complexité. Montrer quand ça arrive.
+
+> TBD sommes classiques à connaître pour les calculs de complexités comme $\sum x^i$, $\sum i\cdot x^i$ et application pour $x =1$. Aussi connaître $\sum 1/i$, $\sum 1/i^2$, $\sum 1/2^i$ et $\sum i/2^i$.
+
+#### Résolution d'algorithmes classiques
 
 {% aller %}
 [Algorithmes classiques](./projet-classiques){.interne}
 {% endaller %}
 
-#### Résolution de problèmes algorithmiques classiques
-
-{% aller %}
-[Problèmes classiques](./projet-problemes-classiques){.interne}
-{% endaller %}
-
-## <span id="partie-2"></span>Partie II
+## <span id="partie-2"></span>Partie II : problèmes
 
 On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
 
@@ -324,13 +330,42 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
-### Problème de l'enveloppe convexe
+#### Problème de l'enveloppe convexe
 
 Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
 
 {% aller %}
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
+
+<!-- ### Jolis problèmes
+
+On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
+
+#### Fonction d'Ackermann
+
+{% aller %}
+[Fonction d'Ackermann](./ackermann.md){.interne}
+{% endaller %}
+
+#### Subsetsum
+
+> TBD 3-sum complet
+> TBD subsetsum en programmation dynamique
+
+#### Chiffrement super-croissant
+
+> -TBD chiffrage et décryptage avec un sac à dos super croissant !
+
+#### Calcul de la médiane
+
+> TBD enlever médiane du diviser pour régner et le mettre ici -->
+
+<!-- #### Résolution de problèmes algorithmiques classiques
+
+{% aller %}
+[Problèmes classiques](./projet-problemes-classiques){.interne}
+{% endaller %} -->
 
 <!--
 
@@ -504,38 +539,17 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 
 Avant de finir cette première partie du cours, accordons nous un intermède. Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
 
-### Algorithme qui résout tout
-
 {% aller %}
 [L'algorithme de la recherche universelle](./recherche-universelle){.interne}
 {% endaller %}
 
-### Jolis problèmes
+Cet intermède permet de préparer la troisième partie
 
-On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
-
-#### Fonction d'Ackermann
-
-{% aller %}
-[Fonction d'Ackermann](./ackermann.md){.interne}
-{% endaller %}
-
-#### Subsetsum
-
-> TBD 3-sum complet
-> TBD subsetsum en programmation dynamique
-
-#### Chiffrement super-croissant
-
-> -TBD chiffrage et décryptage avec un sac à dos super croissant !
-
-#### Calcul de la médiane
-
-> TBD enlever médiane du diviser pour régner et le mettre ici
-
-## <span id="partie-3"></span>Partie III
+## <span id="partie-3"></span>Partie III : modèle
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
+
+> TBD ajouter lambda calcul
 
 ### Chaînes de caractères
 
@@ -686,7 +700,11 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 
 > TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>
 
-### Désordre et hasard
+## Partie IV : aléatoire
+
+> TBD hasard et algorithmes randomisés.
+
+## Désordre et hasard
 
 {% aller %}
 [Mélanger un tableau](./projet-mélange){.interne}

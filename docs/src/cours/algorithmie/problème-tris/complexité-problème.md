@@ -36,9 +36,9 @@ Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont 
 
 ## Borne maximum
 
-Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas en compte  l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).
+Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas compte de l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).
 
-Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple [le tri par selection](./#tri-sélection){.interne} que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :
+Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple [le tri par selection](./#tri-sélection){.interne} (que l'on analysera plus tard) dont la complexité est en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier. On en conclut :
 
 {% note "**Proposition**" %}
 Une borne maximum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(n^2)$.
@@ -48,8 +48,7 @@ Une borne maximum de la complexité du problème du tri d'un tableau à $n$ él�
 
 En utilisant la propriété [du nombre de cas à distinguer](../../complexité-problème/#n-test-2n){.interne} vue dans la complexité du problème de la *"recherche ordonnée"*, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
 
-{% note "**{% note "**Proposition**" %}
-**" %}
+{% note "**Proposition**" %}
 Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\Omega(\ln(n!))$.
 {% endnote %}
 

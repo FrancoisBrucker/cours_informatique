@@ -254,12 +254,12 @@ Comme $P \subseteq \text{Conv}(P)$, la propriété est vraie pour $m=1$. Supposo
 $$
 \begin{array}{ccl}
 x &=& \sum_{i=1}^{m-1}\lambda_i\cdot x_i + \lambda_m \cdot x_m \\
-&=&(\sum_{i=j}^{m-1}\lambda_i) \cdot \sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i}\cdot x_i + \lambda_m \cdot x_m
+&=&(\sum_{j=1}^{m-1}\lambda_j) \cdot \sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_j}\cdot x_i + \lambda_m \cdot x_m
 \end{array}
 $$
 </div>
 
-Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.
+Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_j} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_j}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.
 
 Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il y est également.
 
@@ -1154,7 +1154,7 @@ $$
 
 [L'énoncé général du master theorem](https://fr.wikipedia.org/wiki/Master_theorem#%C3%89nonc%C3%A9_g%C3%A9n%C3%A9ral) nous donne alors une complexité totale de $C(n) = \mathcal{O}(n\log^2(n))$. Ce qui est - c'était attendu - pire (mais pas de beaucoup) de la méthode 1.
 
-## Algorithme optimal
+## Algorithme _optimal_
 
 {% lien %}
 [Algorithme de Chan](https://fr.wikipedia.org/wiki/Algorithme_de_Chan), 1996.

@@ -58,7 +58,7 @@ Le plus simple des algorithmes de tri, pour s'échauffer.
 
 ### Tri par insertion
 
-Son implémentation va nécessiter d'utiliser une nouvelle technique, le placement de sentinelles, et démontrer ses complexités va demander un peu de travail car son nombre d'instructions est très variable selon le tableau donné en paramètre.
+Son implémentation va nécessiter d'utiliser une nouvelle technique, le placement de sentinelles, et démontrer ses complexités va demander un peu de travail car son nombre d'instructions est très variable selon le tableau passé en paramètre.
 
 {% aller %}
 [Tri par insertion](./algorithme-insertion){.interne}

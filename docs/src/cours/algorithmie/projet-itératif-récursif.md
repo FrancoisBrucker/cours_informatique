@@ -218,7 +218,7 @@ Terminons cette partie avec l'algorithme suivant :
 algorithme permutation(T1: [entier], T2: [entier]) → booléen
 ```
 
-Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois), c'est à dire de savoir s'il existe une permutation $\sigma$ de $[0, T.\mbox{\small \longueur}[$ telle que $T1[i] = T2[\sigma(i)]$ pour tout $i \in [0, T.\mbox{\small \longueur}[$ (on a pas besoin de la donner).
+Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois), c'est à dire de savoir s'il existe une permutation $\sigma$ de $[0, T.\mbox{\small longueur}[$ telle que $T1[i] = T2[\sigma(i)]$ pour tout $i \in [0, T.\mbox{\small longueur}[$ (on a pas besoin de la donner).
 {% endexercice %}
 {% info %}
 Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} qu'on a déjà étudié.
