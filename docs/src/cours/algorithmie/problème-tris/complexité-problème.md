@@ -46,7 +46,7 @@ Une borne maximum de la complexité du problème du tri d'un tableau à $n$ él�
 
 ## Borne minimum
 
-En utilisant la propriété [du nombre de cas à distinguer](../../complexité-problème/#n-test-2n){.interne} vue dans la complexité du problème de la *"recherche ordonnée"*, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
+En utilisant la propriété [du nombre de cas à distinguer](../../complexité-problème/#n-test-2n){.interne}, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
 
 {% note "**Proposition**" %}
 Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\Omega(\ln(n!))$.
@@ -55,7 +55,14 @@ Une borne minimum de la complexité du problème du tri d'un tableau à $n$ él�
 Pour expliciter ce qu'est $\ln(n!)$, utilisons la propriété suivante :
 
 {% note "**Proposition**" %}
-Toute fonction en $\ln(n!) = \Theta(n\ln(n))$
+On a :
+
+<div>
+$$
+\ln(n!) = \Theta(n\ln(n))
+$$
+</div>
+
 {% endnote %}
 {% details "preuve", "open" %}
 

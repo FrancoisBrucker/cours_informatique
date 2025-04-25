@@ -601,8 +601,11 @@ Au programme, on prépare les vacances et son sac-à-dos :
 DS code 3h, lundi 05/05.
 {% endattention %}
 
+### Semaine 14
+
 {% attention %}
-Rendre DM4
+Rendre DM4 pour le vendredi 16 mai [sur amétice](https://ametice.univ-amu.fr/mod/assign/view.php?id=4081169).
+
 {% endattention %}
 
 ## Annales

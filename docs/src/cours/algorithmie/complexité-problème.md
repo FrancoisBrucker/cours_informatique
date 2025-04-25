@@ -261,6 +261,12 @@ Commençons par remarquer que `x`{.language-} peut se trouver à chaque position
 
 En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations `si alors sinon`). De là :
 
+<span id="n-test-2n"></span>
+{% note "**Proposition**" %}
+Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi en $\Omega(\ln(n))$.
+{% endnote %}
+{% details "preuve", "open" %}
+
 - s'il y a 0 test, un algorithme ne peut pas distinguer de cas.
 - s'il y a 1 test, un algorithme peut distinguer au plus 2 cas :
   - 1 cas si le test est vrai
@@ -278,14 +284,9 @@ En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise
 - ...
 - s'il y a $K$ tests, un algorithme peut distinguer au plus $2^K$ cas
 
-On a alors la propriété suivante :
+{% enddetails %}
 
-<span id="n-test-2n"></span>
-{% attention "**À retenir**" %}
-Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi en $\Omega(\ln(n))$
-{% endattention %}
-
-Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.
+Comme dans le cas de la recherche il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.
 
 Au final, le problème de la _"recherche ordonnée"_ pour un tableau à $n$ éléments :
 
