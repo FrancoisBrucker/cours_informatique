@@ -25,7 +25,7 @@ L'algorithme de recherche universelle est un algorithme permettant de résoudre 
 
 On peut considérer toutes les chaînes de caractères possibles rangées dans l'ordre lexicographique ("a", "b", ..., "z", "aa", ...). On peut toujours écrire une de ces chaines dans un fichier et tenter de l'exécuter avec l'interpréteur python. Si, par chance, on a écrit du code python l'interpréteur va exécuter le code et sinon il va planter.
 
-Si le problème que l'on cherche à résoudre est dans NP on possède un de ses vérifieur et il existe une chaîne de caractères qui correspond à un code python de l'algorithme que le résout de manière optimale. On suppose que ce code est la chaîne en position $L$ dans l'ordre lexicographique.
+Si le problème que l'on cherche à résoudre est dans NP on possède un de ses vérifieurs et il existe une chaîne de caractères qui correspond à un code python de l'algorithme que le résout de manière optimale. On suppose que ce code est la chaîne en position $L$ dans l'ordre lexicographique.
 
 En prenant une chaîne de caractères en position $L' < L$ que peut-il se passer si on l'exécute avec l'interpréteur python :
 
@@ -111,6 +111,12 @@ Et donc $S_n \leq S_{\infty} = 2$ ce qui nous permet de conclure que le nombre d
 
 {% enddetails %}
 
+
+## Exécution fragmenté v1
+
+> TBD à ajouter plutôt que K +1 on fait 2K
+> on passe de $K^3$ à $K^2$
+> 
 ## Exécution fragmentée générale
 
 L'algorithme de la recherche universelle va procéder un peu de la même manière que celui d'exécution fragmentée mais pour tous les algorithmes.
@@ -222,3 +228,4 @@ Bien sur l'arnaque se situe au niveau de la constante multiplicative, $2^L$ qui 
 > - <http://nicolas.patrois.free.fr/linux/articles/brainfuck.xhtml>
 > <https://esolangs.org/wiki/Brainfuck_algorithms>
 > interpréteur : <https://www.dcode.fr/langage-brainfuck>
+> taille de la mémoire pour 1 variable. Usage = 8b mais peut être aussi petit/grand qu'on veut.
