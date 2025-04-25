@@ -212,7 +212,7 @@ Bien sur l'arnaque se situe au niveau de la constante multiplicative, $2^L$ qui 
 > TBD voir polylog
 >
 
-> écrire les programmes en brainfuck.
+> écrire les programmes en brainfuck car essence d'un algorithme. C'est équivalent à un pseudocode. On le prouvera plus tard.
 > 
 <https://fr.wikipedia.org/wiki/Brainfuck> et <https://brainfuck.org/>
 
@@ -220,4 +220,5 @@ Bien sur l'arnaque se situe au niveau de la constante multiplicative, $2^L$ qui 
 >
 > - <https://gist.github.com/roachhd/dce54bec8ba55fb17d3a>
 > - <http://nicolas.patrois.free.fr/linux/articles/brainfuck.xhtml>
+> <https://esolangs.org/wiki/Brainfuck_algorithms>
 > interpréteur : <https://www.dcode.fr/langage-brainfuck>
