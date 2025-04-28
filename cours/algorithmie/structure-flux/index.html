@@ -114,11 +114,11 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Flux</span><span class="token punctuation">:</span>
     <span class="token builtin">création</span><span class="token punctuation">(</span>taille<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Flux
     <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        méthode <span class="token function">push</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide
-        méthode <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
-        méthode <span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
-        méthode <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>  <span class="token comment"># Vrai si vide</span>
-        méthode <span class="token function">full</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>   <span class="token comment"># Vrai si plein</span></code></pre>
+        <span class="token builtin">méthode</span> <span class="token function">push</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide
+        <span class="token builtin">méthode</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
+        <span class="token builtin">méthode</span> <span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
+        <span class="token builtin">méthode</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>  <span class="token comment"># Vrai si vide</span>
+        <span class="token builtin">méthode</span> <span class="token function">full</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>   <span class="token comment"># Vrai si plein</span></code></pre>
 <p>Les structures de gestion de flux de données se distingue selon que la donnée rendue soit :</p>
 <ul>
 <li>la plus récente</li>
@@ -305,7 +305,7 @@
 
 <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
     F<span class="token punctuation">.</span>enfiler<span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-répéter k fois<span class="token punctuation">:</span>
+<span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
     x <span class="token operator">←</span> F<span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span>
     F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
@@ -351,21 +351,21 @@ répéter k fois<span class="token punctuation">:</span>
         P2 <span class="token operator">←</span> une nouvelle pile de taille entiers
         longueur <span class="token operator">←</span> taille
     <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        méthode <span class="token function">enfiler</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+        <span class="token builtin">méthode</span> <span class="token function">enfiler</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
             P1<span class="token punctuation">.</span>empiler<span class="token punctuation">(</span>donnée<span class="token punctuation">)</span>
-        méthode défiler<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+        <span class="token builtin">méthode</span> défiler<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span> P2<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
                 <span class="token keyword">tant que</span> P1<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
                     x <span class="token operator">←</span> P1<span class="token punctuation">.</span>dépiler<span class="token punctuation">(</span><span class="token punctuation">)</span>
                     P2<span class="token punctuation">.</span>empiler<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
             <span class="token keyword">rendre</span> P2<span class="token punctuation">.</span>dépiler<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        méthode <span class="token function">vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+        <span class="token builtin">méthode</span> <span class="token function">vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> P1<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> ET P2<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        méthode <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+        <span class="token builtin">méthode</span> <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span> P1<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> P2<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">≥</span> longueur<span class="token punctuation">:</span>
                 <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-        méthode <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+        <span class="token builtin">méthode</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> P1<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> P2<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     

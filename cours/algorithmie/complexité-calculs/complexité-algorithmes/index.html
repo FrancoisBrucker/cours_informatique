@@ -410,7 +410,9 @@ $$
 <p>On ne peut pas toujours trouver une équation de récurrence fonctionnant pour toutes les entrées. Mais come le calcul de complexité ne s'intéresse qu'au cas le pire, il suffit de trouver une relation pour des donnant engendrant le plus d'instructions.</p>
 <p>Pour illustrer cela, nous allons considérer deux algorithmes permettant de calculer le PGCD de deux nombres.</p>
 <h3>Itératif</h3>
-<p><a href="../#algorithme-PGCD" class="interne">Algorithme du PGCD récursif itératif</a> :</p>
+<p>Reprenons un de nos algorithmes fil rouge
+Reprenons l'exemple <a href="../../#algorithme-pgcd" class="interne">l'algorithme du pgcd itératif</a> :
+:</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">PGCD</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span></span>
 <span class="highlight-line">    <span class="token keyword">tant que</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        a' <span class="token operator">←</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></span>
@@ -425,15 +427,15 @@ C(a, b) = K \cdot \mathcal{O}(1)
 $$
 </div>
 <p>On ne peut pas simplifier car $K$ dépend de $a$ et de $b$. A chaque itération $\max(a, b)$ va décroître strictement jusqu'à ce que $\max(a, b) = \min(a, b)$ ce qui stoppera la boucle à l'itération suivante.</p>
-<p>On a donc que $K = \mathcal{O}(\max(a, b))$ (pas la peine d'être plus précis que cela) ce qui nous permet de conclure que : $C(a, b) = \mathcal{O}(\max(a, b))$. Ou de façon équivalente et plus élégante :</p>
+<p>On a donc que $K = \mathcal{O}(\max(a, b))$ (pas la peine d'être plus précis que cela) ce qui nous permet de conclure que :</p>
 <div>
 $$
-C(a, b) = \mathcal{O}(a + b)
+C(a, b) = \mathcal{O}(\max(a, b))
 $$
 </div>
 <h3>Récursif</h3>
-<p>Reprenons l'exemple <a href="../prouver-un-algorithme/#algorithme-PGCD-rec" class="interne">l'algorithme du PGCD récursif</a> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">PGCD</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># a, b > 0</span></span>
+<p>Reprenons l'exemple <a href="../../prouver-un-algorithme/#algorithme-pgcd-rec" class="interne">l'algorithme du pgcd récursif</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># a, b > 0</span></span>
 <span class="highlight-line">    <span class="token keyword">si</span> a <span class="token operator">==</span> b<span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">rendre</span> a</span>
 <span class="highlight-line">    <span class="token keyword">si</span> a <span class="token operator">&lt;</span> b<span class="token punctuation">:</span></span>

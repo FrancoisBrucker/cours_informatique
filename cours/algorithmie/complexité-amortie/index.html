@@ -420,7 +420,7 @@ $$</p>
 <p>On va considérer <a href="../structure-flux/pile/" class="interne">une pile</a> et on crée l'algorithme suivant : <code class="language-">k-pop(k, P)</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> k<span class="token operator">-</span>pop<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     k <span class="token operator">←</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    répéter k fois<span class="token punctuation">:</span>
+    <span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
         x <span class="token operator">←</span> P<span class="token punctuation">.</span>dépiler<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> x</code></pre>
 <p>Si $k = 0$ ou <code class="language-">P</code> est vide la complexité de <code class="language-">k-pop(k, P)</code> est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de <code class="language-">k-pop(k, P)</code> est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et <code class="language-">P</code>.</p>

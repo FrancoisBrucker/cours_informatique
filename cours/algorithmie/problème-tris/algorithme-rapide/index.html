@@ -96,7 +96,7 @@
     
   
 
-  <p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de <a href="#diviser-pour-r%C3%A9gner" class="interne">diviser pour régner</a> et, surtout, le calcul des complexités est très intéressant.</p>
+  <p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple <a href="#diviser-pour-r%C3%A9gner" class="interne">d'algorithme diviser pour régner</a> et, surtout, le calcul de ses complexités est très intéressant.</p>
 <p>Le principe est ici de séparer le tableau en entrée <code class="language-">T</code> en 2 tableaux <code class="language-">T1</code> et <code class="language-">T2</code> et une valeur nommé <code class="language-">pivot</code> de tel sorte que :</p>
 <ul>
 <li>toutes les valeurs de <code class="language-">T1</code> soient plus petites que <code class="language-">pivot</code></li>
@@ -104,54 +104,29 @@
 </ul>
 <p>On a coutume de prendre pivot comme étant <code class="language-">T[0]</code>.</p>
 <p>Une fois ce découpage des données fait, la fonction <code class="language-">combiner</code> est triviale puisqu'il suffit de concaténer <code class="language-">T1</code> trié à <code class="language-">[T[0]]</code> puis à <code class="language-">T2</code> trié.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les preuves formelles de complexités sont ardues. On ne vous demande pas de les connaître (mais jetez-y un coup d'oeil elle valent cependant le détour).</p>
+<p>Les preuves formelles de complexités sont ardues. On ne vous demande pas de les connaître (mais jetez-y un coup d'œil elle valent cependant le détour).</p>
 <p><strong>En revanche</strong> vous devez intégrer les preuves intuitives car les arguments exposés sont courant et vous permettront de sentir la complexité de nombreux algorithmes.</p>
 </div></div>
 
 <h2>pseudo-code</h2>
 <p>En pseudo-code cela donne :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">combiner</span><span class="token punctuation">(</span>T1<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> pivot<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> T2<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    T <span class="token operator">←</span> un nouveau tableau de taille T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> T2<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span></span>
-<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T1</span>
-<span class="highlight-line">        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> e</span>
-<span class="highlight-line">       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> pivot</span>
-<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T2</span>
-<span class="highlight-line">        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> e</span>
-<span class="highlight-line">       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> T</span>
-<span class="highlight-line"></span>
-<span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">rapide</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">rapide</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">si</span> T<span class="token punctuation">.</span>longueur <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">rendre</span> T</span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> une copie de T</span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    l1 <span class="token operator">←</span> le nombre d'éléments de T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">≤</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">    T1 <span class="token operator">←</span> un nouveau tableau de longueur l1</span>
-<span class="highlight-line">   <span class="token number"> i1 </span><span class="token operator">←</span> <span class="token number">0</span></span>
-<span class="highlight-line">    l2 <span class="token operator">←</span> le nombre d'éléments de T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">    T2 <span class="token operator">←</span> un nouveau tableau de longueur l2</span>
-<span class="highlight-line">   <span class="token number"> i2 </span><span class="token operator">←</span> <span class="token number">0</span></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">≤</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">←</span> e</span>
-<span class="highlight-line">           <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span> <span class="token number">1</span></span>
-<span class="highlight-line">        <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span> <span class="token operator">←</span> e</span>
-<span class="highlight-line">           <span class="token number"> i2 </span><span class="token operator">←</span><span class="token number"> i2 </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">    T1 <span class="token operator">←</span> un nouveau tableau contenant tous les éléments T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> plus petits <span class="token keyword">ou</span> égaux à T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">    T2 <span class="token operator">←</span> un nouveau tableau contenant tous les éléments T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span> strictement plus grand que T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> combiner<span class="token punctuation">(</span>rapide<span class="token punctuation">(</span>T1<span class="token punctuation">)</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rapide<span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">)</span></span></code></pre>
+<span class="highlight-line">    T1' <span class="token operator">←</span> rapide<span class="token punctuation">(</span>T1<span class="token punctuation">)</span></span>
+<span class="highlight-line">    T2' <span class="token operator">←</span> rapide<span class="token punctuation">(</span>T2<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> T1' <span class="token operator">+</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> T2'</span></code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -168,34 +143,44 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>En utilisant <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension" class="interne">des list comprehension</a> de python, le code est plus compacte et plus clair que sa version en pseudocode :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">rapide</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">return</span> T</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    pivot <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    T1 <span class="token operator">=</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> pivot<span class="token punctuation">]</span></span>
-<span class="highlight-line">    T2 <span class="token operator">=</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> pivot<span class="token punctuation">]</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">return</span> rapide<span class="token punctuation">(</span>T1<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> rapide<span class="token punctuation">(</span>T2<span class="token punctuation">)</span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">rapide</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+
+    pivot <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    T1 <span class="token operator">=</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> pivot<span class="token punctuation">]</span>
+    T2 <span class="token operator">=</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> pivot<span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> rapide<span class="token punctuation">(</span>T1<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> rapide<span class="token punctuation">(</span>T2<span class="token punctuation">)</span></code></pre>
 <p>Les <em>list comprehension</em> sont un moyen clair et efficace de générer des listes. Utilisez-les !</p>
 </div>
 </details>     
 </div>
 <h2><span id="preuve-rapide"></span> Preuve</h2>
-<p>Comme <code class="language-">rapide</code> est une implémentation de la méthode diviser pour régner : on tri deux tableaux, le premier contenant les éléments plus petit que T[0], l'autre les éléments strictement plus grand puis on les recombine. Son fonctionnement est donc assuré <strong>si</strong> les récursions s'arrêtent.</p>
-<p>C'est effectivement le cas ici puisque les tableaux  <code class="language-">T1</code> et  <code class="language-">T2</code> sont strictement plus petit que  <code class="language-">T</code> et qu'il y a une condition d'arrêt sur la taille du tableau.</p>
+<p>Comme <code class="language-">rapide</code> est une implémentation de la méthode diviser pour régner : on trie deux tableaux, le premier contenant les éléments plus petit que T[0], l'autre les éléments strictement plus grand puis on les concatène. Son fonctionnement est donc assuré <strong>si</strong> les récursions s'arrêtent.</p>
+<p>C'est effectivement le cas ici puisque les tableaux <code class="language-">T1</code> et <code class="language-">T2</code> sont strictement plus petit que  <code class="language-">T</code> et qu'il y ait une condition d'arrêt sur la taille du tableau.</p>
 <h2><span id="complexités-rapide"></span> Complexités</h2>
-<p>En notant $n$ la taille de la liste on a comme équation de récurrence pour la complexité $C(n)$ :</p>
+<p>On va noter $n$ la taille du tableau $T$. Les lignes de l'algorithme <code class="language-">rapide</code> hors récursions ne sont <strong>pas</strong> en $\mathcal{O}(1)$ :</p>
+<ul>
+<li>les lignes 4 et 5 sont chacune en $\mathcal{O}(n)$</li>
+<li>la ligne 10, ue concaténation est aussi en $\mathcal{O}(n)$</li>
+</ul>
+<p>En ajoutant les lignes 8 et 9 qui effectuent la récursion, on a comme équation de récurrence pour la complexité $C(n)$ de l'algorithme <code class="language-">rapide</code> :</p>
 <div>
-$${
-C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{cr\'eation des tableaux}}{} + \underbracket{C(n_1) + C(n_2)}_{\mbox{r\'ecursions}}{}
-}$$
+$$
+C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{hors r\'ecursion}}{} + \underbracket{C(n_1) + C(n_2)}_{\mbox{r\'ecursions}}{}
+$$
 </div>
 <p>Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n-1$). Pour trouver $n_1$ et $n_2$, il faut résoudre l'équation :</p>
-<p>$${
-C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))
-}$$</p>
+<div>
+$$
+\begin{cases}
+C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))\\
+C(1) = 1
+\end{cases}
+$$
+</div>
 <p>On va montrer que :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -214,6 +199,7 @@ C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))
 
 <p>Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.</p>
 <h3>Complexité (maximale) du tri rapide</h3>
+<p>Le tri rapide est un algorithme de tri bien spécial puisqu'il ne fonctionne pas bien lorsque le tableau en entrée est déjà trié :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -221,7 +207,8 @@ C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité du tri rapide est en $\mathcal{O}(n^2)$ avec $n$ la taille tu tableau à trier.</p>
+<p>La complexité du tri rapide est en $\Theta(n^2)$ avec $n$ la taille tu tableau à trier.</p>
+<p>Ce cas est atteint si le tableau est déjà trié (par ordre croissant ou décroissant).</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -246,19 +233,19 @@ C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))
 <div>
 $$
 \begin{array}{lcl}
-C_{\mbox{tri\'e}}(n) &=& \mathcal{O}(n) + C_{\mbox{tri\'e}}(0) +  C_{\mbox{tri\'e}}(n-1)\\
-&=&\mathcal{O}(n) + C_{\mbox{tri\'e}}(n-1)\\
-&=& \mathcal{O}(n) + \mathcal{O}(n-1) + C_{\mbox{tri\'e}}(n-2)\\
+C_{\mbox{tri\'e}}(n) &=& \Theta(n) + C_{\mbox{tri\'e}}(0) +  C_{\mbox{tri\'e}}(n-1)\\
+&=&\Theta(n) + C_{\mbox{tri\'e}}(n-1)\\
+&=& \Theta(n) + \Theta(n-1) + C_{\mbox{tri\'e}}(n-2)\\
 &=& ...\\
-&=& \sum_{i=1}^{n}\mathcal{O}(i) + C_{\mbox{tri\'e}}(0)\\
-&=& \mathcal{O}(\sum_{i=1}^{n}i)\\
-&=& \mathcal{O}(n^2)\\
+&=& \sum_{i=1}^{n}\Theta(i) + C_{\mbox{tri\'e}}(0)\\
+&=& \Theta(\sum_{i=1}^{n}i)\\
+&=& \Theta(n^2)\\
 \end{array}
 $$
 </div>
 <p>Et donc :</p>
 <p>$$
-C_{\max}(n) = \mathcal{O}(n^2)
+C_{\max}(n) = \Theta(n^2)
 $$</p>
 </div>
 </details>     
@@ -280,24 +267,24 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Formellement, nous ne venons que de montrer que $\mathcal{O}(n^2) \leq C_{\max}(n)$. Pour conclure la preuve, il nous reste à montrer la réciproque, c'est à dire $\mathcal{O}(n^2) \geq C_{\max}(n)$.</p>
-<p>Faisons-le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$
+<p>Formellement, nous ne venons que de montrer que $C(n) = \Omega(n^2)$ puisque l'on a pas prouvé que les tableaux triés étaient le cas le pire. Pour conclure la preuve, il nous reste à montrer que $C(n) = \mathcal{O}(n^2)$.</p>
+<p>Faisons-le par récurrence en prouvant qu'il existe $K$ tel que $C(n) \leq K \cdot n^2$ pour tout $n\geq 1$.
 Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n-1$. Examinons le cas $n$ :</p>
 <div>
 $$
 \begin{array}{lcll}
 C_{\max}(n) & = & \mathcal{O}(n) + \max_{0 \leq i < n}(C_{\max}(i) + C_{\max}(n-i-1))&\\
-& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot i^2 + k\cdot(n-i-1)^2)&\text{par hypothèse de récurrence}\\
-& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(i + n-i-1)^2)&\text{car } a^2+b^2 \leq (a+b)^2 \text{ pour des entiers positifs}\\
-& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(n-1)^2)&\\
-& \leq & \mathcal{O}(n) + k\cdot(n-1)^2&\\
-& \leq & \mathcal{O}(n) + k\cdot n^2 -k(2n-1)&\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(K\cdot i^2 + K\cdot(n-i-1)^2)&\text{par hypothèse de récurrence}\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(K\cdot(i + n-i-1)^2)&\text{car } a^2+b^2 \leq (a+b)^2 \text{ pour des entiers positifs}\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(K\cdot(n-1)^2)&\\
+& \leq & \mathcal{O}(n) + K\cdot(n-1)^2&\\
+& \leq & \mathcal{O}(n) + K\cdot n^2 -K(2n-1)&\\
 & \leq & \mathcal{O}(n^2)&\\
 \end{array}
 $$
 </div>
 <p>Notre hypothèse est démontrée.</p>
-<p>On a finalement l'encadrement : $\mathcal{O}(n^2) \leq C_{\max}(n) \leq \mathcal{O}(n^2)$, ce qui nous permet de conclure que la complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$.</p>
+<p>On a finalement l'encadrement : $\Theta(n^2) = C_{\max}(n) = \mathcal{O}(n^2)$, ce qui nous permet de conclure que la complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\Theta(n^2)$.</p>
 </div>
 </details>     
 </div>
@@ -329,7 +316,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion, au moins asymptotiquement, la courbe de complexité sera au-dessus de sa tangente : c'est une fonction convexe.</p>
+<p>Comme $C(n)$ est une fonction croissante et que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion, au moins asymptotiquement, la courbe de complexité sera au-dessus de sa tangente : c'est une fonction convexe.</p>
 <p><img src="tris-4.png" alt="croissance convexe"></p>
 <p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et <a href="../algorithme-fusion/#complexit%C3%A9s-fusion" class="interne">la preuve de l'algorithme fusion</a> nous permet de conclure que :</p>
 <p>$$
@@ -380,7 +367,7 @@ $$
 C = \mathcal{O}(\sum_{i} n_i)
 $$
 </div>
-<p><strong>La complexité minimale sera atteinte pour la plus petite somme de $n_i$. Nous allons montrer que cela arrive lorsque l'on coupe le tableau en 2 parts égales à chaque itération.</strong></p>
+<p><strong>La complexité minimale sera atteinte pour la plus petite somme de $n_i$</strong>.</p>
 <p>Chaque élément est compté 1 fois pour chaque tableau qui le compose. Comme l'ensemble des tableaux ayant un élément $x$ donné forme un chemin allant de $T_1$ à un tableau $T_i$ pour lequel $x$ est choisi comme pivot. En notant $e(x)$ l'étage pour lequel l'élément $x$ de $T_0$ a été choisi comme pivot, la complexité $C$ de l'algorithme vaut alors également :</p>
 <div>
 $$
@@ -401,7 +388,7 @@ $$
 C_{\min} = \mathcal{O}(\sum_{x \in T_0}e(x)) = \sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1 = \mathcal{O}(n\log_2(n))
 $$
 </div>
-<p>On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$, ce qui se démontre aisément par récurrence.</p>
+<p>On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ (<a href="../../#sommes-classiques" class="interne">on le démontrera</a>).</p>
 </div>
 </details>     
 </div>
@@ -433,7 +420,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="../algorithme-insertion/#complexit%C3%A9s-insertion" class="interne">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
+<p>on utilise <a href="../algorithme-insertion/#mod%C3%A8le-al%C3%A9atoire-50" class="interne">l'argument utilisé</a> pour calculer la complexité en moyenne du tri par insertion. Si le tableau suit le modèle aléatoire, la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
 <p>Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
 </div>
 </details>     
@@ -456,27 +443,34 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Il faut résoudre l'équation :</p>
-<p>$${
-C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
-}$$</p>
-<p>où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau.</p>
+<div>
+$$
+C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i < n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
+$$
+</div>
+<p>où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau. On suppose pour cela que notre tableau suit <a href="../reconnaissance/#d%C3%A9finition-mod%C3%A8le-tableau-al%C3%A9atoire" class="interne">le modèle aléatoire</a> et donc que $p_i = \frac{1}{n}$ pour tout $i$.</p>
+<div>
+$$
+C_{\mbox{moy}}(n) = \mathcal{O}(n) + \frac{1}{n}\sum_{0 \leq i < n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
+$$
+</div>
 <p>Pour éviter de nous trimballer des $\mathcal{O}(n)$ partout, on va considérer que l'on y effectue $K\cdot n$ opérations où $K$ est une constante. On peut alors écrire :</p>
-<p>$${
-C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
-}$$</p>
-<p>De plus on va considérer que nos données sont équiprobables, c'est à dire que le pivot a la même probabilité d'être le $u$ème ou le $v$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :</p>
-<p>$${
-C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i &lt; n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
-}$$</p>
-<p>Comme :</p>
+<div>
+$$
+C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i < n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
+$$
+</div>
+<p>On peut simplifier cette écriture en remarquant que :</p>
 <ul>
 <li>$\sum_{0 \leq i &lt; n}C_{\mbox{moy}}(i) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$</li>
 <li>$\sum_{0 \leq i &lt; n}C_{\mbox{moy}}(n-i-1) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$</li>
 </ul>
-<p>On a :</p>
-<p>$${
+<p>On doit donc résoudre l'équation :</p>
+<div>
+$$
 C_{\mbox{moy}}(n) = K\cdot n + \frac{2}{n}\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)
-}$$</p>
+$$
+</div>
 <p>Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l'équation $n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1)$ qui va nous permettre d'éliminer la somme :</p>
 <div>
 $$
@@ -489,9 +483,11 @@ n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1) & = & K\cdot n^2 +2\su
 $$
 </div>
 <p>On en déduit :</p>
-<p>$$
+<div>
+$$
 n\cdot C_{\mbox{moy}}(n) = K(2n - 1) + (n+1)\cdot C_{\mbox{moy}}(n-1)
-$$</p>
+$$
+</div>
 <p>Et maintenant la seconde astuce : on divise l'équation ci-dessus par $n(n+1)$ pour obtenir un terme générique identique des deux côtés de l'équation :</p>
 <p>$$
 \frac{C_{\mbox{moy}}(n)}{n+1}=\frac{C_{\mbox{moy}}(n-1)}{n} + K\cdot\frac{2n - 1}{n(n+1)}
@@ -512,7 +508,7 @@ A(n) &=& A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
 \end{array}
 $$
 </div>
-<p>On peut facilement montrer (par récurrence) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ et donc que :</p>
+<p>On peut facilement montrer (<a href="../../#sommes-classiques" class="interne">on le démontrera</a>) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ et donc que :</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -525,11 +521,11 @@ $$
 </div>
 <p>La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.</p>
 <p>Cette fonction est connue, elle s'appelle la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique">série harmonique</a>,
-et est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> à $\ln(n)$ lorsque $n$ tend vers $+\infty$.  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et de là :</p>
+et est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, <a href="../../#sommes-classiques" class="interne">on le démontrera</a>).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :</p>
 <p>$$
 A(n) = \mathcal{O}(\ln(n))
 $$</p>
-<p>En revenant aux $C_{\mbox{moy}}(n) = n\cdot A(n)$ :</p>
+<p>Qui en revenant aux $C_{\mbox{moy}}(n) = n\cdot A(n)$ donne :</p>
 <p>$$
 C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))
 $$</p>

@@ -175,21 +175,22 @@
 
 <h4>Complexité en moyenne</h4>
 <p>La question est délicate. Il faut se demander quel est le modèle sous-jacent à notre tableau de nombres. Si on a aucune information sur la répartition des nombres, on a coutume d'utiliser le modèle suivant :</p>
+<p><span id="définition-modèle-tableau-aléatoire"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Modèle du Tableau aléatoire</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un tableau $T$ d'entiers de longueur $n$ est <em>aléatoire</em> s'il résulte de la procédure suivante :</p>
+<p>Un tableau $T$ d'entiers de longueur $n$ est <strong><em>un tableau aléatoire</em></strong> s'il résulte de la procédure suivante :</p>
 <ul>
 <li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation">une permutation</a> $\sigma$ de $[0, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
 <li>$T[i] = \sigma(i)$ pour tout $i \in [0, n-1]$</li>
 </ul>
 </div></div>
 
-<p>On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés que l'on aimerait avoir pour un tableau de nombres quelconques, comme :</p>
+<p>On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -231,12 +232,12 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
+<p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $T$ est un tableau aléatoire :</p>
+<p>Si $T$ est un tableau aléatoire, si $k \leq i$ on a :</p>
 <div>
 $$
-\mathbb{P}(T[u] > T[v]) = \frac{1}{2}
+\mathbb{P}(T[i] = k)) = \frac{1}{i+1}
 $$
 </div>
 </div></div>
@@ -258,24 +259,44 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Prenons $u$ et $v$ deux indices différents du tableau. Pour que $T[u] &gt; T[v]$, il faut que :</p>
-<ul>
-<li>$T[u]$ soit le le $n$ème plus petit élément du tableau (plus grand élément) : probabilité $\frac{1}{n}$</li>
-<li>$T[u]$ soit le $n-1$ème plus petit élément du tableau (probabilité $\frac{1}{n}$) et que parmi ces tableaux, $T[v]$ ne soit pas le $n$ème plus petit élément (probabilité $\frac{1}{n-1}$) : probabilité $\frac{1}{n}\cdot \frac{1}{n}$</li>
-<li>...</li>
-<li>$T[u]$ soit le $n-i$ème plus petit élément du tableau (probabilité $\frac{1}{n}$) et que parmi ces tableaux, $T[u]$ ne soit ni le $n$ème, ni $n-1$, ..., ni le $n-i + 1$ plus petit élément (probabilité $\frac{i}{n-1}$) : probabilité $\frac{1}{n}\cdot \frac{i}{n}$</li>
-<li>...</li>
-</ul>
-<p>En sommant toutes ces probabilités on obtient :</p>
-<div>
-$$
-\mathbb{P}(T[u] > T[v]) = \sum_{i=1}^{n-1}\frac{1}{n}\cdot \frac{i}{n-1} = \frac{1}{n(n-1)}\sum_{i=1}^{n-1}i = \frac{1}{2}
-$$
-</div>
+<p>Tout se passe comme si on considérait un tableau aléatoire de taille $i+1$.</p>
 </div>
 </details>     
 </div>
-<p>Lea deux propriétés précédentes nous permettent de voir que pour notre algorithme de reconnaissance, si $T$ est un tableau aléatoire alors la probabilité :</p>
+<p>Ce modèle véhicule de nombreuse propriété l'on aimerait avoir pour un tableau de nombres quelconques :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :</p>
+<div>
+$$
+\mathbb{P}(T[u] > T[v]) = \frac{1}{2}
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Prenons $u$ et $v$ deux indices différents du tableau. Tout se passe comme si on avait un tableau aléatoire de taille 2.</p>
+</div>
+</details>     
+</div>
+<p>Les propriétés précédentes nous permettent de voir que pour notre algorithme de reconnaissance, si $T$ est un tableau aléatoire alors la probabilité :</p>
 <ul>
 <li>$p_1$ de ne faire que 1 itération est $\mathbb{P}(T[0] &gt; T[1])$ et vaut $1/2$</li>
 <li>$p_2$ de ne faire que 2 itérations est $\mathbb{P}(T[0] &lt; T[1], T[1] &gt; T[2])$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ (attention, $T[0] &lt; T[1]$ et $T[1] &gt; T[2]$ ne sont pas indépendant, on a donc pas $\mathbb{P}(T[0] &lt; T[1], T[1] &gt; T[2]) = \mathbb{P}(T[0] &lt; T[1])\cdot \mathbb{P}(T[1] &gt; T[2])$)</li>

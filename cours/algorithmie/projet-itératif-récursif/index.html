@@ -209,7 +209,7 @@
 <p>La finitude est claire puisqu'il n'y a que deux boucles de type <code class="language-">pour chaque</code>.</p>
 <p>On a deux boucles, il faut donc à priori 2 invariants, un pour chaque boucle. Ici il est clair que l'on va remplir tous les éléments des tableaux <code class="language-">début</code> et <code class="language-">fin</code> dans <code class="language-">t</code>. L'invariant peut être :</p>
 <blockquote>
-<p>si $i_0$ est la valeur de $i$ à la ligne 5 (resp. 9) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. <code class="language-">fin</code>) pour tout $0\leq k \leq j$.</p>
+<p><strong>Invariant de boucle :</strong> si $i_0$ est la valeur de $i$ à la ligne 5 (resp. 9) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. <code class="language-">fin</code>) pour tout $0\leq k \leq j$.</p>
 </blockquote>
 <p>Démontrons l'invariant rigoureusement pour la première boucle.</p>
 <p>À la fin de la première itération, on a bien :</p>
@@ -432,7 +432,7 @@
 <p>La finitude du programme est clair puisque l'on a que des boucles de type <code class="language-">pour chaque</code>.</p>
 <p>On commence par créer un tableau permettant exactement de stocker tous les éléments de <code class="language-">T</code> différents de <code class="language-">v</code>. Ce que fera la boucle. On peut prouver celle-ci par l'invariant :</p>
 <blockquote>
-<p>à la fin de chaque itération, <code class="language-">T2</code> contient la restriction des <code class="language-">i + 1</code> premiers éléments de <code>T</code> différents de <code class="language-">v</code>.</p>
+<p><strong>Invariant de boucle :</strong> à la fin de chaque itération, <code class="language-">T2</code> contient la restriction des <code class="language-">i + 1</code> premiers éléments de <code>T</code> différents de <code class="language-">v</code>.</p>
 </blockquote>
 <p>La preuve de l'invariant est évidente et permet de prouver l'algorithme en se plaçant à la fin de la dernière itération.</p>
 </div>

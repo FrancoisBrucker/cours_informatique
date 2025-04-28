@@ -218,9 +218,9 @@ $$
 <p>La variable <code class="language-">c</code> diminue strictement à chaque boucle (ou il diminue de <code class="language-">-1</code> ou il est divisé par 2). Si <code class="language-">n</code> est un entier strictement positif en entrée, <code class="language-">c</code> reste entier après chaque boucle (on ne le divise par 2 que s'il est pair) et est strictement plus petit : l'algorithme va s'arrêter à un moment.</p>
 <h3><span id="preuve-rapide"></span> Preuve de l’algorithme</h3>
 <p>On va montrer que l'invariant de boucle suivant fonctionne. En notant <code class="language-">X</code> la valeur initial de <code class="language-">x</code> en entrée de l'algorithme, on a le très élégant invariant suivant :</p>
-<p>$$
-r \cdot x^c = X^n
-$$</p>
+<blockquote>
+<p><strong>Invariant de boucle :</strong> §$r \cdot x^c = X^n$</p>
+</blockquote>
 <p>Juste avant la première itération de la boucle, $r = x$, $x = X$ et et $c = n-1$ notre invariant est donc vérifié au départ de l'algorithme. On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :</p>
 <ul>
 <li>si compteur est impair on a :

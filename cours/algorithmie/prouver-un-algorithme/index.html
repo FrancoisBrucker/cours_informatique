@@ -467,7 +467,7 @@ $$
 </ul>
 <p>Notre invariant doit donc être :</p>
 <blockquote>
-<p>Invariant : $r = (i-1)!$ à la fin de chaque itération.</p>
+<p><strong>Invariant de boucle :</strong> $r = (i-1)!$ à la fin de chaque itération.</p>
 </blockquote>
 <ol>
 <li>c'est vrai à la fin de la 1ère itération (on a tout fait pour)</li>
@@ -552,7 +552,7 @@ $$
 <div class="pl-8 mr-8">
 <p>Montrez que la boucle <code class="language-">tant que</code> de <a href="#algo-factorielle_variante" class="interne">l'algorithme <code class="language-">factorielle_variante</code></a> admet l'invariant de boucle suivant :</p>
 <blockquote>
-<p>À la fin d'une itération de la boucle <code class="language-">tant que</code> : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$</p>
+<p><strong>Invariant de boucle :</strong>  À la fin d'une itération de la boucle <code class="language-">tant que</code> : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$</p>
 </blockquote>
 </div></div>
 
@@ -706,7 +706,7 @@ $$
 </div>
 <p>Ce qui permet d'écrire l'invariant :</p>
 <blockquote>
-<p>Invariant : à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.</p>
+<p><strong>Invariant de boucle :</strong>  à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.</p>
 </blockquote>
 <h4>Prouver l'invariant</h4>
 <p>Après la première itération de la boucle, comme $m$ vaut initialement le premier élément du tableau, on a que $m=t[0]$ qui est bien le maximum des $0+1=1$ premiers éléments du tableau. L'invariant est vérifié à la fin de la première itération où $i=0$.</p>
@@ -759,7 +759,7 @@ $$
 </details>     
 </div>
 <h3>PGCD, encore lui</h3>
-<p><span id="algorithme-PGCD-rec"></span></p>
+<p><span id="algorithme-pgcd-rec"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">PGCD</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># a, b > 0</span>
     <span class="token keyword">si</span> a <span class="token operator">==</span> b<span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> a
@@ -901,7 +901,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <blockquote>
-<p>Invariant : <code class="language-">a = r + q * b</code></p>
+<p><strong>Invariant de boucle :</strong>  <code class="language-">a = r + q * b</code></p>
 </blockquote>
 <p>Prouvons l'invariant :</p>
 <ol>
