@@ -122,7 +122,6 @@ Tout algorithme de tri d'une liste à $n$ éléments est en $\Omega(n\ln(n))$ op
 
 Une borne min du problème du *"tri"* est donc $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau en entrée. La partie suivante montrera qu'il existe des algorithmes de tri complexité $\mathcal{O}(n\ln(n))$ ([le tri fusion par exemple](../algorithme-fusion/){.interne}), on en conclut donc un peu en avance que :
 
-
 <div id="complexité-problème"></div>
 {% note "**Proposition**" %}
 La complexité du problème du tri est n $\Theta(n\ln(n))$ opérations.

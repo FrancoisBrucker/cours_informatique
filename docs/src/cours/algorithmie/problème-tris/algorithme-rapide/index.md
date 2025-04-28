@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de [diviser pour régner](./#diviser-pour-régner){.interne} et, surtout, le calcul des complexités est très intéressant.
+Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple [d'algorithme diviser pour régner](./#diviser-pour-régner){.interne} et, surtout, le calcul de ses complexités est très intéressant.
 
 Le principe est ici de séparer le tableau en entrée `T`{.language-} en 2 tableaux `T1`{.language-} et `T2`{.language-} et une valeur nommé `pivot`{.language-} de tel sorte que :
 
@@ -21,62 +21,37 @@ On a coutume de prendre pivot comme étant `T[0]`{.language-}.
 
 Une fois ce découpage des données fait, la fonction `combiner`{.language-} est triviale puisqu'il suffit de concaténer `T1`{.language-} trié à `[T[0]]`{.language-} puis à `T2`{.language-} trié.
 
-{% attention %}
-Les preuves formelles de complexités sont ardues. On ne vous demande pas de les connaître (mais jetez-y un coup d'oeil elle valent cependant le détour).
+{% note %}
+Les preuves formelles de complexités sont ardues. On ne vous demande pas de les connaître (mais jetez-y un coup d'œil elle valent cependant le détour).
 
 **En revanche** vous devez intégrer les preuves intuitives car les arguments exposés sont courant et vous permettront de sentir la complexité de nombreux algorithmes.
-{% endattention %}
+{% endnote %}
 
 ## pseudo-code
 
 En pseudo-code cela donne :
 
 ```pseudocode/
-fonction combiner(T1: [entier], pivot: entier, T2: [entier])  → [entier]:
-    T ← un nouveau tableau de taille T1.longueur + T2.longueur + 1
-    i ← 0
-    pour chaque e de T1
-        T[i] ← e
-        i ← i + 1
-
-    T[i] ← pivot
-    i ← i + 1
-
-    pour chaque e de T2
-        T[i] ← e
-        i ← i + 1
-
-    rendre T
-
 algorithme rapide(T: [entier]) → [entier]:
     si T.longueur <= 1:
-        rendre T
+        rendre une copie de T
 
-    l1 ← le nombre d'éléments de T[1:] ≤ T[0]
-    T1 ← un nouveau tableau de longueur l1
-    i1 ← 0
-    l2 ← le nombre d'éléments de T[1:] > T[0]
-    T2 ← un nouveau tableau de longueur l2
-    i2 ← 0
-    pour chaque e de T[1:]:
-        si e ≤ T[0]:
-            T1[i1] ← e
-            i1 ← i1 + 1
-        sinon:
-            T2[i2] ← e
-            i2 ← i2 + 1
+    T1 ← un nouveau tableau contenant tous les éléments T[1:] plus petits ou égaux à T[0]
+    T2 ← un nouveau tableau contenant tous les éléments T[1:] strictement plus grand que T[0]
 
-    rendre combiner(rapide(T1), T[0], rapide(T2))
+    T1' ← rapide(T1)
+    T2' ← rapide(T2)
+    rendre T1' + [T[0]] + T2'
 ```
 
-{% details "code python", "open" %}
+{% details "code python" %}
 
 En utilisant [des list comprehension](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension){.interne} de python, le code est plus compacte et plus clair que sa version en pseudocode :
 
-```python/
+```python
 def rapide(T):
     if len(T) <= 1:
-        return T
+        return list(T)
 
     pivot = T[0]
 
@@ -92,25 +67,35 @@ Les _list comprehension_ sont un moyen clair et efficace de générer des listes
 
 ## <span id="preuve-rapide"></span> Preuve
 
-Comme `rapide`{.language-} est une implémentation de la méthode diviser pour régner : on tri deux tableaux, le premier contenant les éléments plus petit que T[0], l'autre les éléments strictement plus grand puis on les recombine. Son fonctionnement est donc assuré **si** les récursions s'arrêtent.
+Comme `rapide`{.language-} est une implémentation de la méthode diviser pour régner : on trie deux tableaux, le premier contenant les éléments plus petit que T[0], l'autre les éléments strictement plus grand puis on les concatène. Son fonctionnement est donc assuré **si** les récursions s'arrêtent.
 
-C'est effectivement le cas ici puisque les tableaux  `T1`{.language-} et  `T2`{.language-} sont strictement plus petit que  `T`{.language-} et qu'il y a une condition d'arrêt sur la taille du tableau.
+C'est effectivement le cas ici puisque les tableaux `T1`{.language-} et `T2`{.language-} sont strictement plus petit que  `T`{.language-} et qu'il y ait une condition d'arrêt sur la taille du tableau.
 
 ## <span id="complexités-rapide"></span> Complexités
 
-En notant $n$ la taille de la liste on a comme équation de récurrence pour la complexité $C(n)$ :
+On va noter $n$ la taille du tableau $T$. Les lignes de l'algorithme `rapide`{.language-} hors récursions ne sont **pas** en $\mathcal{O}(1)$ :
+
+- les lignes 4 et 5 sont chacune en $\mathcal{O}(n)$
+- la ligne 10, ue concaténation est aussi en $\mathcal{O}(n)$
+
+En ajoutant les lignes 8 et 9 qui effectuent la récursion, on a comme équation de récurrence pour la complexité $C(n)$ de l'algorithme `rapide`{.language-} :
 
 <div>
-$${
-C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{cr\'eation des tableaux}}{} + \underbracket{C(n_1) + C(n_2)}_{\mbox{r\'ecursions}}{}
-}$$
+$$
+C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{hors r\'ecursion}}{} + \underbracket{C(n_1) + C(n_2)}_{\mbox{r\'ecursions}}{}
+$$
 </div>
 
 Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n-1$). Pour trouver $n_1$ et $n_2$, il faut résoudre l'équation :
 
-$${
-C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))
-}$$
+<div>
+$$
+\begin{cases}
+C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))\\
+C(1) = 1
+\end{cases}
+$$
+</div>
 
 On va montrer que :
 
@@ -127,8 +112,12 @@ Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. S
 
 ### Complexité (maximale) du tri rapide
 
+Le tri rapide est un algorithme de tri bien spécial puisqu'il ne fonctionne pas bien lorsque le tableau en entrée est déjà trié :
+
 {% note "**Proposition**" %}
-La complexité du tri rapide est en $\mathcal{O}(n^2)$ avec $n$ la taille tu tableau à trier.
+La complexité du tri rapide est en $\Theta(n^2)$ avec $n$ la taille tu tableau à trier.
+
+Ce cas est atteint si le tableau est déjà trié (par ordre croissant ou décroissant).
 {% endnote %}
 {% details "preuve intuitive", "open" %}
 
@@ -139,13 +128,13 @@ Pour des tableaux triés, `T1`{.language-} ou `T2`{.language-} est vide et l'aut
 <div>
 $$
 \begin{array}{lcl}
-C_{\mbox{tri\'e}}(n) &=& \mathcal{O}(n) + C_{\mbox{tri\'e}}(0) +  C_{\mbox{tri\'e}}(n-1)\\
-&=&\mathcal{O}(n) + C_{\mbox{tri\'e}}(n-1)\\
-&=& \mathcal{O}(n) + \mathcal{O}(n-1) + C_{\mbox{tri\'e}}(n-2)\\
+C_{\mbox{tri\'e}}(n) &=& \Theta(n) + C_{\mbox{tri\'e}}(0) +  C_{\mbox{tri\'e}}(n-1)\\
+&=&\Theta(n) + C_{\mbox{tri\'e}}(n-1)\\
+&=& \Theta(n) + \Theta(n-1) + C_{\mbox{tri\'e}}(n-2)\\
 &=& ...\\
-&=& \sum_{i=1}^{n}\mathcal{O}(i) + C_{\mbox{tri\'e}}(0)\\
-&=& \mathcal{O}(\sum_{i=1}^{n}i)\\
-&=& \mathcal{O}(n^2)\\
+&=& \sum_{i=1}^{n}\Theta(i) + C_{\mbox{tri\'e}}(0)\\
+&=& \Theta(\sum_{i=1}^{n}i)\\
+&=& \Theta(n^2)\\
 \end{array}
 $$
 </div>
@@ -153,24 +142,25 @@ $$
 Et donc :
 
 $$
-C_{\max}(n) = \mathcal{O}(n^2)
+C_{\max}(n) = \Theta(n^2)
 $$
 {% enddetails %}
-{% details "preuve formelle" %}
-Formellement, nous ne venons que de montrer que $\mathcal{O}(n^2) \leq C_{\max}(n)$. Pour conclure la preuve, il nous reste à montrer la réciproque, c'est à dire $\mathcal{O}(n^2) \geq C_{\max}(n)$.
 
-Faisons-le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$
+{% details "preuve formelle" %}
+Formellement, nous ne venons que de montrer que $C(n) = \Omega(n^2)$ puisque l'on a pas prouvé que les tableaux triés étaient le cas le pire. Pour conclure la preuve, il nous reste à montrer que $C(n) = \mathcal{O}(n^2)$.
+
+Faisons-le par récurrence en prouvant qu'il existe $K$ tel que $C(n) \leq K \cdot n^2$ pour tout $n\geq 1$.
 Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n-1$. Examinons le cas $n$ :
 
 <div>
 $$
 \begin{array}{lcll}
 C_{\max}(n) & = & \mathcal{O}(n) + \max_{0 \leq i < n}(C_{\max}(i) + C_{\max}(n-i-1))&\\
-& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot i^2 + k\cdot(n-i-1)^2)&\text{par hypothèse de récurrence}\\
-& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(i + n-i-1)^2)&\text{car } a^2+b^2 \leq (a+b)^2 \text{ pour des entiers positifs}\\
-& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(n-1)^2)&\\
-& \leq & \mathcal{O}(n) + k\cdot(n-1)^2&\\
-& \leq & \mathcal{O}(n) + k\cdot n^2 -k(2n-1)&\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(K\cdot i^2 + K\cdot(n-i-1)^2)&\text{par hypothèse de récurrence}\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(K\cdot(i + n-i-1)^2)&\text{car } a^2+b^2 \leq (a+b)^2 \text{ pour des entiers positifs}\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(K\cdot(n-1)^2)&\\
+& \leq & \mathcal{O}(n) + K\cdot(n-1)^2&\\
+& \leq & \mathcal{O}(n) + K\cdot n^2 -K(2n-1)&\\
 & \leq & \mathcal{O}(n^2)&\\
 \end{array}
 $$
@@ -178,7 +168,7 @@ $$
 
 Notre hypothèse est démontrée.
 
-On a finalement l'encadrement : $\mathcal{O}(n^2) \leq C_{\max}(n) \leq \mathcal{O}(n^2)$, ce qui nous permet de conclure que la complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$.
+On a finalement l'encadrement : $\Theta(n^2) = C_{\max}(n) = \mathcal{O}(n^2)$, ce qui nous permet de conclure que la complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\Theta(n^2)$.
 {% enddetails %}
 
 ### Complexité minimale du tri rapide
@@ -188,7 +178,7 @@ La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu
 {% endnote %}
 {% details "preuve intuitive", "open" %}
 
-On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion, au moins asymptotiquement, la courbe de complexité sera au-dessus de sa tangente : c'est une fonction convexe.
+Comme $C(n)$ est une fonction croissante et que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion, au moins asymptotiquement, la courbe de complexité sera au-dessus de sa tangente : c'est une fonction convexe.
 
 ![croissance convexe](tris-4.png)
 
@@ -228,7 +218,7 @@ C = \mathcal{O}(\sum_{i} n_i)
 $$
 </div>
 
-**La complexité minimale sera atteinte pour la plus petite somme de $n_i$. Nous allons montrer que cela arrive lorsque l'on coupe le tableau en 2 parts égales à chaque itération.**
+**La complexité minimale sera atteinte pour la plus petite somme de $n_i$**.
 
 Chaque élément est compté 1 fois pour chaque tableau qui le compose. Comme l'ensemble des tableaux ayant un élément $x$ donné forme un chemin allant de $T_1$ à un tableau $T_i$ pour lequel $x$ est choisi comme pivot. En notant $e(x)$ l'étage pour lequel l'élément $x$ de $T_0$ a été choisi comme pivot, la complexité $C$ de l'algorithme vaut alors également :
 
@@ -258,7 +248,7 @@ C_{\min} = \mathcal{O}(\sum_{x \in T_0}e(x)) = \sum_{1 \leq k \leq K}k\cdot 2^{k
 $$
 </div>
 
-On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$, ce qui se démontre aisément par récurrence.
+On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ ([on le démontrera](../../#sommes-classiques){.interne}).
 
 {% enddetails %}
 
@@ -269,7 +259,7 @@ La complexité en moyenne du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ l
 {% endnote %}
 {% details "preuve intuitive", "open" %}
 
-on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](../algorithme-insertion/#complexités-insertion){.interne}. Si les données sont aléatoires la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
+on utilise [l'argument utilisé](../algorithme-insertion/#modèle-aléatoire-50){.interne} pour calculer la complexité en moyenne du tri par insertion. Si le tableau suit le modèle aléatoire, la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
 
 Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.
 
@@ -277,34 +267,40 @@ Si l'on coupe toujours au milieu on a alors la même équation que pour la compl
 {% details "preuve formelle" %}
 Il faut résoudre l'équation :
 
-$${
+<div>
+$$
 C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i < n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
-}$$
+$$
+</div>
 
-où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau.
+où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau. On suppose pour cela que notre tableau suit [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne} et donc que $p_i = \frac{1}{n}$ pour tout $i$.
+
+<div>
+$$
+C_{\mbox{moy}}(n) = \mathcal{O}(n) + \frac{1}{n}\sum_{0 \leq i < n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
+$$
+</div>
 
 Pour éviter de nous trimballer des $\mathcal{O}(n)$ partout, on va considérer que l'on y effectue $K\cdot n$ opérations où $K$ est une constante. On peut alors écrire :
 
-$${
-C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i < n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
-}$$
-
-De plus on va considérer que nos données sont équiprobables, c'est à dire que le pivot a la même probabilité d'être le $u$ème ou le $v$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :
-
-$${
+<div>
+$$
 C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i < n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
-}$$
+$$
+</div>
 
-Comme :
+On peut simplifier cette écriture en remarquant que :
 
 - $\sum_{0 \leq i < n}C_{\mbox{moy}}(i) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$
 - $\sum_{0 \leq i < n}C_{\mbox{moy}}(n-i-1) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$
 
-On a :
+On doit donc résoudre l'équation :
 
-$${
+<div>
+$$
 C_{\mbox{moy}}(n) = K\cdot n + \frac{2}{n}\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)
-}$$
+$$
+</div>
 
 Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l'équation $n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1)$ qui va nous permettre d'éliminer la somme :
 
@@ -321,9 +317,11 @@ $$
 
 On en déduit :
 
+<div>
 $$
 n\cdot C_{\mbox{moy}}(n) = K(2n - 1) + (n+1)\cdot C_{\mbox{moy}}(n-1)
 $$
+</div>
 
 Et maintenant la seconde astuce : on divise l'équation ci-dessus par $n(n+1)$ pour obtenir un terme générique identique des deux côtés de l'équation :
 
@@ -351,7 +349,7 @@ A(n) &=& A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
 $$
 </div>
 
-On peut facilement montrer (par récurrence) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ et donc que :
+On peut facilement montrer ([on le démontrera](../../#sommes-classiques){.interne}) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ et donc que :
 
 <div>
 $$
@@ -367,13 +365,13 @@ $$
 La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.
 
 Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique),
-et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ lorsque $n$ tend vers $+\infty$.  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et de là :
+et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, [on le démontrera](../../#sommes-classiques){.interne}).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :
 
 $$
 A(n) = \mathcal{O}(\ln(n))
 $$
 
-En revenant aux $C_{\mbox{moy}}(n) = n\cdot A(n)$ :
+Qui en revenant aux $C_{\mbox{moy}}(n) = n\cdot A(n)$ donne :
 
 $$
 C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))
@@ -391,7 +389,7 @@ Le tri rapide a :
 - une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n \ln(n))$, donc la meilleur possible
 - il très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.
 
-C'est donc *rigolo* :
+C'est donc _rigolo_ :
 
 {% note "**Fun fact**"  %}
 Commencer par mélanger un tableau pour le trier avec `rapide`{.language-} ensuite est plus rapide en moyenne que de le trier directement.

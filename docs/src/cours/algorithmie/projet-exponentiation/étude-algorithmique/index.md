@@ -159,9 +159,7 @@ La variable `c`{.language-} diminue strictement à chaque boucle (ou il diminue 
 
 On va montrer que l'invariant de boucle suivant fonctionne. En notant `X`{.language-} la valeur initial de `x`{.language-} en entrée de l'algorithme, on a le très élégant invariant suivant :
 
-$$
-r \cdot x^c = X^n
-$$
+> **Invariant de boucle :** §$r \cdot x^c = X^n$
 
 Juste avant la première itération de la boucle, $r = x$, $x = X$ et et $c = n-1$ notre invariant est donc vérifié au départ de l'algorithme. On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :
 

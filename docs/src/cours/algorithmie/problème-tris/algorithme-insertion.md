@@ -69,11 +69,11 @@ On a ici deux boucles imbriquée (boucle principale et intérieure), il nous fau
 
 Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle principale `pour chaque`{.language-} va être le même :
 
-> À la fin d'un itération de la boucle principale `pour chaque`{.language-}, les $i + 1$ premiers éléments du tableau sont triés.
+> **Invariant de boucle :** À la fin d'un itération de la boucle principale `pour chaque`{.language-}, les $i + 1$ premiers éléments du tableau sont triés.
 
 Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle `tant que`{.language-} de la boucle intérieure, c'est à dire lui trouver un invariant. Chaque itération de cette boucle va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc clairement l'invariant :
 
-> A la fin de chaque itération de la boucle `tant que`{.language-} $T[j] \leq T[j+1]$ si $j <i$
+> **Invariant de boucle :** À la fin de chaque itération de la boucle `tant que`{.language-} $T[j] \leq T[j+1]$ si $j <i$
 
 On peut donc démontrer l'invariant de la boucle principale `pour chaque`{.language-}.
 
@@ -155,12 +155,13 @@ Cela signifie que pour chaque itération $i$ :
 Si les données sont équiprobables, la boucle tant que remontera en moyenne de $\frac{i}{2}$ cases chaque `T[i]`{.language-}. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$
 {% endnote %}
 {% details "de façon formelle", "open" %}
-On calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas, ce qui donne le calcul :
+On suppose que le tableau en entrée suive [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne} et on calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas, ce qui donne le calcul :
 
 <div>
 $$
 \begin{array}{lcl}
-\widehat{K_i} &=& \sum_{j=0}^{i}(\frac{1}{i+1}\cdot j)\\
+\widehat{K_i} &=& \sum_{j=0}^{i}(\mathbb{P}(T[i] = j)\cdot j)\\
+&=& \sum_{j=0}^{i}(\frac{1}{i+1}\cdot j)\\
 &=& \frac{1}{i+1}\cdot \frac{(i+1)\cdot i}{2})\\
 &=& \frac{i}{2}\\
 \end{array}
@@ -168,26 +169,32 @@ $$
 </div>
 {% enddetails %}
 
-On en conclut que le nombre moyen d'itérations dans la boucle `tant que`{.language-}, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$
+On en conclut que le nombre moyen d'itérations dans la boucle `tant que`{.language-}, $\widehat{K_i}$, va croître de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/complexité-algorithmes#règle-croissance){.interne} pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que :
 
-{% note %}
+{% note "**Proposition**" %}
 La **complexité en moyenne** de l'algorithme `insertion`{.language-} est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.
 {% endnote %}
 
-Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés).
+Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés). Cependant, **si l'on change le modèle de données** et que l'on considère des tableaux _presque triées_, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$
 
-Si l'on change le modèle de données et que l'on considère des tableaux _presque triées_, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$
+{% attention "**À retenir**" %}
+On utilise le tri par insertion lorsque nos données seront presque toujours soit déjà triées soit très peu en désordre.
+{% endattention %}
 
-{% note %}
-On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.
+Ce calcul de complexité est à ramené à la proposition suivante, qui va se révéler très utile :
+
+<span id="modèle-aléatoire-50"></span>
+
+{% note "**Proposition**" %}
+Soit $T$ un tableau suivant [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne}, il y a en moyenne 50% d'éléments de $T[1:]$ qui sont strictement plus grand que $T[0]$.
+
 {% endnote %}
+{% details "preuve", "open" %}
+Soit $T$ un tableau suivant [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne}.
 
-Ce calcul de complexité nous permet d'utiliser la règle suivante, qui va se révéler très utile :
+Comme $\mathbb{P}(T[0] > T[i]) = \frac{1}{2}$ pour tout $i < T.\mbox{\small longueur}$, l'espérance de $\vert \\{T[i] > T[0] \mid i > 0\\}$ vaut $T.\mbox{\small longueur}/2$.
 
-{% note %}
-Soit $A$ un ensemble de $n$ nombres aléatoires, et $x$ un nombre également aléatoire.
-Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyenne $\frac{n}{2}$ éléments de $A$ qui sont plus grand que $x$.
-{% endnote %}
+{% enddetails %}
 
 ## Optimisation
 

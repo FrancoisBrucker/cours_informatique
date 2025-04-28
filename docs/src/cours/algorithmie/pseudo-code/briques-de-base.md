@@ -271,11 +271,11 @@ tant que i < tableau.longueur:
     i ← i + 1
 ```
 
-### _"abus"_ de notation
+## _"Abus"_ de notation
 
 On se permettra, lorsque l'instruction est assez claire de procéder à des raccourci pour rendre le pseudocode plus digeste. Attention, la plupart de ces opérations ne seront pas des opérations élémentaires !
 
-#### répétitions
+### Répétitions
 
 ```pseudocode
 répéter k fois:
@@ -289,7 +289,7 @@ pour chaque i de [1, k]:
     ...
 ```
 
-#### répétitions par borne
+#### Répétitions par borne
 
 Tout un tas de variations sont possibles, du moment que ce soit compréhensible. Par exemple :
 
@@ -312,7 +312,7 @@ pour chaque i de [a, b]:
     ...
 ```
 
-#### répétitions à pas fixé
+#### Répétitions à pas fixé
 
 ```pseudocode
 pour i de a à b par par pas de k:
@@ -336,7 +336,7 @@ tant que i ≤ b:
   i ← i + k
 ```
 
-#### affectation d'une tranche de tableau
+### Affectation d'une tranche de tableau
 
 ```pseudocode
 T[a:b] ← k
@@ -385,3 +385,23 @@ T' ← un nouveau tableau contenant T[i:j]  # j - i + 1 instructions en 1 ligne
 ```
 
 {% endattention %}
+
+### Concaténation
+
+Avec deux tableaux :
+
+```pseudocode
+T ← T1 + T2
+```
+
+pour :
+
+```pseudocode
+T ← un nouveau tableau de taille T1.longueur + T2.longueur
+
+pour chaque i de [0, T1.longueur[:
+    T[i] ← T1[i]
+pour chaque i de [0, T2.longueur[:
+    T[T1.longueur + i] ← T2[i]
+
+```

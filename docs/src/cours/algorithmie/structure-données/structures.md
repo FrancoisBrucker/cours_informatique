@@ -9,53 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les variables dans un algorithme ou un programme sont souvent liées. Un nombre complexe par exemple est composée d'une partie réelle et d'une partie imaginaire. Pour rendre compte de ces liens on peut grouper les variables en tuples, voir les structurer en leur ajoutant ds fonctions particulières appelée méthodes.
+Un structure de donnée généralise les tuples et est une version algorithmique des objets de la programmation orientée objet. Une fois définis on pourra utiliser une structure comme un nouveau type de variable.
 
-## Tuples
-
-Un tuple est un regroupement d'objets. En algorithmie on peut les représenter avec des parenthèses :
-
-```pseudocode
-p ← (34, 25)  # tuple de 2 entiers
-```
-
-Un tuple peut être composé de types différent :
-
-```pseudocode
-anniversaire ← (11, "avril")  # tuple composé d'un entier et d'une chaîne de caractères
-```
-
-On peut accéder à chaque élément du tuple comme un tableau :
-
-```pseudocode
-p ← (34, 25)  # tuple de 2 entiers
-affiche à l'écran p[0]  # va afficher 34
-affiche à l'écran p[1]  # va afficher 25
-```
-
-Enfin, un tuple peut bien sur être composé d'autres tuples :
-
-```pseudocode
-ps ← ((0, 0), "origine")  # tuple composé d'un tuple et d'une chaîne de caractères
-affiche à l'écran p[0]  # va afficher 34
-affiche à l'écran p[1]  # va afficher 25
-```
-
-En revanche, il est impossible de modifier un tuple une fois créé.
-
-{% attention "**À retenir**" %}
-Un **_tuple_** est un regroupement fini d'objets de types pouvant être différent. On peut accéder à chaque élément d'un tuple par son indice.
-
-Un tuple est non modifiable une fois crée.
-{% endattention %}
-
-## Structures
-
-Les tuples permettent de gérer des groupements informels d'objets en créant des types nouveaux par produit cartésien d'anciens types.
-
-Si l'on veut aller plus loin et créer des fonctions spécifiquement utilisable pour ces groupement, on utilise [Une structure de données](https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es).
-
-### Attributs
+## Attributs
 
 Par défaut une structure de donnée va posséder des **_attributs_** qui regroupent les objets de la structure. Pour notre point en 2D on aurait la structure :
 
@@ -66,7 +22,7 @@ structure Point:
         y: entier
 ```
 
-Par rapport qu tuple, les attributs sont des variables et possèdent ainsi des nom. On peut accéder à ces noms par la notation pointée.
+Par rapport au tuple, les attributs sont des variables et possèdent ainsi des noms. On peut accéder à ces noms par la notation pointée.
 
 ```pseudocode
 algorithme affiche_point(p: Point) → vide:

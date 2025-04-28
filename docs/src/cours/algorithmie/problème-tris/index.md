@@ -64,20 +64,86 @@ Son implémentation va nécessiter d'utiliser une nouvelle technique, le placeme
 [Tri par insertion](./algorithme-insertion){.interne}
 {% endaller %}
 
-### Variantes
+### Exercices : Variantes
 
-#### Exercice : Tri à bulles
-
-Très aimé des élèves mais inefficace :
+#### Tri à bulles
 
 {% lien %}
 [Le tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles)
 {% endlien %}
 
-> TBD algo et complexité
-> TBD version optimisée (pourquoi est elle optimisée ?)
+Le tri à bulles est très aimé des étudiants mais inefficace. Son procédé est similaire au tri par sélection dans le sen où au bout de la $i$ème itération les $i$ plus grandes valeurs du tableaux sont à leur place. C'est un tri **in place**. Pour obtenir cela il va procédé par une série d'inversions :
 
-#### Exercice : tri par permutation
+<span id="algorithme-tr-bulles-naif"></span>
+
+```pseudocode
+algorithme bulles_naif(T) → ∅:
+    répéter T.longueur -1 fois:  # boucle principale
+        pour chaque i de [0, T.longueur -1[:  # boucle intérieure
+            si T[i] > T[i+1]:
+                T[i], T[i+1] ← T[i+1], T[i]
+```
+
+{% exercice %}
+Montrez au'au bout de la première itération, la plus grande valeur de $T$ est à la dernière place de $T$.
+{% endexercice %}
+{% details "corrigé" %}
+
+L'indice de la boucle intérieure va forcément arriver à un moment où la valeur de $T[i]$ vaudra le maximum des valeurs de $T$. À partir de ce moment, à chaque itération ultérieure on aura que $T[i]$ vaudra toujours le maximum. En effet si $T[i]$ vaut le max le test sera :
+
+- soit Vrai et on déplace ce max vers l'indice i+1 qui sera le nouvel indice à l'itération suivante,
+- soit Faux et $T[i + 1] = T[i]$.
+
+{% enddetails %}
+
+{% exercice %}
+Montrez l'invariant de boucle suivant :
+> **Invariant :** Au bout de $k$ itérations de la boucle principale, les $k$ plus grandes valeurs de $T$ sont triées et aux $k$ dernières places de $T$.
+{% endexercice %}
+{% details "corrigé" %}
+
+La preuve de l'exercice précédent permet d'initialiser la preuve par récurrence. Si on suppose qu'au bout de $k-1$ itérations les $k-1$ plus grandes valeurs de $T$ sont triés et aux $k-1$ dernières places de $T$.
+
+Lors de la $k$ème itération, il arrivera une itération de la boucle intérieure telle que $T[i]$ vaut la $k-1$ plus grande valeur de $T$. On ne pourra ensuite avoir $T[i] < T[i+1]$ que si l'on a $i\geq T.\mbox{\small longueur} - k$. La valeur $T[i]$ est ensuite _emmenée_ à la $k$ème dernière place de $T$ par la boucle intérieure.
+
+{% enddetails %}
+{% exercice %}
+En déduire que l'algorithme du tri à bulles est un tri
+{% endexercice %}
+{% details "corrigé" %}
+En utilisant l'invariant, au bout des $T.\mbox{\small longueur} -1$ itérations de la boucle principale les $T.\mbox{\small longueur} -1$ plus grandes valeurs de $T$ sont triées aux $T.\mbox{\small longueur} -1$ dernières places de $T$. La plus petite valeur de $T$ est donc aussi en premières place et le tableau $T$ est trié.
+{% enddetails %}
+
+La complexité maximale et minimale de l'algorithme précédent est en $\mathcal{O}(T.\mbox{\small longueur}^2)$.
+
+{% exercice %}
+Proposez une amélioration de l'algorithme du tri à bulles pour que sa complexité minimale soit en $\mathcal{O}(T.\mbox{\small longueur})$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Pour que la complexité minimale soit en $\mathcal{O}(T.\mbox{\small longueur})$ il faut que l'on ne fasse au mieux qu'un nombre constant de fois la boucle intérieure dans le meilleur des cas, qui semble ici le cas où le tableau est déjà trié puisqu'on a pas besoin de fire remonter des valeurs.
+
+Ceci est possible car un tableau est trié si et seulement si $T[i] \leq T[i+1]$ pour tout $0\leq i < T.\mbox{\small longueur}$ (on utilisé ceci pour [le problème de la reconnaissance](../reconnaissance){.interne}), c'est a dire que le tableau est trié si le test de la boucle intérieure a toujours été faux !
+
+On obtient alors l'algorithme suivant :
+
+<span id="algorithme-tr-bulles"></span>
+
+```pseudocode
+algorithme bulles_naif(T) → ∅:
+    répéter T.longueur -1 fois:  # boucle principale
+        trié ← Faux
+        pour chaque i de [0, T.longueur -1[:  # boucle intérieure
+            si T[i] > T[i+1]:
+                T[i], T[i+1] ← T[i+1], T[i]
+                trié ← Vrai
+        si trié:
+            rendre ∅
+```
+
+{% enddetails %}
+
+#### Tri par permutation
 
 Finissons cette partie par une bizarrerie algorithmique comme on les aime.
 
@@ -106,7 +172,7 @@ algorithme sélection(T: [entier]) → ∅:
 Pourquoi ?
 {% endexercice %}
 {% details "corrigé" %}
-A chaque fois qu'un nombre `T[j]`{.language-} strictement plus petit que `T[i]`{.language-} est trouvé pour un $j > i$, on échange les deux valeurs. A la fin de l'itération le plus petit élément de `T[i:]`{.language-} est placé en position `T[i]`{.language-}.
+A chaque fois qu'un nombre `T[j]`{.language-} strictement plus petit que `T[i]`{.language-} est trouvé pour un $j > i$, on échange les deux valeurs. A la fin de l'itération la plus petite valeur de `T[i:]`{.language-} est placé en position `T[i]`{.language-}.
 
 L'invariant de la boucle 2-5 est donc identique à celui de l'algorithme par sélection que nous avons prouvé pour le précédent algorithme.
 {% enddetails %}
@@ -146,11 +212,11 @@ Pourquoi ?
 {% endexercice %}
 {% details "corrigé" %}
 
-La première boucle 2-5 (pour i=0) fait comme le tri par sélection : elle place le plus petit élément en tête de tableau.
+La première boucle 2-5 (pour i=0) fait comme le tri par sélection : elle place la plus petite valeur en tête de tableau.
 
 A partir de la seconde boucle, on peut montrer que chaque boucle va trier les i+1 premiers éléments du tableau par ordre décroissant. Il se comporte comme le tri par insertion, adaptons son invariant de boucle à cet algorithme.
 
-Par récurrence, on suppose vrai à la fin de l'itération $i$. Au début de l'itération $i+1$, les éléments de 0 à i sont triés par ordre décroissant avec le plus petit élément du tableau à la position $i$, lorsque j va progresser, il va commencer par placer $T[i+1]$ dans sa position dans le tableau (le plus petit indice i' tel que $T[i'] < T[i+1]$), puis placer l'indice échangé à sa nouvelle place et ainsi de suite jusqu'à placer le plus petit élément du tableau en position $i+1$.
+Par récurrence, on suppose vrai à la fin de l'itération $i$. Au début de l'itération $i+1$, les éléments de 0 à i sont triés par ordre décroissant avec la plus petite valeur du tableau à la position $i$, lorsque j va progresser, il va commencer par placer $T[i+1]$ dans sa position dans le tableau (le plus petit indice i' tel que $T[i'] < T[i+1]$), puis placer l'indice échangé à sa nouvelle place et ainsi de suite jusqu'à placer la plus petite valeur du tableau en position $i+1$.
 
 {% enddetails %}
 
@@ -169,7 +235,7 @@ Pourquoi ?
 {% endexercice %}
 {% details "corrigé" %}
 
-C'est exactement la même preuve que précédemment en remarquant qu'à la fin de la première boucle 2-5 (pour i=0) l'algorithme place le plus grand élément en tête de tableau.
+C'est exactement la même preuve que précédemment en remarquant qu'à la fin de la première boucle 2-5 (pour i=0) l'algorithme place la plus grande valeur en tête de tableau.
 
 A partir de la seconde boucle, chaque boucle va trier les i+1 premiers éléments du tableau par ordre croissant.
 
@@ -187,7 +253,7 @@ Le tri fusion utilise une technique de création d'algorithme classique nommée 
 
 ### Tri de python
 
-L'algorithme [timsort](https://en.wikipedia.org/wiki/Timsort) est l'algorithme utilisé par python pour trier des listes :
+[L'algorithme timsort](https://en.wikipedia.org/wiki/Timsort) est l'algorithme utilisé par python pour trier des listes :
 
 ```python
 T = [1, 3, 2, 6, 4, 5]
@@ -199,7 +265,7 @@ print(T)
 Ce tri est **in place** et est un mix entre le tri fusion et le tri par insertion. C'est un tri très efficace puisque :
 
 {% note "**Complexités du timsort**" %}
-Pour un tableau de taille $n$, l'algorithme [timsort](https://en.wikipedia.org/wiki/Timsort) a :
+Pour un tableau de taille $n$, [l'algorithme timsort](https://en.wikipedia.org/wiki/Timsort) a :
 
 - une complexité de $\mathcal{O}(n\ln(n))$
 - une complexité min de $\mathcal{O}(n)$ pour les tableaux (_presque_) trié

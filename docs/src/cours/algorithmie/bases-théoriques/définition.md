@@ -78,6 +78,10 @@ On appellera **_programme_** un texte qui ne respecte que les 3 premières propr
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
+{% lien %}
+N'hésitez pas à regarder cette vidéo, [petite biographie de Donald Knuth](https://www.youtube.com/watch?v=d2a4MpY7I2w), grand informaticien.
+{% endlien %}
+
 ## <span id="algorithmes-trois-voies"></span> Programmes et Algorithmes
 
 Prenons l'énoncé suivant qui décrit une procédure permettant de chercher un élément particulier dans une suite finie de nombres :

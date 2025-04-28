@@ -9,10 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité optimale : $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne selon principe algorithme de [diviser pour régner](<https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)>) :
+Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité optimale : $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne selon principe algorithme [de diviser pour régner](<https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)>) :
 
-<span id="diviser-pour-régner"></span>
-{% attention "**À retenir**"%}
 Un algorithme de la forme **_diviser pour régner_** fonctionne en deux parties :
 
 1. **résoudre** $k$ sous-problèmes du problème initial
@@ -31,8 +29,6 @@ algorithme résolution(données):
     rendre solution
 ```
 
-{% endattention %}
-
 L'intérêt de ces programme est que si la complexité de la fonction `combiner`{.language-} est faible, la complexité de l'algorithme l'est également.
 
 ## Combiner
@@ -46,23 +42,53 @@ algorithme combiner(T1: [entier], T2: [entier]) → [entier]:
     i1 ← 0
     i2 ← 0
     T ← un tableau de taille T1.longueur + T2.longueur
-    tant que i1+i2 < T.longueur:
+
+    pour chaque i de [0, T.longueur[:
         si i2 == T2.longueur:
-            T[i1 + i2] ← T1[i1]
+            T[i] ← T1[i1]
             i1 ← i1 + 1
         sinon si i1 == T1.longueur:
-            T[i1 + i2] ← T2[i2]
+            T[i] ← T2[i2]
             i2 ← i2 + 1
         sinon si T1[i1] < T2[i2]:
-            T[i1 + i2] ← T1[i1]
+            T[i] ← T1[i1]
             i1 ← i1 + 1
         sinon:
-            T[i1 + i2] ← T2[i2]
+            T[i] ← T2[i2]
             i2 ← i2 + 1
     rendre T
 ```
 
-Faites attentions aux raccourcis que l'on serait tenté de faire en ne regardant que rapidement le code :
+### <span id="fonctionnement-colle"></span> Fonctionnement
+
+On vérifie pour deux petits tableaux **triés**. Les indices `i1`{.language-} et `i2`{.language-} marquent les positions possibles du prochain élément à ajouter dans `T`{.language-}. Par exemple pour `T1=[1, 4, 7]`{.language-} et `T2=[0, 2, 3, 98]`{.language-}. `T`{.language-} vaudra :
+
+1. `[0]`{.language-} après la 1ère itération (`i1=0`{.language-} et `i2=1`{.language-})
+2. `[0, 1]`{.language-} après la 2nde itération (`i1=1`{.language-} et `i2=1`{.language-})
+3. `[0, 1, 2]`{.language-} après la 3ème itération (`i1=1`{.language-} et `i2=2`{.language-})
+4. `[0, 1, 2, 3]`{.language-} après la 4ème itération (`i1=1`{.language-} et `i2=3`{.language-})
+5. `[0, 1, 2, 3, 4]`{.language-} après la 5ème itération (`i1=2`{.language-} et `i2=3`{.language-})
+6. `[0, 1, 2, 3, 4, 7]`{.language-} après la 6ème itération (`i1=3`{.language-} et `i2=3`{.language-})
+7. `[0, 1, 2, 3, 4, 7, 98]`{.language-} après la 7ème itération (`i1=3`{.language-} et `i2=4`{.language-})
+
+### <span id="preuve-colle"></span> Preuve
+
+À chaque itération de la boucle, soit `i1`{.language-} soit `i2`{.language-} augmente. Au bout des `T.longueur`{.language-} itérations on aura `i1`{.language-} = `T1.longueur`{.language-} et `i2`{.language-} = `T2.longueur`{.language-}. Les indices `i1`{.language-} et `i2`{.language-} marquant les positions possibles du prochain élément à ajouter dans `T`{.language-}, l'invariant de boucle que l'on peut facilement prouver est :
+
+> **Invariant de boucle :** À la fin de chaque itération, `T[:i]`{.language-} est trié et contient les `i1`{.language-} premiers éléments de `T1`{.language-} et les `i2`{.language-} premiers éléments de `T2`{.language-}
+
+### <span id="complexités-colle"></span> Complexités
+
+Allons un peu plus vite :
+
+- on a une boucle `pour chaque`{.language-} de `T1.longueur + T2.longueur`{.language-} itérations
+- chaque ligne de l'algorithme est en $\mathcal{O}(1)$
+
+{% note "**Proposition**" %}
+La complexité max et min de `combiner`{.language-} est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux `T1`{.language-} et `T2`{.language-} respectivement.
+{% endnote %}
+
+### Attention
 
 {% exercice %}
 Montrer que l'algorithme combiner précédent **n'est pas équivalent** à celui-ci :
@@ -72,12 +98,12 @@ algorithme combiner_faux(T1: [entier], T2: [entier]) → [entier]:
     i1 ← 0
     i2 ← 0
     T ← un tableau de taille T1.longueur + T2.longueur
-    tant que i1+i2 < T.longueur:
-        si (i2 == T2.longueur) OU (T1[i1] < T2[i2]):
-            T[i1 + i2] ← T1[i1]
+    pour chaque i de [0, T.longueur[:
+        si (i2 == T2.longueur) ou (T1[i1] < T2[i2]):
+            T[i] ← T1[i1]
             i1 ← i1 + 1
         sinon:
-            T[i1 + i2] ← T2[i2]
+            T[i] ← T2[i2]
             i2 ← i2 + 1
 
     rendre T
@@ -90,39 +116,6 @@ Si `i2 < T2.longueur`{.language-} mais que `i1 = T1.longueur`{.language-} l'algo
 Faites très attention aux conditions. C'est très souvent source d'erreurs quand on va trop vite...
 {% enddetails %}
 
-### <span id="fonctionnement-colle"></span> Fonctionnement
-
-On vérifie pour deux petits tableaux **triés**. Par exemple pour `T1=[1, 4, 7]`{.language-} et `T2=[0, 2, 3, 98]`{.language-}. `T`{.language-} vaudra :
-
-1. `[0]`{.language-} après la 1ère itération (`i1=0`{.language-} et `i2=1`{.language-})
-2. `[0, 1]`{.language-} après la 2nde itération (`i1=1`{.language-} et `i2=1`{.language-})
-3. `[0, 1, 2]`{.language-} après la 3ème itération (`i1=1`{.language-} et `i2=2`{.language-})
-4. `[0, 1, 2, 3]`{.language-} après la 4ème itération (`i1=1`{.language-} et `i2=3`{.language-})
-5. `[0, 1, 2, 3, 4]`{.language-} après la 5ème itération (`i1=2`{.language-} et `i2=3`{.language-})
-6. `[0, 1, 2, 3, 4, 7]`{.language-} après la 6ème itération (`i1=3`{.language-} et `i2=3`{.language-})
-7. `[0, 1, 2, 3, 4, 7, 98]`{.language-} après la 7ème itération (`i1=3`{.language-} et `i2=4`{.language-})
-
-### <span id="preuve-colle"></span> Preuve
-
-L'algorithme se finit bien puisqu'à chaque itération de la boucle while soit `i1`{.language-} soit `i2`{.language-} augmente. Au bout de `T1.longueur + T2.longueur`{.language-} itérations on aura `i1`{.language-} = `T1.longueur`{.language-} et `i2`{.language-} = `T2.longueur`{.language-}, donc la condition de la boucle `tant que`{.language-} ne sera plus vérifiée.
-
-L'invariant de boucle que l'on peut facilement prouver est :
-
-{% note "**Invariant de boucle**" %}
-À la fin de chaque itération, `T[:i1 + i2]`{.language-} est trié et contient les `i1`{.language-} premiers éléments de `T1`{.language-} et les `i2`{.language-} premiers éléments de `T2`{.language-}
-{% endnote %}
-
-### <span id="complexités-colle"></span> Complexités
-
-Allons un peu plus vite :
-
-- on a une boucle `tant que`{.language-} de `T1.longueur + T2.longueur`{.language-} itérations
-- chaque ligne de l'algorithme est en $\mathcal{O}(1)$
-
-{% note "**Proposition**" %}
-La complexité max et min de `combiner`{.language-} est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux `T1`{.language-} et `T2`{.language-} respectivement.
-{% endnote %}
-
 ## Pseudo-code
 
 Avec notre fonction `combiner(T1, T2)`{.language-} le pseudo code de l'algorithme fusion est :
@@ -130,9 +123,9 @@ Avec notre fonction `combiner(T1, T2)`{.language-} le pseudo code de l'algorithm
 ```pseudocode
 algorithme fusion(T: [entier]) → [entier]:
     si T.longueur < 2:
-        rendre T
+        rendre nouveau tableau contenant T
     sinon:
-        milieu = T.longueur // 2
+        milieu = T.longueur // 2  # division entière
         T1 ← nouveau tableau contenant T[:milieu]
         T2 ← nouveau tableau contenant T[milieu:]
 
@@ -167,7 +160,7 @@ C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)
 $$
 </div>
 
-Pour connaître la valeur de la complexité on peut utiliser [le master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs (on le verra lorsque l'on étudiera en détail les algorithmes de type diviser pour régner). Mais ici pas besoin d'invoquer l'artillerie lourde, on peut aisément calculer la complexité à la main :
+Pour connaître la valeur de la complexité on peut utiliser [le master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs (on le verra lorsque l'on étudiera en détail [les algorithmes de type diviser pour régner](../../design-algorithmes/diviser-régner/){.interne}). Mais ici pas besoin d'invoquer l'artillerie lourde, on peut aisément calculer la complexité à la main :
 
 {% note "**Proposition**" %}
 La complexité de l'algorithme `fusion`{.language-} est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée

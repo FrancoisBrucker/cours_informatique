@@ -109,10 +109,10 @@ Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut 
 
 Mais rassurez-vous, cela peut être facile. Considérons par exemple l'algorithme suivant :
 
-<span id="algorithme-PGCD"></span>
+<span id="algorithme-pgcd"></span>
 
 ```pseudocode
-algorithme PGCD(a: entier, b: entier) → entier:  # a, b ≥ 0
+algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
     tant que min(a, b) > 0:
         a' ← max(a, b) - min(a, b)
         b' ← min(a, b)
@@ -198,7 +198,7 @@ Comment créer de nouveaux types d'objets utilisable pour nos algorithmes.
 [Structures de données](structure-données){.interne}
 {% endaller %}
 
-Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes. Ces structures sont dites linéaires car elles permettent de gérer des listes ordonnées d'éléments
+Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes. Ces structures sont dites linéaires car elles permettent de gérer des listes ordonnées d'éléments :
 
 {% lien %}
 [Structures linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
@@ -284,7 +284,12 @@ Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont p
 
 > TBD utile en complexité. Montrer quand ça arrive.
 
-> TBD sommes classiques à connaître pour les calculs de complexités comme $\sum x^i$, $\sum i\cdot x^i$ et application pour $x =1$. Aussi connaître $\sum 1/i$, $\sum 1/i^2$, $\sum 1/2^i$ et $\sum i/2^i$.
+> vu dans la reconnaissance : $\lim_{n\to\infty} \sum_{i=1}^n\frac{1}{i^2} = \frac{\pi^2}{6}$
+> vu dans le tri rapide : $\sum_{1 \leq 0 \leq K}\cdot 2^{k}$ et $\sum_{0 \leq k \leq K}k\cdot 2^{k} = (K-1)2^{K} + 1$ (vu dans le tri rapide) et $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$
+> serie harmonique $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$. Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique),
+et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ à démontrer.
+>
+> TBD autres sommes classiques à connaître pour les calculs de complexités comme $\sum x^i$, $\sum i\cdot x^i$ et application pour $x =1$. Aussi connaître $\sum 1/i$, $\sum 1/i^2$, $\sum 1/2^i$ et $\sum i/2^i$.
 
 #### Résolution d'algorithmes classiques
 

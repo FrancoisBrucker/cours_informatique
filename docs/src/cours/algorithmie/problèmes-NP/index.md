@@ -258,7 +258,11 @@ Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où
 
 {% endattention %}
 
-Les problèmes NP-complets sont tous équivalents car ils correspondent tous à **des problèmes universels**, sans structure. Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution.
+Les problèmes NP-complets sont tous équivalents car ils correspondent tous à **des problèmes universels**, sans structure. Les entrées ne donnent pour ces problèmes aucun indice utilisable efficacement sur l'endroit où va se trouver la solution. On les rencontre vraiment partout :
+
+{% lien %}
+[Jeux video NP-complet](https://www.youtube.com/watch?v=9rUUs8SlaOE)
+{% endlien %}
 
 ## Autres classes
 

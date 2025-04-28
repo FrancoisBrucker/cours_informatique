@@ -82,15 +82,17 @@ La complexité minimale de l'algorithme `est_trie`{.language-} est $\mathcal{O}(
 
 La question est délicate. Il faut se demander quel est le modèle sous-jacent à notre tableau de nombres. Si on a aucune information sur la répartition des nombres, on a coutume d'utiliser le modèle suivant :
 
-{% note "**Modèle du Tableau aléatoire**" %}
+<span id="définition-modèle-tableau-aléatoire"></span>
 
-Un tableau $T$ d'entiers de longueur $n$ est _aléatoire_ s'il résulte de la procédure suivante :
+{% note "**Définition**" %}
+
+Un tableau $T$ d'entiers de longueur $n$ est **_un tableau aléatoire_** s'il résulte de la procédure suivante :
 
 - on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation) $\sigma$ de $[0, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
 - $T[i] = \sigma(i)$ pour tout $i \in [0, n-1]$
 {% endnote %}
 
-On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés que l'on aimerait avoir pour un tableau de nombres quelconques, comme :
+On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés :
 
 {% note "**Proposition**" %}
 Si $T$ est un tableau aléatoire, on a que la probabilité que $T[i] = k$, donc que $T[i]$ soit le $k$ plus petit élément du tableau, vaut :
@@ -106,35 +108,38 @@ $$
 Parmi les $n!$ permutations de $[0, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k-1$. La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.
 
 {% enddetails %}
+{% note "**Corollaire**" %}
+Si $T$ est un tableau aléatoire, si $k \leq i$ on a :
 
-{% note "**Proposition**" %}
-Si $T$ est un tableau aléatoire :
+<div>
+$$
+\mathbb{P}(T[i] = k)) = \frac{1}{i+1}
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
+Tout se passe comme si on considérait un tableau aléatoire de taille $i+1$.
+
+{% enddetails %}
+
+Ce modèle véhicule de nombreuse propriété l'on aimerait avoir pour un tableau de nombres quelconques :
+
+{% exercice %}
+Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :
 
 <div>
 $$
 \mathbb{P}(T[u] > T[v]) = \frac{1}{2}
 $$
 </div>
-{% endnote %}
-{% details "preuve", "open" %}
-Prenons $u$ et $v$ deux indices différents du tableau. Pour que $T[u] > T[v]$, il faut que :
+{% endexercice %}
+{% details "corrigé" %}
+Prenons $u$ et $v$ deux indices différents du tableau. Tout se passe comme si on avait un tableau aléatoire de taille 2.
 
-- $T[u]$ soit le le $n$ème plus petit élément du tableau (plus grand élément) : probabilité $\frac{1}{n}$
-- $T[u]$ soit le $n-1$ème plus petit élément du tableau (probabilité $\frac{1}{n}$) et que parmi ces tableaux, $T[v]$ ne soit pas le $n$ème plus petit élément (probabilité $\frac{1}{n-1}$) : probabilité $\frac{1}{n}\cdot \frac{1}{n}$
-- ...
-- $T[u]$ soit le $n-i$ème plus petit élément du tableau (probabilité $\frac{1}{n}$) et que parmi ces tableaux, $T[u]$ ne soit ni le $n$ème, ni $n-1$, ..., ni le $n-i + 1$ plus petit élément (probabilité $\frac{i}{n-1}$) : probabilité $\frac{1}{n}\cdot \frac{i}{n}$
-- ...
-
-En sommant toutes ces probabilités on obtient :
-
-<div>
-$$
-\mathbb{P}(T[u] > T[v]) = \sum_{i=1}^{n-1}\frac{1}{n}\cdot \frac{i}{n-1} = \frac{1}{n(n-1)}\sum_{i=1}^{n-1}i = \frac{1}{2}
-$$
-</div>
 {% enddetails %}
 
-Lea deux propriétés précédentes nous permettent de voir que pour notre algorithme de reconnaissance, si $T$ est un tableau aléatoire alors la probabilité :
+Les propriétés précédentes nous permettent de voir que pour notre algorithme de reconnaissance, si $T$ est un tableau aléatoire alors la probabilité :
 
 - $p_1$ de ne faire que 1 itération est $\mathbb{P}(T[0] > T[1])$ et vaut $1/2$
 - $p_2$ de ne faire que 2 itérations est $\mathbb{P}(T[0] < T[1], T[1] > T[2])$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ (attention, $T[0] < T[1]$ et $T[1] > T[2]$ ne sont pas indépendant, on a donc pas $\mathbb{P}(T[0] < T[1], T[1] > T[2]) = \mathbb{P}(T[0] < T[1])\cdot \mathbb{P}(T[1] > T[2])$)

@@ -97,14 +97,12 @@ La preuve d'existence du 1 montre que pour tout $i + 1 < j$, si $T[i] > T[i+1]$ 
 
 L'invariant de boucle de la boucle `while`{.language-} est alors :
 
-{% note "**invariant**" %}
-A la fin de chaque itération de la boucle `while`{.language-}, soit :
-
-- `T[milieu]`{.language-} est un col
-- `T[milieu]`{.language-} n'est pas un col et :
-  - `début + 1 < fin`{.language-}
-  - `T[début] > T[début+1]`{.language-} et `T[fin] > T[fin-1]`{.language-}
-    {% endnote %}
+> **Invariant de boucle :** A la fin de chaque itération de la boucle `while`{.language-}, soit :
+>
+> - `T[milieu]`{.language-} est un col
+> - `T[milieu]`{.language-} n'est pas un col et :
+> - `début + 1 < fin`{.language-}
+> - `T[début] > T[début+1]`{.language-} et `T[fin] > T[fin-1]`{.language-}
 
 A la fin de la première itération, on a soit :
 

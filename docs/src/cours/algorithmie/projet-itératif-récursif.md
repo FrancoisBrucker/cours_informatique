@@ -100,7 +100,7 @@ La finitude est claire puisqu'il n'y a que deux boucles de type `pour chaque`{.l
 
 On a deux boucles, il faut donc à priori 2 invariants, un pour chaque boucle. Ici il est clair que l'on va remplir tous les éléments des tableaux `début`{.language-} et `fin`{.language-} dans `t`{.language-}. L'invariant peut être :
 
-> si $i_0$ est la valeur de $i$ à la ligne 5 (resp. 9) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. `fin`{.language-}) pour tout $0\leq k \leq j$.
+> **Invariant de boucle :** si $i_0$ est la valeur de $i$ à la ligne 5 (resp. 9) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. `fin`{.language-}) pour tout $0\leq k \leq j$.
 
 Démontrons l'invariant rigoureusement pour la première boucle.
 
@@ -276,7 +276,7 @@ La finitude du programme est clair puisque l'on a que des boucles de type `pour 
 
 On commence par créer un tableau permettant exactement de stocker tous les éléments de `T`{.language-} différents de `v`{.language-}. Ce que fera la boucle. On peut prouver celle-ci par l'invariant :
 
-> à la fin de chaque itération, `T2`{.language-} contient la restriction des `i + 1`{.language-} premiers éléments de `T` différents de `v`{.language-}.
+> **Invariant de boucle :** à la fin de chaque itération, `T2`{.language-} contient la restriction des `i + 1`{.language-} premiers éléments de `T` différents de `v`{.language-}.
 
 La preuve de l'invariant est évidente et permet de prouver l'algorithme en se plaçant à la fin de la dernière itération.
 

@@ -353,7 +353,7 @@ On doit donc avoir un invariant du type _$r \simeq i!$ à la fin de chaque itér
 
 Notre invariant doit donc être :
 
-> Invariant : $r = (i-1)!$ à la fin de chaque itération.
+> **Invariant de boucle :** $r = (i-1)!$ à la fin de chaque itération.
 
 1. c'est vrai à la fin de la 1ère itération (on a tout fait pour)
 2. si c'est vrai à la fin de la $k$ème itération, à la fin de la $k+1$ème itération on a :
@@ -409,7 +409,7 @@ Pour démontrer la correction du l'algorithme, on utilise un invariant de boucle
 {% exercice %}
 Montrez que la boucle `tant que`{.language-} de [l'algorithme `factorielle_variante`{.language-}](./#algo-factorielle_variante){.interne} admet l'invariant de boucle suivant :
 
-> À la fin d'une itération de la boucle `tant que`{.language-} : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$
+> **Invariant de boucle :**  À la fin d'une itération de la boucle `tant que`{.language-} : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -519,7 +519,7 @@ def maximum(t):
 
 Ce qui permet d'écrire l'invariant :
 
-> Invariant : à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.
+> **Invariant de boucle :**  à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.
 
 #### Prouver l'invariant
 
@@ -566,7 +566,7 @@ algorithme nombre(T: [entier], x: entier) → entier:
 
 ### PGCD, encore lui
 
-<span id="algorithme-PGCD-rec"></span>
+<span id="algorithme-pgcd-rec"></span>
 
 ```pseudocode
 algorithme PGCD(a, b):  # a, b > 0
@@ -646,7 +646,7 @@ Proposez un invariant de boucle que vous démontrerez.
 {% endexercice %}
 {% details "corrigé" %}
 
-> Invariant : `a = r + q * b`{.language-}
+> **Invariant de boucle :**  `a = r + q * b`{.language-}
 
 Prouvons l'invariant :
 

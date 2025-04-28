@@ -67,7 +67,7 @@ Le principe de fonctionnement est clair :
 
 On a alors clairement l'invariant de boucle :
 
-> À la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau.
+> **Invariant de boucle :** À la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau.
 
 Qui permet de prouver qu'la fin de la boucle principale, le tableau est trié.
 

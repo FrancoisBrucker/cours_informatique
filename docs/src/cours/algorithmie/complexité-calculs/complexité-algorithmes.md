@@ -335,7 +335,9 @@ Pour illustrer cela, nous allons considérer deux algorithmes permettant de calc
 
 ### Itératif
 
-[Algorithme du PGCD récursif itératif](../#algorithme-PGCD){.interne} :
+Reprenons un de nos algorithmes fil rouge
+Reprenons l'exemple [l'algorithme du pgcd itératif](../../#algorithme-pgcd){.interne} :
+ :
 
 ```pseudocode/
 algorithme PGCD(a: entier, b: entier) → entier:  # a, b ≥ 0
@@ -357,20 +359,20 @@ $$
 
 On ne peut pas simplifier car $K$ dépend de $a$ et de $b$. A chaque itération $\max(a, b)$ va décroître strictement jusqu'à ce que $\max(a, b) = \min(a, b)$ ce qui stoppera la boucle à l'itération suivante.
 
-On a donc que $K = \mathcal{O}(\max(a, b))$ (pas la peine d'être plus précis que cela) ce qui nous permet de conclure que : $C(a, b) = \mathcal{O}(\max(a, b))$. Ou de façon équivalente et plus élégante : 
+On a donc que $K = \mathcal{O}(\max(a, b))$ (pas la peine d'être plus précis que cela) ce qui nous permet de conclure que :
 
 <div>
 $$
-C(a, b) = \mathcal{O}(a + b)
+C(a, b) = \mathcal{O}(\max(a, b))
 $$
 </div>
 
 ### Récursif
 
-Reprenons l'exemple [l'algorithme du PGCD récursif](../prouver-un-algorithme/#algorithme-PGCD-rec){.interne} :
+Reprenons l'exemple [l'algorithme du pgcd récursif](../../prouver-un-algorithme/#algorithme-pgcd-rec){.interne} :
 
 ```pseudocode/
-algorithme PGCD(a, b):  # a, b > 0
+algorithme pgcd(a, b):  # a, b > 0
     si a == b:
         rendre a
     si a < b:
