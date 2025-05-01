@@ -564,29 +564,29 @@ algorithme nombre(T: [entier], x: entier) → entier:
 
 {% enddetails %}
 
-### PGCD, encore lui
+### pgcd, encore lui
 
 <span id="algorithme-pgcd-rec"></span>
 
 ```pseudocode
-algorithme PGCD(a, b):  # a, b > 0
+algorithme pgcd(a, b):  # a, b > 0
     si a == b:
         rendre a
     si a < b:
-        rendre PGCD(b-a, a)
+        rendre pgcd(b-a, a)
     sinon
-        rendre PGCD(a-b, b)
+        rendre pgcd(a-b, b)
 
 ```
 
 {% exercice %}
-Montrez que l'algorithme récursif précédent calcule bien le PGCD de eux entiers strictement positifs.
+Montrez que l'algorithme récursif précédent calcule bien le pgcd de eux entiers strictement positifs.
 {% endexercice %}
 {% details "corrigé" %}
 
 - terminaison : La condition de terminaison est `a == b`{.language-}. Si `a \leq b`{.language-}, chaque itération va diminuer strictement la quantité $\vert\\, a = b \\,\vert$ et donc se rapprocher strictement de la condition d'arrêt : notre programme s'arrête pour toute entrée.
 
-- correction : si `a == b`{.language-}, son PGCD est bien a (ou b) et sinon on respecte [la définition d'Euclide du PGCD](../bases-théoriques/calculabilité/#algorithme-euclide){.interne}.
+- correction : si `a == b`{.language-}, son pgcd est bien a (ou b) et sinon on respecte [la définition d'Euclide du pgcd](../bases-théoriques/calculabilité/#algorithme-euclide){.interne}.
 
 {% enddetails %}
 

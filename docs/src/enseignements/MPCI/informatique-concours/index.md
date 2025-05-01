@@ -72,7 +72,7 @@ En particulier :
 
 Il faut aussi connaître quelques algorithmes que GEI semble adorer :
 
-- algorithme d'Euclide de calcul du PGCD.
+- algorithme d'Euclide de calcul du pgcd.
 - Bezout aussi appelé Euclide étendu (je crois). Nombre premiers.
 - suite de Fibonacci
 - la puissance $x^y$

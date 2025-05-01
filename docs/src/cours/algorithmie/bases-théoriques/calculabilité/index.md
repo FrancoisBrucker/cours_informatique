@@ -157,14 +157,14 @@ Attention cependant à ne pas confondre le réel en tant que tel (non calculable
 
 La plupart des fonctions connues sont calculables.
 
-Prenons la plus connue d'entre elle la fonction $\mbox{PGCD}(a, b)$ d'Euclide qui rend le plus grand commun diviseur de deux entier positifs $a$ et $b$.
+Prenons la plus connue d'entre elle la fonction $\mbox{pgcd}(a, b)$ d'Euclide qui rend le plus grand commun diviseur de deux entier positifs $a$ et $b$.
 
 <span id="algorithme-euclide"></span>
 
-Euclide (environ -300) décrit son algorithme permettant de calculer le plus grand commun diviseur (PGCD) de deux nombres ainsi :
+Euclide (environ -300) décrit son algorithme permettant de calculer le plus grand commun diviseur (pgcd) de deux nombres ainsi :
 
 ```pseudocode
-le PGCD de deux nombres n'est pas changé si on remplace le plus grand d'entre eux par leur différence.
+le pgcd de deux nombres n'est pas changé si on remplace le plus grand d'entre eux par leur différence.
 ```
 
 {% exercice %}
@@ -175,10 +175,10 @@ Montrer que l'algorithme d'Euclide peut s'écrire sous la forme d'une équation 
 <div>
 $$
 \begin{equation}
-  \mbox{PGCD}(a, b) =
+  \mbox{pgcd}(a, b) =
   \begin{cases}
     \max(a, b) & \text{si $\min(a, b) = 0$}\\
-    \mbox{PGCD}(\max(a, b) - \min(a, b), \min(a, b)) & \text{sinon}.
+    \mbox{pgcd}(\max(a, b) - \min(a, b), \min(a, b)) & \text{sinon}.
   \end{cases}
 \end{equation}
 $$

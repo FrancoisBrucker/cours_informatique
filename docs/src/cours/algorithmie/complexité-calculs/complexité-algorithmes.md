@@ -331,7 +331,7 @@ $$
 
 On ne peut pas toujours trouver une équation de récurrence fonctionnant pour toutes les entrées. Mais come le calcul de complexité ne s'intéresse qu'au cas le pire, il suffit de trouver une relation pour des donnant engendrant le plus d'instructions.
 
-Pour illustrer cela, nous allons considérer deux algorithmes permettant de calculer le PGCD de deux nombres.
+Pour illustrer cela, nous allons considérer deux algorithmes permettant de calculer le pgcd de deux nombres.
 
 ### Itératif
 
@@ -340,7 +340,7 @@ Reprenons l'exemple [l'algorithme du pgcd itératif](../../#algorithme-pgcd){.in
  :
 
 ```pseudocode/
-algorithme PGCD(a: entier, b: entier) → entier:  # a, b ≥ 0
+algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
     tant que min(a, b) > 0:
         a' ← max(a, b) - min(a, b)
         b' ← min(a, b)
@@ -376,9 +376,9 @@ algorithme pgcd(a, b):  # a, b > 0
     si a == b:
         rendre a
     si a < b:
-        rendre PGCD(b-a, a)
+        rendre pgcd(b-a, a)
     sinon
-        rendre PGCD(a-b, b)
+        rendre pgcd(a-b, b)
 ```
 
 La complexité de cet algorithme dépend de ses paramètres. Notons là : $C(a, b)$. Comme toutes les lignes sont en $\mathcal{O}(1)$ opérations on obtient l'équation de récurrence :

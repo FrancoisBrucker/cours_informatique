@@ -12,34 +12,34 @@ eleventyComputed:
 Une liste est une amélioration de [la structure de tableau](../pseudo-code/briques-de-base/#tableaux){.interne} et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
 
 {% info %}
-Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie [listes](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/){.interne} du cours sur les bases du code.
+Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter [la partie consacrée aux listes](/cours/coder-et-développer/bases-programmation/conteneurs/listes/){.interne} du cours sur les bases du code.
 {% endinfo %}
 
 ## Définition de la structure
 
-La liste est une structure de tableau redimensionnable, qui est utilisé par exemple en python. Nous allons montrer comment réaliser ceci efficacement, par exemple avec une liste d'entiers :
+> TBD accès aux indice via valeur
 
 ```pseudocode
-structure Liste:
+structure Liste<Type>:
     attributs:
-        T: [entier]
-        longueur: entier
-    creation(n: entier):
-        T ← un tableau de n entiers
-        nombre ← 0
-    méthodes:
-        # self[i] = self.T[i] si 0 ≤ i < longueur
+        taille: entier
 
-        append(x: entier)  → vide:
-            si longueur == T.longueur:
-                T2 ← un nouveau tableau de taille 2 * T.longueur
+        T: [Type] de longueur taille
+    méthodes:
+        # self[i] = self.T[i]
+        fonction valeur(i: entier) → Type:  # 0 ≤ i < T.longueur
+            rendre T[i]
+
+        append(x: Type)  → ∅:
+            si taille == T.longueur:
+                T2 ← un nouveau tableau de Type de longueur 2 * T.longueur
                 T2[:T.longueur] ← T
                 T ← T2 
-            T[longueur] ← x
-            longueur ← longueur + 1
-        pop()  → entier:
-            longueur ← longueur - 1
-            rendre T[longueur]
+            T[taille] ← x
+            taille ← taille + 1
+        pop()  → Type:
+            taille ← taille - 1
+            rendre T[taille]
 ```
 
 On utilise une liste comme un tableau, en ajoutant 2 méthodes :

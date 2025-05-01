@@ -121,7 +121,7 @@ algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
     rendre max(a, b)
 ```
 
-Il calcule bien le PGCD de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du PGCD que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
+Il calcule bien le pgcd de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du pgcd que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
 
 {% info %}
 On a utilisé ici le mot clé **question** plutôt que **sortie**. On utilisera cette convention lorsque la sortie est soit OUI soit NON.
@@ -204,29 +204,27 @@ Nous allons définir et utiliser ici des structures de données très utiles dan
 [Structures linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
 {% endlien %}
 
-#### Gestion de flux
+#### Gestion de flux : Pile et file
 
 Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
 
 {% aller %}
-[Structure de gestion de flux](./structure-flux){.interne}
+[Structure de pile et file](./structure-pile-file){.interne}
 {% endaller %}
 
-#### Structures dynamiques
+### Structures dynamiques
 
-La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est l'élément élémentaire de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création et est non modifiable. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa taille moins un. Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité :
+La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa longueur moins un.
+
+#### Listes
+
+Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité :
 
 {% aller %}
 [Les listes](./structure-liste){.interne}
 {% endaller %}
 
-Enfin, très utilisée dans les langages fonctionnels et le cas o`u l'on doit supprimer rapidement un élément en milieu de liste, la _liste chaînée_ :
-
-{% aller %}
-[Les listes chaînées](./structure-liste-chaînée){.interne}
-{% endaller %}
-
-#### Fonctions de hash et structures associées
+#### Dictionnaires
 
 Une autre structure fondamentale en algorithmie :
 
@@ -234,7 +232,15 @@ Une autre structure fondamentale en algorithmie :
 [Fonctions de hash et dictionnaires](./structure-dictionnaire){.interne}
 {% endaller %}
 
-#### Comparaisons des structures de conteneurs
+#### Listes chaînées
+
+Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
+
+{% aller %}
+[Les listes chaînées](./structure-liste-chaînée){.interne}
+{% endaller %}
+
+### Comparaisons des structures de conteneurs
 
 > Structure génériques
 > ajout/suppression :
@@ -260,6 +266,10 @@ Une autre structure fondamentale en algorithmie :
 >
 > - push/pop : O(1) si taille fixe, sinon O(1) en amorti
 > - recherche : via indice (avec le tableau sous-jacent) en O(1).
+
+#### Usage
+
+> TBD toujours structure dynamique. On ne détermine pas nécessairement la taille.
 
 ### On s’entraîne : structures de données
 

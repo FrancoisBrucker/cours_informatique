@@ -207,9 +207,9 @@ Nous avons mis en exergue deux lignes (`SQUARE` et `MULTIPLY`, l'algorithme est 
 
 Au final, si $x$ est sur $m$ bits et $y$ sur $n$ bit, $x^y$ aura $2^n\cdot m$ bits.
 
-## PGCD
+## pgcd
 
-Le calcul du PGCD (*GCD* en anglais) peut être fait en utilisant l'algorithme d'Euclide (on y reviendra pour sa version étendue), mais pour des nombres binaires, il est plus simple d'utiliser un algorithme chinois datant de la même époque qu'Euclide : le [*binary GCD*](https://en.algorithmica.org/hpc/algorithms/gcd/#binary-gcd).
+Le calcul du pgcd (*GCD* en anglais) peut être fait en utilisant l'algorithme d'Euclide (on y reviendra pour sa version étendue), mais pour des nombres binaires, il est plus simple d'utiliser un algorithme chinois datant de la même époque qu'Euclide : le [*binary GCD*](https://en.algorithmica.org/hpc/algorithms/gcd/#binary-gcd).
 
 L'algorithme fonctionne récursivement en utilisant les propriétés suivantes :
 

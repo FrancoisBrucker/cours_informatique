@@ -352,8 +352,8 @@ Analyse de structures de données fondamentales en algorithmie :
 {% aller %}
 
 1. [structures de données](/cours/algorithmie/structure-données/){.interne}
-2. [file](/cours/algorithmie/structure-flux/file){.interne}
-3. [pile](/cours/algorithmie/structure-flux/pile){.interne}
+2. [file](/cours/algorithmie/structure-pile-file/file){.interne}
+3. [pile](/cours/algorithmie/structure-pile-file/pile){.interne}
 4. [listes](/cours/algorithmie/structure-liste/){.interne}
 
 {% endaller %}
@@ -370,7 +370,7 @@ N'hésitez pas à aller jeter eu coup d'œil aux exercices sur les piles et les 
 
 {% aller %}
 
-[exercices](/cours/algorithmie/structure-flux/#exercices){.interne}
+[exercices](/cours/algorithmie/structure-pile-file/#exercices){.interne}
 
 {% endaller %}
 

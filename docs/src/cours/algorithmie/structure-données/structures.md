@@ -22,7 +22,7 @@ structure Point:
         y: entier
 ```
 
-Par rapport au tuple, les attributs sont des variables et possèdent ainsi des noms. On peut accéder à ces noms par la notation pointée.
+Par rapport au tuple, les attributs sont des variables et possèdent ainsi des noms. Si on accède aux éléments d'un tuple avec son indice, on accède aux attributes par **_la notation pointée_** :
 
 ```pseudocode
 algorithme affiche_point(p: Point) → vide:
@@ -50,63 +50,141 @@ Va modifier les attributs du premier paramètre.
 
 ### Création
 
-Pour créer des nouveau objet d'une structure, on utilise une fonction spéciale appelée `création` qui rend un objet de la structure. Pour notre point cela donnerait :
+{% note "**Définition**" %}
+**_Créer_** un objet d'une structure revient à créer ses attributs. La taille en mémoire d'un objet est proportionnelle à la taille de ses attributs.
+{% endnote %}
 
-```pseudocode/
+Ainsi le code :
+
+```pseudocode
+p ← un nouveau Point
+```
+
+Va créer un nouveau point `p`{.language-} pour le quel on pourra accéder à ses attributs via la notation pointée :
+
+```pseudocode
+p.x ← 0
+```
+
+Comme toute variable nouvellement crée les valeurs des attributs est indéterminée : il faut **toujours initialiser avant de les utiliser**.
+
+#### Initialisation par défaut
+
+Pour être sur que les paramètres sont initialisés par défaut, on utilise _l'abus_ suivant :
+
+```pseudocode
 structure Point:
     attributs:
-        x: entier
-        y: entier
-    création(_x: entier, _y: entier) → Point:
-        x ← _x
-        y ← _y
+        x: entier ← 1
+        y: entier ← -1
+
 ```
 
-Remarquez que `création`{.language-} rend _implicitement_ un Point. Son but est d'initialiser les attributs à des valeurs. Les attributs de l'objet créés sont directement accessibles (lignes 6 et 7).
-
-Enfin, comme les attributs sont déjà crées, les paramètres de la fonction création ne peuvent êtres nommées comme eux. Mais si ces paramètres snt directement affectés à la valeur de l'attribut on a coutume de place un `_`{.language-} (_underscore_) avant sont nom pour à la fois les différentier et monter leurs relations.
-
-On utilise cette méthode implicitement la fonction création dans le pseudocode suivant :
+Qui correspond au code :
 
 ```pseudocode
-p ← un nouveau Point de paramètres 3 et 4
+p ← un nouveau Point
+p.x ← 1
+p.y ← -1
 ```
 
-Ou explicitement :
+On peut bien initialiser partiellement les paramètres (en ne donnant qu'un valeur par défaut à `x` par exemple), mais ce n'est pas recommandé :
+
+{% attention "**À retenir**" %}
+Dans la mesure du possible donnez **toujours** une valeur par défaut à tous les attributs.
+{% endattention %}
+
+#### Initialisation explicite
+
+Si l'on veut avoir des valeurs spécifiques pour nos attributs sans alourdir le code, on utilise _l'abus_ suivant :
 
 ```pseudocode
-p ← Point.création(3, 4)
+p ← Point {x: 3, y: 12}
 ```
 
+Qui correspond au code :
+
+```pseudocode
+p ← un nouveau Point
+p.x ← 3
+p.y ← 12
+```
+
+Les valeurs non explicitement assignées aurons les valeurs par défaut s'il y en a.
+
+#### Constructeur
+
+On utilisera tout au long de ce cours le processus de construction d'objets suivant :
+
+{% note "**Construction**" %}
+
+1. les différents attributs sont crées sous la forme de variables
+2. les initiations explicites des attributs sont effectuées
+3. les initiations par défaut des attributs **sans initialisation explicite** sont effectuées
+
+{% endnote %}
 {% info %}
-Il n'est pas nécessaire que les paramètres de `création`{.language-} soient exactement les attributs. La structure suivante est tout à fait possible :
+Une bonne pratique algorithmique est qu'au terme de ce processus tous les attributs soient initialisés.
+{% endinfo %}
 
-```pseudocode/
+Ainsi pour la structure suivante :
+
+```pseudocode
 structure Point:
     attributs:
         x: entier
-        y: entier
-    création() → Point:
-        x ← 0
-        y ← 0
+        y: entier ← 2 * x
+
 ```
 
-{% endinfo %}
+Le code suivant produira des valeurs indéterminées pour `p.x`{.language-} et `p.y`{.language-} :
+
+```pseudocode
+p ← Point 
+```
+
+Le code suivant sera tel que `p.y = 6`{.language-} :
+
+```pseudocode
+p ← Point {x: 3}
+```
+
+Le code suivant sera tel que `p.y = 42`{.language-} :
+
+```pseudocode
+p ← Point {x: 3, y: 42}
+```
+
+{% exercice %}
+Que donnent les exemples précédent avec la structure :
+
+```pseudocode
+structure Point:
+    attributs:
+        x: entier ← 0
+        y: entier ← 2 * x
+
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+1. `p ← Point`{.language-} : `p.x = 0`{.language-} et `p.y = 0`{.language-}
+2. `p ← Point {x: 3}`{.language-} : `p.x = 3`{.language-} et `p.y = 6`{.language-}
+3. `p ← Point {x: 3, y: 42}`{.language-} : `p.x = 3`{.language-} et `p.y = 42`{.language-}
+{% enddetails %}
 
 ### Méthodes
 
-L'intérêt fondamental des structures de données est les méthodes qui permettent d'opérer sur les objets de la structure. Transformons la fonction `additionne_point`{.language-} précédente en méthode :
+L'intérêt fondamental des structures de données est de leur associer des fonctions spécifiques, appelées **_méthodes_**. Le but des méthodes est d'opérer sur les objets de la structure. Transformons la fonction `additionne_point`{.language-} précédente en méthode :
 
 ```pseudocode/
 structure Point:
     attributs:
-        x: entier
-        y: entier
-    création(_x: entier, _y: entier) → Point:
-        x ← _x
-        y ← _y
+        x: entier ← 0
+        y: entier ← 0
     méthodes:
-        méthode addition(p: Point) → vide:
+        fonction addition(p: Point) → vide:
             x ← x + p.x
             y ← y + p.y
 
@@ -115,79 +193,116 @@ structure Point:
 On appelle les méthodes avec la notation pointée :
 
 ```pseudocode
-p1 ← création d'un Point avec les paramètres 1 et 2
-p2 ← Point.création(4, 5)  #  création équivalente en explicitant la structure de donnée utilisée
+p1 ← un nouveau Point
+p2 ← Point {x: 4, y: 7}
 
-affiche à l'écran p1.x et p1.y  # affiche 1 et 2
+affiche à l'écran p1.x et p1.y  # affiche 0 et 0
 p1.addition(p2)
-affiche à l'écran p1.x et p1.y  # affiche 5 et 7
+affiche à l'écran p1.x et p1.y  # affiche 4 et 7
 ```
 
-Dans le code de l'addition, la notation pointée assure que les variables `x`{.language-} et `y`{.language-} des lignes 10 et 11 d la définition sont celle de l'objet à gauche de l'appel, ici `p1` dns le programme précédent.
+Dans le code de l'addition, la notation pointée assure que les variables `x`{.language-} et `y`{.language-} des lignes 10 et 11 d la définition sont celle de l'objet à gauche de l'appel, ici `p1` dans le programme précédent.
 
 ### Résumé
 
 {% attention "**À retenir**" %}
 Une **_structure de données_** est composée :
 
-- une fonction `création`{.language-} permettant de créer un objet de cette structure
+- d'**_attributs_** qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données). On accède au attributs et aux méthodes d'une structure avec la notation pointée.
 - de **_méthodes_** qui sont des fonctions permettant d’interagir avec une donnée de cette structure.
-- d'**_attributs_** qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données)
 
-On accède au attributs et aux méthodes d'une structure avec la notation pointée.
+Une structure de donnée défini un nouveau type qui peut être utilisé ensuite comme un type de base.
 {% endattention %}
 
 Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :
 
-{% attention "**À retenir**" %}
-On considérera toujours que la taille en mémoire d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.
-{% endattention %}
-
 Pour qu'une structure de donnée puisse être utilisée, il est crucial de connaître la complexité de la création d'un objet de la structure ($\mathcal{O}(1)$ pour notre `Point`{.language-}) et de chaque méthode de celle-ci.
 
-## mot clé `self`{.language-}
+## Génériques
 
-L'objet courant, celui qui appelle (à gauche du `.` en notation pointée), peut être parfois nommé par le mot-clé `self`{.language-}. Cela permet d'utiliser la notation pointée partout (et est indispensable si l'on veut connaître l'objet appelant, comme pour la structure de liste chaînée que l'on verra plus tard). En utilisant complètement cette convention, le pseudocode de la structure devient :
+Tout come un tableau peut stocker tout type de données, il peut être intéressant de définir une structure générique, c'est à dire pouvant gérer plusieurs types de la même façon, plutôt que de définir une structure par type.
+
+{% lien %}
+[type générique](https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9ricit%C3%A9)
+{% endlien %}
+
+Pour être explicite, On signifie la généricité entre "<>" dans la définition de la structure, par exemple dans l'exemple suivant :
 
 ```pseudocode
-structure Point:
+structure Point<T>:
     attributs:
-        x: entier
-        y: entier
-    création(x: entier, y: entier) → Point:
-        self.x ← x
-        self.y ← y
-    méthodes:
-        méthode addition(p: Point) → vide:
-            self.x ← self.x + p.x
-            self.y ← self.y + p.y
+        valeur: T
+
+        x: entier ← 0
+        y: entier ← 0
+
 ```
+
+L'attribut valeur est du **_type générique_** `T`{.language-}. Ce type est abstrait et doit être défini explicitement à l'utilisation. Par exemples :
+
+```pseudocode
+utm ← Point<chaîne> {valeur: "Marseille", x: 694669, y: 4796927}
+masse ← Point<réel> {valeur: 3.14}
+```
+
+On peut bien sur combiner le tout avec des exemples plus ou moins tordu comme :
+
+- `[Point<réel>]`{.language-} : un tableau de Points à valeurs réelles
+- `Point<[Point<Point<chaîne>>]>`{.language-} : un Points à valeurs valant un tableau de Point à valeur de Point de chaînes.
+
+Mais la plupart du temps, on reste simple.
+
+## Mot clé `self`{.language-}
+
+L'objet courant, celui qui appelle (à gauche du `.` en notation pointée), peut être parfois nommé par le mot-clé `self`{.language-}.
 
 {% info %}
 Certains langages comme python n'autorisent que cette notation ce qui rend le code sans ambiguïté, d'autres comme le java autorise les deux versions (avec ou sans `self`{.language-}).
 {% endinfo %}
 
-La plupart du temps, on fera un mix des deux approches pour rendre le pseudocode plus digeste. Par exemple pour `Point`, on pourra utiliser `self`{.language-} pour le constructeur et ainsi se passer des `_`{.language-} et s'en passer pour la méthode `addition`{.language-} qui est claire sans lui :
+Cela permet d'utiliser la notation pointée partout (et est indispensable si l'on veut connaître l'objet appelant pour le rendre par exemple. Voir l'exemple suivant). En utilisant cette convention, le pseudocode de la structure devient :
 
 ```pseudocode
 structure Point:
     attributs:
-        x: entier
-        y: entier
-    création(x: entier, y: entier) → Point:
-        self.x ← x
-        self.y ← y
+        x: entier ← 0
+        y: entier ← 0
     méthodes:
-        méthode addition(p: Point) → vide:
-            x ← x + p.x
-            y ← y + p.y
+        fonction addition(p: Point) → Point:
+            self.x ← self.x + p.x
+            self.y ← self.y + p.y
+
+            rendre self
 ```
 
-Il faut garder le pseudo-code lisible donc :
+Dans l'exemple précédent utiliser `x`{.language-} ou `self.x`{.language-} est équivalent. Rendre l'objet appelant est une technique très utilisées en programmation objet car elle permet ce genre de code :
 
-{% attention "**À retenir**" %}
+```pseudocode
+p1 ← Point {x: -2, y: 3}
+p2 ← Point {x: 4, y: 7}
+p3 ← Point {x: 12, y: 21}
 
-- n'utilisez pas de nom d'attribut comme variable d'une méthode
-- si le paramètre d'une méthode à le même nom qu'un attribut : c'est qu'il est directement affecté à celui-ci avec `self`{.language-}. On utilise essentiellement ça dans la fonction `création`{.language-}
+affiche à l'écran p1.x et p1.y  # affiche 0 et 0
+p1.addition(p2).addition(p3)
+affiche à l'écran p1.x et p1.y  # affiche 14 et 31
+```
 
-{% endattention %}
+La ligne `p1.addition(p2).addition(p3)`{.language-} sera exécutée de gauche à droite :
+
+1. `p1.addition(p2)`{.language-} rendre l'objet `p1`{.language-}
+2. on effectue `.addition(p3)`{.language-} sur l'objet rendu (c'est à dire `p1`{.language-})
+
+Enfin, souvent, on n'utilise que partiellement cette convention puisque **si une variable à le même nom qu'un attribut, c'est l'attribut**. Par exemple :
+
+```pseudocode
+structure Point:
+    attributs:
+        x: entier ← 0
+        y: entier ← 0
+    méthodes:
+        fonction addition(p: Point) → Point:
+            x ← x + p.x
+            y ← y + p.y
+
+            rendre self
+```

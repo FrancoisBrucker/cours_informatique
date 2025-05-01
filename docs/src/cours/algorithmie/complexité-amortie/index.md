@@ -340,7 +340,7 @@ Réfléchissez à ce résultat, il est assez surprenant, non ?.
 
 ## Exemple 2 : la pile
 
-On va considérer [une pile](../structure-flux/pile/){.interne} et on crée l'algorithme suivant : `k-pop(k, P)`{.language-} :
+On va considérer [une pile](../structure-pile-file/pile/){.interne} et on crée l'algorithme suivant : `k-pop(k, P)`{.language-} :
 
 ```pseudocode
 algorithme k-pop(k, P) → entier:

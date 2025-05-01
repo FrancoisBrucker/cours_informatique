@@ -573,7 +573,7 @@ Puis on cherche le min sur les $T[2i]$ ($n/2$ comparaisons) et le max sur les $T
 
 ### File avec pile
 
-On reprend l'[exercice sur la création d'une file avec 2 piles](../structure-flux/#file-avec-pile){.interne}.
+On reprend l'[exercice sur la création d'une file avec 2 piles](../structure-pile-file/#file-avec-pile){.interne}.
 
 {% exercice %}
 Montrer que la complexité amortie d'ajout et de suppression d'un élément dans la structure de file créée avec 2 pile est en $\mathcal{O}(1)$
