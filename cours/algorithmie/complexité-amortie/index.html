@@ -375,7 +375,7 @@ $$</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span>
         N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
-    <span class="token builtin">création</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Compteur<span class="token punctuation">:</span>
+    création<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Compteur<span class="token punctuation">:</span>
        <span class="token number"> N </span><span class="token operator">←</span> un tableau de<span class="token number"> n </span>entiers
         N<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
     suivant<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
@@ -417,7 +417,7 @@ $$</p>
 </div></div>
 
 <h2>Exemple 2 : la pile</h2>
-<p>On va considérer <a href="../structure-flux/pile/" class="interne">une pile</a> et on crée l'algorithme suivant : <code class="language-">k-pop(k, P)</code> :</p>
+<p>On va considérer <a href="../structure-pile-file/pile/" class="interne">une pile</a> et on crée l'algorithme suivant : <code class="language-">k-pop(k, P)</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> k<span class="token operator">-</span>pop<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     k <span class="token operator">←</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>

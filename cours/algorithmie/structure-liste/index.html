@@ -102,31 +102,33 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/" class="interne">listes</a> du cours sur les bases du code.</p>
+<p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/conteneurs/listes/" class="interne">la partie consacrée aux listes</a> du cours sur les bases du code.</p>
 </div></div>
 
 <h2>Définition de la structure</h2>
-<p>La liste est une structure de tableau redimensionnable, qui est utilisé par exemple en python. Nous allons montrer comment réaliser ceci efficacement, par exemple avec une liste d'entiers :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Liste</span><span class="token punctuation">:</span>
+<blockquote>
+<p>TBD accès aux indice via valeur</p>
+</blockquote>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Liste</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
-        longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-    creation<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        T <span class="token operator">←</span> un tableau de<span class="token number"> n </span>entiers
-        nombre <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token comment"># self[i] = self.T[i] si 0 ≤ i &lt; longueur</span>
+        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
 
-        append<span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>  <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-            <span class="token keyword">si</span> longueur <span class="token operator">==</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
-                T2 <span class="token operator">←</span> un nouveau tableau de taille <span class="token number">2</span> <span class="token operator">*</span> T<span class="token punctuation">.</span>longueur
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> de longueur taille
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        <span class="token comment"># self[i] = self.T[i]</span>
+        <span class="token builtin">fonction</span> <span class="token function">valeur</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>  <span class="token comment"># 0 ≤ i &lt; T.longueur</span>
+            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+        append<span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span>  <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+            <span class="token keyword">si</span> taille <span class="token operator">==</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+                T2 <span class="token operator">←</span> un nouveau tableau de <span class="token builtin">Type</span> de longueur <span class="token number">2</span> <span class="token operator">*</span> T<span class="token punctuation">.</span>longueur
                 T2<span class="token punctuation">[</span><span class="token punctuation">:</span>T<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> T
                 T <span class="token operator">←</span> T2 
-            T<span class="token punctuation">[</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> x
-            longueur <span class="token operator">←</span> longueur <span class="token operator">+</span> <span class="token number">1</span>
-        pop<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-            longueur <span class="token operator">←</span> longueur <span class="token operator">-</span> <span class="token number">1</span>
-            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>longueur<span class="token punctuation">]</span></code></pre>
+            T<span class="token punctuation">[</span>taille<span class="token punctuation">]</span> <span class="token operator">←</span> x
+            taille <span class="token operator">←</span> taille <span class="token operator">+</span> <span class="token number">1</span>
+        pop<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
+            taille <span class="token operator">←</span> taille <span class="token operator">-</span> <span class="token number">1</span>
+            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>taille<span class="token punctuation">]</span></code></pre>
 <p>On utilise une liste comme un tableau, en ajoutant 2 méthodes :</p>
 <ul>
 <li><code class="language-">append</code> qui ajoute un élément en fin de liste</li>

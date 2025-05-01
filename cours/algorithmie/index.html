@@ -273,7 +273,7 @@
         a<span class="token punctuation">,</span> b <span class="token operator">←</span> a'<span class="token punctuation">,</span> b'
     
     <span class="token keyword">rendre</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></code></pre>
-<p>Il calcule bien le PGCD de deux nombres positifs car chaque boucle <code class="language-">tant que</code> correspond exactement à une récursion de <a href="bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide" class="interne">la définition récurrente du PGCD que l'on a démontré précédemment</a>. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.</p>
+<p>Il calcule bien le pgcd de deux nombres positifs car chaque boucle <code class="language-">tant que</code> correspond exactement à une récursion de <a href="bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide" class="interne">la définition récurrente du pgcd que l'on a démontré précédemment</a>. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -393,18 +393,20 @@
 <p><a href="https://www.youtube.com/watch?v=kPqk07Gpj0A">Structures linéaires</a></p>
 </div></div>
 
-<h4>Gestion de flux</h4>
+<h4>Gestion de flux : Pile et file</h4>
 <p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="structure-flux" class="interne">Structure de gestion de flux</a></p>
+<p><a href="structure-pile-file" class="interne">Structure de pile et file</a></p>
 </div></div>
 
-<h4>Structures dynamiques</h4>
-<p>La <a href="pseudo-code/briques-de-base/#tableaux" class="interne">structure de tableau</a> est l'élément élémentaire de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création et est non modifiable. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa taille moins un. Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité :</p>
+<h3>Structures dynamiques</h3>
+<p>La <a href="pseudo-code/briques-de-base/#tableaux" class="interne">structure de tableau</a> est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa longueur moins un.</p>
+<h4>Listes</h4>
+<p>Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -413,16 +415,7 @@
 <p><a href="structure-liste" class="interne">Les listes</a></p>
 </div></div>
 
-<p>Enfin, très utilisée dans les langages fonctionnels et le cas o`u l'on doit supprimer rapidement un élément en milieu de liste, la <em>liste chaînée</em> :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="structure-liste-cha%C3%AEn%C3%A9e" class="interne">Les listes chaînées</a></p>
-</div></div>
-
-<h4>Fonctions de hash et structures associées</h4>
+<h4>Dictionnaires</h4>
 <p>Une autre structure fondamentale en algorithmie :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -432,7 +425,17 @@
 <p><a href="structure-dictionnaire" class="interne">Fonctions de hash et dictionnaires</a></p>
 </div></div>
 
-<h4>Comparaisons des structures de conteneurs</h4>
+<h4>Listes chaînées</h4>
+<p>Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la <strong><em>liste chaînée</em></strong> :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="structure-liste-cha%C3%AEn%C3%A9e" class="interne">Les listes chaînées</a></p>
+</div></div>
+
+<h3>Comparaisons des structures de conteneurs</h3>
 <blockquote>
 <p>Structure génériques
 ajout/suppression :</p>
@@ -458,6 +461,10 @@ ajout/suppression :</p>
 <li>push/pop : O(1) si taille fixe, sinon O(1) en amorti</li>
 <li>recherche : via indice (avec le tableau sous-jacent) en O(1).</li>
 </ul>
+</blockquote>
+<h4>Usage</h4>
+<blockquote>
+<p>TBD toujours structure dynamique. On ne détermine pas nécessairement la taille.</p>
 </blockquote>
 <h3>On s’entraîne : structures de données</h3>
 <blockquote>
