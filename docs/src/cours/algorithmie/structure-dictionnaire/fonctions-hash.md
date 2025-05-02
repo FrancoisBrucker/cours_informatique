@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Fonction de hachage"
+title: "Fonctions de hachage"
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,8 +10,6 @@ eleventyComputed:
 ---
 
 Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction [sha](https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm).
-
-On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont [les tableaux associatifs](../tableau-associatif){.interne}, encore appelés dictionnaires).
 
 ## Définitions
 
@@ -61,9 +59,7 @@ En python par exemple, on peut utiliser [la fonction `hash`{.language-}](https:/
 322818021289917443
 ```
 
-Remarquez que la fonction de hash utilisée dépend du type d'objet.
-
-De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objets mutable en python. Ainsi `hash([])`{.language-} produira une erreur (`TypeError: unhashable type: 'list'`{.language-}).
+De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objets mutables en python. Ainsi `hash([])`{.language-} produira une erreur (`TypeError: unhashable type: 'list'`{.language-}).
 
 La principale raison de l'utilisation es fonctions de hachage est :
 
@@ -78,13 +74,15 @@ $$
 
 Une fonction de hachage permet de partitionner les entiers (_ie._ les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une _bonne_ fonction de hachage d'avoir en plus les propriétés suivantes :
 
-{% note "**Utilité des fonctions de hachage**" %}
+<span id="définition-hachage-utile"></span>
 
-Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ soit **_utile_**, elle doit avoir les 3 propriétés suivantes :
+{% note "**Définition**" %}
 
-1. elle doit être **déterministe** : un même message doit toujours avoir la même valeur de hachage
-2. elle doit être **facilement calculable**
-3. elle doit être **uniforme** : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$
+Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m[$ est **_utile_**, si elle est :
+
+1. **déterministe** : un même message doit toujours avoir la même valeur de hachage
+2. **facilement calculable**
+3. **uniforme** : $\mathbb{P}(f(a) = i) = \frac{1}{m}$ pour tout $a\in \mathbb{N}$ et $0 \leq i < m$
 
 {% endnote %}
 
@@ -105,9 +103,7 @@ f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
 $$
 </div>
 
-est une fonction de hachage.
-
-Elle n'est cependant que peu utile, car elle n'est pas uniforme. Ceci dit, elle est utilisé plus souvent qu'on ne le croit par des informaticiens trop pressés par le temps...
+Est une fonction de hachage, mais non utile car elle non uniforme.
 
 ### Le modulo
 
@@ -184,18 +180,21 @@ n \mod m &=&  (\sum_{i=0}^l n_i2^{ki}) \mod m \\
 $$
 </div>
 
-Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bit fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.
+Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bits fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.
 
-De la un pseudo-code du calcul du modulo de $n = n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0$ qui se fait en $\mathcal{O}(l) :
+De la un pseudo-code du calcul du modulo de $n = n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0$ qui se fait en $\mathcal{O}(l) = \mathcal{O}(\log(n))$ grace à l'algorithme `modulo([n0, ..., nl], 2^k)`{.language-} :
 
 ```pseudocode
-e ← (2 ** k) mod m
-exp ← 1
-res ← n_0 mod m
-pour chaque i de [1, l]:
-    exp ← (exp * e) mod m
-    c ← (exp * n_i) mod m
-    res ← (res + c) mod m
+algorithme modulo(n: [entier], base) → entier:
+    e ← base mod m
+    exp ← 1
+    res ← n[0] mod m
+    pour chaque i de [1, n.longueur[:
+        exp ← (exp * e) mod m
+        c ← (exp * n[i]) mod m
+        res ← (res + c) mod m
+
+    rendre res
 ```
 
 #### Équiprobable
@@ -208,19 +207,13 @@ Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme q
 
 Un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$.
 
-Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur :
+Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur car $(k \times p) \mod (p \times q) = (k \mod q) \times p$.
 
-$$
-(k \times p) \mod (p \times q) = (k \mod q) \times p
-$$
+De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme. Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :
 
-De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.
-
-Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :
-
-{% attention "**À retenir**" %}
-Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.
-{% endattention %}
+{% note %}
+On utilise le modulo comme fonction de hachage avec un nombre $m$ premier.
+{% endnote %}
 
 ### Hash de python
 
@@ -256,10 +249,26 @@ Ceci assure :
 Comme le but premier d'une fonction de hachage est de distinguer deux objets, mais que le nombre de possibilité est fini, il faut minimiser la probabilité que deux objets aient le même hash.
 
 {% note "**Définition**" %}
-Une **_collision_** pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$
+Une **_collision_** pour une fonction de hachage $h$ est deux nombres $a$ et $b$ telle que $f(a) = f(b)$
 {% endnote %}
 
-On va distinguer deux types de collisions, celle d'obtenir un nombre précis :
+On va distinguer deux types de collisions :
+
+- celle d'obtenir un nombre précis
+- celle que deux nombres aient le même hash
+
+On va utiliser un exemple pur se fixer les idée :
+
+1. le premier type de collision correspond à un élève ayant la même date d'anniversaire que le prof
+2. le deuxième type de collision correspond à deux élèves ayant la même date d'anniversaire
+
+Dans le premier cas on choisit le nombre qui va faire une collision alors que dans le second la collision peut se faire sur n'importe quel nombre : intuitivement le second cas doit arriver plus souvent que le premier. 
+
+{% faire %}
+Faites le test pour votre promo !
+{% endfaire %}
+
+Calculons le précisément.
 
 {% note "**Proposition**" %}
 Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n > 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$ donné) est :
@@ -273,7 +282,9 @@ $$
 À chaque tirage, la probabilité que la fonction de hash soit égale à $h$ est $\frac{1}{m}$, la probabilité de ne pas être égale à $h$ est donc $1-\frac{1}{m}$. Les tirages étant équiprobables, la probabilité est bien celle demandée.
 {% enddetails %}
 
-Et celle d'obtenir deux fois le même nombre :
+Pour notre exemple, si la classe contient 40 élèves, la probabilité **qu'aucun d'entres eux** ait la même date d'anniversaire que le prof est : $(1-\frac{1}{365})^{40} \simeq 90%$.
+
+Pour le deuxième cas :
 
 <div id="paradoxe-anniversaires"></div>
 
@@ -291,7 +302,7 @@ A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit diff�
 
 {% enddetails %}
 
-On peut en extraire des solutions approchées si $m$ est très grand devant $n$ :
+Ce calcul est plus compliqué que le précédent, mais on peut calculer des valeurs approchées si (comme c'est très souvent le cas) $m$ est très grand devant $n$ :
 
 {% note  "**Proposition**" %}
 Si $m$ est grand devant $n$, la probabilité $p(n, m)$ de tirer $n > 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$ donné) est :
@@ -357,14 +368,16 @@ $$
 
 {% enddetails %}
 
-Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires), car il faut :
+Pour notre exemple, si la classe contient 40 élèves,la probabilité **qu'aucun élève** n'ait la même date d'anniversaire qu'un autre est environ : $\exp(-\frac{40^2}{2 \cdot 365}) \simeq 11%$.
 
-- 253 étudiants (${-365 \cdot \ln(.5)} \simeq 253$) pour qu'il y ait plus de 50% de chance qu'une personne soit née le même jour que moi,
-- seulement 23 étudiants ($\sqrt{-2\cdot 365 \cdot \ln(.5)} \simeq 22.5$) pour qu'il y ait plus de 50% de chance que 2 personnes soient nées le même jour.
+Ces inégalités permettent de plus de calculer le nombre d'élèves qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques :
 
-{% faire %}
-Faites le test !
-{% endfaire %}
+- 253 élèves (${-365 \cdot \ln(.5)} \simeq 253$) pour qu'il y ait plus de 50% de chance qu'une personne soit née le même jour que le prof,
+- seulement 23 étudiants ($\sqrt{-2\cdot 365 \cdot \ln(.5)} \simeq 23$) pour qu'il y ait plus de 50% de chance que 2 personnes soient nées le même jour.
+
+{% info %}
+Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires).
+{% endinfo %}
 
 Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par [git](https://fr.wikipedia.org/wiki/Git), qui rend un mot de $\\{0, 1\\}^{160}$ (git utilise la fonction de hachage [sha-1](https://fr.wikipedia.org/wiki/SHA-1)), il faudrait avoir un nombre de tirages de :
 
@@ -376,9 +389,9 @@ Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un s
 
 De ce qui découle on en déduit une règle universelle de toute fonction de hash :
 
-{% note "**Paradoxe des anniversaires**" %}
-Pour toute fonction de hash rendant un mot de $p$ bits, il faut : $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.
-{% endnote %}
+{% attention "**À retenir**" %}
+Pour une fonction de hash rendant un mot de $p$ bits, il faut $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.
+{% endattention %}
 
 ## Utilisation
 

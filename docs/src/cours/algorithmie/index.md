@@ -288,12 +288,14 @@ Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont p
 
 ### On s'entraîne
 
-#### Somme classiques
+#### Sommes classiques
 
 <span id="sommes-classiques"></span>
 
 > TBD utile en complexité. Montrer quand ça arrive.
-
+> <https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF>
+> vu dans liste : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}} \leq 2$
+> 
 > vu dans la reconnaissance : $\lim_{n\to\infty} \sum_{i=1}^n\frac{1}{i^2} = \frac{\pi^2}{6}$
 > vu dans le tri rapide : $\sum_{1 \leq 0 \leq K}\cdot 2^{k}$ et $\sum_{0 \leq k \leq K}k\cdot 2^{k} = (K-1)2^{K} + 1$ (vu dans le tri rapide) et $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$
 > serie harmonique $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$. Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique),

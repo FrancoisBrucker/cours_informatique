@@ -53,3 +53,6 @@ Comme on a rien sans rien en algorithmie, permettre de supprimer un élément en
 > TBD def récursive pour les langages fonctionnels comme le lisp (rappelez vous la fonction de McCarty) ou encore le haskell.
 > TBD listes chaînées sont super aussi pour les algorithmes récursifs car on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
 > TBD reprendre les exo récursif avec une liste. Montrer que ça marche bien.
+
+
+> TBD Enfin, comme les éléments d'une liste sont contiguës en mémoire, cette structure évite plus [défauts de cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache#Diff%C3%A9rents_types_de_d%C3%A9fauts_de_cache_(miss)) qu'une liste chaînée. Si l'on peut se permettre de ne pas avoir de temps constant pour toutes les opérations (ce n'est pas toujours le cas si les opérations sont critiques) et donc de troquer la complexité par de la complexité amortie, il est souvent plus avantageux en pratique d'utiliser des listes plutôt que des listes chaînées.

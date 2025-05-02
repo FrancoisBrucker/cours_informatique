@@ -17,10 +17,11 @@ Commençons par décrire les objets que l'on peut manipuler en pseudo-code et le
 
 ### <span id="objets-basique"></span> Objets basiques
 
-Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et sont au nombre de cinq :
+Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et sont au nombre de six :
 
 - le vide : `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C)
 - les booléens : `vrai`{.language-} et `faux`{.language-}
+- les bits : `0`{.language-} et `1`{.language-}
 - les nombres entiers
 - les nombres réels
 - les caractères : `"a"`{.language-}, `"b"`{.language-}, ...

@@ -450,9 +450,10 @@ Réfléchissez à ce résultat, il est assez surprenant, non ?.
 
 > complexité amortie file avec 2 piles : <https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2223.pdf>
 
-### Ajout et suppression dans une liste
+### <span id="exercice-liste-suppression-ajout"></span> Ajout et suppression dans une liste
 
 > faire un mix avec 8.2 : <https://www.di.ens.fr/~fouque/articles/poly-algo.pdf> avec comptage et potentiel pour l'ajout simple.
+> TBD voir aussi le poly de pascal.
 
 > TBD à faire (dire que c'est dur)
 

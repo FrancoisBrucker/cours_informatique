@@ -15,53 +15,91 @@ Une liste est une amélioration de [la structure de tableau](../pseudo-code/briq
 Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter [la partie consacrée aux listes](/cours/coder-et-développer/bases-programmation/conteneurs/listes/){.interne} du cours sur les bases du code.
 {% endinfo %}
 
-## Définition de la structure
-
-> TBD accès aux indice via valeur
+## <span id="structure"></span>Définition de la structure
 
 ```pseudocode
 structure Liste<Type>:
     attributs:
-        taille: entier
-
+        taille: entier ← 0
         T: [Type] de longueur taille
     méthodes:
-        # self[i] = self.T[i]
-        fonction valeur(i: entier) → Type:  # 0 ≤ i < T.longueur
+        # valeur ← self[i] = valeur ← self.get(i)
+        fonction get(i: entier) → Type:
             rendre T[i]
 
-        append(x: Type)  → ∅:
+        # self[clé] ← valeur = self.set(clé, valeur)
+        fonction set(i: indice, valeur: Type) → ∅:
+            T[i] ← valeur
+
+        fonction append(x: Type)  → ∅:
             si taille == T.longueur:
                 T2 ← un nouveau tableau de Type de longueur 2 * T.longueur
                 T2[:T.longueur] ← T
                 T ← T2 
             T[taille] ← x
             taille ← taille + 1
-        pop()  → Type:
+        fonction pop()  → Type:
             taille ← taille - 1
             rendre T[taille]
+
+        fonction insert(pos: entier, x: Type) → ∅:
+            self.append(T[-1])
+            pour chaque i allant de T.longueur - 1 à pos + 1 par pas de -1:
+                T[i] ← T[i-1]
+            T[pos] ← x
+        fonction delete(pos: entier) → Type:
+            r ← T[pos]
+            pour chaque i de [pos, T.longueur - 1[:
+                T[i] ← T[i+1]
+            self.pop()
+
+            return r
+
 ```
 
-On utilise une liste comme un tableau, en ajoutant 2 méthodes :
+<span id="structure-getter-setter"></span>
+
+{% note "**Getter et setter**" %}
+On utilise l'abus de notation suivant, classique en programmation, permettant de masquer des méthodes par un accès direct. Pour une liste `l`{.language-} :
+
+- accès à un élément : on écrira `e ← l[i]` à la place de `e ← l.get(i)`
+- changer un élément : on écrira `l[i] ← e` à la place de `l.set(i, e)`
+
+{% endnote %}
+
+Ceci permet d'utiliser une liste comme un tableau, en ajoutant en plus 4 méthodes permettant de modifier sa taille :
 
 - `append`{.language-} qui ajoute un élément en fin de liste
-- `pop`{.language-} qui rend le dernier élément de la liste et le supprime de la liste.
+- `insert`{.language-} qui insère un élément à une position quelconque de la liste en décalant les éléments après vers la droite
+- `pop`{.language-} qui rend le dernier élément de la liste et le supprime de la liste
+- `delete`{.language-} qui rend un élément à une position quelconque de la liste et le supprime de la liste en décalant les éléments après vers la gauche
 
-> TBD exemple d'utilisation
+Lorsque la taille du tableau devient trop petite pour contenir toutes les valeurs, on crée un tableau de taille double : on peut ajouter autant d'éléments à une liste que l'on souhaite ! Le code suivant est donc légitime :
 
+```pseudocode
+l ← Liste<entier>
+pour chaque i de [0, 2^42]:
+    l.append(i)
+
+pour chaque i de [0, 2^42[:
+    l[i] ← l[i + 1]
+```
+
+{% attention "**À retenir**" %}
 La liste est une généralisation du tableau permettant de modifier sa taille.
+{% endattention %}
 
 ## Complexités
 
-Examinons les complexités des méthodes de listes
+Examinons les complexités des méthodes de listes.
 
 ### Création
 
-A la création de la liste, on crée un tableau de taille $n$, telle que $n$ soit une constante ni trop petite, ni trop grande.
+A la création de la liste, on crée un tableau de taille $K$, une constante ni trop petite, ni trop grande :
 
-{% attention "**À retenir**" %}
+{% note %}
 La complexité de la création d'une liste est $\mathcal{O}(1)$.
-{% endattention %}
+{% endnote %}
 
 ### Ajout d'un élément
 
@@ -71,28 +109,28 @@ L'ajout d'un élément en fin de liste va être de complexité $\mathcal{O}(T.\m
  opérations !
 
 {% note %}
-La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(T.\mbox{\small longueur})$ (cas le pire), **mais s'il reste de la place**, elle est en $\mathcal{O}(1)$.
+La complexité de l'ajout d'un élément en fin de liste avec `Liste.append`{.language-} est en $\mathcal{O}(T.\mbox{\small longueur})$ (cas le pire), **mais s'il reste de la place**, elle est en $\mathcal{O}(1)$.
 {% endnote %}
 
 Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du $i$ème et enfin on affecte le nouvel élément à sa place. Comme il faut toujours déplacer des éléments :
 
-{% attention "**À retenir**" %}
-La complexité de l'**insertion d'un élément à une position quelconque** dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.
-{% endattention %}
+{% note %}
+La complexité de l'**insertion d'un élément à une position quelconque** dans une liste  avec `Liste.insert`{.language-}  est en $\mathcal{O}(T.\mbox{\small longueur})$.
+{% endnote %}
 
 ### Suppression d'un élément
 
 Pour supprimer le dernier élément d'une liste on n'a qu'une opération à faire :
 
-{% attention "**À retenir**" %}
-La complexité de la **suppression du dernier élément d'une liste** est $\mathcal{O}(1)$.
-{% endattention %}
+{% note %}
+La complexité de la **suppression du dernier élément d'une liste** avec `Liste.pop`{.language-} est $\mathcal{O}(1)$.
+{% endnote %}
 
 Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$ :
 
-{% attention "**À retenir**" %}
-La complexité de la suppression d'un élément à une position quelconque dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.
-{% endattention %}
+{% note %}
+La complexité de la suppression d'un élément à une position quelconque dans une liste  avec `Liste.delete`{.language-}  est en $\mathcal{O}(T.\mbox{\small longueur})$.
+{% endnote %}
 
 ## Complexité d'ajout de $N$ éléments à la fin de la structure
 
@@ -101,7 +139,7 @@ Ajouter un élément à la fin de la structure peut très mal tomber : cela peut
 On a le résultat suivant :
 
 <div id="preuve-liste-ajout"></div>
-{% note %}
+{% note "**Proposition**" %}
 L'ajout de $N$ éléments à une liste initialement vide prend $\mathcal{O}(N)$ opérations au maximum
 {% endnote %}
 {% details "preuve", "open" %}
@@ -133,7 +171,7 @@ C(N) &=& \mathcal{O}(N + \underbracket{1 + \cdot + 1}_{N/2 - 1} + \frac{N}{2} + 
 $$
 </div>
 
-Comme $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}} \leq 2$ pour tout $n$ (immédiat par récurrence mais il existe également [une preuve directe](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)), on a :
+Comme, [on le prouvera](../#sommes-classiques){.interne}, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :
 
 <div>
 $$
@@ -172,24 +210,27 @@ Dans nos calculs de complexité on utilisera $\mathcal{O}(1)$ comme complexité 
 
 La complexité des opérations de la liste commune avec un tableau (lecture écriture à index fixé) est de même complexité et on peut ajouter/supprimer des éléments se fait en $\mathcal{O}(1)$ en amorti.
 
-Enfin, comme les éléments d'une liste sont contiguës en mémoire, cette structure évite plus [défauts de cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache#Diff%C3%A9rents_types_de_d%C3%A9fauts_de_cache_(miss)) qu'une liste chaînée. Si l'on peut se permettre de ne pas avoir de temps constant pour toutes les opérations (ce n'est pas toujours le cas si les opérations sont critiques) et donc de troquer la complexité par de la complexité amortie, il est souvent plus avantageux en pratique d'utiliser des listes plutôt que des listes chaînées.
-
 ## Améliorations possibles
 
 ### Gérer la suppression
 
 Pour ne pas gâcher de la place, une amélioration courante des listes est de réduire la taille du tableau si après la suppression du dernier élément de la liste, sa taille $m$ est deux fois plus grande que le nombre $n$ d'éléments stockés.
 
-Maintenant l'ajout en fin de liste et la suppression en fin de liste ont des complexités variables, ceci ne change cependant pas la complexité amortie (même si la preuve est autrement plus difficile à démontrer) de l'utilisation d'une liste :
+Même si l'ajout en fin de liste et la suppression en fin de liste ont des complexités variables, ceci ne change cependant pas la complexité amortie (même si la preuve est autrement plus difficile à démontrer) de l'utilisation d'une liste :
 
-> TBD on le fera en exercice de la complexité amortie.
+{% note "**Proposition**" %}
+La complexité amortie de l'ajout et de la suppression d'un élément en fin de liste est en $\mathcal{O}(1)$.
+{% endnote %}
+{% details "preuve" %}
+Voir [exercice de la complexité amortie](../complexité-amortie/#exercice-liste-suppression-ajout){.interne}.
+{% enddetails %}
 
 La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.
 
 ### De combien augmenter la taille ?
 
+Doit-on augmenter la taille du tableau de 2 ? De 1.5 ? D'autre chose ? La réponse à cette question est bien plus délicate qu'on ne le pense et dépend fortement de l'usage qu'on va avoir des listes. Regardez la vidéo ci-dessous pour vous en convaincre :
+
 {% lien %}
 <https://www.youtube.com/watch?v=GZPqDvG615k>
 {% endlien %}
-
-> TBD . Facteur pour grossir. 2, 1.5 autre chose ? Si seul et si plusieurs ? Bref : se méfier des solutions simples (1. x2 puis on regarde place perdue -> x1.5 puis on regarde si plusieurs -> x2)
