@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Fonction de hachage</title>
+    <title>Fonctions de hachage</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Fonction de hachage</h1>
+  <h1>Fonctions de hachage</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/">Structures de dictionnaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/">Fonction de hachage</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/">Structures de dictionnaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/">Fonctions de hachage</a>
 
 </div></div>
 
@@ -97,7 +97,6 @@
   
 
   <p>Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm">sha</a>.</p>
-<p>On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont <a href="../tableau-associatif" class="interne">les tableaux associatifs</a>, encore appelés dictionnaires).</p>
 <h2>Définitions</h2>
 <p>On peut définir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">une fonction de hachage</a> $f$ comme étant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -159,8 +158,7 @@ $$
 <span class="token number">1</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token number">3.14</span><span class="token punctuation">)</span>
 <span class="token number">322818021289917443</span></code></pre>
-<p>Remarquez que la fonction de hash utilisée dépend du type d'objet.</p>
-<p>De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objets mutable en python. Ainsi <code class="language-">hash([])</code> produira une erreur (<code class="language-">TypeError: unhashable type: 'list'</code>).</p>
+<p>De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objets mutables en python. Ainsi <code class="language-">hash([])</code> produira une erreur (<code class="language-">TypeError: unhashable type: 'list'</code>).</p>
 <p>La principale raison de l'utilisation es fonctions de hachage est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -176,18 +174,19 @@ $$</p>
 </div></div>
 
 <p>Une fonction de hachage permet de partitionner les entiers (<em>ie.</em> les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une <em>bonne</em> fonction de hachage d'avoir en plus les propriétés suivantes :</p>
+<p><span id="définition-hachage-utile"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Utilité des fonctions de hachage</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.},{.} } m]$ soit <strong><em>utile</em></strong>, elle doit avoir les 3 propriétés suivantes :</p>
+<p>Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.},{.} } m[$ est <strong><em>utile</em></strong>, si elle est :</p>
 <ol>
-<li>elle doit être <strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage</li>
-<li>elle doit être <strong>facilement calculable</strong></li>
-<li>elle doit être <strong>uniforme</strong> : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$</li>
+<li><strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage</li>
+<li><strong>facilement calculable</strong></li>
+<li><strong>uniforme</strong> : $\mathbb{P}(f(a) = i) = \frac{1}{m}$ pour tout $a\in \mathbb{N}$ et $0 \leq i &lt; m$</li>
 </ol>
 </div></div>
 
@@ -203,8 +202,7 @@ f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
 \end{array}
 $$
 </div>
-<p>est une fonction de hachage.</p>
-<p>Elle n'est cependant que peu utile, car elle n'est pas uniforme. Ceci dit, elle est utilisé plus souvent qu'on ne le croit par des informaticiens trop pressés par le temps...</p>
+<p>Est une fonction de hachage, mais non utile car elle non uniforme.</p>
 <h3>Le modulo</h3>
 <p>La fonction modulo (le reste de la division entière) :</p>
 <div>
@@ -262,15 +260,18 @@ n \mod m &=&  (\sum_{i=0}^l n_i2^{ki}) \mod m \\
 \end{array}
 $$
 </div>
-<p>Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bit fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.</p>
-<p>De la un pseudo-code du calcul du modulo de $n = n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0$ qui se fait en $\mathcal{O}(l) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">e <span class="token operator">←</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod m
-exp <span class="token operator">←</span> <span class="token number">1</span>
-res <span class="token operator">←</span> n_0 mod m
-<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    exp <span class="token operator">←</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> e<span class="token punctuation">)</span> mod m
-    c <span class="token operator">←</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> n_i<span class="token punctuation">)</span> mod m
-    res <span class="token operator">←</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod m</code></pre>
+<p>Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bits fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.</p>
+<p>De la un pseudo-code du calcul du modulo de $n = n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0$ qui se fait en $\mathcal{O}(l) = \mathcal{O}(\log(n))$ grace à l'algorithme <code class="language-">modulo([n0, ..., nl], 2^k)</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">modulo</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> base<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    e <span class="token operator">←</span> base mod m
+    exp <span class="token operator">←</span> <span class="token number">1</span>
+    res <span class="token operator">←</span> n<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> mod m
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        exp <span class="token operator">←</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> e<span class="token punctuation">)</span> mod m
+        c <span class="token operator">←</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> n<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> mod m
+        res <span class="token operator">←</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod m
+
+    <span class="token keyword">rendre</span> res</code></pre>
 <h4>Équiprobable</h4>
 <p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ puisque les ensembles $M_i = \{k\cdot m+i \mid k \geq 0\}$ pour $0\leq i \leq m-1$ :</p>
 <ul>
@@ -279,20 +280,14 @@ res <span class="token operator">←</span> n_0 mod m
 <li>recouvrent tous les entiers</li>
 </ul>
 <p>Un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$.</p>
-<p>Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur :</p>
-<p>$$
-(k \times p) \mod (p \times q) = (k \mod q) \times p
-$$</p>
-<p>De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.</p>
-<p>Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<p>Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur car $(k \times p) \mod (p \times q) = (k \mod q) \times p$.</p>
+<p>De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme. Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.</p>
+<div class="pl-8 mr-8">
+<p>On utilise le modulo comme fonction de hachage avec un nombre $m$ premier.</p>
 </div></div>
 
 <h3>Hash de python</h3>
@@ -329,10 +324,30 @@ $$</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <strong><em>collision</em></strong> pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$</p>
+<p>Une <strong><em>collision</em></strong> pour une fonction de hachage $h$ est deux nombres $a$ et $b$ telle que $f(a) = f(b)$</p>
 </div></div>
 
-<p>On va distinguer deux types de collisions, celle d'obtenir un nombre précis :</p>
+<p>On va distinguer deux types de collisions :</p>
+<ul>
+<li>celle d'obtenir un nombre précis</li>
+<li>celle que deux nombres aient le même hash</li>
+</ul>
+<p>On va utiliser un exemple pur se fixer les idée :</p>
+<ol>
+<li>le premier type de collision correspond à un élève ayant la même date d'anniversaire que le prof</li>
+<li>le deuxième type de collision correspond à deux élèves ayant la même date d'anniversaire</li>
+</ol>
+<p>Dans le premier cas on choisit le nombre qui va faire une collision alors que dans le second la collision peut se faire sur n'importe quel nombre : intuitivement le second cas doit arriver plus souvent que le premier.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Faites le test pour votre promo !</p>
+</div></div>
+
+<p>Calculons le précisément.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -367,7 +382,8 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>Et celle d'obtenir deux fois le même nombre :</p>
+<p>Pour notre exemple, si la classe contient 40 élèves, la probabilité <strong>qu'aucun d'entres eux</strong> ait la même date d'anniversaire que le prof est : $(1-\frac{1}{365})^{40} \simeq 90%$.</p>
+<p>Pour le deuxième cas :</p>
 <div id="paradoxe-anniversaires"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -403,7 +419,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>On peut en extraire des solutions approchées si $m$ est très grand devant $n$ :</p>
+<p>Ce calcul est plus compliqué que le précédent, mais on peut calculer des valeurs approchées si (comme c'est très souvent le cas) $m$ est très grand devant $n$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -480,18 +496,18 @@ $$
 </div>
 </details>     
 </div>
-<p>Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires">paradoxe des anniversaires</a>, car il faut :</p>
+<p>Pour notre exemple, si la classe contient 40 élèves,la probabilité <strong>qu'aucun élève</strong> n'ait la même date d'anniversaire qu'un autre est environ : $\exp(-\frac{40^2}{2 \cdot 365}) \simeq 11%$.</p>
+<p>Ces inégalités permettent de plus de calculer le nombre d'élèves qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques :</p>
 <ul>
-<li>253 étudiants (${-365 \cdot \ln(.5)} \simeq 253$) pour qu'il y ait plus de 50% de chance qu'une personne soit née le même jour que moi,</li>
-<li>seulement 23 étudiants ($\sqrt{-2\cdot 365 \cdot \ln(.5)} \simeq 22.5$) pour qu'il y ait plus de 50% de chance que 2 personnes soient nées le même jour.</li>
+<li>253 élèves (${-365 \cdot \ln(.5)} \simeq 253$) pour qu'il y ait plus de 50% de chance qu'une personne soit née le même jour que le prof,</li>
+<li>seulement 23 étudiants ($\sqrt{-2\cdot 365 \cdot \ln(.5)} \simeq 23$) pour qu'il y ait plus de 50% de chance que 2 personnes soient nées le même jour.</li>
 </ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Faites le test !</p>
+<p>Ce résultat est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires">paradoxe des anniversaires</a>.</p>
 </div></div>
 
 <p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a>), il faudrait avoir un nombre de tirages de :</p>
@@ -500,14 +516,14 @@ n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq 1.2 \cdot \sqrt{2^{160}} \simeq 1.2 
 $$</p>
 <p>Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet (mais est possible... On considère en 2025 qu'une bonne méthode doit avoir au moins $2^{128}$ essais en brute force) !</p>
 <p>De ce qui découle on en déduit une règle universelle de toute fonction de hash :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Paradoxe des anniversaires</strong></p>
+<p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour toute fonction de hash rendant un mot de $p$ bits, il faut : $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.</p>
+<p>Pour une fonction de hash rendant un mot de $p$ bits, il faut $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.</p>
 </div></div>
 
 <h2>Utilisation</h2>
