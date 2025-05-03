@@ -28,5 +28,8 @@ Tests et examens pour l'année scolaire 2023/2024
 ## Devoirs Surveillés
 
 1. [DS Algorithmie](./ds-algorithmie){.interne}
+2. [DS Code](./ds-code){.interne}
+
+## Examen terminal
 
 > TBD

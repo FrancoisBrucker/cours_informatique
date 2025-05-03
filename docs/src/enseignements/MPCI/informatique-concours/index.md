@@ -141,7 +141,7 @@ Quelques algorithmes ont aussi à connaître :
 ## X
 
 > TBD
->
+> <https://www.lix.polytechnique.fr/Labo/Samuel.Mimram/teaching/INF551/>
 
 ## ENS
 

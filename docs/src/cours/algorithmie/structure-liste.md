@@ -23,21 +23,24 @@ structure Liste<Type>:
         taille: entier ← 0
         T: [Type] de longueur taille
     méthodes:
-        # valeur ← self[i] = valeur ← self.get(i)
-        fonction get(i: entier) → Type:
+        fonction get(i: entier) → Type:  # valeur ← self[i] = valeur ← self.get(i)
             rendre T[i]
-
-        # self[clé] ← valeur = self.set(clé, valeur)
-        fonction set(i: indice, valeur: Type) → ∅:
+        fonction set(i: indice, valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
             T[i] ← valeur
 
         fonction append(x: Type)  → ∅:
             si taille == T.longueur:
-                T2 ← un nouveau tableau de Type de longueur 2 * T.longueur
-                T2[:T.longueur] ← T
-                T ← T2 
-            T[taille] ← x
-            taille ← taille + 1
+                T2 ← T
+
+                taille ← 0
+                T ← un nouveau tableau de Type de longueur 2 * T2.longueur
+                pour chaque y de T2:
+                    append(y)
+
+                append(x)
+            sinon:
+                T[taille] ← x
+                taille ← taille + 1
         fonction pop()  → Type:
             taille ← taille - 1
             rendre T[taille]

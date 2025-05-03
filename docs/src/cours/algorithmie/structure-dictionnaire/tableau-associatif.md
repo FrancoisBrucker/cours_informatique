@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Tableaux associatifs ou dictionnaire"
+title: "Tableaux associatifs ou dictionnaires"
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le tableau associatif, aussi appelé dictionnaire.
+Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le tableau associatif (_hash map_) aussi appelé dictionnaire (en python par exemple).
 
 Cette structure utilise de façon sous-jacente une [fonctions de hachage](../fonctions-hash){.interne}.
 
@@ -17,7 +17,7 @@ Cette structure utilise de façon sous-jacente une [fonctions de hachage](../fon
 
 Dans tout ce qui suit on considérera uniquement des données représentés par un tableau binaire. Ceci permettra de considérer que l'on peut appliquer ses fonctions à n'importe quel type de donnée via leur représentation binaire.
 
-Nos fonctions de hachage seront donc de type :
+Nos fonctions de hachage seront donc dans toutes leurs généralités de type :
 
 <div>
 $$
@@ -28,161 +28,352 @@ $$
 Puisqu'utilisés dans un algorithme :
 
 - on doit pouvoir les calculer : on peut leur associer un algorithme `f(d: [bit]) → entier`{.language-},
-- ce calcul doit être rapide : de complexité linéaire $\mathcal{O}(d.\mbox{\small longueur})$.
+- ce calcul doit être rapide : de complexité linéaire $\mathcal{O}(d.\mbox{\small longueur})$
 
-Enfin, pour que tout se passe bien en moyenne on supposera les supposera [utiles](../fonctions-hash/#définition-hachage-utile){.interne}.
+De plus, pour que tout se passe bien en moyenne on supposera les supposera [utiles](../fonctions-hash/#définition-hachage-utile){.interne}.
 
 ## Principe
 
-Le squelette de la structure de Dictionnaire est la suivante :
+Le squelette de la structure de Tableau associatif est la suivante :
 
 ```pseudocode
-structure Dictionnaire:
+structure TableauAssociatif<V>:
     attributs:
-        taille: entier 
-
-        T: [entier] ← tableau de longueur taille
+        T: [V] ← tableau de longueur m
     méthodes:
-        fonction f(clé: [bit]) → entier
+        fonction f(clé: [bit]) → entier  # fonction de hachage utile de C dans [0, m[
 
-        # valeur ← self[clé] = valeur ← self.get(clé)
-        fonction get(clé: [bit]) → entier:
+        fonction get(clé: [bit]) → V:  # valeur ← self[clé] = valeur ← self.get(clé)
             rendre T[f(clé)]
-
-        # self[clé] ← valeur = self.set(clé, valeur)
-        fonction set(clé: [bit], valeur) → ∅:
+        fonction set(clé: [bit], valeur: V) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
             T[f(clé)] ← valeur
 
 ```
 
-On utilise [le même abus que pour les listes](../../structure-liste/#structure-getter-setter){.interne} : pour un dictionnaire `d`{.language-} on écrira toujours `d[clé]`{.language-} à la place de `d.T[d.f(clé)]`{.language-}.
+{% info %}
+On utilise [le même abus que pour les listes](../../structure-liste/#structure-getter-setter){.interne} : pour un tableau associatif `d`{.language-} on écrira toujours `d[clé]`{.language-} à la place de `d.get(clé)`{.language-} ou de `d.set(clé, valeur)`{.language-}.
+{% endinfo %}
 
-### hash injective
+En deux mots, un tableau associatif est une structure permettant accéder à des _valeurs_ via des _clés_. Elle généralise la structure de tableau où les clés ne peuvent qu'être que des indices.
 
-Si la fonction $f$ est injective, c'est à dire que tous nos objets ont une valeur de hash unique, on peut accéder aux élément d'un tableau $T$ de taille $m$ soit :
-
-- par un indice $0 \leq i < m$ : $T[i]$
-- par un objet $o$ puisque $0 \leq \mbox{hash}(o) < m$  : $T[\mbox{hash}(o)]$
-
-L'objet $o$ est une **_clé_** permettant d'accéder à la **_valeur_** $T[\mbox{hash}(o)]$
-
-La structure de dictionnaire est alors, en supposant que l'on possède un type générique objet :
+En supposant que tout objet peut être converti sous sa forme binaire, on peut écrire :
 
 ```pseudocode
-structure Dictionnaire:
-    attributs:
-        T: [Objet]
-        f: (Objet → [0, m[)  # fonction de hachage injective
-    création() → Dictionnaire:
-        T ← un tableau de taille m
-    méthodes:
-        méthode donne_valeur(clé: Objet) → entier:
-            rendre T[f(clé)]
-        méthode associe_valeur(clé: Objet, valeur: entier) → vide:
-            T[f(clé)] ← valeur
+rgb ← TableauAssociatif<entier>
+
+rgb["rouge"] ← 230
+rgb["vert"] ← 12
+rgb["bleu"] ← 255
+
+couleur ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + 2^16 * rgb["bleu"]
 ```
 
-On accède aux éléments stockés via un objet et plus un indice, ce qui est vraiment pratique !
+On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si `TableauAssociatif.f("bleu")`{.language-} =  `TableauAssociatif.f("rouge")`{.language-} le code précédent ne fonctionnera pas.
 
-### hash quelconque
+$m$ est très grand devant le nombre d'objet que l'on veut stocker cette probabilité de collision est tellement faible qu'on peut la considérer comme nulle, mais :
 
-Si la fonction de hash n'est pas injective (ce qui est généralement le cas), plusieurs objets peuvent avoir le même hash. Il faut pouvoir les distinguer. La façon classique de faire ceci est de créer une indirection via une liste contenant des couples (clé, valeur) possibles :
+- si on veut garder des tailles de structure raisonnables et donc réduire $m$ au maximum,
+- si on ne peut se permettre une collision de probabilité aussi faible-soit elle
+
+Il faut trouver un moyen de les gérer aux mieux (c'est à dire avec une complexité maîtrisée).
+
+{% info %}
+Notez que cette préoccupation n'est pas toujours utile. Le logiciel git, utilisé quotidiennement pas des millions de personnes ne fait pas de gestion de collision car les probabilités de collision sont trop faibles.
+{% endinfo %}
+
+Enfin, en toute rigueur le premier exemple devrait plutôt s'écrire :
 
 ```pseudocode
-structure Dictionnaire:
-    attributs:
-        T: [Liste de (Objet, Objet)]
-        f: (Objet → [0, m[)   # fonction de hachage non injective
-    création() → Dictionnaire:
-        T ← un tableau de taille m
-        pour chaque i de [0, m[:
-            T[i] ← nouvelle liste vide  # liste de couples (clé, valeur)
-    méthodes:
-        méthode donne_valeur(clé: objet) → entier:
-            l ← T[f(clé)]  # liste de couples
+rgb ← TableauAssociatif<entier>
 
-            pour chaque couple (o, v) de l:
-                si o == clé:
+rgb[bin("rouge")] ← 230
+rgb[bin("vert")] ← 12
+rgb[bin("bleu")] ← 255
+
+couleur ← 2^16 * rgb[bin("rouge")] + 2^8 * rgb[bin("vert")] + 2^16 * rgb[bin("bleu")]
+```
+
+En utilisant la fonction `bin`{.language-} qui rend la représentation binaire de l'objet. Pour éviter cette indirection, on peut spécifier un type spécifique aux clés et utiliser la structure suivante, avec deux type génériques :
+
+<span id="structure-deux-types-génériques"></span>
+
+```pseudocode
+structure TableauAssociatif<C, V>:
+    attributs:
+        T: [V] ← tableau de longueur m
+    méthodes:
+        fonction f(clé: C) → entier  # fonction de hachage utile de C dans [0, m[
+
+        fonction get(clé: C) → V:  # valeur ← self[clé] = valeur ← self.get(clé)
+            rendre T[f(clé)]
+        fonction set(clé: C, valeur: V) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
+            T[f(clé)] ← valeur
+
+```
+
+Ce qui permet d'écrire :
+
+```pseudocode
+rgb ← TableauAssociatif<chaîne, entier>
+
+rgb["rouge"] ← 230
+rgb["vert"] ← 12
+rgb["bleu"] ← 255
+
+couleur ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + 2^16 * rgb["bleu"]
+```
+
+Pour alléger un peu les notations on ne spécifiera que le type des valeurs dans la suite de cette partie et on supposera, par _abus de notation_ que les clés sont transformés en leur équivalent binaire.
+
+En revanche, dans le reste du cours, on spécifiera très souvent les types de clés et de valeurs pour éviter toute utilisation caché de fonctions (ici la fonction `bin`{.language-}).
+
+## Gestion des collisions
+
+Pour gérer les collisions, on utilise [le théorème fondamental du développement logiciel](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) :
+
+<span id="théorème-fondamental-développement-logiciel"></span>
+
+{% note "**Théorème fondamental du développement logiciel (TFDL)**" %}
+Tout problème peut être résolu en ajoutant une couche d'indirection supplémentaire.
+
+_"We can solve any problem by introducing an extra level of indirection."_
+{% endnote  %}
+
+Dans notre cas, l'indirection consiste à stocker les couples (clé, valeur) possibles dans $T[f(i)]$ :
+
+```pseudocode
+structure TableauAssociatif<Type>:
+    attributs:
+        T: [Liste<([bit], Type)>] ← tableau de longueur m où chaque élément est initialisé à une liste vide
+    méthodes:
+        fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+
+        fonction get(clé: [bit]) → Type:  # valeur ← self[clé] = valeur ← self.get(clé)
+            pour chaque couple (c, v) de T[f(clé)]:
+                si c == clé:
                     rendre v
-        méthode associe_valeur(clé: objet, valeur: entier) → vide:
-            l ← T[f(clé)]  # liste de couples
 
-            pour chaque i de [0, l.longueur[:
-                o, v ← l[i]
-                si o == clé:  # clé est déjà associée à une valeur
-                    l[i] ← (clé, valeur)  # on met à jour
-                    rendre vide
+        fonction set(clé: [bit], valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
+            l ← T[f(clé)]
+            pour chaque i de [0 à l.longueur[ :
+                c, v ← l[i]
+                si c == clé:
+                    l[i] ← (clé, valeur)
+                    rendre ∅
 
-            l.append((clé, valeur))  # clé n'est pas encore stockée
+            T[f(clé)].append((clé, valeur))
+
+        fonction in(clé: [bit]) → booléen:  # x est dans self = self.in(x)
+            l ← T[f(clé)]
+            pour chaque e de l :
+                c, v ← e
+                si c == clé:
+                    l.delete((c, v))
+                    rendre Vrai
+            rendre Faux
+        fonction delete(clé: [bit]) → ∅:  # supprime x de self = self.delete(x)
+            l ← T[f(clé)]
+            pour chaque e de l :
+                c, v ← e
+                si c == clé:
+                    l.delete((c, v))
+                    rendre ∅
+
 ```
 
 Chaque élément du tableau T de la structure est une liste qui stockera les différentes clés ayant même hash.
 
-C'est cette structure qui est implémentée puisque qu'aucune fonction de hash n'est injective.
+Comme on peut ajouter des clés, on a ajouté deux méthodes `TableauAssociatif.in`{.language-} et `TableauAssociatif.delete`{.language-} permettant respectivement de savoir si une clé est présente dans le tableau associatif et pour supprimer une clé.
+
+Reprenons l'exemple précédent :
+
+```pseudocode
+rgb ← TableauAssociatif
+
+rgb["rouge"] ← 230
+rgb["vert"] ← 12
+rgb["bleu"] ← 255
+
+```
+
+En supposant que :
+
+- m = 3
+- `TableauAssociatif.f("vert")`{.language-} = 0
+- `TableauAssociatif.f("bleu")`{.language-} =  `TableauAssociatif.f("rouge")`{.language-} = 2
+
+Le tableau associatif `rgb`{.language-} vaudra :
+
+```pseudocode
+rgb = [[("vert", 12)],                    # indice 0
+       [],                                # indice 1
+       [("rouge", 230), ("bleu", 255)]]   # indice 2
+```
 
 ## Complexité de la recherche d'une clé
 
-Analysons la complexité dans les deux cas précédents
+La complexité de la méthode `TableauAssociatif.get`{.language-} vaut la somme de ces différentes opérations :
 
-### Fonction de hachage injective
+1. Calcul de $f(\mbox{clé})$
+2. Parcourir la liste des couples $(c, v)$ de la liste $T[f(\mbox{clé})]$ et comparer chaque $c$ à notre clé avec l'opérateur `==`{.language-} pour voir s'il sont égaux.
 
-La complexité de la recherche d'une valeur à partir d'une clé est égale à la complexité du calcule de la fonction de hash de la clé $f(\mbox{clé})$.
+Le calcul du hash de la clé et de l'opérateur `==`{.language-} sont linéaires en la taille des objets.
 
-Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de $f(\mbox{clé})$ se fait en $\mathcal{O}(1)$.
+Si la taille maximale des objets est connue, on a coutume de considérer que la complexité de l'opérateur `==`{.language-} et du calcul de $f(\mbox{clé})$ se fait en $\mathcal{O}(1)$. Une autre astuce est de calculer le hash de chaque objet à sa création et de le stocker (le hash devient un attribut universel de tout objet) : le calcul de $f(\mbox{clé})$ devient alors effectivement $\mathcal{O}(1)$ puisque cela revient à lire un attribut (c'est comme ça que procède python par exemple).
 
-### Fonction de hachage quelconque
+On en conclut que :
 
-Outre le calcul de $f(\mbox{clé})$, il faut ensuite :
-
-1. parcourir la liste des couples (objet, valeur) stocké pour une valeur de hash donnée
-2. comparer chaque objet à notre clé avec l'opérateur `==`{.language-}  pour voir s'il sont égaux.
-
-On considère que l'opérateur `==`{.language-} a une complexité de l'ordre de la taille de la structure à comparer ($\mathcal{O}(1)$ pour des types de base, mais de l'ordre de la taille si on compare deux tableaux d'entiers par exemple). Si la taille maximale des objets est connue, on a coutume de considérer que la complexité de l'opérateur `==`{.language-} vaut $\mathcal{O}(1)$ pour tout objet $c$.
-
-On en conclut que la recherche et l'affectation dans un dictionnaire est en _grand O_ du nombre maximum de clé stockés avec la même valeur de hash.
+{% note %}
+La recherche et l'affectation dans un tableau associatif est en $\mathcal{O}$ du nombre maximum de clé stockés avec la même valeur de hash.
+{% endnote %}
 
 ## Taille de la structure
 
-Comme la liste principale où stocker les éléments est de taille $m$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise [sha-2](https://fr.wikipedia.org/wiki/SHA-2) comme fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...
+Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour [sipHash](https://en.wikipedia.org/wiki/SipHash), la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque tableau associatif.
 
-C'est pourquoi, en réalité on n'utilise une fonction supplémentaire appelée **fonction d'adressage** qui est une deuxième fonction de hash dont on peut maîtriser la taille :
+Pour résoudre ce problème on va encore une fois utiliser [le TFDL](./#théorème-fondamental-développement-logiciel){.interne} et ajouter une indirection.
 
-{% note "**Définition**" %}
-Une **_fonction d'adressage_** $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$.
-{% endnote %}
-
-Une structure de dictionnaire est alors :
+On utilise une fonction supplémentaire appelée **fonction d'adressage** qui est une deuxième fonction de hachage dont maîtrise la taille de l'entier en sortie. Sa signature est :
 
 ```pseudocode
-structure Dictionnaire:
-    attributs:
-        T: [Liste de (Objet, Objet)]
-        f: (Objet → [0, m'[)   # fonction de hachage non injective
-        f_m: ([0, m'[ → [0, m[) # fonction d'adressage
-    création() → Dictionnaire:
-        T ← un tableau de taille m
-        pour chaque i de [0, m[:
-            T[i] ← nouvelle liste vide
-    méthodes:
-        méthode donne_valeur(clé: objet) → entier:
-            l ← T[f_m(f(clé))]  # liste de couples
-
-            pour chaque couple (o, v) de l:
-                si o == clé:
-                    rendre v
-        méthode associe_valeur(clé: objet, valeur: entier) → vide:
-            l ← T[f_m(f(clé))]  # liste de couples
-
-            pour chaque i de [0, l.longueur[:
-                o, v ← l[i]
-                si o == clé:  # clé est déjà associée à une valeur
-                    l[i] ← (clé, valeur)  # on met à jour
-                    rendre vide
-
-            l.append((clé, valeur))  # clé n'est pas encore stockée
+f(x: entier, m': entier) → entier
 ```
 
-La fonction d'adressage permet de choisir $m$ pas trop grand. De plus, on peut considérer que son calcul est toujours en $\mathcal{O}(1)$ car elle sera toujours utilisée avec un nombre de taille fixe qui est le hash d'un objet.
+Et correspond à une famille de fonctions de hachage utiles $f_{m'}$ telles que $f(x, m') = f_{m'}(x)$ avec :
+
+<div>
+$$
+f_{m'}: [0\mathrel{ {.}\,{.} } m[ \rightarrow [0\mathrel{ {.}\,{.} } m'[
+$$
+</div>
+
+En toute généralité on a :
+
+{% note "**Définition**" %}
+Une **_fonction d'adressage_** est une famille $f_m$ de fonctions : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$ définis pour tout entier $m$.
+{% endnote %}
+
+### Taille fixe
+
+La version finale de la structure de tableau associatif est alors :
+
+```pseudocode
+fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+
+structure TableauAssociatif<Type>:
+    attributs:
+        taille: entier
+
+        T: [Liste<([bit], Type)>] ← tableau de longueur taille où chaque élément est initialisé à une liste vide
+    méthodes:
+        fonction fa(clé: [bit], m: entier) → entier  # fonction d'adressage
+
+        fonction get(clé: [bit]) → Type:  # valeur ← self[clé] = valeur ← self.get(clé)
+            pour chaque couple (c, v) de T[fa(f(clé), T.longueur)]:
+                si c == clé:
+                    rendre v
+
+        fonction set(clé: [bit], valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
+            l ← T[fa(f(clé), T.longueur)]
+            pour chaque i de [0 à l.longueur[ :
+                c, v ← l[i]
+                si c == clé:
+                    l[i] ← (clé, valeur)
+                    rendre ∅
+
+            T[fa(f(clé), T.longueur)].append((clé, valeur))
+
+        fonction in(clé: [bit]) → booléen:  # x est dans self = self.in(x)
+            l ← T[f(clé)]
+            pour chaque e de l :
+                c, v ← e
+                si c == clé:
+                    l.delete((c, v))
+                    rendre Vrai
+            rendre Faux
+        fonction delete(clé: [bit]) → ∅:  # supprime x de self = self.delete(x)  
+            l ← T[f(clé)]
+            pour chaque e de l :
+                c, v ← e
+                si c == clé:
+                    l.delete((c, v))
+                    rendre ∅
+
+```
+
+La fonction d'adressage permet de choisir une taille de tableau qui correspond à nos besoins. De plus, on peut considérer que son calcul est toujours en $\mathcal{O}(1)$ car elle sera toujours utilisée avec un nombre de taille fixe qui est le hash d'un objet.
+
+Cette version permet d'avoir une structure dont la taille est proportionnelle au nombre de valeurs stockées mais dont le nombre de collisions va augmenter plus on stocke de valeurs. On peut améliorer ça en utilisant la même technique que pour les listes.
+
+### Taille dynamique
+
+Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le nombre d'éléments stockés est supérieur à sa longueur. C'est cette structure qui est appelée tableau associatif et correspond à la structure :
+
+```pseudocode
+fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+
+structure TableauAssociatif<Type>:
+    attributs:
+        taille: entier ← 0
+
+        T: [Liste<([bit], Type)>] ← tableau de longueur taille où chaque élément est initialisé à une liste vide
+    méthodes:
+        fonction fa(clé: [bit], m: entier) → entier  # fonction d'adressage
+
+        fonction get(clé: [bit]) → Type:  # valeur ← self[clé] = valeur ← self.get(clé)
+            pour chaque couple (c, v) de T[fa(f(clé), T.longueur)]:
+                si c == clé:
+                    rendre v
+
+        fonction set(clé: [bit], valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
+            l ← T[fa(f(clé), T.longueur)]
+            pour chaque i de [0 à l.longueur[ :
+                c, v ← l[i]
+                si c == clé:
+                    l[i] ← (clé, valeur)
+                    rendre ∅
+
+            si taille == T.longueur:
+                T2 ← T
+
+                taille ← 0
+                T ← un nouveau tableau de Liste<([bit], Type)> de longueur 2 * T2.longueur où chaque élément est initialisé à une liste vide
+                pour chaque l de T2:
+                    pour chaque (c, v) de l:
+                        set(c, v)
+
+                set(clé, valeur)
+            sinon:
+                taille ← taille + 1
+
+                l ← T[fa(f(clé), T.longueur)]
+                pour chaque i de [0 à l.longueur[ :
+                    c, v ← l[i]
+                    si c == clé:
+                        l[i] ← (clé, valeur)
+                        rendre ∅
+
+                T[fa(f(clé), T.longueur)].append((clé, valeur))
+
+        fonction in(clé: [bit]) → booléen:  # x est dans self = self.in(x)
+            l ← T[f(clé)]
+            pour chaque e de l :
+                c, v ← e
+                si c == clé:
+                    l.delete((c, v))
+                    rendre Vrai
+            rendre Faux
+        fonction delete(clé: [bit]) → ∅:  # supprime x de self = self.delete(x)  
+            l ← T[f(clé)]
+            pour chaque e de l :
+                c, v ← e
+                si c == clé:
+                    l.delete((c, v))
+                    rendre ∅
+
+```
+
+Tout comme les listes, une fois que le nombre d'élément stocké dépasse la capacité ou double la capacité. Dans notre cas cela revient à changer de fonction d'adressage et de tout restocker.
 
 ## Complexités des méthodes
 
@@ -195,24 +386,22 @@ On va estimer la complexité des opérations suivantes :
 - recherche d'un élément à la structure
 - suppression d'un élément à la structure
 
-On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé `c` est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice $T[f_m(f(c))]$.
+On utilisera ici la structure finale et dynamique du tableau associatif.
 
 ### Création de la structure
 
-La création de la structure est en $\mathcal{O}(m)$ puisqu'il faut créer une liste de $m$ éléments chaque élément étant une liste vide.
-
-Initialement, $m$ est une constante, on a donc :
+La taille initiale est nulle donc :
 
 {% note %}
-La création d'une structure de dictionnaire prend $\mathcal{O}(1)$ opérations.
+La création d'un tableau associatif prend $\mathcal{O}(1)$ opérations.
 {% endnote %}
 
 ### Suppression de la structure
 
-La suppression de la structure en $\mathcal{O}(m)$ (il faut supprimer toutes les listes stockées).
+La suppression du tableau associatif implique la suppression de toutes les listes stockées :
 
 {% note %}
-La suppression d'une structure de dictionnaire prend $\mathcal{O}(m)$ opérations, où $m$ est la taille de la liste principale.
+La suppression d'une structure de tableau associatif prend $\mathcal{O}(T.\mbox{\small longueur})$ opérations.
 {% endnote %}
 
 ### Ajout/recherche et suppression d'un élément
@@ -222,31 +411,55 @@ Les complexités sont identiques car cela revient à chercher si la clé $c$ est
 Cette complexité peut aller de :
 
 - cas le meilleur : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $T[f_m(f(c))]$ est vide
-- cas le pire : $\mathcal{O}(n)$ (en considérant que la complexité de l'opérateur `==`{.language-} vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ sera $n$
-- cas moyen : $\mathcal{O}(\frac{n}{m})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{n}{m}$ éléments dans la liste $L[f_m(f(c))]$.
+- cas le pire : $\mathcal{O}(\mbox{taille})$ (en considérant que la complexité de l'opérateur `==`{.language-} vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ vaudra $\mbox{taille}$, le nombre d'éléments stockés.
+- cas moyen : $\mathcal{O}(\frac{\mbox{taille}}{T.\mbox{\small longueur}})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{\mbox{taille}}{T.\mbox{\small longueur}}$ éléments dans la liste $L[fa(f(c), m)]$.
 
-Une astuce permet de diminuer la complexité moyenne. Il suffit de s'assurer que $\frac{n}{m}$ soit une constante.
-
-On peut alors utiliser un processus semblable à celui des listes où lorsque l'on a stocké $n = m$ éléments :
-
-1. on double la fonction d'adressage
-2. on recalcule le hash de tous les $n$ éléments qu'on replace dans la structure
-
-On s'assure par là que $\frac{n}{m} \leq 2$. Comme de plus ce recalcule est effectué rarement on à :
+Comme $\frac{\mbox{taille}}{T.\mbox{\small longueur}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des [$N$ ajouts successifs pour une liste](../../structure-liste/#preuve-liste-ajout){.interne} montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{taille})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :
 
 {% note "**Proposition**" %}
-La complexité en moyenne d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$
+La complexité **en moyenne** d'ajout, de recherche et suppression d'un élément dans un tableau associatif est $\mathcal{O}(1)$
 {% endnote %}
-{% details "preuve" %}
 
-Le raisonnement est identique à la preuve des [$N$ ajouts successifs pour une liste](../../structure-liste/#preuve-liste-ajout){.interne}
-
-{% enddetails %}
-
-La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.
+La structure de tableau associatif est donc une structure très efficace le cas le pire arrivant très rarement !
 
 {% attention "**À retenir**" %}
-La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.
+La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un tableau associatif est $\mathcal{O}(1)$.
 
-La complexité maximale de ces méthodes est en $\mathcal{O}(n)$.
+La complexité maximale de ces méthodes est en $\mathcal{O}(n)$ où n$ est le nombre d'éléments stockés dans la structure.
 {% endattention %}
+
+## Utilisation
+
+Tableaux associatifs et dictionnaire sont deux synonymes. On utilisera cependant plus volontiers le terme de dictionnaire en code (popularisé par python qui en fait un usage intensif) et de tableau associatif en algorithmie.
+
+Ils permettent d'utiliser directement les donnés du problèmes sans avoir besoin d'une indirection.
+
+Par exemple :
+
+```pseudocode
+nombre_pommes ← Dictionnaire<chaîne>
+nombre_pommes["fuji"] ← 12
+nombre_pommes["gala"] ← 3
+nombre_pommes["pink lady"] ← 42
+```
+
+Plutôt que de d'abord associer un indice aux données :
+
+```pseudocode
+pommes_indirection = ["fuji", "gala", "pink lady"]
+nombre_pommes ← Tableau de chaîne de longueur 3
+nombre_pommes[0] ← 12
+nombre_pommes[1] ← 3
+nombre_pommes[2] ← 42
+```
+
+{% attention "**À retenir**" %}
+Si en algorithmie on préférera souvent manipuler les donnés sous la forme d'indices (via une indirection) pour obtenir une complexité de $\mathcal{O}(1)$, l'usage direct des données via un dictionnaire est très utilisé en code car le gain en simplicité vaut _a priori_ la légère perte de complexité ($\mathcal{O}(1)$ en moyenne seulement).
+
+{% endattention %}
+
+Initialiser un dictionnaire avec des données se fait en utilisant des accolades comme on le ferait pour spécifier les attributs d'une structure normale. Par exemple :
+
+```pseudocode
+nombre_pommes ← TableauAssociatif<entier> {"fuji": 12, "gala": 3, "pink lady": 42}
+```
