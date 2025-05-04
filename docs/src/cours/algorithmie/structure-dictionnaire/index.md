@@ -19,12 +19,12 @@ Cette structure est basée sur les fonctions de hash (ou de hachage) qui assure 
 [Fonctions de hachage](fonctions-hash){.interne}
 {% endaller %}
 
-## Structure associée : le tableau associatif
+## Structure associée : le dictionnaire
 
 La fonction de hachage va permettre de rajouter une indirection au tableau de stockage des données de la structure et créer une structure de données fondamentale :
 
 {% aller %}
-[Tableaux associatifs](tableau-associatif){.interne}
+[Dictionnaires](dictionnaire){.interne}
 {% endaller %}
 
 Cette structure est intensivement utilisé en code, en particulier en python :
@@ -46,7 +46,7 @@ On a uniquement besoin des clés.
 ```pseudocode
 structure Ensemble:
     attributs:
-        T: TableauAssociatif<booléen>
+        T: Dictionaire<booléen>
 
     méthodes:
         fonction add(x: [bit]) → ∅:
@@ -65,7 +65,7 @@ Si on veut avoir un type particulier d'élément dans l'ensemble on utilise la s
 ```pseudocode
 structure Ensemble<Type>:
     attributs:
-        T: TableauAssociatif<Type, booléen>
+        T: Dictionaire<Type, booléen>
 
     méthodes:
         fonction add(x: Type) → ∅:
@@ -88,7 +88,7 @@ Implémentez la méthode intersection. Elle devra être de complexité moyenne �
 ```pseudocode
 structure Ensemble<Type>:
     attributs:
-        T: TableauAssociatif<Type, booléen>
+        T: Dictionaire<Type, booléen>
 
     méthodes:
         fonction add(x: Type) → ∅:
@@ -229,7 +229,7 @@ Première version :
 
 ```python
 algorithme recherche(p : [entier], C: entier) → (entier, entier):
-    d ← nouveau TableauAssociatif<entier, entier>
+    d ← nouveau Dictionaire<entier, entier>
 
     pour chaque i de [0, p.longueur[:
         d[p[i]] ← i
@@ -245,7 +245,7 @@ Seconde version sans tout remplir, qui évite les `min`{.language-} et `min`{.la
 
 ```python
 algorithme recherche(p : [entier], C: entier) → (entier, entier):
-    d ← nouveau TableauAssociatif<entier, entier>
+    d ← nouveau Dictionaire<entier, entier>
 
     pour chaque i de [0, p.longueur[:
         si C - p[i] est dans d:

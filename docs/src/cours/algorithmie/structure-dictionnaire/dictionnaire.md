@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Tableaux associatifs ou dictionnaires"
+title: "Dictionnaires"
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le tableau associatif (_hash map_) aussi appelé dictionnaire (en python par exemple).
+Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le dictionnaire (_hash map_) aussi appelé le tableau associatif.
 
 Cette structure utilise de façon sous-jacente une [fonctions de hachage](../fonctions-hash){.interne}.
 
@@ -34,10 +34,10 @@ De plus, pour que tout se passe bien en moyenne on supposera les supposera [util
 
 ## Principe
 
-Le squelette de la structure de Tableau associatif est la suivante :
+Le squelette de la structure de dictionnaire est la suivante :
 
 ```pseudocode
-structure TableauAssociatif<V>:
+structure Dictionaire<V>:
     attributs:
         T: [V] ← tableau de longueur m
     méthodes:
@@ -51,15 +51,15 @@ structure TableauAssociatif<V>:
 ```
 
 {% info %}
-On utilise [le même abus que pour les listes](../../structure-liste/#structure-getter-setter){.interne} : pour un tableau associatif `d`{.language-} on écrira toujours `d[clé]`{.language-} à la place de `d.get(clé)`{.language-} ou de `d.set(clé, valeur)`{.language-}.
+On utilise [le même abus que pour les listes](../../structure-liste/#structure-getter-setter){.interne} : pour un dictionnaire `d`{.language-} on écrira toujours `d[clé]`{.language-} à la place de `d.get(clé)`{.language-} ou de `d.set(clé, valeur)`{.language-}.
 {% endinfo %}
 
-En deux mots, un tableau associatif est une structure permettant accéder à des _valeurs_ via des _clés_. Elle généralise la structure de tableau où les clés ne peuvent qu'être que des indices.
+En deux mots, un dictionnaire est une structure permettant accéder à des _valeurs_ via des _clés_. Elle généralise la structure de tableau où les clés ne peuvent qu'être que des indices.
 
 En supposant que tout objet peut être converti sous sa forme binaire, on peut écrire :
 
 ```pseudocode
-rgb ← TableauAssociatif<entier>
+rgb ← Dictionaire<entier>
 
 rgb["rouge"] ← 230
 rgb["vert"] ← 12
@@ -68,7 +68,7 @@ rgb["bleu"] ← 255
 couleur ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + 2^16 * rgb["bleu"]
 ```
 
-On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si `TableauAssociatif.f("bleu")`{.language-} =  `TableauAssociatif.f("rouge")`{.language-} le code précédent ne fonctionnera pas.
+On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si `Dictionaire.f("bleu")`{.language-} =  `Dictionaire.f("rouge")`{.language-} le code précédent ne fonctionnera pas.
 
 $m$ est très grand devant le nombre d'objet que l'on veut stocker cette probabilité de collision est tellement faible qu'on peut la considérer comme nulle, mais :
 
@@ -84,7 +84,7 @@ Notez que cette préoccupation n'est pas toujours utile. Le logiciel git, utilis
 Enfin, en toute rigueur le premier exemple devrait plutôt s'écrire :
 
 ```pseudocode
-rgb ← TableauAssociatif<entier>
+rgb ← Dictionaire<entier>
 
 rgb[bin("rouge")] ← 230
 rgb[bin("vert")] ← 12
@@ -98,7 +98,7 @@ En utilisant la fonction `bin`{.language-} qui rend la représentation binaire d
 <span id="structure-deux-types-génériques"></span>
 
 ```pseudocode
-structure TableauAssociatif<C, V>:
+structure Dictionaire<C, V>:
     attributs:
         T: [V] ← tableau de longueur m
     méthodes:
@@ -114,7 +114,7 @@ structure TableauAssociatif<C, V>:
 Ce qui permet d'écrire :
 
 ```pseudocode
-rgb ← TableauAssociatif<chaîne, entier>
+rgb ← Dictionaire<chaîne, entier>
 
 rgb["rouge"] ← 230
 rgb["vert"] ← 12
@@ -142,7 +142,7 @@ _"We can solve any problem by introducing an extra level of indirection."_
 Dans notre cas, l'indirection consiste à stocker les couples (clé, valeur) possibles dans $T[f(i)]$ :
 
 ```pseudocode
-structure TableauAssociatif<Type>:
+structure Dictionaire<Type>:
     attributs:
         T: [Liste<([bit], Type)>] ← tableau de longueur m où chaque élément est initialisé à une liste vide
     méthodes:
@@ -183,12 +183,12 @@ structure TableauAssociatif<Type>:
 
 Chaque élément du tableau T de la structure est une liste qui stockera les différentes clés ayant même hash.
 
-Comme on peut ajouter des clés, on a ajouté deux méthodes `TableauAssociatif.in`{.language-} et `TableauAssociatif.delete`{.language-} permettant respectivement de savoir si une clé est présente dans le tableau associatif et pour supprimer une clé.
+Comme on peut ajouter des clés, on a ajouté deux méthodes `Dictionaire.in`{.language-} et `Dictionaire.delete`{.language-} permettant respectivement de savoir si une clé est présente dans le dictionnaire et pour supprimer une clé.
 
 Reprenons l'exemple précédent :
 
 ```pseudocode
-rgb ← TableauAssociatif
+rgb ← Dictionaire
 
 rgb["rouge"] ← 230
 rgb["vert"] ← 12
@@ -199,10 +199,10 @@ rgb["bleu"] ← 255
 En supposant que :
 
 - m = 3
-- `TableauAssociatif.f("vert")`{.language-} = 0
-- `TableauAssociatif.f("bleu")`{.language-} =  `TableauAssociatif.f("rouge")`{.language-} = 2
+- `Dictionaire.f("vert")`{.language-} = 0
+- `Dictionaire.f("bleu")`{.language-} =  `Dictionaire.f("rouge")`{.language-} = 2
 
-Le tableau associatif `rgb`{.language-} vaudra :
+Le dictionnaire `rgb`{.language-} vaudra :
 
 ```pseudocode
 rgb = [[("vert", 12)],                    # indice 0
@@ -212,7 +212,7 @@ rgb = [[("vert", 12)],                    # indice 0
 
 ## Complexité de la recherche d'une clé
 
-La complexité de la méthode `TableauAssociatif.get`{.language-} vaut la somme de ces différentes opérations :
+La complexité de la méthode `Dictionaire.get`{.language-} vaut la somme de ces différentes opérations :
 
 1. Calcul de $f(\mbox{clé})$
 2. Parcourir la liste des couples $(c, v)$ de la liste $T[f(\mbox{clé})]$ et comparer chaque $c$ à notre clé avec l'opérateur `==`{.language-} pour voir s'il sont égaux.
@@ -224,12 +224,12 @@ Si la taille maximale des objets est connue, on a coutume de considérer que la 
 On en conclut que :
 
 {% note %}
-La recherche et l'affectation dans un tableau associatif est en $\mathcal{O}$ du nombre maximum de clé stockés avec la même valeur de hash.
+La recherche et l'affectation dans un dictionnaire est en $\mathcal{O}$ du nombre maximum de clé stockés avec la même valeur de hash.
 {% endnote %}
 
 ## Taille de la structure
 
-Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour [sipHash](https://en.wikipedia.org/wiki/SipHash), la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque tableau associatif.
+Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour [sipHash](https://en.wikipedia.org/wiki/SipHash), la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque dictionnaire.
 
 Pour résoudre ce problème on va encore une fois utiliser [le TFDL](./#théorème-fondamental-développement-logiciel){.interne} et ajouter une indirection.
 
@@ -255,12 +255,12 @@ Une **_fonction d'adressage_** est une famille $f_m$ de fonctions : de $\mathbb{
 
 ### Taille fixe
 
-La version finale de la structure de tableau associatif est alors :
+La version finale de la structure de dictionnaire est alors :
 
 ```pseudocode
 fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
 
-structure TableauAssociatif<Type>:
+structure Dictionaire<Type>:
     attributs:
         taille: entier
 
@@ -307,12 +307,12 @@ Cette version permet d'avoir une structure dont la taille est proportionnelle au
 
 ### Taille dynamique
 
-Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le nombre d'éléments stockés est supérieur à sa longueur. C'est cette structure qui est appelée tableau associatif et correspond à la structure :
+Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le nombre d'éléments stockés est supérieur à sa longueur. C'est cette structure qui est appelée dictionnaire et correspond à la structure :
 
 ```pseudocode
 fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
 
-structure TableauAssociatif<Type>:
+structure Dictionaire<Type>:
     attributs:
         taille: entier ← 0
 
@@ -386,22 +386,22 @@ On va estimer la complexité des opérations suivantes :
 - recherche d'un élément à la structure
 - suppression d'un élément à la structure
 
-On utilisera ici la structure finale et dynamique du tableau associatif.
+On utilisera ici la structure finale et dynamique du dictionnaire.
 
 ### Création de la structure
 
 La taille initiale est nulle donc :
 
 {% note %}
-La création d'un tableau associatif prend $\mathcal{O}(1)$ opérations.
+La création d'un dictionnaire prend $\mathcal{O}(1)$ opérations.
 {% endnote %}
 
 ### Suppression de la structure
 
-La suppression du tableau associatif implique la suppression de toutes les listes stockées :
+La suppression du dictionnaire implique la suppression de toutes les listes stockées :
 
 {% note %}
-La suppression d'une structure de tableau associatif prend $\mathcal{O}(T.\mbox{\small longueur})$ opérations.
+La suppression d'une structure de dictionnaire prend $\mathcal{O}(T.\mbox{\small longueur})$ opérations.
 {% endnote %}
 
 ### Ajout/recherche et suppression d'un élément
@@ -417,20 +417,20 @@ Cette complexité peut aller de :
 Comme $\frac{\mbox{taille}}{T.\mbox{\small longueur}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des [$N$ ajouts successifs pour une liste](../../structure-liste/#preuve-liste-ajout){.interne} montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{taille})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :
 
 {% note "**Proposition**" %}
-La complexité **en moyenne** d'ajout, de recherche et suppression d'un élément dans un tableau associatif est $\mathcal{O}(1)$
+La complexité **en moyenne** d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$
 {% endnote %}
 
-La structure de tableau associatif est donc une structure très efficace le cas le pire arrivant très rarement !
+La structure de dictionnaire est donc une structure très efficace le cas le pire arrivant très rarement !
 
 {% attention "**À retenir**" %}
-La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un tableau associatif est $\mathcal{O}(1)$.
+La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.
 
 La complexité maximale de ces méthodes est en $\mathcal{O}(n)$ où n$ est le nombre d'éléments stockés dans la structure.
 {% endattention %}
 
 ## Utilisation
 
-Tableaux associatifs et dictionnaire sont deux synonymes. On utilisera cependant plus volontiers le terme de dictionnaire en code (popularisé par python qui en fait un usage intensif) et de tableau associatif en algorithmie.
+Tableaux associatifs et dictionnaire sont deux synonymes. On utilisera cependant plus volontiers le terme de dictionnaire en code (popularisé par python qui en fait un usage intensif) que de tableau associatif plus daté.
 
 Ils permettent d'utiliser directement les donnés du problèmes sans avoir besoin d'une indirection.
 
@@ -461,5 +461,5 @@ Si en algorithmie on préférera souvent manipuler les donnés sous la forme d'i
 Initialiser un dictionnaire avec des données se fait en utilisant des accolades comme on le ferait pour spécifier les attributs d'une structure normale. Par exemple :
 
 ```pseudocode
-nombre_pommes ← TableauAssociatif<entier> {"fuji": 12, "gala": 3, "pink lady": 42}
+nombre_pommes ← Dictionaire<entier> {"fuji": 12, "gala": 3, "pink lady": 42}
 ```

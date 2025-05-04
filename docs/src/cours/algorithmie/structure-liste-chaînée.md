@@ -13,46 +13,231 @@ eleventyComputed:
 [Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e)
 {% endlien %}
 
-Les listes chaînées sont très utilisés en algorithmie lorsque l'on a uniquement besoin de parcourir une suite d'éléments et que l'on souhaite pouvoir supprimer un élément de cette liste en temps constant.
+Les **_listes chaînées_** sont très utilisés en algorithmie lorsque l'on a uniquement besoin de parcourir une suite d'éléments et que l'on souhaite pouvoir supprimer ou ajouter un élément quelconque de cette liste en temps constant.
 
-Pouvoir supprimer un élément en temps constant nécessite de découper la liste en éléments indépendants collés les uns aux autres.
+Pour réussir à supprimer/ajouter un élément en temps constant on va découper la liste en éléments indépendants, appelés _maillons_, collés les uns aux autres.
+
+## Maillon
+
+Commençons par définir un Maillon :
 
 ```pseudocode
-structure Element:
+structure Maillon<Type>:
     attributs:
-        valeur: entier
-        suivant: Element
-        précédent: Element
-    création(_valeur: entier, _suivant: Element, _précédent: Element) → Element:
-        valeur ← _valeur
-        suivant ← _suivant
-        précédent ← _précédent
-    méthodes:
-        méthode ajouter(e: Element) → vide:
-            e.suivant ← suivant
-            suivant ← e
-            e.précédent = self
-        méthode supprimer() → vide:
-            suivant.précédent ← précédent
-            précédent.suivant ← suivant
+        valeur: Type
+
+        suivant: Maillon ← ∅
+        précédent: Maillon ← ∅
 ```
 
-{% info %}
-On a utilisé le mot clé self pour parler de l'objet appelant.
-{% endinfo %}
+Chaque maillon contient :
 
-> TBD exemple d'utilisation.
+- sa valeur
+- le maillon précédent de la chaîne
+- le maillon suivant de la chaîne
 
-Comme on a rien sans rien en algorithmie, permettre de supprimer un élément en temps constant va contraindre le fait que l'on ne peut plus aller à un élément particulier de la liste en temps constant (comme on le fait avec un tableau). On a les complexités :
+Un maillon est une liste chaînée de 1 élément :
 
-- création : $\mathcal{O}(1)$
-- suppression à une position donnée : $\mathcal{O}(1)$
-- ajout à une position donnée : $\mathcal{O}(1)$
-- aller à une position $n$ donnée : $\mathcal{O}(n)$
+```pseudocode
+M ← Maillon {valeur: 1}
 
-> TBD def récursive pour les langages fonctionnels comme le lisp (rappelez vous la fonction de McCarty) ou encore le haskell.
-> TBD listes chaînées sont super aussi pour les algorithmes récursifs car on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
-> TBD reprendre les exo récursif avec une liste. Montrer que ça marche bien.
+L ← M
+```
 
+## Chaîne de maillons
 
-> TBD Enfin, comme les éléments d'une liste sont contiguës en mémoire, cette structure évite plus [défauts de cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache#Diff%C3%A9rents_types_de_d%C3%A9fauts_de_cache_(miss)) qu'une liste chaînée. Si l'on peut se permettre de ne pas avoir de temps constant pour toutes les opérations (ce n'est pas toujours le cas si les opérations sont critiques) et donc de troquer la complexité par de la complexité amortie, il est souvent plus avantageux en pratique d'utiliser des listes plutôt que des listes chaînées.
+Si on veut ajouter un maillon à la chaîne, on le peut le rajouter avant ou après l'élément comme le montre l'exemple suivant qui crée une chaîne de deux maillons :
+
+```pseudocode
+M ← Maillon {valeur: 1}
+
+# ajout d'un maillon après M
+M2 ← Maillon {valeur: 3}
+M2.précédent  ← M
+M.suivant  ← M2
+
+```
+
+On peut même insérer un élément :
+
+```pseudocode
+# insert d'un élément après M
+
+M3 ← Maillon {valeur: 2}
+
+M3.précédent ← M
+M3.suivant ← M.suivant
+
+M.suivant ← M3
+
+```
+
+À la fin de l'exemple on a une liste chaînée commençant au maillon `M`{.language-} et constitué de 3 maillons.
+
+{% attention "**À retenir**" %}
+Il n'y a pas de différence entre un maillon et la chaîne qui commence par lui.
+{% endattention %}
+
+De la remarque précédente on peut en déduire l'algorithme permettant de déterminer le nombre de maillons (_ie_ la longueur) après un maillon donné :
+
+```pseudocode
+algorithme taille(L: Maillon<T>) → entier:
+    t ← 0
+    tant que L ≠ ∅:
+        t ← t + 1
+        L ← L.suivant
+    rendre t
+```
+
+## Structure
+
+On a coutume de définir la liste chaînée via un type récursif :
+
+{% note "**Définition**" %}
+Une **_liste chaînée_** est soit :
+
+- un Maillon isolé
+- un Maillon suivi d'une liste chaînée
+
+{% endnote %}
+
+On peut écrire cette structure en ajoutant juste deux méthodes à notre maillon :
+
+```pseudocode
+structure Maillon<Type>:
+    attributs:
+        valeur: Type
+
+        suivant: Maillon ← ∅
+        précédent: Maillon ← ∅
+    méthodes:
+        fonction append(L: Maillon<Type>) → ∅:  # ajoute L après self
+            si L ≠ ∅: 
+                L.précédent ← self
+            self.suivant ← L
+
+        fonction pop() → Maillon<Type>:  # supprime self de la liste 
+
+            L ← self.suivant 
+
+            self.suivant ← ∅ 
+            si L ≠ ∅:
+                L.précédent ← ∅
+
+            rendre L
+
+```
+
+{% exercice %}
+Écrivez un algorithme récursif permettant de concaténer deux listes chaînées avec une complexité égale à la taille de la première liste.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme concatène(L1: Maillon<T>, L2: Maillon<T>) → Maillon<T>:
+    si L1 == ∅:
+        rendre L2
+    rendre L1.append(concatène(L1.suivant, L2))
+```
+
+{% enddetails %}
+
+## complexité
+
+Le principal intérêt des liste chaînée est :
+
+{% note %}
+L'insertion et la suppression d'un maillon se fait en $\mathcal{O}(1)$ opérations
+{% endnote %}
+
+Ce qui en fait une structure très malléable. En revanche ceci à un coût :
+
+{% note %}
+Pour accéder au $i$ème élément d'une liste chaînée, il faut la parcourir à une complexité de $\mathcal{O}(i)$.
+{% endnote %}
+
+## Utilisation
+
+On utilise les listes chaînées lorsque l'on doit très souvent insérer ou supprimer des éléments à l'intérieur d'une liste ou lorsque l'on construit notre liste par étape, en la parcourant.
+
+C'est cette dernière utilisation fait que cette structure est plébiscité par les approches récursives où l'on construit petit à petit nos listes. Voyons ça avec quelques exercices qui reprennent avec des listes chaînées [des exercices que l'on a déjà vu avec des tableaux](../projet-itératif-récursif/#algorithme-max-tableau-rec){.interne}, vous verrez que les algorithmes sont de complexité linéaire ce qui n'était pas le cas avec des tableaux.
+
+{% exercice %}
+Donnez un algorithme récursif et sa complexité de recherche de la valeur maximale dune liste chaînée d'entiers.
+{% endexercice %}
+{% details "corrigé" %}
+
+L'algorithme suivant est clairement correct :
+
+```pseudocode
+algorithme maximum(L: Maillon<entier>) → entier:
+    si L.suivant == ∅:
+        rendre L.valeur
+    rendre max(L.valeur, maximum(L.suivant))
+```
+
+L'équation de sa complexité est : $C(n) = \mathcal{O}(1) + C(n-1)$ où $n$ es la taille de la liste. Cette équation a pour solution $C(n) = \mathcal{O}(n)$
+{% enddetails %}
+
+{% exercice %}
+Donnez un algorithme récursif et sa complexité permettant de supprimer une valeur d'ue liste.
+{% endexercice %}
+{% details "corrigé" %}
+
+L'algorithme suivant est clairement correct :
+
+```pseudocode
+algorithme supprime(L: Maillon<T>, v: T) → Maillon<T>:
+    si L == ∅:
+        rendre ∅
+    si L.valeur == v:
+        rendre supprime(L.suivant, v)
+    rendre L.append(supprime(L.suivant, v))
+```
+
+L'équation de sa complexité est : $C(n) = \mathcal{O}(1) + C(n-1)$ où $n$ es la taille de la liste. Cette équation a pour solution $C(n) = \mathcal{O}(n)$.
+
+{% enddetails %}
+
+{% exercice %}
+Donnez un algorithme récursif et sa complexité permettant de retourner une liste chaînée
+{% endexercice %}
+
+{% details "corrigé" %}
+
+Utilisons la concaténation :
+
+```pseudocode
+algorithme retourne(L: Maillon<T>) → Maillon<T>:
+    si L == ∅:
+        rendre ∅
+    L2 ← L.pop()
+    rendre concaténation(retourne(L2), L)
+```
+
+La complexité vaut :
+
+$C(n) = \mathcal{O}(n) + C(n-1)$ où $n$ es la taille de la liste. ce qui donne une complexité de $\mathcal{O}(n^2)$ ce qui est un peut trop.
+
+La complexité importante est due au fait que l'on fait trop de concaténations inutiles. Pour palier ça, utilisons les accumulateurs !
+
+```pseudocode
+algorithme retourne(L: Maillon<T>, acc: Maillon<T>) → Maillon<T>:
+    si L == ∅:
+        rendre acc
+    L2 ← L.pop()
+    L.append(acc)
+    rendre retourne(L2, L)
+```
+
+Et on retourne la liste en commençant par un accumulateur vide. Par exemple si on cherche à retourne la liste `[1, 2, 3]`{.language-} :
+
+```pseudocode
+retourne([1, 2, 3], ∅)  = 
+retourne([2, 3], [1])   =
+retourne([3], [2, 1])   =
+retourne([], [3, 2, 1]) = [3, 2, 1]
+```
+
+La complexité est maintenant à nouveau de $C(n) = \mathcal{O}(1) + C(n-1)$ donc bien linéaire en la taille de la liste chaînée.
+{% enddetails %}
