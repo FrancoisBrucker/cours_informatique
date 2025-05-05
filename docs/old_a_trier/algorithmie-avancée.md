@@ -202,16 +202,9 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
 - <https://www.youtube.com/@TheatricalTheta> les corrigés du K&R
 
 - <https://www.ens-lyon.fr/DI/wp-content/uploads/2010/12/poly09.pdf>
-- perfect hashing.
-  - <https://en.wikipedia.org/wiki/Dynamic_perfect_hashing>
-  - chichelli : <https://courses.cs.vt.edu/~cs3114/Summer13/Notes/T12.PerfectHashFunctions.pdf>
-  - <https://www.cs.otago.ac.nz/cosc242/pdf/L11.pdf>
 - liste chaînée, doublement chaînée :
   - usage. Attention aux O(n) pour la recherche même si la liste est triée (ou a pas de ram) et au défaut de cache.
-  - skip list comme la remontée en log dans les arbres mais pour structure dynamique <https://fr.wikipedia.org/wiki/Skip_list>.<https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/skiplists.pdf>
-  - <https://ticki.github.io/blog/skip-lists-done-right/>
-  - <https://www.cloudcentric.dev/implementing-a-skip-list-in-go/>
-  - hash à trou à la Knuth
+    - hash à trou à la Knuth
   - pourquoi les utiliser vs arbre de recherche : <https://stackoverflow.com/a/260277>. Mais c'est rare que ce soit important. Donc dans le doute, arbre de recherche
   - <https://15721.courses.cs.cmu.edu/spring2018/papers/08-oltpindexes1/pugh-skiplists-cacm1990.pdf>
   - <https://www.singlestore.com/blog/what-is-skiplist-why-skiplist-index-for-memsql/>

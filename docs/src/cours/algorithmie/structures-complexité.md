@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Mesures de complexités pour des méthodes et des structures
+title: Mesures de complexités pour des structures et leurs méthodes
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,44 +10,26 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Cette partie est à utiliser lorsque l'on cherche à mesurer la complexité d'un code. Nous prendrons l'exemple du python mais cela s'applique à tout langage informatique.
+Manipuler des objets ou des structures en algorithmie va nécessiter des opérations élémentaires qu'il faut compter pour en connaître la complexité. On peut classer ces manipulations en trois grandes catégories :
 
-Lorsque l'on code un algorithme, on a coutume (et c'est très bien) d'utiliser des fonctions, des méthodes ou des structures de données que l'on n'a pas écrites. Il faut en revanche bien connaître leurs complexités pour ne pas commettre d'erreur de calcul.
+{% note "**Définition**" %}
 
-{% attention "**À retenir**" %}
-Lorsque l'on calcule la complexité d'un code, toutes les méthodes et fonctions doivent être examinées.
-{% endattention %}
+Pour chaque type de donnée (base ou structure) ses **_complexités_** sont  :
 
-## Complexité de structure
+- **_complexité de création_** d'un objet de ce type
+- **_complexité de suppression_** d'un objet de ce type
+- **_complexité d'opération_** qui regroupe la complexité de chaque opération ou méthode lié à ce type
 
-En informatique, les **objets que l'on manipule ont des types**. On connaît déjà des objets basiques qui sont de types booléens, entiers, réels ou encore chaines de caractères pour lesquels toutes les opérations basiques que l'on peut effectuer avec eux sont en $\mathcal{O}(1)$ opérations.
+{% endnote %}
 
-Ce n'est plus le cas lorsque l'on utilise des types plus complexes, composé de types basiques comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complexité d'un algorithme les utilisant, il faut connaître les complexités de ses opérations. Souvent, les opérations suivantes suffisent :
+Toutes les manipulations d'objets de type basique (booléens, bit, entiers, réels, caractères et chaines de caractères) ou de type tableau sont en $\mathcal{O}(1)$ opérations. Ce n'est plus le cas lorsque l'on utilise des types plus complexes, on l'a vue avec les listes ou les dictionnaires par exemple.
 
-{% attention "**À retenir**" %}
-Pour chaque type de donnée, il faut connaître la complexité de :
+> TBD : rappel ici complexite structures connu et dire on a besoin de amortie
 
-- la création d'un objet de ce type
-- la suppression d'un objet de ce type
-- chaque méthode liée au type
+> TBD explicite ne code ou opn ne connait pas les fonctions ! Il faut inférer la complexité via la connaissance des algos.
 
-{% endattention %}
 
-### Tableaux
-
-Prenons [le type tableau](../../écrire-algorithmes/pseudo-code/#tableaux) comme exemple. Un tableau est un conteneur pouvant contenir $n$ objets (on appelle $n$ la taille d'un tableau). On peut accéder et affecter un objet au tableau grâce à un indice allant de $0$ à $n-1$ : si `t`{.language-} est un tableau `t[i]`{.language-} correspond à l'objet d'indice $i$ du tableau.
-
-Avec un tableau on peut faire uniquement 3 choses :
-
-- **créer un tableau** de taille $n$ en $\mathcal{O}(1)$ opérations
-- **supprimer un tableau** est possible en $\mathcal{O}(1)$ opérations
-- **récupérer et affecter** l'objet d'indice $i$ du tableau (objet `t[i]`{.language-}) se fait en $\mathcal{O}(1)$ opérations
-
-{% attention %}
-il est **impossible** de redimensionner un tableau. Sa taille est **fixée** à la création. Toute méthode qui vise à augmenter ou diminuer la taille d'un tableau recrée un nouveau tableau et copie tous les éléments de l'ancien tableau dans le nouveau.
-{% endattention %}
-
-### Listes de python
+## Listes de python
 
 Le langage python ne connaît pas les tableaux. Il utilise le type [liste](https://docs.python.org/fr/3/tutorial/introduction.html#lists) à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes :
 

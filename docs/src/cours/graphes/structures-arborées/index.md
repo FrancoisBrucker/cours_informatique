@@ -15,6 +15,8 @@ eleventyComputed:
 > exo AABB, arbres
 > arbre syntaxique + pile pour lecture
 - tas et file de priorité
+> TBD union find
+> 
 
 ### exemple du tas
 

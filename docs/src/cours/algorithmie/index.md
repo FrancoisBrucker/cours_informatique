@@ -9,8 +9,6 @@ authors:
 resume: "Un cours d'algorithmie"
 
 eleventyNavigation:
-  prerequis:
-    - "/cours/coder-et-développer/bases-programmation/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -30,6 +28,10 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 ## <span id="partie-1"></span>Partie I : algorithmes
 
 Tout ce que devrait connaître tout ingénieur de l'informatique.
+
+{% prerequis "**Prérequis**" %}
+[Bases de la programmation](/cours/coder-et-développer/bases-programmation/){.interne}
+{% endprerequis %}
 
 ### Algorithmes et programmes
 
@@ -184,113 +186,10 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 [Complexité en moyenne](./complexité-moyenne){.interne}
 {% endaller %}
 
-### Problème du tri
+### Algorithmes de tri
 
 {% aller %}
 [Problème du tri](./problème-tris){.interne}
-{% endaller %}
-
-### Structures de données
-
-Comment créer de nouveaux types d'objets utilisable pour nos algorithmes.
-
-{% aller %}
-[Structures de données](structure-données){.interne}
-{% endaller %}
-
-Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes. Ces structures sont dites linéaires car elles permettent de gérer des listes ordonnées d'éléments :
-
-{% lien %}
-[Structures linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
-{% endlien %}
-
-#### Gestion de flux : Pile et file
-
-Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
-
-{% aller %}
-[Structure de pile et file](./structure-pile-file){.interne}
-{% endaller %}
-
-### Structures dynamiques
-
-La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa longueur moins un.
-
-#### Listes
-
-Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité :
-
-{% aller %}
-[Les listes](./structure-liste){.interne}
-{% endaller %}
-
-#### Dictionnaires
-
-Une autre structure fondamentale en algorithmie :
-
-{% aller %}
-[Fonctions de hash et dictionnaires](./structure-dictionnaire){.interne}
-{% endaller %}
-
-#### Listes chaînées
-
-Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
-
-{% aller %}
-[Les listes chaînées](./structure-liste-chaînée){.interne}
-{% endaller %}
-
-### Comparaisons des structures de conteneurs
-
-Comparons l'usage les différentes structures de stockage de données en notre possession :
-
-- tableaux
-- pile
-- file
-- listes
-- dictionnaires
-- listes chaînées
-
-> Structure génériques
-> ajout/suppression :
->
-> - liste : O(1) à la fin (amorti) ; O(n) autre part
-> - dictionnaire : O(1) en moyenne
-> - liste chaînée : O(1) partout
->
-> recherche :
->
-> - liste : O(1) avec indice
-> - dictionnaire : O(1) en moyenne avec clé
-> - liste chaînée : O(n) (il faut tout traverser)
->
->
-> Cas d'utilisation :
->
-> - liste : tout le temps à la place d'un tableau
-> - dictionnaire : tout le temps si on ne manipule pas d'indices mais des objets
-> - liste chaînée : si veut supprimer/ajouter un élément donné en O(1) mais pas besoin de trouver un élément quelconque (uniquement le premier)
->
-> Gestion de flux : pile, file
->
-> - push/pop : O(1) si taille fixe, sinon O(1) en amorti
-> - recherche : via indice (avec le tableau sous-jacent) en O(1).
-
-> TBD Enfin, comme les éléments d'une liste sont contiguës en mémoire, cette structure évite plus [défauts de cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache#Diff%C3%A9rents_types_de_d%C3%A9fauts_de_cache_(miss)) qu'une liste chaînée. Si l'on peut se permettre de ne pas avoir de temps constant pour toutes les opérations (ce n'est pas toujours le cas si les opérations sont critiques) et donc de troquer la complexité par de la complexité amortie, il est souvent plus avantageux en pratique d'utiliser des listes plutôt que des listes chaînées.
-
-### On s’entraîne : structures de données
-
-> TBD exo structures de données, pile et file, et récursions avec liste.
-> TBD suppression, parcours etc de valeur récursif dans une liste.
-> Décurrification de programmes récursif. Avec exemples
->
-
-### Complexité amortie
-
-Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.
-
-{% aller %}
-[Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
 ### On s'entraîne
@@ -316,7 +215,101 @@ et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$
 [Algorithmes classiques](./projet-classiques){.interne}
 {% endaller %}
 
-## <span id="partie-2"></span>Partie II : problèmes
+## <span id="partie-2"></span>Partie II : structures de données
+
+{% prerequis "**Prérequis**" %}
+[Programmation objet](/cours/coder-et-développer/programmation-objet/){.interne}
+{% endprerequis %}
+
+Comment créer de nouveaux types d'objets utilisable pour nos algorithmes :
+
+{% aller %}
+[Structures de données](structure-données){.interne}
+{% endaller %}
+
+Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes : les **_structures linéaires_**.
+
+{% lien %}
+[Structures linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
+{% endlien %}
+
+Ces structures sont des conteneurs, comme des tableaux, qu permettent de stocker des éléments. Selon l'usage que l'on voudra en faire on privilégiera telle ou telle structure.
+
+### Pile et file
+
+Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
+
+{% aller %}
+[Structure de pile et file](./structure-pile-file){.interne}
+{% endaller %}
+
+### Listes
+
+La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Nous verrons dans cette partie que l'on peut faire sauter cette contrainte d'un tableau au prix d'un coût négligeable en complexité :
+
+{% aller %}
+[Structure de listes](./structure-liste){.interne}
+{% endaller %}
+
+### Dictionnaires
+
+Si les listes permettent de supprimer la première contrainte de l'utilisation des tableaux qui est de déterminer leurs tailles à la création, elle ne permettent pas de pallier la seconde limitation qui est que l'accès aux éléments se fait _via_ des indices entiers. Cette contrainte peut être levée au prix d'une perte de complexité (on ne peut garantir que de bonnes complexités en moyenne et plus maximale) en utilisant des dictionnaires :
+
+{% aller %}
+[Structure de dictionnaires](./structure-dictionnaire){.interne}
+{% endaller %}
+
+### Listes chaînées
+
+Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
+
+{% aller %}
+[Les listes chaînées](./structure-liste-chaînée){.interne}
+{% endaller %}
+
+### Comparaisons des structures de conteneurs
+
+Comparons l'usage les différentes structures de stockage de données en notre possession :
+
+- tableaux :
+  - structure simple
+  - utilisation : si contrôle stricte de la complexité en temps et en espace crucial
+- pile :
+  - gestion de flux : LIFO
+  - utilisation : à la place d'une récursion
+- file :
+  - gestion de flux : FIFO
+  - utilisation : buffer
+- listes :
+  - structure passe partout
+  - utilisation : à la place d'un tableau si on autorise une taille variable et un pic de complexité de temps en temps
+- dictionnaires :
+  - clé et valeurs
+  - utilisation : lorsque les données ne sont pas des indices et que la complexité en moyenne suffit
+- listes chaînées :
+  - structure par morceaux où maillon = chaîne
+  - utilisation : pour les programmes récursifs et ceux où on modifie souvent le nombre de données stockées tout en conservant l'ordre des données restantes
+
+### Complexité de structures
+
+{% aller %}
+[Complexités d'une structure et de ses méthodes](./structures-complexité){.interner}
+{% endaller %}
+
+> TBD calcul amortie avec les listes peut être compliqué. ~Formalisons la notion et montrons des moyens de la calculer
+
+{% aller %}
+[Complexité amortie](./complexité-amortie){.interne}
+{% endaller %}
+
+> TBD exercices (cf. ens)
+
+### On s'entraîne : structures de listes
+
+- skip list
+- listes triées : ens complexité amortie.
+
+## <span id="partie-3"></span>Partie III : problèmes
 
 On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
 
@@ -559,7 +552,7 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 >
 > TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
 
-## Intermède
+### Intermède : l'algorithme qui résout tout
 
 Avant de finir cette première partie du cours, accordons nous un intermède. Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
 
@@ -569,7 +562,44 @@ Avant de finir cette première partie du cours, accordons nous un intermède. Re
 
 Cet intermède permet de préparer la troisième partie
 
-## <span id="partie-3"></span>Partie III : modèle
+## <span id="partie-4"></span>Partie IV : structure de données avancées
+
+> TBD
+
+- structure hiérarchique (arbre planté)
+  - AVL
+  - tas
+  - union find
+- hash :
+  - _open addressing_
+  - perfect
+  - universal
+- liste circulaires ? Trouver le début.
+
+Pour aller plus loin  arbre rouge/noir ; tas de fibonacci ; ...
+
+<!-- 
+
+## hash 2.0 améliorations
+
+{% lien %}
+[Universal & Perfect Hashing](https://www.youtube.com/watch?v=z0lJ2k0sl1g)
+{% endlien %}
+
+### Hash universel
+
+Pour que notre structure de dictionnaire soit de complexité $\mathcal{O}(1)$ en moyenne, on a supposé que nos fonction de hachage étaient utiles : les probabilités sont uniformes si les clés sont choisies aléatoirement.
+
+Cette hypothèse est cependant tres rarement vérifiée en pratique, les clés ont souvent quelque chose en commun (numéro de téléphones, noms d'utilisateurs, etc). Pour palier ce problème épineux on renverse le problème et plutôt que de choisir des clés aléatoire, on choisi aléatoirement une fonction de hash !
+
+### perfect hashing.
+> - <https://en.wikipedia.org/wiki/Dynamic_perfect_hashing>
+>  - chichelli : <https://courses.cs.vt.edu/~cs3114/Summer13/Notes/T12.PerfectHashFunctions.pdf>
+>  - <https://www.cs.otago.ac.nz/cosc242/pdf/L11.pdf> 
+
+-->
+
+## <span id="partie-5"></span>Partie V : modèle
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
@@ -724,11 +754,10 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 
 > TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>
 
-## Partie IV : aléatoire
+## <span id="partie-6"></span>Partie VI : aléatoire
 
 > TBD hasard et algorithmes randomisés.
 
-## Désordre et hasard
 
 {% aller %}
 [Mélanger un tableau](./projet-mélange){.interne}

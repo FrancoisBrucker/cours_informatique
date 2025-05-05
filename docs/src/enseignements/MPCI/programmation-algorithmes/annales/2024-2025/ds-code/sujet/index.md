@@ -3,8 +3,19 @@ layout: layout/post.njk
 title: "Coder le Big Point"
 ---
 
-Le but de ce DS est de coder le jeu du [Big Points](https://www.associationallee.fr/wp-content/uploads/sites/2286/2019/06/big-points-regle.pdf).
+Le but de ce DS est de coder le magnifique jeu de plateau _Big Points_.
 
+{% lien %}
+
+- [Règles en français du Big Points](https://www.associationallee.fr/wp-content/uploads/sites/2286/2019/06/big-points-regle.pdf)
+- [Youtube en anglais de BGG](https://www.youtube.com/watch?v=BhSF6KzENtM) (pas pendant le DS...)
+
+{% endlien %}
+{% info %}
+Le jeu n'est plus trouvable en l'état et c'est dommage. La version actuelle, moins abstraite et avec plus de règles s'appelle [Bites](https://www.philibertnet.com/fr/allplay/109573-bites-644216939862.html).
+
+On peut cependant encore jouer à bites en utilisant les règles originales du big points, ouf !
+{% endinfo %}
 {% faire %}
 Commencez par lire rapidement la règle avant de vous lancer dans le sujet proprement dit.
 {% endfaire %}
@@ -13,12 +24,16 @@ Commencez par lire rapidement la règle avant de vous lancer dans le sujet propr
 
 Le rendu du DS consiste en deux parties :
 
-1. le code que vous êtes parvenu à rendre sur amétice.
-2. un écrit regroupant les différentes questions hors code.
+1. **le code** que vous êtes parvenu à rendre [sur Amétice](https://ametice.univ-amu.fr/mod/assign/view.php?id=4084092).
+2. **un écrit** regroupant les différentes questions hors code.
 
 ### Code
 
 Le code évoluera au fil des questions, c'est normal. Ne rendez que la version finale de celui-ci. En revanche, **il est indispensable d'avoir du code fonctionnel**.
+
+{% info %}
+Avant chaque nouvelle question, sauvegardez votre code actuel pour pouvoir y revenir si besoin.
+{% endinfo %}
 
 Le code est constitué de trois fichiers :
 
@@ -66,8 +81,8 @@ while r != "stop":
 {% faire %}
 Complétez le fichier `main.py`{.fichier} :
 
-- gérez les import
-- créez l'objet `piste`
+- gérez les imports
+- créez la liste `piste`
 - créez la fonction `plateau`
 
 Pour pouvoir l'exécuter et obtenir le résultat ci-après (aux tirages aléatoires près).

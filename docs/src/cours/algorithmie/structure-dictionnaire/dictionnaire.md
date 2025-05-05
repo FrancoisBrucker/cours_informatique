@@ -239,7 +239,7 @@ On utilise une fonction supplémentaire appelée **fonction d'adressage** qui es
 f(x: entier, m': entier) → entier
 ```
 
-Et correspond à une famille de fonctions de hachage utiles $f_{m'}$ telles que $f(x, m') = f_{m'}(x)$ avec :
+Et correspond à une famille de fonctions de hachage **utiles** $f_{m'}$ telles que $f(x, m') = f_{m'}(x)$ avec :
 
 <div>
 $$
