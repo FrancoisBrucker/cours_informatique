@@ -111,21 +111,24 @@
         taille<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
         T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> de longueur taille
     <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token comment"># valeur ← self[i] = valeur ← self.get(i)</span>
-        <span class="token builtin">fonction</span> <span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
+        <span class="token builtin">fonction</span> <span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>  <span class="token comment"># valeur ← self[i] = valeur ← self.get(i)</span>
             <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-
-        <span class="token comment"># self[clé] ← valeur = self.set(clé, valeur)</span>
-        <span class="token builtin">fonction</span> <span class="token function">set</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> indice<span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+        <span class="token builtin">fonction</span> <span class="token function">set</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> indice<span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># self[clé] ← valeur = self.set(clé, valeur)</span>
             T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> valeur
 
         <span class="token builtin">fonction</span> <span class="token function">append</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span>  <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
             <span class="token keyword">si</span> taille <span class="token operator">==</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
-                T2 <span class="token operator">←</span> un nouveau tableau de <span class="token builtin">Type</span> de longueur <span class="token number">2</span> <span class="token operator">*</span> T<span class="token punctuation">.</span>longueur
-                T2<span class="token punctuation">[</span><span class="token punctuation">:</span>T<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> T
-                T <span class="token operator">←</span> T2 
-            T<span class="token punctuation">[</span>taille<span class="token punctuation">]</span> <span class="token operator">←</span> x
-            taille <span class="token operator">←</span> taille <span class="token operator">+</span> <span class="token number">1</span>
+                T2 <span class="token operator">←</span> T
+
+                taille <span class="token operator">←</span> <span class="token number">0</span>
+                T <span class="token operator">←</span> un nouveau tableau de <span class="token builtin">Type</span> de longueur <span class="token number">2</span> <span class="token operator">*</span> T2<span class="token punctuation">.</span>longueur
+                <span class="token keyword">pour chaque</span> y de T2<span class="token punctuation">:</span>
+                    append<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+
+                append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+            <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+                T<span class="token punctuation">[</span>taille<span class="token punctuation">]</span> <span class="token operator">←</span> x
+                taille <span class="token operator">←</span> taille <span class="token operator">+</span> <span class="token number">1</span>
         <span class="token builtin">fonction</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
             taille <span class="token operator">←</span> taille <span class="token operator">-</span> <span class="token number">1</span>
             <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>taille<span class="token punctuation">]</span>

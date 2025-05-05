@@ -96,7 +96,10 @@
     
   
 
-  <p>L'analyse amortie (et la complexité amortie qui en découle) est une technique utilisée pour calculer la complexité lorsque plusieurs exécution successive d'un même bloc de code va être de complexité différente.</p>
+  <blockquote>
+<p>TBD Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.</p>
+</blockquote>
+<p>L'analyse amortie (et la complexité amortie qui en découle) est une technique utilisée pour calculer la complexité lorsque plusieurs exécution successive d'un même bloc de code va être de complexité différente.</p>
 <p>Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour <a href="../structure-liste" class="interne">les listes</a> par exemple).</p>
 <p>Ce n'est <strong>pas</strong> une complexité en moyenne, c'est un moyen de calculer des complexités (maximum)</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -246,258 +249,22 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 </ul>
 <p>La complexité totale de l'exécution des $2^n$ instances de <code class="language-">successeur(N)</code> est alors estimée à : $\mathcal{O}(n \cdot 2^n)$.</p>
 <p>On le démontrera précisément mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme <code class="language-">successeur(N)</code>, $N[-1] = 1$ alors lors de l'exécution suivante on aura $N[-1] = 0$. La complexité de <code class="language-">successeur(N)</code> ne peut donc être importante qu'au pire une fois sur deux.</p>
-<h2>Analyses</h2>
-<p>Il existe trois types d'analyses amortie possibles : par agrégat, comptable et par potentiel. La méthode par potentielle est la plus générale mais également la plus ardue à mettre en oeuvre. La méthode comptable est intermédiaire et la méthode par agrégat (que l'on a déjà utilisé pour les listes) est la méthode la plus simple et qui est souvent suffisante.</p>
-<p>Pour l'exemple de l'algorithme <code class="language-">tous</code>, l'analyse par agrégat suffit, mais on montrera aussi comment les résoudre avec la méthode comptable et par potentiel. Le résultat sera bien sur le même : $\mathcal{O}(2^n)$</p>
-<h3>Analyse par Agrégat</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
+<h2>Méthodes d'analyse amortie</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>La technique de <strong><em>l'analyse par agrégat</em></strong> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
-<p>On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.</p>
+<p><a href="analyses" class="interne">Analyse amortie</a></p>
 </div></div>
 
-<h3><span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par agrégats</h3>
-<p>On remarque tout d'abord que le nombre d'opérations de <code class="language-">successeur(N)</code> dépend de l'indice du dernier <code class="language-">0</code> dans la liste <code class="language-">N</code> :</p>
-<ul>
-<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0]</code> il faut de l'ordre de 1 opération à successeur (la boucle <code class="language-">tant que</code> de la ligne 4 fait un test et aucune itération)</li>
-<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0, 1]</code> il faut de l'ordre de 2 opérations à successeur (la boucle <code class="language-">tant que</code> de la ligne 4 fait une itération)</li>
-<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0, 1, 1]</code> il faut de l'ordre de 3 opérations à successeur (la boucle <code class="language-">tant que</code> de la ligne 4 fait deux itérations)</li>
-<li>...</li>
-<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0] + [1] * i</code> il faut de l'ordre de $i+1$ opérations à successeur</li>
-<li>...</li>
-<li>si <code class="language-">N</code> finit par la liste <code class="language-">[0] + [1] * (n-1)</code> il faut de l'ordre de $n$ opérations à successeur</li>
-<li>si <code class="language-">N</code> finit par la liste <code class="language-">[1] + [1] * (n-1)</code> il faut de l'ordre de $n$ opérations à successeur</li>
-</ul>
-<p>On peut partitionner l'ensemble des $2^n$ nombres binaires à $n$ bits en $n$ ensembles disjoints :</p>
-<ol>
-<li>$\mathcal{N}_1$ tous les nombres qui finissent par <code>0</code>. Il y en a $\frac{2^n}{2}$</li>
-<li>$\mathcal{N}_2$ tous les nombres qui finissent par <code>01</code>. Il y en a $\frac{2^n}{2^2}$</li>
-<li>...</li>
-<li>$\mathcal{N}_i$ tous les nombres qui finissent par <code>0</code> suivi de (i-1) <code>1</code>. Il y en a $\frac{2^n}{2^i}$</li>
-<li>$\mathcal{N}_n$ tous les nombres qui finissent par <code>0</code> suivi de (n-1) <code>1</code>. Il y en a $\frac{2^n}{2^n}$</li>
-<li>$\mathcal{N}'_{n}$ contenant le nombre ne contenant que des <code>1</code>. Il y en a 1</li>
-</ol>
-<p>Il faudra de l'ordre de $i$ opérations à <code class="language-">successeur(N)</code> pour traiter un nombre de $\mathcal{N}_i$ et $n$ opérations pour traiter l'élément de $\mathcal{N}'_n$. Comme on a partitionné l'ensemble de toutes les entrées possibles et que notre algorithme va les utiliser tous une unique fois, on en conclut que la complexité totale de l'algorithme <code class="language-">tous(n)</code> est :</p>
-<p>$$
-C = \sum_{i=1}^{n}i\cdot \frac{2^n}{2^i} + n = 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n
-$$</p>
-<p>Calculons cette complexité :</p>
-<div>
-$$
-\begin{array}{rcl}
-C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
-&=& 2^n \cdot (\sum_{k=1}^n\sum_{i=k}^{n}\frac{1}{2^i}) + n\\
-&=&2^n \cdot (\sum_{k=1}^n(\sum_{i=1}^{n}\frac{1}{2^i} - \sum_{i=1}^{k-1}\frac{1}{2^i})) + n\\
-&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}\frac{1}{2^i}) + n
-\end{array}
-$$
-</div>
-<p>On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ (immédiat par récurrence mais il existe également <a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">une preuve directe</a>), ce qui permet d'obtenir :</p>
-<div>
-$$
-\begin{array}{rcl}
-C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}\frac{1}{2^i}) + n\\
-&=&2^n \cdot (n\cdot (1-\frac{1}{2^n}) - \sum_{k=2}^n(1-\frac{1}{2^{k-1}})) + n\\
-&=&2^n \cdot (n\cdot (1-\frac{1}{2^n}) - (n-1) -\sum_{i=1}^{n-1}(1-\frac{1}{2^{i}})) + n\\
-&=&2^n \cdot (1-\frac{n}{2^n}+1-\frac{1}{2^{n-1}}) + n\\
-&=&2^n \cdot (2-\frac{n+2}{2^n}) + n\\
-&=&2^{n+1} \cdot (1-\frac{1}{2^n})
-\end{array}
-$$
-</div>
-<h3>Méthode comptable</h3>
-<p>La méthode comptable va associer des coûts différents à chaque opération, appelé <em>coût amorti</em> :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
+<h2>Complexité amortie</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>La <strong><em>méthode comptable</em></strong> pour calculer la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>coût amorti</em></strong> $\hat{c_i}$ tel que pour tout $1 \leq k \leq m$ :</p>
-<p>$$
-\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}
-$$</p>
-<p>L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de l'algorithme sera bien inférieure à la somme des $m$ coûts amortis.</p>
-</div></div>
-
-<p>Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.</p>
-<h3><span id="compteur-comptable"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec la méthode comptable</h3>
-<p>Appliquons cette méthode au compteur. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :</p>
-<ul>
-<li>2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 <strong>et</strong> on crédite directement son coût de positionnement à 0)</li>
-<li>0 lorsqu'un bit est positionné à 0</li>
-</ul>
-<p>Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est supérieur à la somme réelle des $k$ coûts.</p>
-<p>Enfin, comme à chaque exécution de <code class="language-">successeur</code> un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de <code class="language-">successeur</code> est donc de $C = m$ : l'exécution de <code class="language-">tous(n)</code> est de complexité $\mathcal{O}(2^n)$.</p>
-<h3>Analyse par potentiel</h3>
-<p>Cette méthode de calcul est une généralisation des deux méthodes précédentes.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'<strong><em>analyse par potentiel</em></strong> calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>potentiel</em></strong> $\Omega(i)$ tel que $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)</p>
-<p>Le <strong><em>coût amorti</em></strong> $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :</p>
-<p>$$
-\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1)
-$$</p>
-<p>L'égalité ci-dessus assure que la complexité totale des $m$ exécutions de l'algorithme sera bien inférieure à la somme des $m$ coûts amortis.</p>
-<p>$$
-\sum_{i=1}^{m} \widehat{c_i} = \sum_{i=1}^{m} ({c_i} + \Omega(i) - \Omega(i-1)) = \sum_{i=1}^{m} {c_i} + \Omega(m) - \Omega(0) \geq \sum_{i=1}^{m} {c_i}
-$$</p>
-</div></div>
-
-<p>Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$. Cette énergie potentielle $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.</p>
-<p>En informatique, le potentiel sera souvent associé à la structure de donnée sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).</p>
-<p>Remarquez que toute mesure de potentielle fonctionne si $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$, mais que pour être efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant. Ce faisant, la différence de potentiel absorbera les variations de coût réel sans trop les surévaluer.</p>
-<h3><span id="compteur-potentiel"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par potentiel</h3>
-<p>Le nombre de bits changés à chaque exécution de successeur dépend du nombre de 1 dans la liste passée en paramètre. Comme $\Omega(0) = 0$, on garanti que $\Omega(i) \geq \Omega(0)$ pour tout $i$, c'est une mesure de potentiel correct.</p>
-<p>A chaque exécution de <code class="language-">successeur</code> on a :</p>
-<ul>
-<li>k bits passés à 0</li>
-<li>1 bit passé à 1</li>
-</ul>
-<p>On en déduit que :</p>
-<ul>
-<li>la complexité d'exécution est de k + 1</li>
-<li>la différence de potentiel $\Omega(i) - \Omega(i-1)$ vaut $1 - k$</li>
-</ul>
-<p>Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.</p>
-<p>On a donc que, encore une fois, la complexité de l'algorithme <code class="language-">tous(n)</code> est :</p>
-<p>$$
-C \leq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m) = \mathcal{O}(2^n)
-$$</p>
-<h2>Complexité amortie d'un compteur</h2>
-<p>La complexité de l'algorithme <code class="language-">successeur</code> est en $\mathcal{O}(N.\mbox{\small longueur})$. Exécuter $m$ fois cet algorithme va donc être de complexité $\mathcal{O}(m\cdot N.\mbox{\small longueur})$ si on ne connaît pas le paramètre $N$ (on peut tout le temps choisir celui qui à une complexité maximale).</p>
-<p>En revanche, considérons la structure suivante :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span>
-        N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
-    création<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Compteur<span class="token punctuation">:</span>
-       <span class="token number"> N </span><span class="token operator">←</span> un tableau de<span class="token number"> n </span>entiers
-        N<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
-    suivant<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-        successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span></code></pre>
-<p>Analysons la complexité de la méthode <code class="language-">suivant</code> :</p>
-<ol>
-<li>elle n'a pas de paramètre</li>
-<li>une exécution peut prendre $\mathcal{O}(N.\mbox{\small longueur})$ opérations</li>
-<li>pour 2 exécutions successives, la complexité de la seconde exécution dépend de l'exécution précédente (si N[-1] à été mis à 1 ou à 0)</li>
-</ol>
-<p>Si un programme utilise $m$ fois la méthode <code class="language-">suivant</code>, la complexité de ces $m$ exécutions va être égale à $\frac{m}{2^n}$ fois la complexité de <code class="language-">tous</code>, c'est à dire $\mathcal{O}(m)$. On en déduit que :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>La complexité amortie de la méthode <code class="language-">suivant</code> est $\mathcal{O}(1)$.</p>
-<p>Lorsqu'un programme utilise de nombreuses fois la méthode <code class="language-">suivant</code>, on peut considérer que la complexité d'un appel vaut sa complexité amortie : $\mathcal{O}(1)$.</p>
-</div></div>
-
-<p>La complexité amortie est <strong>une moyenne de complexités maximales</strong> et permet un calcul plus aisé de la complexité : la complexité de tous les appels vaut le nombre d'appels fois la complexité amortie.</p>
-<p>Attention, ce n'est pas une complexité en moyenne, la complexité des lignes 2 à 4 de l'algorithme suivant est $\cdot \mathcal{O}(m\cdot n)$ puisque $N$ peut contenir la suite $[1, 1, \dots, 1]$ :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">N <span class="token operator">←</span> un tableau de m <span class="token operator">*</span><span class="token number"> n </span>nombres <span class="token number">0</span> <span class="token keyword">ou</span> <span class="token number">1</span></span>
-<span class="highlight-line"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    successeur<span class="token punctuation">(</span>N<span class="token punctuation">[</span>i <span class="token operator">*</span> n<span class="token punctuation">:</span><span class="token number"> i </span><span class="token operator">*</span><span class="token number"> n </span><span class="token operator">+</span> m<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">    afficher N<span class="token punctuation">[</span>i <span class="token operator">*</span> n<span class="token punctuation">:</span><span class="token number"> i </span><span class="token operator">*</span><span class="token number"> n </span><span class="token operator">+</span> m<span class="token punctuation">]</span> à l'écran</span></code></pre>
-<p>Alors que la complexité des lignes 2 à 4 de l'algorithme suivant vaut $\cdot \mathcal{O}(m)$ :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">c <span class="token operator">←</span> un nouveau compteur</span>
-<span class="highlight-line"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    c<span class="token punctuation">.</span>suivant<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">    afficher c<span class="token punctuation">.</span>N</span></code></pre>
-<p>Enfin, remarquez que la complexité amortie de <code>suivant</code> ne dépend par de la longueur de l'attribut $N$.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Réfléchissez à ce résultat, il est assez surprenant, non ?.</p>
-</div></div>
-
-<h2>Exemple 2 : la pile</h2>
-<p>On va considérer <a href="../structure-pile-file/pile/" class="interne">une pile</a> et on crée l'algorithme suivant : <code class="language-">k-pop(k, P)</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> k<span class="token operator">-</span>pop<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    k <span class="token operator">←</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
-        x <span class="token operator">←</span> P<span class="token punctuation">.</span>dépiler<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">rendre</span> x</code></pre>
-<p>Si $k = 0$ ou <code class="language-">P</code> est vide la complexité de <code class="language-">k-pop(k, P)</code> est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de <code class="language-">k-pop(k, P)</code> est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et <code class="language-">P</code>.</p>
-<p>Soit $A$ un algorithme utilisant une pile $P$ via ses méthodes <code class="language-">nombre</code> et <code class="language-">empiler</code> et via la fonction <code class="language-">k-pop</code>. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Quelle est la complexité totale de ces $m$ opérations pour $A$ ?</p>
-</div></div>
-
-<h3>Borner la complexité</h3>
-<p>La difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">k-pop</code> n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations <code class="language-">empiler</code> avant de la vider entièrement avec une instruction <code class="language-">k-pop</code>) : la complexité de <code class="language-">k-pop</code> est bornée par $\mathcal{O}(m)$.</p>
-<p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">nombre</code>, <code class="language-">empiler</code> et <code class="language-">k-pop</code> donc $\mathcal{O}(m^2)$.</p>
-<p>On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :</p>
-<ul>
-<li>Pour que <code class="language-">k-pop</code> ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations <code class="language-">empiler</code> avant. On ne peut donc pas avoir beaucoup d'opérations <code class="language-">k-pop</code> avec cette grande complexité.</li>
-<li>Après une exécution de <code class="language-">k-pop</code> avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de <code class="language-">k-pop</code> seront de complexité très faible.</li>
-</ul>
-<h3><span id="pile-agrégat"></span> Analyse par agrégat</h3>
-<p>Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :</p>
-<ul>
-<li>$m'$ fois à la fonction <code class="language-">k-pop</code>,</li>
-<li>$m''$ fois à la fonction <code class="language-">empiler</code>,</li>
-<li>$m - m' - m''$ fois à la fonction <code class="language-">nombre</code>.</li>
-</ul>
-<p>Le nombre total d'éléments dépilés au cours des $m'$ exécutions de la fonction <code class="language-">k-pop</code> ne peut excéder le nombre total $m''$ d'éléments empilés. La complexité totale des $m'$ exécutions de <code class="language-">k-pop</code> vaut donc $\mathcal{O}(m' + m'')$.</p>
-<p>Comme la complexité d'un appel à <code class="language-">empiler</code> ou à <code class="language-">nombre</code> vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :</p>
-<p>$$
-C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
-$$</p>
-<p>Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$).</p>
-<h3><span id="pile-comptable"></span> Méthode comptable</h3>
-<p>La complexité de <code class="language-">k-pop</code> étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :</p>
-<ul>
-<li>1 à l'instruction <code class="language-">nombre</code></li>
-<li>2 à l'instruction <code class="language-">empiler</code> (on compte son coût d'empilage <strong>et</strong> on crédite directement son coût de dépilage)</li>
-<li>1 à l'instruction <code class="language-">k-pop</code></li>
-</ul>
-<p>On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.</p>
-<p>Au bout de $m$ exécutions, on aura :</p>
-<p>$$
-C \leq \sum_{i=1}^{m} \widehat{c_i} \leq \sum_{i=1}^{m} 2 = 2 \cdot m = \mathcal{O}(m)
-$$</p>
-<h3><span id="pile-potentiel"></span> Potentiel</h3>
-<p>La seule opération ayant un coût variable est <code class="language-">k-pop</code> et il dépend du nombre d'éléments à dépiler, c'est à dire indirectement au nombre d'élément dans la pile.</p>
-<p>On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega(i)$ sera le nombre d'élément dans la pile après l'exécution de l'instruction $i$. Comme la pile est initialement vide on a bien $\Omega(i) \geq \Omega(0)$ pour tout $i$. Le coût amorti de chaque opération est alors :</p>
-<ul>
-<li>le coût amorti de <code class="language-">nombre</code> est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$</li>
-<li>le coût amorti de <code class="language-">empiler</code> est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)</li>
-<li>le coût amorti de <code class="language-">k-pop</code> est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)</li>
-</ul>
-<p>Le coût amorti peut être borné par 2 pour chaque opération, on a donc :</p>
-<p>$$
-C \leq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
-$$</p>
-<h3>Complexité amortie</h3>
-<p>Remarquer que pour l'algorithme $A$ on a pas fait attention :</p>
-<ul>
-<li>à l'ordre dans lequel les opérations ont été effectuées</li>
-<li>aux paramètres des opérations</li>
-</ul>
-<p>De là, calculer une complexité amortie a un sens. La complexité totale des appels des 3 opérations vaut $\mathcal{O}(m)$. La complexité amortie d'une opération vaut alors : $\frac{1}{m} \cdot \mathcal{O}(m) = \mathcal{O}(1)$.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut utiliser cette complexité amortie pour calculer la complexité d'un programme utilisant ces 3 opérations.</p>
-</div></div>
-
-<p>Comme pour le compteur, remarquez que la complexité amortie de la fonction <code>k-pop</code> ne dépend pas de $k$ puisque'elle est en temps constant.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Réfléchissez à ce résultat, il est assez surprenant, non ?.</p>
+<p><a href="complexit%C3%A9" class="interne">Complexité amortie</a></p>
 </div></div>
 
 <h2>Exercices</h2>

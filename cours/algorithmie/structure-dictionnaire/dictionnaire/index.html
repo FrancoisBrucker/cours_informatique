@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dictionnaires</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Dictionnaires</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/">Structures de dictionnaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/dictionnaire/">Dictionnaires</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le dictionnaire (<em>hash map</em>) aussi appelé le tableau associatif.</p>
+<p>Cette structure utilise de façon sous-jacente une <a href="../fonctions-hash" class="interne">fonctions de hachage</a>.</p>
+<h2>Fonction de hachage utilisée</h2>
+<p>Dans tout ce qui suit on considérera uniquement des données représentés par un tableau binaire. Ceci permettra de considérer que l'on peut appliquer ses fonctions à n'importe quel type de donnée via leur représentation binaire.</p>
+<p>Nos fonctions de hachage seront donc dans toutes leurs généralités de type :</p>
+<div>
+$$
+f: \{0, 1\}^\star \rightarrow [0\mathrel{ {.}\,{.} } m[
+$$
+</div>
+<p>Puisqu'utilisés dans un algorithme :</p>
+<ul>
+<li>on doit pouvoir les calculer : on peut leur associer un algorithme <code class="language-">f(d: [bit]) → entier</code>,</li>
+<li>ce calcul doit être rapide : de complexité linéaire $\mathcal{O}(d.\mbox{\small longueur})$</li>
+</ul>
+<p>De plus, pour que tout se passe bien en moyenne on supposera les supposera <a href="../fonctions-hash/#d%C3%A9finition-hachage-utile" class="interne">utiles</a>.</p>
+<h2>Principe</h2>
+<p>Le squelette de la structure de dictionnaire est la suivante :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionaire</span><span class="token operator">&lt;</span>V<span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>V<span class="token punctuation">]</span> <span class="token operator">←</span> tableau de longueur m
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        <span class="token builtin">fonction</span> <span class="token function">f</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>  <span class="token comment"># fonction de hachage utile de C dans [0, m[</span>
+
+        <span class="token builtin">fonction</span> <span class="token function">get</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> V<span class="token punctuation">:</span>  <span class="token comment"># valeur ← self[clé] = valeur ← self.get(clé)</span>
+            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token builtin">fonction</span> <span class="token function">set</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> V<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># self[clé] ← valeur = self.set(clé, valeur)</span>
+            T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> valeur
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On utilise <a href="../../structure-liste/#structure-getter-setter" class="interne">le même abus que pour les listes</a> : pour un dictionnaire <code class="language-">d</code> on écrira toujours <code class="language-">d[clé]</code> à la place de <code class="language-">d.get(clé)</code> ou de <code class="language-">d.set(clé, valeur)</code>.</p>
+</div></div>
+
+<p>En deux mots, un dictionnaire est une structure permettant accéder à des <em>valeurs</em> via des <em>clés</em>. Elle généralise la structure de tableau où les clés ne peuvent qu'être que des indices.</p>
+<p>En supposant que tout objet peut être converti sous sa forme binaire, on peut écrire :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">rgb <span class="token operator">←</span> Dictionaire<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span>
+
+rgb<span class="token punctuation">[</span><span class="token string">"rouge"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">230</span>
+rgb<span class="token punctuation">[</span><span class="token string">"vert"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">12</span>
+rgb<span class="token punctuation">[</span><span class="token string">"bleu"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">255</span>
+
+couleur <span class="token operator">←</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">16</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span><span class="token string">"rouge"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">8</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span><span class="token string">"vert"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">16</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span><span class="token string">"bleu"</span><span class="token punctuation">]</span></code></pre>
+<p>On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si <code class="language-">Dictionaire.f(&quot;bleu&quot;)</code> =  <code class="language-">Dictionaire.f(&quot;rouge&quot;)</code> le code précédent ne fonctionnera pas.</p>
+<p>$m$ est très grand devant le nombre d'objet que l'on veut stocker cette probabilité de collision est tellement faible qu'on peut la considérer comme nulle, mais :</p>
+<ul>
+<li>si on veut garder des tailles de structure raisonnables et donc réduire $m$ au maximum,</li>
+<li>si on ne peut se permettre une collision de probabilité aussi faible-soit elle</li>
+</ul>
+<p>Il faut trouver un moyen de les gérer aux mieux (c'est à dire avec une complexité maîtrisée).</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Notez que cette préoccupation n'est pas toujours utile. Le logiciel git, utilisé quotidiennement pas des millions de personnes ne fait pas de gestion de collision car les probabilités de collision sont trop faibles.</p>
+</div></div>
+
+<p>Enfin, en toute rigueur le premier exemple devrait plutôt s'écrire :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">rgb <span class="token operator">←</span> Dictionaire<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span>
+
+rgb<span class="token punctuation">[</span>bin<span class="token punctuation">(</span><span class="token string">"rouge"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">230</span>
+rgb<span class="token punctuation">[</span>bin<span class="token punctuation">(</span><span class="token string">"vert"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">12</span>
+rgb<span class="token punctuation">[</span>bin<span class="token punctuation">(</span><span class="token string">"bleu"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">255</span>
+
+couleur <span class="token operator">←</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">16</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span>bin<span class="token punctuation">(</span><span class="token string">"rouge"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">8</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span>bin<span class="token punctuation">(</span><span class="token string">"vert"</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">16</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span>bin<span class="token punctuation">(</span><span class="token string">"bleu"</span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre>
+<p>En utilisant la fonction <code class="language-">bin</code> qui rend la représentation binaire de l'objet. Pour éviter cette indirection, on peut spécifier un type spécifique aux clés et utiliser la structure suivante, avec deux type génériques :</p>
+<p><span id="structure-deux-types-génériques"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionaire</span><span class="token operator">&lt;</span>C<span class="token punctuation">,</span> V<span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>V<span class="token punctuation">]</span> <span class="token operator">←</span> tableau de longueur m
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        <span class="token builtin">fonction</span> <span class="token function">f</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> C<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>  <span class="token comment"># fonction de hachage utile de C dans [0, m[</span>
+
+        <span class="token builtin">fonction</span> <span class="token function">get</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> C<span class="token punctuation">)</span> <span class="token operator">→</span> V<span class="token punctuation">:</span>  <span class="token comment"># valeur ← self[clé] = valeur ← self.get(clé)</span>
+            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token builtin">fonction</span> <span class="token function">set</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> C<span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> V<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># self[clé] ← valeur = self.set(clé, valeur)</span>
+            T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> valeur
+</code></pre>
+<p>Ce qui permet d'écrire :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">rgb <span class="token operator">←</span> Dictionaire<span class="token operator">&lt;</span><span class="token builtin">chaîne</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token operator">></span>
+
+rgb<span class="token punctuation">[</span><span class="token string">"rouge"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">230</span>
+rgb<span class="token punctuation">[</span><span class="token string">"vert"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">12</span>
+rgb<span class="token punctuation">[</span><span class="token string">"bleu"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">255</span>
+
+couleur <span class="token operator">←</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">16</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span><span class="token string">"rouge"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">8</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span><span class="token string">"vert"</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">16</span> <span class="token operator">*</span> rgb<span class="token punctuation">[</span><span class="token string">"bleu"</span><span class="token punctuation">]</span></code></pre>
+<p>Pour alléger un peu les notations on ne spécifiera que le type des valeurs dans la suite de cette partie et on supposera, par <em>abus de notation</em> que les clés sont transformés en leur équivalent binaire.</p>
+<p>En revanche, dans le reste du cours, on spécifiera très souvent les types de clés et de valeurs pour éviter toute utilisation caché de fonctions (ici la fonction <code class="language-">bin</code>).</p>
+<h2>Gestion des collisions</h2>
+<p>Pour gérer les collisions, on utilise <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering">le théorème fondamental du développement logiciel</a> :</p>
+<p><span id="théorème-fondamental-développement-logiciel"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème fondamental du développement logiciel (TFDL)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout problème peut être résolu en ajoutant une couche d'indirection supplémentaire.</p>
+<p><em>&quot;We can solve any problem by introducing an extra level of indirection.&quot;</em></p>
+</div></div>
+
+<p>Dans notre cas, l'indirection consiste à stocker les couples (clé, valeur) possibles dans $T[f(i)]$ :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionaire</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">Type</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">]</span> <span class="token operator">←</span> tableau de longueur m où chaque élément est initialisé à une liste vide
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        <span class="token builtin">fonction</span> <span class="token function">f</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>  <span class="token comment"># fonction de hachage utile de {0, 1}^* dans [0, m[</span>
+
+        <span class="token builtin">fonction</span> <span class="token function">get</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>  <span class="token comment"># valeur ← self[clé] = valeur ← self.get(clé)</span>
+            <span class="token keyword">pour chaque</span> couple <span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span> de T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    <span class="token keyword">rendre</span> v
+
+        <span class="token builtin">fonction</span> <span class="token function">set</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># self[clé] ← valeur = self.set(clé, valeur)</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> à l<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span> <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> l<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> ∅
+
+            T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token builtin">fonction</span> <span class="token function">in</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>  <span class="token comment"># x est dans self = self.in(x)</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span> e de l <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> e
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+        <span class="token builtin">fonction</span> <span class="token function">delete</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># supprime x de self = self.delete(x)</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span> e de l <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> e
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> ∅
+</code></pre>
+<p>Chaque élément du tableau T de la structure est une liste qui stockera les différentes clés ayant même hash.</p>
+<p>Comme on peut ajouter des clés, on a ajouté deux méthodes <code class="language-">Dictionaire.in</code> et <code class="language-">Dictionaire.delete</code> permettant respectivement de savoir si une clé est présente dans le dictionnaire et pour supprimer une clé.</p>
+<p>Reprenons l'exemple précédent :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">rgb <span class="token operator">←</span> Dictionaire
+
+rgb<span class="token punctuation">[</span><span class="token string">"rouge"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">230</span>
+rgb<span class="token punctuation">[</span><span class="token string">"vert"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">12</span>
+rgb<span class="token punctuation">[</span><span class="token string">"bleu"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">255</span>
+</code></pre>
+<p>En supposant que :</p>
+<ul>
+<li>m = 3</li>
+<li><code class="language-">Dictionaire.f(&quot;vert&quot;)</code> = 0</li>
+<li><code class="language-">Dictionaire.f(&quot;bleu&quot;)</code> =  <code class="language-">Dictionaire.f(&quot;rouge&quot;)</code> = 2</li>
+</ul>
+<p>Le dictionnaire <code class="language-">rgb</code> vaudra :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">rgb <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">"vert"</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>                    <span class="token comment"># indice 0</span>
+       <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>                                <span class="token comment"># indice 1</span>
+       <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">"rouge"</span><span class="token punctuation">,</span> <span class="token number">230</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"bleu"</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">]</span>   <span class="token comment"># indice 2</span></code></pre>
+<h2>Complexité de la recherche d'une clé</h2>
+<p>La complexité de la méthode <code class="language-">Dictionaire.get</code> vaut la somme de ces différentes opérations :</p>
+<ol>
+<li>Calcul de $f(\mbox{clé})$</li>
+<li>Parcourir la liste des couples $(c, v)$ de la liste $T[f(\mbox{clé})]$ et comparer chaque $c$ à notre clé avec l'opérateur <code class="language-">==</code> pour voir s'il sont égaux.</li>
+</ol>
+<p>Le calcul du hash de la clé et de l'opérateur <code class="language-">==</code> sont linéaires en la taille des objets.</p>
+<p>Si la taille maximale des objets est connue, on a coutume de considérer que la complexité de l'opérateur <code class="language-">==</code> et du calcul de $f(\mbox{clé})$ se fait en $\mathcal{O}(1)$. Une autre astuce est de calculer le hash de chaque objet à sa création et de le stocker (le hash devient un attribut universel de tout objet) : le calcul de $f(\mbox{clé})$ devient alors effectivement $\mathcal{O}(1)$ puisque cela revient à lire un attribut (c'est comme ça que procède python par exemple).</p>
+<p>On en conclut que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La recherche et l'affectation dans un dictionnaire est en $\mathcal{O}$ du nombre maximum de clé stockés avec la même valeur de hash.</p>
+</div></div>
+
+<h2>Taille de la structure</h2>
+<p>Pour garantir une bonne répartition des valeur de hash, il faut que $m$ soit grand ($2^{64}$ bits par exemple pour <a href="https://en.wikipedia.org/wiki/SipHash">sipHash</a>, la fonction de hash utilisé par python), mais on ne peut pas stocker un tableau aussi gigantesque pour chaque dictionnaire.</p>
+<p>Pour résoudre ce problème on va encore une fois utiliser <a href="#th%C3%A9or%C3%A8me-fondamental-d%C3%A9veloppement-logiciel" class="interne">le TFDL</a> et ajouter une indirection.</p>
+<p>On utilise une fonction supplémentaire appelée <strong>fonction d'adressage</strong> qui est une deuxième fonction de hachage dont maîtrise la taille de l'entier en sortie. Sa signature est :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">f<span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> m'<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Et correspond à une famille de fonctions de hachage <strong>utiles</strong> $f_{m'}$ telles que $f(x, m') = f_{m'}(x)$ avec :</p>
+<div>
+$$
+f_{m'}: [0\mathrel{ {.}\,{.} } m[ \rightarrow [0\mathrel{ {.}\,{.} } m'[
+$$
+</div>
+<p>En toute généralité on a :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>fonction d'adressage</em></strong> est une famille $f_m$ de fonctions : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$ définis pour tout entier $m$.</p>
+</div></div>
+
+<h3>Taille fixe</h3>
+<p>La version finale de la structure de dictionnaire est alors :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">f</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>  <span class="token comment"># fonction de hachage utile de {0, 1}^* dans [0, m[</span>
+
+<span class="token builtin">structure</span> <span class="token class-name">Dictionaire</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">Type</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">]</span> <span class="token operator">←</span> tableau de longueur taille où chaque élément est initialisé à une liste vide
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        <span class="token builtin">fonction</span> <span class="token function">fa</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> m<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>  <span class="token comment"># fonction d'adressage</span>
+
+        <span class="token builtin">fonction</span> <span class="token function">get</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>  <span class="token comment"># valeur ← self[clé] = valeur ← self.get(clé)</span>
+            <span class="token keyword">pour chaque</span> couple <span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span> de T<span class="token punctuation">[</span>fa<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    <span class="token keyword">rendre</span> v
+
+        <span class="token builtin">fonction</span> <span class="token function">set</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># self[clé] ← valeur = self.set(clé, valeur)</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>fa<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> à l<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span> <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> l<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> ∅
+
+            T<span class="token punctuation">[</span>fa<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token builtin">fonction</span> <span class="token function">in</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>  <span class="token comment"># x est dans self = self.in(x)</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span> e de l <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> e
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+        <span class="token builtin">fonction</span> <span class="token function">delete</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># supprime x de self = self.delete(x)  </span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span> e de l <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> e
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> ∅
+</code></pre>
+<p>La fonction d'adressage permet de choisir une taille de tableau qui correspond à nos besoins. De plus, on peut considérer que son calcul est toujours en $\mathcal{O}(1)$ car elle sera toujours utilisée avec un nombre de taille fixe qui est le hash d'un objet.</p>
+<p>Cette version permet d'avoir une structure dont la taille est proportionnelle au nombre de valeurs stockées mais dont le nombre de collisions va augmenter plus on stocke de valeurs. On peut améliorer ça en utilisant la même technique que pour les listes.</p>
+<h3>Taille dynamique</h3>
+<p>Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le nombre d'éléments stockés est supérieur à sa longueur. C'est cette structure qui est appelée dictionnaire et correspond à la structure :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">f</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>  <span class="token comment"># fonction de hachage utile de {0, 1}^* dans [0, m[</span>
+
+<span class="token builtin">structure</span> <span class="token class-name">Dictionaire</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">Type</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">]</span> <span class="token operator">←</span> tableau de longueur taille où chaque élément est initialisé à une liste vide
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        <span class="token builtin">fonction</span> <span class="token function">fa</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> m<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>  <span class="token comment"># fonction d'adressage</span>
+
+        <span class="token builtin">fonction</span> <span class="token function">get</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>  <span class="token comment"># valeur ← self[clé] = valeur ← self.get(clé)</span>
+            <span class="token keyword">pour chaque</span> couple <span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span> de T<span class="token punctuation">[</span>fa<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    <span class="token keyword">rendre</span> v
+
+        <span class="token builtin">fonction</span> <span class="token function">set</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># self[clé] ← valeur = self.set(clé, valeur)</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>fa<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> à l<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span> <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> l<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> ∅
+
+            <span class="token keyword">si</span> taille <span class="token operator">==</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+                T2 <span class="token operator">←</span> T
+
+                taille <span class="token operator">←</span> <span class="token number">0</span>
+                T <span class="token operator">←</span> un nouveau tableau de Liste<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">Type</span><span class="token punctuation">)</span><span class="token operator">></span> de longueur <span class="token number">2</span> <span class="token operator">*</span> T2<span class="token punctuation">.</span>longueur où chaque élément est initialisé à une liste vide
+                <span class="token keyword">pour chaque</span> l de T2<span class="token punctuation">:</span>
+                    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span> de l<span class="token punctuation">:</span>
+                        set<span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span>
+
+                set<span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span>
+            <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+                taille <span class="token operator">←</span> taille <span class="token operator">+</span> <span class="token number">1</span>
+
+                l <span class="token operator">←</span> T<span class="token punctuation">[</span>fa<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">]</span>
+                <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> à l<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span> <span class="token punctuation">:</span>
+                    c<span class="token punctuation">,</span> v <span class="token operator">←</span> l<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+                    <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                        l<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span>
+                        <span class="token keyword">rendre</span> ∅
+
+                T<span class="token punctuation">[</span>fa<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token builtin">fonction</span> <span class="token function">in</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>  <span class="token comment"># x est dans self = self.in(x)</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span> e de l <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> e
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+        <span class="token builtin">fonction</span> <span class="token function">delete</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>  <span class="token comment"># supprime x de self = self.delete(x)  </span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+            <span class="token keyword">pour chaque</span> e de l <span class="token punctuation">:</span>
+                c<span class="token punctuation">,</span> v <span class="token operator">←</span> e
+                <span class="token keyword">si</span> c <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    l<span class="token punctuation">.</span>delete<span class="token punctuation">(</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token keyword">rendre</span> ∅
+</code></pre>
+<p>Tout comme les listes, une fois que le nombre d'élément stocké dépasse la capacité ou double la capacité. Dans notre cas cela revient à changer de fonction d'adressage et de tout restocker.</p>
+<h2>Complexités des méthodes</h2>
+<p>En supposant que la fonction d'adressage est une fonction de hash utile,
+On va estimer la complexité des opérations suivantes :</p>
+<ul>
+<li>création de la structure</li>
+<li>suppression de la structure (liste de liste)</li>
+<li>ajout d'un élément à la structure</li>
+<li>recherche d'un élément à la structure</li>
+<li>suppression d'un élément à la structure</li>
+</ul>
+<p>On utilisera ici la structure finale et dynamique du dictionnaire.</p>
+<h3>Création de la structure</h3>
+<p>La taille initiale est nulle donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La création d'un dictionnaire prend $\mathcal{O}(1)$ opérations.</p>
+</div></div>
+
+<h3>Suppression de la structure</h3>
+<p>La suppression du dictionnaire implique la suppression de toutes les listes stockées :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La suppression d'une structure de dictionnaire prend $\mathcal{O}(T.\mbox{\small longueur})$ opérations.</p>
+</div></div>
+
+<h3>Ajout/recherche et suppression d'un élément</h3>
+<p>Les complexités sont identiques car cela revient à chercher si la clé $c$ est déjà stockée ou non dans la structure.</p>
+<p>Cette complexité peut aller de :</p>
+<ul>
+<li>cas le meilleur : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $T[f_m(f(c))]$ est vide</li>
+<li>cas le pire : $\mathcal{O}(\mbox{taille})$ (en considérant que la complexité de l'opérateur <code class="language-">==</code> vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ vaudra $\mbox{taille}$, le nombre d'éléments stockés.</li>
+<li>cas moyen : $\mathcal{O}(\frac{\mbox{taille}}{T.\mbox{\small longueur}})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{\mbox{taille}}{T.\mbox{\small longueur}}$ éléments dans la liste $L[fa(f(c), m)]$.</li>
+</ul>
+<p>Comme $\frac{\mbox{taille}}{T.\mbox{\small longueur}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des <a href="../../structure-liste/#preuve-liste-ajout" class="interne">$N$ ajouts successifs pour une liste</a> montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{taille})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité <strong>en moyenne</strong> d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$</p>
+</div></div>
+
+<p>La structure de dictionnaire est donc une structure très efficace le cas le pire arrivant très rarement !</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.</p>
+<p>La complexité maximale de ces méthodes est en $\mathcal{O}(n)$ où n$ est le nombre d'éléments stockés dans la structure.</p>
+</div></div>
+
+<h2>Utilisation</h2>
+<p>Tableaux associatifs et dictionnaire sont deux synonymes. On utilisera cependant plus volontiers le terme de dictionnaire en code (popularisé par python qui en fait un usage intensif) que de tableau associatif plus daté.</p>
+<p>Ils permettent d'utiliser directement les donnés du problèmes sans avoir besoin d'une indirection.</p>
+<p>Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nombre_pommes <span class="token operator">←</span> Dictionnaire<span class="token operator">&lt;</span><span class="token builtin">chaîne</span><span class="token operator">></span>
+nombre_pommes<span class="token punctuation">[</span><span class="token string">"fuji"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">12</span>
+nombre_pommes<span class="token punctuation">[</span><span class="token string">"gala"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">3</span>
+nombre_pommes<span class="token punctuation">[</span><span class="token string">"pink lady"</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">42</span></code></pre>
+<p>Plutôt que de d'abord associer un indice aux données :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">pommes_indirection <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"fuji"</span><span class="token punctuation">,</span> <span class="token string">"gala"</span><span class="token punctuation">,</span> <span class="token string">"pink lady"</span><span class="token punctuation">]</span>
+nombre_pommes <span class="token operator">←</span> Tableau de <span class="token builtin">chaîne</span> de longueur <span class="token number">3</span>
+nombre_pommes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">12</span>
+nombre_pommes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">3</span>
+nombre_pommes<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">42</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si en algorithmie on préférera souvent manipuler les donnés sous la forme d'indices (via une indirection) pour obtenir une complexité de $\mathcal{O}(1)$, l'usage direct des données via un dictionnaire est très utilisé en code car le gain en simplicité vaut <em>a priori</em> la légère perte de complexité ($\mathcal{O}(1)$ en moyenne seulement).</p>
+</div></div>
+
+<p>Initialiser un dictionnaire avec des données se fait en utilisant des accolades comme on le ferait pour spécifier les attributs d'une structure normale. Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nombre_pommes <span class="token operator">←</span> Dictionaire<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token string">"fuji"</span><span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token string">"gala"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">"pink lady"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">}</span></code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
