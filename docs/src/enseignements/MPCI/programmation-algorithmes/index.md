@@ -603,6 +603,9 @@ Au programme, on prépare les vacances et son sac-à-dos :
 
 {% attention %}
 DS code 3h, lundi 05/05.
+
+Sujet DS-C : [Big points](./annales/2024-2025/ds-code/){.interne}
+
 {% endattention %}
 
 ### Semaine 14
