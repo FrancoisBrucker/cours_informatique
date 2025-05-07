@@ -253,7 +253,7 @@ Si $H(n)$ converge, alors toute suite extraite également. Cela n'est donc pas p
 
 Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement [polylogarithmique](https://fr.wikipedia.org/wiki/Polylogarithmique)).
 
-Montrons le en utilisant le fait que comme $f(x) = \frac{1}{x}$ est une fonction décroissante sur $\mathbb{R}^+$ on a pour tout entier $i> 1$ :
+Montrons le en utilisant le fait que comme $f(x) = \frac{1}{x}$ est une fonction décroissante sur $\mathbb{R}^+$ on peut utiliser, on a pour tout entier $i> 1$ :
 
 <div>
 $$
@@ -268,7 +268,7 @@ $$
 $$
 </div>
 
-En déduire pour tout $n> 0$ :
+On peut alors utiliser [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale) pour en déduire que pour tout $n> 0$ :
 
 {% exercice %}
 
@@ -283,7 +283,7 @@ $$
 
 L'inégalité de droite est claire en sommant de $i=2$ à $i=n$.
 
-Pour l'inégalité de gauche, la première inégalité donne en sommant  de $i=1$ à $i=n$ : $\ln(n+1)  \leq H(n)$ et on conclut puisque $\ln$ est une fonction croissante.
+Pour l'inégalité de gauche, la première inégalité donne en sommant de $i=1$ à $i=n$ : $\ln(n+1)  \leq H(n)$ et on conclut puisque $\ln$ est une fonction croissante.
 
 {% enddetails %}
 
@@ -323,91 +323,14 @@ $$
 
 {% endlien %}
 
-On ne va pas ici démontrer la valeur exacte de la limite (qui a plus sa place dans un cours d'analyse), juste qu'elle converge et que c'est donc un $\mathcal{O}(1)$.
-
-On va utiliser [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale) qu'il est utile d'avoir dans son arsenal (on verra en fin d'exercice un autre moyen de faire, avec une petite astuce bien sympathique) :
-
-{% exercice %}
-Montrez que  :
-
-<div>
-$$
-\int_{1}^{n+1}\frac{1}{x^2}dx \leq \sum_{i=1}^n\frac{1}{i^2} \leq 1 + \int_{1}^{n}\frac{1}{x^2}dx
-$$
-</div>
-
-{% endexercice %}
-{% details "corrigé" %}
-
-La preuve vient directement du fait que la fonction $f(x) = \frac{1}{x^2}$ est décroissante sur $[1, +\infty]$ et donc pour tout $i>1$ :
-
-<div>
-$$
-\int_{i}^{i+1}\frac{1}{x^2}dx \leq \frac{1}{i^2} \leq \int_{i-1}^{i}\frac{1}{x^2}dx
-$$
-</div>
-
-Ce qui emmène à :
-
-<div>
-$$
-\int_{2}^{n+1}\frac{1}{x^2}dx \leq \sum_{i=2}^n\frac{1}{i^2} \leq \int_{1}^{n}\frac{1}{x^2}dx
-$$
-</div>
-
-Et donc :
-
-<div>
-$$
-\int_{1}^{n+1}\frac{1}{x^2}dx \leq \sum_{i=1}^n\frac{1}{i^2} \leq 1 + \int_{1}^{n}\frac{1}{x^2}dx
-$$
-</div>
-
-{% enddetails %}
-{% exercice %}
-En déduire que la série est convergente et que :
-
-<div>
-$$
-1 \leq lim_{n\to +\infty} \sum_{i=1}^n\frac{1}{i^2} \leq 2
-$$
-</div>
-
-{% endexercice %}
-{% details "corrigé" %}
-Vient directement de l'encadrement précédent et que :
-
-<div>
-$$
-\int_1^{+\infty}\frac{1}{x^2}dx = \left [-\frac{1}{x}\right ]_1^{+\infty} =1
-$$
-</div>
-
-Comme la série est croissante et bornée, elle converge.
-
-{% enddetails %}
-{% exercice %}
-Et donc que :
-
-<div>
-$$
-\sum_{i=1}^n\frac{1}{i^2} = \mathcal{O}(1)
-$$
-</div>
-{% endexercice %}
-{% details "corrigé" %}
-
-Clair puisque la série est croissante et possède une limite.
-{% enddetails %}
-
-Contrairement au problème de Bâle, cette variante est toute simple :
+On ne va pas ici démontrer la valeur exacte de la limite (qui a plus sa place dans un cours d'analyse), juste qu'elle converge et que c'est donc un $\mathcal{O}(1)$. On va pour cela utiliser une série proche mais admirablement facile à calculer.
 
 {% exercice %}
 Montrez que :
 
 <div>
 $$
-\sum_{i=1}^n\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)
+\sum_{i=1}^n\frac{1}{i(i+1)} = \frac{n}{n+1}
 $$
 </div>
 {% endexercice %}
@@ -422,11 +345,56 @@ $$
 </div>
 
 {% enddetails %}
+{% exercice %}
+En déduire que pour tout $n$ :
 
-Remarquez qu'on aurait aussi pu utiliser l'encadrement suivant pour prouver la convergence de la série initiale :
+<div>
+$$
+1 \leq \sum_{i=1}^n\frac{1}{i^2} \leq 2
+$$
+</div>
+{% endexercice %}
+{% info "**Indice**" %}
+Pour $i> 1$ vous pourrez remarquer que :
 
+<div>
+$$
+\frac{1}{i(i+1)} \leq \frac{1}{i^2} \leq \frac{1}{i(i-1)}
+$$
+</div>
+{% endinfo %}
+
+{% details "corrigé" %}
+
+En sommant l'indice on obtient :
 <div>
 $$
 \sum_{i=1}^{n}\frac{1}{i(i+1)} \leq \sum_{i=1}^{n}\frac{1}{i^2} \leq 1 + \sum_{i=2}^{n}\frac{1}{i(i-1)}
 $$
 </div>
+
+Et l'encadrement final vient du fait que :
+
+<div>
+$$
+\lim_{n\to +\infty}\frac{n}{n+1} = \lim_{n\to +\infty}\frac{n+1}{n+1} - \frac{1}{(n+1)} = 1
+$$
+</div>
+
+{% enddetails %}
+
+{% exercice %}
+En déduire que :
+
+<div>
+$$
+\sum_{i=1}^n\frac{1}{i^2} = \mathcal{O}(1)
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+La série est croissante et bornée, elle converge.
+{% enddetails %}
+
+Classiquement en analyse on aurait aussi utilisé [la comparaison série-intégrale](https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale) pour faire la même chose. C'est moins élégant dans ce cas là, mais cela vous servira dans bien d'autres calcul de sommes (gardez la sous le coude).
