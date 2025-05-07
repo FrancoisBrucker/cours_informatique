@@ -120,7 +120,7 @@ Nous allons voir ici une chaîne de réductions, qui nous serons utiles plus tar
 
 #### 2-SUM ≤ ÉGAL
 
-Commençons par [le problème 2-SUM](../projet-classiques/#2-sum){.interne} que nous avons déjà vu :
+Commençons par [le problème 2-SUM](../projet-algorithmes-classiques/#2-sum){.interne} que nous avons déjà vu :
 
 {% note "**Problème**" %}
 
@@ -155,7 +155,7 @@ On prend $T'$ le tableau tel que $T'[k] = -T[k]$ pour tout indice $k$
 
 #### 3-SUM ≤ 3-SUM'
 
-Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous avons déjà vu :
+Reprenons [le problème 3-SUM](../projet-algorithmes-classiques/#3-sum){.interne} que nous avons déjà vu :
 
 {% note "**Problème**" %}
 

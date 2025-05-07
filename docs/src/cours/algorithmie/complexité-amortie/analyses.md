@@ -68,7 +68,7 @@ def tous(n):
 
 À un nombre `N`{.language-} écrit au format binaire donné, `successeur(N)`{.language-} va l'incrémenter de 1.
 
-[On a déjà étudié les complexités de l'algorithme `successeur(N)`{.language-}](../projet-classiques/compteur-binaire/){.interne}. Ici c'est l'exécution de `tous(n)`{.language-} qui nous intéresse et donc la complexité des $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}. On verra juste multiplier la complexité par le nombre d'itération va donner un calcul trop frustre.
+[On a déjà étudié les complexités de l'algorithme `successeur(N)`{.language-}](../projet-algorithmes-classiques/compteur-binaire/){.interne}. Ici c'est l'exécution de `tous(n)`{.language-} qui nous intéresse et donc la complexité des $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}. On verra juste multiplier la complexité par le nombre d'itération va donner un calcul trop frustre.
 
 {% note "**Problème**" %}
 Trouver la complexité de l'exécution `tous(n)`{.language-}, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}.

@@ -403,7 +403,7 @@ En particulier, lisez DS 1 des précédentes années...
 On passera la séance de TD à résoudre des algorithmes classiques :
 {% aller %}
 
-[Algorithmes classiques](/cours/algorithmie/projet-classiques){.interne}
+[Algorithmes classiques](/cours/algorithmie/projet-algorithmes-classiques){.interne}
 
 {% endaller %}
 

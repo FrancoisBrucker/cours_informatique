@@ -355,13 +355,8 @@ $$
 </div>
 {% endexercice %}
 {% info "**Indice**" %}
-Pour $i> 1$ vous pourrez remarquer que :
+Pour $i> 1$ vous pourrez remarquer que : $\frac{1}{i(i+1)} \leq \frac{1}{i^2} \leq \frac{1}{i(i-1)}$
 
-<div>
-$$
-\frac{1}{i(i+1)} \leq \frac{1}{i^2} \leq \frac{1}{i(i-1)}
-$$
-</div>
 {% endinfo %}
 
 {% details "corrigé" %}

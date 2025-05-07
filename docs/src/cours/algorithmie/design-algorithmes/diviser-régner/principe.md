@@ -33,7 +33,7 @@ algorithme diviser(données):
 
 On restreint nos données en supprimant les données superflues : c'est le principe d'un algorithme récursif où l'on restreint à chaque itération l'ensemble de nos données.
 
-On a utilisé ce principe dans [la dichotomie](../../../projet-classiques/#dichotomie){.interne} par exemple.
+On a utilisé ce principe dans [la dichotomie](../../../projet-algorithmes-classiques/#dichotomie){.interne} par exemple.
 
 {% attention "**À retenir**" %}
 On utilise le design **diviser** que lorsqu'il est _facile_ (et rapide) algorithmiquement de trouver un sous-ensemble des données initiales donnant la même solution.

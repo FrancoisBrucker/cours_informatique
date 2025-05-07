@@ -444,7 +444,7 @@ Pour trouver la solution maximale à un problème d'optimisation, on peut toujou
 - si elle est **réalisable**, c'est à dire que les produits choisis tiennent tous dans le sac à dos
 - si la fonction objectif est maximale par rapport aux affectations déjà faite
 
-Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre [l'algorithme successeur](../../projet-classiques/compteur-binaire/#successeur){.interne} qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.
+Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre [l'algorithme successeur](../../projet-algorithmes-classiques/compteur-binaire/#successeur){.interne} qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.
 
 L'algorithme peut alors être, avec des produits organisés comme l'`EXEMPLE`{.language-} :
 

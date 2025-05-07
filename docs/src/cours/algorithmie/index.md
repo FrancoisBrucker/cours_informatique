@@ -194,18 +194,26 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 
 ### On s'entraîne
 
-#### <span id="sommes-classiques"></span> Sommes classiques
+#### Complexité
 
 Comme exercice et pour référence, calcul de sommes classiques et utiles en complexité :
+
+<span id="sommes-classiques"></span>
 
 {% aller %}
 [Calcul de sommes classiques](./projet-sommes-classiques/){.interne}
 {% endaller %}
 
+{% aller %}
+[Calcul d'équations classiques](./projet-équations-classiques/){.interne}
+{% endaller %}
+
+>TBD ici équation de récurrence classique
+
 #### Résolution d'algorithmes classiques
 
 {% aller %}
-[Algorithmes classiques](./projet-classiques){.interne}
+[Algorithmes classiques](./projet-algorithmes-classiques){.interne}
 {% endaller %}
 
 ## <span id="partie-2"></span>Partie II : structures de données
@@ -449,7 +457,7 @@ La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ o
 
 {% endlien %}
 
-Reprenons [le problème 3-SUM](../projet-classiques/#3-sum){.interne} que nous avons déjà vu :
+Reprenons [le problème 3-SUM](../projet-algorithmes-classiques/#3-sum){.interne} que nous avons déjà vu :
 
 {% note "**Problème**" %}
 
