@@ -445,7 +445,7 @@ $$
 </details>     
 </div>
 <p>Si la série harmonique arrive dans le calcul des complexités c'est que l'on cherche à montrer que cette dernière va se comporter comme une fonction logarithmique (ou plus généralement <a href="https://fr.wikipedia.org/wiki/Polylogarithmique">polylogarithmique</a>).</p>
-<p>Montrons le en utilisant le fait que comme $f(x) = \frac{1}{x}$ est une fonction décroissante sur $\mathbb{R}^+$ on a pour tout entier $i&gt; 1$ :</p>
+<p>Montrons le en utilisant le fait que comme $f(x) = \frac{1}{x}$ est une fonction décroissante sur $\mathbb{R}^+$ on peut utiliser, on a pour tout entier $i&gt; 1$ :</p>
 <div>
 $$
 \frac{1}{i} \leq \int_{i-1}^{i}\frac{1}{x}dx
@@ -457,7 +457,7 @@ $$
 \int_{i}^{i+1}\frac{1}{x}dx \leq \frac{1}{i}
 $$
 </div>
-<p>En déduire pour tout $n&gt; 0$ :</p>
+<p>On peut alors utiliser <a href="https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale">la comparaison série-intégrale</a> pour en déduire que pour tout $n&gt; 0$ :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -486,7 +486,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>L'inégalité de droite est claire en sommant de $i=2$ à $i=n$.</p>
-<p>Pour l'inégalité de gauche, la première inégalité donne en sommant  de $i=1$ à $i=n$ : $\ln(n+1)  \leq H(n)$ et on conclut puisque $\ln$ est une fonction croissante.</p>
+<p>Pour l'inégalité de gauche, la première inégalité donne en sommant de $i=1$ à $i=n$ : $\ln(n+1)  \leq H(n)$ et on conclut puisque $\ln$ est une fonction croissante.</p>
 </div>
 </details>     
 </div>
@@ -545,135 +545,14 @@ $$
 <p><a href="https://www.youtube.com/watch?v=1hJji-zgS00">5 preuves différentes du résultat</a> et les détails dans <a href="https://math.univ-lyon1.fr/irem/IMG/pdf/analysie.pdf">voyage en Analystan</a></p>
 </div></div>
 
-<p>On ne va pas ici démontrer la valeur exacte de la limite (qui a plus sa place dans un cours d'analyse), juste qu'elle converge et que c'est donc un $\mathcal{O}(1)$.</p>
-<p>On va utiliser <a href="https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale">la comparaison série-intégrale</a> qu'il est utile d'avoir dans son arsenal (on verra en fin d'exercice un autre moyen de faire, avec une petite astuce bien sympathique) :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que  :</p>
-<div>
-$$
-\int_{1}^{n+1}\frac{1}{x^2}dx \leq \sum_{i=1}^n\frac{1}{i^2} \leq 1 + \int_{1}^{n}\frac{1}{x^2}dx
-$$
-</div>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>La preuve vient directement du fait que la fonction $f(x) = \frac{1}{x^2}$ est décroissante sur $[1, +\infty]$ et donc pour tout $i&gt;1$ :</p>
-<div>
-$$
-\int_{i}^{i+1}\frac{1}{x^2}dx \leq \frac{1}{i^2} \leq \int_{i-1}^{i}\frac{1}{x^2}dx
-$$
-</div>
-<p>Ce qui emmène à :</p>
-<div>
-$$
-\int_{2}^{n+1}\frac{1}{x^2}dx \leq \sum_{i=2}^n\frac{1}{i^2} \leq \int_{1}^{n}\frac{1}{x^2}dx
-$$
-</div>
-<p>Et donc :</p>
-<div>
-$$
-\int_{1}^{n+1}\frac{1}{x^2}dx \leq \sum_{i=1}^n\frac{1}{i^2} \leq 1 + \int_{1}^{n}\frac{1}{x^2}dx
-$$
-</div>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>En déduire que la série est convergente et que :</p>
-<div>
-$$
-1 \leq lim_{n\to +\infty} \sum_{i=1}^n\frac{1}{i^2} \leq 2
-$$
-</div>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Vient directement de l'encadrement précédent et que :</p>
-<div>
-$$
-\int_1^{+\infty}\frac{1}{x^2}dx = \left [-\frac{1}{x}\right ]_1^{+\infty} =1
-$$
-</div>
-<p>Comme la série est croissante et bornée, elle converge.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Et donc que :</p>
-<div>
-$$
-\sum_{i=1}^n\frac{1}{i^2} = \mathcal{O}(1)
-$$
-</div>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Clair puisque la série est croissante et possède une limite.</p>
-</div>
-</details>     
-</div>
-<p>Contrairement au problème de Bâle, cette variante est toute simple :</p>
+<p>On ne va pas ici démontrer la valeur exacte de la limite (qui a plus sa place dans un cours d'analyse), juste qu'elle converge et que c'est donc un $\mathcal{O}(1)$. On va pour cela utiliser une série proche mais admirablement facile à calculer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que :</p>
 <div>
 $$
-\sum_{i=1}^n\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)
+\sum_{i=1}^n\frac{1}{i(i+1)} = \frac{n}{n+1}
 $$
 </div>
 </div></div>
@@ -704,12 +583,97 @@ $$
 </div>
 </details>     
 </div>
-<p>Remarquez qu'on aurait aussi pu utiliser l'encadrement suivant pour prouver la convergence de la série initiale :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En déduire que pour tout $n$ :</p>
+<div>
+$$
+1 \leq \sum_{i=1}^n\frac{1}{i^2} \leq 2
+$$
+</div>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Indice</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour $i&gt; 1$ vous pourrez remarquer que :</p>
+<div>
+$$
+\frac{1}{i(i+1)} \leq \frac{1}{i^2} \leq \frac{1}{i(i-1)}
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En sommant l'indice on obtient :</p>
 <div>
 $$
 \sum_{i=1}^{n}\frac{1}{i(i+1)} \leq \sum_{i=1}^{n}\frac{1}{i^2} \leq 1 + \sum_{i=2}^{n}\frac{1}{i(i-1)}
 $$
 </div>
+<p>Et l'encadrement final vient du fait que :</p>
+<div>
+$$
+\lim_{n\to +\infty}\frac{n}{n+1} = \lim_{n\to +\infty}\frac{n+1}{n+1} - \frac{1}{(n+1)} = 1
+$$
+</div>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En déduire que :</p>
+<div>
+$$
+\sum_{i=1}^n\frac{1}{i^2} = \mathcal{O}(1)
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La série est croissante et bornée, elle converge.</p>
+</div>
+</details>     
+</div>
+<p>Classiquement en analyse on aurait aussi utilisé <a href="https://fr.wikipedia.org/wiki/Comparaison_s%C3%A9rie-int%C3%A9grale">la comparaison série-intégrale</a> pour faire la même chose. C'est moins élégant dans ce cas là, mais cela vous servira dans bien d'autres calcul de sommes (gardez la sous le coude).</p>
 
 
 </article>
