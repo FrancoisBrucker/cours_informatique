@@ -1,0 +1,95 @@
+---
+layout: layout/post.njk
+
+title: Fibonacci
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
+---
+
+{% lien %}
+[Corrigé](./corrigé){.interne}
+{% endlien %}
+
+[La suite de Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci) est définie par l'équation de récurrence :
+
+<div>
+$$
+F(n) = F(n-1) + F(n-2)
+$$
+</div>
+
+Si $n > 2$ et $F(1) = F(2) = 1$
+
+Nous allons utiliser cette suite pour donner des techniques utiles pour l'étude d'algorithmes récursifs
+
+## Bornes
+
+> TBD faire encadrement exponentiel de la valeur de Fibonacci.
+> puis utiliser cette question pour la question d'après.
+
+## Fibonacci récursif
+
+```pseudocode/
+algorithme fibonacci_rec(n: entier) → entier:
+    si n ≤ 2:
+        rendre 1
+    rendre fibonacci_rec(n-1) + fibonacci_rec(n-2)
+```
+
+Cette partie vous donne le principe général lorsque l'on calcule des complexités d'algorithmes récursifs.
+
+1. Donnez l'équation de récurrence permettant de calculer le nombre $A(n)$ d'appels à la fonction dans l'exécution de `fibonacci_rec(n)`{.language-}. Montrer que cette valeur est égale à $F(n)$.
+2. Donnez l'équation de récurrence permettant de calculer la complexité $C(n)$ de l'exécution de `ma_fonction(n)`{.language-}.
+3. Montrez que $\mathcal{O}(1) + 2\cdot C(n-2) \leq C(n) \leq \mathcal{O}(1) + 2\cdot C(n-1)$
+4. En déduire que :
+   1. $C(n) \leq \mathcal{O}(1)\cdot (\sum_{i=0}^{n-3}2^i) + 2^{n-2} \cdot C(2)$
+   2. $C(n) \geq  \mathcal{O}(1)\cdot (\sum_{i=0}^{(n-4)/2}2^i) + {(\sqrt{2})}^{n-2} \cdot C(2)$
+5. en conclure que :
+   1. $C(n) =\mathcal{O}(2^n)$
+   2. $C(n) =\Omega((\sqrt{2})^n)$
+
+{% info %}
+La valeur d'[une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique) est à connaître. On en a souvent besoin en algorithmie.
+{% endinfo %}
+
+## Valeur de $F(n)$
+
+Montrez (par récurrence) que :
+
+<div>
+$$
+F(n) = \frac{1}{\sqrt{5}}(\varphi^n-\frac{1}{(-\varphi)^n})
+$$
+</div>
+
+Où $\varphi = \frac{1+\sqrt{5}}{2}$ qui est le nombre d'or et une racine du polynôme $P(X) = X^2 - X - 1$. Vous pourrez utiliser le fait que $-\frac{1}{\varphi}= \frac{1-\sqrt{5}}{2}$ et est l'autre racine de $P(X)$.
+
+{% info %}
+C'est hors programme, mais c'est la façon de résoudre [les suite linéaires récurrentes](https://fr.wikipedia.org/wiki/Suite_r%C3%A9currente_lin%C3%A9aire)
+{% endinfo %}
+
+En déduire que le nombre d'appels de la fonction récursive de la partie précédente vaut : $A(n) = \Theta(\varphi^n)$
+
+## Itératif
+
+Donnez un algorithme itératif de complexité $\mathcal{O}(n)$ pour calculer $F(n)$
+
+## Récursif terminal
+
+L'algorithme récursif est sous optimal car il recalcule plein de fois la même chose. Pour calculer $F(n)$ il calcule deux fois $F(n-2)$, une fois dans la somme et une fois dans le calcul de $F(n-1)$.
+
+L'algorithme itératif ne fait pas la même chose car il stocke les valeurs intermédiaires. Une technique puissante pour accéder à la même chose récursivement est de passer les variables en paramètres en utilisant la récursion terminale :
+
+```pseudocode
+algorithme fibo(n: entier, u_i, u_i_moins_un) → entier:
+    si n == 1:
+        rendre u_i
+    sinon:
+        rendre fibo(n-1, u_i + u_i_moins_un, u_i)
+```
+
+Démontrer que la complexité du calcul de la suite de Fibonacci avec la récursion terminale est $\mathcal{O}(n)$.
