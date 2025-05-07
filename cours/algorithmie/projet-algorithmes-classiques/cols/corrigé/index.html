@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Corrigé</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Corrigé</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/cols/">Cols</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/cols/corrigé/">Corrigé</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <h2>Existence</h2>
+<p>On donne trois preuves possibles</p>
+<h3>En reprenant la définition</h3>
+<p>Si la première condition ($i=0$) est vérifiée, le tableau contient un col. On la suppose donc non vérifiée : $T[0] &gt; T[1]$. De même, si la seconde condition ($i=n-1$) est vérifiée, le tableau contient également un col. Supposons la donc également non vérifiée : $T[n-2] &lt; T[n-1]$.</p>
+<p>Les deux conditions précédentes montrent qu'il existe $n-1 &gt; i^\star &gt; 0$ le plus petit indice tel que $T[i^\star] \leq T[i^\star +1]$. On a alors : $T[i^\star -1] &gt; T[i^\star ] \leq T[i^\star +1]$ et $i^\star$ est un col.</p>
+<h3>Une astuce</h3>
+<p>Un tableau d'entier possède forcément un élément minimum. Il existe donc $i^\star$ tel que $T[i^\star] \leq T[i]$ pour tout $0 \leq i &lt; n$. De là :</p>
+<ul>
+<li>soit $i^\star = 0$ et $T[i^\star] \leq T[1]$</li>
+<li>soit $i^\star = n-1$ et $T[i^\star] \leq T[n-2]$</li>
+<li>soit $0 &lt; i^\star &lt; n-1$ et $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$</li>
+</ul>
+<p>Simple et efficace, non ?</p>
+<h3>Par récurrence</h3>
+<p>On montre par récurrence sur la taille $n$ du tableau qu'il existe toujours un col.</p>
+<ol>
+<li>Initialisation. Si $n=2$ soit $T[0] \leq T[1]$ soit $T[0] \geq T[1]$ (ce qui est équivalent pour $n=2$ à $T[n-1] \leq T[n-2]$). Ces deux cas correspondent aux deux premières possibilités pour un col</li>
+<li>on suppose la propriété vrai pour $n \geq 2$. Et on se donne un tableau $T$ de taille $n+1$.</li>
+<li>l'hypothèse de récurrence stipule que le tableau $T'$ constitué des $n$ premières cases de $T$ ($T'= T[:-1]$) possède un col, disons à l'indice $i^\star$. 3 cas sont possibles :
+<ol>
+<li>$i^\star = 0$ et $T'[0] \leq T'[1]$ ce qui implique $T[0] \leq T[1]$ : $i^\star$ est aussi un col pour $T$</li>
+<li>$0 &lt; i^\star &lt; n-1$ et $T'[i^\star] \leq \min(T'[i-1], T'[i+1])$ ce qui implique $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$ : $i^\star$ est aussi un col pour $T$</li>
+<li>$i^\star = n-1$ et $T'[n-1] \leq T'[n-2]$ ce qui implique $T[n-1] \leq T[n-2]$. On conclut en remarquant que :
+<ol>
+<li>soit $T[n] \geq T[n-1]$ et $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$ : $i^\star$ est aussi un col pour $T$</li>
+<li>soit $T[n] &lt; T[n-1]$ et $n$ est un col pour $T$.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2>Découverte</h2>
+<p>La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">trouve</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token number">0</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> i</span>
+<span class="highlight-line"></span></code></pre>
+<p>Sa complexité dans le cas le pire a lieu pour les tableaux dont le premier et seul col se trouve à l'avant dernier indice (comme pour la liste $[5, 4, 3, 2, 1, 2]$ par exemple), forçant l'algorithme à :</p>
+<ul>
+<li>faire échouer le 1er test de la ligne 2 en $\mathcal{O}(1)$ opérations</li>
+<li>faire échouer le 2er test de la ligne 5 en $\mathcal{O}(1)$ opérations</li>
+<li>faire les $\mathcal{O}(n)$ itérations de la boucle for en :
+<ul>
+<li>faisant échouer tous les tests sauf le dernier $\mathcal{O}(1)$ opérations</li>
+<li>réussissant le dernier test et en faisant un retour de fonction en $\mathcal{O}(1)$ opérations</li>
+</ul>
+</li>
+</ul>
+<p>La complexité totale maximale est alors :</p>
+<p>$$
+C(n) = \mathcal{O}(1) + \mathcal{O}(1) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1)) = \mathcal{O}(n)
+$$</p>
+<p>On peut aussi utiliser la preuve précédente et <em>simplifier</em> la boucle <code class="language-">for</code> en gardant la même complexité :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trouve</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+
+    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> i
+</code></pre>
+<h2>Rapidité</h2>
+<p>La preuve d'existence du 1 montre que pour tout $i + 1 &lt; j$, si $T[i] &gt; T[i+1]$ et $T[j] &gt; T[j-1]$, alors il existe un indice $i &lt; k &lt; j$ tel que $k$ soit un col de la matrice.</p>
+<p>L'invariant de boucle de la boucle <code class="language-">while</code> est alors :</p>
+<blockquote>
+<p><strong>Invariant de boucle :</strong> A la fin de chaque itération de la boucle <code class="language-">while</code>, soit :</p>
+<ul>
+<li><code class="language-">T[milieu]</code> est un col</li>
+<li><code class="language-">T[milieu]</code> n'est pas un col et :</li>
+<li><code class="language-">début + 1 &lt; fin</code></li>
+<li><code class="language-">T[début] &gt; T[début+1]</code> et <code class="language-">T[fin] &gt; T[fin-1]</code></li>
+</ul>
+</blockquote>
+<p>A la fin de la première itération, on a soit :</p>
+<ul>
+<li><code class="language-">T[milieu] &lt;= min(T[milieu - 1], T[milieu + 1])</code> et <code class="language-">milieu</code> est un col</li>
+<li><code class="language-">fin' = milieu</code> et <code class="language-">début' = début</code> si <code class="language-">T[milieu] &gt; T[milieu -1]</code>. Comme initialement <code class="language-">0 = début + 1 &lt; fin = len(T) - 1</code> on a également <code class="language-">milieu - 1 &gt; début</code> puisque <code class="language-">T[0] &gt; T[1]</code> et l'invariant est vérifié.</li>
+<li><code class="language-">fin' = fin</code> et <code class="language-">début' = milieu</code> si <code class="language-">T[milieu] &lt;= T[milieu -1]</code> et <code class="language-">T[milieu] &gt; T[milieu + 1]</code>. Comme <code class="language-">0 = début + 1 &lt; fin = len(T) - 1</code> on a également <code class="language-">milieu + 1 &lt; fin</code> puisque <code class="language-">T[-1] &gt; T[-2]</code> et l'invariant est vérifié.</li>
+</ul>
+<p>La même démonstration fonctionne à l'identique à la fin de l'itération $i+1$ si l'invariant est vrai à la fin de l'itération $i$.</p>
+<p>Comme <code>fin - début &gt;= 0</code> et diminue strictement à chaque itération de la boucle <code class="language-">while</code>, il arrivera <strong>forcément</strong> un moment où <code class="language-">milieu</code> sera un col.</p>
+<h2>Complexité</h2>
+<p>La procédure de la boucle <code class="language-">while</code> est identique à la recherche dichotomique puisque l'on se place toujours au milieu de l'espace de recherche. Le cours nous indiquant que la complexité de la recherche dichotomique est $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$, on en conclut que l'algorithme <code class="language-">trouve_vite(T)</code> est également en $\mathcal{O}(\ln(n))$ opérations.</p>
+<h2>Complexité du problème</h2>
+<p>Il existe des tableaux ayant tous un unique col en position $i$ pour tout $0 \leq i &lt; n$ (prenez les tableaux $[0, -1, \dots, -i, -i+1, -i +2, \dots, -i + (n - i - 1)]$). Tout algorithme trouvant les col des tableaux doit donc pouvoir distinguer parmi $n$ cas : il est au moins de complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$.</p>
+<p>Comme l'algorithme <code class="language-">trouve_vite(T)</code> est de complexité $\mathcal{O}(\ln(n))$, c'est borne min est atteinte.</p>
+<h2>Généralisation</h2>
+<h3>Existence</h3>
+<p>Une matrice avec ses lignes croissantes et ses colonnes décroissantes n'a pas de col.</p>
+<h3>Algorithme</h3>
+<p>On peut stocker les maximaux des colonnes et les minimaux des lignes dans deux listes puis parcourir chaque élément de la matrice et vérifier s'il est égal au maximum de la colonne et au minimum de la ligne.</p>
+<h3>Optimisation impossible</h3>
+<p>L'optimisation trouve un col de ligne, mais pas forcément le bon pour la matrice.</p>
+<ol>
+<li>montrez qu'il n'existe pas forcément de col à une matrice</li>
+<li>donnez un algorithme linéaire en la taille de la matrice pour trouver un col s'il existe</li>
+</ol>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

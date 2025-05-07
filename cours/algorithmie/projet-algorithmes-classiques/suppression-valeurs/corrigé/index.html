@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Corrigé</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Corrigé</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/suppression-valeurs/">Suppressions de valeurs</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/suppression-valeurs/corrigé/">Corrigé</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>La structure de donnée utilisée ici est la <strong><em>liste</em></strong>. On considérera que :</p>
+<ul>
+<li>la création d'une liste vide se fait en $\mathcal{O}(1)$ opérations,</li>
+<li>l'ajout d'un élément en fin de liste se fait en $\mathcal{O}(1)$ opérations,</li>
+<li>lire un élément d'une liste se fait en $\mathcal{O}(1)$ opérations.</li>
+</ul>
+<h2>Suppression d'une valeur</h2>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Algorithme-1
+Entrées :
+    val : une valeur
+    L : une liste de n valeurs
+Programme :
+    création d’une liste L2 vide
+    pour chaque élément x de L :
+        si x ≠ val :
+            ajoute x à la fin de L2
+    Retour L2</code></pre>
+<h3>complexité de l'algorithme 1</h3>
+<p>On considère que la création d'une liste et l'ajout d'un élément en fin de liste sont des opérations en $\mathcal{O}(1)$ opérations. De là, notre algorithme est en $\mathcal{O}(n)$ opérations où $n$ st la taille de la liste <code class="language-">L</code>.</p>
+<h3>preuve de l'algorithme 1</h3>
+<p>L'algorithme va parcourir la liste et ajouter un à un à <code class="language-">L2</code> tous les éléments de <code class="language-">L</code> différents de <code class="language-">val</code>. Notre invariant de boucle pourrait donc être : à la fin de l'itération $i$ <code class="language-">L2</code> est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>.</p>
+<ul>
+<li><strong>initialisation</strong> : à la fin de la première itération ($i=1$), <code class="language-">L2</code> est vide si <code class="language-">x = L[0]</code> vaut <code class="language-">val</code> et vaut <code class="language-">[x]</code> sinon. Ok.</li>
+<li><strong>récurrence</strong> : On suppose la propriété vraie à la fin de l'itération $i$. L'itération $i+1$ a considéré $x = L[i]$. Notons <code class="language-">L2'</code> la valeur de <code class="language-">L2</code> à la fin de l'itération $i+1$. Au début de l'itération $i+1$, par hypothèse de récurrence, <code class="language-">L2</code> est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>. La restriction de <code class="language-">L[:i+1]</code> aux valeurs différentes de <code class="language-">val</code> est alors soit égal à <code class="language-">L2</code> si <code class="language-">L[i] = val</code> soit <code class="language-">L2 + L[i]</code> sinon. C'est exactement ce que vaut <code class="language-">L2'</code>.</li>
+</ul>
+<p>A la fin de la dernière itération, <code class="language-">L2</code> vaut donc la restriction de <code class="language-">L[:n]</code> (avec <code class="language-">n = len(L)</code>) aux valeurs différentes de val.</p>
+<h2>Suppression d'une valeur in-place</h2>
+<p>On échange l'élément à supprimer avec le dernier de la liste puis on pop.</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Algorithme-1'
+Entrées :
+    val : une valeur
+    L : une liste de n valeurs
+Programme :
+    i = 0
+    k = n - 1
+    tant que i <= k:
+    si L[i] == val
+        échange L[i] et L[k]
+        supprime le dernier élément de L
+        k = k - 1
+    sinon:
+        i = i + 1</code></pre>
+<p>La preuve et la complexité de l'algorithme 1' est identique à celle de l'algorithme 1.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

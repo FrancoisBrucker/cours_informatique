@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tris spéciaux</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Tris spéciaux</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/tris-spéciaux/">Tris spéciaux</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="corrig%C3%A9" class="interne">Corrigé</a></p>
+</div></div>
+
+<p>Les tris spéciaux ont des complexités inférieures à $\mathcal{O}(n\log(n))$, ce qui n'est bien sur possible que si l'on se place dans des cas particuliers d'entrées.</p>
+<h2>Tri par paquets (bucket sort)</h2>
+<blockquote>
+<p>TBD description de l'algorithme. <a href="https://fr.wikipedia.org/wiki/Tri_par_paquets">wikipedia</a></p>
+</blockquote>
+<p>On suppose que l'on a affaire à des entiers uniquement.</p>
+<ol>
+<li>pseudo-code</li>
+<li>complexité min et max</li>
+<li>cas d'usage ?</li>
+</ol>
+<h2>Tri par base</h2>
+<p>Ce tri s'applique uniquement aux entiers positifs. Notre entrée est une liste $T$  de listes de mêmes tailles composées de 0 et de 1 représentant des entiers écrit en base 2 (comme pour le <a href="../compteur-binaire">compteur binaire</a>). Par exemple : T = [[1, 0, 0, 1], [1, 1, 1, 0], [0, 0, 0, 1]] qui correspond aux nombres [9, 14, 1].</p>
+<p>Le principe de ce tri est très simple :</p>
+<ul>
+<li>On considère d'abord le bit de poids le plus faible (<em>ie.</em> le plus à droite). On crée alors deux listes L0 et L1 initialement vides et on va itérativement considérer chaque élément de la liste à trier :
+<ul>
+<li>les entiers dont le bit de poids le plus faible est 0 sont ajoutés à la fin de L0</li>
+<li>les entiers dont le bit de poids le plus faible est 1 sont ajoutés à la fin de L1</li>
+</ul>
+</li>
+<li>On concatène les deux sous-listes T = L0 + L1</li>
+<li>On recommence sur le bit à gauche de celui qu'on vient de traiter.</li>
+<li>...</li>
+</ul>
+<p>Les parcours des liste T se font, toujours, de la gauche vers la droite.</p>
+<p>Pour notre exemple :</p>
+<ol>
+<li>après premiere boucle : [[1,1,1,0], [1, 0, 0, 1], [0, 0, 0, 1]]</li>
+<li>après deuxième boucle : [[1, 0, 0, 1], [0, 0, 0, 1], [1,1,1,0]]</li>
+<li>après troisième boucle :[[1, 0, 0, 1], [0, 0, 0, 1], [1,1,1,0]]</li>
+<li>après quatrième boucle : [[0, 0, 0, 1], [1, 0, 0, 1], , [1,1,1,0]]</li>
+</ol>
+<p>Questions :</p>
+<ul>
+<li>Donnez le pseudo-code, la preuve et la complexité de cet algorithme.</li>
+<li>Rappelez la complexité minimale du tri (dans le cas le pire). Commentaires.</li>
+</ul>
+<h2>Tri par monotonies</h2>
+<p>Étant donné un tableau $T$, <strong><em>une monotonie</em></strong> est une suite croissante maximale d'éléments consécutifs de $T$. Par exemple :
+si $T = [2,6, 1,3, 3, 5,2,6, 4,0, 1,8,9,1,3, 2,0,1,0]$, alors $[2,6]$, $[1,3,3,5]$, $[2,6]$, $[4]$, $[0, 1,8,9]$, $[1,3]$, $[2]$, $[0,1]$ et $[0]$ sont les monotonies de $T$.</p>
+<p>Donnez un algorithme qui, étant donné un tableau $T$ construit une liste (de listes) $L$, chaque élément de $L$ étant une monotonie de $T$ (et vice versa). À partir de notre exemple, on obtient :
+$L = [[2,6], [1,3,3,5],[2,6], [4], [0, 1,8,9], [1,3], [2] ,[0,1], [0]]$.</p>
+<p>Donnez un algorithme qui fusionne deux monotonies ; par exemple, à partir de $[2,6]$ et $[1,3,3,5]$, on obtient $[1,2,3,3,5,6]$ (ceci est aussi une question de cours).</p>
+<p>Donnez un algorithme qui, étant donnée une liste $L$ de monotonies, les fusionne deux-à-deux (en en laissant éventuellement une ``toute seule&quot; à la fin) et met le résultat dans une liste (de listes) $L'$. Par exemple, à partir de
+$L = [[2,6], [1,3,3,5],[2,6], [4], [0, 1,8,9], [1,3], [2] ,[0,1], [0]]$, on obtient $L' = [[1,2,3,3,5,6], [2,4,6],[0,1,1,3,8,9], [0,1,2], [0]]$.</p>
+<p>En déduire un algorithme de tri. Donnez sa complexité dans le cas le meilleur et dans le cas
+le pire.</p>
+<p>Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?</p>
+<h2>Algorithme mystère</h2>
+<p>L'algorithme suivant, à partir d'une liste d'entiers positifs, rend une autre liste. On suppose pour cet exercice que la création des deux listes tempo et sortie est en $\mathcal{O}(1)$ opérations.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> mystère<span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    k <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span>
+    tempo <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    sortie <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        tempo<span class="token punctuation">[</span>tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        tempo<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> tempo<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        sortie<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> tempo<span class="token punctuation">[</span>tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span>
+        tempo<span class="token punctuation">[</span>tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">[</span>tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> sortie<span class="token punctuation">]</span>
+</code></pre>
+<ul>
+<li>Donnez la complexité de cet algorithme.</li>
+<li>Montrer que cet algorithme est un tri (<em>indication</em>: après chacune des deux premières boucles, que contient tempo ?).</li>
+<li>Commentaires ?</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

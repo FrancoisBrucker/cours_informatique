@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Compteur binaire</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Compteur binaire</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/compteur-binaire/">Compteur binaire</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <blockquote>
+<p>TBD on a vu un truc du genre dans les piles et files. Faire avec les listes chaînées ?</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="corrig%C3%A9" class="interne">Corrigé</a></p>
+</div></div>
+
+<p>Un entier écrit sous forme binaire peut s'écrire comme une liste $x$ composées de 0 et de 1. Par exemple l'entier 19 s'écrira $[1, 0, 0, 1, 1]$</p>
+<p>On vous demande d'écrire la fonction <code class="language-">succ(n)</code> qui prend en paramètre un entier écrit sous sa forme binaire et qui <strong>le modifie</strong> pour que sa valeur soit l'entier suivant. On supposera que l'on n'augmente pas sa taille et donc que <code class="language-">succ([1, 1, 1, 1])</code> change la liste ne entrée en <code class="language-">[0, 0, 0, 0]</code>.</p>
+<p>Cette fonction permet d'écrire le code suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">n <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+succ<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></code></pre>
+<p>Qui affichera <code class="language-">[1, 0, 1, 0, 0]</code></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les fonctions qui ne rendent rien modifient souvent leurs paramètres.</p>
+</div></div>
+
+<h3><span id="successeur"></span>L'algorithme</h3>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>n<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        n<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span></span>
+<span class="highlight-line">        i <span class="token operator">-=</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">if</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        n<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span></span></code></pre>
+<p>Démontrez que l'algorithme précédent répond à la question.</p>
+<h3>Complexités min et max</h3>
+<p>Que valent les complexités min et max de cet algorithme ?</p>
+<h3>Complexité en moyenne</h3>
+<p>Analysez selon le nombre en entrée le nombre d'itérations dans la boucle while. En déduire que le nombre moyen d'itérations de la boucle while vaut :</p>
+<div>
+$$
+W_\text{moy}(N) = \mathcal{O}(1) \cdot \sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}}
+$$
+</div>
+<p>Conclure en utilisant le fait que $\sum_{i=1}^N i \cdot \frac{1}{2^{i+1}}$ tent vers 1 lorsque $N$ tend vers l'infini que l'algorithme va en moyenne ne faire qu'une seule itération et donc que la complexité en moyenne de l'algorithme vaut $\mathcal{O}(1)$.</p>
+<h3>Vérification</h3>
+<p>Que le nombre moyen d'itération valent 1 est assez contre intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :</p>
+<ul>
+<li>on a bien cyclé sur tous les éléments</li>
+<li>en moyenne le nombre d'itération dans la boucle vaut bien 1.
+Pour cela vous pouvez :</li>
+</ul>
+<ol>
+<li>modifier l'algorithme <code class="language-">successeur</code> pour qu'il rende le nombre d'itération dans la boucle effectuer pour calculer le successeur.</li>
+<li>parcourir tous les nombres possible (en partant de $[0] * N$ afficher itérativement les successeurs)</li>
+<li>une fois tous les nombres vus, afficher le nombre moyens d'itération de la boucle while de l'algorithme <code class="language-">successeur</code>.</li>
+</ol>
+<h3>Récursif</h3>
+<p>Montrez que l'algorithme ci-dessous est une façon (récursive d'afficher tous les nombres binaires à $N$ bits.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">compteur</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> N<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> N <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            compteur<span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> N <span class="token operator">-</span>  <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span></code></pre>
+<p>Quelle est la complexité en mémoire de cet algorithme ?</p>
+<h3>Généralisation</h3>
+<p>Comment modifier les algorithmes de compteur pour afficher l'ensemble des jet de $N$ dés à 6 faces ?</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

@@ -1014,7 +1014,7 @@ $$
 <li>si elle est <strong>réalisable</strong>, c'est à dire que les produits choisis tiennent tous dans le sac à dos</li>
 <li>si la fonction objectif est maximale par rapport aux affectations déjà faite</li>
 </ul>
-<p>Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre <a href="../../projet-classiques/compteur-binaire/#successeur" class="interne">l'algorithme successeur</a> qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.</p>
+<p>Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre <a href="../../projet-algorithmes-classiques/compteur-binaire/#successeur" class="interne">l'algorithme successeur</a> qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.</p>
 <p>L'algorithme peut alors être, avec des produits organisés comme l'<code class="language-">EXEMPLE</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> énumération<span class="token punctuation">(</span>produits<span class="token punctuation">,</span> K<span class="token punctuation">)</span><span class="token punctuation">:</span>
     kg <span class="token operator">=</span> <span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> produits<span class="token punctuation">]</span>
