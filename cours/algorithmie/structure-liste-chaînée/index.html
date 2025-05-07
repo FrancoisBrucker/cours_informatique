@@ -178,6 +178,7 @@ M<span class="token punctuation">.</span>suivant <span class="token operator">�
 </div></div>
 
 <p>On peut écrire cette structure en ajoutant juste deux méthodes à notre maillon :</p>
+<p><span id="structure-liste-chaînée"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Maillon</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
         valeur<span class="token punctuation">:</span> <span class="token builtin">Type</span>
@@ -250,7 +251,28 @@ M<span class="token punctuation">.</span>suivant <span class="token operator">�
 </div></div>
 
 <h2>Utilisation</h2>
-<p>On utilise les listes chaînées lorsque l'on doit très souvent insérer ou supprimer des éléments à l'intérieur d'une liste ou lorsque l'on construit notre liste par étape, en la parcourant.</p>
+<p>On utilise les listes chaînées lorsque l'on doit très souvent insérer ou supprimer des éléments à l'intérieur d'une liste ou lorsque l'on construit une liste par étapes.</p>
+<h3>Stockage sur disque</h3>
+<p>Les listes chaînées sont utilisées pour stocker des fichiers sur un disque physique.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/FAT32">Systèmes d'Allocation de fichiers FAT</a></p>
+</div></div>
+
+<!-- TBD
+
+> TBD décrire le principe en deux structures :
+>
+> - file allocation table qui est le début
+> - bloques sur le disque
+>
+> dire qu'il y a des améliorations mais que ce principe subsiste jusqu'à maintenant (ext4, zfs, ntfs) 
+
+-->
+<h3>Algorithmes récursifs</h3>
 <p>C'est cette dernière utilisation fait que cette structure est plébiscité par les approches récursives où l'on construit petit à petit nos listes. Voyons ça avec quelques exercices qui reprennent avec des listes chaînées <a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#algorithme-max-tableau-rec" class="interne">des exercices que l'on a déjà vu avec des tableaux</a>, vous verrez que les algorithmes sont de complexité linéaire ce qui n'était pas le cas avec des tableaux.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>

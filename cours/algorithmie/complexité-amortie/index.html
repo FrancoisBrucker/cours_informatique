@@ -96,10 +96,7 @@
     
   
 
-  <blockquote>
-<p>TBD Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.</p>
-</blockquote>
-<p>L'analyse amortie (et la complexité amortie qui en découle) est une technique utilisée pour calculer la complexité lorsque plusieurs exécution successive d'un même bloc de code va être de complexité différente.</p>
+  <p>L'analyse amortie (et la complexité amortie qui en découle) est une technique utilisée pour calculer la complexité lorsque plusieurs exécutions successives d'un même bloc de code va être de complexités différentes.</p>
 <p>Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour <a href="../structure-liste" class="interne">les listes</a> par exemple).</p>
 <p>Ce n'est <strong>pas</strong> une complexité en moyenne, c'est un moyen de calculer des complexités (maximum)</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -132,123 +129,6 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <p>Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $m$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement.</p>
 </div></div>
 
-<p>La complexité amortie est une moyenne de complexité maximale, ce n'est <strong>pas</strong> <a href="../complexit%C3%A9-moyenne" class="interne">une complexité en moyenne</a> qui est une moyenne probabiliste. Lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.</p>
-<p>Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra <strong>jamais</strong> excéder la complexité amortie.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.</p>
-<p>Pour ces structures, complexité amortie et maximale sont par abus de langage considérés comme équivalentes.</p>
-</div></div>
-
-<p>La complexité amortie est un concept avancé, utilisée dans deux cas principalement :</p>
-<ul>
-<li>comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)</li>
-<li>comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes</li>
-</ul>
-<p>Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques) : le compteur binaire et une pile dépilant plusieurs éléments à la fois.</p>
-<p>Ces deux exemples sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.</p>
-<h2><span id="compteur-binaire"></span>Exemple du compteur binaire</h2>
-<p>Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$.</p>
-<p>Soit lors l'algorithme suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span></span>
-<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span></span>
-<span class="highlight-line">       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span></code></pre>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>code python</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-        i <span class="token operator">-=</span> <span class="token number">1</span>
-
-    <span class="token keyword">if</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span></code></pre>
-</div>
-</details>     
-</div>
-<p>À un nombre <code class="language-">N</code> écrit au format binaire donné, <code class="language-">successeur(N)</code> va l'incrémenter de 1.</p>
-<p>On reverra ce problème dans <a href="../projet-classiques/compteur-binaire/" class="interne">la partie exercice</a> où l'on calculera la complexité maximale, minimale et en moyenne d'une de ses exécutions. Nous allons ici calculer la complexité de l'algorithme suivant qui affiche tous les entiers :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-
-   <span class="token number"> N </span><span class="token operator">←</span> un tableau de taille<span class="token number"> n
-</span>    N<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
-
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">^</span>n<span class="token punctuation">[</span><span class="token punctuation">:</span>        
-        successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
-        affiche<span class="token number"> N </span>à l'écran
-        </code></pre>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>code python</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span></code></pre>
-</div>
-</details>     
-</div>
-<p>La complexité de l'exécution <code class="language-">tous(n)</code> dépend de $2^n$ exécutions successives de l'algorithme <code class="language-">successeur(N)</code>.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Trouver la complexité de l'exécution <code class="language-">tous(n)</code>, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme <code class="language-">successeur(N)</code>.</p>
-</div></div>
-
-<p>La difficulté du calcul vient du fait que le nombre d'opération effectuée par l'exécution de <code class="language-">successeur(N)</code> dépend de son paramètre :</p>
-<ul>
-<li>au mieux, $N[-1] = 0$ et la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(1)$,</li>
-<li>au pire, $N = [1, \dots, 1]$ et la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(n)$,</li>
-</ul>
-<p>La complexité totale de l'exécution des $2^n$ instances de <code class="language-">successeur(N)</code> est alors estimée à : $\mathcal{O}(n \cdot 2^n)$.</p>
-<p>On le démontrera précisément mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme <code class="language-">successeur(N)</code>, $N[-1] = 1$ alors lors de l'exécution suivante on aura $N[-1] = 0$. La complexité de <code class="language-">successeur(N)</code> ne peut donc être importante qu'au pire une fois sur deux.</p>
 <h2>Méthodes d'analyse amortie</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -268,21 +148,244 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 </div></div>
 
 <h2>Exercices</h2>
-<h3>Potentiel</h3>
-<blockquote>
-<p>TBD exo 4 <a href="https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf">https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf</a></p>
-</blockquote>
+<p>Entraînons nous à comprendre puis à maîtriser ce concept.</p>
+<h3>Analyse amortie</h3>
+<p>Reprenons l'exemple de la Pile et de sa méthode <code class="language-">k-dépile</code> utilisée dans la partie complexité amortie.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Calculer la complexité de l'algorithme $A$ en utilisant l'analyse par agrégat.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :</p>
+<ul>
+<li>$m'$ fois à la fonction <code class="language-">k-dépile</code>,</li>
+<li>$m''$ fois à la fonction <code class="language-">empile</code>,</li>
+<li>$m - m' - m''$ fois à la fonction <code class="language-">nombre</code>.</li>
+</ul>
+<p>Le nombre total d'éléments dépilés au cours des $m'$ exécutions de la fonction <code class="language-">k-dépile</code> ne peut excéder le nombre total $m''$ d'éléments empilés. La complexité totale des $m'$ exécutions de <code class="language-">k-dépile</code> vaut donc $\mathcal{O}(m' + m'')$.</p>
+<p>Comme la complexité d'un appel à <code class="language-">empile</code> ou à <code class="language-">nombre</code> vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :</p>
+<p>$$
+C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
+$$</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Calculer la complexité de l'algorithme $A$ en utilisant l'analyse par potentiel.</p>
+<p>Pourquoi est-il judicieux d'utiliser comme potentiel le nombre d'élément dans la pile après l'exécution de l'instruction $i$ ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $\Omega(i)$ le nombre d'élément dans la pile après l'exécution de l'instruction $i$. Ce potentiel est motivé par le fait que la seule méthode ayant un coût variable est <code class="language-">k-dépile</code> et elle dépend du nombre d'éléments à dépiler, c'est à dire indirectement au nombre d'élément dans la pile.</p>
+<p>Comme la pile est initialement vide on a bien $\Omega(i) \geq \Omega(0)$ pour tout $i$. Le coût amorti de chaque opération est alors :</p>
+<ul>
+<li>le coût amorti de <code class="language-">nombre</code> est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$</li>
+<li>le coût amorti de <code class="language-">empile</code> est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)</li>
+<li>le coût amorti de <code class="language-">k-dépile</code> est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)</li>
+</ul>
+<p>Le coût amorti peut être borné par 2 pour chaque opération, on a donc :</p>
+<p>$$
+C \leq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
+$$</p>
+</div>
+</details>     
+</div>
+<h3>Calcul de complexité amortie</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>C'est l'exercice 4 de <a href="https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf">cette planche d'exercices</a></p>
+</div></div>
+
+<p>On calcule la complexité amortie de $m$ exécutions successives exécutions de l'algorithme $A$. On note $c(i)$ la complexité de la $i$ ème exécution.</p>
+<p>On vous demande de calculer la complexité amortie en $\mathcal{O}$ de l'exécution de $A$ pour différentes valeurs de $c(i)$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<div>
+$$
+c(i)=
+\begin{cases}
+i \text{ si }i=2^k\\
+1 \text{ sinon }\\
+\end{cases}
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La complexité totale vaut :</p>
+<div>
+$$
+C = \sum_{1\leq i \leq m}c(i) = m\sum_{1\leq i \leq m}1 + \sum_{0\leq k \leq \log_2(m)}(2^k-1) = m -\log_2(m)+2m-1
+$$
+</div>
+<p>La complexité amortie est en $\mathcal{O}(1)$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>$c(i)$ vaut la plus petite puissance de 2 divisant $i$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>pour les $m$ itérations :</p>
+<ul>
+<li>la moitié est divisible uniquement par 2</li>
+<li>le quart est divisible uniquement par 4</li>
+<li>...</li>
+<li>$\frac{1}{2^k}$ est divisible uniquement par $2^k$</li>
+</ul>
+<p>La complexité totale vaut alors :</p>
+<div>
+$$
+C = \sum_{0\leq k \leq \log_2(m)}\frac{m}{2^k}\cdot 2^k = m\log_2(m)
+$$
+</div>
+<p>La complexité amortie est en $\mathcal{O}(\ln(m))$</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>$c(i)$ vaut le plus grand $k$ tel que $2^k$ divise $i$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le calcul est presque identique à l'exercice précédent. La complexité totale vaut alors :</p>
+<div>
+$$
+C = \sum_{0\leq k \leq \log_2(m)}\frac{m}{2^k}\cdot k
+$$
+</div>
+<p>Comme $\sum_{0\leq k \leq n}\frac{k}{2^k} \leq 2$ (<a href="../#sommes-classiques" class="interne">on l'a vu</a>), on a $C \leq 2m$ et la complexité amortie est en $\mathcal{O}(1)$</p>
+</div>
+</details>     
+</div>
 <h3>File et pile</h3>
-<blockquote>
-<p>complexité amortie file avec 2 piles : <a href="https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2223.pdf">https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2223.pdf</a></p>
-</blockquote>
+<p>On reprend l'exercice de construction d'<a href="../structure-pile-file/#file-avec-pile" class="interne">une file avec deux piles</a></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité amortie de $m$ enfilage et défilage avec cette structure ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On peut calculer la complexité totale par méthode comptable exactement comme note pile avec la méthode <code class="language-">k-dépile</code>. En effet une fois enfilé une donnée ne sera placée dans la seconde pile qu'une seule fois.</p>
+<p>On obtient la même fonction de coût et donc la même complexité amortie : $\mathcal{O}(1)$. Cette structure qui semblait un brin fantaisiste est donc tout aussi optimale que la structure classique de file en complexité.</p>
+</div>
+</details>     
+</div>
 <h3><span id="exercice-liste-suppression-ajout"></span> Ajout et suppression dans une liste</h3>
 <blockquote>
-<p>faire un mix avec 8.2 : <a href="https://www.di.ens.fr/~fouque/articles/poly-algo.pdf">https://www.di.ens.fr/~fouque/articles/poly-algo.pdf</a> avec comptage et potentiel pour l'ajout simple.
-TBD voir aussi le poly de pascal.</p>
-</blockquote>
-<blockquote>
-<p>TBD à faire (dire que c'est dur)</p>
+<p>TBD faire un mix avec 8.2 : <a href="https://www.di.ens.fr/~fouque/articles/poly-algo.pdf">https://www.di.ens.fr/~fouque/articles/poly-algo.pdf</a> avec comptage et potentiel pour l'ajout simple.
+TBD voir aussi le poly de pascal.
+TBD à faire (dire que c'est dur)</p>
 </blockquote>
 <div id="preuve-liste-suppression-ajout"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">

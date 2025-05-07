@@ -345,6 +345,7 @@ $$
 <p>Cette version permet d'avoir une structure dont la taille est proportionnelle au nombre de valeurs stockées mais dont le nombre de collisions va augmenter plus on stocke de valeurs. On peut améliorer ça en utilisant la même technique que pour les listes.</p>
 <h3>Taille dynamique</h3>
 <p>Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le nombre d'éléments stockés est supérieur à sa longueur. C'est cette structure qui est appelée dictionnaire et correspond à la structure :</p>
+<p><span id="structure-dictionnaire"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">f</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>  <span class="token comment"># fonction de hachage utile de {0, 1}^* dans [0, m[</span>
 
 <span class="token builtin">structure</span> <span class="token class-name">Dictionaire</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>

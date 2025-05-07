@@ -113,56 +113,78 @@
 </div></div>
 
 <p>Toutes les manipulations d'objets de type basique (booléens, bit, entiers, réels, caractères et chaines de caractères) ou de type tableau sont en $\mathcal{O}(1)$ opérations. Ce n'est plus le cas lorsque l'on utilise des types plus complexes, on l'a vue avec les listes ou les dictionnaires par exemple.</p>
-<blockquote>
-<p>TBD : rappel ici complexite structures connu et dire on a besoin de amortie</p>
-</blockquote>
-<blockquote>
-<p>TBD explicite ne code ou opn ne connait pas les fonctions ! Il faut inférer la complexité via la connaissance des algos.</p>
-</blockquote>
-<h2>Listes de python</h2>
-<p>Le langage python ne connaît pas les tableaux. Il utilise le type <a href="https://docs.python.org/fr/3/tutorial/introduction.html#lists">liste</a> à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes :</p>
+<h2>Complexités des structures linéaires</h2>
+<p>Les différences structures linéaires que l'on a vu vont avoir des complexités différentes selon l'opération réalisée. Une analyse fine du problème à résoudre ou de l'algorithme à coder est souvent nécessaire pour choisir la structure la plus adaptée, c'est à dire :</p>
+<ol>
+<li>Utiliser celle qui permettra d'obtenir la complexité la plus faible (utiliser des listes chaînées plutôt que des listes dans des algorithmes récursif par exemple)</li>
+<li>Utiliser celle dont l'utilisation sera la plus simple sans sacrifier totalement complexité (utiliser des dictionnaires plutôt que des listes si les données ne sont pas des indices par exemple)</li>
+</ol>
+<ul>
+<li>tableaux :
+<ul>
+<li>création : $\mathcal{O}(1)$</li>
+<li>suppression : $\mathcal{O}(1)$</li>
+<li>accéder et modifier un élément via son indice : $\mathcal{O}(1)$</li>
+</ul>
+</li>
+<li>pile :
+<ul>
+<li>création : $\mathcal{O}(1)$</li>
+<li>suppression : $\mathcal{O}(1)$</li>
+<li>append et pop : $\mathcal{O}(1)$</li>
+</ul>
+</li>
+<li>file :
+<ul>
+<li>création : $\mathcal{O}(1)$</li>
+<li>suppression : $\mathcal{O}(1)$</li>
+<li>append et pop : $\mathcal{O}(1)$</li>
+</ul>
+</li>
+<li>liste :
+<ul>
+<li>création : $\mathcal{O}(1)$</li>
+<li>suppression : $\mathcal{O}(1)$</li>
+<li>accéder et modifier un élément via son indice : $\mathcal{O}(1)$</li>
+<li>ajouter un dernier élément : $\mathcal{O}(1)$ (en amortie)</li>
+<li>supprimer le dernier élément : $\mathcal{O}(1)$ (en amortie)</li>
+</ul>
+</li>
+<li>dictionnaire :
+<ul>
+<li>création : $\mathcal{O}(1)$</li>
+<li>suppression : $\mathcal{O}(n)$ (avec $n$ la taille des éléments stockés)</li>
+<li>accéder et modifier un élément via sa clé : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)</li>
+<li>ajouter un élément : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)</li>
+<li>supprimer un élément : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)</li>
+</ul>
+</li>
+</ul>
+<h2>Complexité de structure en python</h2>
+<p>On prend ici l'exemple de python et on analyse la complexité de quelques structures iconiques du langage</p>
+<h3>Listes</h3>
+<p>Le langage python ne connaît pas les tableaux. Il utilise la <a href="https://docs.python.org/fr/3/tutorial/introduction.html#lists">liste</a> à la place. On a donc comme complexité :</p>
 <ul>
 <li><strong>créer et supprimer une liste</strong> de taille $n$ en $\mathcal{O}(1)$ opérations</li>
 <li><strong>récupérer et affecter</strong> l'objet d'indice $i$ d'une liste (objet <code class="language-">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
 <li><strong>augmenter la taille</strong> d'une liste d'un élément se fait en $\mathcal{O}(1)$ opérations</li>
 <li><strong>supprimer le dernier élément</strong> d'une liste se fait en $\mathcal{O}(1)$ opérations</li>
 </ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une liste peut-être vue comme un tableau dont on peut augmenter ou diminuer la taille <strong>par la fin</strong> en $\mathcal{O}(1)$ opérations.</p>
-</div></div>
-
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ne confondez pas liste et <a href="https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e">liste chaînée</a> ce n'est pas du tout la même structure !</p>
-</div></div>
-
-<h2>Itérateur</h2>
+<h3>Itérateur</h3>
 <p>La gestion des boucles <code class="language-">pour chaque</code> en python se fait via des itérateurs. Ce sont de petits programmes dont le but est de donner le prochain élément. Par exemple :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
   <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p>Ne commence pas par créer la liste allant de 0 à 999999, mais produit un itérateur qui rend la prochaine valeur en $\mathcal{O}(1)$.</p>
 <p>On a pris ce parti pour l'écriture des boucles en pseudo-code :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">999999</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-  affiche à l'écran x</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1000000</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+  affiche x à l'écran</code></pre>
 <p>Prend $\mathcal{O}(1)$ instructions et ne crée pas l'intervalle en entier.</p>
-<p>Vous verrez parfois l'écriture alternative qui explicite l'itérateur et est considérée comme équivalente :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour</span> x allant de <span class="token number">0</span> à <span class="token number">999999</span><span class="token punctuation">:</span>
-  affiche à l'écran x</code></pre>
-<h2>Opérations sur les listes python</h2>
+<h3>Opérations sur les listes python</h3>
 <p>On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau et d'une chaîne de caractères comme valant $\mathcal{O}(1)$. Ceci était un raccourci qu'il nous faut maintenant expliciter car il peut induire en erreur lorsque l'on considères des opérations sur les conteneurs comme la concaténation.</p>
-<p>Les opérations de création d'un conteur (comme un tableau, une liste, un ensemble, ou encore un dictionnaire) possédant $K$ objets est usuellement de complexité en $\mathcal{O}(K)$.</p>
-<p>Si $K$ est une constante la complexité de création est bien $\mathcal{O}(1)$. Comme dans le cas suivant :</p>
+<p>Les opérations de création d'un conteur (comme un tableau, une liste, un ensemble, ou encore un dictionnaire) possédant $n$ objets est usuellement de complexité en $\mathcal{O}(n)$.</p>
+<p>Si $n$ est une constante la complexité de création est bien $\mathcal{O}(1)$. Comme dans le cas suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
-<p>Mais si $K$ n'est pas une constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(K)$ à $\mathcal{O}(1)$ :</p>
+<p>Mais si $n$ n'est pas une constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(n)$ à $\mathcal{O}(1)$ :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">duplique</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
   <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p>La complexité de la fonction <code class="language-">duplique(x: list) -&gt; list</code> n'est <strong>pas</strong> $\mathcal{O}(1)$ mais bien $\mathcal{O}(\text{len}(x))$.</p>
@@ -179,18 +201,18 @@
 <li>la création d'un conteneur contenant tous les éléments d'un autre conteneur, comme <code class="language-">list(x)</code>, , est de complexité $\mathcal{O}(n) + C$ où :
 <ul>
 <li>$n$ est la taille du conteneur dupliqué</li>
-<li>$C$ la complexité de créer un conteneur vide (souvent $\mathcal{O}(1)$)</li>
+<li>$C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)</li>
 </ul>
 </li>
-<li>la création d'un conteneur résultant de la concaténation de deux conteurs, comme $x + y$si $x$ et $y$ sont de conteneurs, est de complexité $\mathcal{O}(n_1 + n_2) + C$ où :
+<li>la création d'un conteneur résultant de la concaténation de deux conteurs, comme $x + y$ si $x$ et $y$ sont de conteneurs, est de complexité $\mathcal{O}(n_1 + n_2) + C$ où :
 <ul>
 <li>$n_1$ et $n_2$ sont les tailles des deux conteneurs</li>
-<li>$C$ la complexité de créer un conteneur vide (souvent $\mathcal{O}(1)$)</li>
+<li>$C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)</li>
 </ul>
 </li>
 </ul>
-<h2>Fonctions et méthodes données de python</h2>
-<p>Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code class="language-">index</code> des listes ((comme une <code class="language-">l.index(&quot;?&quot;)</code>) ou encore  la méthode <code class="language-">max</code> de python, qui prend en entrée une liste <code>l</code> :</p>
+<h3>Fonctions et méthodes données de python</h3>
+<p>Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code class="language-">index</code> des listes (comme une <code class="language-">l.index(&quot;?&quot;)</code>) ou encore  la méthode <code class="language-">max</code> de python, qui prend en entrée une liste <code>l</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Sont de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste <code>l</code> et pas $\mathcal{O}(1)$. Il <strong>faut</strong> en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.</p>

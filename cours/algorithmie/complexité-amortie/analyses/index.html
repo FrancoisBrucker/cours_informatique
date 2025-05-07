@@ -97,19 +97,102 @@
   
 
   <p>Il existe trois types d'analyses amortie possibles : par agrégat, comptable et par potentiel. La méthode par potentielle est la plus générale mais également la plus ardue à mettre en oeuvre. La méthode comptable est intermédiaire et la méthode par agrégat (que l'on a déjà utilisé pour les listes) est la méthode la plus simple et qui est souvent suffisante.</p>
-<p>Pour l'exemple de l'algorithme <code class="language-">tous</code>, l'analyse par agrégat suffit, mais on montrera aussi comment les résoudre avec la méthode comptable et par potentiel. Le résultat sera bien sur le même : $\mathcal{O}(2^n)$</p>
-<h2>Analyse par Agrégat</h2>
+<p>Nous allons illustrer chaque méthode en utilisant l'algorithme <code class="language-">tous</code> qui affiche tous les entiers binaires inférieurs à $2^n$. Cet exemples est paradigmatique de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie d'opérations de faibles complexité.</p>
+<h2>Exemple du compteur binaire</h2>
+<p>Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$.</p>
+<p><span id="algorithme-compteur-binaire"></span></p>
+<p>Soit lors l'algorithme suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+   <span class="token number"> i </span><span class="token operator">←</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
+
+<span class="token builtin">algorithme</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+   <span class="token number"> N </span><span class="token operator">←</span> un tableau de taille<span class="token number"> n
+</span>    N<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">^</span>n<span class="token punctuation">[</span><span class="token punctuation">:</span>        
+        successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
+        affiche<span class="token number"> N </span>à l'écran
+</code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        i <span class="token operator">-=</span> <span class="token number">1</span>
+
+    <span class="token keyword">if</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<p>À un nombre <code class="language-">N</code> écrit au format binaire donné, <code class="language-">successeur(N)</code> va l'incrémenter de 1.</p>
+<p><a href="../projet-classiques/compteur-binaire/" class="interne">On a déjà étudié les complexités de l'algorithme <code class="language-">successeur(N)</code></a>. Ici c'est l'exécution de <code class="language-">tous(n)</code> qui nous intéresse et donc la complexité des $2^n$ exécutions successives de l'algorithme <code class="language-">successeur(N)</code>. On verra juste multiplier la complexité par le nombre d'itération va donner un calcul trop frustre.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>La technique de <strong><em>l'analyse par agrégat</em></strong> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Trouver la complexité de l'exécution <code class="language-">tous(n)</code>, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme <code class="language-">successeur(N)</code>.</p>
+</div></div>
+
+<p>La difficulté du calcul vient du fait que le nombre d'opération effectuée par l'exécution de <code class="language-">successeur(N)</code> dépend de son paramètre :</p>
+<ul>
+<li>au mieux, $N[-1] = 0$ et la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(1)$,</li>
+<li>au pire, $N = [1, \dots, 1]$ et la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(n)$,</li>
+</ul>
+<p>La complexité totale de l'exécution des $2^n$ instances de <code class="language-">successeur(N)</code> est alors estimée à : $\mathcal{O}(n \cdot 2^n)$.</p>
+<p>On le démontrera précisément mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car on a prouvé qu'en moyenne, sous hypothèse d'uniformité, la complexité de <code class="language-">successeur(N)</code> est $\mathcal{O}(1)$ et ici $N$ va valoir <strong>tous</strong> les entiers sa complexité totale doit donc être proche de la complexité en moyenne.</p>
+<h2>Analyse par Agrégat</h2>
+<p><span id="méthode-agrégat"></span></p>
+<p>La méthode la plus simple, on compte tout. C'est ce qu'on a fait avec les listes.</p>
+<h3>Définition de l'analyse par agrégat</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong><em>L'analyse par agrégat</em></strong> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
 <p>On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.</p>
 </div></div>
 
-<h3><span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par agrégats</h3>
-<p>On remarque tout d'abord que le nombre d'opérations de <code class="language-">successeur(N)</code> dépend de l'indice du dernier <code class="language-">0</code> dans la liste <code class="language-">N</code> :</p>
+<h3><span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par agrégat</h3>
+<p>Effectuons cette analyse pour le calcul de la complexité de <code class="language-">tous(N)</code>.
+On remarque tout d'abord que le nombre d'opérations de <code class="language-">successeur(N)</code> dépend de l'indice du dernier <code class="language-">0</code> dans la liste <code class="language-">N</code> :</p>
 <ul>
 <li>si <code class="language-">N</code> finit par la liste <code class="language-">[0]</code> il faut de l'ordre de 1 opération à successeur (la boucle <code class="language-">tant que</code> de la ligne 4 fait un test et aucune itération)</li>
 <li>si <code class="language-">N</code> finit par la liste <code class="language-">[0, 1]</code> il faut de l'ordre de 2 opérations à successeur (la boucle <code class="language-">tant que</code> de la ligne 4 fait une itération)</li>
@@ -144,7 +227,7 @@ C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
 \end{array}
 $$
 </div>
-<p>On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ (immédiat par récurrence mais il existe également <a href="https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF">une preuve directe</a>), ce qui permet d'obtenir :</p>
+<p>On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ (<a href="../../#sommes-classiques" class="interne">on l'a vu</a>), ce qui permet d'obtenir :</p>
 <div>
 $$
 \begin{array}{rcl}
@@ -158,12 +241,16 @@ C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}
 $$
 </div>
 <h2>Méthode comptable</h2>
-<p>La méthode comptable va associer des coûts différents à chaque opération, appelé <em>coût amorti</em> :</p>
+<p><span id="méthode-comptable"></span></p>
+<p>La méthode comptable va associer des coûts différents à chaque opération, appelé <em>coût amorti</em>.</p>
+<h3>Définition de la méthode comptable</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La <strong><em>méthode comptable</em></strong> pour calculer la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>coût amorti</em></strong> $\hat{c_i}$ tel que pour tout $1 \leq k \leq m$ :</p>
 <p>$$
 \sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}
@@ -172,8 +259,8 @@ $$</p>
 </div></div>
 
 <p>Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.</p>
-<h3><span id="compteur-comptable"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec la méthode comptable</h3>
-<p>Appliquons cette méthode au compteur. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :</p>
+<h3><span id="compteur-comptable"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par la méthode comptable</h3>
+<p>Appliquons cette méthode pour calculer la complexité de <code class="language-">tous</code>. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :</p>
 <ul>
 <li>2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 <strong>et</strong> on crédite directement son coût de positionnement à 0)</li>
 <li>0 lorsqu'un bit est positionné à 0</li>
@@ -181,12 +268,16 @@ $$</p>
 <p>Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est supérieur à la somme réelle des $k$ coûts.</p>
 <p>Enfin, comme à chaque exécution de <code class="language-">successeur</code> un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de <code class="language-">successeur</code> est donc de $C = m$ : l'exécution de <code class="language-">tous(n)</code> est de complexité $\mathcal{O}(2^n)$.</p>
 <h2>Analyse par potentiel</h2>
+<p><span id="méthode-potentiel"></span></p>
 <p>Cette méthode de calcul est une généralisation des deux méthodes précédentes.</p>
+<h3>Définition de l'analyse par potentiel</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>L'<strong><em>analyse par potentiel</em></strong> calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>potentiel</em></strong> $\Omega(i)$ tel que $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)</p>
 <p>Le <strong><em>coût amorti</em></strong> $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :</p>
 <p>$$

@@ -96,27 +96,64 @@
     
   
 
-  <blockquote>
-<p>TBD chapeau</p>
-</blockquote>
-<h2>Complexité amortie d'un compteur</h2>
-<p>La complexité de l'algorithme <code class="language-">successeur</code> est en $\mathcal{O}(N.\mbox{\small longueur})$. Exécuter $m$ fois cet algorithme va donc être de complexité $\mathcal{O}(m\cdot N.\mbox{\small longueur})$ si on ne connaît pas le paramètre $N$ (on peut tout le temps choisir celui qui à une complexité maximale).</p>
+  <p>La complexité amortie est une moyenne de complexité maximale, ce n'est <strong>pas</strong> <a href="../../complexit%C3%A9-moyenne" class="interne">une complexité en moyenne</a> qui est une moyenne probabiliste.</p>
+<p>De plus, lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.</p>
+<p>Enfin, Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra <strong>jamais</strong> excéder la complexité amortie.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.</p>
+<p>Pour ces structures, complexité amortie et maximale sont par abus de langage considérés comme équivalentes.</p>
+</div></div>
+
+<p>La complexité amortie est un concept avancé, utilisée dans deux cas principalement :</p>
+<ul>
+<li>comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)</li>
+<li>comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes</li>
+</ul>
+<h2>Exemple 1 : structure de compteur</h2>
+<p>Pour illustrer le concept de complexité amortie dans le cadre <a href="../analyse/#algorithme-compteur-binaire" class="interne">du compteur binaire</a>, calculer la complexité amortie de l'algorithme <code class="language-">tous</code> ou de la a fonction <code class="language-">successeur</code> n'a pas vraiment de sens :</p>
+<ul>
+<li>l'algorithme <code class="language-">tous</code> a toujours la même complexité à chaque appel,</li>
+<li>la fonction <code class="language-">successeur</code> a bien des complexités différentes selon ses paramètres, mais plusieurs appels successifs peuvent tous avoir la complexité maximale (on prend $N = [1, ..., 1]$ comme paramètre à chaque fois) et la complexité amorties sera égale à la complexité maximale</li>
+</ul>
 <p>En revanche, considérons la structure suivante :</p>
+<p><span id="structure-compteur-binaire"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span>
-        N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
-    création<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Compteur<span class="token punctuation">:</span>
-       <span class="token number"> N </span><span class="token operator">←</span> un tableau de<span class="token number"> n </span>entiers
-        N<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
-    suivant<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-        successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span></code></pre>
-<p>Analysons la complexité de la méthode <code class="language-">suivant</code> :</p>
-<ol>
-<li>elle n'a pas de paramètre</li>
-<li>une exécution peut prendre $\mathcal{O}(N.\mbox{\small longueur})$ opérations</li>
-<li>pour 2 exécutions successives, la complexité de la seconde exécution dépend de l'exécution précédente (si N[-1] à été mis à 1 ou à 0)</li>
-</ol>
-<p>Si un programme utilise $m$ fois la méthode <code class="language-">suivant</code>, la complexité de ces $m$ exécutions va être égale à $\frac{m}{2^n}$ fois la complexité de <code class="language-">tous</code>, c'est à dire $\mathcal{O}(m)$. On en déduit que :</p>
+        N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>
+    <span class="token builtin">méthodes</span>
+        <span class="token builtin">fonction</span> <span class="token function">suivant</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span></code></pre>
+<p>La méthode <code class="language-">suivant</code> n'a pas de paramètres, analysons sa complexité amortie en l'exécutant successivement $m$ fois.</p>
+<p>Par exemple le code suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">c <span class="token operator">←</span> <span class="token punctuation">{</span> N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+
+<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    c<span class="token punctuation">.</span>suivant<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Va afficher à l'écran les valeurs de N suivantes après chaque itération (on a mis des rond autour de l'indice maximum parcouru par l'algorithme suivant):</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">       : 1001
+     1 : 0➀01
+     2 : ➀101
+     3 : 00➀1
+     4 : ➀011
+     5 : 0➀11
+     6 : ➀111
+     7 : 000⓪
+     8 : ➀000
+     9 : 0➀00
+</code></pre>
+<p>On voit clairement $N[i]$ est parcouru par la méthode suivant toutes les $2^i$ itérations. <a href="../analyses/#m%C3%A9thode-agr%C3%A9gat" class="interne">L'analyse par agrégat</a> nous indique alors que la complexité des $m$ itérations est :</p>
+<div>
+$$
+\sum_{0\leq i\leq log_2(m)} \mathcal{O}(1)\cdot2^i = \mathcal{O}(1)
+$$
+</div>
+<p>Puisque (<a href="../../#sommes-classiques">on l'a vu</a>) $\sum_{0\leq i \leq n}2^i = 2^{n+1}-1$ cette complexité totale vaut : $\mathcal{O}(m)$ et la complexité amortie $\frac{\mathcal{O}(m)}{m} = $\mathcal{O}(1)$ &quot;</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -127,16 +164,6 @@
 </div></div>
 
 <p>La complexité amortie est <strong>une moyenne de complexités maximales</strong> et permet un calcul plus aisé de la complexité : la complexité de tous les appels vaut le nombre d'appels fois la complexité amortie.</p>
-<p>Attention, ce n'est pas une complexité en moyenne, la complexité des lignes 2 à 4 de l'algorithme suivant est $\cdot \mathcal{O}(m\cdot n)$ puisque $N$ peut contenir la suite $[1, 1, \dots, 1]$ :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">N <span class="token operator">←</span> un tableau de m <span class="token operator">*</span><span class="token number"> n </span>nombres <span class="token number">0</span> <span class="token keyword">ou</span> <span class="token number">1</span></span>
-<span class="highlight-line"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    successeur<span class="token punctuation">(</span>N<span class="token punctuation">[</span>i <span class="token operator">*</span> n<span class="token punctuation">:</span><span class="token number"> i </span><span class="token operator">*</span><span class="token number"> n </span><span class="token operator">+</span> m<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">    afficher N<span class="token punctuation">[</span>i <span class="token operator">*</span> n<span class="token punctuation">:</span><span class="token number"> i </span><span class="token operator">*</span><span class="token number"> n </span><span class="token operator">+</span> m<span class="token punctuation">]</span> à l'écran</span></code></pre>
-<p>Alors que la complexité des lignes 2 à 4 de l'algorithme suivant vaut $\cdot \mathcal{O}(m)$ :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">c <span class="token operator">←</span> un nouveau compteur</span>
-<span class="highlight-line"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    c<span class="token punctuation">.</span>suivant<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">    afficher c<span class="token punctuation">.</span>N</span></code></pre>
 <p>Enfin, remarquez que la complexité amortie de <code>suivant</code> ne dépend par de la longueur de l'attribut $N$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -147,66 +174,40 @@
 </div></div>
 
 <h2>Exemple 2 : la pile</h2>
-<p>On va considérer <a href="../structure-pile-file/pile/" class="interne">une pile</a> et on crée l'algorithme suivant : <code class="language-">k-pop(k, P)</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> k<span class="token operator">-</span>pop<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    k <span class="token operator">←</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<p>On modifie <a href="../../structure-pile-file/pile/#structure-pile" class="interne">la structure pile</a> pour y ajouter la méthode suivante: <code class="language-">k-dépile(k: entier) → Type</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> k<span class="token operator">-</span>dépile<span class="token punctuation">(</span>k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
+    k <span class="token operator">←</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> nombre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
-        x <span class="token operator">←</span> P<span class="token punctuation">.</span>dépiler<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x <span class="token operator">←</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> x</code></pre>
-<p>Si $k = 0$ ou <code class="language-">P</code> est vide la complexité de <code class="language-">k-pop(k, P)</code> est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de <code class="language-">k-pop(k, P)</code> est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et <code class="language-">P</code>.</p>
-<p>Soit $A$ un algorithme utilisant une pile $P$ via ses méthodes <code class="language-">nombre</code> et <code class="language-">empiler</code> et via la fonction <code class="language-">k-pop</code>. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.</p>
+<p>Si $k = 0$ ou la pile $P$ est vide, la complexité de <code class="language-">k-dépile</code> est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, P.\text{nombre()}))$. La complexité de <code class="language-">k-dépile</code> est ainsi de $\mathcal{O}(1 + P.\text{nombre()})$.</p>
+<p>Soit $A$ un algorithme utilisant notre nouvelle pile $P$ via ses méthodes <code class="language-">nombre</code> (de complexité $\mathcal{O}(1)$), <code class="language-">empile</code> (de complexité $\mathcal{O}(1)$) et via la fonction <code class="language-">k-dépile</code> (de complexité $\mathcal{O}(1 + P.\text{nombre()})$). On suppose que l'algorithme effectue $m$ de ces 3 méthodes pendant son exécution et que la somme de ses autres opérations est en $\mathcal{O}(1)$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Quelle est la complexité totale de ces $m$ opérations pour $A$ ?</p>
+<p>Quelle est la complexité totale de ces $m$ exécutions des 3 méthodes pour $A$ ?</p>
 </div></div>
 
 <h3>Borner la complexité</h3>
-<p>La difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">k-pop</code> n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations <code class="language-">empiler</code> avant de la vider entièrement avec une instruction <code class="language-">k-pop</code>) : la complexité de <code class="language-">k-pop</code> est bornée par $\mathcal{O}(m)$.</p>
-<p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">nombre</code>, <code class="language-">empiler</code> et <code class="language-">k-pop</code> donc $\mathcal{O}(m^2)$.</p>
+<p>La difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">k-dépile</code> n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations <code class="language-">empile</code> avant de la vider entièrement avec une instruction <code class="language-">k-dépile</code>) : la complexité de <code class="language-">k-dépile</code> est bornée par $\mathcal{O}(m)$.</p>
+<p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">nombre</code>, <code class="language-">empile</code> et <code class="language-">k-dépile</code> donc $\mathcal{O}(m^2)$.</p>
 <p>On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :</p>
 <ul>
-<li>Pour que <code class="language-">k-pop</code> ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations <code class="language-">empiler</code> avant. On ne peut donc pas avoir beaucoup d'opérations <code class="language-">k-pop</code> avec cette grande complexité.</li>
-<li>Après une exécution de <code class="language-">k-pop</code> avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de <code class="language-">k-pop</code> seront de complexité très faible.</li>
+<li>Pour que <code class="language-">k-dépile</code> ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations <code class="language-">empile</code> avant. On ne peut donc pas avoir beaucoup d'opérations <code class="language-">k-dépile</code> avec cette grande complexité.</li>
+<li>Après une exécution de <code class="language-">k-dépile</code> avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de <code class="language-">k-dépile</code> seront de complexité très faible.</li>
 </ul>
-<h3><span id="pile-agrégat"></span> Analyse par agrégat</h3>
-<p>Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :</p>
-<ul>
-<li>$m'$ fois à la fonction <code class="language-">k-pop</code>,</li>
-<li>$m''$ fois à la fonction <code class="language-">empiler</code>,</li>
-<li>$m - m' - m''$ fois à la fonction <code class="language-">nombre</code>.</li>
-</ul>
-<p>Le nombre total d'éléments dépilés au cours des $m'$ exécutions de la fonction <code class="language-">k-pop</code> ne peut excéder le nombre total $m''$ d'éléments empilés. La complexité totale des $m'$ exécutions de <code class="language-">k-pop</code> vaut donc $\mathcal{O}(m' + m'')$.</p>
-<p>Comme la complexité d'un appel à <code class="language-">empiler</code> ou à <code class="language-">nombre</code> vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :</p>
-<p>$$
-C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
-$$</p>
-<p>Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$).</p>
-<h3><span id="pile-comptable"></span> Méthode comptable</h3>
-<p>La complexité de <code class="language-">k-pop</code> étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :</p>
+<p>Calcul de la complexité amortie. Pour cela, on commence par calculer la complexité des $m$ exécutions en utilisant <a href="../analyses/#m%C3%A9thode-comptable" class="intene">la méthode comptable</a>.</p>
+<p>La complexité de <code class="language-">k-dépile</code> étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :</p>
 <ul>
 <li>1 à l'instruction <code class="language-">nombre</code></li>
-<li>2 à l'instruction <code class="language-">empiler</code> (on compte son coût d'empilage <strong>et</strong> on crédite directement son coût de dépilage)</li>
-<li>1 à l'instruction <code class="language-">k-pop</code></li>
+<li>2 à l'instruction <code class="language-">empile</code> (on compte son coût d'empilage <strong>et</strong> on crédite directement son coût de dépilage)</li>
+<li>0 à l'instruction <code class="language-">k-dépile</code></li>
 </ul>
 <p>On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.</p>
 <p>Au bout de $m$ exécutions, on aura :</p>
 <p>$$
 C \leq \sum_{i=1}^{m} \widehat{c_i} \leq \sum_{i=1}^{m} 2 = 2 \cdot m = \mathcal{O}(m)
 $$</p>
-<h3><span id="pile-potentiel"></span> Potentiel</h3>
-<p>La seule opération ayant un coût variable est <code class="language-">k-pop</code> et il dépend du nombre d'éléments à dépiler, c'est à dire indirectement au nombre d'élément dans la pile.</p>
-<p>On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega(i)$ sera le nombre d'élément dans la pile après l'exécution de l'instruction $i$. Comme la pile est initialement vide on a bien $\Omega(i) \geq \Omega(0)$ pour tout $i$. Le coût amorti de chaque opération est alors :</p>
-<ul>
-<li>le coût amorti de <code class="language-">nombre</code> est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$</li>
-<li>le coût amorti de <code class="language-">empiler</code> est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)</li>
-<li>le coût amorti de <code class="language-">k-pop</code> est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)</li>
-</ul>
-<p>Le coût amorti peut être borné par 2 pour chaque opération, on a donc :</p>
-<p>$$
-C \leq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
-$$</p>
-<h3>Complexité amortie</h3>
 <p>Remarquer que pour l'algorithme $A$ on a pas fait attention :</p>
 <ul>
 <li>à l'ordre dans lequel les opérations ont été effectuées</li>
@@ -221,7 +222,7 @@ $$</p>
 <p>On peut utiliser cette complexité amortie pour calculer la complexité d'un programme utilisant ces 3 opérations.</p>
 </div></div>
 
-<p>Comme pour le compteur, remarquez que la complexité amortie de la fonction <code>k-pop</code> ne dépend pas de $k$ puisque'elle est en temps constant.</p>
+<p>Comme pour le compteur, remarquez que la complexité amortie de la fonction <code>k-dépile</code> ne dépend pas de $k$ puisque'elle est en temps constant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -230,60 +231,6 @@ $$</p>
 <p>Réfléchissez à ce résultat, il est assez surprenant, non ?.</p>
 </div></div>
 
-<h2>Exercices</h2>
-<h3>Potentiel</h3>
-<blockquote>
-<p>TBD exo 4 <a href="https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf">https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf</a></p>
-</blockquote>
-<h3>File et pile</h3>
-<blockquote>
-<p>complexité amortie file avec 2 piles : <a href="https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2223.pdf">https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2223.pdf</a></p>
-</blockquote>
-<h3><span id="exercice-liste-suppression-ajout"></span> Ajout et suppression dans une liste</h3>
-<blockquote>
-<p>faire un mix avec 8.2 : <a href="https://www.di.ens.fr/~fouque/articles/poly-algo.pdf">https://www.di.ens.fr/~fouque/articles/poly-algo.pdf</a> avec comptage et potentiel pour l'ajout simple.
-TBD voir aussi le poly de pascal.</p>
-</blockquote>
-<blockquote>
-<p>TBD à faire (dire que c'est dur)</p>
-</blockquote>
-<div id="preuve-liste-suppression-ajout"></div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>$N$ utilisations successives des méthodes d'ajout ou de suppression du dernier élément d'une liste prend $\mathcal{O}(N)$ opérations au maximum.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD le faire.</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<h3>Ajout et suppression dans série de listes triées</h3>
-<blockquote>
-<p>TBD pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur.
-exercice 3 : <a href="https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf">https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf</a></p>
-</blockquote>
 
 
 </article>
