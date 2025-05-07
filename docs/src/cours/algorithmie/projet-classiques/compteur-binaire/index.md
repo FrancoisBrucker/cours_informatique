@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD dire et répéter que ce n'est **pas** la complexité amortie.
+> TBD on a vu un truc du genre dans les piles et files. Faire avec les listes chaînées ?
 
 {% lien %}
 [Corrigé](./corrigé){.interne}

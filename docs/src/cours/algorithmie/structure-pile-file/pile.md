@@ -42,6 +42,8 @@ Une donnée est traité une fois toutes les données plus récentes traitées. E
 
 Une pile générique pourra être implémentée de cette façon :
 
+<span id="structure-pile"></span>
+
 ```pseudocode
 structure Pile<Type>:
     attributs:

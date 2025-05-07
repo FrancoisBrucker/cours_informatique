@@ -17,6 +17,8 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 
 ## <span id="structure"></span>Définition de la structure
 
+<span id="structure-liste"></span>
+
 ```pseudocode
 structure Liste<Type>:
     attributs:
@@ -174,7 +176,7 @@ C(N) &=& \mathcal{O}(N + \underbracket{1 + \cdot + 1}_{N/2 - 1} + \frac{N}{2} + 
 $$
 </div>
 
-Comme, [on le prouvera](../#sommes-classiques){.interne}, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :
+Comme, [on l'a vu'](../#sommes-classiques){.interne}, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :
 
 <div>
 $$

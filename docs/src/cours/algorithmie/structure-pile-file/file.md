@@ -46,6 +46,8 @@ On va utiliser 2 indices pour parcourir le tableau de stockage des données :
 
 Ces deux indices coïncidaient pour la pile.
 
+<span id="structure-file"></span>
+
 ```pseudocode
 structure File<Type>:
     attributs:

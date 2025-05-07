@@ -165,11 +165,11 @@ $$
 </div>
 
 {% info %}
-On a utilisé le fait, [on le démontrera](../../#sommes-classiques){.interne}, que :
+On a utilisé le fait, [on le démontrera](../../#sommes-classiques){.interne}, que la série est convergente et donc :
 
 <div>
 $$
-\lim_{n\to\infty} \sum_{i=1}^n\frac{1}{i^2} = \frac{\pi^2}{6}
+\sum_{i=1}^n\frac{1}{i^2} = \mathcal{O}(1)
 $$
 </div>
 

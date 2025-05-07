@@ -103,6 +103,8 @@ Une **_liste chaînée_** est soit :
 
 On peut écrire cette structure en ajoutant juste deux méthodes à notre maillon :
 
+<span id="structure-liste-chaînée"></span>
+
 ```pseudocode
 structure Maillon<Type>:
     attributs:
@@ -158,7 +160,28 @@ Pour accéder au $i$ème élément d'une liste chaînée, il faut la parcourir �
 
 ## Utilisation
 
-On utilise les listes chaînées lorsque l'on doit très souvent insérer ou supprimer des éléments à l'intérieur d'une liste ou lorsque l'on construit notre liste par étape, en la parcourant.
+On utilise les listes chaînées lorsque l'on doit très souvent insérer ou supprimer des éléments à l'intérieur d'une liste ou lorsque l'on construit une liste par étapes.
+
+### Stockage sur disque
+
+Les listes chaînées sont utilisées pour stocker des fichiers sur un disque physique.
+
+{% lien %}
+[Systèmes d'Allocation de fichiers FAT](https://fr.wikipedia.org/wiki/FAT32)
+{% endlien %}
+
+<!-- TBD
+
+> TBD décrire le principe en deux structures :
+>
+> - file allocation table qui est le début
+> - bloques sur le disque
+>
+> dire qu'il y a des améliorations mais que ce principe subsiste jusqu'à maintenant (ext4, zfs, ntfs) 
+
+-->
+
+### Algorithmes récursifs
 
 C'est cette dernière utilisation fait que cette structure est plébiscité par les approches récursives où l'on construit petit à petit nos listes. Voyons ça avec quelques exercices qui reprennent avec des listes chaînées [des exercices que l'on a déjà vu avec des tableaux](../projet-itératif-récursif/#algorithme-max-tableau-rec){.interne}, vous verrez que les algorithmes sont de complexité linéaire ce qui n'était pas le cas avec des tableaux.
 

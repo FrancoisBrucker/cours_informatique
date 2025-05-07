@@ -309,6 +309,8 @@ Cette version permet d'avoir une structure dont la taille est proportionnelle au
 
 Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le nombre d'éléments stockés est supérieur à sa longueur. C'est cette structure qui est appelée dictionnaire et correspond à la structure :
 
+<span id="structure-dictionnaire"></span>
+
 ```pseudocode
 fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
 

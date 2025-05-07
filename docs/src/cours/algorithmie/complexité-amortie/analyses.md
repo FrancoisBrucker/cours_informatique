@@ -12,18 +12,95 @@ eleventyComputed:
 
 Il existe trois types d'analyses amortie possibles : par agrégat, comptable et par potentiel. La méthode par potentielle est la plus générale mais également la plus ardue à mettre en oeuvre. La méthode comptable est intermédiaire et la méthode par agrégat (que l'on a déjà utilisé pour les listes) est la méthode la plus simple et qui est souvent suffisante.
 
-Pour l'exemple de l'algorithme `tous`{.language-}, l'analyse par agrégat suffit, mais on montrera aussi comment les résoudre avec la méthode comptable et par potentiel. Le résultat sera bien sur le même : $\mathcal{O}(2^n)$
+Nous allons illustrer chaque méthode en utilisant l'algorithme `tous`{.language-} qui affiche tous les entiers binaires inférieurs à $2^n$. Cet exemples est paradigmatique de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie d'opérations de faibles complexité.
+
+## Exemple du compteur binaire
+
+Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$.
+
+<span id="algorithme-compteur-binaire"></span>
+
+Soit lors l'algorithme suivant :
+
+```pseudocode
+fonction successeur(N: [entier]) → vide:
+    i ← N.longueur - 1
+
+    tant que (i ≥ 0) et (N[i] == 1):
+        N[i] ← 0
+        i ← i - 1
+
+    si i ≥ 0:
+        N[i] ← 1
+
+algorithme tous(n) → vide:
+    N ← un tableau de taille n
+    N[:] ← 0
+
+    pour chaque i de [0, 2^n[:        
+        successeur(N)
+        affiche N à l'écran
+
+```
+
+{% details "code python" %}
+
+```python
+def successeur(N):
+    i = len(N) - 1
+
+    while (i >= 0) and (N[i] == 1):
+        N[i] = 0
+        i -= 1
+
+    if i >= 0:
+        N[i] = 1
+
+def tous(n):
+    N = [0] * n
+
+    for i in range(2 ** n):
+        successeur(N)
+        print(N)
+```
+
+{% enddetails %}
+
+À un nombre `N`{.language-} écrit au format binaire donné, `successeur(N)`{.language-} va l'incrémenter de 1.
+
+[On a déjà étudié les complexités de l'algorithme `successeur(N)`{.language-}](../projet-classiques/compteur-binaire/){.interne}. Ici c'est l'exécution de `tous(n)`{.language-} qui nous intéresse et donc la complexité des $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}. On verra juste multiplier la complexité par le nombre d'itération va donner un calcul trop frustre.
+
+{% note "**Problème**" %}
+Trouver la complexité de l'exécution `tous(n)`{.language-}, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}.
+
+{% endnote %}
+
+La difficulté du calcul vient du fait que le nombre d'opération effectuée par l'exécution de `successeur(N)`{.language-} dépend de son paramètre :
+
+- au mieux, $N[-1] = 0$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(1)$,
+- au pire, $N = [1, \dots, 1]$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(n)$,
+
+La complexité totale de l'exécution des $2^n$ instances de `successeur(N)`{.language-} est alors estimée à : $\mathcal{O}(n \cdot 2^n)$.
+
+On le démontrera précisément mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car on a prouvé qu'en moyenne, sous hypothèse d'uniformité, la complexité de `successeur(N)`{.language-} est $\mathcal{O}(1)$ et ici $N$ va valoir **tous** les entiers sa complexité totale doit donc être proche de la complexité en moyenne.
 
 ## Analyse par Agrégat
 
-{% note %}
-La technique de **_l'analyse par agrégat_** consiste à considérer l'ensemble des $m$ exécutions comme un **tout**.
+<span id="méthode-agrégat"></span>
+
+La méthode la plus simple, on compte tout. C'est ce qu'on a fait avec les listes.
+
+### Définition de l'analyse par agrégat
+
+{% note "**Définition**" %}
+**_L'analyse par agrégat_** consiste à considérer l'ensemble des $m$ exécutions comme un **tout**.
 
 On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.
 {% endnote %}
 
-### <span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme `tous(n)`{.language-} avec l'analyse par agrégats
+### <span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme `tous(n)`{.language-} avec l'analyse par agrégat
 
+Effectuons cette analyse pour le calcul de la complexité de `tous(N)`{.language-}.
 On remarque tout d'abord que le nombre d'opérations de `successeur(N)`{.language-} dépend de l'indice du dernier `0`{.language-} dans la liste `N`{.language-} :
 
 - si `N`{.language-} finit par la liste `[0]`{.language-} il faut de l'ordre de 1 opération à successeur (la boucle `tant que`{.language-} de la ligne 4 fait un test et aucune itération)
@@ -63,7 +140,7 @@ C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
 $$
 </div>
 
-On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ (immédiat par récurrence mais il existe également [une preuve directe](https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF)), ce qui permet d'obtenir :
+On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ ([on l'a vu](../../#sommes-classiques){.interne}), ce qui permet d'obtenir :
 
 <div>
 $$
@@ -80,9 +157,14 @@ $$
 
 ## Méthode comptable
 
-La méthode comptable va associer des coûts différents à chaque opération, appelé _coût amorti_ :
+<span id="méthode-comptable"></span>
 
-{% note %}
+La méthode comptable va associer des coûts différents à chaque opération, appelé _coût amorti_.
+
+### Définition de la méthode comptable
+
+{% note "**Définition**" %}
+
 La **_méthode comptable_** pour calculer la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un **_coût amorti_** $\hat{c_i}$ tel que pour tout $1 \leq k \leq m$ :
 
 $$
@@ -94,9 +176,9 @@ L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de 
 
 Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.
 
-### <span id="compteur-comptable"></span>Calcul de la complexité de l'algorithme `tous(n)`{.language-} avec la méthode comptable
+### <span id="compteur-comptable"></span>Calcul de la complexité de l'algorithme `tous(n)`{.language-} avec l'analyse par la méthode comptable
 
-Appliquons cette méthode au compteur. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :
+Appliquons cette méthode pour calculer la complexité de `tous`{.language-}. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :
 
 - 2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 **et** on crédite directement son coût de positionnement à 0)
 - 0 lorsqu'un bit est positionné à 0
@@ -107,9 +189,13 @@ Enfin, comme à chaque exécution de `successeur`{.language-} un unique bit est 
 
 ## Analyse par potentiel
 
+<span id="méthode-potentiel"></span>
+
 Cette méthode de calcul est une généralisation des deux méthodes précédentes.
 
-{% note %}
+### Définition de l'analyse par potentiel
+
+{% note "**Définition**" %}
 L'**_analyse par potentiel_** calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un **_potentiel_** $\Omega(i)$ tel que $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)
 
 Le **_coût amorti_** $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :

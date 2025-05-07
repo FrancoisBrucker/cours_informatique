@@ -349,7 +349,7 @@ A(n) &=& A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
 $$
 </div>
 
-On peut facilement montrer ([on le démontrera](../../#sommes-classiques){.interne}) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ et donc que :
+On peut facilement montrer ([on le démontrera](../../#sommes-classiques){.interne}) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)$ et donc que :
 
 <div>
 $$

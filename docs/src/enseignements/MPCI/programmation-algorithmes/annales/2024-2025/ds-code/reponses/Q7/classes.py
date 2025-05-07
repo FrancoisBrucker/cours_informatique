@@ -145,8 +145,8 @@ class Joueur:
         for i in range(len(podium.places)):
             if podium.places[i] is not None:
                 pts += i * self.jetons[podium.places[i]]
-        pts += self.jetons["B"] * sum(
-            [1 for x, y in self.jetons.items() if y > 0 and x != "B"]
+        pts += self.jetons["X"] * sum(
+            [1 for x, y in self.jetons.items() if y > 0 and x != "X"]
         )
         return pts
 

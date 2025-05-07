@@ -76,7 +76,7 @@ while r != "stop":
 
 ```
 
-0n choisit de représenter chaque disque par une lettre représentant sa couleur : `O`{.language-} et `X`{.language-} pour noir et blanc, `R`{.language-}, `V`{.language-}, `B`{.language-}, `J`{.language-} et `U`{.language-} pour rouge, vert, bleu, jaune, violet, respectivement.
+0n choisit de représenter chaque jeton par une lettre représentant sa couleur : `O`{.language-} et `X`{.language-} pour noir et blanc, `R`{.language-}, `V`{.language-}, `B`{.language-}, `J`{.language-} et `U`{.language-} pour rouge, vert, bleu, jaune, violet, respectivement.
 
 {% faire %}
 Complétez le fichier `main.py`{.fichier} :
@@ -104,7 +104,7 @@ Quel est le but de `__str__`{.language-} ?
 {% endfaire %}
 
 {% faire %}
-Proposez une modélisation UML des classes `Plateau`, `Piste` `Jeton` et `Podium` telle que
+Proposez une modélisation UML des classes `Plateau` (qui va remplacer et améliorer la fonction plateau de la première question), `Piste` `Jeton` et `Podium` telle que
 
 - la classe suivante fonctionne :
 

@@ -194,20 +194,13 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 
 ### On s'entraîne
 
-#### Sommes classiques
+#### <span id="sommes-classiques"></span> Sommes classiques
 
-<span id="sommes-classiques"></span>
+Comme exercice et pour référence, calcul de sommes classiques et utiles en complexité :
 
-> TBD utile en complexité. Montrer quand ça arrive.
-> <https://fr.wikipedia.org/wiki/1/2_%2B_1/4_%2B_1/8_%2B_1/16_%2B_%E2%8B%AF>
-> vu dans liste : $\sum_{i=0}^{n-1} \frac{1}{2^i} = 2 - \frac{1}{2^{n-1}} \leq 2$
-> 
-> vu dans la reconnaissance : $\lim_{n\to\infty} \sum_{i=1}^n\frac{1}{i^2} = \frac{\pi^2}{6}$
-> vu dans le tri rapide : $\sum_{1 \leq 0 \leq K}\cdot 2^{k}$ et $\sum_{0 \leq k \leq K}k\cdot 2^{k} = (K-1)2^{K} + 1$ (vu dans le tri rapide) et $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$
-> serie harmonique $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$. Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique),
-et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ à démontrer.
->
-> TBD autres sommes classiques à connaître pour les calculs de complexités comme $\sum x^i$, $\sum i\cdot x^i$ et application pour $x =1$. Aussi connaître $\sum 1/i$, $\sum 1/i^2$, $\sum 1/2^i$ et $\sum i/2^i$.
+{% aller %}
+[Calcul de sommes classiques](./projet-sommes-classiques/){.interne}
+{% endaller %}
 
 #### Résolution d'algorithmes classiques
 
@@ -296,13 +289,15 @@ Comparons l'usage les différentes structures de stockage de données en notre p
 [Complexités d'une structure et de ses méthodes](./structures-complexité){.interner}
 {% endaller %}
 
-> TBD calcul amortie avec les listes peut être compliqué. ~Formalisons la notion et montrons des moyens de la calculer
+Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire la méthode append des listes.
+
+Si dans le premier cas deux recherches successive peuvent prendre $\mathcal{O}(n)$ opérations (si on a pas de chance) ce n'est pas le cas de la seconde où si un premier append prend $\mathcal{O}(n)$ opérations on sait que l'appel suivant ne prendra que $\mathcal{O}(1)$ opérations.
+
+C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que l'on fait un calcul en _"complexité amortie"_ pour les listes. Formalisons cette notion :
 
 {% aller %}
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
-
-> TBD exercices (cf. ens)
 
 ### On s'entraîne : structures de listes
 

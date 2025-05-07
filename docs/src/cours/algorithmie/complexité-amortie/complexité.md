@@ -10,32 +10,81 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD chapeau
+La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** [une complexité en moyenne](../../complexité-moyenne){.interne} qui est une moyenne probabiliste. 
 
-## Complexité amortie d'un compteur
+De plus, lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.
 
-La complexité de l'algorithme `successeur`{.language-} est en $\mathcal{O}(N.\mbox{\small longueur})$. Exécuter $m$ fois cet algorithme va donc être de complexité $\mathcal{O}(m\cdot N.\mbox{\small longueur})$ si on ne connaît pas le paramètre $N$ (on peut tout le temps choisir celui qui à une complexité maximale).
+Enfin, Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra **jamais** excéder la complexité amortie.
+
+{% attention "**À retenir**" %}
+
+Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.
+
+Pour ces structures, complexité amortie et maximale sont par abus de langage considérés comme équivalentes.
+
+{% endattention %}
+
+La complexité amortie est un concept avancé, utilisée dans deux cas principalement :
+
+- comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)
+- comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes
+
+## Exemple 1 : structure de compteur
+
+Pour illustrer le concept de complexité amortie dans le cadre [du compteur binaire](../analyse/#algorithme-compteur-binaire){.interne}, calculer la complexité amortie de l'algorithme `tous`{.language-} ou de la a fonction `successeur`{.language-} n'a pas vraiment de sens :
+
+- l'algorithme `tous`{.language-} a toujours la même complexité à chaque appel,
+- la fonction `successeur`{.language-} a bien des complexités différentes selon ses paramètres, mais plusieurs appels successifs peuvent tous avoir la complexité maximale (on prend $N = [1, ..., 1]$ comme paramètre à chaque fois) et la complexité amorties sera égale à la complexité maximale
 
 En revanche, considérons la structure suivante :
+
+<span id="structure-compteur-binaire"></span>
 
 ```pseudocode
 structure Compteur:
     attributs
-        N: [entier]
-    création(n: entier) → Compteur:
-        N ← un tableau de n entiers
-        N[:] ← 0
-    suivant() → vide:
-        successeur(N)
+        N: [bit]
+    méthodes
+        fonction suivant() → vide:
+            successeur(N)
 ```
 
-Analysons la complexité de la méthode `suivant`{.language-} :
+La méthode `suivant`{.language-} n'a pas de paramètres, analysons sa complexité amortie en l'exécutant successivement $m$ fois.
 
-1. elle n'a pas de paramètre
-2. une exécution peut prendre $\mathcal{O}(N.\mbox{\small longueur})$ opérations
-3. pour 2 exécutions successives, la complexité de la seconde exécution dépend de l'exécution précédente (si N[-1] à été mis à 1 ou à 0)
+Par exemple le code suivant :
 
-Si un programme utilise $m$ fois la méthode `suivant`{.language-}, la complexité de ces $m$ exécutions va être égale à $\frac{m}{2^n}$ fois la complexité de `tous`{.language-}, c'est à dire $\mathcal{O}(m)$. On en déduit que :
+```pseudocode
+c ← { N: [1, 0, 0, 1]}
+
+pour chaque i de [1, 9]:
+    c.suivant()
+```
+
+Va afficher à l'écran les valeurs de N suivantes après chaque itération (on a mis des rond autour de l'indice maximum parcouru par l'algorithme suivant):
+
+```text
+       : 1001
+     1 : 0➀01
+     2 : ➀101
+     3 : 00➀1
+     4 : ➀011
+     5 : 0➀11
+     6 : ➀111
+     7 : 000⓪
+     8 : ➀000
+     9 : 0➀00
+
+```
+
+On voit clairement $N[i]$ est parcouru par la méthode suivant toutes les $2^i$ itérations. [L'analyse par agrégat](../analyses/#méthode-agrégat){.interne} nous indique alors que la complexité des $m$ itérations est :
+
+<div>
+$$
+\sum_{0\leq i\leq log_2(m)} \mathcal{O}(1)\cdot2^i = \mathcal{O}(1)
+$$
+</div>
+
+Puisque ([on l'a vu](../../#sommes-classiques)) $\sum_{0\leq i \leq n}2^i = 2^{n+1}-1$ cette complexité totale vaut : $\mathcal{O}(m)$ et la complexité amortie $\frac{\mathcal{O}(m)}{m} = $\mathcal{O}(1)$ "
 
 {% note %}
 La complexité amortie de la méthode `suivant`{.language-} est $\mathcal{O}(1)$.
@@ -45,24 +94,6 @@ Lorsqu'un programme utilise de nombreuses fois la méthode `suivant`{.language-}
 
 La complexité amortie est **une moyenne de complexités maximales** et permet un calcul plus aisé de la complexité : la complexité de tous les appels vaut le nombre d'appels fois la complexité amortie.
 
-Attention, ce n'est pas une complexité en moyenne, la complexité des lignes 2 à 4 de l'algorithme suivant est $\cdot \mathcal{O}(m\cdot n)$ puisque $N$ peut contenir la suite $[1, 1, \dots, 1]$ :
-
-```pseudocode/
-N ← un tableau de m * n nombres 0 ou 1
-pour chaque i de [0, m[:
-    successeur(N[i * n: i * n + m])
-    afficher N[i * n: i * n + m] à l'écran
-```
-
-Alors que la complexité des lignes 2 à 4 de l'algorithme suivant vaut $\cdot \mathcal{O}(m)$ :
-
-```pseudocode/
-c ← un nouveau compteur
-pour chaque i de [0, m[:
-    c.suivant()
-    afficher c.N
-```
-
 Enfin, remarquez que la complexité amortie de `suivant` ne dépend par de la longueur de l'attribut $N$.
 
 {% info %}
@@ -71,60 +102,42 @@ Réfléchissez à ce résultat, il est assez surprenant, non ?.
 
 ## Exemple 2 : la pile
 
-On va considérer [une pile](../structure-pile-file/pile/){.interne} et on crée l'algorithme suivant : `k-pop(k, P)`{.language-} :
+On modifie [la structure pile](../../structure-pile-file/pile/#structure-pile){.interne} pour y ajouter la méthode suivante: `k-dépile(k: entier) → Type`{.language-} :
 
 ```pseudocode
-algorithme k-pop(k, P) → entier:
-    k ← min(k, P.nombre())
+fonction k-dépile(k: entier) → Type:
+    k ← min(k, nombre())
     répéter k fois:
-        x ← P.dépiler()
+        x ← dépile()
     rendre x
 ```
 
-Si $k = 0$ ou `P`{.language-} est vide la complexité de `k-pop(k, P)`{.language-} est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de `k-pop(k, P)`{.language-} est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et `P`{.language-}.
+Si $k = 0$ ou la pile $P$ est vide, la complexité de `k-dépile`{.language-} est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, P.\text{nombre()}))$. La complexité de `k-dépile`{.language-} est ainsi de $\mathcal{O}(1 + P.\text{nombre()})$.
 
-Soit $A$ un algorithme utilisant une pile $P$ via ses méthodes `nombre`{.language-} et `empiler`{.language-} et via la fonction `k-pop`{.language-}. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.
+Soit $A$ un algorithme utilisant notre nouvelle pile $P$ via ses méthodes `nombre`{.language-} (de complexité $\mathcal{O}(1)$), `empile`{.language-} (de complexité $\mathcal{O}(1)$) et via la fonction `k-dépile`{.language-} (de complexité $\mathcal{O}(1 + P.\text{nombre()})$). On suppose que l'algorithme effectue $m$ de ces 3 méthodes pendant son exécution et que la somme de ses autres opérations est en $\mathcal{O}(1)$.
 
 {% exercice %}
-Quelle est la complexité totale de ces $m$ opérations pour $A$ ?
+Quelle est la complexité totale de ces $m$ exécutions des 3 méthodes pour $A$ ?
 {% endexercice %}
 
 ### Borner la complexité
 
-La difficulté du calcul vient du fait que la complexité de la fonction `k-pop`{.language-} n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations `empiler`{.language-} avant de la vider entièrement avec une instruction `k-pop`{.language-}) : la complexité de `k-pop`{.language-} est bornée par $\mathcal{O}(m)$.
+La difficulté du calcul vient du fait que la complexité de la fonction `k-dépile`{.language-} n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations `empile`{.language-} avant de la vider entièrement avec une instruction `k-dépile`{.language-}) : la complexité de `k-dépile`{.language-} est bornée par $\mathcal{O}(m)$.
 
-On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations `nombre`{.language-}, `empiler`{.language-} et `k-pop`{.language-} donc $\mathcal{O}(m^2)$.
+On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations `nombre`{.language-}, `empile`{.language-} et `k-dépile`{.language-} donc $\mathcal{O}(m^2)$.
 
 On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :
 
-- Pour que `k-pop`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `empiler`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-pop`{.language-} avec cette grande complexité.
-- Après une exécution de `k-pop`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-pop`{.language-} seront de complexité très faible.
+- Pour que `k-dépile`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `empile`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-dépile`{.language-} avec cette grande complexité.
+- Après une exécution de `k-dépile`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-dépile`{.language-} seront de complexité très faible.
 
-### <span id="pile-agrégat"></span> Analyse par agrégat
+Calcul de la complexité amortie. Pour cela, on commence par calculer la complexité des $m$ exécutions en utilisant [la méthode comptable](../analyses/#méthode-comptable){.intene}.
 
-Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :
-
-- $m'$ fois à la fonction `k-pop`{.language-},
-- $m''$ fois à la fonction `empiler`{.language-},
-- $m - m' - m''$ fois à la fonction `nombre`{.language-}.
-
-Le nombre total d'éléments dépilés au cours des $m'$ exécutions de la fonction `k-pop`{.language-} ne peut excéder le nombre total $m''$ d'éléments empilés. La complexité totale des $m'$ exécutions de `k-pop`{.language-} vaut donc $\mathcal{O}(m' + m'')$.
-
-Comme la complexité d'un appel à `empiler`{.language-} ou à `nombre`{.language-} vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :
-
-$$
-C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
-$$
-
-Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$).
-
-### <span id="pile-comptable"></span> Méthode comptable
-
-La complexité de `k-pop`{.language-} étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :
+La complexité de `k-dépile`{.language-} étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :
 
 - 1 à l'instruction `nombre`{.language-}
-- 2 à l'instruction `empiler`{.language-} (on compte son coût d'empilage **et** on crédite directement son coût de dépilage)
-- 1 à l'instruction `k-pop`{.language-}
+- 2 à l'instruction `empile`{.language-} (on compte son coût d'empilage **et** on crédite directement son coût de dépilage)
+- 0 à l'instruction `k-dépile`{.language-}
 
 On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.
 
@@ -133,24 +146,6 @@ Au bout de $m$ exécutions, on aura :
 $$
 C \leq \sum_{i=1}^{m} \widehat{c_i} \leq \sum_{i=1}^{m} 2 = 2 \cdot m = \mathcal{O}(m)
 $$
-
-### <span id="pile-potentiel"></span> Potentiel
-
-La seule opération ayant un coût variable est `k-pop`{.language-} et il dépend du nombre d'éléments à dépiler, c'est à dire indirectement au nombre d'élément dans la pile.
-
-On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega(i)$ sera le nombre d'élément dans la pile après l'exécution de l'instruction $i$. Comme la pile est initialement vide on a bien $\Omega(i) \geq \Omega(0)$ pour tout $i$. Le coût amorti de chaque opération est alors :
-
-- le coût amorti de `nombre`{.language-} est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$
-- le coût amorti de `empiler`{.language-} est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)
-- le coût amorti de `k-pop`{.language-} est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)
-
-Le coût amorti peut être borné par 2 pour chaque opération, on a donc :
-
-$$
-C \leq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
-$$
-
-### Complexité amortie
 
 Remarquer que pour l'algorithme $A$ on a pas fait attention :
 
@@ -165,40 +160,8 @@ On peut utiliser cette complexité amortie pour calculer la complexité d'un pro
 
 {% endnote %}
 
-Comme pour le compteur, remarquez que la complexité amortie de la fonction `k-pop` ne dépend pas de $k$ puisque'elle est en temps constant.
+Comme pour le compteur, remarquez que la complexité amortie de la fonction `k-dépile` ne dépend pas de $k$ puisque'elle est en temps constant.
 
 {% info %}
 Réfléchissez à ce résultat, il est assez surprenant, non ?.
 {% endinfo %}
-
-## Exercices
-
-### Potentiel
-
-> TBD exo 4 <https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf>
-
-### File et pile
-
-> complexité amortie file avec 2 piles : <https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2223.pdf>
-
-### <span id="exercice-liste-suppression-ajout"></span> Ajout et suppression dans une liste
-
-> faire un mix avec 8.2 : <https://www.di.ens.fr/~fouque/articles/poly-algo.pdf> avec comptage et potentiel pour l'ajout simple.
-> TBD voir aussi le poly de pascal.
-
-> TBD à faire (dire que c'est dur)
-
-<div id="preuve-liste-suppression-ajout"></div>
-{% note %}
-$N$ utilisations successives des méthodes d'ajout ou de suppression du dernier élément d'une liste prend $\mathcal{O}(N)$ opérations au maximum.
-{% endnote %}
-{% details "preuve" %}
-
-> TBD le faire.
-
-{% enddetails %}
-
-### Ajout et suppression dans série de listes triées
-
-> TBD pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur.
-> exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
