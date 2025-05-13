@@ -78,6 +78,8 @@ Ce cours est composée de plusieurs parties :
 
 > TBD pour s'assurer que les prérequis sont ok, faire un DM avant le début du semestre avec du code, du numpy et de la génération de listes. 
 
+> TBD remplacer debugueur par TD listes et dictionnaires python.
+
 -->
 
 ### Semaine 1

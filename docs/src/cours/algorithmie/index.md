@@ -208,8 +208,6 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 [Calcul d'équations classiques](./projet-équations-classiques/){.interne}
 {% endaller %}
 
->TBD ici équation de récurrence classique
-
 #### Résolution d'algorithmes classiques
 
 {% aller %}

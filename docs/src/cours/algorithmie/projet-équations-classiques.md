@@ -147,7 +147,7 @@ Que vaut $C(n)$ si :
 <div>
 $$
 \begin{cases}
-C(n) = \mathcal{O}(1) + 2 C(\frac{n}{2})\\
+C(n) = \mathcal{O}(1) + 2\cdot C(\frac{n}{2})\\
 C(1) = \mathcal{O}(1)
 \end{cases}
 $$
@@ -156,7 +156,22 @@ $$
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD $C(n) = \mathcal{O}(n)$
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(1) + 2\cdot C(\frac{n}{2})\\
+     &=& \mathcal{O}(1) + 2\cdot \mathcal{O}(1) + 4\cdot C(\frac{n}{4})\\
+     &=& \dots
+     &=& \sum{0\leq i < p} (\cdot \mathcal{O}(1)) + 2^p \cdot C(\frac{n}{2^p})\\
+     &=& \mathcal{O}(\sum{0\leq i < p}2^i) + 2^p \cdot C(\frac{n}{2^p})\\
+     &=& \mathcal{O}(2^{p}-1) + 2^p \cdot C(\frac{n}{2^p})\\
+     &=& \mathcal{O}(2^{\log_2(n)}-1) + 2^{\log_2(n)} \cdot C(1)\\
+     &=& \mathcal{O}(n) + n \cdot C(1)\\
+     &=& \mathcal{O}(n) + n \cdot \mathcal{O}(1)\\
+     &=& \mathcal{O}(n)
+\end{array}
+$$
+</div>
 
 {% enddetails %}
 {% exercice %}
@@ -164,12 +179,31 @@ Que vaut $C(n)$ si :
 
 <div>
 $$
-C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
+\begin{cases}
+C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})\\
+C(1) = \mathcal{O}(1)
+\end{cases}
 $$
 </div>
+
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD $C(n) = \mathcal{O}(n\ln(n))$
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(n) + 2\cdot C(\frac{n}{2})\\
+     &=& \mathcal{O}(n) + 2\cdot \mathcal{O}(\frac{n}{2}) + 4\cdot C(\frac{n}{4})\\
+     &=& \dots
+     &=& \sum{0\leq i < p} (\cdot \mathcal{O}(n)) + 2^p \cdot C(\frac{n}{2^p})\\
+     &=& p\cdot \mathcal{O}(n) + 2^p \cdot C(\frac{n}{2^p})\\
+     &=& \mathcal{O}(p\cdot n) + 2^p \cdot C(\frac{n}{2^p})\\
+     &=& \mathcal{O}(\log_2(n)\cdot n) + 2^{\log_2(n)} \cdot C(1)\\
+     &=& \mathcal{O}(n\ln(n)) + n \cdot C(1)\\
+     &=& \mathcal{O}(n\ln(n)) + n \cdot \mathcal{O}(1)\\
+     &=& \mathcal{O}(n\ln(n))
+\end{array}
+$$
+</div>
 
 {% enddetails %}

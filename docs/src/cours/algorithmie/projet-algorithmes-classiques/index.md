@@ -16,7 +16,7 @@ eleventyComputed:
 ---
 
 > TBD à refaire bien
-> TBD pgcd en moyenne. Voir Knuth
+> TBD pgcd max et en moyenne et aussi algo avec modulo. Voir Knuth.
 > faire une partie énumération dans classique (compteur, permutation, 8 reines (vor ds),lancer de dés aussi ds ?).
 > TBD séparer les exos qui sont mieux avec une liste en récursif. Preparer.
 > TBD rendu de piece par programmation dynamique
