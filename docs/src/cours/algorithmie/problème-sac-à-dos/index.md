@@ -18,6 +18,10 @@ Le problème du sac à dos est un problème fondamental en algorithmie, nombre d
 > TBD ecrire matrice et sous matrices optimales
 > écrire les algos de remontée
 
+> TBD ajouter fourmi dans étude. Voir concours mines/pont 2025.
+
+> TBD ajouter rendu de pièces comme sac à dos particulier dans étude.
+
 ## Étude
 
 {% aller %}

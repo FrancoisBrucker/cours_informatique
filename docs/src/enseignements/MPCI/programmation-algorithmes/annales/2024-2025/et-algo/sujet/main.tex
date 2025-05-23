@@ -1,0 +1,248 @@
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{listingsutf8}
+\usepackage{amsfonts}
+\lstset{%
+    inputencoding=utf8, 
+    literate=
+        {é}{{\'e}}{1}%
+        {è}{{\`e}}{1}%
+        {à}{{\`a}}{1}%
+        {â}{{\^a}}{1}%
+        {ç}{{\c{c}}}{1}%
+        {œ}{{\oe}}{1}%
+        {ù}{{\`u}}{1}%
+        {É}{{\'E}}{1}%
+        {È}{{\`E}}{1}%
+        {À}{{\`A}}{1}%
+        {Ç}{{\c{C}}}{1}%
+        {Œ}{{\OE}}{1}%
+        {Ê}{{\^E}}{1}%
+        {ê}{{\^e}}{1}%
+        {î}{{\^i}}{1}%
+        {ï}{{\"i}}{1}%
+        {ô}{{\^o}}{1}%
+        {û}{{\^u}}{1}%
+}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{todonotes}
+\usepackage{amsthm}
+
+\newtheoremstyle{exostyle}% style name
+{10pt}% above space
+{10pt}% below space
+{}% body font
+{}% indent amount
+{\scshape\bfseries\large}% head font
+{\hfill\vspace{5pt}\newline}% post head punctuation
+{0pt}% Space after theorem head
+{\hfill\thmname{#1}\thmnumber{ #2} -- \thmnote{ #3}}% head spec
+
+\newtheoremstyle{partiestyle}% style name
+{1em}% above space
+{1em}% below space
+{}% body font
+{}% indent amount
+{\bfseries}% head font
+{\vspace{.5em}\newline}% post head punctuation
+{0em}% Space after theorem head
+{\thmnumber{#2} \thmnote{ #3}}% head spec
+
+\newtheoremstyle{questionstyle}% style name
+{.5em}% above space
+{.5em}% below space
+{}% body font
+{}% indent amount
+{\bfseries}% head font
+{}% post head punctuation
+{0em}% Space after theorem head
+{Question \thmnumber{#2 }}% head spec
+
+\theoremstyle{exostyle}
+\newtheorem{exo}{Exercice}
+
+\theoremstyle{partiestyle}
+\newtheorem{partie}{}[exo]
+
+\theoremstyle{questionstyle}
+\newtheorem{question}{Question}[exo]
+\newtheorem{questionpartie}{Question}[partie]
+
+\title{Examen Terminal UE Algorithmes}
+\author{L1 MPCI}
+\date{28 mai 2025 - Durée: 2h}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+{\em\bf Lorsque l'on vous demande d'écrire de décrire ou de donner un algorithme cela signifiera toujours en donner un pseudo-code, justifier de son exactitude et de sa complexité}
+
+~\\
+
+{\em On rappelle qu'aucun document, ni équipement électrique ou électronique n'est autorisé.
+
+ {\bf Cependant} l'usage d'une scie-sauteuse sans fil est tolérée.}
+\end{center}
+
+
+\vspace*{1cm}
+Les exercices :
+\begin{itemize}
+\item sont au nombre de 3;
+\item sont de difficulté croissante (le premier est le plus facile et vaudra moins de points que le troisième);
+\item sont indépendants (à part le problème à résoudre qui est le même);
+\item leur début est plus facile que leur fin (qui vaudra donc plus de points).
+\end{itemize}
+
+\paragraph{}{\sc Rendez des copies séparées pour chaque exercice, ceci vous permettra de reprendre les exercices au cours de l'examen sans perdre le correcteur.}
+
+\vspace*{1cm}
+Notations :
+\begin{itemize}
+\item on note $\mathcal{T}_n$ l'ensemble de toutes les permutations du tableau de taille $n$ contenant les entiers allant de $0$ à $n-1$;
+\item Pour un tableau $T$ de taille $n$, on notera $T[\;:k]$ le tableau formé des  $k$ premiers éléments de $T$ (allant des indices 0 à $k-1$);
+\item Pour un tableau $T$ $n$, on notera $T[k:\;]$ le tableau formé des $n-k$ derniers éléments de $T$ (allant des indices $k$ à $n-1$);
+\item Pour deux tableaux $T$ et $T'$, on notera $T + T'$ le tableau formé de la concaténation de $T$ et $T'$.
+\end{itemize}
+
+\paragraph{Les trois exercices} de cet examen ont pour but d'afficher à l'écran chaque élément de $\mathcal{T}_n$ une seule fois. 
+
+\clearpage
+
+\begin{exo}[Itératif]
+    On va utiliser l'{\em\bf ordre lexicographique} (c'est l'ordre des mots dans un dictionnaire) entre tableaux pour générer $\mathcal{T}_n$. On rappelle que pour cet ordre $T < T'$ si $T \neq T'$ et $T[i] < T'[i]$ pour $i$ le plus petit indice tel que $T[i] \neq T'[i]$.
+    \begin{partie}[Ordre]
+        \begin{questionpartie}
+            Quels sont le plus petit et le plus grand élément de $\mathcal{T}_n$ ?
+        \end{questionpartie}
+        \begin{questionpartie}
+            Écrivez un algorithme de complexité optimale (vous le justifierez) qui prend en entrée deux éléments $T1$ et $T2$ de $\mathcal{T}_n$ et rend \verb|Vrai| si $T1$ est strictement plus grand que $T2$ et \verb|Faux| sinon. Il sera de signature~:
+              \verb|plus_grand(T1: [entier], T2: [entier]) → booléen| 
+        \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Indice $i^\star_{T}$]
+        \begin{questionpartie}
+            Démontrez que pour tout élément $T$ de $\mathcal{T}_n$, il existe un indice $i^\star_{T}\geq 0$ tel que :
+            \begin{itemize}
+                \item $T[i^\star_{T}:\;]$ est strictement décroissante,
+                \item soit $i^\star_{T}=0$ soit $T'[i^\star_{T}-1] < T[i^\star_{T}]$.
+            \end{itemize}
+        \end{questionpartie}
+        \begin{questionpartie}
+            Écrivez un algorithme de complexité optimale (vous le justifierez) qui prend en entrée un élément $T$ de $\mathcal{T}_n$ et rend $i^\star_{T}$. Il sera de signature~:
+              \verb|i_star(T: [entier]) → entier| 
+        \end{questionpartie}
+        \begin{questionpartie}
+            Démontrez que si $T[\;:i^\star_{T}] = U[\;:i^\star_{T}]$ pour deux éléments $T$ et $U$ de $\mathcal{T}_n$, alors $T \geq U$.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Soit $T \in \mathcal{T}_n$. Quel est le plus petit élément $U$ de $\mathcal{T}_n$ tel 
+            que $T[\;:i^\star_{T}] = U[\;:i^\star_{T}]$ ?.
+        \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Successeur]
+        \begin{questionpartie}
+            Utilisez $i^\star_{T}$ pour déterminer le successeur (pour l'ordre lexicographique) dans $\mathcal{T}_n$ d'un élément $T \in \mathcal{T}_n$.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Écrivez un algorithme de complexité optimale (vous le justifierez) qui prend en entrée un élément $T$ de $\mathcal{T}_n$ et rend son successeur (pour l'ordre lexicographique) dans $\mathcal{T}_n$. Il sera de signature~:
+              \verb|suivant(T: [entier]) → [entier]| 
+        \end{questionpartie}
+        \begin{questionpartie}
+            En déduire un algorithme itératif dont vous donnerez la complexité permettant d'afficher à l'écran tous les éléments de $\mathcal{T}_n$.
+        \end{questionpartie}
+    \end{partie}
+\end{exo}
+\begin{exo}[Récursif]
+    \begin{partie}[Aléatoire]
+        Soit l'algorithme suivant de Fisher et Yates (1938), aussi appelé {\em mélange de Knuth}.
+        \begin{tabbing}
+            ccc\=cccc\=cccc\=cccc\=cccc\=cccc\=\kill
+            \textbf{algorithme} \textsc{mélange}($T$){\bf :}\\
+            \>\textbf{Pour chaque} $i$ de [0, n-2] {\bf :}\\
+            \> \>\vline $\,$ $j$ ← un entier aléatoire de [i, n-1] \\
+            \> \>\vline $\,$ $T[i]$, $T[j]$ ←$T[j]$, $T[i]$
+        \end{tabbing}
+
+        \begin{questionpartie}
+            Donnez la complexité de cet algorithme.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Démontrez que \verb|mélange(T)| avec $T=[0, n-1]$ va modifier $T$ en une permutation $T'$ de $\mathcal{T}_n$ de manière uniforme (la probabilité que $T$ soit modifiée en $T'$ est la même pour tout élément $T'$ de $\mathcal{T}_n$).
+        \end{questionpartie}
+        \begin{questionpartie}
+            Transformez l'algorithme \verb|mélange(T)| en un algorithme récursif de signature :\\ \verb|mélange_rec(T: [entier], i: entier)|, de telle sorte que \verb|mélange(T) = mélange_rec(T, 0)| (la variable interne $i$ de la boucle \verb|pour chaque| devient un paramètre de la fonction). 
+        \end{questionpartie}
+        \begin{questionpartie}
+            En déduire un algorithme récursif permettant d'afficher à l'écran tous les éléments de $\mathcal{T}_n$.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Explicitez les sorties à l'écran de votre algorithme Lorsqu'il génère $\mathcal{T}_3$.
+        \end{questionpartie}
+
+    \end{partie}
+\end{exo}
+
+\begin{exo}[Optimal]
+    Nous allons dans cette partie examiner un algorithme optimal que l'on doit à Heap.
+        \begin{tabbing}
+            ccc\=cccc\=cccc\=cccc\=cccc\=cccc\=\kill
+            \textbf{algorithme} \textsc{heap}($T$, $k$){\bf :}\\
+            \>\textbf{si} $k = 1$ {\bf :}\\
+            \> \>\vline $\,$ affiche $T$ à l'écran  \\
+            \>\textbf{sinon} {\bf :}\\
+            \> \>\vline $\,$ \textsc{heap}($T$, $k-1$)\\
+            \> \textbf{Pour chaque} $i$ de [0, k-2] {\bf :}\\
+            \> \>\vline $\,$\textbf{si} $k$ est pair {\bf :}\\
+            \> \>\vline \>\vline $\,$ $T[i]$, $T[k-1]$ ←$T[k-1]$, $T[i]$\\
+            \> \>\vline $\,$\textbf{sinon} {\bf :}\\
+            \> \>\vline \>\vline $\,$ $T[0]$, $T[k-1]$ ←$T[k-1]$, $T[0]$\\
+            \> \>\vline $\,$ \textsc{heap}($T$, $k-1$)\\
+        \end{tabbing}
+
+    \begin{partie}[Vérification]
+        \begin{questionpartie}
+            Quels paramètres utiliser pour que l'algorithme $\textsc{heap}$ affiche à l'écran les éléments de $\mathcal{T}_n$ ?
+        \end{questionpartie}
+        \begin{questionpartie}
+            Explicitez les sorties à l'écran de votre algorithme Lorsqu'il génère $\mathcal{T}_3$.
+        \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Propriétés]
+        Soit $T$ un tableau. On va étudier ses modifications près exécution de l'algorithme. Pour cela, on note $T'$ le tableau $T$ après l'exécution de $\textsc{heap}(T, k)$.
+            \begin{questionpartie}
+                Démontrez que  $T[k:\;] = T'[k:\;]$
+            \end{questionpartie}
+        \begin{questionpartie}
+                Démontrez que :
+                \begin{itemize}
+                    \item si $k$ est impair alors $T'[\;:k] = T[\;:k]$
+                    \item si $k$ est pair alors $T'[\;:k] = [T[k-1]] + T[1:k-1]$ ($T'[\;:k]$ est une permutation circulaire de un élément du tableau initial)
+            \end{itemize}
+        \end{questionpartie}
+        \begin{questionpartie}
+            Démontrez que lors de l'appel de $\textsc{heap}(T, k)$, avec $k>1$, chaque élément de $T[\;:k]$ sera placé exactement une fois en position $T[k-1]$ lors des différents appels $\textsc{heap}(T, k-1)$
+        \end{questionpartie}
+        \begin{questionpartie}
+            En déduire que l'algorithme $\textsc{heap}$ permet d'afficher à l'écran tous les éléments de $\mathcal{T}_n$.
+        \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Optimalité]
+        \begin{questionpartie}
+            Démontrez que lors de l'exécution de $\textsc{heap}(T, k)$, il y a eu exactement $k!$ échanges. En déduire la complexité de l'affichage à l'écran de tous les éléments de $\mathcal{T}_n$.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Proposez une version itérative de l'algorithme $\textsc{heap}$.
+        \end{questionpartie}
+
+    \end{partie}
+\end{exo}
+
+\end{document}

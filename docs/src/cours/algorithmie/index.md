@@ -292,7 +292,7 @@ Comparons l'usage les différentes structures de stockage de données en notre p
 ### Complexité de structures
 
 {% aller %}
-[Complexités d'une structure et de ses méthodes](./structures-complexité){.interner}
+[Complexités d'une structure et de ses méthodes](./structures-complexité){.interne}
 {% endaller %}
 
 Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire la méthode append des listes.
@@ -305,10 +305,11 @@ C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que 
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
-### On s'entraîne : structures de listes
+### On s'entraîne : structures
 
-- skip list
-- listes triées : ens complexité amortie.
+{% aller %}
+[Utilisation de structures](./projet-structures){.interne}
+{% endaller %}
 
 ## <span id="partie-3"></span>Partie III : problèmes
 
@@ -359,6 +360,144 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 <!-- ### Jolis problèmes
 
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
+
+## <span id="2-3-sum"></span>2-sum et 3-sum
+
+> - **Utilité** : un classique des concours !
+> - **Difficulté** : dur
+
+> TBD un classique des concours, sans aucune indications bien sur.
+
+{% info %}
+
+3-SUM est la base de bien d'autres problèmes. On en reparlera bien plus tard, mais ce problème est une des bases algorithmique de [la géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique).
+
+{% endinfo %}
+
+### <span id="2-sum"></span>2-SUM
+
+{% note "Problème" %}
+
+- **nom** : 2-SUM
+- **données** : Un tableau T d'entiers relatifs
+- **question** : Existe-t-il deux indices $i$ et $j$ (ils peuvent être égaux) tels que $T[i] + T[j] = 0$ ?
+{% endnote %}
+
+On a déjà vu une variante de ce problème lorsque l'on a étudié les dictionnaires. Si vous ne vous en rappelez plus, refaites le :
+
+{% exercice %}
+[Exercice fondamental des dictionnaires](../structure-dictionnaire/tableau-associatif/#exercice-fondamental){.interne}
+{% endexercice %}
+
+Regardons maintenant ce problème d'un point de vue complexité spatiale et temporelle.
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$
+- spatiale en $\mathcal{O}(1)$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : brute force
+
+{% enddetails %}
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}\ln(T.\mbox{\small longueur}))$
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : tri
+
+{% enddetails %}
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur})$ en moyenne
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : dictionnaire
+
+{% enddetails %}
+
+Un nouvel algorithme :
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité $\mathcal{O}(\max(T))$.
+
+Est-ce réaliste ?
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : bucket sort de la valeur absolue. Dès que l'on rencontre la case la deuxième fois on sort.
+> TBD attention : même si on ne visite pas toutes les cases du tableau il faut les initialiser à 0 (le contenu de la mémoire est inconnu à l'affectation).
+
+> TBD complexité spatiale $\mathcal{O}(\max(T))$ ce qui est déraisonnable car cela peut être aussi grand que l'on veut.
+> TBD c'est même exponentiel en la taille du tableau ($\log_2(n)$ bits pour stocker l'entier $n$).
+> TBD : même si la complexité de créer un tableau de taille arbitraire est en  $\mathcal{O}(2)$, et que l'on ne fait de boucle que sur la taille du tableau, l'algorithme est tout de même en $\mathcal{O}(\max(T))$ car il faut initialiser les cases : à la création d'un tableau ses valeurs sont indéterminées.
+
+{% enddetails %}
+
+### <span id="3-sum"></span>3-SUM
+
+{% note "Problème" %}
+
+- **nom** : 3-SUM
+- **données** : Un tableau T d'entiers relatifs
+- **question** : Existe-t-il trois indices $i$, $j$ et $k$ (ils peuvent être égaux) tel que $T[i] + T[j] + T[k] = 0$ ?
+{% endnote %}
+
+{% exercice %}
+Donnez une solution au problème 3-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^3)$
+- spatiale en $\mathcal{O}(1)$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : brute force
+
+{% enddetails %}
+
+{% exercice %}
+Donnez une solution au problème 3-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$ en moyenne
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : dictionnaire
+
+{% enddetails %}
+
+Le dictionnaire est souvent la meilleure réponse en moyenne, mais ce n'est pas le cas avec un 3-SUM :
+
+{% exercice %}
+Donnez une solution au problème 3-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : un tri puis on cherche en $\mathcal{O}(T.\mbox{\small longueur})$ s'il existe i et j pour lesquels $T[i] + T[j] = -T[k]$ pour k allant de 0 à la taille du tableau ($\mathcal{O}(T.\mbox{\small longueur})$ boucles)
+
+{% enddetails %}
 
 #### Fonction d'Ackermann
 
@@ -566,6 +705,7 @@ Cet intermède permet de préparer la troisième partie
 ## <span id="partie-4"></span>Partie IV : structure de données avancées
 
 > TBD
+> <https://www.youtube.com/watch?v=6fnmXX8RK0s>
 
 - structure hiérarchique (arbre planté)
   - AVL

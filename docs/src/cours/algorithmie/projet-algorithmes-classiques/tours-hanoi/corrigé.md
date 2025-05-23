@@ -70,4 +70,10 @@ C(n) = \sum_{i=0}^{n-1}2^i + 2^n\cdot C(0) = \sum_{i=0}^{n-1}2^i
 $$
 </div>
 
-La somme des $n>0$ premières puissances de 2 est à savoir facilement retrouver (c'est [une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique#Terme_g%C3%A9n%C3%A9ral)) et vaut $2^{n}-1$.
+On retrouve un résultat classique maintenant (la somme des $n>0$ premières puissances de 2 vaut $2^{n}-1$) qui donne au final :
+
+<div>
+$$
+C(n) = \Theta(2^n)
+$$
+</div>

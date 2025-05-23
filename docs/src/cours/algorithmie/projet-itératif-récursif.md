@@ -608,7 +608,7 @@ Avec le type `A` étant un couple d'entier et `B` le type entier.
 
 {% enddetails %}
 
-### Transformer en une forme terminale
+### <span id="transformer-rec-terminale"></span>Transformer en une forme terminale
 
 La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux paramètres. Cela semble très restrictif. Par exemple notre [fonction factorielle récursive](../prouver-un-algorithme/#algorithme-factorielle-rec) n'est pas sous forme terminale puisque l'on fait un calcul en plus de la récursion :
 

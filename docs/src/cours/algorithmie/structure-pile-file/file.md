@@ -76,10 +76,6 @@ structure File<Type>:
             rendre Faux
 ```
 
-{% info %}
-L'opérateur `%`{.language-} est le modulo.
-{% endinfo %}
-
 On voit facilement que :
 
 {% note "**Proposition**" %}

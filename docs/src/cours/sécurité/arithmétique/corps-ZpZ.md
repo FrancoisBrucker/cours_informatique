@@ -18,7 +18,7 @@ On définit $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$ comme l'[anneau](https://fr.wik
   - l'opposé de $x$ est $n-x$
 - la multiplication est la multiplication usuelle modulo $n$
   - l'élément neutre est 1
-- $x \mod n$ vaut le reste de la division entière de $x$ par $n$
+- $x \mathbin{\small\\%} n$ vaut le reste de la division entière de $x$ par $n$
 
 Si $n$ est premier, $\mathbb{Z}/n\mathbb{Z}$ est même un corps :
 
@@ -72,7 +72,7 @@ On peut même stocker les valeurs des exposants trouvés dans un dictionnaire po
 Lorsque les nombres sont stockés sur $k$ bits, [la complexité totale de cet algo est donc $\mathcal{O}(k^3)$](../nombres#exponentiation){.interne}.
 
 {% note "**Proposition**" %}
-Si $p$ est premier : $a^{p-1} = 1 \mod p$.
+Si $p$ est premier : $a^{p-1} = 1 \mathbin{\small\\%} p$.
 {% endnote %}
 {% details "preuve" %}
 
@@ -89,7 +89,7 @@ Cette propriété est connue sous le nom de [petit théorème de Fermat](https:/
 [Logarithme discret](https://fr.wikipedia.org/wiki/Logarithme_discret)
 {% endlien %}
 
-On ne connaît pas d'algorithme efficace pour trouver $x$ tel que $g^x =y \mod n$.
+On ne connaît pas d'algorithme efficace pour trouver $x$ tel que $g^x =y \mathbin{\small\\%} n$.
 
 Le seul algorithme connut est le brute-force et de tester tous les éléments de 0 à $n-1$.
 
@@ -97,7 +97,7 @@ Notez que cette équation n'a pas forcément de solution.
 
 > TBD exemple
 
-Pour garantir l'existence de solutions à l'équation $g^x =y \mod p$, il suffit que :
+Pour garantir l'existence de solutions à l'équation $g^x =y \mathbin{\small\\%} p$, il suffit que :
 
 - $p$ est premier
 - $g$ soit un générateur du groupe cyclique $(\mathbb{Z}/n\mathbb{Z}^\star, \cdot)$

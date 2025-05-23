@@ -151,9 +151,9 @@ La complexité de l'algorithme est en $\mathcal(O)(n^2)$.
     0100 |      | 
 ```
 
-On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mod 0b1011 = 100$
+On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mathbin{\small\\%} 0b1011 = 100$
 
-$37 / 11 = 3$ et $37 \mod 11 = 4$
+$37 / 11 = 3$ et $37 \mathbin{\small\\%} 11 = 4$
 
 ## <span id="exponentiation">Exponentiation
 
@@ -235,7 +235,7 @@ Pour une étude étendu de l'algorithme d'Euclide, Voir Knuth tome 2 (*Art of co
 
 ## Algorithme d'Euclide Étendu
 
-- Si $a > b > 0$ on a $\text{pgcd}(a, b) = \text{pgcd}(b, a \mod b)$
+- Si $a > b > 0$ on a $\text{pgcd}(a, b) = \text{pgcd}(b, a \mathbin{\small\\%} b)$
 - si $a > b = 0$ on a $\text{pgcd}(a, 0) = a$
 
 Soit alors la suite de division euclidienne définies telles que:

@@ -140,6 +140,9 @@ Notez qu'il faut initialiser le cache et donc avoir une opération préalable de
 
 ## Exemples
 
+> TBD séparer exemple de exercices.
+> TBD rendu de piece par programmation dynamique
+
 ### Déplacement optimaux
 
 {% lien %}

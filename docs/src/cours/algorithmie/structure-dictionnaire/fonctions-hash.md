@@ -113,7 +113,7 @@ La fonction modulo (le reste de la division entière) :
 $$
 \begin{array}{ccccc}
 f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
- & & x & \mapsto & f(x) = x \mod m \\
+ & & x & \mapsto & f(x) = x \mathbin{\small\\%} m \\
 \end{array}
 $$
 </div>
@@ -124,19 +124,19 @@ Sous certaines conditions, elle respecte bien les 3 propriétés d'une fonction 
 
 #### Déterministe
 
-Comme $a \mod m$ est égal au reste de la division entière de $a$ par $m$ son calcul est bien déterministe.
+Comme $a \mathbin{\small\\%} m$ est égal au reste de la division entière de $a$ par $m$ son calcul est bien déterministe.
 
 #### Facilement calculable
 
 Même lorsque les objets deviennent grand, le calcul du modulo peut se faire aisément. En effet le fait que :
 
-- $(a + b) \mod m$ = $((a \mod m) + (b\mod m)) \mod m$
-- $(a \times b) \mod m$ = $((a \mod m) \times (b\mod m)) \mod m$
+- $(a + b) \mathbin{\small\\%} m$ = $((a \mathbin{\small\\%} m) + (b\mathbin{\small\\%} m)) \mathbin{\small\\%} m$
+- $(a \times b) \mathbin{\small\\%} m$ = $((a \mathbin{\small\\%} m) \times (b\mathbin{\small\\%} m)) \mathbin{\small\\%} m$
 
 Par exemple :
 
-- $7 \mod 3 = (4 \mod 3) + (3 \mod 3) = 1 + 0 = 1$
-- $4 \times 3 \mod 3 = (4 \mod 3) \times (3 \mod 3) = 1 \times 0 = 0$
+- $7 \mathbin{\small\\%} 3 = (4 \mathbin{\small\\%} 3) + (3 \mathbin{\small\\%} 3) = 1 + 0 = 1$
+- $4 \times 3 \mathbin{\small\\%} 3 = (4 \mathbin{\small\\%} 3) \times (3 \mathbin{\small\\%} 3) = 1 \times 0 = 0$
 
 Ce qui permet de calculer le modulo _par morceau_.
 
@@ -174,8 +174,8 @@ Et donc :
 <div>
 $$
 \begin{array}{lcl}
-n \mod m &=&  (\sum_{i=0}^l n_i2^{ki}) \mod m \\
-&=& (\sum_{i=0}^l ((n_i \mod m)\cdot ((2^{k} \mod m)^i \mod m) \mod m)) \mod m
+n \mathbin{\small\\%} m &=&  (\sum_{i=0}^l n_i2^{ki}) \mathbin{\small\\%} m \\
+&=& (\sum_{i=0}^l ((n_i \mathbin{\small\\%} m)\cdot ((2^{k} \mathbin{\small\\%} m)^i \mathbin{\small\\%} m) \mathbin{\small\\%} m)) \mathbin{\small\\%} m
 \end{array}
 $$
 </div>
@@ -207,7 +207,7 @@ Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme q
 
 Un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$.
 
-Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur car $(k \times p) \mod (p \times q) = (k \mod q) \times p$.
+Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur car $(k \times p) \mathbin{\small\\%} (p \times q) = (k \mathbin{\small\\%} q) \times p$.
 
 De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme. Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :
 

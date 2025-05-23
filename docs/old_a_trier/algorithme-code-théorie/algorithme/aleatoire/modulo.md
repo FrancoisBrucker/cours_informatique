@@ -14,14 +14,14 @@ Pour générer une suite de nombres entre 0 et $m-1$, on a coutume d'utiliser la
 
 <div>
 $$
-x_{i+1} = a \cdot x_i + c \mod{m}
+x_{i+1} = a \cdot x_i + c \mathbin{\small\\%}{m}
 $$
 </div>
 
 La graine est le nombre $x_0$.
 
 {% note "**proposition**" %}
-Montrer que la suite $(x_i)_{i \geq 0}$ telle que $x_{i+1} = a \cdot x_i + c \mod{m}$ est périodique quelque soient $a$, $c$, $m$ et $x_0$ et que sa période est au plus $m$
+Montrer que la suite $(x_i)_{i \geq 0}$ telle que $x_{i+1} = a \cdot x_i + c \mathbin{\small\\%}{m}$ est périodique quelque soient $a$, $c$, $m$ et $x_0$ et que sa période est au plus $m$
 {% endnote %}
 {% details "preuve", "open" %}
 

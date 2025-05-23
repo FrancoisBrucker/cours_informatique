@@ -170,7 +170,7 @@ xxx...
 On a donc que $n = k \cdot n_c + l$ ce qui donne les relations suivantes :
 
 - $n \div n_c = k$ ($15 \div 6 = 2$)
-- $n \mod n_c = l$ ($15 \mod 6 = 3$)
+- $n \mathbin{\small\\%} n_c = l$ ($15 \mathbin{\small\\%} 6 = 3$)
 
 #### Question 6
 

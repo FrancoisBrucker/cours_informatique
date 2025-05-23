@@ -16,14 +16,14 @@ Nous allons illustrer chaque méthode en utilisant l'algorithme `tous`{.language
 
 ## Exemple du compteur binaire
 
-Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$.
+Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$. L'algorithme suivant est la variante itérative de [l'algorithme vu en exercice](../../projet-algorithmes-classiques/compteur-binaire/#algorithme-compteur-binaire-rec){.interne}
 
 <span id="algorithme-compteur-binaire"></span>
 
 Soit lors l'algorithme suivant :
 
 ```pseudocode
-fonction successeur(N: [entier]) → vide:
+fonction successeur(N: [bit]) → vide:
     i ← N.longueur - 1
 
     tant que (i ≥ 0) et (N[i] == 1):
@@ -33,7 +33,7 @@ fonction successeur(N: [entier]) → vide:
     si i ≥ 0:
         N[i] ← 1
 
-algorithme tous(n) → vide:
+algorithme tous(n: entier) → vide:
     N ← un tableau de taille n
     N[:] ← 0
 

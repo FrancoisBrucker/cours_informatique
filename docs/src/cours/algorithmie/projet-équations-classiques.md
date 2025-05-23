@@ -207,3 +207,52 @@ $$
 </div>
 
 {% enddetails %}
+
+Terminons cette partie avec un piège classique dans lequel tombent (pratiquement tous) les débutants :
+
+{% exercice %}
+
+Quelle équation de complexité $C(n)$ vérifie l'algorithme suivant ?
+
+```pseudocode
+algorithme f(n: entier) → entier:
+    si n < 2:
+        rendre 1
+    rendre f(n // 2) * f(n // 4)
+```
+
+Calculer sa complexité via un encadrement et en utilisant les équations précédentes
+{% endexercice %}
+{% details "corrigé" %}
+
+Le piège se trouve dans la troisième ligne de l'algorithme. Elle consiste en :
+
+- le calcul de $f(n//2)$
+- le calcul de $f(n//4)$
+- la multiplication des deux valeurs obtenues
+
+Cette ligne est donc de complexité $C(n//2) + C(n//4) + \mathcal{O}(1)$.
+
+On a donc l'équation suivante à résoudre :
+
+<div>
+$$
+\begin{cases}
+C(n) = \mathcal{O}(1) + C(\frac{n}{2}) + C(\frac{n}{4})\\
+C(1) = \mathcal{O}(1)
+\end{cases}
+$$
+</div>
+
+La complexité est croissante, on peut donc écrire :
+
+<div>
+$$
+\begin{array}{lcl}
+\mathcal{O}(1) + 2C(\frac{n}{4}) &\leq C(n) \leq& \mathcal{O}(1) + 2C(\frac{n}{2})
+\end{array}
+$$
+</div>
+
+L'équation de gauche se résolvant exactement de la même manière que celle de droite on obtient $\mathcal{O}(n)  \leq C(n) \leq \mathcal{O}(n)$, donc : $C(n) = \mathcal{O}(n)$.
+{% enddetails %}

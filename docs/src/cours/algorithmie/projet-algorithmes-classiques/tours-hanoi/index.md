@@ -14,15 +14,29 @@ eleventyComputed:
 [Corrigé](./corrigé){.interne}
 {% endlien %}
 
-Les _tours de Hanoï_ sont un célèbre casse tête inventé par Édouard Lucas qui consiste à déplacer $n$ disques de diamètres différents d'une tour de _"départ"_ à une tour d' _"arrivée"_ en passant par une tour _"intermédiaire"_, tout en respectant les règles suivantes :
+[Les _tours de Hanoï_](https://fr.wikipedia.org/wiki/Tours_de_Hano%C3%AF) sont un célèbre casse tête inventé par Édouard Lucas.
+
+Il consiste à déplacer $n$ disques de diamètres différents d'une tour de _"départ"_ à une tour d' _"arrivée"_ en passant par une tour _"intermédiaire"_, tout en respectant les règles suivantes :
 
 - on ne peut déplacer qu'un disque à la fois
 - on ne peut placer un disque sur un disque plus petit que lui.
 
 On suppose que cette dernière règle est également respectée dans la configuration de départ.
 
-Donnez un algorithme récursif permettant de résoudre le problème. Quelle est sa complexité ? Peut-on faire mieux ?
-
 {% lien %}
-<https://fr.wikipedia.org/wiki/Tours_de_Hano%C3%AF>
+[Une interface pour jouer aux tours de Hanoï](http://championmath.free.fr/tourhanoi.htm).
+
+Déplacez les cylindres par glisser/déposer.
 {% endlien %}
+
+Essayons de résoudre ce problème de façon optimale.
+
+{% faire %}
+Donnez un algorithme récursif permettant de résoudre le problème.
+{% endfaire %}
+{% faire %}
+Quelle est sa complexité ?
+{% endfaire %}
+{% faire %}
+Peut-on faire mieux ?
+{% endfaire %}

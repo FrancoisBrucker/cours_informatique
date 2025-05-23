@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On peut facilement créer des matrices uniquement avec des tableaux. Ce type est tellement utilisé en algorithme qu'on le considérera souvent comme un type de base.
+On peut facilement créer des matrices uniquement avec des tableaux (on l'a déjà un peu expérimenté avec [le tri par base](../../projet-algorithmes-classiques//tris-spéciaux/#tri-base){.interne} où les données était des tableaux et surtout [le problème des 8 reines](../../projet-algorithmes-classiques/8-reines){.interne} Ce type est tellement utilisé en algorithme qu'on le considérera souvent comme un type de base.
 
 Pour cela on utilisera le paradigme suivant :
 
@@ -141,7 +141,7 @@ C'est une bijection puisque :
 
 <div>
 $$
-f^{-1}(k) = ((k \\\;\mbox{ div } n) + 1, (k\mod n) + 1)
+f^{-1}(k) = ((k \\\;\mbox{ div } n) + 1, (k\mathbin{\small\\%} n) + 1)
 $$
 </div>
 
@@ -188,7 +188,7 @@ On a que $c_1 - 1 = f(c_1, \dots, c_k) \\\;\mbox{ div } \prod_{1 < j}d_j$ et on 
 En posant :
 
 - $K_1 = f(c_1, \dots, c_k)$
-- $K_{i+1} = K_i \mod \prod_{i < j}d_j$
+- $K_{i+1} = K_i \mathbin{\small\\%} \prod_{i < j}d_j$
 
 On a $c_i = K_i \\\;\mbox{ div } \prod_{i < j}d_j$
 

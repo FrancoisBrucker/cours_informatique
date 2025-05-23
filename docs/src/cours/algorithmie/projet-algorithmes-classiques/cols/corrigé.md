@@ -12,7 +12,7 @@ eleventyComputed:
 
 ## Existence
 
-On donne trois preuves possibles
+On donne trois preuves possibles.
 
 ### En reprenant la définition
 
@@ -47,17 +47,17 @@ On montre par récurrence sur la taille $n$ du tableau qu'il existe toujours un 
 
 La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :
 
-```python/
-def trouve(T):
-    if T[0] <= T[1]:
-        return 0
+```pseudocode
+algorithme trouve(T: [entier]) → entier:
+    si T[0] <= T[1]:
+        rend 0
 
-    if T[-1] <= T[-2]:
-        return len(T) - 1
+    si T[-1] <= T[-2]:
+        rendre T.longueur - 1
 
-    for i in range(1, len(T) - 1):
-        if T[i] <= min(T[i-1], T[i + 1]):
-            return i
+    pour chaque i de [1, T.longueur - 1[:
+        si T[i] <= min(T[i-1], T[i + 1]):
+            rendre i
 
 ```
 
@@ -75,19 +75,19 @@ $$
 C(n) = \mathcal{O}(1) + \mathcal{O}(1) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1)) = \mathcal{O}(n)
 $$
 
-On peut aussi utiliser la preuve précédente et _simplifier_ la boucle `for`{.language-} en gardant la même complexité :
+On peut aussi utiliser la preuve précédente et _simplifier_ la boucle `pour chaque`{.language-} en gardant la même complexité :
 
-```python
-def trouve(T):
-    if T[0] <= T[1]:
-        return 0
+```pseudocode
+algorithme trouve(T: [entier]) → entier:
+    si T[0] <= T[1]:
+        rend 0
 
-    if T[-1] <= T[-2]:
-        return len(T) - 1
+    si T[-1] <= T[-2]:
+        rendre T.longueur - 1
 
-    for i in range(1, len(T) - 1):
-        if T[i] <= T[i + 1]:
-            return i
+    pour chaque i de [1, T.longueur - 1[:
+        si T[i] <= T[i + 1]:
+            rendre i
 
 ```
 
@@ -95,9 +95,9 @@ def trouve(T):
 
 La preuve d'existence du 1 montre que pour tout $i + 1 < j$, si $T[i] > T[i+1]$ et $T[j] > T[j-1]$, alors il existe un indice $i < k < j$ tel que $k$ soit un col de la matrice.
 
-L'invariant de boucle de la boucle `while`{.language-} est alors :
+L'invariant de boucle de la boucle `tant que`{.language-} est alors :
 
-> **Invariant de boucle :** A la fin de chaque itération de la boucle `while`{.language-}, soit :
+> **Invariant de boucle :** A la fin de chaque itération de la boucle `tant que`{.language-}, soit :
 >
 > - `T[milieu]`{.language-} est un col
 > - `T[milieu]`{.language-} n'est pas un col et :
@@ -112,11 +112,11 @@ A la fin de la première itération, on a soit :
 
 La même démonstration fonctionne à l'identique à la fin de l'itération $i+1$ si l'invariant est vrai à la fin de l'itération $i$.
 
-Comme `fin - début >= 0` et diminue strictement à chaque itération de la boucle `while`{.language-}, il arrivera **forcément** un moment où `milieu`{.language-} sera un col.
+Comme `fin - début >= 0` et diminue strictement à chaque itération de la boucle `tant que`{.language-}, il arrivera **forcément** un moment où `milieu`{.language-} sera un col.
 
 ## Complexité
 
-La procédure de la boucle `while`{.language-} est identique à la recherche dichotomique puisque l'on se place toujours au milieu de l'espace de recherche. Le cours nous indiquant que la complexité de la recherche dichotomique est $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$, on en conclut que l'algorithme `trouve_vite(T)`{.language-} est également en $\mathcal{O}(\ln(n))$ opérations.
+La procédure de la boucle `tant que`{.language-} est identique à la recherche dichotomique puisque l'on se place toujours au milieu de l'espace de recherche. Le cours nous indiquant que la complexité de la recherche dichotomique est $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$, on en conclut que l'algorithme `trouve_vite(T)`{.language-} est également en $\mathcal{O}(\ln(n))$ opérations.
 
 ## Complexité du problème
 
@@ -125,8 +125,6 @@ Il existe des tableaux ayant tous un unique col en position $i$ pour tout $0 \le
 Comme l'algorithme `trouve_vite(T)`{.language-} est de complexité $\mathcal{O}(\ln(n))$, c'est borne min est atteinte.
 
 ## Généralisation
-
-### Existence
 
 Une matrice avec ses lignes croissantes et ses colonnes décroissantes n'a pas de col.
 
@@ -137,6 +135,3 @@ On peut stocker les maximaux des colonnes et les minimaux des lignes dans deux l
 ### Optimisation impossible
 
 L'optimisation trouve un col de ligne, mais pas forcément le bon pour la matrice.
-
-1. montrez qu'il n'existe pas forcément de col à une matrice
-2. donnez un algorithme linéaire en la taille de la matrice pour trouver un col s'il existe

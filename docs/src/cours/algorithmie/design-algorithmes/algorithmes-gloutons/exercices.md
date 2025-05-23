@@ -117,7 +117,7 @@ Le raisonnement précédent montre que l'on peut construire une solution optimal
 
 {% enddetails %}
 
-On suppose que le prix de l'essence à la station $i$ vaut $p_i$.
+On suppose que le prix de $l$ litres d'essence à la station $i$ vaut $l \cdot p_i$.
 
 {% exercice  "**Prix fluctuant**" %}
 Donnez un algorithme glouton optimal permettant de réaliser le parcours au prix minimum.
@@ -174,6 +174,12 @@ station_essence_achat = [K.count(i) for i in range(n)]
 La preuve de l'optimalité vient du fait que l'essence mise à la station $i$ permet de faire la distance allant de $d_i$ à $d_i + L$. On a gardé que les kilomètres ne pouvant pas être couvert par une station ayant un prix inférieur.
 
 {% enddetails %}
+
+On suppose que le prix de $l$ litres d'essence à la station $i$ vaut $l^2 \cdot p_i$.
+
+> TBD montrer que le glouton ne fonctionne plus.
+> TBD résolution par prog dynamique.
+> TBD polytechnique 2025 (oral)
 
 ### Allocation de salles de cinéma
 

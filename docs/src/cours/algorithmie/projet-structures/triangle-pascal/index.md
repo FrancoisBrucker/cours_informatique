@@ -10,6 +10,157 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
+
+<div>
+$$
+\binom{n}{k} = \binom{n-1}{k-1} \mathrel{+} \binom{n-1}{k}
+$$
+</div>
+
+et :
+
+<div>
+$$
+\binom{n}{0} = \binom{n}{n} = 1
+$$
+</div>
+
+## Algorithme récursif
+
+{% faire %}
+
+Après avoir examiné les conditions d'arrêt, donner un algorithme récursif permettant de calculer le coefficient binomial.
+
+{% endfaire %}
+
+## Algorithme itératif
+
+Pas de récursion terminale garantie si double récursion. Mais on peut tout de même ici en donner une version itérative. Avant de résoudre l'exercice suivant, regardez comment vous faisiez au lycée en remplissant petit à petit chaque ligne d'une matrice. La ligne $n$ correspond aux coefficients $\binom{n}{k}$ pour tout $0\leq k \leq n$, et vous la remplissiez en utilisant les lignes précédentes avec l'équation. Mais si, rappelez-vous :
+
+{% lien %}
+[Calculer un coefficient binomial : triangle de Pascal - Terminale](https://www.youtube.com/watch?v=6JGrHD5nAoc)
+{% endlien %}
+
+Pour ces algorithme on utilisera un tableau de tableau comme un type matrice (on étudiera plus précisément défini lorsque l'on a parlé de pseudo-code. Une matrice $M$ est un tableau de (tableaux d'entiers)de telle sorte que :
+
+- $M$ est de type `[[entier]]`{.language-}
+- $M[i]$ est la (i+1) ème ligne de la matrice
+- $M[i][j]$ est le (j+1) ème élément de la (i+1) ème ligne de la matrice.
+
+Le code suivant crée une matrice triangulaire inférieure à $n$ lignes valant 1 à toutes les cases du tableau :
+
+```pseudocode
+algorithme crée_matrice(n: entier) → [[entier]]
+matrice ← un tableau de [entier] de taille n
+
+pour chaque i de [1, n]:
+    ligne ← un tableau d'entiers de taille i
+
+    matrice[i-1] ← ligne
+    pour chaque j de [1, i]:
+        ligne[j-1] ← 1 
+```
+
+Utiliser le code précédent pour résoudre l'exercice suivant :
+
+{% exercice %}
+En créant itérativement la matrice triangulaire inférieure, donner une version itérative de l'algorithme calculant le triangle de Pascal. Sa signature devra être :
+
+```pseudocode
+algorithme binom_matrice(n: entier) → [[entier]]:
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Première version qui calcule toute la matrice triangulaire inférieure :
+
+```pseudocode/
+algorithme binom_matrice(n: entier) → [[entier]]:
+    matrice ← un tableau de [entier] de taille n+1
+
+    pour chaque i de [0, n]:
+        ligne ← un tableau d'entiers de taille i+1
+
+        matrice[i] ← ligne
+        pour chaque j de [0, i]:
+            si (j == i) ou (j == 0):
+                ligne[j] ← 1
+            sinon:
+                précédent ← matrice[i-1]
+                ligne[j] ← précédent[j-1] + précédent[j]
+
+    rendre matrice
+```
+
+Il y a deux boucles imbriquées, donc deux invariants à trouver !
+
+L'invariant de la boucle 4-13 peut être :
+
+> **Invariant de la boucle 4-13** : `matrice[i-1]`{.language-} contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.
+
+Pour le prouver, il faut trouver un invariant à la boucle 8-13. Par exemple :
+
+> **Invariant de la boucle 8-13** : si `matrice[i-2]`{.language-} contient la $i-1$ème ligne de la matrice triangulaire inférieure de Pascal, alors `ligne`{.language-} contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.
+
+Ce dernier invariant est évidemment vrai par construction de la boucle (c'est la relation de récurrence). Une fois la boucle 8-13 prouvée, cela prouve l'invariant de la boucle 4-13.
+
+{% enddetails %}
+
+
+
+L'algorithme suivant est le dernier algorithme que nous avons créé pour calculer $\binom{n}{k}$.
+
+On va créer un algorithme qui rend uniquement la dernière ligne de la matrice :
+
+```pseudocode/
+algorithme binom_ligne(n: entier, k: entier) → [[entier]]:
+    courante ← un tableau d'entiers de taille k+1
+    précédente ← un tableau d'entiers de taille k+1
+
+    pour chaque i de [0, n]:
+        pour chaque j de [0, min(i, k)]:
+            précédente[j] ← courante[j]
+
+        pour chaque j allant de 0 à min(i, k):
+            si (j == i) ou (j == 0):
+                courante[j] ← 1
+            sinon:
+                courante[j] ← précédent[j-1] + précédent[j]
+
+    rendre courante[k]
+```
+
+Sa complexité temporelle est $\mathcal{O}(nk)$ et il nécessite deux tableaux de taille $k$ pour fonctionner.
+
+{% exercice %}
+En remplissant la ligne courante de droite à gauche montrez que l'on peut se passer de la ligne `précédente`{.language-} et n'utiliser qu'un seul tableau  de taille $k$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme binom_ligne(n: entier, k: entier) → [[entier]]:
+    courante ← un tableau d'entiers de taille k+1
+
+    pour chaque i de [0, n]:
+        de j=min(i, k) à j=0 par pas de -1:
+            si (j == i) ou (j == 0):
+                courante[j] ← 1
+            sinon:
+                courante[j] ← courante[j-1] + courante[j]
+
+    rendre courante[k]
+```
+
+L'algorithme devient _joli_, avec une seule boucle et un seul tableau.
+
+{% enddetails %}
+
+
+
+
 Le calcul du coefficient binomial se fait en utilisant [le triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal).
 
 Pour $n > p > 0$ :

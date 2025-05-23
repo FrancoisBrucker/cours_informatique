@@ -34,7 +34,8 @@ Les instructions liées à ces objets sont de deux ordres. On doit pouvoir :
 - **_opérer sur ces objets_** :
   - opérations sur les entiers et/ou réels :
     - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
-    - opérations usuelles : prendre la valeur entière, valeur absolue, le modulo
+    - opérations usuelles : prendre la valeur entière, valeur absolue,
+    - la division entière de deux nombre (`//`{.language-}) et le modulo (`%`{.language-})
     - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
   - opérations sur les caractères :
     - logique : égalité (avec le signe `==`{.language-})

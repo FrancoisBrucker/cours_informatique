@@ -33,3 +33,7 @@ Tests et examens pour l'année scolaire 2023/2024
 
 1. [DS 1](./ds-1){.interne}
 1. [DS 2](./ds-2){.interne}
+
+## Examen terminal
+
+[ET](./et){.interne}

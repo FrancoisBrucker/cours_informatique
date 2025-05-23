@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** [une complexité en moyenne](../../complexité-moyenne){.interne} qui est une moyenne probabiliste. 
+La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** [une complexité en moyenne](../../complexité-moyenne){.interne} qui est une moyenne probabiliste.
 
 De plus, lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.
 
