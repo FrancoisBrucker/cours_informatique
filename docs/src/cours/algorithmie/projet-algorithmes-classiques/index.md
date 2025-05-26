@@ -111,7 +111,7 @@ Des tris utiles dans des cas spécifiques, et dont la complexité semble plus pe
 
 ## pgcd
 
-> - **Utilité** : une [knutherie](https://fr.wikipedia.org/wiki/Donald_Knuth) sympathique mais pas indispensable
+> - **Utilité** : des résultats sympathiques mais pas indispensable
 > - **Difficulté** : moyen à dur
 
 {% aller %}

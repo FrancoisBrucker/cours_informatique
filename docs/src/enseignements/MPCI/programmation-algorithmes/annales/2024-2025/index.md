@@ -32,4 +32,5 @@ Tests et examens pour l'année scolaire 2023/2024
 
 ## Examen terminal
 
-> TBD
+1. [ET Algorithmie](./et-algo){.interne}
+2. [ET Code](./2025-05-26_L1S2_programmation_ET.pdf){.interne}
