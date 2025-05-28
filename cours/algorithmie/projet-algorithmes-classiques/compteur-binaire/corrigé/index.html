@@ -97,28 +97,27 @@
   
 
   <h2>Algorithme</h2>
-<p>Le successeur d'un élément est l'élément plus 1. La somme du dernier bit de n avec 1 fait alors soit :</p>
+<p>Le successeur d'un élément est l'élément plus 1. La somme du dernier bit de <code class="language-">N</code> avec 1 fait alors soit :</p>
 <ul>
 <li>1 si le dernier bit vaut 0</li>
 <li>10 si le dernier bit vaut 1</li>
 </ul>
 <p>Si la somme vaut 10, cela revient à réitérer le processus sur l'avant dernier bit.</p>
-<p>Donc on commence par regarder le bit n[i] en commençant par le dernier. S'il vaut :</p>
+<p>Donc on commence par regarder le bit <code class="language-">N[i]</code> en commençant par le dernier. S'il vaut :</p>
 <ul>
 <li>1 on le place à 0 et on décrémente i</li>
 <li>0 on le place à 1 et on stoppe.</li>
 </ul>
-<h2>Complexité</h2>
-<p>La complexité va dépendre du nombre d'éléments dans la liste en entré. Notons $N = len(n)$.</p>
-<p>On remarque (facilement) que cette complexité vaut $C(N) = K \cdot \mathcal{O}(1)$ où $K$ est le nombre de fois où l'on rentre dans la boucle.</p>
+<p>La complexité de l'algorithme va dépendre du nombre d'éléments dans la liste en entré. Notons $n = N.\mbox{\small longueur}$.</p>
+<p>On remarque (facilement) que cette complexité vaut $C(n) = K \cdot \mathcal{O}(1)$ où $K$ est le nombre de fois où l'on rentre dans la boucle <code class="language-">tant que</code>. D'où :</p>
 <ul>
-<li>complexité max : parcourt toute la liste (pour une liste uniquement constituée): $\mathcal{O}(N)$</li>
+<li>complexité (max) : parcourt toute la liste (pour une liste uniquement constituée): $\mathcal{O}(n)$</li>
 <li>complexité min : parcourt 1 seul élément de la liste (pour une liste se terminant par un 0): $\mathcal{O}(1)$</li>
 </ul>
 <h2>Complexité en moyenne</h2>
-<p>Séparons les $2^N$ nombres possibles en classes selon le nombre d'itérations dans la boucle :</p>
+<p>On suppose que chaque nombre décrit par $N$ peut apparaître de façon équiprobable. En posant $n = N.\mbox{\small longueur}$, séparons les $2^n$ nombres possibles en classes selon le nombre d'itérations dans la boucle :</p>
 <ul>
-<li>dernier élément vaut 0 : 0 itération. Vrai pour $2^N/2$ nombres. Probabilité de 1/2.</li>
+<li>dernier élément vaut 0 : 0 itération. Vrai pour $2^n/2$ nombres. Probabilité de 1/2.</li>
 <li>derniers éléments valent <code class="language-">[0, 1]</code> : 1 itération. Vrai pour $(2^N/2)/2 = 2^N/4$ nombres. Probabilité de 1/4.</li>
 <li>derniers éléments valent <code class="language-">[0, 1, 1]</code> : 2 itérations. Vrai pour $(2^N/4)/2 = 2^N/8$ nombres. Probabilité de 1/8.</li>
 <li>...</li>
@@ -131,31 +130,32 @@ $$
 W_\text{moy}(N) = \mathcal{O}(1) \cdot \sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}}
 $$
 </div>
+<p>On a vu que $\sum_{i=0}^{+\infty} i \cdot \frac{1}{2^{i}} = 2$, donc $\sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}} \leq \frac{1}{2}\sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i}} \leq \frac{1}{2}\sum_{i=0}^{+\infty} i \cdot \frac{1}{2^{i}} \leq 1$. Ceci montre que $W_\text{moy}(N) \leq \mathcal{O}(1)$.</p>
 <h2>Vérification expérimentale</h2>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
     K <span class="token operator">=</span> <span class="token number">0</span>
 
-    <span class="token keyword">while</span> i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>n<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         K <span class="token operator">+=</span> <span class="token number">1</span>
 
-        n<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
         i <span class="token operator">-=</span> <span class="token number">1</span>
 
     <span class="token keyword">if</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        n<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
 
     <span class="token keyword">return</span> K
 
 
-<span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
-    n <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> N
+    N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
     total <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        total <span class="token operator">+=</span> successeur<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        total <span class="token operator">+=</span> successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> total <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">**</span> N
+    <span class="token keyword">return</span> total <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">**</span> n
 
 
 x <span class="token operator">=</span> tous<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -163,11 +163,24 @@ x <span class="token operator">=</span> tous<span class="token punctuation">(</s
 </code></pre>
 <h2>Récursif</h2>
 <h3>Preuve</h3>
-<p>Chaque récursion crée une liste avec un élément supplémentaire, cette élément valant d'abord 0, puis 1 lorsque l'on reviendra à cette fonction après la récursion.</p>
+<p>Chaque récursion modifie le tableau à une position inférieure, cet élément valant d'abord 0, puis 1 lorsque l'on reviendra à cette fonction après la récursion.</p>
 <h3>Complexité en mémoire</h3>
-<p>La complexité en mémoire est de $N^2$, car chaque récursion (il y en a $N$ simultanées au maximum) garde en mémoire une liste d'au plus $N$ éléments.</p>
+<p>La complexité en mémoire est de $n$, car chaque aucune récursion ne crée de nouveau tableau ! C'est le même tableau qui est modifié à chaque récursion.</p>
 <h2>Généralisation</h2>
-<p>En utilisant la version récursive, il suffit de change le 2 en 6 à la ligne 5.</p>
+<p>Clairement, l'algorithme suivant fonctionne :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">tous_rec</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">caractère</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+        affiche à l'écran<span class="token number"> N
+</span>    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token string">"⚀"</span><span class="token punctuation">,</span> <span class="token string">"⚁"</span><span class="token punctuation">,</span> <span class="token string">"⚂"</span><span class="token punctuation">,</span> <span class="token string">"⚃"</span><span class="token punctuation">,</span> <span class="token string">"⚄"</span><span class="token punctuation">,</span> <span class="token string">"⚅"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x
+        tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token builtin">algorithme</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+   <span class="token number"> N </span><span class="token operator">←</span> nouveau tableau de caractères de taille<span class="token number"> n
+</span>
+    tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 
 
 </article>

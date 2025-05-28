@@ -109,8 +109,8 @@
 <p><span id="structure-liste"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Liste</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
-        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> de longueur taille
+        longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> de longueur longueur
     <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
         <span class="token builtin">fonction</span> <span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>  <span class="token comment"># valeur ← self[i] = valeur ← self.get(i)</span>
             <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
@@ -118,21 +118,21 @@
             T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> valeur
 
         <span class="token builtin">fonction</span> <span class="token function">append</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span>  <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-            <span class="token keyword">si</span> taille <span class="token operator">==</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+            <span class="token keyword">si</span> longueur <span class="token operator">==</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
                 T2 <span class="token operator">←</span> T
 
-                taille <span class="token operator">←</span> <span class="token number">0</span>
+                longueur <span class="token operator">←</span> <span class="token number">0</span>
                 T <span class="token operator">←</span> un nouveau tableau de <span class="token builtin">Type</span> de longueur <span class="token number">2</span> <span class="token operator">*</span> T2<span class="token punctuation">.</span>longueur
                 <span class="token keyword">pour chaque</span> y de T2<span class="token punctuation">:</span>
                     append<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
 
                 append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
             <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-                T<span class="token punctuation">[</span>taille<span class="token punctuation">]</span> <span class="token operator">←</span> x
-                taille <span class="token operator">←</span> taille <span class="token operator">+</span> <span class="token number">1</span>
+                T<span class="token punctuation">[</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> x
+                longueur <span class="token operator">←</span> longueur <span class="token operator">+</span> <span class="token number">1</span>
         <span class="token builtin">fonction</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
-            taille <span class="token operator">←</span> taille <span class="token operator">-</span> <span class="token number">1</span>
-            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>taille<span class="token punctuation">]</span>
+            longueur <span class="token operator">←</span> longueur <span class="token operator">-</span> <span class="token number">1</span>
+            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>longueur<span class="token punctuation">]</span>
 
         <span class="token builtin">fonction</span> <span class="token function">insert</span><span class="token punctuation">(</span>pos<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
             <span class="token keyword">self</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -162,14 +162,14 @@
 </ul>
 </div></div>
 
-<p>Ceci permet d'utiliser une liste comme un tableau, en ajoutant en plus 4 méthodes permettant de modifier sa taille :</p>
+<p>Ceci permet d'utiliser une liste comme un tableau, en ajoutant en plus 4 méthodes permettant de modifier sa longueur :</p>
 <ul>
 <li><code class="language-">append</code> qui ajoute un élément en fin de liste</li>
 <li><code class="language-">insert</code> qui insère un élément à une position quelconque de la liste en décalant les éléments après vers la droite</li>
 <li><code class="language-">pop</code> qui rend le dernier élément de la liste et le supprime de la liste</li>
 <li><code class="language-">delete</code> qui rend un élément à une position quelconque de la liste et le supprime de la liste en décalant les éléments après vers la gauche</li>
 </ul>
-<p>Lorsque la taille du tableau devient trop petite pour contenir toutes les valeurs, on crée un tableau de taille double : on peut ajouter autant d'éléments à une liste que l'on souhaite ! Le code suivant est donc légitime :</p>
+<p>Lorsque la longueur du tableau devient trop petite pour contenir toutes les valeurs, on crée un tableau de longueur double : on peut ajouter autant d'éléments à une liste que l'on souhaite ! Le code suivant est donc légitime :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">l <span class="token operator">←</span> Liste<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span>
 <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">^</span><span class="token number">42</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     l<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
@@ -183,13 +183,13 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La liste est une généralisation du tableau permettant de modifier sa taille.</p>
+<p>La liste est une généralisation du tableau permettant de modifier sa longueur.</p>
 </div></div>
 
 <h2>Complexités</h2>
 <p>Examinons les complexités des méthodes de listes.</p>
 <h3>Création</h3>
-<p>A la création de la liste, on crée un tableau de taille $K$, une constante ni trop petite, ni trop grande :</p>
+<p>A la création de la liste, on crée un tableau de longueur $K$, une constante ni trop petite, ni trop grande :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -271,7 +271,7 @@ opérations !</p>
 <div class="mx-8 pb-2">
 <p>Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure.</p>
 <ul>
-<li>lors de l'ajout du $N$ ème élément, un nouveau tableau de taille $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations</li>
+<li>lors de l'ajout du $N$ ème élément, un nouveau tableau de longueur $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations</li>
 <li>l'ajout du $N-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations</li>
 <li>...</li>
 <li>l'ajout du $\frac{N}{2} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations</li>
@@ -281,7 +281,7 @@ opérations !</p>
 <li>l'ajout du $\frac{N}{4} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations</li>
 <li>l'ajout du $\frac{N}{4}$ ème élément s'est fait en créant un nouveau tableau et à donc nécessité au total $\mathcal{O}(\frac{N}{4})$ opérations</li>
 <li>...</li>
-<li>le $\log_2(N)$ tableau précédent était de taille $\frac{N}{2^{\log_2(N)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N}{2^{\log_2(N)}}) = \mathcal{O}(1)$ opérations</li>
+<li>le $\log_2(N)$ tableau précédent était de longueur $\frac{N}{2^{\log_2(N)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N}{2^{\log_2(N)}}) = \mathcal{O}(1)$ opérations</li>
 </ul>
 <p>La complexité totale du remplissage de la liste en partant de la liste vide est donc la somme de tout ça :</p>
 <div>
@@ -294,7 +294,7 @@ C(N) &=& \mathcal{O}(N + \underbracket{1 + \cdot + 1}_{N/2 - 1} + \frac{N}{2} + 
 \end{array}
 $$
 </div>
-<p>Comme, <a href="../#sommes-classiques" class="interne">on l'a vu'</a>, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :</p>
+<p>Comme, <a href="../projet-sommes-classiques/" class="interne">on l'a vu</a>, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -347,7 +347,7 @@ $$
 <p>La complexité des opérations de la liste commune avec un tableau (lecture écriture à index fixé) est de même complexité et on peut ajouter/supprimer des éléments se fait en $\mathcal{O}(1)$ en amorti.</p>
 <h2>Améliorations possibles</h2>
 <h3>Gérer la suppression</h3>
-<p>Pour ne pas gâcher de la place, une amélioration courante des listes est de réduire la taille du tableau si après la suppression du dernier élément de la liste, sa taille $m$ est deux fois plus grande que le nombre $n$ d'éléments stockés.</p>
+<p>Pour ne pas gâcher de la place, une amélioration courante des listes est de réduire la longueur du tableau si après la suppression du dernier élément de la liste, sa longueur $m$ est deux fois plus grande que le nombre $n$ d'éléments stockés.</p>
 <p>Même si l'ajout en fin de liste et la suppression en fin de liste ont des complexités variables, ceci ne change cependant pas la complexité amortie (même si la preuve est autrement plus difficile à démontrer) de l'utilisation d'une liste :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -381,8 +381,8 @@ $$
 </details>     
 </div>
 <p>La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.</p>
-<h3>De combien augmenter la taille ?</h3>
-<p>Doit-on augmenter la taille du tableau de 2 ? De 1.5 ? D'autre chose ? La réponse à cette question est bien plus délicate qu'on ne le pense et dépend fortement de l'usage qu'on va avoir des listes. Regardez la vidéo ci-dessous pour vous en convaincre :</p>
+<h3>De combien augmenter la longueur ?</h3>
+<p>Doit-on augmenter la longueur du tableau de 2 ? De 1.5 ? D'autre chose ? La réponse à cette question est bien plus délicate qu'on ne le pense et dépend fortement de l'usage qu'on va avoir des listes. Regardez la vidéo ci-dessous pour vous en convaincre :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -391,6 +391,165 @@ $$
 <p><a href="https://www.youtube.com/watch?v=GZPqDvG615k">https://www.youtube.com/watch?v=GZPqDvG615k</a></p>
 </div></div>
 
+<h2>Utilisation</h2>
+<p>L'intérêt d'une liste par rapport à un tableau est que l'on peut modifier sa longueur en ajoutant et supprimant des éléments.</p>
+<p>Si l'ajout et la suppression d'un élément en fin de liste est de complexité $\mathcal{O}(1)$, ce n'est pas garantie si on doit ajouter/supprimer des éléments en milieu de liste.</p>
+<p>Nous allons voir ici différentes stratégies selon que l'ordre des éléments stockés nous intéresse ou non. Notez que l'ajoute d'un élément en milieu de liste se fait de la même manière.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrire un algorithme permettant de supprimer un indice donné d'une liste :</p>
+<ol>
+<li>sans créer de liste annexe</li>
+<li>de façon optimale</li>
+</ol>
+<p>Pour cet exercice, l'ordre doit être conservé.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">suppression_indice</span><span class="token punctuation">(</span>L<span class="token punctuation">:</span> Liste<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> indice<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> L<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        L<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> L<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+    L<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>La complexité est optimale puisqu'il faut décaler tous les éléments après ceux d'indice $i$ et que la complexité de la méthode <code class="language-">Liste.pop</code> est $\mathcal{O}(1)$.</p>
+</div>
+</details>     
+</div>
+<p>Si l'on ne se préoccupe pas de l'ordre dans la liste, on peut très facilement supprimer un élément <em>in place</em> :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrire un algorithme permettant de supprimer un indice d'une liste :</p>
+<ol>
+<li>sans créer de liste annexe</li>
+<li>de façon optimale</li>
+</ol>
+<p>Pour cet exercice, on ne se préoccupe pas de l'ordre des éléments dans la liste.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Puisqu'on ne se préoccupe pas de l'ordre entre éléments, on échange l'élément à supprimer avec le dernier de la liste puis on pop.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">suppression_indice</span><span class="token punctuation">(</span>L<span class="token punctuation">:</span> Liste<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> indice<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    L<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> L<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> L<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    L<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>La complexité de cet algorithme est de complexité $\mathcal{O}(1)$, donc optimale.</p>
+</div>
+</details>     
+</div>
+<p>On veut maintenant supprimer tous les éléments de la liste égaux à une valeur donnée :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrire un algorithme permettant de supprimer une valeur d'une liste :</p>
+<ol>
+<li>sans créer de liste annexe</li>
+<li>de façon optimale</li>
+</ol>
+<p>Pour cet exercice, l'ordre doit être conservé.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On décale les éléments petit à petit.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">suppression_indice</span><span class="token punctuation">(</span>L<span class="token punctuation">:</span> Liste<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">,</span> v<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+   <span class="token number"> j </span><span class="token operator">←</span> <span class="token number">0</span>
+   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">+</span><span class="token number"> j </span><span class="token operator">&lt;</span> L<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+        L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> L<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span>
+        <span class="token keyword">si</span> L<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> v<span class="token punctuation">:</span>
+           <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> j </span><span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+           <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
+            
+    <span class="token keyword">répéter</span><span class="token number"> j </span>fois<span class="token punctuation">:</span>
+        L<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>La complexité est en $\mathcal{O}(L.\text{\small longueur})$ et donc optimale puisqu'il faut parcourir tous les éléments de la liste (chacun d'entre eux pouvant valoir $v$).</p>
+<p>On prouve cet algorithme par invariant que l'on démontre aisément :</p>
+<blockquote>
+<p><strong>Invariant de boucle :</strong> À la fin de chaque itération la liste $L[;:i]$ est la restriction de la liste $L[;:i + j]$ aux éléments différents de $v$.</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrire un algorithme permettant de supprimer une valeur d'une liste :</p>
+<ol>
+<li>sans créer de liste annexe</li>
+<li>de façon optimale</li>
+</ol>
+<p>Pour cet exercice, on ne se préoccupe pas de l'ordre des éléments dans la liste.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme il faut tout de même parcourir tous les éléments de la liste, on peut utiliser l'algorithme précédent ! Relâcher la contrainte de l'ordre ne fait rien gagner ici.</p>
+</div>
+</details>     
+</div>
 
 
 </article>

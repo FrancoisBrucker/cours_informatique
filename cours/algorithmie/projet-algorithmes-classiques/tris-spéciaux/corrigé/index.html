@@ -97,15 +97,101 @@
   
 
   <h2>Tri par paquets (bucket sort)</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>Utile si on doit trier des objets via un id borné pas trop grand. C'est souvent le cas lorsque l'on utilise des données complexes, pensez à un tableau excel où nos données sont les lignes et l'index le numéro de la ligne (ou une colonne spécifique dont la valeur va de 1 au nombre de lignes)On peut alors s'arranger pour que $k \geq n$ ce qui rend ce tri très efficace.</p>
+<p>On peut utiliser l'algorithme suivant, qui modifie le tableau passé en paramètre :</p>
+<p><span id="algorithme-tri-paquet"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri_paquet</span><span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> f<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    m <span class="token operator">←</span> max<span class="token punctuation">(</span>f<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">|</span> x de E<span class="token punctuation">)</span>
+    T <span class="token operator">←</span> un nouveau tableau d'<span class="token builtin">entier</span> de taille m <span class="token operator">+</span> <span class="token number">1</span>
+    T<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> ∅  <span class="token comment"># ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers</span>
+
+    <span class="token keyword">pour chaque</span> x de E<span class="token punctuation">:</span>
+        T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> x
+    
+   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> x <span class="token operator">≠</span> ∅<span class="token punctuation">:</span>
+            E<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x
+           <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
+<p>La complexité est en $\mathcal{O}(m)$ en temps <strong>et</strong> en mémoire.</p>
+<p>Cet algorithme marche car $f$ est une injection, tout éléments de $E$ sera dans T à un indice différent des autres.</p>
+<p>Si l'on veut trier $n$ entiers deux à deux différents, on utilise la fonction identité et la complexité est en $\mathcal{O}(\max(E))$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il n'y <strong>aucune</strong> relation entre $n$ et $\max(E)$. On peut par exemple tenter de trier le tableau $[1, 2^{10000000}]$, la complexité de notre algorithme sera de $2^{10000000}$ et non pas de 2.</p>
+<p>Ce n'est donc <strong>pas</strong> un algorithme linéaire...</p>
+</div></div>
+
+<p>Cet algorithme est utile si on doit trier des objets via une fonction $f: \mathcal{E} \to [0, m[$ où $m$ borné pas trop grand. C'est souvent le cas lorsque l'on utilise des données complexes, pensez à un tableau excel où nos données sont les lignes et l'index le numéro de la ligne (ou une colonne spécifique dont la valeur va de 1 au nombre de lignes).</p>
+<p>Si l'on veut trier des entiers pouvant être égaux, on peut utiliser l'algorithme suivant qui compte dans $T[i]$ le nombre de fois où $i$ est présent dans $E$.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri_paquet</span><span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    m <span class="token operator">←</span> max<span class="token punctuation">(</span>x <span class="token operator">|</span> x de E<span class="token punctuation">)</span>
+    T <span class="token operator">←</span> un nouveau tableau d'<span class="token builtin">entier</span> de taille m <span class="token operator">+</span> <span class="token number">1</span>
+    T<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>  <span class="token comment"># ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers</span>
+
+    <span class="token keyword">pour chaque</span> x de E<span class="token punctuation">:</span>
+        T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+    
+   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">pour</span> x allant de <span class="token number">0</span> à m<span class="token punctuation">:</span>
+        <span class="token keyword">tant que</span> T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+            E<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> x
+           <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
+            T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span>
+</code></pre>
+<p>Ce tri est très efficace si les nombres ne sont pas trop grand devant $n$. Ce qui est souvent le cas en pratique. Rappelez-vous en, on s'en sert parfois dans des problèmes algorithmiques.</p>
 <h2>Tri par base</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Tri_par_base">Tri par pase</a></p>
+</div></div>
+
+<p>L'algorithme suivant mime exactement le procédé décrit dans le sujet. Nos données étant des tableaux de bits, l'entrée de l'algorithme est un tableau de tableaux de bit. Cela s'écrit : <code class="language-">[[bit]]</code> :</p>
+<p><span id="algorithme-tri-base"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri_base</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅
+    L0 <span class="token operator">←</span> un tableau de T<span class="token punctuation">.</span>longueur <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>
+   <span class="token number"> i0 </span><span class="token operator">←</span> <span class="token number">0</span>
+
+    L1 <span class="token operator">←</span> un tableau de T<span class="token punctuation">.</span>longueur <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>
+   <span class="token number"> i1 </span><span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">pour</span><span class="token number"> i </span>allant de <span class="token number">1</span> à T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
+            <span class="token keyword">si</span> x<span class="token punctuation">[</span><span class="token operator">-</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                L0<span class="token punctuation">[</span>i0<span class="token punctuation">]</span> <span class="token operator">←</span> x
+               <span class="token number"> i0 </span><span class="token operator">←</span><span class="token number"> i0 </span><span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+                L1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">←</span> x
+               <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">pour</span><span class="token number"> j </span>allant <span class="token number">0</span> à i0<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> L0<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+        <span class="token keyword">pour</span><span class="token number"> j </span>allant <span class="token number">0</span> à i1<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>j <span class="token operator">+</span> i0<span class="token punctuation">]</span> <span class="token operator">←</span> L1<span class="token punctuation">[</span>j<span class="token punctuation">]</span></code></pre>
+<p>On prouve cet algorithme par invariant de boucle.</p>
 <blockquote>
-<p>TBD pseudo-code. <a href="https://fr.wikipedia.org/wiki/Tri_par_base">Wikipedia</a></p>
+<p><strong>Invariant de boucle</strong> : À la fin de la ième itération, $T$ est trié si on considère uniquement les i derniers bits de chaque élément.</p>
 </blockquote>
-<p>Si la taille des entiers est fixée, ce qui est le cas au niveau du processeur où tous les entiers sonts codés sur 64bits, ce tri est le plus efficace possible.</p>
+<ol>
+<li>initialisation : à la fin de la première boucle il est clair que les élément finissant par 0 sont placés avant les éléments se finissant par 1.</li>
+<li>récursion : si l'invariant de boucle est vrai à la fin de la i-1 ème itération, les éléments de L0et de L1 seront trié si on considère uniquement les i derniers bits de chaque élément. Comme le $-i$ bit des éléments de L0 vaut 0 et le $-i$ bit des éléments de L1 valent 1 tous les éléments de L0 sont inférieur aux éléments de L1 et en les concaténant on a bien que les $i$ derniers bit des éléments de T sont triées.</li>
+<li>à la fin des <code class="language-">T.longueur</code> itérations, l'invariant de boucle montre que les éléments de $T$ sont bien triés.</li>
+</ol>
+<p>En notant $m$ la taille des tableaux en entrée et $n$ le no,bre de données à trier, on a clairement une complexité de $\mathcal{O}(nm)$.</p>
+<p>Si la taille des entiers est fixée, ce qui est le cas au niveau du processeur où tous les entiers sont codés sur 64bits, ce tri est le plus efficace possible : il est linéaire.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il n'y <strong>aucune</strong> relation entre $n$ et $m$. On peut par exemple tenter de trier les tableaux de taille $m=2^n$, la complexité de notre algorithme sera exponentielle.</p>
+<p>Ce n'est donc <strong>pas</strong> un algorithme linéaire...</p>
+</div></div>
+
 
 
 </article>

@@ -326,6 +326,190 @@ $$
 </div>
 </details>     
 </div>
+<blockquote>
+<p>TBD à mettre au bon endroit.</p>
+</blockquote>
+<h2>Decurryfications</h2>
+<blockquote>
+<p>TBD McCarty, Ackerman, etc.</p>
+</blockquote>
+<h4>Ackermann, le retour</h4>
+<p>Essayons de voir comment écrire l'algorithme d'Ackermann sans toutes ces récurrences, comme on l'a fait avec la fonction 91.</p>
+<p>Pour calculer $\text{Ack}(m, n)$ :</p>
+<ol>
+<li>soit $m=0$ alors $A = n+1$</li>
+<li>soit $m&gt;0$ et $n=0$ et alors $A = \text{Ack}(m-1, 1)$</li>
+<li>soit $m&gt;0$ et $n&gt;0$ et alors :
+<ol>
+<li>$A = \text{Ack}(m, n-1)$</li>
+<li>$A = \text{Ack}(m-1, A)$</li>
+</ol>
+</li>
+</ol>
+<p>On voit que ce n'est pas une formulation récursive terminale à cause du troisième cas. En 3.2 :</p>
+<ul>
+<li>on utilise la valeur de $A$ calculée en 3.1</li>
+<li>on utilise la valeur que valait $m$ avant 3.1</li>
+</ul>
+<p>Il faut donc se rappeler de $m$ pour le calcul de 3.2 tout en utilisant la valeur de $A$ calculée précédemment. Pour ce genre de récursion, on peut utiliser une <a href="https://fr.wikipedia.org/wiki/To-do_list">TODO list</a> qui nous permet de nous rappeler toutes les tâches à effectuer et des variables à sauvegarder :</p>
+<ol>
+<li>on commence avec une TODO liste vide</li>
+<li>positionner les variables $m$ et $n$ à leurs valeurs et $A$ à 0</li>
+<li>on ajoute à la liste le triplet (1, m, n)</li>
+<li>tant que la TODO liste n'est pas vide :
+<ol>
+<li>prendre le dernier item de la list (en le supprimant de la liste)
+<ol>
+<li>si le premier élément de l'item vaut 1 alors on affecte :
+<ol>
+<li>$m$ au second élément du triplet</li>
+<li>$n$ au troisième élément du triplet</li>
+</ol>
+</li>
+<li>si le premier élément vaut 2 alors on affecte :
+<ol>
+<li>$m$ au second élément du triplet</li>
+<li>$A$ à $n$</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>On fait le calcul :
+<ol>
+<li>si $m=0$ alors $A=n+1$</li>
+<li>si $m&gt;0$ et $n=0$ alors on ajoute $(1, m-1, 1)$ à la TODO list</li>
+<li>si $m&gt;0$ et $n&gt;0$ alors :
+<ul>
+<li>on ajoute $(2, m-1)$ à la TODO list</li>
+<li>on ajoute $(1, m, n-1)$ à la TODO list</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>rendre $A$</li>
+</ol>
+<blockquote>
+<p>TBD faire $A(2, 3)$</p>
+</blockquote>
+<p>On peut même se passer de $A$ complètement :</p>
+<ol>
+<li>on commence avec une TODO liste vide</li>
+<li>positionner les variables $m$ et $n$ à leurs valeurs</li>
+<li>on ajoute à la liste l'entier $m$</li>
+<li>tant que la TODO liste n'est pas vide :
+<ol>
+<li>prendre le dernier item de la list (en le supprimant de la liste) et en l'affectant à $m$</li>
+<li>On a un choix selon les valeurs de $m$ et $n$ :
+<ul>
+<li>si $m=0$ alors $n=n+1$</li>
+<li>si $m&gt;0$ et $n=0$ alors (récursion terminale):
+<ul>
+<li>$n = 1$</li>
+<li>ajoute l'entier $m-1$ à la TODO  List</li>
+</ul>
+</li>
+<li>$m&gt;0$ et $n&gt;0$ alors :
+<ul>
+<li>ajoute l'entier $m-1$ à la TODO  List</li>
+<li>ajoute l'entier $m$ à la TODO  List</li>
+<li>$n=n-1$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>rendre $A$</li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Implémentation en python en utilisant une liste comme TODO-list :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">Ack</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> <span class="token punctuation">[</span>m<span class="token punctuation">]</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        m <span class="token operator">=</span> s<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> m <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            n <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">elif</span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            s<span class="token punctuation">.</span>append<span class="token punctuation">(</span>m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            n <span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            s<span class="token punctuation">.</span>append<span class="token punctuation">(</span>m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            s<span class="token punctuation">.</span>append<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+            n <span class="token operator">-=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> n</code></pre>
+</div></div>
+
+<blockquote>
+<p>pas récursivité terminale = il faut faire des trucs en plus de la récursion. Il faut se rappeler de que l'on veut faire. Avec une TODO list (faire exemple avec ack petit) = pile en informatique
+faire un item de la todo list = dépile.</p>
+</blockquote>
+<blockquote>
+<p>truc à faire = empile
+<a href="https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks">https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks</a></p>
+<ol>
+<li>curryfication puis decurryfication
+A(m, n) = A(0, n')
+A'(s, n) = A'(s[:-1], A(s[-1], n))
+A'([m], n) = A(m, n) par récurrence sur m+n = k</li>
+</ol>
+<p>TBD faire la preuve que c'est ok (voir <a href="https://stackoverflow.com/a/54356919">https://stackoverflow.com/a/54356919</a>)</p>
+</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Notez que tout algorithme récursif peut s'écrire de façon itérative avec une TODO-list (une pile).</p>
+</div></div>
+
+<h2>Ackermann</h2>
+<p>La fonction d'Ackermann se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :</p>
+<div>
+$$
+A(m,n) =
+\left\{
+\begin{array}{lll}
+ & n + 1 &\mbox{ si } m = 0\\
+& A(m - 1, 1) &\mbox{ si } n = 0, m>0\\
+& A(m - 1, A(m, n - 1)) &\mbox{ sinon }\\
+\end{array}
+\right.
+$$
+</div>
+<ul>
+<li>Donnez un pseudo-code récursif et itératif de cette fonction.</li>
+<li>Donnez le nombres d'appels récursif du calcul de A(n, n).</li>
+</ul>
+<blockquote>
+<p>TBD calculs de A(m, n) avec les puissances itérées de Knuth.</p>
+</blockquote>
+<h3>Corrigé Ackermann</h3>
+<p>La fonction d'Ackermann se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :</p>
+<div>
+$$
+A(m,n) =
+\left\{
+\begin{array}{lll}
+ & n + 1 &\mbox{ si } m = 0\\
+& A(m - 1, 1) &\mbox{ si } n = 0, m>0\\
+& A(m - 1, A(m, n - 1)) &\mbox{ sinon }\\
+\end{array}
+\right.
+$$
+</div>
+<ul>
+<li>Donnez un pseudo-code récursif et itératif de cette fonction.</li>
+<li>Donnez le nombres d'appels récursif du calcul de A(n, n).</li>
+</ul>
+<blockquote>
+<p>TBD calculs de A(m, n) avec les puissances itérées de Knuth.</p>
+</blockquote>
 
 
 </article>

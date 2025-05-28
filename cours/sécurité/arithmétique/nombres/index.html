@@ -223,8 +223,8 @@ $$
   ------ |      |
     0100 |      | 
 </code></pre>
-<p>On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mod 0b1011 = 100$</p>
-<p>$37 / 11 = 3$ et $37 \mod 11 = 4$</p>
+<p>On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mathbin{\small\%} 0b1011 = 100$</p>
+<p>$37 / 11 = 3$ et $37 \mathbin{\small\%} 11 = 4$</p>
 <h2><span id="exponentiation">Exponentiation</span></h2>
 <p>L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.</p>
 <p>Rappelons l'algorithme d'exponentiation indienne qui calcule $x^y$ :</p>
@@ -321,7 +321,7 @@ $$
 
 <h2>Algorithme d'Euclide Étendu</h2>
 <ul>
-<li>Si $a &gt; b &gt; 0$ on a $\text{pgcd}(a, b) = \text{pgcd}(b, a \mod b)$</li>
+<li>Si $a &gt; b &gt; 0$ on a $\text{pgcd}(a, b) = \text{pgcd}(b, a \mathbin{\small\%} b)$</li>
 <li>si $a &gt; b = 0$ on a $\text{pgcd}(a, 0) = a$</li>
 </ul>
 <p>Soit alors la suite de division euclidienne définies telles que:</p>

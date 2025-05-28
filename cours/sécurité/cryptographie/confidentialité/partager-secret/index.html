@@ -121,14 +121,14 @@
 <ol>
 <li>Échange de la première partie des clés
 <ul>
-<li>Alice choisit un nombre $a$ et envoie à Bob $A = g^a \mod p$</li>
-<li>Bob choisit un nombre $b$ et envoie à Bob $B = g^b \mod p$</li>
+<li>Alice choisit un nombre $a$ et envoie à Bob $A = g^a \mathbin{\small\%} p$</li>
+<li>Bob choisit un nombre $b$ et envoie à Bob $B = g^b \mathbin{\small\%} p$</li>
 </ul>
 </li>
 <li>Constitution des clés :
 <ul>
-<li>Alice construit le secret $k = B^a \mod p = g^{ab} \mod p$</li>
-<li>Bob construit le secret $k = A^b \mod p = g^{ab} \mod p$</li>
+<li>Alice construit le secret $k = B^a \mathbin{\small\%} p = g^{ab} \mathbin{\small\%} p$</li>
+<li>Bob construit le secret $k = A^b \mathbin{\small\%} p = g^{ab} \mathbin{\small\%} p$</li>
 </ul>
 </li>
 </ol>

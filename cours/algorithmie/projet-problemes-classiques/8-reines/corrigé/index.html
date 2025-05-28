@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/noob-trap/">Noob trap</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/noob-trap/corrigé/">Corrigé</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-problemes-classiques/">Problèmes algorithmiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-problemes-classiques/8-reines/">Les 8 reines</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-problemes-classiques/8-reines/corrigé/">Corrigé</a>
 
 </div></div>
 
@@ -96,38 +96,12 @@
     
   
 
-  <p>C'est bien la troisième proposition qui est la bonne !</p>
-<p>La troisième ligne de l'algorithme a pour complexité :</p>
-<ul>
-<li>le calcul de $f(n//2)$</li>
-<li>le calcul de $f(n//4)$</li>
-<li>la multiplication des deux valeurs obtenues</li>
-</ul>
-<p>En reprenant ce que l'on a fait pour Fibonacci, on a l'inégalité :</p>
-<div>
-$$
-C(n) \leq \mathcal{O}(1) + 2 \cdot C(n/2)
-$$
-</div>
-<p>Ce qui donne en réitérant cette inégalité :</p>
-<div>
-$$
-C(n) \leq \mathcal{O}(1)(\sum_{i=0}^K2^i) + 2^K \cdot C(n/2^K)
-$$
-</div>
-<p>Comme la seule complexité que l'on connait est $C(1) = \mathcal{O}(1)$, on doit prendre $K$ tel que $2^K \simeq n$, c'est à dire $k = \log_2(n)$. On a alors :</p>
-<div>
-$$
-C(n) \leq \mathcal{O}(1)(\sum_{i=0}^{\log_2(n)}2^i) + 2^{\log_2(n)} \cdot C(1)
-$$
-</div>
-<p>Et donc :</p>
-<div>
-$$
-C(n) \leq \mathcal{O}(1)(2^{\log_2(n) +1}) + 2^{\log_2(n)} \cdot C(1)
-$$
-</div>
-<p>Et comme $2^{\log_2(n)} = n$, on trouve bien $C(n) \leq \mathcal{O}(n)$.</p>
+  <blockquote>
+<p>TBD</p>
+</blockquote>
+<blockquote>
+<p>TBD ajouter code python</p>
+</blockquote>
 
 
 </article>

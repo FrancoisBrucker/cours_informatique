@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Noob trap</title>
+    <title>Algorithmes de permutations</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Noob trap</h1>
+  <h1>Algorithmes de permutations</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-algorithmes-classiques/noob-trap/">Noob trap</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-problemes-classiques/">Problèmes algorithmiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-problemes-classiques/permutations/">Algorithmes de permutations</a>
 
 </div></div>
 
@@ -96,27 +96,14 @@
     
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="corrig%C3%A9" class="interne">Corrigé</a></p>
-</div></div>
-
-<p>Un piège classique dans lequel tombent les débutants.</p>
-<p>On considère le code suivant :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">return</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">return</span> f<span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> f<span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">4</span><span class="token punctuation">)</span></span></code></pre>
-<p>Quelle est l'équation de récurrence de la complexité :</p>
+  <blockquote>
+<p>TBD : ET 2025 :</p>
 <ol>
-<li>$C(n) = C(n/2) * C(n/4)$</li>
-<li>$C(n) = \mathcal{O}(1) + C(n/2) * C(n/4)$</li>
-<li>$C(n) = \mathcal{O}(1) + C(n/2) + C(n/4)$</li>
+<li>par successeur : généralisation du compteur <a href="https://www.mbillaud.fr/notes/permutation-suivante.html">https://www.mbillaud.fr/notes/permutation-suivante.html</a></li>
+<li>via génération aléatoire</li>
+<li>heap : <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Heap">https://fr.wikipedia.org/wiki/Algorithme_de_Heap</a></li>
 </ol>
-<p>Déduire de la bonne réponse que la complexité de l'exécution de la fonction est linéaire.</p>
+</blockquote>
 
 
 </article>

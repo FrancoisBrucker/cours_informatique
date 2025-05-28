@@ -104,8 +104,8 @@
 $$
 \left\{
   \begin{array}{lll}
-    E(k, m) &=& m + k \mod 26\\
-    D(k, c) &=& c - k \mod 26\\
+    E(k, m) &=& m + k \mathbin{\small\\%} 26\\
+    D(k, c) &=& c - k \mathbin{\small\\%} 26\\
   \end{array}
 \right.
 $$
@@ -312,8 +312,8 @@ Longtemps je me suis couche de bonne heure.
 $$
 \left\{
   \begin{array}{lll}
-    E(k, m_i) &=& m_i + k_{(i \mod p)} \mod 26\\
-    D(k, c_i) &=& c_i - k_{(i \mod p)} \mod 26\\
+    E(k, m_i) &=& m_i + k_{(i \mathbin{\small\\%} p)} \mathbin{\small\\%} 26\\
+    D(k, c_i) &=& c_i - k_{(i \mathbin{\small\\%} p)} \mathbin{\small\\%} 26\\
   \end{array}
 \right.
 $$

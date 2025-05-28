@@ -99,10 +99,10 @@
   <p>Il existe trois types d'analyses amortie possibles : par agrégat, comptable et par potentiel. La méthode par potentielle est la plus générale mais également la plus ardue à mettre en oeuvre. La méthode comptable est intermédiaire et la méthode par agrégat (que l'on a déjà utilisé pour les listes) est la méthode la plus simple et qui est souvent suffisante.</p>
 <p>Nous allons illustrer chaque méthode en utilisant l'algorithme <code class="language-">tous</code> qui affiche tous les entiers binaires inférieurs à $2^n$. Cet exemples est paradigmatique de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie d'opérations de faibles complexité.</p>
 <h2>Exemple du compteur binaire</h2>
-<p>Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$.</p>
+<p>Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$. L'algorithme suivant est la variante itérative de <a href="../../projet-algorithmes-classiques/compteur-binaire/#algorithme-compteur-binaire-rec" class="interne">l'algorithme vu en exercice</a></p>
 <p><span id="algorithme-compteur-binaire"></span></p>
 <p>Soit lors l'algorithme suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
    <span class="token number"> i </span><span class="token operator">←</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
 
     <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -112,7 +112,7 @@
     <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">:</span>
         N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
 
-<span class="token builtin">algorithme</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+<span class="token builtin">algorithme</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
    <span class="token number"> N </span><span class="token operator">←</span> un tableau de taille<span class="token number"> n
 </span>    N<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
 
@@ -227,7 +227,7 @@ C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
 \end{array}
 $$
 </div>
-<p>On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ (<a href="../../#sommes-classiques" class="interne">on l'a vu</a>), ce qui permet d'obtenir :</p>
+<p>On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ (<a href="../../projet-sommes-classiques/" class="interne">on l'a vu</a>), ce qui permet d'obtenir :</p>
 <div>
 $$
 \begin{array}{rcl}
