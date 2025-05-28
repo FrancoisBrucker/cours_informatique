@@ -138,7 +138,7 @@ Notations :
         On note $i^\star_{T}\geq 0$ pour $T$ de $\mathcal{T}_n$ un indice $i^\star_{T}\geq 0$ tel que :
         \begin{itemize}
             \item $T[i^\star_{T}:\;]$ est strictement décroissante,
-            \item soit $i^\star_{T}=0$ soit $T'[i^\star_{T}-1] < T[i^\star_{T}]$.
+            \item soit $i^\star_{T}=0$ soit $T[i^\star_{T}-1] < T[i^\star_{T}]$.
         \end{itemize}
         \begin{questionpartie}
             Donnez $i^\star_{T}$ et $i^\star_{T'}$ pour $T = [0, 3, 4, 2, 1]$ et $T' = [0, 3, 2, 1 ,4]$.
@@ -155,7 +155,7 @@ Notations :
         \end{questionpartie}
         \begin{questionpartie}
             Soit $T \in \mathcal{T}_n$ et $i^\star_{T}$ son indice associé. Montrez que pour tout $U$ de $\mathcal{T}_n$ tel 
-            que $T[\;:i^\star_{T}] = U[\;:i^\star_{T}]$ (les $i^\star_{T} + 1$ premiers éléments sont identiques pur $T$ et $U$) on a $T \geq U$.
+            que $T[\;:i^\star_{T}] = U[\;:i^\star_{T}]$ (les $i^\star_{T}$ premiers éléments sont identiques pour $T$ et $U$) on a $T \geq U$.
         \end{questionpartie}
     \end{partie}
     \begin{partie}[Successeur]
@@ -211,7 +211,7 @@ Notations :
 \end{exo}
 
 \begin{exo}[Optimal]
-    Nous allons dans cette partie examiner un algorithme optimal que l'on doit à B. R. Heap, publié en 1963.
+    Nous allons dans cette partie examiner un algorithme optimal que l'on doit à B. R. Heap (1963).
         \begin{tabbing}
             ccc\=cccc\=cccc\=cccc\=cccc\=cccc\=\kill
             \textbf{algorithme} \textsc{heap}($T$, $k$){\bf :}\\

@@ -10,7 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## Matrices
+## Tableaux et listes
+
+### Matrices
 
 > - **Utilité** : à connaître car exercice classique réduction de complexité spatiale.
 > - **Difficulté** : facile
@@ -21,13 +23,9 @@ eleventyComputed:
 
 {% endaller %}
 
-## Utilisation de listes
-
-Regardons comment tout ceci peut fonctionner avec une liste
-
 ### Tri par monotonies
 
-> TBD listes utiles comme outils pour les algo (croissance et décroissance). Ex pour les tris.
+Utilisation des listes pour faire grossir des tableaux.
 
 Étant donné un tableau $T$, **_une monotonie_** est une suite croissante maximale d'éléments consécutifs de $T$. Par exemple :
 si $T = [2,6, 1,3, 3, 5,2,6, 4,0, 1,8,9,1,3, 2,0,1,0]$, alors $[2,6]$, $[1,3,3,5]$, $[2,6]$, $[4]$, $[0, 1,8,9]$, $[1,3]$, $[2]$, $[0,1]$ et $[0]$ sont les monotonies de $T$.
