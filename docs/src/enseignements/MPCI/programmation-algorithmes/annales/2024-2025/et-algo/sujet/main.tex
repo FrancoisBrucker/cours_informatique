@@ -153,10 +153,6 @@ Notations :
         \begin{questionpartie}
             Démontrez que si $T[\;:i^\star_{T}] = U[\;:i^\star_{T}]$ pour deux éléments $T$ et $U$ de $\mathcal{T}_n$, alors $T \geq U$.
         \end{questionpartie}
-        \begin{questionpartie}
-            Soit $T \in \mathcal{T}_n$ et $i^\star_{T}$ son indice associé. Montrez que pour tout $U$ de $\mathcal{T}_n$ tel 
-            que $T[\;:i^\star_{T}] = U[\;:i^\star_{T}]$ (les $i^\star_{T}$ premiers éléments sont identiques pour $T$ et $U$) on a $T \geq U$.
-        \end{questionpartie}
     \end{partie}
     \begin{partie}[Successeur]
         \begin{questionpartie}
@@ -189,7 +185,7 @@ Notations :
             Donnez la complexité de l'algorithme \verb|mélange(T:[entier])|.
         \end{questionpartie}
         \begin{questionpartie}
-            Démontrez que si $T=[0, n-1]$, \verb|mélange(T)| va modifier $T$ en une permutation $T'$ qui peut être n'importe quel élément de $\mathcal{T}_n$.
+            Démontrez que si $T=[0, \dots, n-1]$, \verb|mélange(T)| va modifier $T$ en une permutation $T'$ qui peut être n'importe quel élément de $\mathcal{T}_n$.
         \end{questionpartie}
         \begin{questionpartie}
             Transformez l'algorithme \verb|mélange(T)| en un algorithme récursif de signature :\\ \verb|mélange_rec(T: [entier], i: entier)|, de telle sorte que \verb|mélange(T) = mélange_rec(T, 0)| (la variable interne $i$ de la boucle \verb|pour chaque| devient un paramètre de la fonction). 
