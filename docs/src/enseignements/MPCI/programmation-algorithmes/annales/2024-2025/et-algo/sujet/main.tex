@@ -82,7 +82,7 @@
 \maketitle
 
 \begin{center}
-{\em\bf Lorsque l'on vous demande d'écrire de décrire ou de donner un algorithme cela signifiera toujours en donner un pseudo-code, justifier de son exactitude et de sa complexité}
+{\em\bf Lorsque l'on vous demande d'écrire de décrire ou de donner un algorithme cela signifiera toujours en donner un pseudo-code, justifier de son \underline{exactitude} et de sa \underline{complexité} (en utilisant des $\mathcal{O}$)}
 
 ~\\
 
@@ -93,30 +93,30 @@
 
 
 \vspace*{1cm}
-Les exercices :
+
+\paragraph{Les exercices} de cet examen : 
 \begin{itemize}
 \item sont au nombre de 3;
-\item sont de difficulté croissante (le premier est le plus facile et vaudra moins de points que le troisième);
+\item ont tous le même but afficher à l'écran chaque élément de $\mathcal{T}_n$ une fois.
 \item sont indépendants (à part le problème à résoudre qui est le même);
-\item leur début est plus facile que leur fin (qui vaudra donc plus de points).
+\item sont de difficulté {\it a priori} croissante;
+\item leur début est ({\it a priori}) plus facile que leur fin.
 \end{itemize}
 
-\paragraph{}{L'examen est {\bf long} et ce qui semble simple pour l'examinateur ne l'est pas forcément pour l'étudiant. Il pourra être utile de changer d'exercice plutôt que de rester bloqué sur une question, quitte à y revenir plus tard.}
+\paragraph{}{L'examen est {\bf long} et ce qui semble simple pour l'examinateur ne l'est pas forcément pour l'étudiant et réciproquement. Il pourra être utile de changer d'exercice plutôt que de rester bloqué sur une question, quitte à y revenir plus tard.}
 
-\paragraph{}{\sc Rendez des copies séparées pour chaque exercice, ceci vous permettra de d'y revenir au cours de l'examen sans perdre le correcteur.}
+\paragraph{}{\sc Rendez \underline{des copies séparées pour chaque exercice}, ceci vous permettra de d'y revenir au cours de l'examen sans perdre le correcteur.}
 
 \vspace*{1cm}
 Notations :
 \begin{itemize}
-\item on note $\mathcal{T}_n$ l'ensemble de toutes {\bf les permutations} du tableau de taille $n$ contenant les entiers allant de $0$ à $n-1$. Par exemple $\mathcal{T}_3 = \{[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]\}$;
-\item Pour un tableau $T$ de taille $n$, on notera $T[\;:k]$ le tableau formé {\bf des $k$ premiers éléments de $T$} (allant des indices 0 à $k-1$). Si $T=[1, 3, 2, 0, 4]$, alors $T[\;:3] = [1, 3, 2]$;
-\item Pour un tableau $T$ $n$, on notera $T[k:\;]$ le tableau formé {\bf des $n-k$ derniers éléments de $T$} (allant des indices $k$ à $n-1$). Si $T=[1, 3, 2, 0, 4]$, alors $T[\;3:\;] = [0, 4]$;
-\item Pour deux tableaux $T$ et $T'$, on notera $T + T'$ le tableau formé de {\bf la concaténation} de $T$ et $T'$. On a $[0, 4] + [1, 3, 2] = [0, 4, 1, 3, 2]$;
-\item Pour un tableau $T$ de taille $n$ {\bf une permutation circulaire de $k$ éléments de $T$} est le tableau $T_k = T[k:\;] + T[\;:k]$. Le tableau $[3, 4, 0, 1, 2]$ est la permutation circulaire de 2 éléments du tableau $[0, 1, 2, 3, 4]$.
-\item Pour deux tableaux d'entiers $T$ et $T'$, $T < T'$ selon {\bf l'ordre lexicographique} si $T \neq T'$ et $T[i] < T'[i]$ pour $i$ le plus petit indice tel que $T[i] \neq T'[i]$.
+    \item On note $\mathcal{T}_n$ l'ensemble de toutes {\bf les permutations} du tableau de taille $n$ contenant les entiers allant de $0$ à $n-1$. Par exemple $\mathcal{T}_3 = \{[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]\}$;
+    \item Pour un tableau $T$ de taille $n$, on notera $T[\;:k]$ le tableau formé {\bf des $k$ premiers éléments de $T$} (allant des indices 0 à $k-1$). Si $T=[1, 3, 2, 0, 4]$, alors $T[\;:3] = [1, 3, 2]$;
+    \item Pour un tableau $T$ $n$, on notera $T[k:\;]$ le tableau formé {\bf des $n-k$ derniers éléments de $T$} (allant des indices $k$ à $n-1$). Si $T=[1, 3, 2, 0, 4]$, alors $T[\;3:\;] = [0, 4]$;
+    \item Pour deux tableaux $T$ et $T'$, on notera $T + T'$ le tableau formé de {\bf la concaténation} de $T$ et $T'$. On a $[0, 4] + [1, 3, 2] = [0, 4, 1, 3, 2]$;
+    \item Pour un tableau $T$ de taille $n$ {\bf une permutation circulaire de $k$ éléments de $T$} est le tableau $T_k = T[k:\;] + T[\;:k]$. Le tableau $[3, 4, 0, 1, 2]$ est la permutation circulaire de 2 éléments du tableau $[0, 1, 2, 3, 4]$.
+    \item Pour deux tableaux d'entiers $T$ et $T'$, $T < T'$ selon {\bf l'ordre lexicographique} si $T \neq T'$ et $T[i] < T'[i]$ pour $i$ le plus petit indice tel que $T[i] \neq T'[i]$;
 \end{itemize}
-
-\paragraph{Les trois exercices} de cet examen ont pour but d'afficher à l'écran chaque élément de $\mathcal{T}_n$ une seule fois. 
 
 \clearpage
 
@@ -124,7 +124,7 @@ Notations :
     On va utiliser l'ordre lexicographique entre tableaux d'entiers pour générer tous les éléments de $\mathcal{T}_n$. 
     \begin{partie}[Ordre]
         \begin{questionpartie}
-            Si $T1 = [0, 3, 4, 2, 1]$ et $T' = [0, 3, 2, 1 ,4]$. Justifiez pourquoi $T' < T$.
+            Si $T = [0, 3, 4, 2, 1]$ et $T' = [0, 3, 2, 1 ,4]$. Justifiez pourquoi $T' < T$.
         \end{questionpartie}
         \begin{questionpartie}
             Quels sont le plus petit et le plus grand élément de $\mathcal{T}_n$ ?
@@ -141,7 +141,7 @@ Notations :
             \item soit $i^\star_{T}=0$ soit $T'[i^\star_{T}-1] < T[i^\star_{T}]$.
         \end{itemize}
         \begin{questionpartie}
-            Donnez $i^\star_{T}$ et $i^\star_{T'}$ pour $T1 = [0, 3, 4, 2, 1]$ et $T' = [0, 3, 2, 1 ,4]$.
+            Donnez $i^\star_{T}$ et $i^\star_{T'}$ pour $T = [0, 3, 4, 2, 1]$ et $T' = [0, 3, 2, 1 ,4]$.
         \end{questionpartie}
         \begin{questionpartie}
             Démontrez que pour tout élément $T$ de $\mathcal{T}_n$ $i^\star_{T}$ existe et est unique.

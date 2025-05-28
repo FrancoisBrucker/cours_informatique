@@ -165,7 +165,7 @@ $$
 </div>
 
 {% info %}
-On a utilisé le fait, [on le démontrera](../../#sommes-classiques){.interne}, que la série est convergente et donc :
+On a utilisé le fait, [on le démontrera](../../projet-sommes-classiques/){.interne}, que la série est convergente et donc :
 
 <div>
 $$

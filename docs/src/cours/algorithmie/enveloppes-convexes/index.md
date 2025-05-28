@@ -955,7 +955,7 @@ $$
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)
 $$
 
-Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec [le master theorem](../problème-tris/algorithme-fusion/#master-theorem){.interne} et on obtient : $T(n) = \mathcal{O}(n)$.
+Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec [le master theorem](../design-algorithmes/diviser-régner/principe/#master-theorem){.interne} et on obtient : $T(n) = \mathcal{O}(n)$.
 
 Il nous reste à montrer que c'est bien vrai :
 

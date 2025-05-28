@@ -171,7 +171,7 @@ C = \sum_{0\leq k \leq \log_2(m)}\frac{m}{2^k}\cdot k
 $$
 </div>
 
-Comme $\sum_{0\leq k \leq n}\frac{k}{2^k} \leq 2$ ([on l'a vu](../#sommes-classiques){.interne}), on a $C \leq 2m$ et la complexité amortie est en $\mathcal{O}(1)$
+Comme $\sum_{0\leq k \leq n}\frac{k}{2^k} \leq 2$ ([on l'a vu](../projet-sommes-classiques/){.interne}), on a $C \leq 2m$ et la complexité amortie est en $\mathcal{O}(1)$
 {% enddetails %}
 
 ### File et pile

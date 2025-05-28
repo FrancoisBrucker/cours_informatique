@@ -140,7 +140,7 @@ C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
 $$
 </div>
 
-On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ ([on l'a vu](../../#sommes-classiques){.interne}), ce qui permet d'obtenir :
+On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ ([on l'a vu](../../projet-sommes-classiques/){.interne}), ce qui permet d'obtenir :
 
 <div>
 $$

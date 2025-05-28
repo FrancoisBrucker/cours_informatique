@@ -22,8 +22,8 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 ```pseudocode
 structure Liste<Type>:
     attributs:
-        taille: entier ← 0
-        T: [Type] de longueur taille
+        longueur: entier ← 0
+        T: [Type] de longueur longueur
     méthodes:
         fonction get(i: entier) → Type:  # valeur ← self[i] = valeur ← self.get(i)
             rendre T[i]
@@ -31,21 +31,21 @@ structure Liste<Type>:
             T[i] ← valeur
 
         fonction append(x: Type)  → ∅:
-            si taille == T.longueur:
+            si longueur == T.longueur:
                 T2 ← T
 
-                taille ← 0
+                longueur ← 0
                 T ← un nouveau tableau de Type de longueur 2 * T2.longueur
                 pour chaque y de T2:
                     append(y)
 
                 append(x)
             sinon:
-                T[taille] ← x
-                taille ← taille + 1
+                T[longueur] ← x
+                longueur ← longueur + 1
         fonction pop()  → Type:
-            taille ← taille - 1
-            rendre T[taille]
+            longueur ← longueur - 1
+            rendre T[longueur]
 
         fonction insert(pos: entier, x: Type) → ∅:
             self.append(T[-1])
@@ -72,14 +72,14 @@ On utilise l'abus de notation suivant, classique en programmation, permettant de
 
 {% endnote %}
 
-Ceci permet d'utiliser une liste comme un tableau, en ajoutant en plus 4 méthodes permettant de modifier sa taille :
+Ceci permet d'utiliser une liste comme un tableau, en ajoutant en plus 4 méthodes permettant de modifier sa longueur :
 
 - `append`{.language-} qui ajoute un élément en fin de liste
 - `insert`{.language-} qui insère un élément à une position quelconque de la liste en décalant les éléments après vers la droite
 - `pop`{.language-} qui rend le dernier élément de la liste et le supprime de la liste
 - `delete`{.language-} qui rend un élément à une position quelconque de la liste et le supprime de la liste en décalant les éléments après vers la gauche
 
-Lorsque la taille du tableau devient trop petite pour contenir toutes les valeurs, on crée un tableau de taille double : on peut ajouter autant d'éléments à une liste que l'on souhaite ! Le code suivant est donc légitime :
+Lorsque la longueur du tableau devient trop petite pour contenir toutes les valeurs, on crée un tableau de longueur double : on peut ajouter autant d'éléments à une liste que l'on souhaite ! Le code suivant est donc légitime :
 
 ```pseudocode
 l ← Liste<entier>
@@ -91,7 +91,7 @@ pour chaque i de [0, 2^42[:
 ```
 
 {% attention "**À retenir**" %}
-La liste est une généralisation du tableau permettant de modifier sa taille.
+La liste est une généralisation du tableau permettant de modifier sa longueur.
 {% endattention %}
 
 ## Complexités
@@ -100,7 +100,7 @@ Examinons les complexités des méthodes de listes.
 
 ### Création
 
-A la création de la liste, on crée un tableau de taille $K$, une constante ni trop petite, ni trop grande :
+A la création de la liste, on crée un tableau de longueur $K$, une constante ni trop petite, ni trop grande :
 
 {% note %}
 La complexité de la création d'une liste est $\mathcal{O}(1)$.
@@ -151,7 +151,7 @@ L'ajout de $N$ éléments à une liste initialement vide prend $\mathcal{O}(N)$ 
 
 Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure.
 
-- lors de l'ajout du $N$ ème élément, un nouveau tableau de taille $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations
+- lors de l'ajout du $N$ ème élément, un nouveau tableau de longueur $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations
 - l'ajout du $N-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
 - ...
 - l'ajout du $\frac{N}{2} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
@@ -161,7 +161,7 @@ Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la 
 - l'ajout du $\frac{N}{4} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
 - l'ajout du $\frac{N}{4}$ ème élément s'est fait en créant un nouveau tableau et à donc nécessité au total $\mathcal{O}(\frac{N}{4})$ opérations
 - ...
-- le $\log_2(N)$ tableau précédent était de taille $\frac{N}{2^{\log_2(N)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N}{2^{\log_2(N)}}) = \mathcal{O}(1)$ opérations
+- le $\log_2(N)$ tableau précédent était de longueur $\frac{N}{2^{\log_2(N)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N}{2^{\log_2(N)}}) = \mathcal{O}(1)$ opérations
 
 La complexité totale du remplissage de la liste en partant de la liste vide est donc la somme de tout ça :
 
@@ -176,7 +176,7 @@ C(N) &=& \mathcal{O}(N + \underbracket{1 + \cdot + 1}_{N/2 - 1} + \frac{N}{2} + 
 $$
 </div>
 
-Comme, [on l'a vu'](../#sommes-classiques){.interne}, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :
+Comme, [on l'a vu](../projet-sommes-classiques/){.interne}, $\sum_{i=0}^{n} \frac{1}{2^i} \to_{+\infty} 2$ :
 
 <div>
 $$
@@ -219,7 +219,7 @@ La complexité des opérations de la liste commune avec un tableau (lecture écr
 
 ### Gérer la suppression
 
-Pour ne pas gâcher de la place, une amélioration courante des listes est de réduire la taille du tableau si après la suppression du dernier élément de la liste, sa taille $m$ est deux fois plus grande que le nombre $n$ d'éléments stockés.
+Pour ne pas gâcher de la place, une amélioration courante des listes est de réduire la longueur du tableau si après la suppression du dernier élément de la liste, sa longueur $m$ est deux fois plus grande que le nombre $n$ d'éléments stockés.
 
 Même si l'ajout en fin de liste et la suppression en fin de liste ont des complexités variables, ceci ne change cependant pas la complexité amortie (même si la preuve est autrement plus difficile à démontrer) de l'utilisation d'une liste :
 
@@ -232,10 +232,121 @@ Voir [exercice de la complexité amortie](../complexité-amortie/#exercice-liste
 
 La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.
 
-### De combien augmenter la taille ?
+### De combien augmenter la longueur ?
 
-Doit-on augmenter la taille du tableau de 2 ? De 1.5 ? D'autre chose ? La réponse à cette question est bien plus délicate qu'on ne le pense et dépend fortement de l'usage qu'on va avoir des listes. Regardez la vidéo ci-dessous pour vous en convaincre :
+Doit-on augmenter la longueur du tableau de 2 ? De 1.5 ? D'autre chose ? La réponse à cette question est bien plus délicate qu'on ne le pense et dépend fortement de l'usage qu'on va avoir des listes. Regardez la vidéo ci-dessous pour vous en convaincre :
 
 {% lien %}
 <https://www.youtube.com/watch?v=GZPqDvG615k>
 {% endlien %}
+
+## Utilisation
+
+L'intérêt d'une liste par rapport à un tableau est que l'on peut modifier sa longueur en ajoutant et supprimant des éléments.
+
+Si l'ajout et la suppression d'un élément en fin de liste est de complexité $\mathcal{O}(1)$, ce n'est pas garantie si on doit ajouter/supprimer des éléments en milieu de liste.
+
+Nous allons voir ici différentes stratégies selon que l'ordre des éléments stockés nous intéresse ou non. Notez que l'ajoute d'un élément en milieu de liste se fait de la même manière.
+
+{% exercice %}
+
+Écrire un algorithme permettant de supprimer un indice donné d'une liste :
+
+1. sans créer de liste annexe
+2. de façon optimale
+
+Pour cet exercice, l'ordre doit être conservé.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme suppression_indice(L: Liste<T>, i: indice) → ∅:
+    pour chaque j de [i + 1, L.longueur[:
+        L[j-1] ← L[j]
+    L.pop()
+```
+
+La complexité est optimale puisqu'il faut décaler tous les éléments après ceux d'indice $i$ et que la complexité de la méthode `Liste.pop`{.language-} est $\mathcal{O}(1)$.
+{% enddetails %}
+
+Si l'on ne se préoccupe pas de l'ordre dans la liste, on peut très facilement supprimer un élément _in place_ :
+
+{% exercice %}
+
+Écrire un algorithme permettant de supprimer un indice d'une liste :
+
+1. sans créer de liste annexe
+2. de façon optimale
+
+Pour cet exercice, on ne se préoccupe pas de l'ordre des éléments dans la liste.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Puisqu'on ne se préoccupe pas de l'ordre entre éléments, on échange l'élément à supprimer avec le dernier de la liste puis on pop.
+
+```pseudocode
+algorithme suppression_indice(L: Liste<T>, i: indice) → ∅:
+    L[i], L[-1] ← L[-1], L[i]
+    L.pop()
+```
+
+La complexité de cet algorithme est de complexité $\mathcal{O}(1)$, donc optimale.
+
+{% enddetails %}
+
+On veut maintenant supprimer tous les éléments de la liste égaux à une valeur donnée :
+
+{% exercice %}
+
+Écrire un algorithme permettant de supprimer une valeur d'une liste :
+
+1. sans créer de liste annexe
+2. de façon optimale
+
+Pour cet exercice, l'ordre doit être conservé.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+On décale les éléments petit à petit.
+
+```pseudocode
+algorithme suppression_indice(L: Liste<T>, v: T) → ∅:
+    j ← 0
+    i ← 0
+    tant que i + j < L.longueur:
+        L[i] ← L[i + j]
+        si L[i] == v:
+            j ← j + 1
+        sinon:
+            i ← i + 1
+            
+    répéter j fois:
+        L.pop()
+```
+
+La complexité est en $\mathcal{O}(L.\text{\small longueur})$ et donc optimale puisqu'il faut parcourir tous les éléments de la liste (chacun d'entre eux pouvant valoir $v$).
+
+On prouve cet algorithme par invariant que l'on démontre aisément :
+
+> **Invariant de boucle :** À la fin de chaque itération la liste $L[\;:i]$ est la restriction de la liste $L[\;:i + j]$ aux éléments différents de $v$.
+
+{% enddetails %}
+
+{% exercice %}
+
+Écrire un algorithme permettant de supprimer une valeur d'une liste :
+
+1. sans créer de liste annexe
+2. de façon optimale
+
+Pour cet exercice, on ne se préoccupe pas de l'ordre des éléments dans la liste.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Comme il faut tout de même parcourir tous les éléments de la liste, on peut utiliser l'algorithme précédent ! Relâcher la contrainte de l'ordre ne fait rien gagner ici.
+
+{% enddetails %}

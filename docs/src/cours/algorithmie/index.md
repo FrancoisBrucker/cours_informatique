@@ -272,6 +272,8 @@ Comparons l'usage les différentes structures de stockage de données en notre p
 
 - tableaux :
   - structure simple
+  - intérêt : accès au $i$ème élément se fait en $\mathcal{O}(1)$
+  - défaut : structure statique, on ne peut ajouter/supprimer des éléments
   - utilisation : si contrôle stricte de la complexité en temps et en espace crucial
 - pile :
   - gestion de flux : LIFO
@@ -281,12 +283,18 @@ Comparons l'usage les différentes structures de stockage de données en notre p
   - utilisation : buffer
 - listes :
   - structure passe partout
+  - intérêt : ajout et suppression en fin de liste en $\mathcal{O}(1)$, accès au $i$ème élément se fait en $\mathcal{O}(1)$
+  - défaut : supprimer/ajouter le $i$ème élément se fait en $\mathcal{O}(n-i)$ où $n$ est la taille de la liste.
   - utilisation : à la place d'un tableau si on autorise une taille variable et un pic de complexité de temps en temps
 - dictionnaires :
   - clé et valeurs
+  - intérêt : ajout et suppression et accès à un élément en $\mathcal{O}(1)$ en moyenne.
+  - défaut : pas d'ordre entre en les éléments stockés, complexité max en $\mathcal{O}(n)$ où $n$ est le nombre d'éléments stockés
   - utilisation : lorsque les données ne sont pas des indices et que la complexité en moyenne suffit
 - listes chaînées :
   - structure par morceaux où maillon = chaîne
+  - intérêt : ajout et suppression en milieu de liste en $\mathcal{O}(1)$
+  - défaut : trouver le $i$ème élément se fait en $\mathcal{O}(i)$.
   - utilisation : pour les programmes récursifs et ceux où on modifie souvent le nombre de données stockées tout en conservant l'ordre des données restantes
 
 ### Complexité de structures

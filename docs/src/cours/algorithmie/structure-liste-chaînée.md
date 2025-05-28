@@ -144,7 +144,7 @@ algorithme concatène(L1: Maillon<T>, L2: Maillon<T>) → Maillon<T>:
 
 {% enddetails %}
 
-## complexité
+## Complexité
 
 Le principal intérêt des liste chaînée est :
 

@@ -84,7 +84,7 @@ $$
 $$
 </div>
 
-Puisque ([on l'a vu](../../#sommes-classiques)) $\sum_{0\leq i \leq n}2^i = 2^{n+1}-1$ cette complexité totale vaut : $\mathcal{O}(m)$ et la complexité amortie $\frac{\mathcal{O}(m)}{m} = $\mathcal{O}(1)$ "
+Puisque ([on l'a vu](../../projet-sommes-classiques/)) $\sum_{0\leq i \leq n}2^i = 2^{n+1}-1$ cette complexité totale vaut : $\mathcal{O}(m)$ et la complexité amortie $\frac{\mathcal{O}(m)}{m} = $\mathcal{O}(1)$ "
 
 {% note %}
 La complexité amortie de la méthode `suivant`{.language-} est $\mathcal{O}(1)$.

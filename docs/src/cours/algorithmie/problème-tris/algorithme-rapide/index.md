@@ -248,7 +248,7 @@ C_{\min} = \mathcal{O}(\sum_{x \in T_0}e(x)) = \sum_{1 \leq k \leq K}k\cdot 2^{k
 $$
 </div>
 
-On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ ([on le démontrera](../../#sommes-classiques){.interne}).
+On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ ([on le démontrera](../../projet-sommes-classiques/){.interne}).
 
 {% enddetails %}
 
@@ -349,7 +349,7 @@ A(n) &=& A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
 $$
 </div>
 
-On peut facilement montrer ([on le démontrera](../../#sommes-classiques){.interne}) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)$ et donc que :
+On peut facilement montrer ([on le démontrera](../../projet-sommes-classiques/){.interne}) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} = \mathcal{O}(1)$ et donc que :
 
 <div>
 $$
@@ -365,7 +365,7 @@ $$
 La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.
 
 Cette fonction est connue, elle s'appelle la [série harmonique](https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique),
-et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, [on le démontrera](../../#sommes-classiques){.interne}).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :
+et est [équivalente](https://fr.wikipedia.org/wiki/%C3%89quivalent) à $\ln(n)$ lorsque $n$ tend vers $+\infty$ (ça aussi, [on le démontrera](../../projet-sommes-classiques/){.interne}).  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et enfin :
 
 $$
 A(n) = \mathcal{O}(\ln(n))
