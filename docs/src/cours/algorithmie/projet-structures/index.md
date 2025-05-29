@@ -132,10 +132,10 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 
 ## Liste chaînée
 
-> TBD dire base des algos récursifs. 
+> TBD dire base des algos récursifs.
 > TBD donner le type récursif associé.
 
-> TBD reprendre exos suppresion/ head, tail etc.
+> TBD reprendre exercices suppression/ head, tail , rendre éléments pair et impair/ retournements
 
 ## Autre structures
 
