@@ -140,4 +140,4 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 ## Autre structures
 
 - skip list
-- listes triées : ens complexité amortie.
+- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>

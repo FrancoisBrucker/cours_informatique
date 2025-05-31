@@ -198,16 +198,11 @@ On obtient la même fonction de coût et donc la même complexité amortie : $\m
 > TBD à faire (dire que c'est dur)
 
 <div id="preuve-liste-suppression-ajout"></div>
-{% note %}
+{% exercice %}
 $N$ utilisations successives des méthodes d'ajout ou de suppression du dernier élément d'une liste prend $\mathcal{O}(N)$ opérations au maximum.
-{% endnote %}
+{% endexercice %}
 {% details "preuve" %}
 
 > TBD le faire.
 
 {% enddetails %}
-
-### Ajout et suppression dans série de listes triées
-
-> TBD pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur.
-> exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>

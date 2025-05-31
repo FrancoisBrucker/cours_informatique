@@ -159,7 +159,7 @@ Notations :
             Utilisez $i^\star_{T}$ pour déterminer le successeur dans $\mathcal{T}_n$ d'un élément $T \in \mathcal{T}_n$ (le plus petit tableau de $\mathcal{T}_n$ strictement plus grand que $T$).
         \end{questionpartie}
         \begin{questionpartie}
-            Écrivez un algorithme de signature \verb|suivant(T: [entier]) → [entier]|  qui prend en entrée un élément $T$ de $\mathcal{T}_n$ et rend son successeur pour l'ordre lexicographique dans $\mathcal{T}_n$. Sa complexité devra être optimale (vous le justifierez).
+            Écrivez un algorithme de signature \verb|suivant(T: [entier]) → |$\emptyset$  qui prend en entrée un élément $T$ de $\mathcal{T}_n$ et {\bf le modifie} en son successeur (pour l'ordre lexicographique dans $\mathcal{T}_n$). Sa complexité devra être optimale (vous le justifierez).
         \end{questionpartie}
         \begin{questionpartie}
             En déduire un algorithme itératif dont vous donnerez la complexité permettant d'afficher à l'écran tous les éléments de $\mathcal{T}_n$.
@@ -182,13 +182,13 @@ Notations :
 
     \begin{partie}[Aléatoire]
         \begin{questionpartie}
-            Donnez la complexité de l'algorithme \verb|mélange(T:[entier])|.
+            Donnez la complexité de l'algorithme \verb|mélange(T:[entier]) → |$\emptyset$.
         \end{questionpartie}
         \begin{questionpartie}
-            Démontrez que si $T=[0, \dots, n-1]$, \verb|mélange(T)| va modifier $T$ en une permutation $T'$ qui peut être n'importe quel élément de $\mathcal{T}_n$.
+            Démontrez que si $T=[0, \dots, n-1]$, \verb|mélange(T: [entier]) → |$\emptyset$ va {\bf modifier} $T$ en une permutation $T'$ qui peut être n'importe quel élément de $\mathcal{T}_n$.
         \end{questionpartie}
         \begin{questionpartie}
-            Transformez l'algorithme \verb|mélange(T)| en un algorithme récursif de signature :\\ \verb|mélange_rec(T: [entier], i: entier)|, de telle sorte que \verb|mélange(T) = mélange_rec(T, 0)| (la variable interne $i$ de la boucle \verb|pour chaque| devient un paramètre de la fonction). 
+            Transformez l'algorithme \verb|mélange(T: [entier]) → |$\emptyset$ en un algorithme récursif de signature :\\ \verb|mélange_rec(T: [entier], i: entier) → |$\emptyset$, de telle sorte que l'exécution de \verb|mélange(T)| soit équivalente à l'exécution de \verb|mélange_rec(T, 0)| (la variable interne $i$ de la boucle \verb|pour chaque| devient un paramètre de la fonction). 
         \end{questionpartie}
         \begin{questionpartie}
         {\em\bf (question optionnelle)} Montrez que la probabilité que $T$ soit modifié en $T'$ par \verb|mélange(T)| est la même pour tout élément $T'$ de $\mathcal{T}_n$
