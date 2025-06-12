@@ -17,7 +17,7 @@ eleventyComputed:
 
 <!-- début résumé -->
 
-Une semaine pour comprendre le fonctionnement de python et l'utiliser pour développer ses propres programmes comme le ferai un informaticien.
+Une semaine pour comprendre le fonctionnement de python et l'utiliser pour développer ses propres programmes comme le ferait un informaticien.
 
 <!-- fin résumé -->
 

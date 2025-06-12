@@ -21,6 +21,8 @@ On va ici se concentrer sur les fichiers de configuration de bash. Chaque shell 
 Fichiers de configurations de zsh](https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/)
 {% endlien %}
 
+> TBD <https://www.youtube.com/watch?v=Yva_nTXzTTw>
+
 ## Fichiers de configurations de bash
 
 {% lien %}

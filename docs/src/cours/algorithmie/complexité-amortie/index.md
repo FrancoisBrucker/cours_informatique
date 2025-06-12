@@ -180,12 +180,12 @@ On reprend l'exercice de construction d'[une file avec deux piles](../structure-
 
 {% exercice %}
 
-Quelle est la complexité amortie de $m$ enfilage et défilage avec cette structure ?
+Quelle est la complexité amortie de l'enfilage et du défilage avec cette structure ?
 
 {% endexercice %}
 {% details "corrigé" %}
 
-On peut calculer la complexité totale par méthode comptable exactement comme note pile avec la méthode `k-dépile`{.language-}. En effet une fois enfilé une donnée ne sera placée dans la seconde pile qu'une seule fois.
+On peut calculer la complexité totale de $m$ enfilage et/ou défilage par méthode comptable exactement comme note pile avec la méthode `k-dépile`{.language-}. En effet une fois enfilé une donnée ne sera placée dans la seconde pile qu'une seule fois.
 
 On obtient la même fonction de coût et donc la même complexité amortie : $\mathcal{O}(1)$. Cette structure qui semblait un brin fantaisiste est donc tout aussi optimale que la structure classique de file en complexité.
 

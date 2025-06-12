@@ -48,18 +48,6 @@ Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?
 > - **Utilité** : les piles ça sert toujours. Ces exercices vous montrerons des cas classiques d'utilisation
 > - **Difficulté** : dur
 
-### File avec pile
-
-On reprend l'[exercice sur la création d'une file avec 2 piles](../structure-pile-file/#file-avec-pile){.interne}.
-
-{% exercice %}
-Montrer que la complexité amortie d'ajout et de suppression d'un élément dans la structure de file créée avec 2 pile est en $\mathcal{O}(1)$
-{% endexercice %}
-{% details "corrigé" %}
-On procède comme pour le compteur, on associe une complexité amortie de +2 lorsque l'on empile dans P1 et de 0 lorsque l'on empile dans P2.
-
-{% enddetails %}
-
 ### Parenthésage
 
 Soit $C$ une expression arithmétique avec des parenthèses et des crochets. On cherche à savoir si le parenthésage est équilibré :
