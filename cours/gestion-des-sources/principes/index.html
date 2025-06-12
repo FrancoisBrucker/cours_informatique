@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Enseignements en Troisième année</title>
+    <title>Principes</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Enseignements en Troisième année</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">enseignement</li>
-          
-            <li class="before:content-['•'] before:px-1">ECM</li>
-          
-        </ul>
-      </div>
+  <h1>Principes</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/enseignements/">Enseignements</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/ecm/">Enseignement à l&#39;ECM</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/ecm/3A/">Enseignements en Troisième année</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/principes/">Principes</a>
 
 </div></div>
 
@@ -109,17 +96,77 @@
     
   
 
-  
-<!-- début résumé -->
+  <blockquote>
+<p>TBD plan. Le principal avantage est de ne pas avoir peur des modifications.</p>
+</blockquote>
+<h2>Besoins</h2>
+<p>Supposons que notre projet soit de travailler sur un ensemble de documents (<em>eg</em> du code) regroupés au sein d'un répertoire de travail (<em>working directory</em>) dont le contenu évolue au cours du temps :</p>
+<p><img src="working_directory.png" alt="working directory"></p>
+<p>Pour pouvoir modifier ses documents sans avoir peur de faire des erreurs, on peut épisodiquement sauvegarder tout le contenu du répertoire de travail (faire un <em>snapshot</em>) :</p>
+<p><img src="snapshots.png" alt="snapshots"></p>
+<p>Cette première organisation permet de faire une sauvegarde avant une modification, ou de garder des versions précédentes du projet. En utilisant un dossier partagé (un drive par exemple) si le projet est effectué par plusieurs personnes, chaque snapshot du dossier est associé :</p>
+<ul>
+<li>au moment où cette sauvegarde à été effectuée : QUAND</li>
+<li>à l'utilisateur qui a sauvegardé le dossier : QUI</li>
+</ul>
+<p>Formalisons ceci avec la notion de <strong><em>commit</em></strong>, qui est constitué :</p>
+<ul>
+<li>d'une sauvegarde du répertoire de travail (un snapshot du working directory)</li>
+<li>de QUI a effectué cette sauvegarde</li>
+<li>de QUAND a été effectué cette sauvegarde</li>
+</ul>
+<p>Il nous manque cependant une information capitale, les versions antérieures qui ont permit de créer le document sauvé (les parents). Ceci permet de conserver un historique des modifications et de connaître ce qui différencie la version actuelle de son ou ses prédécesseurs.</p>
+<p>On a alors la définition finale d'un commit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>commit</em></strong> d'un projet est constitué :</p>
+<ul>
+<li>d'une sauvegarde du répertoire de travail (un snapshot du working directory)</li>
+<li>de QUI a effectué cette sauvegarde</li>
+<li>de QUAND a été effectué cette sauvegarde</li>
+<li>du (ou des) commits PARENT</li>
+<li>d'un descriptif des modifications effectuées (QUOI)</li>
+</ul>
+</div></div>
 
-Enseignements donnés en troisième année de l'Ecole Centrale Marseille.
+<p>On obtient alors une structure de sauvegarde sous la forme d'<a href="https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique">un DAG</a></p>
+<blockquote>
+<p>TBD expliciter pourquoi on a pas juste un arbre. combinaison de versions issues de 2 utilisateurs différents par exemple (merge)</p>
+</blockquote>
+<ol>
+<li>working dir</li>
+<li>sauvegardes : snapshot; Commit: qui</li>
+<li>sauvegardes ordonnées : Commit: quand [structure de liste]</li>
+<li>sauvegardes diff pour connaître le doc modifié : parent et Commit: quoi [structure d'arbre]</li>
+<li>s'y retrouver : Commit: qui, branches et head</li>
+<li>choisir ce qu'on stocke : index</li>
+</ol>
+<blockquote>
+<p>TBD DAG avec les merge</p>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>que faut-il pourvoir faire et comment le faire
+<ol>
+<li>diagrammes [Tout avec des schémas et des arbres/graphes]: commit / branches</li>
+<li>merge (rebase) / clone (que la branche main en local / tags (et semver) / worktrees ?. Toutes les branches du remote).</li>
+<li>...</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<ul>
+<li><a href="https://semver.org/">https://semver.org/</a> pour les tags</li>
+<li>faire des schémas</li>
+</ul>
+</blockquote>
 
-<!-- fin résumé -->
-
-<ul><li><a href="/cours_informatique/enseignements/ecm/3A/adad/">Enseignements dans la filière adad</a><ul><li><a href="/cours_informatique/enseignements/ecm/3A/adad/data-viz/">Analyse des données</a></li></ul></li>
-<li><a href="/cours_informatique/enseignements/ecm/3A/do-it/">Enseignements dans le parcours do-it</a><ul><li><a href="/cours_informatique/enseignements/ecm/3A/do-it/git-et-site/">Gestion des source et site do-it</a></li>
-<li><a href="/cours_informatique/enseignements/ecm/3A/do-it/devOPS/">DevOps</a></li>
-<li><a href="/cours_informatique/enseignements/ecm/3A/do-it/programmation-par-les-tests/">Programmation par les tests</a></li></ul></li></ul>
 
 </article>
     </main>
