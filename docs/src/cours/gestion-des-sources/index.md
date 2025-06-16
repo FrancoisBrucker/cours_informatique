@@ -5,6 +5,9 @@ title: Gestion du code source
 tags: ["cours", "projet"]
 authors:
   - François Brucker
+eleventyNavigation:
+    prerequis:
+        - "/cours/coder-et-développer/connaissances-système-minimales/fichiers-navigation/"
 resume: "Comment gérer les sources d'un projet avec git et github."
 
 eleventyComputed:
@@ -17,10 +20,11 @@ eleventyComputed:
 Comment gérer le code source d'un projet avec git et github.
 
 {% lien %}
-[Qu'est ce que la gestion des sources avec github ?](https://www.youtube.com/watch?v=w3jLJU7DT5E)
+- [Qu'est ce que la gestion des sources avec github ?](https://www.youtube.com/watch?v=w3jLJU7DT5E)
+- [Utilité de git pour tous](https://www.atlassian.com/fr/git/tutorials/why-git)
 {% endlien %}
 
-La gestion du code source (_Source Control Management_) est bien sûr utilisée massivement en informatique, mais les méthodes et techniques mises en œuvre fonctionnent pour tout projet où l'on doit utiliser/produire des documents qui sont modifiés au cours du temps.
+La gestion du code source (_Source Control Management_) est bien sûr utilisée massivement en informatique, mais les méthodes et techniques mises en œuvre fonctionnent pour tout projet où l'on doit utiliser/produire des documents qui sont modifiés au cours du temps. C'est un cadeau fait par les informaticiens au monde (ne le détruisez pas comme la gestion de projet agile...).
 
 Un des bénéfices d'une gestion des documents bien comprise est que l'on peut :
 
@@ -112,6 +116,7 @@ Vous avez vu les principales qualités d'un logiciel de gestion de sources :
 
 ## Gérer ses sources
 
+> TBD noms : Git flow ? Github flow ? Feature branches ? Push to prod ?
 > 4. workflow :
 >     1. github-flow : peut avoir plein de branches features en parallel mais une seule branche develop
 >     2. git-flow (rigide et plein de branches) <https://leanpub.com/git-flow/read>
@@ -131,6 +136,8 @@ Pour participer à un repo github/gitlab il y a quelques us et coutumes à respe
 ## Git
 
 > TBD expliquer porcelaine/plomberie
+> TBD un tag c'est un objet. Commit, tree ou blob.
+
 
 ### Porcelaine
 
@@ -185,9 +192,18 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.
 
+## Histoire
+
+>TBD histoire de la gestion des sources :
+>
+> - <https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee>
+> - <https://blog.tarynmcmillan.com/a-history-of-version-control>
+>
+> TBD : à étoffer et à mettre en perspective
+
 ## TBD
 
->
+> - lister tous tous les commit de la base : <https://stackoverflow.com/a/4787030>
 > - rebase les différentes commandes ?
 > - jouer avec le DAG des commits
 >   - detached head : <https://www.cloudbees.com/blog/git-detached-head>
@@ -214,7 +230,8 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 >   - cherry pick : <https://www.youtube.com/watch?v=i657Bg_HAWI> (attention : <https://www.youtube.com/watch?v=WPCxtFkLa7g>)
 >
 > TBD :
->
+> - pull --rebase sinon merge à repetition : <https://www.youtube.com/watch?v=xN1-2p06Urc> ; <https://www.youtube.com/watch?v=DkWDHzmMvyg>
+> - merge conflict : <https://www.youtube.com/watch?v=DloR0BOGNU0>
 > - cherry-pick attention ! : <https://stackoverflow.com/questions/880957/pull-all-commits-from-a-branch-push-specified-commits-to-another/881014#881014>
 > - <https://www.reddit.com/r/git/comments/mq9wh2/is_there_any_way_to_permanently_remove_commits/> et <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository>
 > - uncompress utilitaire : `pigz` <https://stackoverflow.com/a/3178638>

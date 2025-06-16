@@ -907,7 +907,7 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 
 > TBD hasard et algorithmes randomisés.
 
-
+> TBD méthode probabiliste. premier exemple : <https://www.youtube.com/watch?v=4weMmFZSBtI>
 {% aller %}
 [Mélanger un tableau](./projet-mélange){.interne}
 {% endaller %}

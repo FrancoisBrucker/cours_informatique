@@ -37,6 +37,8 @@ Une fois les bases acquises, terminez cette partie en faisant le tutoriel de pyt
 
 ## <span id="s-équiper"></span> S'équiper pour le développement
 
+<!-- > TBD déplacer dans un cours système. -->
+
 Avant de pouvoir écrire des programmes conséquents il faut comprendre comment est organisé votre ordinateur et pouvoir minimalement interagir avec son système d'exploitation.
 
 ### Connaissances système minimales
