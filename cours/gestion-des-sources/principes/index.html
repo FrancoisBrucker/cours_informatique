@@ -97,153 +97,15 @@
   
 
   <blockquote>
-<p>TBD plan. Le principal avantage est de ne pas avoir peur des modifications.</p>
+<p>TBD plan</p>
 </blockquote>
 <h2>Besoins</h2>
-<h3>Working directory</h3>
-<p>Supposons que notre projet soit de travailler sur un ensemble de documents (<em>eg</em> du code) regroupés au sein d'un répertoire de travail (<em>working directory</em>) dont le contenu évolue au cours du temps :</p>
-<p><img src="working_directory.png" alt="working directory"></p>
-<h3>Snapshots</h3>
-<p>Pour pouvoir modifier ses documents sans avoir peur de faire des erreurs, on peut épisodiquement sauvegarder tout le contenu du répertoire de travail (faire un <em>snapshot</em>) :</p>
-<p><img src="snapshots.png" alt="snapshots"></p>
-<h3>Tags</h3>
-<p>Cette première organisation permet de faire une sauvegarde avant une modification, ou de garder des versions précédentes du projet. Le nom de la sauvegarde permet de tracer les étapes importantes du projet (<code>version1</code> par exemple dans la figure ci-dessus).</p>
-<p>Le nom du fichier de sauvegarde étant unique, il ne permet pas de stocker plus d'une information (la version <code>1.0</code> pouvant être la version courante du projet par exemple). Une première amélioration de notre structure est d'ajouter des <strong>labels</strong> (<em>tags</em>) qui permettent de caractériser, si besoin, des sauvegardes :</p>
-<p><img src="tags.png" alt="tags"></p>
-<p>La version <code>1.0</code> à son propre tag. Le tag <code>main</code> correspond à la version courante (par exemple une correction de bug de la <code>1.0</code>) et le tag <code>dev</code> àla version de développement avec des ajouts de fonctionnalités par rapport à la version courante.</p>
-<h3>Commits</h3>
-<p>En utilisant un dossier partagé (un drive par exemple) si le projet est effectué par plusieurs personnes, chaque snapshot du dossier est associé :</p>
-<ul>
-<li>au moment où cette sauvegarde à été effectuée : QUAND</li>
-<li>à l'utilisateur qui a sauvegardé le dossier : QUI</li>
-</ul>
-<p>Formalisons ceci avec la notion de <strong><em>commit</em></strong>, qui est constitué :</p>
-<ul>
-<li>d'une sauvegarde du répertoire de travail (un snapshot du working directory)</li>
-<li>de QUI a effectué cette sauvegarde</li>
-<li>de QUAND a été effectué cette sauvegarde</li>
-</ul>
-<p><img src="commits.png" alt="commit"></p>
-<h3>DAG</h3>
-<p>Il nous manque cependant une information capitale, les versions antérieures qui ont permit de créer le document sauvé (les parents). Ceci permet de conserver un historique des modifications et de connaître ce qui différencie la version actuelle de son ou ses prédécesseurs.</p>
-<p>On a alors la définition finale d'un commit :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un <strong><em>commit</em></strong> d'un projet est constitué :</p>
-<ul>
-<li>d'une sauvegarde du répertoire de travail (un <strong>snapshot</strong> du working directory)</li>
-<li>de <strong>QUI</strong> a effectué cette sauvegarde</li>
-<li>de <strong>QUAND</strong> a été effectué cette sauvegarde</li>
-<li>du (ou des) commits <strong>PARENT(S)</strong></li>
-<li>d'un descriptif des modifications effectuées (<strong>QUOI</strong>)</li>
-</ul>
-</div></div>
-
-<p>Et d'un tag :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un <strong><em>tag</em></strong> est une référence vers un commit donné. Il est constitué :</p>
-<ul>
-<li>d'un nom</li>
-<li>d'un lien vers le commit qu'il référence</li>
-</ul>
-</div></div>
-
-<p>On obtient alors une structure de sauvegarde sous la forme d'<a href="https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique">un DAG</a> avec le premier commit faisant office de <strong>racine</strong> (le seul élément du graphe des commit à ne pas avoir de parents).</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Si habituellement un commit n'a qu'un seul parent (la version précédente du document), il peut arriver qu'un commit ait plusieurs, dans le cas d'un synthèse de plusieurs documents par exemple.</p>
-</div></div>
-
-<p><img src="dag.png" alt="DAG"></p>
-<h3>Branches</h3>
-<p>Notre structure de sauvegarde permet de stocker tout ce qui est nécessaire pour retrouver un commit particulier. Cependant cette structure ne permet pas encore de gérer les lignes de développement qui permettent de diriger l'évolution du projet (par exemple en code, la ligne de développement dédiée aux corrections de bug de la version en production et la ligne dédiée aux ajout de nouvelles fonctionnalités). Pour cela, on peut utiliser une référence particulière : la branche :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une <strong><em>branche</em></strong> est une référence vers un commit donné. L'historique d'une branche est constitué du commit qu'elle référence et de tous ses ancêtres.</p>
-<p>Un utilisateur accède à la structure de sauvegarde via les branches qui constituent les différentes évolutions du projet.</p>
-</div></div>
-
-<p>À la différence d'un tag qui référence un commit particulier, une branche représente une histoire :</p>
-<ul>
-<li>le présent : la référence pointée par la branche,</li>
-<li>le passé : ses ancêtres</li>
-<li>le futur : la référence de la branche change à chaque ajout de commit : le prochain commit dont le parent sera cette branche sera la future référence de celle-ci</li>
-</ul>
-<p>Dans le graphique ci-dessous on a remplacé les deux tag <code>main</code> et <code>dev</code> par des branches :</p>
-<p><img src="branches.png" alt="branches"></p>
-<p>Les branches constituent le lien privilégié entre l'utilisateur et la structure. Les commits constituent la structure interne de sauvegarde et un utilisateur n'y accède jamais directement. Il est donc indispensable que toute feuille de notre structure soit associé à une branche pour que l'on puisse accéder à tout commit de la structure en remontant par ses descendants.</p>
-<h3>Head</h3>
-<p>Notre structure de stockage est complète. Il nous reste à faire en sorte que les échanges entre cette structure de commits et le répertoire de travail soit aisé.</p>
-<p>On dispose pour cela d'une référence sur la branche courante (ou un commit, mais c'est plus rare), appelé <strong><em>HEAD</em></strong>.</p>
-<p><img src="head.png" alt="head"></p>
-<p>Dans la figure précédente, le pointeur courant est placé sur la branche <code>dev</code>. Si l'on décide de faire un commit, celui ci se fera avec <code>HEAD</code> comme parent. Puis <code>HEAD</code> (et la branche sur laquelle il pointe) se déplace sur le nouveau commit qui devient le commit courant :</p>
-<p><img src="branche-commit.png" alt="branche-commit"></p>
-<p>Les fichiers du working directory sont égaux aux fichiers du commit.</p>
-<p>Si l'on décide de changer de branche, le pointeur HEAD se déplace puis le working directory est mis à jour avec les fichiers stockés dans le commit. On peut ensuite continuer le développement depuis cette branche :</p>
-<p><img src="branche-checkout.png" alt="branche-checkout"></p>
-<p>Enfin, on peut déplacer le pointeur courant sur un commit particulier, par exemple la version <code>1.0</code> :</p>
-<p><img src="brancheless-head.png" alt="brancheless-head"></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Le pointeur courant <strong><em>HEAD</em></strong> est une référence vers une branche ou un commit donné. Il permet de faire le lien entre commit et working directory.</p>
-</div></div>
-
-<h3>Index</h3>
-<p>Enfin, lors d'un commit on a pas forcément envie de :</p>
-<ul>
-<li>tout sauvegarder (par exemple des fichiers de mots de passe ou des fichiers de configurations)</li>
-<li>sauvegarder tout en une fois (de faire plusieurs <a href="https://en.wikipedia.org/wiki/Atomic_commit">commits atomiques</a> plutôt qu'un gros commit regroupant plusieurs modification)</li>
-</ul>
-<p>Enfin, il peut être difficile de comparer ce qui est sauvé de ce qui est nouveau.</p>
-<p>Pour cela on ajoute un <em>tampon</em> entre la structure de sauvegarde et le répertoire courant appelé l'<strong><em>index</em></strong>.</p>
-<p><img src="index.png" alt="index"></p>
-<p>Après un commit, l'index contient l'ensemble des fichiers sauvé dans le commit. Si ce fichier est également dans le répertoire de travail, ils seront tous les 3 identiques. Tous les fichiers du répertoire de travail ne sont cependant pas forcément suivis :</p>
-<p><img src="index-post-commit.png" alt="index post commit"></p>
-<p>L'utilisateur continue de travailler sur son dossier de travail, les fichiers de l'index et du dossier de travail divergent (l'utilisateur travaille sur les fichiers <code>fichier1.txt</code> et <code>fichier2.txt</code>) :</p>
-<p><img src="index-travail-commit.png" alt="index travail commit"></p>
-<p>Pour préparer le nouveau commit, l'utilisateur place dans l'index les fichiers modifiés qu'il veut sauvegarder (les autres sont déjà dans l'index), ici :</p>
-<ul>
-<li>il ajoute  <code>fichier1.txt</code></li>
-<li>il décide également d'ajouter  <code>fichier2.txt</code></li>
-</ul>
-<p><img src="index-pre-commit.png" alt="index pré commit"></p>
-<p>Remarquez qu'un fichier du dossier n'est toujours pas suivi.</p>
-<p>On peut maintenant faire le commit, l'intégralité de l'index est commit :</p>
-<p><img src="index-commit.png" alt="index commit"></p>
-<p>Et on se retrouve à nouveau dans la situation post-commit.</p>
-<p>Enfin, si l'on change HEAD, les fichiers du commit sont placés dans l'index qui eux-même sont synchronisés avec l'index :</p>
-<p><img src="index-revert-commit.png" alt="index revert commit"></p>
-<p>Notez que comme <code>fichier2.txt</code> n'est pas dans l'index il n'est pas suivi par notre structure et n'est donc pas modifié dans le répertoire de travail.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Nous somme dans un cas où HEAD n'est pas associé à une branche, on dit qu'il est <em>branchless</em>.</p>
+<p><a href="besoins/" class="interne">Besoins</a></p>
 </div></div>
 
 <h2>Structure distribuée</h2>
@@ -279,21 +141,14 @@
 <li>de continuer un projet avec une nouvelle équipe, il suffit de copier <em>origin</em></li>
 </ul>
 <h2>Usage</h2>
-<blockquote>
-<p>TBD faire les mêmes usages avec github/github desktop/git ligne de commande
-2. que faut-il pourvoir faire et comment le faire</p>
-<ol>
-<li>diagrammes [Tout avec des schémas et des arbres/graphes]: commit / branches</li>
-<li>merge (rebase) / clone (que la branche main en local / tags (et semver) / worktrees ?. Toutes les branches du remote).</li>
-<li>...</li>
-</ol>
-</blockquote>
-<blockquote>
-<ul>
-<li></li>
-<li>faire des schémas</li>
-</ul>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="usages/" class="interne">Usages</a></p>
+</div></div>
+
 
 
 </article>

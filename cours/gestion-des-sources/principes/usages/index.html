@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Usages</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Usages</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/principes/">Principes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/principes/usages/">Usages</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <blockquote>
+<p>TBD plan</p>
+</blockquote>
+<h2>Faire évoluer le projet : commits et diff</h2>
+<p>L'utilisation courante d'un système de gestion des sources est de faire progresser une branche donnée par des commits successifs sur celle-ci.</p>
+<p>L'évolution est caractérisé par les différences entre le parent et l'enfant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On appelle <strong><em><code>diff</code></em></strong> entre deux commits les différences entre eux :</p>
+<ul>
+<li>les fichiers présent dans un commit et pas dans un autre</li>
+<li>les lignes différentes dans un fichier présent dans les deux commits</li>
+</ul>
+</div></div>
+
+<p>Suivre le diff d'une évolution allant de la branche actuelle au premier commit montre itérativement les modifications apportée au court du temps. Cette notion de <code>diff</code> est cruciale pour comprendre comment on peut manipuler et fusionner plusieurs commit entre eux.</p>
+<h2>Travailler avec des Branches</h2>
+<p>Les branches et leurs historiques représentent les lignes de développement du projet et sont par là les uniques moyens d'accéder à la structure de sauvegarde (hors maraboutage expert pour réparer une bêtise).</p>
+<p>Chaque branche a ainsi une raison d'être : branche principale, de développement d'une <em>feature</em> particulière, d'un participant, ... Il n'y a pas de règle particulière sur ce que représente une branche <strong>mais</strong> elle doit avoir une signification pour l'équipe. Enfin une branche devenue inutile doit disparaître (il suffit de supprimer la référence).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'historique d'un projet doit contenir uniquement ce qui est nécessaire pour comprendre son état actuel, c'est à dire ses branches (l'état actuel) et leurs historiques, le reste est inutile.</p>
+</div></div>
+
+<h3>Switch</h3>
+<p>Changer de branche est simple, il suffit de déplacer le pointeur HEAD d'une branche à l'autre. N'hésitez pas à créer de nouvelles branches pour tester des fonctionnalités et :</p>
+<ul>
+<li>les faire disparaître si l'idée n'aboutie pas</li>
+<li>la fusionner avec une branche principale si l'idée s'avère bonne</li>
+</ul>
+<h3>Fusion de branches</h3>
+<p>La <strong><em>fusion de branche</em></strong> (<em>merge</em>), consiste à rassembler le contenu de plusieurs branches en une seule. Cette opération se fait en plusieurs étapes, illustrons la en prenant l'exemple classique de la fusion de la branche de développement sur la branche principale.</p>
+<h4>1. Position de départ</h4>
+<p>On vient de terminer le développement de la branche de développement actuelle et on veut la combiner à la branche principale :</p>
+<p><img src="merge-1.png" alt="merge 1"></p>
+<h4>2. branche accueil</h4>
+<p>Pour effectuer la fusion, on commence par se placer sur la branche qui va accueillir la fusion, ici la branche principale :</p>
+<p><img src="merge-2.png" alt="merge 2"></p>
+<p>On remarque qu'il y a deux différences :</p>
+<ul>
+<li>le fichier <code>fichier2.txt</code> n'existe pas dans la branche principale</li>
+<li>le fichier <code>fichier1.txt</code> est différent pour les 2 branches</li>
+</ul>
+<h4>3. fusion des deux branches</h4>
+<p>La fusion peut maintenant être effectuée. On procède comme suit :</p>
+<ol>
+<li>on détermine l'ancêtre commun le plus récent entre les 2 branches à fusionner : ici le commit ayant pour tag <code>1.0</code> (dans certains cas pathologique il peut y avoir plusieurs possibilité et dans ce cas on en prend un au hasard)</li>
+<li>on effectue le <code>diff</code> entre l'ancêtre commun et chacune des branches à fusionner : ceci donne les différences entre les 2 évolutions</li>
+<li>on combine ces différences en une nouvelle évolution</li>
+<li>on effectue le commit de la fusion</li>
+</ol>
+<p>À la fin de ces 4 étapes, on se trouve dans la position suivante :</p>
+<p><img src="merge-3.png" alt="merge 3"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Ce type de fusion est appelée <strong><em>3-way merge</em></strong> car il prend en compte 3 commits différents : les 2 branches à fusionner et l'ancêtre commun.</p>
+</div></div>
+
+<p>Lorsque l'ancêtre commun est un des 2 commit, par exemple si l'on veut maintenant fusionner la branche <code>dev</code> et et la branche <code>main</code>, tout devient plus simple : il suffit de déplacer la branche ancêtre sur la branche descendante sans nécessité de créer un nouveau commit :</p>
+<p><img src="merge-4.png" alt="merge 4"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Ce type de fusion est appelée <strong><em>fast-forward merge</em></strong> (ou rarement <strong><em>2-way merge</em></strong>) : une branche à fusionner est l'ancêtre commun.</p>
+</div></div>
+
+<h3>Rebase</h3>
+<p>Le principal soucis avec la fusion de branche est qu'elle va induire des commits ayant 2 parents. L'historique des commits ne sera alors plus linéaire et sera plus difficile à visualiser. On peut palier ce problème en utilisant une opération de <strong><em>rebase</em></strong>. Cette opération se fait en plusieurs étapes, illustrons la en prenant l'exemple classique du rebase de la branche de développement sur la branche principale.</p>
+<h4>1. Position de départ</h4>
+<p>Tout commence comme un merge. On vient de terminer le développement de la branche de développement actuelle et on veut la combiner à la branche principale :</p>
+<p><img src="merge-1.png" alt="merge 1"></p>
+<p>Cependant, contrairement à un merge on peut placer les modifications de la branche <code>dev</code> <strong>après</strong> la branche main. Pour cela, on commence par déplacer le pointeur HEAD <strong>sur le commit</strong> de la branche d'accueil, ici la branche principale :</p>
+<p><img src="rebase-1.png" alt="rebase 1"></p>
+<p>On remarque qu'il y a deux différences :</p>
+<ul>
+<li>le fichier <code>fichier2.txt</code> n'existe pas dans la branche principale</li>
+<li>le fichier <code>fichier1.txt</code> est différent pour les 2 branches</li>
+</ul>
+<h4>2. Rebase</h4>
+<p>Puis, à partir de l'ancêtre commun, les <code>diff</code> des commits (avec leurs ancêtres) de la branche <code>dev</code> sont rejoués sur la branche <code>main</code>. Notez que  l'on ne peut pas juste déplacer les commits puisque l'on veut combiner la branche main aux modifications (diff) effectués par la branche dev :</p>
+<p><img src="rebase-2.png" alt="rebase 2"></p>
+<p>Enfin :</p>
+<ol>
+<li>la branche <code>dev</code> est placé sur le commit du pointeur courant</li>
+<li>le pointeur courant est replacé sur la branche <code>dev</code></li>
+</ol>
+<p><img src="rebase-3.png" alt="rebase 3"></p>
+<p>Les précédent commits de la branche dev avant rebase ne sont plus accessibles via une branche mais sont par défaut toujours présent dans la structure de sauvegarde (qui garde tout).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On appelle <strong><em>rebase</em></strong> d'une branche $A$ sur une autre $B$ le fait de rejouer les diff des commit de la branche $A$ sur la branche $B$ depuis leur ancêtre commun.</p>
+</div></div>
+
+<h2>Nettoyage de base</h2>
+<p>Les commit que l'on ne peut plus atteindre via une branche ou son historiques sont inutiles. On peut donc : soit les ignorer soit les effacer de la base.</p>
+<p>Dans le cas général on ne fait que les ignorer et de représenter uniquement la DAG &quot;utile&quot;. Par exemple après un rebase, on représentera plutôt l'arbre suivant que le précédent :</p>
+<p><img src="rebase-4.png" alt="rebase 4"></p>
+<h2>Origin</h2>
+<blockquote>
+<p>clone
+local and remote branches: pas les même. Les arbres peuvent différer mais pas les commits liées aux branches remote et locales Ne pas pousser sur origin des branches locales
+checkout / pull / push
+attention réécriture d'historique : uniquement en local. Interactive et squash.
+(le rebase ne va pas pousser les commit non accessibles en remote)</p>
+</blockquote>
+<h2>Modifier l'historique</h2>
+<blockquote>
+<ul>
+<li>squash</li>
+<li>revert</li>
+<li>reset</li>
+<li>cherry pick</li>
+</ul>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
