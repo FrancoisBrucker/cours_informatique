@@ -18,7 +18,7 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 
 > TBD montrer avec openssh comment le faire (voir serious cryptography)
 > TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
-> TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU> double ratchet algorithm. Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>
+> TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU> double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>
 
 ## Cryptographie
 

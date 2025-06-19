@@ -20,8 +20,10 @@ eleventyComputed:
 Comment gérer le code source d'un projet avec git et github.
 
 {% lien %}
+
 - [Qu'est ce que la gestion des sources avec github ?](https://www.youtube.com/watch?v=w3jLJU7DT5E)
 - [Utilité de git pour tous](https://www.atlassian.com/fr/git/tutorials/why-git)
+
 {% endlien %}
 
 La gestion du code source (_Source Control Management_) est bien sûr utilisée massivement en informatique, mais les méthodes et techniques mises en œuvre fonctionnent pour tout projet où l'on doit utiliser/produire des documents qui sont modifiés au cours du temps. C'est un cadeau fait par les informaticiens au monde (ne le détruisez pas comme la gestion de projet agile...).
@@ -47,9 +49,11 @@ Dire que l'on fait de la gestion des sources ou que l'on connaît [git](https://
 
 ## Github
 
+> TBD voir les diff + format.
+
 > 3. git
+>     1. avec Github
 >     1. idem avec Github desktop
->     2. idem avec Github
 
 <https://github.com/> est une interface au logiciel de gestion de sources [git](https://fr.wikipedia.org/wiki/Git). Il en existe d'autres, comme <https://gitlab.com/> par exemple.
 
@@ -73,31 +77,6 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite,
         - un vrai nom
         - une vrai photo (rechargez la page pour avoir la nouvelle photo)
 
-### <span id="utilisation-desktop-github"></span> Github desktop
-
-Travailler depuis le site uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est [git](https://fr.wikipedia.org/wiki/Git). Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.
-
-{% lien %}
-
-Il suffit d'aller sur cette page : <https://desktop.github.com/> pour télécharger puis installer l'application.
-
-{% endlien %}
-
-### Projet avec Github desktop
-
-On va vous apprendre les bases pour gérer et créer un projet git en utilisant l'application desktop.
-
-{% aller %}
-[Comment créer un projet avec l'application desktop](./projet-github-desktop){.interne}
-{% endaller %}
-
-Vous avez vu les principales qualités d'un logiciel de gestion de sources :
-
-- faire un clone
-- notion de gestion distribuée
-- le stage
-- faire un rebase
-
 ### <span id="tuto-github"></span> Utilisation de github
 
 On va aller un peu plus loin en voyant, directement avec le site les principales fonctionnalités de git.
@@ -113,6 +92,29 @@ Vous avez vu les principales qualités d'un logiciel de gestion de sources :
 - fusionner des branches en résolvant des conflits
 - voir l'historique du projet
 - comment ajouter des membres à un projet
+
+### <span id="utilisation-desktop-github"></span> Github desktop
+
+Travailler depuis le site uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est [git](https://fr.wikipedia.org/wiki/Git). Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.
+
+{% lien %}
+
+Il suffit d'aller sur cette page : <https://desktop.github.com/> pour télécharger puis installer l'application.
+
+{% endlien %}
+
+On va reprendre le projet précédent pour créer son projet chez soit ainsi que l'origin en utilisant l'application desktop.
+
+{% aller %}
+[Comment créer un projet avec l'application desktop](./projet-github-desktop){.interne}
+{% endaller %}
+
+Vous avez vu les principales qualités d'un logiciel de gestion de sources :
+
+- faire un clone
+- notion de gestion distribuée
+- le stage
+- faire un rebase
 
 ## Gérer ses sources
 
@@ -137,7 +139,16 @@ Pour participer à un repo github/gitlab il y a quelques us et coutumes à respe
 
 > TBD expliquer porcelaine/plomberie
 > TBD un tag c'est un objet. Commit, tree ou blob.
+> TBD worktrees et stash
+> TBD utiliser switch et pas checkout pour passer de branches en branches (chekout pour les commits particulier: headless ?)
+> TBD : index = staging area.
+> TBD diff format et différents algos
 
+### Installation et configuration
+
+{% aller %}
+[Configurer et initialiser ses projets git](./git-init){.interne}
+{% endaller %}
 
 ### Porcelaine
 
@@ -163,12 +174,6 @@ Il vous faudra installer le programme `git` en ligne de commande.
 {% info %}
 L'installation et la configuration de git n'est pas très technique. Cela vaut le coup de de le faire ne serait-ce que pour pouvoir utiliser les magnifiques plugins de vscode.
 {% endinfo %}
-
-#### Installation et configuration
-
-{% aller %}
-[Configurer et initialiser ses projets git](./git-init){.interne}
-{% endaller %}
 
 #### Utilisation de git avec vscode
 
@@ -217,6 +222,9 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 >   - fetch et push différents : <https://stackoverflow.com/questions/31747072/will-remote-url-for-fetch-and-push-be-different>
 >   - pas forcément github ou un autre provider. Un autre ordi fait l'affaire, même juste le sien : <https://www.reddit.com/r/git/comments/5giehg/is_it_possible_to_have_a_remote_thats_on_the_same/>
 > - merge :
+>   - alignement, les algorithmes : dire que c'est comme l'alignement de séquence mais avec des lignes (ref)
+>   - meilleur ancêtre commun <https://git-scm.com/docs/git-merge-base> <https://stackoverflow.com/a/73171967>
+
 >   - conflits : <https://githowto.com/resolving_conflicts>
 >   - 3-way merge : <https://tonyg.github.io/revctrl.org/ThreeWayMerge.html>
 > - réécrire l'histoire : <https://www.atlassian.com/git/tutorials/rewriting-history>
