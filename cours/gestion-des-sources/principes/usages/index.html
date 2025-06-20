@@ -130,6 +130,7 @@
 <p>L'historique d'un projet doit contenir uniquement ce qui est nécessaire pour comprendre son état actuel, c'est à dire ses branches (l'état actuel) et leurs historiques, le reste est inutile.</p>
 </div></div>
 
+<p>Parmi toutes les branches, la branche <code>main</code> est celle qui va contenir la branche de développement principale.</p>
 <h3>Switch</h3>
 <p>Changer de branche est simple, il suffit de déplacer le pointeur HEAD d'une branche à l'autre. N'hésitez pas à créer de nouvelles branches pour tester des fonctionnalités et :</p>
 <ul>
@@ -214,19 +215,79 @@
 </div></div>
 
 <h2>Nettoyage de base</h2>
-<p>Les commit que l'on ne peut plus atteindre via une branche ou son historiques sont inutiles. On peut donc : soit les ignorer soit les effacer de la base.</p>
-<p>Dans le cas général on ne fait que les ignorer et de représenter uniquement la DAG &quot;utile&quot;. Par exemple après un rebase, on représentera plutôt l'arbre suivant que le précédent :</p>
+<p>Les commit que l'on ne peut plus atteindre via une branche ou son historiques sont inutiles. On peut donc : soit les ignorer soit les effacer de la base.
+7
+Dans le cas général on ne fait que les ignorer et de représenter uniquement la DAG &quot;utile&quot;. Par exemple après un rebase, on représentera plutôt l'arbre suivant que le précédent :</p>
 <p><img src="rebase-4.png" alt="rebase 4"></p>
 <h2>Origin</h2>
+<p>Que l'on travaille à plusieurs ou seul, posséder une version &quot;<em>partageable</em>&quot; de la structure de sauvegarde est appréciable. Parmi tous les avantages, on peut citer :</p>
+<ul>
+<li>de synchroniser les changements lorsque l'on travaille en équipe,</li>
+<li>de permettre à des personnes tierces d'utiliser le projet en le <em>clonant</em> et de proposer des amélioration via des <em>pull request</em></li>
+<li>de <em>cloner</em> un projet qui nous intéresse</li>
+<li>...</li>
+</ul>
+<p>Un projet peut-être en lien avec de nombreuses copies distantes de celui-ci, que l'on  appelle <strong><em>remote</em></strong>. Le projet y accède via son <a href="/cours_informatique/cours/web/anatomie-url/" class="interne">url</a> (adresse internet ou dossier sur le même disque dur).</p>
+<h3>Clone</h3>
+<p>Lorsque l'on travaille à plusieurs sur un projet on a coutume de partager, <strong><em>en plus</em></strong> de sa structure de sauvegarde personnelle, une structure commune nommée <em>origin</em> par convention qui regroupe les branches utiles à tous. Pour cela, on commence par désigner la structure de  sauvegarde partagée que l'on appelle <code>origin</code>. Ensuite, chaque participant au projet le <strong><em>clone</em></strong> :</p>
+<p><img src="origin-1.png" alt="origin"></p>
+<p>L'opération de clonage effectue les opérations suivantes :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'opération de <strong><em>cloner</em></strong> un projet consiste à :</p>
+<ol>
+<li>copier sa structure de donnée</li>
+<li>associer <code>origin</code> à l'url de l'origine dans la copie</li>
+<li>si le pointeur HEAD de l'origin est sur une branche, la créer dans la structure copiée</li>
+<li>placer le pointeur HEAD de la copie au même endroit (commit ou branche) que l'origine</li>
+<li>garder une références de toutes les branches de l'origine</li>
+</ol>
+</div></div>
+
+<p>On remarque que l'on a besoin que de la structure de sauvegarde pour l'origine, l'index et le répertoire de travail sont inutiles.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'opération de <code>fork</code> <em>ressemble</em> au clonage mais <a href="https://github.com/orgs/community/discussions/35849">le but est différent</a>. Dans un clonage tous les participants interagissent directement avec l'origine, alors  qu'un projet résultant d'un fork peut être vu comme un nouveau projet (il n'est pas en relation directe avec le projet initial).</p>
+</div></div>
+
+<h3>Branches locales et distantes</h3>
+<p>Après un clonage, la structure de sauvegarde locale contient, en plus du DAG des commits de l'<code>origin</code>, des références à la structure <code>origin</code> et à ses branches. Les branches de l'<code>origin</code> sont dites <strong><em>distantes</em></strong> (<em>remote</em>). Notez que si la copie contient un lien vers l'original le serveur origin n'a lui aucune information de la copie locale, il ne <em>sait</em> même pas qu'elle existe.</p>
+<p>Au cours du temps de l'évolution des branches sur la sauvegarde locale et distantes ces informations peuvent diverger :</p>
+<ul>
+<li>des commits peuvent insérées sur la copie et sur l'origine</li>
+<li>des branches peuvent être crées sur la copie et sur l'origine</li>
+</ul>
+<p>On se retrouve alors dans la configuration suivante :</p>
 <blockquote>
-<p>clone
-local and remote branches: pas les même. Les arbres peuvent différer mais pas les commits liées aux branches remote et locales Ne pas pousser sur origin des branches locales
-checkout / pull / push
-attention réécriture d'historique : uniquement en local. Interactive et squash.
+<p>TBD montrer des divergences et des branches locales non poussées sur l'origin.</p>
+</blockquote>
+<p>Comme on a fait <strong>qu'ajouter</strong> des commits et des références il est possible de synchroniser les deux structures :</p>
+<ul>
+<li>par des ajouts de commits/branches</li>
+<li>des merges si nécessaire sur des branches divergentes</li>
+</ul>
+<h4>Ajout de commits branches</h4>
+<h4>merge de branches locales et distantes</h4>
+<h3>Interagir avec l'<em>origin</em></h3>
+<blockquote>
+<p>TBD Dire que c'est uniquement les branches utiles à tous qu'il faut pousser.</p>
+</blockquote>
+<blockquote>
+<p>/ pull / push
+attention réécriture d'historique : uniquement en local. Faire dessin. Interactive et squash.
 (le rebase ne va pas pousser les commit non accessibles en remote)</p>
 </blockquote>
 <h2>Modifier l'historique</h2>
 <blockquote>
+<p>TBD pas vraiment utile tout le temps, mais quand on en a besoin c'est vraiment utile.</p>
 <ul>
 <li>squash</li>
 <li>revert</li>
