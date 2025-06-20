@@ -37,6 +37,8 @@ Chaque branche a ainsi une raison d'être : branche principale, de développemen
 L'historique d'un projet doit contenir uniquement ce qui est nécessaire pour comprendre son état actuel, c'est à dire ses branches (l'état actuel) et leurs historiques, le reste est inutile.
 {% endnote %}
 
+Parmi toutes les branches, la branche `main` est celle qui va contenir la branche de développement principale.
+
 ### Switch
 
 Changer de branche est simple, il suffit de déplacer le pointeur HEAD d'une branche à l'autre. N'hésitez pas à créer de nouvelles branches pour tester des fonctionnalités et :
@@ -139,14 +141,55 @@ Dans le cas général on ne fait que les ignorer et de représenter uniquement l
 
 ## Origin
 
-> clone
-> local and remote branches: pas les même. Les arbres peuvent différer mais pas les commits liées aux branches remote et locales Ne pas pousser sur origin des branches locales
+Que l'on travaille à plusieurs ou seul, posséder une version "_partageable_" de la structure de sauvegarde est appréciable. Parmi tous les avantages, on peut citer :
+
+- de synchroniser les changements lorsque l'on travaille en équipe,
+- de permettre à des personnes tierces d'utiliser le projet en le _clonant_ et de proposer des amélioration via des _pull request_
+- de _cloner_ un projet qui nous intéresse
+- ...
+
+### Clone
+
+Lorsque l'on travaille à plusieurs sur un projet on a coutume de partager, **_en plus_** de sa structure de sauvegarde personnelle, une structure commune nommée _origin_ par convention qui regroupe les branches utiles à tous :
+
+![origin](./origin-1.png)
+
+On remarque que l'on a besoin que de la structure de sauvegarde pour l'origine, l'index et le répertoire de travail sont inutiles.
+
+{% note "**Définition**" %}
+**_Cloner_** un projet signifie :
+
+1. copier sa structure de donnée et garder un lien vers la structure initiale, que l'on nomme _**origine**_ (_origin_).
+
+> TBD que le main après un clone.
+> TBD une seule branche main locale liée à la branche du head (si head pas sur une branche le nouveau dossier n'aura pas de branche locale)
+
+{% endnote %}
+
+
+Enfin, il faut bien comprendre que cette architecture est une convention. Le système de sauvegarde étant distribué on peut avoir autant de sauvegardes distantes que l'on veut, voir même utiliser la structure de sauvegarde d'un des participants au projet.
+
+> TBD fork c'est une copie sans lien avec l'origin.
+
+### Branches locales et distantes
+
+> TBD apres un clone uniquement main.
+> il y a aussi un lien vers le remote
+> on peut récupérer les autres branches,
+> 
+> TBD local and remote branches: pas les même. Les arbres peuvent différer mais pas les commits liées aux branches remote et locales Ne pas pousser sur origin des branches locales
+
+> TBD montrer des divergences et des branches locales non poussées sur l'origin. Dire que c'est uniquement les branches utiles à tous qui sont poussées.
+
+### Interagir avec l'_origin_
+
 > checkout / pull / push
-> attention réécriture d'historique : uniquement en local. Interactive et squash.
+> attention réécriture d'historique : uniquement en local. Faire dessin. Interactive et squash.
 > (le rebase ne va pas pousser les commit non accessibles en remote)
 
 ## Modifier l'historique
 
+> TBD pas vraiment utile tout le temps, mais quand on en a besoin c'est vraiment utile.
 > - squash
 > - revert
 > - reset

@@ -208,6 +208,7 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 
 ## TBD
 
+> - mettre la doc de chaque commande avec la description de git en ligne de commande dans la partie plomberie et porcelaine.
 > - lister tous tous les commit de la base : <https://stackoverflow.com/a/4787030>
 > - rebase les différentes commandes ?
 > - jouer avec le DAG des commits
@@ -267,3 +268,5 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 > - `git diff` <https://www.youtube.com/watch?v=F1van9nShjA>
 > - diff / patch : fr <https://www.youtube.com/watch?v=0JZCah5w7I8> en (plux concis) <https://www.youtube.com/watch?v=-CiLU9-RAGk>
 > - interactive stage <https://www.youtube.com/watch?v=UJ5fpaeZWsI> <https://www.youtube.com/watch?v=8st1NhaKDCA>
+> - <https://learngitbranching.js.org/>
+> - <https://git-school.github.io/visualizing-git/>
