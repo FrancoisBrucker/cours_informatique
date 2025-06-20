@@ -208,6 +208,8 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 
 ## TBD
 
+> - git fetch. qu'est ce qui est fetch ? Tout ou juste des branches <https://stackoverflow.com/a/74355550>
+> - force-push : expliquer ce que c'est.
 > - mettre la doc de chaque commande avec la description de git en ligne de commande dans la partie plomberie et porcelaine.
 > - lister tous tous les commit de la base : <https://stackoverflow.com/a/4787030>
 > - rebase les différentes commandes ?

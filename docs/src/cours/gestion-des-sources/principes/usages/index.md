@@ -134,7 +134,7 @@ On appelle **_rebase_** d'une branche $A$ sur une autre $B$ le fait de rejouer l
 ## Nettoyage de base
 
 Les commit que l'on ne peut plus atteindre via une branche ou son historiques sont inutiles. On peut donc : soit les ignorer soit les effacer de la base.
-
+7
 Dans le cas général on ne fait que les ignorer et de représenter uniquement la DAG "utile". Par exemple après un rebase, on représentera plutôt l'arbre suivant que le précédent :
 
 ![rebase 4](./rebase-4.png)
@@ -148,42 +148,61 @@ Que l'on travaille à plusieurs ou seul, posséder une version "_partageable_" d
 - de _cloner_ un projet qui nous intéresse
 - ...
 
+Un projet peut-être en lien avec de nombreuses copies distantes de celui-ci, que l'on  appelle **_remote_**. Le projet y accède via son [url](/cours/web/anatomie-url/){.interne} (adresse internet ou dossier sur le même disque dur).
+
 ### Clone
 
-Lorsque l'on travaille à plusieurs sur un projet on a coutume de partager, **_en plus_** de sa structure de sauvegarde personnelle, une structure commune nommée _origin_ par convention qui regroupe les branches utiles à tous :
+Lorsque l'on travaille à plusieurs sur un projet on a coutume de partager, **_en plus_** de sa structure de sauvegarde personnelle, une structure commune nommée _origin_ par convention qui regroupe les branches utiles à tous. Pour cela, on commence par désigner la structure de  sauvegarde partagée que l'on appelle `origin`. Ensuite, chaque participant au projet le **_clone_** :
 
 ![origin](./origin-1.png)
 
-On remarque que l'on a besoin que de la structure de sauvegarde pour l'origine, l'index et le répertoire de travail sont inutiles.
+L'opération de clonage effectue les opérations suivantes :
 
 {% note "**Définition**" %}
-**_Cloner_** un projet signifie :
+L'opération de **_cloner_** un projet consiste à :
 
-1. copier sa structure de donnée et garder un lien vers la structure initiale, que l'on nomme _**origine**_ (_origin_).
-
-> TBD que le main après un clone.
-> TBD une seule branche main locale liée à la branche du head (si head pas sur une branche le nouveau dossier n'aura pas de branche locale)
+1. copier sa structure de donnée
+2. associer `origin` à l'url de l'origine dans la copie
+3. si le pointeur HEAD de l'origin est sur une branche, la créer dans la structure copiée
+4. placer le pointeur HEAD de la copie au même endroit (commit ou branche) que l'origine
+5. garder une références de toutes les branches de l'origine
 
 {% endnote %}
 
+On remarque que l'on a besoin que de la structure de sauvegarde pour l'origine, l'index et le répertoire de travail sont inutiles.
 
-Enfin, il faut bien comprendre que cette architecture est une convention. Le système de sauvegarde étant distribué on peut avoir autant de sauvegardes distantes que l'on veut, voir même utiliser la structure de sauvegarde d'un des participants au projet.
-
-> TBD fork c'est une copie sans lien avec l'origin.
+{% info %}
+L'opération de `fork` _ressemble_ au clonage mais [le but est différent](https://github.com/orgs/community/discussions/35849). Dans un clonage tous les participants interagissent directement avec l'origine, alors  qu'un projet résultant d'un fork peut être vu comme un nouveau projet (il n'est pas en relation directe avec le projet initial).
+{% endinfo %}
 
 ### Branches locales et distantes
 
-> TBD apres un clone uniquement main.
-> il y a aussi un lien vers le remote
-> on peut récupérer les autres branches,
-> 
-> TBD local and remote branches: pas les même. Les arbres peuvent différer mais pas les commits liées aux branches remote et locales Ne pas pousser sur origin des branches locales
+Après un clonage, la structure de sauvegarde locale contient, en plus du DAG des commits de l'`origin`, des références à la structure `origin` et à ses branches. Les branches de l'`origin` sont dites **_distantes_** (_remote_). Notez que si la copie contient un lien vers l'original le serveur origin n'a lui aucune information de la copie locale, il ne _sait_ même pas qu'elle existe.
 
-> TBD montrer des divergences et des branches locales non poussées sur l'origin. Dire que c'est uniquement les branches utiles à tous qui sont poussées.
+Au cours du temps de l'évolution des branches sur la sauvegarde locale et distantes ces informations peuvent diverger :
+
+- des commits peuvent insérées sur la copie et sur l'origine
+- des branches peuvent être crées sur la copie et sur l'origine
+
+On se retrouve alors dans la configuration suivante :
+
+> TBD montrer des divergences et des branches locales non poussées sur l'origin.
+
+Comme on a fait **qu'ajouter** des commits et des références il est possible de synchroniser les deux structures :
+
+- par des ajouts de commits/branches
+- des merges si nécessaire sur des branches divergentes
+
+#### Ajout de commits branches
+
+#### merge de branches locales et distantes
 
 ### Interagir avec l'_origin_
 
-> checkout / pull / push
+
+> TBD Dire que c'est uniquement les branches utiles à tous qu'il faut pousser.
+
+> / pull / push
 > attention réécriture d'historique : uniquement en local. Faire dessin. Interactive et squash.
 > (le rebase ne va pas pousser les commit non accessibles en remote)
 
