@@ -89,7 +89,7 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 [Cols de listes et de matrices](cols){.interne}
 {% endaller %}
 
-## Tris
+## Tris spéciaux
 
 > - **Utilité** : tris pouvant être utile dans des cas particuliers et surtout à la base de nombreux pièges
 > - **Difficulté** : moyen
@@ -116,4 +116,13 @@ Des tris utiles dans des cas spécifiques, et dont la complexité semble plus pe
 
 {% aller %}
 [Calcul du pgcd](./pgcd){.interne}
+{% endaller %}
+
+## {2, 3}-SUM
+
+> - **Utilité** : un classique des concours, sans aucune indications bien sur !
+> - **Difficulté** : dur
+
+{% aller %}
+[{2, 3}-SUM](./2_3-SUM){.interne}
 {% endaller %}

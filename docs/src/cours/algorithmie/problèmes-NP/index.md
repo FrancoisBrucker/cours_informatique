@@ -19,7 +19,7 @@ Un [problème algorithmique](../probleme-algorithmique/){.interne} implique qu'i
 
 ![décidable](./NP-décidable.png)
 
-Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme _traiter_. Commençons par la plus évidente : la résolution.
+Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme _traiter_. Commençons par la plus évidente : **la résolution**.
 
 ### Résolution efficace
 
@@ -49,45 +49,103 @@ Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur coura
 
 ### Vérification efficace
 
-Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement voir si proposition de solution en est une ou pas. Citons en 2 pour se fixer les idées : [le problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos) et celui de  [l'isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes).
+Il existe de nombreux problèmes dont on ne connaît pas d'algorithme polynomiaux pour les résoudre mais la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement, grace à un algorithme efficace de vérification nommé **_vérifieur_**, voir si proposition de solution en est une ou pas.
 
-#### <span id="sac-à-dos"></span>Sac à dos et vérification
+<div id="vérifieur"></div>
+{% note "**Définition**" %}
+Un **_vérifieur_** est un algorithme de :
 
-Le problème du sac à dos tente de maximiser la durée d'une randonnée :
+$$v: \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$$
 
-{% note "**Problème**" %}
-
-- **Nom** : sac à dos
-- **entrées** :
-  - $n$ produits différents, décris par :
-    - leurs masses en kilo : $k_i$
-    - leurs quantité nutritive : $q_i$
-  - un sac à dos pouvant contenir $K$ kilos
-  - une quantité nutritive à dépasser $Q$
-- **Question** : existe-t-il un sous ensemble $I$ de l'intervalle $[1, n]$ (un ensemble de produits) tel que :
-  - $\sum_{i \in I} k_i \leq K$ : les objets tiennent dans le sac à dos
-  - $\sum_{i \in I} q_i \geq Q$ : la quantité nutritive des objets permet de survivre à la randonnée
+Il est dit **_efficace_** s'il est de complexité polynomiale.
 {% endnote %}
 
-On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :
+Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution puisqu'on ne peut pas savoir avant d'essayer.
 
-- faire la somme $\sum_{i \in I} k_i$ et de vérifier si elle est inférieure à $K$
-- faire la somme $\sum_{i \in I} q_i$ et de vérifier si elle est supérieure à $Q$
+On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.
 
-Cette vérification se fait en $\mathcal{O}(n)$ quelque soit $I$.
+Formalisons cette notion de vérification efficace :
 
-#### Isomorphisme de graphe et vérification
+{% note "**Définition**" %}
+Un **_vérifieur efficace d'un problème décidable_** $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \\{0, 1\\}$ tel que :
 
-De même considérons un autre problème classique en algorithmie, l'isomorphisme de graphe :
+- $V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$
+- la complexité de $V$ est **polynomiale** en la taille de $e$ et ne **dépend pas** de la taille de $s$.
+
+{% endnote %}
+{% info %}
+Le retour d'un vérifieur est classiquement un bit mais pas la suite, pour être plus explicite, nous utiliserons des booléens en associant 0 à faux et 1 à vrai.
+{% endinfo %}
+
+Remarquez que l'on ne demande **pas** que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.
+
+Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bits de $s$ peuvent être examinés, cela ne sert à rien d'avoir des sorties plus longues.
+
+Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (_ie._ polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !
+
+Tout algorithme de $P$ admet un vérifieur efficace puisqu'il suffit d'exécuter l'algorithme de résolution et de vérifier si sa solution est égale à l'entrée.
+
+Ainsi, pour le maximum d'un tableau :
+
+```pseudocode
+algorithme vérification_max(T: [entier], sol: entier) → booléen:
+  m ← max(T)  # algorithme linaire trouvant le maximum d'un tableau
+  rendre m == sol
+```
+
+Dans le cas d'algorithme de résolution linéaire (comme pour le problème de la recherche du maximum), cette approche est optimale. Mais pour des problèmes dont l'algorithme de résolution est non linéaire on peut souvent trouver un algorithme de vérification de complexité plus faible.
+
+{% exercice %}
+Montrez que le problème [3-SUM](../problème-réduction/#problème-3-SUM){.interne} admet un vérifieur linéaire.
+{% endexercice %}
+{% details "solution" %}
+
+```pseudocode
+algorithme vérification_3_SUM(T: [entier], sol: (entier, entier, entier)) → booléen:
+  i, j, k ← sol
+  si T[i] + T[j] + T[k] == 0:
+      rendre Vrai
+  rendre Faux
+```
+
+{% enddetails %}
+
+### Vérifieur efficace et algorithme de résolution
+
+Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur `stop(E: chaîne, n: entier) → booléen`{.language-} qui rend vrai si le programme décrit par la chaîne de caractères `E`{.language-} s'arrête au bout de `n`{.language-} itération. Ce vérifieur correspond [au problème de l'arrêt](../bases-théoriques/arrêt-rice/){.interne} qui est indécidable.
+
+Le fait que le problème admette un vérifieur dont la complexité ne dépend que du premier paramètre est donc cruciale. Si de plus sa complexité est polynomiale on a de plus :
+
+{% note "**Proposition**" %}
+Si un problème admet un **_vérifieur efficace_** de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Tout problème admettant un vérifieur efficace est décidable car il n'y a qu'un nombre fini de l'ordre de $\mathcal{O}(2^{|e|^k})$ . En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$ (avec $k$ une constante), la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$.
+
+On peut alors pour une entrée donnée tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (puisque tester une entrée coûte $\mathcal{O}(|e|^k)$ opérations), ce qui est certes beaucoup mais reste fini.
+
+{% enddetails %}
+
+### Vérification efficace pas dans P ?
+
+Il existe de nombreux problèmes pour lesquels on ne connaît pas d'algorithme polynomiaux pour les résoudre mais dont on peut facilement trouver un vérifieur efficace. Citons en 2, fondamentaux, pour se fixer les idées : [le problème l'isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes) et [le problème de la Satisfaisabilité (SAT)](https://fr.wikipedia.org/wiki/Probl%C3%A8me_SAT).
+
+{% info %}
+On ne connaît pas d'algorithmes polynomiaux pour résoudre ces deux problèmes. Essayez d'en trouver ! Si vous y arrivez, vous allez devenir célèbre.
+{% endinfo %}
+
+#### Isomorphisme de graphe
 
 {% note "**Problème**" %}
 
 - **Nom** : isomorphisme
-- **Entrées** : [deux graphes](https://fr.wikipedia.org/wiki/Graphe_(math%C3%A9matiques_discr%C3%A8tes)#D%C3%A9finition_et_vocables_associ%C3%A9s) :
+- **Entrées** : [deux graphes](<https://fr.wikipedia.org/wiki/Graphe_(math%C3%A9matiques_discr%C3%A8tes)#D%C3%A9finition_et_vocables_associ%C3%A9s>) :
   - $G_1 = (V_1, E_1)$
   - $G_2 = (V_2, E_2)$
-- **Question** : existe-t-il une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\\{x, y\\}$ est une arête de $G_1$ si et seulement si $\\{\sigma(x), \sigma(y) \\}$ est une arête de $G_2$
-{% endnote %}
+- **Question** : Donnez, si elle existe, une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\\{x, y\\}$ est une arête de $G_1$ si et seulement si $\\{\sigma(x), \sigma(y) \\}$ est une arête de $G_2$
+  {% endnote %}
 
 Par exemple en considérant les 3 graphes ci dessous :
 
@@ -115,88 +173,129 @@ Pour vérifier que la deux graphes $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ sont
 - $\sigma$ est une bijection de $V_1$ dans $V_2$, donc que les deux tableaux $T_1 = [\sigma(x) \mbox{ pour chaque } x \in V_1]$ et $T_2 = [x \mbox{ pour chaque } x \in V_2]$ contiennent les mêmes éléments
 - que les arêtes de $V_2$ sont bien arêtes de $V_1$ envoyées via $\sigma$, donc que les deux tableaux $T'_1 = [\\{\sigma(x), \sigma(y)\\} \mbox{ pour chaque } x \in E_1]$ et $T_2 = [xy \mbox{ pour chaque } xy \in E_2]$ contiennent les mêmes éléments
 
-Ceci peut donc se faire en utilisant deux fois l'algorithme [égalité de tableaux](../projet-calcul-complexite/#égalité-tableaux){.interne} avec une complexité totale de $\mathcal{O}(\\; |\\; E_1\\; |^2\\; + \\; |\\; V_1\\; |^2\\;)$ (en supposant que $\\; |\\; E_1\\; |\\; = \\; |\\; E_2\\; |\\;$ et $\\; |\\; V_1\\; |\\; = \\; |\\; V_2\\; |\\;$).
+Ceci peut donc se faire en utilisant deux fois l'algorithme [égalité de tableaux](../projet-calcul-complexite/#égalité-tableaux){.interne} avec une complexité totale de $\mathcal{O}(\\; |\\; E_1\\; |^2\\; + \\; |\\; V_1\\; |^2\\;)$ (en supposant que $\\; |\\; E_1\\; |\\; = \\; |\\; E_2\\; |\\;$ et $\\; |\\; V_1\\; |\\; = \\; |\\; V_2\\; |\\;$). On en conclut que :
 
-### Définition
-
-Donnons une définition formelle d'un vérifieur :
-
-<div id="vérifieur"></div>
-{% note "**Définition**" %}
-Un **_vérifieur_** est un algorithme de :
-
-$$v: \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$$
-
-Il est dit **_efficace_** s'il est de complexité polynomiale.
+{% note %}
+Le problème de l'isomorphisme de graphe admet un vérifieur efficace.
 {% endnote %}
 
-Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution on ne peut pas savoir avant d'essayer. On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.
+#### <span id="SAT"></span>Problème SAT
 
-Formalisons cette notion de vérification efficace :
+Le problème SAT cherche à vérifier si une formule logique peut-être satisfaite.
+
+Pour cela, commençons par définir un concept fondamental en logique la **_conjonction de clauses_** :
+
+<div id="clauses"></div>
 
 {% note "**Définition**" %}
-Un **_vérifieur efficace d'un problème décidable_** $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \\{0, 1\\}$ tel que :
+Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :
 
-- $V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$
-- la complexité de $V$ est **polynomiale** en la taille de $e$ et ne **dépend pas** de la taille de $s$.
-
+- un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
+- une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
+- une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
 {% endnote %}
 
-Remarquez que l'on ne demande pas que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.
+Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite **_satisfiable_** :
 
-Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties plus longues.
+{% note "**Problème**" %}
 
-Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (_ie._ polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !
-
-### Exemples de vérifieurs efficaces
-
-#### Max/min d'un tableau
-
-```pseudocode
-algorithme verif(T: [entier], sol: entier) -> booléen:
-
-pour chaque x de T:
-    si x > sol:
-        rendre Faux
-rendre Vrai
-```
-
-#### 3-SUM
-
-```pseudocode
-algorithme verif(T: [entier], sol: (entier, entier, entier)) -> booléen:
-
-i, j, k <- sol
-si T[i] + T[j] + T[k] == 0:
-    rendre Vrai
-rendre Faux
-```
-
-#### Tri d'un tableau
-
-```pseudocode
-algorithme verif(T: [entier], sol: [entier]) -> booléen:
-```
-
-1. on vérifie que sol est trié
-2. on vérifie que les éléments de sol sont ceux de T avec notre algorithme d'égalité de tableaux
-
-### Vérifieur efficace et algorithme de résolution
-
-Il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.
-
-Enfin :
-
-{% note "**Proposition**" %}
-Si un problème admet un **_vérifieur efficace_** de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
+- **Nom** : SAT
+- **Entrée** : $f$ une conjonction de clauses sur les variables $x_1$ à $x_n$
+- **Sortie** : Si cela est possible, une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie.
 
 {% endnote %}
-{% details "preuve", "open" %}
-tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.
+{% info %}
+Une formule logique sous la forme d'une disjonction de clause est dite sous la [forme normale conjonctive](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive). Toute formule logique peut être mise sous cette forme grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) qui est linéaire en nombre d'opérations. Ceci exige de se retrouver avec un nombre exponentiel de clauses si on utilise juste [la distributivité des opérations logiques](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable).
 
-En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
+{% endinfo %}
+
+Par exemple considérons les 4 clauses suivantes, sur 5 variables booléennes :
+
+<div>
+$$
+(x_1 \lor {x_2}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (x_1 \lor x_3 \lor x_4 \lor \overline{x_5}) \land (x_1 \lor \overline{x_3} \lor x_4 \lor {x_5})
+$$
+</div>
+
+Il y $2^5 = 32$ possibilités (O ou 1 ; Vrai ou Faux) pour chaque variable. Essayons en quelques une :
+
+- $x_1 = x_2 = x_3 =x_4 = x_5 = 0$ ne permet pas de satisfaire la formule car $x_1 \lor {x_2} = 0$
+- $x_1 = x_2 = x_3 =x_4 = x_5 = 1$ non plus ($\overline{x_1} \lor \overline{x_2} \lor \overline{x_3} = 0$)
+- $x_1 = \overline{x_2} = x_3 = \overline{x_4} = x_5 = 1$ fonctionne
+
+La formule précédente est satisfiable !
+
+Montrons que SAT est dans NP :
+
+{% exercice %}
+Montrez que l'on peut encoder une clause sur $n$ variables booléennes par un tableau d'entiers relatifs.
+
+En déduire un moyen d'encoder une conjonction de clauses sur $n$ variables booléennes.
+{% endexercice %}
+{% details "corrigé" %}
+Il suffit de noter un littéral :
+
+- $+i$ s'il correspond à $x_i$
+- $-i$ s'il correspond à $\overline{x_i}$
+
+Et d'encoder une clause comme un tableau de littéraux. Notez qu'on ne peut pas commencer à 0 car $+0 = -0 = 0$
+
+Enfin, une conjonction de clauses est un tableau de clauses.
 
 {% enddetails %}
+{% exercice %}
+Quel est l'encodage de l'exemple ? Comment encoderiez vous une solution ?
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+[[1, 2],
+ [-1, -2, -3],
+ [1, 3, 4, -5],
+ [1, -3, 4, 5]
+]
+```
+
+Et la solution est un tableau de taille $n$ de booléens. Par exemple pour la solution $x_1 = \overline{x_2} = x_3 = \overline{x_4} = x_5 = 1$ on a l'encodage : `[Vrai, Faux, Vrai, Faux, Vrai]`
+{% enddetails %}
+
+{% exercice %}
+Utilisez le codage précédent pour montrer que SAT est dans NP.
+{% endexercice %}
+{% details "corrigé" %}
+
+L'algorithme suivant est (clairement) un vérifieur de SAT utilisant l'encodage précédent :
+
+```pseudocode
+algorithme vérif_SAT(conj_clauses: [[entier]], # [c_1, ..., c_m]
+                     solution: [booléen]) # [x_1, ..., x_n]
+                     → booléen:
+    pour chaque c de conj_clauses:
+        sat ← Faux
+        pour chaque l de c:
+            si l > 0 et solution[l-1]:
+                sat ← Vrai
+            si l < 0 et (solution[-l-1] == Faux):
+                sat ← Vrai
+        si sat == Faux:
+            rendre Faux
+    rendre Vrai            
+```
+
+La complexité est clairement linéaire : on regarde au pire chaque littéral de chaque clause une fois.
+
+{% enddetails %}
+
+
+> TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
+> TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.
+
+> TBD toute formule logique peut s'écrire comme une conjonction de clause. CNF-SAT mais on peut passer de toute formule à SAT en temps linéaire :
+
+> TBD ici
+> :
+
+> TBD exemple et vérification.
 
 ## Problèmes NP
 
@@ -215,14 +314,14 @@ La définition ci-dessus appelle une remarque : le nom a été très mal choisi.
 {% attention "**À retenir**" %}
 Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :
 
-- On peut énumérer toutes les solutions possibles en temps fini, mais possiblement exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).
+- On peut énumérer toutes les solutions possibles en temps fini, mais en temps exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).
 - On peut vérifier efficacement (en temps polynomial) si une proposition de solution est réellement une solution.
 
 {% endattention %}
 
 Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidables mais non dans NP.
 
-En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une  époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
+En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
 
 Certains se demandent même si cette question est décidable (_ie._ démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
 
@@ -263,6 +362,9 @@ Les problèmes NP-complets sont tous équivalents car ils correspondent tous à 
 {% lien %}
 [Jeux video NP-complet](https://www.youtube.com/watch?v=9rUUs8SlaOE)
 {% endlien %}
+
+> TBD montrer isomorphe ≤ SAT et sur l'exemple du graphe de Petersen.
+> TBD SAT pas tout seul. Montrer SAT ≤ exact cover.
 
 ## Autres classes
 

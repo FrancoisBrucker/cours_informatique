@@ -341,6 +341,8 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 ### Design d'algorithmes
 
+> TBD intro pour dire si on a un nouveau problème, comment chercher à le résoudre.
+
 {% aller %}
 [Design d'algorithmes](./design-algorithmes){.interne}
 {% endaller %}
@@ -368,144 +370,6 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 <!-- ### Jolis problèmes
 
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
-
-## <span id="2-3-sum"></span>2-sum et 3-sum
-
-> - **Utilité** : un classique des concours !
-> - **Difficulté** : dur
-
-> TBD un classique des concours, sans aucune indications bien sur.
-
-{% info %}
-
-3-SUM est la base de bien d'autres problèmes. On en reparlera bien plus tard, mais ce problème est une des bases algorithmique de [la géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique).
-
-{% endinfo %}
-
-### <span id="2-sum"></span>2-SUM
-
-{% note "Problème" %}
-
-- **nom** : 2-SUM
-- **données** : Un tableau T d'entiers relatifs
-- **question** : Existe-t-il deux indices $i$ et $j$ (ils peuvent être égaux) tels que $T[i] + T[j] = 0$ ?
-{% endnote %}
-
-On a déjà vu une variante de ce problème lorsque l'on a étudié les dictionnaires. Si vous ne vous en rappelez plus, refaites le :
-
-{% exercice %}
-[Exercice fondamental des dictionnaires](../structure-dictionnaire/tableau-associatif/#exercice-fondamental){.interne}
-{% endexercice %}
-
-Regardons maintenant ce problème d'un point de vue complexité spatiale et temporelle.
-
-{% exercice %}
-Donnez une solution au problème 2-SUM avec comme complexité :
-
-- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$
-- spatiale en $\mathcal{O}(1)$
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD : brute force
-
-{% enddetails %}
-
-{% exercice %}
-Donnez une solution au problème 2-SUM avec comme complexité :
-
-- temporelle de $\mathcal{O}(T.\mbox{\small longueur}\ln(T.\mbox{\small longueur}))$
-- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD : tri
-
-{% enddetails %}
-
-{% exercice %}
-Donnez une solution au problème 2-SUM avec comme complexité :
-
-- temporelle de $\mathcal{O}(T.\mbox{\small longueur})$ en moyenne
-- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD : dictionnaire
-
-{% enddetails %}
-
-Un nouvel algorithme :
-
-{% exercice %}
-Donnez une solution au problème 2-SUM avec comme complexité $\mathcal{O}(\max(T))$.
-
-Est-ce réaliste ?
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD : bucket sort de la valeur absolue. Dès que l'on rencontre la case la deuxième fois on sort.
-> TBD attention : même si on ne visite pas toutes les cases du tableau il faut les initialiser à 0 (le contenu de la mémoire est inconnu à l'affectation).
-
-> TBD complexité spatiale $\mathcal{O}(\max(T))$ ce qui est déraisonnable car cela peut être aussi grand que l'on veut.
-> TBD c'est même exponentiel en la taille du tableau ($\log_2(n)$ bits pour stocker l'entier $n$).
-> TBD : même si la complexité de créer un tableau de taille arbitraire est en  $\mathcal{O}(2)$, et que l'on ne fait de boucle que sur la taille du tableau, l'algorithme est tout de même en $\mathcal{O}(\max(T))$ car il faut initialiser les cases : à la création d'un tableau ses valeurs sont indéterminées.
-
-{% enddetails %}
-
-### <span id="3-sum"></span>3-SUM
-
-{% note "Problème" %}
-
-- **nom** : 3-SUM
-- **données** : Un tableau T d'entiers relatifs
-- **question** : Existe-t-il trois indices $i$, $j$ et $k$ (ils peuvent être égaux) tel que $T[i] + T[j] + T[k] = 0$ ?
-{% endnote %}
-
-{% exercice %}
-Donnez une solution au problème 3-SUM avec comme complexité :
-
-- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^3)$
-- spatiale en $\mathcal{O}(1)$
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD : brute force
-
-{% enddetails %}
-
-{% exercice %}
-Donnez une solution au problème 3-SUM avec comme complexité :
-
-- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$ en moyenne
-- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD : dictionnaire
-
-{% enddetails %}
-
-Le dictionnaire est souvent la meilleure réponse en moyenne, mais ce n'est pas le cas avec un 3-SUM :
-
-{% exercice %}
-Donnez une solution au problème 3-SUM avec comme complexité :
-
-- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$
-- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD : un tri puis on cherche en $\mathcal{O}(T.\mbox{\small longueur})$ s'il existe i et j pour lesquels $T[i] + T[j] = -T[k]$ pour k allant de 0 à la taille du tableau ($\mathcal{O}(T.\mbox{\small longueur})$ boucles)
-
-{% enddetails %}
 
 #### Fonction d'Ackermann
 
@@ -558,7 +422,6 @@ On rappelle ici tous les exercices que l'on va voir dans les différentes partie
 ### autre bidules
 
 > TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
-> TBD 3-SUM et Réductions géobase. A supprimer de partie réduction. (en incluant le 2-SUM de tout à l'heure).
 > TBD arithmétique binaire et Karatsuba,
 > TBD SUBSET-SUM par programmation dynamique <https://en.wikipedia.org/wiki/Subset_sum_problem#Pseudo-polynomial_time_dynamic_programming_solutions>
 
@@ -591,102 +454,6 @@ La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ o
 > TBD 3-SUM' ≤ SUBSET-SUM
 > TBD SUBSET-SUM ≤ PARTITION
 >
-> TBD mettre les 2-SUM ≥ 2-SUM', 3-SUM ≥ 3-SUM' et géobase dans les problèmes classiques.
-
-### 3-SUM
-
-{% lien %}
-
-- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>
-- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
-
-{% endlien %}
-
-Reprenons [le problème 3-SUM](../projet-algorithmes-classiques/#3-sum){.interne} que nous avons déjà vu :
-
-{% note "**Problème**" %}
-
-- **Nom** : 3-SUM
-- **Entrée** :
-  - T : un tableau de $n$ entiers relatifs
-- **Question** : existe-t-il 3 indices (pouvant être égaux) tels que $T[i] + T[j] + T[k] = 0$
-
-{% endnote %}
-
-De nombreux problèmes lui sont équivalent comme par exemple le suivant :
-
-{% note "**Problème**" %}
-
-- **Nom** : 3-SUM'
-- **Entrées** :
-  - $T$, $T'$ et $T''$ : trois tableaux d'entiers relatifs
-- **Question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
-
-{% endnote %}
-
-Prouvez le :
-
-{% exercice %}
-Montrer que 3-SUM ≤ 3-SUM'
-{% endexercice %}
-{% details "corrigé" %}
-
-On prend $T = T'$ et $T''[x] = -T[x]$
-
-{% enddetails %}
-{% exercice %}
-Montrer que 3-SUM' ≤ 3-SUM
-{% endexercice %}
-{% details "corrigé" %}
-
-On prend $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $[T[i] + A \\;\vert\\; i] + [T'[i] + 3A \\;\vert\\; i] + [-T''[i] - 4A \\;\vert\\; i]$.
-
-Soient $i, j, k$ tels que T[i] + T[j] + T[k] = 0$.
-
-Pour que la somme fasse 0 il faut que les $A$ ajoutés s'annulent : donc
-obligatoirement 1 élément de chaque tableau initial $T$, $T'$ et $T''$.
-{% enddetails %}
-
-3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
-
-{% note "**Problème**" %}
-
-- **nom** : Geobase
-- **Entrées** :
-  Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes horizontales avec $y = 0$, $y = 1$ et $y = 2$
-- **question** : Existe-t-il une droite non horizontale passant par 3 points.
-{% endnote %}
-
-Montrons qu'il est équivalent à 3-SUM :
-
-{% exercice %}
-Montrer que 3-SUM' ≤ GEOBASE
-{% endexercice %}
-{% details "corrigé" %}
-
-Deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$. Comme $\vec{v}^{\perp} = (-y', x')$, $\vec{u}$ et $\vec{v}$ sont colinéaires si $xy' - yx' = 0$.
-
-Il suffit alors de construire les points :
-
-- $(T[i], 0)$
-- $(T''[i]/2, 1)$
-- $(T'[i], 2)$
-
-si trois points sont colinéaires alors il existe i, j et k tels que $T[i] + T'[j] = T''[k]$
-{% enddetails %}
-
-{% exercice %}
-Montrer que GEOBASE ≤ 3-SUM'
-{% endexercice %}
-{% details "corrigé" %}
-
-On fait le contraire. On ajoute chaque point de :
-
-- $(x, 0)$ dans $T = [x | \forall (x, 0)]$
-- $(x, 1)$ dans $T'' = [2x | \forall (x, 1)]$
-- $(x, 2)$ dans $T' = [x | \forall (x, 2)]$
-
-{% enddetails %}
 
 ### SUBSET-SUM
 
@@ -766,13 +533,34 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
 ### <span id="modèle-calculs"></span>Modèle de calculs
 
+> Refaire.
+> pseudo-assembleur.
+> Permet deux choses :
+>
+> 1. exécuter du code. modèle de von Neumann pour . Ici taille fixe
+> 2. prouver des algorithme : SAT / retour sur NP / non déterminisme co-NP
+> 3. fonction sens inverse. Hash.
+> Turing. Equivalent. hiérarchie des complexité
+
+> TBD parler de NP et  co-NP factorisation et discrete log.
+> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>
+
+> TBD dire que circuit = taille fixée (voir conversion vers sat d'un problème. Dépend de la taille.)
 > TBD ici uniquement partie code avec assembleur.
 > TBD levin avec mémoire finie ou on veut : nb exponentiel. Mais si on peut aller que à gauche et à droite prop aux nb d'instructions.
 > 
-> TBD ici faire la machine avec mémoire finie et montrer que c'est de la logique = sat ; utiliser le pseudo-code de Knuth pour cela en montrant que pseudo-code = assembleur dans le modèle de Von Neuman
+> TBD ici faire la machine avec mémoire finie et montrer que c'est de la logique = sat ; utiliser le pseudo-code de Knuth pour cela en montrant que pseudo-code = assembleur dans le modèle de Von Neumann
 > TBD remanier le début de l'algorithmie pour décaler la file récursive ?
 >
 > TBD puis montrer que Turing = logique = sat.
+
+
+> TBD NP/coNP par factorisation et discrete log. Dire que prime is polynomial (<https://en.wikipedia.org/wiki/AKS_primality_test>).
+> TBD pas uniquement décision. Mais peut donner une version décision du pb : <https://cstheory.stackexchange.com/a/25468>
+> TBD SAT dire que raisonnable puisque fct booléenne finie = SAT. Le côté dur est de montrer que ça reste vrai si l'entrée bouge.
+> TBD fonction calculable = binaire + boucles = pseudo-code.
+> TBD reléguer Turing à un modèle et tout faire avec le pseudo-code.
+> TBD pseudo-assembleur infini en doublant la taille de l'adressage si besoin et on recommence tout l'algo.
 
 Nous avons jusqu'à présent utilisé le modèle du pseudo-code pour créer des algorithmes.
 
@@ -787,10 +575,16 @@ Commençons par comprendre comment exécuter du code :
 [Exécuter du code](./exécuter-code){.interne}
 {% endaller %}
 
+> TBD ici directement SAT.
+> TBD pas besoin de Turing pour NP. Juste Non polynomial. dire ok avec doublement de la mémoire si nécessaire et pseudo-assembleur.
+> TBD pas besoin de Turing pour NP. Juste Algo Non polynomial. L'ajouter.
+
 Le pseudo-code permet de concevoir des algorithmes pouvant être exécutés au tableau par des humains. L'assembleur quant à lui, language de la machine, permet d'exécuter des algorithmes sur des processeurs.
 Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut résoudre avec l'un sont également résoluble avec l'autre (et réciproquement). On peut même transcrire en assembleur un programme écrit en pseudo-code de façon automatique (on a évoqué sans rentrer dans les détails les moyens d'y parvenir) il est donc courant d'écrire son code en pseudo-code, facile à lire et à maintenir, puis de laisser un compilateur le transcrire en assembleur pour être exécuté.
 
 Cependant pour penser l'algorithmie, c'est à dire étudier ce qui peut ou ne peut pas être résoluble par le calcul, pseudo-code et assembleur sont encore trop _riches_ (on peut aller n'importe où dans la mémoire par exemple, on suppose l'existence de la fonction `NAND`{.language-}, etc). Il ne faut conserver que les éléments indispensables pour pouvoir écrire tout ce que l'on peut faire en pseudo-code.
+
+> TBD pour Turing dire ok avec doublement de la mémoire si nécessaire et pseudo-assembleur.
 
 C'est ce que propose Turing avec sa célèbre Machine : une base théorique minimale de ce qu'est l'informatique :
 

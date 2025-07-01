@@ -10,6 +10,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD comme mmix pour les sauts. Utiliser un registre.
+> TBD introduire les registre bien plus tôt qu'actuellement.
+> TBD dire que le pseudo code c'est des fonctions binaires finies et des boucles. sur des variables tableau binaire.
+> du coup c'est des and/or/not et des boucles avec des données sous la forme de tableaux binaires.
+> TBD ajouter mémoire car variables de taille quelconque ne fonctionne pas.
+
+
 Le [pseudo-code](../écrire-algorithmes/pseudo-code/) permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
 
 Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :

@@ -179,6 +179,17 @@ Notre hypothèse arrivant à une contradiction, elle était fausse : la solution
 
 ## Problème du sac à dos
 
+
+> TBD ajouter dans NP.
+> On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :
+
+- faire la somme $\sum_{i \in I} k_i$ et de vérifier si elle est inférieure à $K$
+- faire la somme $\sum_{i \in I} q_i$ et de vérifier si elle est supérieure à $Q$
+
+Cette vérification se fait en $\mathcal{O}(n)$ quelque soit $I$.
+
+> TBD ajouter NP-complet par réduction depuis exact cover.
+
 {% lien %}
 [Problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos)
 {% endlien %}

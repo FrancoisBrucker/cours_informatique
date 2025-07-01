@@ -13,7 +13,7 @@ Le pseudo-code est constitué d'instructions dont le but est soit de manipuler d
 
 Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
 
-## <span id="objets-basique"></span> Objets et variables
+## <span id="objets-basique"></span> Objets et instructions
 
 ### <span id="objets-basique"></span> Objets basiques
 
@@ -28,19 +28,6 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 
 Tous les autres types d'objets que l'on peut créer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est une liste de caractères, etc).
 
-Les instructions liées à ces objets sont de deux ordres. On doit pouvoir :
-
-- **_créer des objets_**
-- **_opérer sur ces objets_** :
-  - opérations sur les entiers et/ou réels :
-    - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
-    - opérations usuelles : prendre la valeur entière, valeur absolue,
-    - la division entière de deux nombre (`//`{.language-}) et le modulo (`%`{.language-})
-    - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
-  - opérations sur les caractères :
-    - logique : égalité (avec le signe `==`{.language-})
-  - opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
-
 Notez que tous les objets basiques à part les entiers sont de taille fixe :
 
 - booléen 1bit
@@ -53,7 +40,22 @@ On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{6
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
 {% endattention %}
 
-### Variables
+### <span id="instructions"></span> Instructions
+
+Les instructions que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :
+
+- **_créer des objets_**
+- **_opérer sur des objets_** :
+  - opérations sur les entiers et/ou réels :
+    - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
+    - opérations usuelles comme prendre la valeur entière, la valeur absolue, ...
+    - la division entière de deux nombre (`//`{.language-}) et le modulo (`%`{.language-})
+    - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
+  - opérations sur les caractères :
+    - logique : égalité (avec le signe `==`{.language-})
+  - opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
+
+## Variables
 
 Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**.
 
@@ -158,7 +160,7 @@ Les chaines étant très utilisées, des langages comme python les considèrent 
 Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).
 {% endnote %}
 
-## <span id="instruction"></span> Instructions de contrôle
+## <span id="instruction-contrôle"></span> Instructions de contrôle
 
 Si un des deux buts d'une instruction est de créer des objets à partir d'autres (ce que l'on vient de voir), le second but est de contrôler le flux d'instructions à exécuter. Ces instructions sont de deux types :
 

@@ -116,22 +116,25 @@ La réciproque vient du produit remarquable $(x + y)^2 = x^2 + y^2 + 2xy$ et don
 
 ### {2, 3}-SUM
 
-Nous allons voir ici une chaîne de réductions, qui nous serons utiles plus tard.
+Nous allons voir ici une chaîne de réductions, qui nous serons utiles plus tard. On reprend les problèmes [2-SUM](../projet-algorithmes-classiques/2_3-SUM/#problème-2-SUM){.interne} et [3-SUM](../projet-algorithmes-classiques/2_3-SUM/#problème-3-SUM){.interne} que l'on a déjà vu et on montre qu'ils sont équivalents à d'autres problèmes.
+
+#### 2-SUM = crédit
+
+Un petit échauffement :
+
+{% exercice %}
+Montrer que 2-SUM est équivalent [au problème crédit](../structure-dictionnaire/#problème-crédit){.interne}
+{% endexercice %}
+{% details "corrigé" %}
+
+- 2-SUM ≤ crédit : on prend C=0
+- crédit ≤ 2-SUM : on retranche C/2 à tous les prix
+
+{% enddetails %}
 
 #### 2-SUM ≤ ÉGAL
 
-Commençons par [le problème 2-SUM](../projet-algorithmes-classiques/#2-sum){.interne} que nous avons déjà vu :
-
-{% note "**Problème**" %}
-
-- **nom** : 2-SUM
-- **Entrée** :
-  - T : un tableau de $n$ entiers relatifs
-- **question** : existe-t-il 2 indices $i$ et $j$ (pouvant être égaux) tels que $T[i] + T[j] = 0$
-
-{% endnote %}
-
-Regardons un problème qui lui ressemble :
+Commençons par le problème 2-SUM et regardons un problème qui lui ressemble :
 
 {% note "**Problème**" %}
 
@@ -155,18 +158,7 @@ On prend $T'$ le tableau tel que $T'[k] = -T[k]$ pour tout indice $k$
 
 #### 3-SUM ≤ 3-SUM'
 
-Reprenons [le problème 3-SUM](../projet-algorithmes-classiques/#3-sum){.interne} que nous avons déjà vu :
-
-{% note "**Problème**" %}
-
-- **nom** : 3-SUM
-- **Entrées** :
-  - T : un tableau de $n$ entiers relatifs
-- **question** : existe-t-il 3 indices (pouvant être égaux) tels que $T[i] + T[j] + T[k] = 0$
-
-{% endnote %}
-
-Continuons sur notre lancée en considérant le problème suivant :
+Continuons sur notre lancée avec 3-SUM en considérant le problème suivant :
 
 {% note "**Problème**" %}
 
@@ -178,7 +170,6 @@ Continuons sur notre lancée en considérant le problème suivant :
 {% endnote %}
 
 Qui, selon toute logique doit être plus général que 3-SUM. Montrez le :
-Prouvez le :
 
 {% exercice %}
 Montrer que 3-SUM ≤ 3-SUM'
@@ -263,3 +254,64 @@ En prenant $K = \max_i(\\,\vert\\, T[i] \\,\vert\\,) + 1$ et $K'= K + 2 \cdot (\
 3. avec $k = n+n'$ on ne peut avoir $n \leq i, j < n + n'$ sinon $T''[i] + T''[j] \geq 2(K' - \max_i(\\,\vert\\, T'[i] \\,\vert\\,)) > K + K' = T''[k]$
 
 {% enddetails %}
+
+### 3-SUM et géométrie algébrique
+
+3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : GEOBASE
+- **Entrées** :
+  Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes horizontales avec $y = 0$, $y = 1$ et $y = 2$
+- **question** : Existe-t-il une droite non horizontale passant par 3 points.
+{% endnote %}
+
+Montrez qu'il est équivalent à 3-SUM' :
+
+{% exercice %}
+Montrer que 3-SUM' ≤ GEOBASE
+{% endexercice %}
+{% details "corrigé" %}
+
+Deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$. Comme $\vec{v}^{\perp} = (-y', x')$, $\vec{u}$ et $\vec{v}$ sont colinéaires si $xy' - yx' = 0$.
+
+Il suffit alors de construire les points :
+
+- $(T[i], 0)$
+- $(T''[i]/2, 1)$
+- $(T'[i], 2)$
+
+si trois points sont colinéaires alors il existe i, j et k tels que $T[i] + T'[j] = T''[k]$
+{% enddetails %}
+
+{% exercice %}
+Montrer que GEOBASE ≤ 3-SUM'
+{% endexercice %}
+{% details "corrigé" %}
+
+On fait le contraire. On ajoute chaque point de :
+
+- $(x, 0)$ dans $T = [x | \forall (x, 0)]$
+- $(x, 1)$ dans $T'' = [2x | \forall (x, 1)]$
+- $(x, 2)$ dans $T' = [x | \forall (x, 2)]$
+
+{% enddetails %}
+
+Terminons par le résultat principal de cette partie :
+
+{% exercice %}
+Montrer que 3-SUM = GEOBASE
+{% endexercice %}
+{% details "corrigé" %}
+Clair puisque 3-SUM = 3-SUM' = GEOBASE
+{% enddetails %}
+
+Si ce genre de problème de géométrie solvable algébriquement, n'hésitez pas à jeter un coup d'œil aux liens suivants :
+
+{% lien %}
+
+- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>
+- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
+
+{% endlien %}

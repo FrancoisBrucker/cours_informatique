@@ -127,9 +127,12 @@ Enfin :
 Les précédent commits de la branche dev avant rebase ne sont plus accessibles via une branche mais sont par défaut toujours présent dans la structure de sauvegarde (qui garde tout).
 
 {% note "**Définition**" %}
-On appelle **_rebase_** d'une branche $A$ sur une autre $B$ le fait de rejouer les diff des commit de la branche $A$ sur la branche $B$ depuis leur ancêtre commun.
+On appelle **_rebase_** d'une branche $A$ sur une autre $B$ le fait de rejouer les diff des commits de la branche $A$ sur la branche $B$ depuis leur ancêtre commun.
 
 {% endnote %}
+{% attention %}
+A priori les commit résultant d'un merge (ceux ayant plus d'un parent) ne sont pas concernés par le rebase puisqu'il sont déjà eux même des combinaisons de commits existants.
+{% endattention %}
 
 ## Nettoyage de base
 
@@ -186,30 +189,63 @@ Au cours du temps de l'évolution des branches sur la sauvegarde locale et dista
 
 On se retrouve alors dans la configuration suivante :
 
-> TBD montrer des divergences et des branches locales non poussées sur l'origin.
+![origin diverge](./origin-2.png)
 
-Comme on a fait **qu'ajouter** des commits et des références il est possible de synchroniser les deux structures :
+Comme l'origine et la sauvegarde locales ont évoluées chacune de son côté des commits ont été ajouté depuis leur dernière synchronisation **mais** comme on a fait **qu'ajouter** des commits et des références il est possible de synchroniser les deux structures.
 
-- par des ajouts de commits/branches
-- des merges si nécessaire sur des branches divergentes
+Pour cela, on commence par synchroniser la sauvegarde distante avec la sauvegarde locale, puis on envoie les évolutions locales vers l'origine.
 
-#### Ajout de commits branches
+#### Synchronisation de branches distances vers locales
 
-#### merge de branches locales et distantes
+La synchronisation se fait branche à branche. Dans l'exemple la sauvegarde locale suit deux branches distantes, `origin/main` et `origin/dev`. La branche feature n'est pas suivi, on ne s'en occupe donc pas : la sauvegarde locale n'est pas au courant qu'elle existe.
+
+Seule la branche `origin/main` à divergé. Pour la synchroniser on commence par récupérer les divergences (on ne montre plus que la sauvegarde locale) :
+
+![origin récupération](./origin-3.png)
+
+On a maintenant deux possibilités pour effectuer la synchronisation.
+
+##### Merge `origin/main` et `main`
+
+![origin merge](./origin-4-merge.png)
+
+##### Rebase `main` sur `origin/main`
+
+![origin rebase](./origin-4-rebase.png)
+
+**C'est cette solution qui est à privilégier** car elle garde un historique linéaire, plus facile à lire.
+
+{% attention %}
+Les commits locaux sont **réécrit**. Il ne faut pas faire de rebase si les commits initiaux étaient déjà sur le serveur origin. Cela causerait d'énorme problèmes aux autres utilisateurs qui référenceraient des commits qui ne sont plus accessibles (voir ci-après).
+{% endattention %}
+
+#### Synchronisation de branches locales vers distantes
+
+Une fois les synchronisations de l'origine vers le serveur locales terminées, la synchronisation vers l'origine est aisée c'est un _fast-forward_ :
+
+![origin fin synchronisation](./origin-5.png)
 
 ### Interagir avec l'_origin_
 
+> TBD écrire joli.
 
-> TBD Dire que c'est uniquement les branches utiles à tous qu'il faut pousser.
+Quelques règles d'usage  lorsque l'on participe à un projet avec une origine :
 
-> / pull / push
-> attention réécriture d'historique : uniquement en local. Faire dessin. Interactive et squash.
-> (le rebase ne va pas pousser les commit non accessibles en remote)
+- l'origin ne sait pas ce que l'on fait. Et il faut penser à ceux qui sont aussi connecté àl'origin (ne pas changer l'historique)
+- beaucoup d'utilisateurs et trop de branches. On ne garde en local que les références des branches utiles pour nous, quite à rajouter des branches à suivre plus tard.
+- commiter souvent pour éviter les conflits et les opérations lourdes de synchronisation
+- ne mettre sur l'origine que les branches utiles à tous
+- ne pas hésiter à avoir de nombreuses branches locales que l'on ne va pas synchroniser avec l'origin
 
-## Modifier l'historique
+attention réécriture d'historique **n'oubliez jamais que vous travaillez à plusieurs** : uniquement en local.
+
+> TBD Faire dessin du soucis avec 2 utilisateurs.
+
+## Se déplacer dans l'historique
 
 > TBD pas vraiment utile tout le temps, mais quand on en a besoin c'est vraiment utile.
-> - squash
+>
 > - revert
-> - reset
+> - reset : les 3 façons soft/normal/hard
 > - cherry pick
+> - modifier l'historique (attention réécriture) : squash

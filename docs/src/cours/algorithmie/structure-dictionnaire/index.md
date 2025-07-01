@@ -140,16 +140,38 @@ Ceci est souvent le cas en algorithmie mais pas en code.
 
 {% enddetails %}
 
+Utilisons cette nouvelle structure pour reprendre un vieil ami :
+
+{% exercice %}
+Donnez une solution au [problème 2-SUM](../projet-algorithmes-classiques/2_3-SUM/#problème-2-SUM) avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur})$ en moyenne
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : on stocke les éléments et on regarde si -i est dedans.
+
+{% enddetails %}
+
 ### <span id="exercice-fondamental"></span>Exercice fondamental
 
 Exercice fondamental pour comprendre l'intérêt des dictionnaires.
 
-- données :
-  - une tableau de $n$ prix différents deux à deux : $p_i$ ($0 \leq i < n$)
-  - un crédit : $C$
-- Question : donner deux indices différents $i$ et $j$ tels que $p_i + p_j = C$. On suppose qu'il existe toujours une solution.
+<span id="problème-crédit"></span>
 
-On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.
+{% note "**Problème**" %}
+
+- **Nom** : crédit
+- **Entrées** :
+  - un tableau de $n$ prix différents deux à deux : $p_i$ ($0 \leq i < n$)
+  - un crédit : $C$
+- **Question** : donner deux indices différents $i$ et $j$ tels que $p_i + p_j = C$. On suppose qu'il existe toujours une solution.
+
+{% endnote %}
+
+On remarque que cet exercice ressemble fort à 2-SUM, mais faisons comme si de rien n'était pour l'instant et essayons de résoudre ce problème de trois façons différentes, toutes avec des complexités différentes.
 
 #### Deux boucles for imbriquées
 
