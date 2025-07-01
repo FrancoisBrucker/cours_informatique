@@ -98,7 +98,7 @@
 
   <p>Le pseudo-code est constitué d'instructions dont le but est soit de manipuler des objets (création, affectation ou lecture) ou de contrôler le flux d'instructions (test et boucles).</p>
 <p>Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.</p>
-<h2><span id="objets-basique"></span> Objets et variables</h2>
+<h2><span id="objets-basique"></span> Objets et instructions</h2>
 <h3><span id="objets-basique"></span> Objets basiques</h3>
 <p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et sont au nombre de six :</p>
 <ul>
@@ -110,28 +110,6 @@
 <li>les caractères : <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;b&quot;</code>, ...</li>
 </ul>
 <p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est une liste de caractères, etc).</p>
-<p>Les instructions liées à ces objets sont de deux ordres. On doit pouvoir :</p>
-<ul>
-<li><strong><em>créer des objets</em></strong></li>
-<li><strong><em>opérer sur ces objets</em></strong> :
-<ul>
-<li>opérations sur les entiers et/ou réels :
-<ul>
-<li>arithmétique : addition (<code class="language-">+</code>), soustraction (<code class="language-">-</code>), multiplication (<code class="language-">*</code>), division (<code class="language-">/</code>)</li>
-<li>opérations usuelles : prendre la valeur entière, valeur absolue,</li>
-<li>la division entière de deux nombre (<code class="language-">//</code>) et le modulo (<code class="language-">%</code>)</li>
-<li>logique : égalité (avec le signe <code class="language-">==</code>), plus petit que (<code class="language-">&lt;</code>), plus grand que (<code class="language-">&gt;</code>), plus petit ou égal (<code class="language-">≤</code>), plus grand ou égal (<code class="language-">≥</code>)</li>
-</ul>
-</li>
-<li>opérations sur les caractères :
-<ul>
-<li>logique : égalité (avec le signe <code class="language-">==</code>)</li>
-</ul>
-</li>
-<li>opérations sur les booléens : &quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$), &quot;et logique&quot; (et, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code>), &quot;ou logique&quot; (ou, <code class="language-">||</code>, <code class="language-">OR</code>)</li>
-</ul>
-</li>
-</ul>
 <p>Notez que tous les objets basiques à part les entiers sont de taille fixe :</p>
 <ul>
 <li>booléen 1bit</li>
@@ -149,7 +127,30 @@
 <p>On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.</p>
 </div></div>
 
-<h3>Variables</h3>
+<h3><span id="instructions"></span> Instructions</h3>
+<p>Les instructions que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :</p>
+<ul>
+<li><strong><em>créer des objets</em></strong></li>
+<li><strong><em>opérer sur des objets</em></strong> :
+<ul>
+<li>opérations sur les entiers et/ou réels :
+<ul>
+<li>arithmétique : addition (<code class="language-">+</code>), soustraction (<code class="language-">-</code>), multiplication (<code class="language-">*</code>), division (<code class="language-">/</code>)</li>
+<li>opérations usuelles comme prendre la valeur entière, la valeur absolue, ...</li>
+<li>la division entière de deux nombre (<code class="language-">//</code>) et le modulo (<code class="language-">%</code>)</li>
+<li>logique : égalité (avec le signe <code class="language-">==</code>), plus petit que (<code class="language-">&lt;</code>), plus grand que (<code class="language-">&gt;</code>), plus petit ou égal (<code class="language-">≤</code>), plus grand ou égal (<code class="language-">≥</code>)</li>
+</ul>
+</li>
+<li>opérations sur les caractères :
+<ul>
+<li>logique : égalité (avec le signe <code class="language-">==</code>)</li>
+</ul>
+</li>
+<li>opérations sur les booléens : &quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$), &quot;et logique&quot; (et, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code>), &quot;ou logique&quot; (ou, <code class="language-">||</code>, <code class="language-">OR</code>)</li>
+</ul>
+</li>
+</ul>
+<h2>Variables</h2>
 <p>Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme <strong><em>une mémoire</em></strong>, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <strong><em>un objet basique</em></strong>.</p>
 <p>Une <strong><em>variables</em></strong> est alors associé à la première case de la mémoire contenant l'objet. D'un point de vue algorithmique, cela revient à référencer un objet, à le nommer :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -287,7 +288,7 @@ b <span class="token operator">←</span> a</code></pre>
 <p>Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).</p>
 </div></div>
 
-<h2><span id="instruction"></span> Instructions de contrôle</h2>
+<h2><span id="instruction-contrôle"></span> Instructions de contrôle</h2>
 <p>Si un des deux buts d'une instruction est de créer des objets à partir d'autres (ce que l'on vient de voir), le second but est de contrôler le flux d'instructions à exécuter. Ces instructions sont de deux types :</p>
 <ul>
 <li><a href="#tests" class="interne">l'exécution conditionnelle d'instructions</a>,</li>

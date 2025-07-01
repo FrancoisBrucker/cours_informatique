@@ -101,7 +101,7 @@
 <h2>Problèmes utilisables en pratique</h2>
 <p>Un <a href="../probleme-algorithmique/" class="interne">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov" class="interne">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
-<p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
+<p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : <strong>la résolution</strong>.</p>
 <h3>Résolution efficace</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -133,47 +133,131 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div></div>
 
 <h3>Vérification efficace</h3>
-<p>Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement voir si proposition de solution en est une ou pas. Citons en 2 pour se fixer les idées : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">le problème du sac à dos</a> et celui de  <a href="https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes">l'isomorphisme de graphes</a>.</p>
-<h4><span id="sac-à-dos"></span>Sac à dos et vérification</h4>
-<p>Le problème du sac à dos tente de maximiser la durée d'une randonnée :</p>
+<p>Il existe de nombreux problèmes dont on ne connaît pas d'algorithme polynomiaux pour les résoudre mais la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre, mais dont dont sait facilement, grace à un algorithme efficace de vérification nommé <strong><em>vérifieur</em></strong>, voir si proposition de solution en est une ou pas.</p>
+<div id="vérifieur"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Problème</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
+<p>Un <strong><em>vérifieur</em></strong> est un algorithme de :</p>
+<p>$$v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$$</p>
+<p>Il est dit <strong><em>efficace</em></strong> s'il est de complexité polynomiale.</p>
+</div></div>
+
+<p>Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution puisqu'on ne peut pas savoir avant d'essayer.</p>
+<p>On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.</p>
+<p>Formalisons cette notion de vérification efficace :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>vérifieur efficace d'un problème décidable</em></strong> $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \{0, 1\}$ tel que :</p>
 <ul>
-<li><strong>Nom</strong> : sac à dos</li>
-<li><strong>entrées</strong> :
-<ul>
-<li>$n$ produits différents, décris par :
-<ul>
-<li>leurs masses en kilo : $k_i$</li>
-<li>leurs quantité nutritive : $q_i$</li>
-</ul>
-</li>
-<li>un sac à dos pouvant contenir $K$ kilos</li>
-<li>une quantité nutritive à dépasser $Q$</li>
-</ul>
-</li>
-<li><strong>Question</strong> : existe-t-il un sous ensemble $I$ de l'intervalle $[1, n]$ (un ensemble de produits) tel que :
-<ul>
-<li>$\sum_{i \in I} k_i \leq K$ : les objets tiennent dans le sac à dos</li>
-<li>$\sum_{i \in I} q_i \geq Q$ : la quantité nutritive des objets permet de survivre à la randonnée</li>
-</ul>
-</li>
+<li>$V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$</li>
+<li>la complexité de $V$ est <strong>polynomiale</strong> en la taille de $e$ et ne <strong>dépend pas</strong> de la taille de $s$.</li>
 </ul>
 </div></div>
 
-<p>On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :</p>
-<ul>
-<li>faire la somme $\sum_{i \in I} k_i$ et de vérifier si elle est inférieure à $K$</li>
-<li>faire la somme $\sum_{i \in I} q_i$ et de vérifier si elle est supérieure à $Q$</li>
-</ul>
-<p>Cette vérification se fait en $\mathcal{O}(n)$ quelque soit $I$.</p>
-<h4>Isomorphisme de graphe et vérification</h4>
-<p>De même considérons un autre problème classique en algorithmie, l'isomorphisme de graphe :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le retour d'un vérifieur est classiquement un bit mais pas la suite, pour être plus explicite, nous utiliserons des booléens en associant 0 à faux et 1 à vrai.</p>
+</div></div>
+
+<p>Remarquez que l'on ne demande <strong>pas</strong> que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.</p>
+<p>Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bits de $s$ peuvent être examinés, cela ne sert à rien d'avoir des sorties plus longues.</p>
+<p>Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (<em>ie.</em> polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
+<p>Tout algorithme de $P$ admet un vérifieur efficace puisqu'il suffit d'exécuter l'algorithme de résolution et de vérifier si sa solution est égale à l'entrée.</p>
+<p>Ainsi, pour le maximum d'un tableau :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_max<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+  m <span class="token operator">←</span> max<span class="token punctuation">(</span>T<span class="token punctuation">)</span>  <span class="token comment"># algorithme linaire trouvant le maximum d'un tableau</span>
+  <span class="token keyword">rendre</span> m <span class="token operator">==</span> sol</code></pre>
+<p>Dans le cas d'algorithme de résolution linéaire (comme pour le problème de la recherche du maximum), cette approche est optimale. Mais pour des problèmes dont l'algorithme de résolution est non linéaire on peut souvent trouver un algorithme de vérification de complexité plus faible.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que le problème <a href="../probl%C3%A8me-r%C3%A9duction/#probl%C3%A8me-3-SUM" class="interne">3-SUM</a> admet un vérifieur linéaire.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérification_3_SUM<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+  i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k <span class="token operator">←</span> sol
+  <span class="token keyword">si</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+      <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+  <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
+</div>
+</details>     
+</div>
+<h3>Vérifieur efficace et algorithme de résolution</h3>
+<p>Les problème admettant un vérifieur ne sont pas forcément décidables. Considérons par exemple le vérifieur <code class="language-">stop(E: chaîne, n: entier) → booléen</code> qui rend vrai si le programme décrit par la chaîne de caractères <code class="language-">E</code> s'arrête au bout de <code class="language-">n</code> itération. Ce vérifieur correspond <a href="../bases-th%C3%A9oriques/arr%C3%AAt-rice/" class="interne">au problème de l'arrêt</a> qui est indécidable.</p>
+<p>Le fait que le problème admette un vérifieur dont la complexité ne dépend que du premier paramètre est donc cruciale. Si de plus sa complexité est polynomiale on a de plus :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si un problème admet un <strong><em>vérifieur efficace</em></strong> de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Tout problème admettant un vérifieur efficace est décidable car il n'y a qu'un nombre fini de l'ordre de $\mathcal{O}(2^{|e|^k})$ . En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$ (avec $k$ une constante), la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$.</p>
+<p>On peut alors pour une entrée donnée tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (puisque tester une entrée coûte $\mathcal{O}(|e|^k)$ opérations), ce qui est certes beaucoup mais reste fini.</p>
+</div>
+</details>     
+</div>
+<h3>Vérification efficace pas dans P ?</h3>
+<p>Il existe de nombreux problèmes pour lesquels on ne connaît pas d'algorithme polynomiaux pour les résoudre mais dont on peut facilement trouver un vérifieur efficace. Citons en 2, fondamentaux, pour se fixer les idées : <a href="https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes">le problème l'isomorphisme de graphes</a> et <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_SAT">le problème de la Satisfaisabilité (SAT)</a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On ne connaît pas d'algorithmes polynomiaux pour résoudre ces deux problèmes. Essayez d'en trouver ! Si vous y arrivez, vous allez devenir célèbre.</p>
+</div></div>
+
+<h4>Isomorphisme de graphe</h4>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -189,7 +273,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <li>$G_2 = (V_2, E_2)$</li>
 </ul>
 </li>
-<li><strong>Question</strong> : existe-t-il une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\{x, y\}$ est une arête de $G_1$ si et seulement si $\{\sigma(x), \sigma(y) \}$ est une arête de $G_2$</li>
+<li><strong>Question</strong> : Donnez, si elle existe, une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\{x, y\}$ est une arête de $G_1$ si et seulement si $\{\sigma(x), \sigma(y) \}$ est une arête de $G_2$</li>
 </ul>
 </div></div>
 
@@ -231,24 +315,19 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <li>$\sigma$ est une bijection de $V_1$ dans $V_2$, donc que les deux tableaux $T_1 = [\sigma(x) \mbox{ pour chaque } x \in V_1]$ et $T_2 = [x \mbox{ pour chaque } x \in V_2]$ contiennent les mêmes éléments</li>
 <li>que les arêtes de $V_2$ sont bien arêtes de $V_1$ envoyées via $\sigma$, donc que les deux tableaux $T'_1 = [\{\sigma(x), \sigma(y)\} \mbox{ pour chaque } x \in E_1]$ et $T_2 = [xy \mbox{ pour chaque } xy \in E_2]$ contiennent les mêmes éléments</li>
 </ul>
-<p>Ceci peut donc se faire en utilisant deux fois l'algorithme <a href="../projet-calcul-complexite/#%C3%A9galit%C3%A9-tableaux" class="interne">égalité de tableaux</a> avec une complexité totale de $\mathcal{O}(\; |\; E_1\; |^2\; + \; |\; V_1\; |^2\;)$ (en supposant que $\; |\; E_1\; |\; = \; |\; E_2\; |\;$ et $\; |\; V_1\; |\; = \; |\; V_2\; |\;$).</p>
-<h3>Définition</h3>
-<p>Donnons une définition formelle d'un vérifieur :</p>
-<div id="vérifieur"></div>
+<p>Ceci peut donc se faire en utilisant deux fois l'algorithme <a href="../projet-calcul-complexite/#%C3%A9galit%C3%A9-tableaux" class="interne">égalité de tableaux</a> avec une complexité totale de $\mathcal{O}(\; |\; E_1\; |^2\; + \; |\; V_1\; |^2\;)$ (en supposant que $\; |\; E_1\; |\; = \; |\; E_2\; |\;$ et $\; |\; V_1\; |\; = \; |\; V_2\; |\;$). On en conclut que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un <strong><em>vérifieur</em></strong> est un algorithme de :</p>
-<p>$$v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$$</p>
-<p>Il est dit <strong><em>efficace</em></strong> s'il est de complexité polynomiale.</p>
+<div class="pl-8 mr-8">
+<p>Le problème de l'isomorphisme de graphe admet un vérifieur efficace.</p>
 </div></div>
 
-<p>Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution on ne peut pas savoir avant d'essayer. On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.</p>
-<p>Formalisons cette notion de vérification efficace :</p>
+<h4><span id="SAT"></span>Problème SAT</h4>
+<p>Le problème SAT cherche à vérifier si une formule logique peut-être satisfaite.</p>
+<p>Pour cela, commençons par définir un concept fondamental en logique la <strong><em>conjonction de clauses</em></strong> :</p>
+<div id="clauses"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -256,52 +335,60 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong><em>vérifieur efficace d'un problème décidable</em></strong> $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \{0, 1\}$ tel que :</p>
+<p>Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :</p>
 <ul>
-<li>$V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$</li>
-<li>la complexité de $V$ est <strong>polynomiale</strong> en la taille de $e$ et ne <strong>dépend pas</strong> de la taille de $s$.</li>
+<li>un <strong><em>littéral</em></strong> $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$</li>
+<li>une <strong><em>clause</em></strong> comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)</li>
+<li>une <strong><em>conjonction de clauses</em></strong> comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)</li>
 </ul>
 </div></div>
 
-<p>Remarquez que l'on ne demande pas que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.</p>
-<p>Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties plus longues.</p>
-<p>Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (<em>ie.</em> polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
-<h3>Exemples de vérifieurs efficaces</h3>
-<h4>Max/min d'un tableau</h4>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">verif</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-
-<span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
-    <span class="token keyword">si</span> x <span class="token operator">></span> sol<span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-<span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></code></pre>
-<h4>3-SUM</h4>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">verif</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-
-i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k <span class="token operator">&lt;</span><span class="token operator">-</span> sol
-<span class="token keyword">si</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> T<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-<span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
-<h4>Tri d'un tableau</h4>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">verif</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sol<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></code></pre>
-<ol>
-<li>on vérifie que sol est trié</li>
-<li>on vérifie que les éléments de sol sont ceux de T avec notre algorithme d'égalité de tableaux</li>
-</ol>
-<h3>Vérifieur efficace et algorithme de résolution</h3>
-<p>Il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.</p>
-<p>Enfin :</p>
+<p>Le problème <code>SAT</code> cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite <strong><em>satisfiable</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
+<p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si un problème admet un <strong><em>vérifieur efficace</em></strong> de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
+<ul>
+<li><strong>Nom</strong> : SAT</li>
+<li><strong>Entrée</strong> : $f$ une conjonction de clauses sur les variables $x_1$ à $x_n$</li>
+<li><strong>Sortie</strong> : Si cela est possible, une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie.</li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une formule logique sous la forme d'une disjonction de clause est dite sous la <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive">forme normale conjonctive</a>. Toute formule logique peut être mise sous cette forme grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> qui est linéaire en nombre d'opérations. Ceci exige de se retrouver avec un nombre exponentiel de clauses si on utilise juste <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">la distributivité des opérations logiques</a>.</p>
+</div></div>
+
+<p>Par exemple considérons les 4 clauses suivantes, sur 5 variables booléennes :</p>
+<div>
+$$
+(x_1 \lor {x_2}) \land (\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}) \land (x_1 \lor x_3 \lor x_4 \lor \overline{x_5}) \land (x_1 \lor \overline{x_3} \lor x_4 \lor {x_5})
+$$
+</div>
+<p>Il y $2^5 = 32$ possibilités (O ou 1 ; Vrai ou Faux) pour chaque variable. Essayons en quelques une :</p>
+<ul>
+<li>$x_1 = x_2 = x_3 =x_4 = x_5 = 0$ ne permet pas de satisfaire la formule car $x_1 \lor {x_2} = 0$</li>
+<li>$x_1 = x_2 = x_3 =x_4 = x_5 = 1$ non plus ($\overline{x_1} \lor \overline{x_2} \lor \overline{x_3} = 0$)</li>
+<li>$x_1 = \overline{x_2} = x_3 = \overline{x_4} = x_5 = 1$ fonctionne</li>
+</ul>
+<p>La formule précédente est satisfiable !</p>
+<p>Montrons que SAT est dans NP :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'on peut encoder une clause sur $n$ variables booléennes par un tableau d'entiers relatifs.</p>
+<p>En déduire un moyen d'encoder une conjonction de clauses sur $n$ variables booléennes.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -310,18 +397,110 @@ i<span class="token punctuation">,</span> j<span class="token punctuation">,</sp
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>corrigé</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.</p>
-<p>En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
+<p>Il suffit de noter un littéral :</p>
+<ul>
+<li>$+i$ s'il correspond à $x_i$</li>
+<li>$-i$ s'il correspond à $\overline{x_i}$</li>
+</ul>
+<p>Et d'encoder une clause comme un tableau de littéraux. Notez qu'on ne peut pas commencer à 0 car $+0 = -0 = 0$</p>
+<p>Enfin, une conjonction de clauses est un tableau de clauses.</p>
 </div>
 </details>     
 </div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quel est l'encodage de l'exemple ? Comment encoderiez vous une solution ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span></code></pre>
+<p>Et la solution est un tableau de taille $n$ de booléens. Par exemple pour la solution $x_1 = \overline{x_2} = x_3 = \overline{x_4} = x_5 = 1$ on a l'encodage : <code>[Vrai, Faux, Vrai, Faux, Vrai]</code></p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Utilisez le codage précédent pour montrer que SAT est dans NP.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'algorithme suivant est (clairement) un vérifieur de SAT utilisant l'encodage précédent :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> vérif_SAT<span class="token punctuation">(</span>conj_clauses<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment"># [c_1, ..., c_m]</span>
+                     solution<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">booléen</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment"># [x_1, ..., x_n]</span>
+                     <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span> c de conj_clauses<span class="token punctuation">:</span>
+        sat <span class="token operator">←</span> <span class="token boolean">Faux</span>
+        <span class="token keyword">pour chaque</span> l de c<span class="token punctuation">:</span>
+            <span class="token keyword">si</span> l <span class="token operator">></span> <span class="token number">0</span> <span class="token keyword">et</span> solution<span class="token punctuation">[</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                sat <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+            <span class="token keyword">si</span> l <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>solution<span class="token punctuation">[</span><span class="token operator">-</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                sat <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+        <span class="token keyword">si</span> sat <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>            </code></pre>
+<p>La complexité est clairement linéaire : on regarde au pire chaque littéral de chaque clause une fois.</p>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
+TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</p>
+</blockquote>
+<blockquote>
+<p>TBD toute formule logique peut s'écrire comme une conjonction de clause. CNF-SAT mais on peut passer de toute formule à SAT en temps linéaire :</p>
+</blockquote>
+<blockquote>
+<p>TBD ici
+:</p>
+</blockquote>
+<blockquote>
+<p>TBD exemple et vérification.</p>
+</blockquote>
 <h2>Problèmes NP</h2>
 <p>Nous venons de caractériser les problèmes utiles qui s'appellent en algorithmie les problèmes NP :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -346,13 +525,13 @@ i<span class="token punctuation">,</span> j<span class="token punctuation">,</sp
 </div><div class="pl-8 mr-8">
 <p>Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :</p>
 <ul>
-<li>On peut énumérer toutes les solutions possibles en temps fini, mais possiblement exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).</li>
+<li>On peut énumérer toutes les solutions possibles en temps fini, mais en temps exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).</li>
 <li>On peut vérifier efficacement (en temps polynomial) si une proposition de solution est réellement une solution.</li>
 </ul>
 </div></div>
 
 <p>Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidables mais non dans NP.</p>
-<p>En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une  époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
+<p>En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
 <p>Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
 <p>Enfin :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -409,6 +588,10 @@ i<span class="token punctuation">,</span> j<span class="token punctuation">,</sp
 <p><a href="https://www.youtube.com/watch?v=9rUUs8SlaOE">Jeux video NP-complet</a></p>
 </div></div>
 
+<blockquote>
+<p>TBD montrer isomorphe ≤ SAT et sur l'exemple du graphe de Petersen.
+TBD SAT pas tout seul. Montrer SAT ≤ exact cover.</p>
+</blockquote>
 <h2>Autres classes</h2>
 <p>Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souvent uniquement à ceux de $P$) mais il en existe une foultitudes d'autres. On peut par exemple citer :</p>
 <ul>
