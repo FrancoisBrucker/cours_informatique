@@ -34,7 +34,7 @@ v_f(n, m) = \left\\\{
 \right.
 $$
 
-Un algorithme est ainsi [un vérifieur](../problèmes-NP/#vérifieur). Nous allons monter dans cette partie une version équivalente, plus simple à manipuler théoriquement, mais moins opérationnelle en pratique d'un algorithme.
+Un algorithme est ainsi [un vérifieur](../problèmes-NP/#définition-vérifieur). Nous allons monter dans cette partie une version équivalente, plus simple à manipuler théoriquement, mais moins opérationnelle en pratique d'un algorithme.
 
 ### Décideur et algorithmes
 
@@ -137,6 +137,8 @@ La **_complexité d'un langage (décidable)_** est la complexité la plus faible
 
 {% endnote %}
 
+> TBD à re-écrire. Déjà mis dans la partie complexité. Dire ici que le nombre de lignes est remplacé par la case mémoire car curseur.
+
 Comme une machine de Turing prend en entrée un mot de $\\{0, 1\\}^\star$, sa complexité sera forcément calculé par rapport à sa taille. Pour une machine de Turing $M$ prenant une entrée $E$ en paramètre, on notera dans cette partie :
 
 - $C(\vert E \vert)$ sa [complexité](../complexité-calculs/définitions/#complexité){.interne}.
@@ -149,16 +151,17 @@ Pour toute machine de Turing lisant toute son entrée, on a l'encadrement :
 
 <div>
 $$
-S(n) \leq C(n) \leq S(n) \cdot 2^{S(n)}
+S(n) \leq C(n) \leq  Q \cdot S(n) \cdot 2^{S(n)}
 $$
 </div>
 
+Avec $Q$ le nombre d'états.
 {% endnote%}
 {% details "preuve", "open" %}
 
 Si la machine lit toute ses donnée, il lui faudra se déplacer (une operation à chaque fois) sur chacune des cases du ruban où quelque chose est écrit, d'où : $S(n) \leq C(n)$.
 
-Le curseur de la machine peut être sur $S(n)$ cases au maximum et pour ne pas boucler si le curseur repasse par une case où il était déjà présent, au moins une des valeurs des $S(n)$ cases doit être différente par rapport à son dernier passage. Comme il y a $2^{S(n)}$ possibilités pour les $S(n)$ cases (soit 0 soit 1 pour chaque case) il ne peut repasser par la même case que $^{S(n)}$ fois : il y a donc au maximum $S(n) \cdot 2^{S(n)}$ instructions d'où la seconde inégalité.
+Le curseur de la machine peut être sur $S(n)$ cases au maximum et pour ne pas boucler si le curseur repasse par une case où il était déjà présent, au moins une des valeurs des $S(n)$ cases ou son état doit être différent par rapport à son dernier passage. Comme il y a $2^{S(n)}$ possibilités pour les $S(n)$ cases (soit 0 soit 1 pour chaque case) et $Q$ états il ne peut repasser par la même case que $Q\cdot 2^{S(n)}$ fois : il y a donc au maximum $Q \cdot S(n) \cdot 2^{S(n)}$ instructions d'où la seconde inégalité.
 
 {% enddetails %}
 

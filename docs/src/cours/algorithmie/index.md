@@ -89,9 +89,11 @@ Un **_problème_** est un texte composé de 3 parties :
 
 Par exemple :
 
+<span id="problème-MAX"></span>
+
 {% note "**Problème**" %}
 
-- **Nom** : maximum
+- **Nom** : MAX
 - **Entrée** : un tableau d'entiers
 - **Sortie** : l'entier maximum du tableau
 
@@ -666,6 +668,7 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 #### Algorithmes et fonctions
 
 > TBD uniquement fonctions récursives.
+> TBD faire hiérarchie des complexités avec fonctions calculables.
 
 Finissons par quelques exemples non triviaux de modèles Turing complet :
 

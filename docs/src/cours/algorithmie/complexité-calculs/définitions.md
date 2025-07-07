@@ -239,9 +239,9 @@ On calcule la complexité d'un algorithme par rapport à un paramètre qui rend 
 
 Les connaissances minimales que l'on possède sur les données sont leurs tailles de stockage en mémoire.
 
-{% note %}
+{% note "**Définition**" %}
 
-**_la taille des entrées d'algorithme_** est le nombre de cases mémoires nécessaires pour les stocker.
+**_la taille des entrées d'un algorithme_** est le nombre de cases mémoires nécessaires pour stocker toutes ses entrées.
 {% endnote %}
 
 Dans la partie pseudo-code on a considéré deux types de données :
@@ -349,6 +349,27 @@ Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura
 
 Complexité et complexité spatiale sont liées puisque chaque affectation d'une variable prend une instruction :
 
-{% note %}
+{% note "**Proposition**" %}
 La complexité spatiale est toujours inférieure à la complexité.
 {% endnote %}
+
+On peut même avoir un encadrement plus précis :
+
+{% note "**Proposition**" %}
+Pour tout algorithme $A(p_1, \dots, p_m)$ dont la taille des entrées vaut $N$ et de complexités $C(N)$ (sa complexité en ombre d'instructions) et $S(N)$ (sa complexité spatiale), on a l'encadrement :
+
+<div>
+$$
+S(N) \leq C(N) \leq L \cdot 2^{S(N)}
+$$
+</div>
+
+Avec $L$ le nombre de lignes de l'algorithme.
+{% endnote%}
+{% details "preuve", "open" %}
+
+On sait déjà que $S(n) \leq C(n)$.
+
+Si une même ligne est exécutée deux fois avec la même composition de la mémoire, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(n)}$ fois qui correspond aux nombre maximum de positions de la mémoire.
+
+{% enddetails %}

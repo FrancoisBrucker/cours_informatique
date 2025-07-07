@@ -181,6 +181,25 @@ Notre hypothèse arrivant à une contradiction, elle était fausse : la solution
 
 
 > TBD ajouter dans NP.
+> TBD faire bien la preuve.
+>
+> Montrer qu'il est NPC
+
+[Une instance de $EC$](../../problèmes-NP/#problème-EC) :
+
+- $U = \\{x_1, \dots, x_n\\}$
+- $S = \\{S_1, \dots, S_m\\}$, $S_i \subseteq U$
+
+> TBD idée de comment transformer une union en somme Avec addition binaire. Mais problème de la retenue. POur pas que ça déborde, on augmente la base. $\sum_{1\leq i\leq k} m*(m+1)^i < (m+1)^(k+1)$
+
+On associe un sac à dos avec $m$ objets de poids 1 et de valeur : $\sum_{1 \leq i \leq n}(m+1)^{i}(x_i \in S_j)$ et le poids total du sac à dos est $n$.
+
+La valeur max du sac à dos est atteinte pour $\sum_{1 \leq i \leq n}(m+1)^{i}$ ce qui n'est possible que si chaque élément est présent une unique fois dans chaque ensemble choisi.
+
+C'est bien dans NP car la transformation est polynomiale et la taille de chaque nombre est $\log_2((m+1)^{n+1})=\mathcal{O}(n\log_2(m)) = \mathcal{O}(n\cdot m)$ qui est la taille d'encodage de $EC$.
+
+> TBD remarquez comment on est passé d'un problème d'union d'ensemble à un problème de somme avec une astuce.
+
 > On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :
 
 - faire la somme $\sum_{i \in I} k_i$ et de vérifier si elle est inférieure à $K$

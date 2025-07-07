@@ -51,6 +51,8 @@ Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche
 
 Si l'on veut utiliser la réduction pour résoudre notre problème réduit, on cherche le couple d'algorithmes avec la complexité la plus faible, si possible linéaire (comme dans l'exercice précédent) et au mieux polynomiale :
 
+<span id="définition-réduction-polynomiale"></span>
+
 {% note "**Définition**" %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_2$ en $P_1$ est une réduction ou les deux algorithmes $A_1$ et $A_2$ sont de complexité polynomiale.
 {% endnote %}
@@ -160,6 +162,7 @@ On prend $T'$ le tableau tel que $T'[k] = -T[k]$ pour tout indice $k$
 
 Continuons sur notre lancée avec 3-SUM en considérant le problème suivant :
 
+<span id="problème-3-SUM'"></span>
 {% note "**Problème**" %}
 
 - **Nom** : 3-SUM'
