@@ -318,7 +318,25 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <h2>Problème du sac à dos</h2>
 <blockquote>
 <p>TBD ajouter dans NP.
-On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :</p>
+TBD faire bien la preuve.</p>
+<p>Montrer qu'il est NPC</p>
+</blockquote>
+<p><a href="../../probl%C3%A8mes-NP/#probl%C3%A8me-EC">Une instance de $EC$</a> :</p>
+<ul>
+<li>$U = \{x_1, \dots, x_n\}$</li>
+<li>$S = \{S_1, \dots, S_m\}$, $S_i \subseteq U$</li>
+</ul>
+<blockquote>
+<p>TBD idée de comment transformer une union en somme Avec addition binaire. Mais problème de la retenue. POur pas que ça déborde, on augmente la base. $\sum_{1\leq i\leq k} m*(m+1)^i &lt; (m+1)^(k+1)$</p>
+</blockquote>
+<p>On associe un sac à dos avec $m$ objets de poids 1 et de valeur : $\sum_{1 \leq i \leq n}(m+1)^{i}(x_i \in S_j)$ et le poids total du sac à dos est $n$.</p>
+<p>La valeur max du sac à dos est atteinte pour $\sum_{1 \leq i \leq n}(m+1)^{i}$ ce qui n'est possible que si chaque élément est présent une unique fois dans chaque ensemble choisi.</p>
+<p>C'est bien dans NP car la transformation est polynomiale et la taille de chaque nombre est $\log_2((m+1)^{n+1})=\mathcal{O}(n\log_2(m)) = \mathcal{O}(n\cdot m)$ qui est la taille d'encodage de $EC$.</p>
+<blockquote>
+<p>TBD remarquez comment on est passé d'un problème d'union d'ensemble à un problème de somme avec une astuce.</p>
+</blockquote>
+<blockquote>
+<p>On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :</p>
 </blockquote>
 <ul>
 <li>faire la somme $\sum_{i \in I} k_i$ et de vérifier si elle est inférieure à $K$</li>

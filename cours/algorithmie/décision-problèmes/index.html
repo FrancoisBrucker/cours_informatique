@@ -120,7 +120,7 @@ v_f(n, m) = \left\{
 \end{array}
 \right.
 $$</p>
-<p>Un algorithme est ainsi <a href="../probl%C3%A8mes-NP/#v%C3%A9rifieur">un vérifieur</a>. Nous allons monter dans cette partie une version équivalente, plus simple à manipuler théoriquement, mais moins opérationnelle en pratique d'un algorithme.</p>
+<p>Un algorithme est ainsi <a href="../probl%C3%A8mes-NP/#d%C3%A9finition-v%C3%A9rifieur">un vérifieur</a>. Nous allons monter dans cette partie une version équivalente, plus simple à manipuler théoriquement, mais moins opérationnelle en pratique d'un algorithme.</p>
 <h3>Décideur et algorithmes</h3>
 <p>On peut combiner les deux mots en entrée d'un vérifieur en un seul pour arriver à la formulation d'un algorithme qui nous intéressera ici. Pour cela, la façon classique de procéder est de coder chaque information (0 et 1) sur 2 bits ce qui permet d'avoir un caractère supplémentaire de séparation :</p>
 <ul>
@@ -260,6 +260,9 @@ TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.<
 <p>La <strong><em>complexité d'un langage (décidable)</em></strong> est la complexité la plus faible d'une machine de Turing qui le décide.</p>
 </div></div>
 
+<blockquote>
+<p>TBD à re-écrire. Déjà mis dans la partie complexité. Dire ici que le nombre de lignes est remplacé par la case mémoire car curseur.</p>
+</blockquote>
 <p>Comme une machine de Turing prend en entrée un mot de $\{0, 1\}^\star$, sa complexité sera forcément calculé par rapport à sa taille. Pour une machine de Turing $M$ prenant une entrée $E$ en paramètre, on notera dans cette partie :</p>
 <ul>
 <li>$C(\vert E \vert)$ sa <a href="../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9" class="interne">complexité</a>.</li>
@@ -276,9 +279,10 @@ TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.<
 <p>Pour toute machine de Turing lisant toute son entrée, on a l'encadrement :</p>
 <div>
 $$
-S(n) \leq C(n) \leq S(n) \cdot 2^{S(n)}
+S(n) \leq C(n) \leq  Q \cdot S(n) \cdot 2^{S(n)}
 $$
 </div>
+<p>Avec $Q$ le nombre d'états.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -299,7 +303,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Si la machine lit toute ses donnée, il lui faudra se déplacer (une operation à chaque fois) sur chacune des cases du ruban où quelque chose est écrit, d'où : $S(n) \leq C(n)$.</p>
-<p>Le curseur de la machine peut être sur $S(n)$ cases au maximum et pour ne pas boucler si le curseur repasse par une case où il était déjà présent, au moins une des valeurs des $S(n)$ cases doit être différente par rapport à son dernier passage. Comme il y a $2^{S(n)}$ possibilités pour les $S(n)$ cases (soit 0 soit 1 pour chaque case) il ne peut repasser par la même case que $^{S(n)}$ fois : il y a donc au maximum $S(n) \cdot 2^{S(n)}$ instructions d'où la seconde inégalité.</p>
+<p>Le curseur de la machine peut être sur $S(n)$ cases au maximum et pour ne pas boucler si le curseur repasse par une case où il était déjà présent, au moins une des valeurs des $S(n)$ cases ou son état doit être différent par rapport à son dernier passage. Comme il y a $2^{S(n)}$ possibilités pour les $S(n)$ cases (soit 0 soit 1 pour chaque case) et $Q$ états il ne peut repasser par la même case que $Q\cdot 2^{S(n)}$ fois : il y a donc au maximum $Q \cdot S(n) \cdot 2^{S(n)}$ instructions d'où la seconde inégalité.</p>
 </div>
 </details>     
 </div>
