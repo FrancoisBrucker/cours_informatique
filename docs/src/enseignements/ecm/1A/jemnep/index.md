@@ -15,11 +15,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Une semaine pour comprendre le fonctionnement de python et l'utiliser pour développer ses propres programmes comme le ferait un informaticien.
-
-<!-- fin résumé -->
 
 Basé sur le cours :
 

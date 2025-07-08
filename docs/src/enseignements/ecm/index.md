@@ -17,14 +17,45 @@ Liste des cours d'informatique que j'effectue au sein de l'École Centrale Médi
 
 ## Mes cours actuels
 
-1. S5 training (Semaine d'Ouverture Scientifique, SOS) : [JEMNEP](1A/jemnep/){.interne} (bases de la programmation en python)
-2. S6 training (SOS) : architecture des ordinateurs et système d'exploitation. Initiation à la programmation en C et en assembleur (et Rust si on a le temps)
-3. S7 MIE : programmation objet en python, tests et gestion des sources
-   <!-- - training (SOS) : langages fonctionnels. Applications avec Haskell -->
-4. S9 [Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/) :
-   - Temps 1 : méthodes de développement : python et tests unitaire 6h ; git 6h ; programmation par les tests 3h ; aux sources de git 3h
-   - Temps 2 : bases des systèmes Unix/Linux et utilisation d'un serveur distant
-   - Temps 3 : algorithmie avancée : hasard, algorithmes cryptographiques et protocoles internets
+### 1A
+
+Semaine d'Ouverture Scientifique :
+
+{% aller %}
+[JEMNEP](1A/jemnep/){.interne} (bases de la programmation en python)
+{% endaller %}
+
+<!-- 2. S6 training (SOS) : architecture des ordinateurs et système d'exploitation. Initiation à la programmation en C et en assembleur (et Rust si on a le temps) -->
+
+### 2A
+
+S7 MIE :
+
+{% aller %}
+[Coder et développer en python](2A/cdp/){.interne} (développer des projets en python)
+{% endaller %}
+
+### 3A
+
+Trois cours, un par temps dans [le parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
+
+#### Temps 1
+
+{% aller %}
+[Méthode de développement](3A/do-it/mdd/){.interne}
+{% endaller %}
+
+#### Temps 2
+
+{% aller %}
+[Linux](3A/do-it/linux/){.interne}
+{% endaller %}
+
+#### Temps 3
+
+{% aller %}
+[Cryptographie](3A/do-it/cryptographie/){.interne}
+{% endaller %}
 
 ## Comment apprendre l'informatique dans une école "généraliste"
 
