@@ -179,36 +179,6 @@ Notre hypothèse arrivant à une contradiction, elle était fausse : la solution
 
 ## Problème du sac à dos
 
-
-> TBD ajouter dans NP.
-> TBD faire bien la preuve.
->
-> Montrer qu'il est NPC
-
-[Une instance de $EC$](../../problèmes-NP/#problème-EC) :
-
-- $U = \\{x_1, \dots, x_n\\}$
-- $S = \\{S_1, \dots, S_m\\}$, $S_i \subseteq U$
-
-> TBD idée de comment transformer une union en somme Avec addition binaire. Mais problème de la retenue. POur pas que ça déborde, on augmente la base. $\sum_{1\leq i\leq k} m*(m+1)^i < (m+1)^(k+1)$
-
-On associe un sac à dos avec $m$ objets de poids 1 et de valeur : $\sum_{1 \leq i \leq n}(m+1)^{i}(x_i \in S_j)$ et le poids total du sac à dos est $n$.
-
-La valeur max du sac à dos est atteinte pour $\sum_{1 \leq i \leq n}(m+1)^{i}$ ce qui n'est possible que si chaque élément est présent une unique fois dans chaque ensemble choisi.
-
-C'est bien dans NP car la transformation est polynomiale et la taille de chaque nombre est $\log_2((m+1)^{n+1})=\mathcal{O}(n\log_2(m)) = \mathcal{O}(n\cdot m)$ qui est la taille d'encodage de $EC$.
-
-> TBD remarquez comment on est passé d'un problème d'union d'ensemble à un problème de somme avec une astuce.
-
-> On verra que résoudre ce problème n'est pas simple. En revanche, si on possède une instance du problème du sac à dos (les $n$ produits, K et Q) et un sous ensemble $I$, il suffit de :
-
-- faire la somme $\sum_{i \in I} k_i$ et de vérifier si elle est inférieure à $K$
-- faire la somme $\sum_{i \in I} q_i$ et de vérifier si elle est supérieure à $Q$
-
-Cette vérification se fait en $\mathcal{O}(n)$ quelque soit $I$.
-
-> TBD ajouter NP-complet par réduction depuis exact cover.
-
 {% lien %}
 [Problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos)
 {% endlien %}
@@ -246,13 +216,98 @@ La solution optimale du problème du sac à dos est une solution admissible au p
 
 Notez que le problème du sac à dos optimal est un problème d'optimisation : on cherche le sac à dos de prix **maximum**. En tant que tel, il est difficile de prouver qu'il est dans NP car comment vérifier si on a bien une solution maximale ?
 
-On peut cependant utiliser [le problème du sac à dos](../../problèmes-NP/#sac-à-dos){.interne} qui est dans NP pour trouver l'optimum en faisant de la dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P ou double le prix et sinon on diminue le prix par deux. On aura besoin de log itération pour trouver le maximum.
+### Sac à dos et NP
+
+Pour transformer un problème d'optimisation en [un problème de NP](../../problèmes-NP/){.interne} on transforme son énoncé en :
+
+{% note "**Problème**" %}
+
+- **Nom** : sac à dos
+- **entrées** :
+  - $n$ produits différentes, décris par :
+    - leurs masses en kilo : $k_i$
+    - leurs prix : $p_i$
+  - un sac à dos pouvant contenir $K$ kilos
+  - un prix à atteindre $P$
+- **Sortie** : Donnez  une liste de produits à mettre dans le sac ($f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon) telle que (ou `∅`{.language-} si cela n'est pas possible) :
+  - on peut mettre les produits choisis dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
+  - le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i$ soit supérieur ou égal à $P$
+{% endnote %}
+
+Ce nouveau problème est clairement dans NP puisque vérifier qu'une solution possible $(f_1, \dots, f_n)$ d'un sac à dos est correcte il suffit de :
+
+- faire la somme $\sum_{1\leq i \leq n} f_i \cdot k_i$ et de vérifier qu'elle est inférieure à $K$
+- faire la somme $\sum_{1\leq i \leq n} f_i \cdot  p_i$ et de vérifier qu'elle est supérieure à $P$
+
+Cette vérification se fait en $\mathcal{O}(n)$.
+
+De là, un algorithme résolvant le problème du sac à dos peut-être utilisé pour résoudre le problème du sac à dos optimal en faisant une dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P on double le prix et sinon on le divise par deux. On aura besoin au maximum $\log(sum_{1\leq i \leq n} p_i)$ itérations de l'algorithme de résolution du sac à dos pour trouver une solution au problème du sac à dos optimal.
 
 {% attention "**À retenir**" %}
 Les problèmes d'optimisation ne sont pas dans NP, mais leurs versions existentielles le sont.
 
-On trouver alors l'optimum par dichotomie.
+On trouve alors l'optimum par dichotomie.
 {% endattention %}
+
+### NP-complet
+
+Nous allons montrer ici que le problème du sac à dos est un problème NP-complet. Pour cela, nous allons montrer que [le problème CE](../../problèmes-NP/#problème-CE) peut se réduire au problème du sac à dos.
+
+Cette réduction est fondamentale à connaître car elle montre que l'on peut facilement passer d'unions d'ensembles à une somme d'entiers sans changer fondamentalement la nature du problème.
+
+Commençons par se donner une instance de CE :
+
+- $U = \\{x_1, \dots, x_n\\}$
+- $S = \\{S_1, \dots, S_m\\}$, $S_i \subseteq U$
+
+On associe à cette instance un sac à dos :
+
+- de $m$ objets $\\{S_1, \dots, S_m\\}$ de masse et de prix $k_i = p_i = \sum_{1 \leq j \leq n}(m+1)^{j}(x_j \in S_i)$.
+- de poids total $K = \sum_{1 \leq i \leq n}(m+1)^{i}$.
+
+{% exercice %}
+Transformez [l'exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2) :
+
+- $U = \\{1, 2, 3, 4, 5, 6, 7\\}$
+- $\mathcal{S} = \\{ \\{1, 4, 7\\}, \\{1, 4\\}, \\{4, 5, 7\\},\\{3, 5, 6\\},\\{2, 3, 6, 7\\},\\{2, 7\\}  \\}$
+
+En une instance du sac à dos en utilisant la transformation précédente.
+{% endexercice %}
+{% details "solution" %}
+
+La masse totale du sac à dos vaut $K = \sum_{1 \leq i \leq 7}(7)^{i} = 960799$ et les 6 objets du sac sont de poids et de prix :
+
+- $p_1 = k_1 = \sum_{i \in \\{1, 4, 7\\}}(7)^{i} = 825951$
+- $p_2 = k_2 = \sum_{i \in \\{1, 4\\}}(7)^{i} = 2408$
+- $p_3 = k_3 = \sum_{i \in \\{4, 5, 7\\}}(7)^{i} = 842751$
+- $p_4 = k_4 = \sum_{i \in \\{3, 5, 6\\}}(7)^{i} = 134799$
+- $p_5 = k_5 = \sum_{i \in \\{2, 3, 6, 7\\}}(7)^{i} = 941584$
+- $p_6 = k_6 = \sum_{i \in \\{2, 7\\}}(7)^{i} = 823592$
+
+{% enddetails %}
+
+Cette construction utilise le fait que $m \cdot (m+1)^k < (m+1)^{k+1}$ pour en déduire que :
+
+- une solution du problème CE initiale conduit à un sac à dos de prix et de masse valant $K = \sum_{1 \leq i \leq n}(m+1)^{i}$
+- le prix maximum atteignable d'un sac à dos est $\sum_{1 \leq i \leq n}(m+1)^{i}$ (par récurrence sur $n-i$ on montre que tous les objets $j\geq i$ ne peuvent être présent qu'au plus une fois)
+- un sac à dos de valeur $\sum_{1 \leq i \leq n}(m+1)^{i}$ ne peut être atteint que si les objets choisis forment une solution du problème initial CE (on ne peut avoir deux fois le même objet).
+
+{% exercice %}
+Montrez que pour [l'exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2) transformé en sac à dos, une de ses solution correspond bien à un sac à dos optimal.
+{% endexercice %}
+{% details "solution" %}
+
+On reprend l'encodage de l'exercice précédent et on considère la solution composée des 3 classes :
+
+- $\\{1, 4\\}$ correspond à l'objet de prix et de poids $p_2 = k_2 = \sum_{i \in \\{1, 4\\}}(7)^{i} = 2408$
+- $\\{3, 5, 6\\}$ correspond à l'objet de prix et de poids $p_4 = k_4 = \sum_{i \in \\{3, 5, 6\\}}(7)^{i} = 134799$
+- $\\{2, 7\\}$ correspond à l'objet de prix et de poids $p_6 = k_6 = \sum_{i \in \\{2, 7\\}}(7)^{i} = 823592$
+
+La masse totale du sac à dos vaut $K = \sum_{1 \leq i \leq 7}(7)^{i} = 960799$ et on a bien $2408 + 134799 + 823592 = 960799$ ce qui correspond à une solution optimale.
+
+{% enddetails %}
+
+Enfin, la transformation est polynomiale car la taille de chaque nombre est $\log_2((m+1)^{n+1})=\mathcal{O}(n\log_2(m)) = \mathcal{O}(n\cdot m)$ qui est la taille d'encodage de $EC$.
 
 ## Algorithmes gloutons
 

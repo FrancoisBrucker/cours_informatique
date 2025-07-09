@@ -448,7 +448,7 @@ Fixons nous les idées en démontrant que le problème suivant est NP-complet.
 
 #### Couverture Exacte est NP-complet
 
-<span id="problème-EC"></span>
+<span id="problème-EC"></span><span id="problème-CE"></span>
 
 {% note "**Problème**" %}
 

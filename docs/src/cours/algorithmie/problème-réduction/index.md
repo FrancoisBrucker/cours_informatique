@@ -30,13 +30,16 @@ Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/
 ## Définitions
 
 {% note "**Définition**" %}
-Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_2$ en $P_1$ est un couple d'algorithmes $A_1$ et $A_2$ tels que :
+Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_1$ en $P_2$ est un couple d'algorithmes $A_1$ et $A_2$ tels que :
 
 - Si $E_1$ est une entrée du problème $P_1$ alors $A_1(E_1)$ est une entrée de du problème $P_2$
 - Si $S_2$ est une solution au problème $P_2$ avec $A_1(E_1)$ comme entrée alors $A_2(S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.
 
-Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_2$ en $P_1$ on notera $P_1 \leq P_2$.
+Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.
 {% endnote %}
+{% info %}
+La réduction de $P_1$ en $P_2$ signifie que le problème $P1$ est un cas particulier du problème $P2$, plus général.
+{% endinfo %}
 
 Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$. De là, la complexité du problème $B$ ne peut être plus petite que celle du problème $A$. Par exemple :
 
@@ -54,7 +57,7 @@ Si l'on veut utiliser la réduction pour résoudre notre problème réduit, on c
 <span id="définition-réduction-polynomiale"></span>
 
 {% note "**Définition**" %}
-Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_2$ en $P_1$ est une réduction ou les deux algorithmes $A_1$ et $A_2$ sont de complexité polynomiale.
+Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_1$ en $P_2$ est une réduction ou les deux algorithmes $A_1$ et $A_2$ sont de complexité polynomiale.
 {% endnote %}
 {% attention %}
 Les réductions polynomiales sont les seules utilisées en algorithmie, c'est pourquoi on considérera souvent que **_réduction_** et **_réduction polynomiale_** comme équivalent, une réduction **devant être** polynomiale.
@@ -185,7 +188,7 @@ On prend $T = T'$ et $T''[x] = -T[x]$
 
 #### Problèmes équivalents ?
 
-Montrons que les versions alternatives des problèmes 2-SUM (ÉGAL) et 3-SUM (3-SUM') sont équivalents aux problèmes d'origine. Ces réduction vont nécessiter un peu de travail.
+Montrons que les versions alternatives des problèmes 2-SUM (ÉGAL) et 3-SUM (3-SUM') sont équivalents aux problèmes d'origine. Ces réductions vont nécessiter un peu de travail.
 
 {% exercice %}
 Montrer que ÉGAL ≤ 2-SUM
