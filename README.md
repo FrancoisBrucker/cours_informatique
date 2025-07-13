@@ -39,6 +39,12 @@ Pour voir vos modifications, une fois dans le dossier `docs` tapez la commande :
 
 Ceci compilera votre site et créera un serveur en local à l'adresse : <http://localhost:8080>
 
+### Tout en un
+
+```shell
+npm run clean ; npm run build ; npm run node-modules-front ; npm run serve
+```
+
 ## Fonctionnement général
 
 Les divers fichiers sont des fichiers markdown.
