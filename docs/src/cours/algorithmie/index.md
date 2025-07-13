@@ -431,7 +431,6 @@ On rappelle ici tous les exercices que l'on va voir dans les différentes partie
 > TBD on ajoute les énoncés des exos durs.
 > TBD faire de l'ordre dans les autres exos.
 
-
 #### SUBSET SUM
 
 > TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>
@@ -517,13 +516,38 @@ Cette hypothèse est cependant tres rarement vérifiée en pratique, les clés o
 
 -->
 
-## <span id="partie-5"></span>Partie V : modèle
+## <span id="partie-5"></span>Partie V : modèles
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
+### Fonctions
+
 > TBD ajouter lambda calcul
 
-### Chaînes de caractères
+> TBD uniquement fonctions récursives.
+> TBD faire hiérarchie des complexités avec fonctions calculables.
+
+Finissons par quelques exemples non triviaux de modèles Turing complet :
+
+{% aller %}
+[Algorithmes et fonctions](./fonctions-récursives){.interne}
+{% endaller %}
+
+### Pseudo-assembleur
+
+> chaîne de caractère ne fait pas tous les algos.
+
+> est à l'assembleur ce que le pseudo-code est au code. Un principe.
+
+> Modèle de von Neumann
+
+### <span id="modèle-calculs"></span>Modèle de calculs
+
+> abstraction pour calculer. Fonction = calculer et pseudo-code = implémenter.
+>
+> Automates et Turing = réfléchir.
+
+#### Chaînes de caractères
 
 > TBD premier exemple de lien encore code et structure de calcul équivalente.
 
@@ -533,7 +557,7 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 [Chaines de caractères](./structure-chaine-de-caractères){.interne}
 {% endaller %}
 
-### <span id="modèle-calculs"></span>Modèle de calculs
+#### Turing
 
 > Refaire.
 > pseudo-assembleur.
@@ -666,15 +690,6 @@ Cette preuve permet de montrer que les systèmes suivant sont Turing complet :
 Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet mais impossible d'être plus !
 
 #### Algorithmes et fonctions
-
-> TBD uniquement fonctions récursives.
-> TBD faire hiérarchie des complexités avec fonctions calculables.
-
-Finissons par quelques exemples non triviaux de modèles Turing complet :
-
-{% aller %}
-[Algorithmes et fonctions](./fonctions-récursives){.interne}
-{% endaller %}
 
 ### Problème SAT
 

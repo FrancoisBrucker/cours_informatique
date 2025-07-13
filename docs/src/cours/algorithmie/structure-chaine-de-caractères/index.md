@@ -37,12 +37,12 @@ Nous verrons également comment passer d'un alphabet binaire à un alphabet quel
 
 ## Encodage
 
-> TBD : pas implémentation (voir partie code pour utf8 et python). ici juste suite finie de caractère = mot = chaine de caractère
-> ordre entre les caractères. facile pour nous mais peut etre un soucis pour les chinois
+> TBD : pas implémentation (voir partie code pour utf8 et python). ici juste suite finie de caractère = mot = chaîne de caractère
+> ordre entre les caractères. facile pour nous mais peut être un soucis pour les chinois
 > implique ordre entre les mots
 > en pratique pas que des 0 et des 1, des lettres.
 
->TBD : pas juste 1 nombre de taille fixe. On module la taille selon l'usage. Plus c'est utilisé plus c'est court. Comment faire ? C'est le principe de unicode
+>TBD : pas juste 1 nombre de taille fixe. On module la taille selon l'usage. Plus c'est utilisé plus c'est court. Comment faire ? C'est le principe de Unicode
 
 {% aller %}
 [encodage](./encodage){.interne}

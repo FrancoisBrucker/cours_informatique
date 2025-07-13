@@ -55,7 +55,7 @@ De nombreux langages sont rationnels :
 
 > tbd rationnels
 
-> tbd pas tout : palindrome marche pas. On est que à un endroit de la chaine alors que palindrome demaine d'être à deux endroit à la fois (début et fin).
+> tbd pas tout : palindrome marche pas. On est que à un endroit de la chaîne alors que palindrome demande d'être à deux endroit à la fois (début et fin).
 
 > exercices classiques
 
@@ -63,7 +63,7 @@ De nombreux langages sont rationnels :
 
 > dire que c'est super utile pour rechercher des motifs dans un texte (numéro de tel, un réel, etc)
 
-> imlémentation d'un moteur d'expression reg compliqué. On va s'intéresser à un cas particulier. retrouver un sous-mot dans une chaine
+> implémentation d'un moteur d'expression reg compliqué. On va s'intéresser à un cas particulier. retrouver un sous-mot dans une chaîne
 
 ## Autres Automate
 
