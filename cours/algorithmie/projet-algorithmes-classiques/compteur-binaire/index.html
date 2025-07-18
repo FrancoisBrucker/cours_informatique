@@ -121,7 +121,7 @@ affiche<span class="token number"> n </span>à l'écran</code></pre>
 
 <h2><span id="successeur"></span>L'algorithme</h2>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-   <span class="token number"> i </span><span class="token operator">←</span> n<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+   <span class="token number"> i </span><span class="token operator">←</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
 
     <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
@@ -228,7 +228,7 @@ $$
     <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
         affiche à l'écran<span class="token number"> N
 </span>    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-        <span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
         N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x
         tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
 

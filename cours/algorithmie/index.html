@@ -779,15 +779,82 @@ Cette hypothèse est cependant tres rarement vérifiée en pratique, les clés o
 -->
 <h2><span id="partie-5"></span>Partie V : modèles</h2>
 <p>Tout ce que devrait connaître tout ingénieur aimant l'informatique.</p>
-<h3>Fonctions</h3>
 <blockquote>
-<p>TBD ajouter lambda calcul</p>
+<p>TBD jeu d'instructions minimal.
+TBD pseudo-code = fonction booléenne finie + instruction de contrôle et boucles.</p>
+</blockquote>
+<h3>Variables binaires</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="fonctions-bool%C3%A9ennes" class="interne">Fonctions booléennes et pseudo-code</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD découpage des objets en mots pour les fonctions (16, 32, 64)
+TBD mais en interne tout est fait avec NAND</p>
+</blockquote>
+<h3>Problème SAT</h3>
+<blockquote>
+<p>TBD on a vue que les opérations peuvent être mise sous forme logique. C'est aussi vrai pour les structures de contrôle.
+TBD. Ceci va nous permettre de démontrer le théorème de Levin-Cook.
+TBD : tout NP c'est SAT</p>
 </blockquote>
 <blockquote>
-<p>TBD uniquement fonctions récursives.
-TBD faire hiérarchie des complexités avec fonctions calculables.</p>
+<p>TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.</p>
 </blockquote>
-<p>Finissons par quelques exemples non triviaux de modèles Turing complet :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="probl%C3%A8me-SAT" class="interne">problème SAT</a></p>
+</div></div>
+
+<h3>Pseudo-assembleur</h3>
+<blockquote>
+<p>TBD pseudo-code et FB
+est à l'assembleur ce que le pseudo-code est au code. Un principe.</p>
+</blockquote>
+<blockquote>
+<p>modèle de Von Neumann qui est implémenté dans tous les ordinateurs</p>
+</blockquote>
+<blockquote>
+<p>fini mais permet de gérer l'infini si on le relance.</p>
+</blockquote>
+<blockquote>
+<p>TBD compilation il faut des langages</p>
+</blockquote>
+<blockquote>
+<p>abstraction pour calculer. Fonction = calculer et pseudo-code = implémenter.
+doit permettre de gérer l'infini et doit être facile à appréhender. Pour l'instant les fonction c'est abstrait (le pseudo-code n'est pas donné) et le pseudo-assembleur est fini. La pirouette qui le rend infini est un peu artificielle.
+Automates et Turing = réfléchir.
+TBD ajouter lambda calcul</p>
+</blockquote>
+<h3>Modèle de Von Neumann</h3>
+<blockquote>
+<p>TBD Modèle de Von Neumann
+TBD attention bit dans registre et adresses ! <a href="https://azeria-labs.com/arm-data-types-and-registers-part-2/">https://azeria-labs.com/arm-data-types-and-registers-part-2/</a>
+TBD monter big endian et différence entre mémoire et fonction sur 64 bits.
+on accede jamais a un bit spécifique</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="ex%C3%A9cuter-code" class="interne">Exécuter du code</a></p>
+</div></div>
+
+<p>Le pseudo-code permet de concevoir des algorithmes pouvant être exécutés au tableau par des humains. L'assembleur quant à lui, language de la machine, permet d'exécuter des algorithmes sur des processeurs.
+Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut résoudre avec l'un sont également résoluble avec l'autre (et réciproquement). On peut même transcrire en assembleur un programme écrit en pseudo-code de façon automatique (on a évoqué sans rentrer dans les détails les moyens d'y parvenir) il est donc courant d'écrire son code en pseudo-code, facile à lire et à maintenir, puis de laisser un compilateur le transcrire en assembleur pour être exécuté.</p>
+<blockquote>
+<p>Exécution automatique. Pas par un humain.</p>
+</blockquote>
+<h3>Modèle fonctionnel</h3>
+<p>On a vue qu'un algorithme était un moyen de calculer une fonction. Précisons un peut cela en voyant quelles fonctions on peut effectivement calculer à l'aide d'un pseudo-code.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -796,20 +863,37 @@ TBD faire hiérarchie des complexités avec fonctions calculables.</p>
 <p><a href="fonctions-r%C3%A9cursives" class="interne">Algorithmes et fonctions</a></p>
 </div></div>
 
-<h3>Pseudo-assembleur</h3>
 <blockquote>
-<p>chaîne de caractère ne fait pas tous les algos.</p>
+<p>TBD lambda calcul. Ironie, c'est le premier langage Le lisp.
+TBD algorithme = fonction</p>
 </blockquote>
+<h3><span id="langages"></span>Langages</h3>
 <blockquote>
-<p>est à l'assembleur ce que le pseudo-code est au code. Un principe.</p>
+<p>DBD déf</p>
 </blockquote>
+<h4>Problèmes de décisions</h4>
+<p>Nous allons dans cette partie approfondir et démontrer proprement des choses que nous avons laissées en suspend à la fin de la partie I, à savoir les classes de problèmes NP et les problèmes NP-complets.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="d%C3%A9cision-probl%C3%A8mes" class="interne">Problèmes de décision</a></p>
+</div></div>
+
 <blockquote>
-<p>Modèle de von Neumann</p>
+<p>TBD dire que les deux vision des problèmes NP sont équivalentes. La solution des problèmes est le certificat des problèmes de décision. Le non déterminisme c'est trouver la solution, puis la vérification est est déterministe.</p>
 </blockquote>
-<h3><span id="modèle-calculs"></span>Modèle de calculs</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="exemples-probl%C3%A8mes-NPC" class="interne">Exemples de problèmes NP complets</a></p>
+</div></div>
+
 <blockquote>
-<p>abstraction pour calculer. Fonction = calculer et pseudo-code = implémenter.</p>
-<p>Automates et Turing = réfléchir.</p>
+<p>TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <a href="https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.">https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We can prove the bin,the bin-packing decision problem.</a></p>
 </blockquote>
 <h4>Chaînes de caractères</h4>
 <blockquote>
@@ -826,7 +910,7 @@ TBD faire hiérarchie des complexités avec fonctions calculables.</p>
 <p><a href="structure-chaine-de-caract%C3%A8res" class="interne">Chaines de caractères</a></p>
 </div></div>
 
-<h4>Turing</h4>
+<h4>Machine de Turing</h4>
 <blockquote>
 <p>Refaire.
 pseudo-assembleur.
@@ -865,21 +949,6 @@ TBD pseudo-assembleur infini en doublant la taille de l'adressage si besoin et o
 <li>penser l'algorithmie</li>
 </ul>
 <p>Commençons par comprendre comment exécuter du code :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="ex%C3%A9cuter-code" class="interne">Exécuter du code</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD ici directement SAT.
-TBD pas besoin de Turing pour NP. Juste Non polynomial. dire ok avec doublement de la mémoire si nécessaire et pseudo-assembleur.
-TBD pas besoin de Turing pour NP. Juste Algo Non polynomial. L'ajouter.</p>
-</blockquote>
-<p>Le pseudo-code permet de concevoir des algorithmes pouvant être exécutés au tableau par des humains. L'assembleur quant à lui, language de la machine, permet d'exécuter des algorithmes sur des processeurs.
-Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut résoudre avec l'un sont également résoluble avec l'autre (et réciproquement). On peut même transcrire en assembleur un programme écrit en pseudo-code de façon automatique (on a évoqué sans rentrer dans les détails les moyens d'y parvenir) il est donc courant d'écrire son code en pseudo-code, facile à lire et à maintenir, puis de laisser un compilateur le transcrire en assembleur pour être exécuté.</p>
 <p>Cependant pour penser l'algorithmie, c'est à dire étudier ce qui peut ou ne peut pas être résoluble par le calcul, pseudo-code et assembleur sont encore trop <em>riches</em> (on peut aller n'importe où dans la mémoire par exemple, on suppose l'existence de la fonction <code class="language-">NAND</code>, etc). Il ne faut conserver que les éléments indispensables pour pouvoir écrire tout ce que l'on peut faire en pseudo-code.</p>
 <blockquote>
 <p>TBD pour Turing dire ok avec doublement de la mémoire si nécessaire et pseudo-assembleur.</p>
@@ -935,6 +1004,7 @@ Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle
 </div>
 </details>     
 </div>
+<h3>Problèmes de décision</h3>
 <h3>Algorithme et machine de Turing</h3>
 <p>Toutes les tentatives de généraliser le modèle de la machine de Turing ont été vains. Il semble que ce modèle capte exactement ce qu'est un algorithme. C'est pourquoi les informaticiens sont intimement convaincu que la thèse de Turing-Church est vraie :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -996,42 +1066,6 @@ Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle
 </ul>
 <p>Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet mais impossible d'être plus !</p>
 <h4>Algorithmes et fonctions</h4>
-<h3>Problème SAT</h3>
-<blockquote>
-<p>TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="probl%C3%A8me-SAT" class="interne">problème SAT</a></p>
-</div></div>
-
-<h3>Problèmes de décisions</h3>
-<p>Nous allons dans cette partie approfondir et démontrer proprement des choses que nous avons laissées en suspend à la fin de la partie I, à savoir les classes de problèmes NP et les problèmes NP-complets.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="d%C3%A9cision-probl%C3%A8mes" class="interne">Problèmes de décision</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD dire que les deux vision des problèmes NP sont équivalentes. La solution des problèmes est le certificat des problèmes de décision. Le non déterminisme c'est trouver la solution, puis la vérification est est déterministe.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="exemples-probl%C3%A8mes-NPC" class="interne">Exemples de problèmes NP complets</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <a href="https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.">https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We can prove the bin,the bin-packing decision problem.</a></p>
-</blockquote>
 <h2><span id="partie-6"></span>Partie VI : aléatoire</h2>
 <blockquote>
 <p>TBD hasard et algorithmes randomisés.</p>

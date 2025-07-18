@@ -97,6 +97,7 @@
   
 
   <p>Les <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive">fonctions récursives primitives</a> sont un cas particulier important des fonctions calculables. La plupart des fonction mathématiques usuelles en sont !</p>
+<p>C'est <a href="https://fr.wikipedia.org/wiki/Axiomes_de_Peano">arithmétique de Peano</a>. Au départ on pensait que ça suffirait pour tout calculer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -154,11 +155,11 @@
 </ul>
 </div></div>
 
-<p>Dont il est clair qu'elles sont calculables, au moins pour les fonctions zéro et les projections.</p>
+<p>Dont il est clair qu'elles sont calculables, au moins pour les fonctions zéro et les projections. La fonction successeur l'est également, on l'a déjà rencontré :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Exhibez un algorithme permettant de calculer $\text{succ}$ lorsque les entiers sont codées sous forme binaire $x = x_p\dots x_0$ avec $x_i \in { 0, 1}$ et $x = \sum_{0\leq i \leq p}x_i2^i$.</p>
+<p>Modifiez l'algorgithme <a href="../../projet-algorithmes-classiques/compteur-binaire/" class="interne">du compteur binaire</a> pour qu'il puisse rendre le successeur de tout entier passé en paramètre sous la forme d'un tableau de bits.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -178,9 +179,24 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD addition binaire avec retenue.</p>
-</blockquote>
+<p>Il faut modifier l'algorithme de deux façons :</p>
+<ol>
+<li>il doit rendre un nouvel enfier</li>
+<li>il ne doit pas cycler</li>
+</ol>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+   <span class="token number"> i </span><span class="token operator">←</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+
+    <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span>
+
+    Z <span class="token operator">←</span> un tableau de taille N<span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span>
+    Z<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+    
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> N<span class="token punctuation">[</span><span class="token punctuation">:</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> Z 
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> Z</code></pre>
 </div>
 </details>     
 </div>
@@ -211,17 +227,15 @@ $$
 </div></div>
 
 <p>Il est clair que s'il existe un algorithme pour créer $f$ et $g$, l'algorithme suivant fonctionne pour créer la composition :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : composition
-Entrées :
-    n, m : entiers
-    x[] : un tableau de m entiers
-    f : une fonction à n paramètres
-    g[i] : un tableau de n fonctions à m paramètres
-Programme :
-    soit y[] un tableau à n entiers
-    pour chaque i allant de 1 à n:
-        y[i] = g[1](x[])
-    rendre f(y[])</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">composition</span><span class="token punctuation">(</span>n <span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span>
+                       x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>         <span class="token comment"># un tableau de m entiers</span>
+                       f<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">,</span>   <span class="token comment"># une fonction à n paramètres</span>
+                       g<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">]</span><span class="token punctuation">.</span> <span class="token comment"># un tableau de n fonctions à m paramètres</span>
+                       <span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    y <span class="token operator">←</span> un tableau de taille<span class="token number"> n </span>entiers
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> g<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> f<span class="token punctuation">(</span>y<span class="token punctuation">)</span></code></pre>
 <p>Remarquez que la composition dépend des domaines de validité des fonctions $f$ et $g[i]$, on passe donc un tableau en paramètre de la fonction pour que l'appel de la fonction soit identique quelque soit $n$ et $m$. La composition permet déjà de créer des choses nouvelles, en particulier les fonctions constantes, par exemple la fonction : $\mathbb{1}^n = \text{succ} \circ [\mathbb{0}^n]$ est la fonction rendant tout le temps 1.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
