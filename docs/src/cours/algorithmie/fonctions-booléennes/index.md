@@ -60,7 +60,7 @@ On les décrit avec leurs  On les représentent via leurs [tables de vérité](h
 On décrit les 3 fonctions $f: \\{0, 1\\}^2 \rightarrow \\{0, 1\\}$ **_OU_**, **_ET_** **_OU exclusif_** comme étant :
 
    |   |     OU     |  ET         |  OU exclusif|
- x | y | x OR y     |  x AND y    |  x XOR y    |
+ x | y |   OR(x, y) |  AND(x, y)  |  XOR(x, y)  |
    |   | $x \lor y$ | $x \land y$ |$x \oplus y$ |
 :-:|:-:|:----------:|:-----------:|:-----------:|
  0 | 0 |    0       |      0      |      0      |
@@ -131,7 +131,7 @@ La fonction $\text{NAND}(x, y)$ est définie telle que :
 
 <div>
 $$
-x \text{NAND} y = \neg(x \land y)
+\text{NAND}(x, y) = \neg(x \land y)
 $$
 </div>
 
@@ -145,16 +145,18 @@ Montrer que toute fonction de $\\{0, 1\\}^2 \rightarrow \\{0, 1\\}$ peut s'écri
 {% endexercice %}
 {% details "corrigé" %}
 
-Il nous suffit de montrer que l'on peut reconstruire $\text{NOT}(x)$, $\text{AND}(x, y)$, et $\text{OR}(x, y)$ avec $\text{NAND}(x, y)$ :
+Il suffit de montrer que l'on peut reconstruire $\text{NOT}(x)$, $\text{AND}(x, y)$, $\text{OR}(x, y)$ et $\text{XOR}(x, y)$avec $\text{NAND}(x, y)$ :
 
 - $\text{NOT}(x) = \text{NAND}(x, x)$
 - $\text{AND}(x, y) = \text{NOT}(\text{NAND}(x, y))$
 - $\text{OR}(x, y) = \text{NAND}(\text{NOT}(x), \text{NOT}(y))$
+- $\text{XOR}(x, y) = \text{NAND}(\text{NAND}(x, \text{NAND}( x, y )), \text{NAND}(x, \text{NAND}( x, y )))$ :
 
 {% enddetails %}
 {% info %}
-Cela marche aussi avec le [OU exclusif](https://fr.wikipedia.org/wiki/Fonction_OU_exclusif) ($\text{XOR}(x, y) = \text{AND}(\text{OR}(x, y), \text{NAND}(x, y))$).
+Cela marche aussi avec le [OU exclusif](https://fr.wikipedia.org/wiki/Fonction_OU_exclusif).
 {% endinfo %}
+
 
 #### Généralisation
 
@@ -222,16 +224,11 @@ algorithme f(x: [bit])  # taille n
            → [bit]      # taille m
 ```
 
-Ou encore en indiçant les tableaux lorsque le type est clair :
+Pour ne pas couper les cheveux en 4, on se permettra plusieurs abus de notations évident :
 
-```pseudocode
-algorithme f(x_1, ..., x_n) → (y_1, ..., y_m)
-```
-ou encore :
-
-```pseudocode
-algorithme f([x_0, ..., x_n-1]) → [y_0, ..., y_m-1]
-```
+- `f(x_1: bit, ..., x_n: bit) → [bit]`{.language-} à la place de `f([bit]) → [bit] # entrée de taille n`{.language-},
+- `f([x_0, ..., x_n-1]) → [bit]`{.language-} à la place de `f([bit]) → [bit] # entrée de taille n`{.language-},
+- `f(x_1: [bit], ..., x_n: [bit]) → [bit]`{.language-} à la place de `f([bit]) → [bit] # entrée de taille t_1 + ... + t_n`{.language-},
 
 ## Données booléennes
 
@@ -244,12 +241,26 @@ On peut sans perte de généralité supposer qu'[un pseudo-code](../pseudo-code/
 - des tableaux de type `[bit]`{.language-}
 {% endnote %}
 
-Pour un tableau de bit $x$, on appelle $x[0]$ le **_bit de poids faible_** de $x$ et $x[-1]$ le **_bit de poids faible_**. On a coutume de représenter le tableau **de droite à gauche** pour respecter l'ordre de [la représentation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire) d'un nombre. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :
+Pour un tableau de bit $x$, on appelle $x[0]$ le **_bit de poids faible_** de $x$ et $x[-1]$ le **_bit de poids fort_**. On a coutume de représenter le tableau **de droite à gauche** pour respecter l'ordre de [la représentation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire) d'un nombre. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :
 
 ```text
 indice : 76543210
    x   : 01100111
 ```
+
+Tout tableau de bit peut être interprété de nombreuses manière : entier, réel, caractère, etc :
+
+{% attention "**À retenir**" %}
+La signification d'une donnée est dépendante du contexte.
+{% endattention %}
+
+Pour éviter toute confusion entre les entiers on écrira :
+
+- $[0, 1, 1]$ pour un tableau de bits
+- $011 = 11$ pour l'entier 11 en base 10
+- $0b011 = b11$ pour l'entier 3 écrit en [base 2](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire)
+- $0o744$ pour l'entier 484 écrit en base 8 ([base octale](https://fr.wikipedia.org/wiki/Syst%C3%A8me_octal))
+- $0xBBAADD$ pour l'entier 12298973 écrit en base 16 ([base hexadécimal](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal))
 
 ### Booléen
 
@@ -286,12 +297,12 @@ $$
 On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \mathbin{\small\\%} 2^n$
 {% endnote %}
 
-Ainsi, si $x=[0,1,0, 1]$ :
+Ainsi :
 
-- $u(x) = 10$ (de notation binaire 1010),
+- $u([0,1,0, 1]) = 10$ (de notation binaire $0b1010$),
 - $u^{-1}(10) = [0,1,0, 1]$
-- $u_3^{-1}(10) = [0,1,0]$
-- $u_8^{-1}(10) = [0,1,0, 1, 0, 0, 0, 0]$
+- $u_3^{-1}(10) = [0,1,0]$ (de notation binaire $0b010$)
+- $u_8^{-1}(10) = [0,1,0, 1, 0, 0, 0, 0]$ (de notation binaire $0b00001010$)
 
 
 Pour gérer les nombres négatifs, on utilise [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) défini telle que :
@@ -315,11 +326,12 @@ $$
 
 On verra l'intérêt du complément à deux lorsque l'on donnera les algorithmes d'arithmétique sur les [bit], pour l'instant retenez que cette notation dépend du nombre de bits de la représentation de l'entier. Ainsi :
 
-- $i^{-1}_2(1) = [1, 0]$ (de représentation binaire 01)
-- $i^{-1}_4(1) = [1, 0, 0, 0]$ (de représentation binaire 0001)
+- $i^{-1}_2(1) = [1, 0]$ (de représentation binaire $0b01$)
+- $i^{-1}_4(1) = [1, 0, 0, 0]$ (de représentation binaire $0b0001$)
 - $i^{-1}_2(-1) = [1, 1]$
 - $i^{-1}_4(-1) = [1, 1, 1, 1]$
 
+Remarquez qu'un même tableau de bit dont le bit de poids fort vaut 1 peut être vu comme un entier positif ou négatif.
 
 ### Réels
 
@@ -345,64 +357,55 @@ Format UNICODE sur 21 bits permet d'encoder jusqu'à $2^{21} = 2097152$ informat
 
 Ne confondez pas la correspondance entre une glyphe (en gros un caractère) et un nombre qui est le format UNICODE et son implémentation informatique qui utilise la conversion [UTF-8](https://fr.wikipedia.org/wiki/UTF-8) qui permet d'écrire ces nombres sur un format allant de 8 à 32 bits.
 
-## Logique
 
-> TBD le mettre avec des formules logiques. 
-> TBD généraliser NOT AND etc pour les [bit]
-> Rappeler ce que l'on a fait avec SAT.
+## Opérations
 
-### Opérateurs
+Cette partie montre que toutes les opérations nécessaires pour faire un pseudo-code peuvent être faite avec des fonction booléennes vectorielles (donc uniquement des fonctions `NAND`) alliées à des structures de contrôles (tests et boucles `tant que`).
 
-Les opérateurs sont à la base dédiés aux éléments binaire, mais ils s'étendent bit à bit aux vecteurs.
 
-- XOR : ou exclusif binaire, se note $\oplus$ :
-  - $0 \oplus 1 = 1 \oplus 0 \coloneqq 1$
-  - $0 \oplus 0 = 1 \oplus 1 \coloneqq 0$
-- NON : se note $\bar{x}$ :
-  - $\bar{0} \coloneqq 1$
-  - $\bar{1} \coloneqq 0$
-- OR : ou binaire, se note $x \vee y$
-  - $0 \vee 1 = 1 \vee 0 = 1 \vee 1 \coloneqq 1$
-  - $0 \vee 0 \coloneqq 0$
-- AND : : et binaire, se note $x \land y$
-  - $1 \vee 1 \coloneqq 1$
-  - $0 \vee 1 = 1 \vee 0 = 0 \vee 0 \coloneqq 0$
-  
-### Décalages de bits
+> TBD rappeler ce que doit savoir faire un pseudo-code
 
-On utilise deux direction de décalage (gauche et droite) et deux types de décalage selon que les bit poussés à l'extérieur sont réinjectés de l'autre côté ou disparaissent (les bit qui arrivent sont à 0).
+### Logiques
 
-- $x << k$ : ***shift*** de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)
-- $x >> k$ : ***shift*** de $k$ bit vers la droite. Les $k$ bits de poids forts sont des $0$ (identique à une division par $2^k$)
-- $x <<< k$  : ***rotation*** de $k$ bit vers la gauche.
-- $x >>> k$  : ***rotation*** de $k$ bit vers la droite.
+Les opérations logiques définies précédemment s'étendent naturellement aux données sous la forme de tableaux de bits. 
 
-### Concaténation
+Il suffit de montrer la fonction `NAND` $\overline{x \land y}$ :
 
-$ x || y$ est la concaténation des $n$ bits de $x$ aux $n'$ bits de $y$.
+```pseudocode
+algorithme NAND(x: [bit], y: [bit]) → [bit]      # les 3 tableaux sont de taille n
+    z ← tableau de bit de taille x.longueur
 
-## Arithmétique
-
-> TBD à nb de bit fixé clair. Mais marche aussi avec des tailles aussi grand que l'on veut.
-> TBD multiplication plus complexe que addition
-> TBD dire qu'on peut s'en sortir par "concaténation" de fonctions de taille fixe (ie 64 bit, on y reviendra)
-
-> TBD toute les notations.
-> TBD intervalle entier [a..b] et vide si a>b
-> TBD écriture binaire b00110, octal o744, décimale et hexadécimale #FF42.
-
-On considérera ici que l'on a des vecteurs de $n$ bits, allant du bit de poids faible au bit de poids fort :
-
-```
-index  :     876543210
-valeur : x = 010100110
+    pour chaque i de [0 .. x.longueur[:
+        si (x[i] == 1) ET (y[i] == 1):
+            z[i] ← 0
+        sinon
+            z[i] ← 1
+    rendre z
 ```
 
-$n$ est grand. Même si $\mathcal{O}(1)$ pour des mot sur 64b, comme n>64, c'est plus.
+Remarquez que cette fonction n'est pas une fonction booléenne vectorielle : ses entrées ne sont pas de taille fixe.
 
-C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction de $n$, le nombre de bit des paramètres et de $B$, la base de calcul (64b pour nous actuellement). Nous ne nous embêterons pas ici avec ça et donnerons les complexités uniquement en fonction de $n$.
+{% exercice %}
+Écrivez un algorithme linéaire permettant de réaliser l'opération NOT sur un tableau de bit de taille quelconque.
+{% endexercice %}
+{% details "corrigé" %}
 
-### Somme
+On peut utiliser `NAND` puisque $\neg x = \overline{x \land x}$ :
+
+```pseudocode
+algorithme NOT(x: [bit]) → [bit]      # les 3 tableaux sont de taille n
+    z ← tableau de bit de taille x.longueur
+
+    rendre NAND(x, x)
+```
+
+{% enddetails %}
+
+### Arithmétique
+
+Nous allons donner ici les complexité par rapport à la taille des entrées, c'est à dire des tableaux de bits correspondant à des entiers.
+
+#### Somme
 
 Sur deux entiers non signés
 
@@ -413,18 +416,33 @@ Sur deux entiers non signés
   110001
 ```
 
-> TBD : algo avec retenue.
-
-Modulo n :
+Attention à la retenue :
 
 ```
   100101
 + 011011
 --------
-  000001
+ 1000000
 ```
 
-### Opposé
+L'algorithme est alors le suivant (on en a déjà vu une version lorsque l'[on a étudié les problèmes NP](../problèmes-NP/#algorithme-somme_binaire), ici on va le considéré modulo la taille des entrées) c'est à dire que l'addition de $0b100101$ et $0b011011$ donnera : $0b000000$ :
+
+```pseudocode
+algorithme somme(x: [bit], y: [bit])  # on suppose x et y de taille n
+                 → [bit]  # de taille n
+    
+    z ← un tableau de taille x.longueur + 1 bits
+    r ← 0
+
+    pour chaque i de [0 .. x.longueur[:
+        somme[i]  ← XOR(XOR(r, x[i]), y[i])
+        r ← OR(AND(r, x[i]), AND(OR(r, x[i])), y[i])
+    rendre somme
+```
+
+Sa complexité est bien linéaire puisque les fonction utilisées sont toutes de complexité $\mathcal{O}(1)$.
+
+#### Opposé
 
 {% lien %}
 [complément à 2](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
@@ -438,7 +456,7 @@ $$
 $$
 </div>
 
-### Soustraction
+#### Soustraction
 
 somme de deux entiers signés
 
@@ -448,7 +466,7 @@ x-y \coloneqq x + (-y)
 $$
 </div>
 
-### Multiplication
+#### Multiplication
 
 On utilise la [multiplication posée](https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication). Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.
 
@@ -474,7 +492,7 @@ On trouve que $0b100101 \cdot 0b1011 = 0b110010111$ ($37 \cot 11 = 407$).
 Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.
 {% endinfo %}
 
-### Division euclidienne
+#### Division euclidienne
 
 On utilise la [division posée](https://fr.wikipedia.org/wiki/Division_pos%C3%A9e). Les nombres binaires simplifient grandement le calcul car il suffit de faire des soustractions.
 
@@ -502,7 +520,7 @@ On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mathbin{\small\\%} 0b10
 
 $37 / 11 = 3$ et $37 \mathbin{\small\\%} 11 = 4$
 
-### pgcd
+#### pgcd
 
 > TBD voir si on ne l'a pas déjà quelque part ?
 
@@ -530,8 +548,49 @@ Cet algorithme est très efficace pour les nombres binaires puisque la division 
 Pour une étude étendu de l'algorithme d'Euclide, Voir Knuth tome 2 (*Art of computer Programming*, tome 2)
 {% endinfo %}
 
+### Tests
+
+> TBD ==, <, >,
+
+
+### Utilitaires
+
+> TBD non nul.
+
+#### Décalages de bits
+
+> TBD écrire avec des tableaux de bits et des ==
+
+On utilise deux direction de décalage (gauche et droite) et deux types de décalage selon que les bit poussés à l'extérieur sont réinjectés de l'autre côté ou disparaissent (les bit qui arrivent sont à 0).
+
+- $x << k$ : ***shift*** de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)
+- $x >> k$ : ***shift*** de $k$ bit vers la droite. Les $k$ bits de poids forts sont des $0$ (identique à une division par $2^k$)
+- $x <<< k$  : ***rotation*** de $k$ bit vers la gauche.
+- $x >>> k$  : ***rotation*** de $k$ bit vers la droite.
+
+
+Ces algorithmes sont simples à réaliser. Pour s'en convaincre, il suffit d'en créer un des 4 :
+
+{% exercice %}
+Écrivez un algorithme linéaire permettant de réaliser $x <<< k$.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+
+#### Concaténation
+
+$ x || y$ est la concaténation des $n$ bits de $x$ aux $n'$ bits de $y$.
+
 ## Pseudo-code
 
+Ceci nous permettra _in fine_ de redéfinir la notion de pseudo-code avec des objets et et des opérations bien plus simple sans perte de généralité.
+
+> TBD pseudo-code = FB et structures de contrôles. et se généralise à NAND et structure de contrôle.
+> 
 > TBD pseudo-code = FB et structures de contrôles. et se généralise à NAND et structure de contrôle.
 > Voir comment les structures de contrôles s'écrive comme test et saut.
 > 

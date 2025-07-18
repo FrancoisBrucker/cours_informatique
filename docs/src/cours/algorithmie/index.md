@@ -539,6 +539,7 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 > TBD : tout NP c'est SAT
 
 > TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
+> TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonction de clause. et que comme on passe d'un problème à l'autre, on peut le faire puisque nos entrées sont données.
 
 {% aller %}
 [problème SAT](./problème-SAT){.interne}
