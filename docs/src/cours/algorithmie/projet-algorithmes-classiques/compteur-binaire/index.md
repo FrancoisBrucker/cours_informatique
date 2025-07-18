@@ -36,7 +36,7 @@ Les fonctions qui ne rendent rien modifient souvent leurs paramètres.
 
 ```pseudocode
 algorithme successeur(N: [bit]) → vide:
-    i ← n.longueur - 1
+    i ← N.longueur - 1
 
     tant que (i ≥ 0) et (N[i] == 1):
         N[i] ← 0
@@ -113,7 +113,7 @@ fonction tous_rec(N: [bit], i: entier) → vide:
     si i == -1:
         affiche à l'écran N
     sinon:
-        pour chaque x de [0, 1]:
+        pour chaque x de [0 .. 1]:
         N[i] ← x
         tous_rec(N, i-1)
 

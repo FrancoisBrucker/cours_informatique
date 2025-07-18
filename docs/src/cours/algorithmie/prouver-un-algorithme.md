@@ -198,7 +198,7 @@ Considérons l'algorithme suivant, variation de la version itérative de factori
 ```pseudocode
 algorithme factorielle(n: entier) → entier:  # n ≥ 1
     produit ← 1
-    pour chaque i de [2, n]:
+    pour chaque i de [2 .. n]:
         produit ← produit * i
 
     rendre produit
@@ -496,7 +496,7 @@ Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers élém
 ```pseudocode
 algorithme maximum(t: [entier]) → entier:
     m ← t[0]
-    pour chaque i de [0, t.longueur[:
+    pour chaque i de [0 .. t.longueur[:
         x ← t[i]
         si m < x:
             m ← x

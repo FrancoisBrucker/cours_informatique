@@ -405,6 +405,7 @@ Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000
 En conclusion, comme on peut associer une suite finie de de `0` et de `1` à tout algorithme et à tout ce qu'il peut manipuler :
 
 <span id="paramètres-binaires"></span>
+
 {% note "**Proposition**" %}
 Tout ce que peut manipuler un programme est une suite finie de caractères `0` et `1`.
 {% endnote %}

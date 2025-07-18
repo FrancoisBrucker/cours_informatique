@@ -24,6 +24,7 @@ Vous pouvez consulter le lien suivant sur l'émergence en mathématiques de la n
 On a vu qu'un algorithme et tout ce qu'il manipulait pouvait être considéré comme une suite finie de 0 et de 1. On en déduit immédiatement la proposition suivante :
 
 <span id="algorithme-fonction"></span>
+
 {% note "**Proposition**" %}
 Un algorithme est une fonction :
 

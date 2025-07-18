@@ -55,7 +55,7 @@ algorithme trouve(T: [entier]) → entier:
     si T[-1] <= T[-2]:
         rendre T.longueur - 1
 
-    pour chaque i de [1, T.longueur - 1[:
+    pour chaque i de [1 .. T.longueur - 1[:
         si T[i] <= min(T[i-1], T[i + 1]):
             rendre i
 
@@ -85,7 +85,7 @@ algorithme trouve(T: [entier]) → entier:
     si T[-1] <= T[-2]:
         rendre T.longueur - 1
 
-    pour chaque i de [1, T.longueur - 1[:
+    pour chaque i de [1 .. T.longueur - 1[:
         si T[i] <= T[i + 1]:
             rendre i
 

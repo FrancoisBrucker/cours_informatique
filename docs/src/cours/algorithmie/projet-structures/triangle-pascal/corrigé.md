@@ -75,11 +75,11 @@ Première version qui calcule toute la matrice triangulaire inférieure :
 algorithme binom_matrice(n: entier) → [[entier]]:
     matrice ← un tableau de [entier] de taille n+1
 
-    pour chaque i de [0, n]:
+    pour chaque i de [0 .. n]:
         ligne ← un tableau d'entiers de taille i+1
 
         matrice[i] ← ligne
-        pour chaque j de [0, i]:
+        pour chaque j de [0 .. i]:
             si (j == i) ou (j == 0):
                 ligne[j] ← 1
             sinon:
@@ -129,7 +129,7 @@ algorithme ligne_suivante(l: [entier]) → [entier]:
     l2[0] ← 1
     l2[-1] ← 1
 
-    pour chaque i de [1, l2.longueur - 1[:
+    pour chaque i de [1 .. l2.longueur - 1[:
         l2[1] ← l[i] + l[i-1]
 
     rendre l2
@@ -164,7 +164,7 @@ fonction ligne_suivante(l: [entier], k: entier) → [entier]:
     l2[0] ← 1
     l2[-1] ← 1
 
-    pour chaque i de [1, m]:
+    pour chaque i de [1 .. m]:
         l2[1] ← l[i] + l[i-1]
 
     rendre l2

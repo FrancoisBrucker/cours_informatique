@@ -106,8 +106,8 @@ Exemple le calcul de $\sum_{1\leq i \leq n}\sum_{1\leq j \leq n} (i+j)$ :
 
 ```pseudocode
 total ← 0
-pour chaque i de [1, n]:
-    pour chaque j de [1, n]:
+pour chaque i de [1 .. n]:
+    pour chaque j de [1 .. n]:
         total ← i + j
 rendre total
 ```
@@ -141,8 +141,8 @@ On va vérifier cela avec un exemple :
 
 ```pseudocode
 total ← 0
-pour chaque i de [1, n-1]:
-    pour chaque j de [i+1, n]:
+pour chaque i de [1 .. n-1]:
+    pour chaque j de [i+1 .. n]:
         total ← i + j
 Rendre total
 ```

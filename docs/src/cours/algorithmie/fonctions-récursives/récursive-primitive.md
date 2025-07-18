@@ -12,6 +12,8 @@ eleventyComputed:
 
 Les [fonctions récursives primitives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive) sont un cas particulier important des fonctions calculables. La plupart des fonction mathématiques usuelles en sont !
 
+C'est [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano). Au départ on pensait que ça suffirait pour tout calculer.
+
 {% lien %}
 
 - <https://www.andrew.cmu.edu/user/kk3n/recursionclass/chap2.pdf>
@@ -59,14 +61,32 @@ Les _**fonctions récursives primitives de bases**_ sont :
 
 {% endnote %}
 
-Dont il est clair qu'elles sont calculables, au moins pour les fonctions zéro et les projections.
+Dont il est clair qu'elles sont calculables, au moins pour les fonctions zéro et les projections. La fonction successeur l'est également, on l'a déjà rencontré :
 
 {% exercice %}
-Exhibez un algorithme permettant de calculer $\text{succ}$ lorsque les entiers sont codées sous forme binaire $x = x_p\dots x_0$ avec $x_i \in \{ 0, 1\}$ et $x = \sum_{0\leq i \leq p}x_i2^i$.
+Modifiez l'algorgithme [du compteur binaire](../../projet-algorithmes-classiques/compteur-binaire/){.interne} pour qu'il puisse rendre le successeur de tout entier passé en paramètre sous la forme d'un tableau de bits.
 {% endexercice %}
 {% details "corrigé" %}
+Il faut modifier l'algorithme de deux façons :
 
->TBD addition binaire avec retenue.
+1. il doit rendre un nouvel enfier
+2. il ne doit pas cycler
+
+```pseudocode
+algorithme successeur(N: [bit]) → [bit]:
+    i ← N.longueur - 1
+
+    tant que (i ≥ 0) et (N[i] == 1):
+        i ← i - 1
+
+    Z ← un tableau de taille N.longueur - i - 1
+    Z[:] ← 0
+    
+    si i ≥ 0:
+        rendre N[:i] + [1] + Z 
+    sinon:
+        rendre [1] + Z
+```
 
 {% enddetails %}
 
@@ -75,6 +95,7 @@ Les fonctions primitives récursives sont alors toutes les fonctions que l'on pe
 La règle de composition est classique :
 
 <div id="composition"></div>
+
 {% note "**Définition**" %}
 Soient :
 
@@ -96,18 +117,16 @@ $$
 
 Il est clair que s'il existe un algorithme pour créer $f$ et $g$, l'algorithme suivant fonctionne pour créer la composition :
 
-```text
-Nom : composition
-Entrées :
-    n, m : entiers
-    x[] : un tableau de m entiers
-    f : une fonction à n paramètres
-    g[i] : un tableau de n fonctions à m paramètres
-Programme :
-    soit y[] un tableau à n entiers
-    pour chaque i allant de 1 à n:
-        y[i] = g[1](x[])
-    rendre f(y[])
+```pseudocode
+algorithme composition(n : entier,
+                       x: [entier],         # un tableau de m entiers
+                       f: ([entier]) → ∅,   # une fonction à n paramètres
+                       g: [([entier]) → ∅]. # un tableau de n fonctions à m paramètres
+                       ) → ∅:
+    y ← un tableau de taille n entiers
+    pour chaque i de [0 .. n[:
+        y[i] ← g[i](x)
+    rendre f(y)
 ```
 
 Remarquez que la composition dépend des domaines de validité des fonctions $f$ et $g[i]$, on passe donc un tableau en paramètre de la fonction pour que l'appel de la fonction soit identique quelque soit $n$ et $m$. La composition permet déjà de créer des choses nouvelles, en particulier les fonctions constantes, par exemple la fonction : $\mathbb{1}^n = \text{succ} \circ [\mathbb{0}^n]$ est la fonction rendant tout le temps 1.

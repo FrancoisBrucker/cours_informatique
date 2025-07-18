@@ -56,7 +56,7 @@ Par exemple le code suivant :
 ```pseudocode
 c ← { N: [1, 0, 0, 1]}
 
-pour chaque i de [1, 9]:
+pour chaque i de [1 .. 9]:
     c.suivant()
 ```
 

@@ -47,7 +47,7 @@ Mais souvent, il ne suffit pas de diviser pour trouver notre solution, il faut p
 ```pseudocode
 algorithme diviser_puis_combiner(données):
     À partir de données, créer k donnees_partielles_i (1 ≤ i ≤ k)
-    pour chaque i  de [1, k]:
+    pour chaque i  de [1 .. k]:
         solution_i ← diviser_puis_combiner(donnees_partielles_i)
 
     solution ← combiner(solution_1, ..., solution_k)

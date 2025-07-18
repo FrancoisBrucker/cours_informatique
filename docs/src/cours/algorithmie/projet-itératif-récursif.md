@@ -85,11 +85,11 @@ algorithme concaténation(début: [entier], fin: [entier]) → [entier]
     t ← tableau de taille début.longueur + fin.longueur
     i ← -1
 
-    pour chaque j de [0, début.longueur[:
+    pour chaque j de [0 .. début.longueur[:
         i ← i + 1
         t[i] ← début[j]
 
-    pour chaque j de [0, fin.longueur[:
+    pour chaque j de [0 .. fin.longueur[:
         i ← i + 1
         t[i] ← fin[j]
 

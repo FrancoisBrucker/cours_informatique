@@ -205,13 +205,13 @@ En utilisant uniquement une file, donnez un algorithme de complexité $\mathcal{
 algorithme permutation(T: [entier], k: entier) → ∅:
     F ← File<entier> {taille: T.longueur}
 
-    pour chaque i de [0, T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
         F.enfile(T[i])
     répéter k fois:
         x ← F.defile()
         F.enfile(x)
 
-    pour chaque i de [0, T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
         T[i] ← F.défile()
 
 ```

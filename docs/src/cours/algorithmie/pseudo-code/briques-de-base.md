@@ -289,7 +289,7 @@ répéter k fois:
 Pour :
 
 ```pseudocode
-pour chaque i de [1, k]:
+pour chaque i de [1 .. k]:
     ...
 ```
 
@@ -312,7 +312,7 @@ pour i=a à i=b:
 Pour :
 
 ```pseudocode
-pour chaque i de [a, b]:
+pour chaque i de [a .. b]:
     ...
 ```
 
@@ -326,7 +326,7 @@ pour i de a à b par par pas de k:
 ou encore :
 
 ```pseudocode
-pour chaque i de [a, b] par pas de k:
+pour chaque i de [a .. b] par pas de k:
     ...
 ```
 
@@ -349,7 +349,7 @@ T[a:b] ← k
 pour :
 
 ```pseudocode
-pour chaque i de [a, b[:
+pour chaque i de [a .. b[:
     T[i] ← k
 ```
 
@@ -362,7 +362,7 @@ T[:] ← k
 Qui correspond à :
 
 ```pseudocode
-pour chaque i de [0, T.longueur[:
+pour chaque i de [0 .. T.longueur[:
     T[i] ← k
 ```
 
@@ -375,7 +375,7 @@ T[a:b] ← T'[a':]
 Qui correspond à :
 
 ```pseudocode
-pour chaque i de [0, b-a[:
+pour chaque i de [0 .. b-a[:
     T[a + i] ← T'[a' + i]
 ```
 
@@ -403,9 +403,9 @@ pour :
 ```pseudocode
 T ← un nouveau tableau de taille T1.longueur + T2.longueur
 
-pour chaque i de [0, T1.longueur[:
+pour chaque i de [0 .. T1.longueur[:
     T[i] ← T1[i]
-pour chaque i de [0, T2.longueur[:
+pour chaque i de [0 .. T2.longueur[:
     T[T1.longueur + i] ← T2[i]
 
 ```

@@ -189,7 +189,7 @@ algorithme modulo(n: [entier], base) → entier:
     e ← base mod m
     exp ← 1
     res ← n[0] mod m
-    pour chaque i de [1, n.longueur[:
+    pour chaque i de [1 .. n.longueur[:
         exp ← (exp * e) mod m
         c ← (exp * n[i]) mod m
         res ← (res + c) mod m

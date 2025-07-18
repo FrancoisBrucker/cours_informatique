@@ -79,7 +79,7 @@ Le tri à bulles est très aimé des étudiants mais inefficace. Son procédé e
 ```pseudocode
 algorithme bulles_naif(T) → ∅:
     répéter T.longueur -1 fois:  # boucle principale
-        pour chaque i de [0, T.longueur -1[:  # boucle intérieure
+        pour chaque i de [0 .. T.longueur -1[:  # boucle intérieure
             si T[i] > T[i+1]:
                 T[i], T[i+1] ← T[i+1], T[i]
 ```
@@ -133,7 +133,7 @@ On obtient alors l'algorithme suivant :
 algorithme bulles_naif(T) → ∅:
     répéter T.longueur -1 fois:  # boucle principale
         trié ← Faux
-        pour chaque i de [0, T.longueur -1[:  # boucle intérieure
+        pour chaque i de [0 .. T.longueur -1[:  # boucle intérieure
             si T[i] > T[i+1]:
                 T[i], T[i+1] ← T[i+1], T[i]
                 trié ← Vrai
@@ -162,8 +162,8 @@ Commençons par un petit échauffement. Sélection est identique à l'algorithme
 
 ```pseudocode/
 algorithme sélection(T: [entier]) → ∅:
-    pour chaque i de [0, T.longueur[:
-        pour chaque j de [i + 1, T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
+        pour chaque j de [i + 1 .. T.longueur[:
             si T[j] < T[i]:
                 T[i], T[j] ← T[j], T[i]
 ```
@@ -181,8 +181,8 @@ Et maintenant un peu de magie :
 
 ```pseudocode/
 algorithme sélection_opposé(T: [entier]) → ∅:
-    pour chaque i de [0, T.longueur[:
-        pour chaque j de [0, T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
+        pour chaque j de [0 .. T.longueur[:
             si T[j] < T[i]:
                 T[i], T[j] ← T[j], T[i]
 ```
@@ -224,8 +224,8 @@ Et terminons cette partie en montrant que cette dernière itération est bien un
 
 ```pseudocode/
 algorithme sélection_opposé(T: [entier]) → ∅:
-    pour chaque i de [0, T.longueur[:
-        pour chaque j de [0, T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
+        pour chaque j de [0 .. T.longueur[:
             si T[i] < T[j]:
                 T[i], T[j] ← T[j], T[i]
 ```

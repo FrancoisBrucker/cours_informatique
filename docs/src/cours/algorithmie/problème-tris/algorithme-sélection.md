@@ -17,9 +17,9 @@ On en déduit l'algorithme en pseudo-code suivant :
 
 ```pseudocode
 algorithme sélection(T: [entier]) → ∅:
-    pour chaque i de [0, T.longueur[:  # boucle principale
+    pour chaque i de [0 .. T.longueur[:  # boucle principale
         min_index ← i
-        pour chaque j de [i + 1, T.longueur[:  # boucle intérieure
+        pour chaque j de [i + 1 .. T.longueur[:  # boucle intérieure
             si T[j] < T[min_index]:
                 min_index ← j
         T[i], T[min_index] ← T[min_index], T[i]

@@ -25,7 +25,7 @@ Il existe un algorithme très simple pour le résoudre :
 
 ```pseudocode/
 algorithme est_trie(T: [entier]) → booléen:
-    pour chaque i de [1, T.longueur[:
+    pour chaque i de [1 .. T.longueur[:
         si T[i] < T[i-1]:
             rendre Faux
     rendre Vrai

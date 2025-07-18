@@ -39,7 +39,7 @@ On a considéré que cette instruction nécessitait 3 lectures de la variable `i
 Ou encore le code suivant :
 
 ```pseudocode
-pour chaque i de [2, 9]:
+pour chaque i de [2 .. 9]:
   affiche à l'écran i
 ```
 
@@ -57,7 +57,7 @@ Il aurait été tout aussi légitime de compter différemment, en créant tout l
 Reprenons l'exemple précédent :
 
 ```pseudocode
-pour chaque i de [2, 9]:
+pour chaque i de [2 .. 9]:
   affiche à l'écran i
 ```
 

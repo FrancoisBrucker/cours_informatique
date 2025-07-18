@@ -40,7 +40,7 @@ L'algorithme suivant regrade toutes les possibilités pour $S_2$ d'ˆ´tre un so
 ```pseudocode
 algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:
     
-    pour chaque i1 de [0, S1.longueur[:
+    pour chaque i1 de [0 .. S1.longueur[:
         i2 ← 0
         stop ← Faux
         tant que (stop == Faux) et (i2 < S2.longueur):
@@ -84,9 +84,9 @@ La solution est optimale puisqu'elle est en $\mathcal{O}(n)$
 algorithme permutation(S: [caractère], k: entier) → [caractère]:
     S2 ← un tableau de n caractères
 
-    pour chaque i de [0, k [:
+    pour chaque i de [0 .. k [:
         S2[i] ← S[S.longueur-k + i]
-    pour chaque i de [k, S.longueur[:
+    pour chaque i de [k .. S.longueur[:
         S2[i] ← S[i-k]
     
     rendre S2
@@ -98,7 +98,7 @@ Si on droit qu'à un nombre constant de variables ceci n'est plus possible. Il f
 
 ```pseudocode
 algorithme retournement(S: [caractère]) → ∅:
-    pour chaque i de [0, S.longueur // 2[:
+    pour chaque i de [0 .. S.longueur // 2[:
     S[i], S[S.longueur - 1 - i] ← S[S.longueur - 1 - i], S[i]
 
 ```

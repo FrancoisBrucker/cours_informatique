@@ -94,7 +94,7 @@ algorithme F(n: entier) → entier:
     a ← 1
     b ← 0
     
-    pour chaque i de [0, n - 1[:
+    pour chaque i de [0 .. n - 1[:
         a, b ← a + b, a
     
     rendre a
@@ -170,12 +170,12 @@ algorithme nombre_chemins(n: entier) → entier:
     N ← un tableau de [entier] de taille n+1
     N[:] ← un tableau de n+1 entiers
 
-    pour chaque j de [0, n]:
+    pour chaque j de [0 .. n]:
         N[0][j] ← j
 
-    pour chaque i de [1, n]:
+    pour chaque i de [1 .. n]:
         N[1][0] ← 1
-        pour chaque j de [1, n]:
+        pour chaque j de [1 .. n]:
             N[i][j] ← N[i-1][j] + N[i][j-1]
         
     rendre N[n][n]
@@ -202,7 +202,7 @@ algorithme nombre_chemins(n: entier, P: [(entier, entiers)]) → entier:
         N[0][0] ← 1
     sinon:
         N[0][0] ← 0
-    pour chaque k de [1, n]:
+    pour chaque k de [1 .. n]:
         N[0][k] ← N[0][k - 1]
         N[k][0] ← N[k - 1][0]
         si (0, k) est dans P:
@@ -210,8 +210,8 @@ algorithme nombre_chemins(n: entier, P: [(entier, entiers)]) → entier:
         si (k, 0) est dans P:
             N[k][0] ← N[k][0] + 1
 
-    pour chaque i de [1, n]:
-        pour chaque j de [1, n]:
+    pour chaque i de [1 .. n]:
+        pour chaque j de [1 .. n]:
             N[i][j] ← max(N[i-1][j], N[i][j-1])
             si (i, j) est dans P:
                 N[i][j] ← N[i][j] + 1
@@ -288,9 +288,9 @@ algorithme vente(n: entier, P: [entier]) → entier:
     M ← un tableau d'entiers de taille n + 1
     M[0] ← 0
 
-    pour chaque m de [1, n]:
+    pour chaque m de [1 .. n]:
         M[m] ← 0
-        pour chaque k de [0, m[:
+        pour chaque k de [0 .. m[:
             si M[m] < M[k] + P[m-k]:
                  M[m] ← M[k] + P[m-k]
 
@@ -313,10 +313,10 @@ algorithme vente(n: entier, P: [entier]) → [entier]:
     D ← un tableau d'entiers de taille n + 1
     D[0] ← 0
 
-    pour chaque m de [1, n]:
+    pour chaque m de [1 .. n]:
         M[m] ← 0
         D[0] ← 0
-        pour chaque k de [0, m[:
+        pour chaque k de [0 .. m[:
             si M[m] < M[k] + P[m-k]:
                  M[m] ← M[k] + P[m-k]
                  D[0] ← m - k
@@ -324,7 +324,7 @@ algorithme vente(n: entier, P: [entier]) → [entier]:
     V ← un tableau d'entiers de taille n + 1
     V[:] ← 0
 
-    pour chaque m de [0, n]:
+    pour chaque m de [0 .. n]:
         V[D[m]] ← V[D[m]] + 1 
     
     rendre V

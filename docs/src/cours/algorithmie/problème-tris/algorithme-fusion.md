@@ -21,7 +21,7 @@ Puisqu'il suffit de s'utiliser lui pour résoudre les sous-problèmes sa forme g
 ```pseudocode
 algorithme résolution(données):
     A partir de données créer k données_partielles_i (1 ≤ i ≤ k)
-    pour chaque i  de [1, k]:
+    pour chaque i  de [1 .. k]:
         solution_i ← résolution(données_partielles_i)
 
     solution ← combiner(solution_1, ..., solution_k)
@@ -43,7 +43,7 @@ algorithme combiner(T1: [entier], T2: [entier]) → [entier]:
     i2 ← 0
     T ← un tableau de taille T1.longueur + T2.longueur
 
-    pour chaque i de [0, T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
         si i2 == T2.longueur:
             T[i] ← T1[i1]
             i1 ← i1 + 1
@@ -98,7 +98,7 @@ algorithme combiner_faux(T1: [entier], T2: [entier]) → [entier]:
     i1 ← 0
     i2 ← 0
     T ← un tableau de taille T1.longueur + T2.longueur
-    pour chaque i de [0, T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
         si (i2 == T2.longueur) ou (T1[i1] < T2[i2]):
             T[i] ← T1[i1]
             i1 ← i1 + 1

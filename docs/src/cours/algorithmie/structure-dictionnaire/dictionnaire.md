@@ -275,7 +275,7 @@ structure Dictionaire<Type>:
 
         fonction set(clé: [bit], valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
             l ← T[fa(f(clé), T.longueur)]
-            pour chaque i de [0 à l.longueur[ :
+            pour chaque i de [0 .. l.longueur[ :
                 c, v ← l[i]
                 si c == clé:
                     l[i] ← (clé, valeur)
@@ -329,7 +329,7 @@ structure Dictionaire<Type>:
 
         fonction set(clé: [bit], valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
             l ← T[fa(f(clé), T.longueur)]
-            pour chaque i de [0 à l.longueur[ :
+            pour chaque i de [0 .. l.longueur[ :
                 c, v ← l[i]
                 si c == clé:
                     l[i] ← (clé, valeur)
@@ -349,7 +349,7 @@ structure Dictionaire<Type>:
                 taille ← taille + 1
 
                 l ← T[fa(f(clé), T.longueur)]
-                pour chaque i de [0 à l.longueur[ :
+                pour chaque i de [0 .. l.longueur[ :
                     c, v ← l[i]
                     si c == clé:
                         l[i] ← (clé, valeur)

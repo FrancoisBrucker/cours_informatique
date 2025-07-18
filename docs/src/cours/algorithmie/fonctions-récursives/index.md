@@ -9,9 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD chapeau
->
-> TBD chapeau commençons par un cas particulier, correspondant à l'arithmétique de Peano et utilisé par Godel pour démontrer ses théorèmes d'incomplétude.
+> TBD chapeau exactement comme pseudo-code fait avec des briques de bases, on cherche les fonctions minimales pour calculer toutes les fonctions. 
+
+
 
 {% aller %}
 [Fonctions récursives primitives](./récursive-primitive){.interne}

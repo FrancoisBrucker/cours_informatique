@@ -363,6 +363,8 @@ $$
 
 À vous maintenant. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :
 
+<span id="algorithme-somme_binaire"></span>
+
 ```pseudocode
 algorithme somme_binaire(x: [bit], 
                          y: [bit])  # on suppose x et y de même taille
@@ -372,7 +374,7 @@ algorithme somme_binaire(x: [bit],
     retenues ← un tableau de taille x.longueur + 1 bits
     retenues[0]  ← 0
 
-    pour chaque i de [0, x.tableau - 1[:
+    pour chaque i de [0 .. x.tableau - 1[:
         si (x[i] == 1) et (y[i] == 1) et (retenues[i] == 1):
             somme[i]  ← 1
             retenues[i + 1]  ← 1

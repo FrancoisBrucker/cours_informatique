@@ -366,7 +366,7 @@ algorithme bin_packing(T: [entier]) → [[entier]]
     Es ← []
     E ← []
     s ← 0
-    pour chaque i de [0, T.longueur[:
+    pour chaque i de [0 .. T.longueur[:
         s ← s + T[i]
         si s ≤ K:
             ajouter T[i] à E

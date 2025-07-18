@@ -37,7 +37,7 @@ algorithme tous(n: entier) → vide:
     N ← un tableau de taille n
     N[:] ← 0
 
-    pour chaque i de [0, 2^n[:        
+    pour chaque i de [0 .. 2^n[:        
         successeur(N)
         affiche N à l'écran
 

@@ -54,7 +54,7 @@ structure Liste<Type>:
             T[pos] ← x
         fonction delete(pos: entier) → Type:
             r ← T[pos]
-            pour chaque i de [pos, T.longueur - 1[:
+            pour chaque i de [pos .. T.longueur - 1[:
                 T[i] ← T[i+1]
             self.pop()
 
@@ -83,10 +83,10 @@ Lorsque la longueur du tableau devient trop petite pour contenir toutes les vale
 
 ```pseudocode
 l ← Liste<entier>
-pour chaque i de [0, 2^42]:
+pour chaque i de [0 .. 2^42]:
     l.append(i)
 
-pour chaque i de [0, 2^42[:
+pour chaque i de [0 .. 2^42[:
     l[i] ← l[i + 1]
 ```
 
@@ -262,7 +262,7 @@ Pour cet exercice, l'ordre doit être conservé.
 
 ```pseudocode
 algorithme suppression_indice(L: Liste<T>, i: indice) → ∅:
-    pour chaque j de [i + 1, L.longueur[:
+    pour chaque j de [i + 1 .. L.longueur[:
         L[j-1] ← L[j]
     L.pop()
 ```

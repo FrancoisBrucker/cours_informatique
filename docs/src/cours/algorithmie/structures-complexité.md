@@ -83,7 +83,7 @@ Ne commence pas par créer la liste allant de 0 à 999999, mais produit un itér
 On a pris ce parti pour l'écriture des boucles en pseudo-code :
 
 ```pseudocode
-pour chaque x de [0, 1000000[:
+pour chaque x de [0 .. 1000000[:
   affiche x à l'écran
 ```
 

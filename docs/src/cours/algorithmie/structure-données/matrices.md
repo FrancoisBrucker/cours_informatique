@@ -36,7 +36,7 @@ La création d'une matrice $M$ se fait ligne à ligne :
 algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier) → [[entier]]:
     M ← un nouveau tableau de n tableaux d'entiers
 
-    pour chaque i de [0, nb_lignes[:
+    pour chaque i de [0 .. nb_lignes[:
         L ← un nouveau tableau de nb_colonnes entiers
         M[i] ← L
     rendre M
@@ -50,9 +50,9 @@ Comme lors de la création de tableaux les valeurs sont indéterminées, on a co
 algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entier) → [[entier]]:
     M ← un nouveau tableau de l tableaux d'entiers
 
-    pour chaque i de [0, nb_lignes[:
+    pour chaque i de [0 .. nb_lignes[:
         L ← un nouveau tableau de nb_colonnes entiers
-        pour chaque j de [0, nb_colonnes[:
+        pour chaque j de [0 .. nb_colonnes[:
             L[j] ← valeur
         M[i] ← L
     rendre M
@@ -91,10 +91,10 @@ Pour créer une matrice de dimension 3 (d1, d2 et d3) :
 ```pseudocode
 M3 ← un nouveau tableau de n tableaux de tableaux
 
-pour chaque i de [0, d1[:
+pour chaque i de [0 .. d1[:
     M2 ← un nouveau tableau de d2 tableaux
     M3[i] ← M2
-    pour chaque j de [0, d2[:
+    pour chaque j de [0 .. d2[:
         L ← un nouveau tableau de d3 entiers
         M2[j] ← L
 ```

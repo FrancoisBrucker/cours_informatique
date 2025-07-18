@@ -520,32 +520,97 @@ Cette hypothèse est cependant tres rarement vérifiée en pratique, les clés o
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
-### Fonctions
+> TBD jeu d'instructions minimal.
+> TBD pseudo-code = fonction booléenne finie + instruction de contrôle et boucles.
 
+### Variables binaires
+
+{% aller %}
+[Fonctions booléennes et pseudo-code](./fonctions-booléennes){.interne}
+{% endaller %}
+
+> TBD découpage des objets en mots pour les fonctions (16, 32, 64)
+> TBD mais en interne tout est fait avec NAND
+
+### Problème SAT
+
+> TBD on a vue que les opérations peuvent être mise sous forme logique. C'est aussi vrai pour les structures de contrôle.
+> TBD. Ceci va nous permettre de démontrer le théorème de Levin-Cook.
+> TBD : tout NP c'est SAT
+
+> TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
+
+{% aller %}
+[problème SAT](./problème-SAT){.interne}
+{% endaller %}
+
+### Pseudo-assembleur
+
+
+> TBD pseudo-code et FB
+> est à l'assembleur ce que le pseudo-code est au code. Un principe.
+
+> modèle de Von Neumann qui est implémenté dans tous les ordinateurs
+
+
+
+
+> fini mais permet de gérer l'infini si on le relance.
+
+> TBD compilation il faut des langages
+
+> abstraction pour calculer. Fonction = calculer et pseudo-code = implémenter.
+> doit permettre de gérer l'infini et doit être facile à appréhender. Pour l'instant les fonction c'est abstrait (le pseudo-code n'est pas donné) et le pseudo-assembleur est fini. La pirouette qui le rend infini est un peu artificielle.
+> Automates et Turing = réfléchir.
 > TBD ajouter lambda calcul
 
-> TBD uniquement fonctions récursives.
-> TBD faire hiérarchie des complexités avec fonctions calculables.
+### Modèle de Von Neumann
 
-Finissons par quelques exemples non triviaux de modèles Turing complet :
+> TBD Modèle de Von Neumann
+> TBD attention bit dans registre et adresses ! <https://azeria-labs.com/arm-data-types-and-registers-part-2/>
+> TBD monter big endian et différence entre mémoire et fonction sur 64 bits.
+> on accede jamais a un bit spécifique
+> 
+{% aller %}
+[Exécuter du code](./exécuter-code){.interne}
+{% endaller %}
+
+Le pseudo-code permet de concevoir des algorithmes pouvant être exécutés au tableau par des humains. L'assembleur quant à lui, language de la machine, permet d'exécuter des algorithmes sur des processeurs.
+Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut résoudre avec l'un sont également résoluble avec l'autre (et réciproquement). On peut même transcrire en assembleur un programme écrit en pseudo-code de façon automatique (on a évoqué sans rentrer dans les détails les moyens d'y parvenir) il est donc courant d'écrire son code en pseudo-code, facile à lire et à maintenir, puis de laisser un compilateur le transcrire en assembleur pour être exécuté.
+
+> Exécution automatique. Pas par un humain.
+>
+### Modèle fonctionnel
+
+On a vue qu'un algorithme était un moyen de calculer une fonction. Précisons un peut cela en voyant quelles fonctions on peut effectivement calculer à l'aide d'un pseudo-code.
 
 {% aller %}
 [Algorithmes et fonctions](./fonctions-récursives){.interne}
 {% endaller %}
 
-### Pseudo-assembleur
+> TBD lambda calcul. Ironie, c'est le premier langage Le lisp.
+> TBD algorithme = fonction
 
-> chaîne de caractère ne fait pas tous les algos.
+### <span id="langages"></span>Langages
 
-> est à l'assembleur ce que le pseudo-code est au code. Un principe.
+> DBD déf
 
-> Modèle de von Neumann
+#### Problèmes de décisions
 
-### <span id="modèle-calculs"></span>Modèle de calculs
+Nous allons dans cette partie approfondir et démontrer proprement des choses que nous avons laissées en suspend à la fin de la partie I, à savoir les classes de problèmes NP et les problèmes NP-complets.
 
-> abstraction pour calculer. Fonction = calculer et pseudo-code = implémenter.
->
-> Automates et Turing = réfléchir.
+{% aller %}
+[Problèmes de décision](./décision-problèmes){.interne}
+{% endaller %}
+
+> TBD dire que les deux vision des problèmes NP sont équivalentes. La solution des problèmes est le certificat des problèmes de décision. Le non déterminisme c'est trouver la solution, puis la vérification est est déterministe.
+
+{% aller %}
+[Exemples de problèmes NP complets](./exemples-problèmes-NPC){.interne}
+{% endaller %}
+
+> TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>
+
 
 #### Chaînes de caractères
 
@@ -557,7 +622,7 @@ Finissons par quelques exemples non triviaux de modèles Turing complet :
 [Chaines de caractères](./structure-chaine-de-caractères){.interne}
 {% endaller %}
 
-#### Turing
+#### Machine de Turing
 
 > Refaire.
 > pseudo-assembleur.
@@ -597,17 +662,6 @@ Le pseudo-code est la partie émergée de l'algorithmie. Il permet de créer eff
 
 Commençons par comprendre comment exécuter du code :
 
-{% aller %}
-[Exécuter du code](./exécuter-code){.interne}
-{% endaller %}
-
-> TBD ici directement SAT.
-> TBD pas besoin de Turing pour NP. Juste Non polynomial. dire ok avec doublement de la mémoire si nécessaire et pseudo-assembleur.
-> TBD pas besoin de Turing pour NP. Juste Algo Non polynomial. L'ajouter.
-
-Le pseudo-code permet de concevoir des algorithmes pouvant être exécutés au tableau par des humains. L'assembleur quant à lui, language de la machine, permet d'exécuter des algorithmes sur des processeurs.
-Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut résoudre avec l'un sont également résoluble avec l'autre (et réciproquement). On peut même transcrire en assembleur un programme écrit en pseudo-code de façon automatique (on a évoqué sans rentrer dans les détails les moyens d'y parvenir) il est donc courant d'écrire son code en pseudo-code, facile à lire et à maintenir, puis de laisser un compilateur le transcrire en assembleur pour être exécuté.
-
 Cependant pour penser l'algorithmie, c'est à dire étudier ce qui peut ou ne peut pas être résoluble par le calcul, pseudo-code et assembleur sont encore trop _riches_ (on peut aller n'importe où dans la mémoire par exemple, on suppose l'existence de la fonction `NAND`{.language-}, etc). Il ne faut conserver que les éléments indispensables pour pouvoir écrire tout ce que l'on peut faire en pseudo-code.
 
 > TBD pour Turing dire ok avec doublement de la mémoire si nécessaire et pseudo-assembleur.
@@ -635,6 +689,10 @@ Pseudo-code et machine de Turing sont deux notions équivalentes.
   3. on peut avoir autant de ruban qu'on le veut et écrire où on veut en mémoire : on peut utiliser le modèle de von Neumann avec une machine de Turing
 
 {% enddetails %}
+
+### Problèmes de décision
+
+
 
 ### Algorithme et machine de Turing
 
@@ -691,29 +749,8 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 
 #### Algorithmes et fonctions
 
-### Problème SAT
 
-> TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
 
-{% aller %}
-[problème SAT](./problème-SAT){.interne}
-{% endaller %}
-
-### Problèmes de décisions
-
-Nous allons dans cette partie approfondir et démontrer proprement des choses que nous avons laissées en suspend à la fin de la partie I, à savoir les classes de problèmes NP et les problèmes NP-complets.
-
-{% aller %}
-[Problèmes de décision](./décision-problèmes){.interne}
-{% endaller %}
-
-> TBD dire que les deux vision des problèmes NP sont équivalentes. La solution des problèmes est le certificat des problèmes de décision. Le non déterminisme c'est trouver la solution, puis la vérification est est déterministe.
-
-{% aller %}
-[Exemples de problèmes NP complets](./exemples-problèmes-NPC){.interne}
-{% endaller %}
-
-> TBD faire bin packing NP-complet et rappeler qu'on a une heuristique gloutonne (cf. cours glouton) : <https://eecs.wsu.edu/~cook/aa/hw/s7/s7.html#:~:text=We%20can%20prove%20the%20bin,the%20bin%2Dpacking%20decision%20problem.>
 
 ## <span id="partie-6"></span>Partie VI : aléatoire
 
