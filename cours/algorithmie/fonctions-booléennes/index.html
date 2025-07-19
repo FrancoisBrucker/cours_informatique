@@ -155,9 +155,9 @@ $$
 <tr>
 <th style="text-align:center">x</th>
 <th style="text-align:center">y</th>
-<th style="text-align:center">x OR y</th>
-<th style="text-align:center">x AND y</th>
-<th style="text-align:center">x XOR y</th>
+<th style="text-align:center">OR(x, y)</th>
+<th style="text-align:center">AND(x, y)</th>
+<th style="text-align:center">XOR(x, y)</th>
 </tr>
 <tr>
 <th style="text-align:center"></th>
@@ -430,7 +430,7 @@ $$
 <p>La fonction $\text{NAND}(x, y)$ est définie telle que :</p>
 <div>
 $$
-x \text{NAND} y = \neg(x \land y)
+\text{NAND}(x, y) = \neg(x \land y)
 $$
 </div>
 </div></div>
@@ -459,11 +459,12 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il nous suffit de montrer que l'on peut reconstruire $\text{NOT}(x)$, $\text{AND}(x, y)$, et $\text{OR}(x, y)$ avec $\text{NAND}(x, y)$ :</p>
+<p>Il suffit de montrer que l'on peut reconstruire $\text{NOT}(x)$, $\text{AND}(x, y)$, $\text{OR}(x, y)$ et $\text{XOR}(x, y)$avec $\text{NAND}(x, y)$ :</p>
 <ul>
 <li>$\text{NOT}(x) = \text{NAND}(x, x)$</li>
 <li>$\text{AND}(x, y) = \text{NOT}(\text{NAND}(x, y))$</li>
 <li>$\text{OR}(x, y) = \text{NAND}(\text{NOT}(x), \text{NOT}(y))$</li>
+<li>$\text{XOR}(x, y) = \text{NAND}(\text{NAND}(x, \text{NAND}( x, y )), \text{NAND}(x, \text{NAND}( x, y )))$ :</li>
 </ul>
 </div>
 </details>     
@@ -473,7 +474,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cela marche aussi avec le <a href="https://fr.wikipedia.org/wiki/Fonction_OU_exclusif">OU exclusif</a> ($\text{XOR}(x, y) = \text{AND}(\text{OR}(x, y), \text{NAND}(x, y))$).</p>
+<p>Cela marche aussi avec le <a href="https://fr.wikipedia.org/wiki/Fonction_OU_exclusif">OU exclusif</a>.</p>
 </div></div>
 
 <h4>Généralisation</h4>
@@ -620,10 +621,12 @@ $$
 <p>D'un point de vue d'un pseudo-code, on écrira ces fonctions en spécifiant la taille des tableau d'entrée et de sortie en commentaire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># taille n</span>
            <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>      <span class="token comment"># taille m</span></code></pre>
-<p>Ou encore en indiçant les tableaux lorsque le type est clair :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">f</span><span class="token punctuation">(</span>x_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> x_n<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span>y_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> y_m<span class="token punctuation">)</span></code></pre>
-<p>ou encore :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">[</span>x_0<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> x_n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span>y_0<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> y_m<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+<p>Pour ne pas couper les cheveux en 4, on se permettra plusieurs abus de notations évident :</p>
+<ul>
+<li><code class="language-">f(x_1: bit, ..., x_n: bit) → [bit]</code> à la place de <code class="language-">f([bit]) → [bit] # entrée de taille n</code>,</li>
+<li><code class="language-">f([x_0, ..., x_n-1]) → [bit]</code> à la place de <code class="language-">f([bit]) → [bit] # entrée de taille n</code>,</li>
+<li><code class="language-">f(x_1: [bit], ..., x_n: [bit]) → [bit]</code> à la place de <code class="language-">f([bit]) → [bit] # entrée de taille t_1 + ... + t_n</code>,</li>
+</ul>
 <h2>Données booléennes</h2>
 <p><a href="../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires" class="interne">On a vu</a> qu'un algorithme pouvait ne manipuler que des bits. On peut donc redéfinir la notion de pseudo-code ainsi :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -640,9 +643,28 @@ $$
 </ul>
 </div></div>
 
-<p>Pour un tableau de bit $x$, on appelle $x[0]$ le <strong><em>bit de poids faible</em></strong> de $x$ et $x[-1]$ le <strong><em>bit de poids faible</em></strong>. On a coutume de représenter le tableau <strong>de droite à gauche</strong> pour respecter l'ordre de <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">la représentation binaire</a> d'un nombre. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :</p>
+<p>Pour un tableau de bit $x$, on appelle $x[0]$ le <strong><em>bit de poids faible</em></strong> de $x$ et $x[-1]$ le <strong><em>bit de poids fort</em></strong>. On a coutume de représenter le tableau <strong>de droite à gauche</strong> pour respecter l'ordre de <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">la représentation binaire</a> d'un nombre. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">indice : 76543210
    x   : 01100111</code></pre>
+<p>Tout tableau de bit peut être interprété de nombreuses manière : entier, réel, caractère, etc :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La signification d'une donnée est dépendante du contexte.</p>
+</div></div>
+
+<p>Pour éviter toute confusion entre les entiers on écrira :</p>
+<ul>
+<li>$[0, 1, 1]$ pour un tableau de bits</li>
+<li>$011 = 11$ pour l'entier 11 en base 10</li>
+<li>$0b011 = b11$ pour l'entier 3 écrit en <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">base 2</a></li>
+<li>$0o744$ pour l'entier 484 écrit en base 8 (<a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_octal">base octale</a>)</li>
+<li>$0xBBAADD$ pour l'entier 12298973 écrit en base 16 (<a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal">base hexadécimal</a>)</li>
+</ul>
 <h3>Booléen</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -680,12 +702,12 @@ $$
 <p>On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\{0, 1\}^n$ tel que $u(y) = x \mathbin{\small\%} 2^n$</p>
 </div></div>
 
-<p>Ainsi, si $x=[0,1,0, 1]$ :</p>
+<p>Ainsi :</p>
 <ul>
-<li>$u(x) = 10$ (de notation binaire 1010),</li>
+<li>$u([0,1,0, 1]) = 10$ (de notation binaire $0b1010$),</li>
 <li>$u^{-1}(10) = [0,1,0, 1]$</li>
-<li>$u_3^{-1}(10) = [0,1,0]$</li>
-<li>$u_8^{-1}(10) = [0,1,0, 1, 0, 0, 0, 0]$</li>
+<li>$u_3^{-1}(10) = [0,1,0]$ (de notation binaire $0b010$)</li>
+<li>$u_8^{-1}(10) = [0,1,0, 1, 0, 0, 0, 0]$ (de notation binaire $0b00001010$)</li>
 </ul>
 <p>Pour gérer les nombres négatifs, on utilise <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> défini telle que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -709,11 +731,12 @@ $$
 
 <p>On verra l'intérêt du complément à deux lorsque l'on donnera les algorithmes d'arithmétique sur les [bit], pour l'instant retenez que cette notation dépend du nombre de bits de la représentation de l'entier. Ainsi :</p>
 <ul>
-<li>$i^{-1}_2(1) = [1, 0]$ (de représentation binaire 01)</li>
-<li>$i^{-1}_4(1) = [1, 0, 0, 0]$ (de représentation binaire 0001)</li>
+<li>$i^{-1}_2(1) = [1, 0]$ (de représentation binaire $0b01$)</li>
+<li>$i^{-1}_4(1) = [1, 0, 0, 0]$ (de représentation binaire $0b0001$)</li>
 <li>$i^{-1}_2(-1) = [1, 1]$</li>
 <li>$i^{-1}_4(-1) = [1, 1, 1, 1]$</li>
 </ul>
+<p>Remarquez qu'un même tableau de bit dont le bit de poids fort vaut 1 peut être vu comme un entier positif ou négatif.</p>
 <h3>Réels</h3>
 <p>Les approximation de nombres réels sont encodées sur 64 bits.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -744,84 +767,83 @@ $$
 </div></div>
 
 <p>Ne confondez pas la correspondance entre une glyphe (en gros un caractère) et un nombre qui est le format UNICODE et son implémentation informatique qui utilise la conversion <a href="https://fr.wikipedia.org/wiki/UTF-8">UTF-8</a> qui permet d'écrire ces nombres sur un format allant de 8 à 32 bits.</p>
-<h2>Logique</h2>
+<h2>Opérations</h2>
+<p>Cette partie montre que toutes les opérations nécessaires pour faire un pseudo-code peuvent être faite avec des fonction booléennes vectorielles (donc uniquement des fonctions <code>NAND</code>) alliées à des structures de contrôles (tests et boucles <code>tant que</code>).</p>
 <blockquote>
-<p>TBD le mettre avec des formules logiques.
-TBD généraliser NOT AND etc pour les [bit]
-Rappeler ce que l'on a fait avec SAT.</p>
+<p>TBD rappeler ce que doit savoir faire un pseudo-code</p>
 </blockquote>
-<h3>Opérateurs</h3>
-<p>Les opérateurs sont à la base dédiés aux éléments binaire, mais ils s'étendent bit à bit aux vecteurs.</p>
-<ul>
-<li>XOR : ou exclusif binaire, se note $\oplus$ :
-<ul>
-<li>$0 \oplus 1 = 1 \oplus 0 \coloneqq 1$</li>
-<li>$0 \oplus 0 = 1 \oplus 1 \coloneqq 0$</li>
-</ul>
-</li>
-<li>NON : se note $\bar{x}$ :
-<ul>
-<li>$\bar{0} \coloneqq 1$</li>
-<li>$\bar{1} \coloneqq 0$</li>
-</ul>
-</li>
-<li>OR : ou binaire, se note $x \vee y$
-<ul>
-<li>$0 \vee 1 = 1 \vee 0 = 1 \vee 1 \coloneqq 1$</li>
-<li>$0 \vee 0 \coloneqq 0$</li>
-</ul>
-</li>
-<li>AND : : et binaire, se note $x \land y$
-<ul>
-<li>$1 \vee 1 \coloneqq 1$</li>
-<li>$0 \vee 1 = 1 \vee 0 = 0 \vee 0 \coloneqq 0$</li>
-</ul>
-</li>
-</ul>
-<h3>Décalages de bits</h3>
-<p>On utilise deux direction de décalage (gauche et droite) et deux types de décalage selon que les bit poussés à l'extérieur sont réinjectés de l'autre côté ou disparaissent (les bit qui arrivent sont à 0).</p>
-<ul>
-<li>$x &lt;&lt; k$ : <em><strong>shift</strong></em> de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)</li>
-<li>$x &gt;&gt; k$ : <em><strong>shift</strong></em> de $k$ bit vers la droite. Les $k$ bits de poids forts sont des $0$ (identique à une division par $2^k$)</li>
-<li>$x &lt;&lt;&lt; k$  : <em><strong>rotation</strong></em> de $k$ bit vers la gauche.</li>
-<li>$x &gt;&gt;&gt; k$  : <em><strong>rotation</strong></em> de $k$ bit vers la droite.</li>
-</ul>
-<h3>Concaténation</h3>
-<p>$ x || y$ est la concaténation des $n$ bits de $x$ aux $n'$ bits de $y$.</p>
-<h2>Arithmétique</h2>
-<blockquote>
-<p>TBD à nb de bit fixé clair. Mais marche aussi avec des tailles aussi grand que l'on veut.
-TBD multiplication plus complexe que addition
-TBD dire qu'on peut s'en sortir par &quot;concaténation&quot; de fonctions de taille fixe (ie 64 bit, on y reviendra)</p>
-</blockquote>
-<blockquote>
-<p>TBD toute les notations.
-TBD intervalle entier [a..b] et vide si a&gt;b
-TBD écriture binaire b00110, octal o744, décimale et hexadécimale #FF42.</p>
-</blockquote>
-<p>On considérera ici que l'on a des vecteurs de $n$ bits, allant du bit de poids faible au bit de poids fort :</p>
-<pre><code>index  :     876543210
-valeur : x = 010100110
-</code></pre>
-<p>$n$ est grand. Même si $\mathcal{O}(1)$ pour des mot sur 64b, comme n&gt;64, c'est plus.</p>
-<p>C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction de $n$, le nombre de bit des paramètres et de $B$, la base de calcul (64b pour nous actuellement). Nous ne nous embêterons pas ici avec ça et donnerons les complexités uniquement en fonction de $n$.</p>
-<h3>Somme</h3>
+<h3>Logiques</h3>
+<p>Les opérations logiques définies précédemment s'étendent naturellement aux données sous la forme de tableaux de bits.</p>
+<p>Il suffit de montrer la fonction <code>NAND</code> $\overline{x \land y}$ :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">NAND</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>      <span class="token comment"># les 3 tableaux sont de taille n</span>
+    z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
+
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">sinon</span>
+            z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token keyword">rendre</span> z</code></pre>
+<p>Remarquez que cette fonction n'est pas une fonction booléenne vectorielle : ses entrées ne sont pas de taille fixe.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme linéaire permettant de réaliser l'opération NOT sur un tableau de bit de taille quelconque.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On peut utiliser <code>NAND</code> puisque $\neg x = \overline{x \land x}$ :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">NOT</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>      <span class="token comment"># les 3 tableaux sont de taille n</span>
+    z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
+
+    <span class="token keyword">rendre</span> NAND<span class="token punctuation">(</span>x<span class="token punctuation">,</span> x<span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<h3>Arithmétique</h3>
+<p>Nous allons donner ici les complexité par rapport à la taille des entrées, c'est à dire des tableaux de bits correspondant à des entiers.</p>
+<h4>Somme</h4>
 <p>Sur deux entiers non signés</p>
 <pre><code>  100101
 + 001011
 --------
   110001
 </code></pre>
-<blockquote>
-<p>TBD : algo avec retenue.</p>
-</blockquote>
-<p>Modulo n :</p>
+<p>Attention à la retenue :</p>
 <pre><code>  100101
 + 011011
 --------
-  000001
+ 1000000
 </code></pre>
-<h3>Opposé</h3>
+<p>L'algorithme est alors le suivant (on en a déjà vu une version lorsque l'<a href="../probl%C3%A8mes-NP/#algorithme-somme_binaire">on a étudié les problèmes NP</a>, ici on va le considéré modulo la taille des entrées) c'est à dire que l'addition de $0b100101$ et $0b011011$ donnera : $0b000000$ :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de taille n</span>
+                 <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>  <span class="token comment"># de taille n</span>
+    
+    z <span class="token operator">←</span> un tableau de taille x<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span> bits
+    r <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        somme<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> XOR<span class="token punctuation">(</span>XOR<span class="token punctuation">(</span>r<span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        r <span class="token operator">←</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>r<span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> AND<span class="token punctuation">(</span>OR<span class="token punctuation">(</span>r<span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> somme</code></pre>
+<p>Sa complexité est bien linéaire puisque les fonction utilisées sont toutes de complexité $\mathcal{O}(1)$.</p>
+<h4>Opposé</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -836,14 +858,14 @@ $$
 -x \coloneqq \bar{x} + 0b1
 $$
 </div>
-<h3>Soustraction</h3>
+<h4>Soustraction</h4>
 <p>somme de deux entiers signés</p>
 <div>
 $$
 x-y \coloneqq x + (-y)
 $$
 </div>
-<h3>Multiplication</h3>
+<h4>Multiplication</h4>
 <p>On utilise la <a href="https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication">multiplication posée</a>. Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.</p>
 <p>La complexité de l'algorithme est en $\mathcal(O)(n^2)$.</p>
 <pre><code>       100101
@@ -867,7 +889,7 @@ $$
 <p>Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.</p>
 </div></div>
 
-<h3>Division euclidienne</h3>
+<h4>Division euclidienne</h4>
 <p>On utilise la <a href="https://fr.wikipedia.org/wiki/Division_pos%C3%A9e">division posée</a>. Les nombres binaires simplifient grandement le calcul car il suffit de faire des soustractions.</p>
 <p>La complexité de l'algorithme est en $\mathcal(O)(n^2)$.</p>
 <pre><code>  100101 | 1011
@@ -888,7 +910,7 @@ $$
 </code></pre>
 <p>On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mathbin{\small\%} 0b1011 = 100$</p>
 <p>$37 / 11 = 3$ et $37 \mathbin{\small\%} 11 = 4$</p>
-<h3>pgcd</h3>
+<h4>pgcd</h4>
 <blockquote>
 <p>TBD voir si on ne l'a pas déjà quelque part ?</p>
 </blockquote>
@@ -938,8 +960,61 @@ $$
 <p>Pour une étude étendu de l'algorithme d'Euclide, Voir Knuth tome 2 (<em>Art of computer Programming</em>, tome 2)</p>
 </div></div>
 
-<h2>Pseudo-code</h2>
+<h3>Tests</h3>
 <blockquote>
+<p>TBD ==, &lt;, &gt;,</p>
+</blockquote>
+<h3>Utilitaires</h3>
+<blockquote>
+<p>TBD non nul.</p>
+</blockquote>
+<h4>Décalages de bits</h4>
+<blockquote>
+<p>TBD écrire avec des tableaux de bits et des ==</p>
+</blockquote>
+<p>On utilise deux direction de décalage (gauche et droite) et deux types de décalage selon que les bit poussés à l'extérieur sont réinjectés de l'autre côté ou disparaissent (les bit qui arrivent sont à 0).</p>
+<ul>
+<li>$x &lt;&lt; k$ : <em><strong>shift</strong></em> de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)</li>
+<li>$x &gt;&gt; k$ : <em><strong>shift</strong></em> de $k$ bit vers la droite. Les $k$ bits de poids forts sont des $0$ (identique à une division par $2^k$)</li>
+<li>$x &lt;&lt;&lt; k$  : <em><strong>rotation</strong></em> de $k$ bit vers la gauche.</li>
+<li>$x &gt;&gt;&gt; k$  : <em><strong>rotation</strong></em> de $k$ bit vers la droite.</li>
+</ul>
+<p>Ces algorithmes sont simples à réaliser. Pour s'en convaincre, il suffit d'en créer un des 4 :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme linéaire permettant de réaliser $x &lt;&lt;&lt; k$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<h4>Concaténation</h4>
+<p>$ x || y$ est la concaténation des $n$ bits de $x$ aux $n'$ bits de $y$.</p>
+<h2>Pseudo-code</h2>
+<p>Ceci nous permettra <em>in fine</em> de redéfinir la notion de pseudo-code avec des objets et et des opérations bien plus simple sans perte de généralité.</p>
+<blockquote>
+<p>TBD pseudo-code = FB et structures de contrôles. et se généralise à NAND et structure de contrôle.</p>
 <p>TBD pseudo-code = FB et structures de contrôles. et se généralise à NAND et structure de contrôle.
 Voir comment les structures de contrôles s'écrive comme test et saut.</p>
 <p>TBD donner def. Uniquement manipulation d'un bit et variables = tableau de bit.
