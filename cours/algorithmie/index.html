@@ -783,7 +783,8 @@ Cette hypothèse est cependant tres rarement vérifiée en pratique, les clés o
 <p>TBD jeu d'instructions minimal.
 TBD pseudo-code = fonction booléenne finie + instruction de contrôle et boucles.</p>
 </blockquote>
-<h3>Variables binaires</h3>
+<h3>Pseudo-code</h3>
+<h4>Pseudo-code binaire</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -792,38 +793,28 @@ TBD pseudo-code = fonction booléenne finie + instruction de contrôle et boucle
 <p><a href="fonctions-bool%C3%A9ennes" class="interne">Fonctions booléennes et pseudo-code</a></p>
 </div></div>
 
-<blockquote>
-<p>TBD découpage des objets en mots pour les fonctions (16, 32, 64)
-TBD mais en interne tout est fait avec NAND</p>
-</blockquote>
-<h3>Problème SAT</h3>
-<blockquote>
-<p>TBD on a vue que les opérations peuvent être mise sous forme logique. C'est aussi vrai pour les structures de contrôle.
-TBD. Ceci va nous permettre de démontrer le théorème de Levin-Cook.
-TBD : tout NP c'est SAT</p>
-</blockquote>
-<blockquote>
-<p>TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
-TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonction de clause. et que comme on passe d'un problème à l'autre, on peut le faire puisque nos entrées sont données.</p>
-</blockquote>
+<h4>Pseudo-code et logique</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="probl%C3%A8me-SAT" class="interne">problème SAT</a></p>
+<p><a href="probl%C3%A8me-SAT" class="interne">SAT et pseudo-code</a></p>
 </div></div>
 
-<h3>Pseudo-assembleur</h3>
+<h4>Exécuter du pseudo-code</h4>
+<blockquote>
+<p>TBD von Neumann
+TBD découpage des objets en mots pour les fonctions (16, 32, 64)
+TBD mais en interne tout est fait avec NAND</p>
+</blockquote>
+<h5>Pseudo-assembleur</h5>
 <blockquote>
 <p>TBD pseudo-code et FB
 est à l'assembleur ce que le pseudo-code est au code. Un principe.</p>
 </blockquote>
 <blockquote>
-<p>modèle de Von Neumann qui est implémenté dans tous les ordinateurs</p>
-</blockquote>
-<blockquote>
-<p>fini mais permet de gérer l'infini si on le relance.</p>
+<p>TBD fini mais permet de gérer l'infini si on le relance.</p>
 </blockquote>
 <blockquote>
 <p>TBD compilation il faut des langages</p>
@@ -834,12 +825,14 @@ doit permettre de gérer l'infini et doit être facile à appréhender. Pour l'i
 Automates et Turing = réfléchir.
 TBD ajouter lambda calcul</p>
 </blockquote>
-<h3>Modèle de Von Neumann</h3>
+<h5>Modèle de Von Neumann</h5>
 <blockquote>
 <p>TBD Modèle de Von Neumann
+modèle de Von Neumann qui est implémenté dans tous les ordinateurs
 TBD attention bit dans registre et adresses ! <a href="https://azeria-labs.com/arm-data-types-and-registers-part-2/">https://azeria-labs.com/arm-data-types-and-registers-part-2/</a>
 TBD monter big endian et différence entre mémoire et fonction sur 64 bits.
 on accede jamais a un bit spécifique</p>
+<p>TBD monter que les opérations arithmétique peuvent être faite par morceau (de 64bit)</p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -854,6 +847,22 @@ Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut rés
 <blockquote>
 <p>Exécution automatique. Pas par un humain.</p>
 </blockquote>
+<h4>Pseudo-code non déterministe et NP</h4>
+<blockquote>
+<p>TBD le thm de Levin cook démontré</p>
+</blockquote>
+<blockquote>
+<p>TBD. Ceci va nous permettre de démontrer le théorème de Levin-Cook.
+TBD : tout NP c'est SAT</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="probl%C3%A8me-SAT" class="interne">problème SAT</a></p>
+</div></div>
+
 <h3>Modèle fonctionnel</h3>
 <p>On a vue qu'un algorithme était un moyen de calculer une fonction. Précisons un peut cela en voyant quelles fonctions on peut effectivement calculer à l'aide d'un pseudo-code.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -1005,8 +1014,10 @@ Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle
 </div>
 </details>     
 </div>
-<h3>Problèmes de décision</h3>
-<h3>Algorithme et machine de Turing</h3>
+<h3>Algorithme</h3>
+<blockquote>
+<p>TBD plein de modèles équivalent : pseudo-code, turing, fonctions, etc.</p>
+</blockquote>
 <p>Toutes les tentatives de généraliser le modèle de la machine de Turing ont été vains. Il semble que ce modèle capte exactement ce qu'est un algorithme. C'est pourquoi les informaticiens sont intimement convaincu que la thèse de Turing-Church est vraie :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1066,7 +1077,6 @@ Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle
 <li>...</li>
 </ul>
 <p>Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet mais impossible d'être plus !</p>
-<h4>Algorithmes et fonctions</h4>
 <h2><span id="partie-6"></span>Partie VI : aléatoire</h2>
 <blockquote>
 <p>TBD hasard et algorithmes randomisés.</p>

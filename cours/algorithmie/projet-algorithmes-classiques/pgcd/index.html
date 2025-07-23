@@ -213,7 +213,9 @@
     <span class="token keyword">si</span> a <span class="token keyword">et</span> b sont pairs<span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">2</span> <span class="token operator">*</span> pgcd_binaire<span class="token punctuation">(</span>a <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> b <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
     <span class="token keyword">si</span> a est impair <span class="token keyword">et</span> b pair<span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> <span class="token number">2</span> <span class="token operator">*</span> pgcd_binaire<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        <span class="token keyword">rendre</span> pgcd_binaire<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">si</span> a est pair <span class="token keyword">et</span> b impair<span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> pgcd_binaire<span class="token punctuation">(</span>a <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span>
     <span class="token keyword">si</span> a <span class="token keyword">et</span> b sont impairs<span class="token punctuation">:</span>
         <span class="token keyword">si</span> a <span class="token operator">&lt;</span> b<span class="token punctuation">:</span>
             a<span class="token punctuation">,</span> b <span class="token operator">←</span> b<span class="token punctuation">,</span> a
