@@ -30,7 +30,7 @@ Pour aider le développeur ou l'algorithmicien dans sa tâche, la plupart des la
 {% note %}
 On considère que l'on a à notre disposition :
 
-- [les 6 types basiques du pseudo-code](../pseudo-code#objets-basique){.interne} : vide, booléens, entiers, réels, complexes, caractères
+- [les 6 types basiques du pseudo-code](../pseudo-code#objets-basiques){.interne} : vide, booléens, entiers, réels, complexes, caractères
 - les conteneurs de la forme [chaînes de caractères](../structure-de-données/chaîne-de-caractères){.interne}, [tableaux](../structure-de-données/tableau){.interne}, [listes](../structure-de-données/liste){.interne} et [dictionnaires](../structure-de-données/dictionnaire){.interne}
 
 {% endnote %}

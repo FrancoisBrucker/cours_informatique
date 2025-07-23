@@ -10,6 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD ici dire qu'on peut augmenter la taille.
+> 
 Nous allons présenter une version _"minimale"_ de pseudo-code que nous appellerons pseudo-assembleur. Cet assembleur idéal et théorique nous permettra de faire le lien entre pseudo-code et le langage machine qui est effectivement exécuté.
 
 ## Objet et variables

@@ -13,9 +13,9 @@ Le pseudo-code est constitué d'instructions dont le but est soit de manipuler d
 
 Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
 
-## <span id="objets-basique"></span> Objets et instructions
+## Objets et instructions
 
-### <span id="objets-basique"></span> Objets basiques
+### <span id="objets-basiques"></span> Objets basiques
 
 Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et sont au nombre de six :
 
@@ -40,9 +40,9 @@ On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{6
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
 {% endattention %}
 
-### <span id="instructions"></span> Instructions
+### <span id="opérations"></span> Opérations
 
-Les instructions que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :
+Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :
 
 - **_créer des objets_**
 - **_opérer sur des objets_** :

@@ -523,40 +523,32 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 > TBD jeu d'instructions minimal.
 > TBD pseudo-code = fonction booléenne finie + instruction de contrôle et boucles.
 
-### Variables binaires
+### Pseudo-code
+
+#### Pseudo-code binaire
 
 {% aller %}
 [Fonctions booléennes et pseudo-code](./fonctions-booléennes){.interne}
 {% endaller %}
 
+#### Pseudo-code et logique
+
+{% aller %}
+[SAT et pseudo-code](./problème-SAT){.interne}
+{% endaller %}
+
+#### Exécuter du pseudo-code
+
+> TBD von Neumann
 > TBD découpage des objets en mots pour les fonctions (16, 32, 64)
 > TBD mais en interne tout est fait avec NAND
 
-### Problème SAT
-
-> TBD on a vue que les opérations peuvent être mise sous forme logique. C'est aussi vrai pour les structures de contrôle.
-> TBD. Ceci va nous permettre de démontrer le théorème de Levin-Cook.
-> TBD : tout NP c'est SAT
-
-> TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
-> TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonction de clause. et que comme on passe d'un problème à l'autre, on peut le faire puisque nos entrées sont données.
-
-{% aller %}
-[problème SAT](./problème-SAT){.interne}
-{% endaller %}
-
-### Pseudo-assembleur
-
+##### Pseudo-assembleur
 
 > TBD pseudo-code et FB
 > est à l'assembleur ce que le pseudo-code est au code. Un principe.
 
-> modèle de Von Neumann qui est implémenté dans tous les ordinateurs
-
-
-
-
-> fini mais permet de gérer l'infini si on le relance.
+> TBD fini mais permet de gérer l'infini si on le relance.
 
 > TBD compilation il faut des langages
 
@@ -565,13 +557,16 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 > Automates et Turing = réfléchir.
 > TBD ajouter lambda calcul
 
-### Modèle de Von Neumann
+##### Modèle de Von Neumann
 
 > TBD Modèle de Von Neumann
+> modèle de Von Neumann qui est implémenté dans tous les ordinateurs
 > TBD attention bit dans registre et adresses ! <https://azeria-labs.com/arm-data-types-and-registers-part-2/>
 > TBD monter big endian et différence entre mémoire et fonction sur 64 bits.
 > on accede jamais a un bit spécifique
-> 
+>
+> TBD monter que les opérations arithmétique peuvent être faite par morceau (de 64bit)
+
 {% aller %}
 [Exécuter du code](./exécuter-code){.interne}
 {% endaller %}
@@ -580,7 +575,19 @@ Le pseudo-code permet de concevoir des algorithmes pouvant être exécutés au t
 Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut résoudre avec l'un sont également résoluble avec l'autre (et réciproquement). On peut même transcrire en assembleur un programme écrit en pseudo-code de façon automatique (on a évoqué sans rentrer dans les détails les moyens d'y parvenir) il est donc courant d'écrire son code en pseudo-code, facile à lire et à maintenir, puis de laisser un compilateur le transcrire en assembleur pour être exécuté.
 
 > Exécution automatique. Pas par un humain.
->
+
+#### Pseudo-code non déterministe et NP
+
+> TBD le thm de Levin cook démontré
+
+> TBD. Ceci va nous permettre de démontrer le théorème de Levin-Cook.
+> TBD : tout NP c'est SAT
+
+
+{% aller %}
+[problème SAT](./problème-SAT){.interne}
+{% endaller %}
+
 ### Modèle fonctionnel
 
 On a vue qu'un algorithme était un moyen de calculer une fonction. Précisons un peut cela en voyant quelles fonctions on peut effectivement calculer à l'aide d'un pseudo-code.
@@ -691,11 +698,9 @@ Pseudo-code et machine de Turing sont deux notions équivalentes.
 
 {% enddetails %}
 
-### Problèmes de décision
+### Algorithme
 
-
-
-### Algorithme et machine de Turing
+> TBD plein de modèles équivalent : pseudo-code, turing, fonctions, etc.
 
 Toutes les tentatives de généraliser le modèle de la machine de Turing ont été vains. Il semble que ce modèle capte exactement ce qu'est un algorithme. C'est pourquoi les informaticiens sont intimement convaincu que la thèse de Turing-Church est vraie :
 
@@ -747,10 +752,6 @@ Cette preuve permet de montrer que les systèmes suivant sont Turing complet :
 - ...
 
 Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet mais impossible d'être plus !
-
-#### Algorithmes et fonctions
-
-
 
 
 ## <span id="partie-6"></span>Partie VI : aléatoire

@@ -98,7 +98,9 @@ algorithme pgcd_binaire(a: entier, b: entier) → entier:  # a, b ≥ 0
     si a et b sont pairs:
         rendre 2 * pgcd_binaire(a // 2, b // 2)
     si a est impair et b pair:
-        rendre 2 * pgcd_binaire(a, b // 2)
+        rendre pgcd_binaire(a, b // 2)
+    si a est pair et b impair:
+        rendre pgcd_binaire(a // 2, b)
     si a et b sont impairs:
         si a < b:
             a, b ← b, a

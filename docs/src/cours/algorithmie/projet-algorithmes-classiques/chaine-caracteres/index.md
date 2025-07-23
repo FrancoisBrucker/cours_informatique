@@ -45,7 +45,7 @@ La chaîne $S_2$ est un **_sous-mot_** de $S_1$ s'il existe un indice $i$ tel qu
 
 {% endfaire %}
 
-## Permutation circulaire
+## <span id="permutation-circulaire"><\span> Permutation circulaire
 
 Étant donné un tableau de caractères $S$ de longueur $n$ et un entier $k$, le problème est de transformer $S$ par **_permutation circulaire_** en décalant (circulairement) tous les éléments de $S$ de $k$ places. Par exemple, avec $S = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, on obtient $S' = \text{eureLongtempsJeMeSuisCouchéDeBonneH}$.
 

@@ -74,18 +74,24 @@ Nous n'en avons décrit que 3 parmi les 16 possibles car il est possible de tout
 
 <div>
 $$
-x \oplus y = (x \lor y) \land \neg(x \land y)
+x \oplus y = (x \lor y) \land \overline{x \land y}
 $$
 </div>
 
 {% exercice %}
-Démontrez que la formule précédente est bien correcte.
+Démontrez que :
+
+<div>
+$$
+x \oplus y = (x \lor y) \land \overline{x \land y}
+$$
+</div>
 {% endexercice %}
 {% details "corrigé" %}
 On le fait avec une table :
 
 
- x | y | $x \lor y$ | $\neg(x \land y)$ |$x \oplus y$ |
+ x | y | $x \lor y$ | $\overline{x \land y}$ |$x \oplus y$ |
 :-:|:-:|:----------:|:-----------:|:-----------:|
  0 | 0 |    0       |      1      |      0      |
  0 | 1 |    1       |      1      |      1      |
@@ -131,7 +137,7 @@ La fonction $\text{NAND}(x, y)$ est définie telle que :
 
 <div>
 $$
-\text{NAND}(x, y) = \neg(x \land y)
+\text{NAND}(x, y) \coloneqq \overline{x \land y}
 $$
 </div>
 
@@ -145,7 +151,7 @@ Montrer que toute fonction de $\\{0, 1\\}^2 \rightarrow \\{0, 1\\}$ peut s'écri
 {% endexercice %}
 {% details "corrigé" %}
 
-Il suffit de montrer que l'on peut reconstruire $\text{NOT}(x)$, $\text{AND}(x, y)$, $\text{OR}(x, y)$ et $\text{XOR}(x, y)$avec $\text{NAND}(x, y)$ :
+Il suffit de montrer que l'on peut reconstruire $\text{NOT}(x)$, $\text{AND}(x, y)$, $\text{OR}(x, y)$ et $\text{XOR}(x, y)$ avec $\text{NAND}(x, y)$ :
 
 - $\text{NOT}(x) = \text{NAND}(x, x)$
 - $\text{AND}(x, y) = \text{NOT}(\text{NAND}(x, y))$
@@ -153,10 +159,18 @@ Il suffit de montrer que l'on peut reconstruire $\text{NOT}(x)$, $\text{AND}(x, 
 - $\text{XOR}(x, y) = \text{NAND}(\text{NAND}(x, \text{NAND}( x, y )), \text{NAND}(x, \text{NAND}( x, y )))$ :
 
 {% enddetails %}
-{% info %}
-Cela marche aussi avec le [OU exclusif](https://fr.wikipedia.org/wiki/Fonction_OU_exclusif).
-{% endinfo %}
 
+Fun fact, cela fonctionne aussi avec une autre fonction  :
+
+{% exercice %}
+Montrer que l'on peut expliciter la fonction  $\text{NAND}(x, y)$ avec la fonction $\text{NOR}(x, y) \coloneqq \overline{x \lor y}$.
+{% endexercice %}
+{% details "corrigé" %}
+
+- $\text{NOT}(x) = \text{NOR}(x, x)$
+- $\text{NAND}(x, y) = \text{NOT}(\text{NOR}(x, y))$
+
+{% enddetails %}
 
 #### Généralisation
 
@@ -241,7 +255,7 @@ On peut sans perte de généralité supposer qu'[un pseudo-code](../pseudo-code/
 - des tableaux de type `[bit]`{.language-}
 {% endnote %}
 
-Pour un tableau de bit $x$, on appelle $x[0]$ le **_bit de poids faible_** de $x$ et $x[-1]$ le **_bit de poids fort_**. On a coutume de représenter le tableau **de droite à gauche** pour respecter l'ordre de [la représentation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire) d'un nombre. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :
+Pour un tableau de bit $x$, on appelle $x[0]$ le **_bit de poids faible_** de $x$ et $x[-1]$ le **_bit de poids fort_**. Attention, l'ordre de représentation des listes fait croître les indices de gauche à droite, alors que [la représentation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire) va **de droite à gauche**. Par exemple le tableau $x = [1, 1, 1, 0, 0, 1, 1, 0]$ sera représenté par le nombre binaire 01100111, correspondant aux indice allant de droite à gauche :
 
 ```text
 indice : 76543210
@@ -261,6 +275,8 @@ Pour éviter toute confusion entre les entiers on écrira :
 - $0b011 = b11$ pour l'entier 3 écrit en [base 2](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire)
 - $0o744$ pour l'entier 484 écrit en base 8 ([base octale](https://fr.wikipedia.org/wiki/Syst%C3%A8me_octal))
 - $0xBBAADD$ pour l'entier 12298973 écrit en base 16 ([base hexadécimal](https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal))
+- $\mathbb{1}_n$ comme étant un tableau de $n$ bits valant tous 1
+- $\mathbb{0}_n$ comme étant un tableau de $n$ bits valant tous 0
 
 ### Booléen
 
@@ -281,6 +297,13 @@ $$
 
 ### Entiers
 
+Un tableau de bit pourra être interprété de deux façons complémentaires :
+
+- comme un entier naturel, on dira que le tableau/nombre est **_non signé_**
+- comme un entier relatif (positif ou négatif) et on dira que le tableau/nombre est **_signé_**
+
+#### Non signé
+
 On utilise la représentation binaire classique :
 
 {% note "**Définition**" %}
@@ -294,6 +317,7 @@ u([x_0, \dots, x_{n-1}]) = \sum_{i=0}^{n-1}x_i \cdot 2^i
 $$
 </div>
 
+
 On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \mathbin{\small\\%} 2^n$
 {% endnote %}
 
@@ -304,34 +328,168 @@ Ainsi :
 - $u_3^{-1}(10) = [0,1,0]$ (de notation binaire $0b010$)
 - $u_8^{-1}(10) = [0,1,0, 1, 0, 0, 0, 0]$ (de notation binaire $0b00001010$)
 
+{% exercice %}
+En utilisant [l'algorithme du successeur](../projet-algorithmes-classiques/compteur-binaire/){.interne}, créez un algorithme de signature `INC(x: [bit]) → [bit]  # entrée et sortie de même taille` tel que :
 
-Pour gérer les nombres négatifs, on utilise [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) défini telle que :
+<div>
+$$
+u(\text{INC}(x)) = (u(x) + 1) \mathbin{\small\%} 2^n
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme INC(x: [bit]) → [bit]:
+    y ← un tableau de bit de taille x.longueur
+    y[:] ← x[:]
+
+    i ← 0
+    tant que (i < y.longueur) et (y[i] == 1):
+        y[i] ← 0
+        i ← i + 1
+
+    si (i < y.longueur):
+        y[i] ← 1
+    
+    rendre y
+```
+
+{% enddetails %}
+
+#### Opposé
+
+Pour gérer les nombres négatifs, on utilise [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux), qui revient à  travailler modulo $2^n$.
+
+Pour un tableau de bit $x$ on notera :
+
+<div>
+$$
+-x \coloneqq \text{INC}(\overline{x})
+$$
+</div>
+
+On choisit cette notion d'opposé à cause de la relation suivante :
+
+{% note "**Proposition**" %}
+pour tout tableau de bit $x$ de taille $n$ on a : 
+
+<div>
+$$
+u(-x) = 2^n -u(x)
+$$
+</div>
+
+{% endnote  %}
+{% details "preuve", "open"  %}
+On a $u(x) + u(\overline{x}) = u(\mathbb{1}_n) = 2^n-1$, donc $u(\overline{x}) + 1 = 2^n - u(x)$.
+
+Or par définition de l'algorithme $\text{INC}$ on a également $(u(\overline{x}) + 1) = u(\text{INC}(\overline{x})) u(-x)$ ce qui conclut la preuve.
+
+{% enddetails %}
+
+La proposition précédente montre facilement que la définition est cohérente :
+
+{% note "**Proposition**" %}
+pour tout tableau de bit $x$ de taille $n$ on a :
+
+<div>
+$$
+-(-x) = x
+$$
+</div>
+
+{% endnote  %}
+{% details "preuve", "open"  %}
+
+On a $u(-(-x)) = 2^n -u(-x) = 2^n -(2^n -u(x)) = u(x)$. Comme $u$ est une bijection on a bien que $-(-x) = x$.
+{% enddetails %}
+
+On peut aussi lier l'opposé à $u_n^{-1}$ :
+
+{% exercice %}
+Montrez que pour tout $x \in [-2^{n-1}\mathrel{\{.\}\\,\{.\}} 2^{n-1}-1]$, on a :
+
+<div>
+$$
+u^{-1}_n(2^n + x) =-u^{-1}_n(2^n -x)
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Comme $u(-x) = -u(x) \mathbin{\small\\%} 2^n$, on a $u^{-1}(x) = -u^{-1}(2^n -x)$. De là :
+
+- si $x\geq 0$ on a $u^{-1}_n(2^n + x) = u^{-1}(x) = -u^{-1}(2^n -x)$
+- si $x < 0$ on a $u^{-1}_n(2^n + x) = -u^{-1}(-x) = -u_n^{-1}(2^n-x)$
+
+{% enddetails %}
+
+Enfin, tout ceci se calcule très vite :
+
+{% attention "**À retenir**" %}
+Calculer l'opposé d'un tableau de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
+{% endattention %}
+
+#### Signé
+
+On a tout en notre possession pour associer des entiers relatifs aux tableaux de bit :
 
 {% note "**Définition**" %}
 
-On note $i^{-1}_n: [-2^{n-1}\mathrel{\{.\}\\,\{.\}} 2^{n-1}-1] \rightarrow \\{0, 1\\}^n$ la bijection telle que :
+On note $i_n: \\{0, 1\\}^n \rightarrow  [-2^{n-1}\mathrel{\{.\}\\,\{.\}} 2^{n-1}-1]$ la bijection telle que :
 
 
 <div>
 $$
-i^{-1}_n(x) = 
+i_n(x) = 
 \begin{cases}
-u^{-1}_n(x)\text{ si } x \geq 0\\
-u^{-1}_n(2^n + x)\text{ si } x < 0\\
+u_{n-1}(x)\text{ si } x[-1] == 0\\
+-u_{n-1}(-x) \text{ si } x[-1] == 1\\
 \end{cases}
 $$
 </div>
 
 {% endnote %}
 
-On verra l'intérêt du complément à deux lorsque l'on donnera les algorithmes d'arithmétique sur les [bit], pour l'instant retenez que cette notation dépend du nombre de bits de la représentation de l'entier. Ainsi :
+Il est clair que $i_n$ est une bijection puisque $u_{n-1}$ en est une de $\\{0, 1\\}^{n-1}$ dans $[0 \mathrel{\{.\}\\,\{.\}} 2^{n-1}-1]$. Le bit de poids fort des tableaux de bits est appelé **_bit de signe_** car $i_n(x) < 0$ s'il vaut 1. Elle est de plus compatible avec notre négation :
+
+{% note "**Proposition**" %}
+
+Pour tout tableau de bit $x$ de taille $n$ on a $i_n(-x) = -i_n(x)$.
+
+{% endnote %}
+{% details "preuve", "open"  %}
+
+- si $x[-1] == 0$, $i_n(-x) = -u_{n-1}(-(-x)) = -u_{n-1}(x) = -i_n(x)$
+- si $x[-1] == 1$, $i_n(-x) = u_{n-1}(-x) = -i_n(x)$
+
+{% enddetails %}
+
+
+Il est crucial de retenir que cette notation dépend du nombre de bits de la représentation de l'entier. Ainsi :
 
 - $i^{-1}_2(1) = [1, 0]$ (de représentation binaire $0b01$)
 - $i^{-1}_4(1) = [1, 0, 0, 0]$ (de représentation binaire $0b0001$)
 - $i^{-1}_2(-1) = [1, 1]$
 - $i^{-1}_4(-1) = [1, 1, 1, 1]$
 
-Remarquez qu'un même tableau de bit dont le bit de poids fort vaut 1 peut être vu comme un entier positif ou négatif.
+Remarquez deux choses :
+
+- Un même tableau de bit dont le bit de poids fort vaut 1 peut être vu comme un entier positif ou négatif
+- il ne suffit pas de changer le bit de signe pour avoir l'opposé d'un nombre.
+
+{% note "**Définition**" %}
+
+Un tableau de bit considéré comme :
+- un entier positif est dit **_non signé_**
+- un entier relatif est dit **_signé_**
+
+Le bit de poids fort d'un tableau signé est appelé **_bit de signe_** (il ne vaut `1` `que si l'entier représenté est négatif).
+{% endnote %}
+
 
 ### Réels
 
@@ -365,41 +523,203 @@ Cette partie montre que toutes les opérations nécessaires pour faire un pseudo
 
 > TBD rappeler ce que doit savoir faire un pseudo-code
 
+### Décalage de bits
+
+Quelques opérations utiles lorsque l'on manipule des tableaux de bits comme des entiers non signés.
+
+#### Concaténation
+
+On utilise la concaténation lorsque l'on veut écrire des entiers plus gros. On utilise un opérateur particulier car ce n'est pas la concaténation de listes habituelle. En effet si on veut concaténer le nombre $x = 0b110$ avec le nombre $y = 0b001$ pour former le nombre $x || y = 0b11001$, on ne peut pas juste concaténer le tableau $X = [0, 1, 1]$ qui représente $x$ au tableau $Y = [1, 0, 0]$ qui représente $y$, il faut faire le contraire ($Y + X$). Explicitons le :
+
+```pseudocode
+algorithme CONCAT(x: [bit], y: [bit])  → [bit]:
+    z ← un tableau de bit de taille x.longueur + y.longueur
+
+    pour chaque i de [0 .. y.longueur[:
+        z[i] ← y[i]
+    
+    pour chaque i de [0 .. x.longueur[:
+        z[i + y.longueur] ← x[i]
+    
+    rendre z
+```
+
+La **concaténation** des $n$ bits de $x$ aux $n'$ bits de $y$.
+
+<div>
+$$
+x || y \coloneqq \text{CONCAT}(x, y)
+$$
+</div>
+
+#### Shift
+
+On décale les bits vers la gauche ou la droite selon la représentation binaire sans changer le nombre total de bit (les bit qui arrivent sont à 0) :
+
+- $x << k$ : ***shift*** de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)
+- $x >> k$ : ***shift*** de $k$ bit vers la droite. Les $k$ bits de poids forts sont des $0$ (identique à une division entière par $2^k$)
+
+Ainsi : $0b1101 << 3 = 0b1000$ et $0b1101 >> 2 = 0b0011$
+
+Formellement :
+
+<div>
+$$
+\begin{array}{lcl}
+x << k &\coloneqq &\text{LSHIFT}(x, k)\\
+x >> k &\coloneqq &\text{RSHIFT}(x, k)
+\end{array}
+$$
+</div>
+
+Avec :
+
+```pseudocode
+algorithme LSHIFT(x: [bit], k: entier)  → [bit]:
+    z ← un tableau de bit de taille x.longueur
+
+    z[:k] ← 0
+    pour chaque i de [k .. x.longueur - k[:
+        z[i] ← x[i - k]
+    
+    rendre z
+
+algorithme RSHIFT(x: [bit], k: entier)  → [bit]:
+    z ← un tableau de bit de taille x.longueur
+
+    z[-k:] ← 0
+    pour chaque i de [0 .. k[:
+        z[i] ← x[i + k]
+    
+    rendre z
+```
+
+Notez que nous nous sommes autorisé l'abus de notation en utilisant des paramètres entiers. En toute logique l'algorithme `LSHIFT`{.language-} devrait être :
+
+```pseudocode
+algorithme LSHIFT(x: [bit], k: [bit])  → [bit]:
+    z ← un tableau de bit de taille x.longueur
+
+    z[:u(k)] ← 0
+    pour chaque i de [u(k) .. x.longueur - k[:
+        z[i] ← x[i - u(k)]
+    
+    rendre z
+```
+
+Cela alourdi cependant les notations sans gain de généralité.
+
+#### rotation
+
+- $x <<< k$  : ***rotation*** de $k$ bit vers la gauche.
+- $x >>> k$  : ***rotation*** de $k$ bit vers la droite.
+
+Ainsi : $0b1101 <<< 3 = 0b1110$ et $0b1101 >>> 2 = 0b0111$
+
+Formellement :
+
+<div>
+$$
+\begin{array}{lcl}
+x << k &\coloneqq &\text{LROT}(x, k)\\
+x >> k &\coloneqq &\text{RROT}(x, k)
+\end{array}
+$$
+</div>
+
+{% exercice %}
+Donnez un algorithme linéaire pour calculer la rotation. Il devra être de signature : `LROT(x: [bit], k: entier)  → [bit]`{.language-}
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD simple.
+
+On aurait aussi pu utiliser [l'exercice sur les permutations circulaires](../projet-algorithmes-classiques/chaine-caracteres/#permutation-circulaire){.interne} si on avait voulu faire un algorithme in place
+{% enddetails  %}
+
 ### Logiques
 
 Les opérations logiques définies précédemment s'étendent naturellement aux données sous la forme de tableaux de bits. 
 
-Il suffit de montrer la fonction `NAND` $\overline{x \land y}$ :
+Il suffit de montrer la fonction `NAND` :
 
 ```pseudocode
 algorithme NAND(x: [bit], y: [bit]) → [bit]      # les 3 tableaux sont de taille n
     z ← tableau de bit de taille x.longueur
 
     pour chaque i de [0 .. x.longueur[:
-        si (x[i] == 1) ET (y[i] == 1):
-            z[i] ← 0
-        sinon
-            z[i] ← 1
+        z[i] ← NAND(x[i], y[i])
     rendre z
 ```
 
-Remarquez que cette fonction n'est pas une fonction booléenne vectorielle : ses entrées ne sont pas de taille fixe.
+Puis de mimer ce que l'on a fait avec les fonction sur 1 bit, par exemple `NOT(x: [bit]) → [bit] := NAND(x, x)`{.language-}. Remarquez que cette fonction n'est **pas** une fonction booléenne vectorielle, mais bien un algorithme : ses entrées ne sont pas de taille fixe.
 
 {% exercice %}
-Écrivez un algorithme linéaire permettant de réaliser l'opération NOT sur un tableau de bit de taille quelconque.
+Écrivez un algorithme linéaire permettant de réaliser l'opération OR sur un tableau de bit de taille quelconque. Il sera de signature : `OR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille`{.language-}
 {% endexercice %}
 {% details "corrigé" %}
 
-On peut utiliser `NAND` puisque $\neg x = \overline{x \land x}$ :
+On peut utiliser `NAND` puisque $\overline{x} = \overline{x \land x}$ :
 
 ```pseudocode
-algorithme NOT(x: [bit]) → [bit]      # les 3 tableaux sont de taille n
-    z ← tableau de bit de taille x.longueur
-
-    rendre NAND(x, x)
+OR(x: [bit], y: [bit]) → [bit] := NAND(NOT(x), NOT(y))
 ```
 
 {% enddetails %}
+
+En définissant de même les algorithmes : 
+
+- `AND(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille`{.language-}
+- `OR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille`{.language-}
+- `XOR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille`{.language-}
+
+On peut définir les opérations linéaires **pour des tableaux de même taille** :
+
+<div>
+$$
+\begin{array}{lcl}
+\overline{x} &\coloneqq& \text{NOT}(x, x)\\
+x \land y &\coloneqq& \text{AND}(x, y)\\
+x \lor y  &\coloneqq& \text{OR}(x, x)\\
+x \oplus y  &\coloneqq& \text{XOR}(x, x)\\
+\end{array}
+$$
+</div>
+
+Qui permettent de travailler sur des tableaux de bits. On va voir que ces fonctions suffisent à décrire tous les pseudo-codes.
+
+### Tests
+
+```pseudocode
+algorithme ZERO(x: [bit]) → bit
+    pour chaque i de [0 .. x.longueur[:
+        si AND(x[i], 1):  # x[i] == 1
+            rendre 0
+    
+    rendre 1
+
+algorithme GRAND(x: [bit], y: [bit])  # même taille
+                → bit
+    pour chaque i de [1 .. x.longueur]:
+        si XOR(x[-i], y[-i]):  # x[i] != y[i]
+            rendre x[-i]
+    
+    rendre 0
+
+```
+
+<div>
+$$
+\begin{array}{lcl}
+x \neq 0 &\coloneqq& \text{ZERO}(x)\\
+x == y &\coloneqq& \text{ZERO}(x - y)\\
+x > y &\coloneqq& \text{GRAND}(x, y)\
+x < y &\coloneqq& y < x\\
+x \leq y &\coloneqq& (x == y) \lor (x < y)\\
+x \geq y &\coloneqq& (y \leq x)\\
+\end{array}
+$$
+</div>
 
 ### Arithmétique
 
@@ -425,39 +745,126 @@ Attention à la retenue :
  1000000
 ```
 
-L'algorithme est alors le suivant (on en a déjà vu une version lorsque l'[on a étudié les problèmes NP](../problèmes-NP/#algorithme-somme_binaire), ici on va le considéré modulo la taille des entrées) c'est à dire que l'addition de $0b100101$ et $0b011011$ donnera : $0b000000$ :
+L'algorithme est alors le suivant (on en a déjà vu une version lorsque l'[on a étudié les problèmes NP](../problèmes-NP/#algorithme-somme_binaire), ici on va le considéré modulo la taille des entrées) c'est à dire que l'addition de $0b100101$ et $0b011011$ donnera : $0b000000$. On utilise aussi les fonctions booléennes à 1 bit définies précédemment pour un résultat compact :
 
 ```pseudocode
 algorithme somme(x: [bit], y: [bit])  # on suppose x et y de taille n
                  → [bit]  # de taille n
     
-    z ← un tableau de taille x.longueur + 1 bits
+    z ← tableau de bit de taille x.longueur
     r ← 0
 
     pour chaque i de [0 .. x.longueur[:
-        somme[i]  ← XOR(XOR(r, x[i]), y[i])
-        r ← OR(AND(r, x[i]), AND(OR(r, x[i])), y[i])
-    rendre somme
+        z[i]  ← XOR(XOR(r, x[i]), y[i])
+        r ← OR(AND(r, x[i]), 
+               AND(OR(r, x[i]), 
+                   y[i]))
+    rendre z
 ```
 
 Sa complexité est bien linéaire puisque les fonction utilisées sont toutes de complexité $\mathcal{O}(1)$.
 
-#### Opposé
+Terminons cette partie en montrant que l'on peut récrire cet algorithme uniquement avec des fonctions `NAND` sans changer sa complexité. Pour cela commençons par ne mettre qu'une seule instruction par ligne :
 
-{% lien %}
-[complément à 2](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
-{% endlien %}
+```pseudocode
+algorithme somme'(x: [bit], y: [bit])  # on suppose x et y de taille n
+                 → [bit]  # de taille n
+    
+    z ← tableau de bit de taille x.longueur
+    r ← 0
 
-Code sur les n-1 premiers bit, le dernier est laissé pour la gestion du signe.
+    pour chaque i de [0 .. x.longueur[:
+        a ← r
+        b ← x[i]
+        c ← XOR(a, b)
+        
+        a ← c
+        b ← x[i]
+        c ← XOR(a, b)
+        
+        z[i]  ← c
+
+        a ← r
+        b ← x[i]
+        c ← OR(a, b)
+        
+        a ← c
+        b ← y[i]
+        c ← AND(a, b)
+
+        a ← r
+        b ← b[i]
+        d ← AND(a, b)
+
+        a ← c
+        b ← d
+        c ← OR(a, b)
+
+        r  ← c
+
+    rendre z
+```
+
+Puis à remplacer les fonctions logiques par leur pendant avec `NAND` pour définir notre algorithme `PLUS`{.language-}:
+
+```pseudocode
+algorithme PLUS(x: [bit], y: [bit])  # on suppose x et y de taille n
+                → [bit]  # de taille n
+    
+    z ← tableau de bit de taille x.longueur
+    r ← 0
+
+    pour chaque i de [0 .. x.longueur[:
+        a ← r
+        b ← x[i]
+        c ← NAND(NAND(a, NAND(a, b)), NAND(a, NAND(a, b)))
+        
+        a ← c
+        b ← x[i]
+        c ← NAND(NAND(a, NAND(a, b)), NAND(a, NAND(a, b)))
+        
+        z[i]  ← c
+
+        a ← r
+        b ← x[i]
+        c ← NAND(NAND(a, a), NAND(b, b))
+        
+        a ← c
+        b ← y[i]
+        c ← NAND(NAND(a, b), NAND(a, b))
+
+        a ← r
+        b ← b[i]
+        d ← NAND(NAND(a, b), NAND(a, b))
+
+        a ← c
+        b ← d
+        c ← NAND(NAND(a, a), NAND(b, b))
+
+        r  ← c
+
+    rendre z
+```
+
+{% attention "**À retenir**" %}
+Calculer la somme de deux tableaux de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
+{% endattention %}
+
+On peut définir les opérations linéaires **pour des tableaux de même taille** :
 
 <div>
 $$
--x \coloneqq \bar{x} + 0b1
+x + y \coloneqq \text{PLUS}(x, y)\\
 $$
 </div>
 
+Cette addition fonctionne pour 2 (tableaux représentant des) entiers non signés.
+
+
+
 #### Soustraction
 
+L'utilisation du complément à deux permet 
 somme de deux entiers signés
 
 <div>
@@ -466,28 +873,74 @@ x-y \coloneqq x + (-y)
 $$
 </div>
 
+Cette définition est cohérente puisque $(x + 2^n - y) \mathbin{\small\\%} 2^n = x -  y \mathbin{\small\\%} 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale [si l'on utilise uniquement un bit de signe](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve).
+
+{% attention "**À retenir**" %}
+Calculer la soustraction de deux tableaux de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
+{% endattention %}
+
 #### Multiplication
 
 On utilise la [multiplication posée](https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication). Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.
-
-La complexité de l'algorithme est en $\mathcal(O)(n^2)$.
 
 ```
        100101
      * 001011
     ---------
-       100101
-      100101
-     000000   
-    100101
-   000000
-+ 000000 
+       100101  = 100101 * 1
+      100101   = 100101 * 1
+     000000    = 100101 * 0
+    100101     = 100101 * 1    
+   000000      = 100101 * 0      
++ 000000       = 100101 * 0
 ------------
   00110010111
 ```
 
 On trouve que $0b100101 \cdot 0b1011 = 0b110010111$ ($37 \cot 11 = 407$).
 
+Tout comme pour l'addition, nous allons donner ici une version modulo $2^n$ (sans perte de généralité, il suffit d'ajouter des 0 au tableau de bit) :
+
+
+```
+    100101
+ *  001011
+---------
+    100101
+    00101
+    0000   
+    101
+    00
++   0 
+--------
+    10111
+```
+
+On obtient l'algorithme suivant :
+
+```pseudocode
+algorithme FOIS(x: [bit], y: [bit])  # on suppose x et y de taille n
+                → [bit]  # de taille n
+    
+    z ← tableau de bit de taille x.longueur
+    z[:] ← 0
+
+    pour chaque k de [0 .. x.longueur[:
+        r ← 0
+        pour chaque i de [k .. x.longueur[:
+            a ← AND(y[k], x[i])
+            z[i]  ← XOR(XOR(r, a), z[i])
+            r ← OR(AND(r,a), 
+                   AND(OR(r, a), 
+                          z[i]))
+    rendre z
+```
+
+La complexité de l'algorithme est en $\mathcal(O)(n^2)$ et on a :
+
+{% attention "**À retenir**" %}
+Calculer le produit de deux tableaux de bit se fait en temps quadratique uniquement avec deux boucles `pour chaque`{.language-} et la fonction booléenne sur 1 bit `NAND`.
+{% endattention %}
 {% info %}
 Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.
 {% endinfo %}
@@ -499,7 +952,7 @@ On utilise la [division posée](https://fr.wikipedia.org/wiki/Division_pos%C3%A9
 La complexité de l'algorithme est en $\mathcal(O)(n^2)$.
 
 ```
-  100101 | 1011
+  100101 | 001011
   -------|-----  
          | 000011
   1      | ^  
@@ -520,79 +973,119 @@ On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mathbin{\small\\%} 0b10
 
 $37 / 11 = 3$ et $37 \mathbin{\small\\%} 11 = 4$
 
+Ci après une version non signée :
+
+```pseudocode
+
+algorithme FOIS(x: [bit], y: [bit])  # on suppose x et y de taille n
+                → ([bit], [bit])  # de taille n
+
+    q ← tableau de bit de taille x.longueur
+    q[:] ← 0
+
+    r ← tableau de bit de taille x.longueur
+    r[:] ← 0
+
+    pour chaque k de [1 .. x.longueur]:
+            q ← q << 1
+            q[0] ← x[-k]
+
+            r ← r << 1
+            si u(q) ≥ u(y):
+                q ← q - y
+                r[0] ← 1
+            sinon:
+                r[0] ← 0
+
+    rendre (q, r)
+```
+
+{% attention "**À retenir**" %}
+Calculer la division euclidienne de deux tableaux de bit se fait en temps quadratique uniquement avec deux boucles `pour chaque`{.language-} (il y a une soustraction et un test pour chaque itération de la boucle) et la fonction booléenne sur 1 bit `NAND`.
+{% endattention %}
+
+
 #### pgcd
 
-> TBD voir si on ne l'a pas déjà quelque part ?
-
-Le calcul du pgcd (*GCD* en anglais) peut être fait en utilisant l'algorithme d'Euclide (on y reviendra pour sa version étendue), mais pour des nombres binaires, il est plus simple d'utiliser un algorithme chinois datant de la même époque qu'Euclide : le [*binary GCD*](https://en.algorithmica.org/hpc/algorithms/gcd/#binary-gcd).
-
-L'algorithme fonctionne récursivement en utilisant les propriétés suivantes :
-
-{% note %}
-Pour deux nombre entiers positifs :
-
-1. $\text{pgcd}(a, 0) = a$
-2. si $a$ et $b$ sont pairs, alors $\text{pgcd}(a, b) = 2\cdot \text{pgcd}(a/2, b/2)$
-3. si $a$ est pair et $b$ impair, alors $\text{pgcd}(a, b) = \text{pgcd}(a/2, b)$
-4. si $a$ et $b$ sont impairs, alors $\text{pgcd}(a, b) = \text{pgcd}(\vert a-b\vert , \min(a, b))$
-{% endnote %}
-{% details "preuve" %}
-
-clair.
-
-{% enddetails %}
-
-Cet algorithme est très efficace pour les nombres binaires puisque la division par deux est un shift de 1 bit vers la droite. De plus l'analyse de sa complexité est identique à même de l'[exponentiation indienne](/cours/algorithme-code-théorie/algorithme/étude-exponentiaion#algo-rapide), ce qui mène à une complexité de $\mathcal{O}(n^2)$ car le shift n'est pas une opération binaire si $n$ est grand.
-
-{% info %}
-Pour une étude étendu de l'algorithme d'Euclide, Voir Knuth tome 2 (*Art of computer Programming*, tome 2)
-{% endinfo %}
-
-### Tests
-
-> TBD ==, <, >,
-
-
-### Utilitaires
-
-> TBD non nul.
-
-#### Décalages de bits
-
-> TBD écrire avec des tableaux de bits et des ==
-
-On utilise deux direction de décalage (gauche et droite) et deux types de décalage selon que les bit poussés à l'extérieur sont réinjectés de l'autre côté ou disparaissent (les bit qui arrivent sont à 0).
-
-- $x << k$ : ***shift*** de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)
-- $x >> k$ : ***shift*** de $k$ bit vers la droite. Les $k$ bits de poids forts sont des $0$ (identique à une division par $2^k$)
-- $x <<< k$  : ***rotation*** de $k$ bit vers la gauche.
-- $x >>> k$  : ***rotation*** de $k$ bit vers la droite.
-
-
-Ces algorithmes sont simples à réaliser. Pour s'en convaincre, il suffit d'en créer un des 4 :
+[On a déjà vu cet algorithme](../projet-algorithmes-classiques/pgcd/#algorithme-pgcd-binaire){.language-}, mais de façon récursive.
 
 {% exercice %}
-Écrivez un algorithme linéaire permettant de réaliser $x <<< k$.
+Écrivez l'algorithme du pgcd binaire de façon itérative. Il devra être de signature : `PGCD(x: [bit], y: [bit]) → [bit]  # de même taille`{.language-}.
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+Remarquez que diviser par 2 est égal à un shift de 1 vers la droite.
+```pseudocode
+
+algorithme PGCD(x: [bit], y: [bit])  # x et y de taille n
+                → [bit]  # de taille n
+
+    p tableau de bit de taille x.longueur
+    p[:] ← 0
+    p[0] ← 1
+    tant que y ≠ 0:
+        si AND(x[0], y[0]):             # x et y sont pairs
+            x ← x >> 1
+            y ← y >> 1
+            p ← p << 1
+        sinon si AND(NOT(x[0]), y[0]):  # x impair et y pair
+            y ← y >> 1
+        sinon si AND(x[0], NOT(y[0])):  # x pair et y impair
+            x ← x >> 1
+        sinon:                          # x et y sont impairs
+            si x < y:
+                x, y ← y, x
+            x ← x - y
+    rendre x * p
+```
 
 {% enddetails %}
 
 
-#### Concaténation
+Cet algorithme est très efficace pour les nombres binaires puisque la division par deux est un shift de 1 bit vers la droite :
 
-$ x || y$ est la concaténation des $n$ bits de $x$ aux $n'$ bits de $y$.
+{% attention "**À retenir**" %}
+Calculer le pgcd de deux tableaux de bit se fait en temps quadratique.
+{% endattention %}
 
 ## Pseudo-code
 
 Ceci nous permettra _in fine_ de redéfinir la notion de pseudo-code avec des objets et et des opérations bien plus simple sans perte de généralité.
 
-> TBD pseudo-code = FB et structures de contrôles. et se généralise à NAND et structure de contrôle.
-> 
-> TBD pseudo-code = FB et structures de contrôles. et se généralise à NAND et structure de contrôle.
-> Voir comment les structures de contrôles s'écrive comme test et saut.
-> 
-> TBD donner def. Uniquement manipulation d'un bit et variables = tableau de bit.
-> TBD complexité 
+### Variables interne binaires
+
+Si données sont toutes des tableaux de bits, nos algorithmes utilisent encore des entiers pour les variables internes des boucles `pour chaque`{.language-}. C'est un abus de notation est on peut tout à fait s'en passer, considérer par exemple l'algorithme `NAND`{.language-} suivant :
+
+```pseudocode
+algorithme NAND(x: [bit], y: [bit]) → [bit]      # les 3 tableaux sont de taille n
+    z ← tableau de bit de taille x.longueur
+
+    i ← tableau de bit de taille log(x.longueur)  # la même taille que pour stocker l'entier x.longueur
+    i[:] ← 0
+    tant que i ≠ x.longueur:
+        z[i] ← NAND(x[i], y[i])
+        i ← i + 1
+    rendre z
+```
+
+La différence est que l'on utilise maintenant les opérations que l'on a défini pour les tableaux de bit ! Il n'y a plus d'entier, même dans les variables internes.
+
+
+{% note "**Proposition**" %}
+Un pseudo-code utilisant uniquement des variables de type bit ou [bit] a la même expressivité que le pseudo-code utilisant [les types basiques](../pseudo-code/briques-de-base/#objets-basiquess){.interne}.
+{% endnote %}
+
+### Opérations autorisées
+
+On voit que [toutes les opérations autorisées pour un pseudo-code](../pseudo-code/briques-de-base/#objets-basiquess){.interne} peuvent être créées uniquement avec des fonctions booléennes vectorielles et des instructions de contrôles (test et boucles). On peut même se restreindre à l'opération logique `NAND`{.language-} :
+
+{% note "**Proposition**" %}
+Un pseudo-code utilisant uniquement :
+
+- l'opération logique `NAND`{.language-}
+- des affectations de cases de tableaux
+- des boucles `tant que x: <bloc>`{.language-} avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.
+- des instructions conditionnelles de la forme `si x: <bloc>`{.language-} avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.
+ 
+A la même expressivité que [le pseudo-code classique](../pseudo-code/){.interne}.
+{% endnote %}
