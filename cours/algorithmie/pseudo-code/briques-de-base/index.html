@@ -100,15 +100,15 @@
 <p>Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.</p>
 <h2>Objets et instructions</h2>
 <h3><span id="objets-basiques"></span> Objets basiques</h3>
-<p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et sont au nombre de six :</p>
+<p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et correspondent aux cinq <strong><em>types</em></strong> suivant :</p>
 <ul>
-<li>le vide : <code class="language-">∅</code> (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C)</li>
-<li>les booléens : <code class="language-">vrai</code> et <code class="language-">faux</code></li>
-<li>les bits : <code class="language-">0</code> et <code class="language-">1</code></li>
-<li>les nombres entiers</li>
-<li>les nombres réels</li>
-<li>les caractères : <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;b&quot;</code>, ...</li>
+<li>le type <code class="language-">booléen</code> qui contient deux objets : <code class="language-">vrai</code> et <code class="language-">faux</code></li>
+<li>le type <code class="language-">bit</code> qui contient les 2 objets : <code class="language-">0</code> et <code class="language-">1</code></li>
+<li>le type <code class="language-">entier</code> qui contient tous les entiers relatifs</li>
+<li>le type <code class="language-">réel</code> qui contient un ensemble dénombrable d'approximation de réels</li>
+<li>le type <code class="language-">caractère</code> qui contient l'ensemble des glyphes  UNICODE : <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;b&quot;</code>, ...</li>
 </ul>
+<p>Enfin on considérera le type vide <code class="language-">∅</code> (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C) qui ne contient aucun objet.</p>
 <p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est une liste de caractères, etc).</p>
 <p>Notez que tous les objets basiques à part les entiers sont de taille fixe :</p>
 <ul>
@@ -188,7 +188,7 @@ b <span class="token operator">←</span> a</code></pre>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong><em>tableau</em></strong> est un conteneur nommé pouvant contenir $n$ variables. $n$ est la <strong><em>longueur</em></strong> ou la <strong><em>taille</em></strong> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée. Chaque variable du tableau peut être accédée via son <strong><em>indice</em></strong>, qui est un entier entre $0$ et $n-1$.</p>
+<p>Un <strong><em>tableau</em></strong> est un conteneur nommé pouvant contenir $n$ variables <strong>de même type</strong>. $n$ est la <strong><em>longueur</em></strong> ou la <strong><em>taille</em></strong> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée. Chaque variable du tableau peut être accédée via son <strong><em>indice</em></strong>, qui est un entier entre $0$ et $n-1$.</p>
 <p>Si le tableau est nommé $t$ :</p>
 <ul>
 <li>$t.\mbox{longueur}$ sera égal à sa taille.</li>
@@ -197,39 +197,11 @@ b <span class="token operator">←</span> a</code></pre>
 </ul>
 </div></div>
 
-<p>Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On considérera toujours que la taille d'un tableau est proportionnelle à la taille des objets qui la compose et est connue à sa création.</p>
-</div></div>
-
-<p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.</p>
-<p>On considérera que :</p>
+<p>Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée, on considère que :</p>
 <ul>
-<li>la création d'un tableau prend 1 instruction
-<ul>
-<li>l'instruction <code class="language-">[1, 3, x]</code> crée un tableau qui affecte à sa variable :
-<ul>
-<li>d'indice 0 un entier valant 1</li>
-<li>d'indice 1 un entier valant 3</li>
-<li>d'indice 2 l'objet associé à la variable <code class="language-">x</code></li>
-</ul>
-</li>
-<li>l'instruction <code class="language-">crée un tableau de longueur k</code> crée un tableau de longueur k.
-<ul>
-<li><strong>Attention</strong> : la valeur de chaque case est <strong>indéterminée !</strong></li>
-<li>lorsque l'on crée des tableau de cette façon, il est <strong>indispensable</strong> d'initialiser les valeurs de chaque case avant de les utiliser.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>l'affectation d'un tableau à une variable prend 1 instruction : <code class="language-">t ← [1, 3, x]</code> prend 2 instructions une pour la création et une pour l'affectation</li>
-<li>l’accès à un élément particulier du tableau se fait en 1 instruction et en utilisant les crochets : <code class="language-">t[2]</code> vaut le caractère <code class="language-">&quot;l&quot;</code></li>
+<li>la taille en mémoire d'un tableau est proportionnelle à la taille d'un objet fois la taille.</li>
+<li>il faut 1 instruction pour créer un tableau</li>
+<li>il faut 1 instruction pour accéder à une variable d'indice donné.</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -239,7 +211,27 @@ b <span class="token operator">←</span> a</code></pre>
 <p>On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie" class="interne">On justifiera ceci proprement plus tard</a>.</p>
 </div></div>
 
-<p>Les opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :</p>
+<p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui peut être directe :</p>
+<ul>
+<li><code class="language-">t ← [1, 3, 2]</code> qui crée un tableau de 3 entiers</li>
+<li><code class="language-">t ← tableau de 23 caractères</code> qui crée un tableau de 23 caractères</li>
+</ul>
+<p>On considère que la création d'un tableau prendra toujours 1 instruction, puis on affecte les variables. La première affectation est donc un raccourci pour 4 instructions :</p>
+<ol>
+<li>la création d'un tableau de longueur 3</li>
+<li>l'affectation <code class="language-">t[0] ← 1</code></li>
+<li>l'affectation <code class="language-">t[1] ← 3</code></li>
+<li>l'affectation <code class="language-">t[2] ← 2</code></li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une fois le tableau crée, la valeur de chaque case est <strong>indéterminée !</strong>. Il est <strong>indispensable</strong> d'initialiser les valeurs de chaque case avant de les utiliser.</p>
+</div></div>
+
+<p>Toutes les autres opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -250,6 +242,7 @@ b <span class="token operator">←</span> a</code></pre>
 <p>Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.</p>
 </div></div>
 
+<p>Le type d'un tableau sera de la forme <code class="language-">[T]</code> et signifiera que le tableau contient des objets de type <code class="language-">T</code>. Un tableau de type <code class="language-">[entier]</code> contiendra des entiers.</p>
 <h3>Tranches</h3>
 <p>On utilisera parfois, comme en python par exemple des sous tableaux via des <strong><em>tranches</em></strong> (<strong><em>slices</em></strong> en anglais) :</p>
 <ul>
@@ -288,6 +281,12 @@ b <span class="token operator">←</span> a</code></pre>
 <p>Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).</p>
 </div></div>
 
+<p>La chaîne de caractère étant très utilisée, on se permettra les abus suivant :</p>
+<ul>
+<li>de définir une chaîne directement <code class="language-">s ← &quot;Salut&quot;</code></li>
+<li>d'utiliser le type <code class="language-">chaîne</code> plutôt que <code class="language-">[caractère]</code> (les 2 sont synonymes)</li>
+</ul>
+<p>Ainsi, un tableau de chaînes sera de type <code class="language-">[chaîne]</code> qui est égal à <code class="language-">[[caractère]]</code> (un tableau de tableaux de caractères).</p>
 <h2><span id="instruction-contrôle"></span> Instructions de contrôle</h2>
 <p>Si un des deux buts d'une instruction est de créer des objets à partir d'autres (ce que l'on vient de voir), le second but est de contrôler le flux d'instructions à exécuter. Ces instructions sont de deux types :</p>
 <ul>

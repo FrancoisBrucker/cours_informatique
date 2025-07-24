@@ -97,21 +97,11 @@
   
 
   <blockquote>
-<p>TBD tout algo est un sat.
-TBD on a vue que les opérations peuvent être mise sous forme logique. C'est aussi vrai pour les structures de contrôle.
-TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
-TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonction de clause. et que comme on passe d'un problème à l'autre, on peut le faire puisque nos entrées sont données.</p>
+<p>TBD rappeler la def de la partie NP</p>
 </blockquote>
-<blockquote>
-<p>TBD dire taille des variables dépendant de la taille des entrées. Au pire = complexité. Ne change pas si dans P.</p>
-</blockquote>
-<blockquote>
-<p>TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.</p>
-</blockquote>
-<p>Nous allons intensivement utiliser la réduction pour classer les problèmes algorithmiques, et en particulier les réduction depuis <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_SAT">le problème SAT</a>.</p>
-<p>Nous avons entraperçu le problème lorsque nous avons parlé de <a href="../ex%C3%A9cuter-code/pseudo-assembleur#clauses">pseudo-assembleur</a> et que tout les fonctions de $\{0, 1\}^n$ dans $\{0, 1\}$ peuvent s'écrire comme conjonction de clauses :</p>
-<p>Pour cela, commençons par définir un concept fondamental en logique la <em><strong>conjonction de clauses</strong></em> :</p>
-<div id="clauses"></div>
+<p>Le problème SAT cherche à vérifier si une formule logique peut-être satisfaite.</p>
+<p>Pour cela, commençons par définir un concept fondamental en logique la <strong><em>conjonction de clauses</em></strong> :</p>
+<div id="définition-clauses"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -119,7 +109,7 @@ TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonctio
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soient $x_1, \dots, x_n$, $n$ variables binaires. On définit :</p>
+<p>Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :</p>
 <ul>
 <li>un <strong><em>littéral</em></strong> $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$</li>
 <li>une <strong><em>clause</em></strong> comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)</li>
@@ -127,34 +117,38 @@ TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonctio
 </ul>
 </div></div>
 
+<p>Le problème <code>SAT</code> cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite <strong><em>satisfiable</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
+<p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">nom: SAT
-entrée : f une conjonction de clauses sur les variables x[1] à x[n]
-Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1 ?</code></pre>
+<ul>
+<li><strong>Nom</strong> : SAT</li>
+<li><strong>Entrée</strong> : $f$ une conjonction de clauses sur les variables $x_1$ à $x_n$</li>
+<li><strong>Sortie</strong> : Une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie (ou <code class="language-">∅</code> si cela n'est pas possible).</li>
+</ul>
 </div></div>
 
-<p>Le problème <code>SAT</code> cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite <strong><em>satisfiable</em></strong>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une formule logique sous la forme d'une disjonction de clause est dite sous la <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive">forme normale conjonctive</a>. Toute formule logique peut être mise sous cette forme grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> qui est linéaire en nombre d'opérations. Ceci exige de se retrouver avec un nombre exponentiel de clauses si on utilise juste <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">la distributivité des opérations logiques</a>.</p>
+</div></div>
+
+<h2>Formule logique et SAT</h2>
 <blockquote>
-<p>TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
-TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</p>
+<p>TBD on peut passer par distributivité d'un problème à un autre mais possiblement exponentiel.
+TBD
+[ exemple</p>
 </blockquote>
 <blockquote>
-<p>TBD toute formule logique peut s'écrire comme une conjonction de clause. CNF-SAT mais on peut passer de toute formule à SAT en temps linéaire :</p>
+<p>TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses. on passe de dnf à cnf en passant au non. Voir <a href="https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf">https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf</a></p>
 </blockquote>
-<h2>Modélisation</h2>
-<p>Tout problème se résout via un SAT. Pas toujours facile de s'y ramener, mais parfois c'est bien</p>
-<h3>Fonctions booléennes</h3>
-<blockquote>
-<p>TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses.</p>
-</blockquote>
-<p>on passe de dnf à cnf en passant au non. Voir <a href="https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf">https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf</a></p>
-<h3>Formules logiques</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -163,14 +157,13 @@ TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</
 <p><a href="https://www.youtube.com/watch?v=v2uW258qIsM">Transformation de Tseitin</a></p>
 </div></div>
 
-<p>Évite l'exponentialité si on utilise <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">que la distributivité</a> pour convertir les formules.</p>
-<h3>Exemple du sudoku</h3>
-<blockquote>
-<p>p47 <a href="https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf">https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf</a></p>
-</blockquote>
-<h2><span id="3-sat"></span>3-SAT</h2>
+<p>Évite l'exponentialité si on utilise <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">que la distributivité</a> pour convertir les formule</p>
+<h2><span id="3-sat"></span>3-SAT est NP-complet</h2>
 <p>Un cas particulier important du problème <code>SAT</code> est le problème <code>3-SAT</code> ou toutes les clauses ont exactement 3 littéraux.</p>
-<h3><span id="3-sat-exemple"></span> Exemple</h3>
+<blockquote>
+<p>résolution 3-sat par backtracking</p>
+<p>TBD <a href="https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf">https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf</a></p>
+</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -272,37 +265,17 @@ $$
 <li>$\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}$</li>
 </ul>
 <p>Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir sans faire tous les cas.</p>
-<h3>équivalent à SAT</h3>
-<blockquote>
-<p>TBD <a href="https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf">https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf</a></p>
-</blockquote>
-<p>Permet certaines réductions de façon bien plus facile.</p>
-<h2>2-SAT</h2>
+<h2>Et 2-SAT ?</h2>
 <blockquote>
 <p>Réduction ne fonctionne pas. Autre problème</p>
 <p>Algo poly par limited backtracking : <a href="https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking">https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking</a>
-limited backatracking car chaque cas est indépendant donc si on doit rbacktracker impossible.</p>
+limited backatracking car chaque cas est indépendant donc si on doit backtracker impossible.</p>
 </blockquote>
 <blockquote>
 <p>2-sat poly : <a href="https://cp-algorithms.com/graph/2SAT.html">https://cp-algorithms.com/graph/2SAT.html</a></p>
 </blockquote>
 <blockquote>
 <p>TBD faire dans la partie graphe : strongly connected component : Tarjan <a href="https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf">https://github.com/tpn/pdfs/blob/master/Depth-First Search and Linear Graph Algorithms - Tarjan (1972).pdf</a></p>
-</blockquote>
-<h2>Inversibilité du problème SAT</h2>
-<blockquote>
-<p>TBD fct booléenne de l'addition ou du produit. Comme c'est une fonction booléenne cela permet d'avoir une réponse mais aussi d'avoir les entrées.</p>
-<p>TBD on y reviendra mais en crypto c'est crucial de ne pas pouvoir  faire... Par exemple pour les produit de 2 nombres premiers. On revient au fait que factor doit être de complexité importante.</p>
-<p>polylog circuit et sat : <a href="https://www.youtube.com/watch?v=6OPsH8PK7xM">https://www.youtube.com/watch?v=6OPsH8PK7xM</a></p>
-</blockquote>
-<blockquote>
-<p>exemple réduction :</p>
-<p>résolution 3-sat par backtracking</p>
-<p>TBD <a href="https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf">https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf</a></p>
-</blockquote>
-<h2>Résolution de SAT</h2>
-<blockquote>
-<p>TBD : <a href="https://people.csail.mit.edu/virgi/6.s078/lecture3and4.pdf">https://people.csail.mit.edu/virgi/6.s078/lecture3and4.pdf</a></p>
 </blockquote>
 
 

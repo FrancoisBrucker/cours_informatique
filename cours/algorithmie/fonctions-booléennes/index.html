@@ -646,14 +646,17 @@ $$
 </details>     
 </div>
 <p>La preuve de la proposition précédente est lourde de conséquences. Ce qui fait qu'une fonction $f: \{0, 1\}^\star \rightarrow \{0, 1\}^\star$ ne peut pas être un algorithme est uniquement lié à la taille variable de l'entrée. Un algorithme ne peut calculer que celles ayant des régularités que l'on peut exploiter via des structures de contrôles (exécution conditionnelle et boucles pour un pseudo-code).</p>
-<p>D'un point de vue d'un pseudo-code, on écrira ces fonctions en spécifiant la taille des tableau d'entrée et de sortie en commentaire :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># taille n</span>
-           <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>      <span class="token comment"># taille m</span></code></pre>
+<p>D'un point de vue d'un pseudo-code, on écrira ces fonctions en spécifiant la taille des tableau d'entrée :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> m<span class="token punctuation">]</span></code></pre>
 <p>Pour ne pas couper les cheveux en 4, on se permettra plusieurs abus de notations évident :</p>
 <ul>
-<li><code class="language-">f(x_1: bit, ..., x_n: bit) → [bit]</code> à la place de <code class="language-">f([bit]) → [bit] # entrée de taille n</code>,</li>
-<li><code class="language-">f([x_0, ..., x_n-1]) → [bit]</code> à la place de <code class="language-">f([bit]) → [bit] # entrée de taille n</code>,</li>
-<li><code class="language-">f(x_1: [bit], ..., x_n: [bit]) → [bit]</code> à la place de <code class="language-">f([bit]) → [bit] # entrée de taille t_1 + ... + t_n</code>,</li>
+<li><code class="language-">f(x_1: bit, ..., x_n: bit) → [bit]</code> à la place de <code class="language-">f([bit: n]) → [bit]</code>,</li>
+<li><code class="language-">f(x_1: [bit], ..., x_n: [bit]) → [bit]</code> à la place de <code class="language-">f([bit]) → [bit] # n entrées de taille t_1 + ... + t_n</code>,</li>
+</ul>
+<p>Cette notation nous permettra d'écrire facilement des fonctions :</p>
+<ul>
+<li>de plusieurs entrées de même taille: <code class="language-">f(x: [bit: n], y: [bit: n])</code></li>
+<li>d'entrée et sortie liées :<code class="language-">f(x: [bit: n]) → [bit: n + 3]</code></li>
 </ul>
 <h2>Données booléennes</h2>
 <p><a href="../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires" class="interne">On a vu</a> qu'un algorithme pouvait ne manipuler que des bits. On peut donc redéfinir la notion de pseudo-code ainsi :</p>
@@ -748,7 +751,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant <a href="../projet-algorithmes-classiques/compteur-binaire/" class="interne">l'algorithme du successeur</a>, créez un algorithme de signature <code>INC(x: [bit]) → [bit]  # entrée et sortie de même taille</code> tel que :</p>
+<p>En utilisant <a href="../projet-algorithmes-classiques/compteur-binaire/" class="interne">l'algorithme du successeur</a>, créez un algorithme de signature <code class="language-">INC(x: [bit: n]) → [bit: n]</code> tel que :</p>
 <div>
 $$
 u(\text{INC}(x)) = (u(x) + 1) \mathbin{\small\%} 2^n
@@ -1150,7 +1153,7 @@ $$
 <h3>Logiques</h3>
 <p>Les opérations logiques définies précédemment s'étendent naturellement aux données sous la forme de tableaux de bits.</p>
 <p>Il suffit de montrer la fonction <code>NAND</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">NAND</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>      <span class="token comment"># les 3 tableaux sont de taille n</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">NAND</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
 
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
@@ -1160,7 +1163,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez un algorithme linéaire permettant de réaliser l'opération OR sur un tableau de bit de taille quelconque. Il sera de signature : <code class="language-">OR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille</code></p>
+<p>Écrivez un algorithme linéaire permettant de réaliser l'opération OR sur un tableau de bit de taille quelconque. Il sera de signature : <code class="language-">OR(x: [bit: n], y: [bit: n]) → [bit: n]</code></p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1187,9 +1190,9 @@ $$
 </div>
 <p>En définissant de même les algorithmes :</p>
 <ul>
-<li><code class="language-">AND(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille</code></li>
-<li><code class="language-">OR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille</code></li>
-<li><code class="language-">XOR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille</code></li>
+<li><code class="language-">AND(x: [bit: n], y: [bit: n]) → [bit: n]</code></li>
+<li><code class="language-">OR(x: [bit: n], y: [bit: n]) → [bit: n]</code></li>
+<li><code class="language-">XOR(x: [bit: n], y: [bit: n]) → [bit: n]</code></li>
 </ul>
 <p>On peut définir les opérations linéaires <strong>pour des tableaux de même taille</strong> :</p>
 <div>
@@ -1211,7 +1214,7 @@ $$
     
     <span class="token keyword">rendre</span> <span class="token number">1</span>
 
-<span class="token builtin">algorithme</span> <span class="token function">GRAND</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># même taille</span>
+<span class="token builtin">algorithme</span> <span class="token function">GRAND</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span>
                 <span class="token operator">→</span> <span class="token builtin">bit</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> XOR<span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span><span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># x[i] != y[i]</span>
@@ -1247,8 +1250,7 @@ $$
  1000000
 </code></pre>
 <p>L'algorithme est alors le suivant (on en a déjà vu une version lorsque l'<a href="../probl%C3%A8mes-NP/#algorithme-somme_binaire">on a étudié les problèmes NP</a>, ici on va le considéré modulo la taille des entrées) c'est à dire que l'addition de $0b100101$ et $0b011011$ donnera : $0b000000$. On utilise aussi les fonctions booléennes à 1 bit définies précédemment pour un résultat compact :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de taille n</span>
-                 <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>  <span class="token comment"># de taille n</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
     
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     r <span class="token operator">←</span> <span class="token number">0</span>
@@ -1261,8 +1263,7 @@ $$
     <span class="token keyword">rendre</span> z</code></pre>
 <p>Sa complexité est bien linéaire puisque les fonction utilisées sont toutes de complexité $\mathcal{O}(1)$.</p>
 <p>Terminons cette partie en montrant que l'on peut récrire cet algorithme uniquement avec des fonctions <code>NAND</code> sans changer sa complexité. Pour cela commençons par ne mettre qu'une seule instruction par ligne :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> somme'<span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de taille n</span>
-                 <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>  <span class="token comment"># de taille n</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> somme'<span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
     
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     r <span class="token operator">←</span> <span class="token number">0</span>
@@ -1298,8 +1299,7 @@ $$
 
     <span class="token keyword">rendre</span> z</code></pre>
 <p>Puis à remplacer les fonctions logiques par leur pendant avec <code>NAND</code> pour définir notre algorithme <code class="language-">PLUS</code>:</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">PLUS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de taille n</span>
-                <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>  <span class="token comment"># de taille n</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">PLUS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
     
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     r <span class="token operator">←</span> <span class="token number">0</span>
@@ -1399,8 +1399,7 @@ $$
     10111
 </code></pre>
 <p>On obtient l'algorithme suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">FOIS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de taille n</span>
-                <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>  <span class="token comment"># de taille n</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">FOIS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
     
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     z<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
@@ -1456,8 +1455,7 @@ $$
 <p>$37 / 11 = 3$ et $37 \mathbin{\small\%} 11 = 4$</p>
 <p>Ci après une version non signée :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token builtin">algorithme</span> <span class="token function">FOIS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de taille n</span>
-                <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># de taille n</span>
+<span class="token builtin">algorithme</span> <span class="token function">FOIS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> 
 
     q <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     q<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
@@ -1492,7 +1490,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez l'algorithme du pgcd binaire de façon itérative. Il devra être de signature : <code class="language-">PGCD(x: [bit], y: [bit]) → [bit]  # de même taille</code>.</p>
+<p>Écrivez l'algorithme du pgcd binaire de façon itérative. Il devra être de signature : <code class="language-">PGCD(x: [bit: n], y: [bit: n]) → [bit: n]</code>.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1514,8 +1512,7 @@ $$
 <div class="mx-8 pb-2">
 <p>Remarquez que diviser par 2 est égal à un shift de 1 vers la droite.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token builtin">algorithme</span> <span class="token function">PGCD</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># x et y de taille n</span>
-                <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>  <span class="token comment"># de taille n</span>
+<span class="token builtin">algorithme</span> <span class="token function">PGCD</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
 
     p tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     p<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
@@ -1552,7 +1549,7 @@ $$
 <p>Ceci nous permettra <em>in fine</em> de redéfinir la notion de pseudo-code avec des objets et et des opérations bien plus simple sans perte de généralité.</p>
 <h3>Variables interne binaires</h3>
 <p>Si données sont toutes des tableaux de bits, nos algorithmes utilisent encore des entiers pour les variables internes des boucles <code class="language-">pour chaque</code>. C'est un abus de notation est on peut tout à fait s'en passer, considérer par exemple l'algorithme <code class="language-">NAND</code> suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">NAND</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>      <span class="token comment"># les 3 tableaux sont de taille n</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">NAND</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
 
    <span class="token number"> i </span><span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille log<span class="token punctuation">(</span>x<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span>  <span class="token comment"># la même taille que pour stocker l'entier x.longueur</span>
@@ -1583,10 +1580,10 @@ $$
 </div><div class="pl-8 mr-8">
 <p>Un pseudo-code utilisant uniquement :</p>
 <ul>
+<li>des variables binaires ou des tableaux binaires</li>
 <li>l'opération logique <code class="language-">NAND</code></li>
-<li>des affectations de cases de tableaux</li>
-<li>des boucles <code class="language-">tant que x: &lt;bloc&gt;</code> avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.</li>
-<li>des instructions conditionnelles de la forme <code class="language-">si x: &lt;bloc&gt;</code> avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.</li>
+<li>des affectations de bit (variable binaire ou une case de tableaux)</li>
+<li>les instructions de contrôles et des boucles du pseudo-code</li>
 </ul>
 <p>A la même expressivité que <a href="../pseudo-code/" class="interne">le pseudo-code classique</a>.</p>
 </div></div>

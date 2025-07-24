@@ -470,7 +470,8 @@ $$
 </div></div>
 
 <h3>Réduction vers SAT</h3>
-<p>Le théorème de Cook stipule que <strong>tout</strong> problème de NP peut se réduire à un cas particulier du problème SAT. Nous ne démontrerons pas encore ce résultat mais allons faire quelques exemples pour comprendre comment un algorithme quelconque peut bien se transformer en une formule logique.</p>
+<p>Le théorème de Cook et Leven stipule que <strong>tout</strong> problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.</p>
+<p>Nous ne démontrerons pas ici ce théorème mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental.</p>
 <h4>MAX</h4>
 <p>Montrons que l'on peut le faire pour le problème MAX. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.</p>
 <ol>
@@ -507,7 +508,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Dans tou ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clause qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer linéairement en conjonction de clause avec <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a>.</p>
+<p>Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clause qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer en conjonction de clauses.</p>
 </div></div>
 
 <h4>Plus</h4>
@@ -657,7 +658,7 @@ $$
 </div>
 </details>     
 </div>
-<h3>Problèmes NP-Complet</h3>
+<h2>Problèmes NP-Complet</h2>
 <p>Le théorème de Levin et Cook stipule que tout problème de NP peut se réduire polynomialement à un cas particulier de SAT : le problème SAT est un élément maximal de l'ordre entre problèmes de NP induit par la réduction polynomiale. Ce théorème montre l'existence de problèmes <em>universels</em>, on les appelle <strong><em>NP-complet</em></strong>, dont tous les autres problèmes ne sont que des cas particuliers :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -672,7 +673,7 @@ $$
 <p>Cette définition est consistante car deux problèmes différents de NP peuvent êtres tels que $A \leq B$ et $B \leq A$ (on l'a vu pour 3-SUM' et 3-SUM par exemple). Rien n'empêche donc d'avoir plusieurs problèmes se comportant comme SAT, La structure de NP est donc maintenant la suivante :</p>
 <p><img src="NP-NP-2a.png" alt="décidable"></p>
 <p>Fixons nous les idées en démontrant que le problème suivant est NP-complet.</p>
-<h4>Couverture Exacte est NP-complet</h4>
+<h3>Couverture Exacte est NP-complet</h3>
 <p><span id="problème-EC"></span><span id="problème-CE"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -906,7 +907,7 @@ $$
 </div>
 <p>On vient de prouver $SAT\leq CE$ : on a trouvé un deuxième élément à la classe des problèmes NP-complets !</p>
 <p><img src="NP-NP-2b.png" alt="décidable"></p>
-<h4>Que signifie NP-complet</h4>
+<h3>Que signifie NP-complet</h3>
 <p>Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, <a href="https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems">Karp démontrait en 1972</a> qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.</p>
 <p>Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont <em>universels</em>. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, <a href="https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent">il n'y a pas de balle en argent</a> pour résoudre magiquement le problème. Il faut tout essayer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">

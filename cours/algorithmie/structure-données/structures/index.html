@@ -304,6 +304,11 @@ masse <span class="token operator">←</span> Point<span class="token operator">
 <li><code class="language-">Point&lt;[Point&lt;Point&lt;chaîne&gt;&gt;]&gt;</code> : un Points à valeurs valant un tableau de Point à valeur de Point de chaînes.</li>
 </ul>
 <p>Mais la plupart du temps, on reste simple.</p>
+<h2>Tableau de taille fixe</h2>
+<p>On aura parfois besoin de spécifier dans nos structure une taille fixée à nos attributs. On utilisera alors la syntaxe <code class="language-">[type:longueur]</code>. Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        coords<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span> <span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">]</span></code></pre>
 <h2>Mot clé <code class="language-">self</code></h2>
 <p>L'objet courant, celui qui appelle (à gauche du <code>.</code> en notation pointée), peut être parfois nommé par le mot-clé <code class="language-">self</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
