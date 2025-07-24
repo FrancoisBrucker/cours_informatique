@@ -27,12 +27,7 @@ On recherche exhaustivement toutes les solutions puis on prend la meilleur.
 > On ne continue que si ça vaut le coup.
 > sudoku : encore possible ?
 > 
-> Pour la programmation linéaire.
-> <http://sirdeyre.free.fr/Papiers_etc/2007_Sudokus_et_programmation_lineaire_2.pdf>
 > TBD brute force et on stope l'énumération si on a déjà mieux
-
-> <https://www.researchgate.net/publication/339822516_Software_Design_Completion_of_Sudoku_Game_with_Branch_and_Bound_Algorithm/fulltext/5e678a05299bf1744f6f1ad4/Software-Design-Completion-of-Sudoku-Game-with-Branch-and-Bound-Algorithm.pdf>
-> <https://www.reddit.com/r/optimization/comments/rycl1g/how_to_solve_a_sudoku_puzzle_with_simplex_or/>
 
 > TBD backtracking amélioré : on ne parcourt pas tout l'espace
 

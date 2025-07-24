@@ -284,7 +284,9 @@ Il existe des problème facile à vérifier dont on ne connaît pas d'algorithme
 
 ### Réduction vers SAT
 
-Le théorème de Cook stipule que **tout** problème de NP peut se réduire à un cas particulier du problème SAT. Nous ne démontrerons pas encore ce résultat mais allons faire quelques exemples pour comprendre comment un algorithme quelconque peut bien se transformer en une formule logique.
+Le théorème de Cook et Leven stipule que **tout** problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial. 
+
+Nous ne démontrerons pas ici ce théorème mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental.
 
 #### MAX
 
@@ -328,7 +330,7 @@ $$
 On utilise ensuite [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) pour transformer cette formule logique en une conjonction de clauses ce qui montre que le problème MAX peut se résoudre via le problème SAT.
 
 {% info %}
-Dans tou ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clause qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer linéairement en conjonction de clause avec [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin).
+Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clause qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer en conjonction de clauses.
 {% endinfo %}
 
 #### Plus
@@ -433,7 +435,7 @@ $$
 
 {% enddetails %}
 
-### Problèmes NP-Complet
+## Problèmes NP-Complet
 
 Le théorème de Levin et Cook stipule que tout problème de NP peut se réduire polynomialement à un cas particulier de SAT : le problème SAT est un élément maximal de l'ordre entre problèmes de NP induit par la réduction polynomiale. Ce théorème montre l'existence de problèmes _universels_, on les appelle **_NP-complet_**, dont tous les autres problèmes ne sont que des cas particuliers :
 
@@ -447,7 +449,7 @@ Cette définition est consistante car deux problèmes différents de NP peuvent 
 
 Fixons nous les idées en démontrant que le problème suivant est NP-complet.
 
-#### Couverture Exacte est NP-complet
+### Couverture Exacte est NP-complet
 
 <span id="problème-EC"></span><span id="problème-CE"></span>
 
@@ -601,7 +603,7 @@ On vient de prouver $SAT\leq CE$ : on a trouvé un deuxième élément à la cla
 
 ![décidable](./NP-NP-2b.png)
 
-#### Que signifie NP-complet
+### Que signifie NP-complet
 
 Il existe un grand nombre de problèmes NP-complet. Juste après la démonstration de Levin et Cook en 1971, [Karp démontrait en 1972](https://en.wikipedia.org/wiki/Karp%27s_21_NP-complete_problems) qu'il y en avait au moins 21 de plus ! Et on ne cesse d'en découvrir d'autres.
 

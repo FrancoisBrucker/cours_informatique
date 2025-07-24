@@ -252,6 +252,16 @@ On peut bien sur combiner le tout avec des exemples plus ou moins tordu comme :
 
 Mais la plupart du temps, on reste simple.
 
+## Tableau de taille fixe
+
+On aura parfois besoin de spécifier dans nos structure une taille fixée à nos attributs. On utilisera alors la syntaxe `[type:longueur]`{.language-}. Par exemple :
+
+```pseudocode
+structure Point:
+    attributs:
+        coords: [entier : 2]
+```
+
 ## Mot clé `self`{.language-}
 
 L'objet courant, celui qui appelle (à gauche du `.` en notation pointée), peut être parfois nommé par le mot-clé `self`{.language-}.

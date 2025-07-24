@@ -1,6 +1,6 @@
 ---
-layout: layout/post.njk 
-title:  "Problème SAT"
+layout: layout/post.njk
+title: "Problème SAT"
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,75 +9,60 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD tout algo est un sat.
-> TBD on a vue que les opérations peuvent être mise sous forme logique. C'est aussi vrai pour les structures de contrôle.
-> TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
-> TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonction de clause. et que comme on passe d'un problème à l'autre, on peut le faire puisque nos entrées sont données.
+> TBD rappeler la def de la partie NP
 
-> TBD dire taille des variables dépendant de la taille des entrées. Au pire = complexité. Ne change pas si dans P.
+Le problème SAT cherche à vérifier si une formule logique peut-être satisfaite.
 
-> TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.
+Pour cela, commençons par définir un concept fondamental en logique la **_conjonction de clauses_** :
 
-Nous allons intensivement utiliser la réduction pour classer les problèmes algorithmiques, et en particulier les réduction depuis [le problème SAT](https://fr.wikipedia.org/wiki/Probl%C3%A8me_SAT).
+<div id="définition-clauses"></div>
 
-Nous avons entraperçu le problème lorsque nous avons parlé de [pseudo-assembleur](../exécuter-code/pseudo-assembleur#clauses) et que tout les fonctions de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peuvent s'écrire comme conjonction de clauses :
-
-Pour cela, commençons par définir un concept fondamental en logique la _**conjonction de clauses**_ :
-
-<div id="clauses"></div>
 {% note "**Définition**" %}
-Soient $x_1, \dots, x_n$, $n$ variables binaires. On définit :
+Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :
 
 - un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
 - une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
 - une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
 {% endnote %}
 
-{% note "**Définition**" %}
+Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite **_satisfiable_** :
 
-```text
-nom: SAT
-entrée : f une conjonction de clauses sur les variables x[1] à x[n]
-Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1 ?
-```
+{% note "**Problème**" %}
+
+- **Nom** : SAT
+- **Entrée** : $f$ une conjonction de clauses sur les variables $x_1$ à $x_n$
+- **Sortie** : Une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie (ou `∅`{.language-} si cela n'est pas possible).
 
 {% endnote %}
+{% info %}
+Une formule logique sous la forme d'une disjonction de clause est dite sous la [forme normale conjonctive](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive). Toute formule logique peut être mise sous cette forme grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) qui est linéaire en nombre d'opérations. Ceci exige de se retrouver avec un nombre exponentiel de clauses si on utilise juste [la distributivité des opérations logiques](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable).
 
-Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite **_satisfiable_**.
+{% endinfo %}
 
-> TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
-> TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.
+## Formule logique et SAT
 
-> TBD toute formule logique peut s'écrire comme une conjonction de clause. CNF-SAT mais on peut passer de toute formule à SAT en temps linéaire :
+> TBD on peut passer par distributivité d'un problème à un autre mais possiblement exponentiel.
+> TBD 
+[ exemple
 
-## Modélisation
-
-Tout problème se résout via un SAT. Pas toujours facile de s'y ramener, mais parfois c'est bien
-
-### Fonctions booléennes
-
-> TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses.
-
-on passe de dnf à cnf en passant au non. Voir <https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf>
-
-### Formules logiques
+> TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses. on passe de dnf à cnf en passant au non. Voir <https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf>
 
 {% lien %}
 [Transformation de Tseitin](https://www.youtube.com/watch?v=v2uW258qIsM)
 {% endlien %}
 
 Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
-) pour convertir les formules.
+) pour convertir les formule
 
-### Exemple du sudoku
-
-> p47 <https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf>
-
-## <span id="3-sat"></span>3-SAT
+## <span id="3-sat"></span>3-SAT est NP-complet
 
 Un cas particulier important du problème `SAT` est le problème `3-SAT` ou toutes les clauses ont exactement 3 littéraux.
 
-### <span id="3-sat-exemple"></span> Exemple
+> résolution 3-sat par backtracking
+>
+> TBD <https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf>
+>
+
 
 {% lien %}
 [Exemple de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description)
@@ -179,39 +164,14 @@ Pour que notre instance ne puisse plus avoir de solution, il faut lui rajouter d
 
 Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir sans faire tous les cas.
 
-### équivalent à SAT
 
-> TBD <https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf>
-
-Permet certaines réductions de façon bien plus facile.
-
-## 2-SAT
+## Et 2-SAT ?
 
 > Réduction ne fonctionne pas. Autre problème
 > 
 > Algo poly par limited backtracking : <https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking>
-> limited backatracking car chaque cas est indépendant donc si on doit rbacktracker impossible.
+> limited backatracking car chaque cas est indépendant donc si on doit backtracker impossible.
 
 > 2-sat poly : <https://cp-algorithms.com/graph/2SAT.html>
 
 > TBD faire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
-
-## Inversibilité du problème SAT
-
-> TBD fct booléenne de l'addition ou du produit. Comme c'est une fonction booléenne cela permet d'avoir une réponse mais aussi d'avoir les entrées.
->
-> TBD on y reviendra mais en crypto c'est crucial de ne pas pouvoir  faire... Par exemple pour les produit de 2 nombres premiers. On revient au fait que factor doit être de complexité importante.
-> 
-> polylog circuit et sat : <https://www.youtube.com/watch?v=6OPsH8PK7xM>
->
->
-
-> exemple réduction :
->
-> résolution 3-sat par backtracking
->
-> TBD <https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf>
->
-## Résolution de SAT
-
-> TBD : <https://people.csail.mit.edu/virgi/6.s078/lecture3and4.pdf>

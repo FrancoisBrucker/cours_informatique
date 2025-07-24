@@ -353,6 +353,14 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 Ci-après quelques exemples classique de problèmes algorithmes (NP-complet ou non) pouvant se résoudre de multiples manières. Les connaître permet de rapidement forger une solution pour un problème nouveau.
 
+#### Problème SAT
+
+Le problème du sac à dos est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
+
+{% aller %}
+[Problème SAT](./problème-SAT){.interne}
+{% endaller %}
+
 #### Problème du sac à dos
 
 Le problème du sac à dos est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
@@ -372,12 +380,6 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 <!-- ### Jolis problèmes
 
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
-
-#### Fonction d'Ackermann
-
-{% aller %}
-[Fonction d'Ackermann](./ackermann.md){.interne}
-{% endaller %}
 
 #### Subsetsum
 
@@ -402,7 +404,6 @@ On place ici quelques problèmes requérant une bonne compréhension algorithmiq
 
 ## Exercices
 
-> ici : ackermann pas avec boucles for
 > ici : selection linéaire.
 
 On rappelle ici tous les exercices que l'on va voir dans les différentes parties,
@@ -493,7 +494,7 @@ Cet intermède permet de préparer la troisième partie
   - universal
 - liste circulaires ? Trouver le début.
 
-Pour aller plus loin  arbre rouge/noir ; tas de fibonacci ; ...
+Pour aller plus loin  arbre rouge/noir ; tas de Fibonacci ; ...
 
 <!-- 
 
@@ -531,10 +532,10 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 [Fonctions booléennes et pseudo-code](./fonctions-booléennes){.interne}
 {% endaller %}
 
-#### Pseudo-code et logique
+#### Pseudo-code et SAT
 
 {% aller %}
-[SAT et pseudo-code](./problème-SAT){.interne}
+[SAT et pseudo-code](pseudocode-SAT){.interne}
 {% endaller %}
 
 #### Exécuter du pseudo-code

@@ -231,18 +231,22 @@ La preuve est immédiate puisqu'une fonction booléenne vectorielle est la conca
 
 La preuve de la proposition précédente est lourde de conséquences. Ce qui fait qu'une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$ ne peut pas être un algorithme est uniquement lié à la taille variable de l'entrée. Un algorithme ne peut calculer que celles ayant des régularités que l'on peut exploiter via des structures de contrôles (exécution conditionnelle et boucles pour un pseudo-code).
 
-D'un point de vue d'un pseudo-code, on écrira ces fonctions en spécifiant la taille des tableau d'entrée et de sortie en commentaire :
+D'un point de vue d'un pseudo-code, on écrira ces fonctions en spécifiant la taille des tableau d'entrée :
 
 ```pseudocode
-algorithme f(x: [bit])  # taille n
-           → [bit]      # taille m
+algorithme f(x: [bit: n]) → [bit: m]
 ```
 
 Pour ne pas couper les cheveux en 4, on se permettra plusieurs abus de notations évident :
 
-- `f(x_1: bit, ..., x_n: bit) → [bit]`{.language-} à la place de `f([bit]) → [bit] # entrée de taille n`{.language-},
-- `f([x_0, ..., x_n-1]) → [bit]`{.language-} à la place de `f([bit]) → [bit] # entrée de taille n`{.language-},
-- `f(x_1: [bit], ..., x_n: [bit]) → [bit]`{.language-} à la place de `f([bit]) → [bit] # entrée de taille t_1 + ... + t_n`{.language-},
+- `f(x_1: bit, ..., x_n: bit) → [bit]`{.language-} à la place de `f([bit: n]) → [bit]`{.language-},
+- `f(x_1: [bit], ..., x_n: [bit]) → [bit]`{.language-} à la place de `f([bit]) → [bit] # n entrées de taille t_1 + ... + t_n`{.language-},
+
+
+Cette notation nous permettra d'écrire facilement des fonctions :
+
+- de plusieurs entrées de même taille: `f(x: [bit: n], y: [bit: n])`{.language-}
+- d'entrée et sortie liées :`f(x: [bit: n]) → [bit: n + 3]`{.language-}
 
 ## Données booléennes
 
@@ -329,7 +333,7 @@ Ainsi :
 - $u_8^{-1}(10) = [0,1,0, 1, 0, 0, 0, 0]$ (de notation binaire $0b00001010$)
 
 {% exercice %}
-En utilisant [l'algorithme du successeur](../projet-algorithmes-classiques/compteur-binaire/){.interne}, créez un algorithme de signature `INC(x: [bit]) → [bit]  # entrée et sortie de même taille` tel que :
+En utilisant [l'algorithme du successeur](../projet-algorithmes-classiques/compteur-binaire/){.interne}, créez un algorithme de signature `INC(x: [bit: n]) → [bit: n]`{.language-} tel que :
 
 <div>
 $$
@@ -644,7 +648,7 @@ Les opérations logiques définies précédemment s'étendent naturellement aux 
 Il suffit de montrer la fonction `NAND` :
 
 ```pseudocode
-algorithme NAND(x: [bit], y: [bit]) → [bit]      # les 3 tableaux sont de taille n
+algorithme NAND(x: [bit: n], y: [bit: n]) → [bit: n]
     z ← tableau de bit de taille x.longueur
 
     pour chaque i de [0 .. x.longueur[:
@@ -655,7 +659,7 @@ algorithme NAND(x: [bit], y: [bit]) → [bit]      # les 3 tableaux sont de tail
 Puis de mimer ce que l'on a fait avec les fonction sur 1 bit, par exemple `NOT(x: [bit]) → [bit] := NAND(x, x)`{.language-}. Remarquez que cette fonction n'est **pas** une fonction booléenne vectorielle, mais bien un algorithme : ses entrées ne sont pas de taille fixe.
 
 {% exercice %}
-Écrivez un algorithme linéaire permettant de réaliser l'opération OR sur un tableau de bit de taille quelconque. Il sera de signature : `OR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille`{.language-}
+Écrivez un algorithme linéaire permettant de réaliser l'opération OR sur un tableau de bit de taille quelconque. Il sera de signature : `OR(x: [bit: n], y: [bit: n]) → [bit: n]`{.language-}
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -669,9 +673,9 @@ OR(x: [bit], y: [bit]) → [bit] := NAND(NOT(x), NOT(y))
 
 En définissant de même les algorithmes : 
 
-- `AND(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille`{.language-}
-- `OR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille`{.language-}
-- `XOR(x: [bit], y: [bit]) → [bit] # les 3 tableaux de même taille`{.language-}
+- `AND(x: [bit: n], y: [bit: n]) → [bit: n]`{.language-}
+- `OR(x: [bit: n], y: [bit: n]) → [bit: n]`{.language-}
+- `XOR(x: [bit: n], y: [bit: n]) → [bit: n]`{.language-}
 
 On peut définir les opérations linéaires **pour des tableaux de même taille** :
 
@@ -698,7 +702,7 @@ algorithme ZERO(x: [bit]) → bit
     
     rendre 1
 
-algorithme GRAND(x: [bit], y: [bit])  # même taille
+algorithme GRAND(x: [bit: n], y: [bit: n])
                 → bit
     pour chaque i de [1 .. x.longueur]:
         si XOR(x[-i], y[-i]):  # x[i] != y[i]
@@ -748,8 +752,7 @@ Attention à la retenue :
 L'algorithme est alors le suivant (on en a déjà vu une version lorsque l'[on a étudié les problèmes NP](../problèmes-NP/#algorithme-somme_binaire), ici on va le considéré modulo la taille des entrées) c'est à dire que l'addition de $0b100101$ et $0b011011$ donnera : $0b000000$. On utilise aussi les fonctions booléennes à 1 bit définies précédemment pour un résultat compact :
 
 ```pseudocode
-algorithme somme(x: [bit], y: [bit])  # on suppose x et y de taille n
-                 → [bit]  # de taille n
+algorithme somme(x: [bit: n], y: [bit: n]) → [bit: n]
     
     z ← tableau de bit de taille x.longueur
     r ← 0
@@ -767,8 +770,7 @@ Sa complexité est bien linéaire puisque les fonction utilisées sont toutes de
 Terminons cette partie en montrant que l'on peut récrire cet algorithme uniquement avec des fonctions `NAND` sans changer sa complexité. Pour cela commençons par ne mettre qu'une seule instruction par ligne :
 
 ```pseudocode
-algorithme somme'(x: [bit], y: [bit])  # on suppose x et y de taille n
-                 → [bit]  # de taille n
+algorithme somme'(x: [bit: n], y: [bit: n]) → [bit: n]
     
     z ← tableau de bit de taille x.longueur
     r ← 0
@@ -808,8 +810,7 @@ algorithme somme'(x: [bit], y: [bit])  # on suppose x et y de taille n
 Puis à remplacer les fonctions logiques par leur pendant avec `NAND` pour définir notre algorithme `PLUS`{.language-}:
 
 ```pseudocode
-algorithme PLUS(x: [bit], y: [bit])  # on suppose x et y de taille n
-                → [bit]  # de taille n
+algorithme PLUS(x: [bit: n], y: [bit: n]) → [bit: n]
     
     z ← tableau de bit de taille x.longueur
     r ← 0
@@ -919,8 +920,7 @@ Tout comme pour l'addition, nous allons donner ici une version modulo $2^n$ (san
 On obtient l'algorithme suivant :
 
 ```pseudocode
-algorithme FOIS(x: [bit], y: [bit])  # on suppose x et y de taille n
-                → [bit]  # de taille n
+algorithme FOIS(x: [bit: n], y: [bit: n]) → [bit: n]
     
     z ← tableau de bit de taille x.longueur
     z[:] ← 0
@@ -977,8 +977,7 @@ Ci après une version non signée :
 
 ```pseudocode
 
-algorithme FOIS(x: [bit], y: [bit])  # on suppose x et y de taille n
-                → ([bit], [bit])  # de taille n
+algorithme FOIS(x: [bit: n], y: [bit: n]) → ([bit: n], [bit: n]) 
 
     q ← tableau de bit de taille x.longueur
     q[:] ← 0
@@ -1010,15 +1009,14 @@ Calculer la division euclidienne de deux tableaux de bit se fait en temps quadra
 [On a déjà vu cet algorithme](../projet-algorithmes-classiques/pgcd/#algorithme-pgcd-binaire){.language-}, mais de façon récursive.
 
 {% exercice %}
-Écrivez l'algorithme du pgcd binaire de façon itérative. Il devra être de signature : `PGCD(x: [bit], y: [bit]) → [bit]  # de même taille`{.language-}.
+Écrivez l'algorithme du pgcd binaire de façon itérative. Il devra être de signature : `PGCD(x: [bit: n], y: [bit: n]) → [bit: n]`{.language-}.
 {% endexercice %}
 {% details "corrigé" %}
 
 Remarquez que diviser par 2 est égal à un shift de 1 vers la droite.
 ```pseudocode
 
-algorithme PGCD(x: [bit], y: [bit])  # x et y de taille n
-                → [bit]  # de taille n
+algorithme PGCD(x: [bit: n], y: [bit: n]) → [bit: n]
 
     p tableau de bit de taille x.longueur
     p[:] ← 0
@@ -1057,7 +1055,7 @@ Ceci nous permettra _in fine_ de redéfinir la notion de pseudo-code avec des ob
 Si données sont toutes des tableaux de bits, nos algorithmes utilisent encore des entiers pour les variables internes des boucles `pour chaque`{.language-}. C'est un abus de notation est on peut tout à fait s'en passer, considérer par exemple l'algorithme `NAND`{.language-} suivant :
 
 ```pseudocode
-algorithme NAND(x: [bit], y: [bit]) → [bit]      # les 3 tableaux sont de taille n
+algorithme NAND(x: [bit: n], y: [bit: n]) → [bit: n]
     z ← tableau de bit de taille x.longueur
 
     i ← tableau de bit de taille log(x.longueur)  # la même taille que pour stocker l'entier x.longueur
@@ -1082,10 +1080,10 @@ On voit que [toutes les opérations autorisées pour un pseudo-code](../pseudo-c
 {% note "**Proposition**" %}
 Un pseudo-code utilisant uniquement :
 
+- des variables binaires ou des tableaux binaires
 - l'opération logique `NAND`{.language-}
-- des affectations de cases de tableaux
-- des boucles `tant que x: <bloc>`{.language-} avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.
-- des instructions conditionnelles de la forme `si x: <bloc>`{.language-} avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.
+- des affectations de bit (variable binaire ou une case de tableaux)
+- les instructions de contrôles et des boucles du pseudo-code
  
 A la même expressivité que [le pseudo-code classique](../pseudo-code/){.interne}.
 {% endnote %}

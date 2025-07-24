@@ -17,14 +17,15 @@ Commençons par décrire les objets que l'on peut manipuler en pseudo-code et le
 
 ### <span id="objets-basiques"></span> Objets basiques
 
-Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et sont au nombre de six :
+Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et correspondent aux cinq **_types_** suivant :
 
-- le vide : `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C)
-- les booléens : `vrai`{.language-} et `faux`{.language-}
-- les bits : `0`{.language-} et `1`{.language-}
-- les nombres entiers
-- les nombres réels
-- les caractères : `"a"`{.language-}, `"b"`{.language-}, ...
+- le type `booléen`{.language-} qui contient deux objets : `vrai`{.language-} et `faux`{.language-}
+- le type `bit`{.language-} qui contient les 2 objets : `0`{.language-} et `1`{.language-}
+- le type `entier`{.language-} qui contient tous les entiers relatifs
+- le type `réel`{.language-} qui contient un ensemble dénombrable d'approximation de réels
+-  le type `caractère`{.language-} qui contient l'ensemble des glyphes  UNICODE : `"a"`{.language-}, `"b"`{.language-}, ...
+
+Enfin on considérera le type vide `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C) qui ne contient aucun objet.
 
 Tous les autres types d'objets que l'on peut créer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est une liste de caractères, etc).
 
@@ -39,6 +40,7 @@ On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{6
 {% attention "**À retenir**" %}
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
 {% endattention %}
+
 
 ### <span id="opérations"></span> Opérations
 
@@ -85,7 +87,7 @@ Dans la seconde instruction, on commence par retrouver l'objet nommé par `a`{.l
 ## <span id="tableaux"></span>Tableaux
 
 {% note "**Définition**" %}
-Un **_tableau_** est un conteneur nommé pouvant contenir $n$ variables. $n$ est la **_longueur_** ou la **_taille_** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée. Chaque variable du tableau peut être accédée via son **_indice_**, qui est un entier entre $0$ et $n-1$.
+Un **_tableau_** est un conteneur nommé pouvant contenir $n$ variables **de même type**. $n$ est la **_longueur_** ou la **_taille_** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée. Chaque variable du tableau peut être accédée via son **_indice_**, qui est un entier entre $0$ et $n-1$.
 
 Si le tableau est nommé $t$ :
 
@@ -95,36 +97,40 @@ Si le tableau est nommé $t$ :
 
 {% endnote %}
 
-Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée.
+Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée, on considère que :
 
-{% attention "**À retenir**" %}
-On considérera toujours que la taille d'un tableau est proportionnelle à la taille des objets qui la compose et est connue à sa création.
-{% endattention %}
-
-Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.
-
-On considérera que :
-
-- la création d'un tableau prend 1 instruction
-  - l'instruction `[1, 3, x]`{.language-} crée un tableau qui affecte à sa variable :
-    - d'indice 0 un entier valant 1
-    - d'indice 1 un entier valant 3
-    - d'indice 2 l'objet associé à la variable `x`{.language-}
-  - l'instruction `crée un tableau de longueur k`{.language-} crée un tableau de longueur k.
-    - **Attention** : la valeur de chaque case est **indéterminée !**
-    - lorsque l'on crée des tableau de cette façon, il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
-- l'affectation d'un tableau à une variable prend 1 instruction : `t ← [1, 3, x]`{.language-} prend 2 instructions une pour la création et une pour l'affectation
-- l’accès à un élément particulier du tableau se fait en 1 instruction et en utilisant les crochets : `t[2]`{.language-} vaut le caractère `"l"`{.language-}
+- la taille en mémoire d'un tableau est proportionnelle à la taille d'un objet fois la taille.
+- il faut 1 instruction pour créer un tableau
+- il faut 1 instruction pour accéder à une variable d'indice donné.
 
 {% info %}
 On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. [On justifiera ceci proprement plus tard](../../complexité-calculs/O-pour-l-algorithmie){.interne}.
 {% endinfo %}
 
-Les opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
+Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui peut être directe :
+
+- `t ← [1, 3, 2]`{.language-} qui crée un tableau de 3 entiers
+- `t ← tableau de 23 caractères`{.language-} qui crée un tableau de 23 caractères
+
+On considère que la création d'un tableau prendra toujours 1 instruction, puis on affecte les variables. La première affectation est donc un raccourci pour 4 instructions :
+
+1. la création d'un tableau de longueur 3
+2. l'affectation `t[0] ← 1`{.language-} 
+3. l'affectation `t[1] ← 3`{.language-} 
+4. l'affectation `t[2] ← 2`{.language-} 
+
+{% attention %}
+Une fois le tableau crée, la valeur de chaque case est **indéterminée !**. Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
+{% endattention %}
+
+
+Toutes les autres opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
 
 {% attention "**À retenir**" %}
 Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.
 {% endattention %}
+
+Le type d'un tableau sera de la forme `[T]`{.language-} et signifiera que le tableau contient des objets de type `T`{.language-}. Un tableau de type `[entier]`{.language-} contiendra des entiers.
 
 ### Tranches
 
@@ -159,6 +165,13 @@ Les chaines étant très utilisées, des langages comme python les considèrent 
 {% note %}
 Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).
 {% endnote %}
+
+La chaîne de caractère étant très utilisée, on se permettra les abus suivant :
+
+- de définir une chaîne directement `s ← "Salut"`{.language-}
+- d'utiliser le type `chaîne`{.language-} plutôt que `[caractère]`{.language-} (les 2 sont synonymes)
+
+Ainsi, un tableau de chaînes sera de type `[chaîne]`{.language-} qui est égal à `[[caractère]]`{.language-} (un tableau de tableaux de caractères).
 
 ## <span id="instruction-contrôle"></span> Instructions de contrôle
 
