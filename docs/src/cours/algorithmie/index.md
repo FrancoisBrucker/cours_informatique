@@ -526,7 +526,9 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
 ### Pseudo-code
 
-#### Pseudo-code binaire
+> TBD comment arriver au jeu d'instruction "minimal" permettant d'aller de pseudo-code à code exécutable
+
+#### Pseudo-code et données binaires
 
 {% aller %}
 [Fonctions booléennes et pseudo-code](./fonctions-booléennes){.interne}
@@ -541,6 +543,7 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 #### Exécuter du pseudo-code
 
 > TBD von Neumann
+> TBD problème de l'infini.
 > TBD découpage des objets en mots pour les fonctions (16, 32, 64)
 > TBD mais en interne tout est fait avec NAND
 
@@ -698,6 +701,10 @@ Pseudo-code et machine de Turing sont deux notions équivalentes.
   3. on peut avoir autant de ruban qu'on le veut et écrire où on veut en mémoire : on peut utiliser le modèle de von Neumann avec une machine de Turing
 
 {% enddetails %}
+
+#### Compilation
+
+> bases de la compilation
 
 ### Algorithme
 

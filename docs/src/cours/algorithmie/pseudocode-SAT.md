@@ -11,18 +11,56 @@ eleventyComputed:
 
 
 > TBD plan
-> TBD donner exemple fil rouge
+Le but de cette partie est de montrer que l'on peut "_compiler_" toute fonction de signature `f(e:[bit]) → [bit]`{.language-}  pseudo-code épuré en une fonction SAT
 
+## Pseudo-code épuré
 
-5. résoudre sortie = résoudre entrée ! 
-6. ce n'est pas encore Cook et Levin car pas polynomial.
+On a vu qu'écrire un pseudo-code pouvait se résumer sans perte de généralité au fait de n'utiliser que des types `bit`{.language-} et `[bit]`{.language-} et l'opération logique `NAND`{.language-}. On peut même aller plus loin est supposer sans perte de généralité que les seules structures de contrôle autorisées sont :
+
+- `si x: ...bloc...`{.language-} où `x` est une variable binaire. Le bloc n'est exécuté que si `x = 1`{.language-},
+- `tant que x: ...bloc...`{.language-} où `x` est une variable binaire. Le bloc n'est exécuté que tant que `x = 1`{.language-}.
+
+Une ligne de ce pseudo-code épuré ne peut donc être qu'un des choix suivant :
+
+1. création et affectation d'une variable :
+  1. `x`{.language-} où $x$ est une variable de type `bit`{.language-} : création d'une variable de type `bit`{.language-} et initialisation à 0
+  2. `x[:K]`{.language-} création d'une variable de type `[bit]`{.language-} à $K$ éléments
+  3. `x[:u(k)]`{.language-} création d'une variable de type `[bit]`{.language-} à $u(k)$ éléments
+2. affectation d'une variable de type `bit`{.language-} : 
+  1. `x ← 0`{.language-} où $x$ est une variable de type `bit`{.language-}
+  2. `x ← 1`{.language-} où $x$ est une variable de type `bit`{.language-}
+  3. `x ← y`{.language-} où $x$ et $y$ sont des variables de type `bit`{.language-}
+  4. `x ← y[K]`{.language-} où $x$ est une variable de type `bit`{.language-}, $y$ une variable de type `[bit]`{.language-} et $K$ un entier
+  5. `x ← y[u(i)]`{.language-} où $x$ est une variable de type `bit`{.language-}, $y$ et $i$ deux variables de type `[bit]`{.language-}
+3. affectation d'une case d'un tableau de type `[bit]`{.language-} avec indice constant : `x[K] ← y`{.language-} où $K$ est un entier, $x$ est une variable de type `[bit]`{.language-} et $y$ est une variable de type `bit`{.language-}
+4. affectation d'une case d'un tableau de type `[bit]`{.language-} avec indice déterminé par une variable : `x[u(i)] ← y`{.language-} où $x$ et $i$ sont des variable de type `[bit]`{.language-} et $y$ est une variable de type `bit`{.language-}
+5. instruction de contrôle :
+  1. `si x:`{.language-} où $x$ est une variable de type `bit`{.language-}
+  2. `tant que x:`{.language-} où $x$ est une variable de type `bit`{.language-}
+6. opération `x ← NAND(y, z)`{.language-} où $x$, $y$ et $z$ sont des variables de type `bit`{.language-}
+
+Toutes les instructions vont nécessiter $\mathcal{O}(1)$ opérations élémentaires à part les instructions où il faut utiliser la fonction $u()$ qui ajoute $\mathcal{O}(n)$ opérations élémentaires où $n$ est la longueur du tableau en entrée.
+
+> TBD : peut dériver le reste, comme `x[u(i)] ← 0`{.language-}, `x[u(i)] ← y[u(j)]`{.language-} ou encore `si x[u(i)]:`{.language-} avec ces primitives.
 
 ## Formule logique et SAT
+
+Un pseudo-code épuré est assimilable à une liste d'instructions
+
 
 1. formule logique : avec et ou non. On a vu que ça fait tout. On peut "programmer" le tout en remplaçant des choses plus évoluée. Et max d'un tableau.
 2. transformation en CNF avec Tseitin Linéaire rappel de ce que l'on a vu
 
 s.
+
+> TBD attention complexité spatiale et temporelle.
+>- création et affectation d'une variable :
+  - `x ← 0`{.language-} où $x$ est une variable de type `bit`{.language-} : création d'une variable de type `bit`{.language-} et initialisation à 0
+  - `x[:K] ← 0`{.language-} création d'une variable de type `[bit]`{.language-} à $K$ éléments et initialisation de chacun de ses éléments à 0
+  - `x[:u(k)] ← 0`{.language-} création d'une variable de type `[bit]`{.language-} à $u(k)$ éléments et initialisation de chacun de ses éléments à 0
+
+> TBD faire la fonction associe un déplacement pour contraindre toute case allouée à être utilisée avec un dictionnaire de taille la complexité, change rien si poly on  est en complexité au carré.
+> TBD mais cases non initialisé implique résultat pas déterministe (aussi dans la vraie vie...) donc on alloue = bonne pratique et on force ici: `t[:n] ← 0` pour allouer. NB ne change rien. en vrai mais plus propre. même en code.
 
 ## Pseudo-code et transcription vers une formule logique
 
@@ -55,6 +93,10 @@ A la même expressivité que [le pseudo-code classique](../pseudo-code/){.intern
 
 
 ## Inversibilité de SAT
+
+
+5. résoudre sortie = résoudre entrée ! 
+6. ce n'est pas encore Cook et Levin car pas polynomial.
 
 > Inversibilité du problème SAT
 

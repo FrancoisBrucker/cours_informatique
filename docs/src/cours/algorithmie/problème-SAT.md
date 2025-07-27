@@ -43,7 +43,7 @@ Une formule logique sous la forme d'une disjonction de clause est dite sous la [
 
 > TBD on peut passer par distributivité d'un problème à un autre mais possiblement exponentiel.
 > TBD 
-[ exemple
+> exemple
 
 > TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses. on passe de dnf à cnf en passant au non. Voir <https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf>
 
