@@ -98,18 +98,59 @@
 
   <blockquote>
 <p>TBD plan
-TBD donner exemple fil rouge</p>
+Le but de cette partie est de montrer que l'on peut &quot;<em>compiler</em>&quot; toute fonction de signature <code class="language-">f(e:[bit]) → [bit]</code>  pseudo-code épuré en une fonction SAT</p>
 </blockquote>
-<ol start="5">
-<li>résoudre sortie = résoudre entrée !</li>
-<li>ce n'est pas encore Cook et Levin car pas polynomial.</li>
+<h2>Pseudo-code épuré</h2>
+<p>On a vu qu'écrire un pseudo-code pouvait se résumer sans perte de généralité au fait de n'utiliser que des types <code class="language-">bit</code> et <code class="language-">[bit]</code> et l'opération logique <code class="language-">NAND</code>. On peut même aller plus loin est supposer sans perte de généralité que les seules structures de contrôle autorisées sont :</p>
+<ul>
+<li><code class="language-">si x: ...bloc...</code> où <code>x</code> est une variable binaire. Le bloc n'est exécuté que si <code class="language-">x = 1</code>,</li>
+<li><code class="language-">tant que x: ...bloc...</code> où <code>x</code> est une variable binaire. Le bloc n'est exécuté que tant que <code class="language-">x = 1</code>.</li>
+</ul>
+<p>Une ligne de ce pseudo-code épuré ne peut donc être qu'un des choix suivant :</p>
+<ol>
+<li>création et affectation d'une variable :</li>
+<li><code class="language-">x</code> où $x$ est une variable de type <code class="language-">bit</code> : création d'une variable de type <code class="language-">bit</code> et initialisation à 0</li>
+<li><code class="language-">x[:K]</code> création d'une variable de type <code class="language-">[bit]</code> à $K$ éléments</li>
+<li><code class="language-">x[:u(k)]</code> création d'une variable de type <code class="language-">[bit]</code> à $u(k)$ éléments</li>
+<li>affectation d'une variable de type <code class="language-">bit</code> :</li>
+<li><code class="language-">x ← 0</code> où $x$ est une variable de type <code class="language-">bit</code></li>
+<li><code class="language-">x ← 1</code> où $x$ est une variable de type <code class="language-">bit</code></li>
+<li><code class="language-">x ← y</code> où $x$ et $y$ sont des variables de type <code class="language-">bit</code></li>
+<li><code class="language-">x ← y[K]</code> où $x$ est une variable de type <code class="language-">bit</code>, $y$ une variable de type <code class="language-">[bit]</code> et $K$ un entier</li>
+<li><code class="language-">x ← y[u(i)]</code> où $x$ est une variable de type <code class="language-">bit</code>, $y$ et $i$ deux variables de type <code class="language-">[bit]</code></li>
+<li>affectation d'une case d'un tableau de type <code class="language-">[bit]</code> avec indice constant : <code class="language-">x[K] ← y</code> où $K$ est un entier, $x$ est une variable de type <code class="language-">[bit]</code> et $y$ est une variable de type <code class="language-">bit</code></li>
+<li>affectation d'une case d'un tableau de type <code class="language-">[bit]</code> avec indice déterminé par une variable : <code class="language-">x[u(i)] ← y</code> où $x$ et $i$ sont des variable de type <code class="language-">[bit]</code> et $y$ est une variable de type <code class="language-">bit</code></li>
+<li>instruction de contrôle :</li>
+<li><code class="language-">si x:</code> où $x$ est une variable de type <code class="language-">bit</code></li>
+<li><code class="language-">tant que x:</code> où $x$ est une variable de type <code class="language-">bit</code></li>
+<li>opération <code class="language-">x ← NAND(y, z)</code> où $x$, $y$ et $z$ sont des variables de type <code class="language-">bit</code></li>
 </ol>
+<p>Toutes les instructions vont nécessiter $\mathcal{O}(1)$ opérations élémentaires à part les instructions où il faut utiliser la fonction $u()$ qui ajoute $\mathcal{O}(n)$ opérations élémentaires où $n$ est la longueur du tableau en entrée.</p>
+<blockquote>
+<p>TBD : peut dériver le reste, comme <code class="language-">x[u(i)] ← 0</code>, <code class="language-">x[u(i)] ← y[u(j)]</code> ou encore <code class="language-">si x[u(i)]:</code> avec ces primitives.</p>
+</blockquote>
 <h2>Formule logique et SAT</h2>
+<p>Un pseudo-code épuré est assimilable à une liste d'instructions</p>
 <ol>
 <li>formule logique : avec et ou non. On a vu que ça fait tout. On peut &quot;programmer&quot; le tout en remplaçant des choses plus évoluée. Et max d'un tableau.</li>
 <li>transformation en CNF avec Tseitin Linéaire rappel de ce que l'on a vu</li>
 </ol>
 <p>s.</p>
+<blockquote>
+<p>TBD attention complexité spatiale et temporelle.</p>
+<ul>
+<li>création et affectation d'une variable :</li>
+</ul>
+</blockquote>
+<ul>
+<li><code class="language-">x ← 0</code> où $x$ est une variable de type <code class="language-">bit</code> : création d'une variable de type <code class="language-">bit</code> et initialisation à 0</li>
+<li><code class="language-">x[:K] ← 0</code> création d'une variable de type <code class="language-">[bit]</code> à $K$ éléments et initialisation de chacun de ses éléments à 0</li>
+<li><code class="language-">x[:u(k)] ← 0</code> création d'une variable de type <code class="language-">[bit]</code> à $u(k)$ éléments et initialisation de chacun de ses éléments à 0</li>
+</ul>
+<blockquote>
+<p>TBD faire la fonction associe un déplacement pour contraindre toute case allouée à être utilisée avec un dictionnaire de taille la complexité, change rien si poly on  est en complexité au carré.
+TBD mais cases non initialisé implique résultat pas déterministe (aussi dans la vraie vie...) donc on alloue = bonne pratique et on force ici: <code>t[:n] ← 0</code> pour allouer. NB ne change rien. en vrai mais plus propre. même en code.</p>
+</blockquote>
 <h2>Pseudo-code et transcription vers une formule logique</h2>
 <ol start="3">
 <li>pseudo-code = pseudo-code binaire = instructions minimales</li>
@@ -150,6 +191,10 @@ TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonctio
 <p>TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.</p>
 </blockquote>
 <h2>Inversibilité de SAT</h2>
+<ol start="5">
+<li>résoudre sortie = résoudre entrée !</li>
+<li>ce n'est pas encore Cook et Levin car pas polynomial.</li>
+</ol>
 <blockquote>
 <p>Inversibilité du problème SAT</p>
 </blockquote>
