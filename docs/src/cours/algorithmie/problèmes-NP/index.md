@@ -154,6 +154,17 @@ Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. 
 
 {% endattention %}
 
+> TBD parler de la complexité spatiale. 
+> 
+> Dire que l'on s'en fout car un algorithme polynomiale en temps peut aussi être polynomial en espace. 
+> la seule façon que cela ne le soit pas est que l'on alloue (en $\mathcal{O}(1)$) des tableaux que l'on utilise pas. Genre un tableau de $2^n$ cases et que l'on utilise que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial.
+> Ce cas est limite car cela signifie que l'on utilise pas tout : toute utilisation d'une variable utilise 1 instruction.
+> On peut alors utiliser des dictionnaires à la place des tableaux **sans changer l'algorithme** ce qui garanti que la  complexité spatiale sera égale à la complexité du premier algo et la complexité sera au pire au carré de la complexité initiale. tout les accès passent au pire de $\mathcal{O}(1)$ à la taille des données (même si en moyenne ça ne change pas). Si la complexité initiale est polynomiale, le nouvel algorithme l'est aussi et sa complexité spatiale est inférieure à la complexité.
+>
+> TBD en faire une proposition pour P on à : si poly en temps alors poly en espace.
+> complexité > spatiale si toute variable est utilisée et on peut toujours s'y ramener : tout algorithme peut être écrit de telle sorte que complexité > spatiale
+
+
 ## Structure de NP
 
 Regardons la structure de NP d'un peu plus prêt en utilisant notre comparateur de problèmes : [la réduction polynomiale](../problème-réduction/#définition-réduction-polynomiale){.interne}.

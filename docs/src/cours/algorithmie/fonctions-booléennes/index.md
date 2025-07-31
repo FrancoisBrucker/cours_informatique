@@ -174,33 +174,80 @@ Montrer que l'on peut expliciter la fonction  $\text{NAND}(x, y)$ avec la foncti
 
 #### Généralisation
 
-Commençons par montrer la proposition suivante :
+Commençons par résoudre l'exercice suivant
 
-{% note "**Proposition**" %}
-Toute fonction booléenne peut s'écrire sous une [forme normale disjonctive](https://fr.wikipedia.org/wiki/Forme_normale_disjonctive)
-{% endnote %}
-{% details "preuve", "open" %}
+{% exercice %}
+En utilisant sa table de vérité, montrez que toute fonction booléenne peut s'écrire sous une [forme normale disjonctive](https://fr.wikipedia.org/wiki/Forme_normale_disjonctive).
+{% endexercice %}
+{% details "corrigé" %}
 
 Soit $f(x_1, \dots, x_n)$ une fonction de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$.
 
-À tout élément $x=(x_1, \dots, x_n)$ de $\\{0, 1\\}^n$ on peut associer la fonction $l^x(y_1, \dots, y_n) = l^x_1 \land \dots \land l^x_i \land \dots \land l^x_n$ où $l^x_i = y_i$ si $x_i = 1$ et $l^x_i = \overline{y_i}$ sinon. La fonction $f$ est alors égale à :
+À tout élément $y=(y_1, \dots, y_n)$ de $\\{0, 1\\}^n$ on peut associer la fonction $l^y(x) = l^y_1(x) \land \dots \land l^y_i(x) \land \dots \land l^y_n(x)$ où $l^y_i(x) = x_i$ si $y_i = 1$ et $l^y_i(x) = \overline{x_i}$ sinon pour tout $x=(x_1, \dots, x_n)$. La fonction $f$ est alors égale à :
 
 <div>
 $$
-f(x) = \lor \{l^y(x) | f(y) = 1\}
+f(x) = \lor \{l^y(x) | f(y) = 1\} = \bigvee_{f(y) = 1} (l^y_1(x) \land \dots \land l^y_i(x) \land \dots \land l^y_n(x))
 $$
 </div>
 
 {% enddetails %}
 
-La proposition suivante étant le résultat aux fonctions booléennes vectorielles
+On peut utiliser l'exercice précédent pour montrer que l'on peut aussi écrire une fonction booléenne sous [une forme normale conjonctive, comme une formule SAT](../problème-SAT/){.interne}, sans utiliser d'artifice compliqué :
+
+<span id="proposition-CNF-fonction"></span>
 
 {% note "**Proposition**" %}
-Toute fonction booléenne vectorielle de $\\{0, 1\\}^n$ dans $\\{0, 1\\}^m$ peut s'écrire comme un tuple de $m$ [formes normales disjonctives](https://fr.wikipedia.org/wiki/Forme_normale_disjonctive)
+Toute fonction booléenne $f$ de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peut s'écrire sous [forme normale conjonctive](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive) avec autant de clauses que de vecteurs $(x_1, \dots, x_n)$ tel que $f(x_1, \dots, x_n) = 0$.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Soit $f(x_1, \dots, x_n)$ une fonction de $\\{0, 1\\}^n$ dans $\\{0, 1\\}^m$. On peut écrire cette fonction comme la combinaison de $m$ fonctions booléennes $f_i(x_1, \dots, x_n)$ telles que $f(x_1, \dots, x_n) = (f_1(x_1, \dots, x_n), \dots, f_m(x_1, \dots, x_n))$ et utiliser la proposition précédente sur les $m$ fonctions booléennes.
+On utilise le fait que $\overline{a\land b} = \overline{a}\lor \overline{b}$ et que $\overline{a\lor b} = \overline{a}\land \overline{b}$ et on reprenant la fonction $l^y(x)$ définie dans le corrigé de l'exercice précédent. On a :
+
+<div>
+$$
+f(x) = \overline{\bigvee_{f(y) = 0} (l^y_1(x) \land \dots \land l^y_i(x) \land \dots \land l^y_n(x))} = \bigwedge_{f(y) = 0} (\overline{l^y_1(x)} \lor \dots \lor \overline{l^y_i(x)} \lor \dots \lor \overline{l^y_n(x)})
+$$
+</div>
+
+{% enddetails %}
+
+Ce résultat s'étant aux fonctions booléennes vectorielles :
+
+<span id="proposition-CNF-fonction-vect"></span>
+
+{% note "**Proposition**" %}
+Toute fonction booléenne vectorielle $f$ de $\\{0, 1\\}^n$ dans $\\{0, 1\\}^m$ peut s'écrire sous une forme normale conjonctive $f(x_1, \dots, x_n, y_1, \dots y_m)$ telle que $f(x_1, \dots, x_n, y_1, \dots y_m)$ est vraie si et seulement si $f(x_1, \dots, x_n) = (y_1, \dots y_m)$
+{% endnote %}
+{% details "preuve", "open" %}
+
+La fonction booléenne vectorielle $f$ peut s'écrire comme $m$ fonction booléennes $f_i$ de de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ tel que f(x) = (f_1(x), \dots, f_m(x))$. En utilisant le théorème précédent, on a que :
+
+<div>
+$$
+f_i(x) = \overline{\bigvee_{f_i(y) = 0} (l^y_1(x) \land \dots \land l^y_i(x) \land \dots \land l^y_n(x))} = \bigwedge_{f_i(y) = 0} (\overline{l^y_1(x)} \lor \dots \lor \overline{l^y_i(x)} \lor \dots \lor \overline{l^y_n(x)})
+$$
+</div>
+
+La formule logique suivante est alors uniquement vraie si $f_i(x) = y_i$ :
+
+<div>
+$$
+\begin{array}{lcl}
+f_i(x, y_i) &=& (y_i \land (\bigwedge_{f_i(y) = 0} (\overline{l^y_1(x)} \lor \dots \lor \overline{l^y_i(x)} \lor \dots \lor \overline{l^y_n(x)})) ) \lor \overline{y_i} \\
+& =& (y_i \lor \overline{y_i}) \land (\bigwedge_{f_i(y) = 0} (\overline{l^y_1(x)} \lor \dots \lor \overline{l^y_i(x)} \lor \dots \lor \overline{l^y_n(x)} \lor \overline{y_i}))\\
+& =& \bigwedge_{f_i(y) = 0} (\overline{l^y_1(x)} \lor \dots \lor \overline{l^y_i(x)} \lor \dots \lor \overline{l^y_n(x)} \lor \overline{y_i})\\
+\end{array}
+$$
+</div>
+
+On en conclut que la conjonction de clauses suivante n'est vraie que si et seulement si $f(x) = y$ :
+
+<div>
+$$
+f(x_1, \dots, x_n, y_1, \dots y_m) = \bigwedge_{1\leq i \leq m} f_i((x_1, \dots, x_n), y_i)
+$$
+</div>
 
 {% enddetails %}
 
@@ -1080,10 +1127,14 @@ On voit que [toutes les opérations autorisées pour un pseudo-code](../pseudo-c
 {% note "**Proposition**" %}
 Un pseudo-code utilisant uniquement :
 
-- des variables binaires ou des tableaux binaires
-- l'opération logique `NAND`{.language-}
-- des affectations de bit (variable binaire ou une case de tableaux)
-- les instructions de contrôles et des boucles du pseudo-code
+- variables :
+  - binaires ou des tableaux binaires
+  - les seules affectations autorisées sont les bits `x[i] ← y[j]`{.language-} avec $i$ étant un entier possiblement issu d'une évaluation $u(z)$
+- opérations : les fonctions booléennes vectorielle
+- instruction de contrôle `si x: ...bloc...`{.language-} où `x` est une variable binaire. Le bloc n'est exécuté que si `x = 1`{.language-}
+- répétition : `tant que x: ...bloc...`{.language-} où `x` est une variable binaire. Le bloc n'est exécuté que tant que `x = 1`{.language-}.
  
 A la même expressivité que [le pseudo-code classique](../pseudo-code/){.interne}.
 {% endnote %}
+
+> TBD l'opération logique `NAND`{.language-} suffit.

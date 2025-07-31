@@ -299,7 +299,13 @@ Ce code est réputé (on va le prouver) inviolable. S'il n'est pas réutilisé.
 
 La version informatisée du OTP est appelée [chiffre de Vernam](https://www.cryptage.org/vernam.html).
 
-Ici les messages, les chiffres et les clés sont des mots de $\\{0, 1\\}^L$ et on a, avec $\oplus$ le ou exclusif binaire :
+Ici les messages, les chiffres et les clés sont des mots de $\\{0, 1\\}^L$ et on a, avec $\oplus$ le ou exclusif binaire.
+
+{% lien %}
+Le ou exclusif en plus d'être simple à calculer est plein de super propriétés et c'est pour ça qu'il est utilisé partout :
+
+<https://florian.github.io//xor-trick/>
+{% endlien %}
 
 <div>
 $$
