@@ -97,98 +97,333 @@
   
 
   <blockquote>
-<p>TBD plan
-Le but de cette partie est de montrer que l'on peut &quot;<em>compiler</em>&quot; toute fonction de signature <code class="language-">f(e:[bit]) → [bit]</code>  pseudo-code épuré en une fonction SAT</p>
+<p>TBD plan</p>
 </blockquote>
-<h2>Pseudo-code épuré</h2>
-<p>On a vu qu'écrire un pseudo-code pouvait se résumer sans perte de généralité au fait de n'utiliser que des types <code class="language-">bit</code> et <code class="language-">[bit]</code> et l'opération logique <code class="language-">NAND</code>. On peut même aller plus loin est supposer sans perte de généralité que les seules structures de contrôle autorisées sont :</p>
-<ul>
-<li><code class="language-">si x: ...bloc...</code> où <code>x</code> est une variable binaire. Le bloc n'est exécuté que si <code class="language-">x = 1</code>,</li>
-<li><code class="language-">tant que x: ...bloc...</code> où <code>x</code> est une variable binaire. Le bloc n'est exécuté que tant que <code class="language-">x = 1</code>.</li>
-</ul>
-<p>Une ligne de ce pseudo-code épuré ne peut donc être qu'un des choix suivant :</p>
-<ol>
-<li>création et affectation d'une variable :</li>
-<li><code class="language-">x</code> où $x$ est une variable de type <code class="language-">bit</code> : création d'une variable de type <code class="language-">bit</code> et initialisation à 0</li>
-<li><code class="language-">x[:K]</code> création d'une variable de type <code class="language-">[bit]</code> à $K$ éléments</li>
-<li><code class="language-">x[:u(k)]</code> création d'une variable de type <code class="language-">[bit]</code> à $u(k)$ éléments</li>
-<li>affectation d'une variable de type <code class="language-">bit</code> :</li>
-<li><code class="language-">x ← 0</code> où $x$ est une variable de type <code class="language-">bit</code></li>
-<li><code class="language-">x ← 1</code> où $x$ est une variable de type <code class="language-">bit</code></li>
-<li><code class="language-">x ← y</code> où $x$ et $y$ sont des variables de type <code class="language-">bit</code></li>
-<li><code class="language-">x ← y[K]</code> où $x$ est une variable de type <code class="language-">bit</code>, $y$ une variable de type <code class="language-">[bit]</code> et $K$ un entier</li>
-<li><code class="language-">x ← y[u(i)]</code> où $x$ est une variable de type <code class="language-">bit</code>, $y$ et $i$ deux variables de type <code class="language-">[bit]</code></li>
-<li>affectation d'une case d'un tableau de type <code class="language-">[bit]</code> avec indice constant : <code class="language-">x[K] ← y</code> où $K$ est un entier, $x$ est une variable de type <code class="language-">[bit]</code> et $y$ est une variable de type <code class="language-">bit</code></li>
-<li>affectation d'une case d'un tableau de type <code class="language-">[bit]</code> avec indice déterminé par une variable : <code class="language-">x[u(i)] ← y</code> où $x$ et $i$ sont des variable de type <code class="language-">[bit]</code> et $y$ est une variable de type <code class="language-">bit</code></li>
-<li>instruction de contrôle :</li>
-<li><code class="language-">si x:</code> où $x$ est une variable de type <code class="language-">bit</code></li>
-<li><code class="language-">tant que x:</code> où $x$ est une variable de type <code class="language-">bit</code></li>
-<li>opération <code class="language-">x ← NAND(y, z)</code> où $x$, $y$ et $z$ sont des variables de type <code class="language-">bit</code></li>
-</ol>
-<p>Toutes les instructions vont nécessiter $\mathcal{O}(1)$ opérations élémentaires à part les instructions où il faut utiliser la fonction $u()$ qui ajoute $\mathcal{O}(n)$ opérations élémentaires où $n$ est la longueur du tableau en entrée.</p>
+<p>Le but de cette partie est de montrer que l'on peut &quot;<em>compiler</em>&quot; tout algorithme de signature <code class="language-">f(e:[bit]) → [bit]</code> écrit en pseudo-code en une formule SAT.</p>
 <blockquote>
-<p>TBD : peut dériver le reste, comme <code class="language-">x[u(i)] ← 0</code>, <code class="language-">x[u(i)] ← y[u(j)]</code> ou encore <code class="language-">si x[u(i)]:</code> avec ces primitives.</p>
-</blockquote>
-<h2>Formule logique et SAT</h2>
-<p>Un pseudo-code épuré est assimilable à une liste d'instructions</p>
-<ol>
-<li>formule logique : avec et ou non. On a vu que ça fait tout. On peut &quot;programmer&quot; le tout en remplaçant des choses plus évoluée. Et max d'un tableau.</li>
-<li>transformation en CNF avec Tseitin Linéaire rappel de ce que l'on a vu</li>
-</ol>
-<p>s.</p>
-<blockquote>
-<p>TBD attention complexité spatiale et temporelle.</p>
+<p>TBD algo de a([bit:n])-&gt; [bit:n'] est une fonction booléenne vectorielle de $\{0, 1\}^n \rightarrow \{0, 1\}^{n'}$. On peut donc lui associer une formule logique sous la forme d'une CNF. Cependant cette taille peut être exponentielle par rapport aux données.
+Nous allons montrer ici qu'on peut le faire avec une taille en nombre de littéraux polynomiale en ses complexités spatiales et temporelles.
+On utilisera pour cela 2 méthodes :</p>
 <ul>
-<li>création et affectation d'une variable :</li>
+<li>utiliser des fonctions booléennes avec des entrées constantes par rapport à la taille de l'entrée</li>
+<li>le fait que toute formule logique peut s'écrire comme une CNF avec un nombre de littéraux linéaire (formule de Tseitin).</li>
 </ul>
 </blockquote>
+<h2>Pseudo-code utilisé</h2>
+<blockquote>
+<p>TBD dire que l'on a un algo écrit en pseudo code avec fct booléenne que l'on peut écrire sous notre forme.
+Donner la complexité nouvelle nouvelle par rapport à l'ancienne en temps : même O et en mêmoire du carré.</p>
+</blockquote>
+<p>On utilise une version épurée (mais équivalente) au <a href="../fonctions-bool%C3%A9ennes" class="interne">pseudo-code utilisant des opérations de fonctions booléennes</a>.</p>
+<p>Soit $A$ un algorithme (il s'arrête pour toute entrée) écrit en pseudo-code. On peut supposer sans perte de généralité que :</p>
 <ul>
-<li><code class="language-">x ← 0</code> où $x$ est une variable de type <code class="language-">bit</code> : création d'une variable de type <code class="language-">bit</code> et initialisation à 0</li>
-<li><code class="language-">x[:K] ← 0</code> création d'une variable de type <code class="language-">[bit]</code> à $K$ éléments et initialisation de chacun de ses éléments à 0</li>
-<li><code class="language-">x[:u(k)] ← 0</code> création d'une variable de type <code class="language-">[bit]</code> à $u(k)$ éléments et initialisation de chacun de ses éléments à 0</li>
+<li>son entrée est une variable <code class="language-">e:[bit:n]</code> de longueur $n$,</li>
+<li>sa sortie est une variable <code class="language-">s:[bit]</code>,</li>
+<li>chaque ligne $A_i$ du pseudocode correspond à une instruction</li>
+<li>Sa complexité temporelle vaut $C(n)$ et sa complexité spatiale $S(n)$</li>
 </ul>
+<p>On va de plus simplifier l'écriture des instructions et des variables pour notre conversion en une formule SAT soit plus simple.</p>
 <blockquote>
-<p>TBD faire la fonction associe un déplacement pour contraindre toute case allouée à être utilisée avec un dictionnaire de taille la complexité, change rien si poly on  est en complexité au carré.
-TBD mais cases non initialisé implique résultat pas déterministe (aussi dans la vraie vie...) donc on alloue = bonne pratique et on force ici: <code>t[:n] ← 0</code> pour allouer. NB ne change rien. en vrai mais plus propre. même en code.</p>
+<p>TBD à refaire en ne particularisant pas. Juste expliciter toutes les différentes formes.
+Par exemple pour l'allocation, juste dire que toute allocation est ≤ à S(n)
+idem pour opération. Juste dire fonction booléenne vectorielle</p>
 </blockquote>
-<h2>Pseudo-code et transcription vers une formule logique</h2>
-<ol start="3">
-<li>pseudo-code = pseudo-code binaire = instructions minimales</li>
-<li>pseudo-code = formule logique = SAT (taille des tableaux = complexité)</li>
-</ol>
-<blockquote>
-<p>TBD attention à la taille des tableaux. Elle doit être connue à la &quot;compilation&quot; donc doit uniquement dépendre de la taille des entrées
-à chaque étape toute les variables.</p>
-</blockquote>
+<h3>Allocation de variables</h3>
+<p>On suppose que la taille de chaque variable est connue et ne dépend que de la taille de l'entrée. Ceci peut se faire sans perte de généralité et à un coût en complexité acceptable.</p>
+<p>En effet pour tout algorithme de complexité temporelle et spatiale valant respectivement $C(n)$ et $S(n)$, on peut créer chaque variable de type <code class="language-">[bit]</code> avec une taille de $S(n)$. Ce nouvel algorithme aura la même complexité temporelle que l'original (les tableaux  sont tous juste plus grand) et aura une complexité spatiale bornée par $C(n) \cdot S(n)$ (il y a au pire $C(n)$ variables binaires).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un pseudo-code utilisant uniquement :</p>
-<ul>
-<li>des variables binaires ou des tableaux binaires</li>
-<li>l'opération logique <code class="language-">NAND</code></li>
-<li>des affectations de bit (variable binaire ou une case de tableaux)</li>
-<li>des boucles <code class="language-">tant que x: &lt;bloc&gt;</code> avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.</li>
-<li>des instructions conditionnelles de la forme <code class="language-">si x: &lt;bloc&gt;</code> avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.</li>
-</ul>
-<p>A la même expressivité que <a href="../pseudo-code/" class="interne">le pseudo-code classique</a>.</p>
+<div class="pl-8 mr-8">
+<p>Les seules instructions de création de variables seront :</p>
+<ol>
+<li><code class="language-">b ← nouveau bit</code> création d'une variable $b$ de type <code class="language-">bit</code></li>
+<li><code class="language-">t ← nouveau [bit]</code> création d'une variable $t$ de type <code class="language-">[bit]</code> de longueur dépendant de la taille de l'entrée</li>
+</ol>
+<p>Toutes ces instructions vont nécessiter $\mathcal{O}(1)$ opérations élémentaires</p>
 </div></div>
 
 <blockquote>
-<p>TBD tout algo est un sat.
-TBD on a vue que les opérations peuvent être mise sous forme logique. C'est aussi vrai pour les structures de contrôle.
-TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
-TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonction de clause. et que comme on passe d'un problème à l'autre, on peut le faire puisque nos entrées sont données.</p>
+<p>TBD allocation doit être connue à la &quot;compilation&quot;</p>
+</blockquote>
+<h3>Affectation de variables</h3>
+<blockquote>
+<p>TBD on peut se ramener à des affectations de bits <code class="language-">t[u(i)] ← t'[u(i')]</code></p>
+</blockquote>
+<ul>
+<li><code class="language-">b ← 0</code> où $b$ est une variable de type <code class="language-">bit</code></li>
+<li><code class="language-">b ← 1</code> où $b$ est une variable de type <code class="language-">bit</code></li>
+<li><code class="language-">b ← b'</code> où $b$ et $b'$ sont des variables de type <code class="language-">bit</code></li>
+<li><code class="language-">t[u(i)] ← b</code> où $b$ est une variable de type <code class="language-">bit</code>, $t$ et $u$ des des variables de type <code class="language-">[bit]</code></li>
+<li><code class="language-">b ← t[u(i)]</code>où $b$ est une variable de type <code class="language-">bit</code>, $t$ et $u$ des des variables de type <code class="language-">[bit]</code></li>
+</ul>
+<h3>Opérations</h3>
+<blockquote>
+<p>TBD
+toute fonction booléenne <code class="language-">f(e:[bit:N]) → [bit:N']</code> avec  $N$ et $N'$ fixé.
+De même que pour les variables on se restreint aux fonction booléennes. Toute fonction booléenne vectorielle est une suite finie de fonction booléennes.  Mais on peut encore simplifier en <code class="language-">f(e:[bit:N]) → bit</code></p>
+</blockquote>
+<h3>Instruction de saut</h3>
+<p>On remplace l'instruction de test (<code class="language-">si x: ...bloc...</code>) et de répétition <code class="language-">tant que x: ...bloc...</code> par une unique instruction de saut : <code class="language-">x ← 1; si x va l</code> où <code>x</code> est une variable binaire. Si <code class="language-">x = 1</code> alors l'algorithme &quot;<em>saute</em>&quot; à la ligne $l$ pour sa prochaine instruction plutôt que d'aller à la ligne suivante.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La seule instruction de contrôle utilisée sera :  <code class="language-">si b va l</code> où $b$ est une variable de type <code class="language-">bit</code> et $l$ un numéro de ligne.</p>
+</div></div>
+
+<h2>Formule logique et SAT</h2>
+<p>L'exécution d'un pseudo-code consiste à exécuter une ligne du pseudo-code après l'autre jusqu'à exécuter une instruction de fin.</p>
+<blockquote>
+<p>TBD à la fin arriver à <code>algo(e:[bit:n], s: [bit:n']) -&gt; vide</code> et il rend rien.</p>
+</blockquote>
+<p>Commençons par remarquer que si l'on possède une formule CNF pour toute instruction possible de l'algorithme, la formule suivante exécute la ligne $l$ de l'algorithme si $F_i$ est la formule logique associée à la ligne $l$ de celui-ci :</p>
+<div>
+$$
+EXE(l) \coloneqq ((l == 1) \land F_1) \lor ((l == 2) \land F_2) \lor ((l == L) \land F_L)
+$$
+</div>
+<p>Remarquez que l'équation ci-dessus est bien une formule logique car $l\leq L$ qui est une constance donc $l == i$ pour $1\leq i \leq L$ est une fonction booléenne et s'écrit comme une CNF.</p>
+<p>Cette instruction est exécutée avec un jeu de variables donné :</p>
+<div>
+$$
+V \coloneqq (b_1 = B_1) \land \dots \land (b_k = B_k) \dots (t_1 = T_1) \land \dots \land (t_{k'} = B_{k'})
+$$
+</div>
+<p>Avec :</p>
+<ul>
+<li>$(b = B) \coloneqq (b \land B) \lor (\overline{b} \land \overline{B})$ pour des variables binaires $b$ et des valeurs $B \in \{0, 1\}$</li>
+<li>$(t = T) \coloneqq [(t[0] \land T[0]) \lor (\overline{t[0]} \land \overline{T[0]})] \land \dots \land [(t[K-1] \land T[K-1]) \lor (\overline{t[K-1]} \land \overline{T[K-1]})]$ pour des variables tableau $t$ et des valeurs $T \in \{0, 1\}^K$</li>
+</ul>
+<p>On en conclut que si l'on connaît l'état des variable du programme et la ligne à exécuter, ceci peut s'écrire sous la forme de la formule logique :</p>
+<div>
+$$
+EXE(l) \land V
+$$
+</div>
+<p>Le but de ce qui va suivre est de terminer le travail, c'est à dire de passer de l'exécution d'une ligne à l'exécution de tout un algorithme. Ceci va être possible en conservant toutes les itérations de l'exécution de l'algorithme en une seule formule.</p>
+<h3>Suivi des instructions</h3>
+<p>Il faut pouvoir garder trace de chaque instruction tout au long de l'exécution de l'algorithme. Pour cela on peut définir une variable spéciale $l$ de type <code class="language-">[bit:log(L)]</code> qui va contenir le numéro de la ligne exécuté. On aura besoin de la fonction booléenne $(l == m)$ définie de $\{0, 1\}^{\log(L)} \rightarrow \{0, 1\}$. Et que l'on peut écrire avec $\mathcal{O}(\log(L)) = \mathcal{O}(1)$ littéraux.</p>
+<p>Comme on doit modifier cette ligne après chaque instruction, on va considérer la variable $l^i$ qui est la ligne de l'algorithme exécutée à l'itération $i$ :</p>
+<ul>
+<li>soit l'instruction n'était pas une instruction de saut et $l^{i+1} ← \text{INC}(l^i)$ avec INC la fonction booléenne vectorielle sur des tableaux de longueur $\log_2(L)$</li>
+<li>soit l'instruction était une instruction de saut réussi <code class="language-">si x va l'</code> et $l^{i+1} ← s(l_i)$ avec $s(l_i)$ une constante valant la ligne vers laquelle sauter présente à la ligne $l_i$ de l'algorithme.</li>
+</ul>
+<p>Dans les deux cas, on peut écrire cela sous la forme d'une formule :</p>
+<ul>
+<li>si pas de saut : on utilise la forme normale conjonctive associée à <code class="language-">INC</code> : $N(i) \coloneqq \text{CNF}(\text{INC}, l^{i}, l^{i+1})$</li>
+<li>si un saut vers la ligne $s$ : on utilise la formule logique $(l^{i+1} = s)$ si le saut est réussi et on incrémente sinon : $S(i, s) \coloneqq (\overline{x} \land \text{CNF}(\text{INC}, l^{i}, l^{i+1})) \lor (l^{i+1} = s)$.</li>
+</ul>
+<p>Tout ces choix peuvent s'écrire comme une grande formule en notant $L_S$ l'ensemble des lignes avec saut, $\overline{L_S}$ l'ensemble des lignes sans saut et $L_F$ l'ensemble des ligne de rendu (<code class="language-">rendre s</code>) :</p>
+<div>
+$$
+L^i \coloneqq [\bigvee_{l \in \overline{L_S}}((l^i == l) \land N(i))] \lor [\bigvee_{l \in {L_S}}((l^i == l) \land S(i, s(l)))] \lor [\bigvee_{l \in {L_F}}((l^i == l) \land (l^{i+1} = l^i))]
+$$
+</div>
+<p>Cette formule est constituée de $\mathcal{O}(L \cdot \log_2(L)) = \mathcal{O}(1)$ littéraux.</p>
+<p>On a ajouté l'ensemble des lignes de fin comme sentinelle pour s'assurer qu'il y aura toujours $C(n)$ itérations : une fois arrivé à une ligne de rendu on ne change plus de ligne. Ceci permet d'écrire la formule logique générale permettant de suivre les lignes exécutées tout au long de l'algorithme :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le suivi des lignes d'instructions effectuées par l'algorithme tout au long de son exécution est une formule à $\mathcal{O}(C(n) \cdot L \cdot \log_2(L)) = \mathcal{O}(C(n))$ littéraux :</p>
+<div>
+$$
+L \coloneqq (l^1 = u(1)) \land [\bigwedge_{1\neq i \leq C(n)} L^i]
+$$
+</div>
+</div></div>
+
+<h3>Suivi des variables</h3>
+<p>Le programme commence par initialiser la variable d'entrée, puis chaque itération va modifier une variable. Pour rendre compte de ces modifications au cours du temps on va dupliquer chaque variables pour chaque itération. La variable $v$ aura ainsi $C(n)$ copies telle que :</p>
+<ul>
+<li>$v^1$ soit sa valeur à la première itération,</li>
+<li>$v^i$ soit sa valeur au début de la $i$ème itération</li>
+<li>$v^{C(n)}$ sa valeur à la fin de l'exécution</li>
+</ul>
+<p>Pour écrire cela sans peine, on peut supposer sans perte de généralité que l'algorithme possède $S(n)$ variables $v_1$ à $v_K$ et telles que $v_1$ soit l'entrée et $v_2$ la sortie. L'initialisation des variables est alors :</p>
+<div>
+$$
+V^0 \coloneqq (v_1 = e)
+$$
+</div>
+<p>Qui est une formule de $S(n)$ littéraux</p>
+<p>Entre la $i$ème et la $i+1$ème itérations toutes les variables non modifiées par l'instruction courant sont les mêmes. En notant $v^i$ la variable à l'itération $i$ on a $v^i = v^{i+1}$ sauf si l'instruction $i$ la modifie. On peut alors définir :</p>
+<div>
+$$
+V(i, k) \coloneqq \bigwedge_{j\neq k}(v^{i+1}_j = v^i_j)
+$$
+</div>
+<p>La formule précédente conserve toutes les variable à part $v_k$ entre l'itération $i$ et l'itération $i+1$ et possède $\mathcal{O}(S(n) \cdot S(n))$ littéraux (si toutes les variables sont des tableaux).</p>
+<p>En notant $k_l$ la variable modifiée par l'instruction de la ligne $l$ du programme on a :</p>
+<div>
+$$
+V^i \coloneqq \bigvee_{1\neq m \leq L}((l^i == m) \land V(i, k_m))
+$$
+</div>
+<p>Qui est une formule de $\mathcal{O}(S(n) \cdot S(n) \cdot L)$ littéraux permettant de conserver toutes les variables saut celle modifiée d'une itération à l'autre.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La conservation des variables non modifiées tout au long du programme est une formule à $\mathcal{O}(C(n) \cdot S(n) \cdot S(n) \cdot L) = \mathcal{O}(C(n) \cdot S(n) \cdot S(n))$ littéraux :</p>
+<div>
+$$
+V \coloneqq (v^1_1 = e) \land (\bigwedge_{1\neq i \leq C(n)} V^i) \land (s = v^{C(n)}_2)
+$$
+</div>
+</div></div>
+
+<h3>Opération</h3>
+<blockquote>
+<p>TBD les seules instructions qu'il faut convertir en formule sont les affectations de variables et les fonctions booléennes</p>
+</blockquote>
+<p>On sépare les lignes en 2 :</p>
+<ul>
+<li>$L_A$ les lignes avec une affectation de variable</li>
+<li>$L_F$ les lignes avec une affectation à une fonction booléenne :  <code class="language-">b ← f(t)</code></li>
+</ul>
+<p>Lors de l'exécution de la $i$ème instruction, la formule logique associée à ces lignes sera du type :</p>
+<div>
+$$
+O^i \coloneqq [\bigvee_{1\leq l \leq L_A} (l^i == l) \land (A^i_{l_i})] \lor [\bigvee_{1\leq l \leq L_F} (l^i == l) \land (F^i_{l_i})]
+$$
+</div>
+<p>Explicitons les formules $A^i_{l_i}$ et $F^i_{l_i}$</p>
+<h4>Affectation de variables</h4>
+<p>Affecter des variables dans un pseudo-code se fait de multiples façons. Commençons pas voir le cas simple, l'affectation d'une variable binaire à une constante : <code class="language-">b ← 0</code> ou <code class="language-">b ← 1</code></p>
+<p>Ces affectation se traduisent simplement en formules logiques :</p>
+<ul>
+<li><code class="language-">b ← 0</code> pour la $i$ ème instruction devient $\overline{b^{i+1}}$</li>
+<li><code class="language-">b ← 1</code> pour la $i$ ème instruction devient ${b^{i+1}}$</li>
+</ul>
+<p>Poursuivons par l'affectation d'une variable binaire à une autre : <code class="language-">b_1 ← b_2</code> lors de la $i$ ème instruction. C'est également simple :</p>
+<div>
+$$
+(b^{i+1}_1 = b_2^{i}) \coloneqq (b^{i+1}_1 \land b_2^{i}) \lor (\overline{b^{i+1}_1} \land \overline{b_2^{i}})
+$$
+</div>
+<p>Les cas pouvant poser problèmes sont ceux ou tout n'est pas connu et correspondent aux affectation concernant des indices de tableaux : <code class="language-">t[u(x)] ← 0</code> et <code class="language-">t[u(x)] ← 1</code>, <code class="language-">t[u(x)] ← b</code> et <code class="language-">b ← t[u(x)]</code> et enfin <code class="language-">t[u(x)] ← t'[u(y)]</code>. En effet la valeur de la variable $u$ est inconnue et dépend de l'exécution des instructions précédentes.</p>
+<p>Commençons par le cas le plus simple, l'affectation d'une case d'un tableau à une constante : <code class="language-">t[u(x)] ← 0</code> et <code class="language-">t[u(x)] ← 1</code>. Il faut prendre en compte toutes les valeurs possible pour $u(x)$. Heureusement le nombre de valeurs possible est borné puisque $0 \leq u(x) \leq S(n)$. On a alors :</p>
+<div>
+$$
+\begin{array}{lcl}
+(t^{i+1}[u(x^i)] = 1) &\coloneqq& \bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land t^{i+1}[k])\\
+(t^{i+1}[u(x^i)] = 0) &\coloneqq& \bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land \overline{t^{i+1}[k]})\\
+\end{array}
+$$
+</div>
+<p>Les formules sont maintenant correctes car $x^i == u^{-1}(k)$ est une fonction booléenne sur les $\log_2(S(n))$ bits de $x^i$ qui est une constante. Le nombre de littéraux de ces formules est de l'ordre de $\mathcal{O}(S(n) \cdot \log_2(S(n)))$.</p>
+<p>On en déduit la forme des formules associées aux affectations de type <code class="language-">t[u(x)] ← b</code> et <code class="language-">b ← t[u(x)]</code> :</p>
+<div>
+$$
+\begin{array}{lcl}
+(t^{i+1}[u(x^i)] = b^i) &\coloneqq &\bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land [(t^{i+1}[k] \land b^i) \lor (\overline{t^{i+1}[k]} \land \overline{b^i})])\\
+(b^{i+1} = t^{i}[u(x^i)])& \coloneqq &\bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land [(t^{i}[k] \land b^{i+1}) \lor (\overline{t^{i}[k]} \land \overline{b^{i+1}})])
+\end{array}
+$$
+</div>
+<p>Ce qui nous permet d'écrire la dernière forme <code class="language-">t[u(x)] ← t'[u(x')]</code> comme une succession de <code class="language-">b ← t'[u(x')]</code> puis <code class="language-">t[u(x)] ← b</code> avec $b$ une variable temporaire uniquement utilisée à cette ligne. On en déduit la formule suivante à $\mathcal{O}(S(n))$ littéraux :</p>
+<div>
+$$
+\begin{array}{lcl}
+(t^{i+1}[u(x^i)] = {t'}^{i}[u({x'}^i)]) &\coloneqq& [\bigvee_{1\leq k \leq S(n)}(({x'}^i == u^{-1}(k)) \land [({t'}^{i}[k] \land b) \lor (\overline{t^{i}[k]} \land \overline{b})])] \land \\
+&& [\bigvee_{1\leq k \leq S(n)}((x^{i} == u^{-1}(k)) \land [(t^{i+1}[k] \land b) \lor (\overline{t^{i+1}[k]} \land \overline{b})])]
+\end{array}
+$$
+</div>
+<p>De là :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'affectation de variables s'écrit avec une formule de l'ordre de $\mathcal{O}(S(n))$ littéraux :</p>
+<div>
+$$
+\begin{array}{lcl}
+(t^{i+1}[u(x^i)] = 1) &\coloneqq& \bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land t^{i+1}[k])\\
+(t^{i+1}[u(x^i)] = 0) &\coloneqq& \bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land \overline{t^{i+1}[k]})\\
+(t^{i+1}[u(x^i)] = b^i) &\coloneqq &\bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land [(t^{i+1}[k] \land b^i) \lor (\overline{t^{i+1}[k]} \land \overline{b^i})])\\
+(b^{i+1} = t^{i}[u(x^i)])& \coloneqq &\bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land [(t^{i}[k] \land b^{i+1}) \lor (\overline{t^{i}[k]} \land \overline{b^{i+1}})])\\
+(t^{i+1}[u(x^i)] = {t'}^{i}[u({x'}^i)]) &\coloneqq& [\bigvee_{1\leq k \leq S(n)}(({x'}^i == u^{-1}(k)) \land [({t'}^{i}[k] \land b) \lor (\overline{t^{i}[k]} \land \overline{b})])] \land \\
+&& [\bigvee_{1\leq k \leq S(n)}((x^{i} == u^{-1}(k)) \land [(t^{i+1}[k] \land b) \lor (\overline{t^{i+1}[k]} \land \overline{b})])]
+\end{array}
+$$
+</div>
+</div></div>
+
+<h4>Fonction booléennes vectorielles</h4>
+<blockquote>
+<p>TBD dire ici comme successions de projection fonctions booléennes (voir partie fonction booléennes).
+Un pseudo-code utilisant une fonction booléenne peut s'écrire de deux façons :</p>
+</blockquote>
+<ul>
+<li><code class="language">y ← f(x)</code> avec $x$ et $y$ deux variables de type <code class="language-">[bit]</code></li>
+<li><code class="language">b ← f(x)</code> avec $x$ une variable de type <code class="language-">[bit]</code> et $b$ de type <code class="language-">bit</code></li>
+</ul>
+<p>En utilisant le fait que <a href="../fonctions-bool%C3%A9ennes/#" class="interne">toute fonction booléenne peut s'écrire sous une forme normale conjonctive</a>, on peut associer à toute opération <code class="language">y ← f(x)</code> telle que <code class="language-">f(x:[bit:n]) → bit</code> une formule normale conjonctive <code class="language-">F(x)</code> telle que $y = F(x)$ et on a la formule normale conjonctive suivante : $CNF(f, x, y) = (F(x) \land y) \lor \overline{y} = F(x) \lor \overline{y}$. En faisant rentrer $\overline{y}$ dans toutes les clauses, on a bien une forme normale conjonctive $CNF(f, x, y)$ qui est vrai si et seulement si $f(x) = y$.</p>
+<blockquote>
+<p>TBD montrer avec <code class="language-">b ← NAND(b', b'')</code> où $b$, $b'$ et $b''$ sont des variables de type <code class="language-">bit</code>
+et dire que ça suffit puisque tout fct booléenne est un gros <code>NAND</code>.</p>
+</blockquote>
+<p>Si la ligne $l$ effectue la fonction $f_l(t)$ on peut lui associer</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La conservation des variables non modifiées tout au long du programme est une formule à $\mathcal{O}(C(n) \cdot S(n) \cdot S(n) \cdot L) = \mathcal{O}(C(n) \cdot S(n) \cdot S(n))$ littéraux :</p>
+<div>
+$$
+V \coloneqq (v^1_1 = e) \land (\bigwedge_{1\neq i \leq C(n)} V^i) \land (s = v^{C(n)}_2)
+$$
+</div>
+</div></div>
+
+<blockquote>
+<p>TBD dire que si on a la ligne <code class="language-">t[u(i)] ← f(t')</code> on peut considérer sans perte de généralité que l'on a les deux lignes <code class="language-">b ← f(t')</code> (avec b une variable de type bit) puis la ligne <code class="language-">t[u(i)] ← b</code> que l'on va considérer juste après</p>
+</blockquote>
+<h4>Formule finale</h4>
+<p>On a alors la formule logique associée à toutes les lignes liées aux opérations :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'exécution des opérations tout au long du programme est une formule à $\mathcal{O}(C(n) \cdot S(n) \cdot S(n) \cdot L) = \mathcal{O}(C(n) \cdot S(n) \cdot S(n))$ littéraux :</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</div></div>
+
+<p>Grace à Tsteitin on peut l'écrire sous la forme CNF et donc :</p>
+<blockquote>
+<p>TBD pseudo-code = formule CNF à O de littéraux</p>
 </blockquote>
 <blockquote>
-<p>TBD dire taille des variables dépendant de la taille des entrées. Au pire = complexité. Ne change pas si dans P.</p>
+<p>TBD explicier l'entrée e et la sortie s.
+Ce qui est remarquable c'est que l'on a pu transcrire les évolutions avec une formule à plat.</p>
+</blockquote>
+<h2>Résolution</h2>
+<blockquote>
+<p>TBD dire que c'est polynomiale en la complexité spatiale et temporelle. Donc si algo poly alors nb de littéraux aussi poly.</p>
 </blockquote>
 <blockquote>
-<p>TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.</p>
+<p>TBD dire que : 1. on peut toujours considérer que C(n) &gt; S(n) : sinon variables non utilisée et au pire (voir partie NP) on utilise un dictionnaire et on ca C'(n) = C(n)^2
+2. si C(n) poly le nombre de littéraux est poly aussi. Du coup tout algorithme en pseudo-code est une formule logique et peut être résolue par un SAT. C'est une forme de compilation si on a une machine qui résoud SAT ! Turing fait encore mieux en utilisant une machine pour exécuter d'autres machines.
+TBD mais cases non initialisé implique résultat pas déterministe (aussi dans la vraie vie...) donc on alloue = bonne pratique et on force ici: <code>t[:n] ← 0</code> pour allouer. NB ne change rien. en vrai mais plus propre. même en code.</p>
+</blockquote>
+<blockquote>
+<p>TBD on a une formule logique, pas encore un SAT
+TBD taille totale. On fait complexité fois chaque itération
+TBD NB de clauses totales
+TBD Tseitin pour tout mettre ensemble en CNF
+TBD pour chaque entrée on crée une clause en temps dépendant de la complexité spatiale et temporelle par rapport à l'entrée.</p>
 </blockquote>
 <h2>Inversibilité de SAT</h2>
 <ol start="5">
@@ -205,6 +440,9 @@ TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonctio
 </blockquote>
 <blockquote>
 <p>exemple réduction :</p>
+</blockquote>
+<blockquote>
+<p>TBD une seule grosse variable  qui est la mémoire et des registres qui permettent de faire le lien.</p>
 </blockquote>
 
 

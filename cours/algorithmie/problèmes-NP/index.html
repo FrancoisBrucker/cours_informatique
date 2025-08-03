@@ -280,6 +280,15 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </ul>
 </div></div>
 
+<blockquote>
+<p>TBD parler de la complexité spatiale.</p>
+<p>Dire que l'on s'en fout car un algorithme polynomiale en temps peut aussi être polynomial en espace.
+la seule façon que cela ne le soit pas est que l'on alloue (en $\mathcal{O}(1)$) des tableaux que l'on utilise pas. Genre un tableau de $2^n$ cases et que l'on utilise que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial.
+Ce cas est limite car cela signifie que l'on utilise pas tout : toute utilisation d'une variable utilise 1 instruction.
+On peut alors utiliser des dictionnaires à la place des tableaux <strong>sans changer l'algorithme</strong> ce qui garanti que la  complexité spatiale sera égale à la complexité du premier algo et la complexité sera au pire au carré de la complexité initiale. tout les accès passent au pire de $\mathcal{O}(1)$ à la taille des données (même si en moyenne ça ne change pas). Si la complexité initiale est polynomiale, le nouvel algorithme l'est aussi et sa complexité spatiale est inférieure à la complexité.</p>
+<p>TBD en faire une proposition pour P on à : si poly en temps alors poly en espace.
+complexité &gt; spatiale si toute variable est utilisée et on peut toujours s'y ramener : tout algorithme peut être écrit de telle sorte que complexité &gt; spatiale</p>
+</blockquote>
 <h2>Structure de NP</h2>
 <p>Regardons la structure de NP d'un peu plus prêt en utilisant notre comparateur de problèmes : <a href="../probl%C3%A8me-r%C3%A9duction/#d%C3%A9finition-r%C3%A9duction-polynomiale" class="interne">la réduction polynomiale</a>.</p>
 <p>De façon extrêmement surprenante lorsqu'on y pense, il existe un problème de $NP$, SAT, qui majore tous les autres problèmes. Nous démontrerons ceci précisément plus tard, admettons donc (pour l'instant) le théorème suivant :</p>
