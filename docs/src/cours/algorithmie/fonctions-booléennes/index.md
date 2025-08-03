@@ -28,6 +28,8 @@ f: \{0, 1\}^n \rightarrow \{0, 1\}
 $$
 </div>
 
+> TBD exemple de la projection
+> 
 Et une **_fonction booléenne vectorielle_** est une fonction booléenne qui rend un vecteur :
 
 <div>
@@ -37,6 +39,8 @@ $$
 </div>
 
 {% endnote %}
+
+> TBD exemple de la duplication
 
 ### Fonctions logiques
 
@@ -271,6 +275,8 @@ La taille de l'entrée d'une fonction booléenne est fixe. La taille de la forme
 Toute fonction booléenne vectorielle est calculable en  $\mathcal{O}(1)$ par un pseudo-code n'utilisant que la fonction $\text{NAND}$.
 {% endnote %}
 {% details "preuve", "open" %}
+
+> TBD ici composition avec projection = fct booléenne, donc calculable puis on refabrique un vecteur. Donner l'algorithme
 
 La preuve est immédiate puisqu'une fonction booléenne vectorielle est la concaténation d'un nombre constant ($m$) de fonctions booléennes calculables en $\mathcal{O}(1)$ et n'utilisant que la fonction $\text{NAND}$.
 
@@ -1130,7 +1136,7 @@ Un pseudo-code utilisant uniquement :
 - variables :
   - binaires ou des tableaux binaires
   - les seules affectations autorisées sont les bits `x[i] ← y[j]`{.language-} avec $i$ étant un entier possiblement issu d'une évaluation $u(z)$
-- opérations : les fonctions booléennes vectorielle
+- opérations : les fonctions booléennes vectorielles
 - instruction de contrôle `si x: ...bloc...`{.language-} où `x` est une variable binaire. Le bloc n'est exécuté que si `x = 1`{.language-}
 - répétition : `tant que x: ...bloc...`{.language-} où `x` est une variable binaire. Le bloc n'est exécuté que tant que `x = 1`{.language-}.
  

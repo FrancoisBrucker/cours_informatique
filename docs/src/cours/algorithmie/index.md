@@ -540,6 +540,11 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 [SAT et pseudo-code](pseudocode-SAT){.interne}
 {% endaller %}
 
+
+{% aller %}
+[SAT et les problèmes de NP](SAT-problème-NP){.interne}
+{% endaller %}
+
 #### Exécuter du pseudo-code
 
 > TBD von Neumann
@@ -548,6 +553,10 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 > TBD mais en interne tout est fait avec NAND
 
 ##### Pseudo-assembleur
+
+> TBD pseudo-code minimale avec juste NAND et affectation binaire
+> Dire que l'on peut donner des variables spécifique pour NAND et résultat d'affectation ce qui sépare les variables que l'on manipule de celle que l'on stocke
+> On peut même encore simplifier avec juste une seule grosse variable que l'on appelle la mémoire. c'est ce que l'on va faire maintenant.
 
 > TBD pseudo-code et FB
 > est à l'assembleur ce que le pseudo-code est au code. Un principe.

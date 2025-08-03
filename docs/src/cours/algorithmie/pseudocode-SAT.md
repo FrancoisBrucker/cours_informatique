@@ -14,6 +14,12 @@ eleventyComputed:
 
 Le but de cette partie est de montrer que l'on peut "_compiler_" tout algorithme de signature `f(e:[bit]) → [bit]`{.language-} écrit en pseudo-code en une formule SAT.
 
+> TBD algo de a([bit:n])-> [bit:n'] est une fonction booléenne vectorielle de $\\{0, 1\\}^n \rightarrow \\{0, 1\\}^{n'}$. On peut donc lui associer une formule logique sous la forme d'une CNF. Cependant cette taille peut être exponentielle par rapport aux données.
+> Nous allons montrer ici qu'on peut le faire avec une taille en nombre de littéraux polynomiale en ses complexités spatiales et temporelles.
+> On utilisera pour cela 2 méthodes : 
+> - utiliser des fonctions booléennes avec des entrées constantes par rapport à la taille de l'entrée
+> - le fait que toute formule logique peut s'écrire comme une CNF avec un nombre de littéraux linéaire (formule de Tseitin).
+
 ## Pseudo-code utilisé
 
 > TBD dire que l'on a un algo écrit en pseudo code avec fct booléenne que l'on peut écrire sous notre forme.
@@ -29,6 +35,10 @@ Soit $A$ un algorithme (il s'arrête pour toute entrée) écrit en pseudo-code. 
 - Sa complexité temporelle vaut $C(n)$ et sa complexité spatiale $S(n)$
 
 On va de plus simplifier l'écriture des instructions et des variables pour notre conversion en une formule SAT soit plus simple.
+
+> TBD à refaire en ne particularisant pas. Juste expliciter toutes les différentes formes. 
+> Par exemple pour l'allocation, juste dire que toute allocation est ≤ à S(n)
+> idem pour opération. Juste dire fonction booléenne vectorielle
 
 ### Allocation de variables
 
@@ -49,7 +59,7 @@ Toutes ces instructions vont nécessiter $\mathcal{O}(1)$ opérations élémenta
 
 ### Affectation de variables
 
-> TBD on peut se ramener à des affectations de bits.
+> TBD on peut se ramener à des affectations de bits `t[u(i)] ← t'[u(i')]`{.language-}
 
 - `b ← 0`{.language-} où $b$ est une variable de type `bit`{.language-}
 - `b ← 1`{.language-} où $b$ est une variable de type `bit`{.language-}
@@ -202,28 +212,159 @@ $$
 
 > TBD les seules instructions qu'il faut convertir en formule sont les affectations de variables et les fonctions booléennes
 
-#### Fonction booléennes
+On sépare les lignes en 2 : 
+
+- $L_A$ les lignes avec une affectation de variable
+- $L_F$ les lignes avec une affectation à une fonction booléenne :  `b ← f(t)`{.language-}
+
+Lors de l'exécution de la $i$ème instruction, la formule logique associée à ces lignes sera du type :
+
+<div>
+$$
+O^i \coloneqq [\bigvee_{1\leq l \leq L_A} (l^i == l) \land (A^i_{l_i})] \lor [\bigvee_{1\leq l \leq L_F} (l^i == l) \land (F^i_{l_i})]
+$$
+</div>
+
+Explicitons les formules $A^i_{l_i}$ et $F^i_{l_i}$
+
+#### Affectation de variables
+
+Affecter des variables dans un pseudo-code se fait de multiples façons. Commençons pas voir le cas simple, l'affectation d'une variable binaire à une constante : `b ← 0`{.language-} ou `b ← 1`{.language-} 
+
+
+Ces affectation se traduisent simplement en formules logiques :
+
+- `b ← 0`{.language-} pour la $i$ ème instruction devient $\overline{b^{i+1}}$
+- `b ← 1`{.language-} pour la $i$ ème instruction devient ${b^{i+1}}$
+
+Poursuivons par l'affectation d'une variable binaire à une autre : `b_1 ← b_2`{.language-} lors de la $i$ ème instruction. C'est également simple : 
+
+<div>
+$$
+(b^{i+1}_1 = b_2^{i}) \coloneqq (b^{i+1}_1 \land b_2^{i}) \lor (\overline{b^{i+1}_1} \land \overline{b_2^{i}})
+$$
+</div>
+
+
+Les cas pouvant poser problèmes sont ceux ou tout n'est pas connu et correspondent aux affectation concernant des indices de tableaux : `t[u(x)] ← 0`{.language-} et `t[u(x)] ← 1`{.language-}, `t[u(x)] ← b`{.language-} et `b ← t[u(x)]`{.language-} et enfin `t[u(x)] ← t'[u(y)]`{.language-}. En effet la valeur de la variable $u$ est inconnue et dépend de l'exécution des instructions précédentes.
+
+Commençons par le cas le plus simple, l'affectation d'une case d'un tableau à une constante : `t[u(x)] ← 0`{.language-} et `t[u(x)] ← 1`{.language-}. Il faut prendre en compte toutes les valeurs possible pour $u(x)$. Heureusement le nombre de valeurs possible est borné puisque $0 \leq u(x) \leq S(n)$. On a alors :
+
+<div>
+$$
+\begin{array}{lcl}
+(t^{i+1}[u(x^i)] = 1) &\coloneqq& \bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land t^{i+1}[k])\\
+(t^{i+1}[u(x^i)] = 0) &\coloneqq& \bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land \overline{t^{i+1}[k]})\\
+\end{array}
+$$
+</div>
+
+Les formules sont maintenant correctes car $x^i == u^{-1}(k)$ est une fonction booléenne sur les $\log_2(S(n))$ bits de $x^i$ qui est une constante. Le nombre de littéraux de ces formules est de l'ordre de $\mathcal{O}(S(n) \cdot \log_2(S(n)))$.
+
+On en déduit la forme des formules associées aux affectations de type `t[u(x)] ← b`{.language-} et `b ← t[u(x)]`{.language-} :
+
+<div>
+$$
+\begin{array}{lcl}
+(t^{i+1}[u(x^i)] = b^i) &\coloneqq &\bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land [(t^{i+1}[k] \land b^i) \lor (\overline{t^{i+1}[k]} \land \overline{b^i})])\\
+(b^{i+1} = t^{i}[u(x^i)])& \coloneqq &\bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land [(t^{i}[k] \land b^{i+1}) \lor (\overline{t^{i}[k]} \land \overline{b^{i+1}})])
+\end{array}
+$$
+</div>
+
+Ce qui nous permet d'écrire la dernière forme `t[u(x)] ← t'[u(x')]`{.language-} comme une succession de `b ← t'[u(x')]`{.language-} puis `t[u(x)] ← b`{.language-} avec $b$ une variable temporaire uniquement utilisée à cette ligne. On en déduit la formule suivante à $\mathcal{O}(S(n))$ littéraux :
+
+<div>
+$$
+\begin{array}{lcl}
+(t^{i+1}[u(x^i)] = {t'}^{i}[u({x'}^i)]) &\coloneqq& [\bigvee_{1\leq k \leq S(n)}(({x'}^i == u^{-1}(k)) \land [({t'}^{i}[k] \land b) \lor (\overline{t^{i}[k]} \land \overline{b})])] \land \\
+&& [\bigvee_{1\leq k \leq S(n)}((x^{i} == u^{-1}(k)) \land [(t^{i+1}[k] \land b) \lor (\overline{t^{i+1}[k]} \land \overline{b})])]
+\end{array}
+$$
+</div>
+
+De là :
+
+{% note %}
+L'affectation de variables s'écrit avec une formule de l'ordre de $\mathcal{O}(S(n))$ littéraux :
+
+<div>
+$$
+\begin{array}{lcl}
+(t^{i+1}[u(x^i)] = 1) &\coloneqq& \bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land t^{i+1}[k])\\
+(t^{i+1}[u(x^i)] = 0) &\coloneqq& \bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land \overline{t^{i+1}[k]})\\
+(t^{i+1}[u(x^i)] = b^i) &\coloneqq &\bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land [(t^{i+1}[k] \land b^i) \lor (\overline{t^{i+1}[k]} \land \overline{b^i})])\\
+(b^{i+1} = t^{i}[u(x^i)])& \coloneqq &\bigvee_{1\leq k \leq S(n)}((x^i == u^{-1}(k)) \land [(t^{i}[k] \land b^{i+1}) \lor (\overline{t^{i}[k]} \land \overline{b^{i+1}})])\\
+(t^{i+1}[u(x^i)] = {t'}^{i}[u({x'}^i)]) &\coloneqq& [\bigvee_{1\leq k \leq S(n)}(({x'}^i == u^{-1}(k)) \land [({t'}^{i}[k] \land b) \lor (\overline{t^{i}[k]} \land \overline{b})])] \land \\
+&& [\bigvee_{1\leq k \leq S(n)}((x^{i} == u^{-1}(k)) \land [(t^{i+1}[k] \land b) \lor (\overline{t^{i+1}[k]} \land \overline{b})])]
+\end{array}
+$$
+</div>
+
+{% endnote %}
+
+#### Fonction booléennes vectorielles
+
+> TBD dire ici comme successions de projection fonctions booléennes (voir partie fonction booléennes).
+Un pseudo-code utilisant une fonction booléenne peut s'écrire de deux façons :
+
+- `y ← f(x)`{.language} avec $x$ et $y$ deux variables de type `[bit]`{.language-}
+- `b ← f(x)`{.language} avec $x$ une variable de type `[bit]`{.language-} et $b$ de type `bit`{.language-}
+
 
 En utilisant le fait que [toute fonction booléenne peut s'écrire sous une forme normale conjonctive](../fonctions-booléennes/#){.interne}, on peut associer à toute opération `y ← f(x)`{.language} telle que `f(x:[bit:n]) → bit`{.language-} une formule normale conjonctive `F(x)`{.language-} telle que $y = F(x)$ et on a la formule normale conjonctive suivante : $CNF(f, x, y) = (F(x) \land y) \lor \overline{y} = F(x) \lor \overline{y}$. En faisant rentrer $\overline{y}$ dans toutes les clauses, on a bien une forme normale conjonctive $CNF(f, x, y)$ qui est vrai si et seulement si $f(x) = y$.
 
 > TBD montrer avec `b ← NAND(b', b'')`{.language-} où $b$, $b'$ et $b''$ sont des variables de type `bit`{.language-}
 >  et dire que ça suffit puisque tout fct booléenne est un gros `NAND`.
 
-#### Affectation de variables
+Si la ligne $l$ effectue la fonction $f_l(t)$ on peut lui associer
+{% note %}
 
-> TBD facile si constante, on fait comme pour les fonctions booléenne, problème = $t[u(i)] \leftrightarrow$ car i n'est pas une constante
+La conservation des variables non modifiées tout au long du programme est une formule à $\mathcal{O}(C(n) \cdot S(n) \cdot S(n) \cdot L) = \mathcal{O}(C(n) \cdot S(n) \cdot S(n))$ littéraux :
 
-### Formule finale
+<div>
+$$
+V \coloneqq (v^1_1 = e) \land (\bigwedge_{1\neq i \leq C(n)} V^i) \land (s = v^{C(n)}_2)
+$$
+</div>
+{% endnote %}
 
-> TBD taille totale. On fait complexité fois chaque itération
-> TBD NB de clauses totales
-> TBD Tseitin pour tout mettre ensemble en CNF
-> TBD pour chaque entrée on crée une clause en temps dépendant de la complexité spatiale et temporelle par rapport à l'entrée.
+> TBD dire que si on a la ligne `t[u(i)] ← f(t')`{.language-} on peut considérer sans perte de généralité que l'on a les deux lignes `b ← f(t')`{.language-} (avec b une variable de type bit) puis la ligne `t[u(i)] ← b`{.language-} que l'on va considérer juste après
+
+#### Formule finale
+
+On a alors la formule logique associée à toutes les lignes liées aux opérations :
+
+{% note %}
+L'exécution des opérations tout au long du programme est une formule à $\mathcal{O}(C(n) \cdot S(n) \cdot S(n) \cdot L) = \mathcal{O}(C(n) \cdot S(n) \cdot S(n))$ littéraux :
+
+> TBD
+
+{% endnote %}
+
+Grace à Tsteitin on peut l'écrire sous la forme CNF et donc :
+
+> TBD pseudo-code = formule CNF à O de littéraux
+
+
+> TBD explicier l'entrée e et la sortie s.
+> Ce qui est remarquable c'est que l'on a pu transcrire les évolutions avec une formule à plat.
 
 ## Résolution
 
 > TBD dire que c'est polynomiale en la complexité spatiale et temporelle. Donc si algo poly alors nb de littéraux aussi poly.
 
+
+> TBD dire que : 1. on peut toujours considérer que C(n) > S(n) : sinon variables non utilisée et au pire (voir partie NP) on utilise un dictionnaire et on ca C'(n) = C(n)^2
+> 2. si C(n) poly le nombre de littéraux est poly aussi. Du coup tout algorithme en pseudo-code est une formule logique et peut être résolue par un SAT. C'est une forme de compilation si on a une machine qui résoud SAT ! Turing fait encore mieux en utilisant une machine pour exécuter d'autres machines.
+> TBD mais cases non initialisé implique résultat pas déterministe (aussi dans la vraie vie...) donc on alloue = bonne pratique et on force ici: `t[:n] ← 0` pour allouer. NB ne change rien. en vrai mais plus propre. même en code.
+
+
+> TBD on a une formule logique, pas encore un SAT
+> TBD taille totale. On fait complexité fois chaque itération
+> TBD NB de clauses totales
+> TBD Tseitin pour tout mettre ensemble en CNF
+> TBD pour chaque entrée on crée une clause en temps dépendant de la complexité spatiale et temporelle par rapport à l'entrée.
 
 ## Inversibilité de SAT
 
@@ -245,62 +386,3 @@ En utilisant le fait que [toute fonction booléenne peut s'écrire sous une form
 >
 
 > TBD une seule grosse variable  qui est la mémoire et des registres qui permettent de faire le lien.
-
-## odds and ends
-
-> TBD à mettre avant
-
-### SAT et résolution
-
-> 
-Pour chaque variable on fait varier $l$ pour toute les lignes du pseudo-code.
-
-Le nombre d'instruction étant 
-On peut alors encore simplifier 
-
-> TBD crée des variables 
-> TBD faire des variables sans se préoccuper de combien puis dire que c'est un problème et dire que c'est la complexité spatiale et on peut créer un SAT juste avec la taille d'entrée.
-> 
-1. formule logique : avec et ou non. On a vu que ça fait tout. On peut "programmer" le tout en remplaçant des choses plus évoluée. Et max d'un tableau.
-2. transformation en CNF avec Tseitin Linéaire rappel de ce que l'on a vu
-
-s.
-
-> TBD attention complexité spatiale et temporelle.
->- création et affectation d'une variable :
-  - `x ← 0`{.language-} où $x$ est une variable de type `bit`{.language-} : création d'une variable de type `bit`{.language-} et initialisation à 0
-  - `x[:K] ← 0`{.language-} création d'une variable de type `[bit]`{.language-} à $K$ éléments et initialisation de chacun de ses éléments à 0
-  - `x[:u(k)] ← 0`{.language-} création d'une variable de type `[bit]`{.language-} à $u(k)$ éléments et initialisation de chacun de ses éléments à 0
-
-> TBD faire la fonction associe un déplacement pour contraindre toute case allouée à être utilisée avec un dictionnaire de taille la complexité, change rien si poly on  est en complexité au carré.
-> TBD mais cases non initialisé implique résultat pas déterministe (aussi dans la vraie vie...) donc on alloue = bonne pratique et on force ici: `t[:n] ← 0` pour allouer. NB ne change rien. en vrai mais plus propre. même en code.
-
-### Pseudo-code et transcription vers une formule logique
-
-3. pseudo-code = pseudo-code binaire = instructions minimales
-4. pseudo-code = formule logique = SAT (taille des tableaux = complexité)
-
-> TBD attention à la taille des tableaux. Elle doit être connue à la "compilation" donc doit uniquement dépendre de la taille des entrées
-à chaque étape toute les variables.
-
-{% note "**Proposition**" %}
-Un pseudo-code utilisant uniquement :
-
-- des variables binaires ou des tableaux binaires
-- l'opération logique `NAND`{.language-}
-- des affectations de bit (variable binaire ou une case de tableaux)
-- des boucles `tant que x: <bloc>`{.language-} avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.
-- des instructions conditionnelles de la forme `si x: <bloc>`{.language-} avec $x$ une variable binaire :  le bloc n'est exécuté que si $x = 1$.
- 
-A la même expressivité que [le pseudo-code classique](../pseudo-code/){.interne}.
-{% endnote %}
-
-> TBD tout algo est un sat.
-> TBD on a vue que les opérations peuvent être mise sous forme logique. C'est aussi vrai pour les structures de contrôle.
-> TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
-> TBD dire que toute fonction booléenne vectorielle s'écrit comme une conjonction de clause. et que comme on passe d'un problème à l'autre, on peut le faire puisque nos entrées sont données.
-
-> TBD dire taille des variables dépendant de la taille des entrées. Au pire = complexité. Ne change pas si dans P.
-
-> TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.
-
