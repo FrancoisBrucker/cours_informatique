@@ -6,6 +6,7 @@ import assetsConfig from "./config/assets.js";
 import filtersConfig from "./config/filters.js";
 
 import postCompilation from "./config/post-build.js";
+import typstConfig from "./config/typst.js";
 
 export default function(eleventyConfig) {
 
@@ -18,7 +19,8 @@ export default function(eleventyConfig) {
   filtersConfig(eleventyConfig);
 
   postCompilation(eleventyConfig); // tailwind
-
+  typstConfig(eleventyConfig)
+  
   eleventyConfig.addPlugin(syntaxHighlight, {
     
     alwaysWrapLineHighlights: false,
