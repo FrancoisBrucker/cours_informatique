@@ -24,9 +24,13 @@ export default function (eleventyConfig) {
         }
     }});
 
-    eleventyConfig.addPairedShortcode('typst', async (rawContent, arg) => {
+    eleventyConfig.addPairedShortcode('typst', async (rawContent, ...args) => {
       const typst = NodeCompiler.create();
-      const content = "#set page(width: auto,height:auto,fill: none)\n"+(arg === undefined ? "" : arg)+"\n"+rawContent
+      // const args = Array.prototype.slice.call(arguments, 1);
+      
+      // 
+      const content = "#set page(width: auto,height:auto,fill: none)\n"+args.join("\n")+"\n"+rawContent
+      
       try {
             const output = await typst.plainSvg({
                 mainFileContent: content,

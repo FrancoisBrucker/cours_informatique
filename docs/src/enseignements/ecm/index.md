@@ -15,7 +15,7 @@ eleventyComputed:
 
 Liste des cours d'informatique que j'effectue au sein de l'École Centrale Méditerranée.
 
-<!-- {% typst "#set page(fill:orange)"%}
+<!-- {% typst "#set page(fill:orange)", "coucou" %}
 #import "@preview/cetz:0.4.1"
 
 coucou les amis.
