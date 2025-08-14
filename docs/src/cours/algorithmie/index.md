@@ -479,7 +479,7 @@ Avant de finir cette première partie du cours, accordons nous un intermède. Re
 
 Cet intermède permet de préparer la troisième partie
 
-## <span id="partie-4"></span>Partie IV : structure de données avancées
+## <span id="partie-4"></span>Partie IV : structures de données avancées
 
 > TBD
 > <https://www.youtube.com/watch?v=6fnmXX8RK0s>
