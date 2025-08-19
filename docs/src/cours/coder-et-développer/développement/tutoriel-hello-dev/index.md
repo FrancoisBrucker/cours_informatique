@@ -78,7 +78,6 @@ Si vous n'avez pas suivi le tuto d'installation de vscode et son interaction ave
 
 ```python
 print("bonjour les gens !")
-
 ```
 
 {% endfaire %}
@@ -118,9 +117,7 @@ Vérifions qu'il remarque bien les fautes :
 Modifiez le fichier `main.py`{.fichier} pour écrire :
 
 ```python
-
 print ("bonjour les gens !")
-
 ```
 
 {% endfaire %}
