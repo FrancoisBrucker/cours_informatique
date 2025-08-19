@@ -540,7 +540,6 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 [SAT et pseudo-code](pseudocode-SAT){.interne}
 {% endaller %}
 
-
 {% aller %}
 [SAT et les problèmes de NP](SAT-problème-NP){.interne}
 {% endaller %}

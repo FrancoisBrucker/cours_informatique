@@ -11,7 +11,6 @@ eleventyComputed:
 
 > TBD chapeau
 
-
 [On a vu](../bases-théoriques/calculabilité/#algorithme-fonction){.interne} qu'un algorithme était une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$. Nous allons voir celles que l'on peut décrire par [un pseudo-code](../pseudo-code/){.interne}.
 
 ## Fonctions booléennes vectorielles
@@ -20,7 +19,6 @@ eleventyComputed:
 
 {% note "**Définition**" %}
 Une **_fonction booléenne_** est une fonction
-
 
 <div>
 $$
@@ -525,7 +523,6 @@ Pour tout tableau de bit $x$ de taille $n$ on a $i_n(-x) = -i_n(x)$.
 
 {% enddetails %}
 
-
 Il est crucial de retenir que cette notation dépend du nombre de bits de la représentation de l'entier. Ainsi :
 
 - $i^{-1}_2(1) = [1, 0]$ (de représentation binaire $0b01$)
@@ -541,6 +538,7 @@ Remarquez deux choses :
 {% note "**Définition**" %}
 
 Un tableau de bit considéré comme :
+
 - un entier positif est dit **_non signé_**
 - un entier relatif est dit **_signé_**
 
@@ -561,6 +559,8 @@ Nous ne parlerons pas plus de cet encodage ici, l'algorithmie ne s'intéressant 
 {% lien %}
 <https://fr.wikipedia.org/wiki/Racine_carr%C3%A9e_inverse_rapide> (voir aussi : <https://www.youtube.com/watch?v=Fm0vygzVXeE>)
 {% endlien %}
+
+> TBD montrer que r(x) < r(y) si u(x) < u(y) ce qui règle plein de problèmes.
 
 ### Chaînes de caractères
 
