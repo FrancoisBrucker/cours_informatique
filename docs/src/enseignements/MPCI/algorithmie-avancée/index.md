@@ -15,43 +15,43 @@ eleventyComputed:
 
 ## Programme
 
-En quatre parties.
+En trois/quatre parties.
 
 > TBD année prochaine faire préparer le cours avant et au tableau aller plus loin ?
 
 ### Modèles de calculs et classes de problèmes "utiles"
 
-1. cours 1 : [Modèle de calcul](/cours/algorithmie/#modèle-calculs){.interne}
-   1. [pseudo-assembleur](/cours/algorithmie/exécuter-code/pseudo-assembleur/){.interne}
-   2. [Architecture de Von Neumann](/cours/algorithmie/exécuter-code/von-neumann/){.interne}
-   3. Modèle de la [Machine de Turing](/cours/algorithmie/machine-turing/){.interne}
-2. Cours 2 : Turing et NP
-   1. [Machines de Turing](/cours/algorithmie/machine-turing/){.interne}
-      1. définition alternatives
-         - 2 curseurs
-         - 2 rubans
-         - alphabets
-      2. Modèle `01#`
-      3. coder avec Turing
-         1. doublement de batons
-         2. [autres exemples](https://courses.cs.washington.edu/courses/cse431/14sp/scribes/lec3.pdf)
-   2. [réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
-   3. Classes de problèmes :
-      1. [P, NP et NPC : avec vérifieurs](/cours/algorithmie/problèmes-NP/){.interne}
-      2. [Recherche universelle](/cours/algorithmie/recherche-universelle/){.interne}
-3. Cours 3 : NP et Turing, NPC
-   1. [SAT, 3-SAT et 2-SAT](/cours/algorithmie/problème-SAT/){.interne}
-   2. P, NP et NPC
-      1. [de vérifieur à décideur](/cours/algorithmie/décision-problèmes/){.interne}
-      2. [SAT est NPC](/cours/algorithmie/décision-problèmes/SAT-NPC/){.interne}
-4. Cours 4 : [problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/){.interne}
-   1. [SAC à dos est NPC](/cours/algorithmie/exemples-problèmes-NPC/){.interne}
-   2. [résolutions](/cours/algorithmie/problème-sac-à-dos/étude){.interne} :
+1. Problèmes NP
+   1. classes utiles
+   2. réduction
+   3. NPC
+2. algorithmie et logique 
+   1. fonctions booléennes
+   2. SAT, 3-SAT et 2-SAT
+   3. Théorème de Levin-Cook
+3. Modèle de calcul
+   1. (pseudo-)assembleur
+   2. architecture de Von Neumann
+   3. Machine de Turing
+4. problèmes NP complets du sac à dos :
       1. fractionnel
       2. énumération (juste donner le principe)
       3. programmation dynamique
 
-### C
+
+### Théorie des graphes
+
+> TBD
+
+### Peut-être 
+
+- Langage C
+- Réseaux
+- Cryptographie
+- Graphes et réseaux (sociaux)
+
+
+<!-- ### C
 
 {% lien %}
 Le but de cette partie est d'avoir assez de bases en C pour s'amuser.
@@ -164,7 +164,7 @@ Cours 1, 2 et 3
 
 ### Graphes aléatoires et infini
 
-> TBD
+> TBD -->
 
 ## Modalités de contrôle
 

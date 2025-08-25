@@ -321,6 +321,17 @@ C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que 
 [Utilisation de structures](./projet-structures){.interne}
 {% endaller %}
 
+## Intermède : Le problème de l'enveloppe convexe
+
+Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
+
+> TBD le faire avec des structures. et décomposer le gros pavé qui suit en petits bouts.
+
+{% aller %}
+[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
+{% endaller %}
+
+
 ## <span id="partie-3"></span>Partie III : problèmes
 
 On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
@@ -367,14 +378,6 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 
 {% aller %}
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
-{% endaller %}
-
-#### Problème de l'enveloppe convexe
-
-Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
-
-{% aller %}
-[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
 <!-- ### Jolis problèmes

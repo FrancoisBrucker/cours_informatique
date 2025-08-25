@@ -58,7 +58,7 @@ Trois cours, un par temps dans [le parcours d'approfondissement Do_It](https://d
 #### Temps 2
 
 {% aller %}
-[Linux](3A/do-it/linux/){.interne}
+[Linux et système](3A/do-it/linux/){.interne}
 {% endaller %}
 
 #### Temps 3

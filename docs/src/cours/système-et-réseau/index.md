@@ -17,15 +17,23 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-<!-- début résumé -->
-
-Cours d'introduction au système. La partie ops de dev**ops**.
-
-<!-- fin résumé -->
+Cours de système et de réseau. La partie ops de dev**ops**.
 
 Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
 
+## Minimum vital
+
+### Utilisation d'un système d'exploitation
+
+### Réseau
+
+> TBD voire partie web à mettre ici 
+
+## refactor
+
+> TBD découper en partie plus digeste
+
+> 
 1. Système
    1. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
    2. [Système d'exploitation](./système-exploitation){.interne}

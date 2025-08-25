@@ -17,6 +17,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD lazygit : <https://www.youtube.com/watch?v=CPLdltN7wgE> et gh voir <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
+> 
+
 Comment gérer le code source d'un projet avec git et github.
 
 {% lien %}
