@@ -305,6 +305,9 @@ L'encadrement de l'exercice précédent montre que $H(n) / \ln(n) \to_{+\infty} 
 
 ## Problème de Bâle
 
+> TBD <https://www.youtube.com/watch?v=CC2DG391HmA> en Anglais avec une façon rigolote de dire Bernouilli, mais c'est bien fait.
+
+
 {% lien %}
 [Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le)
 {% endlien %}
