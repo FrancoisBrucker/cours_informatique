@@ -35,25 +35,18 @@ Une fois les bases acquises, terminez cette partie en faisant le tutoriel de pyt
 <https://docs.python.org/fr/3/tutorial/index.html>
 {% endlien %}
 
-## <span id="s-équiper"></span> S'équiper pour le développement
-
-<!-- > TBD déplacer dans un cours système. -->
+## <span id="développer"></span>Développer
 
 Avant de pouvoir écrire des programmes conséquents il faut comprendre comment est organisé votre ordinateur et pouvoir minimalement interagir avec son système d'exploitation.
 
-### Connaissances système minimales
+{% prerequis "**Connaissances système minimales**" %}
 
-{% aller %}
-[Dossiers, fichiers et terminal](connaissances-système-minimales){.interne}
-{% endaller %}
+- [Dossiers, fichiers et terminal](connaissances-système-minimales){.interne}
+- [Un ordinateur pour le développement](ordinateur-développement){.interne}
 
-### Préparer son ordinateur pour le développement
+{% endprerequis %}
 
-{% aller %}
-[Un ordinateur pour le développement](ordinateur-développement){.interne}
-{% endaller %}
-
-## <span id="développer"></span>Développer
+Une fois les prérequis acquis :
 
 {% aller %}
 [Écrire et exécuter du code](développement){.interne}

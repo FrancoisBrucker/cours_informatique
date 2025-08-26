@@ -21,11 +21,28 @@ Cours de système et de réseau. La partie ops de dev**ops**.
 
 Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
 
-## Minimum vital
+## Bases
 
-### Utilisation d'un système d'exploitation
+> Utilisation d'un système d'exploitation et connexion à un système distant
 
-### Réseau
+### Système de fichiers
+
+Avant de comprendre comment un système d'exploitation fonctionne, utilisons le de façon efficace :
+
+{% aller %}
+[Interagir avec le système](connaissances-système-minimales){.interne}
+{% endaller %}
+
+### Terminal
+
+### Connexion à un système distant
+
+> url
+> transmission réseau
+> ssh
+
+
+## Réseau
 
 > TBD voire partie web à mettre ici 
 

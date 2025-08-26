@@ -29,7 +29,7 @@ $
 
 ### 1A
 
-Semaine d'Ouverture Scientifique :
+#### Semaine d'Ouverture Scientifique
 
 {% aller %}
 [JEMNEP](1A/jemnep/){.interne} (bases de la programmation en python)
@@ -39,7 +39,7 @@ Semaine d'Ouverture Scientifique :
 
 ### 2A
 
-S7 MIE :
+#### S7 MIE
 
 {% aller %}
 [Coder et développer en python](2A/cdp/){.interne} (développer des projets en python)
@@ -49,19 +49,19 @@ S7 MIE :
 
 Trois cours, un par temps dans [le parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
 
-#### Temps 1
+#### Temps 1 développement `Do_It`
 
 {% aller %}
 [Méthode de développement](3A/do-it/mdd/){.interne}
 {% endaller %}
 
-#### Temps 2
+#### Temps 2 développement `Do_It`
 
 {% aller %}
 [Linux et système](3A/do-it/linux/){.interne}
 {% endaller %}
 
-#### Temps 3
+#### Temps 3 développement `Do_It`
 
 {% aller %}
 [Cryptographie](3A/do-it/cryptographie/){.interne}
@@ -93,3 +93,31 @@ Pour certains, ils pourraient avoir été écrit demain tellement ils sont encor
 - Test Driven Development: By Example
 - The Mythical Man-Month: Essays on Software Engineering
 - Team Topologies: Organizing Business and Technology for Fast Flow of Value
+
+## Vieux cours
+
+Support de vieux cours que je n'enseigne plus (actuellement).
+
+### 1A 
+
+#### Semaine d'Ouverture Scientifique
+
+{% aller %}
+[Jolis algorithmes classiques](1A/jac/){.interne}
+{% endaller %}
+
+### 2A
+
+#### S7 option
+
+{% aller %}
+[Développement Web](2A/option-web/){.interne}
+{% endaller %}
+
+### 3A
+
+#### filière métier ADAD
+
+{% aller %}
+[Analyse des données](3A/adad/data-viz){.interne}
+{% endaller %}
