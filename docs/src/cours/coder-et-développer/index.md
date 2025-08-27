@@ -37,14 +37,29 @@ Une fois les bases acquises, terminez cette partie en faisant le tutoriel de pyt
 
 ## <span id="développer"></span>Développer
 
-Avant de pouvoir écrire des programmes conséquents il faut comprendre comment est organisé votre ordinateur et pouvoir minimalement interagir avec son système d'exploitation.
+Avant de pouvoir écrire des programmes conséquents il faut comprendre comment est organisé votre ordinateur et pouvoir minimalement interagir avec son système d'exploitation. Donc lisez la partie consacrée aux bases d'un système d'exploitation avant de continuer :
 
 {% prerequis "**Connaissances système minimales**" %}
 
-- [Dossiers, fichiers et terminal](connaissances-système-minimales){.interne}
-- [Un ordinateur pour le développement](ordinateur-développement){.interne}
+[Dossiers, fichiers et terminal](/cours/système-et-réseau/bases-utilisation/système/){.interne}
 
 {% endprerequis %}
+{% info "**Etape optionnelle**"%}
+
+Si vous avez votre ordinateur depuis longtemps sans vraiment vous en occuper, ou que vous avez des erreurs étranges, il peut-être nécessaire de faire une nouvelle installation :
+
+[Installer un nouveau système](/cours/système-et-réseau/bases-utilisation/installation/){.interne}
+
+{% endinfo %}
+
+Utiliser son ordinateur pour le développement nécessite quelques connaissances et outils pour que tout se passe au mieux. Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.
+
+> TBD Ordinateur pour le développement 
+> Utiliser son ordinateur pour le développement nécessite quelques connaissances et outils pour que tout se passe au mieux. Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.
+
+
+
+
 
 Une fois les prérequis acquis :
 

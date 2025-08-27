@@ -21,6 +21,9 @@ Le but de cette séance est de vous donner les connaissances nécessaire pour av
 
 ## Ordinateur pour le développement
 
+
+> TBD ici remettre les bons liens et parler des fichiers de la partie système.
+> 
 Afin de pouvoir utiliser votre ordinateur comme un outil permettant de faire du développement informatique, il vous faudra installer quelques logiciels et comprendre minimalement son organisation. Pour cela, suivez le tutoriel suivant :
 
 {% aller %}
@@ -42,7 +45,8 @@ Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 
 ## Programmation en python
 
-Vous aurez besoin d'installer python et un logiciel pour programmer :
+> TBD liens plus bons : 
+Vous aurez besoin d'installer python et un logiciel pour programmer : /cours/coder-et-développer/bases-programmation/#coder-en-python
 
 {% aller %}
 [Installer python](/cours/coder-et-développer/installer-python/#installation-développement){.interne}

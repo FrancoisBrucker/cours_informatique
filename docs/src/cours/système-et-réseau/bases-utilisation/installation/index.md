@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Ordinateur pour le développement
+title: Installation d'un nouveau système
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,7 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Utiliser son ordinateur pour le développement nécessite quelques connaissances et outils pour que tout se passe au mieux. Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.
 
 Il faut résister à la tentation de faire n'importe quoi en espérant que ça passe car, au bout du compte, on perd plus de temps à réparer qu'on en gagne à installer sans préparation.
 
@@ -43,10 +42,6 @@ Création d'un compte administrateur :
   {% endfaire %}
 
 ### Installation d'un nouveau système
-
-{% attention %}
-**Cette étape est optionnelle**, mais souvent très utile si vous avez votre ordinateur depuis longtemps et que vous y avez installé plein de choses de façon anarchique sans trop savoir ce que vous faisiez.
-{% endattention %}
 
 {% aller %}
 [Installation d'un nouveau système](installation-nouveau-système){.interne}

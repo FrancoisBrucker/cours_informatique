@@ -27,9 +27,9 @@ Installer un nouveau système nécessite de reformater votre disque dur. Avant c
 
 {% faire %}
 
-* sauvegardez vos données sur une clé pour que vous puissiez facilement les remettre sur votre nouveau système
-* vérifier les différentes applications actuellement installées et listez celles que vous voulez à nouveau installer.
-* lister les différents compte et mots de passe dont vous aurez besoin (wifi, steam, google, ...)
+- sauvegardez vos données sur une clé pour que vous puissiez facilement les remettre sur votre nouveau système
+- vérifier les différentes applications actuellement installées et listez celles que vous voulez à nouveau installer.
+- lister les différents compte et mots de passe dont vous aurez besoin (wifi, steam, google, ...)
 
 {% endfaire %}
 
@@ -37,8 +37,8 @@ L'installation devra très certainement aller sur internet pour récupérer les 
 
 {% faire %}
 
-* notez le login et le mot de passe du cloud pour pouvoir y accéder lors de l'installation
-* notez le nom de votre wifi et son mot de passe.
+- notez le login et le mot de passe du cloud pour pouvoir y accéder lors de l'installation
+- notez le nom de votre wifi et son mot de passe.
 {% endfaire %}
 
 ## Installation
@@ -106,26 +106,26 @@ sudo apt update && sudo apt full-upgrade -y
 
 #### Windows 11
 
-* carte graphique
-* clavier/souris si nécessaire
-* imprimante
+- carte graphique
+- clavier/souris si nécessaire
+- imprimante
 
 #### Macos
 
-* icloud drive
-* imprimante
-* tablette graphique si vous en avez une
+- _icloud_ drive
+- imprimante
+- tablette graphique si vous en avez une
 
 #### Linux/Ubuntu
 
-* imprimante
-* tablette graphique si vous en avez une
+- imprimante
+- tablette graphique si vous en avez une
 
 ## Utilitaires de tous les jours
 
 Non indispensable mais que vous utilisez tous les jours
 
-* steam, gog, epic, battle.net, origin, u-play, etc
-* vlc, office 360
-* discord
-* ...
+- steam, gog, epic, battle.net, origin, u-play, etc
+- vlc, office 360
+- discord
+- ...

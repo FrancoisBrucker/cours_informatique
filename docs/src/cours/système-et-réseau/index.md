@@ -5,10 +5,6 @@ title: Système et réseau
 tags: ['cours', 'unix', 'système']
 authors:
     - "François Brucker"
-resume: "Cours d'introduction"
-eleventyNavigation:
-    prerequis:
-        - "/cours/coder-et-développer/ordinateur-développement/"
 
 eleventyComputed:
     eleventyNavigation:
@@ -23,28 +19,21 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 
 ## Bases
 
-> Utilisation d'un système d'exploitation et connexion à un système distant
+### Utilisation
 
-### Système de fichiers
-
-Avant de comprendre comment un système d'exploitation fonctionne, utilisons le de façon efficace :
+Utilisation d'un système d'exploitation et principe d'une connexion à un système distant.
 
 {% aller %}
-[Interagir avec le système](connaissances-système-minimales){.interne}
+[Utilisation système et réseau](bases-utilisation){.interne}
 {% endaller %}
 
-### Terminal
+### Installation d'un nouveau système
 
-### Connexion à un système distant
+Avant de sérieusement utiliser son ordinateur, il peut être utile d'en faire une nouvelle installation. Des comportements inattendus viennent souvent d'une installation mal finalisée ou laissée trop longtemps à l'abandon.
 
-> url
-> transmission réseau
-> ssh
-
-
-## Réseau
-
-> TBD voire partie web à mettre ici 
+{% aller %}
+[Installation d'un nouveau système](bases-installation-système){.interne}
+{% endaller %}
 
 ## refactor
 

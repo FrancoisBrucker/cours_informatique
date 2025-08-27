@@ -59,7 +59,7 @@ Installé avec la plupart des environnements fournissant un interpréteur, le mo
 
 Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
 
-## Partie II : coder en python
+##  <span id="coder-en-python"></span>Partie II : coder en python
 
 Nous avons pour l'instant utilisé python pour exécuter des instructions ou des fonctions. Ceci permet déjà d'utiliser python mais va se révéler rapidement limitant lorsque l'on voudra effectuer des tâches plus complexes ou tout simplement non prévue par les modules.
 
