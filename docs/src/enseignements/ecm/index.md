@@ -69,11 +69,25 @@ Trois cours, un par temps dans [le parcours d'approfondissement Do_It](https://d
 
 ## Comment apprendre l'informatique dans une école "généraliste"
 
-1. **Choisir** toutes les options/cours où on peut en faire :
-   1. Suivez les socles fondamentaux d'algorithmie ou de système. Acquérir ces connaissances seul est ardu.
-   2. Avec les bases théoriques en poche, vous pourrez apprendre les technos/languages du moment par vous-même avec des projets perso ou ceux de la formation pour lesquels la mise en œuvre est libre.
-2. **Partir en S8 à l'étranger** pour suivre un cursus d'informatique dans une université étrangère. Vous allez acquérir les fondamentaux qui vous manquent encore.
-3. **Venir** en Do_It en 3A :)
+Commencez par choisir toutes les options/cours où on peut en faire :
+
+1. Suivez les socles fondamentaux d'algorithmie ou de système. Acquérir ces connaissances seul est ardu.
+2. Avec les bases théoriques en poche, vous pourrez apprendre les technos/languages du moment par vous-même avec des projets perso ou ceux de la formation pour lesquels la mise en œuvre est libre.
+
+### Sans double diplôme
+
+Il est tout à fait possible de faire une carrière d'informaticien en restant à l'ecm, mais il est alors très fortement conseillé de **partir en S8 à l'étranger** pour suivre un cursus d'informatique dans une université étrangère. Vous allez acquérir les fondamentaux qui vous manquent encore. 
+
+Puis **Venez** en Do_It en 3A :)
+
+### Double diplôme
+
+Commencez par choisir une université partenaire offrant des master en informatique. Il y a de nombreuses possibilités dans des universités étrangères prestigieuses. Puis faites en sorte d'acquérir les prérequis :
+
+- en suivant les cours informatiques optionnels de 1A et de 2A.
+- en s'auto-formant sur les sujet pratiques non couverts à l'ecm.
+
+### Attention
 
 Une fois que vous commencerez à progresser, **faites attention à** :
 
@@ -98,26 +112,10 @@ Pour certains, ils pourraient avoir été écrit demain tellement ils sont encor
 
 Support de vieux cours que je n'enseigne plus (actuellement).
 
-### 1A 
+{% lien %}
 
-#### Semaine d'Ouverture Scientifique
+- [Jolis algorithmes classiques](1A/jac/){.interne}
+- [Développement Web](2A/option-web/){.interne}
+- [Analyse des données](3A/adad/data-viz){.interne}
 
-{% aller %}
-[Jolis algorithmes classiques](1A/jac/){.interne}
-{% endaller %}
-
-### 2A
-
-#### S7 option
-
-{% aller %}
-[Développement Web](2A/option-web/){.interne}
-{% endaller %}
-
-### 3A
-
-#### filière métier ADAD
-
-{% aller %}
-[Analyse des données](3A/adad/data-viz){.interne}
-{% endaller %}
+{% endlien %}
