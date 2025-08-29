@@ -13,42 +13,42 @@ eleventyComputed:
 
 ---
 
+
 ## Programme
 
-En trois/quatre parties.
-
-> TBD année prochaine faire préparer le cours avant et au tableau aller plus loin ?
+En deux parties.
 
 ### Modèles de calculs et classes de problèmes "utiles"
 
-1. Problèmes NP
-   1. classes utiles
-   2. réduction
-   3. NPC
-2. algorithmie et logique 
-   1. fonctions booléennes
-   2. SAT, 3-SAT et 2-SAT
-   3. Théorème de Levin-Cook
-3. Modèle de calcul
-   1. (pseudo-)assembleur
-   2. architecture de Von Neumann
-   3. Machine de Turing
-4. problèmes NP complets du sac à dos :
-      1. fractionnel
-      2. énumération (juste donner le principe)
-      3. programmation dynamique
+#### Semaine 1
 
+{% aller %}
+
+1. Rappels de ce qu'est un algorithme et un pseudo-code
+2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
+3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
+4. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
+
+{% endaller %}
+
+#### Semaine 2
+
+1. fonctions booléennes
+2. Théorème de Levin-Cook
+3. (pseudo-)assembleur
+4. architecture de Von Neumann
+5. Machine de Turing
 
 ### Théorie des graphes
 
-> TBD
+> TBD un modèle universel (car SAT et plein d'autre) pour tout problème. Un outil de modélisation puissant
 
-### Peut-être 
+<!-- ### Peut-être 
 
 - Langage C
 - Réseaux
 - Cryptographie
-- Graphes et réseaux (sociaux)
+- Graphes et réseaux (sociaux) -->
 
 
 <!-- ### C

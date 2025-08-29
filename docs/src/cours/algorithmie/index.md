@@ -352,6 +352,12 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 [Problèmes NP](./problèmes-NP){.interne}
 {% endaller %}
 
+Le problème SAT est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
+
+{% aller %}
+[Problème SAT](./problème-SAT){.interne}
+{% endaller %}
+
 ### Design d'algorithmes
 
 > TBD intro pour dire si on a un nouveau problème, comment chercher à le résoudre.
@@ -363,14 +369,6 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 ### Problèmes classiques
 
 Ci-après quelques exemples classique de problèmes algorithmes (NP-complet ou non) pouvant se résoudre de multiples manières. Les connaître permet de rapidement forger une solution pour un problème nouveau.
-
-#### Problème SAT
-
-Le problème du sac à dos est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
-
-{% aller %}
-[Problème SAT](./problème-SAT){.interne}
-{% endaller %}
 
 #### Problème du sac à dos
 

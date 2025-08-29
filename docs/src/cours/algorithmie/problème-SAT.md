@@ -41,6 +41,47 @@ Une formule logique sous la forme d'une disjonction de clause est dite sous la [
 
 ## Formule logique et SAT
 
+{% note "**Définition**" %}
+[Une formule logique](https://fr.wikipedia.org/wiki/Formule_logique) est soit :
+
+- une variable booléenne
+- si $\phi$ est une formule alors $\overline{\phi}$ en est une également
+- si $\phi$ et $\psi$ sont deux formules alors $\phi \land \psi$ en est une également
+- si $\phi$ et $\psi$ sont deux formules alors $\phi \lor \psi$ en est une également
+
+Deux formules sont **_égales_** si elles ont les même table de vérité.
+
+{% endnote %}
+
+On ne parlera pas beaucoup plus de logique ici, en particulier nous n'aborderons pas les implications ou équivalences logiques. Pour nous ce n'est pas indispensable car :
+
+- $\phi \Rightarrow \psi \coloneqq (\phi \land \psi) \lor \overline{\phi}$
+- $\phi \Leftrightarrow \psi \coloneqq (\phi \land \psi) \lor (\overline{\phi} \land \overline{\psi})$
+
+Enfin, en associant une valeur de vérité à chaque variable, une formule sera vraie ou fausse. Une formule est ainsi une fonction booléenne. On peut alors parler d'égalité de formule si quelque soit la valeur des variables les formules sont égales :
+
+{% note "**Définition**" %}
+Deux formules sont **_égales_** si elles ont les même table de vérité.
+{% endnote %}
+
+On pourra alors simplifier 
+{% note "**Proposition**" %}
+
+On a les propriétés suivantes :
+
+- idempotence : $\phi \land \phi = \phi$ et $\phi \lor \phi = \phi$
+- double négation : $\overline{\overline{\phi}} = \phi$
+- commutativité 
+- associativité
+- distributivité
+- loi de morgan
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+> TBD on utilise des tables de vérité.
+{% enddetails %}
+
 > TBD on peut passer par distributivité d'un problème à un autre mais possiblement exponentiel.
 > TBD 
 > exemple
@@ -52,7 +93,7 @@ Une formule logique sous la forme d'une disjonction de clause est dite sous la [
 {% endlien %}
 
 Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
-) pour convertir les formule
+) pour convertir les formules
 
 ## <span id="3-sat"></span>3-SAT est NP-complet
 
