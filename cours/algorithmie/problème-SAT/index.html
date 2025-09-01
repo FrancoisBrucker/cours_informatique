@@ -158,23 +158,19 @@
 <p>Deux formules sont <strong><em>égales</em></strong> si elles ont les même table de vérité.</p>
 </div></div>
 
-<p>On ne parlera pas beaucoup plus de logique ici, en particulier nous n'aborderons pas les implications ou équivalences logiques. Pour nous ce n'est pas indispensable car :</p>
+<p>Pour les implication et équivalences logique :</p>
 <ul>
 <li>$\phi \Rightarrow \psi \coloneqq (\phi \land \psi) \lor \overline{\phi}$</li>
 <li>$\phi \Leftrightarrow \psi \coloneqq (\phi \land \psi) \lor (\overline{\phi} \land \overline{\psi})$</li>
 </ul>
-<p>Enfin, en associant une valeur de vérité à chaque variable, une formule sera vraie ou fausse. Une formule est ainsi une fonction booléenne. On peut alors parler d'égalité de formule si quelque soit la valeur des variables les formules sont égales :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Deux formules sont <strong><em>égales</em></strong> si elles ont les même table de vérité.</p>
-</div></div>
-
-<p>On pourra alors simplifier</p>
+<blockquote>
+<p>TBD utiliser ça pour le levin-cook.</p>
+</blockquote>
+<p>On ne parlera pas beaucoup plus de logique ici, en particulier nous n'aborderons pas les implications ou équivalences logiques.</p>
+<blockquote>
+<p>TBD exercice montrer $a \Leftrightarrow (a \lor c)$ est équivalent à</p>
+</blockquote>
+<p>De plus, les propriétés classique suivantes des fonctions logiques permettent d'assurer que l'on peut obtenir toutes les formules classiques avec notre définition.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -188,6 +184,37 @@
 <li>double négation : $\overline{\overline{\phi}} = \phi$</li>
 <li>commutativité</li>
 <li>associativité</li>
+</ul>
+</div></div>
+
+<blockquote>
+<p>TBD en particulier l'associativité permet de toujours séparer une formule en 2.
+TBD longueur d'une formule = nb de signes logiques.
+TBD pas sous la forme sat donc trouver des équivalents</p>
+</blockquote>
+<p>Enfin, en associant une valeur de vérité à chaque variable, une formule sera vraie ou fausse. Une formule est ainsi une fonction booléenne. On peut alors parler d'égalité de formule si quelque soit la valeur des variables les formules sont égales :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Deux formules sont <strong><em>égales</em></strong> si elles ont les même table de vérité.</p>
+</div></div>
+
+<blockquote>
+<p>TBD on peut le faire en utilisant prop distributivié :</p>
+</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On a les propriétés suivantes :</p>
+<ul>
 <li>distributivité</li>
 <li>loi de morgan</li>
 </ul>
@@ -217,12 +244,13 @@
 </details>     
 </div>
 <blockquote>
-<p>TBD on peut passer par distributivité d'un problème à un autre mais possiblement exponentiel.
-TBD
-exemple</p>
+<p>TBD  mais possiblement exponentiel.</p>
 </blockquote>
 <blockquote>
-<p>TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses. on passe de dnf à cnf en passant au non. Voir <a href="https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf">https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf</a></p>
+<p>exemple</p>
+</blockquote>
+<blockquote>
+<p>TBD on peut faire mieux</p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -232,6 +260,22 @@ exemple</p>
 <p><a href="https://www.youtube.com/watch?v=v2uW258qIsM">Transformation de Tseitin</a></p>
 </div></div>
 
+<blockquote>
+<p>TBD p26 <a href="https://perso.ensta-paris.fr/~chapoutot/teaching/master-logic/slides/lecture1.pdf">https://perso.ensta-paris.fr/~chapoutot/teaching/master-logic/slides/lecture1.pdf</a>
+on peut associer une valeur de vérité à chaque formule et les combiner de façon linéaire</p>
+</blockquote>
+<blockquote>
+<p>TBD :</p>
+<ol>
+<li>écrire la formule sous la forme d'un arbre</li>
+<li>associer une variable à chaque noeud</li>
+<li>propager les équivalences de vérité entre le noeud et ses enfants (non, et, ou).</li>
+<li>la formule finale est équivalente à la formule initiale</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>TBD supposé complètement parenthésé, sinon on ajoute par associativité (à gauche)</p>
+</blockquote>
 <p>Évite l'exponentialité si on utilise <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">que la distributivité</a> pour convertir les formules</p>
 <h2><span id="3-sat"></span>3-SAT est NP-complet</h2>
 <p>Un cas particulier important du problème <code>SAT</code> est le problème <code>3-SAT</code> ou toutes les clauses ont exactement 3 littéraux.</p>
@@ -344,13 +388,12 @@ $$
 <blockquote>
 <p>Réduction ne fonctionne pas. Autre problème</p>
 <p>Algo poly par limited backtracking : <a href="https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking">https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking</a>
-limited backatracking car chaque cas est indépendant donc si on doit backtracker impossible.</p>
+limited backatracking car chaque cas est indépendant donc si on doit backtracker impossible.
+2-sat poly : <a href="https://cp-algorithms.com/graph/2SAT.html">https://cp-algorithms.com/graph/2SAT.html</a></p>
 </blockquote>
+<p>On vérifie les conséquences de chaque choix. Une fois tous les obligés fait si pas de contradiction on a un sous ensemble stable et on peut supprimer les clauses ayant ces affectations. Sous cas et on recommence. Si contradiction, on prend l'affectation contraire et on reteste. Si ça rate encore alors affectation impossible.</p>
 <blockquote>
-<p>2-sat poly : <a href="https://cp-algorithms.com/graph/2SAT.html">https://cp-algorithms.com/graph/2SAT.html</a></p>
-</blockquote>
-<blockquote>
-<p>TBD faire dans la partie graphe : strongly connected component : Tarjan <a href="https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf">https://github.com/tpn/pdfs/blob/master/Depth-First Search and Linear Graph Algorithms - Tarjan (1972).pdf</a></p>
+<p>TBD refaire dans la partie graphe : strongly connected component : Tarjan <a href="https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf">https://github.com/tpn/pdfs/blob/master/Depth-First Search and Linear Graph Algorithms - Tarjan (1972).pdf</a></p>
 </blockquote>
 
 

@@ -1163,6 +1163,10 @@ code[class*="language-"]::before,
   content: "";
 }
 
+pre>svg {
+  display: inline
+}
+
 img {
   margin: 1rem;
   margin-left: auto;

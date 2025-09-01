@@ -247,6 +247,49 @@ Programme :
 <li>séparer les différentes parties d'un algorithmes en fonctions au nom explicite.</li>
 </ul>
 <p>Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.</p>
+<h2>Opérateurs utilisés en pseudo-code</h2>
+<blockquote>
+<p>TBD ici abus de notation avec utilisation sans déclaration. Le maitre mot est clarté. Si cela alourdi de tout expliciter alors que c'est clair, on laisse mais si ça peut rendre confus on l'explicite (ici exemple vec +)</p>
+</blockquote>
+<p>Les op</p>
+<blockquote>
+<p>TBD ajouter soit comme mot clé qui définie des variables
+unaire : <code>soit</code>
+binaire := définition soit x un entier x := un entier y := 3x + 1. On utilisera uniquement pour définir des fonctions ou algorithme d'une ligne `AJOUTE_UN(x) := x + 1. (attention dans certains vieux manuel ou &lt;- n'existe pas parfois := est utilisé comme &lt;-)
+&lt;- affectation
+= égalité (conséquence) 1 = cos2(x) + sin2(y)
+== test
+faire les différences entre
+x := y : on remplace x par y à chaque fois qu'on le voit
+x &lt;- y : on affecte x à la valeur de y
+x = y : avec les définitions de x et y les 2 variables sont toujours égales (c'est une conséquence)
+x == y : vrai si la valeur de x vaut la valeur de y et faux sinon</p>
+<p>puis dire que l'on oublie souvent cette ligne lorsque le type est évident.
+Mais attention aux cas limite c = a + 1 ou c = c + 1.0 en C.
+en python le type d´pend des variables ou des opérateurs :</p>
+</blockquote>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token operator">>></span><span class="token operator">></span> z <span class="token operator">=</span> x <span class="token operator">+</span> y
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'int'</span><span class="token operator">></span>
+<span class="token operator">>></span><span class="token operator">></span> z <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">/</span> <span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'float'</span><span class="token operator">></span>
+<span class="token operator">>></span><span class="token operator">></span> z <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">//</span> <span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'int'</span><span class="token operator">></span>
+<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">1.0</span>
+<span class="token operator">>></span><span class="token operator">></span> z <span class="token operator">=</span> x <span class="token operator">+</span> y
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'float'</span><span class="token operator">></span>
+<span class="token operator">>></span><span class="token operator">></span> z <span class="token operator">=</span> y <span class="token operator">+</span> x
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'float'</span><span class="token operator">></span></code></pre>
+<blockquote>
+<p>TBD soyez explicite <code>x entier puis x = 2/3</code> que vaut x ? 1 ou 0 ? floor ou ceil.
+L'algorithmie ne dot pas souffrir d'interpretation.</p>
+</blockquote>
 
 
 </article>
