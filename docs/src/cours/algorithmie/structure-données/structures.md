@@ -252,15 +252,17 @@ On peut bien sur combiner le tout avec des exemples plus ou moins tordu comme :
 
 Mais la plupart du temps, on reste simple.
 
-## Tableau de taille fixe
+## Sous-structures
 
-On aura parfois besoin de spécifier dans nos structure une taille fixée à nos attributs. On utilisera alors la syntaxe `[type:longueur]`{.language-}. Par exemple :
+On aura parfois besoin de spécifier dans nos structures des attributs dont les paramètres ont sont fixes ou dans une gamme de valeurs. Plutôt que de faire un type particulier on pourra utiliser une syntaxe similaire à la définition :
 
 ```pseudocode
 structure Point:
     attributs:
-        coords: [entier : 2]
+        coords: ([entier] {longueur: 2})
 ```
+
+> TBD vérifier que la suite est cohérente
 
 ## Mot clé `self`{.language-}
 

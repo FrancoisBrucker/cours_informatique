@@ -293,7 +293,6 @@ Pour ne pas couper les cheveux en 4, on se permettra plusieurs abus de notations
 - `f(x_1: bit, ..., x_n: bit) → [bit]`{.language-} à la place de `f([bit: n]) → [bit]`{.language-},
 - `f(x_1: [bit], ..., x_n: [bit]) → [bit]`{.language-} à la place de `f([bit]) → [bit] # n entrées de taille t_1 + ... + t_n`{.language-},
 
-
 Cette notation nous permettra d'écrire facilement des fonctions :
 
 - de plusieurs entrées de même taille: `f(x: [bit: n], y: [bit: n])`{.language-}
@@ -338,7 +337,6 @@ Pour éviter toute confusion entre les entiers on écrira :
 {% note "**Définition**" %}
 
 On note $b$ la bijection $b: \\{0, 1\\} \rightarrow \\{\text{Vrai}, \text{Faux}\\}$ telle que :
-
 
 <div>
 $$
@@ -496,7 +494,6 @@ On a tout en notre possession pour associer des entiers relatifs aux tableaux de
 
 On note $i_n: \\{0, 1\\}^n \rightarrow  [-2^{n-1}\mathrel{\{.\}\\,\{.\}} 2^{n-1}-1]$ la bijection telle que :
 
-
 <div>
 $$
 i_n(x) = 
@@ -544,7 +541,6 @@ Un tableau de bit considéré comme :
 
 Le bit de poids fort d'un tableau signé est appelé **_bit de signe_** (il ne vaut `1` `que si l'entier représenté est négatif).
 {% endnote %}
-
 
 ### Réels
 

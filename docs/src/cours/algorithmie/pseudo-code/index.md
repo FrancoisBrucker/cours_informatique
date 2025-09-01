@@ -145,3 +145,49 @@ Pour cela il faut :
 - séparer les différentes parties d'un algorithmes en fonctions au nom explicite.
 
 Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.
+
+## Opérateurs utilisés en pseudo-code
+
+> TBD ici abus de notation avec utilisation sans déclaration. Le maitre mot est clarté. Si cela alourdi de tout expliciter alors que c'est clair, on laisse mais si ça peut rendre confus on l'explicite (ici exemple vec +)
+> 
+Les op
+> TBD ajouter soit comme mot clé qui définie des variables
+> unaire : `soit`
+> binaire := définition soit x un entier x := un entier y := 3x + 1. On utilisera uniquement pour définir des fonctions ou algorithme d'une ligne `AJOUTE_UN(x) := x + 1. (attention dans certains vieux manuel ou <- n'existe pas parfois := est utilisé comme <-)
+> <- affectation
+> = égalité (conséquence) 1 = cos2(x) + sin2(y)
+> == test
+> faire les différences entre
+> x := y : on remplace x par y à chaque fois qu'on le voit
+> x <- y : on affecte x à la valeur de y
+> x = y : avec les définitions de x et y les 2 variables sont toujours égales (c'est une conséquence)
+> x == y : vrai si la valeur de x vaut la valeur de y et faux sinon
+>
+> puis dire que l'on oublie souvent cette ligne lorsque le type est évident.
+> Mais attention aux cas limite c = a + 1 ou c = c + 1.0 en C.
+> en python le type d´pend des variables ou des opérateurs :
+
+```python
+>>> x = 1
+>>> y = 3
+>>> z = x + y
+>>> type(z)
+<class 'int'>
+>>> z = 3 / 1
+>>> type(z)
+<class 'float'>
+>>> z = 3 // 1
+>>> type(z)
+<class 'int'>
+>>> x = 1.0
+>>> z = x + y
+>>> type(z)
+<class 'float'>
+>>> z = y + x
+>>> type(z)
+<class 'float'>
+```
+
+> TBD soyez explicite `x entier puis x = 2/3` que vaut x ? 1 ou 0 ? floor ou ceil.
+> L'algorithmie ne dot pas souffrir d'interpretation.
+> 

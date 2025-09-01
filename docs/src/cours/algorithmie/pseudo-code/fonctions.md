@@ -113,6 +113,15 @@ trouve ← recherche(t, 6)
 affiche à l'écran trouve
 ```
 
+### Retour
+
+> TBD le retour est un objet
+
+### Paramètres
+
+> TBD attention, on passe l'objet. Si cela ne porte pas à conséquence pour des objets basique il faut faire attention avec les tableaux qui sont à la fois des variables et des objets.
+> TBD cas ou un tableau en entrée est modifié.
+
 ## Objet fonction
 
 Une fonction peut être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction `recherche`{.language-} soit définie :

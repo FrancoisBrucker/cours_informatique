@@ -44,4 +44,24 @@ export default function (eleventyConfig) {
       
   });
 
+      eleventyConfig.addPairedShortcode('algorithme', async (rawContent, ...args) => {
+      const typst = NodeCompiler.create();
+      // const args = Array.prototype.slice.call(arguments, 1);
+      
+      // 
+      const content = "#set page(width: auto,height:auto,fill: none, margin:(top: 0.1cm,bottom: 0.1cm,x:0cm))\n#set text(size: 14pt)\n#import \"@preview/lovelace:0.3.0\": *"+args.join("\n")+"\n"+rawContent
+      
+      try {
+            const output = await typst.plainSvg({
+                mainFileContent: content,
+            });
+            return `\n\n<pre class="language-pseudocode">${output}</pre>\n\n`;
+      } catch(error) {
+            console.error("Error compiling typst file:", error);
+            throw error;
+        }
+      
+      
+  });
+
 }

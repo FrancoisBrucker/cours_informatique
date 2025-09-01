@@ -24,10 +24,10 @@ En deux parties.
 
 {% aller %}
 
-1. Rappels de ce qu'est un algorithme et un pseudo-code
+1. Rappels écrire un algorithme avec [un pseudo-code](/cours/algorithmie/pseudo-code/){.interne}
 2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
-3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
-4. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
+3. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
+4. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
 
 {% endaller %}
 
@@ -36,7 +36,7 @@ En deux parties.
 1. fonctions booléennes
 2. Théorème de Levin-Cook
 3. (pseudo-)assembleur
-4. architecture de Von Neumann
+4. architecture de Von Neumann et système
 5. Machine de Turing
 
 ### Théorie des graphes
@@ -49,7 +49,6 @@ En deux parties.
 - Réseaux
 - Cryptographie
 - Graphes et réseaux (sociaux) -->
-
 
 <!-- ### C
 

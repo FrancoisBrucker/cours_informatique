@@ -13,7 +13,7 @@ Le pseudo-code est constitué d'instructions dont le but est soit de manipuler d
 
 Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
 
-## Objets et instructions
+## Objets et opérations
 
 ### <span id="objets-basiques"></span> Objets basiques
 
@@ -23,7 +23,7 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 - le type `bit`{.language-} qui contient les 2 objets : `0`{.language-} et `1`{.language-}
 - le type `entier`{.language-} qui contient tous les entiers relatifs
 - le type `réel`{.language-} qui contient un ensemble dénombrable d'approximation de réels
--  le type `caractère`{.language-} qui contient l'ensemble des glyphes  UNICODE : `"a"`{.language-}, `"b"`{.language-}, ...
+- le type `caractère`{.language-} qui contient l'ensemble des glyphes  UNICODE : `"a"`{.language-}, `"b"`{.language-}, ...
 
 Enfin on considérera le type vide `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C) qui ne contient aucun objet.
 
@@ -41,7 +41,6 @@ On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{6
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
 {% endattention %}
 
-
 ### <span id="opérations"></span> Opérations
 
 Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :
@@ -55,7 +54,8 @@ Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. O
     - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
   - opérations sur les caractères :
     - logique : égalité (avec le signe `==`{.language-})
-  - opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
+  - opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `||`{.language-}, `OR`{.language-} ou $\lor$)
+- **_afficher un objet_**. On suppose que l'on possède une opération unaire spéciale nommée `affiche` qui affiche à l'écran (ou à n'importe quoi permettant à l'utilisateur d'avoir un retour) l'objet. Par exemple `affiche 42`{.language-} va afficher l'objet entier valant 42 à l'écran.
 
 ## Variables
 
@@ -64,25 +64,161 @@ Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puis
 Une **_variables_** est alors associé à la première case de la mémoire contenant l'objet. D'un point de vue algorithmique, cela revient à référencer un objet, à le nommer :
 
 {% note "**Définition**" %}
-Une **_variable_** est un nom auquel est associé un objet.
+Une **_variable_** est un nom auquel est associé un objet d'**un type donné**.
 {% endnote %}
 
-Les instructions autorisées sur les variables sont :
+Les variables nous permettent de manipuler les objets.
 
-- **_l'affectation_** : `a ← 3`{.language-} défini le nom `a`{.language-} (appelé _variable_) qui est associé à un entier valant `3`{.language-}. On n'utilisera pas le signe `=` en pseudo-code car l'affectation n'est pas symétrique : à gauche une variable à droite un objet (comme le symbole `←`{.language-} de nombreux langages de programmation utilisent cependant le signe `=`{.language-}).
-- **_la lecture_**. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b ← a * 3`{.language-}
-- **_l'affichage à l'écran_**. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
+> TBD faire les espaces de noms. Montrer qu'objet et variables c'est pas pareil.
+
+### Définition
+
+Avant de pouvoir être utilisée, une variable doit être définie :
+
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + $a colon.eq$ #text(weight: "bold")[entier]
+]
+{% endalgorithme %}
+
+> TBD nom := type
+
+<!-- ```pseudocode
+a := entier
+``` -->
+
+La ligne précédente crée une nouvelle variable nommée `a` pouvant référencer des objets de type entier. Dans tout le reste du pseudo-code, on sera sur que `a` contient une valeur entière.
+
+On utilise l'**_opérateur de définition_** `:=`{.language-} pour créer une variable. Vous verrez aussi parfois cet opérateur remplacé par le mot "soit", en particulier lorsqu'il y a plusieurs variables à créer :
+
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + *soient* $a$, $b$ et $c$ trois *entiers*
+]
+{% endalgorithme %}
+
+<!-- ```pseudocode
+soient a, b et c trois entiers
+``` -->
+
+En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition.
+
+{% info %}
+Ce comportement est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.
+
+{% endinfo %}
+
+Il est important de noter que :
+
+{% attention %}
+Une variable n'**est pas** un objet, c'est un lien vers un objet.
+
+> TBD voir partie code mémoire/pile.
+{% endattention %}
+
+### Affectation
+
+Une fois la variable crée, on peut lui **_affecter_** des objets, par exemple pour notre variable `a`{.language-} crée précédemment :
+
+```pseudocode
+a ← 3
+```
+
+On utilise l'opérateur d'affectation `←`{.language-} pour affecter une variable. La ligne précédente associe ainsi à la variable `a` un objet entier valant 3.
+
+{% attention %}
+On n'utilisera pas le signe `=` en pseudo-code pour l'affectation car elle n'est pas symétrique : à gauche une variable à droite un objet.
+
+Comme le symbole `←`{.language-} n'est pas présent sur un clavier, de nombreux langages de programmation utilisent cependant le signe `=`{.language-} pour une affectation.
+{% endattention %}
+
+Une variable peut-être affectée plusieurs fois :
+
+```pseudocode/
+a := entier
+
+a ← 3
+a ← 4
+```
+
+Après la troisième ligne, la variable `a`{.language-} est associée à un entier valant 3 et après la quatrième ligne à un entier valant 4.
+
+### Utilisation
+
+Utiliser une variable consiste à la remplacer par l'objet qu'elle référence. Par exemple :
+
+```pseudocode/
+a := entier
+a ← 3
+
+affiche a
+```
+
+> TBD on commence par retrouver la valeur puis on l'affiche
+>
+> si pas initialisé valeur pas connue, ça peut être n'importe quoi. Ce n'est pas bien. Prenez l'habitude d'initialiser toutes les variables.
+
+```pseudocode/
+a := entier
+a ← 3
+
+b := entier
+b ← a
+```
+
+La ligne 4, une instruction d'affectation, s'exécute de la façon suivante :
+
+1. on commence par retrouver objet à droite de l'opérateur `←`{.language-}. C'est une variable : on récupère son objet, un entier valant 3
+2. on affecte cet objet à la variable à gauche de l'opérateur `←`{.language-}, la variable `b`{.language-}
+
+> TBD espaces de noms
+
+Autre exemple :
+
+```pseudocode/
+a ← 3
+
+b := entier
+b ← a + 1
+```
+
+La ligne 4, une instruction composée d'une opération puis d'ue affectation, s'exécute de la façon suivante :
+
+1. on commence par retrouver objet à droite de l'opérateur `←`{.language-}. C'est le résultat d'une opération :
+   1. pour effectuer l'opération, il faut commencer par retrouver l'objet associé à `a` : un entier valant 3
+   2. on peut maintenant effectuer l'opération d'addition qui rend un objet valant 4
+2. on affecte cet objet à la variable à gauche de l'opérateur `←`{.language-}, la variable `b`{.language-}
+
+> TBD espace des noms
+
+- **_l'affichage à l'écran_** : `affiche a`{.language-} Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
 
 {% attention %}
 Une variable est un nom, elle ne copie ni ne modifie un objet dans le pseudo-code suivant, les deux variables `a`{.language-} et `b`{.language-} référencent le même objet entier.
 
 ```pseudocode
+soient a et b deux entiers
+
 a ← 3
 b ← a
 ```
 
 Dans la seconde instruction, on commence par retrouver l'objet nommé par `a`{.language-} et on le nomme `b`{.language-} : la case où est stocké l'entier dans la mémoire est donné à `a`{.language-} et à `b`{.language-}
 {% endattention %}
+
+Enfin, avant d'utiliser une variable, il faut a priori la définir avec le mot clé `soit`{.language-}.
+
+### Abus de notation
+
+Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
+
+- les variables doivent être définies avant d'être utilisée
+- une variable ne peut contenir que des objets d'un type donné
+
+Mais cela ne doit pas rendre le code lourd. On se permettra donc, **lorsqu'il n'y a pas d’ambiguïté possible**, l'abus de notations qui crée et affecte une variable en une seule fois :
+
+- comme : `a := entier valant 3`{.language-}
+- voir : `a ← 3`{.language-} lorsque le type de la variable est clair (ici un entier)
 
 ## <span id="tableaux"></span>Tableaux
 
@@ -97,7 +233,19 @@ Si le tableau est nommé $t$ :
 
 {% endnote %}
 
-Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée, on considère que :
+> TBD définition
+
+```pseudocode/
+a := [entier] {longueur: 12}
+```
+
+```pseudocode/
+soit a un [entier] de taille 12
+```
+
+> TBD nom := type paramètres
+
+Un tableau est un mix entre variables et objet : c'est un objet contenant des variables. Les différentes références des variables du tableau sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée, on considère que :
 
 - la taille en mémoire d'un tableau est proportionnelle à la taille d'un objet fois la taille.
 - il faut 1 instruction pour créer un tableau
@@ -109,20 +257,19 @@ On considère que créer un tableau prend 1 instruction car celui-ce est de tail
 
 Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui peut être directe :
 
-- `t ← [1, 3, 2]`{.language-} qui crée un tableau de 3 entiers
-- `t ← tableau de 23 caractères`{.language-} qui crée un tableau de 23 caractères
+- `t ← [1, 3, 2]`{.language-} qui crée et initialise un tableau de 3 entiers
+- `t := tableau de 23 caractères`{.language-} qui crée un tableau de 23 caractères
 
 On considère que la création d'un tableau prendra toujours 1 instruction, puis on affecte les variables. La première affectation est donc un raccourci pour 4 instructions :
 
 1. la création d'un tableau de longueur 3
-2. l'affectation `t[0] ← 1`{.language-} 
-3. l'affectation `t[1] ← 3`{.language-} 
-4. l'affectation `t[2] ← 2`{.language-} 
+2. l'affectation `t[0] ← 1`{.language-}
+3. l'affectation `t[1] ← 3`{.language-}
+4. l'affectation `t[2] ← 2`{.language-}
 
 {% attention %}
-Une fois le tableau crée, la valeur de chaque case est **indéterminée !**. Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
+Tout comme une variable, une fois le tableau crée, la valeur de chaque case est **indéterminée !**. Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
 {% endattention %}
-
 
 Toutes les autres opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
 
@@ -131,6 +278,10 @@ Les opérations sur les tableaux seront toujours des opérations composées d'un
 {% endattention %}
 
 Le type d'un tableau sera de la forme `[T]`{.language-} et signifiera que le tableau contient des objets de type `T`{.language-}. Un tableau de type `[entier]`{.language-} contiendra des entiers.
+
+{% attention %}
+On ne peut  **pas** affecter un tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
+{% endattention %}
 
 ### Tranches
 
@@ -141,7 +292,7 @@ On utilisera parfois, comme en python par exemple des sous tableaux via des **_t
 - `T[i:j]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice i **inclus** jusqu'à j **exclu**
 
 {% attention %}
-On ne peut  **pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
+Tout comme pour les tableaux, on ne peut  **pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 {% endattention %}
 
 ### <span id="str"></span>Chaînes de caractères
@@ -157,10 +308,7 @@ Comme ce sont des tableaux, on peut :
 - accéder à un caractère particulier en utilisant les crochets : `s[2]`{.language-} vaut le caractère `"l"`{.language-}
 - connaître la longueur de la chaîne avec : `s.longueur`{.language-}
 
-Les chaines étant très utilisées, des langages comme python les considèrent comme un type de base et considèrent les caractères comme étant des chaîne de langueur 1. Les chaines de caractères héritent donc de certains comportements spécifiques aux objets basiques :
-
-- une fois crées **on ne peut pas les modifier** (`s[2] ← "p"`{.language-} n'est pas une instruction valide pour des chaînes alors que c'est une instruction valide pour un tableau).
-- on définit l'opération de concaténation avec l'opérateur `+`{.language-} : `"salut" + " toi !"`{.language-} vaut la chaîne de caractères `"salut toi !"`{.language-}
+Les chaines étant très utilisées, des langages comme python les considèrent comme un type de base et considèrent les caractères comme étant des chaîne de langueur 1.
 
 {% note %}
 Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).
@@ -169,9 +317,10 @@ Chacune des quatre opérations précédentes (création, affectation, accès et 
 La chaîne de caractère étant très utilisée, on se permettra les abus suivant :
 
 - de définir une chaîne directement `s ← "Salut"`{.language-}
-- d'utiliser le type `chaîne`{.language-} plutôt que `[caractère]`{.language-} (les 2 sont synonymes)
+- d'utiliser le type `chaîne`{.language-} plutôt que `[caractère]`{.language-}. Dans cde cas, l'objet sera non modifiable (`s[2] ← "p"`{.language-} ne sera pas une instruction valide pour des chaînes alors que c'est une instruction valide pour un tableau de caractères).
+- on définit l'opération de concaténation avec l'opérateur `+`{.language-} : `"salut" + " toi !"`{.language-} vaut la chaîne de caractères `"salut toi !"`{.language-}
 
-Ainsi, un tableau de chaînes sera de type `[chaîne]`{.language-} qui est égal à `[[caractère]]`{.language-} (un tableau de tableaux de caractères).
+Ainsi, un tableau de chaînes sera de type `[chaîne]`{.language-}.
 
 ## <span id="instruction-contrôle"></span> Instructions de contrôle
 

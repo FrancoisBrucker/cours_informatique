@@ -321,7 +321,7 @@ C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que 
 [Utilisation de structures](./projet-structures){.interne}
 {% endaller %}
 
-## Intermède : Le problème de l'enveloppe convexe
+### Intermède : Le problème de l'enveloppe convexe
 
 Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
 
@@ -330,7 +330,6 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 {% aller %}
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
-
 
 ## <span id="partie-3"></span>Partie III : problèmes
 
@@ -346,6 +345,16 @@ Commençons par voir comment résoudre un problème inconnu grâce à un problè
 
 On a vu au début de ce cours que certains problèmes [ne pouvaient pas être résolu par un algorithme](./bases-théoriques/calculabilité){.interne} (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si [sa complexité est exponentielle](./complexité-calculs/importance){.interne} le temps de calcul sera rédhibitoire : certaines questions resteront sans réponses en pratique.
 
+> TBD ici SAT et le transformer en projet.
+
+{% aller %}
+[Problème SAT](./problème-SAT){.interne}
+{% endaller %}
+
+### Classes de problèmes
+
+> TBD ici séparer en parties.
+
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
 {% aller %}
@@ -354,9 +363,15 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 Le problème SAT est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
 
+### Intermède : l'algorithme qui résout tout
+
+Avant de finir cette première partie du cours, accordons nous un intermède. Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
+
 {% aller %}
-[Problème SAT](./problème-SAT){.interne}
+[L'algorithme de la recherche universelle](./recherche-universelle){.interne}
 {% endaller %}
+
+> TBD dire que complexité ce n'est pas tout. La constante devant est aussi importante !
 
 ### Design d'algorithmes
 
@@ -470,17 +485,9 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 >
 > TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
 
-### Intermède : l'algorithme qui résout tout
-
-Avant de finir cette première partie du cours, accordons nous un intermède. Regardons une bizarrerie algorithmique, mais fondamentale dans la compréhension de ce qu'est la complexité.
-
-{% aller %}
-[L'algorithme de la recherche universelle](./recherche-universelle){.interne}
-{% endaller %}
-
-Cet intermède permet de préparer la troisième partie
-
 ## <span id="partie-4"></span>Partie IV : structures de données avancées
+
+> TBD mettre complexité amortie la dedans.
 
 > TBD
 > <https://www.youtube.com/watch?v=6fnmXX8RK0s>
@@ -524,6 +531,7 @@ Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
 > TBD jeu d'instructions minimal.
 > TBD pseudo-code = fonction booléenne finie + instruction de contrôle et boucles.
+> > TBD attention à l'affectation de tableaux et aux fonctions : on autorise pas l'affectation de tableau. Tout est copié et idem pour les fonctions on la reécrit. Change la complexité temporelle * spatiale, mais ok.
 
 ### Pseudo-code
 

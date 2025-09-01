@@ -45,6 +45,9 @@
   code[class*="language-"]::after {
     content: "";
   }
+  pre>svg {
+    display: inline
+  }
 
   img {
     @apply border-4 rounded p-0 m-4 max-w-[90%] mx-auto;

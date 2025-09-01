@@ -53,10 +53,34 @@ Deux formules sont **_égales_** si elles ont les même table de vérité.
 
 {% endnote %}
 
-On ne parlera pas beaucoup plus de logique ici, en particulier nous n'aborderons pas les implications ou équivalences logiques. Pour nous ce n'est pas indispensable car :
+Pour les implication et équivalences logique :
 
 - $\phi \Rightarrow \psi \coloneqq (\phi \land \psi) \lor \overline{\phi}$
 - $\phi \Leftrightarrow \psi \coloneqq (\phi \land \psi) \lor (\overline{\phi} \land \overline{\psi})$
+
+> TBD utiliser ça pour le levin-cook.
+
+On ne parlera pas beaucoup plus de logique ici, en particulier nous n'aborderons pas les implications ou équivalences logiques.
+
+
+> TBD exercice montrer $a \Leftrightarrow (a \lor c)$ est équivalent à
+
+De plus, les propriétés classique suivantes des fonctions logiques permettent d'assurer que l'on peut obtenir toutes les formules classiques avec notre définition.
+
+{% note "**Proposition**" %}
+
+On a les propriétés suivantes :
+
+- idempotence : $\phi \land \phi = \phi$ et $\phi \lor \phi = \phi$
+- double négation : $\overline{\overline{\phi}} = \phi$
+- commutativité
+- associativité
+
+{% endnote %}
+
+> TBD en particulier l'associativité permet de toujours séparer une formule en 2.
+> TBD longueur d'une formule = nb de signes logiques.
+> TBD pas sous la forme sat donc trouver des équivalents
 
 Enfin, en associant une valeur de vérité à chaque variable, une formule sera vraie ou fausse. Une formule est ainsi une fonction booléenne. On peut alors parler d'égalité de formule si quelque soit la valeur des variables les formules sont égales :
 
@@ -64,15 +88,12 @@ Enfin, en associant une valeur de vérité à chaque variable, une formule sera 
 Deux formules sont **_égales_** si elles ont les même table de vérité.
 {% endnote %}
 
-On pourra alors simplifier 
+> TBD on peut le faire en utilisant prop distributivié :
+> 
 {% note "**Proposition**" %}
 
 On a les propriétés suivantes :
 
-- idempotence : $\phi \land \phi = \phi$ et $\phi \lor \phi = \phi$
-- double négation : $\overline{\overline{\phi}} = \phi$
-- commutativité 
-- associativité
 - distributivité
 - loi de morgan
 
@@ -82,16 +103,28 @@ On a les propriétés suivantes :
 > TBD on utilise des tables de vérité.
 {% enddetails %}
 
-> TBD on peut passer par distributivité d'un problème à un autre mais possiblement exponentiel.
-> TBD 
+> TBD  mais possiblement exponentiel.
+
 > exemple
 
-> TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses. on passe de dnf à cnf en passant au non. Voir <https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf>
+> TBD on peut faire mieux
 
 {% lien %}
 [Transformation de Tseitin](https://www.youtube.com/watch?v=v2uW258qIsM)
 {% endlien %}
 
+> TBD p26 <https://perso.ensta-paris.fr/~chapoutot/teaching/master-logic/slides/lecture1.pdf>
+on peut associer une valeur de vérité à chaque formule et les combiner de façon linéaire
+
+> TBD :
+> 1. écrire la formule sous la forme d'un arbre 
+> 2. associer une variable à chaque noeud
+> 3. propager les équivalences de vérité entre le noeud et ses enfants (non, et, ou).
+> 4. la formule finale est équivalente à la formule initiale
+
+> TBD supposé complètement parenthésé, sinon on ajoute par associativité (à gauche)
+> 
+> 
 Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
 ) pour convertir les formules
 
@@ -205,14 +238,14 @@ Pour que notre instance ne puisse plus avoir de solution, il faut lui rajouter d
 
 Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir sans faire tous les cas.
 
-
 ## Et 2-SAT ?
 
 > Réduction ne fonctionne pas. Autre problème
 > 
 > Algo poly par limited backtracking : <https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking>
 > limited backatracking car chaque cas est indépendant donc si on doit backtracker impossible.
-
 > 2-sat poly : <https://cp-algorithms.com/graph/2SAT.html>
 
-> TBD faire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
+On vérifie les conséquences de chaque choix. Une fois tous les obligés fait si pas de contradiction on a un sous ensemble stable et on peut supprimer les clauses ayant ces affectations. Sous cas et on recommence. Si contradiction, on prend l'affectation contraire et on reteste. Si ça rate encore alors affectation impossible.
+
+> TBD refaire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
