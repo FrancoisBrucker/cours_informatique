@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Coder</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Coder</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/écrire-code/">Écrire du code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/écrire-code/coder/">Coder</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p><em>Coder</em> c'est passer d'un algorithme <em>papier</em> (pseudo-code ou idées) à un programme informatique, appelé <strong>code</strong>. Par extension, on inclura dans cette partie la modification d'un code existant. Le <strong>but</strong> d'un code est d'être exécuté par un ordinateur pour réaliser une tâche.</p>
+<p>Pour permettre son exécution, le code est écrit dans un <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation">langage de programmation</a>. Celui-ci <strong>dépend de la tâche à réaliser</strong> : le code est un outil il faut utiliser celui qui est le plus adapté au résultat voulu.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Nous utilisons ici <a href="https://www.python.org/">le python</a> car notre but est ici :</p>
+<ul>
+<li>de coder des algorithmes classiques et python est très proche du pseudo-code.</li>
+<li>d'apprendre les bonnes pratiques de développement et python est un langage qui permet de les apprendre simplement</li>
+</ul>
+<p>Enfin, python est un langage très utilisé dans le monde, que ce soit par des informaticiens ou part des personnes devant utiliser du code informatiques au quotidien (scientifiques, ingénieurs en tous genres, data scientists, etc).</p>
+</div></div>
+
+<p>Modifier du code est ce vous ferez le plus souvent : on passe son temps à modifier du code plutôt que d'implémenter des algorithmes (c'est ce que l'on appelle <a href="https://fr.wikipedia.org/wiki/R%C3%A9usinage_de_code">le refactoring</a>).</p>
+<p>Il en découle que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous allez passer plus de temps à <strong>lire</strong> du code qu'à en <strong>écrire</strong></p>
+</div></div>
+
+<p>Comme il faut que : <em>ce qui se fait souvent doit se faire rapidement</em>, on utilisera une série de règles pour lire aisément son code et — surtout — se faire comprendre aisément de ses partenaires.</p>
+<p>Ces règles sont appelées des <em><strong>coding mantra</strong></em>. Comme toutes les règles, il ne faut pas apprendre ce qu'elle dit, mais pourquoi elle le dit. Par exemple : on ne doit pas passer du temps à chaque lecture pour comprendre ce que fait un bout de code, comment il est organisé ou encore se questionner pour savoir s'il fonctionne : il faut pouvoir aller rapidement là où l'on veut modifier son code et comprendre aisément comment le modifier.</p>
+<p>Nous allons maintenant lister les bonnes pratiques fondamentales à posséder lorsque l'on code.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les différentes méthodes et mantra que l'on va voir sont issues de <a href="https://fr.wikipedia.org/wiki/Extreme_programming">l'<em>extreme programming</em> (XP)</a>, qui date des années 2000 mais dont on à l'impression qu'elle a été écrite hier (voire demain tellement elle est encore novatrice).</p>
+</div></div>
+
+<h2>Quel langage utiliser ?</h2>
+<p>Il existe de nombreux langages de programmation, allant de <a href="https://fr.wikipedia.org/wiki/Assembleur">l'assembleur</a> compréhensible par les processeurs de nos ordinateurs au <a href="https://fr.wikipedia.org/wiki/Python_(langage)">python</a> que tout le monde connaît, en passant par <a href="https://fr.wikipedia.org/wiki/Haskell">le haskell</a>, <a href="https://fr.wikipedia.org/wiki/C_(langage)">le C</a> ou encore <a href="https://www.rust-lang.org/fr">le Rust</a>.</p>
+<p>On trouve même des langages désignées pour être les plus simples possibles (appelés <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique">turing tarpit</a>) tout en étant aussi expressif que le python. Le plus célèbre d'entre eux est <a href="https://fr.wikipedia.org/wiki/Brainfuck">le brainfuck</a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>fun fact</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On peut utiliser aussi certains jeu comme langage de programmation comme <a href="https://www.factorio.com/">factorio</a> (l'algorithme de <a href="https://www.youtube.com/watch?v=ts5EKp9w4TU">tri quicksort</a>), ou encore <a href="https://www.minecraft.net/">minecraft</a> (<a href="https://www.youtube.com/watch?v=uGug-4xkw6M">une calculatrice</a>).</p>
+</div></div>
+
+<p>Tous ces langages sont <em><strong>équivalents</strong></em> : ce que l'on peut faire dans un langage peut être fait dans un autre (et réciproquement). <strong>Mais</strong> certains langage sont plus adaptés que d'autre pour faire certaines tâches.</p>
+<p>Par exemple, si vous créez d'énormes programmes avec des milliers de lignes de codes, il vaut mieux utiliser un langage comme <a href="https://www.java.com/fr/">le java</a> ou <a href="https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/">le C#</a>. Ou encore, si vous coder des applications web, on utilisera beaucoup <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">le javascript</a>.</p>
+<p>Bref :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On utilise le langage qui est le plus adapté à notre problème.</p>
+</div></div>
+
+<p>Ne faites pas rentrer des carrés dans des ronds en utilisant un langage non adapté à votre problème. Vous allez perdre plus de temps qu'autre chose :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un langage informatique n'est <strong>pas</strong> une langue. C'est facile à apprendre !</p>
+</div></div>
+
+<h2>Noms explicites et découpage fonctionnel</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Règle générale</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>des noms de variables <strong>explicites</strong></li>
+<li>on préférera de <strong>petites fonctions/méthodes</strong> avec un nommage explicite à de nombreuses lignes de code</li>
+</ul>
+</div></div>
+
+<p>Ceci permet de lire le code comme on lirait un texte, ce qui permet de rapidement comprendre ce qu'il fait, juste en le lisant. Les petites fonctions sont de plus facilement modifiables et testables.</p>
+<p>Le découpage fonctionnel de votre code permet d'éviter la duplication de code, qui est un mal absolu en code. Si l'on copie/colle du code et qu'il y a un bug ou qu'on veut modifier le fonctionnement de celui-ci, il faudra se rappeler de tous les endroits où il a été dupliqué, ce qui est impossible ! De plus, cela rend votre code peu lisible, il bégaie.</p>
+<p><span id="DRY"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Coding mantra</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a> : <em>don't repeat yourself</em>.</p>
+</div></div>
+
+<p>Vous saurez que votre code est lisible lorsqu'il ne nécessitera <strong>pas</strong> de commentaires pour être compris. Ils sont en effet avantageusement remplacés par des noms de variables explicites et les noms de fonctions qui doivent expliquer ce qu'elles font.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Coding mantra</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.developpez.com/actu/150066/Programmation-quand-faut-il-commenter-son-code-Google-s-invite-dans-le-debat-et-montre-que-les-commentaires-peuvent-tres-souvent-etre-evites/">NO COMMENTS !</a></p>
+</div></div>
+
+<p>En plus d'être inutile, les commentaires :</p>
+<ul>
+<li><strong>sont souvent des mensonges</strong> : comme le commentaire n'est pas du code, lorsque l'on modifie le code on <em>oublie</em> de changer le commentaire. Au bout d'un moment le commentaire n'est donc plus en relation avec le code : au lieu d'aider à comprendre, il confuse : un commentaire est donc tôt ou tard un mensonge.</li>
+<li><strong>cachent la difficulté</strong>. S'il y a plein de commentaires, on ne les lira plus. Un commentaire se doit d'être rare. S'il est là c'est que l'on n'a pas vraiment pu faire autrement. Vous n'en aurez pas besoin dans 99% des cas...</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><strong>commentaires != documentation</strong></p>
+</div></div>
+
+<ul>
+<li>Si votre code est destiné à être utilisé uniquement par vous ou votre équipe, on n'a pas besoin de le documenter. Son organisation et son écriture doit se suffire à lui-même.</li>
+<li>si votre code va être utilisé par des inconnus (lorsque vous créez <a href="https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_logicielle">une bibliothèque</a> par exemple), les fonctions publiques doivent être documentées. Un utilisateur doit pouvoir utiliser votre code sans effort et avoir à le lire pour le faire.</li>
+</ul>
+<p>Lorsque l'on utilise <a href="https://fr.wikipedia.org/wiki/Interface_de_programmation">une API</a>, on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elles fonctionnent sans en connaître le corps :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Toutes les méthodes destinées à être utilisées par des clients/utilisateurs différents de l'équipe de développement doivent être documentées.</p>
+</div></div>
+
+<h2>Lisibilité</h2>
+<p>Un code est fait pour être relu et amélioré. On <strong>doit</strong> privilégier sa lecture à son écriture. Pour que votre équipe ou vous même puissiez le relire plus tard sans faire d'effort de compréhension.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Écrire du code n'est pas un concours d'érudition.</p>
+</div></div>
+
+<p>Si on a le choix entre écrire du code utilisant des subtilités algorithmiques ou du langage utilisé mais qui le rend plus difficile à comprendre sans gain réel en complexité on choisira <strong>TOUJOURS</strong> le code lisible ou du code plus basique mais clair.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Coding mantra</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Principe_KISS">KISS</a> : <em>keep it simple, stupid</em>.</p>
+</div></div>
+
+<p>Si le fond doit être simple, la forme du code est importante aussi. Il se doit d'être agréable à lire et homogène. L'équipe de développement doit se mettre d'accord sur <a href="https://fr.wikipedia.org/wiki/Style_de_programmation">un coding style</a>. Par défaut on utilise le standard du langage. En python, c'est la  <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez un style de programmation homogène pour faciliter la lecture de code. Si possible, automatisez ce processus avec un outil automatique de formatage de code.</p>
+</div></div>
+
+<h2>Efficacité</h2>
+<p>On ne doit jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On ne codera jamais de fonctionnalités qui ne vont être utiles que plus tard.</p>
+</div></div>
+
+<p>Car <em>&quot;plus tard&quot;</em> le code ne sera plus le même et — le plus souvent — les besoins auront changés : votre fonctionnalités ne sera jamais utilisé... <em>&quot;plus tard&quot;</em> veut souvent dire <em>&quot;jamais&quot;</em>.
+De plus, du code inutile contraint le développement : il est là, ne sert à rien, mais pas sa seule présence il empêche de modifier le code comme on veut.</p>
+<p>En conséquence :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tout code qui n'est plus/pas utile doit être immédiatement supprimé.</p>
+</div></div>
+
+<p>Le mieux étant encore de ne jamais l'écrire au départ :</p>
+<p><span id="YAGNI"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Coding mantra</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/YAGNI">YAGNI</a> : <em>You ain't gonna need it</em>.</p>
+</div></div>
+
+<h2>Tests</h2>
+<p>Pour s'assurer que notre code fait bien ce qu'il est sensé faire, on effectuera des <em><strong>tests</strong></em>. C'est le pendant code de la preuve d'un algorithme.</p>
+<p>Comme on passe son temps à modifier son code, il est nécessaire de conserver ses tests pour pouvoir les exécuter très souvent et vérifier qu'il continue de fonctionner.</p>
+<p>Pour cela :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on ajoute des fonctionnalités au code ou que l'on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n'existe pas/plus.</p>
+<p>Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.</p>
+</div></div>
+
+<p>Une méthode très efficace de programmation consiste même à commencer par écrire le test, <strong>avant</strong> le code testé :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Coding mantra</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://artificials.ch/test-driven-development-mantra/">TDD</a> : <em>test driven development</em>.</p>
+</div></div>
+
+<p>Nous n'utiliserons pas ici le mantra TDD dans son intégralité : on se permettra d'écrire les tests après avoir codé la fonctionnalité et pas avant. Mais, l'expérience venant, faites l'essai de coder vos tests avant la fonction, cela permet d'utiliser sa fonction avant de la coder et change souvent la façon dont on voulait la coder initialement.</p>
+<p>Les tests sont autant de cas d'utilisation de vos programmes qui montrent qu'il fonctionne et comment il fonctionne. Il permettent de montrer les différentes fonctionnalités de votre code :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>La fonctionnalité est plus importante que le code</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le code va changer, les fonctionnalités doivent rester.</p>
+</div></div>
+
+<p>Enfin, le code et ses tests doivent être fait par la <strong>même personne</strong> et au <strong>même moment</strong>. Il ne faut pas attendre d'avoir codé plusieurs fonctions avant de faire ses tests. Vous n'êtes en effet pas sûr que votre 1ère fonction codée fonctionne avant d'avoir fait des tests.</p>
+<p>De là, il est possible qu'un bug dans cette première fonction affecte le code de votre seconde fonction... Et lorsque vous ferez enfin vos tests vous serez alors obligé de re-coder toutes vos fonctions ce qui ne serait pas arrivé si vous aviez testé toutes vos fonctions une par une et au moment de les coder.</p>
+<h2>Structure d'un programme</h2>
+<p>Tout ce qu'on vient de voir structure un projet informatique en trois entités :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un projet informatique comporte <strong>toujours</strong> 3 parties d'égales importances :</p>
+<ul>
+<li>le <em><strong>programme principal</strong></em> (aussi appelé <strong>main</strong>) qui est ce qui sera exécuté</li>
+<li>le <em><strong>code</strong></em> qui regroupe l'ensemble des fonctions utilisée par le programme principal</li>
+<li>les <em><strong>tests</strong></em> qui <em>certifient</em> que le code fonctionne.</li>
+</ul>
+</div></div>
+
+<p>Ces trois entités sont <strong>toujours</strong> codées en même temps : un code doit être testé pour être sur qu'il fonctionne et comme on ne fait pas de code inutile, il doit être utilisé.</p>
+<p>Exemples :</p>
+<ul>
+<li>pour rajouter une fonctionnalité au programme principal, on ajoute du code qui doit lui-même être testé pour vérifier qu'il fonctionne.</li>
+<li>pour corriger un bug du programme principal, on modifie du code et on ajoute des tests qui montrent que le bug n'existe plus.</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
