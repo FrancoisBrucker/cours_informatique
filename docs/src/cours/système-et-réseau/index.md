@@ -19,20 +19,16 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 
 ## Bases
 
-### Utilisation
-
-Utilisation d'un système d'exploitation et principe d'une connexion à un système distant.
+### Système
 
 {% aller %}
-[Utilisation système et réseau](bases-utilisation){.interne}
+[Principes et utilisation d'un système d'exploitation](bases-système){.interne}
 {% endaller %}
 
-### Installation d'un nouveau système
-
-Avant de sérieusement utiliser son ordinateur, il peut être utile d'en faire une nouvelle installation. Des comportements inattendus viennent souvent d'une installation mal finalisée ou laissée trop longtemps à l'abandon.
+### Réseau
 
 {% aller %}
-[Installation d'un nouveau système](bases-installation-système){.interne}
+[Principes et utilisation du réseau](bases-réseau){.interne}
 {% endaller %}
 
 ## refactor

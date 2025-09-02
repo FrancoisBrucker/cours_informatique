@@ -183,6 +183,6 @@ Avec :
 
 ### Rendus
 
-- deux dm de code
+- un dm
 - une présentation d'une jolie démonstration du proof from the book.
-- un ds de théorie des graphes/informatique théorique
+- un ds de théorie des graphes

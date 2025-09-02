@@ -11,6 +11,8 @@ eleventyComputed:
 
 Le pseudo-code est constitué d'instructions dont le but est soit de manipuler des objets (création, affectation ou lecture) ou de contrôler le flux d'instructions (test et boucles).
 
+> TBD dire que pas normalisé. Je vous donne ici "mon" pseudo-code. A priori c'est fait pour être explicite, donc toute variante ou abus de notation sera compréhensible. Je me permettrai aussi de temps en temps quelques abus de notations que j'explicite
+ 
 Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
 
 ## Objets et opérations

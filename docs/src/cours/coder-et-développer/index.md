@@ -64,7 +64,7 @@ Utiliser son ordinateur pour le développement nécessite quelques connaissances
 Une fois les prérequis acquis :
 
 {% aller %}
-[Écrire et exécuter du code](développement){.interne}
+[Écrire et exécuter du code](écrire-code){.interne}
 {% endaller %}
 
 Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seulement un excellent outil pour corriger son code, mais également un très bon outil d'apprentissage puisqu'il vous permettra d'assimiler plus rapidement ces notions de variables, d'objets et d'espaces de noms :
