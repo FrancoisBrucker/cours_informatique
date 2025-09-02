@@ -9,7 +9,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On peut facilement créer des matrices uniquement avec des tableaux (on l'a déjà un peu expérimenté avec [le tri par base](../../projet-algorithmes-classiques//tris-spéciaux/#tri-base){.interne} où les données était des tableaux et surtout [le problème des 8 reines](../../projet-algorithmes-classiques/8-reines){.interne} Ce type est tellement utilisé en algorithme qu'on le considérera souvent comme un type de base.
+
+> TBD ici liste de liste. Dire que référence vers des objets, ici des tableaux. Il faut les créer
+
+On peut facilement créer des matrices uniquement avec des tableaux. On l'a déjà un peu expérimenté avec [le tri par base](../../projet-algorithmes-classiques//tris-spéciaux/#tri-base){.interne} où les données était des tableaux et surtout [le problème des 8 reines](../../projet-algorithmes-classiques/8-reines){.interne}. Ce type est tellement utilisé en algorithme qu'on le considérera souvent comme un type de base.
 
 Pour cela on utilisera le paradigme suivant :
 

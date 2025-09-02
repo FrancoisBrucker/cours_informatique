@@ -254,12 +254,12 @@ Mais la plupart du temps, on reste simple.
 
 ## Sous-structures
 
-On aura parfois besoin de spécifier dans nos structures des attributs dont les paramètres ont sont fixes ou dans une gamme de valeurs. Plutôt que de faire un type particulier on pourra utiliser une syntaxe similaire à la définition :
+On aura parfois besoin de spécifier dans nos structures des attributs dont les paramètres ont sont fixes ou dans une gamme de valeurs. Plutôt que de faire un type particulier on pourra utiliser une syntaxe similaire aux génériques en spécifiant le paramètre qui doit être fixé ou contraint :
 
 ```pseudocode
 structure Point:
     attributs:
-        coords: ([entier] {longueur: 2})
+        coords: [entier]<longueur: 2>
 ```
 
 > TBD vérifier que la suite est cohérente

@@ -45,7 +45,7 @@ On considérera toujours qu'un objet basique est de taille connue et donnée au 
 
 Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :
 
-- **_créer des objets_**
+- **_créer des objets_** : des constantes
 - **_opérer sur des objets_** :
   - opérations sur les entiers et/ou réels :
     - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
