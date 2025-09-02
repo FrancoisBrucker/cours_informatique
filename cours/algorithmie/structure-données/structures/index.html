@@ -305,10 +305,10 @@ masse <span class="token operator">←</span> Point<span class="token operator">
 </ul>
 <p>Mais la plupart du temps, on reste simple.</p>
 <h2>Sous-structures</h2>
-<p>On aura parfois besoin de spécifier dans nos structures des attributs dont les paramètres ont sont fixes ou dans une gamme de valeurs. Plutôt que de faire un type particulier on pourra utiliser une syntaxe similaire à la définition :</p>
+<p>On aura parfois besoin de spécifier dans nos structures des attributs dont les paramètres ont sont fixes ou dans une gamme de valeurs. Plutôt que de faire un type particulier on pourra utiliser une syntaxe similaire aux génériques en spécifiant le paramètre qui doit être fixé ou contraint :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        coords<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+        coords<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token operator">&lt;</span>longueur<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">></span></code></pre>
 <blockquote>
 <p>TBD vérifier que la suite est cohérente</p>
 </blockquote>
