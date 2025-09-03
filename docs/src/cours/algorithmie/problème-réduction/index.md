@@ -21,13 +21,58 @@ S_1 & \leftarrow & S_2
 $$
 </div>
 
-La formalisation de cette opération s'appelle [une réduction](https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)) et peut prendre plusieurs formes, que nous expliciterons. Outre ses applications pratiques évidentes pour le design d'algorithme et la résolution de problèmes, la réduction est est un outil fondamental permettant de comparer et de classer les problèmes algorithmiques.
+La formalisation de cette opération s'appelle [une réduction](https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)) et peut prendre plusieurs formes. Nous en expliciterons certaines qui nous permettrons de :
+
+1. comparer et classer les problèmes algorithmiques.
+2. calculer ou estimer des complexité
 
 {% info %}
 Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)) dont nous ne parlerons pas dans ce cours d'algorithmie.
 {% endinfo %}
 
+
 ## Définitions
+
+Nous allons voir trois cas d'intérêt.
+
+### Le sous problème
+
+
+{% note "**Définition**" %}
+Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Le problème $P_1$ est un **_sous-problème_** de $P_2$ s'il existe un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ telle que :
+
+- Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$
+- Si $S_2$ est une solution au problème $P_2$ avec $A_{1\rightarrow 2}(E_1)$ comme entrée alors $A_{2\rightarrow 1}(S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.
+
+Les sous-problèmes forment un ordre sur les problèmes algorithmiques. On notera $A \prec B$ lorsque $A$ est un sous problème de $B$.
+{% endnote %}
+
+Cette définition permet de montrer qu'un problème est plus général qu'un autre : $A \prec B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$ à une transformation prêt. 
+
+Par exemple :
+
+{% exercice %}
+Montrez que le problème de recherche du minimum dans un tableau d'entiers est un sous problème de la recherche du maximum dans un tableau d'entiers.
+{% endexercice %}
+{% details "corrigé" %}
+
+Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = \max(T) - \max(T')$.
+
+{% enddetails %}
+
+Les problèmes s'imbriquent par composition : $P_1(E_1) = A_{2\rightarrow 1}(P_2(A_{1\rightarrow 2}(E_1))) = A_{2\rightarrow 1} \circ P_2 \circ A_{1\rightarrow 2}$ et cela permet d'écrire des inégalités pour les complexités des problèmes :
+
+<div>
+$$
+C_{P_1}(n) \leq C_{1\rightarrow 2}(n) + C_{P_2}(f(n)) + C_{2\rightarrow 1}(g\circ f(n))$
+$$
+</div>
+
+> TBD ne dit pas grand chose sur la complexité.
+
+### La réduction
+
+La définition précédente permet de classer les problème par généralité mais dit peut de choses sur la complexité (de résolution) du problème $A$ par rapport à la complexité du problème $B$. Pour cela on utilise la réduction :
 
 {% note "**Définition**" %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_1$ en $P_2$ est un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ tels que :
@@ -37,24 +82,31 @@ Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P
 
 Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.
 {% endnote %}
-{% info %}
-La réduction de $P_1$ en $P_2$ signifie que le problème $P1$ est un cas particulier du problème $P2$, plus général.
-{% endinfo %}
-
-Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$.
-
-L'intérêt de ce formalisme est que si les passages d'un problème à l'autre (les algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$) sont rapides (_ie._ au pire proportionnels à la complexité de la résolution de $B$), la complexité du problème $B$ ne peut être plus petite que celle du problème $A$.
-
-Par exemple :
 
 {% exercice %}
-Montrez que le problème de recherche du minimum dans un tableau d'entiers  est plus simple que le problème de recherche du maximum dans un tableau d'entiers.
+Donnez une réduction linéaire du du problème de recherche du maximum dans un tableau d'entiers au problème du tri d'un tableau d'entiers.
 {% endexercice %}
 {% details "corrigé" %}
 
-Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = \max(T) - \max(T')$.
+- même entrée pour l'algorithme du max et du tri : $\mathcal{O}(1)$
+- on ne garde que le plus grand élément de la sortie du tri : $\mathcal{O}(1)$
 
 {% enddetails %}
+
+{% exercice %}
+Montrez que le problème de la recherche de doublon dans un tableau d'entiers est plus simple que le problème du tri d'un tableau d'entiers.
+{% endexercice %}
+{% details "corrigé" %}
+
+- même entrée pour l'algorithme du max et du tri : $\mathcal{O}(1)$
+- on parcourt le tableau trié jusqu'à trouver deux éléments successifs égaux : $\mathcal{O}(n)$ avec $n$ taille du tableau en entrée
+
+{% enddetails %}
+
+### La réduction polynomiale
+
+> TBD réduction polynomiale avec passage polynomial si complexité du problème inconnue.
+
 
 Si l'on veut utiliser la réduction pour résoudre notre problème réduit, on cherche le couple d'algorithmes avec la complexité la plus faible, si possible linéaire (comme dans l'exercice précédent) et au mieux polynomiale :
 
@@ -84,31 +136,17 @@ Montrez que le problèmes de recherche du minimum dans un tableau d'entiers rela
 Pour des entiers relatifs, il suffit de faire $T'[x] = -T[x]$.
 {% enddetails %}
 
+
+> TBD résoudre un avec l'autre. Comme fonction. Mais les 2 problèmes peuvent être décorrélées. On essaie ici de voir la nature du problème. $A_{2\rightarrow 1}$ ne dépend pas de $E$ sinon $A\leq B$ pour tous $A$ et $B$. On utilise parfois ça si les conversions sont linéaires (_ie._ linéaire ou au pire proportionnels à la complexité de la résolution de $B$) mais d'un point de vue théorique.
+
+
 ## Exemples et exercices
 
-### Tris
-
-Trier un tableau d'entier va souvent rendre les problèmes bien plus facile. ce qui fait que c'est souvent utile de faire une réduction au tri.
-
-{% exercice %}
-Montrez que le problème de recherche du maximum dans un tableau d'entiers  est plus simple que le problème du tri d'un tableau d'entiers.
-{% endexercice %}
-{% details "corrigé" %}
-
-On trie puis on prend le max.
-
-{% enddetails %}
-
-{% exercice %}
-Montrez que le problème de la recherche de doublon dans un tableau d'entiers est plus simple que le problème du tri d'un tableau d'entiers.
-{% endexercice %}
-{% details "corrigé" %}
-
-On trie puis on parcourt le tableau jusqu'à trouver deux éléments successifs égaux.
-
-{% enddetails %}
+> TBD réduction polynomiale avec passage polynomial si complexité du problème inconnue.
 
 ### Produit et carré
+
+> TBD fonctionne même si 3 fois.
 
 {% exercice %}
 Montrer que le problème d'élever un entier au carré est équivalent au problème de multiplier deux entiers entres eux.
@@ -122,6 +160,8 @@ Comme $C(x) = M(x, x)$ on a clairement $C \leq M$.
 La réciproque vient du produit remarquable $(x + y)^2 = x^2 + y^2 + 2xy$ et donc $M(x, y) = \frac{1}{2}(C(x+y) - C(x) - C(y))$.
 
 {% enddetails %}
+
+> TBD réduction une composition d'utilisation du problème $B$.
 
 ### {2, 3}-SUM
 
