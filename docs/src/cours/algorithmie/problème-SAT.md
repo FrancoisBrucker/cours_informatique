@@ -128,7 +128,7 @@ on peut associer une valeur de vérité à chaque formule et les combiner de fa�
 Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
 ) pour convertir les formules
 
-## <span id="3-sat"></span>3-SAT est NP-complet
+## <span id="3-sat"></span>SAT ≤ 3-SAT
 
 Un cas particulier important du problème `SAT` est le problème `3-SAT` ou toutes les clauses ont exactement 3 littéraux.
 

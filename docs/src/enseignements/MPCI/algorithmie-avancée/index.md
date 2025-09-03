@@ -24,7 +24,9 @@ En deux parties.
 
 {% aller %}
 
-1. Rappels écrire un algorithme avec [un pseudo-code](/cours/algorithmie/pseudo-code/){.interne}
+1. Rappels :
+   1. écrire un algorithme avec [un pseudo-code](/cours/algorithmie/pseudo-code/){.interne}
+   2. [importance de la complexité polynomiale](/cours/algorithmie/complexité-calculs/importance/){.interne}
 2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
 3. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
 4. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}

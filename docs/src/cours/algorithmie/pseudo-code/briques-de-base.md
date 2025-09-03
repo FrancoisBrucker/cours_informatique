@@ -11,8 +11,12 @@ eleventyComputed:
 
 Le pseudo-code est constitué d'instructions dont le but est soit de manipuler des objets (création, affectation ou lecture) ou de contrôler le flux d'instructions (test et boucles).
 
-> TBD dire que pas normalisé. Je vous donne ici "mon" pseudo-code. A priori c'est fait pour être explicite, donc toute variante ou abus de notation sera compréhensible. Je me permettrai aussi de temps en temps quelques abus de notations que j'explicite
- 
+{% attention %}
+Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici _"mon"_ pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours.
+
+Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert. Je mes en fin de cette partie une petite liste (non exhaustive des différences vues ci et là).
+{% endattention %}
+
 Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
 
 ## Objets et opérations
@@ -43,11 +47,17 @@ On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{6
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
 {% endattention %}
 
+An algorithmie, on ne préoccupe pas vraiment d'où sont stockés les objets. Ils peuvent être sur une feuille, dans la mémoire de l'informaticien ou sur un ordinateur : peu importe. Pour un ordinateur réel, les objets sont stockés dans une partie de la mémoire nommée **tas** (le tas est un tableau où chaque case contient 1 byte = 8 bit).
+
+![tas](tas.png)
+
+Les objets sont stockées dans le tas. Notez que le tas peut contenir des "trous"., c'est à dire des endroits sans objets.
+
 ### <span id="opérations"></span> Opérations
 
 Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :
 
-- **_créer des objets_** : des constantes
+- **_créer des objets_**
 - **_opérer sur des objets_** :
   - opérations sur les entiers et/ou réels :
     - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
@@ -59,6 +69,8 @@ Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. O
   - opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `||`{.language-}, `OR`{.language-} ou $\lor$)
 - **_afficher un objet_**. On suppose que l'on possède une opération unaire spéciale nommée `affiche` qui affiche à l'écran (ou à n'importe quoi permettant à l'utilisateur d'avoir un retour) l'objet. Par exemple `affiche 42`{.language-} va afficher l'objet entier valant 42 à l'écran.
 
+Les deux seuls moyens de créer des objets se font via des constantes (l'entier 42) ou comme des résultats d'opérations (le booléen Vrai est crée comme résultat de l'opération `40 > 2`)
+
 ## Variables
 
 Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**.
@@ -69,9 +81,13 @@ Une **_variables_** est alors associé à la première case de la mémoire conte
 Une **_variable_** est un nom auquel est associé un objet d'**un type donné**.
 {% endnote %}
 
-Les variables nous permettent de manipuler les objets.
+Les variables nous permettent de manipuler les objets. Conceptuellement parlant, ce sont juste des **liens vers** l'objet qu'elle référence.
 
-> TBD faire les espaces de noms. Montrer qu'objet et variables c'est pas pareil.
+En algorithmie, tout comme pour les objets on ne se préoccupe pas vraiment où sont stockés les variables. Pour un ordinateur réel, elles sont stockées dans une partie de la mémoire nommée **pile** et contiennent l'indice de la mémoire où commence l'objet qu'elle référence. Chaque variable est donc juste assez grande pour stocker un indice (64bit sur les ordinateur actuel ce qui permet d'avoir théoriquement un tas de taille $2^{64}byte = 18446744073709551616B = 16777216 terabyte).
+
+![pile](pile.png)
+
+Chaque variable a la même taille et sont stockés de façon consécutives dans la pile. En effet, les variables sont crées au début de l'algorithme et sont toues supprimées en même temps à la fin de l'algorithme.
 
 ### Définition
 
