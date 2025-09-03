@@ -123,10 +123,10 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une <strong><em>réduction</em></strong> de $P_1$ en $P_2$ est un couple d'algorithmes $A_1$ et $A_2$ tels que :</p>
+<p>Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une <strong><em>réduction</em></strong> de $P_1$ en $P_2$ est un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ tels que :</p>
 <ul>
-<li>Si $E_1$ est une entrée du problème $P_1$ alors $A_1(E_1)$ est une entrée de du problème $P_2$</li>
-<li>Si $S_2$ est une solution au problème $P_2$ avec $A_1(E_1)$ comme entrée alors $A_2(S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.</li>
+<li>Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$</li>
+<li>Si $S_2$ est une solution au problème $P_2$ avec $A_{1\rightarrow 2}(E_1)$ comme entrée alors $A_{2\rightarrow 1}(E_1, S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.</li>
 </ul>
 <p>Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.</p>
 </div></div>
@@ -139,7 +139,9 @@ $$
 <p>La réduction de $P_1$ en $P_2$ signifie que le problème $P1$ est un cas particulier du problème $P2$, plus général.</p>
 </div></div>
 
-<p>Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$. De là, la complexité du problème $B$ ne peut être plus petite que celle du problème $A$. Par exemple :</p>
+<p>Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$.</p>
+<p>L'intérêt de ce formalisme est que si les passages d'un problème à l'autre (les algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$) sont rapides (<em>ie.</em> au pire proportionnels à la complexité de la résolution de $B$), la complexité du problème $B$ ne peut être plus petite que celle du problème $A$.</p>
+<p>Par exemple :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
