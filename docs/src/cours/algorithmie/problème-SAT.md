@@ -137,7 +137,6 @@ Un cas particulier important du problème `SAT` est le problème `3-SAT` ou tout
 > TBD <https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf>
 >
 
-
 {% lien %}
 [Exemple de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description)
 {% endlien %}

@@ -19,21 +19,6 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 
 Le but de cette séance est de vous donner les connaissances nécessaire pour avoir un ordinateur pour le développement.
 
-## Ordinateur pour le développement
-
-
-> TBD ici remettre les bons liens et parler des fichiers de la partie système.
-> 
-Afin de pouvoir utiliser votre ordinateur comme un outil permettant de faire du développement informatique, il vous faudra installer quelques logiciels et comprendre minimalement son organisation. Pour cela, suivez le tutoriel suivant :
-
-{% aller %}
-[Configurer son ordinateur pour le développement](/cours/coder-et-développer/ordinateur-développement){.interne}
-{% endaller %}
-
-{% info %}
-Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
-{% endinfo %}
-
 ## Utiliser le réseau
 
 Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
@@ -43,17 +28,31 @@ Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau
 
 Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 
-## Programmation en python
+## Connaissances minimales du système d'exploitation
 
-> TBD liens plus bons : 
-Vous aurez besoin d'installer python et un logiciel pour programmer : /cours/coder-et-développer/bases-programmation/#coder-en-python
+### But
 
 {% aller %}
-[Installer python](/cours/coder-et-développer/installer-python/#installation-développement){.interne}
+[But d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/but){.interne}
 {% endaller %}
 
+### Installations système complémentaires
+
+- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
+- **sous mac** installez <https://brew.sh/> qui vous permettra d'installer de nombreux package unix : [installer brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne}.
+
+### Dossiers et fichiers
+
 {% aller %}
-[Éditeur vscode](/cours/coder-et-développer/éditeur-vscode/){.interne}
+[Naviguer dans un système de fichiers](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/){.interne}
+{% endaller %}
+
+## Ordinateur pour le développement en python
+
+Vous aurez besoin d'installer python et un logiciel pour programmer :
+
+{% aller %}
+[Installer python et un interpréteur](/cours/coder-et-développer/bases-programmation/interpréteur/){.interne}
 {% endaller %}
 
 ## Autre logiciels utiles
@@ -66,11 +65,12 @@ Vous aurez besoin de coder dans quasi toutes les matières. La bonne nouvelle c'
 
 ### Documents scientifiques
 
-{% lien %}
+#### Latex
 
+{% lien %}
 - [Page Wikipedia de $\LaTeX$](https://fr.wikipedia.org/wiki/LaTeX)
 - [Ressources sur Tex et Latex](https://www.tug.org/)
-
+- [latex en ligne](https://www.overleaf.com/)
 {% endlien %}
 
 Produire des documents scientifiques se fait difficilement avec Word, de part la multiplicité des formules à écrire. La communauté scientifique préfère utiliser le logiciel Latex qui produit, à partir de fichiers textes, des documents pdf de qualité.
@@ -110,6 +110,17 @@ Pour utiliser latex, rien de tel qu'un bon tuto :
 {% lien %}
 <https://www.tuteurs.ens.fr/logiciels/latex/>
 {% endlien %}
+
+#### Typst
+
+{% lien %}
+
+- [typst](https://typst.app/#start)
+- [installer typst chez vous](https://github.com/typst/typst)
+
+{% endlien %}
+
+Le petit nouveau qui fait (presque) tout comme son grand frère.
 
 ### Graphiques
 

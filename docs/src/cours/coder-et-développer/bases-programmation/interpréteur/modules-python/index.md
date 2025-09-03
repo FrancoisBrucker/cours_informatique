@@ -3,11 +3,6 @@ layout: layout/post.njk
 
 title: Installer des modules python
 
-eleventyNavigation:
-  prerequis:
-      - '../éditeur-vscode/python/'
-
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -15,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons montrer ici comment installer des modules à un interpréteur python. Nous prendrons ici l'exemple d'un projet avec vscode, mais la méthode sera générale.
+Nous allons montrer ici comment installer des modules à un interpréteur python. Nous prendrons ici l'exemple d'un projet avec vscode et de l'utilisation de son terminal, mais la méthode sera générale.
 
 ## Le module pip
 

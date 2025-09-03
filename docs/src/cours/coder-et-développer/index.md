@@ -41,14 +41,14 @@ Avant de pouvoir écrire des programmes conséquents il faut comprendre comment 
 
 {% prerequis "**Connaissances système minimales**" %}
 
-[Dossiers, fichiers et terminal](/cours/système-et-réseau/bases-utilisation/système/){.interne}
+[Utiliser son système d'exploitation](/cours/système-et-réseau/bases-système/bases/){.interne}
 
 {% endprerequis %}
 {% info "**Etape optionnelle**"%}
 
 Si vous avez votre ordinateur depuis longtemps sans vraiment vous en occuper, ou que vous avez des erreurs étranges, il peut-être nécessaire de faire une nouvelle installation :
 
-[Installer un nouveau système](/cours/système-et-réseau/bases-utilisation/installation/){.interne}
+[Installer un nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
 
 {% endinfo %}
 

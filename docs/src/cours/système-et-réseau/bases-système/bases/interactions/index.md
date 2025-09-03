@@ -27,15 +27,13 @@ Quel que soit le système d'exploitation que vous utilisez, les données (ainsi 
 [Naviguer dans un système de fichiers](fichiers-navigation){.interne}
 {% endaller %}
 
+Le système d'exploitation a besoin de ses propres fichiers pour fonctionner correctement. Selon le système d'exploitations, ils sont rangés différemment :
 
-Le système d'exploitation a besoin de ses pro
 {% aller %}
-[Organisation des fichiers](fichiers-système){.interne}
+[Hiérarchie système](fichiers-système){.interne}
 {% endaller %}
 
-> TBD fichiers système (/system32 pour windows, fichiers systèmes unix (on y reviendra) et spécificités macos library)
-
-## Programmes 
+## Programmes
 
 > TBD exécutables et bibliothèque (dll)
 > TBD exemple de vscode <https://code.visualstudio.com/> : ou il est (windows, linux, mac), ses paramètres (système, utilisateur).
@@ -43,5 +41,5 @@ Le système d'exploitation a besoin de ses pro
 {% info %}
 Pour utiliser vscode en développement, vous pouvez aller :
 
-[éditeur vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne}
+[éditeur vscode](/cours/coder-et-développer/bases-programmation/interpréteur/éditeur-vscode/){.interne}
 {% endinfo %}

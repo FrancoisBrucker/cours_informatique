@@ -28,8 +28,9 @@ En deux parties.
    1. écrire un algorithme avec [un pseudo-code](/cours/algorithmie/pseudo-code/){.interne}
    2. [importance de la complexité polynomiale](/cours/algorithmie/complexité-calculs/importance/){.interne}
 2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
-3. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
-4. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
+3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
+4. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
+5. Algorithme de la recherche universelle.
 
 {% endaller %}
 
