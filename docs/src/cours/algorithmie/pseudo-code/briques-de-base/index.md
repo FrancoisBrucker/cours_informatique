@@ -224,55 +224,60 @@ Une variable est une opération temporaire. On peut réaffecter une variable à 
 
 
 
-Après la troisième ligne, le code précédent associe la variable `a`{.language-}à un entier valant 4 et à un entier valant 2 après la cinquième ligne.
-
-Il est important de noter que :
+Après la troisième ligne, le code précédent associe la variable `a`{.language-} à un entier valant 4 et à un entier valant 2 après la cinquième ligne. Il est important de noter que :
 
 {% attention "**À retenir**" %}
 Une variable n'**est pas** un objet, c'est un lien vers un objet qui pourra changer au cours du temps.
 {% endattention %}
 
-
-> TBD voir partie code mémoire/pile. C'est un indice dans la mémoire qui peut changer.
+D'un point de vue matériel, rappelez vous qu'une variable est un entier qui correspond à un indice dans le tableau de la mémoire.
 
 ### Utilisation
 
-Utiliser une variable consiste à la remplacer par l'objet qu'elle référence. Par exemple :
+Utiliser une variable consiste à la remplacer dans l'instruction par l'objet qu'elle référence. Par exemple :
 
-```pseudocode/
-a := entier
-a ← 3
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + $a colon.eq$ *entier*
+  + $a <- 42$
+  + *affiche* $a$
+]
+{% endalgorithme %}
 
-affiche a
-```
+Le code précédent affiche l'objet référencé par $a$. Il est équivalent à : `affiche 42`{.language-}.
 
-> TBD on commence par retrouver la valeur puis on l'affiche
->
-> si pas initialisé valeur pas connue, ça peut être n'importe quoi. Ce n'est pas bien. Prenez l'habitude d'initialiser toutes les variables.
+{% note "**Définition**" %}
+**_Utiliser_** une variable dans un code revient à la remplacer par l'objet qu'elle référence. Ce remplacement se fait **avant** l'exécution de l'instruction.
 
-```pseudocode/
-a := entier
-a ← 3
+{% endnote %}
 
-b := entier
-b ← a
-```
+Regardons ceci avec quelques exemples :
+
+{% algorithme %}
+#pseudocode-list()[
+  + $a colon.eq$ *entier*
+  + $a <- 42$
+  + $b colon.eq$ *entier*
+  + $b <- a$
+]
+{% endalgorithme %}
+
 
 La ligne 4, une instruction d'affectation, s'exécute de la façon suivante :
 
 1. on commence par retrouver objet à droite de l'opérateur `←`{.language-}. C'est une variable : on récupère son objet, un entier valant 3
 2. on affecte cet objet à la variable à gauche de l'opérateur `←`{.language-}, la variable `b`{.language-}
 
-> TBD espaces de noms
-
 Autre exemple :
 
-```pseudocode/
-a ← 3
-
-b := entier
-b ← a + 1
-```
+{% algorithme %}
+#pseudocode-list()[
+  + $a colon.eq$ *entier*
+  + $a <- 3$
+  + $b colon.eq$ *entier*
+  + $b <- a + 1$
+]
+{% endalgorithme %}
 
 La ligne 4, une instruction composée d'une opération puis d'ue affectation, s'exécute de la façon suivante :
 
@@ -281,26 +286,11 @@ La ligne 4, une instruction composée d'une opération puis d'ue affectation, s'
    2. on peut maintenant effectuer l'opération d'addition qui rend un objet valant 4
 2. on affecte cet objet à la variable à gauche de l'opérateur `←`{.language-}, la variable `b`{.language-}
 
-> TBD espace des noms
+Attention cependant :
 
-- **_l'affichage à l'écran_** : `affiche a`{.language-} Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
-
-{% attention %}
-Une variable est un nom, elle ne copie ni ne modifie un objet dans le pseudo-code suivant, les deux variables `a`{.language-} et `b`{.language-} référencent le même objet entier.
-
-```pseudocode
-soient a et b deux entiers
-
-a ← 3
-b ← a
-```
-
-Dans la seconde instruction, on commence par retrouver l'objet nommé par `a`{.language-} et on le nomme `b`{.language-} : la case où est stocké l'entier dans la mémoire est donné à `a`{.language-} et à `b`{.language-}
+{% attention "**À retenir**" %}
+On ne peut utiliser une variable qu'après l'avoir affectée. Utiliser une variable qui n'a été que définie rend un résultat non prédictif : c'est interdit en algorithmie.
 {% endattention %}
-
-Enfin, avant d'utiliser une variable, il faut a priori la définir avec le mot clé `soit`{.language-}.
-
-> TBD on peut créer puis utiliser plus tard, mais pas défini avant la première affectation.
 
 ## <span id="tableaux"></span>Tableaux
 
@@ -315,17 +305,27 @@ Si le tableau est nommé $t$ :
 
 {% endnote %}
 
-> TBD définition
+Créons un tableau :
 
-```pseudocode/
-a := [entier] {longueur: 12}
-```
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + T $colon.eq$ [entier] {longueur: 13}
+]
+{% endalgorithme %}
 
-```pseudocode/
-soit a un [entier] de taille 12
-```
+La ligne précédente crée un tableau de 13 entiers.
 
-> TBD nom := type paramètres
+{% note "**Définition**" %}
+Le format général de la création d'un tableau de longueur $n$ est :
+
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + #text(stroke: blue)[nom] $colon.eq$ [#text(stroke: red)[type]] {longueur: #text(stroke: orange)[n]}
+]
+{% endalgorithme %}
+
+Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : `[type]`{.language-}. 
+{% endnote %}
 
 Un tableau est un mix entre variables et objet : c'est un objet contenant des variables. Les différentes références des variables du tableau sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée, on considère que :
 
@@ -337,12 +337,7 @@ Un tableau est un mix entre variables et objet : c'est un objet contenant des va
 On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. [On justifiera ceci proprement plus tard](../../complexité-calculs/O-pour-l-algorithmie){.interne}.
 {% endinfo %}
 
-Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui peut être directe :
-
-- `t ← [1, 3, 2]`{.language-} qui crée et initialise un tableau de 3 entiers
-- `t := tableau de 23 caractères`{.language-} qui crée un tableau de 23 caractères
-
-On considère que la création d'un tableau prendra toujours 1 instruction, puis on affecte les variables. La première affectation est donc un raccourci pour 4 instructions :
+Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui prendra toujours 1 instruction, puis on affecte les variables. La première affectation est donc un raccourci pour 4 instructions :
 
 1. la création d'un tableau de longueur 3
 2. l'affectation `t[0] ← 1`{.language-}
