@@ -32,9 +32,13 @@ En prenant une chaîne de caractères en position $L' < L$ que peut-il se passer
 
 On ne peut donc pas parcourir et exécuter tous les programmes jusqu'à tomber sur celui qui fonctionne (en position $L$ qu'on sait exister mais dont on ne connaît pas la valeur) car cela risque de durer indéfiniment.
 
+### Première idée
+
 L'idée est d'exécuter $k$ opérations des $k$ premières chaînes en vérifiant ensuite si la solution d'un des programme qui s'est arrêté satisfait notre vérifieur. Ci ce n'est pas le cas on recommence en incrémentant $k$.
 
 Au bout d'un moment on aura $k \geq \max(L, C)$ (avec $C$ le nombre d'opérations que met notre programme à s'exécuter) et on trouvera notre solution !
+
+![principe](principe.png)
 
 On vient de trouver un algorithme universelle pour résoudre tous les problèmes de NP ! Ce n'est pas encore optimal car sa complexité ne va pas être exactement égale à la complexité du meilleur algorithme pour résoudre notre problème.
 
@@ -55,14 +59,28 @@ $$
 
 On est pas encore optimal, on va y arriver plus bas, mais on a déjà un algorithme polynomial pour résoudre tous les problèmes de P uniquement avec leurs vérifieurs.
 
+### Amélioration
+
+> TBD K +1 on fait 2K
+> on passe de $K^3$ à $K^2$
+
+> 3 * (K/2)^2 exécuté qu'une seule fois
+> 3 * (K/4)^2 exécuté 2 fois
+> ...
+> K^2 * somme convergente
+
+![principe](amélioration.png)
+
 ## Exécution fragmenté d'un algorithme
+
+> L'idée précédente est bonne. Si on a qu'un seul algorithme à exécuté on a bien le bon nombre de complexité.
 
 Pour comprendre comment fonctionne la recherche universelle, commençons par étudier l'algorithme suivant, qui prend en paramètre un algorithme `A`{.language-} et une de ses entré possible, `E`{.language-} :
 
 ```pseudocode
-algorithme exécution_fragmentée(T, A, E):
+algorithme exécution_fragmentée(A, E):
   I = 1
-  tant que I < T:
+  tant que Vrai:
     exécuter I instructions de A(E)
     Si l'algorithme A s'est arrêté:
       rendre sa sortie
@@ -107,13 +125,11 @@ Et donc $S_n \leq S_{\infty} = 2$ ce qui nous permet de conclure que le nombre d
 
 {% enddetails %}
 
-
-## Exécution fragmenté v1
-
-> TBD à ajouter plutôt que K +1 on fait 2K
-> on passe de $K^3$ à $K^2$
-> 
 ## Exécution fragmentée générale
+
+![recherche universelle](recherche-universelle.png)
+
+> Il faut donc généraliser en colonne ce qu'on a fat en ligne.
 
 L'algorithme de la recherche universelle va procéder un peu de la même manière que celui d'exécution fragmentée mais pour tous les algorithmes.
 
@@ -146,6 +162,17 @@ La complexité d'exécution de l'algorithme `exécution_fragmentée_universelle`
 Supposons que l'algorithme $A(E)$ s'arrête au bout de $K$ instructions et que la chaîne de caractère qui correspond à son pseudo-code soit en position $L$ de la liste ordonnée de tous les textes.
 
 L'algorithme `exécution_fragmentée_universelle`{.language-} va s'arrêter lorsqu'il aura effectué $K$ opération de l'algorithme $A$
+
+```pseudocode
+algorithme exécution_fragmentée(T, A, E):
+  I = 1
+  tant que I < T:
+    exécuter I instructions de A(E)
+    Si l'algorithme A s'est arrêté:
+      rendre sa sortie
+    I = 2 * I
+  rendre null
+```
 
 Tout se passe alors comme si :
 

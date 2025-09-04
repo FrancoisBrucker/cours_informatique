@@ -20,7 +20,7 @@ En deux parties.
 
 ### Modèles de calculs et classes de problèmes "utiles"
 
-#### Semaine 1
+> Semaine 1
 
 {% aller %}
 
@@ -30,19 +30,13 @@ En deux parties.
 2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
 3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
 4. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
-5. [Algorithme de la recherche universelle](cours_informatique/cours/algorithmie/recherche-universelle/){.interne}
+5. [Algorithme de la recherche universelle](/cours/algorithmie/recherche-universelle/){.interne}
 
 {% endaller %}
 
-#### Semaine 2
-
-1. fonctions booléennes
-2. Théorème de Levin-Cook
-3. (pseudo-)assembleur
-4. architecture de Von Neumann et système
-5. Machine de Turing
-
 ### Théorie des graphes
+
+> Semaine 2 à 5
 
 > TBD un modèle universel (car SAT et plein d'autre) pour tout problème. Un outil de modélisation puissant
 
