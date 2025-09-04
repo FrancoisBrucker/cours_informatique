@@ -107,31 +107,34 @@ Une fonction peut très bien être un paramètre d'une autre fonction. Son type 
 Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Le code suivant affichera 4 et pas 6 qui est dernière valeur prise par la variable `e`{.language-} de la fonction `recherche`{.language-} :
 
 ```pseudocode
+e := entier
 e ← 4
+
+t := [entier] {longueur: 3}
 t ← [1, 2, 6]
+
 trouve ← recherche(t, 6)
-affiche à l'écran trouve
+affiche trouve
 ```
 
 ### Retour
 
-> TBD le retour est un objet
+Le retour de la fonction est un objet du type de sortie.
 
 ### Paramètres
 
-> TBD attention, on passe l'objet. Si cela ne porte pas à conséquence pour des objets basique il faut faire attention avec les tableaux qui sont à la fois des variables et des objets.
-> TBD cas ou un tableau en entrée est modifié.
+Les paramètres se comportent comme des variables initialisée au début de l'exécution de la fonction. Attention donc si vous passez un tableau en paramètre, la fonction peut le modifier.
 
 ## Objet fonction
 
 Une fonction peut être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction `recherche`{.language-} soit définie :
 
 ```pseudocode
-f ← recherche
-t ← [1, 2, 6]
-trouve ← f(t, 6)
+f := ([entier], entier) → booléen
 
-affiche à l'écran trouve
+f ← recherche
+affiche f([1, 2, 6], 6)
+
 ```
 
 {% attention %}

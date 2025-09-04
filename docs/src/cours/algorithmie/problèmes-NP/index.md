@@ -15,7 +15,7 @@ En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing pui
 
 ## Problèmes utilisables en pratique
 
-Un [problème algorithmique](../probleme-algorithmique/){.interne} implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne} par exemple), on peut commencer par se restreindre aux problèmes décidables :
+Un [problème algorithmique](../#probleme-algorithmique/){.interne} implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne} par exemple), on peut commencer par se restreindre aux problèmes décidables :
 
 ![décidable](./NP-décidable.png)
 
@@ -510,7 +510,7 @@ Pour l'instant nous ne connaissons qu'un problème NP-Complet : SAT. Montrons do
 On considère alors une instance de SAT que l'on va transformer polynomialement en une instance de CE. Posons ses paramètres :
 
 - $x_1, \dots, x_n$ : les $n$ variables booléennes
-- $c_1 \land \lor \land c_m$ : les $m$ conjonctions de clauses
+- $c_1 \land \dots \land c_m$ : les $m$ conjonctions de clauses
 - $c_i = l^1_i \lor \dots \lor l^{k_i}_i$ : les littéraux formant les clauses.
 
 On suppose de plus sans perte de généralité que :
@@ -527,11 +527,11 @@ $$
 \begin{array}{lll}
 U = &\{ x_i \vert 1 \leq i \leq n \} \cup&\text{variables booléenne}\\
 &\{ c_i \vert 1 \leq i \leq m \} \cup&\text{clauses}\\
-&\{ l_{ij} \vert 1 \leq i \leq m, 1\leq j \leq k_i \}&\text{littéraux}\\
-F = &(\cup_{1\leq i \leq n}\{ x_i, l_{j, k} \vert l_{j, k} = x_i, 1 \leq j \leq m, 1\leq k \leq k_i\}) \cup &\text{littéraux vrais pour }x_i\\
-&(\cup_{1\leq i \leq n}\{ x_i, l_{j, k} \vert l_{j, k} = \overline{x_i}, 1 \leq j \leq m, 1\leq k \leq k_i\}) \cup &\text{littéraux faux pour }x_i\\
-&(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ c_i, l_{i, k} \})) &\text{liens entre clauses et littéraux}\\
-&(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ l_{i, k} \})) &\text{les littéraux}\\
+&\{ l_{i}^{j} \vert 1 \leq i \leq m, 1\leq j \leq k_i \}&\text{littéraux}\\
+F = &(\cup_{1\leq i \leq n}\{ x_i, l_{j}^{k} \vert l_{j}^{k} = x_i, 1 \leq j \leq m, 1\leq k \leq k_i\}) \cup &\text{littéraux vrais pour }x_i\\
+&(\cup_{1\leq i \leq n}\{ x_i, l_{j}^{k} \vert l_{j}^{k} = \overline{x_i}, 1 \leq j \leq m, 1\leq k \leq k_i\}) \cup &\text{littéraux faux pour }x_i\\
+&(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ c_i, l_{i}^{k} \})) &\text{liens entre clauses et littéraux}\\
+&(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ l_{i}^{k} \})) &\text{les littéraux}\\
 \end{array}
 $$
 </div>

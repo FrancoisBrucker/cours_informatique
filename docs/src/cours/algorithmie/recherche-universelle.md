@@ -19,10 +19,6 @@ L'algorithme de recherche universelle est un algorithme permettant de résoudre 
 
 ## Principe
 
-> TBD à écrire propre.
->
-> TBD montre que NPC vient du fait de remonter facile,ment aux paramètre à partir d'une solution. ie Trouver l'inverse d'une fonction. C'est la base de la crypto. Si c'est facile tout se casse la gueule.
-
 On peut considérer toutes les chaînes de caractères possibles rangées dans l'ordre lexicographique ("a", "b", ..., "z", "aa", ...). On peut toujours écrire une de ces chaines dans un fichier et tenter de l'exécuter avec l'interpréteur python. Si, par chance, on a écrit du code python l'interpréteur va exécuter le code et sinon il va planter.
 
 Si le problème que l'on cherche à résoudre est dans NP on possède un de ses vérifieurs et il existe une chaîne de caractères qui correspond à un code python de l'algorithme que le résout de manière optimale. On suppose que ce code est la chaîne en position $L$ dans l'ordre lexicographique.

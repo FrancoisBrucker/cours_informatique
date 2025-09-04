@@ -327,7 +327,11 @@ Le format général de la création d'un tableau de longueur $n$ est :
 Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : `[type]`{.language-}. 
 {% endnote %}
 
-Un tableau est un mix entre variables et objet : c'est un objet contenant des variables. Les différentes références des variables du tableau sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée, on considère que :
+Un tableau est un mix entre variables et objet : c'est un objet contenant des variables. Les différentes références des variables du tableau sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée :
+
+![tableau](tableau.png)
+
+On considère que :
 
 - la taille en mémoire d'un tableau est proportionnelle à la taille d'un objet fois la taille.
 - il faut 1 instruction pour créer un tableau
@@ -337,12 +341,7 @@ Un tableau est un mix entre variables et objet : c'est un objet contenant des va
 On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. [On justifiera ceci proprement plus tard](../../complexité-calculs/O-pour-l-algorithmie){.interne}.
 {% endinfo %}
 
-Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui prendra toujours 1 instruction, puis on affecte les variables. La première affectation est donc un raccourci pour 4 instructions :
-
-1. la création d'un tableau de longueur 3
-2. l'affectation `t[0] ← 1`{.language-}
-3. l'affectation `t[1] ← 3`{.language-}
-4. l'affectation `t[2] ← 2`{.language-}
+Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui prendra toujours 1 instruction, puis on affecte les variables.
 
 {% attention %}
 Tout comme une variable, une fois le tableau crée, la valeur de chaque case est **indéterminée !**. Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
@@ -354,11 +353,7 @@ Toutes les autres opérations sur les tableaux sont faites graces aux opération
 Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.
 {% endattention %}
 
-Le type d'un tableau sera de la forme `[T]`{.language-} et signifiera que le tableau contient des objets de type `T`{.language-}. Un tableau de type `[entier]`{.language-} contiendra des entiers.
-
-{% attention %}
-On ne peut  **pas** affecter un tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
-{% endattention %}
+Ainsi, on ne peut **pas** affecter un tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 
 ### Tranches
 
@@ -393,11 +388,11 @@ Chacune des quatre opérations précédentes (création, affectation, accès et 
 
 La chaîne de caractère étant très utilisée, on se permettra les abus suivant :
 
-- de définir une chaîne directement `s ← "Salut"`{.language-}
-- d'utiliser le type `chaîne`{.language-} plutôt que `[caractère]`{.language-}. Dans cde cas, l'objet sera non modifiable (`s[2] ← "p"`{.language-} ne sera pas une instruction valide pour des chaînes alors que c'est une instruction valide pour un tableau de caractères).
+- de définir une chaîne directement : `s := chaine"`{.language-}  en utilisant le type chaîne
+- puis de l'affecter : `s ← "Salut"`{.language-}
 - on définit l'opération de concaténation avec l'opérateur `+`{.language-} : `"salut" + " toi !"`{.language-} vaut la chaîne de caractères `"salut toi !"`{.language-}
 
-Ainsi, un tableau de chaînes sera de type `[chaîne]`{.language-}.
+Le type `chaîne`{.language-} peut être vu comme un synonyme `[caractère]`{.language-} sauf que l'on ne peut pas modifier un de ses indices  (`s[2] ← "p"`{.language-} ne sera pas une instruction valide), bien que l'on puisse y accéder (`affiche s[2]`{.language-} sera une instruction valide). Un tableau de chaînes sera de type `[chaîne]`{.language-}.
 
 ## <span id="instruction-contrôle"></span> Instructions de contrôle
 
@@ -486,12 +481,13 @@ pour chaque élément x d'un tableau:
     instruction n
 ```
 
-On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x`{.language-pseudocode} vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
+On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x`{.language-pseudocode} (de type de celui des objets stockés dans le tableau) vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
 
 Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante : à l'itération $i$ on examine le $i+1$ ème élément du tableau et on a déjà examiné les $i$ premiers.
  :
 
 ```pseudocode
+x := entier
 pour chaque i de [0 .. tableau.longueur[:
     x ← tableau[i]
 
@@ -503,6 +499,9 @@ pour chaque i de [0 .. tableau.longueur[:
 Enfin, on peut tout à fait écrire la variante `pour chaque`{.language-pseudocode} de la forme initiale `tant que`{.language-pseudocode} :
 
 ```pseudocode
+x := entier
+
+i := entier
 i ← 0
 tant que i < tableau.longueur:
     x ← tableau[i]
@@ -512,139 +511,4 @@ tant que i < tableau.longueur:
     instruction n
 
     i ← i + 1
-```
-
-## _"Abus"_ de notation
-
-On se permettra, lorsque l'instruction est assez claire de procéder à des raccourci pour rendre le pseudocode plus digeste. Attention, la plupart de ces opérations ne seront pas des opérations élémentaires !
-
-### Répétitions
-
-```pseudocode
-répéter k fois:
-    ...
-```
-
-Pour :
-
-```pseudocode
-pour chaque i de [1 .. k]:
-    ...
-```
-
-#### Répétitions par borne
-
-Tout un tas de variations sont possibles, du moment que ce soit compréhensible. Par exemple :
-
-```pseudocode
-pour i de a à b:
-    ...
-```
-
-Ou encore :
-
-```pseudocode
-pour i=a à i=b:
-    ...
-```
-
-Pour :
-
-```pseudocode
-pour chaque i de [a .. b]:
-    ...
-```
-
-#### Répétitions à pas fixé
-
-```pseudocode
-pour i de a à b par par pas de k:
-    ...
-```
-
-ou encore :
-
-```pseudocode
-pour chaque i de [a .. b] par pas de k:
-    ...
-```
-
-pour :
-
-```pseudocode
-i ← a
-tant que i ≤ b:
-  ...
-
-  i ← i + k
-```
-
-### Affectation d'une tranche de tableau
-
-```pseudocode
-T[a:b] ← k
-```
-
-pour :
-
-```pseudocode
-pour chaque i de [a .. b[:
-    T[i] ← k
-```
-
-Fonctionne aussi pour :
-
-```pseudocode
-T[:] ← k
-```
-
-Qui correspond à :
-
-```pseudocode
-pour chaque i de [0 .. T.longueur[:
-    T[i] ← k
-```
-
-Ou encore à :
-
-```pseudocode
-T[a:b] ← T'[a':]
-```
-
-Qui correspond à :
-
-```pseudocode
-pour chaque i de [0 .. b-a[:
-    T[a + i] ← T'[a' + i]
-```
-
-{% attention %}
-Les affectations de tranches ne sont **pas** une instruction simple, mais nécessitent plusieurs instructions : ceux de la boucle sous-jacente.
-
-Ainsi, le code suivant nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :
-
-```pseudocode
-T' ← un nouveau tableau contenant T[i:j]  # j - i + 1 instructions en 1 ligne
-```
-
-{% endattention %}
-
-### Concaténation
-
-Avec deux tableaux :
-
-```pseudocode
-T ← T1 + T2
-```
-
-pour :
-
-```pseudocode
-T ← un nouveau tableau de taille T1.longueur + T2.longueur
-
-pour chaque i de [0 .. T1.longueur[:
-    T[i] ← T1[i]
-pour chaque i de [0 .. T2.longueur[:
-    T[T1.longueur + i] ← T2[i]
-
 ```

@@ -9,8 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD rappeler la def de la partie NP
-
 Le problème SAT cherche à vérifier si une formule logique peut-être satisfaite.
 
 Pour cela, commençons par définir un concept fondamental en logique la **_conjonction de clauses_** :
@@ -34,10 +32,6 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 - **Sortie** : Une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie (ou `∅`{.language-} si cela n'est pas possible).
 
 {% endnote %}
-{% info %}
-Une formule logique sous la forme d'une disjonction de clause est dite sous la [forme normale conjonctive](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive). Toute formule logique peut être mise sous cette forme grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) qui est linéaire en nombre d'opérations. Ceci exige de se retrouver avec un nombre exponentiel de clauses si on utilise juste [la distributivité des opérations logiques](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable).
-
-{% endinfo %}
 
 ## Formule logique et SAT
 
@@ -46,24 +40,24 @@ Une formule logique sous la forme d'une disjonction de clause est dite sous la [
 
 - une variable booléenne
 - si $\phi$ est une formule alors $\overline{\phi}$ en est une également
-- si $\phi$ et $\psi$ sont deux formules alors $\phi \land \psi$ en est une également
-- si $\phi$ et $\psi$ sont deux formules alors $\phi \lor \psi$ en est une également
+- si $\phi$ et $\psi$ sont deux formules alors :
+  - $\phi \land \psi$ en est une également
+  - $\phi \lor \psi$ en est une également
+  - $\phi \Rightarrow \psi$ en est une également
+  - $\phi \Leftrightarrow \psi$ en est une également
+
 
 Deux formules sont **_égales_** si elles ont les même table de vérité.
 
 {% endnote %}
 
-Pour les implication et équivalences logique :
+On peut se ramener aux formules sans implications ou équivalences en utilisant le fait que :
 
-- $\phi \Rightarrow \psi \coloneqq (\phi \land \psi) \lor \overline{\phi}$
-- $\phi \Leftrightarrow \psi \coloneqq (\phi \land \psi) \lor (\overline{\phi} \land \overline{\psi})$
-
-> TBD utiliser ça pour le levin-cook.
-
-On ne parlera pas beaucoup plus de logique ici, en particulier nous n'aborderons pas les implications ou équivalences logiques.
+- $\phi \Rightarrow \psi$ est égale à $(\phi \land \psi) \lor \overline{\phi}$
+- $\phi \Leftrightarrow \psi$ est égale à $(\phi \land \psi) \lor (\overline{\phi} \land \overline{\psi})$
 
 
-> TBD exercice montrer $a \Leftrightarrow (a \lor c)$ est équivalent à
+> TBD exercice montrer $a \Leftrightarrow (a \lor c)$ est équivalent à ...
 
 De plus, les propriétés classique suivantes des fonctions logiques permettent d'assurer que l'on peut obtenir toutes les formules classiques avec notre définition.
 
@@ -84,11 +78,7 @@ On a les propriétés suivantes :
 
 Enfin, en associant une valeur de vérité à chaque variable, une formule sera vraie ou fausse. Une formule est ainsi une fonction booléenne. On peut alors parler d'égalité de formule si quelque soit la valeur des variables les formules sont égales :
 
-{% note "**Définition**" %}
-Deux formules sont **_égales_** si elles ont les même table de vérité.
-{% endnote %}
-
-> TBD on peut le faire en utilisant prop distributivié :
+> TBD on peut le faire en utilisant prop distributivité :
 > 
 {% note "**Proposition**" %}
 
@@ -128,9 +118,11 @@ on peut associer une valeur de vérité à chaque formule et les combiner de fa�
 Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
 ) pour convertir les formules
 
-## <span id="3-sat"></span>SAT ≤ 3-SAT
+## <span id="3-sat"></span>Le problème 3-SAT
 
 Un cas particulier important du problème `SAT` est le problème `3-SAT` ou toutes les clauses ont exactement 3 littéraux.
+
+### Définition
 
 > résolution 3-sat par backtracking
 >
@@ -237,6 +229,14 @@ Pour que notre instance ne puisse plus avoir de solution, il faut lui rajouter d
 
 Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir sans faire tous les cas.
 
+### SAT ≤ 3-SAT
+
+- un literal -> 3 littéraux en ajoutant (x) -> (x ou z ou non z)
+- deux litéraux -> 3 littéraux (x ou y) -> (x ou y ou z) et (non z)
+- n > 3 litteraux (x1 ou ... xn) -> (x1 ou ... xn-2 ou z) et (non z ou xn-1 ou xn)
+
+La transformation est bien linéaire. et résoudre SAT implique 3-sat car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT alors on en déduit SAT car dans les méta clauses, il y a forcément un des litéraux initiaux qui est vrai.
+
 ## Et 2-SAT ?
 
 > Réduction ne fonctionne pas. Autre problème
@@ -248,3 +248,12 @@ Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir san
 On vérifie les conséquences de chaque choix. Une fois tous les obligés fait si pas de contradiction on a un sous ensemble stable et on peut supprimer les clauses ayant ces affectations. Sous cas et on recommence. Si contradiction, on prend l'affectation contraire et on reteste. Si ça rate encore alors affectation impossible.
 
 > TBD refaire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
+
+## Algorithme et SAT
+
+> TBD polylog
+
+tout algorithme s'écrit comme un SAT à résoudre sachant les entrées qui sont données (ex somme). Mais si on connaît la somme, on peut la fixer et l'algo va trouver des entrées !
+
+Si SAT est facile alors trouver des entrées à partir de sorties devient facile et toute la crypto se casse la gueule.
+
