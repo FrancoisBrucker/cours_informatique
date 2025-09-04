@@ -2065,7 +2065,9 @@
 <p>Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : <code class="language-">[type]</code>.</p>
 </div></div>
 
-<p>Un tableau est un mix entre variables et objet : c'est un objet contenant des variables. Les différentes références des variables du tableau sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée, on considère que :</p>
+<p>Un tableau est un mix entre variables et objet : c'est un objet contenant des variables. Les différentes références des variables du tableau sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée :</p>
+<p><img src="tableau.png" alt="tableau"></p>
+<p>On considère que :</p>
 <ul>
 <li>la taille en mémoire d'un tableau est proportionnelle à la taille d'un objet fois la taille.</li>
 <li>il faut 1 instruction pour créer un tableau</li>
@@ -2079,13 +2081,7 @@
 <p>On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie" class="interne">On justifiera ceci proprement plus tard</a>.</p>
 </div></div>
 
-<p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui prendra toujours 1 instruction, puis on affecte les variables. La première affectation est donc un raccourci pour 4 instructions :</p>
-<ol>
-<li>la création d'un tableau de longueur 3</li>
-<li>l'affectation <code class="language-">t[0] ← 1</code></li>
-<li>l'affectation <code class="language-">t[1] ← 3</code></li>
-<li>l'affectation <code class="language-">t[2] ← 2</code></li>
-</ol>
+<p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui prendra toujours 1 instruction, puis on affecte les variables.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -2105,15 +2101,7 @@
 <p>Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.</p>
 </div></div>
 
-<p>Le type d'un tableau sera de la forme <code class="language-">[T]</code> et signifiera que le tableau contient des objets de type <code class="language-">T</code>. Un tableau de type <code class="language-">[entier]</code> contiendra des entiers.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On ne peut  <strong>pas</strong> affecter un tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.</p>
-</div></div>
-
+<p>Ainsi, on ne peut <strong>pas</strong> affecter un tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.</p>
 <h3>Tranches</h3>
 <p>On utilisera parfois, comme en python par exemple des sous tableaux via des <strong><em>tranches</em></strong> (<strong><em>slices</em></strong> en anglais) :</p>
 <ul>
@@ -2150,11 +2138,11 @@
 
 <p>La chaîne de caractère étant très utilisée, on se permettra les abus suivant :</p>
 <ul>
-<li>de définir une chaîne directement <code class="language-">s ← &quot;Salut&quot;</code></li>
-<li>d'utiliser le type <code class="language-">chaîne</code> plutôt que <code class="language-">[caractère]</code>. Dans cde cas, l'objet sera non modifiable (<code class="language-">s[2] ← &quot;p&quot;</code> ne sera pas une instruction valide pour des chaînes alors que c'est une instruction valide pour un tableau de caractères).</li>
+<li>de définir une chaîne directement : <code class="language-">s := chaine&quot;</code>  en utilisant le type chaîne</li>
+<li>puis de l'affecter : <code class="language-">s ← &quot;Salut&quot;</code></li>
 <li>on définit l'opération de concaténation avec l'opérateur <code class="language-">+</code> : <code class="language-">&quot;salut&quot; + &quot; toi !&quot;</code> vaut la chaîne de caractères <code class="language-">&quot;salut toi !&quot;</code></li>
 </ul>
-<p>Ainsi, un tableau de chaînes sera de type <code class="language-">[chaîne]</code>.</p>
+<p>Le type <code class="language-">chaîne</code> peut être vu comme un synonyme <code class="language-">[caractère]</code> sauf que l'on ne peut pas modifier un de ses indices  (<code class="language-">s[2] ← &quot;p&quot;</code> ne sera pas une instruction valide), bien que l'on puisse y accéder (<code class="language-">affiche s[2]</code> sera une instruction valide). Un tableau de chaînes sera de type <code class="language-">[chaîne]</code>.</p>
 <h2><span id="instruction-contrôle"></span> Instructions de contrôle</h2>
 <p>Si un des deux buts d'une instruction est de créer des objets à partir d'autres (ce que l'on vient de voir), le second but est de contrôler le flux d'instructions à exécuter. Ces instructions sont de deux types :</p>
 <ul>
@@ -2220,10 +2208,11 @@
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     instruction<span class="token number"> n
 </span></code></pre>
-<p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code class="language-pseudocode">x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
+<p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code class="language-pseudocode">x</code> (de type de celui des objets stockés dans le tableau) vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
 <p>Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante : à l'itération $i$ on examine le $i+1$ ème élément du tableau et on a déjà examiné les $i$ premiers.
 :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
     x <span class="token operator">←</span> tableau<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
     instruction <span class="token number">1</span>
@@ -2231,7 +2220,10 @@
     instruction<span class="token number"> n
 </span></code></pre>
 <p>Enfin, on peut tout à fait écrire la variante <code class="language-pseudocode">pour chaque</code> de la forme initiale <code class="language-pseudocode">tant que</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">←</span> <span class="token number">0</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
+i <span class="token operator">:=</span> <span class="token builtin">entier</span>
+i <span class="token operator">←</span> <span class="token number">0</span>
 <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">&lt;</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
     x <span class="token operator">←</span> tableau<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
@@ -2240,72 +2232,6 @@
     instruction<span class="token number"> n
 </span>
    <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
-<h2><em>&quot;Abus&quot;</em> de notation</h2>
-<p>On se permettra, lorsque l'instruction est assez claire de procéder à des raccourci pour rendre le pseudocode plus digeste. Attention, la plupart de ces opérations ne seront pas des opérations élémentaires !</p>
-<h3>Répétitions</h3>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<p>Pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<h4>Répétitions par borne</h4>
-<p>Tout un tas de variations sont possibles, du moment que ce soit compréhensible. Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour</span><span class="token number"> i </span>de a à b<span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<p>Ou encore :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour</span> i<span class="token operator">=</span>a à i<span class="token operator">=</span>b<span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<p>Pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<h4>Répétitions à pas fixé</h4>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour</span><span class="token number"> i </span>de a à b par par pas de k<span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<p>ou encore :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">]</span> par pas de k<span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<p>pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">←</span> a
-<span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> b<span class="token punctuation">:</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-
- <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> k</code></pre>
-<h3>Affectation d'une tranche de tableau</h3>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span>a<span class="token punctuation">:</span>b<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
-<p>pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">[</span><span class="token punctuation">:</span>
-    T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
-<p>Fonctionne aussi pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
-<p>Qui correspond à :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-    T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
-<p>Ou encore à :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span>a<span class="token punctuation">:</span>b<span class="token punctuation">]</span> <span class="token operator">←</span> T'<span class="token punctuation">[</span>a'<span class="token punctuation">:</span><span class="token punctuation">]</span></code></pre>
-<p>Qui correspond à :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token operator">-</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span>
-    T<span class="token punctuation">[</span>a <span class="token operator">+</span> i<span class="token punctuation">]</span> <span class="token operator">←</span> T'<span class="token punctuation">[</span>a' <span class="token operator">+</span> i<span class="token punctuation">]</span></code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Les affectations de tranches ne sont <strong>pas</strong> une instruction simple, mais nécessitent plusieurs instructions : ceux de la boucle sous-jacente.</p>
-<p>Ainsi, le code suivant nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T' <span class="token operator">←</span> un nouveau tableau contenant T<span class="token punctuation">[</span>i<span class="token punctuation">:</span>j<span class="token punctuation">]</span>  <span class="token comment"># j - i + 1 instructions en 1 ligne</span></code></pre>
-</div></div>
-
-<h3>Concaténation</h3>
-<p>Avec deux tableaux :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T <span class="token operator">←</span> T1 <span class="token operator">+</span> T2</code></pre>
-<p>pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T <span class="token operator">←</span> un nouveau tableau de taille T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> T2<span class="token punctuation">.</span>longueur
-
-<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T1<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-    T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> T1<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T2<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-    T<span class="token punctuation">[</span>T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> i<span class="token punctuation">]</span> <span class="token operator">←</span> T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-</code></pre>
 
 
 </article>

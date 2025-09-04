@@ -172,11 +172,15 @@ $$
 C_{P_1}(n) \leq C_{1\rightarrow 2}(n) + C_{P_2}(f(n)) + C_{2\rightarrow 1}(g\circ f(n))$
 $$
 </div>
-<blockquote>
-<p>TBD ne dit pas grand chose sur la complexité.</p>
-</blockquote>
+<p>Avec :</p>
+<ul>
+<li>$C_{1\rightarrow 2}(n)$ la complexité de l'algorithme $A_{1\rightarrow 2}$</li>
+<li>$C_{P_2}(n')$ la complexité de l'algorithme $P_2$ et $f(n)$ la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$ pour une entrée de taille $n$</li>
+<li>$C_{2\rightarrow 1}(n'')$ la complexité de l'algorithme $A_{2\rightarrow 1}$ et $g(n')$ la taille de la sortie de l'algorithme $A_{2\rightarrow 1}$ pour une entrée de taille $n'$</li>
+</ul>
+<p>Selon la complexité des conversions, la complexité du problème général peut-être plus grande que celle du cas particulier. Pour palier ça, on définie un autre type de comparaison, la réduction.</p>
 <h3>La réduction</h3>
-<p>La définition précédente permet de classer les problème par généralité mais dit peut de choses sur la complexité (de résolution) du problème $A$ par rapport à la complexité du problème $B$. Pour cela on utilise la réduction :</p>
+<p>La définition précédente permet de classer les problème par généralité mais dit peut de choses sur la complexité (de résolution) du problème $A$ par rapport à la complexité du problème $B$. Commençons par définir le cadre général de la réduction :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -186,12 +190,31 @@ $$
 </div><div class="pl-8 mr-8">
 <p>Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une <strong><em>réduction</em></strong> de $P_1$ en $P_2$ est un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ tels que :</p>
 <ul>
-<li>Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$</li>
+<li>Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$ et est de complexité inférieure à $C(n)$</li>
 <li>Si $S_2$ est une solution au problème $P_2$ avec $A_{1\rightarrow 2}(E_1)$ comme entrée alors $A_{2\rightarrow 1}(E_1, S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.</li>
 </ul>
 <p>Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.</p>
 </div></div>
 
+<p>La définition formelle ci-dessus est équivalente à dire que l'on utilise le problème $P_2$ (potentiellement un nombre constant de fois) pour résoudre le problème $P_1$. Pour cela, en reprenant les notations du sous-problème, il faut :</p>
+<ul>
+<li>aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n)$</li>
+<li>résoudre $P_2$ avec une complexité $ C_{P_2}(f(n))$</li>
+<li>revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$</li>
+</ul>
+<p>Selon les complexités $C_{1\rightarrow 2}(n)$ et $C_{2\rightarrow 1}(g\circ f(n))$, le passage de $P_1$ à $P_2$ et son retour va être plus ou moins facile. On défini alors :</p>
+<p><span id="définition-réduction-polynomiale"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>réduction polynomiale</em></strong> du problème algorithmique $P_1$ au problème algorithmique $P_2$ est une réduction où les passages du problème $P_1$ au problème $P_2$ et du problème $P_2$ au problème $P_1$ sont polynomiales.</p>
+</div></div>
+
+<p>On peut sur le même schéma définir une réduction linéaire (les passages sont de complexité linéaire), logarithmique, etc. Borner les passages nous permet de faire des démonstration de complexité en utilisant les complexités du problème $P_2$. Par exemple :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -216,12 +239,51 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <ul>
-<li>même entrée pour l'algorithme du max et du tri : $\mathcal{O}(1)$</li>
+<li>même entrée pour l'algorithme du max et du tri : $\mathcal{O}(n)$</li>
 <li>on ne garde que le plus grand élément de la sortie du tri : $\mathcal{O}(1)$</li>
 </ul>
 </div>
 </details>     
 </div>
+<p>Cette réduction polynomiale (ie. linéaire) nous permet de borner la complexité du problème $P_1$ :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>S'il existe une réduction polynomiale entre $P_1$ et $P_2$ et que la complexité du problème $P_2$ est polynomiale, alors la complexité du problème $P_1$ est aussi polynomiale.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En reprenant les notations précédentes :</p>
+<ul>
+<li>aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n) = \mathcal{O}(n^k)$</li>
+<li>résoudre $P_2$ avec une complexité $C_{P_2}(f(n))$. Comme le problème $P_2$ est polynomial on a $C_{P_2}(f(n)) = \mathcal{O}(f(n)^{k'})$ et comme la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$  est au plus $\mathcal{O}(n^k)$ on a : $C_{P_2}(f(n)) = \mathcal{O}(n^{k\cdot k'})$</li>
+<li>revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$. Comme cette complexité est aussi polynomiale, disons $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(f(n)^{k''})$, on a au final que $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(n^{k\cdot k'\cdot k''})$</li>
+</ul>
+<p>La complexité totale est alors de : $\mathcal{O}(n^{k\cdot k'\cdot k''})$ ce qui est toujours polynomial.</p>
+</div>
+</details>     
+</div>
+<p>La preuve de la proposition précédente nous donne un méthode pratique pour borner les complexités de problèmes si on maîtrise bien les complexité d'une réduction :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -245,88 +307,17 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>On a une réduction linéaire entre</p>
 <ul>
 <li>même entrée pour l'algorithme du max et du tri : $\mathcal{O}(1)$</li>
 <li>on parcourt le tableau trié jusqu'à trouver deux éléments successifs égaux : $\mathcal{O}(n)$ avec $n$ taille du tableau en entrée</li>
 </ul>
+<p>Comme la complexité d'un tri est en $\mathcal{O}(n\ln(n))$, la complexité totale de la réduction est $\mathcal{O}(n\ln(n))$ ce qui est la complexité du tri (les passages d'un problème à l'autre sont négligeable).</p>
 </div>
 </details>     
 </div>
-<h3>La réduction polynomiale</h3>
-<blockquote>
-<p>TBD réduction polynomiale avec passage polynomial si complexité du problème inconnue.</p>
-</blockquote>
-<p>Si l'on veut utiliser la réduction pour résoudre notre problème réduit, on cherche le couple d'algorithmes avec la complexité la plus faible, si possible linéaire (comme dans l'exercice précédent) et au mieux polynomiale :</p>
-<p><span id="définition-réduction-polynomiale"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une <strong><em>réduction polynomiale</em></strong> de $P_1$ en $P_2$ est une réduction ou les deux algorithmes $A_1$ et $A_2$ sont de complexité polynomiale.</p>
-</div></div>
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Les réductions polynomiales sont les seules utilisées en algorithmie, c'est pourquoi on considérera souvent que <strong><em>réduction</em></strong> et <strong><em>réduction polynomiale</em></strong> comme équivalent, une réduction <strong>devant être</strong> polynomiale.</p>
-</div></div>
-
-<p>Une réduction polynomiale nous permettra d'utiliser effectivement l'algorithme résolvant $P_2$ pour résoudre $P_1$.</p>
-<p>Enfin :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On dira que deux problèmes $P_1$ et $P_2$ sont <strong><em>équivalents</em></strong> s'il existe deux <strong>réductions polynomiales</strong> $P_1 \leq P_2$ et $P_2 \leq P_1$.</p>
-</div></div>
-
-<p>Par exemple :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que le problèmes de recherche du minimum dans un tableau d'entiers relatifs est  le problème de recherche du maximum dans un tableau d'entiers relatifs sont équivalent et que la réduction est linéaire.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Pour des entiers relatifs, il suffit de faire $T'[x] = -T[x]$.</p>
-</div>
-</details>     
-</div>
-<blockquote>
-<p>TBD résoudre un avec l'autre. Comme fonction. Mais les 2 problèmes peuvent être décorrélées. On essaie ici de voir la nature du problème. $A_{2\rightarrow 1}$ ne dépend pas de $E$ sinon $A\leq B$ pour tous $A$ et $B$. On utilise parfois ça si les conversions sont linéaires (<em>ie.</em> linéaire ou au pire proportionnels à la complexité de la résolution de $B$) mais d'un point de vue théorique.</p>
-</blockquote>
 <h2>Exemples et exercices</h2>
-<blockquote>
-<p>TBD réduction polynomiale avec passage polynomial si complexité du problème inconnue.</p>
-</blockquote>
 <h3>Produit et carré</h3>
-<blockquote>
-<p>TBD fonctionne même si 3 fois.</p>
-</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -356,9 +347,6 @@ $$
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD réduction une composition d'utilisation du problème $B$.</p>
-</blockquote>
 <h3>{2, 3}-SUM</h3>
 <p>Nous allons voir ici une chaîne de réductions, qui nous serons utiles plus tard. On reprend les problèmes <a href="../projet-algorithmes-classiques/2_3-SUM/#probl%C3%A8me-2-SUM" class="interne">2-SUM</a> et <a href="../projet-algorithmes-classiques/2_3-SUM/#probl%C3%A8me-3-SUM" class="interne">3-SUM</a> que l'on a déjà vu et on montre qu'ils sont équivalents à d'autres problèmes.</p>
 <h4>2-SUM = crédit</h4>
@@ -366,7 +354,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que 2-SUM est équivalent <a href="../structure-dictionnaire/#probl%C3%A8me-cr%C3%A9dit" class="interne">au problème crédit</a></p>
+<p>Montrer que 2-SUM est équivalent <a href="../structure-dictionnaire/#probl%C3%A8me-cr%C3%A9dit" class="interne">au problème crédit</a> en prenant l'ordre des réductions linéaires</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -417,7 +405,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que 2-SUM ≤ ÉGAL</p>
+<p>Montrer que 2-SUM ≤ ÉGAL pour l'ordre des réductions linéaires</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -466,7 +454,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que 3-SUM ≤ 3-SUM'</p>
+<p>Montrer que 3-SUM ≤ 3-SUM' l'ordre des réductions linéaires</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -491,7 +479,7 @@ $$
 </details>     
 </div>
 <h4>Problèmes équivalents ?</h4>
-<p>Montrons que les versions alternatives des problèmes 2-SUM (ÉGAL) et 3-SUM (3-SUM') sont équivalents aux problèmes d'origine. Ces réductions vont nécessiter un peu de travail.</p>
+<p>Montrons que les versions alternatives des problèmes 2-SUM (ÉGAL) et 3-SUM (3-SUM') sont équivalents aux problèmes d'origine pour l'ordre des réductions linéaires. Ces réductions vont nécessiter un peu de travail.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -515,7 +503,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il faut commencer par mettre 2 tableaux dans un seul en définissant un tableau $T''$ dont les premiers éléments sont liés a $T$ et les derniers à $T$. On ne peut prendre directement :</p>
+<p>Il faut commencer par mettre 2 tableaux dans un seul en définissant un tableau $T''$ dont les premiers éléments sont liés a $T$ et les derniers à $T'$. On ne peut prendre directement :</p>
 <ul>
 <li>$T''[i] = T[i]$ pour $0 \leq i &lt; T.\mbox{\small longueur}$</li>
 <li>$T''[T.\mbox{\small longueur} + j] = T'[j]$ pour $0 \leq j &lt; T'.\mbox{\small longueur}$</li>
@@ -525,7 +513,7 @@ $$
 <li>$T''[i] = T[i] + A$ pour $0 \leq i &lt; T.\mbox{\small longueur}$</li>
 <li>$T''[T.\mbox{\small longueur} + j] = T'[j] - A$ pour $0 \leq j &lt; T'.\mbox{\small longueur}$</li>
 </ul>
-<p>Avec $A$ assez grand pour que $2A &gt; T[i] + [j]$ et $2A &gt; T'[i] + T'[j]$ pur tous $i$ et $j$ ce qui impliquera que si %$T''[i] + T''[j] = 0$ alors $0 \leq i &lt; T.\mbox{\small longueur} \leq j$ (ou réciproquement).</p>
+<p>Avec $A$ assez grand pour que $2A &gt; T[i] + [j]$ et $2A &gt; T'[i] + T'[j]$ pour tous $i$ et $j$ ce qui impliquera que si $T''[i] + T''[j] = 0$ alors $0 \leq i &lt; T.\mbox{\small longueur} \leq j$ (ou réciproquement).</p>
 <p>Si on prend $A = 2(\sum \vert T[i]\vert + \sum \vert T'[i]\vert) + 1$ cela va fonctionner.</p>
 </div>
 </details>     
@@ -559,7 +547,7 @@ $$
 <li>$T'''[T.\mbox{\small longueur} + j] = T'[j] + 3\cdot A$ pour $0 \leq j &lt; T'.\mbox{\small longueur}$</li>
 <li>$T'''[T.\mbox{\small longueur} + T'.\mbox{\small longueur} + k] = T''[k] - 4\cdot A$ pour $0 \leq k &lt; T''.\mbox{\small longueur}$</li>
 </ul>
-<p>Ceci va garantir le fait que si on a 3 indices $i, j, k$ tels que T'''[i] + T'''[j] + T'''[k] = 0$. on a bien (à ue permutation prêt) :</p>
+<p>Ceci va garantir le fait que si on a 3 indices $i, j, k$ tels que $T'''[i] + T'''[j] + T'''[k] = 0$. on a bien (à ue permutation prêt) :</p>
 <ul>
 <li>$0 \leq i &lt; T.\mbox{\small longueur}$</li>
 <li>$T.\mbox{\small longueur} \leq j &lt; T.\mbox{\small longueur} + T'.\mbox{\small longueur}$</li>
@@ -573,7 +561,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que ÉGAL ≤ 3-SUM</p>
+<p>Montrer que ÉGAL ≤ 3-SUM pour l'ordre des réductions linéaires.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -637,7 +625,7 @@ Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes hor
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que 3-SUM' ≤ GEOBASE</p>
+<p>Montrer que 3-SUM' ≤ GEOBASE pour l'ordre des réductions linéaires.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -671,7 +659,7 @@ Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes hor
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que GEOBASE ≤ 3-SUM'</p>
+<p>Montrer que GEOBASE ≤ 3-SUM' pour l'ordre des réductions linéaires.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -704,7 +692,7 @@ Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes hor
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que 3-SUM = GEOBASE</p>
+<p>Montrer que 3-SUM = GEOBASE pour l'ordre des réductions linéaires.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">

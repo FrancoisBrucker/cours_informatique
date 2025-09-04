@@ -179,26 +179,25 @@ affiche à l'écran trouve</code></pre>
 <p>Une fonction peut très bien être un paramètre d'une autre fonction. Son type est alors sa signature. Par exemple le type de la fonction <code class="language-">recherche</code> précédente sera tout simplement <code class="language-">([entier], entier) → booléen</code> : on donne le type de ses entrées et de sa sortie.</p>
 <h3>Variables locales</h3>
 <p>Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Le code suivant affichera 4 et pas 6 qui est dernière valeur prise par la variable <code class="language-">e</code> de la fonction <code class="language-">recherche</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">e <span class="token operator">←</span> <span class="token number">4</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">e <span class="token operator">:=</span> <span class="token builtin">entier</span>
+e <span class="token operator">←</span> <span class="token number">4</span>
+
+t <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span> <span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
 t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+
 trouve <span class="token operator">←</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
-affiche à l'écran trouve</code></pre>
+affiche trouve</code></pre>
 <h3>Retour</h3>
-<blockquote>
-<p>TBD le retour est un objet</p>
-</blockquote>
+<p>Le retour de la fonction est un objet du type de sortie.</p>
 <h3>Paramètres</h3>
-<blockquote>
-<p>TBD attention, on passe l'objet. Si cela ne porte pas à conséquence pour des objets basique il faut faire attention avec les tableaux qui sont à la fois des variables et des objets.
-TBD cas ou un tableau en entrée est modifié.</p>
-</blockquote>
+<p>Les paramètres se comportent comme des variables initialisée au début de l'exécution de la fonction. Attention donc si vous passez un tableau en paramètre, la fonction peut le modifier.</p>
 <h2>Objet fonction</h2>
 <p>Une fonction peut être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction <code class="language-">recherche</code> soit définie :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">f <span class="token operator">←</span> recherche
-t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-trouve <span class="token operator">←</span> f<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">f <span class="token operator">:=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>
 
-affiche à l'écran trouve</code></pre>
+f <span class="token operator">←</span> recherche
+affiche f<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
