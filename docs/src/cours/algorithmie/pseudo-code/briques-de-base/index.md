@@ -12,16 +12,16 @@ eleventyComputed:
 Le pseudo-code est constitué d'instructions dont le but est soit de manipuler des objets (création, affectation ou lecture) ou de contrôler le flux d'instructions (test et boucles).
 
 {% attention %}
-Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici _"mon"_ pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours.
-
-Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert. Je mes en fin de cette partie une petite liste (non exhaustive des différences vues ci et là).
+Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici _"mon"_ pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours. Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert.
 {% endattention %}
 
 Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
 
 ## Objets et opérations
 
-### <span id="objets-basiques"></span> Objets basiques
+### Objets
+
+#### <span id="objets-basiques"></span> Objets basiques
 
 Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et correspondent aux cinq **_types_** suivant :
 
@@ -31,17 +31,26 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 - le type `réel`{.language-} qui contient un ensemble dénombrable d'approximation de réels
 - le type `caractère`{.language-} qui contient l'ensemble des glyphes  UNICODE : `"a"`{.language-}, `"b"`{.language-}, ...
 
-Enfin on considérera le type vide `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C) qui ne contient aucun objet.
+#### Le vide
 
-Tous les autres types d'objets que l'on peut créer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est une liste de caractères, etc).
+En algorithmie on a également coutume de se doter d'un élément vide `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C) qui peut être à la fois considéré comme un type ou un objet :
+
+- **le type vide** ne aucun objet. On l'utilise pour des fonctions ne rendant aucune valeur par exemple,
+- **l'objet vide** est de tous les types. Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.
+
+#### Autres types
+
+Tous les autres types d'objets que l'on peut imaginer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est un tableau de caractères, etc).
+
+#### Taille et stockage des objets
 
 Notez que tous les objets basiques à part les entiers sont de taille fixe :
 
 - booléen 1bit
-- caractères 32bits si on utilise les caractères Unicode
-- réel norme IEEE sur 64bits
+- caractères 32bits si on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode)
+- réel sur 64 bits si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754)
 
-On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce  que font les languages d programmation comme python où un entier, qui n'est pas borné pfr nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
+On peut sans perte de généralité se restreindre aux entiers entre 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce  que font les languages d programmation comme python où un entier, qui n'est pas borné par nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
 
 {% attention "**À retenir**" %}
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
@@ -51,25 +60,38 @@ An algorithmie, on ne préoccupe pas vraiment d'où sont stockés les objets. Il
 
 ![tas](tas.png)
 
-Les objets sont stockées dans le tas. Notez que le tas peut contenir des "trous"., c'est à dire des endroits sans objets.
+Les objets sont stockées dans le tas. Notez que le tas peut contenir des "trous", c'est à dire des endroits sans objets.
 
 ### <span id="opérations"></span> Opérations
 
 Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :
 
-- **_créer des objets_**
-- **_opérer sur des objets_** :
-  - opérations sur les entiers et/ou réels :
-    - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
-    - opérations usuelles comme prendre la valeur entière, la valeur absolue, ...
-    - la division entière de deux nombre (`//`{.language-}) et le modulo (`%`{.language-})
-    - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
-  - opérations sur les caractères :
-    - logique : égalité (avec le signe `==`{.language-})
-  - opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `||`{.language-}, `OR`{.language-} ou $\lor$)
+- **_créer des objets_** : le caractère "Ç", l'entier `42`, etc...
+- **_opérer sur des objets_** : rendre la somme de deux entiers, le résultat d'une formule logique, etc
 - **_afficher un objet_**. On suppose que l'on possède une opération unaire spéciale nommée `affiche` qui affiche à l'écran (ou à n'importe quoi permettant à l'utilisateur d'avoir un retour) l'objet. Par exemple `affiche 42`{.language-} va afficher l'objet entier valant 42 à l'écran.
 
+#### Créer des objets
+
+> TBD des constantes.
+
+#### Opérations
+
+> TBD toutes les autres opérations seront formés de celle là.
+
+- opérations sur les entiers et/ou réels :
+  - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
+  - opérations usuelles comme prendre la valeur entière, la valeur absolue, ...
+  - la division entière de deux nombre (`//`{.language-}) et le modulo (`%`{.language-})
+  - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
+- opérations sur les caractères :
+  - logique : égalité (avec le signe `==`{.language-})
+- opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `||`{.language-}, `OR`{.language-} ou $\lor$)
+
 Les deux seuls moyens de créer des objets se font via des constantes (l'entier 42) ou comme des résultats d'opérations (le booléen Vrai est crée comme résultat de l'opération `40 > 2`)
+
+#### Affichage
+
+> TBD ne pas confondre avec un retour de fonction.
 
 ## Variables
 

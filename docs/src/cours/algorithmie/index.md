@@ -335,25 +335,17 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 
 On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
 
-Commençons par voir comment résoudre un problème inconnu grâce à un problème connu.
+On a vu au début de ce cours que certains problèmes [ne pouvaient pas être résolu par un algorithme](./bases-théoriques/calculabilité){.interne} (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si [sa complexité est exponentielle](./complexité-calculs/importance){.interne} le temps de calcul sera rédhibitoire : certaines questions resteront sans réponse en pratique.
 
 ### Réductions : passer d'un problème à un autre
+
+Pour voir u peu plus clair dans tous ces problèmes algorithmiques aux complexités pouvant être très différente, on se dote d'un ordre appelé _réduction_ permettant de hiérarchiser les problèmes :
 
 {% aller %}
 [Réduction de problèmes](./problème-réduction){.interne}
 {% endaller %}
 
-On a vu au début de ce cours que certains problèmes [ne pouvaient pas être résolu par un algorithme](./bases-théoriques/calculabilité){.interne} (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si [sa complexité est exponentielle](./complexité-calculs/importance){.interne} le temps de calcul sera rédhibitoire : certaines questions resteront sans réponses en pratique.
-
-> TBD ici SAT et le transformer en projet.
-
-{% aller %}
-[Problème SAT](./problème-SAT){.interne}
-{% endaller %}
-
 ### Classes de problèmes
-
-> TBD ici séparer en parties.
 
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
@@ -362,6 +354,12 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 {% endaller %}
 
 Le problème SAT est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
+
+> TBD ici SAT et le transformer en projet.
+
+{% aller %}
+[Problème SAT](./problème-SAT){.interne}
+{% endaller %}
 
 ### Intermède : l'algorithme qui résout tout
 

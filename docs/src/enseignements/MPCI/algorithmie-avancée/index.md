@@ -30,7 +30,7 @@ En deux parties.
 2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
 3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
 4. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
-5. Algorithme de la recherche universelle.
+5. [Algorithme de la recherche universelle](cours_informatique/cours/algorithmie/recherche-universelle/){.interne}
 
 {% endaller %}
 
