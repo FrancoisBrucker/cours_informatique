@@ -15,7 +15,7 @@ En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing pui
 
 ## Problèmes utilisables en pratique
 
-Un [problème algorithmique](../#probleme-algorithmique/){.interne} implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne} par exemple), on peut commencer par se restreindre aux problèmes décidables :
+Un [problème algorithmique](../#probleme-algorithmique){.interne} implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne} par exemple), on peut commencer par se restreindre aux problèmes décidables :
 
 ![décidable](./NP-décidable.png)
 
@@ -143,7 +143,7 @@ Ce qui donne le schéma suivant :
 
 La définition ci-dessus appelle deux remarques :
 
-- premièrement le nom a été très mal choisi. Il signifie _Non Déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème  peut être résoluble de façon polynomiale par des algorithmes non déterministes (un test si peut avoir plusieurs alors choisi de façon non déterministe). Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type d'algorithme. Nous verrons ces types d'algorithmes plus tard.
+- premièrement le nom a été très mal choisi. Il signifie _Non Déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème peut être résoluble de façon polynomiale par des algorithmes non déterministes (un test si peut avoir plusieurs alors choisi de façon non déterministe). Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type d'algorithme. Nous verrons ces types d'algorithmes plus tard.
 - deuxièmement l'inclusion est stricte. Il existe des problèmes décidables qui ne sont pas dans NP. Ça aussi on le démontrera plus tard lorsque l'on étudiera .
 
 {% attention "**À retenir**" %}
@@ -154,16 +154,26 @@ Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. 
 
 {% endattention %}
 
-> TBD parler de la complexité spatiale. 
-> 
-> Dire que l'on s'en fout car un algorithme polynomiale en temps peut aussi être polynomial en espace. 
-> la seule façon que cela ne le soit pas est que l'on alloue (en $\mathcal{O}(1)$) des tableaux que l'on utilise pas. Genre un tableau de $2^n$ cases et que l'on utilise que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial.
-> Ce cas est limite car cela signifie que l'on utilise pas tout : toute utilisation d'une variable utilise 1 instruction.
-> On peut alors utiliser des dictionnaires à la place des tableaux **sans changer l'algorithme** ce qui garanti que la  complexité spatiale sera égale à la complexité du premier algo et la complexité sera au pire au carré de la complexité initiale. tout les accès passent au pire de $\mathcal{O}(1)$ à la taille des données (même si en moyenne ça ne change pas). Si la complexité initiale est polynomiale, le nouvel algorithme l'est aussi et sa complexité spatiale est inférieure à la complexité.
->
-> TBD en faire une proposition pour P on à : si poly en temps alors poly en espace.
-> complexité > spatiale si toute variable est utilisée et on peut toujours s'y ramener : tout algorithme peut être écrit de telle sorte que complexité > spatiale
+On pourrait penser qu'il faudrait aussi borner la complexité spatiale. Utiliser un nombre exponentiel de mémoire étant tout autant rédhibitoire que d'utiliser un temps exponentiel.
 
+La seule façon d'obtenir une complexité spatiale supérieure à la complexité temporelle est d'allouer de la mémoire (en $\mathcal{O}(1)$) et de ne jamais allez y voir (puisque y aller va consommer une opération). Par exemple allouer un tableau de $2^n$ cases et n'en utiliser que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial. On gaspille un nombre exponentiel de mémoire.
+
+On peut cependant changer cde genre d'algorithme grâce àla proposition suivante :
+
+{% note "**Proposition**" %}
+
+Tout algorithme de complexité temporelle polynomiale peut être écrit de telle sorte que :
+
+- sa complexité temporelle reste polynomiale
+- sa complexité spatiale soit inférieure à sa nouvelle complexité temporelle
+  {% endnote %}
+  {% details "preuve", "open"%}
+
+Il suffit pour cela de remplacer tous les tableaux utilisés par l'algorithme en dictionnaires.
+
+Ceci garantit que la complexité spatiale sera égale à la complexité du premier algo et que la complexité temporelle sera au pire au carré de la complexité initiale. En effet, chaque accès à un indice de tableau passe de $\mathcal{O}(1)$ (pour un tableau) à la taille des données (c'est à dire la complexité initiale) si on a pas de chance avec le dictionnaire (cependant, en moyenne ça ne change pas).
+
+{% enddetails %}
 
 ## Structure de NP
 
@@ -193,7 +203,7 @@ Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :
 - un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
 - une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
 - une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
-{% endnote %}
+  {% endnote %}
 
 Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite **_satisfiable_** :
 
@@ -204,10 +214,6 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 - **Sortie** : Une assignation des variables $x_1$ à $x_n$ telle que $f$ soit vraie (ou `∅`{.language-} si cela n'est pas possible).
 
 {% endnote %}
-{% info %}
-Une formule logique sous la forme d'une disjonction de clause est dite sous la [forme normale conjonctive](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive). Toute formule logique peut être mise sous cette forme grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) qui est linéaire en nombre d'opérations. Ceci exige de se retrouver avec un nombre exponentiel de clauses si on utilise juste [la distributivité des opérations logiques](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable).
-
-{% endinfo %}
 
 <span id="exemple-SAT"></span>
 Par exemple considérons les 4 clauses suivantes, sur 5 variables booléennes :
@@ -229,9 +235,9 @@ La formule précédente est satisfiable !
 Montrons que SAT admet un vérifieur efficace (il est même linéaire) :
 
 {% exercice %}
-Montrez que l'on peut encoder une clause sur $n$ variables booléennes par un tableau d'entiers relatifs.
+Montrez que l'on peut encoder une clause sur $n$ variables booléennes par un tableau d'entiers relatifs de taille $n$.
 
-En déduire un moyen d'encoder une conjonction de clauses sur $n$ variables booléennes.
+En déduire un moyen d'encoder une conjonction de $m$ clauses sur $n$ variables booléennes par une liste de $m$ tableaux de taille au pire $n$.
 {% endexercice %}
 {% details "corrigé" %}
 Il suffit de noter un littéral :
@@ -280,7 +286,7 @@ algorithme vérif_SAT(conj_clauses: [[entier]], # [c_1, ..., c_m]
                 sat ← Vrai
         si sat == Faux:
             rendre Faux
-    rendre Vrai            
+    rendre Vrai
 ```
 
 La complexité est clairement linéaire : on regarde au pire chaque littéral de chaque clause une fois.
@@ -295,22 +301,32 @@ Il existe des problème facile à vérifier dont on ne connaît pas d'algorithme
 
 ### Réduction vers SAT
 
-Le théorème de Cook et Leven stipule que **tout** problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial. 
+Le théorème de Cook et Leven stipule que **tout** problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.
 
 Nous ne démontrerons pas ici ce théorème mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental.
+
+Nous allons aussi utiliser le fait que toute formule logique peut se mettre efficacement sous la forme d'une disjonction de clause grâce à [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) que nous étudierons un peut plus tard. Ceci nous permet d'uniquement chercher une formule logique, pas forcément une disjonction de clauses.
 
 #### MAX
 
 Montrons que l'on peut le faire pour le problème MAX. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.
 
-1. le test $(x_i = x_j)$ pour deux variables booléennes s'écrit $(x_i \land x_j) \lor (\overline{x_i} \land \overline{x_j})$
+1. l'égalité $(x^i = y^i)$ pour deux variables booléennes s'écrit $(x^i \land y^i) \lor (\overline{x^i} \land \overline{y^i})$
 2. un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \\{0, 1\\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$
 
-Des deux remarques précédentes, on en déduit que le test $(x_i > x_j)$ pour deux entiers s'écrit par le fait qu'il existe $k$ tel que les k-1 derniers bits sont égaux et le $k$ème bit de x_i est plus grand que celui de x_j :
+Des deux remarques précédentes, on en déduit que le test $(x = y)$ pour deux entiers s'écrit par le fait que tous les bits sont égaux :
 
 <div>
 $$
-\bigvee_{1\leq k \leq p}(\bigwedge_{k < l \leq p}(x_i^l = x_j^l)  \land (x_i^k \land \overline{x_j^k}))
+(x = y) \coloneqq \bigwedge_{0\leq k \leq p}(x^l = y^l) = \bigwedge_{0\leq k \leq p}((x^l \land y^l) \lor (\overline{x^i} \land \overline{y^i}))
+$$
+</div>
+
+De là, l'inégalité $(x > y)$ pour deux entiers s'écrit par le fait qu'il existe $k$ tel que les k-1 derniers bits sont égaux et le $k$ème bit de x_i est plus grand que celui de x_j :
+
+<div>
+$$
+(x > y) \coloneqq \bigvee_{1\leq k \leq p}(\bigwedge_{k < l \leq p}(x^l = y^l)  \land (x^k \land \overline{y^k}))
 $$
 </div>
 
@@ -318,19 +334,19 @@ Et donc la formule logique :
 
 <div>
 $$
-\bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x_i^l \land x_j^l) \lor (\overline{x^l_i} \land \overline{x^l_j})) \land (x_i^k \land \overline{x_j^k}))
+(x > y) \coloneqq \bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x^l \land y^l) \lor (\overline{x^l} \land \overline{y^l})) \land (x^k \land \overline{y^k}))
 $$
 </div>
 
-Enfin, pour avoir $(x_i \geq x_j)$ on rajoute le fait que tous les bit de $x_i$ et $x_j$ peuvent être égaux :
+Enfin, pour avoir $(x \geq y)$ on combine les deux formules :
 
 <div>
 $$
-\bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x_i^l \land x_j^l) \lor (\overline{x^l_i} \land \overline{x^l_j})) \land (x_i^k \land \overline{x_j^k})) \bigvee (\bigwedge_{0 \leq l \leq p}((x_i^l \land x_j^l) \lor (\overline{x^l_i} \land \overline{x^l_j})))
+(x \leq y) \coloneqq (x = y) \lor (x > y)
 $$
 </div>
 
-De là la formule logique permettant de décrire un problème MAX est :
+Ceci nous permet d'écrire la formule logique permettant de décrire un problème MAX est :
 
 <div>
 $$
@@ -344,6 +360,22 @@ On utilise ensuite [la transformation de Tseitin](https://fr.wikipedia.org/wiki/
 Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clause qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer en conjonction de clauses.
 {% endinfo %}
 
+#### 3-SUM'
+
+Terminons cette partie de réécriture en montrant que toutes ces clauses peuvent se combiner :
+{% exercice %}
+Montrer que le problème 3-SUM' peut être résolu par SAT
+{% endexercice %}
+{% details "solution" %}
+
+<div>
+$$
+\bigvee_{0\leq i < n}(\bigwedge_{j\neq i}(T[i] \geq T[j]))
+$$
+</div>
+
+{% enddetails %}
+
 #### Plus
 
 L'exemple précédent était éclairant mais pas forcément bluffant : le problème MAX pouvant se représenter facilement comme une succession de tests logiques. Nous allons donc aller un peu plus loin et transformer un algorithme, la somme de deux nombres binaires en une conjonction de clause.
@@ -351,7 +383,7 @@ L'exemple précédent était éclairant mais pas forcément bluffant : le probl�
 Commençons par quelque chose de simple, l'addition de 2 bits :
 
 ```pseudocode
-algorithme somme_binaire(x: bit, 
+algorithme somme_binaire(x: bit,
                          y: bit)
                          → [bit]  # somme = T[0] + 2 * T[1]
     somme ← [0, 0]
@@ -362,10 +394,6 @@ algorithme somme_binaire(x: bit,
     rendre [0, 0]                 # le nombre 00
 ```
 
-{% attention %}
-Pour simplifier l'écriture de la formule logique on a utilisé la notation mathématique qui stipule que le nombre représenté par un tableau binaire s'écrit $\sum_{0 \leq i < n} 2^i \cdot T[i]$ (les nombres sont écrits de droite à gauche, le tableau `[1, 1, 0]` correspond au nombre binaire `011`). C'est **l'opposée** de la notation classique en informatique qui lit les nombres de gauche à droite (le tableau `[1, 1, 0]` correspond bien au nombre binaire `110`) associant le nombre $\sum_{1 \leq i \leq n} 2^{i-1} \cdot T[-i]$ à un tableau de bis $T$.
-{% endattention %}
-
 Ce qui donne comme clause, en notant la sortie de l'algorithme $z = [z^0, z^1]$ :
 
 <div>
@@ -374,15 +402,15 @@ $$
 $$
 </div>
 
-À vous maintenant. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :
+Tout comme pour le problème du max si on veut additionner deux entiers on les transforme en variables binaire en utilisant le fait qu'un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \\{0, 1\\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :
 
 <span id="algorithme-somme_binaire"></span>
 
 ```pseudocode
-algorithme somme_binaire(x: [bit], 
+algorithme somme_binaire(x: [bit],
                          y: [bit])  # on suppose x et y de même taille
                          → [bit]  # de la taille de x et y + 1
-    
+
     somme ← un tableau de taille x.longueur + 1 bits
     retenues ← un tableau de taille x.longueur + 1 bits
     retenues[0]  ← 0
@@ -400,7 +428,7 @@ algorithme somme_binaire(x: [bit],
         sinon:
             somme[i]  ← 0
             retenues[i + 1]  ← 0
-    somme[-1] ← retenues[-1]
+    somme[x.longueur] ← retenues[x.longueur]
     rendre somme
 ```
 
@@ -421,30 +449,55 @@ Pour l'algorithme on a comme entrée `x=[1,1,0,1]`{.language-} et `y=[1,1,1,0]`{
 > TBD : déroulement de l'algo avec les retenues.
 
 {% enddetails %}
-{% exercice %}
-Écrivez l'algorithme sous la forme d'une formule logique.
-{% endexercice %}
-{% details "solution" %}
 
-> TBD
+On peut maintenant convertir cet algorithme en une formule logique. On va utiliser les variables binaires :
 
-{% enddetails %}
+- $x^0, \dots, x^{p}$ pour représenter $x = \sum_{0\leq i \leq p}x^i2^i$,
+- $y^0, \dots, y^{p}$ pour représenter $y = \sum_{0\leq i \leq p}y^i2^i$,
+- $s^0, \dots, s^{p+1}$ pour représenter la somme $x+y = s = \sum_{0\leq i \leq p+1}s^i2^i$,
+- $r^0, \dots, r^{p+1}$ pour représenter les retenues.
 
-#### 3-SUM'
-
-Terminons cette partie de réécriture en montrant que toutes ces clauses peuvent se combiner :
-{% exercice %}
-Montrer que le problème 3-SUM' peut être résolu par SAT
-{% endexercice %}
-{% details "solution" %}
+Commençons par représenter une itération de la boucle pour chaque sous la forme d'une formule :
 
 <div>
 $$
-\bigvee_{0\leq i < n}(\bigwedge_{j\neq i}(T[i] \geq T[j]))
+\begin{array}{l}
+[(x^i \land y^i \land r^i)\land (s^i \land r^{i+1})] \lor\\
+[((x^i \land r^i) \lor ( y^i \land r^i) \lor (x^i \land r^i))\land (\overline{s^i} \land r^{i+1})]\lor\\
+[(x^i \lor y^i \lor r^i) \land ({s^i} \land \overline{r^{i+1}})]\lor\\
+[(\overline{s^i} \land \overline{r^{i+1}})]
+\end{array}
 $$
 </div>
 
-{% enddetails %}
+Ce qui est remarquable dans cet algorithme c'est que chaque variable n'est affecté qu'une seule fois. On peut donc directement écrire l'algorithme en remarquant que chaque itération est un ET :
+
+<div>
+$$
+\begin{array}{l}
+\bigwedge_{0\leq i \leq p}([(x^i \land y^i \land r^i)\land (s^i \land r^{i+1})] \lor\\
+[((x^i \land r^i) \lor ( y^i \land r^i) \lor (x^i \land r^i))\land (\overline{s^i} \land r^{i+1})]\lor\\
+[(x^i \lor y^i \lor r^i) \land ({s^i} \land \overline{r^{i+1}})]\lor\\
+[(\overline{s^i} \land \overline{r^{i+1}})])
+\end{array}
+$$
+</div>
+
+L'algorithme sous la forme d'une formule est maintenant capable d'additionner `1011` et `0111`. Il suffit de les mettre "en entrée" de la formule :
+
+<div>
+$$
+\begin{array}{l}
+(x^0 \land x^1 \land \overline{x^2} \land x^3) \land (y^0 \land y^1 \land \land y^2 \land \overline{y^3})\land\\
+\bigwedge_{0\leq i \leq 3}([(x^i \land y^i \land r^i)\land (s^i \land r^{i+1})] \lor\\
+[((x^i \land r^i) \lor ( y^i \land r^i) \lor (x^i \land r^i))\land (\overline{s^i} \land r^{i+1})]\lor\\
+[(x^i \lor y^i \lor r^i) \land ({s^i} \land \overline{r^{i+1}})]\lor\\
+[(\overline{s^i} \land \overline{r^{i+1}})])
+\end{array}
+$$
+</div>
+
+Levin et cook que ce principe est applicable à tout pseudo-code en tenant en compte l'évolution des variables au cours des instructions, ce que nous n'avons pas eu besoin de faire ici car chaque variable n'est assignée qu'une seule fois.
 
 ## Problèmes NP-Complet
 
@@ -471,19 +524,19 @@ Fixons nous les idées en démontrant que le problème suivant est NP-complet.
   - un ensemble fini $U$ d'éléments
   - un ensemble $\mathcal{S}$ de sous-ensembles de $U$
 - **Sortie** : Un ensemble $\mathcal{P} \subseteq \mathcal{S}$ formant une partition de $U$ (ou `∅`{.language-} si cela n'est pas possible).
-{% endnote %}
-{% info %}
-Une partition $\mathcal{P}$ d'un ensemble $U$ est un ensemble de sous-ensembles de $U$ tel que :
+  {% endnote %}
+  {% info %}
+  Une partition $\mathcal{P}$ d'un ensemble $U$ est un ensemble de sous-ensembles de $U$ tel que :
 - l'union des éléments de $\mathcal{P}$ vaut $U$,
 - l'intersection de deux éléments différents de $\mathcal{P}$ est vide.
-{% endinfo %}
+  {% endinfo %}
 
 Illustrons ce problème en reprenant [un exemple tiré de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_couverture_exacte#Exemple_2) :
 
 - $U = \\{1, 2, 3, 4, 5, 6, 7\\}$
 - $\mathcal{S} = \\{ \\{1, 4, 7\\}, \\{1, 4\\}, \\{4, 5, 7\\},\\{3, 5, 6\\},\\{2, 3, 6, 7\\},\\{2, 7\\}  \\}$
 
-Résoudre ce problème revient à faire plein de choix. Parfois ces choix sont simple : si on place $\\{1, 4, 7\\}$ on ne peut plus mettre que la classe $\\{3, 5, 6\\}$ qui ne forme pas une partition ; parfois les choix sont plus cornéliens : doit-on placer la classe $\\{3, 5, 6\\}$, ce qui empêche d'utiliser la classe  $\\{4, 5, 7\\}$ (par exemple) ? Ou ne pas la mettre ? A priori on ne sais pas.
+Résoudre ce problème revient à faire plein de choix. Parfois ces choix sont simple : si on place $\\{1, 4, 7\\}$ on ne peut plus mettre que la classe $\\{3, 5, 6\\}$ qui ne forme pas une partition ; parfois les choix sont plus cornéliens : doit-on placer la classe $\\{3, 5, 6\\}$, ce qui empêche d'utiliser la classe $\\{4, 5, 7\\}$ (par exemple) ? Ou ne pas la mettre ? A priori on ne sais pas.
 
 {% exercice %}
 Montrez que l'exemple possède une solution.
@@ -520,7 +573,7 @@ On suppose de plus sans perte de généralité que :
 
 Notez que l'on peut transformer toute instance de $SAT$ en une instance satisfaisant les deux conditions ci-dessus en supprimant les clauses satisfaisant la première condition et en supprimant la variable booléenne satisfaisant la seconde condition. Cette transformation se fait en temps polynomial par rapport à l'entrée de $SAT$.
 
-On peut maintenant transformer cette instance de  $SAT$ en une instance de $CE$ ayant comme entrée :
+On peut maintenant transformer cette instance de $SAT$ en une instance de $CE$ ayant comme entrée :
 
 <div>
 $$
@@ -697,14 +750,14 @@ Donnez une réduction polynomiale permettant de résoudre l'isomorphie de graphe
 {% details "solution" %}
 Soient $G_1$ et $G_2$ deux graphes ayant $\\{1, \dots, n\\}$ comme ensemble de sommets.
 
-On cherche une bijection entre les sommets de $G_1$ et $G_2$ qui respecte les arêtes. on va considérer $n^2$ variables binaires $x_{i, j}$ ($1\leq i, j\leq n$) telle que $x_{i, j}$ est vrai si et seulement si la bijection entre les  sommets de $G_1$ et $G_2$ associe le sommet $i$ de $G_1$ au sommet $j$ de $G_2$.
+On cherche une bijection entre les sommets de $G_1$ et $G_2$ qui respecte les arêtes. on va considérer $n^2$ variables binaires $x_{i, j}$ ($1\leq i, j\leq n$) telle que $x_{i, j}$ est vrai si et seulement si la bijection entre les sommets de $G_1$ et $G_2$ associe le sommet $i$ de $G_1$ au sommet $j$ de $G_2$.
 
 Les différentes contraintes sont alors :
 
 - si $x_{i, j} = 1$ alors $x_{i, k} = 0$ pour tout $k\neq j$ : $\bigvee_{i}(x_{i, j} \land (\bigwedge_{k\neq j} \overline{x_{i, k}}))$
 - si $x_{i, j} = 1$ alors $x_{k, j} = 0$ pour tout $k\neq i$ : $\bigvee_{j}(x_{i, j} \land (\bigwedge_{k\neq i} \overline{x_{k, j}}))$
 - si $\\{i, j \\}$ est une arête de $G_1$ et $\\{k, l \\}$ n'est pas une arête de $G_2$, alors ni $x_{i, k}$ et $x_{j, l}$ ni $x_{i, l}$ et $x_{j, k}$ ne peuvent être vrai simultanément : $(\overline{x_{i, k}} \lor \overline{x_{j, l}}) \land (\overline{x_{i, l}} \lor \overline{x_{j, k}})$
-- si $\\{i, j \\}$ est une arête de $G_2$ et $\\{k, l \\}$ n'est pas une arête de $G_1$, alors ni $x_{k, i}$ et $x_{l, j}$ ni $x_{l, i}$ et $x_{k, j}$ ne peuvent être vrai simultanément  : $(\overline{x_{k, i}} \lor \overline{x_{l, j}}) \land (\overline{x_{l, i}} \lor \overline{x_{k, j}})$
+- si $\\{i, j \\}$ est une arête de $G_2$ et $\\{k, l \\}$ n'est pas une arête de $G_1$, alors ni $x_{k, i}$ et $x_{l, j}$ ni $x_{l, i}$ et $x_{k, j}$ ne peuvent être vrai simultanément : $(\overline{x_{k, i}} \lor \overline{x_{l, j}}) \land (\overline{x_{l, i}} \lor \overline{x_{k, j}})$
 
 Regrouper toutes ces contraintes forme bien un ensemble de contraintes polynomial dans la taille des graphes $G_1$ et $G_2$ qui, si elles sont toutes satisfaites garantissent l'isomorphie.
 {% enddetails %}

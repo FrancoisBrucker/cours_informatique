@@ -46,18 +46,47 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
   - $\phi \Rightarrow \psi$ en est une également
   - $\phi \Leftrightarrow \psi$ en est une également
 
-
 Deux formules sont **_égales_** si elles ont les même table de vérité.
 
 {% endnote %}
 
 On peut se ramener aux formules sans implications ou équivalences en utilisant le fait que :
 
-- $\phi \Rightarrow \psi$ est égale à $(\phi \land \psi) \lor \overline{\phi}$
-- $\phi \Leftrightarrow \psi$ est égale à $(\phi \land \psi) \lor (\overline{\phi} \land \overline{\psi})$
+- $\phi \Rightarrow \psi$ est égale à $\overline{\phi} \lor \psi$
+- $\phi \Leftrightarrow \psi$ est égale à $(\phi \Rightarrow \psi)\land (\psi \Rightarrow \phi) = (\overline{\phi} \lor \psi) \land (\overline{\psi} \lor \phi)$
 
+{% exercice %}
+Montrer que $a \Leftrightarrow (b \lor c)$ peut s'écrire comme une conjonction de clauses.
+{% endexercice %}
+{% details "corrigé" %}
 
-> TBD exercice montrer $a \Leftrightarrow (a \lor c)$ est équivalent à ...
+<div>
+$$
+\begin{array}{lcl}
+a \Leftrightarrow (b \lor c) &=& (\overline{a} \lor (b\lor c)) \land (\overline{b \lor c} \lor a)\\
+&=& (\overline{a} \lor b\lor c) \land ((\overline{b} \land \overline{c}) \lor a)\\
+&=& (\overline{a} \lor b \lor c) \land (a \lor \overline{b}) \land (a \lor \overline{c})\\
+\end{array}
+$$
+</div>
+
+{% enddetails %}
+{% exercice %}
+Montrer que $a \Leftrightarrow (b \land c)$ peut s'écrire comme une conjonction de clauses.
+{% endexercice %}
+{% details "corrigé" %}
+
+<div>
+$$
+\begin{array}{lcl}
+a \Leftrightarrow (a \land c) &=& (\overline{a} \lor (b\land c)) \land (\overline{b \land c} \lor a)\\
+&=& ((\overline{a} \lor b)\land (\overline{a} \lorc)) \land ((\overline{b} \lor \overline{c}) \lor a)\\
+&=& (\overline{a} \lor b)\land (\overline{a} \lor c) \land (\overline{b} \lor \overline{c} \lor a)\\
+\end{array}
+$$
+</div>
+
+{% enddetails %}
 
 De plus, les propriétés classique suivantes des fonctions logiques permettent d'assurer que l'on peut obtenir toutes les formules classiques avec notre définition.
 
@@ -111,6 +140,7 @@ on peut associer une valeur de vérité à chaque formule et les combiner de fa�
 > 2. associer une variable à chaque noeud
 > 3. propager les équivalences de vérité entre le noeud et ses enfants (non, et, ou).
 > 4. la formule finale est équivalente à la formule initiale
+
 
 > TBD supposé complètement parenthésé, sinon on ajoute par associativité (à gauche)
 > 

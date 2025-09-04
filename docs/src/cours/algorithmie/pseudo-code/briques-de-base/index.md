@@ -23,9 +23,10 @@ Comme en python, on considérera que tout ce qui suit le caractère `#`{.languag
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + #text(stroke: green)[\# un commentaire]
-]
-{% endalgorithme %}
+
+- #text(stroke: green)[\# un commentaire]
+  ]
+  {% endalgorithme %}
 
 ## Objets et opérations
 
@@ -41,14 +42,14 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 - le type `bit`{.language-} qui contient les 2 objets : `0`{.language-} et `1`{.language-}
 - le type `entier`{.language-} qui contient tous les entiers relatifs
 - le type `réel`{.language-} qui contient un ensemble dénombrable d'approximation de réels
-- le type `caractère`{.language-} qui contient l'ensemble des glyphes  UNICODE : `"a"`{.language-}, `"b"`{.language-}, ...
+- le type `caractère`{.language-} qui contient l'ensemble des glyphes UNICODE : `"a"`{.language-}, `"b"`{.language-}, ...
 
 #### Le vide
 
 En algorithmie on a également coutume de se doter d'un élément vide `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C) qui peut être à la fois considéré comme un type ou un objet :
 
 - **le type vide** `∅`{.language-} ne contient aucun objet. On l'utilise pour des fonctions ne rendant aucun objet par exemple
-- **l'objet vide** `∅`{.language-} est de tous les types (le `∅`{.language-}  entier, bit, ...). Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.
+- **l'objet vide** `∅`{.language-} est de tous les types (le `∅`{.language-} entier, bit, ...). Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.
 
 #### Autres types
 
@@ -62,13 +63,13 @@ Notez que tous les objets basiques à part les entiers sont de taille fixe :
 - un caractère 32bits si on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode)
 - un réel sur 64 bits si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754)
 
-On peut sans perte de généralité se restreindre aux entiers entre 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce  que font les languages d programmation comme python où un entier, qui n'est pas borné par nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
+On peut sans perte de généralité se restreindre aux entiers entre 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce que font les languages d programmation comme python où un entier, qui n'est pas borné par nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
 
 {% attention "**À retenir**" %}
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
 {% endattention %}
 
-Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**.  An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire.cela peut être celle de l'informaticien lecteur  ou sur un ordinateur : peu importe. Pour un ordinateur réel, les objets sont stockés dans une partie de la mémoire nommée **tas** (le tas est un tableau où chaque case contient 1 byte = 8 bit).
+Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**. An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire.cela peut être celle de l'informaticien lecteur ou sur un ordinateur : peu importe. Pour un ordinateur réel, les objets sont stockés dans une partie de la mémoire nommée **tas** (le tas est un tableau où chaque case contient 1 byte = 8 bit).
 
 ![tas](tas.png)
 
@@ -88,9 +89,10 @@ La seule façon de créer un objet à partir de rien est de définir une constan
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + 42
-]
-{% endalgorithme %}
+
+- 42
+  ]
+  {% endalgorithme %}
 
 #### Opérations
 
@@ -103,15 +105,16 @@ De façon formelle, une **_opération_** est une fonction dont l'espace de dépa
   - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
 - pour les caractères :
   - logique : égalité (avec le signe `==`{.language-})
-- opérations sur les bits et les booléens : 
-  - "négation logique" (non, `NOT`{.language-}, $\neg$), 
+- opérations sur les bits et les booléens :
+  - "négation logique" (non, `NOT`{.language-}, $\neg$),
   - "et logique" (et, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `||`{.language-}, `OR`{.language-} ou $\lor$)
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + 40 + 2  #text(stroke: green)[\# rendra l'objet entier 42]
-]
-{% endalgorithme %}
+
+- 40 + 2 #text(stroke: green)[\# rendra l'objet entier 42]
+  ]
+  {% endalgorithme %}
 
 Toutes les autres opérations devront être définies soit dans le pseudo-code (avec des fonctions, comme on va le voir) soit dans un texte avant celui-ci.
 
@@ -121,9 +124,10 @@ Enfin, la dernière opération autorisée pour les objet est l'affichage :
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + *affiche* 42
-]
-{% endalgorithme %}
+
+- _affiche_ 42
+  ]
+  {% endalgorithme %}
 
 L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressant lors de l'exécution du pseudo-code. Ne confondez pas un commentaire avec un retour de fonction : ce qui est affiché sort du contrôle du pseudo-code. Dans l'exemple précédent, l'entier 42 est affiché, le pseudo-code n'en a pas conscience.
 
@@ -133,7 +137,7 @@ Pour distinguer le retour de fonction, d'un affichage supprimez tous les afficha
 
 ## Variables
 
- Une **_variable_** permet de retrouver un objet stocké en mémoire pour sa réutilisation :
+Une **_variable_** permet de retrouver un objet stocké en mémoire pour sa réutilisation :
 
 {% note "**Définition**" %}
 Une **_variable_** est un nom auquel est associé un objet d'**un type donné**.
@@ -153,26 +157,26 @@ Avant de pouvoir être utilisée, une variable doit être définie. La ligne sui
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + $a colon.eq$ #text(weight: "bold")[entier]
-]
-{% endalgorithme %}
+
+- $a colon.eq$ #text(weight: "bold")[entier]
+  ]
+  {% endalgorithme %}
 
 La ligne précédente crée une nouvelle variable nommée `a` pouvant référencer des objets de type entier. Dans tout le reste du pseudo-code, on sera sur que `a` contient une valeur entière.
-
 
 {% note "**Définition**" %}
 Le format général de la définition d'une variable est :
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + #text(stroke: blue)[nom] $colon.eq$ #text(stroke: red)[type]
-]
-{% endalgorithme %}
 
-On utilise l'**_opérateur de définition_** `:=`{.language-} pour créer une variable. 
+- #text(stroke: blue)[nom] $colon.eq$ #text(stroke: red)[type]
+  ]
+  {% endalgorithme %}
+
+On utilise l'**_opérateur de définition_** `:=`{.language-} pour créer une variable.
 
 {% endnote %}
-
 
 En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition.
 
@@ -191,17 +195,17 @@ a ← 3
 
 La ligne précédente La ligne précédente associe ainsi à la variable `a` un objet entier valant 3.
 
-
 {% note "**Définition**" %}
 Le format général de l'affectation d'un objet à une variable est :
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + #text(stroke: blue)[nom] $<-$ #text(stroke: red)[objet]
-]
-{% endalgorithme %}
 
-On utilise l'**_opérateur d'affectation_** `←`{.language-} pour affecter une variable. 
+- #text(stroke: blue)[nom] $<-$ #text(stroke: red)[objet]
+  ]
+  {% endalgorithme %}
+
+On utilise l'**_opérateur d'affectation_** `←`{.language-} pour affecter une variable.
 
 {% endnote %}
 
@@ -214,15 +218,14 @@ Comme le symbole `←`{.language-} n'est pas présent sur un clavier, de nombreu
 Une variable est une opération temporaire. On peut réaffecter une variable à un autre objet au cours du pseudo-code :
 {% algorithme %}
 #pseudocode-list()[
-  + $a colon.eq$ *entier*
-  + #text(stroke: green)[\# des instructions]
-  + $a <- 4$
-  + #text(stroke: green)[\# des instructions]
-  + $a <- 2$
-]
-{% endalgorithme %}
 
-
+- $a colon.eq$ _entier_
+- #text(stroke: green)[\# des instructions]
+- $a <- 4$
+- #text(stroke: green)[\# des instructions]
+- $a <- 2$
+  ]
+  {% endalgorithme %}
 
 Après la troisième ligne, le code précédent associe la variable `a`{.language-} à un entier valant 4 et à un entier valant 2 après la cinquième ligne. Il est important de noter que :
 
@@ -238,11 +241,12 @@ Utiliser une variable consiste à la remplacer dans l'instruction par l'objet qu
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + $a colon.eq$ *entier*
-  + $a <- 42$
-  + *affiche* $a$
-]
-{% endalgorithme %}
+
+- $a colon.eq$ _entier_
+- $a <- 42$
+- _affiche_ $a$
+  ]
+  {% endalgorithme %}
 
 Le code précédent affiche l'objet référencé par $a$. Il est équivalent à : `affiche 42`{.language-}.
 
@@ -255,13 +259,13 @@ Regardons ceci avec quelques exemples :
 
 {% algorithme %}
 #pseudocode-list()[
-  + $a colon.eq$ *entier*
-  + $a <- 42$
-  + $b colon.eq$ *entier*
-  + $b <- a$
-]
-{% endalgorithme %}
 
+- $a colon.eq$ _entier_
+- $a <- 42$
+- $b colon.eq$ _entier_
+- $b <- a$
+  ]
+  {% endalgorithme %}
 
 La ligne 4, une instruction d'affectation, s'exécute de la façon suivante :
 
@@ -272,12 +276,13 @@ Autre exemple :
 
 {% algorithme %}
 #pseudocode-list()[
-  + $a colon.eq$ *entier*
-  + $a <- 3$
-  + $b colon.eq$ *entier*
-  + $b <- a + 1$
-]
-{% endalgorithme %}
+
+- $a colon.eq$ _entier_
+- $a <- 3$
+- $b colon.eq$ _entier_
+- $b <- a + 1$
+  ]
+  {% endalgorithme %}
 
 La ligne 4, une instruction composée d'une opération puis d'ue affectation, s'exécute de la façon suivante :
 
@@ -309,9 +314,10 @@ Créons un tableau :
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + T $colon.eq$ [entier] {longueur: 13}
-]
-{% endalgorithme %}
+
+- T $colon.eq$ [entier] {longueur: 13}
+  ]
+  {% endalgorithme %}
 
 La ligne précédente crée un tableau de 13 entiers.
 
@@ -320,11 +326,12 @@ Le format général de la création d'un tableau de longueur $n$ est :
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + #text(stroke: blue)[nom] $colon.eq$ [#text(stroke: red)[type]] {longueur: #text(stroke: orange)[n]}
-]
-{% endalgorithme %}
 
-Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : `[type]`{.language-}. 
+- #text(stroke: blue)[nom] $colon.eq$ [#text(stroke: red)[type]] {longueur: #text(stroke: orange)[n]}
+  ]
+  {% endalgorithme %}
+
+Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : `[type]`{.language-}.
 {% endnote %}
 
 Un tableau est un mix entre variables et objet : c'est un objet contenant des variables. Les différentes références des variables du tableau sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée :
@@ -364,7 +371,7 @@ On utilisera parfois, comme en python par exemple des sous tableaux via des **_t
 - `T[i:j]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice i **inclus** jusqu'à j **exclu**
 
 {% attention %}
-Tout comme pour les tableaux, on ne peut  **pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
+Tout comme pour les tableaux, on ne peut **pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 {% endattention %}
 
 ### <span id="str"></span>Chaînes de caractères
@@ -388,11 +395,11 @@ Chacune des quatre opérations précédentes (création, affectation, accès et 
 
 La chaîne de caractère étant très utilisée, on se permettra les abus suivant :
 
-- de définir une chaîne directement : `s := chaine"`{.language-}  en utilisant le type chaîne
+- de définir une chaîne directement : `s := chaine"`{.language-} en utilisant le type chaîne
 - puis de l'affecter : `s ← "Salut"`{.language-}
 - on définit l'opération de concaténation avec l'opérateur `+`{.language-} : `"salut" + " toi !"`{.language-} vaut la chaîne de caractères `"salut toi !"`{.language-}
 
-Le type `chaîne`{.language-} peut être vu comme un synonyme `[caractère]`{.language-} sauf que l'on ne peut pas modifier un de ses indices  (`s[2] ← "p"`{.language-} ne sera pas une instruction valide), bien que l'on puisse y accéder (`affiche s[2]`{.language-} sera une instruction valide). Un tableau de chaînes sera de type `[chaîne]`{.language-}.
+Le type `chaîne`{.language-} peut être vu comme un synonyme `[caractère]`{.language-} sauf que l'on ne peut pas modifier un de ses indices (`s[2] ← "p"`{.language-} ne sera pas une instruction valide), bien que l'on puisse y accéder (`affiche s[2]`{.language-} sera une instruction valide). Un tableau de chaînes sera de type `[chaîne]`{.language-}.
 
 ## <span id="instruction-contrôle"></span> Instructions de contrôle
 
@@ -484,7 +491,7 @@ pour chaque élément x d'un tableau:
 On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x`{.language-pseudocode} (de type de celui des objets stockés dans le tableau) vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
 
 Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante : à l'itération $i$ on examine le $i+1$ ème élément du tableau et on a déjà examiné les $i$ premiers.
- :
+:
 
 ```pseudocode
 x := entier
