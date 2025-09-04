@@ -190,4 +190,25 @@ Les op
 
 > TBD soyez explicite `x entier puis x = 2/3` que vaut x ? 1 ou 0 ? floor ou ceil.
 > L'algorithmie ne dot pas souffrir d'interpretation.
-> 
+
+
+### Abus de notation
+
+Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
+
+- les variables doivent être définies avant d'être utilisée
+- une variable ne peut contenir que des objets d'un type donné
+
+Mais cela ne doit pas rendre le code lourd. On se permettra donc, **lorsqu'il n'y a pas d’ambiguïté possible**, l'abus de notations qui crée et affecte une variable en une seule fois :
+
+- comme : `a := entier valant 3`{.language-}
+- voir : `a ← 3`{.language-} lorsque le type de la variable est clair (ici un entier)
+
+Vous verrez aussi parfois cet opérateur remplacé par le mot "soit", en particulier lorsqu'il y a plusieurs variables à créer :
+
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + *soient* $a$, $b$ et $c$ trois *entiers*
+]
+{% endalgorithme %}
+

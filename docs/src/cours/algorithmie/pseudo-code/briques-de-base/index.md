@@ -15,9 +15,21 @@ Le pseudo-code est constitué d'instructions dont le but est soit de manipuler d
 Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici _"mon"_ pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours. Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert.
 {% endattention %}
 
-Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
+Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd.
+
+## Commentaires
+
+Comme en python, on considérera que tout ce qui suit le caractère `#`{.language-} est considéré comme un commentaire dont le but est d'éclairer le lecteur.
+
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + #text(stroke: green)[\# un commentaire]
+]
+{% endalgorithme %}
 
 ## Objets et opérations
+
+Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
 
 ### Objets
 
@@ -35,8 +47,8 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 
 En algorithmie on a également coutume de se doter d'un élément vide `∅`{.language-} (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C) qui peut être à la fois considéré comme un type ou un objet :
 
-- **le type vide** ne aucun objet. On l'utilise pour des fonctions ne rendant aucune valeur par exemple,
-- **l'objet vide** est de tous les types. Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.
+- **le type vide** `∅`{.language-} ne contient aucun objet. On l'utilise pour des fonctions ne rendant aucun objet par exemple
+- **l'objet vide** `∅`{.language-} est de tous les types (le `∅`{.language-}  entier, bit, ...). Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.
 
 #### Autres types
 
@@ -46,9 +58,9 @@ Tous les autres types d'objets que l'on peut imaginer seront des compositions de
 
 Notez que tous les objets basiques à part les entiers sont de taille fixe :
 
-- booléen 1bit
-- caractères 32bits si on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode)
-- réel sur 64 bits si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754)
+- un booléen sur 1bit
+- un caractère 32bits si on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode)
+- un réel sur 64 bits si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754)
 
 On peut sans perte de généralité se restreindre aux entiers entre 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce  que font les languages d programmation comme python où un entier, qui n'est pas borné par nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
 
@@ -56,7 +68,7 @@ On peut sans perte de généralité se restreindre aux entiers entre 0 et $2^{64
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
 {% endattention %}
 
-An algorithmie, on ne préoccupe pas vraiment d'où sont stockés les objets. Ils peuvent être sur une feuille, dans la mémoire de l'informaticien ou sur un ordinateur : peu importe. Pour un ordinateur réel, les objets sont stockés dans une partie de la mémoire nommée **tas** (le tas est un tableau où chaque case contient 1 byte = 8 bit).
+Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**.  An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire.cela peut être celle de l'informaticien lecteur  ou sur un ordinateur : peu importe. Pour un ordinateur réel, les objets sont stockés dans une partie de la mémoire nommée **tas** (le tas est un tableau où chaque case contient 1 byte = 8 bit).
 
 ![tas](tas.png)
 
@@ -72,40 +84,64 @@ Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. O
 
 #### Créer des objets
 
-> TBD des constantes.
+La seule façon de créer un objet à partir de rien est de définir une constante.
+
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + 42
+]
+{% endalgorithme %}
 
 #### Opérations
 
-> TBD toutes les autres opérations seront formés de celle là.
+De façon formelle, une **_opération_** est une fonction dont l'espace de départ est un produit cartésien de types et l'espace d'arrivée un type donné. Les opérations sont le second moyen de créer des objets via leur résultat. Par exemple le booléen Vrai est crée comme résultat de l'opération `40 > 2`. Les seules opérations définies par défaut dans tout pseudo-code sont peu nombreuses :
 
-- opérations sur les entiers et/ou réels :
+- pour les entiers et les réels :
   - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
   - opérations usuelles comme prendre la valeur entière, la valeur absolue, ...
   - la division entière de deux nombre (`//`{.language-}) et le modulo (`%`{.language-})
   - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
-- opérations sur les caractères :
+- pour les caractères :
   - logique : égalité (avec le signe `==`{.language-})
-- opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `||`{.language-}, `OR`{.language-} ou $\lor$)
+- opérations sur les bits et les booléens : 
+  - "négation logique" (non, `NOT`{.language-}, $\neg$), 
+  - "et logique" (et, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `||`{.language-}, `OR`{.language-} ou $\lor$)
 
-Les deux seuls moyens de créer des objets se font via des constantes (l'entier 42) ou comme des résultats d'opérations (le booléen Vrai est crée comme résultat de l'opération `40 > 2`)
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + 40 + 2  #text(stroke: green)[\# rendra l'objet entier 42]
+]
+{% endalgorithme %}
+
+Toutes les autres opérations devront être définies soit dans le pseudo-code (avec des fonctions, comme on va le voir) soit dans un texte avant celui-ci.
 
 #### Affichage
 
-> TBD ne pas confondre avec un retour de fonction.
+Enfin, la dernière opération autorisée pour les objet est l'affichage :
+
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + *affiche* 42
+]
+{% endalgorithme %}
+
+L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressant lors de l'exécution du pseudo-code. Ne confondez pas un commentaire avec un retour de fonction : ce qui est affiché sort du contrôle du pseudo-code. Dans l'exemple précédent, l'entier 42 est affiché, le pseudo-code n'en a pas conscience.
+
+{% attention "**À retenir**" %}
+Pour distinguer le retour de fonction, d'un affichage supprimez tous les affichages de votre pseudo-code et il doit continuer de fonctionner.
+{% endattention %}
 
 ## Variables
 
-Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**.
-
-Une **_variables_** est alors associé à la première case de la mémoire contenant l'objet. D'un point de vue algorithmique, cela revient à référencer un objet, à le nommer :
+ Une **_variable_** permet de retrouver un objet stocké en mémoire pour sa réutilisation :
 
 {% note "**Définition**" %}
 Une **_variable_** est un nom auquel est associé un objet d'**un type donné**.
 {% endnote %}
 
-Les variables nous permettent de manipuler les objets. Conceptuellement parlant, ce sont juste des **liens vers** l'objet qu'elle référence.
+Les variables nous permettent de manipuler les objets. Conceptuellement parlant, ce sont juste des **liens vers** les objets qu'elles référencent.
 
-En algorithmie, tout comme pour les objets on ne se préoccupe pas vraiment où sont stockés les variables. Pour un ordinateur réel, elles sont stockées dans une partie de la mémoire nommée **pile** et contiennent l'indice de la mémoire où commence l'objet qu'elle référence. Chaque variable est donc juste assez grande pour stocker un indice (64bit sur les ordinateur actuel ce qui permet d'avoir théoriquement un tas de taille $2^{64}byte = 18446744073709551616B = 16777216 terabyte).
+En algorithmie, tout comme pour les objets on ne se préoccupe pas vraiment où sont stockés les variables. Pour un ordinateur réel, elles sont stockées dans une partie de la mémoire nommée **pile** et contiennent l'indice de la mémoire du tas où commence l'objet qu'elle référence. Chaque variable est donc juste assez grande pour stocker un indice (64bit sur les ordinateur actuel ce qui permet d'avoir théoriquement un tas de taille $2^{64}$byte = 18446744073709551616B = 16777216 terabyte).
 
 ![pile](pile.png)
 
@@ -113,7 +149,7 @@ Chaque variable a la même taille et sont stockés de façon consécutives dans 
 
 ### Définition
 
-Avant de pouvoir être utilisée, une variable doit être définie :
+Avant de pouvoir être utilisée, une variable doit être définie. La ligne suivante définie une variable de nom $a$ pouvant référencer un objet de type entier :
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
@@ -121,25 +157,22 @@ Avant de pouvoir être utilisée, une variable doit être définie :
 ]
 {% endalgorithme %}
 
-> TBD nom := type
-
-<!-- ```pseudocode
-a := entier
-``` -->
-
 La ligne précédente crée une nouvelle variable nommée `a` pouvant référencer des objets de type entier. Dans tout le reste du pseudo-code, on sera sur que `a` contient une valeur entière.
 
-On utilise l'**_opérateur de définition_** `:=`{.language-} pour créer une variable. Vous verrez aussi parfois cet opérateur remplacé par le mot "soit", en particulier lorsqu'il y a plusieurs variables à créer :
+
+{% note "**Définition**" %}
+Le format général de la définition d'une variable est :
 
 {% algorithme %}
 #pseudocode-list(line-numbering: none)[
-  + *soient* $a$, $b$ et $c$ trois *entiers*
+  + #text(stroke: blue)[nom] $colon.eq$ #text(stroke: red)[type]
 ]
 {% endalgorithme %}
 
-<!-- ```pseudocode
-soient a, b et c trois entiers
-``` -->
+On utilise l'**_opérateur de définition_** `:=`{.language-} pour créer une variable. 
+
+{% endnote %}
+
 
 En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition.
 
@@ -147,14 +180,6 @@ En pseudo-code, comme le principal soucis est la non ambiguïté, une variable n
 Ce comportement est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.
 
 {% endinfo %}
-
-Il est important de noter que :
-
-{% attention %}
-Une variable n'**est pas** un objet, c'est un lien vers un objet.
-
-> TBD voir partie code mémoire/pile.
-{% endattention %}
 
 ### Affectation
 
@@ -164,24 +189,51 @@ Une fois la variable crée, on peut lui **_affecter_** des objets, par exemple p
 a ← 3
 ```
 
-On utilise l'opérateur d'affectation `←`{.language-} pour affecter une variable. La ligne précédente associe ainsi à la variable `a` un objet entier valant 3.
+La ligne précédente La ligne précédente associe ainsi à la variable `a` un objet entier valant 3.
 
-{% attention %}
-On n'utilisera pas le signe `=` en pseudo-code pour l'affectation car elle n'est pas symétrique : à gauche une variable à droite un objet.
 
+{% note "**Définition**" %}
+Le format général de l'affectation d'un objet à une variable est :
+
+{% algorithme %}
+#pseudocode-list(line-numbering: none)[
+  + #text(stroke: blue)[nom] $<-$ #text(stroke: red)[objet]
+]
+{% endalgorithme %}
+
+On utilise l'**_opérateur d'affectation_** `←`{.language-} pour affecter une variable. 
+
+{% endnote %}
+
+On n'utilisera pas le signe `=` en pseudo-code pour l'affectation car cette opération n'est pas symétrique : à gauche une variable à droite un objet.
+
+{% info %}
 Comme le symbole `←`{.language-} n'est pas présent sur un clavier, de nombreux langages de programmation utilisent cependant le signe `=`{.language-} pour une affectation.
+{% endinfo %}
+
+Une variable est une opération temporaire. On peut réaffecter une variable à un autre objet au cours du pseudo-code :
+{% algorithme %}
+#pseudocode-list()[
+  + $a colon.eq$ *entier*
+  + #text(stroke: green)[\# des instructions]
+  + $a <- 4$
+  + #text(stroke: green)[\# des instructions]
+  + $a <- 2$
+]
+{% endalgorithme %}
+
+
+
+Après la troisième ligne, le code précédent associe la variable `a`{.language-}à un entier valant 4 et à un entier valant 2 après la cinquième ligne.
+
+Il est important de noter que :
+
+{% attention "**À retenir**" %}
+Une variable n'**est pas** un objet, c'est un lien vers un objet qui pourra changer au cours du temps.
 {% endattention %}
 
-Une variable peut-être affectée plusieurs fois :
 
-```pseudocode/
-a := entier
-
-a ← 3
-a ← 4
-```
-
-Après la troisième ligne, la variable `a`{.language-} est associée à un entier valant 3 et après la quatrième ligne à un entier valant 4.
+> TBD voir partie code mémoire/pile. C'est un indice dans la mémoire qui peut changer.
 
 ### Utilisation
 
@@ -248,17 +300,7 @@ Dans la seconde instruction, on commence par retrouver l'objet nommé par `a`{.l
 
 Enfin, avant d'utiliser une variable, il faut a priori la définir avec le mot clé `soit`{.language-}.
 
-### Abus de notation
-
-Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
-
-- les variables doivent être définies avant d'être utilisée
-- une variable ne peut contenir que des objets d'un type donné
-
-Mais cela ne doit pas rendre le code lourd. On se permettra donc, **lorsqu'il n'y a pas d’ambiguïté possible**, l'abus de notations qui crée et affecte une variable en une seule fois :
-
-- comme : `a := entier valant 3`{.language-}
-- voir : `a ← 3`{.language-} lorsque le type de la variable est clair (ici un entier)
+> TBD on peut créer puis utiliser plus tard, mais pas défini avant la première affectation.
 
 ## <span id="tableaux"></span>Tableaux
 
