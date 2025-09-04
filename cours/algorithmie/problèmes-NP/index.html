@@ -99,7 +99,7 @@
   <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
 <p>En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing puisqu'elle n'est pas démontrée, ici on considérera que les algorithmes sont écrit en pseudo-code.</p>
 <h2>Problèmes utilisables en pratique</h2>
-<p>Un <a href="../#probleme-algorithmique/" class="interne">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov" class="interne">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
+<p>Un <a href="../#probleme-algorithmique" class="interne">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov" class="interne">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
 <p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : <strong>la résolution</strong>.</p>
 <h3>Résolution efficace</h3>
@@ -263,7 +263,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p><img src="NP-NP-1.png" alt="décidable"></p>
 <p>La définition ci-dessus appelle deux remarques :</p>
 <ul>
-<li>premièrement le nom a été très mal choisi. Il signifie <em>Non Déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème  peut être résoluble de façon polynomiale par des algorithmes non déterministes (un test si peut avoir plusieurs alors choisi de façon non déterministe). Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type d'algorithme. Nous verrons ces types d'algorithmes plus tard.</li>
+<li>premièrement le nom a été très mal choisi. Il signifie <em>Non Déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème peut être résoluble de façon polynomiale par des algorithmes non déterministes (un test si peut avoir plusieurs alors choisi de façon non déterministe). Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type d'algorithme. Nous verrons ces types d'algorithmes plus tard.</li>
 <li>deuxièmement l'inclusion est stricte. Il existe des problèmes décidables qui ne sont pas dans NP. Ça aussi on le démontrera plus tard lorsque l'on étudiera .</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -280,15 +280,45 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </ul>
 </div></div>
 
-<blockquote>
-<p>TBD parler de la complexité spatiale.</p>
-<p>Dire que l'on s'en fout car un algorithme polynomiale en temps peut aussi être polynomial en espace.
-la seule façon que cela ne le soit pas est que l'on alloue (en $\mathcal{O}(1)$) des tableaux que l'on utilise pas. Genre un tableau de $2^n$ cases et que l'on utilise que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial.
-Ce cas est limite car cela signifie que l'on utilise pas tout : toute utilisation d'une variable utilise 1 instruction.
-On peut alors utiliser des dictionnaires à la place des tableaux <strong>sans changer l'algorithme</strong> ce qui garanti que la  complexité spatiale sera égale à la complexité du premier algo et la complexité sera au pire au carré de la complexité initiale. tout les accès passent au pire de $\mathcal{O}(1)$ à la taille des données (même si en moyenne ça ne change pas). Si la complexité initiale est polynomiale, le nouvel algorithme l'est aussi et sa complexité spatiale est inférieure à la complexité.</p>
-<p>TBD en faire une proposition pour P on à : si poly en temps alors poly en espace.
-complexité &gt; spatiale si toute variable est utilisée et on peut toujours s'y ramener : tout algorithme peut être écrit de telle sorte que complexité &gt; spatiale</p>
-</blockquote>
+<p>On pourrait penser qu'il faudrait aussi borner la complexité spatiale. Utiliser un nombre exponentiel de mémoire étant tout autant rédhibitoire que d'utiliser un temps exponentiel.</p>
+<p>La seule façon d'obtenir une complexité spatiale supérieure à la complexité temporelle est d'allouer de la mémoire (en $\mathcal{O}(1)$) et de ne jamais allez y voir (puisque y aller va consommer une opération). Par exemple allouer un tableau de $2^n$ cases et n'en utiliser que les cases $2^i$ : complexité spatiale exponentielle et temporelle polynomial. On gaspille un nombre exponentiel de mémoire.</p>
+<p>On peut cependant changer cde genre d'algorithme grâce àla proposition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout algorithme de complexité temporelle polynomiale peut être écrit de telle sorte que :</p>
+<ul>
+<li>sa complexité temporelle reste polynomiale</li>
+<li>sa complexité spatiale soit inférieure à sa nouvelle complexité temporelle</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il suffit pour cela de remplacer tous les tableaux utilisés par l'algorithme en dictionnaires.</p>
+<p>Ceci garantit que la complexité spatiale sera égale à la complexité du premier algo et que la complexité temporelle sera au pire au carré de la complexité initiale. En effet, chaque accès à un indice de tableau passe de $\mathcal{O}(1)$ (pour un tableau) à la taille des données (c'est à dire la complexité initiale) si on a pas de chance avec le dictionnaire (cependant, en moyenne ça ne change pas).</p>
+</div>
+</details>     
+</div>
 <h2>Structure de NP</h2>
 <p>Regardons la structure de NP d'un peu plus prêt en utilisant notre comparateur de problèmes : <a href="../probl%C3%A8me-r%C3%A9duction/#d%C3%A9finition-r%C3%A9duction-polynomiale" class="interne">la réduction polynomiale</a>.</p>
 <p>De façon extrêmement surprenante lorsqu'on y pense, il existe un problème de $NP$, SAT, qui majore tous les autres problèmes. Nous démontrerons ceci précisément plus tard, admettons donc (pour l'instant) le théorème suivant :</p>
@@ -337,14 +367,6 @@ complexité &gt; spatiale si toute variable est utilisée et on peut toujours s'
 </ul>
 </div></div>
 
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Une formule logique sous la forme d'une disjonction de clause est dite sous la <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive">forme normale conjonctive</a>. Toute formule logique peut être mise sous cette forme grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> qui est linéaire en nombre d'opérations. Ceci exige de se retrouver avec un nombre exponentiel de clauses si on utilise juste <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">la distributivité des opérations logiques</a>.</p>
-</div></div>
-
 <p><span id="exemple-SAT"></span>
 Par exemple considérons les 4 clauses suivantes, sur 5 variables booléennes :</p>
 <div>
@@ -363,8 +385,8 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que l'on peut encoder une clause sur $n$ variables booléennes par un tableau d'entiers relatifs.</p>
-<p>En déduire un moyen d'encoder une conjonction de clauses sur $n$ variables booléennes.</p>
+<p>Montrez que l'on peut encoder une clause sur $n$ variables booléennes par un tableau d'entiers relatifs de taille $n$.</p>
+<p>En déduire un moyen d'encoder une conjonction de $m$ clauses sur $n$ variables booléennes par une liste de $m$ tableaux de taille au pire $n$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -462,7 +484,7 @@ $$
                 sat <span class="token operator">←</span> <span class="token boolean">Vrai</span>
         <span class="token keyword">si</span> sat <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>            </code></pre>
+    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></code></pre>
 <p>La complexité est clairement linéaire : on regarde au pire chaque littéral de chaque clause une fois.</p>
 </div>
 </details>     
@@ -481,31 +503,38 @@ $$
 <h3>Réduction vers SAT</h3>
 <p>Le théorème de Cook et Leven stipule que <strong>tout</strong> problème de NP peut se réduire à un cas particulier du problème SAT. Pour démontrer cela ils montrent que tout problème algorithme de NP peut s'écrire polynomialement comme une formule SAT qui n'est satisfiable que pour des solutions du problème initial.</p>
 <p>Nous ne démontrerons pas ici ce théorème mais allons montrer quelques exemples pour que vous puissiez appréhender ce résultat fondamental.</p>
+<p>Nous allons aussi utiliser le fait que toute formule logique peut se mettre efficacement sous la forme d'une disjonction de clause grâce à <a href="https://fr.wikipedia.org/wiki/Transformation_de_Tseitin">la transformation de Tseitin</a> que nous étudierons un peut plus tard. Ceci nous permet d'uniquement chercher une formule logique, pas forcément une disjonction de clauses.</p>
 <h4>MAX</h4>
 <p>Montrons que l'on peut le faire pour le problème MAX. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.</p>
 <ol>
-<li>le test $(x_i = x_j)$ pour deux variables booléennes s'écrit $(x_i \land x_j) \lor (\overline{x_i} \land \overline{x_j})$</li>
+<li>l'égalité $(x^i = y^i)$ pour deux variables booléennes s'écrit $(x^i \land y^i) \lor (\overline{x^i} \land \overline{y^i})$</li>
 <li>un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \{0, 1\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$</li>
 </ol>
-<p>Des deux remarques précédentes, on en déduit que le test $(x_i &gt; x_j)$ pour deux entiers s'écrit par le fait qu'il existe $k$ tel que les k-1 derniers bits sont égaux et le $k$ème bit de x_i est plus grand que celui de x_j :</p>
+<p>Des deux remarques précédentes, on en déduit que le test $(x = y)$ pour deux entiers s'écrit par le fait que tous les bits sont égaux :</p>
 <div>
 $$
-\bigvee_{1\leq k \leq p}(\bigwedge_{k < l \leq p}(x_i^l = x_j^l)  \land (x_i^k \land \overline{x_j^k}))
+(x = y) \coloneqq \bigwedge_{0\leq k \leq p}(x^l = y^l) = \bigwedge_{0\leq k \leq p}((x^l \land y^l) \lor (\overline{x^i} \land \overline{y^i}))
+$$
+</div>
+<p>De là, l'inégalité $(x &gt; y)$ pour deux entiers s'écrit par le fait qu'il existe $k$ tel que les k-1 derniers bits sont égaux et le $k$ème bit de x_i est plus grand que celui de x_j :</p>
+<div>
+$$
+(x > y) \coloneqq \bigvee_{1\leq k \leq p}(\bigwedge_{k < l \leq p}(x^l = y^l)  \land (x^k \land \overline{y^k}))
 $$
 </div>
 <p>Et donc la formule logique :</p>
 <div>
 $$
-\bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x_i^l \land x_j^l) \lor (\overline{x^l_i} \land \overline{x^l_j})) \land (x_i^k \land \overline{x_j^k}))
+(x > y) \coloneqq \bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x^l \land y^l) \lor (\overline{x^l} \land \overline{y^l})) \land (x^k \land \overline{y^k}))
 $$
 </div>
-<p>Enfin, pour avoir $(x_i \geq x_j)$ on rajoute le fait que tous les bit de $x_i$ et $x_j$ peuvent être égaux :</p>
+<p>Enfin, pour avoir $(x \geq y)$ on combine les deux formules :</p>
 <div>
 $$
-\bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x_i^l \land x_j^l) \lor (\overline{x^l_i} \land \overline{x^l_j})) \land (x_i^k \land \overline{x_j^k})) \bigvee (\bigwedge_{0 \leq l \leq p}((x_i^l \land x_j^l) \lor (\overline{x^l_i} \land \overline{x^l_j})))
+(x \leq y) \coloneqq (x = y) \lor (x > y)
 $$
 </div>
-<p>De là la formule logique permettant de décrire un problème MAX est :</p>
+<p>Ceci nous permet d'écrire la formule logique permettant de décrire un problème MAX est :</p>
 <div>
 $$
 \bigvee_{1\leq i \leq n}(\bigwedge_{j \neq i} T[i] \geq T[j])
@@ -520,10 +549,43 @@ $$
 <p>Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clause qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer en conjonction de clauses.</p>
 </div></div>
 
+<h4>3-SUM'</h4>
+<p>Terminons cette partie de réécriture en montrant que toutes ces clauses peuvent se combiner :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que le problème 3-SUM' peut être résolu par SAT</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<div>
+$$
+\bigvee_{0\leq i < n}(\bigwedge_{j\neq i}(T[i] \geq T[j]))
+$$
+</div>
+</div>
+</details>     
+</div>
 <h4>Plus</h4>
 <p>L'exemple précédent était éclairant mais pas forcément bluffant : le problème MAX pouvant se représenter facilement comme une succession de tests logiques. Nous allons donc aller un peu plus loin et transformer un algorithme, la somme de deux nombres binaires en une conjonction de clause.</p>
 <p>Commençons par quelque chose de simple, l'addition de 2 bits :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme_binaire</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">bit</span><span class="token punctuation">,</span> 
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme_binaire</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">bit</span><span class="token punctuation">,</span>
                          y<span class="token punctuation">:</span> <span class="token builtin">bit</span><span class="token punctuation">)</span>
                          <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>  <span class="token comment"># somme = T[0] + 2 * T[1]</span>
     somme <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>
@@ -532,26 +594,18 @@ $$
     <span class="token keyword">si</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>y <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>             <span class="token comment"># le nombre 01</span>
     <span class="token keyword">rendre</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>                 <span class="token comment"># le nombre 00</span></code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Pour simplifier l'écriture de la formule logique on a utilisé la notation mathématique qui stipule que le nombre représenté par un tableau binaire s'écrit $\sum_{0 \leq i &lt; n} 2^i \cdot T[i]$ (les nombres sont écrits de droite à gauche, le tableau <code>[1, 1, 0]</code> correspond au nombre binaire <code>011</code>). C'est <strong>l'opposée</strong> de la notation classique en informatique qui lit les nombres de gauche à droite (le tableau <code>[1, 1, 0]</code> correspond bien au nombre binaire <code>110</code>) associant le nombre $\sum_{1 \leq i \leq n} 2^{i-1} \cdot T[-i]$ à un tableau de bis $T$.</p>
-</div></div>
-
 <p>Ce qui donne comme clause, en notant la sortie de l'algorithme $z = [z^0, z^1]$ :</p>
 <div>
 $$
 ((x \land y) \land (z^1 \land z^0)) \lor ((x \lor y) \land (\overline{z^1} \land z^0)) \lor (\overline{z^1} \land \overline{z^0}))
 $$
 </div>
-<p>À vous maintenant. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :</p>
+<p>Tout comme pour le problème du max si on veut additionner deux entiers on les transforme en variables binaire en utilisant le fait qu'un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \{0, 1\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :</p>
 <p><span id="algorithme-somme_binaire"></span></p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme_binaire</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme_binaire</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
                          y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de même taille</span>
                          <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>  <span class="token comment"># de la taille de x et y + 1</span>
-    
+
     somme <span class="token operator">←</span> un tableau de taille x<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span> bits
     retenues <span class="token operator">←</span> un tableau de taille x<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span> bits
     retenues<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
@@ -569,7 +623,7 @@ $$
         <span class="token keyword">sinon</span><span class="token punctuation">:</span>
             somme<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
             retenues<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
-    somme<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> retenues<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    somme<span class="token punctuation">[</span>x<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> retenues<span class="token punctuation">[</span>x<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span>
     <span class="token keyword">rendre</span> somme</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -605,68 +659,48 @@ $$
 </div>
 </details>     
 </div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Écrivez l'algorithme sous la forme d'une formule logique.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<h4>3-SUM'</h4>
-<p>Terminons cette partie de réécriture en montrant que toutes ces clauses peuvent se combiner :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que le problème 3-SUM' peut être résolu par SAT</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
+<p>On peut maintenant convertir cet algorithme en une formule logique. On va utiliser les variables binaires :</p>
+<ul>
+<li>$x^0, \dots, x^{p}$ pour représenter $x = \sum_{0\leq i \leq p}x^i2^i$,</li>
+<li>$y^0, \dots, y^{p}$ pour représenter $y = \sum_{0\leq i \leq p}y^i2^i$,</li>
+<li>$s^0, \dots, s^{p+1}$ pour représenter la somme $x+y = s = \sum_{0\leq i \leq p+1}s^i2^i$,</li>
+<li>$r^0, \dots, r^{p+1}$ pour représenter les retenues.</li>
+</ul>
+<p>Commençons par représenter une itération de la boucle pour chaque sous la forme d'une formule :</p>
 <div>
 $$
-\bigvee_{0\leq i < n}(\bigwedge_{j\neq i}(T[i] \geq T[j]))
+\begin{array}{l}
+[(x^i \land y^i \land r^i)\land (s^i \land r^{i+1})] \lor\\
+[((x^i \land r^i) \lor ( y^i \land r^i) \lor (x^i \land r^i))\land (\overline{s^i} \land r^{i+1})]\lor\\
+[(x^i \lor y^i \lor r^i) \land ({s^i} \land \overline{r^{i+1}})]\lor\\
+[(\overline{s^i} \land \overline{r^{i+1}})]
+\end{array}
 $$
 </div>
+<p>Ce qui est remarquable dans cet algorithme c'est que chaque variable n'est affecté qu'une seule fois. On peut donc directement écrire l'algorithme en remarquant que chaque itération est un ET :</p>
+<div>
+$$
+\begin{array}{l}
+\bigwedge_{0\leq i \leq p}([(x^i \land y^i \land r^i)\land (s^i \land r^{i+1})] \lor\\
+[((x^i \land r^i) \lor ( y^i \land r^i) \lor (x^i \land r^i))\land (\overline{s^i} \land r^{i+1})]\lor\\
+[(x^i \lor y^i \lor r^i) \land ({s^i} \land \overline{r^{i+1}})]\lor\\
+[(\overline{s^i} \land \overline{r^{i+1}})])
+\end{array}
+$$
 </div>
-</details>     
+<p>L'algorithme sous la forme d'une formule est maintenant capable d'additionner <code>1011</code> et <code>0111</code>. Il suffit de les mettre &quot;en entrée&quot; de la formule :</p>
+<div>
+$$
+\begin{array}{l}
+(x^0 \land x^1 \land \overline{x^2} \land x^3) \land (y^0 \land y^1 \land \land y^2 \land \overline{y^3})\land\\
+\bigwedge_{0\leq i \leq 3}([(x^i \land y^i \land r^i)\land (s^i \land r^{i+1})] \lor\\
+[((x^i \land r^i) \lor ( y^i \land r^i) \lor (x^i \land r^i))\land (\overline{s^i} \land r^{i+1})]\lor\\
+[(x^i \lor y^i \lor r^i) \land ({s^i} \land \overline{r^{i+1}})]\lor\\
+[(\overline{s^i} \land \overline{r^{i+1}})])
+\end{array}
+$$
 </div>
+<p>Levin et cook que ce principe est applicable à tout pseudo-code en tenant en compte l'évolution des variables au cours des instructions, ce que nous n'avons pas eu besoin de faire ici car chaque variable n'est assignée qu'une seule fois.</p>
 <h2>Problèmes NP-Complet</h2>
 <p>Le théorème de Levin et Cook stipule que tout problème de NP peut se réduire polynomialement à un cas particulier de SAT : le problème SAT est un élément maximal de l'ordre entre problèmes de NP induit par la réduction polynomiale. Ce théorème montre l'existence de problèmes <em>universels</em>, on les appelle <strong><em>NP-complet</em></strong>, dont tous les autres problèmes ne sont que des cas particuliers :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -720,7 +754,7 @@ $$
 <li>$U = \{1, 2, 3, 4, 5, 6, 7\}$</li>
 <li>$\mathcal{S} = \{ \{1, 4, 7\}, \{1, 4\}, \{4, 5, 7\},\{3, 5, 6\},\{2, 3, 6, 7\},\{2, 7\}  \}$</li>
 </ul>
-<p>Résoudre ce problème revient à faire plein de choix. Parfois ces choix sont simple : si on place $\{1, 4, 7\}$ on ne peut plus mettre que la classe $\{3, 5, 6\}$ qui ne forme pas une partition ; parfois les choix sont plus cornéliens : doit-on placer la classe $\{3, 5, 6\}$, ce qui empêche d'utiliser la classe  $\{4, 5, 7\}$ (par exemple) ? Ou ne pas la mettre ? A priori on ne sais pas.</p>
+<p>Résoudre ce problème revient à faire plein de choix. Parfois ces choix sont simple : si on place $\{1, 4, 7\}$ on ne peut plus mettre que la classe $\{3, 5, 6\}$ qui ne forme pas une partition ; parfois les choix sont plus cornéliens : doit-on placer la classe $\{3, 5, 6\}$, ce qui empêche d'utiliser la classe $\{4, 5, 7\}$ (par exemple) ? Ou ne pas la mettre ? A priori on ne sais pas.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -772,7 +806,7 @@ $$
 <li>pour toute variable booléenne $x_i$ il existe une clause ayant $x_i$ comme littéral et une autre clause ayant $\overline{x_i}$ (sinon il suffit de mettre la modalité de $x_i$ à celle apparaissant dans les clauses pour les rendre trivialement vraies)</li>
 </ol>
 <p>Notez que l'on peut transformer toute instance de $SAT$ en une instance satisfaisant les deux conditions ci-dessus en supprimant les clauses satisfaisant la première condition et en supprimant la variable booléenne satisfaisant la seconde condition. Cette transformation se fait en temps polynomial par rapport à l'entrée de $SAT$.</p>
-<p>On peut maintenant transformer cette instance de  $SAT$ en une instance de $CE$ ayant comme entrée :</p>
+<p>On peut maintenant transformer cette instance de $SAT$ en une instance de $CE$ ayant comme entrée :</p>
 <div>
 $$
 \begin{array}{lll}
@@ -1045,13 +1079,13 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Soient $G_1$ et $G_2$ deux graphes ayant $\{1, \dots, n\}$ comme ensemble de sommets.</p>
-<p>On cherche une bijection entre les sommets de $G_1$ et $G_2$ qui respecte les arêtes. on va considérer $n^2$ variables binaires $x_{i, j}$ ($1\leq i, j\leq n$) telle que $x_{i, j}$ est vrai si et seulement si la bijection entre les  sommets de $G_1$ et $G_2$ associe le sommet $i$ de $G_1$ au sommet $j$ de $G_2$.</p>
+<p>On cherche une bijection entre les sommets de $G_1$ et $G_2$ qui respecte les arêtes. on va considérer $n^2$ variables binaires $x_{i, j}$ ($1\leq i, j\leq n$) telle que $x_{i, j}$ est vrai si et seulement si la bijection entre les sommets de $G_1$ et $G_2$ associe le sommet $i$ de $G_1$ au sommet $j$ de $G_2$.</p>
 <p>Les différentes contraintes sont alors :</p>
 <ul>
 <li>si $x_{i, j} = 1$ alors $x_{i, k} = 0$ pour tout $k\neq j$ : $\bigvee_{i}(x_{i, j} \land (\bigwedge_{k\neq j} \overline{x_{i, k}}))$</li>
 <li>si $x_{i, j} = 1$ alors $x_{k, j} = 0$ pour tout $k\neq i$ : $\bigvee_{j}(x_{i, j} \land (\bigwedge_{k\neq i} \overline{x_{k, j}}))$</li>
 <li>si $\{i, j \}$ est une arête de $G_1$ et $\{k, l \}$ n'est pas une arête de $G_2$, alors ni $x_{i, k}$ et $x_{j, l}$ ni $x_{i, l}$ et $x_{j, k}$ ne peuvent être vrai simultanément : $(\overline{x_{i, k}} \lor \overline{x_{j, l}}) \land (\overline{x_{i, l}} \lor \overline{x_{j, k}})$</li>
-<li>si $\{i, j \}$ est une arête de $G_2$ et $\{k, l \}$ n'est pas une arête de $G_1$, alors ni $x_{k, i}$ et $x_{l, j}$ ni $x_{l, i}$ et $x_{k, j}$ ne peuvent être vrai simultanément  : $(\overline{x_{k, i}} \lor \overline{x_{l, j}}) \land (\overline{x_{l, i}} \lor \overline{x_{k, j}})$</li>
+<li>si $\{i, j \}$ est une arête de $G_2$ et $\{k, l \}$ n'est pas une arête de $G_1$, alors ni $x_{k, i}$ et $x_{l, j}$ ni $x_{l, i}$ et $x_{k, j}$ ne peuvent être vrai simultanément : $(\overline{x_{k, i}} \lor \overline{x_{l, j}}) \land (\overline{x_{l, i}} \lor \overline{x_{k, j}})$</li>
 </ul>
 <p>Regrouper toutes ces contraintes forme bien un ensemble de contraintes polynomial dans la taille des graphes $G_1$ et $G_2$ qui, si elles sont toutes satisfaites garantissent l'isomorphie.</p>
 </div>
