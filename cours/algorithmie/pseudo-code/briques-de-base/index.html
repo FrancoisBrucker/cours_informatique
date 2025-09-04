@@ -102,13 +102,13 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici <em>&quot;mon&quot;</em> pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours.</p>
-<p>Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert. Je mes en fin de cette partie une petite liste (non exhaustive des différences vues ci et là).</p>
+<p>Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici <em>&quot;mon&quot;</em> pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours. Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert.</p>
 </div></div>
 
 <p>Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.</p>
 <h2>Objets et opérations</h2>
-<h3><span id="objets-basiques"></span> Objets basiques</h3>
+<h3>Objets</h3>
+<h4><span id="objets-basiques"></span> Objets basiques</h4>
 <p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et correspondent aux cinq <strong><em>types</em></strong> suivant :</p>
 <ul>
 <li>le type <code class="language-">booléen</code> qui contient deux objets : <code class="language-">vrai</code> et <code class="language-">faux</code></li>
@@ -117,15 +117,22 @@
 <li>le type <code class="language-">réel</code> qui contient un ensemble dénombrable d'approximation de réels</li>
 <li>le type <code class="language-">caractère</code> qui contient l'ensemble des glyphes  UNICODE : <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;b&quot;</code>, ...</li>
 </ul>
-<p>Enfin on considérera le type vide <code class="language-">∅</code> (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C) qui ne contient aucun objet.</p>
-<p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est une liste de caractères, etc).</p>
+<h4>Le vide</h4>
+<p>En algorithmie on a également coutume de se doter d'un élément vide <code class="language-">∅</code> (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C) qui peut être à la fois considéré comme un type ou un objet :</p>
+<ul>
+<li><strong>le type vide</strong> ne aucun objet. On l'utilise pour des fonctions ne rendant aucune valeur par exemple,</li>
+<li><strong>l'objet vide</strong> est de tous les types. Utilisé pour simuler un soucis ou un cas particulier : une fonction division pouvant rendre soit un réel soit le vide si on divise par 0 par exemple.</li>
+</ul>
+<h4>Autres types</h4>
+<p>Tous les autres types d'objets que l'on peut imaginer seront des compositions de ces 5 types d'objets (un point en 3D est constitué de 3 réels, une chaîne de caractères est un tableau de caractères, etc).</p>
+<h4>Taille et stockage des objets</h4>
 <p>Notez que tous les objets basiques à part les entiers sont de taille fixe :</p>
 <ul>
 <li>booléen 1bit</li>
-<li>caractères 32bits si on utilise les caractères Unicode</li>
-<li>réel norme IEEE sur 64bits</li>
+<li>caractères 32bits si on utilise <a href="https://fr.wikipedia.org/wiki/Unicode">les caractères Unicode</a></li>
+<li>réel sur 64 bits si on utilise <a href="https://fr.wikipedia.org/wiki/IEEE_754">la norme IEEE 754 double précision</a></li>
 </ul>
-<p>On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce  que font les languages d programmation comme python où un entier, qui n'est pas borné pfr nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).</p>
+<p>On peut sans perte de généralité se restreindre aux entiers entre 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce  que font les languages d programmation comme python où un entier, qui n'est pas borné par nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -138,12 +145,22 @@
 
 <p>An algorithmie, on ne préoccupe pas vraiment d'où sont stockés les objets. Ils peuvent être sur une feuille, dans la mémoire de l'informaticien ou sur un ordinateur : peu importe. Pour un ordinateur réel, les objets sont stockés dans une partie de la mémoire nommée <strong>tas</strong> (le tas est un tableau où chaque case contient 1 byte = 8 bit).</p>
 <p><img src="tas.png" alt="tas"></p>
-<p>Les objets sont stockées dans le tas. Notez que le tas peut contenir des &quot;trous&quot;., c'est à dire des endroits sans objets.</p>
+<p>Les objets sont stockées dans le tas. Notez que le tas peut contenir des &quot;trous&quot;, c'est à dire des endroits sans objets.</p>
 <h3><span id="opérations"></span> Opérations</h3>
 <p>Les opérations que peuvent effectuer les pseudo-codes sont liées aux objets. On doit pouvoir :</p>
 <ul>
-<li><strong><em>créer des objets</em></strong></li>
-<li><strong><em>opérer sur des objets</em></strong> :
+<li><strong><em>créer des objets</em></strong> : le caractère &quot;Ç&quot;, l'entier <code>42</code>, etc...</li>
+<li><strong><em>opérer sur des objets</em></strong> : rendre la somme de deux entiers, le résultat d'une formule logique, etc</li>
+<li><strong><em>afficher un objet</em></strong>. On suppose que l'on possède une opération unaire spéciale nommée <code>affiche</code> qui affiche à l'écran (ou à n'importe quoi permettant à l'utilisateur d'avoir un retour) l'objet. Par exemple <code class="language-">affiche 42</code> va afficher l'objet entier valant 42 à l'écran.</li>
+</ul>
+<h4>Créer des objets</h4>
+<blockquote>
+<p>TBD des constantes.</p>
+</blockquote>
+<h4>Opérations</h4>
+<blockquote>
+<p>TBD toutes les autres opérations seront formés de celle là.</p>
+</blockquote>
 <ul>
 <li>opérations sur les entiers et/ou réels :
 <ul>
@@ -160,10 +177,11 @@
 </li>
 <li>opérations sur les booléens : &quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$), &quot;et logique&quot; (et, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code> ou $\land$), &quot;ou logique&quot; (ou, <code class="language-">||</code>, <code class="language-">OR</code> ou $\lor$)</li>
 </ul>
-</li>
-<li><strong><em>afficher un objet</em></strong>. On suppose que l'on possède une opération unaire spéciale nommée <code>affiche</code> qui affiche à l'écran (ou à n'importe quoi permettant à l'utilisateur d'avoir un retour) l'objet. Par exemple <code class="language-">affiche 42</code> va afficher l'objet entier valant 42 à l'écran.</li>
-</ul>
 <p>Les deux seuls moyens de créer des objets se font via des constantes (l'entier 42) ou comme des résultats d'opérations (le booléen Vrai est crée comme résultat de l'opération <code>40 &gt; 2</code>)</p>
+<h4>Affichage</h4>
+<blockquote>
+<p>TBD ne pas confondre avec un retour de fonction.</p>
+</blockquote>
 <h2>Variables</h2>
 <p>Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme <strong><em>une mémoire</em></strong>, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <strong><em>un objet basique</em></strong>.</p>
 <p>Une <strong><em>variables</em></strong> est alors associé à la première case de la mémoire contenant l'objet. D'un point de vue algorithmique, cela revient à référencer un objet, à le nommer :</p>
