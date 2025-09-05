@@ -357,8 +357,6 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 Le problème SAT est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
 
-> TBD ici SAT et le transformer en projet.
-
 {% aller %}
 [Problème SAT](./problème-SAT){.interne}
 {% endaller %}

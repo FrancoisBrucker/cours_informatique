@@ -1,6 +1,6 @@
 ---
-layout: layout/post.njk 
-title:  "Réduction de problèmes"
+layout: layout/post.njk
+title: "Réduction de problèmes"
 
 eleventyComputed:
   eleventyNavigation:
@@ -21,22 +21,20 @@ S_1 & \leftarrow & S_2
 $$
 </div>
 
-La formalisation de cette opération s'appelle [une réduction](https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)) et peut prendre plusieurs formes. Nous en expliciterons certaines qui nous permettrons de :
+La formalisation de cette opération s'appelle [une réduction](<https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)>) et peut prendre plusieurs formes. Nous en expliciterons certaines qui nous permettrons de :
 
 1. comparer et classer les problèmes algorithmiques.
 2. calculer ou estimer des complexité
 
 {% info %}
-Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)) dont nous ne parlerons pas dans ce cours d'algorithmie.
+Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](<https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)>) dont nous ne parlerons pas dans ce cours d'algorithmie.
 {% endinfo %}
-
 
 ## Définitions
 
 Nous allons voir trois cas d'intérêt.
 
 ### Le sous problème
-
 
 {% note "**Définition**" %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Le problème $P_1$ est un **_sous-problème_** de $P_2$ s'il existe un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ telle que :
@@ -47,7 +45,7 @@ Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Le problème $P_1$ est un 
 Les sous-problèmes forment un ordre sur les problèmes algorithmiques. On notera $A \prec B$ lorsque $A$ est un sous problème de $B$.
 {% endnote %}
 
-Cette définition permet de montrer qu'un problème est plus général qu'un autre : $A \prec B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$ à une transformation prêt. 
+Cette définition permet de montrer qu'un problème est plus général qu'un autre : $A \prec B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$ à une transformation prêt.
 
 Par exemple :
 
@@ -64,7 +62,7 @@ Les problèmes s'imbriquent par composition : $P_1(E_1) = A_{2\rightarrow 1}(P_2
 
 <div>
 $$
-C_{P_1}(n) \leq C_{1\rightarrow 2}(n) + C_{P_2}(f(n)) + C_{2\rightarrow 1}(g\circ f(n))$
+C_{P_1}(n) \leq C_{1\rightarrow 2}(n) + C_{P_2}(f(n)) + C_{2\rightarrow 1}(g\circ f(n))
 $$
 </div>
 
@@ -83,7 +81,7 @@ La définition précédente permet de classer les problème par généralité ma
 {% note "**Définition**" %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_1$ en $P_2$ est un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ tels que :
 
-- Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$ et est de complexité inférieure à $C(n)$
+- Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$
 - Si $S_2$ est une solution au problème $P_2$ avec $A_{1\rightarrow 2}(E_1)$ comme entrée alors $A_{2\rightarrow 1}(E_1, S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.
 
 Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.
@@ -92,7 +90,7 @@ Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe
 La définition formelle ci-dessus est équivalente à dire que l'on utilise le problème $P_2$ (potentiellement un nombre constant de fois) pour résoudre le problème $P_1$. Pour cela, en reprenant les notations du sous-problème, il faut :
 
 - aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n)$
-- résoudre $P_2$ avec une complexité $ C_{P_2}(f(n))$
+- résoudre $P_2$ avec une complexité $ C\_{P_2}(f(n))$
 - revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$
 
 Selon les complexités $C_{1\rightarrow 2}(n)$ et $C_{2\rightarrow 1}(g\circ f(n))$, le passage de $P_1$ à $P_2$ et son retour va être plus ou moins facile. On défini alors :
@@ -128,7 +126,7 @@ S'il existe une réduction polynomiale entre $P_1$ et $P_2$ et que la complexit�
 En reprenant les notations précédentes :
 
 - aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n) = \mathcal{O}(n^k)$
-- résoudre $P_2$ avec une complexité $C_{P_2}(f(n))$. Comme le problème $P_2$ est polynomial on a $C_{P_2}(f(n)) = \mathcal{O}(f(n)^{k'})$ et comme la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$  est au plus $\mathcal{O}(n^k)$ on a : $C_{P_2}(f(n)) = \mathcal{O}(n^{k\cdot k'})$
+- résoudre $P_2$ avec une complexité $C_{P_2}(f(n))$. Comme le problème $P_2$ est polynomial on a $C_{P_2}(f(n)) = \mathcal{O}(f(n)^{k'})$ et comme la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$ est au plus $\mathcal{O}(n^k)$ on a : $C_{P_2}(f(n)) = \mathcal{O}(n^{k\cdot k'})$
 - revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$. Comme cette complexité est aussi polynomiale, disons $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(f(n)^{k''})$, on a au final que $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(n^{k\cdot k'\cdot k''})$
 
 La complexité totale est alors de : $\mathcal{O}(n^{k\cdot k'\cdot k''})$ ce qui est toujours polynomial.
@@ -143,13 +141,13 @@ Montrez que le problème de la recherche de doublon dans un tableau d'entiers es
 {% details "corrigé" %}
 
 On a une réduction linéaire entre
+
 - même entrée pour l'algorithme du max et du tri : $\mathcal{O}(1)$
 - on parcourt le tableau trié jusqu'à trouver deux éléments successifs égaux : $\mathcal{O}(n)$ avec $n$ taille du tableau en entrée
 
 Comme la complexité d'un tri est en $\mathcal{O}(n\ln(n))$, la complexité totale de la réduction est $\mathcal{O}(n\ln(n))$ ce qui est la complexité du tri (les passages d'un problème à l'autre sont négligeable).
 
 {% enddetails %}
-
 
 ## Exemples et exercices
 
@@ -305,7 +303,7 @@ On va pour cela éloigner fortement les valeurs des tableaux $T$ et $T'$ dans $T
 En prenant $K = \max_i(\\,\vert\\, T[i] \\,\vert\\,) + 1$ et $K'= K + 2 \cdot (\max_i(\\,\vert\\, T[i] \\,\vert\\,) + \max_i(\\,\vert\\, T'[i] \\,\vert\\,)) + 1$ on a bien que $T''[i] + T''[j] + T''[k] = 0$ si :
 
 1. $k = n+n'$ sinon on ne peut avoir de somme égale à 0
-2. avec $k = n+n'$  on ne peut avoir $0 \leq i, j < n$ sinon $T''[i] + T''[j] \leq 2(K + \max_i(\\,\vert\\, T[i] \\,\vert\\,) < K + K' = T''[k]$
+2. avec $k = n+n'$ on ne peut avoir $0 \leq i, j < n$ sinon $T''[i] + T''[j] \leq 2(K + \max_i(\\,\vert\\, T[i] \\,\vert\\,) < K + K' = T''[k]$
 3. avec $k = n+n'$ on ne peut avoir $n \leq i, j < n + n'$ sinon $T''[i] + T''[j] \geq 2(K' - \max_i(\\,\vert\\, T'[i] \\,\vert\\,)) > K + K' = T''[k]$
 
 {% enddetails %}
@@ -320,7 +318,7 @@ En prenant $K = \max_i(\\,\vert\\, T[i] \\,\vert\\,) + 1$ et $K'= K + 2 \cdot (\
 - **Entrées** :
   Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes horizontales avec $y = 0$, $y = 1$ et $y = 2$
 - **question** : Existe-t-il une droite non horizontale passant par 3 points.
-{% endnote %}
+  {% endnote %}
 
 Montrez qu'il est équivalent à 3-SUM' :
 

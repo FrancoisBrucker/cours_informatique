@@ -50,6 +50,9 @@ Outils et logiciels très utiles pour l'utilisation raisonnée de son système.
 
 Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis longtemps, cela peut valoir le coup d'en faire une nouvelle installation. Ceci est optionnel si votre système fonctionne.
 
+{% info %}
+Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence à avoir des comportement erratique, signe d'un système malade.
+{% endinfo %}
 {% aller %}
 [installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
 {% endaller %}
