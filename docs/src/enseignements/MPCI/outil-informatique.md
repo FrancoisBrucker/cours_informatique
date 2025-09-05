@@ -38,8 +38,21 @@ Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 
 ### Installations système complémentaires
 
-- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
+#### Outils complémentaires
+
+Outils et logiciels très utiles pour l'utilisation raisonnée de son système.
+
+- **sous Windows**, ayez un compte sur le [microsoft store](https://apps.microsoft.com/home?hl=fr-FR&gl=FR).
 - **sous mac** installez <https://brew.sh/> qui vous permettra d'installer de nombreux package unix : [installer brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne}.
+- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
+
+#### Nouvelle installation
+
+Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis longtemps, cela peut valoir le coup d'en faire une nouvelle installation. Ceci est optionnel si votre système fonctionne.
+
+{% aller %}
+[installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
+{% endaller %}
 
 ### Dossiers et fichiers
 
