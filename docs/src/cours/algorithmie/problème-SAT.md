@@ -108,7 +108,7 @@ On a les propriétés suivantes :
 Enfin, en associant une valeur de vérité à chaque variable, une formule sera vraie ou fausse. Une formule est ainsi une fonction booléenne. On peut alors parler d'égalité de formule si quelque soit la valeur des variables les formules sont égales :
 
 > TBD on peut le faire en utilisant prop distributivité :
-> 
+
 {% note "**Proposition**" %}
 
 On a les propriétés suivantes :
@@ -147,6 +147,14 @@ on peut associer une valeur de vérité à chaque formule et les combiner de fa�
 > 
 Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
 ) pour convertir les formules
+
+## Algorithme et SAT
+
+> TBD polylog
+
+tout algorithme s'écrit comme un SAT à résoudre sachant les entrées qui sont données (ex somme). Mais si on connaît la somme, on peut la fixer et l'algo va trouver des entrées !
+
+Si SAT est facile alors trouver des entrées à partir de sorties devient facile et toute la crypto se casse la gueule.
 
 ## <span id="3-sat"></span>Le problème 3-SAT
 
@@ -278,12 +286,3 @@ La transformation est bien linéaire. et résoudre SAT implique 3-sat car les va
 On vérifie les conséquences de chaque choix. Une fois tous les obligés fait si pas de contradiction on a un sous ensemble stable et on peut supprimer les clauses ayant ces affectations. Sous cas et on recommence. Si contradiction, on prend l'affectation contraire et on reteste. Si ça rate encore alors affectation impossible.
 
 > TBD refaire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
-
-## Algorithme et SAT
-
-> TBD polylog
-
-tout algorithme s'écrit comme un SAT à résoudre sachant les entrées qui sont données (ex somme). Mais si on connaît la somme, on peut la fixer et l'algo va trouver des entrées !
-
-Si SAT est facile alors trouver des entrées à partir de sorties devient facile et toute la crypto se casse la gueule.
-

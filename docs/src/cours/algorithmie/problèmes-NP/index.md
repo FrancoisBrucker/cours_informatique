@@ -311,7 +311,7 @@ Nous allons aussi utiliser le fait que toute formule logique peut se mettre effi
 
 Montrons que l'on peut le faire pour le problème MAX. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.
 
-1. l'égalité $(x^i = y^i)$ pour deux variables booléennes s'écrit $(x^i \land y^i) \lor (\overline{x^i} \land \overline{y^i})$
+1. l'égalité $(x^i = y^i)$ pour deux variables booléennes s'écrit $(x^i = y^i) \coloneqq (x^i \land y^i) \lor (\overline{x^i} \land \overline{y^i})$
 2. un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \\{0, 1\\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$
 
 Des deux remarques précédentes, on en déduit que le test $(x = y)$ pour deux entiers s'écrit par le fait que tous les bits sont égaux :
@@ -334,11 +334,11 @@ Et donc la formule logique :
 
 <div>
 $$
-(x > y) \coloneqq \bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x^l \land y^l) \lor (\overline{x^l} \land \overline{y^l})) \land (x^k \land \overline{y^k}))
+(x > y) = \bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x^l \land y^l) \lor (\overline{x^l} \land \overline{y^l})) \land (x^k \land \overline{y^k}))
 $$
 </div>
 
-Enfin, pour avoir $(x \geq y)$ on combine les deux formules :
+Enfin, pour avoir $(x \leq y)$ on combine les deux formules :
 
 <div>
 $$

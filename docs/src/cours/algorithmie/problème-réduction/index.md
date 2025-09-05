@@ -91,9 +91,9 @@ La définition formelle ci-dessus est équivalente à dire que l'on utilise le p
 
 - aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n)$
 - résoudre $P_2$ avec une complexité $ C\_{P_2}(f(n))$
-- revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$
+- revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n) + n)$
 
-Selon les complexités $C_{1\rightarrow 2}(n)$ et $C_{2\rightarrow 1}(g\circ f(n))$, le passage de $P_1$ à $P_2$ et son retour va être plus ou moins facile. On défini alors :
+Notez bien que comme on cherche à borner la complexité du problème $P_1$, toutes nos complexité doivent dépendre uniquement de $n$ qui est la taille de l'entrée de $P_1$. Selon les complexités $C_{1\rightarrow 2}(n)$ et $C_{2\rightarrow 1}(g\circ f(n) + n)$, le passage de $P_1$ à $P_2$ et son retour va être plus ou moins facile. On défini alors :
 
 <span id="définition-réduction-polynomiale"></span>
 
@@ -127,7 +127,7 @@ En reprenant les notations précédentes :
 
 - aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n) = \mathcal{O}(n^k)$
 - résoudre $P_2$ avec une complexité $C_{P_2}(f(n))$. Comme le problème $P_2$ est polynomial on a $C_{P_2}(f(n)) = \mathcal{O}(f(n)^{k'})$ et comme la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$ est au plus $\mathcal{O}(n^k)$ on a : $C_{P_2}(f(n)) = \mathcal{O}(n^{k\cdot k'})$
-- revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$. Comme cette complexité est aussi polynomiale, disons $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(f(n)^{k''})$, on a au final que $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(n^{k\cdot k'\cdot k''})$
+- revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n) + n)$. Comme cette complexité est aussi polynomiale, disons $C_{2\rightarrow 1}(g\circ f(n) + n) =  \mathcal{O}(f(n)^{k''})$, on a au final que $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(n^{k\cdot k'\cdot k''})$
 
 La complexité totale est alors de : $\mathcal{O}(n^{k\cdot k'\cdot k''})$ ce qui est toujours polynomial.
 
@@ -148,6 +148,12 @@ On a une réduction linéaire entre
 Comme la complexité d'un tri est en $\mathcal{O}(n\ln(n))$, la complexité totale de la réduction est $\mathcal{O}(n\ln(n))$ ce qui est la complexité du tri (les passages d'un problème à l'autre sont négligeable).
 
 {% enddetails %}
+
+{% attention "**À retenir**" %}
+Les réductions sont des outils de démonstration. Ils servent à estimer des complexités selon un modèle choisi : polynomial, linéaire, logarithmique, etc.
+
+Il est sans intérêt de parler juste de "réduction" cr si l'on ne maîtrise pas la complexités des passages, tout problème peut se réduire à un autre (il suffit de ne pas utiliser le second problème).
+{% endattention %}
 
 ## Exemples et exercices
 
