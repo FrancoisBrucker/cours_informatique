@@ -200,9 +200,9 @@ $$
 <ul>
 <li>aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n)$</li>
 <li>résoudre $P_2$ avec une complexité $ C_{P_2}(f(n))$</li>
-<li>revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$</li>
+<li>revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n) + n)$</li>
 </ul>
-<p>Selon les complexités $C_{1\rightarrow 2}(n)$ et $C_{2\rightarrow 1}(g\circ f(n))$, le passage de $P_1$ à $P_2$ et son retour va être plus ou moins facile. On défini alors :</p>
+<p>Notez bien que comme on cherche à borner la complexité du problème $P_1$, toutes nos complexité doivent dépendre uniquement de $n$ qui est la taille de l'entrée de $P_1$. Selon les complexités $C_{1\rightarrow 2}(n)$ et $C_{2\rightarrow 1}(g\circ f(n) + n)$, le passage de $P_1$ à $P_2$ et son retour va être plus ou moins facile. On défini alors :</p>
 <p><span id="définition-réduction-polynomiale"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -277,7 +277,7 @@ $$
 <ul>
 <li>aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n) = \mathcal{O}(n^k)$</li>
 <li>résoudre $P_2$ avec une complexité $C_{P_2}(f(n))$. Comme le problème $P_2$ est polynomial on a $C_{P_2}(f(n)) = \mathcal{O}(f(n)^{k'})$ et comme la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$ est au plus $\mathcal{O}(n^k)$ on a : $C_{P_2}(f(n)) = \mathcal{O}(n^{k\cdot k'})$</li>
-<li>revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$. Comme cette complexité est aussi polynomiale, disons $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(f(n)^{k''})$, on a au final que $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(n^{k\cdot k'\cdot k''})$</li>
+<li>revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n) + n)$. Comme cette complexité est aussi polynomiale, disons $C_{2\rightarrow 1}(g\circ f(n) + n) =  \mathcal{O}(f(n)^{k''})$, on a au final que $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(n^{k\cdot k'\cdot k''})$</li>
 </ul>
 <p>La complexité totale est alors de : $\mathcal{O}(n^{k\cdot k'\cdot k''})$ ce qui est toujours polynomial.</p>
 </div>
@@ -316,6 +316,17 @@ $$
 </div>
 </details>     
 </div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les réductions sont des outils de démonstration. Ils servent à estimer des complexités selon un modèle choisi : polynomial, linéaire, logarithmique, etc.</p>
+<p>Il est sans intérêt de parler juste de &quot;réduction&quot; cr si l'on ne maîtrise pas la complexités des passages, tout problème peut se réduire à un autre (il suffit de ne pas utiliser le second problème).</p>
+</div></div>
+
 <h2>Exemples et exercices</h2>
 <h3>Produit et carré</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">

@@ -325,6 +325,12 @@ on peut associer une valeur de vérité à chaque formule et les combiner de fa�
 <p>TBD supposé complètement parenthésé, sinon on ajoute par associativité (à gauche)</p>
 </blockquote>
 <p>Évite l'exponentialité si on utilise <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">que la distributivité</a> pour convertir les formules</p>
+<h2>Algorithme et SAT</h2>
+<blockquote>
+<p>TBD polylog</p>
+</blockquote>
+<p>tout algorithme s'écrit comme un SAT à résoudre sachant les entrées qui sont données (ex somme). Mais si on connaît la somme, on peut la fixer et l'algo va trouver des entrées !</p>
+<p>Si SAT est facile alors trouver des entrées à partir de sorties devient facile et toute la crypto se casse la gueule.</p>
 <h2><span id="3-sat"></span>Le problème 3-SAT</h2>
 <p>Un cas particulier important du problème <code>SAT</code> est le problème <code>3-SAT</code> ou toutes les clauses ont exactement 3 littéraux.</p>
 <h3>Définition</h3>
@@ -451,12 +457,6 @@ limited backatracking car chaque cas est indépendant donc si on doit backtracke
 <blockquote>
 <p>TBD refaire dans la partie graphe : strongly connected component : Tarjan <a href="https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf">https://github.com/tpn/pdfs/blob/master/Depth-First Search and Linear Graph Algorithms - Tarjan (1972).pdf</a></p>
 </blockquote>
-<h2>Algorithme et SAT</h2>
-<blockquote>
-<p>TBD polylog</p>
-</blockquote>
-<p>tout algorithme s'écrit comme un SAT à résoudre sachant les entrées qui sont données (ex somme). Mais si on connaît la somme, on peut la fixer et l'algo va trouver des entrées !</p>
-<p>Si SAT est facile alors trouver des entrées à partir de sorties devient facile et toute la crypto se casse la gueule.</p>
 
 
 </article>
