@@ -169,7 +169,7 @@ $$
 <p>Les problèmes s'imbriquent par composition : $P_1(E_1) = A_{2\rightarrow 1}(P_2(A_{1\rightarrow 2}(E_1))) = A_{2\rightarrow 1} \circ P_2 \circ A_{1\rightarrow 2}$ et cela permet d'écrire des inégalités pour les complexités des problèmes :</p>
 <div>
 $$
-C_{P_1}(n) \leq C_{1\rightarrow 2}(n) + C_{P_2}(f(n)) + C_{2\rightarrow 1}(g\circ f(n))$
+C_{P_1}(n) \leq C_{1\rightarrow 2}(n) + C_{P_2}(f(n)) + C_{2\rightarrow 1}(g\circ f(n))
 $$
 </div>
 <p>Avec :</p>
@@ -190,7 +190,7 @@ $$
 </div><div class="pl-8 mr-8">
 <p>Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une <strong><em>réduction</em></strong> de $P_1$ en $P_2$ est un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ tels que :</p>
 <ul>
-<li>Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$ et est de complexité inférieure à $C(n)$</li>
+<li>Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$</li>
 <li>Si $S_2$ est une solution au problème $P_2$ avec $A_{1\rightarrow 2}(E_1)$ comme entrée alors $A_{2\rightarrow 1}(E_1, S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.</li>
 </ul>
 <p>Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.</p>
@@ -276,7 +276,7 @@ $$
 <p>En reprenant les notations précédentes :</p>
 <ul>
 <li>aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n) = \mathcal{O}(n^k)$</li>
-<li>résoudre $P_2$ avec une complexité $C_{P_2}(f(n))$. Comme le problème $P_2$ est polynomial on a $C_{P_2}(f(n)) = \mathcal{O}(f(n)^{k'})$ et comme la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$  est au plus $\mathcal{O}(n^k)$ on a : $C_{P_2}(f(n)) = \mathcal{O}(n^{k\cdot k'})$</li>
+<li>résoudre $P_2$ avec une complexité $C_{P_2}(f(n))$. Comme le problème $P_2$ est polynomial on a $C_{P_2}(f(n)) = \mathcal{O}(f(n)^{k'})$ et comme la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$ est au plus $\mathcal{O}(n^k)$ on a : $C_{P_2}(f(n)) = \mathcal{O}(n^{k\cdot k'})$</li>
 <li>revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n))$. Comme cette complexité est aussi polynomiale, disons $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(f(n)^{k''})$, on a au final que $C_{2\rightarrow 1}(g\circ f(n)) =  \mathcal{O}(n^{k\cdot k'\cdot k''})$</li>
 </ul>
 <p>La complexité totale est alors de : $\mathcal{O}(n^{k\cdot k'\cdot k''})$ ce qui est toujours polynomial.</p>
@@ -598,7 +598,7 @@ De telle sorte que s'il existe $i$, $j$ et $k$ avec $T''[i] + T''[j] + T''[k] = 
 <p>En prenant $K = \max_i(\,\vert\, T[i] \,\vert\,) + 1$ et $K'= K + 2 \cdot (\max_i(\,\vert\, T[i] \,\vert\,) + \max_i(\,\vert\, T'[i] \,\vert\,)) + 1$ on a bien que $T''[i] + T''[j] + T''[k] = 0$ si :</p>
 <ol>
 <li>$k = n+n'$ sinon on ne peut avoir de somme égale à 0</li>
-<li>avec $k = n+n'$  on ne peut avoir $0 \leq i, j &lt; n$ sinon $T''[i] + T''[j] \leq 2(K + \max_i(\,\vert\, T[i] \,\vert\,) &lt; K + K' = T''[k]$</li>
+<li>avec $k = n+n'$ on ne peut avoir $0 \leq i, j &lt; n$ sinon $T''[i] + T''[j] \leq 2(K + \max_i(\,\vert\, T[i] \,\vert\,) &lt; K + K' = T''[k]$</li>
 <li>avec $k = n+n'$ on ne peut avoir $n \leq i, j &lt; n + n'$ sinon $T''[i] + T''[j] \geq 2(K' - \max_i(\,\vert\, T'[i] \,\vert\,)) &gt; K + K' = T''[k]$</li>
 </ol>
 </div>
