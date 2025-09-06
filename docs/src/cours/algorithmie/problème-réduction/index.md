@@ -283,7 +283,7 @@ Il faudra placer les deux tableaux du problème ÉGAL dans l'unique tableau d'en
 Vous pourrez procéder en 2 temps :
 
 1. proposez une solution qui fonctionne **si** les 2 tableaux $T$ et $T'$ en entrée de ÉGAL sont tels que $T[i] + T[j] \neq 0$ et $T'[i] + T'[j] \neq 0$ pour tous $i$ et $j$
-2. montrer que l'on peut toujours se ramener au cas précédent en ajoutant une valeur $A$ à chaque valeur de $T$ et en retranchant cette valeur $A$ à tous les éléments de $T'$
+2. prouver que l'on peut toujours se ramener au cas précédent en ajoutant une valeur $A$ à chaque valeur de $T$ et en retranchant cette valeur $A$ à tous les éléments de $T'$
 {% endinfo %}
 {% details "corrigé" %}
 
