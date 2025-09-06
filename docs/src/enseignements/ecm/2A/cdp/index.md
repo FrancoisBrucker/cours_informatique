@@ -3,7 +3,7 @@ layout: layout/post.njk
 templateEngineOverride: njk, md
 
 title: "Coder et développer en python"
-tags: ['enseignement', 'ECM']
+tags: ["enseignement", "ECM"]
 
 eleventyNavigation:
   order: 0
@@ -22,15 +22,15 @@ eleventyComputed:
 ### Cours
 
 1. système :
-   1. [principes](/cours/système-et-réseau/bases-système/système-principes/){.interne} 
+   1. [principes](/cours/système-et-réseau/bases-système/système-principes/){.interne}
    2. [dossier, fichier, programme et bibliothèques](/cours/système-et-réseau/bases-système/système-interaction/){.interne}
 2. programmes :
    1. [vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne} comme exemple de programme (où est-il)
    2. [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne}
    3. interpréteur python comme programme (différent de spider). Le code python exécuté via l'interpréteur et pas directement par le système
-3. interpréteur python : 
+3. interpréteur python :
    1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-   2. [installer des dépendances pip](/cours/coder-et-développer/bases-programmation/modules-python/){.interne} 
+   2. [installer des dépendances pip](/cours/coder-et-développer/bases-programmation/modules-python/){.interne}
    3. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
 
 ### TD
@@ -56,6 +56,7 @@ eleventyComputed:
 Basé sur les cours :
 
 {% aller %}
+
 - [Coder et développer en python](/cours/coder-et-développer){.interne}
 - [Système et réseau](/cours_informatique/cours/système-et-réseau){.interne}
-{% endaller %}
+  {% endaller %}

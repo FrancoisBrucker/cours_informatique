@@ -15,7 +15,7 @@ En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing pui
 
 ## Problèmes utilisables en pratique
 
-Un [problème algorithmique](../#probleme-algorithmique){.interne} implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne} par exemple), on peut commencer par se restreindre aux problèmes décidables :
+Un [problème algorithmique](../#problème-algorithmique){.interne} implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou **_décidable_**. Comme on sait qu'il existe des problèmes non solvable par un algorithme (on a vu [la complexité de Kolmogorov](../bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne} par exemple), on peut commencer par se restreindre aux problèmes décidables :
 
 ![décidable](./NP-décidable.png)
 

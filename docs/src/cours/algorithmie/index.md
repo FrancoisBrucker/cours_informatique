@@ -89,7 +89,7 @@ Un **_problème_** est un texte composé de 3 parties :
 
 Par exemple :
 
-<span id="problème-MAX"></span>
+<span id="problème-max-tableau"></span>
 
 {% note "**Problème**" %}
 
@@ -101,7 +101,7 @@ Par exemple :
 
 Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](./bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne}, ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=WtetsFQHD9A) ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4)), on se restreindra ici aux problèmes algorithmiques :
 
-<span id="probleme-algorithmique"></span>
+<span id="problème-algorithmique"></span>
 
 {% note "**Définition**" %}
 **_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :

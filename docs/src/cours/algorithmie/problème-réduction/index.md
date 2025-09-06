@@ -30,53 +30,63 @@ La formalisation de cette opération s'appelle [une réduction](<https://fr.wiki
 Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](<https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)>) dont nous ne parlerons pas dans ce cours d'algorithmie.
 {% endinfo %}
 
-## Définitions
-
-Nous allons voir trois cas d'intérêt.
-
-### Le sous problème
-
-{% note "**Définition**" %}
-Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Le problème $P_1$ est un **_sous-problème_** de $P_2$ s'il existe un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ telle que :
-
-- Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$
-- Si $S_2$ est une solution au problème $P_2$ avec $A_{1\rightarrow 2}(E_1)$ comme entrée alors $A_{2\rightarrow 1}(S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.
-
-Les sous-problèmes forment un ordre sur les problèmes algorithmiques. On notera $A \prec B$ lorsque $A$ est un sous problème de $B$.
-{% endnote %}
-
-Cette définition permet de montrer qu'un problème est plus général qu'un autre : $A \prec B$ signifie que $A$ est un cas particulier de $B$, que résoudre $B$ permet de résoudre $A$ à une transformation prêt.
-
-Par exemple :
+Commençons par un exemple :
 
 {% exercice %}
-Montrez que le problème de recherche du minimum dans un tableau d'entiers est un sous problème de la recherche du maximum dans un tableau d'entiers.
+Montrez que l'on peut :
+
+1. Transformer l'entrée $T$ d'un problème de la recherche du minimum dans un tableau d'entiers relatifs par une entrée $T'$ du problème de la recherche du maximum dans un tableau d'entiers relatifs,
+2. utiliser le maximum de $T'$ pour trouver le minimum de $T$.
+
+Quelle est la complexité de cet algorithme en fonction de la complexité de l'algorithme utilisé pour rechercher le maximum dans un tableau d'entiers relatifs ?
 {% endexercice %}
 {% details "corrigé" %}
 
-Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = \max(T) - \max(T')$.
+Le tableau $T'$ est tel que $T'[x] = -T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = -\max(T')$.
 
-{% enddetails %}
-
-Les problèmes s'imbriquent par composition : $P_1(E_1) = A_{2\rightarrow 1}(P_2(A_{1\rightarrow 2}(E_1))) = A_{2\rightarrow 1} \circ P_2 \circ A_{1\rightarrow 2}$ et cela permet d'écrire des inégalités pour les complexités des problèmes :
+La complexité de passer de $T$ à $T'$ est $\mathcal{O}(n)$ avec $n$ la longueur de $T$ et comme $\min(T) = -\max(T')$, la complexité de passer d'une solution à l'autre est $\mathcal{O}(1)$. La complexité totale est alors en notant $C_{\min}(n)$ et $C_{\max}(n)$ la complexité des deux algorithme de résolution :
 
 <div>
 $$
-C_{P_1}(n) \leq C_{1\rightarrow 2}(n) + C_{P_2}(f(n)) + C_{2\rightarrow 1}(g\circ f(n))
+C_{\min}(n) = \mathcal{O}(n) + C_{\max}(n) + \mathcal{O}(1)
 $$
 </div>
 
-Avec :
+Comme [on a vu](../complexité-problème/#problème-max-tableau-complexité){.interne} que la recherche du maximum d'un tableau est toujours au moins linéaire on en conclut que $C_{\min}(n) = C_{\max}(n)$
+{% enddetails %}
 
-- $C_{1\rightarrow 2}(n)$ la complexité de l'algorithme $A_{1\rightarrow 2}$
-- $C_{P_2}(n')$ la complexité de l'algorithme $P_2$ et $f(n)$ la taille de la sortie de l'algorithme $A_{1\rightarrow 2}$ pour une entrée de taille $n$
-- $C_{2\rightarrow 1}(n'')$ la complexité de l'algorithme $A_{2\rightarrow 1}$ et $g(n')$ la taille de la sortie de l'algorithme $A_{2\rightarrow 1}$ pour une entrée de taille $n'$
+On peut même utiliser plusieurs fois l'algorithme $P_2$ :
+
+{% exercice %}
+Montrez que si l'on connaît un algorithme permettant de trouver le maximum dans un tableau d'**entiers positifs** on peut :
+
+1. Transformer l'entrée $T$ d'un problème de la recherche du minimum dans un tableau d'entiers **positifs** par une entrée $T'$ du problème de la recherche du maximum dans un tableau d'entiers positifs,
+2. utiliser le maximum de $T'$ pour trouver le minimum de $T$
+
+Quelle est la complexité de cet algorithme en fonction de la complexité de l'algorithme utilisé pour rechercher le maximum dans un tableau d'entiers relatifs ?
+
+{% endexercice %}
+{% details "corrigé" %}
+
+On ne peut plus prendre juste l'opposé. Mais comme on peut utiliser l'algorithme $\max(T)$, on peut toujours prendre le tableau $T'$ comme étant $T'[x] = \max(T)-T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = \max(T)-\max(T')$.
+
+La complexité de passer de $T$ à $T'$ est $\mathcal{O}(n) + C'_{\max}(n)$ (on ne calcule le max qu'une seule fois) avec $n$ la longueur de $T$ et comme $\min(T) = \max(T)-\max(T')$, la complexité de passer d'une solution à l'autre est encore $C_{\max}(n)$. La complexité totale est alors (en notant $C_{\min}(n)$ et $C_{\max}(n)$ la complexité des deux algorithme de résolution) :
+
+<div>
+$$
+C'_{\min}(n) = \mathcal{O}(n) + C'_{\max}(n) = C'_{\max}(n)
+$$
+</div>
+
+Puisque on a vu dans l'exercice précédent que la recherche du maximum d'un tableau est toujours au moins linéaire.
+
+{% enddetails %}
 
 Selon la complexité des conversions, la complexité du problème général peut-être plus grande que celle du cas particulier. Pour palier ça, on définie un autre type de comparaison, la réduction.
 
 ### La réduction
 
-La définition précédente permet de classer les problème par généralité mais dit peut de choses sur la complexité (de résolution) du problème $A$ par rapport à la complexité du problème $B$. Commençons par définir le cadre général de la réduction :
+Commençons par définir le cadre général de la réduction :
 
 {% note "**Définition**" %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_1$ en $P_2$ est un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ tels que :
@@ -87,13 +97,27 @@ Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P
 Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.
 {% endnote %}
 
-La définition formelle ci-dessus est équivalente à dire que l'on utilise le problème $P_2$ (potentiellement un nombre constant de fois) pour résoudre le problème $P_1$. Pour cela, en reprenant les notations du sous-problème, il faut :
+La définition formelle ci-dessus est équivalente à :
 
-- aller du problème $P_1$ au problème $P_2$ avec une complexité $C_{1\rightarrow 2}(n)$
-- résoudre $P_2$ avec une complexité $ C\_{P_2}(f(n))$
-- revenir au problème $P_1$ avec une complexité $C_{2\rightarrow 1}(g\circ f(n) + n)$
+{% attention "**À retenir**" %}
+Une réduction de $P_1$ en $P_2$ signifie  que l'on utilise le problème $P_2$ (potentiellement un nombre constant de fois) pour résoudre le problème $P_1$.
+{% endattention %}
 
-Notez bien que comme on cherche à borner la complexité du problème $P_1$, toutes nos complexité doivent dépendre uniquement de $n$ qui est la taille de l'entrée de $P_1$. Selon les complexités $C_{1\rightarrow 2}(n)$ et $C_{2\rightarrow 1}(g\circ f(n) + n)$, le passage de $P_1$ à $P_2$ et son retour va être plus ou moins facile. On défini alors :
+Pour qu'une réduction ait un sens, il faut que les passages entre les problème $P_1$ et $P_2$ soit de faible complexité. En effet, en notant $C_{P_1}(n)$, $C_{1\rightarrow 2}(n)$, $C_{P_2}(n)$ et $C_{2\rightarrow 1}(n)$ les complexités des algorithmes $P_1$, $A_{1\rightarrow 2}$, $P_2$ et $A_{2\rightarrow 1}$ respectivement on a :
+
+<div>
+$$
+C_{P_1}(n) = C_{1\rightarrow 2}(n) + C_{P_2}(n') + C_{2\rightarrow 1}(n'' + n)
+$$
+</div>
+
+Avec :
+
+- $n$ la taille du tableau $E_1$ en entrée de $P_1$
+- $n'$ la taille du tableau en entrée de $P_2$
+- $n''$ la taille de la sortie de l'algorithme $P_2$
+
+Notez bien que comme on cherche à borner la complexité du problème $P_1$, toutes nos complexité doivent dépendre uniquement de $n$ qui est la taille de l'entrée de $P_1$. Selon les complexités de l'aller retour entre $P_1$ et $P_2$ cela va être plus ou moins facile. On défini alors :
 
 <span id="définition-réduction-polynomiale"></span>
 
@@ -103,22 +127,22 @@ Une **_réduction polynomiale_** du problème algorithmique $P_1$ au problème a
 
 {% endnote %}
 
-On peut sur le même schéma définir une réduction linéaire (les passages sont de complexité linéaire), logarithmique, etc. Borner les passages nous permet de faire des démonstration de complexité en utilisant les complexités du problème $P_2$. Par exemple :
+On peut sur le même schéma définir une **_réduction linéaire_** (les passages sont de complexité linéaire), **_reduction logarithmique_** (les passages sont de complexité logarithmique par rapport à la aille de l'entrée), etc. Borner les passages nous permet de faire des démonstration de complexité en utilisant les complexités du problème $P_2$. Par exemple :
 
 {% exercice %}
-Donnez une réduction linéaire du du problème de recherche du maximum dans un tableau d'entiers au problème du tri d'un tableau d'entiers.
+Donnez une réduction en temps constant du problème de recherche du maximum dans un tableau d'entiers au problème du tri d'un tableau d'entiers.
 {% endexercice %}
 {% details "corrigé" %}
 
-- même entrée pour l'algorithme du max et du tri : $\mathcal{O}(n)$
-- on ne garde que le plus grand élément de la sortie du tri : $\mathcal{O}(1)$
+- même entrée pour l'algorithme du max et du tri : $\mathcal{O}(1)$
+- la sortie du max est le plus grand élément de la sortie du tri : $\mathcal{O}(1)$
 
 {% enddetails %}
 
-Cette réduction polynomiale (ie. linéaire) nous permet de borner la complexité du problème $P_1$ :
+La réduction polynomiale permet de borner la complexité du problème $P_1$ si la complexité du problème $P_2$ est également polynomiale :
 
 {% note "**Proposition**" %}
-S'il existe une réduction polynomiale entre $P_1$ et $P_2$ et que la complexité du problème $P_2$ est polynomiale, alors la complexité du problème $P_1$ est aussi polynomiale.
+S'il existe une réduction polynomiale entre $P_1$ et $P_2$ et que la complexité du problème $P_2$ est polynomiale, alors la complexité du problème $P_1$ est également polynomiale.
 
 {% endnote %}
 {% details "preuve", "open" %}
@@ -133,27 +157,34 @@ La complexité totale est alors de : $\mathcal{O}(n^{k\cdot k'\cdot k''})$ ce qu
 
 {% enddetails %}
 
-La preuve de la proposition précédente nous donne un méthode pratique pour borner les complexités de problèmes si on maîtrise bien les complexité d'une réduction :
+La proposition précédente donne le but de toute réduction. Si la complexité du problème $P_2$ est identique au type de réduction (polynomiale, linéaire, logarithmique, etc) **alors** la complexité du problème $P_1$ l'est aussi : c'est donc un outil de preuve de complexité puissant.
+
+Entraînons nous sur un petit exemple qui va nécessiter d'utiliser et la sortie de $P_2$ et l'entrée $E_1$ pour trouver $S_1$ :
 
 {% exercice %}
-Montrez que le problème de la recherche de doublon dans un tableau d'entiers est plus simple que le problème du tri d'un tableau d'entiers.
+Montrez que le problème de la recherche de doublon dans un tableau d'entiers (on cherche deux indices différents de même valeur) est plus simple que le problème du tri d'un tableau d'entiers.
 {% endexercice %}
 {% details "corrigé" %}
 
-On a une réduction linéaire entre
-
 - même entrée pour l'algorithme du max et du tri : $\mathcal{O}(1)$
-- on parcourt le tableau trié jusqu'à trouver deux éléments successifs égaux : $\mathcal{O}(n)$ avec $n$ taille du tableau en entrée
+- on parcourt le tableau trié jusqu'à trouver deux éléments successifs égaux : $\mathcal{O}(n)$ avec $n$ taille du tableau en entrée. On note $\alpha$ cette valeur.
 
-Comme la complexité d'un tri est en $\mathcal{O}(n\ln(n))$, la complexité totale de la réduction est $\mathcal{O}(n\ln(n))$ ce qui est la complexité du tri (les passages d'un problème à l'autre sont négligeable).
+Il faut ensuite retrouver, **dans le tableau d'entrée** 2 indices différents valant la valeur $\alpha$, ce qui peut se faire en $\mathcal{O}(n)$ en parcourant tous les indices de $T$ :
+
+```pseudocode
+
+a, b <- 0
+pour chaque i de [0 .. T.longueur]:
+  si T[i] == α:
+    b <- a
+    b <- i
+
+rendre b, a
+```
+
+Comme on sait que la valeur $\alpha$ va apparaître (au moins) 2 fois, le code précédent va donner deux indice différents de $T$ dont la valeur vaut $\alpha$.
 
 {% enddetails %}
-
-{% attention "**À retenir**" %}
-Les réductions sont des outils de démonstration. Ils servent à estimer des complexités selon un modèle choisi : polynomial, linéaire, logarithmique, etc.
-
-Il est sans intérêt de parler juste de "réduction" cr si l'on ne maîtrise pas la complexités des passages, tout problème peut se réduire à un autre (il suffit de ne pas utiliser le second problème).
-{% endattention %}
 
 ## Exemples et exercices
 
@@ -246,6 +277,14 @@ Montrons que les versions alternatives des problèmes 2-SUM (ÉGAL) et 3-SUM (3-
 {% exercice %}
 Montrer que ÉGAL ≤ 2-SUM
 {% endexercice %}
+{% info %}
+Il faudra placer les deux tableaux du problème ÉGAL dans l'unique tableau d'entrée de 2-SUM sans que les indices de la solution de 2-SUM ne correspondent au même tableau initial.
+
+Vous pourrez procéder en 2 temps :
+
+1. proposez une solution qui fonctionne **si** les 2 tableaux $T$ et $T'$ en entrée de ÉGAL sont tels que $T[i] + T[j] \neq 0$ et $T'[i] + T'[j] \neq 0$ pour tous $i$ et $j$
+2. montrer que l'on peut toujours se ramener au cas précédent en ajoutant une valeur $A$ à chaque valeur de $T$ et en retranchant cette valeur $A$ à tous les éléments de $T'$
+{% endinfo %}
 {% details "corrigé" %}
 
 Il faut commencer par mettre 2 tableaux dans un seul en définissant un tableau $T''$ dont les premiers éléments sont liés a $T$ et les derniers à $T'$. On ne peut prendre directement :
@@ -263,6 +302,9 @@ Avec $A$ assez grand pour que $2A > T[i] + [j]$ et $2A > T'[i] + T'[j]$ pour tou
 Si on prend $A = 2(\sum \vert T[i]\vert + \sum \vert T'[i]\vert) + 1$ cela va fonctionner.
 
 {% enddetails %}
+
+On peut ensuite utiliser la même astuce que précédemment pour résoudre :
+
 {% exercice %}
 Montrer que 3-SUM' ≤ 3-SUM
 {% endexercice %}
@@ -282,38 +324,6 @@ Ceci va garantir le fait que si on a 3 indices $i, j, k$ tels que $T'''[i] + T''
 
 {% enddetails %}
 
-#### ÉGAL ≤ 3-SUM
-
-Terminons cette partie en montrant que 3-SUM est plus général que ÉGAL, cette réduction est un peu plus dure que les précédentes :
-
-{% exercice %}
-Montrer que ÉGAL ≤ 3-SUM pour l'ordre des réductions linéaires.
-{% endexercice %}
-{% details "corrigé" %}
-
-Soit $T$ et $T'$ une instance du problème ÉGAL telle que $T.\mbox{\small longueur} = n$ et $T'.\mbox{\small longueur} = n'$.
-
-L'idée est toujours la même : créer un grand tableau $T''$ de taille $n + n' + 1$
-De telle sorte que s'il existe $i$, $j$ et $k$ avec $T''[i] + T''[j] + T''[k] = 0$ alors :
-
-- $0 \leq i < n$ et est lié au tableau $T$
-- $n \leq j < n + n'$ et est lié au tableau $T'$
-- $k = n + n'$
-
-On va pour cela éloigner fortement les valeurs des tableaux $T$ et $T'$ dans $T''$. Par exemple :
-
-- $T''[i] = T[i] + K$ pour tout $0 \leq i < n$
-- $T''[i + n] = -T'[i] + K'$ pour tout $0 \leq i < n'$
-- $T''[n+n'] = -K-K'$
-
-En prenant $K = \max_i(\\,\vert\\, T[i] \\,\vert\\,) + 1$ et $K'= K + 2 \cdot (\max_i(\\,\vert\\, T[i] \\,\vert\\,) + \max_i(\\,\vert\\, T'[i] \\,\vert\\,)) + 1$ on a bien que $T''[i] + T''[j] + T''[k] = 0$ si :
-
-1. $k = n+n'$ sinon on ne peut avoir de somme égale à 0
-2. avec $k = n+n'$ on ne peut avoir $0 \leq i, j < n$ sinon $T''[i] + T''[j] \leq 2(K + \max_i(\\,\vert\\, T[i] \\,\vert\\,) < K + K' = T''[k]$
-3. avec $k = n+n'$ on ne peut avoir $n \leq i, j < n + n'$ sinon $T''[i] + T''[j] \geq 2(K' - \max_i(\\,\vert\\, T'[i] \\,\vert\\,)) > K + K' = T''[k]$
-
-{% enddetails %}
-
 ### 3-SUM et géométrie algébrique
 
 3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
@@ -326,14 +336,35 @@ En prenant $K = \max_i(\\,\vert\\, T[i] \\,\vert\\,) + 1$ et $K'= K + 2 \cdot (\
 - **question** : Existe-t-il une droite non horizontale passant par 3 points.
   {% endnote %}
 
-Montrez qu'il est équivalent à 3-SUM' :
+On va montrer en plusieurs étapes qu'il est équivalent à 3-SUM' !
 
 {% exercice %}
-Montrer que 3-SUM' ≤ GEOBASE pour l'ordre des réductions linéaires.
+Montrez que deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $xy' - yx' = 0$.
+{% endexercice %}
+{% info %}
+Vous pourrez utiliser le fait que deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$.
+{% endinfo %}
+{% details "corrigé" %}
+Deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$. Comme $\vec{v}^{\perp} = (-y', x')$, $\vec{u}$ et $\vec{v}$ sont colinéaires si $xy' - yx' = 0$.
+
+{% enddetails %}
+
+Poursuivons dans cette optique :
+
+{% exercice %}
+Montrez que les 3 points $A = (x, 0)$, $B = (y, 1)$ et $C = (z, 2)$ sont alignés si et seulement si : $2y = x + z$
+
 {% endexercice %}
 {% details "corrigé" %}
+En utilisant l'exercice précédent, $A$, $B$ et $C$ sont alignés si $\vec{AB} = (y-x, 1)$ et $\vec{BC} = (z-y, 1)$ sont colinéaires donc si : $y-x -(z-y) = 0$
+{% enddetails %}
 
-Deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$. Comme $\vec{v}^{\perp} = (-y', x')$, $\vec{u}$ et $\vec{v}$ sont colinéaires si $xy' - yx' = 0$.
+Vous devez avoir assez de billes pour montrer les 2 réductions linéaires :
+
+{% exercice %}
+Montrer que 3-SUM' ≤ GEOBASE pour une réduction linéaire
+{% endexercice %}
+{% details "corrigé" %}
 
 Il suffit alors de construire les points :
 
@@ -345,7 +376,7 @@ si trois points sont colinéaires alors il existe i, j et k tels que $T[i] + T'[
 {% enddetails %}
 
 {% exercice %}
-Montrer que GEOBASE ≤ 3-SUM' pour l'ordre des réductions linéaires.
+Montrer que GEOBASE ≤ 3-SUM' pour une réduction linéaire
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -357,7 +388,7 @@ On fait le contraire. On ajoute chaque point de :
 
 {% enddetails %}
 
-Terminons par le résultat principal de cette partie :
+Et enfin l'équivalence :
 
 {% exercice %}
 Montrer que 3-SUM = GEOBASE pour l'ordre des réductions linéaires.

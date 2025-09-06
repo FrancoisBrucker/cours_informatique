@@ -114,7 +114,7 @@ Au final on a :
 Donc :
 
 {% note "**Proposition**" %}
-La complexité du problème de la recherche est en $\mathcal{O}(n)$ où $n$ est la taille du tableau.
+La complexité du problème de la recherche est en $\Theta(n)$ où $n$ est la taille du tableau.
 {% endnote %}
 
 On peut en déduire une règle générale de la complexité d'un problème :
@@ -124,6 +124,23 @@ Si les données n'ont pas de structure particulière — très souvent — la co
 
 Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.
 {% endattention %}
+
+A vous :
+
+<span id="problème-max-tableau-complexité"></span>
+{% exercice %}
+Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'entiers](../#problème-max-tableau){.interne} est en $\Theta(n)$
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut montrer deux choses :
+
+1. une borne minimale de la complexité de la recherche de $\Omega(n)$
+2. un algorithme qui résout le problème en $\mathcal{O}(n)$
+
+Pour le premier point on raisonne exactement comme pour le problème de la recherche. Pour le second point [on a déjà vu un algorithme](../projet-calcul-complexite/#algorithme-max-tableau-complexité){.interne} de ce type.
+
+{% enddetails %}
 
 ### Cas particulier des tableaux ordonnés
 

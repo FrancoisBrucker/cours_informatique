@@ -24,6 +24,7 @@ Nous allons aller de plus en plus vite, à mesure que nous gagnons en automatism
 [Création et preuve de l'algorithme maximum récursif](../projet-itératif-récursif/#algorithme-max-tableau-rec){.interne}
 {% endaller %}
 
+<span id="algorithme-max-tableau-complexité"></span>
 {% exercice %}
  Donnez sa complexité de l'algorithme `maximum_rec`{.language-}.
 
