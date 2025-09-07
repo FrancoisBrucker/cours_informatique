@@ -41,7 +41,7 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 ### Bases de la théorie des graphes
 
-#### Cours 1
+#### Semaine 1
 
 {% aller %}
 
@@ -49,9 +49,15 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
    1. rappel des définitions
    2. quelques propriétés sur les degrés, les chemins et les cycles
    3. NP complétude du problème clique
-2. [exercice sur les tournois](/cours/graphes/parcours-hamiltoniens/#tournoi-exercice){.interne}
+2. [encodage d'un graphe](/cours/graphes/encodage/){.interne}
+   1. 
+3. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/){.interne}
 
 {% endaller %}
+
+On s'entraîne :
+
+> TBD Ds de l'année dernière.
 
 #### Cours 2
 

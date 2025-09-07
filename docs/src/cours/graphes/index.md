@@ -43,8 +43,6 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endaller %}
 
-> TBD ajouter exercices sur cliques/independent set
-
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.

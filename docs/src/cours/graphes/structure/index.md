@@ -84,9 +84,9 @@ Mais la **solution cherchée est globale** :
 
 C'est une caractéristique générale :
 
-{% note %}
+{% attention "**À retenir**" %}
 Un problème pouvant se décrire localement mais dont la solution est globale peut **souvent** se modéliser puis se résoudre à l'aide de graphes.
-{% endnote %}
+{% endattention %}
 
 #### Modélisation
 
@@ -528,7 +528,7 @@ Il est facile, itérativement à partir d'une clique possiblement réduite à un
 
 > TBD exercice où il faut trouver l'algo.
 
- trouver une clique maximum d'un graphe est un problème NP-complet. Considérons le problème suivant :
+Trouver une clique maximum d'un graphe est un problème NP-complet. Considérons le problème suivant :
 
 {% note "**Problème**" %}
 
@@ -546,33 +546,33 @@ Le problème est clairement dans NP puisque vérifier qu'un ensemble est une cli
 Le problème clique est NP-complet.
 {% endnote %}
 {% details "preuve", "open" %}
-On va le montrer par réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat).
+On va le montrer par réduction depuis [le problème SAT](/cours/algorithmie/problème-SAT/#3-sat){.interne}.
 
 Soit l'ensemble de clauses suivante, formant une entrée du problème 3-SAT, sur l'ensemble de variables $\\{ x_1, \dots, x_n \\}$ :
 
 <div>
 $$
-\mathcal{C} = \land_{1\leq i \leq m}( l_i^1\lor l_i^2\lor l_i^3)
+\mathcal{C} = \land_{1\leq i \leq m}( l_i^1\lor \dots \lor l_i^{k_i})
 $$
 </div>
 
-Avec pour tous $1\leq i \leq m$ et $1\leq j \leq 3$, $l_i^j \in \\{x_i \vert 1\leq i \leq n \\} \cup \\{\overline{x_i} \vert 1\leq i \leq n \\}$.
+Avec pour tous $1\leq i \leq m$ et $1\leq j \leq k_i$, $l_i^j \in \\{x_i \vert 1\leq i \leq n \\} \cup \\{\overline{x_i} \vert 1\leq i \leq n \\}$.
 
 On associe (polynomialement) à cette instance un graphe $G=(V, E)$ tel que :
 
-- $V = \\{ l_i^j \vert 1\leq i \leq m, 1\leq j \leq 3 \\}$
+- $V = \\{ l_i^j \vert 1\leq i \leq m, 1\leq j \leq k_i \\}$
 - $l_i^jl_k^l$ est une arête si :
-  - $i \neq j$
-  - $l_i^j \neq \overline{l_i^j}$
+  - $i \neq k$
+  - $l_i^j \neq \overline{l_k^l}$
 
 Et on cherche s'il existe une clique de taille supérieure ou égale à $m$.
 
-S'il existe une solution au problème 3-SAT alors il existe un littéral $l_i^{u_i}$ qui est vrai pour toute clause $i$. L'ensemble $\mathcal{C} = \\{ l_i^{u_i} \vert 1\leq i \leq m\\}$ est une clique de taille $K$ de $G$.
+S'il existe une solution au problème 3-SAT alors il existe un littéral $l_i^{u_i}$ qui est vrai pour toute clause $1\leq i \leq m$. L'ensemble $\mathcal{C} = \\{ l_i^{u_i} \vert 1\leq i \leq m\\}$ est une clique de taille $K$ de $G$.
 
 Réciproquement toute clique de $G$ ne peut contenir qu'au plus un littéral de chaque clause, donc une clique de taille $K$ contient un littéral par clause que l'on peut positionner à vrai.
 {% enddetails %}
 
-En reprenant [l'exemple du problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple) on obtient le graphe associé $G=(V, E)$ :
+En reprenant [l'exemple du problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple){.interne} on obtient le graphe associé $G=(V, E)$ :
 
 ![réduction](3-sat-clique-reduction-1.png)
 
