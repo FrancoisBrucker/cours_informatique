@@ -49,9 +49,10 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
    1. rappel des définitions
    2. quelques propriétés sur les degrés, les chemins et les cycles
    3. NP complétude du problème clique
-2. [encodage d'un graphe](/cours/graphes/encodage/){.interne}
-   1. 
+2. Rappel : [encodage d'un graphe](/cours/graphes/encodage/){.interne}
 3. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/){.interne}
+   1. chemin
+   2. composante connexe
 
 {% endaller %}
 

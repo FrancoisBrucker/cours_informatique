@@ -526,7 +526,16 @@ Si on prend 5 éléments, cela revient à supprimer 1 élément du graphe et auc
 
 Il est facile, itérativement à partir d'une clique possiblement réduite à un point, de trouver une clique maximale :
 
-> TBD exercice où il faut trouver l'algo.
+```pseudocode
+algorithme(G: Graphe, x:sommet) -> {sommet}
+
+C <- {x}
+tant qu'il existe un sommet y de G \ C tel que C U {y} est une clique:
+    C <- C U {y}
+rendre C
+```
+
+> TBD structure de graphes algorithmique
 
 Trouver une clique maximum d'un graphe est un problème NP-complet. Considérons le problème suivant :
 

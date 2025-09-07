@@ -11,6 +11,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD ajouter structure algorithmique de graphe
+
 <!-- début résumé -->
 
 Comment *encoder* la structure *tableau blanc* (*ie.* *tableau noir* pour les plus nostalgiques d'entres nous) de graphe en une structure informatique permettant d'utiliser les graphes dans des algorithmes.
