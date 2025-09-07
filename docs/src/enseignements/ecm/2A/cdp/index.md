@@ -69,19 +69,32 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 #### Le terminal
 
+{% aller %}
+
 1. [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne}
 2. exécuter l'interpréteur python comme programme (différent de spider). Le code python exécuté via l'interpréteur et pas directement par le système
 
+{% endaller %}
+
 #### Interpréteur python
 
+{% aller %}
+
 1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-2. [installer des dépendances pip](/cours/coder-et-développer/bases-programmation/modules-python/){.interne}
-3. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
+2. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
+
+{% endaller %}
 
 ### TD
 
-- [vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne} (parties prise en main et utilisation de python)
-- [on s'entraîne](/cours/coder-et-développer/projet-codes/){.interne}
+{% aller %}
+
+1. installez vscode et faites le tutoriel du cours
+2. Utilisez les exercices de la partie [on s'entraîne](/cours/coder-et-développer/projet-codes/){.interne} pour :
+   1. comprendre comment fonctionne le débogueur
+   2. installez un environnement virtuel par projet
+
+{% endaller %}
 
 ## Partie II : développement
 
