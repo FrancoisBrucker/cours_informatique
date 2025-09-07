@@ -21,17 +21,62 @@ eleventyComputed:
 
 ### Cours
 
-1. système :
-   1. [principes](/cours/système-et-réseau/bases-système/système-principes/){.interne}
-   2. [dossier, fichier, programme et bibliothèques](/cours/système-et-réseau/bases-système/système-interaction/){.interne}
-2. programmes :
-   1. [vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne} comme exemple de programme (où est-il)
-   2. [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne}
-   3. interpréteur python comme programme (différent de spider). Le code python exécuté via l'interpréteur et pas directement par le système
-3. interpréteur python :
-   1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-   2. [installer des dépendances pip](/cours/coder-et-développer/bases-programmation/modules-python/){.interne}
-   3. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
+#### Utiliser le réseau
+
+Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
+
+- login : votre adresse mail
+- mot de passe : celui de l'ent AMU
+
+Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
+
+#### Connaissances minimales du système d'exploitation
+
+{% aller %}
+[But d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/but){.interne}
+{% endaller %}
+
+#### Installations système complémentaires
+
+Outils et logiciels très utiles pour l'utilisation raisonnée de son système.
+
+- **sous Windows**, ayez un compte sur le [microsoft store](https://apps.microsoft.com/home?hl=fr-FR&gl=FR).
+- **sous mac** installez <https://brew.sh/> qui vous permettra d'installer de nombreux package unix : [installer brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne}.
+- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
+
+Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis longtemps, cela peut valoir le coup d'en faire une nouvelle installation. Ceci est optionnel si votre système fonctionne.
+
+{% info %}
+Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence à avoir des comportement erratique, signe d'un système malade.
+{% endinfo %}
+{% aller %}
+[installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
+{% endaller %}
+
+#### Dossiers et fichiers
+
+{% aller %}
+[Naviguer dans un système de fichiers](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/){.interne}
+{% endaller %}
+
+#### Ordinateur pour le développement en python
+
+Vous aurez besoin d'installer python et un logiciel pour programmer :
+
+{% aller %}
+[Installer python et un interpréteur](/cours/coder-et-développer/bases-programmation/interpréteur/){.interne}
+{% endaller %}
+
+#### Le terminal
+
+1. [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne}
+2. exécuter l'interpréteur python comme programme (différent de spider). Le code python exécuté via l'interpréteur et pas directement par le système
+
+#### Interpréteur python
+
+1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
+2. [installer des dépendances pip](/cours/coder-et-développer/bases-programmation/modules-python/){.interne}
+3. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
 
 ### TD
 
