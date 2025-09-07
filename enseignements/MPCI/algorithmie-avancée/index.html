@@ -117,7 +117,6 @@
 <li><a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-r%C3%A9duction/" class="interne">Réduction de problèmes</a></li>
 <li><a href="/cours_informatique/cours/algorithmie/probl%C3%A8mes-NP/" class="interne">Problèmes de NP</a></li>
 <li><a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/" class="interne">Le problème SAT</a></li>
-<li><a href="/cours_informatique/cours/algorithmie/recherche-universelle/" class="interne">Algorithme de la recherche universelle</a></li>
 </ol>
 </div></div>
 
@@ -125,16 +124,142 @@
 <blockquote>
 <p>Semaine 2 à 5</p>
 </blockquote>
-<blockquote>
-<p>TBD un modèle universel (car SAT et plein d'autre) pour tout problème. Un outil de modélisation puissant</p>
-</blockquote>
+<p>Un outil de modélisation puissant pour résoudre (joliment) nombre de problèmes informatique.</p>
+<h3>Bases de la théorie des graphes</h3>
+<h4>Cours 1</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/graphes/structure" class="interne">Graphes bases</a> :
+<ol>
+<li>rappel des définitions</li>
+<li>quelques propriétés sur les degrés, les chemins et les cycles</li>
+<li>NP complétude du problème clique</li>
+</ol>
+</li>
+<li><a href="/cours_informatique/cours/graphes/parcours-hamiltoniens/#tournoi-exercice" class="interne">exercice sur les tournois</a></li>
+</ol>
+</div></div>
+
+<h4>Cours 2</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/graphes/parcours-eul%C3%A9riens/" class="interne">Parcours eulériens</a></li>
+<li><a href="/cours_informatique/cours/graphes/parcours-hamiltoniens/" class="interne">Parcours hamiltoniens</a></li>
+<li>idée du problème du postier chinois</li>
+</ol>
+</div></div>
+
+<h4>Cours 3</h4>
+<ol>
+<li>rappels sur les chemins les plus courts :
+<ol>
+<li><a href="/cours_informatique/cours/graphes/chemin-poids-min-probl%C3%A8me/" class="interne">Poids positifs</a></li>
+<li>Noms des <a href="/cours_informatique/cours/graphes/chemin-poids-min-cas-g%C3%A9n%C3%A9ral/" class="interne">algorithmes pour poids quelconques</a></li>
+</ol>
+</li>
+<li>Arbres :
+<ol>
+<li><a href="/cours_informatique/cours/graphes/arbres/" class="interne">version théorie des graphes des arbres</a>
+<ul>
+<li>définitions</li>
+<li>propriétés fondamentales</li>
+<li>Cayley et Prüfer</li>
+</ul>
+</li>
+<li><a href="/cours_informatique/cours/graphes/arbres-couvrants/" class="interne">Arbres couvrants</a></li>
+</ol>
+</li>
+</ol>
 <!-- ### Peut-être 
 
 - Langage C
 - Réseaux
 - Cryptographie
 - Graphes et réseaux (sociaux) -->
-<!-- ### C
+<!--
+
+### Problèmes de flots
+
+#### Cours 1 : problèmes
+
+[Problème et résolutions flots](/cours/graphes/flots/){.interne}
+
+#### Cours 2 : applications
+
+Exercices sur les flots :
+
+1. [applications directs](/cours/graphes/flots-exercices/){.interne}
+2. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/){.interne}
+3. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
+
+### Graphes biparti
+
+1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne} bases
+2. [parcours de graphes classiques](/cours/graphes/parcours-largeur-profondeur/){.interne}
+
+### DS
+
+Temporellement placé juste après le cours 6.
+
+[sujet](./DS/ds.pdf)
+
+### Couplages dans les graphes
+
+Cours 1 et 2
+
+1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne} (fin) :
+   1. théorème de Graham-Pollack
+   2. NP-complétude de la reconnaissance triparti
+2. [couplage](/cours/graphes/couplage/){.interne}
+3. Application : algorithme de Christofides
+4. [$k$-connectivité d'un graphe](/cours/graphes/connectivité/){.interne}
+
+### Cryptographie
+
+Cours 1, 2 et 3
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+[Cryptographie](/cours/sécurité/){.interne}
+
+
+</div></div>
+</div>
+
+
+### Colorabilité
+
+> TBD
+
+### Planarité
+
+> TBD
+
+### Graphes aléatoires et infini
+
+> TBD 
+> 
+## Autre
+
+
+- [Algorithme de la recherche universelle](/cours/algorithmie/recherche-universelle/){.interne}
+- révisoins
+
+ ### C
 
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -193,100 +318,7 @@ A rendre pour le 18 octobre.
 >    2. faire le premier exercice
 > 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
 
-### Bases de la théorie des graphes
-
-#### Cours 1
-
-1. [Graphes bases](/cours/graphes/structure){.interne} :
-   1. rappel des définitions
-   2. quelques propriétés sur les degrés, les chemins et les cycles
-   3. NP complétude du problème clique
-2. [exercice sur les tournois](/cours/graphes/parcours-hamiltoniens/#tournoi-exercice){.interne}
-
-#### Cours 2
-
-1. [Parcours eulériens](/cours/graphes/parcours-eulériens/){.interne}
-2. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
-3. idée du problème du postier chinois
-
-#### Cours 3
-
-1. rappels sur les chemins les plus courts :
-   1. [Poids positifs](/cours/graphes/chemin-poids-min-problème/){.interne}
-   2. Noms des [algorithmes pour poids quelconques](/cours/graphes/chemin-poids-min-cas-général/){.interne}
-2. Arbres :
-   1. [version théorie des graphes des arbres](/cours/graphes/arbres/){.interne}
-      - définitions
-      - propriétés fondamentales
-      - Cayley et Prüfer
-   2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
-
-### Problèmes de flots
-
-#### Cours 1 : problèmes
-
-[Problème et résolutions flots](/cours/graphes/flots/){.interne}
-
-#### Cours 2 : applications
-
-Exercices sur les flots :
-
-1. [applications directs](/cours/graphes/flots-exercices/){.interne}
-2. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/){.interne}
-3. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
-
-### Graphes biparti
-
-1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne} bases
-2. [parcours de graphes classiques](/cours/graphes/parcours-largeur-profondeur/){.interne}
-
-### DS
-
-Temporellement placé juste après le cours 6.
-
-[sujet](./DS/ds.pdf)
-
-### Couplages dans les graphes
-
-Cours 1 et 2
-
-1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne} (fin) :
-   1. théorème de Graham-Pollack
-   2. NP-complétude de la reconnaissance triparti
-2. [couplage](/cours/graphes/couplage/){.interne}
-3. Application : algorithme de Chritofides
-4. [$k$-connectivité d'un graphe](/cours/graphes/connectivité/){.interne}
-
-### Cryptographie
-
-Cours 1, 2 et 3
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Cryptographie](/cours/sécurité/){.interne}
-
-
-</div></div>
-</div>
-
-
-### Colorabilité
-
-> TBD
-
-### Planarité
-
-> TBD
-
-### Graphes aléatoires et infini
-
-> TBD -->
+-->
 <h2>Modalités de contrôle</h2>
 <h3>Note</h3>
 <p>La note de cette UE résulte de cette formule :</p>
