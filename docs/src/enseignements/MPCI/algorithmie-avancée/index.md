@@ -30,7 +30,6 @@ En deux parties.
 2. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
 3. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
 4. [Le problème SAT](/cours/algorithmie/problème-SAT/){.interne}
-5. [Algorithme de la recherche universelle](/cours/algorithmie/recherche-universelle/){.interne}
 
 {% endaller %}
 
@@ -38,49 +37,13 @@ En deux parties.
 
 > Semaine 2 à 5
 
-> TBD un modèle universel (car SAT et plein d'autre) pour tout problème. Un outil de modélisation puissant
-
-<!-- ### Peut-être 
-
-- Langage C
-- Réseaux
-- Cryptographie
-- Graphes et réseaux (sociaux) -->
-
-<!-- ### C
-
-{% lien %}
-Le but de cette partie est d'avoir assez de bases en C pour s'amuser.
-
-N'hésitez pas à suivre et à faire également les exercices du cours suivant :
-
-<https://www.0de5.net/stimuli/a-reintroduction-to-programming/essentials/just-enough-c-to-have-fun>
-{% endlien %}
-
-1. Cours 1 : Système et consequences pour le code
-   1. [architecture générale](/cours/système-et-réseau/architecture-ordinateur/#général){.interne}
-   2. Mémoire :
-      1. [organisation système de la mémoire](/cours/système-et-réseau/système-exploitation/process/#forme-finale){.interne}
-      2. différence entre pile et tas
-   3. [cours de C](/cours/système-et-réseau/langage-c/){.interne} : survole tout jusqu'aux exercices. A préparer chez vous
-2. Cours 2 : [exercices en C](/cours/système-et-réseau/langage-c/exercices){.interne}
-
-{% faire "**DM**" %}
-Faire en C le [projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
-
-A rendre pour le 18 octobre.
-{% endfaire %}
-
-> TBD année prochaine :
->
-> 1. les faire préparer le cours :
->    1. lire le cours : (pseudo-assembleur si pas préparé avant), von Neumann et C avant
->    2. faire le premier exercice
-> 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
+Un outil de modélisation puissant pour résoudre (joliment) nombre de problèmes informatique.
 
 ### Bases de la théorie des graphes
 
 #### Cours 1
+
+{% aller %}
 
 1. [Graphes bases](/cours/graphes/structure){.interne} :
    1. rappel des définitions
@@ -88,11 +51,17 @@ A rendre pour le 18 octobre.
    3. NP complétude du problème clique
 2. [exercice sur les tournois](/cours/graphes/parcours-hamiltoniens/#tournoi-exercice){.interne}
 
+{% endaller %}
+
 #### Cours 2
+
+{% aller %}
 
 1. [Parcours eulériens](/cours/graphes/parcours-eulériens/){.interne}
 2. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
 3. idée du problème du postier chinois
+
+{% endaller %}
 
 #### Cours 3
 
@@ -105,6 +74,15 @@ A rendre pour le 18 octobre.
       - propriétés fondamentales
       - Cayley et Prüfer
    2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
+
+<!-- ### Peut-être 
+
+- Langage C
+- Réseaux
+- Cryptographie
+- Graphes et réseaux (sociaux) -->
+
+<!--
 
 ### Problèmes de flots
 
@@ -139,7 +117,7 @@ Cours 1 et 2
    1. théorème de Graham-Pollack
    2. NP-complétude de la reconnaissance triparti
 2. [couplage](/cours/graphes/couplage/){.interne}
-3. Application : algorithme de Chritofides
+3. Application : algorithme de Christofides
 4. [$k$-connectivité d'un graphe](/cours/graphes/connectivité/){.interne}
 
 ### Cryptographie
@@ -160,7 +138,46 @@ Cours 1, 2 et 3
 
 ### Graphes aléatoires et infini
 
-> TBD -->
+> TBD 
+> 
+## Autre
+
+
+- [Algorithme de la recherche universelle](/cours/algorithmie/recherche-universelle/){.interne}
+- révisoins
+
+ ### C
+
+{% lien %}
+Le but de cette partie est d'avoir assez de bases en C pour s'amuser.
+
+N'hésitez pas à suivre et à faire également les exercices du cours suivant :
+
+<https://www.0de5.net/stimuli/a-reintroduction-to-programming/essentials/just-enough-c-to-have-fun>
+{% endlien %}
+
+1. Cours 1 : Système et consequences pour le code
+   1. [architecture générale](/cours/système-et-réseau/architecture-ordinateur/#général){.interne}
+   2. Mémoire :
+      1. [organisation système de la mémoire](/cours/système-et-réseau/système-exploitation/process/#forme-finale){.interne}
+      2. différence entre pile et tas
+   3. [cours de C](/cours/système-et-réseau/langage-c/){.interne} : survole tout jusqu'aux exercices. A préparer chez vous
+2. Cours 2 : [exercices en C](/cours/système-et-réseau/langage-c/exercices){.interne}
+
+{% faire "**DM**" %}
+Faire en C le [projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
+
+A rendre pour le 18 octobre.
+{% endfaire %}
+
+> TBD année prochaine :
+>
+> 1. les faire préparer le cours :
+>    1. lire le cours : (pseudo-assembleur si pas préparé avant), von Neumann et C avant
+>    2. faire le premier exercice
+> 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
+
+-->
 
 ## Modalités de contrôle
 

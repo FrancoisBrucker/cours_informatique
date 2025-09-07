@@ -86,7 +86,7 @@ Enfin, cette définition est réaliste puisque si l'on possède une solution on 
 
 Tout algorithme de $P$ admet un vérifieur efficace puisqu'il suffit d'exécuter l'algorithme de résolution et de vérifier si sa solution est égale à l'entrée.
 
-Ainsi, pour [le problème MAX (trouver le maximum d'un tableau)](../#problème-MAX){.interne} :
+Ainsi, pour [le problème MAX (trouver le maximum d'un tableau)](../#problème-max-tableau){.interne} :
 
 ```pseudocode
 algorithme vérification_max(T: [entier], sol: entier) → booléen:
@@ -97,14 +97,14 @@ algorithme vérification_max(T: [entier], sol: entier) → booléen:
 Dans le cas d'algorithme de résolution linéaire (comme pour le problème de la recherche du maximum), cette approche est optimale. Mais pour des problèmes dont l'algorithme de résolution est non linéaire on peut souvent trouver un algorithme de vérification de complexité plus faible.
 
 {% exercice %}
-Montrez que le problème [3-SUM'](../problème-réduction/#problème-3-SUM'){.interne} admet un vérifieur linéaire.
+Montrez que le problème [3-SUM](../projet-algorithmes-classiques/2_3-SUM/#problème-3-SUM){.interne} admet un vérifieur linéaire (alors que le meilleur algorithme connu est en $\mathcal{O}(T.\text{longueur}^2)$, ce qui est déjà bien).
 {% endexercice %}
 {% details "solution" %}
 
 ```pseudocode
-algorithme vérification_3_SUMprim(T: [entier], sol: (entier, entier, entier)) → booléen:
+algorithme vérification_3_SUM(T: [entier], sol: (entier, entier, entier)) → booléen:
   i, j, k ← sol
-  si T[i] + T[j] == T[k]:
+  si T[i] + T[j] + T[k] == 0:
       rendre Vrai
   rendre Faux
 ```
@@ -193,6 +193,8 @@ C'est en effet surprenant qu'il n'y ait pas plusieurs élément maximaux de l'or
 
 Le problème SAT cherche à vérifier si une formule logique peut-être satisfaite.
 
+#### Définitions
+
 Pour cela, commençons par définir un concept fondamental en logique la **_conjonction de clauses_** :
 
 <div id="définition-clauses"></div>
@@ -215,6 +217,8 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 
 {% endnote %}
 
+#### Exemple
+
 <span id="exemple-SAT"></span>
 Par exemple considérons les 4 clauses suivantes, sur 5 variables booléennes :
 
@@ -232,26 +236,25 @@ Il y $2^5 = 32$ possibilités (O ou 1 ; Vrai ou Faux) pour chaque variable. Essa
 
 La formule précédente est satisfiable !
 
-Montrons que SAT admet un vérifieur efficace (il est même linéaire) :
+#### SAT est dans NP
+
+Pour montrer que le problème SAT est dans NP, il faut exhiber un vérifieur polynomial c'est à dire un algorithme. Il faut donc pouvoir transformer une instance _"papier"_ de SAT en une entrée d'un programme. Il y a plusieurs façon de faire, nous allons en montrer une simple à mettre en oeuvre.
+
+Une instance de SAT est composée :
+
+- $x_1, \dots, x_n$ : les $n$ variables booléennes
+- $c_1 \land \dots \land c_m$ : les $m$ conjonctions de clauses
+- $c_i = l^1_i \lor \dots \lor l^{k_i}_i$ : les littéraux formant les clauses.
+
+La conversion vers une entrée d/un algorithme se fera ainsi :
+
+- on associe l'entier $i$ à la variable $x_i$
+- une clause $c_i$ sera un tableau $T_i$ de longueur égal $k_i$ à son nombre de littéraux
+- $T_i[j] = k$ si $l_i^j = x_k$ et $T_i[j] = -k$ si $l_i^j = \overline{x_k}$
+- la conjonction de clause sera un tableau de tableau d'entier de taille $m$ (le no,bre de clauses)
 
 {% exercice %}
-Montrez que l'on peut encoder une clause sur $n$ variables booléennes par un tableau d'entiers relatifs de taille $n$.
-
-En déduire un moyen d'encoder une conjonction de $m$ clauses sur $n$ variables booléennes par une liste de $m$ tableaux de taille au pire $n$.
-{% endexercice %}
-{% details "corrigé" %}
-Il suffit de noter un littéral :
-
-- $+i$ s'il correspond à $x_i$
-- $-i$ s'il correspond à $\overline{x_i}$
-
-Et d'encoder une clause comme un tableau de littéraux. Notez qu'on ne peut pas commencer à 0 car $+0 = -0 = 0$
-
-Enfin, une conjonction de clauses est un tableau de clauses.
-
-{% enddetails %}
-{% exercice %}
-Quel est l'encodage de l'exemple ? Comment encoderiez vous une solution ?
+Quel est l'encodage de l'exemple ?
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -263,15 +266,20 @@ Quel est l'encodage de l'exemple ? Comment encoderiez vous une solution ?
 ]
 ```
 
-Et la solution est un tableau de taille $n$ de booléens. Par exemple pour la solution $x_1 = \overline{x_2} = x_3 = \overline{x_4} = x_5 = 1$ on a l'encodage : `[Vrai, Faux, Vrai, Faux, Vrai]`{.language-}
 {% enddetails %}
 
+Avec cet encodage, une solution de SAT sera un tableau de booléen $S$ de longueur $n$ tel que $x_i = S[i-1]$.
+
+Par exemple pour la solution $x_1 = \overline{x_2} = x_3 = \overline{x_4} = x_5 = 1$ de l'exemple, on aura : `S = [Vrai, Faux, Vrai, Faux, Vrai]`{.language-}
+
+Avec un tel encodage, il est facile de créer un vérifieur linéaire à un problème SAT, faites le :
+
 {% exercice %}
-Utilisez le codage précédent pour montrer que SAT admet un vérifieur linéaire.
+Utilisez le codage précédent pour écrire un vérifieur linéaire de SAT.
 {% endexercice %}
 {% details "corrigé" %}
 
-L'algorithme suivant est (clairement) un vérifieur de SAT utilisant l'encodage précédent :
+On propose l'algorithme suivant :
 
 ```pseudocode
 algorithme vérif_SAT(conj_clauses: [[entier]], # [c_1, ..., c_m]
@@ -280,23 +288,23 @@ algorithme vérif_SAT(conj_clauses: [[entier]], # [c_1, ..., c_m]
     pour chaque c de conj_clauses:
         sat ← Faux
         pour chaque l de c:
-            si l > 0 et solution[l-1]:
+            si l > 0 ET solution[l-1]:
                 sat ← Vrai
-            si l < 0 et (solution[-l-1] == Faux):
+            si l < 0 et (solution[l-1] == Faux):
                 sat ← Vrai
         si sat == Faux:
             rendre Faux
     rendre Vrai
 ```
 
-La complexité est clairement linéaire : on regarde au pire chaque littéral de chaque clause une fois.
+La complexité de l'algorithme est clairement linéaire : on regarde au pire chaque littéral de chaque clause une fois. Enfin, l'algorithme ne rend faux que s'il existe une clause dont tous les littéraux est faux et donc si l'instance de SAT est fausse.
 
 {% enddetails %}
 
 Même s'il est facile de vérifier si une solution potentielle est une solution, on ne connaît pas d'algorithme polynomial pour résoudre SAT. L'algorithme naïf consistant à tester toutes les solutions possibles prendrait $\mathcal{O}(mn\cdot 2^n)$ opérations ($2^n$ possibilités pour les variables et la taille d'une conjonction de clause est $nm$). Aussi surprenant que cela paraisse, on ne connaît pas d'algorithme fondamentalement meilleur :
 
 {% attention "**À retenir**" %}
-Il existe des problème facile à vérifier dont on ne connaît pas d'algorithme pour le résoudre.
+Il existe des problèmes faciles à vérifier dont on ne connaît pas d'algorithme efficace pour le résoudre.
 {% endattention %}
 
 ### Réduction vers SAT
@@ -309,12 +317,16 @@ Nous allons aussi utiliser le fait que toute formule logique peut se mettre effi
 
 #### MAX
 
-Montrons que l'on peut le faire pour le problème MAX. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.
+Montrons que l'on peut le faire pour [le problème MAX (trouver le maximum d'un tableau)](../#problème-max-tableau){.interne}. Le but de cette réduction est de passer de la comparaison d'entiers à la comparaisons de variables booléennes. Nous allons faire ça en plusieurs étapes.
 
-1. l'égalité $(x^i = y^i)$ pour deux variables booléennes s'écrit $(x^i = y^i) \coloneqq (x^i \land y^i) \lor (\overline{x^i} \land \overline{y^i})$
+1. l'égalité $(x^i = y^i)$ pour deux variables booléennes s'écrit $(x^i = y^i) \coloneqq (x^i \land y^i) \lor (\overline{x^i} \land \overline{y^i})$. La formule logique est  n'vrai que si les deux variables booléennes sont égales.
 2. un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \\{0, 1\\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$
 
-Des deux remarques précédentes, on en déduit que le test $(x = y)$ pour deux entiers s'écrit par le fait que tous les bits sont égaux :
+{% attention %}
+On encode les entiers sous la forme binaire de gauche à droite dans un tableau : l'entier 5 sera encodé par le tableau $[0, 0, 1]$ puisque $5 = T[0]\cdot 2^0 +T[1]\cdot 2^1 + T[2]\cdot 2^2$
+{% endattention %}
+
+Des deux remarques précédentes, on en déduit que le test $(x = y)$ pour deux entiers s'écrit par le fait que tous les bits sont égaux (on suppose que l'on écrit nos entiers avec le même nombre de bits $p$, quitte à mettre des 0 en fin de tableau pour le plus petit):
 
 <div>
 $$
@@ -322,27 +334,35 @@ $$
 $$
 </div>
 
-De là, l'inégalité $(x > y)$ pour deux entiers s'écrit par le fait qu'il existe $k$ tel que les k-1 derniers bits sont égaux et le $k$ème bit de x_i est plus grand que celui de x_j :
+De là, l'inégalité $(x > y)$ pour deux entiers s'écrit par le fait qu'il existe $k$ tel que les k-1 derniers bits sont égaux et le $k$ème bit de x est plus grand que celui de x, c'est à dire que $x^k = 1$ et $y^k = 0$ :
 
 <div>
 $$
-(x > y) \coloneqq \bigvee_{1\leq k \leq p}(\bigwedge_{k < l \leq p}(x^l = y^l)  \land (x^k \land \overline{y^k}))
+(x > y) \coloneqq [x^p \land \overline{y^p}] \lor [(x^p = y^p)  \land (x^{p-1} \land \overline{y^{p-1}})] \lor \dots \lor [(\bigwedge_{i < j \leq p}(x^j = y^j)) \land (x^{i} \land \overline{y^i})] \lor \dots \lor [(\bigwedge_{1 < j \leq p}(x^j = y^j)) \land (x^{1} \land \overline{y^1})]
 $$
 </div>
 
-Et donc la formule logique :
+Ce qui s'écrit aussi :
 
 <div>
 $$
-(x > y) = \bigvee_{1\leq k \leq p}(\bigwedge_{0 \leq l < k}((x^l \land y^l) \lor (\overline{x^l} \land \overline{y^l})) \land (x^k \land \overline{y^k}))
+(x > y) \coloneqq \bigvee_{1\leq k \leq p}[(\bigwedge_{k < l \leq p}(x^l = y^l) ) \land (x^k \land \overline{y^k})]
 $$
 </div>
 
-Enfin, pour avoir $(x \leq y)$ on combine les deux formules :
+On en déduit la formule logique associé à l'inégalité :
 
 <div>
 $$
-(x \leq y) \coloneqq (x = y) \lor (x > y)
+(x > y) = \bigvee_{1\leq k \leq p}[(\bigwedge_{k < l \leq p}((x^l \land y^l) \lor (\overline{x^l} \land \overline{y^l})) \land (x^k \land \overline{y^k}))]
+$$
+</div>
+
+Enfin, pour avoir $(x \geq y)$ on combine les deux formules :
+
+<div>
+$$
+(x \geq y) \coloneqq (x = y) \lor (x > y)
 $$
 </div>
 
@@ -350,33 +370,19 @@ Ceci nous permet d'écrire la formule logique permettant de décrire un problèm
 
 <div>
 $$
-\bigvee_{1\leq i \leq n}(\bigwedge_{j \neq i} T[i] \geq T[j])
+\bigvee_{0\leq i < n}(\bigwedge_{j \neq i} T[i] \geq T[j])
 $$
 </div>
 
-On utilise ensuite [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) pour transformer cette formule logique en une conjonction de clauses ce qui montre que le problème MAX peut se résoudre via le problème SAT.
+Puisque l'équation logique ci-dessus vérifie si $T[i]$ est le plus grand des éléments du tableaux pour tout $i$.
+
+A priori, ce n'est pas encore fini puisque la formule logique n'est pas sous la forme d'une conjonction de clause. Mais on sait que l'on peut utiliser [la transformation de Tseitin](https://fr.wikipedia.org/wiki/Transformation_de_Tseitin) pour transformer cette formule logique en une conjonction de clauses ce qui montre que le problème MAX peut se résoudre via le problème SAT.
 
 {% info %}
 Dans tout ce qui suivra, on ne s'embêtera pas nécessairement à trouver la conjonction de clause qui sera l'entrée du problème SAT. On se contentera de formules logiques que l'on sait pouvoir transformer en conjonction de clauses.
 {% endinfo %}
 
-#### 3-SUM'
-
-Terminons cette partie de réécriture en montrant que toutes ces clauses peuvent se combiner :
-{% exercice %}
-Montrer que le problème 3-SUM' peut être résolu par SAT
-{% endexercice %}
-{% details "solution" %}
-
-<div>
-$$
-\bigvee_{0\leq i < n}(\bigwedge_{j\neq i}(T[i] \geq T[j]))
-$$
-</div>
-
-{% enddetails %}
-
-#### Plus
+#### Addition de 2 bits
 
 L'exemple précédent était éclairant mais pas forcément bluffant : le problème MAX pouvant se représenter facilement comme une succession de tests logiques. Nous allons donc aller un peu plus loin et transformer un algorithme, la somme de deux nombres binaires en une conjonction de clause.
 
@@ -394,13 +400,85 @@ algorithme somme_binaire(x: bit,
     rendre [0, 0]                 # le nombre 00
 ```
 
-Ce qui donne comme clause, en notant la sortie de l'algorithme $z = [z^0, z^1]$ :
+Le corps de l'algorithme peut s'écrire avec la formule logique suivante, en notant la sortie de l'algorithme $z = [z^0, z^1]$ :
 
 <div>
 $$
-((x \land y) \land (z^1 \land z^0)) \lor ((x \lor y) \land (\overline{z^1} \land z^0)) \lor (\overline{z^1} \land \overline{z^0}))
+((x \land y) \land (\overline{z^0} \land z^1)) \lor ((x \lor y) \land ({z^0} \land \overline{z^1})) \lor (\overline{z^0} \land \overline{z^1})
 $$
 </div>
+
+Pour exécuter l'algorithme il faut donner des valeurs aux entrées $x$ et $y$. Par exemple si $x=1$ et $y=0$, la formule logique à satisfaire est :
+
+<div>
+$$
+[x \land \overline{y}] \land [((x \land y) \land (\overline{z^0} \land z^1)) \lor ((x \lor y) \land ({z^0} \land \overline{z^1})) \lor (\overline{z^0} \land \overline{z^1})]
+$$
+</div>
+
+Elle ne peut avoir comme solution que :
+
+- $x=1$ et $y=0$ : c'est nos entrées que l'on a forcé
+- $z^0 = 0$ et $z^1 = 1$ : la sortie est impliquée par la formule
+
+À vous :
+
+{% exercice %}
+Quelle formule doit-on satisfaire si on veut additionner le bit $x=0$ et $y=0$. Quelles sont les affectation possible des variables booléennes ?
+{% endexercice %}
+{% details "corrigé" %}
+
+<div>
+$$
+[\overline{x} \land \overline{y}] \land [((x \land y) \land (\overline{z^0} \land z^1)) \lor ((x \lor y) \land ({z^0} \land \overline{z^1})) \lor (\overline{z^0} \land \overline{z^1})]
+$$
+</div>
+
+Elle ne peut avoir comme solution que :
+
+- $x=0$ et $y=0$ : c'est nos entrées que l'on a forcé
+- $z^0 = 0$ et $z^1 = 0$ : la sortie est impliquée par la formule
+
+{% enddetails %}
+
+On y reviendra, mais remarquez que la formule associée à l'algorithme est symétrique. On peut très bien fixer la sortie pour trouver l'entrée. Par exemple si l'on cherche à trouver pour quelles valeurs de $x$ et $y$ on peut obtenir $z^0 = 1$ et $z^1 = 0$ il faut résoudre la formule :
+
+<div>
+$$
+[{z^0} \land \overline{z^1}] \land [((x \land y) \land (\overline{z^0} \land z^1)) \lor ((x \lor y) \land ({z^0} \land \overline{z^1})) \lor (\overline{z^0} \land \overline{z^1})]
+$$
+</div>
+
+Et on trouvera $x=1$ et $y=1$.
+
+À vous :
+
+{% exercice %}
+Peut-on trouver 2 bit dont l'addition donne $11$ ?
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut résoudre la formule logique suivante :
+
+<div>
+$$
+[{z^0} \land {z^1}] \land [((x \land y) \land (\overline{z^0} \land z^1)) \lor ((x \lor y) \land ({z^0} \land \overline{z^1})) \lor (\overline{z^0} \land \overline{z^1})]
+$$
+</div>
+
+Ce qui revient à résoudre :
+
+<div>
+$$
+[{z^0} \land {z^1}] \land (\overline{z^1} \land \overline{z^0})
+$$
+</div>
+
+Ce qui est impossible : la formule est non satisfiable et il n'existe aucune entrée qui permet d'obtenir $11$ en sortie.
+
+{% enddetails %}
+
+#### Addition de 2 entiers
 
 Tout comme pour le problème du max si on veut additionner deux entiers on les transforme en variables binaire en utilisant le fait qu'un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \\{0, 1\\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :
 
@@ -432,23 +510,17 @@ algorithme somme_binaire(x: [bit],
     rendre somme
 ```
 
-{% exercice %}
-Montrez que le résultat de l'addition des nombres `1011` et `0111` donne bien `10011`
-{% endexercice %}
-{% details "solution" %}
+L'algorithme ci-dessus est une implémentation binaire de [l'addition posée](https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul) que l'on apprend au primaire. L'addition des nombres `x = 1011` et `y = 0111` donne `somme = 10011` :
 
 ```text
-  1011  = 11
-+ 0111  =  7
+   1011  = 11     x
++  0111  =  7     y
+  11110           retenue
 ------------
- 10010  = 18
+  10010  = 18     somme
 ```
 
 Pour l'algorithme on a comme entrée `x=[1,1,0,1]`{.language-} et `y=[1,1,1,0]`{.language-} et on doit avoir `[0,1,0,0,1]`{.language-} comme sortie.
-
-> TBD : déroulement de l'algo avec les retenues.
-
-{% enddetails %}
 
 On peut maintenant convertir cet algorithme en une formule logique. On va utiliser les variables binaires :
 
@@ -488,7 +560,7 @@ L'algorithme sous la forme d'une formule est maintenant capable d'additionner `1
 <div>
 $$
 \begin{array}{l}
-(x^0 \land x^1 \land \overline{x^2} \land x^3) \land (y^0 \land y^1 \land \land y^2 \land \overline{y^3})\land\\
+[(x^0 \land x^1 \land \overline{x^2} \land x^3) \land (y^0 \land y^1 \land \land y^2 \land \overline{y^3})]\land\\
 \bigwedge_{0\leq i \leq 3}([(x^i \land y^i \land r^i)\land (s^i \land r^{i+1})] \lor\\
 [((x^i \land r^i) \lor ( y^i \land r^i) \lor (x^i \land r^i))\land (\overline{s^i} \land r^{i+1})]\lor\\
 [(x^i \lor y^i \lor r^i) \land ({s^i} \land \overline{r^{i+1}})]\lor\\
@@ -497,7 +569,9 @@ $$
 $$
 </div>
 
-Levin et cook que ce principe est applicable à tout pseudo-code en tenant en compte l'évolution des variables au cours des instructions, ce que nous n'avons pas eu besoin de faire ici car chaque variable n'est assignée qu'une seule fois.
+#### Algorithme et SAT
+
+Levin et cook que ce principe de transformation d'un algorithme en formule est applicable à tout pseudo-code en tenant en compte l'évolution des variables au cours des instructions, ce que nous n'avons pas eu besoin de faire dans nos deux exemples car chaque variable n'est assignée qu'une seule fois.
 
 ## Problèmes NP-Complet
 
@@ -554,13 +628,17 @@ On prend les 3 classes :
 Prouver que le problème de Couverture Exact (CE) est NP-Complet va être plus facile que celle du théorème de Cook/Levin. En effet, maintenant que l'ensemble des problème NP-complet est non vide (il y a au moins SAT dedans), pour montrer qu'un problème $A$ est NP-complet il nous suffit maintenant de :
 
 1. choisir un problème $B$ NP-complet
-2. montrer que $B \leq A$
+2. montrer qu'il existe une réduction polynomiale $B \leq A$
 
 En effet, si $C$ est un problème quelconque de NP, on a $C\leq B$ (par définition de l'ensemble NP-complet) ce qui amène par transitivité de la réduction polynomiale à $C \leq A$.
 
 Pour l'instant nous ne connaissons qu'un problème NP-Complet : SAT. Montrons donc que $SAT \leq CE$.
 
-On considère alors une instance de SAT que l'on va transformer polynomialement en une instance de CE. Posons ses paramètres :
+Les réductions pour montrer qu'un problème est NP-complet peuvent être étrange au premier regard. Elles nécessitent souvent des constructions baroques pour associer un problème à l'autre. On appelle ces constructions des **_gadget_**. Ceci est normal car on essaie de mettre en regard deux problèmes qui n'ont souvent rien à voir. On va le faire ici en mettant en parallèle un problème de logique SAT et un problème de recherche de sous-ensemble CE.
+
+#### Gadget
+
+On considère une instance de SAT que l'on va transformer polynomialement en une instance de CE. Posons ses paramètres :
 
 - $x_1, \dots, x_n$ : les $n$ variables booléennes
 - $c_1 \land \dots \land c_m$ : les $m$ conjonctions de clauses
@@ -581,8 +659,8 @@ $$
 U = &\{ x_i \vert 1 \leq i \leq n \} \cup&\text{variables booléenne}\\
 &\{ c_i \vert 1 \leq i \leq m \} \cup&\text{clauses}\\
 &\{ l_{i}^{j} \vert 1 \leq i \leq m, 1\leq j \leq k_i \}&\text{littéraux}\\
-F = &(\cup_{1\leq i \leq n}\{ x_i, l_{j}^{k} \vert l_{j}^{k} = x_i, 1 \leq j \leq m, 1\leq k \leq k_i\}) \cup &\text{littéraux vrais pour }x_i\\
-&(\cup_{1\leq i \leq n}\{ x_i, l_{j}^{k} \vert l_{j}^{k} = \overline{x_i}, 1 \leq j \leq m, 1\leq k \leq k_i\}) \cup &\text{littéraux faux pour }x_i\\
+\mathcal{S} = &(\cup_{1\leq i \leq n}[\{ x_i \} \cup \{ l_{j}^{k} \vert l_{j}^{k} = x_i, 1 \leq j \leq m, 1\leq k \leq k_i\})] \cup &\text{littéraux vrais pour }x_i\\
+&(\cup_{1\leq i \leq n}[\{ x_i\} \cup \{ l_{j}^{k} \vert l_{j}^{k} = \overline{x_i}, 1 \leq j \leq m, 1\leq k \leq k_i\})] \cup &\text{littéraux faux pour }x_i\\
 &(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ c_i, l_{i}^{k} \})) &\text{liens entre clauses et littéraux}\\
 &(\cup_{1\leq i \leq m}(\cup_{1\leq k \leq k_i}\{ l_{i}^{k} \})) &\text{les littéraux}\\
 \end{array}
@@ -591,31 +669,92 @@ $$
 
 L'ensemble de $CE$ couvre tous les éléments de $SAT$ : les variables booléennes, les clauses et les littéraux. Les classes forment les liens entre les différents éléments : pour chaque $x_i$ les littéraux valant $x_i$, pour chaque $x_i$ les littéraux valant $\overline{x_i}$ et pour chaque clause l'ensemble de ses littéraux. Cette construction est bien polynomiale par rapport à la taille de l'entrée du problème $SAT$.
 
-{% exercice %}
-Transformez [l'instance exemple SAT](#exemple-SAT){.interne} en une instance de $CE$.
-{% endexercice %}
-{% details "solution" %}
+Notre gadget transforme [L'instance exemple SAT](#exemple-SAT){.interne} en une instance de $CE$.
+
+Formule SAT originelle :
+
+<div>
+$$
+\underbracket{(x_1 \lor {x_2})}_{c_1 = l_1^1 \lor l_1^2} \land \underbracket{(\overline{x_1} \lor \overline{x_2} \lor \overline{x_3})}_{c_2 = l_2^1 \lor l_2^2 \lor l_2^3} \land \underbracket{(\overline{x_1} \lor x_3 \lor x_4 \lor \overline{x_5})}_{c_3 = l_3^1 \lor l_3^2 \lor l_3^3 \lor l_3^4} \land \underbracket{({x_1} \lor \overline{x_3} \lor \overline{x_4} \lor {x_5})}_{c_4 = l_4^1 \lor l_4^2 \lor l_4^3 \lor l_4^3}
+$$
+</div>
+
+Entrée de CE associée :
 
 <div>
 $$
 \begin{array}{ll}
 U = &\{ x_1, x_2, x_3, x_4, x_5, c_1, c_2, c_3, c_4, l_1^1, l_1^2, l_2^1, l_2^2, l_2^3, l_3^1, l_3^2, l_3^3, l_3^4, l_4^1, l_4^2, l_4^3, l_4^4\}\\
-F = &\{\{x_1, l_1^1, l_4^1\}, \{x_2, l_1^2\}, \{x_3, l_3^2\}, \{x_4, l_3^3, l_4^3\}, \{x_5, l_4^4\},\\
-& \{x_1, l_2^1, l_3^1\}, \{x_2, l_2^2\}, \{x_3, l_2^3, l_4^2\}, \{x_5, l_3^4\},\\
+\mathcal{S} = &\{\{x_1, l_1^1, l_4^1\}, \{x_2, l_1^2\}, \{x_3, l_3^2\}, \{x_4, l_3^3\}, \{x_5, l_4^4\},\\
+& \{x_1, l_2^1, l_3^1\}, \{x_2, l_2^2\}, \{x_3, l_2^3, l_4^2\}, \{x_4, l_4^3\}, \{x_5, l_3^4\},\\
 & \{c_1, l_1^1\}, \{c_1, l_1^2\}, \{c_2, l_2^1\}, \{c_2, l_2^2\}, \{c_2, l_2^3\}, \{c_3, l_3^1\}, \{c_3, l_3^2\}, \{c_3, l_3^3\}, \{c_3, l_3^4\}, \{c_4, l_4^1\}, \{c_4, l_4^2\}, \{c_4, l_4^3\}, \{c_4, l_4^4\}\\
 & \{l_1^1\}, \{l_1^2\}, \{l_2^1\}, \{l_2^2\}, \{l_2^3\}, \{l_3^1\}, \{l_3^2\}, \{l_3^3\}, \{l_3^4\}, \{l_4^1\}, \{l_4^2\}, \{l_4^3\}, \{ l_4^4\}\}
 \end{array}
 $$
 </div>
 
-{% enddetails %}
+Nous allons montrer sur l'exemple que ce gadget fonctionne. Je cas général en découlera de lui-même.
 
-Il faut maintenant montrer deux choses :
+#### de CE vers SAT
 
-- que si notre instance de $SAT$ à une solution alors notre instance de $CE$ en a également une
-- que si notre instance de $CE$ à une solution alors on peut trouver une solution du problème $SAT$ associé en temps polynomial
+Pour comprendre comment une solution de CE permet de trouver une solution de SAT, reprenons notre exemple et cherchons une partition solution. Il en existe plusieurs, par exemple :
 
-Si l'instance de SAT a une solution, chaque clause $c_i$ possède au moins un littéral $l_i^{v(i)}$ qui est vrai. On peut alors considérer l'ensemble des classes formé de l'union de :
+<div>
+$$
+\begin{array}{ll}
+\mathcal{P} = &\{ \{x_2, l_1^2\},  \{x_4, l_3^3\},\\
+& \{x_1, l_2^1, l_3^1\}, \{x_3, l_2^3, l_4^2\}, \{x_5, l_3^4\},\\
+& \{c_1, l_1^1\}, \{c_2, l_2^2\}, \{c_3, l_3^2\}, \{c_4, l_4^1\},\\
+&   \{l_3^2\}, \{l_3^4\}, \{ l_4^3\}, \{ l_4^4\} \}
+\end{array}
+$$
+</div>
+
+Pour repasser de cette solution de CE à une solution de SAT, regardons comment elle est construite :
+
+- il faut que la partition contienne les $c_i$ : de part la construction de $\mathcal{S}$ ceci signifie que la classe contenant $c_i$ va également contenir 1 $l_i^j$.
+- il faut que la partition contienne les $x_i$ : de part la construction de $\mathcal{S}$ ceci signifie que la classe contenant $x_i$ va également contenir des $l_j^k$. Attention ces $l_j^k$ ne doivent pas être celui choisi dans la classe contenant $c_j$
+- tous les autres littéraux pouvant être attribués comme on le souhaite on peut les _"oublier"_.
+
+Pour notre exemple ceci donne :
+
+<div>
+$$
+\begin{array}{l}
+\{c_1, l_1^1\}, \{c_2, l_2^2\}, \{c_3, l_3^2\}, \{c_4, l_4^1\}\\
+\{x_1, l_2^1, l_3^1\}, \{x_2, l_1^2\}, \{x_3, l_2^3, l_4^2\}, \{x_4, l_3^3\}, \{x_5, l_3^4\}\\
+\end{array}
+$$
+</div>
+
+Remarquez que le choix de la classe contenant la clause contraint la classe contenant la variable. En choisissant $\\{c_1, l_1^1\\}$ je force le choix de $\\{x_1, l_2^1, l_3^1\\}$ puisque $l_1^1 = x_1$. Vous venez de découvrir le gadget : la classe contenant $c_i$ force le choix pour $x_j$ en prenant le littéral opposé.
+
+Comme une solution de SAT doit avoir au moins 1 littéral de vrai par clause, regardons ce qu'il se passe si on suppose que c'est celui choisi dans la clause est vrai. Dans l'exemple :
+
+- $l_1^1$ est vrai donc $x_1$ est vrai
+- $l_2^2$ est vrai donc $\overline{x_2}$ est vrai
+- $l_3^2$ est vrai donc ${x_3}$ est vrai
+- $l_4^1$ est vrai donc ${x_1}$ est vrai
+
+On ne peut pas arriver àla conclusion qu'une variable booléenne est vrai **et** fausse, car sinon il est impossible de choisir une classe contenant cette variable : c'est le principe du gadget qui implique que ces choix sont cohérents avec les classes contenant les $x_i$ (qui correspondent aux littéraux faux).
+
+On sait déjà que $x_1$, $\overline{x_2}$ et ${x_3}$ sont vrais. Pour connaître la valeur des autres variables, on regarde les classes choisies :
+
+- $\{x_1, l_2^1, l_3^1\}$ donc $l_2^1 = \overline{x_1}$ et $l_3^1 = \overline{x_1}$ sont faux donc $x_1$ est vrai (ouf, c'est cohérent)
+- $\{x_2, l_1^2\}$ donc $l_1^2 = {x_2}$ est faux (c'est cohérent)
+- $\{x_3, l_2^3, l_4^2\}$ donc $l_2^3 = l_4^2 = \overline{x_3}$ est faux : $x_3$ est vrai (c'est cohérent)
+- $\{x_4, l_3^3\}$ donc $l_3^3 = {x_4}$ est faux. On ne le savait pas encore
+- $\{x_5, l_3^4\}$ donc $l_2^3 = l_3^4 = \overline{x_5}$ est faux : ${x_5}$ est vrai.
+
+Au final, avoir une partition nous garantit que le problème SAT originel a une solution et la donne !
+
+On reconstruit cette solution en temps (clairement) polynomial.
+
+#### de SAT vers CE
+
+Il faut maintenant montrer la réciproque : si notre instance de $SAT$ à une solution alors notre instance de $CE$ en a également une.
+
+Il suffit de faire la même chose que pour l'analyse précédente. Si l'instance de SAT a une solution, chaque clause $c_i$ possède au moins un littéral $l_i^{v(i)}$ qui est vrai. On peut alors considérer l'ensemble des classes formé de l'union de :
 
 - $\\{c_i, l_i^{v(i)}\\}$ pour tout $ 1\leq i \leq m$,
 - Considérons ensuite chaque littéral $l_i^j$ avec $ j \neq v(i)$ pour la solution de SAT. On a deux cas :
@@ -625,37 +764,19 @@ Si l'instance de SAT a une solution, chaque clause $c_i$ possède au moins un li
 De part nos hypothèses sur l'entrée de $SAT$ il est clair que cet ensemble de classes forme une solution à notre problème de $CE$. De plus, la construction de cette solution est bien polynomiale.
 
 {% exercice %}
-À partir de la solution $x_1 = \overline{x_2} = x_3 = \overline{x_4} = x_5 = 1$ de [l'exemple SAT](#exemple-SAT){.interne}, construisez la solution de $CE$ associée.
+Donnez une solution de CE pour l'exemple différente de celle de l'exercice précédent et servez vous en pour reconstruire une solution du problème SAT initial.
 {% endexercice %}
 {% details "solution" %}
 
-<div>
-$$
-\begin{array}{ll}
-F' = &\{ \{x_2, l_1^2\},  \{x_4, l_3^3, l_4^3\},\\
-& \{x_1, l_2^1, l_3^1\}, \{x_3, l_2^3, l_4^2\}, \{x_5, l_3^4\},\\
-& \{c_1, l_1^1\}, \{c_2, l_2^2\}, \{c_3, l_3^1\}, \{c_4, l_4^1\},\\
-&   \{l_3^2\}, \{l_3^4\}, \{ l_4^4\}\}
-\end{array}
-$$
-</div>
-
-{% enddetails %}
-
-On construit la réciproque de la même façon. Supposons que l'on ait une solution à notre problème de $CE$. Il ne peut exister qu'une seule classe contenant $x_i$ pour chaque $1 \leq i \leq n$. On place sa valeur à l'opposé des littéraux formant cette classe, ce qui donne en utilisant les mêmes arguments que précédemment une solution au problème $SAT$. Cette transformation est là encore clairement polynomiale.
-
-{% exercice %}
-Donnez une solution de CE pour l'exemple différente de celle de l'exercice précédent et servez vous en pour reconstruire une solution du problème SAT initial.
-{% endexercice %}
-{% details "solution", "open" %}
+On peut par exemple prendre :
 
 <div>
 $$
 \begin{array}{ll}
-F' = &\{\{x_1, l_1^1, l_4^1\}, \{x_3, l_3^2\}, \{x_4, l_3^3, l_4^3\}, \\
+\mathcal{P} = &\{\{x_1, l_1^1, l_4^1\}, \{x_3, l_3^2\}, \{x_4, l_3^3\}, \\
 & \{x_2, l_2^2\}, \{x_5, l_3^4\},\\
 & \{c_1, l_1^2\}, \{c_2, l_2^3\}, \{c_3, l_3^1\}, \{c_4, l_4^2\},\\
-& \{l_2^1\}, \{l_3^3\}, \{ l_4^4\}\}
+& \{l_2^1\}, \{l_3^3\}, \{ l_4^3\}, \{ l_4^4\}\}
 \end{array}
 $$
 </div>
@@ -663,7 +784,14 @@ $$
 Ce qui donne comme solution de $SAT$ : $\overline{x_1} = {x_2} = \overline{x_3} = \overline{x_4} = x_5 = 1$
 {% enddetails %}
 
-On vient de prouver $SAT\leq CE$ : on a trouvé un deuxième élément à la classe des problèmes NP-complets !
+#### Conclusion
+
+On vient de prouver $SAT\leq CE$ car :
+
+1. $CE$ est dans NP
+2. il existe une réduction polynomiale de SAT vers CE
+
+On a trouvé un deuxième élément à la classe des problèmes NP-complets !
 
 ![décidable](./NP-NP-2b.png)
 
