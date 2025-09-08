@@ -88,8 +88,8 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 {% aller %}
 
 1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-2. [Variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
-3. [comprendre son exécution grace au debugeur](/cours/coder-et-développer/debugger/){.interne},  
+2. [comprendre son exécution grace au debugeur](/cours/coder-et-développer/debugger/){.interne},  
+3. [Variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
 4. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
 
 {% endaller %}
