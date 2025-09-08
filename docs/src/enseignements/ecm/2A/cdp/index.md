@@ -88,9 +88,9 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 {% aller %}
 
 1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-2. [comprendre son exécution grace au debugeur](/cours/coder-et-développer/debugger/){.interne},  
-3. [Variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
-4. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
+2. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et 
+3. [comprendre son exécution grace au debugeur](/cours/coder-et-développer/debugger/){.interne},  
+4. [Variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
 
 {% endaller %}
 
@@ -104,6 +104,8 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
    2. installez un environnement virtuel par projet
 
 {% endaller %}
+
+<!-- > TBD test : interpréteur vs programme / variable locale vs globale -->
 
 ## Partie II : développement
 
@@ -128,4 +130,5 @@ Basé sur les cours :
 
 - [Coder et développer en python](/cours/coder-et-développer){.interne}
 - [Système et réseau](/cours_informatique/cours/système-et-réseau){.interne}
-  {% endlien %}
+
+{% endlien %}
