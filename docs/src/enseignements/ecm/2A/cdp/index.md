@@ -24,9 +24,9 @@ eleventyComputed:
 
 ## Partie I : le système
 
-> Durée 3h plus questions
-
 ### Cours
+
+> Durée 3h plus questions
 
 #### Utiliser le réseau
 
@@ -74,23 +74,21 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 [Installer python et un interpréteur](/cours/coder-et-développer/bases-programmation/interpréteur/){.interne}
 {% endaller %}
 
-#### Le terminal
-
-{% aller %}
-
-1. [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne}
-2. exécuter l'interpréteur python comme programme (différent de spider). Le code python exécuté via l'interpréteur et pas directement par le système
-
-{% endaller %}
-
 #### Interpréteur python
 
 {% aller %}
 
 1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-2. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
-3. [comprendre son exécution grace au debugeur](/cours/coder-et-développer/debugger/){.interne},  
-4. [Variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
+2. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment avec vscode
+
+{% endaller %}
+
+#### Exécution (pas à pas) d'un programme
+
+{% aller %}
+
+1. [comprendre et corriger un programme grace au debogeur](/cours/coder-et-développer/debugger/){.interne},  
+2. [variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
 
 {% endaller %}
 
@@ -104,8 +102,6 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
    2. installez un environnement virtuel par projet
 
 {% endaller %}
-
-<!-- > TBD test : interpréteur vs programme / variable locale vs globale -->
 
 ## Partie II : développement
 
