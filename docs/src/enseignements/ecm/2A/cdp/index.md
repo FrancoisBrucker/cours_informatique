@@ -17,7 +17,14 @@ eleventyComputed:
 
 24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.
 
+## Note
+
+- 2 tests de 15min sur papier les 2ème et 3ème lundi (8h-8h15)
+- un projet à rendre sur github la dernière semaine
+
 ## Partie I : le système
+
+> Durée 3h plus questions
 
 ### Cours
 
@@ -81,7 +88,9 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 {% aller %}
 
 1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-2. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
+2. [Variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
+3. [comprendre son exécution grace au debugeur](/cours/coder-et-développer/debugger/){.interne},  
+4. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment
 
 {% endaller %}
 
@@ -108,6 +117,8 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 1. principes
 2. github, git app
 3. git interne
+
+<!-- > TBD note avec commit pertinent sur un petit projet -->
 
 ## Liens
 

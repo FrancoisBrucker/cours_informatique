@@ -29,7 +29,7 @@ eleventyComputed:
       1. **[3A] :** Exécution grace au path Voir ses dépendances.
 3. interpréteur python :
    1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-   2. **[3A] :** [comprendre son exécution grace au debugeur](/cours/coder-et-développer/debugger/){.interne},  
+   2. [comprendre son exécution grace au debugeur](/cours/coder-et-développer/debugger/){.interne},  
    3. [Variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
    4. [installer des dépendances pip](/cours/coder-et-développer/bases-programmation/modules-python/){.interne}
    5. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment

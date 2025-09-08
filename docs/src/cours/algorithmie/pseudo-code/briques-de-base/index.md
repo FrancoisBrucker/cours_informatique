@@ -2,6 +2,10 @@
 layout: layout/post.njk
 title: Briques de base
 
+eleventyNavigation:
+  prerequis:
+    - "/cours/coder-et-développer/données-mémoire/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
