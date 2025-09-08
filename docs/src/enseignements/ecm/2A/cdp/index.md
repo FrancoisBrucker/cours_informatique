@@ -124,8 +124,8 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 Basé sur les cours :
 
-{% aller %}
+{% lien %}
 
 - [Coder et développer en python](/cours/coder-et-développer){.interne}
 - [Système et réseau](/cours_informatique/cours/système-et-réseau){.interne}
-  {% endaller %}
+  {% endlien %}
