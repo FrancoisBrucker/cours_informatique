@@ -262,6 +262,9 @@ Si les listes permettent de supprimer la première contrainte de l'utilisation d
 [Structure de dictionnaires](./structure-dictionnaire){.interne}
 {% endaller %}
 
+> TBD associer le type {clé: valeur} aux dictionnaire.
+> TBD : sortir les ensemble des dictionnaire et leur associer la structure {type}. Comme ça on a les listes avec [type], les dictionnaires avec {type:type} et les ensembles avec {type}.
+
 ### Listes chaînées
 
 Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :

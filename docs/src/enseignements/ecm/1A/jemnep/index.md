@@ -17,6 +17,18 @@ eleventyComputed:
 
 Une semaine pour comprendre le fonctionnement de python et l'utiliser pour développer ses propres programmes comme le ferait un informaticien.
 
+<!-- TBD 
+
+Utiliser : <https://pythonds.linogaliana.fr/> ?
+refaire python du début.
+1. interpréteur en ligne
+2. spyder
+3. code + interpréteur (vscode)
+4. structure et petits programmes de code (pas d'algo)
+5. variables, objets.
+6. tests
+7. finir sur débogueur -->
+
 Basé sur le cours :
 
 {% aller %}

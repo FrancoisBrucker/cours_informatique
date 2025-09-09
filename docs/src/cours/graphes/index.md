@@ -39,28 +39,48 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 1. [Structure d'un graphe](structure){.interne}
 2. [Encodage de graphes](encodage){.interne}
-3. [Chemins, cycle et connexité](chemins-cycles-connexite){.interne}
 
 {% endaller %}
+
+## Cliques et stables
+
+{% aller %}
+
+[Cliques et stables d'un graphe](cliques-stables){.interne}
+
+{% endaller %}
+
 
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
 
-### Types de parcours
+### Chemins et cycles
 
-Parcours spécifiques :
+{% aller %}
+
+[Chemins, cycle et connexité](chemins-cycles-connexite){.interne}
+
+{% endaller %}
+
+### Visiter
+
+Visiter tous les sommets de proche en proche
+
+{% aller %}
+[Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
+{% endaller %}
+
+
+### Cheminer
+
+Le parcours doit suivre la structure de graphe (il y a des saut avec les parcours en largeur/profondeur) en restant minimal :
 
 {% aller %}
 
 1. [Eulérien](parcours-eulériens){.interne}
 2. [Hamiltonien](parcours-hamiltoniens){.interne}
-{% endaller %}
 
-Algorithmes généraux :
-
-{% aller %}
-[Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
 {% endaller %}
 
 ### Projets

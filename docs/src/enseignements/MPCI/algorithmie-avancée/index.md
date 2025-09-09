@@ -50,21 +50,20 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 1. [Graphes bases](/cours/graphes/structure){.interne} :
    1. rappel des définitions
    2. quelques propriétés sur les degrés, les chemins et les cycles
-   3. NP complétude du problème clique
 2. Rappel : [encodage d'un graphe](/cours/graphes/encodage/){.interne}
-3. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/){.interne}
-   1. chemin
-   2. composante connexe
+3. [cliques et stables](/cours/graphes/cliques-stables/){.interne}
 
 {% endaller %}
 
 ##### Cours 2
 
 {% aller %}
-
-1. [Parcours eulériens](/cours/graphes/parcours-eulériens/){.interne}
-2. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
-3. idée du problème du postier chinois
+1. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/){.interne}
+   1. chemin
+   2. composante connexe
+2. [Parcours eulériens](/cours/graphes/parcours-eulériens/){.interne}
+3. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
+4. idée du problème du postier chinois
 
 {% endaller %}
 
