@@ -87,7 +87,7 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 {% aller %}
 
-1. [comprendre et corriger un programme grace au debogeur](/cours/coder-et-développer/debugger/){.interne},  
+1. [comprendre et corriger un programme grace au déboguer](/cours/coder-et-développer/debugger/){.interne},  
 2. [variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
 
 {% endaller %}
@@ -96,10 +96,14 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 {% aller %}
 
-1. installez vscode et faites le tutoriel du cours
+1. faites les tutoriels du cours :
+   1. de vscode
+   2. du débogueur
+   3. faites un environnement virtuel, installez matplotlib et [faites le tutoriel](/cours/coder-et-développer/bases-programmation/matplotlib/){.interne} dans un vscode
 2. Utilisez les exercices de la partie [on s'entraîne](/cours/coder-et-développer/projet-codes/){.interne} pour :
-   1. comprendre comment fonctionne le débogueur
-   2. installez un environnement virtuel par projet
+   1. installer un environnement virtuel par projet
+   2. comprendre comment fonctionne le débogueur
+   3. faire un code qui fonctionne
 
 {% endaller %}
 

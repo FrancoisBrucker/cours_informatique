@@ -79,6 +79,8 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 #### Interpréteur python
 
+> But : gérer les dépendances d'un projet entre développeurs. Tout le monde doit avoir les mêmes bibliothèques (nom et versions) installées.
+
 {% aller %}
 
 1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
@@ -101,14 +103,28 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 {% aller %}
 
-1. installez vscode et faites le tutoriel du cours
+1. faites les tutoriels du cours :
+   1. de vscode
+   2. du débogueur
+   3. faites un environnement virtuel, installez matplotlib et [faites le tutoriel](/cours/coder-et-développer/bases-programmation/matplotlib/){.interne} dans un vscode
 2. Utilisez les exercices de la partie [on s'entraîne](/cours/coder-et-développer/projet-codes/){.interne} pour :
-   1. comprendre comment fonctionne le débogueur
-   2. installez un environnement virtuel par projet
+   1. installer un environnement virtuel par projet
+   2. comprendre comment fonctionne le débogueur
+   3. faire un code qui fonctionne
 
 {% endaller %}
 
 <!-- > TBD test : interpréteur vs programme / variable locale vs globale -->
+
+### À faire
+
+Pour la prochaine fois, trois groupes :
+
+- [poetry](https://python-poetry.org/)
+- [uv](https://docs.astral.sh/uv/)
+- module et package python : comment les utiliser
+
+> Prépare un exposé de 5min chacun + support avec biblio et principales fonctionnalités.
 
 ## Partie II : principes de développement
 

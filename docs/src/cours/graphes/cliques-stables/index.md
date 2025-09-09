@@ -61,8 +61,9 @@ Si on prend 5 éléments, cela revient à supprimer 1 élément du graphe et auc
 Il est facile, itérativement à partir d'une clique possiblement réduite à un point, de trouver une clique maximale :
 
 ```pseudocode
-algorithme clique_maximale(G: Graphe, x:sommet) -> {sommet}
+algorithme clique_maximale(G: Graphe<sommet>, x:sommet) -> {sommet}
 
+C := {sommet}
 C <- {x}
 tant qu'il existe un sommet y de G \ C tel que C U {y} est une clique:
     C <- C U {y}
@@ -70,6 +71,14 @@ rendre C
 ```
 
 Le problème est qu'il y a de nombreux minima locaux, ce qui fait que trouver $\omega(G)$ ou $\alpha(G)$ pour un graphe donné est un problème difficile.
+
+{% exercice %}
+Montrez que pour le graphe $G$ précédent, l'algorithme peut, avec un même sommet de départ, trouver une clique maximale de taille 3 ou 4.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il suffit de prendre un des deux sommets rouge à l'intersection de la clique de taille 4 et du triangle rouge.
+{% enddetails %}
 
 ## Problème de la clique/stable maximum
 
@@ -108,7 +117,7 @@ algorithme vérification_clique_ou_stable(G: graphe<sommet>, A: {sommet}, clique
               retourne Faux
             si xy n'est pas une arête de G et clique:
               retourne Faux
-  retourne vrai
+  retourne Vrai
 
 algorithme vérification_clique(G: graphe<sommet>, A: {sommet}):
   retourne vérification_clique_ou_stable(G, A, Vrai)
@@ -118,10 +127,10 @@ algorithme vérification_stable(G: graphe<sommet>, A: {sommet}):
 
 ```
 
-Commençons par un petit échauffement : 
+Commençons par un petit échauffement :
 
 {% exercice %}
-Montrez que en montrant que $clique \leq stable$ :
+Montrez que en montrant que $\text{clique} \leq \text{stable}$ :
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -191,25 +200,28 @@ Dans la plupart des exemples réels, il y aura plus de clauses que de variables 
 
 C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres.
 
-## Théorème de Ramsey
+## Exercice : problème de la couverture minimale
 
-Le théorème de Ramsey est a priori surprenant. 
-> TBD on y reviendra pour les graphes aléatoire/méthode probabiliste
+On appelle **_couverture_** d'un graphe $G=(V, E)$ un ensemble de sommets $C \subseteq V$ tel que toute arête de $G$ possède une extrémité dans $V$.
+
+> TBD exemple.
 >
+> TBD couverture min d'une clique de taille n = n-1
+> TBD v\c est un stable
+> TBD en déduire NPC
 
-## Exercice : problème de la couverture minimale 
-
-> TBD problème de la couverture, voir DS.
- 
 {% note "**Problème**" %}
 
-- **nom** : clique
+- **nom** : couverture
 - **Entrée** :
   - un graphe
   - un entier $K$
-- **Question** : le graphe contient-il une clique de taille supérieure ou égale à $K$ ?
+- **Question** : le graphe contient-il une couverture de taille inférieure ou égale à $K$ ?
 
 {% endnote %}
 
+## Théorème de Ramsey
 
-
+Le théorème de Ramsey est a priori surprenant.
+> TBD on y reviendra pour les graphes aléatoire/méthode probabiliste
+>
