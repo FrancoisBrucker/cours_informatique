@@ -16,7 +16,7 @@ eleventyComputed:
 
 ## Programme
 
-En deux parties.
+En trois parties.
 
 ### Modèles de calculs et classes de problèmes "utiles"
 
@@ -39,9 +39,11 @@ En deux parties.
 
 Un outil de modélisation puissant pour résoudre (joliment) nombre de problèmes informatique.
 
-### Bases de la théorie des graphes
-
 #### Semaine 1
+
+##### Cours 1
+
+> Semaine 1
 
 {% aller %}
 
@@ -56,11 +58,7 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% endaller %}
 
-On s'entraîne :
-
-> TBD Ds de l'année dernière.
-
-#### Cours 2
+##### Cours 2
 
 {% aller %}
 
@@ -70,7 +68,17 @@ On s'entraîne :
 
 {% endaller %}
 
-#### Cours 3
+On s'entraîne :
+
+- [DS de l'année dernière](./DS/ds.pdf) exercices 2 et 4.
+- théorème de Ramsey sur les cliques/stables (présence ou pas d'arête, démo, parler de Erdos pui généralisation à plein de couleurs, ce qui détermine le thm de Ramsey)
+
+#### Semaine 2
+
+> Qu'ont-ils fait en arbre ? Parcours ? ALM ?
+> chemin positif et négatif à coût min ?
+> parcours largeur/profondeur
+> flot ?
 
 1. rappels sur les chemins les plus courts :
    1. [Poids positifs](/cours/graphes/chemin-poids-min-problème/){.interne}
@@ -82,12 +90,47 @@ On s'entraîne :
       - Cayley et Prüfer
    2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
 
+#### Semaine 3
+
+> TBD :
+>
+> 1. Bi-parti
+> 2. coloriabilité
+
+#### Semaine 4
+
+> TBD :
+>
+> 1. couplage
+> 2. planarité
+
+### DS
+
+> TBD le faire.
+
+### Cryptographe
+
+> TBD en 2 semaines
+> algo
+> protocoles
+> pgp et envois de message chiffrés
+
+### Bonus
+
+> TBD au choix :
+>
+> - recherche universelle
+> - théorème de Cook-Levin
+> - graphes infinis
+> - méthode probabiliste ?
+> - ...
+
 <!-- ### Peut-être 
 
 - Langage C
 - Réseaux
-- Cryptographie
-- Graphes et réseaux (sociaux) -->
+- Graphes et réseaux (sociaux) 
+ -->
 
 <!--
 
