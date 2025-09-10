@@ -200,6 +200,9 @@ Dans la plupart des exemples réels, il y aura plus de clauses que de variables 
 
 C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres.
 
+> TBD On a utilisé 3-sat pour illustrer un point crucial : la taille de la clique à trouver est de l'ordre du nombre de sommet divisé par 3. 
+> Trouver une clique de taille K fixé est simple, en O(n^K) polynomail, mais ici la taille dépend directement de la taille du graphe ce qui en fait un problème dur. il faudrait ici O(n^{n/3}) opération avec l'algo naif
+
 ## Exercice : problème de la couverture minimale
 
 On appelle **_couverture_** d'un graphe $G=(V, E)$ un ensemble de sommets $C \subseteq V$ tel que toute arête de $G$ possède une extrémité dans $V$.
@@ -268,13 +271,10 @@ On va le démontrer. Soit $G=(V, E)$ un graphe à 6 sommets et soit $x$ un de se
 1. soit $x$ à au moins 3 voisins : le graphe $G$ restreint aux voisins de $G$ est soit discret et il existe un stable de taille 3, soit il contient une arête qui, ajoutée à x forme une clique de taille 3.
 2. soit $x$ à moins de 2 voisins : le graphe $G$ restreint aux voisins de $G$ est soit complet et il existe une clique de taille 3, soit il contient un couple sans arête qui, ajoutée à x forme un stable de taille 3.
 
-
-
-> TBD démo
-
 ### Définition et existence
 
 > 1. R(p, q).
+
 >     1. si ça existe R(p, q) = R(q, p)
 >     2. on sait que R(1, q) = 1 et R(2, q) = q (à prouver)
 >     3. R(p, q) ≤ R(p-1, q) + R(p, q-1)
@@ -291,3 +291,4 @@ On va le démontrer. Soit $G=(V, E)$ un graphe à 6 sommets et soit $x$ un de se
 
 > 3. peut se voir comme un problème de coloration des arêtes. Se généralise à plein de couleurs
 >
+R(n1, ..., nq) ≤ R(n1, ..., nq-2, R(nq-1, nq))
