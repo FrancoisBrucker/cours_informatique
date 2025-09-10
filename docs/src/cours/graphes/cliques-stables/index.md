@@ -275,10 +275,12 @@ On va le démontrer. Soit $G=(V, E)$ un graphe à 6 sommets et soit $x$ un de se
 
 > 1. R(p, q).
 
->     1. si ça existe R(p, q) = R(q, p)
->     2. on sait que R(1, q) = 1 et R(2, q) = q (à prouver)
->     3. R(p, q) ≤ R(p-1, q) + R(p, q-1)
+> 1. si ça existe R(p, q) = R(q, p)
+> 2. on sait que R(1, q) = 1 et R(2, q) = q (à prouver)
+> 3. R(p, q) ≤ R(p-1, q) + R(p, q-1)
 
+> TBD preuve idem que pour 6. on supprime un sommet et du coup soit ses voisins on plus que R(p, q-1) soit ses non voisin R(p-1, q)
+>
 > problème juste diagonal. Parler d'Erdos
 
 ### Une Borne
