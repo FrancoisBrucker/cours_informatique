@@ -273,24 +273,102 @@ On va le démontrer. Soit $G=(V, E)$ un graphe à 6 sommets et soit $x$ un de se
 
 ### Définition et existence
 
-> 1. R(p, q).
+{% note "**Définition**" %}
+On note $R(p, q)$ le plus petit entier $n$ tel qu'un graphe $n$ sommets ou plus contienne :
 
-> 1. si ça existe R(p, q) = R(q, p)
-> 2. on sait que R(1, q) = 1 et R(2, q) = q (à prouver)
-> 3. R(p, q) ≤ R(p-1, q) + R(p, q-1)
+- **soit** un stable de taille $p$
+- **soit** une clique de taille $q$
+{% endnote %}
 
-> TBD preuve idem que pour 6. on supprime un sommet et du coup soit ses voisins on plus que R(p, q-1) soit ses non voisin R(p-1, q)
->
-> problème juste diagonal. Parler d'Erdos
+Avant de démontrer que cette définition fait sens (_ie_ que ce nombre existe), faisons quelques remarques
 
-### Une Borne
+- Premièrement, si $R(p, q)$ existe alors  $R(q, p) = R(p, q)$ puisque si un graphe a une clique de taille $k$ son complémentaire à un stable de taille $k$.
+- Deuxièmement $R(1, k) = R(k, 1) = 1$ pour tout $k$ puisque un sommet est un stable et un clique.
+- Troisièmement $R(2, k) = k$ pour tout $k$ puisque :
+  - le graphe complet à $k-1$ élément ne contient ni de stable de taille 2 : $k-1 < R(2, k)$
+  - si $\\{x, y\\}$ n'est pas une arête du graphe c'est un stable et tout graphe complet de plus de $k$ sommet contient une clique de taille $k$ : $R(2, k) \leq k$
 
->     4. en déduire (par rec) que R(p, q) ≤ C_{l+m-2}^{l-1}
-> TBD on y reviendra pour les graphes aléatoire/méthode probabiliste
-> 3. on en reparlera ce problème a été très fécond. Voir Erdos 
+Avant de montrer l'existence de $R(p, q)$ pour tous $p$ et $q$ commençons par deux exercices préparatoires :
+
+{% exercice %}
+Montrez que si $A + B = C + D + 1$ pour quatre entiers positifs, alors :
+
+- soit $C \geq A$
+- soit $D \geq B$
+{% endexercice %}
+{% details "corrigé" %}
+
+Si $C < A$ et $D < B$, alors $C + 1\leq A$ et $D + 1\leq B$ et on aurait $C + D + 2 \leq A + B$ donc $C + D + 1 < A + B$ ce qui est impossible.
+{% enddetails %}
+
+En déduire l'exercice suivant :
+
+{% exercice %}
+Montrez que si un graphe $G=(V, E)$ est tel que $|V| = A + B$ alors pour tout sommet $v$ :
+
+- soit $\delta(v) \geq A$
+- soit $|V\backslash \\{v\\} \backslash N(v)| \geq B$
+{% endexercice %}
+{% details "corrigé" %}
+
+En posant $C = \delta(v)$ et $D = |V\backslash \\{v\\} \backslash N(v)|$, on a $C + D + 1 = |V| = A + B$ et on est ramené au cas précédent.
+{% enddetails %}
+
+On peut maintenant passer aux choses sérieuses. On suppose que $R(p-1, q)$ et $R(p, q-1)$ existent et on considère un graphe $G=(V, E)$ à $R(p-1, q) + R(p, q-1)$ sommets. Les deux exercices précédent nous permettent de dire que pour tout sommet $v$ de $G$ :
+
+1. soit $\delta(v) \geq R(p, q-1)$
+2. soit $|V\backslash \\{v\\} \backslash N(v)| \geq R(p-1, q)$
+
+Dans le premier cas, le graphe $G'$, restriction de $G$ à $N(v)$ contient $R(p, q-1)$ sommet, donc :
+
+- soit il contient un stable de taille $p$ et il existe un stable de taille $p$ dans $G$
+- soit il contient une clique $C$ de taille $q-1$ et l'ensemble $C \cup \\{v\\}$ est une clique de taille $q$ de $G$.
+
+Dans le second cas, le graphe $G'$, restriction de $G$ à $V\backslash \\{v\\} \backslash N(v)$ contient $R(p-1, q)$ sommet, donc :
+
+- soit il contient une clique $C$ de taille $q$ et il existe une clique de taille $q$ de $G$.
+- soit il contient un stable $S$ de taille $p-1$ et l'ensemble $S \cup \\{v\\}$ est un stable de taille $p$ dans $G$
+
+Dans tous les cas $G$ contient :
+
+- soit un stable de taille $p$
+- soit une clique de taille $q$
+
+Son nombre de sommet est donc plus grand que $R(p, q)$ et on a :
+
+<div>
+$$
+R(p, q) \leq R(p-1, q) + R(p, q-1)
+$$
+</div>
+
+Comme $R(2, k) = R(k, 2) = k$, l'équation précédente montre l'existence de $R(3, k) = R(k, 3)$ pour tous $k$ et de proche en proche on a :
+
+{% note "**Proposition**" %}
+$R(p, q)$ existe pour tout entiers $p$ et $q$.
+
+On a $R(2, k) = R(k, 2) = k$ pur tout entier $k$ et pour tous entiers $p, q \geq 3$ :
+
+<div>
+$$
+R(p, q) \leq R(p-1, q) + R(p, q-1)
+$$
+</div>
+
+{% endnote %}
+
+On peut montrer par récurrence en utilisant la majoration précédente que :
+
+<div>
+$$
+R(p, q) \leq C_{p+q-2}^{p-1}
+$$
+</div>
+
+En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on cherche une valeur précise. La borne précédente étant très frustre.
+
+Par exemple la majoration précédente donne $R(5, 5) = C_{8}^{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43)
 
 ### Généralisation
 
-> 3. peut se voir comme un problème de coloration des arêtes. Se généralise à plein de couleurs
->
-R(n1, ..., nq) ≤ R(n1, ..., nq-2, R(nq-1, nq))
+On peut voir le problème de Ramsey come un problème de coloration d'arête d'un graphe complet. Allez voir [la page Wikipédia dédiée au problème](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey#D%C3%A9finitions_et_%C3%A9nonc%C3%A9) pour en voir une formulation générale.

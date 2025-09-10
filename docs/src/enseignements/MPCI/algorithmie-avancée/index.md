@@ -64,11 +64,11 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
    2. composante connexe
 2. [Parcours eulériens](/cours/graphes/parcours-eulériens/){.interne}
 3. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
-4. idée du problème du postier chinois
+4. applications :
+   - problème du [postier chinois](/cours/graphes/projet-postier-chinois/){.interne}
+   - problème du digicode aussi appelé [mots de Bruijin](/cours/graphes/projet-mots-bruijn/){.interne}
 
 {% endaller %}
-
-On s'entraîne : [DS de l'année dernière](./DS/ds.pdf) exercices 4.
 
 #### Semaine 2
 
