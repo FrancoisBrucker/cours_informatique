@@ -109,6 +109,8 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 ## Partie II : développement
 
+> TBD rappel spyder vs fichier.
+> TBD 1 ficheir puis plusiers fichiers et import.
 1. tests :
    1. [lire et écrire du code](/cours/coder-et-développer/écrire-code/){.interne}
    2. s'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !
