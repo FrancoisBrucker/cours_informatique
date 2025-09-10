@@ -263,6 +263,14 @@ Remarquez qu'il existe toujours :
 - soit une clique à 3 sommets (ou plus).
 {% endfaire %}
 
+
+On va le démontrer. Soit $G=(V, E)$ un graphe à 6 sommets et soit $x$ un de ses sommets. On a deux cas (en utilisant le principes des tiroirs : 5 sommets à ranger dans 2 cases voisin ou pas voisin) :
+
+1. soit $x$ à au moins 3 voisins : le graphe $G$ restreint aux voisins de $G$ est soit discret et il existe un stable de taille 3, soit il contient une arête qui, ajoutée à x forme une clique de taille 3.
+2. soit $x$ à moins de 2 voisins : le graphe $G$ restreint aux voisins de $G$ est soit discret et il existe un stable de taille 3, soit il contient une arête qui, ajoutée à x forme une clique de taille 3.
+
+
+
 > TBD démo
 
 ### Définition et existence
@@ -278,7 +286,7 @@ Remarquez qu'il existe toujours :
 
 >     4. en déduire (par rec) que R(p, q) ≤ C_{l+m-2}^{l-1}
 > TBD on y reviendra pour les graphes aléatoire/méthode probabiliste
-> 3. on en reparlera ce problème a été très fécond. Voir erdos 
+> 3. on en reparlera ce problème a été très fécond. Voir Erdos 
 
 ### Généralisation
 

@@ -15,8 +15,8 @@ eleventyComputed:
 > TBD ajouter structure algorithmique de graphe
 > avec :
 > - structure Graphe
-> - structure sommet, Graphe<sommet>
-> - la structure ensemble {sommet}
+> - structure sommet, Graphe\<sommet\>
+> - la structure ensemble \{sommet\}
 
 <!-- début résumé -->
 

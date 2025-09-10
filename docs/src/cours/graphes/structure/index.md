@@ -22,9 +22,9 @@ Dans toute sa généralité, on peut définir un **_multi-graphe_** comme étant
 - $E$ est un ensemble d'**_arcs_** (**_edges_**)
 - $\phi: E \rightarrow V \times V$ une **_fonction d'incidence_** qui associe à chaque arête un couple (possiblement égaux) de sommets.
 
-Cette définition permet de considérer des ensemble a priori infini, mais elle le fait au prix d'une grosse lourdeur de manipulation puisqu'il faut passer par une fonction d'incidence.
+Cette définition permet de considérer des ensemble a priori non dénombrable, mais elle le fait au prix d'une grosse lourdeur de manipulation puisqu'il faut passer par une fonction d'incidence.
 
-En pratique, on aura toujours un nombre fini de sommets et d'arêtes, on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique :
+En pratique, on aura toujours un nombre fini de sommets et d'arêtes (ou au pire dénombrable), on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique :
 
 {% note "**Définition**" %}
 
@@ -34,6 +34,9 @@ Un **_multi-graphe_** est un couple $G = (V, E)$ où :
 - $E$ est une liste finie de d'éléments de $V \times V$ appelés **_arcs_** (**_edges_**)
 
 {% endnote %}
+{% info %}
+Notez que la définition précédente s'étant sans problème aux ensemble infinis dénombrables.
+{% endinfo %}
 
 Pour ne pas avoir à toujours rappeler l'ensemble des sommets et des arêtes d'une graphe, on utilisera parfois la notation :
 
@@ -97,7 +100,7 @@ Ils permettent également de comprendre le réel en utilisant des classes partic
 
 #### Esthétique
 
-Enfin, ils procurent une satisfaction purement esthétique de part la grande beauté des démonstrations de leurs théorèmes et de leurs algorithmes.
+Enfin, ils procurent une satisfaction purement esthétique de part la grande beauté des démonstrations, de leurs théorèmes et de leurs algorithmes.
 
 ## Graphe
 
@@ -217,6 +220,20 @@ $$\delta^-(y) = \vert N^-(y) \vert$$
 
 {% endnote %}
 
+Lorsque l'on a besoin d'inclure l'élément dans le voisinage, on considère les voisinages fermés :
+
+{% note "**Définitions**" %}
+
+On appelle **_voisinage fermé de $x$_** l'ensemble des arcs d'origine $x$ plus $x$ et on le note :
+
+$$N^+[x] =N^+(x) \cup \\{ x \\}$$
+
+et
+
+$$N^-[x] =N^-(x) \cup \\{ x \\}$$
+
+{% endnote %}
+
 ### Arêtes
 
 Une **_arête_** $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :
@@ -226,9 +243,12 @@ Une **_arête_** $xy$ est un élément de $E$ pour les graphes non orienté. On 
 Contrairement aux arcs, il n'y a pas de distinction entre origine et destination :
 
 {% note "**Définitions**" %}
-Le **_voisinage_** d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note :
+Le **_voisinage_** d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. On les notes :
 
 $$N(x) = \\{ y \mid  xy \in E\\}$$
+
+
+$$N[x] = N(x) \cup \\{ x \\}$$
 
 Le cardinal d'un voisinage est appelé **_degré_**. On le note :
 
