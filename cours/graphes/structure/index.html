@@ -115,8 +115,8 @@
 <li>$E$ est un ensemble d'<strong><em>arcs</em></strong> (<strong><em>edges</em></strong>)</li>
 <li>$\phi: E \rightarrow V \times V$ une <strong><em>fonction d'incidence</em></strong> qui associe à chaque arête un couple (possiblement égaux) de sommets.</li>
 </ul>
-<p>Cette définition permet de considérer des ensemble a priori infini, mais elle le fait au prix d'une grosse lourdeur de manipulation puisqu'il faut passer par une fonction d'incidence.</p>
-<p>En pratique, on aura toujours un nombre fini de sommets et d'arêtes, on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique :</p>
+<p>Cette définition permet de considérer des ensemble a priori non dénombrable, mais elle le fait au prix d'une grosse lourdeur de manipulation puisqu'il faut passer par une fonction d'incidence.</p>
+<p>En pratique, on aura toujours un nombre fini de sommets et d'arêtes (ou au pire dénombrable), on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -129,6 +129,14 @@
 <li>$V$ est un ensemble fini de <strong><em>sommets</em></strong> (<strong><em>vertices</em></strong>)</li>
 <li>$E$ est une liste finie de d'éléments de $V \times V$ appelés <strong><em>arcs</em></strong> (<strong><em>edges</em></strong>)</li>
 </ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Notez que la définition précédente s'étant sans problème aux ensemble infinis dénombrables.</p>
 </div></div>
 
 <p>Pour ne pas avoir à toujours rappeler l'ensemble des sommets et des arêtes d'une graphe, on utilisera parfois la notation :</p>
@@ -195,7 +203,7 @@
 <li>des graphes aléatoire générés en utilisant par exemple <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Barab%C3%A1si-Albert">le modèle de Barabasi-Albert</a> permettent de créer des graphes &quot;<em>petit monde</em>&quot; typiques des réseaux sociaux ou de l'internet.</li>
 </ul>
 <h4>Esthétique</h4>
-<p>Enfin, ils procurent une satisfaction purement esthétique de part la grande beauté des démonstrations de leurs théorèmes et de leurs algorithmes.</p>
+<p>Enfin, ils procurent une satisfaction purement esthétique de part la grande beauté des démonstrations, de leurs théorèmes et de leurs algorithmes.</p>
 <h2>Graphe</h2>
 <p>Notre définition est tellement générale, qu'elle est très peu utilisée telle quelle. On utilisera souvent des cas particuliers selon le problème que l'on veut résoudre :</p>
 <ul>
@@ -336,6 +344,20 @@
 <p>$$\delta^-(y) = \vert N^-(y) \vert$$</p>
 </div></div>
 
+<p>Lorsque l'on a besoin d'inclure l'élément dans le voisinage, on considère les voisinages fermés :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définitions</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On appelle <strong><em>voisinage fermé de $x$</em></strong> l'ensemble des arcs d'origine $x$ plus $x$ et on le note :</p>
+<p>$$N^+[x] =N^+(x) \cup \{ x \}$$</p>
+<p>et</p>
+<p>$$N^-[x] =N^-(x) \cup \{ x \}$$</p>
+</div></div>
+
 <h3>Arêtes</h3>
 <p>Une <strong><em>arête</em></strong> $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :</p>
 <p><img src="arete.png" alt="arête"></p>
@@ -347,8 +369,9 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définitions</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le <strong><em>voisinage</em></strong> d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note :</p>
+<p>Le <strong><em>voisinage</em></strong> d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. On les notes :</p>
 <p>$$N(x) = \{ y \mid  xy \in E\}$$</p>
+<p>$$N[x] = N(x) \cup \{ x \}$$</p>
 <p>Le cardinal d'un voisinage est appelé <strong><em>degré</em></strong>. On le note :</p>
 <p>$$\delta(x) = \vert N(x) \vert$$</p>
 </div></div>
