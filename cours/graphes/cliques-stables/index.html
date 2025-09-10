@@ -559,11 +559,14 @@ Trouver une clique de taille K fixé est simple, en O(n^K) polynomail, mais ici 
 </ol>
 </blockquote>
 <blockquote>
-<p>1. si ça existe R(p, q) = R(q, p)
-2. on sait que R(1, q) = 1 et R(2, q) = q (à prouver)
-3. R(p, q) ≤ R(p-1, q) + R(p, q-1)</p>
+<ol>
+<li>si ça existe R(p, q) = R(q, p)</li>
+<li>on sait que R(1, q) = 1 et R(2, q) = q (à prouver)</li>
+<li>R(p, q) ≤ R(p-1, q) + R(p, q-1)</li>
+</ol>
 </blockquote>
 <blockquote>
+<p>TBD preuve idem que pour 6. on supprime un sommet et du coup soit ses voisins on plus que R(p, q-1) soit ses non voisin R(p-1, q)</p>
 <p>problème juste diagonal. Parler d'Erdos</p>
 </blockquote>
 <h3>Une Borne</h3>
