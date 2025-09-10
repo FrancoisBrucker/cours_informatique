@@ -369,6 +369,10 @@ En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on c
 
 Par exemple la majoration précédente donne $R(5, 5) = C_{8}^{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43)
 
+<!-- > TBD borne inférieure avec méthode probabiliste de Erdos -->
+
 ### Généralisation
 
 On peut voir le problème de Ramsey come un problème de coloration d'arête d'un graphe complet. Allez voir [la page Wikipédia dédiée au problème](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey#D%C3%A9finitions_et_%C3%A9nonc%C3%A9) pour en voir une formulation générale.
+
+<!-- > TBD écrire et montrer un exemple -->

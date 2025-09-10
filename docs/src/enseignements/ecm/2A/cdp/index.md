@@ -24,6 +24,10 @@ eleventyComputed:
 
 ## Partie I : le système
 
+<!-- TBD
+
+l'année prochaine mettre lire et écrire du code avant debogueur puis virtualenv
+ -->
 ### Cours
 
 > Durée 3h plus questions

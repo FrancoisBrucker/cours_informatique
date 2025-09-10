@@ -52,15 +52,6 @@ Si vous avez votre ordinateur depuis longtemps sans vraiment vous en occuper, ou
 
 {% endinfo %}
 
-Utiliser son ordinateur pour le développement nécessite quelques connaissances et outils pour que tout se passe au mieux. Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.
-
-> TBD Ordinateur pour le développement 
-> Utiliser son ordinateur pour le développement nécessite quelques connaissances et outils pour que tout se passe au mieux. Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.
-
-
-
-
-
 Une fois les prérequis acquis :
 
 {% aller %}

@@ -21,11 +21,6 @@ eleventyComputed:
 
 > Durée 3h plus questions
 
-<!-- TBD  : leur faire installer vscode/python avant et leur demander de venir avec un ordi pour qu'on le fasse ensemble. 
-
-1. relire la partie debogueur. C'est long.
-2. 
--->
 #### Utiliser le réseau
 
 Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
@@ -77,6 +72,18 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 [Installer python et un interpréteur](/cours/coder-et-développer/bases-programmation/interpréteur/){.interne}
 {% endaller %}
 
+#### Coder en python
+
+> But : avoir confiance dans le code produit
+
+{% aller %}
+
+1. [lire et écrire du code](/cours/coder-et-développer/écrire-code/){.interne}
+2. [comprendre et corriger un programme grace au debogeur](/cours/coder-et-développer/debugger/){.interne},  
+3. [variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
+
+{% endaller %}
+
 #### Interpréteur python
 
 > But : gérer les dépendances d'un projet entre développeurs. Tout le monde doit avoir les mêmes bibliothèques (nom et versions) installées.
@@ -92,21 +99,15 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 #### Exécution (pas à pas) d'un programme
 
-{% aller %}
-
-1. [comprendre et corriger un programme grace au debogeur](/cours/coder-et-développer/debugger/){.interne},  
-2. [variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
-
-{% endaller %}
-
 ### TD
 
 {% aller %}
 
 1. faites les tutoriels du cours :
    1. de vscode
-   2. du débogueur
-   3. faites un environnement virtuel, installez matplotlib et [faites le tutoriel](/cours/coder-et-développer/bases-programmation/matplotlib/){.interne} dans un vscode
+   2. lire et écrire en python
+   3. débogueur
+   4. faites un environnement virtuel, installez matplotlib et [faites le tutoriel](/cours/coder-et-développer/bases-programmation/matplotlib/){.interne} dans un vscode
 2. Utilisez les exercices de la partie [on s'entraîne](/cours/coder-et-développer/projet-codes/){.interne} pour :
    1. installer un environnement virtuel par projet
    2. comprendre comment fonctionne le débogueur
