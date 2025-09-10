@@ -553,35 +553,148 @@ Trouver une clique de taille K fixé est simple, en O(n^K) polynomail, mais ici 
 <li>soit $x$ à moins de 2 voisins : le graphe $G$ restreint aux voisins de $G$ est soit complet et il existe une clique de taille 3, soit il contient un couple sans arête qui, ajoutée à x forme un stable de taille 3.</li>
 </ol>
 <h3>Définition et existence</h3>
-<blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On note $R(p, q)$ le plus petit entier $n$ tel qu'un graphe $n$ sommets ou plus contienne :</p>
+<ul>
+<li><strong>soit</strong> un stable de taille $p$</li>
+<li><strong>soit</strong> une clique de taille $q$</li>
+</ul>
+</div></div>
+
+<p>Avant de démontrer que cette définition fait sens (<em>ie</em> que ce nombre existe), faisons quelques remarques</p>
+<ul>
+<li>Premièrement, si $R(p, q)$ existe alors  $R(q, p) = R(p, q)$ puisque si un graphe a une clique de taille $k$ son complémentaire à un stable de taille $k$.</li>
+<li>Deuxièmement $R(1, k) = R(k, 1) = 1$ pour tout $k$ puisque un sommet est un stable et un clique.</li>
+<li>Troisièmement $R(2, k) = k$ pour tout $k$ puisque :
+<ul>
+<li>le graphe complet à $k-1$ élément ne contient ni de stable de taille 2 : $k-1 &lt; R(2, k)$</li>
+<li>si $\{x, y\}$ n'est pas une arête du graphe c'est un stable et tout graphe complet de plus de $k$ sommet contient une clique de taille $k$ : $R(2, k) \leq k$</li>
+</ul>
+</li>
+</ul>
+<p>Avant de montrer l'existence de $R(p, q)$ pour tous $p$ et $q$ commençons par deux exercices préparatoires :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que si $A + B = C + D + 1$ pour quatre entiers positifs, alors :</p>
+<ul>
+<li>soit $C \geq A$</li>
+<li>soit $D \geq B$</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $C &lt; A$ et $D &lt; B$, alors $C + 1\leq A$ et $D + 1\leq B$ et on aurait $C + D + 2 \leq A + B$ donc $C + D + 1 &lt; A + B$ ce qui est impossible.</p>
+</div>
+</details>     
+</div>
+<p>En déduire l'exercice suivant :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que si un graphe $G=(V, E)$ est tel que $|V| = A + B$ alors pour tout sommet $v$ :</p>
+<ul>
+<li>soit $\delta(v) \geq A$</li>
+<li>soit $|V\backslash \{v\} \backslash N(v)| \geq B$</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En posant $C = \delta(v)$ et $D = |V\backslash \{v\} \backslash N(v)|$, on a $C + D + 1 = |V| = A + B$ et on est ramené au cas précédent.</p>
+</div>
+</details>     
+</div>
+<p>On peut maintenant passer aux choses sérieuses. On suppose que $R(p-1, q)$ et $R(p, q-1)$ existent et on considère un graphe $G=(V, E)$ à $R(p-1, q) + R(p, q-1)$ sommets. Les deux exercices précédent nous permettent de dire que pour tout sommet $v$ de $G$ :</p>
 <ol>
-<li>R(p, q).</li>
+<li>soit $\delta(v) \geq R(p, q-1)$</li>
+<li>soit $|V\backslash \{v\} \backslash N(v)| \geq R(p-1, q)$</li>
 </ol>
-</blockquote>
-<blockquote>
-<ol>
-<li>si ça existe R(p, q) = R(q, p)</li>
-<li>on sait que R(1, q) = 1 et R(2, q) = q (à prouver)</li>
-<li>R(p, q) ≤ R(p-1, q) + R(p, q-1)</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>TBD preuve idem que pour 6. on supprime un sommet et du coup soit ses voisins on plus que R(p, q-1) soit ses non voisin R(p-1, q)</p>
-<p>problème juste diagonal. Parler d'Erdos</p>
-</blockquote>
-<h3>Une Borne</h3>
-<blockquote>
-<p>4. en déduire (par rec) que R(p, q) ≤ C_{l+m-2}^{l-1}
-TBD on y reviendra pour les graphes aléatoire/méthode probabiliste
-3. on en reparlera ce problème a été très fécond. Voir Erdos</p>
-</blockquote>
+<p>Dans le premier cas, le graphe $G'$, restriction de $G$ à $N(v)$ contient $R(p, q-1)$ sommet, donc :</p>
+<ul>
+<li>soit il contient un stable de taille $p$ et il existe un stable de taille $p$ dans $G$</li>
+<li>soit il contient une clique $C$ de taille $q-1$ et l'ensemble $C \cup \{v\}$ est une clique de taille $q$ de $G$.</li>
+</ul>
+<p>Dans le second cas, le graphe $G'$, restriction de $G$ à $V\backslash \{v\} \backslash N(v)$ contient $R(p-1, q)$ sommet, donc :</p>
+<ul>
+<li>soit il contient une clique $C$ de taille $q$ et il existe une clique de taille $q$ de $G$.</li>
+<li>soit il contient un stable $S$ de taille $p-1$ et l'ensemble $S \cup \{v\}$ est un stable de taille $p$ dans $G$</li>
+</ul>
+<p>Dans tous les cas $G$ contient :</p>
+<ul>
+<li>soit un stable de taille $p$</li>
+<li>soit une clique de taille $q$</li>
+</ul>
+<p>Son nombre de sommet est donc plus grand que $R(p, q)$ et on a :</p>
+<div>
+$$
+R(p, q) \leq R(p-1, q) + R(p, q-1)
+$$
+</div>
+<p>Comme $R(2, k) = R(k, 2) = k$, l'équation précédente montre l'existence de $R(3, k) = R(k, 3)$ pour tous $k$ et de proche en proche on a :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>$R(p, q)$ existe pour tout entiers $p$ et $q$.</p>
+<p>On a $R(2, k) = R(k, 2) = k$ pur tout entier $k$ et pour tous entiers $p, q \geq 3$ :</p>
+<div>
+$$
+R(p, q) \leq R(p-1, q) + R(p, q-1)
+$$
+</div>
+</div></div>
+
+<p>On peut montrer par récurrence en utilisant la majoration précédente que :</p>
+<div>
+$$
+R(p, q) \leq C_{p+q-2}^{p-1}
+$$
+</div>
+<p>En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on cherche une valeur précise. La borne précédente étant très frustre.</p>
+<p>Par exemple la majoration précédente donne $R(5, 5) = C_{8}^{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43)</p>
 <h3>Généralisation</h3>
-<blockquote>
-<ol start="3">
-<li>peut se voir comme un problème de coloration des arêtes. Se généralise à plein de couleurs</li>
-</ol>
-</blockquote>
-<p>R(n1, ..., nq) ≤ R(n1, ..., nq-2, R(nq-1, nq))</p>
+<p>On peut voir le problème de Ramsey come un problème de coloration d'arête d'un graphe complet. Allez voir <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey#D%C3%A9finitions_et_%C3%A9nonc%C3%A9">la page Wikipédia dédiée au problème</a> pour en voir une formulation générale.</p>
 
 
 </article>
