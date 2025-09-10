@@ -204,12 +204,6 @@ C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir 
 
 On appelle **_couverture_** d'un graphe $G=(V, E)$ un ensemble de sommets $C \subseteq V$ tel que toute arête de $G$ possède une extrémité dans $V$.
 
-> TBD exemple.
->
-> TBD couverture min d'une clique de taille n = n-1
-> TBD v\c est un stable
-> TBD en déduire NPC
-
 {% note "**Problème**" %}
 
 - **nom** : couverture
@@ -220,8 +214,73 @@ On appelle **_couverture_** d'un graphe $G=(V, E)$ un ensemble de sommets $C \su
 
 {% endnote %}
 
+{% exercice %}
+Montrez que toute couverture de $K_n$ contient $n-1$ sommet.
+{% endexercice %}
+{% details "corrigé" %}
+> TBD si n-2 manque l'arête entre 2 sommets pas dans la couverture.
+{% enddetails %}
+{% exercice %}
+Montrez que le problème couverture est dans NP
+{% endexercice %}
+{% details "corrigé" %}
+> TBD algo
+{% enddetails %}
+{% exercice %}
+Si $C$ est une couverture d'un graphe $G$. Qu'est l'ensemble $V\backslash C$ ?
+{% endexercice %}
+{% details "corrigé" %}
+> TBD un stable
+{% enddetails %}
+{% exercice %}
+En déduire que le problème couverture est NP-complet
+{% endexercice %}
+{% details "corrigé" %}
+> TBD on cherche un stable max (|V|-K) un stable
+{% enddetails %}
+
 ## Théorème de Ramsey
 
-Le théorème de Ramsey est a priori surprenant.
+{% lien  %}
+
+- <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey>
+- <https://perso.ens-lyon.fr/thomas.budzinski/enseignement/Ramsey.pdf>
+
+{% endlien  %}
+
+Le théorème de Ramsey est a priori surprenant. Il stipule que si le graphe est assez grand, il y aura toujours soit une clique soit un stable d'une taille donnée.
+
+### Exemple
+
+Commençons par un exemple pour se fixer les idée.
+
+{% faire %}
+Dessinez quelques graphes à 6 sommets.
+
+Remarquez qu'il existe toujours :
+
+- soit un stable à 3 sommets (ou plus),
+- soit une clique à 3 sommets (ou plus).
+{% endfaire %}
+
+> TBD démo
+
+### Définition et existence
+
+> 1. R(p, q).
+>     1. si ça existe R(p, q) = R(q, p)
+>     2. on sait que R(1, q) = 1 et R(2, q) = q (à prouver)
+>     3. R(p, q) ≤ R(p-1, q) + R(p, q-1)
+
+> problème juste diagonal. Parler d'Erdos
+
+### Une Borne
+
+>     4. en déduire (par rec) que R(p, q) ≤ C_{l+m-2}^{l-1}
 > TBD on y reviendra pour les graphes aléatoire/méthode probabiliste
+> 3. on en reparlera ce problème a été très fécond. Voir erdos 
+
+### Généralisation
+
+> 3. peut se voir comme un problème de coloration des arêtes. Se généralise à plein de couleurs
 >

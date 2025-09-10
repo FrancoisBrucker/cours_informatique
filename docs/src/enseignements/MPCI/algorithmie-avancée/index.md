@@ -58,6 +58,7 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 ##### Cours 2
 
 {% aller %}
+
 1. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/){.interne}
    1. chemin
    2. composante connexe
@@ -67,10 +68,7 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% endaller %}
 
-On s'entraîne :
-
-- [DS de l'année dernière](./DS/ds.pdf) exercices 2 et 4.
-- théorème de Ramsey sur les cliques/stables (présence ou pas d'arête, démo, parler de Erdos pui généralisation à plein de couleurs, ce qui détermine le thm de Ramsey)
+On s'entraîne : [DS de l'année dernière](./DS/ds.pdf) exercices 4.
 
 #### Semaine 2
 
