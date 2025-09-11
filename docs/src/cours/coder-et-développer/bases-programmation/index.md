@@ -47,7 +47,16 @@ C'est une manière plus conviviale que la console d'accéder à l'interpréteur 
 
 Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.
 
-> TBD : un petit tuto.
+> TBD : un petit tuto avec les on s'entraîne.
+> Montrer que l'interpréteur tourne toujours en envoyant une fonction et en la'exécutant depuis l'interpréteur.
+> coder avec des fonctions c'est bien.
+
+## Partie II: structurer son code
+
+> module de python. Matplotlib et spyder
+> conditions, boucles et fonctions avec spyder.
+>
+> montrer qu'une fonction est toujours là après avoir été crée. Faire une fonction avec spyder, l'envoyer dans l'interpréteur puis l'utiliser.
 
 ### Utiliser le module matplotlib
 
@@ -59,13 +68,16 @@ Installé avec la plupart des environnements fournissant un interpréteur, le mo
 
 Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
 
-## <span id="coder-en-python"></span>Partie II : coder en python
+## <span id="coder-en-python"></span>Partie III : coder en python
 
 Nous avons pour l'instant utilisé python pour exécuter des instructions ou des fonctions. Ceci permet déjà d'utiliser python mais va se révéler rapidement limitant lorsque l'on voudra effectuer des tâches plus complexes ou tout simplement non prévue par les modules.
 
 Coder en python (ou en tout autre langage) ce cependant nécessiter des connaissances (un peu) plus poussées et des outils dédiées au code. Nous irons plus loin plus tard.
 
-### <span id="installation-développement"></span>Installer et utiliser un interpréteur
+> Ici ajouter plusieurs fichier pour créer ses propres modules.
+> séparer main de fct.py
+4
+]### <span id="installation-développement"></span>Installer et utiliser un interpréteur
 
 {% aller %}
 [Installer et utiliser un interpréteur](interpréteur){.interne}

@@ -693,9 +693,17 @@ U = &\{ x_1, x_2, x_3, x_4, x_5, c_1, c_2, c_3, c_4, l_1^1, l_1^2, l_2^1, l_2^2,
 $$
 </div>
 
-Nous allons montrer sur l'exemple que ce gadget fonctionne. Je cas général en découlera de lui-même.
+Nous allons montrer sur l'exemple que ce gadget fonctionne. Je cas général en découlera de lui-même. Il faut faire deux choses :
 
-#### de CE vers SAT
+1. montrer que si le problème de CE admet une solution alors le problème SAT originel aussi
+2. montrer que si le problème de CE n'admet pas de solution alors le problème SAT originel non plus
+
+On montre très souvent la 2. condition par la réciproque (montrer que montrer que si le problème SAT originel admet une solution alors le problème CE aussi), ce qui permet d'être symétrique :
+
+- Si CE à une solution alors SAT aussi
+- Si SAT à une solution alors CE aussi
+
+#### Solution de CE vers une solution de SAT
 
 Pour comprendre comment une solution de CE permet de trouver une solution de SAT, reprenons notre exemple et cherchons une partition solution. Il en existe plusieurs, par exemple :
 
@@ -750,9 +758,9 @@ Au final, avoir une partition nous garantit que le problème SAT originel a une 
 
 On reconstruit cette solution en temps (clairement) polynomial.
 
-#### de SAT vers CE
+#### Solution de SAT vers une solution de CE
 
-Il faut maintenant montrer la réciproque : si notre instance de $SAT$ à une solution alors notre instance de $CE$ en a également une.
+Il faut maintenant montrer que si notre instance de $SAT$ à une solution alors notre instance de $CE$ en a également une.
 
 Il suffit de faire la même chose que pour l'analyse précédente. Si l'instance de SAT a une solution, chaque clause $c_i$ possède au moins un littéral $l_i^{v(i)}$ qui est vrai. On peut alors considérer l'ensemble des classes formé de l'union de :
 

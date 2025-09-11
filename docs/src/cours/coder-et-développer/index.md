@@ -35,6 +35,12 @@ Une fois les bases acquises, terminez cette partie en faisant le tutoriel de pyt
 <https://docs.python.org/fr/3/tutorial/index.html>
 {% endlien %}
 
+## On s'entraîne
+
+> TBD reprendre le "on s’entraîne" de plus tard mais enlever les tests.
+> un dossier avec tous les fichiers python. et on exécute le fichier.
+> Juste un fichier avec fct et code par projet (prendre)
+
 ## <span id="développer"></span>Développer
 
 Avant de pouvoir écrire des programmes conséquents il faut comprendre comment est organisé votre ordinateur et pouvoir minimalement interagir avec son système d'exploitation. Donc lisez la partie consacrée aux bases d'un système d'exploitation avant de continuer :
@@ -54,6 +60,8 @@ Si vous avez votre ordinateur depuis longtemps sans vraiment vous en occuper, ou
 
 Une fois les prérequis acquis :
 
+> TBD ici vscode par projet, pas uniquement comme exécuteur de fichier.
+
 {% aller %}
 [Écrire et exécuter du code](écrire-code){.interne}
 {% endaller %}
@@ -65,6 +73,9 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 {% endaller %}
 
 On s'entraîne sur de petits projets :
+
+> TBD faire juste le diff d'avec avant en ajoutant les tests.
+> TBD en ajouter.
 
 {% aller %}
 [On s’entraîne : petits projets de code](projet-codes){.interne}
