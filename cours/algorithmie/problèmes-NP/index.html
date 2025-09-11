@@ -878,8 +878,17 @@ U = &\{ x_1, x_2, x_3, x_4, x_5, c_1, c_2, c_3, c_4, l_1^1, l_1^2, l_2^1, l_2^2,
 \end{array}
 $$
 </div>
-<p>Nous allons montrer sur l'exemple que ce gadget fonctionne. Je cas général en découlera de lui-même.</p>
-<h4>de CE vers SAT</h4>
+<p>Nous allons montrer sur l'exemple que ce gadget fonctionne. Je cas général en découlera de lui-même. Il faut faire deux choses :</p>
+<ol>
+<li>montrer que si le problème de CE admet une solution alors le problème SAT originel aussi</li>
+<li>montrer que si le problème de CE n'admet pas de solution alors le problème SAT originel non plus</li>
+</ol>
+<p>On montre très souvent la 2. condition par la réciproque (montrer que montrer que si le problème SAT originel admet une solution alors le problème CE aussi), ce qui permet d'être symétrique :</p>
+<ul>
+<li>Si CE à une solution alors SAT aussi</li>
+<li>Si SAT à une solution alors CE aussi</li>
+</ul>
+<h4>Solution de CE vers une solution de SAT</h4>
 <p>Pour comprendre comment une solution de CE permet de trouver une solution de SAT, reprenons notre exemple et cherchons une partition solution. Il en existe plusieurs, par exemple :</p>
 <div>
 $$
@@ -925,8 +934,8 @@ $$
 </ul>
 <p>Au final, avoir une partition nous garantit que le problème SAT originel a une solution et la donne !</p>
 <p>On reconstruit cette solution en temps (clairement) polynomial.</p>
-<h4>de SAT vers CE</h4>
-<p>Il faut maintenant montrer la réciproque : si notre instance de $SAT$ à une solution alors notre instance de $CE$ en a également une.</p>
+<h4>Solution de SAT vers une solution de CE</h4>
+<p>Il faut maintenant montrer que si notre instance de $SAT$ à une solution alors notre instance de $CE$ en a également une.</p>
 <p>Il suffit de faire la même chose que pour l'analyse précédente. Si l'instance de SAT a une solution, chaque clause $c_i$ possède au moins un littéral $l_i^{v(i)}$ qui est vrai. On peut alors considérer l'ensemble des classes formé de l'union de :</p>
 <ul>
 <li>$\{c_i, l_i^{v(i)}\}$ pour tout $ 1\leq i \leq m$,</li>
