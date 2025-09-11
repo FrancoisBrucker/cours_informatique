@@ -96,6 +96,9 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 {% endaller %}
 
+> TBD debug avec un environnement virtuel : <https://m-ruminer.medium.com/vscode-and-debugging-python-in-virtual-environments-d975125b455c>
+> doc <https://code.visualstudio.com/docs/python/debugging>
+
 ### TD
 
 {% aller %}

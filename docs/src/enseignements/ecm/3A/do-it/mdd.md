@@ -15,11 +15,11 @@ eleventyComputed:
 
 24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.
 
-## Partie I : le système
+> TBD en chantier à cause des 2A :)
 
-### Cours
+## Partie 0 : Contexte
 
-> Durée 3h plus questions
+### Base système
 
 #### Utiliser le réseau
 
@@ -30,15 +30,7 @@ Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau
 
 Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 
-#### Connaissances minimales du système d'exploitation
-
-{% aller %}
-[But d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/but){.interne}
-{% endaller %}
-
-**[3A] :** Exécution grace au path Voir ses dépendances.
-
-#### Installations système complémentaires
+#### Avoir un système opérationnel
 
 Outils et logiciels très utiles pour l'utilisation raisonnée de son système.
 
@@ -55,12 +47,43 @@ Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence 
 [installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
 {% endaller %}
 
+#### Connaissances minimales du système d'exploitation
+
+{% aller %}
+[But d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/but){.interne}
+{% endaller %}
+
+{% aller %}
+[Programmes et bibliothèques](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-exécutable/){.interne}
+{% endaller %}
+
+### Exécuter du python
+
+> TBD c'est un découpage du cours [coder et développer](/cours/coder-et-développer/){.interne}
+
+#### Principes
+
+L'interpréteur python est un programme dont le but est d'exécuter du code python qu'on lui passe. Il doit exister sur votre système, mais pour l'instant on va l'utiliser via le web.
+
+{% aller %}
+[interpréter du python](/cours/coder-et-développer/bases-programmation/principes/){.interne}
+{% endaller %}
+
+
+
+
+
+### TBD
+
+
+
 #### Dossiers et fichiers
 
 {% aller %}
 
 1. [Naviguer dans un système de fichiers](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/){.interne}
 2. **[3A] :** le [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne} pour exécuter des programmes et naviguer dans le système de fichiers
+3. **[3A] :** Exécution grace au path Voir ses dépendances.
 
 {% endaller %}
 
