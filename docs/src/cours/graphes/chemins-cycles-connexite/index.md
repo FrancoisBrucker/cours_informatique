@@ -93,7 +93,7 @@ de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0
 Terminons cette partie par un petit exercice :
 
 {% exercice %}
-Montrer qu'[un tournoi](../structure/#definition-tournoi) $G = (V, E)$ n'admet pas de cycle si et seulement si la relation $xRy \Leftrightarrow xy \in E$ est transitive.
+Montrer qu'[un tournoi](../structure/#definition-tournoi){.interne} $G = (V, E)$ n'admet pas de cycle si et seulement si la relation $xRy \Leftrightarrow xy \in E$ est transitive.
 {% endexercice %}
 {% details "solution" %}
 Si la relation n'est pas transitive il existe $x$, $y$ et $z$ tels que $xy$ et $yz$ mais pas $xz$, ce qui implique que $xyzx$ est un cycle.
@@ -227,11 +227,11 @@ Le graphe étant connexe, il existe un chemin élémentaire entre $u$ et $v$. No
 
 Soit $x_i$ le plus grand $i>1$ tel qu'il existe un cycle élémentaire entre $u$ et $x_i$ ($i> 1$ existe car le degré de $u$ est strictement plus grand que 1). Si $i=p$ on a gagné, donc on peut supposer sans perte de généralité que $1< i < p$. Notez que ce cycle ne peut contenir de sommets du chemin $x_{i+1}\dots x_p$
 
- En supprimant $x_i$ du graphe, il reste connexe et donc il existe un chemin entre $u$ et $v$. Dans ce chemin considérons le plus grand élément, disons $w$, qui fait parti du cycle et $x_j$ le premier élément après $w$ qui fait parti du chemin $x_{i+1}\dots x_p$. Comme $v=x_p$, $w$ et $x_j$ existent. Or la portion de chemin entre $w$ et $x_j$ ne contient aucun élément ni du cycle ni du chemin $x_{i+1}\dots x_p$. On peut donc construire un cycle élémentaire entre $u$ et $x_j$ en allant de $u$ à $w$ puis de de $w$ à $x_j$ et en revenant à $u$ par $x_i$ et l'autre bout du cycle.
+En supprimant $x_i$ du graphe, il reste connexe et donc il existe un chemin entre $u$ et $v$. Dans ce chemin considérons le plus grand élément, disons $w$, qui fait parti du cycle et $x_j$ le premier élément après $w$ qui fait parti du chemin $x_{i+1}\dots x_p$. Comme $v=x_p$, $w$ et $x_j$ existent. Or la portion de chemin entre $w$ et $x_j$ ne contient aucun élément ni du cycle ni du chemin $x_{i+1}\dots x_p$. On peut donc construire un cycle élémentaire entre $u$ et $x_j$ en allant de $u$ à $w$ puis de de $w$ à $x_j$ et en revenant à $u$ par $x_i$ et l'autre bout du cycle.
 
 ![2-connexe cycle](./2-connexe-cycle.png)
 
- Comme $j>i$ on a une contradiction.
+Comme $j>i$ on a une contradiction.
 
 {% enddetails %}
 
@@ -313,7 +313,7 @@ est connexe.
 {% details "**Preuve**", "open" %}
 On montre la preuve par récurrence. Si $n=2$, il faut évidemment avoir $m > 0$ pour que le graphe soit connexe. On suppose la propriété vraie pour $\vert V \vert = n-1$ et on se place à $\vert V \vert = n \geq 2$.
 
-Si le graphe est complet on a $m = \frac{n(n-1)}{2} > \frac{(n-1)(n-2)}{2}$ et le graphe est trivialement connexe. Il existe donc un sommet $x$ de degré $\delta(x) < n-1$. De plus, s'il existait un sommet sans voisin, le nombre d'arêtes serait strictement plus petit $\frac{(n-1)(n-2)}{2}$ ce qui est impossible. On a donc également $\delta(x) \geq 1$.
+Si le graphe est complet on a $m = \frac{n(n-1)}{2} > \frac{(n-1)(n-2)}{2}$ et le graphe est trivialement connexe. Il existe donc un sommet $x$ de degré $\delta(x) < n-1$. De plus, s'il existait un sommet sans voisin, le nombre d'arêtes serait plus petit (ou égal) à $\frac{(n-1)(n-2)}{2}$ ce qui est impossible. On a donc également $\delta(x) \geq 1$.
 
 Le nombre d'arêtes $m'$ du sous-graphe $G'$ induit par la suppression de $x$ dans $G$ vaut :
 
