@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Probabilités discrètes</title>
+    <title>Courbes elliptiques</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Probabilités discrètes</h1>
+  <h1>Courbes elliptiques</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/arithmétique/">Arithmétique</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/arithmétique/probabilités/">Probabilités discrètes</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/">Misc</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/Misc/courbes-elliptiques/">Courbes elliptiques</a>
 
 </div></div>
 
@@ -96,55 +96,43 @@
     
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability">proba discrete</a></p>
-</div></div>
-
-<p>Comme toujours, l'infini n'existe pas en vrai. Toutes nos probabilités seront sur des univers finis.</p>
+  <blockquote>
+<p>TBD</p>
 <ul>
-<li><em><strong>univers</strong></em> : $\Omega$ un ensemble fini.</li>
-<li><em><strong>probabilité</strong></em> : $P : \Omega \rightarrow [0, 1]$ tel que $\sum_{x \in \Omega} P(x) = 1$.</li>
+<li>Utilisées pour les problèmes de logarithmes discret</li>
+<li>Ils permettent d'avoir des clés bien plus petite.
+<a href="https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl">https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl</a></li>
 </ul>
-<p>La probabilité $P$ est <em><strong>uniforme</strong></em> si $P(x) = \frac{1}{\vert \Omega \vert}$ pour tout $x \in \Omega$. Par défaut, toutes les probabilités seront uniforme.</p>
-<p>Un <em><strong>évènement</strong></em> $A \subseteq \Omega$ est de probabilité $Pr_P[A] = \sum_{x \in A}P(x)$. On a :</p>
-<ul>
-<li>$Pr_P[U] = 1$</li>
-<li>$Pr_P[U\backslash A] = 1 - Pr_P[A]$</li>
-<li>$Pr_P[A \cup B] = Pr_P[A] + Pr_P[B] - \cdot Pr_P[A\cap B]$</li>
-<li>$A$ et $B$ sont <em><strong>indépendants</strong></em> si $Pr_P[A \cap B] = Pr_P[A] \cdot Pr[B]$</li>
-</ul>
-<p>On omettra la probabilité $P$ et écrira $Pr[A]$ à la place de $Pr_P[A]$ s'il n'y a pas d’ambiguïté.</p>
-<p>Les événements se manifestent via des <em><strong>variable aléatoire</strong></em> $X$, définies telle que : $X : \Omega \rightarrow U$ ($U$ quelconque a priori). On note alors :</p>
-<ul>
-<li>$Pr[X = x] = Pr[X^{-1}(v)]$</li>
-<li>$Pr[X \in V] = Pr[X^{-1}(V)]$ avec $V \subseteq U$</li>
-</ul>
-<p>Une variable aléatoire sera dite <em><strong>uniforme</strong></em> si $Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $X \xleftarrow{R} \mathcal{U}$</p>
-<p>Deux variables aléatoires $X : \Omega \rightarrow U$ et $Y : \Omega \rightarrow U'$ sont <em><strong>indépendantes</strong></em> si les évènements qui les dirigent sont eux mêmes indépendants :
-$Pr[X \in V, Y \in V'] = Pr[X \in V] \cdot Pr[Y \in V']$.</p>
-<p>En sécurité, on aura typiquement :</p>
-<ul>
-<li>$\Omega = \{0, 1\}^n$ l'ensemble des clés</li>
-<li>probabilité uniforme</li>
-<li>la variable aléatoire associée est le chiffre : $E(k, m)$</li>
-</ul>
-<p>Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueurs $L$ :</p>
-<ul>
-<li>l'univers est tout ce qui arrive : $\Omega = \{0, 1\}^L \times \{0, 1\}^L$ et correspond aux deux mots</li>
-<li>probabilité uniforme</li>
-<li>les variables aléatoires :
-<ul>
-<li>$M_0 : \Omega \rightarrow \{0, 1\}^L$</li>
-<li>$M_1 : \Omega \rightarrow \{0, 1\}^L$</li>
-</ul>
-</li>
-</ul>
+</blockquote>
+<p>L'équation générale d'une courbe elliptique :</p>
+<div>
+$$
+y^2 + a_1 x \cdot y + a_3 \cdot y= x^3 + a_2\cdot x^2 + a_4\cdot x + a_6
+$$
+</div>
+<p>Avec les $a_i$ pris dans un corps.</p>
+<p>Si on utilise le corps des réels, on peut utiliser l'<a href="https://fr.wikipedia.org/wiki/%C3%89quation_de_Weierstrass">équation de Weierstrass</a> pur simplifier
+Forme de Weierstrass :</p>
+<div>
+$$
+y^2 = x^3 + a\cdot x^2 + b\cdot x
+$$
+</div>
 <blockquote>
-<p>TBD : deux trucs qui bougent avec le &quot;sachant B&quot;</p>
+<p>TBD forme de Weierstrass</p>
+</blockquote>
+<p>La courbe utilisée généralement en cryptographie est la <a href="https://fr.wikipedia.org/wiki/Curve25519">Curve25519</a> :</p>
+<div>
+$$
+y^2 = x^3 + 486662\cdot x^2 + x
+$$
+</div>
+<p>Où les nombres sont pris dans le corps fini $\mathbb{Z}/p\mathbb{Z}$, avec $p=2^{255} - 19$, le plus grand entier signé premier sur 256b (le dernier bit est un bit de signe).</p>
+<p>Les éléments considérés sont les couples $(x, y)$ de la courbe où $x$ et $y$ sont dans le corps sous-jacent.</p>
+<blockquote>
+<p>TBD : définition de l'addition sérieusement
+on se place dans le groupe avec l'addition.
+<a href="https://perso.univ-rennes1.fr/christophe.ritzenthaler/cours/point-counting-ec.pdf">compter les points d'une courbe elliptique</a></p>
 </blockquote>
 
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Courbes elliptiques</title>
+    <title>Processus de Galton-Watson</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Courbes elliptiques</h1>
+  <h1>Processus de Galton-Watson</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/arithmétique/">Arithmétique</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/arithmétique/courbes-elliptiques/">Courbes elliptiques</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/arbre-galton-watson/">Processus de Galton-Watson</a>
 
 </div></div>
 
@@ -99,40 +99,13 @@
   <blockquote>
 <p>TBD</p>
 <ul>
-<li>Utilisées pour les problèmes de logarithmes discret</li>
-<li>Ils permettent d'avoir des clés bien plus petite.
-<a href="https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl">https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl</a></li>
+<li><a href="https://herbach.perso.math.cnrs.fr/downloads/projet-galton-watson.pdf">https://herbach.perso.math.cnrs.fr/downloads/projet-galton-watson.pdf</a></li>
 </ul>
 </blockquote>
-<p>L'équation générale d'une courbe elliptique :</p>
-<div>
-$$
-y^2 + a_1 x \cdot y + a_3 \cdot y= x^3 + a_2\cdot x^2 + a_4\cdot x + a_6
-$$
-</div>
-<p>Avec les $a_i$ pris dans un corps.</p>
-<p>Si on utilise le corps des réels, on peut utiliser l'<a href="https://fr.wikipedia.org/wiki/%C3%89quation_de_Weierstrass">équation de Weierstrass</a> pur simplifier
-Forme de Weierstrass :</p>
-<div>
-$$
-y^2 = x^3 + a\cdot x^2 + b\cdot x
-$$
-</div>
+<p>Process simple. Contexte de l'époque et utilisation actuelle.</p>
 <blockquote>
-<p>TBD forme de Weierstrass</p>
-</blockquote>
-<p>La courbe utilisée généralement en cryptographie est la <a href="https://fr.wikipedia.org/wiki/Curve25519">Curve25519</a> :</p>
-<div>
-$$
-y^2 = x^3 + 486662\cdot x^2 + x
-$$
-</div>
-<p>Où les nombres sont pris dans le corps fini $\mathbb{Z}/p\mathbb{Z}$, avec $p=2^{255} - 19$, le plus grand entier signé premier sur 256b (le dernier bit est un bit de signe).</p>
-<p>Les éléments considérés sont les couples $(x, y)$ de la courbe où $x$ et $y$ sont dans le corps sous-jacent.</p>
-<blockquote>
-<p>TBD : définition de l'addition sérieusement
-on se place dans le groupe avec l'addition.
-<a href="https://perso.univ-rennes1.fr/christophe.ritzenthaler/cours/point-counting-ec.pdf">compter les points d'une courbe elliptique</a></p>
+<p>Compter.
+catalan et chemins de Dyck pour les énumérer : <a href="https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf">https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf</a></p>
 </blockquote>
 
 
