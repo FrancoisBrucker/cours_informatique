@@ -1,7 +1,11 @@
 ---
 layout: layout/post.njk
 
-title: Arithmétique
+title: Misc
+tags: ["cours", "misc", "probabilités"]
+author: "François Brucker"
+resume: "Nous mettrons ici divers sujets dont nous aurons besoin aux cours des sujets traités. Ils sont assez généraux pour avoir leurs parties à eux mais pas assez informatique pour être traité de façon extensive."
+
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,6 +13,18 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
+
+> TBD mettre de l'ordre.
+
+Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, définitions et quelques propriétés sur les probabilités, _etc_) dont nous aurons besoin aux cours des sujets traités. Ils sont assez généraux pour avoir leurs parties à eux mais pas assez _"informatique"_ pour être traité de façon extensive.
+
+## Probabilités discrètes
+
+{% aller %}
+[Probabilités](probabilités){.interne}
+{% endaller %}
+
+## Entiers
 
 Les algorithmes de cryptographie nécessitent certaines connaissances en arithmétique et leurs algorithmes associés, en particulier sur les anneaux et corps finis.
 
@@ -22,14 +38,6 @@ valeur : x = 010100110
 $n$ est grand. Même si $\mathcal{O}(1)$ pour des mot sur 64b, comme n>64, c'est plus.
 
 C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction de $n$, le nombre de bit des paramètres et de $B$, la base de calcul (64b pour nous actuellement). Nous ne nous embêterons pas ici avec ça et donnerons les complexités uniquement en fonction de $n$.
-
-## Probabilités discrètes
-
-{% aller %}
-[Probabilités](probabilités){.interne}
-{% endaller %}
-
-## Entiers
 
 {% aller %}
 [Arithmétique entière](nombres){.interne}

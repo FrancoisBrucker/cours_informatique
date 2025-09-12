@@ -50,7 +50,6 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endaller %}
 
-
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
@@ -70,7 +69,6 @@ Visiter tous les sommets de proche en proche
 {% aller %}
 [Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
 {% endaller %}
-
 
 ### Cheminer
 
@@ -121,6 +119,7 @@ Le parcours doit suivre la structure de graphe (il y a des saut avec les parcour
 2. [Arbres enracinés](arbres-enracinés){.interne}
 3. [Arbres couvrant](arbres-couvrants){.interne}
 4. [Isomorphisme d'arbre](arbres-isomorphisme){.interne}
+5. [Processus de Galton-Watson](arbre-galton-watson){.interne}
 
 {% endaller %}
 
