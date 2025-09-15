@@ -77,15 +77,24 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 > parcours largeur/profondeur
 > flot ?
 
-1. rappels sur les chemins les plus courts :
-   1. [Poids positifs](/cours/graphes/chemin-poids-min-problème/){.interne}
-   2. Noms des [algorithmes pour poids quelconques](/cours/graphes/chemin-poids-min-cas-général/){.interne}
-2. Arbres :
-   1. [version théorie des graphes des arbres](/cours/graphes/arbres/){.interne}
-      - définitions
-      - propriétés fondamentales
-      - Cayley et Prüfer
-   2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
+Arbres :
+
+1. [version théorie des graphes des arbres](/cours/graphes/arbres/){.interne}
+   - définitions
+   - propriétés fondamentales
+2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
+3. Cayley et Prüfer
+4. Catalan et chemin de Dyck
+5. Poyla et isomorphisme d'arbre
+6. Process de Watson
+
+> TBD faire exos du [DS](./DS/ds.pdf){.interne}
+
+{% faire %}
+En DM, l'ET de l'année dernière :
+
+[ET 2024-2025](./ET/et.pdf){.interne}
+{% endfaire %}
 
 #### Semaine 3
 

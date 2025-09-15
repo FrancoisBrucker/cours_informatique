@@ -19,9 +19,11 @@ Montrer que pour tout graphe connexe $G = (V, E)$, il existe au moins un arbre $
 Si un graphe est connexe et n'est pas un arbre, alors il existe un cycle. En supprimant une arête de ce cycle le graphe reste connexe et a strictement moins d'arêtes. On peut alors itérativement supprimer des arêtes à un graphe connexe qui contient un cycle jusqu'à obtenir un graphe connexe à $\vert V \vert -1$ arêtes qui ne contient pas de cycles : ce sera un arbre.
 {% enddetails %}
 
-> TBD def
+On appelle ces arbres les **arbres couvrants** d'un graphe :
 
-On appelle ces arbres les **arbres couvrants** d'un graphe.
+{% note "**Définition" %}
+> TBD def
+{% endnote %}
 
 Les arbres couvrant d'un graphe sont beaucoup utilisés en optimisation. Nous allons montrer un exemple ci-après.
 
@@ -91,7 +93,7 @@ Toutes les preuves de cette partie et de la partie suivante vont fonctionner la 
 - Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.
   {% enddetails %}
 
-### un algorithme { #algo-prim }
+### Algorithme de Prim
 
 Ce problème a l'air dur, mais il possède un algorithme (assez) simple pour le résoudre. L'algorithme suivant est l'algorithme de Prim (1957) :
 
@@ -156,7 +158,7 @@ Ne confondez pas les 2 problèmes !
 {% endattention %}
 {% enddetails %}
 
-### un autre algorithme
+### Algorithme de Kruskal
 
 {% lien %}
 <https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal>
@@ -164,3 +166,7 @@ Ne confondez pas les 2 problèmes !
 
 > TBD Kruskal
 > $\mathcal{O}(n^2\log(n))$ s'il faut trier, et $\mathcal{O}(n^2)$ sinon.
+
+## Exercice
+
+> DS 2024-2025.

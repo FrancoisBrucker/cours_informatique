@@ -347,7 +347,7 @@ Comme $R(2, k) = R(k, 2) = k$, l'équation précédente montre l'existence de $R
 {% note "**Proposition**" %}
 $R(p, q)$ existe pour tout entiers $p$ et $q$.
 
-On a $R(2, k) = R(k, 2) = k$ pur tout entier $k$ et pour tous entiers $p, q \geq 3$ :
+On a $R(2, k) = R(k, 2) = k$ pour tout entier $k$ et pour tous entiers $p, q \geq 3$ :
 
 <div>
 $$
@@ -357,22 +357,24 @@ $$
 
 {% endnote %}
 
-On peut montrer par récurrence en utilisant la majoration précédente que :
+On peut alors montrer facilement par récurrence sur $k = p + q \geq 4$ et en utilisant la majoration précédente que :
 
 <div>
 $$
-R(p, q) \leq C_{p+q-2}^{p-1}
+R(p, q) \leq \binom{p+q-2}{p-1}
 $$
 </div>
-
-En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on cherche une valeur précise. La borne précédente étant très frustre.
-
-Par exemple la majoration précédente donne $R(5, 5) = C_{8}^{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43)
-
-<!-- > TBD borne inférieure avec méthode probabiliste de Erdos -->
 
 ### Généralisation
 
 On peut voir le problème de Ramsey come un problème de coloration d'arête d'un graphe complet. Allez voir [la page Wikipédia dédiée au problème](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Ramsey#D%C3%A9finitions_et_%C3%A9nonc%C3%A9) pour en voir une formulation générale.
 
-<!-- > TBD écrire et montrer un exemple -->
+> TBD écrire et montrer un exemple
+
+### Particularisation
+
+En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on cherche une valeur précise. La borne précédente étant très frustre.
+
+Par exemple la majoration précédente donne $R(5, 5) = \binom{8}{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43)
+
+> TBD Méthode probabiliste <https://www.youtube.com/watch?v=4weMmFZSBtI>

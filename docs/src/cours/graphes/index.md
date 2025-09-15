@@ -20,13 +20,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : intégrer les parties :
->
-> - [bellman-ford](./bellman-ford)
-> - [cycle-chemin](./projet-chemins-cycles)
->
-> TBD Ramsay et cliques (friends and stranger theorem) ? Méthode probabiliste <https://www.youtube.com/watch?v=4weMmFZSBtI>
-
 Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.
 
 Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cette structure, à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l'intersection des mathématiques discrètes et de l'informatique théorique — et au cœur de nombre d'applications de tous les jours.
@@ -39,6 +32,7 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 1. [Structure d'un graphe](structure){.interne}
 2. [Encodage de graphes](encodage){.interne}
+3. [Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
 
 {% endaller %}
 
@@ -62,17 +56,7 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 {% endaller %}
 
-### Visiter
-
-Visiter tous les sommets de proche en proche
-
-{% aller %}
-[Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
-{% endaller %}
-
-### Cheminer
-
-Le parcours doit suivre la structure de graphe (il y a des saut avec les parcours en largeur/profondeur) en restant minimal :
+### Chemins le plus long
 
 {% aller %}
 
@@ -81,27 +65,28 @@ Le parcours doit suivre la structure de graphe (il y a des saut avec les parcour
 
 {% endaller %}
 
-### Projets
+Projets :
 
 {% aller %}
 
-[Mots de Bruijn](projet-mots-bruijn){.interne}
+1. [Mots de Bruijn](projet-mots-bruijn){.interne}
+2. [cycle-chemin](./projet-chemins-cycles){.interne}
 
 {% endaller %}
 
-## Chemins de longueur/poids minimum
+### Chemins de longueur/poids minimum
 
-### <span id="chemin-problèmes"></span> Problème et algorithmes
+#### <span id="chemin-problèmes"></span> Problème et algorithmes
 
 {% aller %}
 
 1. [Chemin de poids minimum](chemin-poids-min-problème){.interne}
-2. [Algorithme de Dijkstra et $A^\star$](chemin-poids-min-positif){.interne}
-3. [Algorithmes généraux](chemin-poids-min-cas-général){.interne}
+2. [Algorithme avec poids positifs (Dijkstra et $A^\star$)](chemin-poids-min-positif){.interne}
+3. [Algorithmes généraux (Bellman-Ford et Roy-Floyd-Warshall)](chemin-poids-min-cas-général){.interne}
 
 {% endaller %}
 
-### <span id="projet-chemin-poids-min"></span> Projets
+#### <span id="projet-chemin-poids-min"></span> Projets
 
 {% aller %}
 
@@ -115,18 +100,17 @@ Le parcours doit suivre la structure de graphe (il y a des saut avec les parcour
 
 {% aller %}
 
-1. [Arbres](arbres){.interne}
-2. [Arbres enracinés](arbres-enracinés){.interne}
-3. [Arbres couvrant](arbres-couvrants){.interne}
-4. [Isomorphisme d'arbre](arbres-isomorphisme){.interne}
-5. [Processus de Galton-Watson](arbre-galton-watson){.interne}
+[Arbres](arbres){.interne}
 
 {% endaller %}
 
 > exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
 > TBD : DFS et arbre. Tarjan pour fortement connexe.
+> TBD : chemins de taxi. Voir <https://archipel.uqam.ca/8784/1/M14397.pdf>
 
 {% aller %}
+
+> TBD à mettre en algorithmie. Séparer le cours de graphe en parties, comme le cours d'algo.
 
 [Structures de données arborées](structures-arborées){.interne}
 

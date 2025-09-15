@@ -13,13 +13,78 @@ eleventyComputed:
 ---
 
 
-24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.
+24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests. C'est la suite de ce que vous avez fait en 1A avec JEMNEP et I1 de MIE en 2A. Donc revenez en arrière s'il vous manque des connaissances.
 
-> TBD en chantier à cause des 2A :)
+> TBD pour l'instant, je remets toutes les étapes ici.
 
-## Partie 0 : Contexte
+## Partie I
 
-### Base système
+> Identique au 2A [Méthode de développement I1-MIE](/enseignements/ecm/2A/cdp/){.interne}
+
+Pour la prochaine fois, trois groupes :
+
+- [poetry](https://python-poetry.org/)
+- [uv](https://docs.astral.sh/uv/)
+- module et package python : comment les utiliser
+
+Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités.
+
+## Partie II
+
+> Début Identique au 2A [Méthode de développement I1-MIE](/enseignements/ecm/2A/cdp/){.interne}
+
+Puis :
+
+{% aller %}
+
+1. [design pattern](/cours/coder-et-développer/programmation-objet/design-patterns/){.interne}
+2. [code coverage](/cours/coder-et-développer/couverture-de-code/){.interne}
+3. [TDD](/cours/coder-et-développer/projet-TDD/){.interne}
+
+{% endaller %}
+
+Pour la prochaine fois, trois groupes :
+
+- design pattern
+- tests dans d'autres langages (java, js ou ts)
+- un autre truc.
+
+Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités.
+
+## Partie III
+
+> TBD
+
+<!-- TBD voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y mettre l'interpréteur et le debogueur. Ajouter un tuto pour qu'il puisse montrer ce qu'est une variable. l'exécution d'une commande et d'une fonction) 
+
+## Partie II : un algorithme
+
+> TBD ici JEMNEP : input ≠ return et les fonctions. Un programme qui fait tout
+>
+> TBD ici tests et installation de pytest sur le python du système
+> TBD voir la gestion des variables grace au débogueur.
+
+## Partie III : un programme
+
+> TBD ici JEMNEP : deux fichiers ou on sépare main et fonctions. On dit pourquoi
+> TBD ici dépendances puis prog objet
+> TBD en 3A on ajoute design et TDD
+
+## Partie IV : Le projet
+
+> TBD ici JEMNEP : un zip et le fichier requirement.txt + readme
+> TBD ici git pour le projet
+> puis virtualenv pour la gestion des dépendances.
+
+-->
+
+<!-- ## Partie I : Système
+
+> L'environnement dans lequel on code.
+
+### Utiliser son Système d'exploitation
+
+> [JEMNEP](/enseignements/ecm/1A/jemnep/){.interne}
 
 #### Utiliser le réseau
 
@@ -47,9 +112,12 @@ Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence 
 [installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
 {% endaller %}
 
-#### Connaissances minimales du système d'exploitation
+### Connaissances minimales du Système d'Exploitation
+
+> [JEMNEP](/enseignements/ecm/1A/jemnep/){.interne}
 
 {% aller %}
+
 [But d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/but){.interne}
 {% endaller %}
 
@@ -57,7 +125,61 @@ Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence 
 [Programmes et bibliothèques](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-exécutable/){.interne}
 {% endaller %}
 
+### Dossiers et fichiers
+
+#### Notion de chemin
+
+> [JEMNEP](/enseignements/ecm/1A/jemnep/){.interne}
+
+{% aller %}
+
+[Naviguer dans un système de fichiers](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/){.interne}
+
+{% endaller %}
+
+#### Terminal
+
+> 3A
+
+1. le [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne} pour exécuter des programmes et naviguer dans le système de fichiers
+2. le (power)shell
+3. Exécution d'un programme grâce au path
+
+## Partie II : coder un algorithme
+
 ### Exécuter du python
+
+> TBD suivre le cours.
+> TBD 
+> 1. interpréteur (avec basthon) :
+>     1. comprendre les langages interprété vs compilé
+>     2. comprendre les variables et les objets
+> 2. interpréteur ligne à ligne exécution. Pas pratique si plusieurs lignes -> spyder/notebook pour :
+>     1. faire des fonctions avec spyder ou un notebook. différence entre print et return
+>     2. comprendre les variables locales
+> 3. Mais pas bien car ordre ds cellules important, on est pas sur que la prochaine exécution sera identique à l'ancienne : il faut refaire un interpréteur à chaque exécution.
+>     1. installation d'un python puis on regarde si ça marche avec un terminal (en 1A ici on ouvre un terminal et on explique ce que c'est). En 3A on fait marcher le tout en : 1. trouver ou est le python ; on fait des chemins pour y arriver.
+>     2. pour exécuter du python il va falloir créer des fichiers et les envoyer dans un interpréteur. On utilise un programme pour nous aider : vscode
+
+### Coder un algorithme
+
+> ici cours par défaut.
+> TBD ajouter des choses sans tests dans un seul fichier pour comprendre comment tout ça fonctionne juste avec vscode.
+> débogueur pour voir comment il s'exécute.
+
+> le chemin pour savoir où exécuter son python avec vscode et son terminal intégré.
+
+### Installer des modules
+
+> installer des modules :
+>   1A. numpy ou matplotlib :
+>   2A. pytest
+>   3A. code coverage.
+> TBD en 2A on ajoute pytest en installant le module pytest
+
+> TBD ici programme python et interpréteur
+
+
 
 > TBD c'est un découpage du cours [coder et développer](/cours/coder-et-développer/){.interne}
 
@@ -77,15 +199,6 @@ L'interpréteur python est un programme dont le but est d'exécuter du code pyth
 
 
 
-#### Dossiers et fichiers
-
-{% aller %}
-
-1. [Naviguer dans un système de fichiers](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/){.interne}
-2. **[3A] :** le [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne} pour exécuter des programmes et naviguer dans le système de fichiers
-3. **[3A] :** Exécution grace au path Voir ses dépendances.
-
-{% endaller %}
 
 #### Ordinateur pour le développement en python
 
@@ -138,17 +251,10 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 {% endaller %}
 
-<!-- > TBD test : interpréteur vs programme / variable locale vs globale -->
+> TBD test : interpréteur vs programme / variable locale vs globale
 
 ### À faire
 
-Pour la prochaine fois, trois groupes :
-
-- [poetry](https://python-poetry.org/)
-- [uv](https://docs.astral.sh/uv/)
-- module et package python : comment les utiliser
-
-> Prépare un exposé de 5min chacun + support avec biblio et principales fonctionnalités.
 
 ## Partie II : principes de développement
 
@@ -182,3 +288,4 @@ Basé sur les cours :
 - [Système et réseau](/cours_informatique/cours/système-et-réseau){.interne}
 
 {% endlien %}
+ -->

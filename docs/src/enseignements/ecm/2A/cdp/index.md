@@ -17,6 +17,41 @@ eleventyComputed:
 
 24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.
 
+<!-- TBD 
+
+Modifier le plan pour l'année prochaine. Mettre l'environnement virtuel en fin de 2A, partie IV
+
+voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y mettre l'interpréteur et le debogueur. Ajouter un tuto pour qu'il puisse montrer ce qu'est une variable. l'exécution d'une commande et d'une fonction) 
+
+## Partie I : le système
+
+> TBD Ca c'est JEMNEP
+
+> TBD ici programme python et interpréteur
+> débogueur pour voir comment il s'exécute.
+> le chemin pour savoir où exécuter son python.
+> installer des modules (ici numpy ou matplotlib) sur un python spécifique
+
+## Partie II : un algorithme
+
+> TBD ici JEMNEP : input ≠ return et les fonctions. Un programme qui fait tout
+>
+> TBD ici tests et installation de pytest sur le python du système
+
+## Partie III : un programme
+
+> TBD ici JEMNEP : deux fichiers ou on sépare main et fonctions. On dit pourquoi
+> TBD ici dépendances puis prog objet
+> TBD en 3A on ajoute design et TDD
+
+## Partie IV : Le projet
+
+> TBD ici JEMNEP : un zip et le fichier requirement.txt + readme
+> TBD ici git pour le projet
+> puis virtualenv pour la gestion des dépendances.
+
+-->
+
 ## Note
 
 - 2 tests de 15min sur papier les 2ème et 3ème lundi (8h-8h15)
@@ -26,7 +61,11 @@ eleventyComputed:
 
 <!-- TBD
 
-l'année prochaine mettre lire et écrire du code avant debogueur puis virtualenv
+l'année prochaine mettre lire et écrire du code avant debogueur puis virtualenv dans la partie gérer un projet
+
+en 1A un fichier avec tout puis 2 fichiers avec des imports
+en 2A 3 fichier main/fct et test. 
+ 
  -->
 ### Cours
 
@@ -116,14 +155,71 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 
 ## Partie II : développement
 
-> TBD rappel spyder vs fichier.
-> TBD 1 ficheir puis plusiers fichiers et import.
-1. tests :
-   1. [lire et écrire du code](/cours/coder-et-développer/écrire-code/){.interne}
-   2. s'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !
-2. classes et objets
+### Écrire du code
+
+{% aller %}
+[lire et écrire du code](/cours/coder-et-développer/écrire-code/){.interne}
+{% endaller %}
+
+> À retenir : S'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !
+
+### Un programme comme imbrications d'objets
+
+#### Concevoir des classes et des objets
+
+{% aller %}
+
+1. [Classes et objets](/cours/coder-et-développer/programmation-objet/classes-et-objets/){.interne}
+2. [Coder ses objets](/cours/coder-et-développer/programmation-objet/coder-ses-objets/){.interne}
+
+{% endaller %}
+
+#### Améliorer ses objets
+
+{% aller %}
+
+[Améliorer l'utilisabilité de ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
+
+{% endaller %}
+
+#### Combiner ses objets entre eux
+
+{% aller %}
+
+[Composition et agrégation d'objets](/cours/coder-et-développer/programmation-objet/composition-agrégation/){.interne}
+
+{% endaller %}
+
+#### Héritage
+
+{% aller %}
+
+1. [Héritage](/cours/coder-et-développer/programmation-objet/héritage/){.interne}
+2. [on s'entraîne](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
+
+{% endaller %}
+
+### TD
+
+Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le faire en entier.
+
+{% aller %}
+
+1. Coder des objets :
+   1. [projet dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne}
+   2. [projet cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
+2. Améliorer ses objets :
+   1. [améliorer les dés grâce aux accesseurs](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne}
+   2. [améliorer les cartes en protégeant ses attributs](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne}
+3. Combiner les objets entres-eux :
+   1. [composer des dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés/){.interne}
+   2. [composer des cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes/){.interne}
+
+{% endaller %}
 
 ## Partie III : gestion des sources
+
+> TBD mercredi TD écriture de code et début de la bataille navale à rendre.
 
 1. principes
 2. github, git app

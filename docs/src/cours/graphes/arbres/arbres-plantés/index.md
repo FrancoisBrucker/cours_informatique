@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Arbres enracinés
+title: Arbres plantés
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,12 +14,13 @@ eleventyComputed:
 
 > TBD <https://www.youtube.com/watch?v=_n7RH11-eDM&list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI>
 
+> TBD parler des arbres planaires définis comme suites finie entières
+
 ## arbre enraciné
 
 > TBD mettre dans une section à part ?
 > TBD calcul de hauteur récursif
 > TBD arbres régulier.
-> TBD tracé dendrogramme (et voir Knuth <https://llimllib.github.io/pymag-trees/>)
 
 En informatique on utilise souvent la structure d'arbre en l'**enracinant**, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : **l'unicité des chemins**
 
@@ -150,3 +151,15 @@ Si la racine existe:
 {% info %}
 Les [parcours d'arbres](https://fr.wikipedia.org/wiki/Arbre_syntaxique) sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un [arbre à partir d'une expression arithmétique](https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/) pour la résoudre de façon optimale en nombre d'opérations.
 {% endinfo %}
+
+## Représentation graphique
+
+### Dendrogramme
+
+> voir mon livre
+
+### Knuth
+
+> TBD Knuth <https://llimllib.github.io/pymag-trees/>
+
+> chemin de Dyck pour énumérer les arbres planaires. <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>

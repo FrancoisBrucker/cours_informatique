@@ -41,7 +41,9 @@ En $\mathcal{O}(\vert V \vert \cdot \vert E \vert)$ opérations.
 
 La complexité de l'algorithme de Bellman-Ford est plus importante que celle de Dijkstra, évitez donc de l'utiliser si la valuation du graphe est positive.
 
-> TBD algo
+{% aller %}
+[Algorithme de Bellman-Ford](./bellman-ford){.interne}
+{% endaller %}
 
 ## Algorithme de Roy-Floyd-Warshall
 
