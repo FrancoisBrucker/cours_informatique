@@ -109,210 +109,403 @@
     
   
 
-  <p>24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.</p>
+  <p>24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests. C'est la suite de ce que vous avez fait en 1A avec JEMNEP et I1 de MIE en 2A. Donc revenez en arrière s'il vous manque des connaissances.</p>
 <blockquote>
-<p>TBD en chantier à cause des 2A :)</p>
+<p>TBD pour l'instant, je remets toutes les étapes ici.</p>
 </blockquote>
-<h2>Partie 0 : Contexte</h2>
-<h3>Base système</h3>
-<h4>Utiliser le réseau</h4>
-<p>Connectez vous <a href="https://www.eduroam.fr/">au réseau Éduroam</a> qui est le réseau des université européennes.</p>
-<ul>
-<li>login : votre adresse mail</li>
-<li>mot de passe : celui de l'ent ECM</li>
-</ul>
-<p>Sous Linux vous pouvez cocher : <em>aucun certificat CA requis</em>.</p>
-<h4>Avoir un système opérationnel</h4>
-<p>Outils et logiciels très utiles pour l'utilisation raisonnée de son système.</p>
-<ul>
-<li><strong>sous Windows</strong>, ayez un compte sur le <a href="https://apps.microsoft.com/home?hl=fr-FR&amp;gl=FR">microsoft store</a>.</li>
-<li><strong>sous mac</strong> installez <a href="https://brew.sh/">https://brew.sh/</a> qui vous permettra d'installer de nombreux package unix : <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/syst%C3%A8me-installation/brew/" class="interne">installer brew</a>.</li>
-<li><strong>sous Linux/Ubuntu</strong>, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/linux/bases-linux/post-installation/" class="interne">post-installation</a></li>
-</ul>
-<p>Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis longtemps, cela peut valoir le coup d'en faire une nouvelle installation. Ceci est optionnel si votre système fonctionne.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Cette étape est <strong>optionnelle</strong>. Ne la faites que si votre ordinateur commence à avoir des comportement erratique, signe d'un système malade.</p>
-</div></div>
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/syst%C3%A8me-installation/" class="interne">installation d'u nouveau système</a></p>
-</div></div>
-
-<h4>Connaissances minimales du système d'exploitation</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/bases/but" class="interne">But d'un système d'exploitation</a></p>
-</div></div>
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/bases/interactions/fichiers-ex%C3%A9cutable/" class="interne">Programmes et bibliothèques</a></p>
-</div></div>
-
-<h3>Exécuter du python</h3>
+<h2>Partie I</h2>
 <blockquote>
-<p>TBD c'est un découpage du cours <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/" class="interne">coder et développer</a></p>
+<p>Identique au 2A <a href="/cours_informatique/enseignements/ecm/2A/cdp/" class="interne">Méthode de développement I1-MIE</a></p>
 </blockquote>
-<h4>Principes</h4>
-<p>L'interpréteur python est un programme dont le but est d'exécuter du code python qu'on lui passe. Il doit exister sur votre système, mais pour l'instant on va l'utiliser via le web.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/principes/" class="interne">interpréter du python</a></p>
-</div></div>
-
-<h3>TBD</h3>
-<h4>Dossiers et fichiers</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/bases/interactions/fichiers-navigation/" class="interne">Naviguer dans un système de fichiers</a></li>
-<li><strong>[3A] :</strong> le <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/terminal/" class="interne">terminal</a> pour exécuter des programmes et naviguer dans le système de fichiers</li>
-<li><strong>[3A] :</strong> Exécution grace au path Voir ses dépendances.</li>
-</ol>
-</div></div>
-
-<h4>Ordinateur pour le développement en python</h4>
-<p>Vous aurez besoin d'installer python et un logiciel pour programmer :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/interpr%C3%A9teur/" class="interne">Installer python et un interpréteur</a></p>
-</div></div>
-
-<h4>Coder en python</h4>
-<blockquote>
-<p>But : avoir confiance dans le code produit</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/" class="interne">lire et écrire du code</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/debugger/" class="interne">comprendre et corriger un programme grace au debogeur</a>,</li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/donn%C3%A9es-m%C3%A9moire/" class="interne">variables (locales), pile et <em>stackframe</em></a></li>
-</ol>
-</div></div>
-
-<h4>Interpréteur python</h4>
-<blockquote>
-<p>But : gérer les dépendances d'un projet entre développeurs. Tout le monde doit avoir les mêmes bibliothèques (nom et versions) installées.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/version-python/" class="interne">versions de python</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/environnements-virtuels/" class="interne">virtualenv</a>
-<ol>
-<li>pourquoi et comment avec vscode</li>
-<li><strong>[3A] :</strong> à la main</li>
-</ol>
-</li>
-</ol>
-</div></div>
-
-<h4>Exécution (pas à pas) d'un programme</h4>
-<h3>TD</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li>faites les tutoriels du cours :
-<ol>
-<li>de vscode</li>
-<li>lire et écrire en python</li>
-<li>débogueur</li>
-<li>faites un environnement virtuel, installez matplotlib et <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/matplotlib/" class="interne">faites le tutoriel</a> dans un vscode</li>
-</ol>
-</li>
-<li>Utilisez les exercices de la partie <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-codes/" class="interne">on s'entraîne</a> pour :
-<ol>
-<li>installer un environnement virtuel par projet</li>
-<li>comprendre comment fonctionne le débogueur</li>
-<li>faire un code qui fonctionne</li>
-</ol>
-</li>
-</ol>
-</div></div>
-
-<!-- > TBD test : interpréteur vs programme / variable locale vs globale -->
-<h3>À faire</h3>
 <p>Pour la prochaine fois, trois groupes :</p>
 <ul>
 <li><a href="https://python-poetry.org/">poetry</a></li>
 <li><a href="https://docs.astral.sh/uv/">uv</a></li>
 <li>module et package python : comment les utiliser</li>
 </ul>
+<p>Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités.</p>
+<h2>Partie II</h2>
 <blockquote>
-<p>Prépare un exposé de 5min chacun + support avec biblio et principales fonctionnalités.</p>
+<p>Début Identique au 2A <a href="/cours_informatique/enseignements/ecm/2A/cdp/" class="interne">Méthode de développement I1-MIE</a></p>
 </blockquote>
-<h2>Partie II : principes de développement</h2>
-<ul>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/%C3%A9diteur-vscode/" class="interne">vscode</a> (parties prise en main et utilisation de python)</li>
-<li><strong>[3A] :</strong> <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/couverture-de-code/" class="interne">code coverage</a></li>
-<li><strong>[3A] :</strong> modules et packages, exécution de ses propres packages</li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-codes/" class="interne">on s'entraîne</a></li>
-</ul>
-<h2>Partie III : projets</h2>
-<ol>
-<li>tests :
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/" class="interne">lire et écrire du code</a></li>
-<li>s'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !</li>
-</ol>
-</li>
-<li>classes et objets</li>
-<li><strong>[3A] :</strong> design patterns</li>
-<li><strong>[3A] :</strong> programmation par les tests</li>
-</ol>
-<h2>Partie IV : gestion des sources</h2>
-<ol>
-<li>principes</li>
-<li>github, git app</li>
-<li>git interne</li>
-</ol>
-<h2>Liens</h2>
-<p>Basé sur les cours :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
+<p>Puis :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<ul>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper" class="interne">Coder et développer en python</a></li>
-<li><a href="/cours_informatique/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau" class="interne">Système et réseau</a></li>
-</ul>
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/design-patterns/" class="interne">design pattern</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/couverture-de-code/" class="interne">code coverage</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-TDD/" class="interne">TDD</a></li>
+</ol>
 </div></div>
 
+<p>Pour la prochaine fois, trois groupes :</p>
+<ul>
+<li>design pattern</li>
+<li>tests dans d'autres langages (java, js ou ts)</li>
+<li>un autre truc.</li>
+</ul>
+<p>Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités.</p>
+<h2>Partie III</h2>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<!-- TBD voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y mettre l'interpréteur et le debogueur. Ajouter un tuto pour qu'il puisse montrer ce qu'est une variable. l'exécution d'une commande et d'une fonction) 
 
+## Partie II : un algorithme
+
+> TBD ici JEMNEP : input ≠ return et les fonctions. Un programme qui fait tout
+>
+> TBD ici tests et installation de pytest sur le python du système
+> TBD voir la gestion des variables grace au débogueur.
+
+## Partie III : un programme
+
+> TBD ici JEMNEP : deux fichiers ou on sépare main et fonctions. On dit pourquoi
+> TBD ici dépendances puis prog objet
+> TBD en 3A on ajoute design et TDD
+
+## Partie IV : Le projet
+
+> TBD ici JEMNEP : un zip et le fichier requirement.txt + readme
+> TBD ici git pour le projet
+> puis virtualenv pour la gestion des dépendances.
+
+-->
+<!-- ## Partie I : Système
+
+> L'environnement dans lequel on code.
+
+### Utiliser son Système d'exploitation
+
+> [JEMNEP](/enseignements/ecm/1A/jemnep/){.interne}
+
+#### Utiliser le réseau
+
+Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
+
+- login : votre adresse mail
+- mot de passe : celui de l'ent ECM
+
+Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
+
+#### Avoir un système opérationnel
+
+Outils et logiciels très utiles pour l'utilisation raisonnée de son système.
+
+- **sous Windows**, ayez un compte sur le [microsoft store](https://apps.microsoft.com/home?hl=fr-FR&gl=FR).
+- **sous mac** installez <https://brew.sh/> qui vous permettra d'installer de nombreux package unix : [installer brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne}.
+- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
+
+Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis longtemps, cela peut valoir le coup d'en faire une nouvelle installation. Ceci est optionnel si votre système fonctionne.
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+</svg>
+<div class="pl-8 mr-8">
+
+
+Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence à avoir des comportement erratique, signe d'un système malade.
+
+
+</div></div>
+</div>
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+[installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
+
+
+</div></div>
+</div>
+
+
+### Connaissances minimales du Système d'Exploitation
+
+> [JEMNEP](/enseignements/ecm/1A/jemnep/){.interne}
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+
+[But d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/but){.interne}
+
+
+</div></div>
+</div>
+
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+[Programmes et bibliothèques](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-exécutable/){.interne}
+
+
+</div></div>
+</div>
+
+
+### Dossiers et fichiers
+
+#### Notion de chemin
+
+> [JEMNEP](/enseignements/ecm/1A/jemnep/){.interne}
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+
+[Naviguer dans un système de fichiers](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/){.interne}
+
+
+
+</div></div>
+</div>
+
+
+#### Terminal
+
+> 3A
+
+1. le [terminal](/cours/système-et-réseau/bases-système/terminal/){.interne} pour exécuter des programmes et naviguer dans le système de fichiers
+2. le (power)shell
+3. Exécution d'un programme grâce au path
+
+## Partie II : coder un algorithme
+
+### Exécuter du python
+
+> TBD suivre le cours.
+> TBD 
+> 1. interpréteur (avec basthon) :
+>     1. comprendre les langages interprété vs compilé
+>     2. comprendre les variables et les objets
+> 2. interpréteur ligne à ligne exécution. Pas pratique si plusieurs lignes -> spyder/notebook pour :
+>     1. faire des fonctions avec spyder ou un notebook. différence entre print et return
+>     2. comprendre les variables locales
+> 3. Mais pas bien car ordre ds cellules important, on est pas sur que la prochaine exécution sera identique à l'ancienne : il faut refaire un interpréteur à chaque exécution.
+>     1. installation d'un python puis on regarde si ça marche avec un terminal (en 1A ici on ouvre un terminal et on explique ce que c'est). En 3A on fait marcher le tout en : 1. trouver ou est le python ; on fait des chemins pour y arriver.
+>     2. pour exécuter du python il va falloir créer des fichiers et les envoyer dans un interpréteur. On utilise un programme pour nous aider : vscode
+
+### Coder un algorithme
+
+> ici cours par défaut.
+> TBD ajouter des choses sans tests dans un seul fichier pour comprendre comment tout ça fonctionne juste avec vscode.
+> débogueur pour voir comment il s'exécute.
+
+> le chemin pour savoir où exécuter son python avec vscode et son terminal intégré.
+
+### Installer des modules
+
+> installer des modules :
+>   1A. numpy ou matplotlib :
+>   2A. pytest
+>   3A. code coverage.
+> TBD en 2A on ajoute pytest en installant le module pytest
+
+> TBD ici programme python et interpréteur
+
+
+
+> TBD c'est un découpage du cours [coder et développer](/cours/coder-et-développer/){.interne}
+
+#### Principes
+
+L'interpréteur python est un programme dont le but est d'exécuter du code python qu'on lui passe. Il doit exister sur votre système, mais pour l'instant on va l'utiliser via le web.
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+[interpréter du python](/cours/coder-et-développer/bases-programmation/principes/){.interne}
+
+
+</div></div>
+</div>
+
+
+
+
+
+
+### TBD
+
+
+
+
+#### Ordinateur pour le développement en python
+
+Vous aurez besoin d'installer python et un logiciel pour programmer :
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+[Installer python et un interpréteur](/cours/coder-et-développer/bases-programmation/interpréteur/){.interne}
+
+
+</div></div>
+</div>
+
+
+#### Coder en python
+
+> But : avoir confiance dans le code produit
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+
+1. [lire et écrire du code](/cours/coder-et-développer/écrire-code/){.interne}
+2. [comprendre et corriger un programme grace au debogeur](/cours/coder-et-développer/debugger/){.interne},  
+3. [variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
+
+
+
+</div></div>
+</div>
+
+
+#### Interpréteur python
+
+> But : gérer les dépendances d'un projet entre développeurs. Tout le monde doit avoir les mêmes bibliothèques (nom et versions) installées.
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+
+1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
+2. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne}
+   1. pourquoi et comment avec vscode
+   2. **[3A] :** à la main
+
+
+
+</div></div>
+</div>
+
+
+#### Exécution (pas à pas) d'un programme
+
+### TD
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+  </svg>
+<div class="pl-8 mr-8">
+
+
+
+1. faites les tutoriels du cours :
+   1. de vscode
+   2. lire et écrire en python
+   3. débogueur
+   4. faites un environnement virtuel, installez matplotlib et [faites le tutoriel](/cours/coder-et-développer/bases-programmation/matplotlib/){.interne} dans un vscode
+2. Utilisez les exercices de la partie [on s'entraîne](/cours/coder-et-développer/projet-codes/){.interne} pour :
+   1. installer un environnement virtuel par projet
+   2. comprendre comment fonctionne le débogueur
+   3. faire un code qui fonctionne
+
+
+
+</div></div>
+</div>
+
+
+> TBD test : interpréteur vs programme / variable locale vs globale
+
+### À faire
+
+
+## Partie II : principes de développement
+
+- [vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne} (parties prise en main et utilisation de python)
+- **[3A] :** [code coverage](/cours/coder-et-développer/couverture-de-code/){.interne}
+- **[3A] :** modules et packages, exécution de ses propres packages
+- [on s'entraîne](/cours/coder-et-développer/projet-codes/){.interne}
+
+## Partie III : projets
+
+1. tests :
+   1. [lire et écrire du code](/cours/coder-et-développer/écrire-code/){.interne}
+   2. s'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !
+2. classes et objets
+3. **[3A] :** design patterns
+4. **[3A] :** programmation par les tests
+
+## Partie IV : gestion des sources
+
+1. principes
+2. github, git app
+3. git interne
+
+## Liens
+
+Basé sur les cours :
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mr-8">
+
+
+
+- [Coder et développer en python](/cours/coder-et-développer){.interne}
+- [Système et réseau](/cours_informatique/cours/système-et-réseau){.interne}
+
+
+
+</div></div>
+</div>
+
+ -->
 
 </article>
     </main>

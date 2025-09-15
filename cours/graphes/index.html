@@ -151,15 +151,7 @@
     
   
 
-  <blockquote>
-<p>TBD : intégrer les parties :</p>
-<ul>
-<li><a href="bellman-ford">bellman-ford</a></li>
-<li><a href="projet-chemins-cycles">cycle-chemin</a></li>
-</ul>
-<p>TBD Ramsay et cliques (friends and stranger theorem) ? Méthode probabiliste <a href="https://www.youtube.com/watch?v=4weMmFZSBtI">https://www.youtube.com/watch?v=4weMmFZSBtI</a></p>
-</blockquote>
-<p>Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.</p>
+  <p>Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.</p>
 <p>Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cette structure, à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l'intersection des mathématiques discrètes et de l'informatique théorique — et au cœur de nombre d'applications de tous les jours.</p>
 <p>Le cours va être séparé en petites entités qui se suivent pour former un tout que l'on espère cohérent.</p>
 <h2><span id="structure"></span> Structure d'un graphe</h2>
@@ -171,6 +163,7 @@
 <ol>
 <li><a href="structure" class="interne">Structure d'un graphe</a></li>
 <li><a href="encodage" class="interne">Encodage de graphes</a></li>
+<li><a href="parcours-largeur-profondeur" class="interne">Parcours en largeur et en profondeur</a></li>
 </ol>
 </div></div>
 
@@ -194,18 +187,7 @@
 <p><a href="chemins-cycles-connexite" class="interne">Chemins, cycle et connexité</a></p>
 </div></div>
 
-<h3>Visiter</h3>
-<p>Visiter tous les sommets de proche en proche</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="parcours-largeur-profondeur" class="interne">Parcours en largeur et en profondeur</a></p>
-</div></div>
-
-<h3>Cheminer</h3>
-<p>Le parcours doit suivre la structure de graphe (il y a des saut avec les parcours en largeur/profondeur) en restant minimal :</p>
+<h3>Chemins le plus long</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -217,17 +199,20 @@
 </ol>
 </div></div>
 
-<h3>Projets</h3>
+<p>Projets :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="projet-mots-bruijn" class="interne">Mots de Bruijn</a></p>
+<ol>
+<li><a href="projet-mots-bruijn" class="interne">Mots de Bruijn</a></li>
+<li><a href="projet-chemins-cycles" class="interne">cycle-chemin</a></li>
+</ol>
 </div></div>
 
-<h2>Chemins de longueur/poids minimum</h2>
-<h3><span id="chemin-problèmes"></span> Problème et algorithmes</h3>
+<h3>Chemins de longueur/poids minimum</h3>
+<h4><span id="chemin-problèmes"></span> Problème et algorithmes</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -235,12 +220,12 @@
 <div class="pl-8 mr-8">
 <ol>
 <li><a href="chemin-poids-min-probl%C3%A8me" class="interne">Chemin de poids minimum</a></li>
-<li><a href="chemin-poids-min-positif" class="interne">Algorithme de Dijkstra et $A^\star$</a></li>
-<li><a href="chemin-poids-min-cas-g%C3%A9n%C3%A9ral" class="interne">Algorithmes généraux</a></li>
+<li><a href="chemin-poids-min-positif" class="interne">Algorithme avec poids positifs (Dijkstra et $A^\star$)</a></li>
+<li><a href="chemin-poids-min-cas-g%C3%A9n%C3%A9ral" class="interne">Algorithmes généraux (Bellman-Ford et Roy-Floyd-Warshall)</a></li>
 </ol>
 </div></div>
 
-<h3><span id="projet-chemin-poids-min"></span> Projets</h3>
+<h4><span id="projet-chemin-poids-min"></span> Projets</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -259,24 +244,22 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<ol>
-<li><a href="arbres" class="interne">Arbres</a></li>
-<li><a href="arbres-enracin%C3%A9s" class="interne">Arbres enracinés</a></li>
-<li><a href="arbres-couvrants" class="interne">Arbres couvrant</a></li>
-<li><a href="arbres-isomorphisme" class="interne">Isomorphisme d'arbre</a></li>
-<li><a href="arbre-galton-watson" class="interne">Processus de Galton-Watson</a></li>
-</ol>
+<p><a href="arbres" class="interne">Arbres</a></p>
 </div></div>
 
 <blockquote>
 <p>exo : <a href="https://www.youtube.com/watch?v=OTfp2_SwxHk">https://www.youtube.com/watch?v=OTfp2_SwxHk</a>
-TBD : DFS et arbre. Tarjan pour fortement connexe.</p>
+TBD : DFS et arbre. Tarjan pour fortement connexe.
+TBD : chemins de taxi. Voir <a href="https://archipel.uqam.ca/8784/1/M14397.pdf">https://archipel.uqam.ca/8784/1/M14397.pdf</a></p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
+<blockquote>
+<p>TBD à mettre en algorithmie. Séparer le cours de graphe en parties, comme le cours d'algo.</p>
+</blockquote>
 <p><a href="structures-arbor%C3%A9es" class="interne">Structures de données arborées</a></p>
 </div></div>
 

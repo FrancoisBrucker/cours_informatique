@@ -110,6 +110,40 @@
   
 
   <p>24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.</p>
+<!-- TBD 
+
+Modifier le plan pour l'année prochaine. Mettre l'environnement virtuel en fin de 2A, partie IV
+
+voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y mettre l'interpréteur et le debogueur. Ajouter un tuto pour qu'il puisse montrer ce qu'est une variable. l'exécution d'une commande et d'une fonction) 
+
+## Partie I : le système
+
+> TBD Ca c'est JEMNEP
+
+> TBD ici programme python et interpréteur
+> débogueur pour voir comment il s'exécute.
+> le chemin pour savoir où exécuter son python.
+> installer des modules (ici numpy ou matplotlib) sur un python spécifique
+
+## Partie II : un algorithme
+
+> TBD ici JEMNEP : input ≠ return et les fonctions. Un programme qui fait tout
+>
+> TBD ici tests et installation de pytest sur le python du système
+
+## Partie III : un programme
+
+> TBD ici JEMNEP : deux fichiers ou on sépare main et fonctions. On dit pourquoi
+> TBD ici dépendances puis prog objet
+> TBD en 3A on ajoute design et TDD
+
+## Partie IV : Le projet
+
+> TBD ici JEMNEP : un zip et le fichier requirement.txt + readme
+> TBD ici git pour le projet
+> puis virtualenv pour la gestion des dépendances.
+
+-->
 <h2>Note</h2>
 <ul>
 <li>2 tests de 15min sur papier les 2ème et 3ème lundi (8h-8h15)</li>
@@ -118,7 +152,11 @@
 <h2>Partie I : le système</h2>
 <!-- TBD
 
-l'année prochaine mettre lire et écrire du code avant debogueur puis virtualenv
+l'année prochaine mettre lire et écrire du code avant debogueur puis virtualenv dans la partie gérer un projet
+
+en 1A un fichier avec tout puis 2 fichiers avec des imports
+en 2A 3 fichier main/fct et test. 
+ 
  -->
 <h3>Cours</h3>
 <blockquote>
@@ -236,20 +274,94 @@ doc <a href="https://code.visualstudio.com/docs/python/debugging">https://code.v
 </div></div>
 
 <h2>Partie II : développement</h2>
+<h3>Écrire du code</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/" class="interne">lire et écrire du code</a></p>
+</div></div>
+
 <blockquote>
-<p>TBD rappel spyder vs fichier.
-TBD 1 ficheir puis plusiers fichiers et import.</p>
+<p>À retenir : S'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !</p>
 </blockquote>
+<h3>Un programme comme imbrications d'objets</h3>
+<h4>Concevoir des classes et des objets</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
 <ol>
-<li>tests :
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/classes-et-objets/" class="interne">Classes et objets</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/coder-ses-objets/" class="interne">Coder ses objets</a></li>
+</ol>
+</div></div>
+
+<h4>Améliorer ses objets</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/am%C3%A9liorer-ses-objets/" class="interne">Améliorer l'utilisabilité de ses objets</a></p>
+</div></div>
+
+<h4>Combiner ses objets entre eux</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/composition-agr%C3%A9gation/" class="interne">Composition et agrégation d'objets</a></p>
+</div></div>
+
+<h4>Héritage</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
 <ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/" class="interne">lire et écrire du code</a></li>
-<li>s'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !</li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/h%C3%A9ritage/" class="interne">Héritage</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/" class="interne">on s'entraîne</a></li>
+</ol>
+</div></div>
+
+<h3>TD</h3>
+<p>Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le faire en entier.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Coder des objets :
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/" class="interne">projet dés</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/" class="interne">projet cartes</a></li>
 </ol>
 </li>
-<li>classes et objets</li>
+<li>Améliorer ses objets :
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s-accesseur/" class="interne">améliorer les dés grâce aux accesseurs</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-value-object/" class="interne">améliorer les cartes en protégeant ses attributs</a></li>
 </ol>
+</li>
+<li>Combiner les objets entres-eux :
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-d%C3%A9s/" class="interne">composer des dés</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agr%C3%A9gation-cartes/" class="interne">composer des cartes</a></li>
+</ol>
+</li>
+</ol>
+</div></div>
+
 <h2>Partie III : gestion des sources</h2>
+<blockquote>
+<p>TBD mercredi TD écriture de code et début de la bataille navale à rendre.</p>
+</blockquote>
 <ol>
 <li>principes</li>
 <li>github, git app</li>
