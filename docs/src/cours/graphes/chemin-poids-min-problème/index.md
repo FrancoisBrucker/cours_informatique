@@ -23,12 +23,14 @@ Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un **chemin de long
 - il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#definition-longueur){.interne} strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
   {% endnote %}
 
-Que l'on généralise souvent aux **graphes orientés valués** :
+Que l'on généralise souvent aux **graphes (orientés) valués** :
+
+<span id="graphe_valué"></span>
 
 {% note "**Définition**" %}
-Un **graphe orienté valué** est un couple $(G, f)$ où :
+Un **graphe (orienté) valué** est un couple $(G, f)$ où :
 
-- $G=(V, E)$ est un graphe orienté
+- $G=(V, E)$ est un graphe (orienté)
 - $f: E \rightarrow \mathbb{R}$
 
 Le **poids** d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un [pseudo-chemin](../chemins-cycles-connexite#définition-pseudo-){.interne} (les arcs peuvent se répéter) $c=v_0\dots v_{k}$, noté $f(c)$, est la somme $\sum_{0\leq i < k}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).

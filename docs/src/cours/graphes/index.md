@@ -108,9 +108,8 @@ Projets :
 > TBD : DFS et arbre. Tarjan pour fortement connexe.
 > TBD : chemins de taxi. Voir <https://archipel.uqam.ca/8784/1/M14397.pdf>
 
-{% aller %}
-
 > TBD à mettre en algorithmie. Séparer le cours de graphe en parties, comme le cours d'algo.
+{% aller %}
 
 [Structures de données arborées](structures-arborées){.interne}
 

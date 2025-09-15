@@ -97,18 +97,9 @@ Les cinq propositions suivantes sont équivalentes :
 Clair avec les deux propositions précédentes.
 {% enddetails %}
 
-Le théorème précédent est important car il montre l'optimalité d'un arbre : c'est le graphe avec un nombre minimum d'arête qui est connexe. C'est pourquoi cette structure est très utilisé dans les problèmes de réseaux réels. Cette optimalité vient avec un coût puisque si une arête casse, on déconnecte le graphe.
+Le théorème précédent est important car il montre l'optimalité d'un arbre : c'est le graphe avec un nombre minimum d'arête qui est connexe. C'est pourquoi cette structure est très utilisé dans les problèmes de réseaux réels. Cette optimalité vient avec un coût puisque si une arête casse, on déconnecte le graphe. 
 
-{% exercice "**À connaître**" %}
-
-Montrez qu'un graphe est un arbre si et seulement si quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.
-
-{% endexercice %}
-{% details "solution" %}
-Le graphe est connexe.
-
-S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au premier élément distinct et au premier élément en commun après celui-ci et on aurait un cycle.
-{% enddetails %}
+> TBD arbre = rapide. Beaucoup de problème compliqué deviennent simple avec les arbres.
 
 ## Sommets et feuilles
 
@@ -202,7 +193,28 @@ De plus les intervalle de cet ordre forme un sous-arbre de $T$
 {% enddetails %}
 > DFS =  ordre d'effeuillage. Il est de plus particulier : il prend les sommets dans l'ordre d'un dessin.
 
+## Chemins et arbres
+
+{% note "**Proposition**" %}
+
+Un graphe est un arbre si et seulement si quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.
+
+{% endnote %}
+{% details "preuve", "open" %}
+Le graphe est connexe.
+
+S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au premier élément distinct et au premier élément en commun après celui-ci et on aurait un cycle.
+{% enddetails %}
+
+La proposition précédente est renforcée par le fait que trouver les chemins d'un sommet à tous les autres avec un arbre est très facile : il suffit de faire un parcourt (largeur ou profondeur) pour trouver en $\mathcal{O}(|E|) = \mathcal{O}(|V|)$ opérations l'ensemble des chemins en "remontant"
+
+On appelle ce codage, le codage par parent. Formalisons le :
+
+> TBD codage par parent avec un DFS/BFS. Puis pour trouver le chemin vers $x$ depuis $y$, on remonte. Faire exemple avec le graphe de cayley.
+
+> TBD on peut même faire mieux en marquant les sommets : on mets plus longtemps à trouver le chemin (on remonte deux fois vers $x$), mais on a besoin que d'un DFS et pas n. En avançant et marquant 1 par 1 on est au pire en O de la taille du chemin. Pas en O(n) ce qui est mieux.
+
 ## Médiane
 
-> TBD intersection de 3 chemins
+> TBD des  chemins précédent on peut montrer qu'il y a une médiane à un arbre. Généraliser les arbres par médiane.
 > TBD ordre DFS

@@ -14,6 +14,8 @@ Il existe de nombreux tracés d'arbre possible. Nous allons en montrer deux, cla
 
 > TBD Arbre + longueur sur les arêtes. 1 si on sait rien.
 
+> TBD coder algo en python
+
 ## Tracé radial
 
 Le tracé radial fonctionne en suivant un ordre de DFS à partir d'un sommet nommé racine. L'idée est d'associer un angle à chaque sommet à partir des feuilles équi-réparties sur $[0, 2\cdot \pi]$ dans l'ordre d'examen du DFS, puis de propager un angle à son parent.
