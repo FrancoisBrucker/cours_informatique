@@ -225,7 +225,9 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 2. github, git app
 3. git interne
 
-<!-- > TBD note avec commit pertinent sur un petit projet -->
+<!-- > TBD note avec commit pertinent sur un petit projet
+tbd mettre un .gitignore
+ -->
 
 ## Liens
 
