@@ -97,22 +97,23 @@
   
 
   <blockquote>
-<p>TBD à refaire mieux.</p>
+<p>TBD à refaire mieux avec des définitions</p>
 </blockquote>
 <blockquote>
 <p>TBD <a href="https://www.youtube.com/watch?v=_n7RH11-eDM&amp;list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI">https://www.youtube.com/watch?v=_n7RH11-eDM&amp;list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI</a></p>
 </blockquote>
-<blockquote>
-<p>TBD parler des arbres planaires définis comme suites finie entières</p>
-</blockquote>
-<h2>arbre enraciné</h2>
+<h2>arbre planté</h2>
 <blockquote>
 <p>TBD mettre dans une section à part ?
 TBD calcul de hauteur récursif
 TBD arbres régulier.</p>
 </blockquote>
-<p>En informatique on utilise souvent la structure d'arbre en l'<strong>enracinant</strong>, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : <strong>l'unicité des chemins</strong></p>
-<h3 id="ordo-sommets">ordonnancement des sommets</h3>
+<p>En informatique on utilise souvent la structure d'arbre en l'<strong>enracinant</strong>, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : <strong>l'unicité des chemins</strong>.</p>
+<h3>Planter un arbre</h3>
+<blockquote>
+<p>TBD arbre et on le plante avec un BFS. étages par profondeur dans le BFS.</p>
+<p>h = hauteur du sommet qui l'attrape + 1</p>
+</blockquote>
 <p>L'unicité des chemins permet d'ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire <em>&quot;tomber&quot;</em> depuis la racine. On peut en effet les ranger par rapport à <strong>leur chemin</strong> par rapport à celle ci :</p>
 <p><img src="arbre_plante.png" alt="arbre_plante"></p>
 <p>Vocabulaire :</p>
@@ -163,7 +164,7 @@ TBD arbres régulier.</p>
 </details>     
 </div>
 <p>Cet ordonnancement est <a href="https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique">très utilisé en biologie</a> par exemple car il permet de rendre compte de l'évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu'elles ont en commun (les leurs ancêtres).</p>
-<h2 id="arbre-binaire">arbre binaire planté</h2>
+<h2>arbre binaire planté</h2>
 <p>En informatique, c'est souvent les arbres binaires planté que l'on utilise :</p>
 <p>Un arbre planté est binaire si tout noeud intérieur a <strong>au plus 2 enfants</strong>. On aura parfois aussi besoin qu'il soit <strong>complet</strong>, c'est-à-dire que les noeuds intérieurs qui n'ont pas 2 enfants sont en bas de l'arbre (à la hauteur de l'arbre -1).</p>
 <h3>propriété fondamentale des arbres binaires</h3>
@@ -195,7 +196,7 @@ TBD arbres régulier.</p>
 </details>     
 </div>
 <blockquote>
-<p>TBD * la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1</p>
+<p>TBD la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1</p>
 </blockquote>
 <p>Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des <strong>arbres de décisions</strong>, si utiles en apprentissage automatique.</p>
 <blockquote class="note">
@@ -271,17 +272,18 @@ Si la racine existe:
 </div></div>
 
 <h2>Représentation graphique</h2>
-<h3>Dendrogramme</h3>
-<blockquote>
-<p>voir mon livre</p>
-</blockquote>
-<h3>Knuth</h3>
-<blockquote>
-<p>TBD Knuth <a href="https://llimllib.github.io/pymag-trees/">https://llimllib.github.io/pymag-trees/</a></p>
-</blockquote>
-<blockquote>
-<p>chemin de Dyck pour énumérer les arbres planaires. <a href="https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf">https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf</a></p>
-</blockquote>
+<p>La méthode classique pour représenter des arbres plantés est de procéder comme pour le tracé axial concentrique des arbres, mais en plaçant les différents sommets sur des droites parallèles.</p>
+<p>En reprenant <a href="../cayley/arbre-prufer-1.png">l'arbre de la partie Cayley</a> et en le plantant en 8, on obtient la figure ci-après :</p>
+<p><img src="dendrogramme.png" alt="dendrogramme"></p>
+<p>Jetez aussi un coup d'œil au lien suivant qui donne plusieurs façons de dessiner des arbres plantés :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://llimllib.github.io/pymag-trees/">Drawing Presentable Trees</a></p>
+</div></div>
+
 
 
 </article>

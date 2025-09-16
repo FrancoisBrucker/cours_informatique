@@ -111,6 +111,21 @@
 <p>Chemins, cycle et connexité dans les graphes : définitions et premières propriétés.</p>
 <!-- fin résumé -->
 <p>Un graphe $G=(V, E)$ rend compte d'une <em>relation</em> (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette courte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.</p>
+<blockquote>
+<p>TBD ajout des parcours :</p>
+<ul>
+<li>BFS
+<ul>
+<li>Plus courts chemins (démonstration par rec)</li>
+</ul>
+</li>
+<li>BFS
+<ul>
+<li>chemin et cycles/circuit avec BFS (nœud dans la pile)</li>
+</ul>
+</li>
+</ul>
+</blockquote>
 <h2>Chemin, cycles et circuits</h2>
 <p><span id="definition-longueur"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -644,6 +659,9 @@ $$
 <li>admet un cycle de longueur $n$ alors que le degré de chaque élément est $2$.</li>
 </ul>
 <h2>Algorithmes</h2>
+<blockquote>
+<p>Faire en BFS ou DFS.</p>
+</blockquote>
 <p>On utilisera le graphe suivant pour nos algorithmes :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">"a"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -793,16 +811,18 @@ $$
 </div>
 <h3><span id="algorithme-fortement-connexe"></span> Algorithme de recherche de composante fortement connexe</h3>
 <blockquote>
-<p>TBD lien</p>
+<p>TBD avec un DFS</p>
 </blockquote>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez qu'il existe un autre algorithme utilisant le parcours en profondeur et que nous verrons plus tard qui permet de faire la même chose avec une complexité linéaire (c'est à dire la taille du graphe): $\mathcal{O}(\vert E \vert)$.</p>
-</div></div>
-
+<blockquote>
+<p>TBD  connexes</p>
+</blockquote>
+<ul>
+<li>Kosaraju en 2 passes : <a href="https://www.youtube.com/watch?v=RpgcYiky7uw">https://www.youtube.com/watch?v=RpgcYiky7uw</a></li>
+<li>Tarjan en une passe : <a href="https://www.youtube.com/watch?v=wUgWX0nc4NY">https://www.youtube.com/watch?v=wUgWX0nc4NY</a></li>
+</ul>
+<blockquote>
+<p>TBD <a href="https://www.youtube.com/watch?v=m2mdGfxs_5E">https://www.youtube.com/watch?v=m2mdGfxs_5E</a></p>
+</blockquote>
 <h3>Trouver un chemin</h3>
 <p>L'algorithme suivant, nommé <code class="language-">chemin</code>, prend un graphe et deux sommets $a$ et $b$ en paramètres. Il rend soit un chemin entre $a$ et $b$ s'il existe soit le chemin vide si $a$ et $b$ sont dans deux composantes connexes différentes.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">chemin</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
@@ -943,6 +963,10 @@ Il faut s'assurer que l'on n'utilise pas l'arête retour lorsque le graphe est n
 <span class="highlight-line">    i <span class="token operator">=</span> chemin<span class="token punctuation">.</span>index<span class="token punctuation">(</span>début<span class="token punctuation">)</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">return</span> chemin<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span>début<span class="token punctuation">]</span></span></code></pre>
+<h3>Trouver une composante 2-connexe</h3>
+<blockquote>
+<p>TBD aussi avec un DFS</p>
+</blockquote>
 
 
 </article>

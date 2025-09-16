@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Parcours</title>
+    <title>Arbres planaires</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Parcours</h1>
+  <h1>Arbres planaires</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/parcours-largeur-profondeur/">Parcours</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/arbres/arbres-planaires/">Arbres planaires</a>
 
 </div></div>
 
@@ -96,51 +96,37 @@
     
   
 
-  <p>Deux parcours classiques d'un graphe : largeur et profondeur.</p>
-<p>Permettent de :</p>
-<ul>
-<li>parcourir tous les sommets arêtes en temps linéaire (n+m)</li>
-<li>fonctionnent pour les graphes orientés ou non</li>
-</ul>
-<blockquote>
-<p>TBD exemple avec le graphe de l'arbre couvrant.
-TBD exemple avec le graphe des chemins de poids min positifs.</p>
-</blockquote>
-<blockquote>
-<p>TBD un algo fondamental que l'on va retrouver à pleins d'endroits (certains attendus et d'autres de façon pus surprenante)</p>
-</blockquote>
-<h2>Largeur</h2>
-<blockquote>
-<p>TBD largeur et file</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+  <p>Les arbres planaires sont un cas particulier des arbres plantés où les enfants de chaque sommets sont numérotés de 1 au nombre d'enfants. On appelle ces arbres planaires car cela revient à numéroter les enfant selon leur représentation graphique. De là, les deux graphes suivant ne seront pas égaux :</p>
+<p><img src="pas-pareil.png" alt="pas pareils"></p>
+<p>Car les enfants de la racine ne sont pas placés de la même manière. En numérotant les enfants de gauche à droites, cela donnerait les deux arbres ci-après du coup vraiment différents :</p>
+<p><img src="pas-pareil-num%C3%A9rot%C3%A9s.png" alt="pas pareils"></p>
+<p>Pour éviter d'avoir des nœuds avec une même numérotations et avoir une définition formelle, on encode tout le chemin :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur">Parcours en largeur</a></p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'ensemble des suites finies d'entiers strictement positifs ($\mathbb{N}^\star$) est noté $U$. On peut le définir tel que :</p>
+<div>
+$$
+U \coloneqq \{ \epsilon \} \cup \cup_{n\geq 1}(\mathbb{N}^\star)^n
+$$
+</div>
+<p>Avec $\epsilon$ la suite vide et $(\mathbb{N}^\star)^n = \mathbb{N}^\star \times \dots \times \mathbb{N}^\star$ le produit cartésien de taille $n$ de l'ensemble $\mathbb{N}^\star$ des entiers strictement positifs.</p>
 </div></div>
 
 <blockquote>
-<p>TBD application quand il faut parcourir de proche en proche</p>
-</blockquote>
-<h2>Profondeur</h2>
-<blockquote>
-<p>TBD profondeur et pile</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">Parcours en profondeur</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD propriétés : <a href="https://people.irisa.fr/Francois.Schwarzentruber/algo1/05parcoursprofondeur.pdf">https://people.irisa.fr/Francois.Schwarzentruber/algo1/05parcoursprofondeur.pdf</a></p>
+<p>TBD reprendre l'exemple avec les mot</p>
 </blockquote>
 <blockquote>
-<p>TBD application quand il faut aller le plus loin possible</p>
+<p>TBD arbre planaires. Suite de voisins. Montrer approche avec suites de mots.</p>
+</blockquote>
+<blockquote>
+<p>un DFS. pour encoder les arbres planaires. c'est un mot de Dyck (E(nfant suivant)/P(arent)) <a href="https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf">https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf</a>. C'est une bijection. Encode en +1, -1 ou en chemins.
+TBDTrouver exam centrale PC 2011 <a href="https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021">https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021</a>
+TBD énumération avec un Dijkstra sur arbre orienté sur demi-grille.</p>
 </blockquote>
 
 

@@ -87,16 +87,47 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/structures-arborées/">Structures arborées</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-données-avancée/">Structures de données avancée</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-données-avancée/structures-arborées/">Structures arborées</a>
 
 </div></div>
 
 
 
     
+      
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+
+<b>Prérequis :</b>
+
+</div><div class="pl-8 mr-8">
+
+
+      <ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/graphes/arbres/">Arbres</a>
+              </li></ul>
+      
+
+</div></div>
+
+
+    
   
 
   <blockquote>
+<p>TBD à faire.</p>
+</blockquote>
+<p>structure hiérarchique (arbre planté)</p>
+<blockquote>
+<p>TBD AVL
+arbre rouge/noir ; tas de Fibonacci ; ...</p>
+</blockquote>
+<blockquote>
 <p>TBD tas, ABR, lexico-graphiques
 exo AABB, arbres
 arbre syntaxique + pile pour lecture</p>
@@ -107,11 +138,14 @@ arbre syntaxique + pile pour lecture</p>
 <blockquote>
 <p>TBD union find</p>
 </blockquote>
-<h3>exemple du tas</h3>
+<blockquote>
+<p>TBD exo : <a href="https://www.youtube.com/watch?v=OTfp2_SwxHk">https://www.youtube.com/watch?v=OTfp2_SwxHk</a></p>
+</blockquote>
+<h2>Tas</h2>
 <p>Nous allons montrer ici une utilité de l'arbre binaire complet pour résoudre le problème d'une file de priorité.</p>
-<h4>le problème</h4>
+<h3>le problème</h3>
 <p>Une salle d'attente des urgences d'un hôpital contient des patients dont la gravité d'état est donnée par un entier. Des patients peuvent arriver et partir de la salle d'attente et leur état peut s'améliorer (la gravité d'état baisse) ou se détériorer (leur gravité d'état augmente). A chaque fois qu'un médecin est libre, on prend en charge le patient avec l'état de gravité le plus important.</p>
-<h4>une solution possible (naïve)</h4>
+<h3>une solution possible (naïve)</h3>
 <p>On regarde chaque patient et on prend le patient ayant la gravité d'état le plus important.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -141,7 +175,7 @@ arbre syntaxique + pile pour lecture</p>
 </details>     
 </div>
 <p>Si l'on suppose que l'état de gravité d'un patient est connu, on peut faire bien mieux.</p>
-<h4>un tas</h4>
+<h3>un tas</h3>
 <p>Un tas est un arbre binaire planté complet dont les sommets sont des entiers. On considère en plus qu'un tas est <strong>plein</strong>, c'est-à-dire que les feuilles de hauteur maximum forment un intervalle à gauche de l'arbre.</p>
 <p><img src="arbre_plante_tas_abc.png" alt="arbre_plante_tas_?"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -208,7 +242,7 @@ arbre syntaxique + pile pour lecture</p>
 </div>
 </details>     
 </div>
-<h4>manipulation d'un tas</h4>
+<h3>manipulation d'un tas</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -278,7 +312,7 @@ arbre syntaxique + pile pour lecture</p>
 </div>
 </details>     
 </div>
-<h4>pour la bonne bouche</h4>
+<h3>pour la bonne bouche</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">

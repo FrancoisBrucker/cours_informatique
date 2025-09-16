@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Parcours</title>
+    <title>Structures de données avancée</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Parcours</h1>
+  <h1>Structures de données avancée</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/parcours-largeur-profondeur/">Parcours</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-données-avancée/">Structures de données avancée</a>
 
 </div></div>
 
@@ -96,51 +96,55 @@
     
   
 
-  <p>Deux parcours classiques d'un graphe : largeur et profondeur.</p>
-<p>Permettent de :</p>
+  <blockquote>
+<p>TBD à refaire bien propre.</p>
+</blockquote>
+<blockquote>
+<p>TBD voir si toutes les structures de <a href="https://www.youtube.com/watch?v=6fnmXX8RK0s">https://www.youtube.com/watch?v=6fnmXX8RK0s</a> y sont.</p>
+</blockquote>
+<h2>Complexité amortie</h2>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h2>Listes circulaires</h2>
+<p>liste circulaires ? Trouver le début.</p>
+<h2>Structures arborées</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="structures-arbor%C3%A9es" class="interne">Structures arborées</a></p>
+</div></div>
+
+<h2>hash 2.0 améliorations</h2>
 <ul>
-<li>parcourir tous les sommets arêtes en temps linéaire (n+m)</li>
-<li>fonctionnent pour les graphes orientés ou non</li>
+<li>hash :
+<ul>
+<li><em>open addressing</em></li>
+<li>perfect</li>
+<li>universal</li>
 </ul>
-<blockquote>
-<p>TBD exemple avec le graphe de l'arbre couvrant.
-TBD exemple avec le graphe des chemins de poids min positifs.</p>
-</blockquote>
-<blockquote>
-<p>TBD un algo fondamental que l'on va retrouver à pleins d'endroits (certains attendus et d'autres de façon pus surprenante)</p>
-</blockquote>
-<h2>Largeur</h2>
-<blockquote>
-<p>TBD largeur et file</p>
-</blockquote>
+</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur">Parcours en largeur</a></p>
+<p><a href="https://www.youtube.com/watch?v=z0lJ2k0sl1g">Universal &amp; Perfect Hashing</a></p>
 </div></div>
 
+<h3>Hash universel</h3>
+<p>Pour que notre structure de dictionnaire soit de complexité $\mathcal{O}(1)$ en moyenne, on a supposé que nos fonction de hachage étaient utiles : les probabilités sont uniformes si les clés sont choisies aléatoirement.</p>
+<p>Cette hypothèse est cependant tres rarement vérifiée en pratique, les clés ont souvent quelque chose en commun (numéro de téléphones, noms d'utilisateurs, etc). Pour palier ce problème épineux on renverse le problème et plutôt que de choisir des clés aléatoire, on choisi aléatoirement une fonction de hash !</p>
+<h3>perfect hashing</h3>
 <blockquote>
-<p>TBD application quand il faut parcourir de proche en proche</p>
-</blockquote>
-<h2>Profondeur</h2>
-<blockquote>
-<p>TBD profondeur et pile</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">Parcours en profondeur</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD propriétés : <a href="https://people.irisa.fr/Francois.Schwarzentruber/algo1/05parcoursprofondeur.pdf">https://people.irisa.fr/Francois.Schwarzentruber/algo1/05parcoursprofondeur.pdf</a></p>
-</blockquote>
-<blockquote>
-<p>TBD application quand il faut aller le plus loin possible</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Dynamic_perfect_hashing">https://en.wikipedia.org/wiki/Dynamic_perfect_hashing</a></li>
+<li>chichelli : <a href="https://courses.cs.vt.edu/~cs3114/Summer13/Notes/T12.PerfectHashFunctions.pdf">https://courses.cs.vt.edu/~cs3114/Summer13/Notes/T12.PerfectHashFunctions.pdf</a></li>
+<li><a href="https://www.cs.otago.ac.nz/cosc242/pdf/L11.pdf">https://www.cs.otago.ac.nz/cosc242/pdf/L11.pdf</a></li>
+</ul>
 </blockquote>
 
 
