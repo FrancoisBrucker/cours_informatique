@@ -15,8 +15,8 @@ Explorer les propriétés et l'intérêt de l'arbre.
 {% note "**Définition**" %}
 Un **_arbre_** est un _graphe_ $T = (V, E)$ qui est :
 
-- [connexe](../chemins-cycles-connexite/#définition-connexe){.interne}
-- [sans cycle](../chemins-cycles-connexite/#définition-cycle){.interne}
+- [connexe](../../chemins-cycles-connexite/#définition-connexe){.interne}
+- [sans cycle](../../chemins-cycles-connexite/#définition-cycle){.interne}
 
 {% endnote %}
 
@@ -43,13 +43,13 @@ Commençons par une borne max sur les cycles :
 Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.
 {% endnote %}
 {% details "preuve", "open" %}
-On suppose alors qu'il existe un graphe $G= (V, E)$, tel que $\vert E \vert \geq \vert V \vert$ et qu'il n'y ait pas de cycles.
+On suppose qu'il existe un graphe $G= (V, E)$, tel que $\vert E \vert \geq \vert V \vert$ et qu'il n'y ait pas de cycles.
 
 Commençons par remarquer que si $\vert E \vert \geq \vert V \vert$, alors forcément $\vert V \vert \geq 3$ et s'il n'a pas de cycle alors $\vert V \vert > 3$. De là, on peut choisir $G$ avec le plus petit nombre de sommets possible.
 
 S'il existait dans ce graphe un sommet de degré plus petit ou égal à 1, on pourrait le supprimer du graphe et on aurait un graphe $G' = (V', E')$ avec strictement moins de sommets que $G$, tel que $\vert E' \vert \geq \vert V' \vert$ et qui ne contiendrait pas de cycle (on ne peut pas ajouter de cycle en supprimant une arête ou un sommet à un graphe). Ce qui est impossible par choix de $G$.
 
-Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est dans le cours](../chemins-cycles-connexite#prop-cycles-graphe){.interne}) : notre hypothèse était fausse.
+Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est une propriété qu'on a vu](../../chemins-cycles-connexite#prop-cycles-graphe){.interne}) : notre hypothèse était fausse.
 {% enddetails %}
 
 Continuons par une borne min sur la connexité :
@@ -71,7 +71,7 @@ On conclut en remarquant que $\sum \vert E_i \vert = \vert E \vert - \delta(x) \
 
 {% exercice %}
 
-La proposition précédente permet de créer un algorithme en $\mathcal{O}(\vert V \vert)$ pour savoir si un graphe $G=(V, E)$ est un arbre.
+Montrez que la proposition précédente permet de créer un algorithme en $\mathcal{O}(\vert V \vert)$ pour savoir si un graphe $G=(V, E)$ est un arbre.
 
 {% endexercice %}
 {% details "solution" %}
@@ -88,8 +88,8 @@ Les cinq propositions suivantes sont équivalentes :
 1. $G=(V, E)$ est un arbre
 2. $G=(V, E)$ est connexe et $\vert E \vert = \vert V \vert - 1$
 3. $G=(V, E)$ est sans cycle et $\vert E \vert = \vert V \vert - 1$
-4. $G=(V, E)$ est sans cycle et l'ajout d'une arête crée un cycle
-5. $G=(V, E)$ est connexe et la suppression d'une arête le déconnecte
+4. $G=(V, E)$ est sans cycle et l'ajout d'une arête quelconque crée un cycle
+5. $G=(V, E)$ est connexe et la suppression d'une arête quelconque le déconnecte
 
 {% endnote %}
 
@@ -97,9 +97,9 @@ Les cinq propositions suivantes sont équivalentes :
 Clair avec les deux propositions précédentes.
 {% enddetails %}
 
-Le théorème précédent est important car il montre l'optimalité d'un arbre : c'est le graphe avec un nombre minimum d'arête qui est connexe. C'est pourquoi cette structure est très utilisé dans les problèmes de réseaux réels. Cette optimalité vient avec un coût puisque si une arête casse, on déconnecte le graphe. 
+Le théorème précédent est important car il montre l'optimalité d'un arbre : c'est le graphe avec un nombre minimum d'arête qui est connexe. C'est pourquoi cette structure est très utilisé dans les problèmes de réseaux réels. Cette optimalité vient avec un coût puisque si une arête casse, on déconnecte le graphe.
 
-> TBD arbre = rapide. Beaucoup de problème compliqué deviennent simple avec les arbres.
+De plus, cette optimalité minimale fait que nombre de problèmes compliqués (voir NP-complets) deviennent facile (polynomial et souvent linéaire) sur les arbres.
 
 ## Sommets et feuilles
 
@@ -136,9 +136,9 @@ Montrez que si $T = (V, E)$ est un arbre tel que tout sommet interne est de degr
 {% endexercice %}
 {% details "solution" %}
 
-Si on note $p$ le nombre de feuilles et $q$ le nombre de sommets intérieur, on a : $\vert V \vert = p + q = \vert E \vert +1 $.
+Si on note $p$ le nombre de feuilles et $q$ le nombre de sommets intérieur, on a : $\vert V \vert = p + q = \vert E \vert +1 $. De là si $p = q + 2$ on a bien $\vert V \vert = 2p-2$ et $\vert E \vert = 2p-3$.
 
-De plus, la somme des degrés, $p + 3q$ vaut 2 fois le nombre d'arête, donc $\vert E \vert = 1/2 \cdot (p+3q) = p + q - 1$.
+Comme la somme des degrés $p + 3q$ vaut 2 fois le nombre d'arête, donc $\vert E \vert = 1/2 \cdot (p+3q) = p + q - 1$.
 On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.
 
 {% enddetails %}
@@ -171,7 +171,7 @@ Montrez que si $T = (V, E)$ est un arbre et $x\in V$ un de ses sommets internes,
 
 Comme le degré d'un sommet interne est strictement plus grand que 1, $T\backslash \\{x\\}$ ne peut pas être connexe (il n'a pas assez d'arête) mais chaque composante connexe ne peut avoir de cycles (sinon $T$ en aurait) : ce sont des arbres.
 
-Le même raisonnement implique que supprimer une arête d'un arbre produit une forêt de 2 arbres. Comme on supprime itérativement $\delta(x)$ arêtes de l'arbre contenant $x$, n produit bien $\delta(x)$ composantes connexes à la fin des itérations.
+Le même raisonnement implique que supprimer une arête d'un arbre produit une forêt de 2 arbres. Comme on en supprime $\delta(x)$, on produit $\delta(x)$ composantes connexes (on supprime itérativement les arêtes $xy$ de la composante connexe contenant $x$).
 
 {% enddetails %}
 
@@ -187,24 +187,19 @@ Les ordre d'effeuillage permettent tout un tas de raisonnements par récurrence 
 Terminons cette partie par un petit exercice utilisant les feuilles et les ordres d'effeuillages.
 
 {% exercice %}
-Montrez que si $T = (V, E)$ est un arbre et $x$ un sommet. Tout parcours DFS en partant de $x$ est un effeuillage de $T$.
+Montrez que si $T = (V, E)$ est un arbre et $x$ un sommet :
 
-De plus les intervalle de cet ordre forme un sous-arbre de $T$
+- tout parcours DFS en partant de $x$ est un effeuillage de $T$,
+- les ensembles $S(x, y) = \\{z | y \text{ est sur le chemin entre }x \text{ et } z\\}$ sont des intervalles.
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD faire une preuve. par rec en supprimant le premier élément du DFS qui est forcément une feuille.
-{% enddetails %}
+Un DFS sur un arbre va s'arrêter aux feuilles. De plus il est clair que l'ordre produit par une DFS à partir de $x$ va placer les éléments de $S(x, y)$ avant $y$ en un bloc : lorsque le DFS passe par $y$ la première fois tous les éléments suivant placés dans l'ordre jusqu'à l'ajout de $y$ seront dans $S(x, y)$.
 
-Enfin un petit exercice structurel :
+On en déduit que :
 
-{% exercice %}
-Montrez que si $T = (V, E)$ est un arbre et $x$, $y$ et $z$ trois sommets. Il existe un unique sommet qui est à la fois sur le chemin entre $x$ et $y$, le chemin entre $x$ et $z$ et sur le chemin entre $y$ et $z$.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD faire une preuve.
+- en supprimant tous les sommets avant $y$ dans l'ordre du DFS, $y$ est une feuille,
+- si $z, z' \in S(x, y)$, alors tout l'intervalle $[z, z']$ est dans $S(x, y)$
 
 {% enddetails %}
 
@@ -244,3 +239,26 @@ La complexité est de $\mathcal{O}(n)$ puisqu'au pire on remonte à la racine 2 
    2. `3 → 4` : on retombe sur un sommet marqué
 
 Au total on a parcouru au pire 2 fois la longueur du chemin. Notre algorithme est maintenant optimal.
+
+Enfin terminons cette partie par un petit exercice structurel qui introduit la notion de médiane dans les arbres :
+
+{% exercice %}
+Montrez que si $T = (V, E)$ est un arbre et $x$, $y$ et $z$ trois sommets. Il existe un unique sommet qui est à la fois sur le chemin entre $x$ et $y$, le chemin entre $x$ et $z$ et sur le chemin entre $y$ et $z$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Se déduit de l'unicité des chemins. Considérant les chemins :
+
+- $x = u_0 \dots u_k = y$
+- $z = v_0 \dots v_l = z$
+
+Si $u_i = v_j$ alors $u_i \dots u_k = v_j \dots v_l$ car sinon, comme $u_k = v_l - y$ il existerait un cycle dans l'arbre. Le plus petit indice $i$ et $j$ tel que $u_i = v_j$ est aussi sur le chemin entre $x$ et $z$ et on est dans la situation ci-dessous ($t$ pouvant être égal à $x$, $y$ ou $z$) :
+
+![mediane](./mediane.png)
+
+Et $t$ est bien l'unique intersection des 3 chemins.
+{% enddetails %}
+{% info %}
+Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé [graphes médians](https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian). Les[hypercubes](https://fr.wikipedia.org/wiki/Hypercube_(graphe)) en sont des exemples.
+{% endinfo %}

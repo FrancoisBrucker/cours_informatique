@@ -72,27 +72,25 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 #### Semaine 2
 
-> Qu'ont-ils fait en arbre ? Parcours ? ALM ?
-> chemin positif et négatif à coût min ?
-> parcours largeur/profondeur
-> flot ?
-
-Arbres :
+{% aller %}
 
 1. [version théorie des graphes des arbres](/cours/graphes/arbres/){.interne}
-   - définitions
-   - propriétés fondamentales
+   - [définitions](/cours/graphes/arbres/définitions/){.interne}
+   - [tracés d'arbres](/cours/graphes/arbres/tracés/){.interne}
 2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
 3. Cayley et Prüfer
 4. Catalan et chemin de Dyck
 5. Poyla et isomorphisme d'arbre
 6. Process de Watson
 
-{% faire %}
+{% endaller %}
 
-En DM, l'ET de l'année dernière :
+{% faire "**DM**" %}
+
+L'ET de l'année dernière :
 
 [ET 2024-2025](./ET/et.pdf){.interne}
+
 {% endfaire %}
 
 #### Semaine 3
