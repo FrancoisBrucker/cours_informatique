@@ -10,21 +10,23 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD à refaire mieux.
+> TBD à refaire mieux avec des définitions
 
 > TBD <https://www.youtube.com/watch?v=_n7RH11-eDM&list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI>
 
-> TBD parler des arbres planaires définis comme suites finie entières
-
-## arbre enraciné
+## arbre planté
 
 > TBD mettre dans une section à part ?
 > TBD calcul de hauteur récursif
 > TBD arbres régulier.
 
-En informatique on utilise souvent la structure d'arbre en l'**enracinant**, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : **l'unicité des chemins**
+En informatique on utilise souvent la structure d'arbre en l'**enracinant**, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : **l'unicité des chemins**.
 
-### ordonnancement des sommets { #ordo-sommets }
+### Planter un arbre
+
+> TBD arbre et on le plante avec un BFS. étages par profondeur dans le BFS.
+>
+> h = hauteur du sommet qui l'attrape + 1
 
 L'unicité des chemins permet d'ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire _"tomber"_ depuis la racine. On peut en effet les ranger par rapport à **leur chemin** par rapport à celle ci :
 
@@ -61,7 +63,7 @@ Donnez un exemple de chacun des termes pour le graphe ci-avant.
 
 Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique) par exemple car il permet de rendre compte de l'évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu'elles ont en commun (les leurs ancêtres).
 
-## arbre binaire planté { #arbre-binaire }
+## arbre binaire planté
 
 En informatique, c'est souvent les arbres binaires planté que l'on utilise :
 
@@ -78,7 +80,7 @@ Montrer que pour un arbre binaire, si tout nœud intérieur a exactement 2 enfan
 Si chaque nœud intérieur a 2 enfants $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.
 {% enddetails %}
 
-> TBD \* la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1
+> TBD la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1
 
 Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des **arbres de décisions**, si utiles en apprentissage automatique.
 
@@ -154,12 +156,14 @@ Les [parcours d'arbres](https://fr.wikipedia.org/wiki/Arbre_syntaxique) sont uti
 
 ## Représentation graphique
 
-### Dendrogramme
+La méthode classique pour représenter des arbres plantés est de procéder comme pour le tracé axial concentrique des arbres, mais en plaçant les différents sommets sur des droites parallèles.
 
-> voir mon livre
+En reprenant [l'arbre de la partie Cayley](../cayley/arbre-prufer-1.png) et en le plantant en 8, on obtient la figure ci-après :
 
-### Knuth
+![dendrogramme](./dendrogramme.png)
 
-> TBD Knuth <https://llimllib.github.io/pymag-trees/>
+Jetez aussi un coup d'œil au lien suivant qui donne plusieurs façons de dessiner des arbres plantés :
 
-> chemin de Dyck pour énumérer les arbres planaires. <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>
+{% lien %}
+[Drawing Presentable Trees](https://llimllib.github.io/pymag-trees/)
+{% endlien %}

@@ -71,6 +71,11 @@ On a les propriétés remarquables suivantes, qui seront utiles à de multiples 
 
 >TBD : XOR le plus du groupe $(\mathbb{Z}/2\mathbb{Z})^L$
 
+- series formelles :
+  - <https://fr.wikipedia.org/wiki/S%C3%A9rie_formelle>
+  - <https://arxiv.org/pdf/2205.00879>
+- Analyse combinatoire : <https://algo.inria.fr/flajolet/Publications/book.pdf>
+
 ## TBD
 
 - crypto dépend beaucoup :

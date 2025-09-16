@@ -60,10 +60,11 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 ### Arbres planaires
 
-> TBD arbre planaires. Suite de voisins. Montrer approche avec suites de mots.
-> un DFS. pour encoder les arbres planaires. c'est un mot de Dyck (E(nfant suivant)/P(arent)) <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>. C'est une bijection. Encode en +1, -1 ou en chemins.
-> TBDTrouver exam centrale PC 2011 <https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021>
-> TBD énumération avec un Dijkstra sur arbre orienté sur demi-grille.
+{% aller %}
+
+[Arbres planaires](arbres-planaires){.interne}
+
+{% endaller %}
 
 ### Arbres de Catalan
 
@@ -103,7 +104,7 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 {% enddetails %}
 
 > TBD polynomial pour les arbres
-
+>
 > TBD Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>
 > <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf>
 > TBD TP <https://info.faidherbe.org/MPII/11.pdf>

@@ -127,15 +127,16 @@ Pour se familiariser avec les feuilles, commençons par résoudre l'exercice sui
 
 {% exercice %}
 
-Montrez que si $T = (V, E)$ est un arbre tel que tout sommet interne est de degré 3 (on appelle ces arbres **_ternaire_**) alors si $p$ est le nombre de ses feuilles on a :
+Montrez que si $T = (V, E)$ est un arbre tel que tout sommet interne est de degré 3 (on appelle ces arbres **_ternaire_**) alors si $p$ est le nombre de ses feuilles et $q$ le nombre de ses sommets internes on a :
 
+- $p = q + 2$
 - $\vert V \vert = 2p-2$
 - $\vert E \vert = 2p-3$
 
 {% endexercice %}
 {% details "solution" %}
 
-Si on note $p$ le nombre de feuilles et $q$ le nombre de sommets intérieur, on a : $\vert V \vert = p + q = $\vert E \vert +1 $.
+Si on note $p$ le nombre de feuilles et $q$ le nombre de sommets intérieur, on a : $\vert V \vert = p + q = \vert E \vert +1 $.
 
 De plus, la somme des degrés, $p + 3q$ vaut 2 fois le nombre d'arête, donc $\vert E \vert = 1/2 \cdot (p+3q) = p + q - 1$.
 On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.
@@ -163,12 +164,15 @@ Et que se passe-t-il si on supprime un sommet interne ?
 
 {% exercice %}
 
-Montrez que si $T = (V, E)$ est un arbre et $x\in V$ un de ses sommets internes, alors $T\backslash \\{x\\}$ est une forêt avec strictement plus d'une partie connexe.
+Montrez que si $T = (V, E)$ est un arbre et $x\in V$ un de ses sommets internes, alors $T\backslash \\{x\\}$ est une forêt avec $\delta_T(x) > 1$ parties connexes.
 
 {% endexercice %}
 {% details "solution" %}
 
-Si le degré de $x$ est strictement plus grand que 1, $T\backslash \\{x\\}$ ne peut pas être connexe (il n'a pas assez d'arête) mais chaque composante connexe ne peut avoir de cycles (sinon $T$ en aurait) : ce sont des arbres.
+Comme le degré d'un sommet interne est strictement plus grand que 1, $T\backslash \\{x\\}$ ne peut pas être connexe (il n'a pas assez d'arête) mais chaque composante connexe ne peut avoir de cycles (sinon $T$ en aurait) : ce sont des arbres.
+
+Le même raisonnement implique que supprimer une arête d'un arbre produit une forêt de 2 arbres. Comme on supprime itérativement $\delta(x)$ arêtes de l'arbre contenant $x$, n produit bien $\delta(x)$ composantes connexes à la fin des itérations.
+
 {% enddetails %}
 
 Les deux exercices précédents nous permettent de conclure sur l'existence des **_ordres d'effeuillage_** pur tout arbre :
@@ -191,7 +195,18 @@ De plus les intervalle de cet ordre forme un sous-arbre de $T$
 
 > TBD faire une preuve. par rec en supprimant le premier élément du DFS qui est forcément une feuille.
 {% enddetails %}
-> DFS =  ordre d'effeuillage. Il est de plus particulier : il prend les sommets dans l'ordre d'un dessin.
+
+Enfin un petit exercice structurel :
+
+{% exercice %}
+Montrez que si $T = (V, E)$ est un arbre et $x$, $y$ et $z$ trois sommets. Il existe un unique sommet qui est à la fois sur le chemin entre $x$ et $y$, le chemin entre $x$ et $z$ et sur le chemin entre $y$ et $z$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD faire une preuve.
+
+{% enddetails %}
 
 ## Chemins et arbres
 
@@ -208,13 +223,24 @@ S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au pr
 
 La proposition précédente est renforcée par le fait que trouver les chemins d'un sommet à tous les autres avec un arbre est très facile : il suffit de faire un parcourt (largeur ou profondeur) pour trouver en $\mathcal{O}(|E|) = \mathcal{O}(|V|)$ opérations l'ensemble des chemins en "remontant"
 
-On appelle ce codage, le codage par parent. Formalisons le :
+On appelle ceci le codage par parent. Formalisons le avec un BFS. On associe à chaque sommet son parent, c'est à dire celui qui l'a fait rentrer dans la structure. L'arbre suivant résulte d'un BFS en 8 :
 
-> TBD codage par parent avec un DFS/BFS. Puis pour trouver le chemin vers $x$ depuis $y$, on remonte. Faire exemple avec le graphe de cayley.
+![codage père](./codage-père.png)
 
-> TBD on peut même faire mieux en marquant les sommets : on mets plus longtemps à trouver le chemin (on remonte deux fois vers $x$), mais on a besoin que d'un DFS et pas n. En avançant et marquant 1 par 1 on est au pire en O de la taille du chemin. Pas en O(n) ce qui est mieux.
+Pour trouver le chemin entre 5 et 7 on remonte jusqu'au départ du BFS, ici 8 :
 
-## Médiane
+- `5 → 12 → 4 → 8`
+- `7 → 3 → 4 → 8`
 
-> TBD des  chemins précédent on peut montrer qu'il y a une médiane à un arbre. Généraliser les arbres par médiane.
-> TBD ordre DFS
+On marque les sommet parcouru avec le premier chemin et on s'arrête au premier sommet marqué en parcourant le second chemin. Dans notre cas le premier sommet de la chaîne `5 → 12 → 4 → 8`  présent dans la seconde chaîne est 4. Le chemin entre 5 et 7 est alors la combinaison des deux chemins : $[5, 12, 4, 3, 7]$.
+
+La complexité est de $\mathcal{O}(n)$ puisqu'au pire on remonte à la racine 2 fois. Ceci peut être long si le chemin final est tout petit (comme le chemin $[5, 12, 6]$). La solution est de remonter les 2 chemin en même temps d'un sommet itérativement et de s'arrêter au premier sommet marqué par l'un ou l'autre. Par exemple le chemin entre 7 et 12 :
+
+1. on remonte d'un cran pour les deux chemins :
+   1. on commence par `7 → 3` et on marque 3
+   2. puis `12 → 4` et on marque 4
+2. on continue :
+   1. `4 → 8` : on parque 8
+   2. `3 → 4` : on retombe sur un sommet marqué
+
+Au total on a parcouru au pire 2 fois la longueur du chemin. Notre algorithme est maintenant optimal.

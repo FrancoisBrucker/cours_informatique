@@ -3,6 +3,10 @@ layout: layout/post.njk
 
 title: Structures arborées
 
+eleventyNavigation:
+  prerequis:
+    - "/cours/graphes/arbres/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -11,22 +15,30 @@ eleventyComputed:
 ---
 
 
+> TBD à faire.
+
+structure hiérarchique (arbre planté)
+
+> TBD AVL
+arbre rouge/noir ; tas de Fibonacci ; ...
+
 > TBD tas, ABR, lexico-graphiques
 > exo AABB, arbres
 > arbre syntaxique + pile pour lecture
 - tas et file de priorité
 > TBD union find
-> 
 
-### exemple du tas
+> TBD exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
+
+## Tas
 
 Nous allons montrer ici une utilité de l'arbre binaire complet pour résoudre le problème d'une file de priorité.
 
-#### le problème
+### le problème
 
 Une salle d'attente des urgences d'un hôpital contient des patients dont la gravité d'état est donnée par un entier. Des patients peuvent arriver et partir de la salle d'attente et leur état peut s'améliorer (la gravité d'état baisse) ou se détériorer (leur gravité d'état augmente). A chaque fois qu'un médecin est libre, on prend en charge le patient avec l'état de gravité le plus important.
 
-#### une solution possible (naïve)
+### une solution possible (naïve)
 
 On regarde chaque patient et on prend le patient ayant la gravité d'état le plus important.
 
@@ -40,7 +52,7 @@ On a simplement besoin de regarder chaque patient lorsqu'il faut en prendre en c
 
 Si l'on suppose que l'état de gravité d'un patient est connu, on peut faire bien mieux.
 
-#### un tas
+### un tas
 
 Un tas est un arbre binaire planté complet dont les sommets sont des entiers. On considère en plus qu'un tas est **plein**, c'est-à-dire que les feuilles de hauteur maximum forment un intervalle à gauche de l'arbre.
 
@@ -73,7 +85,7 @@ De plus, pour un tas, chaque nœud est de valeur plus grande que chacun de ses d
 Le plus grand nœud est **toujours** la racine du tas.
 {% enddetails %}
 
-#### manipulation d'un tas
+### manipulation d'un tas
 
 {% exercice %}
 
@@ -105,7 +117,7 @@ En conclure que l'utilisation du tas est bien meilleure que la solution naïve.
 Toutes les opérations nécessitent un nombre de calculs proportionnel à la hauteur $h$ du tas. Et il y a $n = 2^h$ éléments dans celui-ci. Nos opérations sont donc toutes en $\mathcal{O}(\log_2(n)) = \mathcal{O}(h)$ opérations.
 {% enddetails %}
 
-#### pour la bonne bouche
+### pour la bonne bouche
 
 {% exercice %}
 

@@ -19,6 +19,14 @@ Chemins, cycle et connexité dans les graphes : définitions et premières propr
 
 Un graphe $G=(V, E)$ rend compte d'une _relation_ (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette courte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.
 
+> TBD ajout des parcours :
+>
+> - BFS
+>   - Plus courts chemins (démonstration par rec)
+> - BFS
+>   - chemin et cycles/circuit avec BFS (nœud dans la pile)
+
+
 ## Chemin, cycles et circuits
 
 <span id="definition-longueur"></span>
@@ -339,6 +347,8 @@ Notez bien que ces propositions ne sont que des implications. Si l'on prend le g
 
 ## Algorithmes
 
+> Faire en BFS ou DFS.
+
 On utilisera le graphe suivant pour nos algorithmes :
 
 ```python
@@ -455,11 +465,15 @@ Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on 
 
 ### <span id="algorithme-fortement-connexe"></span> Algorithme de recherche de composante fortement connexe
 
-> TBD lien
+> TBD avec un DFS
 
-{% info %}
-Notez qu'il existe un autre algorithme utilisant le parcours en profondeur et que nous verrons plus tard qui permet de faire la même chose avec une complexité linéaire (c'est à dire la taille du graphe): $\mathcal{O}(\vert E \vert)$.
-{% endinfo %}
+> TBD  connexes
+
+- Kosaraju en 2 passes : <https://www.youtube.com/watch?v=RpgcYiky7uw>
+- Tarjan en une passe : <https://www.youtube.com/watch?v=wUgWX0nc4NY>
+
+> TBD <https://www.youtube.com/watch?v=m2mdGfxs_5E>
+
 
 ### Trouver un chemin
 
@@ -586,3 +600,7 @@ def cycle_non_orienté(G, a):
 
     return chemin[i:] + [début]
 ```
+
+### Trouver une composante 2-connexe
+
+> TBD aussi avec un DFS

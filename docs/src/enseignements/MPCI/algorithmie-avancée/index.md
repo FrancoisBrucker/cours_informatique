@@ -88,9 +88,8 @@ Arbres :
 5. Poyla et isomorphisme d'arbre
 6. Process de Watson
 
-> TBD faire exos du [DS](./DS/ds.pdf){.interne}
-
 {% faire %}
+
 En DM, l'ET de l'année dernière :
 
 [ET 2024-2025](./ET/et.pdf){.interne}

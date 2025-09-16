@@ -88,7 +88,67 @@ Toutes les preuves de cette partie et de la partie suivante vont fonctionner la 
 - Oui, il existe plusieurs arbres couvrant car le cycle k-g-j-l est de valuation constante et valant 2. Un raisonnement identique aux 2 précédent montre que l'on peut échanger une arête de valuation 2 par une autre dans un arbre de valuation minimale.
   {% enddetails %}
 
-### Algorithme de Kruskal
+## Propriétés
+
+Un arbre couvrant de poids minimum d'un graphe possède de nombreuses propriétés. Démontrons en quelques unes :
+
+{% exercice %}
+
+Montrez que s'il existe deux arbres couvrants de poids minimum qui ne différent que d'une arête, alors elles ont même valuation.
+
+{% endexercice %}
+{% details "solution" %}
+
+Les 2 arbres ont même valuation de la somme des valuations de leurs arêtes :les 2 arêtes différentes ont donc forcément même valuation.
+{% enddetails %}
+{% exercice %}
+
+Montrez que si toutes les valuations sont différentes, il n'existe qu'un seul arbre couvrant de poids minimal.
+
+{% endexercice %}
+{% details "solution" %}
+
+On range les valuations des 2 arbres par ordre croissant. Les deux arbres étant différents, on s'arrête à la 1ère position dans cet ordre qui contient 2 arêtes différentes. L'une des arêtes va avoir une valuation inférieure à l'autre. On peut alors procéder comme précédemment et ajouter l'arête de valuation la plus petite dans l'autre arbre. Il faudra alors à nouveau supprimer une arête qui forme un cycle, mais on pourra enlever une arête de valuation plus grande, ce qui est impossible car l'arbre initial était de valuation minimale.
+{% enddetails %}
+{% exercice %}
+
+Montrez que la réciproque de l'exercice précédent n'est pas vraie.
+
+{% endexercice %}
+{% details "solution" %}
+
+Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.
+
+{% enddetails %}
+
+Un petit exercice dont la résolution va nous aider à prouver les algorithmes de construction d'arbres de poids minimum :
+
+{% exercice %}
+
+Montrez que si $T_1$ et $T_2$ sont deux arbres couvrants de poids minium de $(G, f)$. Et soit $uv$ une arête de $T_1$ qui n'est pas présente dans $T_2$.
+
+Montrez qu'il existe un arbres couvrant de poids minium $T'_2$ dont les arêtes en commun avec $T_1$ sont exactement celles de $T_2$ plus $uv$.
+{% endexercice %}
+{% details "solution" %}
+
+> TBD propriété d'échange à écrire propre.
+
+{% enddetails %}
+{% exercice %}
+Déduire de l'exercice précédent que si $(G, f)$ est un graphe connexe valué, le graphe $\mathcal{G}=(\mathcal{T}[G], E)$ est connexe. Avec :
+
+- $\mathcal{T}[G]$ l'ensemble des arbres de longueur minimum de$(G, f)$,
+- il existe une arête entre deux arbres s'ils ne diffèrent que d'une arête.
+
+{% endexercice %}
+{% details "solution" %}
+
+> TBD si $k$ différences, l'exercice précédent dit qu'il existe un alm avec $k-1$ différences
+> puis on récurse.
+
+{% enddetails %}
+
+## Algorithme de Kruskal
 
 {% lien %}
 <https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal>
@@ -162,49 +222,11 @@ Ne confondez pas les 2 problèmes !
 {% endattention %}
 {% enddetails %}
 
-## On s'entraîne
-
-### Propriétés
-
-Un arbre couvrant de poids minimum d'un graphe possède de nombreuses propriétés. Démontrons en quelques unes :
-
-{% exercice %}
-
-Montrez que s'il existe deux arbres couvrants de poids minimum qui ne différent que d'une arête, alors elles ont même valuation.
-
-{% endexercice %}
-{% details "solution" %}
-
-Les 2 arbres ont même valuation de la somme des valuations de leurs arêtes :les 2 arêtes différentes ont donc forcément même valuation.
-{% enddetails %}
-{% exercice %}
-
-Montrez que si toutes les valuations sont différentes, il n'existe qu'un seul arbre couvrant de poids minimal.
-
-{% endexercice %}
-{% details "solution" %}
-
-On range les valuations des 2 arbres par ordre croissant. Les deux arbres étant différents, on s'arrête à la 1ère position dans cet ordre qui contient 2 arêtes différentes. L'une des arêtes va avoir une valuation inférieure à l'autre. On peut alors procéder comme précédemment et ajouter l'arête de valuation la plus petite dans l'autre arbre. Il faudra alors à nouveau supprimer une arête qui forme un cycle, mais on pourra enlever une arête de valuation plus grande, ce qui est impossible car l'arbre initial était de valuation minimale.
-{% enddetails %}
-{% exercice %}
-
-Montrez que la réciproque de l'exercice précédent n'est pas vraie 
-
-{% endexercice %}
-{% details "solution" %}
-
-Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.
-
-{% enddetails %}
-
-> TBD le graphe formé des ALM et une arête si échange possible est connexe. Par récurrence
-
-### Exercice
+## Exercice
 
 Les arbres couvrant se retrouvent parfois dans des endroits inattendus et permettent de résoudre simplement des  problèmes plus complexes.
 
-	Dans un réseau de communication, on appelle **_débit_** la quantité d'information que le réseau garantit de pouvoir faire passer entre deux sommets. Dans cet exercice, le réseau est modélisé par un graphe $G = (X, E)$ connexe. Chaque arête est munie d'une bande passante (qui ici sera appelée poids), $v: E\to \mathbb{R}^+$, qui limite la quantité d'information qu'elle peut véhiculer. Le but de l'exercice est de mettre au point des algorithmes permettant de calculer le
-débit. Le graphe suivant va servir d'exemple. :
+Dans un réseau de communication, on appelle **_débit_** la quantité d'information que le réseau garantit de pouvoir faire passer entre deux sommets. Dans cet exercice, le réseau est modélisé par un graphe $G = (X, E)$ connexe. Chaque arête est munie d'une bande passante (qui ici sera appelée poids), $v: E\to \mathbb{R}^+$, qui limite la quantité d'information qu'elle peut véhiculer. Le but de l'exercice est de mettre au point des algorithmes permettant de calculer le débit. Le graphe suivant va servir d'exemple. :
 
 ![réseau](./reseau-graphe.png)
 

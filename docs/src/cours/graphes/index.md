@@ -60,8 +60,9 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 {% aller %}
 
-1. [Eulérien](parcours-eulériens){.interne}
-2. [Hamiltonien](parcours-hamiltoniens){.interne}
+1. [Chemins et cycles Eulérien](parcours-eulériens){.interne}
+2. [Chemins et cycles Hamiltonien](parcours-hamiltoniens){.interne}
+3. [Ordonnancement de tâches](parcours-ordonnancement){.interne}
 
 {% endaller %}
 
@@ -96,22 +97,13 @@ Projets :
 
 {% endaller %}
 
+> TBD : exemple de chemins de taxi. Voir <https://archipel.uqam.ca/8784/1/M14397.pdf>
+
 ## Arbres
 
 {% aller %}
 
 [Arbres](arbres){.interne}
-
-{% endaller %}
-
-> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
-> TBD : DFS et arbre. Tarjan pour fortement connexe.
-> TBD : chemins de taxi. Voir <https://archipel.uqam.ca/8784/1/M14397.pdf>
-
-> TBD à mettre en algorithmie. Séparer le cours de graphe en parties, comme le cours d'algo.
-{% aller %}
-
-[Structures de données arborées](structures-arborées){.interne}
 
 {% endaller %}
 

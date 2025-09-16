@@ -93,6 +93,10 @@ Montrer que l'on peut déterminer en temps linéaire cette arête ou sommet.
 
 {% enddetails %}
 
+On peut aussi placer les sommets sur des cercle concentriques autour de la racine. Un sommet à distance de 2 arêtes de la racine étant placé sur le deuxième cercle :
+
+![axial concentrique](./axial-concentrique.png)
+
 ## Tracé axial
 
 > TBD tracé autour d'un chemin le plus long.
