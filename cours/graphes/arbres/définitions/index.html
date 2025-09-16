@@ -106,8 +106,8 @@
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>arbre</em></strong> est un <em>graphe</em> $T = (V, E)$ qui est :</p>
 <ul>
-<li><a href="../chemins-cycles-connexite/#d%C3%A9finition-connexe" class="interne">connexe</a></li>
-<li><a href="../chemins-cycles-connexite/#d%C3%A9finition-cycle" class="interne">sans cycle</a></li>
+<li><a href="../../chemins-cycles-connexite/#d%C3%A9finition-connexe" class="interne">connexe</a></li>
+<li><a href="../../chemins-cycles-connexite/#d%C3%A9finition-cycle" class="interne">sans cycle</a></li>
 </ul>
 </div></div>
 
@@ -165,10 +165,10 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On suppose alors qu'il existe un graphe $G= (V, E)$, tel que $\vert E \vert \geq \vert V \vert$ et qu'il n'y ait pas de cycles.</p>
+<p>On suppose qu'il existe un graphe $G= (V, E)$, tel que $\vert E \vert \geq \vert V \vert$ et qu'il n'y ait pas de cycles.</p>
 <p>Commençons par remarquer que si $\vert E \vert \geq \vert V \vert$, alors forcément $\vert V \vert \geq 3$ et s'il n'a pas de cycle alors $\vert V \vert &gt; 3$. De là, on peut choisir $G$ avec le plus petit nombre de sommets possible.</p>
 <p>S'il existait dans ce graphe un sommet de degré plus petit ou égal à 1, on pourrait le supprimer du graphe et on aurait un graphe $G' = (V', E')$ avec strictement moins de sommets que $G$, tel que $\vert E' \vert \geq \vert V' \vert$ et qui ne contiendrait pas de cycle (on ne peut pas ajouter de cycle en supprimant une arête ou un sommet à un graphe). Ce qui est impossible par choix de $G$.</p>
-<p>Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle (<a href="../chemins-cycles-connexite#prop-cycles-graphe" class="interne">c'est dans le cours</a>) : notre hypothèse était fausse.</p>
+<p>Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle (<a href="../../chemins-cycles-connexite#prop-cycles-graphe" class="interne">c'est une propriété qu'on a vu</a>) : notre hypothèse était fausse.</p>
 </div>
 </details>     
 </div>
@@ -210,7 +210,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>La proposition précédente permet de créer un algorithme en $\mathcal{O}(\vert V \vert)$ pour savoir si un graphe $G=(V, E)$ est un arbre.</p>
+<p>Montrez que la proposition précédente permet de créer un algorithme en $\mathcal{O}(\vert V \vert)$ pour savoir si un graphe $G=(V, E)$ est un arbre.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -247,8 +247,8 @@
 <li>$G=(V, E)$ est un arbre</li>
 <li>$G=(V, E)$ est connexe et $\vert E \vert = \vert V \vert - 1$</li>
 <li>$G=(V, E)$ est sans cycle et $\vert E \vert = \vert V \vert - 1$</li>
-<li>$G=(V, E)$ est sans cycle et l'ajout d'une arête crée un cycle</li>
-<li>$G=(V, E)$ est connexe et la suppression d'une arête le déconnecte</li>
+<li>$G=(V, E)$ est sans cycle et l'ajout d'une arête quelconque crée un cycle</li>
+<li>$G=(V, E)$ est connexe et la suppression d'une arête quelconque le déconnecte</li>
 </ol>
 </div></div>
 
@@ -274,9 +274,7 @@
 </details>     
 </div>
 <p>Le théorème précédent est important car il montre l'optimalité d'un arbre : c'est le graphe avec un nombre minimum d'arête qui est connexe. C'est pourquoi cette structure est très utilisé dans les problèmes de réseaux réels. Cette optimalité vient avec un coût puisque si une arête casse, on déconnecte le graphe.</p>
-<blockquote>
-<p>TBD arbre = rapide. Beaucoup de problème compliqué deviennent simple avec les arbres.</p>
-</blockquote>
+<p>De plus, cette optimalité minimale fait que nombre de problèmes compliqués (voir NP-complets) deviennent facile (polynomial et souvent linéaire) sur les arbres.</p>
 <h2>Sommets et feuilles</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -355,8 +353,8 @@ S'il y avait 1 feuille ou moins, on aurait $\sum\delta(x) \geq 2(n-1) + 1 = 2n-1
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si on note $p$ le nombre de feuilles et $q$ le nombre de sommets intérieur, on a : $\vert V \vert = p + q = \vert E \vert +1 $.</p>
-<p>De plus, la somme des degrés, $p + 3q$ vaut 2 fois le nombre d'arête, donc $\vert E \vert = 1/2 \cdot (p+3q) = p + q - 1$.
+<p>Si on note $p$ le nombre de feuilles et $q$ le nombre de sommets intérieur, on a : $\vert V \vert = p + q = \vert E \vert +1 $. De là si $p = q + 2$ on a bien $\vert V \vert = 2p-2$ et $\vert E \vert = 2p-3$.</p>
+<p>Comme la somme des degrés $p + 3q$ vaut 2 fois le nombre d'arête, donc $\vert E \vert = 1/2 \cdot (p+3q) = p + q - 1$.
 On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 </div>
 </details>     
@@ -419,7 +417,7 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>Comme le degré d'un sommet interne est strictement plus grand que 1, $T\backslash \{x\}$ ne peut pas être connexe (il n'a pas assez d'arête) mais chaque composante connexe ne peut avoir de cycles (sinon $T$ en aurait) : ce sont des arbres.</p>
-<p>Le même raisonnement implique que supprimer une arête d'un arbre produit une forêt de 2 arbres. Comme on supprime itérativement $\delta(x)$ arêtes de l'arbre contenant $x$, n produit bien $\delta(x)$ composantes connexes à la fin des itérations.</p>
+<p>Le même raisonnement implique que supprimer une arête d'un arbre produit une forêt de 2 arbres. Comme on en supprime $\delta(x)$, on produit $\delta(x)$ composantes connexes (on supprime itérativement les arêtes $xy$ de la composante connexe contenant $x$).</p>
 </div>
 </details>     
 </div>
@@ -439,8 +437,11 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que si $T = (V, E)$ est un arbre et $x$ un sommet. Tout parcours DFS en partant de $x$ est un effeuillage de $T$.</p>
-<p>De plus les intervalle de cet ordre forme un sous-arbre de $T$</p>
+<p>Montrez que si $T = (V, E)$ est un arbre et $x$ un sommet :</p>
+<ul>
+<li>tout parcours DFS en partant de $x$ est un effeuillage de $T$,</li>
+<li>les ensembles $S(x, y) = \{z | y \text{ est sur le chemin entre }x \text{ et } z\}$ sont des intervalles.</li>
+</ul>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -460,39 +461,12 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD faire une preuve. par rec en supprimant le premier élément du DFS qui est forcément une feuille.</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<p>Enfin un petit exercice structurel :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que si $T = (V, E)$ est un arbre et $x$, $y$ et $z$ trois sommets. Il existe un unique sommet qui est à la fois sur le chemin entre $x$ et $y$, le chemin entre $x$ et $z$ et sur le chemin entre $y$ et $z$.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD faire une preuve.</p>
-</blockquote>
+<p>Un DFS sur un arbre va s'arrêter aux feuilles. De plus il est clair que l'ordre produit par une DFS à partir de $x$ va placer les éléments de $S(x, y)$ avant $y$ en un bloc : lorsque le DFS passe par $y$ la première fois tous les éléments suivant placés dans l'ordre jusqu'à l'ajout de $y$ seront dans $S(x, y)$.</p>
+<p>On en déduit que :</p>
+<ul>
+<li>en supprimant tous les sommets avant $y$ dans l'ordre du DFS, $y$ est une feuille,</li>
+<li>si $z, z' \in S(x, y)$, alors tout l'intervalle $[z, z']$ est dans $S(x, y)$</li>
+</ul>
 </div>
 </details>     
 </div>
@@ -554,6 +528,49 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 </li>
 </ol>
 <p>Au total on a parcouru au pire 2 fois la longueur du chemin. Notre algorithme est maintenant optimal.</p>
+<p>Enfin terminons cette partie par un petit exercice structurel qui introduit la notion de médiane dans les arbres :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que si $T = (V, E)$ est un arbre et $x$, $y$ et $z$ trois sommets. Il existe un unique sommet qui est à la fois sur le chemin entre $x$ et $y$, le chemin entre $x$ et $z$ et sur le chemin entre $y$ et $z$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Se déduit de l'unicité des chemins. Considérant les chemins :</p>
+<ul>
+<li>$x = u_0 \dots u_k = y$</li>
+<li>$z = v_0 \dots v_l = z$</li>
+</ul>
+<p>Si $u_i = v_j$ alors $u_i \dots u_k = v_j \dots v_l$ car sinon, comme $u_k = v_l - y$ il existerait un cycle dans l'arbre. Le plus petit indice $i$ et $j$ tel que $u_i = v_j$ est aussi sur le chemin entre $x$ et $z$ et on est dans la situation ci-dessous ($t$ pouvant être égal à $x$, $y$ ou $z$) :</p>
+<p><img src="mediane.png" alt="mediane"></p>
+<p>Et $t$ est bien l'unique intersection des 3 chemins.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette notion d'intersection de chemins se généralise dans un type de graphes particulier appelé <a href="https://fr.wikipedia.org/wiki/Graphe_m%C3%A9dian">graphes médians</a>. Les<a href="https://fr.wikipedia.org/wiki/Hypercube_(graphe)">hypercubes</a> en sont des exemples.</p>
+</div></div>
+
 
 
 </article>
