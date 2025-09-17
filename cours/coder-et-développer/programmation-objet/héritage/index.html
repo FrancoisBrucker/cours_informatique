@@ -109,7 +109,7 @@
     
   
 
-  <p>Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus <em>spécifiques</em> que ceux de la classe mère. Quelques exemples qui seront dévelopés par la suite:</p>
+  <p>Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus <em>spécifiques</em> que ceux de la classe mère. Quelques exemples qui seront développés par la suite:</p>
 <ul>
 <li>dans un contexte de base de données pour gérer une université, on peut envisager
 <ul>
@@ -156,7 +156,7 @@
 <img src="fl%C3%A8che_h%C3%A9ritage.png" alt="flèche héritage"></p>
 </div></div>
 
-<p>Toutes les classes filles  <em><strong>héritent</strong></em> des propriétés (attributs et méthodes des parents) en supposant le code des classes écrites dans le fichier <code class="fichier">personnel.py</code> on peut alors très bien écrire le code suivant bien que la méthode <code class="language-">donne_age</code> ne soit pas définie dans la classe <code class="language-">EnseignantChercheur</code> :</p>
+<p>Toutes les classes filles <strong><em>héritent</em></strong> des propriétés (attributs et méthodes des parents) en supposant le code des classes écrites dans le fichier <code class="fichier">personnel.py</code> on peut alors très bien écrire le code suivant bien que la méthode <code class="language-">donne_age</code> ne soit pas définie dans la classe <code class="language-">EnseignantChercheur</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> date
 <span class="token keyword">from</span> personnel <span class="token keyword">import</span> EnseignantChercheur
 
@@ -269,7 +269,7 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là, tenter d'utiliser la méthode <code>méthode1</code>  de la <code>classe 1'</code> en définissant la  méthode <code>méthode1</code>  de la <code>classe 2''</code> va en fait exécuter la méthode  méthode <code>méthode1</code>  de la classe <code>object</code>.</p>
+<p>Si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là, tenter d'utiliser la méthode <code>méthode1</code> de la <code>classe 1'</code> en définissant la méthode <code>méthode1</code> de la <code>classe 2''</code> va en fait exécuter la méthode méthode <code>méthode1</code> de la classe <code>object</code>.</p>
 </div></div>
 
 <h3>Connaître la hiérarchie</h3>
@@ -422,7 +422,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <span class="token boolean">True</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">isinstance</span><span class="token punctuation">(</span>triangle<span class="token punctuation">,</span> Polygone<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token boolean">True</span>
-<span class="token operator">>></span><span class="token operator">></span> </code></pre>
+<span class="token operator">>></span><span class="token operator">></span></code></pre>
 </div></div>
 
 <h2><span id="exemple-D&D"></span> Exemple 3 : donjons et dragons</h2>
@@ -458,7 +458,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <p><img src="h%C3%A9ritage_guerri%C3%A8re.png" alt="Guerrière"></p>
 <p>On ne met que les méthodes qui changent, donc le constructeur et se faire taper.</p>
 <h4>Code python de la guerrière</h4>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ... </span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">import</span> random
 
@@ -564,7 +564,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <p>Ceci est tout à fait possible en python, en mettant plusieurs classes mères suivies par des virgules :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">class</span> <span class="token class-name">Doctorant</span><span class="token punctuation">(</span>Étudiant<span class="token punctuation">,</span> EnseignantChercheur<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  </span></code></pre>
+<span class="highlight-line">        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span></code></pre>
 <p>Ceci pose toutefois une foultitude de possibles problèmes lorsque la même méthode ou attribut est définie dans plusieurs classes mères.</p>
 <p>Python règle le problème en ordonnant les classes mères grace au mro :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> Doctorant<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -625,7 +625,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Truc défini dans la classe mère"</span><span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">truc_que_fait_a</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Autre truc dans la classe mère"</span><span class="token punctuation">)</span>  </code></pre>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Autre truc dans la classe mère"</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -701,12 +701,12 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
-    
+
     <span class="token keyword">def</span> <span class="token function">truc_que_fait_a</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Truc défini dans la classe mère"</span><span class="token punctuation">)</span>
-    
+
     <span class="token keyword">def</span> <span class="token function">truc_que_fait_a</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Autre truc dans la classe mère"</span><span class="token punctuation">)</span>  </code></pre>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Autre truc dans la classe mère"</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -716,8 +716,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <div class="pl-8 mr-8">
 <p>Ajoutez :</p>
 <ul>
-<li>dans la  classe <code class="language-">A</code> : une méthode <code class="language-">j_hérite(x)</code> qui prend un paramètre <code class="language-">x</code> qui est une chaîne de caractère et affiche la valeur de x</li>
-<li>dans la  classe <code class="language-">B</code> : une méthode <code class="language-">j_hérite(x)</code> qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules</li>
+<li>dans la classe <code class="language-">A</code> : une méthode <code class="language-">j_hérite(x)</code> qui prend un paramètre <code class="language-">x</code> qui est une chaîne de caractère et affiche la valeur de x</li>
+<li>dans la classe <code class="language-">B</code> : une méthode <code class="language-">j_hérite(x)</code> qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules</li>
 </ul>
 </div></div>
 
@@ -771,6 +771,26 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </div>
 </details>     
 </div>
+<h2>Accesseurs et héritage</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://docs.python.org/3/library/functions.html#super">documentation de <code class="language-">super()</code></a></li>
+<li><a href="https://gist.github.com/Susensio/979259559e2bebcd0273f1a95d7c1e79">héritage d'accesseur et mutateur en python</a></li>
+</ul>
+</div></div>
+
+<p>La gestion des accesseurs et des mutateurs hérités est <em>&quot;compliquée&quot;</em> en Python. Si vous avez utilisé des <code class="language-">@property</code> vues dans le <a href="../projet-objets-d%C3%A9s#property" class="interne">projet objets : Dés</a> pour votre classe <code class="language-">Dé</code>, il faut un peu tricoter pour les utiliser dans la classe <code class="language-">StatDé</code>.</p>
+<p>Supposons que c'est l'attribut <code class="language-">valeur</code> auquel vous accédez par <code class="language-">@property</code>. Pour appeler :</p>
+<ul>
+<li>l'accesseur de la classe mère dans une classe fille on peut utiliser : <code class="language-">super().valeur</code></li>
+<li>le mutateur de la classe mère dans une classe fille peut être accédé via son nom Python qui est : <code class="language-">super(type(self), type(self)).valeur.fset(self, new_position)</code></li>
+</ul>
+<p>C'est un peu compliqué et vient de l'implémentation de <code class="language-">super()</code> en Python.</p>
+<p>Vous pouvez consulter les deux liens suivants pour un peu mieux comprendre ce qu'on fait</p>
 
 
 </article>
