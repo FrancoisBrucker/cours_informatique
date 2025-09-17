@@ -96,9 +96,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Encore un projet d'initiation dans le codage des objets. On s'intéresse ici aux méthodes spéciales qui permettent d'utiliser les objets comme des nombres.</p>
-<!-- end résumé -->
+  <p>Encore un projet d'initiation dans le codage des objets. On s'intéresse ici aux méthodes spéciales qui permettent d'utiliser les objets comme des nombres.</p>
 <p>Vous allez coder une classe <code class="language-">Carte</code>, ce qui permettra par la suite de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de <a href="https://en.wikipedia.org/wiki/Value_object">value object</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -110,12 +108,6 @@
 <p>Un <em><strong>value object</strong></em> est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.</p>
 </div></div>
 
-<p>Ce projet va vous faire utiliser des méthodes d'améliorations d'objets comme :</p>
-<ul>
-<li>l'utilisation de <a href="../am%C3%A9liorer-ses-objets/#repr%C3%A9sentation" class="interne">la fonction spéciale d'affichage <code class="language-">__str__</code></a></li>
-<li>l'utilisation de <a href="../am%C3%A9liorer-ses-objets/#comparaison" class="interne">fonctions spéciale de comparaisons</a></li>
-</ul>
-<p>Remémorez vous ces parties avant de commencer le projet.</p>
 <h2>Projet</h2>
 <h3>Vscode</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -146,7 +138,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Proposez une modélisation UML d'une classe Carte pour notre projet</p>
+<p>Proposez une modélisation UML d'une classe Carte pour notre projet.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -166,7 +158,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Un constructeur, un formatage en chaîne de caractères pour affichage à l'écran et des opérateurs de comparaison :</p>
+<p>On a besoin que d'un constructeur :</p>
 <p><img src="carte_uml.png" alt="carte UML"></p>
 </div>
 </details>     
@@ -199,7 +191,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Créez une user story qui exhibe la fonctionnalité de pouvoir ordonner les cartes.</p>
+<p>Créez une user story nommée <em>&quot;Ordonnancement&quot;</em> qui exhibe la fonctionnalité de pouvoir ordonner les cartes.</p>
 <p>En affichant 10 cartes tirées avec remise dans l'ordre où elles ont été tirées, puis dans l'ordre croisant.</p>
 </div></div>
 
@@ -268,7 +260,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En  considérant que les deux paramètres couleur et valeur sont des chaînes de caractères,
+<p>En  considérant que les deux paramètres couleur et valeur sont des entiers
 quelles sont les possibilités admissibles pour construire une carte ?</p>
 </div></div>
 
@@ -291,21 +283,21 @@ quelles sont les possibilités admissibles pour construire une carte ?</p>
 <div class="mx-8 pb-2">
 <p>Par exemple, pour les valeurs :</p>
 <ul>
-<li><code class="language-">&quot;sept&quot;</code></li>
-<li><code class="language-">&quot;huit&quot;</code></li>
-<li><code class="language-">&quot;neuf&quot;</code></li>
-<li><code class="language-">&quot;dix&quot;</code></li>
-<li><code class="language-">&quot;valet&quot;</code></li>
-<li><code class="language-">&quot;dame&quot;</code></li>
-<li><code class="language-">&quot;roi&quot;</code></li>
-<li><code class="language-">&quot;as&quot;</code></li>
+<li>7 pour <code class="language-">&quot;sept&quot;</code></li>
+<li>8 pour <code class="language-">&quot;huit&quot;</code></li>
+<li>9 pour <code class="language-">&quot;neuf&quot;</code></li>
+<li>10 pour <code class="language-">&quot;dix&quot;</code></li>
+<li>11 pour <code class="language-">&quot;valet&quot;</code></li>
+<li>12 pour <code class="language-">&quot;dame&quot;</code></li>
+<li>13 pour <code class="language-">&quot;roi&quot;</code></li>
+<li>14 pour <code class="language-">&quot;as&quot;</code></li>
 </ul>
 <p>Pour les couleurs :</p>
 <ul>
-<li><code class="language-">&quot;pique&quot;</code></li>
-<li><code class="language-">&quot;cœur&quot;</code></li>
-<li><code class="language-">&quot;carreau&quot;</code></li>
-<li><code class="language-">&quot;trèfle&quot;</code></li>
+<li>1 pour <code class="language-">&quot;pique&quot;</code></li>
+<li>2 pour <code class="language-">&quot;cœur&quot;</code></li>
+<li>3 pour <code class="language-">&quot;carreau&quot;</code></li>
+<li>4 pour <code class="language-">&quot;trèfle&quot;</code></li>
 </ul>
 </div>
 </details>     
@@ -319,99 +311,53 @@ quelles sont les possibilités admissibles pour construire une carte ?</p>
 <p>Implémentez le constructeur de la classe <code class="fichier">Carte</code> et ses tests en supposant que l'utilisateur entre les bonnes valeurs de paramètres.</p>
 </div></div>
 
-<h3>Affichage à l'écran</h3>
-<p>Pour permettre un affichage à l'écran plus convivial :</p>
+<h3>Comparaisons</h3>
+<p>Le principal intérêt d'utiliser des entiers pour coder nos valeurs et nos couleurs est qu'il sera facile de comparer deux cartes.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Codez la méthode <code class="language-">__str__</code> d'une carte. Le code suivant doit pouvoir fonctionner :</p>
+<p>Codez des users stories permettant de comparer des cartes entres-elles :</p>
+<ul>
+<li>savoir si deux cartes sont égales</li>
+<li>savoir si deux cartes sont différentes</li>
+<li>savoir si une carte est strictement plus petite qu'une autre</li>
+<li>savoir si une carte est plus petite ou égale à une autre</li>
+</ul>
+</div></div>
+
+<h3>Affichage à l'écran</h3>
+<p>En revanche afficher une carte à l'écran uniquement avec ses attributs entiers n'est pas très parlant. Codons une méthode permettant
+un affichage à l'écran plus convivial :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Codez une méthode <code class="language-">texte</code> d'une carte qui rend une chaîne de caractères. Le code suivant doit pouvoir fonctionner (en supposant que l'entier 13 correspond à l'as et l'entier 1 à pique) :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> carte <span class="token keyword">import</span> Carte
-<span class="token operator">>></span><span class="token operator">></span> ace_pique <span class="token operator">=</span> Carte<span class="token punctuation">(</span><span class="token string">"as"</span><span class="token punctuation">,</span> <span class="token string">"pique"</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>ace_pique<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> ace_pique <span class="token operator">=</span> Carte<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>ace_pique<span class="token punctuation">.</span>texte<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">as</span> de pique</code></pre>
 <p>Faites un test de cette méthode en testant la représentation sous la forme d'une chaîne de caractères d'une <code class="language-">Carte</code>.</p>
 </div></div>
 
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<h3>User story</h3>
+<p>Vous avez assez de matière pour coder notre seconde user story :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La représentation sous la forme d'une chaîne de caractères un objet <code>x</code> est le résultat de <code class="language-">str(x)</code>.</p>
+<p>Codez la user story <em>&quot;Ordonnancement&quot;</em>.</p>
 </div></div>
 
-<p>Lorsque l'on écrit <code class="language-">print(ace_pique)</code>, python transforme l'objet en chaîne de caractères avec la commande <code class="language-">str</code> qui elle-même cherche la méthode <code class="language-">__str__</code>. Les trois instructions suivantes sont donc équivalentes :</p>
-<ol>
-<li><code class="language-">print(ace_pique)</code></li>
-<li><code class="language-">print(str(ace_pique))</code></li>
-<li><code class="language-">print(ace_pique.__str__())</code></li>
-</ol>
-<h3>Représentation de l'objet</h3>
-<p>Vous verrez parfois une autre méthode de représentation d'un objet utilisant la commande <code class="language-">repr()</code>. Cette fonction doit permettre de reconstruire l'objet si nécessaire.</p>
-<p>Par exemple :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> carte <span class="token keyword">import</span> Carte
-<span class="token operator">>></span><span class="token operator">></span> ace_pique <span class="token operator">=</span> Carte<span class="token punctuation">(</span><span class="token string">"as"</span><span class="token punctuation">,</span> <span class="token string">"pique"</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">repr</span><span class="token punctuation">(</span>ace_pique<span class="token punctuation">)</span><span class="token punctuation">)</span>
-Carte<span class="token punctuation">(</span><span class="token string">'as'</span><span class="token punctuation">,</span> <span class="token string">'pique'</span><span class="token punctuation">)</span></code></pre>
-<p>On utilise souvent <code class="language-">repr()</code> pour du débogage (donc de l'affichage développeur), alors que <code class="language-">str()</code> est utilisé pour de l'affichage utilisateur.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li>on utilise <code>str(objet)</code> (créée avec la méthode <code class="language-">__str__</code>) pour un affichage à l'écran. On transforme l'objet en un texte.</li>
-<li>on utilise <code>repr(objet)</code> (créée avec la méthode <code class="language-">__repr__</code>) pour représenter l'objet sous la forme d'une chaîne de caractères. On doit pouvoir reconstruire un objet identique avec la commande <a href="https://docs.python.org/fr/3/library/functions.html#eval"><code class="language-">eval</code></a> (<code class="language-">eval(repr(objet))</code> doit rendre un objet similaire à <code class="language-">objet</code>.</li>
-</ul>
-</div></div>
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Un petit tuto français pour expliciter les différences entre les deux représentations : <a href="https://www.youtube.com/watch?v=ejGYAnf_X24">https://www.youtube.com/watch?v=ejGYAnf_X24</a></p>
-</div></div>
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Créez et testez la méthode <code class="language-">__repr__</code></p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Carte</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span>
-
-    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">"Carte("</span> <span class="token operator">+</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>couleur<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">")"</span>
-    
-    <span class="token comment"># ...</span>
-</code></pre>
-</div>
-</details>     
-</div>
-<h3>Constantes de classes</h3>
-<p>Avant de pouvoir finir la partie de création d'une carte, il nous reste un problème à résoudre. Comment indiquer à l'utilisateur les possibilités de valeur et de couleurs ?</p>
+<h2>Constantes de classes</h2>
+<p>Avant de pouvoir finir la partie de création d'une carte, il nous reste un problème à résoudre. Comment indiquer à l'utilisateur les possibilités de valeur et de couleurs et leurs correspondances ?</p>
 <p>La solution communément utilisée pour cela est de créer des constantes :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -427,8 +373,8 @@ Carte<span class="token punctuation">(</span><span class="token string">'as'</sp
 <p>En leur associant les chaînes de caractères adéquates.</p>
 </div></div>
 
-<p>Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des chaînes de caractères comme <code class="language-">&quot;sept&quot;</code> qui sont des <a href="../projet-objets-d%C3%A9s/#mantra-no-magic-numbers" class="interne">MAGIC NUMBERS</a>.</p>
-<p>Par exemple, on écrira <code class="language-">Carte(AS, TREFLE)</code> plutôt que <code class="language-">Carte(&quot;as&quot;, &quot;trèfle)</code></p>
+<p>Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des entiers comme 7.</p>
+<p>Par exemple, on écrira <code class="language-">Carte(carte.AS, carte.TREFLE)</code> plutôt que <code class="language-">Carte(13, 4)</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -468,8 +414,21 @@ Carte<span class="token punctuation">(</span><span class="token string">'as'</sp
 <p>Remarquez que l'on a rangé les différentes valeurs par ordre croissant de valeur et de couleur.</p>
 </div></div>
 
+<p>Connaître cette technique est fondamentale. L'utilisateur ne doit pas être au courant des entiers codant vos valeurs et couleurs : Il utilise des constantes explicites. Ceci permet de plus de garantir que les entrées du constructeur de la cartes sont toujours correctes.</p>
+<p>C'est une application directe du mantra NO MAGIC NUMBERS :</p>
+<p><span id="mantra-no-magic-numbers"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Coding mantra</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es">NO MAGIC NUMBER</a></p>
+</div></div>
+
 <h2>User story voyance</h2>
-<p>Vous avez tous les outils nécessaires pour créer la user story <em>&quot;voyance&quot;</em> :</p>
+<p>Vous avez tous les outils nécessaires pour créer les user story <em>&quot;voyance&quot;</em>  :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -485,50 +444,6 @@ Carte<span class="token punctuation">(</span><span class="token string">'as'</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pourrez utiliser la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.sample"><code class="language-">random.sample</code></a> pour tirer des cartes sans remise d'un paquet.</p>
-</div></div>
-
-<h2>Comparaisons</h2>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Codez et testez les <a href="../classes-et-objets/#comparaison" class="interne">opérateurs de comparaisons</a> :</p>
-<ul>
-<li><code class="language-">==</code> qui correspond a à la méthode <code class="language-">__eq__</code></li>
-<li><code class="language-">!=</code> qui correspond a à la méthode <code class="language-">__ne__</code></li>
-<li><code class="language-">&lt;</code> qui correspond a à la méthode <code class="language-">__lt__</code></li>
-<li><code class="language-">&gt;</code> qui correspond a à la méthode <code class="language-">__gt__</code></li>
-<li><code class="language-">&lt;=</code> qui correspond a à la méthode <code class="language-">__le__</code></li>
-<li><code class="language-">&gt;=</code> qui correspond a à la méthode <code class="language-">__ge__</code></li>
-</ul>
-</div></div>
-
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>N'hésitez pas à utiliser des opérateurs déjà codé. Vous pouvez par exemple utiliser les fonctions <code class="language-">==</code> et <code class="language-">&lt;</code> pour coder les autres les comparaisons.</p>
-</div></div>
-
-<p>Ceci devrait être suffisant pour la deuxième user story :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Codez la seconde user story.</p>
-</div></div>
-
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Vous pourrez utiliser la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.choices"><code class="language-">random.choices</code></a> pour tirer des cartes avec remise d'un paquet.</p>
 </div></div>
 
 <h2>Jeu</h2>
