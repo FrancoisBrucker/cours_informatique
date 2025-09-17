@@ -36,7 +36,6 @@ Avant de continuer, nous allons éliminer les 2 constantes non nommées 1 et 6 q
 
 Les nombres 1 et 6 sont les bornes du dé, il faut les nommer en tant que tel, sinon on va oublier leur signification et le code sera plus dire à modifier plus tard :
 
-<span id="mantra-no-magic-numbers"></span>
 {% note "**Coding mantra**" %}
 
 [NO MAGIC NUMBER](<https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es>)

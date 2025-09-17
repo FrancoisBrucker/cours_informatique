@@ -9,24 +9,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Encore un projet d'initiation dans le codage des objets. On s'intéresse ici aux méthodes spéciales qui permettent d'utiliser les objets comme des nombres.
-
-<!-- end résumé -->
 
 Vous allez coder une classe `Carte`{.language-}, ce qui permettra par la suite de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
 
 {% note "**Définition**" %}
 Un ***value object*** est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.
 {% endnote %}
-
-Ce projet va vous faire utiliser des méthodes d'améliorations d'objets comme :
-
-- l'utilisation de [la fonction spéciale d'affichage `__str__`{.language-}](../améliorer-ses-objets/#représentation){.interne}
-- l'utilisation de [fonctions spéciale de comparaisons](../améliorer-ses-objets/#comparaison){.interne}
-
-Remémorez vous ces parties avant de commencer le projet.
 
 ## Projet
 
@@ -55,11 +44,11 @@ Lorsqu'un joueur doit prendre une carte alors que sa pioche est vide, il mélang
 La pioche et la défausse pouvant être facilement modélisées par des listes, il nous reste à créer une classe Carte pour avoir tous les éléments de base de notre projet.
 
 {% exercice %}
-Proposez une modélisation UML d'une classe Carte pour notre projet
+Proposez une modélisation UML d'une classe Carte pour notre projet. 
 {% endexercice %}
 {% details "solution" %}
 
-Un constructeur, un formatage en chaîne de caractères pour affichage à l'écran et des opérateurs de comparaison :
+On a besoin que d'un constructeur :
 
 ![carte UML](./carte_uml.png)
 {% enddetails %}
@@ -85,7 +74,7 @@ Je vous en propose une ci-après qui exhibe la capacité à créer un jeu de 32 
 Par rapport au jeu, il manque essentiellement la fonctionnalité permettant d'ordonner les cartes :
 
 {% exercice %}
-Créez une user story qui exhibe la fonctionnalité de pouvoir ordonner les cartes.
+Créez une user story nommée *"Ordonnancement"* qui exhibe la fonctionnalité de pouvoir ordonner les cartes.
 
 En affichant 10 cartes tirées avec remise dans l'ordre où elles ont été tirées, puis dans l'ordre croisant.
 
@@ -131,28 +120,28 @@ Créez les fichiers qui nous permettront de coder la carte :
 Le constructeur d'une carte nécessite 2 paramètres : la valeur et la couleur.
 
 {% exercice %}
-En  considérant que les deux paramètres couleur et valeur sont des chaînes de caractères,
+En  considérant que les deux paramètres couleur et valeur sont des entiers
 quelles sont les possibilités admissibles pour construire une carte ?
 {% endexercice %}
 {% details "corrigé" %}
 
 Par exemple, pour les valeurs :
 
-- `"sept"`{.language-}
-- `"huit"`{.language-}
-- `"neuf"`{.language-}
-- `"dix"`{.language-}
-- `"valet"`{.language-}
-- `"dame"`{.language-}
-- `"roi"`{.language-}
-- `"as"`{.language-}
+- 7 pour `"sept"`{.language-}
+- 8 pour `"huit"`{.language-}
+- 9 pour `"neuf"`{.language-}
+- 10 pour `"dix"`{.language-}
+- 11 pour `"valet"`{.language-}
+- 12 pour `"dame"`{.language-}
+- 13 pour `"roi"`{.language-}
+- 14 pour `"as"`{.language-}
 
 Pour les couleurs :
 
-- `"pique"`{.language-}
-- `"cœur"`{.language-}
-- `"carreau"`{.language-}
-- `"trèfle"`{.language-}
+- 1 pour `"pique"`{.language-}
+- 2 pour `"cœur"`{.language-}
+- 3 pour `"carreau"`{.language-}
+- 4 pour `"trèfle"`{.language-}
 
 {% enddetails %}
 
@@ -161,81 +150,49 @@ Implémentez le constructeur de la classe `Carte`{.fichier} et ses tests en supp
 
 {% endfaire %}
 
-### Affichage à l'écran
+### Comparaisons
 
-Pour permettre un affichage à l'écran plus convivial :
+Le principal intérêt d'utiliser des entiers pour coder nos valeurs et nos couleurs est qu'il sera facile de comparer deux cartes.
 
 {% faire %}
-Codez la méthode `__str__`{.language-} d'une carte. Le code suivant doit pouvoir fonctionner :
+Codez des users stories permettant de comparer des cartes entres-elles :
+
+- savoir si deux cartes sont égales
+- savoir si deux cartes sont différentes
+- savoir si une carte est strictement plus petite qu'une autre
+- savoir si une carte est plus petite ou égale à une autre
+
+{% endfaire %}
+
+### Affichage à l'écran
+
+En revanche afficher une carte à l'écran uniquement avec ses attributs entiers n'est pas très parlant. Codons une méthode permettant
+un affichage à l'écran plus convivial :
+
+{% faire %}
+Codez une méthode `texte`{.language-} d'une carte qui rend une chaîne de caractères. Le code suivant doit pouvoir fonctionner (en supposant que l'entier 13 correspond à l'as et l'entier 1 à pique) :
 
 ```python
 >>> from carte import Carte
->>> ace_pique = Carte("as", "pique")
->>> print(ace_pique)
+>>> ace_pique = Carte(13, 1)
+>>> print(ace_pique.texte())
 as de pique
 ```
 
 Faites un test de cette méthode en testant la représentation sous la forme d'une chaîne de caractères d'une `Carte`{.language-}.
 {% endfaire %}
-{% info %}
 
-La représentation sous la forme d'une chaîne de caractères un objet `x` est le résultat de `str(x)`{.language-}.
+### User story
 
-{% endinfo %}
+Vous avez assez de matière pour coder notre seconde user story :
 
-Lorsque l'on écrit `print(ace_pique)`{.language-}, python transforme l'objet en chaîne de caractères avec la commande `str`{.language-} qui elle-même cherche la méthode `__str__`{.language-}. Les trois instructions suivantes sont donc équivalentes :
+{% faire %}
+Codez la user story *"Ordonnancement"*.
+{% endfaire %}
 
-1. `print(ace_pique)`{.language-}
-2. `print(str(ace_pique))`{.language-}
-3. `print(ace_pique.__str__())`{.language-}
+## Constantes de classes
 
-### Représentation de l'objet
-
-Vous verrez parfois une autre méthode de représentation d'un objet utilisant la commande `repr()`{.language-}. Cette fonction doit permettre de reconstruire l'objet si nécessaire.
-
-Par exemple :
-
-```python
->>> from carte import Carte
->>> ace_pique = Carte("as", "pique")
->>> print(repr(ace_pique))
-Carte('as', 'pique')
-```
-
-On utilise souvent `repr()`{.language-} pour du débogage (donc de l'affichage développeur), alors que `str()`{.language-} est utilisé pour de l'affichage utilisateur.
-
-{% note %}
-
-- on utilise `str(objet)` (créée avec la méthode `__str__`{.language-}) pour un affichage à l'écran. On transforme l'objet en un texte.
-- on utilise `repr(objet)` (créée avec la méthode `__repr__`{.language-}) pour représenter l'objet sous la forme d'une chaîne de caractères. On doit pouvoir reconstruire un objet identique avec la commande [`eval`{.language-}](https://docs.python.org/fr/3/library/functions.html#eval) (`eval(repr(objet))`{.language-} doit rendre un objet similaire à `objet`{.language-}.
-
-{% endnote %}
-
-{% lien %}
-Un petit tuto français pour expliciter les différences entre les deux représentations : <https://www.youtube.com/watch?v=ejGYAnf_X24>
-{% endlien %}
-
-{% exercice %}
-Créez et testez la méthode `__repr__`{.language-}
-{% endexercice %}
-{% details "corrigé" %}
-
-```python
-class Carte:
-    # ...
-
-    def __repr__(self):
-        return "Carte(" + repr(self.valeur) + ", " + repr(self.couleur) + ")"
-    
-    # ...
-
-```
-
-{% enddetails %}
-
-### Constantes de classes
-
-Avant de pouvoir finir la partie de création d'une carte, il nous reste un problème à résoudre. Comment indiquer à l'utilisateur les possibilités de valeur et de couleurs ?
+Avant de pouvoir finir la partie de création d'une carte, il nous reste un problème à résoudre. Comment indiquer à l'utilisateur les possibilités de valeur et de couleurs et leurs correspondances ?
 
 La solution communément utilisée pour cela est de créer des constantes :
 
@@ -248,9 +205,9 @@ Créez les constantes :
 En leur associant les chaînes de caractères adéquates.
 {% endfaire %}
 
-Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des chaînes de caractères comme `"sept"`{.language-} qui sont des [MAGIC NUMBERS](../projet-objets-dés/#mantra-no-magic-numbers){.interne}.
+Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des entiers comme 7.
 
-Par exemple, on écrira `Carte(AS, TREFLE)`{.language-} plutôt que `Carte("as", "trèfle)`{.language-}
+Par exemple, on écrira `Carte(carte.AS, carte.TREFLE)`{.language-} plutôt que `Carte(13, 4)`{.language-}
 
 {% faire %}
 Utilisez dans le code et les tests les constantes à la place des chaînes de caractères.
@@ -274,41 +231,28 @@ Remarquez que l'on a rangé les différentes valeurs par ordre croissant de vale
 
 {% endinfo %}
 
+
+Connaître cette technique est fondamentale. L'utilisateur ne doit pas être au courant des entiers codant vos valeurs et couleurs : Il utilise des constantes explicites. Ceci permet de plus de garantir que les entrées du constructeur de la cartes sont toujours correctes. 
+
+
+C'est une application directe du mantra NO MAGIC NUMBERS :
+
+<span id="mantra-no-magic-numbers"></span>
+
+{% note "**Coding mantra**" %}
+
+[NO MAGIC NUMBER](<https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es>)
+{% endnote %}
+
 ## User story voyance
 
-Vous avez tous les outils nécessaires pour créer la user story *"voyance"* :
+Vous avez tous les outils nécessaires pour créer les user story *"voyance"*  :
 
 {% faire %}
 Codez la user story *"voyance"*.
 {% endfaire %}
 {% info %}
 Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) pour tirer des cartes sans remise d'un paquet.
-{% endinfo %}
-
-## Comparaisons
-
-{% faire %}
-Codez et testez les [opérateurs de comparaisons](../classes-et-objets/#comparaison){.interne} :
-
-- `==`{.language-} qui correspond a à la méthode `__eq__`{.language-}
-- `!=`{.language-} qui correspond a à la méthode `__ne__`{.language-}
-- `<`{.language-} qui correspond a à la méthode `__lt__`{.language-}
-- `>`{.language-} qui correspond a à la méthode `__gt__`{.language-}
-- `<=`{.language-} qui correspond a à la méthode `__le__`{.language-}
-- `>=`{.language-} qui correspond a à la méthode `__ge__`{.language-}
-
-{% endfaire %}
-{% info %}
-N'hésitez pas à utiliser des opérateurs déjà codé. Vous pouvez par exemple utiliser les fonctions `==`{.language-} et `<`{.language-} pour coder les autres les comparaisons.
-{% endinfo %}
-
-Ceci devrait être suffisant pour la deuxième user story :
-
-{% faire %}
-Codez la seconde user story.
-{% endfaire %}
-{% info %}
-Vous pourrez utiliser la fonction [`random.choices`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choices) pour tirer des cartes avec remise d'un paquet.
 {% endinfo %}
 
 ## Jeu
