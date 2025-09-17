@@ -59,7 +59,7 @@ On s'entraîne en perfectionnant nos dés et cartes :
 [Accesseur et dés](projet-objets-dés-accesseur){.interne}
 {% endaller %}
 {% aller %}
-[protéger les attributs de cartes](projet-objets-cartes-value-object){.interne}
+[Protéger les attributs de cartes](projet-objets-cartes-value-object){.interne}
 {% endaller %}
 
 ## Combiner ses objets entre eux
@@ -87,56 +87,13 @@ Reprenons nos objets et combinons les avec d'autres :
 [Projet héritage](projet-héritage){.interne}
 {% endaller %}
 
-## Projet final
+## On s'entraîne
 
 {% aller %}
 [La bataille navale](projet-bataille-navale){.interne}
 {% endaller %}
 
-## Protection des attributs et des méthodes
-
-### Attribut et méthodes privées
-
-> TBD : les `_` et les `__`
-
-### Getter et setters
-
-> TBD
-
-### Accesseurs
-
-Améliorer ses objets en gérant précisément l'accès aux attributs :
-
-{% aller %}
-[Projet dés accesseur](projet-objets-dés-accesseur){.interne}
-{% endaller %}
-
-{% aller %}
-[Projet carte value object](projet-objets-cartes-value-object){.interne}
-{% endaller %}
-
-Accesseurs et héritage :
-
-{% attention %}
-La gestion des accesseurs et des mutateurs hérités est *"compliquée"* en Python. Si vous avez utilisé des `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property){.interne} pour votre classe `Dé`{.language-}, il faut un peu tricoter pour les utiliser dans la classe `StatDé`{.language-}.
-
-Supposons que c'est l'attribut `valeur`{.language-} auquel vous accédez par `@property`{.language-}. Pour appeler :
-
-- l'accesseur de la classe mère dans une classe fille on peut utiliser : `super().valeur`{.language-}
-- le mutateur de la classe mère dans une classe fille peut être accédé via son nom Python qui est : `super(type(self), type(self)).valeur.fset(self, new_position)`{.language-}
-
-C'est un peu compliqué et vient de l'implémentation de `super()`{.language-} en Python.
-
-Vous pouvez consulter les deux liens suivants pour un peu mieux comprendre ce qu'on fait
-{% endattention %}
-{% lien %}
-
-- [documentation de `super()`{.language-}](https://docs.python.org/3/library/functions.html#super)
-- [héritage d'accesseur et mutateur en python](https://gist.github.com/Susensio/979259559e2bebcd0273f1a95d7c1e79)
-
-{% endlien %}
-
-## Design Pattern
+## Pour aller plus loin : les design pattern
 
 {% aller %}
 [Design Patterns](design-patterns){.interne}

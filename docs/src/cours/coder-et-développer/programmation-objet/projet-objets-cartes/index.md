@@ -43,9 +43,8 @@ Lorsqu'un joueur doit prendre une carte alors que sa pioche est vide, il mélang
 
 La pioche et la défausse pouvant être facilement modélisées par des listes, il nous reste à créer une classe Carte pour avoir tous les éléments de base de notre projet.
 
-> TBD supprimer les fonctions spéciales. On le voit plus tard
 {% exercice %}
-Proposez une modélisation UML d'une classe Carte pour notre projet. 
+Proposez une modélisation UML d'une classe Carte pour notre projet. A-t-elle besoin de méthodes ?
 {% endexercice %}
 {% details "solution" %}
 
@@ -77,7 +76,7 @@ Par rapport au jeu, il manque essentiellement la fonctionnalité permettant d'or
 {% exercice %}
 Créez une user story nommée *"Ordonnancement"* qui exhibe la fonctionnalité de pouvoir ordonner les cartes.
 
-En affichant 10 cartes tirées avec remise dans l'ordre où elles ont été tirées, puis dans l'ordre croisant.
+En affichant 10 cartes tirées avec remise dans l'ordre où elles ont été tirées, puis d'afficher la plus grande et la plus petite.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -88,7 +87,7 @@ En affichant 10 cartes tirées avec remise dans l'ordre où elles ont été tir�
 - Actions :
   1. choisir 10 cartes au hasard (on peut avoir les mêmes cartes)
   2. afficher à l'écran les 10 cartes, dans l'ordre où elles ont été tirées
-  3. afficher à l'écran les 10 cartes, dans l'ordre croissant
+  3. afficher à l'écran la plus petite et la plus grande des 10 cartes
 
 {% enddetails %}
 
@@ -121,12 +120,11 @@ Créez les fichiers qui nous permettront de coder la carte :
 Le constructeur d'une carte nécessite 2 paramètres : la valeur et la couleur.
 
 {% exercice %}
-En  considérant que les deux paramètres couleur et valeur sont des entiers
-quelles sont les possibilités admissibles pour construire une carte ?
+En  considérant que les deux paramètres couleur et valeur sont des entiers, quelles sont les possibilités admissibles pour construire une carte ?
 {% endexercice %}
 {% details "corrigé" %}
 
-Par exemple, pour les valeurs :
+Il y en a plein bien sur. J'utilise les valeurs suivantes pour pouvoir facilement les ordonner :
 
 - 7 pour `"sept"`{.language-}
 - 8 pour `"huit"`{.language-}
@@ -148,20 +146,6 @@ Pour les couleurs :
 
 {% faire %}
 Implémentez le constructeur de la classe `Carte`{.fichier} et ses tests en supposant que l'utilisateur entre les bonnes valeurs de paramètres.
-
-{% endfaire %}
-
-### Comparaisons
-
-Le principal intérêt d'utiliser des entiers pour coder nos valeurs et nos couleurs est qu'il sera facile de comparer deux cartes.
-
-{% faire %}
-Codez des users stories permettant de comparer des cartes entres-elles :
-
-- savoir si deux cartes sont égales
-- savoir si deux cartes sont différentes
-- savoir si une carte est strictement plus petite qu'une autre
-- savoir si une carte est plus petite ou égale à une autre
 
 {% endfaire %}
 
@@ -232,9 +216,7 @@ Remarquez que l'on a rangé les différentes valeurs par ordre croissant de vale
 
 {% endinfo %}
 
-
-Connaître cette technique est fondamentale. L'utilisateur ne doit pas être au courant des entiers codant vos valeurs et couleurs : Il utilise des constantes explicites. Ceci permet de plus de garantir que les entrées du constructeur de la cartes sont toujours correctes. 
-
+Connaître cette technique est fondamentale. L'utilisateur ne doit pas être au courant des entiers codant vos valeurs et couleurs : Il utilise des constantes explicites. Ceci permet de plus de garantir que les entrées du constructeur de la cartes sont toujours correctes.
 
 C'est une application directe du mantra NO MAGIC NUMBERS :
 

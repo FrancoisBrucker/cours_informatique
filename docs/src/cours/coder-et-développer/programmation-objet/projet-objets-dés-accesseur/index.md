@@ -34,12 +34,7 @@ Le but est de faire disparaître l'utilisation directe de l'attribut dans le cod
 
 Avant de continuer, nous allons éliminer les 2 constantes non nommées 1 et 6 que nous venons certainement de créer (si vous ne l'avez pas fait, bravo !).
 
-Les nombres 1 et 6 sont les bornes du dé, il faut les nommer en tant que tel, sinon on va oublier leur signification et le code sera plus dire à modifier plus tard :
-
-{% note "**Coding mantra**" %}
-
-[NO MAGIC NUMBER](<https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es>)
-{% endnote %}
+Les nombres 1 et 6 sont les bornes du dé, il faut les nommer en tant que tel, sinon on va oublier leur signification et le code sera plus dire à modifier plus tard. On a déjà vu ce mantra, c'est le [NO MAGIC NUMBER](../projet-objets-cartes/#mantra-no-magic-numbers).
 
 {% faire %}
 Ajouter les constantes `MIN_VALEUR = 1`{.language-} et `MAX_VALEUR = 6`{.language-} dans le fichier `dé.py`{.fichier} et utilisez les dans tout le code. Y compris le test du lacer de dé.
