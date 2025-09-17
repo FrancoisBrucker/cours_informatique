@@ -67,7 +67,7 @@ Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wik
 
 En informatique, c'est souvent les arbres binaires planté que l'on utilise :
 
-Un arbre planté est binaire si tout noeud intérieur a **au plus 2 enfants**. On aura parfois aussi besoin qu'il soit **complet**, c'est-à-dire que les noeuds intérieurs qui n'ont pas 2 enfants sont en bas de l'arbre (à la hauteur de l'arbre -1).
+Un arbre planté est binaire si tout nœud intérieur a **au plus 2 enfants**. On aura parfois aussi besoin qu'il soit **complet**, c'est-à-dire que les nœuds intérieurs qui n'ont pas 2 enfants sont en bas de l'arbre (à la hauteur de l'arbre -1).
 
 ### propriété fondamentale des arbres binaires
 
