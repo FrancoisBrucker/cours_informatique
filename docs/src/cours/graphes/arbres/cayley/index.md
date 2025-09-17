@@ -123,7 +123,9 @@ rendre E
 
 {% endnote %}
 
-Procédons au décodage de notre code précédent $L=[11, 11, 12, 12, 3, 4, 8, 8, 8, 4]$ pour l'ensemble $V = \\{1,\dots, 12\\}$> On a obtenir les graphes suivants :
+Procédons au décodage de notre code précédent $L=[11, 11, 12, 12, 3, 4, 8, 8, 8, 4]$ pour l'ensemble $V = \\{1,\dots, 12\\}$
+
+ On va obtenir les graphes suivants :
 
 ![re codage](arbre-prufer-3.png)
 

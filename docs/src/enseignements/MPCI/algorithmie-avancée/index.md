@@ -78,10 +78,10 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
    - [définitions](/cours/graphes/arbres/définitions/){.interne}
    - [tracés d'arbres](/cours/graphes/arbres/tracés/){.interne}
 2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
-3. Cayley et Prüfer
-4. Catalan et chemin de Dyck
-5. Poyla et isomorphisme d'arbre
-6. Process de Watson
+3. [Cayley et Prüfer](/cours/graphes/arbres/cayley/){.interne}
+4. [Arbres planaires et chemins de Dyck](/cours/graphes/arbres/arbres-planaires/){.interne}
+5. [Arbres de Catalan](/cours/graphes/arbres/arbres-catalan/){.interne}
+6. Arbres de Poyla et isomorphisme d'arbre
 
 {% endaller %}
 

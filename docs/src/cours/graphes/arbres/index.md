@@ -103,19 +103,19 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 
 {% enddetails %}
 
-> TBD polynomial pour les arbres
->
-> - Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>
-> - <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf>
-> - TP <https://info.faidherbe.org/MPII/11.pdf>
-
 ### Arbres de Pólya
 
-> Arbres planté
+> TBD def par par bijection d'arbres plantés
+> TBD def ensembliste avec multi set : ensemble avec répétitions possibles (faire dessin)
+> TBD def ensembliste se binarise en prenant juste des multiset de taille 2.
+
+> isomorphisme Arbres planté :
+> - Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>
+> - <https://info.faidherbe.org/MPII/11.pdf>
 
 ### Arbres non plantés
 
-> TBD exo sommet ou arête conservée pour tout automorphisme.
+> TBD <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf> on peut le faire de façon linéaire.
 
 ## Arbres et classes
 

@@ -31,14 +31,57 @@ $$
 
 Avec $\epsilon$ la suite vide et $(\mathbb{N}^\star)^n = \mathbb{N}^\star \times \dots \times \mathbb{N}^\star$ le produit cartésien de taille $n$ de l'ensemble $\mathbb{N}^\star$ des entiers strictement positifs.
 {% endnote  %}
+{% note "**Définition**" %}
+Un **_arbre planaire_** $\tau$ est un sous ensemble de $U$ tel que :
 
-> TBD reprendre l'exemple avec les mot
+- $\epsilon \in \tau$
+- quelles que soient $u, v \in U$, si $uv \in \tau$ alors $u \in \tau$
+- quelle que soit $u \in U$, si $u \in \tau$ alors il existe $M_u(\tau) \in \mathbb{N}$ tel que si $\in  \mathbb{N}$, $ui \in \tau$ si et seulement si $1\leq i \leq M_u(\tau)$.
+{% endnote  %}
+
+En clair, un arbre planaire encode un nœud avec son chemin depuis la racine, et $M_u(\tau)$ est le nombre d'enfant du nœud $u$. Sous cette forme, l'arbre de gauche précédent s'écrit :
+
+![arbre planaire](./arbre-planaire.png)
+
+Le nœud correspondant à la suite finie $(4, 1, 2)$ correspond au nœud qui est :
+
+1. le quatrième enfant de la racine
+2. le premier enfant du quatrième enfant de la racine
+3. le deuxième enfant du premier enfant du quatrième enfant de la racine
+
+Encoder un arbre planté de façon planaire se fait facilement avec un parcourt d'arbre.
+
+## Planaire et mots de Dyck
+
+> un DFS. pour encoder les arbres planaires. <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>
+> 1. dessiner comme une montagne
+> 2. +1, -1 ≥0 et au final 0 : chemin de dyck de longueur 2m = 2n-2 
+> 3. cas particulier de mots de Dyck. Marche aussi (E(nfant suivant)/P(arent)) 
+>
+> aussi triangulation d'un polygone, arbres hiérarchiques, etc... <https://www.youtube.com/watch?v=fczN0BCx0xs>. Un peu le no,bre d'or des combinatoriste.
+
+> Aussi des chemins.
+> Des chemins de taxis :
+
+![chemins de taxis](./chemin-taxis.png)
+
+aux chemins de Dyck : 
 
 
-> TBD arbre planaires. Suite de voisins. Montrer approche avec suites de mots.
+<https://www.youtube.com/watch?v=Lcy5PLkHEoo>
 
+> TBD. Ca tombe régulièrement aux concours (le mettre dans le cours S6) Trouver exam centrale PC 2011 <https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021>
+>
+## Énumération des arbres planaires
 
-
-> un DFS. pour encoder les arbres planaires. c'est un mot de Dyck (E(nfant suivant)/P(arent)) <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>. C'est une bijection. Encode en +1, -1 ou en chemins.
-> TBDTrouver exam centrale PC 2011 <https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021>
 > TBD énumération avec un Dijkstra sur arbre orienté sur demi-grille.
+
+## Compter les chemins de Dyck
+
+Compter dyck :
+
+> 1/(n+1)(2n n)
+![preuve 1](./dyck-1.png)
+
+> (2n n) - (2n n+1)
+![preuve 2](./dyck-2.png)

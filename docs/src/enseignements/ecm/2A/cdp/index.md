@@ -57,6 +57,15 @@ voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y 
 - 2 tests de 15min sur papier les 2ème et 3ème lundi (8h-8h15)
 - un projet à rendre sur github la dernière semaine
 
+{% aller %}
+[SUjet du projet : la bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/){.interne}
+{% endaller %}
+{% attention %}
+Le projet est à rendre sur votre compte github. Il faudra m'envoyer l'adresse de votre projet.
+
+De plus, il faudra qu'il y qit quelques commit tout au long de la construction du parojet et pas juste un commit final...
+{% endattention %}
+
 ## Partie I : le système
 
 <!-- TBD
@@ -205,6 +214,9 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 
 {% aller %}
 
+0. Écrire ses tests :
+   1. [projet hello dev](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/){.interne}
+   2. [projet "pourcentages"](/cours/coder-et-développer/écrire-code/projet-pourcentages/){.interne}
 1. Coder des objets :
    1. [projet dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne}
    2. [projet cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
@@ -218,8 +230,6 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 {% endaller %}
 
 ## Partie III : gestion des sources
-
-> TBD mercredi TD écriture de code et début de la bataille navale à rendre.
 
 1. principes
 2. github, git app

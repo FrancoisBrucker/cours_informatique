@@ -15,7 +15,7 @@ eleventyComputed:
 
 > TBD
 > - <https://herbach.perso.math.cnrs.fr/downloads/projet-galton-watson.pdf>
->
+> 
 
 Process simple. Contexte de l'époque et utilisation actuelle.
 
