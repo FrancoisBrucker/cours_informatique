@@ -231,6 +231,14 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 
 ## Partie III : gestion des sources
 
+<!-- > TBD test
+1. mantra
+2. ? tests
+3. un UML
+
+ -->
+
+
 1. principes
 2. github, git app
 3. git interne

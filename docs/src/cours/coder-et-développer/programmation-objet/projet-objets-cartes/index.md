@@ -43,6 +43,7 @@ Lorsqu'un joueur doit prendre une carte alors que sa pioche est vide, il mélang
 
 La pioche et la défausse pouvant être facilement modélisées par des listes, il nous reste à créer une classe Carte pour avoir tous les éléments de base de notre projet.
 
+> TBD supprimer les fonctions spéciales. On le voit plus tard
 {% exercice %}
 Proposez une modélisation UML d'une classe Carte pour notre projet. 
 {% endexercice %}

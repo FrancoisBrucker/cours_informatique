@@ -64,7 +64,8 @@ Pour l'arbre planaire précédent est :
 
 
 > un DFS. pour encoder les arbres planaires. <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>
-> 1. dessiner comme une montagne
+>
+> 1. dessiner comme une montagne le graphe planaire exemple
 > 2. +1, -1 ≥0 et au final 0 : chemin de dyck de longueur 2m = 2n-2 
 > 3. cas particulier de mots de Dyck. Marche aussi (E(nfant suivant)/P(arent)) 
 >
@@ -75,7 +76,7 @@ Pour l'arbre planaire précédent est :
 
 ![chemins de taxis](./chemin-taxis.png)
 
-aux chemins de Dyck : 
+aux chemins de Dyck :
 
 
 <https://www.youtube.com/watch?v=Lcy5PLkHEoo>
