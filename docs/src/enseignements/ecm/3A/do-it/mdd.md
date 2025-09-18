@@ -48,6 +48,7 @@ Pour la prochaine fois, trois groupes :
 - design pattern
 - tests dans d'autres langages (java, js ou ts, ...)
 - test pattern et refactoring pattern
+- mock et tests
 
 Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités.
 
