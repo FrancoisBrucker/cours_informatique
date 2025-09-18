@@ -1058,14 +1058,14 @@ monnaie.py:19: TypeError</code></pre>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>montant<span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>devise <span class="token operator">=</span> <span class="token string">"USD"</span>
 
     <span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>montant<span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>devise <span class="token operator">=</span> <span class="token string">"CHF"</span>
 
@@ -1110,14 +1110,14 @@ monnaie.py:19: TypeError</code></pre>
     <span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>montant<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
 
     <span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>montant<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
 
     <span class="token comment"># ...</span>
 
