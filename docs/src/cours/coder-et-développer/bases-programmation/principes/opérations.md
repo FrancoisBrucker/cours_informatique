@@ -112,6 +112,66 @@ J'aime bien faire du python.
 
 {% enddetails %}
 
+### <span id="f-string"></span>Chaînes formatées
+
+{% lien %}
+- [Documentation python sur les chaînes formatées (7.1.1)](https://docs.python.org/fr/3/tutorial/inputoutput.html#tut-f-strings)
+- [Exemples d'utilisation](https://realpython.com/python-f-strings/#formatting-strings-with-pythons-f-string)
+- 
+{% endlien %}
+
+On peut aussi créer des chaînes en utilisant _implicitement_ la concatenation en utilisant **_les chaines formatées_** (_format-string_ ou encore _f-string_).
+
+Par exemple :
+
+```python
+>>> nom = "Carole"
+>>> bonjour = f"Bonjour {nom} !"
+>>> print(bonjour)
+Bonjour Carole !
+```
+
+Remarquez le `f`{.language-} avant le début de la chaîne, il indique à python qu'il doit remplacer l'expression entre accolade par un objet. Si on oublie le `f`{.language-}, on obtient une chaîne classique :
+
+```python
+>>> nom = "Carole"
+>>> bonjour = "Bonjour {nom} !"
+>>> print(bonjour)
+Bonjour {nom} !
+```
+
+L'utilisation de chaînes formatées remplace une concaténation explicite :
+
+```python
+>>> bonjour = "Bonjour " + nom + " !"
+>>> print(bonjour)
+Bonjour Carole !
+```
+
+En étant bien plus lisible.
+
+Attention, c'est bien une concaténation à la création de la chaîne. Une chaîne ne va pas se modifier magiquement lorsque l'on modifie une variable :
+
+```python
+>>> nom = "Carole"
+>>> bonjour = f"Bonjour {nom} !"
+>>> print(bonjour)
+Bonjour Carole !
+>>> nom = "Dominique"
+>>> print(bonjour)
+Bonjour Carole !
+```
+
+Enfin, comme les accolades sont une expression, on peut écrire ce genre de choses :
+
+```python
+>>> réponse = f"La réponse universelle est {40 + 2}"
+>>> print(réponse)
+La réponse universelle est 42
+```
+
+Et, enfin, si on veut écrire une accolade, on l'insère : `f"{'{'}"`{.language-}.
+
 ### <span id="chaines-in"></span> Test de présence
 
 Une chaîne de caractère peut être vue comme un conteneur (ordonné) de caractères. Savoir si un caractère ou une sous-chaîne est présent dans une chaîne peut se faire alors avec l'opérateur `in`{.language-}, qui rend un booléen :
@@ -119,23 +179,6 @@ Une chaîne de caractère peut être vue comme un conteneur (ordonné) de caract
 - `"c" in "coucou"`{.language-} rendra `True`
 - `"cou" in "coucou"`{.language-} rendra `True`
 - `"cc" in "coucou"`{.language-} rendra `False`
-
-### <span id="f-string"></span>Composition de chaînes
-
-On peut aussi créer des chaînes en utilisant _implicitement_ la concatenation en utilisant les [chaînes de modèles](https://docs.python.org/fr/3.13/library/string.html#template-strings) (_format-string_ ou encore _f-string_).
-
-> TBD exemple.
-> TBD dire que c'est
-> TBD : dire que c'est équivalent à une concaténation f-sting est différent de f-string ....
-> 
-> . Comme la chaîne est crée, elle est non-modifiable comme les autres chaînes.
-> TBD ex avec modifier une variable apres coup. cela ne change pas la chaine.
-
-> liens : <https://www.youtube.com/watch?v=vymJMn97wks>
-<https://davepeck.org/2025/04/11/pythons-new-t-strings/>
-> autres méthodes :
->   - format et % voir <https://realpython.com/python-f-strings/>
->   - [python f-string vs t-string](https://davepeck.org/2025/04/11/pythons-new-t-strings/)
 
 ## Booléens
 
