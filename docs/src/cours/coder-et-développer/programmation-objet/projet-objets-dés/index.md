@@ -113,7 +113,7 @@ On exécutera la batterie de tests unitaires à chaque fois que l'on code ou que
 
 {% endnote %}
 {% info %}
-Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI](../../développement/coder/#YAGNI){.interne}.
+Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI](../../développement/écrire-code/coder/#YAGNI){.interne}.
 {% endinfo %}
 
 ## Code
