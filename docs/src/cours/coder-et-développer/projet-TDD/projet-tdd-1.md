@@ -110,7 +110,7 @@ Traceback:
 /python3.9/importlib/__init__.py:127: in import_module
     return _bootstrap._gcd_import(name[level:], package, level)
 test_monnaie.py:1: in <module>
-    from money import Dollar
+    from monnaie import Dollar
 E   ModuleNotFoundError: No module named 'monnaie'
 ====================== short test summary info =======================
 ERROR test_monnaie.py
