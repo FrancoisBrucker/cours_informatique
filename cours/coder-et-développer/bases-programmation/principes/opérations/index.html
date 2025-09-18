@@ -240,6 +240,48 @@ J'aime bien faire du python<span class="token punctuation">.</span></code></pre>
 </div>
 </details>     
 </div>
+<h3><span id="f-string"></span>Chaînes formatées</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://docs.python.org/fr/3/tutorial/inputoutput.html#tut-f-strings">Documentation python sur les chaînes formatées (7.1.1)</a></li>
+<li><a href="https://realpython.com/python-f-strings/#formatting-strings-with-pythons-f-string">Exemples d'utilisation</a></li>
+<li></li>
+</ul>
+</div></div>
+
+<p>On peut aussi créer des chaînes en utilisant <em>implicitement</em> la concatenation en utilisant <strong><em>les chaines formatées</em></strong> (<em>format-string</em> ou encore <em>f-string</em>).</p>
+<p>Par exemple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> nom <span class="token operator">=</span> <span class="token string">"Carole"</span>
+<span class="token operator">>></span><span class="token operator">></span> bonjour <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"Bonjour </span><span class="token interpolation"><span class="token punctuation">{</span>nom<span class="token punctuation">}</span></span><span class="token string"> !"</span></span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span>
+Bonjour Carole !</code></pre>
+<p>Remarquez le <code class="language-">f</code> avant le début de la chaîne, il indique à python qu'il doit remplacer l'expression entre accolade par un objet. Si on oublie le <code class="language-">f</code>, on obtient une chaîne classique :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> nom <span class="token operator">=</span> <span class="token string">"Carole"</span>
+<span class="token operator">>></span><span class="token operator">></span> bonjour <span class="token operator">=</span> <span class="token string">"Bonjour {nom} !"</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span>
+Bonjour <span class="token punctuation">{</span>nom<span class="token punctuation">}</span> !</code></pre>
+<p>L'utilisation de chaînes formatées remplace une concaténation explicite :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> bonjour <span class="token operator">=</span> <span class="token string">"Bonjour "</span> <span class="token operator">+</span> nom <span class="token operator">+</span> <span class="token string">" !"</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span>
+Bonjour Carole !</code></pre>
+<p>En étant bien plus lisible.</p>
+<p>Attention, c'est bien une concaténation à la création de la chaîne. Une chaîne ne va pas se modifier magiquement lorsque l'on modifie une variable :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> nom <span class="token operator">=</span> <span class="token string">"Carole"</span>
+<span class="token operator">>></span><span class="token operator">></span> bonjour <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"Bonjour </span><span class="token interpolation"><span class="token punctuation">{</span>nom<span class="token punctuation">}</span></span><span class="token string"> !"</span></span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span>
+Bonjour Carole !
+<span class="token operator">>></span><span class="token operator">></span> nom <span class="token operator">=</span> <span class="token string">"Dominique"</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span>
+Bonjour Carole !</code></pre>
+<p>Enfin, comme les accolades sont une expression, on peut écrire ce genre de choses :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> réponse <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"La réponse universelle est </span><span class="token interpolation"><span class="token punctuation">{</span><span class="token number">40</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">}</span></span><span class="token string">"</span></span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>réponse<span class="token punctuation">)</span>
+La réponse universelle est <span class="token number">42</span></code></pre>
+<p>Et, enfin, si on veut écrire une accolade, on l'insère : <code class="language-">f&quot;{'{'}&quot;</code>.</p>
 <h3><span id="chaines-in"></span> Test de présence</h3>
 <p>Une chaîne de caractère peut être vue comme un conteneur (ordonné) de caractères. Savoir si un caractère ou une sous-chaîne est présent dans une chaîne peut se faire alors avec l'opérateur <code class="language-">in</code>, qui rend un booléen :</p>
 <ul>
@@ -247,24 +289,6 @@ J'aime bien faire du python<span class="token punctuation">.</span></code></pre>
 <li><code class="language-">&quot;cou&quot; in &quot;coucou&quot;</code> rendra <code>True</code></li>
 <li><code class="language-">&quot;cc&quot; in &quot;coucou&quot;</code> rendra <code>False</code></li>
 </ul>
-<h3><span id="f-string"></span>Composition de chaînes</h3>
-<p>On peut aussi créer des chaînes en utilisant <em>implicitement</em> la concatenation en utilisant les <a href="https://docs.python.org/fr/3.13/library/string.html#template-strings">chaînes de modèles</a> (<em>format-string</em> ou encore <em>f-string</em>).</p>
-<blockquote>
-<p>TBD exemple.
-TBD dire que c'est
-TBD : dire que c'est équivalent à une concaténation f-sting est différent de f-string ....</p>
-<p>. Comme la chaîne est crée, elle est non-modifiable comme les autres chaînes.
-TBD ex avec modifier une variable apres coup. cela ne change pas la chaine.</p>
-</blockquote>
-<blockquote>
-<p>liens : <a href="https://www.youtube.com/watch?v=vymJMn97wks">https://www.youtube.com/watch?v=vymJMn97wks</a>
-<a href="https://davepeck.org/2025/04/11/pythons-new-t-strings/">https://davepeck.org/2025/04/11/pythons-new-t-strings/</a>
-autres méthodes :</p>
-<ul>
-<li>format et % voir <a href="https://realpython.com/python-f-strings/">https://realpython.com/python-f-strings/</a></li>
-<li><a href="https://davepeck.org/2025/04/11/pythons-new-t-strings/">python f-string vs t-string</a></li>
-</ul>
-</blockquote>
 <h2>Booléens</h2>
 <h3>Comparaisons</h3>
 <p>Comparateurs classiques :</p>
