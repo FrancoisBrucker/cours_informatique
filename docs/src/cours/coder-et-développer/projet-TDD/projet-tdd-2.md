@@ -822,14 +822,14 @@ Fichier `monnaie.py`{.fichier} :
 # ...
 
 class Dollar(Monnaie):
-    def __init__(self, montant, "USD"):
+    def __init__(self, montant):
         super().__init__(montant)
         self.devise = "USD"
 
     # ...
 
 class Franc(Monnaie):
-    def __init__(self, montant, "CHF"):
+    def __init__(self, montant):
         super().__init__(montant)
         self.devise = "CHF"
 
@@ -860,14 +860,14 @@ class Monnaie:
     # ...
 
 class Dollar(Monnaie):
-    def __init__(self, montant, "USD"):
-        super().__init__(montant)
+    def __init__(self, montant):
+        super().__init__(montant, "USD")
 
     # ...
 
 class Franc(Monnaie):
-    def __init__(self, montant, "CHF"):
-        super().__init__(montant)
+    def __init__(self, montant):
+        super().__init__(montant, "CHF")
 
     # ...
 
