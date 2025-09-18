@@ -38,8 +38,6 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 ### Arbres de Cayley
 
- > TBD aussi nombre d'arbres (avec un joli algo) et première façon de tirer des arbres aléatoirement. Attention au tirages aléatoires de structures discrète, ce n'est pas aussi simple qu'on le croit.
-
 {% aller %}
 
 [Arbres de Cayley](cayley){.interne}

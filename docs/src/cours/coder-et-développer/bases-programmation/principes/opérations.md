@@ -120,6 +120,23 @@ Une chaîne de caractère peut être vue comme un conteneur (ordonné) de caract
 - `"cou" in "coucou"`{.language-} rendra `True`
 - `"cc" in "coucou"`{.language-} rendra `False`
 
+### <span id="f-string"></span>Composition de chaînes
+
+On peut aussi créer des chaînes en utilisant _implicitement_ la concatenation en utilisant les [chaînes de modèles](https://docs.python.org/fr/3.13/library/string.html#template-strings) (_format-string_ ou encore _f-string_).
+
+> TBD exemple.
+> TBD dire que c'est
+> TBD : dire que c'est équivalent à une concaténation f-sting est différent de f-string ....
+> 
+> . Comme la chaîne est crée, elle est non-modifiable comme les autres chaînes.
+> TBD ex avec modifier une variable apres coup. cela ne change pas la chaine.
+
+> liens : <https://www.youtube.com/watch?v=vymJMn97wks>
+<https://davepeck.org/2025/04/11/pythons-new-t-strings/>
+> autres méthodes :
+>   - format et % voir <https://realpython.com/python-f-strings/>
+>   - [python f-string vs t-string](https://davepeck.org/2025/04/11/pythons-new-t-strings/)
+
 ## Booléens
 
 ### Comparaisons

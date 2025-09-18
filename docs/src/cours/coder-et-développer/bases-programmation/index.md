@@ -76,8 +76,8 @@ Coder en python (ou en tout autre langage) ce cependant nécessiter des connaiss
 
 > Ici ajouter plusieurs fichier pour créer ses propres modules.
 > séparer main de fct.py
-4
-]### <span id="installation-développement"></span>Installer et utiliser un interpréteur
+
+### <span id="installation-développement"></span>Installer et utiliser un interpréteur
 
 {% aller %}
 [Installer et utiliser un interpréteur](interpréteur){.interne}

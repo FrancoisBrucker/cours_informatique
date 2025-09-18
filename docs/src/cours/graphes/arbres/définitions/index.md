@@ -255,7 +255,7 @@ Se déduit de l'unicité des chemins. Considérant les chemins :
 
 Si $u_i = v_j$ alors $u_i \dots u_k = v_j \dots v_l$ car sinon, comme $u_k = v_l - y$ il existerait un cycle dans l'arbre. Le plus petit indice $i$ et $j$ tel que $u_i = v_j$ est aussi sur le chemin entre $x$ et $z$ et on est dans la situation ci-dessous ($t$ pouvant être égal à $x$, $y$ ou $z$) :
 
-![mediane](./mediane.png)
+![médiane](./mediane.png)
 
 Et $t$ est bien l'unique intersection des 3 chemins.
 {% enddetails %}
