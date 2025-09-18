@@ -18,6 +18,8 @@ eleventyComputed:
 
 Une fois la carte créée, il ne faudrait plus pouvoir la modifier. Or pour l'instant on a directement accès aux attributs, donc rien n'interdit de le faire.
 
+### Accesseurs
+
 Pour pallier ça, il suffit de définir un accesseur sans mutateur pour les 2 attributs valeur et couleur. Cela permet :
 
 - d'accéder aux attribut
@@ -35,6 +37,39 @@ Si on a le choix :
 {% note "**Méthode de conception**" %}
 Lorsque l'on crée un objet, si on a pas de raison particulière de le rendre modifiable on crée un **_value object_**. Cela évite les effets de bords (et rend la programmation concurrente et parallèle bien plus simple).
 {% endnote %}
+
+### Enum
+
+Pour spécifier à l'utilisateur les valeurs et couleurs possibles, on utilise pour l'instant des constantes et des tuples. Ceci n'est cependant pas optimal.
+
+Pour gérer les énumérations, python met à disposition [les Enum](https://docs.python.org/fr/3/library/enum.html). On peut gérer les couleurs ainsi :
+
+```python
+>>> from enum import Enum
+>>> couleur = Enum("Couleur", [("pique", 4), ("coeur", 3), ("carreau", 2), ("trefle", 1)])
+>>> print(couleur.pique.name)
+pique
+>>> print(couleur.pique.value)
+4
+>>> c = couleur.pique
+>>> c
+<Couleur.pique: 4>
+>>> for c in couleur:
+...     print(c)
+...
+Couleur.pique
+Couleur.coeur
+Couleur.carreau
+Couleur.trefle
+
+```
+
+{% faire %}
+
+Utilisez des `Enum`{.language-} pour gérer les couleurs et les valeurs des cartes
+{% endfaire %}
+
+Cette technique est redoutable : elle est à la fois lisible, sans magic number et portable ! Utilisez-la dès que vous voulez gérer des énumérations.
 
 ## Affichage à l'écran
 

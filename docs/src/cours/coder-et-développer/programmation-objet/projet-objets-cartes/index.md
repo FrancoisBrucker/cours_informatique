@@ -137,10 +137,10 @@ Il y en a plein bien sur. J'utilise les valeurs suivantes pour pouvoir facilemen
 
 Pour les couleurs :
 
-- 1 pour `"pique"`{.language-}
-- 2 pour `"cœur"`{.language-}
-- 3 pour `"carreau"`{.language-}
-- 4 pour `"trèfle"`{.language-}
+- 4 pour `"pique"`{.language-}
+- 3 pour `"cœur"`{.language-}
+- 2 pour `"carreau"`{.language-}
+- 1 pour `"trèfle"`{.language-}
 
 {% enddetails %}
 
@@ -207,8 +207,8 @@ Enfin, pour grouper ces constantes, vous pourrez :
 
 Créer deux autres constantes, qui rassemblent les couleurs et les valeurs entre elles :
 
-- `VALEURS = [SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS]`{.language-}
-- `COULEURS = [TREFLE, CARREAU, COEUR, PIQUE]`{.language-}
+- `VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)`{.language-}
+- `COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)`{.language-}
 
 {% endfaire %}
 {% info %}
@@ -226,6 +226,7 @@ C'est une application directe du mantra NO MAGIC NUMBERS :
 
 [NO MAGIC NUMBER](<https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es>)
 {% endnote %}
+
 
 ## User story voyance
 
