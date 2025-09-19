@@ -81,7 +81,6 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 3. [Cayley et Prüfer](/cours/graphes/arbres/cayley/){.interne}
 4. [Arbres planaires et chemins de Dyck](/cours/graphes/arbres/arbres-planaires/){.interne}
 5. [Arbres de Catalan](/cours/graphes/arbres/arbres-catalan/){.interne}
-6. Arbres de Poyla et isomorphisme d'arbre
 
 {% endaller %}
 
@@ -92,19 +91,23 @@ L'ET de l'année dernière :
 [ET 2024-2025](./ET/et.pdf){.interne}
 
 {% endfaire %}
+{% attention %}
+À rendre sur papier pour le **10 octobre 2025**.
+{% endattention %}
 
 #### Semaine 3
 
-> TBD :
->
-> 1. Bi-parti
-> 2. coloriabilité
+{% aller %}
+
+1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne}
+2. [couplage](/cours/graphes/couplages/){.interne}
+
+{% endaller %}
 
 #### Semaine 4
 
-> TBD :
 >
-> 1. couplage
+> 1. coloriabilité
 > 2. planarité
 
 ### DS

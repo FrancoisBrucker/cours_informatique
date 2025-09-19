@@ -7,7 +7,7 @@ authors:
   - François Brucker
 eleventyNavigation:
     prerequis:
-        - "/cours/coder-et-développer/connaissances-système-minimales/fichiers-navigation/"
+        - "/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/"
 resume: "Comment gérer les sources d'un projet avec git et github."
 
 eleventyComputed:
