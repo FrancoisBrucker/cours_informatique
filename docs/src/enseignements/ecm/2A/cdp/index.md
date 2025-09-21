@@ -238,9 +238,28 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 
  -->
 
-1. principes
-2. github, git app
-3. git interne
+{% aller %}
+
+[Gestion des sources](/cours/gestion-des-sources/){.interne} (jusqu'à la partie outils)
+
+{% endaller %}
+
+Projet à rendre :
+
+{% faire %}
+
+Rendez un fichier ne contenant qu'**un unique lien** vers un repo github public contenant [le projet bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/).
+
+Ce projet doit avoir :
+
+1. [un fichier `.gitignore`](https://docs.github.com/fr/get-started/git-basics/ignoring-files) (en particulier pour ne pas avoir l'environnement virtuel)
+2. un fichier readme pour expliquer comment exécuter votre jeu
+3. au moins un commit par item avec un `?` à faire.
+
+{% endfaire %}
+{% attention %}
+À rendre pour le 17/11.
+{% endattention %}
 
 <!-- > TBD note avec commit pertinent sur un petit projet
 tbd mettre un .gitignore
