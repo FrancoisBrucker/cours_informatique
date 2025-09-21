@@ -143,22 +143,21 @@
     
   
 
-  <blockquote>
-<p>TBD lazygit : <a href="https://www.youtube.com/watch?v=CPLdltN7wgE">https://www.youtube.com/watch?v=CPLdltN7wgE</a> et gh voir <a href="https://github.com/dlvhdr/gh-dash">https://github.com/dlvhdr/gh-dash</a> pour github et les pull requests</p>
-</blockquote>
-<p>Comment gérer le code source d'un projet avec git et github.</p>
+  <p>Comment gérer le code source d'un projet des principes au repository github.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Introductions</strong></p>
+</div><div class="pl-8 mr-8">
 <ul>
 <li><a href="https://www.youtube.com/watch?v=w3jLJU7DT5E">Qu'est ce que la gestion des sources avec github ?</a></li>
 <li><a href="https://www.atlassian.com/fr/git/tutorials/why-git">Utilité de git pour tous</a></li>
 </ul>
 </div></div>
 
-<p>La gestion du code source (<em>Source Control Management</em>) est bien sûr utilisée massivement en informatique, mais les méthodes et techniques mises en œuvre fonctionnent pour tout projet où l'on doit utiliser/produire des documents qui sont modifiés au cours du temps. C'est un cadeau fait par les informaticiens au monde (ne le détruisez pas comme la gestion de projet agile...).</p>
+<p>La gestion du code source (<strong><em>SCM</em></strong> pour <em>Source Control Management</em>) est bien sûr utilisée massivement en informatique, mais les méthodes et techniques mises en œuvre fonctionnent pour tout projet où l'on doit utiliser/produire des documents qui sont modifiés au cours du temps. C'est un cadeau fait par les informaticiens au monde (ne le détruisez pas comme la gestion de projet agile...).</p>
 <p>Un des bénéfices d'une gestion des documents bien comprise est que l'on peut :</p>
 <ul>
 <li><strong>archiver</strong> et retrouver facilement toutes les évolutions d'un projet,</li>
@@ -180,30 +179,42 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="principes" class="interne">Principes</a></p>
+<p><a href="principes" class="interne">Principes et usages d'un SCM</a></p>
+</div></div>
+
+<h2>Gérer ses sources au quotidien</h2>
+<h3>Identité</h3>
+<p>Pour que le processus de gestion des sources soit efficace il est nécessaire que tout commit soit bien :</p>
+<ul>
+<li>identifié : l'auteur du commit doit pouvoir être retrouvé</li>
+<li>documenté : le message accompagnant le commit doit être descriptif.</li>
+</ul>
+<h4>Profil</h4>
+<p>Ayez votre profil à jour :</p>
+<ul>
+<li>nom et prénom ou pseudo identifiable</li>
+<li>adresse mail à jour</li>
+</ul>
+<h4>Message de commits</h4>
+<p>Utilisez un éditeur de texte que vous maîtrisez pour éditer le message de commit (par défaut c'est <a href="https://fr.wikipedia.org/wiki/Vi">vi</a> qui n'est pas forcément votre éditeur de prédilection). Un message de commit contient forcément <strong>1 ligne</strong> décrivant le commit (on verra dans la partie suivante des méthodes pour les écrire). Puis, si nécessaire, une description plus long (souvent inutile).</p>
+<h3>Bonnes pratiques</h3>
+<p>Bonnes pratiques pour tous les jours :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="bonnes-pratiques" class="interne">Gestion des sources au quotidien</a></p>
 </div></div>
 
 <h2>Github</h2>
-<blockquote>
-<p>TBD voir les diff + format.</p>
-</blockquote>
-<blockquote>
-<ol start="3">
-<li>git
-<ol>
-<li>avec Github</li>
-<li>idem avec Github desktop</li>
-</ol>
-</li>
-</ol>
-</blockquote>
-<p><a href="https://github.com/">https://github.com/</a> est une interface au logiciel de gestion de sources <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Il en existe d'autres, comme <a href="https://gitlab.com/">https://gitlab.com/</a> par exemple.</p>
+<p>Pour pratiquer la gestion des sources, nous allons utiliser <a href="https://github.com/">https://github.com/</a> comme sauvegarde origine. Le site fonctionne avec logiciel de gestion de sources <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Il en existe d'autres, comme <a href="https://gitlab.com/">https://gitlab.com/</a> par exemple.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'<a href="https://docs.github.com/en/get-started">aide de github</a> est très bien faite, n'hésitez pas à y jeter un coup d'œil.</p>
+<p>L'<a href="https://docs.github.com/en/get-started">aide de github</a> est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.</p>
 </div></div>
 
 <h3><span id="compte-github"></span> Création du compte github</h3>
@@ -238,7 +249,14 @@
 </li>
 </ol>
 <h3><span id="tuto-github"></span> Utilisation de github</h3>
-<p>On va aller un peu plus loin en voyant, directement avec le site les principales fonctionnalités de git.</p>
+<p>On va utiliser l'interface de github pour mettre en œuvre les principales fonctionnalités d'un système de gestion des sources :</p>
+<ul>
+<li>faire des commit</li>
+<li>gérer des branches</li>
+<li>fusionner des branches en résolvant des conflits</li>
+<li>voir l'historique du projet</li>
+<li>comment ajouter des membres à un projet</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -247,14 +265,47 @@
 <p><a href="projet-github" class="interne">Comment créer un projet uniquement avec github</a></p>
 </div></div>
 
-<p>Vous avez vu les principales qualités d'un logiciel de gestion de sources :</p>
+<h3>Pull requests</h3>
+<p>Por mettre à jour notre projet, nous avons effectué <a href="bonnes-pratiques/#pull-request" class="interne">une <strong><em>pull request</em></strong></a>. Cette façon d'ajouter des commits à la sauvegarde est une spécificité de github (et gitlab). Lorsque nous utiliserons git en ligne de commande, on mettra la sauvegarde directement à jour.</p>
+<h3>Github actions</h3>
+<blockquote>
+<p>TBD :</p>
 <ul>
-<li>faire des commit</li>
-<li>gérer des branches</li>
-<li>fusionner des branches en résolvant des conflits</li>
-<li>voir l'historique du projet</li>
-<li>comment ajouter des membres à un projet</li>
+<li>permet de mettre en place du CI/CD : <a href="https://www.youtube.com/watch?v=scEDHsr3APg">https://www.youtube.com/watch?v=scEDHsr3APg</a></li>
+<li>github actions <a href="https://www.youtube.com/watch?v=p3W2XCD3smk">https://www.youtube.com/watch?v=p3W2XCD3smk</a></li>
 </ul>
+</blockquote>
+<h2>Diff</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://en.m.wikipedia.org/wiki/Diff">format diff</a></li>
+<li>Commande diff au terminal :
+<ul>
+<li><a href="https://www.youtube.com/watch?v=0JZCah5w7I8">tuto en français</a></li>
+<li><a href="https://www.youtube.com/watch?v=-CiLU9-RAGk">tuto en anglais (plus concis)</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<p>Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur <a href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/" class="interne">le problème de l'alignement de séquences</a>. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a">https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a</a></li>
+<li><a href="https://ably.com/blog/practical-guide-to-diff-algorithms">https://ably.com/blog/practical-guide-to-diff-algorithms</a></li>
+</ul>
+</div></div>
+
+<h2>Projet : gérer ses sources avec github</h2>
+<p>Maintenant que l'on a un projet sur github, on peut le considérer comme une origine et continuer le développement chez soit.</p>
 <h3><span id="utilisation-desktop-github"></span> Github desktop</h3>
 <p>Travailler depuis le site uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -265,7 +316,14 @@
 <p>Il suffit d'aller sur cette page : <a href="https://desktop.github.com/">https://desktop.github.com/</a> pour télécharger puis installer l'application.</p>
 </div></div>
 
-<p>On va reprendre le projet précédent pour créer son projet chez soit ainsi que l'origin en utilisant l'application desktop.</p>
+<p>On va reprendre le projet précédent pour créer son projet chez soit ainsi que l'origin en utilisant l'application desktop. Ceci vous permettra de savoir comment :</p>
+<ul>
+<li>faire un clone</li>
+<li>notion de gestion distribuée</li>
+<li>créer un nouveau projet</li>
+<li>l'index aussi nommé <em>stage</em></li>
+<li>faire un rebase</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -274,90 +332,31 @@
 <p><a href="projet-github-desktop" class="interne">Comment créer un projet avec l'application desktop</a></p>
 </div></div>
 
-<p>Vous avez vu les principales qualités d'un logiciel de gestion de sources :</p>
+<h3>Authentification</h3>
+<p>Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :</p>
 <ul>
-<li>faire un clone</li>
-<li>notion de gestion distribuée</li>
-<li>le stage</li>
-<li>faire un rebase</li>
+<li>via un web token</li>
+<li>via une clé ssh</li>
 </ul>
-<h2>Gérer ses sources</h2>
+<h4>Web token</h4>
+<p>A priori se fait tout seul si vous utiliser l'application.</p>
 <blockquote>
-<p>TBD noms : Git flow ? Github flow ? Feature branches ? Push to prod ?
-4. workflow :
-1. github-flow : peut avoir plein de branches features en parallel mais une seule branche develop
-2. git-flow (rigide et plein de branches) <a href="https://leanpub.com/git-flow/read">https://leanpub.com/git-flow/read</a>
-3. différences <a href="https://www.youtube.com/watch?v=hG_P6IRAjNQ">https://www.youtube.com/watch?v=hG_P6IRAjNQ</a>
-4. ci-cd extrême inverse <a href="https://www.youtube.com/watch?v=v4Ijkq6Myfc">https://www.youtube.com/watch?v=v4Ijkq6Myfc</a> : beaucoup de tests automatisé pour vérifier bien que tout peut aller vite en prod. et être corrigé. La prod est le dernier endroit ou votre code est testé, certes, mais ça ne doit pas être le seul
-5. dépend du projet et on s'adapte</p>
-<p>TBD refaire</p>
+<p>TBD à étoffer</p>
 </blockquote>
+<h4>Clés ssh</h4>
+<p>Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.</p>
+<p>Commencez par créer une clé :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="bonnes-pratiques" class="interne">Utiliser les bonnes pratiques lors d'un projet github</a></p>
+<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/ssh/" class="interne">créer et utiliser une clé ssh</a></p>
 </div></div>
 
-<p>Pour participer à un repo github/gitlab il y a quelques us et coutumes à respecter afin de permettre au mieux la relecture, l'ajout de fonctionnalités et la compréhension de chacun.</p>
-<h2>Git</h2>
-<blockquote>
-<p>TBD expliquer porcelaine/plomberie
-TBD un tag c'est un objet. Commit, tree ou blob.
-TBD worktrees et stash
-TBD utiliser switch et pas checkout pour passer de branches en branches (chekout pour les commits particulier: headless ?)
-TBD : index = staging area.
-TBD diff format et différents algos</p>
-</blockquote>
-<h3>Installation et configuration</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="git-init" class="interne">Configurer et initialiser ses projets git</a></p>
-</div></div>
-
-<h3>Porcelaine</h3>
-<blockquote>
-<ul>
-<li>histoire ?</li>
-</ul>
-</blockquote>
-<blockquote>
-<ol start="5">
-<li>ligne de commandes
-<ol>
-<li>projet avec ligne de commande</li>
-<li>outils (lazygit, vscode)</li>
-</ol>
-</li>
-</ol>
-<p>Outils :</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>lazygit : <a href="https://github.com/jesseduffield/lazygit">https://github.com/jesseduffield/lazygit</a> <a href="https://www.youtube.com/watch?v=Ihg37znaiBo">https://www.youtube.com/watch?v=Ihg37znaiBo</a></li>
-<li><a href="https://www.git-tower.com/learn/git/faq/git-filter-repo">https://www.git-tower.com/learn/git/faq/git-filter-repo</a></li>
-<li>github actions <a href="https://www.youtube.com/watch?v=p3W2XCD3smk">https://www.youtube.com/watch?v=p3W2XCD3smk</a></li>
-</ul>
-</blockquote>
-<p>Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :</p>
-<ul>
-<li>utiliser git avec votre éditeur de texte comme vscode</li>
-<li>ou si vous voulez utiliser git en ligne de commande pour contrôler toutes vos opérations</li>
-</ul>
-<p>Il vous faudra installer le programme <code>git</code> en ligne de commande.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'installation et la configuration de git n'est pas très technique. Cela vaut le coup de de le faire ne serait-ce que pour pouvoir utiliser les magnifiques plugins de vscode.</p>
-</div></div>
-
-<h4>Utilisation de git avec vscode</h4>
+<p>Puis renseignez <strong>votre clé publique</strong> dans <a href="https://github.com/settings/keys">votre profil github</a>.</p>
+<h2>Outils</h2>
+<h3>git avec vscode</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -375,9 +374,76 @@ TBD diff format et différents algos</p>
 <li>de voir l'historique de modification d'un fichier avec l'extension <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory">git-history</a> (cliquer droit sur un fichier puis <code>Git: view file history</code>)</li>
 <li>...</li>
 </ul>
-<h3>Plomberie</h3>
+<h3>TUI</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>lazy git : <a href="https://www.youtube.com/watch?v=CPLdltN7wgE">https://www.youtube.com/watch?v=CPLdltN7wgE</a> pour git</li>
+<li>gh-dash : <a href="https://github.com/dlvhdr/gh-dash">https://github.com/dlvhdr/gh-dash</a> pour github et les pull requests</li>
+</ul>
+</div></div>
+
+<h2>Projet : gérer ses sources avec git</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/shorts/rK3IOMr6eSs">Linus Torvalds a crée git en 10 jours</a>  (et le 11ème il s'est reposé)</li>
+<li><a href="https://www.youtube.com/watch?v=LDy6Rv0kU1Q">Une histoire de git en français</a></li>
+</ul>
+</div></div>
+
 <blockquote>
-<p>TBD ajouter à la partie comment faire en vrai :</p>
+<p>TBD dire que c'est pour créer un repo sans github. Il faut donc que tout soit configuré chez soit (important car on doit savoir qui commit)</p>
+<p>TBD projet en ligne de commande.
+TBD utiliser tous les usages (même add/reset -p)</p>
+</blockquote>
+<h3>Installation et configuration</h3>
+<p>Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :</p>
+<ul>
+<li>utiliser git avec votre éditeur de texte comme vscode</li>
+<li>ou si vous voulez utiliser git en ligne de commande pour contrôler toutes vos opérations</li>
+</ul>
+<p>Il vous faudra installer le programme <code>git</code> en ligne de commande.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'installation et la configuration de git n'est pas très technique. Cela vaut le coup de de le faire ne serait-ce que pour pouvoir utiliser les magnifiques plugins de vscode.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="git-init" class="interne">Configurer et initialiser ses projets git</a></p>
+</div></div>
+
+<h3>Projet</h3>
+<blockquote>
+<p>TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
+TBD utiliser <code>git diff</code> <a href="https://www.youtube.com/watch?v=F1van9nShjA">https://www.youtube.com/watch?v=F1van9nShjA</a> et ref : <a href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a></p>
+</blockquote>
+<h2>Git plomberie</h2>
+<blockquote>
+<p>TBD expliquer porcelaine/plomberie
+TBD un tag c'est un objet. Commit, tree ou blob.
+TBD work-trees et stash
+TBD utiliser switch et pas checkout pour passer de branches en branches (checkout pour les commits particulier: headless ?)
+TBD : index = staging area.
+TBD diff format et différents algos
+TBD <a href="https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things">https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things</a></p>
+</blockquote>
+<blockquote>
+<p>TBD reflog.
+TBD git sha. Intro : <a href="https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d">https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d</a> et <a href="https://graphite.dev/guides/git-hash">https://graphite.dev/guides/git-hash</a>. Mieux : <a href="https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git">https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git</a></p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -388,115 +454,101 @@ TBD diff format et différents algos</p>
 </div></div>
 
 <p>Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.</p>
+<h2>Bibliographie</h2>
+<h3>Cours</h3>
+<ul>
+<li><a href="https://github.com/gitlearningjourney/learning-git">Learning Git</a></li>
+<li><a href="https://www.amazon.fr/Version-Control-Git-Collaborative-Development/dp/1492091197">Version control with git 3rd edition</a></li>
+<li><a href="https://git-scm.com/book/en/v2">the book</a></li>
+</ul>
+<h3>Références</h3>
+<ul>
+<li><a href="https://git-scm.com/">https://git-scm.com/</a></li>
+<li><a href="https://comprendre-git.com/fr/">https://comprendre-git.com/fr/</a></li>
+</ul>
+<h3>Misc</h3>
+<ul>
+<li><a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a></li>
+<li><a href="https://tonyg.github.io/revctrl.org/index.html">https://tonyg.github.io/revctrl.org/index.html</a></li>
+<li><a href="https://ohshitgit.com/">https://ohshitgit.com/</a></li>
+<li>
+<ul>
+<li><a href="https://git-school.github.io/visualizing-git/">s'entraîner avec des commandes git</a></li>
+</ul>
+</li>
+</ul>
 <h2>Histoire</h2>
-<blockquote>
-<p>TBD histoire de la gestion des sources :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <ul>
 <li><a href="https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee">https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee</a></li>
 <li><a href="https://blog.tarynmcmillan.com/a-history-of-version-control">https://blog.tarynmcmillan.com/a-history-of-version-control</a></li>
 </ul>
-<p>TBD : à étoffer et à mettre en perspective</p>
-</blockquote>
-<h2>TBD</h2>
-<blockquote>
-<ul>
-<li>
-<p>git rebase avec des merges : <a href="https://www.jnielson.com/git-rebase-with-merges">https://www.jnielson.com/git-rebase-with-merges</a></p>
-</li>
-<li>
-<p>git fetch. qu'est ce qui est fetch ? Tout ou juste des branches <a href="https://stackoverflow.com/a/74355550">https://stackoverflow.com/a/74355550</a></p>
-</li>
-<li>
-<p>force-push : expliquer ce que c'est.</p>
-</li>
-<li>
-<p>mettre la doc de chaque commande avec la description de git en ligne de commande dans la partie plomberie et porcelaine.</p>
-</li>
-<li>
-<p>lister tous tous les commit de la base : <a href="https://stackoverflow.com/a/4787030">https://stackoverflow.com/a/4787030</a></p>
-</li>
-<li>
-<p>rebase les différentes commandes ?</p>
-</li>
-<li>
-<p>jouer avec le DAG des commits</p>
-<ul>
-<li>detached head : <a href="https://www.cloudbees.com/blog/git-detached-head">https://www.cloudbees.com/blog/git-detached-head</a></li>
-<li>tous les commits : <code>git reflog</code> même ceux pas dans une branche (detached head). On peut les retrouver puis cherry pick <a href="https://stackoverflow.com/questions/9984223/what-happens-to-git-commits-created-in-a-detached-head-state">https://stackoverflow.com/questions/9984223/what-happens-to-git-commits-created-in-a-detached-head-state</a></li>
-<li>commit non attaché à une branche (dangling commits): <code>git fsck --lost-found</code></li>
-<li><code>git cat-files &lt;hash&gt;</code> pour voir les parents</li>
-</ul>
-</li>
-<li>
-<p>remote :</p>
-<ul>
-<li>branches.</li>
-<li>ssh / https</li>
-<li>fetch et push différents : <a href="https://stackoverflow.com/questions/31747072/will-remote-url-for-fetch-and-push-be-different">https://stackoverflow.com/questions/31747072/will-remote-url-for-fetch-and-push-be-different</a></li>
-<li>pas forcément github ou un autre provider. Un autre ordi fait l'affaire, même juste le sien : <a href="https://www.reddit.com/r/git/comments/5giehg/is_it_possible_to_have_a_remote_thats_on_the_same/">https://www.reddit.com/r/git/comments/5giehg/is_it_possible_to_have_a_remote_thats_on_the_same/</a></li>
-</ul>
-</li>
-<li>
-<p>merge :</p>
-<ul>
-<li>alignement, les algorithmes : dire que c'est comme l'alignement de séquence mais avec des lignes (ref)</li>
-<li>meilleur ancêtre commun <a href="https://git-scm.com/docs/git-merge-base">https://git-scm.com/docs/git-merge-base</a> <a href="https://stackoverflow.com/a/73171967">https://stackoverflow.com/a/73171967</a></li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>conflits : <a href="https://githowto.com/resolving_conflicts">https://githowto.com/resolving_conflicts</a></li>
-<li>3-way merge : <a href="https://tonyg.github.io/revctrl.org/ThreeWayMerge.html">https://tonyg.github.io/revctrl.org/ThreeWayMerge.html</a></li>
-<li>réécrire l'histoire : <a href="https://www.atlassian.com/git/tutorials/rewriting-history">https://www.atlassian.com/git/tutorials/rewriting-history</a></li>
-<li>pour aller plus loin :
-<ul>
-<li>squash commit ?</li>
-<li>stash : <a href="https://www.atlassian.com/git/tutorials/saving-changes/git-stash">https://www.atlassian.com/git/tutorials/saving-changes/git-stash</a>,  <a href="https://www.youtube.com/watch?v=BSLzA8oCT7g">https://www.youtube.com/watch?v=BSLzA8oCT7g</a> pour les mdp, etc</li>
-<li>worktree <a href="https://www.youtube.com/watch?v=ntM7utSjeVU">https://www.youtube.com/watch?v=ntM7utSjeVU</a></li>
-<li>sous-projet</li>
-<li>git vscode</li>
-<li>bisect : <a href="https://www.youtube.com/watch?v=Q-kqm0AgJZ8">https://www.youtube.com/watch?v=Q-kqm0AgJZ8</a></li>
-<li>cherry pick : <a href="https://www.youtube.com/watch?v=i657Bg_HAWI">https://www.youtube.com/watch?v=i657Bg_HAWI</a> (attention : <a href="https://www.youtube.com/watch?v=WPCxtFkLa7g">https://www.youtube.com/watch?v=WPCxtFkLa7g</a>)</li>
-</ul>
-</li>
-</ul>
-<p>TBD :</p>
-<ul>
-<li>pull --rebase sinon merge à repetition : <a href="https://www.youtube.com/watch?v=xN1-2p06Urc">https://www.youtube.com/watch?v=xN1-2p06Urc</a> ; <a href="https://www.youtube.com/watch?v=DkWDHzmMvyg">https://www.youtube.com/watch?v=DkWDHzmMvyg</a></li>
-<li>merge conflict : <a href="https://www.youtube.com/watch?v=DloR0BOGNU0">https://www.youtube.com/watch?v=DloR0BOGNU0</a></li>
-<li>cherry-pick attention ! : <a href="https://stackoverflow.com/questions/880957/pull-all-commits-from-a-branch-push-specified-commits-to-another/881014#881014">https://stackoverflow.com/questions/880957/pull-all-commits-from-a-branch-push-specified-commits-to-another/881014#881014</a></li>
-<li><a href="https://www.reddit.com/r/git/comments/mq9wh2/is_there_any_way_to_permanently_remove_commits/">https://www.reddit.com/r/git/comments/mq9wh2/is_there_any_way_to_permanently_remove_commits/</a> et <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository">https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository</a></li>
-<li>uncompress utilitaire : <code>pigz</code> <a href="https://stackoverflow.com/a/3178638">https://stackoverflow.com/a/3178638</a></li>
-<li>internals git commit <a href="https://pawelszczygielski.pl/2021/02/23/git-how-to-commit-without-git-commit/">https://pawelszczygielski.pl/2021/02/23/git-how-to-commit-without-git-commit/</a></li>
-<li>tree object format : <a href="https://stackoverflow.com/questions/14790681/what-is-the-internal-format-of-a-git-tree-object">https://stackoverflow.com/questions/14790681/what-is-the-internal-format-of-a-git-tree-object</a></li>
-<li>internal objects: <a href="https://shafiul.github.io/gitbook/1_the_git_object_model.html">https://shafiul.github.io/gitbook/1_the_git_object_model.html</a> <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">https://git-scm.com/book/en/v2/Git-Internals-Git-Objects</a>. Faire le code en python et pas en ruby. <a href="https://praneethreddybilakanti.medium.com/7-git-internals-548f8707436a">https://praneethreddybilakanti.medium.com/7-git-internals-548f8707436a</a></li>
-<li>git tag object avec du code en python <a href="https://stackoverflow.com/questions/10986615/what-is-the-format-of-a-git-tag-object-and-how-to-calculate-its-sha">https://stackoverflow.com/questions/10986615/what-is-the-format-of-a-git-tag-object-and-how-to-calculate-its-sha</a></li>
-<li>git index format : <a href="https://git-scm.com/docs/index-format">https://git-scm.com/docs/index-format</a> ; <code>git ls-files --stage</code> (attention: different de staged ); <code>git diff-index HEAD</code> et filetype <a href="https://unix.stackexchange.com/questions/450480/file-permission-with-six-octal-digits-in-git-what-does-it-mean">https://unix.stackexchange.com/questions/450480/file-permission-with-six-octal-digits-in-git-what-does-it-mean</a>. Que quelques possibilités. Donc peut-être juste les lister.</li>
-<li>diff <a href="https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a">https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a</a> et <a href="https://ably.com/blog/practical-guide-to-diff-algorithms">https://ably.com/blog/practical-guide-to-diff-algorithms</a>, <a href="https://en.m.wikipedia.org/wiki/Diff">https://en.m.wikipedia.org/wiki/Diff</a> et <a href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a></li>
-<li>commit jamais vraiment perdu <a href="https://andrewallison.medium.com/oops-i-lost-my-git-commits-heres-how-to-bring-them-back-from-the-dead-90b1a62f63d1">https://andrewallison.medium.com/oops-i-lost-my-git-commits-heres-how-to-bring-them-back-from-the-dead-90b1a62f63d1</a>. Faire test avec  rebase et on les retrouve.</li>
-</ul>
-<p>biblio :</p>
-<ul>
-<li>~ et ^ pour les ancêtres <a href="https://stackoverflow.com/questions/2221658/what-is-the-difference-between-head-and-head-in-git">https://stackoverflow.com/questions/2221658/what-is-the-difference-between-head-and-head-in-git</a></li>
-<li><a href="https://github.com/gitlearningjourney/learning-git">https://github.com/gitlearningjourney/learning-git</a></li>
-<li>cours (BIEN): <a href="https://www.youtube.com/watch?v=rH3zE7VlIMs">https://www.youtube.com/watch?v=rH3zE7VlIMs</a>, <a href="https://www.boot.dev/teachers/the-primeagen">https://www.boot.dev/teachers/the-primeagen</a>
-internals (TROP BIEN le debut puis devient trop chiant) : <a href="https://www.youtube.com/watch?v=fWMKue-WBok&amp;list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7">https://www.youtube.com/watch?v=fWMKue-WBok&amp;list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7</a></li>
-<li><a href="https://womanonrails.com/git-rebase-onto">https://womanonrails.com/git-rebase-onto</a></li>
-<li><a href="https://jwiegley.github.io/git-from-the-bottom-up/">https://jwiegley.github.io/git-from-the-bottom-up/</a></li>
-<li><a href="https://tutorial.gitlabpages.inria.fr/git/">https://tutorial.gitlabpages.inria.fr/git/</a></li>
-<li><a href="https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain">https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain</a></li>
-<li>créer son propre sha : <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">https://git-scm.com/book/en/v2/Git-Internals-Git-Objects</a> <a href="https://gist.github.com/masak/2415865">https://gist.github.com/masak/2415865</a> et <a href="https://stackoverflow.com/questions/552659/how-to-assign-a-git-sha1s-to-a-file-without-git/552725#552725">https://stackoverflow.com/questions/552659/how-to-assign-a-git-sha1s-to-a-file-without-git/552725#552725</a></li>
-<li><a href="https://ohshitgit.com/">https://ohshitgit.com/</a></li>
-<li><a href="https://gitirc.eu/gitrevisions.html">https://gitirc.eu/gitrevisions.html</a></li>
-<li><code>git diff</code> <a href="https://www.youtube.com/watch?v=F1van9nShjA">https://www.youtube.com/watch?v=F1van9nShjA</a></li>
-<li>diff / patch : fr <a href="https://www.youtube.com/watch?v=0JZCah5w7I8">https://www.youtube.com/watch?v=0JZCah5w7I8</a> en (plux concis) <a href="https://www.youtube.com/watch?v=-CiLU9-RAGk">https://www.youtube.com/watch?v=-CiLU9-RAGk</a></li>
-<li>interactive stage <a href="https://www.youtube.com/watch?v=UJ5fpaeZWsI">https://www.youtube.com/watch?v=UJ5fpaeZWsI</a> <a href="https://www.youtube.com/watch?v=8st1NhaKDCA">https://www.youtube.com/watch?v=8st1NhaKDCA</a></li>
-<li><a href="https://learngitbranching.js.org/">https://learngitbranching.js.org/</a></li>
-<li><a href="https://git-school.github.io/visualizing-git/">https://git-school.github.io/visualizing-git/</a></li>
-</ul>
-</blockquote>
+</div></div>
+
+<!-- TBD
+
+> - git rebase avec des merges : <https://www.jnielson.com/git-rebase-with-merges>
+> - git fetch. qu'est ce qui est fetch ? Tout ou juste des branches <https://stackoverflow.com/a/74355550>
+> - force-push : expliquer ce que c'est.
+> - mettre la doc de chaque commande avec la description de git en ligne de commande dans la partie plomberie et porcelaine.
+> - lister tous tous les commit de la base : <https://stackoverflow.com/a/4787030>
+> - rebase les différentes commandes ?
+>
+>   - detached head : <https://www.cloudbees.com/blog/git-detached-head>
+>   - tous les commits : `git reflog` même ceux pas dans une branche (detached head). On peut les retrouver puis cherry pick <https://stackoverflow.com/questions/9984223/what-happens-to-git-commits-created-in-a-detached-head-state>
+>   - commit non attaché à une branche (dangling commits): `git fsck --lost-found`
+>   - `git cat-files <hash>` pour voir les parents
+>
+> - remote :
+>   - branches.
+>   - ssh / https
+>   - fetch et push différents : <https://stackoverflow.com/questions/31747072/will-remote-url-for-fetch-and-push-be-different>
+>   - pas forcément github ou un autre provider. Un autre ordi fait l'affaire, même juste le sien : <https://www.reddit.com/r/git/comments/5giehg/is_it_possible_to_have_a_remote_thats_on_the_same/>
+> - merge :
+>   - meilleur ancêtre commun <https://git-scm.com/docs/git-merge-base> <https://stackoverflow.com/a/73171967>
+> - conflits : <https://githowto.com/resolving_conflicts>
+> - 3-way merge : <https://tonyg.github.io/revctrl.org/ThreeWayMerge.html>
+> - réécrire l'histoire : <https://www.atlassian.com/git/tutorials/rewriting-history>
+> - pour aller plus loin :
+>   - squash commit ?
+>   - stash : <https://www.atlassian.com/git/tutorials/saving-changes/git-stash>, <https://www.youtube.com/watch?v=BSLzA8oCT7g> pour les mdp, etc
+>   - worktree <https://www.youtube.com/watch?v=ntM7utSjeVU>
+>   - sous-projet
+>   - git vscode
+>   - bisect : <https://www.youtube.com/watch?v=Q-kqm0AgJZ8>
+>   - cherry pick : <https://www.youtube.com/watch?v=i657Bg_HAWI> (attention : <https://www.youtube.com/watch?v=WPCxtFkLa7g>)
+>
+>
+> - pull --rebase sinon merge à repetition : <https://www.youtube.com/watch?v=xN1-2p06Urc> ; <https://www.youtube.com/watch?v=DkWDHzmMvyg>
+> - merge conflict : <https://www.youtube.com/watch?v=DloR0BOGNU0>
+> - cherry-pick attention ! : <https://stackoverflow.com/questions/880957/pull-all-commits-from-a-branch-push-specified-commits-to-another/881014#881014>
+> - <https://www.reddit.com/r/git/comments/mq9wh2/is_there_any_way_to_permanently_remove_commits/> et <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository>
+> - uncompress utilitaire : `pigz` <https://stackoverflow.com/a/3178638>
+> - internals git commit <https://pawelszczygielski.pl/2021/02/23/git-how-to-commit-without-git-commit/>
+> - tree object format : <https://stackoverflow.com/questions/14790681/what-is-the-internal-format-of-a-git-tree-object>
+> - internal objects: <https://shafiul.github.io/gitbook/1_the_git_object_model.html> <https://git-scm.com/book/en/v2/Git-Internals-Git-Objects>. Faire le code en python et pas en ruby. <https://praneethreddybilakanti.medium.com/7-git-internals-548f8707436a>
+> - git tag object avec du code en python <https://stackoverflow.com/questions/10986615/what-is-the-format-of-a-git-tag-object-and-how-to-calculate-its-sha>
+> - git index format : <https://git-scm.com/docs/index-format> ; `git ls-files --stage` (attention: different de staged ); `git diff-index HEAD` et filetype <https://unix.stackexchange.com/questions/450480/file-permission-with-six-octal-digits-in-git-what-does-it-mean>. Que quelques possibilités. Donc peut-être juste les lister.
+> - commit jamais vraiment perdu <https://andrewallison.medium.com/oops-i-lost-my-git-commits-heres-how-to-bring-them-back-from-the-dead-90b1a62f63d1>. Faire test avec rebase et on les retrouve.
+>
+> biblio :
+>
+> - ~ et ^ pour les ancêtres <https://stackoverflow.com/questions/2221658/what-is-the-difference-between-head-and-head-in-git>
+>
+> - cours (BIEN): <https://www.youtube.com/watch?v=rH3zE7VlIMs>, <https://www.boot.dev/teachers/the-primeagen>
+>   internals (TROP BIEN le debut puis devient trop chiant) : <https://www.youtube.com/watch?v=fWMKue-WBok&list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7>
+> - <https://womanonrails.com/git-rebase-onto>
+> - <https://jwiegley.github.io/git-from-the-bottom-up/>
+> - <https://tutorial.gitlabpages.inria.fr/git/>
+> - <https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain>
+> - créer son propre sha : <https://git-scm.com/book/en/v2/Git-Internals-Git-Objects> <https://gist.github.com/masak/2415865> et <https://stackoverflow.com/questions/552659/how-to-assign-a-git-sha1s-to-a-file-without-git/552725#552725>
+> - <https://gitirc.eu/gitrevisions.html>
+> - interactive stage <https://www.youtube.com/watch?v=UJ5fpaeZWsI> <https://www.youtube.com/watch?v=8st1NhaKDCA>
+ -->
 
 
 </article>
