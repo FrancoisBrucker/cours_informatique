@@ -23,3 +23,4 @@ Process simple. Contexte de l'époque et utilisation actuelle.
 > catalan et chemins de Dyck pour les énumérer : <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>
 
 > TBD <https://www.numdam.org/article/AIHPB_1986__22_2_199_0.pdf>
+> <https://www.youtube.com/watch?v=YNgO2PhtndA>

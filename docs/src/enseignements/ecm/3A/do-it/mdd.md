@@ -54,7 +54,10 @@ Préparer un exposé de 5min chacun + support avec biblio et principales fonctio
 
 ## Partie III
 
-> TBD
+> TBD git (bases cette année)
+> TBD ci/cd (pour l'année prochaine) 
+> - <https://www.youtube.com/watch?v=KnSBNd3b0qI&list=PLnFWJCugpwfwQgjlSg_-csiJbpBIze2qa>
+> - le faire avec github actions ? Au temps 2 Sur leur serveur ?
 
 <!-- TBD voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y mettre l'interpréteur et le debogueur. Ajouter un tuto pour qu'il puisse montrer ce qu'est une variable. l'exécution d'une commande et d'une fonction) 
 

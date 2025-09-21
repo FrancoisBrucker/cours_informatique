@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD plan
+Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.
 
 ## Besoins
 
@@ -20,22 +20,20 @@ eleventyComputed:
 
 ## Structure distribuée
 
-Où doit être stockée la structure de stockage ?
+Pour que son accès soit facile, il faut que la structure de stockage soit sur le même ordinateur que celui ayant le répertoire de travail.
 
-Pour que son accès soit facile, il faut qu'elle soit sur le même ordinateur que celui ayant le répertoire de travail.
+Si cette solution est idéal lorsque l'on est un unique développeur, elle devient plus complexe à mettre en œuvre si on est plusieurs à travailler sur le projet. Il faut :
 
-Si on est plusieurs à travailler sur le projet, cela ajoute en complexité :
+1. en avoir une copie de la structure de stockage chez chaque participant,
+2. permettre à plusieurs personnes de travailler sur le même fichier,
+3. permettre le travail asynchrone entre les personnes : une personne va avancer à un endroit pendant qu'une autre travaille sur autre chose
+4. pouvoir reprendre un projet existant avec une nouvelle équipe
 
- 1. plusieurs versions d'un projet, au moins une chez chaque participant,
- 2. plusieurs personnes qui travaillent sur le même fichier,
- 3. travail asynchrone entre les personnes. Une personne va avancer à un endroit pendant qu'une autre travaille sur autre chose
- 4. reprendre un projet existant avec une nouvelle équipe
-
-Ceci implique qu'il faut un endroit où stocker un **_projet référent_** faisant autorité pour tous les participants. Mais comment faire ensuite ?
+Ceci implique que chaque copie soit synchronisée par un dépôt référent, un **_projet référent_** faisant autorité pour tous les participants. Mais comment faire ensuite pour que la synchronisation soit aisée ?
 
 ### Mauvaise implémentation
 
-Avant d'exposer la solution adoptée par Git, commençons par lister une série fausse bonne idées qui à été (et est malheureusement encore souvent) mis en place : un seul projet partagé assortis :
+Avant d'exposer la solution adoptée par <https://git-scm.com/> et qui fait autorité actuellement, commençons par lister une série fausse bonne idées qui à été (et est malheureusement encore souvent) mis en place : un seul projet partagé assorti :
 
 1. de règles de soumission de commits
 2. d'un superviseur général qui doit tout valider avant
@@ -48,7 +46,7 @@ Enfin, en plus d'être inefficace, cela va induire de gros ralentissement car co
 
 La bonne implémentation consiste **à ne pas sacraliser la mise en commun**. Il faut le faire le souvent pour que tout le monde ait une version claire de l'ensemble **actuel** du projet.
 
-La solution utilisée par git consiste à ne pas choisir de serveur distant avec des règles précise : tout participant possède l'intégralité de la structure de sauvegarde comme s'il était seul développeur. On ajoute enfin souvent un participant fictif, nommé **_origin_**, qui est la référence commune et est synchronisée à l'envie par les développeurs. Cette structure distribuée permet :
+La solution utilisée par [git](https://git-scm.com/) consiste à ne pas choisir de serveur distant avec des règles précise : tout participant possède l'intégralité de la structure de sauvegarde comme s'il était seul développeur. On ajoute enfin souvent un participant fictif, nommé **_origin_**, qui est la référence commune et est synchronisée à l'envie par les développeurs. Cette structure distribuée permet :
 
 - que chaque développeur puisse faire ses propres commits en local,
 - d'avoir une (ou plusieurs) branches partagée par tous les utilisateurs (comme `main`, `dev`, _etc_) et synchronisés souvent entre les utilisateur et _origin_ :

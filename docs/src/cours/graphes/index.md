@@ -201,15 +201,7 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 
 > TBD [DM line graph](./line-graph){.interne}
 
-## Graphes aléatoires
-
-### Process de Galton-Watson
-
-> erdos-rado
->
-> TBD <https://fr.wikipedia.org/wiki/Processus_de_Galton-Watson>
-
-### Graphes aléatoires et infinis
+## Graphes aléatoires et infinis
 
 > TBD erdos-rado
 > graphe infini unique
@@ -218,11 +210,13 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 > mes amis ont plus d'amis que moi
 > Beaucoup de graphes ne sont pas parfait en prenant H = C5 : <https://math.stackexchange.com/questions/4729419/let-h-be-a-graph-prove-that-almost-every-graph-g-in-mathcalg-n-p-has>
 
+>probabilistic method : hamiltonian path <https://www.youtube.com/watch?v=feEXMWBQGZk&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=5>
 ## Algorithmes randomisés
 
 > TBD Partie 3, après algo random et hasard en algorithmie.
 
 > TBD <https://www.cse.iitd.ac.in/~ssen/chapters/randgraph.pdf>
+> probabilistic method in graph theory : <https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO>
 
 ### couplage
 

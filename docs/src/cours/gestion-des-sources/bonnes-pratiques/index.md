@@ -2,8 +2,9 @@
 layout: layout/post.njk
 
 title: Bonnes pratiques
-authors:
-  - "Corentin Lange"
+authors: 
+  - Corentin Lange
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -12,98 +13,46 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+La gestion des sources est un outil formidable pour travailler au quotidien. Cependant, beaucoup de connaissance et un peu de pratique sont nécessaires pour que son utilisation soit fluide. Si vous ne faites pas l'effort de comprendre ce que vous faite ou (surtout) de chercher dans la documentation les commandes pour réaliser ce que vous avez envie de faire, utiliser un système de gestion des sources va vous sembler lourd et fastidieux (et vous ne l'utiliserez plus) ou magique (et vous allez faire plein d'erreurs qui peuvent coûter très cher en temps de développement).
 
-Une fois apte à cloner un repo, le modifier, faire des commits, il est bien de savoir comment bien le faire !
+## Actions courantes
 
-<!-- fin résumé -->
+### Travailler en local
 
-[GitHub](https://github.com/) est très répandu pour le développement en équipe. Il peut-être une vraie aide à la productivité si il est bien utilisé, ou au contraire, rajouter une perte de temps et des nombreuses prises de têtes sans bonnes pratiques.
+- commitez souvent pour pouvoir revenir en arrière si nécessaire
+- créez des branches temporaires locale pour vos expérimentations et n'hésitez pas à revenir en arrière
+- utilisez un [fichier `.gitignore`](https://docs.github.com/en/get-started/git-basics/ignoring-files) pour contrôler les fichier à suivre. Tout fichier doit être soit suivi soit ignoré : ne tolérez pas d'exception sinon vous allez vous perdre et (forcément) faire des erreurs.
 
-Ci-dessous quelques petites clés pour bien utiliser [GitHub](https://github.com/) & [GitLab](https://gitlab.com/) ! Tout ces conseils sont fortement inspirés de projets open-source, ces derniers maintenant une relecture et des règles de participations très claires afin de permettre au maximum de personnes de participer.
+### Récupérer l'état de l'origine
 
-Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-source [Atom](https://github.com/atom/atom) (un ide multi-languages personnalisables)
+Utilisez la commande `fetch` pour voir l'état de l'origine pour les branches que vous suivez. Cela vous montrera l'avancé de vos collègues et les votre et vous dira quand faire un commit sur le serveur.
 
-## Workflow
+### Récupérer les commits de l'origine
 
-Le _"workflow"_, ou flux de travail en français (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.
-
-Pour travailler en équipe, à l'aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.
-
-Je vous présente des méthodes de travail que l'on peut retrouver afin de gagner du temps, avoir une meilleure lisibilité ainsi que une meilleure intégration continue.
-
-### Le No-flow
-
-![git_flow_1](git_flow_1.png)
-
-C'est souvent ce qu'on utilise la première fois en se servant de git et github : chacun pousse sur la branche main lorsqu'il ou elle a rajouté une fonctionnalité, corrigé un bug, modifié une partie déjà existante.
-
-Travailler de cette manière est très peu pratique pour :
-
-- la relecture du code
-- une intégration continue
-- un nombre de personnes participant élevé
-- éviter des conflits de merge (que l'on veut au plus souvent éviter)
-
-Ce tutoriel est ici en grande partie pour vous montrer d'autres modes de travail afin de parfaire l'expérience et l'efficacité du travail à plusieurs sur un projet.
-
-### Le Git Flow
-
-![Git_flow_4](git_flow_4.png)
-
-#### Branches
-
-Il existe une sémantique des branches, libre à chacun de se la réapproprier mais faire comme tout le monde ça aide souvent à la compréhension !
-
-#### `main`
-
-Cette branche contient le code de production (celui actuellement utilisé sur votre produit/système fonctionnel).
-Tout le code de développement(branch develop) est fusionné dans master au fur et à mesure que les features,etc... ont été dûment testées et validées.
-
-#### `develop`
-
-Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour "partir en prod".
-
-#### `feature/<nom feature>`
-
-Les branches feature sont utilisées pour développer de nouvelles fonctionnalités pour les prochaines versions. Elles peuvent être dérivées de develop et doivent être fusionnées avec develop(jamais main directement !).
-
-On ajoute après le / le nom de la feature ajoutée, par exemple : feature/filter_dog pour l'ajout d'un filtre chien sur votre application.
-
-#### `hotfix/<nom hotfix>`
-
-Les branches hotfix sont nécessaires pour agir immédiatement sur un statut non désiré de master. Peut se ramifier à partir de master et doit fusionner dans master et develop.
-
-#### `release/<nom release>`
-
-Les branches de version prennent en charge la préparation d'une nouvelle version de production. Elles permettent de corriger de nombreux bogues mineurs et de préparer les méta-données pour une version. Peut se ramifier à partir de develop et doit fusionner avec master et develop.
-
-### git flow init
-
-{% lien "**Documentation**" %}
-<https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html>
-{% endlien %}
-
-git flow est une extension git qui une fois installée et initialisée pour votre projet (avec la commande `git flow init`) crée automatiquement toutes ces branches.
-
-Une liste de commandes est associées directement à cet outil afin de gérer au mieux l'utilisation du workflow.
+Lorsque vous récupérez des données de l'origine faites le avec un `rebase` pour qu'ils se placent avant vos commit linéairement. Ne créez pas de fusions de branches inutiles.
 
 {% info %}
-Il est clair qu'initialiser ce workflow pour un petit travail de rendu pour les cours est surdimensionné. Ce dernier est à utiliser dans des cas de projets sur long terme pour assurer une bonne intégration continue.
+On peut le faire puisque vos modifications sont encore locales.
 {% endinfo %}
 
-### Nom des Commits
+N'ayez pas peur de gérer les conflits. Une fois qu'on a l'habitude cela se fait aisément.
+
+### Envoyer ses modification à l'origine
+
+- Mettez vos fichiers sur l'origine régulièrement (une fois une fonctionnalité terminée par exemple) avec un `push`. Cela permet de montrer vos avancées aux collègue et n'induira pas de mise en commun fastidieuses.
+- Ne modifiez **jamais** l'état de l'origine : ne faites que des ajouts. S'il faut revenir en arrière utilisez un `revert` qui ajoute un nouveau commit.
+
+## Nommer ses commits
 
 {% lien "**Documentation**"  %}
 <https://www.conventionalcommits.org/en/v1.0.0/>
 {% endlien %}
 
-La forme du nom de ses commits est aussi important, une liste de commits mal nommés peut vite devenir illisible et occasionner des pertes de fluidité pour la relecture.
+La forme du nom de ses commits est aussi important, même si on est l'unique développeur de son projet. Une liste de commits mal nommés peut vite devenir illisible et occasionner des pertes de fluidité pour la relecture.
 
 Message de commit :
 
 - titre du message : \<type\> [scope (optionnel)]: \<description\>
-
   - type :
     - **feature** : Ajout d’une nouvelle fonctionnalité
     - **test** : Ajout de tests
@@ -121,8 +70,6 @@ Message de commit :
 
 - corps du message : à n'utiliser que si nsi vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare
 
-### Gitmoji
-
 {% lien "**Documentation**"  %}
 <https://gitmoji.dev/>
 {% endlien %}
@@ -134,7 +81,6 @@ Il est conseillé de le mettre soit avant votre scope soit directement le rempla
 Exemple de commits:
 
 - Sans scope:
-
   - :bug: correction of bad codes
   - :zap: accelerated program launch on windows
 
@@ -142,63 +88,73 @@ Exemple de commits:
   - :hammer: refact: refactored sql db
   - :rotating_light: fix: compiler problems
 
-{% info %}
-Personnellement je préfère garder le scope.
-{% endinfo %}
-
-{% note %}
+{% lien %}
 Le tableau [ici](https://gist.github.com/parmentf/035de27d6ed1dce0b36a) vous aide à trouver l'émoji associé au commit que vous souhaitez.
-{% endnote %}
+{% endlien %}
 
 Vous pouvez vous même rédiger votre tableau dans votre **CONTRIBUTING** ! (On en parle plus bas)
 
-## Pull Request (PR)
+## Branches partagées
 
-Il est fortement conseillé de passer par une Pull Request à chaque fois que l'on souhaite ajouter une modification sur un projet. Il permet d'avoir une première relecture par un ou plusieurs relecteurs pouvant commenter votre code là où il ferait défaut.
+Il existe de nombreuses méthodes pour organiser les branches d'un projet. Chacune ayant ses pour et ses contre. Si vous arrivez dans un projet déjà existant adaptez-vous mais si vous créez un nouveau projet, voici quelques façon de faire qui vous ferons gagner du temps. Il y a deux grandes familles :
 
-Elles sont aussi un bon moyen d'apporter des infos sur une contribution, de définir à quelles issues elles répondent en les identifiants directement dans le commentaire.
+- les méthodes avec de nombreuses branches bien spécifiées
+- les méthodes sans branches
 
-![Versioning](pull_request.png)
+Chacune à ses pour et ses contre et viennent avec leurs propre contraintes. A vous de voir celle que vous préférez avec votre projet.
 
-Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d'assigner :
+### Feature branching
 
-- Des **relecteurs** : devant donner leur aval pour accepter le merge
-- Des **labels**: afin de trier les différentes pull request (ex : hotfix, feature,...)
-- Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)
-- Lier des **issues** qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet
+La première idée est de consacrer une branche par feature à développer. Une fois cette branche terminée elle s'intègre à la branche principale par un merge. Cette méthode, appelé **_feature branching_** peut générer de nombreuses branches si l'équipe de développement est importante. C'est pourquoi, certaines adaptations ont vu le jour comme [Git flow](https://leanpub.com/git-flow/read) (si vous utilisez cette méthode, il existe [un plugin git](https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html)) ou encore [Github flow](https://githubflow.github.io/) (qui préconise de n'avoir qu'une unique branche de développement pour une synchronisation plus claire entre les développeurs) pour préciser et nommer les différentes branches d'un projet.
 
-Cet outil permet ainsi d'"empaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.
+{% lien %}
+[Présentation concise des deux méthodes](https://www.youtube.com/watch?v=hG_P6IRAjNQ) (2min08 et 4min38)
+{% endlien %}
 
-## Issues
+UN projet sous le git workflow va se représenter de cette façon :
 
-De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l'accent sur :
+![Git_flow_4](git_flow_4.png)
 
-- l'ajout d'une fonctionnalité
-- une dis-fonctionnalité
+Chaque branche va avoir sa sémantique propre qui permet de savoir immédiatement ce que'elle fait :
 
-Une bonne issue doit être bien rédiger afin d'aider la personne qui va s'en occuper :
+- `main`. Cette branche contient le code de production (celui actuellement utilisé sur votre produit/système fonctionnel).
+Tout le code de développement(branch develop) est fusionné dans master au fur et à mesure que les features,etc... ont été dûment testées et validées.
+- `develop`. Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour "partir en prod".
+- `feature/<nom feature>`. Les branches feature sont utilisées pour développer de nouvelles fonctionnalités pour les prochaines versions. Elles peuvent être dérivées de develop et doivent être fusionnées avec develop(jamais main directement !). On ajoute après le / le nom de la feature ajoutée.
+- `hotfix/<nom hotfix>`. Les branches hotfix sont nécessaires pour agir immédiatement sur un statut non désiré de master. Peut se ramifier à partir de master et doit fusionner dans master et develop.
+- `release/<nom release>`. Les branches de version prennent en charge la préparation d'une nouvelle version de production. Elles permettent de corriger de nombreux bogues mineurs et de préparer les méta-données pour une version. Peut se ramifier à partir de develop et doit fusionner avec master et develop.
 
-- si ajout d'une fonctionnalité :
-  - bien décrire la fonctionnalité voulue
-  - son fonctionnement
-  - des visuels.
-- si dis-fonctionnalité :
-  - visuels,
-  - comment l'erreur s'est produite ?
-  - sur quelle machine ?
-  - avec quelle version ?
-  - si reproductible, expliquer comment la reproduire
-  - indiquer des pistes si vous en avez
+Le principal soucis, outre son formalisme stricte, est la multiplicité des des branches qui fait qu'on peut facilement s'y perdre.
 
-Je vous redirige [vers le contributing](./#contributing){.interne} afin d'aider les gens à leur rédaction d'issues.
+### Continuous Integration
 
-## Gestion du repo - Documentation
+La continuous integration prend le contre-pied des méthodes précédentes et préconise de minimiser le nombre et la durée des branches au stricte maximum tout en commitant souvent sur la branche principale. Le but ultime de cette méthode est d'avoir le workflow suivant :
+
+![CI](./git_flow_1.png)
+
+Cette méthode, très prisée actuellement, fonctionne. Le lien suivant décrit l'idée :
+
+{% lien %}
+[CI workflow](https://www.youtube.com/watch?v=v4Ijkq6Myfc)
+{% endlien %}
+
+On a cependant rien sans rien. Le workflow CI s'appuie sur de nombreux tests automatisés pour vérifier que tout se passe bien et est construite pour que tout puisse aller vite en production...et être corrigé rapidement si nécessaire.
+
+{% attention %}
+La production est le dernier endroit ou votre code est testé, certes, mais ça ne doit pas être le seul
+{% endattention %}
+
+> TBD à étoffer
+
+## Gestion du projet
+
+### Documentation
 
 Il est important de bien documenter son repository sur GitHub afin d'aider à la compréhension de ce dernier : que ce soit pour un projet fermé si de nouveaux développeurs arrivent dans l'équipe, ou bien dans une dynamique open-source pour toute personne souhaitant participer au projet.
 
 Les fichiers Markdown(.md) sont donc vos meilleurs amis pour aider à la compréhension du projet.
 
-### Readme
+#### Readme
 
 {% lien "**Documentation**" %}
 <https://www.makeareadme.com/>
@@ -215,7 +171,7 @@ On y retrouve en général :
 
 Vous pouvez vous inspirer du [readme d'Atom](https://github.com/atom/atom#readme)
 
-### <span id="contributing"></span> Contributing
+#### <span id="contributing"></span> Contributing
 
 Il est d'usage aussi de réaliser un fichier markdown `CONTRIBUTING.md`{.fichier} afin d'expliquer à toutes personnes participant au code/projet comment :
 
@@ -231,7 +187,7 @@ Ces derniers sont très explicites et aident vraiment à obtenir des commits, pu
 [Atom_contributing](https://github.com/atom/atom/blob/master/CONTRIBUTING.md)
 [Godot_contributing](https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md)
 
-## Versioning - sémantique des versions
+### Versioning - sémantique des versions
 
 {% lien "**Documentation**" %}
 <https://semver.org/lang/fr/>
@@ -258,16 +214,44 @@ On retrouve dans la version de son projet :
 - un **LABEL** facultatif: Pour apporter des précisions sur le type de version
   (ex: beta/alpha/stable)
 
-## Bibliographie
+## Participer à un projet
 
-{% lien %}
+Si vous contribuez à un projet avec plusieurs développeurs, ou si vous trouvez et corrigez un problème d'un projet qui n'est pas le votre, une façon courtoise de demander l'ajout d'intégration de vos travaux est d'effectuer une **_pull request_**.
 
-- <https://docs.github.com/en/get-started/quickstart/github-flow>
-- <https://github.com/atom/atom>
-- <https://makeareadme.com>
-- <https://github.com/godotengine/godot/>
-- <https://semver.org/lang/fr/>
-- <https://zepel.io/blog/5-git-workflows-to-improve-development/>
-- <https://gitmoji.dev/>
+Une pull request est une proposition de commit qui pourra être accepté, amendé ou parfois rejeté par l'équipe de développement. Cette méthode permet aussi de facilement travailler avec une équipe de niveau hétérogène où les commits des développeurs les moins expérimentés sont inspecté par les lead développeurs avant acceptation.
 
-{% endlien %}
+### <span id="pull-request"></span>Pull Request (PR)
+
+Voici un exemple de pull request :
+
+![Versioning](pull_request.png)
+
+Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d'assigner :
+
+- Des **relecteurs** : devant donner leur aval pour accepter le merge
+- Des **labels**: afin de trier les différentes pull request (ex : hotfix, feature,...)
+- Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)
+- Lier des **issues** qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet
+
+Cet outil permet ainsi d'"empaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.
+
+### Issues
+
+De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l'accent sur :
+
+- l'ajout d'une fonctionnalité
+- une dis-fonctionnalité
+
+Une bonne issue doit être bien rédiger afin d'aider la personne qui va s'en occuper :
+
+- si ajout d'une fonctionnalité :
+  - bien décrire la fonctionnalité voulue
+  - son fonctionnement
+  - des visuels.
+- si dis-fonctionnalité :
+  - visuels,
+  - comment l'erreur s'est produite ?
+  - sur quelle machine ?
+  - avec quelle version ?
+  - si reproductible, expliquer comment la reproduire
+  - indiquer des pistes si vous en avez

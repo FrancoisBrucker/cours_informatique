@@ -12,7 +12,8 @@ eleventyComputed:
 
 
 > TBD placer la généralisation dans coloriage.
-
+> TBD méthode probabiliste : graphe induit. <https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=1>
+> 
 Les graphes biparti font parti de ces classes de graphes assez généraux pour être présent partout et assez spécifique pour que tous se passe bien (les principaux problèmes NP-complets dans le cas général deviennent polynomiaux voir triviaux).
 
 {% note "**Définition**" %}

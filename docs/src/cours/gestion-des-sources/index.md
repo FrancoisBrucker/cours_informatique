@@ -6,8 +6,8 @@ tags: ["cours", "projet"]
 authors:
   - François Brucker
 eleventyNavigation:
-    prerequis:
-        - "/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/"
+  prerequis:
+    - "/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/"
 resume: "Comment gérer les sources d'un projet avec git et github."
 
 eleventyComputed:
@@ -17,19 +17,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD lazygit : <https://www.youtube.com/watch?v=CPLdltN7wgE> et gh voir <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
-> 
+Comment gérer le code source d'un projet des principes au repository github.
 
-Comment gérer le code source d'un projet avec git et github.
-
-{% lien %}
+{% lien "**Introductions**" %}
 
 - [Qu'est ce que la gestion des sources avec github ?](https://www.youtube.com/watch?v=w3jLJU7DT5E)
 - [Utilité de git pour tous](https://www.atlassian.com/fr/git/tutorials/why-git)
 
 {% endlien %}
 
-La gestion du code source (_Source Control Management_) est bien sûr utilisée massivement en informatique, mais les méthodes et techniques mises en œuvre fonctionnent pour tout projet où l'on doit utiliser/produire des documents qui sont modifiés au cours du temps. C'est un cadeau fait par les informaticiens au monde (ne le détruisez pas comme la gestion de projet agile...).
+La gestion du code source (**_SCM_** pour _Source Control Management_) est bien sûr utilisée massivement en informatique, mais les méthodes et techniques mises en œuvre fonctionnent pour tout projet où l'on doit utiliser/produire des documents qui sont modifiés au cours du temps. C'est un cadeau fait par les informaticiens au monde (ne le détruisez pas comme la gestion de projet agile...).
 
 Un des bénéfices d'une gestion des documents bien comprise est que l'on peut :
 
@@ -47,21 +44,43 @@ Dire que l'on fait de la gestion des sources ou que l'on connaît [git](https://
 ## Principes
 
 {% aller %}
-[Principes](./principes){.interne}
+[Principes et usages d'un SCM](./principes){.interne}
+{% endaller %}
+
+## Gérer ses sources au quotidien
+
+### Identité
+
+Pour que le processus de gestion des sources soit efficace il est nécessaire que tout commit soit bien :
+
+- identifié : l'auteur du commit doit pouvoir être retrouvé
+- documenté : le message accompagnant le commit doit être descriptif.
+
+#### Profil
+
+Ayez votre profil à jour :
+
+- nom et prénom ou pseudo identifiable
+- adresse mail à jour
+
+#### Message de commits
+
+Utilisez un éditeur de texte que vous maîtrisez pour éditer le message de commit (par défaut c'est [vi](https://fr.wikipedia.org/wiki/Vi) qui n'est pas forcément votre éditeur de prédilection). Un message de commit contient forcément **1 ligne** décrivant le commit (on verra dans la partie suivante des méthodes pour les écrire). Puis, si nécessaire, une description plus long (souvent inutile).
+
+### Bonnes pratiques
+
+Bonnes pratiques pour tous les jours :
+
+{% aller %}
+[Gestion des sources au quotidien](./bonnes-pratiques){.interne}
 {% endaller %}
 
 ## Github
 
-> TBD voir les diff + format.
-
-> 3. git
->     1. avec Github
->     1. idem avec Github desktop
-
-<https://github.com/> est une interface au logiciel de gestion de sources [git](https://fr.wikipedia.org/wiki/Git). Il en existe d'autres, comme <https://gitlab.com/> par exemple.
+Pour pratiquer la gestion des sources, nous allons utiliser <https://github.com/> comme sauvegarde origine. Le site fonctionne avec logiciel de gestion de sources [git](https://fr.wikipedia.org/wiki/Git). Il en existe d'autres, comme <https://gitlab.com/> par exemple.
 
 {% info %}
-L'[aide de github](https://docs.github.com/en/get-started) est très bien faite, n'hésitez pas à y jeter un coup d'œil.
+L'[aide de github](https://docs.github.com/en/get-started) est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
 {% endinfo %}
 
 ### <span id="compte-github"></span> Création du compte github
@@ -82,19 +101,52 @@ L'[aide de github](https://docs.github.com/en/get-started) est très bien faite,
 
 ### <span id="tuto-github"></span> Utilisation de github
 
-On va aller un peu plus loin en voyant, directement avec le site les principales fonctionnalités de git.
-
-{% aller %}
-[Comment créer un projet uniquement avec github](./projet-github){.interne}
-{% endaller %}
-
-Vous avez vu les principales qualités d'un logiciel de gestion de sources :
+On va utiliser l'interface de github pour mettre en œuvre les principales fonctionnalités d'un système de gestion des sources :
 
 - faire des commit
 - gérer des branches
 - fusionner des branches en résolvant des conflits
 - voir l'historique du projet
 - comment ajouter des membres à un projet
+
+{% aller %}
+[Comment créer un projet uniquement avec github](./projet-github){.interne}
+{% endaller %}
+
+### Pull requests
+
+Por mettre à jour notre projet, nous avons effectué [une **_pull request_**](./bonnes-pratiques/#pull-request){.interne}. Cette façon d'ajouter des commits à la sauvegarde est une spécificité de github (et gitlab). Lorsque nous utiliserons git en ligne de commande, on mettra la sauvegarde directement à jour.
+
+### Github actions
+
+> TBD :
+>
+> - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>
+> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk>
+
+## Diff
+
+{% lien %}
+
+- [format diff](https://en.m.wikipedia.org/wiki/Diff)
+- Commande diff au terminal :
+  - [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8)
+  - [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk)
+
+{% endlien %}
+
+Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur [le problème de l'alignement de séquences](/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/){.interne}. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :
+
+{% lien %}
+
+- <https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a>
+- <https://ably.com/blog/practical-guide-to-diff-algorithms>
+
+{% endlien %}
+
+## Projet : gérer ses sources avec github
+
+Maintenant que l'on a un projet sur github, on peut le considérer comme une origine et continuer le développement chez soit.
 
 ### <span id="utilisation-desktop-github"></span> Github desktop
 
@@ -106,79 +158,46 @@ Il suffit d'aller sur cette page : <https://desktop.github.com/> pour téléchar
 
 {% endlien %}
 
-On va reprendre le projet précédent pour créer son projet chez soit ainsi que l'origin en utilisant l'application desktop.
+On va reprendre le projet précédent pour créer son projet chez soit ainsi que l'origin en utilisant l'application desktop. Ceci vous permettra de savoir comment :
+
+- faire un clone
+- notion de gestion distribuée
+- créer un nouveau projet
+- l'index aussi nommé _stage_
+- faire un rebase
 
 {% aller %}
 [Comment créer un projet avec l'application desktop](./projet-github-desktop){.interne}
 {% endaller %}
 
-Vous avez vu les principales qualités d'un logiciel de gestion de sources :
+### Authentification
 
-- faire un clone
-- notion de gestion distribuée
-- le stage
-- faire un rebase
+Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :
 
-## Gérer ses sources
+- via un web token
+- via une clé ssh
 
-> TBD noms : Git flow ? Github flow ? Feature branches ? Push to prod ?
-> 4. workflow :
->     1. github-flow : peut avoir plein de branches features en parallel mais une seule branche develop
->     2. git-flow (rigide et plein de branches) <https://leanpub.com/git-flow/read>
->     3. différences <https://www.youtube.com/watch?v=hG_P6IRAjNQ>
->     4. ci-cd extrême inverse <https://www.youtube.com/watch?v=v4Ijkq6Myfc> : beaucoup de tests automatisé pour vérifier bien que tout peut aller vite en prod. et être corrigé. La prod est le dernier endroit ou votre code est testé, certes, mais ça ne doit pas être le seul
->     5. dépend du projet et on s'adapte
->
->
-> TBD refaire
+#### Web token
 
-{% aller %}
-[Utiliser les bonnes pratiques lors d'un projet github](./bonnes-pratiques){.interne}
-{% endaller %}
+A priori se fait tout seul si vous utiliser l'application.
 
-Pour participer à un repo github/gitlab il y a quelques us et coutumes à respecter afin de permettre au mieux la relecture, l'ajout de fonctionnalités et la compréhension de chacun.
+> TBD à étoffer
 
-## Git
+#### Clés ssh
 
-> TBD expliquer porcelaine/plomberie
-> TBD un tag c'est un objet. Commit, tree ou blob.
-> TBD worktrees et stash
-> TBD utiliser switch et pas checkout pour passer de branches en branches (chekout pour les commits particulier: headless ?)
-> TBD : index = staging area.
-> TBD diff format et différents algos
+Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
 
-### Installation et configuration
+Commencez par créer une clé :
 
 {% aller %}
-[Configurer et initialiser ses projets git](./git-init){.interne}
+[créer et utiliser une clé ssh](/cours/système-et-réseau/ssh/){.interne}
 {% endaller %}
 
-### Porcelaine
+Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
 
-> - histoire ?
+## Outils
 
-> 5. ligne de commandes
->     1. projet avec ligne de commande
->     2. outils (lazygit, vscode)
->
-> Outils :
-
-> - lazygit : <https://github.com/jesseduffield/lazygit> <https://www.youtube.com/watch?v=Ihg37znaiBo>
-> - <https://www.git-tower.com/learn/git/faq/git-filter-repo>
-> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk>
-
-Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :
-
-- utiliser git avec votre éditeur de texte comme vscode
-- ou si vous voulez utiliser git en ligne de commande pour contrôler toutes vos opérations
-
-Il vous faudra installer le programme `git` en ligne de commande.
-
-{% info %}
-L'installation et la configuration de git n'est pas très technique. Cela vaut le coup de de le faire ne serait-ce que pour pouvoir utiliser les magnifiques plugins de vscode.
-{% endinfo %}
-
-#### Utilisation de git avec vscode
+### git avec vscode
 
 {% info "**Documentation**" %}
 <https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
@@ -191,25 +210,100 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 - de voir l'historique de modification d'un fichier avec l'extension [git-history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (cliquer droit sur un fichier puis `Git: view file history`)
 - ...
 
-### Plomberie
+### TUI
 
-> TBD ajouter à la partie comment faire en vrai :
+{% lien %}
+
+- lazy git : <https://www.youtube.com/watch?v=CPLdltN7wgE> pour git
+- gh-dash : <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
+
+{% endlien %}
+
+## Projet : gérer ses sources avec git
+
+{% lien %}
+
+- [Linus Torvalds a crée git en 10 jours](https://www.youtube.com/shorts/rK3IOMr6eSs)  (et le 11ème il s'est reposé)
+- [Une histoire de git en français](https://www.youtube.com/watch?v=LDy6Rv0kU1Q)
+
+{% endlien %}
+
+> TBD dire que c'est pour créer un repo sans github. Il faut donc que tout soit configuré chez soit (important car on doit savoir qui commit)
+>
+> TBD projet en ligne de commande.
+> TBD utiliser tous les usages (même add/reset -p)
+
+### Installation et configuration
+
+Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :
+
+- utiliser git avec votre éditeur de texte comme vscode
+- ou si vous voulez utiliser git en ligne de commande pour contrôler toutes vos opérations
+
+Il vous faudra installer le programme `git` en ligne de commande.
+
+{% info %}
+L'installation et la configuration de git n'est pas très technique. Cela vaut le coup de de le faire ne serait-ce que pour pouvoir utiliser les magnifiques plugins de vscode.
+{% endinfo %}
+
+{% aller %}
+[Configurer et initialiser ses projets git](./git-init){.interne}
+{% endaller %}
+
+### Projet
+
+> TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
+> TBD utiliser `git diff` <https://www.youtube.com/watch?v=F1van9nShjA> et ref : <https://git-scm.com/docs/git-diff>
+
+## Git plomberie
+
+> TBD expliquer porcelaine/plomberie
+> TBD un tag c'est un objet. Commit, tree ou blob.
+> TBD work-trees et stash
+> TBD utiliser switch et pas checkout pour passer de branches en branches (checkout pour les commits particulier: headless ?)
+> TBD : index = staging area.
+> TBD diff format et différents algos
+> TBD <https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things>
+
+> TBD reflog.
+> TBD git sha. Intro : <https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d> et <https://graphite.dev/guides/git-hash>. Mieux : <https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git>
+
 {% aller %}
 [Cours détaillé sur le fonctionnement de Git](./git){.interne}
 {% endaller %}
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.
 
+## Bibliographie
+
+### Cours
+
+- [Learning Git](https://github.com/gitlearningjourney/learning-git)
+- [Version control with git 3rd edition](https://www.amazon.fr/Version-Control-Git-Collaborative-Development/dp/1492091197)
+- [the book](https://git-scm.com/book/en/v2)
+
+### Références
+
+- <https://git-scm.com/>
+- <https://comprendre-git.com/fr/>
+
+### Misc
+
+- <https://learngitbranching.js.org/>
+- <https://tonyg.github.io/revctrl.org/index.html>
+- <https://ohshitgit.com/>
+- - [s'entraîner avec des commandes git](https://git-school.github.io/visualizing-git/)
+
 ## Histoire
 
->TBD histoire de la gestion des sources :
->
-> - <https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee>
-> - <https://blog.tarynmcmillan.com/a-history-of-version-control>
->
-> TBD : à étoffer et à mettre en perspective
+{% lien %}
 
-## TBD
+- <https://www.atikteam.com/fr/blog/page/Gestion-de-sources-centralisee-vs-decentralisee>
+- <https://blog.tarynmcmillan.com/a-history-of-version-control>
+
+{% endlien %}
+
+<!-- TBD
 
 > - git rebase avec des merges : <https://www.jnielson.com/git-rebase-with-merges>
 > - git fetch. qu'est ce qui est fetch ? Tout ou juste des branches <https://stackoverflow.com/a/74355550>
@@ -217,7 +311,7 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 > - mettre la doc de chaque commande avec la description de git en ligne de commande dans la partie plomberie et porcelaine.
 > - lister tous tous les commit de la base : <https://stackoverflow.com/a/4787030>
 > - rebase les différentes commandes ?
-> - jouer avec le DAG des commits
+>
 >   - detached head : <https://www.cloudbees.com/blog/git-detached-head>
 >   - tous les commits : `git reflog` même ceux pas dans une branche (detached head). On peut les retrouver puis cherry pick <https://stackoverflow.com/questions/9984223/what-happens-to-git-commits-created-in-a-detached-head-state>
 >   - commit non attaché à une branche (dangling commits): `git fsck --lost-found`
@@ -225,26 +319,24 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 >
 > - remote :
 >   - branches.
->   - ssh / https  
+>   - ssh / https
 >   - fetch et push différents : <https://stackoverflow.com/questions/31747072/will-remote-url-for-fetch-and-push-be-different>
 >   - pas forcément github ou un autre provider. Un autre ordi fait l'affaire, même juste le sien : <https://www.reddit.com/r/git/comments/5giehg/is_it_possible_to_have_a_remote_thats_on_the_same/>
 > - merge :
->   - alignement, les algorithmes : dire que c'est comme l'alignement de séquence mais avec des lignes (ref)
 >   - meilleur ancêtre commun <https://git-scm.com/docs/git-merge-base> <https://stackoverflow.com/a/73171967>
-
->   - conflits : <https://githowto.com/resolving_conflicts>
->   - 3-way merge : <https://tonyg.github.io/revctrl.org/ThreeWayMerge.html>
+> - conflits : <https://githowto.com/resolving_conflicts>
+> - 3-way merge : <https://tonyg.github.io/revctrl.org/ThreeWayMerge.html>
 > - réécrire l'histoire : <https://www.atlassian.com/git/tutorials/rewriting-history>
 > - pour aller plus loin :
 >   - squash commit ?
->   - stash : <https://www.atlassian.com/git/tutorials/saving-changes/git-stash>,  <https://www.youtube.com/watch?v=BSLzA8oCT7g> pour les mdp, etc
+>   - stash : <https://www.atlassian.com/git/tutorials/saving-changes/git-stash>, <https://www.youtube.com/watch?v=BSLzA8oCT7g> pour les mdp, etc
 >   - worktree <https://www.youtube.com/watch?v=ntM7utSjeVU>
 >   - sous-projet
 >   - git vscode
 >   - bisect : <https://www.youtube.com/watch?v=Q-kqm0AgJZ8>
 >   - cherry pick : <https://www.youtube.com/watch?v=i657Bg_HAWI> (attention : <https://www.youtube.com/watch?v=WPCxtFkLa7g>)
 >
-> TBD :
+>
 > - pull --rebase sinon merge à repetition : <https://www.youtube.com/watch?v=xN1-2p06Urc> ; <https://www.youtube.com/watch?v=DkWDHzmMvyg>
 > - merge conflict : <https://www.youtube.com/watch?v=DloR0BOGNU0>
 > - cherry-pick attention ! : <https://stackoverflow.com/questions/880957/pull-all-commits-from-a-branch-push-specified-commits-to-another/881014#881014>
@@ -255,24 +347,19 @@ Cette partie du cours s'adresse plus particulièrement aux informaticiens voulan
 > - internal objects: <https://shafiul.github.io/gitbook/1_the_git_object_model.html> <https://git-scm.com/book/en/v2/Git-Internals-Git-Objects>. Faire le code en python et pas en ruby. <https://praneethreddybilakanti.medium.com/7-git-internals-548f8707436a>
 > - git tag object avec du code en python <https://stackoverflow.com/questions/10986615/what-is-the-format-of-a-git-tag-object-and-how-to-calculate-its-sha>
 > - git index format : <https://git-scm.com/docs/index-format> ; `git ls-files --stage` (attention: different de staged ); `git diff-index HEAD` et filetype <https://unix.stackexchange.com/questions/450480/file-permission-with-six-octal-digits-in-git-what-does-it-mean>. Que quelques possibilités. Donc peut-être juste les lister.
-> - diff <https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a> et <https://ably.com/blog/practical-guide-to-diff-algorithms>, <https://en.m.wikipedia.org/wiki/Diff> et <https://git-scm.com/docs/git-diff>
-> - commit jamais vraiment perdu <https://andrewallison.medium.com/oops-i-lost-my-git-commits-heres-how-to-bring-them-back-from-the-dead-90b1a62f63d1>. Faire test avec  rebase et on les retrouve.
+> - commit jamais vraiment perdu <https://andrewallison.medium.com/oops-i-lost-my-git-commits-heres-how-to-bring-them-back-from-the-dead-90b1a62f63d1>. Faire test avec rebase et on les retrouve.
 >
 > biblio :
 >
 > - ~ et ^ pour les ancêtres <https://stackoverflow.com/questions/2221658/what-is-the-difference-between-head-and-head-in-git>
-> - <https://github.com/gitlearningjourney/learning-git>
+>
 > - cours (BIEN): <https://www.youtube.com/watch?v=rH3zE7VlIMs>, <https://www.boot.dev/teachers/the-primeagen>
-> internals (TROP BIEN le debut puis devient trop chiant) : <https://www.youtube.com/watch?v=fWMKue-WBok&list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7>
+>   internals (TROP BIEN le debut puis devient trop chiant) : <https://www.youtube.com/watch?v=fWMKue-WBok&list=PL9lx0DXCC4BNUby5H58y6s2TQVLadV8v7>
 > - <https://womanonrails.com/git-rebase-onto>
 > - <https://jwiegley.github.io/git-from-the-bottom-up/>
 > - <https://tutorial.gitlabpages.inria.fr/git/>
 > - <https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain>
 > - créer son propre sha : <https://git-scm.com/book/en/v2/Git-Internals-Git-Objects> <https://gist.github.com/masak/2415865> et <https://stackoverflow.com/questions/552659/how-to-assign-a-git-sha1s-to-a-file-without-git/552725#552725>
-> - <https://ohshitgit.com/>
 > - <https://gitirc.eu/gitrevisions.html>
-> - `git diff` <https://www.youtube.com/watch?v=F1van9nShjA>
-> - diff / patch : fr <https://www.youtube.com/watch?v=0JZCah5w7I8> en (plux concis) <https://www.youtube.com/watch?v=-CiLU9-RAGk>
 > - interactive stage <https://www.youtube.com/watch?v=UJ5fpaeZWsI> <https://www.youtube.com/watch?v=8st1NhaKDCA>
-> - <https://learngitbranching.js.org/>
-> - <https://git-school.github.io/visualizing-git/>
+ -->

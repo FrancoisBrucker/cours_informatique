@@ -70,6 +70,8 @@ Nous ne l'utiliserons pas ici, mais je vous invite à lire [sa documentation](ht
 
 Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout moment savoir qui a fait quoi sur le projet. Il est donc impératif que vos données personnelles soient à jour.
 
+> TBD dire où ils sont sur son disque dur `~/.gitconfig` et montrer le contenu du fichier.
+
 ### Info personnelles
 
 Renseigner ces infos de façon globale pour tout projet (vous pourrez changer ces infos pour chaque projet, mais mettez des infos corrects par défaut) :
@@ -106,7 +108,7 @@ Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasés par d
 
 Pour être cohérent avec github, on va dire que tout nouveau projet commence avec la branche `main`.
 
-Par défaut c'est `master` (et ça [fait des histoires](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main)).
+Par défaut c'est `master` (et ça [fait des histoires](https://github.com/github/renaming?tab=readme-ov-file)).
 
 {% faire "**Dans un terminal, tapez la commande**" %}
 

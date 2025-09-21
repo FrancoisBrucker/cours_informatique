@@ -232,12 +232,11 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 ## Partie III : gestion des sources
 
 <!-- > TBD test
-1. mantra
-2. ? tests
-3. un UML
+1. mise en oeuvre des tests unitaires
+2. intérêt des tests unitaire dans le développement d'un projet
+3. intérêt de la programmation objet dans le développement d'un projet
 
  -->
-
 
 1. principes
 2. github, git app

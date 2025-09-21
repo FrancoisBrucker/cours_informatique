@@ -40,7 +40,7 @@ Chaque **_commit_** est associé à une **_branche_** (ici `main`) et est obliga
 
 {% endnote %}
 {% info %}
-Voir [ce doc](https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d) pour voir comment est calculé le numéro du commit.
+Voir [ce doc](https://www.designveloper.com/blog/hash-values-sha-1-in-git/) pour voir comment git associe chaque commit à un sha pour le retrouver.
 {% endinfo %}
 
 ## Faire des commits
@@ -145,20 +145,18 @@ Il faut amener les modifications de la branche `feature` dans la branche `main` 
 La situation actuelle est celle-ci :
 
 ```text
-
 main : A -> B -> C -> F
-                   \
-feature :            -> D -> E
+                  \
+feature :          -> D -> E
 
 ```
 
 Et nous voulons arriver à ceci :
 
 ```text
-
-main : A -> B -> C -> F ---------> G
-                   \          /
-feature :            -> D -> E
+main : A -> B -> C -> F ----> G
+                  \          /
+feature :           -> D -> E
 
 ```
 

@@ -10,11 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD plan
+Examinons les besoins et les cas d'usage que devrait couvrir un SCM. De ces usages et besoins vont découler une architecture et des protocoles à mettre en place.
 
 ## Working directory
 
-Supposons que notre projet soit de travailler sur un ensemble de documents (_eg_ du code) regroupés au sein d'un répertoire de travail (_working directory_) dont le contenu évolue au cours du temps :
+Supposons que notre projet soit de travailler sur un ensemble de documents (_e.g._ du code) regroupés au sein d'un répertoire de travail (_working directory_) dont le contenu évolue au cours du temps :
 
 ![working directory](working_directory.png)
 
