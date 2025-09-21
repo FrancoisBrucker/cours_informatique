@@ -254,7 +254,8 @@ Ce projet doit avoir :
 
 1. [un fichier `.gitignore`](https://docs.github.com/fr/get-started/git-basics/ignoring-files) (en particulier pour ne pas avoir l'environnement virtuel)
 2. un fichier readme pour expliquer comment exécuter votre jeu
-3. au moins un commit par item avec un `?` à faire.
+3. un fichier `requirement.txt` pour vos dépendances (il doit au moins y avoir `pytest`)
+4. au moins un commit par item avec un `?` à faire.
 
 {% endfaire %}
 {% attention %}
