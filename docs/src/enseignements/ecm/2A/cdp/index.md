@@ -248,7 +248,12 @@ Projet à rendre :
 
 {% faire "**Évaluation finale**"%}
 
-Rendez [sur moodle](https://moodle.centrale-med.fr/mod/assign/view.php?id=53201) un fichier ne contenant qu'**un unique lien** vers un repo github public contenant [le projet bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/).
+Faites [le projet bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/) en utilisant tout ce que l'on a vu :
+
+- un environnement virtuel,
+- des tests,
+- un SCM,
+- des commits réguliers.
 
 Ce projet doit avoir :
 
@@ -259,7 +264,7 @@ Ce projet doit avoir :
 
 {% endfaire %}
 {% attention %}
-À rendre pour le 17/11
+À rendre pour le 17/11 sur [moodle](https://moodle.centrale-med.fr/mod/assign/view.php?id=53201) **un unique lien** vers un repo de votre github public.
 {% endattention %}
 
 <!-- > TBD note avec commit pertinent sur un petit projet
