@@ -259,7 +259,7 @@ Ce projet doit avoir :
 
 {% endfaire %}
 {% attention %}
-À rendre pour le 17/11.
+À rendre pour le 17/11
 {% endattention %}
 
 <!-- > TBD note avec commit pertinent sur un petit projet
