@@ -447,6 +447,12 @@ $$
 <li>n &gt; 3 littéraux (x1 ou ... xn) -&gt; (x1 ou ... xn-2 ou z) et (non z ou xn-1 ou xn)</li>
 </ul>
 <p>La transformation est bien linéaire. et résoudre SAT implique 3-sat car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT alors on en déduit SAT car dans les méta clauses, il y a forcément un des litéraux initiaux qui est vrai.</p>
+<h3>Variante</h3>
+<blockquote>
+<p>TBD <a href="https://en.wikipedia.org/wiki/Not-all-equal_3-satisfiability">https://en.wikipedia.org/wiki/Not-all-equal_3-satisfiability</a>
+TBD montrer 3-SAT ≤ NAE-SAT (cf <a href="https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf">https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf</a>)
+TBD on va en avoir besoin pour montrer que max cut est NP-complet.</p>
+</blockquote>
 <h2>Et 2-SAT ?</h2>
 <blockquote>
 <p>Réduction ne fonctionne pas. Autre problème</p>

@@ -141,8 +141,8 @@
 
 <p>Pour ne pas avoir à toujours rappeler l'ensemble des sommets et des arêtes d'une graphe, on utilisera parfois la notation :</p>
 <ul>
-<li>$V(G)$ pour noter l'ensemble des sommets d'un multi-graphe,</li>
-<li>$E(G)$ pour noter l'ensemble des arcs d'un multi-graphe.</li>
+<li>$V(G)$ et $v(G)$ pour noter l'ensemble des sommets et leur nombre d'un multi-graphe $G$,</li>
+<li>$E(G)$ et $e(G)$ pour noter l'ensemble des arcs et leur nombre d'un multi-graphe $G$.</li>
 </ul>
 <h3>Exemple</h3>
 <p>Le multi-graphe $G = (V, E)$ avec :</p>
@@ -537,6 +537,14 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <h2>Parties de graphes</h2>
 <p>On a parfois envie de découper un graphe pour en étudier une partie (s'il est trop gros ou que certains sommet et/ou arêtes ne nous intéresse pas) ou au contraire de rabouter plusieurs graphes entres eux pour en former un plus gros.</p>
 <h3>Découpage</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Sous-graphe">Définitions de Wikipédia</a></p>
+</div></div>
+
 <p>Il existe deux façons canonique de découper un graphe, supprimer soit des sommets, soit des arêtes :</p>
 <div id="definition-sous-graphe"></div>
 <div id="definition-graphe-partiel"></div>
@@ -547,22 +555,12 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définitions</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté.</p>
+<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq V' \times V' \cap E$, alors $\left.G\right|_{V'} = (V', E')$ est un <strong><em>sous-graphe</em></strong> de $G$.</p>
+<p>Un sous-graphe admet deux cas particuliers :</p>
 <ul>
-<li>si $V' \subsetneq V$, $\left.G\right|_{V'} = (V', V' \times V' \cap E)$ est un <strong>sous-graphe de $G$ induit par $V'$</strong>.</li>
-<li>si $E' \subsetneq E$, $\left.G\right|_{E'} = (V, E')$ est un <strong>graphe partiel de $G$ induit par $V'$</strong>.</li>
+<li>si $V' = V$ alors  $G'$ est dit être un <strong><em>sous-graphe couvrant</em></strong> (ou un <strong><em>graphe partiel</em></strong>) de $G$</li>
+<li>si $E' = V' \times V' \cap E$ alors $G'$ est dit être un <strong><em>sous-graphe induit</em></strong> de $G$</li>
 </ul>
-</div></div>
-
-<p>Et si on a besoin de supprimer les deux :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un <strong>sous-graphe partiel de $G$ induit par $V'$ et $E'$</strong>.</p>
 </div></div>
 
 <h3><span id="composition-graphes"></span>Composition de graphes</h3>
