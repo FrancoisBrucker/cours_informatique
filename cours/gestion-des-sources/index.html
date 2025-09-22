@@ -182,120 +182,27 @@
 <p><a href="principes" class="interne">Principes et usages d'un SCM</a></p>
 </div></div>
 
-<h2>Gérer ses sources au quotidien</h2>
-<h3>Identité</h3>
-<p>Pour que le processus de gestion des sources soit efficace il est nécessaire que tout commit soit bien :</p>
-<ul>
-<li>identifié : l'auteur du commit doit pouvoir être retrouvé</li>
-<li>documenté : le message accompagnant le commit doit être descriptif.</li>
-</ul>
-<h4>Profil</h4>
-<p>Ayez votre profil à jour :</p>
-<ul>
-<li>nom et prénom ou pseudo identifiable</li>
-<li>adresse mail à jour</li>
-</ul>
-<h4>Message de commits</h4>
-<p>Utilisez un éditeur de texte que vous maîtrisez pour éditer le message de commit (par défaut c'est <a href="https://fr.wikipedia.org/wiki/Vi">vi</a> qui n'est pas forcément votre éditeur de prédilection). Un message de commit contient forcément <strong>1 ligne</strong> décrivant le commit (on verra dans la partie suivante des méthodes pour les écrire). Puis, si nécessaire, une description plus long (souvent inutile).</p>
-<h3>Fichier non suivis</h3>
-<p>Un dossier de projet va contenir de nombreux fichiers que l'on ne veut pas mettre dans la sauvegarde :</p>
-<ul>
-<li>les fichiers relatif à votre éditeur de texte (comme les fichiers <code>.vscode</code> où vscode range ses préférences),</li>
-<li>les environnements virtuels python (tout le dossier <code>.venv</code> n'est <strong>jamais</strong> à sauvegarder)</li>
-<li>la poubelle du Macintosh (le dossier <code>.DS_Store</code> par exemple)</li>
-<li>...</li>
-</ul>
-<p>Pour cela, le système git utilise un fichier nommé <code>.gitignore</code> qui est placé à la racine de votre projet et qui contient la liste des dossiers et fichiers <strong>à ne pas prendre en compte</strong>.</p>
-<p>Accédez aux liens suivants pour voir comment tout ça fonctionne :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://docs.github.com/fr/get-started/git-basics/ignoring-files">fichier .gitignore avec github</a></li>
-<li><a href="https://www.youtube.com/watch?v=gkzBzBomYyI">tuto en français</a></li>
-</ul>
-</div></div>
-
-<h3>Bonnes pratiques</h3>
-<p>Bonnes pratiques pour tous les jours :</p>
+<h2>Usage</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="bonnes-pratiques" class="interne">Gestion des sources au quotidien</a></p>
+<ol>
+<li><a href="usage-quotidien" class="interne">Configuration pour un quotidien</a></li>
+<li><a href="bonnes-pratiques" class="interne">Bonnes pratiques</a></li>
+</ol>
 </div></div>
 
 <h2>Github</h2>
-<p>Pour pratiquer la gestion des sources, nous allons utiliser <a href="https://github.com/">https://github.com/</a> comme sauvegarde origine. Le site fonctionne avec logiciel de gestion de sources <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Il en existe d'autres, comme <a href="https://gitlab.com/">https://gitlab.com/</a> par exemple.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'<a href="https://docs.github.com/en/get-started">aide de github</a> est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.</p>
-</div></div>
-
-<h3><span id="compte-github"></span> Création du compte github</h3>
-<ol>
-<li>créez votre compte avec github
-<ul>
-<li>On crée ici votre compte github <em>pro</em>, ne mettez pas de bêtises</li>
-<li>Utilisez une adresse mail pérenne (genre votre adresse pro gmail ou votre adresse ecm)</li>
-</ul>
-</li>
-<li>modifier son profile :
-<ol>
-<li>Allez dans la modification du profile :
-<ul>
-<li>en haut à droite de la fenêtre puis <em>&quot;Your profile&quot;</em></li>
-<li>ou <code>https://github.com/&lt;votre login&gt;</code> en remplaçant <code>&lt;votre login&gt;</code> par votre login.</li>
-</ul>
-</li>
-<li>Il <strong>faut</strong> mettre de bonnes info car lorsque vous modifiez le code vous êtes responsable de ce que vous modifiez. Il faut donc :
-<ul>
-<li>savoir qui a modifier le code et pourvoir le retrouver</li>
-<li>votre compte github est aussi votre book. Il permet de savoir ce que vous avez fait.</li>
-<li>Mettez donc au moins :
-<ul>
-<li>un vrai nom</li>
-<li>une vrai photo (rechargez la page pour avoir la nouvelle photo)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h3><span id="tuto-github"></span> Utilisation de github</h3>
-<p>On va utiliser l'interface de github pour mettre en œuvre les principales fonctionnalités d'un système de gestion des sources :</p>
-<ul>
-<li>faire des commit</li>
-<li>gérer des branches</li>
-<li>fusionner des branches en résolvant des conflits</li>
-<li>voir l'historique du projet</li>
-<li>comment ajouter des membres à un projet</li>
-</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="projet-github" class="interne">Comment créer un projet uniquement avec github</a></p>
+<p><a href="github" class="interne">Utiliser github</a></p>
 </div></div>
 
-<h3>Pull requests</h3>
-<p>Por mettre à jour notre projet, nous avons effectué <a href="bonnes-pratiques/#pull-request" class="interne">une <strong><em>pull request</em></strong></a>. Cette façon d'ajouter des commits à la sauvegarde est une spécificité de github (et gitlab). Lorsque nous utiliserons git en ligne de commande, on mettra la sauvegarde directement à jour.</p>
-<h3>Github actions</h3>
-<blockquote>
-<p>TBD :</p>
-<ul>
-<li>permet de mettre en place du CI/CD : <a href="https://www.youtube.com/watch?v=scEDHsr3APg">https://www.youtube.com/watch?v=scEDHsr3APg</a></li>
-<li>github actions <a href="https://www.youtube.com/watch?v=p3W2XCD3smk">https://www.youtube.com/watch?v=p3W2XCD3smk</a></li>
-</ul>
-</blockquote>
 <h2>Diff</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
