@@ -19,6 +19,9 @@ Une semaine pour comprendre le fonctionnement de python et l'utiliser pour déve
 
 <!-- TBD 
 
+
+A refaire en prenant le plan de la 2A et de la 3A. Puis homogénéiser le tout pour faire une progression sur le système (là et comment sera exécuté son code), l'algorithme et le projet.
+
 Utiliser : <https://pythonds.linogaliana.fr/> ?
 refaire python du début.
 1. interpréteur en ligne

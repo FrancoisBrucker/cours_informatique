@@ -55,16 +55,7 @@ voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y 
 ## Note
 
 - 2 tests de 15min sur papier les 2ème et 3ème lundi (8h-8h15)
-- un projet à rendre sur github la dernière semaine
-
-{% aller %}
-[SUjet du projet : la bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/){.interne}
-{% endaller %}
-{% attention %}
-Le projet est à rendre sur votre compte github. Il faudra m'envoyer l'adresse de votre projet.
-
-De plus, il faudra qu'il y qit quelques commit tout au long de la construction du parojet et pas juste un commit final...
-{% endattention %}
+- [un projet à rendre](./#projet-final){.interne} sur github la dernière semaine
 
 ## Partie I : le système
 
@@ -244,7 +235,9 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 
 {% endaller %}
 
-Projet à rendre :
+## <span id="projet-final"></span>Projet final
+
+À rendre :
 
 {% faire "**Évaluation finale**"%}
 
