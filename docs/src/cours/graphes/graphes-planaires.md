@@ -10,6 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD 2.2 sur le nombre de croisements <https://fr.wikipedia.org/wiki/In%C3%A9galit%C3%A9_arithm%C3%A9tico-g%C3%A9om%C3%A9trique>
 > TBD : Il sont aussi extrêmement utilisés pour les mesh 3D. C'est une surface sans trous.
 
 {% lien %}

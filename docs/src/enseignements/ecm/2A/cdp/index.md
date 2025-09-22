@@ -246,13 +246,13 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 
 Projet à rendre :
 
-{% faire %}
+{% faire "**Évaluation finale**"%}
 
-Rendez un fichier ne contenant qu'**un unique lien** vers un repo github public contenant [le projet bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/).
+Rendez [sur moodle](https://moodle.centrale-med.fr/mod/assign/view.php?id=53201) un fichier ne contenant qu'**un unique lien** vers un repo github public contenant [le projet bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/).
 
 Ce projet doit avoir :
 
-1. [un fichier `.gitignore`](https://docs.github.com/fr/get-started/git-basics/ignoring-files) (en particulier pour ne pas avoir l'environnement virtuel)
+1. un fichier `.gitignore`
 2. un fichier readme pour expliquer comment exécuter votre jeu
 3. un fichier `requirement.txt` pour vos dépendances (il doit au moins y avoir `pytest`)
 4. au moins un commit par item avec un `?` à faire.

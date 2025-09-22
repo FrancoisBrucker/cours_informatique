@@ -377,4 +377,6 @@ En théorie des graphe, on s'intéresse beaucoup aux nombres $R(p, p)$ dont on c
 
 Par exemple la majoration précédente donne $R(5, 5) = \binom{8}{4} = 210$ alors que le meilleur encadrement connu à ce jour est $43 \leq R(5, 5) \leq 48$ (sa valeur exacte est cependant inconnue, même si on pense fortement que ce soit 43)
 
-> TBD Méthode probabiliste <https://www.youtube.com/watch?v=4weMmFZSBtI>
+> TBD preuve avec la méthode probabiliste <https://www.youtube.com/watch?v=dmOPl9RtG7o&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=2>
+> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
+> TBD en faire un td avec calculs et code ?

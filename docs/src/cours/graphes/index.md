@@ -210,7 +210,8 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 > mes amis ont plus d'amis que moi
 > Beaucoup de graphes ne sont pas parfait en prenant H = C5 : <https://math.stackexchange.com/questions/4729419/let-h-be-a-graph-prove-that-almost-every-graph-g-in-mathcalg-n-p-has>
 
->probabilistic method : hamiltonian path <https://www.youtube.com/watch?v=feEXMWBQGZk&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=5>
+>probabilistic method : hamiltonian path <https://www.youtube.com/watch?v=feEXMWBQGZk&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=5> et lire <https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf>
+
 ## Algorithmes randomisés
 
 > TBD Partie 3, après algo random et hasard en algorithmie.
