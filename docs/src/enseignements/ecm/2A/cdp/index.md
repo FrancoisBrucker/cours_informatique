@@ -229,11 +229,28 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 
  -->
 
+### Cours
+
 {% aller %}
 
-[Gestion des sources](/cours/gestion-des-sources/){.interne} (jusqu'à la partie outils)
+[Gestion des sources](/cours/gestion-des-sources/){.interne} (jusqu'à la partie outils) :
 
+1. [principes](/cours/gestion-des-sources/principes){.interne}
+2. usage : 
+   1. [configuration](/cours/gestion-des-sources/usage-quotidien/){.interne}
+   2. [bonnes pratiques](/cours/gestion-des-sources/bonnes-pratiques/){.interne}
+   
 {% endaller %}
+
+### TD
+
+{% aller %}
+
+1. [Découverte de github](/cours/gestion-des-sources/github/){.interne}
+2. [SCM avec Github](/cours/gestion-des-sources/github-SCM/projet-github-desktop/){.interne}
+   
+{% endaller %}
+
 
 ## <span id="projet-final"></span>Projet final
 

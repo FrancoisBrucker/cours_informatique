@@ -1,10 +1,6 @@
 ---
 layout: layout/post.njk
-title: Projet github avec l'application desktop
-
-eleventyNavigation:
-  prerequis:
-    - "/cours/coder-et-développer/ordinateur-développement/fichiers-navigation/"
+title: SCM avec l'application desktop
 
 eleventyComputed:
   eleventyNavigation:
