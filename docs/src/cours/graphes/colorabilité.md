@@ -403,3 +403,162 @@ Notez que la preuve donne un algo pour edge colorier avec delta+1 couleurs.
 
 > TBD fun fact. Graphes réguliers avec un nombre impair de sommet sont de classe 2.
 > TBD la NP-complétude se niche donc uniquement sur les graphes 3-réguliers avec un nombre pair de sommets
+
+## <span id="k-parti"></span>Graphes $k$-partis
+
+> TBD refaire avec des couleurs.
+> 
+Une généralisation possible des graphes biparti est d'augmenter le nombre de stables :
+
+{% note "**Définition**" %}
+Un graphe est **_$k$-parti_** s'il existe une partition $V_1, \dots, V_k$ de $V$ en $k\geq 1$ [stables](../structure/#definition-stable){.interne}.
+
+{% endnote %}
+
+Il est clair qu'un graphe $k$-parti est $k'$-parti pour tout $k'\geq k$. La réciproque n'est pas vraie puisque qu'u cycle à 5 éléments est 3-parti mais pas biparti.
+
+Le problème de cette généralisation est que le problème de reconnaissance devient NP-complet pour $k\geq 3$.
+
+{% note "**Problème**" %}
+
+- **Nom** : Reconnaissance d'un graphe $k$-parti (`Rec-k-parti`)
+- **Entrée** : un graphe $G$
+- **Sortie** : Oui si $G$ est $k$-parti, Non sinon.
+
+{% endnote %}
+
+On remarque que $k$ fait parti du problème, ce n'est pas une entrée. Il existe donc un problème de reconnaissance différent pour chaque $k$. Il est clair qu'ils sont tous dans NP :
+
+{% note "**Proposition**" %}
+
+Le problème de la reconnaissance d'un graphe $k$-parti est dans NP pour tout $k\geq 1$
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Si l'on se donne une solution possible sous la forme d'une partition en $k$ classe de l'ensemble des sommets, il est facile de vérifier si ce sont des stables.
+
+{% enddetails %}
+
+On a vu précédemment que le problème de reconnaissance est polynomial (et même linéaire) pour les graphes biparti et pour les graphes 1-parti (c'est le graphe discret). De plus, vous aller le montrer, on peu facilement réduire la reconnaissance d'un graphe $k$-parti à un cas particulier de la reconnaissance d'un graphe $(k+1)$-parti :
+
+{% exercice %}
+Montrez que pour tout $k\geq 1$ on a : `Rec-k-parti` $\leq$ `Rec-(k+1)-parti`.
+{% endexercice %}
+{% details "solution" %}
+
+Soit $G=(V, E)$ dont on cherche à savoir s'il est $k$-parti. Soit alors $G'=(V \cup \\{x\\}, E \cup \\{xy \vert y\in V})$. On a clairement (le seul stable contenant $x$ c'est lui-même) :
+
+- $G$ est $k$-parti si et seulement si $G'$ est $(k+1)-parti
+- les stables de $G$ sont les stables de $G'$ privé du stable contenant uniquement $x$.
+
+{% enddetails %}
+
+Pour terminer, il nous reste à montrer que `Rec-3-parti` est NP-complet :
+
+<span id="Rec-3-parti-NPC"></span>
+{% note "**Proposition**" %}
+
+Le problème de la reconnaissance d'un graphe $3$-parti est NP-complet.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+On part de 3-SAT. Soient :
+
+- $(x_i)_{1\leq i \leq n}$ les $n$ variables d'une instance de 3-SAT
+- $c_j = l_j^1 \lor l_j^2 \lor l_j^3$  pour $1\leq j \leq m$ les $m$ clauses formés des littéraux $l_j^k \in \\{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\\}$ pour $1\leq k \leq 3$ et $1\leq j \leq m$
+- $C = \land_{j} c_j$ la conjonction de clauses.
+
+On va associer à tout ceci, de façon polynomiale, un graphe qui sera 3-parti si et seulement si la conjonction de clause $C$ est satisfiable.
+
+On commence par créer un graphe permettant de rendre compte de la véracité des variables : $G_1 = (V_1 \cup V_2, E)$ où :
+
+- $V_1 = \\{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\\}$
+- $V_2 = \\{ V, F, ?\\}$
+- $E = \\{\\{V, ?\\}, \\{F, ?\\}, \\{V, F\\} \\}\cup \\{\\{x_i, ?\\} \vert 1\leq i \leq n \\} \cup \\{\\{\overline{x_i}, ?\\} \vert 1\leq i \leq n \\}$
+
+![NPC-1](NPC-1.png)
+
+Le graphe $G_1$ est clairement 3-parti avec :
+
+- les 3 sommets $V$, $F$ et $?$ dans 3 stables différents,
+- les sommets $x_i$ et $\overline{x_i}$ sont dans le stable ne contenant pas $?$,
+- si $x_i$ est dans le stable contenant $V$ alors $\overline{x_i}$ est dans le stable contenant $F$ et réciproquement pour tout $1\leq i \leq n$.
+
+Il faut maintenant ajouter à ce graphes les clauses qui vont permettre de placer des valeurs de vérité aux variables via des stables (le stable de V ou le stable de F). Soit alors le graphe $C_j = (V'_1 \cup V_2 \cup V_j, E_j)$ tel que :
+
+- $V_j = \\{a_j, b_j, c_j, d_j, e_j \\}$
+- $V'_1 = \\{l^1_j, l^2_j, l^3_j \\} \subseteq V_1$
+- $E_j$ correspondant au graphe ci-dessous
+
+![NPC-1](NPC-2.png)
+
+On remarque que les graphes $C_j$ sont 3-partis et que tous leurs stables sont tels que $l^1_j$, $l^2_j$ et $l^3_j$ ne sont pas tous les 3 dans la classe de $F$.
+
+On en conclut donc que le graphe $G = (V_1 \cup V_2 \cup (\cup_j V_j), E \cup (\cup_j E_j))$ est triparti si et seulement si la conjonction de clause $C$ est satisfiable.
+
+{% enddetails %}
+
+La réduction de la preuve de la proposition précédente est plus complexe que toutes celles que l'on a fait jusqu'à présent, [Le gadget utilisé](https://fr.wikipedia.org/wiki/Gadget_(informatique)) n'étant pas trivial. Montrons ce qu'il donne sur [notre exemple fil rouge des réduction depuis 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple){.interne} :
+
+- $G_1$ : ![ex G1](npc-ex-g1.png)
+- $C_1$ : ![ex C1](npc-ex-c1.png)
+- $C_2$ : ![ex C2](npc-ex-c2.png)
+- $C_3$ : ![ex C3](npc-ex-c3.png)
+- $C_4$ : ![ex C4](npc-ex-c4.png)
+
+Ce qui donne le graphe final :
+
+![ex G](npc-ex-g.png)
+
+Ce graphe est tripartite (on a associé une couleur à chaque stable) :
+
+![ex G 3-stable](npc-ex-G-colorie.png)
+
+On voit que, comme pour le problème SAT, le problème est simple pour 1 et 2 mais NP-complet à partir de 3.
+
+## Graphes $k$-partis complets
+
+On en a parfois besoin, donc autant les définir ici :
+
+{% note "**Définition**" %}
+
+On appelle **_graphe $k$-parti complet_** le graphe Le graphe $K_{p_1,\dots, p_k} = (\cup_{i} V_{p_i}, \\{uv \vert u\in V_{p_i}, v\in V_{p_j}, i\neq j\\})$
+{% endnote %}
+
+Pour voir quelques graphes tri-partis complets, vous pouvez jeter un coup d'oeil à la page suivante :
+
+{% info %}
+<https://mathworld.wolfram.com/CompleteTripartiteGraph.html>
+{% endinfo %}
+
+Terminons par un petit exercice pour appliquer tout ça :
+
+{% exercice %}
+Trouver toutes les valeurs entières de a, b, c telles que $0 < a ≤ b ≤ c$ et que le graphe 3-parti complet $K_{a,b,c}$ possède :
+
+- [un cycle eulérien](../parcours-eulériens/#definition-cycle-eulerien){.interne}.
+
+- [un chemin eulérien](../parcours-eulériens/#definition-chemin-eulerien){.interne}
+{% endexercice %}
+{% details "solution" %}
+
+Soient $A$, $B$ et $C$ les 3 stables tels que $\vert A\vert = a$, $\vert B\vert = b$ et $\vert C\vert = c$. On a :
+
+- les a sommets de $A$ ont pour degré $b+c$,
+- les b sommets de $B$ ont pour degré $a+c$,
+- les c sommets de $C$ ont pour degré $a+b$.
+
+Pour que le graphe admette un cycle eulérien, il faut que tout sommet soit de degré pair, ce qui n'est possible que si $a$, $b$ et $c$ sont soit tous pair soit tous impairs.
+
+Pour que le graphe admette un chemin eulérien, il faut que tous les sommets soient de degré paires sauf 2. Comme tous les sommets d'un même stable ont même degré, on a deux cas : soit $a=b=1$ et $c$ pair, soit $a=2$ et il faut alors que :
+
+- $b+c$ soit impair,
+- $2+c$ soit pair,
+- $2+b$  soit pair.
+
+Ce qui est impossible.
+
+Les seuls graphes tripartis complets admettant un chemin eulériens sont donc les graphes $K_{1,1,2p}$
+{% enddetails %}

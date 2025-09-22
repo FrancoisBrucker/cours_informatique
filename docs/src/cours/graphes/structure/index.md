@@ -40,8 +40,8 @@ Notez que la définition précédente s'étant sans problème aux ensemble infin
 
 Pour ne pas avoir à toujours rappeler l'ensemble des sommets et des arêtes d'une graphe, on utilisera parfois la notation :
 
-- $V(G)$ pour noter l'ensemble des sommets d'un multi-graphe,
-- $E(G)$ pour noter l'ensemble des arcs d'un multi-graphe.
+- $V(G)$ et $v(G)$ pour noter l'ensemble des sommets et leur nombre d'un multi-graphe $G$,
+- $E(G)$ et $e(G)$ pour noter l'ensemble des arcs et leur nombre d'un multi-graphe $G$.
 
 ### Exemple
 
@@ -361,22 +361,22 @@ On a parfois envie de découper un graphe pour en étudier une partie (s'il est 
 
 ### Découpage
 
+{% lien %}
+[Définitions de Wikipédia](https://fr.wikipedia.org/wiki/Sous-graphe)
+{% endlien %}
+
 Il existe deux façons canonique de découper un graphe, supprimer soit des sommets, soit des arêtes :
 
 <div id="definition-sous-graphe"></div>
 <div id="definition-graphe-partiel"></div>
 {% note "**Définitions**" %}
-Soit $G = (V, E)$ un (multi-)graphe (non) orienté.
+Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq V' \times V' \cap E$, alors $\left.G\right|_{V'} = (V', E')$ est un **_sous-graphe_** de $G$.
 
-- si $V' \subsetneq V$, $\left.G\right|_{V'} = (V', V' \times V' \cap E)$ est un **sous-graphe de $G$ induit par $V'$**.
-- si $E' \subsetneq E$, $\left.G\right|_{E'} = (V, E')$ est un **graphe partiel de $G$ induit par $V'$**.
+Un sous-graphe admet deux cas particuliers :
 
-{% endnote %}
+- si $V' = V$ alors  $G'$ est dit être un **_sous-graphe couvrant_** (ou un **_graphe partiel_**) de $G$
+- si $E' = V' \times V' \cap E$ alors $G'$ est dit être un **_sous-graphe induit_** de $G$
 
-Et si on a besoin de supprimer les deux :
-
-{% note "**Définition**" %}
-Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un **sous-graphe partiel de $G$ induit par $V'$ et $E'$**.
 {% endnote %}
 
 ### <span id="composition-graphes"></span>Composition de graphes

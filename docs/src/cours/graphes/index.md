@@ -142,7 +142,7 @@ Problèmes de flots. Définition, algorithmes et applications
 Un exemple particulier de graphes, les graphes bipartis :
 
 {% aller %}
-[Projet : graphe bi-parti](graphe-biparti){.interne}
+[Graphe bi-parti](graphe-biparti){.interne}
 {% endaller %}
 
 ## Couplages

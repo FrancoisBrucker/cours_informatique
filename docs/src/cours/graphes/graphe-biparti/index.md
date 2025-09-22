@@ -11,10 +11,13 @@ eleventyComputed:
 ---
 
 
-> TBD placer la généralisation dans coloriage.
-> TBD méthode probabiliste : graphe induit. <https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=1>
-> 
 Les graphes biparti font parti de ces classes de graphes assez généraux pour être présent partout et assez spécifique pour que tous se passe bien (les principaux problèmes NP-complets dans le cas général deviennent polynomiaux voir triviaux).
+
+C'est une classe de graphe importante à connaître car, parfois curieusement, ils apparaissent dans nombre de problèmes de graphes. Parfois comme sous-cas facilement solvable, parfois comme fondement d'une preuve. Nous allons voir quelques définitions et caractérisation des graphes bi-parti ainsi que quelques exercices classique (et élégant).
+
+## Définitions
+
+### Bi-parti
 
 {% note "**Définition**" %}
 Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$  en deux [stables](../structure/#definition-stable){.interne}.
@@ -93,11 +96,50 @@ Soient $U$ et $V$ une bipartition en deux stables de $G$. On a : $\sum_{u\in U} 
 Or $\sum_{u\in U} \delta(u) = k\cdot \vert U\vert$ et $\sum_{v\in V} \delta(u) = k\cdot \vert V\vert$ ce qui conclue la preuve.
 {% enddetails %}
 
+### Biparti complets
+
+{% note "**Définition**" %}
+Un **_graphe biparti complet_** est le graphe $K_{p,q} = (V_p \cup V_q, V_p \times V_q)$, avec $\vert V_p \vert = p$ et $\vert V_q \vert = q$
+
+{% endnote %}
+
+Le graphe $K_{2, 3}$ est par exemple :
+
+![$K_{2, 3}$](k23.png)
+
+{% info %}
+Les graphes bipartis complets sont aussi parfois appelé [**_une biclique_**](https://fr.wikipedia.org/wiki/Graphe_biparti_complet)
+
+{% endinfo %}
+
+On retrouve les graphes bi-partis complets dans plein de champs de la théorie des graphes car ils ont plein de chouettes propriétés. Par exemple :
+
+{% exercice %}
+Montrez que si un graphe biparti est [hamiltonien](../parcours-hamiltoniens/#definition-graphe-hamiltonien){.interne}, alors la taille des 2 stables est identique.
+{% endexercice %}
+{% details "solution" %}
+
+Si le graphe biparti admet un cycle hamiltonien il est connexe et donc n'admet qu'un 2 stables. Soit $x_1x_2\dots x_nx_1$ un cycle hamiltonien. Comme un graphe biparti ne peut avoir de cycle de longueur impaire $n$ est forcément paire.
+
+On conclue la preuve en remarquant que les $x_i$ paires et les $x_i$ impairs sont forcément dans des stables différents.
+
+{% enddetails %}
+
+{% exercice %}
+Déduire de l'exercice précédent que les seuls graphes bipartis complets hamiltoniens sont les graphes $K_{p, p}$ avec $p\geq 1$.
+
+{% endexercice %}
+{% details "solution" %}
+
+Si le graphe biparti complet $K_{p, p}$ est composé des stables $\\{x_1,\dots x_n\\}$ et $\\{y_1,\dots y_n\\}$, le cycle $x_1y_1\dots x_iy_i\dots x_ny_nx_1$ est hamiltonien : tous les graphes $K_{p, p}$ sont hamiltoniens.
+
+{% enddetails %}
+
 ## Reconnaissance
 
 Savoir si un graphe est biparti est _"facile"_ en utilisant un algorithme de marquage qui associe une couleur à chaque sommet.
 
-On considère que le graphe est connexe dans l'algorithme suivant, o. S'il ne l'est pas on le relance sur chacune des parties connexes.
+On considère que le graphe est connexe dans l'algorithme suivant. S'il ne l'est pas on le relance sur chacune des parties connexes.
 
 On retrouve un algorithme de marquage puis examen de sommets, comme [l'algorithme de recherche de chaîne augmentante de Ford et Fulkerson](../flots). Ce principe général permet de résoudre efficacement beaucoup de problèmes en théorie des graphes.
 
@@ -160,203 +202,7 @@ Un graphe n'est pas biparti s'il contient un cycle de longueur impaire.
 On utilise l'algorithme et si l'algorithme répond non c'est qu'on a un cycle de longueur impaire.
 {% enddetails %}
 
-## Généralisations
-
-### Biparti complets
-
-{% note "**Définition**" %}
-Un **_graphe biparti complet_** est le graphe $K_{p,q} = (V_p \cup V_q, V_p \times V_q)$, avec $\vert V_p \vert = p$ et $\vert V_q \vert = q$
-
-{% endnote %}
-
-Le graphe $K_{2, 3}$ est par exemple :
-
-![$K_{2, 3}$](k23.png)
-
-{% info %}
-Les graphes bipartis complets sont aussi parfois appelé [**_une biclique_**](https://fr.wikipedia.org/wiki/Graphe_biparti_complet)
-
-{% endinfo %}
-
-On retrouve les graphes bi-partis complets dans plein de champs de la théorie des graphes car ils ont plein de chouettes propriétés. Par exemple :
-
-{% exercice %}
-Montrez que si un graphe biparti est [hamiltonien](../parcours-hamiltoniens/#definition-graphe-hamiltonien){.interne}, alors la taille des 2 stables est identique.
-{% endexercice %}
-{% details "solution" %}
-
-Si le graphe biparti admet un cycle hamiltonien il est connexe et donc n'admet qu'un 2 stables. Soit $x_1x_2\dots x_nx_1$ un cycle hamiltonien. Comme un graphe biparti ne peut avoir de cycle de longueur impaire $n$ est forcément paire.
-
-On conclue la preuve en remarquant que les $x_i$ paires et les $x_i$ impairs sont forcément dans des stables différents.
-
-{% enddetails %}
-
-{% exercice %}
-Déduire de l'exercice précédent que les seuls graphes bipartis complets hamiltoniens sont les graphes $K_{p, p}$ avec $p\geq 1$.
-
-{% endexercice %}
-{% details "solution" %}
-
-Si le graphe biparti complet $K_{p, p}$ est composé des stables $\\{x_1,\dots x_n\\}$ et $\\{y_1,\dots y_n\\}$, le cycle $x_1y_1\dots x_iy_i\dots x_ny_nx_1$ est hamiltonien : tous les graphes $K_{p, p}$ sont hamiltoniens.
-
-{% enddetails %}
-
-### <span id="k-parti"></span>Graphes $k$-partis
-
-Une généralisation possible des graphes biparti est d'augmenter le nombre de stables :
-
-{% note "**Définition**" %}
-Un graphe est **_$k$-parti_** s'il existe une partition $V_1, \dots, V_k$ de $V$ en $k\geq 1$ [stables](../structure/#definition-stable){.interne}.
-
-{% endnote %}
-
-Il est clair qu'un graphe $k$-parti est $k'$-parti pour tout $k'\geq k$. La réciproque n'est pas vraie puisque qu'u cycle à 5 éléments est 3-parti mais pas biparti.
-
-Le problème de cette généralisation est que le problème de reconnaissance devient NP-complet pour $k\geq 3$.
-
-{% note "**Problème**" %}
-
-- **Nom** : Reconnaissance d'un graphe $k$-parti (`Rec-k-parti`)
-- **Entrée** : un graphe $G$
-- **Sortie** : Oui si $G$ est $k$-parti, Non sinon.
-
-{% endnote %}
-
-On remarque que $k$ fait parti du problème, ce n'est pas une entrée. Il existe donc un problème de reconnaissance différent pour chaque $k$. Il est clair qu'ils sont tous dans NP :
-
-{% note "**Proposition**" %}
-
-Le problème de la reconnaissance d'un graphe $k$-parti est dans NP pour tout $k\geq 1$
-
-{% endnote %}
-{% details "preuve", "open" %}
-
-Si l'on se donne une solution possible sous la forme d'une partition en $k$ classe de l'ensemble des sommets, il est facile de vérifier si ce sont des stables.
-
-{% enddetails %}
-
-On a vu précédemment que le problème de reconnaissance est polynomial (et même linéaire) pour les graphes biparti et pour les graphes 1-parti (c'est le graphe discret). De plus, vous aller le montrer, on peu facilement réduire la reconnaissance d'un graphe $k$-parti à un cas particulier de la reconnaissance d'un graphe $(k+1)$-parti :
-
-{% exercice %}
-Montrez que pour tout $k\geq 1$ on a : `Rec-k-parti` $\leq$ `Rec-(k+1)-parti`.
-{% endexercice %}
-{% details "solution" %}
-
-Soit $G=(V, E)$ dont on cherche à savoir s'il est $k$-parti. Soit alors $G'=(V \cup \\{x\\}, E \cup \\{xy \vert y\in V})$. On a clairement (le seul stable contenant $x$ c'est lui-même) :
-
-- $G$ est $k$-parti si et seulement si $G'$ est $(k+1)-parti
-- les stables de $G$ sont les stables de $G'$ privé du stable contenant uniquement $x$.
-
-{% enddetails %}
-
-Pour terminer, il nous reste à montrer que `Rec-3-parti` est NP-complet :
-
-<span id="Rec-3-parti-NPC"></span>
-{% note "**Proposition**" %}
-
-Le problème de la reconnaissance d'un graphe $3$-parti est NP-complet.
-
-{% endnote %}
-{% details "preuve", "open" %}
-
-On part de 3-SAT. Soient :
-
-- $(x_i)_{1\leq i \leq n}$ les $n$ variables d'une instance de 3-SAT
-- $c_j = l_j^1 \lor l_j^2 \lor l_j^3$  pour $1\leq j \leq m$ les $m$ clauses formés des littéraux $l_j^k \in \\{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\\}$ pour $1\leq k \leq 3$ et $1\leq j \leq m$
-- $C = \land_{j} c_j$ la conjonction de clauses.
-
-On va associer à tout ceci, de façon polynomiale, un graphe qui sera 3-parti si et seulement si la conjonction de clause $C$ est satisfiable.
-
-On commence par créer un graphe permettant de rendre compte de la véracité des variables : $G_1 = (V_1 \cup V_2, E)$ où :
-
-- $V_1 = \\{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\\}$
-- $V_2 = \\{ V, F, ?\\}$
-- $E = \\{\\{V, ?\\}, \\{F, ?\\}, \\{V, F\\} \\}\cup \\{\\{x_i, ?\\} \vert 1\leq i \leq n \\} \cup \\{\\{\overline{x_i}, ?\\} \vert 1\leq i \leq n \\}$
-
-![NPC-1](NPC-1.png)
-
-Le graphe $G_1$ est clairement 3-parti avec :
-
-- les 3 sommets $V$, $F$ et $?$ dans 3 stables différents,
-- les sommets $x_i$ et $\overline{x_i}$ sont dans le stable ne contenant pas $?$,
-- si $x_i$ est dans le stable contenant $V$ alors $\overline{x_i}$ est dans le stable contenant $F$ et réciproquement pour tout $1\leq i \leq n$.
-
-Il faut maintenant ajouter à ce graphes les clauses qui vont permettre de placer des valeurs de vérité aux variables via des stables (le stable de V ou le stable de F). Soit alors le graphe $C_j = (V'_1 \cup V_2 \cup V_j, E_j)$ tel que :
-
-- $V_j = \\{a_j, b_j, c_j, d_j, e_j \\}$
-- $V'_1 = \\{l^1_j, l^2_j, l^3_j \\} \subseteq V_1$
-- $E_j$ correspondant au graphe ci-dessous
-
-![NPC-1](NPC-2.png)
-
-On remarque que les graphes $C_j$ sont 3-partis et que tous leurs stables sont tels que $l^1_j$, $l^2_j$ et $l^3_j$ ne sont pas tous les 3 dans la classe de $F$.
-
-On en conclut donc que le graphe $G = (V_1 \cup V_2 \cup (\cup_j V_j), E \cup (\cup_j E_j))$ est triparti si et seulement si la conjonction de clause $C$ est satisfiable.
-
-{% enddetails %}
-
-La réduction de la preuve de la proposition précédente est plus complexe que toutes celles que l'on a fait jusqu'à présent, [Le gadget utilisé](https://fr.wikipedia.org/wiki/Gadget_(informatique)) n'étant pas trivial. Montrons ce qu'il donne sur [notre exemple fil rouge des réduction depuis 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple){.interne} :
-
-- $G_1$ : ![ex G1](npc-ex-g1.png)
-- $C_1$ : ![ex C1](npc-ex-c1.png)
-- $C_2$ : ![ex C2](npc-ex-c2.png)
-- $C_3$ : ![ex C3](npc-ex-c3.png)
-- $C_4$ : ![ex C4](npc-ex-c4.png)
-
-Ce qui donne le graphe final :
-
-![ex G](npc-ex-g.png)
-
-Ce graphe est tripartite (on a associé une couleur à chaque stable) :
-
-![ex G 3-stable](npc-ex-G-colorie.png)
-
-On voit que, comme pour le problème SAT, le problème est simple pour 1 et 2 mais NP-complet à partir de 3.
-
-### Graphes $k$-partis complets
-
-On en a parfois besoin, donc autant les définir ici :
-
-{% note "**Définition**" %}
-
-On appelle **_graphe $k$-parti complet_** le graphe Le graphe $K_{p_1,\dots, p_k} = (\cup_{i} V_{p_i}, \\{uv \vert u\in V_{p_i}, v\in V_{p_j}, i\neq j\\})$
-{% endnote %}
-
-Pour voir quelques graphes tri-partis complets, vous pouvez jeter un coup d'oeil à la page suivante :
-
-{% info %}
-<https://mathworld.wolfram.com/CompleteTripartiteGraph.html>
-{% endinfo %}
-
-Terminons par un petit exercice pour appliquer tout ça :
-
-{% exercice %}
-Trouver toutes les valeurs entières de a, b, c telles que $0 < a ≤ b ≤ c$ et que le graphe 3-parti complet $K_{a,b,c}$ possède :
-
-- [un cycle eulérien](../parcours-eulériens/#definition-cycle-eulerien){.interne}.
-
-- [un chemin eulérien](../parcours-eulériens/#definition-chemin-eulerien){.interne}
-{% endexercice %}
-{% details "solution" %}
-
-Soient $A$, $B$ et $C$ les 3 stables tels que $\vert A\vert = a$, $\vert B\vert = b$ et $\vert C\vert = c$. On a :
-
-- les a sommets de $A$ ont pour degré $b+c$,
-- les b sommets de $B$ ont pour degré $a+c$,
-- les c sommets de $C$ ont pour degré $a+b$.
-
-Pour que le graphe admette un cycle eulérien, il faut que tout sommet soit de degré pair, ce qui n'est possible que si $a$, $b$ et $c$ sont soit tous pair soit tous impairs.
-
-Pour que le graphe admette un chemin eulérien, il faut que tous les sommets soient de degré paires sauf 2. Comme tous les sommets d'un même stable ont même degré, on a deux cas : soit $a=b=1$ et $c$ pair, soit $a=2$ et il faut alors que :
-
-- $b+c$ soit impair,
-- $2+c$ soit pair,
-- $2+b$  soit pair.
-
-Ce qui est impossible.
-
-Les seuls graphes tripartis complets admettant un chemin eulériens sont donc les graphes $K_{1,1,2p}$
-{% enddetails %}
+On le verra tout au long de ce cours l'existence de cycles de longueurs impairs pose de nombreux problèmes algorithmique. Se restreindre aux graphes bi=parti va souvent accélérer et rendre optimal des algorithmes autrement plus compliqués sinon.
 
 ## Partition en graphes Biparti
 
@@ -366,12 +212,18 @@ Le problème de partition d'un graphe en graphes bipartis est un problème de co
 [Problème de Graham-Pollak](https://www.youtube.com/watch?v=ZtXfGagSUlA)
 {% endlien %}
 
-Posons le problème en commençant par définir une partition d'un graphe.
+Des ordinateurs liés entre eux deux à deux par un graphe complet doivent tous communiquer entre eux. La contrainte est que chaque ordinateur ne peut être que dans 3 états :
+
+- endormis
+- en transmission avec **un** unique autre ordinateur.
+
+Chaque couple d'ordinateur doit s'échanger **une** donnée. Combien d'étapes au minimum sont-elles nécessaires pour tout couple d'ordinateurs aient communiqué ?
+
+Ce problème peux se décrire comme un problème de graphe. Commençons par définir une partition d'un graphe.
 
 {% note "**Définition**" %}
-Une **_partition_** d'un graphe $G=(V, E)$ est une suite $G_i=(V_i, E_i)$, avec $1\leq i \leq m$ telle que :
+Une **_partition_** d'un graphe $G=(V, E)$ est une suite $G_i=(V, E_i)$, avec $1\leq i \leq m$ telle que :
 
-- $V_i \subseteq = V$ pour tout $1\leq i \neq j \leq m$
 - $\cup_{1\leq i \leq m} E_i = E$
 - $E_i \cap E_j = \varnothing$ pour tout $1\leq i \neq j \leq m$
 
@@ -382,9 +234,11 @@ La définition explicite le fait que l'on partitionne l'ensemble des arêtes d'u
 Notre problème de partition est :
 
 {% note "**Définition**" %}
-Combien faut-il au minimum de graphes bipartis complets pour partitionner $K_n$ ?
-
+Combien faut-il au minimum de graphes bipartis (complets) pour partitionner $K_n$ ?
 {% endnote %}
+{% info %}
+Comme il faut minimiser le nombre d'éléments de la partition et que chaque arête du graphe complet doit être utilisé, les graphes bi-partis sont forcément complets.
+{% endinfo %}
 
 Remarquons tout de suite que ce problème admet une solution, il en faut moins de $n(n-1)/2$ puisque les graphes G_{i,j} = (\\{i, j\\}, \\{ij\\})$ sont tous bipartis.
 
@@ -459,7 +313,7 @@ $$
 $$
 </div>
 
-Or $\sum_{i \in U_k}x_i = 0$ pour tout $1\leq k \leq m$, donc $\sum_{i \in U_k}c_i = 0$ également, ce qui implique :
+Or $\sum_{i \in U_k}c_i = 0$ pour tout $1\leq k \leq m$, ce qui implique :
 
 <div>
 $$
@@ -472,3 +326,192 @@ $$
 Ce qui n'est possible que si $c_i = 0$ pour tout $1\leq i \leq n$ : contradiction. Notre hypothèse était donc fausse, on a $m + 1 = n$.
 
 {% enddetails %}
+
+## Sous-graphes bi-partis
+
+Nous allons montrer des encadrements sur les graphe possédant, ou pas, des sous-graphes bi-partis.
+
+### sous-graphe bi-parti inclus
+
+{% lien %}
+<https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=1>
+{% endlien %}
+
+Le grand retour de la méthode probabiliste pour résoudre un problème à priori très compliqué.
+
+{% note "**Proposition**" %}
+Dans tout graphe $G=(V, E)$ à $m$ arêtes, il existe un [sous-graphe](../structure/#definition-sous-graphe){.interne} bi-parti $G'$ à au moins $\frac{m}{2}$ arêtes.
+{% endnote %}
+{% details "preuve", "open" %}
+
+On va associer à chaque sommet du graphe $G$ une couleur parmi 2 choix possibles (disons rouge et noir) de façon **uniforme** et **indépendante**.
+
+On considère ensuite le sous-graphe couvrant $G'$ où l'on a supprimé de graphe toutes les arêtes dont les sommets de sont de couleurs différentes. La probabilité pour une arête $xy$ d'être dans $G'$ est $\frac{1}{2}$. Il y a en effet 4 possibilité pour chaque arêtes, chacune de probabilité $\frac{1}{4}$ :
+
+- soit $x$ et $y$ sont rouges
+- soit $x$ est rouge et $y$ est noir
+- soit $x$ est noir et $y$ est rouge
+- soit $x$ et $y$ sont noires
+
+De là, en notant $\mathcal{G}'$ l'ensemble de tout ces sous-graphes possibles, l'espérance du nombre d'arêtes dans $G'$ est :
+
+<div>
+$$
+\begin{array}{lcl}
+\mathbb{E}(E') &=& \frac{1}{\vert \mathcal{G}' \vert}\sum_{G'=(V, E') \in \mathcal{G}'}\vert E'\vert\\
+& =& \frac{1}{\vert \mathcal{G}' \vert}\sum_{xy \in E} \vert \{G' \vert G'=(V, E') \in \mathcal{G}', xy \in E' \}\vert\\
+& = &\frac{\sum_{xy \in E} \vert \{G' \vert G'=(V, E') \in \mathcal{G}', xy \in E' \}\vert}{\vert \mathcal{G}' \vert} \\
+&= &\sum_{xy \in E}p_{\text{probabilité que les deux sommet de } xy \text{soient de même couleur}}
+\end{array}
+$$
+</div>
+
+Comme cette probabilité vaut $\frac{1}{2}$ quelque soit l'arête, on en déduit que le nombre moyen d'arête dans $G'$ est $\frac{m}{2}$.
+
+On termine la preuve en remarquant que pour obtenir cette espérance il est indispensable qu'il existe au moins un sous-graphe $G^\star$ de $G$ atteignant cette moyenne.
+{% enddetails %}
+
+Notez comment la preuve est élégante ! C'est souvent le cas lorsque l'on utilise [la méthode probabiliste](https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste). Cependant, ces preuves sont non constructives. Et dans notre cas, trouver ce graphe bi-parti n'est pas facile du tout puisque trouver le plus grand sous-graphe biparti est NP-complet. Cela revient en effet à trouver une coupe de taille maximale : <https://fr.wikipedia.org/wiki/Coupe_maximum>.
+> TBD NP-complet <https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf>
+> On dérive de NAE 3- sat.
+
+On appelle ce genre de preuve "une paille dans une botte de foin". Il existe plein de solutions possibles (il y a beaucoup de graphes $G'$ et pour que la moyenne soit $m/2$, plein fonctionnent) mais ils sont difficiles à trouver algorithmiquement.
+
+### Grand sous-graphe bi-parti exclus
+
+> TBD exemples
+
+{% lien %}
+<https://www.youtube.com/watch?v=YAo1sd4kuOQ&list=PLUl4u3cNGP62qauV_CpT1zKaGG_Vj5igX&index=3>
+{% endlien %}
+
+On cherche des graphes à $n$ sommets ne possédant pas de sous-graphes bi-partis complets. On sait peut de choses sur ces graphes, mais on peut montrer que :
+
+{% note "**Théorème (Kővári, Sós, Turán)**" %}
+Pour tout $s\leq t$, il existe ue constante $C$ telle que tout graphe à $n$ sommet ne possédant pas $K_{s, t}$ à moins de $C\cdot n^{2-{1}/{s}}$ arêtes.
+{% endnote %}
+{% details "preuve", "open" %}
+admis.
+
+{% enddetails %}
+{% info %}
+Remarquez que la borne ne dépend pas de $t$.
+{% endinfo %}
+
+> TBD applications unit distance problem.
+> TBD si on y a simple droite puis triangle on reste sur des trucs linéaires.
+> TBD montrer qu'on arrive à $n\log(n)$ facilement.
+> n0 = 1 m0 = 0
+> on duplique le graphe en translattant tout de 1 unité. on a alors
+> n(i+1) = 2ni
+> m(i+1) = 2mi + ni
+>
+> ce qui donne m(i+1)/n(i+1) = m(i)/n(i) + 1/2 = ... = m0/n0 + i/2 = log(n(i+1))/2
+>
+> $\mathcal{O}(n^{3/2}) = \mathcal{O}(n\sqrt{n})$ car le graphe est sans $K_{2, 3}$ l'intersection de deux cercle de rayon 1 centré en 0 et 1 c'est 2 points donc si deux sommets ont 2 voisins en commun ils ne peuvent avoir de troisième voisin en commun au mieux ils sont voisins entre eux.
+> TBD meilleurs application connue est $\mathcal{O}(n^{4/3})$.
+> 
+
+Nous allons montrer maintenant une borne min pour des graphes sans sous-graphes bi-parti complets.
+
+{% note "**Théorème**" %}
+Pour tout $s\leq t$, il existe des graphes à $n$ sommets ayant plus de $\frac{1}{16}\cdot n^{2-\frac{s + t -2}{s\cdot t -1}}$ arêtes n'admettant pas $K_{s, t}$ comme sous-graphe.
+{% endnote %}
+
+La preuve de ce théorème est une conséquence directe du théorème suivant, qui utilise la méthode probabiliste avec altération. Ce raffinement de la méthode probabiliste commence par construire un graphe aléatoire puis on le modifie pour qu'il satisfasse nos hypothèse. Encore une fois la preuve est (extrêmement) élégante mais non constructive :
+
+{% note "**Théorème**" %}
+Soit $H$ un graphe à $v(H) \geq 2$ sommets et $e(H) \geq 3$ arêtes, il existe $s\leq t$, il existe des graphes à $n$ sommets ayant plus de $\frac{1}{16}\cdot n^{2-\frac{v(H) -2}{e(H) -1}}$ arêtes n'admettant pas $H$ comme sous-graphe.
+{% endnote %}
+{% details "preuve", "open" %}
+La preuve va consister à construire un graphe aléatoirement, puis à supprimer toutes les copies de $H$ qu'il contient.
+
+Soit $G$ à $n$ sommets construit tel que la probabilité d'avoir l'arête $xy$ vaut $p$ quelque soit l'arête (ces graphes sont appelés graphes aléatoire de Erdős-Rényi, on y revient plus tard dans ce cours). On choisira $p$ plus tard pour maximiser le nombre d'arêtes tout en conservant peux de copies de $H$ dans $G$.
+
+En notant $\sharp H$ le nombre de sous-graphes valant $H$ de $G$ on va calculer son espérance $\mathbb{E}(\sharp H)$.
+
+Pour cela il nous faut une autre donnée qui est le nombre d'[automorphisme de $H$](https://fr.wikipedia.org/wiki/Automorphisme_de_graphe) (les permutation de sommets conservant $H$), appelons le $\text{aut}(H)$, pour pouvoir écrire :
+
+<div>
+$$
+\begin{array}{lcl}
+\mathbb{E}(\sharp H) &=& \frac{n\cdot(n-1)\cdot \dots \cdot (n-v(H))}{\text{aut}(H)}\cdot p^{e(H)}\\
+\end{array}
+$$
+</div>
+
+Puisque l'on compte pour tout ensemble de $v(H)$ sommets la probabilité de fabriquer $H$ en sachant que chaque arête a une probabilité $p$ d'exister indépendante des autres (d'où la multiplication $p \cdot \dots \cdot p = p^{e(H)}$). On en déduit l'inégalité :
+
+<div>
+$$
+\begin{array}{lcl}
+\mathbb{E}(\sharp H) &\leq& n^{v(H)}\cdot p^{e(H)}\\
+\end{array}
+$$
+</div>
+
+D'un autre côté l'espérance du nombre d'arête de $G$ vaut : $\mathbb{E}(e(G)) = p \cdot \binom{n}{2}$. On veut que le nombre d'arête de $G$ soit le plus grand possible tout en minimisant le nombre de sous-graphe valant $H$ : on cherche à maximiser $\mathbb{E}(e(G) - \sharp H) = \mathbb{E}(e(G)) - \mathbb{E}(\sharp H)$.
+
+<div>
+$$
+\begin{array}{lcl}
+\mathbb{E}(e(G) - \sharp H) &\geq& p \cdot \binom{n}{2}[1-2p^{e(H)-1}\cdot \frac{n^{v(H)-1}}{n-1}]\\
+&\geq& p \cdot \binom{n}{2}[1-2p^{e(H)-1}\cdot {n^{v(H)-2}}]\\
+\end{array}
+$$
+</div>
+
+On peut maintenant trouver $p$ qui vq simplifier tout ça, par exemple $p = \frac{1}{2}\cdot n^{-\frac{v(H) -2}{e(H) -1}}$ puisqu'on a alors :
+
+<div>
+$$
+\begin{array}{lclr}
+\mathbb{E}(e(G) - \sharp H) &\geq& p \cdot \binom{n}{2}[1-2(\frac{1}{2}\cdot n^{-\frac{v(H) -2}{e(H) -1}})^{e(H)-1}\cdot {n^{v(H)-2}}]\\
+&\geq& p \cdot \binom{n}{2}[1-\frac{1}{2^{e(H)-2}}]\\
+&\geq& p\cdot \binom{n}{2}\cdot \frac{1}{2} &\text{ puisque }e(H)\geq 3\\
+&\geq& \frac{1}{4} p\cdot (n(n-1))\\
+&\geq& \frac{1}{8} \cdot n^{-\frac{v(H) -2}{e(H) -1}}\cdot (n(n-1))\\
+&\geq& \frac{1}{8} \cdot n^{-\frac{v(H) -2}{e(H) -1}}\cdot (n(\frac{n}{2}))& \text{ puisque }v(H)\geq 2\\
+&\geq& \frac{1}{16}\cdot n^{2-\frac{v(H) -2}{e(H) -1}}\\
+\end{array}
+$$
+</div>
+
+On peut maintenant utiliser l'argument classique de la méthode probabiliste : il existe forcément un graphe $G^\star$ tel que $e(G) - \sharp H \geq \frac{1}{16}\cdot n^{2-\frac{v(H) -2}{e(H) -1}}$.
+
+Il suffit maintenant d'enlever une arête de $G^\star$ pour toute copie de $H$ en lui (on énumère tous les sous-graphe de $G^\star$ et on supprime si nécessaire une de ses arête si c'est $H$). On obtient alors un nouveau graphe ${G^\star}'$ sans sous-graphe valant $H$ et ayant au moins $e(G^\star) - \sharp H \geq \frac{1}{16}\cdot n^{2-\frac{v(H) -2}{e(H) -1}}$ arêtes.
+
+{% enddetails %}
+{% info %}
+On peut faire mieux en utilisant d'autres méthodes, en particulier algébrique. Regardez le lien si vous voulez plus d'infos.
+{% endinfo %}
+
+Pour le graphe bi-parti complet $K_{s, t}$ cela nous donne l'encadrement suivant pour un graphe $G$ à $n$ somments ne possédant pas $K_{s, t}$ comme sous-graphe :
+
+<div>
+$$
+\frac{1}{16}\cdot n^{2-\frac{s + t -2}{s\cdot t -1}} \leq e(G) \leq C_n \cdot n^{2-{1}/{s}}
+$$
+</div>
+
+Notez que lorsque $t$ tend vers l'infini les deux bornes vont se rejoindre.
+
+Pour des graphes bi-partis $K_{s, s}$ on obtient :
+
+<div>
+$$
+\frac{1}{16}\cdot n^{2-\frac{2}{s + 1}} \leq e(G) \leq C_n \cdot n^{2-{1}/{s}}
+$$
+</div>
+
+En particulier pour le graphe sans cycle de longueur 4, c'est à dire des graphes sans $K_{2, 2}$  on a la l'encadrement :
+
+<div>
+$$
+\Theta(n^{4/3}) \leq e(G) \leq C_n \cdot \mathcal{O}(n^{3/2})
+$$
+</div>
+
+{% info %}
+On peut trouver des encadrement plus fin en utilisant des méthodes plus sophistiquée, si cela vous intéresse, regardez la vidéo en lien.
+{% endinfo %}

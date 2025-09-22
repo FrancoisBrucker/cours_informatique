@@ -53,14 +53,17 @@ Encoder un arbre planté de façon planaire se fait facilement avec un parcourt 
 
 ## Planaire et mots de Dyck
 
-> TBD utiliser les noms de parcours d'arbre à la place.
-
 Associons le parcours en profondeur parcourant les enfants dans l'ordre à un arbre planaire et notons :
 
 - par $E$ les étapes où l'algorithme a effectué une récursion (il a examiné un nouveau sommet enfant du sommet courant)
 - par $P$ les étapes où l'algorithme a terminé une récursion (il a examiné tous les enfant du sommet courant)
 
-Pour l'arbre planaire précédent est :
+Pour l'arbre planaire précédent, le parcours donne :
+
+![arbre dyck](./chemin-dyck-arbre.png)
+
+Le mot associé est :
+
 
 
 > un DFS. pour encoder les arbres planaires. <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>

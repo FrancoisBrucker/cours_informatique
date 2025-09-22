@@ -41,6 +41,12 @@ Ces bénéfices sont incommensurables lorsque l'on travaille à plusieurs sur un
 Dire que l'on fait de la gestion des sources ou que l'on connaît [git](https://git-scm.com/) parce qu'on se sert de [github](https://github.com/) comme d'un drive est un mensonge et vous fera passer pour un rigolo.
 {% endattention %}
 
+<!-- TBD 
+
+peut-être mettre le projet avant la théorie ? Ou en même temps ? 
+
+-->
+
 ## Principes
 
 {% aller %}
