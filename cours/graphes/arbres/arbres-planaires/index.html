@@ -150,39 +150,171 @@ $$
 <p>Pour l'arbre planaire précédent, le parcours donne :</p>
 <p><img src="chemin-dyck-arbre.png" alt="arbre dyck"></p>
 <p>Le mot associé est :</p>
-<blockquote>
-<p>un DFS. pour encoder les arbres planaires. <a href="https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf">https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf</a></p>
+<pre><code>EPEEPEPPEPEEEPEPPEEPPP
+</code></pre>
+<p>Remarquez qu'il permet de retrouver notre arbre initial en suivant le parcours comme sur la figure.</p>
+<p>De plus :</p>
 <ol>
-<li>dessiner comme une montagne le graphe planaire exemple</li>
-<li>+1, -1 ≥0 et au final 0 : chemin de dyck de longueur 2m = 2n-2</li>
-<li>cas particulier de mots de Dyck. Marche aussi (E(nfant suivant)/P(arent))</li>
+<li>le mot commence par <code>E</code></li>
+<li>il y a autant de <code>E</code> que de <code>P</code> dans le mot</li>
+<li>Il y a toujours plus de <code>E</code> que de <code>P</code> pour les $k$ premières lettres (quelque soit $k$) du mot</li>
 </ol>
-<p>aussi triangulation d'un polygone, arbres hiérarchiques, etc... <a href="https://www.youtube.com/watch?v=fczN0BCx0xs">https://www.youtube.com/watch?v=fczN0BCx0xs</a>. Un peu le no,bre d'or des combinatoriste.</p>
-</blockquote>
-<blockquote>
-<p>Aussi des chemins.
-Des chemins de taxis :</p>
-</blockquote>
-<p><img src="chemin-taxis.png" alt="chemins de taxis"></p>
-<p>aux chemins de Dyck :</p>
-<p><a href="https://www.youtube.com/watch?v=Lcy5PLkHEoo">https://www.youtube.com/watch?v=Lcy5PLkHEoo</a></p>
-<blockquote>
-<p>TBD. Ca tombe régulièrement aux concours (le mettre dans le cours S6) Trouver exam centrale PC 2011 <a href="https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021">https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021</a></p>
-</blockquote>
+<p>Les deux remarques sont fondamentales, puisque tout mot ayant les 2 propriétés précédente permet de décrire un arbre planté. En effet, par récurrence sur la taille paire (puisqu'il y a autant de <code>E</code> que de <code>P</code>) du mot. En prenant un mot $m$ de taille $2n$ satisfaisant les 2 conditions, il suffit de supprimer de celui-ci la première occurrence du mot <code>EP</code> (disons que cet occurrence était à la position $k$ du mot) pour obtenir un mot $m'$ de taille $2(n-1)$ satisfaisant les conditions. Ce mot encode un arbre planté er le <code>EP</code> que l'on a supprimé correspond au premier enfant du $k$ descendant le plus à gauche de la racine.</p>
+<p>On en déduit que ces mots de tailles $2p$ forment une bijection avec les arbres plantés à $p+1$ sommets. On se convaincra aisément que l'on peut aussi les décrire comme suit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On appelle <strong><em>mot de <a href="https://fr.wikipedia.org/wiki/Walther_von_Dyck">Dyck</a></em></strong> une suite finie $(u_i)_{1\leq i \leq 2p}$ de longueur $2p$ telle que :</p>
+<ul>
+<li>$u_i \in \{-1, 1\}$ pour tout $1\leq i \leq 2p$</li>
+<li>$\sum_{1\leq i \leq k} u_i \geq 0$ pour tout $1\leq k \leq 2p$</li>
+<li>$\sum_{1\leq i \leq 2p} u_i = 0$</li>
+</ul>
+</div></div>
+
+<p>On en déduit notre première caractérisation des arbres planaires :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'ensemble des mots de Dyck est en bijection avec l'ensemble des arbres plantés</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Clair en remplaçant $+1$ par <code>E</code> et $-1$ par <code>P</code>.</p>
+</div>
+</details>     
+</div>
+<p>Un façon commode de représenter un mot de Dyck est le profil de montagne. On se place sur une grille triangulaire et on monte avec un $+1$ et on descent avec un $-1$. Le mot de l'arbre planté précédent correspond au profil :</p>
+<p><img src="dyck-profil.png" alt="profil Dyck"></p>
+<p>Le profil s'inscrit dans une demi-grille $p \times p$ si le mot est de longueur $2p$.</p>
+<p>De là, un chemin de Dyck de longueur $2p$ est <a href="../../projet-chemin-de-taxi/" class="interne">un chemin de taxi</a> sur une grille carrée de longueur $p \times p$ restant au-dessus de la diagonale :</p>
+<p><img src="chemin-taxi-dyck.png" alt="chemin de taxi Dyck"></p>
 <h2>Énumération des arbres planaires</h2>
 <blockquote>
-<p>TBD énumération avec un Dijkstra sur arbre orienté sur demi-grille.</p>
+<p>TBD énumération des chemins sur une demi-grille. Comme on a fait dans les chemins de taxis</p>
 </blockquote>
 <h2>Compter les chemins de Dyck</h2>
-<p>Compter dyck :</p>
-<blockquote>
-<p>1/(n+1)(2n n)
-<img src="dyck-1.png" alt="preuve 1"></p>
-</blockquote>
-<blockquote>
-<p>(2n n) - (2n n+1)
-<img src="dyck-2.png" alt="preuve 2"></p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=Lcy5PLkHEoo&amp;list=PLmoTCYjMFPpSK1Hmew6nR1PgPueYVEUyw&amp;index=21">Compter les chemins de Dyck</a></p>
+</div></div>
+
+<p>On va compter les chemins de Dyck de deux façons différentes. Elles vont nous donner deux formules égales (mais dont l'égalité n'est pas triviales à démontrer) et deux jolies démonstrations.</p>
+<h3>Calcul par soustraction</h3>
+<p>Prenons un chemin de taxi de taille $(p, p)$ qui n'est pas un chemin de Dyck :</p>
+<p><img src="compte-dyck-1-1.png" alt="compte 1.1"></p>
+<p>Il contient forcément des chemins dans la demi-grille inférieure, ici en rouge. Prenons le premier tronçon du chemin qui passe sous la diagonale, il est forcément horizontal, et séparons le chemin en 3 :</p>
+<ul>
+<li>le début (en vert)</li>
+<li>le premier tronçon horizontal dans la demi-grille inférieure (en rouge)</li>
+<li>la fin du trajet (en bleu)</li>
+</ul>
+<p><img src="compte-dyck-1-2.png" alt="compte 1.2"></p>
+<p>L'astuce consiste maintenant à construire le chemin :</p>
+<ul>
+<li>qui commence avec le chemin vert</li>
+<li>continue par le premier tronçon horizontal dans la demi-grille inférieure (en rouge)</li>
+<li>termine avec le complémentaire du chemin bleu (lorsque le chemin bleu monte le complémentaire va a droite et réciproquement)</li>
+</ul>
+<p>Comme le chemin bleu commence juste en-dessous de la diagonale et termine en $(p, p)$, ce nouveau chemin est un chemin de taxi de taille $(p-1, p+1)$ :</p>
+<p><img src="compte-dyck-1-3.png" alt="compte 1.3"></p>
+<p>Réciproquement, tout chemin de taxi de taille $(p-1, p+1)$ va forcément passer sous la diagonale :</p>
+<p><img src="compte-dyck-1-4.png" alt="compte 1.4"></p>
+<p>Et on peut le transformer, en suivant la même procédure, en un chemin de taxi de $(p, p)$ qui n'est pas de Dyck :</p>
+<p><img src="compte-dyck-1-5.png" alt="compte 1.5"></p>
+<p>On en conclut qu'il existe exactement $\binom{(p-1) + (p+1)}{p-1}$ chemin de taxi de $(p, p)$ qui ne sont pas de Dyck et comme il y a $\binom{(p) + (p)}{p}$ chemin de taxis de taille $(p, p)$ :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il y a Exactement $\binom{2p}{p} - \binom{2p}{p-1}$ chemin de Dyck de taille $2p$</p>
+</div></div>
+
+<p>Et donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il y a Exactement $\binom{2p}{p} - \binom{2p}{p-1}$ arbres planaires à $p + 1$ sommets</p>
+</div></div>
+
+<h3>Calcul par bijections</h3>
+<p>Cet autre calcul du nombre de chemins de Dyck va séparer tous les chemin de taxis de taille $(p, p)$ en classes de même taille.</p>
+<p>On note $C_k$ le nombre de chemin de taxi de $(p, p)$ ayant $k$ chemin horizontaux sous la diagonale. Par exemple le chemin suivant est dans $C_3$ :</p>
+<p><img src="compte-dyck-1-1.png" alt="compte 2.1"></p>
+<p>Comme le premier tronçon sous la diagonale d'un chemin de taxi de taille $(p, p)$ est forcément horizontal,  les chemins de Dyck sont exactement les chemins de $C_0$.</p>
+<p>Prenons un chemin de $C_i$ avec $i&gt;0$ et prenons le dernier tronçon sous la diagonale de celui-ci. Ce tronçon est forcément vertical :</p>
+<p><img src="compte-dyck-2-2.png" alt="compte 2.2"></p>
+<p>On peut alors séparer ce chemin en 3 :</p>
+<ul>
+<li>le début (en vert)</li>
+<li>le dernier tronçon vertical dans la demi-grille inférieure (en rouge)</li>
+<li>la fin du trajet (en bleu)</li>
+</ul>
+<p>Comme la fn de trajet commence et fini sur la diagonale, le chemin constitué :</p>
+<ul>
+<li>commençant par le chemin bleu</li>
+<li>puis ayant un tronçon vertical (rouge)</li>
+<li>et finissant par le chemin vert</li>
+</ul>
+<p>Sera un chemin de taxi de $(p, p)$ :</p>
+<p><img src="compte-dyck-2-3.png" alt="compte 2.3"></p>
+<p>Et il sera dans $C_{i-1}$ puisque le premier tronçon horizontal sous la diagonal du chemin initial est maintenant au-dessus de la diagonale.</p>
+<p>Cette procédure permet d'associer tout chemin de $C_i$ à un unique chemin de $C_{i-1}$ (et réciproquement) : il y a autant de chemin de $C_i$ que de chemin de $C_{i-1}$. Comme $0\leq i \leq p$, que leur somme fait l'ensemble des $\binom{2p}{p}$ chemins de taxi de $(p, p)$ et que $C_0$ est exactement l'ensemble des chemins de Dyck, on en conclut :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il y a Exactement $\frac{1}{p+1}\binom{2p}{p}$ chemin de Dyck de taille $2p$</p>
+</div></div>
+
+<p>Et donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il y a Exactement $\frac{1}{p+1}\binom{2p}{p}$ arbres planaires à $p + 1$ sommets</p>
+</div></div>
+
 
 
 </article>
