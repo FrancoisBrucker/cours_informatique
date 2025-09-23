@@ -107,7 +107,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un graphe $G=(V, E)$ est <strong><em>biparti</em></strong> s'il existe une bipartition $V_1$ et $V_2$ de $V$  en deux <a href="../structure/#definition-stable" class="interne">stables</a>.</p>
+<p>Un graphe $G=(V, E)$ est <strong><em>biparti</em></strong> s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux <a href="../structure/#definition-stable" class="interne">stables</a>.</p>
 </div></div>
 
 <p>Par exemple le graphe suivant :</p>
@@ -444,7 +444,7 @@ Boucle principale <span class="token punctuation">:</span>
 <p>Des ordinateurs liés entre eux deux à deux par un graphe complet doivent tous communiquer entre eux. La contrainte est que chaque ordinateur ne peut être que dans 3 états :</p>
 <ul>
 <li>endormis</li>
-<li>en transmission avec <strong>un</strong> unique autre ordinateur.</li>
+<li>en transmission avec <strong>un unique</strong> autre ordinateur.</li>
 </ul>
 <p>Chaque couple d'ordinateur doit s'échanger <strong>une</strong> donnée. Combien d'étapes au minimum sont-elles nécessaires pour tout couple d'ordinateurs aient communiqué ?</p>
 <p>Ce problème peux se décrire comme un problème de graphe. Commençons par définir une partition d'un graphe.</p>
@@ -599,7 +599,7 @@ $$
 </div>
 <h2>Sous-graphes bi-partis</h2>
 <p>Nous allons montrer des encadrements sur les graphe possédant, ou pas, des sous-graphes bi-partis.</p>
-<h3>sous-graphe bi-parti inclus</h3>
+<h3>Sous-graphe bi-parti inclus</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -651,22 +651,19 @@ $$
 \mathbb{E}(E') &=& \frac{1}{\vert \mathcal{G}' \vert}\sum_{G'=(V, E') \in \mathcal{G}'}\vert E'\vert\\
 & =& \frac{1}{\vert \mathcal{G}' \vert}\sum_{xy \in E} \vert \{G' \vert G'=(V, E') \in \mathcal{G}', xy \in E' \}\vert\\
 & = &\frac{\sum_{xy \in E} \vert \{G' \vert G'=(V, E') \in \mathcal{G}', xy \in E' \}\vert}{\vert \mathcal{G}' \vert} \\
-&= &\sum_{xy \in E}p_{\text{probabilité que les deux sommet de } xy \text{soient de même couleur}}
+&= &\sum_{xy \in E}{\text{probabilité que } xy \text{ soit une arête}}\\
+&= &\sum_{xy \in E}{\text{probabilité que les deux sommets de } xy \text{ soient de même couleur}}\\
+&= &\sum_{xy \in E}\frac{1}{2}\\
+&= &\frac{m}{2}\\
 \end{array}
 $$
 </div>
-<p>Comme cette probabilité vaut $\frac{1}{2}$ quelque soit l'arête, on en déduit que le nombre moyen d'arête dans $G'$ est $\frac{m}{2}$.</p>
-<p>On termine la preuve en remarquant que pour obtenir cette espérance il est indispensable qu'il existe au moins un sous-graphe $G^\star$ de $G$ atteignant cette moyenne.</p>
+<p>On termine la preuve en remarquant que si le nombre moyen d'arête est $\frac{m}{2}$, il est indispensable qu'il existe au moins un sous-graphe $G^\star$ de $G$ l'atteignant.</p>
 </div>
 </details>     
 </div>
-<p>Notez comment la preuve est élégante ! C'est souvent le cas lorsque l'on utilise <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste">la méthode probabiliste</a>. Cependant, ces preuves sont non constructives. Et dans notre cas, trouver ce graphe bi-parti n'est pas facile du tout puisque trouver le plus grand sous-graphe biparti est NP-complet. Cela revient en effet à trouver une coupe de taille maximale : <a href="https://fr.wikipedia.org/wiki/Coupe_maximum">https://fr.wikipedia.org/wiki/Coupe_maximum</a>.</p>
-<blockquote>
-<p>TBD NP-complet <a href="https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf">https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf</a>
-On dérive de NAE 3- sat.</p>
-</blockquote>
-<p>Le problème de trouver le grand sous graphe bi-parti (clairement) équivalent au problème suivant :
-<span id="problème-MAX-CUT"></span></p>
+<p>Notez comment la preuve est élégante ! C'est souvent le cas lorsque l'on utilise <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste">la méthode probabiliste</a>. Cependant, ces preuves sont non constructives et dans notre cas trouver ce graphe bi-parti, ou tout du moins le plus grand n'est pas facile du tout. C'est en effet un effet un problème algorithmique classique :</p>
+<p><span id="problème-MAX-CUT"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -691,17 +688,7 @@ On dérive de NAE 3- sat.</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ue coupe dans un graphe est soit une bi=partition de ses sommets, soit l'ensemble des arêtes dont les extrémités sont dans des classes différentes.</p>
-</div></div>
-
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Le problème MAX-CUT est</p>
+<p>Une coupe dans un graphe est soit une bi-partition de ses sommets, soit l'ensemble des arêtes dont les extrémités sont dans des classes différentes.</p>
 </div></div>
 
 <p>Qui est NP-complet :</p>
@@ -733,22 +720,33 @@ On dérive de NAE 3- sat.</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>On montre que <a href="../cliques-stables/#probl%C3%A8me-stable">STABLE</a> ≤ MAX-cut</p>
-<p>Soit $(G, K)$ une instance du problème stable. On peut considérer sans perte de généralité que $\delta_G(x)\geq 1$ pour tout sommet $x$ de $G$.</p>
-<blockquote>
-<p>TBD ici</p>
-</blockquote>
+<p>Soit $(G, K)$ une instance du problème stable. On construit une instance de MAX-CUT en construisant le graphe $G'=(V', E')$ tel que :</p>
+<ul>
+<li>$V' = V(G) \cup \{x \} \cup (\cup_{e\in E(G)} \{ e_u, e_v \})$</li>
+<li>$E' = (\cup_{u\in V(G)}  \{xu \}) \cup (\cup_{uv\in E(G)} \{ u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \})$</li>
+</ul>
+<p>La figure ci-dessous montre un graphe $G$ (à gauche) instance de STABLE et le graphe $G'$ associé (à droite), instance de MAX-CUT :</p>
+<p><img src="max-cut-gadget.png" alt="le graphe $G'$"></p>
+<p>Montrons la réduction.</p>
+<p>Si $G$ admet un stable $I$ de taille $K$, on construit l'ensemble $I'$ de sommets de $G'$ contenant $I$ et tous les sommets $uv_u$ tel que que $v \in I$ (resp. $uv_v$ tel que que $u \in I$). Notez que pour toute arête $uv$ de $G$ :</p>
+<ol>
+<li>comme $I$ est un stable ($u$ et $v$ ne peuvent être dans $I$ si $uv \in E(G)$), au moins un des deux sommets $uv_u$ ou $uv_v$ est dans $I'$.</li>
+<li>si $uv_u$ est dans $I'$ mais pas $uv_v$, la bipartition $(I', V'\backslash \{ I' \})$ coupe 4 des 5 arêtes $\{u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \}$</li>
+<li>si $uv_u$ et $uv_v$ sont dans $I'$, la bipartition $(I', V'\backslash \{ I' \})$ coupe 4 des 5 arêtes $\{u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \}$</li>
+</ol>
+<p>Au final si $I$ est un stable de taille $K$ pour $G$, alors $(I', V'\backslash \{ I' \})$ est une coupe de taille $K + 4\cdot e(G)$ pour $G'$.</p>
+<p>Réciproquement soit $(I', V'\backslash \{ I' \})$  une coupe de taille $K' \geq K + 4\cdot e(G)$ pour $G'$. On peut supposer sans perte de généralité que $x\notin I'$ (sinon on échange les deux ensemble formant la bipartition) et on considère $I = I' \cap V(G)$.</p>
+<p>Soit $F$ l'ensemble des arêtes $uv$ de $G$ telles que $u$ et $v$ soient dans $I$. On a que :</p>
+<ul>
+<li>si $uv \in F$, la bipartition $(I', V'\backslash \{ I' \})$ ne peut couper au maximum que 3 des 5 arêtes $\{u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \}$,</li>
+<li>si $uv \in E(G) \backslash F$, la bipartition $(I', V'\backslash \{ I' \})$ ne peut couper au maximum que 4 des 5 arêtes $\{u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \}$</li>
+</ul>
+<p>On en déduit que $K' \leq \vert I\vert + 3 \cdot \vert F\vert + 4 \cdot (e(G) - \vert F \vert) = \vert I\vert + 4 \cdot e(G) - \vert F \vert$. Comme $K + 4 \cdot e(G) \leq K'$ on a $\vert I\vert \geq K +  \vert F \vert$ et on peut extraire de $I$ un stable de taille $K$ pour $G$ en supprimant une des extrémité de chaque arête.</p>
 </div>
 </details>     
 </div>
-<p>Dans notre cas, on ne cherche pas le plus grand, seul $m/2$ est suffisant, mais si on pouvait le faire rapidement on pourrait par dichotomie trouver le plus grand en ajoutant des sommets et des arêtes</p>
-<blockquote>
-<p>TBD le faire.</p>
-</blockquote>
-<p>On appelle ce genre de preuve &quot;une paille dans une botte de foin&quot;. Il existe plein de solutions possibles (il y a beaucoup de graphes $G'$ et pour que la moyenne soit $m/2$, plein fonctionnent) mais ils sont difficiles à trouver algorithmiquement.</p>
-<h3>Grand sous-graphe bi-parti exclus</h3>
-<blockquote>
-<p>TBD exemples</p>
-</blockquote>
+<p>Notez cependant que notre problème initial n'est pas exactement le même puisque l'on ne cherche pas forcément le plus grand, mais juste un graphe bi-parti à $e(G)/2$ arêtes que l'on sait exister.</p>
+<h3>Sous-graphe bi-parti exclus</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -799,21 +797,39 @@ On dérive de NAE 3- sat.</p>
 <p>Remarquez que la borne ne dépend pas de $t$.</p>
 </div></div>
 
-<blockquote>
-<p>TBD applications unit distance problem.
-TBD si on y a simple droite puis triangle on reste sur des trucs linéaires.
-TBD montrer qu'on arrive à $n\log(n)$ facilement.
-n0 = 1 m0 = 0
-on duplique le graphe en translattant tout de 1 unité (rester en position générale, possible par dichotomie de l'angle du vecteur de translation puisque toujours nb fini de sommets). on a alors
-n(i+1) = 2ni
-m(i+1) = 2mi + ni</p>
-<p>ce qui donne m(i+1)/n(i+1) = m(i)/n(i) + 1/2 = ... = m0/n0 + i/2 = log(n(i+1))/2</p>
-<p>$\mathcal{O}(n^{3/2}) = \mathcal{O}(n\sqrt{n})$ car le graphe est sans $K_{2, 3}$ l'intersection de deux cercle de rayon 1 centré en 0 et 1 c'est 2 points donc si deux sommets ont 2 voisins en commun ils ne peuvent avoir de troisième voisin en commun au mieux ils sont voisins entre eux.
-TBD meilleurs application connue est $\mathcal{O}(n^{4/3})$.</p>
-</blockquote>
-<blockquote>
-<p>TBD parler de la solution d'Erdòs ?</p>
-</blockquote>
+<p>Une application surprenante de ce théorème est une borne pour le problème consistant à trouver une configuration de $n$ points dans le plan maximisant  le nombre de distance unité entre ces points.</p>
+<p>Par exemple dans l'exemple suivant $n=2$ et on a 1 distance valant 1 unité :</p>
+<p><img src="distance-unit%C3%A9-1.png" alt="distance unité 1"></p>
+<p>On peut bien sur généraliser (ci-dessous 5 points et 4 distances unités) :</p>
+<p><img src="distance-unit%C3%A9-2.png" alt="distance unité 2"></p>
+<p>On est à $n$ points et $n-1$ distances unités. On peut bien sur faire mieux avec une échelle :</p>
+<p><img src="distance-unit%C3%A9-3.png" alt="distance unité 3"></p>
+<p>Pour $n$ points et $2n-3$ distances unités.</p>
+<p>On peut cependant faire mieux que le linéaire en dupliquant une solution, liant chaque point avec son pendant et en translatant le tout d'une unité :</p>
+<p><img src="distance-unit%C3%A9-4.png" alt="distance unité 4"></p>
+<p>On passe d'une solution à $n_i$ sommets et $m_i$ distances à une solutions à $n_{i+1} = 2\cdot n_i$ sommets et $m_{i+1} = 2\cdot m_i + n_i$ distances. Ce qui donne l'équation :</p>
+<div>
+$$
+\frac{m_i}{n_i} = \frac{m_{i-1}}{n_{i-1}} + 1 = \dots = \frac{0}{1} + i = \log_2(n_i)
+$$
+</div>
+<p>Ce qui donne une solution en $\mathcal{O}(n\log(n))$.</p>
+<p>On peut borner le nombre de solution en remarquant que le graphe dont les sommets représentent les points et les arêtes les distances unités ne contient par le graphe $K_{2, 3}$. En effet la figure suivante le montre, intersection de 2 cercles de rayon unités étant uniquement 2 points (les 2 centres ont au plus 2 voisins en communs) :</p>
+<p><img src="distance-unit%C3%A9-5.png" alt="distance unité 5"></p>
+<p>Le théorème précédent nous donne donc une borne max du nombre d'arêtes : $\mathcal{O}(n^{2-1/2}) = \mathcal{O}(n^{3/2}) = \mathcal{O}(n\sqrt{n})$.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les meilleurs bornes connues sont :</p>
+<ul>
+<li>La meilleur borne max connu est $\mathcal{O}(n^{4/3})$ et est donnée dans <a href="https://trotter.math.gatech.edu/papers/44.pdf">Unit distances in the Euclidean
+plane(Spencer, Szemerédi et Trotter, 1984)</a></li>
+<li>La meilleur borne min connue est $n^{1 + \mathcal{O}(1)/log(log(n))}$ et on la doit à Erdős dans <a href="https://users.renyi.hu/~p_erdos/1946-03.pdf">On sets of distances of n points (Erdős, 1946)</a>.</li>
+</ul>
+</div></div>
+
 <p>Nous allons montrer maintenant une borne min pour des graphes sans sous-graphes bi-parti complets.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -825,7 +841,28 @@ TBD meilleurs application connue est $\mathcal{O}(n^{4/3})$.</p>
 <p>Pour tout $s\leq t$, il existe des graphes à $n$ sommets ayant plus de $\frac{1}{16}\cdot n^{2-\frac{s + t -2}{s\cdot t -1}}$ arêtes n'admettant pas $K_{s, t}$ comme sous-graphe.</p>
 </div></div>
 
-<p>La preuve de ce théorème est une conséquence directe du théorème suivant, qui utilise la méthode probabiliste avec altération. Ce raffinement de la méthode probabiliste commence par construire un graphe aléatoire puis on le modifie pour qu'il satisfasse nos hypothèse. Encore une fois la preuve est (extrêmement) élégante mais non constructive :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Conséquence directe du théorème suivant.</p>
+</div>
+</details>     
+</div>
+<p>La preuve du théorème suivant utilise la méthode probabiliste avec altération. Ce raffinement de la méthode probabiliste commence par construire un graphe aléatoire puis on le modifie pour qu'il satisfasse nos hypothèse. Encore une fois la preuve est (extrêmement) élégante mais non constructive :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -924,7 +961,7 @@ $$
 <p>En particulier pour le graphe sans cycle de longueur 4, c'est à dire des graphes sans $K_{2, 2}$  on a la l'encadrement :</p>
 <div>
 $$
-\Theta(n^{4/3}) \leq e(G) \leq C_n \cdot \mathcal{O}(n^{3/2})
+\Theta(n^{4/3}) \leq e(G) \leq \mathcal{O}(n^{3/2})
 $$
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
