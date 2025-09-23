@@ -231,6 +231,22 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 
 ### Cours
 
+<!-- > TBD reordonner et faire github puis diff puis ajout d'un utilisateur avant usage. 
+
+Et du coup faire github en cours, puis td puis usage pour voir comment tout ça se fait. 
+(En l'état comme ils ne savent ce qu'il faut faire la partie usage est trop abstraite)
+Puis Comment faire Et enfin apres : la ligne de commande -->
+
+<!-- > TBD en 1A ne garder que ce que doit être un projet :
+- readme
+- contributing
+- tests
+- requirements
+- doc si nécessaire
+
+Puis on envoie tout sur github comme un drive (sans le .venv !)
+-->
+
 {% aller %}
 
 [Gestion des sources](/cours/gestion-des-sources/){.interne} (jusqu'à la partie outils) :
@@ -239,7 +255,7 @@ Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le fair
 2. usage : 
    1. [configuration](/cours/gestion-des-sources/usage-quotidien/){.interne}
    2. [bonnes pratiques](/cours/gestion-des-sources/bonnes-pratiques/){.interne}
-   
+
 {% endaller %}
 
 ### TD

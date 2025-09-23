@@ -375,6 +375,44 @@ Notez comment la preuve est élégante ! C'est souvent le cas lorsque l'on utili
 > TBD NP-complet <https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf>
 > On dérive de NAE 3- sat.
 
+Le problème de trouver le grand sous graphe bi-parti (clairement) équivalent au problème suivant :
+<span id="problème-MAX-CUT"></span>
+
+{% note "**Problème**" %}
+
+- **nom** : MAX-CUT
+- **Entrée** :
+  - un graphe
+  - un entier $K$
+- **Question** : le graphe contient-il une bipartition $V_1$ et $V_2$ de ses sommets tels que $\vert \\{xy \vert xy \in V(G), x \in V_1, y in V_2 \\} \geq K$ ?
+
+{% endnote %}
+{% info %}
+Ue coupe dans un graphe est soit une bi=partition de ses sommets, soit l'ensemble des arêtes dont les extrémités sont dans des classes différentes.
+{% endinfo %}
+
+{% note "**Définition**" %}
+Le problème MAX-CUT est
+{% endnote %}
+
+Qui est NP-complet :
+
+{% note "**Proposition**" %}
+Le problème MAX-CUT est NP-complet.
+{% endnote %}
+{% details "preuve", "open" %}
+On montre que [STABLE](../cliques-stables/#problème-stable) ≤ MAX-cut
+
+Soit $(G, K)$ une instance du problème stable. On peut considérer sans perte de généralité que $\delta_G(x)\geq 1$ pour tout sommet $x$ de $G$.
+
+> TBD ici
+
+{% enddetails %}
+
+Dans notre cas, on ne cherche pas le plus grand, seul $m/2$ est suffisant, mais si on pouvait le faire rapidement on pourrait par dichotomie trouver le plus grand en ajoutant des sommets et des arêtes
+
+> TBD le faire.
+
 On appelle ce genre de preuve "une paille dans une botte de foin". Il existe plein de solutions possibles (il y a beaucoup de graphes $G'$ et pour que la moyenne soit $m/2$, plein fonctionnent) mais ils sont difficiles à trouver algorithmiquement.
 
 ### Grand sous-graphe bi-parti exclus
@@ -391,7 +429,8 @@ On cherche des graphes à $n$ sommets ne possédant pas de sous-graphes bi-parti
 Pour tout $s\leq t$, il existe ue constante $C$ telle que tout graphe à $n$ sommet ne possédant pas $K_{s, t}$ à moins de $C\cdot n^{2-{1}/{s}}$ arêtes.
 {% endnote %}
 {% details "preuve", "open" %}
-admis.
+
+> TBD écrire la preuve.
 
 {% enddetails %}
 {% info %}
@@ -402,7 +441,7 @@ Remarquez que la borne ne dépend pas de $t$.
 > TBD si on y a simple droite puis triangle on reste sur des trucs linéaires.
 > TBD montrer qu'on arrive à $n\log(n)$ facilement.
 > n0 = 1 m0 = 0
-> on duplique le graphe en translattant tout de 1 unité. on a alors
+> on duplique le graphe en translattant tout de 1 unité (rester en position générale, possible par dichotomie de l'angle du vecteur de translation puisque toujours nb fini de sommets). on a alors
 > n(i+1) = 2ni
 > m(i+1) = 2mi + ni
 >
@@ -410,7 +449,8 @@ Remarquez que la borne ne dépend pas de $t$.
 >
 > $\mathcal{O}(n^{3/2}) = \mathcal{O}(n\sqrt{n})$ car le graphe est sans $K_{2, 3}$ l'intersection de deux cercle de rayon 1 centré en 0 et 1 c'est 2 points donc si deux sommets ont 2 voisins en commun ils ne peuvent avoir de troisième voisin en commun au mieux ils sont voisins entre eux.
 > TBD meilleurs application connue est $\mathcal{O}(n^{4/3})$.
-> 
+
+> TBD parler de la solution d'Erdòs ?
 
 Nous allons montrer maintenant une borne min pour des graphes sans sous-graphes bi-parti complets.
 
@@ -486,7 +526,7 @@ Il suffit maintenant d'enlever une arête de $G^\star$ pour toute copie de $H$ e
 On peut faire mieux en utilisant d'autres méthodes, en particulier algébrique. Regardez le lien si vous voulez plus d'infos.
 {% endinfo %}
 
-Pour le graphe bi-parti complet $K_{s, t}$ cela nous donne l'encadrement suivant pour un graphe $G$ à $n$ somments ne possédant pas $K_{s, t}$ comme sous-graphe :
+Pour le graphe bi-parti complet $K_{s, t}$ cela nous donne l'encadrement suivant pour un graphe $G$ à $n$ sommets ne possédant pas $K_{s, t}$ comme sous-graphe :
 
 <div>
 $$

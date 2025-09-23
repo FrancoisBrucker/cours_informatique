@@ -277,11 +277,10 @@ Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir san
 
 La transformation est bien linéaire. et résoudre SAT implique 3-sat car les variables binaires ajoutées s'annulent (dans 2 clauses l'une vrai et l'autre fausse) et si 3-SAT alors on en déduit SAT car dans les méta clauses, il y a forcément un des litéraux initiaux qui est vrai.
 
-### Variante
+### 3-SAT ≤ NAE-3-SAT
 
-> TBD <https://en.wikipedia.org/wiki/Not-all-equal_3-satisfiability>
-> TBD montrer 3-SAT ≤ NAE-SAT (cf <https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf>)
-> TBD on va en avoir besoin pour montrer que max cut est NP-complet.
+> TBD variante <https://en.wikipedia.org/wiki/Not-all-equal_3-satisfiability> semble plus comtrainte mais en fait non, c'est plus général.
+> TBD montrer 3-SAT ≤ NAE-4-SAT ≤ NAE-3-SAT (cf <https://math.stackexchange.com/a/2828390> pour un résumé et <https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf> pour la version longue)
 
 ## Et 2-SAT ?
 
