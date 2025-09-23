@@ -138,6 +138,10 @@ Quelques algorithmes ont aussi à connaître :
 - problème du voyageur de commerce
 - coloration de graphe, en particulier l'algorithme glouton de Welsch et Powell (celui du cours)
 
+
+> TBD. Chemins de Dyck. Ca tombe régulièrement aux concours (et plutôt en math d'ailleurs) Trouver exam centrale PC 2011 <https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021>
+>
+
 ## X
 
 > TBD

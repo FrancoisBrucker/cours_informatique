@@ -64,38 +64,145 @@ Pour l'arbre planaire précédent, le parcours donne :
 
 Le mot associé est :
 
+```
+EPEEPEPPEPEEEPEPPEEPPP
+```
 
+Remarquez qu'il permet de retrouver notre arbre initial en suivant le parcours comme sur la figure.
 
-> un DFS. pour encoder les arbres planaires. <https://moodle1.u-bordeaux.fr/pluginfile.php/462061/mod_resource/content/0/Slides.pdf>
->
-> 1. dessiner comme une montagne le graphe planaire exemple
-> 2. +1, -1 ≥0 et au final 0 : chemin de dyck de longueur 2m = 2n-2 
-> 3. cas particulier de mots de Dyck. Marche aussi (E(nfant suivant)/P(arent)) 
->
-> aussi triangulation d'un polygone, arbres hiérarchiques, etc... <https://www.youtube.com/watch?v=fczN0BCx0xs>. Un peu le no,bre d'or des combinatoriste.
+De plus :
 
-> Aussi des chemins.
-> Des chemins de taxis :
+1. le mot commence par `E`
+2. il y a autant de `E` que de `P` dans le mot
+3. Il y a toujours plus de `E` que de `P` pour les $k$ premières lettres (quelque soit $k$) du mot
 
-![chemins de taxis](./chemin-taxis.png)
+Les deux remarques sont fondamentales, puisque tout mot ayant les 2 propriétés précédente permet de décrire un arbre planté. En effet, par récurrence sur la taille paire (puisqu'il y a autant de `E` que de `P`) du mot. En prenant un mot $m$ de taille $2n$ satisfaisant les 2 conditions, il suffit de supprimer de celui-ci la première occurrence du mot `EP` (disons que cet occurrence était à la position $k$ du mot) pour obtenir un mot $m'$ de taille $2(n-1)$ satisfaisant les conditions. Ce mot encode un arbre planté er le `EP` que l'on a supprimé correspond au premier enfant du $k$ descendant le plus à gauche de la racine.
 
-aux chemins de Dyck :
+On en déduit que ces mots de tailles $2p$ forment une bijection avec les arbres plantés à $p+1$ sommets. On se convaincra aisément que l'on peut aussi les décrire comme suit :
 
+{% note "**Définition**" %}
+On appelle **_mot de [Dyck](https://fr.wikipedia.org/wiki/Walther_von_Dyck)_** une suite finie $(u_i)_{1\leq i \leq 2p}$ de longueur $2p$ telle que :
 
-<https://www.youtube.com/watch?v=Lcy5PLkHEoo>
+- $u_i \in \\{-1, 1\\}$ pour tout $1\leq i \leq 2p$
+- $\sum_{1\leq i \leq k} u_i \geq 0$ pour tout $1\leq k \leq 2p$
+- $\sum_{1\leq i \leq 2p} u_i = 0$
+{% endnote %}
 
-> TBD. Ca tombe régulièrement aux concours (le mettre dans le cours S6) Trouver exam centrale PC 2011 <https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021https://www.doc-solus.fr/prepa/sci/adc/bin/view.corrige.html?q=PC_MATHS_CENTRALE_1_2021>
->
+On en déduit notre première caractérisation des arbres planaires :
+
+{% note "**Proposition**" %}
+L'ensemble des mots de Dyck est en bijection avec l'ensemble des arbres plantés
+{% endnote %}
+{% details "preuve", "open" %}
+Clair en remplaçant $+1$ par `E` et $-1$ par `P`.
+{% enddetails %}
+
+Un façon commode de représenter un mot de Dyck est le profil de montagne. On se place sur une grille triangulaire et on monte avec un $+1$ et on descent avec un $-1$. Le mot de l'arbre planté précédent correspond au profil :
+
+![profil Dyck](./dyck-profil.png)
+
+Le profil s'inscrit dans une demi-grille $p \times p$ si le mot est de longueur $2p$.
+
+De là, un chemin de Dyck de longueur $2p$ est [un chemin de taxi](../../projet-chemin-de-taxi/){.interne} sur une grille carrée de longueur $p \times p$ restant au-dessus de la diagonale :
+
+![chemin de taxi Dyck](./chemin-taxi-dyck.png)
+
 ## Énumération des arbres planaires
 
-> TBD énumération avec un Dijkstra sur arbre orienté sur demi-grille.
+> TBD énumération des chemins sur une demi-grille. Comme on a fait dans les chemins de taxis
 
 ## Compter les chemins de Dyck
 
-Compter dyck :
+{% lien %}
+[Compter les chemins de Dyck](https://www.youtube.com/watch?v=Lcy5PLkHEoo&list=PLmoTCYjMFPpSK1Hmew6nR1PgPueYVEUyw&index=21)
+{% endlien %}
 
-> 1/(n+1)(2n n)
-![preuve 1](./dyck-1.png)
+On va compter les chemins de Dyck de deux façons différentes. Elles vont nous donner deux formules égales (mais dont l'égalité n'est pas triviales à démontrer) et deux jolies démonstrations.
 
-> (2n n) - (2n n+1)
-![preuve 2](./dyck-2.png)
+### Calcul par soustraction
+
+Prenons un chemin de taxi de taille $(p, p)$ qui n'est pas un chemin de Dyck :
+
+![compte 1.1](./compte-dyck-1-1.png)
+
+Il contient forcément des chemins dans la demi-grille inférieure, ici en rouge. Prenons le premier tronçon du chemin qui passe sous la diagonale, il est forcément horizontal, et séparons le chemin en 3 :
+
+- le début (en vert)
+- le premier tronçon horizontal dans la demi-grille inférieure (en rouge)
+- la fin du trajet (en bleu)
+
+![compte 1.2](./compte-dyck-1-2.png)
+
+L'astuce consiste maintenant à construire le chemin :
+
+- qui commence avec le chemin vert
+- continue par le premier tronçon horizontal dans la demi-grille inférieure (en rouge)
+- termine avec le complémentaire du chemin bleu (lorsque le chemin bleu monte le complémentaire va a droite et réciproquement)
+
+Comme le chemin bleu commence juste en-dessous de la diagonale et termine en $(p, p)$, ce nouveau chemin est un chemin de taxi de taille $(p-1, p+1)$ :
+
+![compte 1.3](./compte-dyck-1-3.png)
+
+Réciproquement, tout chemin de taxi de taille $(p-1, p+1)$ va forcément passer sous la diagonale :
+
+![compte 1.4](./compte-dyck-1-4.png)
+
+Et on peut le transformer, en suivant la même procédure, en un chemin de taxi de $(p, p)$ qui n'est pas de Dyck :
+
+![compte 1.5](./compte-dyck-1-5.png)
+
+On en conclut qu'il existe exactement $\binom{(p-1) + (p+1)}{p-1}$ chemin de taxi de $(p, p)$ qui ne sont pas de Dyck et comme il y a $\binom{(p) + (p)}{p}$ chemin de taxis de taille $(p, p)$ :
+
+{% note "**Proposition**" %}
+Il y a Exactement $\binom{2p}{p} - \binom{2p}{p-1}$ chemin de Dyck de taille $2p$
+{% endnote %}
+
+Et donc :
+
+{% note "**Proposition**" %}
+Il y a Exactement $\binom{2p}{p} - \binom{2p}{p-1}$ arbres planaires à $p + 1$ sommets
+{% endnote %}
+
+### Calcul par bijections
+
+Cet autre calcul du nombre de chemins de Dyck va séparer tous les chemin de taxis de taille $(p, p)$ en classes de même taille.
+
+On note $C_k$ le nombre de chemin de taxi de $(p, p)$ ayant $k$ chemin horizontaux sous la diagonale. Par exemple le chemin suivant est dans $C_3$ :
+
+![compte 2.1](./compte-dyck-1-1.png)
+
+Comme le premier tronçon sous la diagonale d'un chemin de taxi de taille $(p, p)$ est forcément horizontal,  les chemins de Dyck sont exactement les chemins de $C_0$.
+
+Prenons un chemin de $C_i$ avec $i>0$ et prenons le dernier tronçon sous la diagonale de celui-ci. Ce tronçon est forcément vertical :
+
+![compte 2.2](./compte-dyck-2-2.png)
+
+On peut alors séparer ce chemin en 3 :
+
+- le début (en vert)
+- le dernier tronçon vertical dans la demi-grille inférieure (en rouge)
+- la fin du trajet (en bleu)
+
+Comme la fn de trajet commence et fini sur la diagonale, le chemin constitué :
+
+- commençant par le chemin bleu
+- puis ayant un tronçon vertical (rouge)
+- et finissant par le chemin vert
+
+Sera un chemin de taxi de $(p, p)$ :
+
+![compte 2.3](./compte-dyck-2-3.png)
+
+Et il sera dans $C_{i-1}$ puisque le premier tronçon horizontal sous la diagonal du chemin initial est maintenant au-dessus de la diagonale.
+
+Cette procédure permet d'associer tout chemin de $C_i$ à un unique chemin de $C_{i-1}$ (et réciproquement) : il y a autant de chemin de $C_i$ que de chemin de $C_{i-1}$. Comme $0\leq i \leq p$, que leur somme fait l'ensemble des $\binom{2p}{p}$ chemins de taxi de $(p, p)$ et que $C_0$ est exactement l'ensemble des chemins de Dyck, on en conclut :
+
+{% note "**Proposition**" %}
+Il y a Exactement $\frac{1}{p+1}\binom{2p}{p}$ chemin de Dyck de taille $2p$
+{% endnote %}
+
+Et donc :
+
+{% note "**Proposition**" %}
+Il y a Exactement $\frac{1}{p+1}\binom{2p}{p}$ arbres planaires à $p + 1$ sommets
+{% endnote %}

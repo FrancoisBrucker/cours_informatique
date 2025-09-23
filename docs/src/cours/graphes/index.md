@@ -56,6 +56,14 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 {% endaller %}
 
+Projet :
+
+{% aller %}
+
+[Chemins de Taxis](projet-mots-bruijn){.interne}
+
+{% endaller %}
+
 ### Chemins le plus long
 
 {% aller %}
