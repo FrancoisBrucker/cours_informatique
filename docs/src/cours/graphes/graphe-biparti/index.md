@@ -20,7 +20,7 @@ C'est une classe de graphe importante à connaître car, parfois curieusement, i
 ### Bi-parti
 
 {% note "**Définition**" %}
-Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$  en deux [stables](../structure/#definition-stable){.interne}.
+Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux [stables](../structure/#definition-stable){.interne}.
 {% endnote  %}
 
 Par exemple le graphe suivant :
@@ -215,7 +215,7 @@ Le problème de partition d'un graphe en graphes bipartis est un problème de co
 Des ordinateurs liés entre eux deux à deux par un graphe complet doivent tous communiquer entre eux. La contrainte est que chaque ordinateur ne peut être que dans 3 états :
 
 - endormis
-- en transmission avec **un** unique autre ordinateur.
+- en transmission avec **un unique** autre ordinateur.
 
 Chaque couple d'ordinateur doit s'échanger **une** donnée. Combien d'étapes au minimum sont-elles nécessaires pour tout couple d'ordinateurs aient communiqué ?
 
@@ -331,7 +331,7 @@ Ce qui n'est possible que si $c_i = 0$ pour tout $1\leq i \leq n$ : contradictio
 
 Nous allons montrer des encadrements sur les graphe possédant, ou pas, des sous-graphes bi-partis.
 
-### sous-graphe bi-parti inclus
+### Sous-graphe bi-parti inclus
 
 {% lien %}
 <https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=1>
@@ -361,21 +361,19 @@ $$
 \mathbb{E}(E') &=& \frac{1}{\vert \mathcal{G}' \vert}\sum_{G'=(V, E') \in \mathcal{G}'}\vert E'\vert\\
 & =& \frac{1}{\vert \mathcal{G}' \vert}\sum_{xy \in E} \vert \{G' \vert G'=(V, E') \in \mathcal{G}', xy \in E' \}\vert\\
 & = &\frac{\sum_{xy \in E} \vert \{G' \vert G'=(V, E') \in \mathcal{G}', xy \in E' \}\vert}{\vert \mathcal{G}' \vert} \\
-&= &\sum_{xy \in E}p_{\text{probabilité que les deux sommet de } xy \text{soient de même couleur}}
+&= &\sum_{xy \in E}{\text{probabilité que } xy \text{ soit une arête}}\\
+&= &\sum_{xy \in E}{\text{probabilité que les deux sommets de } xy \text{ soient de même couleur}}\\
+&= &\sum_{xy \in E}\frac{1}{2}\\
+&= &\frac{m}{2}\\
 \end{array}
 $$
 </div>
 
-Comme cette probabilité vaut $\frac{1}{2}$ quelque soit l'arête, on en déduit que le nombre moyen d'arête dans $G'$ est $\frac{m}{2}$.
-
-On termine la preuve en remarquant que pour obtenir cette espérance il est indispensable qu'il existe au moins un sous-graphe $G^\star$ de $G$ atteignant cette moyenne.
+On termine la preuve en remarquant que si le nombre moyen d'arête est $\frac{m}{2}$, il est indispensable qu'il existe au moins un sous-graphe $G^\star$ de $G$ l'atteignant.
 {% enddetails %}
 
-Notez comment la preuve est élégante ! C'est souvent le cas lorsque l'on utilise [la méthode probabiliste](https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste). Cependant, ces preuves sont non constructives. Et dans notre cas, trouver ce graphe bi-parti n'est pas facile du tout puisque trouver le plus grand sous-graphe biparti est NP-complet. Cela revient en effet à trouver une coupe de taille maximale : <https://fr.wikipedia.org/wiki/Coupe_maximum>.
-> TBD NP-complet <https://www.cs.cornell.edu/courses/cs4820/2014sp/notes/reduction-maxcut.pdf>
-> On dérive de NAE 3- sat.
+Notez comment la preuve est élégante ! C'est souvent le cas lorsque l'on utilise [la méthode probabiliste](https://fr.wikipedia.org/wiki/M%C3%A9thode_probabiliste). Cependant, ces preuves sont non constructives et dans notre cas trouver ce graphe bi-parti, ou tout du moins le plus grand n'est pas facile du tout. C'est en effet un effet un problème algorithmique classique :
 
-Le problème de trouver le grand sous graphe bi-parti (clairement) équivalent au problème suivant :
 <span id="problème-MAX-CUT"></span>
 
 {% note "**Problème**" %}
@@ -388,36 +386,52 @@ Le problème de trouver le grand sous graphe bi-parti (clairement) équivalent a
 
 {% endnote %}
 {% info %}
-Ue coupe dans un graphe est soit une bi=partition de ses sommets, soit l'ensemble des arêtes dont les extrémités sont dans des classes différentes.
+Une coupe dans un graphe est soit une bi-partition de ses sommets, soit l'ensemble des arêtes dont les extrémités sont dans des classes différentes.
 {% endinfo %}
-
-{% note "**Définition**" %}
-Le problème MAX-CUT est
-{% endnote %}
 
 Qui est NP-complet :
 
 {% note "**Proposition**" %}
+
 Le problème MAX-CUT est NP-complet.
+
 {% endnote %}
 {% details "preuve", "open" %}
 On montre que [STABLE](../cliques-stables/#problème-stable) ≤ MAX-cut
 
-Soit $(G, K)$ une instance du problème stable. On peut considérer sans perte de généralité que $\delta_G(x)\geq 1$ pour tout sommet $x$ de $G$.
+Soit $(G, K)$ une instance du problème stable. On construit une instance de MAX-CUT en construisant le graphe $G'=(V', E')$ tel que :
 
-> TBD ici
+- $V' = V(G) \cup \\{x \\} \cup (\cup_{e\in E(G)} \\{ e_u, e_v \\})$
+- $E' = (\cup_{u\in V(G)}  \\{xu \\}) \cup (\cup_{uv\in E(G)} \\{ u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \\})$
+
+La figure ci-dessous montre un graphe $G$ (à gauche) instance de STABLE et le graphe $G'$ associé (à droite), instance de MAX-CUT :
+
+![le graphe $G'$](./max-cut-gadget.png)
+
+Montrons la réduction.
+
+Si $G$ admet un stable $I$ de taille $K$, on construit l'ensemble $I'$ de sommets de $G'$ contenant $I$ et tous les sommets $uv_u$ tel que que $v \in I$ (resp. $uv_v$ tel que que $u \in I$). Notez que pour toute arête $uv$ de $G$ :
+
+1. comme $I$ est un stable ($u$ et $v$ ne peuvent être dans $I$ si $uv \in E(G)$), au moins un des deux sommets $uv_u$ ou $uv_v$ est dans $I'$.
+2. si $uv_u$ est dans $I'$ mais pas $uv_v$, la bipartition $(I', V'\backslash \\{ I' \\})$ coupe 4 des 5 arêtes $\\{u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \\}$
+3. si $uv_u$ et $uv_v$ sont dans $I'$, la bipartition $(I', V'\backslash \\{ I' \\})$ coupe 4 des 5 arêtes $\\{u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \\}$
+
+Au final si $I$ est un stable de taille $K$ pour $G$, alors $(I', V'\backslash \\{ I' \\})$ est une coupe de taille $K + 4\cdot e(G)$ pour $G'$.
+
+Réciproquement soit $(I', V'\backslash \\{ I' \\})$  une coupe de taille $K' \geq K + 4\cdot e(G)$ pour $G'$. On peut supposer sans perte de généralité que $x\notin I'$ (sinon on échange les deux ensemble formant la bipartition) et on considère $I = I' \cap V(G)$.
+
+Soit $F$ l'ensemble des arêtes $uv$ de $G$ telles que $u$ et $v$ soient dans $I$. On a que :
+
+- si $uv \in F$, la bipartition $(I', V'\backslash \\{ I' \\})$ ne peut couper au maximum que 3 des 5 arêtes $\\{u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \\}$, 
+- si $uv \in E(G) \backslash F$, la bipartition $(I', V'\backslash \\{ I' \\})$ ne peut couper au maximum que 4 des 5 arêtes $\\{u_{uv}v_{uv}, uu_{uv}, vv_{uv}, xu_{uv}, xv_{uv} \\}$
+
+On en déduit que $K' \leq \vert I\vert + 3 \cdot \vert F\vert + 4 \cdot (e(G) - \vert F \vert) = \vert I\vert + 4 \cdot e(G) - \vert F \vert$. Comme $K + 4 \cdot e(G) \leq K'$ on a $\vert I\vert \geq K +  \vert F \vert$ et on peut extraire de $I$ un stable de taille $K$ pour $G$ en supprimant une des extrémité de chaque arête.
 
 {% enddetails %}
 
-Dans notre cas, on ne cherche pas le plus grand, seul $m/2$ est suffisant, mais si on pouvait le faire rapidement on pourrait par dichotomie trouver le plus grand en ajoutant des sommets et des arêtes
+Notez cependant que notre problème initial n'est pas exactement le même puisque l'on ne cherche pas forcément le plus grand, mais juste un graphe bi-parti à $e(G)/2$ arêtes que l'on sait exister.
 
-> TBD le faire.
-
-On appelle ce genre de preuve "une paille dans une botte de foin". Il existe plein de solutions possibles (il y a beaucoup de graphes $G'$ et pour que la moyenne soit $m/2$, plein fonctionnent) mais ils sont difficiles à trouver algorithmiquement.
-
-### Grand sous-graphe bi-parti exclus
-
-> TBD exemples
+### Sous-graphe bi-parti exclus
 
 {% lien %}
 <https://www.youtube.com/watch?v=YAo1sd4kuOQ&list=PLUl4u3cNGP62qauV_CpT1zKaGG_Vj5igX&index=3>
@@ -437,28 +451,61 @@ Pour tout $s\leq t$, il existe ue constante $C$ telle que tout graphe à $n$ som
 Remarquez que la borne ne dépend pas de $t$.
 {% endinfo %}
 
-> TBD applications unit distance problem.
-> TBD si on y a simple droite puis triangle on reste sur des trucs linéaires.
-> TBD montrer qu'on arrive à $n\log(n)$ facilement.
-> n0 = 1 m0 = 0
-> on duplique le graphe en translattant tout de 1 unité (rester en position générale, possible par dichotomie de l'angle du vecteur de translation puisque toujours nb fini de sommets). on a alors
-> n(i+1) = 2ni
-> m(i+1) = 2mi + ni
->
-> ce qui donne m(i+1)/n(i+1) = m(i)/n(i) + 1/2 = ... = m0/n0 + i/2 = log(n(i+1))/2
->
-> $\mathcal{O}(n^{3/2}) = \mathcal{O}(n\sqrt{n})$ car le graphe est sans $K_{2, 3}$ l'intersection de deux cercle de rayon 1 centré en 0 et 1 c'est 2 points donc si deux sommets ont 2 voisins en commun ils ne peuvent avoir de troisième voisin en commun au mieux ils sont voisins entre eux.
-> TBD meilleurs application connue est $\mathcal{O}(n^{4/3})$.
+Une application surprenante de ce théorème est une borne pour le problème consistant à trouver une configuration de $n$ points dans le plan maximisant  le nombre de distance unité entre ces points. 
 
-> TBD parler de la solution d'Erdòs ?
+Par exemple dans l'exemple suivant $n=2$ et on a 1 distance valant 1 unité :
+
+![distance unité 1](distance-unité-1.png)
+
+On peut bien sur généraliser (ci-dessous 5 points et 4 distances unités) :
+
+![distance unité 2](distance-unité-2.png)
+
+On est à $n$ points et $n-1$ distances unités. On peut bien sur faire mieux avec une échelle :
+
+![distance unité 3](distance-unité-3.png)
+
+Pour $n$ points et $2n-3$ distances unités.
+
+On peut cependant faire mieux que le linéaire en dupliquant une solution, liant chaque point avec son pendant et en translatant le tout d'une unité :
+
+![distance unité 4](distance-unité-4.png)
+
+On passe d'une solution à $n_i$ sommets et $m_i$ distances à une solutions à $n_{i+1} = 2\cdot n_i$ sommets et $m_{i+1} = 2\cdot m_i + n_i$ distances. Ce qui donne l'équation :
+
+<div>
+$$
+\frac{m_i}{n_i} = \frac{m_{i-1}}{n_{i-1}} + 1 = \dots = \frac{0}{1} + i = \log_2(n_i)
+$$
+</div>
+
+Ce qui donne une solution en $\mathcal{O}(n\log(n))$.
+
+On peut borner le nombre de solution en remarquant que le graphe dont les sommets représentent les points et les arêtes les distances unités ne contient par le graphe $K_{2, 3}$. En effet la figure suivante le montre, intersection de 2 cercles de rayon unités étant uniquement 2 points (les 2 centres ont au plus 2 voisins en communs) :
+
+![distance unité 5](distance-unité-5.png)
+
+Le théorème précédent nous donne donc une borne max du nombre d'arêtes : $\mathcal{O}(n^{2-1/2}) = \mathcal{O}(n^{3/2}) = \mathcal{O}(n\sqrt{n})$.
+
+{% info %}
+Les meilleurs bornes connues sont :
+
+- La meilleur borne max connu est $\mathcal{O}(n^{4/3})$ et est donnée dans [Unit distances in the Euclidean
+plane(Spencer, Szemerédi et Trotter, 1984)](https://trotter.math.gatech.edu/papers/44.pdf)
+- La meilleur borne min connue est $n^{1 + \mathcal{O}(1)/log(log(n))}$ et on la doit à Erdős dans [On sets of distances of n points (Erdős, 1946)](https://users.renyi.hu/~p_erdos/1946-03.pdf).
+
+{% endinfo %}
 
 Nous allons montrer maintenant une borne min pour des graphes sans sous-graphes bi-parti complets.
 
 {% note "**Théorème**" %}
 Pour tout $s\leq t$, il existe des graphes à $n$ sommets ayant plus de $\frac{1}{16}\cdot n^{2-\frac{s + t -2}{s\cdot t -1}}$ arêtes n'admettant pas $K_{s, t}$ comme sous-graphe.
 {% endnote %}
+{% details "preuve", "open" %}
+Conséquence directe du théorème suivant.
+{% enddetails %}
 
-La preuve de ce théorème est une conséquence directe du théorème suivant, qui utilise la méthode probabiliste avec altération. Ce raffinement de la méthode probabiliste commence par construire un graphe aléatoire puis on le modifie pour qu'il satisfasse nos hypothèse. Encore une fois la preuve est (extrêmement) élégante mais non constructive :
+La preuve du théorème suivant utilise la méthode probabiliste avec altération. Ce raffinement de la méthode probabiliste commence par construire un graphe aléatoire puis on le modifie pour qu'il satisfasse nos hypothèse. Encore une fois la preuve est (extrêmement) élégante mais non constructive :
 
 {% note "**Théorème**" %}
 Soit $H$ un graphe à $v(H) \geq 2$ sommets et $e(H) \geq 3$ arêtes, il existe $s\leq t$, il existe des graphes à $n$ sommets ayant plus de $\frac{1}{16}\cdot n^{2-\frac{v(H) -2}{e(H) -1}}$ arêtes n'admettant pas $H$ comme sous-graphe.
@@ -548,7 +595,7 @@ En particulier pour le graphe sans cycle de longueur 4, c'est à dire des graphe
 
 <div>
 $$
-\Theta(n^{4/3}) \leq e(G) \leq C_n \cdot \mathcal{O}(n^{3/2})
+\Theta(n^{4/3}) \leq e(G) \leq \mathcal{O}(n^{3/2})
 $$
 </div>
 
