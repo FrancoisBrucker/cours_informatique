@@ -12,8 +12,32 @@ eleventyComputed:
 
 Les **_arbres de Catalan_**, aussi appelé **_arbres binaires_** sont certainement les arbres les plus utilisés en algorithmie car à la base de nombre de structure de données. Nous n'allons pas ici étudier ces structures de données (nous renvoyons le lecteur au cours d'algorithmie) mais nous intéresser à ces arbres pour eux-mêmes.
 
-Commençons par les définir comme restriction des arbres planaires :
+Commençons par les définir de façon visuelle : Un **_arbre de Catalan_** est un arbre où tout sommet a au plus 2 enfants, l'un à _gauche_, l'autre à _droite_ :
 
+![exemple](./exemple-1.png)
+
+Notez bien que les arbres de catalan sont une **généralisation stricte** des arbres planaires où chaque nœud a au plus 2 enfants. L'exemple précédent n'est pas planaire (un nœud n'a qu'un enfant droit). Pour éviter toute confusion, considérez la définition suivante, utilisant les suites finies de `0` et de `1` (d'où l'utilisation d'arbre binaires) :
+
+> TBD def.
+> 
+{% note "**Définition**" %}
+L'ensemble des suites finies d'entiers strictement positifs ($\mathbb{N}^\star$) est noté $U$. On peut le définir tel que :
+
+<div>
+$$
+U \coloneqq \{ \epsilon \} \cup \cup_{n\geq 1}(\mathbb{N}^\star)^n
+$$
+</div>
+
+Avec $\epsilon$ la suite vide et $(\mathbb{N}^\star)^n = \mathbb{N}^\star \times \dots \times \mathbb{N}^\star$ le produit cartésien de taille $n$ de l'ensemble $\mathbb{N}^\star$ des entiers strictement positifs.
+{% endnote  %}
+{% note "**Définition**" %}
+Un **_arbre planaire_** $\tau$ est un sous ensemble de $U$ tel que :
+
+- $\epsilon \in \tau$
+- quelles que soient $u, v \in U$, si $uv \in \tau$ alors $u \in \tau$
+- quelle que soit $u \in U$, si $u \in \tau$ alors il existe $M_u(\tau) \in \mathbb{N}$ tel que si $\in  \mathbb{N}$, $ui \in \tau$ si et seulement si $1\leq i \leq M_u(\tau)$.
+{% endnote  %}
 
 > Dit binaires. Arbre les plus utilisés en algorithmie.
 
