@@ -10,6 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Les **_arbres de Catalan_**, aussi appelé **_arbres binaires_** sont certainement les arbres les plus utilisés en algorithmie car à la base de nombre de structure de données. Nous n'allons pas ici étudier ces structures de données (nous renvoyons le lecteur au cours d'algorithmie) mais nous intéresser à ces arbres pour eux-mêmes.
+
+Commençons par les définir comme restriction des arbres planaires :
+
+
 > Dit binaires. Arbre les plus utilisés en algorithmie.
 
 > TBD définition

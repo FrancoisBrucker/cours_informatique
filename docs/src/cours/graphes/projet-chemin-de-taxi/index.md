@@ -11,6 +11,7 @@ eleventyComputed:
 ---
 
 > TBD à faire en vrai avec du code des exercices et tout ça.
+> TBD Voir <https://archipel.uqam.ca/8784/1/M14397.pdf> et <https://www.youtube.com/watch?v=C0sJycGTLTc>
 
 Un chemin de Taxi est un chemin sur une grille carré allant du sommet de coordonnée $(0, 0)$ au sommet de coordonnée $(n, m)$. Ce chemin doit de plus être de longueur minimale.
 
@@ -47,16 +48,16 @@ C'est à cause dw la distance L1.
 En déduire :
 
 {% exercice %}
-Montez qu'il y a $\binom{n+m, m}$ chemins de taxis différent de taille $(n, m)$.
+Montez qu'il y a $\binom{n+m}{m}$ chemins de taxis différent de taille $(n, m)$.
 {% endexercice %}
 {% details "corrigé" %}
-La taille de tout chemin de taxi étant $n+m$ et qu'il y a exactement $m$ directions horizontales (_resp._ $n$ directions verticales), il y a autant de chemin de taxi que de positions où mettre $m$ directions horizontales (resp. $n$ directions verticales) parmi $n+m$ possibilités, c'est à dire $\binom{n+m, m}$ possibilités.
+La taille de tout chemin de taxi étant $n+m$ et qu'il y a exactement $m$ directions horizontales (_resp._ $n$ directions verticales), il y a autant de chemin de taxi que de positions où mettre $m$ directions horizontales (resp. $n$ directions verticales) parmi $n+m$ possibilités, c'est à dire $\binom{n+m}{m}$ possibilités.
 {% enddetails %}
 {% info %}
-On a $\binom{n+m, m} = \frac{(n+m)!}{n!(n+m-n)!} = \frac{(n+m)!}{m!(n+m-m)!} = \binom{n+m, n}$
+On a $\binom{n+m}{m} = \frac{(n+m)!}{n!(n+m-n)!} = \frac{(n+m)!}{m!(n+m-m)!} = \binom{n+m}{n}$
 {% endinfo %}
 > TBD :
 >
-> - les énumérer : on énumère les $\binom{n+m, m}$ possibilités
+> - les énumérer : on énumère les $\binom{n+m}{m}$ possibilités
 > - en prendre un au hasard
 >

@@ -60,7 +60,7 @@ Projet :
 
 {% aller %}
 
-[Chemins de Taxis](projet-mots-bruijn){.interne}
+[Chemins de Taxis](projet-chemin-de-taxi){.interne}
 
 {% endaller %}
 
@@ -104,8 +104,6 @@ Projets :
 3. [Projet chemins avec hubs](projet-chemins-hub){.interne}
 
 {% endaller %}
-
-> TBD : exemple de chemins de taxi. Voir <https://archipel.uqam.ca/8784/1/M14397.pdf> et <https://www.youtube.com/watch?v=C0sJycGTLTc>
 
 ## Arbres
 
