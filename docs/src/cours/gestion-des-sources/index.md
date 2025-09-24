@@ -43,9 +43,11 @@ Dire que l'on fait de la gestion des sources ou que l'on connaît [git](https://
 
 <!-- TBD 
 
+> TBD numéro de commit ?
+
 peut-être mettre le projet avant la théorie ? Ou en même temps ? 
 
-couper en trois
+couper en parties
 
 1. github comme un drive
 2. principe gestion des sources sans origine : 

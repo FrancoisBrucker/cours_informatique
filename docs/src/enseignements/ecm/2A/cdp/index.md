@@ -252,7 +252,7 @@ Puis on envoie tout sur github comme un drive (sans le .venv !)
 [Gestion des sources](/cours/gestion-des-sources/){.interne} (jusqu'à la partie outils) :
 
 1. [principes](/cours/gestion-des-sources/principes){.interne}
-2. usage : 
+2. usage :
    1. [configuration](/cours/gestion-des-sources/usage-quotidien/){.interne}
    2. [bonnes pratiques](/cours/gestion-des-sources/bonnes-pratiques/){.interne}
 

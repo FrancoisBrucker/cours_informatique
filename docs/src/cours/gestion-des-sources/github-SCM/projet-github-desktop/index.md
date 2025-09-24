@@ -34,7 +34,7 @@ Ignorez les fenêtres si vous en avez et arrivez là :
 
 ### Préférences
 
-Allez dans les préférences et vérifiez que :
+Allez dans les préférences (`file > options` sous windows ; `github desktop > préférences` sous mac) et vérifiez que :
 
 - _"Accounts"_ : pointe bien vers votre compte github
 - _"Integration"_ : soit lié à vscode et au terminal
@@ -191,6 +191,8 @@ Et on commit les changements :
 origin : A -> B
 ```
 
+> TBD on peut écrire ce que l'on veut ! Faire plusieurs exemples, du moment qu'on supprime les références aux commits en conflit. Faire un exemple ou on choisi. on unione ou même on fait autre chose.
+> 
 #### situation à la maison
 
 On modifie le fichier `oiseaux.txt`{.fichier} pour mettre les oiseaux dans l'ordre alphabétique :
