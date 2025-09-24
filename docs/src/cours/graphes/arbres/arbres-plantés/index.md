@@ -30,7 +30,7 @@ En informatique on utilise souvent la structure d'arbre en l'**enracinant**, c'e
 
 L'unicité des chemins permet d'ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire _"tomber"_ depuis la racine. On peut en effet les ranger par rapport à **leur chemin** par rapport à celle ci :
 
-![arbre_plante](./arbre_plante.png)
+![dendrogramme](./dendrogramme.png)
 
 Vocabulaire :
 
@@ -67,9 +67,7 @@ Cet ordonnancement est [très utilisé en biologie](https://fr.wikipedia.org/wik
 
 La méthode classique pour représenter des arbres plantés est de procéder comme pour le tracé axial concentrique des arbres, mais en plaçant les différents sommets sur des droites parallèles.
 
-En reprenant [l'arbre de la partie Cayley](../cayley/arbre-prufer-1.png) et en le plantant en 8, on obtient la figure ci-après :
-
-![dendrogramme](./dendrogramme.png)
+En reprenant [l'arbre de la partie Cayley](../cayley/arbre-prufer-1.png) et en le plantant en 8, on obtient la figure précédente.
 
 Jetez aussi un coup d'œil au lien suivant qui donne plusieurs façons de dessiner des arbres plantés :
 

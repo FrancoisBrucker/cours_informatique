@@ -51,7 +51,7 @@ Le nœud correspondant à la suite finie $(4, 1, 2)$ correspond au nœud qui est
 
 Encoder un arbre planté de façon planaire se fait facilement avec un parcourt d'arbre.
 
-## Planaire et mots de Dyck
+## Planaire et chemins de Dyck
 
 Associons le parcours en profondeur parcourant les enfants dans l'ordre à un arbre planaire et notons :
 
@@ -81,27 +81,33 @@ Les deux remarques sont fondamentales, puisque tout mot ayant les 2 propriétés
 On en déduit que ces mots de tailles $2p$ forment une bijection avec les arbres plantés à $p+1$ sommets. On se convaincra aisément que l'on peut aussi les décrire comme suit :
 
 {% note "**Définition**" %}
-On appelle **_mot de [Dyck](https://fr.wikipedia.org/wiki/Walther_von_Dyck)_** une suite finie $(u_i)_{1\leq i \leq 2p}$ de longueur $2p$ telle que :
+On appelle **_chemin de [Dyck](https://fr.wikipedia.org/wiki/Walther_von_Dyck)_** une suite finie $(u_i)_{1\leq i \leq 2p}$ de longueur $2p$ telle que :
 
-- $u_i \in \\{-1, 1\\}$ pour tout $1\leq i \leq 2p$
-- $\sum_{1\leq i \leq k} u_i \geq 0$ pour tout $1\leq k \leq 2p$
-- $\sum_{1\leq i \leq 2p} u_i = 0$
+1. $u_i \in \\{-1, 1\\}$ pour tout $1\leq i \leq 2p$
+2. $\sum_{1\leq i \leq k} u_i \geq 0$ pour tout $1\leq k \leq 2p$
+3. $\sum_{1\leq i \leq 2p} u_i = 0$
+
 {% endnote %}
+{% info %}
+On ne l'utilisera pas ici, mais on appelle ;ot de Dyck des chemins de Dyk sans la troisième condition.
+{% endinfo %}
 
 On en déduit notre première caractérisation des arbres planaires :
 
+<span id="proposition-bijection-Dyck"></span>
+
 {% note "**Proposition**" %}
-L'ensemble des mots de Dyck est en bijection avec l'ensemble des arbres plantés
+L'ensemble des chemins de Dyck est en bijection avec l'ensemble des arbres plantés
 {% endnote %}
 {% details "preuve", "open" %}
 Clair en remplaçant $+1$ par `E` et $-1$ par `P`.
 {% enddetails %}
 
-Un façon commode de représenter un mot de Dyck est le profil de montagne. On se place sur une grille triangulaire et on monte avec un $+1$ et on descent avec un $-1$. Le mot de l'arbre planté précédent correspond au profil :
+Un façon commode de représenter un chemin de Dyck est le profil de montagne. On se place sur une grille triangulaire et on monte avec un $+1$ et on descent avec un $-1$. Le mot de l'arbre planté précédent correspond au profil :
 
 ![profil Dyck](./dyck-profil.png)
 
-Le profil s'inscrit dans une demi-grille $p \times p$ si le mot est de longueur $2p$.
+Le profil s'inscrit dans une demi-grille $p \times p$ si le chemin est de longueur $2p$.
 
 De là, un chemin de Dyck de longueur $2p$ est [un chemin de taxi](../../projet-chemin-de-taxi/){.interne} sur une grille carrée de longueur $p \times p$ restant au-dessus de la diagonale :
 
