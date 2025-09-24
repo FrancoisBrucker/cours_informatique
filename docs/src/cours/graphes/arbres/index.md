@@ -66,10 +66,6 @@ Explorer les propriétés et l'intérêt de l'arbre.
 
 ### Arbres de Catalan
 
-> Dit binaires
->
-> On connaît l'ordre gauche ou droite des enfants.
-
 {% aller %}
 
 [Arbres de Catalan](arbres-catalan){.interne}

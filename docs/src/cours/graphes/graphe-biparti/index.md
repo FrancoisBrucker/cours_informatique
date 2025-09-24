@@ -53,7 +53,7 @@ La propriété précédente n'est bien sur plus vraie si le graphe n'est pas con
 Montrez que  le graphe discret (sans arêtes) à $n$ sommets possède $2^{n-1}-1$ bi-partitions possibles.
 
 {% endexercice %}
-{% details "solution" %}
+{% details "solution 1" %}
 
 Par récurrence. Un graphe discret à 2 sommets possède bien $2^{2-1}-1 = 1$ bipartition.
 
@@ -65,6 +65,9 @@ On suppose la propriété vrai pour les ensembles à $n$ éléments et soit le g
 Il y a donc $2\cdot (2^{n-1}-1) + 1 = 2^n-1$ bipartitions à $n+1$ éléments (il y en a $2^{n-1}-1$ pour un ensemble à $n$ éléments par hypothèse de récurrence), ce qui conclut la preuve.
 
 {% enddetails %}
+{% details "solution 2" %}
+> TBD plus simple : mot binaire/complémentaire = 2^n/2 mais on supprimme 0000/11111 car pas bi-partition.
+{% enddetails %}
 {% info %}
 Le nombre de partitions d'un ensemble à $n$ éléments en $k$ sous-ensembles est appelé [nombre de Stirling de second espèce](https://fr.wikipedia.org/wiki/Nombre_de_Stirling#Nombre_de_Stirling_de_seconde_esp%C3%A8ce)
 {% endinfo %}
@@ -72,7 +75,7 @@ Le nombre de partitions d'un ensemble à $n$ éléments en $k$ sous-ensembles es
 En conclure :
 
 {% exercice %}
-Montrez qu'un graphe biparti à $p$ composantes connexes possède $2^{p}-1$ bipartitions possibles.
+Montrez qu'un graphe biparti à $p$ composantes connexes possède $2^{p-1}$ bipartitions possibles.
 {% endexercice %}
 {% details "solution" %}
 
@@ -126,7 +129,7 @@ On conclue la preuve en remarquant que les $x_i$ paires et les $x_i$ impairs son
 {% enddetails %}
 
 {% exercice %}
-Déduire de l'exercice précédent que les seuls graphes bipartis complets hamiltoniens sont les graphes $K_{p, p}$ avec $p\geq 1$.
+Déduire de l'exercice précédent qu'un graphe bipartis complets K_{p, q}$ est hamiltonien si et seulement si $p=q \geq 1$.
 
 {% endexercice %}
 {% details "solution" %}

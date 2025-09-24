@@ -122,6 +122,17 @@ Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueurs $L$
 
 > TBD : deux trucs qui bougent avec le "sachant B"
 
+> TBD espérance
+> - linéarité de l'espérance
+> - il existe 1 qui vaut l'espérance
+
 ## Fonction génératrice
 
-> TBD
+> TBD utiliser les fct génératrice pour la combinatoire.
+>
+## Méthode probabiliste
+
+- simple
+- avec alteration
+
+> TBD trouver un exemple pas graphe.

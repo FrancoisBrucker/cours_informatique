@@ -15,10 +15,16 @@ eleventyComputed:
 > TBD définition
 > Monter que c'est pas pareil que des arbres planaires binaires car si un enfant, il peut être à droite.
 
-> TBD dessin
+> TBD dessin.
+> TBD definition avec les suite d'entiers. ici 0/1 Ils donnent des instructions différentes à gauche ou à droite. Utilisé souvent en algo (ex AVL)
 
 > On connaît l'ordre gauche ou droite des enfants.
 > TBD génération ensembliste recursive.
+> TBD déduire de la forme sous arbre g et D la récurrence avec la somme qui permet de faire le compte normal
+> TBD dire que plutôt que de résoudre cette équation, on va les calculer de 2 façons différentes qui vont nous permettre de montrer :
+> 
+> 1. une bijection importante 
+> 2. une façon de décrire les ensemble combinatoires
 
 ## Bijection Planaire et Catalan
 
@@ -30,16 +36,32 @@ eleventyComputed:
 
 ![bijection 3](./bijection-3.png)
 
-## Compter
+On en déduit : qu'il y a autant d'arbres de catalan à $n$ sommets que de  :
+
+{% note "**Proposition**" %}
+Le nombre d'arbres de Catalan à $n$ sommets est égal au nombre de chemins de Dyck de taille $2n$ : 
+
+<div>
+$$
+\frac{1}{n + 1}\binom{2n}{n}
+$$
+</div>
+{% endnote %}
+
+> TBD les dessiner jusqu'à 4
+
+## Analyse combinatoire
 
 {% lien %}
 [Analytic Combinatorics](https://algo.inria.fr/flajolet/Publications/book.pdf)
 {% endlien %}
 
-> Nombre de Catalan
-> TBD déduire de la forme sous arbre g et D la récurrence avec la somme qui permet de faire le compte normal
+> TBD def classe combinatoire.
+> TBD écrire l'equation combinatoire.
 
-> Puis écrire l'equation combinatoire.
+
+
+
 > TBD série generatrice (formelle)
 > 
 > ce n'est pas grave si ça n'a pas de rayon de convergence. Le but est juste de trouver les coefficients.

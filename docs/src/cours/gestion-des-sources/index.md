@@ -45,6 +45,18 @@ Dire que l'on fait de la gestion des sources ou que l'on connaît [git](https://
 
 peut-être mettre le projet avant la théorie ? Ou en même temps ? 
 
+couper en trois
+
+1. github comme un drive
+2. principe gestion des sources sans origine : 
+   1. sur github
+   2. on voit la théorie
+3. avec origine :
+   1.  github desktop
+   2.  la théorie
+4. outils
+5. terminal
+6. interne
 -->
 
 ## Principes
