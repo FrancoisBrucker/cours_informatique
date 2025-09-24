@@ -52,13 +52,19 @@ couper en parties
 1. github comme un drive
 2. principe gestion des sources sans origine : 
    1. sur github
+      1. merge on pull request
+      2. rebase on pull request
    2. on voit la théorie
 3. avec origine :
    1.  github desktop
+       1. merge par défaut
+       2. rebase de deux branches distinctes (on travail sur dev, on pull main et on rebase)
+       3. faire un .gitignore pour un fichier todo par exemple
    2.  la théorie
 4. outils
-5. terminal
-6. interne
+5. terminal et rebase on pull
+6. git bisect
+7. interne
 -->
 
 ## Principes
