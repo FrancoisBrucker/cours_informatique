@@ -526,7 +526,7 @@ Puisque l'on compte pour tout ensemble de $v(H)$ sommets la probabilité de fabr
 
 - on choisit $v(H)$ sommets
 - chaque arête a une probabilité $p$ d'exister, indépendante des autres, et qu'il en faut $e(H)$ (d'où la multiplication $p \cdot \dots \cdot p = p^{e(H)}$).
-- on divise par le nombre de possibilités de fabriquer le même $H$ avec une permutation des sommets choisis qui correspond à son nombres d'automorphismes (si $H$ est un cycle de longueur 4 le cycle 1-2-3-4 est identique à 2-3-4-1, 3-4-1-2 et 4-1-2-3 mais est différent de 1-2-4-3) et est une constante dépendant de $H$.
+- on divise par le nombre de possibilités de fabriquer le **même** $H$ avec une permutation des sommets choisis qui correspond à son nombres d'automorphismes (si $H$ est un cycle de longueur 4, les choisir les 4 sommets $(1, 2, 3, 4)$ va produire le cycle 1-2-3-4, il sera identique au cycle produit avec les sommets $(2, 3, 4, 1)$ (le cycle 2-3-4-1), $(3, 4, 1, 2)$ (le cycle 3-4-1-2) et $(4, 3, 2, 1)$ (le cycle 4-1-2-3). Mais il sera différent du cycle produit par les sommets  $(2, 1, 3, 4)$ qui produit le cycle 2-1-3-4 où le sommet 1 est voisin de 2 et 3 alors qu'il est voisin de 4 et 1 dans l'autre cycle) et est une constante dépendant de $H$.
 
 On en déduit l'inégalité :
 
