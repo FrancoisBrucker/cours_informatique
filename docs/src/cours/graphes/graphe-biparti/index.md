@@ -336,10 +336,6 @@ Nous allons montrer des encadrements sur les graphe possédant, ou pas, des sous
 
 ### Sous-graphe bi-parti inclus
 
-{% lien %}
-<https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=1>
-{% endlien %}
-
 Le grand retour de la méthode probabiliste pour résoudre un problème à priori très compliqué.
 
 {% note "**Proposition**" %}
@@ -436,10 +432,6 @@ Notez cependant que notre problème initial n'est pas exactement le même puisqu
 
 ### Sous-graphe bi-parti exclus
 
-{% lien %}
-<https://www.youtube.com/watch?v=YAo1sd4kuOQ&list=PLUl4u3cNGP62qauV_CpT1zKaGG_Vj5igX&index=3>
-{% endlien %}
-
 On cherche des graphes à $n$ sommets ne possédant pas de sous-graphes bi-partis complets. On sait peut de choses sur ces graphes, mais on peut montrer que :
 
 {% note "**Théorème (Kővári, Sós, Turán)**" %}
@@ -530,7 +522,13 @@ $$
 $$
 </div>
 
-Puisque l'on compte pour tout ensemble de $v(H)$ sommets la probabilité de fabriquer $H$ en sachant que chaque arête a une probabilité $p$ d'exister indépendante des autres (d'où la multiplication $p \cdot \dots \cdot p = p^{e(H)}$). On en déduit l'inégalité :
+Puisque l'on compte pour tout ensemble de $v(H)$ sommets la probabilité de fabriquer $H$ en sachant que :
+
+- on choisit $v(H)$ sommets
+- chaque arête a une probabilité $p$ d'exister, indépendante des autres, et qu'il en faut $e(H)$ (d'où la multiplication $p \cdot \dots \cdot p = p^{e(H)}$).
+- on divise par le nombre de possibilités de fabriquer le même $H$ avec une permutation des sommets choisis qui correspond à son nombres d'automorphismes (si $H$ est un cycle de longueur 4 le cycle 1-2-3-4 est identique à 2-3-4-1, 3-4-1-2 et 4-1-2-3 mais est différent de 1-2-4-3) et est une constante dépendant de $H$.
+
+On en déduit l'inégalité :
 
 <div>
 $$
@@ -540,7 +538,15 @@ $$
 $$
 </div>
 
-D'un autre côté l'espérance du nombre d'arête de $G$ vaut : $\mathbb{E}(e(G)) = p \cdot \binom{n}{2}$. On veut que le nombre d'arête de $G$ soit le plus grand possible tout en minimisant le nombre de sous-graphe valant $H$ : on cherche à maximiser $\mathbb{E}(e(G) - \sharp H) = \mathbb{E}(e(G)) - \mathbb{E}(\sharp H)$.
+D'un autre côté l'espérance du nombre d'arête de $G$ vaut :
+
+<div>
+$$
+\mathbb{E}(e(G)) = p \cdot \binom{n}{2}
+$$
+</div>
+
+On veut que le nombre d'arête de $G$ soit le plus grand possible tout en minimisant le nombre de sous-graphes valant $H$ : on cherche à maximiser $\mathbb{E}(e(G) - \sharp H) = \mathbb{E}(e(G)) - \mathbb{E}(\sharp H)$.
 
 <div>
 $$
@@ -551,7 +557,7 @@ $$
 $$
 </div>
 
-On peut maintenant trouver $p$ qui vq simplifier tout ça, par exemple $p = \frac{1}{2}\cdot n^{-\frac{v(H) -2}{e(H) -1}}$ puisqu'on a alors :
+On peut maintenant trouver un $p$ qui va simplifier tout ça, par exemple $p = \frac{1}{2}\cdot n^{-\frac{v(H) -2}{e(H) -1}}$ puisqu'on a alors :
 
 <div>
 $$
@@ -605,3 +611,6 @@ $$
 {% info %}
 On peut trouver des encadrement plus fin en utilisant des méthodes plus sophistiquée, si cela vous intéresse, regardez la vidéo en lien.
 {% endinfo %}
+{% lien %}
+<https://www.youtube.com/watch?v=crMyNv2fdkc&list=PLUl4u3cNGP61cYB5ymvFiEbIb-wWHfaqO&index=1>
+{% endlien %}
