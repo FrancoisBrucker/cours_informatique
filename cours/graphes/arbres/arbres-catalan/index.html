@@ -104,11 +104,18 @@
 Monter que c'est pas pareil que des arbres planaires binaires car si un enfant, il peut être à droite.</p>
 </blockquote>
 <blockquote>
-<p>TBD dessin</p>
+<p>TBD dessin.
+TBD definition avec les suite d'entiers. ici 0/1 Ils donnent des instructions différentes à gauche ou à droite. Utilisé souvent en algo (ex AVL)</p>
 </blockquote>
 <blockquote>
 <p>On connaît l'ordre gauche ou droite des enfants.
-TBD génération ensembliste recursive.</p>
+TBD génération ensembliste recursive.
+TBD déduire de la forme sous arbre g et D la récurrence avec la somme qui permet de faire le compte normal
+TBD dire que plutôt que de résoudre cette équation, on va les calculer de 2 façons différentes qui vont nous permettre de montrer :</p>
+<ol>
+<li>une bijection importante</li>
+<li>une façon de décrire les ensemble combinatoires</li>
+</ol>
 </blockquote>
 <h2>Bijection Planaire et Catalan</h2>
 <blockquote>
@@ -117,7 +124,26 @@ TBD génération ensembliste recursive.</p>
 <p><img src="bijection-1.png" alt="bijection 1"></p>
 <p><img src="bijection-2.png" alt="bijection 2"></p>
 <p><img src="bijection-3.png" alt="bijection 3"></p>
-<h2>Compter</h2>
+<p>On en déduit : qu'il y a autant d'arbres de catalan à $n$ sommets que de  :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le nombre d'arbres de Catalan à $n$ sommets est égal au nombre de chemins de Dyck de taille $2n$ :</p>
+<div>
+$$
+\frac{1}{n + 1}\binom{2n}{n}
+$$
+</div>
+</div></div>
+
+<blockquote>
+<p>TBD les dessiner jusqu'à 4</p>
+</blockquote>
+<h2>Analyse combinatoire</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -127,12 +153,11 @@ TBD génération ensembliste recursive.</p>
 </div></div>
 
 <blockquote>
-<p>Nombre de Catalan
-TBD déduire de la forme sous arbre g et D la récurrence avec la somme qui permet de faire le compte normal</p>
+<p>TBD def classe combinatoire.
+TBD écrire l'equation combinatoire.</p>
 </blockquote>
 <blockquote>
-<p>Puis écrire l'equation combinatoire.
-TBD série generatrice (formelle)</p>
+<p>TBD série generatrice (formelle)</p>
 <p>ce n'est pas grave si ça n'a pas de rayon de convergence. Le but est juste de trouver les coefficients.
 si la série converge, alors les coefficients sont les même cependant (ce qu'on va faire ici)</p>
 </blockquote>
