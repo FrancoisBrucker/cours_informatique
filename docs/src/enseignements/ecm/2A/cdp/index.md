@@ -262,7 +262,7 @@ Puis on envoie tout sur github comme un drive (sans le .venv !)
 
 {% aller %}
 
-1. [Découverte de github](/cours/gestion-des-sources/github/){.interne}
+1. [Découverte de github](/cours/gestion-des-sources/github-origin/projet-github/){.interne}
 2. [SCM avec Github](/cours/gestion-des-sources/github-SCM/projet-github-desktop/){.interne}
    
 {% endaller %}
