@@ -125,6 +125,7 @@ Enfin, si un arbre ne possédait que des feuilles, on aurait $\sum\delta(x) = n 
 
 Pour se familiariser avec les feuilles, commençons par résoudre l'exercice suivant :
 
+<span id="exercice-3-régulier"></span>
 {% exercice %}
 
 Montrez que si $T = (V, E)$ est un arbre tel que tout sommet interne est de degré 3 (on appelle ces arbres **_ternaire_**) alors si $p$ est le nombre de ses feuilles et $q$ le nombre de ses sommets internes on a :

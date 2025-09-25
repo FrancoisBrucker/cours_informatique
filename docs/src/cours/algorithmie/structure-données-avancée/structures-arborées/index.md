@@ -30,6 +30,11 @@ arbre rouge/noir ; tas de Fibonacci ; ...
 
 > TBD exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
 
+> TBD la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1.
+> Sinon ce n'est pas vrai cf peigne (à dessiner)
+
+Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des **arbres de décisions**, si utiles en apprentissage automatique.
+
 ## Tas
 
 Nous allons montrer ici une utilité de l'arbre binaire complet pour résoudre le problème d'une file de priorité.
