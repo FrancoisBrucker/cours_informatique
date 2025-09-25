@@ -437,14 +437,42 @@ $$
 </div>
 <p>Cette méthode est remarquable puisqu'on a eu besoin de rien d'autre que la définition d'un arbre de Catalan pour obtenir le résultat. Cela vaut le coût de la connaître car elle s'applique à beaucoup d'objets combinatoires.</p>
 <h2>Choix aléatoire</h2>
-<blockquote>
-<p>Ordre et on prend un nombre au hasard.
-On associe un ordre qui depend du nombre d'éléments</p>
-</blockquote>
+<p>Si l'on veut faire des expérimentations (par exemple mesurer des complexités en moyenne si notre structure de donnée est arborée) il faut pouvoir tirer des arbres de Catalan de manière uniforme. Une manière de faire est de les ordonner pour pouvoir tier uniformément l'index de l'élément dans l'ordre.</p>
+<p>Pour des structures combinatoires l'usage courant est de :</p>
+<ol>
+<li>les classer par taille</li>
+<li>d'utiliser les éléments de taille strictement plus petite que $n$ pour ordonner ceux de taille $n$.</li>
+</ol>
+<p>Ceci est facile avec des arbres de Catalan puisque les sous-arbres gauche et droite d'un arbre sont de tailles strictement inférieures. D'où le classement des arbres à $n + 1$ sommets :</p>
 <p><img src="ordre.png" alt="ordre"></p>
-<blockquote>
-<p>TBD Remarquez que cet ordre permet de trouver une autre relation sur les nombres de Catalan et donnet la somme.</p>
-</blockquote>
+<p>Puis récursivement à l'intérieur de chaque classe et en utilisant l'ordre $(i, j) &lt; (i', j')$ si $j &lt; j'$ ou $(i &lt; i') \land (j = j')$. On a classé les arbres selon cet ordre dans la figure représentant tous arbres de Catalan à moins de 4 sommets.</p>
+<p>Enfin, si on connaît le nombre d'éléments dans chaque groupe on peut retrouver chaque élément grace à son indice. Par exemple, recherchons le 8ème arbre de Catalan à 4 sommets (il y en a 14)</p>
+<ol>
+<li>il y a $C_3 = 5 &lt; 8$ arbres de Catalan à 4 sommets ayant uniquement un enfant gauche, notre arbre n'est pas dans la première catégorie</li>
+<li>il y a $C_2 \cdot C_1 = 2$ arbres de Catalan à 4 sommets ayant un enfant gauche de 2 nœuds et un enfant droit à 1 nœud. Comme $5 + 2 = 7 &lt; 8$ notre arbre n'est pas dans cette catégorie</li>
+<li>notre arbre est le 1er arbre de Catalan ayant un fils gauche à 1 nœud et un fils droit à 2 nœuds.</li>
+</ol>
+<p>Le 8ème arbre de Catalan à 4 sommets est donc l'arbre suivant :</p>
+<p><img src="ordre-8.png" alt="ordre 8"></p>
+<p>Enfin, l'ordonnancement utilisé nous donne encore une autre équation de récurrence permettant de compter les arbres de Catalan :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le nombre $C_{n}$ d'arbres de Catalan à $n$ sommets satisfait l'équation de récursion suivante :</p>
+<div>
+$$
+\begin{cases}
+C_0 = 1\\
+C_{n+1} = \sum_{0\leq k \leq n}C_k \cdot C_{n-k}\\
+\end{cases}
+$$
+</div>
+</div></div>
+
 <h2>Arbres binaires complet</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -460,41 +488,55 @@ On associe un ordre qui depend du nombre d'éléments</p>
 </ul>
 </div></div>
 
-<blockquote>
-<p>TBD dessin.
-TBD caractérisation symbolique. Nombre, bijection explicite avec catalan.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que pour un arbre de Catalan complet le nombre de feuille est égal au nombre de nœuds intérieurs plus 1.</p>
+<p>Les arbres de catalan complet forment à la fois n sous ensemble des arbres de Catalan et l'ensemble tout entier. Il est en effet possible d'associer injectivement un arbre de Catalan Complet à tout arbre de Catalan en ajoutant à chaque nœud de l'arbre de Catalan autant de feuille qu'il lui manque d'enfants :</p>
+<ul>
+<li>ajoutant une feuille à tout nœud n'ayant qu'u enfant</li>
+<li>ajoutant deux feuilles à tout nœud n'ayant aucun enfant</li>
+</ul>
+<p><img src="catalan-vers-complet.png" alt="Catalan vers complet"></p>
+<p>On retrouve l'arbre de Catalan initial en supprimant toutes les feuilles :</p>
+<p><img src="complet-vers-catalan.png" alt="Complet vers Catalan"></p>
+<p>Comme un arbre de Catalan complet à $n$ nœud a $\lceil n/2 \rceil$ feuilles (cela vient du fait que tous les nœuds internes sont de degré 3 à par la racine et de <a href="../d%C3%A9finitions/#exercice-3-r%C3%A9gulier">cet exercice</a>) on en déduit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le nombre d'arbre de Catalan complet à $n$ sommets est égal au nombre d'arbres de catalan à  $\lfloor n/2 \rfloor$ sommets.</p>
 </div></div>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Terminons cette partie en définissant la structure des arbres de Catalan complet en utilisant la méthode symbolique.</p>
+<p>Pour cela nous avons besoin de 2 nœuds spéciaux :</p>
+<ul>
+<li>les feuilles formés par le nœud $\square$</li>
+<li>les nœuds internes formés par le nœud $\bullet$</li>
+</ul>
+<p>L'ensemble $\mathcal{B}$ des arbres de Catalan complet peut alors s'écrire avec la formule de récurrence suivante :</p>
+<div>
+$$
+\mathcal{B} = \{\square \} + \mathcal{B} \times \{\bullet\}\times \mathcal{B}
+$$
 </div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Si chaque nœud intérieur a 2 enfants $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.</p>
+<p>La série formelle $B(z) = \sum_{n\geq 0}B_nz^n$ associée à l'ensemble des arbres de Catalan complet satisfait l'équation :</p>
+<div>
+$$
+B(z) = z + zB(z)^2
+$$
 </div>
-</details>     
+<p>On en déduit avec le même raisonnement utilisé pour les arbres de catalan que :</p>
+<div>
+$$
+B(z) = \frac{1 - \sqrt{1-4z^2}}{2z}
+$$
 </div>
-<blockquote>
-<p>TBD la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1</p>
-</blockquote>
-<p>Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des <strong>arbres de décisions</strong>, si utiles en apprentissage automatique.</p>
+<p>Ce qui après calcul donne :</p>
+<div>
+$$
+B(z) = \sum_{n\geq 0}\frac{1}{n+1}\binom{2n}{n}z^{2n + 1}
+$$
+</div>
 
 
 </article>
