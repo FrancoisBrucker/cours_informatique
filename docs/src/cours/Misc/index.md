@@ -55,6 +55,10 @@ C'est pourquoi les complexités (voir Knuth) sont souvent données en fonction d
 [Courbes elliptiques](courbes-elliptiques){.interne}
 {% endaller %}
 
+## Méthode symbolique
+
+> TBD reprendre et étendre ce que l'on a vu pour les arbres catalan.
+
 ## Groupe $(\\{0, 1\\}^L, \oplus)$
 
 Le groupe commutatif $(\\{0, 1\\}^L, \oplus)$ est l'extension cartésienne du groupe $(\\{0, 1\\}, \oplus)$. On notera $\mathbb{0} = (0, \dots, 0)$ (l'élément neutre) et $\mathbb{1} = (1, \dots, 1)$.

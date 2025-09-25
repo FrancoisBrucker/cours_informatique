@@ -134,5 +134,6 @@ Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueurs $L$
 
 - simple
 - avec alteration
+- lemme local de Lova
 
 > TBD trouver un exemple pas graphe.

@@ -159,7 +159,7 @@ On a bien :
 - $C_3 = \frac{1}{4}\binom{6}{3} = 5$
 - $C_4 = \frac{1}{5}\binom{8}{4} = 14$
 
-## Analyse combinatoire
+## Analyse combinatoire : méthode symbolique
 
 Nous allons maintenant montrer une méthode alternative pour calculer les valeurs de $C_n$. Cette méthode très générale permet de calculer nombre d'objets combinatoire et s'appelle méthode symbolique. Nous allons donner juste assez de matière pour pouvoir l'utiliser ici. Mais si le sujet vous intéresse, n'hésitez pas à aller jeter un coup d'œil au livre en lien ci-dessous :
 
@@ -180,9 +180,17 @@ C(z) \coloneqq \sum_{n\geq 0}C_nz^n
 $$
 </div>
 
-Une série formelle n'est **pas** [une série entière](https://fr.wikipedia.org/wiki/S%C3%A9rie_enti%C3%A8re), c'est juste un moyen de représenter la suite $(C_n)_{n\geq 0}$. En revanche, si on arrive à montrer l'égalité de $C(z)$ avec une série entière avec un rayon de convergence strictement positif, alors ses coefficients seront égaux aux $C_n$.
+Une série formelle n'est **pas** [une série entière](https://fr.wikipedia.org/wiki/S%C3%A9rie_enti%C3%A8re), c'est juste un moyen de représenter la suite $(C_n)_{n\geq 0}$ : une série formelle associée à un ensemble compte les éléments par taille. En effet il est facile de voir que :
 
-Et c'est ce que l'on va faire maintenant en cherchant une équation récursive permettant de décrire $\mathcal{C}$ l'ensemble des arbres de catalan. Cette équation est facile à trouver puisque si $A \in \mathcal{C}$, alors :
+<div>
+$$
+C(z) = \sum_{A \in \mathcal{C}}z^{\vert A\vert}
+$$
+</div>
+
+Où $\vert A\vert$ vaut la **_taille_** de l'élément $A$, le nombre de nœud pour un arbre par exemple.
+
+L'intérêt de cette formulation pour le comptage effectif est que si on arrive à montrer l'égalité de $C(z)$ avec une série entière avec un rayon de convergence strictement positif, alors ses coefficients seront égaux aux $C_n$. Et c'est ce que l'on va faire maintenant en cherchant une équation récursive permettant de décrire $\mathcal{C}$ l'ensemble des arbres de catalan. Cette équation est facile à trouver puisque si $A \in \mathcal{C}$, alors :
 
 - soit $A$ est l'arbre vide,
 - soit $A$ est composé d'une racine, d'un arbre de Catalan (potentiellement vide) en enfant gauche et dun arbre de Catalan (potentiellement vide) en enfant droit.
@@ -191,7 +199,7 @@ On en déduit l'équation de récurrence :
 
 <div>
 $$
-\mathcal{C} =  \{\epsilon\} + \mathcal{C} \times \{\cdot\} \times \mathcal{C}
+\mathcal{C} =  \{\epsilon\} + \mathcal{C} \times \{\bullet\} \times \mathcal{C}
 $$
 </div>
 
@@ -200,28 +208,60 @@ Où :
 - $+$ est l'union disjointe d'ensembles
 - $\times$ est le produit cartésien
 - $\\{\epsilon\\}$ est l'ensemble contenant l'arbre vide,
-- $\\{\cdot\\}$ est un ensemble contenant un unique élément, le nœud racine du (sous-) arbre.
+- $\\{\bullet\\}$ est un ensemble contenant un unique élément, le nœud racine du (sous-) arbre.
 
-La beauté de la méthode symbolique est que cette équation de récurrence est aussi vraie pour les séries formelles représentant ces ensembles (on admettra cette proposition). Pour associer des séries formelles aux ensembles $\varnothing$ et $\cdot$, remarquons qu'une série formelle associée à un ensemble compte les éléments par taille. En effet il est facile de voir que :
+La beauté de la méthode symbolique est que cette équation de récurrence est aussi vraie pour les séries formelles représentant ces ensembles (on admettra cette proposition).
+
+{% note "**Proposition**" %}
+Si $\mathcal{A}$ et $\mathcal{B}$ sont deux ensembles associées à leurs séries formelles $A(z)$ et $B(z)$, alors l'ensemble $\mathcal{A} + \mathcal{B}$ formé de l'union disjointe de $\mathcal{A}$ et $\mathcal{B}$ est associé à la série formelle $A(z) + B(z)$.
+
+{% endnote %}
+{% info %}
+On utilise la définition $\sum_{n\geq 0}A_nz^n + \sum_{n\geq 0}B_nz^n \coloneqq \sum_{n\geq 0}(A_n + B_n)z^n$
+{% endinfo %}
+{% details "preuve", "open" %}
+La preuve est clair puisque la série formelle associée à l'ensemble $\mathcal{A} + \mathcal{B}$ vérifie :
 
 <div>
 $$
-C(z) = \sum_{A \in \mathcal{C}}z^{\vert A\vert}
+C(z) = \sum_{A \in \mathcal{A} + \mathcal{B}}z^{\vert A\vert} = \sum_{A \in \mathcal{A}}z^{\vert A\vert} + \sum_{B \in \mathcal{B}}z^{\vert B\vert}
+$$
+</div>
+{% enddetails %}
+
+{% note "**Proposition**" %}
+Si $\mathcal{A}$ et $\mathcal{B}$ sont deux ensembles associées à leurs séries formelles $A(z)$ et $B(z)$, alors l'ensemble $\mathcal{A} \times \mathcal{B}$ formé du produit cartésien de $\mathcal{A}$ et $\mathcal{B}$ est associé à la série formelle $A(z) \cdot B(z)$.
+
+{% endnote %}
+{% info %}
+On utilise la définition $\sum_{n\geq 0}A_nz^n \times \sum_{n\geq 0}B_nz^n \coloneqq \sum_{n\geq 0}C_nz^n$ avec $C_n = \sum_{0\leq k \leq n}A_kB_{n-k}$.
+
+Notez que cette formule est uniquement l'application aux séries formelles du [Produit de Cauchy](https://fr.wikipedia.org/wiki/Produit_de_Cauchy) pour les séries convergentes.
+{% endinfo %}
+{% details "preuve", "open" %}
+
+Soit $C(z) = \sum_{n\geq 0}C_nz^n$ la série formelle associée à l'ensemble $\mathcal{A} \times \mathcal{B}$. Comme la taille d'un élément du produit cartésien est la somme des tailles de ses parties, on a :
+
+<div>
+$$
+C(z) = \sum_{A\times B \in \mathcal{A} \times \mathcal{B}}z^{\vert A\times B \vert} = \sum_{A\times B \in \mathcal{A} \times \mathcal{B}}z^{\vert A \vert + \vert B \vert} = \sum_{A\times B \in \mathcal{A} \times \mathcal{B}}z^{\vert A \vert}\cdot z^{\vert B \vert}
 $$
 </div>
 
-Où $\vert A\vert$ vaut le nombre de nœuds de l'arbre $A$.
+En déduit que $C_n = \sum_{p + q = n}(A_p \cdot B_q) = \sum_{0\leq k \leq n}(A_k \cdot B_{n-k})$.
+
+{% enddetails %}
 
 De là :
 
-- comme il n'y a qu'un seul élément dans $\{\epsilon\}$ de taille 0, sa série formelle associée vaut $E(z) = 1$,
-- comme il n'y a qu'un seul élément dans $\{\cdot\}$ de taille 1, sa série formelle associée vaut $E(z) = z$.
+- comme il n'y a qu'un seul élément dans $\\{\epsilon\\}$ de taille 0, sa série formelle associée vaut $E(z) = 1$,
+- comme il n'y a qu'un seul élément dans $\\{\bullet\\}$ de taille 1, sa série formelle associée vaut $N(z) = z$.
 
 Et en injectant ces séries dans l'équation de récurrence (le $+$ additionne et le $\times$ multiplie les séries formelles) on obtient :
 
 <div>
 $$
-C(z) = 1 + z \cdot C(z) \cdot C(z)
+C(z) = E(z) + C(z) \cdot N(z) \cdot C(z) = 1 + z \cdot C(z)^2
 $$
 </div>
 
