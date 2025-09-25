@@ -259,7 +259,7 @@ $$
 <li>$C_3 = \frac{1}{4}\binom{6}{3} = 5$</li>
 <li>$C_4 = \frac{1}{5}\binom{8}{4} = 14$</li>
 </ul>
-<h2>Analyse combinatoire</h2>
+<h2>Analyse combinatoire : méthode symbolique</h2>
 <p>Nous allons maintenant montrer une méthode alternative pour calculer les valeurs de $C_n$. Cette méthode très générale permet de calculer nombre d'objets combinatoire et s'appelle méthode symbolique. Nous allons donner juste assez de matière pour pouvoir l'utiliser ici. Mais si le sujet vous intéresse, n'hésitez pas à aller jeter un coup d'œil au livre en lien ci-dessous :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -280,8 +280,14 @@ $$
 C(z) \coloneqq \sum_{n\geq 0}C_nz^n
 $$
 </div>
-<p>Une série formelle n'est <strong>pas</strong> <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_enti%C3%A8re">une série entière</a>, c'est juste un moyen de représenter la suite $(C_n)_{n\geq 0}$. En revanche, si on arrive à montrer l'égalité de $C(z)$ avec une série entière avec un rayon de convergence strictement positif, alors ses coefficients seront égaux aux $C_n$.</p>
-<p>Et c'est ce que l'on va faire maintenant en cherchant une équation récursive permettant de décrire $\mathcal{C}$ l'ensemble des arbres de catalan. Cette équation est facile à trouver puisque si $A \in \mathcal{C}$, alors :</p>
+<p>Une série formelle n'est <strong>pas</strong> <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_enti%C3%A8re">une série entière</a>, c'est juste un moyen de représenter la suite $(C_n)_{n\geq 0}$ : une série formelle associée à un ensemble compte les éléments par taille. En effet il est facile de voir que :</p>
+<div>
+$$
+C(z) = \sum_{A \in \mathcal{C}}z^{\vert A\vert}
+$$
+</div>
+<p>Où $\vert A\vert$ vaut la <strong><em>taille</em></strong> de l'élément $A$, le nombre de nœud pour un arbre par exemple.</p>
+<p>L'intérêt de cette formulation pour le comptage effectif est que si on arrive à montrer l'égalité de $C(z)$ avec une série entière avec un rayon de convergence strictement positif, alors ses coefficients seront égaux aux $C_n$. Et c'est ce que l'on va faire maintenant en cherchant une équation récursive permettant de décrire $\mathcal{C}$ l'ensemble des arbres de catalan. Cette équation est facile à trouver puisque si $A \in \mathcal{C}$, alors :</p>
 <ul>
 <li>soit $A$ est l'arbre vide,</li>
 <li>soit $A$ est composé d'une racine, d'un arbre de Catalan (potentiellement vide) en enfant gauche et dun arbre de Catalan (potentiellement vide) en enfant droit.</li>
@@ -289,7 +295,7 @@ $$
 <p>On en déduit l'équation de récurrence :</p>
 <div>
 $$
-\mathcal{C} =  \{\epsilon\} + \mathcal{C} \times \{\cdot\} \times \mathcal{C}
+\mathcal{C} =  \{\epsilon\} + \mathcal{C} \times \{\bullet\} \times \mathcal{C}
 $$
 </div>
 <p>Où :</p>
@@ -297,24 +303,108 @@ $$
 <li>$+$ est l'union disjointe d'ensembles</li>
 <li>$\times$ est le produit cartésien</li>
 <li>$\{\epsilon\}$ est l'ensemble contenant l'arbre vide,</li>
-<li>$\{\cdot\}$ est un ensemble contenant un unique élément, le nœud racine du (sous-) arbre.</li>
+<li>$\{\bullet\}$ est un ensemble contenant un unique élément, le nœud racine du (sous-) arbre.</li>
 </ul>
-<p>La beauté de la méthode symbolique est que cette équation de récurrence est aussi vraie pour les séries formelles représentant ces ensembles (on admettra cette proposition). Pour associer des séries formelles aux ensembles $\varnothing$ et $\cdot$, remarquons qu'une série formelle associée à un ensemble compte les éléments par taille. En effet il est facile de voir que :</p>
+<p>La beauté de la méthode symbolique est que cette équation de récurrence est aussi vraie pour les séries formelles représentant ces ensembles (on admettra cette proposition).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $\mathcal{A}$ et $\mathcal{B}$ sont deux ensembles associées à leurs séries formelles $A(z)$ et $B(z)$, alors l'ensemble $\mathcal{A} + \mathcal{B}$ formé de l'union disjointe de $\mathcal{A}$ et $\mathcal{B}$ est associé à la série formelle $A(z) + B(z)$.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On utilise la définition $\sum_{n\geq 0}A_nz^n + \sum_{n\geq 0}B_nz^n \coloneqq \sum_{n\geq 0}(A_n + B_n)z^n$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La preuve est clair puisque la série formelle associée à l'ensemble $\mathcal{A} + \mathcal{B}$ vérifie :</p>
 <div>
 $$
-C(z) = \sum_{A \in \mathcal{C}}z^{\vert A\vert}
+C(z) = \sum_{A \in \mathcal{A} + \mathcal{B}}z^{\vert A\vert} = \sum_{A \in \mathcal{A}}z^{\vert A\vert} + \sum_{B \in \mathcal{B}}z^{\vert B\vert}
 $$
 </div>
-<p>Où $\vert A\vert$ vaut le nombre de nœuds de l'arbre $A$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $\mathcal{A}$ et $\mathcal{B}$ sont deux ensembles associées à leurs séries formelles $A(z)$ et $B(z)$, alors l'ensemble $\mathcal{A} \times \mathcal{B}$ formé du produit cartésien de $\mathcal{A}$ et $\mathcal{B}$ est associé à la série formelle $A(z) \cdot B(z)$.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On utilise la définition $\sum_{n\geq 0}A_nz^n \times \sum_{n\geq 0}B_nz^n \coloneqq \sum_{n\geq 0}C_nz^n$ avec $C_n = \sum_{0\leq k \leq n}A_kB_{n-k}$.</p>
+<p>Notez que cette formule est uniquement l'application aux séries formelles du <a href="https://fr.wikipedia.org/wiki/Produit_de_Cauchy">Produit de Cauchy</a> pour les séries convergentes.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $C(z) = \sum_{n\geq 0}C_nz^n$ la série formelle associée à l'ensemble $\mathcal{A} \times \mathcal{B}$. Comme la taille d'un élément du produit cartésien est la somme des tailles de ses parties, on a :</p>
+<div>
+$$
+C(z) = \sum_{A\times B \in \mathcal{A} \times \mathcal{B}}z^{\vert A\times B \vert} = \sum_{A\times B \in \mathcal{A} \times \mathcal{B}}z^{\vert A \vert + \vert B \vert} = \sum_{A\times B \in \mathcal{A} \times \mathcal{B}}z^{\vert A \vert}\cdot z^{\vert B \vert}
+$$
+</div>
+<p>En déduit que $C_n = \sum_{p + q = n}(A_p \cdot B_q) = \sum_{0\leq k \leq n}(A_k \cdot B_{n-k})$.</p>
+</div>
+</details>     
+</div>
 <p>De là :</p>
 <ul>
-<li>comme il n'y a qu'un seul élément dans ${\epsilon}$ de taille 0, sa série formelle associée vaut $E(z) = 1$,</li>
-<li>comme il n'y a qu'un seul élément dans ${\cdot}$ de taille 1, sa série formelle associée vaut $E(z) = z$.</li>
+<li>comme il n'y a qu'un seul élément dans $\{\epsilon\}$ de taille 0, sa série formelle associée vaut $E(z) = 1$,</li>
+<li>comme il n'y a qu'un seul élément dans $\{\bullet\}$ de taille 1, sa série formelle associée vaut $N(z) = z$.</li>
 </ul>
 <p>Et en injectant ces séries dans l'équation de récurrence (le $+$ additionne et le $\times$ multiplie les séries formelles) on obtient :</p>
 <div>
 $$
-C(z) = 1 + z \cdot C(z) \cdot C(z)
+C(z) = E(z) + C(z) \cdot N(z) \cdot C(z) = 1 + z \cdot C(z)^2
 $$
 </div>
 <p>On a déjà presque terminé. Il suffit de trouver la fonction $C(z)$ vérifiant notre égalité. Ce qui est facile puisque c'est une des deux racines du polynôme $zX^2 - X + 1$, c'est à dire :</p>
