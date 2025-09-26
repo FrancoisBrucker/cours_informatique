@@ -182,9 +182,10 @@ L'algorithme fonctionne clairement si le graphe est bi-parti puisque par composa
 {% note "**Proposition**" %}
 Si le graphe est bi-parti, alors l'algorithme s'arrête en donnant une bipartition du graphe
 
+{% endnote %}
+
 La réciproque est également vraie :
 
-{% endnote %}
 {% note "**Proposition**" %}
 Si l'algorithme donne une bipartition, le graphe est bi-parti.
 {% endnote %}
@@ -192,19 +193,19 @@ Si l'algorithme donne une bipartition, le graphe est bi-parti.
 Si le graphe est connexe, chaque sommet sera marqué et examiné. Comme les couleurs ne sont jamais remise en cause et que l'on vérifie tous les voisins d'un sommet examiné on explorera toutes les arêtes du graphes et les sommets chacune d'elles seront de couleurs différentes.
 {% enddetails %}
 
-Si l'algorithme s'arrête en répondant NON, c'est qu'il examine un sommet $y$ qui est déjà marqué avec la même couleur que le sommet $x$. Il existe donc un chemin entre le premier élément marqué de l'algorithme, disons $x_0$, et $x$ alternant de couleur en couleur :
+Si l'algorithme s'arrête en répondant NON, c'est qu'il existe un voisin $y$ du sommet examiné $x$ marqué avec la même couleur. Il existe donc un chemin entre le premier élément marqué de l'algorithme, disons $x_0$, et $x$ alternant de couleur en couleur :
 
 ![reconnaissance fail](./reco-fail-1.png)
 
-Mais comme $y$ est déjà marqué c'est qu'on la déjà vu, disons en examinant le sommet $x'$, il existe un chemin alternant de couleurs entre $x_0$ et $x'$ qui est de couleur différente de $x$ :
+Si $y$ est marqué c'est qu'on la déjà vu, disons en examinant le sommet $x' \neq x$. Il existe donc aussi un chemin alternant de couleurs entre $x_0$ et $x'$ qui est de couleur différente de $x$ :
 
 ![reconnaissance fail](./reco-fail-2.png)
 
-On se trouve donc globalement dans une situation où il existe un chemin alternant les couleurs entre $x_0$ et $x$ et entre $x_0$ et $x'$ ces chemins sont de parité différente puisque $x$ et $x'$ sont de couleurs différentes :
+On se trouve donc globalement dans une situation où il existe un chemin alternant les couleurs entre $x_0$ et un chemin alternant les couleurs entre $x$ et entre $x_0$ et $x'$. Ces deux chemins sont de parité différente puisque $x$ et $x'$ sont de couleurs différentes :
 
 ![reconnaissance fail](./reco-fail-3.png)
 
-En remontant ces deux chemins jusqu'au premier élément en commun (il existe puisque $x_0$ fait parti des deux chemins) on obtiendra alors forcément un cycle de longueur impaire puisque :
+En remontant ces deux chemins jusqu'au premier élément en commun (il existe puisque $x_0$ fait parti des deux chemins) on obtiendra alors forcément un cycle de longueur impaire :
 
 ![reconnaissance fail](./reco-fail.png)
 
@@ -214,8 +215,13 @@ On en conclut :
 Si l'algorithme s'arrête en répondant NON, alors le graphe possède un cycle de longueur impair.
 
 {% endnote %}
+{% note "**Corollaire**" %}
+Si un graphe n'est pas bi-parti, alors il existe un cycle de longueur impair.
+{% endnote %}
 
 ## Caractérisation
+
+Notre algorithme nous donne quasiment sans rien faire une caractérisation des graphes bi-parti :
 
 {% note "**Proposition**" %}
 
