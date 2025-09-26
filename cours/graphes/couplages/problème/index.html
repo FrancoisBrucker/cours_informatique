@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Problème du couplage dans un graphe</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Problème du couplage dans un graphe</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/couplages/">Couplages</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/couplages/problème/">Problème du couplage dans un graphe</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Le problème de couplage peut être défini ainsi :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G=(V, E)$ un graphe. Un <strong><em>couplage</em></strong> est un ensemble $M \subseteq E$ tel que si $xy, x'y' \in E$ alors $xy \cap x'y' = \varnothing$ (le degré de tout sommet du graphe $G'=(V, M)$ est strictement inférieur à 2).</p>
+<p>Un sommet $x$ est :</p>
+<ul>
+<li><strong><em>libre</em></strong> s'il n'est pas extrémité d'une arête de $M$.</li>
+<li><strong><em>couvert</em></strong> s'il est extrémité d'une arête de $M$.</li>
+</ul>
+</div></div>
+
+<p>Dans un couplage tout extrémité d'une arête n'apparaît qu'une seule fois. Par exemple, le graphe ci-dessous :</p>
+<p><span id="graphe-exemple"></span>
+<img src="graphe-exemple.png" alt="couplage exemple"></p>
+<p>Admet l'ensemble des arêtes rouges comme couplage :</p>
+<p><img src="couplage-exemple.png" alt="couplage exemple"></p>
+<p>On définit plusieurs types de couplages selon le graphe :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G=(V, E)$ un graphe. Un <strong><em>couplage</em></strong> $M$ est dit :</p>
+<ul>
+<li><strong><em>maximal</em></strong> s'il n'existe pas de couplage $M'$ l'incluant (toute arête de $G$ possède une extrémité co;;une avec une arête de $M$)</li>
+<li><strong><em>maximum</em></strong> s'il n'existe pas de couplage $M'$ tels que $\vert M'\vert &gt; \vert M\vert$</li>
+<li><strong><em>parfait</em></strong> si pour tout sommet de $V$ il existe une arête de $M$ l'ayant comme extrémité. Un couplage parfait ne peut exister que s'il y a un nombre pair de sommet et à forcément $\vert V \vert/2$ arêtes.</li>
+</ul>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe $G=(V, E)$, on note $\nu(G)$ le no,bre d'arête de ses couplages maximum.</p>
+</div></div>
+
+<p>Les trois types de couplages sont bien distincts. Le couplage de la figure précédente était maximal (toute arête du graphe à un sommet commun avec une arête du couplage), mais il n'est pas maximum. Il possède en effet un couplage parfait :</p>
+<p><img src="couplage-exemple-parfait-1.png" alt="couplage exemple parfait"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que le graphe précédent admet un autre couplage parfait.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><img src="couplage-exemple-parfait-2.png" alt="couplage exemple parfait 2"></p>
+</div>
+</details>     
+</div>
+<h2>Algorithme glouton</h2>
+<p>Le problème du couplage admet un algorithme glouton très simple permettant de trouver un couplage acceptable puisqu'à performance garantie :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
+<span class="token builtin">algorithme</span> <span class="token function">couplage_glouton</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> 
+   M <span class="token operator">:=</span> 
+   M <span class="token operator">←</span> ∅
+   <span class="token keyword">pour chaque</span> arête xy de G<span class="token punctuation">:</span>
+      <span class="token keyword">si</span> x <span class="token keyword">et</span> y ne sont pas couvert par M<span class="token punctuation">:</span>
+         M <span class="token operator">←</span> M ∪ <span class="token punctuation">{</span>xy<span class="token punctuation">}</span></code></pre>
+<p>Cet algorithme est très simple et il est clair qu'il peut trouver un couplage maximum s'il prend les arêtes dans un <em>bon</em> ordre. Mais même si l'ordre est quelconque il ne peut pas être si mauvais que ça :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'algorithme précédent est à <a href="/cours_informatique/cours/algorithmie/design-algorithmes/algorithmes-gloutons/principe/#d%C3%A9finition-performance-garantie" class="interne">performance garantie</a> de $1/2$ (il a au pire 2 fois moins d'arêtes qu'un couplage maximum).</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il est tout d'abord clair que le couplage $M$ obtenu par l'algorithme est maximal puisque toute arête rejetée possède une de ses extrémité couverte par $M$. De là, si $M^\star$ un couplage maximum alors chacune de ses arêtes a au moins 1 de ses sommets couvert par $M$ (soit l'arête est dans $M$ soit elle a été rejetée au cours de l'algorithme).</p>
+<p>Donc au moins la moitié ($\frac{1}{2}$) des sommets couverts  par $M^\star$ ($2 \cdot \vert M^\star \vert$) sont couverts par les sommets de $M$ ($2\cdot \vert M \vert$), on a ainsi $\frac{1}{2}\cdot(2 \cdot \vert M^\star \vert) \leq 2 \cdot \vert M \vert$ ce qui conclut la preuve.</p>
+</div>
+</details>     
+</div>
+<p>L'exercice suivant montre que la 1/2 performance garantie est atteinte quelque soit la taille du graphe.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que quelques soit $n$, il existe un graphe connexe à plus de $n$ sommets tel que l'algorithme peut trouver 2 fois moins d'arête que son couplage maximum.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On peut prendre un graphe qui est une successions d chemins de longueur 3 comme celui-ci :</p>
+<p><img src="exemple-2-moins.png" alt="exemple 2 fois moins"></p>
+<p>Si l'algorithme prend systématiquement l'arête au milieu du chemin, son couplage sera de taille deux fois plus petite que le couplage prenant les extrémités de chaque chemin.</p>
+</div>
+</details>     
+</div>
+<p>Cet algorithme glouton montre que si l'on cherche rapidement une solution (l'algorithme est linéaire en la taille du graphe) on peut le faire sans grand risque de tomber trop à côté de la solution optimale.</p>
+<h2>Exemples</h2>
+<h3>Trouver des binômes</h3>
+<p>Dans les exercices de modélisation par des flots, <a href="../../projet-flots-mod%C3%A9lisation/#transport-amoureux" class="interne">le problème du transport amoureux</a> permettait de résoudre un problème de couplage. Marier le plus de héros de roman revient à trouver un couplage maximum dans le graphe des affinités (une arête entre deux héros s'ils s'apprécient) :</p>
+<p><img src="couplage-transport-1.png" alt="couplage transport amoureux 1"></p>
+<p>Et on obtenant le couplage parfait suivant :</p>
+<p><img src="couplage-transport-final.png" alt="couplage transport amoureux 2"></p>
+<p>On a cependant vu que cette modélisation ne fonctionne que si l'on a deux populations distinctes (ici les garçons et les filles) à coupler. Si ce n'est pas le cas (coupler 2 garçons ou deux filles ensembles) on ne peut plus modéliser le problème de couplage par des flots.</p>
+<p>On verra dans ce cours que c'est polynomialement facile à faire même si l'algorithme ne l'est pas tant que ça (facile).</p>
+<h3>Tournois de sport</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes">Tournoi toutes rondes</a></p>
+</div></div>
+
+<p>Dans un tournoi de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents. On verra plus tard que l'on peut modéliser ce problème comme un problème de coloration d'arêtes du graphe complet, mais ici voyons juste un algorithme pour résoudre.</p>
+<p>L'algorithme est le suivant, pour $n$ pair :</p>
+<ul>
+<li>$n$ équipes numérotées de 0 à $n-1$</li>
+<li>$n-1$ rondes numérotées de 0 à $n-2$</li>
+</ul>
+<p>Les deux équipes $i &lt; j$ jouent ensembles à la ronde $r$ si :</p>
+<ul>
+<li>$r = 2i \mathbin{\small\%} (n-1)$ et $j = n-1$</li>
+<li>$r = i + j \mathbin{\small\%} (n-1)$ et $j &lt; n-1$</li>
+</ul>
+<p>L'équipe $i$ est à domicile si :</p>
+<ul>
+<li>$2i &lt; n-1$ $j = n-1$</li>
+<li>$i + j$ est impair et $j &lt; n-1$</li>
+</ul>
+<p>Si $j = n-1$ Ok. Elle va être à domicile une fois sur 2 et va jouer avec l'équipe $i$ à la ronde $i$.
+Sinon, Ok aussi :</p>
+<ul>
+<li>$a+x \mathbin{\small\%} (n-1) = K$ a une unique solutions pour $x$ quelque soit $0\leq a, K \leq n-2$ : on a bien un couplage max à chaque ronde et chaque équipe va affronter une équipe différente à chaque ronde</li>
+<li>$i+j \mathbin{\small\%} (n-1) = K$ a $n-1$ solutions possible pour $0\leq i &lt; j &lt; n-1$ le couplage est maximum à chaque ronde</li>
+</ul>
+<p>Pour les match impair, l'équipe $n-1$ fait office d'équipe fantôme : les équipe qui devraient l'affronter ne jouent pas.</p>
+<blockquote>
+<p>TBD exemple à 6</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>j&lt; 5</th>
+<th>i + j</th>
+<th>i à domicile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>OUI</td>
+</tr>
+<tr>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>NON</td>
+</tr>
+<tr>
+<td>0</td>
+<td>3</td>
+<td>3</td>
+<td>OUI</td>
+</tr>
+<tr>
+<td>0</td>
+<td>4</td>
+<td>4</td>
+<td>NON</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>OUI</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>4</td>
+<td>NON</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4</td>
+<td>0</td>
+<td>OUI</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>OUI</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>NON</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>OUI</td>
+</tr>
+</tbody>
+</table>
+<p>Et pour l'équipe $n-1$ :</p>
+<table>
+<thead>
+<tr>
+<th>i</th>
+<th>j=5</th>
+<th>2i</th>
+<th>i à domicile</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>5</td>
+<td>0</td>
+<td>OUI</td>
+</tr>
+<tr>
+<td>1</td>
+<td>5</td>
+<td>2</td>
+<td>OUI</td>
+</tr>
+<tr>
+<td>2</td>
+<td>5</td>
+<td>4</td>
+<td>OUI</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>1</td>
+<td>NON</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+<td>NON</td>
+</tr>
+</tbody>
+</table>
+<p>Ce qui donne par ronde avec l'équipe à domicile en premier:</p>
+<ul>
+<li>ronde 0 : (1, 4), (2, 3), (0, 5)</li>
+<li>ronde 1 : (0, 1), (4, 2), (5, 3)</li>
+<li>ronde 2 : (2, 0), (3, 4), (1, 5)</li>
+<li>ronde 3 : (0, 3), (1, 2), (5, 4)</li>
+<li>ronde 4 : (4, 0), (3, 1), (2, 5)</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
