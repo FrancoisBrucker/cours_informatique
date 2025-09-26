@@ -66,7 +66,11 @@ Il y a donc $2\cdot (2^{n-1}-1) + 1 = 2^n-1$ bipartitions à $n+1$ éléments (i
 
 {% enddetails %}
 {% details "solution 2" %}
-> TBD plus simple : mot binaire/complémentaire = 2^n/2 mais on supprimme 0000/11111 car pas bi-partition.
+> TBD plus simple :
+>
+> mot binaire/complémentaire = 2^n/2
+> mais on supprime 0000/11111 car pas bi-partition.
+>
 {% enddetails %}
 {% info %}
 Le nombre de partitions d'un ensemble à $n$ éléments en $k$ sous-ensembles est appelé [nombre de Stirling de second espèce](https://fr.wikipedia.org/wiki/Nombre_de_Stirling#Nombre_de_Stirling_de_seconde_esp%C3%A8ce)
@@ -129,7 +133,7 @@ On conclue la preuve en remarquant que les $x_i$ paires et les $x_i$ impairs son
 {% enddetails %}
 
 {% exercice %}
-Déduire de l'exercice précédent qu'un graphe bipartis complets K_{p, q}$ est hamiltonien si et seulement si $p=q \geq 1$.
+Déduire de l'exercice précédent qu'un graphe bipartis complets $K_{p, q}$ est hamiltonien si et seulement si $p=q \geq 1$.
 
 {% endexercice %}
 {% details "solution" %}
@@ -180,32 +184,14 @@ Boucle principale :
 Un graphe est biparti si et seulement si il ne contient pas de cycle de longueur impaire.
 
 {% endnote  %}
+{% details "preuve", "open" %}
 
-Vous allez en faire la démonstration grâce à deux exercices.
-
-{% exercice %}
-
-Un graphe biparti ne contient pas de cycle de longueur impaire.
-
-{% endexercice  %}
-{% details "corrigé" %}
-
-Si le graphe possède un cycle, ses arêtes doivent passer d'un stable à l'autre un nombre pair de fois.
+- Un graphe biparti ne contient pas de cycle de longueur impaire car si le graphe possédait un cycle, ses arêtes doivent passer d'un stable à l'autre un nombre pair de fois.
+- Un graphe n'est pas biparti s'il contient un cycle de longueur impaire car l'algorithme répond non si a un cycle de longueur impaire.
 
 {% enddetails %}
 
-Et dans l'autre sens :
-
-{% exercice %}
-
-Un graphe n'est pas biparti s'il contient un cycle de longueur impaire.
-
-{% endexercice  %}
-{% details "corrigé" %}
-On utilise l'algorithme et si l'algorithme répond non c'est qu'on a un cycle de longueur impaire.
-{% enddetails %}
-
-On le verra tout au long de ce cours l'existence de cycles de longueurs impairs pose de nombreux problèmes algorithmique. Se restreindre aux graphes bi=parti va souvent accélérer et rendre optimal des algorithmes autrement plus compliqués sinon.
+On le verra tout au long de ce cours l'existence de cycles de longueurs impairs pose de nombreux problèmes algorithmiques. Se restreindre aux graphes bi=parti va souvent accélérer et rendre optimal des algorithmes autrement plus compliqués sinon.
 
 ## Partition en graphes Biparti
 
@@ -249,24 +235,16 @@ On peut bien sur faire mieux, comme le montre l'exemple suivant qui partitionne 
 
 ![exemple biparti](k6-en-6.png)
 
-Vous avez peut-être remarqué, mais la partition ci-dessus n'est pas minimale, on peut faire mieux :
+Vous avez peut-être remarqué, mais la partition ci-dessus n'est pas minimale, on peut faire mieux grace aux étoiles :
 
-{% exercice %}
-
-Montrer que l'on peut toujours décomposer $K_n$ en $n-1$ étoiles.
-{% endexercice  %}
 {% note "**Définition**" %}
 Une **_étoile_** est un graphe $G = (V, E)$ tel qu'il existe $x\in V$ avec $E = \\{xy | y \in V\backslash \\{x\\}\\}$
 {% endnote  %}
 
-{% details "corrigé" %}
-
-Les étoiles en questions sont $G_i = (V_i, E_i)$ avec $1\leq i < n$ :
+On peut toujours décomposer $K_n$ en $n-1$ étoiles $G_i = (V_i, E_i)$ avec $1\leq i < n$ :
 
 - $V_i = \\{j | j \geq i \\}$
 - $E_i = \\{\\{i, j\\} | i < j \\}$
-
-{% enddetails %}
 
 Le partitionnement en étoile n'est pas unique, par exemple avec $K_6$ :
 
