@@ -113,12 +113,11 @@ Projets :
 
 {% endaller %}
 
-## Exercices
-
-> TBD
->
-> - Chritofides <https://en.wikipedia.org/wiki/Christofides_algorithm> (en gardant l'algorithme heuristique, 1/2 approximation donc 2 approximation. On verra plus tard que 3/2 approximation)
-> - Théorie de Buneman et X-arbres
+> TBD projets/applications
+> Buneman ET MPCI 24-25
+> TBD X-arbre et représentation combinatoire des arbres par bi-partition.
+> TBD c'est l'ET 2024-2025
+> TBD évolution arborée et distance d'évolution. Condition des 4-points.
 
 ## Problèmes de flots
 
@@ -145,7 +144,7 @@ Problèmes de flots. Définition, algorithmes et applications
 
 ## Graphe biparti
 
-Un exemple particulier de graphes, les graphes bipartis :
+Une classe particulières de graphes cruciale :
 
 {% aller %}
 [Graphe bi-parti](graphe-biparti){.interne}
@@ -155,27 +154,23 @@ Un exemple particulier de graphes, les graphes bipartis :
 
 Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des graphes bi-parti avant d'aborder le cas général.
 
-> TBD couper en bi-parti et quelconque et ajouter des exercices
-
 {% aller %}
 [Couplages](./couplages/){.interne}
 {% endaller %}
-
-### Graphe bi-parti
-
-> TBD
-
-### Graphe quelconque
-
-> TBD
-
-### Projet
 
 > TBD revenir sur le problème du voyage de commerce avec
 
 {% aller %}
 
 [Problème du postier chinois](projet-postier-chinois){.interne}
+
+{% endaller %}
+
+## Graphes Planaires
+
+{% aller %}
+
+[Graphes planaires](./graphes-planaires){.interne}
 
 {% endaller %}
 
@@ -192,14 +187,6 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 {% aller %}
 
 [Graphes parfaits](./graphes-parfaits){.interne}
-
-{% endaller %}
-
-## Graphes Planaires
-
-{% aller %}
-
-[Graphes planaires](./graphes-planaires){.interne}
 
 {% endaller %}
 

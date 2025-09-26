@@ -101,17 +101,13 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 
 > TBD def par par bijection d'arbres plantés
 > TBD def ensembliste avec multi set : ensemble avec répétitions possibles (faire dessin)
-> TBD def ensembliste se binarise en prenant juste des multiset de taille 2.
-
+> TBD def ensembliste se binarise en prenant juste des multi-set de taille 2.
+>
 > isomorphisme Arbres planté :
+>
 > - Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>
 > - <https://info.faidherbe.org/MPII/11.pdf>
 
 ### Arbres non plantés
 
 > TBD <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf> on peut le faire de façon linéaire.
-
-## Arbres et classes
-
-> TBD X-arbre et représentation combinatoire des arbres par bi-partition.
-> TBD c'est l'ET 2024-2025

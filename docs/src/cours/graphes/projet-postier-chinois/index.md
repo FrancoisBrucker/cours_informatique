@@ -107,3 +107,4 @@ Supposons qu'il existe un couplage de poids plus faible.
 > * Liens = les k plus proches
 
 > TBD <http://biblos.hec.ca/biblio/memoires/m2001no11.pdf>
+> Christofides <https://en.wikipedia.org/wiki/Christofides_algorithm> On verra plus tard que 3/2 approximation avec l'algo exact et 2 approximation avec la 1/2 heuristique

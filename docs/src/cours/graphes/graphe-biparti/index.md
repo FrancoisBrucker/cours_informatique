@@ -13,7 +13,7 @@ eleventyComputed:
 
 Les graphes biparti font parti de ces classes de graphes assez généraux pour être présent partout et assez spécifique pour que tous se passe bien (les principaux problèmes NP-complets dans le cas général deviennent polynomiaux voir triviaux).
 
-C'est une classe de graphe importante à connaître car, parfois curieusement, ils apparaissent dans nombre de problèmes de graphes. Parfois comme sous-cas facilement solvable, parfois comme fondement d'une preuve. Nous allons voir quelques définitions et caractérisation des graphes bi-parti ainsi que quelques exercices classique (et élégant).
+C'est une classe de graphe importante à connaître car, parfois curieusement, ils apparaissent dans nombre de problèmes de graphes. Parfois comme sous-cas facilement solvable, parfois comme fondement d'une preuve. Nous allons voir quelques définitions et caractérisation des graphes bi-parti ainsi que quelques exercices classiques (et élégants).
 
 ## Définitions
 
@@ -31,7 +31,7 @@ Les graphes bipartis sont une famille héréditaire, il est en effet clair que :
 
 {% note "**Proposition**" %}
 
-Tous [sous-graphe](../structure/#definition-sous-graphe) ou [graphe partiel](../structure/#definition-graphe-partiel) d'un graphe biparti est biparti.
+Tous [sous-graphe](../structure/#definition-sous-graphe){.interne} d'un graphe biparti est biparti.
 
 {% endnote  %}
 

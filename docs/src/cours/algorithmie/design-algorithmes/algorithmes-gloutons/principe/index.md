@@ -313,6 +313,8 @@ Très souvent un algorithme glouton ne va trouver une solution optimale au probl
 
 Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer qu'ils permettent tout de même de n'être pas trop éloigné de celle-ci.
 
+<span id="définition-performance-garantie"></span>
+
 {% note "**Définition**" %}
 Un algorithme est **_à performance garantie_** si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.
 {% endnote %}

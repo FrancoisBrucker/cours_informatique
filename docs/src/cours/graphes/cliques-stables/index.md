@@ -211,6 +211,7 @@ C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir 
 
 On appelle **_couverture_** d'un graphe $G=(V, E)$ un ensemble de sommets $C \subseteq V$ tel que toute arête de $G$ possède une extrémité dans $V$.
 
+<span id="problème-graphe-couverture"></span>
 {% note "**Problème**" %}
 
 - **nom** : couverture

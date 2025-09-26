@@ -317,7 +317,7 @@ $$
 {% endnote %}
 {% details "preuve", "open" %}
 
-On utilise un algorithme en [tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes) comme on l'a fait en introduction.
+On utilise un algorithme [round robin scheduling](https://nrich.maths.org/articles/tournament-scheduling) comme on l'a fait en introduction.
 
 {% enddetails %}
 {% info %}

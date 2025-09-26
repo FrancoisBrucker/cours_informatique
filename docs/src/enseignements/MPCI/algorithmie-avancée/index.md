@@ -103,14 +103,14 @@ L'ET de l'année dernière :
 2. rappel sur [les flots](/cours/graphes/flots/){.interne} et les graphes bi-parti
    1. le [transport amoureux](/cours/graphes/projet-flots-modélisation/#transport-amoureux){.interne}
    2. [degrés d'un graphe (exercice 3)](./DS/ds.pdf){.pdf}
-3. [couplage](/cours/graphes/couplages/){.interne}
 {% endaller %}
 
 #### Semaine 4
 
 >
-> 1. coloriabilité
-> 2. planarité
+> 1. [couplage](/cours/graphes/couplages/){.interne}
+> 2. coloriabilité
+> 3. planarité
 
 ### DS
 

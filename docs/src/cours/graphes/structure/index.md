@@ -279,7 +279,6 @@ Si $G=(V, E)$  est un graphe, on note :
 - $\delta(G) = \min(\\{\delta(x) \vert x \in V\\})$
 
 {% endnote %}
-
 <span id="graphe-régulier"></span>
 Un graphe $G$ est dit **k-_régulier_** (ou parfois juste **_régulier_**) si $\Delta(G) = \delta(G) = k$.
 
