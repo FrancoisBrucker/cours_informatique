@@ -175,7 +175,45 @@ Boucle principale :
 
 1. on voit bien tous les sommets car connexe : on le fait par récurrence sur la longueur du chemin entre $x$ et $y$
 2. chaque couleur est obligatoire
-3. linéaire n+m si on utilise un parcours en largeur (les éléments marqués sont dans une file).
+3. linéaire n+m si on utilise un parcours en profondeur (les éléments marqués sont dans une pile).
+
+L'algorithme fonctionne clairement si le graphe est bi-parti puisque par composante connexe il n'y a qu'une seule possibilité de bi-partition une fois 1 élément assigné :
+
+{% note "**Proposition**" %}
+Si le graphe est bi-parti, alors l'algorithme s'arrête en donnant une bipartition du graphe
+
+La réciproque est également vraie :
+
+{% endnote %}
+{% note "**Proposition**" %}
+Si l'algorithme donne une bipartition, le graphe est bi-parti.
+{% endnote %}
+{% details "preuve", "open" %}
+Si le graphe est connexe, chaque sommet sera marqué et examiné. Comme les couleurs ne sont jamais remise en cause et que l'on vérifie tous les voisins d'un sommet examiné on explorera toutes les arêtes du graphes et les sommets chacune d'elles seront de couleurs différentes.
+{% enddetails %}
+
+Si l'algorithme s'arrête en répondant NON, c'est qu'il examine un sommet $y$ qui est déjà marqué avec la même couleur que le sommet $x$. Il existe donc un chemin entre le premier élément marqué de l'algorithme, disons $x_0$, et $x$ alternant de couleur en couleur :
+
+![reconnaissance fail](./reco-fail-1.png)
+
+Mais comme $y$ est déjà marqué c'est qu'on la déjà vu, disons en examinant le sommet $x'$, il existe un chemin alternant de couleurs entre $x_0$ et $x'$ qui est de couleur différente de $x$ :
+
+![reconnaissance fail](./reco-fail-2.png)
+
+On se trouve donc globalement dans une situation où il existe un chemin alternant les couleurs entre $x_0$ et $x$ et entre $x_0$ et $x'$ ces chemins sont de parité différente puisque $x$ et $x'$ sont de couleurs différentes :
+
+![reconnaissance fail](./reco-fail-3.png)
+
+En remontant ces deux chemins jusqu'au premier élément en commun (il existe puisque $x_0$ fait parti des deux chemins) on obtiendra alors forcément un cycle de longueur impaire puisque :
+
+![reconnaissance fail](./reco-fail.png)
+
+On en conclut :
+
+{% note "**Proposition**" %}
+Si l'algorithme s'arrête en répondant NON, alors le graphe possède un cycle de longueur impair.
+
+{% endnote %}
 
 ## Caractérisation
 
@@ -186,8 +224,8 @@ Un graphe est biparti si et seulement si il ne contient pas de cycle de longueur
 {% endnote  %}
 {% details "preuve", "open" %}
 
-- Un graphe biparti ne contient pas de cycle de longueur impaire car si le graphe possédait un cycle, ses arêtes doivent passer d'un stable à l'autre un nombre pair de fois.
-- Un graphe n'est pas biparti s'il contient un cycle de longueur impaire car l'algorithme répond non si a un cycle de longueur impaire.
+- Si un graphe est biparti alors il ne contient pas de cycle de longueur impaire puisque les arêtes d'un cycle doivent passer d'un stable à l'autre un nombre pair de fois.
+- Si un graphe n'est pas biparti alors l'algorithme de reconnaissance va répondre NON, ce qui implique l'existence d'un cycle de longueur impaire.
 
 {% enddetails %}
 
@@ -204,9 +242,12 @@ Le problème de partition d'un graphe en graphes bipartis est un problème de co
 Des ordinateurs liés entre eux deux à deux par un graphe complet doivent tous communiquer entre eux. La contrainte est que chaque ordinateur ne peut être que dans 3 états :
 
 - endormis
-- en transmission avec **un unique** autre ordinateur.
+- en position d'émission
+- en position de réception
 
-Chaque couple d'ordinateur doit s'échanger **une** donnée. Combien d'étapes au minimum sont-elles nécessaires pour tout couple d'ordinateurs aient communiqué ?
+Si à un instant donné un note les arêtes en communication de ce graphe, elles formeront un graphe bi parti puisque l'on pourra séparer les ordinateurs en émission (qui peuvent envoyer des donnés à plus d'un ordinateur) et les ordinateurs en réception qui peuvent recevoir des données de plus d'un ordinateur.
+
+Si chaque couple d'ordinateur doit s'échanger **exactement une** donnée (en émission ou en réception). Combien d'étapes au minimum sont-elles nécessaires pour tout couple d'ordinateurs aient communiqué (que chaque arête du graphe ait été utilisée 1 fois) ?
 
 Ce problème peux se décrire comme un problème de graphe. Commençons par définir une partition d'un graphe.
 
