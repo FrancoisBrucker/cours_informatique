@@ -61,12 +61,12 @@ Le problème du couplage admet un algorithme glouton très simple permettant de 
 
 ```pseudocode
 
-algorithme couplage_glouton(G: Graphe<Sommet>) → {{Sommet}}
-   M := {{Sommet}}
+algorithme couplage_glouton(G: Graphe<Sommet>) → { {Sommet} }
+   M := { {Sommet} }
    M ← ∅
    pour chaque arête xy de G:
-      si x et y ne sont pas couvert par M:
-         M ← M ∪ {xy}
+      si x et y ne sont pas couverts par M:
+         M ← M ∪ { xy }
 ```
 
 Cet algorithme est très simple et il est clair qu'il peut trouver un couplage maximum s'il prend les arêtes dans un _bon_ ordre. Mais même si l'ordre est quelconque il ne peut pas être si mauvais que ça :
@@ -98,6 +98,47 @@ Si l'algorithme prend systématiquement l'arête au milieu du chemin, son coupla
 
 Cet algorithme glouton montre que si l'on cherche rapidement une solution (l'algorithme est linéaire en la taille du graphe) on peut le faire sans grand risque de tomber trop à côté de la solution optimale.
 
+## <span id="couverture"></span>Couplage et couvertures
+
+Couplage maximum et [couverture minimale](../../cliques-stables/#problème-graphe-couverture){.interne} sont deux problèmes intimement liés. En effet :
+
+{% note "**Proposition**" %}
+Si $M$ est un couplage et $K$ une couverture d'un graphe, on a évidemment $\vert M \vert \leq \vert K \vert$.
+{% endnote %}
+{% details "preuve", "open" %}
+S'il existait une couverture à strictement moins de $\vert M \vert$ sommets, il existerait une arête $xy$ de $M$ dont aucun des sommets ne serait dans la couverture, ce qui est impossible (puisque $xy$ est ue arête du graphe).
+
+{% enddetails %}
+
+On a alors immédiatement la proposition suivante :
+
+{% note "**Proposition**" %}
+Soit $G=(V, E)$ un graphe. La cardinalité minimum de ses couvertures est plus grande la cardinalité maximum de ses couplages.
+
+{% endnote %}
+
+Attention, ce n'est pas forcément égal dans le cas général.
+
+En reprenant notre exemple de départ, le graphe admet un couplage parfait à 5 arêtes alors que la plus petite couverte possède 6 sommets :
+
+![couverture min](./couverture-min.png)
+
+Mais ce lien nous permet déjà de trouver une 2-approximation au problème de la couverture :
+
+{% note "**Proposition**" %}
+Soit $G=(V, E)$ un graphe et $M=\\{x_1y_1, \dots, x_ky_k\\}$ un de ses couplages obtenu par l'algorithme glouton.
+
+Alors :
+
+- l'ensemble $K = \cup_{k} \\{ \\{x_i, y_i\\} \\}$ est une couverture de $G$
+- toute couverture de $G$ possède au moins $k$ sommets.
+{% endnote %}
+{% details "preuve", "open" %}
+
+1. S'il existait une arête $uv$ dans le graphe tels que $u$ et $v$ soient ouvert dans $M$, alors l'algorithme glouton l'aurait prise.
+2. vient de la première proposition de cette partie qui montre que $\vert M\vert \leq \vert K\vert$.
+{% enddetails %}
+
 ## Exemples
 
 ### Trouver des binômes
@@ -120,7 +161,7 @@ On verra dans ce cours que c'est polynomialement facile à faire même si l'algo
 [Tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes)
 {% endlien %}
 
-Dans un tournoi de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents. On verra plus tard que l'on peut modéliser ce problème comme un problème de coloration d'arêtes du graphe complet, mais ici voyons juste un algorithme pour résoudre.
+Dans un tournoi de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents de telle sorte que chaque équipe rencontre chacune des autres équipes.
 
 L'algorithme est le suivant, pour $n$ pair :
 
@@ -144,8 +185,6 @@ Sinon, Ok aussi :
 - $i+j \mathbin{\small\\%} (n-1) = K$ a $n-1$ solutions possible pour $0\leq i < j < n-1$ le couplage est maximum à chaque ronde
 
 Pour les match impair, l'équipe $n-1$ fait office d'équipe fantôme : les équipe qui devraient l'affronter ne jouent pas.
-
-> TBD exemple à 6
 
 i | j< 5 | i + j | i à domicile
 ==|======|=======|=============
@@ -177,3 +216,5 @@ Ce qui donne par ronde avec l'équipe à domicile en premier:
 - ronde 2 : (2, 0), (3, 4), (1, 5)
 - ronde 3 : (0, 3), (1, 2), (5, 4)
 - ronde 4 : (4, 0), (3, 1), (2, 5)
+
+On reverra plus tard cet exemple en montrant qu'on peut le modéliser comme un problème de coloration d'arêtes du graphe complet.

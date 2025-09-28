@@ -17,16 +17,16 @@ Le problème de couplage théorique avec de grandes portées pratiques
 [Problème du couplage](./problème/){.interne}
 {% endaller %}
 
-
 ## Algorithme optimaux
 
-Le problème n'est cependant pas NP-complet comme on pourrait s'y attendre, il est même facile à résoudre algorithmiquement. Commençons par caractériser les couplages maximum.
+Le problème a l'air ardu mais il n'est pas NP-complet comme on pourrait s'y attendre, il est même facile à résoudre algorithmiquement. On peut noter que l'article présentant l'algorithme de résolution de ce problèmes nommé ["paths trees and flowers" (Edmonds, 1965)](https://math.nist.gov/~JBernal/p_t_f.pdf) est à l'origine même de la notion de problème polynomial (même si on trouve [des références plus anciennes](https://blog.computationalcomplexity.org/2022/11/who-first-thought-of-notion-of.html)).
 
-> Outil du chemin augmentant que l'on pourra appliquer aux graphes tout d'abord bi-parti puis généraux
+Bref. C'est un joli problème avec de jolis algorithme et utile en pratique ce qui ne gâche rien.
 
-### Chemin augmentant
+### Chemins augmentant
 
-> TBD chemins augmentant est l'outil permettant de savoir s'il existe ou pas un couplage max. Comme chaine augmentante des flots.
+Le principal outil utilisé pour résoudre le problème est le chemin augmentant. C'est le pendant graphe [des chaines augmentantes des flots](../flots/#chaîne-augmentante){.interne}.
+
 {% aller %}
 [Chemins augmentant](./chemins-augmentant/){.interne}
 {% endaller %}

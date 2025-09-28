@@ -226,7 +226,7 @@ On appelle **_couverture_** d'un graphe $G=(V, E)$ un ensemble de sommets $C \su
 Montrez que toute couverture de $K_n$ contient $n-1$ sommet.
 {% endexercice %}
 {% details "corrigé" %}
-> TBD si n-2 manque l'arête entre 2 sommets pas dans la couverture.
+C'est vrai pour $n < 2$ et pour $n \geq 2$, s'il existait une couverture à strictement moins de $n-1$ éléments, il existerait $x$ et $y$, deux sommets différents qui n'y sont pas, ce qui n'est pas possible puisque $xy$ est une arête de $K_n$.
 {% enddetails %}
 {% exercice %}
 Montrez que le problème couverture est dans NP

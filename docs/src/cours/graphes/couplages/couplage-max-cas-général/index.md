@@ -9,22 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD Couplage parfait et maximum dans un graphe quelconque
+> TBD pour le dual/primal : <https://www.kurims.kyoto-u.ac.jp/EMIS/journals/DMJDMV/vol-ismp/34_pulleyblank-william.pdf>
 
-> TBD :
-> 
-> - taille du couplage MAX : <https://fr.wikipedia.org/wiki/Formule_de_Tutte-Berge>
->
-> - perfect matching :
->   - <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
->   - tutte 47 graph with perfect matching dans NP cap co-NP
->   - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf>
->   - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
-
-{% info %}
-Tutte, c'est un calcul de déterminant et c'est idem que multiplication de matrice : <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
-
-{% endinfo %}
 
 ## Couplage parfait de poids maximum
 

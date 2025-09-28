@@ -11,22 +11,10 @@ eleventyComputed:
 
 Le problème du couplage dans un graphe quelconque se résout aussi de façon polynomiale, mais les algorithmes sont plus complexes.
 
-## Couplage parfait et maximum dans un graphe quelconque
+{% lien %}
+[Algorithme d'Edmonds cas général](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds_pour_les_couplages)
 
-> TBD :
-> 
-> - taille du couplage MAX : <https://fr.wikipedia.org/wiki/Formule_de_Tutte-Berge>
->
-> - perfect matching :
->   - <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
->   - tutte 47 graph with perfect matching dans NP cap co-NP
->   - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf>
->   - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
-
-{% info %}
-Tutte, c'est un calcul de déterminant et c'est idem que multiplication de matrice : <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
-
-{% endinfo %}
+{% endlien %}
 
 ## Chemin augmentant dans un graphe quelconque
 
@@ -74,4 +62,42 @@ On peut transformer petit à petit notre graphe. Si on a pas de chance, on obtie
 
 Enfin, toute cette construction se fait de plus de façon polynomiale !
 
-> TBD la complexité. Plus les améliorations.
+{% note "**Proposition**" %}
+La complexité de recherche d'un chemin augmentant dans un graphe est en $mathcal{O}(mn + n^2)$ opérations.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Si l'on trouve une fleur, il faut la contracter, ce qui prend $\mathcal{O}(n)$ opération puis relancer l'algorithme, ce que l'on peut être obligé de faire $\mathcal{O}(n)$ fois.
+
+{% enddetails %}
+
+Comme pour les graphes connexes, $m \geq n-1$ on a :
+
+{% note "**Proposition**" %}
+La complexité de recherche d'un chemin augmentant dans un graphe connexe est en  $\mathcal{O}(mn)$ opérations.
+{% endnote %}
+
+## Algorithme
+
+Identique que pour le graphe biparti, on cherche au pire $\mathcal{O}(n)$ fois à augmenter notre couplage. On en déduit que :
+
+{% note "**Proposition**" %}
+La complexité de recherche d'un couplage maximum dans un graphe connexe est en  $\mathcal{O}(mn^2)$ opérations.
+{% endnote %}
+
+## Propriétés des Couplage parfait et maximum dans un graphe quelconque
+
+> TBD :
+> 
+> - taille du couplage MAX : <https://fr.wikipedia.org/wiki/Formule_de_Tutte-Berge>
+>
+> - perfect matching :
+>   - <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
+>   - tutte 47 graph with perfect matching dans NP cap co-NP
+>   - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf>
+>   - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
+
+{% info %}
+Tutte, c'est un calcul de déterminant et c'est idem que multiplication de matrice : <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
+
+{% endinfo %}

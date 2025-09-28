@@ -19,6 +19,8 @@ C'est une classe de graphe importante à connaître car, parfois curieusement, i
 
 ### Bi-parti
 
+<span id="définition-biparti"></span>
+
 {% note "**Définition**" %}
 Un graphe $G=(V, E)$ est **_biparti_** s'il existe une bipartition $V_1$ et $V_2$ de $V$ ($V_1 \cap V_2 = \varnothing$ et $V_1 \cup V_2 = V$) en deux [stables](../structure/#definition-stable){.interne}.
 {% endnote  %}
@@ -105,6 +107,8 @@ Or $\sum_{u\in U} \delta(u) = k\cdot \vert U\vert$ et $\sum_{v\in V} \delta(u) =
 
 ### Biparti complets
 
+<span id="définition-biparti-complet"></span>
+
 {% note "**Définition**" %}
 Un **_graphe biparti complet_** est le graphe $K_{p,q} = (V_p \cup V_q, V_p \times V_q)$, avec $\vert V_p \vert = p$ et $\vert V_q \vert = q$
 
@@ -140,6 +144,57 @@ Déduire de l'exercice précédent qu'un graphe bipartis complets $K_{p, q}$ est
 
 Si le graphe biparti complet $K_{p, p}$ est composé des stables $\\{x_1,\dots x_n\\}$ et $\\{y_1,\dots y_n\\}$, le cycle $x_1y_1\dots x_iy_i\dots x_ny_nx_1$ est hamiltonien : tous les graphes $K_{p, p}$ sont hamiltoniens.
 
+{% enddetails %}
+
+### Graphes $k$-partis
+
+On en a parfois besoin, donc autant les définir ici :
+
+<span id="définition-k-parti"></span>
+
+{% note "**Définition**" %}
+
+On appelle **_graphe $k$-parti_** tout graphe admettant une partition de ses sommets en $k$ stables.
+{% endnote %}
+{% note "**Définition**" %}
+
+On appelle **_graphe $k$-parti complet_** le graphe Le graphe $K_{p_1,\dots, p_k} = (\cup_{i} V_{p_i}, \\{uv \vert u\in V_{p_i}, v\in V_{p_j}, i\neq j\\})$
+{% endnote %}
+
+Pour voir quelques graphes tri-partis complets, vous pouvez jeter un coup d'œil à la page suivante :
+
+{% info %}
+<https://mathworld.wolfram.com/CompleteTripartiteGraph.html>
+{% endinfo %}
+
+Terminons par un petit exercice pour appliquer tout ça :
+
+{% exercice %}
+Trouver toutes les valeurs entières de a, b, c telles que $0 < a ≤ b ≤ c$ et que le graphe 3-parti complet $K_{a,b,c}$ possède :
+
+- [un cycle eulérien](../parcours-eulériens/#definition-cycle-eulerien){.interne}.
+
+- [un chemin eulérien](../parcours-eulériens/#definition-chemin-eulerien){.interne}
+{% endexercice %}
+{% details "solution" %}
+
+Soient $A$, $B$ et $C$ les 3 stables tels que $\vert A\vert = a$, $\vert B\vert = b$ et $\vert C\vert = c$. On a :
+
+- les a sommets de $A$ ont pour degré $b+c$,
+- les b sommets de $B$ ont pour degré $a+c$,
+- les c sommets de $C$ ont pour degré $a+b$.
+
+Pour que le graphe admette un cycle eulérien, il faut que tout sommet soit de degré pair, ce qui n'est possible que si $a$, $b$ et $c$ sont soit tous pair soit tous impairs.
+
+Pour que le graphe admette un chemin eulérien, il faut que tous les sommets soient de degré paires sauf 2. Comme tous les sommets d'un même stable ont même degré, on a deux cas : soit $a=b=1$ et $c$ pair, soit $a=2$ et il faut alors que :
+
+- $b+c$ soit impair,
+- $2+c$ soit pair,
+- $2+b$  soit pair.
+
+Ce qui est impossible.
+
+Les seuls graphes tripartis complets admettant un chemin eulériens sont donc les graphes $K_{1,1,2p}$
 {% enddetails %}
 
 ## Reconnaissance

@@ -2,8 +2,8 @@
 layout: layout/post.njk
 title: "Flots : exercices"
 
-authors: 
-    - François Brucker
+authors:
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -20,8 +20,8 @@ Un problème de transport est une variation sur les flots.
 
 On considère que l'on a un graphe orienté $G = (V, E)$ et que l'on a dans ce graphe deux sous ensembles :
 
-* un ensemble $S \subsetneq V$ de sources qui ont une marchandise en excès
-* un ensemble $P \subsetneq V$ de puits qui demandent cette marchandise
+- un ensemble $S \subsetneq V$ de sources qui ont une marchandise en excès
+- un ensemble $P \subsetneq V$ de puits qui demandent cette marchandise
 
 Les sommets qui ne sont ni dans $S$ ni dans $P$ sont dit sommets intermédiaires.
 
@@ -35,8 +35,8 @@ Montrer que l'on peut modéliser ce problème comme un problème de flot maximum
 {% details "solution" %}
 On ajoute au graphe :
 
-* un sommet $s$ et des arcs $sx$ pour $x \in S$ de coût 0 et de capacité l'excédant en $x$
-* un sommet $p$ et des arcs $xp$ pour $x \in P$ de coût 0 et de capacité la demande en $x$
+- un sommet $s$ et des arcs $sx$ pour $x \in S$ de coût 0 et de capacité l'excédant en $x$
+- un sommet $p$ et des arcs $xp$ pour $x \in P$ de coût 0 et de capacité la demande en $x$
 
 On considère que les capacités des autres arcs du graphe sont égales à $+\infty$.
 
@@ -88,13 +88,13 @@ Le flot est maximum, l'algorithme de Ford et Fulkerson nous donnant une coupe mi
 
 Des héros littéraires ont décidé de se marier. On considère pour simplifier qu'ils sont tous hétérosexuels et qu'ils ont préétablis une matrice d'affinité : un cœur dans la case signifie que la ligne et la colonne sont intéressées l'une par l'autre.
 
-|         |Cléopâtre|Iphigénie|Juliette|Fanny|Chimène|
-|  :-:    |   :-:   |   :-:   |   :-:  |:-:  |  :-:  |
-|Achille  |     ♥   |    ♥    |        |     |       |
-|César    |     ♥   |         |        |  ♥  |       |
-|Rodrigue |         |         |    ♥   |     |   ♥   |
-|Roméo    |         |         |    ♥   |     |   ♥   |
-|Marius   |         |         |    ♥   |  ♥  |       |
+|          | Cléopâtre | Iphigénie | Juliette | Fanny | Chimène |
+| :------: | :-------: | :-------: | :------: | :---: | :-----: |
+| Achille  |     ♥     |     ♥     |          |       |         |
+|  César   |     ♥     |           |          |   ♥   |         |
+| Rodrigue |           |           |    ♥     |       |    ♥    |
+|  Roméo   |           |           |    ♥     |       |    ♥    |
+|  Marius  |           |           |    ♥     |   ♥   |         |
 
 Pour un graphe simple $G = (V, E)$ un couplage $M$ est un un ensemble d'arêtes deux à deux disjointes (pour tout sommet $x$, il existe au plus 1 arête de $M$ telle que $x$ soit une de ses extrémités).
 
@@ -131,17 +131,34 @@ Il existe deux solutions où tout le monde est marié à la fin. Lesquelles ?
 {% details "solution" %}
 En résolvant le problème on trouve :
 
-* Iphigénie - Achille
-* Cléopâtre - César
-* Juliette - Rodrigue
-* Fanny - Marius
-* Chimène - Roméo
+- Iphigénie - Achille
+- Cléopâtre - César
+- Juliette - Rodrigue
+- Fanny - Marius
+- Chimène - Roméo
 
 Il y a aussi la solution classique où vous échangez les maris de Juliette et Chimène.
 
 {% enddetails %}
 
-Notez que si l'on ne se restreint pas aux mariages hétérosexuels, le graphe n'est plus biparti. Le problème du couplage dans un graphe ne peut plus se résoudre comme un problème de flot, il faut utiliser [l'algorithme d'Edmonds](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds_pour_les_couplages) pour le résoudre.
+La modélisation par flot nécessite deux population distinctes à marrier. Dans notre cas, cela suppose que l'on ne peut marier des héroïnes qu'à des héros :
+
+{% exercice %}
+Montrez que si Iphigénie en pince également pour Cléopâtre, la modélisation par flot ne fonctionne plus.
+
+{% endexercice %}
+{% details "solution" %}
+Cela donne le graphe de relation et modélisation en flot associée :
+
+![soucis flot](./flot-app-transport-homosexuel.png):
+
+On pourrait alors arriver à la chaîne augmentante suivante, qui marierait Iphigénie à Cléopâtre et Cléopâtre à César ce nos règles interdisent (un seul marriage par personne).
+
+![soucis flot](./flot-app-transport-homosexuel-2.png):
+
+{% enddetails %}
+
+Le problème ne peut alors plus se résoudre comme un problème de flot et il faut utiliser d'autres algorithmes pour le résoudre (rassurez-vous vas les voir juste apres cette partie).
 
 {% info %}
 Si l'on veut rajouter des amants (chaque personne peut avoir un conjoint et/ou un amant), le problème devient NP-difficile.

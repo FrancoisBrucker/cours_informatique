@@ -166,19 +166,19 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 
 {% endaller %}
 
-## Graphes Planaires
-
-{% aller %}
-
-[Graphes planaires](./graphes-planaires){.interne}
-
-{% endaller %}
-
 ## Colorabilité d'un graphe
 
 {% aller %}
 
 [Colorabilité](./colorabilité){.interne}
+
+{% endaller %}
+
+## Graphes Planaires
+
+{% aller %}
+
+[Graphes planaires](./graphes-planaires){.interne}
 
 {% endaller %}
 

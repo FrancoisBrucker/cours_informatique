@@ -107,10 +107,16 @@ L'ET de l'année dernière :
 
 #### Semaine 4
 
->
-> 1. [couplage](/cours/graphes/couplages/){.interne}
-> 2. coloriabilité
-> 3. planarité
+{% aller %}
+
+1. couplage :
+    - [problème](/cours/graphes/couplages/problème/){.interne} et [chemins augmentant](/cours/graphes/couplages/chemins-augmentant/){.interne}
+    - [graphes bi-parti](/cours/graphes/couplages/couplage-bi-parti/){.interne} et idée de la [généralisation aux graphes quelconques](cours/graphes/couplages/couplage-cas-général/){.interne}.
+    - [couplage max dans les graphes bi-partis](/cours/graphes/couplages/couplage-max-bi-parti/){.interne} (si on a le temps)
+2. coloriabilité
+3. planarité
+
+{% endaller %}
 
 ### DS
 

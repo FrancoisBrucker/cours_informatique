@@ -9,11 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Modéliser des problèmes de robinets par la théorie des graphes.
-
-<!-- end résumé -->
 
 {% info %}
 Les exemples de ce cours ont été pris dans l'excellent livre de Charon et Hudry [Introduction à l'optimisation continue et discrète](https://www.amazon.fr/Introduction-loptimisation-continue-discr%C3%A8te-exercices/dp/2746248638).
@@ -162,7 +158,7 @@ Il existe alors $\epsilon > 0$ tel que toute valuation $f'$ avec $\vert\vert f -
 
 Un fermé borné atteignant ses bornes, on en déduit que $\mbox{val}(f)$ va atteindre ses bornes : il existe bien un flot maximum.
 
-### Chaîne augmentante
+### <span id="chaîne-augmentante"></span>Chaîne augmentante
 
 Pour montrer que le flot maximum est égal à la coupe minimum on va introduire la notion de chaîne augmentante.
 
@@ -704,8 +700,6 @@ Et on obtient :
 
 ### Graphe d'écart
 
-> TBD xy implique pas yx. Sinon on ajoute des arcs xy et yz, zx de même capacité.
-
 L'algorithme de Ford et Fulkerson pour trouver une chaîne augmentante est efficace si les capacités sont peut importante. Il n'est cependant pas polynomial.
 
 Nous allons montrer ici une variante utilisant un graphe, nommé **_graphe d'écart_**, pour trouver une chaîne augmentante. La simple utilisation de ce graphe va montrer qu'il est possible de rendre l'algorithme de Ford et Fulkerson polynomial.
@@ -717,7 +711,7 @@ Nous allons montrer ici une variante utilisant un graphe, nommé **_graphe d'éc
 
 On peut utiliser un graphe auxiliaire, appelé **_graphe d'écart_** pour trouver une chaîne augmentante.
 
-Soit $G=(V, E)$ un graphe orienté, une capacité $c$ et un flot $f$. on appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :
+Soit $G=(V, E)$ un graphe orienté antisymétriques (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas), une capacité $c$ et un flot $f$. On appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :
 
 - si $f(xy) < c(xy)$ alors on crée un arc $xy$ dans $G_f$
 - si $f(xy) > 0$ alors on crée un arc $yx$ dans $G_f$
@@ -741,6 +735,13 @@ def graphe_écart(G, c, f):
 ```
 
 {% enddetails %}
+
+Le fait que le graphe soit antisymétrique peut sembler restrictif, mais il n'en est rien car on peut toujours s'y ramener. En effet si $G$ est un graphe orienté tel qu'il existe deux sommets $x$ et $y$ avec $xy$ et $yx$ comme arc, il suffit de créer le graphe $G'$ tel que :
+
+- $V(G') = V(G) \cup \\{z\\}$
+- $E(G') = E(G) \backslash \\{ yx \\}\cup \\{ xz, zy \\}$
+
+Et de donner comme capacités aux arcs $xz$ et $zy$ la même que celle associé initialement à $yx$.
 
 #### Chaîne augmentante avec un graphe d'écart
 
@@ -856,8 +857,10 @@ On peut alors chercher à trouver un flot maximum à coût minimum. Ceci est pos
 
 Cet algorithme s'appelle algorithme de Busaker et Gowen.
 
-> TBD démontrer que l'algorithme est correct si on commence depuis un flot nul, et pas forcément sinon.
+Cet algorithme ne fonctionne que si l'on part du flot nul ! En effet, à ce moment là toute augmentation du flot sera à coût minimal.
+
+> TBD démontrer que le coût va augmenter à chaque étape.
 
 {% info %}
-La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car il faut utiliser Dijkstra pour trouver un chemin.
+La complexité est plus importante qu'avec le graphe d'écart puisqu'il faut utiliser ici un Dijkstra (de complexité $\mathcal{O}(n^2)$) et non plus juste un BFS (de complexité $\mathcal{O}(m)$)pour trouver le chemin le plus court.
 {% endinfo %}

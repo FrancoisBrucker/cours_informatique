@@ -352,6 +352,10 @@ Pour voir u peu plus clair dans tous ces problèmes algorithmiques aux complexit
 
 ### Classes de problèmes
 
+{% lien %}
+<https://hardness.mit.edu/>
+{% endlien %}
+
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
 {% aller %}

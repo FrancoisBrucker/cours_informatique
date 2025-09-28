@@ -9,92 +9,40 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Nous allons montrer un algorithme du à Edmonds qui va chercher à trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans [l'algorithme de Ford et Fulkerson](../../flots/#ford-fulkerson){.interne}, par un algorithme de marquage examen qui va faire grossir des chemins alternants.
 
-> TBD voir si utile : <https://pagesperso.g-scop.grenoble-inp.fr/~stehlikm/teaching/inf303/8-couplages.pdf>
-> 
-## Algorithme optimaux
+On verra qu'il est optimal pour [les graphes bi-partis](../../graphe-biparti/){.interne}.
 
-### Graphes bi-parti
+## Trouver un chemin augmentant
 
-Trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans [l'algorithme de Ford et Fulkerson](../flots/#ford-fulkerson), par un algorithme de marquage examen qui va faire grossir des chemins alternants.
-
-Un chemin augmentant est un chemin alternant qui commence et qui fii par un sommet libre. On va donc commencer par un sommet libre et l'augmenter de façon alternée jusqu'à arriver sur un autre sommet libre.
-
-1. marque tous les sommets libres $s$ par $[s, P, \varnothing]$
-   1. la première marque donne le sommet libre de départ
-   2. la seconde indique si arrivée à ce sommet le chemin alternant est Pair ou Impair
-   3. la dernière marque donne le prédécesseur
-2. on examine toutes les arêtes $uv$ telle que $u$ possède une marque Paire (second élément de la liste de marquage valant $P$) $[s, P, p]$. Si :
-   1. si $v$ est libre ($s = v$), on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant
-   2. $v$ n'a pas de marque, il existe une arête $vw \in M$. On marque alors :
-      1. $v$ par $[s, I, u]$
-      2. $w$ par $[s, P, v]$
-      3. on recommence l'étape 2
-   3. si $v$ est marqué $[s', P, p']$ avec $s\neq s'$ on peut remonter jusqu'à $s'$ et on a trouvé un chemin augmentant
-   4. si $v$ est marqué $[s, P, p']$ on se retrouve devant un cas problématique.
-
-Reprenons [le graphe exemple](#graphe-exemple){.interne} avec un couplage initial vide $M = \varnothing$.
-
-Au départ tous les sommets sont libres, leurs marques valent $[x, P, \varnothing]$ :
-
-![Edmonds exemple 1](./edmonds-exemple-1.png)
-
-#### Étape 2.1
-
-L'algorithme s'arrête dès l'examen de la première arête, disons $\\{2, 6\\}$, dans le cas 2.1. Le marquage de l'étape suivant est alors :
-
-![Edmonds exemple 2](./edmonds-exemple-2.png)
-
-On peut recommencer l'algorithme et encore une fois s'arrêter dans le cas 2.1 en choisissant d'arête $\\{8, 10\\}$. Le marquage de l'étape suivant est alors :
-
-![Edmonds exemple 3](./edmonds-exemple-3.png)
-
-On peut recommencer et choisir $\\{7, 9\\}$ et arriver à :
-
-![Edmonds exemple 4](./edmonds-exemple-4.png)
-
-#### Étape 2.2
-
-En considérant l'arête $\\{4, 8\\}$, on se retrouve dans le cas 2.2. On obtient le marquage :
-
-![Edmonds exemple 5](./edmonds-exemple-5.png)
-
-Et l'on faire de même en choisissant ensuite $\\{3, 7\\}$ :
-
-![Edmonds exemple 6](./edmonds-exemple-6.png)
-
-#### Étape 2.3
-
-Choisir l'arête $\\{9, 10\\}$, nous fait visiter le cas 2.3 : on obtient un chemin augmentant 3, 7, 9, 8, 4 et on obtient le graphe et le couplage :
-
-![Edmonds exemple 7](./edmonds-exemple-7.png)
-
-Le cas 2.3 de l'algorithme précédent fonctionne car le chemin alternant de $v$ à $s'\neq s$ ne peut couper le chemin de $s$ à $u$ sinon deux arêtes avec une extrémité commune seraient dans le couplage.
-
-#### Étape 4
-
-Choisir l'arête $\\{1, 2\\}$ nous permettrait de terminer l'algorithme sans obtenir de cas problématique mais choisissons $\\{5, 2\\}$ puis $\\{6, 4\\}$ et enfin $\\{8, 10\\}$. On arrive dans le cas suivant :
-
-![Edmonds exemple 8](./edmonds-exemple-8.png)
-
-Le choix de l'arête $\\{8, 10\\}$ nous mène au cas 2.4 problématique : on boucle comme le montre le chemin vert suivi par les marques. On appelle ces structures des **_fleurs_** :
-
-![fleur](fleur.png)
-
-Nous verrons plus tard comment résoudre le problème des fleurs (spoiler : en les coupant), pour l'instant étudions le cas où l'on ne peut pas trouver de fleurs :
+On utilise l'algorithme de recherche de chemin augmentant précédent. On sait qu'il fonctionne s'il ne trouve pas de fleurs... qui n'existent pas dans les graphes bi-parti :
 
 {% note "**Proposition**" %}
-L'algorithme de recherche d'un chemin augmentant fonctionne pour les graphes sans cycle impair.
+S i l'algorithme de recherche d'un chemin augmentant trouve une fleur c'est qu'il existe un cycle de longueur impair.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Une corolle ne peut exister que s'il existe un cycle de longueur impair.
+Une fleur ne peut exister que s'il existe un cycle de longueur impair formant sa corolle.
 
 {% enddetails %}
 
-## Graphe biparti
+{% note "**Corollaire**" %}
+L'algorithme de recherche d'un chemin augmentant trouve un chemin augmentant s'il en existe un pour les graphes bi-partis.
+{% endnote %}
+{% details "preuve", "open" %}
 
-Les graphes biparti sont exactement les graphes sans cycle impair.
+Les graphes bi-partis sont exactement les graphes sans cycles de longueur impair.
+{% enddetails %}
+
+### Complexité
+
+Trouver un chemin augmentant se fait en $\mathcal{O}(m + n)$ opérations puisqu'au maximum on parcours toutes les arêtes (on ne peut que rajouter des arêtes à considérer) et pour chaque arête on fait un no,bre constant d'opérations.
+
+Comme pour un graphe connexe on a $m \geq n-1$, pour un graphe connexe, trouver un chemin augmentant se fait en $\mathcal{O}(m)$ opérations.
+
+## Algorithme de couplage maximum dans les graphes bi-partis
+
+La recherche de chemin augmentant fonctionnant pour les graphes bi-parti puisque ce sont exactement les graphes sans cycles de longueur impair.
 
 {% note "**Proposition**" %}
 L'algorithme de recherche d'un chemin augmentant fonctionne pour les graphes bipartis.
@@ -102,17 +50,51 @@ L'algorithme de recherche d'un chemin augmentant fonctionne pour les graphes bip
 {% details "preuve", "open" %}
 
 Une corolle ne peut exister que s'il existe un cycle de longueur impair, ce qui n'existe pas pour les graphes biparti.
-
-De plus dans le cas des graphes bi-parti, l'algorithme de recherche de chemin augmentant est identique à la recherche d'une chaîne augmentante en modélisant le couplage sous la forme d'[un problème du transport amoureux](../projet-flots-modélisation/#transport-amoureux){.interne}. On est donc garanti d'obtenir un couplage maximum si l'on ne trouve pas de chemin augmentant.
-
 {% enddetails %}
 
-On peut donc utiliser l'algorithme de chemin augmentant ou la modélisation par les flot pour trouver un couplage maximum dans un graphe bi-parti.
+Il suffit alors de faire le même algorithme que pour les flots : essayer d'améliorer un chemin augmentant et si on en trouve pas, conclure que le couplage actuel est optimal.
 
-### Couplage parfait et maximum dans un graphe biparti
+Comme chaque étape augment de 1 le couplage, il faut au maximum tenter d'augmenter $\mathcal{O}(n)$ fois le couplage.
+
+Partons d'un graphe ayant déjà un couplage de taille 3 :
+
+![etape 1](./couplage-max-1.png)
+
+Le marquage peut donner :
+
+![etape 2](./couplage-max-2.png)
+
+Pour augmenter le couplage :
+
+![etape 3](./couplage-max-3.png)
+
+Refaire l'algorithme peut donner :
+
+![etape 4](./couplage-max-4.png)
+
+Ce qui donne le couplage optimal :
+
+![etape 5](./couplage-max-5.png)
 
 {% note "**Proposition**" %}
-Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables. Le couplage maximum est de taille $\min(\vert A \vert, \vert B \vert)$.
+Trouver un couplage maximum dans un graphe biparti peut se faire en $\mathcal{O}(mn)$ opérations consistant
+{% endnote %}
+{% details "preuve", "open" %}
+Chaque étape d'augmentation du couplage se fait en $\mathcal{O}(m)$ opérations et il faut au maximum le fair $\mathcal{O}(n)$ fois.
+{% enddetails %}
+
+Notez qu'il existe des algorithme meilleurs, comme [l'algorithme de Hopcroft-Karp](https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm) qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.
+
+## Propriétés des couplage parfait et maximum dans un graphe biparti
+
+Maintenant que l'on sait trouver un couplage optimal dans un graphe bi-parti, analysons en les propriétés.
+
+### Couvertures
+
+ et commençons par une constatation simple :
+
+{% note "**Proposition**" %}
+Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables. Le couplage maximum est de taille inférieure ou égale à $\min(\vert A \vert, \vert B \vert)$.
 
 Cette borne est atteinte, entre autre, pour les graphes biparti complet.
 {% endnote %}
@@ -122,17 +104,49 @@ C'est évident.
 
 {% enddetails %}
 
-La proposition précédente nous permet d'énoncer le corollaire suivant  :
+La proposition précédente, liée au fait qu'un stable dans un graphe bi-parti est une couverture permet de retrouver [la proposition générale](../problème/#couverture){.interne}, mais on peut faire bien mieux :
+
+<div id="König-Egerváry"></div>
+
+{% note "**Théorème (König-Egerváry, 1931)**" %}
+Pour tout graphe biparti, la cardinalité minimum de ses couvertures est égale à la cardinalité maximum de ses couplages.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Soit $G= (A\cup B, E)$ un graphe biparti admettant $A$ et $B$ comme stables. On suppose de plus que $\vert A \vert \leq \vert B \vert$.
+Soit $M$ un couplage maximum de $A$.
+
+Si $\vert M \vert = \vert A\vert$ alors comme $A$ est une couverture on a bien le résultat demandé.
+
+Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un [chemin alternant](../chemins-augmentant/#définition-chemin-alternant){.interne} (pas augmentant, juste alternant) partant d'un élément de $L$ et finissants en $x \notin L$. On pose alors :
+
+- $A' = A \cap C$
+- $B' = B \cap C$
+
+Tout élément $x$ dans $B'$ sera un élément impair d'un chemin alternant et puisqu'il ne peut être libre par maximalité de $M$, il existe $xy \in M$ avec $y\in A'$. On a donc $\vert A' \vert = \vert B' \vert$ et comme $K = L \cup B' \cup (A\backslash A')$ est trivialement une couverture on a bien le résultat demandé.
+
+![couverture couplage](./couverture-couplage.png)
+
+{% enddetails %}
+
+La preuve du théorème précédent donne de plus une construction de la couverture de taille minimum à partir d'un couplage maximum, ce qui montre que le problème de la recherche de la couverture minimale est polynomiale dans le cas des graphes biparti alors qu'il est NP-complet dans le cas général !
+
+> TBD écrire bien l'algorithme
+
+### Couplage parfait
 
 {% note "**corollaire**"  %}
 Un graphe biparti n'admet de couplage parfait que si toute bipartition en deux stables $A$ et $B$ est telle que $\vert A \vert = \vert B \vert$.
 {% endnote %}
 
-Ce n'est cependant pas une equivalence, comme le montre le graphe suivant :
+Ce n'est cependant pas une équivalence, comme le montre le graphe suivant :
 
 ![contre exemple biparti parfait](bipatri-pas-parfait.png)
 
-La condition nécessaire et suffisante existe cependant mais elle est plus complexe :
+La condition nécessaire et suffisante existe cependant mais elle est plus complexe, comme on va le voir ci-après.
+
+### Taille des couplages
 
 {% note "**Théorème (Hall, 1935)**" %}
 Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables.
@@ -148,7 +162,7 @@ $$
 {% endnote %}
 {% details "preuve", "open" %}
 
-Si $\vert A \vert > \vert B \vert$, c'est impossible et en prenant $S = A$, on a $\vert \\{y | xy \in E, x \in S\\}\vert = \vert B \vert < \vert A \vert$. On peut donc considérer que $\vert A \vert \leq \vert B \vert$
+Si $\vert A \vert > \vert B \vert$, c'est impossible et en prenant $S = A$, on a $\vert \\{y | xy \in E, x \in S\\}\vert \leq \vert B \vert < \vert A \vert$. On peut donc considérer que $\vert A \vert \leq \vert B \vert$
 
 Soit $M$ un couplage maximum qui ne couvre pas $x_0 \in A$ et on note :
 
@@ -196,6 +210,14 @@ En ajoutant à $G$ $\vert A \vert - k$ sommets reliés à tous les éléments de
 
 Terminons cette partie en remarquant que la preuve du Théorème de Hall nous donne un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti.
 
-> TBD arbre de chemins alternant à partir d'un sommet non couvert. ON trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.
+On va construire un arbre en partant d'une racine libre en construisant des chemins alternants :
 
-On reverra cet algorithme.
+![hall algo](./hall-algo.png)
+
+En procédant comme dans la preuve du théorème on trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.
+
+Enfin ceci peut se faire simplement avec parcours en profondeur pour trouver un chemin augmentant en $\mathcal{O}(m)$ opérations. C'est ce que donne un DFS avec le graphe du transport amoureux avec un couplage de taille 4 et en partant d'un sommet libre :
+
+![hall algo](./hall-algo-transport.png)
+
+On parcours les sommets tant que l'on peut augmenter le chemin alternant et sinon on stope la récursion.
