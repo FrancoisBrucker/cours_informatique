@@ -96,12 +96,7 @@
     
   
 
-  <blockquote>
-<p>TBD outils fondamental pour la recherche de couplages optimaux.
-TBD refaire lien.</p>
-</blockquote>
-<p>Dans les exercices de modélisation par des flots, <a href="../projet-flots-mod%C3%A9lisation/#transport-amoureux" class="interne">le problème du transport amoureux</a> permettait de résoudre un problème de couplage.</p>
-<p>En utilisant cette modélisation, et en augmentant les flots d'une valeur entière (toujours 1) une chaîne augmentante est un chemin tel que les arcs sont :</p>
+  <p>Dans les exercices de modélisation par des flots, <a href="../../projet-flots-mod%C3%A9lisation/#transport-amoureux" class="interne">le problème du transport amoureux</a> permettait de résoudre un problème de couplage. En utilisant cette modélisation, et en augmentant les flots d'une valeur entière (toujours 1) une chaîne augmentante est un chemin tel que les arcs sont :</p>
 <ul>
 <li>têtes bêches de la source au puits</li>
 <li>les arcs allant vers le puits sont de flot 0 et peuvent être augmentés</li>
@@ -111,8 +106,12 @@ TBD refaire lien.</p>
 <p><img src="../probl%C3%A8me/couplage-transport-1.png" alt="couplage transport amoureux 1"></p>
 <p>On a pas besoin d'ajouter une source ou un puits. Ajoutons quelques arêtes au couplage :</p>
 <p><img src="couplage-transport-2.png" alt="couplage transport amoureux 2"></p>
-<p>Le graphe précédent admet le couplage $M = \{ \{\text{Cléopâtre},\text{Achille}\}, \{\text{Fanny},\text{Marius}\} \}$. Dans le cadre d'une modélisation par flot (avec des arcs, une source et un puits), il resterait encore des chaines augmentante comme : <code>source -&gt; Juliette -&gt; Rodrigue -&gt; puits</code> ou encore <code>source -&gt; Iphigénie -&gt; Achille &lt;- Cléopâtre -&gt; César -&gt; puits</code>.</p>
+<p>Le graphe précédent admet le couplage $M = \{ \{\text{Cléopâtre},\text{Achille}\}, \{\text{Fanny},\text{Marius}\} \}$. Dans le cadre d'une modélisation par flot (avec des arcs, une source et un puits), on serait dans le cadre suivant :</p>
+<p><img src="flot-transport.png" alt="flot chaînes augmentantes"></p>
+<p>Il resterait encore des chaines augmentante comme : <code>source -&gt; Juliette -&gt; Rodrigue -&gt; puits</code> ou encore <code>source -&gt; Iphigénie -&gt; Achille &lt;- Cléopâtre -&gt; César -&gt; puits</code>.</p>
 <p>Dans notre graphe de couplage ceci s'écrit comme un chemin de longueur impaire dont une arête est alternativement dans le couplage ou non et commence par un sommet qui n'est extrémité d'aucune arête du couplage.</p>
+<h2>Chemin alertant et augmentant</h2>
+<p><span id="définition-chemin-alternant"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -124,7 +123,7 @@ TBD refaire lien.</p>
 <ul>
 <li><strong><em>Un chemin alternant</em></strong> $x_0\dots x_k$ est tel que :
 <ul>
-<li>$x_0\dots x_k$ est un <a href="../chemins-cycles-connexite/#d%C3%A9finition-%C3%A9l%C3%A9mentaire">chemin élémentaire</a> de $G$</li>
+<li>$x_0\dots x_k$ est un <a href="../../chemins-cycles-connexite/#d%C3%A9finition-%C3%A9l%C3%A9mentaire" class="interne">chemin élémentaire</a> de $G$</li>
 <li>si $x_{i-1}x_{i} \in M$ alors $x_{i}x_{i+1} \notin M$ pour tout $i$</li>
 <li>si $x_{i-1}x_{i} \notin M$ alors $x_{i}x_{i+1} \in M$ pour tout $i$</li>
 </ul>
@@ -229,6 +228,98 @@ $$
 <p>$M$ est maximum si et seulement si il existe n'existe pas de chemin augmentant.</p>
 </div></div>
 
+<p>Les algorithmes permettant de trouver des couplages maximaux vont chercher à produire des chaines augmentantes. C'est parfois facile (pour les graphes biparti), parfois plus compliqué (pour les graphes ayant des cycles de longueurs impairs).</p>
+<h2>Trouver un chemin augmentant</h2>
+<p>La première idée pour trouver un chemin augmentant est de mimer <a href="../../flots/#ford-fulkerson" class="interne">l'algorithme de recherche de chaîne augmentante</a> des flots.</p>
+<h3>Algorithme</h3>
+<ol>
+<li>marque tous les sommets libres $s$ par $[s, P, \varnothing]$
+<ol>
+<li>la première marque donne le sommet libre de départ</li>
+<li>la seconde indique si arrivée à ce sommet le chemin alternant est Pair (marque $P$) ou Impair (marque $I$)</li>
+<li>la dernière marque donne le prédécesseur</li>
+</ol>
+</li>
+<li>on examine toutes les arêtes $uv$ telles que $u$ possède une marque Paire (second élément de la liste de marquage valant $P$) $[s, P, p]$. Si :
+<ol>
+<li>si $v$ est libre ($s = v$), on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant</li>
+<li>$v$ n'a pas de marque, il existe une arête $vw \in M$. On marque alors :
+<ol>
+<li>$v$ par $[s, I, u]$</li>
+<li>$w$ par $[s, P, v]$</li>
+<li>on recommence l'étape 2</li>
+</ol>
+</li>
+<li>si $v$ est marqué $[s', P, p']$ avec $s\neq s'$ on peut remonter jusqu'à $s'$ et on a trouvé un chemin augmentant</li>
+<li>si $v$ est marqué $[s, P, p']$ on se retrouve devant un cas problématique.</li>
+</ol>
+</li>
+</ol>
+<p>Reprenons le graphe exemple avec un couplage initial vide $M = \varnothing$.</p>
+<p><img src="../probl%C3%A8me/graphe-exemple.png" alt="graphe exemple"></p>
+<p>Au départ tous les sommets sont libres, leurs marques valent $[x, P, \varnothing]$ :</p>
+<p><img src="edmonds-exemple-1.png" alt="Edmonds exemple 1"></p>
+<h4>Étape 2.1</h4>
+<p>L'algorithme s'arrête dès l'examen de la première arête, disons $\{2, 6\}$, dans le cas 2.1. Le marquage de l'étape suivant est alors :</p>
+<p><img src="edmonds-exemple-2.png" alt="Edmonds exemple 2"></p>
+<p>On peut recommencer l'algorithme et encore une fois s'arrêter dans le cas 2.1 en choisissant d'arête $\{8, 10\}$. Le marquage de l'étape suivant est alors :</p>
+<p><img src="edmonds-exemple-3.png" alt="Edmonds exemple 3"></p>
+<p>On peut recommencer et choisir $\{7, 9\}$ et arriver à :</p>
+<p><img src="edmonds-exemple-4.png" alt="Edmonds exemple 4"></p>
+<h4>Étape 2.2</h4>
+<p>En considérant l'arête $\{4, 8\}$, on se retrouve dans le cas 2.2. On obtient le marquage :</p>
+<p><img src="edmonds-exemple-5.png" alt="Edmonds exemple 5"></p>
+<p>Et l'on faire de même en choisissant ensuite $\{3, 7\}$ :</p>
+<p><img src="edmonds-exemple-6.png" alt="Edmonds exemple 6"></p>
+<h4>Étape 2.3</h4>
+<p>Choisir l'arête $\{9, 10\}$, nous fait visiter le cas 2.3 : on obtient un chemin augmentant 3, 7, 9, 8, 4 et on obtient le graphe et le couplage :</p>
+<p><img src="edmonds-exemple-7.png" alt="Edmonds exemple 7"></p>
+<p>Le cas 2.3 de l'algorithme précédent fonctionne car le chemin alternant de $v$ à $s'\neq s$ ne peut couper le chemin de $s$ à $u$ sinon deux arêtes avec une extrémité commune seraient dans le couplage.</p>
+<h4>Étape 4</h4>
+<p>Choisir l'arête $\{1, 2\}$ nous permettrait de terminer l'algorithme sans obtenir de cas problématique mais choisissons $\{5, 2\}$ puis $\{6, 4\}$ et enfin $\{8, 10\}$. On arrive dans le cas suivant :</p>
+<p><img src="edmonds-exemple-8.png" alt="Edmonds exemple 8"></p>
+<p>Le choix de l'arête $\{8, 10\}$ nous mène au cas 2.4 problématique : on boucle comme le montre le chemin vert suivi par les marques. On appelle ces structures des <strong><em>fleurs</em></strong> :</p>
+<p><img src="fleur.png" alt="fleur"></p>
+<h3>Analyse</h3>
+<p>Cet algorithme fonctionne, dans la mesure où il ne trouve pas de fleurs :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si l'algorithme de recherche d'un chemin augmentant s'arrête sans trouver de fleur ni de chemin augmentant, alors le couplage est maximum.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Supposons que l'algorithme s'arrête sans fleur et sans chemin augmentant, alors qu'il existe un chemin augmentant $x_0\dots x_{2p+1}$. Si les secondes marques des $x_{2k}$ sont toutes paires et les secondes marques des $x_{2k-1}$ sont toutes impaires, alors l'algorithme aurait du trouver un chemin augmentant passant par un sous-chemin de $x_0\dots x_{2p+1}$ puisqu'une marque $I$ ou P suppose qu'on peut prolonger le chemin en chemin augmentant.</p>
+<p>Soit alors $x_i$ le premier sommet qui n'a pas la bonne seconde marque (I ou P) à la fin de l'algorithme. On a alors que :</p>
+<ul>
+<li>$0 &lt; i &lt; 2p+1$ car $x_0$ et $x_{2p+1}$ sont libres</li>
+<li>si $x_{2p-1}$ à une marque impair alors $x_{2p}$ à une marque paire et réciproquement.</li>
+</ul>
+<p>La seule possibilité est qu'une arête $x_{2k-1}x_{2k}$ du couplage soit inversée, mais là encore ceci aurait du conduire à l'existence d'un chemin augmentant lors de l'analyse de l'arête $x_{2k-2}x_{2k-1}$.</p>
+</div>
+</details>     
+</div>
+<p>Les fleurs posent donc problème à notre algorithme. On a déjà rencontré ce problème lorsqu'on voulait autoriser des mariages homosexuels pour nos héros de romans : l'augmentation de flot cycle. Si ce problème était irresoluble pour les flots on verra qu'on peut le contourner ici.</p>
 
 
 </article>

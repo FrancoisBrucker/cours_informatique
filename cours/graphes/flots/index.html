@@ -96,9 +96,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Modéliser des problèmes de robinets par la théorie des graphes.</p>
-<!-- end résumé -->
+  <p>Modéliser des problèmes de robinets par la théorie des graphes.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -257,7 +255,7 @@ $$</p>
 </ul>
 <p>Il existe alors $\epsilon &gt; 0$ tel que toute valuation $f'$ avec $\vert\vert f - f'\vert\vert \leq \epsilon$ n'est pas non plus un flot (on prend $\epsilon$ plus petit que $f(u) &gt; 0$ et $d &gt; 0$) : l'espace de $\mathbb{R}^m$ où $f$ n'est pas un flot est un ouvert. Donc son complémentaire, l'espace de $\mathbb{R}^m$ où $f$ est un flot, est fermé. Ce fermé est de plus borné puisque les flux ne peuvent dépasser les capacités.</p>
 <p>Un fermé borné atteignant ses bornes, on en déduit que $\mbox{val}(f)$ va atteindre ses bornes : il existe bien un flot maximum.</p>
-<h3>Chaîne augmentante</h3>
+<h3><span id="chaîne-augmentante"></span>Chaîne augmentante</h3>
 <p>Pour montrer que le flot maximum est égal à la coupe minimum on va introduire la notion de chaîne augmentante.</p>
 <p>Une <strong>chaîne</strong> $c_0 \dots c_k$ dans un graphe orienté $G=(V, E)$ est une suite de sommets tels que pour tout $0 \leq i &lt; k$, soit $c_ic_{i+1}$ soit $c_{i+1}c_i$ soit un arc du graphe.</p>
 <p>On suppose que l'on ait un réseau $G=(V, E)$ avec ses capacités $c$ et un flot $f$. Soit alors $C = c_0\dots c_k$ une chaîne de $s$ à $p$ dans $G$.</p>
@@ -944,9 +942,6 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </details>     
 </div>
 <h3>Graphe d'écart</h3>
-<blockquote>
-<p>TBD xy implique pas yx. Sinon on ajoute des arcs xy et yz, zx de même capacité.</p>
-</blockquote>
 <p>L'algorithme de Ford et Fulkerson pour trouver une chaîne augmentante est efficace si les capacités sont peut importante. Il n'est cependant pas polynomial.</p>
 <p>Nous allons montrer ici une variante utilisant un graphe, nommé <strong><em>graphe d'écart</em></strong>, pour trouver une chaîne augmentante. La simple utilisation de ce graphe va montrer qu'il est possible de rendre l'algorithme de Ford et Fulkerson polynomial.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -958,7 +953,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </div></div>
 
 <p>On peut utiliser un graphe auxiliaire, appelé <strong><em>graphe d'écart</em></strong> pour trouver une chaîne augmentante.</p>
-<p>Soit $G=(V, E)$ un graphe orienté, une capacité $c$ et un flot $f$. on appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :</p>
+<p>Soit $G=(V, E)$ un graphe orienté antisymétriques (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas), une capacité $c$ et un flot $f$. On appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :</p>
 <ul>
 <li>si $f(xy) &lt; c(xy)$ alors on crée un arc $xy$ dans $G_f$</li>
 <li>si $f(xy) &gt; 0$ alors on crée un arc $yx$ dans $G_f$</li>
@@ -995,6 +990,12 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </div>
 </details>     
 </div>
+<p>Le fait que le graphe soit antisymétrique peut sembler restrictif, mais il n'en est rien car on peut toujours s'y ramener. En effet si $G$ est un graphe orienté tel qu'il existe deux sommets $x$ et $y$ avec $xy$ et $yx$ comme arc, il suffit de créer le graphe $G'$ tel que :</p>
+<ul>
+<li>$V(G') = V(G) \cup \{z\}$</li>
+<li>$E(G') = E(G) \backslash \{ yx \}\cup \{ xz, zy \}$</li>
+</ul>
+<p>Et de donner comme capacités aux arcs $xz$ et $zy$ la même que celle associé initialement à $yx$.</p>
 <h4>Chaîne augmentante avec un graphe d'écart</h4>
 <p>Une chaîne augmentante correspond à un chemin entre $s$ et $p$ dans le graphe d'écart. En valuant ses arcs avec le coût de l'augmentation du flot, un chemin de poids minimum donnera une augmentation minimale du coût.</p>
 <p>On peut utiliser l'<a href="../chemin-poids-min-positif" class="interne">algorithme de Dijkstra</a> par exemple pour trouver ce chemin.</p>
@@ -1138,15 +1139,16 @@ TBD voir introduction aux algorithme pour la preuve de polynomialité</p>
 <p>Si les arcs ont un coût de passage $v(u)$, le coût du flot est : $\sum_{u \in E} v(u)f(u)$</p>
 <p>On peut alors chercher à trouver un flot maximum à coût minimum. Ceci est possible pour les graphes antisymétriques (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas) en utilisant les graphes d'écart pour trouver une chaîne augmentante de poids minimum.</p>
 <p>Cet algorithme s'appelle algorithme de Busaker et Gowen.</p>
+<p>Cet algorithme ne fonctionne que si l'on part du flot nul ! En effet, à ce moment là toute augmentation du flot sera à coût minimal.</p>
 <blockquote>
-<p>TBD démontrer que l'algorithme est correct si on commence depuis un flot nul, et pas forcément sinon.</p>
+<p>TBD démontrer que le coût va augmenter à chaque étape.</p>
 </blockquote>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car il faut utiliser Dijkstra pour trouver un chemin.</p>
+<p>La complexité est plus importante qu'avec le graphe d'écart puisqu'il faut utiliser ici un Dijkstra (de complexité $\mathcal{O}(n^2)$) et non plus juste un BFS (de complexité $\mathcal{O}(m)$)pour trouver le chemin le plus court.</p>
 </div></div>
 
 

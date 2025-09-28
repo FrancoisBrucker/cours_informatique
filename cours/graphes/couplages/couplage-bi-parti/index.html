@@ -96,61 +96,10 @@
     
   
 
-  <blockquote>
-<p>TBD voir si utile : <a href="https://pagesperso.g-scop.grenoble-inp.fr/~stehlikm/teaching/inf303/8-couplages.pdf">https://pagesperso.g-scop.grenoble-inp.fr/~stehlikm/teaching/inf303/8-couplages.pdf</a></p>
-</blockquote>
-<h2>Algorithme optimaux</h2>
-<h3>Graphes bi-parti</h3>
-<p>Trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans <a href="../flots/#ford-fulkerson">l'algorithme de Ford et Fulkerson</a>, par un algorithme de marquage examen qui va faire grossir des chemins alternants.</p>
-<p>Un chemin augmentant est un chemin alternant qui commence et qui fii par un sommet libre. On va donc commencer par un sommet libre et l'augmenter de façon alternée jusqu'à arriver sur un autre sommet libre.</p>
-<ol>
-<li>marque tous les sommets libres $s$ par $[s, P, \varnothing]$
-<ol>
-<li>la première marque donne le sommet libre de départ</li>
-<li>la seconde indique si arrivée à ce sommet le chemin alternant est Pair ou Impair</li>
-<li>la dernière marque donne le prédécesseur</li>
-</ol>
-</li>
-<li>on examine toutes les arêtes $uv$ telle que $u$ possède une marque Paire (second élément de la liste de marquage valant $P$) $[s, P, p]$. Si :
-<ol>
-<li>si $v$ est libre ($s = v$), on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant</li>
-<li>$v$ n'a pas de marque, il existe une arête $vw \in M$. On marque alors :
-<ol>
-<li>$v$ par $[s, I, u]$</li>
-<li>$w$ par $[s, P, v]$</li>
-<li>on recommence l'étape 2</li>
-</ol>
-</li>
-<li>si $v$ est marqué $[s', P, p']$ avec $s\neq s'$ on peut remonter jusqu'à $s'$ et on a trouvé un chemin augmentant</li>
-<li>si $v$ est marqué $[s, P, p']$ on se retrouve devant un cas problématique.</li>
-</ol>
-</li>
-</ol>
-<p>Reprenons <a href="#graphe-exemple" class="interne">le graphe exemple</a> avec un couplage initial vide $M = \varnothing$.</p>
-<p>Au départ tous les sommets sont libres, leurs marques valent $[x, P, \varnothing]$ :</p>
-<p><img src="edmonds-exemple-1.png" alt="Edmonds exemple 1"></p>
-<h4>Étape 2.1</h4>
-<p>L'algorithme s'arrête dès l'examen de la première arête, disons $\{2, 6\}$, dans le cas 2.1. Le marquage de l'étape suivant est alors :</p>
-<p><img src="edmonds-exemple-2.png" alt="Edmonds exemple 2"></p>
-<p>On peut recommencer l'algorithme et encore une fois s'arrêter dans le cas 2.1 en choisissant d'arête $\{8, 10\}$. Le marquage de l'étape suivant est alors :</p>
-<p><img src="edmonds-exemple-3.png" alt="Edmonds exemple 3"></p>
-<p>On peut recommencer et choisir $\{7, 9\}$ et arriver à :</p>
-<p><img src="edmonds-exemple-4.png" alt="Edmonds exemple 4"></p>
-<h4>Étape 2.2</h4>
-<p>En considérant l'arête $\{4, 8\}$, on se retrouve dans le cas 2.2. On obtient le marquage :</p>
-<p><img src="edmonds-exemple-5.png" alt="Edmonds exemple 5"></p>
-<p>Et l'on faire de même en choisissant ensuite $\{3, 7\}$ :</p>
-<p><img src="edmonds-exemple-6.png" alt="Edmonds exemple 6"></p>
-<h4>Étape 2.3</h4>
-<p>Choisir l'arête $\{9, 10\}$, nous fait visiter le cas 2.3 : on obtient un chemin augmentant 3, 7, 9, 8, 4 et on obtient le graphe et le couplage :</p>
-<p><img src="edmonds-exemple-7.png" alt="Edmonds exemple 7"></p>
-<p>Le cas 2.3 de l'algorithme précédent fonctionne car le chemin alternant de $v$ à $s'\neq s$ ne peut couper le chemin de $s$ à $u$ sinon deux arêtes avec une extrémité commune seraient dans le couplage.</p>
-<h4>Étape 4</h4>
-<p>Choisir l'arête $\{1, 2\}$ nous permettrait de terminer l'algorithme sans obtenir de cas problématique mais choisissons $\{5, 2\}$ puis $\{6, 4\}$ et enfin $\{8, 10\}$. On arrive dans le cas suivant :</p>
-<p><img src="edmonds-exemple-8.png" alt="Edmonds exemple 8"></p>
-<p>Le choix de l'arête $\{8, 10\}$ nous mène au cas 2.4 problématique : on boucle comme le montre le chemin vert suivi par les marques. On appelle ces structures des <strong><em>fleurs</em></strong> :</p>
-<p><img src="fleur.png" alt="fleur"></p>
-<p>Nous verrons plus tard comment résoudre le problème des fleurs (spoiler : en les coupant), pour l'instant étudions le cas où l'on ne peut pas trouver de fleurs :</p>
+  <p>Nous allons montrer un algorithme du à Edmonds qui va chercher à trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans <a href="../../flots/#ford-fulkerson" class="interne">l'algorithme de Ford et Fulkerson</a>, par un algorithme de marquage examen qui va faire grossir des chemins alternants.</p>
+<p>On verra qu'il est optimal pour <a href="../../graphe-biparti/" class="interne">les graphes bi-partis</a>.</p>
+<h2>Trouver un chemin augmentant</h2>
+<p>On utilise l'algorithme de recherche de chemin augmentant précédent. On sait qu'il fonctionne s'il ne trouve pas de fleurs... qui n'existent pas dans les graphes bi-parti :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -158,7 +107,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'algorithme de recherche d'un chemin augmentant fonctionne pour les graphes sans cycle impair.</p>
+<p>S i l'algorithme de recherche d'un chemin augmentant trouve une fleur c'est qu'il existe un cycle de longueur impair.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -178,12 +127,46 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Une corolle ne peut exister que s'il existe un cycle de longueur impair.</p>
+<p>Une fleur ne peut exister que s'il existe un cycle de longueur impair formant sa corolle.</p>
 </div>
 </details>     
 </div>
-<h2>Graphe biparti</h2>
-<p>Les graphes biparti sont exactement les graphes sans cycle impair.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'algorithme de recherche d'un chemin augmentant trouve un chemin augmentant s'il en existe un pour les graphes bi-partis.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les graphes bi-partis sont exactement les graphes sans cycles de longueur impair.</p>
+</div>
+</details>     
+</div>
+<h3>Complexité</h3>
+<p>Trouver un chemin augmentant se fait en $\mathcal{O}(m + n)$ opérations puisqu'au maximum on parcours toutes les arêtes (on ne peut que rajouter des arêtes à considérer) et pour chaque arête on fait un no,bre constant d'opérations.</p>
+<p>Comme pour un graphe connexe on a $m \geq n-1$, pour un graphe connexe, trouver un chemin augmentant se fait en $\mathcal{O}(m)$ opérations.</p>
+<h2>Algorithme de couplage maximum dans les graphes bi-partis</h2>
+<p>La recherche de chemin augmentant fonctionnant pour les graphes bi-parti puisque ce sont exactement les graphes sans cycles de longueur impair.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -212,12 +195,21 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Une corolle ne peut exister que s'il existe un cycle de longueur impair, ce qui n'existe pas pour les graphes biparti.</p>
-<p>De plus dans le cas des graphes bi-parti, l'algorithme de recherche de chemin augmentant est identique à la recherche d'une chaîne augmentante en modélisant le couplage sous la forme d'<a href="../projet-flots-mod%C3%A9lisation/#transport-amoureux" class="interne">un problème du transport amoureux</a>. On est donc garanti d'obtenir un couplage maximum si l'on ne trouve pas de chemin augmentant.</p>
 </div>
 </details>     
 </div>
-<p>On peut donc utiliser l'algorithme de chemin augmentant ou la modélisation par les flot pour trouver un couplage maximum dans un graphe bi-parti.</p>
-<h3>Couplage parfait et maximum dans un graphe biparti</h3>
+<p>Il suffit alors de faire le même algorithme que pour les flots : essayer d'améliorer un chemin augmentant et si on en trouve pas, conclure que le couplage actuel est optimal.</p>
+<p>Comme chaque étape augment de 1 le couplage, il faut au maximum tenter d'augmenter $\mathcal{O}(n)$ fois le couplage.</p>
+<p>Partons d'un graphe ayant déjà un couplage de taille 3 :</p>
+<p><img src="couplage-max-1.png" alt="etape 1"></p>
+<p>Le marquage peut donner :</p>
+<p><img src="couplage-max-2.png" alt="etape 2"></p>
+<p>Pour augmenter le couplage :</p>
+<p><img src="couplage-max-3.png" alt="etape 3"></p>
+<p>Refaire l'algorithme peut donner :</p>
+<p><img src="couplage-max-4.png" alt="etape 4"></p>
+<p>Ce qui donne le couplage optimal :</p>
+<p><img src="couplage-max-5.png" alt="etape 5"></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -225,7 +217,43 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables. Le couplage maximum est de taille $\min(\vert A \vert, \vert B \vert)$.</p>
+<p>Trouver un couplage maximum dans un graphe biparti peut se faire en $\mathcal{O}(mn)$ opérations consistant</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Chaque étape d'augmentation du couplage se fait en $\mathcal{O}(m)$ opérations et il faut au maximum le fair $\mathcal{O}(n)$ fois.</p>
+</div>
+</details>     
+</div>
+<p>Notez qu'il existe des algorithme meilleurs, comme <a href="https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm">l'algorithme de Hopcroft-Karp</a> qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.</p>
+<h2>Propriétés des couplage parfait et maximum dans un graphe biparti</h2>
+<p>Maintenant que l'on sait trouver un couplage optimal dans un graphe bi-parti, analysons en les propriétés.</p>
+<h3>Couvertures</h3>
+<p>et commençons par une constatation simple :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables. Le couplage maximum est de taille inférieure ou égale à $\min(\vert A \vert, \vert B \vert)$.</p>
 <p>Cette borne est atteinte, entre autre, pour les graphes biparti complet.</p>
 </div></div>
 
@@ -250,7 +278,53 @@
 </div>
 </details>     
 </div>
-<p>La proposition précédente nous permet d'énoncer le corollaire suivant  :</p>
+<p>La proposition précédente, liée au fait qu'un stable dans un graphe bi-parti est une couverture permet de retrouver <a href="../probl%C3%A8me/#couverture" class="interne">la proposition générale</a>, mais on peut faire bien mieux :</p>
+<div id="König-Egerváry"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème (König-Egerváry, 1931)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe biparti, la cardinalité minimum de ses couvertures est égale à la cardinalité maximum de ses couplages.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $G= (A\cup B, E)$ un graphe biparti admettant $A$ et $B$ comme stables. On suppose de plus que $\vert A \vert \leq \vert B \vert$.
+Soit $M$ un couplage maximum de $A$.</p>
+<p>Si $\vert M \vert = \vert A\vert$ alors comme $A$ est une couverture on a bien le résultat demandé.</p>
+<p>Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un <a href="../chemins-augmentant/#d%C3%A9finition-chemin-alternant" class="interne">chemin alternant</a> (pas augmentant, juste alternant) partant d'un élément de $L$ et finissants en $x \notin L$. On pose alors :</p>
+<ul>
+<li>$A' = A \cap C$</li>
+<li>$B' = B \cap C$</li>
+</ul>
+<p>Tout élément $x$ dans $B'$ sera un élément impair d'un chemin alternant et puisqu'il ne peut être libre par maximalité de $M$, il existe $xy \in M$ avec $y\in A'$. On a donc $\vert A' \vert = \vert B' \vert$ et comme $K = L \cup B' \cup (A\backslash A')$ est trivialement une couverture on a bien le résultat demandé.</p>
+<p><img src="couverture-couplage.png" alt="couverture couplage"></p>
+</div>
+</details>     
+</div>
+<p>La preuve du théorème précédent donne de plus une construction de la couverture de taille minimum à partir d'un couplage maximum, ce qui montre que le problème de la recherche de la couverture minimale est polynomiale dans le cas des graphes biparti alors qu'il est NP-complet dans le cas général !</p>
+<blockquote>
+<p>TBD écrire bien l'algorithme</p>
+</blockquote>
+<h3>Couplage parfait</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -261,9 +335,10 @@
 <p>Un graphe biparti n'admet de couplage parfait que si toute bipartition en deux stables $A$ et $B$ est telle que $\vert A \vert = \vert B \vert$.</p>
 </div></div>
 
-<p>Ce n'est cependant pas une equivalence, comme le montre le graphe suivant :</p>
+<p>Ce n'est cependant pas une équivalence, comme le montre le graphe suivant :</p>
 <p><img src="bipatri-pas-parfait.png" alt="contre exemple biparti parfait"></p>
-<p>La condition nécessaire et suffisante existe cependant mais elle est plus complexe :</p>
+<p>La condition nécessaire et suffisante existe cependant mais elle est plus complexe, comme on va le voir ci-après.</p>
+<h3>Taille des couplages</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -297,7 +372,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si $\vert A \vert &gt; \vert B \vert$, c'est impossible et en prenant $S = A$, on a $\vert \{y | xy \in E, x \in S\}\vert = \vert B \vert &lt; \vert A \vert$. On peut donc considérer que $\vert A \vert \leq \vert B \vert$</p>
+<p>Si $\vert A \vert &gt; \vert B \vert$, c'est impossible et en prenant $S = A$, on a $\vert \{y | xy \in E, x \in S\}\vert \leq \vert B \vert &lt; \vert A \vert$. On peut donc considérer que $\vert A \vert \leq \vert B \vert$</p>
 <p>Soit $M$ un couplage maximum qui ne couvre pas $x_0 \in A$ et on note :</p>
 <ul>
 <li>$S_0 = \{x_0\}$</li>
@@ -378,10 +453,12 @@ $$
 </details>     
 </div>
 <p>Terminons cette partie en remarquant que la preuve du Théorème de Hall nous donne un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti.</p>
-<blockquote>
-<p>TBD arbre de chemins alternant à partir d'un sommet non couvert. ON trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.</p>
-</blockquote>
-<p>On reverra cet algorithme.</p>
+<p>On va construire un arbre en partant d'une racine libre en construisant des chemins alternants :</p>
+<p><img src="hall-algo.png" alt="hall algo"></p>
+<p>En procédant comme dans la preuve du théorème on trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.</p>
+<p>Enfin ceci peut se faire simplement avec parcours en profondeur pour trouver un chemin augmentant en $\mathcal{O}(m)$ opérations. C'est ce que donne un DFS avec le graphe du transport amoureux avec un couplage de taille 4 et en partant d'un sommet libre :</p>
+<p><img src="hall-algo-transport.png" alt="hall algo"></p>
+<p>On parcours les sommets tant que l'on peut augmenter le chemin alternant et sinon on stope la récursion.</p>
 
 
 </article>

@@ -175,12 +175,12 @@
 <h2>Algorithme glouton</h2>
 <p>Le problème du couplage admet un algorithme glouton très simple permettant de trouver un couplage acceptable puisqu'à performance garantie :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token builtin">algorithme</span> <span class="token function">couplage_glouton</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> 
-   M <span class="token operator">:=</span> 
+<span class="token builtin">algorithme</span> <span class="token function">couplage_glouton</span><span class="token punctuation">(</span>G<span class="token punctuation">:</span> Graphe<span class="token operator">&lt;</span>Sommet<span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span>Sommet<span class="token punctuation">}</span> <span class="token punctuation">}</span>
+   M <span class="token operator">:=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span>Sommet<span class="token punctuation">}</span> <span class="token punctuation">}</span>
    M <span class="token operator">←</span> ∅
    <span class="token keyword">pour chaque</span> arête xy de G<span class="token punctuation">:</span>
-      <span class="token keyword">si</span> x <span class="token keyword">et</span> y ne sont pas couvert par M<span class="token punctuation">:</span>
-         M <span class="token operator">←</span> M ∪ <span class="token punctuation">{</span>xy<span class="token punctuation">}</span></code></pre>
+      <span class="token keyword">si</span> x <span class="token keyword">et</span> y ne sont pas couverts par M<span class="token punctuation">:</span>
+         M <span class="token operator">←</span> M ∪ <span class="token punctuation">{</span> xy <span class="token punctuation">}</span></code></pre>
 <p>Cet algorithme est très simple et il est clair qu'il peut trouver un couplage maximum s'il prend les arêtes dans un <em>bon</em> ordre. Mais même si l'ordre est quelconque il ne peut pas être si mauvais que ça :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -245,6 +245,93 @@
 </details>     
 </div>
 <p>Cet algorithme glouton montre que si l'on cherche rapidement une solution (l'algorithme est linéaire en la taille du graphe) on peut le faire sans grand risque de tomber trop à côté de la solution optimale.</p>
+<h2><span id="couverture"></span>Couplage et couvertures</h2>
+<p>Couplage maximum et <a href="../../cliques-stables/#probl%C3%A8me-graphe-couverture" class="interne">couverture minimale</a> sont deux problèmes intimement liés. En effet :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $M$ est un couplage et $K$ une couverture d'un graphe, on a évidemment $\vert M \vert \leq \vert K \vert$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>S'il existait une couverture à strictement moins de $\vert M \vert$ sommets, il existerait une arête $xy$ de $M$ dont aucun des sommets ne serait dans la couverture, ce qui est impossible (puisque $xy$ est ue arête du graphe).</p>
+</div>
+</details>     
+</div>
+<p>On a alors immédiatement la proposition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G=(V, E)$ un graphe. La cardinalité minimum de ses couvertures est plus grande la cardinalité maximum de ses couplages.</p>
+</div></div>
+
+<p>Attention, ce n'est pas forcément égal dans le cas général.</p>
+<p>En reprenant notre exemple de départ, le graphe admet un couplage parfait à 5 arêtes alors que la plus petite couverte possède 6 sommets :</p>
+<p><img src="couverture-min.png" alt="couverture min"></p>
+<p>Mais ce lien nous permet déjà de trouver une 2-approximation au problème de la couverture :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $G=(V, E)$ un graphe et $M=\{x_1y_1, \dots, x_ky_k\}$ un de ses couplages obtenu par l'algorithme glouton.</p>
+<p>Alors :</p>
+<ul>
+<li>l'ensemble $K = \cup_{k} \{ \{x_i, y_i\} \}$ est une couverture de $G$</li>
+<li>toute couverture de $G$ possède au moins $k$ sommets.</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ol>
+<li>S'il existait une arête $uv$ dans le graphe tels que $u$ et $v$ soient ouvert dans $M$, alors l'algorithme glouton l'aurait prise.</li>
+<li>vient de la première proposition de cette partie qui montre que $\vert M\vert \leq \vert K\vert$.</li>
+</ol>
+</div>
+</details>     
+</div>
 <h2>Exemples</h2>
 <h3>Trouver des binômes</h3>
 <p>Dans les exercices de modélisation par des flots, <a href="../../projet-flots-mod%C3%A9lisation/#transport-amoureux" class="interne">le problème du transport amoureux</a> permettait de résoudre un problème de couplage. Marier le plus de héros de roman revient à trouver un couplage maximum dans le graphe des affinités (une arête entre deux héros s'ils s'apprécient) :</p>
@@ -262,7 +349,7 @@
 <p><a href="https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes">Tournoi toutes rondes</a></p>
 </div></div>
 
-<p>Dans un tournoi de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents. On verra plus tard que l'on peut modéliser ce problème comme un problème de coloration d'arêtes du graphe complet, mais ici voyons juste un algorithme pour résoudre.</p>
+<p>Dans un tournoi de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents de telle sorte que chaque équipe rencontre chacune des autres équipes.</p>
 <p>L'algorithme est le suivant, pour $n$ pair :</p>
 <ul>
 <li>$n$ équipes numérotées de 0 à $n-1$</li>
@@ -285,9 +372,6 @@ Sinon, Ok aussi :</p>
 <li>$i+j \mathbin{\small\%} (n-1) = K$ a $n-1$ solutions possible pour $0\leq i &lt; j &lt; n-1$ le couplage est maximum à chaque ronde</li>
 </ul>
 <p>Pour les match impair, l'équipe $n-1$ fait office d'équipe fantôme : les équipe qui devraient l'affronter ne jouent pas.</p>
-<blockquote>
-<p>TBD exemple à 6</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -411,6 +495,7 @@ Sinon, Ok aussi :</p>
 <li>ronde 3 : (0, 3), (1, 2), (5, 4)</li>
 <li>ronde 4 : (4, 0), (3, 1), (2, 5)</li>
 </ul>
+<p>On reverra plus tard cet exemple en montrant qu'on peut le modéliser comme un problème de coloration d'arêtes du graphe complet.</p>
 
 
 </article>
