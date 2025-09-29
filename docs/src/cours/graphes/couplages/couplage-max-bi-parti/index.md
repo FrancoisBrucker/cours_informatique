@@ -188,8 +188,6 @@ $$
 
 On utilise la marque **_encadrer_** pour des 0 de la matrice.
 
-Mais au final seule la marque encadrée sera conservée dans les étapes suivantes.
-
 ```text
 pour chaque 0 de la matrice:
    si aucun 0 de sa ligne et de sa colonne ne sont encadrés:
@@ -259,7 +257,7 @@ b&\cellcolor{gray}0&\cancel{0}\\
 $$
 </div>
 
-#### 3. Marquer des lignes et des colonnes et des 0
+#### 2. Marquer des lignes et des colonnes et des 0
 
 On va utiliser une nouvelle marque **_sélectionner_** que l'on va pouvoir appliquer aux :
 
@@ -295,29 +293,72 @@ X&&&X&X&\\
 $$
 </div>
 
-#### 4. Ajustement des 0 encadrés si nécessaire
+#### 3. Ajustement des 0 encadrés si nécessaire
 
 On utilise cette étape s'il existe un 0 non couvert sans 0 encadré sur sa ligne. Ceci signifie que l'on a pas sélectionné le nombre maximum de 0 : notre couplage n'est pas maximum.
 
 Construire une suite de 0 en alternants zéros sélectionnés et zéros encadrés de la manière suivante :
 
-1. soit $z_0$ un 0 non couvert possédant un zéro encadré sur sa ligne
+1. soit $z_0$ un 0 non couvert sans encadré sur sa ligne
 2. le **_sélectionner_**
 3. $i = 1$
 4. s'il existe un zéro encadré sur la colonne de $z_{i-1}$ :
    1. on le note $z_{i}$.
    2. on note $z_{i+1}$ un zéro sélectionné sur sa ligne
-5. $i = i + 1$ et retour à l'item 3 de cette liste
+5. $i = i + 2$ et retour à l'item 3 de cette liste
 
 A la fin de cette étape on a une suite finissant par un zéro sélectionné sans zéro encadré sur sa colonne. On peut alors :
 
-1. désélectionner tous les 0 de cette liste et les encadrer,
-2. désélectionner toutes les lignes et les colonnes de la matrice,
-3. retourner à l'étape 3 de marquage des lignes et des colonnes.
+1. dés-encadrez tous les 0 de cette liste,
+2. désélectionnez tous les 0 de cette liste et encadrez les,
+3. désélectionner toutes les lignes et les colonnes de la matrice,
+4. retourner à l'étape 3 de marquage des lignes et des colonnes.
 
 Cette étape se réalise aussi $\mathcal{O}(n^2)$ opérations en conservant, comme toujours nos tableaux auxiliaires $T_C$ et $T_L$.
 
-#### 5. Mise à jour
+<div>
+$$
+\begin{array}{lcccr}
+\begin{array}{|c|c|c|r}
+&&\\
+\hline
+\cellcolor{gray}0&a&\cellcolor{green}{0}&X\\
+\hline
+b&\cellcolor{green}0&\cellcolor{gray}0&X\\
+\hline
+{0}&c&{0}\\
+\hline
+\hline
+\end{array}&
+\rightarrow&
+\begin{array}{|c|c|c|r}
+&&\\
+\hline
+\cellcolor{gray}{z_1}&a&\cellcolor{green}{z_2}&X\\
+\hline
+b&\cellcolor{green}z_4&\cellcolor{gray}{z_3}&X\\
+\hline
+\cellcolor{green}{z_0}&c&{0}\\
+\hline
+\hline
+\end{array}\rightarrow&
+\begin{array}{|c|c|c|r}
+&&\\
+\hline
+{0}&a&\cellcolor{gray}{0}&\\
+\hline
+b&\cellcolor{gray}0&{0}&\\
+\hline
+\cellcolor{gray}{0}&c&{0}\\
+\hline
+\hline
+\end{array}
+\\
+\end{array}
+$$
+</div>
+
+#### 4. Mise à jour
 
 Une fois arrivé là, tous les 0 sont couvert : on a un couplage maximum.
 
@@ -358,7 +399,7 @@ $$
 $$
 </div>
 
-#### 6. retour
+#### 5. retour
 
 On supprime toutes les marques (de cases, de lignes et de colonnes) et on recommence à l'étape 1 avec la nouvelle matrice
 
@@ -377,6 +418,26 @@ $$
 \cellcolor{gray}0&3&10&17&9\\
 \hline
 5&\cellcolor{gray}0&0&8&9\\
+\hline
+\end{array}
+$$
+</div>
+
+Ce qui va donner le couplage parfait à coût minimum suivant sur la matrice originelle :
+
+<div>
+$$
+\begin{array}{|c|c|c|c|c|}
+\hline
+17&15&\cellcolor{gray}9&5&12\\
+\hline
+16&16&10&\cellcolor{gray}5&10\\
+\hline
+12&15&14&11&\cellcolor{gray}5\\
+\hline
+\cellcolor{gray}4&8&14&17&13\\
+\hline
+13&\cellcolor{gray}9&8&12&17\\
 \hline
 \end{array}
 $$
