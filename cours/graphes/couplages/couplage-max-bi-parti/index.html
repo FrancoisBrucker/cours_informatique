@@ -308,7 +308,6 @@ $$
 </div>
 <h4>1. Encadrer des zéros</h4>
 <p>On utilise la marque <strong><em>encadrer</em></strong> pour des 0 de la matrice.</p>
-<p>Mais au final seule la marque encadrée sera conservée dans les étapes suivantes.</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pour chaque 0 de la matrice:
    si aucun 0 de sa ligne et de sa colonne ne sont encadrés:
          encadrer le 0</code></pre>
@@ -372,7 +371,7 @@ b&\cellcolor{gray}0&\cancel{0}\\
 \end{array}
 $$
 </div>
-<h4>3. Marquer des lignes et des colonnes et des 0</h4>
+<h4>2. Marquer des lignes et des colonnes et des 0</h4>
 <p>On va utiliser une nouvelle marque <strong><em>sélectionner</em></strong> que l'on va pouvoir appliquer aux :</p>
 <ul>
 <li>les lignes et colonnes de la matrice</li>
@@ -408,11 +407,11 @@ X&&&X&X&\\
 \end{array}
 $$
 </div>
-<h4>4. Ajustement des 0 encadrés si nécessaire</h4>
+<h4>3. Ajustement des 0 encadrés si nécessaire</h4>
 <p>On utilise cette étape s'il existe un 0 non couvert sans 0 encadré sur sa ligne. Ceci signifie que l'on a pas sélectionné le nombre maximum de 0 : notre couplage n'est pas maximum.</p>
 <p>Construire une suite de 0 en alternants zéros sélectionnés et zéros encadrés de la manière suivante :</p>
 <ol>
-<li>soit $z_0$ un 0 non couvert possédant un zéro encadré sur sa ligne</li>
+<li>soit $z_0$ un 0 non couvert sans encadré sur sa ligne</li>
 <li>le <strong><em>sélectionner</em></strong></li>
 <li>$i = 1$</li>
 <li>s'il existe un zéro encadré sur la colonne de $z_{i-1}$ :
@@ -421,16 +420,58 @@ $$
 <li>on note $z_{i+1}$ un zéro sélectionné sur sa ligne</li>
 </ol>
 </li>
-<li>$i = i + 1$ et retour à l'item 3 de cette liste</li>
+<li>$i = i + 2$ et retour à l'item 3 de cette liste</li>
 </ol>
 <p>A la fin de cette étape on a une suite finissant par un zéro sélectionné sans zéro encadré sur sa colonne. On peut alors :</p>
 <ol>
-<li>désélectionner tous les 0 de cette liste et les encadrer,</li>
+<li>dés-encadrez tous les 0 de cette liste,</li>
+<li>désélectionnez tous les 0 de cette liste et encadrez les,</li>
 <li>désélectionner toutes les lignes et les colonnes de la matrice,</li>
 <li>retourner à l'étape 3 de marquage des lignes et des colonnes.</li>
 </ol>
 <p>Cette étape se réalise aussi $\mathcal{O}(n^2)$ opérations en conservant, comme toujours nos tableaux auxiliaires $T_C$ et $T_L$.</p>
-<h4>5. Mise à jour</h4>
+<div>
+$$
+\begin{array}{lcccr}
+\begin{array}{|c|c|c|r}
+&&\\
+\hline
+\cellcolor{gray}0&a&\cellcolor{green}{0}&X\\
+\hline
+b&\cellcolor{green}0&\cellcolor{gray}0&X\\
+\hline
+{0}&c&{0}\\
+\hline
+\hline
+\end{array}&
+\rightarrow&
+\begin{array}{|c|c|c|r}
+&&\\
+\hline
+\cellcolor{gray}{z_1}&a&\cellcolor{green}{z_2}&X\\
+\hline
+b&\cellcolor{green}z_4&\cellcolor{gray}{z_3}&X\\
+\hline
+\cellcolor{green}{z_0}&c&{0}\\
+\hline
+\hline
+\end{array}\rightarrow&
+\begin{array}{|c|c|c|r}
+&&\\
+\hline
+{0}&a&\cellcolor{gray}{0}&\\
+\hline
+b&\cellcolor{gray}0&{0}&\\
+\hline
+\cellcolor{gray}{0}&c&{0}\\
+\hline
+\hline
+\end{array}
+\\
+\end{array}
+$$
+</div>
+<h4>4. Mise à jour</h4>
 <p>Une fois arrivé là, tous les 0 sont couvert : on a un couplage maximum.</p>
 <p>On sépare les cases de la matrices en 3 :</p>
 <ul>
@@ -469,7 +510,7 @@ $$
 \end{array}
 $$
 </div>
-<h4>6. retour</h4>
+<h4>5. retour</h4>
 <p>On supprime toutes les marques (de cases, de lignes et de colonnes) et on recommence à l'étape 1 avec la nouvelle matrice</p>
 <p>Dans notre exemple, la prochaine étape 2 va s'arrêter sur :</p>
 <div>
@@ -485,6 +526,24 @@ $$
 \cellcolor{gray}0&3&10&17&9\\
 \hline
 5&\cellcolor{gray}0&0&8&9\\
+\hline
+\end{array}
+$$
+</div>
+<p>Ce qui va donner le couplage parfait à coût minimum suivant sur la matrice originelle :</p>
+<div>
+$$
+\begin{array}{|c|c|c|c|c|}
+\hline
+17&15&\cellcolor{gray}9&5&12\\
+\hline
+16&16&10&\cellcolor{gray}5&10\\
+\hline
+12&15&14&11&\cellcolor{gray}5\\
+\hline
+\cellcolor{gray}4&8&14&17&13\\
+\hline
+13&\cellcolor{gray}9&8&12&17\\
 \hline
 \end{array}
 $$
