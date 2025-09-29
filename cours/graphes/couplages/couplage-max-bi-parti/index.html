@@ -231,15 +231,12 @@ $$
 <p>Ce problème s'écrit facilement comme la recherche d'un couplage parfait dans $K_{n, n}$ à coût minimal.</p>
 <p>Si l'on cherche à maximiser des préférences rangées dans une matrice $P = (p_{i, j})<em i,="" j="">{1\leq i \leq n, 1\leq i \leq m}$, il suffit de considérer la matrices $C = (K - p</em>)<em u,="" v="">{1\leq i \leq n, 1\leq i \leq m}$, avec $K = \sum</em>p_{u, v}$. Comme on cherche un couplage parfait son poids sera de $nK-\sum_{im j /in I} p_{i, j}$ ce qui correspond bien à la maximisation des préférences.</p>
 <h3>Algorithme de la méthode hongroise</h3>
-<blockquote>
-<p>TBD pourquoi est-ce que le choix des 0 à encadrer marche (prendre le min) ?</p>
-</blockquote>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On reprend ici l'exemple de <a href="http://optimisons.free.fr/Cours%20M%C3%A9thode%20Hongroise.pdf">http://optimisons.free.fr/Cours Méthode Hongroise.pdf</a> qui est une version un peut différente de celle de Wikipédia pour le choix des 0 à encadrer.</p>
+<p>On reprend ici <a href="https://graal.ens-lyon.fr/~mgallet/_static/teaching/acm/tp-acm-2008-08.pdf">l'algorithme décrit ici</a>.</p>
 </div></div>
 
 <div>
@@ -309,21 +306,12 @@ $$
 \end{array}
 $$
 </div>
-<h4>1. Encadrer et barrer des zéros</h4>
-<p>On utilise deux marques différentes :</p>
-<ul>
-<li><strong><em>encadrer</em></strong> un zéro de la matrice</li>
-<li><strong><em>barrer</em></strong> un zéro de la matrice</li>
-</ul>
-<ol>
-<li>on cherche une ligne avec le moins de 0 non barrés ou encadré</li>
-<li>on encadre un de ses zéros non barré</li>
-<li>on barre tous les autres zéros sur la ligne ou la colonne du zéro encadré</li>
-</ol>
-<p>Si à la fin de cette étape on a encadré $n$ zéros c'est qu'on on a encadré un 0 par ligne et par colonne et on a trouvé une solution optimale $I$ qui consiste aux $n$ couples lignes colonnes des 0 encadrés.</p>
-<blockquote>
-<p>TBD pourquoi est-ce que l'on trouve couplage max ? Est lié au <a href="../couplage-bi-parti/#K%C3%B6nig-Egerv%C3%A1ry" class="interne">théorème de König-Egerváry</a></p>
-</blockquote>
+<h4>1. Encadrer des zéros</h4>
+<p>On utilise la marque <strong><em>encadrer</em></strong> pour des 0 de la matrice.</p>
+<p>Mais au final seule la marque encadrée sera conservée dans les étapes suivantes.</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pour chaque 0 de la matrice:
+   si aucun 0 de sa ligne et de sa colonne ne sont encadrés:
+         encadrer le 0</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -331,15 +319,12 @@ $$
 <div class="pl-8 mr-8">
 <p>À la fin de cette itération :</p>
 <ul>
-<li>ne peut pas barrer de 0 encadré,</li>
-<li>ne peut encadrer qu'au maximum un 0 par ligne et par colonne,</li>
-<li>pour tout zéro barré, il existe un zéro encadré soit sur sa ligne soit sur sa colonne</li>
+<li>on ne peut encadrer qu'au maximum un 0 par ligne et par colonne,.</li>
+<li>Ssi on a encadré $n$ zéros, on a terminé et on a un couplage maximum de coût minimum en liant ligne et colonne de chaque 0 encadré.</li>
 </ul>
 </div></div>
 
-<p>Cette étape se réalise en $\mathcal{O}(n^2)$ opérations.</p>
-<p>On commençant par créer un tableau $T_L$ de taille $n+1$ contenant le nombre de zéros non barrés ou encadré de chaque ligne en parcourant toute les cases de la matrice ce prétraitement se fait en $\mathcal{O}(n^2)$ opérations.</p>
-<p>Puis on répète au pire $\mathcal{O}(n)$ fois les 3 opérations (choix de la ligne en prenant le min de $T_L$, barrage et encadrement des 0) qui s'effectuent chacune en $\mathcal{O}(n)$. Il faut aussi mettre à jour $T_L$, ce qui se fait également en $\mathcal{O}(n)$ opérations.</p>
+<p>Cette étape se réalise facilement en $\mathcal{O}(n^2)$ opérations en conservant deux tableaux de booléens $T_L$ et $T_C$ de taille $n+1$ tel que $T_L[i] = \text{Vrai}$ (<em>resp.</em> $T_C[i] = \text{Vrai}$) si et seulement si on a encadré un 0 à cette ligne (<em>resp.</em> cette colonne).</p>
 <div>
 $$
 \begin{array}{|c|c|c|c|c|}
@@ -357,56 +342,101 @@ $$
 \end{array}
 $$
 </div>
-<h4>3. Marquer et barrer des lignes et des colonnes</h4>
-<p>On va <strong><em>marquer</em></strong> les lignes et les colonnes de la matrice</p>
+<p>Attention, on est pas obligé d'être optimal l'étape de reselection est importante car il n'est pas du tout évident d'avoir sélectionné les bon 0. On peut très bien choisir les zéros suivant :</p>
+<div>
+$$
+\begin{array}{|c|c|c|}
+\hline
+\cellcolor{gray}0&a&\cancel{0}\\
+\hline
+b&0&\cellcolor{gray}0\\
+\hline
+\cancel{0}&c&\cancel{0}\\
+\hline
+\hline
+\end{array}
+$$
+</div>
+<p>Alors qu'il existe la solution optimale suivante :</p>
+<div>
+$$
+\begin{array}{|c|c|c|}
+\hline
+\cellcolor{gray}0&a&\cancel{0}\\
+\hline
+b&\cellcolor{gray}0&\cancel{0}\\
+\hline
+\cancel{0}&c&\cellcolor{gray}0\\
+\hline
+\hline
+\end{array}
+$$
+</div>
+<h4>3. Marquer des lignes et des colonnes et des 0</h4>
+<p>On va utiliser une nouvelle marque <strong><em>sélectionner</em></strong> que l'on va pouvoir appliquer aux :</p>
+<ul>
+<li>les lignes et colonnes de la matrice</li>
+<li>aux 0 non encadrés</li>
+</ul>
+<p>Un 0 sera dit <strong><em>couvert</em></strong> s'il se trouve dans une ligne ou une colonne marquée.</p>
 <ol>
-<li><strong><em>marque</em></strong> chaque ligne ne possédant <strong>aucun</strong> <em>0 encadré</em></li>
-<li><strong><em>marque</em></strong> chaque colonne possédant un <em>0 barré</em> sur une <em>ligne marquée</em></li>
-<li><strong><em>marque</em></strong> chaque ligne possédant un <em>0 encadré</em> <strong>dans</strong> une <em>colonne marquée</em></li>
+<li><strong><em>sélectionner</em></strong> toutes les colonnes contenant un 0 encadré</li>
+<li>tant qu'il existe un 0 non couvert avec un 0 encadré sur sa ligne:
+<ol>
+<li>en <strong><em>sélectionner</em></strong> un</li>
+<li><strong><em>sélectionner</em></strong> sa ligne</li>
+<li><strong><em>désélectionner</em></strong> la colonne de son 0 encadré</li>
 </ol>
-<p>On répète cette étapes (on a besoin que de répéter les paries 2 et 3) jusqu'à ne plus pouvoir marquer de lignes ou de colonnes.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>À la fin de cette étape tous les 0 sont :</p>
-<ul>
-<li>soit une ligne non marquée</li>
-<li>soit sur une colonne marquée</li>
-</ul>
-</div></div>
-
-<p>Cette étape se réalise aussi $\mathcal{O}(n^2)$ opérations en conservant deux tableaux $T_C$ et $T_L$ de $n+1$ booléens tels que :</p>
-<ul>
-<li>$T_C[i]$ est vrai s'il existe une ligne marquée ayant un zéro barré à la colonne $i$</li>
-<li>$T_L[i]$ est vrai s'il existe une colonne marquée ayant un zéro encadré à la ligne $i$</li>
-</ul>
-<p>On initialise ces tableaux en $\mathcal{O}(n^2)$ puisque chaque ligne ou colonne ajoutée mettra à jour ces tableaux en $\mathcal{O}(n)$ opération. Comme on ne peut ajouter une ligne ou une colonne qu'une seule fois, il y aura au pire $\mathcal{O}(n)$ itérations.</p>
+</li>
+</ol>
+<p>Cette étape se réalise également en $\mathcal{O}(n^2)$ opérations en utilisant la même astuce que tout à l'heure (conserver un tableau de booléen stockant les lignes et colonnes possédant un 0 encadré)</p>
 <div>
 $$
 \begin{array}{|c|c|c|c|c|r}
-&&&X&&\\
+X&&&X&X&\\
 \hline
-12&9&4&\cellcolor{gray}0&7&X\\
+12&9&4&\cellcolor{gray}0&7&\\
 \hline
-11&10&5&\cancel{0}&5&X\\
+11&10&5&0&5&\\
 \hline
 7&9&9&6&\cellcolor{gray}0\\
 \hline
 \cellcolor{gray}0&3&10&13&9\\
 \hline
-5&\cellcolor{gray}0&\cancel{0}&4&9\\
+5&\cellcolor{gray}0&\cellcolor{green}0&4&9&X\\
 \hline
 \end{array}
 $$
 </div>
-<h4>4. Mise à jour</h4>
+<h4>4. Ajustement des 0 encadrés si nécessaire</h4>
+<p>On utilise cette étape s'il existe un 0 non couvert sans 0 encadré sur sa ligne. Ceci signifie que l'on a pas sélectionné le nombre maximum de 0 : notre couplage n'est pas maximum.</p>
+<p>Construire une suite de 0 en alternants zéros sélectionnés et zéros encadrés de la manière suivante :</p>
+<ol>
+<li>soit $z_0$ un 0 non couvert possédant un zéro encadré sur sa ligne</li>
+<li>le <strong><em>sélectionner</em></strong></li>
+<li>$i = 1$</li>
+<li>s'il existe un zéro encadré sur la colonne de $z_{i-1}$ :
+<ol>
+<li>on le note $z_{i}$.</li>
+<li>on note $z_{i+1}$ un zéro sélectionné sur sa ligne</li>
+</ol>
+</li>
+<li>$i = i + 1$ et retour à l'item 3 de cette liste</li>
+</ol>
+<p>A la fin de cette étape on a une suite finissant par un zéro sélectionné sans zéro encadré sur sa colonne. On peut alors :</p>
+<ol>
+<li>désélectionner tous les 0 de cette liste et les encadrer,</li>
+<li>désélectionner toutes les lignes et les colonnes de la matrice,</li>
+<li>retourner à l'étape 3 de marquage des lignes et des colonnes.</li>
+</ol>
+<p>Cette étape se réalise aussi $\mathcal{O}(n^2)$ opérations en conservant, comme toujours nos tableaux auxiliaires $T_C$ et $T_L$.</p>
+<h4>5. Mise à jour</h4>
+<p>Une fois arrivé là, tous les 0 sont couvert : on a un couplage maximum.</p>
 <p>On sépare les cases de la matrices en 3 :</p>
 <ul>
-<li>2B : les cases qui sont sur une ligne non marquée et sur une colonne marquée</li>
-<li>1B : les cases qui sont sur une ligne non marquée ou exclusivement sur une colonne marquée</li>
-<li>0B : les cases qui sont sur une ligne marquée et sur une colonne non  marquée</li>
+<li>2B : les cases qui sont sur une ligne <strong>et</strong> sur une colonne marquée</li>
+<li>1B : les cases qui sont sur une ligne marquée <strong>ou exclusivement</strong> sur une colonne marquée</li>
+<li>0B : les cases qui sont sur une ligne <strong>et</strong> sur une colonne non marquée</li>
 </ul>
 <p>Soit $\lambda &gt;0 $ la plus petite valeur de des cases 0B.</p>
 <ol>
@@ -439,7 +469,7 @@ $$
 \end{array}
 $$
 </div>
-<h4>5. retour</h4>
+<h4>6. retour</h4>
 <p>On supprime toutes les marques (de cases, de lignes et de colonnes) et on recommence à l'étape 1 avec la nouvelle matrice</p>
 <p>Dans notre exemple, la prochaine étape 2 va s'arrêter sur :</p>
 <div>
