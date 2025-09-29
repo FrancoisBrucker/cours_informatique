@@ -860,7 +860,7 @@ Cet algorithme s'appelle algorithme de Busaker et Gowen.
 Cet algorithme ne fonctionne que si l'on part du flot nul ! En effet, à ce moment là toute augmentation du flot sera à coût minimal.
 
 > TBD démontrer que le coût va augmenter à chaque étape.
-
+> TBD preuve : <https://folk.idi.ntnu.no/mlh/algkon/flow.pdf>
 {% info %}
 La complexité est plus importante qu'avec le graphe d'écart puisqu'il faut utiliser ici un Dijkstra (de complexité $\mathcal{O}(n^2)$) et non plus juste un BFS (de complexité $\mathcal{O}(m)$)pour trouver le chemin le plus court.
 {% endinfo %}
