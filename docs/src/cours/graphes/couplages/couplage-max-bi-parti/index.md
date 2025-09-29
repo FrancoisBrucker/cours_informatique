@@ -109,11 +109,9 @@ Si l'on cherche à maximiser des préférences rangées dans une matrice $P = (p
 
 ### Algorithme de la méthode hongroise
 
-> TBD pourquoi est-ce que le choix des 0 à encadrer marche (prendre le min) ?
-
 {% info %}
 
-On reprend ici l'exemple de <http://optimisons.free.fr/Cours%20M%C3%A9thode%20Hongroise.pdf> qui est une version un peut différente de celle de Wikipédia pour le choix des 0 à encadrer.
+On reprend ici [l'algorithme décrit ici](https://graal.ens-lyon.fr/~mgallet/_static/teaching/acm/tp-acm-2008-08.pdf).
 
 {% endinfo %}
 
@@ -186,36 +184,28 @@ $$
 $$
 </div>
 
-#### 1. Encadrer et barrer des zéros
+#### 1. Encadrer des zéros
 
-On utilise deux marques différentes :
+On utilise la marque **_encadrer_** pour des 0 de la matrice.
 
-- **_encadrer_** un zéro de la matrice
-- **_barrer_** un zéro de la matrice
+Mais au final seule la marque encadrée sera conservée dans les étapes suivantes.
 
-1. on cherche une ligne avec le moins de 0 non barrés ou encadré
-2. on encadre un de ses zéros non barré
-3. on barre tous les autres zéros sur la ligne ou la colonne du zéro encadré
-
-Si à la fin de cette étape on a encadré $n$ zéros c'est qu'on on a encadré un 0 par ligne et par colonne et on a trouvé une solution optimale $I$ qui consiste aux $n$ couples lignes colonnes des 0 encadrés.
-
-> TBD pourquoi est-ce que l'on trouve couplage max ? Est lié au [théorème de König-Egerváry](../couplage-bi-parti/#König-Egerváry){.interne}
+```text
+pour chaque 0 de la matrice:
+   si aucun 0 de sa ligne et de sa colonne ne sont encadrés:
+         encadrer le 0
+```
 
 {% info %}
 
 À la fin de cette itération :
 
-- ne peut pas barrer de 0 encadré,
-- ne peut encadrer qu'au maximum un 0 par ligne et par colonne,
-- pour tout zéro barré, il existe un zéro encadré soit sur sa ligne soit sur sa colonne
+- on ne peut encadrer qu'au maximum un 0 par ligne et par colonne,.
+- Ssi on a encadré $n$ zéros, on a terminé et on a un couplage maximum de coût minimum en liant ligne et colonne de chaque 0 encadré.
 
 {% endinfo %}
 
-Cette étape se réalise en $\mathcal{O}(n^2)$ opérations.
-
-On commençant par créer un tableau $T_L$ de taille $n+1$ contenant le nombre de zéros non barrés ou encadré de chaque ligne en parcourant toute les cases de la matrice ce prétraitement se fait en $\mathcal{O}(n^2)$ opérations.
-
-Puis on répète au pire $\mathcal{O}(n)$ fois les 3 opérations (choix de la ligne en prenant le min de $T_L$, barrage et encadrement des 0) qui s'effectuent chacune en $\mathcal{O}(n)$. Il faut aussi mettre à jour $T_L$, ce qui se fait également en $\mathcal{O}(n)$ opérations.
+Cette étape se réalise facilement en $\mathcal{O}(n^2)$ opérations en conservant deux tableaux de booléens $T_L$ et $T_C$ de taille $n+1$ tel que $T_L[i] = \text{Vrai}$ (_resp._ $T_C[i] = \text{Vrai}$) si et seulement si on a encadré un 0 à cette ligne (_resp._ cette colonne).
 
 <div>
 $$
@@ -235,58 +225,107 @@ $$
 $$
 </div>
 
-#### 3. Marquer et barrer des lignes et des colonnes
-
-On va **_marquer_** les lignes et les colonnes de la matrice
-
-1. **_marque_** chaque ligne ne possédant **aucun** _0 encadré_
-2. **_marque_** chaque colonne possédant un _0 barré_ sur une _ligne marquée_
-3. **_marque_** chaque ligne possédant un _0 encadré_ **dans** une _colonne marquée_
-
-On répète cette étapes (on a besoin que de répéter les paries 2 et 3) jusqu'à ne plus pouvoir marquer de lignes ou de colonnes.
-
-{% info %}
-
-À la fin de cette étape tous les 0 sont :
-
-- soit une ligne non marquée
-- soit sur une colonne marquée
-
-{% endinfo %}
-
-Cette étape se réalise aussi $\mathcal{O}(n^2)$ opérations en conservant deux tableaux $T_C$ et $T_L$ de $n+1$ booléens tels que :
-
-- $T_C[i]$ est vrai s'il existe une ligne marquée ayant un zéro barré à la colonne $i$
-- $T_L[i]$ est vrai s'il existe une colonne marquée ayant un zéro encadré à la ligne $i$
-
-On initialise ces tableaux en $\mathcal{O}(n^2)$ puisque chaque ligne ou colonne ajoutée mettra à jour ces tableaux en $\mathcal{O}(n)$ opération. Comme on ne peut ajouter une ligne ou une colonne qu'une seule fois, il y aura au pire $\mathcal{O}(n)$ itérations.
+Attention, on est pas obligé d'être optimal l'étape de reselection est importante car il n'est pas du tout évident d'avoir sélectionné les bon 0. On peut très bien choisir les zéros suivant :
 
 <div>
 $$
-\begin{array}{|c|c|c|c|c|r}
-&&&X&&\\
+\begin{array}{|c|c|c|}
 \hline
-12&9&4&\cellcolor{gray}0&7&X\\
+\cellcolor{gray}0&a&\cancel{0}\\
 \hline
-11&10&5&\cancel{0}&5&X\\
+b&0&\cellcolor{gray}0\\
 \hline
-7&9&9&6&\cellcolor{gray}0\\
+\cancel{0}&c&\cancel{0}\\
 \hline
-\cellcolor{gray}0&3&10&13&9\\
-\hline
-5&\cellcolor{gray}0&\cancel{0}&4&9\\
 \hline
 \end{array}
 $$
 </div>
 
-#### 4. Mise à jour
+Alors qu'il existe la solution optimale suivante :
+
+<div>
+$$
+\begin{array}{|c|c|c|}
+\hline
+\cellcolor{gray}0&a&\cancel{0}\\
+\hline
+b&\cellcolor{gray}0&\cancel{0}\\
+\hline
+\cancel{0}&c&\cellcolor{gray}0\\
+\hline
+\hline
+\end{array}
+$$
+</div>
+
+#### 3. Marquer des lignes et des colonnes et des 0
+
+On va utiliser une nouvelle marque **_sélectionner_** que l'on va pouvoir appliquer aux :
+
+- les lignes et colonnes de la matrice
+- aux 0 non encadrés
+
+Un 0 sera dit **_couvert_** s'il se trouve dans une ligne ou une colonne marquée.
+
+1. **_sélectionner_** toutes les colonnes contenant un 0 encadré
+2. tant qu'il existe un 0 non couvert avec un 0 encadré sur sa ligne:
+   1. en **_sélectionner_** un
+   2. **_sélectionner_** sa ligne
+   3. **_désélectionner_** la colonne de son 0 encadré
+
+Cette étape se réalise également en $\mathcal{O}(n^2)$ opérations en utilisant la même astuce que tout à l'heure (conserver un tableau de booléen stockant les lignes et colonnes possédant un 0 encadré)
+
+<div>
+$$
+\begin{array}{|c|c|c|c|c|r}
+X&&&X&X&\\
+\hline
+12&9&4&\cellcolor{gray}0&7&\\
+\hline
+11&10&5&0&5&\\
+\hline
+7&9&9&6&\cellcolor{gray}0\\
+\hline
+\cellcolor{gray}0&3&10&13&9\\
+\hline
+5&\cellcolor{gray}0&\cellcolor{green}0&4&9&X\\
+\hline
+\end{array}
+$$
+</div>
+
+#### 4. Ajustement des 0 encadrés si nécessaire
+
+On utilise cette étape s'il existe un 0 non couvert sans 0 encadré sur sa ligne. Ceci signifie que l'on a pas sélectionné le nombre maximum de 0 : notre couplage n'est pas maximum.
+
+Construire une suite de 0 en alternants zéros sélectionnés et zéros encadrés de la manière suivante :
+
+1. soit $z_0$ un 0 non couvert possédant un zéro encadré sur sa ligne
+2. le **_sélectionner_**
+3. $i = 1$
+4. s'il existe un zéro encadré sur la colonne de $z_{i-1}$ :
+   1. on le note $z_{i}$.
+   2. on note $z_{i+1}$ un zéro sélectionné sur sa ligne
+5. $i = i + 1$ et retour à l'item 3 de cette liste
+
+A la fin de cette étape on a une suite finissant par un zéro sélectionné sans zéro encadré sur sa colonne. On peut alors :
+
+1. désélectionner tous les 0 de cette liste et les encadrer,
+2. désélectionner toutes les lignes et les colonnes de la matrice,
+3. retourner à l'étape 3 de marquage des lignes et des colonnes.
+
+Cette étape se réalise aussi $\mathcal{O}(n^2)$ opérations en conservant, comme toujours nos tableaux auxiliaires $T_C$ et $T_L$.
+
+#### 5. Mise à jour
+
+Une fois arrivé là, tous les 0 sont couvert : on a un couplage maximum.
 
 On sépare les cases de la matrices en 3 :
 
-- 2B : les cases qui sont sur une ligne non marquée et sur une colonne marquée
-- 1B : les cases qui sont sur une ligne non marquée ou exclusivement sur une colonne marquée
-- 0B : les cases qui sont sur une ligne marquée et sur une colonne non  marquée
+- 2B : les cases qui sont sur une ligne **et** sur une colonne marquée
+- 1B : les cases qui sont sur une ligne marquée **ou exclusivement** sur une colonne marquée
+- 0B : les cases qui sont sur une ligne **et** sur une colonne non marquée
 
 Soit $\lambda >0 $ la plus petite valeur de des cases 0B.
 
@@ -319,7 +358,7 @@ $$
 $$
 </div>
 
-#### 5. retour
+#### 6. retour
 
 On supprime toutes les marques (de cases, de lignes et de colonnes) et on recommence à l'étape 1 avec la nouvelle matrice
 
