@@ -166,10 +166,18 @@ $$
 </blockquote>
 <h2>Complexité</h2>
 <p>La recherche d'un chemin de coût min n'est plus en $\mathcal{O}(e(G))$ mais en $\mathcal{O}(e(G) \cdot v(G))$. Une recherche de chemin puis une augmentation du flot est donc en $\mathcal{O}(e(G) \cdot v(G))$ opérations.</p>
-<p>La complexité totale est donc bornée, comme pour celui de Ford et Fulkerson en $\mathcal{O}(c(S, \overline{S}) \cdot e(G) \cdot v(G))$ opérations.</p>
-<blockquote>
-<p>TBD est-ce polymomial ? Wikipedia dit n^4 mais sans preuve. Est-ce que la longueur des chemins augmente ?</p>
-</blockquote>
+<p>Comme on augmente un flot de coût minimum, on a plus de garantie de polynomialité comme pour l'algorithme de Edmonds-Karp, la seule borne que l'on a est celle de l'algorithme de Ford et Fulkerson : on peut faire au maximum $c(S, \overline{S})$ itérations avec $S$ une coupe quelconque.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de l'algorithme de Buscker-Gowen est en $\mathcal{O}(c(S, \overline{S}) \cdot e(G) \cdot v(G))$ opérations.</p>
+</div></div>
+
+<p>Si l'on cherche des algorithmes polynomiaux pour résoudre ces problème on peut utiliser des méthodes de <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire">programmation linéaire</a>, mais ceci sort du cadre d'un court de graphe.</p>
 
 
 </article>

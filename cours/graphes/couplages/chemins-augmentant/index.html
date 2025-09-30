@@ -200,14 +200,14 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Soit $M$ (en vert) un couplage et $M^\star$ (en rouge un couplage optimal). Si $xy \in M$ et $xy' \in M^\star$ on est dans un des deux cas suivant :</p>
+<p>Soit $M$ (en vert) un couplage et $M^\star$ (en rouge) un couplage optimal. Si $xy \in M$ et $xy' \in M^\star$ on est dans un des deux cas suivant :</p>
 <p><img src="couplage-opt-1.png" alt="couplage optimal"></p>
 <p>Et les autres voisins de $x$ (les arêtes en pointillées) ne sont ni dans $M$ ni dans $M^\star$</p>
 <p>De plus si l'arête $xy$ est dans un seul couplage ($M$ ou $M^\star$), au moins une de ses extrémité est couverte par l'autre couplage, sinon les deux sommets $x$ et $y$ seraient libre pour lui et $xy$ serait un chemin augmentant.</p>
-<p>Soit alors le graphe $G'=(V, M \cup M^\star)$. Les remarques précédentes  est alors tel que tout sommet est au plus de degré 2 : ses composantes connexes sont soit des chemins soit des cycles alternants.</p>
+<p>Soit alors le graphe $G'=(V, M \cup M^\star)$. Les remarques précédentes montrent que que tout sommet de $G'$ est au plus de degré 2 : ses composantes connexes sont soit des chemins soit des cycles alternants.</p>
 <p>On conclut la preuve en remarquant que le fait qu'ils soient alternants impose que les cycles et les chemins soient de longueur pairs :</p>
 <ul>
-<li>les cycle car sinon on a deux arêtes du même couplage  qui se suivent</li>
+<li>les cycles car sinon on a deux arêtes du même couplage  qui se suivent</li>
 <li>les chemins sinon il existerait un chemin augmentant pour l'un ou l'autre couplage.</li>
 </ul>
 <p>Si par exemple aucune des extrémité du chemin ci dessous ne se prolonge (qu'il y ait ou pas des voisins), alors il existe un chemin augmentant pour pour le couplage rouge :</p>

@@ -159,9 +159,7 @@ $$
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD égalité si optimalité sans avoir besoin de l'algorithme ?</p>
-</blockquote>
+<p>On en conclut que s'il existe une couverture valuée dont la valeur est égale au couplage alors le couplage est forcément maximum. La partie suivante montre la réciproque en donnant un algorithme permettant de trouver un couplage maximum de poids maximum.</p>
 <h2>Résolution par Primal/Dual</h2>
 <p>Le principe de l'algorithme que l'on va utiliser pour résoudre le problème utilise le principe de dualité entre couverture et couplage pour les graphes bipartis et implémente une méthode fondamentale en optimisation appelée primal/dual (très utilisée en programmation linéaire et qui s'applique à de nombreux autres cas, comme ici) : une solution augmente pendant que l'autre diminue, la solution étant trouvée lorsque les deux coïncident.</p>
 <p>L'algorithme va petit à petit augmenter un couplage en diminuant une couverture valuée jusqu'à arriver à une valuation égale ce qui prouvera l'optimalité.</p>
@@ -229,7 +227,7 @@ $$
 </div></div>
 
 <p>Ce problème s'écrit facilement comme la recherche d'un couplage parfait dans $K_{n, n}$ à coût minimal.</p>
-<p>Si l'on cherche à maximiser des préférences rangées dans une matrice $P = (p_{i, j})<em i,="" j="">{1\leq i \leq n, 1\leq i \leq m}$, il suffit de considérer la matrices $C = (K - p</em>)<em u,="" v="">{1\leq i \leq n, 1\leq i \leq m}$, avec $K = \sum</em>p_{u, v}$. Comme on cherche un couplage parfait son poids sera de $nK-\sum_{im j /in I} p_{i, j}$ ce qui correspond bien à la maximisation des préférences.</p>
+<p>Si l'on cherche à maximiser des préférences rangées dans une matrice $n \times n$ $P = (p_{i, j})$, il suffit de considérer la matrice  $n \times n$ $C = (K - p_{i, j})$ avec $K = \sum_{u, v}p_{u, v}$. Comme on cherche un couplage parfait son poids sera de $n\cdot K-\sum_{i, j \in I} p_{i, j}$ ce qui correspond bien à la maximisation des préférences.</p>
 <h3>Algorithme de la méthode hongroise</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
