@@ -63,7 +63,7 @@ On peut transformer petit à petit notre graphe. Si on a pas de chance, on obtie
 Enfin, toute cette construction se fait de plus de façon polynomiale !
 
 {% note "**Proposition**" %}
-La complexité de recherche d'un chemin augmentant dans un graphe est en $mathcal{O}(mn + n^2)$ opérations.
+La complexité de recherche d'un chemin augmentant dans un graphe $G$ est en $mathcal{O}(e(G)\cdot v(G) + v(G)^2)$ opérations.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -71,18 +71,18 @@ Si l'on trouve une fleur, il faut la contracter, ce qui prend $\mathcal{O}(n)$ o
 
 {% enddetails %}
 
-Comme pour les graphes connexes, $m \geq n-1$ on a :
+Comme pour les graphes connexes, $e(G) \geq v(G)-1$ on a :
 
 {% note "**Proposition**" %}
-La complexité de recherche d'un chemin augmentant dans un graphe connexe est en  $\mathcal{O}(mn)$ opérations.
+La complexité de recherche d'un chemin augmentant dans un graphe connexe est en  $\mathcal{O}(e(G)\cdot v(G))$ opérations.
 {% endnote %}
 
 ## Algorithme
 
-Identique que pour le graphe biparti, on cherche au pire $\mathcal{O}(n)$ fois à augmenter notre couplage. On en déduit que :
+Identique que pour le graphe biparti, on cherche au pire $\mathcal{O}(v(G))$ fois à augmenter notre couplage. On en déduit que :
 
 {% note "**Proposition**" %}
-La complexité de recherche d'un couplage maximum dans un graphe connexe est en  $\mathcal{O}(mn^2)$ opérations.
+La complexité de recherche d'un couplage maximum dans un graphe connexe est en  $\mathcal{O}(e(G)\cdot v(G)^2)$ opérations.
 {% endnote %}
 
 ## Propriétés des Couplage parfait et maximum dans un graphe quelconque

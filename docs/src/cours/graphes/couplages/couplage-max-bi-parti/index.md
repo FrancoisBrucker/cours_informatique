@@ -46,7 +46,7 @@ $$
 Pour toute arête $xy$ de $M$ on a $c(x)+c(y)\geq p(xy)$ et comme chaque sommet apparaît au plus une fois dans le couplage on a bien l'inégalité demandée.
 {% enddetails %}
 
-> TBD égalité si optimalité sans avoir besoin de l'algorithme ?
+On en conclut que s'il existe une couverture valuée dont la valeur est égale au couplage alors le couplage est forcément maximum. La partie suivante montre la réciproque en donnant un algorithme permettant de trouver un couplage maximum de poids maximum.
 
 ## Résolution par Primal/Dual
 
@@ -105,7 +105,7 @@ Soit une matrice carrée $C = (c_{i, j})_{1\leq i \leq n, 1\leq i \leq m}$ de co
 
 Ce problème s'écrit facilement comme la recherche d'un couplage parfait dans $K_{n, n}$ à coût minimal.
 
-Si l'on cherche à maximiser des préférences rangées dans une matrice $P = (p_{i, j})_{1\leq i \leq n, 1\leq i \leq m}$, il suffit de considérer la matrices $C = (K - p_{i, j})_{1\leq i \leq n, 1\leq i \leq m}$, avec $K = \sum_{u, v}p_{u, v}$. Comme on cherche un couplage parfait son poids sera de $nK-\sum_{im j /in I} p_{i, j}$ ce qui correspond bien à la maximisation des préférences.
+Si l'on cherche à maximiser des préférences rangées dans une matrice $n \times n$ $P = (p_{i, j})$, il suffit de considérer la matrice  $n \times n$ $C = (K - p_{i, j})$ avec $K = \sum_{u, v}p_{u, v}$. Comme on cherche un couplage parfait son poids sera de $n\cdot K-\sum_{i, j \in I} p_{i, j}$ ce qui correspond bien à la maximisation des préférences.
 
 ### Algorithme de la méthode hongroise
 

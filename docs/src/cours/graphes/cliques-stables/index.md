@@ -209,9 +209,12 @@ C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir 
 
 ## Exercice : problème de la couverture minimale
 
-On appelle **_couverture_** d'un graphe $G=(V, E)$ un ensemble de sommets $C \subseteq V$ tel que toute arête de $G$ possède une extrémité dans $V$.
-
 <span id="problème-graphe-couverture"></span>
+
+{% note "**Définition**" %}
+Une **_couverture_** d'un graphe $G=(V, E)$ est un ensemble de sommets $C \subseteq V$ tel que toute arête de $G$ possède une extrémité dans $C$.
+{% endnote %}
+
 {% note "**Problème**" %}
 
 - **nom** : couverture

@@ -25,7 +25,7 @@ Bref. C'est un joli problème avec de jolis algorithme et utile en pratique ce q
 
 ### Chemins augmentant
 
-Le principal outil utilisé pour résoudre le problème est le chemin augmentant. C'est le pendant graphe [des chaines augmentantes des flots](../flots/#chaîne-augmentante){.interne}.
+Le principal outil utilisé pour résoudre le problème est le chemin augmentant. C'est le pendant graphe [des chaines augmentantes des flots](../flots/définitions/#chaîne-augmentante){.interne}.
 
 {% aller %}
 [Chemins augmentant](./chemins-augmentant/){.interne}

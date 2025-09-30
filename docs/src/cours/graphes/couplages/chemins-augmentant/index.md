@@ -78,7 +78,7 @@ S'il existe n'existe pas de chemin augmentant alors $M$ est un coupage maximum.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Soit $M$ (en vert) un couplage et $M^\star$ (en rouge un couplage optimal). Si $xy \in M$ et $xy' \in M^\star$ on est dans un des deux cas suivant :
+Soit $M$ (en vert) un couplage et $M^\star$ (en rouge) un couplage optimal. Si $xy \in M$ et $xy' \in M^\star$ on est dans un des deux cas suivant :
 
 ![couplage optimal](couplage-opt-1.png)
 
@@ -86,11 +86,11 @@ Et les autres voisins de $x$ (les arêtes en pointillées) ne sont ni dans $M$ n
 
 De plus si l'arête $xy$ est dans un seul couplage ($M$ ou $M^\star$), au moins une de ses extrémité est couverte par l'autre couplage, sinon les deux sommets $x$ et $y$ seraient libre pour lui et $xy$ serait un chemin augmentant.
 
-Soit alors le graphe $G'=(V, M \cup M^\star)$. Les remarques précédentes  est alors tel que tout sommet est au plus de degré 2 : ses composantes connexes sont soit des chemins soit des cycles alternants.
+Soit alors le graphe $G'=(V, M \cup M^\star)$. Les remarques précédentes montrent que que tout sommet de $G'$ est au plus de degré 2 : ses composantes connexes sont soit des chemins soit des cycles alternants.
 
 On conclut la preuve en remarquant que le fait qu'ils soient alternants impose que les cycles et les chemins soient de longueur pairs :
 
-- les cycle car sinon on a deux arêtes du même couplage  qui se suivent
+- les cycles car sinon on a deux arêtes du même couplage  qui se suivent
 - les chemins sinon il existerait un chemin augmentant pour l'un ou l'autre couplage.
 
 Si par exemple aucune des extrémité du chemin ci dessous ne se prolonge (qu'il y ait ou pas des voisins), alors il existe un chemin augmentant pour pour le couplage rouge :

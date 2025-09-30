@@ -60,6 +60,10 @@ Cela semble une amélioration naturelle mais la justification de sa véracité n
 
 La recherche d'un chemin de coût min n'est plus en $\mathcal{O}(e(G))$ mais en $\mathcal{O}(e(G) \cdot v(G))$. Une recherche de chemin puis une augmentation du flot est donc en $\mathcal{O}(e(G) \cdot v(G))$ opérations.
 
-La complexité totale est donc bornée, comme pour celui de Ford et Fulkerson en $\mathcal{O}(c(S, \overline{S}) \cdot e(G) \cdot v(G))$ opérations.
+Comme on augmente un flot de coût minimum, on a plus de garantie de polynomialité comme pour l'algorithme de Edmonds-Karp, la seule borne que l'on a est celle de l'algorithme de Ford et Fulkerson : on peut faire au maximum $c(S, \overline{S})$ itérations avec $S$ une coupe quelconque.
 
-> TBD est-ce polymomial ? Wikipedia dit n^4 mais sans preuve. Est-ce que la longueur des chemins augmente ?
+{% note "**Proposition**" %}
+La complexité de l'algorithme de Buscker-Gowen est en $\mathcal{O}(c(S, \overline{S}) \cdot e(G) \cdot v(G))$ opérations.
+{% endnote %}
+
+Si l'on cherche des algorithmes polynomiaux pour résoudre ces problème on peut utiliser des méthodes de [programmation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire), mais ceci sort du cadre d'un court de graphe.

@@ -246,7 +246,7 @@ Même si le problème général est NP-complet, il existe quelques astuces et pr
 
 ### Coloration et composition de graphes
 
-La coloration de graphe peut se faire _plus ou moins_ par parties en  utilisant la [composition de graphes](../structure/#composition-graphes){.interne} :
+La coloration de graphe peut se faire _plus ou moins_ par parties en  utilisant la [composition de graphes](../../structure/#composition-graphes){.interne} :
 
 {% note "**Proposition**" %}
 Pour deux graphes $G_1=(V_1, E_1)$ et $G_2=(V_2, E_2)$ on a :

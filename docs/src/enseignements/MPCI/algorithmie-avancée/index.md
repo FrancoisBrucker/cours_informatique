@@ -99,22 +99,21 @@ L'ET de l'année dernière :
 
 {% aller %}
 
-1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne}
-2. rappel sur [les flots](/cours/graphes/flots/){.interne} et les graphes bi-parti
-   1. le [transport amoureux](/cours/graphes/projet-flots-modélisation/#transport-amoureux){.interne}
-   2. [degrés d'un graphe (exercice 3)](./DS/ds.pdf){.pdf}
+[graphes bi-parti](/cours/graphes/graphe-biparti/){.interne}
+
 {% endaller %}
 
 #### Semaine 4
 
 {% aller %}
 
-1. couplage :
+1. rappel sur [les flots](/cours/graphes/flots/){.interne}
+2. couplage :
     - [problème](/cours/graphes/couplages/problème/){.interne} et [chemins augmentant](/cours/graphes/couplages/chemins-augmentant/){.interne}
     - [graphes bi-parti](/cours/graphes/couplages/couplage-bi-parti/){.interne} et idée de la [généralisation aux graphes quelconques](cours/graphes/couplages/couplage-cas-général/){.interne}.
     - [couplage max dans les graphes bi-partis](/cours/graphes/couplages/couplage-max-bi-parti/){.interne} (si on a le temps)
-2. coloriabilité
-3. planarité
+3. [colorabilité des sommets d'un graphe](/cours/graphes/colorabilité/coloration-sommets/){.interne}
+4. [graphes planaires](/cours/graphes/graphes-planaires/){.interne}
 
 {% endaller %}
 

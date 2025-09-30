@@ -134,6 +134,20 @@ La preuve du théorème précédent donne de plus une construction de la couvert
 
 > TBD écrire bien l'algorithme
 
+Terminons cette partie en remarquant que la preuve du Théorème de Hall nous donne également un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti.
+
+Il suffit de construire un arbre en partant d'une racine libre en construisant des chemins alternants :
+
+![hall algo](./hall-algo.png)
+
+En procédant comme dans la preuve du théorème on trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.
+
+Enfin ceci peut se faire simplement avec parcours en profondeur pour trouver un chemin augmentant en $\mathcal{O}(m)$ opérations. C'est ce que donne un DFS avec le graphe du transport amoureux avec un couplage de taille 4 et en partant d'un sommet libre :
+
+![hall algo](./hall-algo-transport.png)
+
+On parcours les sommets tant que l'on peut augmenter le chemin alternant et sinon on stope la récursion.
+
 ### Couplage parfait
 
 {% note "**corollaire**"  %}
@@ -207,17 +221,3 @@ Comme pour la démonstration du théorème, on peut supposer sans perte de gén�
 En ajoutant à $G$ $\vert A \vert - k$ sommets reliés à tous les éléments de $A$ pour former le graphe biparti $G'=(A\cup B', E')$ où $B'$ est le graphe contenant $B$ et tous les nouveaux sommets, on a que $G'$ contient un couplage de taille $\vert A \vert$. Même si ce couplage couvre tous les nouveaux sommets il couvre tout de même $k$ sommets de $G$ ce qui conclut la preuve.
 
 {% enddetails %}
-
-Terminons cette partie en remarquant que la preuve du Théorème de Hall nous donne un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti.
-
-On va construire un arbre en partant d'une racine libre en construisant des chemins alternants :
-
-![hall algo](./hall-algo.png)
-
-En procédant comme dans la preuve du théorème on trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.
-
-Enfin ceci peut se faire simplement avec parcours en profondeur pour trouver un chemin augmentant en $\mathcal{O}(m)$ opérations. C'est ce que donne un DFS avec le graphe du transport amoureux avec un couplage de taille 4 et en partant d'un sommet libre :
-
-![hall algo](./hall-algo-transport.png)
-
-On parcours les sommets tant que l'on peut augmenter le chemin alternant et sinon on stope la récursion.
