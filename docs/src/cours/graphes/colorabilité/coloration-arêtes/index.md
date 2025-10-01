@@ -67,6 +67,30 @@ Cependant :
 
 Déjà, on peut trouver de biens meilleurs borne !
 
+## Exemple des graphes bipartis
+
+{% note "**Théorème (König)**" %}
+Si $G$ est un graphe biparti, alors  $\chi'(G) = \Delta(G)$
+{% endnote %}
+{% details "preuve", "open" %}
+
+> TBD p119 diestel. ou preuve avec suite de kempe pour amener vizing ? <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>
+
+{% enddetails  %}
+
+> TBD preuve donne algo.
+> le faire
+> TBD on peut faire mieux : <https://en.wikipedia.org/wiki/Edge_coloring#Optimally_coloring_special_classes_of_graphs>
+
+> TBD preuve donne outil : Chaîne de Kempe pour les arête. On la retrouvera pour les sommet lorsque l'on traitera de coloration de graphe planaire. [Chaîne de Kempe](https://en.wikipedia.org/wiki/Kempe_chain).
+
+{% note "**Définition**" %}
+> TBD chaîne de Kempe
+{% endnote %}
+
+> TBD propriété. alternant et ne peut pas revenir.
+> on peut échanger ses couleurs alternantes (ne change rien si cycle impair)
+
 ## Bornes la colorabilité des arêtes
 
 {% lien %}
@@ -112,26 +136,11 @@ Ce qui donne une coloration en $\Delta(G) + 1$ couleurs de $G'$ auquel on a ajou
 {% enddetails %}
 
 > TBD <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf> p21 : exemple de graphes type 1 et type 2.
+> TBD Graphes réguliers avec un nombre impair de sommet sont de classe 2.
 
 > TBD Notez que la preuve donne un algo pour edge colorier avec delta+1 couleurs. Ce qui donne une super approximation si on est pas à une couleur prêt.
 > 
 > TBD le faire
-
-## Exemple
-
-Pour certains graphes, comme les graphes bi-partis, connaît l'index chromatique.
-
-{% note "**Théorème (König)**" %}
-Si $G$ est un graphe biparti, alors  $\chi'(G) = \Delta(G)$
-{% endnote %}
-{% details "preuve", "open" %}
-
-> TBD p119 diestel. ou preuve avec suite de kempe pour amener vizing ? <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>
-
-{% enddetails  %}
-
-
-> TBD Graphes réguliers avec un nombre impair de sommet sont de classe 2.
 
 En revanche, dans le cas général connaître l'index chromatique est un problème NP-complet
 
