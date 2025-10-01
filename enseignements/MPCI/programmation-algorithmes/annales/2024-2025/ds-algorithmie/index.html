@@ -218,7 +218,7 @@
 <p>L'algorithme vérifie que la succession de blocs de la solution est compatible avec la clé. Il ne vérifie pas leur nombre. Ainsi, si la solution est vierge, l'algorithme va tout le temps répondre vrai : <code class="language-">verif_ligne([[0]], [[1]], 0)</code>.</p>
 <p>Une solution serait de ne rendre vrai que si le nombre de blocs de la solution est compatible avec celui de la clé. On peut alors remplacer la ligne 14 par :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">return</span> i_bloc <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
-<p>Notez que ceci est dans notre cas équivalent (mais c'est plus long) à vérifier que le no,bre de cases noires de la solution est identique à celui de la clé :</p>
+<p>Notez que ceci est dans notre cas équivalent (mais c'est plus long) à vérifier que le nombre de cases noires de la solution est identique à celui de la clé :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">return</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>sol<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>cle_l<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <h3>Partie II</h3>
 <h4>Question 5</h4>

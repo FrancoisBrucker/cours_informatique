@@ -97,175 +97,7 @@
   
 
   <p>Certainement la plus populaires des colorations de graphes.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Soit $G=(V, E)$ un graphe. Une <strong><em>$k$-coloration</em></strong> de $G$ est une fonction $c: V \to \{1,\dots, k\}$ telle que pour toute arête $xy \in E$, $c(x) \neq c(y)$.</p>
-</div></div>
-
-<blockquote>
-<p>TBD exemples :</p>
-<ul>
-<li>discret (admet des k-colorations pour tout k&gt;0)</li>
-<li>arbre</li>
-<li>cycle pair</li>
-<li>cycle impair C5</li>
-<li>clique K6</li>
-</ul>
-</blockquote>
-<p>Les exemples précédent le montrent, il existe une borne minimum pour tout graphe.</p>
-<h2>Nombre chromatique d'un graphe</h2>
-<p><span id="definition-notation-coloration-minimum"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Soit $G=(V, E)$ un graphe. On note $\chi(G)$ le nombre minimum de couleurs qu'il faut pour colorier ses sommets et on l'appelle <strong><em>nombre chromatique de $G$</em></strong>.</p>
-</div></div>
-
-<p>Entraînons-nous à trouver $\chi$ pour des classes de graphes connus :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que :</p>
-<ul>
-<li>$\chi(G) = 2$ si $G$ est un chemin ou un cycle de longueur pair,</li>
-<li>$\chi(G) = 3$ si $G$ est un chemin ou un cycle de longueur impair,</li>
-</ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<p>Le nombre chromatique est lié aux cliques :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que :</p>
-<ul>
-<li>$\chi(K_n) = n$</li>
-</ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<p>On peut facilement prouver une première proposition :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Pour tout graphe $G = (V, E)$, on a :</p>
-<div>
-$$
-\omega(G) \leq \chi(G) \leq \vert V \vert
-$$
-</div>
-</div></div>
-
-<p>Les inégalités peuvent être strictes, comme pour les cycles de longueur impair par exemple. Ou encore en prenant les <a href="https://fr.wikipedia.org/wiki/Graphe_de_Mycielski">graphe de Mycielski</a> qui sont sans triangles mais dont le nombre chromatique peut être aussi grand que l'on veut.</p>
-<blockquote>
-<p>TBD faire la preuve de <a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf">https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf</a>. Dire qu'il en existe d'autres.</p>
-</blockquote>
-<h2>Un algorithme glouton</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/Coloration_gloutonne">Algorithme glouton</a></li>
-<li><a href="https://www.youtube.com/watch?v=L2csXWQMsNg">Algorithme glouton en action</a></li>
-</ul>
-</div></div>
-
-<p>L'algorithme est tout simple :</p>
-<p>Les couleurs sont des entiers. On associe à chaque sommet la couleur valant le plus petit entier strictement positif non encore affecté à un de ses voisins (ceux étant avant lui dans l'ordre).</p>
-<p>Ce qui donne le code :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Soit v_1, ... v_n un ordonnancement des sommets de G
-
-
-pour chaque i de 1 à n:
-    c(vi) = min N^+ \ { { c(vj) | vivj  E, j < i} }</code></pre>
-<p>Bien sur, selon l'ordre choisi on peut trouver un bon coloriage comme un coloriage moins bon.</p>
-<blockquote>
-<p>TBD exemple</p>
-</blockquote>
-<blockquote>
-<p>Ordre décroissant Welch-Powel.
-TBD ajouter : <a href="https://m6colorationgraphes.wordpress.com/2015/11/30/partie-iii-la-coloration-par-welsh-powel/">https://m6colorationgraphes.wordpress.com/2015/11/30/partie-iii-la-coloration-par-welsh-powel/</a></p>
-</blockquote>
-<blockquote>
-<p>TBD cours papier :  glouton + améliorations en classant par ordre décroissant de degré (nb couleur dépend uniquement du nombre de voisins déjà placées).</p>
-<p>TBD parler de <a href="https://en.wikipedia.org/wiki/DSatur">dsatur</a> et leur faire montrer qu'il fonctionne sur les cycles, les graphes bi-parti et les roues.</p>
-</blockquote>
-<h2>Colorabilité d'un graphe</h2>
-<p>L'algorithme glouton précédent ne permet de trouver qu'un majorant du nombre chromatique. Nous allons étudier la complexité algorithmique du calcul du nombre chromatique d'un graphe. Commençons par définir le problème :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>Nom</strong> : $k$-coloriable</li>
-<li><strong>Entrée</strong> : un graphe $G$</li>
-<li><strong>Sortie</strong> : Oui si $G$ admet une $k$-coloration, Non sinon.</li>
-</ul>
-</div></div>
-
-<p>Notez que cette définition peut s'écrire dans le formalisme <a href="../../graphe-biparti/#d%C3%A9finition-k-parti" class="interne">des graphes $k$-parti</a> :</p>
+<p>La coloration des sommets d'un graphe étant lié aux arêtes commençons par une proposition qui va nous permettre de ne considérer par la suite que des graphes connexes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -273,29 +105,7 @@ TBD ajouter : <a href="https://m6colorationgraphes.wordpress.com/2015/11/30/part
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un graphe $G$ est $\chi(G)$-parti et n'est pas $(\chi(G)-1)$-parti.</p>
-</div></div>
-
-<p>On en déduit donc immédiatement :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un graphe est $k$-colorable si et seulement si il est $k$-parti.</p>
-</div></div>
-
-<p>On remarque que $k$ fait parti du problème, ce n'est pas une entrée. Il existe donc un problème de reconnaissance différent pour chaque $k$. Il est clair qu'ils sont tous dans NP :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Le problème $k$-colorable est dans NP pour tout $k\geq 1$</p>
+<p>Pour tout graphe $G$, son nombre chromatique est égal au plus grand nombre chromatique maximum de ses parties connexes.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -315,132 +125,18 @@ TBD ajouter : <a href="https://m6colorationgraphes.wordpress.com/2015/11/30/part
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si l'on se donne une solution possible sous la forme d'une partition en $k$ classes de l'ensemble des sommets, il est facile de vérifier si ce sont des stables.</p>
+<p>En coloriant chaque partie connexe $G_i$ avec des entiers de 1 à $\chi(G_i)$, on a bien le résultat demandé.</p>
 </div>
 </details>     
 </div>
-<p>Et il est clair que Le problème de la 2-colorabilité est donc Polynomial et même linéaire puisque :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Corollaire</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un graphe est 2-coloriable si et seulement si il est bi-parti.</p>
-</div></div>
-
-<p>Cela se gâte pour $k&gt;2$. On va maintenant montrer la NP-complétude du problème de $k$-colorabilité pour $k&gt;2$.</p>
-<h3>$k&gt;2$-colorabilité</h3>
-<p>On a vu précédemment que le problème de reconnaissance est polynomial (et même linéaire) pour les graphes 2-colorable et pour les graphes 1-colorable (c'est le graphe discret). De plus, vous aller le montrer, on peut facilement réduire la reconnaissance d'un graphe $k$-parti à un cas particulier de la reconnaissance d'un graphe $(k+1)$-parti :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que pour tout $k\geq 1$ on a : <code>k-colorable</code> $\leq$ <code>(k+1)-colorable</code>.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Soit $G=(V, E)$ dont on cherche à savoir s'il est $k$-colorable. Soit alors $G'=(V \cup \{x\}, E \cup \{xy \vert y\in V})$. On a clairement (le seul stable contenant $x$ c'est lui-même) :</p>
-<ul>
-<li>les stables de $G$ sont les stables de $G'$ privé du stable contenant uniquement $x$.</li>
-<li>$G$ est $k$-colorable si et seulement si $G'$ est $(k+1)$-colorable</li>
-</ul>
-</div>
-</details>     
-</div>
-<p>Pour terminer, il nous reste à montrer que <code>3-colorable</code> est NP-complet :</p>
-<p><span id="3-colorable-NPC"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Le problème de la reconnaissance d'un graphe $3$-colorable est NP-complet.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On part de 3-SAT. Soient :</p>
-<ul>
-<li>$(x_i)_{1\leq i \leq n}$ les $n$ variables d'une instance de 3-SAT</li>
-<li>$c_j = l_j^1 \lor l_j^2 \lor l_j^3$  pour $1\leq j \leq m$ les $m$ clauses formés des littéraux $l_j^k \in \{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\}$ pour $1\leq k \leq 3$ et $1\leq j \leq m$</li>
-<li>$C = \land_{j} c_j$ la conjonction de clauses.</li>
-</ul>
-<p>On va associer à tout ceci, de façon polynomiale, un graphe qui sera 3-parti si et seulement si la conjonction de clause $C$ est satisfiable.</p>
-<p>On commence par créer un graphe permettant de rendre compte de la véracité des variables : $G_1 = (V_1 \cup V_2, E)$ où :</p>
-<ul>
-<li>$V_1 = \{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\}$</li>
-<li>$V_2 = \{ V, F, ?\}$</li>
-<li>$E = \{\{V, ?\}, \{F, ?\}, \{V, F\} \}\cup \{\{x_i, ?\} \vert 1\leq i \leq n \} \cup \{\{\overline{x_i}, ?\} \vert 1\leq i \leq n \}$</li>
-</ul>
-<p><img src="NPC-1.png" alt="NPC-1"></p>
-<p>Le graphe $G_1$ est clairement 3-parti avec :</p>
-<ul>
-<li>les 3 sommets $V$, $F$ et $?$ dans 3 stables différents,</li>
-<li>les sommets $x_i$ et $\overline{x_i}$ sont dans le stable ne contenant pas $?$,</li>
-<li>si $x_i$ est dans le stable contenant $V$ alors $\overline{x_i}$ est dans le stable contenant $F$ et réciproquement pour tout $1\leq i \leq n$.</li>
-</ul>
-<p>Il faut maintenant ajouter à ce graphes les clauses qui vont permettre de placer des valeurs de vérité aux variables via des stables (le stable de V ou le stable de F). Soit alors le graphe $C_j = (V'_1 \cup V_2 \cup V_j, E_j)$ tel que :</p>
-<ul>
-<li>$V_j = \{a_j, b_j, c_j, d_j, e_j \}$</li>
-<li>$V'_1 = \{l^1_j, l^2_j, l^3_j \} \subseteq V_1$</li>
-<li>$E_j$ correspondant au graphe ci-dessous</li>
-</ul>
-<p><img src="NPC-2.png" alt="NPC-2"></p>
-<p>On remarque que les graphes $C_j$ sont 3-partis et que tous leurs stables sont tels que $l^1_j$, $l^2_j$ et $l^3_j$ ne sont pas tous les 3 dans la classe de $F$.</p>
-<p>On en conclut donc que le graphe $G = (V_1 \cup V_2 \cup (\cup_j V_j), E \cup (\cup_j E_j))$ est triparti si et seulement si la conjonction de clause $C$ est satisfiable.</p>
-</div>
-</details>     
-</div>
-<p>La réduction de la preuve de la proposition précédente est plus complexe que toutes celles que l'on a fait jusqu'à présent, <a href="https://fr.wikipedia.org/wiki/Gadget_(informatique)">Le gadget utilisé</a> n'étant pas trivial. Montrons ce qu'il donne sur <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat-exemple" class="interne">notre exemple fil rouge des réduction depuis 3-SAT</a> :</p>
-<ul>
-<li>$G_1$ : <img src="npc-ex-g1.png" alt="ex G1"></li>
-<li>$C_1$ : <img src="npc-ex-c1.png" alt="ex C1"></li>
-<li>$C_2$ : <img src="npc-ex-c2.png" alt="ex C2"></li>
-<li>$C_3$ : <img src="npc-ex-c3.png" alt="ex C3"></li>
-<li>$C_4$ : <img src="npc-ex-c4.png" alt="ex C4"></li>
-</ul>
-<p>Ce qui donne le graphe final :</p>
-<p><img src="npc-ex-g.png" alt="ex G"></p>
-<p>Ce graphe est 3-colorable (on a associé une couleur à chaque stable) :</p>
-<p><img src="npc-ex-G-colorie.png" alt="ex G 3-stable"></p>
-<p>On voit que, comme pour le problème SAT, le problème est simple pour 1 et 2 mais NP-complet à partir de 3.</p>
-<h2>Propriétés du nombre chromatique</h2>
-<p>Même si le problème général est NP-complet, il existe quelques astuces et propositions les concernant.</p>
-<h3>Coloration et composition de graphes</h3>
+<p>Cet proposition toute simple montre que l'on peut parfois utiliser des coloration de sous-graphes pour trouver une solution sur le graphe tout entier. On y reviendra.</p>
+<p>Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possible de se restreindre (comme on en aurait envie) à une clique de taille maximum de $G$ (puisque $\omega(G) \leq \chi(G)$ pour tout graphe $G$) puis d'étendre sa coloration à tout le graphe. Cela ne marche pas : il existe des graphes sans triangles (donc avec $\omega(G) = 2$) dont le nombre chromatique peut être aussi grand qu'on veut !</p>
+<blockquote>
+<p>TBD théorème 8.6 <a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf">https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf</a>. prendre M4 et voir que sa coloration est grande. Dire qu'il en existe d'autres.</p>
+<p>TBD <a href="https://fr.wikipedia.org/wiki/Graphe_de_Mycielski">graphe de Mycielski</a></p>
+</blockquote>
+<p>Mais voyons quelques exemples ou on peut décomposer la coloration d'un graphe en sous-parties de lui–même.</p>
+<h2>Coloration et composition de graphes</h2>
 <p>La coloration de graphe peut se faire <em>plus ou moins</em> par parties en  utilisant la <a href="../../structure/#composition-graphes" class="interne">composition de graphes</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -487,7 +183,70 @@ TBD ajouter : <a href="https://m6colorationgraphes.wordpress.com/2015/11/30/part
 <blockquote>
 <p>TBD exemples du cours papier.</p>
 </blockquote>
-<h3>Majorations de la colorabilité</h3>
+<p>Cela ne règle cependant pas le problème de trouver une coloration d'une des composante élémentaire. Commençons par essayer de trouver une coloration avec un algorithme glouton.</p>
+<h2>Un algorithme glouton</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Coloration_gloutonne">Algorithme glouton</a></li>
+<li><a href="https://www.youtube.com/watch?v=L2csXWQMsNg">Algorithme glouton en action</a></li>
+</ul>
+</div></div>
+
+<p>L'algorithme est tout simple :</p>
+<p>Les couleurs sont des entiers. On associe à chaque sommet la couleur valant le plus petit entier strictement positif non encore affecté à un de ses voisins (ceux étant avant lui dans l'ordre).</p>
+<p>Ce qui donne le code :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Soit v_1, ... v_n un ordonnancement des sommets de G
+
+
+pour chaque i de 1 à n:
+    c(vi) = min N^+ \ { { c(vj) | vivj  E, j < i} }</code></pre>
+<p>Bien sur, selon l'ordre choisi on peut trouver un bon coloriage comme un coloriage moins bon. Exemple</p>
+<blockquote>
+<p>complexité O(m). On garde un tableau avec les sommets dont la couleur vaut l'index.
+on parcours tous les voisins et on met T[i] = id noeud courant.
+puis on regarde si T[1] vaut l'id du noeud courant, si oui  on passe à 2 et sinon on met 1 comme couleur au noeud courant.</p>
+</blockquote>
+<blockquote>
+<p>TBD pas de performance garantie. Il peut être aussi mauvais qu'on veut. Mais trouver un mauvais ordre est...NP-complet.
+ca donne donc une façon de choisir l'ordre qui marche : au hasard !
+Nais certains ordre vont marcher plus souvent que d'autres. On va en donner deux.</p>
+</blockquote>
+<h3>Algorithme de Welch-Powel</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell">https://fr.wikipedia.org/wiki/Coloration_de_graphe#Algorithme_de_Welsh_et_Powell</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD exemple</p>
+</blockquote>
+<blockquote>
+<p>Ordre décroissant .
+TBD ajouter : <a href="https://m6colorationgraphes.wordpress.com/2015/11/30/partie-iii-la-coloration-par-welsh-powel/">https://m6colorationgraphes.wordpress.com/2015/11/30/partie-iii-la-coloration-par-welsh-powel/</a></p>
+</blockquote>
+<blockquote>
+<p>TBD cours papier :  glouton + améliorations en classant par ordre décroissant de degré (nb couleur dépend uniquement du nombre de voisins déjà placées).</p>
+</blockquote>
+<h3>Algorithme DSATUR</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/DSATUR">https://fr.wikipedia.org/wiki/DSATUR</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD parler de <a href="https://en.wikipedia.org/wiki/DSatur">dsatur</a> et leur faire montrer qu'il fonctionne sur les cycles, les graphes bi-parti et les roues.</p>
+</blockquote>
+<h2>Majorations de la colorabilité</h2>
 <p>L'algorithme glouton permet immédiatement de dire :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -569,18 +328,21 @@ $$
 <li>comme $G$ n'est pas complet il existe $x$ et $y$ tels que $xy$ n'est pas une arête</li>
 <li>comme $G$ est connexe il existe un chemin entre $x$ et $y$ et on prend :
 <ul>
-<li>$y'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,</li>
-<li>$z$ comme étant le sommet juste après $y'$ sur ce chemin.</li>
+<li>$x'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,</li>
+<li>$z$ comme étant le sommet juste après $x'$ sur ce chemin.</li>
 </ul>
 </li>
-<li>On a alors $xz'$ qui n'est pas une arête alors que $xy'$ et $y'z$ en sont.</li>
+<li>On a alors $xz$ qui n'est pas une arête alors que $xx'$ et $x'z$ en sont.</li>
 </ol>
-<p>Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in X_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \neq x_i$ tel que $y_ix_i$ ou $y_iz_i$ soit une arête de $G$. On en déduit que :</p>
+<p>Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in V_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \in V_i \backslash \{x_i\}$ tel que $y_ix$ ou $y_iz$ soit une arête de $G$. On en déduit que :</p>
 <ul>
 <li>$G$ privé de $x_1$ et $x_2$ est connexe</li>
 <li>$xx_1$ et $xx_2$ sont des arêtes de $G$.</li>
 </ul>
 <p>Et on a prouvé un triplet de point qui correspond à ce que l'on cherche.</p>
+<blockquote>
+<p>TBD des dessins.</p>
+</blockquote>
 </div>
 </details>     
 </div>
@@ -598,6 +360,7 @@ $$
 \chi(G) \leq \Delta(G)
 $$
 </div>
+<p>Et $\chi(G) = \Delta(G) + 1$ pour les graphes complets et les cycles impairs.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -617,24 +380,26 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il existe ne nombreuses preuves de cette proposition, nous en présentons une qui utilise ici un ordonnancement astucieux de l'algorithme glouton.</p>
+<p>Il existe ne nombreuses preuves de cette proposition, nous en présentons une qui utilise un ordonnancement astucieux de l'algorithme glouton.</p>
 <p>La preuve est construite en examinant plusieurs cas :</p>
+<p><strong>Cas Zéro :</strong> $G$ est un cycle pair.</p>
+<p>La proposition est vérifiée puisque $G$ est bi-parti, donc 2-colorable.</p>
 <p><strong>Premier cas :</strong> Il existe $x^\star$ tel que $\delta(x^\star) &lt; \Delta(G)$.</p>
-<p>On ordonne alors les $n$ sommets du graphe de telle sorte que $^\star = v_n$ et on ordonne en suivant l'algorithme :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">k <span class="token operator">=</span> n
-i <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">1</span>
+<p>On ordonne alors les $n$ sommets du graphe de telle sorte que $x^\star = v_n$ et on ordonne en suivant l'algorithme :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">k = n
+i = n-1
 
-tant que i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-  si k <span class="token operator">></span> i et qu'il existe un voisin x de vk non encore placé alors<span class="token punctuation">:</span>
-    vi <span class="token operator">=</span> x
-    i <span class="token operator">=</span> i<span class="token operator">-</span> <span class="token number">1</span>
-  sinon<span class="token punctuation">:</span>
-    k <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span> </code></pre>
+tant que i > 0:
+  si k > i et qu'il existe un voisin x de vk non encore placé alors:
+    vi = x
+    i = i- 1
+  sinon:
+    k = -1 </code></pre>
 <p>Si le graphe est connexe, il est clair que cet ordre va placer tous les sommets par ordre décroissant en commençant par tous les voisins de $x_n$, puis tous les voisins de $x_{n-1}$ non encore placés, et ainsi de suite jusqu'à avoir placé tout le monde.</p>
-<p>Cet ordre va nous permettre d'obtenir la borne recherchée car lors de l'affectation des couleurs, il faudra toujours autant de couleurs que le nombre de ses voisins déjà placé plus 1. Comme l'ordre assure qu'il va exister $j &gt; i$ tel que $v_iv_j$ est une arête, ce nombre sera toujours inférieur à $\Delta(G)$. Une récurrence immédiate nous assure qu'il faudra au total moins de $\Delta(G)$ couleurs (au moins un no,bre entre 1 et $\Delta(G)$ sera disponible puisqu'il y aura au plus $\Delta(G)-1$ nombres déjà affectés).</p>
+<p>Cet ordre va nous permettre d'obtenir la borne recherchée car lors de l'affectation des couleurs, il faudra toujours autant de couleurs que le nombre de ses voisins déjà placé plus 1. Comme l'ordre assure qu'il va exister pour tout $i$ un $j &gt; i$ tel que $v_iv_j$ est une arête, ce nombre sera toujours inférieur à $\Delta(G)$. Une récurrence immédiate nous assure qu'il faudra au total moins de $\Delta(G)$ couleurs (au moins un nombre entre 1 et $\Delta(G)$ sera disponible puisqu'il y aura au plus $\Delta(G)-1$ nombres déjà affectés).</p>
 <p><strong>Second cas :</strong> le graphe est régulier mais il existe $x^\star$ tel que si on le supprime on déconnecte $G$.</p>
-<p>En supprimant $x^\star$ de $G$ il y aura $p&gt;1$ composantes connexes $G_i = (v_i, E_i)$ le sommet $x^\star$ du graphe $G$ restreint à $X_i \cup \{x^\star\}$ aura strictement moins que $\Delta(G)$ sommets et on est ramené au cas 1 pour les $p$ graphes $G_i$. On peut ensuite en déduire un coloriage de $G$ en donnant à $x^\star$ la même couleur pour chaque coloriage.</p>
-<p><strong>Troisième cas :</strong> le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$. On se retrouve dans le cadre de la proposition suivant et il existe $u$ et $v$ et $w$ trois sommets de $G$ tels que :</p>
+<p>En supprimant $x^\star$ de $G$ il y aura $p&gt;1$ composantes connexes $G_i = (V_i, E_i)$ le sommet $x^\star$ du graphe $G$ restreint à $V_i \cup \{x^\star\}$ aura strictement moins que $\Delta(G)$ sommets et on est ramené au cas 1 pour les $p$ graphes $G_i$. On peut ensuite en déduire un coloriage de $G$ en donnant à $x^\star$ la même couleur pour chaque coloriage.</p>
+<p><strong>Troisième cas :</strong> le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$. On se retrouve dans le cadre de la proposition précédente (car on a forcément $k&gt;2$ puisque $G$ e peut être un cycle de longueur impair) et il existe $u$ et $v$ et $w$ trois sommets de $G$ tels que :</p>
 <ul>
 <li>$vw$ n'est pas une arête de $G$,</li>
 <li>$uv$ et $uw$ sont deux arêtes de $G$,</li>
@@ -644,7 +409,206 @@ tant que i <span class="token operator">></span> <span class="token number">0</s
 </div>
 </details>     
 </div>
-<h3>Colorabilité et isomorphisme de graphe</h3>
+<blockquote>
+<p>TBD à séparer en plusieurs sous propositions et un exemple par cas.</p>
+</blockquote>
+<h2>Colorabilité d'un graphe</h2>
+<p>L'algorithme glouton précédent ne permet de trouver qu'un majorant du nombre chromatique. Nous allons étudier la complexité algorithmique du calcul du nombre chromatique d'un graphe. Commençons par définir le problème :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>Nom</strong> : $k$-coloriable</li>
+<li><strong>Entrée</strong> : un graphe $G$</li>
+<li><strong>Sortie</strong> : Oui si $G$ admet une $k$-coloration, Non sinon.</li>
+</ul>
+</div></div>
+
+<p>Notez que cette définition peut s'écrire dans le formalisme <a href="../../graphe-biparti/#d%C3%A9finition-k-parti" class="interne">des graphes $k$-parti</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un graphe $G$ est $\chi(G)$-parti et n'est pas $(\chi(G)-1)$-parti.</p>
+</div></div>
+
+<p>On en déduit donc immédiatement :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un graphe est $k$-colorable si et seulement si il est $k$-parti.</p>
+</div></div>
+
+<p>On remarque que $k$ fait parti du problème, ce n'est pas une entrée. Il existe donc un problème de reconnaissance différent pour chaque $k$. Il est clair qu'ils sont tous dans NP :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le problème $k$-colorable est dans NP pour tout $k\geq 1$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si l'on se donne une solution possible sous la forme d'une partition en $k$ classes de l'ensemble des sommets, il est facile de vérifier si ce sont des stables.</p>
+</div>
+</details>     
+</div>
+<p>Et il est clair que Le problème de la 2-colorabilité est donc Polynomial et même linéaire puisque :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un graphe est 2-colorable si et seulement si il est bi-parti.</p>
+</div></div>
+
+<p>Cela se gâte pour $k&gt;2$. On va maintenant montrer la NP-complétude du problème de $k$-colorabilité pour $k&gt;2$.</p>
+<h3>$k&gt;2$-colorabilité</h3>
+<p>On a vu précédemment que le problème de reconnaissance est polynomial (et même linéaire) pour les graphes 2-colorable et pour les graphes 1-colorable (c'est le graphe discret). De plus, vous aller le montrer, on peut facilement réduire la reconnaissance d'un graphe $k$-parti à un cas particulier de la reconnaissance d'un graphe $(k+1)$-parti :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que pour tout $k\geq 1$ on a : <code>k-colorable</code> $\leq$ <code>(k+1)-colorable</code>.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $G=(V, E)$ dont on cherche à savoir s'il est $k$-colorable. Soit alors $G'=(V \cup \{x\}, E \cup \{xy \vert y\in V\})$. On a clairement (le seul stable contenant $x$ c'est lui-même) :</p>
+<ul>
+<li>les stables de $G$ sont les stables de $G'$ privé du stable contenant uniquement $x$.</li>
+<li>$G$ est $k$-colorable si et seulement si $G'$ est $(k+1)$-colorable</li>
+</ul>
+</div>
+</details>     
+</div>
+<h3>3-coloraiable</h3>
+<p>Pour terminer, il nous reste à montrer que <code>3-colorable</code> est NP-complet. Nous allons pour cela utiliser un gadget sous la forme du graphe ci-dessous :</p>
+<p><img src="gadget.png" alt="gadget"></p>
+<p>L'intérêt de ce graphe est qu'il est trois colorable, et de plein de façons différente :</p>
+<p><img src="gadget-2.png" alt="gadget"></p>
+<p>Sauf une seule, lorsque les 3 sommets ne faisant pas parti d'un triangle sont de la même couleur que celle du sommet formant le bas du dernier triangle :</p>
+<p><img src="gadget-3.png" alt="gadget"></p>
+<p>C'est cette propriété que l'on va utiliser pur prouver la NP-complétude de la 3 coloration d'un graphe.</p>
+<p><span id="3-colorable-NPC"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le problème de la reconnaissance d'un graphe $3$-colorable est NP-complet.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On part de 3-SAT. Soient :</p>
+<ul>
+<li>$(x_i)_{1\leq i \leq n}$ les $n$ variables d'une instance de 3-SAT</li>
+<li>$c_j = l_j^1 \lor l_j^2 \lor l_j^3$  pour $1\leq j \leq m$ les $m$ clauses formés des littéraux $l_j^k \in \{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\}$ pour $1\leq k \leq 3$ et $1\leq j \leq m$</li>
+<li>$C = \land_{j} c_j$ la conjonction de clauses.</li>
+</ul>
+<p>On va associer à tout ceci, de façon polynomiale, un graphe qui sera 3-parti si et seulement si la conjonction de clause $C$ est satisfiable.</p>
+<p>On commence par créer un graphe permettant de rendre compte de la véracité des variables : $G_1 = (V_1 \cup V_2, E)$ où :</p>
+<ul>
+<li>$V_1 = \{x_1, \dots, x_n, \overline{x_1}, \dots, \overline{x_1}\}$</li>
+<li>$V_2 = \{ V, F, ?\}$</li>
+<li>$E = \{\{V, ?\}, \{F, ?\}, \{V, F\} \}\cup \{\{x_i, ?\} \vert 1\leq i \leq n \} \cup \{\{\overline{x_i}, ?\} \vert 1\leq i \leq n \}$</li>
+</ul>
+<p><img src="NPC-1.png" alt="NPC-1"></p>
+<p>Le graphe $G_1$ est clairement 3-parti avec :</p>
+<ul>
+<li>les 3 sommets $V$, $F$ et $?$ dans 3 stables différents,</li>
+<li>les sommets $x_i$ et $\overline{x_i}$ sont dans le stable ne contenant pas $?$,</li>
+<li>si $x_i$ est dans le stable contenant $V$ alors $\overline{x_i}$ est dans le stable contenant $F$ et réciproquement pour tout $1\leq i \leq n$.</li>
+</ul>
+<p>Il faut maintenant ajouter à ce graphes les clauses qui vont permettre de placer des valeurs de vérité aux variables via des stables (le stable de V ou le stable de F). Soit alors le graphe $C_j = (V'_1 \cup V_2 \cup V_j, E_j)$ tel que :</p>
+<ul>
+<li>$V_j = \{a_j, b_j, c_j, d_j, e_j \}$</li>
+<li>$V'_1 = \{l^1_j, l^2_j, l^3_j \} \subseteq V_1$</li>
+<li>$E_j$ correspondant au graphe ci-dessous</li>
+</ul>
+<p><img src="NPC-2.png" alt="NPC-2"></p>
+<p>On remarque que les graphes $C_j$ sont 3-partis et que tous leurs stables sont tels que $l^1_j$, $l^2_j$ et $l^3_j$ ne sont pas tous les 3 dans la classe de $F$.</p>
+<p>On en conclut donc que le graphe $G = (V_1 \cup V_2 \cup (\cup_j V_j), E \cup (\cup_j E_j))$ est triparti si et seulement si la conjonction de clause $C$ est satisfiable.</p>
+</div>
+</details>     
+</div>
+<p>La réduction de la preuve de la proposition précédente est plus complexe que toutes celles que l'on a fait jusqu'à présent, <a href="https://fr.wikipedia.org/wiki/Gadget_(informatique)">Le gadget utilisé</a> n'étant pas trivial. Montrons ce qu'il donne sur <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat-exemple" class="interne">notre exemple fil rouge des réduction depuis 3-SAT</a> :</p>
+<ul>
+<li>$G_1$ : <img src="npc-ex-g1.png" alt="ex G1"></li>
+<li>$C_1$ : <img src="npc-ex-c1.png" alt="ex C1"></li>
+<li>$C_2$ : <img src="npc-ex-c2.png" alt="ex C2"></li>
+<li>$C_3$ : <img src="npc-ex-c3.png" alt="ex C3"></li>
+<li>$C_4$ : <img src="npc-ex-c4.png" alt="ex C4"></li>
+</ul>
+<p>Ce qui donne le graphe final :</p>
+<p><img src="npc-ex-g.png" alt="ex G"></p>
+<p>Ce graphe est 3-colorable (on a associé une couleur à chaque stable) :</p>
+<p><img src="npc-ex-G-colorie.png" alt="ex G 3-stable"></p>
+<p>On voit que, comme pour le problème SAT, le problème est simple pour 1 et 2 mais NP-complet à partir de 3.</p>
+<h2>Colorabilité et isomorphisme de graphe</h2>
 <blockquote>
 <p>TBD test heuristique d'isomorphisme de graphe <a href="https://en.wikipedia.org/wiki/Colour_refinement_algorithm">https://en.wikipedia.org/wiki/Colour_refinement_algorithm</a> et <a href="https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test">https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test</a></p>
 </blockquote>
