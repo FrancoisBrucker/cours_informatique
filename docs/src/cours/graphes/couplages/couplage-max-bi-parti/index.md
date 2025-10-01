@@ -72,6 +72,8 @@ L'algorithme va petit à petit augmenter un couplage en diminuant une couverture
       - $c(x) = c(x)  + \lambda$ si $x \in B\backslash B'$
    6. retour à l'étape 2.
 
+> TBD on utilise l'algorithme de la partie précédente pour trouver et le couplage et la couverture associée
+
 ### Optimalité
 
 L'algorithme va forcément trouver un couplage parfait car à chaque étape $G[c]$ va avoir strictement plus d'arête :
@@ -446,3 +448,6 @@ $$
 ### Complexité totale de la méthode hongroise
 
 Chaque étape se fait en $\mathcal{O}(n^2)$ opérations  et il faut au pire les répéter $\mathcal{O}(n^2)$ fois (jusqu'à ce qu'il n'y ait plus que des 0). La complexité totale est donc en $\mathcal{O}(n^4)$, qui est quadratique par rapport à la taille des données (une matrice $n\times n$).
+
+> TBD comparer la complexité avec l'algorithme de Busacker-Gowen appliqué au couplage.
+> complexité identique. O(mn) = O(n^3) pour une augmentation et n itérations qui est une majoration de coupe.

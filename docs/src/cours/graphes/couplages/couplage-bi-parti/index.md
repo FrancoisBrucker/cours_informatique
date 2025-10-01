@@ -36,7 +36,7 @@ Les graphes bi-partis sont exactement les graphes sans cycles de longueur impair
 
 ### Complexité
 
-Trouver un chemin augmentant se fait en $\mathcal{O}(m + n)$ opérations puisqu'au maximum on parcours toutes les arêtes (on ne peut que rajouter des arêtes à considérer) et pour chaque arête on fait un no,bre constant d'opérations.
+Trouver un chemin augmentant se fait en $\mathcal{O}(m + n)$ opérations puisqu'au maximum on parcours toutes les arêtes (on ne peut que rajouter des arêtes à considérer) et pour chaque arête on fait un nombre constant d'opérations.
 
 Comme pour un graphe connexe on a $m \geq n-1$, pour un graphe connexe, trouver un chemin augmentant se fait en $\mathcal{O}(m)$ opérations.
 
@@ -77,21 +77,21 @@ Ce qui donne le couplage optimal :
 ![etape 5](./couplage-max-5.png)
 
 {% note "**Proposition**" %}
-Trouver un couplage maximum dans un graphe biparti peut se faire en $\mathcal{O}(mn)$ opérations consistant
+Trouver un couplage maximum dans un graphe biparti peut se faire en $\mathcal{O}(e(G)\cdot v(G))$ opérations consistant
 {% endnote %}
 {% details "preuve", "open" %}
-Chaque étape d'augmentation du couplage se fait en $\mathcal{O}(m)$ opérations et il faut au maximum le fair $\mathcal{O}(n)$ fois.
+Chaque étape d'augmentation du couplage se fait en $\mathcal{O}(e(G))$ opérations et il faut au maximum le faire $\mathcal{O}(v(G))$ fois.
 {% enddetails %}
+
+{% info %}
+Cette complexité est identique à celle de la méthode utilisant les flot et l'algorithme de Ford et Fulkerson puisque la coupe contenant uniquement la source est de valuation bornée par $v(G)$ puisque toutes les capacités valent 1.
+{% endinfo %}
 
 Notez qu'il existe des algorithme meilleurs, comme [l'algorithme de Hopcroft-Karp](https://en.wikipedia.org/wiki/Hopcroft%E2%80%93Karp_algorithm) qui est en $\mathcal{O}(m\sqrt{n})$, mais plus compliqué à mettre en œuvre.
 
 ## Propriétés des couplage parfait et maximum dans un graphe biparti
 
-Maintenant que l'on sait trouver un couplage optimal dans un graphe bi-parti, analysons en les propriétés.
-
-### Couvertures
-
- et commençons par une constatation simple :
+Maintenant que l'on sait trouver un couplage optimal dans un graphe bi-parti, analysons en les propriétés et commençons par une constatation simple :
 
 {% note "**Proposition**" %}
 Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables. Le couplage maximum est de taille inférieure ou égale à $\min(\vert A \vert, \vert B \vert)$.
@@ -104,51 +104,7 @@ C'est évident.
 
 {% enddetails %}
 
-La proposition précédente, liée au fait qu'un stable dans un graphe bi-parti est une couverture permet de retrouver [la proposition générale](../problème/#couverture){.interne}, mais on peut faire bien mieux :
-
-<div id="König-Egerváry"></div>
-
-{% note "**Théorème (König-Egerváry, 1931)**" %}
-Pour tout graphe biparti, la cardinalité minimum de ses couvertures est égale à la cardinalité maximum de ses couplages.
-
-{% endnote %}
-{% details "preuve", "open" %}
-
-Soit $G= (A\cup B, E)$ un graphe biparti admettant $A$ et $B$ comme stables. On suppose de plus que $\vert A \vert \leq \vert B \vert$.
-Soit $M$ un couplage maximum de $A$.
-
-Si $\vert M \vert = \vert A\vert$ alors comme $A$ est une couverture on a bien le résultat demandé.
-
-Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un [chemin alternant](../chemins-augmentant/#définition-chemin-alternant){.interne} (pas augmentant, juste alternant) partant d'un élément de $L$ et finissants en $x \notin L$. On pose alors :
-
-- $A' = A \cap C$
-- $B' = B \cap C$
-
-Tout élément $x$ dans $B'$ sera un élément impair d'un chemin alternant et puisqu'il ne peut être libre par maximalité de $M$, il existe $xy \in M$ avec $y\in A'$. On a donc $\vert A' \vert = \vert B' \vert$ et comme $K = L \cup B' \cup (A\backslash A')$ est trivialement une couverture on a bien le résultat demandé.
-
-![couverture couplage](./couverture-couplage.png)
-
-{% enddetails %}
-
-La preuve du théorème précédent donne de plus une construction de la couverture de taille minimum à partir d'un couplage maximum, ce qui montre que le problème de la recherche de la couverture minimale est polynomiale dans le cas des graphes biparti alors qu'il est NP-complet dans le cas général !
-
-> TBD écrire bien l'algorithme
-
-Terminons cette partie en remarquant que la preuve du Théorème de Hall nous donne également un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti.
-
-Il suffit de construire un arbre en partant d'une racine libre en construisant des chemins alternants :
-
-![hall algo](./hall-algo.png)
-
-En procédant comme dans la preuve du théorème on trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.
-
-Enfin ceci peut se faire simplement avec parcours en profondeur pour trouver un chemin augmentant en $\mathcal{O}(m)$ opérations. C'est ce que donne un DFS avec le graphe du transport amoureux avec un couplage de taille 4 et en partant d'un sommet libre :
-
-![hall algo](./hall-algo-transport.png)
-
-On parcours les sommets tant que l'on peut augmenter le chemin alternant et sinon on stope la récursion.
-
-### Couplage parfait
+On en déduit une condition nécessaire pour avoir un couplage parfait :
 
 {% note "**corollaire**"  %}
 Un graphe biparti n'admet de couplage parfait que si toute bipartition en deux stables $A$ et $B$ est telle que $\vert A \vert = \vert B \vert$.
@@ -191,20 +147,6 @@ Si $\vert T_1 \vert < \vert S_1 \vert$ la propriété est démontrée et sinon s
 
 On peut recommencer cette procédure par finitude du graphe, il va arriver un moment où $\vert T_i \vert < \vert S_i \vert$ ce qui conclue la preuve.
 {% enddetails %}
-
-Le théorème précédent nous permet de résoudre l'exercice suivant :
-
-{% exercice %}
-Un graphe biparti $G=(A\cup B, E)$ tel que $\delta(x) = k > 0$ pour tout sommet $x$ admet un couplage parfait.
-{% endexercice %}
-{% details "corrigé" %}
-On a clairement $\vert A\vert = \vert B \vert$ (puisque $\vert E \vert = \sum_{x \in A}\delta(x) = \sum_{x \in B}\delta(x)$).
-
-On conclut la preuve en remarquant que pour tout $S \subseteq A$, on a alors $\vert \\{y | xy \in E, x \in S\\}\vert = k \vert S \vert \geq \vert S \vert$.
-{% enddetails %}
-
-Montrons un corollaire immédiat du théorème de Hall :
-
 {% note "**corollaire**" %}
 Soit $G = (A\cup B, E)$ un graphe biparti admettant $A$ et $B$ comme stables.  Il admet un couplage $\vert M \vert \geq k$ si et seulement si pour tout $S\subseteq A$ :
 
@@ -215,9 +157,80 @@ $$
 </div>
 
 {% endnote %}
-{% details "preuve", "open" %}
+{% details "preuve" %}
 Comme pour la démonstration du théorème, on peut supposer sans perte de généralité  avec $k < \vert A \vert \leq \vert B \vert$.
 
 En ajoutant à $G$ $\vert A \vert - k$ sommets reliés à tous les éléments de $A$ pour former le graphe biparti $G'=(A\cup B', E')$ où $B'$ est le graphe contenant $B$ et tous les nouveaux sommets, on a que $G'$ contient un couplage de taille $\vert A \vert$. Même si ce couplage couvre tous les nouveaux sommets il couvre tout de même $k$ sommets de $G$ ce qui conclut la preuve.
 
 {% enddetails %}
+
+Remarquez que la preuve du Théorème de Hall nous donne également un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti.
+
+Il suffit de construire un arbre en partant d'une racine libre en construisant des chemins alternants :
+
+![hall algo](./hall-algo.png)
+
+En procédant comme dans la preuve du théorème on trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.
+
+Enfin ceci peut se faire simplement avec parcours en profondeur pour trouver un chemin augmentant en $\mathcal{O}(m)$ opérations. C'est ce que donne un DFS avec le graphe du transport amoureux avec un couplage de taille 4 et en partant d'un sommet libre :
+
+![hall algo](./hall-algo-transport.png)
+
+On parcours les sommets tant que l'on peut augmenter le chemin alternant et sinon on stope la récursion.
+
+Terminons cette partie par deux petits exercices qui sont des applications du théorème de Hall :
+
+{% exercice %}
+Un graphe biparti $G=(A\cup B, E)$ tel que $\delta(x) = k > 0$ pour tout sommet $x$ admet un couplage parfait.
+{% endexercice %}
+{% details "corrigé" %}
+On a clairement $\vert A\vert = \vert B \vert$ (puisque $\vert E \vert = \sum_{x \in A}\delta(x) = \sum_{x \in B}\delta(x)$).
+
+On conclut la preuve en remarquant que pour tout $S \subseteq A$, on a alors $\vert \\{y | xy \in E, x \in S\\}\vert = k \vert S \vert \geq \vert S \vert$.
+{% enddetails %}
+{% exercice %}
+Si l'on distribue un jeu de 52 cartes en 13 tas de 4 cartes, on peut toujours choisir une unique carte par tas pour obtenir les 13 valeurs différentes.
+{% endexercice %}
+{% details "corrigé" %}
+> TBD cré le graphe bi-parti
+> puis p tas vont accueillir 4p cartes.
+> Donc si p cartes différentes envoient forcément vers 4p on plus tas. On est dans le cadre du theoreme de hall.
+{% enddetails %}
+
+### Couplage et couvertures
+
+La proposition précédente, liée au fait qu'un stable dans un graphe bi-parti est une couverture permet de retrouver [la proposition générale](../problème/#couverture){.interne}, mais on peut faire bien mieux :
+
+<div id="König-Egerváry"></div>
+
+{% note "**Théorème (König-Egerváry, 1931)**" %}
+Pour tout graphe biparti, la cardinalité minimum de ses couvertures est égale à la cardinalité maximum de ses couplages.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Soit $G= (A\cup B, E)$ un graphe biparti admettant $A$ et $B$ comme stables. On suppose de plus que $\vert A \vert \leq \vert B \vert$.
+Soit $M$ un couplage maximum de $A$.
+
+Si $\vert M \vert = \vert A\vert$ alors comme $A$ est une couverture on a bien le résultat demandé.
+
+Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un [chemin alternant](../chemins-augmentant/#définition-chemin-alternant){.interne} (pas augmentant, juste alternant) partant d'un élément de $L$ et finissants en $x \notin L$. On pose alors :
+
+- $A' = A \cap C$
+- $B' = B \cap C$
+
+Tout élément $x$ dans $B'$ sera un élément impair d'un chemin alternant et puisqu'il ne peut être libre par maximalité de $M$, il existe $xy \in M$ avec $y\in A'$. On a donc $\vert A' \vert = \vert B' \vert$ et comme $K = L \cup B' \cup (A\backslash A')$ est trivialement une couverture on a bien le résultat demandé.
+
+![couverture couplage](./couverture-couplage.png)
+
+{% enddetails %}
+
+La preuve du théorème précédent donne de plus une construction de la couverture de taille minimum à partir d'un couplage maximum, ce qui montre que le problème de la recherche de la couverture minimale est polynomiale dans le cas des graphes biparti alors qu'il est NP-complet dans le cas général !
+
+> TBD écrire bien l'algorithme
+
+Couplé à l'algorithme issu du théorème de Hall, on possède un algorithme alternatif pour trouver un couplage (et une couverture) de taille maximum pour tout graphe bi-parti
+
+## Algorithme couplage / couverture
+
+> TBD l'écrire et dire que l'on va pouvoir l'utiliser ensuite pour le cas valué.

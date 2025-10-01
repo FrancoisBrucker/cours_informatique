@@ -58,6 +58,8 @@ Cela semble une amélioration naturelle mais la justification de sa véracité n
 
 ## Complexité
 
+> TBD peut-on se ramener à avoir uniquement des poids positifs ? voir bouquin network flows.
+
 La recherche d'un chemin de coût min n'est plus en $\mathcal{O}(e(G))$ mais en $\mathcal{O}(e(G) \cdot v(G))$. Une recherche de chemin puis une augmentation du flot est donc en $\mathcal{O}(e(G) \cdot v(G))$ opérations.
 
 Comme on augmente un flot de coût minimum, on a plus de garantie de polynomialité comme pour l'algorithme de Edmonds-Karp, la seule borne que l'on a est celle de l'algorithme de Ford et Fulkerson : on peut faire au maximum $c(S, \overline{S})$ itérations avec $S$ une coupe quelconque.

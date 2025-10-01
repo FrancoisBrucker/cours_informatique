@@ -18,8 +18,8 @@ eleventyComputed:
 
 {% endlien %}
 
-- [$\omega(G)$](../structure/#definition-notation-clique-stable-maximum){.interne}
-- [$\chi(G)$](../colorabilité/#definition-notation-coloration-minimum){.interne}
+- [$\omega(G)$](../structure/#définition-notation-clique-stable-maximum){.interne}
+- [$\chi(G)$](../colorabilité/#définition-notation-coloration-minimum){.interne}
 
 > TBD def
 >

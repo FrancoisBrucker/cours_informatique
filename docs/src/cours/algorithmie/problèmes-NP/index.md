@@ -251,7 +251,7 @@ La conversion vers une entrée d/un algorithme se fera ainsi :
 - on associe l'entier $i$ à la variable $x_i$
 - une clause $c_i$ sera un tableau $T_i$ de longueur égal $k_i$ à son nombre de littéraux
 - $T_i[j] = k$ si $l_i^j = x_k$ et $T_i[j] = -k$ si $l_i^j = \overline{x_k}$
-- la conjonction de clause sera un tableau de tableau d'entier de taille $m$ (le no,bre de clauses)
+- la conjonction de clause sera un tableau de tableau d'entier de taille $m$ (le nombre de clauses)
 
 {% exercice %}
 Quel est l'encodage de l'exemple ?

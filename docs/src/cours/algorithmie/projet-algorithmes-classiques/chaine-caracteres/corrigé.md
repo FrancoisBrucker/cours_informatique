@@ -35,7 +35,7 @@ Sa complexité est en $\mathcal{O}(\max(n_1, n_2))$. Cet algorithme est linéair
 
 ## Sous-mot
 
-L'algorithme suivant regrade toutes les possibilités pour $S_2$ d'ˆ´tre un sous-mot de $S_1$. Il s'arrête à la première possibilité. Dans le pire des cas, il va effectuer $\mathcal{O}(n_1 \cdot n_2)$ opérations.
+L'algorithme suivant regrade toutes les possibilités pour $S_2$ d'être un sous-mot de $S_1$. Il s'arrête à la première possibilité. Dans le pire des cas, il va effectuer $\mathcal{O}(n_1 \cdot n_2)$ opérations.
 
 ```pseudocode
 algorithme sous_mot(S1: chaîne, S2: chaîne) → booléen:

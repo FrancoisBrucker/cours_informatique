@@ -108,7 +108,7 @@ On prouve cet algorithme par invariant de boucle.
 2. récursion : si l'invariant de boucle est vrai à la fin de la i-1 ème itération, les éléments de L0et de L1 seront trié si on considère uniquement les i derniers bits de chaque élément. Comme le $-i$ bit des éléments de L0 vaut 0 et le $-i$ bit des éléments de L1 valent 1 tous les éléments de L0 sont inférieur aux éléments de L1 et en les concaténant on a bien que les $i$ derniers bit des éléments de T sont triées.
 3. à la fin des `T.longueur`{.language-} itérations, l'invariant de boucle montre que les éléments de $T$ sont bien triés.
 
-En notant $m$ la taille des tableaux en entrée et $n$ le no,bre de données à trier, on a clairement une complexité de $\mathcal{O}(nm)$.
+En notant $m$ la taille des tableaux en entrée et $n$ le nombre de données à trier, on a clairement une complexité de $\mathcal{O}(nm)$.
 
 Si la taille des entiers est fixée, ce qui est le cas au niveau du processeur où tous les entiers sont codés sur 64bits, ce tri est le plus efficace possible : il est linéaire.
 

@@ -31,7 +31,8 @@ Dans le graphe suivant, les ensembles rouges et verts sont des cliques, mais seu
 
 On appelle **_clique maximum_** (_resp._ **_stable maximum_**) une clique maximale (_resp._ **_stable maximal_**) maximum pour l'inclusion (il n'en existe pas de plus grande).
 
-<span id="definition-notation-clique-stable-maximum"></span>
+<span id="définition-notation-clique-stable-maximum"></span>
+
 {% note "**Définitions**" %}
 Soit $G$ un graphe. On note :
 

@@ -40,7 +40,7 @@ Soit $G=(V, E)$ un graphe. Un **_couplage_** $M$ est dit :
 - **_parfait_** si pour tout sommet de $V$ il existe une arête de $M$ l'ayant comme extrémité. Un couplage parfait ne peut exister que s'il y a un nombre pair de sommet et à forcément $\vert V \vert/2$ arêtes.
 {% endnote %}
 {% note "**Définition**" %}
-Pour tout graphe $G=(V, E)$, on note $\nu(G)$ le no,bre d'arête de ses couplages maximum.
+Pour tout graphe $G=(V, E)$, on note $\nu(G)$ le nombre d'arête de ses couplages maximum.
 
 {% endnote %}
 
@@ -155,7 +155,7 @@ On a cependant vu que cette modélisation ne fonctionne que si l'on a deux popul
 
 On verra dans ce cours que c'est polynomialement facile à faire même si l'algorithme ne l'est pas tant que ça (facile).
 
-### Tournois de sport
+### <span id="tournoi-sport"></span>Tournois de sport
 
 {% lien %}
 [Tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes)

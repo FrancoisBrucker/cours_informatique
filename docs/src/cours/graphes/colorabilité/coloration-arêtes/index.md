@@ -10,71 +10,70 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD <https://fr.wikipedia.org/wiki/Coloration_des_ar%C3%AAtes_d'un_graphe>
+{% lien %}
+<https://fr.wikipedia.org/wiki/Coloration_des_ar%C3%AAtes_d'un_graphe>
+{% endlien %}
+
+La coloration des arêtes est un sujet moins populaire que la coloration des sommets en partie parce que l'on peut résoudre le problème via [le line-graph](https://fr.wikipedia.org/wiki/Line_graph)
 
 {% note "**Définition**" %}
-Soit $G=(V, E)$ un graphe. Une **_$k$-coloration des arêtes_** $G$ est une fonction $c: E \to \\{1,\dots, k\\}$ telle que pour triplet de sommets $x \neq y \neq z \in E$ si $xy, xz \in E$ alors $c(xy) \neq c(xz)$.
-{% endnote %}
+Si $G=(V, E)$ est un graphe, son **_line graph_** $L(G) = (V_L, E_L)$ est défini tel que :
 
-> TBD exemples :
->
-> - discret
-> - arbre
-> - cycle pair
-> - cycle impair C5
-> - clique K6
->
-
-Les exemples précédent le montre, il existe une borne minimum pour tout graphe :
-
-<span id="definition-notation-coloration-arête-minimum"></span>
-{% note "**Définition**" %}
-
-Soit $G=(V, E)$ un graphe. On note $\chi'(G)$ le nombre minimum de couleurs qu'il faut pour colorier ses arêtes et on l'appelle **_nombre chromatique des arêtes de $G$_**.
+- $V_L = E$
+- $uv \in E_L$ si les arêtes $u$ et $v$ ont une extrémité en commun
 
 {% endnote %}
 
-Le lecteur attentif aura remarqué que la notion de colorabilité des arêtes se rapproche de la notion [de couplage](../couplages) : la $k$ colorabilité des arêtes correspond à une partition en couplages de $G$. Ce qui donne immédiatement une borne minimum à notre problème :
+On a alors immédiatement la proposition suivante :
 
 {% note "**Proposition**" %}
-Pour tout graphe $G$ on a :
+
+Pour tout graphe $G=(V, E)$ on a :
 
 <div>
 $$
-\Delta(G)\leq \chi'(G)
+\chi'(G) = \chi(L(G))
 $$
 </div>
+
 {% endnote %}
-{% details "preuve", "open" %}
 
-clair
+> TBD exemple.
 
-{% enddetails %}
-
-On a montré en introduction que l'on peut le faire en $n-1$ couplages de $n/2$ arêtes pour $K_n$ on a donc :
+Cette relation permet d'utiliser les résultats de la coloration des sommets pour la colorations des arêtes, en particulier le théorème de Brook qui donne la borne :
 
 {% note "**Proposition**" %}
+
+Pour tout graphe $G=(V, E)$ on a :
+
 <div>
 $$
-\chi'(K_n) = n-1
+\chi'(G) \leq 2\cdot \Delta(G) -1
 $$
 </div>
+
 {% endnote %}
+
 {% details "preuve", "open" %}
 
-On utilise un algorithme [round robin scheduling](https://nrich.maths.org/articles/tournament-scheduling) comme on l'a fait en introduction.
-
+On a clairement que $\Delta(G) = 2\cdot (\Delta(L(G)) - 1)$ et donc en utilisant le théorème de Brook dans sa forme allégé puisque $G$ peut-être un cycle impair, on a que $\chi(L(G)) \leq \Delta(L(G)) + 1$ ce qui conclut la preuve.
 {% enddetails %}
-{% info %}
-cas particulier du [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem).
 
-> TBD en DM. C'est ds flots. <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf>
+Cependant :
 
-{% endinfo %}
+- utiliser le line graph grossit fortement la taille du graphe (il  a de l'ordre du carré du nombre de sommet) ce qui agrandit très fortement le temps de calcul
+- la coloration des arêtes possède des propriétés propres intéressante comme on va tenter de le voir
+- on peut utiliser la coloration des arêtes pour aider à la coloration des sommets.
 
-> TBD NP-complet. exercice 8.16 de <https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf>
+Déjà, on peut trouver de biens meilleurs borne !
 
-### Bornes la colorabilité des arêtes
+## Bornes la colorabilité des arêtes
+
+{% lien %}
+[Vizing's Theorem](https://www.youtube.com/watch?v=OZWZpQmGp0g)
+{% endlien %}
+
+Contrairement à la coloration des sommets, il y a tres peu de choix pour le nombre de couleurs possibles pour colorer des arêtes :
 
 {% note "**Proposition (Vizing, 1964)**" %}
 Pour tout graphe $G$ on a :
@@ -108,22 +107,50 @@ On peut alors :
 
 Ce qui donne une coloration en $\Delta(G) + 1$ couleurs de $G'$ auquel on a ajouté l'arête $uv_0$.
 
-> TBD rendre la preuve plus clair
+> TBD rendre la preuve plus clair avec des dessins
 
 {% enddetails %}
 
-{% lien %}
-[Vizing's Theorem](https://www.youtube.com/watch?v=OZWZpQmGp0g)
-{% endlien %}
+> TBD <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf> p21 : exemple de graphes type 1 et type 2.
 
-Notez que la preuve donne un algo pour edge colorier avec delta+1 couleurs.
+> TBD Notez que la preuve donne un algo pour edge colorier avec delta+1 couleurs. Ce qui donne une super approximation si on est pas à une couleur prêt.
+> 
+> TBD le faire
 
-> TBD :
->
-> - C'est NP-complet de savoir si le graphe est de classe 1 ou 2.<https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf> et <https://epubs.siam.org/doi/10.1137/0210055> On le verra plus tard (graphe aléatoires) qu'un graphe est presque sûrement de type 1.
-> - c'est une illustration de ce qu'est NP-complet. Presque tout le temps facile, sauf quelques exemples qui sont inextricables.
+## Exemple
 
-> TBD exo graphe biparti type 1. TBD preuve générale sur edge coloring <https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf>
+Pour certains graphes, comme les graphes bi-partis, connaît l'index chromatique.
 
-> TBD fun fact. Graphes réguliers avec un nombre impair de sommet sont de classe 2.
+{% note "**Théorème (König)**" %}
+Si $G$ est un graphe biparti, alors  $\chi'(G) = \Delta(G)$
+{% endnote %}
+{% details "preuve", "open" %}
+
+> TBD p119 diestel. ou preuve avec suite de kempe pour amener vizing ? <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>
+
+{% enddetails  %}
+
+
+> TBD Graphes réguliers avec un nombre impair de sommet sont de classe 2.
+
+En revanche, dans le cas général connaître l'index chromatique est un problème NP-complet
+
+## NP-complétude du problème
+
+> TBD NP-complet. exercice 8.16 de <https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf>
+> TBD preuve. si le graphe est de classe 1 ou 2.<https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf>.
+
 > TBD la NP-complétude se niche donc uniquement sur les graphes 3-réguliers avec un nombre pair de sommets
+
+De plus, la plupart des graphes sont de type 1
+
+> TBD Erdos. Voir si la preuve est faisable.
+> - un graphe est presque sûrement de type 1 <https://www.renyi.hu/~p_erdos/1977-20.pdf> (voir <https://en.wikipedia.org/wiki/Vizing%27s_theorem>)
+
+> TBD c'est une illustration de ce qu'est NP-complet. Presque tout le temps facile, sauf quelques exemples qui sont inextricables.
+
+## Liens
+
+> TBD à mettre dans le cours
+
+> contraire : partie 4 : <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>

@@ -146,7 +146,7 @@ Une solution serait de ne rendre vrai que si le nombre de blocs de la solution e
     return i_bloc == len(cle_l[i])
 ```
 
-Notez que ceci est dans notre cas équivalent (mais c'est plus long) à vérifier que le no,bre de cases noires de la solution est identique à celui de la clé :
+Notez que ceci est dans notre cas équivalent (mais c'est plus long) à vérifier que le nombre de cases noires de la solution est identique à celui de la clé :
 
 ```python
     return sum(sol) == sum(cle_l[i])

@@ -142,6 +142,8 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% endaller %}
 
+> TBD en DM [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem). C'est des flots. <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf>
+
 ## Graphe biparti
 
 Une classe particulières de graphes cruciale :
@@ -158,7 +160,7 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
-> TBD revenir sur le problème du voyage de commerce avec
+Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en particulier les couplages :
 
 {% aller %}
 
@@ -171,6 +173,14 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 {% aller %}
 
 [Colorabilité](./colorabilité){.interne}
+
+{% endaller %}
+
+Passer d'une coloration des arêtes aux sommets via le line graph :
+
+{% aller %}
+
+[projet _line graph_](./projet-line-graph){.interne}
 
 {% endaller %}
 
@@ -189,10 +199,6 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Graphes parfaits](./graphes-parfaits){.interne}
 
 {% endaller %}
-
-## Projets Autres
-
-> TBD [DM line graph](./line-graph){.interne}
 
 ## Graphes aléatoires et infinis
 

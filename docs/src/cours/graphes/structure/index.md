@@ -272,6 +272,7 @@ Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soi
 Enfin :
 
 <span id="degré-max-min-graphe"></span>
+
 {% note "**Définitions**" %}
 Si $G=(V, E)$  est un graphe, on note :
 
