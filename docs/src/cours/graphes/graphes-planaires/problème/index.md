@@ -138,7 +138,7 @@ Par exemple :
 
 ![dessin 3](dessin-3.png){.interne}
 
-Ce que dit le théorème est tout simple : 
+Ce que dit le théorème est tout simple :
 
 {% note  "**Corollaire**" %}
 Toute courbe fermée sépare l'espace en deux : l'intérieur et l'extérieur de la courbe.
@@ -165,7 +165,7 @@ Si les deux courbes étaient à l'intérieur ou à l'extérieur, on serait dans 
 Ce qui implique au moins une intersection.
 {% enddetails  %}
 
-Ceci nous suffit pour montrer que ni $K_5$ (à gauche dans la figure ci-dessous) ni $K_{3, 3}$ (à droite dans la figure ci-dessous) ne peuvent être planaires ! En effet tout deux admettent des circuit hamiltoniens (en vert) :
+Ceci nous suffit pour montrer que ni $K_{3, 3}$ (à gauche dans la figure ci-dessous) et ni $K_5$ (à droite dans la figure ci-dessous)ne peuvent être planaires ! En effet tout deux admettent des circuit hamiltoniens (en vert) :
 
 ![K5 K33](./k5-K33-1.png)
 
@@ -186,43 +186,3 @@ Ceci nous donne aussi une technique de preuve pour savoir si un graphe hamiltoni
 
 1. le circuit hamiltonien est une courbe de Jordan
 2. les autres arêtes sont soient à l'intérieur soit à l'extérieur du circuit.
-
-## Comptage des faces
-
-{% note  "**Définition**" %}
-Un ensemble $A \subseteq \mathcal{R}^2$ est connexe si pour tous $x, y \in A$ il existe une courbe $\gamma$ telle que :
-
-- $\gamma(0) = x$, $\gamma(1) = y$
-- $\gamma([0, 1]) \subseteq A$
-{% endnote %}
-{% note  "**Définition**" %}
-Les **_faces_** d'un dessin planaire $(f, g)$ d'un graphe connexe $G=(V, E)$ sont les régions connexes de $\mathcal{R}^2 \backslash (\cup_{xy \in E}g(xy)([0, 1]))$.
-{% endnote %}
-
-Les faces sont bien ce que l'on pense qu'elles sont, si on n'oublie pas la face extérieur (infinie). Le graphe suivant à donc 3 faces :
-
-![faces](./faces.png)
-
-
-{% note  "**Proposition (formule d'Euler)**" %}
-Soit $G = (V, E)$ un graphe et $(f, g)$ un de ses dessins planaires. Si $F$ est son nombre de faces, $n$ son nombre de sommets et $m$ son nombre d'arêtes, on a l'égalité :
-
-<div>
-$$
-F = m - n + 2
-$$
-</div>
-{% endnote %}
-{% details "preuve", "open" %}
-> TBD cours papier
-{% enddetails %}
-
-La formule d'Euler montre que le nombre de faces ne dépend pas de son dessin ! On peut donc parler du nombre de faces d'un graphe planaire indépendamment de son dessin planaire. L'exemple ci-après montre deux dessins planaires différents de $K_4$, les faces sont différentes, mais leur nombre (3) est le même :
-
-![faces différentes](./faces-différentes.png)
-
-> TBD preuve
->
-> 
-> euler sur le nombre de faces
-

@@ -227,7 +227,7 @@ S'il existait un sommet avec un degré strictement plus petit que $k$, supprimer
 <span id="2-connexité-cycle"></span>
 
 {% note "**Proposition**" %}
-Soit $G$ un graphe 2-connexe de strictement plus de 2 sommets. Montrez que quelques soient $u \neq v$ deux de ses sommets, il existe un cycle dans $G$ passant par $u$ et $v$.
+Soit $G$ un graphe 2-connexe de strictement plus de 2 sommets. Quels que soient $u \neq v$ deux de ses sommets, il existe un cycle élémentaire dans $G$ passant par $u$ et $v$.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -240,6 +240,17 @@ En supprimant $x_i$ du graphe, il reste connexe et donc il existe un chemin entr
 ![2-connexe cycle](./2-connexe-cycle.png)
 
 Comme $j>i$ on a une contradiction.
+
+{% enddetails %}
+
+En déduire le corollaire suivant :
+
+{% exercice %}
+Soit $G$ un graphe 2-connexe de strictement plus de 2 sommets. Montrez que pour tout chemin élémentaire $x_0\dots x_k$ avec $x_0 \neq x_k$, il existe un autre chemin disjoint du premier allant de $x_0$ à $x_k$.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
 
 {% enddetails %}
 

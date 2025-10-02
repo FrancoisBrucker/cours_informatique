@@ -17,7 +17,6 @@ eleventyComputed:
 ## Preuve d'un théorème de Jordan simplifié
 
 > TBD suffisant pour les graphes où les sommets sont dénombrables.
-> 
 > TBD si courbe alors polygone alors droites
 
 ## Caractérisation
@@ -39,11 +38,53 @@ En deux mots, les mineurs sont les graphes cachés dans un graphe plus gros :
 
 ![mineur exemple](./mineur-exemple.png)
 
-### Mineur et planarité
+### Planarité des Mineur
 
-g planaire implique mineur planaire
-> 
+{% note "**Proposition**" %}
+Si est $G$ un graphe planaire alors tous ses mineurs le sont aussi.
+{% endnote %}
+{% details "preuve", "open" %}
+Les trois opérations pour créer un mineur d'un graphe fonctionnent aussi sur son dessin :
+
+- la suppression d'un sommet ou d'une arête ok
+- la contraction d'un arête se fait en concaténant les courbes des arêtes supprimées, comme sur le dessin ci dessous.
+
+![contraction](./contraciton-dessin.png)
+{% enddetails  %}
+
+On a donc déjà la proposition suivante :
+
+{% note "**Proposition**" %}
+Si $G$ est planaire, il ne peut avoir ni $K_5$ ni $K_{3,3}$ comme mineur
+{% endnote %}
+{% details "preuve", "open" %}
+Clair puisque l'on a montré que ni $K_5$ ni $K_{3,3}$ ne peuvent être planaire.
+{% enddetails  %}
+
+### Réciproque
+
+La réciproque est également vraie et c'est cette partie qui va être plus difficile à démontrer.
+
+- [cycle et 2-connectivité](../../chemins-cycles-connexite/#2-connexité-cycle){.interne}
+- relation d'équivalence entre arêtes donne les composantes 2-connexes e R f si e = f ou s'il existe un cycle élémentaire contenant e et f
+- [composantes 2-connexes](https://en.wikipedia.org/wiki/Biconnected_component)
+
+Séparation par arêtes (déconnecte le graphe) ou par point d'articulation (via algorithme DFS et retour).
+
+{% note "**Proposition**" %}
+Si $G$ est planaire si et seulement si ses composantes 2-connexes le sont
+{% endnote %}
+{% details "preuve", "open" %}
+Les composantes 2-connexes sont liées uniquement par un sommet d'articulation ou une arêtes.
+
+![composantes 2 connexes](./composantes-2-connexes.png)
+
+Le graphe dont les sommet sont les composantes 2-connexe et une arête si connexion est un arbre (sinon il existe un cycle et du coup plus gros)
+
+{% enddetails  %}
+
 > TBD caractérisation par mineur exclus gros théorème de Seymour.
+
 > <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour>
 > 
 
