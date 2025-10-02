@@ -35,9 +35,7 @@ eleventyComputed:
 
 ## Coloration totale
 
-{% aller %}
-[Coloration totale](coloration-totale){.interne}
-{% endaller %}
+> TBD <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf> p22
 
 ## Coloration par liste
 

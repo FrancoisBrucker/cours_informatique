@@ -10,48 +10,33 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD 2.2 sur le nombre de croisements <https://fr.wikipedia.org/wiki/In%C3%A9galit%C3%A9_arithm%C3%A9tico-g%C3%A9om%C3%A9trique>
-> TBD : Il sont aussi extrêmement utilisés pour les mesh 3D. C'est une surface sans trous.
-
 {% lien %}
 [Graphes planaires avec Maria Chudnovski](https://www.youtube.com/watch?v=xBkTIp6ajAg)
 {% endlien %}
 
-> TBD playlist : <https://www.youtube.com/watch?v=wnYtITkWAYA&list=PLGxuz-nmYlQPgIHbqWtgD-F7NnJuqs4fH>
+## Problème
 
-- <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>
-- <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/planar-slides.pdf>
+{% aller %}
+[Problème de la coloration d'un graphe](./problème/){.interne}
+{% endaller %}
 
-- <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>
+## Caractérisation des graphes planaires
 
-## Définition et premières propriétés
+{% aller %}
+[Caractérisation](./caractérisation/){.interne}
+{% endaller %}
 
-> TBD
+## Propriétés
+
+> majoration du nombre d'arêtes
+> sommet de degré ≤ 5
+> 2.2 crossing lemma : <https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf> à mettre après Euler <https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>
 >
-> 1. définition
-> 2. formule Euler sur les faces
-> 3. majoration nombre d'arêtes : il n'y en a pas beaucoup
-> 4. existe un sommet de degré ≤ 5
-
-> TBD Triangulation d'un graphe planaire. S'il est triangulé pour une représentation, il l'est pour toute ?
-
-## Théorème de Kuratowski
-
-> TBD [mineurs](https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes))
-
-- définitions et propriétés + Kuratowsky : <https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf>. On a besoin de :
-  - coloriabilité via le problème de la galerie d'art :
-    - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
-    - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>
-    - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>
-    - théorème de Jordan : <https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf>
-  - k-connectivité
-- preuve Kuratowski juste avec 2-connexité: <https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
-- planaire et embedding : <https://www.youtube.com/watch?v=MNgKx4A1pXM&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=13>
-
-  - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
-  - exercices : <http://www.gymomath.ch/javmath/polycopie/th_graphe5.pdf>
-  - preuve simple ? <https://www.sciencedirect.com/science/article/pii/0012365X80901454>
+> TBD <https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone>
+> trianguler dans une représentation triangule dans l'autre.
+- <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>
+- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf>
+- <https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>
 
 ## Algorithmes
 
@@ -124,7 +109,7 @@ Nom de l'algorithme
 
 {% endlien %}
 
-> [Curry howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
+> [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
 
 ## Odds and ends
 
@@ -140,3 +125,10 @@ Nombreux problèmes NP-complets sont facile à les graphes planaires.
 
 <!-- > TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. -->
 > TBD isomorphisme de graphe planaire
+
+## Références
+
+{% lien %}
+- <https://www.youtube.com/watch?v=wnYtITkWAYA&list=PLGxuz-nmYlQPgIHbqWtgD-F7NnJuqs4fH>
+{% endlien %}
+

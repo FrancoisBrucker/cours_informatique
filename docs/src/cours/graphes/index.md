@@ -142,7 +142,7 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% endaller %}
 
-> TBD en DM [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem). C'est des flots. <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf>
+<!-- > TBD en DM [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem). C'est des flots. <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf> -->
 
 ## Graphe biparti
 
@@ -160,13 +160,13 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
-Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en particulier les couplages :
+<!-- Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en particulier les couplages :
 
 {% aller %}
 
 [Problème du postier chinois](projet-postier-chinois){.interne}
 
-{% endaller %}
+{% endaller %} -->
 
 ## Colorabilité d'un graphe
 
@@ -176,13 +176,13 @@ Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en part
 
 {% endaller %}
 
-Passer d'une coloration des arêtes aux sommets via le line graph :
+<!-- Passer d'une coloration des arêtes aux sommets via le line graph :
 
 {% aller %}
 
 [projet _line graph_](./projet-line-graph){.interne}
 
-{% endaller %}
+{% endaller %} -->
 
 ## Graphes Planaires
 
@@ -192,7 +192,7 @@ Passer d'une coloration des arêtes aux sommets via le line graph :
 
 {% endaller %}
 
-## Graphes parfaits
+<!-- ## Graphes parfaits
 
 {% aller %}
 
@@ -235,4 +235,4 @@ Passer d'une coloration des arêtes aux sommets via le line graph :
 > - <https://www.math.uwaterloo.ca/~harvey/Publications/AlgebraicMatching/AlgebraicMatching.pdf>
 > - Thèse (MIT) : <https://www.math.uwaterloo.ca/~harvey/PhDThesis.pdf>
 > - <https://web.eecs.umich.edu/~pettie/matching/Harvey-maximum-matching-j-version.pdf>
->
+> -->
