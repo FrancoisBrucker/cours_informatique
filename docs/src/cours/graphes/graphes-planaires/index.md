@@ -62,6 +62,7 @@ eleventyComputed:
 
 ### Dessin
 
+> TBD dessin avec 2-connexe
 > TBD dessin sans courbure dans un triangle.
 
 - placement sur la grille :
@@ -124,6 +125,7 @@ Nom de l'algorithme
 {% endlien %}
 
 > [Curry howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
+
 ## Odds and ends
 
 Nombreux problèmes NP-complets sont facile à les graphes planaires.
@@ -136,5 +138,5 @@ Nombreux problèmes NP-complets sont facile à les graphes planaires.
 
 ### Facile pour les graphes planaires
 
-> TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle.
+<!-- > TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. -->
 > TBD isomorphisme de graphe planaire
