@@ -57,6 +57,11 @@ Le principal outil utilisé pour résoudre le problème est le chemin augmentant
 [Cas général](./couplage-max-cas-général){.interne}
 {% endaller %}
 
+## Variante
+
+> TBD couplage par listes : proofs from the book problem de Dinitz (en faire un dm/exos)
+> TD est-ce que ça exite dans le cas général ?
+
 ## Implémentations
 
 - [NetworkX](https://networkx.org/) : <https://stackoverflow.com/questions/27132313/maximum-weighted-pairing-algorithm-for-complete-graph>

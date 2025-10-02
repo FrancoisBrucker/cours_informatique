@@ -49,7 +49,7 @@ Montrer que :
 
 Tout graphe possédant au moins une arête ne peut avoir de 1-coloration. C'est le cas ds cycles puisqu'ils ont tous au moins 3 sommets et donc 3 arêtes.
 
-- Pour tout cycle paire $x_0x_1\dot x_{2p}$ on peut donner la couleur $i \mathbin{\small\\%} 2$ au sommet $x_i$.
+- Pour tout cycle paire $x_0x_1\cdot x_{2p}$ on peut donner la couleur $i \mathbin{\small\\%} 2$ au sommet $x_i$.
 - une 2 couleur pour un cycle impair va forcer l'alternance des couleurs et on se retrouvera à la fin avec 2 couleurs identique pour une arête. Il faut donc donner une troisième couleur à ce dernier sommet.
 
 {% enddetails %}
@@ -144,24 +144,31 @@ Montrer que :
 Les arguments sont identiques à ceux avancés pour la coloration des sommets
 {% enddetails %}
 
-Et les cliques ?
+On aurait tord de penser que les deux concepts sont égaux. L'exemple des cliques le montre :
 
 ![cliques arêtes](./cliques-arête.png)
 
 {% exercice %}
-Montrer que $\chi'(K_n) = n-1$
+Montrer que $\chi'(K_{2n}) = 2n-1$
 {% endexercice %}
 {% details "corrigé" %}
 
-Il ne peut exister une coloration des arêtes en strictement moins de $n-1$ couleurs puisque tout sommet à $n-1$ voisins.
+Il ne peut exister une coloration des arêtes en strictement moins de $2n-1$ couleurs puisque tout sommet à $2n-1$ voisins.
 
-Pour trouver une coloration en $n-1$ couleurs on utiliser le principe des tournois de sport comme on l'a déjà fait pour [les couplages](../../couplages/problème/#tournoi-sport).
+Pour trouver une coloration en $2n-1$ couleurs on utiliser le principe des tournois de sport comme on l'a déjà fait pour [les couplages](../../couplages/problème/#tournoi-sport).
 
 {% enddetails %}
-{% info %}
-C'est un cas particulier du [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem).
 
-{% endinfo %}
+Pour les cliques de tailles impair l'index chromatique est different du nombre chromatique. Mais pourquoi avoir différentié les cliques de tailles impaire et paire ?
+
+{% exercice %}
+Montrer que $\chi'(K_{2n-1}) \geq 2n$
+{% endexercice %}
+{% details "corrigé" %}
+
+$K_{2n-1}$ possède $m = (2n-1)\cdot (n-1)$ arêtes. Comme tout sommet est de degré $2n-2$, chaque couleur est utilisée en moyenne pour $\frac{m}{2n-2}$ arêtes, c'est à dire : $n-1/2> n-1$ fois : il existe donc une couleur qui est utilisée au moins $n$ fois. Mais ceci est impossible si on prend $n$ arêtes au moins deux partagent un même sommet, on a donc pas un coloriage d'arête.
+
+{% enddetails %}
 
 Le lecteur attentif aura remarqué que la notion de colorabilité des arêtes se rapproche de la notion [de couplage](../couplages) : la $k$ colorabilité des arêtes correspond à une partition en couplages de $G$. Ce qui permet de borner notre problème :
 

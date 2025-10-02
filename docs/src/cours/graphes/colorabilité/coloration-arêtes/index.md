@@ -80,7 +80,7 @@ Si $G$ est un graphe biparti, alors  $\chi'(G) = \Delta(G)$
 
 > TBD preuve donne algo.
 > le faire
-> TBD on peut faire mieux : <https://en.wikipedia.org/wiki/Edge_coloring#Optimally_coloring_special_classes_of_graphs>
+> TBD on peut faire mieux en complexité : <https://en.wikipedia.org/wiki/Edge_coloring#Optimally_coloring_special_classes_of_graphs>
 
 > TBD preuve donne outil : Chaîne de Kempe pour les arête. On la retrouvera pour les sommet lorsque l'on traitera de coloration de graphe planaire. [Chaîne de Kempe](https://en.wikipedia.org/wiki/Kempe_chain).
 
@@ -135,10 +135,11 @@ Ce qui donne une coloration en $\Delta(G) + 1$ couleurs de $G'$ auquel on a ajou
 
 {% enddetails %}
 
-> TBD <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf> p21 : exemple de graphes type 1 et type 2.
-> TBD Graphes réguliers avec un nombre impair de sommet sont de classe 2.
+> TBD les cliques sont soit de type 1 soit de type 2 selon la parité.
+>
+> TBD Graphes réguliers avec un nombre impair de sommet sont de classe 2 (preuve identique à la coloration des cliques)
 
-> TBD Notez que la preuve donne un algo pour edge colorier avec delta+1 couleurs. Ce qui donne une super approximation si on est pas à une couleur prêt.
+> TBD Notez que la preuve donne un algo pour edge colorier avec $\Delta+1$ couleurs. Ce qui donne une super approximation si on est pas à une couleur prêt.
 > 
 > TBD le faire
 
@@ -158,8 +159,6 @@ De plus, la plupart des graphes sont de type 1
 
 > TBD c'est une illustration de ce qu'est NP-complet. Presque tout le temps facile, sauf quelques exemples qui sont inextricables.
 
-## Liens
+## Arêtes comme aide pour les sommets
 
-> TBD à mettre dans le cours
-
-> contraire : partie 4 : <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>
+> TBD contraire : partie 4 : <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>

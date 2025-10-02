@@ -38,3 +38,7 @@ eleventyComputed:
 {% aller %}
 [Coloration totale](coloration-totale){.interne}
 {% endaller %}
+
+## Coloration par liste
+
+> TBD voir le book.
