@@ -448,7 +448,7 @@ La grille 2D est le produit cartésien de deux graphes, lesquels ?
 
 Ce n'est cependant pas toujours aussi simple :
 {% exercice %}
-Le graphe suivant est le produit cartésien de deux graphes, lesquels ?
+Le graphe suivant est le produit cartésien de deux cycles de longueurs 3. Montrez-le.
 ![g carré g](./quel_carré.png)
 {% endexercice %}
 {% details "**Solution**" %}

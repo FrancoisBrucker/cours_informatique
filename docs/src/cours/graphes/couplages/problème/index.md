@@ -155,13 +155,13 @@ On a cependant vu que cette modélisation ne fonctionne que si l'on a deux popul
 
 On verra dans ce cours que c'est polynomialement facile à faire même si l'algorithme ne l'est pas tant que ça (facile).
 
-### <span id="tournoi-sport"></span>Tournois de sport
+### <span id="championnat-sport"></span>Championnat de sport
 
 {% lien %}
 [Tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes)
 {% endlien %}
 
-Dans un tournoi de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents de telle sorte que chaque équipe rencontre chacune des autres équipes.
+Dans un championnat de sports où deux équipes s'affrontent tout à tour, il est nécessaire de trouver un couplage des différentes équipes pour une ronde, mais également que toute équipe ne rencontre pas une équipe déjà vue. Il faut donc ici trouver non pas 1 couplage parfait (ce qui serait facile) mais $n-1$ tous différents de telle sorte que chaque équipe rencontre chacune des autres équipes.
 
 L'algorithme est le suivant, pour $n$ pair :
 

@@ -33,33 +33,6 @@ Attention cependant, cela ne marche pas toujours. Il n'est par exemple pas possi
 
 Mais voyons quelques exemples ou on peut décomposer la coloration d'un graphe en sous-parties de lui–même.
 
-## Coloration et composition de graphes
-
-La coloration de graphe peut se faire _plus ou moins_ par parties en  utilisant la [composition de graphes](../../structure/#composition-graphes){.interne} :
-
-{% note "**Proposition**" %}
-Pour deux graphes $G_1=(V_1, E_1)$ et $G_2=(V_2, E_2)$ on a :
-
-- $\chi(G_1 + G_2) = \max(\\{\chi(G_1), \chi(G_2) \\})$
-- $\chi(G_1 \lor G_2) = \chi(G_1) + \chi(G_2)$
-- $\chi(G_1 \square G_2) = \max(\\{\chi(G_1), \chi(G_2) \\})$
-{% endnote %}
-{% details "preuve", "open" %}
-Les deux premières propositions sont triviales.
-
-Pour montrer la troisième, soient $c_1$ et $c_2$ des colorations de $G_1$ et $G_2$ respectivement et on pose $m = \max(\\{\chi(G_1), \chi(G_2) \\})$.
-
-La fonction $c: V_1 \times V_2 \to \\{0, \dots, m-1\\}$ telle que $c((x, y)) = c_1(x) + c_2(y) \bmod m$ est une coloration de $G_1 \square G_2$. En effet si $\\{(x_1, y_1), (x_2, y_2)\\}$ est une arête de $G_1 \square G_2$ on a soit :
-
-- $x_1 = y_1$ et $\vert c((x_1, y_1)) - c((x_2, y_2)) \vert = \vert c_2(x_2) - c_2(y_2) \vert > 0$ puisque $x_2y_2$ est une arête de $G_2$
-- $x_2 = y_2$ et $\vert c((x_1, y_1)) - c((x_2, y_2)) \vert = \vert c_1(x_1) - c_1(y_1) \vert > 0 $ puisque $x_1y_1$ est une arête de $G_1$
-
-{% enddetails %}
-
-> TBD exemples du cours papier.
-
-Cela ne règle cependant pas le problème de trouver une coloration d'une des composante élémentaire. Commençons par essayer de trouver une coloration avec un algorithme glouton.
-
 ## Un algorithme glouton
 
 {% lien %}
@@ -370,6 +343,31 @@ Ce graphe est 3-colorable (on a associé une couleur à chaque stable) :
 ![ex G 3-stable](npc-ex-G-colorie.png)
 
 On voit que, comme pour le problème SAT, le problème est simple pour 1 et 2 mais NP-complet à partir de 3.
+
+## Coloration et composition de graphes
+
+La coloration de graphe peut se faire _plus ou moins_ par parties en  utilisant la [composition de graphes](../../structure/#composition-graphes){.interne} :
+
+{% note "**Proposition**" %}
+Pour deux graphes $G_1=(V_1, E_1)$ et $G_2=(V_2, E_2)$ on a :
+
+- $\chi(G_1 + G_2) = \max(\\{\chi(G_1), \chi(G_2) \\})$
+- $\chi(G_1 \lor G_2) = \chi(G_1) + \chi(G_2)$
+- $\chi(G_1 \square G_2) = \max(\\{\chi(G_1), \chi(G_2) \\})$
+{% endnote %}
+{% details "preuve", "open" %}
+Les deux premières propositions sont triviales.
+
+Pour montrer la troisième, soient $c_1$ et $c_2$ des colorations de $G_1$ et $G_2$ respectivement et on pose $m = \max(\\{\chi(G_1), \chi(G_2) \\})$.
+
+La fonction $c: V_1 \times V_2 \to \\{0, \dots, m-1\\}$ telle que $c((x, y)) = c_1(x) + c_2(y) \bmod m$ est une coloration de $G_1 \square G_2$. En effet si $\\{(x_1, y_1), (x_2, y_2)\\}$ est une arête de $G_1 \square G_2$ on a soit :
+
+- $x_1 = y_1$ et $\vert c((x_1, y_1)) - c((x_2, y_2)) \vert = \vert c_2(x_2) - c_2(y_2) \vert > 0$ puisque $x_2y_2$ est une arête de $G_2$
+- $x_2 = y_2$ et $\vert c((x_1, y_1)) - c((x_2, y_2)) \vert = \vert c_1(x_1) - c_1(y_1) \vert > 0 $ puisque $x_1y_1$ est une arête de $G_1$
+
+{% enddetails %}
+
+> TBD exemples du cours papier.
 
 ## Colorabilité et isomorphisme de graphe
 

@@ -155,7 +155,7 @@ Montrer que $\chi'(K_{2n}) = 2n-1$
 
 Il ne peut exister une coloration des arêtes en strictement moins de $2n-1$ couleurs puisque tout sommet à $2n-1$ voisins.
 
-Pour trouver une coloration en $2n-1$ couleurs on utiliser le principe des tournois de sport comme on l'a déjà fait pour [les couplages](../../couplages/problème/#tournoi-sport).
+Pour trouver une coloration en $2n-1$ couleurs on utiliser le principe des championnats de sport comme on l'a déjà fait pour [les couplages](../../couplages/problème/#championnat-sport).
 
 {% enddetails %}
 
@@ -227,9 +227,9 @@ Ces problèmes sont souvent liés à des problèmes d'incompatibilités.
 
 Ces problèmes sont souvent liés à des problèmes de couplages.
 
-#### Tournois
+#### Championnat
 
-On l'a déjà vu dans la partie couplage, mais le problème des tournois de sport s'explicite plus joliment sous la forme d'un problème de coloration d'arêtes car il incorpore directement toutes les contraintes.
+On l'a déjà vu dans la partie couplage, mais le problème des championnats de sport s'explicite plus joliment sous la forme d'un problème de coloration d'arêtes car il incorpore directement toutes les contraintes.
 
 L'algorithme qui explicite directement le problème est appelé [round robin scheduling](https://nrich.maths.org/articles/tournament-scheduling). Noter qu'il est différent de celui utilisé pour le couplage. Pour $K_6$ ceci donne :
 
