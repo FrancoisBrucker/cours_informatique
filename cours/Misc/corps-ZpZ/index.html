@@ -110,7 +110,7 @@
 <li>l'élément neutre est 1</li>
 </ul>
 </li>
-<li>$x \mathbin{\small\%} n$ vaut le reste de la division entière de $x$ par $n$</li>
+<li>$x \bmod n$ vaut le reste de la division entière de $x$ par $n$</li>
 </ul>
 <p>Si $n$ est premier, $\mathbb{Z}/n\mathbb{Z}$ est même un corps :</p>
 <ul>
@@ -196,7 +196,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $p$ est premier : $a^{p-1} = 1 \mathbin{\small\%} p$.</p>
+<p>Si $p$ est premier : $a^{p-1} = 1 \bmod p$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -239,13 +239,13 @@
 <p><a href="https://fr.wikipedia.org/wiki/Logarithme_discret">Logarithme discret</a></p>
 </div></div>
 
-<p>On ne connaît pas d'algorithme efficace pour trouver $x$ tel que $g^x =y \mathbin{\small\%} n$.</p>
+<p>On ne connaît pas d'algorithme efficace pour trouver $x$ tel que $g^x =y \bmod n$.</p>
 <p>Le seul algorithme connut est le brute-force et de tester tous les éléments de 0 à $n-1$.</p>
 <p>Notez que cette équation n'a pas forcément de solution.</p>
 <blockquote>
 <p>TBD exemple</p>
 </blockquote>
-<p>Pour garantir l'existence de solutions à l'équation $g^x =y \mathbin{\small\%} p$, il suffit que :</p>
+<p>Pour garantir l'existence de solutions à l'équation $g^x =y \bmod p$, il suffit que :</p>
 <ul>
 <li>$p$ est premier</li>
 <li>$g$ soit un générateur du groupe cyclique $(\mathbb{Z}/n\mathbb{Z}^\star, \cdot)$</li>

@@ -104,8 +104,8 @@
 $$
 \left\{
   \begin{array}{lll}
-    E(k, m) &=& m + k \mathbin{\small\\%} 26\\
-    D(k, c) &=& c - k \mathbin{\small\\%} 26\\
+    E(k, m) &=& m + k \bmod 26\\
+    D(k, c) &=& c - k \bmod 26\\
   \end{array}
 \right.
 $$
@@ -312,8 +312,8 @@ Longtemps je me suis couche de bonne heure.
 $$
 \left\{
   \begin{array}{lll}
-    E(k, m_i) &=& m_i + k_{(i \mathbin{\small\\%} p)} \mathbin{\small\\%} 26\\
-    D(k, c_i) &=& c_i - k_{(i \mathbin{\small\\%} p)} \mathbin{\small\\%} 26\\
+    E(k, m_i) &=& m_i + k_{(i \bmod p)} \bmod 26\\
+    D(k, c_i) &=& c_i - k_{(i \bmod p)} \bmod 26\\
   \end{array}
 \right.
 $$
@@ -467,7 +467,7 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 </div></div>
 
 <p>Ce qui donne :</p>
-<pre><code>Longtemps je me suis couche de bonne heure.
+<pre><code>Longtemps je me suis couche de bonne heure
 ALarecher ch ed utem psperd ud eMarc elPro
 LZNXXGTTJ LL QH MNME RGJGYH XH FANEG LPJIS
 </code></pre>

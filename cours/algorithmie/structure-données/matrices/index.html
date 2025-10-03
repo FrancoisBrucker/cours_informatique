@@ -201,7 +201,7 @@ $$
 <p>C'est une bijection puisque :</p>
 <div>
 $$
-f^{-1}(k) = ((k \\\;\mbox{ div } n) + 1, (k\mathbin{\small\\%} n) + 1)
+f^{-1}(k) = ((k \\\;\mbox{ div } n) + 1, (k\bmod n) + 1)
 $$
 </div>
 </div>
@@ -280,7 +280,7 @@ $$
 <p>En posant :</p>
 <ul>
 <li>$K_1 = f(c_1, \dots, c_k)$</li>
-<li>$K_{i+1} = K_i \mathbin{\small\%} \prod_{i &lt; j}d_j$</li>
+<li>$K_{i+1} = K_i \bmod \prod_{i &lt; j}d_j$</li>
 </ul>
 <p>On a $c_i = K_i \;\mbox{ div } \prod_{i &lt; j}d_j$</p>
 </div>

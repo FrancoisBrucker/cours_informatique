@@ -357,8 +357,8 @@
 </ul>
 <p>Les deux équipes $i &lt; j$ jouent ensembles à la ronde $r$ si :</p>
 <ul>
-<li>$r = 2i \mathbin{\small\%} (n-1)$ et $j = n-1$</li>
-<li>$r = i + j \mathbin{\small\%} (n-1)$ et $j &lt; n-1$</li>
+<li>$r = 2i \bmod (n-1)$ et $j = n-1$</li>
+<li>$r = i + j \bmod (n-1)$ et $j &lt; n-1$</li>
 </ul>
 <p>L'équipe $i$ est à domicile si :</p>
 <ul>
@@ -368,8 +368,8 @@
 <p>Si $j = n-1$ Ok. Elle va être à domicile une fois sur 2 et va jouer avec l'équipe $i$ à la ronde $i$.
 Sinon, Ok aussi :</p>
 <ul>
-<li>$a+x \mathbin{\small\%} (n-1) = K$ a une unique solutions pour $x$ quelque soit $0\leq a, K \leq n-2$ : on a bien un couplage max à chaque ronde et chaque équipe va affronter une équipe différente à chaque ronde</li>
-<li>$i+j \mathbin{\small\%} (n-1) = K$ a $n-1$ solutions possible pour $0\leq i &lt; j &lt; n-1$ le couplage est maximum à chaque ronde</li>
+<li>$a+x \bmod (n-1) = K$ a une unique solutions pour $x$ quelque soit $0\leq a, K \leq n-2$ : on a bien un couplage max à chaque ronde et chaque équipe va affronter une équipe différente à chaque ronde</li>
+<li>$i+j \bmod (n-1) = K$ a $n-1$ solutions possible pour $0\leq i &lt; j &lt; n-1$ le couplage est maximum à chaque ronde</li>
 </ul>
 <p>Pour les match impair, l'équipe $n-1$ fait office d'équipe fantôme : les équipe qui devraient l'affronter ne jouent pas.</p>
 <table>

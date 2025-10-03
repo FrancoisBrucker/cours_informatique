@@ -803,7 +803,7 @@ $$
 u([x_0, \dots, x_{n-1}]) = \sum_{i=0}^{n-1}x_i \cdot 2^i
 $$
 </div>
-<p>On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\{0, 1\}^n$ tel que $u(y) = x \mathbin{\small\%} 2^n$</p>
+<p>On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\{0, 1\}^n$ tel que $u(y) = x \bmod 2^n$</p>
 </div></div>
 
 <p>Ainsi :</p>
@@ -969,7 +969,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Comme $u(-x) = -u(x) \mathbin{\small\%} 2^n$, on a $u^{-1}(x) = -u^{-1}(2^n -x)$. De là :</p>
+<p>Comme $u(-x) = -u(x) \bmod 2^n$, on a $u^{-1}(x) = -u^{-1}(2^n -x)$. De là :</p>
 <ul>
 <li>si $x\geq 0$ on a $u^{-1}_n(2^n + x) = u^{-1}(x) = -u^{-1}(2^n -x)$</li>
 <li>si $x &lt; 0$ on a $u^{-1}_n(2^n + x) = -u^{-1}(-x) = -u_n^{-1}(2^n-x)$</li>
@@ -1427,7 +1427,7 @@ $$
 x-y \coloneqq x + (-y)
 $$
 </div>
-<p>Cette définition est cohérente puisque $(x + 2^n - y) \mathbin{\small\%} 2^n = x -  y \mathbin{\small\%} 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve">si l'on utilise uniquement un bit de signe</a>.</p>
+<p>Cette définition est cohérente puisque $(x + 2^n - y) \bmod 2^n = x -  y \bmod 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve">si l'on utilise uniquement un bit de signe</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -1519,8 +1519,8 @@ $$
   ------ |      |
     0100 |      | 
 </code></pre>
-<p>On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mathbin{\small\%} 0b1011 = 100$</p>
-<p>$37 / 11 = 3$ et $37 \mathbin{\small\%} 11 = 4$</p>
+<p>On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \bmod 0b1011 = 100$</p>
+<p>$37 / 11 = 3$ et $37 \bmod 11 = 4$</p>
 <p>Ci après une version non signée :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
 <span class="token builtin">algorithme</span> <span class="token function">FOIS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> 
