@@ -25,11 +25,11 @@ Dans le domaine public :
 - $g < p$ un générateur du groupe cyclique $(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$
 
 1. Échange de la première partie des clés
-   - Alice choisit un nombre $a$ et envoie à Bob $A = g^a \mathbin{\small\\%} p$
-   - Bob choisit un nombre $b$ et envoie à Bob $B = g^b \mathbin{\small\\%} p$
+   - Alice choisit un nombre $a$ et envoie à Bob $A = g^a \bmod p$
+   - Bob choisit un nombre $b$ et envoie à Bob $B = g^b \bmod p$
 2. Constitution des clés :
-   - Alice construit le secret $k = B^a \mathbin{\small\\%} p = g^{ab} \mathbin{\small\\%} p$
-   - Bob construit le secret $k = A^b \mathbin{\small\\%} p = g^{ab} \mathbin{\small\\%} p$
+   - Alice construit le secret $k = B^a \bmod p = g^{ab} \bmod p$
+   - Bob construit le secret $k = A^b \bmod p = g^{ab} \bmod p$
 
 Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.
 {% endnote %}

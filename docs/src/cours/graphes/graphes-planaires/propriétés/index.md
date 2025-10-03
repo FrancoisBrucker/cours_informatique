@@ -45,17 +45,34 @@ La formule d'Euler montre que le nombre de faces ne dépend pas de son dessin ! 
 
 ## Degrés des graphes planaires
 
-La formule d'Euler permet de borner le nombres d'arêtes d'un graphe planaire
+La formule d'Euler permet de borner le nombres d'arêtes d'un graphe planaire :
 
-> m ≤3n-6 <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf>
+{% note  "**Proposition**" %}
+Soit $G = (V, E)$ un graphe planaire à $n$ sommets et $m$ arêtes. On a l'inégalité :
 
-Et de prouver l'existence d'un sommet de petit degré
+<div>
+$$
+m \leq 3\cdot n - 6
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+> TBD <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf>
+{% enddetails %}
 
-> sommet de degré ≤ 5
+Un graphe planaire a donc très peu d'arêtes, au pire 3 fois plus que de sommets. Ceci implique qu'il existe un sommet de petit degré :
+
+{% note  "**Proposition**" %}
+Soit $G = (V, E)$ un graphe planaire. Il existe un sommet $x$ de degré inférieur ou égal à 5.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Si tous les sommets avaient un degré strictement plus grand que 5 on aurait : $2\cdot m = \sum\delta(x) \geq 6 \cdot n$, donc $m\geq 3\cdot n$. Ceci est cependant impossible puisque $m \leq 3\cdot n - 6 < 3\cdot n$.
+{% enddetails %}
 
 ### Triangulation
 
-Le no,bre maximum d'arêtes pour un graphe planaire est m = 3n-6 dans ce cas la, toutes les faces sont des triangles.
+Le nombre maximum d'arêtes pour un graphe planaire est m = 3n-6 dans ce cas la, toutes les faces sont des triangles.
 
 Donc trianguler une représentation planaire triangule toutes les autres, même si les faces sont différentes !
 
@@ -65,7 +82,26 @@ Donc trianguler une représentation planaire triangule toutes les autres, même 
 
 Enfin, une dernière propriété sur les graphes nom planaires.
 
-> TBD borne évidente $\text{cr}(G)\geq 3n-6$ on doit supprimer les arêtes surnuméraires pour arriver à la borne et on supprime itérativement une arête qui possède un croisement (il en existe forcément une).
+{% note  "**Définition**" %}
+POur tout graphe $G$, on note $\text{cr}(G)$ le nombre minimum de croisements d'arêtes qu'un dessin de $G$ peut avoir.
+{% endnote %}
+
+Les graphes planaires sont bien sur les graphes $G$ tels que $\text{cr}(G) = 0$. Et $\text{cr}(K_5) = 1$ (il n'est pas planaire et on l'a dessiné avec uniquement 1 croisement d'arête). Pour chaque graphe, il faudrait pouvoir trouver tous ses dessins possibles et compter pour chacun le nombre de croisements, ce qui est impossible à faire en pratique.
+
+Il existe cependant des bornes dépendant uniquement du nombre de sommets et d'arêtes. Par exemple :
+
+{% exercice %}
+Montrez que pour tout graphe $G$ à $n$ sommets et $m$ arêtes on a $\text{cr}(G)\geq m-3n+6$.
+{% endexercice %}
+{% details "corrigé" %}
+On sait que $m \leq 3n-6$ pur un graphe planaire. Tout graphe avec plus d'arêtes va donc avoir au moins 1 croisement par arête surnuméraire : on peut itérativement  supprimer une arête qui possède un croisement (il en existe forcément une si $m-3n+6>0$).
+
+{% enddetails %}
+
+Mais on peut faire bien mieux en utilisant la méthode probabiliste ! On a en effet la proposition suivante :
+
+{% note  "**Proposition**" %}
+Pour tout graphe $G = (V, E)$ à $n$ sommets et $m$ arêtes on a :
 
 <div>
 $$
@@ -73,9 +109,11 @@ $$
 $$
 </div>
 
+{% endnote %}
+
 > TBD exemple.
 
-On utilise la méthode probabiliste !
+Si on peut prouver cette inégalité en utilisant la méthode probabiliste, il faut pouvoir associer à un graphe $G$ un autre graphe, $H$ aléatoire.
 
 > 2.2 crossing lemma : <https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf> à mettre après Euler <https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>
 >

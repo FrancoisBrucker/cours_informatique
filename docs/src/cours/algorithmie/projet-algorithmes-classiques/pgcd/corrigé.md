@@ -37,7 +37,7 @@ $$
 
 {% endnote %}
 {% details "preuve", "open" %}
-Comme $a \mathbin{\small\\%} b < b$, si $b \leq \frac{a}{2}$ la propriété est démontrée et si $b > \frac{a}{2}$ on a $a // b = 1$ et donc $a \mathbin{\small\\%} b = a - b < \frac{a}{2}$
+Comme $a \bmod b < b$, si $b \leq \frac{a}{2}$ la propriété est démontrée et si $b > \frac{a}{2}$ on a $a // b = 1$ et donc $a \bmod b = a - b < \frac{a}{2}$
 
 {% enddetails %}
 

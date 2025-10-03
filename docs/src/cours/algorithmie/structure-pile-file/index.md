@@ -196,7 +196,7 @@ Les méthodes des piles et des files sont toutes en $\mathcal{O}(1)$ opérations
 Soit $T$ un tableau d'entier.
 
 {% exercice %}
-En utilisant uniquement une file, donnez un algorithme de complexité $\mathcal{O}(T.\mbox{\small longueur})$ permettant de procéder à une permutation circulaire de $T$ de $k$ éléments ($T'[(i + k) \mathbin{\small\\%} T.\mbox{\small longueur}] = T[i]$ pour tout $i$) **in place** (on doit modifier $T$).
+En utilisant uniquement une file, donnez un algorithme de complexité $\mathcal{O}(T.\mbox{\small longueur})$ permettant de procéder à une permutation circulaire de $T$ de $k$ éléments ($T'[(i + k) \bmod T.\mbox{\small longueur}] = T[i]$ pour tout $i$) **in place** (on doit modifier $T$).
 {% endexercice %}
 
 {% details "corrigé" %}

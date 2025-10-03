@@ -170,8 +170,8 @@ L'algorithme est le suivant, pour $n$ pair :
 
 Les deux équipes $i < j$ jouent ensembles à la ronde $r$ si :
 
-- $r = 2i \mathbin{\small\\%} (n-1)$ et $j = n-1$
-- $r = i + j \mathbin{\small\\%} (n-1)$ et $j < n-1$
+- $r = 2i \bmod (n-1)$ et $j = n-1$
+- $r = i + j \bmod (n-1)$ et $j < n-1$
 
 L'équipe $i$ est à domicile si :
 
@@ -181,8 +181,8 @@ L'équipe $i$ est à domicile si :
 Si $j = n-1$ Ok. Elle va être à domicile une fois sur 2 et va jouer avec l'équipe $i$ à la ronde $i$.
 Sinon, Ok aussi :
 
-- $a+x \mathbin{\small\\%} (n-1) = K$ a une unique solutions pour $x$ quelque soit $0\leq a, K \leq n-2$ : on a bien un couplage max à chaque ronde et chaque équipe va affronter une équipe différente à chaque ronde
-- $i+j \mathbin{\small\\%} (n-1) = K$ a $n-1$ solutions possible pour $0\leq i < j < n-1$ le couplage est maximum à chaque ronde
+- $a+x \bmod (n-1) = K$ a une unique solutions pour $x$ quelque soit $0\leq a, K \leq n-2$ : on a bien un couplage max à chaque ronde et chaque équipe va affronter une équipe différente à chaque ronde
+- $i+j \bmod (n-1) = K$ a $n-1$ solutions possible pour $0\leq i < j < n-1$ le couplage est maximum à chaque ronde
 
 Pour les match impair, l'équipe $n-1$ fait office d'équipe fantôme : les équipe qui devraient l'affronter ne jouent pas.
 

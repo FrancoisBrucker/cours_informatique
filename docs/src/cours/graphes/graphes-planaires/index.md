@@ -34,10 +34,6 @@ eleventyComputed:
 
 ## Algorithmes
 
-### Reconnaissance
-
->  Fraysseix–Rosenstiehl et DFS <https://en.wikipedia.org/wiki/Left-right_planarity_test>
-
 ### Dessin
 
 > TBD dessin avec 2-connexe <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf>
@@ -45,6 +41,10 @@ eleventyComputed:
 > TBD dessin sans courbure dans un triangle:
 >   - exemple <https://ics.uci.edu/~eppstein/gina/schnyder/> ou <https://ics.uci.edu/~eppstein/163/lecture10c.pdf>
 >   - papier <https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf>
+
+### Reconnaissance
+
+>  Fraysseix–Rosenstiehl et DFS <https://en.wikipedia.org/wiki/Left-right_planarity_test> ; papier <https://arxiv.org/pdf/math/0610935>
 
 ## Coloration de graphes planaires
 

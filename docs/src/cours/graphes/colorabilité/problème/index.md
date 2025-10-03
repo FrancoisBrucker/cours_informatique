@@ -49,7 +49,7 @@ Montrer que :
 
 Tout graphe possédant au moins une arête ne peut avoir de 1-coloration. C'est le cas ds cycles puisqu'ils ont tous au moins 3 sommets et donc 3 arêtes.
 
-- Pour tout cycle paire $x_0x_1\cdot x_{2p}$ on peut donner la couleur $i \mathbin{\small\\%} 2$ au sommet $x_i$.
+- Pour tout cycle paire $x_0x_1\cdot x_{2p}$ on peut donner la couleur $i \bmod 2$ au sommet $x_i$.
 - une 2 couleur pour un cycle impair va forcer l'alternance des couleurs et on se retrouvera à la fin avec 2 couleurs identique pour une arête. Il faut donc donner une troisième couleur à ce dernier sommet.
 
 {% enddetails %}

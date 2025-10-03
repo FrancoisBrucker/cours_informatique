@@ -41,7 +41,7 @@ Knuth analyse en détails cet algorithme dans le tome 2 (partie 3.5.2) de [the a
 Avant de prouver sa complexité, commencez par :
 
 {% faire %}
-Démontrez que si $a\geq b$ alors $a \mathbin{\small\\%} b < \frac{a}{2}$.
+Démontrez que si $a\geq b$ alors $a \bmod b < \frac{a}{2}$.
 {% endfaire %}
 
 Ceci vous permettra de :
@@ -58,7 +58,7 @@ Si l'opération calculant le modulo est élémentaire, en déduire que la comple
 On va maintenant montrer que cette complexité est atteinte. Pour cela, exhibons d'étranges propriétés des éléments de [la suite de Fibonacci](../fibonacci/){.interne}.
 
 {% faire %}
-Si $F(n)$ est le $n$ème nombre de la suite de Fibonacci, montrez que $F(n) \mathbin{\small\\%} F(n-1) = F(n-2)$.
+Si $F(n)$ est le $n$ème nombre de la suite de Fibonacci, montrez que $F(n) \bmod F(n-1) = F(n-2)$.
 {% endfaire %}
 
 En déduire que :

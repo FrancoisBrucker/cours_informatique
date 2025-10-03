@@ -24,8 +24,8 @@ Chaque lettre est décalée dans l'alphabet :
 $$
 \left\{
   \begin{array}{lll}
-    E(k, m) &=& m + k \mathbin{\small\\%} 26\\
-    D(k, c) &=& c - k \mathbin{\small\\%} 26\\
+    E(k, m) &=& m + k \bmod 26\\
+    D(k, c) &=& c - k \bmod 26\\
   \end{array}
 \right.
 $$
@@ -124,8 +124,8 @@ Le chiffrement de $m = m_0 \dots m_L$ en $c = c_0 \dots c_L$ de fait avec l'équ
 $$
 \left\{
   \begin{array}{lll}
-    E(k, m_i) &=& m_i + k_{(i \mathbin{\small\\%} p)} \mathbin{\small\\%} 26\\
-    D(k, c_i) &=& c_i - k_{(i \mathbin{\small\\%} p)} \mathbin{\small\\%} 26\\
+    E(k, m_i) &=& m_i + k_{(i \bmod p)} \bmod 26\\
+    D(k, c_i) &=& c_i - k_{(i \bmod p)} \bmod 26\\
   \end{array}
 \right.
 $$
@@ -288,7 +288,7 @@ Technique utilisée pour le téléphone rouge lors de la guerre froide.
 Ce qui donne :
 
 ```
-Longtemps je me suis couche de bonne heure.
+Longtemps je me suis couche de bonne heure
 ALarecher ch ed utem psperd ud eMarc elPro
 LZNXXGTTJ LL QH MNME RGJGYH XH FANEG LPJIS
 ```

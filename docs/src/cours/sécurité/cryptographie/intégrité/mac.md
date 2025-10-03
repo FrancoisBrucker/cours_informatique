@@ -147,20 +147,20 @@ Le one-time MAC que l'on considère est :
 
 <div>
 $$
-MAC((a, b), m) = a\cdot m + b \mathbin{\small\\%} p
+MAC((a, b), m) = a\cdot m + b \bmod p
 $$
 </div>
 
 Si $p$ possède $|p|$ bits, le $MAC$ est définit sur $\\{0, 1\\}^{2|p|} \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^{|p|}$.
 
-Posséder $(m, c)$ avec $c = a\cdot m + b \mathbin{\small\\%} p$ ne donne pas d'informations sur (a, b). Il y a $p$ paires possibles puisqu'une fois $a$ choisi, $b = c- a\cdot m \mathbin{\small\\%} p$.
+Posséder $(m, c)$ avec $c = a\cdot m + b \bmod p$ ne donne pas d'informations sur (a, b). Il y a $p$ paires possibles puisqu'une fois $a$ choisi, $b = c- a\cdot m \bmod p$.
 
-Supposons que Mallory choisisse la paire $(a^\star, c- a^\star\cdot m \mathbin{\small\\%} p)$ et remplace le message $m$ par $m'$. Il enverra le couple $(m', c')$ avec $c' = a^\star\cdot m' + (c- a^\star\cdot m) \mathbin{\small\\%} p = a^\star(m'-m) + c \mathbin{\small\\%} p$.
+Supposons que Mallory choisisse la paire $(a^\star, c- a^\star\cdot m \bmod p)$ et remplace le message $m$ par $m'$. Il enverra le couple $(m', c')$ avec $c' = a^\star\cdot m' + (c- a^\star\cdot m) \bmod p = a^\star(m'-m) + c \bmod p$.
 
 Lorsque Bob va décoder le message il voudra vérifier que :
 
 $$
-am'+b \mathbin{\small\\%} p = a^\star(m'-m) + c \mathbin{\small\\%} p
+am'+b \bmod p = a^\star(m'-m) + c \bmod p
 $$
 
 et donc que :
@@ -168,9 +168,9 @@ et donc que :
 <div>
 $$
 \begin{array}{lcl}
-am'+b \mathbin{\small\\%} p &=& a^\star(m'-m) + am+b \mathbin{\small\\%} p\\
-a(m'-m) \mathbin{\small\\%} p &=& a^\star(m'-m) \mathbin{\small\\%} p\\
-a \mathbin{\small\\%} p &=& a^\star \mathbin{\small\\%} p\\
+am'+b \bmod p &=& a^\star(m'-m) + am+b \bmod p\\
+a(m'-m) \bmod p &=& a^\star(m'-m) \bmod p\\
+a \bmod p &=& a^\star \bmod p\\
 \end{array}
 $$
 </div>
@@ -181,8 +181,8 @@ Il ne faut cependant pas réutiliser la clé !
 
 Si on envoie deux messages :
 
-- $(m, c)$ avec $c=a\cdot m + b \mathbin{\small\\%} p$
-- $(m', c')$ avec $c'=a\cdot m' + b \mathbin{\small\\%} p$
+- $(m, c)$ avec $c=a\cdot m + b \bmod p$
+- $(m', c')$ avec $c'=a\cdot m' + b \bmod p$
 
 Mallory possède deux équations à deux inconnues, ce qui lui permet de déterminer $a$ et $b$.
 
@@ -190,7 +190,7 @@ Enfin, en l'état, il faut que $m \leq p$ ce qui donne une taille de MAC égale 
 
 <div>
 $$
-c = \sum_i a_i \cdot m_i + b \mathbin{\small\\%} p
+c = \sum_i a_i \cdot m_i + b \bmod p
 $$
 </div>
 

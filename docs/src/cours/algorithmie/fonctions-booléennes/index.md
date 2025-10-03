@@ -371,7 +371,7 @@ $$
 </div>
 
 
-On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \mathbin{\small\\%} 2^n$
+On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \bmod 2^n$
 {% endnote %}
 
 Ainsi :
@@ -473,7 +473,7 @@ $$
 {% endexercice %}
 {% details "corrigé" %}
 
-Comme $u(-x) = -u(x) \mathbin{\small\\%} 2^n$, on a $u^{-1}(x) = -u^{-1}(2^n -x)$. De là :
+Comme $u(-x) = -u(x) \bmod 2^n$, on a $u^{-1}(x) = -u^{-1}(2^n -x)$. De là :
 
 - si $x\geq 0$ on a $u^{-1}_n(2^n + x) = u^{-1}(x) = -u^{-1}(2^n -x)$
 - si $x < 0$ on a $u^{-1}_n(2^n + x) = -u^{-1}(-x) = -u_n^{-1}(2^n-x)$
@@ -923,7 +923,7 @@ x-y \coloneqq x + (-y)
 $$
 </div>
 
-Cette définition est cohérente puisque $(x + 2^n - y) \mathbin{\small\\%} 2^n = x -  y \mathbin{\small\\%} 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale [si l'on utilise uniquement un bit de signe](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve).
+Cette définition est cohérente puisque $(x + 2^n - y) \bmod 2^n = x -  y \bmod 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale [si l'on utilise uniquement un bit de signe](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve).
 
 {% attention "**À retenir**" %}
 Calculer la soustraction de deux tableaux de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
@@ -1018,9 +1018,9 @@ La complexité de l'algorithme est en $\mathcal(O)(n^2)$.
     0100 |      | 
 ```
 
-On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mathbin{\small\\%} 0b1011 = 100$
+On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \bmod 0b1011 = 100$
 
-$37 / 11 = 3$ et $37 \mathbin{\small\\%} 11 = 4$
+$37 / 11 = 3$ et $37 \bmod 11 = 4$
 
 Ci après une version non signée :
 

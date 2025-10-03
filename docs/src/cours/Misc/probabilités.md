@@ -93,11 +93,11 @@ Pour bien faire la différence entre les deux notions, on utilisera la notation 
 
 <div>
 $$
-{\Pr}_p[X] \coloneqq \mathbb{P}\{X\}
+{\Pr}_{\mathbb{P}}[X] \coloneqq \mathbb{P}\{X\}
 $$
 </div>
 
-S'il n'y a pas ambiguïté, on omettra la probabilité $p$ et on écrira $\Pr[X]$ à la place de $\Pr_p[X]$. On peut complètement ignorer l'univers sous-jacent et ne travailler qu'avec les variables aléatoires.
+S'il n'y a pas ambiguïté, on omettra la probabilité $p$ et on écrira $\Pr[X]$ à la place de $\Pr_{\mathbb{P}}[X]$. On peut complètement ignorer l'univers sous-jacent et ne travailler qu'avec les variables aléatoires.
 
 {% endnote %}
 

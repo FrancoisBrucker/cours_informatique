@@ -64,7 +64,7 @@ Au final, si $x$ est sur $m$ bits et $y$ sur $n$ bit, $x^y$ aura $2^n\cdot m$ bi
 
 ## Algorithme d'Euclide Étendu
 
-- Si $a > b > 0$ on a $\text{pgcd}(a, b) = \text{pgcd}(b, a \mathbin{\small\\%} b)$
+- Si $a > b > 0$ on a $\text{pgcd}(a, b) = \text{pgcd}(b, a \bmod b)$
 - si $a > b = 0$ on a $\text{pgcd}(a, 0) = a$
 
 Soit alors la suite de division euclidienne définies telles que:

@@ -144,7 +144,7 @@ C'est une bijection puisque :
 
 <div>
 $$
-f^{-1}(k) = ((k \\\;\mbox{ div } n) + 1, (k\mathbin{\small\\%} n) + 1)
+f^{-1}(k) = ((k \\\;\mbox{ div } n) + 1, (k\bmod n) + 1)
 $$
 </div>
 
@@ -191,7 +191,7 @@ On a que $c_1 - 1 = f(c_1, \dots, c_k) \\\;\mbox{ div } \prod_{1 < j}d_j$ et on 
 En posant :
 
 - $K_1 = f(c_1, \dots, c_k)$
-- $K_{i+1} = K_i \mathbin{\small\\%} \prod_{i < j}d_j$
+- $K_{i+1} = K_i \bmod \prod_{i < j}d_j$
 
 On a $c_i = K_i \\\;\mbox{ div } \prod_{i < j}d_j$
 
