@@ -38,7 +38,7 @@ En deux mots, les mineurs sont les graphes cachés dans un graphe plus gros :
 
 ![mineur exemple](./mineur-exemple.png)
 
-### Planarité des Mineur
+### Planarité des Mineurs
 
 {% note "**Proposition**" %}
 Si est $G$ un graphe planaire alors tous ses mineurs le sont aussi.
@@ -101,3 +101,7 @@ Le graphe dont les sommet sont les composantes 2-connexe et une arête si connex
   - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
   - exercices : <http://www.gymomath.ch/javmath/polycopie/th_graphe5.pdf>
   - preuve simple ? <https://www.sciencedirect.com/science/article/pii/0012365X80901454>
+
+## Caractérisation par mineur exclus
+
+> TBD <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Robertson-Seymour>

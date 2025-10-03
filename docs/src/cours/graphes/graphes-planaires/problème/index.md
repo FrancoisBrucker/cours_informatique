@@ -186,3 +186,5 @@ Ceci nous donne aussi une technique de preuve pour savoir si un graphe hamiltoni
 
 1. le circuit hamiltonien est une courbe de Jordan
 2. les autres arêtes sont soient à l'intérieur soit à l'extérieur du circuit.
+
+![exemple Hamilton](./preuve-hamilton.pdf)

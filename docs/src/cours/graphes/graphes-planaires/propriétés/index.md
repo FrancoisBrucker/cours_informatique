@@ -48,7 +48,7 @@ La formule d'Euler montre que le nombre de faces ne dépend pas de son dessin ! 
 La formule d'Euler permet de borner le nombres d'arêtes d'un graphe planaire :
 
 {% note  "**Proposition**" %}
-Soit $G = (V, E)$ un graphe planaire à $n$ sommets et $m$ arêtes. On a l'inégalité :
+Soit $G = (V, E)$ un graphe planaire à $n\geq 3$ sommets et $m$ arêtes. On a l'inégalité :
 
 <div>
 $$
@@ -57,7 +57,8 @@ $$
 </div>
 {% endnote %}
 {% details "preuve", "open" %}
-> TBD <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf>
+Pour chacune des $F$ faces d'un dessin planaire de $G$, on note $f_i$ le nombre d'arêtes formant la frontière de la face $i$. Comme chaque arête est sur la frontière d'exactement 2 faces, on a $\sum f_i = 2m$ et comme chaque face a au moins 3 arêtes il vient l'inégalité : $3F\leq \sum f_i = 2m$. En injectant la formule d'Euler dans cette inégalité on obtient $3(m - n + 2)\leq 2m$ d'où le résultat.
+
 {% enddetails %}
 
 Un graphe planaire a donc très peu d'arêtes, au pire 3 fois plus que de sommets. Ceci implique qu'il existe un sommet de petit degré :
@@ -70,15 +71,21 @@ Soit $G = (V, E)$ un graphe planaire. Il existe un sommet $x$ de degré inférie
 Si tous les sommets avaient un degré strictement plus grand que 5 on aurait : $2\cdot m = \sum\delta(x) \geq 6 \cdot n$, donc $m\geq 3\cdot n$. Ceci est cependant impossible puisque $m \leq 3\cdot n - 6 < 3\cdot n$.
 {% enddetails %}
 
-### Triangulation
+## Triangulation
 
 Le nombre maximum d'arêtes pour un graphe planaire est m = 3n-6 dans ce cas la, toutes les faces sont des triangles.
+
+> TBD <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf>
 
 Donc trianguler une représentation planaire triangule toutes les autres, même si les faces sont différentes !
 
 > TBD comment trianguler : <https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone>
 
-### Nombre minimum de croisements de graphes non planaires
+## Nombre minimum de croisements de graphes non planaires
+
+{% lien %}
+<https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>
+{% endlien %}
 
 Enfin, une dernière propriété sur les graphes nom planaires.
 
@@ -91,7 +98,7 @@ Les graphes planaires sont bien sur les graphes $G$ tels que $\text{cr}(G) = 0$.
 Il existe cependant des bornes dépendant uniquement du nombre de sommets et d'arêtes. Par exemple :
 
 {% exercice %}
-Montrez que pour tout graphe $G$ à $n$ sommets et $m$ arêtes on a $\text{cr}(G)\geq m-3n+6$.
+Montrez que pour tout graphe $G$ à $n$ sommets et $m$ arêtes on a $\text{cr}(G)\geq m-3n$.
 {% endexercice %}
 {% details "corrigé" %}
 On sait que $m \leq 3n-6$ pur un graphe planaire. Tout graphe avec plus d'arêtes va donc avoir au moins 1 croisement par arête surnuméraire : on peut itérativement  supprimer une arête qui possède un croisement (il en existe forcément une si $m-3n+6>0$).
@@ -101,7 +108,7 @@ On sait que $m \leq 3n-6$ pur un graphe planaire. Tout graphe avec plus d'arête
 Mais on peut faire bien mieux en utilisant la méthode probabiliste ! On a en effet la proposition suivante :
 
 {% note  "**Proposition**" %}
-Pour tout graphe $G = (V, E)$ à $n$ sommets et $m$ arêtes on a :
+Pour tout graphe $G = (V, E)$ à $n$ sommets et $m$ arêtes tel que $m\geq 4\cdot n$ on a :
 
 <div>
 $$
@@ -110,108 +117,31 @@ $$
 </div>
 
 {% endnote %}
+{% details "preuve", "open" %}
+Si on peut prouver cette inégalité en utilisant la méthode probabiliste, il faut pouvoir associer à un graphe $G=(V, E)$ un autre graphe, $H=(V', E\vert_{V'})$, aléatoire tel que $V'$ est un sous-ensemble de $V$ où tout élément a été choisi indépendamment des autres avec une propriété $p$. On a alors :
+
+- $\mathbb{E}[v(H)] = p\cdot n$
+- $\mathbb{E}[e(H)] = p^2\cdot m$
+
+Si on dessine $H$ en prenant la restriction d'un dessin de $G$ minimisant son nombre de croisements. Le nombre moyen de croisements de ce dessin pour $H$ vaut $p^4\text{cr}(G)$ puisque chaque croisement est un formé de 2 arêtes de $G$ qui ont chacune une probabilité $p^2$ d'être dans $H$.
+
+De là si $C(H)$ est le nombre de croisement de la restriction à $H$ d'un dessin de $G$ minimisant les croisement, on a : $C(H) \geq \text{cr}(H) \geq e(H) - 3 \cdot v(H)$. Donc par linéarité de l'espérance on a également :  $ \mathbb{E}[C(H)]\geq \mathbb{E}[e(H)] - 3 \cdot \mathbb{E}[v(H)]$ c'est à dire :
+
+<div>
+$$
+p^4\text{cr}(G)\geq p^2\cdot m - 3\cdot p\cdot n
+$$
+</div>
+
+Et donc :
+
+<div>
+$$
+\text{cr}(G)\geq \frac{p\cdot m - 3\cdot n}{p^3}
+$$
+</div>
+
+Comme on cherche une borne min, il faut maximiser la fonction $f(p)=\frac{p\cdot m - 3\cdot n}{p^3}$, ce qui est le cas pour $p = \frac{9}{2}\frac{n}{m}$, pour simplifier on prend $p=4n/m$, ce qui impose $m\geq 4n$ et donne le résultat.
+{% enddetails %}
 
 > TBD exemple.
-
-Si on peut prouver cette inégalité en utilisant la méthode probabiliste, il faut pouvoir associer à un graphe $G$ un autre graphe, $H$ aléatoire.
-
-> 2.2 crossing lemma : <https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf> à mettre après Euler <https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history>
->
-
-## Algorithmes
-
-### Reconnaissance
-
-> Par blocks (2-connexe maximals).
-> puis reconnaissance de blocs
-
-### Dessin
-
-> TBD dessin avec 2-connexe <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf>
-
-> TBD triangulation d'une représentation fait triangulation de toutes les représentations. Si triangulé admet le nombre maximum d'arêtes m = 3n-6 <https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf> et donc vrai partout.
-
-> TBD dessin sans courbure dans un triangle:
->   - exemple <https://ics.uci.edu/~eppstein/gina/schnyder/> ou <https://ics.uci.edu/~eppstein/163/lecture10c.pdf>
->   - papier <https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf>
-
-## Coloration de graphes planaires
-
-> TBD pareil que colorier les faces.
- 
-> TBD 3 colorable planaire np-complet : <https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf>
-
-- coloriable :
-
----
-
-Nom de l'algorithme
-
-> algo
-> > autre algo $x_1 \leftarrow 3$
-> fin
-
----
-
-### Théorème des 4 couleurs
-
-> TBD 6 par notre algo de coloration
-> TBD 5 couleur : démonstration de Kempe.
->
-> Elle ne fonctionne pas pour 4 couleurs. Pourquoi ?
-> TBD Une démo du théorème des 4 couleurs par Kempe : <https://www.youtube.com/watch?v=adZZv4eEPs8>
-> TBD théorème des 4 couleurs :
->
-> - <https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html>
-> - 4 couleurs : <https://inria.hal.science/hal-04034866/document>
-
-### Algorithmes de coloration
-
-> - 6 coloration avec l'algo de coloration
-> - 5 coloration linéaire <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
-> - 4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?
-
-### Variantes
-
-> TBD pays non connexes
-> TBD colonies lunaires
-
-## Colorabilité et partage de secrets
-
-> TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.
-
-> <https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance>
->
-{% lien %}
-
-- [Avi Wigderson parle des zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc)
-- [le papier](https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf)
-
-{% endlien %}
-
-> [Curry-Howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
-
-## Odds and ends
-
-Nombreux problèmes NP-complets sont facile à les graphes planaires.
-
-### Propriétés
-
-- 3 coloriable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
-
-- Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins).
-
-### Facile pour les graphes planaires
-
-<!-- > TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. -->
-> TBD isomorphisme de graphe planaire
-
-## Références
-
-{% lien %}
-- <https://www.youtube.com/watch?v=wnYtITkWAYA&list=PLGxuz-nmYlQPgIHbqWtgD-F7NnJuqs4fH>
-{% endlien %}
-
-<!-- 
-- <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>
-- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> -->

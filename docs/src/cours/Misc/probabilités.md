@@ -14,6 +14,7 @@ eleventyComputed:
 
 - [proba discrete](https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability)
 - [Probabilités pour les non-probabilistes](https://www.amazon.fr/Probabilit%C3%A9s-pour-probabilistes-Walter-Appel/dp/2351412982)
+- <https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf>
 
 {% endlien %}
 

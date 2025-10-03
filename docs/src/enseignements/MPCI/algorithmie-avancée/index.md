@@ -13,6 +13,11 @@ eleventyComputed:
 
 ---
 
+<!-- pour l'année prochaine :
+
+- leur donner des trucs à faire.
+- faire les parcours et y retourner à chaque cours
+- faire plus d'algorithmie -->
 
 ## Programme
 
