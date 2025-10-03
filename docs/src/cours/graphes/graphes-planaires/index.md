@@ -54,7 +54,8 @@ eleventyComputed:
 > TBD 5 couleur : démonstration de Kempe.
 >
 > Elle ne fonctionne pas pour 4 couleurs. Pourquoi ?
-> TBD Une démo du théorème des 4 couleurs par Kempe : <https://www.youtube.com/watch?v=adZZv4eEPs8>
+> TBD Une démo (fausse) du théorème des 4 couleurs par Kempe : <https://www.youtube.com/watch?v=adZZv4eEPs8>
+>
 > TBD théorème des 4 couleurs :
 >
 > - <https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html>
@@ -66,13 +67,17 @@ eleventyComputed:
  
 > TBD 3 colorable planaire np-complet : <https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf>
 
-> TBD on en déduit que trouver les 4 couleurs aussi. Sinon on fait comme 3-col et le graphe est 4-plan-col avec le gadget. ce qui donne les 4 couleurs.
+> TBD on en déduit que trouver les 4 couleurs aussi. Sinon on fait comme 3-col et le graphe est 4-plan-col avec le gadget. ce qui donne les 3 couleurs également.
 
 ### Algorithmes de coloration
 
 > - 6 coloration avec l'algo de coloration
 > - 5 coloration linéaire <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
 > - 4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?
+
+### Algorithmes de coloration de listes
+
+> 5 liste colorable.
 
 ### Variantes
 
@@ -99,7 +104,8 @@ eleventyComputed:
 > TBD
 
 - 3 coloriable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
-- Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins).
+
+<!-- - Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins). -->
 - isomorphisme de graphe planaire
 <!-- > TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. -->
 
