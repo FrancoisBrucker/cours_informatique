@@ -172,7 +172,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe planaire à $n$ sommets et $m$ arêtes. On a l'inégalité :</p>
+<p>Soit $G = (V, E)$ un graphe planaire à $n\geq 3$ sommets et $m$ arêtes. On a l'inégalité :</p>
 <div>
 $$
 m \leq 3\cdot n - 6
@@ -197,9 +197,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD <a href="https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf">https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf</a></p>
-</blockquote>
+<p>Pour chacune des $F$ faces d'un dessin planaire de $G$, on note $f_i$ le nombre d'arêtes formant la frontière de la face $i$. Comme chaque arête est sur la frontière d'exactement 2 faces, on a $\sum f_i = 2m$ et comme chaque face a au moins 3 arêtes il vient l'inégalité : $3F\leq \sum f_i = 2m$. En injectant la formule d'Euler dans cette inégalité on obtient $3(m - n + 2)\leq 2m$ d'où le résultat.</p>
 </div>
 </details>     
 </div>
@@ -235,13 +233,24 @@ $$
 </div>
 </details>     
 </div>
-<h3>Triangulation</h3>
+<h2>Triangulation</h2>
 <p>Le nombre maximum d'arêtes pour un graphe planaire est m = 3n-6 dans ce cas la, toutes les faces sont des triangles.</p>
+<blockquote>
+<p>TBD <a href="https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf">https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf</a></p>
+</blockquote>
 <p>Donc trianguler une représentation planaire triangule toutes les autres, même si les faces sont différentes !</p>
 <blockquote>
 <p>TBD comment trianguler : <a href="https://fr.wikipedia.org/wiki/Triangulation_d%27un_polygone">https://fr.wikipedia.org/wiki/Triangulation_d'un_polygone</a></p>
 </blockquote>
-<h3>Nombre minimum de croisements de graphes non planaires</h3>
+<h2>Nombre minimum de croisements de graphes non planaires</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history">https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history</a></p>
+</div></div>
+
 <p>Enfin, une dernière propriété sur les graphes nom planaires.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -258,7 +267,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que pour tout graphe $G$ à $n$ sommets et $m$ arêtes on a $\text{cr}(G)\geq m-3n+6$.</p>
+<p>Montrez que pour tout graphe $G$ à $n$ sommets et $m$ arêtes on a $\text{cr}(G)\geq m-3n$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -290,7 +299,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour tout graphe $G = (V, E)$ à $n$ sommets et $m$ arêtes on a :</p>
+<p>Pour tout graphe $G = (V, E)$ à $n$ sommets et $m$ arêtes tel que $m\geq 4\cdot n$ on a :</p>
 <div>
 $$
 \text{cr}(G) \geq \frac{1}{64}\frac{m^3}{n^2}
@@ -298,129 +307,48 @@ $$
 </div>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si on peut prouver cette inégalité en utilisant la méthode probabiliste, il faut pouvoir associer à un graphe $G=(V, E)$ un autre graphe, $H=(V', E\vert_{V'})$, aléatoire tel que $V'$ est un sous-ensemble de $V$ où tout élément a été choisi indépendamment des autres avec une propriété $p$. On a alors :</p>
+<ul>
+<li>$\mathbb{E}[v(H)] = p\cdot n$</li>
+<li>$\mathbb{E}[e(H)] = p^2\cdot m$</li>
+</ul>
+<p>Si on dessine $H$ en prenant la restriction d'un dessin de $G$ minimisant son nombre de croisements. Le nombre moyen de croisements de ce dessin pour $H$ vaut $p^4\text{cr}(G)$ puisque chaque croisement est un formé de 2 arêtes de $G$ qui ont chacune une probabilité $p^2$ d'être dans $H$.</p>
+<p>De là si $C(H)$ est le nombre de croisement de la restriction à $H$ d'un dessin de $G$ minimisant les croisement, on a : $C(H) \geq \text{cr}(H) \geq e(H) - 3 \cdot v(H)$. Donc par linéarité de l'espérance on a également :  $ \mathbb{E}[C(H)]\geq \mathbb{E}[e(H)] - 3 \cdot \mathbb{E}[v(H)]$ c'est à dire :</p>
+<div>
+$$
+p^4\text{cr}(G)\geq p^2\cdot m - 3\cdot p\cdot n
+$$
+</div>
+<p>Et donc :</p>
+<div>
+$$
+\text{cr}(G)\geq \frac{p\cdot m - 3\cdot n}{p^3}
+$$
+</div>
+<p>Comme on cherche une borne min, il faut maximiser la fonction $f(p)=\frac{p\cdot m - 3\cdot n}{p^3}$, ce qui est le cas pour $p = \frac{9}{2}\frac{n}{m}$, pour simplifier on prend $p=4n/m$, ce qui impose $m\geq 4n$ et donne le résultat.</p>
+</div>
+</details>     
+</div>
 <blockquote>
 <p>TBD exemple.</p>
 </blockquote>
-<p>Si on peut prouver cette inégalité en utilisant la méthode probabiliste, il faut pouvoir associer à un graphe $G$ un autre graphe, $H$ aléatoire.</p>
-<blockquote>
-<p>2.2 crossing lemma : <a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf">https://www-sop.inria.fr/members/Frederic.Havet/Cours/proba-notes.pdf</a> à mettre après Euler <a href="https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history">https://en.wikipedia.org/wiki/Crossing_number_inequality#Statement_and_history</a></p>
-</blockquote>
-<h2>Algorithmes</h2>
-<h3>Reconnaissance</h3>
-<blockquote>
-<p>Par blocks (2-connexe maximals).
-puis reconnaissance de blocs</p>
-</blockquote>
-<h3>Dessin</h3>
-<blockquote>
-<p>TBD dessin avec 2-connexe <a href="https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf">https://perso.ens-lyon.fr/eric.thierry/Graphes2010/lucie-martinet.pdf</a></p>
-</blockquote>
-<blockquote>
-<p>TBD triangulation d'une représentation fait triangulation de toutes les représentations. Si triangulé admet le nombre maximum d'arêtes m = 3n-6 <a href="https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf">https://facultyweb.kennesaw.edu/mlavrov/courses/graph-theory/lecture21.pdf</a> et donc vrai partout.</p>
-</blockquote>
-<blockquote>
-<p>TBD dessin sans courbure dans un triangle:</p>
-<ul>
-<li>exemple <a href="https://ics.uci.edu/~eppstein/gina/schnyder/">https://ics.uci.edu/~eppstein/gina/schnyder/</a> ou <a href="https://ics.uci.edu/~eppstein/163/lecture10c.pdf">https://ics.uci.edu/~eppstein/163/lecture10c.pdf</a></li>
-<li>papier <a href="https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf">https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf</a></li>
-</ul>
-</blockquote>
-<h2>Coloration de graphes planaires</h2>
-<blockquote>
-<p>TBD pareil que colorier les faces.</p>
-</blockquote>
-<blockquote>
-<p>TBD 3 colorable planaire np-complet : <a href="https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf</a></p>
-</blockquote>
-<ul>
-<li>coloriable :</li>
-</ul>
-<hr>
-<p>Nom de l'algorithme</p>
-<blockquote>
-<p>algo</p>
-<blockquote>
-<p>autre algo $x_1 \leftarrow 3$
-fin</p>
-</blockquote>
-</blockquote>
-<hr>
-<h3>Théorème des 4 couleurs</h3>
-<blockquote>
-<p>TBD 6 par notre algo de coloration
-TBD 5 couleur : démonstration de Kempe.</p>
-<p>Elle ne fonctionne pas pour 4 couleurs. Pourquoi ?
-TBD Une démo du théorème des 4 couleurs par Kempe : <a href="https://www.youtube.com/watch?v=adZZv4eEPs8">https://www.youtube.com/watch?v=adZZv4eEPs8</a>
-TBD théorème des 4 couleurs :</p>
-<ul>
-<li><a href="https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html">https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html</a></li>
-<li>4 couleurs : <a href="https://inria.hal.science/hal-04034866/document">https://inria.hal.science/hal-04034866/document</a></li>
-</ul>
-</blockquote>
-<h3>Algorithmes de coloration</h3>
-<blockquote>
-<ul>
-<li>6 coloration avec l'algo de coloration</li>
-<li>5 coloration linéaire <a href="https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf">https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf</a></li>
-<li>4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <a href="https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf">https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf</a>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?</li>
-</ul>
-</blockquote>
-<h3>Variantes</h3>
-<blockquote>
-<p>TBD pays non connexes
-TBD colonies lunaires</p>
-</blockquote>
-<h2>Colorabilité et partage de secrets</h2>
-<blockquote>
-<p>TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.</p>
-</blockquote>
-<blockquote>
-<p><a href="https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance">https://fr.wikipedia.org/wiki/Preuve_à_divulgation_nulle_de_connaissance</a></p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://www.youtube.com/watch?v=5ovdoxnfFVc">Avi Wigderson parle des zero knowledge proof</a></li>
-<li><a href="https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf">le papier</a></li>
-</ul>
-</div></div>
-
-<blockquote>
-<p><a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry-Howard correspondance</a></p>
-</blockquote>
-<h2>Odds and ends</h2>
-<p>Nombreux problèmes NP-complets sont facile à les graphes planaires.</p>
-<h3>Propriétés</h3>
-<ul>
-<li>
-<p>3 coloriable et problème de la galerie d'art : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></p>
-</li>
-<li>
-<p>Lemme de Sperner <a href="https://www.youtube.com/watch?v=cpIexccvYjI&amp;list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&amp;index=18">https://www.youtube.com/watch?v=cpIexccvYjI&amp;list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&amp;index=18</a>, on peut le démontrer avec la planarité : <a href="https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf">https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf</a>. Attention, ce n'est <strong>pas</strong> de la coloration de graphes (pas de contrainte sur les voisins).</p>
-</li>
-</ul>
-<h3>Facile pour les graphes planaires</h3>
-<!-- > TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle. -->
-<blockquote>
-<p>TBD isomorphisme de graphe planaire</p>
-</blockquote>
-<h2>Références</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://www.youtube.com/watch?v=wnYtITkWAYA&amp;list=PLGxuz-nmYlQPgIHbqWtgD-F7NnJuqs4fH">https://www.youtube.com/watch?v=wnYtITkWAYA&amp;list=PLGxuz-nmYlQPgIHbqWtgD-F7NnJuqs4fH</a></li>
-</ul>
-</div></div>
-
-<!-- 
-- <http://monge.univ-mlv.fr/~goaoc/lec1.pdf>
-- <https://personalpages.manchester.ac.uk/staff/mark.muldoon/Teaching/DiscreteMaths/LectureNotes/PlanarGraphs.pdf> -->
 
 
 </article>
