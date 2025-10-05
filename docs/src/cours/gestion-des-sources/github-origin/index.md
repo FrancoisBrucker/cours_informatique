@@ -1,8 +1,6 @@
 ---
 layout: layout/post.njk
-
 title: Github
-tags: ["cours", "projet"]
 
 eleventyComputed:
   eleventyNavigation:

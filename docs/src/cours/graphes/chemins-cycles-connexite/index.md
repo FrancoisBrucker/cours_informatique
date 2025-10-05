@@ -243,17 +243,6 @@ Comme $j>i$ on a une contradiction.
 
 {% enddetails %}
 
-En déduire le corollaire suivant :
-
-{% exercice %}
-Soit $G$ un graphe 2-connexe de strictement plus de 2 sommets. Montrez que pour tout chemin élémentaire $x_0\dots x_k$ avec $x_0 \neq x_k$, il existe un autre chemin disjoint du premier allant de $x_0$ à $x_k$.
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
-
-{% enddetails %}
-
 ## Propriétés fondamentales d'existence
 
 On le verra plus précisément lorsque l'on parlera d'arbres, mais les notions de connexités, de chemins et de cycles (notions globales) sont très liés aux degrés des différents sommets (conditions locales). Les propositions fondamentales d'existence ci après le montrent. Bien qu'elles soient très simples, elles se révèlent souvent utile, soit par les propriétés elles-mêmes soit par leurs schémas de preuves qui s'appliquent très souvent.

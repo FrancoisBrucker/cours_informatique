@@ -82,7 +82,7 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 1. [version théorie des graphes des arbres](/cours/graphes/arbres/){.interne}
    - [définitions](/cours/graphes/arbres/définitions/){.interne}
    - [tracés d'arbres](/cours/graphes/arbres/tracés/){.interne}
-2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
+2. [Arbres couvrants](/cours/graphes/arbres/arbres-couvrants/){.interne}
 3. [Cayley et Prüfer](/cours/graphes/arbres/cayley/){.interne}
 4. [Arbres planaires et chemins de Dyck](/cours/graphes/arbres/arbres-planaires/){.interne}
 5. [Arbres de Catalan](/cours/graphes/arbres/arbres-catalan/){.interne}
@@ -115,7 +115,7 @@ L'ET de l'année dernière :
 1. rappel sur [les flots](/cours/graphes/flots/){.interne}
 2. couplage :
     - [problème](/cours/graphes/couplages/problème/){.interne} et [chemins augmentant](/cours/graphes/couplages/chemins-augmentant/){.interne}
-    - [graphes bi-parti](/cours/graphes/couplages/couplage-bi-parti/){.interne} et idée de la [généralisation aux graphes quelconques](cours/graphes/couplages/couplage-cas-général/){.interne}.
+    - [graphes bi-parti](/cours/graphes/couplages/couplage-bi-parti/){.interne} et idée de la [généralisation aux graphes quelconques](/cours/graphes/couplages/couplage-cas-général/){.interne}.
     - [couplage max dans les graphes bi-partis](/cours/graphes/couplages/couplage-max-bi-parti/){.interne} (si on a le temps)
 3. [colorabilité des sommets d'un graphe](/cours/graphes/colorabilité/coloration-sommets/){.interne}
 4. [graphes planaires](/cours/graphes/graphes-planaires/){.interne}

@@ -35,7 +35,7 @@ Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (
   --------------
 ```
 
-S'il est clair que $F(k, \cdot)$ $ est une permutation quelque soit $k$ (l'inverse étant la fonction elle même), nous allons allons montrer qu'elle est sémantiquement sécurisée si le générateur $G$ l'est.
+S'il est clair que $F(k, \cdot)$ est une permutation quelque soit $k$ (l'inverse étant la fonction elle même), nous allons allons montrer qu'elle est sémantiquement sécurisée si le générateur $G$ l'est.
 
 ## Générateur de nombre
 

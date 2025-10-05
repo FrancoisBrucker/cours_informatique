@@ -19,7 +19,7 @@ Un code $(E, D)$ assure une **_confidentialité parfaite_** si pour :
 
 - tous messages $m$ et $m'$ de même taille
 - tout chiffre $c$
-- les clés $k$ suivent une loi uniforme sur $\mathcal{K}$ : $k \xleftarrow{R} \mathcal{K}$
+- les clés $k$ suivent une loi uniforme $k \xleftarrow{R} \mathcal{K}$
 
 On a :
 
@@ -106,11 +106,17 @@ Il est clair que si l'adversaire essaie toutes les possibilités il trouvera tou
 
 L'exemple précédent montre trois choses :
 
+{% attention "**À retenir**" %}
+
 1. un adversaire motivé et ayant du temps pourra toujours déchiffrer un message
 2. on peut être en sécurité assez longtemps si la seule attaque possible est l'attaque brute force
 3. La méthode $A(\cdot)$ utilisé doit être rapide : c'est un algorithme
 
-Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps. Formalisons tout ça.
+Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.
+
+{% endattention %}
+
+Formalisons tout ça.
 
 ### Sécurité en pratique
 
@@ -122,7 +128,7 @@ Comme l'algorithme brute force teste une clé en plus d'une opération, toute m�
 On peut aussi mesurer le nombre d'opérations mis pour exécuter l'algorithme puis mesurer sa probabilité de réussite. On aura alors une sécurité définie par nombre d'opérations effectuées.
 {% endinfo %}
 
-Il est cruciale de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.
+Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.
 
 {% exercice %}
 
@@ -133,7 +139,7 @@ Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant p
 
 L'algorithme étant brute force, on a : $2^{-39} = \frac{2^{30}}{2^k}$ ce qui donne $k = 69$.
 
-Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, en 2024, on recommande des tailles de clés d'au moins 128bits.
+Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, actuellement, on recommande des tailles de clés d'au moins 128bits.
 {% enddetails %}
 
 ### Avantage Probabiliste
@@ -141,11 +147,11 @@ Attention, les algorithmes tournent souvent en parallèle pour diminuer leur tem
 L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que `A(E(k,mb))=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
 {% note "**Définition**" %}
-L'avantage dans ce jeu est $\epsilon$ :
+L'avantage $\epsilon$ dans un jeu est défini tel que :
 
 <div>
 $$
-| (Pr[b' = 1 | b = 1] + Pr[b' = 0 | b = 0]) - 1 | = \epsilon
+\epsilon \coloneqq | (Pr[b' = 1 | b = 1] + Pr[b' = 0 | b = 0]) - 1 |
 $$
 </div>
 
@@ -156,7 +162,7 @@ Si l'adversaire n'a pas d'idée de comment gagner au jeu, il peut toujours répo
 Le corollaire ci-après montre que l'avantage est également la différence entre gagner ou perdre en choisissant tout le temps $m_0$ ou $m_1$. C'est cette définition que nous utiliserons dans tous les autres jeux que nous définirons.
 
 {% note "**Corollaire**" %}
-Si $m_0$ est traité de façon équivalente à $m_1$, l'avantage est aussi :
+Si $m_0$ est traité de façon équivalente à $m_1$, On a :
 
 <div>
 $$
@@ -227,7 +233,13 @@ Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un nombre 
 {% note "**Définition**" %}
 Pour calculer une complexité, il faut connaître la taille de l'entrée, c'est à dire les informations données à l'adversaire.
 
-De façon classique, la taille de cette entrée ($n$), nommé **_paramètre de sécurité_**, consiste en la taille de la clé ($k$) plus la taille du message à chiffrer ($m$) : $n=s+m$.
+De façon classique, la taille de cette entrée ($n$), nommé **_paramètre de sécurité_**, consiste en la taille de la clé (valant $k$) plus la taille du message à chiffrer (valant $m$) :
+
+<div>
+$$
+n \coloneqq k+m
+$$
+</div>
 
 {% endnote %}
 
@@ -326,7 +338,7 @@ Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la s
 
 <div>
 $$
-Pr[b'=1 | b=1] - Pr[b'=1 | b=0]
+\epsilon \coloneqq cPr[b'=1 | b=1] - Pr[b'=1 | b=0]
 $$
 </div>
 

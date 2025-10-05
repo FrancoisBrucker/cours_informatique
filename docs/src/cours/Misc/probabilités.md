@@ -22,6 +22,8 @@ Comme on est en informatique, on va considérer des ensembles finis ou au pire d
 
 ## Probabilités
 
+### Définitions
+
 {% note "**Définition**" %}
 
 - **_univers_** : $\Omega$ un ensemble fini.
@@ -54,6 +56,7 @@ Cette définition se généralise simplement aux ensembles dénombrables (ce qui
   - $\mathbb{P}(\Omega) = 1$.
   - Pour toute suite $(A_n)_{n\in \mathbb{N}}$ d'éléments deux à deux disjoints de $\mathcal{P}(\Omega)$, on a : $\mathbb{P}(\cup_n A_n) = \sum_n \mathbb{P}(A_n)$
 
+Le couple $(\Omega, \mathbb{P})$ est appelé **_espace probabilité_**.
 {% endnote %}
 {% info %}
 Notez que la définition dénombrable généralise bien la définition du cas fini puisqu'une suite finie $(A_n)_{1\leq n \leq N}$ d'éléments deux à deux disjoints peut s'écrire comme une suite infinie où $A_n =\emptyset$ pour tout $n > N$.
@@ -64,7 +67,6 @@ Notez que la définition dénombrable généralise bien la définition du cas fi
 On a les propriétés suivantes :
 
 {% note "**Proposition**" %}
-> TBD reprendre les propositions de : <http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf>
 
 On a :
 
@@ -75,37 +77,129 @@ On a :
 
 {% endnote %}
 
+> TBD reprendre les propositions de : <http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf>
+
+### Conditionnement
+
+{% note "**Définition**" %}
+
+Soit $\mathbb{P}$ une probabilité sur $\Omega$. La **_probabilité de $B$ sachant $A$_** est définie (pour $A, B \subseteq \Omega$) telle que :
+
+<div>
+$$
+\mathbb{P}_A(B) = \mathbb{P}(B \vert A)\coloneqq \frac{\mathbb{P}(B \cap A)}{\mathbb{P}(A)}
+$$
+</div>
+
+{% endnote %}
+
+Cette probabilité décrit le fait que l'on ne considère que les évènements où $A$ est réalisé. C'est bien une probabilité :
+
+{% note "**Proposition**" %}
+
+Soit un univers $(\Omega, P)$ un espace probabilisé.
+
+Pour tout $A \subseteq \Omega$ la fonction $\mathbb{P}_A : \mathcal{P}(\Omega) \rightarrow [0, 1]$.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+clair.
+
+{% enddetails %}
+
+> TBD thm 4.8 et 4.9 de "probabilité pour les non probabilistes
+
 ## Variables aléatoires
 
 Les événements se manifestent via des **_variable aléatoire_**. L'univers étant souvent soit inconnu soit trop compliqué pour en tirer quoi que ce soit d'utile.
 
+> TBD : deux trucs qui bougent avec le "sachant B"
+
+### Définitions et notations
+
 {% note "**Définition**" %}
 
-Une **_variable aléatoire_** $X$ est une fonction $X : \Omega \rightarrow U$ ($U$ quelconque a priori). On note alors :
+Une **_variable aléatoire_** $X$ est une fonction $X : \Omega \rightarrow \mathcal{U}$ ($U$ quelconque a priori) où $(\Omega, \mathbb{P})$ est un espace probabilisé. On note alors :
 
-- $\mathbb{P}\\{X = v\\} \coloneqq \mathbb{P}(X^{-1}(v))$
-- $\mathbb{P}\\{X \in V\\} \coloneqq \mathbb{P}(X^{-1}(V))$, $V \subseteq \Omega$
+- $\mathbb{P}\\{X = u\\} \coloneqq \mathbb{P}(X^{-1}(u))$
+- $\mathbb{P}\\{X \in U\\} \coloneqq \mathbb{P}(X^{-1}(U))$, $u \subseteq \mathcal{U}$
+
+On dira que $X(\omega) = u$ est une **_réalisation_** de la variable aléatoire $X$. Cette réalisation est de probabilité $\mathbb{P}\\{X = u\\}$.
+{% endnote %}
+{% attention %}
+Ne confondez pas la variable aléatoire et ses réalisations.
+{% endattention %}
+
+Comme une variable aléatoire est indissociable de sa mesure de probabilité associée et que l'espace $\Omega$ sous-jacent est très souvent inutile (et inconnu), on utilisera souvent la notation suivante :
+
+{% note "**Définition**" %}
+
+On définit :
+
+<div>
+$$
+u \xleftarrow{\mathbb{P}} \mathcal{U}
+$$
+</div>
+
+Comme étant une variable aléatoire :
+
+- prenant ses valeurs dans $\mathcal{U}$
+- suivant la loi de probabilité $\mathbb{P}$
 
 {% endnote %}
 
-Pour bien faire la différence entre les deux notions, on utilisera la notation :
+Ce qui nous permet d'écrire de façon synthétique :
 
 {% note "**Définition**" %}
 
 <div>
 $$
-{\Pr}_{\mathbb{P}}[X] \coloneqq \mathbb{P}\{X\}
+{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \mathbb{P}\{(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1}(x)\}
 $$
 </div>
 
-S'il n'y a pas ambiguïté, on omettra la probabilité $p$ et on écrira $\Pr[X]$ à la place de $\Pr_{\mathbb{P}}[X]$. On peut complètement ignorer l'univers sous-jacent et ne travailler qu'avec les variables aléatoires.
+{% endnote %}
+
+S'il n'y a pas ambiguïté, on se permettra même d'écrire :
+
+- ${\Pr}[u = x]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$
+- ${\Pr}[X = x]$ si l'on veut expliciter la variable aléatoire $X$
+
+### Uniformité et Indépendance
+
+{% note "**Définition**" %}
+
+Une variable aléatoire ets dite **_uniforme_** si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $u \xleftarrow{R} \mathcal{U}$.
 
 {% endnote %}
 
-Une variable aléatoire sera dite **_uniforme_** si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $X \xleftarrow{R} \mathcal{U}$
+{% note "**Définition**" %}
 
-Deux variables aléatoires $X : \Omega \rightarrow U$ et $Y : \Omega \rightarrow U'$ sont **_indépendantes_** si les évènements qui les dirigent sont eux mêmes indépendants :
-$\Pr[X \in V, Y \in V'] = \Pr[X \in V] \cdot \Pr[Y \in V']$.
+Deux variables aléatoires $X : \Omega \rightarrow \mathcal{U}$ et $Y : \Omega \rightarrow \mathcal{U}'$ sur le même espace probabilisé sont **_indépendantes_** si les évènements qui les dirigent sont eux mêmes indépendants, c'est à dire que $X^{-1}(U) \cap Y^{-1}(U') = \varnothing$ quelques soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$.
+{% endnote %}
+
+Comme on a rarement accès à l'espace probabilisé sous-jacent, ce qui va nous intéresser lorsque deux variables aléatoires sont indépendantes c'est la conséquence suivante (triviale) :
+
+{% note "**Proposition**" %}
+Pour deux variables aléatoires indépendantes $X$ et $Y$ prenant leurs valeurs dans $\mathcal{U}$ et $\mathcal{U}'$ respectivement, on a quelques soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$ :
+
+<div>
+$$
+\Pr[X \in V, Y \in V'] = \Pr[X \in V] \cdot \Pr[Y \in V']
+$$
+</div>
+{% endnote %}
+
+### Espérance
+
+> TBD espérance $\mathbb{E}[X]$ (vous verrez aussi $\mathbb{E}(X)$ ou même $\mathbb{E}X$. Nous on utilise les crochet pour rester cohérente avec notre notation pour les probabilités de variables aléatoires)
+>
+> - linéarité de l'espérance
+> - il existe 1 qui vaut l'espérance
+
+### Exemple
 
 En sécurité, on aura typiquement :
 
@@ -120,12 +214,6 @@ Ou, si l'on s'intéresse à un couple $(m_0, m_1)$ de deux mots de longueurs $L$
 - les variables aléatoires :
   - $M_0 : \Omega \rightarrow \\{0, 1\\}^L$
   - $M_1 : \Omega \rightarrow \\{0, 1\\}^L$
-
-> TBD : deux trucs qui bougent avec le "sachant B"
-
-> TBD espérance
-> - linéarité de l'espérance
-> - il existe 1 qui vaut l'espérance
 
 ## Fonction génératrice
 

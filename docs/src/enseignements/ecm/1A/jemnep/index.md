@@ -30,7 +30,8 @@ refaire python du début.
 4. structure et petits programmes de code (pas d'algo)
 5. variables, objets.
 6. tests
-7. finir sur débogueur -->
+7. gihub comme projet
+8. finir sur débogueur -->
 
 Basé sur le cours :
 

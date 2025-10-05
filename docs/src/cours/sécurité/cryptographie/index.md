@@ -3,6 +3,10 @@ layout: layout/post.njk
 
 title: Cryptographie
 
+eleventyNavigation:
+  prerequis:
+    - "/cours/misc/probabilités/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"

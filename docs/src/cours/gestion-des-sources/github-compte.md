@@ -1,8 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Création d'un compte Github
-tags: ["cours", "projet"]
+title: Création d'un compte et usage basique de Github
 
 eleventyComputed:
   eleventyNavigation:
@@ -30,4 +29,14 @@ eleventyComputed:
 
 ## Utilisation de Github comme d'un drive
 
-> TBD
+> TBD un projet
+
+1. nouveau projet
+2. upload
+3. download zip
+4. versions :
+   1. mettre un tag
+   2. mettre une nouvelle version avec upload (est-ce que ça marche ?)
+   3. faire une branche
+
+Ayez un `readme.md`{.fichier} comme page d'accueil

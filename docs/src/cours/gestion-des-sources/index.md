@@ -69,9 +69,121 @@ couper en parties
 
 ## Principes
 
+Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.
+
+### Besoins
+
 {% aller %}
-[Principes et usages d'un SCM](./principes){.interne}
+[Besoins](./besoins/){.interne}
 {% endaller %}
+
+### Structure distribuée
+
+Pour que son accès soit facile, il faut que la structure de stockage soit sur le même ordinateur que celui ayant le répertoire de travail.
+
+Si cette solution est idéal lorsque l'on est un unique développeur, elle devient plus complexe à mettre en œuvre si on est plusieurs à travailler sur le projet. Il faut :
+
+1. en avoir une copie de la structure de stockage chez chaque participant,
+2. permettre à plusieurs personnes de travailler sur le même fichier,
+3. permettre le travail asynchrone entre les personnes : une personne va avancer à un endroit pendant qu'une autre travaille sur autre chose
+4. pouvoir reprendre un projet existant avec une nouvelle équipe
+
+Ceci implique que chaque copie soit synchronisée par un dépôt référent, un **_projet référent_** faisant autorité pour tous les participants. Mais comment faire ensuite pour que la synchronisation soit aisée ?
+
+Une bonne implémentation consiste **à ne pas sacraliser la mise en commun**. Il faut le faire le souvent pour que tout le monde ait une version claire de l'ensemble **actuel** du projet.
+
+La solution utilisée par [git](https://git-scm.com/) consiste à ne pas choisir de serveur distant avec des règles précise : tout participant possède l'intégralité de la structure de sauvegarde comme s'il était seul développeur. On ajoute enfin souvent un participant fictif, nommé **_origin_**, qui est la référence commune et est synchronisée à l'envie par les développeurs. Cette structure distribuée permet :
+
+- que chaque développeur puisse faire ses propres commits en local,
+- d'avoir une (ou plusieurs) branches partagée par tous les utilisateurs (comme `main`, `dev`, _etc_) et synchronisés souvent entre les utilisateur et _origin_ :
+  - on appelle **_push_** les synchronisation des utilisateurs vers l'_origin_
+  - on appelle **_pull_** les synchronisation de l'_origin_ vers un utilisateur
+- de continuer un projet avec une nouvelle équipe, il suffit de copier _origin_.
+
+{% attention "**À retenir**" %}
+
+Lorsque vous utilisez un projet en commun il faut avoir un dépôt commun mais ne faut pas en sacraliser la mise en commun avec des règles de soumission stricte ou un superviseur.
+
+{% endattention %}
+
+### Dépôt origin
+
+Nous allons utiliser <https://github.com/> comme dépôt commun de nos projet.
+
+{% aller %}
+[Création d'un compte github](./github-compte){.interne}
+{% endaller %}
+
+## Un seul dépôt
+
+### Besoins
+
+> TBD les branches let merges et le rebases.
+
+
+> Travailler sur un seul dépôt. POur nous github.
+
+> créer des branches, faire des merges et un rebase.
+> voir le diff
+
+### Usage
+
+> Le faire sur github
+
+## Dépôt local et distant
+
+### Besoins
+
+> TBD liens entre distant et local.
+> bonne configuration :
+>   - retrouver la personne
+>   - gitignore pour ne pas tout mettre sur le serveur distant.
+
+### Usage
+
+> TBD
+
+## Outils
+
+### git avec vscode
+
+{% info "**Documentation**" %}
+<https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
+{% endinfo %}
+
+vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :
+
+- d'utiliser github avec l'[extension github](https://code.visualstudio.com/docs/editor/github)
+- de voir le graphe de dépendances avec l'extension [git-graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) (commande `git-graph.view` pour voir le graphe)
+- de voir l'historique de modification d'un fichier avec l'extension [git-history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (cliquer droit sur un fichier puis `Git: view file history`)
+- ...
+
+### TUI
+
+{% lien %}
+
+- lazy git : <https://www.youtube.com/watch?v=CPLdltN7wgE> pour git
+- gh-dash : <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
+
+{% endlien %}
+
+## git en ligne de commande
+
+> TBD commencer par la config
+> TBD reprendre tout en créant un projet depuis la maison et on montre les fichier
+
+## plomberie
+
+### Format diff
+
+### hash
+
+### objets de git
+
+
+
+
+
 
 ## Usage
 
@@ -115,30 +227,6 @@ Maintenant que l'on a un projet sur github, on peut le considérer comme une ori
 {% aller %}
 [SCM avec github](./github-SCM){.interne}
 {% endaller %}
-
-## Outils
-
-### git avec vscode
-
-{% info "**Documentation**" %}
-<https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
-{% endinfo %}
-
-vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :
-
-- d'utiliser github avec l'[extension github](https://code.visualstudio.com/docs/editor/github)
-- de voir le graphe de dépendances avec l'extension [git-graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) (commande `git-graph.view` pour voir le graphe)
-- de voir l'historique de modification d'un fichier avec l'extension [git-history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (cliquer droit sur un fichier puis `Git: view file history`)
-- ...
-
-### TUI
-
-{% lien %}
-
-- lazy git : <https://www.youtube.com/watch?v=CPLdltN7wgE> pour git
-- gh-dash : <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
-
-{% endlien %}
 
 ## Projet : gérer ses sources avec git
 
