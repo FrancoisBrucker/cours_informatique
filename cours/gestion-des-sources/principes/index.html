@@ -96,48 +96,7 @@
     
   
 
-  <p>Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.</p>
-<h2>Besoins</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="besoins/" class="interne">Besoins</a></p>
-</div></div>
-
-<h2>Structure distribuée</h2>
-<p>Pour que son accès soit facile, il faut que la structure de stockage soit sur le même ordinateur que celui ayant le répertoire de travail.</p>
-<p>Si cette solution est idéal lorsque l'on est un unique développeur, elle devient plus complexe à mettre en œuvre si on est plusieurs à travailler sur le projet. Il faut :</p>
-<ol>
-<li>en avoir une copie de la structure de stockage chez chaque participant,</li>
-<li>permettre à plusieurs personnes de travailler sur le même fichier,</li>
-<li>permettre le travail asynchrone entre les personnes : une personne va avancer à un endroit pendant qu'une autre travaille sur autre chose</li>
-<li>pouvoir reprendre un projet existant avec une nouvelle équipe</li>
-</ol>
-<p>Ceci implique que chaque copie soit synchronisée par un dépôt référent, un <strong><em>projet référent</em></strong> faisant autorité pour tous les participants. Mais comment faire ensuite pour que la synchronisation soit aisée ?</p>
-<h3>Mauvaise implémentation</h3>
-<p>Avant d'exposer la solution adoptée par <a href="https://git-scm.com/">https://git-scm.com/</a> et qui fait autorité actuellement, commençons par lister une série fausse bonne idées qui à été (et est malheureusement encore souvent) mis en place : un seul projet partagé assorti :</p>
-<ol>
-<li>de règles de soumission de commits</li>
-<li>d'un superviseur général qui doit tout valider avant</li>
-</ol>
-<p>Cela ne fonctionnera jamais car aucune règle ne permettra de résoudre tous les cas. On Va passer un temps infini à les discuter et <em>in fine</em> les personnes responsable de la création/vérification des règles feront en sorte qu'elles soient facile à vérifier plutôt qu'utile (voir l'administration en générale et la notre en particulier).</p>
-<p>Enfin, en plus d'être inefficace, cela va induire de gros ralentissement car comme il faut tout vérifier on mettra en commun les changements peu souvent (genre une fois par mois) ce qui va générer d'énormes problèmes de synthèse des différentes versions et ralentira d'autant plus le processus.</p>
-<h3>Bonne implémentation</h3>
-<p>La bonne implémentation consiste <strong>à ne pas sacraliser la mise en commun</strong>. Il faut le faire le souvent pour que tout le monde ait une version claire de l'ensemble <strong>actuel</strong> du projet.</p>
-<p>La solution utilisée par <a href="https://git-scm.com/">git</a> consiste à ne pas choisir de serveur distant avec des règles précise : tout participant possède l'intégralité de la structure de sauvegarde comme s'il était seul développeur. On ajoute enfin souvent un participant fictif, nommé <strong><em>origin</em></strong>, qui est la référence commune et est synchronisée à l'envie par les développeurs. Cette structure distribuée permet :</p>
-<ul>
-<li>que chaque développeur puisse faire ses propres commits en local,</li>
-<li>d'avoir une (ou plusieurs) branches partagée par tous les utilisateurs (comme <code>main</code>, <code>dev</code>, <em>etc</em>) et synchronisés souvent entre les utilisateur et <em>origin</em> :
-<ul>
-<li>on appelle <strong><em>push</em></strong> les synchronisation des utilisateurs vers l'<em>origin</em></li>
-<li>on appelle <strong><em>pull</em></strong> les synchronisation de l'<em>origin</em> vers un utilisateur</li>
-</ul>
-</li>
-<li>de continuer un projet avec une nouvelle équipe, il suffit de copier <em>origin</em></li>
-</ul>
-<h2>Usage</h2>
+  <h2>Usage</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>

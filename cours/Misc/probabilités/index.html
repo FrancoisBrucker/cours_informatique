@@ -110,6 +110,7 @@
 
 <p>Comme on est en informatique, on va considérer des ensembles finis ou au pire dénombrable.</p>
 <h2>Probabilités</h2>
+<h3>Définitions</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -157,6 +158,7 @@ $$
 </ul>
 </li>
 </ul>
+<p>Le couple $(\Omega, \mathbb{P})$ est appelé <strong><em>espace probabilité</em></strong>.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -178,9 +180,6 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<blockquote>
-<p>TBD reprendre les propositions de : <a href="http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf">http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf</a></p>
-</blockquote>
 <p>On a :</p>
 <ul>
 <li>$\mathbb{P}(\Omega) = 1$</li>
@@ -190,8 +189,10 @@ $$
 </ul>
 </div></div>
 
-<h2>Variables aléatoires</h2>
-<p>Les événements se manifestent via des <strong><em>variable aléatoire</em></strong>. L'univers étant souvent soit inconnu soit trop compliqué pour en tirer quoi que ce soit d'utile.</p>
+<blockquote>
+<p>TBD reprendre les propositions de : <a href="http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf">http://vonbuhren.free.fr/Prepa/TSI2/probabilites_univers_denombrable_cours.pdf</a></p>
+</blockquote>
+<h3>Conditionnement</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -199,14 +200,101 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <strong><em>variable aléatoire</em></strong> $X$ est une fonction $X : \Omega \rightarrow U$ ($U$ quelconque a priori). On note alors :</p>
+<p>Soit $\mathbb{P}$ une probabilité sur $\Omega$. La <strong><em>probabilité de $B$ sachant $A$</em></strong> est définie (pour $A, B \subseteq \Omega$) telle que :</p>
+<div>
+$$
+\mathbb{P}_A(B) = \mathbb{P}(B \vert A)\coloneqq \frac{\mathbb{P}(B \cap A)}{\mathbb{P}(A)}
+$$
+</div>
+</div></div>
+
+<p>Cette probabilité décrit le fait que l'on ne considère que les évènements où $A$ est réalisé. C'est bien une probabilité :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit un univers $(\Omega, P)$ un espace probabilisé.</p>
+<p>Pour tout $A \subseteq \Omega$ la fonction $\mathbb{P}_A : \mathcal{P}(\Omega) \rightarrow [0, 1]$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>clair.</p>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD thm 4.8 et 4.9 de &quot;probabilité pour les non probabilistes</p>
+</blockquote>
+<h2>Variables aléatoires</h2>
+<p>Les événements se manifestent via des <strong><em>variable aléatoire</em></strong>. L'univers étant souvent soit inconnu soit trop compliqué pour en tirer quoi que ce soit d'utile.</p>
+<blockquote>
+<p>TBD : deux trucs qui bougent avec le &quot;sachant B&quot;</p>
+</blockquote>
+<h3>Définitions et notations</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>variable aléatoire</em></strong> $X$ est une fonction $X : \Omega \rightarrow \mathcal{U}$ ($U$ quelconque a priori) où $(\Omega, \mathbb{P})$ est un espace probabilisé. On note alors :</p>
 <ul>
-<li>$\mathbb{P}\{X = v\} \coloneqq \mathbb{P}(X^{-1}(v))$</li>
-<li>$\mathbb{P}\{X \in V\} \coloneqq \mathbb{P}(X^{-1}(V))$, $V \subseteq \Omega$</li>
+<li>$\mathbb{P}\{X = u\} \coloneqq \mathbb{P}(X^{-1}(u))$</li>
+<li>$\mathbb{P}\{X \in U\} \coloneqq \mathbb{P}(X^{-1}(U))$, $u \subseteq \mathcal{U}$</li>
+</ul>
+<p>On dira que $X(\omega) = u$ est une <strong><em>réalisation</em></strong> de la variable aléatoire $X$. Cette réalisation est de probabilité $\mathbb{P}\{X = u\}$.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne confondez pas la variable aléatoire et ses réalisations.</p>
+</div></div>
+
+<p>Comme une variable aléatoire est indissociable de sa mesure de probabilité associée et que l'espace $\Omega$ sous-jacent est très souvent inutile (et inconnu), on utilisera souvent la notation suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On définit :</p>
+<div>
+$$
+u \xleftarrow{\mathbb{P}} \mathcal{U}
+$$
+</div>
+<p>Comme étant une variable aléatoire :</p>
+<ul>
+<li>prenant ses valeurs dans $\mathcal{U}$</li>
+<li>suivant la loi de probabilité $\mathbb{P}$</li>
 </ul>
 </div></div>
 
-<p>Pour bien faire la différence entre les deux notions, on utilisera la notation :</p>
+<p>Ce qui nous permet d'écrire de façon synthétique :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -216,15 +304,62 @@ $$
 </div><div class="pl-8 mr-8">
 <div>
 $$
-{\Pr}_{\mathbb{P}}[X] \coloneqq \mathbb{P}\{X\}
+{\Pr}_{u \xleftarrow{\mathbb{P}} \mathcal{U}}[u = x] \coloneqq \mathbb{P}\{(u \xleftarrow{\mathbb{P}} \mathcal{U})^{-1}(x)\}
 $$
 </div>
-<p>S'il n'y a pas ambiguïté, on omettra la probabilité $p$ et on écrira $\Pr[X]$ à la place de $\Pr_{\mathbb{P}}[X]$. On peut complètement ignorer l'univers sous-jacent et ne travailler qu'avec les variables aléatoires.</p>
 </div></div>
 
-<p>Une variable aléatoire sera dite <strong><em>uniforme</em></strong> si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $X \xleftarrow{R} \mathcal{U}$</p>
-<p>Deux variables aléatoires $X : \Omega \rightarrow U$ et $Y : \Omega \rightarrow U'$ sont <strong><em>indépendantes</em></strong> si les évènements qui les dirigent sont eux mêmes indépendants :
-$\Pr[X \in V, Y \in V'] = \Pr[X \in V] \cdot \Pr[Y \in V']$.</p>
+<p>S'il n'y a pas ambiguïté, on se permettra même d'écrire :</p>
+<ul>
+<li>${\Pr}[u = x]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$</li>
+<li>${\Pr}[X = x]$ si l'on veut expliciter la variable aléatoire $X$</li>
+</ul>
+<h3>Uniformité et Indépendance</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une variable aléatoire ets dite <strong><em>uniforme</em></strong> si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $u \xleftarrow{R} \mathcal{U}$.</p>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Deux variables aléatoires $X : \Omega \rightarrow \mathcal{U}$ et $Y : \Omega \rightarrow \mathcal{U}'$ sur le même espace probabilisé sont <strong><em>indépendantes</em></strong> si les évènements qui les dirigent sont eux mêmes indépendants, c'est à dire que $X^{-1}(U) \cap Y^{-1}(U') = \varnothing$ quelques soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$.</p>
+</div></div>
+
+<p>Comme on a rarement accès à l'espace probabilisé sous-jacent, ce qui va nous intéresser lorsque deux variables aléatoires sont indépendantes c'est la conséquence suivante (triviale) :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour deux variables aléatoires indépendantes $X$ et $Y$ prenant leurs valeurs dans $\mathcal{U}$ et $\mathcal{U}'$ respectivement, on a quelques soient $U \subseteq \mathcal{U}$ et $V \subseteq \mathcal{U}'$ :</p>
+<div>
+$$
+\Pr[X \in V, Y \in V'] = \Pr[X \in V] \cdot \Pr[Y \in V']
+$$
+</div>
+</div></div>
+
+<h3>Espérance</h3>
+<blockquote>
+<p>TBD espérance $\mathbb{E}[X]$ (vous verrez aussi $\mathbb{E}(X)$ ou même $\mathbb{E}X$. Nous on utilise les crochet pour rester cohérente avec notre notation pour les probabilités de variables aléatoires)</p>
+<ul>
+<li>linéarité de l'espérance</li>
+<li>il existe 1 qui vaut l'espérance</li>
+</ul>
+</blockquote>
+<h3>Exemple</h3>
 <p>En sécurité, on aura typiquement :</p>
 <ul>
 <li>$\Omega = \{0, 1\}^n$ l'ensemble des clés</li>
@@ -242,16 +377,6 @@ $\Pr[X \in V, Y \in V'] = \Pr[X \in V] \cdot \Pr[Y \in V']$.</p>
 </ul>
 </li>
 </ul>
-<blockquote>
-<p>TBD : deux trucs qui bougent avec le &quot;sachant B&quot;</p>
-</blockquote>
-<blockquote>
-<p>TBD espérance</p>
-<ul>
-<li>linéarité de l'espérance</li>
-<li>il existe 1 qui vaut l'espérance</li>
-</ul>
-</blockquote>
 <h2>Fonction génératrice</h2>
 <blockquote>
 <p>TBD utiliser les fct génératrice pour la combinatoire.</p>

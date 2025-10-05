@@ -109,7 +109,7 @@
 <ul>
 <li>tous messages $m$ et $m'$ de même taille</li>
 <li>tout chiffre $c$</li>
-<li>les clés $k$ suivent une loi uniforme sur $\mathcal{K}$ : $k \xleftarrow{R} \mathcal{K}$</li>
+<li>les clés $k$ suivent une loi uniforme $k \xleftarrow{R} \mathcal{K}$</li>
 </ul>
 <p>On a :</p>
 <div>
@@ -235,12 +235,22 @@ $$
 </code></pre>
 <p>Il est clair que si l'adversaire essaie toutes les possibilités il trouvera toujours la solution (presque toujours en fait, car il peut exister des cas où <code>E(k,m0) = E(k', m1)</code>. Mais comme l'adversaire peut choisir ses mots il peut minimiser – voir supprimer ce cas). Cela prendra cependant un temps énorme. Par exemple si la clé $k$ possède 128bits, il y a $2^{128}$ possibilité et même si l'adversaire peut tester 1000 milliards de possibilités par seconde ($10^{12}$) il lui faudrait tout de même plus de $10^{17}$ siècles pour tester toutes les possibilités.</p>
 <p>L'exemple précédent montre trois choses :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <ol>
 <li>un adversaire motivé et ayant du temps pourra toujours déchiffrer un message</li>
 <li>on peut être en sécurité assez longtemps si la seule attaque possible est l'attaque brute force</li>
 <li>La méthode $A(\cdot)$ utilisé doit être rapide : c'est un algorithme</li>
 </ol>
-<p>Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps. Formalisons tout ça.</p>
+<p>Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.</p>
+</div></div>
+
+<p>Formalisons tout ça.</p>
 <h3>Sécurité en pratique</h3>
 <p>Une méthode de chiffrement sera dite $(t, \epsilon)$-sécurisée si tout algorithme passant $t$ secondes à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $0\leq \epsilon \leq 1$.</p>
 <p>Comme l'algorithme brute force teste une clé en plus d'une opération, toute méthode de chiffrement sera au maximum $(t, \frac{t}{2^s})$-sécurisée où $s$ est la taille de la clé et $t$ le temps mis pour tester une clé.</p>
@@ -252,7 +262,7 @@ $$
 <p>On peut aussi mesurer le nombre d'opérations mis pour exécuter l'algorithme puis mesurer sa probabilité de réussite. On aura alors une sécurité définie par nombre d'opérations effectuées.</p>
 </div></div>
 
-<p>Il est cruciale de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.</p>
+<p>Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -278,7 +288,7 @@ $$
 <div class="mx-8 pb-2">
 <p>100 siècles vaut environ $2^{39}$ secondes et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-39})$-sécurisée.</p>
 <p>L'algorithme étant brute force, on a : $2^{-39} = \frac{2^{30}}{2^k}$ ce qui donne $k = 69$.</p>
-<p>Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, en 2024, on recommande des tailles de clés d'au moins 128bits.</p>
+<p>Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, actuellement, on recommande des tailles de clés d'au moins 128bits.</p>
 </div>
 </details>     
 </div>
@@ -291,10 +301,10 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'avantage dans ce jeu est $\epsilon$ :</p>
+<p>L'avantage $\epsilon$ dans un jeu est défini tel que :</p>
 <div>
 $$
-| (Pr[b' = 1 | b = 1] + Pr[b' = 0 | b = 0]) - 1 | = \epsilon
+\epsilon \coloneqq | (Pr[b' = 1 | b = 1] + Pr[b' = 0 | b = 0]) - 1 |
 $$
 </div>
 </div></div>
@@ -308,7 +318,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $m_0$ est traité de façon équivalente à $m_1$, l'avantage est aussi :</p>
+<p>Si $m_0$ est traité de façon équivalente à $m_1$, On a :</p>
 <div>
 $$
 \vert Pr[b' = 1 | b = 1] - Pr[b' = 1 | b = 0] \vert = \vert Pr[b' = 0 | b = 0] - Pr[b' = 0 | b = 1] \vert
@@ -413,7 +423,12 @@ $$
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour calculer une complexité, il faut connaître la taille de l'entrée, c'est à dire les informations données à l'adversaire.</p>
-<p>De façon classique, la taille de cette entrée ($n$), nommé <strong><em>paramètre de sécurité</em></strong>, consiste en la taille de la clé ($k$) plus la taille du message à chiffrer ($m$) : $n=s+m$.</p>
+<p>De façon classique, la taille de cette entrée ($n$), nommé <strong><em>paramètre de sécurité</em></strong>, consiste en la taille de la clé (valant $k$) plus la taille du message à chiffrer (valant $m$) :</p>
+<div>
+$$
+n \coloneqq k+m
+$$
+</div>
 </div></div>
 
 <p>L'augmentation de la taille des clés va certes avoir un effet sur le temps d'exécution mais ce sera surtout sur l'avantage que cela se fera sentir, s\il est exponentiellement petit par rapport au paramètre de sécurité :</p>
@@ -566,7 +581,7 @@ $$
 <p>Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la suite générée par notre méthode de chiffrement est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences. L'avantage de l'adversaire est, comme pour le jeu du chiffrage, défini tel que :</p>
 <div>
 $$
-Pr[b'=1 | b=1] - Pr[b'=1 | b=0]
+\epsilon \coloneqq cPr[b'=1 | b=1] - Pr[b'=1 | b=0]
 $$
 </div>
 <p>Les deux lois seront dites :</p>
