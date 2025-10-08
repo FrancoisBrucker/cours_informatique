@@ -124,13 +124,13 @@ L'ET de l'année dernière :
 
 ### DS
 
-[sujet du DS](./DS-25-26/ds.pdf)
+[sujet du DS](./DS-25-26/ds.pdf){.interne}
 
 ### Cryptographie
 
 {% aller %}
 
-[Sécurité](/cours/sécurité/)
+[Sécurité](/cours/sécurité/){.interne}
 
 {% endaller %}
 
@@ -153,6 +153,7 @@ L'ET de l'année dernière :
 
 - [DS 24/25](./DS-24-25/ds.pdf)
 - [ET 24/25](./DS-24-25/et.pdf)
+
 <!-- ### Peut-être 
 
 - Langage C

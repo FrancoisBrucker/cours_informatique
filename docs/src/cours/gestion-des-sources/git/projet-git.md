@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 
 title: Projet git
 
@@ -22,7 +22,7 @@ Munissez vous d'un terminal et placez vous dans un dossier vierge :
 
 ```shell
 mkdir mon_projet_web
-cd mon_projet_web 
+cd mon_projet_web
 ```
 
 On peut maintenant initialiser un projet git :
@@ -37,7 +37,7 @@ git init
 <https://git-scm.com/book/fr/v2/Les-tripes-de-Git-Plomberie-et-porcelaine>
 {% endlien %}
 
-La commande précédente a initialisé `git` en créant un dossier caché `.git`{.fichier}. Git ne fonctionne que comme ça, tout est mis dans ce dossier. Chez moi, il ressemble à ça  :
+La commande précédente a initialisé `git` en créant un dossier caché `.git`{.fichier}. Git ne fonctionne que comme ça, tout est mis dans ce dossier. Chez moi, il ressemble à ça :
 
 ```shell
 .
@@ -74,15 +74,15 @@ La commande précédente a initialisé `git` en créant un dossier caché `.git`
 J'ai utilisé la commande `tree -a` pour afficher l'arborescence et les fichiers cachés.
 {% endinfo %}
 
-Le fichier de configuration est également décrit [dans ce post](https://www.daolf.com/posts/git-series-part-1/). En deux mots :
+En deux mots le dossier de configuration du projet git contient :
 
-* *HEAD* : la branche courant, pour l'instant **Master** (vérifiez le en lisant le fichier avec la commande `cat`)
-* *config* : le fichier de configuration.
-* *description* : description du projet, pas vraiment utilisé
-* *hooks/* : contient des scripts que l'on peu utiliser à chaque qu'une commande git particulière est utilisée. C'est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.
-* *info/exclude/* un *.gitignore* pour tout le projet.
-* *objects/* : contient votre projet actuel et passé en plein de petits bouts. Pour l'instant il n'y a rien.
-* *refs/* : contient les commit. Pour l'instant il n'y a rien.
+- _HEAD_ : la branche courant, pour l'instant **Master** (vérifiez le en lisant le fichier avec la commande `cat`)
+- _config_ : le fichier de configuration.
+- _description_ : description du projet, pas vraiment utilisé
+- _hooks/_ : contient des scripts que l'on peu utiliser à chaque qu'une commande git particulière est utilisée. C'est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.
+- _info/exclude/_ un _.gitignore_ pour tout le projet.
+- _objects/_ : contient votre projet actuel et passé en plein de petits bouts. Pour l'instant il n'y a rien.
+- _refs/_ : contient les commit. Pour l'instant il n'y a rien.
 
 ## Fonctionnement de git
 
@@ -92,28 +92,28 @@ Pour démarrer cet historique faisons notre premier commit.
 
 ### Premier commit
 
-Pour cela, il faut que l'on ait quelque chose à stocker.  Créons un petit fichier `index.html`{.fichier} à la racine de notre projet (donc ne soyez plus dans le dossier `.git`{.fichier}) :
+Pour cela, il faut que l'on ait quelque chose à stocker. Créons un petit fichier `index.html`{.fichier} à la racine de notre projet (donc ne soyez plus dans le dossier `.git`{.fichier}) :
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8" />
     <title>My homepage</title>
-</head>
-<body>
-<h1>Hello World !</h1>
-</body>
+  </head>
+  <body>
+    <h1>Hello World !</h1>
+  </body>
 </html>
 ```
 
-Pour faire un *commit* (stocker l'état d'un projet) il faut commencer par dire à git ce que l'on veut *"commiter"*, ici notre fichier `index.html`{.fichier} :
+Pour faire un _commit_ (stocker l'état d'un projet) il faut commencer par dire à git ce que l'on veut _"commiter"_, ici notre fichier `index.html`{.fichier} :
 
 ```shell
 git add index.html
 ```
 
-On place le fichier `index.html`{.fichier} courant dans le **stage** c'est à dire l'endroit où son mis les fichier qui seront inclus dans le *commit*. Pour voir tout ça, la commande `status` est super utile :
+On place le fichier `index.html`{.fichier} courant dans le **stage** c'est à dire l'endroit où son mis les fichier qui seront inclus dans le _commit_. Pour voir tout ça, la commande `status` est super utile :
 
 ```shell
 git  status
@@ -138,9 +138,9 @@ git  commit
 ```
 
 Cette commande va lancer l'éditeur que vous avez configuré (`vim` si vous avez suivi mes recommandations) et va vous demander de décrire votre commit. Cette étape est **obligatoire** et **très importante**, ne mettez donc pas de message fantaisiste : décrivez en une ligne ce que vous avez fait.
-Ici, par exemple : *"first commit"*. Sauvez et sortez de `vim`, vous avez fait votre premier commit. On le voit en tapant la commande `git status` (qui dit que tout est ok, que le stage est vide et que l'on a aucun fichier non suivi par git).
+Ici, par exemple : _"first commit"_. Sauvez et sortez de `vim`, vous avez fait votre premier commit. On le voit en tapant la commande `git status` (qui dit que tout est ok, que le stage est vide et que l'on a aucun fichier non suivi par git).
 
-La commande `git log` vous donne un historique des *commit* avec le nom, l'heure et le message. Chez moi ça donne :
+La commande `git log` vous donne un historique des _commit_ avec le nom, l'heure et le message. Chez moi ça donne :
 
 ```shell
 commit 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613 (HEAD ->  main)
@@ -183,16 +183,15 @@ Ce dossier est la base de donnée de notre projet. Chaque objet est stocké avec
 Si je veux savoir ce qu'il y a dans le fichier `ab/3401bd309f7e474cba48b2ecc06c09543a1e0d`{.fichier} du dossier `objet`{.fichier}, je tape : `git cat-file -p ab3401bd309f7e474cba48b2ecc06c09543a1e0d` et j'obtiens :
 
 ```html
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8" />
     <title>My homepage</title>
-</head>
-<body>
-<h1>Hello World !</h1>
-</body>
+  </head>
+  <body>
+    <h1>Hello World !</h1>
+  </body>
 </html>
 ```
 
@@ -202,23 +201,23 @@ C'est notre fichier html ! Les autres objets correspondent à l'arborescence de 
 
 Le dossier référence contient les références des commits de toutes les branches et ou tags de notre projet. Nous n'avons qu'une seule branche, nommée `main` commit des différentes branches. En regardant ce qu'il y a dans le fichier `refs/heads/main` je retrouve bien le numéro de commit.
 
-On peut accéder à tout dans git en utilisant ces numéros (en entier ou  les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro *3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613*, je peux taper `git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613`, `git log 3b8c` ou encore `git log 3b8c0a8`
+On peut accéder à tout dans git en utilisant ces numéros (en entier ou les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro _3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613_, je peux taper `git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613`, `git log 3b8c` ou encore `git log 3b8c0a8`
 
 ## Avancer dans l'arbre
 
 Modifions notre fichier `index.html`{.fichier} :
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8" />
     <title>Ma maison page</title>
-</head>
-<body>
-<h1>Hello World !</h1>
-<h2>et bonjour Monde !</h2>
-</body>
+  </head>
+  <body>
+    <h1>Hello World !</h1>
+    <h2>et bonjour Monde !</h2>
+  </body>
 </html>
 ```
 
@@ -241,7 +240,7 @@ Un fichier a été modifié. Comme on a pas de nouveaux fichiers, et que l'on ve
 git commit -a -m"add french"
 ```
 
-On peut voir les logs (avec en prime deux nouvelles options, une de git pour ne pas avoir de pager une option de log pour  juste afficher  le message et le numéro du commit) : `git log --pretty=oneline`. J'obtiens :
+On peut voir les logs (avec en prime deux nouvelles options, une de git pour ne pas avoir de pager une option de log pour juste afficher le message et le numéro du commit) : `git log --pretty=oneline`. J'obtiens :
 
 ```shell
 11f5564cda69451538ff8036c1eb92834a585884 (HEAD -> main) add french
@@ -255,33 +254,30 @@ Ajoutons un fichier css à notre projet et faisons les liens avec le fichier htm
 Fichier `main.css`{.fichier} :
 
 ```css
-
 h1 {
   color: olive;
 }
-
 ```
 
 et le fichier `index.html`{.fichier} modifié :
 
 ```html
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8" />
     <title>Ma maison page</title>
-    
-    <link href="main.css" rel="stylesheet">
-</head>
-<body>
-<h1>Hello World !</h1>
-<h2>et bonjour Monde !</h2>
-</body>
+
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Hello World !</h1>
+    <h2>et bonjour Monde !</h2>
+  </body>
 </html>
 ```
 
-La commande `git status` m'indique qu'il existe un fichier non suivi (*main.css*) et que le fichier *index.html* a été modifié :
+La commande `git status` m'indique qu'il existe un fichier non suivi (_main.css_) et que le fichier _index.html_ a été modifié :
 
 ```shell
 Sur la branche main
@@ -298,7 +294,7 @@ aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "
 
 ```
 
-Faites un commit de tout ça (en n'oubliant pas d'ajouter *main.css* au stage avant le commit car l'option `-a` n'ajoute pas automatiquement au stage les fichiers non suivis) :
+Faites un commit de tout ça (en n'oubliant pas d'ajouter _main.css_ au stage avant le commit car l'option `-a` n'ajoute pas automatiquement au stage les fichiers non suivis) :
 
 ```shell
 git add main.css
@@ -336,7 +332,7 @@ Commençons par modifiez nos fichiers `main.css`{.fichier} et `index.html`{.fich
 
 On ajoute une règle pur les `<h2>` dans `main.css`{.fichier} :
 
-``` css
+```css
 h2 {
   color: blue;
 }
@@ -347,20 +343,20 @@ h1 {
 
 Et un petit paragraphe dans `index.html`{.fichier} :
 
-``` html
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8" />
     <title>Ma maison page</title>
-    
-    <link href="main.css" rel="stylesheet">
-</head>
-<body>
-<h1>Hello World !</h1>
-<h2>et bonjour Monde !</h2>
-<p>Comment allez-vous ? </p>
-</body>
+
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Hello World !</h1>
+    <h2>et bonjour Monde !</h2>
+    <p>Comment allez-vous ?</p>
+  </body>
 </html>
 ```
 
@@ -409,9 +405,9 @@ index 4a4e8ca..aca9293 100644
 
 ```
 
-Nous n'avons bien plus que les différences avec *main.css*.
+Nous n'avons bien plus que les différences avec _main.css_.
 
-Allez commitons tout ça : `git commit -a -m"h2 rule in css and p in html"`. Notez que le fichier *main.css* a bien été ajouté au stage avant le commit grâce à l'argument `-a`. Vérifiez le avec `git status` voir même un `git diff`.
+Allez commitons tout ça : `git commit -a -m"h2 rule in css and p in html"`. Notez que le fichier _main.css_ a bien été ajouté au stage avant le commit grâce à l'argument `-a`. Vérifiez le avec `git status` voir même un `git diff`.
 
 {% note %}
 La commande `git diff --cached` permet de faire le diff en prenant en compte le stage. Vous avez donc un diff entre le dernier commit et ce que vous avez fait depuis.
@@ -429,12 +425,12 @@ Il arrive parfois (souvent) de se rendre compte juste après un commit que l'on 
 
 Il est impératif qu'avant chaque commit il ne reste aucun fichier non suivi. Cependant, certains fichiers sont pré&sent dans le dossier mais on ne veut pas les inclure dans le projet git. On peut citer :
 
-* les fichiers `.DS_STORE`{.fichier} des macs,
-* les fichiers des ide, comme les fichiers `.vscode`{.fichier} de vscode
-* les fichiers de bibliothèques, comme le dossier *node_modules* lorsque l'on fait du web
-* ...
+- les fichiers `.DS_STORE`{.fichier} des macs,
+- les fichiers des ide, comme les fichiers `.vscode`{.fichier} de vscode
+- les fichiers de bibliothèques, comme le dossier _node_modules_ lorsque l'on fait du web
+- ...
 
-Pour que git ignore ces fichiers on utilise un fichier *.gitignore*) qui liste ces fichiers. Son [format](https://git-scm.com/docs/gitignore) est à la fois simple et efficace. On peut même avoir un fichier *.gitignore* par dossier du projet, donc utilisez le !
+Pour que git ignore ces fichiers on utilise un fichier _.gitignore_) qui liste ces fichiers. Son [format](https://git-scm.com/docs/gitignore) est à la fois simple et efficace. On peut même avoir un fichier _.gitignore_ par dossier du projet, donc utilisez le !
 
 Vous trouverez plein d'[exemples de `.gitignore`{.fichier}](https://github.com/github/gitignore), je vous conseille ne pas mettre plein de choses dont vous n'avez pas besoin. Ajoutez des lignes au `.gitignore`{.fichier} uniquement lorsque vous en avez besoin.
 
@@ -470,16 +466,16 @@ On fini par l'ajouter au projet par un commit : `git commit -m"add .gitignore"`.
 Les branches de git permettent d'avoir plusieurs histoires possible de mon projet.
 
 La principale utilisation des branches en développement est :
-  
-* l'ajout de nouvelles fonctionnalités. La fonctionnalité n'est ajoutée au main qu'une fois finie. .
-* la correction de bug. Une fois le bug corrigé, on ajoute la correction au main.
+
+- l'ajout de nouvelles fonctionnalités. La fonctionnalité n'est ajoutée au main qu'une fois finie. .
+- la correction de bug. Une fois le bug corrigé, on ajoute la correction au main.
 
 Ceci nous assure que la branche `main` est **TOUJOURS** un projet fonctionnel.
 
 A part ces branches temporaires, on a parfois besoin de branches plus pérennes comme :
 
-* la gestion des versions différentes de l'application à maintenir
-* une branche qui contient le build d'un site web statique par exemple.
+- la gestion des versions différentes de l'application à maintenir
+- une branche qui contient le build d'un site web statique par exemple.
 
 La commande `git branch` nous indique les branches que nous avons. Pour l'instant nous n'avons que la branche par défaut : `main`.
 
@@ -491,42 +487,50 @@ Si l'on refait la commande `git branch`, on voit qu'on a deux branches et qu'on 
 
 On peut maintenant tranquillement ajouter du js à notre projet :
 
-* On ajoute le fichier *main.js*
+- On ajoute le fichier _main.js_
 
   ```javascript
   let paragraph = document.getElementById("couleur");
 
-  paragraph.addEventListener("mouseenter", function( event ) {   
-    event.target.style.color = "purple";
-  }, false);
+  paragraph.addEventListener(
+    "mouseenter",
+    function (event) {
+      event.target.style.color = "purple";
+    },
+    false
+  );
 
-  paragraph.addEventListener("mouseleave", function( event ) {   
-    event.target.style.color = "black";
-  }, false);
+  paragraph.addEventListener(
+    "mouseleave",
+    function (event) {
+      event.target.style.color = "black";
+    },
+    false
+  );
   ```
 
-* et on modifie le fichier *index.html* :
+- et on modifie le fichier _index.html_ :
 
-    ```html
-    <!doctype html>
-    <html>
+  ```html
+  <!DOCTYPE html>
+  <html>
     <head>
-        <meta charset="utf-8"/>
-        <title>Ma maison page</title>
-        
-        <link href="main.css" rel="stylesheet">
+      <meta charset="utf-8" />
+      <title>Ma maison page</title>
+
+      <link href="main.css" rel="stylesheet" />
     </head>
     <body>
-    <h1>Hello World !</h1>
-    <h2>et bonjour Monde !</h2>
-    <p id="couleur">Comment allez-vous ? </p>
-    
-    <script src="main.js"></script>
-    </body>
-    </html>
-    ```
+      <h1>Hello World !</h1>
+      <h2>et bonjour Monde !</h2>
+      <p id="couleur">Comment allez-vous ?</p>
 
-On peut maintenant commiter le tout (en commençant pas ajouter les fichiers *main.js* et *index.html* au stage bien sur avec la commande `git add main.js index.html`) : `git commit m"add js"`.
+      <script src="main.js"></script>
+    </body>
+  </html>
+  ```
+
+On peut maintenant commiter le tout (en commençant pas ajouter les fichiers _main.js_ et _index.html_ au stage bien sur avec la commande `git add main.js index.html`) : `git commit m"add js"`.
 
 Un `git log --oneline` nous montre bien que l'on est maintenant sur une nouvelle branche :
 
@@ -546,19 +550,19 @@ Si l'on revient à la branche `main` avec la commande `git checkout main` on voi
 Faisons une modification du fichier `index.html`{.fichier} de la branche `main` en ajoutant une phrase au paragraphe :
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8" />
     <title>Ma maison page</title>
 
-    <link href="main.css" rel="stylesheet">
-</head>
-<body>
-<h1>Hello World !</h1>
-<h2>et bonjour Monde !</h2>
-<p>Comment allez-vous ?  Bien ou quoi ?</p>
-</body>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Hello World !</h1>
+    <h2>et bonjour Monde !</h2>
+    <p>Comment allez-vous ? Bien ou quoi ?</p>
+  </body>
 </html>
 ```
 
@@ -583,7 +587,7 @@ Et si l'on veut voir le graphe des dépendances on peut ajouter l'argument `--gr
 ```shell
 * a2ac886 (HEAD -> main) parlons jeune
 | * f7907be (js) add js
-|/  
+|/
 * 35609dd add .gitignore
 * 7d2fd72 h2 rule in css and p in html
 * a3c3fdc add css and link to html
@@ -597,8 +601,8 @@ Si l'on veut maintenant mettre notre branche expérimentale (`js`) dans la branc
 
 Nous allons donc procéder comme suit :
 
-  1. depuis la branche `js`, on va la faire commencer à la fin de `main`
-  2. on va "*merger*" la branche `js` à la suite de la branche `main`.
+1. depuis la branche `js`, on va la faire commencer à la fin de `main`
+2. on va "_merger_" la branche `js` à la suite de la branche `main`.
 
 On aura donc à la fin un joli historique qui fait comme si j'avais ajouter mon `js` à la suite du `main` sans autres branches.
 
@@ -622,46 +626,46 @@ En essayant d'ajouter les derniers commits de `main` au début de js, git a un s
 Son soucis est dans le fichier `index.html`{.fichier}. Regardons le :
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8" />
     <title>Ma maison page</title>
 
-    <link href="main.css" rel="stylesheet">
-</head>
-<body>
-<h1>Hello World !</h1>
-<h2>et bonjour Monde !</h2>
-<<<<<<< HEAD
-<p>Comment allez-vous ?  Bien ou quoi ?</p>
-=======
-<p id="couleur">Comment allez-vous ? </p>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Hello World !</h1>
+    <h2>et bonjour Monde !</h2>
+    <<<<<<< HEAD
+    <p>Comment allez-vous ? Bien ou quoi ?</p>
+    =======
+    <p id="couleur">Comment allez-vous ?</p>
 
-<script src="main.js"></script>
->>>>>>> f7907be... add js
-</body>
+    <script src="main.js"></script>
+    >>>>>>> f7907be... add js
+  </body>
 </html>
 ```
 
-Horreur, c'est tout cassé. Mais au final c'est compréhensible. Le haut est `HEAD` (donc `main`) et le bas c'est ce que j'ai (la branche `js`). Pour que les deux soient cohérent on modifie le fichier pour qu'il intègre nos modifications conjointes  :
+Horreur, c'est tout cassé. Mais au final c'est compréhensible. Le haut est `HEAD` (donc `main`) et le bas c'est ce que j'ai (la branche `js`). Pour que les deux soient cohérent on modifie le fichier pour qu'il intègre nos modifications conjointes :
 
-``` html
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8"/>
+  <head>
+    <meta charset="utf-8" />
     <title>Ma maison page</title>
 
-    <link href="main.css" rel="stylesheet">
-</head>
-<body>
-<h1>Hello World !</h1>
-<h2>et bonjour Monde !</h2>
-<p id="couleur">Comment allez-vous ?  Bien ou quoi ?</p>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Hello World !</h1>
+    <h2>et bonjour Monde !</h2>
+    <p id="couleur">Comment allez-vous ? Bien ou quoi ?</p>
 
-<script src="main.js"></script>
-</body>
+    <script src="main.js"></script>
+  </body>
 </html>
 ```
 
@@ -695,14 +699,14 @@ A---B---C---D ← main
 
 Il ne nous reste plus qu'à fusionner `js` dans `main` (ce qui devrait se faire sans soucis puisqu'elles se suivent). Pour cela :
 
-  1. on se place sur la branche `main` : `git checkout main`
-  2. on fusionne la branche `js` sur `main` : `git merge js`
+1. on se place sur la branche `main` : `git checkout main`
+2. on fusionne la branche `js` sur `main` : `git merge js`
 
 Un `it log --oneline --all --graph` montre que les deux branches sont identique, on peut maintenant supprimer la branche `js` : `git branch -d js`
 
 #### Merge
 
-"*Merger*" revient à fusionner une branche dans une autre. Si les deux branches ne sont pas linéairement dépendante, par exemple comme ça :
+"_Merger_" revient à fusionner une branche dans une autre. Si les deux branches ne sont pas linéairement dépendante, par exemple comme ça :
 
 ```text
 A---B---C---D ← main
@@ -760,14 +764,14 @@ Il y a 3 commandes git qui permettent de gérer l'historique [reset, restore et 
 
 On va voir plusieurs cas pratiques :
 
-* revenir au dernier commit. Le dernier commit est appelé *HEAD* par git.
-  * supprimer  des modifications faites à un fichier pour revenir à sa version *HEAD* : `git restore index.html` par exemple reprend la version du `index.html` du dernier commit de l'historique.
-  * vider le stage : `git reset` (ou `git reset HEAD nom_de-fichier` pour un stager un unique fichier).
-  * revenir au dernier commit et supprimer toutes les modification faites  : `git reset --hard`. Attention cela supprime du code...
-* revenir à un commit plus éloignés. On peut y acceder par son numéro ou par une référence par rapport au dernier commit (nommé aussi HEAD). Ainsi HEAD signifie le dernier commit, HEAD~1 l'avant dernier, HEAD~2 l'antépénultième et ainsi de suite.
-  * regarder un ancien endroit dans le projet : `git checkout 7d2fd72` par exemple crée une nouvelle branche temporaire (nommée *HEAD détachée*) pour voir à quoi ressemblait notre projet au commit *7d2fd72* (on a bien une règle h2 à notre css). Si l'on a rien modifié, un simple `git checkout main` reviendra à l'état courant du projet. Si l'on a modifié des fichiers, il faut commencer par revenir à l'état initial
-  * revenir à un commit plus lointain :
-    * `git reset numéro_commit` reviendra au commit déterminé mais laissera vos modifications.
-    * `git reset numéro_commit --hard` reviendra au commit déterminé mais supprimera vos modifications. Attention vous allez perdre des modifications !
-* remettre un seul fichier à un état antérieur : `git checkout 7d2fd72 index.html` prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du `main` : `git checkout main index.html`
-* undo un commit : `git revert 7d2fd72` va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l'on veut). Cela ne change pas l'historique en supprimant le commit undoé, ça rajoute un commit qui le undo.
+- revenir au dernier commit. Le dernier commit est appelé _HEAD_ par git.
+  - supprimer des modifications faites à un fichier pour revenir à sa version _HEAD_ : `git restore index.html` par exemple reprend la version du `index.html` du dernier commit de l'historique.
+  - vider le stage : `git reset` (ou `git reset HEAD nom_de-fichier` pour un stager un unique fichier).
+  - revenir au dernier commit et supprimer toutes les modification faites : `git reset --hard`. Attention cela supprime du code...
+- revenir à un commit plus éloignés. On peut y acceder par son numéro ou par une référence par rapport au dernier commit (nommé aussi HEAD). Ainsi HEAD signifie le dernier commit, HEAD~1 l'avant dernier, HEAD~2 l'antépénultième et ainsi de suite.
+  - regarder un ancien endroit dans le projet : `git checkout 7d2fd72` par exemple crée une nouvelle branche temporaire (nommée _HEAD détachée_) pour voir à quoi ressemblait notre projet au commit _7d2fd72_ (on a bien une règle h2 à notre css). Si l'on a rien modifié, un simple `git checkout main` reviendra à l'état courant du projet. Si l'on a modifié des fichiers, il faut commencer par revenir à l'état initial
+  - revenir à un commit plus lointain :
+    - `git reset numéro_commit` reviendra au commit déterminé mais laissera vos modifications.
+    - `git reset numéro_commit --hard` reviendra au commit déterminé mais supprimera vos modifications. Attention vous allez perdre des modifications !
+- remettre un seul fichier à un état antérieur : `git checkout 7d2fd72 index.html` prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du `main` : `git checkout main index.html`
+- undo un commit : `git revert 7d2fd72` va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l'on veut). Cela ne change pas l'historique en supprimant le commit undoé, ça rajoute un commit qui le undo.
