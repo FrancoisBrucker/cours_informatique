@@ -304,7 +304,8 @@ Ici les messages, les chiffres et les clés sont des mots de $\\{0, 1\\}^L$ et o
 {% lien %}
 Le ou exclusif en plus d'être simple à calculer est plein de super propriétés et c'est pour ça qu'il est utilisé partout :
 
-<https://florian.github.io//xor-trick/>
+<https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
+
 {% endlien %}
 
 <div>
@@ -375,6 +376,22 @@ Ceci pose les bases que tout code doit avoir une clé choisie uniformément et i
 {% endnote %}
 
 Attention cependant.
+
+### Retrouver ce qui était caché
+
+Attention aux propriétés cachées. Par exemple, supposons que $x = 12$ et $y = 34$. Que valent ces deux variables avec le code ci-dessous ?
+
+```text
+x = x + y
+y = x - y
+x = x - y
+```
+
+Oui, les deux variables ont été échangées sans variables intermédiaires ! On peut faire la même chose (et d'autres choses encore) avec le ou exclusif, qui est à la base de nombres d'astuces potentiellement dévastatrice pour le secret. voir le lien ci-dessous pour quelques exemples :
+
+{% lien %}
+<https://florian.github.io/xor-trick/>
+{% endlien %}
 
 ### Ne répétez pas la clé
 
@@ -472,4 +489,4 @@ Alice <-------------> Mallory <--------------> Bob
 
 ```
 
-Si Mallory se fait passer d'un côté pour Bob et de l'autre côté pour Alice, aucun des deux ne peux le soupçonner.
+Si Mallory se fait passer d'un côté pour Bob et de l'autre côté pour Alice, aucun des deux ne peut le soupçonner.

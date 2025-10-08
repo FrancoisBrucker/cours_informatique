@@ -146,24 +146,39 @@ Outre ce qu'on a vu au préalable l'usage d'un SCM au quotidien nécessite quelq
 
 ### Sha
 
-> TBD doc
+{% lien %}
+<https://fr.wikipedia.org/wiki/SHA-1>
+{% endlien %}
+
+À tout objet de git est associé un nombre écrit en hexadécimal correspondant à son hash avec [la fonction de hachage](/cours/algorithmie/structure-dictionnaire/fonctions-hash/){.interne} sha-1.
+
+Ceci permet de retrouver de façon unique (au moins en probabilité et sûrement pour un projet donné) tout ce que stocke git.
 
 > TBD projet voir le sha.
 
 ### Diff
 
-> TBD trouver des diff avec git et en ligne de commande avec diff
+On a déjà vu le diff des fichiers lors de nos commits et en particulier lorsque l'on a résolu un conflit de fusion. Cela vaut le coût de connaître le format utilisé :
 
 {% lien %}
 
-- [format diff](https://en.m.wikipedia.org/wiki/Diff)
-- Commande diff au terminal :
-  - [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8)
-  - [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk)
+- [format diff](https://www.math.utah.edu/docs/info/diff_3.html)
+- [résumé en français](https://www.linuxtricks.fr/wiki/diff-et-patch-sous-linux)
 
 {% endlien %}
 
-Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur [le problème de l'alignement de séquences](/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/){.interne}. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :
+Notez que l'on peut faire nous même des diff au terminal :
+
+{% lien %}
+
+Commande diff au terminal :
+
+- [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8)
+- [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk)
+
+{% endlien %}
+
+Les algorithmes utilisés pour faire un diff sont basés sur [le problème de l'alignement de séquences](/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/){.interne}. Ils ne travaillent cependant sur des caractères mais sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :
 
 {% lien %}
 
@@ -187,13 +202,23 @@ Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouv
 - via un web token
 - via une clé ssh
 
+L'accès à l'origin va déterminer l'accès. Vous pouvez le voir dans le fichier de configuration qui est par défaut `.git/config`{.fichier} dans la racine de votre projet.
+
 #### Web token
 
 A priori se fait tout seul si vous utilisez l'application.
 
 > TBD à étoffer voir sur préférence du projet.
 
+
 #### Clés ssh
+
+```
+[remote "origin"]
+        url = git@github.com:FrancoisBrucker/cours_informatique.git
+        fetch = +refs/heads/*:refs/remotes/origin/*
+
+```
 
 Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
 

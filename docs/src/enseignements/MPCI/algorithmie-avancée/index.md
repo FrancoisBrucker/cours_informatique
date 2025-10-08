@@ -124,9 +124,15 @@ L'ET de l'année dernière :
 
 ### DS
 
-> TBD le faire.
+[sujet du DS](./DS-25-26/ds.pdf)
 
-### Cryptographe
+### Cryptographie
+
+{% aller %}
+
+[Sécurité](/cours/sécurité/)
+
+{% endaller %}
 
 > TBD en 2 semaines
 > algo
@@ -143,6 +149,10 @@ L'ET de l'année dernière :
 > - méthode probabiliste ?
 > - ...
 
+## Annales
+
+- [DS 24/25](./DS-24-25/ds.pdf)
+- [ET 24/25](./DS-24-25/et.pdf)
 <!-- ### Peut-être 
 
 - Langage C
