@@ -137,8 +137,80 @@ Nous allons utiliser <https://github.com/> comme dépôt commun de nos projet. L
 ### Projet : local et origine
 
 {% aller %}
-[Projet local et origin](./github-desktop){.interne}
+[Projet avec github desktop](./github-desktop){.interne}
 {% endaller %}
+
+## Autres Usages courants
+
+Outre ce qu'on a vu au préalable l'usage d'un SCM au quotidien nécessite quelques connaissances supplémentaires qui permettent de que nous allons aborder maintenant.
+
+### Altération et modification de l'historique
+
+{% aller %}
+[Besoins de gestion de l'historique](./besoins-historique){.interne}
+{% endaller %}
+
+> TBD projet avec desktop voir <https://docs.github.com/en/desktop> partie managing commits.
+
+### sha
+
+> TBD doc
+
+> TBD projet voir le sha.
+
+### Diff
+
+> TBD trouver des diff avec git et en ligne de commande avec diff
+
+{% lien %}
+
+- [format diff](https://en.m.wikipedia.org/wiki/Diff)
+- Commande diff au terminal :
+  - [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8)
+  - [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk)
+
+{% endlien %}
+
+Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur [le problème de l'alignement de séquences](/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/){.interne}. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :
+
+{% lien %}
+
+- <https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a>
+- <https://ably.com/blog/practical-guide-to-diff-algorithms>
+
+{% endlien %}
+
+### Authentification
+
+Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :
+
+- via un web token
+- via une clé ssh
+
+#### Web token
+
+A priori se fait tout seul si vous utilisez l'application.
+
+> TBD à étoffer voir sur préférence du projet.
+
+#### Clés ssh
+
+Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
+
+Commencez par créer une clé :
+
+{% aller %}
+[créer et utiliser une clé ssh](/cours/système-et-réseau/ssh/){.interne}
+{% endaller %}
+
+Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
+
+### Github actions
+
+> TBD :
+>
+> - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>
+> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk>
 
 ## git
 
@@ -204,70 +276,6 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 - gh-dash : <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
 
 {% endlien %}
-
-## Autres Usages courants
-
-Outre ce qu'on a vu au préalable l'usage d'un SCM au quotidien nécessite quelques connaissances supplémentaires qui permettent de que nous allons aborder maintenant.
-
-### Altération et modification de l'historique
-
-{% aller %}
-[Besoins de gestion de l'historique](./besoins-historique){.interne}
-{% endaller %}
-
-### Authentification
-
-Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :
-
-- via un web token
-- via une clé ssh
-
-#### Web token
-
-A priori se fait tout seul si vous utilisez l'application.
-
-> TBD à étoffer
-
-#### Clés ssh
-
-Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
-
-Commencez par créer une clé :
-
-{% aller %}
-[créer et utiliser une clé ssh](/cours/système-et-réseau/ssh/){.interne}
-{% endaller %}
-
-Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
-
-### Diff
-
-> TBD trouver des diff avec git et en ligne de commande avec diff
-
-{% lien %}
-
-- [format diff](https://en.m.wikipedia.org/wiki/Diff)
-- Commande diff au terminal :
-  - [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8)
-  - [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk)
-
-{% endlien %}
-
-Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur [le problème de l'alignement de séquences](/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/){.interne}. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :
-
-{% lien %}
-
-- <https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a>
-- <https://ably.com/blog/practical-guide-to-diff-algorithms>
-
-{% endlien %}
-
-### Github actions
-
-> TBD :
->
-> - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>
-> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk>
 
 ## plomberie
 

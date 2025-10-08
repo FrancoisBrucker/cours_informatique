@@ -46,3 +46,11 @@ Un message de commit contient forcément **1 ligne** décrivant le commit (on ve
 à étoffer (faire un exemple) en utilisant les liens précédent 
 
 -->
+### .gitignore
+
+{% lien %}
+
+- [fichier .gitignore avec github](https://docs.github.com/fr/get-started/git-basics/ignoring-files)
+- [tuto en français](https://www.youtube.com/watch?v=gkzBzBomYyI)
+
+{% endlien %}

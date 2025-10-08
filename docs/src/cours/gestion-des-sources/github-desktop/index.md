@@ -14,7 +14,7 @@ Travailler depuis le site <ahttps://github.com/> uniquement est très limitant. 
 
 {% lien %}
 
-Il suffit d'aller sur cette page : <https://desktop.github.com/> pour télécharger puis installer l'application.
+<https://desktop.github.com/> et sa [documentation](https://docs.github.com/en/desktop)
 
 {% endlien %}
 
@@ -54,12 +54,55 @@ Ignorez les fenêtres si vous en avez et arrivez là :
 Allez dans les préférences (`file > options` sous windows ; `github desktop > préférences` sous mac) et vérifiez que :
 
 - _"Accounts"_ : pointe bien vers votre compte github
-- _"Integration"_ : soit lié à vscode et au terminal
+- _"Integration"_ :
+  - external editor : mettez vscode (ou votre éditeur de code préféré)
+  - shell : votre terminal préféré
 - _"Git"_ : connaisse bien votre vrai nom (pas de pseudo) et une adresse mail où vous joindre.
 
 {% info %}
 On le rappelle, dans la gestion des sources il faut pouvoir contacter rapidement toute personne ayant fait un commit pour lui demander des explications ou de faire des corrections. Il faut donc pouvoir **toujours** identifier l'auteur par un nom et une adresse mail valide.
 
+{% endinfo %}
+
+Dans l'onglet de préférences git cliquez sur _"edit your global git config"_ :
+
+![pref git](./desktop-pref-git.png)
+
+Ceci va vous ouvrir l'éditeur que vous avez choisi dans les préférences integration avec le fichier de configuration global de git. Assurez vous d'avoir la préférence ci-dessous :
+
+```text
+[pull]
+	rebase = merges
+```
+
+Qui va par défaut faire un rebase plutôt qu'un merge lorsque l'on récupère les modification de l'origine.
+
+{% info %}
+Mon fichier de configuration global de git ressemble à ça :
+
+```text
+[user]
+	name = François Brucker
+	email = francois.brucker@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[pager]
+	log = false
+[pull]
+	rebase = merges
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[init]
+	defaultBranch = main
+
+```
+
+Nous y reviendrons lorsque l'on utilisera directement git en ligne de commande.
 {% endinfo %}
 
 ## Projets
@@ -221,7 +264,9 @@ Et on commit les changements :
 origin : A -> B
 ```
 
-> TBD on peut écrire ce que l'on veut ! Faire plusieurs exemples, du moment qu'on supprime les références aux commits en conflit. Faire un exemple ou on choisi. on fait une union ou même on fait autre chose.
+Vous pouvez faire toutes les modifications que vous voulez, , du moment qu'on supprime les références aux commits en conflit.
+
+> TBD donner des exemple avec le conflit et les modification  on fait une union ou même on fait autre chose.
 
 #### situation à la maison
 
@@ -337,23 +382,20 @@ Il y a au final tous les commit sur github (victoire !)
 
 ## Liste des fichiers à ignorer
 
-> TBD faire un fichier TBD.txt que l'on met en `.gitingore`{.fichier}
-> TBD ajouter des choses à faire.
+Allez dans les préférences du projet `Repository > repository settings` puis choisissez l'onglet `ignored files` :
 
-Un dossier de projet va contenir de nombreux fichiers que l'on ne veut pas mettre dans la sauvegarde :
+![pref projet](./desktop-gitignore.png)
 
-- les fichiers relatif à votre éditeur de texte (comme les fichiers `.vscode` où vscode range ses préférences),
-- les environnements virtuels python (tout le dossier `.venv` n'est **jamais** à sauvegarder)
+Ceci vous permet d'ajouter des fichiers à ignorer. Vous voyez sur la copie d'écran que j'ai ajouté aux fichiers ignorés :
+
 - la poubelle du Macintosh (le dossier `.DS_Store` par exemple)
+- les fichiers relatif à votre éditeur de texte (comme les fichiers `.vscode` où vscode range ses préférences),
+- les fichiers temporaires et de log
 - ...
 
-Pour cela, le système git utilise un fichier nommé `.gitignore` qui est placé à la racine de votre projet et qui contient la liste des dossiers et fichiers **à ne pas prendre en compte**.
-
-Accédez aux liens suivants pour voir comment tout ça fonctionne :
-
 {% lien %}
-
-- [fichier .gitignore avec github](https://docs.github.com/fr/get-started/git-basics/ignoring-files)
-- [tuto en français](https://www.youtube.com/watch?v=gkzBzBomYyI)
-
+[une liste de fichiers courant à ignorer](https://gist.github.com/octocat/9257657)
 {% endlien %}
+
+> TBD faire un fichier TBD.txt que l'on met en `.gitignore`{.fichier}
+> TBD ajouter des choses à faire.
