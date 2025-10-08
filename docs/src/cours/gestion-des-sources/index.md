@@ -197,38 +197,9 @@ Les algorithmes utilisés pour faire un diff sont basés sur [le problème de l'
 
 ### Authentification
 
-Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :
-
-- via un web token
-- via une clé ssh
-
-L'accès à l'origin va déterminer l'accès. Vous pouvez le voir dans le fichier de configuration qui est par défaut `.git/config`{.fichier} dans la racine de votre projet.
-
-#### Web token
-
-A priori se fait tout seul si vous utilisez l'application.
-
-> TBD à étoffer voir sur préférence du projet.
-
-
-#### Clés ssh
-
-```
-[remote "origin"]
-        url = git@github.com:FrancoisBrucker/cours_informatique.git
-        fetch = +refs/heads/*:refs/remotes/origin/*
-
-```
-
-Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
-
-Commencez par créer une clé :
-
 {% aller %}
-[créer et utiliser une clé ssh](/cours/système-et-réseau/ssh/){.interne}
+[Authentification à l'origine](./github-authentification){.interne}
 {% endaller %}
-
-Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
 
 ### Github actions
 
@@ -239,11 +210,6 @@ Puis renseignez **votre clé publique** dans [votre profil github](https://githu
 
 ## git
 
-> TBD ligne de commande
-> TBD commencer par la config
-> TBD reprendre tout en créant un projet depuis la maison et on montre les fichier
-
-
 {% lien %}
 
 - [Linus Torvalds a crée git en 10 jours](https://www.youtube.com/shorts/rK3IOMr6eSs)  (et le 11ème il s'est reposé)
@@ -251,10 +217,7 @@ Puis renseignez **votre clé publique** dans [votre profil github](https://githu
 
 {% endlien %}
 
-> TBD dire que c'est pour créer un repo sans github. Il faut donc que tout soit configuré chez soit (important car on doit savoir qui commit)
->
-> TBD projet en ligne de commande.
-> TBD utiliser tous les usages (même add/reset -p)
+Est l'outil utilisé par github. C'est mieux si vous avez installé ce logiciel sur votre ordinateur et que vous savez un petit peut vous en servir. Cette partie vous permettra d'installer git et de le configurer. On verra aussi comment créer et cloner un projet pour github.
 
 ### Installation et configuration
 
@@ -272,11 +235,6 @@ L'installation et la configuration de git n'est pas très technique. Cela vaut l
 {% aller %}
 [Configurer et initialiser ses projets git](./git-init){.interne}
 {% endaller %}
-
-### Projet
-
-> TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
-> TBD utiliser `git diff` <https://www.youtube.com/watch?v=F1van9nShjA> et ref : <https://git-scm.com/docs/git-diff>
 
 ## Outils
 
@@ -302,31 +260,32 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 
 {% endlien %}
 
-## plomberie
-
-### Format diff
-
-### hash
-
-### objets de git
-
-
-
-
-
-
-## Usage
+## Bonnes pratiques
 
 {% aller %}
 
-1. [Configuration pour une utilisation quotidienne](./usage-quotidien){.interne}
-2. [Bonnes pratiques](./bonnes-pratiques){.interne}
+[Bonnes pratiques](./bonnes-pratiques){.interne}
 
 {% endaller %}
 
+## Porcelaine et plomberie de git
 
+> TBD ce que ça veut dire.
 
-## Git plomberie
+### porcelaine
+
+{% aller %}
+[Projet web en ligne de commande](./git){.interne}
+{% endaller %}
+
+> TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
+> TBD utiliser `git diff` <https://www.youtube.com/watch?v=F1van9nShjA> et ref : <https://git-scm.com/docs/git-diff>
+> TBD ligne de commande
+> TBD reprendre tout en créant un projet depuis la maison et on montre les fichier
+> TBD projet en ligne de commande.
+> TBD utiliser tous les usages (même add/reset -p)
+
+### plomberie
 
 > TBD expliquer porcelaine/plomberie
 > TBD un tag c'est un objet. Commit, tree ou blob.
@@ -339,9 +298,6 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 > TBD reflog.
 > TBD git sha. Intro : <https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d> et <https://graphite.dev/guides/git-hash>. Mieux : <https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git>
 
-{% aller %}
-[Cours détaillé sur le fonctionnement de Git](./git){.interne}
-{% endaller %}
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.
 

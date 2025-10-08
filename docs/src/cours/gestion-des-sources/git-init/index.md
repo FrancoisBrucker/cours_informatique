@@ -4,8 +4,7 @@ title: Installation et configuration de Git
 
 eleventyNavigation:
   prerequis:
-    - "/cours/coder-et-développer/ordinateur-développement/fichiers-navigation/"
-    - "/cours/coder-et-développer/ordinateur-développement/terminal/"
+    - "/cours/système-et-réseau/bases-système/terminal/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -38,7 +37,7 @@ apt-get install git
 
 {% details "Sous mac" %}
 
-On utilise [brew](/cours/coder-et-développer/ordinateur-développement/brew){.interne} :
+On utilise [brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne} :
 
 ```shell
 brew install git
@@ -48,11 +47,13 @@ brew install git
 
 {% details "Windows" %}
 
-Le package <https://gitforwindows.org/> est très bien.
+{% lien %}
+<https://learn.microsoft.com/fr-fr/windows/package-manager/winget/>
+{% endlien %}
 
-Gardez les paramètres par défaut lors de l'installation à part pour le choix de l'éditeur par défaut. Remplacez *vim* par *notepad++* par exemple (si vous n'avez pas [notepad++](https://notepad-plus-plus.org/), installez le) et surtout pour le choix des bibliothèques ssh à utiliser : choisissez **use external openssh** :
-
-![openssh](git-install-windows.png)
+```shell
+winget install --id Git.Git -e --source winget
+```
 
 {% enddetails %}
 
@@ -133,7 +134,13 @@ git config --global core.editor vim
 Vous n'utiliserez que très peu l'éditeur par défaut une fois que vous ferez vos commit avec l'option `-m`.
 
 {% info %}
-Vous pouvez également mettre votre [éditeur favori](https://docs.github.com/en/github/using-git/associating-text-editors-with-git) bien sur, mais `vim` sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.
+Vous pouvez également mettre votre [éditeur favori](https://docs.github.com/en/github/using-git/associating-text-editors-with-git) bien sur. Par exemple vscode :
+
+```shell
+git config --global core.editor "code --wait"
+```
+
+Mais `vim` sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.
 {% endinfo %}
 
 ### Configurations optionnelles

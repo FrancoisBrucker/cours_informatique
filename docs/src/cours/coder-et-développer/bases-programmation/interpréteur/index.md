@@ -52,7 +52,7 @@ Vous pourrez uniquement taper `python` dans un terminal pour exécuter l'interpr
 
 De même que sous Linux/Ubuntu, python est installé par défaut, mais pas le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
 
-Il va falloir installer python avec [brew](../ordinateur-développement/brew){.interne} puis. Dans [un terminal](../ordinateur-développement/terminal){.interne} tapez :
+Il va falloir installer python avec [brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne} puis. Dans [un terminal](/cours/système-et-réseau/bases-système/terminal/bases/){.interne} tapez :
 
 ```
 brew install python-tk

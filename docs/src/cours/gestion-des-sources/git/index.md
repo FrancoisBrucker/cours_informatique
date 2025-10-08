@@ -1,12 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Git dans les détails
-
-eleventyNavigation:
-  prerequis:
-    - "/cours/coder-et-développer/ordinateur-développement/fichiers-navigation/"
-    - "/cours/coder-et-développer/ordinateur-développement/terminal/"
+title: Git porcelaine
 
 eleventyComputed:
   eleventyNavigation:
