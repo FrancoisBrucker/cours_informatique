@@ -19,7 +19,7 @@ Que l'on travaille à plusieurs ou seul, posséder une version "_partageable_" d
 
 Un projet peut-être en lien avec de nombreuses copies distantes de celui-ci, que l'on appelle **_remote_**. Le projet y accède via son [url](/cours/web/anatomie-url/){.interne} (adresse internet ou dossier sur le même disque dur).
 
-### Clone
+## Clone
 
 Lorsque l'on travaille à plusieurs sur un projet on a coutume de partager, **_en plus_** de sa structure de sauvegarde personnelle, une structure commune nommée _origin_ par convention qui regroupe les branches utiles à tous. Pour cela, on commence par désigner la structure de sauvegarde partagée que l'on appelle `origin`. Ensuite, chaque participant au projet le **_clone_** :
 
@@ -44,7 +44,7 @@ On remarque que l'on a besoin que de la structure de sauvegarde pour l'origine, 
 L'opération de `fork` _ressemble_ au clonage mais [le but est différent](https://github.com/orgs/community/discussions/35849). Dans un clonage tous les participants interagissent directement avec l'origine, alors qu'un projet résultant d'un fork peut être vu comme un nouveau projet (il n'est pas en relation directe avec le projet initial).
 {% endinfo %}
 
-### Branches locales et distantes
+## Branches locales et distantes
 
 Après un clonage, la structure de sauvegarde locale contient, en plus du DAG des commits de l'`origin`, des références à la structure `origin` et à ses branches. Les branches de l'`origin` sont dites **_distantes_** (_remote_). Notez que si la copie contient un lien vers l'original le serveur origin n'a lui aucune information de la copie locale, il ne _sait_ même pas qu'elle existe.
 
@@ -61,7 +61,7 @@ Comme l'origine et la sauvegarde locales ont évoluées chacune de son côté de
 
 Pour cela, on commence par synchroniser la sauvegarde distante avec la sauvegarde locale, puis on envoie les évolutions locales vers l'origine.
 
-#### Synchronisation de branches distances vers locales
+### Synchronisation de branches distances vers locales
 
 La synchronisation se fait branche à branche. Dans l'exemple la sauvegarde locale suit deux branches distantes, `origin/main` et `origin/dev`. La branche feature n'est pas suivi, on ne s'en occupe donc pas : la sauvegarde locale n'est pas au courant qu'elle existe.
 
@@ -71,11 +71,11 @@ Seule la branche `origin/main` à divergé. Pour la synchroniser on commence par
 
 On a maintenant deux possibilités pour effectuer la synchronisation.
 
-##### Merge `origin/main` et `main`
+#### Merge `origin/main` et `main`
 
 ![origin merge](./origin-4-merge.png)
 
-##### Rebase `main` sur `origin/main`
+#### Rebase `main` sur `origin/main`
 
 ![origin rebase](./origin-4-rebase.png)
 
@@ -85,13 +85,15 @@ On a maintenant deux possibilités pour effectuer la synchronisation.
 Les commits locaux sont **réécrit**. Il ne faut pas faire de rebase si les commits initiaux étaient déjà sur le serveur origin. Cela causerait d'énorme problèmes aux autres utilisateurs qui référenceraient des commits qui ne sont plus accessibles (voir ci-après).
 {% endattention %}
 
-#### Synchronisation de branches locales vers distantes
+### Synchronisation de branches locales vers distantes
 
 Une fois les synchronisations de l'origine vers le serveur locales terminées, la synchronisation vers l'origine est aisée c'est un _fast-forward_ :
 
 ![origin fin synchronisation](./origin-5.png)
 
-### Interagir avec l'_origin_
+## Interagir avec l'_origin_
+
+### Sanctuariser l'historique de l'origine
 
 La principale règle à suivre lorsque l'on participe à un projet avec l'origin est :
 
@@ -142,3 +144,35 @@ Ne conservez en local que des références à des branches de l'origine utiles p
  {% endnote %}
 
 Cela vous évitera des synchronisation inutiles avec l'origin. Vous pourrez toujours plus tard, lorsque vous en aurez besoin, récupérer une référence de branches spécifique.
+
+### Fichiers ignorés
+
+Certains fichiers ne doivent pas être suivis. Par exemple :
+
+- les fichiers que produisent votre code comme les fichiers compilés
+- les bibliothèques externe que vous ne faite qu'utiliser
+- ...
+
+Mais aussi vos propres fichiers qui risquent d'entrer en collision avec ceux des autres utilisateurs comme
+
+- la configuration de votre IDE pour le projet,
+- vos fichiers temporaires
+- ...
+
+Et surtout les fichiers confidentiels que vous ne voulez surtout pas voir apparaître sur github :
+
+- les mots de passe de votre base de donnée,
+- le dossier mac `.DS_Store`{.fichier} contenant tous les fichiers supprimés
+- ...
+
+Ces fichiers doivent être ajoutés à une liste de fichier à ignorer, sans ça vous devrez toujours faire attention lorsque vous regarderez les différences entre l'index et le répertoire de travail.
+
+Par exemple, si le `fichier3.txt`{.fichier} n'est jamais à sauver, une fois ajoutée à la liste des fichiers à ignorer il n'apparaîtra pas comme une différence (mais on pourra toujours à tout moment l'ajouter) :
+
+![ignore list](./index-ignorelist.png)
+
+{% info %}
+La liste des fichier à ignorer est très pratique en code pour ignorer les environnements virtuels, les fichiers de configurations de l'IDE, les fichiers compilés, les bibliothèques partagées. Bref tout ce qui n'est pas _stricto sensu_ utile au code du projet.
+{% endinfo %}
+
+Pour les besoin du cours, nous ne l'inclurons pas dans les besoins suivant, mais on montrera comment faire en pratique lors des projets.

@@ -184,6 +184,26 @@ Le fichier `.gitattributes`{.fichier} donne à git des règles pour [modifier au
 Par exemple, pour les fichiers texte, de gérer automatiquement les caractères _à la ligne_ qui sont [différents sous unix, max et windows](https://fr.wikipedia.org/wiki/Fin_de_ligne).
 {% endinfo %}
 
+#### Liste des fichiers à ignorer
+
+Allez dans les préférences du projet `Repository > repository settings` puis choisissez l'onglet `ignored files` :
+
+![pref projet](./desktop-gitignore.png)
+
+Ceci vous permet de créer ou de modifier votre liste de fichiers à ignorer. Vous voyez sur la copie d'écran que j'ai ajouté aux fichiers ignorés :
+
+- la poubelle du Macintosh (le dossier `.DS_Store` par exemple)
+- les fichiers relatif à votre éditeur de texte (comme les fichiers `.vscode` où vscode range ses préférences),
+- les fichiers temporaires et de log
+- ...
+
+{% lien %}
+[une liste de fichiers courant à ignorer](https://gist.github.com/octocat/9257657)
+{% endlien %}
+
+> TBD faire un fichier TBD.txt que l'on met en `.gitignore`{.fichier}
+> TBD ajouter des choses à faire.
+
 #### Ajoutons des fichiers
 
 Utilisons vscode pour _"ouvrir un dossier"_ puis choisir le dossier contenant notre projet.
@@ -379,23 +399,3 @@ On peut maintenant pousser nos changements sur github sans soucis en cliquant su
 Il y a au final tous les commit sur github (victoire !)
 
 ![rebase 6](desktop-rebase-6.png)
-
-## Liste des fichiers à ignorer
-
-Allez dans les préférences du projet `Repository > repository settings` puis choisissez l'onglet `ignored files` :
-
-![pref projet](./desktop-gitignore.png)
-
-Ceci vous permet d'ajouter des fichiers à ignorer. Vous voyez sur la copie d'écran que j'ai ajouté aux fichiers ignorés :
-
-- la poubelle du Macintosh (le dossier `.DS_Store` par exemple)
-- les fichiers relatif à votre éditeur de texte (comme les fichiers `.vscode` où vscode range ses préférences),
-- les fichiers temporaires et de log
-- ...
-
-{% lien %}
-[une liste de fichiers courant à ignorer](https://gist.github.com/octocat/9257657)
-{% endlien %}
-
-> TBD faire un fichier TBD.txt que l'on met en `.gitignore`{.fichier}
-> TBD ajouter des choses à faire.

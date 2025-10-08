@@ -140,19 +140,11 @@ Nous allons utiliser <https://github.com/> comme dépôt commun de nos projet. L
 [Projet avec github desktop](./github-desktop){.interne}
 {% endaller %}
 
-## Autres Usages courants
+## Usage courant
 
 Outre ce qu'on a vu au préalable l'usage d'un SCM au quotidien nécessite quelques connaissances supplémentaires qui permettent de que nous allons aborder maintenant.
 
-### Altération et modification de l'historique
-
-{% aller %}
-[Besoins de gestion de l'historique](./besoins-historique){.interne}
-{% endaller %}
-
-> TBD projet avec desktop voir <https://docs.github.com/en/desktop> partie managing commits.
-
-### sha
+### Sha
 
 > TBD doc
 
@@ -179,6 +171,14 @@ Les algorithmes permettant de montrer les différences entre deux fichiers texte
 - <https://ably.com/blog/practical-guide-to-diff-algorithms>
 
 {% endlien %}
+
+### Altération et modification de l'historique
+
+{% aller %}
+[Besoins de gestion de l'historique](./besoins-historique){.interne}
+{% endaller %}
+
+> TBD projet avec desktop voir <https://docs.github.com/en/desktop> partie managing commits.
 
 ### Authentification
 

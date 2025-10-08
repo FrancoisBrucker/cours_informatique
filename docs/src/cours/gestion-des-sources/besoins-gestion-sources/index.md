@@ -102,20 +102,6 @@ L'index permet de ne pas avoir à tout sauvegarde en une fois. Par exemple dans 
 
 ![diff index sauve et  working directory](./index-diff-sauvegarde-work.png)
 
-#### fichiers ignorés
-
-Si vous avez des fichiers que vous ne voulez jamais suivre il faut les ajouter à une liste de fichier à ignorer. Sans ça vous devrez toujours faire attention lorsque vous regarderez les différences entre l'index et le répertoire de travail.
-
-Par exemple, si le `fichier3.txt`{.fichier} n'est jamais à sauver, une fois ajoutée à la liste des fichiers à ignorer il n'apparaîtra pas comme une différence (mais on pourra toujours à tout moment l'ajouter) :
-
-![ignore list](./index-ignorelist.png)
-
-{% info %}
-La liste des fichier à ignorer est très pratique en code pour ignorer les environnements virtuels, les fichiers de configurations de l'IDE, les fichiers compilés, les bibliothèques partagées. Bref tout ce qui n'est pas _stricto sensu_ utile au code du projet.
-{% endinfo %}
-
-Pour les besoin du cours, nous ne l'inclurons pas dans les besoins suivant, mais on montrera comment faire en pratique lors des projets.
-
 ## Faire évoluer le projet : commits et diff
 
 L'utilisation courante d'un système de gestion des sources est de faire progresser une branche donnée par des commits successifs sur celle-ci.
