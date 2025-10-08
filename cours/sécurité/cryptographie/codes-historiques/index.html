@@ -481,7 +481,7 @@ LZNXXGTTJ LL QH MNME RGJGYH XH FANEG LPJIS
 </svg>
 <div class="pl-8 mr-8">
 <p>Le ou exclusif en plus d'être simple à calculer est plein de super propriétés et c'est pour ça qu'il est utilisé partout :</p>
-<p><a href="https://florian.github.io//xor-trick/">https://florian.github.io//xor-trick/</a></p>
+<p><a href="https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/">https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/</a></p>
 </div></div>
 
 <div>
@@ -564,6 +564,20 @@ $$</p>
 </div></div>
 
 <p>Attention cependant.</p>
+<h3>Retrouver ce qui était caché</h3>
+<p>Attention aux propriétés cachées. Par exemple, supposons que $x = 12$ et $y = 34$. Que valent ces deux variables avec le code ci-dessous ?</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">x = x + y
+y = x - y
+x = x - y</code></pre>
+<p>Oui, les deux variables ont été échangées sans variables intermédiaires ! On peut faire la même chose (et d'autres choses encore) avec le ou exclusif, qui est à la base de nombres d'astuces potentiellement dévastatrice pour le secret. voir le lien ci-dessous pour quelques exemples :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://florian.github.io/xor-trick/">https://florian.github.io/xor-trick/</a></p>
+</div></div>
+
 <h3>Ne répétez pas la clé</h3>
 <p>La code de Vernam est inviolable si on ne possède aucune information supplémentaire. Si on chiffre deux messages différents avec la même clé $k \oplus m$ et $k \oplus m'$, Eve na qu'à combiner les deux messages chiffrées pour faire disparaître la clé : $k \oplus m \oplus k \oplus m' = k \oplus k \oplus m \oplus m' = m \oplus m'$. De là, si Eve sait que le message est en Français, il lui suffit de déplacer des mots sur le code pour voit apparaître d'autres mots :</p>
 <pre><code>  Je suis très bien protégé
@@ -635,7 +649,7 @@ $$</p>
 Alice &lt;-------------&gt; Mallory &lt;--------------&gt; Bob
 
 </code></pre>
-<p>Si Mallory se fait passer d'un côté pour Bob et de l'autre côté pour Alice, aucun des deux ne peux le soupçonner.</p>
+<p>Si Mallory se fait passer d'un côté pour Bob et de l'autre côté pour Alice, aucun des deux ne peut le soupçonner.</p>
 
 
 </article>
