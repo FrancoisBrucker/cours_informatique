@@ -119,27 +119,6 @@
 <h3>Message de commits</h3>
 <p>Utilisez un éditeur de texte que vous maîtrisez pour éditer le message de commit. Par défaut c'est <a href="https://fr.wikipedia.org/wiki/Vi">vi</a>, éditeur historique et présent sur toute machine unix qui est utilisé, mais qui n'est pas forcément votre éditeur de prédilection.</p>
 <p>Un message de commit contient forcément <strong>1 ligne</strong> décrivant le commit (on verra dans la partie suivante des méthodes pour les écrire). Puis, si nécessaire, une description plus long (souvent inutile).</p>
-<h2>Fichier non suivis</h2>
-<p>Un dossier de projet va contenir de nombreux fichiers que l'on ne veut pas mettre dans la sauvegarde :</p>
-<ul>
-<li>les fichiers relatif à votre éditeur de texte (comme les fichiers <code>.vscode</code> où vscode range ses préférences),</li>
-<li>les environnements virtuels python (tout le dossier <code>.venv</code> n'est <strong>jamais</strong> à sauvegarder)</li>
-<li>la poubelle du Macintosh (le dossier <code>.DS_Store</code> par exemple)</li>
-<li>...</li>
-</ul>
-<p>Pour cela, le système git utilise un fichier nommé <code>.gitignore</code> qui est placé à la racine de votre projet et qui contient la liste des dossiers et fichiers <strong>à ne pas prendre en compte</strong>.</p>
-<p>Accédez aux liens suivants pour voir comment tout ça fonctionne :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://docs.github.com/fr/get-started/git-basics/ignoring-files">fichier .gitignore avec github</a></li>
-<li><a href="https://www.youtube.com/watch?v=gkzBzBomYyI">tuto en français</a></li>
-</ul>
-</div></div>
-
 <!-- TBD 
 
 à étoffer (faire un exemple) en utilisant les liens précédent 

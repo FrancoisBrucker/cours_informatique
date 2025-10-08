@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Github</title>
+    <title>Usages</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Github</h1>
+  <h1>Usages</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-origin/">Github</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/besoins-historique/">Usages</a>
 
 </div></div>
 
@@ -96,51 +96,72 @@
     
   
 
-  <p>Pour pratiquer la gestion des sources, nous allons utiliser <a href="https://github.com/">https://github.com/</a> comme sauvegarde origine. Le site fonctionne avec logiciel de gestion de sources <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Il en existe d'autres, comme <a href="https://gitlab.com/">https://gitlab.com/</a> par exemple.</p>
+  <h2>Utiliser l'historique</h2>
+<p>Avoir un historique permet de tester des choses puis de revenir en arrière si nécessaire. Il existe plusieurs possibilités. Nous allons en examiner quatre dont nous donnerons les nom anglais, couramment utilisés.</p>
+<h3>revert</h3>
+<p>Permet d'enlever les modifications d'un commit en ajoutant un nouveau commit au HEAD.</p>
+<p>revenir à une position antérieure du projet en recréant un nouveau commit. C'est idéal pour revenir à une position antérieure du projet alors que les commits ont été mis sur l'origine (0n ne peut donc pas les supprimer).</p>
+<p><img src="revert.png" alt="revert"></p>
+<p>Le dernier commit de l'exemple précédent correspond à la suppression des effets du commit rouge dans l'avant dernier commit.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'<a href="https://docs.github.com/en/get-started">aide de github</a> est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.</p>
+<p>Supprimer les effet d'un merge est compliqué puisqu'il a des effets sur plusieurs branches : il faut spécifier quelle branche participant au merge prépondérante.</p>
 </div></div>
 
-<h2><span id="compte-github"></span> Création du compte github</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="compte-github" class="interne">Se créer un compte github</a></p>
+<h3>Cherry pick</h3>
+<p>Fait un peu le contraire de revert. Il re-applique des commit au HEAD. Pratique pour appliquer des modification d'une autre branche, comme appliquer à la branche main un des développement du dev !</p>
+<p><img src="cherry-pick.png" alt="cherry-pick"></p>
+<p>Le dernier commit de l'exemple précédent correspond à la ré-application des effets du commit rouge dans l'avant dernier commit.</p>
+<h3>restore</h3>
+<p>Replace un fichier tel que sauvé dans un commit dans le working tree ou l'index. Aucun commit n'est effectué.</p>
+<p><img src="restore.png" alt="restore"></p>
+<p>Dans l'exemple précédent, on a remis dans l'espace de travail un fichier tel qu'il était dans le commit rouge.</p>
+<h2>Modification d'historique</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Ne pas faire de modifications d'historique qui impacterait l'origine ! faite un revert/cherry pick/restore à la place.</p>
 </div></div>
 
-<h2><span id="tuto-github"></span> Utilisation de github</h2>
-<p>On va utiliser l'interface de github pour mettre en œuvre les principales fonctionnalités d'un système de gestion des sources :</p>
+<h3>reset</h3>
+<p>Un reset modifie l'état de la tête HEAD et de sa branche associée. Il y a plusieurs modifications possibles selon que l'on ne veut que modifier la position du HEAD ou également affecter le répertoire de travail ou l'index.</p>
+<p>Pour illustrer le propos, supposons que l'on soit dans le cas de l'exemple ci-dessous (le fichier bleu n'est pas suivi dans nos sauvegardes):</p>
+<p><img src="reset-1.png" alt="reset position initiale"></p>
+<p>Et on veut revenir à l'état du commit rouge.</p>
+<h4>soft</h4>
 <ul>
-<li>faire des commit</li>
-<li>gérer des branches</li>
-<li>fusionner des branches en résolvant des conflits</li>
-<li>voir l'historique du projet</li>
-<li>comment ajouter des membres à un projet</li>
+<li>Déplace la HEAD de la branche courante à un commit spécifique.</li>
+<li>Ne change ni l'index ni le répertoire de travail.</li>
 </ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="projet-github" class="interne">Comment créer un projet uniquement avec github</a></p>
-</div></div>
-
-<h2>Pull requests</h2>
-<p>Por mettre à jour notre projet, nous avons effectué <a href="../bonnes-pratiques/#pull-request" class="interne">une <strong><em>pull request</em></strong></a>. Cette façon d'ajouter des commits à la sauvegarde est une spécificité de github (et gitlab). Lorsque nous utiliserons git en ligne de commande, on mettra la sauvegarde directement à jour.</p>
-<h2>Github actions</h2>
-<blockquote>
-<p>TBD :</p>
+<p><img src="reset-soft.png" alt="reset soft"></p>
+<p>Ceci permet de préparer une nouvelle branche à partir du commit rouge par exemple tout en ne perdant pas le travail effectué jusque là.</p>
+<h4>mixed</h4>
 <ul>
-<li>permet de mettre en place du CI/CD : <a href="https://www.youtube.com/watch?v=scEDHsr3APg">https://www.youtube.com/watch?v=scEDHsr3APg</a></li>
-<li>github actions <a href="https://www.youtube.com/watch?v=p3W2XCD3smk">https://www.youtube.com/watch?v=p3W2XCD3smk</a></li>
+<li>Déplace la HEAD de la branche courante à un commit spécifique.</li>
+<li>reset l'index (pour correspondre à la nouvelle HEAD)</li>
+<li>laisse le répertoire de travail inchangé</li>
 </ul>
-</blockquote>
+<p><img src="reset-mixed.png" alt="reset mixed"></p>
+<p>Ceci permet de faire un commit spécifique en ajoutant juste ce qui est nécessaire au nouveau commit à l'index.</p>
+<h4>hard</h4>
+<ul>
+<li>Déplace la HEAD de la branche courante à un commit spécifique.</li>
+<li>reset l'index (pour correspondre à la nouvelle HEAD)</li>
+<li>modifie le répertoire de travail pour correspondre à la nouvelle HEAD</li>
+</ul>
+<p><img src="reset-hard.png" alt="reset hard"></p>
+<p>On oublie tout le développement fait après le commit rouge (y compris le fichier non suivi). Après avoir suivi une mauvaise piste par exemple.</p>
+<h3>squash</h3>
+<p>Pour avoir un histoire plus concis et avoir des commits thématiques (avoir une fonctionnalité implémentée en un seul commit alors qu'initialement on a eu besoin de plusieurs) pour le rendre plus lisible, on peut regrouper plusieurs commits successifs en un seul. Cela permet de supprimer des branches fusionnées pour linéariser l'historique. On appelle ceci faire un <strong><em>squash</em></strong> de commits.</p>
+<p>Par exemples si on veut regrouper les commits rouge, vert et bleu en un seul :</p>
+<p><img src="squash.png" alt="squash"></p>
 
 
 </article>

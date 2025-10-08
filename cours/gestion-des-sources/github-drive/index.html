@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gérer ses sources avec github</title>
+    <title>Github comme un drive</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Gérer ses sources avec github</h1>
+  <h1>Github comme un drive</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-SCM/">Gérer ses sources avec github</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-drive/">Github comme un drive</a>
 
 </div></div>
 
@@ -96,55 +96,31 @@
     
   
 
-  <p>Travailler depuis le site <a href="ahttps://github.com/">ahttps://github.com/</a> uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Il suffit d'aller sur cette page : <a href="https://desktop.github.com/">https://desktop.github.com/</a> pour télécharger puis installer l'application.</p>
-</div></div>
-
-<h2>Projet</h2>
-<p>On va reprendre le projet précédent pour créer son projet chez soit ainsi que l'origin en utilisant l'application desktop. Ceci vous permettra de savoir comment :</p>
-<ul>
-<li>faire un clone</li>
-<li>notion de gestion distribuée</li>
-<li>créer un nouveau projet</li>
-<li>l'index aussi nommé <em>stage</em></li>
-<li>faire un rebase</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="projet-github-desktop" class="interne">Comment créer un projet avec l'application desktop</a></p>
-</div></div>
-
-<h2>Authentification</h2>
-<p>Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :</p>
-<ul>
-<li>via un web token</li>
-<li>via une clé ssh</li>
-</ul>
-<h3>Web token</h3>
-<p>A priori se fait tout seul si vous utiliser l'application.</p>
-<blockquote>
-<p>TBD à étoffer</p>
+  <blockquote>
+<p>TBD un projet</p>
 </blockquote>
-<h3>Clés ssh</h3>
-<p>Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.</p>
-<p>Commencez par créer une clé :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/ssh/" class="interne">créer et utiliser une clé ssh</a></p>
-</div></div>
-
-<p>Puis renseignez <strong>votre clé publique</strong> dans <a href="https://github.com/settings/keys">votre profil github</a>.</p>
+<ol>
+<li>nouveau projet</li>
+<li>upload</li>
+<li>download zip</li>
+<li>versions :
+<ol>
+<li>mettre un tag : une release</li>
+<li>mettre une nouvelle version avec upload (est-ce que ça marche ?)</li>
+<li>faire une branche</li>
+<li>voir les évolutions</li>
+</ol>
+</li>
+</ol>
+<p>Ayez un <code class="fichier">readme.md</code> comme page d'accueil</p>
+<blockquote>
+<p>TBD attention à ne pas mettre dans le projet :</p>
+<ul>
+<li>les fichiers de vscode</li>
+<li>l'environnement virtuel</li>
+<li>les fichiers qui ne sont pas des sources (test, pyc, etc)</li>
+</ul>
+</blockquote>
 
 
 </article>

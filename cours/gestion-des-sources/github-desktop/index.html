@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-SCM/">Gérer ses sources avec github</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-SCM/projet-github-desktop/">SCM avec l&#39;application desktop</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-desktop/">SCM avec l&#39;application desktop</a>
 
 </div></div>
 
@@ -96,7 +96,24 @@
     
   
 
-  <p>Utilisation de l'application <a href="https://desktop.github.com/">https://desktop.github.com/</a> pour la gestion des sources d'un projet.</p>
+  <p>Travailler depuis le site <a href="ahttps://github.com/">ahttps://github.com/</a> uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il suffit d'aller sur cette page : <a href="https://desktop.github.com/">https://desktop.github.com/</a> pour télécharger puis installer l'application.</p>
+</div></div>
+
+<p>On va reprendre le projet précédent pour créer son projet chez soit ainsi que l'origin en utilisant l'application desktop. Ceci vous permettra de savoir comment :</p>
+<ul>
+<li>faire un clone</li>
+<li>notion de gestion distribuée</li>
+<li>créer un nouveau projet</li>
+<li>l'index aussi nommé <em>stage</em></li>
+<li>faire un rebase</li>
+</ul>
+<h2>Installation</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -130,11 +147,28 @@
 </div></div>
 
 <h2>Projets</h2>
-<p>Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser <a href="%5B/tutoriels/vsc-installation-et-prise-en-main%5D(https:/code.visualstudio.com/)">l'éditeur vscode</a>.</p>
+<p>Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser vscode :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Téléchargez et installer l'éditeur vscode : <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="cours/coder-et-d%C3%A9velopper/bases-programmation/interpr%C3%A9teur/%C3%A9diteur-vscode/prise-en-main/" class="interne">Prise en main de l'éditeur vscode</a>.</p>
+</div></div>
+
 <h3><span id="récupérer-projet"></span>Récupérer un projet</h3>
 <p>Commençons par récupérer le projet précédent et voir comment tout ça se passe dans l'application.</p>
 <ol>
-<li>choisissez &quot;*clone a project from the internet</li>
+<li>choisissez <em>&quot;clone a project from the internet&quot;</em></li>
 <li>vous devriez voir vos le projet dans l'onglet <em>&quot;<a href="http://Github.com">Github.com</a>&quot;</em></li>
 <li>en cliquant sur le bouton <em>&quot;clone&quot;</em>, votre projet va aller dans un dossier de votre ordinateur</li>
 </ol>
@@ -150,15 +184,19 @@
 <p>Un clone d'un projet contient toute l'histoire du projet, depuis le 1er commit.</p>
 </div></div>
 
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
+<p>La solution utilisée par <a href="https://git-scm.com/">git</a> consiste à ne pas choisir de serveur distant avec des règles précises : tout participant possède l'intégralité de la structure de sauvegarde comme s'il était seul développeur. On ajoute enfin souvent un participant fictif, nommé <strong><em>origin</em></strong>, qui est la référence commune et est synchronisée à l'envie par les développeurs. Cette structure distribuée permet :</p>
+<ul>
+<li>que chaque développeur puisse faire ses propres commits en local,</li>
+<li>d'avoir une (ou plusieurs) branches partagée par tous les utilisateurs (comme <code>main</code>, <code>dev</code>, <em>etc</em>) et synchronisés souvent entre les utilisateur et <em>origin</em> :
+<ul>
+<li>on appelle <strong><em>push</em></strong> les synchronisation des utilisateurs vers l'<em>origin</em></li>
+<li>on appelle <strong><em>pull</em></strong> les synchronisation de l'<em>origin</em> vers un utilisateur</li>
+</ul>
+</li>
+<li>de continuer un projet avec une nouvelle équipe, il suffit de copier <em>origin</em>.</li>
+</ul>
 <p>Chaque membre d'un projet aura chez lui une copie complète du projet, avec tous les commit et toutes les branches.</p>
 <p>Pour communiquer les changement effectué chez soit aux autre membre de l'équipe, une technique courante est de désigner un clone particulier qu'on nomme <code>origin</code> — c'est celui sur github — et qui sera le lieu où l'ou enverra nos modifications (<code>push</code>) et où l'on récupérera les dernières avancées des collaborateurs (<code>pull</code>)</p>
-</div></div>
-
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -255,7 +293,7 @@ Hibou petit duc</code></pre>
 <p>Et on commit les changements :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B</code></pre>
 <blockquote>
-<p>TBD on peut écrire ce que l'on veut ! Faire plusieurs exemples, du moment qu'on supprime les références aux commits en conflit. Faire un exemple ou on choisi. on unione ou même on fait autre chose.</p>
+<p>TBD on peut écrire ce que l'on veut ! Faire plusieurs exemples, du moment qu'on supprime les références aux commits en conflit. Faire un exemple ou on choisi. on fait une union ou même on fait autre chose.</p>
 </blockquote>
 <h4>situation à la maison</h4>
 <p>On modifie le fichier <code class="fichier">oiseaux.txt</code> pour mettre les oiseaux dans l'ordre alphabétique :</p>
@@ -325,6 +363,31 @@ Pinson du nord</code></pre>
 <p>On peut maintenant pousser nos changements sur github sans soucis en cliquant sur le bouton <em>&quot;push origin&quot;</em></p>
 <p>Il y a au final tous les commit sur github (victoire !)</p>
 <p><img src="desktop-rebase-6.png" alt="rebase 6"></p>
+<h2>Liste des fichiers à ignorer</h2>
+<blockquote>
+<p>TBD faire un fichier TBD.txt que l'on met en <code class="fichier">.gitingore</code>
+TBD ajouter des choses à faire.</p>
+</blockquote>
+<p>Un dossier de projet va contenir de nombreux fichiers que l'on ne veut pas mettre dans la sauvegarde :</p>
+<ul>
+<li>les fichiers relatif à votre éditeur de texte (comme les fichiers <code>.vscode</code> où vscode range ses préférences),</li>
+<li>les environnements virtuels python (tout le dossier <code>.venv</code> n'est <strong>jamais</strong> à sauvegarder)</li>
+<li>la poubelle du Macintosh (le dossier <code>.DS_Store</code> par exemple)</li>
+<li>...</li>
+</ul>
+<p>Pour cela, le système git utilise un fichier nommé <code>.gitignore</code> qui est placé à la racine de votre projet et qui contient la liste des dossiers et fichiers <strong>à ne pas prendre en compte</strong>.</p>
+<p>Accédez aux liens suivants pour voir comment tout ça fonctionne :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://docs.github.com/fr/get-started/git-basics/ignoring-files">fichier .gitignore avec github</a></li>
+<li><a href="https://www.youtube.com/watch?v=gkzBzBomYyI">tuto en français</a></li>
+</ul>
+</div></div>
+
 
 
 </article>

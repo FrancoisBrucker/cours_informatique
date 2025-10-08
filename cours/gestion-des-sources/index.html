@@ -198,15 +198,15 @@ couper en parties
 6. git bisect
 7. interne
 -->
-<h2>Principes</h2>
+<h2>Principes : gestion des sources comme un dépôt</h2>
 <p>Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.</p>
-<h3>Besoins</h3>
+<h3>Besoins pour un dépôt</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="besoins/" class="interne">Besoins</a></p>
+<p><a href="besoins-d%C3%A9p%C3%B4t/" class="interne">Besoins</a></p>
 </div></div>
 
 <h3>Structure distribuée</h3>
@@ -218,19 +218,8 @@ couper en parties
 <li>permettre le travail asynchrone entre les personnes : une personne va avancer à un endroit pendant qu'une autre travaille sur autre chose</li>
 <li>pouvoir reprendre un projet existant avec une nouvelle équipe</li>
 </ol>
-<p>Ceci implique que chaque copie soit synchronisée par un dépôt référent, un <strong><em>projet référent</em></strong> faisant autorité pour tous les participants. Mais comment faire ensuite pour que la synchronisation soit aisée ?</p>
+<p>Ceci implique que chaque copie soit synchronisée par un dépôt référent, un <strong><em>projet référent</em></strong> faisant autorité pour tous les participants.</p>
 <p>Une bonne implémentation consiste <strong>à ne pas sacraliser la mise en commun</strong>. Il faut le faire le souvent pour que tout le monde ait une version claire de l'ensemble <strong>actuel</strong> du projet.</p>
-<p>La solution utilisée par <a href="https://git-scm.com/">git</a> consiste à ne pas choisir de serveur distant avec des règles précise : tout participant possède l'intégralité de la structure de sauvegarde comme s'il était seul développeur. On ajoute enfin souvent un participant fictif, nommé <strong><em>origin</em></strong>, qui est la référence commune et est synchronisée à l'envie par les développeurs. Cette structure distribuée permet :</p>
-<ul>
-<li>que chaque développeur puisse faire ses propres commits en local,</li>
-<li>d'avoir une (ou plusieurs) branches partagée par tous les utilisateurs (comme <code>main</code>, <code>dev</code>, <em>etc</em>) et synchronisés souvent entre les utilisateur et <em>origin</em> :
-<ul>
-<li>on appelle <strong><em>push</em></strong> les synchronisation des utilisateurs vers l'<em>origin</em></li>
-<li>on appelle <strong><em>pull</em></strong> les synchronisation de l'<em>origin</em> vers un utilisateur</li>
-</ul>
-</li>
-<li>de continuer un projet avec une nouvelle équipe, il suffit de copier <em>origin</em>.</li>
-</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -242,7 +231,7 @@ couper en parties
 </div></div>
 
 <h3>Dépôt origin</h3>
-<p>Nous allons utiliser <a href="https://github.com/">https://github.com/</a> comme dépôt commun de nos projet.</p>
+<p>Nous allons utiliser <a href="https://github.com/">https://github.com/</a> comme dépôt commun de nos projet. Le site fonctionne avec logiciel de gestion de sources <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Il en existe d'autres, comme <a href="https://gitlab.com/">https://gitlab.com/</a> par exemple.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -251,137 +240,59 @@ couper en parties
 <p><a href="github-compte" class="interne">Création d'un compte github</a></p>
 </div></div>
 
-<h2>Un seul dépôt</h2>
-<h3>Besoins</h3>
-<blockquote>
-<p>TBD les branches let merges et le rebases.</p>
-</blockquote>
-<blockquote>
-<p>Travailler sur un seul dépôt. POur nous github.</p>
-</blockquote>
-<blockquote>
-<p>créer des branches, faire des merges et un rebase.
-voir le diff</p>
-</blockquote>
-<h3>Usage</h3>
-<blockquote>
-<p>Le faire sur github</p>
-</blockquote>
-<h2>Dépôt local et distant</h2>
-<h3>Besoins</h3>
-<blockquote>
-<p>TBD liens entre distant et local.
-bonne configuration :</p>
-<ul>
-<li>retrouver la personne</li>
-<li>gitignore pour ne pas tout mettre sur le serveur distant.</li>
-</ul>
-</blockquote>
-<h3>Usage</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<h2>Outils</h2>
-<h3>git avec vscode</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Documentation</strong></p>
-</div><div class="pl-8 mr-8">
-<p><a href="https://code.visualstudio.com/docs/editor/versioncontrol#_git-support">https://code.visualstudio.com/docs/editor/versioncontrol#_git-support</a></p>
-</div></div>
-
-<p>vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :</p>
-<ul>
-<li>d'utiliser github avec l'<a href="https://code.visualstudio.com/docs/editor/github">extension github</a></li>
-<li>de voir le graphe de dépendances avec l'extension <a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph">git-graph</a> (commande <code>git-graph.view</code> pour voir le graphe)</li>
-<li>de voir l'historique de modification d'un fichier avec l'extension <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory">git-history</a> (cliquer droit sur un fichier puis <code>Git: view file history</code>)</li>
-<li>...</li>
-</ul>
-<h3>TUI</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
+<h3>Projet Dépôt</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<ul>
-<li>lazy git : <a href="https://www.youtube.com/watch?v=CPLdltN7wgE">https://www.youtube.com/watch?v=CPLdltN7wgE</a> pour git</li>
-<li>gh-dash : <a href="https://github.com/dlvhdr/gh-dash">https://github.com/dlvhdr/gh-dash</a> pour github et les pull requests</li>
-</ul>
+<p><a href="github-drive" class="interne">Github come un drive</a></p>
 </div></div>
 
-<h2>git en ligne de commande</h2>
+<h2>Principes : gestion des sources en local</h2>
+<h3>Besoins pour une gestion des sources locale</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="besoins-gestion-sources" class="interne">Besoins</a></p>
+</div></div>
+
+<h3>Projet : gestion des sources</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="github-projet" class="interne">Projet uniquement avec github</a></p>
+</div></div>
+
+<h2>Principes : gestion d'un dépôt distant</h2>
+<h3>Besoins pour l'utilisation d'un dépôt distant</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="besoins-origin" class="interne">Besoins</a></p>
+</div></div>
+
+<h3>Projet : local et origine</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="github-desktop" class="interne">Projet local et origin</a></p>
+</div></div>
+
+<h2>git</h2>
 <blockquote>
-<p>TBD commencer par la config
+<p>TBD ligne de commande
+TBD commencer par la config
 TBD reprendre tout en créant un projet depuis la maison et on montre les fichier</p>
 </blockquote>
-<h2>plomberie</h2>
-<h3>Format diff</h3>
-<h3>hash</h3>
-<h3>objets de git</h3>
-<h2>Usage</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="usage-quotidien" class="interne">Configuration pour une utilisation quotidienne</a></li>
-<li><a href="bonnes-pratiques" class="interne">Bonnes pratiques</a></li>
-</ol>
-</div></div>
-
-<h2>Github</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="github-origin" class="interne">Utiliser github</a></p>
-</div></div>
-
-<h2>Diff</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://en.m.wikipedia.org/wiki/Diff">format diff</a></li>
-<li>Commande diff au terminal :
-<ul>
-<li><a href="https://www.youtube.com/watch?v=0JZCah5w7I8">tuto en français</a></li>
-<li><a href="https://www.youtube.com/watch?v=-CiLU9-RAGk">tuto en anglais (plus concis)</a></li>
-</ul>
-</li>
-</ul>
-</div></div>
-
-<p>Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur <a href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/" class="interne">le problème de l'alignement de séquences</a>. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a">https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a</a></li>
-<li><a href="https://ably.com/blog/practical-guide-to-diff-algorithms">https://ably.com/blog/practical-guide-to-diff-algorithms</a></li>
-</ul>
-</div></div>
-
-<h2>Introduction à la SCM avec github</h2>
-<p>Maintenant que l'on a un projet sur github, on peut le considérer comme une origine et continuer le développement chez soit :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="github-SCM" class="interne">SCM avec github</a></p>
-</div></div>
-
-<h2>Projet : gérer ses sources avec git</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -426,6 +337,127 @@ TBD utiliser tous les usages (même add/reset -p)</p>
 <p>TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
 TBD utiliser <code>git diff</code> <a href="https://www.youtube.com/watch?v=F1van9nShjA">https://www.youtube.com/watch?v=F1van9nShjA</a> et ref : <a href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a></p>
 </blockquote>
+<h2>Outils</h2>
+<h3>git avec vscode</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Documentation</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://code.visualstudio.com/docs/editor/versioncontrol#_git-support">https://code.visualstudio.com/docs/editor/versioncontrol#_git-support</a></p>
+</div></div>
+
+<p>vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :</p>
+<ul>
+<li>d'utiliser github avec l'<a href="https://code.visualstudio.com/docs/editor/github">extension github</a></li>
+<li>de voir le graphe de dépendances avec l'extension <a href="https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph">git-graph</a> (commande <code>git-graph.view</code> pour voir le graphe)</li>
+<li>de voir l'historique de modification d'un fichier avec l'extension <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory">git-history</a> (cliquer droit sur un fichier puis <code>Git: view file history</code>)</li>
+<li>...</li>
+</ul>
+<h3>TUI</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>lazy git : <a href="https://www.youtube.com/watch?v=CPLdltN7wgE">https://www.youtube.com/watch?v=CPLdltN7wgE</a> pour git</li>
+<li>gh-dash : <a href="https://github.com/dlvhdr/gh-dash">https://github.com/dlvhdr/gh-dash</a> pour github et les pull requests</li>
+</ul>
+</div></div>
+
+<h2>Autres Usages courants</h2>
+<p>Outre ce qu'on a vu au préalable l'usage d'un SCM au quotidien nécessite quelques connaissances supplémentaires qui permettent de que nous allons aborder maintenant.</p>
+<h3>Altération et modification de l'historique</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="besoins-historique" class="interne">Besoins de gestion de l'historique</a></p>
+</div></div>
+
+<h3>Authentification</h3>
+<p>Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :</p>
+<ul>
+<li>via un web token</li>
+<li>via une clé ssh</li>
+</ul>
+<h4>Web token</h4>
+<p>A priori se fait tout seul si vous utilisez l'application.</p>
+<blockquote>
+<p>TBD à étoffer</p>
+</blockquote>
+<h4>Clés ssh</h4>
+<p>Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.</p>
+<p>Commencez par créer une clé :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/ssh/" class="interne">créer et utiliser une clé ssh</a></p>
+</div></div>
+
+<p>Puis renseignez <strong>votre clé publique</strong> dans <a href="https://github.com/settings/keys">votre profil github</a>.</p>
+<h3>Diff</h3>
+<blockquote>
+<p>TBD trouver des diff avec git et en ligne de commande avec diff</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://en.m.wikipedia.org/wiki/Diff">format diff</a></li>
+<li>Commande diff au terminal :
+<ul>
+<li><a href="https://www.youtube.com/watch?v=0JZCah5w7I8">tuto en français</a></li>
+<li><a href="https://www.youtube.com/watch?v=-CiLU9-RAGk">tuto en anglais (plus concis)</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<p>Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur <a href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/" class="interne">le problème de l'alignement de séquences</a>. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a">https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a</a></li>
+<li><a href="https://ably.com/blog/practical-guide-to-diff-algorithms">https://ably.com/blog/practical-guide-to-diff-algorithms</a></li>
+</ul>
+</div></div>
+
+<h3>Github actions</h3>
+<blockquote>
+<p>TBD :</p>
+<ul>
+<li>permet de mettre en place du CI/CD : <a href="https://www.youtube.com/watch?v=scEDHsr3APg">https://www.youtube.com/watch?v=scEDHsr3APg</a></li>
+<li>github actions <a href="https://www.youtube.com/watch?v=p3W2XCD3smk">https://www.youtube.com/watch?v=p3W2XCD3smk</a></li>
+</ul>
+</blockquote>
+<h2>plomberie</h2>
+<h3>Format diff</h3>
+<h3>hash</h3>
+<h3>objets de git</h3>
+<h2>Usage</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="usage-quotidien" class="interne">Configuration pour une utilisation quotidienne</a></li>
+<li><a href="bonnes-pratiques" class="interne">Bonnes pratiques</a></li>
+</ol>
+</div></div>
+
 <h2>Git plomberie</h2>
 <blockquote>
 <p>TBD expliquer porcelaine/plomberie
