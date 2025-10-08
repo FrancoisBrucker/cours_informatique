@@ -50,11 +50,17 @@ Un message de commit contient forcément **1 ligne** décrivant le commit (on ve
 à étoffer (faire un exemple) en utilisant les liens précédent 
 
 -->
-### .gitignore
+
+### Fichier à ignorer
+
+La liste des fichiers à ignorer est contenue dans un fichier nommé `.gitignore`{.fichier} à la racine du projet ou dans un sous-dossier de celui-ci. Ses directives sont appliquées au dossier auquel il appartient et ses sous-dossiers.
+Ces fichiers ne doivent pas être ignorés et doivent être ajoutés à la sauvegarde.
+
+La syntaxe des fichiers `.gitignore`{.fichier} est simple à comprendre mais je vous conseille tout de même de lire les liens ci-dessous :
 
 {% lien %}
 
-- [fichier .gitignore avec github](https://docs.github.com/fr/get-started/git-basics/ignoring-files)
+- [la documentation](https://git-scm.com/docs/gitignore#_pattern_format)
 - [tuto en français](https://www.youtube.com/watch?v=gkzBzBomYyI)
 
 {% endlien %}

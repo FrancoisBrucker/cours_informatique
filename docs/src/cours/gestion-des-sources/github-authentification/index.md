@@ -55,12 +55,4 @@ La partie du fichier de configuration `.git/config`{.fichier} dédié à l'origi
 
 ```
 
-Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
-
-Commencez par créer une clé :
-
-{% aller %}
-[créer et utiliser une clé ssh](/cours/système-et-réseau/ssh/){.interne}
-{% endaller %}
-
-Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
+Cette méthode est à utiliser de préférence. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.

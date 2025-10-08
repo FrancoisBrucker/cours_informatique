@@ -112,7 +112,7 @@ On peut ainsi décider de fusionner une branche peu importante, comme une simple
 
 ```shell
 git rebase master bug
-git checkout master
+git switch master
 git merge bug
 git branch -d bug
 ```
@@ -153,11 +153,11 @@ On conserve donc bien l'historique en branches, mais avec beaucoup plus de clart
 
 ```shell
 git rebase master fonctionnalité1
-git checkout master
+git switch master
 git merge fonctionnalité1 --no-ff
 git branch -d fonctionnalité1
 git rebase master fonctionnalité2
-git checkout master
+git switch master
 git merge fonctionnalité2 --no-ff
 git branch -d fonctionnalité2
 ```

@@ -13,11 +13,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+> TBD vérifier que switch est bien utilisé et mettre restore <https://www.infoq.com/news/2019/08/git-2-23-switch-restore/>
 
 Les commandes git indispensables à connaître
-
-<!-- fin résumé -->
 
 Ce tutoriel comporte deux sections :
 
@@ -145,21 +143,12 @@ Pour travailler sur un aspect particulier, qu'il s'agisse d'une résolution de b
 {% note "**commandes**" %}
 
 ```shell
-git checkout main
+git switch main
 git branch ma_nouvelle_branche
-git checkout ma_nouvelle_branche
-```
-
-Ou sous une forme plus condensée :
-
-```shell
-git checkout main
-git checkout -b ma_nouvelle_branche
+git switch ma_nouvelle_branche
 ```
 
 {% endnote %}
-
-L'option `-b` appliquée à la commande `checkout` permet en effet de créer la branche de destination si celle-ci n'existe pas.
 
 ### Pousser une branche (nouvelle) locale sur le serveur distant
 
@@ -170,14 +159,14 @@ On a créé en local une nouvelle branche, qui n'existe pas encore sur le serveu
 {% note "**Commandes**" %}
 
 ```shell
-git checkout <branche>
+git switch <branche>
 git push --set-upstream origin <branche>
 ```
 
 Version condensée :
 
 ```shell
-git checkout <branche>
+git switch <branche>
 git push -u origin <branche>
 ```
 
@@ -252,7 +241,7 @@ Pour ne garder aucune trace de la branche (et obtenir ainsi un historique compl�
 
 ```shell
 git rebase main branche
-git checkout main
+git switch main
 git merge branche
 git branch -d branche
 ```
@@ -267,14 +256,14 @@ Pour conserver une trace de la branche (par exemple parce qu'elle est signifiant
 
 ```shell
 git rebase main branche
-git checkout main
+git switch main
 git merge branche --no-ff
 git branch -d branche
 ```
 
 {% endnote %}
 
-## Cheatsheet
+## <span id="cheatsheet"></span>Cheatsheet
 
 Par ordre alphabétique ;)
 
@@ -282,7 +271,6 @@ Commande | Effet | Option(s) |
 --- | --- | --- | --- |
 `git add <fichier>` | ajoute des fichiers au stage en vue de les commit | `git add .` pour ajouter tous les fichiers modifiés
 `git branch` | affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque | `-d <branche>` supprime la branche *branche* |
-`git checkout <branche>` | change de branche pour aller sur "branche" | `-b <nouvelle branche>` pour créer une nouvelle branche et s'y placer |
 `git clone <url>` | clone en local un répertoire distant |  |
 `git commit` | publie les changements dans l'arbre git local | `-a` commit tous les changements présents dans le stage <br> `-m "mon_message"` permet d'écrire le message de commit sans passer par l'éditeur |
 `git diff` | indique les différences entre le dernier commit et ce qui n'est pas encore mis dans le *stage* |  |
@@ -294,3 +282,4 @@ Commande | Effet | Option(s) |
 `git rebase <ici> <branche>` | découpe la branche `branche` à sa base et la recolle `ici`. `ici` peut-être le nom d'une branche, auquel cas la branche `branche` est recollée à la fin de la branche `ici`, ou un numéro de commit. Voir le tuto complet sur rebase. | X |
 `git stash` | permet de mettre temporairement de côté les modifications en attente de *commit* afin de revenir au dernier *commit*. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées. | `git stash list` pour lister les éléments mis de côté <br> `git stash apply` pour faire revenir les modifications dans l'espace de travail <br> `git stash clear` pour abandonner complètement les modifications mises de côté |
 `git status` | affiche les fichiers prêts à être *commit* et ceux qui ne sont pas encore dans le *stage* |  |
+`git switch <branche>` | change de branche pour aller sur "branche" | |

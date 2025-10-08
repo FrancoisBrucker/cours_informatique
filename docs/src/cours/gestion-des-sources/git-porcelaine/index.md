@@ -10,6 +10,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD à jardiner et réorganiser. Des redites, des choses qui manquent et peut-être des choses à mettre en plomberie
+>
+> TBD utiliser `git diff` <https://www.youtube.com/watch?v=F1van9nShjA> et ref : <https://git-scm.com/docs/git-diff>
+>
+> TBD utiliser tous les usages vue dans les parties précédentes (même add/reset -p)
+
 Comment fonctionne git et ses utilisations en ligne de commande.
 
 ## Projet git
@@ -32,7 +38,7 @@ Où l'on rentre quand même pas mal dans les détails pour comprendre comment fo
 
 Les commandes indispensables à connaître pour gérer un projet `git` en lignes de commandes.
 
-## rebase en détails
+## Rebase en détails
 
 {% aller %}
 
@@ -54,9 +60,10 @@ Commenter des parties homogènes "en fonction" de code.
 
 ## Bibliographie
 
+> TBD à jardiner
+
 {% lien %}
 
-- [githug](https://github.com/Gazler/githug) apprenez git par l'exemple.
 - initialisation git/github par défaut :
   - [doc officielle](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
   - [git et github](https://kbroman.org/github_tutorial/pages/first_time.html)

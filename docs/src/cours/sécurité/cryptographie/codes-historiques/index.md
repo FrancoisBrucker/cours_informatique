@@ -340,32 +340,29 @@ En conséquence, un attaquant devant un message crypté de peut le décrypter s'
 Formalisons cette intuition.
 
 {% note "**Théorème**" %}
-Si $X$ et $Y$ deux variables aléatoires indépendantes sur $M = \\{0, 1\\}$ et telle que $X$ soit uniforme.
+Soit $X$ une variable aléatoire uniforme sur $\\{0, 1\\}$ et $Y_i$ $L$ variables aléatoires ur $\\{0, 1\\}$. On suppose que $X$ est indépendant de $Y_i$ pour tout $i$.
 
-Alors la variable aléatoire $X \oplus Y$ est uniforme sur $\\{0, 1\\}^L$
+La variable aléatoire $C_1\dots C_L$ telle que $C_i = X \oplus Y_i$ pour tout $i$ est uniforme sur $\\{0, 1\\}^L$
 {% endnote %}
 {% details "preuve", "open" %}
 Plaçons nous à un index $i$ fixé. On a :
 
-- $Pr[X_i = 0] = Pr[X_i = 1] = .5$ car la variable aléatoire $X$ est uniforme et il y a exactement la moitié de M dont le $i$ème indice vaut 0 (pour l'autre moitié cet indice vaut 1).
-- $Pr[Y_i = 0] = p_i$ et donc $Pr(Y_i = 1) = 1-p_i$
-
-Comme $(X \oplus Y)_i$ vaut 0 que si $X_i$ et $Y_i$ valent conjointement 0 ou 1, on en déduit que :
-
+<div>
 $$
-Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_i = 0] + Pr[X_i = 1, Y_i = 1]
+Pr[C_i = 0] = Pr[X = 0, Y = 0] + Pr[X = 1, Y = 1]
 $$
+</div>
 
-Comme $X$ et $Y$ sont indépendants, $X_i$ et $Y_i$ le sont également et on a : $Pr[X_i = a, Y_i = b] = Pr[X_i = a]\cdot Pr[Y_i = b]$. Donc :
+Comme $X$ et $Y_i$ sont indépendants pour tout $i$, on a : $Pr[X = a, Y_i = b] = Pr[X = a]\cdot Pr[Y_i = b]$. Donc :
 
-- $Pr[X_i = 0, Y_i = 0] = Pr[X_i = 0]\cdot Pr[Y_i = 0] = .5\cdot p_i$
-- $Pr[X_i = 1, Y_i = 1] = Pr[X_i = 1]\cdot Pr[Y_i = 1] = .5\cdot (1-p_i)$
+- $Pr[X = 0, Y_i = 0] = Pr[X = 0]\cdot Pr[Y_i = 0] = .5\cdot Pr[Y_i = 0]$
+- $Pr[X = 1, Y_i = 1] = Pr[X = 1]\cdot Pr[Y_i = 1] = .5\cdot (1-Pr[Y_i = 0])$
 
-Ce qui entraîne que $Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_i = 0] + Pr[X_i = 1, Y_i = 1] = .5$, et donc que $(X \oplus Y)$ est une variable aléatoire uniforme.
+Ce qui entraîne que $Pr[X \oplus Y_i = 0] = Pr[X = 0, Y_i = 0] + Pr[X = 1, Y_i = 1] = .5$, et donc que $X \oplus Y_i$ est une variable aléatoire uniforme.
 
 {% enddetails %}
 
-On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffré, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.
+On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffrer, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.
 
 Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c\oplus m$.
 

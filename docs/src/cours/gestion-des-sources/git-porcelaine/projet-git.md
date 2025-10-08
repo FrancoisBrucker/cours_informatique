@@ -10,11 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+> TBD factoriser ce qu'on a déjà vu. Il y a des redites.
 
 Bases de l'utilisation de git. On va utiliser git/github grâce à un petit projet web et en profiter pour expliquer le fonctionnement interne de git.
-
-<!-- fin résumé -->
 
 ## Création du projet git
 
@@ -76,13 +74,13 @@ J'ai utilisé la commande `tree -a` pour afficher l'arborescence et les fichiers
 
 En deux mots le dossier de configuration du projet git contient :
 
-- _HEAD_ : la branche courant, pour l'instant **Master** (vérifiez le en lisant le fichier avec la commande `cat`)
-- _config_ : le fichier de configuration.
-- _description_ : description du projet, pas vraiment utilisé
-- _hooks/_ : contient des scripts que l'on peu utiliser à chaque qu'une commande git particulière est utilisée. C'est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.
-- _info/exclude/_ un _.gitignore_ pour tout le projet.
-- _objects/_ : contient votre projet actuel et passé en plein de petits bouts. Pour l'instant il n'y a rien.
-- _refs/_ : contient les commit. Pour l'instant il n'y a rien.
+- `HEAD`{.fichier} : la branche courant, pour l'instant **Master** (vérifiez le en lisant le fichier avec la commande `cat`)
+- `config`{.fichier} : le fichier de configuration.
+- `description`{.fichier} : description du projet, pas vraiment utilisé
+- `hooks/`{.fichier} : contient des scripts que l'on peu utiliser à chaque qu'une commande git particulière est utilisée. C'est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.
+- `info/exclude/`{.fichier} un _.gitignore_ pour tout le projet.
+- `objects/`{.fichier} : contient votre projet actuel et passé en plein de petits bouts. Pour l'instant il n'y a rien.
+- `refs/`{.fichier} : contient les commit. Pour l'instant il n'y a rien.
 
 ## Fonctionnement de git
 
@@ -116,7 +114,7 @@ git add index.html
 On place le fichier `index.html`{.fichier} courant dans le **stage** c'est à dire l'endroit où son mis les fichier qui seront inclus dans le _commit_. Pour voir tout ça, la commande `status` est super utile :
 
 ```shell
-git  status
+git status
 ```
 
 Cette commande dit chez moi (et en couleur) :
@@ -134,11 +132,11 @@ Modifications qui seront validées :
 On a bien un nouveau fichier que l'on veut garder. On peut fait notre premier commit :
 
 ```shell
-git  commit
+git commit
 ```
 
-Cette commande va lancer l'éditeur que vous avez configuré (`vim` si vous avez suivi mes recommandations) et va vous demander de décrire votre commit. Cette étape est **obligatoire** et **très importante**, ne mettez donc pas de message fantaisiste : décrivez en une ligne ce que vous avez fait.
-Ici, par exemple : _"first commit"_. Sauvez et sortez de `vim`, vous avez fait votre premier commit. On le voit en tapant la commande `git status` (qui dit que tout est ok, que le stage est vide et que l'on a aucun fichier non suivi par git).
+Cette commande va lancer l'éditeur que vous avez configuré (`vi` si vous avez suivi mes recommandations) et va vous demander de décrire votre commit. Cette étape est **obligatoire** et **très importante**, ne mettez donc pas de message fantaisiste : décrivez en une ligne ce que vous avez fait.
+Ici, par exemple : _"first commit"_. Sauvez et sortez de `vi`, vous avez fait votre premier commit. On le voit en tapant la commande `git status` (qui dit que tout est ok, que le stage est vide et que l'on a aucun fichier non suivi par git).
 
 La commande `git log` vous donne un historique des _commit_ avec le nom, l'heure et le message. Chez moi ça donne :
 
@@ -201,7 +199,7 @@ C'est notre fichier html ! Les autres objets correspondent à l'arborescence de 
 
 Le dossier référence contient les références des commits de toutes les branches et ou tags de notre projet. Nous n'avons qu'une seule branche, nommée `main` commit des différentes branches. En regardant ce qu'il y a dans le fichier `refs/heads/main` je retrouve bien le numéro de commit.
 
-On peut accéder à tout dans git en utilisant ces numéros (en entier ou les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro _3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613_, je peux taper `git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613`, `git log 3b8c` ou encore `git log 3b8c0a8`
+On peut accéder à tout dans git en utilisant ces numéros (en entier ou les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro `3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613`, je peux taper `git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613`, `git log 3b8c` ou encore `git log 3b8c0a8`
 
 ## Avancer dans l'arbre
 
@@ -483,7 +481,7 @@ La commande `git branch` nous indique les branches que nous avons. Pour l'instan
 
 Nous allons créer une branche pour voir s'il est possible d'ajouter du javascript à notre projet : `git branch js`.
 
-Si l'on refait la commande `git branch`, on voit qu'on a deux branches et qu'on est toujours sur la branche `main`. Allons vers la branche `js` avec la commande : `git checkout js`
+Si l'on refait la commande `git branch`, on voit qu'on a deux branches et qu'on est toujours sur la branche `main`. Allons vers la branche `js` avec la commande : `git switch js`
 
 On peut maintenant tranquillement ajouter du js à notre projet :
 
@@ -530,7 +528,7 @@ On peut maintenant tranquillement ajouter du js à notre projet :
   </html>
   ```
 
-On peut maintenant commiter le tout (en commençant pas ajouter les fichiers _main.js_ et _index.html_ au stage bien sur avec la commande `git add main.js index.html`) : `git commit m"add js"`.
+On peut maintenant commiter le tout (en commençant pas ajouter les fichiers _main.js_ et _index.html_ au stage bien sur avec la commande `git add main.js index.html`) : `git commit -m"add js"`.
 
 Un `git log --oneline` nous montre bien que l'on est maintenant sur une nouvelle branche :
 
@@ -545,7 +543,7 @@ a3c3fdc add css and link to html
 
 ### Voir des branches
 
-Si l'on revient à la branche `main` avec la commande `git checkout main` on voit que le fichier `main.js`{.fichier} a disparu et que le fichier `index.html`{.fichier} est remis à sa position sans le js.
+Si l'on revient à la branche `main` avec la commande `git switch main` on voit que le fichier `main.js`{.fichier} a disparu et que le fichier `index.html`{.fichier} est remis à sa position sans le js.
 
 Faisons une modification du fichier `index.html`{.fichier} de la branche `main` en ajoutant une phrase au paragraphe :
 
@@ -699,7 +697,7 @@ A---B---C---D ← main
 
 Il ne nous reste plus qu'à fusionner `js` dans `main` (ce qui devrait se faire sans soucis puisqu'elles se suivent). Pour cela :
 
-1. on se place sur la branche `main` : `git checkout main`
+1. on se place sur la branche `main` : `git switch main`
 2. on fusionne la branche `js` sur `main` : `git merge js`
 
 Un `it log --oneline --all --graph` montre que les deux branches sont identique, on peut maintenant supprimer la branche `js` : `git branch -d js`
@@ -741,8 +739,7 @@ Il arrive parfois qu'on a complètement raté un truc et que l'on veuille reveni
 Attention cependant, ces opérations modifient l'historique du projet, chose que l'on aime pas trop faire. Il est donc recommandé de ne faire ça que sur des commits qui n'ont pas été publiés sur l'origin.
 
 Je ne vais ici que résumer les possibilités. Allez voir sur
-[cette vidéo](https://www.youtube.com/watch?v=ZY5A7kUR0S4) pour avoir un aperçu de ce que l'on peut faire en situation, ou encore
-[cette doc](https://delicious-insights.com/fr/articles/git-reset/), plus velue.
+[cette vidéo](https://www.youtube.com/watch?v=ZY5A7kUR0S4) pour avoir un aperçu de ce que l'on peut faire en situation.
 
 Pour l'instant l'historique de notre projet est (`git log --oneline`) :
 
@@ -769,9 +766,9 @@ On va voir plusieurs cas pratiques :
   - vider le stage : `git reset` (ou `git reset HEAD nom_de-fichier` pour un stager un unique fichier).
   - revenir au dernier commit et supprimer toutes les modification faites : `git reset --hard`. Attention cela supprime du code...
 - revenir à un commit plus éloignés. On peut y acceder par son numéro ou par une référence par rapport au dernier commit (nommé aussi HEAD). Ainsi HEAD signifie le dernier commit, HEAD~1 l'avant dernier, HEAD~2 l'antépénultième et ainsi de suite.
-  - regarder un ancien endroit dans le projet : `git checkout 7d2fd72` par exemple crée une nouvelle branche temporaire (nommée _HEAD détachée_) pour voir à quoi ressemblait notre projet au commit _7d2fd72_ (on a bien une règle h2 à notre css). Si l'on a rien modifié, un simple `git checkout main` reviendra à l'état courant du projet. Si l'on a modifié des fichiers, il faut commencer par revenir à l'état initial
+  - regarder un ancien endroit dans le projet : `git switch 7d2fd72` par exemple crée une nouvelle branche temporaire (nommée _HEAD détachée_) pour voir à quoi ressemblait notre projet au commit _7d2fd72_ (on a bien une règle h2 à notre css). Si l'on a rien modifié, un simple `git switch main` reviendra à l'état courant du projet. Si l'on a modifié des fichiers, il faut commencer par revenir à l'état initial
   - revenir à un commit plus lointain :
     - `git reset numéro_commit` reviendra au commit déterminé mais laissera vos modifications.
     - `git reset numéro_commit --hard` reviendra au commit déterminé mais supprimera vos modifications. Attention vous allez perdre des modifications !
-- remettre un seul fichier à un état antérieur : `git checkout 7d2fd72 index.html` prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du `main` : `git checkout main index.html`
+- remettre un seul fichier à un état antérieur : `git switch 7d2fd72 index.html` prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du `main` : `git switch main index.html`
 - undo un commit : `git revert 7d2fd72` va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l'on veut). Cela ne change pas l'historique en supprimant le commit undoé, ça rajoute un commit qui le undo.

@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Installation et configuration de Git
 
 eleventyNavigation:
@@ -69,9 +69,19 @@ Nous ne l'utiliserons pas ici, mais je vous invite à lire [sa documentation](ht
 
 ## Configuration
 
+{% lien %}
+[configuration de git](https://git-scm.com/book/fr/v2/Personnalisation-de-Git-Configuration-de-Git)
+{% endlien %}
+
 Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout moment savoir qui a fait quoi sur le projet. Il est donc impératif que vos données personnelles soient à jour.
 
-> TBD dire où ils sont sur son disque dur `~/.gitconfig` et montrer le contenu du fichier.
+La configuration de git s'effectue à trois niveaux successifs :
+
+1. au niveau du système. Le fichier par défaut est `/etc/gitconfig`{.fichier} sous unix.
+2. au niveau du compte. Par défaut le fichier de configuration de git est `~/.gitconfig`{.fichier}.
+3. au niveau de chaque projet. Par défaut le fichier de configuration de git est `.git/config`{.fichier} à la racine du projet
+
+On mettra les informations générales dans le fichier de configuration du compte (identité et comportement général de git) avec la commande `git config --global <variable> <valeur>` et les informations spécifiques pouvant changer dans la configuration du projet (les origines par exemple) avec la commande `git config <variable> <valeur>`.
 
 ### Info personnelles
 
@@ -100,8 +110,8 @@ git config --global pull.rebase merges
 
 Ceci nous permettra par défaut :
 
-* de faire un rebase de l'origin sur votre branche locale
-* de préserver les merge (fusion) de branches déjà présentes (et qui donc, si elles existent, ont une fonction *sémantique* dans votre projet)
+- de faire un rebase de l'origin sur votre branche locale
+- de préserver les merge (fusion) de branches déjà présentes (et qui donc, si elles existent, ont une fonction _sémantique_ dans votre projet)
 
 Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasés par défaut et préserveront les merges existant. Le meilleur des deux monde en somme.
 
@@ -121,12 +131,12 @@ git config --global init.defaultBranch "main"
 
 ### Éditeur de messages
 
-On va mettre vim comme éditeur par défaut pour renseigner les commits.
+On va mettre vscode comme éditeur par défaut pour renseigner les commits.
 
 {% faire "**Dans un terminal, tapez la commande**" %}
 
 ```shell
-git config --global core.editor vim
+git config --global core.editor "code --wait"
 ```
 
 {% endfaire %}
@@ -134,13 +144,14 @@ git config --global core.editor vim
 Vous n'utiliserez que très peu l'éditeur par défaut une fois que vous ferez vos commit avec l'option `-m`.
 
 {% info %}
-Vous pouvez également mettre votre [éditeur favori](https://docs.github.com/en/github/using-git/associating-text-editors-with-git) bien sur. Par exemple vscode :
+
+Il est conseillé de choisir l'éditeur `vi` :
 
 ```shell
-git config --global core.editor "code --wait"
+git config --global core.editor vi
 ```
 
-Mais `vim` sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.
+Il sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant), il est donc bien d'avoir quelque notions de vi et de les utiliser de temps en temps, d'où cette configuration recommandée.
 {% endinfo %}
 
 ### Configurations optionnelles
@@ -185,23 +196,23 @@ On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant
 <https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository>
 {% endlien %}
 
-le projet existe déjà sur github et je le *clone* chez moi C'est dans le menu déroulant `clone` sur la page github du projet. Par exemple pour le [projet animaux](../projet-github-desktop#nouveau-projet){.interne} :
+le projet existe déjà sur github et je le _clone_ chez moi C'est dans le menu déroulant `clone` sur la page github du projet. Par exemple pour le [projet animaux](../github-desktop#nouveau-projet){.interne} :
 [cloner un projet](clone-1.png)
 
 Il existe plusieurs façon de procéder :
 
-* https
-* ssh
-* github CLI
+- https
+- ssh
+- github CLI
 
 La différence entre ces trois modes est le moyen d’authentification entre votre ordinateur et github.
 
 Après chaque clonage vous aurez un dossier du nom de votre projet contenant :
 
-* tous les fichiers de l'état du projet actuel
-* un dossier caché `.git`{.fichier} contenant :
-  * l'historique complet du projet
-  * la configuration de `git` du projet
+- tous les fichiers de l'état du projet actuel
+- un dossier caché `.git`{.fichier} contenant :
+  - l'historique complet du projet
+  - la configuration de `git` du projet
 
 Lorsque je regarde tous les fichiers du dossier contenant le projet `animaux` j'obtiens par exemple :
 
@@ -224,19 +235,19 @@ J'ai utilisé le terminal pour le faire, mais vous pouvez très bien utiliser l'
 Selon la méthode de clonage utilisé, seule la méthode d'authentification dans le fichier de configuration changera.
 
 {% note %}
-A moins que vous n'ayez une clé ssh, utilisez le clonage utilisant le protocole `https`.
+On suppose que vous avez une clé ssh et que vous l'avez renseigné dans votre compte, donc  utilisez le clonage utilisant le protocole `ssh`.
 {% endnote %}
 
 #### Clonage https
 
 1. dans un terminal, placez vous dans un dossier où seront rangés vos projets github. Pour mon mac, j'ai choisi `~/Documents/git-projets/`{.fichier}
-2. tapez la commande : `git clone [le nom du projet]`. Dans mon cas, le menu déroulant *"clone"* m'indique qu'il faut taper la commande : `git clone https://github.com/Test-cours-ecm/animaux.git`
+2. tapez la commande : `git clone [le nom du projet]`. Dans mon cas, le menu déroulant _"clone"_ m'indique qu'il faut taper la commande : `git clone https://github.com/Test-cours-ecm/animaux.git`
 3. j'ai maintenant un dossier animaux contenant la branche `main` du projet :
 
 Le dossier `.git` contient l'entièreté du projet, en particulier son fichier de configuration `.git/config`
 
 ```shell
-fbrucker@so-high git-projets/animaux ±main » cat .git/config 
+fbrucker@so-high git-projets/animaux ±main » cat .git/config
 [core]
   repositoryformatversion = 0
   filemode = true
@@ -254,8 +265,8 @@ fbrucker@so-high git-projets/animaux ±main » cat .git/config
 
 La seule chose à retenir ici est :
 
-* github est identifié comme la branche `origin` et son protocole de communication est `https://`
-* la branche `main` est disponible sur l'origin.
+- github est identifié comme la branche `origin` et son protocole de communication est `https://`
+- la branche `main` est disponible sur l'origin.
 
 #### Clonage github CLI
 
@@ -273,8 +284,8 @@ Sinon, vous pouvez ne pas utiliser cette méthode.
 
 MOntrons juste les différences de configuration entre les méthodes précédentes et celle-ci :
 
-* Commande de clonage : `git clone git@github.com:Test-cours-ecm/animaux.git`
-* Fichier de configuration :
+- Commande de clonage : `git clone git@github.com:Test-cours-ecm/animaux.git`
+- Fichier de configuration :
 
   ```shell
   fbrucker@so-high git-projets/animaux ±main » cat .git/config
@@ -307,13 +318,13 @@ Le projet existe en dehors de github et je veux le mettre sur github. Par exempl
 
 1. un dossier `planètes`{.fichier} contenant un fichier `solaire.txt`{.fichier} :
 
-  ```shell
-  fbrucker@so-high git-projets » ls -la planètes 
-  total 8
-  drwxr-xr-x  3 fbrucker  staff   96 29 aoû 09:44 .
-  drwxr-xr-x  4 fbrucker  staff  128 29 aoû 09:45 ..
-  -rw-r--r--  1 fbrucker  staff   57 29 aoû 09:44 solaire.txt
-  ```
+```shell
+fbrucker@so-high git-projets » ls -la planètes
+total 8
+drwxr-xr-x  3 fbrucker  staff   96 29 aoû 09:44 .
+drwxr-xr-x  4 fbrucker  staff  128 29 aoû 09:45 ..
+-rw-r--r--  1 fbrucker  staff   57 29 aoû 09:44 solaire.txt
+```
 
 2. on se place dans le dossier du projet `cd planètes`
 3. on met en place le repo git avec la commande `git init --initial-branch="main"`
@@ -324,7 +335,7 @@ Le projet existe en dehors de github et je veux le mettre sur github. Par exempl
 Si l'on regarde le fichier de configuration de git :
 
 ```shell
-fbrucker@so-high git-projets/planètes ±main » cat .git/config               
+fbrucker@so-high git-projets/planètes ±main » cat .git/config
 [core]
   repositoryformatversion = 0
   filemode = true
@@ -338,7 +349,7 @@ Il manque la partie remote et branch. On pourrait très bien juste recopier ces 
 
 Ajout de github :
 
-1. Créer un projet github qui va contenir notre projet git. Sur github, allez dans le menu utilisateur (à droite) puis choisissez *"your repositories"*. Cliquez ensuite sur new pour créer un nouveau projet. Ne créez pas de fichiers `readme`{.fichier} ou `.gitignore`{.fichier}, il faut que ce projet soit vierge pour accueillir sans merge notre projet.
+1. Créer un projet github qui va contenir notre projet git. Sur github, allez dans le menu utilisateur (à droite) puis choisissez _"your repositories"_. Cliquez ensuite sur new pour créer un nouveau projet. Ne créez pas de fichiers `readme`{.fichier} ou `.gitignore`{.fichier}, il faut que ce projet soit vierge pour accueillir sans merge notre projet.
 2. sur notre ordinateur, on ajoute l'origin (suivez la doc). Dans mon cas : `git remote add origin https://github.com/Test-cours-ecm/planetes.git`
 3. on envoie notre projet git sur github et on lui associe la branche main :`git push --set-upstream origin main`.
 
@@ -349,7 +360,7 @@ L'item 3 permet que la commande `git push` soit équivalente à la commande `git
 A la fin, le fichier de config du projet ressemble à ca :
 
 ```shell
-fbrucker@so-high git-projets/planètes ±main » cat .git/config                    
+fbrucker@so-high git-projets/planètes ±main » cat .git/config
 [core]
   repositoryformatversion = 0
   filemode = true

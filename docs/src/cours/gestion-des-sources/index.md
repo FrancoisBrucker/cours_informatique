@@ -158,6 +158,9 @@ Ceci permet de retrouver de façon unique (au moins en probabilité et sûrement
 
 ### Diff
 
+> TBD faire un exemple avec la commande diff au terminal.
+> TBD sous windows <https://learn.microsoft.com/fr-fr/troubleshoot/windows-client/shell-experience/how-to-use-windiff-utility> ou <https://www.git-tower.com/blog/diff-tools-windows>
+
 On a déjà vu le diff des fichiers lors de nos commits et en particulier lorsque l'on a résolu un conflit de fusion. Cela vaut le coût de connaître le format utilisé :
 
 {% lien %}
@@ -208,7 +211,7 @@ Les algorithmes utilisés pour faire un diff sont basés sur [le problème de l'
 > - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>
 > - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk>
 
-## git
+## Git
 
 {% lien %}
 
@@ -218,6 +221,16 @@ Les algorithmes utilisés pour faire un diff sont basés sur [le problème de l'
 {% endlien %}
 
 Est l'outil utilisé par github. C'est mieux si vous avez installé ce logiciel sur votre ordinateur et que vous savez un petit peut vous en servir. Cette partie vous permettra d'installer git et de le configurer. On verra aussi comment créer et cloner un projet pour github.
+
+### Connexion ssh à github
+
+Nous allons utiliser des clés ssh pour se connecter à github, donc si vous ne l'avez pas encore fait :
+
+{% aller %}
+[Créer et utiliser une clé ssh](/cours/système-et-réseau/ssh/){.interne}
+{% endaller %}
+
+Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
 
 ### Installation et configuration
 
@@ -238,7 +251,7 @@ L'installation et la configuration de git n'est pas très technique. Cela vaut l
 
 ## Outils
 
-### git avec vscode
+### Git avec vscode
 
 {% info "**Documentation**" %}
 <https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
@@ -270,24 +283,16 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 
 ## Porcelaine et plomberie de git
 
-> TBD ce que ça veut dire.
+> TBD expliquer porcelaine/plomberie
 
-### porcelaine
+### Porcelaine
 
 {% aller %}
-[Projet web en ligne de commande](./git){.interne}
+[Git porcelaine](./git-porcelaine){.interne}
 {% endaller %}
 
-> TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
-> TBD utiliser `git diff` <https://www.youtube.com/watch?v=F1van9nShjA> et ref : <https://git-scm.com/docs/git-diff>
-> TBD ligne de commande
-> TBD reprendre tout en créant un projet depuis la maison et on montre les fichier
-> TBD projet en ligne de commande.
-> TBD utiliser tous les usages (même add/reset -p)
+### Plomberie
 
-### plomberie
-
-> TBD expliquer porcelaine/plomberie
 > TBD un tag c'est un objet. Commit, tree ou blob.
 > TBD work-trees et stash
 > TBD utiliser switch et pas checkout pour passer de branches en branches (checkout pour les commits particulier: headless ?)
@@ -297,7 +302,6 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 
 > TBD reflog.
 > TBD git sha. Intro : <https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d> et <https://graphite.dev/guides/git-hash>. Mieux : <https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git>
-
 
 Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.
 
