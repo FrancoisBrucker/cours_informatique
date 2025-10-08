@@ -273,6 +273,28 @@
 <p>Par exemple, pour les fichiers texte, de gérer automatiquement les caractères <em>à la ligne</em> qui sont <a href="https://fr.wikipedia.org/wiki/Fin_de_ligne">différents sous unix, max et windows</a>.</p>
 </div></div>
 
+<h4>Liste des fichiers à ignorer</h4>
+<p>Allez dans les préférences du projet <code>Repository &gt; repository settings</code> puis choisissez l'onglet <code>ignored files</code> :</p>
+<p><img src="desktop-gitignore.png" alt="pref projet"></p>
+<p>Ceci vous permet de créer ou de modifier votre liste de fichiers à ignorer. Vous voyez sur la copie d'écran que j'ai ajouté aux fichiers ignorés :</p>
+<ul>
+<li>la poubelle du Macintosh (le dossier <code>.DS_Store</code> par exemple)</li>
+<li>les fichiers relatif à votre éditeur de texte (comme les fichiers <code>.vscode</code> où vscode range ses préférences),</li>
+<li>les fichiers temporaires et de log</li>
+<li>...</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://gist.github.com/octocat/9257657">une liste de fichiers courant à ignorer</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD faire un fichier TBD.txt que l'on met en <code class="fichier">.gitignore</code>
+TBD ajouter des choses à faire.</p>
+</blockquote>
 <h4>Ajoutons des fichiers</h4>
 <p>Utilisons vscode pour <em>&quot;ouvrir un dossier&quot;</em> puis choisir le dossier contenant notre projet.</p>
 <p>Ajoutons y 3 fichiers :</p>
@@ -403,28 +425,6 @@ Pinson du nord</code></pre>
 <p>On peut maintenant pousser nos changements sur github sans soucis en cliquant sur le bouton <em>&quot;push origin&quot;</em></p>
 <p>Il y a au final tous les commit sur github (victoire !)</p>
 <p><img src="desktop-rebase-6.png" alt="rebase 6"></p>
-<h2>Liste des fichiers à ignorer</h2>
-<p>Allez dans les préférences du projet <code>Repository &gt; repository settings</code> puis choisissez l'onglet <code>ignored files</code> :</p>
-<p><img src="desktop-gitignore.png" alt="pref projet"></p>
-<p>Ceci vous permet d'ajouter des fichiers à ignorer. Vous voyez sur la copie d'écran que j'ai ajouté aux fichiers ignorés :</p>
-<ul>
-<li>la poubelle du Macintosh (le dossier <code>.DS_Store</code> par exemple)</li>
-<li>les fichiers relatif à votre éditeur de texte (comme les fichiers <code>.vscode</code> où vscode range ses préférences),</li>
-<li>les fichiers temporaires et de log</li>
-<li>...</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://gist.github.com/octocat/9257657">une liste de fichiers courant à ignorer</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD faire un fichier TBD.txt que l'on met en <code class="fichier">.gitignore</code>
-TBD ajouter des choses à faire.</p>
-</blockquote>
 
 
 </article>
