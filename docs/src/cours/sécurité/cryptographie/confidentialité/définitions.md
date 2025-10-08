@@ -25,7 +25,7 @@ On a :
 
 <div>
 $$
-Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m) = c] = Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c]
+\Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m) = c] = \Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c]
 $$
 </div>
 
@@ -48,17 +48,17 @@ La variable aléatoire $(k \xleftarrow{R} \mathcal{K}) \oplus m$ est uniforme qu
 Shannon montre cependant qu'avoir une confidentialité parfaite est trop restrictive en pratique :
 
 {% note "**Théorème**" %}
-Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieure ou égale au nombre de messages à chiffrer.
+Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieur ou égal au nombre de messages à chiffrer.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 < Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.
+Soit $k^{\star} \in \mathcal{K}$, $m^{\star} \in \mathcal{M}$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $\Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 < \Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.
 
-On en déduit que l'ensemble $M' = \\{m \vert E(k, m)=c^{\star}, k \in K\\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert M' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.
+On en déduit que l'ensemble $\mathcal{M}' = \\{m \vert E(k, m)=c^{\star}, k \in \mathcal{K}\\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert \mathcal{M}' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.
 
 {% enddetails %}
 
-De là, tout comme le code de Vernam, si on encode des mots de $\\{0, 1\\}^m$, il faut que la taille de la clé soit plus grande que $L$. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?
+De là, tout comme le code de Vernam, si on encode des mots de $\\{0, 1\\}^t$, il faut que la taille de la clé soit plus grande que $L$. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?
 
 Il faut donc :
 
@@ -137,7 +137,7 @@ Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant p
 {% details "corrigé" %}
 100 siècles vaut environ $2^{39}$ secondes et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-39})$-sécurisée.
 
-L'algorithme étant brute force, on a : $2^{-39} = \frac{2^{30}}{2^k}$ ce qui donne $k = 69$.
+L'algorithme étant brute force, on a : $2^{-39} = \frac{2^{30}}{2^s}$ ce qui donne $s = 69$.
 
 Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, actuellement, on recommande des tailles de clés d'au moins 128bits.
 {% enddetails %}
@@ -147,17 +147,17 @@ Attention, les algorithmes tournent souvent en parallèle pour diminuer leur tem
 L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que `A(E(k,mb))=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
 {% note "**Définition**" %}
-L'avantage $\epsilon$ dans un jeu est défini tel que :
+L'avantage $\epsilon$ pour l'adversaire $A$ dans un jeu est défini tel que :
 
 <div>
 $$
-\epsilon \coloneqq | (Pr[b' = 1 | b = 1] + Pr[b' = 0 | b = 0]) - 1 |
+\epsilon(A) \coloneqq | (\Pr[b' = 1 | b = 1] + \Pr[b' = 0 | b = 0]) - 1 |
 $$
 </div>
 
 {% endnote %}
 
-Si l'adversaire n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon = 1$.
+Si l'adversaire $A$ n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon(A) = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon(A) = 1$.
 
 Le corollaire ci-après montre que l'avantage est également la différence entre gagner ou perdre en choisissant tout le temps $m_0$ ou $m_1$. C'est cette définition que nous utiliserons dans tous les autres jeux que nous définirons.
 
@@ -166,7 +166,7 @@ Si $m_0$ est traité de façon équivalente à $m_1$, On a :
 
 <div>
 $$
-\vert Pr[b' = 1 | b = 1] - Pr[b' = 1 | b = 0] \vert = \vert Pr[b' = 0 | b = 0] - Pr[b' = 0 | b = 1] \vert
+\epsilon(A) = \vert \Pr[b' = 1 | b = 1] - \Pr[b' = 1 | b = 0] \vert = \vert \Pr[b' = 0 | b = 0] - \Pr[b' = 0 | b = 1] \vert
 $$
 </div>
 
@@ -175,20 +175,20 @@ $$
 
 <div>
 $$
-1/2\cdot Pr[b'=0 | b=0] + 1/2\cdot Pr[b'=1 | b=1] +1/2\cdot  Pr[b'=0 | b=1] + 1/2\cdot Pr[b'=1 | b=0]  = 1
+1/2\cdot \Pr[b'=0 | b=0] + 1/2\cdot \Pr[b'=1 | b=1] +1/2\cdot  \Pr[b'=0 | b=1] + 1/2\cdot \Pr[b'=1 | b=0]  = 1
 $$
 </div>
 
-La proba de gagner vaut $Pr[b'=b] = 1/2\cdot Pr[b'=0 | b=0] + 1/2\cdot Pr[b'=1 | b=1] = 1/2 +\epsilon/2$ et la proba de perdre $1/2 - \epsilon/2$
+La proba de gagner vaut $\Pr[b'=b] = 1/2\cdot \Pr[b'=0 | b=0] + 1/2\cdot \Pr[b'=1 | b=1] = 1/2 +\epsilon(A)/2$ et la proba de perdre $1/2 - \epsilon(A)/2$
 Du coup :
 
 <div>
 $$
-Pr[b'=1 | b=1] - Pr[b'=0 | b=1] + Pr[b'=0 | b=0] - Pr[b'=1 | b=0] = 2\cdot \epsilon
+\Pr[b'=1 | b=1] - \Pr[b'=0 | b=1] + \Pr[b'=0 | b=0] - \Pr[b'=1 | b=0] = 2\cdot \epsilon(A)
 $$
 </div>
 
-Si $m_0$ et $m_1$ sont équivalent on a $Pr[b'=1 | b=1] - Pr[b'=1 | b=0] = Pr[b'=0 | b=0] - Pr[b'=0 | b=1]$ ce qui conclut la preuve.
+Si $m_0$ et $m_1$ sont équivalent on a $\Pr[b'=1 | b=1] - \Pr[b'=1 | b=0] = \Pr[b'=0 | b=0] - \Pr[b'=0 | b=1]$ ce qui conclut la preuve.
 
 {% enddetails %}
 
@@ -206,12 +206,14 @@ Montrer que tout adversaire ne peut avoir un avantage différent de 0 au au jeu 
 {% details "corrigé" %}
 <div>
 $$
-\vert Pr[b' = 1 | b = 1] - Pr[b' = 1 | b = 0] \vert = \vert Pr[A(k\oplus m_1) = 1] - Pr[A(k\oplus m_0) = 1] \vert
+\vert \Pr[b' = 1 | b = 1] - \Pr[b' = 1 | b = 0] \vert = \vert \Pr[A(k\oplus m_1) = 1] - \Pr[A(k\oplus m_0) = 1] \vert
 $$
 </div>
 
-Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $Pr[A(U) = 1] = Pr[A(k\oplus m_1) = 1] = Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.
+Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $\Pr[A(U) = 1] = \Pr[A(k\oplus m_1) = 1] = \Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.
 {% enddetails %}
+
+> TBD example 2.8 avec vigenère "intro of modern cryptography
 
 ## <span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée
 
@@ -233,20 +235,20 @@ Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un nombre 
 {% note "**Définition**" %}
 Pour calculer une complexité, il faut connaître la taille de l'entrée, c'est à dire les informations données à l'adversaire.
 
-De façon classique, la taille de cette entrée ($n$), nommé **_paramètre de sécurité_**, consiste en la taille de la clé (valant $k$) plus la taille du message à chiffrer (valant $m$) :
+De façon classique, la taille de cette entrée ($n$), nommé **_paramètre de sécurité_**, consiste en la taille de la clé (valant $s$) plus la taille du message à chiffrer (valant $t$) :
 
 <div>
 $$
-n \coloneqq k+m
+n \coloneqq s+t
 $$
 </div>
 
 {% endnote %}
 
-L'augmentation de la taille des clés va certes avoir un effet sur le temps d'exécution mais ce sera surtout sur l'avantage que cela se fera sentir, s\il est exponentiellement petit par rapport au paramètre de sécurité :
+L'augmentation de la taille des clés va certes avoir un effet sur le temps d'exécution mais ce sera surtout sur l'avantage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :
 
 {% exercice %}
-On suppose que l'exécution d'un adversaire de complexité temporelle (en s) $n^3$ ait un avantage de $\min(1, \frac{2^{40}}{2^n})$.
+On suppose que l'exécution d'un adversaire de complexité temporelle (en secondes) $n^3$ ait un avantage de $\min(1, \frac{2^{40}}{2^n})$.
 
 Pour $n=40$, combien faut-il de temps pour qu'il puisse décrypter la méthode de façon certaine ? Quel est son avantage pour $n=50$ et en combien de temps s'exécute-t-il ?
 {% endexercice %}
@@ -319,7 +321,7 @@ La négligeabilité se compose tout comme la polynomialité (somme et produit de
 
 ## <span id="jeu-reconnaissance"></span>Jeu de la reconnaissance
 
-Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance ci-dessous (on chercher à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_0)$ lorsque $k$ est distribué de façon uniforme).
+Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance ci-dessous (on chercher à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_1)$ lorsque $k$ est distribué de façon uniforme).
 
 Soient $D_i: \mathcal{U} \to [0, 1]$ pour $i \in \\{0, 1\\}$ deux lois de distribution. On cherche à distinguer si un élément de $\mathcal{U}$ a été tiré selon la loi $D_0$ ou $D_1$.
 
@@ -327,9 +329,9 @@ Soient $D_i: \mathcal{U} \to [0, 1]$ pour $i \in \\{0, 1\\}$ deux lois de distri
 
      testeur                              adversaire
     ---------                            ------------
- b  |   k   |                            |          |  rép(X) = b'
---->|  D0   |   X tiré selon D0 si b=0   |          | ------------->
-    |  D1   |   X tiré selon D1 si b=1   |          |
+    |       |                            |          |  
+ b  |  D0   |   x tiré selon D0 si b=0   |    D0    |   A(x) = b'
+--->|  D1   |   x tiré selon D1 si b=1   |    D1    | ------------->
     |       | -------------------------> |          |
     ---------                            ------------
 ```
@@ -338,7 +340,7 @@ Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la s
 
 <div>
 $$
-\epsilon \coloneqq cPr[b'=1 | b=1] - Pr[b'=1 | b=0]
+\epsilon(A) \coloneqq \Pr[b'=1 | b=1] - \Pr[b'=1 | b=0]
 $$
 </div>
 
@@ -355,7 +357,7 @@ On cherchera toujours à obtenir un comportement sémantiquement sécurisé. Cec
 Pour ce jeu il est facile de formaliser le meilleur algorithme possible permettant de résoudre ce problème :
 
 - Entrée :
-  - un X
+  - une valeur x
 - Programme :
   1. calculer la probabilité p0 d'obtenir x selon la loi D0
   2. calculer la probabilité p1 d'obtenir x selon la loi D1
@@ -370,40 +372,51 @@ Pour se fixer les idée commençons par un petit exercice :
 Montrez que l'on peut distinguer la loi uniforme sur $\\{0, 1\\}^n$ de la fonction constante $F(x) = \mathbb{0}$ avec un avantage non négligeable.
 {% endexercice %}
 {% details "preuve" %}
-Si $X$ est un nombre quelconque de $\\{0, 1\\}^n$, la probabilité que $X = \mathbb{0}$ vaut $1/2^n$ (il faut que les valeurs coïncident bit à bit). L'algorithme $A$ qui répond 1 si $X_1\neq \mathbb{0}$ et 0 sinon a un avantage de :
+Comme :
+
+- la probabilité d'obtenir n'importe quel mot de $\\{0, 1\\}^n$ vaut $1/2^n$ pour la loi uniforme,
+- la probabilité d'obtenir $\mathbb{0}$ vaut 1 pour la fonction constante
+
+Le meilleur algorithme va :
+
+- répondre la fonction constante si le mot en entrée vaut $\mathbb{0}$
+- répondre la fonction uniforme sinon
+
+En supposant sans perte de généralité que si $b=0$ le testeur va rendre la fonction constante, l'avantage de cet algorithme vaut :
 
 <div>
 $$
 \begin{array}{lcl}
-\text{avantage}(A) &=& Pr[A(X_1) = 1 | b=1] - Pr[A(X_1) = 1 | b=0]\\
-&=&|\frac{1}{2}\sum_{X\in \{0, 1\}^n}(Pr[A(0) = 1]\cdot (1/2)^n - Pr[A(H(x)) = 0]\cdot (1/2)^n)|\\
-&=&1-(1/2)^n
+\epsilon(A) &=& |\Pr[x \neq \mathbb{0} | b=1] - \Pr[x \neq \mathbb{0} | b=0]|\\
+&=&|1-1/2^n - 0|\\
 \end{array}
 $$
 </div>
 
 {% enddetails %}
 
-Prenons par exemple la distribution de Bernoulli $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^n$ la distribution sur $\\{0, 1\\}^n$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme de distribution de probabilité $N$.
+Prenons par exemple la distribution de Bernoulli $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^n$ la distribution sur $\\{0, 1\\}^n$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme $N$.
 
-Soit $A$ le meilleur algorithme permettant de distinguer $B^n$ et $N$. Son avantage est alors :
+Soit $A$ le meilleur algorithme permettant de distinguer $B^n$ et $N$. Il va répondre $B^n$ si $B^n(x) > (1/2)^n$ et $N$ sinon.
+
+Son avantage est alors :
 
 <div>
 $$
 \begin{array}{lcl}
-A &=&| Pr[b'=1 | b=1] - Pr[b'=1 | b=0] | \\
-&=& |\sum_{X\in \{0, 1\}^n}(Pr[A(X') = 1 | X=X']\cdot B^n(X) - Pr[A(X') = 1 | X=X']\cdot (1/2)^n)|\\
-&=& |\sum_{X\in \{0, 1\}^n}(Pr[A(X') = 1 | X=X']\cdot B^n(X) + Pr[A(X') = 0 | X=X']\cdot (1/2)^n) - 1|
+\epsilon(A) &=&| \Pr[b'=1 | b=1] - \Pr[b'=1 | b=0] | \\
+&=& |\sum_{X\in \{0, 1\}^n}(\Pr[A(X') = 1 | X=X']\cdot B^n(X) - \Pr[A(X') = 1 | X=X']\cdot (1/2)^n)|\\
+&=& |\sum_{X\in \{0, 1\}^n}(\Pr[A(X') = 1 | X=X']\cdot B^n(X) + \Pr[A(X') = 0 | X=X']\cdot (1/2)^n) - 1|
 \end{array}
 $$
 </div>
 
-Or $Pr[A(X') = 1 | X=X'] = 1$ si $B^n(X')\geq (1/2)^n$, l'avantage vaut donc :
+Or $\Pr[A(X') = 1 | X=X'] = 1$ si $B^n(X')\geq (1/2)^n$, l'avantage vaut donc :
 
 <div>
 $$
 \begin{array}{lcl}
-A &=&  \sum_{X\in \{0, 1\}^n}\max((1/2)^n, B^n(X)) - 1
+\epsilon(A) &=&  \sum_{X\in \{0, 1\}^n}\max((1/2)^n, B^n(X)) - 1
 \end{array}
 $$
 </div>
@@ -413,7 +426,7 @@ Et comme $\max(a, b) = \frac{1}{2}\cdot (a+b+|b-a|)$ on a au final :
 <div>
 $$
 \begin{array}{lcl}
-A &=&  \frac{1}{2}\sum_{X\in \{0, 1\}^n}| (1/2)^n - B^n(X) |
+\epsilon(A) &=&  \frac{1}{2}\sum_{X\in \{0, 1\}^n}| (1/2)^n - B^n(X) |
 \end{array}
 $$
 </div>
