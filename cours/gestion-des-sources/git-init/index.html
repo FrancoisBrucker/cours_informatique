@@ -107,12 +107,10 @@
 
 
       <ul>
-            <li>
-              <a href="/cours_informatique/cours/coder-et-développer/ordinateur-développement/fichiers-navigation/">/cours/coder-et-développer/ordinateur-développement/fichiers-navigation/</a>
-            </li>
-            <li>
-              <a href="/cours_informatique/cours/coder-et-développer/ordinateur-développement/terminal/">/cours/coder-et-développer/ordinateur-développement/terminal/</a>
-            </li></ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/système-et-réseau/bases-système/terminal/">Terminal</a>
+              </li></ul>
       
 
 </div></div>
@@ -178,7 +176,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On utilise <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/ordinateur-d%C3%A9veloppement/brew" class="interne">brew</a> :</p>
+<p>On utilise <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/syst%C3%A8me-installation/brew/" class="interne">brew</a> :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">brew <span class="token function">install</span> <span class="token function">git</span></code></pre>
 </div>
 </details>     
@@ -200,12 +198,18 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Le package <a href="https://gitforwindows.org/">https://gitforwindows.org/</a> est très bien.</p>
-<p>Gardez les paramètres par défaut lors de l'installation à part pour le choix de l'éditeur par défaut. Remplacez <em>vim</em> par <em>notepad++</em> par exemple (si vous n'avez pas <a href="https://notepad-plus-plus.org/">notepad++</a>, installez le) et surtout pour le choix des bibliothèques ssh à utiliser : choisissez <strong>use external openssh</strong> :</p>
-<p><img src="git-install-windows.png" alt="openssh"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/">https://learn.microsoft.com/fr-fr/windows/package-manager/winget/</a></p>
+</div></div>
 </div>
-</details>     
-</div>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">winget <span class="token function">install</span> <span class="token parameter variable">--id</span> Git.Git <span class="token parameter variable">-e</span> <span class="token parameter variable">--source</span> winget</code></pre>
+</details></div>
+     
+
 <h3>Github cli</h3>
 <p>Vous pouvez aussi télécharger l'utilitaire de github pour la ligne de commande : <a href="https://docs.github.com/en/github-cli/github-cli/about-github-cli">github CLI</a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -288,7 +292,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pouvez également mettre votre <a href="https://docs.github.com/en/github/using-git/associating-text-editors-with-git">éditeur favori</a> bien sur, mais <code>vim</code> sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.</p>
+<p>Vous pouvez également mettre votre <a href="https://docs.github.com/en/github/using-git/associating-text-editors-with-git">éditeur favori</a> bien sur. Par exemple vscode :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> core.editor <span class="token string">"code --wait"</span></code></pre>
+<p>Mais <code>vim</code> sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.</p>
 </div></div>
 
 <h3>Configurations optionnelles</h3>

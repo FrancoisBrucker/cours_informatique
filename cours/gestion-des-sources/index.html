@@ -354,34 +354,14 @@ couper en parties
 <p>TBD projet avec desktop voir <a href="https://docs.github.com/en/desktop">https://docs.github.com/en/desktop</a> partie managing commits.</p>
 </blockquote>
 <h3>Authentification</h3>
-<p>Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :</p>
-<ul>
-<li>via un web token</li>
-<li>via une clé ssh</li>
-</ul>
-<p>L'accès à l'origin va déterminer l'accès. Vous pouvez le voir dans le fichier de configuration qui est par défaut <code class="fichier">.git/config</code> dans la racine de votre projet.</p>
-<h4>Web token</h4>
-<p>A priori se fait tout seul si vous utilisez l'application.</p>
-<blockquote>
-<p>TBD à étoffer voir sur préférence du projet.</p>
-</blockquote>
-<h4>Clés ssh</h4>
-<pre><code>[remote &quot;origin&quot;]
-        url = git@github.com:FrancoisBrucker/cours_informatique.git
-        fetch = +refs/heads/*:refs/remotes/origin/*
-
-</code></pre>
-<p>Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.</p>
-<p>Commencez par créer une clé :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/ssh/" class="interne">créer et utiliser une clé ssh</a></p>
+<p><a href="github-authentification" class="interne">Authentification à l'origine</a></p>
 </div></div>
 
-<p>Puis renseignez <strong>votre clé publique</strong> dans <a href="https://github.com/settings/keys">votre profil github</a>.</p>
 <h3>Github actions</h3>
 <blockquote>
 <p>TBD :</p>
@@ -391,11 +371,6 @@ couper en parties
 </ul>
 </blockquote>
 <h2>git</h2>
-<blockquote>
-<p>TBD ligne de commande
-TBD commencer par la config
-TBD reprendre tout en créant un projet depuis la maison et on montre les fichier</p>
-</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -407,11 +382,7 @@ TBD reprendre tout en créant un projet depuis la maison et on montre les fichie
 </ul>
 </div></div>
 
-<blockquote>
-<p>TBD dire que c'est pour créer un repo sans github. Il faut donc que tout soit configuré chez soit (important car on doit savoir qui commit)</p>
-<p>TBD projet en ligne de commande.
-TBD utiliser tous les usages (même add/reset -p)</p>
-</blockquote>
+<p>Est l'outil utilisé par github. C'est mieux si vous avez installé ce logiciel sur votre ordinateur et que vous savez un petit peut vous en servir. Cette partie vous permettra d'installer git et de le configurer. On verra aussi comment créer et cloner un projet pour github.</p>
 <h3>Installation et configuration</h3>
 <p>Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :</p>
 <ul>
@@ -435,11 +406,6 @@ TBD utiliser tous les usages (même add/reset -p)</p>
 <p><a href="git-init" class="interne">Configurer et initialiser ses projets git</a></p>
 </div></div>
 
-<h3>Projet</h3>
-<blockquote>
-<p>TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
-TBD utiliser <code>git diff</code> <a href="https://www.youtube.com/watch?v=F1van9nShjA">https://www.youtube.com/watch?v=F1van9nShjA</a> et ref : <a href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a></p>
-</blockquote>
 <h2>Outils</h2>
 <h3>git avec vscode</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -471,23 +437,37 @@ TBD utiliser <code>git diff</code> <a href="https://www.youtube.com/watch?v=F1va
 </ul>
 </div></div>
 
-<h2>plomberie</h2>
-<h3>Format diff</h3>
-<h3>hash</h3>
-<h3>objets de git</h3>
-<h2>Usage</h2>
+<h2>Bonnes pratiques</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<ol>
-<li><a href="usage-quotidien" class="interne">Configuration pour une utilisation quotidienne</a></li>
-<li><a href="bonnes-pratiques" class="interne">Bonnes pratiques</a></li>
-</ol>
+<p><a href="bonnes-pratiques" class="interne">Bonnes pratiques</a></p>
 </div></div>
 
-<h2>Git plomberie</h2>
+<h2>Porcelaine et plomberie de git</h2>
+<blockquote>
+<p>TBD ce que ça veut dire.</p>
+</blockquote>
+<h3>porcelaine</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="git" class="interne">Projet web en ligne de commande</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
+TBD utiliser <code>git diff</code> <a href="https://www.youtube.com/watch?v=F1van9nShjA">https://www.youtube.com/watch?v=F1van9nShjA</a> et ref : <a href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a>
+TBD ligne de commande
+TBD reprendre tout en créant un projet depuis la maison et on montre les fichier
+TBD projet en ligne de commande.
+TBD utiliser tous les usages (même add/reset -p)</p>
+</blockquote>
+<h3>plomberie</h3>
 <blockquote>
 <p>TBD expliquer porcelaine/plomberie
 TBD un tag c'est un objet. Commit, tree ou blob.
@@ -501,14 +481,6 @@ TBD <a href="https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things">https://g
 <p>TBD reflog.
 TBD git sha. Intro : <a href="https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d">https://medium.com/@jonathan_finch/git-commit-hash-number-theory-770f67ec492d</a> et <a href="https://graphite.dev/guides/git-hash">https://graphite.dev/guides/git-hash</a>. Mieux : <a href="https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git">https://www.designgurus.io/answers/detail/how-do-i-get-the-hash-for-the-current-commit-in-git</a></p>
 </blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="git" class="interne">Cours détaillé sur le fonctionnement de Git</a></p>
-</div></div>
-
 <p>Cette partie du cours s'adresse plus particulièrement aux informaticiens voulant utiliser git en ligne de commande et/ou à ceux voulant comprendre le fonctionnement précis de git.</p>
 <h2>Bibliographie</h2>
 <h3>Cours</h3>
