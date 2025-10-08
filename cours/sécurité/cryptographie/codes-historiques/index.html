@@ -514,8 +514,8 @@ message
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $X$ et $Y$ deux variables aléatoires indépendantes sur $M = \{0, 1\}$ et telle que $X$ soit uniforme.</p>
-<p>Alors la variable aléatoire $X \oplus Y$ est uniforme sur $\{0, 1\}^L$</p>
+<p>Soit $X$ une variable aléatoire uniforme sur $\{0, 1\}$ et $Y_i$ $L$ variables aléatoires ur $\{0, 1\}$. On suppose que $X$ est indépendant de $Y_i$ pour tout $i$.</p>
+<p>La variable aléatoire $C_1\dots C_L$ telle que $C_i = X \oplus Y_i$ pour tout $i$ est uniforme sur $\{0, 1\}^L$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -536,24 +536,21 @@ message
 </summary>
 <div class="mx-8 pb-2">
 <p>Plaçons nous à un index $i$ fixé. On a :</p>
+<div>
+$$
+Pr[C_i = 0] = Pr[X = 0, Y = 0] + Pr[X = 1, Y = 1]
+$$
+</div>
+<p>Comme $X$ et $Y_i$ sont indépendants pour tout $i$, on a : $Pr[X = a, Y_i = b] = Pr[X = a]\cdot Pr[Y_i = b]$. Donc :</p>
 <ul>
-<li>$Pr[X_i = 0] = Pr[X_i = 1] = .5$ car la variable aléatoire $X$ est uniforme et il y a exactement la moitié de M dont le $i$ème indice vaut 0 (pour l'autre moitié cet indice vaut 1).</li>
-<li>$Pr[Y_i = 0] = p_i$ et donc $Pr(Y_i = 1) = 1-p_i$</li>
+<li>$Pr[X = 0, Y_i = 0] = Pr[X = 0]\cdot Pr[Y_i = 0] = .5\cdot Pr[Y_i = 0]$</li>
+<li>$Pr[X = 1, Y_i = 1] = Pr[X = 1]\cdot Pr[Y_i = 1] = .5\cdot (1-Pr[Y_i = 0])$</li>
 </ul>
-<p>Comme $(X \oplus Y)_i$ vaut 0 que si $X_i$ et $Y_i$ valent conjointement 0 ou 1, on en déduit que :</p>
-<p>$$
-Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_i = 0] + Pr[X_i = 1, Y_i = 1]
-$$</p>
-<p>Comme $X$ et $Y$ sont indépendants, $X_i$ et $Y_i$ le sont également et on a : $Pr[X_i = a, Y_i = b] = Pr[X_i = a]\cdot Pr[Y_i = b]$. Donc :</p>
-<ul>
-<li>$Pr[X_i = 0, Y_i = 0] = Pr[X_i = 0]\cdot Pr[Y_i = 0] = .5\cdot p_i$</li>
-<li>$Pr[X_i = 1, Y_i = 1] = Pr[X_i = 1]\cdot Pr[Y_i = 1] = .5\cdot (1-p_i)$</li>
-</ul>
-<p>Ce qui entraîne que $Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_i = 0] + Pr[X_i = 1, Y_i = 1] = .5$, et donc que $(X \oplus Y)$ est une variable aléatoire uniforme.</p>
+<p>Ce qui entraîne que $Pr[X \oplus Y_i = 0] = Pr[X = 0, Y_i = 0] + Pr[X = 1, Y_i = 1] = .5$, et donc que $X \oplus Y_i$ est une variable aléatoire uniforme.</p>
 </div>
 </details>     
 </div>
-<p>On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffré, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.</p>
+<p>On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffrer, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.</p>
 <p>Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c\oplus m$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

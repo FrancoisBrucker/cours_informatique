@@ -98,7 +98,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git/">Git porcelaine</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git/rebase/">git rebase, la tronçonneuse magique</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-porcelaine/">Git porcelaine</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-porcelaine/rebase/">git rebase, la tronçonneuse magique</a>
 
 </div></div>
 
@@ -160,7 +160,7 @@ Récapitulatif des commandes |
 <p>En découpant les branches pour les recoller plus loin, <code>git rebase</code> permet de conserver un historique de modification plus clair, qu'on décide ensuite de fusionner la branche fille à <code>main</code> ou non.</p>
 <p>On peut ainsi décider de fusionner une branche peu importante, comme une simple correction de bug par exemple, sans que celle-ci n'apparaisse comme une excroissance de la branche principale. Pour se faire, on commence par re-baser la branche de correction de bug (appelée <em>bug</em>) sur <code>main</code>, puis on merge, et enfin on supprime la branche :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase master bug
-<span class="token function">git</span> checkout master
+<span class="token function">git</span> switch master
 <span class="token function">git</span> merge bug
 <span class="token function">git</span> branch <span class="token parameter variable">-d</span> bug</code></pre>
 <p>Cela nous permet d'obtenir un bel historique bien plat au lieu de quelque chose de plus alambiqué et qui, à la longue, les corrections de bug se succédant, risque d'alourdir inutilement l'arbre de l'historique de version.</p>
@@ -183,11 +183,11 @@ A---B---E---H---I---L ← main
               F---G   C---D---J---K </code></pre>
 <p>On conserve donc bien l'historique en branches, mais avec beaucoup plus de clarté. Pour se faire, on va à chaque fois se re-baser sur <code>main</code> avant de fusionner, comme on le faisait avant. Mais en plus, on va utiliser l'option de merge &quot;no fast forward&quot; (<code>--no-ff</code>) pour que git conserve la trace des branches dans l'historique :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase master fonctionnalité1
-<span class="token function">git</span> checkout master
+<span class="token function">git</span> switch master
 <span class="token function">git</span> merge fonctionnalité1 --no-ff
 <span class="token function">git</span> branch <span class="token parameter variable">-d</span> fonctionnalité1
 <span class="token function">git</span> rebase master fonctionnalité2
-<span class="token function">git</span> checkout master
+<span class="token function">git</span> switch master
 <span class="token function">git</span> merge fonctionnalité2 --no-ff
 <span class="token function">git</span> branch <span class="token parameter variable">-d</span> fonctionnalité2</code></pre>
 <h3>Corriger des erreurs</h3>

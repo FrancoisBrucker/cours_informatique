@@ -304,6 +304,10 @@ couper en parties
 <p>TBD projet voir le sha.</p>
 </blockquote>
 <h3>Diff</h3>
+<blockquote>
+<p>TBD faire un exemple avec la commande diff au terminal.
+TBD sous windows <a href="https://learn.microsoft.com/fr-fr/troubleshoot/windows-client/shell-experience/how-to-use-windiff-utility">https://learn.microsoft.com/fr-fr/troubleshoot/windows-client/shell-experience/how-to-use-windiff-utility</a> ou <a href="https://www.git-tower.com/blog/diff-tools-windows">https://www.git-tower.com/blog/diff-tools-windows</a></p>
+</blockquote>
 <p>On a déjà vu le diff des fichiers lors de nos commits et en particulier lorsque l'on a résolu un conflit de fusion. Cela vaut le coût de connaître le format utilisé :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -370,7 +374,7 @@ couper en parties
 <li>github actions <a href="https://www.youtube.com/watch?v=p3W2XCD3smk">https://www.youtube.com/watch?v=p3W2XCD3smk</a></li>
 </ul>
 </blockquote>
-<h2>git</h2>
+<h2>Git</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -383,6 +387,17 @@ couper en parties
 </div></div>
 
 <p>Est l'outil utilisé par github. C'est mieux si vous avez installé ce logiciel sur votre ordinateur et que vous savez un petit peut vous en servir. Cette partie vous permettra d'installer git et de le configurer. On verra aussi comment créer et cloner un projet pour github.</p>
+<h3>Connexion ssh à github</h3>
+<p>Nous allons utiliser des clés ssh pour se connecter à github, donc si vous ne l'avez pas encore fait :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/ssh/" class="interne">Créer et utiliser une clé ssh</a></p>
+</div></div>
+
+<p>Puis renseignez <strong>votre clé publique</strong> dans <a href="https://github.com/settings/keys">votre profil github</a>.</p>
 <h3>Installation et configuration</h3>
 <p>Les notions que l'on a vu précédemment suffisent pour un usage courant de la gestion des sources avec github. Si vous voulez :</p>
 <ul>
@@ -407,7 +422,7 @@ couper en parties
 </div></div>
 
 <h2>Outils</h2>
-<h3>git avec vscode</h3>
+<h3>Git avec vscode</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -448,29 +463,20 @@ couper en parties
 
 <h2>Porcelaine et plomberie de git</h2>
 <blockquote>
-<p>TBD ce que ça veut dire.</p>
+<p>TBD expliquer porcelaine/plomberie</p>
 </blockquote>
-<h3>porcelaine</h3>
+<h3>Porcelaine</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="git" class="interne">Projet web en ligne de commande</a></p>
+<p><a href="git-porcelaine" class="interne">Git porcelaine</a></p>
 </div></div>
 
+<h3>Plomberie</h3>
 <blockquote>
-<p>TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
-TBD utiliser <code>git diff</code> <a href="https://www.youtube.com/watch?v=F1van9nShjA">https://www.youtube.com/watch?v=F1van9nShjA</a> et ref : <a href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a>
-TBD ligne de commande
-TBD reprendre tout en créant un projet depuis la maison et on montre les fichier
-TBD projet en ligne de commande.
-TBD utiliser tous les usages (même add/reset -p)</p>
-</blockquote>
-<h3>plomberie</h3>
-<blockquote>
-<p>TBD expliquer porcelaine/plomberie
-TBD un tag c'est un objet. Commit, tree ou blob.
+<p>TBD un tag c'est un objet. Commit, tree ou blob.
 TBD work-trees et stash
 TBD utiliser switch et pas checkout pour passer de branches en branches (checkout pour les commits particulier: headless ?)
 TBD : index = staging area.

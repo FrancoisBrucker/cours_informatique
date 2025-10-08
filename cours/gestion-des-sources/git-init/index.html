@@ -222,10 +222,22 @@
 
 <p>Nous ne l'utiliserons pas ici, mais je vous invite à lire <a href="https://cli.github.com/manual/">sa documentation</a>, il permet d'interagir avec github uniquement à la ligne de commande sans cliquer sur aucun bouton, ce qui est plus rapide.</p>
 <h2>Configuration</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://git-scm.com/book/fr/v2/Personnalisation-de-Git-Configuration-de-Git">configuration de git</a></p>
+</div></div>
+
 <p>Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout moment savoir qui a fait quoi sur le projet. Il est donc impératif que vos données personnelles soient à jour.</p>
-<blockquote>
-<p>TBD dire où ils sont sur son disque dur <code>~/.gitconfig</code> et montrer le contenu du fichier.</p>
-</blockquote>
+<p>La configuration de git s'effectue à trois niveaux successifs :</p>
+<ol>
+<li>au niveau du système. Le fichier par défaut est <code class="fichier">/etc/gitconfig</code> sous unix.</li>
+<li>au niveau du compte. Par défaut le fichier de configuration de git est <code class="fichier">~/.gitconfig</code>.</li>
+<li>au niveau de chaque projet. Par défaut le fichier de configuration de git est <code class="fichier">.git/config</code> à la racine du projet</li>
+</ol>
+<p>On mettra les informations générales dans le fichier de configuration du compte (identité et comportement général de git) avec la commande <code>git config --global &lt;variable&gt; &lt;valeur&gt;</code> et les informations spécifiques pouvant changer dans la configuration du projet (les origines par exemple) avec la commande <code>git config &lt;variable&gt; &lt;valeur&gt;</code>.</p>
 <h3>Info personnelles</h3>
 <p>Renseigner ces infos de façon globale pour tout projet (vous pourrez changer ces infos pour chaque projet, mais mettez des infos corrects par défaut) :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -274,7 +286,7 @@
 </div></div>
 
 <h3>Éditeur de messages</h3>
-<p>On va mettre vim comme éditeur par défaut pour renseigner les commits.</p>
+<p>On va mettre vscode comme éditeur par défaut pour renseigner les commits.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -283,7 +295,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Dans un terminal, tapez la commande</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> core.editor <span class="token function">vim</span></code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> core.editor <span class="token string">"code --wait"</span></code></pre>
 </div></div>
 
 <p>Vous n'utiliserez que très peu l'éditeur par défaut une fois que vous ferez vos commit avec l'option <code>-m</code>.</p>
@@ -292,9 +304,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pouvez également mettre votre <a href="https://docs.github.com/en/github/using-git/associating-text-editors-with-git">éditeur favori</a> bien sur. Par exemple vscode :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> core.editor <span class="token string">"code --wait"</span></code></pre>
-<p>Mais <code>vim</code> sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.</p>
+<p>Il est conseillé de choisir l'éditeur <code>vi</code> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> core.editor <span class="token function">vi</span></code></pre>
+<p>Il sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant), il est donc bien d'avoir quelque notions de vi et de les utiliser de temps en temps, d'où cette configuration recommandée.</p>
 </div></div>
 
 <h3>Configurations optionnelles</h3>
@@ -353,7 +365,7 @@
 <p><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository</a></p>
 </div></div>
 
-<p>le projet existe déjà sur github et je le <em>clone</em> chez moi C'est dans le menu déroulant <code>clone</code> sur la page github du projet. Par exemple pour le <a href="../projet-github-desktop#nouveau-projet" class="interne">projet animaux</a> :
+<p>le projet existe déjà sur github et je le <em>clone</em> chez moi C'est dans le menu déroulant <code>clone</code> sur la page github du projet. Par exemple pour le <a href="../github-desktop#nouveau-projet" class="interne">projet animaux</a> :
 <a href="clone-1.png">cloner un projet</a></p>
 <p>Il existe plusieurs façon de procéder :</p>
 <ul>
@@ -396,7 +408,7 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>A moins que vous n'ayez une clé ssh, utilisez le clonage utilisant le protocole <code>https</code>.</p>
+<p>On suppose que vous avez une clé ssh et que vous l'avez renseigné dans votre compte, donc  utilisez le clonage utilisant le protocole <code>ssh</code>.</p>
 </div></div>
 
 <h4>Clonage https</h4>
@@ -406,7 +418,7 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 <li>j'ai maintenant un dossier animaux contenant la branche <code>main</code> du projet :</li>
 </ol>
 <p>Le dossier <code>.git</code> contient l'entièreté du projet, en particulier son fichier de configuration <code>.git/config</code></p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/animaux ±main » <span class="token function">cat</span> .git/config 
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/animaux ±main » <span class="token function">cat</span> .git/config
 <span class="token punctuation">[</span>core<span class="token punctuation">]</span>
   repositoryformatversion <span class="token operator">=</span> <span class="token number">0</span>
   filemode <span class="token operator">=</span> <span class="token boolean">true</span>
@@ -480,7 +492,7 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 <ol>
 <li>un dossier <code class="fichier">planètes</code> contenant un fichier <code class="fichier">solaire.txt</code> :</li>
 </ol>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets » <span class="token function">ls</span> <span class="token parameter variable">-la</span> planètes 
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets » <span class="token function">ls</span> <span class="token parameter variable">-la</span> planètes
 total <span class="token number">8</span>
 drwxr-xr-x  <span class="token number">3</span> fbrucker  staff   <span class="token number">96</span> <span class="token number">29</span> aoû 09:44 <span class="token builtin class-name">.</span>
 drwxr-xr-x  <span class="token number">4</span> fbrucker  staff  <span class="token number">128</span> <span class="token number">29</span> aoû 09:45 <span class="token punctuation">..</span>
@@ -496,7 +508,7 @@ drwxr-xr-x  <span class="token number">4</span> fbrucker  staff  <span class="to
 </li>
 </ol>
 <p>Si l'on regarde le fichier de configuration de git :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/planètes ±main » <span class="token function">cat</span> .git/config               
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/planètes ±main » <span class="token function">cat</span> .git/config
 <span class="token punctuation">[</span>core<span class="token punctuation">]</span>
   repositoryformatversion <span class="token operator">=</span> <span class="token number">0</span>
   filemode <span class="token operator">=</span> <span class="token boolean">true</span>
@@ -520,7 +532,7 @@ drwxr-xr-x  <span class="token number">4</span> fbrucker  staff  <span class="to
 </div></div>
 
 <p>A la fin, le fichier de config du projet ressemble à ca :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/planètes ±main » <span class="token function">cat</span> .git/config                    
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@so-high git-projets/planètes ±main » <span class="token function">cat</span> .git/config
 <span class="token punctuation">[</span>core<span class="token punctuation">]</span>
   repositoryformatversion <span class="token operator">=</span> <span class="token number">0</span>
   filemode <span class="token operator">=</span> <span class="token boolean">true</span>

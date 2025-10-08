@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git/">Git porcelaine</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git/projet-git/">Projet git</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-porcelaine/">Git porcelaine</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-porcelaine/projet-git/">Projet git</a>
 
 </div></div>
 
@@ -96,9 +96,10 @@
     
   
 
-  <!-- début résumé -->
+  <blockquote>
+<p>TBD factoriser ce qu'on a déjà vu. Il y a des redites.</p>
+</blockquote>
 <p>Bases de l'utilisation de git. On va utiliser git/github grâce à un petit projet web et en profiter pour expliquer le fonctionnement interne de git.</p>
-<!-- fin résumé -->
 <h2>Création du projet git</h2>
 <p>Munissez vous d'un terminal et placez vous dans un dossier vierge :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">mkdir</span> mon_projet_web
@@ -155,13 +156,13 @@
 
 <p>En deux mots le dossier de configuration du projet git contient :</p>
 <ul>
-<li><em>HEAD</em> : la branche courant, pour l'instant <strong>Master</strong> (vérifiez le en lisant le fichier avec la commande <code>cat</code>)</li>
-<li><em>config</em> : le fichier de configuration.</li>
-<li><em>description</em> : description du projet, pas vraiment utilisé</li>
-<li><em>hooks/</em> : contient des scripts que l'on peu utiliser à chaque qu'une commande git particulière est utilisée. C'est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.</li>
-<li><em>info/exclude/</em> un <em>.gitignore</em> pour tout le projet.</li>
-<li><em>objects/</em> : contient votre projet actuel et passé en plein de petits bouts. Pour l'instant il n'y a rien.</li>
-<li><em>refs/</em> : contient les commit. Pour l'instant il n'y a rien.</li>
+<li><code class="fichier">HEAD</code> : la branche courant, pour l'instant <strong>Master</strong> (vérifiez le en lisant le fichier avec la commande <code>cat</code>)</li>
+<li><code class="fichier">config</code> : le fichier de configuration.</li>
+<li><code class="fichier">description</code> : description du projet, pas vraiment utilisé</li>
+<li><code class="fichier">hooks/</code> : contient des scripts que l'on peu utiliser à chaque qu'une commande git particulière est utilisée. C'est une utilisation avancée de git, qui permet par exemple de lancer tous les tests à chaque push, etc.</li>
+<li><code class="fichier">info/exclude/</code> un <em>.gitignore</em> pour tout le projet.</li>
+<li><code class="fichier">objects/</code> : contient votre projet actuel et passé en plein de petits bouts. Pour l'instant il n'y a rien.</li>
+<li><code class="fichier">refs/</code> : contient les commit. Pour l'instant il n'y a rien.</li>
 </ul>
 <h2>Fonctionnement de git</h2>
 <p>Le but de git est de garder un historique d'un projet, en conservant les fichiers du projets et leurs modifications au cours du temps. Cet historique est composé de <strong>commit</strong> qui stock l'état d'un projet à un instant donné. Plus précisément il stocke la différence en l'état précédent et le nouvel état, formant un graphe direct et acyclique (si je jargonne)</p>
@@ -181,7 +182,7 @@
 <p>Pour faire un <em>commit</em> (stocker l'état d'un projet) il faut commencer par dire à git ce que l'on veut <em>&quot;commiter&quot;</em>, ici notre fichier <code class="fichier">index.html</code> :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> index.html</code></pre>
 <p>On place le fichier <code class="fichier">index.html</code> courant dans le <strong>stage</strong> c'est à dire l'endroit où son mis les fichier qui seront inclus dans le <em>commit</em>. Pour voir tout ça, la commande <code>status</code> est super utile :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span>  status</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> status</code></pre>
 <p>Cette commande dit chez moi (et en couleur) :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Sur la branche main
 
@@ -191,9 +192,9 @@ Modifications qui seront validées <span class="token builtin class-name">:</spa
   <span class="token punctuation">(</span>utilisez <span class="token string">"git rm --cached &lt;fichier>..."</span> pour désindexer<span class="token punctuation">)</span>
   nouveau fichier <span class="token builtin class-name">:</span> index.html</code></pre>
 <p>On a bien un nouveau fichier que l'on veut garder. On peut fait notre premier commit :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span>  commit</code></pre>
-<p>Cette commande va lancer l'éditeur que vous avez configuré (<code>vim</code> si vous avez suivi mes recommandations) et va vous demander de décrire votre commit. Cette étape est <strong>obligatoire</strong> et <strong>très importante</strong>, ne mettez donc pas de message fantaisiste : décrivez en une ligne ce que vous avez fait.
-Ici, par exemple : <em>&quot;first commit&quot;</em>. Sauvez et sortez de <code>vim</code>, vous avez fait votre premier commit. On le voit en tapant la commande <code>git status</code> (qui dit que tout est ok, que le stage est vide et que l'on a aucun fichier non suivi par git).</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> commit</code></pre>
+<p>Cette commande va lancer l'éditeur que vous avez configuré (<code>vi</code> si vous avez suivi mes recommandations) et va vous demander de décrire votre commit. Cette étape est <strong>obligatoire</strong> et <strong>très importante</strong>, ne mettez donc pas de message fantaisiste : décrivez en une ligne ce que vous avez fait.
+Ici, par exemple : <em>&quot;first commit&quot;</em>. Sauvez et sortez de <code>vi</code>, vous avez fait votre premier commit. On le voit en tapant la commande <code>git status</code> (qui dit que tout est ok, que le stage est vide et que l'on a aucun fichier non suivi par git).</p>
 <p>La commande <code>git log</code> vous donne un historique des <em>commit</em> avec le nom, l'heure et le message. Chez moi ça donne :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">commit 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613 <span class="token punctuation">(</span>HEAD -<span class="token operator">></span>  main<span class="token punctuation">)</span>
 Author: François Brucker <span class="token operator">&lt;</span>francois.brucker@gmail.com<span class="token operator">></span>
@@ -247,7 +248,7 @@ Date:   Sat Sep <span class="token number">19</span> <span class="token number">
 <p>C'est notre fichier html ! Les autres objets correspondent à l'arborescence de projet (pour l'instant un unique nœud, notre commit) et le commit en lui même. Il aura un autre nom chez vous, mais chez moi c'est celui de nom <code class="fichier">3b/8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code> (c'est le numéro donné dans le commit).</p>
 <h3>Les références</h3>
 <p>Le dossier référence contient les références des commits de toutes les branches et ou tags de notre projet. Nous n'avons qu'une seule branche, nommée <code>main</code> commit des différentes branches. En regardant ce qu'il y a dans le fichier <code>refs/heads/main</code> je retrouve bien le numéro de commit.</p>
-<p>On peut accéder à tout dans git en utilisant ces numéros (en entier ou les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro <em>3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</em>, je peux taper <code>git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code>, <code>git log 3b8c</code> ou encore <code>git log 3b8c0a8</code></p>
+<p>On peut accéder à tout dans git en utilisant ces numéros (en entier ou les 4 ou plus premiers chiffres). Par exemple si jeu veux voir le log de mon commit de numéro <code>3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code>, je peux taper <code>git log 3b8c0a8836050e58ec8cf8bd24f3d06b0bf39613</code>, <code>git log 3b8c</code> ou encore <code>git log 3b8c0a8</code></p>
 <h2>Avancer dans l'arbre</h2>
 <p>Modifions notre fichier <code class="fichier">index.html</code> :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
@@ -467,7 +468,7 @@ Modifications qui seront validées <span class="token builtin class-name">:</spa
 <p>La commande <code>git branch</code> nous indique les branches que nous avons. Pour l'instant nous n'avons que la branche par défaut : <code>main</code>.</p>
 <h3>Créer une branche</h3>
 <p>Nous allons créer une branche pour voir s'il est possible d'ajouter du javascript à notre projet : <code>git branch js</code>.</p>
-<p>Si l'on refait la commande <code>git branch</code>, on voit qu'on a deux branches et qu'on est toujours sur la branche <code>main</code>. Allons vers la branche <code>js</code> avec la commande : <code>git checkout js</code></p>
+<p>Si l'on refait la commande <code>git branch</code>, on voit qu'on a deux branches et qu'on est toujours sur la branche <code>main</code>. Allons vers la branche <code>js</code> avec la commande : <code>git switch js</code></p>
 <p>On peut maintenant tranquillement ajouter du js à notre projet :</p>
 <ul>
 <li>
@@ -510,7 +511,7 @@ paragraph<span class="token punctuation">.</span><span class="token function">ad
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 </li>
 </ul>
-<p>On peut maintenant commiter le tout (en commençant pas ajouter les fichiers <em>main.js</em> et <em>index.html</em> au stage bien sur avec la commande <code>git add main.js index.html</code>) : <code>git commit m&quot;add js&quot;</code>.</p>
+<p>On peut maintenant commiter le tout (en commençant pas ajouter les fichiers <em>main.js</em> et <em>index.html</em> au stage bien sur avec la commande <code>git add main.js index.html</code>) : <code>git commit -m&quot;add js&quot;</code>.</p>
 <p>Un <code>git log --oneline</code> nous montre bien que l'on est maintenant sur une nouvelle branche :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">f7907be <span class="token punctuation">(</span>HEAD -<span class="token operator">></span> js<span class="token punctuation">)</span> <span class="token function">add</span> js
 35609dd <span class="token punctuation">(</span>main<span class="token punctuation">)</span> <span class="token function">add</span> .gitignore
@@ -519,7 +520,7 @@ a3c3fdc <span class="token function">add</span> css and <span class="token funct
 11f5564 <span class="token function">add</span> french
 3b8c0a8 First commit <span class="token operator">!</span></code></pre>
 <h3>Voir des branches</h3>
-<p>Si l'on revient à la branche <code>main</code> avec la commande <code>git checkout main</code> on voit que le fichier <code class="fichier">main.js</code> a disparu et que le fichier <code class="fichier">index.html</code> est remis à sa position sans le js.</p>
+<p>Si l'on revient à la branche <code>main</code> avec la commande <code>git switch main</code> on voit que le fichier <code class="fichier">main.js</code> a disparu et que le fichier <code class="fichier">index.html</code> est remis à sa position sans le js.</p>
 <p>Faisons une modification du fichier <code class="fichier">index.html</code> de la branche <code>main</code> en ajoutant une phrase au paragraphe :</p>
 <pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
@@ -629,7 +630,7 @@ impossible d'appliquer f7907be... add js</conflicted_files></code></pre>
                F'---G' ← js</code></pre>
 <p>Il ne nous reste plus qu'à fusionner <code>js</code> dans <code>main</code> (ce qui devrait se faire sans soucis puisqu'elles se suivent). Pour cela :</p>
 <ol>
-<li>on se place sur la branche <code>main</code> : <code>git checkout main</code></li>
+<li>on se place sur la branche <code>main</code> : <code>git switch main</code></li>
 <li>on fusionne la branche <code>js</code> sur <code>main</code> : <code>git merge js</code></li>
 </ol>
 <p>Un <code>it log --oneline --all --graph</code> montre que les deux branches sont identique, on peut maintenant supprimer la branche <code>js</code> : <code>git branch -d js</code></p>
@@ -652,8 +653,7 @@ impossible d'appliquer f7907be... add js</conflicted_files></code></pre>
 <p>Il arrive parfois qu'on a complètement raté un truc et que l'on veuille revenir en arrière dans le projet. C'est super car c'est justement là où git est fort.</p>
 <p>Attention cependant, ces opérations modifient l'historique du projet, chose que l'on aime pas trop faire. Il est donc recommandé de ne faire ça que sur des commits qui n'ont pas été publiés sur l'origin.</p>
 <p>Je ne vais ici que résumer les possibilités. Allez voir sur
-<a href="https://www.youtube.com/watch?v=ZY5A7kUR0S4">cette vidéo</a> pour avoir un aperçu de ce que l'on peut faire en situation, ou encore
-<a href="https://delicious-insights.com/fr/articles/git-reset/">cette doc</a>, plus velue.</p>
+<a href="https://www.youtube.com/watch?v=ZY5A7kUR0S4">cette vidéo</a> pour avoir un aperçu de ce que l'on peut faire en situation.</p>
 <p>Pour l'instant l'historique de notre projet est (<code>git log --oneline</code>) :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">fe850ac (HEAD -> main, origin/main) add js
 a2ac886 parlons jeune
@@ -680,7 +680,7 @@ a3c3fdc add css and link to html
 </li>
 <li>revenir à un commit plus éloignés. On peut y acceder par son numéro ou par une référence par rapport au dernier commit (nommé aussi HEAD). Ainsi HEAD signifie le dernier commit, HEAD~1 l'avant dernier, HEAD~2 l'antépénultième et ainsi de suite.
 <ul>
-<li>regarder un ancien endroit dans le projet : <code>git checkout 7d2fd72</code> par exemple crée une nouvelle branche temporaire (nommée <em>HEAD détachée</em>) pour voir à quoi ressemblait notre projet au commit <em>7d2fd72</em> (on a bien une règle h2 à notre css). Si l'on a rien modifié, un simple <code>git checkout main</code> reviendra à l'état courant du projet. Si l'on a modifié des fichiers, il faut commencer par revenir à l'état initial</li>
+<li>regarder un ancien endroit dans le projet : <code>git switch 7d2fd72</code> par exemple crée une nouvelle branche temporaire (nommée <em>HEAD détachée</em>) pour voir à quoi ressemblait notre projet au commit <em>7d2fd72</em> (on a bien une règle h2 à notre css). Si l'on a rien modifié, un simple <code>git switch main</code> reviendra à l'état courant du projet. Si l'on a modifié des fichiers, il faut commencer par revenir à l'état initial</li>
 <li>revenir à un commit plus lointain :
 <ul>
 <li><code>git reset numéro_commit</code> reviendra au commit déterminé mais laissera vos modifications.</li>
@@ -689,7 +689,7 @@ a3c3fdc add css and link to html
 </li>
 </ul>
 </li>
-<li>remettre un seul fichier à un état antérieur : <code>git checkout 7d2fd72 index.html</code> prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du <code>main</code> : <code>git checkout main index.html</code></li>
+<li>remettre un seul fichier à un état antérieur : <code>git switch 7d2fd72 index.html</code> prend le fichier dans l'état où il était au commit précisé, l'importe à l'état actuel et le met dans le stage, prêt à être commité. Si on ne veut plus de ce fichier, on peut revenir à l'état initial en important le fichier du <code>main</code> : <code>git switch main index.html</code></li>
 <li>undo un commit : <code>git revert 7d2fd72</code> va créer un commit qui défait un ancien commit (ce commit pouvant être aussi loin que l'on veut). Cela ne change pas l'historique en supprimant le commit undoé, ça rajoute un commit qui le undo.</li>
 </ul>
 

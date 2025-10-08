@@ -100,7 +100,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git/">Git porcelaine</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git/commandes/">Commandes git</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-porcelaine/">Git porcelaine</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-porcelaine/commandes/">Commandes git</a>
 
 </div></div>
 
@@ -109,9 +109,10 @@
     
   
 
-  <!-- début résumé -->
+  <blockquote>
+<p>TBD vérifier que switch est bien utilisé et mettre restore <a href="https://www.infoq.com/news/2019/08/git-2-23-switch-restore/">https://www.infoq.com/news/2019/08/git-2-23-switch-restore/</a></p>
+</blockquote>
 <p>Les commandes git indispensables à connaître</p>
-<!-- fin résumé -->
 <p>Ce tutoriel comporte deux sections :</p>
 <ol>
 <li>La section <a href="#comment-faire" class="interne">Comment faire</a> qui donne la marche à suivre pour les opérations courantes,</li>
@@ -261,15 +262,11 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout main
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> switch main
 <span class="token function">git</span> branch ma_nouvelle_branche
-<span class="token function">git</span> checkout ma_nouvelle_branche</code></pre>
-<p>Ou sous une forme plus condensée :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout main
-<span class="token function">git</span> checkout <span class="token parameter variable">-b</span> ma_nouvelle_branche</code></pre>
+<span class="token function">git</span> switch ma_nouvelle_branche</code></pre>
 </div></div>
 
-<p>L'option <code>-b</code> appliquée à la commande <code>checkout</code> permet en effet de créer la branche de destination si celle-ci n'existe pas.</p>
 <h3>Pousser une branche (nouvelle) locale sur le serveur distant</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -288,10 +285,10 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branche<span class="token operator">></span>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> switch <span class="token operator">&lt;</span>branche<span class="token operator">></span>
 <span class="token function">git</span> push --set-upstream origin <span class="token operator">&lt;</span>branche<span class="token operator">></span></code></pre>
 <p>Version condensée :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branche<span class="token operator">></span>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> switch <span class="token operator">&lt;</span>branche<span class="token operator">></span>
 <span class="token function">git</span> push <span class="token parameter variable">-u</span> origin <span class="token operator">&lt;</span>branche<span class="token operator">></span></code></pre>
 </div></div>
 
@@ -372,7 +369,7 @@
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase main branche
-<span class="token function">git</span> checkout main
+<span class="token function">git</span> switch main
 <span class="token function">git</span> merge branche
 <span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche</code></pre>
 </div></div>
@@ -387,12 +384,12 @@
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase main branche
-<span class="token function">git</span> checkout main
+<span class="token function">git</span> switch main
 <span class="token function">git</span> merge branche --no-ff
 <span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche</code></pre>
 </div></div>
 
-<h2>Cheatsheet</h2>
+<h2><span id="cheatsheet"></span>Cheatsheet</h2>
 <p>Par ordre alphabétique ;)</p>
 <table>
 <thead>
@@ -412,11 +409,6 @@
 <td><code>git branch</code></td>
 <td>affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque</td>
 <td><code>-d &lt;branche&gt;</code> supprime la branche <em>branche</em></td>
-</tr>
-<tr>
-<td><code>git checkout &lt;branche&gt;</code></td>
-<td>change de branche pour aller sur &quot;branche&quot;</td>
-<td><code>-b &lt;nouvelle branche&gt;</code> pour créer une nouvelle branche et s'y placer</td>
 </tr>
 <tr>
 <td><code>git clone &lt;url&gt;</code></td>
@@ -471,6 +463,11 @@
 <tr>
 <td><code>git status</code></td>
 <td>affiche les fichiers prêts à être <em>commit</em> et ceux qui ne sont pas encore dans le <em>stage</em></td>
+<td></td>
+</tr>
+<tr>
+<td><code>git switch &lt;branche&gt;</code></td>
+<td>change de branche pour aller sur &quot;branche&quot;</td>
 <td></td>
 </tr>
 </tbody>
