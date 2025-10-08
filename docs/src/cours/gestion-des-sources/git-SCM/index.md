@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Principes
+title: Gérer ses sources avec github
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,8 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## Usage
 
-{% aller %}
-[Usages](./usages/){.interne}
-{% endaller %}
+
+
+> TBD ajout le .gitignore

@@ -40,25 +40,6 @@ Utilisez un éditeur de texte que vous maîtrisez pour éditer le message de com
 
 Un message de commit contient forcément **1 ligne** décrivant le commit (on verra dans la partie suivante des méthodes pour les écrire). Puis, si nécessaire, une description plus long (souvent inutile).
 
-## Fichier non suivis
-
-Un dossier de projet va contenir de nombreux fichiers que l'on ne veut pas mettre dans la sauvegarde :
-
-- les fichiers relatif à votre éditeur de texte (comme les fichiers `.vscode` où vscode range ses préférences),
-- les environnements virtuels python (tout le dossier `.venv` n'est **jamais** à sauvegarder)
-- la poubelle du Macintosh (le dossier `.DS_Store` par exemple)
-- ...
-
-Pour cela, le système git utilise un fichier nommé `.gitignore` qui est placé à la racine de votre projet et qui contient la liste des dossiers et fichiers **à ne pas prendre en compte**.
-
-Accédez aux liens suivants pour voir comment tout ça fonctionne :
-
-{% lien %}
-
-- [fichier .gitignore avec github](https://docs.github.com/fr/get-started/git-basics/ignoring-files)
-- [tuto en français](https://www.youtube.com/watch?v=gkzBzBomYyI)
-
-{% endlien %}
 
 <!-- TBD 
 

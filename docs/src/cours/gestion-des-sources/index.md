@@ -67,14 +67,14 @@ couper en parties
 7. interne
 -->
 
-## Principes
+## Principes : gestion des sources comme un dépôt
 
 Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.
 
-### Besoins
+### Besoins pour un dépôt
 
 {% aller %}
-[Besoins](./besoins/){.interne}
+[Besoins](./besoins-dépôt/){.interne}
 {% endaller %}
 
 ### Structure distribuée
@@ -88,17 +88,9 @@ Si cette solution est idéal lorsque l'on est un unique développeur, elle devie
 3. permettre le travail asynchrone entre les personnes : une personne va avancer à un endroit pendant qu'une autre travaille sur autre chose
 4. pouvoir reprendre un projet existant avec une nouvelle équipe
 
-Ceci implique que chaque copie soit synchronisée par un dépôt référent, un **_projet référent_** faisant autorité pour tous les participants. Mais comment faire ensuite pour que la synchronisation soit aisée ?
+Ceci implique que chaque copie soit synchronisée par un dépôt référent, un **_projet référent_** faisant autorité pour tous les participants.
 
 Une bonne implémentation consiste **à ne pas sacraliser la mise en commun**. Il faut le faire le souvent pour que tout le monde ait une version claire de l'ensemble **actuel** du projet.
-
-La solution utilisée par [git](https://git-scm.com/) consiste à ne pas choisir de serveur distant avec des règles précise : tout participant possède l'intégralité de la structure de sauvegarde comme s'il était seul développeur. On ajoute enfin souvent un participant fictif, nommé **_origin_**, qui est la référence commune et est synchronisée à l'envie par les développeurs. Cette structure distribuée permet :
-
-- que chaque développeur puisse faire ses propres commits en local,
-- d'avoir une (ou plusieurs) branches partagée par tous les utilisateurs (comme `main`, `dev`, _etc_) et synchronisés souvent entre les utilisateur et _origin_ :
-  - on appelle **_push_** les synchronisation des utilisateurs vers l'_origin_
-  - on appelle **_pull_** les synchronisation de l'_origin_ vers un utilisateur
-- de continuer un projet avec une nouvelle équipe, il suffit de copier _origin_.
 
 {% attention "**À retenir**" %}
 
@@ -108,127 +100,52 @@ Lorsque vous utilisez un projet en commun il faut avoir un dépôt commun mais n
 
 ### Dépôt origin
 
-Nous allons utiliser <https://github.com/> comme dépôt commun de nos projet.
+Nous allons utiliser <https://github.com/> comme dépôt commun de nos projet. Le site fonctionne avec logiciel de gestion de sources [git](https://fr.wikipedia.org/wiki/Git). Il en existe d'autres, comme <https://gitlab.com/> par exemple.
 
 {% aller %}
 [Création d'un compte github](./github-compte){.interne}
 {% endaller %}
 
-## Un seul dépôt
+### Projet Dépôt
 
-### Besoins
+{% aller %}
+[Github come un drive](./github-drive){.interne}
+{% endaller %}
 
-> TBD les branches let merges et le rebases.
+## Principes : gestion des sources en local
 
+### Besoins pour une gestion des sources locale
 
-> Travailler sur un seul dépôt. POur nous github.
+{% aller %}
+[Besoins](./besoins-gestion-sources){.interne}
+{% endaller %}
 
-> créer des branches, faire des merges et un rebase.
-> voir le diff
+### Projet : gestion des sources
 
-### Usage
+{% aller %}
+[Projet uniquement avec github](./github-projet){.interne}
+{% endaller %}
 
-> Le faire sur github
+## Principes : gestion d'un dépôt distant
 
-## Dépôt local et distant
+### Besoins pour l'utilisation d'un dépôt distant
 
-### Besoins
+{% aller %}
+[Besoins](./besoins-origin){.interne}
+{% endaller %}
 
-> TBD liens entre distant et local.
-> bonne configuration :
->   - retrouver la personne
->   - gitignore pour ne pas tout mettre sur le serveur distant.
+### Projet : local et origine
 
-### Usage
+{% aller %}
+[Projet local et origin](./github-desktop){.interne}
+{% endaller %}
 
-> TBD
+## git
 
-## Outils
-
-### git avec vscode
-
-{% info "**Documentation**" %}
-<https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
-{% endinfo %}
-
-vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :
-
-- d'utiliser github avec l'[extension github](https://code.visualstudio.com/docs/editor/github)
-- de voir le graphe de dépendances avec l'extension [git-graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) (commande `git-graph.view` pour voir le graphe)
-- de voir l'historique de modification d'un fichier avec l'extension [git-history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (cliquer droit sur un fichier puis `Git: view file history`)
-- ...
-
-### TUI
-
-{% lien %}
-
-- lazy git : <https://www.youtube.com/watch?v=CPLdltN7wgE> pour git
-- gh-dash : <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
-
-{% endlien %}
-
-## git en ligne de commande
-
+> TBD ligne de commande
 > TBD commencer par la config
 > TBD reprendre tout en créant un projet depuis la maison et on montre les fichier
 
-## plomberie
-
-### Format diff
-
-### hash
-
-### objets de git
-
-
-
-
-
-
-## Usage
-
-{% aller %}
-
-1. [Configuration pour une utilisation quotidienne](./usage-quotidien){.interne}
-2. [Bonnes pratiques](./bonnes-pratiques){.interne}
-
-{% endaller %}
-
-## Github
-
-{% aller %}
-[Utiliser github](./github-origin){.interne}
-{% endaller %}
-
-## Diff
-
-{% lien %}
-
-- [format diff](https://en.m.wikipedia.org/wiki/Diff)
-- Commande diff au terminal :
-  - [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8)
-  - [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk)
-
-{% endlien %}
-
-Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur [le problème de l'alignement de séquences](/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/){.interne}. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :
-
-{% lien %}
-
-- <https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a>
-- <https://ably.com/blog/practical-guide-to-diff-algorithms>
-
-{% endlien %}
-
-## Introduction à la SCM avec github
-
-Maintenant que l'on a un projet sur github, on peut le considérer comme une origine et continuer le développement chez soit :
-
-{% aller %}
-[SCM avec github](./github-SCM){.interne}
-{% endaller %}
-
-## Projet : gérer ses sources avec git
 
 {% lien %}
 
@@ -263,6 +180,118 @@ L'installation et la configuration de git n'est pas très technique. Cela vaut l
 
 > TBD ici ligne de commande en utilisant uniquement les commandes porcelaines.
 > TBD utiliser `git diff` <https://www.youtube.com/watch?v=F1van9nShjA> et ref : <https://git-scm.com/docs/git-diff>
+
+## Outils
+
+### git avec vscode
+
+{% info "**Documentation**" %}
+<https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
+{% endinfo %}
+
+vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :
+
+- d'utiliser github avec l'[extension github](https://code.visualstudio.com/docs/editor/github)
+- de voir le graphe de dépendances avec l'extension [git-graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) (commande `git-graph.view` pour voir le graphe)
+- de voir l'historique de modification d'un fichier avec l'extension [git-history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (cliquer droit sur un fichier puis `Git: view file history`)
+- ...
+
+### TUI
+
+{% lien %}
+
+- lazy git : <https://www.youtube.com/watch?v=CPLdltN7wgE> pour git
+- gh-dash : <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
+
+{% endlien %}
+
+## Autres Usages courants
+
+Outre ce qu'on a vu au préalable l'usage d'un SCM au quotidien nécessite quelques connaissances supplémentaires qui permettent de que nous allons aborder maintenant.
+
+### Altération et modification de l'historique
+
+{% aller %}
+[Besoins de gestion de l'historique](./besoins-historique){.interne}
+{% endaller %}
+
+### Authentification
+
+Pour pouvoir effectuer des modifications sur l'origine (ici github) il faut pouvoir être identifié. Il existe deux façon de faire :
+
+- via un web token
+- via une clé ssh
+
+#### Web token
+
+A priori se fait tout seul si vous utilisez l'application.
+
+> TBD à étoffer
+
+#### Clés ssh
+
+Méthode est utilisée de préférence lorsque l'on développe au terminal. Elle nécessite plus de connaissance que le web token mais est largement utilisée et son utilisation dépasse de loin le seul cadre de la gestion des sources.
+
+Commencez par créer une clé :
+
+{% aller %}
+[créer et utiliser une clé ssh](/cours/système-et-réseau/ssh/){.interne}
+{% endaller %}
+
+Puis renseignez **votre clé publique** dans [votre profil github](https://github.com/settings/keys).
+
+### Diff
+
+> TBD trouver des diff avec git et en ligne de commande avec diff
+
+{% lien %}
+
+- [format diff](https://en.m.wikipedia.org/wiki/Diff)
+- Commande diff au terminal :
+  - [tuto en français](https://www.youtube.com/watch?v=0JZCah5w7I8)
+  - [tuto en anglais (plus concis)](https://www.youtube.com/watch?v=-CiLU9-RAGk)
+
+{% endlien %}
+
+Les algorithmes permettant de montrer les différences entre deux fichiers textes sont basés sur [le problème de l'alignement de séquences](/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/){.interne}. On ne travaille pas ici sur des caractères mais souvent sur des lignes. Si cela vous intéresse suivez les liens suivant pour une introduction :
+
+{% lien %}
+
+- <https://medium.com/@livajorge7/understanding-the-diff-algorithm-and-its-applications-in-software-development-fe094895d92a>
+- <https://ably.com/blog/practical-guide-to-diff-algorithms>
+
+{% endlien %}
+
+### Github actions
+
+> TBD :
+>
+> - permet de mettre en place du CI/CD : <https://www.youtube.com/watch?v=scEDHsr3APg>
+> - github actions <https://www.youtube.com/watch?v=p3W2XCD3smk>
+
+## plomberie
+
+### Format diff
+
+### hash
+
+### objets de git
+
+
+
+
+
+
+## Usage
+
+{% aller %}
+
+1. [Configuration pour une utilisation quotidienne](./usage-quotidien){.interne}
+2. [Bonnes pratiques](./bonnes-pratiques){.interne}
+
+{% endaller %}
+
+
 
 ## Git plomberie
 

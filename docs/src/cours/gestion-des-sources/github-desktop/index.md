@@ -9,7 +9,24 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Utilisation de l'application https://desktop.github.com/ pour la gestion des sources d'un projet.
+
+Travailler depuis le site <ahttps://github.com/> uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est [git](https://fr.wikipedia.org/wiki/Git). Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.
+
+{% lien %}
+
+Il suffit d'aller sur cette page : <https://desktop.github.com/> pour télécharger puis installer l'application.
+
+{% endlien %}
+
+On va reprendre le projet précédent pour créer son projet chez soit ainsi que l'origin en utilisant l'application desktop. Ceci vous permettra de savoir comment :
+
+- faire un clone
+- notion de gestion distribuée
+- créer un nouveau projet
+- l'index aussi nommé _stage_
+- faire un rebase
+
+## Installation
 
 {% faire %}
 [Télécharger l'application github desktop](https://desktop.github.com/download/) et installez là sur votre ordinateur.
@@ -47,13 +64,20 @@ On le rappelle, dans la gestion des sources il faut pouvoir contacter rapidement
 
 ## Projets
 
-Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser [l'éditeur vscode]([{{ "/tutoriels/vsc-installation-et-prise-en-main"  }}](https://code.visualstudio.com/)).
+Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser vscode :
+
+{% faire %}
+Téléchargez et installer l'éditeur vscode : <https://code.visualstudio.com/>
+{% endfaire %}
+{% aller %}
+[Prise en main de l'éditeur vscode](cours/coder-et-développer/bases-programmation/interpréteur/éditeur-vscode/prise-en-main/){.interne}.
+{% endaller %}
 
 ### <span id="récupérer-projet"></span>Récupérer un projet
 
 Commençons par récupérer le projet précédent et voir comment tout ça se passe dans l'application.
 
-1. choisissez "\*clone a project from the internet
+1. choisissez _"clone a project from the internet"_
 2. vous devriez voir vos le projet dans l'onglet _"Github.com"_
 3. en cliquant sur le bouton _"clone"_, votre projet va aller dans un dossier de votre ordinateur
 
@@ -70,12 +94,18 @@ Remarquez qu'en cliquant sur _"history"_, on retrouve **tout** l'historique du p
 Un clone d'un projet contient toute l'histoire du projet, depuis le 1er commit.
 
 {% endnote %}
-{% note %}
+
+La solution utilisée par [git](https://git-scm.com/) consiste à ne pas choisir de serveur distant avec des règles précises : tout participant possède l'intégralité de la structure de sauvegarde comme s'il était seul développeur. On ajoute enfin souvent un participant fictif, nommé **_origin_**, qui est la référence commune et est synchronisée à l'envie par les développeurs. Cette structure distribuée permet :
+
+- que chaque développeur puisse faire ses propres commits en local,
+- d'avoir une (ou plusieurs) branches partagée par tous les utilisateurs (comme `main`, `dev`, _etc_) et synchronisés souvent entre les utilisateur et _origin_ :
+  - on appelle **_push_** les synchronisation des utilisateurs vers l'_origin_
+  - on appelle **_pull_** les synchronisation de l'_origin_ vers un utilisateur
+- de continuer un projet avec une nouvelle équipe, il suffit de copier _origin_.
 
 Chaque membre d'un projet aura chez lui une copie complète du projet, avec tous les commit et toutes les branches.
 
 Pour communiquer les changement effectué chez soit aux autre membre de l'équipe, une technique courante est de désigner un clone particulier qu'on nomme `origin` — c'est celui sur github — et qui sera le lieu où l'ou enverra nos modifications (`push`) et où l'on récupérera les dernières avancées des collaborateurs (`pull`)
-{% endnote %}
 
 {% info %}
 Avoir un clone _"origin"_ n'est pas indispensable. On pourrait tout aussi bien directement récupérer des modification depuis le clone d'un collaborateur : le système est **distribué**.
@@ -191,8 +221,8 @@ Et on commit les changements :
 origin : A -> B
 ```
 
-> TBD on peut écrire ce que l'on veut ! Faire plusieurs exemples, du moment qu'on supprime les références aux commits en conflit. Faire un exemple ou on choisi. on unione ou même on fait autre chose.
-> 
+> TBD on peut écrire ce que l'on veut ! Faire plusieurs exemples, du moment qu'on supprime les références aux commits en conflit. Faire un exemple ou on choisi. on fait une union ou même on fait autre chose.
+
 #### situation à la maison
 
 On modifie le fichier `oiseaux.txt`{.fichier} pour mettre les oiseaux dans l'ordre alphabétique :
@@ -304,3 +334,26 @@ On peut maintenant pousser nos changements sur github sans soucis en cliquant su
 Il y a au final tous les commit sur github (victoire !)
 
 ![rebase 6](desktop-rebase-6.png)
+
+## Liste des fichiers à ignorer
+
+> TBD faire un fichier TBD.txt que l'on met en `.gitingore`{.fichier}
+> TBD ajouter des choses à faire.
+
+Un dossier de projet va contenir de nombreux fichiers que l'on ne veut pas mettre dans la sauvegarde :
+
+- les fichiers relatif à votre éditeur de texte (comme les fichiers `.vscode` où vscode range ses préférences),
+- les environnements virtuels python (tout le dossier `.venv` n'est **jamais** à sauvegarder)
+- la poubelle du Macintosh (le dossier `.DS_Store` par exemple)
+- ...
+
+Pour cela, le système git utilise un fichier nommé `.gitignore` qui est placé à la racine de votre projet et qui contient la liste des dossiers et fichiers **à ne pas prendre en compte**.
+
+Accédez aux liens suivants pour voir comment tout ça fonctionne :
+
+{% lien %}
+
+- [fichier .gitignore avec github](https://docs.github.com/fr/get-started/git-basics/ignoring-files)
+- [tuto en français](https://www.youtube.com/watch?v=gkzBzBomYyI)
+
+{% endlien %}

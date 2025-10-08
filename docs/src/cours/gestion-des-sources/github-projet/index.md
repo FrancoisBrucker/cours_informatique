@@ -9,17 +9,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+On va utiliser l'interface de github pour mettre en œuvre les principales fonctionnalités d'un système de gestion des sources :
 
-Création et maintient d'un projet avec Github.
+- faire des commit
+- gérer des branches
+- fusionner des branches en résolvant des conflits
+- voir l'historique du projet
+- comment ajouter des membres à un projet
 
-<!-- fin résumé -->
-
-On en profitera pour voir le fonctionnement basique de git :
-
-- commit
-- branches
-- merge
+{% info %}
+L'[aide de github](https://docs.github.com/en/get-started) est très bien faite (la traduction en français est cependant automatique, donc souvent approximative), n'hésitez pas à y jeter un coup d'œil.
+{% endinfo %}
 
 ## Créer un projet
 
@@ -85,6 +85,10 @@ Notre nouveau commit :
 1. Notre fichier modifié est maintenant ![fichier](github-modification-readme-5.1.png)
 2. Son historique montre qu'il a été modifié par 2 commit ![fichier](github-modification-readme-5.2.png)
 3. Le dernier commit a modifié son contenu ![fichier](github-modification-readme-5.3.png)
+
+L'index qui permet de voir les différences entre ce qu'on a sauvegarder et ce qu'on va ajouter. L'index est transparent pour l'instant mais plus on progressera plus il sera visible.
+
+> TBD voir le diff.
 
 ## Changer de branche
 
@@ -215,6 +219,40 @@ Et on se retrouve comme avant le merge, avec un graphe de dépendance encore un 
 
 Git se débrouille tout seul
 
+### Rebase
+
+Pour éviter des fusions de branches inutiles et conserver un historique aussi linéaire que possible, à la place de fusionner un pull request, vous pouvez effectuer un rebase.
+
+Pour que cela soit possible, il faut que vous modifiez les préférences de votre projet :
+
+![préférences](./préférences-projet.png)
+
+Puis scrollez jusqu'à la partie sur les pull request pour cocher les diverses options disponibles :
+
+![préférences](./préférences-rebase.png)
+
+{% lien %}
+[documentation github](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/configuring-commit-rebasing-for-pull-requests)
+{% endlien %}
+
+> TBD faire un modification (demander à un élève de le faire et de prendre n screen de la modif effectuée)
+
+Si vous cliquez sur le triangle à droite du bouton vous verrez le pop-up :
+
+![merge pull request](./merge-defaut.png)
+
+Choisissez rebase :
+
+![rebase pull request](./rebase-pull-request.png)
+
+Puis appliquez la pull request. Si vous retournez dans la vision des commits et des branches, vous verrez que votre pull request a été ajouté linéairement :
+
+> TBD un screen
+
+{% attention "**À retenir**" %}
+Préférer toujours faire un rebase lorsque c'est possible, un historique linéaire est toujours mieux qu'une succession de fusions pour pouvoir plus tard s'y retrouver lorsqu'il faudra corriger un bug.
+{% endattention %}
+
 ## Ajouter des collaborateurs au projet
 
 C'est très facile :
@@ -224,4 +262,4 @@ C'est très facile :
 3. sur le compte invité, on peut accepter l'invitation : ![ajout-3](github-ajout-3.png)
 4. de retour dans l'interface du projet, on voit les collaborateurs : ![ajout-4](github-ajout-4.png)
 
-Toutes les personnes peuvent maintenant ajouter et modifier des fichiers
+Toutes les personnes peuvent maintenant ajouter et modifier des fichiers.
