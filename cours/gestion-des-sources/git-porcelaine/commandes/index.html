@@ -142,6 +142,14 @@
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone <span class="token operator">&lt;</span>url<span class="token operator">></span></code></pre>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://git-scm.com/docs/git-clone">https://git-scm.com/docs/git-clone</a></p>
+</div></div>
+
 <p><code>&lt;url&gt;</code> sera ce qui est copié depuis la page du projet :</p>
 <p><img src="github-clone-projet.png" alt="usage github"></p>
 <p>Et aura deux formes :</p>
@@ -199,6 +207,14 @@
 <span class="token function">git</span> init</code></pre>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://git-scm.com/docs/git-init">https://git-scm.com/docs/git-init</a></p>
+</div></div>
+
 <h4>Liaisons</h4>
 <p>Si vous voulez vous connecter, il y a deux possibilités :</p>
 <ul>
@@ -208,9 +224,9 @@
 <p>Votre premier push devra aussi définir la branche de l'origin : <code>git push --set-upstream.origin main</code>. Vous pourrez ensuite utiliser simplement <code>git push</code></p>
 <h3>Travailler à plusieurs sur un projet</h3>
 <ol>
-<li>on sépare le travail à faire en tâche, et on s'arrange pour les taches à effectuer en même temps soient sur des parties différentes du code. Ceci pour éviter de se marcher sur les pieds et multiplier les conflits de fusion.</li>
+<li>on sépare le travail à faire en tâche, et on s'arrange pour les taches à effectuer en même temps soient sur des parties différentes du code. Ceci pour éviter de se marcher sur les pieds et multiplier inutilement les conflits de fusion.</li>
 <li>pour coder sa propre tâche, on crée une branche de développement qui lui nous est propre et sur laquelle vous pourrez travailler en local, voir la sauver sur le serveur. Comme vous êtes seul à travailler dessus, vous n'aurez pas de problème de fusion.</li>
-<li>Une fois votre travail fini, vous fusionnerez votre branche local avec la branche principale du serveur distant, qui est souvent la branche main.</li>
+<li>Une fois votre travail fini, vous rebasez votre branche local sur la branche principale du serveur distant, qui est souvent la branche main.</li>
 <li>vous pouvez ensuite supprimer la branche qui vous a servi à coder la tâche et recommencer.</li>
 </ol>
 <h3>Récupérer en local les modifications effectuées sur le répertoire distant</h3>
@@ -235,6 +251,14 @@
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> pull <span class="token parameter variable">--rebase</span><span class="token operator">=</span>merges</code></pre>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://git-scm.com/docs/git-pull">https://git-scm.com/docs/git-pull</a></p>
+</div></div>
+
 <p>En général, l'url peut être trouvée sous le menu &quot;Code&quot; ou &quot;Clone&quot; sur la page principale d'un projet.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -252,7 +276,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Description</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour travailler sur un aspect particulier, qu'il s'agisse d'une résolution de bug ou de l'élaboration d'une nouvelle fonctionnalité, on veut créer une nouvelle branche. Cette nouvelle branche va dériver d'une branche-mère (en général, il s'agit de la branche <code>main</code>, anciennement appelée <code>master</code>, et ce sera aussi le cas dans notre exemple).</p>
+<p>Pour travailler sur un aspect particulier, qu'il s'agisse d'une résolution de bug ou de l'élaboration d'une nouvelle fonctionnalité, on veut créer une nouvelle branche. Cette nouvelle branche va dériver d'une branche-mère (en général, il s'agit de la branche <code>main</code> comme dans notre exemple).</p>
 </div></div>
 
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -265,6 +289,17 @@
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> switch main
 <span class="token function">git</span> branch ma_nouvelle_branche
 <span class="token function">git</span> switch ma_nouvelle_branche</code></pre>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://git-scm.com/docs/git-switch">https://git-scm.com/docs/git-switch</a></li>
+<li><a href="https://git-scm.com/docs/git-branch">https://git-scm.com/docs/git-branch</a></li>
+</ul>
 </div></div>
 
 <h3>Pousser une branche (nouvelle) locale sur le serveur distant</h3>
@@ -292,6 +327,17 @@
 <span class="token function">git</span> push <span class="token parameter variable">-u</span> origin <span class="token operator">&lt;</span>branche<span class="token operator">></span></code></pre>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://git-scm.com/docs/git-switch">https://git-scm.com/docs/git-switch</a></li>
+<li><a href="https://git-scm.com/docs/git-push">https://git-scm.com/docs/git-push</a></li>
+</ul>
+</div></div>
+
 <h3>Pousser ses modifications sur le serveur</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -311,7 +357,6 @@
 <p>Concernant la fréquence d'envoi sur le serveur (<em>push</em>), la seule règle vraiment importante est de bien avoir en tête que, tant que du code n'est pas poussé, il n'existe que sur votre ordinateur. Et si celui-ci est endommagé ou perdu ... Un <em>push</em> régulier est donc gage d'esprit léger !</p>
 <h4>Ajout des modifications</h4>
 <p>L'ajout des modifications au git se fait en plusieurs étapes : on ajoute d'abord les modifications qui nous intéressent au <em>stage</em>, puis on les <em>commit</em>. On peut voir le <em>stage</em> comme une sorte de bassine où l'on dépose tous les fichiers que l'on veut sauver.</p>
-<p>En général, on a pris soin de placer les fichiers qu'on ne veut de toute façon pas voir dans git dans le fichier .gitignore. Donc, souvent, on va vouloir tout ajouter dans le stage pour tout commit :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -319,11 +364,50 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
-<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span></code></pre>
-<p>Si l'on souhaite <em>commit</em> seulement un fichier (ou un groupe de fichiers) :</p>
+<p>On souhaite <em>commit</em> seulement quelques fichiers spécifiques :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> fichier1.md fichier2.html
 <span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span></code></pre>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://git-scm.com/docs/git-add">https://git-scm.com/docs/git-add</a></li>
+<li><a href="https://git-scm.com/docs/git-commit">https://git-scm.com/docs/git-commit</a></li>
+</ul>
+</div></div>
+
+<p>En général, on a pris soin de placer les fichiers qu'on ne veut de toute façon pas voir dans git dans le fichier <code class="fichier">.gitignore</code>. Donc, souvent, on va vouloir tout ajouter dans le stage pour tout commit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commandes</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si l'on souhaite prendre en compte les ajouts, les modifications et les suppressions de tous les fichiers :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> <span class="token parameter variable">--all</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span></code></pre>
+<p>Ou la commande suivante qui ajoute toutes les modifications et créations mais pas les suppression de tous les fichiers :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span></code></pre>
+<p>Enfin, si on ne veux que prendre en compte toutes les modifications et les suppressions sans les nouveaux fichiers :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> <span class="token parameter variable">-u</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span></code></pre>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://git-scm.com/docs/git-add">https://git-scm.com/docs/git-add</a></li>
+<li><a href="https://git-scm.com/docs/git-commit">https://git-scm.com/docs/git-commit</a></li>
+</ul>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -332,6 +416,14 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><code>git status</code> est très utile pour voir ce qui est dans le <em>stage</em> et ce qui n'y est pas encore. Abusez-en !</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://git-scm.com/docs/git-status">https://git-scm.com/docs/git-status</a></p>
 </div></div>
 
 <h4>Pousser sur le serveur</h4>
@@ -346,6 +438,14 @@
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> push</code></pre>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://git-scm.com/docs/git-push">https://git-scm.com/docs/git-push</a></p>
+</div></div>
+
 <p>Si la branche sur laquelle on travaille existe aussi sur le serveur et que les deux branches sont liées, tout devrait bien se passer. Sinon, c'est qu'on a mal fait <a href="#pousser-une-branche-nouvelle-locale-sur-le-serveur-distant">ça</a>.</p>
 <h3>Fusionner une branche</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -358,9 +458,7 @@
 <p>On souhaite fusionner une branche dans sa branche d'origine (par exemple <code>main</code>), c'est-à-dire appliquer toutes les modifications portées par une branche dans sa branche d'origine.</p>
 </div></div>
 
-<p>Nous proposons ici une méthode consistant à utiliser <code>git rebase</code> conjointement à <code>git merge</code> pour obtenir un historique plus &quot;propre&quot; (i.e. plus linéaire). Pour plus détails, voir le tuto sur git rebase.</p>
-<h4>Ne garder aucune trace de la branche</h4>
-<p>Pour ne garder aucune trace de la branche (et obtenir ainsi un historique complètement linéaire, plat) :</p>
+<p>Nous proposons ici une méthode consistant à utiliser <code>git rebase</code> conjointement à <code>git merge</code> pour obtenir un historique plus &quot;propre&quot; (i.e. plus linéaire). Pour plus détails, voir le tuto sur git rebase. Pour ne garder aucune trace de la branche (et obtenir ainsi un historique complètement linéaire, plat) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -374,104 +472,37 @@
 <span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche</code></pre>
 </div></div>
 
-<h4>Conserver une trace de la branche</h4>
-<p>Pour conserver une trace de la branche (par exemple parce qu'elle est signifiante) mais conserver une certaines linéarité (dans l'enchaînement des branches notamment) :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Commandes</strong></p>
-</div><div class="pl-8 mr-8">
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase main branche
-<span class="token function">git</span> switch main
-<span class="token function">git</span> merge branche --no-ff
-<span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche</code></pre>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://git-scm.com/docs/git-rebase">https://git-scm.com/docs/git-rebase</a></li>
+<li><a href="https://git-scm.com/docs/git-switch">https://git-scm.com/docs/git-switch</a></li>
+<li><a href="https://git-scm.com/docs/git-merge">https://git-scm.com/docs/git-merge</a></li>
+<li><a href="https://git-scm.com/docs/git-branch">https://git-scm.com/docs/git-branch</a></li>
+</ul>
 </div></div>
 
 <h2><span id="cheatsheet"></span>Cheatsheet</h2>
 <p>Par ordre alphabétique ;)</p>
-<table>
-<thead>
-<tr>
-<th>Commande</th>
-<th>Effet</th>
-<th>Option(s)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>git add &lt;fichier&gt;</code></td>
-<td>ajoute des fichiers au stage en vue de les commit</td>
-<td><code>git add .</code> pour ajouter tous les fichiers modifiés</td>
-</tr>
-<tr>
-<td><code>git branch</code></td>
-<td>affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque</td>
-<td><code>-d &lt;branche&gt;</code> supprime la branche <em>branche</em></td>
-</tr>
-<tr>
-<td><code>git clone &lt;url&gt;</code></td>
-<td>clone en local un répertoire distant</td>
-<td></td>
-</tr>
-<tr>
-<td><code>git commit</code></td>
-<td>publie les changements dans l'arbre git local</td>
-<td><code>-a</code> commit tous les changements présents dans le stage <br> <code>-m &quot;mon_message&quot;</code> permet d'écrire le message de commit sans passer par l'éditeur</td>
-</tr>
-<tr>
-<td><code>git diff</code></td>
-<td>indique les différences entre le dernier commit et ce qui n'est pas encore mis dans le <em>stage</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>git init</code></td>
-<td>initialise git pour le dossier où la commande est lancée</td>
-<td></td>
-</tr>
-<tr>
-<td><code>git log</code></td>
-<td>affiche l'historique git complet du projet</td>
-<td><code>--oneline</code> affiche les commits sous forme condensée pour plus de lisibilité <br> <code>--graph</code> représentation visuelle de l'arbre (avec les branches éventuelles)</td>
-</tr>
-<tr>
-<td><code>git merge &lt;branche&gt;</code></td>
-<td>applique les modifications portées par &quot;<branche>&quot; à la branche mère dont elle est issue</branche></td>
-<td><code>--no-ff</code> (<em>no fast forward</em>) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (<em>fast-forward</em>). Utile pour conserver l'historique des branches lors d'un <em>merge</em> suivant un <em>rebase</em></td>
-</tr>
-<tr>
-<td><code>git pull</code></td>
-<td>télécharge en local les modifications présentes sur le serveur (<em>a priori</em> ajoutées par d'autres développeurs)</td>
-<td><code>--rebase=preverse</code> permet de conserver les commits de fusion, utile pour garder une trace de l'existence de certaines branches</td>
-</tr>
-<tr>
-<td><code>git push</code></td>
-<td>pousse sur le serveur les modifications locales</td>
-<td></td>
-</tr>
-<tr>
-<td><code>git rebase &lt;ici&gt; &lt;branche&gt;</code></td>
-<td>découpe la branche <code>branche</code> à sa base et la recolle <code>ici</code>. <code>ici</code> peut-être le nom d'une branche, auquel cas la branche <code>branche</code> est recollée à la fin de la branche <code>ici</code>, ou un numéro de commit. Voir le tuto complet sur rebase.</td>
-<td>X</td>
-</tr>
-<tr>
-<td><code>git stash</code></td>
-<td>permet de mettre temporairement de côté les modifications en attente de <em>commit</em> afin de revenir au dernier <em>commit</em>. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées.</td>
-<td><code>git stash list</code> pour lister les éléments mis de côté <br> <code>git stash apply</code> pour faire revenir les modifications dans l'espace de travail <br> <code>git stash clear</code> pour abandonner complètement les modifications mises de côté</td>
-</tr>
-<tr>
-<td><code>git status</code></td>
-<td>affiche les fichiers prêts à être <em>commit</em> et ceux qui ne sont pas encore dans le <em>stage</em></td>
-<td></td>
-</tr>
-<tr>
-<td><code>git switch &lt;branche&gt;</code></td>
-<td>change de branche pour aller sur &quot;branche&quot;</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<p>| Commande | Effet | Option(s) |
+| -------- | ----- | --------- ||
+| <code>git add &lt;fichier&gt;</code>          | ajoute des fichiers au stage en vue de les commit                                                                                                                                                                                                                         | <code>git add .</code> pour ajouter tous les fichiers modifiés                                                                                                                                                                                                     |
+| <code>git branch</code>                 | affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque                                                                                                                                                        | <code>-d &lt;branche&gt;</code> supprime la branche <em>branche</em>                                                                                                                                                                                                            |
+| <code>git clone &lt;url&gt;</code>            | clone en local un répertoire distant                                                                                                                                                                                                                                      |                                                                                                                                                                                                                                                         |
+| <code>git commit</code>                 | publie les changements dans l'arbre git local                                                                                                                                                                                                                             | <code>-a</code> commit tous les changements présents dans le stage <br> <code>-m &quot;mon_message&quot;</code> permet d'écrire le message de commit sans passer par l'éditeur                                                                                                          |
+| <code>git diff</code>                   | indique les différences entre le dernier commit et ce qui n'est pas encore mis dans le <em>stage</em>                                                                                                                                                                            |                                                                                                                                                                                                                                                         |
+| <code>git init</code>                   | initialise git pour le dossier où la commande est lancée                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                         |
+| <code>git log</code>                    | affiche l'historique git complet du projet                                                                                                                                                                                                                                | <code>--oneline</code> affiche les commits sous forme condensée pour plus de lisibilité <br> <code>--graph</code> représentation visuelle de l'arbre (avec les branches éventuelles)                                                                                          |
+| <code>git merge &lt;branche&gt;</code>        | applique les modifications portées par &quot;<branche>&quot; à la branche mère dont elle est issue                                                                                                                                                                                  | <code>--no-ff</code> (<em>no fast forward</em>) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (<em>fast-forward</em>). Utile pour conserver l'historique des branches lors d'un <em>merge</em> suivant un <em>rebase</em> |
+| <code>git pull</code>                   | télécharge en local les modifications présentes sur le serveur (<em>a priori</em> ajoutées par d'autres développeurs)                                                                                                                                                            | <code>--rebase=preverse</code> permet de conserver les commits de fusion, utile pour garder une trace de l'existence de certaines branches                                                                                                                         |
+| <code>git push</code>                   | pousse sur le serveur les modifications locales                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                         |
+| <code>git rebase &lt;ici&gt; &lt;branche&gt;</code> | découpe la branche <code>branche</code> à sa base et la recolle <code>ici</code>. <code>ici</code> peut-être le nom d'une branche, auquel cas la branche <code>branche</code> est recollée à la fin de la branche <code>ici</code>, ou un numéro de commit. Voir le tuto complet sur rebase.                                     | X                                                                                                                                                                                                                                                       |
+| <code>git stash</code>                  | permet de mettre temporairement de côté les modifications en attente de <em>commit</em> afin de revenir au dernier <em>commit</em>. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées. | <code>git stash list</code> pour lister les éléments mis de côté <br> <code>git stash apply</code> pour faire revenir les modifications dans l'espace de travail <br> <code>git stash clear</code> pour abandonner complètement les modifications mises de côté                          |
+| <code>git status</code>                 | affiche les fichiers prêts à être <em>commit</em> et ceux qui ne sont pas encore dans le <em>stage</em>                                                                                                                                                                                 |                                                                                                                                                                                                                                                         |
+| <code>git switch &lt;branche&gt;</code>       | change de branche pour aller sur &quot;branche&quot;                                                                                                                                                                                                                                |        <code>git switch -c &lt;nouvelle-branche&gt;</code> pour créer une nouvelle branche et y switcher directement                                                                                                                                                                                                                                                 |</branche></p>
 
 
 </article>
