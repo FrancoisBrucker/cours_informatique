@@ -201,8 +201,8 @@ le projet existe déjà sur github et je le _clone_ chez moi C'est dans le menu 
 
 Il existe plusieurs façon de procéder :
 
-- https
 - ssh
+- https
 - github CLI
 
 La différence entre ces trois modes est le moyen d’authentification entre votre ordinateur et github.
@@ -237,6 +237,38 @@ Selon la méthode de clonage utilisé, seule la méthode d'authentification dans
 {% note %}
 On suppose que vous avez une clé ssh et que vous l'avez renseigné dans votre compte, donc  utilisez le clonage utilisant le protocole `ssh`.
 {% endnote %}
+
+#### Clonage ssh
+
+{% attention "**À retenir**" %}
+C'est la méthode à privilégier si vous êtes informaticien. C'est à dire que vous allez faire des commits tous les jours et jongler avec les repos de votre projet.
+
+Sinon, vous pouvez ne pas utiliser cette méthode.
+{% endattention %}
+
+MOntrons juste les différences de configuration entre les méthodes précédentes et celle-ci :
+
+- Commande de clonage : `git clone git@github.com:Test-cours-ecm/animaux.git`
+- Fichier de configuration :
+
+  ```shell
+  fbrucker@so-high git-projets/animaux ±main » cat .git/config
+  [core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+    ignorecase = true
+    precomposeunicode = true
+  [remote "origin"]
+    url = git@github.com:Test-cours-ecm/animaux.git
+    fetch = +refs/heads/*:refs/remotes/origin/*
+  [branch "main"]
+    remote = origin
+    merge = refs/heads/main
+  ```
+
+On voit que le protocole d’authentification n'est **pas** `https://`, il faut avoir lié une clé ssh à son compte github.
 
 #### Clonage https
 
@@ -274,39 +306,7 @@ Il faut d'abord s'identifier (`gh auth login`) avant de pouvoir cloner le repo :
 
 Ensuite, tout se passe comme précédemment. L'intérêt d'utiliser le `github CLI` est de pouvoir gérer directement les spécificités de github comme les pull request par exemple.
 
-#### Clonage ssh
 
-{% info %}
-C'est la méthode à privilégier si vous êtes informaticien. C'est à dire que vous allez faire des commits tous les jours et jongler avec les repos de votre projet.
-
-Sinon, vous pouvez ne pas utiliser cette méthode.
-{% endinfo %}
-
-MOntrons juste les différences de configuration entre les méthodes précédentes et celle-ci :
-
-- Commande de clonage : `git clone git@github.com:Test-cours-ecm/animaux.git`
-- Fichier de configuration :
-
-  ```shell
-  fbrucker@so-high git-projets/animaux ±main » cat .git/config
-  [core]
-    repositoryformatversion = 0
-    filemode = true
-    bare = false
-    logallrefupdates = true
-    ignorecase = true
-    precomposeunicode = true
-  [remote "origin"]
-    url = git@github.com:Test-cours-ecm/animaux.git
-    fetch = +refs/heads/*:refs/remotes/origin/*
-  [branch "main"]
-    remote = origin
-    merge = refs/heads/main
-  ```
-
-On voit que le protocole d’authentification n'est **pas** `https://`, il faut avoir lié une clé ssh à son compte github.
-
-> TBD : lien vers cours spécial avec ssh en prérequis
 
 ### Créer un nouveau projet et l'envoyer sur github
 

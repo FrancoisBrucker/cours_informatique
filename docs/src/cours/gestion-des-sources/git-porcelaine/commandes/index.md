@@ -41,6 +41,9 @@ git clone <url>
 ```
 
 {% endnote %}
+{% lien %}
+<https://git-scm.com/docs/git-clone>
+{% endlien %}
 
 `<url>` sera ce qui est copié depuis la page du projet :
 
@@ -95,6 +98,9 @@ git init
 ```
 
 {% endnote %}
+{% lien %}
+<https://git-scm.com/docs/git-init>
+{% endlien %}
 
 #### Liaisons
 
@@ -107,9 +113,9 @@ Votre premier push devra aussi définir la branche de l'origin : `git push --set
 
 ### Travailler à plusieurs sur un projet
 
-1. on sépare le travail à faire en tâche, et on s'arrange pour les taches à effectuer en même temps soient sur des parties différentes du code. Ceci pour éviter de se marcher sur les pieds et multiplier les conflits de fusion.
+1. on sépare le travail à faire en tâche, et on s'arrange pour les taches à effectuer en même temps soient sur des parties différentes du code. Ceci pour éviter de se marcher sur les pieds et multiplier inutilement les conflits de fusion.
 2. pour coder sa propre tâche, on crée une branche de développement qui lui nous est propre et sur laquelle vous pourrez travailler en local, voir la sauver sur le serveur. Comme vous êtes seul à travailler dessus, vous n'aurez pas de problème de fusion.
-3. Une fois votre travail fini, vous fusionnerez votre branche local avec la branche principale du serveur distant, qui est souvent la branche main.
+3. Une fois votre travail fini, vous rebasez votre branche local sur la branche principale du serveur distant, qui est souvent la branche main.
 4. vous pouvez ensuite supprimer la branche qui vous a servi à coder la tâche et recommencer.
 
 ### Récupérer en local les modifications effectuées sur le répertoire distant
@@ -127,6 +133,10 @@ git pull --rebase=merges
 ```
 
 {% endnote %}
+{% lien %}
+<https://git-scm.com/docs/git-pull>
+{% endlien %}
+
 
 En général, l'url peut être trouvée sous le menu "Code" ou "Clone" sur la page principale d'un projet.
 
@@ -137,7 +147,7 @@ Vous pouvez utiliser juste `git pull` si votre stratégie de fusion est placée 
 ### Créer une nouvelle branche
 
 {% note "**Description**" %}
-Pour travailler sur un aspect particulier, qu'il s'agisse d'une résolution de bug ou de l'élaboration d'une nouvelle fonctionnalité, on veut créer une nouvelle branche. Cette nouvelle branche va dériver d'une branche-mère (en général, il s'agit de la branche `main`, anciennement appelée `master`, et ce sera aussi le cas dans notre exemple).
+Pour travailler sur un aspect particulier, qu'il s'agisse d'une résolution de bug ou de l'élaboration d'une nouvelle fonctionnalité, on veut créer une nouvelle branche. Cette nouvelle branche va dériver d'une branche-mère (en général, il s'agit de la branche `main` comme dans notre exemple).
 {% endnote %}
 
 {% note "**commandes**" %}
@@ -149,6 +159,10 @@ git switch ma_nouvelle_branche
 ```
 
 {% endnote %}
+{% lien %}
+- <https://git-scm.com/docs/git-switch>
+- <https://git-scm.com/docs/git-branch>
+{% endlien %}
 
 ### Pousser une branche (nouvelle) locale sur le serveur distant
 
@@ -171,6 +185,10 @@ git push -u origin <branche>
 ```
 
 {% endnote %}
+{% lien %}
+- <https://git-scm.com/docs/git-switch>
+- <https://git-scm.com/docs/git-push>
+{% endlien %}
 
 ### Pousser ses modifications sur le serveur
 
@@ -189,16 +207,9 @@ Concernant la fréquence d'envoi sur le serveur (*push*), la seule règle vraime
 
 L'ajout des modifications au git se fait en plusieurs étapes : on ajoute d'abord les modifications qui nous intéressent au *stage*, puis on les *commit*. On peut voir le *stage* comme une sorte de bassine où l'on dépose tous les fichiers que l'on veut sauver.
 
-En général, on a pris soin de placer les fichiers qu'on ne veut de toute façon pas voir dans git dans le fichier .gitignore. Donc, souvent, on va vouloir tout ajouter dans le stage pour tout commit :
-
 {% note "**Commandes**" %}
 
-```shell
-git add .
-git commit -am "<mon message décrivant le commit>"
-```
-
-Si l'on souhaite *commit* seulement un fichier (ou un groupe de fichiers) :
+On souhaite *commit* seulement quelques fichiers spécifiques :
 
 ```shell
 git add fichier1.md fichier2.html
@@ -206,10 +217,46 @@ git commit -am "<mon message décrivant le commit>"
 ```
 
 {% endnote %}
+{% lien %}
+- <https://git-scm.com/docs/git-add>
+- <https://git-scm.com/docs/git-commit>
+{% endlien %}
+
+En général, on a pris soin de placer les fichiers qu'on ne veut de toute façon pas voir dans git dans le fichier `.gitignore`{.fichier}. Donc, souvent, on va vouloir tout ajouter dans le stage pour tout commit :
+
+{% note "**Commandes**" %}
+Si l'on souhaite prendre en compte les ajouts, les modifications et les suppressions de tous les fichiers :
+```shell
+git add --all
+git commit -am "<mon message décrivant le commit>"
+```
+
+Ou la commande suivante qui ajoute toutes les modifications et créations mais pas les suppression de tous les fichiers :
+
+```shell
+git add .
+git commit -am "<mon message décrivant le commit>"
+```
+
+Enfin, si on ne veux que prendre en compte toutes les modifications et les suppressions sans les nouveaux fichiers :
+
+```shell
+git add -u
+git commit -am "<mon message décrivant le commit>"
+```
+
+{% endnote %}
+{% lien %}
+- <https://git-scm.com/docs/git-add>
+- <https://git-scm.com/docs/git-commit>
+{% endlien %}
 
 {% info %}
 `git status` est très utile pour voir ce qui est dans le *stage* et ce qui n'y est pas encore. Abusez-en !
 {% endinfo %}
+{% lien %}
+<https://git-scm.com/docs/git-status>
+{% endlien %}
 
 #### Pousser sur le serveur
 
@@ -222,6 +269,9 @@ git push
 ```
 
 {% endnote %}
+{% lien %}
+<https://git-scm.com/docs/git-push>
+{% endlien %}
 
 Si la branche sur laquelle on travaille existe aussi sur le serveur et que les deux branches sont liées, tout devrait bien se passer. Sinon, c'est qu'on a mal fait [ça](#pousser-une-branche-nouvelle-locale-sur-le-serveur-distant).
 
@@ -231,11 +281,7 @@ Si la branche sur laquelle on travaille existe aussi sur le serveur et que les d
 On souhaite fusionner une branche dans sa branche d'origine (par exemple `main`), c'est-à-dire appliquer toutes les modifications portées par une branche dans sa branche d'origine.
 {% endnote %}
 
-Nous proposons ici une méthode consistant à utiliser `git rebase` conjointement à `git merge` pour obtenir un historique plus "propre" (i.e. plus linéaire). Pour plus détails, voir le tuto sur git rebase.
-
-#### Ne garder aucune trace de la branche
-
-Pour ne garder aucune trace de la branche (et obtenir ainsi un historique complètement linéaire, plat) :
+Nous proposons ici une méthode consistant à utiliser `git rebase` conjointement à `git merge` pour obtenir un historique plus "propre" (i.e. plus linéaire). Pour plus détails, voir le tuto sur git rebase. Pour ne garder aucune trace de la branche (et obtenir ainsi un historique complètement linéaire, plat) :
 
 {% note "**Commandes**" %}
 
@@ -247,39 +293,30 @@ git branch -d branche
 ```
 
 {% endnote %}
-
-#### Conserver une trace de la branche
-
-Pour conserver une trace de la branche (par exemple parce qu'elle est signifiante) mais conserver une certaines linéarité (dans l'enchaînement des branches notamment) :
-
-{% note "**Commandes**" %}
-
-```shell
-git rebase main branche
-git switch main
-git merge branche --no-ff
-git branch -d branche
-```
-
-{% endnote %}
+{% lien %}
+- <https://git-scm.com/docs/git-rebase>
+- <https://git-scm.com/docs/git-switch>
+- <https://git-scm.com/docs/git-merge>
+- <https://git-scm.com/docs/git-branch>
+{% endlien %}
 
 ## <span id="cheatsheet"></span>Cheatsheet
 
 Par ordre alphabétique ;)
 
-Commande | Effet | Option(s) |
---- | --- | --- | --- |
-`git add <fichier>` | ajoute des fichiers au stage en vue de les commit | `git add .` pour ajouter tous les fichiers modifiés
-`git branch` | affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque | `-d <branche>` supprime la branche *branche* |
-`git clone <url>` | clone en local un répertoire distant |  |
-`git commit` | publie les changements dans l'arbre git local | `-a` commit tous les changements présents dans le stage <br> `-m "mon_message"` permet d'écrire le message de commit sans passer par l'éditeur |
-`git diff` | indique les différences entre le dernier commit et ce qui n'est pas encore mis dans le *stage* |  |
-`git init` | initialise git pour le dossier où la commande est lancée |  |
-`git log` | affiche l'historique git complet du projet | `--oneline` affiche les commits sous forme condensée pour plus de lisibilité <br> `--graph` représentation visuelle de l'arbre (avec les branches éventuelles) |
-`git merge <branche>` | applique les modifications portées par "<branche>" à la branche mère dont elle est issue | `--no-ff` (*no fast forward*) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (*fast-forward*). Utile pour conserver l'historique des branches lors d'un *merge* suivant un *rebase* |
-`git pull` | télécharge en local les modifications présentes sur le serveur (*a priori* ajoutées par d'autres développeurs) | `--rebase=preverse` permet de conserver les commits de fusion, utile pour garder une trace de l'existence de certaines branches |
-`git push` | pousse sur le serveur les modifications locales |  |
-`git rebase <ici> <branche>` | découpe la branche `branche` à sa base et la recolle `ici`. `ici` peut-être le nom d'une branche, auquel cas la branche `branche` est recollée à la fin de la branche `ici`, ou un numéro de commit. Voir le tuto complet sur rebase. | X |
-`git stash` | permet de mettre temporairement de côté les modifications en attente de *commit* afin de revenir au dernier *commit*. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées. | `git stash list` pour lister les éléments mis de côté <br> `git stash apply` pour faire revenir les modifications dans l'espace de travail <br> `git stash clear` pour abandonner complètement les modifications mises de côté |
-`git status` | affiche les fichiers prêts à être *commit* et ceux qui ne sont pas encore dans le *stage* |  |
-`git switch <branche>` | change de branche pour aller sur "branche" | |
+| Commande | Effet | Option(s) |
+| -------- | ----- | --------- ||
+| `git add <fichier>`          | ajoute des fichiers au stage en vue de les commit                                                                                                                                                                                                                         | `git add .` pour ajouter tous les fichiers modifiés                                                                                                                                                                                                     |
+| `git branch`                 | affiche les branches existantes (en local, par défaut). La branche actuelle est mise en évidence par un astérisque                                                                                                                                                        | `-d <branche>` supprime la branche *branche*                                                                                                                                                                                                            |
+| `git clone <url>`            | clone en local un répertoire distant                                                                                                                                                                                                                                      |                                                                                                                                                                                                                                                         |
+| `git commit`                 | publie les changements dans l'arbre git local                                                                                                                                                                                                                             | `-a` commit tous les changements présents dans le stage <br> `-m "mon_message"` permet d'écrire le message de commit sans passer par l'éditeur                                                                                                          |
+| `git diff`                   | indique les différences entre le dernier commit et ce qui n'est pas encore mis dans le *stage*                                                                                                                                                                            |                                                                                                                                                                                                                                                         |
+| `git init`                   | initialise git pour le dossier où la commande est lancée                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                         |
+| `git log`                    | affiche l'historique git complet du projet                                                                                                                                                                                                                                | `--oneline` affiche les commits sous forme condensée pour plus de lisibilité <br> `--graph` représentation visuelle de l'arbre (avec les branches éventuelles)                                                                                          |
+| `git merge <branche>`        | applique les modifications portées par "<branche>" à la branche mère dont elle est issue                                                                                                                                                                                  | `--no-ff` (*no fast forward*) permet de créer un commit de fusion dans tous les cas, même cas quand la fusion pourrait être résolue trivialement (*fast-forward*). Utile pour conserver l'historique des branches lors d'un *merge* suivant un *rebase* |
+| `git pull`                   | télécharge en local les modifications présentes sur le serveur (*a priori* ajoutées par d'autres développeurs)                                                                                                                                                            | `--rebase=preverse` permet de conserver les commits de fusion, utile pour garder une trace de l'existence de certaines branches                                                                                                                         |
+| `git push`                   | pousse sur le serveur les modifications locales                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                         |
+| `git rebase <ici> <branche>` | découpe la branche `branche` à sa base et la recolle `ici`. `ici` peut-être le nom d'une branche, auquel cas la branche `branche` est recollée à la fin de la branche `ici`, ou un numéro de commit. Voir le tuto complet sur rebase.                                     | X                                                                                                                                                                                                                                                       |
+| `git stash`                  | permet de mettre temporairement de côté les modifications en attente de *commit* afin de revenir au dernier *commit*. Les modifications ainsi mises de côté peuvent ensuite être réappliqués (éventuellement après que d'autres commits ont été effectués) ou supprimées. | `git stash list` pour lister les éléments mis de côté <br> `git stash apply` pour faire revenir les modifications dans l'espace de travail <br> `git stash clear` pour abandonner complètement les modifications mises de côté                          |
+| `git status`                 | affiche les fichiers prêts à être *commit* et ceux qui ne sont pas encore dans le *stage*                                                                                                                                                                                 |                                                                                                                                                                                                                                                         |
+| `git switch <branche>`       | change de branche pour aller sur "branche"                                                                                                                                                                                                                                |        `git switch -c <nouvelle-branche>` pour créer une nouvelle branche et y switcher directement                                                                                                                                                                                                                                                 |

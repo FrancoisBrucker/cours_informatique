@@ -268,8 +268,8 @@ vscode permet d'utiliser directement les commandes git et possède de nombreux p
 
 {% lien %}
 
-- lazy git : <https://www.youtube.com/watch?v=CPLdltN7wgE> pour git
-- gh-dash : <https://github.com/dlvhdr/gh-dash> pour github et les pull requests
+- [lazy git](https://github.com/jesseduffield/lazygit) ([une courte vidéo de présentation](https://www.youtube.com/watch?v=CPLdltN7wgE)) : une excellente application pour git
+- [gh-dash](https://github.com/dlvhdr/gh-dash) : pour github et les pull requests
 
 {% endlien %}
 
