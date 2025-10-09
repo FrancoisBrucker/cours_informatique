@@ -171,7 +171,7 @@ S'il n'y a pas ambiguïté, on se permettra même d'écrire :
 
 {% note "**Définition**" %}
 
-Une variable aléatoire ets dite **_uniforme_** si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $u \xleftarrow{R} \mathcal{U}$.
+Une variable aléatoire ets dite **_uniforme_** si $\Pr[X = x]$ est une constante pour tout $x \in U$. On la notera $u \xleftarrow{U} \mathcal{U}$.
 
 {% endnote %}
 

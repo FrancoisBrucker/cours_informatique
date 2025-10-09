@@ -26,7 +26,7 @@ expo(x, y):
       r = r * y    # MULTIPLY
     sinon:
       x = x * x    # SQUARE
-      y = y / y    
+      y = y / 2    
   
   rendre r
 ```

@@ -158,7 +158,7 @@ Ceci permet de retrouver de façon unique (au moins en probabilité et sûrement
 
 ### Diff
 
-> TBD faire un exemple avec la commande diff au terminal.
+> TBD faire un exemple avec la commande diff au terminal : deux fichiers (lignes ≠) et deux dossiers (deux fichiers ≠)
 > TBD sous windows <https://learn.microsoft.com/fr-fr/troubleshoot/windows-client/shell-experience/how-to-use-windiff-utility> ou <https://www.git-tower.com/blog/diff-tools-windows>
 
 On a déjà vu le diff des fichiers lors de nos commits et en particulier lorsque l'on a résolu un conflit de fusion. Cela vaut le coût de connaître le format utilisé :

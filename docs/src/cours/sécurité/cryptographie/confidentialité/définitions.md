@@ -19,13 +19,13 @@ Un code $(E, D)$ assure une **_confidentialité parfaite_** si pour :
 
 - tous messages $m$ et $m'$ de même taille
 - tout chiffre $c$
-- les clés $k$ suivent une loi uniforme $k \xleftarrow{R} \mathcal{K}$
+- les clés $k$ suivent une loi uniforme $k \xleftarrow{U} \mathcal{K}$
 
 On a :
 
 <div>
 $$
-\Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m) = c] = \Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c]
+\Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m) = c] = \Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m') = c]
 $$
 </div>
 
@@ -41,7 +41,7 @@ Le code de Vernam assure une confidentialité parfaite.
 {% endnote %}
 {% details "preuve", "open" %}
 
-La variable aléatoire $(k \xleftarrow{R} \mathcal{K}) \oplus m$ est uniforme quelque soit $m$ : la probabilité d'obtenir n'importe quel chiffre est ainsi une constante et vaut $\frac{1}{\vert \mathcal{C}\vert}$ ce qui est indépendant de $m$.
+La variable aléatoire $(k \xleftarrow{U} \mathcal{K}) \oplus m$ est uniforme quelque soit $m$ : la probabilité d'obtenir n'importe quel chiffre est ainsi une constante et vaut $\frac{1}{\vert \mathcal{C}\vert}$ ce qui est indépendant de $m$.
 
 {% enddetails %}
 
@@ -52,7 +52,7 @@ Un code à confidentialité parfaite nécessite un nombre de clés différentes 
 {% endnote %}
 {% details "preuve", "open" %}
 
-Soit $k^{\star} \in \mathcal{K}$, $m^{\star} \in \mathcal{M}$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $\Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 < \Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.
+Soit $k^{\star} \in \mathcal{K}$, $m^{\star} \in \mathcal{M}$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $\Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m') = c^\star] = 0 < \Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.
 
 On en déduit que l'ensemble $\mathcal{M}' = \\{m \vert E(k, m)=c^{\star}, k \in \mathcal{K}\\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert \mathcal{M}' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.
 
@@ -93,7 +93,6 @@ Le jeu consiste alors en 6 étapes :
    - perd si $b \neq b'$
 
 ```
-
      testeur                      adversaire
     ---------        m0, m1      ------------
  b  |   k   | <----------------- |          |  A(E(k,mb)) = b'
@@ -101,6 +100,8 @@ Le jeu consiste alors en 6 étapes :
     |       | -----------------> |          |
     ---------                    ------------
 ```
+
+> TBD donner type d'attaque chosen text. Dre que si ça résiste à ça on résiste à plein d'attaques
 
 Il est clair que si l'adversaire essaie toutes les possibilités il trouvera toujours la solution (presque toujours en fait, car il peut exister des cas où `E(k,m0) = E(k', m1)`. Mais comme l'adversaire peut choisir ses mots il peut minimiser – voir supprimer ce cas). Cela prendra cependant un temps énorme. Par exemple si la clé $k$ possède 128bits, il y a $2^{128}$ possibilité et même si l'adversaire peut tester 1000 milliards de possibilités par seconde ($10^{12}$) il lui faudrait tout de même plus de $10^{17}$ siècles pour tester toutes les possibilités.
 
@@ -147,11 +148,11 @@ Attention, les algorithmes tournent souvent en parallèle pour diminuer leur tem
 L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que `A(E(k,mb))=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
 {% note "**Définition**" %}
-L'avantage $\epsilon$ pour l'adversaire $A$ dans un jeu est défini tel que :
+L'avantage $\epsilon(A)$ pour l'adversaire $A$ dans un jeu est défini tel que :
 
 <div>
 $$
-\epsilon(A) \coloneqq | (\Pr[b' = 1 | b = 1] + \Pr[b' = 0 | b = 0]) - 1 |
+\epsilon(A) \coloneqq | (\Pr[b' = 1 \;\mid\; b = 1] + \Pr[b' = 0 \;\mid\; b = 0]) - 1 |
 $$
 </div>
 
@@ -166,7 +167,7 @@ Si $m_0$ est traité de façon équivalente à $m_1$, On a :
 
 <div>
 $$
-\epsilon(A) = \vert \Pr[b' = 1 | b = 1] - \Pr[b' = 1 | b = 0] \vert = \vert \Pr[b' = 0 | b = 0] - \Pr[b' = 0 | b = 1] \vert
+\epsilon(A) = \vert \Pr[b' = 1 \;\mid\; b = 1] - \Pr[b' = 1 \;\mid\; b = 0] \vert = \vert \Pr[b' = 0 \;\mid\; b = 0] - \Pr[b' = 0 \;\mid\; b = 1] \vert
 $$
 </div>
 
@@ -175,20 +176,20 @@ $$
 
 <div>
 $$
-1/2\cdot \Pr[b'=0 | b=0] + 1/2\cdot \Pr[b'=1 | b=1] +1/2\cdot  \Pr[b'=0 | b=1] + 1/2\cdot \Pr[b'=1 | b=0]  = 1
+1/2\cdot \Pr[b'=0 \;\mid\; b=0] + 1/2\cdot \Pr[b'=1 \;\mid\; b=1] +1/2\cdot  \Pr[b'=0 \;\mid\; b=1] + 1/2\cdot \Pr[b'=1 \;\mid\; b=0]  = 1
 $$
 </div>
 
-La proba de gagner vaut $\Pr[b'=b] = 1/2\cdot \Pr[b'=0 | b=0] + 1/2\cdot \Pr[b'=1 | b=1] = 1/2 +\epsilon(A)/2$ et la proba de perdre $1/2 - \epsilon(A)/2$
+La proba de gagner vaut $\Pr[b'=b] = 1/2\cdot \Pr[b'=0 \;\mid\; b=0] + 1/2\cdot \Pr[b'=1 \;\mid\; b=1] = 1/2 +\epsilon(A)/2$ et la proba de perdre $1/2 - \epsilon(A)/2$
 Du coup :
 
 <div>
 $$
-\Pr[b'=1 | b=1] - \Pr[b'=0 | b=1] + \Pr[b'=0 | b=0] - \Pr[b'=1 | b=0] = 2\cdot \epsilon(A)
+\Pr[b'=1 \;\mid\; b=1] - \Pr[b'=0 \;\mid\; b=1] + \Pr[b'=0 \;\mid\; b=0] - \Pr[b'=1 \;\mid\; b=0] = 2\cdot \epsilon(A)
 $$
 </div>
 
-Si $m_0$ et $m_1$ sont équivalent on a $\Pr[b'=1 | b=1] - \Pr[b'=1 | b=0] = \Pr[b'=0 | b=0] - \Pr[b'=0 | b=1]$ ce qui conclut la preuve.
+Si $m_0$ et $m_1$ sont équivalent on a $\Pr[b'=1 \;\mid\; b=1] - \Pr[b'=1 \;\mid\; b=0] = \Pr[b'=0 \;\mid\; b=0] - \Pr[b'=0 \;\mid\; b=1]$ ce qui conclut la preuve.
 
 {% enddetails %}
 
@@ -206,7 +207,7 @@ Montrer que tout adversaire ne peut avoir un avantage différent de 0 au au jeu 
 {% details "corrigé" %}
 <div>
 $$
-\vert \Pr[b' = 1 | b = 1] - \Pr[b' = 1 | b = 0] \vert = \vert \Pr[A(k\oplus m_1) = 1] - \Pr[A(k\oplus m_0) = 1] \vert
+\vert \Pr[b' = 1 \;\mid\; b = 1] - \Pr[b' = 1 \;\mid\; b = 0] \vert = \vert \Pr[A(k\oplus m_1) = 1] - \Pr[A(k\oplus m_0) = 1] \vert
 $$
 </div>
 
@@ -340,7 +341,7 @@ Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la s
 
 <div>
 $$
-\epsilon(A) \coloneqq \Pr[b'=1 | b=1] - \Pr[b'=1 | b=0]
+\epsilon(A) \coloneqq \Pr[b'=1 \;\mid\; b=1] - \Pr[b'=1 \;\mid\; b=0]
 $$
 </div>
 
@@ -387,13 +388,18 @@ En supposant sans perte de généralité que si $b=0$ le testeur va rendre la fo
 <div>
 $$
 \begin{array}{lcl}
-\epsilon(A) &=& |\Pr[x \neq \mathbb{0} | b=1] - \Pr[x \neq \mathbb{0} | b=0]|\\
+\epsilon(A) &=& |\Pr[x \neq \mathbb{0} \;\mid\; b=1] - \Pr[x \neq \mathbb{0} \;\mid\; b=0]|\\
 &=&|1-1/2^n - 0|\\
 \end{array}
 $$
 </div>
 
 {% enddetails %}
+
+## Vernam biaisé
+
+> TBD motivation. Vernam parfait mais pas attrapable en pratique, supposons un chiffrement biaisé (dés pas parfaitement équilibré). Est-ce que l'avantage devient important ?
+> TBD montre la propagation du biais. Mais si négligeable reste ok (comme en algorithme avec une composition de poly reste poly : une composition de negl reste negligeable)
 
 Prenons par exemple la distribution de Bernoulli $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^n$ la distribution sur $\\{0, 1\\}^n$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme $N$.
 
@@ -404,14 +410,14 @@ Son avantage est alors :
 <div>
 $$
 \begin{array}{lcl}
-\epsilon(A) &=&| \Pr[b'=1 | b=1] - \Pr[b'=1 | b=0] | \\
-&=& |\sum_{X\in \{0, 1\}^n}(\Pr[A(X') = 1 | X=X']\cdot B^n(X) - \Pr[A(X') = 1 | X=X']\cdot (1/2)^n)|\\
-&=& |\sum_{X\in \{0, 1\}^n}(\Pr[A(X') = 1 | X=X']\cdot B^n(X) + \Pr[A(X') = 0 | X=X']\cdot (1/2)^n) - 1|
+\epsilon(A) &=&| \Pr[b'=1 \;\mid\; b=1] - \Pr[b'=1 \;\mid\; b=0] | \\
+&=& |\sum_{X\in \{0, 1\}^n}(\Pr[A(X') = 1 \;\mid\; X=X']\cdot B^n(X) - \Pr[A(X') = 1 \;\mid\; X=X']\cdot (1/2)^n)|\\
+&=& |\sum_{X\in \{0, 1\}^n}(\Pr[A(X') = 1 \;\mid\; X=X']\cdot B^n(X) + \Pr[A(X') = 0 \;\mid\; X=X']\cdot (1/2)^n) - 1|
 \end{array}
 $$
 </div>
 
-Or $\Pr[A(X') = 1 | X=X'] = 1$ si $B^n(X')\geq (1/2)^n$, l'avantage vaut donc :
+Or $\Pr[A(X') = 1 \;\mid\; X=X'] = 1$ si $B^n(X')\geq (1/2)^n$, l'avantage vaut donc :
 
 <div>
 $$

@@ -36,9 +36,9 @@ Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.
 
 ## Pourquoi ça marche
 
-1. si $n$ est premier, [$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique](../../../arithmétique/corps-ZpZ#groupe-cyclique){.interne}
+1. si $n$ est premier, [$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique](/cours/misc/corps-ZpZ/#groupe-cyclique){.interne}
 2. il est très facile de faire [l'exponentiation modulaire](../../../arithmétique/corps-ZpZ#exponentiation-modulaire){.interne} dans le cas général et encore plus rapide en notation binaire
-3. [le logarithme discret](../../../arithmétique/corps-ZpZ#logarithme-discret){.interne} est une opération coûteuse
+3. [le logarithme discret](/cours/misc/corps-ZpZ/#logarithme-discret){.interne} est une opération coûteuse
 
 ### Existence
 
@@ -53,15 +53,17 @@ $ab$ permet bien d'obtenir tout nombre $q$ entre $1$ et $p-1$ car :
 
 Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficacement, alors que l'exponentiation va très vite.
 
-> TBD taille clé 2048b actuellement
+> TBD taille clé 4096b actuellement
 
 ### Utilisation de courbes elliptiques
 
 Un des intérêt du protocole de Diffie-Hellman est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.
 
-> TBD taille clé 256b actuellement (curve de bernstein)
+> <https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques>
 
-> Renvoyer à [Courbes elliptiques](../../../arithmétique/courbes-elliptiques){.interne}
+> TBD taille clé 256b actuellement (courbe de Bernstein)
+
+> Renvoyer à [Courbes elliptiques](/cours/misc/courbes-elliptiques){.interne}
 > pour la def et les propriétés basiques d'une courbe elliptique.
 
 ## Attaque
@@ -69,8 +71,10 @@ Un des intérêt du protocole de Diffie-Hellman est qu'il peut s'écrire sous la
 ### <span id="side-channel-attack"></span>Side channel attack
 
 > TBD expliciter pourquoi square and multiply. Faire un test en python pour mesurer le temps.
+> <https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf>
+> <https://tjerandsilde.no/files/Side_Channel_Attacks.pdf>
 
-Algorithme square and multiply : deux fois plus de travail pour un bit valant 1 que pour un bit valant 0.
+[Algorithme square and multiply](/cours/misc/nombres/#exponentiation){.interne} : deux fois plus de travail pour un bit valant 1 que pour un bit valant 0.
 
 {% lien %}
 
@@ -85,5 +89,7 @@ Algorithme square and multiply : deux fois plus de travail pour un bit valant 1 
 La meilleure attaque connue est l'attaque brute force en utilisant l'algorithme du [crible général](https://fr.wikipedia.org/wiki/Crible_alg%C3%A9brique) qui est une méthode de factorisation.
 
 {% info %}
-Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations.
+Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations. Comme on en veut au moins $2^{128}$ pour être en sécurité : on préconise au moins 3000b actuellement.
+
+Voir [ce doc p35](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile).
 {% endinfo %}

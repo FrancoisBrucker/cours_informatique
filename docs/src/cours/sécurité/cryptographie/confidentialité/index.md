@@ -10,23 +10,22 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 ```
            k                   k
-           |                   | 
+           |                   |
            v                   v
         -------             -------
        |       |           |       |
  m --> |   E   | --> c --> |   D   | --> m
-       |       |           |       | 
-        -------             ------- 
+       |       |           |       |
+        -------             -------
 ```
 
 Deux types d'attaques :
 
 - brute-force : énumération des clés
 - connaissances supplémentaires :
-  - *a priori* sur $m$ si l'attaque est chiffre seul
+  - _a priori_ sur $m$ si l'attaque est chiffre seul
   - acquises si on peut avoir ou produire des couples (message, chiffre)
 
 On considère actuellement que si le [nombre de clés est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack), l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message. Si l'on utilise des connaissances supplémentaires, il est possible de faire baisser ce nombre drastiquement.
@@ -38,14 +37,16 @@ On considère actuellement que si le [nombre de clés est supérieur à $2^{128}
 ## Qu-est ce que la confidentialité ?
 
 {% aller %}
+[Partager la clé](partager-secret){.interne}
+{% endaller %}
+
+On a vu que la confidentialité du partage de la clé était basé sur la difficulté algorithmique du logarithme discret. Mais qu'un seul maillon soit faible (side channel attack) peut faire écrouler tout l'édifice. Essayons de formaliser tout ça :
+
+{% aller %}
 [Définitions de la confidentialité](définitions){.interne}
 {% endaller %}
 
 Le message ne doit pouvoir être lu que par son destinataire. Comment partager la clé en secret ?
-
-{% aller %}
-[Partager la clé](partager-secret){.interne}
-{% endaller %}
 
 ## Chiffrer un message
 
@@ -110,7 +111,7 @@ Il faut utiliser des générateur avec entropie. Il n'est pas utile de retrouver
 
 Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque messages. La façon la plus simple, si on a un PRF sous la main est de :
 
-- posséder une clé primaire appelée $SK$ (*source key*)
+- posséder une clé primaire appelée $SK$ (_source key_)
 - une constante $CTX$, application dépendante pour éviter que plusieurs applications différentes utilisant la même clé primaires de se trouvent avec les mêmes clés
 
 Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : $F(\text{SK}, \text{CTX} || i)$, où $i$ est un compteur.

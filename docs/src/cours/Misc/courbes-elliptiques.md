@@ -53,4 +53,5 @@ Les éléments considérés sont les couples $(x, y)$ de la courbe où $x$ et $y
 
 > TBD : définition de l'addition sérieusement
 > on se place dans le groupe avec l'addition.
+> <https://ritzenth.pages.math.cnrs.fr/web/teaching.html>
 > [compter les points d'une courbe elliptique](https://perso.univ-rennes1.fr/christophe.ritzenthaler/cours/point-counting-ec.pdf)
