@@ -37,10 +37,6 @@ Mais surtout : **ne pas avoir peur** de modifier, tester et expérimenter des no
 
 Ces bénéfices sont incommensurables lorsque l'on travaille à plusieurs sur un projet et sont très utiles même pour un projet solo.
 
-{% attention %}
-Dire que l'on fait de la gestion des sources ou que l'on connaît [git](https://git-scm.com/) parce qu'on se sert de [github](https://github.com/) comme d'un drive est un mensonge et vous fera passer pour un rigolo.
-{% endattention %}
-
 <!-- TBD 
 
 > TBD numéro de commit ?
@@ -49,22 +45,9 @@ peut-être mettre le projet avant la théorie ? Ou en même temps ?
 
 couper en parties
 
-1. github comme un drive
-2. principe gestion des sources sans origine : 
-   1. sur github
-      1. merge on pull request
-      2. rebase on pull request
-   2. on voit la théorie
-3. avec origine :
-   1.  github desktop
-       1. merge par défaut
-       2. rebase de deux branches distinctes (on travail sur dev, on pull main et on rebase)
-       3. faire un .gitignore pour un fichier todo par exemple
-   2.  la théorie
-4. outils
-5. terminal et rebase on pull
-6. git bisect
-7. interne
+1. terminal et rebase on pull
+2. git bisect
+3. interne
 -->
 
 ## Principes : gestion des sources comme un dépôt
@@ -250,6 +233,14 @@ L'installation et la configuration de git n'est pas très technique. Cela vaut l
 {% endaller %}
 
 ## Outils
+
+### App
+
+Outil tout en un pour utiliser github :
+
+{% aller %}
+<https://git-fork.com/>
+{% endaller %}
 
 ### Git avec vscode
 

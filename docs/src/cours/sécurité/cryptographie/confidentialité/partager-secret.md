@@ -58,7 +58,7 @@ Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficace
 ### Utilisation de courbes elliptiques
 
 Un des intérêt du protocole de Diffie-Hellman est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.
-
+9e14f817a5dbe47f6b9dc5f9eda8822b032a8eae
 > <https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques>
 
 > TBD taille clé 256b actuellement (courbe de Bernstein)
