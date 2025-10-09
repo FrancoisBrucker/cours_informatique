@@ -97,13 +97,13 @@
   
 
   <pre><code>           k                   k
-           |                   | 
+           |                   |
            v                   v
         -------             -------
        |       |           |       |
  m --&gt; |   E   | --&gt; c --&gt; |   D   | --&gt; m
-       |       |           |       | 
-        -------             ------- 
+       |       |           |       |
+        -------             -------
 </code></pre>
 <p>Deux types d'attaques :</p>
 <ul>
@@ -130,18 +130,19 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="d%C3%A9finitions" class="interne">Définitions de la confidentialité</a></p>
+<p><a href="partager-secret" class="interne">Partager la clé</a></p>
 </div></div>
 
-<p>Le message ne doit pouvoir être lu que par son destinataire. Comment partager la clé en secret ?</p>
+<p>On a vu que la confidentialité du partage de la clé était basé sur la difficulté algorithmique du logarithme discret. Mais qu'un seul maillon soit faible (side channel attack) peut faire écrouler tout l'édifice. Essayons de formaliser tout ça :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="partager-secret" class="interne">Partager la clé</a></p>
+<p><a href="d%C3%A9finitions" class="interne">Définitions de la confidentialité</a></p>
 </div></div>
 
+<p>Le message ne doit pouvoir être lu que par son destinataire. Comment partager la clé en secret ?</p>
 <h2>Chiffrer un message</h2>
 <p>Les algorithmes de chiffrement classiques ne permettent pas de chiffrer des message de taille quelconque. Ils sont conçus pour chiffrer des blocs de taille fixes.</p>
 <h3>Chiffrer un message de taille fixe</h3>
