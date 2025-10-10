@@ -228,15 +228,16 @@ $$
 <pre><code>     testeur                      adversaire
     ---------        m0, m1      ------------
  b  |   k   | &lt;----------------- |          |  A(E(k,mb)) = b'
----&gt;|       |       E(k,mb)      |          | --------------------&gt;
+---&gt;|       |     E(k,mb) =c     |          | --------------------&gt;
     |       | -----------------&gt; |          |
     ---------                    ------------
 </code></pre>
-<blockquote>
-<p>TBD donner type d'attaque chosen text. Dre que si ça résiste à ça on résiste à plein d'attaques</p>
-</blockquote>
-<p>Il est clair que si l'adversaire essaie toutes les possibilités il trouvera toujours la solution (presque toujours en fait, car il peut exister des cas où <code>E(k,m0) = E(k', m1)</code>. Mais comme l'adversaire peut choisir ses mots il peut minimiser – voir supprimer ce cas). Cela prendra cependant un temps énorme. Par exemple si la clé $k$ possède 128bits, il y a $2^{128}$ possibilité et même si l'adversaire peut tester 1000 milliards de possibilités par seconde ($10^{12}$) il lui faudrait tout de même plus de $10^{17}$ siècles pour tester toutes les possibilités.</p>
-<p>L'exemple précédent montre trois choses :</p>
+<p>Ce jeu permet de simuler des attaques par messages choisis (<em>Chosen-plaintext attackers, CPA</em>). Si notre méthode de chiffrement y résiste elle sera également robuste pour les attaques plus faible par message connu ou chiffre uniquement.</p>
+<p>Ce type d'attaque, bien qu'elle ne permet pas de déchiffrer les messages permet tout de même d'avoir des informations sur le type de message chiffré, par exemple si la réponse est positive (<code>m0 = &quot;oui&quot;</code>) ou négative (<code>m1 = &quot;non&quot;</code>).</p>
+<p>Par exemple supposons que nous chiffrons/déchiffrons nos messages avec l'algorithme de Vigenère et que l'on chiffre des messages avec des clés de longueur $\vert k \vert\ = 2$.
+L'adversaire pourrait choisir <code>m0 = &quot;aa&quot;</code> et <code>m1 = &quot;ab&quot;</code> et décider de répondre 1 si <code>c[1] ≠ c[0]</code>.</p>
+<p>Il est clair que si l'adversaire essaie toutes les possibilités il trouvera toujours la solution (presque toujours en fait, car il peut exister des cas où <code>E(k,m0) = E(k', m1)</code>. Mais comme l'adversaire peut choisir ses mots il peut minimiser – voir supprimer ce cas). Cela prendra cependant un temps énorme. Pour l'exemple précédent du chiffrement de Vigenère avec une clé de taille $\vert k \vert\ = 2$ il y a $26^{2} = 676$ possibilités ce que l'on peut faire très rapidement (un peut plus de 11 minutes si on met 1 seconde à vérifier un cas), mais si la clé $k$ possède 128bits, il y a $2^{128}$ possibilité et même si l'adversaire peut tester 1000 milliards de possibilités par seconde ($10^{12}$) il lui faudrait tout de même plus de $10^{17}$ siècles pour tester toutes les possibilités.</p>
+<p>Ceci montre trois choses :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -312,6 +313,13 @@ $$
 </div></div>
 
 <p>Si l'adversaire $A$ n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon(A) = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon(A) = 1$.</p>
+<p>Pour notre exemple avec le chiffre de Vigenère de taille deux :</p>
+<ul>
+<li>$\Pr[b' = 1 \;\mid\; b = 1] = 1- \Pr[b' = 0 \;\mid\; b = 1]$. On ne peut répondre $b'=0$ alors que $b=1$ que si la lettre $a$ se chiffre avec la même lettre que $b$ ce qui arrive 26 fois (choisir la première lettre de $k$ entraîne sa deuxième). Donc $\Pr[b' = 1 \;\mid\; b = 1] = 1- 26/26^2 = 1-1/26$</li>
+<li>$\Pr[b' = 0 \;\mid\; b = 0] = 1$ on ne se trompe jamais si c'est <code>m0</code> qui est encodé.</li>
+</ul>
+<p>Pour notre algorithme on a donc un avantage de $\epsilon(A) = 1-1/26 \geq 95\%$ ce qui est très bon !</p>
+<p>Attention, cela ne veut pas dire que le chiffrement de Vigenère est mauvais, juste que connaître la taille de la clé permet de reconnaître le chiffrement de messages connus.</p>
 <p>Le corollaire ci-après montre que l'avantage est également la différence entre gagner ou perdre en choisissant tout le temps $m_0$ ou $m_1$. C'est cette définition que nous utiliserons dans tous les autres jeux que nous définirons.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -350,18 +358,18 @@ $$
 1/2\cdot \Pr[b'=0 \;\mid\; b=0] + 1/2\cdot \Pr[b'=1 \;\mid\; b=1] +1/2\cdot  \Pr[b'=0 \;\mid\; b=1] + 1/2\cdot \Pr[b'=1 \;\mid\; b=0]  = 1
 $$
 </div>
-<p>La proba de gagner vaut $\Pr[b'=b] = 1/2\cdot \Pr[b'=0 ;\mid; b=0] + 1/2\cdot \Pr[b'=1 ;\mid; b=1] = 1/2 +\epsilon(A)/2$ et la proba de perdre $1/2 - \epsilon(A)/2$
+<p>La probabilité de gagner vaut $\Pr[b'=b] = 1/2\cdot \Pr[b'=0 \;\mid\; b=0] + 1/2\cdot \Pr[b'=1 \;\mid\; b=1] = 1/2 +\epsilon(A)/2$ et la proba de perdre $1/2 - \epsilon(A)/2$
 Du coup :</p>
 <div>
 $$
 \Pr[b'=1 \;\mid\; b=1] - \Pr[b'=0 \;\mid\; b=1] + \Pr[b'=0 \;\mid\; b=0] - \Pr[b'=1 \;\mid\; b=0] = 2\cdot \epsilon(A)
 $$
 </div>
-<p>Si $m_0$ et $m_1$ sont équivalent on a $\Pr[b'=1 ;\mid; b=1] - \Pr[b'=1 ;\mid; b=0] = \Pr[b'=0 ;\mid; b=0] - \Pr[b'=0 ;\mid; b=1]$ ce qui conclut la preuve.</p>
+<p>Si $m_0$ et $m_1$ sont équivalent on a $\Pr[b'=1 \;\mid\; b=1] - \Pr[b'=1 \;\mid\; b=0] = \Pr[b'=0 \;\mid\; b=0] - \Pr[b'=0 \;\mid\; b=1]$ ce qui conclut la preuve.</p>
 </div>
 </details>     
 </div>
-<p>On a clairement que :</p>
+<p>Puisque l'adversaire peut choisir les 2 mots, il va prendre ceux ayant statistiquement le plus de différence : un avantage nul signifie que tous les mots sont équivalents :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -403,9 +411,6 @@ $$
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD example 2.8 avec vigenère &quot;intro of modern cryptography</p>
-</blockquote>
 <h2><span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée</h2>
 <p>La méthode précédente donne idée de la sécurité <em>actuelle</em> d'une méthode de chiffrement puisqu'elle mesure le nombre d'opérations ou le temps pris pour décrypter une méthode de chiffrement. Cela ne dit rien de ce qui pourra se passer dans 5 ou 10 ans lorsque les ordinateurs iront plus vite ou que les méthodes de résolutions seront plus évoluées. De plus, un algorithme brute force qui teste toutes les possibilités aura toujours un avantage de 1 (ou quasi 1 si l'on prend en compte les collisions) si on lui laisse un temps exponentiel par rapport à la taille de la clé pour s'exécuter.</p>
 <p>Il faut donc d'un côté :</p>
@@ -666,12 +671,9 @@ $$
 </details>     
 </div>
 <h2>Vernam biaisé</h2>
-<blockquote>
-<p>TBD motivation. Vernam parfait mais pas attrapable en pratique, supposons un chiffrement biaisé (dés pas parfaitement équilibré). Est-ce que l'avantage devient important ?
-TBD montre la propagation du biais. Mais si négligeable reste ok (comme en algorithme avec une composition de poly reste poly : une composition de negl reste negligeable)</p>
-</blockquote>
-<p>Prenons par exemple la distribution de Bernoulli $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^n$ la distribution sur $\{0, 1\}^n$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme $N$.</p>
-<p>Soit $A$ le meilleur algorithme permettant de distinguer $B^n$ et $N$. Il va répondre $B^n$ si $B^n(x) &gt; (1/2)^n$ et $N$ sinon.</p>
+<p>La notion d'avantage négligeable nous donne une méthode de construction sécurisée : l' avantage négligeable se propage au reste de la chaîne sans exploser. Illustrons le en montrant que l'on peut créer un chiffre de Vernam sémantiquement sécurisé en partant d'un générateur de no,bre aléatoire biaisé, du moment que le biais est négligeable.</p>
+<p>Soit la distribution de Bernoulli biaisée $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^n$ la distribution sur $\{0, 1\}^n$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme $N$.</p>
+<p>On a vu que $A$, le meilleur algorithme permettant de distinguer $B^n$ et $N$ va répondre $B^n$ si $B^n(x) \geq (1/2)^n$ et $N$ sinon.</p>
 <p>Son avantage est alors :</p>
 <div>
 $$
@@ -682,7 +684,7 @@ $$
 \end{array}
 $$
 </div>
-<p>Or $\Pr[A(X') = 1 ;\mid; X=X'] = 1$ si $B^n(X')\geq (1/2)^n$, l'avantage vaut donc :</p>
+<p>Et comme $\Pr[A(X') = 1 \;\mid\; X=X'] = 1$ si $B^n(X')\geq (1/2)^n$, l'avantage vaut :</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -690,7 +692,7 @@ $$
 \end{array}
 $$
 </div>
-<p>Et comme $\max(a, b) = \frac{1}{2}\cdot (a+b+|b-a|)$ on a au final :</p>
+<p>En utilisant le fait que $\max(a, b) = \frac{1}{2}\cdot (a+b+|b-a|)$ on obtient :</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -796,6 +798,8 @@ $$
 </div>
 </details>     
 </div>
+<p>Si on fait bien les choses (on verra qu'on peut se tromper si on ne fait pas attention), on peut construire une méthode de chiffrement sémantiquement sécurisée en chaînant des blocs de biais négligeable, tout comme en algorithmie une composition d'algorithmes  de complexités polynomiales reste polynomiale.</p>
+<p>Ceci va être utilisé intensivement par la suite où l'on construira chaque bloc de la méthode de chiffrement indépendamment les une des autres : si chaque bloc ne donne qu'un avantage négligeable toute la chaîne également.</p>
 <h2>Chiffre utilisable en pratique</h2>
 <p>La méthode de chiffrement que l'on a vu précédemment n'est pas utilisable en pratique. Déjà parce qu'un chiffrement de de Vernam nécessite une taille de clé égale au message à chiffrer, mais aussi parce qu'un générateur de nombre aléatoire, même biaisé, est compliqué car non implémentable facilement.</p>
 <p>Pour qu'une méthode de chiffrement puisse être utilisé en pratique, il faut pouvoir avoir deux choses :</p>

@@ -159,10 +159,7 @@
 </div></div>
 
 <h2><span id="groupe-cyclique"></span>Groupe cyclique</h2>
-<p>Si $n$ est premier $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un <a href="https://fr.wikipedia.org/wiki/Groupe_cyclique">groupe cyclique</a>.</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Si $n$ est premier $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un <a href="https://fr.wikipedia.org/wiki/Groupe_cyclique">groupe cyclique</a>, c'est à dire qu'il existe un entier $1\leq g\leq p-1$ tel que pour tout en entier $0\leq b\leq p-1$, il existe $k$ tel que $b = g^k \bmod p$.</p>
 <h2><span id="exponentiation-modulaire">Exponentiation modulaire</span></h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -175,15 +172,13 @@
 <p>L'exponentiation dans l'anneau $\mathbb{Z}/n\mathbb{Z}$ se fait mathématiquement très bien en utilisant l'exponentiation indienne, cependant le nombre de bits des nombres calculés deviennent vite non tractable en pratique surtout qu'à la fin on refait un modulo de tout ça.</p>
 <p>L'idée est de faire le modulo à chaque étape de l'exponentiation indienne :</p>
 <pre><code>expo(x, y):
-
   r = 1
   tant que y n'est pas nul :
     si y est impair:
       y = y - 1
-      r = r * y  mod n
-    sinon:
-      x = x / 2
-      y = y * y  mod n
+      r = r * x  mod n    # MULTIPLY
+    x = x * x    mod n    # SQUARE
+    y = y / 2    
   
   rendre r
 </code></pre>

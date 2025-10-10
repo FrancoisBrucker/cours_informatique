@@ -98,20 +98,32 @@
 
   <h2><span id="exponentiation">Exponentiation</span></h2>
 <p>L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.</p>
-<p>Rappelons l'algorithme d'exponentiation indienne qui calcule $x^y$ :</p>
+<p>Rappelons l'<a href="/cours_informatique/cours/algorithmie/projet-exponentiation/%C3%A9tude-algorithmique/#algo-rapide">algorithme d'exponentiation indienne</a> qui calcule $x^y$ :</p>
 <pre><code>expo(x, y):
-
   r = 1
   tant que y n'est pas nul :
     si y est impair:
       y = y - 1
-      r = r * y    # MULTIPLY
+      r = r * x    # MULTIPLY
     sinon:
       x = x * x    # SQUARE
       y = y / 2    
   
   rendre r
 </code></pre>
+<p>Que l'on peut aussi écrire ainsi :</p>
+<pre><code>expo(x, y):
+  r = 1
+  tant que y n'est pas nul :
+    si y est impair:
+      y = y - 1
+      r = r * x      # MULTIPLY
+    x = x * x        # SQUARE
+    y = y / 2    
+  
+  rendre r
+</code></pre>
+<p>Sous la forme précédente on voit bien que tout se passe comme si l'algorithme regardais chaque bit constituant $y$</p>
 <p>Nous avons mis en exergue deux lignes (<code>SQUARE</code> et <code>MULTIPLY</code>, l'algorithme est connu en langue anglaise comme <em>square and multiply algorithm</em>). L'astuce pour encore accélérer l'algorithme est de regarder la forme binaire de y. Par exemple supposons que $y = 0b101101$ et suivons l'algorithme pas à pas :</p>
 <pre><code>101101  # MULTIPLY
 101100  -1
@@ -142,7 +154,23 @@
 </ul>
 </li>
 </ol>
-<p>Au final, si $x$ est sur $m$ bits et $y$ sur $n$ bit, $x^y$ aura $2^n\cdot m$ bits.</p>
+<p>Au final, si $x=x_{n-1}\dots x_0$ est sur $m$ bits et $y=y_{n-1}\dots y_0$ sur $n$ bit on a :</p>
+<pre><code>expo(x, y):
+  r = 1
+  pour chaque i de 0 à n-1:
+    si y_i == 1:
+      r = r * x      # MULTIPLY
+    x = x * x        # SQUARE
+  rendre r
+</code></pre>
+<blockquote>
+<p>TBD exercice pour l'écrire dans l'autre sens voir <a href="https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf">https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf</a></p>
+</blockquote>
+<h2><span id="logarithme-discret">Logarithme discret</span></h2>
+<blockquote>
+<p>TBD
+TBD algo de résolution puis comment voir ça comme un problème de factorisation.</p>
+</blockquote>
 <h2>Algorithme d'Euclide Étendu</h2>
 <ul>
 <li>Si $a &gt; b &gt; 0$ on a $\text{pgcd}(a, b) = \text{pgcd}(b, a \bmod b)$</li>

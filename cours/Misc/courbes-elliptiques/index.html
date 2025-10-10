@@ -101,17 +101,19 @@
 <ul>
 <li>Utilisées pour les problèmes de logarithmes discret</li>
 <li>Ils permettent d'avoir des clés bien plus petite.
-<a href="https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl">https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl</a></li>
+<a href="https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl">https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl</a>
+<a href="https://martin.kleppmann.com/papers/curve25519.pdf">https://martin.kleppmann.com/papers/curve25519.pdf</a>
+<a href="https://rareskills.io/post/elliptic-curves-finite-fields">https://rareskills.io/post/elliptic-curves-finite-fields</a>
+L'équation générale d'une courbe elliptique :</li>
 </ul>
 </blockquote>
-<p>L'équation générale d'une courbe elliptique :</p>
 <div>
 $$
 y^2 + a_1 x \cdot y + a_3 \cdot y= x^3 + a_2\cdot x^2 + a_4\cdot x + a_6
 $$
 </div>
 <p>Avec les $a_i$ pris dans un corps.</p>
-<p>Si on utilise le corps des réels, on peut utiliser l'<a href="https://fr.wikipedia.org/wiki/%C3%89quation_de_Weierstrass">équation de Weierstrass</a> pur simplifier
+<p>Si on utilise le corps des réels, on peut utiliser l'<a href="https://fr.wikipedia.org/wiki/%C3%89quation_de_Weierstrass">équation de Weierstrass</a> pour simplifier
 Forme de Weierstrass :</p>
 <div>
 $$
@@ -120,6 +122,9 @@ $$
 </div>
 <blockquote>
 <p>TBD forme de Weierstrass</p>
+</blockquote>
+<blockquote>
+<p>bernstein : <a href="https://en.wikipedia.org/wiki/Montgomery_curve">https://en.wikipedia.org/wiki/Montgomery_curve</a> bien pour doubler</p>
 </blockquote>
 <p>La courbe utilisée généralement en cryptographie est la <a href="https://fr.wikipedia.org/wiki/Curve25519">Curve25519</a> :</p>
 <div>
@@ -132,8 +137,12 @@ $$
 <blockquote>
 <p>TBD : définition de l'addition sérieusement
 on se place dans le groupe avec l'addition.
+<a href="https://repo.tzku.at/course/cryptography/CryptoAvancee.pdf">https://repo.tzku.at/course/cryptography/CryptoAvancee.pdf</a>
 <a href="https://ritzenth.pages.math.cnrs.fr/web/teaching.html">https://ritzenth.pages.math.cnrs.fr/web/teaching.html</a>
 <a href="https://perso.univ-rennes1.fr/christophe.ritzenthaler/cours/point-counting-ec.pdf">compter les points d'une courbe elliptique</a></p>
+</blockquote>
+<blockquote>
+<p>TBD bernstein [n]P pafile et c'est ce qu'on veut faire.</p>
 </blockquote>
 
 

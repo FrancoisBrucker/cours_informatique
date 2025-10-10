@@ -692,8 +692,7 @@ Vidéos
 </code></pre>
 <pre><code>base64 &lt;/dev/random | head -c 100 ; echo
 </code></pre>
-<pre><code>echo &quot;hasard : &quot;$(base64 &lt;/dev/random 2&gt;/dev/null| head -c 100)
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"hasard : "</span><span class="token variable"><span class="token variable">$(</span>base64 <span class="token operator">&lt;</span>/dev/random <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-c</span> <span class="token number">100</span><span class="token variable">)</span></span></code></pre>
 
 
 </article>
