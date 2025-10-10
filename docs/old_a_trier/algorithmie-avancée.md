@@ -40,14 +40,9 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
   - <https://perso.univ-rennes1.fr/david.lubicz/articles/gda.pdf>
 
 - <https://www.youtube.com/watch?v=iT20A4KQxyM>
-- les décimales de pi :
-  - <https://www.youtube.com/watch?v=FDXf1XxCXAk>
-  - sont aléatoires si tu ne sais pas que c'est elles.
-  - prendre les bits de la représentation binaire des décimales de pi et leur faire passer des tests d'aléatoire.
 - "vrai" aléatoire :
   - Johnson-Nyquist noise.
   - quantum random
-  - humain pas bon pour faire du hasard : <https://www.youtube.com/watch?v=tP-Ipsat90c>
 
 <https://www.youtube.com/watch?v=RcXmhKF9ewo>
 

@@ -128,7 +128,7 @@ Les tentatives de décryptage d'un message chiffré, on parle d'**_attaques_** p
 1. **_chiffres uniquement_** (_Ciphertext-only attackers, COA_). L'attaquant est passif et n'a accès qu'a des textes chiffrés $c$ sans connaître les messages initiaux.
 2. **_messages connus_** (_Known-plaintext attackers, KPA_). L'attaquant est passif et des message ainsi que leurs chiffrement
 3. **_messages choisis_** (_Chosen-plaintext attackers, CPA_). L'attaquant est actif et peut choisir des messages à chiffrer.
-4. **_chiffres choisis_** (_Chosen-ciphertext attackers, CCA_). L'attaquant est actif et peut chiffrer et déchiffrer les message. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.
+4. **_chiffres choisis_** (_Chosen-ciphertext attackers, CCA_). L'attaquant est actif et peut chiffrer et déchiffrer les messages. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.
 
 ### Codes historiques
 

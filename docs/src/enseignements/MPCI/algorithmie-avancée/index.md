@@ -15,9 +15,10 @@ eleventyComputed:
 
 <!-- pour l'année prochaine :
 
-- leur donner des trucs à faire.
+- leur donner des trucs à faire chaque semaine
 - faire les parcours et y retourner à chaque cours
-- faire plus d'algorithmie -->
+- faire plus d'algorithmie avec du code.
+- diminuer la densité. une semaine avec 2h cours et 2h tp et à rendre pour la semaine d'après (code et algo) -->
 
 ## Programme
 

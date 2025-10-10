@@ -44,37 +44,76 @@ Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.
 
 Comme $g$ est un générateur d'un groupe cyclique, on peut donc avoir tout le monde en temps que $g^a$
 
-$ab$ permet bien d'obtenir tout nombre $q$ entre $1$ et $p-1$ car :
+$ab$ permet bien d'obtenir tout nombre $q$ entre $0$ et $p-1$ car :
 
 - soit $q$ n'est pas premier et $q=ab$ avec $a$ et $b$ plus petit que $p$
-- soit $q$ est premier et $p+q$ est pair, donc composé, et il existe $a$ et $b$ plus petit que $p$ tel que $ab = up +q$.
+- soit $q$ est premier et $p+q$ est pair, donc composé, et il existe $a$ et $b$ plus petit que $p$ tel que $ab = p + q$.
 
 ### Problème du logarithme discret
 
+{% lien %}
+<https://fr.wikipedia.org/wiki/Logarithme_discret>
+{% endlien %}
+
 Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficacement, alors que l'exponentiation va très vite.
 
+> TBD <https://fr.wikipedia.org/wiki/Baby-step_giant-step>
+> 
 > TBD taille clé 4096b actuellement
 
-### Utilisation de courbes elliptiques
+> TBD : <https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf> et <https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf>
 
-Un des intérêt du protocole de Diffie-Hellman est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.
-9e14f817a5dbe47f6b9dc5f9eda8822b032a8eae
-> <https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques>
-
-> TBD taille clé 256b actuellement (courbe de Bernstein)
-
-> Renvoyer à [Courbes elliptiques](/cours/misc/courbes-elliptiques){.interne}
-> pour la def et les propriétés basiques d'une courbe elliptique.
-
+> TBD montre l'algo baby step giant step qui fait partie des algos ou on échange du temps contre de la mémoire.
+> 
 ## Attaque
+
+> TBD beaucoup de types d'attaque diff (qui marchent).
+> 
+> TBD algo, authentification, side channel
+
+### Brute force
+
+La meilleure attaque connue est l'attaque brute force en utilisant [l'algorithme du crible général](https://fr.wikipedia.org/wiki/Logarithme_discret#Algorithmes) qui est une méthode de factorisation.
+
+{% lien %}
+<https://github.com/vbsinha/Diffie-Hellman-Attacks?tab=readme-ov-file>
+{% endlien %}
+
+Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations. Comme on en veut au moins $2^{128}$ pour être en sécurité : on préconise au moins 3000b actuellement.
+
+Voir [ce doc p35](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile).
+
+### Man in the middle
+
+> TBD : pb d'authentification
+> faire le dessin.
 
 ### <span id="side-channel-attack"></span>Side channel attack
 
-> TBD expliciter pourquoi square and multiply. Faire un test en python pour mesurer le temps.
-> <https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf>
-> <https://tjerandsilde.no/files/Side_Channel_Attacks.pdf>
 
-[Algorithme square and multiply](/cours/misc/nombres/#exponentiation){.interne} : deux fois plus de travail pour un bit valant 1 que pour un bit valant 0.
+L'exponentiation indienne peut s'écrire de façon binaire en utilisant le principe [MULTIPLY and SQUARE](/cours/misc/nombres/#exponentiation).
+
+```
+expo(x, y):
+  r = 1
+  pour chaque i de 0 à n-1:
+    si y[i] == 1:
+      r = r * x      # MULTIPLY
+    x = x * x        # SQUARE
+  rendre r
+```
+
+On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu'il vaut 0.
+
+> TBD le temps est aussi double puisque c'est des multiplications.
+> dnc si on connait le temps mis pour que des 0 ou que des 1 on sait combien de 1 à la clé.
+>
+> Mais on peut faire mieux en mesurant le courant !
+>
+{% lien %}
+[Algorithmes et simple power analysis](https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf)
+
+{% endlien %}
 
 {% lien %}
 
@@ -84,12 +123,16 @@ Un des intérêt du protocole de Diffie-Hellman est qu'il peut s'écrire sous la
 
 {% endlien %}
 
-### Brute force
+## Utilisation de courbes elliptiques
 
-La meilleure attaque connue est l'attaque brute force en utilisant l'algorithme du [crible général](https://fr.wikipedia.org/wiki/Crible_alg%C3%A9brique) qui est une méthode de factorisation.
+> TBD On a besoin que de l'exposant. Cela peut donc se faire dans tout groupe pas obligé d'être dans Z/pZ.
+> TDB exemple avec courbe elliptique.
 
-{% info %}
-Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations. Comme on en veut au moins $2^{128}$ pour être en sécurité : on préconise au moins 3000b actuellement.
+Un des intérêt du protocole de Diffie-Hellman est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.
 
-Voir [ce doc p35](https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile).
-{% endinfo %}
+> <https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques>
+
+> TBD taille clé 256b actuellement ([courbe de Bernstein](https://fr.wikipedia.org/wiki/Curve25519))
+
+> Renvoyer à [Courbes elliptiques](/cours/misc/courbes-elliptiques){.interne}
+> pour la def et les propriétés basiques d'une courbe elliptique.

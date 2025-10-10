@@ -198,6 +198,8 @@ Calculer $f(m) = m^e \pmod{n}$ (ou $f^{-1}(m)$) se fait par exponentiation modul
 
 ## Attaques
 
+> TBD pollard's rho pour factoriser.
+> 
 > TBD RSA : bien choisir ses clés. Sinon multiplication de Fermat
 
 > TBD attaques : [casser RSA](https://www.youtube.com/watch?v=-ShwJqAalOk)

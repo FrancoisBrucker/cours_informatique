@@ -14,22 +14,38 @@ eleventyComputed:
 
 L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.
 
-Rappelons l'algorithme d'exponentiation indienne qui calcule $x^y$ :
+Rappelons l'[algorithme d'exponentiation indienne](/cours/algorithmie/projet-exponentiation/étude-algorithmique/#algo-rapide) qui calcule $x^y$ :
 
 ```
 expo(x, y):
-
   r = 1
   tant que y n'est pas nul :
     si y est impair:
       y = y - 1
-      r = r * y    # MULTIPLY
+      r = r * x    # MULTIPLY
     sinon:
       x = x * x    # SQUARE
       y = y / 2    
   
   rendre r
 ```
+
+Que l'on peut aussi écrire ainsi :
+
+```
+expo(x, y):
+  r = 1
+  tant que y n'est pas nul :
+    si y est impair:
+      y = y - 1
+      r = r * x      # MULTIPLY
+    x = x * x        # SQUARE
+    y = y / 2    
+  
+  rendre r
+```
+
+Sous la forme précédente on voit bien que tout se passe comme si l'algorithme regardais chaque bit constituant $y$
 
 Nous avons mis en exergue deux lignes (`SQUARE` et `MULTIPLY`, l'algorithme est connu en langue anglaise comme *square and multiply algorithm*). L'astuce pour encore accélérer l'algorithme est de regarder la forme binaire de y. Par exemple supposons que $y = 0b101101$ et suivons l'algorithme pas à pas :
 
@@ -60,7 +76,24 @@ Nous avons mis en exergue deux lignes (`SQUARE` et `MULTIPLY`, l'algorithme est 
    - `MULTIPLY` est exactement égal au nombre de bits à 1 dans $y$
    - `SQUARE` est exactement égal au nombre de bits de $y$
 
-Au final, si $x$ est sur $m$ bits et $y$ sur $n$ bit, $x^y$ aura $2^n\cdot m$ bits.
+Au final, si $x=x_{n-1}\dots x_0$ est sur $m$ bits et $y=y_{n-1}\dots y_0$ sur $n$ bit on a :
+
+```
+expo(x, y):
+  r = 1
+  pour chaque i de 0 à n-1:
+    si y_i == 1:
+      r = r * x      # MULTIPLY
+    x = x * x        # SQUARE
+  rendre r
+```
+
+> TBD exercice pour l'écrire dans l'autre sens voir <https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf>
+
+## <span id="logarithme-discret">Logarithme discret
+
+> TBD
+> TBD algo de résolution puis comment voir ça comme un problème de factorisation.
 
 ## Algorithme d'Euclide Étendu
 

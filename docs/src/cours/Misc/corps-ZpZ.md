@@ -38,9 +38,7 @@ Si $p$ est premier, $(\mathbb{Z}/p\mathbb{Z}, +, \cdot)$ est un corps commutatif
 
 ## <span id="groupe-cyclique"></span>Groupe cyclique
 
-Si $n$ est premier $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un [groupe cyclique](https://fr.wikipedia.org/wiki/Groupe_cyclique).
-
-> TBD
+Si $n$ est premier $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un [groupe cyclique](https://fr.wikipedia.org/wiki/Groupe_cyclique), c'est à dire qu'il existe un entier $1\leq g\leq p-1$ tel que pour tout en entier $0\leq b\leq p-1$, il existe $k$ tel que $b = g^k \bmod p$.
 
 ## <span id="exponentiation-modulaire">Exponentiation modulaire
 
@@ -54,15 +52,13 @@ L'idée est de faire le modulo à chaque étape de l'exponentiation indienne :
 
 ```
 expo(x, y):
-
   r = 1
   tant que y n'est pas nul :
     si y est impair:
       y = y - 1
-      r = r * y  mod n
-    sinon:
-      x = x / 2
-      y = y * y  mod n
+      r = r * x  mod n    # MULTIPLY
+    x = x * x    mod n    # SQUARE
+    y = y / 2    
   
   rendre r
 ```

@@ -160,6 +160,8 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
+<!-- carré latin. Avec preuve et code. -->
+
 <!-- Un projet qui utilise (presque) tout ce qu'on a vu jusqu'à présent, et en particulier les couplages :
 
 {% aller %}

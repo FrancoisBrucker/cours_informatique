@@ -462,7 +462,7 @@ Vidéos
 ## Exercice
 
 > TBD en faire des petits commandes à suivre.
- 
+
 On aura besoin de tout ce qu'on a appris
 
 ```
@@ -485,6 +485,6 @@ base64 </dev/random 2>/dev/null | head -c 100
 base64 </dev/random | head -c 100 ; echo
 ```
 
-```
+```shell
 echo "hasard : "$(base64 </dev/random 2>/dev/null| head -c 100)
 ```
