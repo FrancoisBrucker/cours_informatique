@@ -100,7 +100,24 @@ Cette méthode permet de formaliser :
 
 C'est cette dernière notion que nous allons maintenant formaliser.
 
+{% attention "**À retenir**" %}
+
+1. un adversaire motivé et ayant du temps pourra toujours décrypter un message
+2. on peut être en sécurité assez longtemps si la seule attaque possible est l'attaque brute force
+3. La méthode de chiffrement utilisée doit être rapide : c'est un algorithme efficace
+
+Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.
+
+{% endattention %}
+
 ## <span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée
+
+{% lien %}
+
+- [semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
+- [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function)
+
+{% endlien %}
 
 Commençons par définir une fonction négligeable :
 
@@ -142,7 +159,18 @@ Classiquement ceci se formalise par la modélisation sous la forme d'un jeu.
 
 ### <span id="jeu-reconnaissance"></span>Jeu de la reconnaissance
 
-Soient $D_i: \mathcal{U} \to [0, 1]$ pour $i \in \\{0, 1\\}$ deux lois de distribution. On cherche à distinguer si un élément de $\mathcal{U}$ a été tiré selon la loi $D_0$ ou $D_1$.
+{% lien %}
+[Indistinguabilité calculatoire](https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire)
+{% endlien %}
+
+La confidentialité peut s'écrire sous la forme d'un _jeu_ à deux joueurs :
+
+- un **_adversaire_** qui essaie de trouver une information
+- un **_testeur_** qui fournit des données à l'adversaire.
+
+L'adversaire doit choisir parmi deux réalisations, la première issue d'une variable aléatoire $x \xleftarrow{D0} \\{0, 1\\}^t$ et la seconde de la variable aléatoire $x \xleftarrow{D1} \\{0, 1\\}^t$. 
+
+Le schéma du jeu est alors le suivant :
 
 ```
 
@@ -155,9 +183,20 @@ Soient $D_i: \mathcal{U} \to [0, 1]$ pour $i \in \\{0, 1\\}$ deux lois de distri
     ---------                            ------------
 ```
 
+Et se déroule ainsi :
+
+1. un bit $b \in \\{0, 1\\}$ est fournit au testeur choisi de façon uniforme
+2. selon $b$ choisit soit une réalisation de $x \xleftarrow{D0} \\{0, 1\\}^t$ soit de $x \xleftarrow{D1} \\{0, 1\\}^t$
+3. le testeur envoie $x$ à l'adversaire
+4. l'adversaire répond un bit $b'$, résultat d'un algorithme efficace (_ie._ polynomial)
+5. l'adversaire :
+   - gagne si $b = b'$
+   - perd si $b \neq b'$
+
+
 Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la suite générée par notre méthode de chiffrement est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences.
 
-L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que `A(E(k,mb))=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
+L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que `A(x)=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
 {% note "**Définition**" %}
 L'avantage $\epsilon(A)$ pour l'adversaire $A$ dans un jeu est défini tel que :
@@ -173,51 +212,76 @@ $$
 Si l'adversaire $A$ n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon(A) = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon(A) = 1$.
 
 
-Pour se fixer les idée commençons par un petit exercice :
-{% exercice %}
-Montrez que l'on peut distinguer la loi uniforme sur $\\{0, 1\\}^n$ de la fonction constante $F(x) = \mathbb{0}$ avec un avantage non négligeable.
-{% endexercice %}
-{% details "preuve" %}
-Comme :
+Pour se fixer les idée commençons par un exemple. On suppose que l'on cherche à différentier deux mots de $\\{0, 1\\}^t$, le premier issu a distribution constante de réalisation $\mathbb{0}$ ($D0$), le second d'une loi uniforme ($D1$). Comme :
 
-- la probabilité d'obtenir n'importe quel mot de $\\{0, 1\\}^n$ vaut $1/2^n$ pour la loi uniforme,
+- la probabilité d'obtenir n'importe quel mot de $\\{0, 1\\}^t$ vaut $1/2^t$ pour la loi uniforme,
 - la probabilité d'obtenir $\mathbb{0}$ vaut 1 pour la fonction constante
 
-Le meilleur algorithme va :
+On peut utiliser l'algorithme efficace $A$ suivant :
 
-- répondre la fonction constante si le mot en entrée vaut $\mathbb{0}$
-- répondre la fonction uniforme sinon
+- $A(x)=0$ si $x=\mathbb{0}$
+- $A(x)=1$ sinon
 
-En supposant sans perte de généralité que si $b=0$ le testeur va rendre la fonction constante, l'avantage de cet algorithme vaut :
+Dont l'avantage vaut :
 
 <div>
 $$
 \begin{array}{lcl}
-\epsilon(A) &=& |\Pr[x \neq \mathbb{0} \;\mid\; b=1] - \Pr[x \neq \mathbb{0} \;\mid\; b=0]|\\
-&=&|1-1/2^n - 0|\\
+\epsilon(A) &=& |\Pr[x \neq \mathbb{0} \;\mid\; b=1] + \Pr[x = \mathbb{0} \;\mid\; b=0] - 1|\\
 \end{array}
 $$
 </div>
 
-{% enddetails %}
-
-
-
-
-
-
-
-L'avantage de l'adversaire est, comme pour le jeu du chiffrage, défini tel que :
+Comme la seule façon de se tromper si $b=1$ est lorsque le mot $\mathbb{0}$ est tiré avec une probabilité $1/2^t$ et que l'on ne se trompe jamais si $b=0$ on a :
 
 <div>
 $$
-\epsilon(A) \coloneqq \Pr[b'=1 \;\mid\; b=1] - \Pr[b'=1 \;\mid\; b=0]
+\begin{array}{lcl}
+\epsilon(A) &=& |\Pr[x \neq \mathbb{0} \;\mid\; b=1] + \Pr[x = \mathbb{0} \;\mid\; b=0] - 1|\\
+&=& | (1-1/2^t) + 1 - 1\\
+&=& 1-1/2^t\\
+\end{array}
 $$
 </div>
 
+On est presque toujours assuré de gagner !
+
+Le corollaire ci-après montre que l'avantage est également la différence entre gagner ou perdre en choisissant tout le temps $D0$ ou $D1$. C'est cette définition que nous utiliserons dans tous les autres jeux que nous définirons :
+
+{% note "**Corollaire**" %}
+Si $D0$ est traité de façon équivalente à $D1$ dans l'algorithme, on a :
+
+<div>
+$$
+\epsilon(A) = \vert \Pr[b' = 1 \;\mid\; b = 1] - \Pr[b' = 1 \;\mid\; b = 0] \vert = \vert \Pr[b' = 0 \;\mid\; b = 0] - \Pr[b' = 0 \;\mid\; b = 1] \vert
+$$
+</div>
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+<div>
+$$
+1/2\cdot \Pr[b'=0 \;\mid\; b=0] + 1/2\cdot \Pr[b'=1 \;\mid\; b=1] +1/2\cdot  \Pr[b'=0 \;\mid\; b=1] + 1/2\cdot \Pr[b'=1 \;\mid\; b=0]  = 1
+$$
+</div>
+
+La probabilité de gagner vaut $\Pr[b'=b] = 1/2\cdot \Pr[b'=0 \\;\mid\\; b=0] + 1/2\cdot \Pr[b'=1 \\;\mid\\; b=1] = 1/2 +\epsilon(A)/2$ et la proba de perdre $1/2 - \epsilon(A)/2$
+Du coup :
+
+<div>
+$$
+\Pr[b'=1 \;\mid\; b=1] - \Pr[b'=0 \;\mid\; b=1] + \Pr[b'=0 \;\mid\; b=0] - \Pr[b'=1 \;\mid\; b=0] = 2\cdot \epsilon(A)
+$$
+</div>
+
+Si $D0$ et $D1$ sont équivalent (l'algorithme répond le contraire si on inverse les deux distributions) on a $\Pr[b'=1 \\;\mid\\; b=1] - \Pr[b'=1 \\;\mid\\; b=0] = \Pr[b'=0 \\;\mid\\; b=0] - \Pr[b'=0 \\;\mid\\; b=1]$ ce qui conclut la preuve.
+
+{% enddetails %}
+
 Les deux lois seront dites :
 
-- **_équivalentes_** si $D_0 = D_1$ : on ne peut les distinguer
+- **_équivalentes_** si $D0 = D1$ : on ne peut les distinguer
 - **_statistiquement sécurisés_** si le meilleur algorithme de reconnaissance ne peut obtenir qu'un avantage négligeable
 - **_sémantiquement sécurisés_** si le meilleur algorithme **efficace** de reconnaissance ne peut obtenir qu'un avantage négligeable
 
@@ -232,28 +296,186 @@ Pour ce jeu il est facile de formaliser le meilleur algorithme possible permetta
 - Programme :
   1. calculer la probabilité p0 d'obtenir x selon la loi D0
   2. calculer la probabilité p1 d'obtenir x selon la loi D1
-  3. si p0 ≥ p1 rendre 0, sinon rendre 1
+  3. si p0 > p1 rendre 0, sinon rendre 1
 
 Si son avantage est négligeable, tous les adversaires, qu'ils soient efficaces ou non, n'auront également qu'un avantage négligeable.
 
 {% endnote %}
 
+### Jeu du chiffrement
+
+Si l'on cherche à prouver qu'une méthode de chiffrement est sémantiquement sécurisée, on peut utiliser le jeu suivant qui simule des attaques par messages choisis (_Chosen-plaintext attackers, CPA_). Si notre méthode de chiffrement y résiste elle sera également robuste pour les attaques plus faible par message connu ou chiffre uniquement.
+
+Le jeu consiste alors en 6 étapes :
+
+1. le testeur choisit uniformément une clé $k$
+2. un bit $b \in \\{0, 1\\}$ est fournit au testeur choisi de façon uniforme
+3. l'adversaire **choisit** deux messages $m_0$ et $m_1$ de même taille à donner au testeur
+4. le testeur renvoie à l'adversaire $E(k, m_b)$
+5. l'adversaire répond un bit $b'$
+6. l'adversaire :
+   - gagne si $b = b'$
+   - perd si $b \neq b'$
+
+```
+     testeur                      adversaire
+    ---------        m0, m1      ------------
+ b  |       | <----------------- |          |  A(c) = b'
+--->|   k   |    E(k,mb) = c     |          | -------------------->
+    |       | -----------------> |          |
+    ---------                    ------------
+```
+
+Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance puisque l'on cherche à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_1)$ lorsque $k$ est distribué de façon uniforme. Ce type d'attaque, bien qu'elle ne permet pas de déchiffrer les messages permet tout de même d'avoir des informations sur le type de message chiffré, par exemple si la réponse est positive (`m0 = "oui"`) ou négative (`m1 = "non"`). 
+
+Par exemple supposons que nous chiffrons/déchiffrons nos messages avec l'algorithme de Vigenère et que l'on chiffre des messages avec des clés de longueur $\vert k \vert\ = 2$. L'adversaire pourrait choisir `m0 = "aa"` et `m1 = "ab"` et décider de répondre 1 si `c[1] ≠ c[0]`. L'avantage de cet algorithme va être énorme puisque :
+
+- $\Pr[b' = 1 \\;\mid\\; b = 1] = 1- \Pr[b' = 0 \\;\mid\\; b = 1]$. On ne peut répondre $b'=0$ alors que $b=1$ que si la lettre $a$ se chiffre avec la même lettre que $b$ ce qui arrive 26 fois (choisir la première lettre de $k$ entraîne sa deuxième). Donc $\Pr[b' = 1 \\;\mid\\; b = 1] = 1- 26/26^2 = 1-1/26$
+- $\Pr[b' = 0 \\;\mid\\; b = 0] = 1$ on ne se trompe jamais si c'est `m0` qui est encodé.
+
+Pour notre algorithme on a donc un avantage de $\epsilon(A) = 1-1/26 \geq 95\\%$ ce qui est très bon ! Attention, cela ne veut pas dire que le chiffrement de Vigenère est mauvais, juste que connaître la taille de la clé permet de reconnaître le chiffrement de messages connus.
 
 
+Puisque l'adversaire peut choisir les 2 mots, il va prendre ceux ayant statistiquement le plus de différence : un avantage nul signifie que tous les mots sont équivalents :
+
+{% exercice %}
+Montrer que tout adversaire ne peut avoir un avantage différent de 0 au au jeu du chiffrement utilisant le chiffre le Vernam.
+{% endexercice %}
+{% details "corrigé" %}
+<div>
+$$
+\vert \Pr[b' = 1 \;\mid\; b = 1] - \Pr[b' = 1 \;\mid\; b = 0] \vert = \vert \Pr[A(k\oplus m_1) = 1] - \Pr[A(k\oplus m_0) = 1] \vert
+$$
+</div>
+
+Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $\Pr[A(U) = 1] = \Pr[A(k\oplus m_1) = 1] = \Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.
+{% enddetails %}
 
 
+## Construction de méthode de chiffrement
+
+Les méthodes sémantiquement sécurisées permettent construire une méthode de chiffrement bloc par bloc : si chaque bloc est sémantiquement sécurisé l'ensemble le sera aussi. Illustrons le en montrant que l'on peut créer un chiffre de Vernam sémantiquement sécurisé en partant d'un générateur de nombre aléatoire biaisé, du moment que le biais est négligeable.
+
+Soit la distribution de Bernoulli biaisée $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^t$ la distribution sur $\\{0, 1\\}^t$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme $U$. L'avantage d'un algorithme permettant de discriminer les deux distribution est alors :
+
+### Étape 1 : génération de la clé
+
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=&| \Pr[b'=1 \;\mid\; b=1] - \Pr[b'=1 \;\mid\; b=0] | \\
+\end{array}
+$$
+</div>
+
+Le meilleur algorithme, appelons-le $A$, permettant de distinguer $B^t$ et $U$ va répondre $B^t$ si $B^t(x) > (1/2)^t$ et $U$ sinon. On ne suppose pas que cet algorithme soit efficace. Si $b=1$ signifie choisir la distribution de Bernoulli biaisée alors :
+
+<div>
+$$
+\begin{array}{lcl}
+\Pr[b'=1 \;\mid\; b=1] &=&\sum_{x\in \{0, 1\}^t}(Pr[A(x)=1 ]\cdot B^t(x)) \\
+&=& \sum_{x\in \{0, 1\}^t}\delta(x)\cdot B^t(x) \\
+\end{array}
+$$
+</div>
+
+Où $\delta(x) = 1$ si $B^t(x) > (1/2)^t$ et $0$ sinon. De là :
+
+<div>
+$$
+\begin{array}{lcl}
+\Pr[b'=1 \;\mid\; b=0] &=& 1 - \Pr[b'=0 \;\mid\; b=0]\\
+&=&1- \sum_{x\in \{0, 1\}^t}(Pr[A(x)=0 ]\cdot (1/2)^t) \\
+&=&1- \sum_{x\in \{0, 1\}^t}(1-\delta(x))\cdot (1/2)^t \\
+\end{array}
+$$
+</div>
+
+Et donc :
+
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \sum_{x\in \{0, 1\}nt}[\delta(x)(B^t(x) + (1-\delta(x))\cdot (1/2)^t)] - 1 \\
+&=&  \sum_{x\in \{0, 1\}^t}\max((1/2)^t, B^t(x)) - 1
+\end{array}
+$$
+</div>
+
+En utilisant le fait que $\max(a, b) = \frac{1}{2}\cdot (a+b+|b-a|)$ on obtient :
+
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |
+\end{array}
+$$
+</div>
+
+Une autre astuce nous permet d'écrire tout cela de façon plus simple. On a en effet :
+
+<div>
+$$
+\begin{array}{lcl}
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&=&\frac{1}{2}\sum_{x\in \{0, 1\}^t}|\sum_\limits{0 < i \leq n}((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}((1/2)^{n-i}B^{i-1}(x))| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&n\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(1/2-B(x))\\
+&\leq&\frac{n}{2}\epsilon
+\end{array}
+$$
+</div>
+
+Si $\epsilon$ est négligeable, la génération d'éléments de $\\{0, 1\\}^t$ l'est aussi.
+
+### Étape 2 : chiffrement
+
+On peut utiliser ce qui précède pour créer un chiffrement statistiquement sécurisé en utilisant un chiffre de Vernam avec notre générateur aléatoire. Montrons que si $U$ est la loi uniforme sur $\\{0, 1\\}^t$ et $m$ un élément de $\\{0, 1\\}^t$, alors la loi de distribution associée à la variable aléatoire $(x \xleftarrow{B^t} \\{0, 1\\}^t) \oplus m$ est sémantiquement sécurisé. 
+
+Soit $C^t$ la loi de distribution associée à la variable aléatoire $(x \xleftarrow{B^t} \\{0, 1\\}^t) \oplus m$. Tout comme précédemment, le meilleur algorithme a comme avantage :
+
+<div>
+$$
+\begin{array}{lcl}
+A &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - C^t(x) |
+\end{array}
+$$
+</div>
+
+La même astuce consistant à décomposer $x=x_1\dots x_t$ et $m=m_1\dots m_t$ en indices donne :
+
+<div>
+$$
+\begin{array}{lcl}
+A &\leq&\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}\sum_i(1/2-C_i(x_i))\\
+  &\leq&\sum_i\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(1/2-C_i(x_i))
+\end{array}
+$$
+</div>
+
+Où $C_i(x_i)$ est la loi de distribution de $(x \xleftarrow{B} \\{0, 1\\}^t)\oplus m_i$.
+
+Ceci donne $A\leq \frac{n}{2}\epsilon$ qui est négligeable si $\epsilon$ l'est.
+
+### Étape 3 : jeu de la reconnaissance
+
+On en conclut que si $m_1$ et $m_2$ sont deux éléments de $\\{0, 1\\}^t$ alors les lois de distributions associées aux variables aléatoires $(x \xleftarrow{B^t} \\{0, 1\\}^t) \oplus m_1$ et $(x \xleftarrow{B^t} \\{0, 1\\}^t) \oplus m_2$ sont statistiquement sécurisées. En effet en notant $C^t$ et $D^t$ les lois de distributions associées à $(x \xleftarrow{B^t} \\{0, 1\\}^t) \oplus m_1$ et $(x \xleftarrow{B^t} \\{0, 1\\}^t) \oplus m_2$, on aura :
+
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| D^t(x) - C^t(x) |\\
+&=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| D^t(x) -(1/2)^t + (1/2)^t - C^t(x) |\\
+\epsilon(A) &\leq& \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - C^t(x) | + \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - D^t(x) |\\
+&\leq& {n}\cdot\epsilon
+\end{array}
+$$
+</div>
+
+### Conclusion
+
+Si on fait bien les choses (on verra qu'on peut se tromper si on ne fait pas attention), on peut construire une méthode de chiffrement sémantiquement sécurisée en chaînant des blocs de biais négligeable, tout comme en algorithmie une composition d'algorithmes  de complexités polynomiales reste polynomiale.
+
+Ceci va être utilisé intensivement par la suite où l'on construira chaque bloc de la méthode de chiffrement indépendamment les une des autres : si chaque bloc ne donne qu'un avantage négligeable toute la chaîne également.
 
 
-Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance ci-dessous (on chercher à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_1)$ lorsque $k$ est distribué de façon uniforme).
-
-
-{% lien %}
-[Indistinguabilité calculatoire](https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire)
-{% endlien %}
-
-{% lien %}
-
-- [semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
-- [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function)
-
-{% endlien %}

@@ -134,6 +134,8 @@ Même si on s'autorise théoriquement des algorithmes polynomiaux, en pratique, 
 
 Ces deux contraintes vont forcément nous faire passer des informations à l'adversaire. Selon le type d'information que l'on ne veut pas divulguer on va utiliser une méthode plutôt qu'une autre.
 
+> TBD ici sécurisation.
+
 > TBD CPRNG -> permutation
 > TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)
 
