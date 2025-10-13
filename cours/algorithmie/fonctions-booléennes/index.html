@@ -117,8 +117,8 @@ $$
 </div>
 <blockquote>
 <p>TBD exemple de la projection</p>
-</blockquote>
 <p>Et une <strong><em>fonction booléenne vectorielle</em></strong> est une fonction booléenne qui rend un vecteur :</p>
+</blockquote>
 <div>
 $$
 f: \{0, 1\}^n \rightarrow \{0, 1\}^m
@@ -135,12 +135,12 @@ $$
 <p>Il y a 4 fonctions différentes dont l'entrée est réduite à 1 bit :</p>
 <ul>
 <li>la fonction identité définie telle que $id(x) = x$ pour tout $x$,</li>
-<li>la fonction $\mathbb{1}$ définie telle que $\mathbb{1}(x) = 1$  pour tout $x$,</li>
-<li>la fonction $\mathbb{0}$ définie telle que $\mathbb{0}(x) = 0$  pour tout $x$,</li>
+<li>la fonction $\mathbb{1}$ définie telle que $\mathbb{1}(x) = 1$ pour tout $x$,</li>
+<li>la fonction $\mathbb{0}$ définie telle que $\mathbb{0}(x) = 0$ pour tout $x$,</li>
 <li>la fonction négation définie telle que $\text{NOT}(0) = \neg 0 = \overline{0} = 1$ et $\text{NOT}(1) = \neg 1 = \overline{1} = 0$</li>
 </ul>
 <h4>Fonctions à deux bits</h4>
-<p>On les décrit avec leurs  On les représentent via leurs <a href="https://fr.wikipedia.org/wiki/Table_de_v%C3%A9rit%C3%A9">tables de vérité</a> :</p>
+<p>On les décrit avec leurs On les représentent via leurs <a href="https://fr.wikipedia.org/wiki/Table_de_v%C3%A9rit%C3%A9">tables de vérité</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -152,7 +152,6 @@ $$
 <table>
 <thead>
 <tr>
-<th style="text-align:center"></th>
 <th style="text-align:center"></th>
 <th style="text-align:center">OU</th>
 <th style="text-align:center">ET</th>
@@ -166,7 +165,6 @@ $$
 <th style="text-align:center">XOR(x, y)</th>
 </tr>
 <tr>
-<th style="text-align:center"></th>
 <th style="text-align:center"></th>
 <th style="text-align:center">$x \lor y$</th>
 <th style="text-align:center">$x \land y$</th>
@@ -480,11 +478,11 @@ $$
 </div>
 </details>     
 </div>
-<p>Fun fact, cela fonctionne aussi avec une autre fonction  :</p>
+<p>Fun fact, cela fonctionne aussi avec une autre fonction :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que l'on peut expliciter la fonction  $\text{NAND}(x, y)$ avec la fonction $\text{NOR}(x, y) \coloneqq \overline{x \lor y}$.</p>
+<p>Montrer que l'on peut expliciter la fonction $\text{NAND}(x, y)$ avec la fonction $\text{NOR}(x, y) \coloneqq \overline{x \lor y}$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -683,7 +681,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Toute fonction booléenne vectorielle est calculable en  $\mathcal{O}(1)$ par un pseudo-code n'utilisant que la fonction $\text{NAND}$.</p>
+<p>Toute fonction booléenne vectorielle est calculable en $\mathcal{O}(1)$ par un pseudo-code n'utilisant que la fonction $\text{NAND}$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -852,13 +850,13 @@ $$
 
     <span class="token keyword">si</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
-    
+
     <span class="token keyword">rendre</span> y</code></pre>
 </div>
 </details>     
 </div>
 <h4>Opposé</h4>
-<p>Pour gérer les nombres négatifs, on utilise <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a>, qui revient à  travailler modulo $2^n$.</p>
+<p>Pour gérer les nombres négatifs, on utilise <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a>, qui revient à travailler modulo $2^n$.</p>
 <p>Pour un tableau de bit $x$ on notera :</p>
 <div>
 $$
@@ -1118,10 +1116,10 @@ $$
 
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> y<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    
+
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         z<span class="token punctuation">[</span>i <span class="token operator">+</span> y<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    
+
     <span class="token keyword">rendre</span> z</code></pre>
 <p>La <strong>concaténation</strong> des $n$ bits de $x$ aux $n'$ bits de $y$.</p>
 <div>
@@ -1132,8 +1130,8 @@ $$
 <h4>Shift</h4>
 <p>On décale les bits vers la gauche ou la droite selon la représentation binaire sans changer le nombre total de bit (les bit qui arrivent sont à 0) :</p>
 <ul>
-<li>$x &lt;&lt; k$ : <em><strong>shift</strong></em> de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)</li>
-<li>$x &gt;&gt; k$ : <em><strong>shift</strong></em> de $k$ bit vers la droite. Les $k$ bits de poids forts sont des $0$ (identique à une division entière par $2^k$)</li>
+<li>$x &lt;&lt; k$ : <strong><em>shift</em></strong> de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)</li>
+<li>$x &gt;&gt; k$ : <strong><em>shift</em></strong> de $k$ bit vers la droite. Les $k$ bits de poids forts sont des $0$ (identique à une division entière par $2^k$)</li>
 </ul>
 <p>Ainsi : $0b1101 &lt;&lt; 3 = 0b1000$ et $0b1101 &gt;&gt; 2 = 0b0011$</p>
 <p>Formellement :</p>
@@ -1152,7 +1150,7 @@ $$
     z<span class="token punctuation">[</span><span class="token punctuation">:</span>k<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>k <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur <span class="token operator">-</span> k<span class="token punctuation">[</span><span class="token punctuation">:</span>
         z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x<span class="token punctuation">[</span>i <span class="token operator">-</span> k<span class="token punctuation">]</span>
-    
+
     <span class="token keyword">rendre</span> z
 
 <span class="token builtin">algorithme</span> <span class="token function">RSHIFT</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
@@ -1161,7 +1159,7 @@ $$
     z<span class="token punctuation">[</span><span class="token operator">-</span>k<span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> k<span class="token punctuation">[</span><span class="token punctuation">:</span>
         z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span>
-    
+
     <span class="token keyword">rendre</span> z</code></pre>
 <p>Notez que nous nous sommes autorisé l'abus de notation en utilisant des paramètres entiers. En toute logique l'algorithme <code class="language-">LSHIFT</code> devrait être :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">LSHIFT</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
@@ -1170,13 +1168,13 @@ $$
     z<span class="token punctuation">[</span><span class="token punctuation">:</span>u<span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>u<span class="token punctuation">(</span>k<span class="token punctuation">)</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur <span class="token operator">-</span> k<span class="token punctuation">[</span><span class="token punctuation">:</span>
         z<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x<span class="token punctuation">[</span>i <span class="token operator">-</span> u<span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">]</span>
-    
+
     <span class="token keyword">rendre</span> z</code></pre>
 <p>Cela alourdi cependant les notations sans gain de généralité.</p>
 <h4>rotation</h4>
 <ul>
-<li>$x &lt;&lt;&lt; k$  : <em><strong>rotation</strong></em> de $k$ bit vers la gauche.</li>
-<li>$x &gt;&gt;&gt; k$  : <em><strong>rotation</strong></em> de $k$ bit vers la droite.</li>
+<li>$x &lt;&lt;&lt; k$ : <strong><em>rotation</em></strong> de $k$ bit vers la gauche.</li>
+<li>$x &gt;&gt;&gt; k$ : <strong><em>rotation</em></strong> de $k$ bit vers la droite.</li>
 </ul>
 <p>Ainsi : $0b1101 &lt;&lt;&lt; 3 = 0b1110$ et $0b1101 &gt;&gt;&gt; 2 = 0b0111$</p>
 <p>Formellement :</p>
@@ -1279,7 +1277,7 @@ $$
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> AND<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># x[i] == 1</span>
             <span class="token keyword">rendre</span> <span class="token number">0</span>
-    
+
     <span class="token keyword">rendre</span> <span class="token number">1</span>
 
 <span class="token builtin">algorithme</span> <span class="token function">GRAND</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -1287,7 +1285,7 @@ $$
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> XOR<span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span><span class="token operator">-</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># x[i] != y[i]</span>
             <span class="token keyword">rendre</span> x<span class="token punctuation">[</span><span class="token operator">-</span>i<span class="token punctuation">]</span>
-    
+
     <span class="token keyword">rendre</span> <span class="token number">0</span>
 </code></pre>
 <div>
@@ -1302,7 +1300,7 @@ x \geq y &\coloneqq& (y \leq x)\\
 \end{array}
 $$
 </div>
-<h3>Arithmétique</h3>
+<h3><span id="arithmétique"></span>Arithmétique</h3>
 <p>Nous allons donner ici les complexité par rapport à la taille des entrées, c'est à dire des tableaux de bits correspondant à des entiers.</p>
 <h4>Somme</h4>
 <p>Sur deux entiers non signés</p>
@@ -1319,20 +1317,20 @@ $$
 </code></pre>
 <p>L'algorithme est alors le suivant (on en a déjà vu une version lorsque l'<a href="../probl%C3%A8mes-NP/#algorithme-somme_binaire">on a étudié les problèmes NP</a>, ici on va le considéré modulo la taille des entrées) c'est à dire que l'addition de $0b100101$ et $0b011011$ donnera : $0b000000$. On utilise aussi les fonctions booléennes à 1 bit définies précédemment pour un résultat compact :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
-    
+
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     r <span class="token operator">←</span> <span class="token number">0</span>
 
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         z<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> XOR<span class="token punctuation">(</span>XOR<span class="token punctuation">(</span>r<span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        r <span class="token operator">←</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>r<span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
-               AND<span class="token punctuation">(</span>OR<span class="token punctuation">(</span>r<span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+        r <span class="token operator">←</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>r<span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+               AND<span class="token punctuation">(</span>OR<span class="token punctuation">(</span>r<span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
                    y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> z</code></pre>
 <p>Sa complexité est bien linéaire puisque les fonction utilisées sont toutes de complexité $\mathcal{O}(1)$.</p>
 <p>Terminons cette partie en montrant que l'on peut récrire cet algorithme uniquement avec des fonctions <code>NAND</code> sans changer sa complexité. Pour cela commençons par ne mettre qu'une seule instruction par ligne :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> somme'<span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
-    
+
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     r <span class="token operator">←</span> <span class="token number">0</span>
 
@@ -1340,17 +1338,17 @@ $$
         a <span class="token operator">←</span> r
         b <span class="token operator">←</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         c <span class="token operator">←</span> XOR<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
-        
+
         a <span class="token operator">←</span> c
         b <span class="token operator">←</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         c <span class="token operator">←</span> XOR<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
-        
+
         z<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> c
 
         a <span class="token operator">←</span> r
         b <span class="token operator">←</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         c <span class="token operator">←</span> OR<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
-        
+
         a <span class="token operator">←</span> c
         b <span class="token operator">←</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         c <span class="token operator">←</span> AND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
@@ -1368,7 +1366,7 @@ $$
     <span class="token keyword">rendre</span> z</code></pre>
 <p>Puis à remplacer les fonctions logiques par leur pendant avec <code>NAND</code> pour définir notre algorithme <code class="language-">PLUS</code>:</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">PLUS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
-    
+
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     r <span class="token operator">←</span> <span class="token number">0</span>
 
@@ -1376,17 +1374,17 @@ $$
         a <span class="token operator">←</span> r
         b <span class="token operator">←</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         c <span class="token operator">←</span> NAND<span class="token punctuation">(</span>NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        
+
         a <span class="token operator">←</span> c
         b <span class="token operator">←</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         c <span class="token operator">←</span> NAND<span class="token punctuation">(</span>NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        
+
         z<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> c
 
         a <span class="token operator">←</span> r
         b <span class="token operator">←</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         c <span class="token operator">←</span> NAND<span class="token punctuation">(</span>NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">,</span> NAND<span class="token punctuation">(</span>b<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        
+
         a <span class="token operator">←</span> c
         b <span class="token operator">←</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         c <span class="token operator">←</span> NAND<span class="token punctuation">(</span>NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">,</span> NAND<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -1446,8 +1444,8 @@ $$
        100101  = 100101 * 1
       100101   = 100101 * 1
      000000    = 100101 * 0
-    100101     = 100101 * 1    
-   000000      = 100101 * 0      
+    100101     = 100101 * 1
+   000000      = 100101 * 0
 + 000000       = 100101 * 0
 ------------
   00110010111
@@ -1459,16 +1457,16 @@ $$
 ---------
     100101
     00101
-    0000   
+    0000
     101
     00
-+   0 
++   0
 --------
     10111
 </code></pre>
 <p>On obtient l'algorithme suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">FOIS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span>
-    
+
     z <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     z<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
 
@@ -1477,8 +1475,8 @@ $$
         <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>k <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
             a <span class="token operator">←</span> AND<span class="token punctuation">(</span>y<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
             z<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> XOR<span class="token punctuation">(</span>XOR<span class="token punctuation">(</span>r<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">,</span> z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            r <span class="token operator">←</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>r<span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> 
-                   AND<span class="token punctuation">(</span>OR<span class="token punctuation">(</span>r<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">,</span> 
+            r <span class="token operator">←</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>r<span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                   AND<span class="token punctuation">(</span>OR<span class="token punctuation">(</span>r<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">,</span>
                           z<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> z</code></pre>
 <p>La complexité de l'algorithme est en $\mathcal(O)(n^2)$ et on a :</p>
@@ -1504,26 +1502,26 @@ $$
 <p>On utilise la <a href="https://fr.wikipedia.org/wiki/Division_pos%C3%A9e">division posée</a>. Les nombres binaires simplifient grandement le calcul car il suffit de faire des soustractions.</p>
 <p>La complexité de l'algorithme est en $\mathcal(O)(n^2)$.</p>
 <pre><code>  100101 | 001011
-  -------|-----  
+  -------|-----
          | 000011
-  1      | ^  
+  1      | ^
   10     |  ^
-  100    |   ^ 
+  100    |   ^
   1001   |    ^
-  10010  |     
+  10010  |
  - 1011  |     ^
  ------  |     |
-    111  |     | 
-    1111 |     | 
+    111  |     |
+    1111 |     |
   - 1011 |      ^
   ------ |      |
-    0100 |      | 
+    0100 |      |
 </code></pre>
 <p>On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \bmod 0b1011 = 100$</p>
 <p>$37 / 11 = 3$ et $37 \bmod 11 = 4$</p>
 <p>Ci après une version non signée :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
-<span class="token builtin">algorithme</span> <span class="token function">FOIS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> 
+<span class="token builtin">algorithme</span> <span class="token function">FOIS</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">:</span> n<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
     q <span class="token operator">←</span> tableau de <span class="token builtin">bit</span> de taille x<span class="token punctuation">.</span>longueur
     q<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>

@@ -96,7 +96,7 @@
     
   
 
-  <p>En analysant 4 codes historiques, on verra quelques concepts utile pour l'analyse.</p>
+  <p>En analysant 3 codes historiques, on verra quelques concepts utile pour l'analyse.</p>
 <h2>Code de césar</h2>
 <h3><span id="César-chiffre"></span>Chiffrement</h3>
 <p>Chaque lettre est décalée dans l'alphabet :</p>
@@ -446,7 +446,7 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 </div></div>
 
 <p>On voit que le décryptage d'un texte peut prendre des voies détournées. Il ne faut <strong>jamais</strong> sous-estimer l'intelligence et l'inventivité de l'adversaire : il est nécessaire en sécurité et en cryptographie de se munir d'outils théorique permettant de garantir et de démontrer la sécurité d'un système de chiffrement.</p>
-<h3>One time Pad (OTP)</h3>
+<h2>One time Pad (OTP)</h2>
 <p>L'idée est de faire un Vigenère avec comme taille de clé le message !</p>
 <p>C'est la technique du :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -472,181 +472,6 @@ ALarecher ch ed utem psperd ud eMarc elPro
 LZNXXGTTJ LL QH MNME RGJGYH XH FANEG LPJIS
 </code></pre>
 <p>Ce code est réputé (on va le prouver) inviolable. S'il n'est pas réutilisé.</p>
-<h2>Chiffre Vernam</h2>
-<p>La version informatisée du OTP est appelée <a href="https://www.cryptage.org/vernam.html">chiffre de Vernam</a>.</p>
-<p>Ici les messages, les chiffres et les clés sont des mots de $\{0, 1\}^L$ et on a, avec $\oplus$ le ou exclusif binaire.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Le ou exclusif en plus d'être simple à calculer est plein de super propriétés et c'est pour ça qu'il est utilisé partout :</p>
-<p><a href="https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/">https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/</a></p>
-</div></div>
-
-<div>
-$$
-\left\{
-  \begin{array}{lll}
-    E(k, m) &=& k \oplus m\\
-    D(k, c) &=& E(k, c) = k \oplus c\\
-  \end{array}
-\right.
-$$
-</div>
-<p>On a bien $m = k \oplus c$ puisque $k \oplus k \oplus m = m$.</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"fascina"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
-66617363696e61
-❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"message"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
-6d657373616765
-❯ <span class="token builtin class-name">printf</span> <span class="token string">"0x%x<span class="token entity" title="\n">\n</span>"</span> <span class="token variable"><span class="token variable">$((</span><span class="token number">0xb040010080904</span> <span class="token operator">^</span> <span class="token number">0x66617363696e61</span><span class="token variable">))</span></span>
-0x6d657373616765
-❯ <span class="token builtin class-name">echo</span> 0x6d657373616765 <span class="token operator">|</span> xxd <span class="token parameter variable">-r</span> <span class="token punctuation">;</span> <span class="token builtin class-name">echo</span>
-message
-❯ </code></pre>
-<p>Intuitivement, comme $k$ peut être ce que l'on veut, $k \oplus m$ l'est aussi. En particulier pour tous $m$ et $c$ on peut trouver $k$ tel que $c = k \oplus m$ (il suffit de prendre $k = c \oplus m$).</p>
-<p>En conséquence, un attaquant devant un message crypté de peut le décrypter s'il ne connaît pas $k$ puisque $m$ pouvant être tout élément de $\{0, 1\}^L$</p>
-<p>Formalisons cette intuition.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Théorème</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Soit $X$ une variable aléatoire uniforme sur $\{0, 1\}$ et $Y_i$ $L$ variables aléatoires ur $\{0, 1\}$. On suppose que $X$ est indépendant de $Y_i$ pour tout $i$.</p>
-<p>La variable aléatoire $C_1\dots C_L$ telle que $C_i = X \oplus Y_i$ pour tout $i$ est uniforme sur $\{0, 1\}^L$</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Plaçons nous à un index $i$ fixé. On a :</p>
-<div>
-$$
-Pr[C_i = 0] = Pr[X = 0, Y = 0] + Pr[X = 1, Y = 1]
-$$
-</div>
-<p>Comme $X$ et $Y_i$ sont indépendants pour tout $i$, on a : $Pr[X = a, Y_i = b] = Pr[X = a]\cdot Pr[Y_i = b]$. Donc :</p>
-<ul>
-<li>$Pr[X = 0, Y_i = 0] = Pr[X = 0]\cdot Pr[Y_i = 0] = .5\cdot Pr[Y_i = 0]$</li>
-<li>$Pr[X = 1, Y_i = 1] = Pr[X = 1]\cdot Pr[Y_i = 1] = .5\cdot (1-Pr[Y_i = 0])$</li>
-</ul>
-<p>Ce qui entraîne que $Pr[X \oplus Y_i = 0] = Pr[X = 0, Y_i = 0] + Pr[X = 1, Y_i = 1] = .5$, et donc que $X \oplus Y_i$ est une variable aléatoire uniforme.</p>
-</div>
-</details>     
-</div>
-<p>On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffrer, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.</p>
-<p>Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c\oplus m$.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ceci pose les bases que tout code doit avoir une clé choisie uniformément et indépendante du message.</p>
-</div></div>
-
-<p>Attention cependant.</p>
-<h3>Retrouver ce qui était caché</h3>
-<p>Attention aux propriétés cachées. Par exemple, supposons que $x = 12$ et $y = 34$. Que valent ces deux variables avec le code ci-dessous ?</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">x = x + y
-y = x - y
-x = x - y</code></pre>
-<p>Oui, les deux variables ont été échangées sans variables intermédiaires ! On peut faire la même chose (et d'autres choses encore) avec le ou exclusif, qui est à la base de nombres d'astuces potentiellement dévastatrice pour le secret. voir le lien ci-dessous pour quelques exemples :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://florian.github.io/xor-trick/">https://florian.github.io/xor-trick/</a></p>
-</div></div>
-
-<h3>Ne répétez pas la clé</h3>
-<p>La code de Vernam est inviolable si on ne possède aucune information supplémentaire. Si on chiffre deux messages différents avec la même clé $k \oplus m$ et $k \oplus m'$, Eve na qu'à combiner les deux messages chiffrées pour faire disparaître la clé : $k \oplus m \oplus k \oplus m' = k \oplus k \oplus m \oplus m' = m \oplus m'$. De là, si Eve sait que le message est en Français, il lui suffit de déplacer des mots sur le code pour voit apparaître d'autres mots :</p>
-<pre><code>  Je suis très bien protégé
-+ Il mangeait des escargots
-  XXXXXXXXXXXXXXXXXXXXXXXXX
-</code></pre>
-<p>En faisant glisser &quot;suis&quot; par exemple, lorsqu'il arrive sur l'emplacement de la première ligne on obtient :</p>
-<pre><code>     suis
-  Je suis très bien protégé
-+ Il mangeait des escargots 
-  XXXmangXXXXXXXXXXXXXXXXXX
-</code></pre>
-<p>Ce qui nous donne :</p>
-<ul>
-<li>une position dans le premier mot</li>
-<li>un début de mot dans la seconde phrase que l'on peut chercher à completer</li>
-</ul>
-<pre><code>     mangeait
-  Je suis très bien protégé
-+ Il mangeait des escargots 
-  XXX        XXXXXXXXXXXXXX
-     suis trè 
-</code></pre>
-<p>Et petit à petit on casse le chiffre....</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>C'est arrivé en vrai.
-<a href="https://fr.wikipedia.org/wiki/Projet_Venona">Projet Venona</a></p>
-</div></div>
-
-<h3><span id="Vernam-intégrité"></span>Intégrité</h3>
-<p>Si le message est inviolable, il n'est pas infalsifiable.</p>
-<pre><code>  Je donne 12 euros à François
-+ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-------------------------------
-  YYYYYYYYYYYYYYYYYYYYYYYYYYYY
-</code></pre>
-<p>Certes. Mais je peux ajouter des informations si je le désire</p>
-<pre><code>  Je donne 12 euros à François
-+ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-+ 00000000012 euros00000000000
-------------------------------
-  YYYYYYYYYXXXXXXXXYYYYYYYYYYY
-</code></pre>
-<pre><code>  Je donne 12 euros à François
-+ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-+ 00000000012 euros00000000000
-+ 0000000009999999€00000000000
-------------------------------
-  YYYYYYYYYZZZZZZZZYYYYYYYYYYY
-</code></pre>
-<p>Ce qui est donne une fois déchiffré :</p>
-<pre><code>  Je donne 12 euros à François
-+ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-+ 00000000012 euros00000000000
-+ 0000000009999999€00000000000
-+ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
-------------------------------
-  Je donne 9999999€ à François
-</code></pre>
-<p>Ce qui est super Sympa de votre part !</p>
-<p>Ça à l'air un peu tiré par les cheveux vu comme ça, mais si vous chiffrés des mails par exemple, ils commencent tous par un champ <code>FROM</code> et un champ <code>TO</code>, si le cryptanalyse sait ce que vous codez et que c'est issu d'un protocole, il y a de forte chances qu'il y ait des paramètres à emplacement fixe que l'on peut modifier.</p>
-<h3>Authentification</h3>
-<p>Rien ne garanti que c'est bien l'expéditeur voulu qui a envoyé le message :</p>
-<pre><code>           cle k                   cle k'
-Alice &lt;-------------&gt; Mallory &lt;--------------&gt; Bob
-
-</code></pre>
-<p>Si Mallory se fait passer d'un côté pour Bob et de l'autre côté pour Alice, aucun des deux ne peut le soupçonner.</p>
 
 
 </article>

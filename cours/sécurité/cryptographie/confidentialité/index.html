@@ -96,7 +96,156 @@
     
   
 
-  <pre><code>           k                   k
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Bibliographie</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>&quot;random number generators : principles and practices de David Johnston&quot;</li>
+<li>&quot;Introduction to modern cryptography de Jonathan Katk et Yehuda Lindell&quot;</li>
+</ul>
+</div></div>
+
+<p>Le processus d'envoi d'un message confidentiel entre Alice et Bob décrit précédemment doit être ajusté pour être réaliste :</p>
+<pre><code>    Alice    |  Eve   |     Bob
+-------------|--------|--------------
+    m, k     |        |      k
+E(k, m) = c -|-- c ---|----&gt; c
+             |        | D(k, c) = m
+             |        |
+espace privé | public |    privé
+</code></pre>
+<p>On va petit à petit modifier ce schéma pour le rendre utilisable en pratique. Commençons tout d'abord par fixer le code utilisé. On utilise le chiffre de Vernam car il possède deux avantages imbattables :</p>
+<ul>
+<li>il est à confidentialité parfaite</li>
+<li>il est de complexité linéaire et très facile à implémenter</li>
+</ul>
+<p>On obtient alors le schéma suivant :</p>
+<pre><code>    Alice    |  Eve   |     Bob
+-------------|--------|--------------
+    m, k     |        |      k
+  k ⊕ m = c -|-- c ---|----&gt; c
+             |        |  k ⊕ c = m
+             |        |
+espace privé | public |    privé
+</code></pre>
+<p>Pour que le chiffre de Vernam fonctionne, il faut que la clé soit générée de façon uniforme. Attelons-nous à ça.</p>
+<h2>Génération de clés uniformes</h2>
+<p>La clé générée doit être uniforme pour qu'un attaquant potentiel ne puisse pas avoir le moindre indice sur celle-ci. Ceci est impossible à faire avec un algorithme qui est par définition déterministe. On utilise ainsi des systèmes physiques (souvent couplés à des algorithmes et intégré directement sur le processeur) appelé <em><strong>TRNG</strong></em> pour <em>True Random Number Generator</em> pour cela.</p>
+<p>Nous ne rentrerons pas en détail ici sur les moyens de générer de tels nombres, le lecteur intéressé pourra visiter le lien suivant :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour en savoir plus :</p>
+<p><a href="/cours_informatique/cours/misc/al%C3%A9atoire/nombres-al%C3%A9atoires" class="interne"><em>True Random Number Generator</em></a></p>
+</div></div>
+
+<p>Ce qu'il faut en retenir pour nous c'est que :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Générer des nombre vraiment aléatoire avec un ordinateur est possible en utilisant des systèmes physiques embarqués. C'est cependant un processus compliqué et coûteux en temps.</p>
+</div></div>
+
+<h2>Partager la clé</h2>
+<p>Il est cependant irréaliste qu'Alice et Bob aient connaissance de la clé avant de se transmettre un message, sinon aucune communication sécurisée ne serait possible entre 2 ordinateurs. Il faut utiliser un moyen pour qu'Alice et/ou Bob puissent générer une clé puis se la transmettre de façon sécurisée.</p>
+<p>Ceci est possible en utilisant des problèmes dont que l'on ne sait pas algorithmiquement résoudre efficacement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="partager-secret" class="interne">Partager de secret</a></p>
+</div></div>
+
+<p>Le schéma de transmission confidentiel devient alors :</p>
+<pre><code>    Alice    |         |     Bob
+    privé    | public  |    privé
+-------------|---------|--------------
+     m       |         |
+             |         |
+     a ---v  |         |  v--- b           # générés par un TRNG
+     k &lt;--===|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
+             |         |
+  k ⊕ m = c -|--- c ---|----&gt; c
+             |         |  k ⊕ c = m
+             |         |
+</code></pre>
+<h2>Notion de sécurité</h2>
+<p>La sécurisation du protocole de transmission de la clé par le protocole de Diffie-Hellmann dépend de la complexité du meilleur algorithme (connu) permettant de résoudre le problème du logarithme discret. Elle dépend du ratio entre le temps nécessaire pour le décrypter et la durée de vie du message.</p>
+<p>Si les meilleurs algorithmes de résolution sont connus (ce qui n'est jamais vraiment assuré) on peut déterminer une taille de clé qui garantissent un temps de décryptage trop important. Formalisons cette notion :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="d%C3%A9finition-s%C3%A9curit%C3%A9" class="interne">Sémantiquement sécurisée</a></p>
+</div></div>
+
+<h2>Transmission</h2>
+<p>La méthode de chiffrement utilisant le code de Verna n'est pas directement utilisable en pratique car, la clé de chiffrement ne devant pas être répétée pour garantir l'inviolabilité du chiffrement, il faudrait utiliser le protocole de Diffie-Hellman pour générer des clés différentes pour chaque partie du message à chiffrer ce qui est trop coûteux en temps et empêcherait.</p>
+<p>On utilise donc un générateur de nombre pseudo-aléatoire cryptographique (<em>Cryptographic Pseudo-Random Number Generator</em>) pour générer assez de bit à partir de la clé pour chiffrer le message entier :</p>
+<pre><code>    Alice    |         |     Bob
+    privé    | public  |    privé
+-------------|---------|--------------
+     m       |         |
+             |         |
+     a ---v  |         |  v--- b           # générés par un TRNG
+     k &lt;--===|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
+             |         |
+  G(k) = K   |         |  G(k) = K         # générés par un CPRNG
+             |         |
+  K ⊕ m = c -|--- c ---|----&gt; c
+             |         |  K ⊕ c = m
+</code></pre>
+<p>Pour qu'une méthode de chiffrement puisse être utilisé en pratique, il faut pouvoir avoir deux choses :</p>
+<ul>
+<li>des clés de petites tailles par rapport au message à faire passer</li>
+<li>des algorithmes de complexité linéaires pour chiffrer et déchiffrer les messages.</li>
+</ul>
+<p>Même si on s'autorise théoriquement des algorithmes polynomiaux, en pratique, efficaces veut plutôt dire linéaire car il faut que ces algorithmes puissent chiffrer de très nombreuses données. Efficace prend donc deux significations différentes, selon que l'on cherche à prouver théoriquement des résultats où que l'on veuille en pratique chiffrer des données. L'un ne va cependant pas sans l'autre.</p>
+<p>Ces deux contraintes vont forcément nous faire passer des informations à l'adversaire. Selon le type d'information que l'on ne veut pas divulguer on va utiliser une méthode plutôt qu'une autre.</p>
+<blockquote>
+<p>TBD CPRNG -&gt; permutation
+TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)</p>
+</blockquote>
+<h2>Schéma final de la transmission</h2>
+<blockquote>
+<p>rappel définition securisé, avantage, etc.</p>
+</blockquote>
+<ol>
+<li>Alice et/ou Bob doivent créer un nombre aléatoire de façon uniforme servant de clé.</li>
+<li>Alice et Bob doivent s'échanger une clé de taille petite par rapport à la taille du message à échanger mais choisie uniformément parmi toutes les clé possibles</li>
+<li>cette clé doit permettre de générer une clé plus grosse de taille égale au message à échanger (on verra pourquoi)</li>
+<li>on chiffre le message avec le code de Vernam que l'on peut ensuite transmettre</li>
+</ol>
+<pre><code>    Alice    |        |     Bob
+    privé    | public |    privé
+-------------|--------|--------------
+      m      |        |     
+      k &lt;----|--------|----&gt; k
+  G(k) = K   |        |  G(k) = K    
+E(K, m) = c -|-- c ---|----&gt; c
+             |        | D(K, c) = m
+             |        |
+</code></pre>
+<p>Pour que tout fonctionne sans accros il faut que chaque étape soit &quot;<em>sécurisée</em>&quot; (on définira précisément ce terme plus tard) en particulier :</p>
+<ol>
+<li>il faut créer une clé uniforme.</li>
+<li>il faut pouvoir se partager un secret via un canal public</li>
+<li>il faut que l'algorithme de génération de clé plus grosse soit connu de tous <strong>mais</strong> que ce soit impossible de connaître la séquence finale si on a pas la clé de départ</li>
+<li>il faut que $c$ soit uniforme pour ne pas</li>
+</ol>
+<pre><code>           k                   k
            |                   |
            v                   v
         -------             -------
@@ -122,59 +271,6 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/">recommendations ANSSI taille de clés</a></p>
-</div></div>
-
-<p>Pour chiffrer un message on va utiliser le protocole suivant (on vérifiera plus tard que cela fonctionne bien) :</p>
-<ol>
-<li>Alice et/ou Bob doivent créer une nombres aléatoires servant de clé.</li>
-<li>Alice et Bob doivent s'échanger une clé de taille petite par rapport à la taille du message à échanger mais choisie uniformément parmi toutes les clé possibles</li>
-<li>cette clé doit permettre de générer une clé plus grosse de taille égale au message à échanger</li>
-<li>on chiffre le message avec le code de Vernam que l'on peut ensuite transmettre</li>
-</ol>
-<p>Pour que tout fonctionne sans accros il faut que chaque étape soit &quot;<em>sécurisée</em>&quot; (on définira précisément ce terme plus tard) en particulier :</p>
-<ol>
-<li>il faut pouvoir se partager un secret via un canal public</li>
-<li>il faut que l'algorithme de génération de clé plus grosse soit connu de tous <strong>mais</strong> que ce soit impossible de connaître la séquence finale si on a pas la clé de départ</li>
-<li>C'est la seule étape qui pour l'instant est sécurisée si on ne répète pas la clé puisqu'il n'y a pas de différence entre un message chiffré et un mot aléatoire.</li>
-</ol>
-<h2>1. Génération de nombres aléatoires</h2>
-<blockquote>
-<p>TBD le lancer de dés.
-Mais ne le faites pas vous même dans votre tête. Les humains ne sont pas bon pour faire du hasard :</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=tP-Ipsat90c">https://www.youtube.com/watch?v=tP-Ipsat90c</a></p>
-</div></div>
-
-<p>Si on utilise un ordinateur c'est possible :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.random.org/">https://www.random.org/</a></p>
-</div></div>
-
-<p>Souvent <a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&amp;cats=Random">dans le processeur</a> ou via le <a href="https://en.wikipedia.org/wiki//dev/random">système d'exploitation</a> :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">xxd <span class="token operator">&lt;</span> /dev/random</code></pre>
-<p>Ou de façon plus &quot;lisible&quot; :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"hasard : "</span><span class="token variable"><span class="token variable">$(</span>base64 <span class="token operator">&lt;</span>/dev/random <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-c</span> <span class="token number">100</span><span class="token variable">)</span></span></code></pre>
-<p>Mais ce n'est pas simple à faire vraiment.</p>
-<p>Utilise des méthodes qui collecte de l'entropie puis la supprime sous la forme de nombres aléatoires</p>
-<blockquote>
-<p>TBD avec entropie, quantique, etc.</p>
-</blockquote>
-<h2>2. Partage de clé</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="partager-secret" class="interne">Partager la clé</a></p>
 </div></div>
 
 <h2>Génération de nombres pseudo-aléatoires</h2>
@@ -272,6 +368,9 @@ voir des méthodes plus sophistiquée comme <a href="Rapport_de_Stage_Laura_Mich
 <p><a href="sch%C3%A9ma-g%C3%A9n%C3%A9ral" class="interne">Schéma général</a></p>
 </div></div>
 
+<blockquote>
+<p><a href="https://www.youtube.com/watch?v=G2TYtN2qJls&amp;list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc">https://www.youtube.com/watch?v=G2TYtN2qJls&amp;list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc</a></p>
+</blockquote>
 <h3>Attention aux implémentations</h3>
 <p>Les <a href="partager-secret/#side-channel-attack" class="interne">side channel attacks</a> permettent, on l'a vue, de tirer parie de l'implémentation de l'algorithme pour obtenir un avantage npn négligeable. Pour qu'aucune information ne transparaisse, il faut que l'algorithme :</p>
 <ol>

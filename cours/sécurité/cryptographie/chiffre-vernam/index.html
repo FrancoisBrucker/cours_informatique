@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Chiffre de Vernam</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Chiffre de Vernam</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/chiffre-vernam/">Chiffre de Vernam</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>La version informatisée du <a href="../codes-historiques" class="interne">OTP</a> est appelée <a href="https://www.cryptage.org/vernam.html">chiffre de Vernam</a>.</p>
+<p>Ici les messages, les chiffres et les clés sont des mots de $\{0, 1\}^L$ et on a, avec $\oplus$ le ou exclusif binaire.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le ou exclusif en plus d'être simple à calculer est plein de super propriétés et c'est pour ça qu'il est utilisé partout :</p>
+<p><a href="https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/">https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/</a></p>
+</div></div>
+
+<h2>Définition</h2>
+<div>
+$$
+\left\{
+  \begin{array}{lll}
+    E(k, m) &=& k \oplus m\\
+    D(k, c) &=& E(k, c) = k \oplus c\\
+  \end{array}
+\right.
+$$
+</div>
+<p>On a bien $m = k \oplus c$ puisque $k \oplus k \oplus m = m$.</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"fascina"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
+66617363696e61
+❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"message"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
+6d657373616765
+❯ <span class="token builtin class-name">printf</span> <span class="token string">"0x%x<span class="token entity" title="\n">\n</span>"</span> <span class="token variable"><span class="token variable">$((</span><span class="token number">0xb040010080904</span> <span class="token operator">^</span> <span class="token number">0x66617363696e61</span><span class="token variable">))</span></span>
+0x6d657373616765
+❯ <span class="token builtin class-name">echo</span> 0x6d657373616765 <span class="token operator">|</span> xxd <span class="token parameter variable">-r</span> <span class="token punctuation">;</span> <span class="token builtin class-name">echo</span>
+message
+❯ </code></pre>
+<p>Intuitivement, comme $k$ peut être ce que l'on veut, $k \oplus m$ l'est aussi. En particulier pour tous $m$ et $c$ on peut trouver $k$ tel que $c = k \oplus m$ (il suffit de prendre $k = c \oplus m$).</p>
+<p>En conséquence, un attaquant devant un message crypté de peut le décrypter s'il ne connaît pas $k$ puisque $m$ pouvant être tout élément de $\{0, 1\}^L$</p>
+<h2>Confidentialité parfaite</h2>
+<p>Formalisons cette intuition.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $X$ une variable aléatoire uniforme sur $\{0, 1\}$ et $Y_i$ $L$ variables aléatoires ur $\{0, 1\}$. On suppose que $X$ est indépendant de $Y_i$ pour tout $i$.</p>
+<p>La variable aléatoire $C_1\dots C_L$ telle que $C_i = X \oplus Y_i$ pour tout $i$ est uniforme sur $\{0, 1\}^L$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Plaçons nous à un index $i$ fixé. On a :</p>
+<div>
+$$
+Pr[C_i = 0] = Pr[X = 0, Y = 0] + Pr[X = 1, Y = 1]
+$$
+</div>
+<p>Comme $X$ et $Y_i$ sont indépendants pour tout $i$, on a : $Pr[X = a, Y_i = b] = Pr[X = a]\cdot Pr[Y_i = b]$. Donc :</p>
+<ul>
+<li>$Pr[X = 0, Y_i = 0] = Pr[X = 0]\cdot Pr[Y_i = 0] = .5\cdot Pr[Y_i = 0]$</li>
+<li>$Pr[X = 1, Y_i = 1] = Pr[X = 1]\cdot Pr[Y_i = 1] = .5\cdot (1-Pr[Y_i = 0])$</li>
+</ul>
+<p>Ce qui entraîne que $Pr[X \oplus Y_i = 0] = Pr[X = 0, Y_i = 0] + Pr[X = 1, Y_i = 1] = .5$, et donc que $X \oplus Y_i$ est une variable aléatoire uniforme.</p>
+</div>
+</details>     
+</div>
+<p>On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffrer, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.</p>
+<p>Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c\oplus m$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout code doit avoir une clé choisie uniformément et indépendante du message.</p>
+</div></div>
+
+<p><a href="https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory">Claude Shannon</a>, dans son article séminale de 1949 sur la théorie de l'information donne une définition d'un code assurant une confidentialité parfaite :</p>
+<p><span id="confidentialité-parfaite"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un code $(E, D)$ assure une <strong><em>confidentialité parfaite</em></strong> si pour :</p>
+<ul>
+<li>tous messages $m$ et $m'$ de même taille</li>
+<li>tout chiffre $c$</li>
+<li>les clés $k$ suivent une loi uniforme $k \xleftarrow{U} \mathcal{K}$</li>
+</ul>
+<p>On a :</p>
+<div>
+$$
+\Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m) = c] = \Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m') = c]
+$$
+</div>
+</div></div>
+
+<p>Un code assurant une confidentialité parfaite ne doit donner aucune information sur $k$ ou $m$ en ne sachant que $E(k, m)$, ce qui se traduit par le fait que :</p>
+<ul>
+<li>tout message peut donner un chiffre donné si on choisit la bonne clé et avec la même probabilité</li>
+<li>un chiffre donné peut être associé à n'importe quel message selon la clé choisie.</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le code de Vernam assure une confidentialité parfaite.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La variable aléatoire $(k \xleftarrow{U} \mathcal{K}) \oplus m$ est uniforme quelque soit $m$ : la probabilité d'obtenir n'importe quel chiffre est ainsi une constante et vaut $\frac{1}{\vert \mathcal{C}\vert}$ ce qui est indépendant de $m$.</p>
+</div>
+</details>     
+</div>
+<p>Un attaquant n'a aucune idée de ce que peut être le message puisque tout message peut donnée un chiffre donné : il suffit de prendre la clé $k = $c \oplus m$.</p>
+<h2>Confidentialité parfaite et taille de clé</h2>
+<p>La code de Vernam semble parfait il est à la fois rapide à faire et inviolable. Son seul défaut est la longueur de la clé qui doit être la même que celle du message. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?</p>
+<p>Ceci est cependant une condition nécessaire et suffisante pour tout code à confidentialité parfaite :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieur ou égal au nombre de messages à chiffrer.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $k^{\star} \in \mathcal{K}$, $m^{\star} \in \mathcal{M}$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $\Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m') = c^\star] = 0 &lt; \Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.</p>
+<p>On en déduit que l'ensemble $\mathcal{M}' = \{m \vert E(k, m)=c^{\star}, k \in \mathcal{K}\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert \mathcal{M}' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.</p>
+</div>
+</details>     
+</div>
+<p>Tout code utilisable en pratique aura une taille de clé plus petite que le message, on sera donc <strong>assuré</strong> que de l'information sera donné à l'adversaire. Il faudra s'assurer que cette information ne puisse pas être exploitée facilement.</p>
+<h2>Attention aux conditions d'utilisation</h2>
+<p>Le code de Vernam est à confidentialité parfaite mais il y a des conditions d'utilisation très stricte pour que ce soit vrai. Nous allons montrer ici que si on ne les respecte pas, les conséquences peuvent être désastreuses.</p>
+<h3>xor-trick</h3>
+<p>Attention aux propriétés cachées du $\oplus$. Supposons que $x$ et $y$ soit deux mots de $\{0, 1\}^n$ et observez la séquence suivante :</p>
+<div>
+$$
+\begin{array}{l}
+x = x \oplus y\\
+y = x \oplus y\\
+x = x \oplus y\\
+\end{array}
+$$
+</div>
+<p>À la fin de ces 3 opérations, les variables $x$ et $y$ ont été échangées !</p>
+<p>On utilise les propriétés suivantes, en particulier les 2 dernières :</p>
+<ul>
+<li>$x \oplus y = y \oplus x$</li>
+<li>$(x \oplus y) \oplus z = x \oplus (y \oplus z)$</li>
+<li>$x \oplus x = \mathbb{0}$</li>
+<li>$x \oplus \mathbb{0} = x$</li>
+</ul>
+<p>Qui sont évidentes mais est à la base de nombres d'astuces potentiellement dévastatrice pour le secret. voir le lien ci-dessous pour quelques exemples :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://florian.github.io/xor-trick/">https://florian.github.io/xor-trick/</a></p>
+</div></div>
+
+<h3>Ne répétez pas la clé</h3>
+<p>La code de Vernam est inviolable si on ne possède aucune information supplémentaire. Si on chiffre deux messages différents avec la même clé $k \oplus m$ et $k \oplus m'$, Eve na qu'à combiner les deux messages chiffrées pour faire disparaître la clé : $k \oplus m \oplus k \oplus m' = k \oplus k \oplus m \oplus m' = m \oplus m'$. De là, si Eve sait que le message est en Français, il lui suffit de déplacer des mots sur le code pour voit apparaître d'autres mots :</p>
+<pre><code>  Je suis très bien protégé
++ Il mangeait des escargots
+  XXXXXXXXXXXXXXXXXXXXXXXXX
+</code></pre>
+<p>En faisant glisser &quot;suis&quot; par exemple, lorsqu'il arrive sur l'emplacement de la première ligne on obtient :</p>
+<pre><code>     suis
+  Je suis très bien protégé
++ Il mangeait des escargots 
+  XXXmangXXXXXXXXXXXXXXXXXX
+</code></pre>
+<p>Ce qui nous donne :</p>
+<ul>
+<li>une position dans le premier mot</li>
+<li>un début de mot dans la seconde phrase que l'on peut chercher à completer</li>
+</ul>
+<pre><code>     mangeait
+  Je suis très bien protégé
++ Il mangeait des escargots 
+  XXX        XXXXXXXXXXXXXX
+     suis trè 
+</code></pre>
+<p>Et petit à petit on casse le chiffre....</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>C'est arrivé en vrai.
+<a href="https://fr.wikipedia.org/wiki/Projet_Venona">Projet Venona</a></p>
+</div></div>
+
+<h3><span id="Vernam-intégrité"></span>Intégrité</h3>
+<p>Si le message est inviolable, il n'est pas infalsifiable.</p>
+<pre><code>  Je donne 12 euros à François
++ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+------------------------------
+  YYYYYYYYYYYYYYYYYYYYYYYYYYYY
+</code></pre>
+<p>Certes. Mais je peux ajouter des informations si je le désire</p>
+<pre><code>  Je donne 12 euros à François
++ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
++ 00000000012 euros00000000000
+------------------------------
+  YYYYYYYYYXXXXXXXXYYYYYYYYYYY
+</code></pre>
+<pre><code>  Je donne 12 euros à François
++ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
++ 00000000012 euros00000000000
++ 0000000009999999€00000000000
+------------------------------
+  YYYYYYYYYZZZZZZZZYYYYYYYYYYY
+</code></pre>
+<p>Ce qui est donne une fois déchiffré :</p>
+<pre><code>  Je donne 12 euros à François
++ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
++ 00000000012 euros00000000000
++ 0000000009999999€00000000000
++ XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+------------------------------
+  Je donne 9999999€ à François
+</code></pre>
+<p>Ce qui est super Sympa de votre part !</p>
+<p>Ça à l'air un peu tiré par les cheveux vu comme ça, mais si vous chiffrés des mails par exemple, ils commencent tous par un champ <code>FROM</code> et un champ <code>TO</code>, si le cryptanalyse sait ce que vous codez et que c'est issu d'un protocole, il y a de forte chances qu'il y ait des paramètres à emplacement fixe que l'on peut modifier.</p>
+<h3>Authentification</h3>
+<p>Rien ne garanti que c'est bien l'expéditeur voulu qui a envoyé le message :</p>
+<pre><code>           cle k                   cle k'
+Alice &lt;-------------&gt; Mallory &lt;--------------&gt; Bob
+
+</code></pre>
+<p>Si Mallory se fait passer d'un côté pour Bob et de l'autre côté pour Alice, aucun des deux ne peut le soupçonner.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

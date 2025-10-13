@@ -244,13 +244,46 @@ espace privé | public |    privé
 <p><a href="codes-historiques" class="interne">Codes historiques</a></p>
 </div></div>
 
+<h3>Chiffre de Vernam</h3>
+<p>Formalise le One Time Pad pour un usage informatique.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="chiffre-vernam" class="interne">Chiffre de Vernam</a></p>
+</div></div>
+
+<p>On a vu avec le chiffre de Vernam que les 3 volets de la sécurité : confidentialité, intégrité et authentification sont important et peuvent être adressés indépendamment :</p>
+<ul>
+<li>le code en Vernam est confidentiel à condition que la clé ne soit jamais répétée</li>
+<li>le code en Vernam est confidentiel mais l'intégrité du message n'est pas garantie si le message à un format déterminé</li>
+<li>le code en Vernam est confidentiel mais l'authentification n'est pas assurée</li>
+</ul>
 <h2>Confidentialité</h2>
+<h3>Principe et exemple paradigmatique</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="confidentialit%C3%A9" class="interne">Confidentialité</a></p>
+</div></div>
+
+<h3>Codes actuels</h3>
+<blockquote>
+<p>TBD ok mais pas forcément super pour aujourd'hui et transmission par ordi :</p>
+<ul>
+<li>compliqué de faire de générateur bien et rapide. on préfère utiliser une autre techno : la permutation.</li>
+<li>envoie de paquet : que faire si un paquet est mauvais ? Il faut tout recommencer pour trouver le bon endroit du code. TBD à voir comment fonctionne le schéma général de renvoie de paquet. qu'est ce qui est chiffré ?</li>
+</ul>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="codes-actuels" class="interne">Codes actuels</a></p>
 </div></div>
 
 <h2>Intégrité</h2>
