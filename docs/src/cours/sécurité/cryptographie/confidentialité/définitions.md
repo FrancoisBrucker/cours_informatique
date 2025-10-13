@@ -66,23 +66,13 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 {% endattention %}
 
-
 ## Avantage Probabiliste
 
-L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que `A(E(k,mb))=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
-{% note "**Définition**" %}
-L'avantage $\epsilon(A)$ pour l'adversaire $A$ dans un jeu est défini tel que :
 
-<div>
-$$
-\epsilon(A) \coloneqq | (\Pr[b' = 1 \;\mid\; b = 1] + \Pr[b' = 0 \;\mid\; b = 0]) - 1 |
-$$
-</div>
 
-{% endnote %}
 
-Si l'adversaire $A$ n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon(A) = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon(A) = 1$.
+
 
 Pour notre exemple avec le chiffre de Vigenère de taille deux :
 
@@ -148,131 +138,6 @@ Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est
 {% enddetails %}
 
 
-
-
-
-
-Définissons formellement les adversaire et les avantages que l'on admet pour qu'une méthode soit sécurisée.
-
-{% lien %}
-
-- [semantically secure](https://en.wikipedia.org/wiki/Semantic_security)
-- [fonction négligeable](https://en.wikipedia.org/wiki/Negligible_function)
-
-{% endlien %}
-
-On suppose que :
-
-- les adversaires n'ont à leurs dispositions que des algorithmes **_efficaces_**, c'est à dire polynomiaux
-- qu'on ne veut consentir qu'un avantage **_négligeable_**
-
-{% note "**Définition**" %}
-Une fonction $f(n)$ est **_négligeable_** si $f(n) = \mathcal{O}(1/n^d)$ pour tout entier $d$.
-{% endnote %}
-{% info %}
-On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.
-{% endinfo %}
-
-De ces considérations on peut définir :
-
-{% note "**Définition**" %}
-Une méthode de chiffrement est **_sécurisée_** (_Semantically secured_) si tout algorithme efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.
-{% endnote %}
-
-{% lien %}
-[Indistinguabilité calculatoire](https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire)
-{% endlien %}
-
-{% note "**Définition**" %}
-Le couple $(E, D)$ d'algorithmes efficaces est une **_méthode de chiffrement sécurisée_** si :
-
-- $D(k, E(k, m)) = m$
-- tout algorithme **efficace** n'a qu'un **avantage négligeable** au jeu du chiffrement.
-  {% endnote %}
-
-La négligeabilité permet de définir théoriquement les avantages que l'on peut accepter de la part de l'adversaire.
-
-La négligeabilité se compose tout comme la polynomialité (somme et produit de polynôme restent des polynôme) :
-
-- $p(n) \cdot \epsilon$ reste négligeable si $\epsilon$ l'est
-- $\epsilon + \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont
-- $\epsilon \cdot \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont
-
-## <span id="jeu-reconnaissance"></span>Jeu de la reconnaissance
-
-Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance ci-dessous (on chercher à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_1)$ lorsque $k$ est distribué de façon uniforme).
-
-Soient $D_i: \mathcal{U} \to [0, 1]$ pour $i \in \\{0, 1\\}$ deux lois de distribution. On cherche à distinguer si un élément de $\mathcal{U}$ a été tiré selon la loi $D_0$ ou $D_1$.
-
-```
-
-     testeur                              adversaire
-    ---------                            ------------
-    |       |                            |          |  
- b  |  D0   |   x tiré selon D0 si b=0   |    D0    |   A(x) = b'
---->|  D1   |   x tiré selon D1 si b=1   |    D1    | ------------->
-    |       | -------------------------> |          |
-    ---------                            ------------
-```
-
-Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la suite générée par notre méthode de chiffrement est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences. L'avantage de l'adversaire est, comme pour le jeu du chiffrage, défini tel que :
-
-<div>
-$$
-\epsilon(A) \coloneqq \Pr[b'=1 \;\mid\; b=1] - \Pr[b'=1 \;\mid\; b=0]
-$$
-</div>
-
-Les deux lois seront dites :
-
-- **_équivalentes_** si $D_0 = D_1$ : on ne peut les distinguer
-- **_statistiquement sécurisés_** si le meilleur algorithme de reconnaissance ne peut obtenir qu'un avantage négligeable
-- **_sémantiquement sécurisés_** si le meilleur algorithme **efficace** de reconnaissance ne peut obtenir qu'un avantage négligeable
-
-On cherchera toujours à obtenir un comportement sémantiquement sécurisé. Ceci est facilité par la remarque ci-dessous :
-
-{% note %}
-
-Pour ce jeu il est facile de formaliser le meilleur algorithme possible permettant de résoudre ce problème :
-
-- Entrée :
-  - une valeur x
-- Programme :
-  1. calculer la probabilité p0 d'obtenir x selon la loi D0
-  2. calculer la probabilité p1 d'obtenir x selon la loi D1
-  3. si p0 ≥ p1 rendre 0, sinon rendre 1
-
-Si son avantage est négligeable, tous les adversaires, qu'ils soient efficaces ou non, n'auront également qu'un avantage négligeable.
-
-{% endnote %}
-
-Pour se fixer les idée commençons par un petit exercice :
-{% exercice %}
-Montrez que l'on peut distinguer la loi uniforme sur $\\{0, 1\\}^n$ de la fonction constante $F(x) = \mathbb{0}$ avec un avantage non négligeable.
-{% endexercice %}
-{% details "preuve" %}
-Comme :
-
-- la probabilité d'obtenir n'importe quel mot de $\\{0, 1\\}^n$ vaut $1/2^n$ pour la loi uniforme,
-- la probabilité d'obtenir $\mathbb{0}$ vaut 1 pour la fonction constante
-
-Le meilleur algorithme va :
-
-- répondre la fonction constante si le mot en entrée vaut $\mathbb{0}$
-- répondre la fonction uniforme sinon
-
-En supposant sans perte de généralité que si $b=0$ le testeur va rendre la fonction constante, l'avantage de cet algorithme vaut :
-
-<div>
-$$
-\begin{array}{lcl}
-\epsilon(A) &=& |\Pr[x \neq \mathbb{0} \;\mid\; b=1] - \Pr[x \neq \mathbb{0} \;\mid\; b=0]|\\
-&=&|1-1/2^n - 0|\\
-\end{array}
-$$
-</div>
-
-{% enddetails %}
 
 ## Vernam biaisé
 
