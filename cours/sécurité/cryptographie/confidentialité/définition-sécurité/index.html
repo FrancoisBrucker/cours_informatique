@@ -99,22 +99,29 @@
   <p>La sécurité d'une méthode de chiffrement va dépendre, certes de la méthode employée, mais surtout du temps et des moyens mis en œuvre par l'attaquant.</p>
 <p>En effet on a vu que seule une clé égale à la taille du message pouvait garantir <a href="../../chiffre-vernam/#confidentialit%C3%A9-parfaite" class="interne">une confidentialité parfaite</a>, or ceci est irréalisable en pratique puisque deux ordinateurs doivent pouvoir communiquer de façon sécurisée sans s'être au préalable rencontré : toute méthode réaliste de chiffrement va laisser fuiter de l'information.</p>
 <p>Enfin comme la taille des clés est finie un algorithme brute force arrivera toujours <em>in fine</em> à casser décrypter le message chiffré. Selon les moyens et les personnes impliquées (d'un adolescent dans sa chambre à un état) cela pourra prendre plus ou moins de temps.</p>
-<blockquote>
-<p>TBD 2 types -&gt; temps et méthode.
-TBD temps est</p>
-</blockquote>
 <h2>Sécurisé en temps</h2>
-<p>Une méthode de chiffrement sera dite $(t, \epsilon)$-sécurisée si tout algorithme passant $t$ secondes à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $0\leq \epsilon \leq 1$.</p>
-<p>Comme l'algorithme brute force teste une clé en plus d'une opération, toute méthode de chiffrement sera au maximum $(t, \frac{t}{2^s})$-sécurisée où $s$ est la taille de la clé et $t$ le temps mis pour tester une clé.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>On peut aussi mesurer le nombre d'opérations mis pour exécuter l'algorithme puis mesurer sa probabilité de réussite. On aura alors une sécurité définie par nombre d'opérations effectuées.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une méthode de chiffrement est <strong><em>$(t, \epsilon)$-sécurisée</em></strong> si tout algorithme passant $t$ secondes à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $0\leq \epsilon \leq 1$.</p>
 </div></div>
 
-<p>Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.</p>
+<p>L'intérêt de la $(t, \epsilon)$-sécurité est qu'elle peut se mesurer expérimentalement. Par exemple si un algorithme brute force teste le déchiffrement pour toutes les clés de taille $s$ possibles et met $t$ secondes pour en tester une, sa probabilité de réussite au bout de $T$ seconde sera de $T \cdot (t/2^s)$. Ceci nous donne une borne maximum pour toute méthode de chiffrement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Toute méthode de chiffrement avec une clé de $s$ bit est au mieux $(t, \frac{t}{2^s})$-sécurisée avec $t$ le temps mis pour déchiffrer un message.</p>
+</div></div>
+
+<p>Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique. Pour cela on commence par déterminer la durée de vie du message chiffré :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -144,27 +151,9 @@ TBD temps est</p>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD dire si algo expo ok : un algo poly sera inefficace devant un ensemble de solution expo.
-c'est cette notion algorithmique que l'on va utiliser pour quantifier l'information fuitée.</p>
-</blockquote>
-<h2><span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée</h2>
-<blockquote>
-<p>TBD commencer par les distribution à comparer. La fuite est la différence à l'uniforme dans le cas de la confidentialité parfaite. Mais plus généralement à une distribution connue.</p>
-</blockquote>
-<p>La méthode précédente donne idée de la sécurité <em>actuelle</em> d'une méthode de chiffrement puisqu'elle mesure le nombre d'opérations ou le temps pris pour décrypter une méthode de chiffrement. Cela ne dit rien de ce qui pourra se passer dans 5 ou 10 ans lorsque les ordinateurs iront plus vite ou que les méthodes de résolutions seront plus évoluées. De plus, un algorithme brute force qui teste toutes les possibilités aura toujours un avantage de 1 (ou quasi 1 si l'on prend en compte les collisions) si on lui laisse un temps exponentiel par rapport à la taille de la clé pour s'exécuter.</p>
-<p>Il faut donc d'un côté :</p>
-<ul>
-<li>trouver une autre mesure que le temps pour déterminer la sécurité,</li>
-<li>ne prendre en compte que les adversaires s'exécutant en temps raisonnable</li>
-</ul>
-<p>La solution est d'utiliser la complexité algorithmique et son analyse asymptotique. On considérera alors :</p>
-<ul>
-<li>des clés assez grandes pour que l'attaque brute force nécessite un temps exponentiel non réalisable</li>
-<li>les adversaires qui ont une chances de terminer assez rapidement, c'est à dire ceux dont les algorithmes de résolution sont polynomiaux,</li>
-<li>qu'un avantage est acceptable s'il est  exponentiellement petit par rapport à la taille de la clé.</li>
-</ul>
-<p>Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un nombre d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon(s) = \frac{1}{2^{s-d}}$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !</p>
+<p>La notion de $(t, \epsilon)$-sécurité est indissociable de l'algorithme qui décrypte et donc de sa complexité. Si l'algorithme est polynomial le ratio entre ce qu'il peut tester (de l'ordre de $\mathcal{O}(n^k)$) et l'espace à tester (de l'ordre de $\mathcal{O}(2^n)$) va très rapidement tendre vers 0 ($10/2^{10}$ vaut déjà 10^{-3}) et si l'algorithme est exponentiel il prendra rapidement trop de temps.</p>
+<h2>Paramètre de sécurité</h2>
+<p>Lorsque l'on calcule la complexité des algorithmes de décryptage on le fait (comme toujours) par rapports à la taille de ses entrées. Les entrées correspondent aux différents paramètres de la méthode de chiffrement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -181,6 +170,8 @@ $$
 </div>
 </div></div>
 
+<p>Ce paramètre de sécurité permet d'exprimer la $(t, \epsilon)$-sécurité non plus en fonction du temps, mais comme un nombre d'opération. Tout comme le passage de la complexité temporelle (mesurable) à la complexité en nombre d'opérations (calculable) permet une étude plus théorique des performances d'un algorithme, le paramètre de sécurité va nous permettre de comparer les algorithme de déchiffrement de façon générale et abstraite.</p>
+<p>Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un nombre d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon(s) = \frac{1}{2^{s-d}}$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !</p>
 <p>L'augmentation de la taille des clés va certes avoir un effet sur le temps d'exécution mais ce sera surtout sur l'avantage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -241,11 +232,14 @@ $$
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD dépend du temps pour tester 1 clé. Essayons d'en faire abstraction
-.
-Définissons formellement les adversaire et les avantages que l'on admet pour qu'une méthode soit sécurisée.</p>
-</blockquote>
+<p>Cette méthode permet de formaliser :</p>
+<ul>
+<li>l'utilisation de clés assez grandes pour que l'attaque brute force nécessite un temps exponentiel non réalisable</li>
+<li>l'utilisation d'adversaires dont les algorithmes de décryptage sont polynomiaux,</li>
+<li>que donner de l'information à un attaquant est acceptable s'il est exponentiellement petit par rapport à la taille de la clé.</li>
+</ul>
+<p>C'est cette dernière notion que nous allons maintenant formaliser.</p>
+<h2><span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -257,11 +251,7 @@ Définissons formellement les adversaire et les avantages que l'on admet pour qu
 </ul>
 </div></div>
 
-<p>On suppose que :</p>
-<ul>
-<li>les adversaires n'ont à leurs dispositions que des algorithmes <strong><em>efficaces</em></strong>, c'est à dire polynomiaux</li>
-<li>qu'on ne veut consentir qu'une possibilité de réussite <strong><em>négligeable</em></strong></li>
-</ul>
+<p>Commençons par définir une fonction négligeable :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -280,17 +270,12 @@ Définissons formellement les adversaire et les avantages que l'on admet pour qu
 <p>On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.</p>
 </div></div>
 
-<p>De ces considérations on peut définir :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une méthode de chiffrement est <strong><em>sécurisée</em></strong> (<em>Semantically secured</em>) si tout algorithme efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.</p>
-</div></div>
-
+<p>L'intérêt de cette formalisation est que négligeabilité se compose tout comme la polynômialité (somme et produit de polynôme restent des polynômes) :</p>
+<ul>
+<li>$p(n) \cdot \epsilon$ reste négligeable si $\epsilon$ l'est</li>
+<li>$\epsilon + \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont</li>
+<li>$\epsilon \cdot \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -299,12 +284,32 @@ Définissons formellement les adversaire et les avantages que l'on admet pour qu
 <p><a href="https://fr.wikipedia.org/wiki/Indistinguabilit%C3%A9_calculatoire">Indistinguabilité calculatoire</a></p>
 </div></div>
 
-<p>La négligeabilité se compose tout comme la polynomialité (somme et produit de polynôme restent des polynôme) :</p>
+<p>Puis utilisons là pour définir formellement une méthode sécurisée.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une méthode de chiffrement est <strong><em>sémantiquement sécurisée</em></strong> (<em>Semantically secured</em>) si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable pour tout algorithme de déchiffrement polynomial.</p>
+</div></div>
+
+<p>Au final pour construire une méthode de chiffrement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On supposera toujours pour la suite que :</p>
 <ul>
-<li>$p(n) \cdot \epsilon$ reste négligeable si $\epsilon$ l'est</li>
-<li>$\epsilon + \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont</li>
-<li>$\epsilon \cdot \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont</li>
+<li>les adversaires n'ont à leurs dispositions que des algorithmes <strong><em>efficaces</em></strong>, c'est à dire polynomiaux</li>
+<li>qu'on ne veut consentir qu'une possibilité de réussite <strong><em>négligeable</em></strong></li>
 </ul>
+</div></div>
+
 <h2>Avantage</h2>
 <blockquote>
 <p>TBD crypto toujours reconnaire au mieux une proba par rapport à une autre.</p>
