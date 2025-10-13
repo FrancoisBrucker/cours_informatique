@@ -136,10 +136,37 @@ Les tentatives de décryptage d'un message chiffré, on parle d'**_attaques_** p
 [Codes historiques](codes-historiques){.interne}
 {% endaller %}
 
+### Chiffre de Vernam
+
+Formalise le One Time Pad pour un usage informatique.
+
+{% aller %}
+[Chiffre de Vernam](chiffre-vernam){.interne}
+{% endaller %}
+
+On a vu avec le chiffre de Vernam que les 3 volets de la sécurité : confidentialité, intégrité et authentification sont important et peuvent être adressés indépendamment :
+
+- le code en Vernam est confidentiel à condition que la clé ne soit jamais répétée
+- le code en Vernam est confidentiel mais l'intégrité du message n'est pas garantie si le message à un format déterminé
+- le code en Vernam est confidentiel mais l'authentification n'est pas assurée
+
 ## Confidentialité
+
+### Principe et exemple paradigmatique
 
 {% aller %}
 [Confidentialité](./confidentialité){.interne}
+{% endaller %}
+
+### Codes actuels
+
+> TBD ok mais pas forcément super pour aujourd'hui et transmission par ordi :
+>
+> - compliqué de faire de générateur bien et rapide. on préfère utiliser une autre techno : la permutation.
+> - envoie de paquet : que faire si un paquet est mauvais ? Il faut tout recommencer pour trouver le bon endroit du code. TBD à voir comment fonctionne le schéma général de renvoie de paquet. qu'est ce qui est chiffré ?
+
+{% aller %}
+[Codes actuels](./codes-actuels){.interne}
 {% endaller %}
 
 ## Intégrité

@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD y mettre la partie sur les tableaux de bits de </cours/algorithmie/fonctions-booléennes/>{.interne}
+
 ## <span id="exponentiation">Exponentiation
 
 L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.

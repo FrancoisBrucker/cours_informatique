@@ -12,7 +12,7 @@ eleventyComputed:
 
 > TBD Connexion à un système distant
 
-
+> TBD <https://www.youtube.com/watch?v=mdxKBz5QUTo>
 > url
 > transmission réseau
 > ssh

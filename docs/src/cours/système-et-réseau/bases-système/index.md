@@ -34,3 +34,5 @@ Le terminal permet d'exécuter rapidement des commandes.
 {% aller %}
 [Nouvelle installation d'un système](système-installation){.interne}
 {% endaller %}
+
+> TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>

@@ -10,8 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-
+> TBD :
+> - <https://www.youtube.com/watch?v=G0O0VHVtNuM>
+> - <https://www.youtube.com/watch?v=UeIpq-C-GSA>
+> - <https://www.youtube.com/watch?v=Xw9lBsCc_Qk>
+> 
 > TBD : dire qu'on ne présente que le bloc principal. Ensuite il s'imbrique dans la suite du cours (taille quelconque et intégrité)
 
 {% lien %}

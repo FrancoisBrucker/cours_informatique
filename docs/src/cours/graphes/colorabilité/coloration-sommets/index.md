@@ -346,6 +346,8 @@ On voit que, comme pour le problème SAT, le problème est simple pour 1 et 2 ma
 
 ## Coloration et composition de graphes
 
+> TBD <https://www.youtube.com/watch?v=Tnu_Ws7Llo4> sur <https://arxiv.org/pdf/1905.02167>
+
 La coloration de graphe peut se faire _plus ou moins_ par parties en  utilisant la [composition de graphes](../../structure/#composition-graphes){.interne} :
 
 {% note "**Proposition**" %}

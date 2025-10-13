@@ -10,6 +10,164 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+{% lien "**Bibliographie**" %}
+
+- "random number generators : principles and practices de David Johnston"
+- "Introduction to modern cryptography de Jonathan Katk et Yehuda Lindell"
+
+{% endlien %}
+
+Le processus d'envoi d'un message confidentiel entre Alice et Bob décrit précédemment doit être ajusté pour être réaliste :
+
+```
+    Alice    |  Eve   |     Bob
+-------------|--------|--------------
+    m, k     |        |      k
+E(k, m) = c -|-- c ---|----> c
+             |        | D(k, c) = m
+             |        |
+espace privé | public |    privé
+```
+
+On va petit à petit modifier ce schéma pour le rendre utilisable en pratique. Commençons tout d'abord par fixer le code utilisé. On utilise le chiffre de Vernam car il possède deux avantages imbattables :
+
+- il est à confidentialité parfaite
+- il est de complexité linéaire et très facile à implémenter
+
+On obtient alors le schéma suivant :
+
+```
+    Alice    |  Eve   |     Bob
+-------------|--------|--------------
+    m, k     |        |      k
+  k ⊕ m = c -|-- c ---|----> c
+             |        |  k ⊕ c = m
+             |        |
+espace privé | public |    privé
+```
+
+Pour que le chiffre de Vernam fonctionne, il faut que la clé soit générée de façon uniforme. Attelons-nous à ça.
+
+## Génération de clés uniformes
+
+La clé générée doit être uniforme pour qu'un attaquant potentiel ne puisse pas avoir le moindre indice sur celle-ci. Ceci est impossible à faire avec un algorithme qui est par définition déterministe. On utilise ainsi des systèmes physiques (souvent couplés à des algorithmes et intégré directement sur le processeur) appelé _**TRNG**_ pour _True Random Number Generator_ pour cela.
+
+Nous ne rentrerons pas en détail ici sur les moyens de générer de tels nombres, le lecteur intéressé pourra visiter le lien suivant :
+
+{% info %}
+
+Pour en savoir plus :
+
+[_True Random Number Generator_](/cours/misc/aléatoire/nombres-aléatoires){.interne}
+
+{% endinfo %}
+
+Ce qu'il faut en retenir pour nous c'est que :
+
+{% attention "**À retenir**" %}
+Générer des nombre vraiment aléatoire avec un ordinateur est possible en utilisant des systèmes physiques embarqués. C'est cependant un processus compliqué et coûteux en temps.
+{% endattention %}
+
+## Partager la clé
+
+Il est cependant irréaliste qu'Alice et Bob aient connaissance de la clé avant de se transmettre un message, sinon aucune communication sécurisée ne serait possible entre 2 ordinateurs. Il faut utiliser un moyen pour qu'Alice et/ou Bob puissent générer une clé puis se la transmettre de façon sécurisée.
+
+Ceci est possible en utilisant des problèmes dont que l'on ne sait pas algorithmiquement résoudre efficacement :
+
+{% aller %}
+[Partager de secret](partager-secret){.interne}
+{% endaller %}
+
+Le schéma de transmission confidentiel devient alors :
+
+```
+    Alice    |         |     Bob
+    privé    | public  |    privé
+-------------|---------|--------------
+     m       |         |
+             |         |
+     a ---v  |         |  v--- b           # générés par un TRNG
+     k <--===|= A = B =|===--> k           # protocole de partage de clé sécurisé
+             |         |
+  k ⊕ m = c -|--- c ---|----> c
+             |         |  k ⊕ c = m
+             |         |
+```
+
+## Notion de sécurité
+
+La sécurisation du protocole de transmission de la clé par le protocole de Diffie-Hellmann dépend de la complexité du meilleur algorithme (connu) permettant de résoudre le problème du logarithme discret. Elle dépend du ratio entre le temps nécessaire pour le décrypter et la durée de vie du message.
+
+Si les meilleurs algorithmes de résolution sont connus (ce qui n'est jamais vraiment assuré) on peut déterminer une taille de clé qui garantissent un temps de décryptage trop important. Formalisons cette notion :
+
+{% aller %}
+[Sémantiquement sécurisée](définition-sécurité){.interne}
+{% endaller %}
+
+## Transmission
+
+La méthode de chiffrement utilisant le code de Verna n'est pas directement utilisable en pratique car, la clé de chiffrement ne devant pas être répétée pour garantir l'inviolabilité du chiffrement, il faudrait utiliser le protocole de Diffie-Hellman pour générer des clés différentes pour chaque partie du message à chiffrer ce qui est trop coûteux en temps et empêcherait.
+
+On utilise donc un générateur de nombre pseudo-aléatoire cryptographique (_Cryptographic Pseudo-Random Number Generator_) pour générer assez de bit à partir de la clé pour chiffrer le message entier :
+
+```
+    Alice    |         |     Bob
+    privé    | public  |    privé
+-------------|---------|--------------
+     m       |         |
+             |         |
+     a ---v  |         |  v--- b           # générés par un TRNG
+     k <--===|= A = B =|===--> k           # protocole de partage de clé sécurisé
+             |         |
+  G(k) = K   |         |  G(k) = K         # générés par un CPRNG
+             |         |
+  K ⊕ m = c -|--- c ---|----> c
+             |         |  K ⊕ c = m
+```
+
+Pour qu'une méthode de chiffrement puisse être utilisé en pratique, il faut pouvoir avoir deux choses :
+
+- des clés de petites tailles par rapport au message à faire passer
+- des algorithmes de complexité linéaires pour chiffrer et déchiffrer les messages.
+
+Même si on s'autorise théoriquement des algorithmes polynomiaux, en pratique, efficaces veut plutôt dire linéaire car il faut que ces algorithmes puissent chiffrer de très nombreuses données. Efficace prend donc deux significations différentes, selon que l'on cherche à prouver théoriquement des résultats où que l'on veuille en pratique chiffrer des données. L'un ne va cependant pas sans l'autre.
+
+Ces deux contraintes vont forcément nous faire passer des informations à l'adversaire. Selon le type d'information que l'on ne veut pas divulguer on va utiliser une méthode plutôt qu'une autre.
+
+> TBD CPRNG -> permutation
+> TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)
+
+## Schéma final de la transmission
+
+> rappel définition securisé, avantage, etc.
+
+
+
+
+1. Alice et/ou Bob doivent créer un nombre aléatoire de façon uniforme servant de clé.
+2. Alice et Bob doivent s'échanger une clé de taille petite par rapport à la taille du message à échanger mais choisie uniformément parmi toutes les clé possibles
+3. cette clé doit permettre de générer une clé plus grosse de taille égale au message à échanger (on verra pourquoi)
+4. on chiffre le message avec le code de Vernam que l'on peut ensuite transmettre
+
+```
+    Alice    |        |     Bob
+    privé    | public |    privé
+-------------|--------|--------------
+      m      |        |     
+      k <----|--------|----> k
+  G(k) = K   |        |  G(k) = K    
+E(K, m) = c -|-- c ---|----> c
+             |        | D(K, c) = m
+             |        |
+```
+
+Pour que tout fonctionne sans accros il faut que chaque étape soit "_sécurisée_" (on définira précisément ce terme plus tard) en particulier :
+
+1. il faut créer une clé uniforme.
+2. il faut pouvoir se partager un secret via un canal public
+3. il faut que l'algorithme de génération de clé plus grosse soit connu de tous **mais** que ce soit impossible de connaître la séquence finale si on a pas la clé de départ
+4. il faut que $c$ soit uniforme pour ne pas
+
 ```
            k                   k
            |                   |
@@ -33,58 +191,6 @@ On considère actuellement que si le [nombre de clés est supérieur à $2^{128}
 {% lien %}
 [recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/)
 {% endlien %}
-
-Pour chiffrer un message on va utiliser le protocole suivant (on vérifiera plus tard que cela fonctionne bien) :
-
-1. Alice et/ou Bob doivent créer une nombres aléatoires servant de clé.
-2. Alice et Bob doivent s'échanger une clé de taille petite par rapport à la taille du message à échanger mais choisie uniformément parmi toutes les clé possibles
-3. cette clé doit permettre de générer une clé plus grosse de taille égale au message à échanger
-4. on chiffre le message avec le code de Vernam que l'on peut ensuite transmettre
-
-Pour que tout fonctionne sans accros il faut que chaque étape soit "_sécurisée_" (on définira précisément ce terme plus tard) en particulier :
-
-1. il faut pouvoir se partager un secret via un canal public
-2. il faut que l'algorithme de génération de clé plus grosse soit connu de tous **mais** que ce soit impossible de connaître la séquence finale si on a pas la clé de départ
-3. C'est la seule étape qui pour l'instant est sécurisée si on ne répète pas la clé puisqu'il n'y a pas de différence entre un message chiffré et un mot aléatoire.
-
-## 1. Génération de nombres aléatoires
-
-> TBD le lancer de dés.
-Mais ne le faites pas vous même dans votre tête. Les humains ne sont pas bon pour faire du hasard :
-
-{% lien %}
-<https://www.youtube.com/watch?v=tP-Ipsat90c>
-{% endlien %}
-
-Si on utilise un ordinateur c'est possible :
-
-{% lien %}
-<https://www.random.org/>
-{% endlien %}
-
-Souvent [dans le processeur](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html#ig_expand=5627&cats=Random) ou via le [système d'exploitation](https://en.wikipedia.org/wiki//dev/random) :
-
-```shell
-xxd < /dev/random
-```
-
-Ou de façon plus "lisible" :
-
-```shell
-echo "hasard : "$(base64 </dev/random 2>/dev/null| head -c 100)
-```
-
-Mais ce n'est pas simple à faire vraiment.
-
-Utilise des méthodes qui collecte de l'entropie puis la supprime sous la forme de nombres aléatoires
-
-> TBD avec entropie, quantique, etc.
-
-## 2. Partage de clé
-
-{% aller %}
-[Partager la clé](partager-secret){.interne}
-{% endaller %}
 
 ## Génération de nombres pseudo-aléatoires
 
@@ -182,6 +288,8 @@ Il existe historiquement deux types de codes même si les différences commencen
 [Schéma général](./schéma-général){.interne}
 {% endaller %}
 
+> <https://www.youtube.com/watch?v=G2TYtN2qJls&list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc>
+> 
 ### Attention aux implémentations
 
 Les [side channel attacks](partager-secret/#side-channel-attack){.interne} permettent, on l'a vue, de tirer parie de l'implémentation de l'algorithme pour obtenir un avantage npn négligeable. Pour qu'aucune information ne transparaisse, il faut que l'algorithme :

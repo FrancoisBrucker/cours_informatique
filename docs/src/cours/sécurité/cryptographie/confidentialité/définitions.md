@@ -10,62 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous avons démontré précédemment que le code de Vernam est inviolable sans la connaissance de la clé. Mais y en a-t-il d'autres ?
-
-[Claude Shannon](https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory), dans son article séminale de 1949 sur la théorie de l'information donne une définition d'un code assurant une confidentialité parfaite :
-
-{% note "**Définition**" %}
-Un code $(E, D)$ assure une **_confidentialité parfaite_** si pour :
-
-- tous messages $m$ et $m'$ de même taille
-- tout chiffre $c$
-- les clés $k$ suivent une loi uniforme $k \xleftarrow{U} \mathcal{K}$
-
-On a :
-
-<div>
-$$
-\Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m) = c] = \Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m') = c]
-$$
-</div>
-
-{% endnote %}
-
-Un code assurant une confidentialité parfaite ne doit donner aucune information sur $k$ ou $m$ en ne sachant que $E(k, m)$, ce qui se traduit par le fait que :
-
-- tout message peut donner un chiffre donné si on choisit la bonne clé
-- et avec la même probabilité
-
-{% note "**Théorème**" %}
-Le code de Vernam assure une confidentialité parfaite.
-{% endnote %}
-{% details "preuve", "open" %}
-
-La variable aléatoire $(k \xleftarrow{U} \mathcal{K}) \oplus m$ est uniforme quelque soit $m$ : la probabilité d'obtenir n'importe quel chiffre est ainsi une constante et vaut $\frac{1}{\vert \mathcal{C}\vert}$ ce qui est indépendant de $m$.
-
-{% enddetails %}
-
-Shannon montre cependant qu'avoir une confidentialité parfaite est trop restrictive en pratique :
-
-{% note "**Théorème**" %}
-Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieur ou égal au nombre de messages à chiffrer.
-{% endnote %}
-{% details "preuve", "open" %}
-
-Soit $k^{\star} \in \mathcal{K}$, $m^{\star} \in \mathcal{M}$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $\Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m') = c^\star] = 0 < \Pr_{k \xleftarrow{U} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.
-
-On en déduit que l'ensemble $\mathcal{M}' = \\{m \vert E(k, m)=c^{\star}, k \in \mathcal{K}\\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert \mathcal{M}' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.
-
-{% enddetails %}
-
-De là, tout comme le code de Vernam, si on encode des mots de $\\{0, 1\\}^t$, il faut que la taille de la clé soit plus grande que $L$. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?
-
-Il faut donc :
-
-1. relâcher la contrainte de confidentialité parfaite
-2. assumer que l'on donnera de toute façons des informations à l'adversaire.
-3. faire en sorte de quantifier la quantité d'information consentie.
-
 {% lien %}
 De nombreux exemples et preuves sont tirées du livre suivant, que tout informaticien désireux d'avoir des connaissances théoriques sur la cryptanalyse devrait avoir :
 
@@ -122,33 +66,8 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 {% endattention %}
 
-Formalisons tout ça.
 
-### Sécurité en pratique
-
-Une méthode de chiffrement sera dite $(t, \epsilon)$-sécurisée si tout algorithme passant $t$ secondes à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $0\leq \epsilon \leq 1$.
-
-Comme l'algorithme brute force teste une clé en plus d'une opération, toute méthode de chiffrement sera au maximum $(t, \frac{t}{2^s})$-sécurisée où $s$ est la taille de la clé et $t$ le temps mis pour tester une clé.
-
-{% info %}
-On peut aussi mesurer le nombre d'opérations mis pour exécuter l'algorithme puis mesurer sa probabilité de réussite. On aura alors une sécurité définie par nombre d'opérations effectuées.
-{% endinfo %}
-
-Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.
-
-{% exercice %}
-
-Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance en 100 siècles de déchiffrer un message ?
-{% endexercice %}
-{% details "corrigé" %}
-100 siècles vaut environ $2^{39}$ secondes et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-39})$-sécurisée.
-
-L'algorithme étant brute force, on a : $2^{-39} = \frac{2^{30}}{2^s}$ ce qui donne $s = 69$.
-
-Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, actuellement, on recommande des tailles de clés d'au moins 128bits.
-{% enddetails %}
-
-### Avantage Probabiliste
+## Avantage Probabiliste
 
 L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que `A(E(k,mb))=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
@@ -228,63 +147,10 @@ $$
 Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $\Pr[A(U) = 1] = \Pr[A(k\oplus m_1) = 1] = \Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.
 {% enddetails %}
 
-## <span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée
 
-La méthode précédente donne idée de la sécurité _actuelle_ d'une méthode de chiffrement puisqu'elle mesure le nombre d'opérations ou le temps pris pour décrypter une méthode de chiffrement. Cela ne dit rien de ce qui pourra se passer dans 5 ou 10 ans lorsque les ordinateurs iront plus vite ou que les méthodes de résolutions seront plus évoluées. De plus, un algorithme brute force qui teste toutes les possibilités aura toujours un avantage de 1 (ou quasi 1 si l'on prend en compte les collisions) si on lui laisse un temps exponentiel par rapport à la taille de la clé pour s'exécuter.
 
-Il faut donc d'un côté :
 
-- trouver une autre mesure que le temps pour déterminer la sécurité,
-- ne prendre en compte que les adversaires s'exécutant en temps raisonnable
 
-La solution est d'utiliser la complexité algorithmique et son analyse asymptotique. On considérera alors :
-
-- des clés assez grandes pour que l'attaque brute force nécessite un temps exponentiel non réalisable
-- les adversaires qui ont une chances de terminer assez rapidement, c'est à dire ceux dont les algorithmes de résolution sont polynomiaux,
-- qu'un avantage est acceptable s'il est  exponentiellement petit par rapport à la taille de la clé.
-
-Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un nombre d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon(s) = \frac{1}{2^{s-d}}$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !
-
-{% note "**Définition**" %}
-Pour calculer une complexité, il faut connaître la taille de l'entrée, c'est à dire les informations données à l'adversaire.
-
-De façon classique, la taille de cette entrée ($n$), nommé **_paramètre de sécurité_**, consiste en la taille de la clé (valant $s$) plus la taille du message à chiffrer (valant $t$) :
-
-<div>
-$$
-n \coloneqq s+t
-$$
-</div>
-
-{% endnote %}
-
-L'augmentation de la taille des clés va certes avoir un effet sur le temps d'exécution mais ce sera surtout sur l'avantage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :
-
-{% exercice %}
-On suppose que l'exécution d'un adversaire de complexité temporelle (en secondes) $n^3$ ait un avantage de $\min(1, \frac{2^{40}}{2^n})$.
-
-Pour $n=40$, combien faut-il de temps pour qu'il puisse décrypter la méthode de façon certaine ? Quel est son avantage pour $n=50$ et en combien de temps s'exécute-t-il ?
-{% endexercice %}
-{% details "corrigé" %}
-
-Pour $n=40$, il aura besoin de $40^3$ secondes pour s'exécuter, c'est à dire un peut moins de 18 heures, et son avantage de sera de 1.
-
-Pour $n=40$, il aura besoin de $50^3$ secondes pour s'exécuter, c'est à dire un peut moins de 35 heures, mais son avantage ne sera plus que de $10^{-3}$.
-{% enddetails %}
-
-Autre exemple, on la vitesse de calcul ne bénéficie pas forcément à l'adversaire :
-
-{% exercice %}
-Supposons qu'une méthode de chiffrement se chiffre et se déchiffre en $n^2$ opérations et qu'un adversaire possède un algorithme en $n^4$ pour le décrypter.
-
-Soit $n=50$. Si l'on prend un ordinateur qui va 16 fois plus vite, quelle est la taille de $n$ que l'on peut se permettre en gardant le même temps de chiffrement ? Que s'est-il passé pour l'adversaire ?
-{% endexercice %}
-{% details "corrigé" %}
-
-On cherche $n'$ tel que : $16\cdot 50^2 = n'^2$, c'est à dire $n' = 200$. On a pu augmenter le paramètre de sécurité de 4.
-
-Pour l'adversaire, c'est moins profitable puisque son temps d'exécution est multiplié par $200^4/50^4 = 256$.
-{% enddetails %}
 
 Définissons formellement les adversaire et les avantages que l'on admet pour qu'une méthode soit sécurisée.
 
