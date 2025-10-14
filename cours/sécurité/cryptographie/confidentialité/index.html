@@ -216,6 +216,9 @@ espace privé | public |    privé
 </div></div>
 
 <blockquote>
+<p>TBD Chiffrement sémantiquement sécurisé avec CPRNG.</p>
+</blockquote>
+<blockquote>
 <p>TBD CPRNG -&gt; permutation
 TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)</p>
 </blockquote>
@@ -310,13 +313,6 @@ E(K, m) = c -|-- c ---|----&gt; c
 </ul>
 <p>Ou encore les décimales de pi à partir de la $k$ème
 voir des méthodes plus sophistiquée comme <a href="Rapport_de_Stage_Laura_Michelutti.pdf">les lsfr</a>.</p>
-<p>Mais attention doit être &quot;sécurisé&quot; ! On ne doit pas pouvoir prédire la suite à partir d'un échantillon. Ceci peut se faire si un attaquant peut envoyer des messages à chiffrer :</p>
-<pre><code>  kkkkkkk
-+ 0000000
-----------
-  kkkkkkk
-</code></pre>
-<p>On retrouve Xn puis si modulo je connais la suite.</p>
 <p>Ces générateur (python, ou encore le modulo avec un entier premier) sont parfait pour prédire le monde physique, les sorties sont bien uniformes et indétectables de l'aléatoire, mais pour les applications crypto on veut en plus non-prédictible.</p>
 <p>Du coup $\pi$ marche pas non plus trop (<a href="https://mathoverflow.net/questions/26942/is-pi-a-good-random-number-generator">https://mathoverflow.net/questions/26942/is-pi-a-good-random-number-generator</a> et <a href="https://www2.lbl.gov/Science-Articles/Archive/pi-random.html">https://www2.lbl.gov/Science-Articles/Archive/pi-random.html</a>).</p>
 <p>Et les lsfr il faut travailler.</p>

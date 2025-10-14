@@ -299,7 +299,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une méthode de chiffrement est <strong><em>sémantiquement sécurisée</em></strong> (<em>Semantically secured</em>) si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable pour tout algorithme de déchiffrement polynomial.</p>
+<p>Une méthode de chiffrement est <strong><em>sémantiquement sécurisée</em></strong> (<em>Semantically secured</em>) si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.</p>
 </div></div>
 
 <p>La définition précédente nous permet de définir un cadre pour construire une méthode de chiffrement sécurisée :</p>
@@ -348,7 +348,7 @@ $$
 <p>Et se déroule ainsi :</p>
 <ol>
 <li>un bit $b \in \{0, 1\}$ est fournit au testeur choisi de façon uniforme</li>
-<li>selon $b$ choisit soit une réalisation de $x \xleftarrow{D0} \{0, 1\}^t$ soit de $x \xleftarrow{D1} \{0, 1\}^t$</li>
+<li>selon $b$ choisit soit une réalisation de $x \xleftarrow{D0} \{0, 1\}^t$ soit de $x \xleftarrow{D1} \{0, 1\}^{t}$</li>
 <li>le testeur envoie $x$ à l'adversaire</li>
 <li>l'adversaire répond un bit $b'$, résultat d'un algorithme efficace (<em>ie.</em> polynomial)</li>
 <li>l'adversaire :
@@ -413,10 +413,22 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $D0$ est traité de façon équivalente à $D1$ dans l'algorithme, on a :</p>
+<p>Si $D0$ est traité de façon équivalente à $D1$ dans l'algorithme $A$, on a :</p>
 <div>
 $$
-\epsilon(A) = \vert \Pr[b' = 1 \;\mid\; b = 1] - \Pr[b' = 1 \;\mid\; b = 0] \vert = \vert \Pr[b' = 0 \;\mid\; b = 0] - \Pr[b' = 0 \;\mid\; b = 1] \vert
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr[b' = 1 \;\mid\; b = 1] - \Pr[b' = 1 \;\mid\; b = 0] \vert\\
+&=& \vert \Pr[b' = 0 \;\mid\; b = 0] - \Pr[b' = 0 \;\mid\; b = 1] \vert\\
+\end{array}
+$$
+</div>
+<p>Et ainsi :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr_{x \xleftarrow{D1} \{0, 1\}^t}[A(x) = 1 ] - \Pr_{x \xleftarrow{D0} \{0, 1\}^t}[A(x) = 1 ] \vert\\
+&=& \vert \Pr_{x \xleftarrow{D0} \{0, 1\}^t}[A(x) = 1 ] - \Pr_{x \xleftarrow{D1} \{0, 1\}^t}[A(x) = 1 ] \vert\\
+\end{array}
 $$
 </div>
 </div></div>
