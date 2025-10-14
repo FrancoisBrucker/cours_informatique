@@ -129,6 +129,11 @@ On utilise donc un générateur de nombre pseudo-aléatoire cryptographique (_Cr
 [Nombres pseudo aléatoires cryptographiques](nombres-pseudo-aléatoires-cryptographiques){.interne}
 {% endaller %}
 
+
+
+> TBD Chiffrement sémantiquement sécurisé avec CPRNG.
+
+
 > TBD CPRNG -> permutation
 > TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)
 
@@ -234,16 +239,6 @@ Ca existe :
 Ou encore les décimales de pi à partir de la $k$ème
 voir des méthodes plus sophistiquée comme [les lsfr](./Rapport_de_Stage_Laura_Michelutti.pdf).
 
-Mais attention doit être "sécurisé" ! On ne doit pas pouvoir prédire la suite à partir d'un échantillon. Ceci peut se faire si un attaquant peut envoyer des messages à chiffrer :
-
-```
-  kkkkkkk
-+ 0000000
-----------
-  kkkkkkk
-```
-
-On retrouve Xn puis si modulo je connais la suite.
 
 Ces générateur (python, ou encore le modulo avec un entier premier) sont parfait pour prédire le monde physique, les sorties sont bien uniformes et indétectables de l'aléatoire, mais pour les applications crypto on veut en plus non-prédictible.
 

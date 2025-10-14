@@ -28,6 +28,9 @@ Il nous faut cependant avant tout définir précisément ce qu'aléatoire veut d
 En tant qu'informaticien, nous ne nous intéresserons qu'à la génération d'entiers (première partie) voir juste de bits (seconde partie).
 {% endattention %}
 
+
+> TBD dire aléatoire à k=seed fixé. p61 intro modern crypto.
+
 ## Aléatoire
 
 {% note "**Définition**" %}

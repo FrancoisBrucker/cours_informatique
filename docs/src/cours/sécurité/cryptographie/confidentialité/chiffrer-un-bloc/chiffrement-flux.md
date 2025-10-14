@@ -130,26 +130,7 @@ On a alors que l'avantage de $A$ ne peut être non négligeable puisque que $A'$
 
 {% enddetails %}
 
-Notez qu'un générateur de nombre donne des résultats loin d'être aléatoires.
 
-En effet :
-
-- le nombre de chaînes atteignable depuis sa seed : $2^s$
-- le nombre de chaînes possible : $2^{t} > 2^s$
-
-Considérons l'algorithme **non efficace** $D$ suivant :
-
-1. il calcule $G(k)$ pour tous les $2^s$ valeurs de $k$ possible.
-2. lorsque le testeur lui montre un mot $m$ de $\\{0, 1\\}^n$ il répond 1 s'il existe $k$ tel que $G(k)=m$, et 0 sinon.
-
-Il reconnaît $D$ avec l'avantage suivant :
-
-- $Pr[D(G) = 1 | b=1] = 1$
-- $Pr[D(G) = 1 | b=0] = 2^s/2^n = 1/2^{n-s}$ qui correspond à la probabilité que $N$ soit choisit parmi les mots possibles de $G$ ($2^s$ mots de $G$ parmi les $2^n$ mots possibles)
-
-Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n>>s$
-
-Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.
 
 ### <span id="construction-générateur"></span>Construction d'un générateur
 
@@ -172,49 +153,3 @@ Comme une [PRP](../#définitions/#PRP){.interne} peut être utilisée en lieu et
 Notez qu'on est passé d'un générateur à un paramètre $G(k)$ à un générateur à deux paramètres $F(k, r)$ que l'on peut prendre indépendamment.
 
 ## PRG et _prédictabilité_
-
-> TBD à comparer aux générateur de nombres pseudo-aléatoire que l'on verra ensuite en algorithmie.
-
-{% note %}
-Une suite $g(k,1), \dots g(k, m + 1)$ est non prédictible si tout algorithme efficace ne peut peut prédire $g(k, m + 1)$ sachant $g(k, 1), \dots, g(k, m)$ qu'avec un avantage négligeable.
-{% endnote %}
-
-Le générateur de nombre pseudo-aléatoire tel que $x_i = a \cdot x_{i-1} + b \bmod p$ ne l'est pas, malgré le fait qu'il possède de belle propriétés statistiques si $p$ est premier. Pour qu'un générateur de nombre puisse être utilisé de façon cryptographe, on s'intéresse moins à ses propriété d'uniformité qu'à sa non prédictibilité.
-
-Non prédictible est équivalent à non distinguable.
-
-{% note "**Proposition**" %}
-Un PRG sécurisé est non prédictible.
-{% endnote %}
-{% details "preuve" %}
-
-Supposons qu'un secure PRG soit prédictible. Il existe alors un algorithme efficace A qui possède un avantage non négligeable pour déterminer le $m+1$ ème bit à partir des $m$ premiers.
-
-On peut utiliser cet algorithme pour déterminer si $G$ est un PRG sécurisé : on ne considère que les $m+1$ premiers bits et on rend la valeur donnée par l'algorithme $A$. L'avantage est le même et est non négligeable.
-
-{% enddetails %}
-
-{% note "**Théorème (Yao, 1982)**" %}
-Un PRG non prédictible est sécurisé.
-{% endnote %}
-{% details "preuve" %}
-Soit $G$ un générateur non prédictible, et R un générateur aléatoire.
-
-Supposons qu'il existe $i$ tel que que le générateur $G(k) [:i]\\; ||\\; R[i:]$ soit non sécurisé. Prenons $i$ le plus petit et soit A l'algorithme efficace qui réalise cet avantage.
-
-Cet algorithme nous permettra de discerner $G(k) [:i-1]\\; ||\\; R[i-1:]$ de $G(k) [:i]\\; ||\\; R[i:]$ avec le même avantage et donc de prédire $G(k) [i]$ à partir de $G(k) [:i-1]$ avec encore une fois le même avantage. Ceci n'est pas possible puisque $G$ est non prédictible.
-
-le générateur $G(k) [:i]\\; ||\\; R[i:]$ est donc sécurisé pour tout $i$ donc également pour $i=n$.
-
-{% enddetails %}
-{% info %}
-
-- on note `||` l'opérateur de concaténation
-- `m[:n]` correspond aux n-1 premiers bits de $m$
-- `m[n:]` correspond à $m$ privé de ses $n-1$ premiers bits
-
-{% endinfo %}
-
-{% lien %}
-[Article originel de Yao, 1982](https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf)
-{% endlien %}

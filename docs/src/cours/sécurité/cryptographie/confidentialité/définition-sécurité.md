@@ -137,7 +137,7 @@ L'intérêt de cette formalisation est que négligeabilité se compose tout comm
 Si on ne possède que des fonctions négligeable pour décrypter un code on ne peut donc pas arriver à grand chose, ce qui permet d'être en sécurité :
 
 {% note "**Définition**" %}
-Une méthode de chiffrement est **_sémantiquement sécurisée_** (_Semantically secured_) si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable pour tout algorithme de déchiffrement polynomial.
+Une méthode de chiffrement est **_sémantiquement sécurisée_** (_Semantically secured_) si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.
 {% endnote %}
 
 La définition précédente nous permet de définir un cadre pour construire une méthode de chiffrement sécurisée :
@@ -186,7 +186,7 @@ Le schéma du jeu est alors le suivant :
 Et se déroule ainsi :
 
 1. un bit $b \in \\{0, 1\\}$ est fournit au testeur choisi de façon uniforme
-2. selon $b$ choisit soit une réalisation de $x \xleftarrow{D0} \\{0, 1\\}^t$ soit de $x \xleftarrow{D1} \\{0, 1\\}^t$
+2. selon $b$ choisit soit une réalisation de $x \xleftarrow{D0} \\{0, 1\\}^t$ soit de $x \xleftarrow{D1} \\{0, 1\\}^{t}$
 3. le testeur envoie $x$ à l'adversaire
 4. l'adversaire répond un bit $b'$, résultat d'un algorithme efficace (_ie._ polynomial)
 5. l'adversaire :
@@ -247,13 +247,28 @@ On est presque toujours assuré de gagner !
 Le corollaire ci-après montre que l'avantage est également la différence entre gagner ou perdre en choisissant tout le temps $D0$ ou $D1$. C'est cette définition que nous utiliserons dans tous les autres jeux que nous définirons :
 
 {% note "**Corollaire**" %}
-Si $D0$ est traité de façon équivalente à $D1$ dans l'algorithme, on a :
+Si $D0$ est traité de façon équivalente à $D1$ dans l'algorithme $A$, on a :
 
 <div>
 $$
-\epsilon(A) = \vert \Pr[b' = 1 \;\mid\; b = 1] - \Pr[b' = 1 \;\mid\; b = 0] \vert = \vert \Pr[b' = 0 \;\mid\; b = 0] - \Pr[b' = 0 \;\mid\; b = 1] \vert
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr[b' = 1 \;\mid\; b = 1] - \Pr[b' = 1 \;\mid\; b = 0] \vert\\
+&=& \vert \Pr[b' = 0 \;\mid\; b = 0] - \Pr[b' = 0 \;\mid\; b = 1] \vert\\
+\end{array}
 $$
 </div>
+
+Et ainsi :
+
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr_{x \xleftarrow{D1} \{0, 1\}^t}[A(x) = 1 ] - \Pr_{x \xleftarrow{D0} \{0, 1\}^t}[A(x) = 1 ] \vert\\
+&=& \vert \Pr_{x \xleftarrow{D0} \{0, 1\}^t}[A(x) = 1 ] - \Pr_{x \xleftarrow{D1} \{0, 1\}^t}[A(x) = 1 ] \vert\\
+\end{array}
+$$
+</div>
+
 
 {% endnote %}
 {% details "preuve", "open" %}
