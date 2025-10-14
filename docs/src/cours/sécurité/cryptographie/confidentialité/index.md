@@ -125,21 +125,30 @@ On utilise donc un générateur de nombre pseudo-aléatoire cryptographique (_Cr
              |         |  K ⊕ c = m
 ```
 
+{% aller %}
+[Nombres pseudo aléatoires cryptographiques](nombres-pseudo-aléatoires-cryptographiques){.interne}
+{% endaller %}
+
+> TBD CPRNG -> permutation
+> TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)
+
+
+
+
+
+
+
+## Schéma final de la transmission
+
 Pour qu'une méthode de chiffrement puisse être utilisé en pratique, il faut pouvoir avoir deux choses :
 
 - des clés de petites tailles par rapport au message à faire passer
 - des algorithmes de complexité linéaires pour chiffrer et déchiffrer les messages.
 
-Même si on s'autorise théoriquement des algorithmes polynomiaux, en pratique, efficaces veut plutôt dire linéaire car il faut que ces algorithmes puissent chiffrer de très nombreuses données. Efficace prend donc deux significations différentes, selon que l'on cherche à prouver théoriquement des résultats où que l'on veuille en pratique chiffrer des données. L'un ne va cependant pas sans l'autre.
+Même si on s'autorise théoriquement des algorithmes polynomiaux, en pratique, efficaces veut plutôt dire linéaire car il faut que ces algorithmes puissent chiffrer de très nombreuses données en peu de temps. Efficace prend donc deux significations différentes, selon que l'on cherche à prouver théoriquement des résultats où que l'on veuille en pratique chiffrer des données. L'un ne va cependant pas sans l'autre.
 
 Ces deux contraintes vont forcément nous faire passer des informations à l'adversaire. Selon le type d'information que l'on ne veut pas divulguer on va utiliser une méthode plutôt qu'une autre.
 
-> TBD ici sécurisation.
-
-> TBD CPRNG -> permutation
-> TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)
-
-## Schéma final de la transmission
 
 > rappel définition securisé, avantage, etc.
 
