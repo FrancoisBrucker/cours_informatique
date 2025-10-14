@@ -96,7 +96,13 @@
     
   
 
-  <p>D. Knuth cite dans le volume 2 de <a href="https://www.amazon.fr/Art-Computer-Programming-Seminumerical-Combinatorial/dp/0137935102/">Art of computer programming</a> près d'une dizaine d'application où l'on a besoin de nombres aléatoires (simulation, échantillonnages, jeu, ...). Cependant, à part l'usage de <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires_mat%C3%A9riel">générateurs aléatoires physiques</a> ou encore l'utilisation de <a href="https://fr.wikipedia.org/wiki/Table_de_nombres_al%C3%A9atoires">tables</a>, l'aléatoire semble cependant hors de portée d'un ordinateur, par essence déterministe.</p>
+  <blockquote>
+<p>TBD cherche à être uniforme
+ex mod
+xorshift
+mersenne twister de python</p>
+</blockquote>
+<p>D. Knuth cite dans le volume 2 de <a href="https://www.amazon.fr/Art-Computer-Programming-Seminumerical-Combinatorial/dp/0137935102/">Art of computer programming</a> près d'une dizaine d'application où l'on a besoin de nombres aléatoires (simulation, échantillonnages, jeu, ...). Cependant, à part l'usage de <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_al%C3%A9atoires_mat%C3%A9riel">générateurs aléatoires physiques</a> ou encore l'utilisation de <a href="https://fr.wikipedia.org/wiki/Table_de_nombres_al%C3%A9atoires">tables</a>, l'aléatoire semble cependant hors de portée d'un ordinateur, par essence déterministe.</p>
 <p>Si un algorithme ne ne peut &quot;créer&quot; de nombres aléatoires, le relancer avec les mêmes paramètres redonnera exactement les mêmes résultats, on peut cependant des nombres ayant <em>l'air</em> d'être aléatoire. Ces nombres sont alors appelés <strong><em>nombres pseudo-aléatoires</em></strong>.</p>
 <p>Il nous faut cependant avant tout définir précisément ce qu'aléatoire veut dire avant de montrer deux méthodes permettant d'en générer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">

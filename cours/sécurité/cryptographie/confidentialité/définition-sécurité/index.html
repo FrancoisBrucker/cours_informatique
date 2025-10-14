@@ -339,7 +339,7 @@ $$
 <pre><code>
      testeur                              adversaire
     ---------                            ------------
-    |       |                            |          |  
+    |       |                            |          |
  b  |  D0   |   x tiré selon D0 si b=0   |    D0    |   A(x) = b'
 ---&gt;|  D1   |   x tiré selon D1 si b=1   |    D1    | -------------&gt;
     |       | -------------------------&gt; |          |
@@ -359,7 +359,7 @@ $$
 </li>
 </ol>
 <p>Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la suite générée par notre méthode de chiffrement est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences.</p>
-<p>L'adversaire possède un <strong><em><a href="https://en.wikipedia.org/wiki/Advantage_(cryptography)">avantage</a></em></strong> si la probabilité que <code>A(x)=b'</code> coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :</p>
+<p>L'adversaire possède un <strong>_<a href="https://en.wikipedia.org/wiki/Advantage_(cryptography)">avantage</a>_</strong> si la probabilité que <code>A(x)=b'</code> coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -485,7 +485,7 @@ $$
 </div></div>
 
 <h3>Jeu du chiffrement</h3>
-<p>Si l'on cherche à prouver qu'une méthode de chiffrement est sémantiquement sécurisée, on peut utiliser le jeu suivant qui simule des attaques par messages choisis (<em>Chosen-plaintext attackers, CPA</em>). Si notre méthode de chiffrement y résiste elle sera également robuste pour les attaques plus faible par message connu ou chiffre uniquement.</p>
+<p>Si l'on cherche à prouver qu'une méthode de chiffrement est sémantiquement sécurisée pour des attaques par messages choisis (<em>Chosen-plaintext attackers, CPA</em>) on peut utiliser le jeu suivant. Notez que si notre méthode de chiffrement y résiste elle sera également robuste pour les attaques plus faible (par message connu ou chiffre uniquement).</p>
 <p>Le jeu consiste alors en 6 étapes :</p>
 <ol>
 <li>le testeur choisit uniformément une clé $k$</li>
@@ -640,8 +640,9 @@ $$
 \end{array}
 $$
 </div>
+<p>Comme ce calcul a été fait avec $m_0$ et $m_1$ quelconque, ce chiffrement est sémantiquement sécurisé pour des attaques de types <em>Chosen-plaintext attackers</em>.</p>
 <h3>Conclusion</h3>
-<p>Si on fait bien les choses (on verra qu'on peut se tromper si on ne fait pas attention), on peut construire une méthode de chiffrement sémantiquement sécurisée en chaînant des blocs de biais négligeable, tout comme en algorithmie une composition d'algorithmes  de complexités polynomiales reste polynomiale.</p>
+<p>Si on fait bien les choses (on verra qu'on peut se tromper si on ne fait pas attention), on peut construire une méthode de chiffrement sémantiquement sécurisée en chaînant des blocs de biais négligeable, tout comme en algorithmie une composition d'algorithmes de complexités polynomiales reste polynomiale.</p>
 <p>Ceci va être utilisé intensivement par la suite où l'on construira chaque bloc de la méthode de chiffrement indépendamment les une des autres : si chaque bloc ne donne qu'un avantage négligeable toute la chaîne également.</p>
 
 
