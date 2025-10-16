@@ -14,6 +14,7 @@ eleventyComputed:
 
 - "random number generators : principles and practices de David Johnston"
 - "Introduction to modern cryptography de Jonathan Katk et Yehuda Lindell"
+- <https://www.youtube.com/watch?v=G2TYtN2qJls&list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc>
 
 {% endlien %}
 
@@ -98,6 +99,50 @@ Le schéma de transmission confidentiel devient alors :
 
 La sécurisation du protocole de transmission de la clé par le protocole de Diffie-Hellmann dépend de la complexité du meilleur algorithme (connu) permettant de résoudre le problème du logarithme discret. Elle dépend du ratio entre le temps nécessaire pour le décrypter et la durée de vie du message.
 
+Formalisons ce concept avec la notion de fonctions à sens unique.
+
+### Fonctions à sens unique
+
+{% lien %}
+[One way function](https://en.wikipedia.org/wiki/One-way_function)
+{% endlien %}
+
+En gros, une fonction $f$ est à sens unique s'il est :
+
+- facile de calculer $f(x) = y$ avec un algorithme efficace
+- impossible de trouver $x$ sachant $f(y)$ avec un algorithme efficace
+
+{% note "**Définition**" %}
+Une fonction $f: {0, 1}^t \rightarrow {0, 1}^t$ dont il existe un algorithme efficace pour la calculer est **_à sens unique_** si pour tout algorithme efficace $A$, la probabilité suivante :
+<div>
+$$
+\Pr_{x \xleftarrow{U} \{0, 1\}^t}[f(F(f(x))) = f(x)]
+$$
+</div>
+
+Est négligeable.
+{% endnote %}
+
+On voit bien l'intérêt pour le chiffrement de ce type de fonction : on cache dans le résultat d'une fonction ce que l'on veut transmettre. C'est ce qu'on a fait avec le logarithme discret dans le protocole de Diffie-Hellman et que l'on fera avec le problème d la factorisation lorsque l'on étudiera le problème de l'authentification.
+
+Ces deux problèmes sont (très fortement) soupçonnées de faire partie de ce type de fonctions. Seulement soupçonné car on a la proposition suivante :
+
+{% note "**Proposition**" %}
+S'il existe des fonctions à sens unique, alors $P \neq NP$
+{% endnote %}
+{% details "preuve", "open" %}
+Dérive directement de ce que l'[on a vu avec le problème SAT](/cours/algorithmie/problème-SAT/#algorithme-SAT){.interne} : il est équivalent pour SAT de trouver une entrée si on a la solution que de trouver la solution si on a une entrée. On a donc l'implication suivante : Si $P = NP$ alors il ne peut exister de fonction à sens unique.
+{% enddetails %}
+
+Notez que :
+
+- la réciproque n'est pas démontrée
+- il y a très peu de chance qu'on arrive à en exhiber une fonction à sens unique
+
+Tout algorithme de chiffrement est ainsi basé sur des suppositions. Pour éviter de tout construire sur du sable, on cherche à avoir au moins des preuves de constructions pour qu'il suffise de changer un algorithme si devient clair que le problème associé n'est pas à sens unique plutôt que de changer toute la méthode. C'est le but de la section suivante.
+
+### Sémantiquement sécurisé
+
 Si les meilleurs algorithmes de résolution sont connus (ce qui n'est jamais vraiment assuré) on peut déterminer une taille de clé qui garantissent un temps de décryptage trop important. Formalisons cette notion :
 
 {% aller %}
@@ -129,216 +174,258 @@ On utilise donc un générateur de nombre pseudo-aléatoire cryptographique (_Cr
 [Nombres pseudo aléatoires cryptographiques](nombres-pseudo-aléatoires-cryptographiques){.interne}
 {% endaller %}
 
+Avoir un CPRNG suffit pour garantir un chiffrement de Vernam sémantiquement sécurisé :
 
+<span id="chiffre-CPRNG"></span>
 
-> TBD Chiffrement sémantiquement sécurisé avec CPRNG.
+{% note "**Proposition**" %}
+Si $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$ est un  CPRNG, alors :
 
+- $E(k, m) = G(k) \oplus m$
+- $D(k, m) = E(k, m)$
 
-> TBD CPRNG -> permutation
-> TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)
+est une méthode de chiffrement sécurisée.
+{% endnote %}
+{% details "preuve", "open" %}
 
+Soit $A$ un algorithme efficace d'aun adversaire du jeu de la reconnaissance avec deux mots $m_0$ et $m_1$. Son avantage vaut :
 
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] \vert\\
+&=& \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1]-\\
+&& (\Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1]) \vert\\
+\end{array}
+$$
+</div>
 
+Comme $u\xleftarrow{U}\\{0, 1\\}^t\oplus m_1$ est une variable uniforme ([on l'a démontré](../chiffre-vernam/#uniforme){.interne}) on a $u\xleftarrow{U}\\{0, 1\\}^t\oplus m_1 = u\xleftarrow{U}\\{0, 1\\}^t\oplus m_2 = u\xleftarrow{U}\\{0, 1\\}^t$ et donc :
 
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] -\\
+&& (\Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_2) = 1]) \vert\\
+&=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] \vert +\\
+&& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_2) = 1] \vert
+\end{array}
+$$
+</div>
 
+On peut supposer sans perte de généralité que :
 
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &\leq&2\cdot\vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] \vert
+\end{array}
+$$
+</div>
+
+L'algorithme $A'$ tel que $A'(x) = A(x \oplus m_1)$ est un algorithme qui reconnaît $G$. Comme $G$ est un CPRNG, son avantage $\epsilon(A')$ ne peut être que négligeable et comme :
+
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A') &=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] \vert
+\end{array}
+$$
+</div>
+
+On en déduit que $\epsilon(A)$ est aussi négligeable ce qui conclut la preuve.
+
+{% enddetails %}
+
+## Message de taille variable
+
+Les générateurs de nombres pseudo-aléatoires ne permettent pas de générer des mots de tailles arbitraires. Certains peuvent être très grand (comme les lsfr ou le Blum-blum-shub) d'autres de tailles fixes et petites (chacha20 ne peut produire que des mots de longueur 512b).
+
+Le schéma de transmission se complexifie encore en ajoutant une boucle de chiffrement :
+
+```
+    Alice     |         |     Bob
+    privé     | public  |    privé
+--------------|---------|--------------
+     m        |         |
+              |         |
+     a ---v   |         |  v--- b           # générés par un TRNG
+     k <--====|= A = B =|===--> k           # protocole de partage de clé sécurisé
+              |         |
+---->         |         |
+|             |         |
+|  G(ki) = K  |         |  G(ki) = K         # générés par un CPRNG
+|             |         |
+| K ⊕ mi = c -|--- c ---|----> c
+|             |         |  K ⊕ c = mi
+|             |         |  m = mi || m
+----          |         |    
+```
+
+Notez qu'il ne faut pas répéter la clé !
+
+{% exercice %}
+Montrez que si l'on encode plusieurs parties de message avec la même clé, le chiffre n'est pas sémantiquement sécurisé.
+
+{% endexercice %}
+{% details "corrigé" %}
+Si l'on utilise deux fois la même clé, si deux portions de messages sont identiques alors ils auront le même chiffre. On peut alors utiliser les messages :
+
+- $m_1 = b_1b_2$
+- $m_2 = b_1b_1$
+
+On reconnaîtra $m_1$ de m_2$ avec un avantage de 1.
+
+{% enddetails %}
+
+> TBD refaire l'image p12 <https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf>
+
+{% attention %}
+Ce mode de chiffrement existe (ECB) est n'est [jamais recommandé](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/applications-of-block-ciphers/modes-of-operation-for-block-ciphers/examination-review-modes-of-operation-for-block-ciphers/how-does-the-electronic-codebook-ecb-mode-of-operation-work-and-what-are-its-primary-security-drawbacks/)
+
+{% endattention %}
+
+Voyons  comment tout ceci peut se faire de façon sécurisée :
+
+Concaténer des blocs de messages chiffrés. On découpe le message à chiffrer $m$ en blocs $m_i$ de taille $t$ fixe que l'on traite séparément.
+
+Plutôt que d'utiliser un générateur on utilise une [fonction pseudo-aléatoire sécurisée](../nombres-pseudo-aléatoires-cryptographiques/#PRF){.interne} (ou une [permutation](../nombres-pseudo-aléatoires-cryptographiques/#PRP){.interne}) dont on a vu que l'utilisation était identique à un générateur mais permettait d'avoir un paramètre de plus, le vecteur d'initialisation.
+
+On va utiliser le schéma suivant pour désigner une PRF (_resp._ une PRP) $F(k, \text{iv})$ :
+
+```
+       iv   
+        |   
+      ----- 
+ k-->|  F  |
+      ----- 
+        |
+     F(k,iv)   
+```
+
+On a alors le schéma de chiffrement suivant, qui modifie le vecteur d'initialisation en incrémentant un compteur :
+
+```
+    iv || 01     iv || 02          iv || i           iv || l
+        |            |                 |                 |
+      -----        -----             -----             -----
+ k-->|     |  k-->|     |  ...  k-->|     |  ...  k-->|     |
+      -----        -----             -----             -----
+        |            |                 |                 |
+ m1---> ⊕     m2---> ⊕          mi---> ⊕          ml---> ⊕ 
+        |            |                 |                 |
+        v            v                 v                 v
+       c1           c2                ci                cl
+```
+
+Ce schéma est bien sécurisé si $F$ l'est et que la place prise par le compteur n'est pas trop grande :
+
+{% note "**proposition**" %}
+$F: \\{0, 1\\}^s \times \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ est une fonction pseudo-aléatoire sécurisée et $m$ un message de taille $l\cdot t$ alors :
+
+<div>
+$$
+E(k, m) = (F(k, \text{iv} \;\|\; 1) \;\|\;  \dots \;\|\;  F(k, \text{iv} \;\|\; l)) \oplus m
+$$
+</div>
+
+Est un chiffre sécurisé.
+{% endnote %}
+{% info %}
+L'opérateur $\\;\\|\\;$ est la concaténation.
+{% endinfo %}
+{% details "preuve", "open" %}
+
+Comme $F$ est une PRF, $F(k, \text{iv} \\;\\|\\; i)$ est indiscernable de la variable aléatoire uniforme pour tout $\text{iv} \\;\\|\\; i$. On peut ensuite utiliser le même schéma de preuve que [la preuve de l'incrémentalité d'un CPRNG](./nombres-pseudo-aléatoires-cryptographiques/#chiffre-CPRNG-incrémental){.interne} et permet de montrer que $(F(k, \text{iv} \;\|\; 1) \;\|\;  \dots \;\|\;  F(k, \text{iv} \;\|\; l))$ est indiscernable de la variable aléatoire uniforme (ici $m$ est au pire égale à la taille $t$ du message qui reste polynomial par rapport au paramètre de sécurité).
+
+{% enddetails %}
+
+Cette construction permet également de chiffrer **et** déchiffrer rapidement le message en parallèle. Il suffit de connaître la clé $k$ et la position du bloc à chiffrer/déchiffrer.
+
+```
+    Alice     |         |     Bob
+    privé     | public  |    privé
+--------------|---------|--------------
+     m        |         |
+              |         |
+     a ---v   |         |  v--- b           # générés par un TRNG
+     k <--====|= A = B =|===--> k           # protocole de partage de clé sécurisé
+              |         |
+--i-->        |         |
+|             |         |
+| F(k,        |         | F(k,              # PRF
+|   iv || i)  |         |   iv || i)
+|   = K       |         |   = K             
+|             |         |
+| K ⊕ mi = c -|--- c ---|----> c
+|             |         |  K ⊕ c = mi
+|             |         |  m = mi || m
+----          |         |    
+```
+
+## Nonce
+
+Le vecteur d'initialisation est souvent utilisé comme [NONCE](https://en.wikipedia.org/wiki/Cryptographic_nonce), qui comme son nom l'indique est utilisé une unique fois.
+
+De nombreux protocoles cryptographiques l'utilise pour distinguer des encodages au sein de l'envoi d'un message pour éviter les [attaque par rejeu](https://fr.wikipedia.org/wiki/Attaque_par_rejeu). Le Nonce peut en effet être envoyé en clair, du moment que la clé est secrète.
+
+```
+    Alice     |         |     Bob
+    privé     | public  |    privé
+--------------|---------|--------------
+     m        |         |
+              |         |
+     a ---v   |         |  v--- b           # générés par un TRNG
+     k <--====|= A = B =|===--> k           # protocole de partage de clé sécurisé
+              |         |
+    N --------|---------|----> N            # Nonce    
+              |         |                 
+--i-->        |         |
+|             |         |
+| F(k,        |         | F(k,              # PRF
+|   N || i)   |         |   N || i)
+|   = K       |         |   = K             
+|             |         |
+| K ⊕ mi = c -|--- c ---|----> c
+|             |         |  K ⊕ c = mi
+|             |         |  m = mi || m
+----          |         |    
+```
 
 ## Schéma final de la transmission
 
-Pour qu'une méthode de chiffrement puisse être utilisé en pratique, il faut pouvoir avoir deux choses :
+En utilisant le chirrfre de Vernam, la transmission sécurisée ressemble finalement à ceci :
+
+```
+    Alice     |         |     Bob
+    privé     | public  |    privé
+--------------|---------|--------------
+     m        |         |
+              |         |
+     a ---v   |         |  v--- b           # générés par un TRNG
+     k <--====|= A = B =|===--> k           # protocole de partage de clé sécurisé
+              |         |
+    N --------|---------|----> N            # Nonce    
+              |         |                 
+--i-->        |         |
+|             |         |
+| F(k,        |         | F(k,              # PRF
+|   N || i)   |         |   N || i)
+|   = K       |         |   = K             
+|             |         |
+| K ⊕ mi = c -|--- c ---|----> c
+|             |         |  K ⊕ c = mi
+|             |         |  m = mi || m
+----          |         |    
+```
+
+On appelle ce type de transmission [chiffrement de flux](https://fr.wikipedia.org/wiki/Chiffrement_de_flux), qui est la norme actuellement. Il permet :
 
 - des clés de petites tailles par rapport au message à faire passer
 - des algorithmes de complexité linéaires pour chiffrer et déchiffrer les messages.
-
-Même si on s'autorise théoriquement des algorithmes polynomiaux, en pratique, efficaces veut plutôt dire linéaire car il faut que ces algorithmes puissent chiffrer de très nombreuses données en peu de temps. Efficace prend donc deux significations différentes, selon que l'on cherche à prouver théoriquement des résultats où que l'on veuille en pratique chiffrer des données. L'un ne va cependant pas sans l'autre.
-
-Ces deux contraintes vont forcément nous faire passer des informations à l'adversaire. Selon le type d'information que l'on ne veut pas divulguer on va utiliser une méthode plutôt qu'une autre.
-
-
-> rappel définition securisé, avantage, etc.
-
-
-
-
-1. Alice et/ou Bob doivent créer un nombre aléatoire de façon uniforme servant de clé.
-2. Alice et Bob doivent s'échanger une clé de taille petite par rapport à la taille du message à échanger mais choisie uniformément parmi toutes les clé possibles
-3. cette clé doit permettre de générer une clé plus grosse de taille égale au message à échanger (on verra pourquoi)
-4. on chiffre le message avec le code de Vernam que l'on peut ensuite transmettre
-
-```
-    Alice    |        |     Bob
-    privé    | public |    privé
--------------|--------|--------------
-      m      |        |     
-      k <----|--------|----> k
-  G(k) = K   |        |  G(k) = K    
-E(K, m) = c -|-- c ---|----> c
-             |        | D(K, c) = m
-             |        |
-```
-
-Pour que tout fonctionne sans accros il faut que chaque étape soit "_sécurisée_" (on définira précisément ce terme plus tard) en particulier :
-
-1. il faut créer une clé uniforme.
-2. il faut pouvoir se partager un secret via un canal public
-3. il faut que l'algorithme de génération de clé plus grosse soit connu de tous **mais** que ce soit impossible de connaître la séquence finale si on a pas la clé de départ
-4. il faut que $c$ soit uniforme pour ne pas
-
-```
-           k                   k
-           |                   |
-           v                   v
-        -------             -------
-       |       |           |       |
- m --> |   E   | --> c --> |   D   | --> m
-       |       |           |       |
-        -------             -------
-```
-
-Deux types d'attaques :
-
-- brute-force : énumération des clés
-- connaissances supplémentaires :
-  - _a priori_ sur $m$ si l'attaque est chiffre seul
-  - acquises si on peut avoir ou produire des couples (message, chiffre)
 
 On considère actuellement que si le [nombre de clés est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack), l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message. Si l'on utilise des connaissances supplémentaires, il est possible de faire baisser ce nombre drastiquement.
 
 {% lien %}
 [recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/)
 {% endlien %}
-
-## Génération de nombres pseudo-aléatoires
-
-{% lien %}
-<https://en.wikipedia.org/wiki/Random_number_generation>
-{% endlien %}
-
-Clé initiale doit être uniforme. Puis on étend à la taille du message à chiffrer. En partant d'une clé aléatoire sur $k$ bits un algorithme $G()$ permettant de produire $k <<t$ bits que l'on cherche à être le plus aléatoire possible :
-
-```
-  ---------
-  | k bit |
-  ---------
-  :        \
-  :         \
-  :          \
-  :           \
-  --------------
-  |G(k) à t bits|
-  --------------
-```
-
-Comme $G$ est un algorithme il est **déterministe** mais si la suite $G(k)$ possède des propriétés statistiques relevant de l'aléatoire, on dira que $G$ est un générateur de nombre pseudo-aléatoire.
-
-Ca existe :
-
-- [les nombres pseudo-aléatoire de python](https://docs.python.org/fr/3.14/library/random.html). Fonctionnent avec une seed.
-- le modulo $x_{n+1} = a \cdot x_n + b \pmod p$ avec $p$ un nombre premier.
-
-Ou encore les décimales de pi à partir de la $k$ème
-voir des méthodes plus sophistiquée comme [les lsfr](./Rapport_de_Stage_Laura_Michelutti.pdf).
-
-
-Ces générateur (python, ou encore le modulo avec un entier premier) sont parfait pour prédire le monde physique, les sorties sont bien uniformes et indétectables de l'aléatoire, mais pour les applications crypto on veut en plus non-prédictible.
-
-Du coup $\pi$ marche pas non plus trop (<https://mathoverflow.net/questions/26942/is-pi-a-good-random-number-generator> et <https://www2.lbl.gov/Science-Articles/Archive/pi-random.html>).
-
-Et les lsfr il faut travailler.
-
-{% lien %}
-[Différences entre les différents générateur pseudo-aléatoires](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/stream-ciphers/stream-ciphers-random-numbers-and-the-one-time-pad/examination-review-stream-ciphers-random-numbers-and-the-one-time-pad/what-are-the-key-differences-between-true-random-number-generators-trngs-pseudorandom-number-generators-prngs-and-cryptographically-secure-pseudorandom-number-generators-csprngs/)
-{% endlien %}
-
-<!-- > TBD TP
->
-> - lsfr avec python etc.
-> - les décimales de pi :
->   - <https://www.youtube.com/watch?v=FDXf1XxCXAk>
->   - sont aléatoires si tu ne sais pas que c'est elles.
->   - prendre les bits de la représentation binaire des décimales de pi et leur faire passer des tests d'aléatoire. -->
-
-### Nombres pseudo-aléatoires cryptographique
-
-On a utilisé plusieurs fois le terme "sécurisé" avec des notions différentes :
-
-- la sécurité du partage de la clé était basé sur la **difficulté algorithmique** du logarithme discret.
-- générateur de nombre pseudo-aléatoire est sécurisé s'il est **non prédictible**
-
-Essayons de formaliser tout ça en une seule définition qui va permettre de créer des système de chiffrement que l'on pourra démontrer sécurisé (au oins en théorie).
-
-{% aller %}
-[Définitions de la confidentialité](définitions){.interne}
-{% endaller %}
-
-Le message ne doit pouvoir être lu que par son destinataire. Comment partager la clé en secret ?
-
-## Chiffrer un message
-
-Les algorithmes de chiffrement classiques ne permettent pas de chiffrer des message de taille quelconque. Ils sont conçus pour chiffrer des blocs de taille fixes.
-
-### Chiffrer un message de taille fixe
-
-{% aller %}
-[Chiffrer un bloc](chiffrer-un-bloc){.interne}
-{% endaller %}
-
-### Chiffrer un message de taille quelconque
-
-Il existe historiquement deux types de codes même si les différences commencent à s'estomper entres eux :
-
-- les codes en flux qui vont se comporter comme le code de Vernam
-- les code en bloc qui vont découper le message en blocs et chiffrer chacun d'entre eux avec un permutation.
-
-{% aller %}
-[Schéma général](./schéma-général){.interne}
-{% endaller %}
-
-> <https://www.youtube.com/watch?v=G2TYtN2qJls&list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc>
-> 
-### Attention aux implémentations
-
-Les [side channel attacks](partager-secret/#side-channel-attack){.interne} permettent, on l'a vue, de tirer parie de l'implémentation de l'algorithme pour obtenir un avantage npn négligeable. Pour qu'aucune information ne transparaisse, il faut que l'algorithme :
-
-1. fasse tout le temps la même chose
-2. consomme la même énergie
-3. ...
-
-Bref, n'implémentez pas vous même les algorithmes, prenez des implémentations éprouvées.
-
-{% lien %}
-
-- [channel attack exemples](https://www.youtube.com/watch?v=GPwNFrpd1KU)
-- [Attaques sur Machines embarquées](https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/)
-
-{% endlien %}
-
-## Générer des clés
-
-### Générateur de nombre aléatoire cryptographique
-
-> TBD LSFR
-
-{% lien %}
-Rapport de stage sur les codes LSFR : [projet codes LSFR](Rapport_de_Stage_Laura_Michelutti.pdf)
-{% endlien %}
-
-### Trouver la clé
-
-Il faut utiliser des générateur avec entropie. Il n'est pas utile de retrouver le nombre ensuite.
-
-> TBD `/dev/random`{.fichier} ou `/dev/urandom`{.fichier}
-> TBD : faire grossir partie [aléatoire](aléatoire){.interne}
-
-### Key derivation function
-
-{% lien %}
-[Key derivation function](https://en.wikipedia.org/wiki/Key_derivation_function)
-{% endlien %}
-
-Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque messages. La façon la plus simple, si on a un PRF sous la main est de :
-
-- posséder une clé primaire appelée $SK$ (_source key_)
-- une constante $CTX$, application dépendante pour éviter que plusieurs applications différentes utilisant la même clé primaires de se trouvent avec les mêmes clés
-
-Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : $F(\text{SK}, \text{CTX} || i)$, où $i$ est un compteur.

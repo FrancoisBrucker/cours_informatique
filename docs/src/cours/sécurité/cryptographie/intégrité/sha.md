@@ -13,6 +13,7 @@ eleventyComputed:
 > TBD : tout est à faire.
 > Ne faire que des exemple d'utilisation.
 
+> TBD sha 3 sponge : <https://summerschool-croatia.cs.ru.nl/2017/slides/introduction%20to%20permutation-based%20cryptography.pdf>
 
 > TBD [faire du sha](https://osxdaily.com/2021/12/17/check-sha256-hash-mac/)
 

@@ -12,6 +12,30 @@ eleventyComputed:
 
 > TBD verbose d'une communication tsl 1.3
 
+
+
+## Key derivation function
+
+> TBD si autre message.
+
+{% lien %}
+[Key derivation function](https://en.wikipedia.org/wiki/Key_derivation_function)
+{% endlien %}
+
+Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque messages. La façon la plus simple, si on a un PRF sous la main est de :
+
+- posséder une clé primaire appelée $SK$ (_source key_)
+- une constante $CTX$, application dépendante pour éviter que plusieurs applications différentes utilisant la même clé primaires de se trouvent avec les mêmes clés
+
+Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : $F(\text{SK}, \text{CTX} || i)$, où $i$ est un compteur.
+
+> TBD rekeying. Attention au passé <https://blog.cr.yp.to/20170723-random.html> car on ne génère qu'un bout.
+> TBD ? <https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed>
+
+
+
+
+
 {% lien %}
 [TLS](https://www.youtube.com/watch?v=0TLDTodL7Lc)
 {% endlien %}

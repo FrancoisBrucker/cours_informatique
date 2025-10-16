@@ -56,6 +56,8 @@ En conséquence, un attaquant devant un message crypté de peut le décrypter s'
 
 Formalisons cette intuition.
 
+<span id="uniforme"></span>
+
 {% note "**Théorème**" %}
 Soit $X$ une variable aléatoire uniforme sur $\\{0, 1\\}$ et $Y_i$ $L$ variables aléatoires ur $\\{0, 1\\}$. On suppose que $X$ est indépendant de $Y_i$ pour tout $i$.
 

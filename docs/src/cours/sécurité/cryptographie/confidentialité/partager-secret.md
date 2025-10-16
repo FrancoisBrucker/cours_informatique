@@ -227,6 +227,8 @@ On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu
 - [side channel attack](https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire)
 - [cours du MIT](https://www.youtube.com/watch?v=3v5Von-oNUg)
 - [exemples de side channel attack](https://www.youtube.com/watch?v=2-zQp26nbY8)
+- [channel attack autres exemples](https://www.youtube.com/watch?v=GPwNFrpd1KU)
+- [Attaques sur Machines embarquées](https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/)
 
 {% endlien %}
 

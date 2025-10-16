@@ -12,6 +12,15 @@ eleventyComputed:
 
 En analysant 3 codes historiques, on verra quelques concepts utile pour l'analyse.
 
+
+<!-- TBD
+
+Ajouter code par permutation
+- <https://websites.nku.edu/~christensen/1402%20permutation%20ciphers.pdf>
+- <https://crypto.stackexchange.com/questions/15635/security-of-permutation-cipher>
+- <https://www.reddit.com/r/crypto/comments/1208h1b/is_permutationbased_crypto_not_catching_on_in_the/>
+
+ -->
 ## Code de césar
 
 ### <span id="César-chiffre"></span>Chiffrement

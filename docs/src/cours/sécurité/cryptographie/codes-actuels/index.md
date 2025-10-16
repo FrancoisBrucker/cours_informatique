@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD attaques : <https://sparkle-lwc.github.io/security>
+
 Comme l'existence d'une PRP n'étant pas prouvée, il faut prendre toute proposition de chiffrement avec pincette. Il n'est pas improbable que l'on découvre des failles de sécurité et qu'il faille changer de méthode de chiffrement (c'est arrivé et ça arrivera encore) ou qu'il faille augmenter la taille de la clé pour maintenir la confidentialité que ce soit par le développement de nouveaux ordinateur de nouvelles attaques (c'est arrivé et ça arrivera encore).
 
 S'il faut retenir une chose c'est :

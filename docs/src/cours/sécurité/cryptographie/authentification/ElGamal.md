@@ -15,3 +15,4 @@ Il existe d'autres façon de chiffrer des documents de façon asymétrique, comm
 [Chiffrement Elgamal](https://en.wikipedia.org/wiki/ElGamal_encryption)
 
 > TBD <https://www.youtube.com/watch?v=_gmR5sYGUgs>
+> TBD pas utilisé à supprimer comme partie et juste en donner l'existence.

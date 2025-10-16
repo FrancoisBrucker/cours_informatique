@@ -148,7 +148,7 @@ on peut associer une valeur de vérité à chaque formule et les combiner de fa�
 Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
 ) pour convertir les formules
 
-## Algorithme et SAT
+## <span id="algorithme-SAT"></span>Algorithme et SAT
 
 > TBD polylog
 

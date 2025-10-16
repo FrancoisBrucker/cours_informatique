@@ -128,7 +128,7 @@ Une fonction $f(n)$ est **_négligeable_** si $f(n) = \mathcal{O}(1/n^d)$ pour t
 On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.
 {% endinfo %}
 
-L'intérêt de cette formalisation est que négligeabilité se compose tout comme la polynômialité (somme et produit de polynôme restent des polynômes) :
+L'intérêt de cette formalisation est que négligeabilité se compose tout comme la polynomialité (somme et produit de polynôme restent des polynômes) :
 
 - $p(n) \cdot \epsilon(n)$ reste négligeable si $\epsilon(n)$ l'est
 - $\epsilon(n) + \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont
@@ -136,9 +136,9 @@ L'intérêt de cette formalisation est que négligeabilité se compose tout comm
 
 Si on ne possède que des fonctions négligeable pour décrypter un code on ne peut donc pas arriver à grand chose, ce qui permet d'être en sécurité :
 
-{% note "**Définition**" %}
-Une méthode de chiffrement est **_sémantiquement sécurisée_** (_Semantically secured_) si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.
-{% endnote %}
+{% attention "**À retenir**" %}
+Une méthode de chiffrement pourra être considéré comme  **_sécurisée_** si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.
+{% endattention %}
 
 La définition précédente nous permet de définir un cadre pour construire une méthode de chiffrement sécurisée :
 
@@ -269,7 +269,6 @@ $$
 $$
 </div>
 
-
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -292,11 +291,15 @@ Si $D0$ et $D1$ sont équivalent (l'algorithme répond le contraire si on invers
 
 {% enddetails %}
 
-Les deux lois seront dites :
+De là :
 
-- **_équivalentes_** si $D0 = D1$ : on ne peut les distinguer
+{% note "**Définition**" %}
+Deux lois seront dites :
+
+- **_équivalentes_** si $D0 = D1$ : on ne peut les distinguer par le jeu de la reconnaissance
 - **_statistiquement sécurisés_** si le meilleur algorithme de reconnaissance ne peut obtenir qu'un avantage négligeable
 - **_sémantiquement sécurisés_** si le meilleur algorithme **efficace** de reconnaissance ne peut obtenir qu'un avantage négligeable
+{% endnote %}
 
 On cherchera toujours à obtenir un comportement sémantiquement sécurisé. Ceci est facilité par la remarque ci-dessous :
 
@@ -317,7 +320,7 @@ Si son avantage est négligeable, tous les adversaires, qu'ils soient efficaces 
 
 ### Jeu du chiffrement
 
-Si l'on cherche à prouver qu'une méthode de chiffrement est sémantiquement sécurisée pour des attaques par messages choisis (_Chosen-plaintext attackers, CPA_) on peut utiliser le jeu suivant. Notez que si notre méthode de chiffrement y résiste elle sera également robuste pour les attaques plus faible (par message connu ou chiffre uniquement).
+Pour une méthode de chiffrement, trouver les distribution à tester peut se faire avec le jeu suivant où l'attaquant choisi deux mots à tester. Si la méthode est sémantiquement sécurisé cela signifie que la différence de distribution est négligeable et est donc une approximation réaliste de la [confidentialité parfaite](../../chiffre-vernam/#confidentialité-parfaite){.interne}.
 
 Le jeu consiste alors en 6 étapes :
 
@@ -340,6 +343,10 @@ Le jeu consiste alors en 6 étapes :
 ```
 
 Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance puisque l'on cherche à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_1)$ lorsque $k$ est distribué de façon uniforme. Ce type d'attaque, bien qu'elle ne permet pas de déchiffrer les messages permet tout de même d'avoir des informations sur le type de message chiffré, par exemple si la réponse est positive (`m0 = "oui"`) ou négative (`m1 = "non"`).
+
+{% note "**Définition**" %}
+Une méthode de chiffrement est **_sémantiquement sécurisée_** (_Semantically secured_) si un adversaire efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.
+{% endnote %}
 
 Par exemple supposons que nous chiffrons/déchiffrons nos messages avec l'algorithme de Vigenère et que l'on chiffre des messages avec des clés de longueur $\vert k \vert\ = 2$. L'adversaire pourrait choisir `m0 = "aa"` et `m1 = "ab"` et décider de répondre 1 si `c[1] ≠ c[0]`. L'avantage de cet algorithme va être énorme puisque :
 
