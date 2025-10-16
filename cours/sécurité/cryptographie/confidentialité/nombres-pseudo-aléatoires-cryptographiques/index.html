@@ -97,20 +97,20 @@
   
 
   <p>Pour qu'Alice et Bob puissent générer la clé $K$ à $t$ bits à partir de la clé partagée à $s &lt;t$ bits aléatoire, il est nécessaire d'avoir un algorithme déterministe permettant de générer (au moins) $t$ bits à partir des $s$ bits de $k$.</p>
-<pre><code>  ---------     
+<pre><code>  ---------
   | s bit |            #  k
-  ---------     
-  :        \     
-  :         \     
-  :          \     
-  :           \     
-  --------------     
+  ---------
+  :        \
+  :         \
+  :          \
+  :           \
+  --------------
   |   t bits    |      # G(k)
-  --------------     
+  --------------
 </code></pre>
 <h2>Définition</h2>
 <p>Pour que l'algorithme de Vernam fonctionne il faut que $K$ le plus uniforme possible, ce qui impose la définition suivante :</p>
-<div id="CPPRG"></div>
+<div id="CPRNG"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -118,7 +118,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong>générateur de nombres pseudo-aléatoire sécurisé</strong> (<em>secure PRG, secure pseudo random generator</em>) doit avoir les propriétés suivantes :</p>
+<p>Un <strong><em>générateur de nombres pseudo-aléatoire sécurisé</em></strong> (<em>cryptographic pseudo random generator <strong>CPRNG</strong></em>) doit avoir les propriétés suivantes :</p>
 <ul>
 <li>
 <p>$G: \{0, 1\}^s \rightarrow \{0, 1\}^t$, avec $s &lt;&lt;t$</p>
@@ -127,10 +127,10 @@
 <p>$G$ doit être implémentable par algorithme efficace</p>
 </li>
 <li>
-<p>tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance  <a href="../d%C3%A9finition-s%C3%A9curit%C3%A9/#jeu-reconnaissance">jeu de la reconnaissance</a> entre :</p>
+<p>tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance <a href="../d%C3%A9finition-s%C3%A9curit%C3%A9/#jeu-reconnaissance">jeu de la reconnaissance</a> entre :</p>
 </li>
 <li>
-<p>la variable aléatoire $G(k \xleftarrow{U} \{0, 1\}^s)$</p>
+<p>la variable aléatoire $G(k \xleftarrow{U} \{0, 1\}^s)$ prenant ses valeurs dans $\{0, 1\}^t$</p>
 </li>
 <li>
 <p>la variable aléatoire $x \xleftarrow{U} \{0, 1\}^t$</p>
@@ -159,13 +159,12 @@
 <p>En cryptographie utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de se protéger.</p>
 </div></div>
 
-<p>Notez que la distribution de la sortie d'un CPRNG n'est <strong>pas</strong> uniforme. Considérez par exemple un CPRNG qui double la taille de son entrée. La moitié des mots de $\{0, 1\}^{2s}$ ne peuvent être obtenu par $G(k)$ puisque $\vert G(k \xleftarrow{U} \{0, 1\}^s)\vert \leq 2^s$.</p>
-<p>Notez qu'un CPRNG donne des résultats loin d'être aléatoire, en particulier distribution de sa sortie n'est <strong>pas</strong> uniforme. En effet :</p>
+<p>Notez qu'un générateur de nombres pseudo-aléatoire sécurisé donne des résultats loin d'être aléatoire, en particulier distribution de sa sortie n'est <strong>pas</strong> uniforme :</p>
 <ul>
 <li>le nombre de chaînes atteignable depuis sa seed : $2^s$</li>
 <li>le nombre de chaînes possible : $2^{t} &gt; 2^s$</li>
 </ul>
-<p>Considérons l'algorithme <strong>non efficace</strong> $D$ suivant :</p>
+<p>Ne nombreuses chaînes ($2^{t-s}$) ne sont atteignables avec notre générateur. L'algorithme <strong>non efficace</strong> $D$ suivant va avoir un avantage non négligeable pour distinguer une sortie de $G$ d'une suite aléatoire :</p>
 <ol>
 <li>il calcule $G(k)$ pour tous les $2^s$ valeurs de $k$ possible.</li>
 <li>lorsque le testeur lui montre un mot $m$ de $\{0, 1\}^n$ il répond 1 s'il existe $k$ tel que $G(k)=m$, et 0 sinon.</li>
@@ -179,14 +178,14 @@
 <p>Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.
 Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas efficace.</p>
 <h2>Non prédictabilité</h2>
-<p>Si l'on utilise notre générateur pour une transmission avec un chiffre de Vernam il est nécessaire que l'on ne puisse pas déterminer la fin de $G(k)$ en ayant son début.  En effet, si un attaquant peut envoyer des messages à chiffrer, ou au moins une  partie du message, il peut envoyer des 0 :</p>
+<p>Si l'on utilise notre générateur pour une transmission avec un chiffre de Vernam il est nécessaire que l'on ne puisse pas déterminer la fin de $G(k)$ en ayant son début. En effet, si un attaquant peut envoyer des messages à chiffrer, ou au moins une partie du message, il peut envoyer des 0 :</p>
 <pre><code>  kkkkkkk
 ⊕ 0000000
 ----------
   kkkkkkk
 </code></pre>
 <p>Pour trouver une partie de la clé. Si à partir de là on peut prédire la suite toute la sécurité en serait compromise.</p>
-<p>Heureusement pour nous, non-prédictabilité et CPRNG sont deux notions équivalentes.</p>
+<p>Heureusement pour nous, non-prédictabilité et générateur de nombres pseudo-aléatoire sécurisé sont deux notions équivalentes.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -194,11 +193,11 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une suite $(x_i^k)<em m+1="">{i\geq 0}$ avec $k \in \{0, 1\}^s$ est <strong><em>non prédictible</em></strong> si tout algorithme efficace ne peut peut prédire $x^k</em>$ sachant $x^k_1, \dots x^k_{m}$ qu'avec un avantage négligeable.</p>
+<p>Une suite $({x^k_i})_{i\geq 0}$ avec $k \in \{0, 1\}^s$ est <strong><em>non prédictible</em></strong> si tout algorithme efficace ne peut peut prédire $x^k_{m+1}$ sachant $x^k_1, \dots x^k_{m}$ qu'avec un avantage négligeable.</p>
 </div></div>
 
 <p>Ceci disqualifie d'emblée tous les générateurs pseudo-aléatoire de type $x^k_{i+1} = a \cdot x^k_{i} + b \bmod p$, puisque connaître $x^k_i$ permet de connaître tout $x^k_j$ avec $j&gt; i$. Ceci est la principale différence entre un générateur pseudo-aléatoire et un générateur cryptographique : le premier veut obtenir une suite uniforme (ce que fait le générateur avec un modulo si $p$ est premier) alors que le second cherche à ne pas être prédictible.</p>
-<p>Commençons par montrer qu'un CPRNG est non prédictible :</p>
+<p>Commençons par montrer qu'un générateur de nombres pseudo-aléatoire sécurisé est non prédictible :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -206,7 +205,7 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un CPRNG $G$ produit une suite $G(k)$ de $\{0, 1\}^t$ non prédictible.</p>
+<p>Un générateur de nombres pseudo-aléatoire sécurisé $G$ produit une suite $G(k)$ de $\{0, 1\}^t$ non prédictible.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -226,12 +225,13 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Supposons qu'un CPRNG $G$ soit prédictible. Il existe alors un algorithme efficace $A$ qui possède un avantage non négligeable pour déterminer le $m+1$ ème bit de la suite à partir des $m$ premiers.</p>
-<p>On peut utiliser cet algorithme pour déterminer si $G$ est un CPRNG : on ne considère que les $m+1$ premiers bits et on rend la valeur donnée par l'algorithme $A$. L'avantage est le même et est non négligeable.</p>
+<p>Supposons qu'un générateur de nombres pseudo-aléatoire sécurisé $G$ soit prédictible. Il existe alors un algorithme efficace $A$ qui possède un avantage non négligeable pour déterminer le $m+1$ ème bit de la suite à partir des $m$ premiers.</p>
+<p>On peut utiliser cet algorithme pour déterminer si $G$ est un générateur de nombres pseudo-aléatoire sécurisé : on ne considère que les $m+1$ premiers bits et on rend la valeur donnée par l'algorithme $A$. L'avantage est le même et est non négligeable.</p>
 </div>
 </details>     
 </div>
 <p>La réciproque est plus compliquée, mais montre que les deux notions sont équivalentes :</p>
+<p><span id="théorème-yao"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -239,7 +239,7 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème (Yao, 1982)</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une suite non prédictible est un CPRNG.</p>
+<p>Une suite non prédictible est un générateur de nombres pseudo-aléatoire sécurisé.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -262,18 +262,20 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 <p>Soit $(x^k)_{1\leq i \leq t}$ une suite non prédictible et $u \xleftarrow{U} \{0, 1\}^t$ une variable aléatoire uniforme sur $\{0, 1\}^t$.</p>
 <p>On construit la variable aléatoire $Y_i(k)$ sur $\{0, 1\}^t$ telle que :</p>
 <ul>
-<li>les $i$ premiers éléments de $Y_i(k)$ soient les $i$ premiers éléments de $(x^k)_{1\leq i \leq t}$</li>
+<li>les $i$ premiers éléments de $Y_i(k)$ soient les $i$ premiers éléments de ${(x^k)}_{1\leq i \leq t}$</li>
 <li>les $t-i$ derniers éléments de $Y_i$ soient les $t-i$ derniers éléments d'une réalisation de $u \xleftarrow{U} \{0, 1\}^t$</li>
 </ul>
-<p>Supposons qu'il existe $i$ tel que l'on puisse reconnaître $Y_i(k)$ de $Y_{i+1}(k)$ avec un avantage non négligeable. Prenons alors $i$ le plus petit possible et $A$ un algorithme efficace qui le reconnaît avec un avantage non négligeable $a$ (on suppose sans perte de généralité que $A$ répond 1 s'il reconnaît $Y_i(k)$).</p>
-<p>Soit alors la variable aléatoire $Y^b_i(k)$ sur $\{0, 1\}^t$ avec $b\in\{0, 1\}$ telle que :</p>
-<ul>
-<li>les $i-1$ premiers éléments de $Y'<em>i(k)$ soient les $i$ premiers éléments de $(x^k)</em>{1\leq i \leq t}$</li>
-<li>le $i$ élément de $Y'_i(k)$ est $b$</li>
-<li>les $t-i$ derniers éléments de $Y'_i$ soient les $t-i$ derniers éléments d'une réalisation de $u \xleftarrow{U} \{0, 1\}^t$</li>
-</ul>
-<p>Soit $y^b$ une réalisation de $Y'<em i="">i(k)$. Si $A(y^b) = 1$, alors le $i$ élément de $y^b$ sera $(x^k)</em>$ avec une probabilité de $a$. Comme cette probabilité est non négligeable $(x^k)_{1\leq i \leq t}$ est prédictible ce qui est contredit notre hypothèse.</p>
-<p>On en conclut que pour tout $i$ $Y_i(k)$ est indiscernable de $Y_{i+1}(k)$, en particulier pour $i= t$ où l'on en conclut que $Y$ est indiscernable de $u \xleftarrow{U} \{0, 1\}^t$, do ce qui conclut la preuve.</p>
+<p>Supposons qu'il existe $i$ tel que l'on puisse reconnaître $Y_i(k)$ de $Y_{i+1}(k)$ avec un avantage non négligeable. Prenons alors $i$ le plus petit possible et $A$ un algorithme efficace qui le reconnaît avec un avantage non négligeable. On a alors, avec $b$ une variable uniforme. :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr[A(Y_i(k)) = 1] - \Pr[A(Y_{i+1}(k)) = 1] \vert \\
+&=& \vert \Pr[A({x^k}_1\dots{x^k}_ibu_{n-i+1}\dots u_n) = 1] - \Pr[A({x^k}_{1}\dots{x^k}_{i+1}u_{n-i}\dots u_n) = 1] \vert \\
+\end{array}
+$$
+</div>
+<p>L'égalité précédente montre que l'algorithme qui rend $b$ tel que $A(x_1^k\dots x^k_ibu_{n-i+1}\dots u_n) = 1$ reconnaît $x^k_{i+1}$ sachant $x^k_1\dots x^k_i$ avec une probabilité $(1 + \epsilon(A))/2$ qui est non négligeable et $(x^k)_{1\leq i \leq t}$ est prédictible ce qui est contredit notre hypothèse.</p>
+<p>On en conclut que pour tout $i$ $Y_i(k)$ est indiscernable de $Y_{i+1}(k)$, en particulier pour $i= t$ où l'on en conclut que $Y$ est indiscernable de $u \xleftarrow{U} \{0, 1\}^t$, ce qui conclut la preuve.</p>
 </div>
 </details>     
 </div>
@@ -286,42 +288,471 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 </div></div>
 
 <h2>Existence</h2>
-<blockquote>
-<p>TBD va aussi nous donner une façon d'en créer une.</p>
-</blockquote>
-<blockquote>
-<p>TBD vers random et donc fonction à sens unique.</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Pseudorandom_generator_theorem#Existence_of_pseudorandom_generators">Existence de générateur de nombres pseudo aléatoire cryptographique</a></p>
+</div></div>
+
+<p>L'existence de générateur de nombres pseudo-aléatoire sécurisé n'est pas garantie, mais est fortement soupçonnée comme on vale voir.</p>
+<h3><span id="construction-incrémentale"></span> Incrémentale</h3>
+<p>Commençons par voir qu'il suffit d'avoir un générateur de nombres pseudo-aléatoire sécurisé $G: \{0, 1\}^s \rightarrow \{0, 1\}^{s+1}$ pour construire un autre générateur de nombres pseudo-aléatoire sécurisé $G_m: \{0, 1\}^s \rightarrow \{0, 1\}^{m}$ pour tout $m\leq 1$.</p>
+<p><span id="chiffre-CPRNG-incrémental"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $G: \{0, 1\}^s \rightarrow \{0, 1\}^{s+1}$ est un générateur de nombres pseudo-aléatoire sécurisé, alors la fonction $G_m: \{0, 1\}^s \rightarrow \{0, 1\}^{m}$ suivante est également n générateur de nombres pseudo-aléatoire sécurisé pour tout $m = \mathcal{O}(s^d)$ et $d$ une constante.</p>
+<p>Avec $(x^i)_{1\leq i \leq m}$ la suite finie définie telle que :</p>
+<div>
+$$
+\begin{cases}
+x^1 = G(k)\\
+x^i = G(x^{i-1}[:-1])\\
+\end{cases}
+$$
+</div>
+<p>Et $G_m(k) = x^1[-1]\dots x^i[-1] \dots x^m[-1]$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Tout d'abord il est clair que $G_m$ est efficace pour tout $m = \mathcal{O}(s^d)$ si $G$ l'est. Soit $A$ un algorithme efficace permettant de prédire $x^m[-1]$ à partir des $x^1[-1], \dots, x^{m-1}[-1]$ avec un avantage $\epsilon(A)$.</p>
+<p>Supposons maintenant que $G_m$ n'est pas un générateur de nombres pseudo-aléatoire sécurisé : il existe un algorithme $A$ efficace qui différencie $G_m(k \xleftarrow{U} \{0, 1\}^s)$ de $u \xleftarrow{U} \{0, 1\}^t$ avec un avantage non négligeable.</p>
+<p>On peut maintenant créer une variable aléatoire $H_i = u \xleftarrow{U} \{0, 1\}^i \;\|\; G_{m-i}(k \xleftarrow{U} \{0, 1\}^s)$ pour $0\leq i \leq m$.</p>
+<p>L'avantage de $A$ s'écrit alors :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr[A(H_0) = 1] - \Pr[A(H_m) = 1] \vert \\
+&=&  \vert \sum_{0\leq i < m} (\Pr[A(H_i) = 1] - \Pr[A(H_{i+1}) = 1]) \vert \\
+&\leq&  \sum_{0\leq i < m} \vert (\Pr[A(H_i) = 1] - \Pr[A(H_{i+1}) = 1]) \vert \\
+\end{array}
+$$
+</div>
+<p>On en conclut qu'en prenant $i^\star$ qui réalise le maximum de $\vert (\Pr[A(H_i) = 1] - \Pr[A(H_{i+1}) = 1]) \vert$ on a $\epsilon(A)/m \leq \vert (\Pr[A(H_{i^\star}) = 1] - \Pr[A(H_{i^\star+1}) = 1]) \vert$. L'algorithme $A$ distingue donc $H_{i^\star}$ de $H_{i^\star + 1}$ avec un avantage d'au moins $\epsilon(A)/m$ qui est non négligeable puisque $m = \mathcal{O}(s^d)$.</p>
+<p>Soit alors l'algorithme $A'$ qui prend en paramètre un élément $x$ de $\{0, 1\}^s$ qui construit $H'_{i^\star} = u \xleftarrow{U} \{0, 1\}^{i^\star} \;\|\; G'_{m-i^\star}(k \xleftarrow{U} \{0, 1\}^s)$ avec $G'$ construit comme $G$ mais avec $x^1 = x$ puis rend $A(H'_{i^\star})$ différencie $G(k \xleftarrow{U} \{0, 1\}^s)$ de $u \xleftarrow{U} \{0, 1\}^{s+1}$ avec le même avantage non négligeable que $A$ ce qui est impossible.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'opérateur $\;\|\;$  est la concaténation de chaîne.</p>
+</div></div>
+
+<p>Le contraire est bien sur évident :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $G: \{0, 1\}^s \rightarrow \{0, 1\}^{t}$ est un générateur de nombres pseudo-aléatoire sécurisé avec $t &gt; s$ alors $G(x)[-1]$ est également un un générateur de nombres pseudo-aléatoire sécurisé.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>S'il existait un algorithme avec un avantage non négligeable pour discriminer la restriction de la loi uniforme, il permettrait de discriminer $G$ avec le même avantage.</p>
+</div>
+</details>     
+</div>
+<h3>Fonctions à sens unique</h3>
+<p>Terminons cette partie en montrant que l'existence de générateur de nombres pseudo-aléatoire sécurisé est lié à l'existence de fonctions à sens unique.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>S'il existe des générateurs de nombres pseudo-aléatoire sécurisés alors il existe des fonctions à sens unique</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $G: \{0, 1\}^s \rightarrow \{0, 1\}^{2s}$, un générateur de nombres pseudo-aléatoire sécurisé. <a href="#construction-incr%C3%A9mentale" class="interne">La partie précédente</a> montre que cela existe.</p>
+<p>Soit maintenant la fonction $f: \{0, 1\}^s \rightarrow \{0, 1\}^{s}$ telle que $f(x) = G(x)[:s]$.</p>
+<p>On suppose que $f$ n'est pas à sens unique et on exhibe un algorithme $A$ efficace telle que :</p>
+<div>
+$$
+\Pr_{x \xleftarrow{U} \{0, 1\}^s}[f(A(f(x))) = f(x)] \geq \epsilon
+$$
+</div>
+<p>Avec $\epsilon$ non négligeable.</p>
+<p>Soit alors l'algorithme $A'$ efficace qui, à partir d'une entrée $y$ de $2s$ bits rend : $1$ si G(A(y[:s])) = y$ et $0$ sinon. Cet algorithme reconnaît $G$ avec un avantage de :</p>
+<div>
+$$
+\vert \Pr_{x \xleftarrow{U} \{0, 1\}^{s}}[A'(G(x)) = 1] - \Pr_{x \xleftarrow{U} \{0, 1\}^{2s}}[A'(u) = 1] \vert
+$$
+</div>
+<p>On a alors :</p>
+<ul>
+<li>$Pr_{x \xleftarrow{U} {0, 1}^{s}}[A'(G(x)) = 1] \geq \epsilon$ puisque l'on utilise $A$</li>
+<li>$\Pr_{x \xleftarrow{U} {0, 1}^{2s}}[A'(u) = 1] \leq 1/2^s$ puisqu'il n'y a que $1/2^s$ chance que $u$ correspondent à une image de $G$.</li>
+</ul>
+<p>Et l'avantage de $A'$ vaut $\epsilon-1/2^s$ qui est non négligeable ce qui est impossible puisque par hypothèse $G$ est un générateurs de nombres pseudo-aléatoire sécurisés.</p>
+</div>
+</details>     
+</div>
 <h2>Construction</h2>
-<blockquote>
-<p>TBD produire des elements par calcul (mod, lfsr)  plutot pour prng par permutation plutot cprng.</p>
-</blockquote>
-<p>Construire un CPRNG n'est pas une chose facile. Nous allons en montrer une qui va nous être utile lorsque nous présenterons un chiffre moderne.</p>
-<blockquote>
-<p>TBD chacha20. juste melange, puis compteur. On ne parle pas de nonce (ce sera pour ensuite)</p>
-</blockquote>
-<blockquote>
-<p>TBD rekeying. Attention au passé <a href="https://blog.cr.yp.to/20170723-random.html">https://blog.cr.yp.to/20170723-random.html</a> car on ne génère qu'un bout.
-TBD ? <a href="https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed">https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed</a></p>
-</blockquote>
+<p>On a vu que l'on ne connaît aucun générateur de nombres pseudo-aléatoire sécurisés. Les moyens actuels de construire ce que l'on pense être une bonne solution passe par des moyens détournés que nous allons maintenant voir.</p>
+<p>L'idée est d'utiliser des permutations de $\{0, 1\}^t$ qui sont faciles à implémenter et dont la robustesse semble avérée. Mais avant de donner un exemple de permutation montrons que cette construction est valide.</p>
+<p>Nous allons procéder en deux temps :</p>
+<ol>
+<li>monter que l'on peut utiliser des fonctions pour approximer des générateurs pseudo-aléatoires</li>
+<li>monter que l'on peut utiliser des permutations pour approximer des fonctions</li>
+<li>donner un exemple de permutation</li>
+</ol>
+<h3>Fonctions et générateurs pseudo-aléatoires</h3>
+<div id="PRF"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition PRF</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $F: \{0, 1\}^s \times \{0, 1\}^t \rightarrow \{0, 1\}^t$ une fonction implémentable par un algorithme efficace.</p>
+<p>$F$ est dite être une <strong>fonction pseudo-aléatoire sécurisée</strong> (<em>secure pseudo random function <strong>PRF</strong></em>) si tout algorithme efficace ne peut avoir qu'un avantage négligeable au <a href="../d%C3%A9finition-s%C3%A9curit%C3%A9/#jeu-reconnaissance" class="interne">jeu de la reconnaissance</a> entre :</p>
+<ul>
+<li>la variable aléatoire $F(k \xleftarrow{U} \{0, 1\}^s, \cdot)$ prenant ses valeurs dans l'ensemble $\mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)$ des fonctions de $\{0, 1\}^t$ dans $\{0, 1\}^t$</li>
+<li>la variable aléatoire $f \xleftarrow{U} \mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)$</li>
+</ul>
+</div></div>
+
+<p>On peut utiliser une fonction pseudo-aléatoire sécurisée pour modéliser un générateur de nombres pseudo-aléatoire sécurisé :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une fonction pseudo-aléatoire sécurisée, alors $G(k) = F(k, \text{iv})$ est un générateur de nombres pseudo-aléatoire sécurisé pour tout $\text{iv} \in \{0, 1\}^t$ ($\text{iv}$ est appelé <a href="https://en.wikipedia.org/wiki/Initialization_vector">vecteur d'initialisation</a>).</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $G(k)$ n'est pas une fonction pseudo-aléatoire sécurisée, il existe un algorithme efficace $A$ ayant un avantage non négligeable le distinguant de $u \xleftarrow{U} \{0, 1\}^t$.</p>
+<p>On crée alors l'algorithme $A'$ prenant en paramètre $f\in \mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)$ et tel que $A'(f) = A(f(\text{iv}))$. Cet algorithme est un algorithme de reconnaissance de $F(k \xleftarrow{U} \{0, 1\}^s, \cdot)$ et son avantage est :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A') &=& \vert \Pr_{k \xleftarrow{U} \{0, 1\}^s}[A'(F(k,\cdot)) = 1] - \Pr_{f \xleftarrow{U} \mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)}[A'(f) = 1] \vert \\
+&=& \vert \Pr_{k \xleftarrow{U} \{0, 1\}^s}[A(G(k)) = 1] - \Pr_{f \xleftarrow{U} \mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)}[A(f(\text{iv})) = 1] \vert \\
+\end{array}
+$$
+</div>
+<p>Si $f$ est une fonction quelconque de $\mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)$ alors la probabilité que $f(\text{iv}) = x$ vaut $1/2^t$ (il faut que les valeurs coïncident bit à bit) pour tout $x\in \{0, 1\}^t$. De là : $\Pr_{f \xleftarrow{U} \mathcal{F}(\{0, 1\}^t, \{0, 1\}^t)}[A(f(\text{iv})) = 1] = \Pr_{u \xleftarrow{U} \{0, 1\}^t}[A(u) = 1]$ et :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A') &=& \vert \Pr_{k \xleftarrow{U} \{0, 1\}^s}[A(G(k)) = 1] - \Pr_{u \xleftarrow{U} \{0, 1\}^t}[A(u) = 1] \vert \\
+&=& \epsilon(A)
+\end{array}
+$$
+</div>
+<p>Qui est non négligeable Ce qui est impossible.</p>
+</div>
+</details>     
+</div>
+<p>Notez qu'on est passé d'un générateur à un paramètre $G(k)$ à un générateur à deux paramètres $F(k, \text{iv})$ que l'on peut prendre indépendamment.</p>
+<h3>Fonctions et permutations</h3>
+<div id="PRP"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition PRP</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $F: \{0, 1\}^s \times \{0, 1\}^t \rightarrow \{0, 1\}^t$ une fonction pseudo-aléatoire sécurisée.</p>
+<p>$F$ est une <strong>permutation pseudo-aléatoire sécurisée</strong> (<em>secure <strong>PRP</strong>, pseudo random permutation</em>) si :</p>
+<ul>
+<li>$F(k, \cdot)$ est une permutation de $\{0, 1\}^t$ pour tout $k \in \{0, 1\}^s$</li>
+<li>tout algorithme efficace ne peut avoir qu'un avantage négligeable au <a href="../d%C3%A9finition-s%C3%A9curit%C3%A9/#jeu-reconnaissance">jeu de la reconnaissance</a> entre :
+<ul>
+<li>une permutation $F(k, \cdot)$ pour $k$ uniformément choisie,</li>
+<li>une permutation $f$ uniformément choisie parmi toutes les permutations de $\{0, 1\}^t$ dans $\{0, 1\}^t$.</li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<p>Une PRP est un cas particulier de PRF, mais si $n$ est grand, elle est indistinguable d'une fonction quelconque avec un avantage non négligeable :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong>PRP</strong> ne peut être distinguée d'une fonction <strong>PRF</strong> qu'avec un avantage non négligeable par un algorithme efficace.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On considère le jeu de la reconnaissance où un algorithme efficace cherche à distinguer une permutation $F(k, \cdot)$ pour un $k$ uniformément choisi d'une fonction $f$ uniformément choisie parmi toutes les fonctions de $\{0, 1\}^t$ dans $\{0, 1\}^t$.</p>
+<p>La seule façon de distinguer une permutation d'une simple fonction est de chercher des points fixes : s'il existe $x\neq y$ tel que $f(x) = f(y)$, $f$ n'est pas une permutation. Comme les fonctions sont tirées aléatoirement, vérifier si $N$ éléments ont des images différentes a la même probabilité que savoir si $N$ éléments tirés aléatoirement sont différents. En reprenant la démonstration du <a href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/#paradoxe-anniversaires" class="interne">paradoxe des anniversaires</a>, cette probabilité vaut :</p>
+<div>
+$$
+\bar{p}(N, 2^t) = \prod_{i=1}^{N}(1-\frac{i-1}{2^t})
+$$
+</div>
+<p>Le nombre de tirages $N$ est plus petit que la complexité de l'algorithme et comme celui-ci est efficace il est borné par $K\cdot n^d$ avec $d$ et $K$ deux constantes, et $n$ le paramètre de sécurité, supérieur à $t$. De là $N &lt;&lt; 2^t$ et :</p>
+<div>
+$$
+\bar{p}(N, 2^t) \leq (1-\frac{1}{2^t})^N \simeq 1-\frac{N}{2^t} \leq 1-\frac{t^d}{2^t}
+$$
+</div>
+<p>Le meilleur avantage possible que peut avoir un adversaire efficace au jeu de la reconnaissance est donc $1-\bar{p}(N, 2^t) \leq \frac{t^d}{2^t}$, qui est négligeable.</p>
+</div>
+</details>     
+</div>
+<p>La proposition précédente fait des permutation pseudo-aléatoire sécurisée des candidats idéaux pour pour nos méthodes de chiffrement, ce sont des bijections mais vues de l'extérieur (<em>ie</em> d'un adversaire) elles sont indistinguables de simples fonctions. Comme leur existence va impliquer l'existence de fonctions à sens unique, on ne sais pas si cela existe. Mais l'idée de leur construction est simple :</p>
+<ol>
+<li>on fabrique une bijection</li>
+<li>on utilise la clé pour mélanger l'entrée</li>
+</ol>
+<p>Comme on doit être efficace, on ne va parcourir qu'un tout petit nombre de bijections possibles, mais si on fait un mélange qu'on espère uniforme on va bien avoir des comportement très différent quelque soit la clé utilisée.</p>
 <h2>Implémentations</h2>
+<p>Nous allons voir trois implémentations différentes :</p>
+<ol>
+<li>avec un PRP comme désigné précédemment. On reverra ce code plus tard</li>
+<li>avec un générateur type modulo qui se base sur des fonctions à sens unique</li>
+<li>avec un générateur qui s'implémente très bien sur des circuit</li>
+</ol>
+<h3>Chacha20</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant">chacha20</a></p>
+</div></div>
+
+<p>Nous étudierons plus tard ce protocole pour des tailles de messages variables. Mais juste pour terminer cette partie c'est un PRP très simple à taille fixe 256b.</p>
+<p>Il implémente de nombreuses chose qu'on a vu dans ce cours :</p>
+<ul>
+<li>son principe directeur est une permutation de son état interne</li>
+<li>il est de complexité linéaire (fonctionne sur des mots de 32b)</li>
+<li>robuste à de nombreuses attaques :
+<ul>
+<li>time et side channel attack : toutes les opérations sont de même complexité</li>
+<li>opérations non linéaires pour éviter <a href="https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire">la cryptanalyse linéaire</a></li>
+<li>vol de l'état interne</li>
+</ul>
+</li>
+</ul>
+<p>Nous allons uniquement survoler son principe, nous y reviendrons en détail lorsque nous étudierons son implémentation dns un chiffrement réel et complet.</p>
+<h4>Principe</h4>
+<p>Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était <a href="https://en.wikipedia.org/wiki/Salsa20">salsa20</a>, un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k ;|; \text{IV}) = Q(K \;\|\; k \;\|\; \text{IV})$.</p>
+<p>Le chiffre final est obtenu en additionnant la permutation à l'entrée :</p>
+<div>
+$$
+C(k) = Q(K \;\|\; k \;\|\; \text{IV}) + (K \;\|\; k \;\|\; \text{IV})
+$$
+</div>
+<p>Où :</p>
+<ul>
+<li>$k \in \{0, 1\}^{256}$</li>
+<li>$\text{IV} \in \{0, 1\}^{128}$</li>
+<li>$K \in \{0, 1\}^{128}$ une constante</li>
+<li>$+$ est l'addition (modulaire, donc sans retenue) sur 32b</li>
+<li>$Q$ est une permutation de $\{0, 1\}^{512}$.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://datatracker.ietf.org/doc/html/rfc7539#section-2.3.2">exemple de modifications</a></p>
+</div></div>
+
+<h4>opérations ARX</h4>
+<p>Les opérations utilisés pour la permutation sont de type ARX sur 32b :</p>
+<ul>
+<li>Addition modulaire <code>+</code></li>
+<li>Rotation <code>&lt;&lt;&lt;</code> ou <code>&gt;&gt;&gt;</code> de bits</li>
+<li>Xor <code>^</code></li>
+</ul>
+<p>Ces opérations sont suffisantes pour engendrer toutes les permutations et l'organisation de la permutation permet un parallélisme accrus.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Suffisant pour faire toutes les rotations <a href="https://eprint.iacr.org/2022/618.pdf">https://eprint.iacr.org/2022/618.pdf</a></p>
+</div></div>
+
+<h4>Robustesse</h4>
+<ul>
+<li>ARX pour time attack</li>
+<li>non linéarité (l'addition)</li>
+<li>vol de l'état interne (la dernière addition permet de cacher la clé car la permutation est inversible)</li>
+</ul>
+<h3>Blum Blum Shub</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Blum_Blum_Shub">Blum Blum Shub</a></p>
+</div></div>
+
+<p>Le générateur est basé sur la récursion suivante :</p>
+<div>
+$$
+\begin{cases}
+x_n = x_{n-1}^2 \bmod M\\
+g_n = x_n \bmod 2
+\end{cases}
+$$
+</div>
+<p>Avec :</p>
+<ul>
+<li>$M = p \cdot q$ et $p$ et $q$ premiers tels que :
+<ul>
+<li>$p \bmod M = q \bmod M = 3\bmod 4$ (un liste <a href="http://villemin.gerard.free.fr/aNombre/TYPDIVIS/Blum.htm">ici</a>)</li>
+<li>$2p + 1$ et $2q +1$ doivent aussi être premiers (<a href="https://fr.wikipedia.org/wiki/Nombre_premier_de_Sophie_Germain">nombres premiers de Sophie Germain</a>), <a href="https://en.wikipedia.org/wiki/Safe_and_Sophie_Germain_primes#Cryptography">safe prime</a></li>
+</ul>
+</li>
+<li>la seed $x_0 &gt; 1$ premier avec $M$</li>
+<li>l'état interne du générateur est la suite $(x_i)_{i\geq 1}$ qui es secrète</li>
+<li>la sortie du générateur est la suite $(g_i)_{i\geq 1}$</li>
+</ul>
+<p>Si la factorisation est une fonction à sens unique, alors l'algorithme Blum Blum Shub est un CPRNG. Il n'est pas utilisé en pratique car lent, mais il est marrant.</p>
+<p>Sa période vaut $\lambda(M)$ où $\lambda$ est la <a href="https://en.wikipedia.org/wiki/Carmichael_function">fonction de Carmichael</a>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://iczelia.net/posts/bbs-survey/">https://iczelia.net/posts/bbs-survey/</a></li>
+<li><a href="https://www.cs.miami.edu/home/burt/learning/Csc609.062/docs/bbs.pdf">Preuves</a></li>
+<li><a href="https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub">https://crypto.stackexchange.com/questions/109081/period-of-blum-blum-shub</a></li>
+</ul>
+</div></div>
+
+<p>Attention, $M$ doit être secret. Donc pas exactement ce qu'on a vu puisque :</p>
+<ul>
+<li>soit la clé et M sont le secret mais du cop pas uniforme dans $\{0, 1\}^s$. Un autre espace</li>
+<li>soit ne respecte pas Kerskoff.</li>
+</ul>
+<p>De toute façon il est lent et son intérêt est plutôt théorique.</p>
+<h3>Registre à décalage cryptographique</h3>
+<blockquote>
+<p>TBD renvoyer vers aléatoire et le gros TP
+TBD (monter que c'était implémenté partout) et mal ou de façon ancienne =&gt; du coup marche plus quand le nb de clés doit augmenter.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="Rapport_de_Stage_Laura_Michelutti.pdf">Rapport Laura</a></p>
+</div></div>
+
 <h3>Cryptographie en python</h3>
 <blockquote>
 <p>TBD module <a href="https://docs.python.org/fr/3/library/secrets.html#module-secrets">secrets</a></p>
 </blockquote>
-<h2>Attaques</h2>
-<p>retrouver les états internes à partir des sorties pour prédire le nombre suivant.</p>
-<h3>générateur cryptographique</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>perd la propriété de pouvoir tout rejouer à partir de la seed (pour tester des simulations/générer des maps sur des jeux/fare des sauvegardes plus petites)</p>
-<p><a href="https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator">https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator</a>
-<a href="https://crypto.stackexchange.com/questions/39186/what-does-it-mean-for-a-random-number-generator-to-be-cryptographically-secure">https://crypto.stackexchange.com/questions/39186/what-does-it-mean-for-a-random-number-generator-to-be-cryptographically-secure</a></p>
-<p><a href="https://www.schutzwerk.com/en/blog/attacking-a-rng/">https://www.schutzwerk.com/en/blog/attacking-a-rng/</a>
-<a href="https://crypto.stackexchange.com/questions/100503/is-mersenne-twister-hard-to-break-if-it-has-a-reduced-output">https://crypto.stackexchange.com/questions/100503/is-mersenne-twister-hard-to-break-if-it-has-a-reduced-output</a>
-<a href="https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html">https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Fortuna_(PRNG)">https://en.wikipedia.org/wiki/Fortuna_(PRNG)</a> et update : <a href="https://fr.wikipedia.org/wiki/Fortuna_(cryptographie)">https://fr.wikipedia.org/wiki/Fortuna_(cryptographie)</a></p>
+<!-- ## Attaques
+
+### Trouver les états internes
+
+> TBD 
+
+### Utiliser des PRNG à la place de CPRNG
+
+- <https://book-of-gehn.github.io/articles/2018/12/23/Mersenne-Twister-PRNG.html>
+- <https://www.schutzwerk.com/en/blog/attacking-a-rng/>
+ -->
 
 
 </article>

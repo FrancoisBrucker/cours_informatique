@@ -106,6 +106,7 @@
 <ul>
 <li>&quot;random number generators : principles and practices de David Johnston&quot;</li>
 <li>&quot;Introduction to modern cryptography de Jonathan Katk et Yehuda Lindell&quot;</li>
+<li><a href="https://www.youtube.com/watch?v=G2TYtN2qJls&amp;list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc">https://www.youtube.com/watch?v=G2TYtN2qJls&amp;list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc</a></li>
 </ul>
 </div></div>
 
@@ -182,6 +183,77 @@ espace privé | public |    privé
 </code></pre>
 <h2>Notion de sécurité</h2>
 <p>La sécurisation du protocole de transmission de la clé par le protocole de Diffie-Hellmann dépend de la complexité du meilleur algorithme (connu) permettant de résoudre le problème du logarithme discret. Elle dépend du ratio entre le temps nécessaire pour le décrypter et la durée de vie du message.</p>
+<p>Formalisons ce concept avec la notion de fonctions à sens unique.</p>
+<h3>Fonctions à sens unique</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/One-way_function">One way function</a></p>
+</div></div>
+
+<p>En gros, une fonction $f$ est à sens unique s'il est :</p>
+<ul>
+<li>facile de calculer $f(x) = y$ avec un algorithme efficace</li>
+<li>impossible de trouver $x$ sachant $f(y)$ avec un algorithme efficace</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une fonction $f: {0, 1}^t \rightarrow {0, 1}^t$ dont il existe un algorithme efficace pour la calculer est <strong><em>à sens unique</em></strong> si pour tout algorithme efficace $A$, la probabilité suivante :</p>
+<div>
+$$
+\Pr_{x \xleftarrow{U} \{0, 1\}^t}[f(F(f(x))) = f(x)]
+$$
+</div>
+<p>Est négligeable.</p>
+</div></div>
+
+<p>On voit bien l'intérêt pour le chiffrement de ce type de fonction : on cache dans le résultat d'une fonction ce que l'on veut transmettre. C'est ce qu'on a fait avec le logarithme discret dans le protocole de Diffie-Hellman et que l'on fera avec le problème d la factorisation lorsque l'on étudiera le problème de l'authentification.</p>
+<p>Ces deux problèmes sont (très fortement) soupçonnées de faire partie de ce type de fonctions. Seulement soupçonné car on a la proposition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>S'il existe des fonctions à sens unique, alors $P \neq NP$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Dérive directement de ce que l'<a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#algorithme-SAT" class="interne">on a vu avec le problème SAT</a> : il est équivalent pour SAT de trouver une entrée si on a la solution que de trouver la solution si on a une entrée. On a donc l'implication suivante : Si $P = NP$ alors il ne peut exister de fonction à sens unique.</p>
+</div>
+</details>     
+</div>
+<p>Notez que :</p>
+<ul>
+<li>la réciproque n'est pas démontrée</li>
+<li>il y a très peu de chance qu'on arrive à en exhiber une fonction à sens unique</li>
+</ul>
+<p>Tout algorithme de chiffrement est ainsi basé sur des suppositions. Pour éviter de tout construire sur du sable, on cherche à avoir au moins des preuves de constructions pour qu'il suffise de changer un algorithme si devient clair que le problème associé n'est pas à sens unique plutôt que de changer toute la méthode. C'est le but de la section suivante.</p>
+<h3>Sémantiquement sécurisé</h3>
 <p>Si les meilleurs algorithmes de résolution sont connus (ce qui n'est jamais vraiment assuré) on peut déterminer une taille de clé qui garantissent un temps de décryptage trop important. Formalisons cette notion :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -215,65 +287,286 @@ espace privé | public |    privé
 <p><a href="nombres-pseudo-al%C3%A9atoires-cryptographiques" class="interne">Nombres pseudo aléatoires cryptographiques</a></p>
 </div></div>
 
+<p>Avoir un CPRNG suffit pour garantir un chiffrement de Vernam sémantiquement sécurisé :</p>
+<p><span id="chiffre-CPRNG"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $G: \{0, 1\}^s \rightarrow \{0, 1\}^n$, avec $s &lt;&lt;n$ est un  CPRNG, alors :</p>
+<ul>
+<li>$E(k, m) = G(k) \oplus m$</li>
+<li>$D(k, m) = E(k, m)$</li>
+</ul>
+<p>est une méthode de chiffrement sécurisée.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $A$ un algorithme efficace d'aun adversaire du jeu de la reconnaissance avec deux mots $m_0$ et $m_1$. Son avantage vaut :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] \vert\\
+&=& \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1]-\\
+&& (\Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1]) \vert\\
+\end{array}
+$$
+</div>
+<p>Comme $u\xleftarrow{U}\{0, 1\}^t\oplus m_1$ est une variable uniforme (<a href="../chiffre-vernam/#uniforme" class="interne">on l'a démontré</a>) on a $u\xleftarrow{U}\{0, 1\}^t\oplus m_1 = u\xleftarrow{U}\{0, 1\}^t\oplus m_2 = u\xleftarrow{U}\{0, 1\}^t$ et donc :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] -\\
+&& (\Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_2) = 1]) \vert\\
+&=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] \vert +\\
+&& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_2) = 1] \vert
+\end{array}
+$$
+</div>
+<p>On peut supposer sans perte de généralité que :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A) &\leq&2\cdot\vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] \vert
+\end{array}
+$$
+</div>
+<p>L'algorithme $A'$ tel que $A'(x) = A(x \oplus m_1)$ est un algorithme qui reconnaît $G$. Comme $G$ est un CPRNG, son avantage $\epsilon(A')$ ne peut être que négligeable et comme :</p>
+<div>
+$$
+\begin{array}{lcl}
+\epsilon(A') &=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] \vert
+\end{array}
+$$
+</div>
+<p>On en déduit que $\epsilon(A)$ est aussi négligeable ce qui conclut la preuve.</p>
+</div>
+</details>     
+</div>
+<h2>Message de taille variable</h2>
+<p>Les générateurs de nombres pseudo-aléatoires ne permettent pas de générer des mots de tailles arbitraires. Certains peuvent être très grand (comme les lsfr ou le Blum-blum-shub) d'autres de tailles fixes et petites (chacha20 ne peut produire que des mots de longueur 512b).</p>
+<p>Le schéma de transmission se complexifie encore en ajoutant une boucle de chiffrement :</p>
+<pre><code>    Alice     |         |     Bob
+    privé     | public  |    privé
+--------------|---------|--------------
+     m        |         |
+              |         |
+     a ---v   |         |  v--- b           # générés par un TRNG
+     k &lt;--====|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
+              |         |
+----&gt;         |         |
+|             |         |
+|  G(ki) = K  |         |  G(ki) = K         # générés par un CPRNG
+|             |         |
+| K ⊕ mi = c -|--- c ---|----&gt; c
+|             |         |  K ⊕ c = mi
+|             |         |  m = mi || m
+----          |         |    
+</code></pre>
+<p>Notez qu'il ne faut pas répéter la clé !</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que si l'on encode plusieurs parties de message avec la même clé, le chiffre n'est pas sémantiquement sécurisé.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si l'on utilise deux fois la même clé, si deux portions de messages sont identiques alors ils auront le même chiffre. On peut alors utiliser les messages :</p>
+<ul>
+<li>$m_1 = b_1b_2$</li>
+<li>$m_2 = b_1b_1$</li>
+</ul>
+<p>On reconnaîtra $m_1$ de m_2$ avec un avantage de 1.</p>
+</div>
+</details>     
+</div>
 <blockquote>
-<p>TBD Chiffrement sémantiquement sécurisé avec CPRNG.</p>
+<p>TBD refaire l'image p12 <a href="https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf">https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf</a></p>
 </blockquote>
-<blockquote>
-<p>TBD CPRNG -&gt; permutation
-TBD historiquement AES mais maintenant chacha20 (de Bertstein, celui des courbes elliptiques)</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ce mode de chiffrement existe (ECB) est n'est <a href="https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/applications-of-block-ciphers/modes-of-operation-for-block-ciphers/examination-review-modes-of-operation-for-block-ciphers/how-does-the-electronic-codebook-ecb-mode-of-operation-work-and-what-are-its-primary-security-drawbacks/">jamais recommandé</a></p>
+</div></div>
+
+<p>Voyons  comment tout ceci peut se faire de façon sécurisée :</p>
+<p>Concaténer des blocs de messages chiffrés. On découpe le message à chiffrer $m$ en blocs $m_i$ de taille $t$ fixe que l'on traite séparément.</p>
+<p>Plutôt que d'utiliser un générateur on utilise une <a href="../nombres-pseudo-al%C3%A9atoires-cryptographiques/#PRF" class="interne">fonction pseudo-aléatoire sécurisée</a> (ou une <a href="../nombres-pseudo-al%C3%A9atoires-cryptographiques/#PRP" class="interne">permutation</a>) dont on a vu que l'utilisation était identique à un générateur mais permettait d'avoir un paramètre de plus, le vecteur d'initialisation.</p>
+<p>On va utiliser le schéma suivant pour désigner une PRF (<em>resp.</em> une PRP) $F(k, \text{iv})$ :</p>
+<pre><code>       iv   
+        |   
+      ----- 
+ k--&gt;|  F  |
+      ----- 
+        |
+     F(k,iv)   
+</code></pre>
+<p>On a alors le schéma de chiffrement suivant, qui modifie le vecteur d'initialisation en incrémentant un compteur :</p>
+<pre><code>    iv || 01     iv || 02          iv || i           iv || l
+        |            |                 |                 |
+      -----        -----             -----             -----
+ k--&gt;|     |  k--&gt;|     |  ...  k--&gt;|     |  ...  k--&gt;|     |
+      -----        -----             -----             -----
+        |            |                 |                 |
+ m1---&gt; ⊕     m2---&gt; ⊕          mi---&gt; ⊕          ml---&gt; ⊕ 
+        |            |                 |                 |
+        v            v                 v                 v
+       c1           c2                ci                cl
+</code></pre>
+<p>Ce schéma est bien sécurisé si $F$ l'est et que la place prise par le compteur n'est pas trop grande :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>$F: \{0, 1\}^s \times \{0, 1\}^t \rightarrow \{0, 1\}^t$ est une fonction pseudo-aléatoire sécurisée et $m$ un message de taille $l\cdot t$ alors :</p>
+<div>
+$$
+E(k, m) = (F(k, \text{iv} \;\|\; 1) \;\|\;  \dots \;\|\;  F(k, \text{iv} \;\|\; l)) \oplus m
+$$
+</div>
+<p>Est un chiffre sécurisé.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'opérateur $\;\|\;$ est la concaténation.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $F$ est une PRF, $F(k, \text{iv} \;\|\; i)$ est indiscernable de la variable aléatoire uniforme pour tout $\text{iv} \;\|\; i$. On peut ensuite utiliser le même schéma de preuve que <a href="nombres-pseudo-al%C3%A9atoires-cryptographiques/#chiffre-CPRNG-incr%C3%A9mental" class="interne">la preuve de l'incrémentalité d'un CPRNG</a> et permet de montrer que $(F(k, \text{iv} ;|; 1) ;|;  \dots ;|;  F(k, \text{iv} ;|; l))$ est indiscernable de la variable aléatoire uniforme (ici $m$ est au pire égale à la taille $t$ du message qui reste polynomial par rapport au paramètre de sécurité).</p>
+</div>
+</details>     
+</div>
+<p>Cette construction permet également de chiffrer <strong>et</strong> déchiffrer rapidement le message en parallèle. Il suffit de connaître la clé $k$ et la position du bloc à chiffrer/déchiffrer.</p>
+<pre><code>    Alice     |         |     Bob
+    privé     | public  |    privé
+--------------|---------|--------------
+     m        |         |
+              |         |
+     a ---v   |         |  v--- b           # générés par un TRNG
+     k &lt;--====|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
+              |         |
+--i--&gt;        |         |
+|             |         |
+| F(k,        |         | F(k,              # PRF
+|   iv || i)  |         |   iv || i)
+|   = K       |         |   = K             
+|             |         |
+| K ⊕ mi = c -|--- c ---|----&gt; c
+|             |         |  K ⊕ c = mi
+|             |         |  m = mi || m
+----          |         |    
+</code></pre>
+<h2>Nonce</h2>
+<p>Le vecteur d'initialisation est souvent utilisé comme <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">NONCE</a>, qui comme son nom l'indique est utilisé une unique fois.</p>
+<p>De nombreux protocoles cryptographiques l'utilise pour distinguer des encodages au sein de l'envoi d'un message pour éviter les <a href="https://fr.wikipedia.org/wiki/Attaque_par_rejeu">attaque par rejeu</a>. Le Nonce peut en effet être envoyé en clair, du moment que la clé est secrète.</p>
+<pre><code>    Alice     |         |     Bob
+    privé     | public  |    privé
+--------------|---------|--------------
+     m        |         |
+              |         |
+     a ---v   |         |  v--- b           # générés par un TRNG
+     k &lt;--====|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
+              |         |
+    N --------|---------|----&gt; N            # Nonce    
+              |         |                 
+--i--&gt;        |         |
+|             |         |
+| F(k,        |         | F(k,              # PRF
+|   N || i)   |         |   N || i)
+|   = K       |         |   = K             
+|             |         |
+| K ⊕ mi = c -|--- c ---|----&gt; c
+|             |         |  K ⊕ c = mi
+|             |         |  m = mi || m
+----          |         |    
+</code></pre>
 <h2>Schéma final de la transmission</h2>
-<p>Pour qu'une méthode de chiffrement puisse être utilisé en pratique, il faut pouvoir avoir deux choses :</p>
+<p>En utilisant le chirrfre de Vernam, la transmission sécurisée ressemble finalement à ceci :</p>
+<pre><code>    Alice     |         |     Bob
+    privé     | public  |    privé
+--------------|---------|--------------
+     m        |         |
+              |         |
+     a ---v   |         |  v--- b           # générés par un TRNG
+     k &lt;--====|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
+              |         |
+    N --------|---------|----&gt; N            # Nonce    
+              |         |                 
+--i--&gt;        |         |
+|             |         |
+| F(k,        |         | F(k,              # PRF
+|   N || i)   |         |   N || i)
+|   = K       |         |   = K             
+|             |         |
+| K ⊕ mi = c -|--- c ---|----&gt; c
+|             |         |  K ⊕ c = mi
+|             |         |  m = mi || m
+----          |         |    
+</code></pre>
+<p>On appelle ce type de transmission <a href="https://fr.wikipedia.org/wiki/Chiffrement_de_flux">chiffrement de flux</a>, qui est la norme actuellement. Il permet :</p>
 <ul>
 <li>des clés de petites tailles par rapport au message à faire passer</li>
 <li>des algorithmes de complexité linéaires pour chiffrer et déchiffrer les messages.</li>
-</ul>
-<p>Même si on s'autorise théoriquement des algorithmes polynomiaux, en pratique, efficaces veut plutôt dire linéaire car il faut que ces algorithmes puissent chiffrer de très nombreuses données en peu de temps. Efficace prend donc deux significations différentes, selon que l'on cherche à prouver théoriquement des résultats où que l'on veuille en pratique chiffrer des données. L'un ne va cependant pas sans l'autre.</p>
-<p>Ces deux contraintes vont forcément nous faire passer des informations à l'adversaire. Selon le type d'information que l'on ne veut pas divulguer on va utiliser une méthode plutôt qu'une autre.</p>
-<blockquote>
-<p>rappel définition securisé, avantage, etc.</p>
-</blockquote>
-<ol>
-<li>Alice et/ou Bob doivent créer un nombre aléatoire de façon uniforme servant de clé.</li>
-<li>Alice et Bob doivent s'échanger une clé de taille petite par rapport à la taille du message à échanger mais choisie uniformément parmi toutes les clé possibles</li>
-<li>cette clé doit permettre de générer une clé plus grosse de taille égale au message à échanger (on verra pourquoi)</li>
-<li>on chiffre le message avec le code de Vernam que l'on peut ensuite transmettre</li>
-</ol>
-<pre><code>    Alice    |        |     Bob
-    privé    | public |    privé
--------------|--------|--------------
-      m      |        |     
-      k &lt;----|--------|----&gt; k
-  G(k) = K   |        |  G(k) = K    
-E(K, m) = c -|-- c ---|----&gt; c
-             |        | D(K, c) = m
-             |        |
-</code></pre>
-<p>Pour que tout fonctionne sans accros il faut que chaque étape soit &quot;<em>sécurisée</em>&quot; (on définira précisément ce terme plus tard) en particulier :</p>
-<ol>
-<li>il faut créer une clé uniforme.</li>
-<li>il faut pouvoir se partager un secret via un canal public</li>
-<li>il faut que l'algorithme de génération de clé plus grosse soit connu de tous <strong>mais</strong> que ce soit impossible de connaître la séquence finale si on a pas la clé de départ</li>
-<li>il faut que $c$ soit uniforme pour ne pas</li>
-</ol>
-<pre><code>           k                   k
-           |                   |
-           v                   v
-        -------             -------
-       |       |           |       |
- m --&gt; |   E   | --&gt; c --&gt; |   D   | --&gt; m
-       |       |           |       |
-        -------             -------
-</code></pre>
-<p>Deux types d'attaques :</p>
-<ul>
-<li>brute-force : énumération des clés</li>
-<li>connaissances supplémentaires :
-<ul>
-<li><em>a priori</em> sur $m$ si l'attaque est chiffre seul</li>
-<li>acquises si on peut avoir ou produire des couples (message, chiffre)</li>
-</ul>
-</li>
 </ul>
 <p>On considère actuellement que si le <a href="https://en.wikipedia.org/wiki/Key_size#Brute-force_attack">nombre de clés est supérieur à $2^{128}$</a>, l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message. Si l'on utilise des connaissances supplémentaires, il est possible de faire baisser ce nombre drastiquement.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -284,150 +577,6 @@ E(K, m) = c -|-- c ---|----&gt; c
 <p><a href="https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/">recommendations ANSSI taille de clés</a></p>
 </div></div>
 
-<h2>Génération de nombres pseudo-aléatoires</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Random_number_generation">https://en.wikipedia.org/wiki/Random_number_generation</a></p>
-</div></div>
-
-<p>Clé initiale doit être uniforme. Puis on étend à la taille du message à chiffrer. En partant d'une clé aléatoire sur $k$ bits un algorithme $G()$ permettant de produire $k &lt;&lt;t$ bits que l'on cherche à être le plus aléatoire possible :</p>
-<pre><code>  ---------
-  | k bit |
-  ---------
-  :        \
-  :         \
-  :          \
-  :           \
-  --------------
-  |G(k) à t bits|
-  --------------
-</code></pre>
-<p>Comme $G$ est un algorithme il est <strong>déterministe</strong> mais si la suite $G(k)$ possède des propriétés statistiques relevant de l'aléatoire, on dira que $G$ est un générateur de nombre pseudo-aléatoire.</p>
-<p>Ca existe :</p>
-<ul>
-<li><a href="https://docs.python.org/fr/3.14/library/random.html">les nombres pseudo-aléatoire de python</a>. Fonctionnent avec une seed.</li>
-<li>le modulo $x_{n+1} = a \cdot x_n + b \pmod p$ avec $p$ un nombre premier.</li>
-</ul>
-<p>Ou encore les décimales de pi à partir de la $k$ème
-voir des méthodes plus sophistiquée comme <a href="Rapport_de_Stage_Laura_Michelutti.pdf">les lsfr</a>.</p>
-<p>Ces générateur (python, ou encore le modulo avec un entier premier) sont parfait pour prédire le monde physique, les sorties sont bien uniformes et indétectables de l'aléatoire, mais pour les applications crypto on veut en plus non-prédictible.</p>
-<p>Du coup $\pi$ marche pas non plus trop (<a href="https://mathoverflow.net/questions/26942/is-pi-a-good-random-number-generator">https://mathoverflow.net/questions/26942/is-pi-a-good-random-number-generator</a> et <a href="https://www2.lbl.gov/Science-Articles/Archive/pi-random.html">https://www2.lbl.gov/Science-Articles/Archive/pi-random.html</a>).</p>
-<p>Et les lsfr il faut travailler.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/stream-ciphers/stream-ciphers-random-numbers-and-the-one-time-pad/examination-review-stream-ciphers-random-numbers-and-the-one-time-pad/what-are-the-key-differences-between-true-random-number-generators-trngs-pseudorandom-number-generators-prngs-and-cryptographically-secure-pseudorandom-number-generators-csprngs/">Différences entre les différents générateur pseudo-aléatoires</a></p>
-</div></div>
-
-<!-- > TBD TP
->
-> - lsfr avec python etc.
-> - les décimales de pi :
->   - <https://www.youtube.com/watch?v=FDXf1XxCXAk>
->   - sont aléatoires si tu ne sais pas que c'est elles.
->   - prendre les bits de la représentation binaire des décimales de pi et leur faire passer des tests d'aléatoire. -->
-<h3>Nombres pseudo-aléatoires cryptographique</h3>
-<p>On a utilisé plusieurs fois le terme &quot;sécurisé&quot; avec des notions différentes :</p>
-<ul>
-<li>la sécurité du partage de la clé était basé sur la <strong>difficulté algorithmique</strong> du logarithme discret.</li>
-<li>générateur de nombre pseudo-aléatoire est sécurisé s'il est <strong>non prédictible</strong></li>
-</ul>
-<p>Essayons de formaliser tout ça en une seule définition qui va permettre de créer des système de chiffrement que l'on pourra démontrer sécurisé (au oins en théorie).</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="d%C3%A9finitions" class="interne">Définitions de la confidentialité</a></p>
-</div></div>
-
-<p>Le message ne doit pouvoir être lu que par son destinataire. Comment partager la clé en secret ?</p>
-<h2>Chiffrer un message</h2>
-<p>Les algorithmes de chiffrement classiques ne permettent pas de chiffrer des message de taille quelconque. Ils sont conçus pour chiffrer des blocs de taille fixes.</p>
-<h3>Chiffrer un message de taille fixe</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="chiffrer-un-bloc" class="interne">Chiffrer un bloc</a></p>
-</div></div>
-
-<h3>Chiffrer un message de taille quelconque</h3>
-<p>Il existe historiquement deux types de codes même si les différences commencent à s'estomper entres eux :</p>
-<ul>
-<li>les codes en flux qui vont se comporter comme le code de Vernam</li>
-<li>les code en bloc qui vont découper le message en blocs et chiffrer chacun d'entre eux avec un permutation.</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="sch%C3%A9ma-g%C3%A9n%C3%A9ral" class="interne">Schéma général</a></p>
-</div></div>
-
-<blockquote>
-<p><a href="https://www.youtube.com/watch?v=G2TYtN2qJls&amp;list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc">https://www.youtube.com/watch?v=G2TYtN2qJls&amp;list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc</a></p>
-</blockquote>
-<h3>Attention aux implémentations</h3>
-<p>Les <a href="partager-secret/#side-channel-attack" class="interne">side channel attacks</a> permettent, on l'a vue, de tirer parie de l'implémentation de l'algorithme pour obtenir un avantage npn négligeable. Pour qu'aucune information ne transparaisse, il faut que l'algorithme :</p>
-<ol>
-<li>fasse tout le temps la même chose</li>
-<li>consomme la même énergie</li>
-<li>...</li>
-</ol>
-<p>Bref, n'implémentez pas vous même les algorithmes, prenez des implémentations éprouvées.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://www.youtube.com/watch?v=GPwNFrpd1KU">channel attack exemples</a></li>
-<li><a href="https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/">Attaques sur Machines embarquées</a></li>
-</ul>
-</div></div>
-
-<h2>Générer des clés</h2>
-<h3>Générateur de nombre aléatoire cryptographique</h3>
-<blockquote>
-<p>TBD LSFR</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Rapport de stage sur les codes LSFR : <a href="Rapport_de_Stage_Laura_Michelutti.pdf">projet codes LSFR</a></p>
-</div></div>
-
-<h3>Trouver la clé</h3>
-<p>Il faut utiliser des générateur avec entropie. Il n'est pas utile de retrouver le nombre ensuite.</p>
-<blockquote>
-<p>TBD <code class="fichier">/dev/random</code> ou <code class="fichier">/dev/urandom</code>
-TBD : faire grossir partie <a href="al%C3%A9atoire" class="interne">aléatoire</a></p>
-</blockquote>
-<h3>Key derivation function</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Key_derivation_function">Key derivation function</a></p>
-</div></div>
-
-<p>Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque messages. La façon la plus simple, si on a un PRF sous la main est de :</p>
-<ul>
-<li>posséder une clé primaire appelée $SK$ (<em>source key</em>)</li>
-<li>une constante $CTX$, application dépendante pour éviter que plusieurs applications différentes utilisant la même clé primaires de se trouvent avec les mêmes clés</li>
-</ul>
-<p>Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : $F(\text{SK}, \text{CTX} || i)$, où $i$ est un compteur.</p>
 
 
 </article>

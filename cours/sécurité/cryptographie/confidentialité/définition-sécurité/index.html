@@ -285,21 +285,21 @@ $$
 <p>On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.</p>
 </div></div>
 
-<p>L'intérêt de cette formalisation est que négligeabilité se compose tout comme la polynômialité (somme et produit de polynôme restent des polynômes) :</p>
+<p>L'intérêt de cette formalisation est que négligeabilité se compose tout comme la polynomialité (somme et produit de polynôme restent des polynômes) :</p>
 <ul>
 <li>$p(n) \cdot \epsilon(n)$ reste négligeable si $\epsilon(n)$ l'est</li>
 <li>$\epsilon(n) + \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont</li>
 <li>$\epsilon(n) \cdot \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont</li>
 </ul>
 <p>Si on ne possède que des fonctions négligeable pour décrypter un code on ne peut donc pas arriver à grand chose, ce qui permet d'être en sécurité :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
+<p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une méthode de chiffrement est <strong><em>sémantiquement sécurisée</em></strong> (<em>Semantically secured</em>) si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.</p>
+<p>Une méthode de chiffrement pourra être considéré comme  <strong><em>sécurisée</em></strong> si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.</p>
 </div></div>
 
 <p>La définition précédente nous permet de définir un cadre pour construire une méthode de chiffrement sécurisée :</p>
@@ -466,12 +466,22 @@ $$
 </div>
 </details>     
 </div>
-<p>Les deux lois seront dites :</p>
+<p>De là :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Deux lois seront dites :</p>
 <ul>
-<li><strong><em>équivalentes</em></strong> si $D0 = D1$ : on ne peut les distinguer</li>
+<li><strong><em>équivalentes</em></strong> si $D0 = D1$ : on ne peut les distinguer par le jeu de la reconnaissance</li>
 <li><strong><em>statistiquement sécurisés</em></strong> si le meilleur algorithme de reconnaissance ne peut obtenir qu'un avantage négligeable</li>
 <li><strong><em>sémantiquement sécurisés</em></strong> si le meilleur algorithme <strong>efficace</strong> de reconnaissance ne peut obtenir qu'un avantage négligeable</li>
 </ul>
+</div></div>
+
 <p>On cherchera toujours à obtenir un comportement sémantiquement sécurisé. Ceci est facilité par la remarque ci-dessous :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -497,7 +507,7 @@ $$
 </div></div>
 
 <h3>Jeu du chiffrement</h3>
-<p>Si l'on cherche à prouver qu'une méthode de chiffrement est sémantiquement sécurisée pour des attaques par messages choisis (<em>Chosen-plaintext attackers, CPA</em>) on peut utiliser le jeu suivant. Notez que si notre méthode de chiffrement y résiste elle sera également robuste pour les attaques plus faible (par message connu ou chiffre uniquement).</p>
+<p>Pour une méthode de chiffrement, trouver les distribution à tester peut se faire avec le jeu suivant où l'attaquant choisi deux mots à tester. Si la méthode est sémantiquement sécurisé cela signifie que la différence de distribution est négligeable et est donc une approximation réaliste de la <a href="../../chiffre-vernam/#confidentialit%C3%A9-parfaite" class="interne">confidentialité parfaite</a>.</p>
 <p>Le jeu consiste alors en 6 étapes :</p>
 <ol>
 <li>le testeur choisit uniformément une clé $k$</li>
@@ -520,6 +530,16 @@ $$
     ---------                    ------------
 </code></pre>
 <p>Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance puisque l'on cherche à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_1)$ lorsque $k$ est distribué de façon uniforme. Ce type d'attaque, bien qu'elle ne permet pas de déchiffrer les messages permet tout de même d'avoir des informations sur le type de message chiffré, par exemple si la réponse est positive (<code>m0 = &quot;oui&quot;</code>) ou négative (<code>m1 = &quot;non&quot;</code>).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une méthode de chiffrement est <strong><em>sémantiquement sécurisée</em></strong> (<em>Semantically secured</em>) si un adversaire efficace ne peut obtenir qu'un avantage négligeable au jeu du chiffrement.</p>
+</div></div>
+
 <p>Par exemple supposons que nous chiffrons/déchiffrons nos messages avec l'algorithme de Vigenère et que l'on chiffre des messages avec des clés de longueur $\vert k \vert\ = 2$. L'adversaire pourrait choisir <code>m0 = &quot;aa&quot;</code> et <code>m1 = &quot;ab&quot;</code> et décider de répondre 1 si <code>c[1] ≠ c[0]</code>. L'avantage de cet algorithme va être énorme puisque :</p>
 <ul>
 <li>$\Pr[b' = 1 \;\mid\; b = 1] = 1- \Pr[b' = 0 \;\mid\; b = 1]$. On ne peut répondre $b'=0$ alors que $b=1$ que si la lettre $a$ se chiffre avec la même lettre que $b$ ce qui arrive 26 fois (choisir la première lettre de $k$ entraîne sa deuxième). Donc $\Pr[b' = 1 \;\mid\; b = 1] = 1- 26/26^2 = 1-1/26$</li>
