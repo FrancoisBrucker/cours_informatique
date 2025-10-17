@@ -14,6 +14,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+{% lien "**Bibliographie**" %}
+
+- "Serious cryptography de Jean-Philippe Aumasson" (la version anglaise, la traduction française est un scandale)
+- "Introduction to modern cryptography de Jonathan Katk et Yehuda Lindell"
+
+{% endlien %}
+
 La thématique de la _sécurité_ en informatique traite de l'échange de messages entre un expéditeur et un destinataire via un canal public tout en respectant les quatre principes suivant :
 
 - **_confidentialité_** : le message ne doit pouvoir être lu que par son destinataire.
@@ -151,8 +158,6 @@ On a vu avec le chiffre de Vernam que les 3 volets de la sécurité : confidenti
 - le code en Vernam est confidentiel mais l'authentification n'est pas assurée
 
 ## Confidentialité
-
-### Principe et exemple paradigmatique
 
 {% aller %}
 [Confidentialité](./confidentialité){.interne}

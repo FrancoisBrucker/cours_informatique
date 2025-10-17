@@ -10,14 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% lien "**Bibliographie**" %}
-
-- "random number generators : principles and practices de David Johnston"
-- "Introduction to modern cryptography de Jonathan Katk et Yehuda Lindell"
-- <https://www.youtube.com/watch?v=G2TYtN2qJls&list=PLbdXd8eufjyWStIhgGkstZi-cvHhUPatc>
-
-{% endlien %}
-
 Le processus d'envoi d'un message confidentiel entre Alice et Bob décrit précédemment doit être ajusté pour être réaliste :
 
 ```
