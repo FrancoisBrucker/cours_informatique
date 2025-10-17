@@ -254,6 +254,17 @@ $$
 <p>Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.</p>
 </div></div>
 
+<blockquote>
+<p>TBD 1 clé = 1 nanosecondes
+TBD $2^{89}$ = nombre de nanosecondes depuis le début de l'univers (14 milliards d'années)
+TBD $10^{80} \simeq 2^{266}$ = nombre de particules dans l'univers (entre $10^{80}$ et $10^{85}$)</p>
+<p>TBD exemple en parallèle : on divise par le nb de machines/processeurs.</p>
+<p>TBD mémoire : taille et recherche (p48 serious crypto).</p>
+<p>TBD prés-calcul : attaque par dictionnaire (mots de passe, on y reviendra)</p>
+<p>TBD en moyenne 2**n/2 clé si on connaît P et C et on cherche K</p>
+<p>TBD en moyenne si un message est chiffré pour M possibles clés (si on connaît P et Ci et on cherche un Ki) en trouver 1 c'est 2**n/m en moyenne
+TBD en moyenne et en parallèle.</p>
+</blockquote>
 <h2><span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -266,31 +277,6 @@ $$
 </ul>
 </div></div>
 
-<p>Commençons par définir une fonction négligeable :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une fonction $f(n)$ est <strong><em>négligeable</em></strong> si $f(n) = \mathcal{O}(1/n^d)$ pour tout entier $d$.</p>
-</div></div>
-
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.</p>
-</div></div>
-
-<p>L'intérêt de cette formalisation est que négligeabilité se compose tout comme la polynomialité (somme et produit de polynôme restent des polynômes) :</p>
-<ul>
-<li>$p(n) \cdot \epsilon(n)$ reste négligeable si $\epsilon(n)$ l'est</li>
-<li>$\epsilon(n) + \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont</li>
-<li>$\epsilon(n) \cdot \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont</li>
-</ul>
 <p>Si on ne possède que des fonctions négligeable pour décrypter un code on ne peut donc pas arriver à grand chose, ce qui permet d'être en sécurité :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -302,22 +288,6 @@ $$
 <p>Une méthode de chiffrement pourra être considéré comme  <strong><em>sécurisée</em></strong> si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.</p>
 </div></div>
 
-<p>La définition précédente nous permet de définir un cadre pour construire une méthode de chiffrement sécurisée :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On supposera toujours pour la suite que :</p>
-<ul>
-<li>les adversaires n'ont à leurs dispositions que des algorithmes <strong><em>efficaces</em></strong>, c'est à dire polynomiaux</li>
-<li>qu'on ne veut consentir qu'une possibilité de réussite <strong><em>négligeable</em></strong></li>
-</ul>
-</div></div>
-
-<h2>Avantage</h2>
 <p>La sécurité sémantique stipule qu'une méthode doit être sécurisé quelque soit l'algorithme efficace utilisé. Pour obtenir ce genre de résultat sans connaître tous les algorithmes possibles on utilise une modélisation statistique cherchant à mesurer l'écart entre la distribution produite par la méthode et la loi uniforme.</p>
 <p>Classiquement ceci se formalise par la modélisation sous la forme d'un jeu.</p>
 <h3><span id="jeu-reconnaissance"></span>Jeu de la reconnaissance</h3>
@@ -359,7 +329,7 @@ $$
 </li>
 </ol>
 <p>Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la suite générée par notre méthode de chiffrement est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences.</p>
-<p>L'adversaire possède un <strong>_<a href="https://en.wikipedia.org/wiki/Advantage_(cryptography)">avantage</a>_</strong> si la probabilité que <code>A(x)=b'</code> coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :</p>
+<p>L'adversaire possède un <strong><a href="https://en.wikipedia.org/wiki/Advantage_(cryptography)">avantage</a></strong> si la probabilité que <code>A(x)=b'</code> coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -579,6 +549,12 @@ $$
 </div>
 </details>     
 </div>
+<h3>Jeu du chiffrement multiple</h3>
+<blockquote>
+<p>TBD plus réaliste.
+TBD donner des exemples p72 into modern crypto.
+TBD idem mais on peut répéter l'opération un nombre polynomial de fois. Le bit $b$ du testeur est toujours le même.</p>
+</blockquote>
 <h2>Construction de méthode de chiffrement</h2>
 <p>Les méthodes sémantiquement sécurisées permettent construire une méthode de chiffrement bloc par bloc : si chaque bloc est sémantiquement sécurisé l'ensemble le sera aussi. Illustrons le en montrant que l'on peut créer un chiffre de Vernam sémantiquement sécurisé en partant d'un générateur de nombre aléatoire biaisé, du moment que le biais est négligeable.</p>
 <p>Soit la distribution de Bernoulli biaisée $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^t$ la distribution sur $\{0, 1\}^t$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme $U$. L'avantage d'un algorithme permettant de discriminer les deux distribution est alors :</p>
@@ -630,14 +606,25 @@ $$
 <div>
 $$
 \begin{array}{lcl}
-\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&=&\frac{1}{2}\sum_{x\in \{0, 1\}^t}|\sum_\limits{0 < i \leq n}((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}((1/2)^{n-i}B^{i-1}(x))| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&n\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(1/2-B(x))\\
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\frac{1}{2^{n}} \cdot (\sum_\limits{0 < i \leq n}(| 1/2-B(x_i) |))\\
 &\leq&\frac{n}{2}\epsilon
 \end{array}
 $$
 </div>
+<!-- TBD à vérifier !
+
+<div>
+$$
+\begin{array}{lcl}
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&=&\frac{1}{2}\sum_{x\in \{0, 1\}^t}|\sum_\limits{0 < i \leq n}((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i}B^{i-1}(x))| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(\sum_i(| 1/2-B(x_i) |))\\
+&\leq&n\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(|1/2-B(x)|)\\
+&\leq&\frac{n}{2}\epsilon
+\end{array}
+$$
+</div> -->
 <p>Si $\epsilon$ est négligeable, la génération d'éléments de $\{0, 1\}^t$ l'est aussi.</p>
 <h3>Étape 2 : chiffrement</h3>
 <p>On peut utiliser ce qui précède pour créer un chiffrement statistiquement sécurisé en utilisant un chiffre de Vernam avec notre générateur aléatoire. Montrons que si $U$ est la loi uniforme sur $\{0, 1\}^t$ et $m$ un élément de $\{0, 1\}^t$, alors la loi de distribution associée à la variable aléatoire $(x \xleftarrow{B^t} \{0, 1\}^t) \oplus m$ est sémantiquement sécurisé.</p>
