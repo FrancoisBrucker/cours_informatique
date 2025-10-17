@@ -104,16 +104,45 @@ En gros, une fonction $f$ est à sens unique s'il est :
 - facile de calculer $f(x) = y$ avec un algorithme efficace
 - impossible de trouver $x$ sachant $f(y)$ avec un algorithme efficace
 
+Ce qui donne la définition suivante :
+
 {% note "**Définition**" %}
-Une fonction $f: {0, 1}^t \rightarrow {0, 1}^t$ dont il existe un algorithme efficace pour la calculer est **_à sens unique_** si pour tout algorithme efficace $A$, la probabilité suivante :
+Une fonction $f: {0, 1}^t \rightarrow {0, 1}^t$ dont il existe un algorithme efficace pour la calculer est **_à sens unique_** si pour tout algorithme efficace $A$, la probabilité suivante est négligeable :
 <div>
 $$
 \Pr_{x \xleftarrow{U} \{0, 1\}^t}[f(F(f(x))) = f(x)]
 $$
 </div>
 
-Est négligeable.
 {% endnote %}
+
+En utilisant les définitions de efficace et négligeable suivantes :
+
+{% note "**Définition**" %}
+
+- une fonction $f(n)$ est **_efficace_** si $f(n) = \mathcal{O}(n^d)$ pour **un** entier $d$.
+- une fonction $f(n)$ est **_négligeable_** si $f(n) = \mathcal{O}(1/n^d)$ pour **tout** entier $d$.
+{% endnote %}
+{% info %}
+On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.
+{% endinfo %}
+
+L'intérêt de cette formalisation est que négligeabilité se compose tout comme l'efficacité (somme et produit de polynôme restent des polynômes) :
+
+- $p(n) + p(n)$ reste efficace si $p(n)$ et $p(n)$ le sont
+- $p(n) \cdot p(n)$ reste efficace si $p(n)$ et $p(n)$ le sont
+- $\epsilon(n) + \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont
+- $\epsilon(n) \cdot \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont
+- $p(n) \cdot \epsilon(n)$ reste négligeable si $\epsilon(n)$ l'est et $p(n)$ est efficace
+
+{% attention "**À retenir**" %}
+
+On supposera toujours pour la suite que :
+
+- les adversaires n'ont à leurs dispositions que des algorithmes **_efficaces_**, c'est à dire polynomiaux
+- qu'on ne veut consentir qu'une possibilité de réussite **_négligeable_**
+
+{% endattention %}
 
 On voit bien l'intérêt pour le chiffrement de ce type de fonction : on cache dans le résultat d'une fonction ce que l'on veut transmettre. C'est ce qu'on a fait avec le logarithme discret dans le protocole de Diffie-Hellman et que l'on fera avec le problème d la factorisation lorsque l'on étudiera le problème de l'authentification.
 

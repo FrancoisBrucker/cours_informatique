@@ -110,6 +110,21 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 {% endattention %}
 
+> TBD 1 clé = 1 nanosecondes
+> TBD $2^{89}$ = nombre de nanosecondes depuis le début de l'univers (14 milliards d'années)
+> TBD $10^{80} \simeq 2^{266}$ = nombre de particules dans l'univers (entre $10^{80}$ et $10^{85}$)
+>
+> TBD exemple en parallèle : on divise par le nb de machines/processeurs.
+>
+> TBD mémoire : taille et recherche (p48 serious crypto).
+>
+> TBD prés-calcul : attaque par dictionnaire (mots de passe, on y reviendra)
+>
+> TBD en moyenne 2**n/2 clé si on connaît P et C et on cherche K
+>
+> TBD en moyenne si un message est chiffré pour M possibles clés (si on connaît P et Ci et on cherche un Ki) en trouver 1 c'est 2**n/m en moyenne
+> TBD en moyenne et en parallèle.
+
 ## <span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée
 
 {% lien %}
@@ -119,39 +134,11 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 {% endlien %}
 
-Commençons par définir une fonction négligeable :
-
-{% note "**Définition**" %}
-Une fonction $f(n)$ est **_négligeable_** si $f(n) = \mathcal{O}(1/n^d)$ pour tout entier $d$.
-{% endnote %}
-{% info %}
-On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.
-{% endinfo %}
-
-L'intérêt de cette formalisation est que négligeabilité se compose tout comme la polynomialité (somme et produit de polynôme restent des polynômes) :
-
-- $p(n) \cdot \epsilon(n)$ reste négligeable si $\epsilon(n)$ l'est
-- $\epsilon(n) + \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont
-- $\epsilon(n) \cdot \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont
-
 Si on ne possède que des fonctions négligeable pour décrypter un code on ne peut donc pas arriver à grand chose, ce qui permet d'être en sécurité :
 
 {% attention "**À retenir**" %}
 Une méthode de chiffrement pourra être considéré comme  **_sécurisée_** si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.
 {% endattention %}
-
-La définition précédente nous permet de définir un cadre pour construire une méthode de chiffrement sécurisée :
-
-{% attention "**À retenir**" %}
-
-On supposera toujours pour la suite que :
-
-- les adversaires n'ont à leurs dispositions que des algorithmes **_efficaces_**, c'est à dire polynomiaux
-- qu'on ne veut consentir qu'une possibilité de réussite **_négligeable_**
-
-{% endattention %}
-
-## Avantage
 
 La sécurité sémantique stipule qu'une méthode doit être sécurisé quelque soit l'algorithme efficace utilisé. Pour obtenir ce genre de résultat sans connaître tous les algorithmes possibles on utilise une modélisation statistique cherchant à mesurer l'écart entre la distribution produite par la méthode et la loi uniforme.
 
@@ -195,7 +182,7 @@ Et se déroule ainsi :
 
 Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la suite générée par notre méthode de chiffrement est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences.
 
-L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)\_** si la probabilité que `A(x)=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
+L'adversaire possède un **[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)** si la probabilité que `A(x)=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
 {% note "**Définition**" %}
 L'avantage $\epsilon(A)$ pour l'adversaire $A$ dans un jeu est défini tel que :
@@ -371,6 +358,12 @@ $$
 Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $\Pr[A(U) = 1] = \Pr[A(k\oplus m_1) = 1] = \Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.
 {% enddetails %}
 
+### Jeu du chiffrement multiple
+
+> TBD plus réaliste.
+> TBD donner des exemples p72 into modern crypto.
+> TBD idem mais on peut répéter l'opération un nombre polynomial de fois. Le bit $b$ du testeur est toujours le même.
+
 ## Construction de méthode de chiffrement
 
 Les méthodes sémantiquement sécurisées permettent construire une méthode de chiffrement bloc par bloc : si chaque bloc est sémantiquement sécurisé l'ensemble le sera aussi. Illustrons le en montrant que l'on peut créer un chiffre de Vernam sémantiquement sécurisé en partant d'un générateur de nombre aléatoire biaisé, du moment que le biais est négligeable.
@@ -436,14 +429,26 @@ Une autre astuce nous permet d'écrire tout cela de façon plus simple. On a en 
 <div>
 $$
 \begin{array}{lcl}
-\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&=&\frac{1}{2}\sum_{x\in \{0, 1\}^t}|\sum_\limits{0 < i \leq n}((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}((1/2)^{n-i}B^{i-1}(x))| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&n\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(1/2-B(x))\\
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\frac{1}{2^{n}} \cdot (\sum_\limits{0 < i \leq n}(| 1/2-B(x_i) |))\\
 &\leq&\frac{n}{2}\epsilon
 \end{array}
 $$
 </div>
+
+<!-- TBD à vérifier !
+
+<div>
+$$
+\begin{array}{lcl}
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&=&\frac{1}{2}\sum_{x\in \{0, 1\}^t}|\sum_\limits{0 < i \leq n}((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i}B^{i-1}(x))| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
+&\leq&\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(\sum_i(| 1/2-B(x_i) |))\\
+&\leq&n\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(|1/2-B(x)|)\\
+&\leq&\frac{n}{2}\epsilon
+\end{array}
+$$
+</div> -->
 
 Si $\epsilon$ est négligeable, la génération d'éléments de $\\{0, 1\\}^t$ l'est aussi.
 
