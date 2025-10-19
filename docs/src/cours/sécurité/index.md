@@ -16,9 +16,16 @@ eleventyComputed:
 
 Embryon de cours de sécurité. On y verra essentiellement les fondements cryptographiques de la sécurité.
 
+<!-- TBD
+
 > TBD montrer avec openssh comment le faire (voir serious cryptography)
 > TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
 > TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU> double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>
+
+> Trop compliqué. A simplifier pour laisser les preuve et le reste pour les plus intéressés et ne garder que les principes et une preuve max par partie. 
+> Ajourer des TPs.
+> 
+-->
 
 ## Cryptographie
 
@@ -29,14 +36,6 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 {% endaller %}
 
 ## Communication
-
-### OpenPGP
-
-{% aller %}
-
-[OpenPGP](./openpgp){.interne}
-
-{% endaller %}
 
 ### TLS
 
@@ -79,14 +78,10 @@ Qui certifie :
 
 C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance, en allant sur le site web du certifiant pour examiner le certifiant du certifiant, jusqu'à root si nécessaire.
 
-## Arithmétique
+## OpenPGP
 
 {% aller %}
-[Arithmétique](./arithmétique){.interne}
+
+[OpenPGP](./openPGP){.interne}
+
 {% endaller %}
-
-{% lien %}
-
-[arithmétique pour la cryptographie](https://www.youtube.com/watch?v=oRM-gNrbcgE&list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&index=1)
-
-{% endlien %}

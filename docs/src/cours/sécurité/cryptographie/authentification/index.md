@@ -3,7 +3,6 @@ layout: layout/post.njk
 
 title: Authentification
 
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -24,7 +23,7 @@ et :
 
 ```
 Alice <-------->Mallory<--------> Bob
-  k              k  k'             k' 
+  k              k  k'             k'
 ```
 
 Mallory interceptant tous les messages entre Alice et Bob, en particulier l'échange de clés initial.
@@ -42,7 +41,7 @@ La cryptographie asymétrique est un chiffre $(E, D)$ qui permet, avec un couple
 Enfin, la connaissance d'une des deux clés n'entraîne aucune information sur la seconde.
 {% endnote %}
 
-Les fonction $E$ et $D$ étant connues, on a coutume d'uniquement s'échanger les clés. Chaque personne garde une clé pour elle, cette clé est appelée *clé privée*, et distribue l'autre, la *clé publique*, à tout le monde.
+Les fonction $E$ et $D$ étant connues, on a coutume d'uniquement s'échanger les clés. Chaque personne garde une clé pour elle, cette clé est appelée _clé privée_, et distribue l'autre, la _clé publique_, à tout le monde.
 
 La clé privé est personnelle et permet :
 
@@ -78,7 +77,7 @@ Par exemple :
 
 Alice veut envoyer un message $m$ à Bob et prouver qu'elle est bien l'autrice de celui-ci :
 
-1. elle signe son message s = E(k, h(m))$
+1. elle signe son message $s = E(k, h(m))$
 2. elle envoie à Bob le message $m$ et sa signature $s$
 
 À la réception du message, Bob utilise la clé publique $k'$ d'Alice pour vérifier l'authenticité de $m$ : $h(m) = D(k', s)$
@@ -128,12 +127,6 @@ RAS est le protocole très largement utilisé de cryptographie asymétrique. Il 
 [Méthode de chiffrement RSA](./RSA){.interne}
 {% endaller %}
 
-### Chiffrement ElGamal
-
-{% aller %}
-[Méthode de chiffrement ElGamal](./ElGamal){.interne}
-{% endaller %}
-
 ### Signature DSA
 
 La méthode DSA de signature utilise le problème du logarithme discret comme fonctionnement, ce qui la rend compatible avec l'utilisation de courbes elliptiques :
@@ -141,7 +134,3 @@ La méthode DSA de signature utilise le problème du logarithme discret comme fo
 {% aller %}
 [Méthode de signature DSA](./DSA){.interne}
 {% endaller %}
-
-{% info %}
-DSA est une variante de la méthode de signature ElGamal, qu'il ne faut pas confondre avec la méthode de chiffrement ElGamal.
-{% endinfo %}

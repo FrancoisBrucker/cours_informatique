@@ -29,24 +29,19 @@ La seconde approche, utilisée en sécurité, consiste à résumer le message en
 [Malléabilité](https://fr.wikipedia.org/wiki/Mall%C3%A9abilit%C3%A9_(cryptographie))
 {% endlien %}
 
-Si un message chiffré $c$ peut être modifié en un message chiffré $f(c)$ tout en étant encore déchiffrable, on dit que le code est malléable. Les chiffrement par flux utilisant le XOR sont par essence malléable [comme on l'a déjà vu](../chiffre-vernam/#Vernam-intégrité){.interne}, il est donc important de pouvoir se prémunir de ce genre d'attaque.
+Si un message chiffré $c$ peut être modifié en un message chiffré $f(c)$ tout en étant encore déchiffrable, on dit que le code est malléable. Les chiffrements par flux utilisant le XOR sont par essence malléable [comme on l'a déjà vu](../chiffre-vernam/#Vernam-intégrité){.interne}, il est donc important de pouvoir se prémunir de ce genre d'attaque.
 
 Enfin, il faut que cette protection soit elle même chiffrée, sans quoi si Mallory peut modifier le message chiffrée $c$ en $f(c)$, il peut très bien également modifier le la protection pour qu'elle corresponde à $f(c)$
 
 ## Hash et sécurité
 
-Pour être utilisable en cryptographie, les [fonctions de hash](/cours/algorithmie/structure-dictionnaire/fonctions-hash/) doivent posséder [des propriétés spécifiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique).
-
-### Définitions
+Le principal outil pour garantir l'intégrité d'un message est [la fonction de hash](/cours/algorithmie/structure-dictionnaire/fonctions-hash/){.interne}. Elles doivent cependant avoir [des propriétés spécifiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique) pour être utilisées en cryptographie.
 
 {% aller %}
 [Hash cryptographiques](./hash){.interne}
 {% endaller %}
-
-### Exemple
-
 {% aller %}
-[SHA](./sha){.interne}
+[Utiliser SHA](./utilisation-sha){.interne}
 {% endaller %}
 
 ## Hash chiffré

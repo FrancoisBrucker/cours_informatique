@@ -234,6 +234,7 @@ On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu
 
 ## Utilisation de courbes elliptiques
 
+> TBD <https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/>
 > TBD On a besoin que de l'exposant. Cela peut donc se faire dans tout groupe pas obligé d'être dans Z/pZ.
 > TDB exemple avec courbe elliptique.
 

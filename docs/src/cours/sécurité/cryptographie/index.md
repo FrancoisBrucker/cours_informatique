@@ -18,6 +18,9 @@ eleventyComputed:
 
 - "Serious cryptography de Jean-Philippe Aumasson" (la version anglaise, la traduction française est un scandale)
 - "Introduction to modern cryptography de Jonathan Katk et Yehuda Lindell"
+- <https://www.youtube.com/@meichlseder/playlists>
+- <https://cryptobook.nakov.com/>
+- [arithmétique pour la cryptographie](https://www.youtube.com/watch?v=oRM-gNrbcgE&list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&index=1)
 
 {% endlien %}
 

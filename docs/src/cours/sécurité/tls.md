@@ -12,14 +12,17 @@ eleventyComputed:
 
 > TBD verbose d'une communication tsl 1.3
 
-
+> <https://en.wikipedia.org/wiki/Terrapin_attack>
 
 ## Key derivation function
 
 > TBD si autre message.
 
 {% lien %}
-[Key derivation function](https://en.wikipedia.org/wiki/Key_derivation_function)
+
+- [Définition](https://en.wikipedia.org/wiki/Key_derivation_function)
+- [Usage](https://blog.trailofbits.com/2025/01/28/best-practices-for-key-derivation/)
+
 {% endlien %}
 
 Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque messages. La façon la plus simple, si on a un PRF sous la main est de :
@@ -32,9 +35,28 @@ Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : 
 > TBD rekeying. Attention au passé <https://blog.cr.yp.to/20170723-random.html> car on ne génère qu'un bout.
 > TBD ? <https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed>
 
+### hash based KDF
 
+- <https://en.wikipedia.org/wiki/PBKDF2>
 
+- <https://blog.boot.dev/cryptography/key-derivation-functions/>
+- <https://www.youtube.com/watch?v=gTaOccTY9bc>
 
+<https://www.cryptolux.org/index.php/Argon2>
+<https://master-spring-ter.medium.com/from-basics-to-expert-a-deep-dive-into-argon2-password-hashing-95d17ba3b10f>
+
+```shell
+❯ echo -n "je te hash" | argon2 "des grains de sel" -l 50
+Type:           Argon2i
+Iterations:     3
+Memory:         4096 KiB
+Parallelism:    1
+Hash:           62ac773d564f583c593e6091c72eeb48766fc1d1e314afdce0bc175328e98afbca29a5078035152cdac35d2720d9cc6cb4e3
+Encoded:        $argon2i$v=19$m=4096,t=3,p=1$ZGVzIGdyYWlucyBkZSBzZWw$Yqx3PVZPWDxZPmCRxy7rSHZvwdHjFK/c4LwXUyjpivvKKaUHgDUVLNrDXScg2cxstOM
+0.014 seconds
+Verification ok
+
+```
 
 {% lien %}
 [TLS](https://www.youtube.com/watch?v=0TLDTodL7Lc)

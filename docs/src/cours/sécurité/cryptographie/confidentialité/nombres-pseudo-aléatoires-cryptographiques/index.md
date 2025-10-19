@@ -240,7 +240,7 @@ $$
 
 Avec $\epsilon$ non négligeable.
 
-Soit alors l'algorithme $A'$ efficace qui, à partir d'une entrée $y$ de $2s$ bits rend : $1$ si G(A(y[:s])) = y$ et $0$ sinon. Cet algorithme reconnaît $G$ avec un avantage de :
+Soit alors l'algorithme $A'$ efficace qui, à partir d'une entrée $y$ de $2s$ bits rend : $1$ si $G(A(y[:s])) = y$ et $0$ sinon. Cet algorithme reconnaît $G$ avec un avantage de :
 
 <div>
 $$

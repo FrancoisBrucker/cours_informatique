@@ -68,7 +68,7 @@ Il est cependant irréaliste qu'Alice et Bob aient connaissance de la clé avant
 Ceci est possible en utilisant des problèmes dont que l'on ne sait pas algorithmiquement résoudre efficacement :
 
 {% aller %}
-[Partager de secret](partager-secret){.interne}
+[Partager un secret](partager-secret){.interne}
 {% endaller %}
 
 Le schéma de transmission confidentiel devient alors :
@@ -107,7 +107,7 @@ En gros, une fonction $f$ est à sens unique s'il est :
 Ce qui donne la définition suivante :
 
 {% note "**Définition**" %}
-Une fonction $f: {0, 1}^t \rightarrow {0, 1}^t$ dont il existe un algorithme efficace pour la calculer est **_à sens unique_** si pour tout algorithme efficace $A$, la probabilité suivante est négligeable :
+Une fonction $f: \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ dont il existe un algorithme efficace pour la calculer est **_à sens unique_** si pour tout algorithme efficace $A$, la probabilité suivante est négligeable :
 <div>
 $$
 \Pr_{x \xleftarrow{U} \{0, 1\}^t}[f(F(f(x))) = f(x)]
@@ -163,6 +163,12 @@ Notez que :
 Tout algorithme de chiffrement est ainsi basé sur des suppositions. Pour éviter de tout construire sur du sable, on cherche à avoir au moins des preuves de constructions pour qu'il suffise de changer un algorithme si devient clair que le problème associé n'est pas à sens unique plutôt que de changer toute la méthode. C'est le but de la section suivante.
 
 ### Sémantiquement sécurisé
+
+<!-- TBD
+
+Ici faire directement le découpage avec des permutations. Ne plus parler des G(k). On utilise directement chacha20 avec les justifications de constructions
+
+ -->
 
 Si les meilleurs algorithmes de résolution sont connus (ce qui n'est jamais vraiment assuré) on peut déterminer une taille de clé qui garantissent un temps de décryptage trop important. Formalisons cette notion :
 
@@ -299,7 +305,11 @@ On reconnaîtra $m_1$ de m_2$ avec un avantage de 1.
 
 {% enddetails %}
 
+<!-- 
+
 > TBD refaire l'image p12 <https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf>
+
+ -->
 
 {% attention %}
 Ce mode de chiffrement existe (ECB) est n'est [jamais recommandé](https://fr.eitca.org/cybersecurity/eitc-is-ccf-classical-cryptography-fundamentals/applications-of-block-ciphers/modes-of-operation-for-block-ciphers/examination-review-modes-of-operation-for-block-ciphers/how-does-the-electronic-codebook-ecb-mode-of-operation-work-and-what-are-its-primary-security-drawbacks/)
@@ -317,8 +327,8 @@ On va utiliser le schéma suivant pour désigner une PRF (_resp._ une PRP) $F(k,
 ```
        iv   
         |   
-      ----- 
- k-->|  F  |
+      --|-- 
+ k---|> F  |
       ----- 
         |
      F(k,iv)   
@@ -327,16 +337,16 @@ On va utiliser le schéma suivant pour désigner une PRF (_resp._ une PRP) $F(k,
 On a alors le schéma de chiffrement suivant, qui modifie le vecteur d'initialisation en incrémentant un compteur :
 
 ```
-    iv || 01     iv || 02          iv || i           iv || l
-        |            |                 |                 |
-      -----        -----             -----             -----
- k-->|     |  k-->|     |  ...  k-->|     |  ...  k-->|     |
-      -----        -----             -----             -----
-        |            |                 |                 |
- m1---> ⊕     m2---> ⊕          mi---> ⊕          ml---> ⊕ 
-        |            |                 |                 |
-        v            v                 v                 v
-       c1           c2                ci                cl
+    iv || 01     iv || 02         iv || i          iv || l
+        |            |                |                |
+      --|--        --|--            --|--            --|-- 
+ k---|>    |   k--|>    |  ...  k--|>    |  ...  k--|>    |
+      --v--        --v--            --v--            --v-- 
+        |            |                 |               |
+ m1---> ⊕     m2---> ⊕          mi---> ⊕        ml---> ⊕ 
+        |            |                 |               |
+        v            v                 v               v
+       c1           c2                ci              cl
 ```
 
 Ce schéma est bien sécurisé si $F$ l'est et que la place prise par le compteur n'est pas trop grande :

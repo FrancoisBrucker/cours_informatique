@@ -18,7 +18,12 @@ eleventyComputed:
 - leur donner des trucs à faire chaque semaine
 - faire les parcours et y retourner à chaque cours
 - faire plus d'algorithmie avec du code.
-- diminuer la densité. une semaine avec 2h cours et 2h tp et à rendre pour la semaine d'après (code et algo) -->
+- diminuer la densité. une semaine avec 2h cours et 2h tp et à rendre pour la semaine d'après (code et algo) 
+- choisir 1 démo et leur faire code pour la sécurité : trop de truc.
+- faire des rendus/exams réguliers : la ils font autre chose en cours.
+- faire juste une démo et laisser le reste en exo.
+
+-->
 
 ## Programme
 

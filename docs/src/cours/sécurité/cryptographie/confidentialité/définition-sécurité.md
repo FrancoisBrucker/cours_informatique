@@ -31,17 +31,34 @@ Toute méthode de chiffrement avec une clé de $s$ bit est au mieux $(t, \frac{t
 Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique. Pour cela on commence par déterminer la durée de vie du message chiffré :
 
 {% exercice %}
-Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance en 100 siècles de déchiffrer un message ?
+Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance sur 100 milliard de déchiffrer un message ?
 {% endexercice %}
 {% details "corrigé" %}
-100 siècles vaut environ $2^{39}$ secondes et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-39})$-sécurisée.
+100 milliard vaut environ $2^{37}$ et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-37})$-sécurisée.
 
-L'algorithme étant brute force, on a : $2^{-39} = \frac{2^{30}}{2^s}$ ce qui donne $s = 69$.
+L'algorithme étant brute force, on a : $2^{-37} = \frac{2^{30}}{2^s}$ ce qui donne $s = 67$.
 
 Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, actuellement, on recommande des tailles de clés d'au moins 128bits.
 {% enddetails %}
 
 La notion de $(t, \epsilon)$-sécurité est indissociable de l'algorithme qui décrypte et donc de sa complexité. Si l'algorithme est polynomial le ratio entre ce qu'il peut tester (de l'ordre de $\mathcal{O}(n^k)$) et l'espace à tester (de l'ordre de $\mathcal{O}(2^n)$) va très rapidement tendre vers $0$ ($10/2^{10}$ vaut déjà $10^{-3}$) et si l'algorithme est exponentiel il prendra rapidement trop de temps.
+
+<!-- exercices possibles.
+
+ TBD 1 clé = 1 nanosecondes
+> TBD $2^{89}$ = nombre de nanosecondes depuis le début de l'univers (14 milliards d'années)
+> TBD $10^{80} \simeq 2^{266}$ = nombre de particules dans l'univers (entre $10^{80}$ et $10^{85}$)
+>
+> TBD exemple en parallèle : on divise par le nb de machines/processeurs.
+>
+> TBD mémoire : taille et recherche (p48 serious crypto).
+>
+> TBD prés-calcul : attaque par dictionnaire (mots de passe, on y reviendra)
+>
+> TBD en moyenne 2**n/2 clé si on connaît P et C et on cherche K
+>
+> TBD en moyenne si un message est chiffré pour M possibles clés (si on connaît P et Ci et on cherche un Ki) en trouver 1 c'est 2**n/m en moyenne
+> TBD en moyenne et en parallèle. -->
 
 ## Paramètre de sécurité
 
@@ -60,15 +77,25 @@ $$
 
 {% endnote %}
 
-Ce paramètre de sécurité permet d'exprimer la $(t, \epsilon)$-sécurité non plus en fonction du temps, mais comme un nombre d'opération. Tout comme le passage de la complexité temporelle (mesurable) à la complexité en nombre d'opérations (calculable) permet une étude plus théorique des performances d'un algorithme, le paramètre de sécurité va nous permettre de comparer les algorithme de déchiffrement de façon générale et abstraite.
+Ce paramètre de sécurité permet d'exprimer la $(t, \epsilon)$-sécurité non plus en fonction du temps, mais comme un nombre d'opérations.
 
-Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un nombre d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon(s) = \frac{1}{2^{s-d}}$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !
+Tout comme le passage de la complexité temporelle (mesurable) à la complexité en nombre d'opérations (calculable) permet une étude plus théorique des performances d'un algorithme, le paramètre de sécurité va nous permettre de comparer les algorithme de déchiffrement de façon générale et abstraite :
 
-L'augmentation de la taille des clés va certes avoir un effet sur le temps d'exécution mais ce sera surtout sur l'avantage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :
+{% note "**Définition**" %}
+L'avantage $\epsilon$ d'un algorithme de décryptage est sa probabilité résoudre le problème pour un temps d'exécution de 1 opération.
+{% endnote %}
+
+Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un temps d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon = \mathcal{O}(\frac{s^d}{2^{s}})$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !
+
+L'augmentation de la taille des clés va certes avoir un effet sur le temps du chiffrage mais ce sera surtout sur l'avantage d'un algorithme de décryptage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :
 
 {% exercice %}
-On suppose que l'exécution d'un adversaire de complexité temporelle (en secondes) $n^3$ ait un avantage de $\min(1, \frac{2^{40}}{2^n})$.
-
+Soit un algorithme dont l'exécution prend $n^3$ operations et qui décryptage un message avec une probabilité de  $\min(1, \frac{2^{40}}{2^n})$. Quel est son avantage ?
+{% endexercice %}
+{% details "corrigé" %}
+Il est $(n^3, \min(1, \frac{2^{40}}{2^n}))$-sécurisé, son avantage est donc de $\frac{2^{40}}{n^3\cdot 2^n}$.
+{% enddetails %}
+{% exercice %}
 Pour $n=40$, combien faut-il de temps pour qu'il puisse décrypter la méthode de façon certaine ? Quel est son avantage pour $n=50$ et en combien de temps s'exécute-t-il ?
 {% endexercice %}
 {% details "corrigé" %}
@@ -109,21 +136,6 @@ C'est cette dernière notion que nous allons maintenant formaliser.
 Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.
 
 {% endattention %}
-
-> TBD 1 clé = 1 nanosecondes
-> TBD $2^{89}$ = nombre de nanosecondes depuis le début de l'univers (14 milliards d'années)
-> TBD $10^{80} \simeq 2^{266}$ = nombre de particules dans l'univers (entre $10^{80}$ et $10^{85}$)
->
-> TBD exemple en parallèle : on divise par le nb de machines/processeurs.
->
-> TBD mémoire : taille et recherche (p48 serious crypto).
->
-> TBD prés-calcul : attaque par dictionnaire (mots de passe, on y reviendra)
->
-> TBD en moyenne 2**n/2 clé si on connaît P et C et on cherche K
->
-> TBD en moyenne si un message est chiffré pour M possibles clés (si on connaît P et Ci et on cherche un Ki) en trouver 1 c'est 2**n/m en moyenne
-> TBD en moyenne et en parallèle.
 
 ## <span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée
 
@@ -358,11 +370,16 @@ $$
 Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $\Pr[A(U) = 1] = \Pr[A(k\oplus m_1) = 1] = \Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.
 {% enddetails %}
 
+<!-- TBD pour les preuve complexes.
+
+
 ### Jeu du chiffrement multiple
 
 > TBD plus réaliste.
 > TBD donner des exemples p72 into modern crypto.
-> TBD idem mais on peut répéter l'opération un nombre polynomial de fois. Le bit $b$ du testeur est toujours le même.
+> TBD idem mais on peut répéter l'opération un nombre polynomial de fois. Le bit $b$ du testeur est toujours le même. 
+
+-->
 
 ## Construction de méthode de chiffrement
 
@@ -424,33 +441,41 @@ $$
 $$
 </div>
 
-Une autre astuce nous permet d'écrire tout cela de façon plus simple. On a en effet :
+Une autre astuce nous permet d'écrire tout cela de façon plus simple. Si $x = x_1\dots x_t$, on a en effet $B^t(x) =  B(x_1) \cdot\dots\cdot B(x_i) \cdot\dots\cdot B(x_t)$ et donc :
+
+<div>
+$$
+(1/2+\epsilon)^t\leq B^t(x) \leq (1/2+\epsilon)^t
+$$
+</div>
+
+Et en utilisant le fait que $A^n-B^n = (A-B)\sum_{0\leq i <n}(A^{n-i}B^i)$ on obtient :
 
 <div>
 $$
 \begin{array}{lcl}
-\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\frac{1}{2^{n}} \cdot (\sum_\limits{0 < i \leq n}(| 1/2-B(x_i) |))\\
-&\leq&\frac{n}{2}\epsilon
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - (1/2+\epsilon)^t)|\\
+&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2-(1/2+\epsilon)\sum_\limits{0 \leq i < t} | ((1/2)^{t-i}(1/2+\epsilon)^{i})|\\
+&\leq&\frac{\epsilon}{2}\sum_{x\in \{0, 1\}^t}(\sum_\limits{0 \leq i < t} | ((1/2)^{t-i}(1/2+\epsilon)^{i})||)\\
+&\leq&\frac{\epsilon}{2}\sum_{x\in \{0, 1\}^t}(\sum_\limits{0 \leq i < t} | (1/2)^{t}(1+2\epsilon)^{i}|)\\
+&\leq&\frac{\epsilon}{2^{t+1}}\sum_{x\in \{0, 1\}^t}(\sum_\limits{0 \leq i < t} | (1+2\epsilon)^{i}|)\\
+&\leq&\frac{\epsilon}{2^{t+1}}\sum_{x\in \{0, 1\}^t}|\frac{1-(1+2\epsilon)^t}{2\epsilon}|\\
+&\leq&\frac{|1-(1+2\epsilon)^t|}{4}\\
 \end{array}
 $$
 </div>
 
-<!-- TBD à vérifier !
+Si $\epsilon$ est négligeable devant $t$ alors $(1+2\epsilon)^t= 1+2t\epsilon +o(\epsilon)$. On a alors que :
 
 <div>
 $$
 \begin{array}{lcl}
-\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&=&\frac{1}{2}\sum_{x\in \{0, 1\}^t}|\sum_\limits{0 < i \leq n}((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i}B^{i-1}(x))| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(\sum_i(| 1/2-B(x_i) |))\\
-&\leq&n\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(|1/2-B(x)|)\\
-&\leq&\frac{n}{2}\epsilon
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&\leq&\frac{t\epsilon}{2} +o(\epsilon)\\
 \end{array}
 $$
-</div> -->
+</div>
 
-Si $\epsilon$ est négligeable, la génération d'éléments de $\\{0, 1\\}^t$ l'est aussi.
+L'avantage est négligeable si $\epsilon$ l'est aussi.
 
 ### Étape 2 : chiffrement
 
@@ -466,20 +491,7 @@ A &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - C^t(x) |
 $$
 </div>
 
-La même astuce consistant à décomposer $x=x_1\dots x_t$ et $m=m_1\dots m_t$ en indices donne :
-
-<div>
-$$
-\begin{array}{lcl}
-A &\leq&\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}\sum_i(1/2-C_i(x_i))\\
-  &\leq&\sum_i\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(1/2-C_i(x_i))
-\end{array}
-$$
-</div>
-
-Où $C_i(x_i)$ est la loi de distribution de $(x \xleftarrow{B} \\{0, 1\\}^t)\oplus m_i$.
-
-Ceci donne $A\leq \frac{n}{2}\epsilon$ qui est négligeable si $\epsilon$ l'est.
+On effectue le même calcul que précédemment puisque lon a aussi $(1/2+\epsilon)^t\leq C^t(x) \leq (1/2+\epsilon)^t$ et on obtient $A\leq \frac{t\epsilon}{2} +o(\epsilon)$ si $\epsilon$ est négligeable.
 
 ### Étape 3 : jeu de la reconnaissance
 
@@ -491,7 +503,7 @@ $$
 \epsilon(A) &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| D^t(x) - C^t(x) |\\
 &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| D^t(x) -(1/2)^t + (1/2)^t - C^t(x) |\\
 \epsilon(A) &\leq& \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - C^t(x) | + \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - D^t(x) |\\
-&\leq& {n}\cdot\epsilon
+&\leq& {t}\cdot\epsilon + o(\epsilon)
 \end{array}
 $$
 </div>

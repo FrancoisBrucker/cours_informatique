@@ -10,17 +10,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Un ***MAC, Message authentification code*** est constitué d'une paire :
+Un **_MAC, Message authentification code_** est constitué d'une paire :
 
-- $S: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^h$ qui ***signe*** en produisant un ***tag*** (en utilisant une clé $k$ un message $m$)
-- $V: \\{0, 1\\}^s \times \\{0, 1\\}^n \times \\{0, 1\\}^h \rightarrow \\{0, 1\\}$ qui ***vérifie*** (en utilisant une clé $k$, un message $m$ et son tag potentiel)
+- $S: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^h$ qui **_signe_** en produisant un **_tag_** (en utilisant une clé $k$ un message $m$)
+- $V: \\{0, 1\\}^s \times \\{0, 1\\}^n \times \\{0, 1\\}^h \rightarrow \\{0, 1\\}$ qui **_vérifie_** (en utilisant une clé $k$, un message $m$ et son tag potentiel)
 - $V(k, m, S(k, m)) = 1$
 
 Un MAC est un hash muni d'un clé de chiffrement.
 
 ## Usage
 
-On utilise le pattern *encrypt then MAC* pour transmettre le message : le message chiffré est concaténé au MAC du message crypté :
+On utilise le pattern _encrypt then MAC_ pour transmettre le message : le message chiffré est concaténé au MAC du message crypté :
 
 <div>
 $$
@@ -30,9 +30,19 @@ $$
 
 L'utilisation de deux clés différentes est importante. Elles sont souvent dérivée d'une clé primaire $k$.
 
-## MAC sécurisé
+On peut aussi utiliser l'autre approche, _MAC then encrypt_ :
 
-Un MAC est ***sécurisé*** si un adversaire efficace ne peut gagner le jeu suivant, nommé ***existential forgery against a chosen message attack***, qu'avec un avantage négligeable :
+<div>
+$$
+E(k_1, m) \ ||\  \text{MAC}(k_2, m)
+$$
+</div>
+
+Mais il faudra alors commencer par déchiffrer le message avant de vérifier son intégrité.
+
+## Construction
+
+Un MAC est **_sécurisé_** si un adversaire efficace ne peut gagner le jeu suivant, nommé **_existential forgery against a chosen message attack_**, qu'avec un avantage négligeable :
 
 1. le testeur choisit uniformément une clé $k$
 2. l'adversaire **choisit** q messages $m_1$ et $m_{q}$ à donner au testeur
@@ -41,10 +51,10 @@ Un MAC est ***sécurisé*** si un adversaire efficace ne peut gagner le jeu suiv
 5. l'adversaire gagne si $V(k, m, t) = 1$
 
 ```
-    
+
      testeur                            adversaire
     ---------        m1, ..., mq       ------------
-    |   k   | <----------------------- |          |  
+    |   k   | <----------------------- |          |
     |       |  S(k,m1), ..., S(k,mq)   |          |
     |       | -----------------------> |          |
     |       |           (m, t)         |          |
@@ -55,11 +65,9 @@ Un MAC est ***sécurisé*** si un adversaire efficace ne peut gagner le jeu suiv
 
 Ce jeu simule le fait qu'un attaquant peut influencer la teneur de messages envoyés (en comptant sur un reply lors d'un envoie de mail par exemple) et ne peut forger à son tour un MAC valide.
 
-## Attaque
-
 Remarquez qu'un MAC peut toujours être attaqué avec une probabilité au moins négligeable. Pour cela, il suffit de générer tous les tag possibles, il y en a $2^h$, pour obtenir une probabilité de succès de $1/2^h$. Ceci impose que la taille du tag doit être supérieure à $\mathcal{O}(\log_2(n))$ pour que l'adversaire ne puisse avoir une attaque brute force avec un gain non négligeable.
 
-## MAC pour message de taille fixe
+### MAC pour message de taille fixe
 
 {% note "**MAC à taille fixe**" %}
 Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une [PRF](../../confidentialité/chiffre-flux/#PRF){.interne}, alors :
@@ -71,7 +79,7 @@ Est un MAC sécurisé pour tout message de taille $n$.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Soit $F$ une PRF, $(S, V)$, le MAC qui lui est associé et $A$ un algorithme efficace permettant de gagner au jeu *existential forgery against a chosen message attack* contre $(S, V)$ avec une probabilité $\epsilon(n)$.
+Soit $F$ une PRF, $(S, V)$, le MAC qui lui est associé et $A$ un algorithme efficace permettant de gagner au jeu _existential forgery against a chosen message attack_ contre $(S, V)$ avec une probabilité $\epsilon(n)$.
 
 Soit $H$ une fonction réellement aléatoire et $(S^\star, V^\star)$, le MAC qui lui est associé. L'algorithme $A$ ne peut gagner au jeu qu'avec une probabilité inférieure à $1/2^n$ puisque $H$ est uniformément répartie.
 
@@ -86,9 +94,9 @@ On peut maintenant créer un algorithme efficace $B$ jouant au jeu de la disting
     |         |-----------------------------|------------->|    ||
     |         |                             | m'   (m', t) | A  ||
     |         |<----------------------------|---  <--------|    ||
-    |         | F(k, m') si b=1 sinon H(m') | r            ------|    
+    |         | F(k, m') si b=1 sinon H(m') | r            ------|
     |         |-----------------------------|--->                | rép(b)=(r=t)
-    |         |                             |                    |-------------->   
+    |         |                             |                    |-------------->
     -----------                             ----------------------
 ```
 
@@ -101,11 +109,9 @@ Son avantage est donc $\epsilon(n) - 1/2^n$. Or $F$ est une PRF cet avantage ne 
 
 {% enddetails %}
 
-## MAC à taille variable
+### MAC à taille variable
 
 L'idée est de découper le message en paquets de taille identique et d'appliquer itérativement des MAC à taille fixe. Il faut bien sur encoder tout le message et pas juste une partie, sinon il est facile pour un attaquant de forger un nouveau message ayant même tag qu'un message précédent
-
-### Utiliser une fonction de hash
 
 {% note "**HMAC**" %}
 
@@ -122,10 +128,43 @@ Alors :
 Est un MAC sécurisé pour tout message.
 {% endnote %}
 {% details "preuve", "open" %}
-> TBD
+
+Clair si le hash est cryptographique.
+
 {% enddetails %}
 
-### One-time MAC
+## Hash-based MAC
+
+{% lien %}
+[Hashbased MAC}(https://fr.wikipedia.org/wiki/HMAC)
+{% endlien %}
+
+La façon la plus simple de créer un mac est d'utiliser un hash :
+
+<div>
+$$
+H(k \;\|\; E(k, m))
+$$
+</div>
+
+Mais il y a des restrictions. Fonctionne si :
+
+- pas de _hash length attack_ comme on l'a vu.
+- pas de clés de tailles différentes permet plus de collisions. Même hash pour :
+  - une clé `123456` la clé et le message `abc`
+  - une clé `123` la clé et le message `456abc`
+
+On utilise alors souvent cette construction, plus complexe, mais sécurisée :
+
+<div>
+$$
+H(k \oplus \text{opad} \;\|\; H(k \oplus \text{ipad} \;\|\; E(k, m))
+$$
+</div>
+
+Avec `opad = 0x363636...3636` (outer) et `ipad = 0x5c5c5c...5c5c` (inner) deux constantes.
+
+## One-time MAC
 
 {% info %}
 Cette technique est utilisée pour assurer l'intégrité des messages chacha20 (voir partie [AEAD](../aead){.interne}).
