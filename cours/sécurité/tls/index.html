@@ -99,6 +99,9 @@
   <blockquote>
 <p>TBD verbose d'une communication tsl 1.3</p>
 </blockquote>
+<blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Terrapin_attack">https://en.wikipedia.org/wiki/Terrapin_attack</a></p>
+</blockquote>
 <h2>Key derivation function</h2>
 <blockquote>
 <p>TBD si autre message.</p>
@@ -108,7 +111,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Key_derivation_function">Key derivation function</a></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Key_derivation_function">Définition</a></li>
+<li><a href="https://blog.trailofbits.com/2025/01/28/best-practices-for-key-derivation/">Usage</a></li>
+</ul>
 </div></div>
 
 <p>Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque messages. La façon la plus simple, si on a un PRF sous la main est de :</p>
@@ -121,6 +127,30 @@
 <p>TBD rekeying. Attention au passé <a href="https://blog.cr.yp.to/20170723-random.html">https://blog.cr.yp.to/20170723-random.html</a> car on ne génère qu'un bout.
 TBD ? <a href="https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed">https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed</a></p>
 </blockquote>
+<h3>hash based KDF</h3>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/PBKDF2">https://en.wikipedia.org/wiki/PBKDF2</a></p>
+</li>
+<li>
+<p><a href="https://blog.boot.dev/cryptography/key-derivation-functions/">https://blog.boot.dev/cryptography/key-derivation-functions/</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=gTaOccTY9bc">https://www.youtube.com/watch?v=gTaOccTY9bc</a></p>
+</li>
+</ul>
+<p><a href="https://www.cryptolux.org/index.php/Argon2">https://www.cryptolux.org/index.php/Argon2</a>
+<a href="https://master-spring-ter.medium.com/from-basics-to-expert-a-deep-dive-into-argon2-password-hashing-95d17ba3b10f">https://master-spring-ter.medium.com/from-basics-to-expert-a-deep-dive-into-argon2-password-hashing-95d17ba3b10f</a></p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"je te hash"</span> <span class="token operator">|</span> argon2 <span class="token string">"des grains de sel"</span> <span class="token parameter variable">-l</span> <span class="token number">50</span>
+Type:           Argon2i
+Iterations:     <span class="token number">3</span>
+Memory:         <span class="token number">4096</span> KiB
+Parallelism:    <span class="token number">1</span>
+Hash:           62ac773d564f583c593e6091c72eeb48766fc1d1e314afdce0bc175328e98afbca29a5078035152cdac35d2720d9cc6cb4e3
+Encoded:        <span class="token variable">$argon2i</span><span class="token variable">$v</span><span class="token operator">=</span><span class="token number">19</span><span class="token variable">$m</span><span class="token operator">=</span><span class="token number">4096</span>,t<span class="token operator">=</span><span class="token number">3</span>,p<span class="token operator">=</span><span class="token number">1</span><span class="token variable">$ZGVzIGdyYWlucyBkZSBzZWw</span><span class="token variable">$Yqx3PVZPWDxZPmCRxy7rSHZvwdHjFK</span>/c4LwXUyjpivvKKaUHgDUVLNrDXScg2cxstOM
+<span class="token number">0.014</span> seconds
+Verification ok
+</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>

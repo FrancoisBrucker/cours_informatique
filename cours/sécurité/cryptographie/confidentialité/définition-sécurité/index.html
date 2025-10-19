@@ -125,7 +125,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance en 100 siècles de déchiffrer un message ?</p>
+<p>Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance sur 100 milliard de déchiffrer un message ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -145,13 +145,29 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>100 siècles vaut environ $2^{39}$ secondes et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-39})$-sécurisée.</p>
-<p>L'algorithme étant brute force, on a : $2^{-39} = \frac{2^{30}}{2^s}$ ce qui donne $s = 69$.</p>
+<p>100 milliard vaut environ $2^{37}$ et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-37})$-sécurisée.</p>
+<p>L'algorithme étant brute force, on a : $2^{-37} = \frac{2^{30}}{2^s}$ ce qui donne $s = 67$.</p>
 <p>Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, actuellement, on recommande des tailles de clés d'au moins 128bits.</p>
 </div>
 </details>     
 </div>
 <p>La notion de $(t, \epsilon)$-sécurité est indissociable de l'algorithme qui décrypte et donc de sa complexité. Si l'algorithme est polynomial le ratio entre ce qu'il peut tester (de l'ordre de $\mathcal{O}(n^k)$) et l'espace à tester (de l'ordre de $\mathcal{O}(2^n)$) va très rapidement tendre vers $0$ ($10/2^{10}$ vaut déjà $10^{-3}$) et si l'algorithme est exponentiel il prendra rapidement trop de temps.</p>
+<!-- exercices possibles.
+
+ TBD 1 clé = 1 nanosecondes
+> TBD $2^{89}$ = nombre de nanosecondes depuis le début de l'univers (14 milliards d'années)
+> TBD $10^{80} \simeq 2^{266}$ = nombre de particules dans l'univers (entre $10^{80}$ et $10^{85}$)
+>
+> TBD exemple en parallèle : on divise par le nb de machines/processeurs.
+>
+> TBD mémoire : taille et recherche (p48 serious crypto).
+>
+> TBD prés-calcul : attaque par dictionnaire (mots de passe, on y reviendra)
+>
+> TBD en moyenne 2**n/2 clé si on connaît P et C et on cherche K
+>
+> TBD en moyenne si un message est chiffré pour M possibles clés (si on connaît P et Ci et on cherche un Ki) en trouver 1 c'est 2**n/m en moyenne
+> TBD en moyenne et en parallèle. -->
 <h2>Paramètre de sécurité</h2>
 <p>Lorsque l'on calcule la complexité des algorithmes de décryptage on le fait (comme toujours) par rapports à la taille de ses entrées. Les entrées correspondent aux différents paramètres de la méthode de chiffrement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -170,13 +186,50 @@ $$
 </div>
 </div></div>
 
-<p>Ce paramètre de sécurité permet d'exprimer la $(t, \epsilon)$-sécurité non plus en fonction du temps, mais comme un nombre d'opération. Tout comme le passage de la complexité temporelle (mesurable) à la complexité en nombre d'opérations (calculable) permet une étude plus théorique des performances d'un algorithme, le paramètre de sécurité va nous permettre de comparer les algorithme de déchiffrement de façon générale et abstraite.</p>
-<p>Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un nombre d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon(s) = \frac{1}{2^{s-d}}$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !</p>
-<p>L'augmentation de la taille des clés va certes avoir un effet sur le temps d'exécution mais ce sera surtout sur l'avantage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :</p>
+<p>Ce paramètre de sécurité permet d'exprimer la $(t, \epsilon)$-sécurité non plus en fonction du temps, mais comme un nombre d'opérations.</p>
+<p>Tout comme le passage de la complexité temporelle (mesurable) à la complexité en nombre d'opérations (calculable) permet une étude plus théorique des performances d'un algorithme, le paramètre de sécurité va nous permettre de comparer les algorithme de déchiffrement de façon générale et abstraite :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'avantage $\epsilon$ d'un algorithme de décryptage est sa probabilité résoudre le problème pour un temps d'exécution de 1 opération.</p>
+</div></div>
+
+<p>Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un temps d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon = \mathcal{O}(\frac{s^d}{2^{s}})$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !</p>
+<p>L'augmentation de la taille des clés va certes avoir un effet sur le temps du chiffrage mais ce sera surtout sur l'avantage d'un algorithme de décryptage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>On suppose que l'exécution d'un adversaire de complexité temporelle (en secondes) $n^3$ ait un avantage de $\min(1, \frac{2^{40}}{2^n})$.</p>
+<p>Soit un algorithme dont l'exécution prend $n^3$ operations et qui décryptage un message avec une probabilité de  $\min(1, \frac{2^{40}}{2^n})$. Quel est son avantage ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il est $(n^3, \min(1, \frac{2^{40}}{2^n}))$-sécurisé, son avantage est donc de $\frac{2^{40}}{n^3\cdot 2^n}$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
 <p>Pour $n=40$, combien faut-il de temps pour qu'il puisse décrypter la méthode de façon certaine ? Quel est son avantage pour $n=50$ et en combien de temps s'exécute-t-il ?</p>
 </div></div>
 
@@ -254,17 +307,6 @@ $$
 <p>Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.</p>
 </div></div>
 
-<blockquote>
-<p>TBD 1 clé = 1 nanosecondes
-TBD $2^{89}$ = nombre de nanosecondes depuis le début de l'univers (14 milliards d'années)
-TBD $10^{80} \simeq 2^{266}$ = nombre de particules dans l'univers (entre $10^{80}$ et $10^{85}$)</p>
-<p>TBD exemple en parallèle : on divise par le nb de machines/processeurs.</p>
-<p>TBD mémoire : taille et recherche (p48 serious crypto).</p>
-<p>TBD prés-calcul : attaque par dictionnaire (mots de passe, on y reviendra)</p>
-<p>TBD en moyenne 2**n/2 clé si on connaît P et C et on cherche K</p>
-<p>TBD en moyenne si un message est chiffré pour M possibles clés (si on connaît P et Ci et on cherche un Ki) en trouver 1 c'est 2**n/m en moyenne
-TBD en moyenne et en parallèle.</p>
-</blockquote>
 <h2><span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -549,12 +591,16 @@ $$
 </div>
 </details>     
 </div>
-<h3>Jeu du chiffrement multiple</h3>
-<blockquote>
-<p>TBD plus réaliste.
-TBD donner des exemples p72 into modern crypto.
-TBD idem mais on peut répéter l'opération un nombre polynomial de fois. Le bit $b$ du testeur est toujours le même.</p>
-</blockquote>
+<!-- TBD pour les preuve complexes.
+
+
+### Jeu du chiffrement multiple
+
+> TBD plus réaliste.
+> TBD donner des exemples p72 into modern crypto.
+> TBD idem mais on peut répéter l'opération un nombre polynomial de fois. Le bit $b$ du testeur est toujours le même. 
+
+-->
 <h2>Construction de méthode de chiffrement</h2>
 <p>Les méthodes sémantiquement sécurisées permettent construire une méthode de chiffrement bloc par bloc : si chaque bloc est sémantiquement sécurisé l'ensemble le sera aussi. Illustrons le en montrant que l'on peut créer un chiffre de Vernam sémantiquement sécurisé en partant d'un générateur de nombre aléatoire biaisé, du moment que le biais est négligeable.</p>
 <p>Soit la distribution de Bernoulli biaisée $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^t$ la distribution sur $\{0, 1\}^t$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme $U$. L'avantage d'un algorithme permettant de discriminer les deux distribution est alors :</p>
@@ -602,30 +648,35 @@ $$
 \end{array}
 $$
 </div>
-<p>Une autre astuce nous permet d'écrire tout cela de façon plus simple. On a en effet :</p>
+<p>Une autre astuce nous permet d'écrire tout cela de façon plus simple. Si $x = x_1\dots x_t$, on a en effet $B^t(x) =  B(x_1) \cdot\dots\cdot B(x_i) \cdot\dots\cdot B(x_t)$ et donc :</p>
+<div>
+$$
+(1/2+\epsilon)^t\leq B^t(x) \leq (1/2+\epsilon)^t
+$$
+</div>
+<p>Et en utilisant le fait que $A^n-B^n = (A-B)\sum_{0\leq i &lt;n}(A^{n-i}B^i)$ on obtient :</p>
 <div>
 $$
 \begin{array}{lcl}
-\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\frac{1}{2^{n}} \cdot (\sum_\limits{0 < i \leq n}(| 1/2-B(x_i) |))\\
-&\leq&\frac{n}{2}\epsilon
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - (1/2+\epsilon)^t)|\\
+&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2-(1/2+\epsilon)\sum_\limits{0 \leq i < t} | ((1/2)^{t-i}(1/2+\epsilon)^{i})|\\
+&\leq&\frac{\epsilon}{2}\sum_{x\in \{0, 1\}^t}(\sum_\limits{0 \leq i < t} | ((1/2)^{t-i}(1/2+\epsilon)^{i})||)\\
+&\leq&\frac{\epsilon}{2}\sum_{x\in \{0, 1\}^t}(\sum_\limits{0 \leq i < t} | (1/2)^{t}(1+2\epsilon)^{i}|)\\
+&\leq&\frac{\epsilon}{2^{t+1}}\sum_{x\in \{0, 1\}^t}(\sum_\limits{0 \leq i < t} | (1+2\epsilon)^{i}|)\\
+&\leq&\frac{\epsilon}{2^{t+1}}\sum_{x\in \{0, 1\}^t}|\frac{1-(1+2\epsilon)^t}{2\epsilon}|\\
+&\leq&\frac{|1-(1+2\epsilon)^t|}{4}\\
 \end{array}
 $$
 </div>
-<!-- TBD à vérifier !
-
+<p>Si $\epsilon$ est négligeable devant $t$ alors $(1+2\epsilon)^t= 1+2t\epsilon +o(\epsilon)$. On a alors que :</p>
 <div>
 $$
 \begin{array}{lcl}
-\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&=&\frac{1}{2}\sum_{x\in \{0, 1\}^t}|\sum_\limits{0 < i \leq n}((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2}\sum_{x\in \{0, 1\}^t}\sum_\limits{0 < i \leq n}| ((1/2)^{n-i}B^{i-1}(x))| ((1/2)^{n-i+1} - (1/2)^{n-i}B^{i}(x)) |\\
-&\leq&\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(\sum_i(| 1/2-B(x_i) |))\\
-&\leq&n\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(|1/2-B(x)|)\\
-&\leq&\frac{n}{2}\epsilon
+\frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - B^t(x) |&\leq&\frac{t\epsilon}{2} +o(\epsilon)\\
 \end{array}
 $$
-</div> -->
-<p>Si $\epsilon$ est négligeable, la génération d'éléments de $\{0, 1\}^t$ l'est aussi.</p>
+</div>
+<p>L'avantage est négligeable si $\epsilon$ l'est aussi.</p>
 <h3>Étape 2 : chiffrement</h3>
 <p>On peut utiliser ce qui précède pour créer un chiffrement statistiquement sécurisé en utilisant un chiffre de Vernam avec notre générateur aléatoire. Montrons que si $U$ est la loi uniforme sur $\{0, 1\}^t$ et $m$ un élément de $\{0, 1\}^t$, alors la loi de distribution associée à la variable aléatoire $(x \xleftarrow{B^t} \{0, 1\}^t) \oplus m$ est sémantiquement sécurisé.</p>
 <p>Soit $C^t$ la loi de distribution associée à la variable aléatoire $(x \xleftarrow{B^t} \{0, 1\}^t) \oplus m$. Tout comme précédemment, le meilleur algorithme a comme avantage :</p>
@@ -636,17 +687,7 @@ A &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - C^t(x) |
 \end{array}
 $$
 </div>
-<p>La même astuce consistant à décomposer $x=x_1\dots x_t$ et $m=m_1\dots m_t$ en indices donne :</p>
-<div>
-$$
-\begin{array}{lcl}
-A &\leq&\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}\sum_i(1/2-C_i(x_i))\\
-  &\leq&\sum_i\frac{1}{2^{n+1}}\sum_{x\in \{0, 1\}^t}(1/2-C_i(x_i))
-\end{array}
-$$
-</div>
-<p>Où $C_i(x_i)$ est la loi de distribution de $(x \xleftarrow{B} \{0, 1\}^t)\oplus m_i$.</p>
-<p>Ceci donne $A\leq \frac{n}{2}\epsilon$ qui est négligeable si $\epsilon$ l'est.</p>
+<p>On effectue le même calcul que précédemment puisque lon a aussi $(1/2+\epsilon)^t\leq C^t(x) \leq (1/2+\epsilon)^t$ et on obtient $A\leq \frac{t\epsilon}{2} +o(\epsilon)$ si $\epsilon$ est négligeable.</p>
 <h3>Étape 3 : jeu de la reconnaissance</h3>
 <p>On en conclut que si $m_1$ et $m_2$ sont deux éléments de $\{0, 1\}^t$ alors les lois de distributions associées aux variables aléatoires $(x \xleftarrow{B^t} \{0, 1\}^t) \oplus m_1$ et $(x \xleftarrow{B^t} \{0, 1\}^t) \oplus m_2$ sont statistiquement sécurisées. En effet en notant $C^t$ et $D^t$ les lois de distributions associées à $(x \xleftarrow{B^t} \{0, 1\}^t) \oplus m_1$ et $(x \xleftarrow{B^t} \{0, 1\}^t) \oplus m_2$, on aura :</p>
 <div>
@@ -655,7 +696,7 @@ $$
 \epsilon(A) &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| D^t(x) - C^t(x) |\\
 &=&  \frac{1}{2}\sum_{x\in \{0, 1\}^t}| D^t(x) -(1/2)^t + (1/2)^t - C^t(x) |\\
 \epsilon(A) &\leq& \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - C^t(x) | + \frac{1}{2}\sum_{x\in \{0, 1\}^t}| (1/2)^t - D^t(x) |\\
-&\leq& {n}\cdot\epsilon
+&\leq& {t}\cdot\epsilon + o(\epsilon)
 \end{array}
 $$
 </div>

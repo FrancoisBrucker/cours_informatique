@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>OpenPGP</title>
+    <title>openssl</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>OpenPGP</h1>
+  <h1>openssl</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openpgp/">OpenPGP</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openPGP/">OpenPGP</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openPGP/openssl/">openssl</a>
 
 </div></div>
 
@@ -96,58 +96,50 @@
     
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/OpenPGP">OpenPGP</a></p>
-</div></div>
+  <!-- TBD
 
-<p>RSA peut encrypter un nombre plus petit que $n$. On pourrait décomposer un message plus gros en paquets de $T$ bits avec $2^T &lt; n$ mais ce n'est quasi-jamais fait car le codage/décodage est algorithmiquement long.</p>
-<p>On utilise alors une technique mixte, issue de <a href="https://fr.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a>, pour cela.</p>
-<p>Supposons qu'Alice veut envoyer un message $m$ à Bob. Il faut de :</p>
-<ol>
-<li>l'authentification : Alice chiffre le hash de $m$ avec sa clé privée</li>
-<li>la confidentialité :
-<ol>
-<li>une clé $k$ est générée puis chiffrée avec la clé publique de Bob</li>
-<li>le message $m$ est compressé puis chiffré  avec la clé $k$ (avec un chiffre symétrique)</li>
-</ol>
-</li>
-</ol>
-<p>Alice envoie à Bob :</p>
-<ol>
-<li>la signature électronique de son message (le hash de $m$ chiffré avec sa clé privée)</li>
-<li>la clé $k$ chiffrée avec la clé publique de Bob</li>
-<li>le message compressé puis chiffré avec la clé $k$</li>
-</ol>
-<p>Bob peut alors :</p>
-<ol>
-<li>retrouver la clé de chiffrement $k$ en utilisant sa clé privée</li>
-<li>déchiffrer le message avec la clé $k$, puis le décompresser</li>
-<li>vérifier que le message vient bien d'Alice en comparant :
-<ul>
-<li>le hash du message</li>
-<li>le déchiffrement de la signature avec la clé publique d'Alice.</li>
-</ul>
-</li>
-</ol>
-<h2>Avec openSSL</h2>
+- ajouter sub-keys avec acron2.
+
+ -->
 <p>Nous allons faire les meme étapes que le protocole openPGP avec la suite d'outils de chiffrement donné par <a href="https://www.openssl.org/">openSSL</a> pour bien séparer les différentes étapes. Si vous voulez utiliser pleinement le protocole openPGP, utilisez cependant plutôt un outil dédié gomme <a href="https://www.gnupg.org/">Gnupg</a>, ci-après.</p>
 <p>Placez vous dans un dossier où vous pourrez placer tous les fichiers nécessaires</p>
-<p>On utilise la version 3 d'openSSL :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl version</code></pre>
-<h3>Clés du chiffrement asymétrique</h3>
+<h2>Installation</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL">RAS openSSL</a></p>
+<p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
 </div></div>
 
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl genkpey <span class="token parameter variable">-help</span></code></pre>
+<p>On utilise la version 3 d'openssl :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ openssl <span class="token parameter variable">--version</span>
+OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</span> Oct <span class="token number">2025</span> <span class="token punctuation">(</span>Library: OpenSSL <span class="token number">3.6</span>.0 <span class="token number">1</span> Oct <span class="token number">2025</span><span class="token punctuation">)</span></code></pre>
+<h3>Linux</h3>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> openssl</code></pre>
+<h3>Macos</h3>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ brew <span class="token function">install</span> openssl</code></pre>
+<h3>Windows</h3>
+<p>On utilise <a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/">winget</a>, le gestionnaire de paquet de Windows 11.</p>
+<ol>
+<li>recherche de openssl dans la liste des paquets disponibles : <a href="https://winget.run/">https://winget.run/</a></li>
+<li>on utilise le paquet <a href="https://winget.run/pkg/ShiningLight/OpenSSL.Light"><code>OpenSSL.Light</code></a></li>
+</ol>
+<p>Une fois le parquet installé, il faut encore ajouter le chemin d'exécution. Pour cela :</p>
+<ol>
+<li>commencez par trouver l'endroit où est installé openssl (qui moi c'est<code class="fichier">C:\Program Files\OpenSSL-Win64\bin\</code>)</li>
+<li>utilisez <a href="https://lecrabeinfo.net/tutoriels/modifier-le-path-de-windows-ajouter-un-dossier-au-path/">ce tutoriel</a> pour l'ajouter aux chemins d'exécution</li>
+</ol>
+<h2>Clés du chiffrement asymétrique</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL">RSA openSSL</a></p>
+</div></div>
+
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl genpkey <span class="token parameter variable">-help</span></code></pre>
 <p>On commence par <a href="https://www.openssl.org/docs/man3.0/man1/openssl-genpkey.html">générer un couple de clés publique/privée</a> avec RSA :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl genpkey <span class="token parameter variable">-algorithm</span> RSA <span class="token parameter variable">-out</span> private_key.pem <span class="token parameter variable">-pkeyopt</span> rsa_keygen_bits:2048</code></pre>
 <p>Cette commande va produire un fichier <code class="fichier">private_key.pem</code> au format <a href="https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail">PEM</a>. Ce fichier va faire office de clé privée mais <strong>il contient bien le couple des clés publique et privée</strong> :</p>
@@ -197,7 +189,7 @@
 </ul>
 </div></div>
 
-<h3>Clé du chiffrement symétrique</h3>
+<h2>Clé du chiffrement symétrique</h2>
 <p>Créons une clé de 32B = 256b pour être utilisée par chacha20.</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl rand <span class="token parameter variable">-hex</span> <span class="token parameter variable">-out</span> symmetric_key <span class="token number">32</span></code></pre>
 <p>Le fichier <code class="fichier">symmetric_key.pem</code> contient la clé.</p>
@@ -234,7 +226,7 @@
 </div>
 </details>     
 </div>
-<h3>Chiffrement symétrique</h3>
+<h2>Chiffrement symétrique</h2>
 <p>On écrit un petit message à envoyer :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token builtin class-name">echo</span> <span class="token string">"Un coucou chiffré."</span> <span class="token operator">></span> msg.txt</code></pre>
 <p>On commence par compresser ce fichier (on utilise ici zip, mais vous pouvez utiliser ce que vous voulez) :</p>
@@ -254,196 +246,44 @@ On a utilisé ici des clés explicites. On peut aussi passer <em>via</em> des pa
 </div></div>
 
 <blockquote>
-<p>TBD faire avec K et IV</p>
+<p>TBD faire avec K et IV sans -p</p>
 </blockquote>
-<h3>Chiffrement asymétrique de la clé symétrique</h3>
+<h2>Chiffrement asymétrique de la clé symétrique</h2>
 <blockquote>
-<p>TBD faire avec sign then encrypt. COmme ça on cache l'expéditeur
+<p>TBD faire avec sign then encrypt. Comme ça on cache l'expéditeur
 puis zip les trois fichiers à envoyer.</p>
 </blockquote>
-<h4>Signature</h4>
+<h3>Signature</h3>
 <p>On signe un hash. OpenSSL propose plein de fonction de hash différente :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"> openssl dgst <span class="token parameter variable">-list</span></code></pre>
 <p>On va utiliser sha256 pour signer le message chiffré avec notre clé privée :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl dgst <span class="token parameter variable">-sha256</span> <span class="token parameter variable">-sign</span> private_key.pem <span class="token parameter variable">-out</span> msg.txt.zip.encrypted.sign.sha256 msg.txt.zip.encrypted</code></pre>
-<h4>Chiffrement de la clé</h4>
+<h3>Chiffrement de la clé</h3>
 <p>Chiffrons la clé symétrique avec la clé publique de notre interlocuteur :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl pkeyutl <span class="token parameter variable">-encrypt</span> <span class="token parameter variable">-in</span> symmetric_key <span class="token parameter variable">-pubin</span> <span class="token parameter variable">-inkey</span> public_key.pem <span class="token parameter variable">-out</span> symmetric_key.encrypted</code></pre>
-<h3>Envoi du message</h3>
+<h2>Envoi du message</h2>
 <p>Il faut envoyer :</p>
 <ol>
 <li>le message chiffré : <code class="fichier">msg.txt.zip.encrypted</code></li>
 <li>la signature du message chiffré : <code class="fichier">msg.txt.zip.encrypted.sign.sha256</code></li>
 <li>la clé symétrique chiffrée avec la clé publique de l'interlocuteur : <code class="fichier">symmetric_key.encrypted</code></li>
 </ol>
-<h3>Déchiffrement</h3>
+<h2>Déchiffrement</h2>
 <p>Vous devez avoir :</p>
 <ol>
 <li>la clé publique de l'envoyeur</li>
 <li>votre clé privée</li>
 </ol>
-<h4>Vérification de la signature</h4>
+<h3>Vérification de la signature</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl dgst <span class="token parameter variable">-verify</span> public_key.pem <span class="token parameter variable">-signature</span> msg.txt.zip.encrypted.sign.sha256 msg.txt.zip.encrypted    </code></pre>
 <p>Si tout s'est bien passé vous devriez voir <code>Verified OK</code> comme réponse (sinons vous auriez eu <code>Verification failure</code> comme réponse).</p>
-<h4>Déchiffrement de la clé symétrique</h4>
+<h3>Déchiffrement de la clé symétrique</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl pkeyutl <span class="token parameter variable">-decrypt</span> <span class="token parameter variable">-inkey</span> private_key.pem <span class="token parameter variable">-in</span> symmetric_key.encrypted <span class="token parameter variable">-out</span> symmetric_key</code></pre>
-<h4>Déchiffrement du message</h4>
+<h3>Déchiffrement du message</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">openssl enc <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token parameter variable">-chacha20</span> <span class="token parameter variable">-in</span> msg.txt.zip.encrypted <span class="token parameter variable">-kfile</span> symmetric_key <span class="token parameter variable">-pbkdf2</span> <span class="token parameter variable">-out</span> msg.txt.zip</code></pre>
-<h4>Dézippage du message</h4>
+<h3>Dézippage du message</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">unzip</span> msg.txt.zip</code></pre>
 <p>Et normalement, vous devriez avoir le fichier initial !</p>
-<h2>Avec gnupg</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://www.gnupg.org/">GnuPG</a></li>
-<li><a href="https://smarttech101.com/how-to-encrypt-and-sign-your-files-using-gpg/">tuto gpg</a></li>
-</ul>
-</div></div>
-
-<p>Le logiciel gnuPG permet de rendre plus pratique les diverses opérations faites précédemment. Il permet également un partage de clés publique via un réseau de confiance. Une clé publique va être signée par d'autres personnes, ce qui permet de la <em>valider</em> : si une clé est signée par une personne que vous connaissez, vous aurez confiance en sa véracité.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ne signez les clés publique que des personnes que vous connaissez.</p>
-</div></div>
-
-<p>On utilise la version 2.4.3 de GnuPG :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ gpg <span class="token parameter variable">--version</span>
-gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.3
-libgcrypt <span class="token number">1.10</span>.2
-Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2023</span> g10 Code GmbH
-License GNU GPL-3.0-or-later <span class="token operator">&lt;</span>https://gnu.org/licenses/gpl.html<span class="token operator">></span>
-This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.
-
-Home: /Users/fbrucker/.gnupg
-Algorithmes pris en charge <span class="token builtin class-name">:</span>
-Clef publique <span class="token builtin class-name">:</span> RSA, ELG, DSA, ECDH, ECDSA, EDDSA
-Chiffrement <span class="token builtin class-name">:</span> IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256,
-              TWOFISH, CAMELLIA128, CAMELLIA192, CAMELLIA256
-Hachage <span class="token builtin class-name">:</span> SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
-Compression <span class="token builtin class-name">:</span> Non compressé, ZIP, ZLIB, BZIP2</code></pre>
-<p>On voit que chacha20 n'est pas pas pris en compte comme algorithme de chiffrage, ce qui est dommage. Nous utiliserons donc les algorithmes par défaut, qui sont :</p>
-<ol>
-<li><code>RSA</code> comme gestionnaire de clés asymétrique</li>
-<li><code>AES256</code> comme algorithme de chiffrement</li>
-<li><code>SHA512</code>comme algorithme de hash</li>
-</ol>
-<h3>Création de clés</h3>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --full-generate-key</code></pre>
-<ol>
-<li><code>RSA and RSA</code> : pour le chiffrement de la clé symétrique et la signature</li>
-<li>taille de clé 3072</li>
-<li>expire d'ici 10 jours.</li>
-<li>tapez une passphrase qui protège votre clé. Ne l'oubliez pas</li>
-</ol>
-<p>Vous pouvez voir votre clé :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --list-keys  </code></pre>
-<p>Nous allons tout de suite créer un fichier de révocation de la clé, au cas où vous perdriez votre passphrase ou que clé privée soit compromise.</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> revoke-gpg.asc --gen-revoke <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
-<p>Où <code>&lt;id clé&gt;</code> est un des composant de votre clé qui l'identifie de façon unique parmi vos clés. Le nom de l'adresse mail mail par exemple.</p>
-<p>Votre clé publique est :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--armor</span> <span class="token parameter variable">--export</span> <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
-<p>Et si vous voulez la sauver dans un fichier <code class="fichier">pub.gpg</code> :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--armor</span> <span class="token parameter variable">--output</span> pub.gpg <span class="token parameter variable">--export</span> <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
-<h3>Préférences de clés</h3>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --edit-key <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
-<p>Vous vous retrouvez devant un prompt. Vous pouvez taper <code>help</code> pour l'aide. Tapez <code>setpref</code> et regardez vos préférences. Vous devriez y voir les différents algorithmes utilisés :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> setpref
-Définir la liste de préférences en <span class="token builtin class-name">:</span>
-     Chiffrement <span class="token builtin class-name">:</span> AES256, AES192, AES, 3DES
-     AEAD: OCB
-     Hachage <span class="token builtin class-name">:</span> SHA512, SHA384, SHA256, SHA224, SHA1
-     Compression <span class="token builtin class-name">:</span> ZLIB, BZIP2, ZIP, Non compressé
-     Fonctionnalités <span class="token builtin class-name">:</span> MDC, AEAD, Serveur de clefs sans modification
-Faut-il vraiment mettre à jour les préférences ? <span class="token punctuation">(</span>o/N<span class="token punctuation">)</span> n</code></pre>
-<p>Vous pouvez ensuite taper <code>quit</code> pour quitter l'interface.</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> quit</code></pre>
-<h3>Gestion des clés</h3>
-<p>Pour pouvoir envoyer des messages à quelqu'un, il vous faut avoir sa clé publique.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Envoyez votre clé publique à votre correspondant, et récupérez la sienne.</p>
-</div></div>
-
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--import</span> public-key.pgp</code></pre>
-<p>Vous pouvez ensuite voir que la clé a bien été ajoutée à votre trousseau de clés :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --list-keys        </code></pre>
-<p>Vous pouvez, si vous le désirez, signer sa clé :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> sign
-</code></pre>
-<h3>Utilisation</h3>
-<p>Chiffrement :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt.gpg <span class="token parameter variable">--encrypt</span> <span class="token parameter variable">--recipient</span> <span class="token operator">&lt;</span>recipient id<span class="token operator">></span> msg.txt</code></pre>
-<p>Chiffrement et signature du message :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt.gpg <span class="token parameter variable">--encrypt</span> <span class="token parameter variable">--sign</span> <span class="token parameter variable">--recipient</span> <span class="token operator">&lt;</span>recipient id<span class="token operator">></span> msg.txt</code></pre>
-<p>Uniquement signature d'un message en clair</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt.sign <span class="token parameter variable">--clearsign</span> msg.txt</code></pre>
-<p>Déchiffrement :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt <span class="token parameter variable">--decrypt</span> msg.txt.gpg</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<blockquote>
-<p>TBD <a href="https://unix.stackexchange.com/questions/60213/gpg-asks-for-password-even-with-passphrase">https://unix.stackexchange.com/questions/60213/gpg-asks-for-password-even-with-passphrase</a></p>
-</blockquote>
-</div></div>
-
-<h3>Gestion des clés GPG</h3>
-<blockquote>
-<p>TBD : faire mieux et plus clair.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://wiki.debian.org/fr/Subkeys">clés et sous clés GPG</a></li>
-<li><a href="https://mikeross.xyz/create-gpg-key-pair-with-subkeys/">sous clés GPG</a></li>
-</ul>
-</div></div>
-
-<h4>utilitaire</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://github.com/orhun/gpg-tui">GPG TUI</a></p>
-</div></div>
-
-<h4>serveur de clés</h4>
-<blockquote>
-<p>TBD Permet d'utiliser des clés stockées dans un serveur de clé
-<a href="https://www.gnupg.org/gph/en/manual.html#AEN464">https://www.gnupg.org/gph/en/manual.html#AEN464</a></p>
-<ol>
-<li>le faire.</li>
-<li>se signer mutuellement les clés.</li>
-</ol>
-</blockquote>
-<h3>Fichiers de configurations</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html">Fichiers de configurations</a></p>
-</div></div>
-
-<p>Dans le dossier <code>~/.gnupg</code>.</p>
 
 
 </article>

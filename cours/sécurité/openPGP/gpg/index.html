@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>OpenPGP</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>OpenPGP</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openPGP/">OpenPGP</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openPGP/gpg/">OpenPGP</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <!-- TBD
+
+- subkeys : <https://wiki.debian.org/Subkeys>
+- list commandes : <https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html>
+- tuto complet avec sub keys et tout : <https://www.youtube.com/watch?v=6i8vPJLAPRs&list=PLPj3KCksGbSZkVpgAZjAFfFp4D0SHLnFw>
+- revoke key : <https://superuser.com/questions/1526283/how-to-revoke-a-gpg-key-and-upload-in-gpg-server>
+- gpg config : <https://www.git-tower.com/blog/setting-up-gpg-windows>
+- <https://une-tasse-de.cafe/blog/yubikey/>
+
+ -->
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.gnupg.org/">GnuPG</a></li>
+<li><a href="https://smarttech101.com/how-to-encrypt-and-sign-your-files-using-gpg/">tuto gpg</a></li>
+<li><a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html">autre tuto</a></li>
+</ul>
+</div></div>
+
+<p>Le logiciel gnuPG permet de sécuriser ses fichiers et ses communications.rendre plus pratique les diverses opérations faites précédemment. Il permet également un partage de clés publique via un réseau de confiance. Une clé publique va être signée par d'autres personnes, ce qui permet de la <em>valider</em> : si une clé est signée par une personne que vous connaissez, vous aurez confiance en sa véracité.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne signez les clés publique que des personnes que vous connaissez.</p>
+</div></div>
+
+<h2>Installation</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.gnupg.org/">https://www.gnupg.org/</a></p>
+</div></div>
+
+<p>On utilise la version 2.4 :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg <span class="token parameter variable">--version</span>
+gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.8
+libgcrypt <span class="token number">1.11</span>.2
+Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2025</span> g10 Code GmbH
+License GNU GPL-3.0-or-later <span class="token operator">&lt;</span>https://gnu.org/licenses/gpl.html<span class="token operator">></span>
+This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Home: /Users/fbrucker/.gnupg
+Supported algorithms:
+Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+Cipher: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH,
+        CAMELLIA128, CAMELLIA192, CAMELLIA256
+Hash: SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+Compression: Uncompressed, ZIP, ZLIB, BZIP2
+</code></pre>
+<p>On voit que chacha20 n'est pas pas pris en compte comme algorithme de chiffrage, ce qui est dommage. Nous utiliserons donc les algorithmes par défaut, qui sont :</p>
+<ol>
+<li><code>ECDSA</code> comme gestionnaire de clés asymétrique</li>
+<li><code>AES256</code> comme algorithme de chiffrement</li>
+<li><code>SHA512</code>comme algorithme de hash</li>
+</ol>
+<h3>Linux</h3>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> openssl</code></pre>
+<h3>Macos</h3>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ brew <span class="token function">install</span> openssl</code></pre>
+<h3>Windows</h3>
+<p>On utilise <a href="https://learn.microsoft.com/fr-fr/windows/package-manager/winget/">winget</a>, le gestionnaire de paquet de Windows 11.</p>
+<ol>
+<li>recherche de openssl dans la liste des paquets disponibles : <a href="https://winget.run/">https://winget.run/</a></li>
+<li>on utilise le paquet <a href="https://winget.run/pkg/GnuPG/GnuPG"><code>GnuPG.GnuPG</code></a></li>
+</ol>
+<p>Une fois le parquet installé, il devrait être disponible dans une <strong>nouvelle</strong> fenêtre de powershell.</p>
+<h3>Dossier de configuration/clés</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html">Fichiers de configurations</a></p>
+</div></div>
+
+<p>Ce fichier va contenir et la configuration et les clés.</p>
+<ul>
+<li><code class="fichier">~/.gnupg</code> sous linux/macos</li>
+<li><code class="fichier">C:\Users\&lt;nom utilisateur&gt;\AppData\Roaming\gnupg</code> sous windows</li>
+</ul>
+<h2>Chiffrer et déchiffrer des fichiers</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=4z1LSbFHtQA">Chiffrer/déchiffrer des fichiers avec GPG</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD comme chiffrement/déchiffrement  avec passphrase.
+tui puis en ligne de commande.</p>
+</blockquote>
+<h2>Création de clés</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key">https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key</a></p>
+</div></div>
+
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --full-generate-key</code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sortie</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.8<span class="token punctuation">;</span> Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2025</span> g10 Code GmbH
+This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+gpg: directory <span class="token string">'/Users/fbrucker/.gnupg'</span> created
+Please <span class="token keyword">select</span> what kind of key you want:
+   <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> RSA and RSA
+   <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> DSA and Elgamal
+   <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> DSA <span class="token punctuation">(</span>sign only<span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> RSA <span class="token punctuation">(</span>sign only<span class="token punctuation">)</span>
+   <span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span> ECC <span class="token punctuation">(</span>sign and encrypt<span class="token punctuation">)</span> *default*
+  <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> ECC <span class="token punctuation">(</span>sign only<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span> Existing key from card
+Your selection? <span class="token number">9</span>
+Please <span class="token keyword">select</span> <span class="token function">which</span> elliptic curve you want:
+   <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> Curve <span class="token number">25519</span> *default*
+   <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> NIST P-384
+   <span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> Brainpool P-256
+Your selection? <span class="token number">1</span>
+Please specify how long the key should be valid.
+         <span class="token number">0</span> <span class="token operator">=</span> key does not expire
+      <span class="token operator">&lt;</span>n<span class="token operator">></span>  <span class="token operator">=</span> key expires <span class="token keyword">in</span> n days
+      <span class="token operator">&lt;</span>n<span class="token operator">></span>w <span class="token operator">=</span> key expires <span class="token keyword">in</span> n weeks
+      <span class="token operator">&lt;</span>n<span class="token operator">></span>m <span class="token operator">=</span> key expires <span class="token keyword">in</span> n months
+      <span class="token operator">&lt;</span>n<span class="token operator">></span>y <span class="token operator">=</span> key expires <span class="token keyword">in</span> n years
+Key is valid for? <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token number">7</span>
+Key expires at Sun Oct <span class="token number">26</span> <span class="token number">17</span>:42:59 <span class="token number">2025</span> CET
+Is this correct? <span class="token punctuation">(</span>y/N<span class="token punctuation">)</span> y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: François Brucker
+Email address: francois.brucker@centrale-med.fr
+Comment: Je suis professeur d<span class="token string">'informatique
+You are using the '</span>utf-8<span class="token string">' character set.
+You selected this USER-ID:
+    "François Brucker (Je suis professeur d'</span>informatique<span class="token punctuation">)</span> <span class="token operator">&lt;</span>francois.brucker@univ-amu.fr<span class="token operator">></span>"
+
+Change <span class="token punctuation">(</span>N<span class="token punctuation">)</span>ame, <span class="token punctuation">(</span>C<span class="token punctuation">)</span>omment, <span class="token punctuation">(</span>E<span class="token punctuation">)</span>mail or <span class="token punctuation">(</span>O<span class="token punctuation">)</span>kay/<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>uit? o
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action <span class="token punctuation">(</span>type on the keyboard, move the mouse, utilize the
+disks<span class="token punctuation">)</span> during the prime generation<span class="token punctuation">;</span> this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action <span class="token punctuation">(</span>type on the keyboard, move the mouse, utilize the
+disks<span class="token punctuation">)</span> during the prime generation<span class="token punctuation">;</span> this gives the random number
+generator a better chance to gain enough entropy.
+gpg: /Users/fbrucker/.gnupg/trustdb.gpg: trustdb created
+gpg: directory <span class="token string">'/Users/fbrucker/.gnupg/openpgp-revocs.d'</span> created
+gpg: revocation certificate stored as <span class="token string">'/Users/fbrucker/.gnupg/openpgp-revocs.d/1746B97A12A97C32CB74C6157D305414B27F8E59.rev'</span>
+public and secret key created and signed.
+
+pub   ed25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>SC<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-26<span class="token punctuation">]</span>
+      1746B97A12A97C32CB74C6157D305414B27F8E59
+uid                      François Brucker <span class="token punctuation">(</span>Je suis professeur d'informatique<span class="token punctuation">)</span> <span class="token operator">&lt;</span>francois.brucker@univ-amu.fr<span class="token operator">></span>
+sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>E<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-26<span class="token punctuation">]</span>
+
+</code></pre>
+</div>
+</details>     
+</div>
+<ol>
+<li><code>ECC (sign and encrypt)</code> (<em>Elliptic Curve Cryptography</em>): pour le chiffrement de la clé symétrique et la signature</li>
+<li><code>Curve 25519</code> : la courbe utilisée</li>
+<li>Expire d'ici 7 jours.</li>
+<li>Mettez vos identifiant</li>
+<li>tapez une passphrase qui protège votre clé. <strong>Ne l'oubliez pas</strong></li>
+</ol>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Bon usage</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il est recommandé de mettre une date d'expiration à votre clé. Ceci pour plusieurs raisons :</p>
+<ol>
+<li>On fait toujours des bêtises lors de ses premières clés</li>
+<li>Si vous la perdez les mots de  passe cela ne sera pas préjudiciable. Elle s'arrêtera toute seule d'être reconnue comme valide.</li>
+</ol>
+<p>Vous pourrez de toute façon modifier la date d'expiration si vous voulez conserver la clé</p>
+</div></div>
+
+<p>Les clés sont stockées dans le dossier de configuration, qui contient de nombreux fichiers/dossiers :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">
+❯ <span class="token function">ls</span> <span class="token parameter variable">-la</span>
+.rw-r-----@   <span class="token number">12</span> fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:40 󱁻 common.conf
+drwx------@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:47  openpgp-revocs.d
+drwx------@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:47  private-keys-v1.d
+drwxr-x---@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:47  public-keys.d
+srwx------@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:47  S.gpg-agent
+srwx------@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:47  S.gpg-agent.browser
+srwx------@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:47  S.gpg-agent.extra
+srwx------@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:47  S.gpg-agent.ssh
+srwx------@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:47  S.keyboxd
+srwx------@    - fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:58  S.scdaemon
+.rw-------@ <span class="token number">1</span>.3k fbrucker <span class="token number">19</span> Oct <span class="token number">18</span>:53 󰦝 trustdb.gpg
+</code></pre>
+<p>En particulier un dossier <code class="fichier">openpgp-revocs.d</code> qui contient un fichier de révocation de la clé :</p>
+<pre><code>❯ cat ./openpgp-revocs.d/1746B97A12A97C32CB74C6157D305414B27F8E59.rev
+This is a revocation certificate for the OpenPGP key:
+
+pub   ed25519 2025-10-19 [S] [expires: 2025-10-26]
+      1746B97A12A97C32CB74C6157D305414B27F8E59
+uid          François Brucker (Je suis professeur d'informatique) &lt;francois.brucker@centrale-med.fr&gt;
+
+A revocation certificate is a kind of &quot;kill switch&quot; to publicly
+declare that a key shall not anymore be used.  It is not possible
+to retract such a revocation certificate once it has been published.
+
+Use it to revoke this key in case of a compromise or loss of
+the secret key.  However, if the secret key is still accessible,
+it is better to generate a new revocation certificate and give
+a reason for the revocation.  For details see the description of
+of the gpg command &quot;--generate-revocation&quot; in the GnuPG manual.
+
+To avoid an accidental use of this file, a colon has been inserted
+before the 5 dashes below.  Remove this colon with a text editor
+before importing and publishing this revocation certificate.
+
+:-----BEGIN PGP PUBLIC KEY BLOCK-----
+Comment: This is a revocation certificate
+
+iHgEIBYKACAWIQQXRrl6Eql8Mst0xhV9MFQUsn+OWQUCaPUWLAIdAAAKCRB9MFQU
+sn+OWXHkAP9t7qt97FO6kuSHrY8Hz+drPWmtHJjzFFK7SM9XMlSxuQEAmLMFLW/H
+4Lxkgb/vpQC4VUINWaeZT0dkvz/GB1louwY=
+=0z0V
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Bon usage</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Placez le fichier de révocation de votre clé dans un endroit séparé. Si vous vous faites voler votre clé, vous pourrez ainsi la révoquer et éviter que des inconnus se fassent passer pour vous.</p>
+</div></div>
+
+<h3>Lister ses clés</h3>
+<p>Vous pouvez voir vos clés :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --list-keys
+gpg: checking the trustdb
+gpg: marginals needed: <span class="token number">3</span>  completes needed: <span class="token number">1</span>  trust model: pgp
+gpg: depth: <span class="token number">0</span>  valid:   <span class="token number">1</span>  signed:   <span class="token number">0</span>  trust: <span class="token number">0</span>-, 0q, 0n, 0m, 0f, 1u
+gpg: next trustdb check due at <span class="token number">2025</span>-10-26
+<span class="token punctuation">[</span>keyboxd<span class="token punctuation">]</span>
+---------
+pub   ed25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>SC<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-26<span class="token punctuation">]</span>
+      1746B97A12A97C32CB74C6157D305414B27F8E59
+uid           <span class="token punctuation">[</span>ultimate<span class="token punctuation">]</span> François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>E<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-26<span class="token punctuation">]</span>
+</code></pre>
+<p>On voit deux clés de créées :</p>
+<ul>
+<li>la clé public principale servant à Signer et à Certifier (<code>[SC]</code>)</li>
+<li>une clé secondaire servant à chiffrer/déchiffrer (<code>[E]</code> pour <em>Encrypt</em>)</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On verra plus tard l'utilisation des sous-clés. Pour l'instant, prenons ça comme une unique clé séparé en responsabilités : une pour le chiffrement, l'autre pour l'authentification.</p>
+</div></div>
+
+<p>Vous pouvez aussi voir les clés privées en votre possession :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">
+❯ gpg --list-secret-keys
+<span class="token punctuation">[</span>keyboxd<span class="token punctuation">]</span>
+---------
+sec   ed25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>SC<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-26<span class="token punctuation">]</span>
+      1746B97A12A97C32CB74C6157D305414B27F8E59
+uid           <span class="token punctuation">[</span>ultimate<span class="token punctuation">]</span> François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+ssb   cv25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>E<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-26<span class="token punctuation">]</span>
+
+</code></pre>
+<p>Pour l'instant, ce sont les pendant privés de la clé principale et secondaire. Lorsque vous ajouterez des clés publiques pour communiquer ces deux listes vont différer.</p>
+<h3>Exporter ses clés</h3>
+<p>Votre clé publique est :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg <span class="token parameter variable">--armor</span> <span class="token parameter variable">--export</span> <span class="token operator">&lt;</span>key id<span class="token operator">></span></code></pre>
+<p>Pour la clé crée juste avant :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg <span class="token parameter variable">--armor</span> <span class="token parameter variable">--export</span> 1746B97A12A97C32CB74C6157D305414B27F8E59
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mDMEaPUWEhYJKwYBBAHaRw8BAQdANlrHTZ04G9fbWXz7E1iWSN2VBOBN9VLR16cP
+6tGnD1u0VEZyYW7Dp29pcyBCcnVja2VyIChKZSBzdWlzIHByb2Zlc3NldXIgZCdp
+bmZvcm1hdGlxdWUpIDxmcmFuY29pcy5icnVja2VyQHVuaXYtYW11LmZyPoiZBBMW
+CgBBFiEEF0a5ehKpfDLLdMYVfTBUFLJ/jlkFAmj1FhICGwMFCQAJOoAFCwkIBwIC
+IgIGFQoJCAsCBBYCAwECHgcCF4AACgkQfTBUFLJ/jlnpEQEA5kGQqmYZtsaYEl+j
++kHaLcXpFwPkexvT0xfz4DKmGYgA/3PgZ8lPTz9Vf8gu3tQkM/98xECbC6dL1hSZ
+ofRYi1gJuDgEaPUWEhIKKwYBBAGXVQEFAQEHQJUylKHhjp4PRAHy5/dHAdjtZqax
+3QmmcusEVDT4Hq9bAwEIB4h+BBgWCgAmFiEEF0a5ehKpfDLLdMYVfTBUFLJ/jlkF
+Amj1FhICGwwFCQAJOoAACgkQfTBUFLJ/jlmQyQEAoZImWol4mEad+K5xRxLuFLF9
+AAfCXxreu+uWC78Tn9ABAOuc1Zf2X/8aFe0K8/qcEro1s/IEJbKWlsmOvlriaY0A
+<span class="token operator">=</span>UCdl
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre>
+<p>L'option <code>--armor</code> exporte la clé sous <a href="https://fr.wikipedia.org/wiki/Base64">la forme base64</a> qui est affichable et facilement échangeable.</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ gpg <span class="token parameter variable">--export</span> 1746B97A12A97C32CB74C6157D305414B27F8E59 <span class="token operator">|</span> base64
+mDMEaPUWEhYJKwYBBAHaRw8BAQdANlrHTZ04G9fbWXz7E1iWSN2VBOBN9VLR16cP6tGnD1u0NEZyYW7Dp29pcyBCcnVja2VyIDxmcmFuY29pcy5icnVja2VyQGNlbnRyYWxlLW1lZC5mcj6ImQQTFgoAQRYhBBdGuXoSqXwyy3TGFX0wVBSyf45ZBQJo9ScdAhsDBQkACTqABQsJCAcCAiICBhUKCQgLAgQWAgMBAh4HAheAAAoJEH0wVBSyf45Z3F8BAOrcosVh1tVRoONNkD3UzjyU6mXEkXXIJa9e6rjXMKaVAP48r4FOfIioLb+Yjo6YlgTRB0YMumk6xl3M4aqQxpEcBrg4BGj1FhISCisGAQQBl1UBBQEBB0CVMpSh4Y6eD0QB8uf3RwHY7Wamsd0JpnLrBFQ0+B6vWwMBCAeIfgQYFgoAJhYhBBdGuXoSqXwyy3TGFX0wVBSyf45ZBQJo9RYSAhsMBQkACTqAAAoJEH0wVBSyf45ZkMkBAKGSJlqJeJhGnfiucUcS7hSxfQAHwl8a3rvrlgu/E5/QAQDrnNWX9l//GhXtCvP6nBK6NbPyBCWylpbJjr5a4mmNAA<span class="token operator">==</span></code></pre>
+<p>Par défaut, le format est binaire :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ gpg <span class="token parameter variable">--export</span> 1746B97A12A97C32CB74C6157D305414B27F8E59 <span class="token operator">|</span> xxd
+00000000: <span class="token number">9833</span> 0468 f516 <span class="token number">1216</span> 092b 0601 0401 da47  .3.h<span class="token punctuation">..</span><span class="token punctuation">..</span>.+<span class="token punctuation">..</span><span class="token punctuation">..</span>.G
+00000010: 0f01 0107 <span class="token number">4036</span> 5ac7 4d9d 381b d7db 597c  <span class="token punctuation">..</span><span class="token punctuation">..</span>@6Z.M.8<span class="token punctuation">..</span>.Y<span class="token operator">|</span>
+00000020: fb13 <span class="token number">5896</span> 48dd <span class="token number">9504</span> e04d f552 d1d7 a70f  <span class="token punctuation">..</span>X.H<span class="token punctuation">..</span><span class="token punctuation">..</span>M.R<span class="token punctuation">..</span><span class="token punctuation">..</span>
+00000030: ead1 a70f 5bb4 <span class="token number">3446</span> <span class="token number">7261</span> 6ec3 a76f <span class="token number">6973</span>  <span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">[</span>.4Fran<span class="token punctuation">..</span>ois
+00000040: <span class="token number">2042</span> <span class="token number">7275</span> 636b <span class="token number">6572</span> 203c <span class="token number">6672</span> 616e 636f   Brucker <span class="token operator">&lt;</span>franco
+00000050: <span class="token number">6973</span> 2e62 <span class="token number">7275</span> 636b <span class="token number">6572</span> <span class="token number">4063</span> 656e <span class="token number">7472</span>  is.brucker@centr
+00000060: 616c 652d 6d65 642e <span class="token number">6672</span> 3e88 <span class="token number">9904</span> <span class="token number">1316</span>  ale-med.fr<span class="token operator">></span><span class="token punctuation">..</span><span class="token punctuation">..</span>.
+00000070: 0a00 <span class="token number">4116</span> <span class="token number">2104</span> <span class="token number">1746</span> b97a 12a9 7c32 cb74  <span class="token punctuation">..</span>A.<span class="token operator">!</span><span class="token punctuation">..</span>F.z<span class="token punctuation">..</span><span class="token operator">|</span><span class="token number">2</span>.t
+00000080: c615 7d30 <span class="token number">5414</span> b27f 8e59 0502 68f5 271d  <span class="token punctuation">..</span><span class="token punctuation">}</span>0T<span class="token punctuation">..</span><span class="token punctuation">..</span>Y<span class="token punctuation">..</span>h.'.
+00000090: 021b 0305 0900 093a <span class="token number">8005</span> 0b09 0807 0202  <span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.:<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+000000a0: <span class="token number">2202</span> 0615 0a09 080b 0204 <span class="token number">1602</span> 0301 021e  "<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.
+000000b0: 0702 <span class="token number">1780</span> 000a 0910 7d30 <span class="token number">5414</span> b27f 8e59  <span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">}</span>0T<span class="token punctuation">..</span><span class="token punctuation">..</span>Y
+000000c0: dc5f 0100 eadc a2c5 61d6 d551 a0e3 4d90  ._<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>a<span class="token punctuation">..</span>Q<span class="token punctuation">..</span>M.
+000000d0: 3dd4 ce3c 94ea 65c4 <span class="token number">9175</span> c825 af5e eab8  <span class="token operator">=</span><span class="token punctuation">..</span><span class="token operator">&lt;</span><span class="token punctuation">..</span>e<span class="token punctuation">..</span>u.%.^<span class="token punctuation">..</span>
+000000e0: d730 a695 00fe 3caf 814e 7c88 a82d bf98  .0<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token operator">&lt;</span><span class="token punctuation">..</span>N<span class="token operator">|</span><span class="token punctuation">..</span>-<span class="token punctuation">..</span>
+000000f0: 8e8e <span class="token number">9896</span> 04d1 0746 0cba 693a c65d cce1  <span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.F<span class="token punctuation">..</span>i:.<span class="token punctuation">]</span><span class="token punctuation">..</span>
+00000100: aa90 c691 1c06 b838 0468 f516 <span class="token number">1212</span> 0a2b  <span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>.8.h<span class="token punctuation">..</span><span class="token punctuation">..</span>.+
+00000110: 0601 0401 <span class="token number">9755</span> 0105 0101 0740 <span class="token number">9532</span> 94a1  <span class="token punctuation">..</span><span class="token punctuation">..</span>.U<span class="token punctuation">..</span><span class="token punctuation">..</span>.@.2<span class="token punctuation">..</span>
+00000120: e18e 9e0f <span class="token number">4401</span> f2e7 f747 01d8 ed66 a6b1  <span class="token punctuation">..</span><span class="token punctuation">..</span>D<span class="token punctuation">..</span><span class="token punctuation">..</span>G<span class="token punctuation">..</span>.f<span class="token punctuation">..</span>
+00000130: dd09 a672 eb04 <span class="token number">5434</span> f81e af5b 0301 0807  <span class="token punctuation">..</span>.r<span class="token punctuation">..</span>T4<span class="token punctuation">..</span>.<span class="token punctuation">[</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+00000140: 887e 0418 160a 0026 <span class="token number">1621</span> 0417 46b9 7a12  .~<span class="token punctuation">..</span><span class="token punctuation">..</span>.<span class="token operator">&amp;</span>.<span class="token operator">!</span><span class="token punctuation">..</span>F.z.
+00000150: a97c 32cb 74c6 157d <span class="token number">3054</span> 14b2 7f8e <span class="token number">5905</span>  <span class="token builtin class-name">.</span><span class="token operator">|</span><span class="token number">2</span>.t<span class="token punctuation">..</span><span class="token punctuation">}</span>0T<span class="token punctuation">..</span><span class="token punctuation">..</span>Y.
+00000160: 0268 f516 <span class="token number">1202</span> 1b0c 0509 0009 3a80 000a  .h<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>:<span class="token punctuation">..</span>.
+00000170: 0910 7d30 <span class="token number">5414</span> b27f 8e59 90c9 0100 a192  <span class="token punctuation">..</span><span class="token punctuation">}</span>0T<span class="token punctuation">..</span><span class="token punctuation">..</span>Y<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+00000180: 265a <span class="token number">8978</span> <span class="token number">9846</span> 9df8 ae71 <span class="token number">4712</span> ee14 b17d  <span class="token operator">&amp;</span>Z.x.F<span class="token punctuation">..</span>.qG<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">}</span>
+00000190: 0007 c25f 1ade bbeb 960b bf13 9fd0 0100  <span class="token punctuation">..</span>._<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+000001a0: eb9c d597 f65f ff1a 15ed 0af3 fa9c 12ba  <span class="token punctuation">..</span><span class="token punctuation">..</span>._<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>
+000001b0: 35b3 f204 25b2 <span class="token number">9696</span> c98e be5a e269 8d00  <span class="token number">5</span><span class="token punctuation">..</span>.%<span class="token punctuation">..</span><span class="token punctuation">..</span><span class="token punctuation">..</span>Z.i<span class="token punctuation">..</span></code></pre>
+<p>Et si vous voulez la sauver dans un fichier <code class="fichier">pub.gpg</code> :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--armor</span> <span class="token parameter variable">--output</span> pub.gpg <span class="token parameter variable">--export</span> <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
+<h3>Importer des clés</h3>
+<p>Pour pouvoir envoyer des messages à quelqu'un, il vous faut avoir sa clé publique.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Envoyez votre clé publique à votre correspondant soit sous la forme d'un fichier binaire, soit le texte avec l'option <code>--armor</code>, et récupérez la sienne.</p>
+</div></div>
+
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--import</span> public-key.pgp</code></pre>
+<p>Vous pouvez ensuite voir que la clé a bien été ajoutée à votre trousseau de clés :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --list-keys        </code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Par exemple :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">
+❯ gpg <span class="token parameter variable">--import</span> francois.brucker_at_gmail.com.pub
+gpg: key 4F81085218CD36A1: public key <span class="token string">"François Brucker &lt;francois.brucker@gmail.com>"</span> imported
+gpg: Total number processed: <span class="token number">1</span>
+gpg:               imported: <span class="token number">1</span>
+❯ gpg --list-keys
+<span class="token punctuation">[</span>keyboxd<span class="token punctuation">]</span>
+---------
+pub   ed25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>SC<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-26<span class="token punctuation">]</span>
+      1746B97A12A97C32CB74C6157D305414B27F8E59
+uid           <span class="token punctuation">[</span>ultimate<span class="token punctuation">]</span> François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>E<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-26<span class="token punctuation">]</span>
+
+pub   ed25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>SC<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-29<span class="token punctuation">]</span>
+      794258F0679471E0E09D24454F81085218CD36A1
+uid           <span class="token punctuation">[</span> unknown<span class="token punctuation">]</span> François Brucker <span class="token operator">&lt;</span>francois.brucker@gmail.com<span class="token operator">></span>
+sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>E<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-29<span class="token punctuation">]</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Vous pouvez, si vous le désirez, signer sa clé :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> sign
+</code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemple suite</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ gpg --edit-key 4F81085218CD36A1
+gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.8<span class="token punctuation">;</span> Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2025</span> g10 Code GmbH
+This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+pub  ed25519/4F81085218CD36A1
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-29  usage: SC
+     trust: unknown       validity: unknown
+sub  cv25519/AF00F1C7150468B2
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-29  usage: E
+<span class="token punctuation">[</span> unknown<span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>. François Brucker <span class="token operator">&lt;</span>francois.brucker@gmail.com<span class="token operator">></span>
+
+gpg<span class="token operator">></span> sign
+
+pub  ed25519/4F81085218CD36A1
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-29  usage: SC
+     trust: unknown       validity: unknown
+ Primary key fingerprint: <span class="token number">7942</span> 58F0 <span class="token number">6794</span> 71E0 E09D  <span class="token number">2445</span> 4F81 0852 18CD 36A1
+
+     François Brucker <span class="token operator">&lt;</span>francois.brucker@gmail.com<span class="token operator">></span>
+
+This key is due to expire on <span class="token number">2025</span>-10-29.
+Are you sure that you want to sign this key with your
+key <span class="token string">"François Brucker &lt;francois.brucker@centrale-med.fr>"</span> <span class="token punctuation">(</span>7D305414B27F8E59<span class="token punctuation">)</span>
+
+Really sign? <span class="token punctuation">(</span>y/N<span class="token punctuation">)</span> y
+
+gpg<span class="token operator">></span> save</code></pre>
+</div>
+</details>     
+</div>
+<h2>Utilisation</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=eLKOIjNFwVs">comfy guide to gpg</a></p>
+</div></div>
+
+<h3>Chiffrement/déchiffrement</h3>
+<p>Chiffrement. <code>&lt;recipient mail&gt;</code> doit être le mail associé à la clé que vous avez ajouté. :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt.gpg <span class="token parameter variable">--encrypt</span> <span class="token parameter variable">--recipient</span> <span class="token operator">&lt;</span>recipient mail<span class="token operator">></span> msg.txt</code></pre>
+<p>Chiffrement <strong>et</strong> signature du message :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt.gpg <span class="token parameter variable">--encrypt</span> <span class="token parameter variable">--sign</span> <span class="token parameter variable">--recipient</span> <span class="token operator">&lt;</span>recipient id<span class="token operator">></span> msg.txt</code></pre>
+<p>Uniquement signature d'un message en clair</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt.sign <span class="token parameter variable">--clearsign</span> msg.txt</code></pre>
+<p>Déchiffrement :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg <span class="token parameter variable">--output</span> msg.txt <span class="token parameter variable">--decrypt</span> msg.txt.gpg</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Envoyez un message chiffré à votre correspondant.</p>
+</div></div>
+
+<h3>Signature</h3>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ <span class="token builtin class-name">echo</span> <span class="token string">"un message à signer"</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--clearsign</span>
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+un message à signer
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQXRrl6Eql8Mst0xhV9MFQUsn+OWQUCaPUzPAAKCRB9MFQUsn+O
+WW/aAQCM01hJ6NdFZGMQHSseYBymKsikdYXYu0w1hz3kHVq2mQEA2rD67KoILa/2
+aO+GUXAvAcholh7pN4J3CjCmkOzTtQg<span class="token operator">=</span>
+<span class="token operator">=</span>zw81
+-----END PGP SIGNATURE-----</code></pre>
+<p>Les deux ensembles :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ <span class="token builtin class-name">echo</span> <span class="token string">"un message à signer"</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--clearsign</span>
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+un message à signer
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQXRrl6Eql8Mst0xhV9MFQUsn+OWQUCaPUzPAAKCRB9MFQUsn+O
+WW/aAQCM01hJ6NdFZGMQHSseYBymKsikdYXYu0w1hz3kHVq2mQEA2rD67KoILa/2
+aO+GUXAvAcholh7pN4J3CjCmkOzTtQg<span class="token operator">=</span>
+<span class="token operator">=</span>zw81
+-----END PGP SIGNATURE-----</code></pre>
+<p>Juste la signature :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"un message à signer"</span> <span class="token operator">|</span> gpg --detach-sign <span class="token parameter variable">--armor</span>
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQQXRrl6Eql8Mst0xhV9MFQUsn+OWQUCaPUzvAAKCRB9MFQUsn+O
+WTnTAP0UDntHHjJWL90aJIJdc5j5xEZJluc6lZKLxPMCFhE+IgEA6U4EKwjLDTrp
+zlJYun0nDYelMc26nXClw+ZDn8LpjQg<span class="token operator">=</span>
+<span class="token operator">=</span>mdY5
+-----END PGP SIGNATURE-----
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Envoyez un message en clair avec votre signature à votre correspondant</li>
+<li>envoyez un fichier pdf d'un de vos rapport avec un second fichier contenant le rapport signé de votre part</li>
+</ol>
+</div></div>
+
+<h3>Vérification</h3>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"un message à signer"</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--sign</span> <span class="token operator">|</span> gpg <span class="token parameter variable">--verify</span>
+gpg: Signature made Sun Oct <span class="token number">19</span> <span class="token number">20</span>:55:32 <span class="token number">2025</span> CEST
+gpg:                using EDDSA key 1746B97A12A97C32CB74C6157D305414B27F8E59
+gpg: Good signature from <span class="token string">"François Brucker &lt;francois.brucker@centrale-med.fr>"</span> <span class="token punctuation">[</span>ultimate<span class="token punctuation">]</span></code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vérifiez le message que vous a envoyé votre correspondant.</p>
+</div></div>
+
+<h2>utilitaire</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/orhun/gpg-tui">GPG TUI</a></p>
+</div></div>
+
+<h2>Gestion des clés</h2>
+<h3>Modifier sa clé</h3>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --edit-key <span class="token operator">&lt;</span>key id<span class="token operator">></span></code></pre>
+<p>On entre dans un mode d'édition (utilisez la commande <code>help</code>). Par exemple pour changer d'utilisateur :</p>
+<ol>
+<li>on ajoute un utilisateur (<em>uid</em>)</li>
+<li>on sélectionne le précédent utilisateur (<code>uid 1</code>)</li>
+<li>on le supprime</li>
+<li>on sauve</li>
+</ol>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --edit-key 1746B97A12A97C32CB74C6157D305414B27F8E59
+gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.8<span class="token punctuation">;</span> Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2025</span> g10 Code GmbH
+This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Secret key is available.
+
+sec  ed25519/7D305414B27F8E59
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  cv25519/8305F422F269AACB
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: E
+<span class="token punctuation">[</span>ultimate<span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>. François Brucker <span class="token punctuation">(</span>Je suis professeur d<span class="token string">'informatique) &lt;francois.brucker@univ-amu.fr>
+
+gpg> adduid
+Real name: François Brucker
+Email address: francois.brucker@centrale-med.fr
+Comment:
+You are using the '</span>utf-8<span class="token string">' character set.
+You selected this USER-ID:
+    "François Brucker &lt;francois.brucker@centrale-med.fr>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+
+sec  ed25519/7D305414B27F8E59
+     created: 2025-10-19  expires: 2025-10-26  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  cv25519/8305F422F269AACB
+     created: 2025-10-19  expires: 2025-10-26  usage: E
+[ultimate] (1)  François Brucker (Je suis professeur d'</span>informatique<span class="token punctuation">)</span> <span class="token operator">&lt;</span>francois.brucker@univ-amu.fr<span class="token operator">></span>
+<span class="token punctuation">[</span> unknown<span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>. François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+
+gpg<span class="token operator">></span> uid <span class="token number">1</span>
+
+sec  ed25519/7D305414B27F8E59
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  cv25519/8305F422F269AACB
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: E
+<span class="token punctuation">[</span>ultimate<span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>* François Brucker <span class="token punctuation">(</span>Je suis professeur d'informatique<span class="token punctuation">)</span> <span class="token operator">&lt;</span>francois.brucker@univ-amu.fr<span class="token operator">></span>
+<span class="token punctuation">[</span> unknown<span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>. François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+
+gpg<span class="token operator">></span> deluid
+Really remove this user ID? <span class="token punctuation">(</span>y/N<span class="token punctuation">)</span> y
+
+sec  ed25519/7D305414B27F8E59
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  cv25519/8305F422F269AACB
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: E
+<span class="token punctuation">[</span> unknown<span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>. François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+
+gpg<span class="token operator">></span> save
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>N'oubliez pas de sauver vos modifications !</p>
+</div></div>
+
+<h3>Préférences de clés</h3>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --edit-key <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
+<p>Vous vous retrouvez devant un prompt. Vous pouvez taper <code>help</code> pour l'aide. Tapez <code>setpref</code> et regardez vos préférences. Vous devriez y voir les différents algorithmes utilisés :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> setpref
+Définir la liste de préférences en <span class="token builtin class-name">:</span>
+     Chiffrement <span class="token builtin class-name">:</span> AES256, AES192, AES, 3DES
+     AEAD: OCB
+     Hachage <span class="token builtin class-name">:</span> SHA512, SHA384, SHA256, SHA224, SHA1
+     Compression <span class="token builtin class-name">:</span> ZLIB, BZIP2, ZIP, Non compressé
+     Fonctionnalités <span class="token builtin class-name">:</span> MDC, AEAD, Serveur de clefs sans modification
+Faut-il vraiment mettre à jour les préférences ? <span class="token punctuation">(</span>o/N<span class="token punctuation">)</span> n</code></pre>
+<p>Vous pouvez ensuite taper <code>quit</code> pour quitter l'interface.</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> quit</code></pre>
+<h3>Gestion des clés GPG</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://wiki.debian.org/fr/Subkeys">clés et sous clés GPG</a></li>
+<li><a href="https://mikeross.xyz/create-gpg-key-pair-with-subkeys/">sous clés GPG</a></li>
+</ul>
+</div></div>
+
+<blockquote>
+<p>TBD : <a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html">https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html</a></p>
+</blockquote>
+<h3>Serveur de clés</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://keyserver.ubuntu.com/">https://keyserver.ubuntu.com/</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD Permet d'utiliser des clés stockées dans un serveur de clé
+<a href="https://www.gnupg.org/gph/en/manual.html#AEN464">https://www.gnupg.org/gph/en/manual.html#AEN464</a></p>
+<ol>
+<li>le faire.</li>
+<li>se signer mutuellement les clés.</li>
+</ol>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

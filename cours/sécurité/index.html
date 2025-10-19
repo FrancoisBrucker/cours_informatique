@@ -123,11 +123,16 @@
   
 
   <p>Embryon de cours de sécurité. On y verra essentiellement les fondements cryptographiques de la sécurité.</p>
-<blockquote>
-<p>TBD montrer avec openssh comment le faire (voir serious cryptography)
-TBD xor : <a href="https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/">https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/</a>
-TBD échange de messages avec key generation algorithm : <a href="https://www.youtube.com/watch?v=7uEeE3TUqmU">https://www.youtube.com/watch?v=7uEeE3TUqmU</a> double ratchet algorithm (<a href="https://www.youtube.com/watch?v=9sO2qdTci-s">https://www.youtube.com/watch?v=9sO2qdTci-s</a>). Puis à plusieurs (suite du channel) MLS protocol <a href="https://www.youtube.com/watch?v=FESp2LHd42U">https://www.youtube.com/watch?v=FESp2LHd42U</a></p>
-</blockquote>
+<!-- TBD
+
+> TBD montrer avec openssh comment le faire (voir serious cryptography)
+> TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
+> TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU> double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>
+
+> Trop compliqué. A simplifier pour laisser les preuve et le reste pour les plus intéressés et ne garder que les principes et une preuve max par partie. 
+> Ajourer des TPs.
+> 
+-->
 <h2>Cryptographie</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -138,15 +143,6 @@ TBD échange de messages avec key generation algorithm : <a href="https://www.yo
 </div></div>
 
 <h2>Communication</h2>
-<h3>OpenPGP</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="openpgp" class="interne">OpenPGP</a></p>
-</div></div>
-
 <h3>TLS</h3>
 <p>Le protocole derrière toute communication sécurisée</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -201,21 +197,13 @@ TBD échange de messages avec key generation algorithm : <a href="https://www.yo
 </li>
 </ol>
 <p>C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance, en allant sur le site web du certifiant pour examiner le certifiant du certifiant, jusqu'à root si nécessaire.</p>
-<h2>Arithmétique</h2>
+<h2>OpenPGP</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="arithm%C3%A9tique" class="interne">Arithmétique</a></p>
-</div></div>
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=oRM-gNrbcgE&amp;list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&amp;index=1">arithmétique pour la cryptographie</a></p>
+<p><a href="openPGP" class="interne">OpenPGP</a></p>
 </div></div>
 
 

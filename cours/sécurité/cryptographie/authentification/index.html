@@ -103,7 +103,7 @@
 </code></pre>
 <p>et :</p>
 <pre><code>Alice &lt;--------&gt;Mallory&lt;--------&gt; Bob
-  k              k  k'             k' 
+  k              k  k'             k'
 </code></pre>
 <p>Mallory interceptant tous les messages entre Alice et Bob, en particulier l'échange de clés initial.</p>
 <p>Il faut trouver un moyen d'authentifier avec certitude le correspondant.</p>
@@ -164,7 +164,7 @@
 <p>Par exemple :</p>
 <p>Alice veut envoyer un message $m$ à Bob et prouver qu'elle est bien l'autrice de celui-ci :</p>
 <ol>
-<li>elle signe son message s = E(k, h(m))$</li>
+<li>elle signe son message $s = E(k, h(m))$</li>
 <li>elle envoie à Bob le message $m$ et sa signature $s$</li>
 </ol>
 <p>À la réception du message, Bob utilise la clé publique $k'$ d'Alice pour vérifier l'authenticité de $m$ : $h(m) = D(k', s)$</p>
@@ -204,15 +204,6 @@
 <p><a href="RSA" class="interne">Méthode de chiffrement RSA</a></p>
 </div></div>
 
-<h3>Chiffrement ElGamal</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="ElGamal" class="interne">Méthode de chiffrement ElGamal</a></p>
-</div></div>
-
 <h3>Signature DSA</h3>
 <p>La méthode DSA de signature utilise le problème du logarithme discret comme fonctionnement, ce qui la rend compatible avec l'utilisation de courbes elliptiques :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -221,14 +212,6 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="DSA" class="interne">Méthode de signature DSA</a></p>
-</div></div>
-
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>DSA est une variante de la méthode de signature ElGamal, qu'il ne faut pas confondre avec la méthode de chiffrement ElGamal.</p>
 </div></div>
 
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CHiffrement ElGamal</title>
+    <title>OpenPGP</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>CHiffrement ElGamal</h1>
+  <h1>OpenPGP</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/authentification/">Authentification</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/authentification/ElGamal/">CHiffrement ElGamal</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openPGP/">OpenPGP</a>
 
 </div></div>
 
@@ -96,12 +96,61 @@
     
   
 
-  <p>Il existe d'autres façon de chiffrer des documents de façon asymétrique, comme la
-<a href="https://en.wikipedia.org/wiki/ElGamal_encryption">Chiffrement Elgamal</a></p>
-<blockquote>
-<p>TBD <a href="https://www.youtube.com/watch?v=_gmR5sYGUgs">https://www.youtube.com/watch?v=_gmR5sYGUgs</a>
-TBD pas utilisé à supprimer comme partie et juste en donner l'existence.</p>
-</blockquote>
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/OpenPGP">OpenPGP</a></p>
+</div></div>
+
+<p>RSA peut encrypter un nombre plus petit que $n$. On pourrait décomposer un message plus gros en paquets de $T$ bits avec $2^T &lt; n$ mais ce n'est quasi-jamais fait car le codage/décodage est algorithmiquement long.</p>
+<p>On utilise alors une technique mixte, issue de <a href="https://fr.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a>, pour cela.</p>
+<p>Supposons qu'Alice veut envoyer un message $m$ à Bob. Il faut de :</p>
+<ol>
+<li>l'authentification : Alice chiffre le hash de $m$ avec sa clé privée</li>
+<li>la confidentialité :
+<ol>
+<li>une clé $k$ est générée puis chiffrée avec la clé publique de Bob</li>
+<li>le message $m$ est compressé puis chiffré  avec la clé $k$ (avec un chiffre symétrique)</li>
+</ol>
+</li>
+</ol>
+<p>Alice envoie à Bob :</p>
+<ol>
+<li>la signature électronique de son message (le hash de $m$ chiffré avec sa clé privée)</li>
+<li>la clé $k$ chiffrée avec la clé publique de Bob</li>
+<li>le message compressé puis chiffré avec la clé $k$</li>
+</ol>
+<p>Bob peut alors :</p>
+<ol>
+<li>retrouver la clé de chiffrement $k$ en utilisant sa clé privée</li>
+<li>déchiffrer le message avec la clé $k$, puis le décompresser</li>
+<li>vérifier que le message vient bien d'Alice en comparant :
+<ul>
+<li>le hash du message</li>
+<li>le déchiffrement de la signature avec la clé publique d'Alice.</li>
+</ul>
+</li>
+</ol>
+<h2>Avec openSSL</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="openssl" class="interne">openssl</a></p>
+</div></div>
+
+<h2>Avec GPG</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="gpg" class="interne">gpg</a></p>
+</div></div>
+
 
 
 </article>

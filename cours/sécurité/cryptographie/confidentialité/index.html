@@ -151,7 +151,7 @@ espace privé | public |    privé
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="partager-secret" class="interne">Partager de secret</a></p>
+<p><a href="partager-secret" class="interne">Partager un secret</a></p>
 </div></div>
 
 <p>Le schéma de transmission confidentiel devient alors :</p>
@@ -192,7 +192,7 @@ espace privé | public |    privé
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une fonction $f: {0, 1}^t \rightarrow {0, 1}^t$ dont il existe un algorithme efficace pour la calculer est <strong><em>à sens unique</em></strong> si pour tout algorithme efficace $A$, la probabilité suivante est négligeable :</p>
+<p>Une fonction $f: \{0, 1\}^t \rightarrow \{0, 1\}^t$ dont il existe un algorithme efficace pour la calculer est <strong><em>à sens unique</em></strong> si pour tout algorithme efficace $A$, la probabilité suivante est négligeable :</p>
 <div>
 $$
 \Pr_{x \xleftarrow{U} \{0, 1\}^t}[f(F(f(x))) = f(x)]
@@ -284,6 +284,11 @@ $$
 </ul>
 <p>Tout algorithme de chiffrement est ainsi basé sur des suppositions. Pour éviter de tout construire sur du sable, on cherche à avoir au moins des preuves de constructions pour qu'il suffise de changer un algorithme si devient clair que le problème associé n'est pas à sens unique plutôt que de changer toute la méthode. C'est le but de la section suivante.</p>
 <h3>Sémantiquement sécurisé</h3>
+<!-- TBD
+
+Ici faire directement le découpage avec des permutations. Ne plus parler des G(k). On utilise directement chacha20 avec les justifications de constructions
+
+ -->
 <p>Si les meilleurs algorithmes de résolution sont connus (ce qui n'est jamais vraiment assuré) on peut déterminer une taille de clé qui garantissent un temps de décryptage trop important. Formalisons cette notion :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -445,9 +450,11 @@ $$
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD refaire l'image p12 <a href="https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf">https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf</a></p>
-</blockquote>
+<!-- 
+
+> TBD refaire l'image p12 <https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf>
+
+ -->
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -462,23 +469,23 @@ $$
 <p>On va utiliser le schéma suivant pour désigner une PRF (<em>resp.</em> une PRP) $F(k, \text{iv})$ :</p>
 <pre><code>       iv   
         |   
-      ----- 
- k--&gt;|  F  |
+      --|-- 
+ k---|&gt; F  |
       ----- 
         |
      F(k,iv)   
 </code></pre>
 <p>On a alors le schéma de chiffrement suivant, qui modifie le vecteur d'initialisation en incrémentant un compteur :</p>
-<pre><code>    iv || 01     iv || 02          iv || i           iv || l
-        |            |                 |                 |
-      -----        -----             -----             -----
- k--&gt;|     |  k--&gt;|     |  ...  k--&gt;|     |  ...  k--&gt;|     |
-      -----        -----             -----             -----
-        |            |                 |                 |
- m1---&gt; ⊕     m2---&gt; ⊕          mi---&gt; ⊕          ml---&gt; ⊕ 
-        |            |                 |                 |
-        v            v                 v                 v
-       c1           c2                ci                cl
+<pre><code>    iv || 01     iv || 02         iv || i          iv || l
+        |            |                |                |
+      --|--        --|--            --|--            --|-- 
+ k---|&gt;    |   k--|&gt;    |  ...  k--|&gt;    |  ...  k--|&gt;    |
+      --v--        --v--            --v--            --v-- 
+        |            |                 |               |
+ m1---&gt; ⊕     m2---&gt; ⊕          mi---&gt; ⊕        ml---&gt; ⊕ 
+        |            |                 |               |
+        v            v                 v               v
+       c1           c2                ci              cl
 </code></pre>
 <p>Ce schéma est bien sécurisé si $F$ l'est et que la place prise par le compteur n'est pas trop grande :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
