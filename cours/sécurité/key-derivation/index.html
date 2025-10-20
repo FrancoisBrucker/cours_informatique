@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>TLS</title>
+    <title>Key derivation</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>TLS</h1>
+  <h1>Key derivation</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/tls/">TLS</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/key-derivation/">Key derivation</a>
 
 </div></div>
 
@@ -96,7 +96,15 @@
     
   
 
-  <blockquote>
+  <ul>
+<li>key stretching</li>
+<li>key derivation</li>
+</ul>
+<blockquote>
+<p>TBD déplacer de tls ici.
+argon2, <a href="https://en.wikipedia.org/wiki/PBKDF2">https://en.wikipedia.org/wiki/PBKDF2</a></p>
+</blockquote>
+<blockquote>
 <p>TBD verbose d'une communication tsl 1.3</p>
 </blockquote>
 <blockquote>
@@ -110,7 +118,6 @@
 <p><a href="https://www.youtube.com/watch?v=diBR4Jcscvs">https://www.youtube.com/watch?v=diBR4Jcscvs</a></p>
 </div></div>
 
-<h2>Key derivation function</h2>
 <blockquote>
 <p>TBD si autre message.</p>
 </blockquote>
@@ -135,48 +142,50 @@
 <p>TBD rekeying. Attention au passé <a href="https://blog.cr.yp.to/20170723-random.html">https://blog.cr.yp.to/20170723-random.html</a> car on ne génère qu'un bout.
 TBD ? <a href="https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed">https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed</a></p>
 </blockquote>
-<h2>TLS Handshake</h2>
+<h3>hash based KDF</h3>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/PBKDF2">https://en.wikipedia.org/wiki/PBKDF2</a></p>
+</li>
+<li>
+<p><a href="https://blog.boot.dev/cryptography/key-derivation-functions/">https://blog.boot.dev/cryptography/key-derivation-functions/</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=gTaOccTY9bc">https://www.youtube.com/watch?v=gTaOccTY9bc</a></p>
+</li>
+</ul>
+<p><a href="https://www.cryptolux.org/index.php/Argon2">https://www.cryptolux.org/index.php/Argon2</a>
+<a href="https://master-spring-ter.medium.com/from-basics-to-expert-a-deep-dive-into-argon2-password-hashing-95d17ba3b10f">https://master-spring-ter.medium.com/from-basics-to-expert-a-deep-dive-into-argon2-password-hashing-95d17ba3b10f</a></p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"je te hash"</span> <span class="token operator">|</span> argon2 <span class="token string">"des grains de sel"</span> <span class="token parameter variable">-l</span> <span class="token number">50</span>
+Type:           Argon2i
+Iterations:     <span class="token number">3</span>
+Memory:         <span class="token number">4096</span> KiB
+Parallelism:    <span class="token number">1</span>
+Hash:           62ac773d564f583c593e6091c72eeb48766fc1d1e314afdce0bc175328e98afbca29a5078035152cdac35d2720d9cc6cb4e3
+Encoded:        <span class="token variable">$argon2i</span><span class="token variable">$v</span><span class="token operator">=</span><span class="token number">19</span><span class="token variable">$m</span><span class="token operator">=</span><span class="token number">4096</span>,t<span class="token operator">=</span><span class="token number">3</span>,p<span class="token operator">=</span><span class="token number">1</span><span class="token variable">$ZGVzIGdyYWlucyBkZSBzZWw</span><span class="token variable">$Yqx3PVZPWDxZPmCRxy7rSHZvwdHjFK</span>/c4LwXUyjpivvKKaUHgDUVLNrDXScg2cxstOM
+<span class="token number">0.014</span> seconds
+Verification ok
+</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<ul>
-<li><a href="https://www.youtube.com/watch?v=86cQJ0MMses">TLS handshake</a></li>
-<li><a href="https://cabulous.medium.com/tls-1-2-andtls-1-3-handshake-walkthrough-4cfd0a798164">TLS handshake détails</a></li>
-</ul>
+<p><a href="https://www.youtube.com/watch?v=0TLDTodL7Lc">TLS</a></p>
 </div></div>
 
-<p>La mise en route du protocole, le handshake est très rapide. Initiation d'un communication entre Alice et Bob :</p>
-<blockquote>
-<p>TBD <a href="https://ciphersuite.info/cs/">Protocole utilisés</a></p>
-</blockquote>
+<p>pare les attaques :</p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Attaque_de_l'homme_du_milieu">man in the middle attack</a> : authentification</li>
+<li><a href="https://fr.wikipedia.org/wiki/Attaque_par_rejeu">replay attack</a> : un NONCE identifie chaque session</li>
+<li><a href="https://fr.wikipedia.org/wiki/Attaque_par_repli">downgrade attack</a> : refuse les protocoles non sécurisés.</li>
+</ul>
 <ol>
-<li>Alice envoie un message d'authentification</li>
-<li>Bob envoie un message d'authentification</li>
-<li>Alice annonce les protocoles qu'elle peut utiliser pour l'AEAD</li>
-<li>Bob lui répond le protocole qui'il choisit</li>
-<li>Alice envoie sa partie du secret</li>
-<li>bob envoie sa partie du secret</li>
+<li>être sûr de à qui on parle (évite attaque man un the middle)</li>
+<li>échange de la clé maître et du mode de chiffrement</li>
+<li>échange des messages par chiffrement symétrique</li>
 </ol>
-<p>La communication peut ensuite commencer en utilisant une clé dérivée</p>
-<p>Avec TLS 1.3, les 6 étapes ci-dessus se font en 1 seul aller/retour. Alice envoie tout ce qui est nécessaire à Bob en une fois et Bob lui répond toutes ses informations en un message.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.ssi.gouv.fr/uploads/2020/03/anssi-guide-recommandations_de_securite_relatives_a_tls-v1.2.pdf">ANSSI : recommandations de sécurité relatives à tls</a></p>
-</div></div>
-
-<h2>gestion des clés symétrique</h2>
-<blockquote>
-<p>TBD : clés :</p>
-<ul>
-<li><a href="https://crypto.stackexchange.com/questions/27131/differences-between-the-terms-pre-master-secret-master-secret-private-key">https://crypto.stackexchange.com/questions/27131/differences-between-the-terms-pre-master-secret-master-secret-private-key</a></li>
-<li><a href="https://security.stackexchange.com/questions/55454/how-long-does-an-https-symmetric-key-last">durée de vie de la clé TLS</a></li>
-</ul>
-</blockquote>
+<p>Le protocole TLS se place entre la couche TCP et l'application.</p>
 
 
 </article>
