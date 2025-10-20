@@ -136,7 +136,7 @@ Clair si le hash est cryptographique.
 ## Hash-based MAC
 
 {% lien %}
-[Hashbased MAC}(https://fr.wikipedia.org/wiki/HMAC)
+[Hashbased MAC](https://fr.wikipedia.org/wiki/HMAC)
 {% endlien %}
 
 La façon la plus simple de créer un mac est d'utiliser un hash :

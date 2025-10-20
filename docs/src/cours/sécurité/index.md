@@ -37,6 +37,11 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 
 ## Communication
 
+### key derivation
+
+> TBD déplacer de tls ici.
+> argon2, <https://en.wikipedia.org/wiki/PBKDF2>
+
 ### TLS
 
 Le protocole derrière toute communication sécurisée
