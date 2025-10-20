@@ -39,8 +39,9 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 
 ### key derivation
 
-> TBD déplacer de tls ici.
-> argon2, <https://en.wikipedia.org/wiki/PBKDF2>
+{% aller %}
+[Key derivation](./key-derivation){.interne}
+{% endaller %}
 
 ### TLS
 

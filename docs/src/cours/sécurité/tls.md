@@ -14,6 +14,10 @@ eleventyComputed:
 
 > <https://en.wikipedia.org/wiki/Terrapin_attack>
 
+{% lien %}
+<https://www.youtube.com/watch?v=diBR4Jcscvs>
+{% endlien %}
+
 ## Key derivation function
 
 > TBD si autre message.
@@ -34,45 +38,6 @@ Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : 
 
 > TBD rekeying. Attention au passé <https://blog.cr.yp.to/20170723-random.html> car on ne génère qu'un bout.
 > TBD ? <https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed>
-
-### hash based KDF
-
-- <https://en.wikipedia.org/wiki/PBKDF2>
-
-- <https://blog.boot.dev/cryptography/key-derivation-functions/>
-- <https://www.youtube.com/watch?v=gTaOccTY9bc>
-
-<https://www.cryptolux.org/index.php/Argon2>
-<https://master-spring-ter.medium.com/from-basics-to-expert-a-deep-dive-into-argon2-password-hashing-95d17ba3b10f>
-
-```shell
-❯ echo -n "je te hash" | argon2 "des grains de sel" -l 50
-Type:           Argon2i
-Iterations:     3
-Memory:         4096 KiB
-Parallelism:    1
-Hash:           62ac773d564f583c593e6091c72eeb48766fc1d1e314afdce0bc175328e98afbca29a5078035152cdac35d2720d9cc6cb4e3
-Encoded:        $argon2i$v=19$m=4096,t=3,p=1$ZGVzIGdyYWlucyBkZSBzZWw$Yqx3PVZPWDxZPmCRxy7rSHZvwdHjFK/c4LwXUyjpivvKKaUHgDUVLNrDXScg2cxstOM
-0.014 seconds
-Verification ok
-
-```
-
-{% lien %}
-[TLS](https://www.youtube.com/watch?v=0TLDTodL7Lc)
-{% endlien %}
-
-pare les attaques :
-
-- [man in the middle attack](https://fr.wikipedia.org/wiki/Attaque_de_l'homme_du_milieu) : authentification
-- [replay attack](https://fr.wikipedia.org/wiki/Attaque_par_rejeu) : un NONCE identifie chaque session
-- [downgrade attack](https://fr.wikipedia.org/wiki/Attaque_par_repli) : refuse les protocoles non sécurisés.
-
-1. être sûr de à qui on parle (évite attaque man un the middle)
-2. échange de la clé maître et du mode de chiffrement
-3. échange des messages par chiffrement symétrique
-
-Le protocole TLS se place entre la couche TCP et l'application. 
 
 ## TLS Handshake
 

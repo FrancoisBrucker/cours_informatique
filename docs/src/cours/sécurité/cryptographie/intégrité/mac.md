@@ -133,10 +133,10 @@ Clair si le hash est cryptographique.
 
 {% enddetails %}
 
-## Hash-based MAC
+## HMAC
 
 {% lien %}
-[Hashbased MAC](https://fr.wikipedia.org/wiki/HMAC)
+[Hash-based MAC](https://fr.wikipedia.org/wiki/HMAC)
 {% endlien %}
 
 La façon la plus simple de créer un mac est d'utiliser un hash :
@@ -156,13 +156,21 @@ Mais il y a des restrictions. Fonctionne si :
 
 On utilise alors souvent cette construction, plus complexe, mais sécurisée :
 
+{% note "**Définition**" %}
+
+Le **_HMAC_** est définie à partir d'une fonction de hash $H$ telle que :
+
 <div>
 $$
-H(k \oplus \text{opad} \;\|\; H(k \oplus \text{ipad} \;\|\; E(k, m))
+H(k \oplus \text{opad} \;\|\; H(k \oplus \text{ipad} \;\|\; M))
 $$
 </div>
 
 Avec `opad = 0x363636...3636` (outer) et `ipad = 0x5c5c5c...5c5c` (inner) deux constantes.
+
+{% endnote %}
+
+On utilisera souvent la fonction SHA-256 pour les HMAC.
 
 ## One-time MAC
 
