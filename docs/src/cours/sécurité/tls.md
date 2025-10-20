@@ -10,34 +10,39 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD verbose d'une communication tsl 1.3
+Principe d'une communication sécurisée entre deux ordinateurs.
 
-> <https://en.wikipedia.org/wiki/Terrapin_attack>
+## Key derivation function
 
 {% lien %}
 <https://www.youtube.com/watch?v=diBR4Jcscvs>
 {% endlien %}
 
-## Key derivation function
+Les protocoles vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque application nécessitant une transmission. TLS utilise intensivement le principe de dérivation et de renforcement de clés.
 
-> TBD si autre message.
+> TBD donner fonction avec extract et expand.
 
-{% lien %}
+Pare les attaques :
 
-- [Définition](https://en.wikipedia.org/wiki/Key_derivation_function)
-- [Usage](https://blog.trailofbits.com/2025/01/28/best-practices-for-key-derivation/)
+- [man in the middle attack](https://fr.wikipedia.org/wiki/Attaque_de_l'homme_du_milieu) : authentification
+- [replay attack](https://fr.wikipedia.org/wiki/Attaque_par_rejeu) : un NONCE identifie chaque session
+- [downgrade attack](https://fr.wikipedia.org/wiki/Attaque_par_repli) : refuse les protocoles non sécurisés.
 
-{% endlien %}
+1. être sûr de à qui on parle (évite attaque man un the middle)
+2. échange de la clé maître et du mode de chiffrement
+3. échange des messages par chiffrement symétrique
 
-Les protocole vont avoir besoin de tout un tas de clés différentes. Une pour chaque message à transmettre et pour chaque messages. La façon la plus simple, si on a un PRF sous la main est de :
+Le protocole TLS se place entre la couche TCP et l'application. 
 
-- posséder une clé primaire appelée $SK$ (_source key_)
-- une constante $CTX$, application dépendante pour éviter que plusieurs applications différentes utilisant la même clé primaires de se trouvent avec les mêmes clés
+### Key stretching
 
-Puis il suffit d'étier le process à chaque fois que l'in veut une clé avec : $F(\text{SK}, \text{CTX} || i)$, où $i$ est un compteur.
+Les clés issus du protocole de Diffie-Hellman sont robuste à la prévision mais sont peut aléatoire. On commence donc par une étape de stretching de cette clé pour la rendre plus uniforme.
 
-> TBD rekeying. Attention au passé <https://blog.cr.yp.to/20170723-random.html> car on ne génère qu'un bout.
-> TBD ? <https://crypto.stackexchange.com/questions/53295/using-chacha20-as-a-prng-with-a-variable-length-seed>
+> TBD iv = '' pour uniformiser le mot de passe et avoir une taille donnée.
+
+### Key derivation
+
+Ensuite pour chaque message à envoyer, on crée une sous-clé. Pour créer la sous clé on la sale avec $\text{iv} \oplus i$ si on cherche une clé pour envoyer le $i$ème message.
 
 ## TLS Handshake
 
@@ -73,3 +78,12 @@ Avec TLS 1.3, les 6 étapes ci-dessus se font en 1 seul aller/retour. Alice envo
 >
 > - <https://crypto.stackexchange.com/questions/27131/differences-between-the-terms-pre-master-secret-master-secret-private-key>
 > - [durée de vie de la clé TLS](https://security.stackexchange.com/questions/55454/how-long-does-an-https-symmetric-key-last)
+
+## Attaques
+
+> TBD <https://en.wikipedia.org/wiki/Terrapin_attack>
+>
+{% lien %}
+[TLS](https://www.youtube.com/watch?v=0TLDTodL7Lc)
+{% endlien %}
+
