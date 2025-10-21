@@ -13,7 +13,7 @@ eleventyComputed:
 {% lien %}
 
 - [Chiffrement RSA](https://fr.wikipedia.org/wiki/Chiffrement_RSA)
-- [preuves RSA]([chiffrement RSA](https://www.youtube.com/watch?v=Xlal_d4zyfo))
+- [preuves RSA](https://www.youtube.com/watch?v=Xlal_d4zyfo)
 
 {% endlien %}
 
