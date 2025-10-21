@@ -139,6 +139,9 @@
 <li><code>Uj = HMAC(Password, U{j-1})</code></li>
 </ul>
 <p>On vot que l'itération des fonctions de hash permet d'uniformiser le hash.</p>
+<blockquote>
+<p>TBD &quot;une ligne&quot;</p>
+</blockquote>
 <h2>Argon2</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -146,12 +149,20 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
+<li><a href="https://www.password-hashing.net/argon2-specs.pdf">Argon2 specification</a></li>
 <li><a href="https://www.youtube.com/watch?v=Sc3aHMCc4h0">Argon2 algorithm</a></li>
 <li><a href="https://mojoauth.com/compare-hashing-algorithms/argon2-vs-pbkdf2/">Argon2 vs PBKDF2</a></li>
 </ul>
 </div></div>
 
-<p>Argon2 est le gagnant d'une compétition visant à trouver le meilleur hash de mot de passes. Le principe est le même que pour <code>PBKDF2</code> mais est plus résistant aux attaques brutes force et/ou side channel attack.</p>
+<p>Argon2 est le gagnant d'une compétition visant à trouver le meilleur hash de mot de passes. Le principe est le même que pour <code>PBKDF2</code> mais utilise une matrice plutôt qu'une liste. Il cherche à empêcher le compromis temps/mémoire utilisé pour trouve des hash en :</p>
+<ol>
+<li>utilisant le plus de mémoire possible : pour qu'il soit impossible de remplacer du temps par de la mémoire</li>
+<li>empêche de remplacer la mémoire par du temps en pénalisant fortement la diminution de mé,oire</li>
+</ol>
+<blockquote>
+<p>TBD &quot;une matrice&quot;</p>
+</blockquote>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ openssl kdf <span class="token parameter variable">-keylen</span> <span class="token number">50</span> <span class="token parameter variable">-kdfopt</span> pass:<span class="token string">"password"</span> <span class="token parameter variable">-kdfopt</span> salt:<span class="token string">'des grains de sel'</span> <span class="token parameter variable">-kdfopt</span> iter:3  ARGON2D
 A6:0E:10:5D:A0:6A:63:85:8A:1A:63:25:8E:99:F2:7C:C6:00:F3:23:BE:09:F6:91:62:E5:FD:B6:5F:DA:CF:C0</code></pre>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"password"</span> <span class="token operator">|</span> argon2 <span class="token string">"des grains de sel"</span> <span class="token parameter variable">-l</span> <span class="token number">50</span>

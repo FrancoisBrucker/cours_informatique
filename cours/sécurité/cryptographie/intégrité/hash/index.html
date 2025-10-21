@@ -212,16 +212,20 @@
 <p>Si le mot de passe est simple la probabilité de tomber sur vote mot de passe sera plus grande que la probabilité de collision. Utiliser une table de hachage ne dispense pas d'avoir un mot de passe <em>sécurisé</em>.</p>
 </div></div>
 
-<p>Deux types d'attaques génériques fonctionne bien pour des mot de passes non sécurisés (<em>ie.</em> pas assez long ou sur par assez de caractères différents). L'attaque <a href="https://fr.wikipedia.org/wiki/Attaque_par_force_brute#Complexit%C3%A9_th%C3%A9orique_de_l'attaque">Brute force si faible nombre de possibilités</a> fonctionne assez bien car :</p>
+<p>Deux types d'attaques génériques fonctionne bien pour des mot de passes non sécurisés (<em>ie.</em> pas assez long ou sur par assez de caractères différents).</p>
+<h5>Brute force</h5>
+<p>L'attaque <a href="https://fr.wikipedia.org/wiki/Attaque_par_force_brute#Complexit%C3%A9_th%C3%A9orique_de_l'attaque">Brute force si faible nombre de possibilités</a> fonctionne assez bien car :</p>
 <ul>
 <li>si uniquement des caractères minuscules $2^{128} = 26^x$ donne $x = 28$ ce qui est trop long</li>
 <li>si uniquement des caractères minuscules et majuscule $2^{128} = 26^x$ donne $x = 23$ ce qui est trop long aussi, mais ok pour des <a href="https://fr.wikipedia.org/wiki/Phrase_secr%C3%A8te">passphrase</a>.</li>
-<li>si tout le clvier, l'ordre de 100 possibilité ce qui fait pour un mot de passe de 8 caractères $2^{54}$. D'où la nécessité de limiter le nombre d'essais.</li>
+<li>si tout le clavier, l'ordre de 100 possibilité ce qui fait pour un mot de passe de 8 caractères $2^{54}$. D'où la nécessité de limiter le nombre d'essais.</li>
 <li>si base 64, il faut $128/7 \simeq 18$ pour obtenir pour obtenir jun mot de passe sécurisé brute force.</li>
 </ul>
+<h5>Dictionnaire</h5>
 <p>On peut accélérer le processus en utilisant un dictionnaire des mots de passes les plus utilisés (des mots ou des combinaisons de mots français) et en les choisissant en priorité. Et on les choisis par ordre aléatoires.</p>
+<p>Par exemple chercher les hash identiques dans la base signifiera que le mot de passe est basique car utilisé par beaucoup de personnes, ce qui accélérera grandement la recherche.</p>
 <h4>Salage du hash</h4>
-<p>Enfin, stocker les et pas les mots de passes en clair hash n'aide pas vraiment :</p>
+<p>Enfin, stocker les hash et pas les mots de passes en clair hash n'aide pas vraiment :</p>
 <ul>
 <li>on peut utiliser des tables de hash déjà faites</li>
 <li>si la base de mots de passes est grande on va retrouver plusieurs fois le même hash.</li>
@@ -231,6 +235,7 @@
 <li>$S(m) = SALT || H(SALT || m)$</li>
 <li>$V(m, t) = H(t[:p] || m) = t[p:]$ où $p$ est la longueur du sel</li>
 </ul>
+<p>Notez bien que le sel doit être différent pour chaque hash, sans quoi deux mots de passe identiques vont avoir le même hash et on est ramené au cas précédent : une attaque par dictionnaire va très bien fonctionner. Que le sel soit en clair n'est pas problématique, il est juste là pour rendre le hash unique.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -333,6 +338,7 @@ m---|&gt;  P  |   |
 </div>
 <p>La preuve nécessite un PRP, mais comme on est pas sur que cela existe, les algorithmes mettant en oeuvre ce principe doivent être conçus pour très bien mélanger les bits tout en étant non prédictif (il faut le faire de façon &quot;<em>compliquée</em>&quot;).</p>
 <p>Les algorithmes SHA-1 et SHA-2 sont basés sur ce principes. Les permutation sécurisées utilisées sont appelées <a href="https://fr.wikipedia.org/wiki/Shacal">shacal-1 et shacal-2</a>. Mais on pourrait tout aussi bien utiliser chacha20 pour cela ! Ou son grand frère salsa20 originellement construit pour ça.</p>
+<p>Pour cette construction à bloc unique, on peut très bien échanger clé et message dans le PRP sans changer la probabilité de collision. On utilise cette construction pour pouvoir facilement l'étendre à des messages de tailles plus grandes et là il ne faut <strong>pas</strong> échanger clé et message.</p>
 <h4>Extension par Merkel Damgard</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -359,6 +365,7 @@ m1--|&gt;  P  |   |        m2--|&gt;  P  |   |        mi--|&gt;  P  |   |       
         --------                --------                --------                --------        
 </code></pre>
 <p>Le message final doit bien faire une taille multiple de la taille du hash à taille fixe. Si le message est déjà de la bonne taille on ajoute tout de même un bloc ne contenant que le padding et la taille.</p>
+<p>Ce chaînage montre bien qu'il est indispensable que le message à hacher soit la clé sinon on répète la clé ce qui qui briserait la sécurité.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -414,7 +421,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Les fonctions de hash très utilisés que sont les SHA-1 et SHA-2 sont basées sur ce principe. En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.</p>
+<p>Les fonctions de hash très utilisés que sont les SHA-1 et SHA-2 sont basées sur ce principe.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -423,6 +430,12 @@ $$
 <p><a href="https://www.youtube.com/watch?v=orIgy2MjqrA">L'algorithme sha2</a></p>
 </div></div>
 
+<blockquote>
+<p>TBD <a href="https://en.wikipedia.org/wiki/BLAKE_(hash_function)">https://en.wikipedia.org/wiki/BLAKE_(hash_function)</a> et blake2 sont basés sur chacha20.</p>
+</blockquote>
+<p>En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coucou"</span> <span class="token operator">|</span> openssl dgst <span class="token parameter variable">-blake2b512</span> <span class="token parameter variable">-c</span>
+BLAKE2B-512<span class="token punctuation">(</span>stdin<span class="token punctuation">)</span><span class="token operator">=</span> d7:51:79:bf:82:77:b6:9c:cb:5e:30:64:d4:3b:d6:b7:ac:7b:ff:93:de:9d:0a:53:07:d0:85:4d:2e:68:52:b1:d5:04:49:0e:5f:7b:91:a3:b9:9f:9b:4c:40:c3:b9:39:4c:56:7c:45:4b:e3:ab:39:a3:f2:cb:59:60:f6:3d:05</code></pre>
 <h3>Construction en éponge</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -440,6 +453,12 @@ $$
 <li><a href="https://keccak.team/files/SpongeFunctions.pdf">sponge function thm</a></li>
 <li><a href="https://summerschool-croatia.cs.ru.nl/2017/slides/introduction%20to%20permutation-based%20cryptography.pdf">https://summerschool-croatia.cs.ru.nl/2017/slides/introduction to permutation-based cryptography.pdf</a></li>
 </ul>
+</blockquote>
+<h3>Construction en arbre binaire</h3>
+<blockquote>
+<p>TBD blake3 <a href="https://www.youtube.com/watch?v=nk4nefmguZk">https://www.youtube.com/watch?v=nk4nefmguZk</a>
+TBD pour le parallélisme
+TBD doc <a href="https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html">https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html</a></p>
 </blockquote>
 <h2>Attaque</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -498,9 +517,7 @@ $$
 </ul>
 <p>Soit $x$ le plus petit entier tel que $\lambda +x$ soit un multiple de $\mu$. On a $0 \leq x \leq \mu$ puisque la division euclidienne de $\lambda$ par $\mu$ donne $\lambda = q\cdot \mu +r$ et donc $x=\mu-r$</p>
 <p>On a alors : $2(\lambda +x) = \lambda +x + k\cdot \mu$ et donc $H^{2(\lambda +x)}(x) = H^{\lambda +x}(x)$.</p>
-<blockquote>
-<p>TBD aussi en analysant si lapin en arrière de k de la tortue sur le cycle : à l'étape d'après k-1 en arrière.</p>
-</blockquote>
+<p>Ceci peut aussi se voir en remarquant qu'une fois sur le cycle le lièvre ira deux fois plus vite que la tortue : lorsque la tortue fait la moitié du cycle le lièvre le fait en entier. Au bout de 2 demi tours de la tortue, ils se rencontreront à nouveau.</p>
 </div>
 </details>     
 </div>
@@ -522,8 +539,20 @@ $$
 
 <h3>Brute force par Rainbow tables</h3>
 <p>On peut même préparer un dictionnaire de ots hachés pour aller plus vite voir utiliser des <a href="https://en.wikipedia.org/wiki/Rainbow_table">https://en.wikipedia.org/wiki/Rainbow_table</a> (voir aussi <a href="https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5">https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5</a>) qui est encore une version du compromis temps/mémoire déjà vu pour le baby step/giant step.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le compromis temps/mémoire est une technique importante en cryptanalyse mais aussi dans tout problème d'optimisation.</p>
+</div></div>
+
 <blockquote>
-<p>TBD expliquer et faire exemple Donner complexité en temps et en mémoire</p>
+<p>TBD expliquer et faire exemple.</p>
+<p>TBD on est assuré que les chaines sont différentes. On ne va pas retomber sur des choses déjà vues.</p>
+<p>Donner complexité en temps et en mémoire</p>
 </blockquote>
 <h3>Length extension attack</h3>
 <p>Pour des construction Merkel-Damgard on peut continuer la procédure et étendre le hash. Tout se passe comme si on avait un message plus grand. Si le protocole en face n'est pas propre ce la peut mener à des catastrophes :</p>
