@@ -57,16 +57,24 @@ Et sont générés par : `Ti = U1 ⊕ ... ⊕ Uc` avec :
 
 On vot que l'itération des fonctions de hash permet d'uniformiser le hash.
 
+> TBD "une ligne"
+
 ## Argon2
 
 {% lien %}
 
+- [Argon2 specification](https://www.password-hashing.net/argon2-specs.pdf)
 - [Argon2 algorithm](https://www.youtube.com/watch?v=Sc3aHMCc4h0)
 - [Argon2 vs PBKDF2](https://mojoauth.com/compare-hashing-algorithms/argon2-vs-pbkdf2/)
 
 {% endlien %}
 
-Argon2 est le gagnant d'une compétition visant à trouver le meilleur hash de mot de passes. Le principe est le même que pour `PBKDF2` mais est plus résistant aux attaques brutes force et/ou side channel attack.
+Argon2 est le gagnant d'une compétition visant à trouver le meilleur hash de mot de passes. Le principe est le même que pour `PBKDF2` mais utilise une matrice plutôt qu'une liste. Il cherche à empêcher le compromis temps/mémoire utilisé pour trouve des hash en :
+
+1. utilisant le plus de mémoire possible : pour qu'il soit impossible de remplacer du temps par de la mémoire
+2. empêche de remplacer la mémoire par du temps en pénalisant fortement la diminution de mé,oire
+
+> TBD "une matrice"
 
 ```shell
 ❯ openssl kdf -keylen 50 -kdfopt pass:"password" -kdfopt salt:'des grains de sel' -kdfopt iter:3  ARGON2D

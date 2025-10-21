@@ -162,6 +162,13 @@ On a vu avec le chiffre de Vernam que les 3 volets de la sécurité : confidenti
 
 ## Confidentialité
 
+<!-- TBD
+
+Faire tourner le tout autour de chacha20 et de sa fonction de permutation. Hasard, permutation, code et integrité (avec blake et argon2)
+
+Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
+ -->
+
 {% aller %}
 [Confidentialité](./confidentialité){.interne}
 {% endaller %}

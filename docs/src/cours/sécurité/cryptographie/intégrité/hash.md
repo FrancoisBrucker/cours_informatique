@@ -86,18 +86,26 @@ Si le mot de passe est simple la probabilité de tomber sur vote mot de passe se
 
 {% endattention %}
 
-Deux types d'attaques génériques fonctionne bien pour des mot de passes non sécurisés (_ie._ pas assez long ou sur par assez de caractères différents). L'attaque [Brute force si faible nombre de possibilités](https://fr.wikipedia.org/wiki/Attaque_par_force_brute#Complexit%C3%A9_th%C3%A9orique_de_l'attaque) fonctionne assez bien car :
+Deux types d'attaques génériques fonctionne bien pour des mot de passes non sécurisés (_ie._ pas assez long ou sur par assez de caractères différents). 
+
+##### Brute force
+
+L'attaque [Brute force si faible nombre de possibilités](https://fr.wikipedia.org/wiki/Attaque_par_force_brute#Complexit%C3%A9_th%C3%A9orique_de_l'attaque) fonctionne assez bien car :
 
 - si uniquement des caractères minuscules $2^{128} = 26^x$ donne $x = 28$ ce qui est trop long
 - si uniquement des caractères minuscules et majuscule $2^{128} = 26^x$ donne $x = 23$ ce qui est trop long aussi, mais ok pour des [passphrase](https://fr.wikipedia.org/wiki/Phrase_secr%C3%A8te).
-- si tout le clvier, l'ordre de 100 possibilité ce qui fait pour un mot de passe de 8 caractères $2^{54}$. D'où la nécessité de limiter le nombre d'essais.
+- si tout le clavier, l'ordre de 100 possibilité ce qui fait pour un mot de passe de 8 caractères $2^{54}$. D'où la nécessité de limiter le nombre d'essais.
 - si base 64, il faut $128/7 \simeq 18$ pour obtenir pour obtenir jun mot de passe sécurisé brute force.
+
+##### Dictionnaire
 
 On peut accélérer le processus en utilisant un dictionnaire des mots de passes les plus utilisés (des mots ou des combinaisons de mots français) et en les choisissant en priorité. Et on les choisis par ordre aléatoires.
 
+Par exemple chercher les hash identiques dans la base signifiera que le mot de passe est basique car utilisé par beaucoup de personnes, ce qui accélérera grandement la recherche.
+
 #### Salage du hash
 
-Enfin, stocker les et pas les mots de passes en clair hash n'aide pas vraiment :
+Enfin, stocker les hash et pas les mots de passes en clair hash n'aide pas vraiment :
 
 - on peut utiliser des tables de hash déjà faites
 - si la base de mots de passes est grande on va retrouver plusieurs fois le même hash.
@@ -106,6 +114,8 @@ Pour ne garder aucune trace statistique dans le fichier stocké [on utilise un s
 
 - $S(m) = SALT || H(SALT || m)$
 - $V(m, t) = H(t[:p] || m) = t[p:]$ où $p$ est la longueur du sel
+
+Notez bien que le sel doit être différent pour chaque hash, sans quoi deux mots de passe identiques vont avoir le même hash et on est ramené au cas précédent : une attaque par dictionnaire va très bien fonctionner. Que le sel soit en clair n'est pas problématique, il est juste là pour rendre le hash unique.
 
 {% lien %}
 [argon2](https://www.youtube.com/watch?v=Sc3aHMCc4h0)
@@ -189,6 +199,8 @@ La preuve nécessite un PRP, mais comme on est pas sur que cela existe, les algo
 
 Les algorithmes SHA-1 et SHA-2 sont basés sur ce principes. Les permutation sécurisées utilisées sont appelées [shacal-1 et shacal-2](https://fr.wikipedia.org/wiki/Shacal). Mais on pourrait tout aussi bien utiliser chacha20 pour cela ! Ou son grand frère salsa20 originellement construit pour ça.
 
+Pour cette construction à bloc unique, on peut très bien échanger clé et message dans le PRP sans changer la probabilité de collision. On utilise cette construction pour pouvoir facilement l'étendre à des messages de tailles plus grandes et là il ne faut **pas** échanger clé et message.
+
 #### Extension par Merkel Damgard
 
 {% lien %}
@@ -219,6 +231,8 @@ m1--|>  P  |   |        m2--|>  P  |   |        mi--|>  P  |   |        ml--|>  
 ```
 
 Le message final doit bien faire une taille multiple de la taille du hash à taille fixe. Si le message est déjà de la bonne taille on ajoute tout de même un bloc ne contenant que le padding et la taille.
+
+Ce chaînage montre bien qu'il est indispensable que le message à hacher soit la clé sinon on répète la clé ce qui qui briserait la sécurité.
 
 {% note "**Théorème**" %}
 Si un bloc est résistant à la collision, la construction entière l'est.
@@ -259,11 +273,20 @@ On conclut la preuve en remarquant que si $H_{m-1}$ est différent de ${H'}_{m-1
 
 {% enddetails %}
 
-Les fonctions de hash très utilisés que sont les SHA-1 et SHA-2 sont basées sur ce principe. En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.
+Les fonctions de hash très utilisés que sont les SHA-1 et SHA-2 sont basées sur ce principe.
 
 {% lien %}
 [L'algorithme sha2](https://www.youtube.com/watch?v=orIgy2MjqrA)
 {% endlien %}
+
+> TBD <https://en.wikipedia.org/wiki/BLAKE_(hash_function)> et blake2 sont basés sur chacha20.
+
+En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.
+
+```shell
+❯ echo "coucou" | openssl dgst -blake2b512 -c
+BLAKE2B-512(stdin)= d7:51:79:bf:82:77:b6:9c:cb:5e:30:64:d4:3b:d6:b7:ac:7b:ff:93:de:9d:0a:53:07:d0:85:4d:2e:68:52:b1:d5:04:49:0e:5f:7b:91:a3:b9:9f:9b:4c:40:c3:b9:39:4c:56:7c:45:4b:e3:ab:39:a3:f2:cb:59:60:f6:3d:05
+```
 
 ### Construction en éponge
 
@@ -277,6 +300,12 @@ Les [sponge function](https://en.wikipedia.org/wiki/Sponge_function)
 > - [sha 3 sponge function](https://www.youtube.com/watch?v=bTOJ9An9wpE)
 > - [sponge function thm](https://keccak.team/files/SpongeFunctions.pdf)
 > - <https://summerschool-croatia.cs.ru.nl/2017/slides/introduction%20to%20permutation-based%20cryptography.pdf>
+
+### Construction en arbre binaire
+
+> TBD blake3 <https://www.youtube.com/watch?v=nk4nefmguZk>
+> TBD pour le parallélisme
+> TBD doc <https://www.ietf.org/archive/id/draft-aumasson-blake3-00.html>
 
 ## Attaque
 
@@ -319,7 +348,7 @@ Soit $x$ le plus petit entier tel que $\lambda +x$ soit un multiple de $\mu$. On
 
 On a alors : $2(\lambda +x) = \lambda +x + k\cdot \mu$ et donc $H^{2(\lambda +x)}(x) = H^{\lambda +x}(x)$.
 
-> TBD aussi en analysant si lapin en arrière de k de la tortue sur le cycle : à l'étape d'après k-1 en arrière.
+Ceci peut aussi se voir en remarquant qu'une fois sur le cycle le lièvre ira deux fois plus vite que la tortue : lorsque la tortue fait la moitié du cycle le lièvre le fait en entier. Au bout de 2 demi tours de la tortue, ils se rencontreront à nouveau.
 
 {% enddetails %}
 
@@ -341,7 +370,15 @@ Il faut toujours modifier un peu un document que l'on signe, histoire que l'atta
 
 On peut même préparer un dictionnaire de ots hachés pour aller plus vite voir utiliser des <https://en.wikipedia.org/wiki/Rainbow_table> (voir aussi <https://rsheasby.medium.com/rainbow-tables-probably-arent-what-you-think-30f8a61ba6a5>) qui est encore une version du compromis temps/mémoire déjà vu pour le baby step/giant step.
 
-> TBD expliquer et faire exemple Donner complexité en temps et en mémoire
+{% note "**À retenir**" %}
+Le compromis temps/mémoire est une technique importante en cryptanalyse mais aussi dans tout problème d'optimisation.
+{% endnote %}
+
+> TBD expliquer et faire exemple.
+>
+> TBD on est assuré que les chaines sont différentes. On ne va pas retomber sur des choses déjà vues.
+> 
+> Donner complexité en temps et en mémoire
 
 ### Length extension attack
 
