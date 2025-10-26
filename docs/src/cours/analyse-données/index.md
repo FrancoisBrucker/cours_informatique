@@ -177,7 +177,7 @@ L'exercice suivant utilise vise à créer une distance entre texte puis à la re
 {% details "corrigé" %}
 
 1. [Henley et dépenses de l'état](./notebooks/notebooks-dataviz-données/2_2_corrigé_reduction_de_dimensions.ipynb){.fichier}
-2. [Analyse de textes](./notebooks-analyse/2_2_corrigé_texte_et_distance_de_jaccard.ipynb){.fichier}
+2. [Analyse de textes](./notebooks-analyse/2_4_corrigé_texte_et_distance_de_jaccard.ipynb){.fichier}
 
 {% enddetails %}
 
