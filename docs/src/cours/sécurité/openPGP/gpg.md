@@ -426,7 +426,13 @@ sub   cv25519 2025-10-19 [E] [expires: 2025-10-29]
 
 {% enddetails %}
 
-Vous pouvez, si vous le désirez, signer sa clé :
+### Signer des clés
+
+{% lien %}
+<https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84>
+{% endlien %}
+
+Vous pouvez, si vous le désirez, signer sa clé avec la commande de gestion des clés `sign` :
 
 ```sh
 gpg> sign
@@ -436,7 +442,7 @@ gpg> sign
 {% details "exemple suite" %}
 
 ```shell
-❯ gpg --edit-key 4F81085218CD36A1
+❯ gpg --edit-key francois.brucker@gmail.com
 gpg (GnuPG) 2.4.8; Copyright (C) 2025 g10 Code GmbH
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -468,6 +474,103 @@ gpg> save
 ```
 
 {% enddetails %}
+
+Cette commande permet de se porter garant sur la l'authenticité de la clé. Attention donner sa confiance  est un acte qui vous engage :
+
+- vous mettez votre crédibilité en jeu
+- les signatures sont visibles
+
+Vous pouvez connaître les signatures d'une clé :
+
+```shell
+❯ gpg --list-sig francois.brucker@gmail.com
+pub   ed25519 2025-10-19 [SC] [expires: 2025-10-29]
+      794258F0679471E0E09D24454F81085218CD36A1
+uid           [  full  ] François Brucker <francois.brucker@gmail.com>
+sig 3        4F81085218CD36A1 2025-10-19  [self-signature]
+sig          7D305414B27F8E59 2025-10-19  François Brucker <francois.brucker@centrale-med.fr>
+sub   cv25519 2025-10-19 [E] [expires: 2025-10-29]
+sig          4F81085218CD36A1 2025-10-19  [self-signature]
+```
+
+Une fois que vous avez signé la clé d'un correspondant, vous pouvez la lui-retransmettre avec votre signature. POur cela :
+
+1. exportez sa clé dans un fichier : `❯ gpg -o clé-signée.key  --armor --export francois.brucker@gmail.com`
+2. une fois reçue, le correspondant pourra l'importer `❯ gpg --import clé-signée.key`
+
+Vous pourrez ensuite vérifier que tout est bien signé :
+
+```sh
+❯ gpg --list-sig francois.brucker@gmail.com
+gpg: WARNING: unsafe permissions on homedir '/Users/fbrucker/Documents/temp/./tempgpg'
+pub   ed25519 2025-10-19 [SC] [expires: 2025-10-29]
+      794258F0679471E0E09D24454F81085218CD36A1
+uid           [ultimate] François Brucker <francois.brucker@gmail.com>
+sig 3        4F81085218CD36A1 2025-10-19  [self-signature]
+sig          7D305414B27F8E59 2025-10-19  [User ID not found]
+sub   cv25519 2025-10-19 [E] [expires: 2025-10-29]
+sig          4F81085218CD36A1 2025-10-19  [self-signature]
+```
+
+Dans la commande ci-dessus, mon autre moi a signé la clé mais le correspondant ne m'ayant pas rajouté, je suis considéré comme `[User ID not found]`. Si je lui envoie ma clé et qu'il l'importe, je serai ensuite connu :
+
+```shell
+❯ gpg --import fb.ecm.key
+gpg: WARNING: unsafe permissions on homedir '/Users/fbrucker/Documents/temp/./tempgpg'
+gpg: key 7D305414B27F8E59: public key "François Brucker <francois.brucker@centrale-med.fr>" imported
+gpg: key 4F81085218CD36A1: "François Brucker <francois.brucker@gmail.com>" not changed
+gpg: Total number processed: 2
+gpg:               imported: 1
+gpg:              unchanged: 1
+❯ gpg --list-sig francois.brucker@gmail.com
+gpg: WARNING: unsafe permissions on homedir '/Users/fbrucker/Documents/temp/./tempgpg'
+pub   ed25519 2025-10-19 [SC] [expires: 2025-10-29]
+      794258F0679471E0E09D24454F81085218CD36A1
+uid           [ultimate] François Brucker <francois.brucker@gmail.com>
+sig 3        4F81085218CD36A1 2025-10-19  [self-signature]
+sig          7D305414B27F8E59 2025-10-19  François Brucker <francois.brucker@centrale-med.fr>
+sub   cv25519 2025-10-19 [E] [expires: 2025-10-29]
+sig          4F81085218CD36A1 2025-10-19  [self-signature]
+```
+
+Enfin, vous pouvez gérer la confiance que vous apportez à une clé. Par exemple, mon correspondant me fait totalement confiance :
+
+```sh
+❯ gpg --edit-key francois.brucker@centrale-med.fr
+gpg: WARNING: unsafe permissions on homedir '/Users/fbrucker/Documents/temp/./tempgpg'
+gpg (GnuPG) 2.4.8; Copyright (C) 2025 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+pub  ed25519/7D305414B27F8E59
+     created: 2025-10-19  expires: 2025-10-26  usage: SC
+     trust: unknown       validity: unknown
+sub  cv25519/8305F422F269AACB
+     created: 2025-10-19  expires: 2025-10-26  usage: E
+[ unknown] (1). François Brucker <francois.brucker@centrale-med.fr>
+
+gpg> trust
+pub  ed25519/7D305414B27F8E59
+     created: 2025-10-19  expires: 2025-10-26  usage: SC
+     trust: unknown       validity: unknown
+sub  cv25519/8305F422F269AACB
+     created: 2025-10-19  expires: 2025-10-26  usage: E
+[ unknown] (1). François Brucker <francois.brucker@centrale-med.fr>
+
+Please decide how far you trust this user to correctly verify other users' keys
+(by looking at passports, checking fingerprints from different sources, etc.)
+
+  1 = I don't know or won't say
+  2 = I do NOT trust
+  3 = I trust marginally
+  4 = I trust fully
+  5 = I trust ultimately
+  m = back to the main menu
+
+Your decision? 5
+Do you really want to set this key to ultimate trust? (y/N) y
+```
 
 ## Utilisation
 
@@ -661,6 +764,8 @@ N'oubliez pas de sauver vos modifications !
 gpg --edit-key <id clé>
 ```
 
+L'identifiant de la clé pouvant être l'adresse mail associée ou son numéro.
+
 Vous vous retrouvez devant un prompt. Vous pouvez taper `help` pour l'aide. Tapez `setpref` et regardez vos préférences. Vous devriez y voir les différents algorithmes utilisés :
 
 ```sh
@@ -691,11 +796,12 @@ gpg> quit
 
 > TBD : <https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html>
 
-### Serveur de clés
+## Serveur de clés
 
 {% lien %}
 
 <https://keyserver.ubuntu.com/>
+<https://www.gnupg.org/gph/en/manual/x457.html>
 
 {% endlien %}
 
@@ -704,3 +810,8 @@ gpg> quit
 >
 > 1. le faire.
 > 2. se signer mutuellement les clés.
+
+Attention :
+
+- vous pouvez aussi signer uniquement localement, votre signature ne sera alors pas transmise au serveur de clé
+- ne pas remettre sur le serveur une clé qui ne vous appartient pas. La personne qui vous a transmis sa clé ne veut peut-être pas être sur le serveur de clé.

@@ -5,13 +5,14 @@ title: Analyse de données
 tags: ["cours", "données", "viz", "python"]
 authors:
   - "François Brucker"
-resume: "Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse _classique_ de données décrites par des attributs réels et l'autre consacrée à la visualisation de données."
+
+resume: "Cours d'analyse des données. Il comporte trois parties, la première consacrée à la visualisation de données, la seconde à la cartographie et la troisième à l'analyse _classique_ de données décrites par des attributs réels."
 
 eleventyNavigation:
   prerequis:
-    - "/cours/coder-et-développer/bases-python/"
-    - "/tutoriels/matplotlib/"
-    - "/cours/coder-et-développer/ordinateur-développement/terminal/"
+    - "/cours/coder-et-développer/bases-programmation/"
+    - "/cours/coder-et-développer/bases-programmation/notebooks/"
+    - "/cours/coder-et-développer/bases-programmation/matplotlib/"
     - "/cours/coder-et-développer/environnements-virtuels/"
 
 eleventyComputed:
@@ -76,7 +77,12 @@ Vous aurez besoin d'installer :
 - [scikit-learn](https://scikit-learn.org/stable/) : `python -m pip install scikit-learn`
 
 {% endnote %}
+
+<!-- 
+
 > TBD : `scikit-learn` et `statsmodels`. Autre truc ?
+
+ -->
 
 {% info %}
 
@@ -87,36 +93,95 @@ Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fa
 ## <span id="pandas"></span>Utilisation de pandas
 
 {% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse).
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-pandas).
 
 Vous pouvez utiliser cette url <https://download-directory.github.io/> pour télécharger le dossier.
 {% endinfo %}
 
+<!-- 
+
 > TBD : tuto jupyterlab
+
+ -->
 
 Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque pandas](https://pandas.pydata.org/docs/index.html).
 
-0. jeu de données utilisé [naissances en France en 2020](./notebooks-analyse/nat2020_csv.zip){.fichier}
-1. [Premières manipulations](./notebooks-analyse/1_1_1_cours_premières_manipulations.ipynb){.fichier}
-2. [Accéder à des données d'un dataframe](./notebooks-analyse/1_2_cours_acceder_aux_dataframe.ipynb){.fichier}
-3. [Lecture de données](./notebooks-analyse/1_3_1_cours_lecture_données.ipynb){.fichier}
+1. jeu de données utilisé [naissances en France en 2022](./notebooks/notebooks-pandas/nat2022_csv.zip){.fichier}
+2. [Premières manipulations](./notebooks/notebooks-pandas/1_1_1_cours_premières_manipulations.ipynb){.fichier}
+3. [Accéder à des données d'un dataframe](./notebooks/notebooks-pandas/1_2_cours_acceder_aux_dataframe.ipynb){.fichier}
+4. [Lecture de données](./notebooks/notebooks-pandas/1_3_1_cours_lecture_données.ipynb){.fichier}
 
 {% exercice "**A vous**" %}
 
 Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 
-1. [premières manipulations](./notebooks-analyse/1_1_2_à_vous_premières_manipulations.ipynb){.fichier}
-2. [Lecture d'un dataframe](./notebooks-analyse/1_3_2_à_vous_lecture_données.ipynb){.fichier}
+1. [premières manipulations](./notebooks/notebooks-pandas/1_1_2_à_vous_premières_manipulations.ipynb){.fichier}
+2. [Lecture d'un dataframe](./notebooks/notebooks-pandas/1_3_2_à_vous_lecture_données.ipynb){.fichier}
 
 {% endexercice %}
 {% details "corrigé" %}
 
-1. [premières manipulations](./notebooks-analyse/1_1_3_corrigé_premières_manipulations.ipynb){.fichier}
-2. [Lecture d'un dataframe](./notebooks-analyse/1_3_3_corrigé_lecture_données.ipynb){.fichier}
+1. [premières manipulations](./notebooks/notebooks-pandas/1_1_3_corrigé_premières_manipulations.ipynb){.fichier}
+2. [Lecture d'un dataframe](./notebooks/notebooks-pandas/1_3_3_corrigé_lecture_données.ipynb){.fichier}
 
 {% enddetails %}
 
-## <span id="data-viz"></span>Visualisation de données
+## <span id="data-viz-pas-carto"></span>Visualisation de données
+
+### Graphiques
+
+{% lien %}
+<https://clauswilke.com/dataviz/>
+{% endlien %}
+
+{% faire %}
+Reprendre les données des naissances et en utilisant le lien ci-dessus représentez-les en utilisant d'autres types de graphique. Il faudra choisir un type de graphique adapté à ce que vous voulez représenter.
+{% endfaire %}
+
+<!-- > TBD 
+
+Faire grossir cette partie.
+Voir si le livre ci-dessous ne fonctionnerait pas aussi.
+
+> - <https://www.oreilly.com/library/view/visualisation-de-donnees/9798341620735/>
+> 
+-->
+
+### <span id="data-viz-2D"></span>Réduction de dimension
+
+Représenter ses données en 2 dimensions.
+
+1. [Réduction de dimensions](./notebooks-analyse/4_1_cours_reduction_de_dimensions.ipynb){.fichier}
+2. [Méthode de partitionnement, les $k$-means](./notebooks-analyse/4_2_cours_partitionnement.ipynb){.fichier} (téléchargez [les données](./notebooks-analyse/ruspini.csv){.fichier})
+3. [Méthodes hiérarchiques](./notebooks-analyse/4_4_cours_hierarchies.ipynb){.fichier} (téléchargez [les données](./notebooks-analyse/henley.mat){.fichier})
+
+{% exercice "A vous" %}
+
+1. [Méthode de partitionnement et réduction de dimensions](./notebooks-analyse/4_3_1_a_vous_kmeans.ipynb){.fichier}
+2. [Hiérarchies et MDS](./notebooks-analyse/4_5_1_a_vous_hierarchies_et_mds.ipynb){.fichier}
+
+{% endexercice %}
+{% details "corrigé" %}
+
+1. [Méthode de partitionnement et réduction de dimensions](./notebooks-analyse/4_3_2_corrigé_kmeans.ipynb){.fichier}
+2. [Hiérarchies et MDS](./notebooks-analyse/4_5_2_corrigé_hierarchies_et_mds.ipynb){.fichier}
+   {% enddetails %}
+
+Les deux exercices suivant utilisent les méthodes de partitionnement, de MDS et hiérarchiques pour des données images ou textes. Ils montrent que l'on peut utiliser ces méthodes de façon astucieuses et/ou rigolotes.
+{% exercice "Pour aller plus loin" %}
+
+1. [$k$-means et images](./notebooks-analyse/4_6_1_a_vous_kmeans_et_images.ipynb){.fichier}
+2. [Analyse de textes](./notebooks-analyse/4_7_1_a_vous_texte_et_distance_de_jaccard.ipynb){.fichier}
+
+{% endexercice %}
+{% details "corrigé" %}
+
+1. [$k$-means et images](./notebooks-analyse/4_6_2_corrigé_kmeans_et_images.ipynb){.fichier}
+2. [Analyse de textes](./notebooks-analyse/4_7_2_corrigé_texte_et_distance_de_jaccard.ipynb){.fichier}
+
+{% enddetails %}
+
+## <span id="data-viz"></span>Visualisation de données cartographiques
 
 Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.
 
@@ -188,38 +253,6 @@ Une fois dans le terminal on peut installer nos packages :
 
 [Données cartographiques](./notebooks-dataviz/2_3_a_vous_données_et_cartes.ipynb){.fichier} (vous aurez besoin du jeu de données [arrondissements.geojson](./notebooks-dataviz/arrondissements.geojson){.fichier})
 {% endexercice %}
-
-### <span id="data-viz-2D"></span>Autres représentations
-
-1. [Réduction de dimensions](./notebooks-analyse/4_1_cours_reduction_de_dimensions.ipynb){.fichier}
-2. [Méthode de partitionnement, les $k$-means](./notebooks-analyse/4_2_cours_partitionnement.ipynb){.fichier} (téléchargez [les données](./notebooks-analyse/ruspini.csv){.fichier})
-3. [Méthodes hiérarchiques](./notebooks-analyse/4_4_cours_hierarchies.ipynb){.fichier} (téléchargez [les données](./notebooks-analyse/henley.mat){.fichier})
-
-{% exercice "A vous" %}
-
-1. [Méthode de partitionnement et réduction de dimensions](./notebooks-analyse/4_3_1_a_vous_kmeans.ipynb){.fichier}
-2. [Hiérarchies et MDS](./notebooks-analyse/4_5_1_a_vous_hierarchies_et_mds.ipynb){.fichier}
-
-{% endexercice %}
-{% details "corrigé" %}
-
-1. [Méthode de partitionnement et réduction de dimensions](./notebooks-analyse/4_3_2_corrigé_kmeans.ipynb){.fichier}
-2. [Hiérarchies et MDS](./notebooks-analyse/4_5_2_corrigé_hierarchies_et_mds.ipynb){.fichier}
-   {% enddetails %}
-
-Les deux exercices suivant utilisent les méthodes de partitionnement, de MDS et hiérarchiques pour des données images ou textes. Ils montrent que l'on peut utiliser ces méthodes de façon astucieuses et/ou rigolotes.
-{% exercice "Pour aller plus loin" %}
-
-1. [$k$-means et images](./notebooks-analyse/4_6_1_a_vous_kmeans_et_images.ipynb){.fichier}
-2. [Analyse de textes](./notebooks-analyse/4_7_1_a_vous_texte_et_distance_de_jaccard.ipynb){.fichier}
-
-{% endexercice %}
-{% details "corrigé" %}
-
-1. [$k$-means et images](./notebooks-analyse/4_6_2_corrigé_kmeans_et_images.ipynb){.fichier}
-2. [Analyse de textes](./notebooks-analyse/4_7_2_corrigé_texte_et_distance_de_jaccard.ipynb){.fichier}
-
-{% enddetails %}
 
 ## Méthodes d'analyse des données
 

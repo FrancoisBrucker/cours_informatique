@@ -13,7 +13,9 @@ eleventyComputed:
 <!-- TBD
 
 - ajouter sub-keys avec acron2.
+`❯ echo "coucou" | openssl base64 | openssl base64 -d`
 
+- signature avec openssl <https://www.zimuel.it/blog/sign-and-verify-a-file-using-openssl>
  -->
 
 Nous allons faire les meme étapes que le protocole openPGP avec la suite d'outils de chiffrement donné par [openSSL](https://www.openssl.org/) pour bien séparer les différentes étapes. Si vous voulez utiliser pleinement le protocole openPGP, utilisez cependant plutôt un outil dédié gomme [Gnupg](https://www.gnupg.org/), ci-après.

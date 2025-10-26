@@ -2,6 +2,7 @@
 layout: layout/post.njk
 
 title:  "Introduction à matplotlib"
+tags: ['tutoriel']
 
 eleventyComputed:
     eleventyNavigation:
@@ -10,16 +11,13 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
 Présentation succincte du module <https://matplotlib.org/>  très utilisé en python pour représenter ds graphiques et à la base de la bibliothèque <https://seaborn.pydata.org/>.
-
-<!-- fin résumé -->
 
 {% info %}
 Utilisez un notebook de <https://notebook.basthon.fr/> pour exécuter les divers exemples et exercices.
 
-Si vous utilisez votre propre distribution de python, il vous faudra peut-être installer <https://matplotlib.org/> avec la commande suivante que vous taperez dans un [terminal](../terminal){.interne} : `python -m pip install matplotlib` (remplacez `python` par `python3` sous mac ou linux)
+Si vous utilisez votre propre distribution de python, il vous faudra peut-être installer <https://matplotlib.org/> avec la commande suivante que vous taperez dans un [terminal](/cours/système-et-réseau/bases-système/terminal/bases/){.interne} : `python -m pip install matplotlib` (remplacez `python` par `python3` sous mac ou lLinux)
 
 {% endinfo %}
 

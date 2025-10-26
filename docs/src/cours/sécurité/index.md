@@ -24,7 +24,13 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 
 > Trop compliqué. A simplifier pour laisser les preuve et le reste pour les plus intéressés et ne garder que les principes et une preuve max par partie. 
 > Ajourer des TPs.
-> 
+
+à lire :
+
+- <https://www.youtube.com/@yousrajaved/videos>
+- <https://www.youtube.com/watch?v=tZse1YyiHdg&list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP>
+- <https://www.youtube.com/watch?v=prI35GmCon4&list=PLm3J0oaFux3ZYpFLwwrlv_EHH9wtH6pnX>
+
 -->
 
 ## Cryptographie

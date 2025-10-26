@@ -10,6 +10,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD
+
+- <https://www.youtube.com/watch?v=lL3ElCmq6jc>
+- liste des ASN France : <https://whoisrequest.com/ip/fr>
+- <https://www.brindereseau.fr/?article=ipv6>
+
+ -->
+
 Bases de réseau. On y verra les concepts et protocoles qui régissent le réseau internet. Le réseau est composé de multiples ***liens*** entre deux ordinateurs. Ces liens forment un graphe qui constitue le réseau.
 
 {% info %}

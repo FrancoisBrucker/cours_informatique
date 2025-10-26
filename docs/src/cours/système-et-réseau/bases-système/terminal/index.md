@@ -2,6 +2,7 @@
 layout: layout/post.njk
 
 title: Terminal
+tags: ['tutoriel']
 
 eleventyComputed:
   eleventyNavigation:

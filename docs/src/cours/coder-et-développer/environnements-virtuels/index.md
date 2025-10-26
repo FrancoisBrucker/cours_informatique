@@ -399,6 +399,14 @@ pip install numpy
 
 Activer permet de ne pas se soucier du chemin, et permet d'avoir les même commandes sous windows et mac/Linux.
 
+### Désactivation
+
+Si vous voulez revenir à votre environnement normal, il vous suffit de taper la commande suivante dans le terminal :
+
+```shell
+desactivate
+```
+
 ## Gestion des environnements virtuels
 
 ### Partage des modules

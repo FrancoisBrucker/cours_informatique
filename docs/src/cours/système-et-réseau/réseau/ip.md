@@ -10,6 +10,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- 
+> TBD <https://www.youtube.com/watch?v=icdyZN_ORYU>
+> masque cidr : <https://fr.wikipedia.org/wiki/Sous-r%C3%A9seau>
+ -->
+
+
 {% lien %}
 
 - [Internet Protocol (IP)](https://fr.wikipedia.org/wiki/Internet_Protocol)
