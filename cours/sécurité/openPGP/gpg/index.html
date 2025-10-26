@@ -510,7 +510,16 @@ sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token pu
 </div>
 </details>     
 </div>
-<p>Vous pouvez, si vous le désirez, signer sa clé :</p>
+<h3>Signer des clés</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84">https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84</a></p>
+</div></div>
+
+<p>Vous pouvez, si vous le désirez, signer sa clé avec la commande de gestion des clés <code>sign</code> :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> sign
 </code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -530,7 +539,7 @@ sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token pu
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ gpg --edit-key 4F81085218CD36A1
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ gpg --edit-key francois.brucker@gmail.com
 gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.8<span class="token punctuation">;</span> Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2025</span> g10 Code GmbH
 This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -562,6 +571,87 @@ gpg<span class="token operator">></span> save</code></pre>
 </div>
 </details>     
 </div>
+<p>Cette commande permet de se porter garant sur la l'authenticité de la clé. Attention donner sa confiance  est un acte qui vous engage :</p>
+<ul>
+<li>vous mettez votre crédibilité en jeu</li>
+<li>les signatures sont visibles</li>
+</ul>
+<p>Vous pouvez connaître les signatures d'une clé :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ gpg --list-sig francois.brucker@gmail.com
+pub   ed25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>SC<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-29<span class="token punctuation">]</span>
+      794258F0679471E0E09D24454F81085218CD36A1
+uid           <span class="token punctuation">[</span>  full  <span class="token punctuation">]</span> François Brucker <span class="token operator">&lt;</span>francois.brucker@gmail.com<span class="token operator">></span>
+sig <span class="token number">3</span>        4F81085218CD36A1 <span class="token number">2025</span>-10-19  <span class="token punctuation">[</span>self-signature<span class="token punctuation">]</span>
+sig          7D305414B27F8E59 <span class="token number">2025</span>-10-19  François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>E<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-29<span class="token punctuation">]</span>
+sig          4F81085218CD36A1 <span class="token number">2025</span>-10-19  <span class="token punctuation">[</span>self-signature<span class="token punctuation">]</span></code></pre>
+<p>Une fois que vous avez signé la clé d'un correspondant, vous pouvez la lui-retransmettre avec votre signature. POur cela :</p>
+<ol>
+<li>exportez sa clé dans un fichier : <code>❯ gpg -o clé-signée.key  --armor --export francois.brucker@gmail.com</code></li>
+<li>une fois reçue, le correspondant pourra l'importer <code>❯ gpg --import clé-signée.key</code></li>
+</ol>
+<p>Vous pourrez ensuite vérifier que tout est bien signé :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --list-sig francois.brucker@gmail.com
+gpg: WARNING: unsafe permissions on homedir <span class="token string">'/Users/fbrucker/Documents/temp/./tempgpg'</span>
+pub   ed25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>SC<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-29<span class="token punctuation">]</span>
+      794258F0679471E0E09D24454F81085218CD36A1
+uid           <span class="token punctuation">[</span>ultimate<span class="token punctuation">]</span> François Brucker <span class="token operator">&lt;</span>francois.brucker@gmail.com<span class="token operator">></span>
+sig <span class="token number">3</span>        4F81085218CD36A1 <span class="token number">2025</span>-10-19  <span class="token punctuation">[</span>self-signature<span class="token punctuation">]</span>
+sig          7D305414B27F8E59 <span class="token number">2025</span>-10-19  <span class="token punctuation">[</span>User ID not found<span class="token punctuation">]</span>
+sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>E<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-29<span class="token punctuation">]</span>
+sig          4F81085218CD36A1 <span class="token number">2025</span>-10-19  <span class="token punctuation">[</span>self-signature<span class="token punctuation">]</span></code></pre>
+<p>Dans la commande ci-dessus, mon autre moi a signé la clé mais le correspondant ne m'ayant pas rajouté, je suis considéré comme <code>[User ID not found]</code>. Si je lui envoie ma clé et qu'il l'importe, je serai ensuite connu :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ gpg <span class="token parameter variable">--import</span> fb.ecm.key
+gpg: WARNING: unsafe permissions on homedir <span class="token string">'/Users/fbrucker/Documents/temp/./tempgpg'</span>
+gpg: key 7D305414B27F8E59: public key <span class="token string">"François Brucker &lt;francois.brucker@centrale-med.fr>"</span> imported
+gpg: key 4F81085218CD36A1: <span class="token string">"François Brucker &lt;francois.brucker@gmail.com>"</span> not changed
+gpg: Total number processed: <span class="token number">2</span>
+gpg:               imported: <span class="token number">1</span>
+gpg:              unchanged: <span class="token number">1</span>
+❯ gpg --list-sig francois.brucker@gmail.com
+gpg: WARNING: unsafe permissions on homedir <span class="token string">'/Users/fbrucker/Documents/temp/./tempgpg'</span>
+pub   ed25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>SC<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-29<span class="token punctuation">]</span>
+      794258F0679471E0E09D24454F81085218CD36A1
+uid           <span class="token punctuation">[</span>ultimate<span class="token punctuation">]</span> François Brucker <span class="token operator">&lt;</span>francois.brucker@gmail.com<span class="token operator">></span>
+sig <span class="token number">3</span>        4F81085218CD36A1 <span class="token number">2025</span>-10-19  <span class="token punctuation">[</span>self-signature<span class="token punctuation">]</span>
+sig          7D305414B27F8E59 <span class="token number">2025</span>-10-19  François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+sub   cv25519 <span class="token number">2025</span>-10-19 <span class="token punctuation">[</span>E<span class="token punctuation">]</span> <span class="token punctuation">[</span>expires: <span class="token number">2025</span>-10-29<span class="token punctuation">]</span>
+sig          4F81085218CD36A1 <span class="token number">2025</span>-10-19  <span class="token punctuation">[</span>self-signature<span class="token punctuation">]</span></code></pre>
+<p>Enfin, vous pouvez gérer la confiance que vous apportez à une clé. Par exemple, mon correspondant me fait totalement confiance :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">❯ gpg --edit-key francois.brucker@centrale-med.fr
+gpg: WARNING: unsafe permissions on homedir <span class="token string">'/Users/fbrucker/Documents/temp/./tempgpg'</span>
+gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.8<span class="token punctuation">;</span> Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2025</span> g10 Code GmbH
+This is <span class="token function">free</span> software: you are <span class="token function">free</span> to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+pub  ed25519/7D305414B27F8E59
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: SC
+     trust: unknown       validity: unknown
+sub  cv25519/8305F422F269AACB
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: E
+<span class="token punctuation">[</span> unknown<span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>. François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+
+gpg<span class="token operator">></span> trust
+pub  ed25519/7D305414B27F8E59
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: SC
+     trust: unknown       validity: unknown
+sub  cv25519/8305F422F269AACB
+     created: <span class="token number">2025</span>-10-19  expires: <span class="token number">2025</span>-10-26  usage: E
+<span class="token punctuation">[</span> unknown<span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>. François Brucker <span class="token operator">&lt;</span>francois.brucker@centrale-med.fr<span class="token operator">></span>
+
+Please decide how far you trust this user to correctly verify other <span class="token function">users</span><span class="token string">' keys
+(by looking at passports, checking fingerprints from different sources, etc.)
+
+  1 = I don'</span>t know or won't say
+  <span class="token number">2</span> <span class="token operator">=</span> I <span class="token keyword">do</span> NOT trust
+  <span class="token number">3</span> <span class="token operator">=</span> I trust marginally
+  <span class="token number">4</span> <span class="token operator">=</span> I trust fully
+  <span class="token number">5</span> <span class="token operator">=</span> I trust ultimately
+  m <span class="token operator">=</span> back to the main menu
+
+Your decision? <span class="token number">5</span>
+Do you really want to <span class="token builtin class-name">set</span> this key to ultimate trust? <span class="token punctuation">(</span>y/N<span class="token punctuation">)</span> y</code></pre>
 <h2>Utilisation</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -734,6 +824,7 @@ gpg<span class="token operator">></span> save
 
 <h3>Préférences de clés</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg --edit-key <span class="token operator">&lt;</span>id clé<span class="token operator">></span></code></pre>
+<p>L'identifiant de la clé pouvant être l'adresse mail associée ou son numéro.</p>
 <p>Vous vous retrouvez devant un prompt. Vous pouvez taper <code>help</code> pour l'aide. Tapez <code>setpref</code> et regardez vos préférences. Vous devriez y voir les différents algorithmes utilisés :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">gpg<span class="token operator">></span> setpref
 Définir la liste de préférences en <span class="token builtin class-name">:</span>
@@ -760,13 +851,14 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 <blockquote>
 <p>TBD : <a href="https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html">https://rgoulter.com/blog/posts/programming/2022-06-10-a-visual-explanation-of-gpg-subkeys.html</a></p>
 </blockquote>
-<h3>Serveur de clés</h3>
+<h2>Serveur de clés</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://keyserver.ubuntu.com/">https://keyserver.ubuntu.com/</a></p>
+<p><a href="https://keyserver.ubuntu.com/">https://keyserver.ubuntu.com/</a>
+<a href="https://www.gnupg.org/gph/en/manual/x457.html">https://www.gnupg.org/gph/en/manual/x457.html</a></p>
 </div></div>
 
 <blockquote>
@@ -777,6 +869,11 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 <li>se signer mutuellement les clés.</li>
 </ol>
 </blockquote>
+<p>Attention :</p>
+<ul>
+<li>vous pouvez aussi signer uniquement localement, votre signature ne sera alors pas transmise au serveur de clé</li>
+<li>ne pas remettre sur le serveur une clé qui ne vous appartient pas. La personne qui vous a transmis sa clé ne veut peut-être pas être sur le serveur de clé.</li>
+</ul>
 
 
 </article>
