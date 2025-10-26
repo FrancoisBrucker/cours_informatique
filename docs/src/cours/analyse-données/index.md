@@ -90,6 +90,10 @@ Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fa
 
 {% endinfo %}
 
+{% info %}
+Si vous avez des "sauts" dans la fenêtre Jupiter lorsque vous faites défiler votre écran : `Settings → Settings Editor → Notebook → Windowing mode → Defer.`
+{% endinfo %}
+
 ## <span id="pandas"></span>Utilisation de pandas
 
 {% info %}
