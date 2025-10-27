@@ -69,22 +69,9 @@ L'indentation permet **toujours** de s'y retrouver.
 [Blocs](blocs){.interne}
 {% endaller %}
 
-## Créer ses propres fonctions
+<span id="interpréteur-blocs"></span>
 
-Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**. C'est possible avec les fonctions.
-
-{% aller %}
-[Création de fonctions](creation-fonctions){.interne}
-{% endaller %}
-
-## Créer ses propres modules
-
-{% aller %}
-[Création de modules](creation-modules){.interne}
-{% endaller %}
-
-## <span id="interpréteur-blocs"></span>Blocs et interpréteur
-
+{% info "**bloc et interpréteur**" %}
 Lorsque l'on crée un bloc avec l'interpréteur, après la première ligne qui défini le bloc (la ligne avec le `:`{.language-}.
 ), l'interpréteur passe en _mode bloc_ (il écrit `...` en début de ligne) ce qui permet d'écrire son bloc (en n'oubliant pas l'indentation). Une fois le bloc terminé, pour faire repasser l'interpréteur en mode normal et exécuter le bloc on appuie juste sur la touche entrée pour insérer ue ligne vide.
 
@@ -102,3 +89,21 @@ Le même bloc écrit dans un notebook puis exécuté aurait été écrit comme �
 while True:
     print("coucou")
 ```
+
+{% endinfo %}
+
+## Créer ses propres fonctions
+
+Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour **pouvoir le réutiliser juste en appelant son nom**. C'est possible avec les fonctions.
+
+{% aller %}
+[Création de fonctions](creation-fonctions){.interne}
+{% endaller %}
+
+## Espaces de nommage
+
+> TBD ici espace de nommage et généralisation aux modules.
+
+{% aller %}
+[Création de modules](creation-modules){.interne}
+{% endaller %}

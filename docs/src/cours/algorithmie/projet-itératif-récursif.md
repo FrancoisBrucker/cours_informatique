@@ -24,6 +24,12 @@ Une fois un algorithme créé, on le teste toujours sur de petites instances en 
 
 {% endattention %}
 
+<!-- TBD
+
+-  ajouter le code en python + invariant de boucle avec le débugueur
+ -->
+
+
 ## Maximum d'un tableau
 
 On a déjà vue [une version itérative de cet algorithme](../prouver-un-algorithme/#algorithme-max-tableau-iter){.interne}, voyons (ou plutôt voyez) comme en faire un version recursive :

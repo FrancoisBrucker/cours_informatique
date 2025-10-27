@@ -9,6 +9,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+<!-- TBD
+
+>  reprendre avec la partie variable qui commence à en parler. Pour l'instant pas de dictionnaire !
+> Faire sans et juste dire que chaque fonction ou module a son espace de nommage.
+> juste dire globals() et locals() et dire que c'est une structure de conteneur (le dictionnaire) que l'on verra plus tard. Tout est explicite en python.
+> voir la différence entre locals et globals en code avec l'appel d'une fonction.
+ -->
+
 Python stocke ses variable dans un objet appelé **_espace de nommage_**.
 
 Une variable a un nom et est affecté à un objet python. Il est important de dissocier le nom de l'objet pour une variable et surtout la variable de l'objet qu'elle représente.

@@ -383,7 +383,7 @@ Nous allons voir trois implémentations différentes :
 
 ### Chacha20
 
-> TBD <https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/>
+> TBD <https://phase.dev/blog/chacha-and-aes-simplicity-in-cryptography/> <https://www.youtube.com/watch?v=G0O0VHVtNuM>
 
 {% lien %}
 [chacha20](https://en.wikipedia.org/wiki/Salsa20#ChaCha_variant)
