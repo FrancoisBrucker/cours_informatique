@@ -229,7 +229,7 @@ Utilisez ce [fichier `requirement.txt`](./notebooks/notebooks-dataviz-cartes/req
 
 {% exercice %}
 
-[carte chloroplète](./notebooks/notebooks-dataviz-cartes/4_1_a_vous_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_métropole_30000.csv](./notebooks/notebooks-dataviz-cartographique/villes_france_métropoles_30000.csv){.fichier}).
+[carte chloroplète](./notebooks/notebooks-dataviz-cartes/4_1_a_vous_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_métropole_30000.csv](./notebooks/notebooks-dataviz-cartes/villes_france_métropole_30000.csv){.fichier}).
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -247,9 +247,6 @@ Utilisez les données des ressources suivantes :
 Créez une carte chloroplète de la réunion avec le nombre d'habitants par canton.
 
 {% endfaire %}
-{% info %}
-Beaucoup d'autres jeux de données sont disponibles là : <https://data.regionreunion.com/pages/accueil/>
-{% endinfo %}
 
 ### <span id="data-viz-OSM"></span>Données géographiques
 
@@ -257,15 +254,17 @@ Beaucoup d'autres jeux de données sont disponibles là : <https://data.regionre
 [OSM](https://www.openstreetmap.fr/)
 {% endlien %}
 
-1. [requêtes OSM](./notebooks/notebooks-dataviz-cartographique/2_1_cours_OSM_requêtes.ipynb){.fichier}
-2. [réseau routier](./notebooks/notebooks-dataviz-cartographique/2_2_cours_OSM_réseau_routier.ipynb){.fichier}
+[requêtes OSM](./notebooks/notebooks-dataviz-OSM/1_1_cours_OSM_requêtes.ipynb){.fichier}
 
 <div id="data-viz-exercice"></div>
 
 {% faire %}
 
-[Données cartographiques](./notebooks/notebooks-dataviz-cartographique/2_3_a_vous_données_et_cartes.ipynb){.fichier} (vous aurez besoin du jeu de données [arrondissements.geojson](./notebooks/notebooks-dataviz-cartographique/arrondissements.geojson){.fichier})
-{% endfaire %}
+[Données cartographiques](./notebooks/notebooks-dataviz-OSM/1_2_a_vous_données_et_cartes.ipynb){.fichier}. {% endfaire %}
+
+### <span id="data-viz-OSM"></span>Chemins
+
+[réseau routier](./notebooks/notebooks-dataviz-OSM/2_1_cours_OSM_réseau_routier.ipynb){.fichier}
 
 ## Méthodes d'analyse des données
 
