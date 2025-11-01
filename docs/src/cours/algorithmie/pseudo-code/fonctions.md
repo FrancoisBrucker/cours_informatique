@@ -77,6 +77,9 @@ algorithme exorcisme(t: [entier]
         rendre "Tout va bien, le tableau n'est pas possédé. Ouf."
 ```
 
+> TBD parler des variables de fonctions et de la pile qui crée les variables et les supprime à la fin de l'exécution de la fonction. Monter que cela permet tout de même de se passer des objets.
+> TBD faire factorielle (si on l'a déjà vu), ou pgcd.
+
 ### Signature d'une fonction
 
 Lorsque l'on défini un algorithme ou un pseudo-code on explicite le type des objets en entrées et en sortie, comme on l'a fait pour l'algorithme recherche.

@@ -21,6 +21,13 @@ Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je
 
 Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd.
 
+> TBD ici dire pseudo-code SANS pointeur. PLus simple à comprendre et à implémenter mais ajoute un overhead.
+> très utilisé dans les langages de scripts. Mais à cause de l'overhead qui n'est pas important en algorithmie car rajoute qu'un nombre constant d'opération pose soucis pour une optimisation systeme.
+>
+> TBD on verra plus tard ce deuxième mod de pseudo-code avec pointeur.
+>
+> TBD refaire en disant que c'est l'implémentation sur une machine réelle. une "note" et pas une "info".
+
 ## Commentaires
 
 Comme en python, on considérera que tout ce qui suit le caractère `#`{.language-} est considéré comme un commentaire dont le but est d'éclairer le lecteur.
@@ -61,23 +68,29 @@ Tous les autres types d'objets que l'on peut imaginer seront des compositions de
 
 #### Taille et stockage des objets
 
-Notez que tous les objets basiques à part les entiers sont de taille fixe :
+Tous les objets basiques sont considérés de taille fixe. Classiquement :
 
-- un booléen sur 1bit
-- un caractère 32bits si on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode)
-- un réel sur 64 bits si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754)
+- un booléen à une taille de 1bit
+- un caractère à une taille de 32bit si on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode)
+- un réel à une taille 64bit si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754)
+- un entier à une taille de  64bit
 
-On peut sans perte de généralité se restreindre aux entiers entre 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce que font les languages d programmation comme python où un entier, qui n'est pas borné par nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
+Se restreindre aux entiers entre $-2^{63}$ à $2^{63}$ n'est pas contraignant en pratique et c'est d'ailleurs ce que beaucoup de langages de programmation font (même souvent ils sont codés sur 32b). Les languages de programmation comme python pour lesquels un entier n'est pas borné considèrent en interne qu'un entier est en fait une suite d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur.
 
 {% attention "**À retenir**" %}
-On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
+On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme mais que cela n'interférera pas avec son exécution (on ne créera par exemple pas d'entiers trop grands par exemple).
 {% endattention %}
 
-Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**. An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire.cela peut être celle de l'informaticien lecteur ou sur un ordinateur : peu importe. Pour un ordinateur réel, les objets sont stockés dans une partie de la mémoire nommée **tas** (le tas est un tableau où chaque case contient 1 byte = 8 bit).
+Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**. An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire.cela peut être celle de l'informaticien lecteur ou sur un ordinateur : peu importe.
+
+{% info "**Implémentation en python**" %}
+En python, les objets sont stockés dans une partie de la mémoire nommée **tas** (le tas est un tableau où chaque case contient 1 byte = 8 bit).
 
 ![tas](tas.png)
 
 Les objets sont stockées dans le tas. Notez que le tas peut contenir des "trous", c'est à dire des endroits sans objets.
+
+{% endinfo %}
 
 ### <span id="opérations"></span> Opérations
 
@@ -149,11 +162,19 @@ Une **_variable_** est un nom auquel est associé un objet d'**un type donné**.
 
 Les variables nous permettent de manipuler les objets. Conceptuellement parlant, ce sont juste des **liens vers** les objets qu'elles référencent.
 
-En algorithmie, tout comme pour les objets on ne se préoccupe pas vraiment où sont stockés les variables. Pour un ordinateur réel, elles sont stockées dans une partie de la mémoire nommée **pile** et contiennent l'indice de la mémoire du tas où commence l'objet qu'elle référence. Chaque variable est donc juste assez grande pour stocker un indice (64bit sur les ordinateur actuel ce qui permet d'avoir théoriquement un tas de taille $2^{64}$byte = 18446744073709551616B = 16777216 terabyte).
+En algorithmie, tout comme pour les objets on ne se préoccupe pas vraiment de où sont stockés les variables.
+
+> TBD ici dire que les variables sont crées au début de chaque algorithme.
+
+{% info "**Implémentation en python**" %}
+
+En python, elles sont stockées dans une partie de la mémoire nommée **pile** et contiennent l'indice de la mémoire du tas où commence l'objet qu'elle référence. Chaque variable est donc juste assez grande pour stocker un indice (64bit sur les ordinateur actuel ce qui permet d'avoir théoriquement un tas de taille $2^{64}$byte = 18446744073709551616B = 16777216 terabyte).
 
 ![pile](pile.png)
 
-Chaque variable a la même taille et sont stockés de façon consécutives dans la pile. En effet, les variables sont crées au début de l'algorithme et sont toues supprimées en même temps à la fin de l'algorithme.
+Chaque variable a la même taille et sont stockées de façon consécutives dans la pile. En effet, les variables sont crées au début de l'algorithme et sont toues supprimées en même temps à la fin de l'algorithme.
+
+{% endinfo %}
 
 ### Définition
 
@@ -236,8 +257,6 @@ Après la troisième ligne, le code précédent associe la variable `a`{.languag
 {% attention "**À retenir**" %}
 Une variable n'**est pas** un objet, c'est un lien vers un objet qui pourra changer au cours du temps.
 {% endattention %}
-
-D'un point de vue matériel, rappelez vous qu'une variable est un entier qui correspond à un indice dans le tableau de la mémoire.
 
 ### Utilisation
 
@@ -338,24 +357,42 @@ Le format général de la création d'un tableau de longueur $n$ est :
 Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : `[type]`{.language-}.
 {% endnote %}
 
-Un tableau est un mix entre variables et objet : c'est un objet contenant des variables. Les différentes références des variables du tableau sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée :
+Un tableau est un mix entre variables et objet : c'est un objet contenant des variables de même type.
+
+{% info "**Implémentation en python**" %}
+
+Une façon d'implémenter cette structure en pratique est de stocker les différentes références des variables du tableau de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lue ou modifiée :
 
 ![tableau](tableau.png)
 
+{% endinfo %}
+{% attention %}
+L'implémentation en python est simple et générale mais nécessite une indirection : avant d'accéder à un objet on passe d'abord par son adresse.
+
+Puisque les tailles des objets sont connus, on peut éviter cette indirection en stockant directement les objets de façon contiguës en mémoire. C'est ce que font des languages comme le rust, le C ou encore le go (ils le font aussi entre la pile et le tas, la plupart des variables étant directement stockées dans la pile).
+
+Mais cette rapidité interne vient avec une complexité supplémentaire : la nécessité d'avoir un nouveau type d'objet appelé pointeur (qui correspond à une adresse en mémoire) mais que nous n'aborderons pas ici.
+{% endattention %}
+
 On considère que :
 
-- la taille en mémoire d'un tableau est proportionnelle à la taille d'un objet fois la taille.
-- il faut 1 instruction pour créer un tableau
-- il faut 1 instruction pour accéder à une variable d'indice donné.
+{% note %}
 
+On considère que :
+
+- créer un tableau prend 1 instruction car celui-ce est de taille fixée,
+- la taille en mémoire d'un tableau est proportionnelle à la taille d'un objet fois sa longueur,
+- il faut 1 instruction pour créer un tableau,
+- il faut 1 instruction pour accéder à une variable d'indice donné.
+{% endnote %}
 {% info %}
-On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. [On justifiera ceci proprement plus tard](../../complexité-calculs/O-pour-l-algorithmie){.interne}.
+[On justifiera ceci proprement plus tard](../../complexité-calculs/O-pour-l-algorithmie){.interne}.
 {% endinfo %}
 
 Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau. La seule opération spécifique à un tableau est sa création qui prendra toujours 1 instruction, puis on affecte les variables.
 
 {% attention %}
-Tout comme une variable, une fois le tableau crée, la valeur de chaque case est **indéterminée !**. Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
+Tout comme une variable, une fois le tableau créé, la valeur de chaque case est **indéterminée !** Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
 {% endattention %}
 
 Toutes les autres opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
@@ -375,7 +412,7 @@ On utilisera parfois, comme en python par exemple des sous tableaux via des **_t
 - `T[i:j]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice i **inclus** jusqu'à j **exclu**
 
 {% attention %}
-Tout comme pour les tableaux, on ne peut **pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
+Tout comme pour les tableaux, **on ne peut pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 {% endattention %}
 
 ### <span id="str"></span>Chaînes de caractères
@@ -399,7 +436,7 @@ Chacune des quatre opérations précédentes (création, affectation, accès et 
 
 La chaîne de caractère étant très utilisée, on se permettra les abus suivant :
 
-- de définir une chaîne directement : `s := chaine"`{.language-} en utilisant le type chaîne
+- de définir une chaîne directement : `s := chaine`{.language-} en utilisant le type chaîne
 - puis de l'affecter : `s ← "Salut"`{.language-}
 - on définit l'opération de concaténation avec l'opérateur `+`{.language-} : `"salut" + " toi !"`{.language-} vaut la chaîne de caractères `"salut toi !"`{.language-}
 

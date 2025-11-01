@@ -16,6 +16,8 @@ eleventyComputed:
 24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests. C'est la suite de ce que vous avez fait en 1A avec JEMNEP et I1 de MIE en 2A. Donc revenez en arrière s'il vous manque des connaissances.
 
 > TBD pour l'instant, je remets toutes les étapes ici.
+>
+> TBD <https://www.youtube.com/watch?v=gnrBqLbj1_Q>
 
 ## Partie I
 

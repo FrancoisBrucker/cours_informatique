@@ -153,7 +153,10 @@ Le `C` permet aussi d'utiliser des [enum](https://www.w3schools.com/c/c_enums.ph
 ## Types complexes
 
 {% lien %}
-[comprendre les types alambiqués de C](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations)
+
+- [règle de la spirale](https://c-faq.com/decl/spiral.anderson.html)
+- [comprendre les types alambiqués de C](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations)
+
 {% endlien %}
 
 ## Gestion de la mémoire

@@ -226,6 +226,8 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 
 Comment créer de nouveaux types d'objets utilisable pour nos algorithmes :
 
+> TBD ici faire comme go ajouter un mot clé méthode avec un paramètre au début qui est le reciever.
+
 {% aller %}
 [Structures de données](structure-données){.interne}
 {% endaller %}
@@ -490,6 +492,23 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 > TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
 
 ## <span id="partie-4"></span>Partie IV : structures de données avancées
+
+> TBD ici parler de pointeurs et l'ajouter comme type de base. Distinguer l'objet de son adresse (ie. variable). Tout se passe comme si avant on avait que des pointeurs : un pointeur est comme un objet "variable" Fait pour gagner du temps : on met tout dans la pile par défaut. Cela accélère mais ajoute une complexité. Par défaut un tableau est constitué d'objets mis bout à bout. Permet d'avoir des tableaux de variables comme avant en utilisant des pointeurs.
+>
+> cette architecture est préférée pour des raisons de rapidité : car :
+>
+> - pas d'indirection
+> - les objets dans les tableaux sont côte à côte ce qui permet des gains avec la mémoire cache.
+> - objet mutable = pas d'allocation d'objet superflue
+>
+> Mais est est plus complexe à mettre en œuvre côté algorithme et code car un objet devient mutable par défaut. Et on ne gagne rien avec les notation O.
+> TBD conséquence : supprimer les additions de la chaîne de caractère.
+> TBD vérifier que tout se passe bien pour le type matrice : ie. de taille fixe.
+> TBD ou alors en parler avec les structures ?
+> TBD ici faire comme en go lorsque tu passes un tableau en paramètre c'est tout le tableau que tu passes
+> TBD pile et mémoire expliciter la pile d'appel. avec passages de paramètres dans les fonctions. On suppose en algo que l'on a pas de soucis mais en C il faut y faire gaffe et en rust c'est interdit. En go le compilateur fait attention (escape pass du compilateur)
+
+> TBD <https://research.swtch.com/godata>
 
 {% aller %}
 [Structures de données avancées](./structure-données-avancée){.interne}

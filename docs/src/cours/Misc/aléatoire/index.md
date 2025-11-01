@@ -12,6 +12,7 @@ eleventyComputed:
 
 
 > TBD <https://en.wikipedia.org/wiki/Entropy_(information_theory)>
+> TBD entropy : <https://www.youtube.com/watch?v=QjD3nvJLmbA>
 > TBD <https://sortingsearching.com/2023/11/25/random.html>
 
 

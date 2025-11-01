@@ -183,41 +183,39 @@ L'exercice suivant utilise vise à créer une distance entre texte puis à la re
 
 ## <span id="data-viz"></span>Visualisation de données cartographiques
 
-Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.
-
 {% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz).
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks/notebooks-dataviz-cartes).
 
-Vous pouvez utiliser cette url <https://download-directory.github.io/> pour télécharger le dossier.
 {% endinfo %}
 
-Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :
-{% faire %}
+Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.
 
-Créez vous un environnement virtuel et, en plus [des packages précédents](./#packages-nécessaires){.interne} installez les packages suivants :
+Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :
+
+{% note "modules" %}
+
+Les modules classiques :
+
+- [pandas](https://pandas.pydata.org/) : `python -m pip install pandas`
+- [seaborn](https://seaborn.pydata.org/) : `python -m pip install seaborn`
+- [scikit-learn](https://scikit-learn.org/stable/) : `python -m pip install scikit-learn`
+
+Les modules spécifiques aux données cartographiques :
 
 - [`geopandas`{.language}](https://geopandas.org/en/stable/) pour la gestion des données cartographiques : `python -m pip install geopandas`
 - [`geodatasets`{.language}](https://geodatasets.readthedocs.io/) pour la gestion des données cartographiques : `python -m pip install geodatasets`
 - [`contextily`{.language}](https://contextily.readthedocs.io/) pour les fond de cartes : `python -m pip install contextily`
 - [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/> et de les structurer sous la forme d'un graphe en utilisant la biliothèque [`networkx`{.language-}](https://networkx.org) : `python -m pip install osmnx`
-- [`scikit-learn`{.language-}](https://scikit-learn.org/) qui permettra de faire des calculs sur nos graphes: `python -m pip install scikit-learn`
 - [`folium`{.language}](https://python-visualization.github.io/folium/) pour gérer rapidement des cartes : `python -m pip install folium`
 - [`mapclassify`{.language}](https://pysal.org/mapclassify/) pour utiliser la méthode [`explore`{.language}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html) de GeoPandas : `python -m pip install mapclassify`
 
+{% endnote %}
+
+{% faire %}
+
+Utilisez ce [fichier `requirement.txt`](./notebooks/notebooks-dataviz-cartes/requirements.txt){.fichier} pour créer [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/){.interne} contenant déjà tous les modules nécessaires.
+
 {% endfaire %}
-
-{% details "sous anaconda" %}
-Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :
-
-1. dans anaconda-navigator allez dans la partie [environnement](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/)
-2. ouvre un terminal en [cliquant sur le triangle vert](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment) de l'environnement _base (root)_.
-
-Une fois dans le terminal on peut installer nos packages :
-
-1. _étape facultative_ : mettre à jour conda. Tapez la commande : `conda update --all`
-2. installez les bibliothèques nécessaires avec `pip`.
-
-{% enddetails %}
 
 ### <span id="data-viz-bases"></span>Base de la cartographie
 
@@ -225,18 +223,33 @@ Une fois dans le terminal on peut installer nos packages :
 <https://geojson.io/>
 {% endlien %}
 
-1. [Cartes de géographie](./notebooks/notebooks-dataviz-cartographique/1_1_cours_cartes_de_géographies.ipynb){.fichier}
-2. [CRS](./notebooks/notebooks-dataviz-cartographique/1_2_cours_crs.ipynb){.fichier}
-3. [GeoPandas](./notebooks/notebooks-dataviz-cartographique/1_3_cours_geopandas_manipulations.ipynb){.fichier}
+1. [Cartes de géographie](./notebooks/notebooks-dataviz-cartes/1_cours_cartes_de_géographies.ipynb){.fichier}
+2. [CRS](./notebooks/notebooks-dataviz-cartes/2_cours_crs.ipynb){.fichier}
+3. [GeoPandas](./notebooks/notebooks-dataviz-cartes/3_cours_geopandas_manipulations.ipynb){.fichier}
 
 {% exercice %}
 
-[carte chloroplète](./notebooks/notebooks-dataviz-cartographique/1_4_a_vous_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks/notebooks-dataviz-cartographique/villes_france_30000.csv){.fichier}).
+[carte chloroplète](./notebooks/notebooks-dataviz-cartes/4_1_a_vous_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_métropole_30000.csv](./notebooks/notebooks-dataviz-cartographique/villes_france_métropoles_30000.csv){.fichier}).
 {% endexercice %}
 {% details "corrigé" %}
 
-[carte chloroplète](./notebooks/notebooks-dataviz-cartographique/1_5_corrigé_création_données_géographiques.ipynb){.fichier}
+[carte chloroplète](./notebooks/notebooks-dataviz-cartographique/4_2_corrigé_création_données_géographiques.ipynb){.fichier}
 {% enddetails %}
+
+À vous sans le corrigé :
+
+{% faire %}
+Utilisez les données des ressources suivantes :
+
+- [coordonnées geojson de la Réunion](https://github.com/gregoiredavid/france-geojson/tree/master/departements/974-la-reunion)
+- [population par canton](https://public.opendatasoft.com/explore/assets/demographyref-france-pop-legale-canton-millesime/)
+
+Créez une carte chloroplète de la réunion avec le nombre d'habitants par canton.
+
+{% endfaire %}
+{% info %}
+Beaucoup d'autres jeux de données sont disponibles là : <https://data.regionreunion.com/pages/accueil/>
+{% endinfo %}
 
 ### <span id="data-viz-OSM"></span>Données géographiques
 
@@ -249,10 +262,10 @@ Une fois dans le terminal on peut installer nos packages :
 
 <div id="data-viz-exercice"></div>
 
-{% exercice "**A vous**" %}
+{% faire %}
 
 [Données cartographiques](./notebooks/notebooks-dataviz-cartographique/2_3_a_vous_données_et_cartes.ipynb){.fichier} (vous aurez besoin du jeu de données [arrondissements.geojson](./notebooks/notebooks-dataviz-cartographique/arrondissements.geojson){.fichier})
-{% endexercice %}
+{% endfaire %}
 
 ## Méthodes d'analyse des données
 

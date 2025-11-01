@@ -151,7 +151,7 @@ Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez do
 Plusieurs opérateurs ressemblant à l'égalité sont utilisés en pseudo-code, attention à bien comprendre leurs différences.
 
 - `x := y`{.language-} : on remplace x par y à chaque fois qu'on le voit
--  `x <- y`{.language-} : on affecte x à la valeur de y
+- `x ← y`{.language-} : on affecte x à la valeur de y
 - `x = y`{.language-} : avec les définitions de x et y les 2 variables sont toujours égales (c'est une conséquence)
 - `x == y`{.language-} : vrai si la valeur de x vaut la valeur de y et faux sinon
 
@@ -168,8 +168,9 @@ Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
 
 Mais cela ne doit pas rendre le code lourd. On se permettra donc, **lorsqu'il n'y a pas d’ambiguïté possible**, l'abus de notations qui crée et affecte une variable en une seule fois :
 
-- comme : `a := entier valant 3`{.language-}
-- voir : `a ← 3`{.language-} lorsque le type de la variable est clair (ici un entier)
+- comme : `(a := entier) ← 3`{.language-}
+- voir : `a := 3`{.language-} lorsque le type de la variable est clair (ici un entier)
+- ou encore, mais uniquement si cela rend le code plus clair : `a ← 3`{.language-}.
 
 Vous verrez aussi parfois cet opérateur remplacé par le mot "soit", en particulier lorsqu'il y a plusieurs variables à créer :
 
@@ -178,7 +179,6 @@ Vous verrez aussi parfois cet opérateur remplacé par le mot "soit", en particu
   + *soient* $a$, $b$ et $c$ trois *entiers*
 ]
 {% endalgorithme %}
-
 
 ### Répétitions
 
@@ -296,7 +296,7 @@ T' ← un nouveau tableau contenant T[i:j]  # j - i + 1 instructions en 1 ligne
 Avec deux tableaux :
 
 ```pseudocode
-T ← T1 + T2
+T := T1 + T2
 ```
 
 pour :
