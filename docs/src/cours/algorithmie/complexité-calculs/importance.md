@@ -94,6 +94,8 @@ $$
 n! \sim \sqrt{2\pi n}(\frac{n}{e})^n
 $$
 
+> TBD preuve <https://www.youtube.com/watch?v=Dgh8673ymdo>
+
 On a donc que $n!$ est de l'ordre de $n^{n+1/2}$, qui est vachement plus grand que $2^{n}$ qui est déjà gigantesque.
 
 Par exemple :

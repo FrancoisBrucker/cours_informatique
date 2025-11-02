@@ -21,6 +21,12 @@ Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, dé
 ## Probabilités discrètes
 
 {% aller %}
+[Go](golang){.interne}
+{% endaller %}
+
+## Probabilités discrètes
+
+{% aller %}
 [Probabilités](probabilités){.interne}
 {% endaller %}
 
