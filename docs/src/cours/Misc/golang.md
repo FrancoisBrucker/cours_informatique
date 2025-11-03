@@ -96,6 +96,10 @@ Pas d'héritage (comme tout les nouveaux langages), mais les <https://gobyexampl
 
 ### Benchmark
 
+{% lien %}
+<https://pkg.go.dev/testing#hdr-Benchmarks>
+{% endlien %}
+
 ```shell
 go test ./graph -bench=./graph
 ```
