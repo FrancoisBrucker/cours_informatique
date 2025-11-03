@@ -233,7 +233,7 @@ Utilisez ce [fichier `requirement.txt`](./notebooks/notebooks-dataviz-cartes/req
 {% endexercice %}
 {% details "corrigé" %}
 
-[carte chloroplète](./notebooks/notebooks-dataviz-cartographique/4_2_corrigé_création_données_géographiques.ipynb){.fichier}
+[carte chloroplète](./notebooks/notebooks-dataviz-cartes/4_2_corrigé_création_données_géographiques.ipynb){.fichier}
 {% enddetails %}
 
 À vous sans le corrigé :
