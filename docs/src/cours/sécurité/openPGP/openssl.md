@@ -22,6 +22,8 @@ Nous allons faire les meme étapes que le protocole openPGP avec la suite d'outi
 
 Placez vous dans un dossier où vous pourrez placer tous les fichiers nécessaires
 
+> TBD <https://www.scottbrady.io/openssl/creating-rsa-keys-using-openssl>
+
 ## Installation
 
 {% lien %}
