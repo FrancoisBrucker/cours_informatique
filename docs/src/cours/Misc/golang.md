@@ -107,8 +107,14 @@ go test ./graph -bench=./graph
 
 ### Coverage
 
+{% lien %}
+<https://go.dev/blog/cover>
+{% endlien %}
+
 ```shell
-> go test ./graph -cover -v 
+> go test ./graph -cover
+❯ go test ./diss -cover -coverprofile=coverage.out
+❯ go tool cover  -html=coverage.out
 ```
 
 <https://www.youtube.com/watch?v=3ilxk24hzyA>
@@ -116,6 +122,7 @@ go test ./graph -bench=./graph
 ### Fuzztest
 
 > TBD
+
 ### Testify
 
 {% lien %}

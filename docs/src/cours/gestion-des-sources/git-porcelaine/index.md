@@ -16,6 +16,9 @@ eleventyComputed:
 >
 > TBD utiliser tous les usages vue dans les parties précédentes (même add/reset -p)
 
+> TBD utiliser gh pour s'autentifier et creer un repo git. <https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git> et <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line>
+>
+
 Comment fonctionne git et ses utilisations en ligne de commande.
 
 ## Projet git
