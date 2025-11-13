@@ -51,12 +51,13 @@ On suppose que vous connaissez le python et la programmation objet. Pour l'insta
    - importer un module
 5. Faire le go tour <https://go.dev/tour/>. Base du langage
 6. Faire un cours de go venant de python. Pourquoi ne pas utiliser les videos suivantes comme base :
+   - <https://www.alexedwards.net/blog/when-is-it-ok-to-panic-in-go>
    - <https://www.youtube.com/watch?v=e8zL5PD8164&t=160s>
    - <https://www.youtube.com/watch?v=WVjc_wl17FA&list=PLNsqkiNPwf2dS-6VirsO1FJNhu2XbjbkT&index=1>
    - <https://www.youtube.com/watch?v=P7dCWOjRwJA&list=PL10piHcP2kVJOxO18iPHsq8IqTArbvFe0>
 7. <https://go.dev/doc/effective_go>
 8. <https://gobyexample.com/>
-9. Dépendances :
+9.  Dépendances :
    - <https://go.dev/doc/modules/managing-source>
    - <https://go.dev/doc/modules/layout>
    - <https://go.dev/doc/modules/managing-dependencies>
