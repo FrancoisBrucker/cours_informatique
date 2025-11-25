@@ -29,7 +29,7 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 Différence entre exécuter un fichier soit et sur un serveur.
 
 {% aller %}
-[Qu'est qu'une url](./anatomie-url){.interne}
+[Bases de réseau](/cours/système-et-réseau/bases-réseau/){.interne}
 {% endaller %}
 
 ## <span id="trinité"><span>  Trinité html/css/js

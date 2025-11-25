@@ -26,8 +26,6 @@ Le terminal permet d'exécuter rapidement des commandes.
 [Terminal](terminal){.interne}
 {% endaller %}
 
-> TBD terminal : le programme à lancer des programmes.
-> TBD path
 
 ## Installation d'un nouveau système
 
@@ -35,4 +33,3 @@ Le terminal permet d'exécuter rapidement des commandes.
 [Nouvelle installation d'un système](système-installation){.interne}
 {% endaller %}
 
-> TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>

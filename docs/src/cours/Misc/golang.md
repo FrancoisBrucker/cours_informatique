@@ -79,7 +79,7 @@ Pas d'héritage (comme tout les nouveaux langages), mais les <https://gobyexampl
 - interface = pointeur. Comme en python. Est-ce copié ?
 
 > TBD go + webassembly ? <https://go.dev/wiki/WebAssembly>, <https://go.dev/blog/wasmexport> et <https://golangbot.com/webassembly-using-go/>
-
+> TBD socket : <https://www.kelche.co/blog/go/socket-programming/>
 ## Test
 
 {% lien %}

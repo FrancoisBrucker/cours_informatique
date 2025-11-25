@@ -15,8 +15,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une semaine pour comprendre le fonctionnement de python et l'utiliser pour développer ses propres programmes comme le ferait un informaticien.
 
+Le premier d'une série de 3 enseignements orienté développement et axé autour de 3 thèmes :
+
+- le développement : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530))
+- le système : là où sera exécuté le code
+- la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM))
+
+{% info %}
+> lien veres les deux autres cours
+{% endinfo %}
+Une semaine pour comprendre le fonctionnement de python et l'utiliser pour développer ses propres programmes comme le ferait un informaticien.
 <!-- TBD 
 
 

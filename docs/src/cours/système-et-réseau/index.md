@@ -34,8 +34,8 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 ## refactor
 
 > TBD découper en partie plus digeste
+> TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>
 
-> 
 1. Système
    1. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
    2. [Système d'exploitation](./système-exploitation){.interne}

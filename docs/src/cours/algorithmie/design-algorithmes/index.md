@@ -10,6 +10,7 @@ eleventyComputed:
 ---
 
 > TBD donner des exemples du discours de la méthode (cf. poly PP)
+> TBD : diviser pour régner et programmation dynamique c'est la même idée mais on résout différemment. Diviser pour régner on descend et programmation dynamique on remonte (on part du petit et on généralise)
 
 ## Diviser pour régner
 

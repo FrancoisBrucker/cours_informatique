@@ -74,7 +74,9 @@ Nous avons pour l'instant utilisé python pour exécuter des instructions ou des
 
 Coder en python (ou en tout autre langage) ce cependant nécessiter des connaissances (un peu) plus poussées et des outils dédiées au code. Nous irons plus loin plus tard.
 
-> Ici ajouter plusieurs fichier pour créer ses propres modules.
+> TBD Ici prérequis base système.
+
+> TBD Ici ajouter plusieurs fichier pour créer ses propres modules.
 > séparer main de fct.py
 
 ### <span id="installation-développement"></span>Installer et utiliser un interpréteur
