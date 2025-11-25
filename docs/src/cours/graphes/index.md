@@ -194,7 +194,12 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 
 {% endaller %}
 
-<!-- ## Graphes parfaits
+<!-- 
+## Graphes cordés
+
+> TBD conf de knuth <https://www.youtube.com/watch?v=txaGsawljjA>
+
+## Graphes parfaits
 
 {% aller %}
 

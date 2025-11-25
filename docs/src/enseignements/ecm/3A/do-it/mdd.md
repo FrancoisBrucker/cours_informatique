@@ -18,6 +18,8 @@ eleventyComputed:
 > TBD pour l'instant, je remets toutes les étapes ici.
 >
 > TBD <https://www.youtube.com/watch?v=gnrBqLbj1_Q>
+>
+> TBD 3a docker <https://www.youtube.com/watch?v=b0HMimUb4f0>
 
 ## Partie I
 

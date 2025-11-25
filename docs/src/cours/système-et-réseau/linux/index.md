@@ -21,9 +21,9 @@ eleventyComputed:
 
 > TBD <https://labex.io/linuxjourney>
 > outil shell <https://www.youtube.com/watch?v=yTkygli1OeE>
-
+> <https://www.youtube.com/watch?v=SU7i3P62cm0&list=PL0ibd6OZI4XIJzwFC6XtsgZEcjEb4J-g->
+> 
  -->
-
 
 {% info %}
 On suppose que vous avez suivi les tutos sur la [navigation dans un système de fichiers](/tutoriels/fichiers-navigation/), sur l'existence du [terminal](/tutoriels/terminal/) et [son utilisation](/tutoriels/terminal-utilisation)
