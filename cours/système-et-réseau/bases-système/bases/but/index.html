@@ -96,10 +96,12 @@
     
   
 
-  <p>Le but d'un <a href="https://fr.wikipedia.org/wiki/Ordinateur">ordinateur</a> est d'exécuter des <a href="https://fr.wikipedia.org/wiki/Processus_(informatique)">processus</a>. Pour que chaque processus n'ait pas à tout gérer (accès au processeur, à la mémoire, au disque dur, au réseau, ...) comme on le ferait avec un circuit imprimé par exemple, on utilise un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation">système d'exploitation</a> (ou <em><strong>OS</strong></em> pour <em>operating system</em>).</p>
-<p>Son but est de faire le lien entre le <a href="https://fr.wikipedia.org/wiki/Mat%C3%A9riel_informatique">matériel</a> (<em>hardware</em>) et le <a href="https://fr.wikipedia.org/wiki/Logiciel">logiciel</a> (<em>software</em>).</p>
+  <p>Le but d'un <a href="https://fr.wikipedia.org/wiki/Ordinateur">ordinateur</a> est de permettre à des utilisateurs d'exécuter des logiciels. Pour que chaque logiciel n'ait pas à tout gérer (accès au processeur, à la mémoire, au disque dur, au réseau, ...) comme on le ferait avec un circuit imprimé par exemple, on utilise un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation">système d'exploitation</a> (ou <em><strong>OS</strong></em> pour <em>operating system</em>) comme intermédiaire :</p>
 <p><img src="os.png" alt="os"></p>
-<p>Le matériel comporte tous les éléments physique d'une machine :</p>
+<h2>Matériel et logiciel</h2>
+<p>Le but premier d'un système d'exploitation est ainsi de faire le lien entre le <a href="https://fr.wikipedia.org/wiki/Mat%C3%A9riel_informatique">matériel</a> (<em>hardware</em>) et le <a href="https://fr.wikipedia.org/wiki/Logiciel">logiciel</a> (<em>software</em>).</p>
+<h3>Matériel</h3>
+<p>Le <strong><em>matériel</em></strong> comporte tous les éléments physique d'une machine :</p>
 <ul>
 <li>processeur</li>
 <li>mémoire</li>
@@ -112,31 +114,35 @@
 <ul>
 <li>processeur</li>
 <li>mémoire</li>
-<li>les <a href="https://en.wikipedia.org/wiki/Peripheral">périphériques</a> ou <em>devices</em> qui regroupent tout le reste. C'est ce qui se branche sur la <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">carte mère</a>.</li>
-</ul>
-<p>Les logiciels, que d'un point de vue système on appellera <a href="https://fr.wikipedia.org/wiki/Processus_(informatique)">process</a> ou processus auront besoin pour fonctionner d'accéder :</p>
-<ul>
-<li>au processeur pour effectuer les différentes opérations de leur code,</li>
-<li>à la mémoire pour stocker leurs variables</li>
-<li>souvent à des devices comme un disque dur (pour lire un fichiers), à la carte réseau (pour aller lire le contenu du site <a href="https://news.ycombinator.com/">hacker news</a>), en encore au clavier</li>
+<li>les <a href="https://en.wikipedia.org/wiki/Peripheral">périphériques</a> ou <em>devices</em> qui regroupent tout le reste. C'est ce qui se branche sur la <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">carte mère</a></li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Le but d'un système d'exploitation est double :</p>
-<ul>
-<li>il doit permettre d'utiliser les devices de l'ordinateur grâce à des <a href="https://fr.wikipedia.org/wiki/Pilote_informatique">drivers</a></li>
-<li>il permet l'exécution de process :
+<div class="pl-8 mb-2 mr-8">
+<p>Accès matériel</p>
+</div><div class="pl-8 mr-8">
+<p>Chaque device va avoir son fonctionnement propre (un clavier ne fonctionne pas pareil qu'un disque  dur et deux cartes réseaux de constructeurs différents vont fonctionner différemment). Pour permettre une utilisation simple de ces périphériques, un logiciel demande l'accès au matériel via des fonctions données par le système d'exploitation, nommés <a href="https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me">appel système</a> qui sont tout le temps le même pour une catégorie de périphérique donné. Le système d'exploitation accède quand à lui accède directement au matériel via des <a href="https://fr.wikipedia.org/wiki/Pilote_informatique">drivers</a> propre à chaque device.</p>
+</div></div>
+
+<h3>Logiciel</h3>
+<p>Les logiciels, que d'un point de vue système on appelle <a href="https://fr.wikipedia.org/wiki/Processus_(informatique)"><strong>process</strong></a> ou <strong>processus</strong> auront besoin pour fonctionner d'accéder au matériel mais également de cohabiter entre eux : un ordinateur va toujours avoir plusieurs logiciels en fonctionnement en même temps. C'est aussi le rôle d'un système d'exploitation que de faire en sorte que cette cohabitation se passe bien :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Logiciels concurrents</p>
+</div><div class="pl-8 mr-8">
+<p>Un système d'exploitation permet l'exécution de process :</p>
 <ul>
 <li>de façon <a href="https://fr.wikipedia.org/wiki/Programmation_concurrente">concurrente</a> (on peut écrire dans un gdoc tout en écoutant de la musique)</li>
 <li>de façon sécurisée : le gdoc ne peut accéder aux variables de l'application jouant de la musique</li>
 </ul>
-</li>
-</ul>
 </div></div>
 
+<p>Il n'y aura toujours qu'un seul processus actif à chaque instant, mais comme on change souvent de processus actif, on a l'impression qu'ils s'exécutent en même temps.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -145,13 +151,13 @@
 <p><a href="https://www.youtube.com/watch?v=r2__Rw8vu1M">Parallèle vs concurrent</a> :</p>
 <ul>
 <li>concurrent : le début d'un process est entre la début et la fin de l'autre</li>
-<li>parallèle : en même temps</li>
+<li>parallèle : en même temps. Ceci est possible si on a plusieurs cœur ou plusieurs processus sur la machine</li>
 </ul>
 </div></div>
 
+<p>Que les processus soient concurrent ou parallèle, c'est le rôle du système d'exploitation de gérer cela.</p>
 <h2>Couches Systèmes</h2>
-<p>Un système d’exploitation n'est pas monolithique, il est constitué de multiples parties qui forment un tout cohérent.</p>
-<p>L'organisation logicielle d'un ordinateur (ou plus généralement tout système logiciel assez important) est constitué de <em>couches</em>, comme le stipule le</p>
+<p>Un système d’exploitation n'est pas monolithique, il est constitué de multiples parties qui forment un tout cohérent. L'organisation logicielle d'un ordinateur (ou plus généralement tout système logiciel assez important) est constitué de <em>couches</em>, comme le stipule le</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -167,7 +173,7 @@ A --------------------&gt; B
    simple      simple
 A --------&gt; C --------&gt; B
 </code></pre>
-<p>Un autre exemple célèbre de couches en ingénierie système est le découpage en <a href="https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet">couches d'un réseau</a>. Ce principe universel est une instanciation de la <a href="https://fr.wikipedia.org/wiki/Discours_de_la_m%C3%A9thode#Deuxi%C3%A8me_partie">deuxième partie du discours de la méthode</a> : il faut diviser chaque difficulté en autant de parties facile à résoudre séparément.
+<p>Ce principe universel est une instanciation de la <a href="https://fr.wikipedia.org/wiki/Discours_de_la_m%C3%A9thode#Deuxi%C3%A8me_partie">deuxième partie du discours de la méthode</a> : il faut diviser chaque difficulté en autant de parties facile à résoudre séparément.
 D'un point de vue ingénierie, ceci permet en plus de  clairement les responsabilités de chaque couche, une maintenance plus aisée.</p>
 <p>Un ordinateur et son utilisation peut être séparé quatre couches :</p>
 <ol>
@@ -197,13 +203,18 @@ D'un point de vue ingénierie, ceci permet en plus de  clairement les responsabi
 </ul>
 </li>
 </ol>
-<p>Les utilisateurs lancent les process. Ceux-ci s'exécutent de façon parallèle grâce au noyau et utilisent les ressources matériels via des <a href="https://fr.wikipedia.org/wiki/Appel_syst%C3%A8me">appels systèmes</a>.</p>
-<h2>Système d'exploitation</h2>
-<p>Seul le noyau a accès au matériel et a un contrôle total de la machine. Il doit donc être le plus petit possible car le moindre bug fait planter la machine. C'est pourquoi on distingue deux états d'une machine :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Seul le noyau a accès au matériel et a un contrôle total de la machine. On distingue deux états d'une machine :</p>
 <ul>
 <li>le <em>kernel mode</em> : le noyau travail</li>
 <li>le <em>user mode</em> : un process travaille</li>
 </ul>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -212,27 +223,25 @@ D'un point de vue ingénierie, ceci permet en plus de  clairement les responsabi
 <p><a href="https://learn.microsoft.com/fr-fr/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode">User et Kernel mode sous windows 11</a></p>
 </div></div>
 
-<blockquote>
-<p>TBD le noyau et son utilité en 2 mots</p>
-</blockquote>
-<p>Un système d'exploitation ne peut donc être uniquement composé d'un noyau, ce serait inefficace (rien ne pourrait être exécuté en parallèle) et dangereux (le moindre bug logiciel ou matériel ferait tout planter). On sépare habituellement un système d'exploitation en 3 parties :</p>
+<p>La machine doit tourner le plus souvent possible en <em>user mode</em> car toute mauvaise action en kernel mode peut potentiellement être désastreux (plantage de la machine, effacement de données, etc). Un système d'exploitation ne peut être uniquement composé d'un noyau, ce serait inefficace (rien ne pourrait être exécuté en parallèle) et dangereux (le moindre bug logiciel ou matériel ferait tout planter) :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un système d'exploitation est constitué de 3 couches :</p>
 <ul>
-<li><strong>le</strong> <a href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation">noyau</a> (<em>kernel</em>) dont le but est de gérer :
-<ul>
-<li>les appels systèmes</li>
-<li>l'ordonnancement des process</li>
-<li>communications entre les 3 entités d'un ordinateur (process, matériel, noyau)</li>
-</ul>
-</li>
+<li><strong>le</strong> <a href="https://fr.wikipedia.org/wiki/Noyau_de_syst%C3%A8me_d%27exploitation">noyau</a></li>
 <li><strong>des</strong> <a href="https://en.wikipedia.org/wiki/Interface_(computing)#Software_interfaces">interfaces logicielles</a> qui permettent d'accéder aux devices (comme accéder à une clé usb)</li>
 <li><strong>des</strong> <a href="https://fr.wikipedia.org/wiki/Daemon_(informatique)">démons</a> qui gèrent l'environnement (le fait de réagir à l'insertion d'une clé usb dans l'ordinateur par exemple)</li>
 </ul>
-<p>Les démons et les interfaces sont des process comme les autres. Ils sont cependant exécutés par un utilisateur spécial, souvent nommé <a href="https://fr.wikipedia.org/wiki/Utilisateur_root"><code>root</code></a>, qui est le [super-utilisateur] qui est le représentant utilisateur du système.</p>
-<p><img src="os-2.png" alt="os 2"></p>
-<h2>Démarrage de l'ordinateur</h2>
-<p>Les différentes étapes du chargement d'un système d'exploitation</p>
+</div></div>
+
+<p>Les démons et les interfaces sont des process comme les autres. Ils sont cependant exécutés par un utilisateur spécial, souvent nommé <a href="https://fr.wikipedia.org/wiki/Utilisateur_root"><code>root</code></a>, qui est le <a href="https://fr.wikipedia.org/wiki/Utilisateur_root">super-utilisateur</a> et est le représentant utilisateur du système.</p>
+<p><span id="démarrage"></span></p>
+<p>La distinction entre user et kernel mode se fait directement au démarrage de la machine :</p>
 <ol>
-<li>boot de l'ordinateur</li>
+<li>boot de l'ordinateur en kernel mode</li>
 <li>exécution d'un <a href="https://fr.wikipedia.org/wiki/Chargeur_d%27amor%C3%A7age">chargeur d'amorçage (<em>bootloader</em>)</a></li>
 <li>charge le noyau
 <ol>
@@ -243,20 +252,37 @@ D'un point de vue ingénierie, ceci permet en plus de  clairement les responsabi
 <li>passage en user mode puis charge les démons et les interfaces</li>
 <li>login</li>
 </ol>
-<h2>Process et programmes</h2>
-<blockquote>
-<p>TBD montrer les programmes et les process avec le finder.</p>
-</blockquote>
-<p>Un process est l'unité de base d'un programme. Un process est un ensemble d'instructions exécutées par le système d'exploitation. Tout process est la propriété le l'utilisateur du système qui l'a exécuté.</p>
-<h2>Utilisateurs</h2>
-<p>On peut séparer les utilisateurs d'un système en trois grandes catégorie.</p>
-<h3><code>root</code></h3>
+<p>À partir de l'étape 4, l'ordinateur est en user mode. Il ne passe en kernel que :</p>
+<ul>
+<li>via un appel système d'un processus</li>
+<li>lorsque l'on change de processus actif</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>À retenir</p>
+</div><div class="pl-8 mr-8">
+<p>La partie noyau du système d'exploitation ne fonctionne pas tout le temps, elle ne s'active <strong>que</strong> lors d'un appel système ou lors du changement de processus actif.</p>
+</div></div>
+
+<p>Si tous les process du user mode pouvaient effectuer tous les appels systèmes sans restriction cela poseraient d'énormes problèmes de sécurité (un process pourrait accéder à toute la mémoire, en particulier celle réservée à d'autres process par exemple) c'est pourquoi chaque process n'a qu'un nombre restreint de possibilités (on appelle ceci <a href="https://fr.wikipedia.org/wiki/Droit_d%27acc%C3%A8s_(informatique)">des droits</a>) gérés via la notion d'utilisateurs.</p>
+<h2>Utilisateurs et groupes</h2>
+<p>Du point de vue du système d'exploitation un utilisateur est une entité permettant d'exécuter des processus. L'utilisateur qui se connecte à l'ordinateur au login est donc un parmi beaucoup d'autres, la plupart n'étant pas associé à une personne physique. Les utilisateurs sont ensuite placés dans des groupes, chaque groupe ayant des droits particuliers.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un utilisateur peut utiliser uniquement les éléments (logiciel, fichier, dossier, ...) qui lui appartiennent ou qui appartiennent à ses groupes.</p>
+</div></div>
+
+<p>Il existe de nombreux groupes et utilisateurs utilisés par le système pour segmenter (et donc sécuriser) les utilisations. Parmi eux, un utilisateur et un groupe se détachent car ils ont plus de droit que les autres.</p>
+<h3>Utilisateur <code>root</code></h3>
 <p>L'utilisateur <code>root</code> est l'utilisateur lié au système d'exploitation. Il est le propriétaire des process (démons) et interfaces du système d'exploitation. Cet utilisateur a ainsi tous les droits (peut aller partout, réserver autant de mémoire qu'il veut, etc).</p>
 <p>Comme <strong>Tout</strong> processus a un propriétaire, l'existence de cet utilisateur est garantie.</p>
-<blockquote>
-<p>TBD sous windows ?</p>
-</blockquote>
-<h3>Administrateurs systèmes</h3>
+<h3>Groupe des administrateurs systèmes</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -265,13 +291,8 @@ D'un point de vue ingénierie, ceci permet en plus de  clairement les responsabi
 <p><a href="https://fr.wikipedia.org/wiki/Administrateur_syst%C3%A8me">administrateur système</a></p>
 </div></div>
 
-<p>Ces utilisateurs ont des droits particulier, ils peuvent modifier des paramètres systèmes et exécuter ou stopper des démons. Ces utilisateur ne sont pas forcément root, en effet,  souvent l'utilisateur principal d'une machine est administrateur.</p>
-<p>Cela permet, si nécessaire, d'installer ou de configurer son système sans être connecté en tant que root.</p>
-<h3>Simple utilisateur</h3>
-<p>Enfin, il existe la foule des autres utilisateurs (vous sur les ordinateurs de l'école ou la fac par exemple) qui ne peuvent pas administer la machine, ni lancer de démons. Vous avez en revanche le droit d'exécuter la plupart des process et d'installer vos propres programme dans l'espace disque qui vous est réservé.</p>
-<blockquote>
-<p>TBD sous windows mono-utilisateur, aussi admin.</p>
-</blockquote>
+<p>Le groupe des administrateurs systèmes permet de modifier des paramètres systèmes d'exécuter ou stopper des démons et d'installer de nouveaux logiciels. Ces utilisateurs ont moins de pouvoirs que root qui peut tout faire mais permettent d'administrer le système au quotidien.</p>
+<p>Cela permet, si nécessaire, d'installer ou de configurer son système sans être connecté en tant que root en utilisant <a href="https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers">la commande sudo</a> sous Linux par exemple.</p>
 
 
 </article>
