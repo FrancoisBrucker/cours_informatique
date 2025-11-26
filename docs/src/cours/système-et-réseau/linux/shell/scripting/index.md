@@ -55,11 +55,11 @@ La différence est que pour le deuxième appel, c'est le bash du PATH qui est pr
 
 ## Shell scripting
 
-Si vous n'avez pas besoin des spécificités de bash on a l'usage d'utiliser les commandes fondamentales des shell de type sh. Nous allons voir ci-après les commandes bash, car elles permettent de faire parfois des choses plus poussées. 
+Si vous n'avez pas besoin des spécificités de bash on a l'usage d'utiliser les commandes fondamentales des shell de type sh. Nous allons voir ci-après les commandes bash, car elles permettent de faire parfois des choses plus poussées.
 
 {% aller %}
 
-- [bash scripting](bash){.interne}
+- [sh scripting](sh-scripting){.interne}
 
 {% endaller %}
 
@@ -71,7 +71,7 @@ perso : mon shell c'est zsh mais les script je les écris en (ba)sh. Si vous êt
 {% endinfo %}
 
 - [sh ou bash pour nos scripts ?](https://www.youtube.com/watch?v=8L7cM4q6TL8)
-- le script se fait avec le shell le plus courant : bash (présent sous macos)
+- le script se fait avec le shell présent sur tous les systèmes : sh (si vous n'arrivez pas à faire votre script en sh parce que trop compliqué, c'est peut-être parce que vous devriez utiliser un langage de programmation (comme python) pour le faire)
 - [histoire du design sh](https://www.youtube.com/watch?v=FI_bZhV7wpI)
 
 ## Interpréteurs de script

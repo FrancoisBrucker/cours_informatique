@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Shell
+title: Shell scripting
 
 eleventyNavigation:
     order: 1
@@ -14,7 +14,12 @@ eleventyComputed:
 ---
 
 
-Essayer d'être portable. On fait du du bash (voir du sh) pour pouvoir être exécuté partout
+> sh cheat sheet : <joedog.org/articles-cheat-sheet/>
+> <https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash>
+> <https://stackoverflow.com/a/5725402>
+> <https://www.commandlinux.com/man-page/man1/sh.1.html>
+> 
+Essayer d'être portable. On fait du du sh pour pouvoir être exécuté partout
 
 - [tuto](https://www.youtube.com/watch?v=tK9Oc6AEnR4)
 - [un autre tuto](https://www.youtube.com/watch?v=KG97VzMjfMg)
@@ -40,7 +45,7 @@ Taper des commandes = script. Comme python. Il faut trouver un moyen de faire de
 
 {% endlien %}
 
-Les fonctions ne peuvent rendre qu'un entier, c'est leur code de sortie. POur le reste effectuez vos sorties sur la sortie standard (avec `echo`).
+Les fonctions ne peuvent rendre qu'un entier, c'est leur code de sortie. Pour le reste effectuez vos sorties sur la sortie standard (avec `echo`).
 
 ## Structures de contrôle
 
@@ -237,6 +242,9 @@ $ echo $$
 704757
 ```
 
-## Bibliographie
+## Bash scripting
+
+> TBD étoffer et vérifier que je ne raconte pas de bêtises.
+> TBD dans les systèmes actuels sh = bash
 
 - [un cours](https://michael-herbst.com/teaching/advanced-bash-scripting-2017/)
