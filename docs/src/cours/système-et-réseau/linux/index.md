@@ -45,5 +45,3 @@ Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions au
 3. [système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
 4. [shell](shell){.interne}
 5. [fichiers unix](fichiers){.interne}
-
-> TBD faire redirection dans shell et y revenir dans fichier en disant que c'est général.
