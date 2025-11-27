@@ -18,7 +18,7 @@ eleventyComputed:
 > <https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash>
 > <https://stackoverflow.com/a/5725402>
 > <https://www.commandlinux.com/man-page/man1/sh.1.html>
-> 
+
 Essayer d'être portable. On fait du du sh pour pouvoir être exécuté partout
 
 - [tuto](https://www.youtube.com/watch?v=tK9Oc6AEnR4)
@@ -29,6 +29,12 @@ Taper des commandes = script. Comme python. Il faut trouver un moyen de faire de
 {% aller %}
 <https://www.gnu.org/software/bash/manual/html_node/>
 {% endaller %}
+
+
+```shell
+#! /bin/sh -
+
+```
 
 ## Gestion des paramètres
 
@@ -165,7 +171,7 @@ done
 
 On utilise parfois la boucle `while` pour lire l'entrée standard, en combinaison avec la commande [`read`](https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/les-bases-de-la-programmation-shell/la-commande-read) :
 
-```
+```shell
 while read line
 do
   echo "$line"
@@ -174,14 +180,14 @@ done < /dev/stdin
 
 Ou le redoutable :
 
-```
+```shell
 while read line
 do
   echo "$line"
 done < "${1:-/dev/stdin}"
 ```
 
-Qui lit l'entrée standard si le premier paramètre (`$1`) n'est pas positionné. Cela utilise une spécificité de bash pour [gérer les variables](https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion).
+Qui lit l'entrée standard si le premier paramètre (`$1`) n'est pas positionné. Cela utilise une spécificité de sh pour [gérer les variables](https://github.com/dylanaraps/pure-sh-bible?tab=readme-ov-file#parameter-expansion).
 
 ## Variables
 
@@ -241,6 +247,10 @@ $ exec ./pid.sh
 $ echo $$
 704757
 ```
+
+## Getopt
+
+> TBD <https://labex.io/fr/tutorials/shell-bash-getopt-391993>
 
 ## Bash scripting
 

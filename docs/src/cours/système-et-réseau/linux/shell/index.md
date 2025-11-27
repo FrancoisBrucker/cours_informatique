@@ -13,6 +13,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+{% lien %}
+
+- [quelques liens](https://www.youtube.com/watch?v=Jllnhid7O7w)
+- [Cheat sheet par type](https://github.com/lazyoracle/linux-cheatsheet)
+- [Cheat sheet terminal et liste commandes](https://cheatography.com/davechild/cheat-sheets/linux-command-line/)
+
+{% endlien %}
+
 Le shell est ce via quoi on exécute des commandes. Pour que l'environnement de travail soit :
 
 - vérifiable
@@ -41,6 +49,10 @@ Certaines variables sont dites d'**_environnement_** car elles sont comprises pa
 [Configuration du shell](configuration){.interne}
 
 {% endaller %}
+
+## redirection
+
+> TBD
 
 ## Scripting
 

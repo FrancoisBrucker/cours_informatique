@@ -25,15 +25,18 @@ eleventyComputed:
 > 
  -->
 
-{% info %}
-On suppose que vous avez suivi les tutos sur la [navigation dans un système de fichiers](/tutoriels/fichiers-navigation/), sur l'existence du [terminal](/tutoriels/terminal/) et [son utilisation](/tutoriels/terminal-utilisation)
-{% endinfo %}
+{% lien %}
+
+- [Philosophie d'Unix (featuring Kernighan avec les pieds sur le bureau)](https://www.youtube.com/watch?v=tc4ROCJYbm0)
+- [histoire des termes informatiques](https://www.youtube.com/watch?v=qgwrt7vYY4U)
+
+{% endlien %}
 
 Histoire d'Unix :
 
 - [frise historique](https://www.youtube.com/watch?v=AEsdyAeumVQ)
 - les [débuts d'Unix](https://www.youtube.com/watch?v=boahlBmc-NY)
-- [Ken Thompson interviewed by Brian Kernighan](https://www.youtube.com/watch?v=EY6q5dv_B-o&t=4s)
+- [Ken Thompson interviewed by Brian Kernighan](https://www.youtube.com/watch?v=EY6q5dv_B-o)
 
 Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions aux variantes et aux extensions à POSIX qui sont système dépendant)
 
@@ -42,3 +45,5 @@ Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions au
 3. [système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
 4. [shell](shell){.interne}
 5. [fichiers unix](fichiers){.interne}
+
+> TBD faire redirection dans shell et y revenir dans fichier en disant que c'est général.

@@ -13,6 +13,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+{% lien %}
+
+- <https://github.com/dylanaraps/pure-sh-bible>
+- [cheat sheet sh](https://www.joedog.org/articles-cheat-sheet/)
+
+{% endlien %}
+
 Le scripting c'est l'exécution de fichiers textes pour résoudre un problème spécifique. Un langage de script est un langage interprété. Cela peut-être :
 
 - du shell

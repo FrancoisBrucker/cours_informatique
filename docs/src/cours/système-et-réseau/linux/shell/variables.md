@@ -37,6 +37,13 @@ Puis on peut l'afficher en précédant sont nom d'un ${} :
 echo ${var}
 ```
 
+On ne fait que écrire le contenu de la variable, on peut en faire ensuite ce que l'on veut :
+
+```shell
+❯ liste=ls
+❯ ${liste}
+```
+
 {% info %}
 Il n'est pas nécessaire d'utiliser les `{}` (`echo $var` fonctionne) mais prenez l'habitude de le faire, cela permet :
 
@@ -105,7 +112,7 @@ On peut modifier/créer plusieurs variables en les séparant par des espaces (pa
 V1=v1 V2=v2 commande
 ```
 
-### Supprimer une variable
+## Supprimer une variable
 
 Avec `unset` :
 
@@ -116,10 +123,44 @@ unset toto
 echo ${toto}
 ```
 
-### Visualisation des variables
+## Visualisation des variables
 
 Avec la commande shell [`set`](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html).
 
-### Existence d'une variable
+## Existence d'une variable
 
 Il n'y a pas de réel moyen de savoir si une variable existe ou pas. Par exemple `echo ${n_existe_pas}` ne produira pas d'erreur, le métacaractère `${n_existe_pas}` étant juste remplacé par la chaîne vide.
+
+## Affecter une variable
+
+> <https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting>
+
+### Commande
+
+```shell
+var=$(ls)
+```
+
+> TBD comme ` `. Mais je n'aime pas l'utiliser
+
+C'est exécuté dans un sous shell et on récupère la sortie standard. Pas besoin du `$`, la sortie est juste affichée. Ce genre d'astuce permet de faire ce genre de choses :
+
+```
+(cd ..;ls)
+```
+
+### Arithmétique
+
+```shell
+var=$((1 + 3))
+```
+
+### Chaîne de caractères
+
+```shell
+echo "$((3+4))"
+```
+
+```shell
+echo '$((3+4))'
+```
