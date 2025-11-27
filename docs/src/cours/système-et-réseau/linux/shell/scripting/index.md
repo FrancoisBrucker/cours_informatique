@@ -20,12 +20,22 @@ eleventyComputed:
 - [cheat sheet sh](https://www.joedog.org/articles-cheat-sheet/)
 
 {% endlien %}
+{% lien %}
+en vrac :
+
+- <https://www.shellscript.sh/>
+- <http://www.nylxs.com/docs/classicshellscripting.pdf>
+- <https://www.kea.nu/files/textbooks/humblesec/thelinuxcommandline.pdf>
+
+{% endlien %}
 
 Le scripting c'est l'exécution de fichiers textes pour résoudre un problème spécifique. Un langage de script est un langage interprété. Cela peut-être :
 
 - du shell
 - mais aussi python
 - ou d'autres langage de script comme awk, perl, ruby, …
+
+## Shebang
 
 Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noyau vérifie s'il commence par `#!`, appelé [shebang](https://fr.wikipedia.org/wiki/Shebang).
 
@@ -63,11 +73,13 @@ La différence est que pour le deuxième appel, c'est le bash du PATH qui est pr
 
 ## Shell scripting
 
-Si vous n'avez pas besoin des spécificités de bash on a l'usage d'utiliser les commandes fondamentales des shell de type sh. Nous allons voir ci-après les commandes bash, car elles permettent de faire parfois des choses plus poussées.
+Un script shell n'est pas un programme compliqué, c'est fait pour automatiser des choses simples executer des commandes qui elles font le travail. Enfin, un script shell doit pouvoir être utilisé sur toute machine unix.
+
+Si vous devez faire des choses plus compliquée, préférer utiliser un langage de programmation comme python
 
 {% aller %}
 
-- [sh scripting](sh-scripting){.interne}
+[sh scripting](sh-scripting){.interne}
 
 {% endaller %}
 

@@ -21,7 +21,17 @@ eleventyComputed:
 
 {% endlien %}
 
-Le shell est ce via quoi on exécute des commandes. Pour que l'environnement de travail soit :
+Le shell est ce via quoi on exécute des commandes.
+
+## Exécution de commandes
+
+> simple
+> retour 0 = ok et sinon message d'erreur
+> redirection entrée/sortie/erreur
+
+## Variables d'environnement
+
+Pour que l'environnement de travail soit :
 
 - vérifiable
 - modifiable
@@ -49,10 +59,6 @@ Certaines variables sont dites d'**_environnement_** car elles sont comprises pa
 [Configuration du shell](configuration){.interne}
 
 {% endaller %}
-
-## redirection
-
-> TBD
 
 ## Scripting
 

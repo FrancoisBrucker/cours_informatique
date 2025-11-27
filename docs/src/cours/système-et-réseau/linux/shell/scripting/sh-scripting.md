@@ -19,17 +19,30 @@ eleventyComputed:
 > <https://stackoverflow.com/a/5725402>
 > <https://www.commandlinux.com/man-page/man1/sh.1.html>
 
-Essayer d'être portable. On fait du du sh pour pouvoir être exécuté partout
+Les principes d'un bon script sont (voir [classic shell scripting](https://www.amazon.fr/Classic-Shell-Scripting-Arnold-Robbins/dp/0596005954)) :
 
+1. faire **une seule chose** et sans blabla
+2. prendre et rendre du texte pas de fichiers binaires
+3. utiliser les entrés/sorties standard
+4. vos entrées et vos sorties doivent avoir le même format
+5. "*laisser quelqu'un d'autre faire les choses compliquées*" : utiliser d'autres commandes unix
+
+{% attention "À retenir" %}
+
+Essayer d'être portable. On fait du du sh pour pouvoir être exécuté partout.
+
+{% endattention %}
+
+> TBD faire exemple du rot13 tout au long de ce cours
+
+Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes sans les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)
+
+{% lien %}
 - [tuto](https://www.youtube.com/watch?v=tK9Oc6AEnR4)
 - [un autre tuto](https://www.youtube.com/watch?v=KG97VzMjfMg)
 
-Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes san les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)
-
-{% aller %}
 <https://www.gnu.org/software/bash/manual/html_node/>
-{% endaller %}
-
+{% endlien %}
 
 ```shell
 #! /bin/sh -
