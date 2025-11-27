@@ -107,12 +107,26 @@
 </ul>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>en vrac :</p>
+<ul>
+<li><a href="https://www.shellscript.sh/">https://www.shellscript.sh/</a></li>
+<li><a href="http://www.nylxs.com/docs/classicshellscripting.pdf">http://www.nylxs.com/docs/classicshellscripting.pdf</a></li>
+<li><a href="https://www.kea.nu/files/textbooks/humblesec/thelinuxcommandline.pdf">https://www.kea.nu/files/textbooks/humblesec/thelinuxcommandline.pdf</a></li>
+</ul>
+</div></div>
+
 <p>Le scripting c'est l'exécution de fichiers textes pour résoudre un problème spécifique. Un langage de script est un langage interprété. Cela peut-être :</p>
 <ul>
 <li>du shell</li>
 <li>mais aussi python</li>
 <li>ou d'autres langage de script comme awk, perl, ruby, …</li>
 </ul>
+<h2>Shebang</h2>
 <p>Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noyau vérifie s'il commence par <code>#!</code>, appelé <a href="https://fr.wikipedia.org/wiki/Shebang">shebang</a>.</p>
 <p>Si oui la fin de la ligne correspond au chemin absolu d'un programme auquel on passe en 1er paramètre le fichier à exécuter.</p>
 <p>Par exemple si on a le fichier exécutable suivant, nommé <code>bonjour</code> :</p>
@@ -149,15 +163,14 @@ print(&quot;Coucou monde !&quot;)
 </div></div>
 
 <h2>Shell scripting</h2>
-<p>Si vous n'avez pas besoin des spécificités de bash on a l'usage d'utiliser les commandes fondamentales des shell de type sh. Nous allons voir ci-après les commandes bash, car elles permettent de faire parfois des choses plus poussées.</p>
+<p>Un script shell n'est pas un programme compliqué, c'est fait pour automatiser des choses simples executer des commandes qui elles font le travail. Enfin, un script shell doit pouvoir être utilisé sur toute machine unix.</p>
+<p>Si vous devez faire des choses plus compliquée, préférer utiliser un langage de programmation comme python</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<ul>
-<li><a href="sh-scripting" class="interne">sh scripting</a></li>
-</ul>
+<p><a href="sh-scripting" class="interne">sh scripting</a></p>
 </div></div>
 
 <p>Plusieurs sortes de shell (sh : shell historique, bash : shell par défaut dans Linux, zsh : shell par défaut macos, ...)</p>
