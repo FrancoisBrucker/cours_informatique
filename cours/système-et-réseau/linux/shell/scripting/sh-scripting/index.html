@@ -116,6 +116,8 @@
 <p><a href="https://www.gnu.org/software/bash/manual/html_node/">https://www.gnu.org/software/bash/manual/html_node/</a></p>
 </div></div>
 
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token shebang important">#! /bin/sh -</span>
+</code></pre>
 <h2>Gestion des paramètres</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -236,18 +238,16 @@ echo $x
 done                   
 </code></pre>
 <p>On utilise parfois la boucle <code>while</code> pour lire l'entrée standard, en combinaison avec la commande <a href="https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/les-bases-de-la-programmation-shell/la-commande-read"><code>read</code></a> :</p>
-<pre><code>while read line
-do
-  echo &quot;$line&quot;
-done &lt; /dev/stdin
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">while</span> <span class="token builtin class-name">read</span> line
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span>
+<span class="token keyword">done</span> <span class="token operator">&lt;</span> /dev/stdin</code></pre>
 <p>Ou le redoutable :</p>
-<pre><code>while read line
-do
-  echo &quot;$line&quot;
-done &lt; &quot;${1:-/dev/stdin}&quot;
-</code></pre>
-<p>Qui lit l'entrée standard si le premier paramètre (<code>$1</code>) n'est pas positionné. Cela utilise une spécificité de bash pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion">gérer les variables</a>.</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">while</span> <span class="token builtin class-name">read</span> line
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span>
+<span class="token keyword">done</span> <span class="token operator">&lt;</span> <span class="token string">"<span class="token variable">${1<span class="token operator">:-</span><span class="token operator">/</span>dev<span class="token operator">/</span>stdin}</span>"</span></code></pre>
+<p>Qui lit l'entrée standard si le premier paramètre (<code>$1</code>) n'est pas positionné. Cela utilise une spécificité de sh pour <a href="https://github.com/dylanaraps/pure-sh-bible?tab=readme-ov-file#parameter-expansion">gérer les variables</a>.</p>
 <h2>Variables</h2>
 <h3>Métacaractères</h3>
 <p>On a déjà vu <a href="../../bases-linux/commandes#meta-caracteres">les métacaractères du shell</a>, ils commencent par <code>$</code> et peuvent être utilisés dans les scripts :</p>
@@ -300,6 +300,10 @@ $ <span class="token builtin class-name">exec</span> ./pid.sh
 <span class="token number">705824</span>
 $ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
 <span class="token number">704757</span></code></pre>
+<h2>Getopt</h2>
+<blockquote>
+<p>TBD <a href="https://labex.io/fr/tutorials/shell-bash-getopt-391993">https://labex.io/fr/tutorials/shell-bash-getopt-391993</a></p>
+</blockquote>
 <h2>Bash scripting</h2>
 <blockquote>
 <p>TBD étoffer et vérifier que je ne raconte pas de bêtises.

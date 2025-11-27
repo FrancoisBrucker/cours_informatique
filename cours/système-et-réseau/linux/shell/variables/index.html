@@ -120,6 +120,9 @@
 <p>Puis on peut l'afficher en précédant sont nom d'un ${} :</p>
 <pre><code>echo ${var}
 </code></pre>
+<p>On ne fait que écrire le contenu de la variable, on peut en faire ensuite ce que l'on veut :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token assign-left variable">liste</span><span class="token operator">=</span>ls
+❯ <span class="token variable">${liste}</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -197,17 +200,34 @@ echo ${toto}
 <p>On peut modifier/créer plusieurs variables en les séparant par des espaces (pas un <code>;</code> qui est le métacaractère shell de séparation de commande):</p>
 <pre><code>V1=v1 V2=v2 commande
 </code></pre>
-<h3>Supprimer une variable</h3>
+<h2>Supprimer une variable</h2>
 <p>Avec <code>unset</code> :</p>
 <pre><code>toto=titi
 echo ${toto}
 unset toto
 echo ${toto}
 </code></pre>
-<h3>Visualisation des variables</h3>
+<h2>Visualisation des variables</h2>
 <p>Avec la commande shell <a href="https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html"><code>set</code></a>.</p>
-<h3>Existence d'une variable</h3>
+<h2>Existence d'une variable</h2>
 <p>Il n'y a pas de réel moyen de savoir si une variable existe ou pas. Par exemple <code>echo ${n_existe_pas}</code> ne produira pas d'erreur, le métacaractère <code>${n_existe_pas}</code> étant juste remplacé par la chaîne vide.</p>
+<h2>Affecter une variable</h2>
+<blockquote>
+<p><a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting">https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Quoting</a></p>
+</blockquote>
+<h3>Commande</h3>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token assign-left variable">var</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ls</span><span class="token variable">)</span></span></code></pre>
+<blockquote>
+<p>TBD comme <code> </code>. Mais je n'aime pas l'utiliser</p>
+</blockquote>
+<p>C'est exécuté dans un sous shell et on récupère la sortie standard. Pas besoin du <code>$</code>, la sortie est juste affichée. Ce genre d'astuce permet de faire ce genre de choses :</p>
+<pre><code>(cd ..;ls)
+</code></pre>
+<h3>Arithmétique</h3>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token assign-left variable">var</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token number">3</span><span class="token variable">))</span></span></code></pre>
+<h3>Chaîne de caractères</h3>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span><span class="token number">3</span><span class="token operator">+</span><span class="token number">4</span><span class="token variable">))</span></span>"</span></code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">'$((3+4))'</span></code></pre>
 
 
 </article>
