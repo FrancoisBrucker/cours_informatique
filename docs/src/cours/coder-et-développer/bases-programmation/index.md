@@ -19,7 +19,9 @@ Nous verrons comment est structuré un langage informatique et comment écrire p
 
 Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple et il n'y a aucun prérequis informatique à avoir. Le but est de pouvoir exécuter (de la façon la plus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).
 
-## Partie I : principes
+## Partie I
+
+### Principes
 
 Avant d'écrire des programmes en python, on commence par s'intéresser à ses mécanismes internes en comprenant ce qu'est une instruction python et ce que'on peut faire avec.
 
@@ -27,11 +29,15 @@ Avant d'écrire des programmes en python, on commence par s'intéresser à ses m
 [Principes](principes){.interne}
 {% endaller %}
 
+### Exécuter du code python
+
 Écrire directement à l'interpréteur comme on l'a fait jusqu'à présent est faisable lorsque l'on a besoin de n'écrire qu'une ligne de python à la fois, mais lorsque l'on veut faire des choses plus compliquées comme créer des tests ou effectuer des boucles, il faut des outils plus perfectionnés.
 
-Nous allons montrer deux outils pour faire cela : les notebooks et [Spyder](https://www.spyder-ide.org/). Ce sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
+Nous allons montrer trois outils pour faire cela : les notebooks, [Spyder](https://www.spyder-ide.org/) et [vscode](https://code.visualstudio.com/).
 
-### Notebooks
+#### Notebooks
+
+Ce sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
 
 C'est une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des [Notebooks](https://jupyter.org/) est particulièrement adaptée pour rédiger et partager des comptes-rendus.
 
@@ -39,7 +45,7 @@ C'est une manière plus conviviale que la console d'accéder à l'interpréteur 
 [Notebooks](notebooks){.interne}
 {% endaller %}
 
-### Spyder
+#### Spyder
 
 {% lien %}
 <https://www.spyder-ide.org/>
@@ -51,6 +57,12 @@ Spyder est un éditeur lié à un interpréteur python. L'application est très 
 > Montrer que l'interpréteur tourne toujours en envoyant une fonction et en la'exécutant depuis l'interpréteur.
 > coder avec des fonctions c'est bien.
 
+#### Vscode
+
+> TBD installer vscode et exécuter du python avec le triangle.
+> à la différence de spyder le code est réinitialisé à chaque exécution. 
+> montrer comment avec l'interpréteur.
+
 ## Partie II: structurer son code
 
 > module de python. Matplotlib et spyder
@@ -59,6 +71,8 @@ Spyder est un éditeur lié à un interpréteur python. L'application est très 
 > montrer qu'une fonction est toujours là après avoir été crée. Faire une fonction avec spyder, l'envoyer dans l'interpréteur puis l'utiliser.
 
 ### Utiliser le module matplotlib
+
+> TBD à déplacer, cela utilise des choses non vues.
 
 Installé avec la plupart des environnements fournissant un interpréteur, le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.
 

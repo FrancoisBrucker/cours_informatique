@@ -80,7 +80,7 @@ Dans la console de <https://console.basthon.fr/>, donnez la classe de chaque obj
 Il est possible de créer un nouvel objet à partir d'un objet d'une autre classe en le convertissant. Supposons que l'on veuille convertir un objet `b`{.language-} dans la classe de nom `classe_a`{.language-} Pour cela, on utilise le nom de la classe de destination, suivie d'une parenthèse où l'on place notre objet à convertir (comme si `classe_a`{.language-} était une fonction) :
 
 ```python
-classe_a(b)  # transfome l'objet b en objet de classe classe_a
+classe_a(objet_de_classe_b)  # transforme l'objet b en objet de classe classe_a
 ```
 
 ### Réels, entiers et chaînes de caractères

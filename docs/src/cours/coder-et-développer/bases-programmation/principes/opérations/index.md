@@ -115,9 +115,10 @@ J'aime bien faire du python.
 ### <span id="f-string"></span>Chaînes formatées
 
 {% lien %}
+
 - [Documentation python sur les chaînes formatées (7.1.1)](https://docs.python.org/fr/3/tutorial/inputoutput.html#tut-f-strings)
 - [Exemples d'utilisation](https://realpython.com/python-f-strings/#formatting-strings-with-pythons-f-string)
-- 
+
 {% endlien %}
 
 On peut aussi créer des chaînes en utilisant _implicitement_ la concatenation en utilisant **_les chaines formatées_** (_format-string_ ou encore _f-string_).
@@ -227,3 +228,19 @@ Python a choisi cette façon de faire pour permettre des notations abrégées co
 - `((x > 0) and log(x)) or None`{.language-} qui rendra soit `None`{.language-} si `x <= 0`{.language-} soit `log(x)`{.language-} sinon
 
 {% endinfo %}
+
+## Immutabilité des objets
+
+Notez que tous les objets basique de python sont **_immutables_** : ils ne peuvent être modifiés. Ainsi, si `x = 41`{.language_}, on est dans la situation suivante :
+
+![nouvel objet](./nouvel-objet-0.png)
+
+En incrémentant `x`{.language-} :
+
+```python
+x = x + 1
+```
+
+On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus accessible va disparaître sous l'action du [ramasse-miettes](../variables/#ramasse-miettes){.interne} :
+
+![nouvel objet](./nouvel-objet.png)

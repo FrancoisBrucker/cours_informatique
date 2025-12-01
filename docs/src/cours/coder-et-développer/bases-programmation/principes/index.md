@@ -28,7 +28,11 @@ L'interpréteur python comme intermédiaire entre le code python et son exécuti
 [Interpréteur](interpréteur){.interne}
 {% endaller %}
 
-## Commentaires
+## Éléments de langage
+
+On va lister les concepts fondamentaux qui permettent d'utiliser l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.
+
+### Commentaires
 
 Commençons par ne **pas** écrire du python. Dans une ligne de code python, tout ce qui suit un `#`{.language-} n'est pas lu.
 
@@ -48,15 +52,15 @@ Alors que le même code sans `#`{.language-} est interprété par python et comm
 SyntaxError: invalid syntax
 ```
 
-## Objets, variables et noms
+### Objets et variables
 
-Les **_objets_** de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets. Une **_variable_** est un nom que peut prendre un objet dans un cadre, appelé **_espace de nom_**, particulier.
+Les **_objets_** de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets. Une **_variable_** est un nom qui va représenter un objet.
 
 {% attention %}
 Une variable n'est **pas** un objet, ce n'est qu'un moyen d'y accéder.
 {% endattention %}
 
-### Objets
+#### Objets
 
 Tout sur les objets courant que vous manipulerez en python.
 
@@ -64,7 +68,7 @@ Tout sur les objets courant que vous manipulerez en python.
 [Objets types et types d'objets](objets-types){.interne}
 {% endaller %}
 
-### Variables
+#### Variables
 
 Principe de l'affectation des variables en python.
 
@@ -72,7 +76,7 @@ Principe de l'affectation des variables en python.
 [Variables](variables){.interne}
 {% endaller %}
 
-## Opérations sur les objets
+#### Opérations sur les objets
 
 Créer de nouveaux objets avec d'autres objets.
 
@@ -80,7 +84,7 @@ Créer de nouveaux objets avec d'autres objets.
 [Opérations sur les objets](opérations){.interne}
 {% endaller %}
 
-## Fonctions et méthodes
+### Fonctions et méthodes
 
 Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.
 
@@ -96,9 +100,12 @@ Les [modules](https://docs.python.org/fr/3/tutorial/modules.html) pythons sont d
 [Modules](modules){.interne}
 {% endaller %}
 
+> TBD notation pointée.
+> 
 ## Espace de nommage
 
 <!-- 
+> TBD à déplacer, après avoir vu les structures de dictionnaires et de listes. à mettre dans la partie débuggeur, bien plus tard
 
 > TBD reprendre avec la partie variable qui commence à en parler. Le mettre après coder ses fonctions/modules.
 >

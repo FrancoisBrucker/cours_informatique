@@ -246,6 +246,7 @@ Il existe aussi deux plugins intéressants pour écrire ou compiler du markdown 
 
 - [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) qui possède tout le nécessaire pour manipuler de façon agréable le markdown (n'hésitez pas à regarder la documentation, elle est très bien faite).
 - [Markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint) qui est un analyseur syntaxique pour Markdown (il va souligner en jaune ce qui n'est pas du bon markdown)
+- [Markdown+Math](https://marketplace.visualstudio.com/items?itemName=goessner.mdmath) pour gérer les maths avec Markdown
 
 ## Pour aller plus loin
 

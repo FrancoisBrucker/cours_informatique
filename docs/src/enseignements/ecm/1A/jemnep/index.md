@@ -25,7 +25,9 @@ Le premier d'une série de 3 enseignements orienté développement et axé autou
 {% info %}
 > lien veres les deux autres cours
 {% endinfo %}
+
 Une semaine pour comprendre le fonctionnement de python et l'utiliser pour développer ses propres programmes comme le ferait un informaticien.
+
 <!-- TBD 
 
 

@@ -154,6 +154,8 @@ Notez bien que seule la variable est supprimée, pas l'objet associé. Considér
 >>> y = x
 ```
 
+![suppression 1](suppression-1.png)
+
 Si on supprime la variable `x`{.language-} cela ne supprime pas l'objet (il est aussi affecté à la variable `y`{.language-}) :
 
 ```python
@@ -161,6 +163,27 @@ Si on supprime la variable `x`{.language-} cela ne supprime pas l'objet (il est 
 >>> y
 1
 ```
+
+![suppression 2](suppression-2.png)
+
+L'objet est toujours associé au nom `y`{.language-}. Supprimons ce nom :
+
+```python
+>>> del y
+```
+
+L'objet n'est plus accessible !
+
+![suppression 3](suppression-3.png)
+
+<span id="ramasse-miettes"></span>
+Python utilise un mécanisme nommé [ramasse-miettes](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)) qui supprime les objets qui ne sont plus accessible via des noms, ce qui permet de gagner de la place mémoire. Une fois le ramasse-miettes passé on se retrouve alors dans l'état :
+
+![suppression 4](suppression-4.png)
+
+{% attention "**À retenir**" %}
+Les objets n'existent que tant qu'on pense à eux (qu'on peut les nommer).
+{% endattention %}
 
 ## Exercices
 

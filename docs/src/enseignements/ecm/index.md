@@ -27,41 +27,52 @@ $
 
 ## Mes cours actuels
 
-### 1A
+### Méthodes de développement
 
-#### Semaine d'Ouverture Scientifique
+une série de 3 enseignements orientés développement et axé autour de 3 thèmes :
+
+- le développement proprement dit : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530))
+- le système : là où sera exécuté le code
+- la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM))
+
+Chaque année est bâtie sur la précédente mais peut très bien être abordée en autonomie.
+
+#### 1A
+
+Semaine d'Ouverture Scientifique :
 
 {% aller %}
 [JEMNEP](1A/jemnep/){.interne} (bases de la programmation en python)
 {% endaller %}
 
-<!-- 2. S6 training (SOS) : architecture des ordinateurs et système d'exploitation. Initiation à la programmation en C et en assembleur (et Rust si on a le temps) -->
+#### 2A
 
-### 2A
-
-#### S7 MIE
+S7 MIE :
 
 {% aller %}
 [Coder et développer en python](2A/cdp/){.interne} (développer des projets en python)
 {% endaller %}
 
-### 3A
+#### 3A
 
 Trois cours, un par temps dans [le parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
 
-#### Temps 1 développement `Do_It`
 
 {% aller %}
 [Méthode de développement](3A/do-it/mdd/){.interne}
 {% endaller %}
 
-#### Temps 2 développement `Do_It`
+### Linux
+
+Temps 2 développement `Do_It`
 
 {% aller %}
 [Linux et système](3A/do-it/linux/){.interne}
 {% endaller %}
 
-#### Temps 3 développement `Do_It`
+### Cryptographie
+
+Temps 3 développement `Do_It` :
 
 {% aller %}
 [Cryptographie](3A/do-it/cryptographie/){.interne}

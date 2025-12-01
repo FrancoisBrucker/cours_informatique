@@ -34,7 +34,7 @@ On _**exécute**_ l'objet en faisant suivre son nom de parenthèses :
 >>> 
 ```
 
-L'exécution de la fonction `print`{.language-} à produit un retour à la ligne.
+L'exécution de la fonction `print`{.language-} à affiché à l'écran le caractère [retour à la ligne](https://fr.wikipedia.org/wiki/Retour_chariot) ce qui a pour effet d'aller à la ligne.
 
 {% note %}
 De nombreuses fonctions peuvent être exécutées avec des _paramètres_ qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
@@ -80,13 +80,11 @@ print(...)
 
 ```
 
-{% info %}
 Si votre fenêtre est trop petite, l'affichage peut être différent.
-{% endinfo %}
 
 {% enddetails %}
 
-À retenir : Les fonctions sont des objets pouvant être exécuté, c'est à dire que faire suivre l'objet de parenthèses va effectuer une action. Tout comme pour les variables, le nom de la fonction n'est qu'un moyen d'y accéder. On peut par exemple tout à fait écrire :
+Les fonctions sont des objets pouvant être exécutés, c'est à dire que faire suivre l'objet de parenthèses va effectuer une action. Tout comme pour les variables, le nom de la fonction n'est qu'un moyen d'y accéder. On peut par exemple tout à fait écrire :
 
 ```python
 >>> écrire = print
