@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Principes réseaux</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Principes réseaux</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/bases-réseau/">Interagir avec le réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/bases-réseau/principe/">Principes réseaux</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Le but d'un réseau est de faire communiquer deux applications situées sur deux ordinateurs différents. Cette tâche est effectuée en appliquant le théorème fondamentale de l’ingénierie logiciel : l'indirection.</p>
+<p>L'indirection étant ici matérialisée par des <a href="https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet">couches</a>. Prenons l'exemple d'un navigateur qui essaie d'ouvrir la page web d'une url située sur un serveur distant :</p>
+<pre><code>application  : navigateur -------------------------------- serveur
+</code></pre>
+<p>Pour que ces deux applications puissent communiquer, il faut que des données puissent être transmises du navigateur au serveur. Il faut donc au minimum s'assurer que les données transmises ne soient pas corrompues et au maximum s'assurer que toute donnée envoyée est bien reçue.</p>
+<p>Il nous faut donc une seconde couche qui assure la transmission des messages entre le navigateur et le serveur :</p>
+<pre><code>application  : navigateur                                  serveur
+transmission :    |__________________________________________|
+</code></pre>
+<p>Encore faut-il savoir comment aller d'un ordinateur à l'autre en suivant les nœuds du réseau. Ce qui rajoute une nouvelle couche dont le but est le routage :</p>
+<pre><code>application  : navigateur                                  serveur
+transmission :    |                                          |
+routage      :    |__________________________________________|
+</code></pre>
+<p>Et enfin, il faut bien faire transiter les bits dans le réseau physique, et passer d'un lien du réseau à l'autre :</p>
+<pre><code>application  : navigateur                                  serveur
+transmission :    |                                          |
+routage      :    |                                          |
+liaisons     :    |__________________________________________|
+</code></pre>
+<p>A chaque couche est associé un protocole dont le but est de résoudre la tâche qui lui est assignée. Dans le cas de notre exemple ces protocoles sont :</p>
+<ul>
+<li>application : <a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol">http</a></li>
+<li>transmission : <a href="https://fr.wikipedia.org/wiki/Transmission_Control_Protocol">TCP</a></li>
+<li>routage : <a href="https://fr.wikipedia.org/wiki/Internet_Protocol">IP</a></li>
+<li>liaisons : <a href="https://fr.wikipedia.org/wiki/Ethernet">Ethernet</a></li>
+</ul>
+<p>Chaque couche encapsule le message de la couche précédente en ajoutant son header en début de message.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>À retenir</p>
+</div><div class="pl-8 mr-8">
+<p>Cette séparation en quatre couches est appelé <strong><em>modèle TCP/IP</em></strong>.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous verrez aussi un modèle plus ancien (et moins adapté au réseau moderne) appelé <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le_OSI">modèle OSI</a> qui sépare le réseau en 7 couches (<a href="https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet#Couches_TCP/IP">TCP/IP vs OSI</a>).</p>
+</div></div>
+
+<p>A l'arrivée c'est le contraire, chaque couche supprime son header avant de passer le message à la couche suivante. Ce principe général de transmission en couches permet de faire communiquer plusieurs machines entre-elles quelques soient leurs emplacement dans le réseau (deux machines éloignées de plusieurs milliers de kilomètres ou deux fois la même machine) du moment que la machine appelante connaisse l'adresse dans le réseau de la machine appelée.</p>
+<h2>Adresse</h2>
+<p>L'adresse d'une machine sur le réseau est géré par la couche de routage, c'est un nombre sur 128 bits (avec le protocole <a href="https://fr.wikipedia.org/wiki/IPv6">IPv6</a>) qui permet d'adresser plus de $10^{38}$ machines. On ne manipulera (presque) jamais directement ce nombre car un autre protocole (le <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">protocole DNS</a>) associe de façon unique un nom à ce numéro.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>À retenir</p>
+</div><div class="pl-8 mr-8">
+<p>Chaque machine sur le réseau est identifiée par un nom.</p>
+</div></div>
+
+<p>Sous Linux on utilise <a href="https://fr.wikipedia.org/wiki/Dig_(programme_informatique)">la commande <code>dig</code></a> pour connaître le numéro IP associé à un nom. Par exemple la machine <code>www.google.fr</code> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">dig</span> AAAA sas1.ec-m.fr +short
+<span class="token number">2001</span>:660:5404:191::21</code></pre>
+<p>On peut aussi faire la réciproque :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">dig</span> <span class="token parameter variable">-x</span> <span class="token number">2001</span>:660:5404:191::21 +short
+sas1.ec-m.fr.</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une même adresse IP peut être associée à plusieurs noms et réciproquement. Ceci permet de toujours répondre à une requête même si une machine est occupée (on prend la suivante de la liste). Par exemple :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">dig</span> AAAA www.google.com +short
+2a00:1450:4007:80d::2004
+❯ <span class="token function">dig</span> <span class="token parameter variable">-x</span> 2a00:1450:4007:80d::2004 +short
+par10s21-in-x04.1e100.net.
+par10s41-in-x04.1e100.net.
+❯ <span class="token function">dig</span> AAAA par10s21-in-x04.1e100.net +short
+<span class="token number">2001</span>:4860:4802:36::4
+2a00:1450:4007:80d::2004</code></pre>
+</div></div>
+
+<p>Si le nom suffit pour accéder à la machine, il ne suffit pas pour entamer une communication réseau qui se déroule entre deux applications. En effet laquelle choisir sur la machine appelée ?</p>
+<h2>Port</h2>
+<p>Chaque machine possède des points d'entrées, appelés <a href="https://fr.wikipedia.org/wiki/Port_(logiciel)">ports</a> (un nombre entre 0 et $2^{16}-1 = 65535$), pouvant chacun associés à une application. On dit que l'application écoute un port $p$ si elle est :</p>
+<ol>
+<li>en fonctionnement</li>
+<li>est associée au port $p$</li>
+</ol>
+<p>Sous Linux on utilise <a href="https://nmap.org/book/man.html">la commande <code>nmap</code></a> pour connaître l'état d'un port,  ouvert (c'est à dire qu'une application écoute ce port) ou non. Par exemple :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ nmap <span class="token parameter variable">-p</span> <span class="token number">443</span> www.google.com
+Starting Nmap <span class="token number">7.98</span> <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-11-30 07:55 +0100
+Nmap scan report <span class="token keyword">for</span> www.google.com <span class="token punctuation">(</span><span class="token number">142.250</span>.75.228<span class="token punctuation">)</span>
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.016s latency<span class="token punctuation">)</span>.
+Other addresses <span class="token keyword">for</span> www.google.com <span class="token punctuation">(</span>not scanned<span class="token punctuation">)</span>: 2a00:1450:4007:80d::2004
+rDNS record <span class="token keyword">for</span> <span class="token number">142.250</span>.75.228: par10s41-in-f4.1e100.net
+
+PORT    STATE SERVICE
+<span class="token number">443</span>/tcp <span class="token function">open</span>  https
+
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">0.09</span> seconds</code></pre>
+<p>La commande précédente montre que le port 443 est <em><em>ouvert</em></em> sur la machine <code>www.google.fr</code>. Une application sur la machine <code>www.google.fr</code> écoute ce port : on peut communiquer avec elle.</p>
+<p>En revanche, le statut du port 8080 est inconnu, son état est <em><em>filtré</em></em> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ nmap <span class="token parameter variable">-p</span> <span class="token number">8080</span> www.google.com
+Starting Nmap <span class="token number">7.98</span> <span class="token punctuation">(</span> https://nmap.org <span class="token punctuation">)</span> at <span class="token number">2025</span>-11-30 07:55 +0100
+Nmap scan report <span class="token keyword">for</span> www.google.com <span class="token punctuation">(</span><span class="token number">142.250</span>.75.228<span class="token punctuation">)</span>
+Host is up <span class="token punctuation">(</span><span class="token number">0</span>.017s latency<span class="token punctuation">)</span>.
+Other addresses <span class="token keyword">for</span> www.google.com <span class="token punctuation">(</span>not scanned<span class="token punctuation">)</span>: 2a00:1450:4007:80d::2004
+rDNS record <span class="token keyword">for</span> <span class="token number">142.250</span>.75.228: par10s41-in-f4.1e100.net
+
+PORT     STATE    SERVICE
+<span class="token number">8080</span>/tcp filtered http-proxy
+
+Nmap done: <span class="token number">1</span> IP address <span class="token punctuation">(</span><span class="token number">1</span> <span class="token function">host</span> up<span class="token punctuation">)</span> scanned <span class="token keyword">in</span> <span class="token number">0.25</span> seconds</code></pre>
+<p>Un port sur une machine à 3 états :</p>
+<ul>
+<li>ouvert : une application écoute ce port et peut être appelée</li>
+<li>fermé : aucune application n'écoute ce port</li>
+<li>filtré: le statut du port est inconnu, souvent à cause d'un <a href="https://fr.wikipedia.org/wiki/Pare-feu_(informatique)">firewall</a> dont le but est de bloquer la communication des ports non ouvert.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>À retenir</p>
+</div><div class="pl-8 mr-8">
+<p>Pour entamer une communication réseau avec une application il faut posséder 2 informations :</p>
+<ul>
+<li>le nom de la machine sur laquelle tourne l'application</li>
+<li>le port d'écoute de l'application</li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il existe des ports par défaut pour certains types d'applications. Par exemple le port part défaut des serveurs web https est 443. C'est pourquoi lorsque l'on communique avec google les deux urls suivantes sot équivalentes (faites l'expérience) :</p>
+<ul>
+<li><a href="https://www.google.com">https://www.google.com</a></li>
+<li><a href="https://www.google.com:443">https://www.google.com:443</a></li>
+</ul>
+</div></div>
+
+<h2>Socket</h2>
+<p>Une fois la machine à appeler trouvée sur le réseau la communication effective entre deux ordinateurs se fait via un tuyau appelé <a href="https://fr.wikipedia.org/wiki/Berkeley_sockets">socket</a> qui relie le port appelé de la machine distante à un port de l'ordinateur appelant :</p>
+<pre><code>               socket
+ -----------             ---- -------
+| ordi. | 0 |       =====| 0 |=prg b |
+|   A   | 1 |      /     | 1 |       |
+| prg a=| 2 |======      | 2 |   B   |
+ -----------             ---- -------
+  ordi. ports            ports ordi. 
+</code></pre>
+<p>Dans le schéma ci-dessus le programme a de l'ordinateur A a établi une connection avec le programme b l'ordinateur B qui écoute sur le port 0. Le choix des ports utilisés est régit par la règle suivante :</p>
+<p>Les ports sont répartis en trois catégories, selon leurs usages :</p>
+<ul>
+<li>de 0 à 1023 : <strong><em>system ports</em></strong> (aussi appelés <em>well known ports</em>) qui sont utilisés par le système (22 pour ssh, 443 pour https, 80 pour http, ...)</li>
+<li>de 1024 à 49151 : <strong><em>user ports</em></strong> (aussi appelés <strong><em>registered ports</em></strong>) sont utilisés soit par des protocoles utilisateurs (ces protocoles peuvent être connus comme bittorrent, des ports 6881 à 6999 ou des ports de tests comme 8080 qui est souvent utilisé pour des serveurs web locaux)</li>
+<li>de 49152 à 65535 : <a href="https://en.wikipedia.org/wiki/Ephemeral_port"><strong><em>Ephemeral port</em></strong></a> (aussi appelés <strong><em>private ports</em></strong>) utilisés par le système le temps d'une connexion.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">Liste des ports communément utilisés</a></p>
+</div></div>
+
+<p>Les ports systèmes étant réservés à des protocoles connus, si l'on ne précise pas le port lors d'une connexion. c'est le port par défaut qui est utilisé. Par exemple pour une connexion de notre ordinateur sur le site de google avec le protocole https :</p>
+<pre><code>      A                        www.google.com
+
+    système             ----- 443 système
+utilisateur           /           utilisateur
+   éphémère  65000 ---            éphémère
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
