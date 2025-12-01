@@ -25,6 +25,7 @@ eleventyComputed:
 
 ## Serveur web local
 
+> TBD <https://realpython.com/python-http-server/>
 > TBD tout ce qu'on a vu fonctionne sur la même machine. localhost
 
 > TBD avec python et http pour un serveur bête en localhost.
