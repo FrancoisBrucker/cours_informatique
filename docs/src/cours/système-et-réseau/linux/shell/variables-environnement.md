@@ -68,8 +68,32 @@ Un fichier exécutable est crée dans un sous shell. Il ne peut donc modifier le
 
 On peut modifier l'environnement d'exécution d'une commande. Par exemple, pour avoir le manuel de man en anglais  :
 
-```
+```shell
 LANG=C man man
 ```
 
 On modifie la variable pour le process qui exécutera la commande : comme c'est un process enfant, la variable du shell parent nest pas modifiée.
+
+```shell
+ X=3 sh -c 'echo $X'
+```
+
+{% attention %}
+
+La chaîne doit être interprétée par le sous-shell, d'où l'utilisation de `'`. Les `"` vont interpréter la chaîne avant exécution de la commande donc la commande suivante ne fonctionnera pas :
+
+```shell
+ X=3 sh -c 'echo $X'
+```
+
+Pour s'en convaincre :
+
+```shell
+❯ X=?
+❯ X=3 sh -c "echo $X"
+?
+❯ X=3 sh -c 'echo $X'
+3
+```
+
+{% endattention %}

@@ -8,7 +8,7 @@ authors:
 
 eleventyNavigation:
   prerequis:
-      - ../terminal/
+      - /cours/système-et-réseau/bases-système/terminal/
       - ../format-markdown/
 
 

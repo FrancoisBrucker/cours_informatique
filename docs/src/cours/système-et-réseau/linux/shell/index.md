@@ -27,6 +27,9 @@ Le shell est ce via quoi on exécute des commandes.
 
 > simple
 > retour 0 = ok et sinon message d'erreur
+> shell et sous-shell ()
+> globing *
+> $(), $(())
 > redirection entrée/sortie/erreur
 > TBD lien <https://matthieu-moy.fr/spip/IMG/pdf/sh.pdf>
 

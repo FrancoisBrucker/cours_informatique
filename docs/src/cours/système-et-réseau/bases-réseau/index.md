@@ -10,21 +10,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD Connexion à un système distant
 
-> TBD [couches d'un réseau](https://fr.wikipedia.org/wiki/Suite_des_protocoles_Internet) = théorème fondamental de l’ingénierie logicielle.
-> TBD <https://www.youtube.com/watch?v=mdxKBz5QUTo>
-> url
-> transmission réseau
+## Principes
 
-
-> TBD reprendre la partie réseau et ne garder que :
-> - transport
-> - url et ressource
-
-## Transmission
-
-> TBD
+{% aller %}
+[Principes](./principe){.interne}
+{% endaller %}
 
 ## URL
 
@@ -32,5 +23,8 @@ eleventyComputed:
 [Anatomie d'une URL](./anatomie-url/){.interne}
 {% endaller %}
 
-> TBD fonctionne avec tout : ex ssh
+## Serveur web local
 
+> TBD tout ce qu'on a vu fonctionne sur la même machine. localhost
+
+> TBD avec python et http pour un serveur bête en localhost.

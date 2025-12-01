@@ -25,6 +25,69 @@ Vous aurez besoin d'avoir la commande `ip` très utile en réseau. Ils font part
 
 {% endinfo %}
 
+## Schéma d'une communication
+
+> TBD port la fin
+
+> socket et port
+> tbd ex avec google et 432. et port par défaut
+> TBD fonctionne avec tout : ex ssh
+> localhost
+
+La couche de transmission utilise pour cela la notion de [port](<https://fr.wikipedia.org/wiki/Port_(logiciel)>) :
+
+{% note "**definition**" %}
+Un **_port_** est un nombre entre 0 et $2^{16}-1 = 65535$ (codé sur 2B) associé à un système.
+
+Le système peut associer une application à un port particulier via une [socket](https://fr.wikipedia.org/wiki/Berkeley_sockets), on dit que l'application **_écoute_** ce port.
+
+- du point de vue de l'application : cette socket est un fichier ouvert (il a un file descriptor)
+- du point de vue du système : toute communication réseau adressée à ce port est transmise en écriture au file descriptor de l'application.
+  {% endnote %}
+
+Au final, caractériser la destination d'une communication réseau nécessite :
+
+- un ordinateur
+- 1 port
+
+Lorsque le port n'est pas précisé dans une url, c'est le port part défaut du protocole qui est utilisé. C'est pourquoi : `curl http://www.google.fr` est équivalent à `curl http://www.google.fr:80`
+
+{% faire %}
+Tester les commandes `curl http://www.google.fr` et `curl http://www.google.fr:80` et vérifier quelles sont identiques.
+
+Tester sur un autre port. Conclusion ?
+{% endfaire %}
+
+
+
+{% faire %}
+Dans un Wireshark, récupérez la requête de `curl http://www.google.fr`. Regardez la couche Transmission. Quels sont les deux port utilisés ?
+{% endfaire %}
+
+Un communication réseau c'est donc deux sockets qui parlent entre elles via la couche de transport par ports interposés. On peut connaître tous les sockets de sa machine avec la commande :
+
+```shell
+netstat -aln
+```
+
+Attention, il peut y en avoir beaucoup.
+
+Enfin, on peut scanner les ports d'une machine pour connaître les **_ports ouverts_**, c'est à dire les ports associés à une socket, en utilisant la commande `nmap` :
+
+```shell
+nmap localhost
+```
+
+{% attention %}
+Scanner les port ouvert d'une machine qui n'est pas la votre peut être considéré comme une aggression.
+{% endattention %}
+{% lien %}
+
+- [tuto](https://hackertarget.com/nmap-tutorial/)
+- [fonctionnement](https://www.malekal.com/types-scan-de-port-nmap/)
+
+{% endlien %}
+
 ## Communications par paquets
 
 Réseau filaire : une ligne par communication de bout en bout, comme le téléphone à son origine.
@@ -87,44 +150,22 @@ Si peux de paquets arrivent, faîtes une requête google par exemple.
 Il vous faudra peut-être exécuter `sudo wireshark` pour pouvoir récupérer tous les paquets passant par votre ordinateur.
 {% endinfo %}
 
+
+> TBD <https://www.youtube.com/watch?v=mdxKBz5QUTo>
+
 ## Schéma global
 
 {% lien %}
 [Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
 {% endlien %}
 
-Le but d'un réseau est de faire communiquer deux applications situées sur deux ordinateurs différents. Cette tâche est effectuée en appliquant le théorème fondamentale de l’ingénierie système : l'indirection.
-
-L'indirection étant ici matérialisée par des *couches*. Prenons l'exemple d'un navigateur qui essaie d'ouvrir la page web d'une url située sur un serveur distant :
+> TBD voir bases réseau
 
 ```
-application  : navigateur -------------------------------- serveur
-```
-
-Pour que ces deux applications puissent communiquer, il faut que des données puissent être transmises du navigateur au serveur. Il faut donc au minimum s'assurer que les données transmises ne soient pas corrompue et au maximum s'assurer que toute donnée envoyée est bien reçue.
-
-Il nous faut donc une seconde couche qui assure la transmission des messages entre le navigateur et le serveur :
-
-```
-application  : navigateur                                  serveur
-transmission :    |__________________________________________|
-```
-
-Encore faut-il savoir comment aller d'un ordinateur à l'autre en suivant les nœuds du réseau. Ce qui rajoute une nouvelle couche dont le but est le routage :
-
-```
-application  : navigateur                                  serveur
-transmission :    |                                          |
-routage      :    |__________________________________________|
-```
-
-Et enfin, il faut bien faire transiter les bits dans le réseau physique, et passer d'un lien du réseau à l'autre :
-
-```
-application  : navigateur                                  serveur
-transmission :    |                                          |
-routage      :    |                                          |
-liaisons     :    |__________________________________________|
+application         : navigateur                                  serveur
+transmission    TCP :    |                                          |
+routage          IP :    |                                          |
+liaisons   ethernet :    |__________________________________________|
 ```
 
 A chaque couche est associé un protocole dont le but est de résoudre la tâche qui lui est assignée. Dans le cas de notre exemple ces protocoles sont :
