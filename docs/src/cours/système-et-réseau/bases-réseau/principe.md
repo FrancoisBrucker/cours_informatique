@@ -188,7 +188,7 @@ Les ports sont répartis en trois catégories, selon leurs usages :
 - de 49152 à 65535 : [**_Ephemeral port_**](https://en.wikipedia.org/wiki/Ephemeral_port) (aussi appelés **_private ports_**) utilisés par le système le temps d'une connexion.
 
 {% lien %}
-[Liste des ports communément utilisés](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
+[Liste des ports communément utilisés](https://fr.wikipedia.org/wiki/Liste_de_ports_logiciels)
 {% endlien %}
 
 Les ports systèmes étant réservés à des protocoles connus, si l'on ne précise pas le port lors d'une connexion. c'est le port par défaut qui est utilisé. Par exemple pour une connexion de notre ordinateur sur le site de google avec le protocole https :
