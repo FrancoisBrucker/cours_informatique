@@ -29,7 +29,11 @@ en vrac :
 
 {% endlien %}
 
-Le scripting c'est l'exécution de fichiers textes pour résoudre un problème spécifique. Un langage de script est un langage interprété. Cela peut-être :
+Le scripting c'est l'exécution de fichiers textes pour résoudre un problème spécifique.
+
+> TBD si fichier exécutable et pas shebang alors on l'exécute avec `/bin/sh` (faire un exemple)
+
+ Un langage de script est un langage interprété. Cela peut-être :
 
 - du shell
 - mais aussi python
@@ -37,7 +41,7 @@ Le scripting c'est l'exécution de fichiers textes pour résoudre un problème s
 
 ## Shebang
 
-Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noyau vérifie s'il commence par `#!`, appelé [shebang](https://fr.wikipedia.org/wiki/Shebang).
+Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noyau vérifie s'il commence par `#!`, appelé [shebang](https://fr.wikipedia.org/wiki/Shebang) ("*_hash-bang_*" raccourci).
 
 Si oui la fin de la ligne correspond au chemin absolu d'un programme auquel on passe en 1er paramètre le fichier à exécuter.
 
@@ -55,7 +59,7 @@ Les deux commandes suivantes sont équivalente (si on est dans le dossier conten
 - `/usr/bin/python bonjour`
 
 {% lien %}
-[Histoire du shebang](https://www.in-ulm.de/~mascheck/various/shebang/#blankrequired)
+[Histoire du shebang](https://www.kaboomshebang.com/articles/the-origin-of-the-shebang/)
 {% endlien %}
 
 C'est la raison fondamentale pour laquelle les commentaires dans un langage de script est toujours le `#`, la première ligne contenant le shebang n'est pas interprétée lors de l'exécution du script.
