@@ -249,7 +249,6 @@ J'aime bien faire du python<span class="token punctuation">.</span></code></pre>
 <ul>
 <li><a href="https://docs.python.org/fr/3/tutorial/inputoutput.html#tut-f-strings">Documentation python sur les chaînes formatées (7.1.1)</a></li>
 <li><a href="https://realpython.com/python-f-strings/#formatting-strings-with-pythons-f-string">Exemples d'utilisation</a></li>
-<li></li>
 </ul>
 </div></div>
 
@@ -345,6 +344,13 @@ La réponse universelle est <span class="token number">42</span></code></pre>
 </ul>
 </div></div>
 
+<h2>Immutabilité des objets</h2>
+<p>Notez que tous les objets basique de python sont <strong><em>immutables</em></strong> : ils ne peuvent être modifiés. Ainsi, si <code class="language_">x = 41</code>, on est dans la situation suivante :</p>
+<p><img src="nouvel-objet-0.png" alt="nouvel objet"></p>
+<p>En incrémentant <code class="language-">x</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span></code></pre>
+<p>On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus accessible va disparaître sous l'action du <a href="../variables/#ramasse-miettes" class="interne">ramasse-miettes</a> :</p>
+<p><img src="nouvel-objet.png" alt="nouvel objet"></p>
 
 
 </article>

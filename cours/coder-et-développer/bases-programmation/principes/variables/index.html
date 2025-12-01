@@ -227,10 +227,29 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>Notez bien que seule la variable est supprimée, pas l'objet associé. Considérons par exemple le code suivant, qui affecte le même objet aux variables <code class="language-">x</code> et <code class="language-">y</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">1</span>
 <span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> x</code></pre>
+<p><img src="suppression-1.png" alt="suppression 1"></p>
 <p>Si on supprime la variable <code class="language-">x</code> cela ne supprime pas l'objet (il est aussi affecté à la variable <code class="language-">y</code>) :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">del</span> x
 <span class="token operator">>></span><span class="token operator">></span> y
 <span class="token number">1</span></code></pre>
+<p><img src="suppression-2.png" alt="suppression 2"></p>
+<p>L'objet est toujours associé au nom <code class="language-">y</code>. Supprimons ce nom :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">del</span> y</code></pre>
+<p>L'objet n'est plus accessible !</p>
+<p><img src="suppression-3.png" alt="suppression 3"></p>
+<p><span id="ramasse-miettes"></span>
+Python utilise un mécanisme nommé <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse-miettes</a> qui supprime les objets qui ne sont plus accessible via des noms, ce qui permet de gagner de la place mémoire. Une fois le ramasse-miettes passé on se retrouve alors dans l'état :</p>
+<p><img src="suppression-4.png" alt="suppression 4"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les objets n'existent que tant qu'on pense à eux (qu'on peut les nommer).</p>
+</div></div>
+
 <h2>Exercices</h2>
 <p>Faites les différents exercice ci-après dans une console (certains exercices sont liés) :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">

@@ -114,7 +114,9 @@
 <p><a href="interpr%C3%A9teur" class="interne">Interpréteur</a></p>
 </div></div>
 
-<h2>Commentaires</h2>
+<h2>Éléments de langage</h2>
+<p>On va lister les concepts fondamentaux qui permettent d'utiliser l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.</p>
+<h3>Commentaires</h3>
 <p>Commençons par ne <strong>pas</strong> écrire du python. Dans une ligne de code python, tout ce qui suit un <code class="language-">#</code> n'est pas lu.</p>
 <p>Par exemple, le code suivant écrit dans une console ne produit pas d'erreur (il n'est même pas lu...) :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token comment"># coucou python !</span></code></pre>
@@ -124,8 +126,8 @@
     coucou python !
            <span class="token operator">^</span>
 SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
-<h2>Objets, variables et noms</h2>
-<p>Les <strong><em>objets</em></strong> de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets. Une <strong><em>variable</em></strong> est un nom que peut prendre un objet dans un cadre, appelé <strong><em>espace de nom</em></strong>, particulier.</p>
+<h3>Objets et variables</h3>
+<p>Les <strong><em>objets</em></strong> de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets. Une <strong><em>variable</em></strong> est un nom qui va représenter un objet.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -134,7 +136,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p>Une variable n'est <strong>pas</strong> un objet, ce n'est qu'un moyen d'y accéder.</p>
 </div></div>
 
-<h3>Objets</h3>
+<h4>Objets</h4>
 <p>Tout sur les objets courant que vous manipulerez en python.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -144,7 +146,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p><a href="objets-types" class="interne">Objets types et types d'objets</a></p>
 </div></div>
 
-<h3>Variables</h3>
+<h4>Variables</h4>
 <p>Principe de l'affectation des variables en python.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -154,7 +156,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p><a href="variables" class="interne">Variables</a></p>
 </div></div>
 
-<h2>Opérations sur les objets</h2>
+<h4>Opérations sur les objets</h4>
 <p>Créer de nouveaux objets avec d'autres objets.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -164,7 +166,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p><a href="op%C3%A9rations" class="interne">Opérations sur les objets</a></p>
 </div></div>
 
-<h2>Fonctions et méthodes</h2>
+<h3>Fonctions et méthodes</h3>
 <p>Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -184,8 +186,12 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p><a href="modules" class="interne">Modules</a></p>
 </div></div>
 
+<blockquote>
+<p>TBD notation pointée.</p>
+</blockquote>
 <h2>Espace de nommage</h2>
 <!-- 
+> TBD à déplacer, après avoir vu les structures de dictionnaires et de listes. à mettre dans la partie débuggeur, bien plus tard
 
 > TBD reprendre avec la partie variable qui commence à en parler. Le mettre après coder ses fonctions/modules.
 >
