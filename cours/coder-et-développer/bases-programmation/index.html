@@ -147,17 +147,32 @@
 </div></div>
 
 <p>Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.</p>
-<blockquote>
-<p>TBD : un petit tuto avec les on s'entraîne.
-Montrer que l'interpréteur tourne toujours en envoyant une fonction et en la'exécutant depuis l'interpréteur.
-coder avec des fonctions c'est bien.</p>
-</blockquote>
+<p>Il fonctionne à la fois comme un notebook ou comme un interpréteur.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La commande <code>Run file</code> exécute son code dans un nouvel interpréteur <strong>puis</strong> le fusionne avec l'interpréteur courant.</p>
+<p>Ce fonctionnement est déroutant...</p>
+</div></div>
+
+<p>Si vous voulez faire du développement sérieusement, je vous conseille d'utiliser plutôt la combinaison éditeur + interpréteur ci-dessous.</p>
 <h4>Vscode</h4>
 <blockquote>
 <p>TBD installer vscode et exécuter du python avec le triangle.
 à la différence de spyder le code est réinitialisé à chaque exécution.
 montrer comment avec l'interpréteur.</p>
 </blockquote>
+<h3><span id="installation-développement"></span>Installer et utiliser un interpréteur</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="interpr%C3%A9teur" class="interne">Installer et utiliser un interpréteur</a></p>
+</div></div>
+
 <h2>Partie II: structurer son code</h2>
 <blockquote>
 <p>module de python. Matplotlib et spyder
@@ -188,15 +203,6 @@ conditions, boucles et fonctions avec spyder.</p>
 <p>TBD Ici ajouter plusieurs fichier pour créer ses propres modules.
 séparer main de <a href="http://fct.py">fct.py</a></p>
 </blockquote>
-<h3><span id="installation-développement"></span>Installer et utiliser un interpréteur</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="interpr%C3%A9teur" class="interne">Installer et utiliser un interpréteur</a></p>
-</div></div>
-
 <h3>Structurer du code</h3>
 <p>Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -297,6 +303,33 @@ séparer main de <a href="http://fct.py">fct.py</a></p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le tuple vide s'écrira <code class="language-">(,)</code> (ou <code class="language-">tuple()</code>) pour la différentier la notation <code class="language-">()</code> qui est la parenthèse vide.</p>
+</div></div>
+
+<h2>Espace de nommage</h2>
+<!-- 
+> TBD à déplacer, après avoir vu les structures de dictionnaires et de listes. à mettre dans la partie débuggeur, bien plus tard
+
+> TBD reprendre avec la partie variable qui commence à en parler. Le mettre après coder ses fonctions/modules.
+>
+> Le voir avec le débogeur : stackframe = espace de nommage.
+> 
+ -->
+<p>Certains modules sont très utiles en python scientifique :</p>
+<ul>
+<li><a href="https://numpy.org/">numpy</a> : très utilisé pour ses structures de matrices et tableaux</li>
+<li><a href="https://matplotlib.org/">matplotlib</a> : pour créer des graphiques en python</li>
+<li><a href="https://scipy.org/">scipy</a> : résolution d'équations différentielles</li>
+<li><a href="https://pillow.readthedocs.io/en/stable/">pillow</a> : gestion d'images</li>
+<li><a href="https://scikit-learn.org/stable/">sklearn</a> : machine learning</li>
+</ul>
+<p>Ils ne viennent pas automatiquement lorsque l'on installe python, mais beaucoup sont déjà installés si vous utilisez l'interpréteur de <a href="https://www.spyder-ide.org/">spyder</a> ou encore les notebooks de <a href="https://colab.research.google.com">https://colab.research.google.com</a>. Nous plus tard comment installer ses propres modules, pour l'instant nous allons uniquement utiliser ceux fournis par python (et ils sont déjà nombreux).</p>
+<p>On a vu que les variables étaient des noms permettant d'acceder aux objets, qui sont les seules choses que l'on peut manipuler en python. Python stocke ces variables dans des <a href="https://docs.python.org/fr/3.13/glossary.html#term-namespace">espaces de nommage</a> (<em>namespace</em> en anglais)</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="espace-nommage" class="interne">Espace de nommage</a></p>
 </div></div>
 
 
