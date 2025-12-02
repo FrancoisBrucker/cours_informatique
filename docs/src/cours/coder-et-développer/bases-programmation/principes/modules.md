@@ -9,6 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD ici parler de l'objet Module qui est un espace de nom. Faire le dessin dans les objets. Les noms ne sont que pour globals (on explicitera plus tard, c'est la pile)
+> TBD ici n'utiliser que les module de python. Parler des autres modules plus tard lorsque l'on aura pip sous la main : on installera matplotlib et numpy.
+
 {% info %}
 Utilisez un notebook de <https://notebook.basthon.fr/> pour exécuter les divers exemples et exercices
 {% endinfo %}
