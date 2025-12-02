@@ -53,15 +53,27 @@ C'est une manière plus conviviale que la console d'accéder à l'interpréteur 
 
 Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.
 
-> TBD : un petit tuto avec les on s'entraîne.
-> Montrer que l'interpréteur tourne toujours en envoyant une fonction et en la'exécutant depuis l'interpréteur.
-> coder avec des fonctions c'est bien.
+Il fonctionne à la fois comme un notebook ou comme un interpréteur.
+
+{% attention %}
+La commande `Run file` exécute son code dans un nouvel interpréteur **puis** le fusionne avec l'interpréteur courant.
+
+Ce fonctionnement est déroutant...
+{% endattention %}
+
+Si vous voulez faire du développement sérieusement, je vous conseille d'utiliser plutôt la combinaison éditeur + interpréteur ci-dessous.
 
 #### Vscode
 
 > TBD installer vscode et exécuter du python avec le triangle.
-> à la différence de spyder le code est réinitialisé à chaque exécution. 
+> à la différence de spyder le code est réinitialisé à chaque exécution.
 > montrer comment avec l'interpréteur.
+
+### <span id="installation-développement"></span>Installer et utiliser un interpréteur
+
+{% aller %}
+[Installer et utiliser un interpréteur](interpréteur){.interne}
+{% endaller %}
 
 ## Partie II: structurer son code
 
@@ -92,12 +104,6 @@ Coder en python (ou en tout autre langage) ce cependant nécessiter des connaiss
 
 > TBD Ici ajouter plusieurs fichier pour créer ses propres modules.
 > séparer main de fct.py
-
-### <span id="installation-développement"></span>Installer et utiliser un interpréteur
-
-{% aller %}
-[Installer et utiliser un interpréteur](interpréteur){.interne}
-{% endaller %}
 
 ### Structurer du code
 
@@ -210,3 +216,31 @@ Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :
 {% info %}
 Le tuple vide s'écrira `(,)`{.language-} (ou `tuple()`{.language-}) pour la différentier la notation `()`{.language-} qui est la parenthèse vide.
 {% endinfo %}
+
+
+## Espace de nommage
+
+<!-- 
+> TBD à déplacer, après avoir vu les structures de dictionnaires et de listes. à mettre dans la partie débuggeur, bien plus tard
+
+> TBD reprendre avec la partie variable qui commence à en parler. Le mettre après coder ses fonctions/modules.
+>
+> Le voir avec le débogeur : stackframe = espace de nommage.
+> 
+ -->
+
+Certains modules sont très utiles en python scientifique :
+
+- [numpy](https://numpy.org/) : très utilisé pour ses structures de matrices et tableaux
+- [matplotlib](https://matplotlib.org/) : pour créer des graphiques en python
+- [scipy](https://scipy.org/) : résolution d'équations différentielles
+- [pillow](https://pillow.readthedocs.io/en/stable/) : gestion d'images
+- [sklearn](https://scikit-learn.org/stable/) : machine learning
+
+Ils ne viennent pas automatiquement lorsque l'on installe python, mais beaucoup sont déjà installés si vous utilisez l'interpréteur de [spyder](https://www.spyder-ide.org/) ou encore les notebooks de <https://colab.research.google.com>. Nous plus tard comment installer ses propres modules, pour l'instant nous allons uniquement utiliser ceux fournis par python (et ils sont déjà nombreux).
+
+On a vu que les variables étaient des noms permettant d'acceder aux objets, qui sont les seules choses que l'on peut manipuler en python. Python stocke ces variables dans des [espaces de nommage](https://docs.python.org/fr/3.13/glossary.html#term-namespace) (_namespace_ en anglais)
+
+{% aller %}
+[Espace de nommage](espace-nommage){.interne}
+{% endaller %}

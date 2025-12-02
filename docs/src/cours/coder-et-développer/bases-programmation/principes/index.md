@@ -99,22 +99,3 @@ Les [modules](https://docs.python.org/fr/3/tutorial/modules.html) pythons sont d
 {% aller %}
 [Modules](modules){.interne}
 {% endaller %}
-
-> TBD notation pointée.
-> 
-## Espace de nommage
-
-<!-- 
-> TBD à déplacer, après avoir vu les structures de dictionnaires et de listes. à mettre dans la partie débuggeur, bien plus tard
-
-> TBD reprendre avec la partie variable qui commence à en parler. Le mettre après coder ses fonctions/modules.
->
-> Le voir avec le débogeur : stackframe = espace de nommage.
-> 
- -->
-
-On a vu que les variables étaient des noms permettant d'acceder aux objets, qui sont les seules choses que l'on peut manipuler en python. Python stocke ces variables dans des [espaces de nommage](https://docs.python.org/fr/3.13/glossary.html#term-namespace) (_namespace_ en anglais)
-
-{% aller %}
-[Espace de nommage](espace-nommage){.interne}
-{% endaller %}

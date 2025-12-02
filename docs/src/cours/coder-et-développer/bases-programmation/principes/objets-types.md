@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Objets types et types d'objets
 
 eleventyComputed:
@@ -8,7 +8,6 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
-
 
 Python connaît 6 classes d'objets de base qui permettent de faire la grande majorité des programmes.
 
@@ -22,23 +21,23 @@ Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers e
 <https://docs.python.org/fr/3/library/stdtypes.html#built-in-types>
 {% endlien %}
 
-* Chaînes de caractères
-  * exemple : `"python"`{.language-} ou `'python'`{.language-}
-  * quelque chose qui commence et fini par `"`{.language-} ou qui commence et fini par `'`{.language-} ou encore qui commence et fini par `"""`{.language-}.
-* Réels
-  * exemple : `2.91`{.language-} ou `2.0`{.language-}
-  * un nombre avec une décimale (qui peut être nulle) notée par un `.`{.language-}
-* Entiers
-  * exemple : `42`{.language-} ou `0`{.language-}
-  * un nombre sans décimale
-* Complexes (la notation utilise j à la place de i)
-  * exemple : `3+2j`{.language-}, `1j`{.language-}
-  * un réel ou entier avec une partie imaginaire, notée `j`{.language-}, entière ou imaginaire.
-* Booléens
-  * exemple : `True`{.language-} ou `False`{.language-}
-  * que 2 possibilités, `True`{.language-} ou `False`{.language-}
-* le vide, utilisé pour noter l'absence de valeur
-  * ne contient qu'un unique élément noté `None`{.language-}
+- Chaînes de caractères
+  - exemple : `"python"`{.language-} ou `'python'`{.language-}
+  - quelque chose qui commence et fini par `"`{.language-} ou qui commence et fini par `'`{.language-} ou encore qui commence et fini par `"""`{.language-}.
+- Réels
+  - exemple : `2.91`{.language-} ou `2.0`{.language-}
+  - un nombre avec une décimale (qui peut être nulle) notée par un `.`{.language-}
+- Entiers
+  - exemple : `42`{.language-} ou `0`{.language-}
+  - un nombre sans décimale
+- Complexes (la notation utilise j à la place de i)
+  - exemple : `3+2j`{.language-}, `1j`{.language-}
+  - un réel ou entier avec une partie imaginaire, notée `j`{.language-}, entière ou imaginaire.
+- Booléens
+  - exemple : `True`{.language-} ou `False`{.language-}
+  - que 2 possibilités, `True`{.language-} ou `False`{.language-}
+- le vide, utilisé pour noter l'absence de valeur
+  - ne contient qu'un unique élément noté `None`{.language-}
 
 {% note %}
 Tout objet de python à sa classe.
@@ -46,13 +45,13 @@ Tout objet de python à sa classe.
 
 ## Classes d'un objet
 
-Tout objet a une ***classe***, aussi appelé ***type***. Pour connaître la classe d'un objet, on peut utiliser la fonction `type`{.language-}. Par exemple :
+Tout objet a une **_classe_**, aussi appelé **_type_**. Pour connaître la classe d'un objet, on peut utiliser la fonction `type`{.language-}. Par exemple :
 
 ```python
-type(42) 
+type(42)
 ```
 
-Qui rendra :  `<class 'int'>`{.language-}. Les entiers sont donc de classe `'int'`{.language-} en python.
+Qui rendra : `<class 'int'>`{.language-}. Les entiers sont donc de classe `'int'`{.language-} en python.
 
 {% exercice %}
 Dans la console de <https://console.basthon.fr/>, donnez la classe de chaque objet de base/
