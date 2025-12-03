@@ -31,15 +31,23 @@ Avant d'écrire des programmes en python, on commence par s'intéresser à ses m
 
 ### Exécuter du code python
 
-Écrire directement à l'interpréteur comme on l'a fait jusqu'à présent est faisable lorsque l'on a besoin de n'écrire qu'une ligne de python à la fois, mais lorsque l'on veut faire des choses plus compliquées comme créer des tests ou effectuer des boucles, il faut des outils plus perfectionnés.
+On a utilisé un interpréteur externe (sur le site <https://basthon.fr/>) pour l'instant. Son utilisation n'est pas tès satisfaisante pour l'instant puisqu'il faut copier/coller chaque ligne dans l'interpréteur.
 
-Nous allons montrer trois outils pour faire cela : les notebooks, [Spyder](https://www.spyder-ide.org/) et [vscode](https://code.visualstudio.com/).
+La façon classique d'exécuter du code python est d'utiliser un intermédiaire entre l'interpréteur et son code. Nous allons montrer deux façons classiques de le faire.
 
 #### Notebooks
 
-Ce sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
+[Les Notebooks](https://jupyter.org/) sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
 
-C'est une manière plus conviviale que la console d'accéder à l'interpréteur python. L'utilisation des [Notebooks](https://jupyter.org/) est particulièrement adaptée pour rédiger et partager des comptes-rendus.
+{% lien %}
+Deux possibilités simples d'acceder à des notebook :
+
+- <https://basthon.fr/> (qui est géré par l'éducation nationale)
+- <https://colab.google/> (qui est géré par google)
+
+{% endlien %}
+
+Leur utilisation est particulièrement adaptée pour rédiger et partager des comptes-rendus.
 
 {% aller %}
 [Notebooks](notebooks){.interne}
@@ -63,24 +71,36 @@ Ce fonctionnement est déroutant...
 
 Si vous voulez faire du développement sérieusement, je vous conseille d'utiliser plutôt la combinaison éditeur + interpréteur ci-dessous.
 
-#### Vscode
+### <span id="installation-développement"></span>Installer et utiliser un interpréteur python
 
-> TBD installer vscode et exécuter du python avec le triangle.
-> à la différence de spyder le code est réinitialisé à chaque exécution.
-> montrer comment avec l'interpréteur.
-
-### <span id="installation-développement"></span>Installer et utiliser un interpréteur
+Jusqu'à présent on a utilisé des interpréteurs externes pour exécuter notre code. Si l'on cherche à créer ses propres programmes, il est préférable d'avoir un interpréteur sur propre ordinateur. Ceci sera plus rapide et permettra à terme d'être paramétrable à l'envie.
 
 {% aller %}
-[Installer et utiliser un interpréteur](interpréteur){.interne}
+[Installer un interpréteur python](interpréteur){.interne}
 {% endaller %}
 
-## Partie II: structurer son code
+Une fois l'interpréteur installé, plutôt que de l'utiliser directement, on utilise un éditeur de texte spécialisé dans l'écriture de code : [un IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement). Il existe plusieurs choix possible, mais le plus utilisé actuellement est vscode.
 
-> module de python. Matplotlib et spyder
-> conditions, boucles et fonctions avec spyder.
->
-> montrer qu'une fonction est toujours là après avoir été crée. Faire une fonction avec spyder, l'envoyer dans l'interpréteur puis l'utiliser.
+{% aller %}
+[Éditeur vscode](éditeur-vscode){.interne}
+{% endaller %}
+
+La principale différence entre un éditeur de texte et un notebook est que l'interpréteur est re-exécuté à chaque exécution : il ne garde rien en mémoire de la précédente exécution du code. Ceci permet de faire du code rép´table où toutes les informations sont uniquement contenues dans le fichier que l'on exécute.
+
+## Partie II : structurer son code
+
+> TBD ici
+
+{% info %}
+Nous utiliserons par défaut vscode pour illustrer notre code.
+{% endinfo %}
+
+> boucles et fonctions pour le code
+> conteneurs pour ses variables
+
+## Partie III : structurer son programme
+
+> ses modules et fichiers. Expliciter les espaces de nommages.
 
 ### Utiliser le module matplotlib
 
@@ -94,7 +114,7 @@ Installé avec la plupart des environnements fournissant un interpréteur, le mo
 
 Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
 
-## <span id="coder-en-python"></span>Partie III : coder en python
+## <span id="coder-en-python"></span>Partie II : coder en python
 
 Nous avons pour l'instant utilisé python pour exécuter des instructions ou des fonctions. Ceci permet déjà d'utiliser python mais va se révéler rapidement limitant lorsque l'on voudra effectuer des tâches plus complexes ou tout simplement non prévue par les modules.
 
@@ -217,9 +237,9 @@ Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :
 Le tuple vide s'écrira `(,)`{.language-} (ou `tuple()`{.language-}) pour la différentier la notation `()`{.language-} qui est la parenthèse vide.
 {% endinfo %}
 
-
 ## Espace de nommage
 
+> TBD cadre général
 <!-- 
 > TBD à déplacer, après avoir vu les structures de dictionnaires et de listes. à mettre dans la partie débuggeur, bien plus tard
 

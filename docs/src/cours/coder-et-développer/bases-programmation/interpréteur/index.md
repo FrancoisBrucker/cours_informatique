@@ -10,33 +10,28 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les logiciels et outils nécessaires pour écrire et exécuter du code python.
+Nous allons ici installer un interpréteur sur notre machine (si nécessaire sous windows) puis l'utiliser via [un terminal](/cours/système-et-réseau/bases-système/terminal/){.interne}.
 
-## Interpréteur python
+## Installation d'un interpréteur
 
 Commençons par installer un interpréteur indépendant de l'application utilisée pour coder. Selon le système d'exploitation, la méthode d'installation est un peu différente :
 
-{% details "sous Windows 11" %}
+### Sous Windows 11
+
 Utilisez le Microsoft store.
 
 {% lien %}
-[Tutoriel d'installation](https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python)
+[Python sur le windows store](https://apps.microsoft.com/search?query=python&hl=fr-FR&gl=FR)
 {% endlien %}
-{% enddetails %}
 
-{% details "sous Linux/Ubuntu" %}
+Puis installez le via le store.
+
+### Sous Linux/Ubuntu
+
 Python est installé par défaut, mais il ne contient pas le module pip permettant d'installer de nouveaux modules à python. Pour installer pip, tapez dans [un terminal](../ordinateur-développement/terminal){.interne} :
 
 ```
 sudo apt install python3-pip
-```
-
-De plus, le python d'installé ne contient pas non plus le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
-
-Pour installer une version de python avec Tkinter, tapez dans [un terminal](../ordinateur-développement/terminal){.interne} :
-
-```
-sudo apt install python3-tk
 ```
 
 Enfin, la commande pour taper python est `python3`. Pour avoir le même comportement que sous windows où cette commande s'appelle juste `python`, vous pouvez installer :
@@ -46,44 +41,49 @@ sudo apt install python-is-python3
 ```
 
 Vous pourrez uniquement taper `python` dans un terminal pour exécuter l'interpréteur python,
-{% enddetails %}
 
-{% details "sous Macos" %}
+### Sous Macos
 
-De même que sous Linux/Ubuntu, python est installé par défaut, mais pas le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
-
-Il va falloir installer python avec [brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne} puis. Dans [un terminal](/cours/système-et-réseau/bases-système/terminal/bases/){.interne} tapez :
-
-```
-brew install python-tk
-```
-
-Enfin, la commande pour taper python est `python3`. Pour avoir le même comportement que sous windows où cette commande s'appelle juste `python`, vous pouvez taper dans un terminal :
+De même que sous Linux/Ubuntu, python est installé par défaut, mais il s'appelle `python3`. Pour avoir le même comportement que sous windows et Linux où cette commande s'appelle juste `python`, vous pouvez taper dans [un terminal](../ordinateur-développement/terminal){.interne} :
 
 ```shell
 echo "alias python=python3" >> ~/.zshrc
 ```
 
-{% enddetails %}
+Puis fermez et ouvrez un nouveau terminal pour les modifications soient appliquées.
 
-## Éditeur de code
+## Exécuter l'interpréteur depuis un terminal
 
-Une fois l'interpréteur installé, on va l'utiliser _via_ [un IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement). Il existe plusieurs choix possible, mais le plus utilisé actuellement est vscode :
+Ouvrez [un terminal](../ordinateur-développement/terminal){.interne} et tapez `python` puis la touche entrée : vous êtes dans un interpréteur.
 
-{% aller %}
-[Éditeur vscode](éditeur-vscode){.interne}
-{% endaller %}
+### Powershell
 
-Vscode utilise le terminal pour exécuter ses programmes python. C'est une pratique courante dans le monde unix mais iun peu plus exotique sous windows. Prenez le temps de lire le tutoriel suivant pour l'utiliser efficacement.
+![powershell](./powershell.png)
 
-{% aller %}
-[Utiliser le terminal de vscode](terminal-vscode){.interne}
-{% endaller %}
+### Terminal Linux
 
-## Modules python
+![Linux](./linux.png)
 
-Un interpréteur tout neuf vient presque nu. Il ne possède aucun des modules mis à disposition d'environnement tels que anaconda ou Spyder. Mais ce n'est pas grave, nous allons les installer nous même !
+### Terminal mac
 
-{% aller %}
-[Installer des modules](modules-python){.interne}
-{% endaller %}
+![macos](./mac.png)
+
+## Utiliser et sortir de l'interpréteur
+
+Vous pouvez ensuite taper le bonjour universel :
+
+```shell
+>>> print("bonjour Monde !")
+bonjour Monde !
+>>>
+```
+
+Puis sortir de l'interpréteur en tapant `quit()`{.language-} qui exécute la fonction permettant de sortir de l'interpréteur :
+
+```shell
+>>> quit()
+
+❯
+```
+
+Notez que vous pouvez aussi taper la combinaison de touches `^D` (la touche ctrl et la touche D en même temps) pour sortir de l'interpréteur et retourner dans le terminal.

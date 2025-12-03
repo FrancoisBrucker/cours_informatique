@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Terminal
+title: Bases
 
 eleventyComputed:
   eleventyNavigation:
@@ -95,9 +95,35 @@ Cliquer croit sur un dossier dans l'explorateur et choisissez `Open in Terminal`
 
 {% enddetails %}
 
-### Via un IDE
+### Via vscode
 
-La plupart des éditeurs de textes permettent d'ouvrir directement des terminaux. Si vous utilisez [vscode](https://code.visualstudio.com/) par exemple, vous pouvez directement ouvrir un terminal (voir [le tuto](../../éditeur-vscode/terminal/){.interne}).
+{% lien %}
+[Documentation officielle du terminal dans vscode](https://code.visualstudio.com/docs/editor/integrated-terminal)
+{% endlien %}
+
+### Ouvrir ou créer un terminal
+
+On peut ouvrir le terminal courant dans : _menu Affichage  > Terminal_
+
+Ce qui donne quelque chose du type :
+
+![terminal dans vscode](./vscode-terminal.png)
+
+Les différents panels du dessus du terminal (`PROBLEMES`, `OUTPUT`, `CONSOLE DE DEBOGAGE` et `TERMINAL`) dans vscode sont des sorties d'autres processus.
+
+on reste donc 99% du temps sur `TERMINAL` (qui est en sur-brillance).
+
+### Supprimer un terminal
+
+On peut supprimer (en cliquant sur la poubelle) et créer (_menu Terminal > Nouveau terminal_) autant de terminal que l'on le veut. On peut aussi juste fermer la fenêtre du terminal en cliquant sur la croix.
+
+### Créer un nouveau terminal
+
+Notez bien que _menu Affichage > Terminal_ ouvre le terminal courant, il n'en recrée pas un. C'est donc la commande à utiliser par défaut pour garder l'historique de ses commandes en utilisant la flèche du haut, qui remets la dernière commande utilisée.
+
+Lorsque vous voulez créer un nouveau terminal, c'est dans _menu Terminal > Nouveau Terminal_ :
+
+![nouveau terminal](./vscode-nouveau-terminal.png)
 
 ## Épingler le terminal
 

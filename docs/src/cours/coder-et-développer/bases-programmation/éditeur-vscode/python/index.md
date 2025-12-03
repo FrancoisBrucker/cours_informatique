@@ -10,11 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Configuration de [visual studio code](https://code.visualstudio.com/) pour le développement en python.
-
-<!-- fin résumé -->
 
 {% lien %}
 <https://code.visualstudio.com/docs/python/python-tutorial>
@@ -58,7 +54,16 @@ Si vous n'avez pas encore configuré python, vscode va vous demander le faire.
 
 {% faire %}
 Suivez les instructions de vscode (vous n'avez normalement pas grand chose à faire, vscode trouvera normalement les bons paramètres) pour faire le lien entre votre interpréteur python et lui.
+
 {% endfaire %}
+{% info %}
+Par défaut, si vous avez suivi les recommandations du cours pour installer python, vscode doit trouver l'interpréteur python :
+
+- `/bin/python` ou `/usr/bin/python` sous Linux
+- `/usr/bin/python3` sous Mac
+- `C:\Users\fbrucker\AppData\Local\Microsoft\WindowsApps\python.exe` dans le compte utilisateur pour windows
+
+{% endinfo %}
 
 Une fois la configuration terminée, écrivons notre code :
 
