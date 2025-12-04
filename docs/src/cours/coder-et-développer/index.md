@@ -66,12 +66,12 @@ L'installation d'un nouveau système est une étape optionnelle, mais si vous av
 Même si python vient avec de nombreux modules d'installés il arrive toujours un moment où l'on devra installer des modules développés par d'autres personnes :
 
 {% aller %}
-[Installer des modules](./modules-python/){.interne}
+[Installer des modules](./modules-externes-python/){.interne}
 {% endaller %}
 
-#### Utiliser le module matplotlib
+#### Tutoriel matplotlib
 
-Installé avec la plupart des environnements fournissant un interpréteur, le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.
+Le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.
 
 {% aller %}
 [Tutoriel Matplotlib](tutoriel-matplotlib){.interne}
@@ -79,24 +79,11 @@ Installé avec la plupart des environnements fournissant un interpréteur, le mo
 
 Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
 
-#### Utiliser le module numpy
+#### Tutoriel numpy
 
-> TBD à étoffer, ajouter les création de listes à intervalle fixe
-
-Le [module `numpy`{.language-}](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas _stricto sensu_ des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
-
-{% exercice %}
-Utilisez la fonction [`numpy.random.randint`{.language-}](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html) pour créer un array de 10 entiers pris aléatoirement entre 3 et 9.
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> import numpy as np
->>> np.random.randint(3, 10, size=10)
-array([4, 6, 4, 7, 6, 5, 6, 7, 8, 5])
-```
-
-{% enddetails %}
+{% aller %}
+[Tutoriel Numpy](tutoriel-numpy){.interne}
+{% endaller %}
 
 ### Stockage des données
 
@@ -117,10 +104,6 @@ array([4, 6, 4, 7, 6, 5, 6, 7, 8, 5])
 {% aller %}
 [Fichiers](fichiers){.interne}
 {% endaller %}
-
-#### Mettre son code à disposition
-
-> TBD début github + readme
 
 ## Écrire du code
 

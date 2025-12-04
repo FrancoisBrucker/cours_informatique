@@ -28,9 +28,9 @@ Nous allons montrer ici comment installer des modules à un interpréteur python
 - serveur web avec [flask](https://flask.palletsprojects.com/en/stable/) ou [fastapi](https://fastapi.tiangolo.com/)
 - ...
 
-Nous allons voir ici comment utiliser pip pour installer des modules python dans le cadre d'un projet vscode. Il existe d'autres méthodes, mais la technique que nous montrons ici à le mérite de tout le temps fonctionner.
-
-## Installation de modules
+{% info %}
+Il existe d'autres méthodes pour installer des modules, mais la technique que nous montrons ici à le mérite de tout le temps fonctionner.
+{% endinfo %}
 
 Pour installer un module avec python, il faut taper la commande :
 
@@ -57,7 +57,7 @@ Si je veux installer le module `matplotlib` par exemple, ma ligne de commande à
 
 Pour vous, ce sera peut-être différent car le `nom-du-programme-python` sera différent. Pour connaître le nom du programme python à utiliser et trouver un terminal, vous pouvez utiliser ce qu'on a vue dans [la partie sur l'éditeur vscode](../bases-programmation/éditeur-vscode/python/#exécuter-programme){.interne}.
 
-## Exemple
+## Exemple : installation du module matplotlib
 
 Supposons que l'on vienne d'installer un nouvel interpréteur sur notre système et qu'on en profite pour installer [le module matplotlib](https://matplotlib.org/) parce que l'on va en avoir besoin plus tard.
 

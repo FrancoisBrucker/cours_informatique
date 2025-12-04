@@ -50,7 +50,7 @@ couper en parties
 3. interne
 -->
 
-## Principes : gestion des sources comme un dépôt
+## <span id="dépot"></span>Principes : gestion des sources comme un dépôt
 
 Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.
 

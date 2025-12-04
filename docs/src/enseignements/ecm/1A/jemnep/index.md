@@ -60,23 +60,54 @@ Basé sur 3 journée de 6h et (environ) 6h de travail personnel pour un total de
 ### Matin
 
 {% aller "**Cours**" %}
-[Bases du développement](/cours/coder-et-développer/bases-programmation/){.interne}
+
+1. [Bases de système d'exploitation](/cours_informatique/cours/système-et-réseau/bases-système/){.interne}
+2. [Modules externes python](/cours_informatique/cours/coder-et-développer/modules-python/){.interne}
+3. Gestion des données :
+   1. [chaînes de caractères](/cours_informatique/cours/coder-et-développer/encodage-unicode/){.interne}
+   2. [notion de fichier](/cours_informatique/cours/coder-et-développer/fichiers/structure/){.interne} et [fichier texte](/cours_informatique/cours/coder-et-développer/fichiers/fichiers-texte/){.interne}
+
 {% endaller %}
 
 ### Après-midi
 
 {% aller "**Exercices d'entraînement**" %}
 
-[Petits programmes](/cours/coder-et-développer/projet-codes/){.interne}
+1. [Tutoriel matplotlib](/cours_informatique/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
+2. [Projet fichier texte](/cours_informatique/cours/coder-et-développer/fichiers/projet-texte/){.interne}
 
 {% endaller %}
-{% aller "**On vérifie son niveau**" %}
+{% aller "**On va plus loin**" %}
 
-[100 mono-lignes](/cours/coder-et-développer/mono-lignes/){.interne}
+[Données texte](/cours_informatique/cours/coder-et-développer/fichiers/projet-données/){.interne}
 {% endaller %}
+
+## Jour 3
+
+### Matin
+
+{% aller "**Cours**" %}
+
+1. [mettre ses sources à disposition](/cours/gestion-des-sources/#dépot){.interne}
+2. déboguer  son code
+3. tester son code
+
+{% endaller %}
+
+### Après-midi
+
+{% aller "**Exercices d'entraînement**" %}
+> TBD
+{% endaller %}
+{% aller "**On va plus loin**" %}
+> TBD
+{% endaller %}
+
+## Projet à rendre
+
+> TBD
 
 <!-- TBD 
-
 
 A refaire en prenant le plan de la 2A et de la 3A. Puis homogénéiser le tout pour faire une progression sur le système (là et comment sera exécuté son code), l'algorithme et le projet.
 
