@@ -58,7 +58,7 @@ Basé sur 3 journée de 6h et (environ) 6h de travail personnel pour un total de
 {% aller "**Cours**" %}
 
 1. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/){.interne}
-2. [Modules externes python](/cours/coder-et-développer/modules-python/){.interne}
+2. [Modules externes python](/cours/coder-et-développer/modules-externes-python/){.interne}
 3. Gestion des données :
    1. [chaînes de caractères](/cours/coder-et-développer/encodage-unicode/){.interne}
    2. [notion de fichier](/cours/coder-et-développer/fichiers/structure/){.interne} et [fichier texte](/cours/coder-et-développer/fichiers/fichiers-texte/){.interne}
