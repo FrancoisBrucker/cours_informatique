@@ -57,11 +57,11 @@ Basé sur 3 journée de 6h et (environ) 6h de travail personnel pour un total de
 
 {% aller "**Cours**" %}
 
-1. [Bases de système d'exploitation](/cours_informatique/cours/système-et-réseau/bases-système/){.interne}
-2. [Modules externes python](/cours_informatique/cours/coder-et-développer/modules-python/){.interne}
+1. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/){.interne}
+2. [Modules externes python](/cours/coder-et-développer/modules-python/){.interne}
 3. Gestion des données :
-   1. [chaînes de caractères](/cours_informatique/cours/coder-et-développer/encodage-unicode/){.interne}
-   2. [notion de fichier](/cours_informatique/cours/coder-et-développer/fichiers/structure/){.interne} et [fichier texte](/cours_informatique/cours/coder-et-développer/fichiers/fichiers-texte/){.interne}
+   1. [chaînes de caractères](/cours/coder-et-développer/encodage-unicode/){.interne}
+   2. [notion de fichier](/cours/coder-et-développer/fichiers/structure/){.interne} et [fichier texte](/cours/coder-et-développer/fichiers/fichiers-texte/){.interne}
 
 {% endaller %}
 
@@ -69,13 +69,13 @@ Basé sur 3 journée de 6h et (environ) 6h de travail personnel pour un total de
 
 {% aller "**Exercices d'entraînement**" %}
 
-1. [Tutoriel matplotlib](/cours_informatique/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
-2. [Projet fichier texte](/cours_informatique/cours/coder-et-développer/fichiers/projet-texte/){.interne}
+1. [Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
+2. [Projet fichier texte](/cours/coder-et-développer/fichiers/projet-texte/){.interne}
 
 {% endaller %}
 {% aller "**On va plus loin**" %}
 
-[Données texte](/cours_informatique/cours/coder-et-développer/fichiers/projet-données/){.interne}
+[Données texte](/cours/coder-et-développer/fichiers/projet-données/){.interne}
 {% endaller %}
 
 ## Jour 3
