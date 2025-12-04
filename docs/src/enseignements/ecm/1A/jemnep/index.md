@@ -90,7 +90,7 @@ refaire python du début.
 6. tests
 7. gihub comme projet
 8. finir sur débogueur -->
-
+<!-- 
 Basé sur le cours :
 
 {% aller %}
@@ -116,4 +116,4 @@ Listes d'exercices en vrac :
   - [Advent of code 2017](https://adventofcode.com/2017) et [un jeu de donnée (et sa résolution en lisp)](https://github.com/gabrielelana/advent-of-code-2017)
   - [Advent of code 2023](https://adventofcode.com/2023) et [un jeu de donnée](https://github.com/dcastil/advent-of-code-2023/tree/main/data/examples)
   - [Advent of code 2019](https://adventofcode.com/2017) et [un jeu de donnée (et sa résolution en python)](https://github.com/jeroenheijmans/advent-of-code-2019)
-- [Archives du Google code jam](https://zibada.guru/gcj/). Attention. parfois ça peut un peux piquer niveau difficulté.
+- [Archives du Google code jam](https://zibada.guru/gcj/). Attention. parfois ça peut un peux piquer niveau difficulté. -->
