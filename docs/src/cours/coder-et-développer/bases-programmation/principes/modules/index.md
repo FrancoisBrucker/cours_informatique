@@ -9,9 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD ici parler de l'objet Module qui est un espace de nom. Faire le dessin dans les objets. Les noms ne sont que pour globals (on explicitera plus tard, c'est la pile)
-> TBD ici n'utiliser que les module de python. Parler des autres modules plus tard lorsque l'on aura pip sous la main : on installera matplotlib et numpy.
-
 Un _module_ (aussi appelé _bibliothèque_ ou _library_) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Python vient avec de nombreux modules, par exemple :
 
 - [math](https://docs.python.org/fr/3.14/library/math.html) qui contient les fonctions mathématiques courantes,

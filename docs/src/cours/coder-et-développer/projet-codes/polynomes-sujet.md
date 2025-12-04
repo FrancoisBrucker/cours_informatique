@@ -52,3 +52,11 @@ Vous pourrez utiliser la méthode `append`{.language-} des listes qui ajoute un 
   2. une liste de réels $[b_0, \dots, b_m]$
 - **sortie** (on suppose):
   - une liste $[c_0, \dots, c_{m+n}]$ telle que $c_k = \sum_{i+j=k}a_ib_j$ pour tout $0\leq k \leq m+n$
+
+## 4. programme principal
+
+Demandez à l'utilisateur de taper deux fois une suite d'entiers qui correspondront à un polynôme. Puis :
+
+1. afficher les deux polynômes
+2. faites en la somme et affichez le résultat
+3. faites en le produit  et affichez le résultat

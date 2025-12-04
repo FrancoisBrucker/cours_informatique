@@ -172,7 +172,7 @@ x[3] = 12
 
 ### Ajout d'un élément
 
-Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../../../fonctions-méthodes#méthodes){.interne} des objets de type liste.
+Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../../principes/fonctions-méthodes#méthodes){.interne} des objets de type liste.
 
 Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
 
@@ -218,7 +218,7 @@ Il existe d'autres façons, indirectes, de créer des listes, utile lorsque les 
 
 ### Avec range
 
-La [fonction `range`{.language-}](../../blocs#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
+[La fonction `range`{.language-}](../../bloc-répétition/#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
 
 Par exemple :
 
@@ -259,7 +259,7 @@ for i in range(10):
 ### <span id="list-comprehension"></span> Avec une _list comprehension_
 
 {% lien %}
-<https://docs.python.org/fr/3/tutorial/datastructures.html#s>
+<https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>
 {% endlien %}
 
 ```python
@@ -346,7 +346,7 @@ Quelques listes sont souvent demandées. Voici les moyens en python de les crée
 
 ### Listes d'entiers successifs
 
-On utilise [fonction `range`{.language-}](../../blocs#range){.interne} en combinaison avec le [créateur de liste `list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
+On utilise [la fonction `range`{.language-}](../../bloc-répétition/#range){.interne} en combinaison avec le [créateur de liste `list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
 
 Par exemple pour la liste des 10 premiers entiers :
 
@@ -412,7 +412,7 @@ A noter qu'il existe aussi la [fonction `reversed`{.language-}](https://docs.pyt
 
 ### Listes aléatoires
 
-Mélanger une liste peut se faire avec le [module](../../modules){.interne} `random`{.language-} de python. Nous verrons les modules plus tard, mais par soucis de complétion, utilisons le ici pour créer des listes aléatoires.
+Mélanger une liste peut se faire avec [le module `random`{.language-} de python](https://docs.python.org/fr/3.14/library/random.html).
 
 Par exemple, la liste de 10 premiers entiers mélangés :
 
@@ -435,23 +435,6 @@ Ou l'utilisation de [`random.randrange`{.language-}](https://docs.python.org/fr/
 >>> L
 [1, 1, 0, 1, 1, 0, 1, 0, 1, 0]
 ```
-
-## Arrays du module numpy
-
-Le [module `numpy`{.language-}](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas _stricto sensu_ des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
-
-{% exercice %}
-Utilisez la fonction [`numpy.random.randint`{.language-}](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html) pour créer un array de 10 entiers pris aléatoirement entre 3 et 9.
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> import numpy as np
->>> np.random.randint(3, 10, size=10)
-array([4, 6, 4, 7, 6, 5, 6, 7, 8, 5])
-```
-
-{% enddetails %}
 
 ## Même liste, noms différents
 
@@ -502,7 +485,7 @@ La façon la plus sûre de fabriquer des listes de listes est de le faire avec d
 M = []
 for i in range(4):  # lignes
     ligne = []
-    for j in range(5): # colones
+    for j in range(5): # colonnes
         ligne.append(1)
     M.append(ligne)
 ```
@@ -516,7 +499,7 @@ Créez la matrice identité à 5 ligne et 5 colonnes.
 M = []
 for i in range(5):  # lignes
     ligne = []
-    for j in range(5): # colones
+    for j in range(5): # colonnes
         if i == j:
             ligne.append(1)
         else:
@@ -526,7 +509,7 @@ for i in range(5):  # lignes
 
 {% enddetails %}
 
-Si on se sent plus hardi, on pourra utiliser des [_list comprehension_](./#){.interne} :
+Si on se sent plus hardi, on pourra utiliser des [_list comprehension_](./#list-comprehension){.interne} :
 
 {% exercice %}
 Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une unique _list comprehension_.

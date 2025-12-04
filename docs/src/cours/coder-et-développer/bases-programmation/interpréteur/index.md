@@ -86,4 +86,4 @@ Puis sortir de l'interpréteur en tapant `quit()`{.language-} qui exécute la fo
 ❯
 ```
 
-Notez que vous pouvez aussi taper la combinaison de touches `^D` (la touche ctrl et la touche D en même temps) pour sortir de l'interpréteur et retourner dans le terminal.
+Notez que vous pouvez aussi, sous Linux et mac, taper la combinaison de touches `^D` (la touche ctrl et la touche D en même temps) pour sortir de l'interpréteur et retourner dans le terminal.

@@ -87,25 +87,12 @@ Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage p
 Lorsque l'on exécute un programme, un premier espace de nommage est créé :
 
 {% note %}
-Au démarrage d'une exécution d'un programme, l'espace de nommage principal, nommé `global`{.language-} est créé. C'est à partir de lui que toutes les variables doivent être atteintes.
+Au démarrage d'une exécution d'un programme, l'espace de nommage principal, celui où l'on créera les variables, est créé. C'est à partir de lui que toutes les variables doivent être atteintes.
 {% endnote %}
 
 Au départ, il ne contient rien, à part des noms commençant et finissant par `__`{.language-}, qui sont utilisés par python. On en verra certaines pendant ce cours, mais ce qu'il faut retenir c'est que ces variables permettent à python de fonctionner. Elles sont mises à disposition des développeurs mais on ne les utilisera jamais dans un usage courant.
 
-{% info %}
-Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction `globals()`{.language-} qui rend un dictionnaire contenant le nom et l'objet associé à chaque variable. [Un dictionnaire](https://docs.python.org/fr/3.13/tutorial/datastructures.html#dictionaries) est une structure de donnée qui associe un objet à un nom. Leur affichage est du type :
-
-```python
-{
-   ...
-   
-   'nom': objet,
-   
-   ...
-}
-```
-
-Au démarrage del'interpréteur, il n'y pas grand chose dans globals :
+Pour voir les noms définit dans l'espace de noms des variables, on utilise en python la fonction `globals()`{.language-} qui rend un dictionnaire contenant le nom et l'objet associé à chaque variable. Au démarrage de l'interpréteur, il n'y pas grand chose dans globals :
 
 ```python
 >>> globals()
@@ -117,24 +104,15 @@ Au démarrage del'interpréteur, il n'y pas grand chose dans globals :
    '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), 
    '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 
    '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', 
-   '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc'}
+   '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc'
+}
 ```
 
 Uniquement des variables internes à python.
 
-{% endinfo %}
-
-A tout moment de l'exécution d'un programme, un espace de nommage pourra être créé. En revanche :
-
-{% note %}
-A tout moment du programme, on pourra créer un nouvel espace de noms : de nombreux espaces de noms pourront être définis, mais il existera toujours **un** espace de noms courant où l'on créera les variables et où on cherchera les noms par défaut.
-{% endnote %}
-
-On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.
-
 ## Exemple
 
-On peut maintenant reprendre un exemple de [la partie variable et objet](../variables/) à l'aune des espace de nommage. Considérons le programme suivant :
+On peut maintenant reprendre un exemple de [la partie variable et objet](../principes/variables/) à l'aune des espace de nommage. Considérons le programme suivant :
 
 ```python
 x = 1
@@ -144,61 +122,46 @@ y = 1
 Exécutons le ligne à ligne :
 
 1. avant l'exécution de la première ligne :
-   1. on a un unique espace de noms (`global`{.language-}) qui est l'espace courant (en vert sur la figure)
-      ![cas-1-1](cas-1-1.png)
+   1. on a un unique espace de nommage qui correspond à nos variables
+
+      ```python
+      >>> globals()
+      {'__name__': '__main__', '__doc__': None, '__package__': '_pyrepl', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc'}
+      ```
+
 2. on exécute la première ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=`{.language-} : on crée un objet de type entier
    2. on crée le nom `x`{.language-} dans l'espace de noms courant (ici `global`{.language-}) et on lui affecte l'objet.
-      ![cas-1-2](cas-1-2.png)
+
+      ```python
+      >>> x = 1
+      >>> globals()
+      {'__name__': '__main__', '__doc__': None, '__package__': '_pyrepl', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc', 
+      'x': 1}
+      ```
+
 3. on exécute la deuxième ligne. Elle s'exécute ainsi :
    1. on commence à droite du `=`{.language-} : on crée un objet de type entier
    2. on crée le nom `y`{.language-} dans l'espace de noms courant (ici `global`{.language-}) et on lui affecte l'objet.
-      ![cas-1-3](cas-1-3.png)
 
-A la fin du programme, il y a **2 objets entiers différents** (même si tous les 2 valent 1), dont les noms sont, dans l'espace de noms global, respectivement `x`{.language-} et `y`{.language-}.
+      ```python
+      >>> x = 1
+      >>> y = 1
+      >>> globals()
+      {'__name__': '__main__', '__doc__': None, '__package__': '_pyrepl', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc', 
+      'x': 1, 
+      'y': 1}
+      >>> 
+4. on peut aussi supprimer une variable et la voir disparaître de lk'espace des variables :
 
-{% exercice %}
-Exécutez le code précédant ligne à ligne et voyez comment les variables apparaissent dans l'espace de nommage `global`{.language-}
-{% endexercice %}
-{% details "corrigé" %}
-
-L'espace de nommage `globals()`{.language-} ne contient au départ que des variables de python (c'est à dire commençant et finissant par des `__`{.language-}) :
-
-```python
->>> globals()
-{'__name__': '__main__', '__doc__': None, '__package__': '_pyrepl', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc'}
-```
-
-Après affectation de `x`, on voit la variable exister dans l'espace `global`{.language-} :
-
-```python
->>> x = 1
->>> globals()
-{'__name__': '__main__', '__doc__': None, '__package__': '_pyrepl', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc', 
-'x': 1}
-```
-
-Après affectation de `y`{.language-}, on voit les deux variables `x`{.language-} et `y`{.language-} exister dans l'espace `global`{.language-} :
-
-```python
->>> y = 1
->>> globals()
-{'__name__': '__main__', '__doc__': None, '__package__': '_pyrepl', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc', 
-'x': 1, 
-'y': 1}
->>> 
-```
-
-On peut même supprimer `x` et la voir disparaître de l'espace de nommage :
-
-```python
->>> del x
->>> globals()
-{'__name__': '__main__', '__doc__': None, '__package__': '_pyrepl', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc', 
-'y': 1}
-```
-
-{% enddetails %}
+      ```python
+      >>> x = 1
+      >>> y = 1
+      >>> del x
+      >>> globals()
+      {'__name__': '__main__', '__doc__': None, '__package__': '_pyrepl', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc', 
+      'y': 1}
+      ```
 
 ## <span id="notation-pointée"></span> Notation pointée
 
@@ -207,7 +170,7 @@ On peut même supprimer `x` et la voir disparaître de l'espace de nommage :
 
 {% endlien %}
 
-En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.
+En python, (pratiquement) tout a un espace de nommage. On s'en sert dès qu'on utilise la notation pointée.
 
 on l'a vue pour les modules, mais c'est aussi vrai pour les objets. En considérant le code suivant :
 
@@ -216,7 +179,7 @@ c = "coucou"
 c2 = c.upper()
 ```
 
-Le nom `upper`{.language-} est défini dans l'espace de noms des chaînes de caractères dont `"coucou"`{.language-} est un exemple. Vérifions-le un utilisant  la fonction [`vars()`{.language-}](https://docs.python.org/fr/3.13/library/functions.html#vars) qui donne les noms de l'espace de nommage d'un objet passé en paramètre :
+Le nom `upper`{.language-} est défini dans l'espace de nommage des chaînes de caractères dont `"coucou"`{.language-} est un exemple. Vérifions-le un utilisant  la fonction [`vars(objet)`{.language-}](https://docs.python.org/fr/3.13/library/functions.html#vars) qui donne les noms de l'espace de nommage d'un objet passé en paramètre :
 
 ```python
 >>> vars(str)
@@ -226,15 +189,15 @@ mappingproxy({'__new__': <built-in method __new__ of type object at 0x1035cea40>
 >>> 
 ```
 
-Parmi tous les noms définis, on retrouve bien `'upper'`{.language-}. On aurait pu aussi, de façon plus rapide, utiiser l'instruction :
+Parmi tous les noms définis, on retrouve bien `'upper'`{.language-}. On aurait pu aussi, de façon plus rapide, utiliser l'instruction :
 
 ```python
->>> 'upper' in vars(str)
+>>> "upper" in vars(str)
 True
 >>>
 ```
 
-Notez qu'on cherche bien si un **nom**, donc une chaîne de caractères, est connue dans un espace denommage. Ce nom est associé à une méthode.
+Notez qu'on cherche bien si un **nom**, donc une chaîne de caractères, est connue dans un espace de nommage. Ce nom est associé à une méthode.
 
 C'est une notation **très puissante** ! Il ne faut pas avoir peur de chaîner ces notations. On appelle cela des chaînages :
 
@@ -244,10 +207,10 @@ a.b.c.d()
 
 Signifie :
 
-1. On exécute `d`{.language-} qui est dans l'espace de noms de `a.b.c`{.language-}
-2. `c`{.language-} est dans l'espace de noms de `a.b`{.language-}
-3. `b`{.language-} est dans l'espace de noms de `a`{.language-}
-4. `a`{.language-} est dans l'espace de noms courant
+1. On exécute `d`{.language-} qui est dans l'espace de nommage de `a.b.c`{.language-}
+2. `c`{.language-} est dans l'espace de nommage de `a.b`{.language-}
+3. `b`{.language-} est dans l'espace de nommage de `a`{.language-}
+4. `a`{.language-} est dans l'espace de nommage courant
 
 Nous allons utiliser cette mécanique de façon intensive avec les modules.
 
@@ -258,6 +221,8 @@ Lorsque l'on importe un module, un espace de nommage est créé et le module ent
 {% note %}
 Les modules possèdent un espace de noms qui contient les variables qui y sont définies
 {% endnote %}
+
+Considérons le code suivant qui importe deux [modules python](../principes/modules/){.language-} :
 
 ```python/
 import random
@@ -276,7 +241,7 @@ On accède à l'espace de noms du module par la notation pointée : `random.rand
 Notez que le module `math`{.language-} n'a plus d'espace de noms associé puisque l'on a juste _récupéré_ un nom qui y est défini.
 {% endinfo %}
 
-Utilisons la fonction [`vars()`{.language-}](https://docs.python.org/fr/3.13/library/functions.html#vars) pour visualiser les espaces de nommage et leurs évolution lors de l'exécution du code précédent. Commençons par vérifier que le nom `random`{.language-} est bien défini après import :
+Utilisons la fonction [`vars(objet)`{.language-}](https://docs.python.org/fr/3.13/library/functions.html#vars) pour visualiser les espaces de nommage et leurs évolution lors de l'exécution du code précédent. Commençons par vérifier que le nom `random`{.language-} est bien défini après import :
 
 ```python
 >>> import random
@@ -306,7 +271,6 @@ True
 {% exercice %}
 Montrez que `pi`{.language-} est un réel défini dasn le module math.
 {% endexercice %}
-
 {% details "corrigé" %}
 
 La variable `pi`{.language-} est définie dans le module math :
@@ -387,5 +351,120 @@ All Rights Reserved., 'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corpo
 
 {% enddetails %}
 
-La variable `__buitins__`{.language-} est une des nombreuses variables commen
-çant et finissant par des `_`{.language-} que python utilise pour stocker ses informations. En python tout est explicite et peut être utilisé, en particulier ses variables internes.
+La variable `__buitins__`{.language-} est une des nombreuses variables commençant et finissant par des `_`{.language-} que python utilise pour stocker ses informations. En python tout est explicite et peut être utilisé, en particulier ses variables internes.
+
+## Espace de nommage courant
+
+Nous n'avons pour l'instant que regardé l'espace des variables via la commande `globals()`{.language-} qui permet de trouver les différentes variables de l'interpréteur.
+
+{% attention "**À retenir**" %}
+A tout moment du programme, on pourra créer un nouvel espace de noms : de nombreux espaces de noms pourront être définis, mais il existera toujours **un** espace de noms courant où l'on créera les variables et où on cherchera les noms par défaut.
+
+Cet espace de nommage courant est accessible via la fonction `vars()`{.language-} de python
+{% endattention %}
+
+Au départ, l'espace des variables (accessible par la fonction `globals()`{.language-}) est l'espace de nommage courant (accessible par la fonction `vars()`{.language-}). Vérifiez le :
+
+{% exercice %}
+Dans un interpréteur :
+
+1. créez une variable nommée `x`{.language-} contenant un entier valant 42.
+2. vérifiez que le nom de la variable est présent dans l'espace des variables et dans l'espace de nommage courant
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+>>> "x" in vars()
+False
+>>> x = 42
+>>> "x" in vars()
+True
+>>> "x" in globals()
+True
+```
+
+Notez que l'n cherche bien **le nom de la variable** (c'est à dire la chaîne de caractères `"x"`{.language}) et pas la variable `x`{.language} qui sera remplacé par son objet, c'est à dire l'entier valant 42.
+
+```python
+>>> x in vars()
+False
+```
+
+C'est aussi évident, mais autant le préciser, que la commande suivante est idiote :
+
+```python
+>>> "x" in vars
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+    "x" in vars
+TypeError: argument of type 'builtin_function_or_method' is not a container or iterable
+```
+
+Puisque `vars`{.language-} est le nom de la fonction (c'est une variable...) alors `vars()`{.language-} est le résultat de l'exécution de la fonction.
+
+{% enddetails %}
+
+On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.
+
+### Pendant l'import d'un module
+
+{% faire %}
+Reprenez (ou faites) [le projet de création d'un module](../creation-modules/){.interne}.
+
+Vous devriez avoir un projet vscode nommé `projet_module`{.fichier} et contenant deux fichiers :
+
+- `mon_module.py`{.fichier}
+- `mon_programme.py`{.fichier}
+
+{% endfaire %}
+
+Ajoutez à la fin des deux fichiers les commandes :
+
+```python
+d = vars()
+print("Espace de nommage courant :", d["__name__"], "MA_CONSTANTE" in d)
+```
+
+Puis exécutez `mon_programme.py`{.fichier}. Vous devirez voir affiché :
+
+```shell
+Espace de nommage courant : mon_module True
+42
+Espace de nommage courant : __main__ False
+```
+
+Ce qui montre que **pendant l'exécution** de l'import l'espace de nom courant n'était pas l'espace des variables, mais l'espace de nommage du module.
+
+### Pendant l'exécution d'une fonction
+
+Si vous exécutez le code suivant :
+
+```python
+
+def f(x):
+   d = vars()
+   print(d["x"])
+
+x = 24
+d = vars()
+print(d["x"])
+
+f(42)
+
+d = vars()
+print(d["x"])
+```
+
+Vous obtiendrez :
+
+```
+24
+42
+24
+```
+
+Ce qui montre bien que :
+
+1. un nouvel espace de nommage a été crée pour l'exécution de la fonction
+2. que les paramètres de la fonction sont des variables de ce nouvel espace
+3. que l'espace disparait à la fin de l'exécution de la fonction

@@ -2,7 +2,14 @@
 layout: layout/post.njk
 
 title: "Corrigé : Syracuse"
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
+
 
 ## Fichier `syracuse.py`{.fichier}
 
@@ -23,28 +30,6 @@ def suite(u_0):
         sortie.append(u_n)
 
     return sortie
-
-```
-
-## Fichier `test_syracuse.py`{.fichier}
-
-```python
-from syracuse import syracuse, suite
-
-def test_syracuse_pair():
-    assert syracuse(2) == 1
-
-
-def test_syracuse_impair():
-    assert syracuse(1) == 4
-
-
-def test_suite_u_0_1():
-    assert suite(1) == [1]
-
-
-def test_suite_u_0_5():
-    assert suite(5) == [5, 16, 8, 4, 2, 1]
 
 ```
 

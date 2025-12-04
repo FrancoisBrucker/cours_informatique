@@ -23,10 +23,57 @@ Le premier d'une série de 3 enseignements orienté développement et axé autou
 - la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM))
 
 {% info %}
-> lien veres les deux autres cours
+La trilogie :
+
+1. 1A/OS : [J'aimerais être moins nul en python](./){.interne}
+2. 2A/MIE : [Coder et développer en python](../../2A/cdp/){.interne}
+3. 3A/Do_It : [Méthodes de développement](../../3A/do-it/mdd){.interne}
+
 {% endinfo %}
 
 Une semaine pour comprendre le fonctionnement de python et l'utiliser pour développer ses propres programmes comme le ferait un informaticien.
+
+Basé sur 3 journée de 6h et (environ) 6h de travail personnel pour un total de 24h d'enseignement.
+
+## Jour 1
+
+### Matin
+
+{% aller "**Cours**" %}
+[Bases du développement](/cours/coder-et-développer/bases-programmation/){.interne}
+{% endaller %}
+
+### Après-midi
+
+{% aller "**Exercices d'entraînement**" %}
+
+[Petits programmes](/cours/coder-et-développer/projet-codes/){.interne}
+
+{% endaller %}
+{% aller "**On vérifie son niveau**" %}
+
+[100 mono-lignes](/cours/coder-et-développer/mono-lignes/){.interne}
+{% endaller %}
+
+## Jour 2
+
+### Matin
+
+{% aller "**Cours**" %}
+[Bases du développement](/cours/coder-et-développer/bases-programmation/){.interne}
+{% endaller %}
+
+### Après-midi
+
+{% aller "**Exercices d'entraînement**" %}
+
+[Petits programmes](/cours/coder-et-développer/projet-codes/){.interne}
+
+{% endaller %}
+{% aller "**On vérifie son niveau**" %}
+
+[100 mono-lignes](/cours/coder-et-développer/mono-lignes/){.interne}
+{% endaller %}
 
 <!-- TBD 
 

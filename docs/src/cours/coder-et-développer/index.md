@@ -29,34 +29,102 @@ Aucune compétences en informatique préalable n'est nécessaire.
 [Bases de la programmation](bases-programmation){.interne}
 {% endaller %}
 
+### Tutoriel python
+
 Une fois les bases acquises, terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu de façon plus détaillée :
 
 {% lien %}
 <https://docs.python.org/fr/3/tutorial/index.html>
 {% endlien %}
 
-## On s'entraîne
+### On s'entraîne
 
-> TBD reprendre le "on s’entraîne" de plus tard mais enlever les tests.
-> un dossier avec tous les fichiers python. et on exécute le fichier.
-> Juste un fichier avec fct et code par projet (prendre)
+{% aller %}
+[Petits projets de code](projet-codes){.interne}
+{% endaller %}
+{% aller %}
+[100 mono-lignes](./mono-lignes){.interne}
+{% endaller %}
 
-## <span id="développer"></span>Développer
+## <span id="développer"></span>Gestion des données
 
 Avant de pouvoir écrire des programmes conséquents il faut comprendre comment est organisé votre ordinateur et pouvoir minimalement interagir avec son système d'exploitation. Donc lisez la partie consacrée aux bases d'un système d'exploitation avant de continuer :
 
 {% prerequis "**Connaissances système minimales**" %}
 
-[Utiliser son système d'exploitation](/cours/système-et-réseau/bases-système/bases/){.interne}
+[Utiliser son système d'exploitation](/cours/système-et-réseau/bases-système){.interne}
 
 {% endprerequis %}
 {% info "**Etape optionnelle**"%}
 
-Si vous avez votre ordinateur depuis longtemps sans vraiment vous en occuper, ou que vous avez des erreurs étranges, il peut-être nécessaire de faire une nouvelle installation :
-
-[Installer un nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
+L'installation d'un nouveau système est une étape optionnelle, mais si vous avez votre ordinateur depuis longtemps sans vraiment vous en occuper, ou que vous avez des erreurs étranges, il peut-être nécessaire de faire une nouvelle installation.
 
 {% endinfo %}
+
+### Installer des modules externes
+
+Même si python vient avec de nombreux modules d'installés il arrive toujours un moment où l'on devra installer des modules développés par d'autres personnes :
+
+{% aller %}
+[Installer des modules](./modules-python/){.interne}
+{% endaller %}
+
+#### Utiliser le module matplotlib
+
+Installé avec la plupart des environnements fournissant un interpréteur, le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.
+
+{% aller %}
+[Tutoriel Matplotlib](tutoriel-matplotlib){.interne}
+{% endaller %}
+
+Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
+
+#### Utiliser le module numpy
+
+> TBD à étoffer, ajouter les création de listes à intervalle fixe
+
+Le [module `numpy`{.language-}](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas _stricto sensu_ des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
+
+{% exercice %}
+Utilisez la fonction [`numpy.random.randint`{.language-}](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html) pour créer un array de 10 entiers pris aléatoirement entre 3 et 9.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> import numpy as np
+>>> np.random.randint(3, 10, size=10)
+array([4, 6, 4, 7, 6, 5, 6, 7, 8, 5])
+```
+
+{% enddetails %}
+
+### Stockage des données
+
+#### En mémoire
+
+{% aller %}
+[Données en mémoire](données-mémoire){.interne}
+{% endaller %}
+
+#### Chaîne de caractères
+
+{% aller %}
+[Encodage Unicode](encodage-unicode){.interne}
+{% endaller %}
+
+#### Sur des fichiers
+
+{% aller %}
+[Fichiers](fichiers){.interne}
+{% endaller %}
+
+#### Mettre son code à disposition
+
+> TBD début github + readme
+
+## Écrire du code
+
+> TBD ici tests
 
 Une fois les prérequis acquis :
 
@@ -78,27 +146,7 @@ On s'entraîne sur de petits projets :
 > TBD en ajouter.
 
 {% aller %}
-[On s’entraîne : petits projets de code](projet-codes){.interne}
-{% endaller %}
-
-## Stockage des données
-
-### En mémoire
-
-{% aller %}
-[Données en mémoire](données-mémoire){.interne}
-{% endaller %}
-
-### Chaîne de caractères
-
-{% aller %}
-[Encodage Unicode](encodage-unicode){.interne}
-{% endaller %}
-
-### Sur des fichiers
-
-{% aller %}
-[Fichiers](fichiers){.interne}
+[On s’entraîne : petits projets de code](projet-codes-tests){.interne}
 {% endaller %}
 
 ## Programmation objet

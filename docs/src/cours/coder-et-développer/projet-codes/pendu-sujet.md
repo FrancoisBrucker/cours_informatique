@@ -2,7 +2,14 @@
 layout: layout/post.njk
 
 title: "Pendu"
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
+
 
 On essaye d'écrire un programme qui joue au pendu.
 

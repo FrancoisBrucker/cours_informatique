@@ -10,21 +10,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Quelques exercices pour se mettre le code dans les pattes. Utilisez toutes les bonnes pratiques vues dans le cours et forcez vous à prendre de bonnes habitudes :
-
-{% faire %}
-
-- utilisez des noms de fichiers, de variables et de fonctions signifiants
-- utilisez black pour avoir un programme sans warnings du linter.
-- **forcez vous** à utiliser le débogueur pour tester vos programmes
-
-{% endfaire %}
-
-Pour chacun des projets vous ferez 3 fichiers :
+Quelques exercices pour se mettre le code dans les pattes. Pour chacun des projets vous ferez 2 fichiers :
 
 - le programme principal de nom `main.py`{.language-} qui sera exécuté
 - le fichier contenant les différentes fonctions appelées dans le programme principal. Son nom doit être en relation avec son contenu.
-- le fichier testant les différentes fonctions (si le fichier contenant les fonctions s'appelle `fonctions.py`{.language-}, le fichier de tests s'appelle `test_fonctions.py`{.language-})
 
 Chaque sujet contient son corrigé, mais faites dans l'ordre :
 
@@ -59,7 +48,7 @@ Chaque sujet contient son corrigé, mais faites dans l'ordre :
 
 {% enddetails %}
 
-## <span id="compte-caractere"></span>Le compte est bon
+## <span id="compte-caractère"></span>Le compte est bon
 
 {% exercice %}
 [Sujet](./compte-caractere-sujet){.interne}
