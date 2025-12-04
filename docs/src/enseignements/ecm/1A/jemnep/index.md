@@ -23,11 +23,7 @@ Le premier d'une série de 3 enseignements orienté développement et axé autou
 - la gestion du code source ([SCM](https://developer.mozilla.org/fr/docs/Glossary/SCM))
 
 {% info %}
-La trilogie :
-
-1. 1A/OS : [J'aimerais être moins nul en python](./){.interne}
-2. 2A/MIE : [Coder et développer en python](../../2A/cdp/){.interne}
-3. 3A/Do_It : [Méthodes de développement](../../3A/do-it/mdd){.interne}
+[La trilogie](/enseignements/ecm/#mdd)
 
 {% endinfo %}
 

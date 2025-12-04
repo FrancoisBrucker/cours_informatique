@@ -27,7 +27,7 @@ $
 
 ## Mes cours actuels
 
-### Méthodes de développement
+### <span id="mdd"></span>Méthodes de développement
 
 une série de 3 enseignements orientés développement et axé autour de 3 thèmes :
 
@@ -55,8 +55,7 @@ S7 MIE :
 
 #### 3A
 
-Trois cours, un par temps dans [le parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
-
+Dans [le parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
 
 {% aller %}
 [Méthode de développement](3A/do-it/mdd/){.interne}
@@ -87,7 +86,7 @@ Commencez par choisir toutes les options/cours où on peut en faire :
 
 ### Sans double diplôme
 
-Il est tout à fait possible de faire une carrière d'informaticien en restant à l'ecm, mais il est alors très fortement conseillé de **partir en S8 à l'étranger** pour suivre un cursus d'informatique dans une université étrangère. Vous allez acquérir les fondamentaux qui vous manquent encore. 
+Il est tout à fait possible de faire une carrière d'informaticien en restant à l'ecm, mais il est alors très fortement conseillé de **partir en S8 à l'étranger** pour suivre un cursus d'informatique dans une université étrangère. Vous allez acquérir les fondamentaux qui vous manquent encore.
 
 Puis **Venez** en Do_It en 3A :)
 
