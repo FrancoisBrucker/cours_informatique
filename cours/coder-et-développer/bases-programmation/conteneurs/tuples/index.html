@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tuples</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Tuples</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-programmation/">Bases de programmation et du langage python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-programmation/conteneurs/">Conteneurs</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-programmation/conteneurs/tuples/">Tuples</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Un tuple est une liste non-modifiable : les objets present dans le tuple sont déterminés à sa creation. On crée un tuple comme une liste en remplaçant les crochets par des parenthèses :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> t <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"deux"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span></code></pre>
+<p>On les utilise ensuite comme une liste :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+<span class="token number">3</span>
+<span class="token operator">>></span><span class="token operator">></span> t<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token string">'deux'</span></code></pre>
+<p>Les méthodes de listes qui ne modifient pas la liste sont utilisables, par exemple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> t<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token number">2</span></code></pre>
+<p>Mais modifier les éléments d'un tuple est interdit :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"un"</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;python-input-8>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+    t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"un"</span>
+    <span class="token operator">~</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span>
+TypeError<span class="token punctuation">:</span> <span class="token string">'tuple'</span> <span class="token builtin">object</span> does <span class="token keyword">not</span> support item assignment</code></pre>
+<p>Tout comme les méthodes modifiant la liste :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> t<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;python-input-7>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+    t<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+    <span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span>
+AttributeError<span class="token punctuation">:</span> <span class="token string">'tuple'</span> <span class="token builtin">object</span> has no attribute <span class="token string">'append'</span></code></pre>
+<p>Les tuples sont très pratiques lorsque l'on veut créer un conteneur qui puisse être donner à d'autres méthodes ou fonctions sans crainte qu'elle soit modifié. Dans le doute : utilisez des tuples plutôt que des listes, cela vous évitera des problèmes.</p>
+<p>On finira cette partie par quelques cas d'usage courant.</p>
+<h2>Créer un tuple de 1 élément</h2>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">t <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">)</span></code></pre>
+<p>Si vous oubliez la virgule, vous ne ferez que mettre des parenthèses autour de l'entier 2.</p>
+<h2>Créer un tuple issu d'une itération</h2>
+<p>Comme un tuple est fixé à sa création, pour créer un tuple issue d'une itération, on commence par créer une liste puis on la transforme en tuple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     l<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i <span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token operator">>></span><span class="token operator">></span> t <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> t
+<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">,</span> <span class="token number">49</span><span class="token punctuation">,</span> <span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">81</span><span class="token punctuation">)</span></code></pre>
+<h2>Attention</h2>
+<p>Si un tuple n'est pas modifiable, ce nest pas le cas des objets qui le compose.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> t <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> t<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> t
+<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

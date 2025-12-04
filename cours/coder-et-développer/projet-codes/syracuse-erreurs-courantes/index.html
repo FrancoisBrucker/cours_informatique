@@ -80,35 +80,23 @@
 
   
 
-  <h2>Tests indépendants</h2>
-<p>Une fonction de test doit être indépendante du reste du code.
-De là :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
 
-<span class="token keyword">def</span> <span class="token function">test_syracuse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span></code></pre>
-<p>N'est pas correcte. On préférera être explicite :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_syracuse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span></code></pre>
-<h2>Noms des tests</h2>
-<p>Un test à sa son utilité. Son nom doit dire à quoi il sert. Ainsi <code class="language-">test_1</code> n'est <strong>PAS</strong> un bon nom de test. On pourra avoir la convention de nommage suivante : <code class="language-">test_nom_quoi</code> où <code class="language-">nom</code> est le nom de la fonction que l'on teste et <code>quoi</code>ce que l'on teste.</p>
-<p>exemple :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> syracuse <span class="token keyword">import</span> syracuse
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/">On s&#39;entraîne à coder de petits projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/syracuse-erreurs-courantes/">Erreurs courantes : Syracuse</a>
 
-<span class="token keyword">def</span> <span class="token function">test_syracuse_pair</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span></code></pre>
-<h2>Vos tests/main doivent se lancer</h2>
-<p>Un programme doit <strong>TOUJOURS</strong> marcher. Lorsque l'on exécute un <em>&quot;<a href="http://main.py">main.py</a>&quot;</em> où que l'on lance les tests avec la commande <code>pytest</code> ils doivent se lancer. Cela ne veut pas dire que les tests soient tous vert, vous pouvez avoir un tests rouge ce qui signifie que vous êtes entrain de travailler sur cette fonctionnalité et qu'elle ne fonctionne pas encore, mais ils doivent se lancer.</p>
-<p>Ainsi :</p>
-<ul>
-<li>vérifiez que vos imports soient corrects</li>
-<li>vérifiez que si vous exécutez votre programme principal il se lance</li>
-<li>vérifiez que vous pouvez exécutez vos tests et que vos tests se lancent (qu'ils soient vert ou rouge)</li>
-</ul>
-<p>Si on ne peut pas exécuter votre fichier main ou que vos tests ne se lancent pas parce que vous vous êtres trompé dans un import ou que vous avez des erreurs de syntaxe, votre note chute drastiquement.</p>
-<p>Dernière remarque : vos tests doivent tester des choses... Mettre des fonctions de tests sans qu'ils soient utile (genre <code>assert 1 == 1</code>) est également rédhibitoire.</p>
-<h2>Entrée utilisateurs et conversion de types</h2>
-<p>Après un input vous aurez <strong>toujours</strong> une chaîne de caractère. Il faut la convertir dans ce que va demander vos fonctions, ici des entiers.</p>
+</div></div>
+
+
+
+    
+  
+
+  <p>Après un input vous aurez <strong>toujours</strong> une chaîne de caractère. Il faut la convertir dans ce que va demander vos fonctions, ici des entiers.</p>
 <p>Ne faites <strong>PAS</strong> de conversion de type dans vos fonctions. Si elles demandent des entrées entiers supposez que c'est le cas (par de <code>int(x) % 2</code> par exemple dans la fonction <code>syracuse</code>). Tôt ou tard ce genre chose va vous sauter à la figure car un jour vous votre programme va planter sans que vous compreniez pourquoi ni où est le soucis.</p>
 
 

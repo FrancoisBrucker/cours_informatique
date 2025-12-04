@@ -80,13 +80,29 @@
 
   
 
-  <p>Je n'ai pas vraiment eu d'erreurs surprenantes. Ce sont des erreurs de débutant et elles sont de deux types :</p>
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/">On s&#39;entraîne à coder de petits projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/compte-caractere-erreurs-courantes/">Erreurs courantes : le compte est bon</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Attention aux erreurs de débutant :</p>
 <ul>
 <li>une mauvaise compréhension des mécanismes : ça se travaille et vient avec l'expérience</li>
 <li>croire que l'on peut produire du code de qualité et qui marche sans l'exécuter : l'humilité s'apprend aussi avec l'expérience</li>
 </ul>
 <h2>Recoder des fonctions</h2>
-<p>La majorité d'entre vous n'avez pas lu la documentation de la méthode <code>find</code>. Du coup vous l'avez recodé, le plus souvent avec des erreurs...</p>
+<p>La majorité d'entre vous n'avez pas lu la documentation de la méthode <code class="language-">find</code>. Du coup vous l'avez recodé, le plus souvent avec des erreurs...</p>
 <p>Vous ne perdez pas de temps à comprendre et lire de la documentation. Votre code sera plus clair, plus facile à utiliser et avec moins de bug si vous utilisez les fonctions et méthodes que python met à votre disposition. Apprendre à lire de la documentation vous fera gagner un temps fou !</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -97,21 +113,11 @@
 </div></div>
 
 <p>Enfin, on utilise les fonctions testées dans le programme principal. On vous demande de coder des fonctions (et de les tester), ce n'est pas pour rien... Utilisez les !</p>
-<h2>Ne pas exécuter son code</h2>
-<p>De nombreuses erreurs auraient pu être évitées si vous aviez exécuté votre code : programme principal et surtout tests ! L'interpréteur et surtout <code>pytest</code> sont meilleurs que l'esprit humain pour voir rapidement les erreurs : cela plante ou rend un résultat incohérent.</p>
-<p>Pour que cela fonctionne, il faut faire en sorte de <strong>toujours</strong> pouvoir exécuter votre code :</p>
-<ul>
-<li>écrire <strong>une</strong> ligne du programme principal puis l'exécuter</li>
-<li>écrire <strong>une</strong> fonction puis son test à la fois puis exécuter les tests.</li>
-</ul>
-<p>Loin de vous ralentir cela vous fera repérer et corriger rapidement les erreurs. Entraînez vous et vous verrez.</p>
-<h2>Ne pas utiliser black pour écrire du code agréable à lire</h2>
-<p>Cette erreur est inexcusable. Black est accessible à partir d'un raccourci clavier et fonctionne parfaitement. Cela rendra votre code plus lisible pour vous et pour le correcteur.</p>
 <h2>Utiliser le typage des fonctions</h2>
 <p>Préférez définir vos fonctions sans le typage :</p>
 <ul>
-<li>on préférera écrire ça : <code class="language-">def donne_prochain_indice(chaine, indice):</code> puis le reste de la définition de la fonction</li>
-<li>à ça : <code class="language-">def donne_prochain_indice(chaine: str, indice: int) -&gt; int:</code> qui est plus lourd et n'apporte pas grand chose à la lisibilité.</li>
+<li>on préférera écrire ça : <code class="language-">def donne_prochain_indice(chaîne, indice):</code> puis le reste de la définition de la fonction</li>
+<li>à ça : <code class="language-">def donne_prochain_indice(chaîne: str, indice: int) -&gt; int:</code> qui est plus lourd et n'apporte pas grand chose à la lisibilité.</li>
 </ul>
 <p>Le typage a bien sur son utilité dans la documentation ou lorsque l'on veut définir précisément les paramètres (pour un test ou en algorithmie par exemple), mais dans le code où la fonction va être utilisée tout de suite après c'est inutile et rend la définition plus dure à lire.</p>
 <h2>Erreurs rares</h2>

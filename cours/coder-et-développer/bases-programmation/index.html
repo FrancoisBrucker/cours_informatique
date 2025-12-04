@@ -112,7 +112,8 @@
   <p>Nous montrerons dans ce cours les bases du codage en utilisant le langage de programmation <a href="https://fr.wikipedia.org/wiki/Python_(langage)">python</a> dont le site est : <a href="https://www.python.org/">https://www.python.org/</a></p>
 <p>Nous verrons comment est structuré un langage informatique et comment écrire puis exécuter du code.</p>
 <p>Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple et il n'y a aucun prérequis informatique à avoir. Le but est de pouvoir exécuter (de la façon la plus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).</p>
-<h2>Partie I</h2>
+<h2>Partie I : Variables et objets</h2>
+<p>Coder revient à manipuler des objets via des variables. Nous allons ici définir ces terme et expliciter les différents moyens mis en oeuvre par python (et par extension tous les langages) pour le faire.</p>
 <h3>Principes</h3>
 <p>Avant d'écrire des programmes en python, on commence par s'intéresser à ses mécanismes internes en comprenant ce qu'est une instruction python et ce que'on peut faire avec.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -190,62 +191,157 @@
 </div></div>
 
 <p>La principale différence entre un éditeur de texte et un notebook est que l'interpréteur est re-exécuté à chaque exécution : il ne garde rien en mémoire de la précédente exécution du code. Ceci permet de faire du code rép´table où toutes les informations sont uniquement contenues dans le fichier que l'on exécute.</p>
-<h2>Partie II : structurer son code</h2>
-<blockquote>
-<p>TBD ici</p>
-</blockquote>
+<h2>Partie II : Structures du code</h2>
+<p>Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existantes, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions) ou de données (conteneurs).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Nous utiliserons par défaut vscode pour illustrer notre code.</p>
+<p>Pour tester le code de cette partie utilisez <a href="%C3%A9diteur-vscode" class="interne">l'éditeur vscode</a>.</p>
 </div></div>
 
-<blockquote>
-<p>boucles et fonctions pour le code
-conteneurs pour ses variables</p>
-</blockquote>
-<h2>Partie III : structurer son programme</h2>
-<blockquote>
-<p>ses modules et fichiers. Expliciter les espaces de nommages.</p>
-</blockquote>
-<h3>Utiliser le module matplotlib</h3>
-<blockquote>
-<p>TBD à déplacer, cela utilise des choses non vues.</p>
-</blockquote>
-<p>Installé avec la plupart des environnements fournissant un interpréteur, le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.</p>
+<h3>Blocs de code</h3>
+<p>Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en blocs.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les <strong><em>blocs</em></strong> en python permettent de grouper des lignes de code qui seront exécutées ensemble sous certaines conditions. Un bloc est toujours défini de la même manière :</p>
+<ul>
+<li>Ce qui va identifier le bloc pour son exécution (une condition, son nombre d'exécution, son nom) et se finit par un <code class="language-">:</code></li>
+<li>Les instructions le constituant.</li>
+</ul>
+</div></div>
+
+<p>Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l'indentation (4 espaces par défaut): un bloc est donc une suite d'instructions ayant la même indentation.</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">type_de_bloc:
+    instruction 1
+    instruction 2
+    ...
+    instruction n</code></pre>
+<p>Ces différents blocs sont pratiques car ils vont nous permettre :</p>
+<ul>
+<li>d'exécuter des blocs conditionnellement</li>
+<li>de répéter des blocs</li>
+</ul>
+<p>Les blocs peuvent bien sur se combiner :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">bloc A:
+    instruction 1 du bloc A
+    bloc B:
+        instruction 1 du bloc B
+        ...
+        instruction m du bloc B
+    instruction 2 du bloc A
+    ...
+    instruction n du bloc A</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'indentation permet <strong>toujours</strong> de s'y retrouver.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>blocs dans l'interpréteur</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><span id="interpréteur-blocs"></span></p>
+<p>Lorsque l'on crée un bloc avec l'interpréteur, après la première ligne qui défini le bloc (la ligne avec le <code class="language-">:</code>.
+), l'interpréteur passe en <em>mode bloc</em> (il écrit <code>...</code> en début de ligne) ce qui permet d'écrire son bloc (en n'oubliant pas l'indentation). Une fois le bloc terminé, pour faire repasser l'interpréteur en mode normal et exécuter le bloc on appuie juste sur la touche entrée pour insérer ue ligne vide.</p>
+<p>Par exemple l'exemple suivant crée un bloc qui écrit <code class="language">coucou</code> indéfiniment directement dans l'interpréteur :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<p>Le même bloc écrit dans un notebook puis exécuté aurait été écrit comme ça :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<h4>Instructions conditionnelles</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="matplotlib" class="interne">Tutoriel Matplotlib</a></p>
+<p><a href="bloc-condition" class="interne">Exécution conditionnelle de blocs</a></p>
 </div></div>
 
-<p>Si vous avez le choix, je conseille plutôt d'utiliser <a href="https://seaborn.pydata.org/">le module seaborn</a> pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.</p>
-<h2><span id="coder-en-python"></span>Partie II : coder en python</h2>
-<p>Nous avons pour l'instant utilisé python pour exécuter des instructions ou des fonctions. Ceci permet déjà d'utiliser python mais va se révéler rapidement limitant lorsque l'on voudra effectuer des tâches plus complexes ou tout simplement non prévue par les modules.</p>
-<p>Coder en python (ou en tout autre langage) ce cependant nécessiter des connaissances (un peu) plus poussées et des outils dédiées au code. Nous irons plus loin plus tard.</p>
-<blockquote>
-<p>TBD Ici prérequis base système.</p>
-</blockquote>
-<blockquote>
-<p>TBD Ici ajouter plusieurs fichier pour créer ses propres modules.
-séparer main de <a href="http://fct.py">fct.py</a></p>
-</blockquote>
-<h3>Structurer du code</h3>
-<p>Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules).</p>
+<h4>Répétitions</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="structurer-son-code" class="interne">Structurer son code</a></p>
+<p><a href="bloc-r%C3%A9p%C3%A9tition" class="interne">Répétition de blocs</a></p>
 </div></div>
 
-<h2><span id="conteneurs"></span> Partie III : Conteneurs</h2>
-<h3>Liste, ensembles et dictionnaire</h3>
+<h4>Exercice</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Utilisez ce que vous avez appris pour vérifier la <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">conjecture de Syracuse</a> pour les 100 premiers entiers.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
+<span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> x <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span>  <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            x <span class="token operator">/=</span> <span class="token number">2</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            x <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">*</span> x <span class="token operator">+</span> <span class="token number">1</span></code></pre>
+</div>
+</details>     
+</div>
+<h3>Fonctions</h3>
+<p>Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait aussi pouvoir nommer ce groupe pour <strong>pouvoir le réutiliser juste en appelant son nom</strong>. C'est possible avec les fonctions.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="creation-fonctions" class="interne">Création de fonctions</a></p>
+</div></div>
+
+<h2>Partie III : Structures des données</h2>
+<h3><span id="conteneurs"></span>Conteneurs</h3>
 <p>Les conteneurs sont des objets contenant d'autres objets. Ils permettent de structurer ses données.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -256,114 +352,49 @@ séparer main de <a href="http://fct.py">fct.py</a></p>
 </div></div>
 
 <h3>Mutable et non mutable</h3>
-<p>Les 5 type d'objets de base (<code class="language-">int</code>, <code class="language-">float</code>, <code class="language-">complex</code>, <code class="language-">bool</code> et <code class="language-">str</code>) sont <strong>non modifiables</strong> (python dira <strong><em>non mutables</em></strong>). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :</p>
-<ul>
-<li>si <code class="language-">i</code> contient un entier, <code class="language-">i = i + 1</code> créera un nouvel entier qui sera associé à la variable <code class="language-">i</code></li>
-<li><code class="language-">&quot;coucou&quot;.replace(&quot;c&quot;, &quot;b&quot;)</code> créera une nouvelle chaîne de caractères</li>
-</ul>
-<p>Les listes, ensembles et dictionnaires sont eux <strong>modifiables</strong> (python dira <strong><em>mutables</em></strong>), c'est à dire que leurs méthodes peuvent les modifier :</p>
-<ul>
-<li><code class="language-">l.append(&quot;x&quot;)</code> modifiera la liste <code class="language-">l</code></li>
-<li><code class="language-">d[&quot;un&quot;] = 1</code> modifiera le dictionnaire <code class="language-">d</code> en lui ajoutant une clé</li>
-<li><code class="language-">e.add(&quot;un&quot;)</code> modifiera l'ensemble <code class="language-">e</code> en lui ajoutant un élément</li>
-</ul>
-<p>Il est <strong>crucial</strong> de comprendre cela car les variables ne sont que des associations à des objets, et plusieurs variables différentes peuvent être associée à un même objet. Vérifions cela avec la fonction <a href="https://docs.python.org/fr/3/library/functions.html#id"><code class="language-">id</code></a>.</p>
-<p>Si on crée deux listes, elles seront différentes, donc leur <code class="language-">id</code> le sera aussi, même si leur contenu est identique :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">id</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token number">4381752640</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">id</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-<span class="token number">4381751744</span></code></pre>
-<p>L'id sera certainement différent chez vous, mais les deux <code class="language-">id</code> seront différents.</p>
-<p>En revanche, associer une liste à une variable ne change pas la liste :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">id</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token number">4381803264</span>
-<span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> x
-<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">id</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-<span class="token number">4381803264</span></code></pre>
-<p>L'id sera certainement différent chez vous, mais il sera identique. Les variables <code class="language-">x</code> et <code class="language-">y</code> sont associées à la <strong>même</strong> liste :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">'?'</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'?'</span><span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'?'</span><span class="token punctuation">]</span></code></pre>
-<p>En conclusion, il faut faire <strong>très attention</strong> lorsque l'on passe des listes en paramètres de fonction.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si vous jouez avec la fonction <code class="language-">id</code> vous serez certainement surpris de constater que :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">1</span>
-<span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> <span class="token number">1</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">id</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token number">4378755312</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">id</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>
-<span class="token number">4378755312</span></code></pre>
-<p>Ceci est une optimisation de l'interpréteur python. Comme les entiers sont non modifiables, on peut associer le même entier à plusieurs variables sans soucis.</p>
+<p>La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du code clair et optimisé (aucun objet n'est copié) mais est la cause de nombre d'erreurs a priori incompréhensibles si on ne l’appréhende pas bien.</p>
 </div></div>
 
-<p>La remarque précédente montre tout l'intérêt d'utiliser des objets non mutables. Il 'y aura jamais d'effet de bords lors de passage de paramètres. En revanche, à chaque modification, il faudra recréer un objet, ce qui peut être long. C'est un compromis à avoir : la sécurité vs la rapidité. C'est pourquoi par défaut :</p>
-<ul>
-<li>une chaîne de caractère est non modifiables (elles sont souvent crées une fois pour toute dans un programme)</li>
-<li>une liste est modifiable. L'utilisation des listes dans un programme nécessite souvent de la modifier.</li>
-</ul>
-<p>Il existe des objets non modifiable pouvant être utilisé à la place des listes et des ensembles :</p>
-<ul>
-<li>un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences"><code class="language-">tuple</code></a> pour une liste. Elle se crée en remplaçant les <code class="language-">[]</code> d'une liste par des <code class="language-">()</code> : <code class="language-">(1, 2, 3)</code> crée un tuple à 3 éléments. Il pourra être utilisé comme une liste mais on ne pourra jamais lui ajouter ou modifier ses éléments.</li>
-<li>un <a href="https://docs.python.org/fr/3/library/stdtypes.html#frozenset"><code class="language-">frozenset</code></a> sera le pendant non mutable d'un ensemble. On place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite.</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Il n'existe pas d'équivalent non mutable aux dictionnaires.</p>
+<p><a href="mutable-immutable" class="interne">Objets mutables et non mutables</a></p>
 </div></div>
 
-<p>On peut alors utiliser des tuples et des <code class="language-">frozenset</code> comme éléments d'un ensemble ou comme clé de dictionnaires.</p>
-<p>Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-<span class="token operator">>></span><span class="token operator">></span> x
-<span class="token punctuation">{</span><span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">frozenset</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
+<h2>Partie IV : Structures du programme</h2>
+<p>Structurer son programmes en fichiers.</p>
+<h3>Modules</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Le tuple vide s'écrira <code class="language-">(,)</code> (ou <code class="language-">tuple()</code>) pour la différentier la notation <code class="language-">()</code> qui est la parenthèse vide.</p>
+<p><a href="creation-modules" class="interne">Création de modules</a></p>
 </div></div>
 
-<h2>Espace de nommage</h2>
-<blockquote>
-<p>TBD cadre général</p>
-</blockquote>
-<!-- 
-> TBD à déplacer, après avoir vu les structures de dictionnaires et de listes. à mettre dans la partie débuggeur, bien plus tard
-
-> TBD reprendre avec la partie variable qui commence à en parler. Le mettre après coder ses fonctions/modules.
->
-> Le voir avec le débogeur : stackframe = espace de nommage.
-> 
- -->
-<p>Certains modules sont très utiles en python scientifique :</p>
-<ul>
-<li><a href="https://numpy.org/">numpy</a> : très utilisé pour ses structures de matrices et tableaux</li>
-<li><a href="https://matplotlib.org/">matplotlib</a> : pour créer des graphiques en python</li>
-<li><a href="https://scipy.org/">scipy</a> : résolution d'équations différentielles</li>
-<li><a href="https://pillow.readthedocs.io/en/stable/">pillow</a> : gestion d'images</li>
-<li><a href="https://scikit-learn.org/stable/">sklearn</a> : machine learning</li>
-</ul>
-<p>Ils ne viennent pas automatiquement lorsque l'on installe python, mais beaucoup sont déjà installés si vous utilisez l'interpréteur de <a href="https://www.spyder-ide.org/">spyder</a> ou encore les notebooks de <a href="https://colab.research.google.com">https://colab.research.google.com</a>. Nous plus tard comment installer ses propres modules, pour l'instant nous allons uniquement utiliser ceux fournis par python (et ils sont déjà nombreux).</p>
-<p>On a vu que les variables étaient des noms permettant d'acceder aux objets, qui sont les seules choses que l'on peut manipuler en python. Python stocke ces variables dans des <a href="https://docs.python.org/fr/3.13/glossary.html#term-namespace">espaces de nommage</a> (<em>namespace</em> en anglais)</p>
+<h3>Espace de nommage</h3>
+<p>La base de cette séparation en unités fonctionnelles séparée est l'espace de nommage. Nous l'avons déjà entre-aperçu lorsque l'on a parlé de modules et de fonctions, nous allons ici rentrer dans les détails et expliciter comment python trouve un objet associé à un nom.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="espace-nommage" class="interne">Espace de nommage</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="fct-espace-nommage" class="interne">Espace de nommage et fonctions</a></p>
 </div></div>
 
 

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Espace de nommage et fonctions</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Espace de nommage et fonctions</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-programmation/">Bases de programmation et du langage python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-programmation/fct-espace-nommage/">Espace de nommage et fonctions</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Pour garantir le fait que les objets crées dans les fonctions restent dans les fonctions, un espace de nommage est crée à chaque exécution. Cela se passe selon le processus suivant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on exécute une fonction on procède comme suit :</p>
+<ol>
+<li>on crée un nouvel espace de nommage $F$</li>
+<li>l'espace de nommage courant est affecté au parent de $F$</li>
+<li>$F$ devient le nouvel espace de nommage courant.</li>
+<li>on affecte les paramètres de la fonction à leurs noms</li>
+<li>on exécute ligne à ligne la fonction</li>
+<li>le parent de $F$ devient le nouvel espace de noms courant</li>
+<li>on supprime l'espace de noms $F$</li>
+</ol>
+</div></div>
+
+<h2>Exécution d'une fonction</h2>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">   i <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x</span>
+<span class="highlight-line">   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">i <span class="token operator">=</span> <span class="token number">2</span></span>
+<span class="highlight-line">x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span></span></code></pre>
+<p>Exécutons le ligne à ligne :</p>
+<ol>
+<li>avant l'exécution de la première ligne :
+<ol>
+<li>on a un unique espace de nommage qui est l'espace des variables
+<img src="fct-cas-1-1.png" alt="cas-1-1"></li>
+</ol>
+</li>
+<li>la ligne 2 définit une fonction de nom <code class="language-">f</code> qui est ajouté à l'espace de noms courant.
+<img src="fct-cas-4-1.png" alt="cas-4-1"></li>
+<li>on passe directement à la ligne 5 puisque les lignes 3 et 4 sont le contenu de la fonction.
+<ol>
+<li>Cette ligne crée un objet entier (valant 2) et l'affecte au nom <code class="language-">i</code>.
+<img src="fct-cas-4-2.png" alt="cas-4-2"></li>
+</ol>
+</li>
+<li>la ligne 6 est encore une affectation. On commence par trouver l'objet à droite du <code>=</code> c'est le résultat de <code class="language-">f(i)</code>. Il faut donc exécuter la fonction <code class="language-">f</code> pour connaître cet objet :
+<ol>
+<li>on cherche l'objet associé à <code class="language-">i</code> qui sera le (premier) paramètre de la fonction</li>
+<li>on crée un espace de noms qui devient l'espace de noms courant :
+<ol>
+<li>l'ancien espace de noms courant devient son parent
+<img src="fct-cas-4-3.png" alt="cas-4-3"></li>
+</ol>
+</li>
+<li>on affecte le premier paramètre de <code class="language-">f</code> au nom <code class="language-">x</code> (le nom du premier paramètre de <code class="language-">f</code> lors de sa définition)
+<ol>
+<li>les nouveaux noms sont <strong>toujours</strong> créés dans l'espace de noms courant
+<img src="fct-cas-4-4.png" alt="cas-4-4"></li>
+</ol>
+</li>
+<li>on exécute la ligne 2 qui est la première ligne de la fonction <code class="language-">f</code> :
+<ol>
+<li>on crée un objet entier (valant 4) qui est le résultat de l'opération à droite du <code class="language-">=</code> (notez que le nom <code class="language-">x</code> est bien défini dans l'espace de noms courant) et on l'affecte au nom <code class="language-">i</code> dans l'espace de noms courant
+<img src="fct-cas-4-5.png" alt="cas-4-5"></li>
+</ol>
+</li>
+<li>on exécute la ligne 3 :
+<ol>
+<li>on crée l'objet résultant de l'opération somme (un entier valant 7)</li>
+<li>la fonction est terminée, son espace de noms courant est détruit</li>
+<li>l'espace de noms courant devient le parent de l'espace de noms détruit
+<img src="fct-cas-4-6.png" alt="cas-4-6"></li>
+<li>on rend l'objet résultat de la fonction</li>
+</ol>
+</li>
+<li>la droite du signe <code class="language-">=</code> de la ligne 6 est trouvée (c'est un entier valant 7) et il est affecté à la variable <code class="language-">x</code> de l'espace de noms courant (qui est à nouveau <code>global</code>)
+<ol>
+<li><img src="fct-cas-4-7.png" alt="cas-4-7"></li>
+<li>les objets sans nom sont détruits
+<img src="fct-cas-4-8.png" alt="cas-4-8"></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2>Espaces de nommage parent</h2>
+<p>L'espace de nommage parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de nommage courant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.</p>
+</div></div>
+
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">   i <span class="token operator">=</span> C <span class="token operator">*</span> x</span>
+<span class="highlight-line">   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">C <span class="token operator">=</span> <span class="token number">2</span></span>
+<span class="highlight-line">i <span class="token operator">=</span> <span class="token number">2</span></span>
+<span class="highlight-line">x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span></span></code></pre>
+<p>Lors de l'exécution de la fonction <code class="language-">f</code> (instruction de la ligne 7), sa première ligne cherche la variable nommée <code class="language-">C</code>. On se trouve dans cet état là :</p>
+<p><img src="fct-cas-5-1.png" alt="cas-5-1"></p>
+<p>La variable <code class="language-">C</code> n'existe pas dans l'espace de noms courant (celui de <code class="language-">f</code>), le programme va alors chercher dans l'espace de noms parent s'il existe. Ici c'est le cas puisque l'espace parent de <code class="language-">f</code> est <code>global</code> dans lequel <code class="language-">C</code> est défini : le programme ne produit donc pas une erreur et trouve le bon objet.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les variables sont <strong>toujours</strong> créées dans l'espace de noms courant, mais leur recherche remonte de parent en parent jusqu'à la trouver.</p>
+</div></div>
+
+<h2>Récursion</h2>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">vars</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">"n"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+   <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token number">1</span>
+   <span class="token keyword">else</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> n <span class="token operator">*</span> fact<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+fact<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span></code></pre>
+<p>On obtiendra :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token number">5</span>
+<span class="token number">4</span>
+<span class="token number">3</span>
+<span class="token number">2</span>
+<span class="token number">1</span>
+<span class="token number">0</span></code></pre>
+<p>Ce qui montre bien que chaque fonction va créer son propre espace de nommage.</p>
+<p>En représentant les différents appels de récursion jusqu'au dernier on aura les les des espaces de nommages :</p>
+<p><img src="rec.png" alt="rec"></p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

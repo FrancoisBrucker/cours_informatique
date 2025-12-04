@@ -99,34 +99,34 @@
   <h2><code class="fichier">polynome.py</code></h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>coefficients<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    resultat <span class="token operator">=</span> <span class="token number">0</span>
+    résultat <span class="token operator">=</span> <span class="token number">0</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>coefficients<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        resultat <span class="token operator">+=</span> coefficients<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> x <span class="token operator">**</span> i
-    <span class="token keyword">return</span> resultat
+        résultat <span class="token operator">+=</span> coefficients<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> x <span class="token operator">**</span> i
+    <span class="token keyword">return</span> résultat
 
 
 <span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">,</span> coefficients2<span class="token punctuation">)</span><span class="token punctuation">:</span>
     longueur1 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">)</span>
     longueur2 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients2<span class="token punctuation">)</span>
 
-    resultat <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    résultat <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">max</span><span class="token punctuation">(</span>longueur1<span class="token punctuation">,</span> longueur2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        resultat<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+        résultat<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>longueur1<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        resultat<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> coefficients1<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        résultat<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> coefficients1<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>longueur2<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        resultat<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> coefficients2<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        résultat<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> coefficients2<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
-    <span class="token keyword">return</span> resultat
+    <span class="token keyword">return</span> résultat
 
 
 <span class="token keyword">def</span> <span class="token function">produit</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">,</span> coefficients2<span class="token punctuation">)</span><span class="token punctuation">:</span>
     longueur1 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">)</span>
     longueur2 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients2<span class="token punctuation">)</span>
 
-    resultat <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    résultat <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
     <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>longueur1 <span class="token operator">+</span> longueur2 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         i <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>longueur1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span>
@@ -137,48 +137,13 @@
             valeur_k <span class="token operator">+=</span> coefficients1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> coefficients2<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
             i <span class="token operator">-=</span> <span class="token number">1</span>
             j <span class="token operator">+=</span> <span class="token number">1</span>
-        resultat<span class="token punctuation">.</span>append<span class="token punctuation">(</span>valeur_k<span class="token punctuation">)</span>
+        résultat<span class="token punctuation">.</span>append<span class="token punctuation">(</span>valeur_k<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> resultat
+    <span class="token keyword">return</span> résultat
 </code></pre>
-<h2><code class="fichier">test_polynome.py</code></h2>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
-<span class="token keyword">from</span> polynome <span class="token keyword">import</span> valeur<span class="token punctuation">,</span> somme<span class="token punctuation">,</span> produit
-
-<span class="token keyword">def</span> <span class="token function">test_valeur_constante</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> valeur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">**</span> <span class="token number">0</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_valeur_vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> valeur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_valeur_polynome</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> valeur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> <span class="token number">4</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_somme_un_vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_somme_egale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_somme_diferent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_produit_longueur1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> produit<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-    <span class="token keyword">assert</span> produit<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_produit_egale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> produit<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-</code></pre>
+<blockquote>
+<p>TBD il faut encore faire la question 4.</p>
+</blockquote>
 
 
 </article>

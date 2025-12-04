@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Erreurs courantes : pendu</title>
+    <title>Erreurs courantes : Pendu</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Erreurs courantes : pendu</h1>
+  <h1>Erreurs courantes : Pendu</h1>
   <div>
     
 
@@ -80,67 +80,28 @@
 
   
 
-  <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Du code est fait pour être exécuté donc vous devez vous assurer que :</p>
-<ul>
-<li>le code rendu est exécutable</li>
-<li>vos tests sont exécutables avec pytest (on peut tolérer un test qui rate si vous expliquez que vous n'avez pas eu le temps de corriger le bug)</li>
-</ul>
-<p>Pour cela, vous <strong>devez</strong> lancer régulièrement vos tests <strong>pendant</strong> le test.</p>
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/">On s&#39;entraîne à coder de petits projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/pendu-erreurs-courantes/">Erreurs courantes : Pendu</a>
+
 </div></div>
 
-<p>Ci-après quelques remarques plus ponctuelles</p>
-<h2>Trop lent</h2>
-<p>Vous prenez globalement bien trop de temps à écrire des algorithmes simples : les 3 premières questions doivent être faisable en 15 minutes.</p>
-<p>En particulier, les tests à effectuer sont donnés dans l'énoncé sous la forme d'exemples, il vous suffisait de les reprendre en utilisant le formalisme vu lors du <a href="../../d%C3%A9veloppement/projet-pourcentages/">projet pourcentage</a>.</p>
-<h2>Format des tests</h2>
-<p>Les tests <strong>doivent</strong> être fait comme dans le <a href="../../d%C3%A9veloppement/projet-pourcentages/">projet pourcentage</a>. Il faut donc :</p>
-<ul>
-<li>un fichier de test séparé du code et un fichier de test par fichier de code. Le nom de ce fichier doit s'appeler <code class="fichier">test_[nom du fichier de code à tester].py</code></li>
-<li>pourvoir l'exécuter avec <code>python -m pytest</code> dans un terminal (utilisez le nom de l'interpréteur python que vous avez, voir <a href="/cours_informatique/tutoriels/vsc-python#quel-python">ce tutoriel</a>)</li>
-</ul>
-<p>En particulier :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li>afficher un résultat à l'écran avec la commande <code class="language-">print</code> n'est <strong>pas</strong> un test</li>
-<li>faire un assert sans fonction de test n'est <strong>pas</strong> un test</li>
-<li>une fonction de test n'a <strong>pas</strong> de paramètres.</li>
-</ul>
-</div></div>
 
-<p>Chaque test <strong>doit</strong> commencer par <code class="language-">test_</code> suivi du nom de la fonction à tester. S'il y a plusieurs tests pour une même fonction, on ajoute ce que le test teste :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> test_<span class="token punctuation">[</span>nom de la fonction à tester<span class="token punctuation">]</span>_<span class="token punctuation">[</span>ce que ça teste<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ici, différentier les 2 tests proposés par fonction n'était pas évident. Regrouper les 2 tests en une seule fonction comme je le fais dans le corrigé était légitime.</p>
-</div></div>
 
-<h2>Misc</h2>
-<p>Quelques remarques sur des erreurs ou lourdeurs que j'ai vu chez certains. Essayez d'y faire attention pour vos prochains codes et rendus.</p>
-<h3>Nom des fichiers</h3>
-<p>Il vous faut a priori 2 fichiers :</p>
-<ul>
-<li>un pour le code, que vous pouvez appeler <code class="fichier">pendu.py</code>, ou <code class="fichier">code.py</code></li>
-<li>un pour tester le code qui s'appelle comme le nom du fichier de code précédé de <code class="fichier">test_</code>. Donc <code class="fichier">test_pendu.py</code> ou <code class="fichier">test_code.py</code> selon le nom de votre fichier de code.</li>
-</ul>
-<h3>Description d'une fonction</h3>
+    
+  
+
+  <h2>Description d'une fonction</h2>
 <p>La description d'une fonction (entre <code class="language-">&quot;&quot;&quot;</code>) est inutile. Le code <strong>doit</strong> se suffire à lui-même pour être lisible et compris. Si ce n'est pas le cas, c'est que vous avez mal codé !</p>
 <p>La description de chaque fonction n'est utile que si vous faire une bibliothèque (une suite de fonctions qui devront être utilisées par d'autres sans qu'ils aient à connaître leurs codes). Ici, vous faite du code qui sera exécuté ou utilisé par vous et les autres membres de l'équipe de développement (ou le correcteur, ici moi) : la description ou les commentaires <strong>doivent</strong> être inutiles : faites du code lisible.</p>
-<h3>Listes</h3>
+<h2>Listes</h2>
 <p>On préférera toujours utiliser <code class="language-">L.append(i)</code> plutôt que <code class="language-">L = L + [i]</code> car <code class="language-">append</code> est une méthode en $\mathcal{O}(1)$ opérations alors <code>+</code> crée une nouvelle liste et est donc en $\mathcal{O}(n)$ où $n$ est la taille de la liste <code class="language-">L</code>.</p>
-<h3>Comparaison de booléens</h3>
+<h2>Comparaison de booléens</h2>
 <p>On ne teste pas si un booléen est vrai ou faux, on utilise directement sa valeur.</p>
 <ul>
 <li>On écrit : <code class="language-">assert est_une_lettre(&quot;i&quot;, &quot;victoire&quot;)</code></li>
@@ -154,7 +115,7 @@ sinon:
     return Faux</code></pre>
 <p>écrivez :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">return f()</code></pre>
-<h3>Import</h3>
+<h2>Import</h2>
 <p>Deux fautes de style reviennent assez souvent :</p>
 <ul>
 <li><code class="language-">from truc import *</code></li>
@@ -180,7 +141,7 @@ sinon:
 </ul>
 </div></div>
 
-<h3>Variable différent d'une chaîne de caractère</h3>
+<h2>Variable différent d'une chaîne de caractère</h2>
 <p>Ne confondez pas la variable ou le paramètre d'une fonction <code class="language-">x</code> avec une chaîne de caractères contenant le caractère x, notée <code class="language-">'x'</code>.</p>
 
 
