@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/debugger/">Déboguer son code</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/débogueur/">Déboguer son code</a>
 
 </div></div>
 
@@ -116,7 +116,7 @@
 </ul>
 </div></div>
 
-<p>Le <em><strong>débogueur</strong></em> (<em><strong>debugger</strong></em>) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.</p>
+<p>Le <strong><em>débogueur</em></strong> (<strong><em>debugger</em></strong>) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.</p>
 <p>Comprendre comment fonctionne un débogueur vous permet également de comprendre comment fonction un interpréteur et par là comment s'exécute un programme informatique.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -211,9 +211,17 @@
 9
 c'est fini.</code></pre>
 <p>Il ne s'est rien passé de plus que si vous aviez exécuté votre programme python normalement.</p>
-<p>C'est normal par il faut demander explicitement au débogueur de s'arrêter un créant un <a href="https://fr.wikipedia.org/wiki/Point_d'arr%C3%AAt_(informatique)"><em><strong>point d'arrêt</strong></em></a> (<em><strong>breakpoint</strong></em>).</p>
+<p>C'est normal par il faut demander explicitement au débogueur de s'arrêter un créant un <a href="https://fr.wikipedia.org/wiki/Point_d'arr%C3%AAt_(informatique)"><strong><em>point d'arrêt</em></strong></a> (<strong><em>breakpoint</em></strong>).</p>
 <h3>Création d'un breakpoint</h3>
-<p>Pour créer <a href="https://code.visualstudio.com/docs/editor/debugging#_breakpoints">un point d'arrêt (breakpoint)</a> :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://code.visualstudio.com/docs/editor/debugging#_breakpoints">créer un point d'arrêt (breakpoint)</a></p>
+</div></div>
+
+<p>Trois moyen équivalents :</p>
 <ul>
 <li><code>menu exécuter &gt; activer/désactiver le point d'arrêt</code></li>
 <li>cliquer sur la gouttière du fichier, à gauche des numéros de lignes (vous savez que vous êtes au on endroit lorsque un disque rouge foncé apparaît)</li>
@@ -248,19 +256,21 @@ c'est fini.</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un <em><strong>breakpoint</strong></em> (<em><strong>point d'arrêt</strong></em>) sur une ligne du code permet de stopper l'interpréteur <strong>juste avant l'exécution de cette ligne</strong>.</p>
+<p>Un <strong><em>breakpoint</em></strong> (<strong><em>point d'arrêt</em></strong>) sur une ligne du code permet de stopper l'interpréteur <strong>juste avant l'exécution de cette ligne</strong>.</p>
 <p>Si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet</p>
 </div></div>
 
 <p>On a plusieurs types d'actions possibles (le nom de l'action apparaît lorsque la souris est placée dessus) :</p>
+<p><img src="action-debogueur.png" alt="actions possibles"></p>
+<p>De gauche à droite :</p>
 <ul>
-<li>les actions bleues, <code>Continuer</code>, <code>pas à pas principal</code>, <code>pas à pas détaillé</code> et <code>pas à pas sortant</code>  qui gèrent l'exécution de l'interpréteur :
-<ul>
+<li>les actions bleues qui gèrent l'exécution de l'interpréteur :
+<ol>
 <li><code>Continuer</code> : l'interpréteur se lance et s'arrête à l prochaine ligne avec un breakpoint qu'il rencontre</li>
 <li><code>pas à pas principal</code> (<em>step over</em>) : l'interpréteur exécute la ligne</li>
 <li><code>pas à pas détaillé</code> (<em>step into</em>) : si la ligne consiste à exécuter une fonction que l'on a écrite, l'interpréteur d'arrête juste après l'appel de la fonction</li>
 <li><code>pas à pas sortant</code> : si l'interpréteur exécute une fonction que l'on a écrite, l'interpréteur continue son exécution jusqu'à ce qu'il sorte de la fonction</li>
-</ul>
+</ol>
 </li>
 <li>l'action verte, <code>Redémarrer</code>, qui redémarre le débogueur</li>
 <li>l'action rouge, <code>Arrêter</code>, qui stoppe le débogueur</li>
@@ -310,14 +320,14 @@ c'est fini.</code></pre>
 <p>Cliquez sur l'action <code>pas à pas principal</code>.</p>
 </div></div>
 
-<p>L'interpréteur est remonté en ligne 2. Puisque <code class="language-">i</code> est différent de <code>x</code>, le bloc conditionnel n'est pas considéré. Voyez que l'instruction <code class="language-">for</code> n'est pas exécuté puisque <code class="language-">i</code> vaut toujours 0.</p>
+<p>L'interpréteur est remonté en ligne 2. Puisque <code class="language-">i</code> est différent de <code>x</code>, le bloc conditionnel n'est pas considéré. Voyez que l'instruction <code class="language-">for</code> n'est pas exécutée puisque <code class="language-">i</code> vaut toujours 0.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'action <code>pas à pas principal</code> pas Un <em><strong>breakpoint</strong></em> (<em><strong>point d'arrêt</strong></em>) sur une ligne du code permet de stopper l'interpréteur <strong>juste avant l'exécution de cette ligne</strong>.</p>
-<p>Si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet</p>
+<p>L'action <code>pas à pas principal</code> s'arrête à la prochaine ligne de code <strong>juste avant son exécution</strong> (si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet).</p>
+<p>Cette action ne rentre pas dans les fonctions.</p>
 </div></div>
 
 <p>Continuons d'exécuter cette action :</p>
@@ -330,14 +340,14 @@ c'est fini.</code></pre>
 <p>Cliquez sur l'action <code>pas à pas principal</code>.</p>
 </div></div>
 
-<p>La ligne 2 a été exécutée :  <code class="language-">i</code> vaut bien 1.</p>
+<p>La ligne 2 a été exécutée : <code class="language-">i</code> vaut bien 1.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cliquez sur l'action <code>Continuer</code> jusqu'à ce que <code>i</code> soit égal à 4.</p>
+<p>Cliquez sur l'action <code>Continuer</code> jusqu'à ce que <code class="language-">i</code> soit égal à 4 et soit affiché dans le terminal (on se place juste après l'exécution de la ligne 3 pour <code class="language-">i = 4</code>)</p>
 </div></div>
 
 <p>Vous devez vous retrouver devant l'état suivant :</p>
@@ -444,7 +454,7 @@ c'est fini.</code></pre>
 <p>l'action <code>Arrêter</code> interrompt l'exécution du programme. Utile lorsque l'on a plus besoin du débogueur.</p>
 </div></div>
 
-<h3>Autre Breakpoint</h3>
+<h3>Autres Breakpoints</h3>
 <p>Outre les breakpoint simple et les breakoint conditionnel, il existe deux autres types de points d'arrêts:</p>
 <ul>
 <li>les <code>points de journalisation</code> (<em>logpoint</em>) : comme un <code>print</code></li>
@@ -514,7 +524,7 @@ c'est fini.</code></pre>
 <li>le débogueur garde la valeur de retour de la fonction. Ici <code class="language-">None</code> puisque notre fonction ne rend rien (elle ne fait qu'afficher des choses à l'écran).</li>
 </ul>
 </li>
-<li>l'interpréteur s'est arrêté au début de la prochaine instruction, qui est à la ligne 8 : c'est la boucle for.</li>
+<li>l'interpréteur s'est arrêté au début de la prochaine instruction, qui est à la ligne 8 : c'est la boucle <code class="language-">for</code>.</li>
 </ol>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -549,7 +559,7 @@ c'est fini.</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>l'action <code>pas à pas détaillé</code> <em>rentre</em> dans l'exécution des fonctions : <em><strong>Il arrête l'interpréteur à la prochaine ligne de code du programme</strong></em> rencontrée.</p>
+<p>l'action <code>pas à pas détaillé</code> <em>rentre</em> dans l'exécution des fonctions : <strong><em>Il arrête l'interpréteur à la prochaine ligne de code du programme</em></strong> rencontrée.</p>
 </div></div>
 
 <p>La prochaine ligne de code à exécuter est la ligne 2, qui est un print.</p>
@@ -568,7 +578,7 @@ c'est fini.</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>l'action <code>pas à pas détaillé</code> <em><strong>ne rentre pas</strong></em> dans l'exécution des fonctions que l'on a pas écrite, en particulier les fonctions et méthodes de python.</p>
+<p>l'action <code>pas à pas détaillé</code> <strong><em>ne rentre pas</em></strong> dans l'exécution des fonctions que l'on a pas écrite, en particulier les fonctions et méthodes de python.</p>
 </div></div>
 
 <p>Continuons notre programme jusqu'à la prochaine exécution de la fonction :</p>
@@ -598,7 +608,7 @@ c'est fini.</code></pre>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>l'action <code>pas à pas sortant</code> <em><strong>sort</strong></em> de l'exécution de la fonction : il effectue toutes les instructions de la fonction et <strong>s'arrête juste après son appel</strong>.</p>
+<p>l'action <code>pas à pas sortant</code> <strong><em>sort</em></strong> de l'exécution de la fonction : il effectue toutes les instructions de la fonction et <strong>s'arrête juste après son appel</strong>.</p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -691,14 +701,14 @@ c'est fini.</code></pre>
 </div></div>
 
 <h2>Pile des appels</h2>
-<p>Lorsque l'on exécute une fonction, on ne passe à la ligne suivante que lorsque la fonction est terminée, c'est à dire lorsque toutes les instructions de la fonction ont été effectuées. Ce processus est récursif  : on peut appeler une fonction à l'intérieur d'une fonction...</p>
+<p>Lorsque l'on exécute une fonction, on ne passe à la ligne suivante que lorsque la fonction est terminée, c'est à dire lorsque toutes les instructions de la fonction ont été effectuées. Ce processus est récursif : on peut appeler une fonction à l'intérieur d'une fonction...</p>
 <p>Ce mécanisme est géré avec ce que l'on appelle <a href="https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution">une pile d'exécution (ou pile d'appels)</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Lorsque l'on appelle une fonction B depuis une fonction A (qui peut être le programme principal), la fonction A est stockée (on dit <em><strong>empilée</strong></em>) A la fin de la fonction B, on dépile cette fonction pour pouvoir y revenir et continuer son instruction.</p>
+<p>Lorsque l'on appelle une fonction B depuis une fonction A (qui peut être le programme principal), la fonction A est stockée (on dit <strong><em>empilée</em></strong>) A la fin de la fonction B, on dépile cette fonction pour pouvoir y revenir et continuer son instruction.</p>
 </div></div>
 
 <p>Pour visualiser ce mécanisme, créons un petit programme :</p>
@@ -740,10 +750,10 @@ c'est fini.</code></pre>
 <p><img src="pile-appels.png" alt="pile d'appels"></p>
 <p>Dans la partie <code>VARIABLES</code> :</p>
 <ul>
-<li>La partie <em>locals</em> donne les variables définies dans l'espace de noms de la fonction actuelle. Ici <code>n</code> (son paramètre), qui vaut 7</li>
+<li>La partie <em>locals</em> donne les variables définies dans l'espace de nommage de la fonction actuelle. Ici <code>n</code> (son paramètre), qui vaut 7</li>
 <li>La partie <em>globals</em> donne :
 <ul>
-<li>les variables définies dans l'espace de nom principal. Ici <code>n</code> (définie ligne 8), qui vaut 10</li>
+<li>les variables définies dans l'espace de nommage principal. Ici <code>n</code> (définie ligne 8), qui vaut 10</li>
 <li>deux champs spéciaux permettant le fonctionnement interne de python :
 <ul>
 <li>les noms spéciaux de python dans la partie <em>special variables</em></li>
@@ -815,12 +825,26 @@ c'est fini.</code></pre>
 <li>un bout de liste</li>
 <li>...</li>
 </ul>
-<p>En utilisant le fichier <code class="fichier">pile-appels.py</code> et un breakpoint en ligne 2, on peut par exemple créer les 3 espions suivant :</p>
-<ul>
-<li><code class="language-">n</code> qui montre la valeur locale <code>n</code></li>
-<li><code class="language-">n &gt; 1</code> qui montre le résultat d'une expression</li>
-<li><code class="language-">factorielle(n)</code> qui montre le résultat de la fonction factorielle pour la valeur locale de <code class="language-">n</code></li>
-</ul>
+<p>Le panneau espion apparaît lorsque le débogueur est en fonctionnement :</p>
+<p><img src="espion-1.png" alt="panneau espion"></p>
+<p>Lorsque l'on passe la souris sur le panneau espion un bouton <code>+</code> apparaît qui permet d'ajouter des espions :</p>
+<p><img src="espion-2.png" alt="panneau espion "></p>
+<p>En utilisant le fichier <code class="fichier">pile-appels.py</code> :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>créez un breakpoint en ligne 2, c'est à dire la première instruction de la fonction <code class="language-">factorielle</code></li>
+<li>lancez le débogueur</li>
+<li>ajoutez un espion valant <code class="language-">n</code> qui montre la valeur locale <code class="language-">n</code></li>
+<li>ajoutez un espion valant <code class="language-">n &gt; 1</code> qui montre le résultat d'une expression</li>
+<li>ajoutez un espion valant <code class="language-">factorielle(n)</code> qui montre le résultat de la fonction factorielle pour la valeur <code class="language-">n</code></li>
+</ol>
+</div></div>
+
 <p><img src="espions.png" alt="espions"></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

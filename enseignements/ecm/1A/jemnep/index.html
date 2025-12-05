@@ -214,8 +214,9 @@
 </div><div class="pl-8 mr-8">
 <ol>
 <li><a href="/cours_informatique/cours/gestion-des-sources/#d%C3%A9pot" class="interne">mettre ses sources à disposition</a></li>
-<li>déboguer  son code</li>
-<li>tester son code</li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/d%C3%A9bogueur/" class="interne">déboguer son code</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/tests-unitaires/" class="interne">tester son code</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/" class="interne">écrire du code lisible et maintenable</a></li>
 </ol>
 </div></div>
 
@@ -227,9 +228,10 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Exercices d'entraînement</strong></p>
 </div><div class="pl-8 mr-8">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-pourcentages" class="interne">Projet pourcentages</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-codes-tests/" class="interne">On s'entraîne en ajoutant des tests</a></li>
+</ol>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -237,69 +239,19 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>On va plus loin</strong></p>
+<p><strong>On vérifie son niveau</strong></p>
 </div><div class="pl-8 mr-8">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/exercices-tests/" class="interne">Exercices</a></p>
 </div></div>
 
 <h2>Projet à rendre</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<!-- TBD 
-
-A refaire en prenant le plan de la 2A et de la 3A. Puis homogénéiser le tout pour faire une progression sur le système (là et comment sera exécuté son code), l'algorithme et le projet.
-
-Utiliser : <https://pythonds.linogaliana.fr/> ?
-refaire python du début.
-1. interpréteur en ligne
-2. spyder
-3. code + interpréteur (vscode)
-4. structure et petits programmes de code (pas d'algo)
-5. variables, objets.
-6. tests
-7. gihub comme projet
-8. finir sur débogueur -->
-<!-- 
-Basé sur le cours :
-
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
-  </svg>
-<div class="pl-8 mr-8">
-
-
-[Coder et développer en python](/cours/coder-et-développer){.interne}
-
-
-</div></div>
-</div>
-
-
-Listes d'exercices en vrac :
-
-- [les Mono-lignes](monolignes-élèves.pdf){.interne}.
-- [exponentiation](/cours/algorithmie/projet-exponentiation/){.interne} :
-  - prendre les algorithmes de la partie théorique (ils sont donnés) pour faire la partie pratique en python
-  - puis faites la suite, plus générale sur [les suites additives](/cours_informatique/cours/algorithmie/projet-suite-additive/){.interne}
-- Quelques [jeux de données du google code jam](https://github.com/lovebeckdy/google-code-jam/tree/master). Chaque dossier contient plusieurs jeux de données à résoudre. Le but est de le faire le plus rapidement possible. La première ligne de chaque jeu donne le nombre de données que contient le fichier. Il pourra être intéressant pour chaque problème, en plus de le résoudre, de faire un algorithme qui construit un jeu de donné. Deux problèmes simples si on les prend bien :
-  - [Reverse word](https://github.com/lovebeckdy/google-code-jam/tree/master/reverse_words) : il faut rendre les mots dans le sens opposé (vous pourrez télécharger [ce fichier](https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv) qui contient un dictionnaire. Il faudra prendre les mots qui commencent par une lettre en majuscule)
-  - [store crédit](https://github.com/lovebeckdy/google-code-jam/tree/master/store_credit). Il faut trouver 2 indices différents d'une liste telle que la somme de leurs valeurs fasse une somme donnée (les deux indices existent et sont uniques pour chaque liste). Chaque donnée est constitué de 3 lignes :
-    - une somme total
-    - le nombre d'éléments de la troisième ligne
-    - une liste de prix
-- [un peu de crypto](support_eleves_cours_6.pdf)
-- remplir [une grille aléatoire de sudoku](https://www.youtube.com/watch?v=2SuvO4Gi7uY) en utilisant [la réduction de paquet d'onde](https://fr.wikipedia.org/wiki/R%C3%A9duction_du_paquet_d'onde) (si si. Voir [ici](https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/) pour une explication et un autre exemple). Attention, parfois cette méthode va rater et il faudra faire du [backtracking](https://fr.wikipedia.org/wiki/Retour_sur_trace) (ne l'implémentez pas ici, cela va au delà de cette semaine)
-- Advent of code (vous pouvez vous connecter pour avec un jeu de données à vous):
-  - [Popularité](https://jeroenheijmans.github.io/advent-of-code-surveys/)
-  - [Advent of code 2017](https://adventofcode.com/2017) et [un jeu de donnée (et sa résolution en lisp)](https://github.com/gabrielelana/advent-of-code-2017)
-  - [Advent of code 2023](https://adventofcode.com/2023) et [un jeu de donnée](https://github.com/dcastil/advent-of-code-2023/tree/main/data/examples)
-  - [Advent of code 2019](https://adventofcode.com/2017) et [un jeu de donnée (et sa résolution en python)](https://github.com/jeroenheijmans/advent-of-code-2019)
-- [Archives du Google code jam](https://zibada.guru/gcj/). Attention. parfois ça peut un peux piquer niveau difficulté. -->
+<p>Choisissez un exercice du <a href="https://adventofcode.com/">https://adventofcode.com/</a> actuel et résolvez le. On vous demande de rendre :</p>
+<ul>
+<li>un fichier <code class="fichier">main.py</code> pour votre programme principal</li>
+<li>un fichier <code class="fichier">fonction.py</code> pour vos fonctions</li>
+<li>un fichier <code class="fichier">test_fonction.py</code> pour vos tests</li>
+</ul>
+<p>Ainsi que la preuve que votre exercice est réussi.</p>
 
 
 </article>

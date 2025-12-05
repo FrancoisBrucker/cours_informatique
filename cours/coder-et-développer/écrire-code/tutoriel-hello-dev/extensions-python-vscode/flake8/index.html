@@ -107,7 +107,7 @@
 <p>Une fois l'extension installée, nous allons la configurer pour qu'elle ne nous embête pas si l'on écrit une ligne de plus de 80 caractères (<a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">l'erreur 501</a>), qui est une règle plus ou moins obsolète.</p>
 <ol>
 <li>aller <a href="https://code.visualstudio.com/docs/getstarted/settings#_settings-editor">dans les paramètres</a> : cliquez sur l'engrenage &gt; paramètres <img src="vscode-param%C3%A8tres.png" alt="paramètres vscode"></li>
-<li>en prenant garde d'ètre dans l'onglet utilisateur, tapez <code>flake8</code> dans la bvarre de recherche</li>
+<li>en prenant garde d'ètre dans l'onglet utilisateur, tapez <code>flake8</code> dans la barre de recherche</li>
 <li>dans la liste d'options, trouver la ligne <code>Flake8: args</code> et ajouter la ligne <code>--ignore=E501</code> <img src="flake8-param%C3%A8tres.png" alt="paramètres flake8"></li>
 </ol>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -115,17 +115,17 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si vous trouvez qu'une erreur soulignée par le linter n'en est pas une (comme l'erreuir 501), il faut la supprimer des erreurs rendues. Si le linter souligne une erreur il <strong>faut</strong> que s'en soit une, sinon vous allez vite ne plus tenir compte de ses recommendations... Et le linter ne servira à rien, voir sera néfaste car il rendra votre code moins lisible en soulignant des choses.</p>
+<p>Si vous trouvez qu'une erreur soulignée par le linter n'en est pas une (comme l'erreur 501), il faut la supprimer des erreurs rendues. Si le linter souligne une erreur il <strong>faut</strong> que s'en soit une, sinon vous allez vite ne plus tenir compte de ses recommendations... Et le linter ne servira à rien, voir sera néfaste car il rendra votre code moins lisible en soulignant des choses.</p>
 </div></div>
 
 <h3>Module python</h3>
-<p>Dans <a href="../../../../ordinateur-d%C3%A9veloppement/terminal" class="interne">un terminal</a>, qui peut être celui de vscode, tapez la commande :</p>
+<p>Dans <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/terminal/" class="interne">un terminal</a>, qui peut être celui de vscode, tapez la commande :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> flake8</code></pre>
 <p>Ceci vous permettra d'utiliser le linter dans le terminal. De plus, l'extension vscode va préférentiellement utiliser votre version de flake8 que la sienne.</p>
 <h2>Utilisation</h2>
 <p>Une fois installée, l'extension est automatiquement activée et elle va souligner en rouge toute faute de style.</p>
 <h2><code>flake8</code> dans le terminal</h2>
-<p>Vous pouvez aussi toujours exécuter la commande <code>flake8 mon-fichier.py</code> dans <a href="../../../terminal#terminal-int%C3%A9gr%C3%A9" class="interne">un terminal intégré</a> pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.</p>
+<p>Vous pouvez aussi toujours exécuter la commande <code>flake8 mon-fichier.py</code> dans un terminal pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.</p>
 
 
 </article>

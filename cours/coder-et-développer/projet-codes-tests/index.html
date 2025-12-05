@@ -96,7 +96,7 @@
     
   
 
-  <p>Quelques exercices pour se mettre le code dans les pattes. Utilisez toutes les bonnes pratiques vues dans le cours et forcez vous à prendre de bonnes habitudes :</p>
+  <p>Or reprend <a href="../projet-codes/" class="interne">les exercices de code</a> et on leur ajoute des tests.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -104,43 +104,31 @@
 </svg>
 <div class="pl-8 mr-8">
 <ul>
-<li>utilisez des noms de fichiers, de variables et de fonctions signifiants</li>
-<li>utilisez black pour avoir un programme sans warnings du linter.</li>
-<li><strong>forcez vous</strong> à utiliser le débogueur pour tester vos programmes</li>
+<li>reprenez le code des exercices précédents</li>
+<li>ajoutez un fichier de tests s'appellant <code class="language-">test_fonctions.py</code></li>
 </ul>
 </div></div>
 
-<p>Pour chacun des projets vous ferez 3 fichiers :</p>
-<ul>
-<li>le programme principal de nom <code class="language-">main.py</code> qui sera exécuté</li>
-<li>le fichier contenant les différentes fonctions appelées dans le programme principal. Son nom doit être en relation avec son contenu.</li>
-<li>le fichier testant les différentes fonctions (si le fichier contenant les fonctions s'appelle <code class="language-">fonctions.py</code>, le fichier de tests s'appelle <code class="language-">test_fonctions.py</code>)</li>
-</ul>
-<p>Chaque sujet contient son corrigé, mais faites dans l'ordre :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+<p>Les corriges sont des <strong>propositions</strong> de tests, ce n'est pas la vérité :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Pour chaque sujet</strong></p>
+<p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<ol>
-<li>faites tous les exercices</li>
-<li>regardez les erreurs courantes et corriger si besoin votre projet</li>
-<li>comparez votre code au corrigé</li>
-</ol>
+<p>Les tests sont écrit par le développeur et leurs buts est qu'ils lui permettent d'être convaincu que le code fonctionne si les tests passent. Ce n'est pas une <strong>preuve</strong> mais permet de continuer à coder tranquillement.</p>
 </div></div>
 
 <h2><span id="syracuse"></span>Syracuse</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p><a href="syracuse-sujet" class="interne">Sujet</a></p>
+<p>Ajoutez des tests aux fonctions <a href="../projet-codes/syracuse-sujet" class="interne">du sujet sans les tests</a>.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -156,10 +144,24 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<ol>
-<li><a href="syracuse-erreurs-courantes" class="interne">Erreurs courantes à éviter</a></li>
-<li><a href="syracuse-corrig%C3%A9" class="interne">Éléments de corrigé</a></li>
-</ol>
+<p>Fichier <code class="fichier">test_syracuse.py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> syracuse <span class="token keyword">import</span> syracuse<span class="token punctuation">,</span> suite
+
+<span class="token keyword">def</span> <span class="token function">test_syracuse_pair</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_syracuse_impair</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_suite_u_0_1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> suite<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_suite_u_0_5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> suite<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+</code></pre>
 </div>
 </details>     
 </div>
@@ -167,11 +169,42 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p><a href="pendu-sujet" class="interne">Sujet</a></p>
+<p>Ajoutez des tests aux fonctions <a href="../projet-codes/pendu-sujet" class="interne">du sujet sans les tests</a>.</p>
+<ul>
+<li>
+<p>Pour tester la fonction <code class="language-">est_une_lettre(lettre, mot)</code> vous pourrez vérifier que :</p>
+<ul>
+<li><code class="language-">est_une_lettre(&quot;i&quot;, &quot;victoire&quot;)</code> doit rendre <code class="language-">True</code></li>
+<li><code class="language-">est_une_lettre(&quot;e&quot;, &quot;la disparition&quot;)</code> doit rendre <code class="language-">False</code></li>
+</ul>
+</li>
+<li>
+<p>Pour tester la fonction <code class="language-">caractères(lettre, mot)</code> vous pourrez vérifier que :</p>
+<ul>
+<li><code class="language-">caractères(&quot;i&quot;, &quot;victoire&quot;)</code> doit rendre <code class="language-">[1, 5]</code></li>
+<li><code class="language-">caractères(&quot;e&quot;, &quot;la disparition&quot;)</code> doit rendre <code class="language-">[]</code></li>
+</ul>
+</li>
+<li>
+<p>Pour tester la fonction <code class="language-">découvre(mot_caché, lettre, positions)</code> vous pourrez vérifier que :</p>
+<ul>
+<li><code class="language-">découvre(&quot;......&quot;, &quot;r&quot;, [1, 2, 5])</code> doit rendre <code class="language-">&quot;.rr..r&quot;</code></li>
+<li><code class="language-">découvre(&quot;erre.r&quot;, &quot;u&quot;, [4])</code> doit rendre <code class="language-">&quot;erreur&quot;</code></li>
+<li><code class="language-">découvre(&quot;erre.r&quot;, &quot;u&quot;, [])</code> doit rendre <code class="language-">&quot;erre.r&quot;</code></li>
+</ul>
+</li>
+<li>
+<p>Pour tester la fonction <code class="language-">caché(mot)</code> vous pourrez vérifier que :</p>
+<ul>
+<li><code class="language-">caché(&quot;anticonstitutionnellement&quot;)</code> doit rendre <code class="language-">&quot;.........................&quot;</code></li>
+<li><code class="language-">caché(&quot;&quot;)</code> doit rendre <code class="language-">&quot;&quot;</code></li>
+</ul>
+</li>
+</ul>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -187,10 +220,30 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<ol>
-<li><a href="pendu-erreurs-courantes" class="interne">Erreurs courantes à éviter</a></li>
-<li><a href="pendu-corrig%C3%A9" class="interne">Éléments de corrigé</a></li>
-</ol>
+<p>Fichier <code class="fichier">test_pendu.py</code></p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">from</span> pendu <span class="token keyword">import</span> est_une_lettre<span class="token punctuation">,</span> caractères<span class="token punctuation">,</span> découvre<span class="token punctuation">,</span> caché</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">test_est_une_lettre</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> est_une_lettre<span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token string">"victoire"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> <span class="token keyword">not</span> est_une_lettre<span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">,</span> <span class="token string">"la disparition"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> test_caractères<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">==</span> caractères<span class="token punctuation">(</span><span class="token string">"i"</span><span class="token punctuation">,</span> <span class="token string">"victoire"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">==</span> caractères<span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">,</span> <span class="token string">"la disparition"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> test_découvre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> <span class="token string">".rr..r"</span> <span class="token operator">==</span> découvre<span class="token punctuation">(</span><span class="token string">"......"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> <span class="token string">"erreur"</span> <span class="token operator">==</span> découvre<span class="token punctuation">(</span><span class="token string">"erre.r"</span><span class="token punctuation">,</span> <span class="token string">"u"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> <span class="token string">"erre.r"</span> <span class="token operator">==</span> découvre<span class="token punctuation">(</span><span class="token string">"erre.r"</span><span class="token punctuation">,</span> <span class="token string">"u"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> test_caché<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> <span class="token string">""</span> <span class="token operator">==</span> caché<span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">assert</span> <span class="token string">"........................."</span> <span class="token operator">==</span> caché<span class="token punctuation">(</span><span class="token string">"anticonstitutionnellement"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span></code></pre>
 </div>
 </details>     
 </div>
@@ -198,11 +251,26 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p><a href="compte-caractere-sujet" class="interne">Sujet</a></p>
+<p>Ajoutez des tests aux fonctions <a href="../projet-codes/compte-caractere-sujet" class="interne">du sujet sans les tests</a>.</p>
+<ul>
+<li>Pour tester la fonction <code class="language-">donne_prochain_indice(chaîne:str, indice:int) -&gt; int</code> vous pourrez vérifier que :
+<ul>
+<li><code class="language-">donne_prochain_indice(&quot;bxaaxaaaxax&quot;, 4)</code> rende 8</li>
+<li><code class="language-">donne_prochain_indice(&quot;bxaaxaaaxax&quot;, 0)</code> rende <code class="language-">None</code></li>
+</ul>
+</li>
+<li>Pour tester la fonction <code class="language-">compte_caractère(chaîne: str, indice: int) -&gt; int</code>  vous pourrez vérifier que :
+<ul>
+<li>Un caractère non présent dans la chaîne</li>
+<li>Un caractère présent plusieurs fois dans la chaîne</li>
+</ul>
+</li>
+<li>Pour tester la fonction <code class="language-">donne_max_doublon(chaîne: str) -&gt; str</code>   vous pourrez tester avec une chaîne admettant plusieurs caractères répétés un nombre différent de fois.</li>
+</ul>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -218,10 +286,22 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<ol>
-<li><a href="compte-caractere-erreurs-courantes" class="interne">Erreurs courantes à éviter</a></li>
-<li><a href="compte-caractere-corrig%C3%A9" class="interne">Éléments de corrigé</a></li>
-</ol>
+<p>Fichier <code class="fichier">test_fonctions.py</code></p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> compte_caractère<span class="token punctuation">,</span> donne_prochain_indice<span class="token punctuation">,</span> donne_max_doublon
+
+
+<span class="token keyword">def</span> <span class="token function">test_donne_prochain_indice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> donne_prochain_indice<span class="token punctuation">(</span><span class="token string">"bxaaxaaaxax"</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">8</span>
+    <span class="token keyword">assert</span> donne_prochain_indice<span class="token punctuation">(</span><span class="token string">"bxaaxaaaxax"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">None</span>
+
+
+<span class="token keyword">def</span> test_compte_caractère<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> compte_caractère<span class="token punctuation">(</span><span class="token string">"bxaaxaaaxax"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">assert</span> donne_prochain_indice<span class="token punctuation">(</span><span class="token string">"bxaaxaaaxax"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span>
+
+<span class="token keyword">def</span> <span class="token function">test_donne_max_doublon</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> donne_max_doublon<span class="token punctuation">(</span><span class="token string">"bxaaxaaaxax"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">6</span>
+</code></pre>
 </div>
 </details>     
 </div>
@@ -230,11 +310,11 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p><a href="polynomes-sujet" class="interne">Sujet</a></p>
+<p>Ajoutez des tests aux fonctions <a href="../projet-codes/polynomes-sujet" class="interne">du sujet sans les tests</a>.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -250,7 +330,44 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p><a href="polynomes-corrig%C3%A9" class="interne">Éléments de corrigé</a></p>
+<p>Fichier <code class="fichier">test_polynôme.py</code></p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
+<span class="token keyword">from</span> polynome <span class="token keyword">import</span> valeur<span class="token punctuation">,</span> somme<span class="token punctuation">,</span> produit
+
+<span class="token keyword">def</span> <span class="token function">test_valeur_constante</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> valeur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">**</span> <span class="token number">0</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_valeur_vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> valeur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+
+
+<span class="token keyword">def</span> test_valeur_polynôme<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> valeur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> <span class="token number">4</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_somme_un_vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> test_somme_égal<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_somme_different</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+    <span class="token keyword">assert</span> somme<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_produit_longueur1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> produit<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+    <span class="token keyword">assert</span> produit<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> test_produit_égal<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> produit<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+</code></pre>
 </div>
 </details>     
 </div>

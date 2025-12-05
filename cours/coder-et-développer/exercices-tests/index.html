@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Exercices</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Exercices</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/exercices-tests/">Exercices</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Quelques exercices de code à résoudre. On vous demande de créer :</p>
+<ul>
+<li>un fichier <code class="fichier">main.py</code> pour votre programme principal</li>
+<li>un fichier <code class="fichier">fonction.py</code> pour vos fonctions</li>
+<li>un fichier <code class="fichier">test_fonction.py</code> pour vos tests</li>
+</ul>
+<p>Ces trois fichiers sont obligatoires.</p>
+<h2>Google code jam</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Google_Code_Jam">https://fr.wikipedia.org/wiki/Google_Code_Jam</a></p>
+</div></div>
+
+<p>Un concours de code organisé par google de 2003 à 2023. Certains exercices étaient très chouette d'un point de vue algorithmique.</p>
+<p>On en propose certains, avec des fichiers de tests associés. Il pourra être intéressant pour chaque problème, en plus de le résoudre, de faire un algorithme qui construit un jeu de donné.</p>
+<h3>Reverse Words</h3>
+<blockquote>
+<p>Given a list of space separated words, reverse the order of the words. Each input string contains L letters and W words. An input string will only consist of letters and space characters. There will be exactly one space character between each pair of consecutive words. For instance, the reverse of “this is a test” is “test a is this”, the reverse of “foobar” is “foobar”, and the reverse of “all your base” is “base your all”.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Contient des jeux de données (<code class="fichier">.in</code>) et leurs solutions (<code class="fichier">.out</code>) : <a href="https://github.com/lovebeckdy/google-code-jam/tree/master/reverse_words">jeux de données</a></p>
+<p>La première ligne du fichier donne le nombre d'exemples à traiter puis chaque ligne correspond à une phrase à retourner.</p>
+</div></div>
+
+<h3>Store crédit</h3>
+<blockquote>
+<p>You receive a credit C at a local store and would like to buy two items. You first walk through the store and create a list L of all available items. From this list you would like to buy two items that add up to the entire value of the credit. The solution you provide will consist of the two integers indicating the positions of the items in your list (smaller number first). For instance, with C=100 and L={5,75,25} the solution is 2,3; with C=200 and L={150,24,79,50,88,345,3} the solution is 1,4; and with C=8 and L={2,1,9,4,4,56,90,3} the solution is 4,5.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Contient des jeux de données (<code class="fichier">.in</code>) : <a href="https://github.com/lovebeckdy/google-code-jam/tree/master/store_credit">jeux de données</a></p>
+<p>La première ligne du fichier donne le nombre d'exemples à traiter puis chaque exemple est sur 3 lignes :</p>
+<ul>
+<li>ligne 1 : le crédit</li>
+<li>ligne 2 : le nombre de produits</li>
+<li>ligne 3 : la liste des prix de chaque produit séparé par un espace</li>
+</ul>
+</div></div>
+
+<h3>T9 Spelling</h3>
+<blockquote>
+<p>The Latin alphabet contains 26 characters and telephones only have ten digits on the keypad. We would like to make it easier to write a message to your friend using a sequence of keypresses to indicate the desired characters. The letters are mapped onto the digits as 2=ABC, 3=DEF, 4=GHI, 5=JKL, 6=MNO, 7=PQRS, 8=TUV, 9=WXYZ. To insert the character B for instance, the program would press 22. In order to insert two characters in sequence from the same key, the user must pause before pressing the key a second time. The space character should be printed to indicate a pause. For example “2 2” indicates AA whereas “22” indicates B. Each message will consist of only lowercase characters a-z and space characters. Pressing zero emits a space. For instance, the message “hi” is encoded as “44 444”, “yes” is encoded as “999337777”, “foo  bar” (note two spaces) is encoded as “333666 6660022 2777”, and “hello world” is encoded as “4433555 555666096667775553”.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Contient des jeux de données (<code class="fichier">.in</code>) : <a href="https://github.com/lovebeckdy/google-code-jam/tree/master/t9_spelling">jeux de données</a></p>
+<p>La première ligne du fichier donne le nombre d'exemples à traiter puis chaque ligne correspond à une phrase à encoder.</p>
+</div></div>
+
+<h3>Archives</h3>
+<p>Plein d'autres exercices :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://zibada.guru/gcj/">Archives du Google code jam</a></p>
+</div></div>
+
+<h2>Advent of code</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Advent_of_Code">https://fr.wikipedia.org/wiki/Advent_of_Code</a></p>
+</div></div>
+
+<p>Le site <a href="https://adventofcode.com/">https://adventofcode.com/</a> est chaque année un calendrier de l'avent de code . Ce concours est très <a href="https://jeroenheijmans.github.io/advent-of-code-surveys/">populaire</a>
+et les exercices sont résolus avec de nombreux langages différents. Vous pouvez vous connecter pour avoir des données personnalisées à résoudre.</p>
+<p>Trois exemples, triés par difficulté :</p>
+<ol>
+<li><a href="https://adventofcode.com/2017">Advent of code 2017</a> et <a href="https://github.com/gabrielelana/advent-of-code-2017">un jeu de donnée (et sa résolution en lisp)</a></li>
+<li><a href="https://adventofcode.com/2023">Advent of code 2023</a> et <a href="https://github.com/dcastil/advent-of-code-2023/tree/main/data/examples">un jeu de donnée</a></li>
+<li><a href="https://adventofcode.com/2017">Advent of code 2019</a> et <a href="https://github.com/jeroenheijmans/advent-of-code-2019">un jeu de donnée (et sa résolution en python)</a></li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Parfois ça peut un peu piquer niveau difficulté.</p>
+</div></div>
+
+<!-- ### Au delà de ce qui est demandé
+
+- [un peu de crypto](support_eleves_cours_6.pdf)
+- remplir [une grille aléatoire de sudoku](https://www.youtube.com/watch?v=2SuvO4Gi7uY) en utilisant [la réduction de paquet d'onde](https://fr.wikipedia.org/wiki/R%C3%A9duction_du_paquet_d'onde) (si si. Voir [ici](https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/) pour une explication et un autre exemple). Attention, parfois cette méthode va rater et il faudra faire du [backtracking](https://fr.wikipedia.org/wiki/Retour_sur_trace) (ne l'implémentez pas ici, cela va au delà de cette semaine) -->
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
