@@ -29,16 +29,16 @@ Pour utiliser le linter avec vscode,installez l'extension vscode nommée "_flake
 Une fois l'extension installée, nous allons la configurer pour qu'elle ne nous embête pas si l'on écrit une ligne de plus de 80 caractères ([l'erreur 501](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes)), qui est une règle plus ou moins obsolète.
 
 1. aller [dans les paramètres](https://code.visualstudio.com/docs/getstarted/settings#_settings-editor) : cliquez sur l'engrenage > paramètres ![paramètres vscode](./vscode-paramètres.png)
-2. en prenant garde d'ètre dans l'onglet utilisateur, tapez `flake8` dans la bvarre de recherche
+2. en prenant garde d'ètre dans l'onglet utilisateur, tapez `flake8` dans la barre de recherche
 3. dans la liste d'options, trouver la ligne `Flake8: args` et ajouter la ligne `--ignore=E501` ![paramètres flake8](./flake8-paramètres.png)
 
 {% info %}
-Si vous trouvez qu'une erreur soulignée par le linter n'en est pas une (comme l'erreuir 501), il faut la supprimer des erreurs rendues. Si le linter souligne une erreur il **faut** que s'en soit une, sinon vous allez vite ne plus tenir compte de ses recommendations... Et le linter ne servira à rien, voir sera néfaste car il rendra votre code moins lisible en soulignant des choses.
+Si vous trouvez qu'une erreur soulignée par le linter n'en est pas une (comme l'erreur 501), il faut la supprimer des erreurs rendues. Si le linter souligne une erreur il **faut** que s'en soit une, sinon vous allez vite ne plus tenir compte de ses recommendations... Et le linter ne servira à rien, voir sera néfaste car il rendra votre code moins lisible en soulignant des choses.
 {% endinfo %}
 
 ### Module python
 
-Dans [un terminal](../../../../ordinateur-développement/terminal){.interne}, qui peut être celui de vscode, tapez la commande :
+Dans [un terminal](/cours/système-et-réseau/bases-système/terminal/){.interne}, qui peut être celui de vscode, tapez la commande :
 
 ```shell
 python -m pip install flake8
@@ -52,4 +52,4 @@ Une fois installée, l'extension est automatiquement activée et elle va soulign
 
 ## `flake8` dans le terminal
 
-Vous pouvez aussi toujours exécuter la commande `flake8 mon-fichier.py` dans [un terminal intégré](../../../terminal#terminal-intégré){.interne} pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.
+Vous pouvez aussi toujours exécuter la commande `flake8 mon-fichier.py` dans un terminal pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.

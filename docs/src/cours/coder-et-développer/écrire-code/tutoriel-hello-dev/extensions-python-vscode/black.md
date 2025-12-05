@@ -26,7 +26,7 @@ Pour utiliser black directement avec vscode, installez l'extension vscode nommé
 
 ### Module python
 
-Dans [un terminal](../../../../ordinateur-développement/terminal){.interne}, qui peut être celui de vscode, tapez la commande :
+Dans [un terminal](/cours/système-et-réseau/bases-système/terminal/){.interne}, qui peut être celui de vscode, tapez la commande :
 
 ```shell
 python -m pip install black

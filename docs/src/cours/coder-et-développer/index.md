@@ -107,29 +107,48 @@ Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https
 
 ## Écrire du code
 
-> TBD ici tests
+### Corriger son code
 
-Une fois les prérequis acquis :
+Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seulement un excellent outil pour corriger son code, mais également un très bon outil d'apprentissage puisqu'il vous permettra d'assimiler plus rapidement ces notions de variables, d'objets et d'espaces de noms :
 
-> TBD ici vscode par projet, pas uniquement comme exécuteur de fichier.
+{% aller %}
+[Déboguer son code](débogueur){.interne}
+{% endaller %}
+
+### Écrire du code maintenable
+
+Il faut essayer de limiter au maximum la création de bug et, surtout, éviter qu'ils réapparaissent à la suite d'une modification de code.
+
+Mais plutôt que de corriger il vaut mieux éviter que les bugs arrivent
+
+{% aller %}
+[Tester son code](tests-unitaires){.interne}
+{% endaller %}
+
+### Écrire du code lisible
 
 {% aller %}
 [Écrire et exécuter du code](écrire-code){.interne}
 {% endaller %}
 
-Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seulement un excellent outil pour corriger son code, mais également un très bon outil d'apprentissage puisqu'il vous permettra d'assimiler plus rapidement ces notions de variables, d'objets et d'espaces de noms :
+### On s'entraîne
+
+#### Un projet complet
 
 {% aller %}
-[Déboguer son code](debugger){.interne}
+[Projet pourcentage](projet-pourcentages){.interne}
 {% endaller %}
 
-On s'entraîne sur de petits projets :
-
-> TBD faire juste le diff d'avec avant en ajoutant les tests.
-> TBD en ajouter.
+#### Écrire des tests
 
 {% aller %}
-[On s’entraîne : petits projets de code](projet-codes-tests){.interne}
+[On s’entraîne : écrire des tests](projet-codes-tests){.interne}
+{% endaller %}
+
+#### On vérifie qu'on sait faire
+
+{% aller %}
+[exercices](exercices-tests){.interne}
 {% endaller %}
 
 ## Programmation objet

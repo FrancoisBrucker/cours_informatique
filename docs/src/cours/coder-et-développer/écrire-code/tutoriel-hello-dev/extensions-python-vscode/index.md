@@ -21,12 +21,6 @@ eleventyComputed:
 
 Extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.
 
-## <span id="pytest"></span> Tests
-
-{% aller %}
-[Installation de pytest](pytest){.interne}
-{% endaller %}
-
 ## <span id="flake8"></span> Linter
 
 {% aller %}

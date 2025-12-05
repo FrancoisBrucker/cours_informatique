@@ -22,9 +22,3 @@ Installation et utilisation des outils de développement :
 {% aller %}
 [Projet Mise en œuvre d'un projet informatique](tutoriel-hello-dev){.interne}
 {% endaller %}
-
-Mise en pratique :
-
-{% aller %}
-[Projet `pourcentages`{.fichier}](projet-pourcentages){.interne}
-{% endaller %}

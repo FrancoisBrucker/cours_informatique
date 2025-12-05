@@ -82,7 +82,7 @@ print("bonjour les gens !")
 
 {% endfaire %}
 
-En vous rappelant ce que vous avez vu [ici](../../bases-programmation/éditeur-vscode/python/#exécuter-programme){.interne} et [là](../../connaissances-système-minimales/terminal/terminal-vscode/#exécuter-programme){.interne} :
+En vous rappelant ce que vous avez vu [ici](../../bases-programmation/éditeur-vscode/python/#exécuter-programme){.interne} et [là](/cours/système-et-réseau/bases-système/terminal/terminal-vscode/){.interne} :
 
 {% faire %}
 Exécutez le code de deux manières différentes :
@@ -198,10 +198,6 @@ print(le_code.bonjour())
 
 La notation pointée se lit alors : exécute le nom `bonjour` définit dans `le_code.py`{.fichier}.
 
-{% aller %}
-[Cours sur les modules python](../../bases-programmation/structurer-son-code/creation-modules/){.interne} pour plus d'information.
-{% endaller %}
-
 {% attention %}
 Ne **jamais jamais jamais** utiliser `from le_code import *`{.language-} qui importe tous les noms définis dans `le_code.py`{.fichier}. On ne sait pas vraiment ce qui a été importé en lisant `le_code.py`{.fichier}. : notre code n'est pas lisible ! Le gain d'écriture de `*`{.language-} plutôt que `bonjour`{.language-} sera perdu au centuple plus tard lorsque l'on devra chercher dans tous les fichiers du projet où l'on a bien pu définir `bonjour`{.language-}...
 {% endattention %}
@@ -214,183 +210,7 @@ Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il 
 
 Les tests permettent de vérifier que notre code fonctionne. Ils font partie du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter **tous les tests** pour vérifier que notre programme fonctionne aussi bien qu'avant.
 
-### La commande assert
-
-On utilise en python [la commande assert](https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement). Elle fonctionne ainsi :
-
-```python
-assert <expression logique>
-```
-
-Si l'expression logique est vraie, le programme continue sans rien dire et si l'expression logique est fausse, le programme s'arrête avec l'erreur : `AssertionError`{.language-}.
-
-Essayons ça avec la plus simple des expressions logiques : `True`{.language-}
-
-{% faire %}
-Créez un fichier nommé `test_projet.py`{.fichier} qui contiendra le code :
-
-```python
-print("avant l'assert")
-
-assert True
-
-print("après l'assert")
-
-```
-
-Exécutez-le.
-
-{% endfaire %}
-
-Lorsque vous exécutez ce fichier, vous devez obtenir le résultat suivant :
-
-```text
-avant l'assert
-après l'assert
-```
-
-La condition logique étant vraie, la commande `assert`{.language-} n'a rien fait.
-
-Changeons ça en mettant une condition logique fausse :
-
-{% faire %}
-Modifiez `test_projet.py`{.fichier} pour qu'il contienne le code :
-
-```python
-print("avant l'assert")
-
-assert False
-
-print("après l'assert")
-
-```
-
-Exécutez le fichier `test_projet.py`{.fichier}.
-
-{% endfaire %}
-
-Vous devez obtenir le résultat suivant :
-
-```text
-avant l'assert
-Traceback (most recent call last):
-  File "/Users/fbrucker/Documents/temp/hello-dev/test_projet.py", line 3, in <module>
-    assert False
-AssertionError
-```
-
-La première ligne a bien été exécutée (on voit écrit `avant l'assert`), puis le programme a planté. La condition logique étant fausse, la commande `assert`{.language-} a levé une exception nommée `AssertionError`{.language-} qui a stoppé l'exécution du programme. La ligne `print("après l'assert")`{.language-} n'a pas été exécutée.
-
-D'habitude, nos expressions logiques vérifie qu'un comportement observé (l'exécution d'une fonction) est conforme au comportement théorique (le résultat qu'on aimerait avoir). Pour ne pas se perdre on range ce test dans une fonction dont le nom décrit le test. Par exemple, testons la somme :
-
-{% faire %}
-Modifiez `test_projet.py`{.fichier} pour qu'il contienne le code :
-
-```python
-
-def test_somme_neutre():
-    tête_a_toto = 0
-    assert 0 + 0 == tête_a_toto
-
-def test_somme_1_plus_0():
-    assert 0 + 1 == 1
-
-
-def test_somme_1_plus_2():
-    assert 1 + 2 == 3
-
-```
-
-Exécutez le fichier `test_projet.py`{.fichier}.
-
-{% endfaire %}
-
-Pour tester la somme, j'ai décidé de faire 3 tests :
-
-- le cas le plus simple où il ne se passe rien (`0 + 0 = 0`{.language-})
-- un cas simple (`0 + 1 = 1`{.language-})
-- un cas général (`1 + 2 = 3`{.language-})
-
-Lorsque l'on exécute ce code, il ne se passe rien. Est-ce bon signe ?
-
-{% faire %}
-Modifiez la fonction `test_somme_neutre`{.language-} du fichier `test_projet.py`{.fichier} pour qu'elle soit égale à :
-
-```python
-# ...
-
-def test_somme_neutre():
-    tête_a_toto = 0
-    assert 0 + 0 == 42
-
-# ...
-```
-
-Exécutez le fichier `test_projet.py`{.fichier}.
-
-{% endfaire %}
-{% info %}
-On a coutume de mettre des `# ...`{.language-} pour dire que le reste du code du fichier n’est pas changé.
-
-Ce n’est pas la peine de les copier/coller.
-{% endinfo %}
-
-Le code s'exécute encore encombre. Bon, là, c'est pas normal car `0 + 0` ne peut être égal à `42`.
-
-La raison est que `test_projet.py`{.fichier} définit des fonctions mais **il ne les exécute jamais**. Les trois fonctions de test sont définies mais jamais utilisées.
-
-On a donc 2 choix :
-
-- exécuter les fonctions dans le fichier après les avoir définies
-- utiliser un module que le fait pour nous
-
-Nous allons utiliser la seconde option avec le module [Pytest](https://docs.pytest.org).
-
-### Installation de la bibliothèque de tests
-
-{% aller %}
-[Installer la bibliothèque de test](./extensions-python-vscode/pytest){.interne}
-{% endaller %}
-
-### Utilisation de la bibliothèque de tests
-
-On y reviendra à de nombreuses reprises :
-
-{% note %}
-Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut pas régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
-{% endnote %}
-
-Les tests sont de petites fonctions dont le but est de _tester_ une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en [une assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
-
-{% faire %}
-Tapez la commande `python -m pytest` dans un terminal.
-{% endfaire %}
-{% info %}
-Il vous faut utiliser le python de vscode, son nom peut donc changer.
-{% endinfo %}
-
-Vous devriez obtenir quelque chose du genre :
-
-![vsc-pytest](code-projet-pytest.png)
-
-{% faire %}
-Corrigez le test de `test_projet.py`{.fichier} qui rate et re-exécutez le code pour voir les 3 tests réussir.
-
-{% endfaire %}
-
-Que fait pytest :
-
-{% note %}
-Pytest exécute toutes les fonctions commençant par `test_`{.fichier} de tous les fichiers commençant par `test_`{.fichier} d’un projet.
-{% endnote %}
-
-On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez sur [le petit erlenmeyer](https://code.visualstudio.com/docs/python/testing#_configure-tests). Vous pourrez ensuite :
-
-1. découvrir les tests du projet
-2. exécuter tous les tests
-3. n'exécuter qu'un seul test
-
-![vsc-pytest-erlenmeyer](code-projet-pytest-erlenmeyer.png)
+On reprend [ce que l'on a déjà vu](../../tests-unitaires/){.interne} pour finaliser notre projet :
 
 ### Test du projet
 
@@ -406,11 +226,8 @@ def bonjour(nom):
 ```
 
 {% endfaire %}
-
-On peut maintenant remplacer les tests :
-
 {% faire %}
-Modifiez le fichier `test_projet.py`{.fichier} pour qu'il contienne le code :
+Créez le fichier `test_projet.py`{.fichier} pour qu'il contienne le code :
 
 ```python
 from le_code import bonjour
@@ -441,12 +258,3 @@ Exécutez le programme principal.
 {% endfaire %}
 
 Félicitations, vous avez fait votre premier projet fonctionnel !
-
-## Les fichiers
-
-{% lien %}
-[Les trois fichiers du projet final sont disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/tutoriel-hello-dev/hello-dev)
-{% endlien %}
-{% lien %}
-[extensions vscode utilisées](./extensions-python-vscode/){.interne}
-{% endlien %}

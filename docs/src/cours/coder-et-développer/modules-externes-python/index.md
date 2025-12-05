@@ -12,6 +12,33 @@ eleventyComputed:
 
 Nous allons montrer ici comment installer des modules à un interpréteur python. Nous prendrons ici l'exemple d'un projet avec vscode et de l'utilisation de son terminal, mais la méthode sera générale.
 
+{% attention %}
+Il vous faudra exécuter des commandes via le terminal. Windows et macos n'aiment pas trop ça, il vous faudra explicitement autoriser à le faire.
+
+{% endattention %}
+{% attention "sous Windows" %}
+Il faut vous permettre d'exécuter des scripts.
+
+[Script execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4) sous windows.
+
+Pour la connaître :
+
+```shell
+Get-ExecutionPolicy
+```
+
+Pour la modifier :
+
+```shell
+Set-ExecutionPolicy Unrestricted
+```
+
+{% endattention %}
+{% attention "sous Macos" %}
+Il faut vous permettre d;ajouter des modules au programme python du système : il vous faut ajouter le paramètre `--break-system-packages` à toute commande d'installation avec `pip`.
+
+{% endattention %}
+
 ## Le module pip
 
 {% lien %}

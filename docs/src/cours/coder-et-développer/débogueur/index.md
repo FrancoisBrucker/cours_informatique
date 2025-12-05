@@ -25,7 +25,7 @@ Deux video d'utilisation du debugger :
 
 {% endlien %}
 
-Le ***débogueur*** (***debugger***) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.
+Le **_débogueur_** (**_debugger_**) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.
 
 Comprendre comment fonctionne un débogueur vous permet également de comprendre comment fonction un interpréteur et par là comment s'exécute un programme informatique.
 
@@ -102,11 +102,15 @@ c'est fini.
 
 Il ne s'est rien passé de plus que si vous aviez exécuté votre programme python normalement.
 
-C'est normal par il faut demander explicitement au débogueur de s'arrêter un créant un [***point d'arrêt***](https://fr.wikipedia.org/wiki/Point_d'arr%C3%AAt_(informatique)) (***breakpoint***).
+C'est normal par il faut demander explicitement au débogueur de s'arrêter un créant un [**_point d'arrêt_**](<https://fr.wikipedia.org/wiki/Point_d'arr%C3%AAt_(informatique)>) (**_breakpoint_**).
 
 ### Création d'un breakpoint
 
-Pour créer [un point d'arrêt (breakpoint)](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) :
+{% lien %}
+[créer un point d'arrêt (breakpoint)](https://code.visualstudio.com/docs/editor/debugging#_breakpoints)
+{% endlien %}
+
+Trois moyen équivalents :
 
 - `menu exécuter > activer/désactiver le point d'arrêt`
 - cliquer sur la gouttière du fichier, à gauche des numéros de lignes (vous savez que vous êtes au on endroit lorsque un disque rouge foncé apparaît)
@@ -133,18 +137,22 @@ Avec le breakpoint de la ligne 1 actif, exécutez le débogueur en cliquant sur 
 Le breakpoint est placé à la ligne 1 :
 
 {% note %}
-Un ***breakpoint*** (***point d'arrêt***) sur une ligne du code permet de stopper l'interpréteur **juste avant l'exécution de cette ligne**.
+Un **_breakpoint_** (**_point d'arrêt_**) sur une ligne du code permet de stopper l'interpréteur **juste avant l'exécution de cette ligne**.
 
 Si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet
 {% endnote %}
 
 On a plusieurs types d'actions possibles (le nom de l'action apparaît lorsque la souris est placée dessus) :
 
-- les actions bleues, `Continuer`, `pas à pas principal`, `pas à pas détaillé` et `pas à pas sortant`  qui gèrent l'exécution de l'interpréteur :
-  - `Continuer` : l'interpréteur se lance et s'arrête à l prochaine ligne avec un breakpoint qu'il rencontre
-  - `pas à pas principal` (*step over*) : l'interpréteur exécute la ligne
-  - `pas à pas détaillé` (*step into*) : si la ligne consiste à exécuter une fonction que l'on a écrite, l'interpréteur d'arrête juste après l'appel de la fonction
-  - `pas à pas sortant` : si l'interpréteur exécute une fonction que l'on a écrite, l'interpréteur continue son exécution jusqu'à ce qu'il sorte de la fonction
+![actions possibles](./action-debogueur.png)
+
+De gauche à droite :
+
+- les actions bleues qui gèrent l'exécution de l'interpréteur :
+  1. `Continuer` : l'interpréteur se lance et s'arrête à l prochaine ligne avec un breakpoint qu'il rencontre
+  2. `pas à pas principal` (_step over_) : l'interpréteur exécute la ligne
+  3. `pas à pas détaillé` (_step into_) : si la ligne consiste à exécuter une fonction que l'on a écrite, l'interpréteur d'arrête juste après l'appel de la fonction
+  4. `pas à pas sortant` : si l'interpréteur exécute une fonction que l'on a écrite, l'interpréteur continue son exécution jusqu'à ce qu'il sorte de la fonction
 - l'action verte, `Redémarrer`, qui redémarre le débogueur
 - l'action rouge, `Arrêter`, qui stoppe le débogueur
 
@@ -181,12 +189,12 @@ L'action `Continuer` active l'exécution de l'interpréteur. Il va rester en act
 Cliquez sur l'action `pas à pas principal`.
 {% endfaire %}
 
-L'interpréteur est remonté en ligne 2. Puisque `i`{.language-} est différent de `x`, le bloc conditionnel n'est pas considéré. Voyez que l'instruction `for`{.language-} n'est pas exécuté puisque `i`{.language-} vaut toujours 0.
+L'interpréteur est remonté en ligne 2. Puisque `i`{.language-} est différent de `x`, le bloc conditionnel n'est pas considéré. Voyez que l'instruction `for`{.language-} n'est pas exécutée puisque `i`{.language-} vaut toujours 0.
 
 {% note %}
-L'action `pas à pas principal` pas Un ***breakpoint*** (***point d'arrêt***) sur une ligne du code permet de stopper l'interpréteur **juste avant l'exécution de cette ligne**.
+L'action `pas à pas principal` s'arrête à la prochaine ligne de code **juste avant son exécution** (si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet).
 
-Si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet
+Cette action ne rentre pas dans les fonctions.
 {% endnote %}
 
 Continuons d'exécuter cette action :
@@ -195,10 +203,10 @@ Continuons d'exécuter cette action :
 Cliquez sur l'action `pas à pas principal`.
 {% endfaire %}
 
-La ligne 2 a été exécutée :  `i`{.language-} vaut bien 1.
+La ligne 2 a été exécutée : `i`{.language-} vaut bien 1.
 
 {% faire %}
-Cliquez sur l'action `Continuer` jusqu'à ce que `i` soit égal à 4.
+Cliquez sur l'action `Continuer` jusqu'à ce que `i`{.language-} soit égal à 4 et soit affiché dans le terminal (on se place juste après l'exécution de la ligne 3 pour `i = 4`{.language-})
 {% endfaire %}
 
 Vous devez vous retrouver devant l'état suivant :
@@ -273,11 +281,11 @@ Cliquer sur l'action `Arrêter` pour stopper le débogueur.
 l'action `Arrêter` interrompt l'exécution du programme. Utile lorsque l'on a plus besoin du débogueur.
 {% endnote %}
 
-### Autre Breakpoint
+### Autres Breakpoints
 
 Outre les breakpoint simple et les breakoint conditionnel, il existe deux autres types de points d'arrêts:
 
-- les `points de journalisation` (*logpoint*) : comme un `print`
+- les `points de journalisation` (_logpoint_) : comme un `print`
 - les `nombres d'accès` : s'arrête lorsque le nombre d'accès est atteint
 
 ## Gestion des Fonctions
@@ -332,9 +340,9 @@ Effectuez l'action `pas à pas principal` (celle que nous avons utilisé jusque 
 Normalement, l'interpréteur a :
 
 1. effectué la ligne 10 et exécuté la fonction `test_égalité`{.language-}. On sait que la fonction a été exécutée car :
-    - elle a affiché `fonction test_égalité avec comme paramètre : 0 4` sur le terminal
-    - le débogueur garde la valeur de retour de la fonction. Ici `None`{.language-} puisque notre fonction ne rend rien (elle ne fait qu'afficher des choses à l'écran).
-2. l'interpréteur s'est arrêté au début de la prochaine instruction, qui est à la ligne 8 : c'est la boucle for.
+   - elle a affiché `fonction test_égalité avec comme paramètre : 0 4` sur le terminal
+   - le débogueur garde la valeur de retour de la fonction. Ici `None`{.language-} puisque notre fonction ne rend rien (elle ne fait qu'afficher des choses à l'écran).
+2. l'interpréteur s'est arrêté au début de la prochaine instruction, qui est à la ligne 8 : c'est la boucle `for`{.language-}.
 
 {% faire %}
 Effectuez l'action `Continuer` pour s'arrêter au prochain breakpoint rencontré.
@@ -359,7 +367,7 @@ Effectuez l'action `pas à pas détaillé`.
 Vous voyiez que l'interpréteur ne s'est pas arrêté à la ligne 8 comme précédemment, mais à la ligne 2 c'est à dire juste avant le début de l'exécution de la fonction `test_égalité`{.language-} :
 
 {% note %}
-l'action `pas à pas détaillé` *rentre* dans l'exécution des fonctions : ***Il arrête l'interpréteur à la prochaine ligne de code du programme*** rencontrée.
+l'action `pas à pas détaillé` _rentre_ dans l'exécution des fonctions : **_Il arrête l'interpréteur à la prochaine ligne de code du programme_** rencontrée.
 {% endnote %}
 
 La prochaine ligne de code à exécuter est la ligne 2, qui est un print.
@@ -371,7 +379,7 @@ Effectuez l'action `pas à pas détaillé`.
 Vous remarquez que l'interpréteur est maintenant arrêté au début de la ligne 3 et a affiché `fonction test_égalité avec comme paramètre : 1 4` sur le terminal :
 
 {% note %}
-l'action `pas à pas détaillé` ***ne rentre pas*** dans l'exécution des fonctions que l'on a pas écrite, en particulier les fonctions et méthodes de python.
+l'action `pas à pas détaillé` **_ne rentre pas_** dans l'exécution des fonctions que l'on a pas écrite, en particulier les fonctions et méthodes de python.
 {% endnote %}
 
 Continuons notre programme jusqu'à la prochaine exécution de la fonction :
@@ -391,14 +399,14 @@ Effectuez l'action `pas à pas sortant`.
 Vous devez vous retrouver ligne 10.
 
 {% note %}
-l'action `pas à pas sortant` ***sort*** de l'exécution de la fonction : il effectue toutes les instructions de la fonction et **s'arrête juste après son appel**.
+l'action `pas à pas sortant` **_sort_** de l'exécution de la fonction : il effectue toutes les instructions de la fonction et **s'arrête juste après son appel**.
 {% endnote %}
 {% attention %}
 Après une étape `pas à pas sortant` l'interpréteur s'arrête juste après l'exécution de la fonction. Il n'y a cependant aucune indication visuelle de la position de l'interpréteur dans la ligne. On sait que l'interpréteur est arrêter au court de l'instruction :
 
 - avant l'instruction pour les actions `continuer`, `pas à pas principal` et `pas à pas détaillé`
 - après l'exécution de la fonction pour `pas à pas sortant`
-{% endattention %}
+  {% endattention %}
 
 Nous allons exhiber ce comportant en créant un petit programme. Mais avant tout sortons de débogueur :
 
@@ -431,7 +439,7 @@ print(" La somme de", x, "et", y, "vaut :", s)
 2. lancez le débogueur
 3. effectuez l'action `pas à pas entrant` pour rentrer dans la fonction `somme`{.language-}
 4. effectuez l'action `pas à pas sortant` pour sortir de la fonction `somme`{.language-}
-{% endfaire %}
+   {% endfaire %}
 
 Analysons les variables présentes :
 
@@ -456,12 +464,12 @@ Utiliser `pas à pas sortant` alors que l'on est pas dans une fonction est équi
 
 ## Pile des appels
 
-Lorsque l'on exécute une fonction, on ne passe à la ligne suivante que lorsque la fonction est terminée, c'est à dire lorsque toutes les instructions de la fonction ont été effectuées. Ce processus est récursif  : on peut appeler une fonction à l'intérieur d'une fonction...
+Lorsque l'on exécute une fonction, on ne passe à la ligne suivante que lorsque la fonction est terminée, c'est à dire lorsque toutes les instructions de la fonction ont été effectuées. Ce processus est récursif : on peut appeler une fonction à l'intérieur d'une fonction...
 
 Ce mécanisme est géré avec ce que l'on appelle [une pile d'exécution (ou pile d'appels)](https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution) :
 
 {% note %}
-Lorsque l'on appelle une fonction B depuis une fonction A (qui peut être le programme principal), la fonction A est stockée (on dit ***empilée***) A la fin de la fonction B, on dépile cette fonction pour pouvoir y revenir et continuer son instruction.
+Lorsque l'on appelle une fonction B depuis une fonction A (qui peut être le programme principal), la fonction A est stockée (on dit **_empilée_**) A la fin de la fonction B, on dépile cette fonction pour pouvoir y revenir et continuer son instruction.
 {% endnote %}
 
 Pour visualiser ce mécanisme, créons un petit programme :
@@ -490,7 +498,7 @@ print(factorielle(n))
 3. effectuez l'action `Continue`
 4. effectuez l'action `Continue`
 5. effectuez l'action `Continue`
-{% endfaire %}
+   {% endfaire %}
 
 La fonction étant récursive, à chaque appel de la fonction, on va passer par le breakpoint et s'arrêter. Vous devriez vous retrouver dans une situation identique celle ci-dessous :
 
@@ -498,11 +506,11 @@ La fonction étant récursive, à chaque appel de la fonction, on va passer par 
 
 Dans la partie `VARIABLES` :
 
-- La partie *locals* donne les variables définies dans l'espace de noms de la fonction actuelle. Ici `n` (son paramètre), qui vaut 7
-- La partie *globals* donne :
-  - les variables définies dans l'espace de nom principal. Ici `n` (définie ligne 8), qui vaut 10
+- La partie _locals_ donne les variables définies dans l'espace de nommage de la fonction actuelle. Ici `n` (son paramètre), qui vaut 7
+- La partie _globals_ donne :
+  - les variables définies dans l'espace de nommage principal. Ici `n` (définie ligne 8), qui vaut 10
   - deux champs spéciaux permettant le fonctionnement interne de python :
-    - les noms spéciaux de python dans la partie *special variables*
+    - les noms spéciaux de python dans la partie _special variables_
     - les fonctions définies, ici uniquement `factorielle`{.language-}, ainsi que ses variables spéciales permettant de l'exécuter
 
 La partie `PILE DES APPELS` contient tous les appels de fonctions actuels. Il y en a 5, et cela se lit de haut en bas. La plus haute contient l'appel actuel, celui où le paramètre `n` vaut 7. On voit qu'elle est actuellement positionnée ligne 2.
@@ -520,7 +528,7 @@ Vous devriez vous retrouver dans une situation identique celle ci-dessous :
 
 On voit :
 
-- l'espace de noms de la fonction sélectionné dans la partie *locals* de la section `VARIABLES` (un paramètre `n`{.language-} valant 8)
+- l'espace de noms de la fonction sélectionné dans la partie _locals_ de la section `VARIABLES` (un paramètre `n`{.language-} valant 8)
 - sa position actuelle (ligne 5)
 
 {% faire %}
@@ -530,7 +538,7 @@ Cliquez sur la fonction nommée `<module>` de la pile des appels.
 
 On se trouve au niveau du programme principal :
 
-- les parties *locals* et *globals* de la section `VARIABLES` coincident
+- les parties _locals_ et _globals_ de la section `VARIABLES` coincident
 - c'est la ligne 9 qui est exécutée
 
 Terminons cette exécution en voyant la pile d'appel se vider :
@@ -557,11 +565,25 @@ Lorsque l'on a beaucoup de variables, on peut spécifier des espions qui permett
 - un bout de liste
 - ...
 
-En utilisant le fichier `pile-appels.py`{.fichier} et un breakpoint en ligne 2, on peut par exemple créer les 3 espions suivant :
+Le panneau espion apparaît lorsque le débogueur est en fonctionnement :
 
-- `n`{.language-} qui montre la valeur locale `n`
-- `n > 1`{.language-} qui montre le résultat d'une expression
-- `factorielle(n)`{.language-} qui montre le résultat de la fonction factorielle pour la valeur locale de `n`{.language-}
+![panneau espion](./espion-1.png)
+
+Lorsque l'on passe la souris sur le panneau espion un bouton `+` apparaît qui permet d'ajouter des espions :
+
+![panneau espion `+`](./espion-2.png)
+
+En utilisant le fichier `pile-appels.py`{.fichier} :
+
+{% faire %}
+
+1. créez un breakpoint en ligne 2, c'est à dire la première instruction de la fonction `factorielle`{.language-}
+2. lancez le débogueur
+3. ajoutez un espion valant `n`{.language-} qui montre la valeur locale `n`{.language-}
+4. ajoutez un espion valant `n > 1`{.language-} qui montre le résultat d'une expression
+5. ajoutez un espion valant `factorielle(n)`{.language-} qui montre le résultat de la fonction factorielle pour la valeur `n`{.language-}
+
+{% endfaire %}
 
 ![espions](./espions.png)
 

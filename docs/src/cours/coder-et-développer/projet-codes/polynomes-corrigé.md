@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 
-## `polynome.py`{.fichier}
+## `polynôme.py`{.fichier}
 
 ```python
 

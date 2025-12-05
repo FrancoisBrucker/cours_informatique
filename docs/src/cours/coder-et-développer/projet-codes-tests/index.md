@@ -10,64 +10,142 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Quelques exercices pour se mettre le code dans les pattes. Utilisez toutes les bonnes pratiques vues dans le cours et forcez vous à prendre de bonnes habitudes :
+Or reprend [les exercices de code](../projet-codes/){.interne} et on leur ajoute des tests.
 
 {% faire %}
 
-- utilisez des noms de fichiers, de variables et de fonctions signifiants
-- utilisez black pour avoir un programme sans warnings du linter.
-- **forcez vous** à utiliser le débogueur pour tester vos programmes
+- reprenez le code des exercices précédents
+- ajoutez un fichier de tests s'appellant `test_fonctions.py`{.language-}
 
 {% endfaire %}
 
-Pour chacun des projets vous ferez 3 fichiers :
+Les corriges sont des **propositions** de tests, ce n'est pas la vérité :
 
-- le programme principal de nom `main.py`{.language-} qui sera exécuté
-- le fichier contenant les différentes fonctions appelées dans le programme principal. Son nom doit être en relation avec son contenu.
-- le fichier testant les différentes fonctions (si le fichier contenant les fonctions s'appelle `fonctions.py`{.language-}, le fichier de tests s'appelle `test_fonctions.py`{.language-})
-
-Chaque sujet contient son corrigé, mais faites dans l'ordre :
-
-{% faire "**Pour chaque sujet**" %}
-
-1. faites tous les exercices
-2. regardez les erreurs courantes et corriger si besoin votre projet
-3. comparez votre code au corrigé
-
-{% endfaire %}
+{% attention "**À retenir**" %}
+Les tests sont écrit par le développeur et leurs buts est qu'ils lui permettent d'être convaincu que le code fonctionne si les tests passent. Ce n'est pas une **preuve** mais permet de continuer à coder tranquillement.
+{% endattention %}
 
 ## <span id="syracuse"></span>Syracuse
 
 {% exercice %}
-[Sujet](./syracuse-sujet){.interne}
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/syracuse-sujet){.interne}.
 {% endexercice %}
-{% details "corrigé", "open" %}
+{% details "corrigé" %}
 
-1. [Erreurs courantes à éviter](./syracuse-erreurs-courantes){.interne}
-2. [Éléments de corrigé](./syracuse-corrigé){.interne}
+Fichier `test_syracuse.py`{.fichier} :
+
+```python
+from syracuse import syracuse, suite
+
+def test_syracuse_pair():
+    assert syracuse(2) == 1
+
+
+def test_syracuse_impair():
+    assert syracuse(1) == 4
+
+
+def test_suite_u_0_1():
+    assert suite(1) == [1]
+
+
+def test_suite_u_0_5():
+    assert suite(5) == [5, 16, 8, 4, 2, 1]
+
+```
+
 {% enddetails %}
 
 ## <span id="pendu"></span>Jeu du pendu
 
 {% exercice %}
-[Sujet](./pendu-sujet){.interne}
-{% endexercice %}
-{% details "corrigé", "open" %}
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/pendu-sujet){.interne}.
 
-1. [Erreurs courantes à éviter](./pendu-erreurs-courantes){.interne}
-2. [Éléments de corrigé](./pendu-corrigé){.interne}
+- Pour tester la fonction `est_une_lettre(lettre, mot)`{.language-} vous pourrez vérifier que :
+  - `est_une_lettre("i", "victoire")`{.language-} doit rendre `True`{.language-}
+  - `est_une_lettre("e", "la disparition")`{.language-} doit rendre `False`{.language-}
+
+- Pour tester la fonction `caractères(lettre, mot)`{.language-} vous pourrez vérifier que :
+  - `caractères("i", "victoire")`{.language-} doit rendre `[1, 5]`{.language-}
+  - `caractères("e", "la disparition")`{.language-} doit rendre `[]`{.language-}
+
+- Pour tester la fonction `découvre(mot_caché, lettre, positions)`{.language-} vous pourrez vérifier que :
+  - `découvre("......", "r", [1, 2, 5])`{.language-} doit rendre `".rr..r"`{.language-}
+  - `découvre("erre.r", "u", [4])`{.language-} doit rendre `"erreur"`{.language-}
+  - `découvre("erre.r", "u", [])`{.language-} doit rendre `"erre.r"`{.language-}
+
+- Pour tester la fonction `caché(mot)`{.language-} vous pourrez vérifier que :
+  - `caché("anticonstitutionnellement")`{.language-} doit rendre `"........................."`{.language-}
+  - `caché("")`{.language-} doit rendre `""`{.language-}
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Fichier `test_pendu.py`{.fichier}
+
+```python/
+from pendu import est_une_lettre, caractères, découvre, caché
+
+
+def test_est_une_lettre():
+    assert est_une_lettre("i", "victoire")
+    assert not est_une_lettre("e", "la disparition")
+
+
+def test_caractères():
+    assert [1, 5] == caractères("i", "victoire")
+    assert [] == caractères("e", "la disparition")
+
+
+def test_découvre():
+    assert ".rr..r" == découvre("......", "r", [1, 2, 5])
+    assert "erreur" == découvre("erre.r", "u", [4])
+    assert "erre.r" == découvre("erre.r", "u", [])
+
+
+def test_caché():
+    assert "" == caché("")
+    assert "........................." == caché("anticonstitutionnellement")
+
+```
 
 {% enddetails %}
 
 ## <span id="compte-caractere"></span>Le compte est bon
 
 {% exercice %}
-[Sujet](./compte-caractere-sujet){.interne}
-{% endexercice %}
-{% details "corrigé", "open" %}
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/compte-caractere-sujet){.interne}.
 
-1. [Erreurs courantes à éviter](./compte-caractere-erreurs-courantes){.interne}
-2. [Éléments de corrigé](./compte-caractere-corrigé){.interne}
+- Pour tester la fonction `donne_prochain_indice(chaîne:str, indice:int) -> int`{.language-} vous pourrez vérifier que :
+  - `donne_prochain_indice("bxaaxaaaxax", 4)`{.language-} rende 8
+  - `donne_prochain_indice("bxaaxaaaxax", 0)`{.language-} rende `None`{.language-}
+- Pour tester la fonction `compte_caractère(chaîne: str, indice: int) -> int`{.language-}  vous pourrez vérifier que :
+  - Un caractère non présent dans la chaîne
+  - Un caractère présent plusieurs fois dans la chaîne
+- Pour tester la fonction `donne_max_doublon(chaîne: str) -> str`{.language-}   vous pourrez tester avec une chaîne admettant plusieurs caractères répétés un nombre différent de fois.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Fichier `test_fonctions.py`{.fichier}
+
+```python
+from fonctions import compte_caractère, donne_prochain_indice, donne_max_doublon
+
+
+def test_donne_prochain_indice():
+    assert donne_prochain_indice("bxaaxaaaxax", 4) == 8
+    assert donne_prochain_indice("bxaaxaaaxax", 0) == None
+
+
+def test_compte_caractère():
+    assert compte_caractère("bxaaxaaaxax", 0) == 1
+    assert donne_prochain_indice("bxaaxaaaxax", 1) == 4
+
+def test_donne_max_doublon():
+    assert donne_max_doublon("bxaaxaaaxax") == 6
+
+```
 
 {% enddetails %}
 
@@ -76,8 +154,50 @@ Chaque sujet contient son corrigé, mais faites dans l'ordre :
 Uniquement des fonctions à créer.
 
 {% exercice %}
-[Sujet](./polynomes-sujet){.interne}
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/polynomes-sujet){.interne}.
 {% endexercice %}
-{% details "corrigé", "open" %}
-[Éléments de corrigé](./polynomes-corrigé){.interne}
+{% details "corrigé" %}
+
+Fichier `test_polynôme.py`{.fichier}
+
+```python
+
+from polynome import valeur, somme, produit
+
+def test_valeur_constante():
+    assert valeur([1], 4) == 1 * 4 ** 0
+
+
+def test_valeur_vide():
+    assert valeur([], 4) == 0
+
+
+def test_valeur_polynôme():
+    assert valeur([1, 2, 3], 2) == 1 + 2 * 2 + 3 * 4
+
+
+def test_somme_un_vide():
+    assert somme([1, 2, 3], []) == [1, 2, 3]
+    assert somme([], [1, 2, 3]) == [1, 2, 3]
+
+
+def test_somme_égal():
+    assert somme([1, 2, 3], [3, 2, 1]) == [4, 4, 4]
+
+
+def test_somme_different():
+    assert somme([1, 2, 3], [3]) == [4, 2, 3]
+    assert somme([3], [1, 2, 3]) == [4, 2, 3]
+
+
+def test_produit_longueur1():
+    assert produit([1, 2, 3], [2]) == [2, 4, 6]
+    assert produit([2], [1, 2, 3]) == [2, 4, 6]
+
+
+def test_produit_égal():
+    assert produit([2, 3], [3, 2]) == [6, 13, 6]
+
+```
+
 {% enddetails %}
