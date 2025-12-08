@@ -112,5 +112,8 @@ Choisissez un exercice du <https://adventofcode.com/> actuel et résolvez le. On
 - un fichier `main.py`{.fichier} pour votre programme principal
 - un fichier `fonction.py`{.fichier} pour vos fonctions
 - un fichier `test_fonction.py`{.fichier} pour vos tests
+- un fichier `readme.md`{.fichier} pour les informations générales sur votre projet
 
 Ainsi que la preuve que votre exercice est réussi.
+
+Vous devrez rendre votre travail sur moodle avant le 24 décembre 23h59.
