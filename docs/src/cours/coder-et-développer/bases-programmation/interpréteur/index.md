@@ -44,7 +44,9 @@ Vous pourrez uniquement taper `python` dans un terminal pour exécuter l'interpr
 
 ### Sous Macos
 
-De même que sous Linux/Ubuntu, python est installé par défaut, mais il s'appelle `python3`. Pour avoir le même comportement que sous windows et Linux où cette commande s'appelle juste `python`, vous pouvez taper dans [un terminal](../ordinateur-développement/terminal){.interne} :
+De même que sous Linux/Ubuntu, python est installé par défaut, mais il s'appelle `python3`. Mais avant de pouvoir l'utiliser il vous faudra installer les *Apple developer tools*, en particulier [xcode](https://developer.apple.com/xcode/resources/)
+
+ Pour avoir le même comportement que sous windows et Linux où cette commande s'appelle juste `python`, vous pouvez taper dans [un terminal](../ordinateur-développement/terminal){.interne} :
 
 ```shell
 echo "alias python=python3" >> ~/.zshrc

@@ -234,13 +234,13 @@ On utilise le paramètre base de la classe `int`{.language-} :
 Allez, un dernier pour la route :
 
 {% exercice %}
-En utilisant le fait que la fonction `len(chaîne_de_caractères)`{.language-} donne le nombre de caractères de la chaîne (par exemple `len("abc")`{.language-} rend `3`{.language-}), et que l'exposant eb python s'écrit `**`{.language-} (par exemple `2**8`{.language-} rend `256`{.language-}) donnez le nombre de chiffre du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant le fait que la fonction `len(chaîne_de_caractères)`{.language-} donne le nombre de caractères de la chaîne (par exemple `len("abc")`{.language-} rend `3`{.language-}), et que l'exposant eb python s'écrit `**`{.language-} (par exemple `2**8`{.language-} rend `256`{.language-}) donnez le nombre de chiffre du 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
 {% endexercice %}
 {% details "solution" %}
 
 ```python
->>> len(str(2 ** 44497 - 1))
-13395
+>>> len(str(2 ** 11213 - 1))
+3376
 ```
 
 {% enddetails %}
@@ -343,18 +343,18 @@ Chaque classe vient avec des méthodes. Si les nombre et booléens ont peu de m�
 Essayons de les apprendre avec ces petits exercices :
 
 {% exercice %}
-Transformez le 27ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) en une chaîne de caractère
+Transformez le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) en une chaîne de caractère
 {% endexercice %}
 {% details "solution" %}
 
 ```python
->>> x = str(2 ** 44497 - 1)
+>>> x = str(2 ** 11213 - 1)
 ```
 
 {% enddetails %}
 
 {% exercice %}
-En utilisant la méthode [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), comptez le nombre de 0 du 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant la méthode [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), comptez le nombre de 0 du 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
 {% endexercice %}
 {% details "solution" %}
 
@@ -362,13 +362,13 @@ Dans un interpréteur :
 
 ```python
 >>> x.count("0")
-1332
+348
 ```
 
 {% enddetails %}
 
 {% exercice %}
-En utilisant la méthode [`replace`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.replace), changez les 2 en 7 dans le 27ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+En utilisant la méthode [`replace`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.replace), changez les 2 en 7 dans le 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
 {% endexercice %}
 {% details "solution" %}
 
@@ -436,7 +436,7 @@ La méthode `méthode_n()`{.language-} est appliquée au résultat de `objet.mé
 Que fait :
 
 ```python
-str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")
+str(2 ** 11213 - 1).replace("2","x").replace("7","2").replace("x","7")
 ```
 
 {% endexercice %}
@@ -445,23 +445,23 @@ str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")
 De part l'associativité à gauche, la commande précédente est équivalente à :
 
 ```python
-((str(2 ** 44497 - 1).replace("2","x")).replace("7","2")).replace("x","7")
+((str(2 ** 11213 - 1).replace("2","x")).replace("7","2")).replace("x","7")
 ```
 
 Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :
 
-1. `replace("x","7")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`{.language-}
-2. `replace("7","2")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x")`{.language-}
-3. `replace("2","x")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1)`{.language-}
+1. `replace("x","7")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1).replace("2","x").replace("7","2")`{.language-}
+2. `replace("7","2")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1).replace("2","x")`{.language-}
+3. `replace("2","x")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1)`{.language-}
 
 En remontant les opérations précédentes :
 
-1. le résultat de `str(2 ** 44497 - 1)`{.language-} sera une chaîne de caractère représentant le 27ème nombre premier de Mersenne
-2. `str(2 ** 44497 - 1).replace("2","x")`{.language-} on a remplacé les 2 par des "x" dans la chaîne précédente
-3. `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`{.language-} on a remplacé les 7 par des 2 de la chaîne précédente
-4. `str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")`{.language-} on a remplacé les "x" par des 2 dans la chaîne précédente
+1. le résultat de `str(2 ** 11213 - 1)`{.language-} sera une chaîne de caractère représentant le 23ème nombre premier de Mersenne
+2. `str(2 ** 11213 - 1).replace("2","x")`{.language-} on a remplacé les 2 par des "x" dans la chaîne précédente
+3. `str(2 ** 11213 - 1).replace("2","x").replace("7","2")`{.language-} on a remplacé les 7 par des 2 de la chaîne précédente
+4. `str(2 ** 11213 - 1).replace("2","x").replace("7","2").replace("x","7")`{.language-} on a remplacé les "x" par des 2 dans la chaîne précédente
 
-On a donc au final échangé les 2 et les 7 du 27ème nombre premier de Mersenne
+On a donc au final échangé les 2 et les 7 du 23ème nombre premier de Mersenne
 
 {% enddetails %}
 

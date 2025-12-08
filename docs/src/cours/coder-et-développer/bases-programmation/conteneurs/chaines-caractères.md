@@ -42,39 +42,39 @@ TypeError: 'str' object does not support item assignment
 >>>
 ```
 
-Entraînons nous un peut à manipuler les chaînes de caractères sous la forme d'un conteneur en reprenant le 27ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) sous sa forme chaîne de caractères : `m27 = str(2 ** 44497 - 1)`{.language-}.
+Entraînons nous un peut à manipuler les chaînes de caractères sous la forme d'un conteneur en reprenant le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) sous sa forme chaîne de caractères : `m23 = str(2 ** 11213 - 1)`{.language-}.
 
 {% exercice %}
-Quels sont les 10 premiers chiffres de `m27`{.language-} ?
+Quels sont les 10 premiers chiffres de `m23`{.language-} ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27)[:10]`{.language-}
+`str(m23)[:10]`{.language-}
 
 {% enddetails %}
 
 {% exercice %}
-Quels sont les 10 derniers chiffres de `m27`{.language-} ?
+Quels sont les 10 derniers chiffres de `m23`{.language-} ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27)[-10:]`{.language-}
+`str(m23)[-10:]`{.language-}
 
 {% enddetails %}
 
 {% exercice %}
-Est-ce que `m27`{.language-} est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
+Est-ce que `m23`{.language-} est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27) == str(m27)[::-1]`{.language-} (`s[::-1]`{.language-} renverse la chaîne)
+`str(m23) == str(m23)[::-1]`{.language-} (`s[::-1]`{.language-} renverse la chaîne)
 
 {% enddetails %}
 
 En revanche, il est interdit de modifier une chaîne de caractère :
 
 ```python
->>> x = "chaine"
+>>> x = "chaîne"
 >>> x[0] = "C"
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -85,13 +85,13 @@ TypeError: 'str' object does not support item assignment
 Enfin on ne le répétera jamais assez, python vient avec tout un tas de méthodes utilitaires permettant de résoudre nombre d'opérations courantes. Utilisez la documentation sur les [méthodes de chaînes](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants :
 
 {% exercice %}
-Index de la première occurrence de `1234` dans m27. Et de la deuxième ?
+Index de la première occurrence de `1234` dans m23. Et de la deuxième ?
 {% endexercice %}
 {% details "solution" %}
 
-- `str(m27).find('1234')`{.language-}
-- `str(m27).find('1234', 19260 + 1)`{.language-} : la première occurrence est à l'indice 19260, on cherche donc après.
-- on peut faire en une ligne : `str(m27).find('1234', str(m27).find('1234') + 1)`{.language-}
+- `str(m23).find('1234')`{.language-}
+- `str(m23).find('1234', 19260 + 1)`{.language-} : la première occurrence est à l'indice 19260, on cherche donc après.
+- on peut faire en une ligne : `str(m23).find('1234', str(m23).find('1234') + 1)`{.language-}
 
 {% enddetails %}
 
@@ -116,12 +116,12 @@ Les différents encoding possibles sont disponibles [dans la documentation](http
 On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) comme prétexte à la manipulation de chaînes de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz.
 
 {% exercice %}
-Notez `m27` le 27ième nombre de Mersenne $2^{44497} -1$ :
+Notez `m23` le 23ième nombre de Mersenne $2^{11213} -1$ :
 {% endexercice %}
 {% details "solution" %}
 
 ```python
-m27 = 2 ** 444497 - 1
+m23 = 2 ** 11213 - 1
 ```
 
 {% enddetails %}
@@ -131,9 +131,9 @@ Combien de chiffres en base 10, 2 et 16 possède ce nombre ?
 {% endexercice %}
 {% details "solution" %}
 
-- en base 10 : `len(str(m27))`{.language-} : conversion de l'entier en chaîne de caractères puis son nombre de chiffres
-- en base 2 : `len(bin(m27)) - 2`{.language-} : `bin` transforme un entier en sa représentation binaire. C'est une chaîne de caractères qui commence par `0b` donc on retranche 2 à la longueur.
-- en base 16 : `len(hex(m27)) - 2`{.language-} : `hex` transforme un entier en sa représentation hexadécimale. C'est une chaîne de caractères qui commence par `0x` donc on retranche 2 à la longueur.
+- en base 10 : `len(str(m23))`{.language-} : conversion de l'entier en chaîne de caractères puis son nombre de chiffres
+- en base 2 : `len(bin(m23)) - 2`{.language-} : `bin` transforme un entier en sa représentation binaire. C'est une chaîne de caractères qui commence par `0b` donc on retranche 2 à la longueur.
+- en base 16 : `len(hex(m23)) - 2`{.language-} : `hex` transforme un entier en sa représentation hexadécimale. C'est une chaîne de caractères qui commence par `0x` donc on retranche 2 à la longueur.
 
 {% enddetails %}
 
@@ -142,13 +142,13 @@ Combien de chiffres en base 10, 2 et 16 possède ce nombre ?
 Utilisez la documentation sur les [méthodes de chaînes](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants
 
 {% exercice %}
-Index de la première occurrence de `1234` dans m27. Et de la deuxième ?
+Index de la première occurrence de `1234` dans m23. Et de la deuxième ?
 {% endexercice %}
 {% details "solution" %}
 
-- `str(m27).find('1234')`{.language-}
-- `str(m27).find('1234', 19260 + 1)`{.language-} : la première occurrence est à l'indice 19260, on cherche donc après.
-- on peut faire en une ligne : `str(m27).find('1234', str(m27).find('1234') + 1)`{.language-}
+- `str(m23).find('1234')`{.language-}
+- `str(m23).find('1234', 19260 + 1)`{.language-} : la première occurrence est à l'indice 19260, on cherche donc après.
+- on peut faire en une ligne : `str(m23).find('1234', str(m23).find('1234') + 1)`{.language-}
 
 {% enddetails %}
 
@@ -159,29 +159,29 @@ Comme pour les listes, on peut [utiliser les _slices_](../listes/#slice){.intern
 Ainsi `"abcdefghijklmnopqrstuvwxyz"[2:15:4]` vaut : `'cgko'`.
 
 {% exercice %}
-Quels sont les 10 premiers chiffres de m27 ?
+Quels sont les 10 premiers chiffres de m23 ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27)[:10]`{.language-}
+`str(m23)[:10]`{.language-}
 
 {% enddetails %}
 
 {% exercice %}
-Quels sont les 10 derniers chiffres de m27 ?
+Quels sont les 10 derniers chiffres de m23 ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27)[-10:]`{.language-}
+`str(m23)[-10:]`{.language-}
 
 {% enddetails %}
 
 {% exercice %}
-Est-ce que m27 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
+Est-ce que m23 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
 {% endexercice %}
 {% details "solution" %}
 
-`str(m27) == str(m27)[::-1]`{.language-} (`s[::-1]`{.language-} renverse la chaîne)
+`str(m23) == str(m23)[::-1]`{.language-} (`s[::-1]`{.language-} renverse la chaîne)
 
 {% enddetails %}
 

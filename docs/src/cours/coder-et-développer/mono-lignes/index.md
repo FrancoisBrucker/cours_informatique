@@ -15,6 +15,18 @@ Les mono-lignes sont 100 petit exercices que l'on doit à Aristide Grange. Ils p
 {% aller %}
 [100 mono-lignes d'Aristide Grange](monolignes-questions.pdf){.interne}
 {% endaller %}
+{% attention %}
+Dans l'énoncé soit :
+
+- remplacez `m27`{.language-} par `m23`{.language-}, le 23ème nombre de Mersenne ($2^{11213}-1$)
+- soit augmentez la taille des chaînes de caractères en tapant les commandes suivante dans votre interpréteur :
+
+    ```python
+    import sys
+    sys.set_int_max_str_digits(15000)
+    ```
+
+{% endattention %}
 {% info %}
 On en a déjà vu quelques-une pendant ce cours, à vous de les retrouver.
 {% endinfo %}

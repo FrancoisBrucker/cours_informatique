@@ -51,5 +51,5 @@ Les ensembles et les dictionnaires sont tous deux des conteneurs, donc itérable
 ## Chaînes de caractères
 
 {% aller %}
-[Chaînes de caractères](chaine-caractères){.interne}
+[Chaînes de caractères](chaines-caractères){.interne}
 {% endaller %}
