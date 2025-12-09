@@ -13,17 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD à mettre lorsque l'on ssh
-
-
-## Personnalisation
-
-
-## Sur une machine de l'ecm
-
-### Connection aux sas
-
-En groupe.
+## Connection aux sas
 
 Pour vous connecter à une machine d'un réseau local, il faut souvent se connecter à un sas, le seul qui a une adresse internet réelle. Pour les étudiants de l'ecm cette machine s'appelle `sas1.ec-m.fr`. Une fois connecté sur le sas, il est possible de se connecter à toute autre machine allumé du réseau.
 
@@ -44,7 +34,7 @@ Pour vous connecter à une machine d'un réseau local, il faut souvent se connec
     1. comment est-ce possible ?
     2. comment peut-on utiliser cette technique ?
 
-### Web
+## Web
 
 Vous avez un répertoire `html`{.fichier} sur votre compte. Tout ce qui est placé dans ce répertoire est accessible via le serveur web de l'école. Vous pouvez donc l'utiliser pour créer votre site perso ou tout simplement pour mettre a disposition certains fichiers.
 

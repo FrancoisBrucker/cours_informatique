@@ -13,6 +13,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+
+> TBD permission  fichiers : <https://www.youtube.com/watch?v=q7kqrGC_sXE>
+
 {% lien %}
 <https://www.cekome.com/blog/permissions-utilisateurs-linux/>
 {% endlien %}

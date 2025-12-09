@@ -14,6 +14,14 @@ eleventyComputed:
 
 Amusons-nous avec la redirection de ports.
 
+## Passerelle
+
+```shell
+ssh -J sas1.ec-m.fr roucas100.etu.ec-m.fr
+```
+
+Pratique lorsque l'on veut modifier son site perso statique depuis chez soit en utilisant [le remote-ssh](https://learn.microsoft.com/fr-fr/azure-sphere/app-development/ssh-build-vscode?view=azure-sphere-integrated) de vscode.
+
 ## Une redirection de port
 
 ```

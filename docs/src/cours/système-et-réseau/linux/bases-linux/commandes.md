@@ -131,7 +131,7 @@ Utilisez grep pour connaître le shell de l'utilisateur `root`. Il se trouve dan
 {% endexercice %}
 {% details "solution" %}
 
-```
+```shell
 grep root /etc/passwd
 ```
 
@@ -142,14 +142,14 @@ Une des commandes ci-dessus n'est pas dans `/usr/bin`. Laquelle ?
 {% endexercice %}
 {% details "solution" %}
 
-```
+```shell
 ls /usr/bin/cd
 ls: impossible d'accéder à '/usr/bin/cd': Aucun fichier ou dossier de ce type
 ```
 
 Alors que les autres commandes fonctionnent :
 
-```
+```shell
 ls /usr/bin/cd
 ls: impossible d'accéder à '/usr/bin/cd': Aucun fichier ou dossier de ce type
 ```
@@ -220,7 +220,7 @@ Le premier va créer un fichier `toto` dans truc s'il existe ou dans le réperto
 {% exercice %}
 Que fait :
 
-```
+```shell
 ls ~/truc || mkdir ~/truc ; cd ~/truc
 ```
 
@@ -291,13 +291,13 @@ Vous verrez parfois <span>&#96;</span>commandes<span>&#96;</span>, qui est équi
 
 Par exemple :
 
-```
+```shell
 echo `expr 3 + 4`
 ```
 
 Qui est équivalent à :
 
-```
+```shell
 echo $(expr 3 + 4)
 ```
 
@@ -329,7 +329,7 @@ stdin -> process --> stdout
 
 ### Lecture de l'entrée standard
 
-```
+```shell
 wc
 ```
 
@@ -345,13 +345,13 @@ La redirection de la sortie vers l'entrée se fait via le *pipe* : `|`.
 
 Le très utilisé :
 
-```
+```shell
 cat /etc/passwd | less
 ```
 
 Ou plus compliqué :
 
-```
+```shell
 cat /etc/passwd | cut -d : -f 1 | lolcat
 ```
 
@@ -389,7 +389,7 @@ Un tee permet d'avoir 2 sorties, stdout et une sortie vers un fichier
 La redirection de la sortie vers un **nouveau** fichier se fait avec : `>`.
 {% endnote %}
 
-```
+```shell
 echo "toto" > truc
 ```
 
@@ -397,13 +397,13 @@ echo "toto" > truc
 La redirection de la sortie vers **la fin** d'un fichier existant se fait avec : `>>`.
 {% endnote %}
 
-```
+```shell
 echo "toto" >> truc
 ```
 
 ### Redirection de l'erreur
 
-```
+```shell
 ls /truc 2>&1 | lolcat
 ```
 

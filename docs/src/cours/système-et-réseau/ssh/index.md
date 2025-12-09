@@ -71,7 +71,7 @@ Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce l
 
 Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de [gestion des clés OpenSSH](https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement)). Ouvrez un fenêtre **powershell en mode administrateur** (clique droit sur le drapeau, puis choisissez _powershell (admin)_), puis tapez les commandes :
 
-```
+```powershell
 # Set the sshd service to be started automatically
 Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
 
@@ -95,7 +95,8 @@ L'agent fonctionne différemment sous windows que sous un système unix. Mais no
 
 - [ssh handshake](https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html)
 - [chiffrements utilisés](https://bash-prompt.net/guides/bash-ssh-ciphers/)
-  {% endlien %}
+
+{% endlien %}
 
 On utilise ssh pour garantir de l'authenticité et des ordinateurs sur lesquels on se connecte et des utilisateur qui s'y connecte. Il y aura ainsi essentiellement 2 jeux de clés asymétriques :
 
@@ -136,8 +137,6 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 
 On voit que la clé est de type [ED25519](https://fr.wikipedia.org/wiki/EdDSA) qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape `yes` et peut taper mon mot de passe pour me connecter.
 
-> TBD : <https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54>
-
 Si la clé de la machine change cela peut-être à cause d'une attaque de type _man in the middle_ et ssh refuse de se connecter :
 
 ```sh
@@ -158,7 +157,7 @@ Host key verification failed.
 
 ```
 
-La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : `~/.ssh/known_hosts`.
+La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : `~/.ssh/known_hosts`{.fichier}.
 
 ```
        A                   B
@@ -186,14 +185,12 @@ Comme vous allez vous servir de cette clé pour vous connecter automatiquement �
 
 Si vous suivez les comportement par défaut, vous aller créer deux fichier dans votre dossier `~/.ssh`{.fichier} :
 
-- `id_rsa` qui contient votre clé privée
-- `id_rsa.pub` qui contient votre clé publique
+- `id_ed25519` qui contient votre clé privée
+- `id_ed25519.pub` qui contient votre clé publique
 
 {% faire %}
 Regardez les droits de ces deux fichiers ainsi que du dossier `~/.ssh`.
 {% endfaire %}
-
-> TBD : [ssh et RSA](https://www.vidarholen.net/contents/blog/?p=24)
 
 ### Hash de la clé
 
@@ -223,7 +220,7 @@ ssh-add -l
 
 Vous n'aurez plus besoin de taper cette passphrase tant que l'agent sera actif. C'est à dire jusqu'au reboot de votre machine. En démarrant une nouvelle session et en affichant la liste des identités représentées par l'agent avec `ssh-add -l`, vous obtenez donc le message suivant :
 
-```
+```sh
 the agent has no identities
 ```
 
@@ -235,7 +232,7 @@ Pour que vous puissiez vous connecter à une machine via vos clés, il faut que 
 
 Connectez vous sur `roucas100.etu.ec-m.fr` et ajoutez (ou créez) une ligne au fichier `~.ssh/authorized-keys`{.fichier} contenant votre clé publique :
 
-```
+```sh
 cat id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
@@ -270,7 +267,7 @@ Pour cela, il fut pouvoir se connecter sur la machine distance en _emportant l'a
 
 Pour copier un fichier vers un serveur (et inversement), on utilise donc la commande `scp`, signifiant _Secure Copy Protocol_. Cette copie utilise le protocole SSH pour assurer l'authenticité et la confidentialité du transfert. Elle s'utilise de la même manière que `cp` :
 
-```
+```sh
 scp [option] fichier_source fichier_destination
 ```
 
@@ -278,20 +275,14 @@ Pour l'essayer, créez un index.html sur votre machine et copiez-le vers `ovh1.e
 
 Depuis votre machine (sans être déjà connecté à `ovh1.ec-m.fr`), ça donne :
 
-```
-scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
+```sh
+scp chemin/index.html mon_herbe@aioli.ec-m.fr:static/index.html
 ```
 
-Si vous allez vérifier sur `ovh1.ec-m.fr`, votre fichier a bien remplacé l'ancien index.html.
+Si vous allez vérifier sur `aioli.ec-m.fr`, votre fichier a bien remplacé l'ancien index.html.
 
 ## Exercices
 
 {% aller %}
 [exercices](exercices-connexion){.interne}
-{% endaller %}
-
-## Amusons-nous avec la redirection de ports
-
-{% aller %}
-[Redirection de ports](redirection-ports){.interne}
 {% endaller %}
