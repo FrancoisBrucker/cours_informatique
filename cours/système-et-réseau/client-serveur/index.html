@@ -136,7 +136,7 @@ TBD Faire en C :</p>
 <p>Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : <a href="https://www.redhat.com/sysadmin/getting-started-socat">socat</a> :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
-socat tcp-listen:9090,fork,reuseaddr <span class="token punctuation">\</span>
+socat tcp6-listen:9090,fork,reuseaddr <span class="token punctuation">\</span>
 <span class="token string">'system:
 
 echo "Le serveur écoute."
@@ -168,7 +168,7 @@ done
     <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token variable">$1</span>
 <span class="token keyword">fi</span>
 
-socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token punctuation">\</span>
+socat tcp6-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token punctuation">\</span>
 <span class="token string">'system:
 
 echo "Le serveur écoute."
@@ -179,7 +179,7 @@ done
 '</span>
 </code></pre>
 <h3>mono ligne</h3>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span><span class="token punctuation">;</span> socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token string">'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'</span></code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span> socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token string">'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'</span></code></pre>
 <h3>echo à tous serveur</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
@@ -195,9 +195,8 @@ socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span 
 <span class="token string">'system:
 
 PIPE=$(mktemp -u /tmp/pns_XXX)
-ME=$(echo $PIPE | sed '</span>s:/tmp/pns_::<span class="token string">')
+ME=$(printf "%s" "$PIPE" | tail -c 3)
 mkfifo $PIPE
-
 while read PIPE_MESSAGE&lt;$PIPE; do
   echo $PIPE_MESSAGE
 done &amp;
