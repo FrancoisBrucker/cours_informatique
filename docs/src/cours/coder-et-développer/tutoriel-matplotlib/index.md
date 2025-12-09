@@ -289,13 +289,13 @@ Faire une belle figure prend du temps.
 ## Exercices
 
 {% faire %}
-Modifiez le [code du premier graphique](./#code-matplotlib){.interne} pour représenter la courbe $y=x$ où $y$ varie de $0$ à $100000$ par pas de $1000$.
+Modifiez le [code du premier graphique](./#code-matplotlib){.interne} pour représenter la courbe $y=x$ où $x$ varie de $0$ à $100000$ par pas de $1000$.
 
 Il pourra être nécessaire de modifier (ou de supprimer les limites des axes partie 2.1 du graphique)
 {% endfaire %}
 
 {% faire %}
-Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $y$ varie de $0$ à $100000$ par pas de $1000$.
+Modifiez le code précédant pour représenter la courbe puis la courbe $y=ln(x)$, où $x$ varie de $0$ à $100000$ par pas de $1000$.
 {% endfaire %}
 {% info %}
 Le logarithme népérien est disponible dans le module math de python : [`math.log`{.language-}](https://docs.python.org/3/library/math.html#math.log)

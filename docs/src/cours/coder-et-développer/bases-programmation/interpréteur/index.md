@@ -28,7 +28,7 @@ Puis installez le via le store.
 
 ### Sous Linux/Ubuntu
 
-Python est installé par défaut, mais il ne contient pas le module pip permettant d'installer de nouveaux modules à python. Pour installer pip, tapez dans [un terminal](../ordinateur-développement/terminal){.interne} :
+Python est installé par défaut, mais il ne contient pas le module pip permettant d'installer de nouveaux modules à python. Pour installer pip, tapez dans [un terminal](/cours/système-et-réseau/bases-système/terminal/){.interne} :
 
 ```
 sudo apt install python3-pip
@@ -40,13 +40,13 @@ Enfin, la commande pour taper python est `python3`. Pour avoir le même comporte
 sudo apt install python-is-python3
 ```
 
-Vous pourrez uniquement taper `python` dans un terminal pour exécuter l'interpréteur python,
+Vous pourrez uniquement taper `python` dans [un terminal](/cours/système-et-réseau/bases-système/terminal/){.interne} pour exécuter l'interpréteur python,
 
 ### Sous Macos
 
 De même que sous Linux/Ubuntu, python est installé par défaut, mais il s'appelle `python3`. Mais avant de pouvoir l'utiliser il vous faudra installer les *Apple developer tools*, en particulier [xcode](https://developer.apple.com/xcode/resources/)
 
- Pour avoir le même comportement que sous windows et Linux où cette commande s'appelle juste `python`, vous pouvez taper dans [un terminal](../ordinateur-développement/terminal){.interne} :
+ Pour avoir le même comportement que sous windows et Linux où cette commande s'appelle juste `python`, vous pouvez taper dans [un terminal](/cours/système-et-réseau/bases-système/terminal/){.interne} :
 
 ```shell
 echo "alias python=python3" >> ~/.zshrc
@@ -56,7 +56,7 @@ Puis fermez et ouvrez un nouveau terminal pour les modifications soient appliqu�
 
 ## Exécuter l'interpréteur depuis un terminal
 
-Ouvrez [un terminal](../ordinateur-développement/terminal){.interne} et tapez `python` puis la touche entrée : vous êtes dans un interpréteur.
+Ouvrez [un terminal](/cours/système-et-réseau/bases-système/terminal/){.interne} et tapez `python` puis la touche entrée : vous êtes dans un interpréteur.
 
 ### Powershell
 
