@@ -43,3 +43,11 @@ Si vous avez une machine pas trop vieille (moins de 10ans), vous devriez avoir u
 {% lien %}
 <https://github.com/UbuntuAsahi/ubuntu-asahi>
 {% endlien %}
+
+## Réglage de l'horloge
+
+Une fois votre système installé, il peut être utile de régler votre horloge sur la carte mère, surtout si vous avez également windows 11 sur votre machine et que voulez que l'heure soit la même sur les deux systèmes :
+
+{% lien %}
+[horloge UTM](https://wiki.archlinux.org/title/System_time_(Français))
+{% endlien %}

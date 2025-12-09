@@ -15,13 +15,11 @@ eleventyComputed:
 
 Bases d'un système Linux.
 
-1. Lire la partie Linux du tutoriel [Ordinateur pour le développement](/cours/coder-et-développer/ordinateur-développement/){.interne}
-2. [post installation](post-installation){.interne}
-3. [hiérarchie-fichiers](fhiérarchie-fichiers){.interne}
-4. [fichiers et droits](fichiers-droits){.interne}
-5. [process](process){.interne}
-6. [commandes](./commandes){.interne}
-7. [exercices](exercices){.interne}
+1. [hiérarchie-fichiers](fhiérarchie-fichiers){.interne}
+2. [fichiers et droits](fichiers-droits){.interne}
+3. [process](process){.interne}
+4. [commandes](./commandes){.interne}
+5. [exercices](exercices){.interne}
 
 ## Bibliographie
 

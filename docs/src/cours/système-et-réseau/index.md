@@ -31,6 +31,12 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 [Principes et utilisation du réseau](bases-réseau){.interne}
 {% endaller %}
 
+## Linux
+
+{% aller %}
+[Linux](linux){.interne}
+{% endaller %}
+
 ## refactor
 
 > TBD découper en partie plus digeste
@@ -40,7 +46,7 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    1. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
    2. [Système d'exploitation](./système-exploitation){.interne}
    3. [Structures de données utiles](./structures-données-système){.interne}
-   4. [Linux](linux){.interne}
+   4. 
 2. [connexions ssh](./ssh){.interne}
 3. [Bases de réseau](réseau){.interne}
 4. [clients serveurs](./client-serveur){.interne}

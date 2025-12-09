@@ -26,10 +26,8 @@ Le terminal permet d'exécuter rapidement des commandes.
 [Terminal](terminal){.interne}
 {% endaller %}
 
-
 ## Installation d'un nouveau système
 
 {% aller %}
 [Nouvelle installation d'un système](système-installation){.interne}
 {% endaller %}
-

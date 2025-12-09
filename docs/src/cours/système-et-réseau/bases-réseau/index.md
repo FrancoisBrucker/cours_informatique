@@ -23,7 +23,13 @@ eleventyComputed:
 [Anatomie d'une URL](./anatomie-url/){.interne}
 {% endaller %}
 
-## Serveur web local
+## Serveur web 
+
+### Schema général
+
+> TBD dessin de Naïs.
+
+### local
 
 > TBD <https://realpython.com/python-http-server/>
 > TBD tout ce qu'on a vu fonctionne sur la même machine. localhost

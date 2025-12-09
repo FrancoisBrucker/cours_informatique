@@ -16,6 +16,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD ici intro de Naïs
 
 <!-- 
 
@@ -40,8 +41,20 @@ Histoire d'Unix :
 
 Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions aux variantes et aux extensions à POSIX qui sont système dépendant)
 
-1. [installation Linux](installation-linux){.interne}
-2. [base Linux](bases-linux){.interne}
-3. [système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
-4. [shell](shell){.interne}
-5. [fichiers unix](fichiers){.interne}
+## Installation d'un système Linux
+
+Plusieurs installations possibles, allant d'une surcouche minimale à l'installation complète du système.
+
+{% aller %}
+
+1. [Installation Linux](installation-linux){.interne}
+2. [Paquets utiles à installer](post-installation){.interne}
+
+{% endaller %}
+
+## Système Linux
+
+1. [Base Linux](bases-linux){.interne}
+2. [Système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
+3. [Shell](shell){.interne}
+4. [Fichiers unix](fichiers){.interne}

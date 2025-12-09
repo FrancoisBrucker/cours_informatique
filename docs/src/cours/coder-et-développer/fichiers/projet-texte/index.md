@@ -30,11 +30,11 @@ De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule 
 
 [Ce repo github](https://github.com/hbenbel/French-Dictionary/tree/master/dictionary) contient plusieurs fichiers csv contenant des mots français.
 
-{% exercice %}
+{% faire %}
 
 1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv> (cliquez droit sur le lien puis téléchargez le sur votre ordinateur)
 2. sauvez le dans le dossier de votre projet (`fichiers-donnees`{.fichier}) sous le nom `mots.txt`{.fichier}
-   {% endexercice %}
+   {% endfaire %}
 
 Le fichier contient une liste de mots, un mot par ligne.
 
