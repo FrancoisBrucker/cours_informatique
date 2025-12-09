@@ -154,12 +154,11 @@ Could not <span class="token function">open</span> a connection to your authenti
 </div></div>
 
 <p>Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">gestion des clés OpenSSH</a>). Ouvrez un fenêtre <strong>powershell en mode administrateur</strong> (clique droit sur le drapeau, puis choisissez <em>powershell (admin)</em>), puis tapez les commandes :</p>
-<pre><code># Set the sshd service to be started automatically
-Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
+<pre class="language-powershell" tabindex="0" data-language="powershell"><code class="language-powershell"><span class="token comment"># Set the sshd service to be started automatically</span>
+<span class="token function">Get-Service</span> <span class="token operator">-</span>Name ssh-agent <span class="token punctuation">|</span> <span class="token function">Set-Service</span> <span class="token operator">-</span>StartupType Automatic
 
-# Now start the sshd service
-Start-Service ssh-agent
-</code></pre>
+<span class="token comment"># Now start the sshd service</span>
+<span class="token function">Start-Service</span> ssh-agent</code></pre>
 <p>L'agent fonctionne différemment sous windows que sous un système unix. Mais normalement, il devrait être reconnu, en particulier par git.</p>
 <h2>ssh, c’est quoi ?</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -220,9 +219,6 @@ ED25519 key fingerprint is SHA256:Jf65ebUXhQ1w6+zcCnL8R9cvBMEI8yDvcR+GxtvSHZg.
 This key is not known by any other names.
 Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>?</code></pre>
 <p>On voit que la clé est de type <a href="https://fr.wikipedia.org/wiki/EdDSA">ED25519</a> qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape <code>yes</code> et peut taper mon mot de passe pour me connecter.</p>
-<blockquote>
-<p>TBD : <a href="https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54">https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54</a></p>
-</blockquote>
 <p>Si la clé de la machine change cela peut-être à cause d'une attaque de type <em>man in the middle</em> et ssh refuse de se connecter :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -239,7 +235,7 @@ Offending ECDSA key <span class="token keyword">in</span> /users/home3/fbrucker/
 Host key <span class="token keyword">for</span> roucas100.etu.ec-m.fr has changed and you have requested strict checking.
 Host key verification failed.
 </code></pre>
-<p>La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : <code>~/.ssh/known_hosts</code>.</p>
+<p>La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : <code class="fichier">~/.ssh/known_hosts</code>.</p>
 <pre><code>       A                   B
      -----               -----
      |   |               |   |
@@ -262,8 +258,8 @@ clé de machine
 
 <p>Si vous suivez les comportement par défaut, vous aller créer deux fichier dans votre dossier <code class="fichier">~/.ssh</code> :</p>
 <ul>
-<li><code>id_rsa</code> qui contient votre clé privée</li>
-<li><code>id_rsa.pub</code> qui contient votre clé publique</li>
+<li><code>id_ed25519</code> qui contient votre clé privée</li>
+<li><code>id_ed25519.pub</code> qui contient votre clé publique</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -274,9 +270,6 @@ clé de machine
 <p>Regardez les droits de ces deux fichiers ainsi que du dossier <code>~/.ssh</code>.</p>
 </div></div>
 
-<blockquote>
-<p>TBD : <a href="https://www.vidarholen.net/contents/blog/?p=24">ssh et RSA</a></p>
-</blockquote>
 <h3>Hash de la clé</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -294,14 +287,12 @@ clé de machine
 <p>L'agent vous demandera de taper votre passphrase pour déchiffrer votre clé, puis l'ajoutera à son trousseau. Et voilà. Votre clé est chargée. vérifiez le en tapant :</p>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-add <span class="token parameter variable">-l</span></code></pre>
 <p>Vous n'aurez plus besoin de taper cette passphrase tant que l'agent sera actif. C'est à dire jusqu'au reboot de votre machine. En démarrant une nouvelle session et en affichant la liste des identités représentées par l'agent avec <code>ssh-add -l</code>, vous obtenez donc le message suivant :</p>
-<pre><code>the agent has no identities
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">the agent has no identities</code></pre>
 <p>Il faut donc récupérer votre clé ssh là où vous l'avez laissée. Rien de nouveau ici, c'est simplement une routine à prendre.</p>
 <h3>Connexion avec agent</h3>
 <p>Pour que vous puissiez vous connecter à une machine via vos clés, il faut que votre clé publique soit disponible sur la machine distante, dans le fichier <code class="fichier">~.ssh/authorized-keys</code>. Chaque ligne de ce fichier contient une clé publique qui est autorisée à se connecter.</p>
 <p>Connectez vous sur <code>roucas100.etu.ec-m.fr</code> et ajoutez (ou créez) une ligne au fichier <code class="fichier">~.ssh/authorized-keys</code> contenant votre clé publique :</p>
-<pre><code>cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">cat</span> id_rsa.pub <span class="token operator">>></span> ~/.ssh/authorized_keys</code></pre>
 <p>Vous pouvez ensuite vous déconnecter, puis vous reconnecter sans avoir besoin de taper un mot de passe.</p>
 <pre><code>       A                   B
      -----               -----
@@ -331,13 +322,11 @@ clé de machine      clé d'utilisateur
 </ol>
 <h2>Copie de fichiers</h2>
 <p>Pour copier un fichier vers un serveur (et inversement), on utilise donc la commande <code>scp</code>, signifiant <em>Secure Copy Protocol</em>. Cette copie utilise le protocole SSH pour assurer l'authenticité et la confidentialité du transfert. Elle s'utilise de la même manière que <code>cp</code> :</p>
-<pre><code>scp [option] fichier_source fichier_destination
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">scp</span> <span class="token punctuation">[</span>option<span class="token punctuation">]</span> fichier_source fichier_destination</code></pre>
 <p>Pour l'essayer, créez un index.html sur votre machine et copiez-le vers <code>ovh1.ec-m.fr</code> dans le dossier www/.</p>
 <p>Depuis votre machine (sans être déjà connecté à <code>ovh1.ec-m.fr</code>), ça donne :</p>
-<pre><code>scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
-</code></pre>
-<p>Si vous allez vérifier sur <code>ovh1.ec-m.fr</code>, votre fichier a bien remplacé l'ancien index.html.</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">scp</span> chemin/index.html mon_herbe@aioli.ec-m.fr:static/index.html</code></pre>
+<p>Si vous allez vérifier sur <code>aioli.ec-m.fr</code>, votre fichier a bien remplacé l'ancien index.html.</p>
 <h2>Exercices</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -345,15 +334,6 @@ clé de machine      clé d'utilisateur
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="exercices-connexion" class="interne">exercices</a></p>
-</div></div>
-
-<h2>Amusons-nous avec la redirection de ports</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="redirection-ports" class="interne">Redirection de ports</a></p>
 </div></div>
 
 

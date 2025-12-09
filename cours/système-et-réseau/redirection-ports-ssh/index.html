@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/ssh/">ssh</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/ssh/redirection-ports/">Redirection de ports</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/redirection-ports-ssh/">Redirection de ports</a>
 
 </div></div>
 
@@ -100,6 +100,9 @@
 <p>TBD faire grossir et expliquer mieux</p>
 </blockquote>
 <p>Amusons-nous avec la redirection de ports.</p>
+<h2>Passerelle</h2>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ssh</span> <span class="token parameter variable">-J</span> sas1.ec-m.fr roucas100.etu.ec-m.fr</code></pre>
+<p>Pratique lorsque l'on veut modifier son site perso statique depuis chez soit en utilisant <a href="https://learn.microsoft.com/fr-fr/azure-sphere/app-development/ssh-build-vscode?view=azure-sphere-integrated">le remote-ssh</a> de vscode.</p>
 <h2>Une redirection de port</h2>
 <pre><code>              22               22
 so-high ---------  sas1  --------- roucas100.etu

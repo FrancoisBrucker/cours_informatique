@@ -96,12 +96,56 @@
     
   
 
-  <p>Bases d'un système Linux.</p>
+  <p>Linux à proprement parler ne concerne que <a href="https://fr.wikipedia.org/wiki/Noyau_Linux">le noyau</a>, dont le rôle est la gestion du matériel et la bonne entente entre processus. C'est pourquoi on parle souvent de <strong><em>Distribution Linux</em></strong> qui contient :</p>
+<ul>
+<li>le noyau Linux</li>
+<li>logiciels</li>
+<li>des outils de configurations</li>
+</ul>
+<p>Par exemple les distributions GNU/Linux où <a href="https://www.gnu.org/">GNU</a> fournit tous les outils et logiciels utilisées par le noyau Linux pour créer un système d'exploitation complet. Il existe de nombreuses distributions Linux, elles se distinguent par leur gestion des logiciels à installer via un <a href="https://fr.wikipedia.org/wiki/Gestionnaire_de_paquets">gestionnaire de paquets</a> qui gère les dépendances (nombreuses) entre les différents paquets :</p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Advanced_Packaging_Tool">apt</a> et paquets d'extension <code class="fichier">.deb</code> pour <a href="https://www.debian.org/index.fr.html">la distribution Debian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/RPM_Package_Manager">rpm</a> et paquets d'extension <code class="fichier">.rpm</code> pour <a href="https://www.redhat.com/fr">la distribution Redhat</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Pacman_(Arch_Linux)">pacman</a> pour <a href="https://archlinux.org/">la distribution Arch</a></li>
+</ul>
+<p>De ces trois distributions majeures et générales vont découler nombres d'autres plus spécialisées utilisant le même gestionnaire de paquets. Par exemple :</p>
+<ul>
+<li><a href="https://www.ubuntu-fr.org/">Ubuntu</a> pour Debian</li>
+<li><a href="https://www.fedoraproject.org/fr/">Fedora</a> pour Redhat</li>
+<li><a href="https://manjaro.org/">Manjaro</a> pour Arch</li>
+</ul>
+<p>Pour connaître sa distribution :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">uname</span> <span class="token parameter variable">-a</span>
+Darwin so-high.local <span class="token number">25.1</span>.0 Darwin Kernel Version <span class="token number">25.1</span>.0: Mon Oct <span class="token number">20</span> <span class="token number">19</span>:26:04 PDT <span class="token number">2025</span><span class="token punctuation">;</span> root:xnu-12377.41.6~2/RELEASE_ARM64_T8122 arm64
+</code></pre>
+<p>La plupart des distributions Linux suivent une règle : KISS (Keep It Simple, Stupid). Chaque commande fait une seule chose simple comme lister des fichiers ou compter le nombre de lignes. La complexité et l’intelligence ne viennent pas des commandes : c’est la combinaison de ces commandes bêtes qui fait quelque chose d’intelligent.</p>
+<p>Autre chose à noter : il faut que le terminal devienne notre meilleur ami ! C’est l’outil principal qu’on utilise en permanence. Il faut se familiariser avec et apprendre à naviguer avec.</p>
+<h2>Système de Fichier</h2>
+<h3>Arborescence système Linux</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="fhi%C3%A9rarchie-fichiers" class="interne">hiérarchie-fichiers</a></p>
+</div></div>
+
+<h3>Droits</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="fichiers-droits" class="interne">fichiers et droits</a></p>
+</div></div>
+
+<h2>TBD : refactor</h2>
+<blockquote>
+<p>TBD Dans ce qui suit des choses simples qui peuvent rester dans bases et des choses bien plus compliquées qui doivent passer dans shell par exemple</p>
+</blockquote>
 <ol>
-<li><a href="fhi%C3%A9rarchie-fichiers" class="interne">hiérarchie-fichiers</a></li>
-<li><a href="fichiers-droits" class="interne">fichiers et droits</a></li>
-<li><a href="process" class="interne">process</a></li>
 <li><a href="commandes" class="interne">commandes</a></li>
+<li><a href="process" class="interne">process</a></li>
 <li><a href="exercices" class="interne">exercices</a></li>
 </ol>
 <h2>Bibliographie</h2>

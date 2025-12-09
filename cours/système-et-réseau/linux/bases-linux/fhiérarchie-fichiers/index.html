@@ -104,22 +104,134 @@
 <p><a href="https://man.archlinux.org/man/file-hierarchy.7">https://man.archlinux.org/man/file-hierarchy.7</a></p>
 </div></div>
 
-<pre><code>cd /
-ls -la
+<h2>Fichiers système</h2>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@roucas100:~$ tree <span class="token parameter variable">-d</span> <span class="token parameter variable">-L</span> <span class="token number">1</span> /
+/
+├── bin -<span class="token operator">></span> usr/bin
+├── boot
+├── dev
+├── donnees
+├── etc
+├── home
+├── lib -<span class="token operator">></span> usr/lib
+├── lib32 -<span class="token operator">></span> usr/lib32
+├── lib64 -<span class="token operator">></span> usr/lib64
+├── libx32 -<span class="token operator">></span> usr/libx32
+├── lost+found
+├── media
+├── mnt
+├── net
+├── opt
+├── proc
+├── root
+├── run
+├── sbin -<span class="token operator">></span> usr/sbin
+├── srv
+├── sys
+├── tmp
+├── <span class="token function">users</span>
+├── usr
+└── var
+
+<span class="token number">26</span> directories</code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>Sur un mac</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les différents types de Linux, voir même différentes distributions vont avoir une architecture différentes. Cependant, les grands découpages restent identiques. Par exemple sur un mac :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ tree <span class="token parameter variable">-d</span> <span class="token parameter variable">-L</span> <span class="token number">1</span> /
+/
+├── Applications
+├── bin
+├── cores
+├── dev
+├── etc -<span class="token operator">></span> private/etc
+├── home -<span class="token operator">></span> /System/Volumes/Data/home
+├── Library
+├── opt
+├── private
+├── sbin
+├── System
+├── tmp -<span class="token operator">></span> private/tmp
+├── Users
+├── usr
+├── var -<span class="token operator">></span> private/var
+└── Volumes
+
+<span class="token number">17</span> directories
 </code></pre>
+</div>
+</details>     
+</div>
+<p>À quoi servent ces dossiers :</p>
 <ul>
-<li>config <code>/etc</code></li>
-<li>exécutables <code>/usr/bin</code></li>
-<li>bibliothèque <code>/usr/lib</code></li>
+<li><code class="fichier">/</code> : racine de tout</li>
+<li><code class="fichier">/bin</code>  : programmes essentiels</li>
+<li><code class="fichier">/sbin</code> : programmes système</li>
+<li><code class="fichier">/etc</code>  : fichiers de configuration</li>
+<li><code class="fichier">/home</code> : répertoires utilisateurs</li>
+<li><code class="fichier">/root</code> : home de l'utilisateur root (administrateur)</li>
+<li><code class="fichier">/usr</code> : programmes utilisateur
+<ul>
+<li><code class="fichier">/usr/bin</code> : programmes utiles aux utilisateurs</li>
+<li><code class="fichier">/usr/sbin</code> : programmes utiles à root</li>
+</ul>
+</li>
+<li><code class="fichier">/tmp</code> : fichiers temporaires</li>
+<li><code class="fichier">/var</code> : fichiers variables (logs, cache…)</li>
+<li><code class="fichier">/dev</code> : périphériques</li>
+<li><code class="fichier">/proc</code> : processus du système</li>
+<li><code class="fichier">/media</code>, <code class="fichier">/mnt</code> : supports amovibles</li>
+<li><code class="fichier">/lib</code> : bibliothèques partagées</li>
+</ul>
+<p>Dans un système de type Unix, (pratiquement) tout est fichier :</p>
+<ul>
+<li>les dossiers sont des fichiers particuliers</li>
+<li>les commandes sont des fichiers exécutables</li>
+<li>les configurations sont des fichiers textes</li>
+<li>l’accès au matériel et au noyau se fait via des fichiers (ex <code class="fichier">/proc</code>, <code class="fichier">/dev</code>).</li>
+</ul>
+<h2>Fichiers utilisateurs</h2>
+<ul>
 <li>maison :
 <ul>
 <li>ses fichiers</li>
-<li>les fichiers de configuration de ses applications</li>
+<li>les fichiers de configuration de ses applications les dotfiles</li>
+<li>des programmes utiles à lui</li>
 </ul>
 </li>
 <li>root <code>/root</code> et <code>etc/shadow</code></li>
 <li><code>/opt</code> remplace petit à petit <code>/usr/local</code>. op test un fourre tout avec un dossier par app. usr/local est hiérarchisé /bin. lib, etc. C'est un système local</li>
 </ul>
+<p>Sur un Linux :</p>
+<h2>Fichiers spéciaux</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://mtodorovic.developpez.com/linux/programmation-avancee/?page=page_7">https://mtodorovic.developpez.com/linux/programmation-avancee/?page=page_7</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD <code class="fichier">/proc</code>, <code class="fichier">/dev</code></p>
+</blockquote>
+<p><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-proc-uptime">Le fichier <code class="fichier">/proc/uptime</code></a> contient par exemple le temps écoulé, en secondes, depuis son boot et le temps total de ses différents cœur passés à ne rien faire (s'il y a plus d'un cœur ce temps peut excéder le temps depuis le boot) :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@roucas100:/proc$ <span class="token function">cat</span> /proc/uptime
+<span class="token number">26179.16</span> <span class="token number">522449.82</span></code></pre>
 
 
 </article>
