@@ -54,7 +54,7 @@ Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, 
 ```sh
 #! /bin/sh
 
-socat tcp-listen:9090,fork,reuseaddr \
+socat tcp6-listen:9090,fork,reuseaddr \
 'system:
 
 echo "Le serveur écoute."
@@ -86,7 +86,7 @@ else
     PORT=$1
 fi
 
-socat tcp-listen:$PORT,fork,reuseaddr \
+socat tcp6-listen:$PORT,fork,reuseaddr \
 'system:
 
 echo "Le serveur écoute."
@@ -101,7 +101,7 @@ done
 ### mono ligne
 
 ```sh
-PORT=9090; socat tcp-listen:$PORT,fork,reuseaddr 'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'
+PORT=9090 socat tcp-listen:$PORT,fork,reuseaddr 'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'
 ```
 
 ### echo à tous serveur
@@ -121,9 +121,8 @@ socat tcp-listen:$PORT,fork,reuseaddr \
 'system:
 
 PIPE=$(mktemp -u /tmp/pns_XXX)
-ME=$(echo $PIPE | sed 's:/tmp/pns_::')
+ME=$(printf "%s" "$PIPE" | tail -c 3)
 mkfifo $PIPE
-
 while read PIPE_MESSAGE<$PIPE; do
   echo $PIPE_MESSAGE
 done &
