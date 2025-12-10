@@ -35,9 +35,11 @@ Basé sur 3 journée de 6h et (environ) 6h de travail personnel pour un total de
 
 ### Matin
 
-<!-- TBD
+<!-- > TBD 
 
-faire les exercices du cours avec eux. -->
+les faire installer le tout sur leur ordi au milieu de la matinée. 
+faire les exercices du cours avec eux.
+-->
 
 {% aller "**Cours**" %}
 [Bases du développement](/cours/coder-et-développer/bases-programmation/){.interne}

@@ -66,6 +66,8 @@ done
 
 ```
 
+> TBD faire un rot13 : `tr 'A-Za-z' 'N-ZA-Mn-za-m'`
+
 ## outil de connexion
 
 {% lien %}
