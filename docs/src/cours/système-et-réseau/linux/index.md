@@ -70,7 +70,9 @@ Plusieurs installations possibles, allant d'une surcouche minimale à l'installa
 
 ### Bases
 
+{% aller %}
 [Base Linux](bases-linux){.interne}
+{% endaller %}
 
 ### Shell
 
