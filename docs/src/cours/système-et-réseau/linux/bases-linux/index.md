@@ -47,20 +47,32 @@ Autre chose à noter : il faut que le terminal devienne notre meilleur ami ! C�
 
 ### Arborescence système Linux
 
-{% lien %}
+{% aller %}
 [hiérarchie-fichiers](fhiérarchie-fichiers){.interne}
-{% endlien %}
+{% endaller %}
 
 ### Droits
 
-{% lien %}
+{% aller %}
 [fichiers et droits](fichiers-droits){.interne}
-{% endlien %}
+{% endaller %}
+
+## shell
+
+### commandes
+
+> TBD `sh ; echo "coucou"`
+
+### redirections
+
+### variables
+
+### configuration
+
 
 ## TBD : refactor
 
 > TBD Dans ce qui suit des choses simples qui peuvent rester dans bases et des choses bien plus compliquées qui doivent passer dans shell par exemple
-
 
 1. [commandes](./commandes){.interne}
 2. [process](process){.interne}

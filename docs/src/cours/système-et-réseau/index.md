@@ -47,6 +47,8 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 
 > TBD découper en partie plus digeste
 > TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>
+> TBD opérateurs shell <https://quennec.fr/book/export/html/272>
+> TBD fibo en sh : <https://quennec.fr/node/640>
 
 1. Système
    1. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}

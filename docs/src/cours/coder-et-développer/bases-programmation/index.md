@@ -73,6 +73,12 @@ Ce fonctionnement est déroutant...
 
 Si vous voulez faire du développement sérieusement, je vous conseille d'utiliser plutôt la combinaison éditeur + interpréteur ci-dessous.
 
+<!-- TBD
+
+Montrer que le run file est étrange avec une fonction.
+Déf dans le fichier puis exécution dans l'interpréteur.
+Il faudra refaire le même exemple avec vscode et montrer que ça ne marche pas. On a un terminal pas un interpréteur. Il faut tout faire dans le fichier -->
+
 ### <span id="installation-développement"></span>Installer et utiliser un interpréteur python
 
 Jusqu'à présent on a utilisé des interpréteurs externes pour exécuter notre code. Si l'on cherche à créer ses propres programmes, il est préférable d'avoir un interpréteur sur propre ordinateur. Ceci sera plus rapide et permettra à terme d'être paramétrable à l'envie.

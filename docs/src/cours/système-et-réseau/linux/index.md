@@ -80,3 +80,18 @@ Plusieurs installations possibles, allant d'une surcouche minimale à l'installa
 
 1. [Système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
 2. [Fichiers unix](fichiers){.interne}
+
+> TBD file descriptor redirection `>&1` : <https://unix.stackexchange.com/questions/84620/what-does-sh-a-sh-0-0-mean>
+> 
+> TBD <https://unix.stackexchange.com/questions/53641/how-to-make-bidirectional-pipe-between-two-programs>
+
+> TBD signaux : <https://pauillac.inria.fr/~remy/poly/system/camlunix/sign.html>
+> TBD cours unix/caml : <https://pauillac.inria.fr/~remy/poly/system/camlunix/cours.pdf>
+>   p14 liens dur/symbolique et joli arborescence
+>   p17 droits
+>   p51 signaux
+>   communication :
+>     p61 pipe
+>     p77 sockets 
+>     p93 http (faire un protocole ROT13 avec socat)
+>   p101 thread (est-ce qu'une goroutine est un thread ?)
