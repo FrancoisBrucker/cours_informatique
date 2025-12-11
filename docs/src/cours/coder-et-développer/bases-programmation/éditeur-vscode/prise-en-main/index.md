@@ -207,10 +207,12 @@ On peut ensuite régler ce paramètre :
 
 {% faire %}
 
-1. Choisissez *afterDelay* dans le menu déroulant du paramètre *Auto Save*.
-2. Puis changez le délai dans le champ *Auto Save Delay* (juste en-dessous du paramètre *Auto Save*) à 5000.
+Choisissez *afterDelay* dans le menu déroulant du paramètre *Auto Save*.
 
 {% endfaire %}
+{% info %}
+Par défaut la sauvegarde se fait après  1000 millisecondes. Si vous  voulez changer ce temps, vous pouvez renseigner le champ *Auto Save Delay*.
+{% endinfo %}
 
 Vous venez de faire en sorte que le fichier ce qui fait qu'après 5 secondes de repos mon fichier est sauvé automatiquement.
 
