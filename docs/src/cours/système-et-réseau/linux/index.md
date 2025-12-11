@@ -13,7 +13,7 @@ eleventyComputed:
 {% info %}
 Merci à :
 
-- Naïs et Florian pour la prise de notes du premier cours
+- Naïs et Florian pour [la prise de notes du premier cours](https://docs.google.com/document/d/1kUSi4F8JdOgSZs_eNxCWOhEjxX-D8YjmCUm_bdmrolM/edit?tab=t.0)
 
 {% endinfo %}
 
@@ -84,6 +84,7 @@ Plusieurs installations possibles, allant d'une surcouche minimale à l'installa
 
 1. [Système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
 2. [Fichiers unix](fichiers){.interne}
+3. [tmux](tmux){.interne}
 
 > TBD file descriptor redirection `>&1` : <https://unix.stackexchange.com/questions/84620/what-does-sh-a-sh-0-0-mean>
 > 
