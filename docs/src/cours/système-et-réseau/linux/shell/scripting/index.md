@@ -3,9 +3,6 @@ layout: layout/post.njk
 
 title: Scripting
 
-eleventyNavigation:
-    order: 1
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -14,6 +11,8 @@ eleventyComputed:
 ---
 
 
+> TBD [getopts](getopts){.interne}.
+> 
 {% lien %}
 
 - <https://github.com/dylanaraps/pure-sh-bible>
@@ -119,7 +118,6 @@ Une autre alternative courante est d'utiliser des commandes permettant de traite
 ## Bibliographie
 
 - [classic shell scripting](https://doc.lagout.org/operating%20system%20/linux/Classic%20Shell%20Scripting.pdf)
-
 
 {% exercice %}
 Créez un fichier nommé `bonjour`{.fichier} contenant :

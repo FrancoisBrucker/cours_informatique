@@ -45,6 +45,7 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 
 ## refactor
 
+> TBD <https://tuteurs.ens.fr/unix/> et shell variables <https://tuteurs.ens.fr/unix/shell/variable.html>
 > TBD découper en partie plus digeste
 > TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>
 > TBD opérateurs shell <https://quennec.fr/book/export/html/272>

@@ -80,6 +80,8 @@ Plusieurs installations possibles, allant d'une surcouche minimale à l'installa
 
 ## TBD refactor
 
+> TBD [shell script et paramètres (getopts)](https://www.youtube.com/watch?v=5O4SLIDSMqg)
+
 1. [Système d'exploitation Linux/Ubuntu](./système-exploitation-linux){.interne}
 2. [Fichiers unix](fichiers){.interne}
 

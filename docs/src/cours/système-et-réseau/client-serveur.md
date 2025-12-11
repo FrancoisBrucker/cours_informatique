@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> Une seule connexion possible. Ensuite, disparait.
+> Une seule connexion possible. Ensuite, disparaît.
 >
 
 > TBD Faire en shell avec nc
@@ -38,13 +38,25 @@ la commande [`nc`](https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serve
 Serveur :
 
 ```
-nc -l -p 9090 127.0.0.1
+nc -l -p 9090 localhost
+```
+
+Sous mac (seulement ?):
+
+```
+nc -l localhost 9090
+```
+
+Toujours une connexion, mais reste actif après la fermeture :
+
+```
+echo "coucou" | nc -k -l localhost 9090
 ```
 
 Client (dans un autre terminal) :
 
 ```
-nc 127.0.0.1 9090
+nc localhost 9090
 ```
 
 Les stdin/out sont liés.
@@ -100,11 +112,38 @@ done
 
 ```
 
+Ou en utilisant des substitutions :
+
+```sh
+#! /bin/sh
+
+PORT=${1:-9090}
+
+socat tcp6-listen:$PORT,fork,reuseaddr \
+'system:
+
+echo "Le serveur écoute."
+
+while read CLIENT_MESSAGE; do
+  echo "le serveur répond : $CLIENT_MESSAGE"
+done
+'
+
+```
+
 ### mono ligne
 
 ```sh
-PORT=9090 socat tcp-listen:$PORT,fork,reuseaddr 'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'
+socat tcp6-listen:9090,fork,reuseaddr 'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'
 ```
+
+Ou encore :
+
+```sh
+PORT=9090 sh -c "socat tcp6-listen:$PORT,fork,reuseaddr 'system: while read CLIENT_MESSAGE; do echo \"le serveur répond : $CLIENT_MESSAGE\"; done'"
+```
+
+Notez que le sh est obligatoire car la variable est placé dans le process exécutant `socat` par pour les options qui est encore dans le shell courant.
 
 ### echo à tous serveur
 

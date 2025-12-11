@@ -3,9 +3,6 @@ layout: layout/post.njk
 
 title: Shell scripting
 
-eleventyNavigation:
-    order: 1
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -13,6 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD args et getopts :
+> - <https://www.youtube.com/watch?v=fJSUVGlQ1E8>
+> - <https://www.youtube.com/watch?v=5O4SLIDSMqg>
+> - <https://www.quennec.fr/book/export/html/341>
 
 > sh cheat sheet : <joedog.org/articles-cheat-sheet/>
 > <https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash>
