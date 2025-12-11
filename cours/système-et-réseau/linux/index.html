@@ -186,6 +186,19 @@
 <li><a href="fichiers" class="interne">Fichiers unix</a></li>
 <li><a href="tmux" class="interne">tmux</a></li>
 </ol>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">socat <span class="token punctuation">\</span>
+    <span class="token parameter variable">-v</span> <span class="token parameter variable">-d</span> <span class="token parameter variable">-d</span> <span class="token punctuation">\</span>
+    TCP6-LISTEN:<span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span>,crlf,reuseaddr,fork <span class="token punctuation">\</span>
+    SYSTEM:<span class="token string">"
+        echo HTTP/1.1 200 OK; 
+        echo Content-Type\: text/plain; 
+        echo; 
+        echo Coucou du serveur;
+        date
+    "</span></code></pre>
+<blockquote>
+<p>TBD <a href="https://gist.github.com/ascopes/8c86413a3976975e7e958be5f49db2f2">gros serveur</a></p>
+</blockquote>
 <blockquote>
 <p>TBD file descriptor redirection <code>&gt;&amp;1</code> : <a href="https://unix.stackexchange.com/questions/84620/what-does-sh-a-sh-0-0-mean">https://unix.stackexchange.com/questions/84620/what-does-sh-a-sh-0-0-mean</a></p>
 <p>TBD <a href="https://unix.stackexchange.com/questions/53641/how-to-make-bidirectional-pipe-between-two-programs">https://unix.stackexchange.com/questions/53641/how-to-make-bidirectional-pipe-between-two-programs</a></p>
