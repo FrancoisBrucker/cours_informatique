@@ -97,7 +97,7 @@
   
 
   <blockquote>
-<p>Une seule connexion possible. Ensuite, disparait.</p>
+<p>Une seule connexion possible. Ensuite, disparaît.</p>
 </blockquote>
 <blockquote>
 <p>TBD Faire en shell avec nc
@@ -127,10 +127,16 @@ TBD Faire en C :</p>
 <h3>socket Client / serveur</h3>
 <p>la commande <a href="https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash"><code>nc</code></a> permet d'établir une connexion TCP à un serveur ou de créer un serveur.</p>
 <p>Serveur :</p>
-<pre><code>nc -l -p 9090 127.0.0.1
+<pre><code>nc -l -p 9090 localhost
+</code></pre>
+<p>Sous mac (seulement ?):</p>
+<pre><code>nc -l localhost 9090
+</code></pre>
+<p>Toujours une connexion, mais reste actif après la fermeture :</p>
+<pre><code>echo &quot;coucou&quot; | nc -k -l localhost 9090
 </code></pre>
 <p>Client (dans un autre terminal) :</p>
-<pre><code>nc 127.0.0.1 9090
+<pre><code>nc localhost 9090
 </code></pre>
 <p>Les stdin/out sont liés.</p>
 <p>Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : <a href="https://www.redhat.com/sysadmin/getting-started-socat">socat</a> :</p>
@@ -181,8 +187,26 @@ while read CLIENT_MESSAGE; do
 done
 '</span>
 </code></pre>
+<p>Ou en utilisant des substitutions :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+
+<span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token variable">${1<span class="token operator">:-</span>9090}</span>
+
+socat tcp6-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token punctuation">\</span>
+<span class="token string">'system:
+
+echo "Le serveur écoute."
+
+while read CLIENT_MESSAGE; do
+  echo "le serveur répond : $CLIENT_MESSAGE"
+done
+'</span>
+</code></pre>
 <h3>mono ligne</h3>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span> socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token string">'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'</span></code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">socat tcp6-listen:9090,fork,reuseaddr <span class="token string">'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'</span></code></pre>
+<p>Ou encore :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span> <span class="token function">sh</span> <span class="token parameter variable">-c</span> <span class="token string">"socat tcp6-listen:<span class="token variable">$PORT</span>,fork,reuseaddr 'system: while read CLIENT_MESSAGE; do echo <span class="token entity" title="\&quot;">\"</span>le serveur répond : <span class="token variable">$CLIENT_MESSAGE</span><span class="token entity" title="\&quot;">\"</span>; done'"</span></code></pre>
+<p>Notez que le sh est obligatoire car la variable est placé dans le process exécutant <code>socat</code> par pour les options qui est encore dans le shell courant.</p>
 <h3>echo à tous serveur</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
