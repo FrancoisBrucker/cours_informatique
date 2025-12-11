@@ -86,6 +86,21 @@ Plusieurs installations possibles, allant d'une surcouche minimale à l'installa
 2. [Fichiers unix](fichiers){.interne}
 3. [tmux](tmux){.interne}
 
+```shell
+socat \
+    -v -d -d \
+    TCP6-LISTEN:$(id -u),crlf,reuseaddr,fork \
+    SYSTEM:"
+        echo HTTP/1.1 200 OK; 
+        echo Content-Type\: text/plain; 
+        echo; 
+        echo Coucou du serveur;
+        date
+    "
+```
+
+> TBD [gros serveur](https://gist.github.com/ascopes/8c86413a3976975e7e958be5f49db2f2)
+
 > TBD file descriptor redirection `>&1` : <https://unix.stackexchange.com/questions/84620/what-does-sh-a-sh-0-0-mean>
 > 
 > TBD <https://unix.stackexchange.com/questions/53641/how-to-make-bidirectional-pipe-between-two-programs>
