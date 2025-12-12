@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: "On s'entraîne à coder de petits projets"
+title: "On s'entraîne à écrire des tests"
 
 eleventyComputed:
   eleventyNavigation:
