@@ -210,7 +210,7 @@ python -m pip install pytest
 ### <span id="configuration-pytest"></span> Configuration
 
 1. dans les préférences (_menu file/code > Préférences > settings_) tapez `python.testing.pytestEnabled` dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
-2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande](../vsc-installation-et-prise-en-main#palette-de-commande){.interne}) : _python : Configure tests_ on choisit _pytest_ puis _. (root)_ qui donne le dossier de départ où aller chercher nos tests
+2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande](../bases-programmation/éditeur-vscode/prise-en-main/#palette-de-commande){.interne}) : _python : Configure tests_ on choisit _pytest_ puis _. (root)_ qui donne le dossier de départ où aller chercher nos tests
 
 ### <span id="utilisation-pytest"></span> Utilisation
 
