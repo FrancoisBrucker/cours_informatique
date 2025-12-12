@@ -125,24 +125,22 @@ Mais plutôt que de corriger il vaut mieux éviter que les bugs arrivent
 [Tester son code](tests-unitaires){.interne}
 {% endaller %}
 
+{% aller %}
+[On s’entraîne : écrire des tests](projet-codes-tests){.interne}
+{% endaller %}
+
 ### Écrire du code lisible
 
 {% aller %}
 [Écrire et exécuter du code](écrire-code){.interne}
 {% endaller %}
 
-### On s'entraîne
+### On s'entraîne à écrire du code propre qui fonctionne
 
 #### Un projet complet
 
 {% aller %}
 [Projet pourcentage](projet-pourcentages){.interne}
-{% endaller %}
-
-#### Écrire des tests
-
-{% aller %}
-[On s’entraîne : écrire des tests](projet-codes-tests){.interne}
 {% endaller %}
 
 #### On vérifie qu'on sait faire
