@@ -101,8 +101,8 @@ faire les exercices du cours avec eux.
 
 {% aller "**Exercices d'entraînement**" %}
 
-1. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
-2. [On s'entraîne en ajoutant des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
+1. [On s'entraîne en ajoutant des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
+2. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
 
 {% endaller %}
 
@@ -122,4 +122,8 @@ Choisissez un exercice du <https://adventofcode.com/> actuel et résolvez le. On
 
 Ainsi que la preuve que votre exercice est réussi.
 
-Vous devrez rendre votre travail sur moodle avant le 24 décembre 23h59.
+Vous devrez rendre votre travail [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1231) avant le 24 décembre 23h59.
+
+{% info %}
+Si vous rendez le code sous la forme d'un lien vers un projet github, vous aurez toute ma considération.
+{% endinfo %}
