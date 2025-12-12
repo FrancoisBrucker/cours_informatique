@@ -93,7 +93,14 @@ faire les exercices du cours avec eux.
 1. [mettre ses sources à disposition](/cours/gestion-des-sources/#dépot){.interne}
 2. [déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
 3. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
-4. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/){.interne}
+4. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
+
+{% endaller %}
+{% aller "**TD**" %}
+
+1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/){.interne}
+2. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
+3. [faites le TD déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
 
 {% endaller %}
 
@@ -101,8 +108,7 @@ faire les exercices du cours avec eux.
 
 {% aller "**Exercices d'entraînement**" %}
 
-1. [On s'entraîne en ajoutant des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
-2. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
+[On s'entraîne en ajoutant des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
 
 {% endaller %}
 
