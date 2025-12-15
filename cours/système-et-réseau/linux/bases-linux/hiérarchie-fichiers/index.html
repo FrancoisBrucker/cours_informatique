@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/bases-linux/">Bases Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/bases-linux/fhiérarchie-fichiers/">Hiérarchies des fichiers</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/bases-linux/">Bases Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/bases-linux/hiérarchie-fichiers/">Hiérarchies des fichiers</a>
 
 </div></div>
 
@@ -105,6 +105,48 @@
 </div></div>
 
 <h2>Fichiers système</h2>
+<p>En utilisant la commande <a href="https://man.archlinux.org/man/tree.1.fr">tree</a> (souvent installé par défaut), on visualise tous les dossiers d'une distribution Ubuntu présent à la racine (<code class="fichier">/</code>) du système :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ tree <span class="token parameter variable">-d</span> <span class="token parameter variable">-L</span> <span class="token number">1</span> /
+/
+├── bin -<span class="token operator">></span> usr/bin
+├── boot
+├── cdrom
+├── dev
+├── etc
+├── home
+├── lib -<span class="token operator">></span> usr/lib
+├── lost+found
+├── media
+├── mnt
+├── opt
+├── proc
+├── root
+├── run
+├── sbin -<span class="token operator">></span> usr/sbin
+├── snap
+├── srv
+├── sys
+├── tmp
+├── usr
+└── var</code></pre>
+<p>Cette arborescence peut changer selon la distribution ou le type de Linux utilisé :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>Sur une Debian de l'ecm</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@roucas100:~$ tree <span class="token parameter variable">-d</span> <span class="token parameter variable">-L</span> <span class="token number">1</span> /
 /
 ├── bin -<span class="token operator">></span> usr/bin
@@ -134,6 +176,9 @@
 └── var
 
 <span class="token number">26</span> directories</code></pre>
+</div>
+</details>     
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -176,27 +221,37 @@
 </div>
 </details>     
 </div>
-<p>À quoi servent ces dossiers :</p>
+<p>Mais vous retrouverez très souvent les même informations partout :</p>
 <ul>
 <li><code class="fichier">/</code> : racine de tout</li>
 <li><code class="fichier">/bin</code>  : programmes essentiels</li>
-<li><code class="fichier">/sbin</code> : programmes système</li>
+<li><code class="fichier">/boot</code>  : contient les fichiers nécessaires pour démarrer la machine, en particulier le noyau</li>
+<li><code class="fichier">/dev</code> : les périphériques comme les sorties écrans, audio, ...</li>
 <li><code class="fichier">/etc</code>  : fichiers de configuration</li>
 <li><code class="fichier">/home</code> : répertoires utilisateurs</li>
+<li><code class="fichier">/lib</code>, <code class="fichier">/lib32</code>, <code class="fichier">/lib64</code> et <code class="fichier">/libx32</code>: contiennent les bibliothèques partagées</li>
+<li><code class="fichier">/media</code>, <code class="fichier">/mnt</code> ou <code class="fichier">/mount</code>: supports amovibles</li>
+<li><code class="fichier">/opt</code> : programmes optionnels et dépendant de l'utilisation du machine</li>
+<li><code class="fichier">/proc</code> : processus du système</li>
 <li><code class="fichier">/root</code> : home de l'utilisateur root (administrateur)</li>
-<li><code class="fichier">/usr</code> : programmes utilisateur
+<li><code class="fichier">/sbin</code> : programmes système</li>
+<li><code class="fichier">/tmp</code> : fichiers temporaires</li>
+<li><code class="fichier">/usr</code> : programmes utilisateur (<em>users</em>)
 <ul>
 <li><code class="fichier">/usr/bin</code> : programmes utiles aux utilisateurs</li>
 <li><code class="fichier">/usr/sbin</code> : programmes utiles à root</li>
 </ul>
 </li>
-<li><code class="fichier">/tmp</code> : fichiers temporaires</li>
 <li><code class="fichier">/var</code> : fichiers variables (logs, cache…)</li>
-<li><code class="fichier">/dev</code> : périphériques</li>
-<li><code class="fichier">/proc</code> : processus du système</li>
-<li><code class="fichier">/media</code>, <code class="fichier">/mnt</code> : supports amovibles</li>
-<li><code class="fichier">/lib</code> : bibliothèques partagées</li>
 </ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les <code>-&gt;</code> signifient que ces dossiers sont <a href="../../../bases-syst%C3%A8me/bases/fichiers-navigation/#liens" class="interne">des liens symboliques</a> vers d'autres dossiers du système. On voit par exemple que sur un système Ubuntu (et tous les systèmes modernes) les executables et le bibliothèques partagées sont toutes placées dans le dossier <code class="fichier">/usr</code>. Ne sont laissés à la racine que des liens permettant la compatibilité.</p>
+</div></div>
+
 <p>Dans un système de type Unix, (pratiquement) tout est fichier :</p>
 <ul>
 <li>les dossiers sont des fichiers particuliers</li>
@@ -204,34 +259,42 @@
 <li>les configurations sont des fichiers textes</li>
 <li>l’accès au matériel et au noyau se fait via des fichiers (ex <code class="fichier">/proc</code>, <code class="fichier">/dev</code>).</li>
 </ul>
-<h2>Fichiers utilisateurs</h2>
-<ul>
-<li>maison :
+<h2>Fichiers locaux</h2>
+<p>Ces fichiers vont contenir des choses différentes selon les utilisateurs et l'usage de la machine.</p>
+<h3>Utilisateurs</h3>
+<p>La liste des utilisateurs est disponible dans le fichier <code class="fichier">/etc/passwd</code>. Chaque ligne est consacrée à un utilisateur (On analysera ce fichier plus tard) et le premier champ (séparé par des <code>:</code>) contient son login. À chaque login d'utilisateur physique (ne nombreux utilisateurs ne sont que virtuels, comme l'utilisateur <code>(les mots de passent n'y sont plus stocké. Ils sont maintenant dans le fichier</code>/etc/shadow<code>{.fichier})</code> par exemple dont le principal intérêt est de lancer le serveur ssh) possède un dossier où il peut ranger ses fichiers. C'est dans ce dossier, par défaut <code fichier="">/home/login</code>, où seront par défaut placé tout nouveau terminal ouvert.
+Il contiendra :</p>
 <ul>
 <li>ses fichiers</li>
-<li>les fichiers de configuration de ses applications les dotfiles</li>
+<li>ses fichiers de configuration à lui (souvent appelés <a href="https://wiki.archlinux.org/title/Dotfiles">dotfiles</a>)</li>
 <li>des programmes utiles à lui</li>
 </ul>
-</li>
-<li>root <code>/root</code> et <code>etc/shadow</code></li>
-<li><code>/opt</code> remplace petit à petit <code>/usr/local</code>. op test un fourre tout avec un dossier par app. usr/local est hiérarchisé /bin. lib, etc. C'est un système local</li>
-</ul>
-<p>Sur un Linux :</p>
+<h3>Opt</h3>
+<p><code>/opt</code> remplace petit à petit <code>/usr/local</code> qui était le dossier par défaut où étaient placés tous les programmes optionnels et machine dépendant. Sous mac c'est par exemple dans ce dossier que s'installe <a href="https://brew.sh/">https://brew.sh/</a></p>
 <h2>Fichiers spéciaux</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://mtodorovic.developpez.com/linux/programmation-avancee/?page=page_7">https://mtodorovic.developpez.com/linux/programmation-avancee/?page=page_7</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD <code class="fichier">/proc</code>, <code class="fichier">/dev</code></p>
-</blockquote>
-<p><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-proc-uptime">Le fichier <code class="fichier">/proc/uptime</code></a> contient par exemple le temps écoulé, en secondes, depuis son boot et le temps total de ses différents cœur passés à ne rien faire (s'il y a plus d'un cœur ce temps peut excéder le temps depuis le boot) :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">fbrucker@roucas100:/proc$ <span class="token function">cat</span> /proc/uptime
+<p>Plusieurs dossiers sont consacrés à ces pseudo-fichiers qui permettent d'interagir finement avec le système. Citons en deux <code class="fichier">/proc</code> et <code class="fichier">/dev</code>.</p>
+<h3><code class="fichier">/proc</code></h3>
+<p>Le dossier <code class="fichier">/proc</code> va donner des informations sur tous les processus lancés par la machine ainsi que des informations sur le processeur. Par exemple <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-proc-uptime">le fichier <code class="fichier">/proc/uptime</code></a> contient par exemple le temps écoulé, en secondes, depuis son boot et le temps total de ses différents cœur passés à ne rien faire (s'il y a plus d'un cœur ce temps peut excéder le temps depuis le boot). Par exemple :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">cat</span> /proc/uptime
 <span class="token number">26179.16</span> <span class="token number">522449.82</span></code></pre>
+<h3><code class="fichier">/dev</code></h3>
+<p>Le dossier <code class="fichier">/dev</code> va contenir des fichiers correspondant aux entrées/sorties. Comme :</p>
+<ul>
+<li>les sorties écran, audio</li>
+<li>les entrées disques, claviers</li>
+</ul>
+<p>Il contient également des sorties plus spécifiques comme <a href="https://fr.wikipedia.org/wiki//dev/random">le fichier <code class="file">/dev/random/</code></a> qui génère des nombres aléatoires. Par exemple la commande suivante (vous comprendrez la syntaxe plus tard), qui lit le contenu de <code class="file">/dev/random/</code> et l'affiche à l'écran :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ hexdump <span class="token operator">&lt;</span> /dev/random <span class="token operator">|</span> <span class="token function">head</span>
+0000000 fdab 87ca 5f18 d4ae 46db 697e 5ae9 3fd6
+0000010 <span class="token number">2845</span> <span class="token number">2027</span> 8d05 c60a 7a37 98c1 da04 <span class="token number">5718</span>
+0000020 757b d8ec 1b69 d5f6 <span class="token number">9875</span> <span class="token number">2878</span> 0608 778e
+0000030 4af3 efcf 50aa 3d1f 859c 45f6 baa8 da77
+0000040 42b8 4b75 533a 58f1 2c6d 4d9c b8f2 <span class="token number">7526</span>
+0000050 1f58 84d8 9a3f db5b 39c4 280a e229 e38b
+0000060 <span class="token number">6803</span> bafe fa7e 69aa <span class="token number">2477</span> cd2d <span class="token number">4427</span> 017c
+0000070 df4c c55f f76d <span class="token number">1878</span> 627a bf36 e2fe 3f6f
+0000080 6e3f e684 3ead <span class="token number">7818</span> <span class="token number">6272</span> 2da7 daf2 ae65
+0000090 ce95 f226 9b57 <span class="token number">3994</span> 6e39 <span class="token number">8997</span> 1b4e fec4</code></pre>
 
 
 </article>
