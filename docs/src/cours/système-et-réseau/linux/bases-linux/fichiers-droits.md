@@ -16,6 +16,7 @@ eleventyComputed:
 
 
 > TBD permission  fichiers : <https://www.youtube.com/watch?v=q7kqrGC_sXE>
+> TBD user/groups et numéros : voir le fichier /etc/passwd
 
 {% lien %}
 <https://www.cekome.com/blog/permissions-utilisateurs-linux/>
@@ -38,7 +39,7 @@ Que toutes les interactions avec le système soient effectuées sous la forme d'
 - fichier
 - dossier
 - pseudo-fichier
-- liens
+- liens  <span id="liens"></span>
 
 ## Propriété
 

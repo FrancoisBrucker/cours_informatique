@@ -81,6 +81,8 @@ Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https
 
 #### Tutoriel numpy
 
+> TBD à faire avec les spécificités de l'array et des fonctions sympa.
+
 {% aller %}
 [Tutoriel Numpy](tutoriel-numpy){.interne}
 {% endaller %}

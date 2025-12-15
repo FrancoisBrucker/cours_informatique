@@ -51,9 +51,11 @@ Plusieurs unix, Linux en est une version. POSIX pour unifier (mais attentions au
 
 ## Pourquoi connaître Linux
 
-La majorité des serveurs dans le monde tournent sous Linux. Linux est libre, gratuit et puissant. Contrairement à Windows/macOS, tout peut être contrôlé par ligne de commande.
+La majorité des serveurs dans le monde tournent sous Linux. Linux est libre, gratuit et puissant. Contrairement à Windows/macOS, tout peut être contrôlé par ligne de commande et est le système utilisé par les méthodes de conteneurisation comme [Docker](https://www.docker.com/).
 
-Comprendre le système est fondamental pour déboguer, administrer ou optimiser (métier de devOps).
+{% attention "**À retenir**" %}
+Comprendre les mécanismes d'un OS de type Unix est fondamental pour déboguer, administrer ou optimiser ses services web ou ses conteneurs.
+{% endattention %}
 
 ## Installation d'un système Linux
 

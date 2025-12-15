@@ -9,6 +9,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD
+
+ajouter mettre le texte tout en minuscule sans accent. -->
+
 Mise en place de votre projet :
 
 {% faire %}

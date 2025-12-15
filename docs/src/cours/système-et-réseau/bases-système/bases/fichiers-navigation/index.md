@@ -1,36 +1,36 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 
 title: Naviguer dans un système de fichiers
 
 authors:
-    - François Brucker
+  - François Brucker
 
 eleventyComputed:
-    eleventyNavigation:
-        key: "{{ page.url }}"
-        title: "{{ title | safe }}"
-        parent: "{{ '../' | siteUrl(page.url) }}"
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 Qu'est-ce qu'un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l'explorateur de fichier.
 
 {% note %}
-Votre ordinateur est composé de ***fichiers*** et de ***dossiers*** (aussi appelé ***répertoire***) :
+Votre ordinateur est composé de **_fichiers_** et de **_dossiers_** (aussi appelé **_répertoire_**) :
 
-* un ***dossier*** est un conteneur qui peut contenir soit d'autres dossiers, soit des fichiers
-* un ***fichier*** est ce que vous pouvez utiliser. C'est une image, du texte, ou encore un programme.
+- un **_dossier_** est un conteneur qui peut contenir soit d'autres dossiers, soit des fichiers
+- un **_fichier_** est ce que vous pouvez utiliser. C'est une image, du texte, ou encore un programme.
 
-Il existe un dossier spécial, appelé ***racine*** qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.
+Il existe un dossier spécial, appelé **_racine_** qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.
 {% endnote %}
 
-Cette organisation est appelée [arborescence de fichiers](https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)) et ressemble à [un arbre enraciné](https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9) où les fichiers sont des feuilles, comme dans la figure ci-dessous :
+Cette organisation est appelée [arborescence de fichiers](<https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)>) et ressemble à [un arbre enraciné](https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9) où les fichiers sont des feuilles, comme dans la figure ci-dessous :
 
 ![arbre des fichiers](arborescence.png)
 
 ## <span id="explorateur"></span>Explorateur de fichiers
 
-Chaque système d'exploitation fournit un ***explorateur de fichiers***  qui est une application permettant de naviguer dans l'arborescence des fichiers.
+Chaque système d'exploitation fournit un **_explorateur de fichiers_** qui est une application permettant de naviguer dans l'arborescence des fichiers.
 
 {%details "Explorateur de Windows 11" %}
 
@@ -42,15 +42,15 @@ L'explorateur de fichier sous mac s'appelle [le finder](https://support.apple.co
 
 Le finder est l'outil principal qui vous permettra de naviguer dans les fichiers. Pour qu'il soit un peu plus facile d'y naviguer :
 
-* `menu présentation > personnaliser la barre d'outils...` ajoutez le "chemin" (trois barres horizontales) aux outils du finder en le glissant/déposant.
-* ajoutez le dossier "*Départ*", aussi appelé "*maison*" (le dossier principal de l'utilisateur) et le dossier "*applications*" aux éléments à la gauche du finder. Pour cela, choisissez le dossier dans le menu *Aller* puis  avec l'outils chemin que l'on vient d'ajouter sélectionnez le dossier parent(Par exemple pour la maison, le dossier parent est "Utilisateurs" et pour application, le dossier parent est “Macintosh HD"). Vous pouvez ensuite glisser/déposer le dossier à gauche du finder.
+- `menu présentation > personnaliser la barre d'outils...` ajoutez le "chemin" (trois barres horizontales) aux outils du finder en le glissant/déposant.
+- ajoutez le dossier "_Départ_", aussi appelé "_maison_" (le dossier principal de l'utilisateur) et le dossier "_applications_" aux éléments à la gauche du finder. Pour cela, choisissez le dossier dans le menu _Aller_ puis avec l'outils chemin que l'on vient d'ajouter sélectionnez le dossier parent(Par exemple pour la maison, le dossier parent est "Utilisateurs" et pour application, le dossier parent est “Macintosh HD"). Vous pouvez ensuite glisser/déposer le dossier à gauche du finder.
 
 ![finder Macos](./macos-finder.png)
 
 {% enddetails %}
 {%details "Files de Linux/Ubuntu" %}
 
-Sous Ubuntu, il  existe [plusieurs explorateurs de fichiers](https://doc.ubuntu-fr.org/gestionnaire_de_fichiers). Par défaut c'est l'application files :
+Sous Ubuntu, il existe [plusieurs explorateurs de fichiers](https://doc.ubuntu-fr.org/gestionnaire_de_fichiers). Par défaut c'est l'application files :
 
 ![application files](./ubuntu-files.png)
 
@@ -60,13 +60,13 @@ Utilisons un peu cet explorateur. Ouvrez une fenêtre de l'explorateur de fichie
 
 {% details "sous Windows 11" %}
 
-Le panel de gauche de l'explorateur permet d'aller à des endroit spécifiques de votre disque dur. Dans la partie *Ce PC*, vous devriez avoir un item nommé *Disque local (C:)* : c'est la racine.
+Le panel de gauche de l'explorateur permet d'aller à des endroit spécifiques de votre disque dur. Dans la partie _Ce PC_, vous devriez avoir un item nommé _Disque local (C:)_ : c'est la racine.
 
 Si vous cliquez sur la barre de chemin, vous voyez le chemin (si c'est pas un dossier spécial)
 
 {% enddetails %}
 {% details "sous Macos" %}
-Ouvrez une nouvelle fenêtre du *Finder* et choisissez le mode d'affichage des fichiers en colonne. Ensuite, choisissez dans le menu : *aller > ordinateur* et cliquez sur *"Macintosh HD"*, qui est la racine de votre système de fichier.
+Ouvrez une nouvelle fenêtre du _Finder_ et choisissez le mode d'affichage des fichiers en colonne. Ensuite, choisissez dans le menu : _aller > ordinateur_ et cliquez sur _"Macintosh HD"_, qui est la racine de votre système de fichier.
 {% enddetails %}
 {% details "Sous Linux/Ubuntu" %}
 
@@ -80,11 +80,11 @@ Dans l'exemple ci-après, j'ai navigué sur mon mac jusqu'à ma photo [d'Ada Lov
 
 ![chemin vers le fichier ada_lovelace](chemin-vers-ada.png)
 
-On voit bien le chemin parcouru de la racine (appelé *"Macintosh HD"* sur un mac et le fichier).
+On voit bien le chemin parcouru de la racine (appelé _"Macintosh HD"_ sur un mac et le fichier).
 
 {% attention %}
 Le nom des dossiers sur le disque dur et celui qui apparaît dans l'explorateur de fichier peuvent être différents selon la langue du système d'exploitation.
-Ainsi, le nom *Bureau* dans l'explorateur correspondra au dossier `Desktop`{.fichier} sur le disque dur.
+Ainsi, le nom _Bureau_ dans l'explorateur correspondra au dossier `Desktop`{.fichier} sur le disque dur.
 {% endattention %}
 
 ## <span id="absolu-relatif"></span> Chemin
@@ -92,7 +92,7 @@ Ainsi, le nom *Bureau* dans l'explorateur correspondra au dossier `Desktop`{.fic
 Le chemin vers un fichier depuis la racine s'écrit en séparant tous les dossiers parcourus par un `/`{.fichier}. Dans l'image de la navigation vers Ada Lovelace, son chemin est :
 
 ```shell
-/Users/fbrucker/Desktop/ada_lovelace.png 
+/Users/fbrucker/Desktop/ada_lovelace.png
 ```
 
 Tout fichier ou dossier de l'arborescence de fichiers possède un chemin unique depuis la racine, c'est donc un moyen de l'identifier.
@@ -101,7 +101,7 @@ Tout fichier ou dossier de l'arborescence de fichiers possède un chemin unique 
 Le chemin du dossier racine est `/`{.fichier}.
 {% endnote %}
 
-Un chemin qui commence par `/`{.fichier} est dit ***chemin absolu***, puisqu'il part de la racine. On a aussi souvent coutume de parler de ***chemin relatif*** lorsqu'il part d'un dossier particulier. Dans l'exemple précédent, en partant du dossier `/Users/fbrucker`{.fichier}, le chemin relatif vers l'image d'Ada est : `Desktop/ada_lovelace.png`{.fichier}.
+Un chemin qui commence par `/`{.fichier} est dit **_chemin absolu_**, puisqu'il part de la racine. On a aussi souvent coutume de parler de **_chemin relatif_** lorsqu'il part d'un dossier particulier. Dans l'exemple précédent, en partant du dossier `/Users/fbrucker`{.fichier}, le chemin relatif vers l'image d'Ada est : `Desktop/ada_lovelace.png`{.fichier}.
 
 {% note %}
 Un chemin absolu commence **toujours** par `/`{.fichier}. Un chemin qui ne commence **pas** par `/`{.fichier} est **toujours** un chemin relatif.
@@ -115,7 +115,7 @@ Sous Windows, on utilise souvent `\`{.fichier} à la place de `/`{.fichier}.
 
 ### Plusieurs racines
 
-On considère parfois que chaque disque dur, chaque clé usb constitue sa propre racine. Il y a alors une *racine des racines*, qui contient le départ vers les racines particulières des différents périphériques de stockages de l'ordinateur comme les disques durs, clés usb, etc.
+On considère parfois que chaque disque dur, chaque clé usb constitue sa propre racine. Il y a alors une _racine des racines_, qui contient le départ vers les racines particulières des différents périphériques de stockages de l'ordinateur comme les disques durs, clés usb, etc.
 
 C'est en réalité une vue de l'esprit. Il n'existe qu'une seule racine et chaque disque dur est [monté](https://fr.wikipedia.org/wiki/Point_de_montage).
 
@@ -127,15 +127,15 @@ Souvent sous windows ces racines sont explicites, c'est `c:`{.fichier} par exemp
 
 Les dossiers `.`{.fichier} et `..`{.fichier} sont des dossiers spéciaux qui signifient :
 
-* le dossiers courant pour `.`{.fichier}
-* le dossiers précédent du dossiers `.`{.fichier} pour `..`{.fichier}.
+- le dossiers courant pour `.`{.fichier}
+- le dossiers précédent du dossiers `.`{.fichier} pour `..`{.fichier}.
 
 De là les 4 chemins suivants sont identiques :
 
-* `/Users/fbrucker/Desktop/ada_lovelace.png`{.fichier}
-* `/Users/fbrucker/./Desktop/./ada_lovelace.png`{.fichier}
-* `/Users/fbrucker/../fbrucker/Desktop/ada_lovelace.png`{.fichier}
-* `/Users/fbrucker/../fbrucker/./Desktop/ada_lovelace.png`{.fichier}
+- `/Users/fbrucker/Desktop/ada_lovelace.png`{.fichier}
+- `/Users/fbrucker/./Desktop/./ada_lovelace.png`{.fichier}
+- `/Users/fbrucker/../fbrucker/Desktop/ada_lovelace.png`{.fichier}
+- `/Users/fbrucker/../fbrucker/./Desktop/ada_lovelace.png`{.fichier}
 
 {% info %}
 On fait souvent commencer un chemin relatif par `.`{.fichier} pour bien montrer sa différence par rapport à un chemin absolu qui commence par `/`{.fichier}.
@@ -151,7 +151,7 @@ Dans un projet, utilisez **toujours** des chemins relatifs lorsque vous donnez d
 
 {% details "sous Windows 11" %}
 
-Dans explorateur de fichier cliquez sur le dossier, puis *copier le chemin d'accès* dans le menu *accueil*. Par exemple le dossier :
+Dans explorateur de fichier cliquez sur le dossier, puis _copier le chemin d'accès_ dans le menu _accueil_. Par exemple le dossier :
 
 ![chemin long](path-chemin-1.png)
 
@@ -173,13 +173,15 @@ Dans l'explorateur de fichiers cliquez droit sur le dossier et copiez le. Puis, 
 
 ## Dossier Maison
 
-La *maison* est le dossier principal d'un utilisateur. C'est à partir de ce dossier qu'il pourra créer et ranger ses données.
+La _maison_ est le dossier principal d'un utilisateur. C'est à partir de ce dossier qu'il pourra créer et ranger ses données.
 
 {% attention %}
 Il est recommandé que ce dossier ne comporte ni espace ni accent.
 {% endattention %}
 
-## <span id="fichier-cache"></span> Dossiers et fichiers spéciaux
+## Dossiers et fichiers spéciaux
+
+### <span id="fichier-cache"></span>Fichiers cachés
 
 Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](https://fr.wikipedia.org/wiki/Fichier_et_r%C3%A9pertoire_cach%C3%A9) et nécessitent d'être administrateur pour y accéder.
 
@@ -218,17 +220,41 @@ Il pourra parfois être utile de voir les fichiers cachés (des fichiers qui com
 
 {% enddetails %}
 
+### <span id="liens"></span>Liens
+
+<!-- TBD
+
+écrire propre et faire un schéma avec lien 
+
+-->
+
+Les liens sont des fichiers qui _représentent_ d'autres fichiers :
+
+- [liens symboliques](https://en.wikipedia.org/wiki/Symbolic_link)
+- [liens physiques](https://en.wikipedia.org/wiki/Hard_link) (uniquement les fichiers <https://superuser.com/questions/1771908/how-to-create-hard-link-on-directory-in-linux>)
+
+Les liens permettent d'avoir le même fichier ou sous arbre présent à plusieurs endroit de l’arborescence.
+
+{% info %}
+
+Bien que les liens symboliques et physiques existent sous Windows et mac, ces deux systèmes mettent également en places de _pseudo-liens_ qui sont ne sont utilisables que via l'interface graphique :
+
+- [Les raccourcis windows](https://fr.wikipedia.org/wiki/Raccourci_(informatique)) ne sont pas à proprement parler des liens. Ce sont des fichiers contenant des informations vers d'autres fichiers. Les liens symboliques eux pointent directement vers leur fichier d'origine. Voir : <https://www.malekal.com/jonctions-windows/>
+- [Les alias de Macos](https://support.apple.com/fr-fr/guide/mac-help/mchlp1046/mac) ne sont pas à proprement parler des liens non plus. Ils sont gérés par le finder et pas par le système.
+
+{% endinfo %}
+
 ## Fichiers
 
 Les fichiers sont les terminaisons (feuilles) de l'arborescence. Ils sont les éléments utiles de l'arborescences et peuvent être des applications, des fichiers de données, des programmes python, etc.
 
 ### Extension de fichier
 
-Un nom de fichier comporte souvent un texte, suivi d'un `.`{.fichier} puis de deux ou trois lettres qui forme [***une extension***](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier).
+Un nom de fichier comporte souvent un texte, suivi d'un `.`{.fichier} puis de deux ou trois lettres qui forme [**_une extension_**](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier).
 
 Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour l'utilisateur et certaines applications. Cela permet à priori de catégoriser un fichier.
 
-Ainsi, même si l'extension d'un fichier texte est *".txt"*, rien ne vous empêche de la changer en *".exe"* par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : *".py"* pour les fichiers python par exemple, *".md"* pour les fichier markdown.
+Ainsi, même si l'extension d'un fichier texte est _".txt"_, rien ne vous empêche de la changer en _".exe"_ par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : _".py"_ pour les fichiers python par exemple, _".md"_ pour les fichier markdown.
 
 {% note %}
 Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.
@@ -236,8 +262,8 @@ Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défa
 
 ### Fichiers exécutables
 
-Les ***fichiers exécutables*** sont des programmes, ils sont exécutés directement par le système d'exploitation. C'est ce qui fait qu'un exécutable windows ne peut pas être directement lancé sur un mac ou un Linux, même s'ils ont le même processeur.
+Les **_fichiers exécutables_** sont des programmes, ils sont exécutés directement par le système d'exploitation. C'est ce qui fait qu'un exécutable windows ne peut pas être directement lancé sur un mac ou un Linux, même s'ils ont le même processeur.
 
 {% attention %}
-Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte qui est est lu — on dit **interprété** — par l'*interpréteur python* qui lui est un fichier exécutable.
+Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte qui est est lu — on dit **interprété** — par l'_interpréteur python_ qui lui est un fichier exécutable.
 {% endattention %}

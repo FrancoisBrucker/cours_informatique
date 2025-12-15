@@ -16,8 +16,9 @@ eleventyComputed:
 Linux à proprement parler ne concerne que [le noyau](https://fr.wikipedia.org/wiki/Noyau_Linux), dont le rôle est la gestion du matériel et la bonne entente entre processus. C'est pourquoi on parle souvent de **_Distribution Linux_** qui contient :
 
 - le noyau Linux
-- logiciels
-- des outils de configurations
+- une interface graphique
+- des logiciels pour utiliser le système
+- des outils de configurations et d'administration
 
 Par exemple les distributions GNU/Linux où [GNU](https://www.gnu.org/) fournit tous les outils et logiciels utilisées par le noyau Linux pour créer un système d'exploitation complet. Il existe de nombreuses distributions Linux, elles se distinguent par leur gestion des logiciels à installer via un [gestionnaire de paquets](https://fr.wikipedia.org/wiki/Gestionnaire_de_paquets) qui gère les dépendances (nombreuses) entre les différents paquets :
 
@@ -48,7 +49,7 @@ Autre chose à noter : il faut que le terminal devienne notre meilleur ami ! C�
 ### Arborescence système Linux
 
 {% aller %}
-[hiérarchie-fichiers](fhiérarchie-fichiers){.interne}
+[Arborescence des fichiers d'un système Linux](hiérarchie-fichiers){.interne}
 {% endaller %}
 
 ### Droits

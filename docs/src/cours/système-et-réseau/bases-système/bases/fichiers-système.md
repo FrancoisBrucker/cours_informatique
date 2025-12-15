@@ -10,10 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Lorsque l'on démarre un ordinateur, [on a vu](../../but/#démarrage){.interne} qu'est chargé le bootloader qui permet de charger le noyau. Ces deux éléments doivent être lues sur un des disque dur de l'ordinateur et font partie du système d'exploitation. De plus un système va avoir besoin de tout un tas de fichiers de configurations et d'un endroit où il va ranger les différents logiciels qu'il utilisera. 
+Lorsque l'on démarre un ordinateur, [on a vu](../../but/#démarrage){.interne} qu'est chargé le bootloader qui permet de charger le noyau. Ces deux éléments doivent être lues sur un des disque dur de l'ordinateur et font partie du système d'exploitation. De plus un système va avoir besoin de tout un tas de fichiers de configurations et d'un endroit où il va ranger les différents logiciels qu'il utilisera.
 
 L'organisation de cette structure est différente selon les OS mais on retrouvera toujours ces éléments.
-
 
 ## Fichiers système
 

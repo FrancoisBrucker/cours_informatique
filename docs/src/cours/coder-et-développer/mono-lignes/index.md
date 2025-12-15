@@ -10,6 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD refaire en python3. Retrouver m23 avant et changer pour un truc équivalent pour que m23 soit le seul ici
+> montrer qu'on peut aller plus haut en changeant la taille max des entiers.
+
 Les mono-lignes sont 100 petit exercices que l'on doit à Aristide Grange. Ils permettent de se creuser un peu la tête pour écrire de façon condensé du code python.
 
 {% aller %}

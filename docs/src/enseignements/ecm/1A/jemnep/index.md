@@ -38,7 +38,8 @@ Basé sur 3 journée de 6h et (environ) 6h de travail personnel pour un total de
 <!-- > TBD 
 
 les faire installer le tout sur leur ordi au milieu de la matinée. 
-faire les exercices du cours avec eux.
+faire les exercices du cours avec eux. Découper le cours en atelier où on commence chaque exercice et on leur demande de finir ensuite. Il faut que le début de chaque exercice soit fait en exercice+corrigé et ensuite à eux.
+
 -->
 
 {% aller "**Cours**" %}
