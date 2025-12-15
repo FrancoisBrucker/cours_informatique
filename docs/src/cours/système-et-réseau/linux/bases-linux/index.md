@@ -32,10 +32,10 @@ De ces trois distributions majeures et générales vont découler nombres d'autr
 - [Fedora](https://www.fedoraproject.org/fr/) pour Redhat
 - [Manjaro](https://manjaro.org/) pour Arch
 
-Pour connaître sa distribution :
+Pour connaître sa distribution, tapez dans un terminal :
 
 ```shell
-❯ uname -a
+$ uname -a
 Darwin so-high.local 25.1.0 Darwin Kernel Version 25.1.0: Mon Oct 20 19:26:04 PDT 2025; root:xnu-12377.41.6~2/RELEASE_ARM64_T8122 arm64
 
 ```
@@ -69,7 +69,6 @@ Autre chose à noter : il faut que le terminal devienne notre meilleur ami ! C�
 ### variables
 
 ### configuration
-
 
 ## TBD : refactor
 
