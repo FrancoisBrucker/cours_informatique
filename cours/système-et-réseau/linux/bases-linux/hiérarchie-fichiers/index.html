@@ -224,10 +224,10 @@
 <p>Mais vous retrouverez très souvent les même informations partout :</p>
 <ul>
 <li><code class="fichier">/</code> : racine de tout</li>
-<li><code class="fichier">/bin</code>  : programmes essentiels</li>
-<li><code class="fichier">/boot</code>  : contient les fichiers nécessaires pour démarrer la machine, en particulier le noyau</li>
+<li><code class="fichier">/bin</code> : programmes essentiels</li>
+<li><code class="fichier">/boot</code> : contient les fichiers nécessaires pour démarrer la machine, en particulier le noyau</li>
 <li><code class="fichier">/dev</code> : les périphériques comme les sorties écrans, audio, ...</li>
-<li><code class="fichier">/etc</code>  : fichiers de configuration</li>
+<li><code class="fichier">/etc</code> : fichiers de configuration</li>
 <li><code class="fichier">/home</code> : répertoires utilisateurs</li>
 <li><code class="fichier">/lib</code>, <code class="fichier">/lib32</code>, <code class="fichier">/lib64</code> et <code class="fichier">/libx32</code>: contiennent les bibliothèques partagées</li>
 <li><code class="fichier">/media</code>, <code class="fichier">/mnt</code> ou <code class="fichier">/mount</code>: supports amovibles</li>
@@ -272,9 +272,18 @@ Il contiendra :</p>
 <h3>Opt</h3>
 <p><code>/opt</code> remplace petit à petit <code>/usr/local</code> qui était le dossier par défaut où étaient placés tous les programmes optionnels et machine dépendant. Sous mac c'est par exemple dans ce dossier que s'installe <a href="https://brew.sh/">https://brew.sh/</a></p>
 <h2>Fichiers spéciaux</h2>
-<p>Plusieurs dossiers sont consacrés à ces pseudo-fichiers qui permettent d'interagir finement avec le système. Citons en deux <code class="fichier">/proc</code> et <code class="fichier">/dev</code>.</p>
+<p>Beaucoup d'autres dossiers de la racine ne contiennent des <em>pseudo-fichiers</em> permettent d'interagir finement avec le système. Ce ne sont pas des fichiers réels mais on y accède comme si.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Que toutes les interactions avec le système soient effectuées sous la forme d'un fichier dérive du projet <a href="https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs">Plan 9</a> dont le modo était :<em>everything is a file</em>.</p>
+</div></div>
+
+<p>C'est par exemple le cas des dossiers <code class="fichier">/proc</code> et <code class="fichier">/dev</code>.</p>
 <h3><code class="fichier">/proc</code></h3>
-<p>Le dossier <code class="fichier">/proc</code> va donner des informations sur tous les processus lancés par la machine ainsi que des informations sur le processeur. Par exemple <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-proc-uptime">le fichier <code class="fichier">/proc/uptime</code></a> contient par exemple le temps écoulé, en secondes, depuis son boot et le temps total de ses différents cœur passés à ne rien faire (s'il y a plus d'un cœur ce temps peut excéder le temps depuis le boot). Par exemple :</p>
+<p>Le dossier <code class="fichier">/proc</code> va donner des informations sur tous les processus lancés par la machine ainsi que des informations sur le processeur. Par exemple <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/s2-proc-uptime">le fichier <code class="fichier">/proc/uptime</code></a> contient par exemple le temps écoulé, en secondes, depuis son boot et le temps total de ses différents cœur passés à ne rien faire (s'il y a plus d'un cœur ce temps peut excéder le temps depuis le boot). Par exemple, tapez dans un terminal la commande suivante pour afficher le contenu du fichier <code class="fichier">/proc/uptime</code> avec <a href="https://fr.wikipedia.org/wiki/Cat_(Unix)">la commande <code>cat</code></a> :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">cat</span> /proc/uptime
 <span class="token number">26179.16</span> <span class="token number">522449.82</span></code></pre>
 <h3><code class="fichier">/dev</code></h3>
@@ -283,18 +292,10 @@ Il contiendra :</p>
 <li>les sorties écran, audio</li>
 <li>les entrées disques, claviers</li>
 </ul>
-<p>Il contient également des sorties plus spécifiques comme <a href="https://fr.wikipedia.org/wiki//dev/random">le fichier <code class="file">/dev/random/</code></a> qui génère des nombres aléatoires. Par exemple la commande suivante (vous comprendrez la syntaxe plus tard), qui lit le contenu de <code class="file">/dev/random/</code> et l'affiche à l'écran :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ hexdump <span class="token operator">&lt;</span> /dev/random <span class="token operator">|</span> <span class="token function">head</span>
-0000000 fdab 87ca 5f18 d4ae 46db 697e 5ae9 3fd6
-0000010 <span class="token number">2845</span> <span class="token number">2027</span> 8d05 c60a 7a37 98c1 da04 <span class="token number">5718</span>
-0000020 757b d8ec 1b69 d5f6 <span class="token number">9875</span> <span class="token number">2878</span> 0608 778e
-0000030 4af3 efcf 50aa 3d1f 859c 45f6 baa8 da77
-0000040 42b8 4b75 533a 58f1 2c6d 4d9c b8f2 <span class="token number">7526</span>
-0000050 1f58 84d8 9a3f db5b 39c4 280a e229 e38b
-0000060 <span class="token number">6803</span> bafe fa7e 69aa <span class="token number">2477</span> cd2d <span class="token number">4427</span> 017c
-0000070 df4c c55f f76d <span class="token number">1878</span> 627a bf36 e2fe 3f6f
-0000080 6e3f e684 3ead <span class="token number">7818</span> <span class="token number">6272</span> 2da7 daf2 ae65
-0000090 ce95 f226 9b57 <span class="token number">3994</span> 6e39 <span class="token number">8997</span> 1b4e fec4</code></pre>
+<p>Il contient également des sorties plus spécifiques comme <a href="https://fr.wikipedia.org/wiki//dev/random">le fichier <code class="file">/dev/random/</code></a> qui génère des nombres aléatoires. Par exemple la commande suivante (dont vous comprendrez la syntaxe plus tard) tapée dans un terminal lit 32 octet de <code class="fichier">/dev/random/</code> (le fichier <code class="fichier">/dev/random</code> est a priori de longueur infinie) et l'affiche à l'écran :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">head</span> <span class="token parameter variable">-c</span> <span class="token number">32</span>  <span class="token operator">&lt;</span> /dev/random  <span class="token operator">|</span> hexdump <span class="token parameter variable">-ve</span> <span class="token string">'32/1 " %02x" "\n"'</span>
+a261e9b1e0ee4e41127d08c4baa2172a4cf1c45aeef296a4c8c6f38acf102ea
+</code></pre>
 
 
 </article>
