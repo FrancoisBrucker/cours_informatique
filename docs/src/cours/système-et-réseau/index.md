@@ -45,6 +45,7 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 
 ## refactor
 
+> TBD refactor shell <https://effective-shell.com/part-1-transitioning-to-the-shell/navigating-your-system/>
 > TBD <https://tuteurs.ens.fr/unix/> et shell variables <https://tuteurs.ens.fr/unix/shell/variable.html>
 > TBD découper en partie plus digeste
 > TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>
