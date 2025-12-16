@@ -15,6 +15,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD refaire avec :
+>
+> 1. création de la clé
+> 2. accéder à ses clés publiques et privées dans le dossier caché .ssh
+> 3. sert d'identification à github ou de connexion à une machine distante
+> 4. nécessité d'un agent
+> 5. un sas et l'option -J
+
 Installation et utilisation (basique) de ssh.
 
 ## Installation
@@ -116,7 +124,7 @@ On utilise ssh pour garantir de l'authenticité et des ordinateurs sur lesquels 
 Supposons que je veuille me connecter à une machine distante dont je connais le nom : `roucas100.etu.ec-m.fr` (cette machine n'est accessible que si vous êtes déjà sur le réseau de l'école centrale méditerranée).
 
 {% note "**Connection depuis l'extérieur**" %}
-Si vous n'êtes pas initialement connecté sur le réseau de l'école, remplacez `roucas100.etu.ec-m.fr` par `sas1.ec-m.fr` qui est kl'ordinateur accessible depuis internet.
+Si vous n'êtes pas initialement connecté sur le réseau de l'école, remplacez `roucas100.etu.ec-m.fr` par `sas1.ec-m.fr` qui est l'ordinateur accessible depuis internet.
 {% endnote %}
 
 Je dois me connecter en tant qu'utilisateur de cette machine. Pour cela la connection s'effectue toujours en utilisant le schéma d'une URL : `identifiant@machine`. Dan sle cs présent :

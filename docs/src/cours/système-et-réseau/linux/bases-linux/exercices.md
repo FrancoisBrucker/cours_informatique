@@ -13,6 +13,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD 
+
+à jouter 
+
+- faire des liens symbolique
+- changer les droits des fichiers et dossiers et voir que ça ne marche plus
+- supprimer des fichiers d'un dossier sans r et aller dans un dossier sans r
+ -->
+
 ## Fichiers
 
 1. Quel est le chemin de votre dossier maison
@@ -22,6 +31,7 @@ eleventyComputed:
    - `ls -l`
    - `ls -a`
    - `ls -la`
+   - `ls -l -a`
 4. Créez un dossier `temporaire`{.fichier} dans votre dossier maison. Quels sont les droits de ce fichier ?
 5. Affichez la liste des fichiers par date de dernière modification/création (c'est une option de `ls`). Le dossier `temporaire`{.fichier} devrait être en premier.
 6. Modifier la date de modification du dossier modifié le dernier (grace à la commande `touch`) et vérifier qu'il est maintenant en premier dans la liste

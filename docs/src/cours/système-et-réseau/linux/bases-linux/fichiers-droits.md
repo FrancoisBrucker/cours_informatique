@@ -189,3 +189,7 @@ donner un exemple et voir son type avec ls -l
 - [sticky bit](https://en.wikipedia.org/wiki/Sticky_bit) de `/tmp`
 - setuid
 - setgid
+
+## inode
+
+> TBD dire ce que c'est est parler des liens physiques.
