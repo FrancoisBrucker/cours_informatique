@@ -36,10 +36,12 @@ Que toutes les interactions avec le système soient effectuées sous la forme d'
 
 ## Types de fichiers
 
-- fichier
+- fichier normal
+- fichier caché
 - dossier
 - pseudo-fichier
-- liens  <span id="liens"></span>
+- lien symbolique
+- lien physique
 
 ## Propriété
 
