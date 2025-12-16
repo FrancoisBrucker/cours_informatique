@@ -164,13 +164,7 @@ Il contiendra :
 
 ## Fichiers spéciaux
 
-Beaucoup d'autres dossiers de la racine ne contiennent des _pseudo-fichiers_ permettent d'interagir finement avec le système. Ce ne sont pas des fichiers réels mais on y accède comme si.
-
-{% info %}
-Que toutes les interactions avec le système soient effectuées sous la forme d'un fichier dérive du projet [Plan 9](https://en.wikipedia.org/wiki/Plan_9_from_Bell_Labs) dont le modo était :_everything is a file_.
-{% endinfo %}
-
-C'est par exemple le cas des dossiers `/proc`{.fichier} et `/dev`{.fichier}.
+Beaucoup d'autres dossiers de la racine ne contiennent des _pseudo-fichiers_ permettent d'interagir finement avec le système. Ce ne sont pas des fichiers réels mais on y accède comme si. C'est par exemple le cas des dossiers `/proc`{.fichier} et `/dev`{.fichier}.
 
 ### `/proc`{.fichier}
 

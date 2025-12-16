@@ -70,6 +70,8 @@ Plusieurs installations possibles, allant d'une surcouche minimale à l'installa
 
 ## Système Linux
 
+> TBD ici uniquement Linux Ubuntu. Si vous êtes sous macos ou un autre unix-like parfois les commandes différeront un peu. Reportez vous au manuel de votre noyau/distribution pour connaître la syntaxe exacte si nécessaire.
+
 ### Bases
 
 {% aller %}

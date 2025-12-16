@@ -185,7 +185,9 @@ Il est recommandé que ce dossier ne comporte ni espace ni accent.
 
 Pour qu'un ordinateur fonctionne, il a besoin d'avoir des dossiers spéciaux contenant le système d'exploitation, les données, etc. Ces dossiers sont souvent [cachés](https://fr.wikipedia.org/wiki/Fichier_et_r%C3%A9pertoire_cach%C3%A9) et nécessitent d'être administrateur pour y accéder.
 
-Dans le monde unix (Linux et macos) les fichiers cachés sont ceux qui commencent par un `.`{.fichier} et dans le monde windows, ils sont déterminés par une propriété.
+Dans le monde unix (Linux et macos) les fichiers cachés sont ceux qui commencent par un `.`{.fichier} et dans le monde windows, ils sont déterminés par une propriété :
+
+![un fichier caché](arborescence-caché.png)
 
 On peut cependant les afficher dans un explorateur de fichier en effectuant quelques manipulations :
 
@@ -222,22 +224,19 @@ Il pourra parfois être utile de voir les fichiers cachés (des fichiers qui com
 
 ### <span id="liens"></span>Liens
 
-<!-- TBD
+[Les liens symboliques](https://en.wikipedia.org/wiki/Symbolic_link) sont des fichiers/dossier qui _représentent_ d'autres fichiers/dossier. Ils permettent d'accéder à un fichier/dossier via plusieurs chemins de l’arborescence. Par exemple :
 
-écrire propre et faire un schéma avec lien 
+![un lien](arborescence-liens.png)
 
--->
+Lors de la navigation on ne sait pas que l'on suit un lien, le fichier `/Utilisateurs/doppelganger/cv.pdf`{.fichier} est donc aussi le fichier `/Utilisateurs/moi/cv.pdf`{.fichier}, la seule duplication est le lien. Ainsi :
 
-Les liens sont des fichiers qui _représentent_ d'autres fichiers :
-
-- [liens symboliques](https://en.wikipedia.org/wiki/Symbolic_link)
-- [liens physiques](https://en.wikipedia.org/wiki/Hard_link) (uniquement les fichiers <https://superuser.com/questions/1771908/how-to-create-hard-link-on-directory-in-linux>)
-
-Les liens permettent d'avoir le même fichier ou sous arbre présent à plusieurs endroit de l’arborescence.
+- supprimer `/Utilisateurs/doppelganger/cv.pdf`{.fichier} supprime aussi  `/Utilisateurs/moi/cv.pdf`{.fichier}(c'est le même fichier)
+- supprimer `/Utilisateurs/doppelganger`{.fichier} ne supprime pas `/Utilisateurs/moi`{.fichier} qui continue de fonctionner
+- supprimer `/Utilisateurs/moi`{.fichier} va rendre inopérant `/Utilisateurs/doppelganger`{.fichier} qui est un lien symbolique (c'est un dossier et seuls les fichiers peuvent être des liens physiques)
 
 {% info %}
 
-Bien que les liens symboliques et physiques existent sous Windows et mac, ces deux systèmes mettent également en places de _pseudo-liens_ qui sont ne sont utilisables que via l'interface graphique :
+Bien que les liens symboliques existent sous Windows et mac, ces deux systèmes mettent également en places de _pseudo-liens_ qui sont ne sont utilisables que via l'interface graphique :
 
 - [Les raccourcis windows](https://fr.wikipedia.org/wiki/Raccourci_(informatique)) ne sont pas à proprement parler des liens. Ce sont des fichiers contenant des informations vers d'autres fichiers. Les liens symboliques eux pointent directement vers leur fichier d'origine. Voir : <https://www.malekal.com/jonctions-windows/>
 - [Les alias de Macos](https://support.apple.com/fr-fr/guide/mac-help/mchlp1046/mac) ne sont pas à proprement parler des liens non plus. Ils sont gérés par le finder et pas par le système.
