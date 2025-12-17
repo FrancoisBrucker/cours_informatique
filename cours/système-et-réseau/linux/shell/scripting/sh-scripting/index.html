@@ -96,7 +96,11 @@
     
   
 
-  <blockquote>
+  <ul>
+<li>histoire : <a href="https://www.in-ulm.de/~mascheck/bourne/">https://www.in-ulm.de/~mascheck/bourne/</a></li>
+<li>parameter expansion : <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02">https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02</a></li>
+</ul>
+<blockquote>
 <p>TBD args et getopts :</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=fJSUVGlQ1E8">https://www.youtube.com/watch?v=fJSUVGlQ1E8</a></li>
@@ -146,6 +150,42 @@
 
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token shebang important">#! /bin/sh -</span>
 </code></pre>
+<h2>Variables d'environnement</h2>
+<h3>python</h3>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"PATH"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"PORT"</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"PORT"</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># attention</span></code></pre>
+<p>Puis :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python variables.py
+$ <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">1456</span> python variables.py</code></pre>
+<h3>node</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs">https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs</a></p>
+</div></div>
+
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PATH</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span> <span class="token operator">||</span> <span class="token number">3000</span><span class="token punctuation">)</span></code></pre>
+<h3>env file</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://12factor.net/config">https://12factor.net/config</a></p>
+</div></div>
+
+<p>Il n'est pas commité.</p>
+<ul>
+<li><a href="https://pypi.org/project/python-dotenv/">https://pypi.org/project/python-dotenv/</a></li>
+<li><code>node --env-file-if-exists=.env app.js</code></li>
+<li><a href="https://github.com/motdotla/dotenv">https://github.com/motdotla/dotenv</a></li>
+<li><code>set -a &amp;&amp; source .env &amp;&amp; set +a</code> voir : <a href="https://gist.github.com/mihow/9c7f559807069a03e302605691f85572">shell</a></li>
+</ul>
 <h2>Gestion des paramètres</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -308,10 +348,9 @@ done
 <li><code class="fichier">exec ./truc.sh</code>` nouveau shell qui remplace le shell existant</li>
 </ul>
 <p>Supposons que vous ayez un fichier exécutable <code class="fichier">pid.sh</code> contenant :</p>
-<pre><code>#! /bin/sh
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token shebang important">#! /bin/sh</span>
 
-echo $$
-</code></pre>
+<span class="token builtin class-name">echo</span> <span class="token variable">$$</span></code></pre>
 <ol>
 <li>Le pid du shell courant est accessible avec : <code>echo $$</code></li>
 <li>Le pid précédent est différent du pid du shell exécutant le script : <code>./pid.sh</code></li>
@@ -340,6 +379,41 @@ TBD dans les systèmes actuels sh = bash</p>
 <ul>
 <li><a href="https://michael-herbst.com/teaching/advanced-bash-scripting-2017/">un cours</a></li>
 </ul>
+<h2>on s'amuse avec rot13</h2>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coucou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COUCOU
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COÉCOU
+❯ <span class="token function">man</span> <span class="token function">tr</span>
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:][=e=]"</span> <span class="token string">"[:upper:]e"</span>
+COeCOU
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:][=ea=]"</span> <span class="token string">"[:upper:]ea"</span>
+tr: misplaced equivalence equals sign
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:][=e=]"</span> <span class="token string">"[:upper:]e"</span>
+COeCOU
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=E=]"</span> <span class="token string">"e"</span>
+COeCOU
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=E=]"</span> <span class="token string">"E"</span>
+COECOU</code></pre>
+<p>Attention :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouê"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=]"</span> <span class="token string">"e"</span> <span class="token operator">|</span>  <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COECOUE</code></pre>
+<p>mais :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=][=a=]"</span> <span class="token string">"ea"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COACOUA</code></pre>
+<p><code>[=e=]</code> correspond à des listes :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">man</span> <span class="token function">tr</span>
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=][=a=]"</span> <span class="token string">"eeeeeeea"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COACOUA
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=][=a=]"</span> <span class="token string">"eeeeeeeeeeeeea"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COECOUA</code></pre>
+<p>Mieux vaut tout chaîner :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=]"</span> <span class="token string">"e"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=a=]"</span> <span class="token string">"a"</span> <span class="token operator">|</span>  <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COECOUA
+</code></pre>
+<p>mais en vrai il vaut mieux utiliser <code>iconv</code> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">iconv</span> <span class="token parameter variable">-c</span> <span class="token parameter variable">-f</span> utf8 <span class="token parameter variable">-t</span> ascii//translit</code></pre>
+<p>sous Linux. Marche pas sous macos (mauvaise lib de libconf).</p>
 
 
 </article>
