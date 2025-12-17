@@ -60,6 +60,8 @@ Autre chose Ã  noter : il faut que le terminal devienne notre meilleur ami ! Câ€
 
 ## shell
 
+> toujours dans un dossier.
+
 ### commandes
 
 > TBD `sh ; echo "coucou"`
@@ -67,6 +69,8 @@ Autre chose Ã  noter : il faut que le terminal devienne notre meilleur ami ! Câ€
 ### redirections
 
 ### variables
+
+> TBD variables d'environnement comme le path
 
 ### configuration
 

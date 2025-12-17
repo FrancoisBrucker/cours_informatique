@@ -84,7 +84,7 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 > - **Utilité** : à connaître car un classique des concours (on le donne sans indications...)
 > - **Difficulté** : moyen
-
+  
 {% aller %}
 [Cols de listes et de matrices](cols){.interne}
 {% endaller %}

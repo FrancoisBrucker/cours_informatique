@@ -10,6 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD refaire en parlant de minima locaux
+> TBD s'assurer qu'ils ont vus la dichotomie avant.
+> TBD remplacer col par minimal local d'un matrice. Et donner l'algorithme en O(n) mais dire que c'est dur
+
 {% lien %}
 [Corrigé](./corrigé){.interne}
 {% endlien %}

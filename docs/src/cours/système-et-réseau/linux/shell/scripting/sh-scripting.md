@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+- histoire : <https://www.in-ulm.de/~mascheck/bourne/>
+- parameter expansion : <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02>
 
 > TBD args et getopts :
 > - <https://www.youtube.com/watch?v=fJSUVGlQ1E8>
@@ -50,6 +52,49 @@ Taper des commandes = script. Comme python. Il faut trouver un moyen de faire de
 #! /bin/sh -
 
 ```
+
+## Variables d'environnement
+
+### python
+
+```python
+import os
+print(os.environ["PATH"])
+print(os.environ.get("PORT", 3000))
+print(type(os.environ.get("PORT", 3000))) # attention
+```
+
+Puis :
+
+```shell
+$ python variables.py
+$ PORT=1456 python variables.py
+```
+
+### node
+
+{% lien %}
+<https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs>
+
+{% endlien %}
+
+```js
+console.log(process.env.PATH)
+console.log(process.env.PORT || 3000)
+```
+
+### env file
+
+{% lien %}
+<https://12factor.net/config>
+{% endlien %}
+
+Il n'est pas commité.
+
+- <https://pypi.org/project/python-dotenv/>
+- `node --env-file-if-exists=.env app.js`
+- <https://github.com/motdotla/dotenv>
+- `set -a && source .env && set +a` voir : [shell](https://gist.github.com/mihow/9c7f559807069a03e302605691f85572)
 
 ## Gestion des paramètres
 
@@ -237,7 +282,7 @@ Le script est par défaut exécuté dans un nouveau shell. Mais ce n'est pas tou
 
 Supposons que vous ayez un fichier exécutable `pid.sh`{.fichier} contenant :
 
-```
+```shell
 #! /bin/sh
 
 echo $$
@@ -273,3 +318,61 @@ $ echo $$
 > TBD dans les systèmes actuels sh = bash
 
 - [un cours](https://michael-herbst.com/teaching/advanced-bash-scripting-2017/)
+
+## on s'amuse avec rot13
+
+```shell
+❯ echo "coucou" | tr "[:lower:]" "[:upper:]"
+COUCOU
+❯ echo "coécou" | tr "[:lower:]" "[:upper:]"
+COÉCOU
+❯ man tr
+❯ echo "coécou" | tr "[:lower:][=e=]" "[:upper:]e"
+COeCOU
+❯ echo "coécou" | tr "[:lower:][=ea=]" "[:upper:]ea"
+tr: misplaced equivalence equals sign
+❯ echo "coécou" | tr "[:lower:][=e=]" "[:upper:]e"
+COeCOU
+❯ echo "coécou" | tr "[:lower:]" "[:upper:]" | tr "[=E=]" "e"
+COeCOU
+❯ echo "coécou" | tr "[:lower:]" "[:upper:]" | tr "[=E=]" "E"
+COECOU
+```
+
+Attention :
+
+```shell
+❯ echo "coécouê" | tr "[=e=]" "e" |  tr "[:lower:]" "[:upper:]"
+COECOUE
+```
+mais :
+```shell
+❯ echo "coécouå" | tr "[=e=][=a=]" "ea" | tr "[:lower:]" "[:upper:]"
+COACOUA
+```
+
+`[=e=]` correspond à des listes :
+
+```shell
+❯ man tr
+❯ echo "coécouå" | tr "[=e=][=a=]" "eeeeeeea" | tr "[:lower:]" "[:upper:]"
+COACOUA
+❯ echo "coécouå" | tr "[=e=][=a=]" "eeeeeeeeeeeeea" | tr "[:lower:]" "[:upper:]"
+COECOUA
+```
+
+Mieux vaut tout chaîner :
+
+```shell
+❯ echo "coécouå" | tr "[=e=]" "e" | tr "[=a=]" "a" |  tr "[:lower:]" "[:upper:]"
+COECOUA
+
+```
+
+mais en vrai il vaut mieux utiliser `iconv` :
+
+```shell
+echo "coécouå" | iconv -c -f utf8 -t ascii//translit
+```
+
+sous Linux. Marche pas sous macos (mauvaise lib de libconf).

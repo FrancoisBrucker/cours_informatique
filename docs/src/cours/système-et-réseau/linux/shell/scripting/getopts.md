@@ -16,8 +16,8 @@ eleventyComputed:
 3. `$@` `$#` `$0`
 4. `shift` (boucle avec "y'en a des biens")
 5. test si des paramètres ou pas
-6. faire boucle à la min avec --b et startswith
-7. getopts (est-ce posix ?)
+6. faire boucle à la main avec case
+7. getopts
 8. ajouter l'aide ":" "\?"
 9. getopts + paramètres sans argument à la fin
 10. getopts + paramètres sans argument partout
