@@ -61,7 +61,7 @@ Taper des commandes = script. Comme python. Il faut trouver un moyen de faire de
 import os
 print(os.environ["PATH"])
 print(os.environ.get("PORT", 3000))
-print(type(os.environ.get("PORT", 3000))) # attention
+# print(type(os.environ.get("PORT", 3000))) # attention
 ```
 
 Puis :
