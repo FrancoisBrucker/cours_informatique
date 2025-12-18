@@ -13,6 +13,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD <https://blog.stephane-robert.info/docs/admin-serveurs/linux/shells-linux/bash/>
+
 Lorsqu'un shell est crée il va lire ses fichiers de configuration qui permettent de le personnaliser.
 
 On va ici se concentrer sur les fichiers de configuration de bash. Chaque shell va avoir sa façon de faire, faites-y attention si vous changez de shell où êtes sous mac qui par défaut a le shell zsh.

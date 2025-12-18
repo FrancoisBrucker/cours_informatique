@@ -32,6 +32,9 @@ Le shell est ce via quoi on exécute des commandes.
 > $(), $(())
 > redirection entrée/sortie/erreur
 > TBD lien <https://matthieu-moy.fr/spip/IMG/pdf/sh.pdf>
+>
+> utilisation du [process substitution](https://tldp.org/LDP/abs/html/process-sub.html) : <https://www.youtube.com/watch?v=2A4bs40scSo>
+> à mettre dans les pipe et named pipe car c'est en fait ça. Voir la même chose en sh avec des named pipe : <https://stackoverflow.com/questions/38796224/posix-shell-equivalent-to> ou wvec des fichiers <https://www.shellcheck.net/wiki/SC3001>
 
 ## Variables d'environnement
 

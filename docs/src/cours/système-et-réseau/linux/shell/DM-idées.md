@@ -41,11 +41,12 @@ nombre de mots dans un fichier : <https://www.tecmint.com/count-word-occurrences
 
 4. naissances <https://www.insee.fr/fr/statistiques/7633685?sommaire=7635552> avec cut, sort et uniq
 5. fichier json <https://www.data.gouv.fr/fr/datasets/villes-de-france/>
-   1. utiliser jq pour compter le nombre de ville d'un département avec une boucle for. <https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script> <https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq>
+   1. utiliser jq pour compter le nombre de ville d'un département avec une boucle for. <https://stackoverflow.com/questions/33950596/iterating-through-json-array-in-shell-script> <https://www.digitalocean.com/community/tutorials/how-to-transform-json-data-with-jq> voir aussi <https://www.youtube.com/watch?v=LFlnKJjTIWU>
 
 ```
 curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2>/dev/null | wc
 ```
+
 1. faire des tests : <https://medium.com/@sankad_19852/shell-scripting-exercises-5eb7220c2252> pour préparer faire une poubelle pour le rm <https://utminers.utep.edu/xzeng/2016fall_cps5401/CPS_5401_Introduction_to_Computational_Science_files/solution_1.pdf>
 1. faire un code de sorite si ok ou pas
 

@@ -15,6 +15,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD vérifier agent sous windows. Eat-ce qu'il marche aussi avec la wsl ? Si oui le dire dans la partie install wsl de Linux.
+> 
 > TBD refaire avec :
 >
 > 1. création de la clé
