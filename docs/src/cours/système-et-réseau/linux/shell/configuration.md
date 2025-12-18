@@ -21,7 +21,7 @@ Lorsqu'un shell est crée il va lire ses fichiers de configuration qui permetten
 On va ici se concentrer sur les fichiers de configuration de bash. Chaque shell va avoir sa façon de faire, faites-y attention si vous changez de shell où êtes sous mac qui par défaut a le shell zsh.
 
 {% lien %}
-Fichiers de configurations de zsh](https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/)
+[Fichiers de configurations de zsh](https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/)
 {% endlien %}
 
 > TBD <https://www.youtube.com/watch?v=Yva_nTXzTTw>

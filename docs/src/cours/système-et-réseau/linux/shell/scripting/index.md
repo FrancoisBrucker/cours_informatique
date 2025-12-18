@@ -12,7 +12,7 @@ eleventyComputed:
 
 
 > TBD [getopts](getopts){.interne}.
-> 
+> advanced bash shell scripting (en fr) : <https://abs.traduc.org/abs-5.1-fr/index.html>
 {% lien %}
 
 - <https://github.com/dylanaraps/pure-sh-bible>

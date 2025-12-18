@@ -13,6 +13,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD voir <http://aral.iut-rodez.fr/fr/sanchis/enseignement/bash/>
+>
+> TBD variable substitution : <https://www.ibm.com/docs/en/aix/7.1.0?topic=shell-parameter-substitution-in-korn-posix>
+> 
 {% lien %}
 
 - [quelques liens](https://www.youtube.com/watch?v=Jllnhid7O7w)
