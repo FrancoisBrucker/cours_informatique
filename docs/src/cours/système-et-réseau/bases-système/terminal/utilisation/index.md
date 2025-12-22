@@ -14,14 +14,45 @@ Une fois l'utilisation du terminal comprise (cela ne prend pas beaucoup de temps
 
 ## Prompt
 
-Lorsque l'on ouvre un terminal, on se retrouve devant [un prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande). Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une **_ligne de commande_** et on appuie sur entrée pour l'exécuter. Cette ligne sera toujours :
+Lorsque l'on ouvre un terminal, on se retrouve devant [un prompt](https://fr.wikipedia.org/wiki/Prompt_(variable_d%27environnement)). Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une **_ligne de commande_** à la suite du prompt  et on appuie sur entrée pour l'exécuter.
 
-- soit un fichier exécutable
-- soit une instructions compréhensible par le terminal, comme `ls`{.language-} par exemple.
+{% attention "**À retenir**" %}
+Dans tous les exemples d'utilisation du terminal, on fera commencer la commande par le prompt :
 
-{% note %}
-Une ligne de commande est **toujours** soit un fichier exécutable soit une instruction.
+- `$ ` si le terminal utilisé est un shell unix (linux/wsl/macos)
+- `> ` si le terminal est un powershell windows
+- `$> ` si le terminal utilisé peut être indifféremment un powershell ou un unix
+
+{% endattention %}
+
+Une ligne de commande sera toujours composée de mots séparé par des espaces :
+
+{% note "**Définition**" %}
+Une **_ligne de commande_** est une chaîne de caractères composées de mots séparés par un ou plusieurs espaces tes que :
+
+- le premier mot est la commande et sera :
+  - soit un fichier exécutable
+  - soit une instructions compréhensible par le terminal, comme `ls`{.language-} par exemple.
+- les mots suivants sont optionnels et sont les paramètres de la commande.
+
 {% endnote %}
+
+Par exemple :
+
+```shell
+$> ls
+```
+
+Qui est uniquement composée de la commande `ls` , ou encore :
+
+```shell
+$> cd /
+```
+
+Qui est une ligne composée :
+
+- de la commande `cd`
+- d'un paramètre `/`
 
 Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on appelle **_shell_** et le système Windows appelé **_powershell_**, mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell. Nous ne verrons que les commandes de bases du shell mais il en existe de nombreuses autres, n'hésitez pas à expérimenter (on ira bien plus loin dans la partie Linux de ce cours) :
 
@@ -55,7 +86,7 @@ Pour connaître l'utilisateur du terminal, on peut utiliser la commande shell `w
 Le premier élément de la ligne de commande est un fichier qui doit être exécuté. Par exemple :
 
 ```shell
-python mon_script.py
+$> python mon_script.py
 ```
 
 Comme le mot _python_ n'est pas une instruction c'est **forcément** un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) dans un ensemble de dossiers qu'on appelle le [path](./#path).
@@ -73,7 +104,7 @@ Souvent `.`{.fichier} (le répertoire courant) n'est pas dans le path. Il faut d
 Tout Ce qui suit l'instruction ou le fichier exécutable dans une ligne de commande sont les **_paramètres_**.
 
 ```shell
-python mon_script.py
+$> python mon_script.py
 ```
 
 Dans la ligne de commande précédente on a :
@@ -138,7 +169,7 @@ La commande `ls`{.language-} donne les dossiers et les fichiers du dossier coura
 La commande `ls`{.language-} est en fait plus générale car on peut l'utiliser avec un paramètre qui est un chemin absolu ou relatif où lister les fichiers/dossiers. Par exemple, sur mon mac, si je tape :
 
 ```shell
-ls /
+$> ls /
 ```
 
 J'obtiens tous les dossier de la racine :
@@ -152,14 +183,14 @@ System       bin          etc          private      usr
 La commande `ls`{.language-} a beaucoup de paramètres possible. Dans le monde du terminal, une commande va faire une unique chose mais de plein de façon disponible. C'est souvent ce qui fait peur, mais au final on utilisera jamais toutes les possibilités. Par exemple la [documentation de la commande ls](http://manpagesfr.free.fr/man/man1/ls.1.html) nous permet :
 
 - afficher toutes les informations :
-  - unix/mac : `ls -l`{.language-}
-  - powershell : `ls`{.language-}. L'instruction `ls`{.language-} sous powershell est équivalente à [`Get-ChildItem`{.language-}](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem)
+  - unix/mac : `$ ls -l`{.language-}
+  - powershell : `> ls`{.language-}. L'instruction `ls`{.language-} sous powershell est équivalente à [`Get-ChildItem`{.language-}](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem)
 - voir les fichiers cachés :
-  - unix/mac : `ls -a`{.language-}
-  - powershell : `ls -Force`{.language-}
+  - unix/mac : `$ ls -a`{.language-}
+  - powershell : `> ls -Force`{.language-}
 - voir tous les fichiers et récursivement :
-  - `ls -R`{.language-}. Si je veux voir tous les fichiers depuis la racine, je peux taper : `s -R /`{.language-} (attention ça va prendre du temps...)
-  - `ls -Depth 3`{.language-}. Sous powershell, il faut donner le nombre de récursion que 'on peut faire. Ici 3.
+  - `$ ls -R`{.language-}. Si je veux voir tous les fichiers depuis la racine, je peux taper : `s -R /`{.language-} (attention ça va prendre du temps...)
+  - `> ls -Depth 3`{.language-}. Sous powershell, il faut donner le nombre de récursion que 'on peut faire. Ici 3.
 - ...
 
 {% info %}
@@ -178,7 +209,7 @@ N'hésitez pas à aller voir la documentation :
 Commande :
 
 ```shell
-mkdir <chemin absolu ou relatif vers le dossier à créer>
+$> mkdir <chemin absolu ou relatif vers le dossier à créer>
 ```
 
 Par exemple : `mkdir truc/chose`{.language-} crée le dossier chose dans le dossier truc lui même placé dans le dossier courant (si le dossier _"./truc"_ n'existe pas, il y a une erreur)
@@ -194,8 +225,8 @@ Documentation :
 #### Supprimer un fichier/dossier
 
 ```shell
-rm <chemin absolu ou relatif vers le fichier à supprimer>
-rm -r <chemin absolu ou relatif vers le dossier à supprimer>
+$> rm <chemin absolu ou relatif vers le fichier à supprimer>
+$> rm -r <chemin absolu ou relatif vers le dossier à supprimer>
 ```
 
 {% info %}
@@ -225,16 +256,16 @@ Le **path** regroupe un ensemble de dossiers où le système ira regarder pour s
 Dans un terminal, tapez :
 {% details "Windows  11" %}
 
-```
-$env:Path
+```shell
+> $env:Path
 ```
 
 {% enddetails %}
 
 {% details "Systèmes Unix" %}
 
-```
-echo $PATH
+```shell
+$ echo $PATH
 ```
 
 {% enddetails %}
@@ -254,16 +285,16 @@ Par exemple, pour ajouter le dossier `/users/franc/bin`{.fichier} au début du p
 
 On suppose que le shell est celui par défaut ([bash](https://www.gnu.org/software/bash/) sous Linux/Ubuntu et [zsh](https://www.zsh.org/) sous Macos) :
 
-```
-export PATH="/users/franc/bin:$PATH"
+```shell
+$ export PATH="/users/franc/bin:$PATH"
 ```
 
 {% enddetails %}
 
 {% details "Système Windows 11" %}
 
-```
-$env:Path = "C:\users\franc\bin;" + $env:Path
+```shell
+> $env:Path = "C:\users\franc\bin;" + $env:Path
 ```
 
 {% enddetails %}
@@ -301,8 +332,8 @@ Par défaut le shell utilisé est [zsh](https://www.zsh.org/). Son fichier de co
 
 On peut aussi le faire directement avec la commande :
 
-```
-echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.zprofile
+```shell
+$ echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.zprofile
 ```
 
 Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"`{.language-} à la fin du fichier `.zprofile`{.fichier} de la maison.
@@ -319,11 +350,11 @@ Par défaut le shell utilisé est [bash](https://www.gnu.org/software/bash/). So
 
 On peut aussi le faire directement avec la commande :
 
-```
-echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.bash_profile
+```shell
+$ echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.profile
 ```
 
-Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"`{.language-} à la fin du fichier `.bash_profile`{.fichier} de la maison.
+Qui ajoute la ligne `$ export PATH="/users/franc/bin:$PATH"`{.language-} à la fin du fichier `.profile`{.fichier} de la maison.
 
 {% info %}
 <https://opensource.com/article/17/6/set-path-linux>

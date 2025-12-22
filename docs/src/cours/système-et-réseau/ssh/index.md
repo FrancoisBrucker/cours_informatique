@@ -15,9 +15,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 > TBD vérifier agent sous windows. Eat-ce qu'il marche aussi avec la wsl ? Si oui le dire dans la partie install wsl de Linux.
-> 
+>
 > TBD refaire avec :
 >
 > 1. création de la clé
@@ -62,25 +61,18 @@ Could not open a connection to your authentication agent.
 
 ```
 
-C'est que vous n'avez pas d'agent. Il faut lancer l'agent à la connexion de chaque shell. Via la commande :
+C'est que vous n'avez pas d'agent, il va vous falloir en créer un.
 
-```sh
-eval "$(ssh-agent -s)"
-```
-
-Si vous ne voulez pas le faire dans chaque terminal, la façon la plus simple est d'ajouter la ligne précédente à la à la fin de votre `~/.profile`{.fichier} (s'il n'existe pas créez le).
-
-{% info %}
-Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
-{% endinfo %}
-
-### Sous windows
+#### Création sous windows/wsl
 
 {% lien %}
 <https://davidaugustat.com/windows/windows-11-setup-ssh>
 {% endlien %}
 
-Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de [gestion des clés OpenSSH](https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement)). Ouvrez un fenêtre **powershell en mode administrateur** (clique droit sur le drapeau, puis choisissez _powershell (admin)_), puis tapez les commandes :
+Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de [gestion des clés OpenSSH](https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement)).
+
+{% faire %}
+Ouvrez un fenêtre **powershell en mode administrateur** (clique droit sur le drapeau, puis choisissez _powershell (admin)_), puis tapez les commandes :
 
 ```powershell
 # Set the sshd service to be started automatically
@@ -90,7 +82,32 @@ Get-Service -Name ssh-agent | Set-Service -StartupType Automatic
 Start-Service ssh-agent
 ```
 
+{% endfaire %}
+
 L'agent fonctionne différemment sous windows que sous un système unix. Mais normalement, il devrait être reconnu, en particulier par git.
+
+#### Création sous Linux
+
+A priori l'agent est déjà effectif mais si ce n'est pas le cas.
+Il faut lancer l'agent à la connexion de chaque shell. Via la commande :
+
+```shell
+$ eval "$(ssh-agent -s)"
+```
+
+Si vous ne voulez pas le faire dans chaque terminal, la façon la plus simple est d'ajouter la ligne précédente à la à la fin de votre `~/.profile`{.fichier} (s'il n'existe pas créez le) :
+
+{% faire %}
+Dans un terminal, tapez la commande :
+
+```shell
+$ echo 'eval "$(ssh-agent -s)"' >> $HOME/.profile
+```
+
+{% endfaire %}
+{% info %}
+Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : [ajout ssh-agent](https://gist.github.com/gabetax/3756756)
+{% endinfo %}
 
 ## ssh, c’est quoi ?
 
