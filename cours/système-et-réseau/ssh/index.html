@@ -144,18 +144,8 @@ usage: <span class="token function">ssh</span> <span class="token punctuation">[
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ ssh-add <span class="token parameter variable">-l</span>
 Could not <span class="token function">open</span> a connection to your authentication agent.
 </code></pre>
-<p>C'est que vous n'avez pas d'agent. Il faut lancer l'agent à la connexion de chaque shell. Via la commande :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>ssh-agent <span class="token parameter variable">-s</span><span class="token variable">)</span></span>"</span></code></pre>
-<p>Si vous ne voulez pas le faire dans chaque terminal, la façon la plus simple est d'ajouter la ligne précédente à la à la fin de votre <code class="fichier">~/.profile</code> (s'il n'existe pas créez le).</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : <a href="https://gist.github.com/gabetax/3756756">ajout ssh-agent</a></p>
-</div></div>
-
-<h3>Sous windows</h3>
+<p>C'est que vous n'avez pas d'agent, il va vous falloir en créer un.</p>
+<h4>Création sous windows/wsl</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -164,13 +154,45 @@ Could not <span class="token function">open</span> a connection to your authenti
 <p><a href="https://davidaugustat.com/windows/windows-11-setup-ssh">https://davidaugustat.com/windows/windows-11-setup-ssh</a></p>
 </div></div>
 
-<p>Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">gestion des clés OpenSSH</a>). Ouvrez un fenêtre <strong>powershell en mode administrateur</strong> (clique droit sur le drapeau, puis choisissez <em>powershell (admin)</em>), puis tapez les commandes :</p>
+<p>Les dernières versions de windows viennent avec tout ssh d'installé. Il faut juste faire en sorte que l'Agent ssh soit lancé au démarrage (on suit le tuto de <a href="https://docs.microsoft.com/fr-fr/windows-server/administration/openssh/openssh_keymanagement">gestion des clés OpenSSH</a>).</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ouvrez un fenêtre <strong>powershell en mode administrateur</strong> (clique droit sur le drapeau, puis choisissez <em>powershell (admin)</em>), puis tapez les commandes :</p>
 <pre class="language-powershell" tabindex="0" data-language="powershell"><code class="language-powershell"><span class="token comment"># Set the sshd service to be started automatically</span>
 <span class="token function">Get-Service</span> <span class="token operator">-</span>Name ssh-agent <span class="token punctuation">|</span> <span class="token function">Set-Service</span> <span class="token operator">-</span>StartupType Automatic
 
 <span class="token comment"># Now start the sshd service</span>
 <span class="token function">Start-Service</span> ssh-agent</code></pre>
+</div></div>
+
 <p>L'agent fonctionne différemment sous windows que sous un système unix. Mais normalement, il devrait être reconnu, en particulier par git.</p>
+<h4>Création sous Linux</h4>
+<p>A priori l'agent est déjà effectif mais si ce n'est pas le cas.
+Il faut lancer l'agent à la connexion de chaque shell. Via la commande :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>ssh-agent <span class="token parameter variable">-s</span><span class="token variable">)</span></span>"</span></code></pre>
+<p>Si vous ne voulez pas le faire dans chaque terminal, la façon la plus simple est d'ajouter la ligne précédente à la à la fin de votre <code class="fichier">~/.profile</code> (s'il n'existe pas créez le) :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans un terminal, tapez la commande :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">echo</span> <span class="token string">'eval "$(ssh-agent -s)"'</span> <span class="token operator">>></span> <span class="token environment constant">$HOME</span>/.profile</code></pre>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : <a href="https://gist.github.com/gabetax/3756756">ajout ssh-agent</a></p>
+</div></div>
+
 <h2>ssh, c’est quoi ?</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

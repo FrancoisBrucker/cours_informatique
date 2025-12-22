@@ -98,19 +98,51 @@
 
   <p>Une fois l'utilisation du terminal comprise (cela ne prend pas beaucoup de temps), le terminal qui vous fera gagner un temps fou.</p>
 <h2>Prompt</h2>
-<p>Lorsque l'on ouvre un terminal, on se retrouve devant <a href="https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande">un prompt</a>. Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une <strong><em>ligne de commande</em></strong> et on appuie sur entrée pour l'exécuter. Cette ligne sera toujours :</p>
+<p>Lorsque l'on ouvre un terminal, on se retrouve devant <a href="https://fr.wikipedia.org/wiki/Prompt_(variable_d%27environnement)">un prompt</a>. Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une <strong><em>ligne de commande</em></strong> à la suite du prompt  et on appuie sur entrée pour l'exécuter.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Dans tous les exemples d'utilisation du terminal, on fera commencer la commande par le prompt :</p>
 <ul>
-<li>soit un fichier exécutable</li>
-<li>soit une instructions compréhensible par le terminal, comme <code class="language-">ls</code> par exemple.</li>
+<li><code>$ </code> si le terminal utilisé est un shell unix (linux/wsl/macos)</li>
+<li><code>&gt; </code> si le terminal est un powershell windows</li>
+<li><code>$&gt; </code> si le terminal utilisé peut être indifféremment un powershell ou un unix</li>
 </ul>
+</div></div>
+
+<p>Une ligne de commande sera toujours composée de mots séparé par des espaces :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Une ligne de commande est <strong>toujours</strong> soit un fichier exécutable soit une instruction.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>ligne de commande</em></strong> est une chaîne de caractères composées de mots séparés par un ou plusieurs espaces tes que :</p>
+<ul>
+<li>le premier mot est la commande et sera :
+<ul>
+<li>soit un fichier exécutable</li>
+<li>soit une instructions compréhensible par le terminal, comme <code class="language-">ls</code> par exemple.</li>
+</ul>
+</li>
+<li>les mots suivants sont optionnels et sont les paramètres de la commande.</li>
+</ul>
 </div></div>
 
+<p>Par exemple :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">ls</span></code></pre>
+<p>Qui est uniquement composée de la commande <code>ls</code> , ou encore :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token builtin class-name">cd</span> /</code></pre>
+<p>Qui est une ligne composée :</p>
+<ul>
+<li>de la commande <code>cd</code></li>
+<li>d'un paramètre <code>/</code></li>
+</ul>
 <p>Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on appelle <strong><em>shell</em></strong> et le système Windows appelé <strong><em>powershell</em></strong>, mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell. Nous ne verrons que les commandes de bases du shell mais il en existe de nombreuses autres, n'hésitez pas à expérimenter (on ira bien plus loin dans la partie Linux de ce cours) :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -146,7 +178,7 @@
 
 <h2>Exécuter une commande</h2>
 <p>Le premier élément de la ligne de commande est un fichier qui doit être exécuté. Par exemple :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python mon_script.py</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> python mon_script.py</code></pre>
 <p>Comme le mot <em>python</em> n'est pas une instruction c'est <strong>forcément</strong> un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant <code class="fichier">python</code> (ou <code class="fichier">python.exe</code> si on est sous windows) dans un ensemble de dossiers qu'on appelle le <a href="#path">path</a>.</p>
 <p>Si le fichier <code class="fichier">python</code> (ou <code class="fichier">python.exe</code> si on est sous windows) n'est pas trouvé, le terminal rend une erreur.</p>
 <p>S'il est trouvé, il est exécuté.</p>
@@ -160,7 +192,7 @@
 
 <h3>Paramètres</h3>
 <p>Tout Ce qui suit l'instruction ou le fichier exécutable dans une ligne de commande sont les <strong><em>paramètres</em></strong>.</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python mon_script.py</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> python mon_script.py</code></pre>
 <p>Dans la ligne de commande précédente on a :</p>
 <ul>
 <li>un fichier à exécuter : <code class="fichier">python</code></li>
@@ -220,7 +252,7 @@ On peut également faire suivre le <code>~</code> d'un login pour aller dans la 
 <h4>Fichier et dossiers du dossier courant</h4>
 <p>La commande <code class="language-">ls</code> donne les dossiers et les fichiers du dossier courant.</p>
 <p>La commande <code class="language-">ls</code> est en fait plus générale car on peut l'utiliser avec un paramètre qui est un chemin absolu ou relatif où lister les fichiers/dossiers. Par exemple, sur mon mac, si je tape :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ls</span> /</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">ls</span> /</code></pre>
 <p>J'obtiens tous les dossier de la racine :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Applications Users        cores        home         sbin         var
 Library      Volumes      dev          opt          tmp
@@ -229,20 +261,20 @@ System       bin          etc          private      usr</code></pre>
 <ul>
 <li>afficher toutes les informations :
 <ul>
-<li>unix/mac : <code class="language-">ls -l</code></li>
-<li>powershell : <code class="language-">ls</code>. L'instruction <code class="language-">ls</code> sous powershell est équivalente à <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem"><code class="language-">Get-ChildItem</code></a></li>
+<li>unix/mac : <code class="language-">$ ls -l</code></li>
+<li>powershell : <code class="language-">&gt; ls</code>. L'instruction <code class="language-">ls</code> sous powershell est équivalente à <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem"><code class="language-">Get-ChildItem</code></a></li>
 </ul>
 </li>
 <li>voir les fichiers cachés :
 <ul>
-<li>unix/mac : <code class="language-">ls -a</code></li>
-<li>powershell : <code class="language-">ls -Force</code></li>
+<li>unix/mac : <code class="language-">$ ls -a</code></li>
+<li>powershell : <code class="language-">&gt; ls -Force</code></li>
 </ul>
 </li>
 <li>voir tous les fichiers et récursivement :
 <ul>
-<li><code class="language-">ls -R</code>. Si je veux voir tous les fichiers depuis la racine, je peux taper : <code class="language-">s -R /</code> (attention ça va prendre du temps...)</li>
-<li><code class="language-">ls -Depth 3</code>. Sous powershell, il faut donner le nombre de récursion que 'on peut faire. Ici 3.</li>
+<li><code class="language-">$ ls -R</code>. Si je veux voir tous les fichiers depuis la racine, je peux taper : <code class="language-">s -R /</code> (attention ça va prendre du temps...)</li>
+<li><code class="language-">&gt; ls -Depth 3</code>. Sous powershell, il faut donner le nombre de récursion que 'on peut faire. Ici 3.</li>
 </ul>
 </li>
 <li>...</li>
@@ -262,7 +294,7 @@ System       bin          etc          private      usr</code></pre>
 <h3>Création et suppression de fichiers/dossiers</h3>
 <h4>Créer un dossier</h4>
 <p>Commande :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">mkdir</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à créer<span class="token operator">></span></code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">mkdir</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à créer<span class="token operator">></span></code></pre>
 <p>Par exemple : <code class="language-">mkdir truc/chose</code> crée le dossier chose dans le dossier truc lui même placé dans le dossier courant (si le dossier <em>&quot;./truc&quot;</em> n'existe pas, il y a une erreur)</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -277,8 +309,8 @@ System       bin          etc          private      usr</code></pre>
 </div></div>
 
 <h4>Supprimer un fichier/dossier</h4>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">rm</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier à supprimer<span class="token operator">></span>
-<span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à supprimer<span class="token operator">></span></code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">rm</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier à supprimer<span class="token operator">></span>
+$<span class="token operator">></span> <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à supprimer<span class="token operator">></span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -323,8 +355,7 @@ System       bin          etc          private      usr</code></pre>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre><code>$env:Path
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">></span> <span class="token variable">$env</span>:Path</code></pre>
 </div>
 </details>     
 </div>
@@ -345,8 +376,7 @@ System       bin          etc          private      usr</code></pre>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre><code>echo $PATH
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span></code></pre>
 </div>
 </details>     
 </div>
@@ -376,8 +406,7 @@ System       bin          etc          private      usr</code></pre>
 </summary>
 <div class="mx-8 pb-2">
 <p>On suppose que le shell est celui par défaut (<a href="https://www.gnu.org/software/bash/">bash</a> sous Linux/Ubuntu et <a href="https://www.zsh.org/">zsh</a> sous Macos) :</p>
-<pre><code>export PATH=&quot;/users/franc/bin:$PATH&quot;
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"/users/franc/bin:<span class="token environment constant">$PATH</span>"</span></code></pre>
 </div>
 </details>     
 </div>
@@ -398,8 +427,7 @@ System       bin          etc          private      usr</code></pre>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre><code>$env:Path = &quot;C:\users\franc\bin;&quot; + $env:Path
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">></span> <span class="token variable">$env</span>:Path <span class="token operator">=</span> <span class="token string">"C:\users<span class="token entity" title="\f">\f</span>ranc<span class="token entity" title="\b">\b</span>in;"</span> + <span class="token variable">$env</span>:Path</code></pre>
 </div>
 </details>     
 </div>
@@ -460,8 +488,7 @@ System       bin          etc          private      usr</code></pre>
 <div class="mx-8 pb-2">
 <p>Par défaut le shell utilisé est <a href="https://www.zsh.org/">zsh</a>. Son fichier de configuration lu au login est un fichier nommé <code class="fichier">.zprofile</code> qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.</p>
 <p>On peut aussi le faire directement avec la commande :</p>
-<pre><code>echo 'export PATH=&quot;/users/franc/bin:$PATH&quot;' &gt;&gt; $HOME/.zprofile
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">echo</span> <span class="token string">'export PATH="/users/franc/bin:$PATH"'</span> <span class="token operator">>></span> <span class="token environment constant">$HOME</span>/.zprofile</code></pre>
 <p>Qui ajoute la ligne <code class="language-">export PATH=&quot;/users/franc/bin:$PATH&quot;</code> à la fin du fichier <code class="fichier">.zprofile</code> de la maison.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -493,9 +520,8 @@ System       bin          etc          private      usr</code></pre>
 <div class="mx-8 pb-2">
 <p>Par défaut le shell utilisé est <a href="https://www.gnu.org/software/bash/">bash</a>. Son fichier de configuration lu au login est un fichier nommé `.bash_profile{.fichier} qui est dans votre dossier personnel (la maison). Vous pouvez éditer ce fichier et ajouter la ligne de modification à la fin de celui-ci.</p>
 <p>On peut aussi le faire directement avec la commande :</p>
-<pre><code>echo 'export PATH=&quot;/users/franc/bin:$PATH&quot;' &gt;&gt; $HOME/.bash_profile
-</code></pre>
-<p>Qui ajoute la ligne <code class="language-">export PATH=&quot;/users/franc/bin:$PATH&quot;</code> à la fin du fichier <code class="fichier">.bash_profile</code> de la maison.</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">echo</span> <span class="token string">'export PATH="/users/franc/bin:$PATH"'</span> <span class="token operator">>></span> <span class="token environment constant">$HOME</span>/.profile</code></pre>
+<p>Qui ajoute la ligne <code class="language-">$ export PATH=&quot;/users/franc/bin:$PATH&quot;</code> à la fin du fichier <code class="fichier">.profile</code> de la maison.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
