@@ -96,9 +96,30 @@
     
   
 
-  <p>Une fois l'utilisation du terminal comprise (cela ne prend pas beaucoup de temps), le terminal qui vous fera gagner un temps fou.</p>
+  <p>Une fois l'utilisation du terminal comprise (cela ne prend pas beaucoup de temps), cela vous fera gagner un temps fou.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ouvrez un terminal et tapez les différentes commandes pour se les mettre dans les doigts.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le corrigé des exercices montrent les résultat sur :</p>
+<ul>
+<li>un terminal d'une machine Linux où mon login est <code>fbrucker</code></li>
+<li>un powershell d'une machine Windows 11 où mon login est <code>fbrucker</code></li>
+</ul>
+</div></div>
+
 <h2>Prompt</h2>
-<p>Lorsque l'on ouvre un terminal, on se retrouve devant <a href="https://fr.wikipedia.org/wiki/Prompt_(variable_d%27environnement)">un prompt</a>. Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une <strong><em>ligne de commande</em></strong> à la suite du prompt  et on appuie sur entrée pour l'exécuter.</p>
+<p>Lorsque l'on ouvre un terminal, on se retrouve devant <a href="https://fr.wikipedia.org/wiki/Prompt_(variable_d%27environnement)">un prompt</a>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -114,6 +135,165 @@
 </ul>
 </div></div>
 
+<p>Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une <a href="#ligne-commande"><strong><em>ligne de commande</em></strong></a> à la suite du prompt et on appuie sur entrée pour l'exécuter. Par exemple :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">ls</span></code></pre>
+<p>Qui est uniquement composée de <a href="#ls">la commande <code>ls</code></a> et qui liste les fichiers du dossier courant, ou encore :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token builtin class-name">cd</span> /</code></pre>
+<p>Qui est une ligne composée :</p>
+<ul>
+<li>de <a href="#cd">la commande <code>cd</code></a></li>
+<li>d'un paramètre <code>/</code></li>
+</ul>
+<p>Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on appelle <strong><em>shell</em></strong> et le système Windows appelé <strong><em>powershell</em></strong>, mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell. Nous ne verrons que les commandes de bases du terminal utilisable sur les deux plateformes mais il en existe de nombreuses autres, n'hésitez pas à expérimenter (on ira bien plus loin dans la partie Linux de ce cours) :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/">liste des instructions powershell</a></li>
+<li><a href="https://blog.stephane-robert.info/docs/admin-serveurs/linux/commandes/">Commandes terminal Linux courantes</a></li>
+</ul>
+</div></div>
+
+<h3><span id="pwd"></span>Dossier courant</h3>
+<p>De plus un terminal est <strong>toujours</strong> positionné dans un dossier précis de votre arborescence de fichiers. C'est le <strong>dossier courant</strong>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un terminal est <strong>toujours</strong> positionné dans un dossier, appelé <strong><em>dossier courant</em></strong>.</p>
+</div></div>
+
+<p>L'exécution d'une ligne de commande se fera <strong>toujours</strong> par rapport à cet endroit.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour connaître le dossier courant d'un terminal, on utilise la commande <code class="language-">pwd</code>.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Manuel</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-location"><code>pwd</code> du powershell</a> alias vers la commande <code class="language-">Get-Location</code></li>
+<li><a href="https://manpages.debian.org/trixie/manpages-fr/pwd.1.fr.html"><code>pwd</code> unix</a></li>
+</ul>
+</div></div>
+
+<p>Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal <a href="../bases/#explorateur" class="interne">dans un dossier spécifique</a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tapez la commande suivante dans un terminal nouvellement ouvert :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token builtin class-name">pwd</span></code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" ouvert="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemples</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"> $ <span class="token builtin class-name">pwd</span>
+/home/fbrucker
+</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">></span> <span class="token builtin class-name">pwd</span>
+
+Path
+----
+C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>fbrucker
+</code></pre>
+</div>
+</details>     
+</div>
+<h3><span id="whoami"></span>Utilisateur courant</h3>
+<p>Enfin, un terminal dépend toujours d'un utilisateur. Par défaut c'est celui qui a ouvert la session, mais il est possible (et on le fera intensivement plus tard) de changer d'utilisateur voir de se connecter sur des ordinateurs distant via le terminal. Il est alors crucial de connaître le login de l'utilisateur exécutant ce terminal.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour connaître l'utilisateur du terminal, on utilise la commande <code class="language-">whoami</code>.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Manuel</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/whoami"><code>whoami</code> de windows</a></li>
+<li><a href="https://manpages.debian.org/trixie/manpages-fr/whoami.1.fr.html"><code>whoami</code> unix</a></li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tapez la commande suivante dans un terminal :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">whoami</span></code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" ouvert="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemples</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"> $ <span class="token function">whoami</span>
+fbrucker
+</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">></span> <span class="token function">whoami</span>
+franoisbruca7be<span class="token punctuation">\</span>fbrucker
+</code></pre>
+</div>
+</details>     
+</div>
+<h2><span id="ligne-commande"></span>Ligne de commande</h2>
 <p>Une ligne de commande sera toujours composée de mots séparé par des espaces :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -134,54 +314,14 @@
 </ul>
 </div></div>
 
-<p>Par exemple :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">ls</span></code></pre>
-<p>Qui est uniquement composée de la commande <code>ls</code> , ou encore :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token builtin class-name">cd</span> /</code></pre>
-<p>Qui est une ligne composée :</p>
-<ul>
-<li>de la commande <code>cd</code></li>
-<li>d'un paramètre <code>/</code></li>
-</ul>
-<p>Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on appelle <strong><em>shell</em></strong> et le système Windows appelé <strong><em>powershell</em></strong>, mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell. Nous ne verrons que les commandes de bases du shell mais il en existe de nombreuses autres, n'hésitez pas à expérimenter (on ira bien plus loin dans la partie Linux de ce cours) :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/">liste des instructions powershell</a></li>
-<li><a href="https://github.com/RehanSaeed/Bash-Cheat-Sheet">liste des instructions courantes shell (bash)</a></li>
-</ul>
-</div></div>
-
-<h3>Dossier courant</h3>
-<p>De plus un terminal est <strong>toujours</strong> positionné dans un dossier précis de votre arborescence de fichiers. C'est le <strong>dossier courant</strong>. L'exécution d'une ligne de commande se fera <strong>toujours</strong> par rapport à cet endroit.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Pour connaître l'endroit où est positionné le terminal, on peut utiliser la commande shell <code class="language-">pwd</code>.</p>
-</div></div>
-
-<p>Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal <a href="../bases/#explorateur" class="interne">dans un dossier spécifique</a>.</p>
-<h3>Utilisateur courant</h3>
-<p>Enfin, un terminal dépend toujours d'un utilisateur. Par défaut c'est celui qui a ouvert la session, mais il est possible (et on le fera intensivement plus tard) de changer d'utilisateur voir de se connecter sur des ordinateurs distant via le terminal. Il est alors crucial de connaître le login de l'utilisateur exécutant ce terminal.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Pour connaître l'utilisateur du terminal, on peut utiliser la commande shell <code class="language-">whoami</code>.</p>
-</div></div>
-
-<h2>Exécuter une commande</h2>
-<p>Le premier élément de la ligne de commande est un fichier qui doit être exécuté. Par exemple :</p>
+<h3>Commande</h3>
+<p>Le premier élément d'une ligne de commande est un fichier qui doit être exécuté. Par exemple :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> python mon_script.py</code></pre>
-<p>Comme le mot <em>python</em> n'est pas une instruction c'est <strong>forcément</strong> un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant <code class="fichier">python</code> (ou <code class="fichier">python.exe</code> si on est sous windows) dans un ensemble de dossiers qu'on appelle le <a href="#path">path</a>.</p>
-<p>Si le fichier <code class="fichier">python</code> (ou <code class="fichier">python.exe</code> si on est sous windows) n'est pas trouvé, le terminal rend une erreur.</p>
-<p>S'il est trouvé, il est exécuté.</p>
+<p>Comme le mot <em>python</em> n'est pas une instruction c'est <strong>forcément</strong> un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant <code class="fichier">python</code> (ou <code class="fichier">python.exe</code> si on est sous windows) dans un ensemble de dossiers qu'on appelle le <a href="#path">path</a> :</p>
+<ul>
+<li>Si le fichier <code class="fichier">python</code> (ou <code class="fichier">python.exe</code> si on est sous windows) n'est pas trouvé, le terminal rend une erreur.</li>
+<li>S'il est trouvé, il est exécuté.</li>
+</ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -207,11 +347,13 @@
 </div></div>
 
 <p>Pour savoir quelles sont les paramètres possible, il faut regarder la documentation du fichier exécutable. Dans notre exemple <a href="https://docs.python.org/3/using/cmdline.html">documentation de la commande python</a> nous indique que le paramètre <code class="fichier">mon_script.py</code> correspond à un chemin relatif au dossier courant vers un fichier python à interpréter.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Pour que notre commande <code class="language-">python mon_script.py</code> soit exécutée sans erreur il faut donc :</p>
 <ol>
 <li>qu'un fichier exécutable nommé <code class="fichier">python</code> (ou <code class="fichier">python.exe</code> sous windows) soit présent dans un des dossiers du path</li>
@@ -220,44 +362,197 @@
 </div></div>
 
 <h3><span id="which"></span> Quelle commande ?</h3>
-<p>La commande exécutée d'une ligne de commande est un fichier présent dans le path. S'il existe plusieurs possibilités, c'est la 1ère rencontrée qui est utilisée. Il existe une commande shell pour déterminer le chemin absolu de la commande utilisée :</p>
+<p>La commande exécutée d'une ligne de commande est un fichier présent dans une liste de dossiers prédéfini (<a href="#path">le path</a>). S'il existe plusieurs possibilités, c'est la 1ère rencontrée qui est utilisée. Il existe une commande pour déterminer le chemin absolu de la commande utilisée :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
 <ul>
-<li><a href="https://linux.die.net/man/1/which"><code class="language-">which</code></a> sous unix/mac.</li>
+<li><a href="https://manpages.debian.org/trixie/gnu-which/which.1.en.html"><code class="language-">which</code></a> sous unix/mac.</li>
 <li><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2"><code class="language-">get-command</code></a> sous powershell</li>
 </ul>
-<p>Ainsi <code class="language-">which python</code> sous unix/mac et <code class="language-">get-command python</code> sous powershell vont donner le chemin absolu vers le python utilisé.</p>
-<h2>Opérations sur les dossiers/fichiers</h2>
-<h3>Opérations sur le dossier courant</h3>
-<h4>Où ?</h4>
-<p>La commande shell <code class="language-">pwd</code> donne le dossier courant du terminal.</p>
-<h4>Changer le dossier courant</h4>
-<p>Pour changer de dossier courant, on utiliser la commande shell <code class="language-">cd</code> suivi d'un chemin absolu ou relatif vers un autre dossier.</p>
-<p>Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande <code class="language-">pwd</code> me rend en effet : <code class="fichier">/Users/fbrucker</code>.</p>
-<p>Si je veux aller dans le dossier contenant ma plus belle photo d'Ada Lovelace, je peux taper :</p>
-<ul>
-<li>un chemin absolu : <code class="language-">cd /Users/fbrucker/Desktop</code></li>
-<li>un chemin relatif : <code class="language-">cd Desktop</code>, ou encore <code class="language-">cd ./Desktop</code></li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez que je ne peux pas aller dans un fichier.</p>
-<p>Si j'avais tapé <code class="language-">/Users/fbrucker/Desktop/ada_lovelace.png</code> j'aurais eu une erreur. Sur mon mac, ça dit : <code>cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png</code></p>
 </div></div>
 
-<p>Sous unix, le caractère <code>~</code> est équivalent au chemin absolu vers la maison. En tapant <code class="language-">cd ~</code> je me retrouve alors directement à la maison. De là, <code class="language-">cd ~/Desktop</code> m'envoie dans le dossier <code class="fichier">/Users/fbrucker/Desktop</code> quelque soit l'endroit où je me trouve.
-On peut également faire suivre le <code>~</code> d'un login pour aller dans la maison ce cet utilisateur, par exemple <code>cd ~fbrucker</code> pour se rendre dans le dossier maison de le l'utilisateur de login <code>fbrucker</code>.</p>
-<h4>Fichier et dossiers du dossier courant</h4>
-<p>La commande <code class="language-">ls</code> donne les dossiers et les fichiers du dossier courant.</p>
-<p>La commande <code class="language-">ls</code> est en fait plus générale car on peut l'utiliser avec un paramètre qui est un chemin absolu ou relatif où lister les fichiers/dossiers. Par exemple, sur mon mac, si je tape :</p>
+<p>Ainsi <code class="language-">which python</code> sous unix/mac et <code class="language-">get-command python</code> sous powershell vont donner le chemin absolu vers le python utilisé.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tapez la commande suivante dans un terminal (pour un système ayant python d'installé) :</p>
+<ul>
+<li>sous linux/macos : <code>$ which python</code></li>
+<li>sous windows : <code>&gt; get-command python</code></li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" ouvert="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemples</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"> $ <span class="token function">which</span> python
+/usr/bin/python
+</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">></span> get-command python
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Application     python.exe                                         <span class="token number">0.0</span>.0.0    C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>fbrucker<span class="token punctuation">\</span>AppData<span class="token punctuation">\</span>Local<span class="token punctuation">\</span>Micros<span class="token punctuation">..</span>.
+</code></pre>
+</div>
+</details>     
+</div>
+<h2>Opérations sur les dossiers/fichiers</h2>
+<h3>Opérations sur le dossier courant</h3>
+<p>On a déjà vu comment connaître <a href="#whoami">l'utilisateur</a> et <a href="#pwd">le dossier courant</a> et d'un terminal.</p>
+<h4><span id="ls"></span>Liste</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La commande <code class="language-">$&gt; ls</code> donne le contenu du dossier courant.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Manuel</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem">ls du powershell</a> alias vers la commande <code class="language-">Get-ChildItem</code></li>
+<li><a href="https://manpages.debian.org/trixie/manpages-fr/ls.1.fr.html">ls unix</a></li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tapez la commande suivante dans un terminal nouvellement ouvert :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">ls</span></code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" ouvert="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemples</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ls</span>
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">
+<span class="token operator">></span> <span class="token function">ls</span>
+
+
+    Répertoire <span class="token builtin class-name">:</span> C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>fbrucker
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-r---        03/12/2025     07:14                Contacts
+d-r---        03/12/2025     <span class="token number">10</span>:38                Desktop
+d-r---        03/12/2025     07:14                Documents
+d-r---        01/04/2024     <span class="token number">10</span>:45                Downloads
+d-r---        03/12/2025     07:14                Favorites
+d-r---        03/12/2025     07:14                Links
+d-r---        01/04/2024     <span class="token number">10</span>:45                Music
+d-r---        01/04/2024     <span class="token number">10</span>:45                Pictures
+d-r---        03/12/2025     07:14                Saved Games
+d-r---        03/12/2025     09:18                Searches
+d-r---        01/04/2024     <span class="token number">10</span>:45                Videos
+</code></pre>
+</div>
+</details>     
+</div>
+<p>La commande <code class="language-">ls</code> est en fait plus générale car on peut l'utiliser avec un paramètre qui est un chemin absolu ou relatif où lister les fichiers/dossiers :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tapez la commande suivante dans un terminal :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">ls</span> /</code></pre>
-<p>J'obtiens tous les dossier de la racine :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Applications Users        cores        home         sbin         var
-Library      Volumes      dev          opt          tmp
-System       bin          etc          private      usr</code></pre>
-<p>La commande <code class="language-">ls</code> a beaucoup de paramètres possible. Dans le monde du terminal, une commande va faire une unique chose mais de plein de façon disponible. C'est souvent ce qui fait peur, mais au final on utilisera jamais toutes les possibilités. Par exemple la <a href="http://manpagesfr.free.fr/man/man1/ls.1.html">documentation de la commande ls</a> nous permet :</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" ouvert="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemples</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ls</span> /
+bin   cdrom  etc   lib         media  opt   root  sbin  srv       sys  usr
+boot  dev    home  lost+found  mnt    proc  run   snap  swapfile  tmp  var
+</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">
+r<span class="token operator">></span> <span class="token function">ls</span> /
+
+
+    Répertoire <span class="token builtin class-name">:</span> C:<span class="token punctuation">\</span>
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        07/06/2025     <span class="token number">17</span>:41                inetpub
+d-r---        <span class="token number">23</span>/12/2025     08:16                Mac
+d-----        01/04/2024     <span class="token number">10</span>:45                PerfLogs
+d-r---        03/12/2025     07:20                Program Files
+d-r---        03/12/2025     07:19                Program Files <span class="token punctuation">(</span>x86<span class="token punctuation">)</span>
+d-r---        03/12/2025     09:18                Users
+d-----        <span class="token number">23</span>/12/2025     08:45                Windows
+</code></pre>
+</div>
+</details>     
+</div>
+<p>La commande <code class="language-">ls</code> admet beaucoup de paramètres. Dans le monde du terminal, une commande va faire une unique chose mais de plein de façons possibles. C'est souvent ce qui fait peur, mais au final on utilisera jamais toutes les possibilités. Par exemple la documentation de la commande ls nous permet :</p>
 <ul>
 <li>afficher toutes les informations :
 <ul>
@@ -279,55 +574,245 @@ System       bin          etc          private      usr</code></pre>
 </li>
 <li>...</li>
 </ul>
+<h4><span id="cd"></span>Changer le dossier courant</h4>
+<p>Pour changer de dossier courant, on utiliser la commande <code class="language-">cd</code> suivi d'un chemin absolu ou relatif vers un autre dossier.</p>
+<p>Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande <code class="language-">pwd</code> me rend en effet : <code class="fichier">/Users/fbrucker</code>.</p>
+<p>Si je veux aller dans le dossier contenant ma plus belle photo d'Ada Lovelace, je peux taper :</p>
+<ul>
+<li>un chemin absolu : <code class="language-">cd /Users/fbrucker/Desktop</code></li>
+<li>un chemin relatif : <code class="language-">cd Desktop</code>, ou encore <code class="language-">cd ./Desktop</code></li>
+</ul>
+<p>Notez que je ne peux pas aller dans un fichier.</p>
+<p>Si j'avais tapé <code class="language-">/Users/fbrucker/Desktop/ada_lovelace.png</code> j'aurais eu une erreur. Sur mon mac, ça dit : <code>cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png</code></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La commande <code class="language-">$&gt; cd</code> permet de changer le dossier courant du terminal.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Manuel</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem">cd du powershell</a> alias vers la commande <code class="language-">Get-ChildItem</code></li>
+<li><a href="https://manpages.debian.org/trixie/tcl9.0-doc/cd.3tcl.en.html">cd unix</a></li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tapez les commandes suivantes dans un terminal nouvellement ouvert :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token builtin class-name">cd</span> /
+$<span class="token operator">></span> <span class="token builtin class-name">pwd</span>
+$<span class="token operator">></span> <span class="token builtin class-name">cd</span> ~
+$<span class="token operator">></span> <span class="token builtin class-name">pwd</span></code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" ouvert="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemples</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">cd</span> /
+$ <span class="token builtin class-name">pwd</span>
+/
+$ <span class="token builtin class-name">cd</span> ~
+$ <span class="token builtin class-name">pwd</span>
+/home/fbrucker
+</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">></span> <span class="token builtin class-name">cd</span> /
+<span class="token operator">></span> <span class="token builtin class-name">pwd</span>
+
+Path
+----
+C:<span class="token punctuation">\</span>
+
+
+<span class="token operator">></span> <span class="token builtin class-name">cd</span> ~
+<span class="token operator">></span> <span class="token builtin class-name">pwd</span>
+
+Path
+----
+C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>fbrucker
+
+</code></pre>
+</div>
+</details>     
+</div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>N'hésitez pas à aller voir la documentation :</p>
-<ul>
-<li><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem">ls du powershell</a> alias vers la commande <code class="language-">Get-ChildItem</code></li>
-<li><a href="http://manpagesfr.free.fr/man/man1/ls.1.html">ls unix</a></li>
-</ul>
+<p>Sous unix, taper la commande <code>cd</code> sans argument permet de revenir à la maison.</p>
 </div></div>
 
 <h3>Création et suppression de fichiers/dossiers</h3>
 <h4>Créer un dossier</h4>
-<p>Commande :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">mkdir</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à créer<span class="token operator">></span></code></pre>
-<p>Par exemple : <code class="language-">mkdir truc/chose</code> crée le dossier chose dans le dossier truc lui même placé dans le dossier courant (si le dossier <em>&quot;./truc&quot;</em> n'existe pas, il y a une erreur)</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Documentation :</p>
-<ul>
-<li><a href="https://ss64.com/ps/new-item.html">mkdir du powershell</a> qui est un alias vers la commande <code class="language-">new-item</code></li>
-<li><a href="https://linux.die.net/man/1/mkdir">mkdir unix</a></li>
-</ul>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La commande <code class="language-">$&gt; mkdir &lt;chemin absolu ou relatif vers le dossier à créer&gt;</code> permet de créer un dossier.</p>
 </div></div>
 
-<h4>Supprimer un fichier/dossier</h4>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">rm</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier à supprimer<span class="token operator">></span>
-$<span class="token operator">></span> <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à supprimer<span class="token operator">></span></code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Documentation :</p>
-<ul>
-<li><a href="https://ss64.com/ps/remove-item.html">rm du powershell</a> redirige vers la commande <code class="language-">remove-item</code></li>
-<li><a href="https://linuxtect.com/linux-rm-command-tutorial/">rm unix</a> La commande <code class="language-">rm</code> a beaucoup, beaucoup de paramètres possibles</li>
-</ul>
-</div></div>
-
-<h3>On vérifie qu'on a compris</h3>
-<p>Faite le jeu ci-après (c'est un genre de <a href="https://fr.wikipedia.org/wiki/Multi-user_dungeon">MUD</a> solitaire), fait pour comprendre et utiliser le terminal unix :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Manuel</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://ss64.com/ps/new-item.html">mkdir du powershell</a> qui est un alias vers la commande <code class="language-">new-item</code></li>
+<li><a href="https://manpages.debian.org/trixie/manpages-fr/mkdir.1.fr.html">mkdir unix</a></li>
+</ul>
+</div></div>
+
+<p>Par exemple : <code class="language-">mkdir truc/chose</code> crée le dossier chose dans le dossier truc lui même placé dans le dossier courant (si le dossier <em>&quot;./truc&quot;</em> n'existe pas, il y a une erreur).</p>
+<h4>Copier des fichiers/dossiers</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La commande <code class="language-">cp</code> permet de copier un dossier ou un fichier :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">cp</span> <span class="token operator">&lt;</span>chemin absolu ou relatif <span class="token function">du</span> dossier ou fichier à copier<span class="token operator">></span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier/dossier copié<span class="token operator">></span></code></pre>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Manuel</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://ss64.com/ps/copy-item.html">cp du powershell</a> qui est un alias vers la commande <code class="language-">copy-item</code></li>
+<li><a href="https://manpages.debian.org/trixie/manpages-fr/cp.1.fr.html">cp unix</a></li>
+</ul>
+</div></div>
+
+<p>Par exemple : <code class="language-">cp truc/machin chose</code> copie le fichier <code class="fichier">machin</code> dans le dossier relatif <code class="fichier">truc/</code> vers le fichier <code class="fichier">chose</code> du dossier courant.</p>
+<p>Notez qu'on ne peut par copier de dossier par défaut sous unix :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En regardant la documentation, trouver comment faire pour copier un dossier ainsi que ses sous dossiers sous unix et windows.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>sous unix on utilise le paramètre <code>-R</code></li>
+<li>sous unix on utilise le paramètre <code>-recurse</code></li>
+</ul>
+</div>
+</details>     
+</div>
+<h4>Déplacer/renommer des fichiers/dossiers</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La commande <code class="language-">mv</code> permet de déplacer un fichier :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">mv</span> <span class="token operator">&lt;</span>chemin absolu ou relatif <span class="token function">du</span> le fichier à déplacer<span class="token operator">></span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier/dossier déplacé<span class="token operator">></span></code></pre>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Manuel</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://ss64.com/ps/move-item.html">mv du powershell</a> qui est un alias vers la commande <code class="language-">move-item</code></li>
+<li><a href="https://manpages.debian.org/trixie/manpages-fr/mv.1.fr.html">mv unix</a></li>
+</ul>
+</div></div>
+
+<p>Par exemple : <code class="language-">mv truc/machin chose</code> déplace le fichier <code class="fichier">machin</code> dans le dossier relatif <code class="fichier">truc/</code> vers le fichier <code class="fichier">chose</code> du dossier courant.</p>
+<h4>Supprimer un fichier/dossier</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Commande</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La commande <code class="language-">rm</code> permet de supprimer un fichier ou un dossier :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">rm</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier à supprimer<span class="token operator">></span>
+$ <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à supprimer<span class="token operator">></span>
+<span class="token operator">></span> <span class="token function">rm</span> <span class="token parameter variable">-Recurse</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à supprimer<span class="token operator">></span></code></pre>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Manuel</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://ss64.com/ps/remove-item.html">rm du powershell</a> redirige vers la commande <code class="language-">remove-item</code></li>
+<li><a href="https://manpages.debian.org/trixie/manpages-fr/rm.1.fr.html">rm unix</a></li>
+</ul>
+</div></div>
+
+<h2>On vérifie qu'on a compris</h2>
+<p>Faite le jeu ci-après (c'est un genre de <a href="https://fr.wikipedia.org/wiki/Multi-user_dungeon">MUD</a> solitaire), fait pour comprendre et utiliser le terminal unix :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="http://luffah.xyz/bidules/Terminus/">Perdu dans un monde étrange</a></p>

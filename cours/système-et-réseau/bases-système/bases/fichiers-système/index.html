@@ -98,20 +98,20 @@
 
   <p>Lorsque l'on démarre un ordinateur, <a href="../../but/#d%C3%A9marrage" class="interne">on a vu</a> qu'est chargé le bootloader qui permet de charger le noyau. Ces deux éléments doivent être lues sur un des disque dur de l'ordinateur et font partie du système d'exploitation. De plus un système va avoir besoin de tout un tas de fichiers de configurations et d'un endroit où il va ranger les différents logiciels qu'il utilisera.</p>
 <p>L'organisation de cette structure est différente selon les OS mais on retrouvera toujours ces éléments.</p>
-<h2>Fichiers système</h2>
+<h2>Dossiers système</h2>
 <h3>Bootloader et noyau</h3>
 <p>Le bootloader et le noyau se trouvent dans <a href="https://fr.wikipedia.org/wiki/Partition_(informatique)">une partition spéciale</a> du disque dur de démarrage.</p>
-<h3>Dossier système</h3>
-<p>Va contenir tous les fichiers nécessaires au bon fonctionnement du système :</p>
+<h3>Fonctionnement interne</h3>
+<p>Répartis dans plusieurs dossiers et contient tous les fichiers nécessaires au bon fonctionnement du système :</p>
 <ul>
 <li>les fichiers de configurations</li>
 <li>les applications système (comme systemd sous linux par exemple)</li>
 <li><a href="https://fr.wikipedia.org/wiki/Dynamic_Link_Library">les bibliothèques dynamiques</a></li>
 </ul>
-<h3>Application</h3>
+<h3>Applications</h3>
 <p>Dossier contenant les applications reconnues par le système. Si vous installez un logiciel dans un dossier différent il se peut qu'il ne soit pas automatiquement reconnu.</p>
 <h2>Dossiers Utilisateurs</h2>
-<p>Un dossier spécifique à chaque utilisateur. Il va contenir tous ses fichiers de données, mais également :</p>
+<p>Un dossier spécifique à chaque utilisateur, aussi appelé <strong><em>Maison</em></strong>. Il va contenir tous ses fichiers de données, mais également :</p>
 <ul>
 <li>ses fichiers de configuration</li>
 <li>ses programmes</li>
