@@ -44,7 +44,7 @@ Ou de façon abrégée (0 de tête supprimés et une suite de 0 concaténée):
 2001:db8:0:85a3::ac1f:8001
 ```
 
-Une adresse IP différente est associée à toute machine sur le réseau internet, c'est ce qui permet de les différentier. Il y a donc $2^{128}$ adresses possibles, ce qui en fait plus que de particules dans l'univers ($10^{80}$)
+Une adresse IP différente est associée à toute machine sur le réseau internet, c'est ce qui permet de les différentier. Il y a donc $2^{128}$ adresses possibles, ce qui en fait plus que d\atomes dans l'univers ($10^{80}$)
 
 Actuellement coexiste deux standard pour les adresse IP, les adresse IPv6 qu'on vient de voir et les adresse IPv4, sur 4B, écrite byte par byte sous sa forme décimale. Par exemple :
 

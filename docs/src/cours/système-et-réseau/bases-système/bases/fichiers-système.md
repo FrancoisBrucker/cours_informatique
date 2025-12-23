@@ -14,27 +14,27 @@ Lorsque l'on démarre un ordinateur, [on a vu](../../but/#démarrage){.interne} 
 
 L'organisation de cette structure est différente selon les OS mais on retrouvera toujours ces éléments.
 
-## Fichiers système
+## Dossiers système
 
 ### Bootloader et noyau
 
 Le bootloader et le noyau se trouvent dans [une partition spéciale](https://fr.wikipedia.org/wiki/Partition_(informatique)) du disque dur de démarrage.
 
-### Dossier système
+### Fonctionnement interne
 
-Va contenir tous les fichiers nécessaires au bon fonctionnement du système :
+Répartis dans plusieurs dossiers et contient tous les fichiers nécessaires au bon fonctionnement du système :
 
 - les fichiers de configurations
 - les applications système (comme systemd sous linux par exemple)
 - [les bibliothèques dynamiques](https://fr.wikipedia.org/wiki/Dynamic_Link_Library)
 
-### Application
+### Applications
 
 Dossier contenant les applications reconnues par le système. Si vous installez un logiciel dans un dossier différent il se peut qu'il ne soit pas automatiquement reconnu.
 
 ## Dossiers Utilisateurs
 
-Un dossier spécifique à chaque utilisateur. Il va contenir tous ses fichiers de données, mais également :
+Un dossier spécifique à chaque utilisateur, aussi appelé **_Maison_**. Il va contenir tous ses fichiers de données, mais également :
 
 - ses fichiers de configuration
 - ses programmes

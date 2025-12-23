@@ -10,11 +10,22 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une fois l'utilisation du terminal comprise (cela ne prend pas beaucoup de temps), le terminal qui vous fera gagner un temps fou.
+Une fois l'utilisation du terminal comprise (cela ne prend pas beaucoup de temps), cela vous fera gagner un temps fou.
+
+{% faire %}
+Ouvrez un terminal et tapez les différentes commandes pour se les mettre dans les doigts.
+{% endfaire %}
+{% info %}
+Le corrigé des exercices montrent les résultat sur :
+
+- un terminal d'une machine Linux où mon login est `fbrucker`
+- un powershell d'une machine Windows 11 où mon login est `fbrucker`
+
+{% endinfo %}
 
 ## Prompt
 
-Lorsque l'on ouvre un terminal, on se retrouve devant [un prompt](https://fr.wikipedia.org/wiki/Prompt_(variable_d%27environnement)). Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une **_ligne de commande_** à la suite du prompt  et on appuie sur entrée pour l'exécuter.
+Lorsque l'on ouvre un terminal, on se retrouve devant [un prompt](<https://fr.wikipedia.org/wiki/Prompt_(variable_d%27environnement)>).
 
 {% attention "**À retenir**" %}
 Dans tous les exemples d'utilisation du terminal, on fera commencer la commande par le prompt :
@@ -24,6 +35,123 @@ Dans tous les exemples d'utilisation du terminal, on fera commencer la commande 
 - `$> ` si le terminal utilisé peut être indifféremment un powershell ou un unix
 
 {% endattention %}
+
+Ce prompt sera différent selon le terminal utilisé, mais il aura toujours la même fonction : on tape une [**_ligne de commande_**](./#ligne-commande) à la suite du prompt et on appuie sur entrée pour l'exécuter. Par exemple :
+
+```shell
+$> ls
+```
+
+Qui est uniquement composée de [la commande `ls`](./#ls) et qui liste les fichiers du dossier courant, ou encore :
+
+```shell
+$> cd /
+```
+
+Qui est une ligne composée :
+
+- de [la commande `cd`](./#cd)
+- d'un paramètre `/`
+
+Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on appelle **_shell_** et le système Windows appelé **_powershell_**, mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell. Nous ne verrons que les commandes de bases du terminal utilisable sur les deux plateformes mais il en existe de nombreuses autres, n'hésitez pas à expérimenter (on ira bien plus loin dans la partie Linux de ce cours) :
+
+{% lien %}
+
+- [liste des instructions powershell](https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/)
+- [Commandes terminal Linux courantes](https://blog.stephane-robert.info/docs/admin-serveurs/linux/commandes/)
+
+{% endlien %}
+
+### <span id="pwd"></span>Dossier courant
+
+De plus un terminal est **toujours** positionné dans un dossier précis de votre arborescence de fichiers. C'est le **dossier courant**.
+
+{% attention "**À retenir**" %}
+Un terminal est **toujours** positionné dans un dossier, appelé **_dossier courant_**.
+{% endattention %}
+
+L'exécution d'une ligne de commande se fera **toujours** par rapport à cet endroit.
+
+{% note "**Commande**" %}
+Pour connaître le dossier courant d'un terminal, on utilise la commande `pwd`{.language-}.
+{% endnote %}
+{% lien "**Manuel**" %}
+
+- [`pwd` du powershell](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-location) alias vers la commande `Get-Location`{.language-}
+- [`pwd` unix](https://manpages.debian.org/trixie/manpages-fr/pwd.1.fr.html)
+
+{% endlien %}
+
+Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal [dans un dossier spécifique](../bases/#explorateur){.interne}.
+
+{% faire %}
+
+Tapez la commande suivante dans un terminal nouvellement ouvert :
+
+```shell
+$> pwd
+```
+
+{% endfaire %}
+{% details "exemples", "ouvert" %}
+
+```shell
+ $ pwd
+/home/fbrucker
+
+```
+
+```shell
+> pwd
+
+Path
+----
+C:\Users\fbrucker
+
+```
+
+{% enddetails %}
+
+### <span id="whoami"></span>Utilisateur courant
+
+Enfin, un terminal dépend toujours d'un utilisateur. Par défaut c'est celui qui a ouvert la session, mais il est possible (et on le fera intensivement plus tard) de changer d'utilisateur voir de se connecter sur des ordinateurs distant via le terminal. Il est alors crucial de connaître le login de l'utilisateur exécutant ce terminal.
+
+{% note "**Commande**" %}
+Pour connaître l'utilisateur du terminal, on utilise la commande `whoami`{.language-}.
+{% endnote %}
+{% lien "**Manuel**" %}
+
+- [`whoami` de windows](https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/whoami)
+- [`whoami` unix](https://manpages.debian.org/trixie/manpages-fr/whoami.1.fr.html)
+
+{% endlien %}
+
+{% faire %}
+
+Tapez la commande suivante dans un terminal :
+
+```shell
+$> whoami
+```
+
+{% endfaire %}
+{% details "exemples", "ouvert" %}
+
+```shell
+ $ whoami
+fbrucker
+
+```
+
+```shell
+> whoami
+franoisbruca7be\fbrucker
+
+```
+
+{% enddetails %}
+
+## <span id="ligne-commande"></span>Ligne de commande
 
 Une ligne de commande sera toujours composée de mots séparé par des espaces :
 
@@ -37,63 +165,18 @@ Une **_ligne de commande_** est une chaîne de caractères composées de mots s�
 
 {% endnote %}
 
-Par exemple :
+### Commande
 
-```shell
-$> ls
-```
-
-Qui est uniquement composée de la commande `ls` , ou encore :
-
-```shell
-$> cd /
-```
-
-Qui est une ligne composée :
-
-- de la commande `cd`
-- d'un paramètre `/`
-
-Les instructions sous différentes entre les systèmes Unix (Linux et Mac) qu'on appelle **_shell_** et le système Windows appelé **_powershell_**, mais il existe presque toujours un equivalent entre les instruction unix/mac et powershell. Nous ne verrons que les commandes de bases du shell mais il en existe de nombreuses autres, n'hésitez pas à expérimenter (on ira bien plus loin dans la partie Linux de ce cours) :
-
-{% lien %}
-
-- [liste des instructions powershell](https://devblogs.microsoft.com/scripting/table-of-basic-powershell-commands/)
-- [liste des instructions courantes shell (bash)](https://github.com/RehanSaeed/Bash-Cheat-Sheet)
-
-{% endlien %}
-
-### Dossier courant
-
-De plus un terminal est **toujours** positionné dans un dossier précis de votre arborescence de fichiers. C'est le **dossier courant**. L'exécution d'une ligne de commande se fera **toujours** par rapport à cet endroit.
-
-{% note %}
-Pour connaître l'endroit où est positionné le terminal, on peut utiliser la commande shell `pwd`{.language-}.
-{% endnote %}
-
-Lorsque l'on ouvre un terminal, son dossier courant est souvent le dossier principal de l'utilisateur. Mais on a aussi vu que l'on pouvait aussi directement ouvrir un terminal [dans un dossier spécifique](../bases/#explorateur){.interne}.
-
-### Utilisateur courant
-
-Enfin, un terminal dépend toujours d'un utilisateur. Par défaut c'est celui qui a ouvert la session, mais il est possible (et on le fera intensivement plus tard) de changer d'utilisateur voir de se connecter sur des ordinateurs distant via le terminal. Il est alors crucial de connaître le login de l'utilisateur exécutant ce terminal.
-
-{% note %}
-Pour connaître l'utilisateur du terminal, on peut utiliser la commande shell `whoami`{.language-}.
-{% endnote %}
-
-## Exécuter une commande
-
-Le premier élément de la ligne de commande est un fichier qui doit être exécuté. Par exemple :
+Le premier élément d'une ligne de commande est un fichier qui doit être exécuté. Par exemple :
 
 ```shell
 $> python mon_script.py
 ```
 
-Comme le mot _python_ n'est pas une instruction c'est **forcément** un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) dans un ensemble de dossiers qu'on appelle le [path](./#path).
+Comme le mot _python_ n'est pas une instruction c'est **forcément** un fichier exécutable. Le système d'exploitation cherche alors un fichier s'appelant `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) dans un ensemble de dossiers qu'on appelle le [path](./#path) :
 
-Si le fichier `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) n'est pas trouvé, le terminal rend une erreur.
-
-S'il est trouvé, il est exécuté.
+- Si le fichier `python`{.fichier} (ou `python.exe`{.fichier} si on est sous windows) n'est pas trouvé, le terminal rend une erreur.
+- S'il est trouvé, il est exécuté.
 
 {% info %}
 Souvent `.`{.fichier} (le répertoire courant) n'est pas dans le path. Il faut donc taper `./truc`{.fichier} si on veut exécuter le fichier s'appelant truc dans le dossier courant.
@@ -118,69 +201,155 @@ Les paramètres peuvent être très simple (comme ci-dessous) comme très compli
 
 Pour savoir quelles sont les paramètres possible, il faut regarder la documentation du fichier exécutable. Dans notre exemple [documentation de la commande python](https://docs.python.org/3/using/cmdline.html) nous indique que le paramètre `mon_script.py`{.fichier} correspond à un chemin relatif au dossier courant vers un fichier python à interpréter.
 
-{% note %}
+{% attention "**À retenir**" %}
 Pour que notre commande `python mon_script.py`{.language-} soit exécutée sans erreur il faut donc :
 
 1. qu'un fichier exécutable nommé `python`{.fichier} (ou `python.exe`{.fichier} sous windows) soit présent dans un des dossiers du path
 2. qu'il existe un fichier nommé `mon_script.py`{.fichier} dans le dossier courant du terminal
-   {% endnote %}
+{% endattention %}
 
 ### <span id="which"></span> Quelle commande ?
 
-La commande exécutée d'une ligne de commande est un fichier présent dans le path. S'il existe plusieurs possibilités, c'est la 1ère rencontrée qui est utilisée. Il existe une commande shell pour déterminer le chemin absolu de la commande utilisée :
+La commande exécutée d'une ligne de commande est un fichier présent dans une liste de dossiers prédéfini ([le path](./#path)). S'il existe plusieurs possibilités, c'est la 1ère rencontrée qui est utilisée. Il existe une commande pour déterminer le chemin absolu de la commande utilisée :
 
-- [`which`{.language-}](https://linux.die.net/man/1/which) sous unix/mac.
+{% note "**Commande**" %}
+
+- [`which`{.language-}](https://manpages.debian.org/trixie/gnu-which/which.1.en.html) sous unix/mac.
 - [`get-command`{.language-}](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2) sous powershell
 
+{% endnote %}
+
 Ainsi `which python`{.language-} sous unix/mac et `get-command python`{.language-} sous powershell vont donner le chemin absolu vers le python utilisé.
+
+{% faire %}
+
+Tapez la commande suivante dans un terminal (pour un système ayant python d'installé) :
+
+- sous linux/macos : `$ which python`
+- sous windows : `> get-command python`
+
+{% endfaire %}
+{% details "exemples", "ouvert" %}
+
+```shell
+ $ which python
+/usr/bin/python
+
+```
+
+```shell
+> get-command python
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Application     python.exe                                         0.0.0.0    C:\Users\fbrucker\AppData\Local\Micros...
+
+```
+
+{% enddetails %}
 
 ## Opérations sur les dossiers/fichiers
 
 ### Opérations sur le dossier courant
 
-#### Où ?
+On a déjà vu comment connaître [l'utilisateur](./#whoami) et [le dossier courant](./#pwd) et d'un terminal.
 
-La commande shell `pwd`{.language-} donne le dossier courant du terminal.
+#### <span id="ls"></span>Liste
 
-#### Changer le dossier courant
+{% note "**Commande**" %}
+La commande `$> ls`{.language-} donne le contenu du dossier courant.{% endnote %}
+{% lien "**Manuel**" %}
 
-Pour changer de dossier courant, on utiliser la commande shell `cd`{.language-} suivi d'un chemin absolu ou relatif vers un autre dossier.
+- [ls du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
+- [ls unix](https://manpages.debian.org/trixie/manpages-fr/ls.1.fr.html)
 
-Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande `pwd`{.language-} me rend en effet : `/Users/fbrucker`{.fichier}.
+{% endlien %}
+{% faire %}
 
-Si je veux aller dans le dossier contenant ma plus belle photo d'Ada Lovelace, je peux taper :
+Tapez la commande suivante dans un terminal nouvellement ouvert :
 
-- un chemin absolu : `cd /Users/fbrucker/Desktop`{.language-}
-- un chemin relatif : `cd Desktop`{.language-}, ou encore `cd ./Desktop`{.language-}
+```shell
+$> ls
+```
 
-{% attention %}
-Notez que je ne peux pas aller dans un fichier.
+{% endfaire %}
+{% details "exemples", "ouvert" %}
 
-Si j'avais tapé `/Users/fbrucker/Desktop/ada_lovelace.png`{.language-} j'aurais eu une erreur. Sur mon mac, ça dit : `cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png`
-{% endattention %}
+```shell
+$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
 
-Sous unix, le caractère `~` est équivalent au chemin absolu vers la maison. En tapant `cd ~`{.language-} je me retrouve alors directement à la maison. De là, `cd ~/Desktop`{.language-} m'envoie dans le dossier `/Users/fbrucker/Desktop`{.fichier} quelque soit l'endroit où je me trouve.
-On peut également faire suivre le `~` d'un login pour aller dans la maison ce cet utilisateur, par exemple `cd ~fbrucker` pour se rendre dans le dossier maison de le l'utilisateur de login `fbrucker`.
+```
 
-#### Fichier et dossiers du dossier courant
+```shell
 
-La commande `ls`{.language-} donne les dossiers et les fichiers du dossier courant.
+> ls
 
-La commande `ls`{.language-} est en fait plus générale car on peut l'utiliser avec un paramètre qui est un chemin absolu ou relatif où lister les fichiers/dossiers. Par exemple, sur mon mac, si je tape :
+
+    Répertoire : C:\Users\fbrucker
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-r---        03/12/2025     07:14                Contacts
+d-r---        03/12/2025     10:38                Desktop
+d-r---        03/12/2025     07:14                Documents
+d-r---        01/04/2024     10:45                Downloads
+d-r---        03/12/2025     07:14                Favorites
+d-r---        03/12/2025     07:14                Links
+d-r---        01/04/2024     10:45                Music
+d-r---        01/04/2024     10:45                Pictures
+d-r---        03/12/2025     07:14                Saved Games
+d-r---        03/12/2025     09:18                Searches
+d-r---        01/04/2024     10:45                Videos
+
+```
+
+{% enddetails %}
+
+La commande `ls`{.language-} est en fait plus générale car on peut l'utiliser avec un paramètre qui est un chemin absolu ou relatif où lister les fichiers/dossiers :
+
+{% faire %}
+
+Tapez la commande suivante dans un terminal :
 
 ```shell
 $> ls /
 ```
 
-J'obtiens tous les dossier de la racine :
+{% endfaire %}
+{% details "exemples", "ouvert" %}
 
 ```shell
-Applications Users        cores        home         sbin         var
-Library      Volumes      dev          opt          tmp
-System       bin          etc          private      usr
+$ ls /
+bin   cdrom  etc   lib         media  opt   root  sbin  srv       sys  usr
+boot  dev    home  lost+found  mnt    proc  run   snap  swapfile  tmp  var
+
 ```
 
-La commande `ls`{.language-} a beaucoup de paramètres possible. Dans le monde du terminal, une commande va faire une unique chose mais de plein de façon disponible. C'est souvent ce qui fait peur, mais au final on utilisera jamais toutes les possibilités. Par exemple la [documentation de la commande ls](http://manpagesfr.free.fr/man/man1/ls.1.html) nous permet :
+```shell
+
+r> ls /
+
+
+    Répertoire : C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        07/06/2025     17:41                inetpub
+d-r---        23/12/2025     08:16                Mac
+d-----        01/04/2024     10:45                PerfLogs
+d-r---        03/12/2025     07:20                Program Files
+d-r---        03/12/2025     07:19                Program Files (x86)
+d-r---        03/12/2025     09:18                Users
+d-----        23/12/2025     08:45                Windows
+
+```
+
+{% enddetails %}
+
+La commande `ls`{.language-} admet beaucoup de paramètres. Dans le monde du terminal, une commande va faire une unique chose mais de plein de façons possibles. C'est souvent ce qui fait peur, mais au final on utilisera jamais toutes les possibilités. Par exemple la documentation de la commande ls nous permet :
 
 - afficher toutes les informations :
   - unix/mac : `$ ls -l`{.language-}
@@ -193,57 +362,172 @@ La commande `ls`{.language-} a beaucoup de paramètres possible. Dans le monde d
   - `> ls -Depth 3`{.language-}. Sous powershell, il faut donner le nombre de récursion que 'on peut faire. Ici 3.
 - ...
 
+#### <span id="cd"></span>Changer le dossier courant
+
+Pour changer de dossier courant, on utiliser la commande `cd`{.language-} suivi d'un chemin absolu ou relatif vers un autre dossier.
+
+Par exemple, sur mon mac, je crée un nouveau terminal. Par défaut, son dossier courant est la maison. La commande `pwd`{.language-} me rend en effet : `/Users/fbrucker`{.fichier}.
+
+Si je veux aller dans le dossier contenant ma plus belle photo d'Ada Lovelace, je peux taper :
+
+- un chemin absolu : `cd /Users/fbrucker/Desktop`{.language-}
+- un chemin relatif : `cd Desktop`{.language-}, ou encore `cd ./Desktop`{.language-}
+
+Notez que je ne peux pas aller dans un fichier.
+
+Si j'avais tapé `/Users/fbrucker/Desktop/ada_lovelace.png`{.language-} j'aurais eu une erreur. Sur mon mac, ça dit : `cd: not a directory: /Users/fbrucker/Desktop/ada_lovelace.png`
+
+{% note "**Commande**" %}
+La commande `$> cd`{.language-} permet de changer le dossier courant du terminal.
+
+{% endnote %}
+{% lien "**Manuel**" %}
+
+- [cd du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
+- [cd unix](https://manpages.debian.org/trixie/tcl9.0-doc/cd.3tcl.en.html)
+
+{% endlien %}
+{% faire %}
+
+Tapez les commandes suivantes dans un terminal nouvellement ouvert :
+
+```shell
+$> cd /
+$> pwd
+$> cd ~
+$> pwd
+```
+
+{% endfaire %}
+{% details "exemples", "ouvert" %}
+
+```shell
+$ cd /
+$ pwd
+/
+$ cd ~
+$ pwd
+/home/fbrucker
+
+```
+
+```shell
+> cd /
+> pwd
+
+Path
+----
+C:\
+
+
+> cd ~
+> pwd
+
+Path
+----
+C:\Users\fbrucker
+
+
+```
+
+{% enddetails %}
 {% info %}
-
-N'hésitez pas à aller voir la documentation :
-
-- [ls du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
-- [ls unix](http://manpagesfr.free.fr/man/man1/ls.1.html)
-
+Sous unix, taper la commande `cd` sans argument permet de revenir à la maison.
 {% endinfo %}
 
 ### Création et suppression de fichiers/dossiers
 
 #### Créer un dossier
 
-Commande :
+{% note "**Commande**" %}
+La commande `$> mkdir <chemin absolu ou relatif vers le dossier à créer>`{.language-} permet de créer un dossier.
 
-```shell
-$> mkdir <chemin absolu ou relatif vers le dossier à créer>
-```
-
-Par exemple : `mkdir truc/chose`{.language-} crée le dossier chose dans le dossier truc lui même placé dans le dossier courant (si le dossier _"./truc"_ n'existe pas, il y a une erreur)
-
-{% info %}
-Documentation :
+{% endnote %}
+{% lien "**Manuel**" %}
 
 - [mkdir du powershell](https://ss64.com/ps/new-item.html) qui est un alias vers la commande `new-item`{.language-}
-- [mkdir unix](https://linux.die.net/man/1/mkdir)
+- [mkdir unix](https://manpages.debian.org/trixie/manpages-fr/mkdir.1.fr.html)
 
-{% endinfo %}
+{% endlien %}
+
+Par exemple : `mkdir truc/chose`{.language-} crée le dossier chose dans le dossier truc lui même placé dans le dossier courant (si le dossier _"./truc"_ n'existe pas, il y a une erreur).
+
+#### Copier des fichiers/dossiers
+
+{% note "**Commande**" %}
+La commande `cp`{.language-} permet de copier un dossier ou un fichier :
+
+```shell
+$> cp <chemin absolu ou relatif du dossier ou fichier à copier> <chemin absolu ou relatif vers le fichier/dossier copié>
+```
+
+{% endnote %}
+{% lien "**Manuel**" %}
+
+- [cp du powershell](https://ss64.com/ps/copy-item.html) qui est un alias vers la commande `copy-item`{.language-}
+- [cp unix](https://manpages.debian.org/trixie/manpages-fr/cp.1.fr.html)
+
+{% endlien %}
+
+Par exemple : `cp truc/machin chose`{.language-} copie le fichier `machin`{.fichier} dans le dossier relatif `truc/`{.fichier} vers le fichier `chose`{.fichier} du dossier courant.
+
+Notez qu'on ne peut par copier de dossier par défaut sous unix :
+
+{% exercice %}
+En regardant la documentation, trouver comment faire pour copier un dossier ainsi que ses sous dossiers sous unix et windows.
+{% endexercice %}
+{% details "corrigé" %}
+
+- sous unix on utilise le paramètre `-R`
+- sous unix on utilise le paramètre `-recurse`
+
+{% enddetails %}
+
+#### Déplacer/renommer des fichiers/dossiers
+
+{% note "**Commande**" %}
+La commande `mv`{.language-} permet de déplacer un fichier :
+
+```shell
+$> mv <chemin absolu ou relatif du le fichier à déplacer> <chemin absolu ou relatif vers le fichier/dossier déplacé>
+```
+
+{% endnote %}
+{% lien "**Manuel**" %}
+
+- [mv du powershell](https://ss64.com/ps/move-item.html) qui est un alias vers la commande `move-item`{.language-}
+- [mv unix](https://manpages.debian.org/trixie/manpages-fr/mv.1.fr.html)
+
+{% endlien %}
+
+Par exemple : `mv truc/machin chose`{.language-} déplace le fichier `machin`{.fichier} dans le dossier relatif `truc/`{.fichier} vers le fichier `chose`{.fichier} du dossier courant.
 
 #### Supprimer un fichier/dossier
 
+{% note "**Commande**" %}
+La commande `rm`{.language-} permet de supprimer un fichier ou un dossier :
+
 ```shell
 $> rm <chemin absolu ou relatif vers le fichier à supprimer>
-$> rm -r <chemin absolu ou relatif vers le dossier à supprimer>
+$ rm -r <chemin absolu ou relatif vers le dossier à supprimer>
+> rm -Recurse <chemin absolu ou relatif vers le dossier à supprimer>
 ```
 
-{% info %}
-Documentation :
+{% endnote %}
+{% lien "**Manuel**" %}
 
 - [rm du powershell](https://ss64.com/ps/remove-item.html) redirige vers la commande `remove-item`{.language-}
-- [rm unix](https://linuxtect.com/linux-rm-command-tutorial/) La commande `rm`{.language-} a beaucoup, beaucoup de paramètres possibles
+- [rm unix](https://manpages.debian.org/trixie/manpages-fr/rm.1.fr.html)
 
-{% endinfo %}
+{% endlien %}
 
-### On vérifie qu'on a compris
+## On vérifie qu'on a compris
 
 Faite le jeu ci-après (c'est un genre de [MUD](https://fr.wikipedia.org/wiki/Multi-user_dungeon) solitaire), fait pour comprendre et utiliser le terminal unix :
 
-{% lien %}
+{% faire %}
 [Perdu dans un monde étrange](http://luffah.xyz/bidules/Terminus/)
-{% endlien %}
+{% endfaire %}
 
 Les commandes que vous verrez sont toutes utilisables avec les terminaux Linux et Macos et la plupart fonctionnent également sous powershell (ou possèdent des équivalent, comme la commande `cat`{.language-} qui est la commande `Get-Content`{.language-} par exemple)
 

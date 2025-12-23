@@ -2,11 +2,6 @@
 layout: layout/post.njk
 
 title: ssh
-authors:
-  - "Herbelleau Romain"
-  - "Laurent Léo"
-  - "Dégeorges Laurie"
-  - "François Brucker"
 
 eleventyComputed:
   eleventyNavigation:
@@ -15,9 +10,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD vérifier agent sous windows. Eat-ce qu'il marche aussi avec la wsl ? Si oui le dire dans la partie install wsl de Linux.
->
-> TBD refaire avec :
+> TBD voir comment les connexion ne peuvent pas se faire via un docker.
+
+> TBD refaire avec ici juste ssh login et scp. Pour se connecter et copier
+> TBD montrer comment ça marche avec vscode et -J
 >
 > 1. création de la clé
 > 2. accéder à ses clés publiques et privées dans le dossier caché .ssh
@@ -25,14 +21,49 @@ eleventyComputed:
 > 4. nécessité d'un agent
 > 5. un sas et l'option -J
 
-Installation et utilisation (basique) de ssh.
+{% info %}
+On supposera ici que vous êtes étudiant de l'ecm et que vous avez accès aux salles unix de l'école via un login et un mot de passe.
+{% endinfo %}
 
-## Installation
+## Connexion sécurisée
 
-la commande `ssh` doit être Doit être installée par défaut :
+> TBD port 22 de la machine
+> ssh login@machine
+> scp <chemin relatif local> login@machine:<chemin relatif distant> (ou le contraire)
+
+> TBD chiffrement symétrique rapide
+> TBD est-on certain de la machine sur laquelle on se connecte ?
+
+> TBD d'une machine à l'autre dans une salle : `$ uname -n`
+> TBD d'une machine au sas : `$ uname -n`
+> TBD schéma entrée via le sas : seul port ouvert est le 22 celui de ssh.
+
+## Identification
+
+### Machine distante
+
+> `~/.ssh/known_hosts`{.fichier}
+
+### Se créer une paire de clé
+
+### Utiliser la clé pour se connecter
+
+> TBD `~/.ssh/authorized_keys`{.fichier}
+> TBD on voit qu'il demande la passphrase et plus le mot de passe du login
+
+## Agent
+
+Utilisation (basique) du logiciel ssh. On va voir deux usages important :
+
+- se connecter à une machine distante sur le réseau en assurant un chiffrement de la transmission
+- permettre de s'identifier via une paire de clé publique/privée.
+
+## Client
+
+La client ssh est une commande nommée  `ssh` accessible via le terminal :
 
 ```sh
-$ ssh
+$> ssh
 usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
            [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
            [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
@@ -42,6 +73,7 @@ usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
            destination [command [argument ...]]
 
 ```
+
 
 ### Agent
 

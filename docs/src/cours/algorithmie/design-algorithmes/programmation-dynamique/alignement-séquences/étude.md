@@ -244,8 +244,11 @@ Ce qui donne :
 - $f(200, 200) \sim 2.2 \cdot 10^{152}$
 
 {% info %}
-Il n'y a qu'environ $10^{80}$ particules dans l'univers.
+Il n'y a qu'environ $10^{80}$ atomes dans l'univers.
 {% endinfo %}
+{% lien %}
+[Calcul du nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk)
+{% endlien %}
 
 #### Calcul
 

@@ -179,7 +179,35 @@ La _maison_ est le dossier principal d'un utilisateur. C'est à partir de ce dos
 Il est recommandé que ce dossier ne comporte ni espace ni accent.
 {% endattention %}
 
-## Dossiers et fichiers spéciaux
+Ce dosser est représenté par le symbole `~`. Ainsi, lorsque vous verrez lun chemin de type : `~/Documents/mon_cv.pdf`{.fichier} cela signifiera que le fichier `mon_cv.pdf`{.fichier} est dans le dossier `Document`{.fichier} de la maison.
+
+{% info %}
+Comme le chemin relatif, indiquer un chemin avec `~` permet d'avoir un chemin fonctionnel pour tous les utilisateurs et potentiellement tous les ordinateurs puisque le nom de l'utilisateur n'est pas indiqué.
+{% endinfo %}
+
+## Fichiers
+
+Les fichiers sont les terminaisons (feuilles) de l'arborescence. Ils sont les éléments utiles de l'arborescences et peuvent être des applications, des fichiers de données, des programmes python, etc.
+
+### Extension de fichier
+
+Un nom de fichier comporte souvent un texte, suivi d'un `.`{.fichier} puis de deux ou trois lettres qui forme [**_une extension_**](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier).
+
+Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour l'utilisateur et certaines applications. Cela permet à priori de catégoriser un fichier.
+
+Ainsi, même si l'extension d'un fichier texte est _".txt"_, rien ne vous empêche de la changer en _".exe"_ par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : _".py"_ pour les fichiers python par exemple, _".md"_ pour les fichier markdown.
+
+{% note %}
+Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.
+{% endnote %}
+
+### Fichiers exécutables
+
+Les **_fichiers exécutables_** sont des programmes, ils sont exécutés directement par le système d'exploitation. C'est ce qui fait qu'un exécutable windows ne peut pas être directement lancé sur un mac ou un Linux, même s'ils ont le même processeur.
+
+{% attention %}
+Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte qui est est lu — on dit **interprété** — par l'_interpréteur python_ qui lui est un fichier exécutable.
+{% endattention %}
 
 ### <span id="fichier-cache"></span>Fichiers cachés
 
@@ -222,7 +250,7 @@ Il pourra parfois être utile de voir les fichiers cachés (des fichiers qui com
 
 {% enddetails %}
 
-### <span id="liens"></span>Liens
+## <span id="liens"></span>Liens
 
 [Les liens symboliques](https://en.wikipedia.org/wiki/Symbolic_link) sont des fichiers/dossier qui _représentent_ d'autres fichiers/dossier. Ils permettent d'accéder à un fichier/dossier via plusieurs chemins de l’arborescence. Par exemple :
 
@@ -230,7 +258,7 @@ Il pourra parfois être utile de voir les fichiers cachés (des fichiers qui com
 
 Lors de la navigation on ne sait pas que l'on suit un lien, le fichier `/Utilisateurs/doppelganger/cv.pdf`{.fichier} est donc aussi le fichier `/Utilisateurs/moi/cv.pdf`{.fichier}, la seule duplication est le lien. Ainsi :
 
-- supprimer `/Utilisateurs/doppelganger/cv.pdf`{.fichier} supprime aussi  `/Utilisateurs/moi/cv.pdf`{.fichier}(c'est le même fichier)
+- supprimer `/Utilisateurs/doppelganger/cv.pdf`{.fichier} supprime aussi `/Utilisateurs/moi/cv.pdf`{.fichier}(c'est le même fichier)
 - supprimer `/Utilisateurs/doppelganger`{.fichier} ne supprime pas `/Utilisateurs/moi`{.fichier} qui continue de fonctionner
 - supprimer `/Utilisateurs/moi`{.fichier} va rendre inopérant `/Utilisateurs/doppelganger`{.fichier} qui est un lien symbolique (c'est un dossier et seuls les fichiers peuvent être des liens physiques)
 
@@ -238,31 +266,7 @@ Lors de la navigation on ne sait pas que l'on suit un lien, le fichier `/Utilisa
 
 Bien que les liens symboliques existent sous Windows et mac, ces deux systèmes mettent également en places de _pseudo-liens_ qui sont ne sont utilisables que via l'interface graphique :
 
-- [Les raccourcis windows](https://fr.wikipedia.org/wiki/Raccourci_(informatique)) ne sont pas à proprement parler des liens. Ce sont des fichiers contenant des informations vers d'autres fichiers. Les liens symboliques eux pointent directement vers leur fichier d'origine. Voir : <https://www.malekal.com/jonctions-windows/>
+- [Les raccourcis windows](<https://fr.wikipedia.org/wiki/Raccourci_(informatique)>) ne sont pas à proprement parler des liens. Ce sont des fichiers contenant des informations vers d'autres fichiers. Les liens symboliques eux pointent directement vers leur fichier d'origine. Voir : <https://www.malekal.com/jonctions-windows/>
 - [Les alias de Macos](https://support.apple.com/fr-fr/guide/mac-help/mchlp1046/mac) ne sont pas à proprement parler des liens non plus. Ils sont gérés par le finder et pas par le système.
 
 {% endinfo %}
-
-## Fichiers
-
-Les fichiers sont les terminaisons (feuilles) de l'arborescence. Ils sont les éléments utiles de l'arborescences et peuvent être des applications, des fichiers de données, des programmes python, etc.
-
-### Extension de fichier
-
-Un nom de fichier comporte souvent un texte, suivi d'un `.`{.fichier} puis de deux ou trois lettres qui forme [**_une extension_**](https://fr.wikipedia.org/wiki/Extension_de_nom_de_fichier).
-
-Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour l'utilisateur et certaines applications. Cela permet à priori de catégoriser un fichier.
-
-Ainsi, même si l'extension d'un fichier texte est _".txt"_, rien ne vous empêche de la changer en _".exe"_ par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : _".py"_ pour les fichiers python par exemple, _".md"_ pour les fichier markdown.
-
-{% note %}
-Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.
-{% endnote %}
-
-### Fichiers exécutables
-
-Les **_fichiers exécutables_** sont des programmes, ils sont exécutés directement par le système d'exploitation. C'est ce qui fait qu'un exécutable windows ne peut pas être directement lancé sur un mac ou un Linux, même s'ils ont le même processeur.
-
-{% attention %}
-Un fichier python n'est **pas** un fichier exécutable. C'est un fichier texte qui est est lu — on dit **interprété** — par l'_interpréteur python_ qui lui est un fichier exécutable.
-{% endattention %}

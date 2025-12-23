@@ -21,7 +21,7 @@ Pour vous connecter à une machine d'un réseau local, il faut souvent se connec
    1. Si vous êtes sur votre propre machine, commencez par vous connecter sur la machine `sas1.ec-m.fr` avec la commande `ssh` (`ssh son_login@nom_de_sa_machine`).
    2. De la machine `sas1.ec-m.fr` connectez vous tous sur la même autre machine.
 2. Vérifiez que vous êtes tous connecté sur cette machine (commandes `who`, `w` ou encore `users`)
-3. cCréez un fichier vide de nom votre prénom dans le dossier `/tmp` (faite le avec la commande `touch`)
+3. Créez un fichier vide de nom votre prénom dans le dossier `/tmp` (faite le avec la commande `touch`)
 4. Essayez de supprimer un fichier créé par un de vos camarades
 5. Vous devriez avoir un groupe en commun : commande `groups` ou `id -a`
 6. Modifiez les droits de votre fichier dans `/tmp`{.fichier} pour que son groupe soit le groupe que vous avez en commun et permettez son écriture.

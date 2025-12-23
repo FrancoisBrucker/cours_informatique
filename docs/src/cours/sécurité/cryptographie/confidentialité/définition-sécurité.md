@@ -47,7 +47,7 @@ La notion de $(t, \epsilon)$-sécurité est indissociable de l'algorithme qui d�
 
  TBD 1 clé = 1 nanosecondes
 > TBD $2^{89}$ = nombre de nanosecondes depuis le début de l'univers (14 milliards d'années)
-> TBD $10^{80} \simeq 2^{266}$ = nombre de particules dans l'univers (entre $10^{80}$ et $10^{85}$)
+> TBD $10^{80} \simeq 2^{266}$ = nombre d\atomes dans l'univers (entre $10^{80}$ et $10^{85}$)
 >
 > TBD exemple en parallèle : on divise par le nb de machines/processeurs.
 >
