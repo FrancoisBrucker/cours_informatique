@@ -96,9 +96,37 @@
     
   
 
-  <blockquote>
-<p>TBD voir comment les connexion ne peuvent pas se faire via un docker.</p>
-</blockquote>
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="https://www.youtube.com/watch?v=QGixbJ9prEc&amp;list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6">ssh en 5 parties</a></li>
+<li><a href="https://www.youtube.com/watch?v=hQWRp-FdTpc">ssh crash course</a></li>
+<li><a href="https://tusharf5.com/posts/ssh-deep-dive/">deep dive</a></li>
+</ol>
+</div></div>
+
+<p>Le nom <a href="https://fr.wikipedia.org/wiki/Secure_Shell">ssh</a> (<em>Secure SHell</em>) permet de faire de la communication sécurisée et regroupe deux usages :</p>
+<ul>
+<li>communication entre deux ordinateurs via une socket chiffrée</li>
+<li>identification par paire de clés.</li>
+</ul>
+<p>Nous allons voir dans cette introduction comment utiliser et comprendre ces deux aspects.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On supposera pour les exercices et les exemples que vous êtes étudiants de l'ecm et que vous avez accès aux salles unix de l'école via un login et un mot de passe.</p>
+</div></div>
+
+<!-- TBD 
+
+voir comment les connexion ne peuvent pas se faire via un docker ou [un compte aws](https://www.youtube.com/watch?v=u2-2c_nY6lk) 
+
+-->
 <blockquote>
 <p>TBD refaire avec ici juste ssh login et scp. Pour se connecter et copier
 TBD montrer comment ça marche avec vscode et -J</p>
@@ -110,15 +138,219 @@ TBD montrer comment ça marche avec vscode et -J</p>
 <li>un sas et l'option -J</li>
 </ol>
 </blockquote>
+<h2>Transmission sécurisée</h2>
+<h3>Connexion</h3>
+<p>La client ssh est une commande nommée  <code>ssh</code> accessible via le terminal. Par exemple la commande suivante :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">ssh</span> <span class="token operator">&lt;</span>login<span class="token operator">></span>@<span class="token operator">&lt;</span>machine<span class="token operator">></span></code></pre>
+<p>Va initier une connexion sur la machine de nom <code>&lt;machine&gt;</code>. Pour que la connexion fonctionne, il faut qu'un serveur ssh écoute sur cette machine sur le port 22.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Depuis un terminal, connectez-vous sur la machine <code>sas1.ec-m.fr</code>.</p>
+<ol>
+<li>Lorsque l'on vous demandera (en anglais) si vous voulez continuer à vous connecter, répondez <code>yes</code>.</li>
+<li>puis tapez votre mot de passe. Il est <strong>normal</strong> que rien ne s'affiche, les touches sont prisent en compte mais ne sont pas affichées pour des raisons de sécurité</li>
+</ol>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En tant que prof, je me connecte à <code>sas2.ec-m.fr</code> et pas à sas1 qui est réservé aux étudiants :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> <span class="token function">ssh</span> sas2.ec-m.fr
+The authenticity of <span class="token function">host</span> <span class="token string">'sas2.ec-m.fr (2001:660:5404:191::22)'</span> can<span class="token string">'t be established.
+ED25519 key fingerprint is SHA256:A3Bj05ACdCqcuQ34PFfk0TcHlBJ1HtTQKT0nUtaXEnk.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '</span>sas2.ec-m.fr' <span class="token punctuation">(</span>ED25519<span class="token punctuation">)</span> to the list of known hosts.
+<span class="token punctuation">(</span>fbrucker@sas2.ec-m.fr<span class="token punctuation">)</span> Password <span class="token keyword">for</span> fbrucker@sas2.ec-m.fr:
+Last login: Fri Dec <span class="token number">26</span> <span class="token number">10</span>:54:22 <span class="token number">2025</span> from 2a01:cb1c:886:d700:a06a:309c:8628:fd9c
+FreeBSD <span class="token number">14.3</span>-RELEASE-p5 GENERIC
+
+Welcome to FreeBSD<span class="token operator">!</span>
+
+Release Notes, Errata: https://www.FreeBSD.org/releases/
+Security Advisories:   https://www.FreeBSD.org/security/
+FreeBSD Handbook:      https://www.FreeBSD.org/handbook/
+FreeBSD FAQ:           https://www.FreeBSD.org/faq/
+Questions List:        https://www.FreeBSD.org/lists/questions/
+FreeBSD Forums:        https://forums.FreeBSD.org/
+
+Documents installed with the system are <span class="token keyword">in</span> the /usr/local/share/doc/freebsd/
+directory, or can be installed later with:  pkg <span class="token function">install</span> en-freebsd-doc
+For other languages, replace <span class="token string">"en"</span> with a language code like de or fr.
+
+Show the version of FreeBSD installed:  freebsd-version <span class="token punctuation">;</span> <span class="token function">uname</span> <span class="token parameter variable">-a</span>
+Please include that output and any error messages when posting questions.
+Introduction to manual pages:  <span class="token function">man</span> <span class="token function">man</span>
+FreeBSD directory layout:      <span class="token function">man</span> hier
+
+To change this login announcement, see motd<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>.</code></pre>
+</div>
+</details>     
+</div>
+<p>La première fois que l'on se connecte sur une machine sa clé publique nous est présentée pour vérification. Nous y reviendrons, contentons nous pour l'instant d'accepter.</p>
+<p>Une fois connecté, on peut vérifier le nom de la machine sur laquelle on est :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">uname</span> <span class="token parameter variable">-n</span>
+sas1.ec-m.fr
+</code></pre>
+<h3>Copie</h3>
+<blockquote>
+<p>TBD ici. Dire que c'est par rapport au home de la destination.
+exemple avec un fichier texte
+faire dans les deux sens</p>
+</blockquote>
+<p>Pour copier un fichier vers un serveur (et inversement), on utilise donc la commande <code>scp</code>, signifiant <em>Secure Copy Protocol</em>. Elle s'utilise de la même manière que <code>cp</code> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">scp</span>  <span class="token operator">&lt;</span>fichier source<span class="token operator">></span> <span class="token operator">&lt;</span>fichier destination<span class="token operator">></span></code></pre>
+<p>Le <code>&lt;fichier source&gt;</code> ou <code>&lt;fichier destination&gt;</code> être :</p>
+<ul>
+<li>un chemin vers un fichier local</li>
+<li><code>login@destination:chemin</code> où :
+<ul>
+<li><code>login@destination</code> est la connexion ssh</li>
+<li>le <code>chemin</code> est un chemin absolu ou relatif (à partir de la maison) sur l'ordinateur distant</li>
+</ul>
+</li>
+</ul>
+<p>Par exemple :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">scp</span> index.html fbrucker@sas1.ec-m.fr:html/index.html</code></pre>
+<p>Va copier le fichier <code class="fichier">index.html</code> du dossier courant du terminal vers le fichier <code class="fichier">~/html/index.html</code> sur la machine distante.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Depuis votre machine, récupérez le fichier <code>/etc/passwd</code> sur la machine distante et copiez le dans votre maison.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">scp</span> login@sas1.ec-m.fr:/etc/passwd ~</code></pre>
+<p>Comme <code class="fichier">~</code> est un dossier, le fichier est copié dans ce repertoire.</p>
+</div>
+</details>     
+</div>
+<h2>Identification</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Signature_num%C3%A9rique">https://fr.wikipedia.org/wiki/Signature_numérique</a></p>
+</div></div>
+
+<p>L'authentification d'une personne ou d'une machine s'effectue via l'interaction d'une paire de clé :</p>
+<ul>
+<li>une clé publique <code>pub</code> qui est distribuée</li>
+<li>une clé privée <code>priv</code> qui est gardé secrète</li>
+</ul>
+<p>Et d'une méthode de chiffrement <code>C(clé, message)</code> prenant en paramètres une clé et un message et rendant un message chiffré possédant les propriétés suivantes :</p>
+<ul>
+<li>il est <em>impossible</em> (<em>ie.</em> trop long) de trouver le message originel à partir de son chiffrement</li>
+<li>Si <code>C(pub, M) = M'</code> alors <code>C(priv, M') = M</code></li>
+<li>Si <code>C(priv, M) = M'</code> alors <code>C(pub, M') = M</code></li>
+</ul>
+<blockquote>
+<p>TBD ajout un hash genre sha pour associer une signature à un texte, même long.
+ceci permet de vérifier que l'on connaît le texte sans le transmettre</p>
+</blockquote>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On supposera ici que vous êtes étudiant de l'ecm et que vous avez accès aux salles unix de l'école via un login et un mot de passe.</p>
+<p>N'hésitez pas à aller jeter un coup d'œil au cours <a href="/cours_informatique/cours/s%C3%A9curit%C3%A9" class="interne">de sécurité</a> pour avoir tous les détails.</p>
 </div></div>
 
-<h2>Connexion sécurisée</h2>
+<h3>Processus d'identification</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman">Diffie-Hellman</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process">https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process</a></li>
+</ul>
+</div></div>
+
+<blockquote>
+<p>TBD :</p>
+<ul>
+<li>clé privé / public et principe</li>
+<li>dire que c'est ce qu'il s'est passé lorsque l'on s'est connecté à la machine</li>
+<li>dire que fingerprint la clé publique (en vrai un hash).</li>
+<li>voir le fichier dans /ssh/known_host</li>
+<li>création d'une paire de clé</li>
+<li>connexion sur</li>
+</ul>
+</blockquote>
+<h3>Machine distante</h3>
+<blockquote>
+<p>TBD identification de la machine.</p>
+</blockquote>
+<p>Si c'est la première fois que je me connecte à cette machine, <code>ssh</code> me montre la clé publique de la machine <code>roucas100</code> et me demande de l'identifier :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
+The authenticity of <span class="token function">host</span> <span class="token string">'roucas100.etu.ec-m.fr (147.94.25.100)'</span> can't be established.
+ED25519 key fingerprint is SHA256:Jf65ebUXhQ1w6+zcCnL8R9cvBMEI8yDvcR+GxtvSHZg.
+This key is not known by any other names.
+Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>?</code></pre>
+<p>On voit que la clé est de type <a href="https://fr.wikipedia.org/wiki/EdDSA">ED25519</a> qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape <code>yes</code> et peut taper mon mot de passe pour me connecter.</p>
+<p>Si la clé de la machine change cela peut-être à cause d'une attaque de type <em>man in the middle</em> et ssh refuse de se connecter :</p>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED<span class="token operator">!</span>     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY<span class="token operator">!</span>
+Someone could be eavesdropping on you right now <span class="token punctuation">(</span>man-in-the-middle attack<span class="token punctuation">)</span><span class="token operator">!</span>
+It is also possible that a <span class="token function">host</span> key has just been changed.
+The fingerprint <span class="token keyword">for</span> the ED25519 key sent by the remote <span class="token function">host</span> is
+SHA256:Jf65ebUXhQ1w6+zcCnL8R9cvBMEI8yDvcR+GxtvSHZg.
+Please contact your system administrator.
+Add correct <span class="token function">host</span> key <span class="token keyword">in</span> /users/home3/fbrucker/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key <span class="token keyword">in</span> /users/home3/fbrucker/.ssh/known_hosts:32
+Host key <span class="token keyword">for</span> roucas100.etu.ec-m.fr has changed and you have requested strict checking.
+Host key verification failed.
+</code></pre>
+<p>La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : <code class="fichier">~/.ssh/known_hosts</code>.</p>
+<pre><code>       A                   B
+     -----               -----
+     |   |               |   |
+     |   |--------------&gt;|   |
+     -----               -----
+  known_hosts
+clé de machine
+</code></pre>
 <blockquote>
 <p>TBD port 22 de la machine
 ssh login@machine
@@ -133,8 +365,6 @@ TBD est-on certain de la machine sur laquelle on se connecte ?</p>
 TBD d'une machine au sas : <code>$ uname -n</code>
 TBD schéma entrée via le sas : seul port ouvert est le 22 celui de ssh.</p>
 </blockquote>
-<h2>Identification</h2>
-<h3>Machine distante</h3>
 <blockquote>
 <p><code class="fichier">~/.ssh/known_hosts</code></p>
 </blockquote>
@@ -151,16 +381,6 @@ TBD on voit qu'il demande la passphrase et plus le mot de passe du login</p>
 <li>permettre de s'identifier via une paire de clé publique/privée.</li>
 </ul>
 <h2>Client</h2>
-<p>La client ssh est une commande nommée  <code>ssh</code> accessible via le terminal :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$<span class="token operator">></span> <span class="token function">ssh</span>
-usage: <span class="token function">ssh</span> <span class="token punctuation">[</span>-46AaCfGgKkMNnqsTtVvXxYy<span class="token punctuation">]</span> <span class="token punctuation">[</span>-B bind_interface<span class="token punctuation">]</span> <span class="token punctuation">[</span>-b bind_address<span class="token punctuation">]</span>
-           <span class="token punctuation">[</span>-c cipher_spec<span class="token punctuation">]</span> <span class="token punctuation">[</span>-D <span class="token punctuation">[</span>bind_address:<span class="token punctuation">]</span>port<span class="token punctuation">]</span> <span class="token punctuation">[</span>-E log_file<span class="token punctuation">]</span>
-           <span class="token punctuation">[</span>-e escape_char<span class="token punctuation">]</span> <span class="token punctuation">[</span>-F configfile<span class="token punctuation">]</span> <span class="token punctuation">[</span>-I pkcs11<span class="token punctuation">]</span> <span class="token punctuation">[</span>-i identity_file<span class="token punctuation">]</span>
-           <span class="token punctuation">[</span>-J destination<span class="token punctuation">]</span> <span class="token punctuation">[</span>-L address<span class="token punctuation">]</span> <span class="token punctuation">[</span>-l login_name<span class="token punctuation">]</span> <span class="token punctuation">[</span>-m mac_spec<span class="token punctuation">]</span>
-           <span class="token punctuation">[</span>-O ctl_cmd<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o option<span class="token punctuation">]</span> <span class="token punctuation">[</span>-P tag<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p port<span class="token punctuation">]</span> <span class="token punctuation">[</span>-Q query_option<span class="token punctuation">]</span>
-           <span class="token punctuation">[</span>-R address<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S ctl_path<span class="token punctuation">]</span> <span class="token punctuation">[</span>-W host:port<span class="token punctuation">]</span> <span class="token punctuation">[</span>-w local_tun<span class="token punctuation">[</span>:remote_tun<span class="token punctuation">]</span><span class="token punctuation">]</span>
-           destination <span class="token punctuation">[</span>command <span class="token punctuation">[</span>argument <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
 <h3>Agent</h3>
 <p>La seule chose à possiblement faire est de mettre en place le <a href="https://en.wikipedia.org/wiki/Ssh-agent">ssh-agent</a>. L'agent est un démon permettant de gérer sos clés pour vous.</p>
 <p>Pour savoir si vous avez un agent ssh opérationnel, tapez la commande :</p>
@@ -218,92 +438,13 @@ Il faut lancer l'agent à la connexion de chaque shell. Via la commande :</p>
 <p>Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : <a href="https://gist.github.com/gabetax/3756756">ajout ssh-agent</a></p>
 </div></div>
 
-<h2>ssh, c’est quoi ?</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=3-MDtASgSo8">ssh en 10min</a></p>
-</div></div>
-
-<p><strong>Secure Shell (SSH)</strong> est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d'utiliser un sniffer pour voir ce que fait l'utilisateur. Il utilise <a href="../tls" class="interne">tls</a> pour les connexions entre ordinateurs.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html">ssh handshake</a></li>
-<li><a href="https://bash-prompt.net/guides/bash-ssh-ciphers/">chiffrements utilisés</a></li>
-</ul>
-</div></div>
-
+<h2>Identification des utilisateurs</h2>
+<p>Il est très utile de laisser ssh nous identifier sans avoir à taper de mots de passe, via notre couple de clé publique/privée.</p>
 <p>On utilise ssh pour garantir de l'authenticité et des ordinateurs sur lesquels on se connecte et des utilisateur qui s'y connecte. Il y aura ainsi essentiellement 2 jeux de clés asymétriques :</p>
 <ol>
 <li>la paire de clé identifiant l'ordinateur sur lequel un utilisateur veut se connecter</li>
 <li>la paire de clé identifiant l'utilisateur</li>
 </ol>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="https://www.youtube.com/watch?v=QGixbJ9prEc&amp;list=PLQqbP89HgbbYIarPqOU8DdC2jC3P3L7a6">ssh en 5 parties</a></li>
-<li><a href="https://www.youtube.com/watch?v=hQWRp-FdTpc">ssh crash course</a></li>
-<li><a href="https://tusharf5.com/posts/ssh-deep-dive/">deep dive</a></li>
-</ol>
-</div></div>
-
-<h2>Connexion</h2>
-<p>Supposons que je veuille me connecter à une machine distante dont je connais le nom : <code>roucas100.etu.ec-m.fr</code> (cette machine n'est accessible que si vous êtes déjà sur le réseau de l'école centrale méditerranée).</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Connection depuis l'extérieur</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Si vous n'êtes pas initialement connecté sur le réseau de l'école, remplacez <code>roucas100.etu.ec-m.fr</code> par <code>sas1.ec-m.fr</code> qui est l'ordinateur accessible depuis internet.</p>
-</div></div>
-
-<p>Je dois me connecter en tant qu'utilisateur de cette machine. Pour cela la connection s'effectue toujours en utilisant le schéma d'une URL : <code>identifiant@machine</code>. Dan sle cs présent :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr</code></pre>
-<p>Si c'est la première fois que je me connecte à cette machine, <code>ssh</code> me montre la clépublique de la machine <code>roucas100</code> et me demande de l'identifier :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
-The authenticity of <span class="token function">host</span> <span class="token string">'roucas100.etu.ec-m.fr (147.94.25.100)'</span> can't be established.
-ED25519 key fingerprint is SHA256:Jf65ebUXhQ1w6+zcCnL8R9cvBMEI8yDvcR+GxtvSHZg.
-This key is not known by any other names.
-Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>?</code></pre>
-<p>On voit que la clé est de type <a href="https://fr.wikipedia.org/wiki/EdDSA">ED25519</a> qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape <code>yes</code> et peut taper mon mot de passe pour me connecter.</p>
-<p>Si la clé de la machine change cela peut-être à cause d'une attaque de type <em>man in the middle</em> et ssh refuse de se connecter :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED<span class="token operator">!</span>     @
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY<span class="token operator">!</span>
-Someone could be eavesdropping on you right now <span class="token punctuation">(</span>man-in-the-middle attack<span class="token punctuation">)</span><span class="token operator">!</span>
-It is also possible that a <span class="token function">host</span> key has just been changed.
-The fingerprint <span class="token keyword">for</span> the ED25519 key sent by the remote <span class="token function">host</span> is
-SHA256:Jf65ebUXhQ1w6+zcCnL8R9cvBMEI8yDvcR+GxtvSHZg.
-Please contact your system administrator.
-Add correct <span class="token function">host</span> key <span class="token keyword">in</span> /users/home3/fbrucker/.ssh/known_hosts to get rid of this message.
-Offending ECDSA key <span class="token keyword">in</span> /users/home3/fbrucker/.ssh/known_hosts:32
-Host key <span class="token keyword">for</span> roucas100.etu.ec-m.fr has changed and you have requested strict checking.
-Host key verification failed.
-</code></pre>
-<p>La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : <code class="fichier">~/.ssh/known_hosts</code>.</p>
-<pre><code>       A                   B
-     -----               -----
-     |   |               |   |
-     |   |--------------&gt;|   |
-     -----               -----
-  known_hosts
-clé de machine
-</code></pre>
-<h2>Identification des utilisateurs</h2>
-<p>Il est très utile de laisser ssh nous identifier sans avoir à taper de mots de passe, via notre couple de clé publique/privée.</p>
 <h3>Générer une clé</h3>
 <pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-keygen</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -379,12 +520,6 @@ clé de machine      clé d'utilisateur
 <li>connection à un autre ordinateur où notre clé est autorisée : <code>ssh identifiant@ovh1.ec-m.fr</code></li>
 </ol>
 <h2>Copie de fichiers</h2>
-<p>Pour copier un fichier vers un serveur (et inversement), on utilise donc la commande <code>scp</code>, signifiant <em>Secure Copy Protocol</em>. Cette copie utilise le protocole SSH pour assurer l'authenticité et la confidentialité du transfert. Elle s'utilise de la même manière que <code>cp</code> :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">scp</span> <span class="token punctuation">[</span>option<span class="token punctuation">]</span> fichier_source fichier_destination</code></pre>
-<p>Pour l'essayer, créez un index.html sur votre machine et copiez-le vers <code>ovh1.ec-m.fr</code> dans le dossier www/.</p>
-<p>Depuis votre machine (sans être déjà connecté à <code>ovh1.ec-m.fr</code>), ça donne :</p>
-<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">scp</span> chemin/index.html mon_herbe@aioli.ec-m.fr:static/index.html</code></pre>
-<p>Si vous allez vérifier sur <code>aioli.ec-m.fr</code>, votre fichier a bien remplacé l'ancien index.html.</p>
 <h2>Exercices</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
