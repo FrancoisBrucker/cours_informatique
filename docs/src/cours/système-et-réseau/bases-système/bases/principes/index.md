@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Système d'exploitation
+title: Principes d'un système d'exploitation
 
 eleventyComputed:
   eleventyNavigation:

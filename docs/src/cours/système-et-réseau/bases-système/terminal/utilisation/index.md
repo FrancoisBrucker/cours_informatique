@@ -78,7 +78,7 @@ Pour connaître le dossier courant d'un terminal, on utilise la commande `pwd`{.
 {% lien "**Manuel**" %}
 
 - [`pwd` du powershell](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-location) alias vers la commande `Get-Location`{.language-}
-- [`pwd` unix](https://manpages.debian.org/trixie/manpages-fr/pwd.1.fr.html)
+- [`pwd` Linux](https://manpages.debian.org/trixie/manpages-fr/pwd.1.fr.html)
 
 {% endlien %}
 
@@ -121,8 +121,8 @@ Pour connaître l'utilisateur du terminal, on utilise la commande `whoami`{.lang
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [`whoami` de windows](https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/whoami)
-- [`whoami` unix](https://manpages.debian.org/trixie/manpages-fr/whoami.1.fr.html)
+- [`whoami` du powershell](https://learn.microsoft.com/fr-fr/windows-server/administration/windows-commands/whoami)
+- [`whoami` Linux](https://manpages.debian.org/trixie/manpages-fr/whoami.1.fr.html)
 
 {% endlien %}
 
@@ -214,12 +214,12 @@ La commande exécutée d'une ligne de commande est un fichier présent dans une 
 
 {% note "**Commande**" %}
 
-- [`which`{.language-}](https://manpages.debian.org/trixie/gnu-which/which.1.en.html) sous unix/mac.
-- [`get-command`{.language-}](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2) sous powershell
+- [`get-command`{.language-} du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-command?view=powershell-7.2)
+- [`which`{.language-} Linux](https://manpages.debian.org/trixie/gnu-which/which.1.en.html)
 
 {% endnote %}
 
-Ainsi `which python`{.language-} sous unix/mac et `get-command python`{.language-} sous powershell vont donner le chemin absolu vers le python utilisé.
+Ainsi `which python`{.language-} sous Linux/mac et `get-command python`{.language-} sous powershell vont donner le chemin absolu vers le python utilisé.
 
 {% faire %}
 
@@ -260,8 +260,8 @@ On a déjà vu comment connaître [l'utilisateur](./#whoami) et [le dossier cour
 La commande `$> ls`{.language-} donne le contenu du dossier courant.{% endnote %}
 {% lien "**Manuel**" %}
 
-- [ls du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
-- [ls unix](https://manpages.debian.org/trixie/manpages-fr/ls.1.fr.html)
+- [`ls` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
+- [`ls` Linux](https://manpages.debian.org/trixie/manpages-fr/ls.1.fr.html)
 
 {% endlien %}
 {% faire %}
@@ -272,7 +272,13 @@ Tapez la commande suivante dans un terminal nouvellement ouvert :
 $> ls
 ```
 
+Puis vérifiez avec un explorateur de fichier que les fichiers correspondent avec ceux de votre maison.
 {% endfaire %}
+{% info %}
+Il se peut que l'explorateur de fichier traduisent les noms des dossiers du système (`Bureau`{.fichier} à la place de `Desktop`{.fichier} par exemple), le **vrai** nom des fichiers est celui issu de la commande `ls`.
+
+Pour vous en rendre compte, changez la langue de votre système d'exploitation en anglais pour voir que les noms de l'explorateur ont changé.
+{% endinfo %}
 {% details "exemples", "ouvert" %}
 
 ```shell
@@ -352,10 +358,10 @@ d-----        23/12/2025     08:45                Windows
 La commande `ls`{.language-} admet beaucoup de paramètres. Dans le monde du terminal, une commande va faire une unique chose mais de plein de façons possibles. C'est souvent ce qui fait peur, mais au final on utilisera jamais toutes les possibilités. Par exemple la documentation de la commande ls nous permet :
 
 - afficher toutes les informations :
-  - unix/mac : `$ ls -l`{.language-}
+  - Linux/mac : `$ ls -l`{.language-}
   - powershell : `> ls`{.language-}. L'instruction `ls`{.language-} sous powershell est équivalente à [`Get-ChildItem`{.language-}](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem)
 - voir les fichiers cachés :
-  - unix/mac : `$ ls -a`{.language-}
+  - Linux/mac : `$ ls -a`{.language-}
   - powershell : `> ls -Force`{.language-}
 - voir tous les fichiers et récursivement :
   - `$ ls -R`{.language-}. Si je veux voir tous les fichiers depuis la racine, je peux taper : `s -R /`{.language-} (attention ça va prendre du temps...)
@@ -383,8 +389,8 @@ La commande `$> cd`{.language-} permet de changer le dossier courant du terminal
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [cd du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
-- [cd unix](https://manpages.debian.org/trixie/tcl9.0-doc/cd.3tcl.en.html)
+- [`cd` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-childitem) alias vers la commande `Get-ChildItem`{.language-}
+- [`cd` Linux](https://manpages.debian.org/trixie/tcl9.0-doc/cd.3tcl.en.html)
 
 {% endlien %}
 {% faire %}
@@ -445,8 +451,8 @@ La commande `$> mkdir <chemin absolu ou relatif vers le dossier à créer>`{.lan
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [mkdir du powershell](https://ss64.com/ps/new-item.html) qui est un alias vers la commande `new-item`{.language-}
-- [mkdir unix](https://manpages.debian.org/trixie/manpages-fr/mkdir.1.fr.html)
+- [`mkdir` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/new-item) qui est un alias vers la commande `new-item`{.language-}
+- [`mkdir` Linux](https://manpages.debian.org/trixie/manpages-fr/mkdir.1.fr.html)
 
 {% endlien %}
 
@@ -464,8 +470,8 @@ $> cp <chemin absolu ou relatif du dossier ou fichier à copier> <chemin absolu 
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [cp du powershell](https://ss64.com/ps/copy-item.html) qui est un alias vers la commande `copy-item`{.language-}
-- [cp unix](https://manpages.debian.org/trixie/manpages-fr/cp.1.fr.html)
+- [`cp` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/copy-item) qui est un alias vers la commande `copy-item`{.language-}
+- [`cp` Linux](https://manpages.debian.org/trixie/manpages-fr/cp.1.fr.html)
 
 {% endlien %}
 
@@ -495,8 +501,8 @@ $> mv <chemin absolu ou relatif du le fichier à déplacer> <chemin absolu ou re
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [mv du powershell](https://ss64.com/ps/move-item.html) qui est un alias vers la commande `move-item`{.language-}
-- [mv unix](https://manpages.debian.org/trixie/manpages-fr/mv.1.fr.html)
+- [`mv` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/move-item) qui est un alias vers la commande `move-item`{.language-}
+- [`mv` Linux](https://manpages.debian.org/trixie/manpages-fr/mv.1.fr.html)
 
 {% endlien %}
 
@@ -516,10 +522,109 @@ $ rm -r <chemin absolu ou relatif vers le dossier à supprimer>
 {% endnote %}
 {% lien "**Manuel**" %}
 
-- [rm du powershell](https://ss64.com/ps/remove-item.html) redirige vers la commande `remove-item`{.language-}
-- [rm unix](https://manpages.debian.org/trixie/manpages-fr/rm.1.fr.html)
+- [`rm` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/remove-item) redirige vers la commande `remove-item`{.language-}
+- [`rm` Linux](https://manpages.debian.org/trixie/manpages-fr/rm.1.fr.html)
 
 {% endlien %}
+
+## Texte et fichiers texte
+
+Il existe de nombreux moyens de manipuler des fichiers texte avec le terminal. Nous allons voir les plus simples, qui sont aussi les plus utilisés pour créer et manipuler des fichiers de configurations.
+
+### Affichage d'un texte
+
+{% note "**Commande**" %}
+La commande `echo`{.language-} permet d'afficher une chaîne de caractères à l'écran :
+
+```shell
+$> echo <chaîne de caractères>
+```
+
+{% endnote %}
+{% lien "**Manuel**" %}
+
+- [`echo` du powershell](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/write-output) redirige vers la commande `write-output`{.language-}
+- [`echo` Linux](https://manpages.debian.org/trixie/manpages-fr/echo.1.fr.html)
+
+{% endlien %}
+
+Par exemple :
+
+```shell
+$> echo 'Bonjour du terminal !'
+```
+
+Va afficher la chaîne de caractères `Bonjour du terminal !` puis aller à la ligne.
+
+{% info %}
+Les chaînes de caractères dans un terminal est représenté par un texte entouré de quotes `'`.
+
+Vous verrez parfois aussi utilisé des doubles-quotes `"` va interpréter les variables (voir ci-après).
+
+{% endinfo %}
+
+### Création d'un fichier avec du texte
+
+On peut utiliser une redirection `>` pour dévier la sortie de la commande `echo` dans un fichier. Par exemple :
+
+```shell
+$> echo 'Bonjour du terminal !' > bonjour.txt
+```
+
+Va envoyer le résultat de la commande écho dans le fichier `bonjour.txt`{.fichier}.
+
+Vous pouvez exécuter la commande précédente puis utiliser la commande `ls` pour vérifier que le fichier est bien créé.
+
+### Visualisation
+
+{% note "**Commande**" %}
+La commande `cat`{.language-} permet d'afficher une chaîne de caractères à l'écran :
+
+```shell
+$> cat <chemin vers le fichier texte à afficher>
+```
+
+{% endnote %}
+{% lien "**Manuel**" %}
+
+- [`cat` du powershell](https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.management/get-content) redirige vers la commande `write-output`{.language-}
+- [`cat` Linux](https://man7.org/linux/man-pages/man1/cat.1.html)
+
+{% endlien %}
+
+Par exemple, en utilisant le fichier que l'on vient de créer :
+
+```shell
+$> cat bonjour.txt
+```
+
+{% exercice %}
+Utiliser la commande cat et une redirection pour copier le fichier `bonjour.txt` en le fichier `bonjour2.txt`
+{% endexercice %}
+{% details "solution" %}
+
+```shell
+$> cat bonjour.txt > bonjour2.txt
+```
+
+{% enddetails %}
+
+### Ajout de texte à un fichier
+
+La redirection recrée à chaque fois un nouveau fichier. Ainsi :
+
+```shell
+$> echo 'Bonjour' > bonjour.txt
+$> cat bonjour.txt
+```
+
+Va recréer le fichier `bonjour.txt`. Pour ajouter du texte **à la fin d'un fichier texte** on utilise la redirection `>>`. Par exemple :
+
+```shell
+$> echo 'du terminal' >> bonjour.txt
+```
+
+Qui va ajouter la chaîne `du terminal` puis un retour à la ligne à la fin du fichier `bonjour.txt`{.fichier}. Vérifiez le avec un `cat bonjour.txt`.
 
 ## On vérifie qu'on a compris
 
@@ -541,7 +646,7 @@ Dans un terminal, tapez :
 {% details "Windows  11" %}
 
 ```shell
-> $env:Path
+> echo "$env:Path"
 ```
 
 {% enddetails %}
@@ -549,7 +654,7 @@ Dans un terminal, tapez :
 {% details "Systèmes Unix" %}
 
 ```shell
-$ echo $PATH
+$ echo "$PATH"
 ```
 
 {% enddetails %}
@@ -558,6 +663,12 @@ Cela affichera les différents dossiers du path séparé par des :
 
 - `:` sous Unix
 - `;` sous Windows
+
+{% info %}
+On a utilisé ici les doubles-quotes `"` qui interprètes les variables dans une chaîne de caractères. On a donc ici affiché sous la forme d'une chaîne de caractères le contenu de la variables path.
+
+Vous pouvez voir la différence avec de _vraies_ chaines en remplaçant les doubles quotes par des simples quotes.
+{% endinfo %}
 
 ### Modification du path
 
@@ -620,7 +731,7 @@ On peut aussi le faire directement avec la commande :
 $ echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.zprofile
 ```
 
-Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"`{.language-} à la fin du fichier `.zprofile`{.fichier} de la maison.
+Qui ajoute la ligne `export PATH="/users/franc/bin:$PATH"`{.language-} à la fin du fichier `.zprofile`{.fichier} de la maison (remarquez les imbrications des doubles-quotes à l'intérieur des quotes pour éviter l'interprétation de la variable `PATH`).
 
 {% info %}
 <https://www.zerotohero.dev/zshell-startup-files/>
@@ -638,13 +749,13 @@ On peut aussi le faire directement avec la commande :
 $ echo 'export PATH="/users/franc/bin:$PATH"' >> $HOME/.profile
 ```
 
-Qui ajoute la ligne `$ export PATH="/users/franc/bin:$PATH"`{.language-} à la fin du fichier `.profile`{.fichier} de la maison.
+Qui ajoute la ligne `$ export PATH="/users/franc/bin:$PATH"`{.language-} à la fin du fichier `.profile`{.fichier} de la maison (remarquez les imbrications des doubles-quotes à l'intérieur des quotes pour éviter l'interprétation de la variable `PATH`).
 
 {% info %}
-<https://opensource.com/article/17/6/set-path-linux>
-{% endinfo %}
-{% info %}
-<http://mywiki.wooledge.org/DotFiles>
+
+- <https://opensource.com/article/17/6/set-path-linux>
+- <http://mywiki.wooledge.org/DotFiles>
+
 {% endinfo %}
 {% enddetails %}
 

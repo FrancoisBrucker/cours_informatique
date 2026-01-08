@@ -39,7 +39,7 @@ Entrées :
     n : un entier strictement positif
 Programme :
     tant que n est strictement plus grand que 0:
-        dire à voix haute : "L'informatique c'est vraiment super chouette !"
+        dire à voix haute : "L'informatique c'est magnifique !"
 ```
 
 Ou celui-ci qui l'est clairement :
@@ -50,7 +50,7 @@ Entrées :
     n : un entier strictement positif
 Programme :
     tant que n est strictement plus grand que 0:
-        dire à voix haute : "L'informatique c'est vraiment super méga chouette !"
+        dire à voix haute : "L'informatique c'est vraiment magnifique !"
         décrémenter la valeur de n de 1
 ```
 

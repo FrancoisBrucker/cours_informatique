@@ -31,6 +31,54 @@ Une semaine pour comprendre le fonctionnement de python et l'utiliser pour déve
 
 Basé sur 3 journée de 6h et (environ) 6h de travail personnel pour un total de 24h d'enseignement.
 
+<!-- > TBD 
+
+Faire moins de choses et réorganiser.
+
+jour 1 :
+
+- 8h-10h : 
+  - python et programme. Installer python et montrer via le terminal
+  - montrer la différence avec spyder
+  - tuto vscode
+- 10h-12h :
+  - install vscode et faire marcher des petit prg chez eux en autonomie. Un seul fichier avec les fonction et les tests.
+- 14h-15h :
+  - on vérifie que python+vscode installé 
+- 15h- :
+  - exercices des structures de python en autonomie (conditions, blocs, fonctions et structure de donnée liste, ensemble, dictionnaire)
+
+jour 2 :
+
+- 8h-10h : 
+  - les imports : 
+    - en local nous pour séparer les fonctions du main
+    - bibliothèques distantes avec pip
+  - github pour donner son code
+- 10h-12h :
+  - install matplotlib + tuto
+- 14h- :
+  - on vérifie que matplotlib ok 
+  - les fichiers
+- 15h- :
+  - tuto fichiers
+
+jour 3 :
+
+- 8h-10h : 
+  - les tests : 
+    - fichier de tests
+    - utilisation de pytest
+- 10h-12h :
+  - projet pytest
+- 14h- :
+  - on vérifie que test ok 
+  - débugger son code
+- 15h- :
+  - advent of code
+
+-->
+
 ## Jour 1
 
 ### Matin

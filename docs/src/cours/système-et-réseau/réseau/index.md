@@ -58,8 +58,6 @@ Tester les commandes `curl http://www.google.fr` et `curl http://www.google.fr:8
 Tester sur un autre port. Conclusion ?
 {% endfaire %}
 
-
-
 {% faire %}
 Dans un Wireshark, récupérez la requête de `curl http://www.google.fr`. Regardez la couche Transmission. Quels sont les deux port utilisés ?
 {% endfaire %}

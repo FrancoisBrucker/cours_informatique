@@ -29,6 +29,8 @@ Aucune compétences en informatique préalable n'est nécessaire.
 [Bases de la programmation](bases-programmation){.interne}
 {% endaller %}
 
+> TBD faire sorte la partie IV des bases pour la mettre ici : structure.
+
 ### Tutoriel python
 
 Une fois les bases acquises, terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu de façon plus détaillée :

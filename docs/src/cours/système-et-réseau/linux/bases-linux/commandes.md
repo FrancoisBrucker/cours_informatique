@@ -13,8 +13,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-> [liste des instructions courantes shell (bash)](https://github.com/RehanSaeed/Bash-Cheat-Sheet)
+> TBD [lire une page man](https://itsfoss.com/linux-man-page-guide/)
+> TBD  [liste des instructions courantes shell (bash)](https://github.com/RehanSaeed/Bash-Cheat-Sheet)
 
 Les commandes sont les instructions que l'on exécute dans un shell. Elles sont faites pour être :
 

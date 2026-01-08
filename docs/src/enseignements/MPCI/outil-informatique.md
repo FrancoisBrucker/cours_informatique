@@ -26,14 +26,16 @@ Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau
 - login : votre adresse mail
 - mot de passe : celui de l'ent AMU
 
+{% info %}
 Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
+{% endinfo %}
 
 ## Connaissances minimales du système d'exploitation
 
-### But
+### Bases
 
 {% aller %}
-[But d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/but){.interne}
+[Bases d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/){.interne}
 {% endaller %}
 
 ### Installations système complémentaires
@@ -44,7 +46,7 @@ Outils et logiciels très utiles pour l'utilisation raisonnée de son système.
 
 - **sous Windows**, ayez un compte sur le [microsoft store](https://apps.microsoft.com/home?hl=fr-FR&gl=FR).
 - **sous mac** installez <https://brew.sh/> qui vous permettra d'installer de nombreux package unix : [installer brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne}.
-- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
+- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/post-installation/){.interne}
 
 #### Nouvelle installation
 
@@ -55,12 +57,6 @@ Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence 
 {% endinfo %}
 {% aller %}
 [installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
-{% endaller %}
-
-### Dossiers et fichiers
-
-{% aller %}
-[Naviguer dans un système de fichiers](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/){.interne}
 {% endaller %}
 
 ## Ordinateur pour le développement en python
@@ -81,15 +77,30 @@ Vous aurez besoin de coder dans quasi toutes les matières. La bonne nouvelle c'
 
 ### Documents scientifiques
 
-#### Latex
+Produire des documents scientifiques se fait difficilement avec Word, de part la multiplicité des formules à écrire. La communauté scientifique préfère utiliser le logiciel Latex qui produit, à partir de fichiers textes, des documents pdf de qualité.
+
+#### Typst
+
+L'outil actuel pour créer ses documents scientifiques.
 
 {% lien %}
+
+- [typst](https://typst.app/#start)
+- [installer typst chez vous](https://github.com/typst/typst)
+
+{% endlien %}
+
+#### Latex
+
+Le prédécesseur de typst.
+
+{% lien %}
+
 - [Page Wikipedia de $\LaTeX$](https://fr.wikipedia.org/wiki/LaTeX)
 - [Ressources sur Tex et Latex](https://www.tug.org/)
 - [latex en ligne](https://www.overleaf.com/)
-{% endlien %}
 
-Produire des documents scientifiques se fait difficilement avec Word, de part la multiplicité des formules à écrire. La communauté scientifique préfère utiliser le logiciel Latex qui produit, à partir de fichiers textes, des documents pdf de qualité.
+{% endlien %}
 
 Latex est cependant un vieux programme, la gestion des packages à installer et les différentes étapes de *compilation* respirent les années 1980. Il vaut mieux installer le maximum de choses tout de suite histoire de ne pas avoir de paquets manquants. Ceci se fait en installant une [distribution](https://fr.wikipedia.org/wiki/Distribution#Informatique) Latex.
 
@@ -126,17 +137,6 @@ Pour utiliser latex, rien de tel qu'un bon tuto :
 {% lien %}
 <https://www.tuteurs.ens.fr/logiciels/latex/>
 {% endlien %}
-
-#### Typst
-
-{% lien %}
-
-- [typst](https://typst.app/#start)
-- [installer typst chez vous](https://github.com/typst/typst)
-
-{% endlien %}
-
-Le petit nouveau qui fait (presque) tout comme son grand frère.
 
 ### Graphiques
 
@@ -206,10 +206,7 @@ sudo apt install geogebra
 
 {% enddetails %}
 {% details "sous Macos" %}
-Deux possibilités :
-
-- Téléchargez l'application GeoAlgebra Classique 5 depuis [le site](https://www.geogebra.org/download
-- via brew : `brew install --cask geogebra`{.language-} et vous aurez même une version plus récente
+Téléchargez l'application GeoAlgebra Classique 5 depuis [leur site](https://www.geogebra.org/download)
 
 {% attention %}
 Comme Geogebra n'est pas une application signée, Macos ne vous laissera pas l'ouvrir automatiquement. Lors du premier lancement uniquement, vous devrez faire la procédure pour [Ouvrir une app Mac provenant d’un développeur non identifié](https://support.apple.com/fr-fr/guide/mac-help/mh40616/mac). Une fois cette manipulation effectuée, vous pourrez lancer l'application normalement.

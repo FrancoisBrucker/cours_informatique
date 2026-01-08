@@ -83,7 +83,7 @@ Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 #### Connaissances minimales du système d'exploitation
 
 {% aller %}
-[But d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/but){.interne}
+[Principes d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/principes){.interne}
 {% endaller %}
 
 #### Installations système complémentaires

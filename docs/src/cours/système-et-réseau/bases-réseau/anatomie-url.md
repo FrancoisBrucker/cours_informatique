@@ -9,12 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Notion d'url.
-
-<!-- fin résumé -->
-
 Une [URL](https://fr.wikipedia.org/wiki/Uniform_Resource_Locator) (Uniform Resource Locator) est un cas particulier d'[URI](https://fr.wikipedia.org/wiki/Uniform_Resource_Identifier).
 
 Pour ce qui nous concernent, ces deux notions permettent de retrouver une ressource. La force d'une d'URI est son [schéma](https://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI), très souple qui s'adapte à de nombreuses situation

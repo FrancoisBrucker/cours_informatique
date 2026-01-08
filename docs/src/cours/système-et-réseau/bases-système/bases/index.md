@@ -12,10 +12,10 @@ eleventyComputed:
 
 On suppose ici que vous savez minimalement interagir avec votre système d'exploitation en exécutant des applications via un menu ou l'explorateur de fichiers.
 
-## But
+## Principes
 
 {% aller %}
-[But et principes d'un système](but){.interne}
+[Principes d'un système](principes){.interne}
 {% endaller %}
 
 ## Système de fichiers

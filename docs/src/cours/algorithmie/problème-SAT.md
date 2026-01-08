@@ -20,10 +20,10 @@ Soient $x_1, \dots, x_n$, $n$ variables booléennes. On définit :
 
 - un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
 - une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
-- une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
+- une **_conjonction de clauses_** comme étant $f = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
 {% endnote %}
 
-Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite **_satisfiable_** :
+Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clauses est dite **_satisfiable_** :
 
 {% note "**Problème**" %}
 

@@ -12,6 +12,17 @@ eleventyComputed:
 
 Principe d'une communication sécurisée entre deux ordinateurs.
 
+## ssh
+
+{% lien %}
+
+- [ssh en 10min](https://www.youtube.com/watch?v=3-MDtASgSo8)
+- [ssh handshake](https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html)
+- [chiffrements utilisés](https://bash-prompt.net/guides/bash-ssh-ciphers/)
+
+{% endlien %}
+
+
 ## Key derivation function
 
 {% lien %}
