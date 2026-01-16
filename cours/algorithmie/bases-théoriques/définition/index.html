@@ -364,7 +364,7 @@ Programme :
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Les deux ensembles $(\mathcal{A})^\star$ et $(\{0, 1\})^\star$ sont en bijection pour tout ensemble $\mathcal{A}$ fini.</p>
+<p>Il existe une injection entre $(\mathcal{A})^\star$ et $(\{0, 1\})^\star$.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -417,15 +417,27 @@ $$
 \end{array}
 $$
 </div>
-<p>On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i &lt; n}$ un élément de l'ensemble $(\{0, 1\})^\star$. Notre transformation est une injection de l'ensemble des suites finies de caractères vers l'ensemble des suites finies de $\{0, 1\}$. Comme <code>0</code> et <code>1</code> sont également des caractères Unicode (de numéros 48 et 49 respectivement), il existe également une injection de
-$(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
-<p>On peut alors utiliser <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein">le théorème de Cantor-Bernstein</a> pour conclure qu'il existe une bijection entre les 2 ensembles (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).</p>
+<p>On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i &lt; n}$ un élément de l'ensemble $(\{0, 1\})^\star$.</p>
 </div>
 </details>     
 </div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<blockquote>
+<p>TBD ici
+Ils sont même en bijection</p>
+</blockquote>
 <blockquote>
 <p>TBD preuve du théorème (voir Wikipedia) avec <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Lemme_pr%C3%A9liminaire">le lemme préliminaire</a> (on va en avoir besoin ?)</p>
 </blockquote>
+<p>Notre transformation est une injection de l'ensemble des suites finies de caractères vers l'ensemble des suites finies de $\{0, 1\}$. Comme <code>0</code> et <code>1</code> sont également des caractères Unicode (de numéros 48 et 49 respectivement), il existe également une injection de
+$(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
+<p>On peut alors utiliser <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein">le théorème de Cantor-Bernstein</a> pour conclure qu'il existe une bijection entre les 2 ensembles (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).</p>
+</div></div>
+
 <p>On en conclut le résultat que tout le monde connaît :</p>
 <p><span id="paramètres-binaires"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
