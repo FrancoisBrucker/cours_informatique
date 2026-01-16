@@ -11,6 +11,12 @@ eleventyComputed:
 ---
 
 > TBD y mettre la partie sur les tableaux de bits de </cours/algorithmie/fonctions-booléennes/>{.interne}
+> TBD mémoire :
+>
+> - base = un octet 1B. Comme si on était en base 256. Pour avoir accès aux bits on utilise des opérations logiques.
+> - en mémoire rangé dans un tableau bit faible d'index 0.
+> - registre = accès mémoire par paquet de 64b = 8B. On ne peut accéder en 1 opération qu'auz adresse divisible par 8. Dans le registre bits rangés bit d'index faible = 0. Pour le reste ça se fait  en plusieurs opérations avec des décalages pour retrouver le tableau de bits.
+> nombre plus gros que 8B rangé en little endian/big endian (intel vs le reste du monde...).
 
 ## <span id="exponentiation">Exponentiation
 

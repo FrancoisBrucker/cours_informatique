@@ -10,6 +10,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD <https://mathoverflow.net/questions/358184/probability-of-a-random-variable-greater-than-its-expected-value>
+> chernoff bound, reverse markov inequality,
+> Paley–Zygmund inequality <https://en.wikipedia.org/wiki/Paley%E2%80%93Zygmund_inequality>
+> Chebyshev inequality <https://en.wikipedia.org/wiki/Chebyshev%27s_inequality>
+> <https://www.youtube.com/watch?v=lKkyxtzz4Uo>
+> thm centrale limite : <https://www.youtube.com/watch?v=FGIxzMGE01A> et <https://www.youtube.com/watch?v=axA1-yR-KDw>
+> convergences : <https://www.youtube.com/watch?v=KedtZmQ5GyM> et <https://www.youtube.com/watch?v=UmSSrXr4ixM&list=PLl7EPYrsru4_usb1yKNUr8wtQGcVP9DZ6>
+
 {% lien %}
 
 - [proba discrete](https://en.wikibooks.org/wiki/High_School_Mathematics_Extensions/Discrete_Probability)

@@ -56,24 +56,34 @@ Une **_fonction_** s'utilise toujours en faisant suivre son nom d'une parenthès
 
 ## Nom d'une fonction
 
-Un nom de fonction est une variable comme une autre. Dans le code suivant, exécuté dans un interpréteur (d'où les `...`{.language-}), on regarde le type d'un nom associé à une fonction :
+Un nom de fonction est une variable comme une autre, on regarde le type d'un nom associé à une fonction :
 
 ```python
->>> def salutation():
-...    print("Comment vas-tu yau de poêle ?")
-...
->>> type(bonjour)
+def salutation():
+    print("Comment vas-tu yau de poêle ?")
+
+print(type(bonjour))
+```
+
+Le programme suivant exécuté dans vscode vous donnera :
+
+```
 <class 'function'>
 ```
 
 On peut aussi associer la fonction à une autre variable comme on le ferait avec n'importe quel autre objet. Dans l'exemple suivant on associe la fonction à une autre variable, `x`{.language-} :
 
 ```python
->>> def salutation():
-...    print("Comment vas-tu yau de poêle ?")
-...
->>> x = salutation
->>> x()
+def salutation():
+    print("Comment vas-tu yau de poêle ?")
+
+x = salutation
+x()
+```
+
+Le programme suivant exécuté dans vscode vous donnera :
+
+```
 Comment vas-tu yau de poêle ?
 ```
 
@@ -89,7 +99,7 @@ Traceback (most recent call last):
 TypeError: 'int' object is not callable
 ```
 
-Enfin, en python être une fonction n'est rien d'autre que d'être un **_objet appelable_**. Savoir si un objet est appelable ou pas se fait par la fonction `callable`{.language-} :
+Enfin, en python être une fonction n'est rien d'autre que d'être un **_objet appelable_**. Savoir si un objet est appelable ou pas se fait par la fonction `callable`{.language-}. Examinez les exécutions de code suivantes (exécuté dans un interpréteur, d'où les `...`{.language-}) :
 
 ```python
 >>> def salutation():

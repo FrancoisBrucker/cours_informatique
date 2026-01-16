@@ -67,4 +67,6 @@ Ne nombreuses applications ou jeux sont Turing-complet par inadvertence. Par exe
 - [Legend of Zelda: Tears of the Kingdom](https://www.youtube.com/watch?v=5u6BN1p0Uo8)
 - [Powerpoint](https://www.youtube.com/watch?v=uNjxe8ShM-8)
 - [règle 110 avec Factorio (et des trains)](https://www.youtube.com/watch?v=NCC2Fd8qxv4)
+- [fractran](https://www.youtube.com/watch?v=GIPtnEIQCBM) et <https://fr.wikipedia.org/wiki/FRACTRAN>
 
+> TBD faire un dm Fractran : <https://math.univ-lyon1.fr/~roblot/resources/factorisation.pdf> <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap6.pdf>(avec dichotomie) et division euclidienne. Voir si ça fonctionne en python avant des entiers aussi grand qu'on veut

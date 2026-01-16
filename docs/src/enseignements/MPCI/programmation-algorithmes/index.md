@@ -66,7 +66,6 @@ Ce cours est composée de plusieurs parties :
 - Complexité d'un complexité
 - Structures de données
 - Programmation objet
-- Méthodes de résolution de problèmes
 
 <!-- 
 
@@ -80,13 +79,117 @@ Ce cours est composée de plusieurs parties :
 
 ### Semaine 1
 
-> 20/01 au 24/01
+> 19/01 au 23/01
+> Algorithmie
 
 #### Mercredi : qu'est-ce qu'un algorithme
+
+> 2h
 
 {% aller %}
 [bases théorique de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
 {% endaller %}
+
+Notions abordées :
+
+- définition d'un programme et d'un algorithme
+- données, variables et sorties d'un algorithme : chaînes de 0 et de 1 (uniquement 2 symboles)
+- problème de l'arrêt d'un programme
+- ce qu'il peut et ne peut pas faire
+
+#### Vendredi : écrire des algorithmes
+
+> 4h
+
+- pseudo-code et thèse de Church-Turing
+- algorithmes itératif et récursifs
+- prouver un algorithme
+- on s'entraîne
+
+### Semaine 2
+
+> 26/01 au 30/01
+> Programmation
+
+#### Mercredi : projet de développement
+
+> 2h
+
+{% attention %}
+Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
+{% endattention %}
+
+- base système :
+  - dossiers, fichiers
+  - programmes
+- terminal
+- développement python :
+  - interpréteur
+  - ide vscode
+  - tests
+
+#### Vendredi : exercices
+
+> 2h
+
+- développer un algorithme
+- on s'entraîne
+
+### Semaine 3
+
+> 02/02 au 06/02
+> Algorithmie
+
+#### Mercredi : complexité
+
+> 2h
+
+{% attention %}
+Test de 15min **sur ordinateur** en début de cours sur les thèmes de la semaine précédente.
+{% endattention %}
+
+- définition
+- complexité spatiale et temporelle
+- calculs de $\mathcal{O}$
+- complexité d'algorithmes itératifs et récursifs
+
+#### Vendredi : exercices
+
+> 2h
+
+- mesure de complexité en code
+- complexité en moyenne
+
+### Semaine 4
+
+> 09/02 au 13/02
+> Algorithmie
+
+#### Mercredi et vendredi : exercices
+
+> 4h
+
+Complexité et preuves d'algorithmes
+
+<!-- TBD
+
+- <https://efrei.poupa.net/Programmation%20en%20C++/Exercices_et_problemes_d_algorithme.pdf>
+- <https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/algo/exercices/>
+- <https://imag.umontpellier.fr/~lacour/exo_algo.pdf>
+- <https://wiki.sfeir.com/carriere/recrutement/evaluation-algo/exemple_exercices_algo/>
+- <https://fabien-torre.fr/Enseignement/Exercices/algo-exos.php>
+- <https://www.youtube.com/playlist?list=PLZpzLuUp9qXzOgDakYP0UAGIBNk0pPdvZ>
+
+-->
+
+<!-- 
+
+
+
+
+### Semaine 1
+
+> 20/01 au 24/01
 
 #### Vendredi : qu'est-ce que le code
 
@@ -611,7 +714,7 @@ Sujet DS-C : [Big points](./annales/2024-2025/ds-code/){.interne}
 {% attention %}
 Rendre DM4 pour le vendredi 16 mai [sur amétice](https://ametice.univ-amu.fr/mod/assign/view.php?id=4081169).
 
-{% endattention %}
+{% endattention %} -->
 
 ## Annales
 
