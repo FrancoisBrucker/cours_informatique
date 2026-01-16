@@ -329,14 +329,8 @@ On peut aller plus loin en représentant les tableaux de suites finies de "0" et
 - le caractère de début de liste est encodé par la suite `010`
 - le caractère de fin de liste est encodé par la suite `001`
 
-Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000101101100001`. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme `[0, [1, [1]], 0]`, chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) ayant son propre code sur 3 bits.
+Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000101101100001`. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme `[0, [1, [1]], 0]`, chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) ayant son propre code sur 3 bits. Cette astuce vas nous permettre de compter tous les programmes possible !
 
-
-
-> TBD dire que l'on pourra en créer d'autres selon les besoins.
-
-
-En conclusion, comme on peut associer une suite finie de de `0` et de `1` à tout algorithme et à tout ce qu'il peut manipuler :
 
 ## Nombre de programmes
 
