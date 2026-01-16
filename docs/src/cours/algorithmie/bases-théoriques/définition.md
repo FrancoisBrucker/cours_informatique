@@ -195,7 +195,7 @@ Mais avant de n'utiliser plus que du pseudo-code, regardons ce que cela veut dir
 
 Le terme **fini** de la définition d'un programme/algorithme est crucial : pour qu'un humain comprenne, et surtout puisse agir, il faut que :
 
-- chaque algorithme soit décrit par un texte **fini**
+- chaque algorithme soit décri par un texte **fini**
 - chaque instruction doit s'exécuter en un temps **fini** 
 - chaque donnée manipulée doit être de taille **finie**
 
@@ -221,13 +221,22 @@ Même si le programme ne s'arrête pas, chaque étape est bien finie :
 
 La conséquence fondamentale de ceci est que :
 
+{% note "**Proposition**" %}
+Un programme ne peut manipuler que des données de la forme d'une suite fini d'un ensemble fini.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Comme une donnée doit être lue en temps finie, elle doit être composée d'une liste finie d'éléments. Si le nombre d'éléments possibles était infini, il faudrait une description infinie de chaque instruction qui l'utiliserait.
+
+{% enddetails %}
+
+Une conséquence directe de la proposition précédente est :
+
 {% attention "**À retenir**" %}
 un programme ne peut pas manipuler de nombres réels.
 {% endattention %}
 
-Un réel ne l'est pas : c'est une limite. C'est une abstraction que l'on peut considérer comme ou une approximation (ne considérer qu'un nombre fini de ses décimales) ou un symbole.
-
-Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.
+Un réel ne l'est pas : c'est une limite. C'est une abstraction que l'on peut considérer comme ou une approximation (ne considérer qu'un nombre fini de ses décimales) ou un symbole. Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.
 
 On ne pourra le considérer que de deux manières :
 
@@ -240,37 +249,60 @@ Ce n'est pas bien grave en général puisque les lois physiques sont presque tou
 Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où [de petits effets produisent de grandes causes](https://fr.wikipedia.org/wiki/Effet_papillon), certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de [stabilité numérique](https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique).
 {% endinfo %}
 
-Donc :
+Or :
 
-{% note %}
-
-Les objets manipulables par un programme sont uniquement les suites finies composés des objets de type :
-
-- les entiers relatifs
-- les approximations finies de réels
-- les chaînes de caractères
-
+{% note "**Proposition**" %}
+Les deux ensembles $(\mathcal{A})^\star$ et $(\\{0, 1\\})^\star$ sont en bijection pour tout ensemble $\mathcal{A}$ fini.
 {% endnote %}
+{% info %}
+Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.
+{% endinfo %}
+{% details "preuve", "open" %}
 
-Ces objets sont tous représentables par des suites finies de `0` et de `1` :
+On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble $\mathcal{A}$ est triviale.
 
-- des entiers relatifs :
-  - positifs en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
-  - négatifs en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) de la représentation binaire de son opposé. Ainsi -3 sera encodé par `101` (un entier négatif ainsi représenté commencera toujours par un `1`)
-- des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
-- des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)) qui en binaire vaut : `0000010110010110111101110000001000000010`
+On considère l'ensemble des caractères des différentes langues écrites actuelles ou passée. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode) que l'on va noter $\mathcal{U}$. Il est constitué de 159801 caractères (appelées glyphes) dont chacun est associé un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
 
-On peu aller plus loin en représentant les tableaux de suites finies de "0" et de "1" par une unique suite finie de "0" et de "1". Pour cela on peut utiliser l'encodage suivant :
+Une chaîne de caractère $(c_i)_{0\leq i < n}$ est alors une suite de $6n$ chiffres. Par exemple : "Coucou toi !" correspond au nombre :
 
-- le caractère `0` est encodé par la suite `100`
-- le caractère `1` est encodé par la suite `101`
-- le caractère de séparation est encodé par la suite `000`
-- le caractère de début de liste est encodé par la suite `010`
-- le caractère de fin de liste est encodé par la suite `001`
+<div>
+$$
+\underbracket{000067}_{\text{C}}\underbracket{000111}_{\text{o}}\underbracket{000117}_{\text{u}}\underbracket{000099}_{\text{c}}\underbracket{000111}_{\text{o}}\underbracket{000117}_{\text{u}}\underbracket{000032}_{\text{ }}\underbracket{000116}_{\text{t}}\underbracket{000111}_{\text{o}}\underbracket{000105}_{\text{i}}\underbracket{000032}_{\text{ }}\underbracket{000033}_{\text{!}}
+$$
+</div>
 
-Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000101101100001`. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme `[0, [1, [1]], 0]`, chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) ayant son propre code sur 3 bits.
+Pour éviter tout soucis avec des données commençant par le caractère Unicode de nombre 0 (un même nombre peut avoir autant de chiffre 0 qu'il veut au début), on fait commencer toute données par le chiffre 1. La chaîne de caractères  "Coucou toi !" correspond ainsi au nombre :
 
-En conclusion, comme on peut associer une suite finie de de `0` et de `1` à tout algorithme et à tout ce qu'il peut manipuler :
+<div>
+$$
+1000067000111000117000099000111000117000032000116000111000105000032000033
+$$
+</div>
+
+Qui en notation binaire devient la suite finie :
+
+<div>
+$$
+\begin{array}{l}
+100100001110011010001011111100110010100110001101001001110110\\
+101110011110110011000001101011011000000011010110111111101110\\
+110101111000001001010010110011110000101011001101011000010110\\
+011100101110101111101010100111000001111101111101100000100001
+\end{array}
+$$
+</div>
+
+On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i < n}$ un élément de l'ensemble $(\\{0, 1\\})^\star$. Notre transformation est une injection de l'ensemble des suites finies de caractères vers l'ensemble des suites finies de $\\{0, 1\\}$. Comme `0` et `1` sont également des caractères Unicode (de numéros 48 et 49 respectivement), il existe également une injection de 
+$(\\{0, 1\\})^\star$ vers $(\mathcal{U})^\star$.
+
+On peut alors utiliser [le théorème de Cantor-Bernstein](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein) pour conclure qu'il existe une bijection entre les 2 ensembles (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).
+
+{% enddetails %}
+
+> TBD preuve du théorème (voir Wikipedia) avec [le lemme préliminaire](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Lemme_pr%C3%A9liminaire) (on va en avoir besoin ?)
+
+
+On en conclut le résultat que tout le monde connaît :
 
 <span id="paramètres-binaires"></span>
 
@@ -281,19 +313,46 @@ Tout ce que peut manipuler un programme est une suite finie de caractères `0` e
 Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki/Bit).
 {% endnote %}
 
-Un bit est l'information minimale que l'on peut véhiculer puisqu'il ne peut avoir que 2 valeurs différentes. Cette unité minimale d'information est très puissante puisque les suites finies de bits permettent non seulement de stocker tous les objets que peut manipuler un algorithme mais aussi les algorithmes eux-même via le codage binaires des chaines Unicode par exemple. On en conclut que :
+Cependant n'utiliser que des tableaux de bits (dont le type est `[bit]`) pour nos programmes les rendrait illisible. On défini donc d'autres types qui représentent nos données dont les plus classiques sont :
 
-{% attention "**À retenir**" %}
-Un algorithme et tout ce qu'il peut manipuler est une suite finie de `0` et de `1`.
-{% endattention %}
+- les entiers relatifs :
+  - positifs en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
+  - négatifs en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) de la représentation binaire de son opposé. Ainsi -3 sera encodé par `101` (un entier négatif ainsi représenté commencera toujours par un `1`)
+- des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
+- des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)) qui en binaire vaut : `0000010110010110111101110000001000000010`
 
-En toute rigueur, les seuls objets que peut manipuler un programme c'est les listes finies de bit (notées `[bit]`), mais ceci rendrait les algorithmes très difficile à lire, donc en pratique on spécifie des listes de bits particulières : celles représentant des entiers, des chaînes de caractères, etc.
+On peut aller plus loin en représentant les tableaux de suites finies de "0" et de "1" par une unique suite finie de "0" et de "1". Pour cela on peut utiliser l'encodage suivant :
+
+- le caractère `0` est encodé par la suite `100`
+- le caractère `1` est encodé par la suite `101`
+- le caractère de séparation est encodé par la suite `000`
+- le caractère de début de liste est encodé par la suite `010`
+- le caractère de fin de liste est encodé par la suite `001`
+
+Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000101101100001`. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme `[0, [1, [1]], 0]`, chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) ayant son propre code sur 3 bits.
+
+
+
+> TBD dire que l'on pourra en créer d'autres selon les besoins.
+
+
+En conclusion, comme on peut associer une suite finie de de `0` et de `1` à tout algorithme et à tout ce qu'il peut manipuler :
 
 ## Nombre de programmes
 
 > TBD ici
 > 
 La définition générale d'un programme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.
+
+
+
+Un bit est l'information minimale que l'on peut véhiculer puisqu'il ne peut avoir que 2 valeurs différentes. Cette unité minimale d'information est très puissante puisque les suites finies de bits permettent non seulement de stocker tous les objets que peut manipuler un algorithme mais aussi les algorithmes eux-même via le codage binaires des chaines Unicode par exemple. On en conclut que :
+
+{% attention "**À retenir**" %}
+Un algorithme et tout ce qu'il peut manipuler est une suite finie de `0` et de `1`.
+{% endattention %}
+
+
 
 ### Une infinité de programmes différents
 
@@ -365,21 +424,9 @@ Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaîne
 On peut associer à toute chaîne de caractère un entier strictement positif unique.
 {% endnote %}
 {% details "preuve", "open" %}
-Il suffit d'associer le numéro de chaque caractère Unicode écrit avec 6 chiffres. Une chaîne de caractère $(c_i)_{0\leq i < n}$ est alors une suite de $6n$ chiffres. Par exemple : l'instruction "Ne fait rien" correspond au nombre :
 
-<div>
-$$
-\underbracket{000078}_{\text{N}}\underbracket{000101}_{\text{e}}\underbracket{000032}_{\text{ }}\underbracket{000102}_{\text{f}}\underbracket{000097}_{\text{a}}\underbracket{000105}_{\text{i}}\underbracket{000116}_{\text{t}}\underbracket{000032}_{\text{ }}\underbracket{000114}_{\text{r}}\underbracket{000105}_{\text{i}}\underbracket{000101}_{\text{e}}\underbracket{000110}_{\text{n}}
-$$
-</div>
+> TBDici reprendre la bijection et prendre le nombre associé.
 
-Pour éviter tout soucis avec des algorithmes commençant par le caractère Unicode de nombre 0 (un même nombre peut avoir autant de chiffre 0 qu'il veut au début), on fait commencer tout algorithme par le chiffre 1. L'algorithme d'une seule instruction "Ne fait rien" correspond ainsi au nombre :
-
-$$
-1000078000101000032000102000097000105000116000032000114000105000101000110
-$$
-
-On associe bien à toute chaîne de caractères $(c_i)_{0\leq i < n}$ un nombre de $6n +1$ chiffres unique.
 {% enddetails %}
 
 On déduit immédiatement la proposition suivante :
