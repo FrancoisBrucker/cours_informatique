@@ -467,11 +467,7 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 <li>le caractère de début de liste est encodé par la suite <code>010</code></li>
 <li>le caractère de fin de liste est encodé par la suite <code>001</code></li>
 </ul>
-<p>Ainsi le tableau <code>[00110, 110]</code> sera encodé par la suite <code>010100100101101100000101101100001</code>. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme <code>[0, [1, [1]], 0]</code>, chaque caractère nécessaire (<code>0</code>, <code>1</code>, <code>,</code>, <code>[</code> et <code>]</code>) ayant son propre code sur 3 bits.</p>
-<blockquote>
-<p>TBD dire que l'on pourra en créer d'autres selon les besoins.</p>
-</blockquote>
-<p>En conclusion, comme on peut associer une suite finie de de <code>0</code> et de <code>1</code> à tout algorithme et à tout ce qu'il peut manipuler :</p>
+<p>Ainsi le tableau <code>[00110, 110]</code> sera encodé par la suite <code>010100100101101100000101101100001</code>. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme <code>[0, [1, [1]], 0]</code>, chaque caractère nécessaire (<code>0</code>, <code>1</code>, <code>,</code>, <code>[</code> et <code>]</code>) ayant son propre code sur 3 bits. Cette astuce vas nous permettre de compter tous les programmes possible !</p>
 <h2>Nombre de programmes</h2>
 <blockquote>
 <p>TBD ici</p>
