@@ -280,7 +280,7 @@ Programme :
 <h2>Objets manipulables par un programme</h2>
 <p>Le terme <strong>fini</strong> de la définition d'un programme/algorithme est crucial : pour qu'un humain comprenne, et surtout puisse agir, il faut que :</p>
 <ul>
-<li>chaque algorithme soit décrit par un texte <strong>fini</strong></li>
+<li>chaque algorithme soit décri par un texte <strong>fini</strong></li>
 <li>chaque instruction doit s'exécuter en un temps <strong>fini</strong></li>
 <li>chaque donnée manipulée doit être de taille <strong>finie</strong></li>
 </ul>
@@ -299,6 +299,38 @@ Programme :
 <li>ajouter 1 à <code>x</code> est possible en posant l'addition et cela prendra un temps proportionnel à son nombre de chiffres et l'<a href="https://fr.wikipedia.org/wiki/Addition#Proc%C3%A9d%C3%A9_de_calcul">on peut décrire le principe de l'addition en français</a>, donc avec un nombre fini de symboles (les lettres, les chiffres et quelques symboles de ponctuation)</li>
 </ul>
 <p>La conséquence fondamentale de ceci est que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un programme ne peut manipuler que des données de la forme d'une suite fini d'un ensemble fini.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme une donnée doit être lue en temps finie, elle doit être composée d'une liste finie d'éléments. Si le nombre d'éléments possibles était infini, il faudrait une description infinie de chaque instruction qui l'utiliserait.</p>
+</div>
+</details>     
+</div>
+<p>Une conséquence directe de la proposition précédente est :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -309,8 +341,7 @@ Programme :
 <p>un programme ne peut pas manipuler de nombres réels.</p>
 </div></div>
 
-<p>Un réel ne l'est pas : c'est une limite. C'est une abstraction que l'on peut considérer comme ou une approximation (ne considérer qu'un nombre fini de ses décimales) ou un symbole.</p>
-<p>Prenons $\pi$ par exemple. Il existe des algorithmes qui <a href="https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80">calculent les décimales de pi</a>, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.</p>
+<p>Un réel ne l'est pas : c'est une limite. C'est une abstraction que l'on peut considérer comme ou une approximation (ne considérer qu'un nombre fini de ses décimales) ou un symbole. Prenons $\pi$ par exemple. Il existe des algorithmes qui <a href="https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80">calculent les décimales de pi</a>, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.</p>
 <p>On ne pourra le considérer que de deux manières :</p>
 <ul>
 <li>soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur</li>
@@ -325,41 +356,77 @@ Programme :
 <p>Faites tout de même attention car parfois, c'est problématique. Pour le calcul d'effets chaotiques comme la météo où <a href="https://fr.wikipedia.org/wiki/Effet_papillon">de petits effets produisent de grandes causes</a>, certes, mais aussi lorsque l'on prend l'inverse de choses très petites qui du coup deviennent très grandes. Ce sont des problèmes dit de <a href="https://fr.wikipedia.org/wiki/Stabilit%C3%A9_num%C3%A9rique">stabilité numérique</a>.</p>
 </div></div>
 
-<p>Donc :</p>
+<p>Or :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Les objets manipulables par un programme sont uniquement les suites finies composés des objets de type :</p>
-<ul>
-<li>les entiers relatifs</li>
-<li>les approximations finies de réels</li>
-<li>les chaînes de caractères</li>
-</ul>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les deux ensembles $(\mathcal{A})^\star$ et $(\{0, 1\})^\star$ sont en bijection pour tout ensemble $\mathcal{A}$ fini.</p>
 </div></div>
 
-<p>Ces objets sont tous représentables par des suites finies de <code>0</code> et de <code>1</code> :</p>
-<ul>
-<li>des entiers relatifs :
-<ul>
-<li>positifs en utilisant leur notation binaire et en les faisant commencer par un <code>0</code>, par exemple 3 sera encodé par <code>011</code> (le <code>0</code> tout à gauche signifiant que l'entier est positif)</li>
-<li>négatifs en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> de la représentation binaire de son opposé. Ainsi -3 sera encodé par <code>101</code> (un entier négatif ainsi représenté commencera toujours par un <code>1</code>)</li>
-</ul>
-</li>
-<li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
-<li>des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères &quot;Yop !&quot; correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>) qui en binaire vaut : <code>0000010110010110111101110000001000000010</code></li>
-</ul>
-<p>On peu aller plus loin en représentant les tableaux de suites finies de &quot;0&quot; et de &quot;1&quot; par une unique suite finie de &quot;0&quot; et de &quot;1&quot;. Pour cela on peut utiliser l'encodage suivant :</p>
-<ul>
-<li>le caractère <code>0</code> est encodé par la suite <code>100</code></li>
-<li>le caractère <code>1</code> est encodé par la suite <code>101</code></li>
-<li>le caractère de séparation est encodé par la suite <code>000</code></li>
-<li>le caractère de début de liste est encodé par la suite <code>010</code></li>
-<li>le caractère de fin de liste est encodé par la suite <code>001</code></li>
-</ul>
-<p>Ainsi le tableau <code>[00110, 110]</code> sera encodé par la suite <code>010100100101101100000101101100001</code>. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme <code>[0, [1, [1]], 0]</code>, chaque caractère nécessaire (<code>0</code>, <code>1</code>, <code>,</code>, <code>[</code> et <code>]</code>) ayant son propre code sur 3 bits.</p>
-<p>En conclusion, comme on peut associer une suite finie de de <code>0</code> et de <code>1</code> à tout algorithme et à tout ce qu'il peut manipuler :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble $\mathcal{A}$ est triviale.</p>
+<p>On considère l'ensemble des caractères des différentes langues écrites actuelles ou passée. Cet ensemble est fini et existe ! C'est l'ensemble <a href="https://fr.wikipedia.org/wiki/Unicode">des caractères UNICODE</a> que l'on va noter $\mathcal{U}$. Il est constitué de 159801 caractères (appelées glyphes) dont chacun est associé un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.</p>
+<p>Une chaîne de caractère $(c_i)_{0\leq i &lt; n}$ est alors une suite de $6n$ chiffres. Par exemple : &quot;Coucou toi !&quot; correspond au nombre :</p>
+<div>
+$$
+\underbracket{000067}_{\text{C}}\underbracket{000111}_{\text{o}}\underbracket{000117}_{\text{u}}\underbracket{000099}_{\text{c}}\underbracket{000111}_{\text{o}}\underbracket{000117}_{\text{u}}\underbracket{000032}_{\text{ }}\underbracket{000116}_{\text{t}}\underbracket{000111}_{\text{o}}\underbracket{000105}_{\text{i}}\underbracket{000032}_{\text{ }}\underbracket{000033}_{\text{!}}
+$$
+</div>
+<p>Pour éviter tout soucis avec des données commençant par le caractère Unicode de nombre 0 (un même nombre peut avoir autant de chiffre 0 qu'il veut au début), on fait commencer toute données par le chiffre 1. La chaîne de caractères  &quot;Coucou toi !&quot; correspond ainsi au nombre :</p>
+<div>
+$$
+1000067000111000117000099000111000117000032000116000111000105000032000033
+$$
+</div>
+<p>Qui en notation binaire devient la suite finie :</p>
+<div>
+$$
+\begin{array}{l}
+100100001110011010001011111100110010100110001101001001110110\\
+101110011110110011000001101011011000000011010110111111101110\\
+110101111000001001010010110011110000101011001101011000010110\\
+011100101110101111101010100111000001111101111101100000100001
+\end{array}
+$$
+</div>
+<p>On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i &lt; n}$ un élément de l'ensemble $(\{0, 1\})^\star$. Notre transformation est une injection de l'ensemble des suites finies de caractères vers l'ensemble des suites finies de $\{0, 1\}$. Comme <code>0</code> et <code>1</code> sont également des caractères Unicode (de numéros 48 et 49 respectivement), il existe également une injection de
+$(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
+<p>On peut alors utiliser <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein">le théorème de Cantor-Bernstein</a> pour conclure qu'il existe une bijection entre les 2 ensembles (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).</p>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD preuve du théorème (voir Wikipedia) avec <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Lemme_pr%C3%A9liminaire">le lemme préliminaire</a> (on va en avoir besoin ?)</p>
+</blockquote>
+<p>On en conclut le résultat que tout le monde connaît :</p>
 <p><span id="paramètres-binaires"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -381,6 +448,35 @@ Programme :
 <p>Un caractère (<code>0</code> ou <code>1</code>) <a href="https://fr.wikipedia.org/wiki/Bit">est appelé <strong><em>bit</em></strong></a>.</p>
 </div></div>
 
+<p>Cependant n'utiliser que des tableaux de bits (dont le type est <code>[bit]</code>) pour nos programmes les rendrait illisible. On défini donc d'autres types qui représentent nos données dont les plus classiques sont :</p>
+<ul>
+<li>les entiers relatifs :
+<ul>
+<li>positifs en utilisant leur notation binaire et en les faisant commencer par un <code>0</code>, par exemple 3 sera encodé par <code>011</code> (le <code>0</code> tout à gauche signifiant que l'entier est positif)</li>
+<li>négatifs en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> de la représentation binaire de son opposé. Ainsi -3 sera encodé par <code>101</code> (un entier négatif ainsi représenté commencera toujours par un <code>1</code>)</li>
+</ul>
+</li>
+<li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
+<li>des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères &quot;Yop !&quot; correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>) qui en binaire vaut : <code>0000010110010110111101110000001000000010</code></li>
+</ul>
+<p>On peut aller plus loin en représentant les tableaux de suites finies de &quot;0&quot; et de &quot;1&quot; par une unique suite finie de &quot;0&quot; et de &quot;1&quot;. Pour cela on peut utiliser l'encodage suivant :</p>
+<ul>
+<li>le caractère <code>0</code> est encodé par la suite <code>100</code></li>
+<li>le caractère <code>1</code> est encodé par la suite <code>101</code></li>
+<li>le caractère de séparation est encodé par la suite <code>000</code></li>
+<li>le caractère de début de liste est encodé par la suite <code>010</code></li>
+<li>le caractère de fin de liste est encodé par la suite <code>001</code></li>
+</ul>
+<p>Ainsi le tableau <code>[00110, 110]</code> sera encodé par la suite <code>010100100101101100000101101100001</code>. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme <code>[0, [1, [1]], 0]</code>, chaque caractère nécessaire (<code>0</code>, <code>1</code>, <code>,</code>, <code>[</code> et <code>]</code>) ayant son propre code sur 3 bits.</p>
+<blockquote>
+<p>TBD dire que l'on pourra en créer d'autres selon les besoins.</p>
+</blockquote>
+<p>En conclusion, comme on peut associer une suite finie de de <code>0</code> et de <code>1</code> à tout algorithme et à tout ce qu'il peut manipuler :</p>
+<h2>Nombre de programmes</h2>
+<blockquote>
+<p>TBD ici</p>
+</blockquote>
+<p>La définition générale d'un programme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong> de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.</p>
 <p>Un bit est l'information minimale que l'on peut véhiculer puisqu'il ne peut avoir que 2 valeurs différentes. Cette unité minimale d'information est très puissante puisque les suites finies de bits permettent non seulement de stocker tous les objets que peut manipuler un algorithme mais aussi les algorithmes eux-même via le codage binaires des chaines Unicode par exemple. On en conclut que :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -392,12 +488,6 @@ Programme :
 <p>Un algorithme et tout ce qu'il peut manipuler est une suite finie de <code>0</code> et de <code>1</code>.</p>
 </div></div>
 
-<p>En toute rigueur, les seuls objets que peut manipuler un programme c'est les listes finies de bit (notées <code>[bit]</code>), mais ceci rendrait les algorithmes très difficile à lire, donc en pratique on spécifie des listes de bits particulières : celles représentant des entiers, des chaînes de caractères, etc.</p>
-<h2>Nombre de programmes</h2>
-<blockquote>
-<p>TBD ici</p>
-</blockquote>
-<p>La définition générale d'un programme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong> de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.</p>
 <h3>Une infinité de programmes différents</h3>
 <p>On va se concentrer sur les algorithmes puisque tout algorithme est un programme. De la définition d'un algorithme on peut donc déjà conclure que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -546,17 +636,9 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il suffit d'associer le numéro de chaque caractère Unicode écrit avec 6 chiffres. Une chaîne de caractère $(c_i)_{0\leq i &lt; n}$ est alors une suite de $6n$ chiffres. Par exemple : l'instruction &quot;Ne fait rien&quot; correspond au nombre :</p>
-<div>
-$$
-\underbracket{000078}_{\text{N}}\underbracket{000101}_{\text{e}}\underbracket{000032}_{\text{ }}\underbracket{000102}_{\text{f}}\underbracket{000097}_{\text{a}}\underbracket{000105}_{\text{i}}\underbracket{000116}_{\text{t}}\underbracket{000032}_{\text{ }}\underbracket{000114}_{\text{r}}\underbracket{000105}_{\text{i}}\underbracket{000101}_{\text{e}}\underbracket{000110}_{\text{n}}
-$$
-</div>
-<p>Pour éviter tout soucis avec des algorithmes commençant par le caractère Unicode de nombre 0 (un même nombre peut avoir autant de chiffre 0 qu'il veut au début), on fait commencer tout algorithme par le chiffre 1. L'algorithme d'une seule instruction &quot;Ne fait rien&quot; correspond ainsi au nombre :</p>
-<p>$$
-1000078000101000032000102000097000105000116000032000114000105000101000110
-$$</p>
-<p>On associe bien à toute chaîne de caractères $(c_i)_{0\leq i &lt; n}$ un nombre de $6n +1$ chiffres unique.</p>
+<blockquote>
+<p>TBDici reprendre la bijection et prendre le nombre associé.</p>
+</blockquote>
 </div>
 </details>     
 </div>
