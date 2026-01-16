@@ -252,7 +252,7 @@ Faites tout de même attention car parfois, c'est problématique. Pour le calcul
 Or :
 
 {% note "**Proposition**" %}
-Les deux ensembles $(\mathcal{A})^\star$ et $(\\{0, 1\\})^\star$ sont en bijection pour tout ensemble $\mathcal{A}$ fini.
+Il existe une injection entre $(\mathcal{A})^\star$ et $(\\{0, 1\\})^\star$.
 {% endnote %}
 {% info %}
 Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.
@@ -292,14 +292,23 @@ $$
 $$
 </div>
 
-On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i < n}$ un élément de l'ensemble $(\\{0, 1\\})^\star$. Notre transformation est une injection de l'ensemble des suites finies de caractères vers l'ensemble des suites finies de $\\{0, 1\\}$. Comme `0` et `1` sont également des caractères Unicode (de numéros 48 et 49 respectivement), il existe également une injection de 
+On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i < n}$ un élément de l'ensemble $(\\{0, 1\\})^\star$. 
+{% enddetails %}
+{% info %}
+
+> TBD ici
+Ils sont même en bijection
+
+> TBD preuve du théorème (voir Wikipedia) avec [le lemme préliminaire](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Lemme_pr%C3%A9liminaire) (on va en avoir besoin ?)
+
+Notre transformation est une injection de l'ensemble des suites finies de caractères vers l'ensemble des suites finies de $\\{0, 1\\}$. Comme `0` et `1` sont également des caractères Unicode (de numéros 48 et 49 respectivement), il existe également une injection de 
 $(\\{0, 1\\})^\star$ vers $(\mathcal{U})^\star$.
 
 On peut alors utiliser [le théorème de Cantor-Bernstein](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein) pour conclure qu'il existe une bijection entre les 2 ensembles (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).
 
-{% enddetails %}
 
-> TBD preuve du théorème (voir Wikipedia) avec [le lemme préliminaire](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Lemme_pr%C3%A9liminaire) (on va en avoir besoin ?)
+{% endinfo %}
+
 
 
 On en conclut le résultat que tout le monde connaît :
