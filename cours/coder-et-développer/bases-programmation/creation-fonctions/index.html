@@ -144,19 +144,23 @@
 </div></div>
 
 <h2>Nom d'une fonction</h2>
-<p>Un nom de fonction est une variable comme une autre. Dans le code suivant, exécuté dans un interpréteur (d'où les <code class="language-">...</code>), on regarde le type d'un nom associé à une fonction :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">salutation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Comment vas-tu yau de poêle ?"</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'function'</span><span class="token operator">></span></code></pre>
+<p>Un nom de fonction est une variable comme une autre, on regarde le type d'un nom associé à une fonction :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">salutation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Comment vas-tu yau de poêle ?"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>Le programme suivant exécuté dans vscode vous donnera :</p>
+<pre><code>&lt;class 'function'&gt;
+</code></pre>
 <p>On peut aussi associer la fonction à une autre variable comme on le ferait avec n'importe quel autre objet. Dans l'exemple suivant on associe la fonction à une autre variable, <code class="language-">x</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">salutation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Comment vas-tu yau de poêle ?"</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> salutation
-<span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">(</span><span class="token punctuation">)</span>
-Comment vas<span class="token operator">-</span>tu yau de poêle ?</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">salutation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Comment vas-tu yau de poêle ?"</span><span class="token punctuation">)</span>
+
+x <span class="token operator">=</span> salutation
+x<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Le programme suivant exécuté dans vscode vous donnera :</p>
+<pre><code>Comment vas-tu yau de poêle ?
+</code></pre>
 <p>En python, lorsque l'on exécute une fonction on dit qu'on <strong>l'appelle</strong>. <strong><em>Appeler une variable</em></strong> est alors le fait de mettre des <code>()</code> après son nom.</p>
 <p>Si cela produit une erreur ce n'était pas une fonction. Regardez l'exemple ci-après, exécutable dans un interpréteur. On tente d'appeler un entier et python nous indique que ce n'est pas possible :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> n <span class="token operator">=</span> <span class="token number">3</span>
@@ -164,7 +168,7 @@ Comment vas<span class="token operator">-</span>tu yau de poêle ?</code></pre>
 Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
   File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
 TypeError<span class="token punctuation">:</span> <span class="token string">'int'</span> <span class="token builtin">object</span> <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token builtin">callable</span></code></pre>
-<p>Enfin, en python être une fonction n'est rien d'autre que d'être un <strong><em>objet appelable</em></strong>. Savoir si un objet est appelable ou pas se fait par la fonction <code class="language-">callable</code> :</p>
+<p>Enfin, en python être une fonction n'est rien d'autre que d'être un <strong><em>objet appelable</em></strong>. Savoir si un objet est appelable ou pas se fait par la fonction <code class="language-">callable</code>. Examinez les exécutions de code suivantes (exécuté dans un interpréteur, d'où les <code class="language-">...</code>) :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">salutation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Comment vas-tu yau de poêle ?"</span><span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>

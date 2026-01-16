@@ -97,7 +97,14 @@
   
 
   <blockquote>
-<p class="interne">TBD y mettre la partie sur les tableaux de bits de &lt;/cours/algorithmie/fonctions-booléennes/&gt;</p>
+<p>TBD y mettre la partie sur les tableaux de bits de &lt;/cours/algorithmie/fonctions-booléennes/&gt;{.interne}
+TBD mémoire :</p>
+<ul>
+<li>base = un octet 1B. Comme si on était en base 256. Pour avoir accès aux bits on utilise des opérations logiques.</li>
+<li>en mémoire rangé dans un tableau bit faible d'index 0.</li>
+<li>registre = accès mémoire par paquet de 64b = 8B. On ne peut accéder en 1 opération qu'auz adresse divisible par 8. Dans le registre bits rangés bit d'index faible = 0. Pour le reste ça se fait  en plusieurs opérations avec des décalages pour retrouver le tableau de bits.
+nombre plus gros que 8B rangé en little endian/big endian (intel vs le reste du monde...).</li>
+</ul>
 </blockquote>
 <h2><span id="exponentiation">Exponentiation</span></h2>
 <p>L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.</p>
