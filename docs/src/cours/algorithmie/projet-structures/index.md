@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD ici mettre les cols de matrices. Avec les complexités
 ## Tableaux et listes
 
 ### Matrices

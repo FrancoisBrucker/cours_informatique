@@ -152,12 +152,24 @@ Si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souve
 [Prouver des algorithmes](./prouver-un-algorithme){.interne}
 {% endaller %}
 
-### <span id="entraînement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs
+### <span id="entraînement-preuve"></span>On s’entraîne : création d'algorithmes itératifs et récursifs
 
-Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
+Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites.
 
 {% aller %}
 [Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif){.interne}
+{% endaller %}
+
+Techniques à connaître pour la mise en oeuvre et l'utilisation d'algorithmes récursifs :
+
+{% aller %}
+[Projet : techniques de récursion](./projet-techniques-de-récursion){.interne}
+{% endaller %}
+
+On vérifie qu'on sait faire :
+
+{% aller %}
+[exercices non corrigés](./exercices-itératif-récursif){.interne}
 {% endaller %}
 
 ### Complexités

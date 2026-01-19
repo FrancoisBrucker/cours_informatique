@@ -41,7 +41,7 @@ algorithme puissance(x: entier, n: entier) → entier:
     rendre x * puissance(x, n - 1)
 ```
 
-Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons [la récursion terminale](../../projet-itératif-récursif/#récursion-terminale). Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre`r`{.language-}) :
+Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons [la récursion terminale](../../projet-techniques-de-récursion/#récursion-terminale). Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre`r`{.language-}) :
 
 ```pseudocode
 fonction puissance_terminale(x: entier, n: entier, r: entier) → entier:

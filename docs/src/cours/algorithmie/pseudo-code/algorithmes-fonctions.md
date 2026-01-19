@@ -244,16 +244,37 @@ Lorsque l'on défini un algorithme ou un pseudo-code on explicite le type des ob
 {% note2 "**Définition**" %}
 Une **_signature de fonction_** associe :
 
-- son type à chaque paramètre (précédé d'un `:`{.language-})
-- le type de sortie (précédé d'un `→`{.language-})
+- son nom
+- le type de chacun de ses paramètres
+- le type de sortie
+
+On le représente ainsi :
+
+```pseudocode
+nom_de_l_algorithme(type_premier_paramètre, ..., type_dernier_paramètre) → type_de_sortie
+```
+
+Ou, lorsque le nom des paramètre peut-être utile on pourra les ajouter ainsi :
+
+```pseudocode
+nom_de_l_algorithme(nom_premier_paramètre: type_premier_paramètre, ..., nom_premier_paramètre: type_dernier_paramètre) → type_de_sortie
+```
 
 {% endnote2 %}
+
 {% note2 "**Définition**" %}
-Le **_type_** d'une fonction est sa signature.
+Le **_type_** d'un algorithme est sa signature sans son nom.
 
 {% endnote2 %}
 
-Par exemple le type de la fonction `recherche`{.language-} précédente sera tout simplement `([entier], entier) → booléen`{.language-} : on donne le type de ses entrées et de sa sortie.
+Par exemple pour l'algorithme `recherche`{.language-} :
+
+- sa signature est `recherche([entier], entier) → booléen`{.language-}
+- son type est `([entier], entier) → booléen`{.language-}
+
+{% note %}
+Lorsque le nom des paramètres est significatif, on les ajoutera à la signature. On écrira par exemple `division(dividende: réel, diviseur: réel) → réel`{.language-} plutôt que `division(réel, réel) → réel`{.language-} qui ne nous permet pas directement d'utiliser la fonction.
+{% endnote %}
 
 Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction `recherche`{.language-} soit définie :
 

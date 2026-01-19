@@ -208,59 +208,6 @@ Pour que les complexités soient comparables il faudrait pouvoir ajouter petit �
 
 {% enddetails %}
 
-## <span id="encapsulation-récursion"></span>Encapsulation de la récursion
-
-{% aller %}
-[Création et preuve de l'algorithme palindrome](../projet-itératif-récursif/#algorithme-palindrome){.interne}
-{% endaller %}
-
-{% exercice %}
-Quelle est la complexité de l'algorithme `palindrome`{.language-} ?
-{% endexercice %}
-{% details "corrigé" %}
-
-Une boucle de $\mathcal{O}(T.\mbox{\small longueur})$ itérations et que des instructions en $\mathcal{O}(1)$ donnent une complexité totale de : $\mathcal{O}(T.\mbox{\small longueur})$
-
-{% enddetails %}
-
-{% aller %}
-[Création et preuve de l'algorithme palindrome récursif](../projet-itératif-récursif/#algorithme-palindrome-récursif){.interne}
-{% endaller %}
-
-{% exercice %}
-Quelle est la complexité de l'algorithme `palindrome_rec`{.language-} ?
-{% endexercice %}
-{% details "corrigé" %}
-
-La relation de récurrence sur les paramètres d'entrée est :
-
-<div>
-$$
-\begin{cases}
-C(T, i) = \mathcal{O}(1) + C(T, i+1)\\
-C(T, T.\mbox{\small longueur}) = \mathcal{O}(1)\\
-\end{cases}
-$$
-</div>
-
-Cette équation se résout comme celle du cours:
-
-<div>
-$$
-\begin{array}{lcl}
-C(T, i) & = & \mathcal{O}(1) + C(T, i+1)\\
-     & = & \mathcal{O}(1) + \mathcal{O}(1) + C(T, i+2)\\
-     & = & \dots\\
-     & = & \underbracket{\mathcal{O}(1) + \dots + \mathcal{O}(1)}_{T.\mbox{\small longueur}-i} + C(T, T.\mbox{\small longueur})\\
-     & = & (T.\mbox{\small longueur}-i)\cdot \mathcal{O}(1) + \mathcal{O}(1)\\
-     & = & \mathcal{O}(T.\mbox{\small longueur}-i)\\
-     & = & \mathcal{O}(T.\mbox{\small longueur})\\
-\end{array}
-$$
-</div>
-
-{% enddetails %}
-
 ## Retournement d'un tableau
 
 {% aller %}
