@@ -35,11 +35,15 @@ Tout ce que devrait connaître tout ingénieur de l'informatique.
 
 ### Algorithmes et programmes
 
+#### Définitions
+
 Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas faire :
 
 {% aller %}
 [Bases théoriques](./bases-théoriques){.interne}
 {% endaller %}
+
+#### Pseudo code
 
 On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
 
@@ -58,17 +62,23 @@ Tout ce qui peut s'écrire en pseudo-code peut s'exécuter sur un ordinateur.
 La réciproque n'est pas prouvée mais de nombreux indices (nous en verrons plusieurs dans la seconde partie de ce cours) tendent à penser que c'est vrai. On supposera donc vrai la proposition suivante, communément admise :
 
 {% note "**Thèse de Church-Turing**" %}
-Les notions d'algorithme et de pseudo-code sont équivalentes :
-
-Tout algorithme peut être écrit en pseudo-code et réciproquement.
+Les notions d'algorithme et de pseudo-code sont équivalentes : tout algorithme peut être écrit en pseudo-code.
 {% endnote %}
 {% lien %}
-La thèse de Church-Turing est intimement lié aux démonstrations mathématiques, un algorithme étant une preuve et réciproquement (les mathématiques sont donc une branche de l'informatique, et réciproquement ?).
-
-Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws) pour une introduction en douceur de la problématique.
+[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church).
 {% endlien %}
 
-Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. La célèbre machine de Turing que l'on verra en partie II en est un exemple. Mais il y en a beaucoup, beaucoup d'autres :
+La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.
+
+{% lien %}
+
+Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws) pour une introduction en douceur de la problématique.
+
+{% endlien %}
+
+#### Autres modèles
+
+Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. La célèbre machine de Turing que l'on verra en partie II en est un exemple. Mais il y en a beaucoup, beaucoup d'autres tous équivalent entre eux :
 
 {% aller %}
 [Autres modèles](./autres-modèles){.interne}
@@ -78,14 +88,14 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 
 Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de "_problème_" à résoudre _via_ un algorithme :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_problème_** est un texte composé de 3 parties :
 
 - **Nom** : le nom du problème
 - **Entrées** : les paramètres dont on a besoin
 - **Sortie** : le retour de l'algorithme
 
-{% endnote %}
+{% endnote2 %}
 
 Par exemple :
 
@@ -103,13 +113,13 @@ Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par
 
 <span id="problème-algorithmique"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 **_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
 
 - prend en paramètres les entrées du problème
 - donne en sortie la réponse à la question.
 
-{% endnote %}
+{% endnote2 %}
 
 Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver. Ceci est d'autant plus crucial puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} : chaque algorithme possède une preuve qui lui est propre.
 
@@ -240,6 +250,9 @@ Nous allons définir et utiliser ici des structures de données très utiles dan
 
 Ces structures sont des conteneurs, comme des tableaux, qu permettent de stocker des éléments. Selon l'usage que l'on voudra en faire on privilégiera telle ou telle structure.
 
+
+> TBD ajouter un TD/TP sur l'utilité de chaque structure
+
 ### Pile et file
 
 Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
@@ -247,6 +260,18 @@ Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de
 {% aller %}
 [Structure de pile et file](./structure-pile-file){.interne}
 {% endaller %}
+
+> TBD decurryfication
+
+### Listes chaînées
+
+Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
+
+{% aller %}
+[Les listes chaînées](./structure-liste-chaînée){.interne}
+{% endaller %}
+
+> TBD maintenir un ordre PAPS. Faire circulaire. Ex graphes cordés ?
 
 ### Listes
 
@@ -266,14 +291,6 @@ Si les listes permettent de supprimer la première contrainte de l'utilisation d
 
 > TBD associer le type {clé: valeur} aux dictionnaire.
 > TBD : sortir les ensemble des dictionnaire et leur associer la structure {type}. Comme ça on a les listes avec [type], les dictionnaires avec {type:type} et les ensembles avec {type}.
-
-### Listes chaînées
-
-Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
-
-{% aller %}
-[Les listes chaînées](./structure-liste-chaînée){.interne}
-{% endaller %}
 
 ### Comparaisons des structures de conteneurs
 

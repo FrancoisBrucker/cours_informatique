@@ -14,7 +14,7 @@ Nous ne rentrerons pas dans les détails ici, nous voulons juste montrer que l'o
 Les algorithmes écrit sous la forme de pseudo-code sont équivalents (on le verra) aux algorithmes écrits grâce à une machine de Turing. Les modèles équivalents sont alors dit **_Turing complet_** :
 
 {% note "**définition**" %}
-Un système est dit [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) s'il permet de faire tout ce qu'un pseudo-code peut faire.
+Un système est dit [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) si tout programme du système peut s'écrire en pseudo-code et réciproquement.
 {% endnote %}
 
 Avoir un modèle Turing Complet nous assure, en suivant la thèse de Church-Turing, que ce modèle peut calculer tous les algorithmes.

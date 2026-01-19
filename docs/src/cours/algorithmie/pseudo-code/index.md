@@ -9,15 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[La définition générale d'un algorithme](../bases-théoriques/définition){.interne} ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un **_pseudo-code_** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
+[La définition générale d'un algorithme](../bases-théoriques/définition/#définition-règles-générales){.interne} ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un **_pseudo-code_** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
 
-Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain :
-
-{% info %}
-
-Rappelez-vous les trois premières règles de la [définition d'un algorithme](../bases-théoriques/définition/#règles-générales){.interne} qui sont faciles à respecter.
-
-{% endinfo %}
+Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
 
 Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur. Il est communément admis que tout algorithme peut être écrit en **_pseudo-code_** :
 
@@ -26,22 +20,7 @@ Ce n'est pas non plus un langage informatique dont le but est d'être compris pa
 Un pseudo-code est une succession de lignes qui seront exécutées **_en séquence_** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser avant de passer à la ligne suivante.
 {% endnote %}
 
-Avant de définir précisément le pseudo-code, notez la thèse (hypothèse) fondamentale de l'informatique :
-
-{% note "**Thèse de Church-Turing**" %}
-
-Tout programme (et donc algorithme) peut s'écrire sous la forme d'un pseudo-code (et réciproquement).
-
-{% endnote %}
-{% lien %}
-[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church).
-{% endlien %}
-
-La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais (nous le verrons bien plus tard) pseudo-code et machines de Turing sont deux notions équivalentes. Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.
-
-## Pseudo-code et langages de programmation
-
-Les langages de programmation classiques comme [python](https://www.python.org/), [java](https://www.java.com/fr/) ou encore [rust](https://www.rust-lang.org/fr) se transcrivent aisément en pseudo-code et réciproquement. Ce sont deux notions équivalentes :
+Les langages de programmation classiques comme [python](https://www.python.org/), [go](https://go.dev/) ou encore [rust](https://www.rust-lang.org/fr) se transcrivent aisément en pseudo-code et réciproquement. Ce sont deux notions équivalentes :
 
 - on utilisera le pseudo-code pour l'étude théorique des algorithmes
 - on codera ces algorithme dans un langage dédié à être exécuté lorsque l'on voudra les tester. Dans le cadre de ce cours on utilisera le python.
@@ -158,6 +137,10 @@ Plusieurs opérateurs ressemblant à l'égalité sont utilisés en pseudo-code, 
 ## _"Abus"_ de notation
 
 On se permettra, lorsque l'instruction est assez claire de procéder à des raccourci pour rendre le pseudocode plus digeste. Attention, la plupart de ces opérations ne seront pas des opérations élémentaires !
+
+{% aller %}
+[Abus de notation](abus){.interne}
+{% endaller %}
 
 ### Définitions de variables
 

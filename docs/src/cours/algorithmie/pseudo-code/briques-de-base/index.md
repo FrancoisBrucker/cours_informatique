@@ -2,10 +2,6 @@
 layout: layout/post.njk
 title: Briques de base
 
-eleventyNavigation:
-  prerequis:
-    - "/cours/coder-et-développer/données-mémoire/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -13,20 +9,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le pseudo-code est constitué d'instructions dont le but est soit de manipuler des objets (création, affectation ou lecture) ou de contrôler le flux d'instructions (test et boucles).
+Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd. Il est constitué d'instructions dont le but est soit :
+
+- de manipuler des objets (création, affectation ou lecture)
+- de contrôler le flux d'instructions (test et boucles).
 
 {% attention %}
 Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici _"mon"_ pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours. Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert.
 {% endattention %}
 
-Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd.
-
-> TBD ici dire pseudo-code SANS pointeur. PLus simple à comprendre et à implémenter mais ajoute un overhead.
-> très utilisé dans les langages de scripts. Mais à cause de l'overhead qui n'est pas important en algorithmie car rajoute qu'un nombre constant d'opération pose soucis pour une optimisation systeme.
->
-> TBD on verra plus tard ce deuxième mod de pseudo-code avec pointeur.
->
-> TBD refaire en disant que c'est l'implémentation sur une machine réelle. une "note" et pas une "info".
+Nous allons monter ici une version de pseudo-code sans accès direct à la mémoire (_ie._ sans pointeur). Ce modèle est tout à fait fonctionnel et est utilisé dans les langages de programmation comme python par exemple. Nous ajouterons l'accès direct à la mémoire (bien) plus tard dans ce cours. Ce modèle est plus simple à comprendre et à implémenter que le modèle avec pointeur et ne change rien algorithmiquement. Il va cependant nécessiter des opérations élémentaires supplémentaires (on appelle ceci des _overheads_) pour trouver la valeur de la variable en mémoire par rapport à l'utilisation directe de pointeurs.
 
 ## Commentaires
 
@@ -45,6 +37,7 @@ Commençons par décrire les objets que l'on peut manipuler en pseudo-code et le
 
 ### Objets
 
+Les objets sont ce que l'on manipule en algorithmie. Chaque objet aura son type déterminé. Tous les objets possibles seront construit à partir des 5
 #### <span id="objets-basiques"></span> Objets basiques
 
 Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et correspondent aux cinq **_types_** suivant :
@@ -130,7 +123,7 @@ De façon formelle, une **_opération_** est une fonction dont l'espace de dépa
 #pseudocode-list(line-numbering: none)[
 
 - 40 + 2 #text(stroke: green)[\# rendra l'objet entier 42]
-  ]
+  ]8
   {% endalgorithme %}
 
 Toutes les autres opérations devront être définies soit dans le pseudo-code (avec des fonctions, comme on va le voir) soit dans un texte avant celui-ci.
@@ -175,6 +168,11 @@ En python, elles sont stockées dans une partie de la mémoire nommée **pile** 
 Chaque variable a la même taille et sont stockées de façon consécutives dans la pile. En effet, les variables sont crées au début de l'algorithme et sont toues supprimées en même temps à la fin de l'algorithme.
 
 {% endinfo %}
+
+> TBD ici {% aller %}
+[variables et mémoire](/cours/coder-et-développer/données-mémoire/){.interne}
+{% endaller %}
+
 
 ### Définition
 

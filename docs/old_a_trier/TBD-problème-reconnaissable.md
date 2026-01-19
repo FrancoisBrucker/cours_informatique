@@ -16,10 +16,10 @@ Les problèmes décidables admettent un algorithme comme résolution. c'est à d
 Une importante classe de problème est **_les problèmes de décision_** :
 
 <span id="problème-décision"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_problème de décision_** est un problème dont la réponse est soit OUI, soit NON.
 
-{% endnote %}
+{% endnote2 %}
 
 Par exemple :
 
@@ -36,18 +36,18 @@ Par exemple :
 
 On peut très souvent se restreindre aux problèmes de décision solvable par un algorithme :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un problème de décision est **_décidable_** s'il existe un algorithme pour le résoudre (on dit un **_décideur_**), c'est à dire que cet algorithme :
 
 - prend en paramètres les entrées du problème
 - répond OUI ou NON selon la véritable réponse à donner.
 
-{% endnote %}
+{% endnote2 %}
 
 <span id="décideur"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_décideur_** est un algorithme qui pour toute entrée, répond _OUI_ ou _NON_.
-{% endnote %}
+{% endnote2 %}
 {% info %}
 Vous verrez parfois des décideurs qui à la place de répondre OUI rendent 1 et à la place de répondre NON, rendent 0.
 
@@ -87,39 +87,39 @@ En revanche le problème de décision suivant n'est pas décidable :
 
 On défini par extension les **_ensembles décidables_** comme étant ceux pouvant être énumérés par un algorithme :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Un ensemble $E$ d'entiers est **_décidable_** s'il existe un algorithme $A$ qui tel que :
 
 - $A(n)$ vaut OUI si $n \in E$
 - $A(n)$ vaut NON si $n \notin E$
 
-{% endnote %}
+{% endnote2 %}
 
 ## <span id="reconnaissable"></span>Reconnaissabilité
 
 Il existe un cas plus faible que la décidabilité, c'est la **_reconnaissabilité_**, qui permet d'utiliser des programmes plutôt que des algorithme pour décider :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un problème de décision est **_reconnaissable_** s'il existe un programme qui prend en paramètres les entrées du problème et :
 
 - s'arrête que pour les réponse OUI
 - ne s'arrête pas les réponses NON
 
-{% endnote %}
+{% endnote2 %}
 
 Il est clair qu'un problème décidable est reconnaissable, il suffit de laisser tourner indéfiniment le décideur plutôt que de lui faire répondre NON, mais la réciproque est fausse, le problème de l'arrêt étant clairement reconnaissable (il suffit de laisser tourner l'algorithme et s'il s'arrête répondre OUI).
 
 De même que pour les ensembles décidables, on défini par extension les **_ensembles reconnaissables_** comme étant ceux pouvant être énumérés par un programme :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Un ensemble $E$ d'entiers est **_reconnaissable_** s'il existe un programme $A$ qui tel que :
 
 - $A(n)$ vaut OUI si $n \in E$
 - $A(n)$ ne s'arrête pas si $n \notin E$
 
-{% endnote %}
+{% endnote2 %}
 
 Il existe bien sur des ensembles reconnaissable et non décidable, par exemple l'ensemble des numéros de programmes qui sont des algorithmes.
 

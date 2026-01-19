@@ -93,18 +93,33 @@ Ce cours est composée de plusieurs parties :
 Notions abordées :
 
 - définition d'un programme et d'un algorithme
-- données, variables et sorties d'un algorithme : chaînes de 0 et de 1 (uniquement 2 symboles)
-- problème de l'arrêt d'un programme
-- ce qu'il peut et ne peut pas faire
+- savoir ce que fait un programme : 
+  - il faut toujours démonter qu'un programme s'arrête
+  - il faut toujours démontrer ce que fait un algorithme
+- ce que ne peut pas faire un algorithme
 
 #### Vendredi : écrire des algorithmes
 
-> 4h
+> 2h
 
-- pseudo-code et thèse de Church-Turing
+{% aller %}
+[Écrire des algorithmes en pseudo-code](/cours/algorithmie/pseudo-code){.interne}
+{% endaller %}
+{% aller %}
+[Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
+{% endaller %}
+
+Notions abordées :
+
+- écrire des algorithme en pseudo-code (et thèse de Church-Turing)
 - algorithmes itératif et récursifs
 - prouver un algorithme
-- on s'entraîne
+  
+> 2h
+
+{% aller %}
+[On s'entraîne](/cours/algorithmie/projet-itératif-récursif/){.interne}
+{% endaller %}
 
 ### Semaine 2
 

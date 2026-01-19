@@ -61,8 +61,8 @@ Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés
 
 On peut en déduire la définition suivante : Un **_algorithme_** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
 
-<div id="règles-générales"></div>
-{% note "**Définition**" %}
+<div id="définition-règles-générales"></div>
+{% note2 "**Définition**" %}
 
 Un **_algorithme_** est défini par les 4 propriétés suivantes :
 
@@ -71,11 +71,11 @@ Un **_algorithme_** est défini par les 4 propriétés suivantes :
 3. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
 4. l'algorithme produit un résultat et s'arrête après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
 
-{% endnote %}
-{% note "**Définition**" %}
+{% endnote2 %}
+{% note2 "**Définition**" %}
 On appellera **_programme_** un texte qui ne respecte que les 3 premières propriétés : un algorithme est un programme qui s'arrête.
 
-{% endnote %}
+{% endnote2 %}
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
@@ -230,15 +230,17 @@ Comme une donnée doit être lue en temps finie, elle doit être composée d'une
 
 {% enddetails %}
 
-Une conséquence directe de la proposition précédente est :
+Une conséquence directe de la proposition précédente est qu'un programme ne peut pas manipuler de nombres réels.
 
 {% attention "**À retenir**" %}
-un programme ne peut pas manipuler de nombres réels.
+**Un réel ne l'est pas : c'est une limite**. 
+
+Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre.
 {% endattention %}
 
-Un réel ne l'est pas : c'est une limite. C'est une abstraction que l'on peut considérer comme ou une approximation (ne considérer qu'un nombre fini de ses décimales) ou un symbole. Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.
 
-On ne pourra le considérer que de deux manières :
+
+Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$. On ne pourra le considérer que de deux manières :
 
 - soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur
 - soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.
@@ -251,17 +253,21 @@ Faites tout de même attention car parfois, c'est problématique. Pour le calcul
 
 Or :
 
-{% note "**Proposition**" %}
-Il existe une injection entre $(\mathcal{A})^\star$ et $(\\{0, 1\\})^\star$.
-{% endnote %}
-{% info %}
+<span id="paramètres-binaires"></span>
+
+{% note2 "**Définition**" %}
 Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.
-{% endinfo %}
+{% endnote2 %}
+{% note "**Proposition**" %}
+
+Il existe une injection entre $(\mathcal{A})^\star$ et $(\\{0, 1\\})^\star$ pour tout ensemble fini $\mathcal{A}$.
+
+{% endnote %}
 {% details "preuve", "open" %}
 
-On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble $\mathcal{A}$ est triviale.
+On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble fini $\mathcal{A}$ est triviale.
 
-On considère l'ensemble des caractères des différentes langues écrites actuelles ou passée. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode) que l'on va noter $\mathcal{U}$. Il est constitué de 159801 caractères (appelées glyphes) dont chacun est associé un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
+On considère l'ensemble $\mathcal{U}$ des caractères des différentes langues écrites actuelles ou passée. Cet ensemble est fini et existe ! C'est l'ensemble [des caractères UNICODE](https://fr.wikipedia.org/wiki/Unicode) que l'on va noter. Il est constitué de 159801 caractères (appelées glyphes) dont chacun est associé un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.
 
 Une chaîne de caractère $(c_i)_{0\leq i < n}$ est alors une suite de $6n$ chiffres. Par exemple : "Coucou toi !" correspond au nombre :
 
@@ -296,41 +302,57 @@ On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i
 {% enddetails %}
 {% info %}
 
-> TBD ici
-Ils sont même en bijection
-
-> TBD preuve du théorème (voir Wikipedia) avec [le lemme préliminaire](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Lemme_pr%C3%A9liminaire) (on va en avoir besoin ?)
-
-Notre transformation est une injection de l'ensemble des suites finies de caractères vers l'ensemble des suites finies de $\\{0, 1\\}$. Comme `0` et `1` sont également des caractères Unicode (de numéros 48 et 49 respectivement), il existe également une injection de 
-$(\\{0, 1\\})^\star$ vers $(\mathcal{U})^\star$.
-
-On peut alors utiliser [le théorème de Cantor-Bernstein](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein) pour conclure qu'il existe une bijection entre les 2 ensembles (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).
-
+Comme il existe évidemment une injection entre $(\\{0, 1\\})^\star$ et $(\mathcal{A})^\star$ si $\mathcal{A}$ est fini les deux ensembles sont en bijection de part le
+Ils sont même en bijection de part [le théorème de Cantor-Bernstein](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein) (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).
 
 {% endinfo %}
 
 
+La proposition précédente montre que l'on peut représenter toute suite finie d'éléments d'un ensemble fini par une suite finie de `0` et de `1` de façon unique. On en déduit le résultat que tout le monde connaît :
 
-On en conclut le résultat que tout le monde connaît :
-
-<span id="paramètres-binaires"></span>
+{% note2 "**Définition**" %}
+Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki/Bit).
+{% endnote2 %}
 
 {% note "**Proposition**" %}
-Tout ce que peut manipuler un programme est une suite finie de caractères `0` et `1`.
-{% endnote %}
-{% note "**Définition**" %}
-Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki/Bit).
+Tout ce que peut manipuler un programme est une suite finie de bits.
 {% endnote %}
 
-Cependant n'utiliser que des tableaux de bits (dont le type est `[bit]`) pour nos programmes les rendrait illisible. On défini donc d'autres types qui représentent nos données dont les plus classiques sont :
+Cependant n'utiliser que des tableaux de bits (dont le type est `[bit]`) pour nos programmes les rendrait illisible. On défini donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :
 
-- les entiers relatifs :
-  - positifs en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
-  - négatifs en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) de la représentation binaire de son opposé. Ainsi -3 sera encodé par `101` (un entier négatif ainsi représenté commencera toujours par un `1`)
-- des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
-- des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)) qui en binaire vaut : `0000010110010110111101110000001000000010`
+- un entier relatif :
+  - positif en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
+  - négatif en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) de la représentation binaire de son opposé. Ainsi -3 sera encodé par `101` (un entier négatif ainsi représenté commencera toujours par un `1`)
+- une approximation finie d'un réel en utilisant la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
+- une chaîne de caractères en utilisant le code utf-8. Par exemple "Yop !" correspond au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)) qui en binaire vaut : `0000010110010110111101110000001000000010`
+
+{% exercice %}
+Montrez qu'il existe une injection entre $(\mathcal{A})^\star$ et $(\\{ 1\\})^\star$.
+
+Pourquoi s'embêter avec un deuxième symbole (le `0`) alors ?
+{% endexercice %}
+{% details "corrigé" %}
+Toute suite binaire est un nombre $n$ écrit en base 2. On peut donc représenter cette suite par $n$ `1` successifs.
+
+On a cependant besoin d'un second caractère pour terminer la séquence lorsqu'on l'écrit ! Sinon, comment savoir lorsque le mot est fini ? On ne peut donc pas écrire toutes les suites juste avec un seul caractère puisqu'il en faut au moins un deuxième qui détermine la fin de la chaîne.
+
+Dans la première définition [des machines de Turing](https://fr.wikipedia.org/wiki/Machine_de_Turing) les données de la machines sont décrites sur un ruban supposé infini dont les cases ne peuvent prendre que deux valeurs `1` et ` ` (blanc).
+
+{% enddetails %}
 
 On peut aller plus loin en représentant les tableaux de suites finies de "0" et de "1" par une unique suite finie de "0" et de "1". Pour cela on peut utiliser l'encodage suivant :
+
+<span id="définition-algorithme-canonique"></span>
+
+{% note "**Proposition**" %}
+Tout programme peut s'écrire comme : 
+
+- ayant une seule entrée de la forme d'une suite finie de bits
+- sa sortie, s'il s'arrête, est une suite finie de bits
+{% endnote %}
+{% details "preuve", "open" %}
+
+On peut utiliser l'encodage suivant :
 
 - le caractère `0` est encodé par la suite `100`
 - le caractère `1` est encodé par la suite `101`
@@ -338,45 +360,46 @@ On peut aller plus loin en représentant les tableaux de suites finies de "0" et
 - le caractère de début de liste est encodé par la suite `010`
 - le caractère de fin de liste est encodé par la suite `001`
 
-Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000101101100001`. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme `[0, [1, [1]], 0]`, chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) ayant son propre code sur 3 bits. Cette astuce vas nous permettre de compter tous les programmes possible !
+Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000101101100001`. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme `[0, [1, [1]], 0]`, chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) ayant son propre code sur 3 bits. 
 
+Ceci nous permet d'encoder tous les paramètres d'un programme sous une unique suite finie de `0` et de `1`.
+{% enddetails %}
+{% note "**Corollaire**" %}
+Tout programme peut s'écrire comme prenant un entier en paramètre et rendant un entier lorsqu'il s'arrête.
+{% endnote %}
+{% details "preuve", "open" %}
+Une suite finie de bits est équivalente à un entier en base 2.
+{% enddetails %}
+
+Enfin, pour ne pas finir essayer de vous pencher sur le problème suivant :
 
 ## Nombre de programmes
 
-> TBD ici
-> 
 La définition générale d'un programme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.
 
-
-
-Un bit est l'information minimale que l'on peut véhiculer puisqu'il ne peut avoir que 2 valeurs différentes. Cette unité minimale d'information est très puissante puisque les suites finies de bits permettent non seulement de stocker tous les objets que peut manipuler un algorithme mais aussi les algorithmes eux-même via le codage binaires des chaines Unicode par exemple. On en conclut que :
-
-{% attention "**À retenir**" %}
-Un algorithme et tout ce qu'il peut manipuler est une suite finie de `0` et de `1`.
-{% endattention %}
-
-
+On se place ici dans le cadre précédent où un programme prend en paramètre un entier et rend un entier.
 
 ### Une infinité de programmes différents
 
-On va se concentrer sur les algorithmes puisque tout algorithme est un programme. De la définition d'un algorithme on peut donc déjà conclure que :
+De la définition d'un algorithme on peut donc déjà conclure que :
 
 {% note "**Proposition**" %}
 Il existe une infinité d'algorithmes différents.
 {% endnote %}
 {% details "preuve", "open" %}
-Si on considère l'instruction `Ne fait rien`{.language-}, le texte ci-dessous est un algorithme d'une instruction :
+Le texte ci-dessous est un algorithme de deux instructions :
 
 ```text
 Ne fait rien
+rend 1
 ```
 
-En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions `Ne fait rien`{.language-} à la suite (l'algorithme précédent est $R_1$).
+En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions `Ne fait rien`{.language-} à la suite suivi de l'instruction `rend 1` (l'algorithme précédent est $R_1$).
 
 Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.
 {% enddetails %}
 
-De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien.
+De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien puis rendent 1.
 
 {% info %}
 On y reviendra, mais savoir ce que fait un algorithme n'est pas un problème simple du tout dans le cas général.
@@ -402,9 +425,7 @@ Il y a donc **beaucoup** d'algorithmes possibles... mais en réalité pas tant q
 
 ### Mais seulement une infinité dénombrable
 
-D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans un alphabet. Pour ne pas être chiche, on peut prendre l'alphabet [Unicode](https://fr.wikipedia.org/wiki/Unicode) qui permet d'écrire, entre autres, en Français et contient un peut moins de 150000 caractères différents.
-
-De là :
+D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans l'alphabet [Unicode](https://fr.wikipedia.org/wiki/Unicode). De là :
 
 {% note "**Proposition**" %}
 
@@ -413,30 +434,24 @@ Un **_programme_** est une suite finie $c_1 \dots c_n$ où :
 - $c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$
 - avec $\mathcal{U}$ l'ensemble des caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode), $\vert \mathcal{U} \vert \leq 150000$.
 
-On note $\mathcal{A}$ cet ensemble.
-
 {% endnote %}
 {% details "preuve", "open" %}
-Un algorithme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.
+Un programme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.
 {% enddetails %}
 
-Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode. On peut alors utiliser l'ordre entre caractères Unicode (chaque caractère est identifié par un entier) pour ordonner les algorithmes selon l'ordre du dictionnaire :
 
-<div id="encodage-algorithme"></div>
+Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode. On peut alors utiliser [la proposition sur les suites binaires](./#paramètres-binaires){.interne} pour avoir la proposition suivante :
+
+<div id="proposition-encodage-algorithme"></div>
 {% note "**Proposition**" %}
-On peut associer à toute chaîne de caractère un entier strictement positif unique.
+On peut associer à tout programme un entier unique.
 {% endnote %}
-{% details "preuve", "open" %}
-
-> TBDici reprendre la bijection et prendre le nombre associé.
-
-{% enddetails %}
 
 On déduit immédiatement la proposition suivante :
 
-<span id="nb-dénombrable-algorithmes"></span>
+<span id="proposition-nb-dénombrable-algorithmes"></span>
 {% note "**Proposition**" %}
-Il y a exactement autant d'algorithmes différents que de nombres entiers.
+Il y a exactement autant de programmes différents que de nombres entiers.
 {% endnote %}
 {% details "preuve", "open" %}
 Comme à chaque algorithme est associé un entier strictement positif unique, on peut les ranger par nombre croissant et considérer la suite d'algorithmes $(A_k)_{k \geq 1}$ telle que :
@@ -468,7 +483,7 @@ On doit cette preuve magnifique au mathématicien allemand [Georg Cantor](https:
 
 On commence en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimale $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
 
-On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels selon leurs valeurs selon $f$ :
+On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels avec leurs valeurs selon $f$ :
 
 - on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$
 - on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
@@ -495,17 +510,20 @@ Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Ar
 
 On déduit du théorème précédent que :
 
-{% note %}
+{% note "**Proposition**" %}
 
-Il existe des réels pour lesquels il n'existe aucun algorithme $A(i)$ qui calcule la $i$ème décimale de $i$ quelque soit $i$
+Il existe des réels pour lesquels il n'existe aucun algorithme $A$ tel que $A(i)$ calcule sa $i$ème décimale quelque soit $i$.
 
 {% endnote %}
+{% details "preuve", "open" %}
+Sinon il y aurait une injection associant à chaque réel son algorithme ce qui est impossible.
+{% enddetails %}
 
 Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard).
 
 ## Algorithmes et démonstration mathématiques
 
-On n'en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l'informatique (certains diraient même, et réciproquement. Des mathématiciens certainement...).
+On n'en parlera pas trop dans ce cours (cela a plus sa place dans un cours de logique ou de calculabilité) mais, en gros, les mathématiques sont une partie de l'informatique (certains diraient même, et réciproquement. Des mathématiciens certainement...).
 
 De façon plus précise on a la suite d'équivalences :
 

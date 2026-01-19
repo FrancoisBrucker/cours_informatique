@@ -1,6 +1,7 @@
 import info from "./info.js";
 import attention from "./attention.js";
 import note from "./note.js";
+import note2 from "./note2.js";
 import faire from "./faire.js";
 import details from "./details.js";
 import exercice from "./exercice.js";
@@ -14,6 +15,7 @@ export default async function(eleventyConfig) {
     details(eleventyConfig);
     exercice(eleventyConfig);
     note(eleventyConfig);
+    note2(eleventyConfig);
     chemin(eleventyConfig);
     lien(eleventyConfig);
     attention(eleventyConfig);
