@@ -13,9 +13,9 @@ Nous ne rentrerons pas dans les détails ici, nous voulons juste montrer que l'o
 
 Les algorithmes écrit sous la forme de pseudo-code sont équivalents (on le verra) aux algorithmes écrits grâce à une machine de Turing. Les modèles équivalents sont alors dit **_Turing complet_** :
 
-{% note "**définition**" %}
+{% note2 "**définition**" %}
 Un système est dit [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) si tout programme du système peut s'écrire en pseudo-code et réciproquement.
-{% endnote %}
+{% endnote2 %}
 
 Avoir un modèle Turing Complet nous assure, en suivant la thèse de Church-Turing, que ce modèle peut calculer tous les algorithmes.
 
@@ -58,7 +58,7 @@ Jetez-y un coup d'œil, c'est assez bluffant.
 
 ## Langages exotiques
 
-Si la plupart des langages informatiques sont clairement Turing complet, il existe des langages bizarres, nommé [langages de programmation exotiques](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique), qui sont aussi Turing complet. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instruction, comme le célèbre [brainfuck](https://www.google.com/search?q=brainfuck), ou à être marrant, comme le [Piet](https://www.dangermouse.net/esoteric/piet.html) dont le but est de créer des programmes sous la forme d'un tableau de [Piet Mondrian](https://fr.wikipedia.org/wiki/Piet_Mondrian).
+Si la plupart des langages informatiques sont clairement Turing complet, il existe des langages bizarres, nommé [langages de programmation exotiques](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique), qui sont aussi Turing complet. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instruction comme le célèbre [brainfuck](https://www.google.com/search?q=brainfuck), à être marrant comme le [Piet](https://www.dangermouse.net/esoteric/piet.html) dont le but est de créer des programmes sous la forme d'un tableau de [Piet Mondrian](https://fr.wikipedia.org/wiki/Piet_Mondrian) ou encore à faire des ponts entre disciplines comme le [Fractran](https://www.youtube.com/watch?v=GIPtnEIQCBM).
 
 ## Autres trucs
 
@@ -67,6 +67,4 @@ Ne nombreuses applications ou jeux sont Turing-complet par inadvertence. Par exe
 - [Legend of Zelda: Tears of the Kingdom](https://www.youtube.com/watch?v=5u6BN1p0Uo8)
 - [Powerpoint](https://www.youtube.com/watch?v=uNjxe8ShM-8)
 - [règle 110 avec Factorio (et des trains)](https://www.youtube.com/watch?v=NCC2Fd8qxv4)
-- [fractran](https://www.youtube.com/watch?v=GIPtnEIQCBM) et <https://fr.wikipedia.org/wiki/FRACTRAN>
 
-> TBD faire un dm Fractran : <https://math.univ-lyon1.fr/~roblot/resources/factorisation.pdf> <https://www.math.univ-paris13.fr/~boyer/enseignement/crypto/Chap6.pdf>(avec dichotomie) et division euclidienne. Voir si ça fonctionne en python avant des entiers aussi grand qu'on veut

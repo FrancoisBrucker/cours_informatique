@@ -40,9 +40,9 @@ Il y a deux sortes d'algorithmes :
 - les algorithmes itératifs, c'est à dire utilisant des boucles
 - les algorithmes récursifs, c'est à dire écrit sous la forme d'une fonction qui s'appelle elle même.
 
-Tout problème algorithmique pourra toujours s'écrire sous une forme itérative ou récursive, bien que certains problèmes se résolvent mieux sous une forme que l'autre.
+Tout problème algorithmique pourra toujours s'écrire sous une forme itérative ou récursive (on va le montrer mais bien plus tard) mais certains problèmes se résolvent mieux sous une forme que l'autre.
 
-Avant de définir formellement les deux approches commençons par deux remarques d'importance :
+Avant de définir formellement les deux approches commençons par deux remarques importantes :
 
 {% attention "**À retenir**" %}
 
@@ -89,7 +89,7 @@ algorithme factorielle(n: entier  # n > 1
                       ) → entier:
     si n == 1:  # condition d'arrêt
         rendre 1
-    f ← factorielle(n-1)  # récursion
+    f := factorielle(n-1)  # récursion
     rendre n * f
 ```
 
@@ -105,7 +105,7 @@ def factorielle(n):
 
 {% enddetails %}
 
-L'algorithme récursif suit directement l'équation de récurrence. Attention, il est nécessaire que la condition d'arrêt soit évaluée avant la récursion pour la stopper sin nécessaire.
+L'algorithme récursif suit directement l'équation de récurrence. Attention, il est nécessaire que la condition d'arrêt soit évaluée avant la récursion pour la stopper si nécessaire.
 
 ### Itératif
 
@@ -114,14 +114,14 @@ L'algorithme récursif suit directement l'équation de récurrence. Attention, i
 **Un algorithme itératif** va gérer les 2 points d'adaptation aux données en modifiant des variables locales et en utilisant des boucles `pour chaque`{.language-pseudocode} et `tant que`{.language-}. Il va avoir tendance à aller du cas particulier vers le cas général en stockant les éléments intermédiaires dans des variables.
 {% endnote %}
 
-Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $n! = ((n-1)!) \cdot n$ :
+Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $(n + 1)! = (n!) \cdot (n + 1)$ :
 
 <div id="algorithme-factorielle-iter"></div>
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r ← 1  # initialisation
-    i ← 1
+    r := 1  # initialisation
+    i := 1
     tant que i ≤ n:  # condition d'arrêt
         r ← r * i
         i ← i + 1
@@ -197,7 +197,7 @@ Considérons l'algorithme suivant, variation de la version itérative de factori
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:  # n ≥ 1
-    produit ← 1
+    produit := 1
     pour chaque i de [2 .. n]:
         produit ← produit * i
 
@@ -218,7 +218,7 @@ algorithme factorielle(n: entier
                       ) → entier:
     si n ≤ 1:
         rendre 1
-    f ← factorielle(n-1)
+    f := factorielle(n-1)
     rendre n * f
 ```
 
@@ -226,9 +226,7 @@ algorithme factorielle(n: entier
 La version ci-dessus de l'algorithme factorielle récursif est différente de la première version. Quelle est la différence et pourquoi avons-nous fait ça ?
 {% endexercice %}
 {% details "corrigé" %}
-On a mis un `≤`{.language-} plutôt qu'un `==`{.language-} dans le test.
-
-Ceci permet de prendre en compte le cas où $n$ vaut 0, et évite des récursions infinie pour tout entier relatif $n$.
+On a mis un `≤`{.language-} plutôt qu'un `==`{.language-} dans le test. Ceci permet de prendre en compte le cas où $n$ vaut 0, et évite des récursions infinie pour tout entier relatif $n$.
 
 Ce genre d'optimisation n'est pas nécessaire, mais si on y pense autant le faire car cela ne complexifie pas l'algorithme.
 
@@ -240,7 +238,7 @@ L'idée est de démontrer la finitude par récurrence sur $n$.
 
 1. **initialisation** de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursion.
 2. **hypothèse de récurrence** : pour tout entier plus petit que $n-1\geq 1$, l'algorithme va avoir un nombre fini de récursions.
-3. **pour $n$** : `factorielle(n)`{.language-} va exécuter la ligne 4 (`f ← factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n)`{.language-} va également se terminer.
+3. **pour $n$** : `factorielle(n)`{.language-} va exécuter la ligne 4 (`f := factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n)`{.language-} va également se terminer.
 
 La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter :
 
@@ -270,8 +268,8 @@ Considérons l'algorithme itératif suivant :
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r ← 1
-    i ← 1
+    r := 1
+    i := 1
     tant que i ≤ n:
         r ← r * i
         i ← i + 1
@@ -288,8 +286,8 @@ Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il p
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r ← 1
-    i ← 1
+    r := 1
+    i := 1
     tant que i ≤ n - 1:
         r ← r * i
         i ← i + 1
@@ -310,8 +308,8 @@ Refaisons la preuve précédente en utilisant un invariant de boucle pour montre
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r ← 1
-    i ← 1
+    r := 1
+    i := 1
     tant que i ≤ n:
         r ← r * i
         i ← i + 1
@@ -372,8 +370,8 @@ Entraînons nous avec l'algorithme suivant, variante itérative de l'algorithme 
 
 ```pseudocode
 algorithme factorielle_variante(n: entier):
-    r ← 1
-    i ← n
+    r := 1
+    i := n
     tant que i ≤ n:
         r ← r * i
         i ← i - 1
@@ -455,7 +453,7 @@ On considère l'algorithme itératif suivant :
 
 ```pseudocode
 algorithme maximum(t: [entier]) → entier:
-    m ← t[0]
+    m := t[0]
     pour chaque x de t:
         si m < x:
             m ← x
@@ -495,7 +493,8 @@ Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers élém
 
 ```pseudocode
 algorithme maximum(t: [entier]) → entier:
-    m ← t[0]
+    m := t[0]
+    x := entier
     pour chaque i de [0 .. t.longueur[:
         x ← t[i]
         si m < x:
@@ -545,14 +544,14 @@ Cette partie là est facile si on a le bon invariant. Il suffit de regarder la v
 Pour faire ceci sans invariant de boucle, on transforme notre algorithme itératif en sa version récursive que l'on peut aisément démontrer par récurrence.
 
 {% exercice %}
-Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/#algorithme-nombre-occurrences){.interne} et prouver qu'il fonctionne.
+Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne} et prouver qu'il fonctionne.
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode/
 algorithme nombre(T: [entier], x: entier) → entier:
-    nb ← 0
+    nb := 0
     pour chaque e de T:
         si e == x:
             nb ← nb + 1
@@ -599,8 +598,8 @@ Vous trouverez ci-après une version itérative de l'algorithme de la division e
 ```pseudocode
 algorithme division_euclidienne(a: entier,
                                 b: entier) → [entier]:
-    r ← a
-    q ← 0
+    r := a
+    q := 0
     
     tant que r ≥ b:
         r ← r - b

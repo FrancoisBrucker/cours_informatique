@@ -49,6 +49,8 @@ Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max(\{t[k] \vert 0\leq k \
 
 ```pseudocode
 algorithme maximum_rec(T: [réel], n: entier) → entier:
+    x := entier
+
     si n == 0:
         rendre 0
     sinon:
@@ -88,8 +90,8 @@ Vous utiliserez des invariants de boucle pour le prouver.
 
 ```pseudocode/
 algorithme concaténation(début: [entier], fin: [entier]) → [entier]
-    t ← tableau de taille début.longueur + fin.longueur
-    i ← -1
+    t := [entier]{longueur: début.longueur + fin.longueur}
+    i := -1
 
     pour chaque j de [0 .. début.longueur[:
         i ← i + 1
@@ -164,7 +166,7 @@ algorithme intersection_non_vide(T1: [entier], T2: [entier]) → booléen
     rendre Faux
 ```
 
-La boucle 3-5 va chercher à trouver x dans T2 : `trouvé`{.language-} ne peut valoir `Vrai`{.language-} que si c'est le cas. Si ce n'est pas le cas, `x`{.language-} n'est pas dans `T2`{.language-} et il faut chercher une autre possibilité d'égalité.
+La boucle 3-5 va chercher à trouver `x`{.language-} dans `T2`{.language-} : `trouvé`{.language-} ne peut valoir `Vrai`{.language-} que si c'est le cas. Si ce n'est pas le cas, `x`{.language-} n'est pas dans `T2`{.language-} et il faut chercher une autre possibilité d'égalité.
 
 Comme on répète cette boucle intérieure pour tout `x`{.language-} de `T1`{.language-}, l'algorithme ne peut arriver ligne 6 que si $x \not in T2$ pour tout $x \in T1$.
 
@@ -192,6 +194,7 @@ Il faut vérifier que pour pour tout $0\leq i < T.\text{\small longueur}$ il exi
 
 ```pseudocode/
 algorithme égalité_valeurs(T1: [entier], T2: [entier]) → booléen
+    trouvé := booléen
     pour chaque x de T1:
         trouvé ← Faux
         pour chaque y de T2:
@@ -227,7 +230,7 @@ algorithme permutation(T1: [entier], T2: [entier]) → booléen
 Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes éléments (même valeurs répétées le même nombre de fois), c'est à dire de savoir s'il existe une permutation $\sigma$ de $[0, T.\mbox{\small longueur}[$ telle que $T1[i] = T2[\sigma(i)]$ pour tout $i \in [0, T.\mbox{\small longueur}[$ (on a pas besoin de la donner).
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne} qu'on a déjà étudié.
+Vous pourrez utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne} qu'on a déjà étudié.
 {% endinfo %}
 {% details "corrigé" %}
 
@@ -259,7 +262,7 @@ supprime(T: [entier], v: entier) → [entier]
 Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux valeurs différentes de `v`{.language-}.
 {% endexercice %}
 {% info %}
-Vous pourrez la encore utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/#algorithme-nombre-occurrences){.interne}.
+Vous pourrez la encore utiliser [l'algorithme `nombre`{.language-}](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne}.
 {% endinfo %}
 {% details "corrigé" %}
 
@@ -267,10 +270,10 @@ Pour que l'algorithme fonctionne, il faut commencer par connaître la taille du 
 
 ```pseudocode/
 algorithme supprime(T: [entier], v: entier) → [entier]
-    T2 ← tableau de taille t.longueur - nombre(T, v)
+    T2 := [entier]{longueur: taille t.longueur - nombre(T, v)}
 
-    j ← 0
-    pour tout i de [0, t.longueur[:
+    j := 0
+    pour chaque i de [0, t.longueur[:
         si T[i] ≠ v:
             T2[j] ← t[i]
             j ← j + 1
@@ -311,7 +314,7 @@ algorithme supprime_rec(t: [entier], v: entier) → [entier]
     si t.longueur == 0:
         rendre t
 
-    t2 ← tableau de longueur t.longueur - 1
+    t2 := [entier]{longueur: t.longueur - 1}
     pour i de [0, t2.longueur[:
         t2[i] ← t[i + 1]
     
@@ -346,7 +349,7 @@ Qui rend Vrai si le tableau est [un palindrome](https://fr.wikipedia.org/wiki/Pa
 
 ```pseudocode/
 algorithme palindrome(T: [entier]) → booléen
-    pour tout i de [0, T.longueur // 2[:
+    pour chaque i de [0, T.longueur // 2[:
         si T[i] ≠ T[T.longueur - 1 - i]:
             rendre Faux
     rendre Vrai
@@ -365,7 +368,6 @@ Donnez et prouvez **un algorithme récursif** de signature :
 palindrome_rec(T: [entier], i: entier) → booléen
 ```
 
-Qui rend Vrai si $T[j] = T[T.\mbox{longueur} - 1 - j]$ pour tous $i \leq j < T.\mbox{longueur} - 1 - i$
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -378,6 +380,8 @@ algorithme palindrome_rec(T: [entier], i: entier) → booléen
     
     rendre palindrome_rec(T, i + 1)
 ```
+
+Il faut monter que l'algorithme rend Vrai si $T[j] = T[T.\mbox{longueur} - 1 - j]$ pour tous $i \leq j < T.\mbox{longueur} - 1 - i$
 
 La premiere condition est la condition d'arrêt de la récursion puisque dans ce cas là $i$ a dépassé la moitié du tableau.
 
@@ -550,6 +554,7 @@ En déduire un algorithme itératif permettant de retourner un tableau.
 
 ```pseudocode
 algorithme retournement_indice(t: [entier], i: entier) → ∅
+    temp := entier
     tant que (t.longueur - 1 - i > i):
         temp ← t[i]
         t[i] ← t[t.longueur - 1 - i]
@@ -562,7 +567,6 @@ Et donc, en utilisant un petit abus de pseudocode :
 
 ```pseudocode
 algorithme retournement(t: [entier], i: entier) → ∅
-    i ← 0
     tant que (t.longueur - 1 - i > i):
         t[i], t[t.longueur - 1 - i] ← t[t.longueur - 1 - i], t[i] 
         i ← i + 1
@@ -622,7 +626,7 @@ La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux pa
 algorithme factorielle(n: entier) → entier:
     si n == 1:  # condition d'arrêt
         rendre 1
-    f ← factorielle(n-1)
+    f := factorielle(n-1)
     rendre n * f
 ```
 
@@ -677,7 +681,7 @@ $$
 {% details "corrigé" %}
 
 ```pseudocode
-function u_n_term(n: entier, 
+fonction u_n_term(n: entier, 
                  u0: entier, 
                  r: entier, 
                  acc: entier) → entier:

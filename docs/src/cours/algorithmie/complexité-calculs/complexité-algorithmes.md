@@ -50,7 +50,7 @@ $$
 
 Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.
 
-Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../pseudo-code/#algorithme-nombre-occurrences){.interne} :
+Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne} :
 
 ```pseudocode/
 algorithme nombre(T: [entier], x: entier) → entier:

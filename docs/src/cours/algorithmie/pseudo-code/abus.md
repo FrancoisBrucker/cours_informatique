@@ -28,24 +28,53 @@ Mais cela ne doit pas rendre le code lourd. On se permettra donc, **lorsqu'il n'
 
 Vous verrez aussi parfois cet opérateur remplacé par le mot "soit", en particulier lorsqu'il y a plusieurs variables à créer :
 
-{% algorithme %}
-#pseudocode-list(line-numbering: none)[
-  + *soient* $a$, $b$ et $c$ trois *entiers*
-]
-{% endalgorithme %}
+```pseudocode
+soient a, b et c trois entiers
+```
+
+Ou peut-être plus clair :
+
+```pseudocode
+a, b, c := entier
+```
+
+## Affectations multiples
+
+```pseudocode
+a, b ← c, d
+```
+
+pour :
+
+```pseudocode
+a' ← c
+b' ← d
+a ← a'
+b ← b'
+```
+
+{% info %}
+On utilise des variables intermédiaires pour garantir que `a, b ← b, a`{.language-} échange bien les valeurs des deux variables.
+{% endinfo %}
 
 ## Répétitions
 
+### Nombre constant de répétitions
+
+Si on n'utilise pas la variable de boucle :
+
 ```pseudocode
 répéter k fois:
-    ...
+    # ...
 ```
 
 Pour :
 
 ```pseudocode
-pour chaque i de [1 .. k]:
-    ...
+i ← 0
+tant que (i < k):
+    i ← i + 1 
+    # ...
 ```
 
 ### Répétitions par borne
@@ -53,44 +82,47 @@ pour chaque i de [1 .. k]:
 Tout un tas de variations sont possibles, du moment que ce soit compréhensible. Par exemple :
 
 ```pseudocode
+i := entier
 pour i de a à b:
-    ...
+    # ...
 ```
 
 Ou encore :
 
 ```pseudocode
+i := entier
+
 pour i=a à i=b:
-    ...
+    # ...
 ```
 
 Pour :
 
 ```pseudocode
 pour chaque i de [a .. b]:
-    ...
+    # ...
 ```
 
 ### Répétitions à pas fixé
 
 ```pseudocode
 pour i de a à b par par pas de k:
-    ...
+    # ...
 ```
 
 ou encore :
 
 ```pseudocode
 pour chaque i de [a .. b] par pas de k:
-    ...
+    # ...
 ```
 
 pour :
 
 ```pseudocode
-i ← a
+i := a
 tant que i ≤ b:
-  ...
+  # ...
 
   i ← i + k
 ```

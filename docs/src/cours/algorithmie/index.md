@@ -51,6 +51,8 @@ On peut maintenant définir une grammaire permettant décrire des algorithmes so
 [Écrire les algorithmes en pseudo code](./pseudo-code){.interne}
 {% endaller %}
 
+#### Thèse de Church-Turing
+
 Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant [un langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
 
 Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
@@ -84,7 +86,7 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 [Autres modèles](./autres-modèles){.interne}
 {% endaller %}
 
-### Problème algorithmique et preuve
+### Problème algorithmique
 
 Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de "_problème_" à résoudre _via_ un algorithme :
 
@@ -93,7 +95,7 @@ Un **_problème_** est un texte composé de 3 parties :
 
 - **Nom** : le nom du problème
 - **Entrées** : les paramètres dont on a besoin
-- **Sortie** : le retour de l'algorithme
+- **Sortie** : la solution recherchée
 
 {% endnote2 %}
 
@@ -117,18 +119,23 @@ Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par
 **_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
 
 - prend en paramètres les entrées du problème
-- donne en sortie la réponse à la question.
+- donne en sortie la solution recherchée.
 
 {% endnote2 %}
 
-Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver. Ceci est d'autant plus crucial puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} : chaque algorithme possède une preuve qui lui est propre.
+Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver. 
 
-Mais rassurez-vous, cela peut être facile. Considérons par exemple l'algorithme suivant :
+### Preuve d'algorithme
+
+Puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} on ne peut jamais être sur a priori qu'un algorithme donné résous le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.
+
+Par exemple l'algorithme suivant :
 
 <span id="algorithme-pgcd"></span>
 
 ```pseudocode
 algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
+    a', b' := entier
     tant que min(a, b) > 0:
         a' ← max(a, b) - min(a, b)
         b' ← min(a, b)
@@ -137,15 +144,9 @@ algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
     rendre max(a, b)
 ```
 
-Il calcule bien le pgcd de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du pgcd que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
+On peut facilement prouver qu'il calcule bien le pgcd de deux nombres positifs car chaque boucle `tant que`{.language-} correspond exactement à une récursion de [la définition récurrente du pgcd que l'on a démontré précédemment](./bases-théoriques/calculabilité/#algorithme-euclide){.interne}. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.
 
-{% info %}
-On a utilisé ici le mot clé **question** plutôt que **sortie**. On utilisera cette convention lorsque la sortie est soit OUI soit NON.
-
-On les appelle [problèmes de décision](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision) et sont très important en informatique théorique. On le verra (bien) plus tard.
-{% endinfo %}
-
-Enfin, si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :
+Si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :
 
 {% aller %}
 [Prouver des algorithmes](./prouver-un-algorithme){.interne}
@@ -253,16 +254,6 @@ Ces structures sont des conteneurs, comme des tableaux, qu permettent de stocker
 
 > TBD ajouter un TD/TP sur l'utilité de chaque structure
 
-### Pile et file
-
-Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
-
-{% aller %}
-[Structure de pile et file](./structure-pile-file){.interne}
-{% endaller %}
-
-> TBD decurryfication
-
 ### Listes chaînées
 
 Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
@@ -272,6 +263,16 @@ Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit su
 {% endaller %}
 
 > TBD maintenir un ordre PAPS. Faire circulaire. Ex graphes cordés ?
+
+### Pile et file
+
+Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
+
+{% aller %}
+[Structure de pile et file](./structure-pile-file){.interne}
+{% endaller %}
+
+> TBD pile et tas. Montrer la récursion. Et la decurryfication 
 
 ### Listes
 
