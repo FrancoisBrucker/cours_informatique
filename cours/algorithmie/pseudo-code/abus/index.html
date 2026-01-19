@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pseudo-code</title>
+    <title>Abus de notation</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Pseudo-code</h1>
+  <h1>Abus de notation</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/">Pseudo-code</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/abus/">Abus de notation</a>
 
 </div></div>
 
@@ -96,147 +96,9 @@
     
   
 
-  <p><a href="../bases-th%C3%A9oriques/d%C3%A9finition/#d%C3%A9finition-r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">La définition générale d'un algorithme</a> ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un <strong><em>pseudo-code</em></strong> est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.</p>
-<p>Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.</p>
-<p>Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur. Il est communément admis que tout algorithme peut être écrit en <strong><em>pseudo-code</em></strong> :</p>
-<p><span id="règles"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un pseudo-code est une succession de lignes qui seront exécutées <strong><em>en séquence</em></strong> les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser avant de passer à la ligne suivante.</p>
-</div></div>
-
-<p>Les langages de programmation classiques comme <a href="https://www.python.org/">python</a>, <a href="https://go.dev/">go</a> ou encore <a href="https://www.rust-lang.org/fr">rust</a> se transcrivent aisément en pseudo-code et réciproquement. Ce sont deux notions équivalentes :</p>
-<ul>
-<li>on utilisera le pseudo-code pour l'étude théorique des algorithmes</li>
-<li>on codera ces algorithme dans un langage dédié à être exécuté lorsque l'on voudra les tester. Dans le cadre de ce cours on utilisera le python.</li>
-</ul>
-<h2>Éléments de pseudo-code</h2>
-<h3>Briques de base</h3>
-<p>Commençons par décrire la <em>grammaire de base</em> du pseudo-code :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="briques-de-base" class="interne">Briques de base</a></p>
-</div></div>
-
-<h3>Algorithmes en pseudo-code</h3>
-<p>Un programme et un algorithme doivent posséder des paramètres d'entrées
-En pseudo-code, un algorithme est une suite d'instructions qui, a partir de paramètres d'entrée, rend une sortie. Considérons par exemple la description de  l'algorithme de recherche d'un élément dans une liste :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : recherche
-Entrées :
-    T : un tableau d'entiers
-    x : un entier
-Programme :
-    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
-    Si on trouve un tel élément, rendre "Vrai"
-    Sinon rendre "Faux"</code></pre>
-<p>En pseudo-code, cela va donner ça :</p>
-<div id="problème-recherche"></div>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>     <span class="token comment"># entier recherché dans t</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
-
-    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
-<p>Le programme est un bloc. La definition du bloc (jusqu'aux <code class="language-">:</code>) est constitué :</p>
-<ol>
-<li>du mot-clé <code class="language-">algorithme</code> qui détermine la nature du bloc</li>
-<li>suit le du nom du programme</li>
-<li>puis ses paramètres d'entrées entre parenthèses. Chaque paramètre est décrit par son nom suivit de son type</li>
-<li>enfin, le type de sortie de l'algorithme qu'on fait précéder d'une flèche.</li>
-</ol>
-<p>Si on a besoin d'information supplémentaire pour qu'un lecteur puisse mieux comprendre le pseudo-code on peut ajouter des commentaires en les faisant commencer par un <code class="languages-">#</code>.  Ne mettez pas trop de commentaires, normalement le pseudo-code et le nom des variables doit suffire. On a ici juste décrit ce que fait l'algorithme avec ses paramètres d'entrées.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>La description des types de paramètres est reprise du format python : <a href="https://docs.python.org/fr/3.13/library/typing.html">https://docs.python.org/fr/3.13/library/typing.html</a></p>
-</div></div>
-
-<p>Terminons par un petit exercice :</p>
-<p><span id="algorithme-nombre-occurrences"></span></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Adaptez le pseudo code de l'algorithme `recherche(T: [entier], x: entier) → booléen){.language-} précédent pour créer l'algorithme :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nombre<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
-<p>Cet algorithme  rend le nombre de fois où <code class="language-">x</code> est présent dans <code class="language-">T</code></p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    nb <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
-            nb <span class="token operator">←</span> nb <span class="token operator">+</span> <span class="token number">1</span>
-    <span class="token keyword">rendre</span> nb</code></pre>
-</div>
-</details>     
-</div>
-<h3>Fonctions</h3>
-<p>Un algorithme est constitué uniquement d'instructions de base. Mais rien n'empêche de réutiliser des algorithmes déjà écrit en les appelant par leur nom. Ces algorithmes intermédiaires sont appelées <strong><em>fonctions</em></strong>.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="fonctions" class="interne">Fonctions</a></p>
-</div></div>
-
-<h2>Écrire du bon pseudo-code</h2>
-<p>Un bon pseudo-code doit être compréhensible en tant que tel, sans commentaires.</p>
-<p>Pour cela il faut :</p>
-<ul>
-<li>expliciter la signature de vos algorithme</li>
-<li>utiliser des noms de variables ou de fonctions explicites et utile à la compréhension</li>
-<li>séparer les différentes parties d'un algorithmes en fonctions au nom explicite.</li>
-</ul>
-<p>Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.</p>
-<h2>Opérateurs utilisés en pseudo-code</h2>
-<p>Plusieurs opérateurs ressemblant à l'égalité sont utilisés en pseudo-code, attention à bien comprendre leurs différences.</p>
-<ul>
-<li><code class="language-">x := y</code> : on remplace x par y à chaque fois qu'on le voit</li>
-<li><code class="language-">x ← y</code> : on affecte x à la valeur de y</li>
-<li><code class="language-">x = y</code> : avec les définitions de x et y les 2 variables sont toujours égales (c'est une conséquence)</li>
-<li><code class="language-">x == y</code> : vrai si la valeur de x vaut la valeur de y et faux sinon</li>
-</ul>
-<h2><em>&quot;Abus&quot;</em> de notation</h2>
-<p>On se permettra, lorsque l'instruction est assez claire de procéder à des raccourci pour rendre le pseudocode plus digeste. Attention, la plupart de ces opérations ne seront pas des opérations élémentaires !</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="abus" class="interne">Abus de notation</a></p>
-</div></div>
-
-<h3>Définitions de variables</h3>
+  <p>Il sera parfois plus simple d'écrire des raccourci dans un pseudo-code pour le rendre plus lisible.</p>
+<p>Nous allons montrer dans cette partie plusieurs raccourcis courants et utilisés dans ce cours ainsi que leurs traductions en instructions élémentaires.</p>
+<h2>Définitions de variables</h2>
 <p>Le but d'un pseudo-code est d'être explicite, c'est pourquoi :</p>
 <ul>
 <li>les variables doivent être définies avant d'être utilisée</li>
@@ -392,13 +254,13 @@ Programme :
     </defs>
 </svg>
 </pre>
-<h3>Répétitions</h3>
+<h2>Répétitions</h2>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
 <p>Pour :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<h4>Répétitions par borne</h4>
+<h3>Répétitions par borne</h3>
 <p>Tout un tas de variations sont possibles, du moment que ce soit compréhensible. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour</span><span class="token number"> i </span>de a à b<span class="token punctuation">:</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
@@ -408,7 +270,7 @@ Programme :
 <p>Pour :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">]</span><span class="token punctuation">:</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
-<h4>Répétitions à pas fixé</h4>
+<h3>Répétitions à pas fixé</h3>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour</span><span class="token number"> i </span>de a à b par par pas de k<span class="token punctuation">:</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
 <p>ou encore :</p>
@@ -420,7 +282,7 @@ Programme :
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 
  <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> k</code></pre>
-<h3>Affectation d'une tranche de tableau</h3>
+<h2>Affectation d'une tranche de tableau</h2>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span>a<span class="token punctuation">:</span>b<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
 <p>pour :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">[</span><span class="token punctuation">:</span>
@@ -445,7 +307,7 @@ Programme :
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T' <span class="token operator">←</span> un nouveau tableau contenant T<span class="token punctuation">[</span>i<span class="token punctuation">:</span>j<span class="token punctuation">]</span>  <span class="token comment"># j - i + 1 instructions en 1 ligne</span></code></pre>
 </div></div>
 
-<h3>Concaténation</h3>
+<h2>Concaténation</h2>
 <p>Avec deux tableaux :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T <span class="token operator">:=</span> T1 <span class="token operator">+</span> T2</code></pre>
 <p>pour :</p>

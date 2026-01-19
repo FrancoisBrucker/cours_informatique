@@ -94,32 +94,13 @@
 
 
     
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/coder-et-développer/données-mémoire/">Mémoire, variables et objets</a>
-              </li></ul>
-      
-
-</div></div>
-
-
-    
   
 
-  <p>Le pseudo-code est constitué d'instructions dont le but est soit de manipuler des objets (création, affectation ou lecture) ou de contrôler le flux d'instructions (test et boucles).</p>
+  <p>Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd. Il est constitué d'instructions dont le but est soit :</p>
+<ul>
+<li>de manipuler des objets (création, affectation ou lecture)</li>
+<li>de contrôler le flux d'instructions (test et boucles).</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -128,13 +109,7 @@
 <p>Vous trouverez autant de type de pseud-code différents que d'informaticiens. Je vous donne ici <em>&quot;mon&quot;</em> pseudo-code. Son but est d'être assez explicite pour décrire sans ambiguïté les algorithmes de ce cours. Ne soyez donc pas étonné si en lisant d'autres pseudo-codes ils ne suivent pas mes notations : ayez l'esprit ouvert.</p>
 </div></div>
 
-<p>Le but d'un pseudo-code est d'être lu et compris par un humain. Il se doit d'être sans ambiguïté sans être lourd.</p>
-<blockquote>
-<p>TBD ici dire pseudo-code SANS pointeur. PLus simple à comprendre et à implémenter mais ajoute un overhead.
-très utilisé dans les langages de scripts. Mais à cause de l'overhead qui n'est pas important en algorithmie car rajoute qu'un nombre constant d'opération pose soucis pour une optimisation systeme.</p>
-<p>TBD on verra plus tard ce deuxième mod de pseudo-code avec pointeur.</p>
-<p>TBD refaire en disant que c'est l'implémentation sur une machine réelle. une &quot;note&quot; et pas une &quot;info&quot;.</p>
-</blockquote>
+<p>Nous allons monter ici une version de pseudo-code sans accès direct à la mémoire (<em>ie.</em> sans pointeur). Ce modèle est tout à fait fonctionnel et est utilisé dans les langages de programmation comme python par exemple. Nous ajouterons l'accès direct à la mémoire (bien) plus tard dans ce cours. Ce modèle est plus simple à comprendre et à implémenter que le modèle avec pointeur et ne change rien algorithmiquement. Il va cependant nécessiter des opérations élémentaires supplémentaires (on appelle ceci des <em>overheads</em>) pour trouver la valeur de la variable en mémoire par rapport à l'utilisation directe de pointeurs.</p>
 <h2>Commentaires</h2>
 <p>Comme en python, on considérera que tout ce qui suit le caractère <code class="language-">#</code> est considéré comme un commentaire dont le but est d'éclairer le lecteur.</p>
 <pre class="language-pseudocode"><svg class="typst-doc" viewBox="0 0 103.516 37.281291338582676" width="103.516pt" height="37.281291338582676pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
@@ -224,6 +199,7 @@ très utilisé dans les langages de scripts. Mais à cause de l'overhead qui n'e
 <h2>Objets et opérations</h2>
 <p>Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.</p>
 <h3>Objets</h3>
+<p>Les objets sont ce que l'on manipule en algorithmie. Chaque objet aura son type déterminé. Tous les objets possibles seront construit à partir des 5</p>
 <h4><span id="objets-basiques"></span> Objets basiques</h4>
 <p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et correspondent aux cinq <strong><em>types</em></strong> suivant :</p>
 <ul>
@@ -350,7 +326,7 @@ très utilisé dans les langages de scripts. Mais à cause de l'overhead qui n'e
 </ul>
 </li>
 </ul>
-<pre class="language-pseudocode"><svg class="typst-doc" viewBox="0 0 177.982 37.281291338582676" width="177.982pt" height="37.281291338582676pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
+<pre class="language-pseudocode"><svg class="typst-doc" viewBox="0 0 177.982 63.293291338582684" width="177.982pt" height="63.293291338582684pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:h5="http://www.w3.org/1999/xhtml">
     <g>
         <g transform="translate(0 2.8346456692913384)">
             <g class="typst-group">
@@ -412,6 +388,17 @@ très utilisé dans les langages de scripts. Mais à cause de l'overhead qui n'e
                 <g></g>
             </g>
         </g>
+        <g transform="translate(0 51.24664566929134)">
+            <g class="typst-group">
+                <g>
+                    <g transform="translate(0 9.212)">
+                        <g class="typst-text" transform="scale(1, -1)">
+                            <use xlink:href="#g7C8E7D390A726DD00C7AD5B86C6E2358" x="0" fill="#000000" fill-rule="nonzero"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
     </g>
     <defs id="glyph">
         <symbol id="g1E6C142369E22658AB178B32DC6DA6BC" overflow="visible">
@@ -464,6 +451,9 @@ très utilisé dans les langages de scripts. Mais à cause de l'overhead qui n'e
         </symbol>
         <symbol id="gD9900187E311A4C93FA0BBD3A157089E" overflow="visible">
             <path d="M 2.5340002 1.7080001 L 2.5340002 4.494 C 2.5340002 5.1940002 2.5900002 6.09 2.5900002 6.09 C 2.5900002 6.1460004 2.52 6.188 2.408 6.188 C 2.016 6.0340004 1.4560001 5.908 0.49 5.782 C 0.462 5.698 0.49 5.474 0.518 5.3900003 C 1.288 5.32 1.4280001 5.236 1.4280001 4.438 L 1.4280001 1.7080001 C 1.4280001 0.546 1.274 0.504 0.42000002 0.43400002 C 0.33600003 0.35000002 0.33600003 0.056 0.42000002 -0.028 C 0.882 -0.014 1.4280001 0 1.988 0 C 2.548 0 3.0800002 -0.014 3.542 -0.028 C 3.6260002 0.056 3.6260002 0.35000002 3.542 0.43400002 C 2.6880002 0.49 2.5340002 0.546 2.5340002 1.7080001 Z M 1.26 8.386001 C 1.26 8.022 1.5960001 7.6580005 1.932 7.6580005 C 2.3240001 7.6580005 2.66 8.036 2.66 8.33 C 2.66 8.666 2.3660002 9.058001 1.988 9.058001 C 1.6520001 9.058001 1.26 8.722 1.26 8.386001 Z "></path>
+        </symbol>
+        <symbol id="g7C8E7D390A726DD00C7AD5B86C6E2358" overflow="visible">
+            <path d="M 5.5020003 6.7900004 C 5.5020003 7.7980003 4.718 8.54 3.3460002 8.54 C 1.9180001 8.54 0.994 7.6860003 0.994 6.6080003 C 0.994 5.8240004 1.3720001 5.25 2.226 4.718 L 2.5900002 4.494 C 2.184 4.284 1.8060001 4.032 1.4560001 3.7240002 C 0.882 3.22 0.644 2.5900002 0.644 2.0440001 C 0.644 0.616 1.6520001 -0.14 3.1360002 -0.14 C 4.9700003 -0.14 5.866 1.204 5.866 2.2680001 C 5.866 3.0800002 5.5160003 3.7940001 4.774 4.242 L 3.7800002 4.8440003 C 4.438 5.1660004 5.5020003 5.894 5.5020003 6.7900004 Z M 3.164 0.35000002 C 2.5340002 0.35000002 1.582 0.78400004 1.582 2.0440001 C 1.582 2.464 1.764 3.444 2.9680002 4.242 L 3.6260002 3.8500001 C 4.494 3.318 4.8440003 2.66 4.8440003 1.988 C 4.8440003 0.588 3.7940001 0.35000002 3.164 0.35000002 Z M 3.276 8.05 C 4.1860003 8.05 4.5220003 7.4480004 4.5220003 6.8040004 C 4.5220003 6.0480003 3.7800002 5.418 3.4020002 5.138 L 2.9680002 5.4040003 C 2.086 5.978 1.988 6.44 1.988 6.874 C 1.988 7.518 2.436 8.05 3.276 8.05 Z "></path>
         </symbol>
     </defs>
 </svg>
@@ -578,6 +568,17 @@ très utilisé dans les langages de scripts. Mais à cause de l'overhead qui n'e
 <p>En python, elles sont stockées dans une partie de la mémoire nommée <strong>pile</strong> et contiennent l'indice de la mémoire du tas où commence l'objet qu'elle référence. Chaque variable est donc juste assez grande pour stocker un indice (64bit sur les ordinateur actuel ce qui permet d'avoir théoriquement un tas de taille $2^{64}$byte = 18446744073709551616B = 16777216 terabyte).</p>
 <p><img src="pile.png" alt="pile"></p>
 <p>Chaque variable a la même taille et sont stockées de façon consécutives dans la pile. En effet, les variables sont crées au début de l'algorithme et sont toues supprimées en même temps à la fin de l'algorithme.</p>
+</div></div>
+
+<blockquote>
+<p>TBD ici</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/donn%C3%A9es-m%C3%A9moire/" class="interne">variables et mémoire</a></p>
 </div></div>
 
 <h3>Définition</h3>

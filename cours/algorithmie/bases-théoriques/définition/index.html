@@ -147,10 +147,10 @@ Programme :
 <li><strong>rendement</strong> : […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon.</li>
 </ul>
 <p>On peut en déduire la définition suivante : Un <strong><em>algorithme</em></strong> est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :</p>
-<div id="règles-générales"></div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div id="définition-règles-générales"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
@@ -164,9 +164,9 @@ Programme :
 </ol>
 </div></div>
 
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
@@ -330,7 +330,7 @@ Programme :
 </div>
 </details>     
 </div>
-<p>Une conséquence directe de la proposition précédente est :</p>
+<p>Une conséquence directe de la proposition précédente est qu'un programme ne peut pas manipuler de nombres réels.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -338,11 +338,11 @@ Programme :
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>un programme ne peut pas manipuler de nombres réels.</p>
+<p><strong>Un réel ne l'est pas : c'est une limite</strong>.</p>
+<p>Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre.</p>
 </div></div>
 
-<p>Un réel ne l'est pas : c'est une limite. C'est une abstraction que l'on peut considérer comme ou une approximation (ne considérer qu'un nombre fini de ses décimales) ou un symbole. Prenons $\pi$ par exemple. Il existe des algorithmes qui <a href="https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80">calculent les décimales de pi</a>, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.</p>
-<p>On ne pourra le considérer que de deux manières :</p>
+<p>Prenons $\pi$ par exemple. Il existe des algorithmes qui <a href="https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80">calculent les décimales de pi</a>, mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$. On ne pourra le considérer que de deux manières :</p>
 <ul>
 <li>soit comme un symbole et l'utiliser pour faire des opérations sur lui (comme $2 + \pi$, ou $\frac{3\pi}{3}$, ...) de façon formelle, c'est à dire sans jamais connaître sa valeur</li>
 <li>soit comme une valeur approchée de lui (3.1415 par exemple) et ainsi rendre des valeurs approchées des différentes opérations.</li>
@@ -357,6 +357,17 @@ Programme :
 </div></div>
 
 <p>Or :</p>
+<p><span id="paramètres-binaires"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.</p>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -364,15 +375,7 @@ Programme :
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Il existe une injection entre $(\mathcal{A})^\star$ et $(\{0, 1\})^\star$.</p>
-</div></div>
-
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de toutes les suites finies d'éléments de $\mathcal{A}$.</p>
+<p>Il existe une injection entre $(\mathcal{A})^\star$ et $(\{0, 1\})^\star$ pour tout ensemble fini $\mathcal{A}$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -392,8 +395,8 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble $\mathcal{A}$ est triviale.</p>
-<p>On considère l'ensemble des caractères des différentes langues écrites actuelles ou passée. Cet ensemble est fini et existe ! C'est l'ensemble <a href="https://fr.wikipedia.org/wiki/Unicode">des caractères UNICODE</a> que l'on va noter $\mathcal{U}$. Il est constitué de 159801 caractères (appelées glyphes) dont chacun est associé un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.</p>
+<p>On va le montrer avec les chaînes de caractères pour se fixer les idées mais la généralisation à tout ensemble fini $\mathcal{A}$ est triviale.</p>
+<p>On considère l'ensemble $\mathcal{U}$ des caractères des différentes langues écrites actuelles ou passée. Cet ensemble est fini et existe ! C'est l'ensemble <a href="https://fr.wikipedia.org/wiki/Unicode">des caractères UNICODE</a> que l'on va noter. Il est constitué de 159801 caractères (appelées glyphes) dont chacun est associé un numéro. Par exemple le caractère 'A' est associé au numéro 65 et '𑒣' au numéro 70820.</p>
 <p>Une chaîne de caractère $(c_i)_{0\leq i &lt; n}$ est alors une suite de $6n$ chiffres. Par exemple : &quot;Coucou toi !&quot; correspond au nombre :</p>
 <div>
 $$
@@ -426,33 +429,14 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<blockquote>
-<p>TBD ici
-Ils sont même en bijection</p>
-</blockquote>
-<blockquote>
-<p>TBD preuve du théorème (voir Wikipedia) avec <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Lemme_pr%C3%A9liminaire">le lemme préliminaire</a> (on va en avoir besoin ?)</p>
-</blockquote>
-<p>Notre transformation est une injection de l'ensemble des suites finies de caractères vers l'ensemble des suites finies de $\{0, 1\}$. Comme <code>0</code> et <code>1</code> sont également des caractères Unicode (de numéros 48 et 49 respectivement), il existe également une injection de
-$(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
-<p>On peut alors utiliser <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein">le théorème de Cantor-Bernstein</a> pour conclure qu'il existe une bijection entre les 2 ensembles (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).</p>
+<p>Comme il existe évidemment une injection entre $(\{0, 1\})^\star$ et $(\mathcal{A})^\star$ si $\mathcal{A}$ est fini les deux ensembles sont en bijection de part le
+Ils sont même en bijection de part <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein">le théorème de Cantor-Bernstein</a> (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).</p>
 </div></div>
 
-<p>On en conclut le résultat que tout le monde connaît :</p>
-<p><span id="paramètres-binaires"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Tout ce que peut manipuler un programme est une suite finie de caractères <code>0</code> et <code>1</code>.</p>
-</div></div>
-
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<p>La proposition précédente montre que l'on peut représenter toute suite finie d'éléments d'un ensemble fini par une suite finie de <code>0</code> et de <code>1</code> de façon unique. On en déduit le résultat que tout le monde connaît :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
@@ -460,18 +444,91 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 <p>Un caractère (<code>0</code> ou <code>1</code>) <a href="https://fr.wikipedia.org/wiki/Bit">est appelé <strong><em>bit</em></strong></a>.</p>
 </div></div>
 
-<p>Cependant n'utiliser que des tableaux de bits (dont le type est <code>[bit]</code>) pour nos programmes les rendrait illisible. On défini donc d'autres types qui représentent nos données dont les plus classiques sont :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout ce que peut manipuler un programme est une suite finie de bits.</p>
+</div></div>
+
+<p>Cependant n'utiliser que des tableaux de bits (dont le type est <code>[bit]</code>) pour nos programmes les rendrait illisible. On défini donc d'autres types qui représentent nos données. Un tableau de bits pourra alors être interprété comme :</p>
 <ul>
-<li>les entiers relatifs :
+<li>un entier relatif :
 <ul>
-<li>positifs en utilisant leur notation binaire et en les faisant commencer par un <code>0</code>, par exemple 3 sera encodé par <code>011</code> (le <code>0</code> tout à gauche signifiant que l'entier est positif)</li>
-<li>négatifs en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> de la représentation binaire de son opposé. Ainsi -3 sera encodé par <code>101</code> (un entier négatif ainsi représenté commencera toujours par un <code>1</code>)</li>
+<li>positif en utilisant leur notation binaire et en les faisant commencer par un <code>0</code>, par exemple 3 sera encodé par <code>011</code> (le <code>0</code> tout à gauche signifiant que l'entier est positif)</li>
+<li>négatif en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> de la représentation binaire de son opposé. Ainsi -3 sera encodé par <code>101</code> (un entier négatif ainsi représenté commencera toujours par un <code>1</code>)</li>
 </ul>
 </li>
-<li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
-<li>des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères &quot;Yop !&quot; correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>) qui en binaire vaut : <code>0000010110010110111101110000001000000010</code></li>
+<li>une approximation finie d'un réel en utilisant la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
+<li>une chaîne de caractères en utilisant le code utf-8. Par exemple &quot;Yop !&quot; correspond au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>) qui en binaire vaut : <code>0000010110010110111101110000001000000010</code></li>
 </ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez qu'il existe une injection entre $(\mathcal{A})^\star$ et $(\{ 1\})^\star$.</p>
+<p>Pourquoi s'embêter avec un deuxième symbole (le <code>0</code>) alors ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Toute suite binaire est un nombre $n$ écrit en base 2. On peut donc représenter cette suite par $n$ <code>1</code> successifs.</p>
+<p>On a cependant besoin d'un second caractère pour terminer la séquence lorsqu'on l'écrit ! Sinon, comment savoir lorsque le mot est fini ? On ne peut donc pas écrire toutes les suites juste avec un seul caractère puisqu'il en faut au moins un deuxième qui détermine la fin de la chaîne.</p>
+<p>Dans la première définition <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing">des machines de Turing</a> les données de la machines sont décrites sur un ruban supposé infini dont les cases ne peuvent prendre que deux valeurs <code>1</code> et <code> </code> (blanc).</p>
+</div>
+</details>     
+</div>
 <p>On peut aller plus loin en représentant les tableaux de suites finies de &quot;0&quot; et de &quot;1&quot; par une unique suite finie de &quot;0&quot; et de &quot;1&quot;. Pour cela on peut utiliser l'encodage suivant :</p>
+<p><span id="définition-algorithme-canonique"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout programme peut s'écrire comme :</p>
+<ul>
+<li>ayant une seule entrée de la forme d'une suite finie de bits</li>
+<li>sa sortie, s'il s'arrête, est une suite finie de bits</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On peut utiliser l'encodage suivant :</p>
 <ul>
 <li>le caractère <code>0</code> est encodé par la suite <code>100</code></li>
 <li>le caractère <code>1</code> est encodé par la suite <code>101</code></li>
@@ -479,25 +536,48 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 <li>le caractère de début de liste est encodé par la suite <code>010</code></li>
 <li>le caractère de fin de liste est encodé par la suite <code>001</code></li>
 </ul>
-<p>Ainsi le tableau <code>[00110, 110]</code> sera encodé par la suite <code>010100100101101100000101101100001</code>. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme <code>[0, [1, [1]], 0]</code>, chaque caractère nécessaire (<code>0</code>, <code>1</code>, <code>,</code>, <code>[</code> et <code>]</code>) ayant son propre code sur 3 bits. Cette astuce vas nous permettre de compter tous les programmes possible !</p>
-<h2>Nombre de programmes</h2>
-<blockquote>
-<p>TBD ici</p>
-</blockquote>
-<p>La définition générale d'un programme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong> de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.</p>
-<p>Un bit est l'information minimale que l'on peut véhiculer puisqu'il ne peut avoir que 2 valeurs différentes. Cette unité minimale d'information est très puissante puisque les suites finies de bits permettent non seulement de stocker tous les objets que peut manipuler un algorithme mais aussi les algorithmes eux-même via le codage binaires des chaines Unicode par exemple. On en conclut que :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<p>Ainsi le tableau <code>[00110, 110]</code> sera encodé par la suite <code>010100100101101100000101101100001</code>. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme <code>[0, [1, [1]], 0]</code>, chaque caractère nécessaire (<code>0</code>, <code>1</code>, <code>,</code>, <code>[</code> et <code>]</code>) ayant son propre code sur 3 bits.</p>
+<p>Ceci nous permet d'encoder tous les paramètres d'un programme sous une unique suite finie de <code>0</code> et de <code>1</code>.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
+<p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un algorithme et tout ce qu'il peut manipuler est une suite finie de <code>0</code> et de <code>1</code>.</p>
+<p>Tout programme peut s'écrire comme prenant un entier en paramètre et rendant un entier lorsqu'il s'arrête.</p>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Une suite finie de bits est équivalente à un entier en base 2.</p>
+</div>
+</details>     
+</div>
+<p>Enfin, pour ne pas finir essayer de vous pencher sur le problème suivant :</p>
+<h2>Nombre de programmes</h2>
+<p>La définition générale d'un programme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong> de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.</p>
+<p>On se place ici dans le cadre précédent où un programme prend en paramètre un entier et rend un entier.</p>
 <h3>Une infinité de programmes différents</h3>
-<p>On va se concentrer sur les algorithmes puisque tout algorithme est un programme. De la définition d'un algorithme on peut donc déjà conclure que :</p>
+<p>De la définition d'un algorithme on peut donc déjà conclure que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -525,14 +605,15 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si on considère l'instruction <code class="language-">Ne fait rien</code>, le texte ci-dessous est un algorithme d'une instruction :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Ne fait rien</code></pre>
-<p>En notant alors $R_k$ ($k &gt;0$) l'algorithme de $k$ instructions <code class="language-">Ne fait rien</code> à la suite (l'algorithme précédent est $R_1$).</p>
+<p>Le texte ci-dessous est un algorithme de deux instructions :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Ne fait rien
+rend 1</code></pre>
+<p>En notant alors $R_k$ ($k &gt;0$) l'algorithme de $k$ instructions <code class="language-">Ne fait rien</code> à la suite suivi de l'instruction <code>rend 1</code> (l'algorithme précédent est $R_1$).</p>
 <p>Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.</p>
 </div>
 </details>     
 </div>
-<p>De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien.</p>
+<p>De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien puis rendent 1.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -577,8 +658,7 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 </div>
 <p>Il y a donc <strong>beaucoup</strong> d'algorithmes possibles... mais en réalité pas tant que ça.</p>
 <h3>Mais seulement une infinité dénombrable</h3>
-<p>D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans un alphabet. Pour ne pas être chiche, on peut prendre l'alphabet <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> qui permet d'écrire, entre autres, en Français et contient un peut moins de 150000 caractères différents.</p>
-<p>De là :</p>
+<p>D'après ce qui précède, un algorithme est un texte. On peut alors considérer que les symboles formant la description de chaque instruction sont des caractères pris dans l'alphabet <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a>. De là :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -591,7 +671,6 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 <li>$c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$</li>
 <li>avec $\mathcal{U}$ l'ensemble des caractères <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a>, $\vert \mathcal{U} \vert \leq 150000$.</li>
 </ul>
-<p>On note $\mathcal{A}$ cet ensemble.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -611,12 +690,12 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Un algorithme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.</p>
+<p>Un programme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.</p>
 </div>
 </details>     
 </div>
-<p>Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode. On peut alors utiliser l'ordre entre caractères Unicode (chaque caractère est identifié par un entier) pour ordonner les algorithmes selon l'ordre du dictionnaire :</p>
-<div id="encodage-algorithme"></div>
+<p>Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode. On peut alors utiliser <a href="#param%C3%A8tres-binaires" class="interne">la proposition sur les suites binaires</a> pour avoir la proposition suivante :</p>
+<div id="proposition-encodage-algorithme"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -624,34 +703,11 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On peut associer à toute chaîne de caractère un entier strictement positif unique.</p>
+<p>On peut associer à tout programme un entier unique.</p>
 </div></div>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBDici reprendre la bijection et prendre le nombre associé.</p>
-</blockquote>
-</div>
-</details>     
-</div>
 <p>On déduit immédiatement la proposition suivante :</p>
-<p><span id="nb-dénombrable-algorithmes"></span></p>
+<p><span id="proposition-nb-dénombrable-algorithmes"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -659,7 +715,7 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Il y a exactement autant d'algorithmes différents que de nombres entiers.</p>
+<p>Il y a exactement autant de programmes différents que de nombres entiers.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -726,7 +782,7 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 <div class="mx-8 pb-2">
 <p>On doit cette preuve magnifique au mathématicien allemand <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Georg Cantor</a>. Elle est basée sur l'argument s'appelant <a href="https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els">diagonale de Cantor</a>.</p>
 <p>On commence en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimale $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.</p>
-<p>On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels selon leurs valeurs selon $f$ :</p>
+<p>On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels avec leurs valeurs selon $f$ :</p>
 <ul>
 <li>on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$</li>
 <li>on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \{ r_1 \}$</li>
@@ -758,13 +814,36 @@ $(\{0, 1\})^\star$ vers $(\mathcal{U})^\star$.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Il existe des réels pour lesquels il n'existe aucun algorithme $A(i)$ qui calcule la $i$ème décimale de $i$ quelque soit $i$</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il existe des réels pour lesquels il n'existe aucun algorithme $A$ tel que $A(i)$ calcule sa $i$ème décimale quelque soit $i$.</p>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Sinon il y aurait une injection associant à chaque réel son algorithme ce qui est impossible.</p>
+</div>
+</details>     
+</div>
 <p>Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard).</p>
 <h2>Algorithmes et démonstration mathématiques</h2>
-<p>On n'en parlera pas trop dans ce cours (à moins que vous me le demandiez très fort) mais, en gros, les mathématiques sont une partie de l'informatique (certains diraient même, et réciproquement. Des mathématiciens certainement...).</p>
+<p>On n'en parlera pas trop dans ce cours (cela a plus sa place dans un cours de logique ou de calculabilité) mais, en gros, les mathématiques sont une partie de l'informatique (certains diraient même, et réciproquement. Des mathématiciens certainement...).</p>
 <p>De façon plus précise on a la suite d'équivalences :</p>
 <ol>
 <li>faire une démonstration consiste — à partir d'une série finie d'axiomes — à effectuer une suite finie de déductions pour parvenir à un résultat. (<a href="https://fr.wikipedia.org/wiki/Aristote#Enqu%C3%AAte,_d%C3%A9monstration_et_syllogisme">Aristote</a>, en -350 environ)</li>
