@@ -108,8 +108,8 @@
         y<span class="token punctuation">:</span> <span class="token builtin">entier</span></code></pre>
 <p>Par rapport au tuple, les attributs sont des variables et possèdent ainsi des noms. Si on accède aux éléments d'un tuple avec son indice, on accède aux attributes par <strong><em>la notation pointée</em></strong> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">affiche_point</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-    affiche à l'écran p<span class="token punctuation">.</span>x
-    affiche à l'écran p<span class="token punctuation">.</span>y</code></pre>
+    <span class="token keyword">affiche</span> à l'écran p<span class="token punctuation">.</span>x
+    <span class="token keyword">affiche</span> à l'écran p<span class="token punctuation">.</span>y</code></pre>
 <p>En notation pointée <code class="language-">a.b</code> signifie que <code class="language-">b</code> dépend de <code class="language-">a</code>.</p>
 <p>Si <code class="language-">p</code> est un point, <code class="language-">p.x</code> signifie que <code class="language-">x</code> est la valeur de l'attribut <code class="language-">x</code> pour le point <code class="language-">p</code>.</p>
 <p>On peut tout à fait modifier les attributs d'un objet. Par exemple la fonction :</p>
@@ -258,9 +258,9 @@ p<span class="token punctuation">.</span>y <span class="token operator">←</spa
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">p1 <span class="token operator">←</span> un nouveau Point
 p2 <span class="token operator">←</span> Point <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">}</span>
 
-affiche à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 0 et 0</span>
+<span class="token keyword">affiche</span> à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 0 et 0</span>
 p1<span class="token punctuation">.</span>addition<span class="token punctuation">(</span>p2<span class="token punctuation">)</span>
-affiche à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 4 et 7</span></code></pre>
+<span class="token keyword">affiche</span> à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 4 et 7</span></code></pre>
 <p>Dans le code de l'addition, la notation pointée assure que les variables <code class="language-">x</code> et <code class="language-">y</code> des lignes 10 et 11 d la définition sont celle de l'objet à gauche de l'appel, ici <code>p1</code> dans le programme précédent.</p>
 <h3>Résumé</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -341,9 +341,9 @@ masse <span class="token operator">←</span> Point<span class="token operator">
 p2 <span class="token operator">←</span> Point <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">7</span><span class="token punctuation">}</span>
 p3 <span class="token operator">←</span> Point <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">21</span><span class="token punctuation">}</span>
 
-affiche à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 0 et 0</span>
+<span class="token keyword">affiche</span> à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 0 et 0</span>
 p1<span class="token punctuation">.</span>addition<span class="token punctuation">(</span>p2<span class="token punctuation">)</span><span class="token punctuation">.</span>addition<span class="token punctuation">(</span>p3<span class="token punctuation">)</span>
-affiche à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 14 et 31</span></code></pre>
+<span class="token keyword">affiche</span> à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 14 et 31</span></code></pre>
 <p>La ligne <code class="language-">p1.addition(p2).addition(p3)</code> sera exécutée de gauche à droite :</p>
 <ol>
 <li><code class="language-">p1.addition(p2)</code> rendre l'objet <code class="language-">p1</code></li>

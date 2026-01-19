@@ -163,6 +163,7 @@
 <p><a href="pseudo-code" class="interne">Écrire les algorithmes en pseudo code</a></p>
 </div></div>
 
+<h4>Thèse de Church-Turing</h4>
 <p>Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation">un langage de programmation</a>.</p>
 <p>Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -213,7 +214,7 @@
 <p><a href="autres-mod%C3%A8les" class="interne">Autres modèles</a></p>
 </div></div>
 
-<h3>Problème algorithmique et preuve</h3>
+<h3>Problème algorithmique</h3>
 <p>Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètres) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Définissons ceci sous la forme de &quot;<em>problème</em>&quot; à résoudre <em>via</em> un algorithme :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -226,7 +227,7 @@
 <ul>
 <li><strong>Nom</strong> : le nom du problème</li>
 <li><strong>Entrées</strong> : les paramètres dont on a besoin</li>
-<li><strong>Sortie</strong> : le retour de l'algorithme</li>
+<li><strong>Sortie</strong> : la solution recherchée</li>
 </ul>
 </div></div>
 
@@ -258,31 +259,25 @@
 <p><strong><em>Un problème est algorithmique</em></strong> s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :</p>
 <ul>
 <li>prend en paramètres les entrées du problème</li>
-<li>donne en sortie la réponse à la question.</li>
+<li>donne en sortie la solution recherchée.</li>
 </ul>
 </div></div>
 
-<p>Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver. Ceci est d'autant plus crucial puisqu'il n'existe <a href="bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice" class="interne">aucune méthode générale pour savoir ce que fait un algorithme</a> : chaque algorithme possède une preuve qui lui est propre.</p>
-<p>Mais rassurez-vous, cela peut être facile. Considérons par exemple l'algorithme suivant :</p>
+<p>Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut le prouver.</p>
+<h3>Preuve d'algorithme</h3>
+<p>Puisqu'il n'existe <a href="bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice" class="interne">aucune méthode générale pour savoir ce que fait un algorithme</a> on ne peut jamais être sur a priori qu'un algorithme donné résous le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.</p>
+<p>Par exemple l'algorithme suivant :</p>
 <p><span id="algorithme-pgcd"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    a'<span class="token punctuation">,</span> b' <span class="token operator">:=</span> <span class="token builtin">entier</span>
     <span class="token keyword">tant que</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         a' <span class="token operator">←</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
         b' <span class="token operator">←</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
         a<span class="token punctuation">,</span> b <span class="token operator">←</span> a'<span class="token punctuation">,</span> b'
     
     <span class="token keyword">rendre</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></code></pre>
-<p>Il calcule bien le pgcd de deux nombres positifs car chaque boucle <code class="language-">tant que</code> correspond exactement à une récursion de <a href="bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide" class="interne">la définition récurrente du pgcd que l'on a démontré précédemment</a>. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On a utilisé ici le mot clé <strong>question</strong> plutôt que <strong>sortie</strong>. On utilisera cette convention lorsque la sortie est soit OUI soit NON.</p>
-<p>On les appelle <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision">problèmes de décision</a> et sont très important en informatique théorique. On le verra (bien) plus tard.</p>
-</div></div>
-
-<p>Enfin, si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :</p>
+<p>On peut facilement prouver qu'il calcule bien le pgcd de deux nombres positifs car chaque boucle <code class="language-">tant que</code> correspond exactement à une récursion de <a href="bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-euclide" class="interne">la définition récurrente du pgcd que l'on a démontré précédemment</a>. Ce n'est pas la peine d'en faire des tonnes (notre remarque précédente suffit), mais il est nécessaire de justifier tout ce que l'on fait/écrit.</p>
+<p>Si la preuve n'est pas évidente, il existe des méthodes qui fonctionnent souvent :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -438,19 +433,6 @@
 <blockquote>
 <p>TBD ajouter un TD/TP sur l'utilité de chaque structure</p>
 </blockquote>
-<h3>Pile et file</h3>
-<p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="structure-pile-file" class="interne">Structure de pile et file</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD decurryfication</p>
-</blockquote>
 <h3>Listes chaînées</h3>
 <p>Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la <strong><em>liste chaînée</em></strong> :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -463,6 +445,19 @@
 
 <blockquote>
 <p>TBD maintenir un ordre PAPS. Faire circulaire. Ex graphes cordés ?</p>
+</blockquote>
+<h3>Pile et file</h3>
+<p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="structure-pile-file" class="interne">Structure de pile et file</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD pile et tas. Montrer la récursion. Et la decurryfication</p>
 </blockquote>
 <h3>Listes</h3>
 <p>La <a href="pseudo-code/briques-de-base/#tableaux" class="interne">structure de tableau</a> est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Nous verrons dans cette partie que l'on peut faire sauter cette contrainte d'un tableau au prix d'un coût négligeable en complexité :</p>

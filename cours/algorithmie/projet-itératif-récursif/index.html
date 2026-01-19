@@ -150,6 +150,8 @@
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">maximum_rec</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">0</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
@@ -198,8 +200,8 @@
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> concaténation<span class="token punctuation">(</span>début<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> fin<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">    t <span class="token operator">←</span> tableau de taille début<span class="token punctuation">.</span>longueur <span class="token operator">+</span> fin<span class="token punctuation">.</span>longueur</span>
-<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span> <span class="token operator">-</span><span class="token number">1</span></span>
+<span class="highlight-line">    t <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> début<span class="token punctuation">.</span>longueur <span class="token operator">+</span> fin<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span></span>
+<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token operator">-</span><span class="token number">1</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> début<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></span>
@@ -284,7 +286,7 @@
 <span class="highlight-line">            <span class="token keyword">si</span> x <span class="token operator">==</span> y<span class="token punctuation">:</span></span>
 <span class="highlight-line">                <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
-<p>La boucle 3-5 va chercher à trouver x dans T2 : <code class="language-">trouvé</code> ne peut valoir <code class="language-">Vrai</code> que si c'est le cas. Si ce n'est pas le cas, <code class="language-">x</code> n'est pas dans <code class="language-">T2</code> et il faut chercher une autre possibilité d'égalité.</p>
+<p>La boucle 3-5 va chercher à trouver <code class="language-">x</code> dans <code class="language-">T2</code> : <code class="language-">trouvé</code> ne peut valoir <code class="language-">Vrai</code> que si c'est le cas. Si ce n'est pas le cas, <code class="language-">x</code> n'est pas dans <code class="language-">T2</code> et il faut chercher une autre possibilité d'égalité.</p>
 <p>Comme on répète cette boucle intérieure pour tout <code class="language-">x</code> de <code class="language-">T1</code>, l'algorithme ne peut arriver ligne 6 que si $x \not in T2$ pour tout $x \in T1$.</p>
 <p>Prouver cet algorithme ne nécessite pas d'invariant de boucle formel.</p>
 </div>
@@ -326,6 +328,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> égalité_valeurs<span class="token punctuation">(</span>T1<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span></span>
+<span class="highlight-line">    trouvé <span class="token operator">:=</span> <span class="token builtin">booléen</span></span>
 <span class="highlight-line">    <span class="token keyword">pour chaque</span> x de T1<span class="token punctuation">:</span></span>
 <span class="highlight-line">        trouvé <span class="token operator">←</span> <span class="token boolean">Faux</span></span>
 <span class="highlight-line">        <span class="token keyword">pour chaque</span> y de T2<span class="token punctuation">:</span></span>
@@ -357,7 +360,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser <a href="../pseudo-code/#algorithme-nombre-occurrences" class="interne">l'algorithme <code class="language-">nombre</code></a> qu'on a déjà étudié.</p>
+<p>Vous pourrez utiliser <a href="../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences" class="interne">l'algorithme <code class="language-">nombre</code></a> qu'on a déjà étudié.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -402,7 +405,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez la encore utiliser <a href="../pseudo-code/#algorithme-nombre-occurrences" class="interne">l'algorithme <code class="language-">nombre</code></a>.</p>
+<p>Vous pourrez la encore utiliser <a href="../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences" class="interne">l'algorithme <code class="language-">nombre</code></a>.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -424,10 +427,10 @@
 <div class="mx-8 pb-2">
 <p>Pour que l'algorithme fonctionne, il faut commencer par connaître la taille du tableau à créer et donc compter le nombre d’occurrences de <code class="language-">v</code> dans <code class="language-">T</code>. Ensuite, il sera possible de remplir le tableau.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">supprime</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">    T2 <span class="token operator">←</span> tableau de taille t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> nombre<span class="token punctuation">(</span>T<span class="token punctuation">,</span> v<span class="token punctuation">)</span></span>
+<span class="highlight-line">    T2 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> taille t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> nombre<span class="token punctuation">(</span>T<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">}</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">   <span class="token number"> j </span><span class="token operator">←</span> <span class="token number">0</span></span>
-<span class="highlight-line">    <span class="token keyword">pour</span> tout<span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> t<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">   <span class="token number"> j </span><span class="token operator">:=</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> t<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">≠</span> v<span class="token punctuation">:</span></span>
 <span class="highlight-line">            T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span></span>
 <span class="highlight-line">           <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> j </span><span class="token operator">+</span> <span class="token number">1</span></span>
@@ -481,7 +484,7 @@
 <span class="highlight-line">    <span class="token keyword">si</span> t<span class="token punctuation">.</span>longueur <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">rendre</span> t</span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    t2 <span class="token operator">←</span> tableau de longueur t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">    t2 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">}</span></span>
 <span class="highlight-line">    <span class="token keyword">pour</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> t2<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        t2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> t<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span></span>
 <span class="highlight-line">    </span>
@@ -523,7 +526,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">palindrome</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span></span>
-<span class="highlight-line">    <span class="token keyword">pour</span> tout<span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">[</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">[</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">≠</span> T<span class="token punctuation">[</span>T<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span></code></pre>
@@ -537,7 +540,6 @@
 <div class="pl-8 mr-8">
 <p>Donnez et prouvez <strong>un algorithme récursif</strong> de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">palindrome_rec<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span></code></pre>
-<p>Qui rend Vrai si $T[j] = T[T.\mbox{longueur} - 1 - j]$ pour tous $i \leq j &lt; T.\mbox{longueur} - 1 - i$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -564,6 +566,7 @@
 <span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span>
 <span class="highlight-line">    </span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> palindrome_rec<span class="token punctuation">(</span>T<span class="token punctuation">,</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></span></code></pre>
+<p>Il faut monter que l'algorithme rend Vrai si $T[j] = T[T.\mbox{longueur} - 1 - j]$ pour tous $i \leq j &lt; T.\mbox{longueur} - 1 - i$</p>
 <p>La premiere condition est la condition d'arrêt de la récursion puisque dans ce cas là $i$ a dépassé la moitié du tableau.</p>
 <p>Puis on utilise l'équation de récurrence :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">palindrome<span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">et</span> palindrome<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
@@ -791,6 +794,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">retournement_indice</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅
+    temp <span class="token operator">:=</span> <span class="token builtin">entier</span>
     <span class="token keyword">tant que</span> <span class="token punctuation">(</span>t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span><span class="token number"> i </span><span class="token operator">></span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
         temp <span class="token operator">←</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         t<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> t<span class="token punctuation">[</span>t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span>
@@ -799,7 +803,6 @@
        <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
 <p>Et donc, en utilisant un petit abus de pseudocode :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">retournement</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅
-   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
     <span class="token keyword">tant que</span> <span class="token punctuation">(</span>t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span><span class="token number"> i </span><span class="token operator">></span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
         t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> t<span class="token punctuation">[</span>t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">←</span> t<span class="token punctuation">[</span>t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span> 
        <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
@@ -859,7 +862,7 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>  <span class="token comment"># condition d'arrêt</span>
         <span class="token keyword">rendre</span> <span class="token number">1</span>
-    f <span class="token operator">←</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+    f <span class="token operator">:=</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> f</code></pre>
 <p>Le rendre récursif terminal est impossible en ne gardant qu'un seul paramètre. L'astuce est d'ajouter un paramètre, appelé <strong><em>accumulateur</em></strong> qui va transmettre à la fonction récursive les calculs intermédiaires, dans notre cas le début du calcul de factoriel. Dans notre cas :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">factorielle_term</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> acc<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
@@ -937,7 +940,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">function u_n_term<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> 
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">u_n_term</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> 
                  u0<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> 
                  r<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> 
                  acc<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Algorithmes et fonctions</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Algorithmes et fonctions</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/algorithmes-fonctions/">Algorithmes et fonctions</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Le pseudo-code permet d'écrire des algorithmes de façon claire et sans ambiguïtés.</p>
+<h2>Algorithme</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>algorithme</em></strong> est une suite d'instructions de pseudo-code qui, a partir de paramètres d'entrées de type déterminé, rend une sortie de type déterminé.</p>
+</div></div>
+
+<p>Considérons par exemple la description de  l'algorithme de recherche d'un élément dans une liste :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : recherche
+Entrées :
+    T : un tableau d'entiers
+    x : un entier
+Sortie :
+    un booléen
+Programme :
+    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Si on trouve un tel élément, rendre "Vrai"
+    Sinon rendre "Faux"</code></pre>
+<p>En pseudo-code, cela va donner ça :</p>
+<div id="problème-recherche"></div>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>     <span class="token comment"># entier recherché dans t</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
+
+    e <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
+<p>Le programme est un bloc. La definition du bloc (jusqu'aux <code class="language-">:</code>) est constitué :</p>
+<ol>
+<li>du mot-clé <code class="language-">algorithme</code> qui détermine la nature du bloc</li>
+<li>suit le du nom du programme</li>
+<li>puis ses paramètres d'entrées entre parenthèses. Chaque paramètre est décrit par son nom suivit de son type</li>
+<li>enfin, le type de sortie de l'algorithme qu'on fait précéder d'une flèche.</li>
+</ol>
+<p>Si on a besoin d'information supplémentaire pour qu'un lecteur puisse mieux comprendre le pseudo-code on peut ajouter des commentaires en les faisant commencer par un <code class="language-">#</code>.  Ne mettez pas trop de commentaires, normalement le pseudo-code et le nom des variables doit suffire. On a ici juste décrit ce que fait l'algorithme avec ses paramètres d'entrées.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La description des types de paramètres est reprise du format python : <a href="https://docs.python.org/fr/3.13/library/typing.html">https://docs.python.org/fr/3.13/library/typing.html</a></p>
+</div></div>
+
+<p>Terminons par un petit exercice :</p>
+<p><span id="algorithme-nombre-occurrences"></span></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Adaptez le pseudo code de l'algorithme <code class="language-">recherche(T: [entier], x: entier) → booléen</code> précédent pour créer l'algorithme :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nombre<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Cet algorithme  rend le nombre de fois où <code class="language-">x</code> est présent dans <code class="language-">T</code></p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    nb <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    nb <span class="token operator">←</span> <span class="token number">0</span>
+
+    e <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            nb <span class="token operator">←</span> nb <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">rendre</span> nb</code></pre>
+</div>
+</details>     
+</div>
+<h2>Fonctions</h2>
+<p>Dans un programme, de nombreuses phases sont répétées à divers endroits du code (sommer ou multiplier des vecteurs 3D dans un moteur physique par exemple). Pour éviter de devoir replacer toutes ces instructions à chaque fois on définis des <em>sous-programmes</em> réutilisables à volonté, appelés <strong><em>fonctions</em></strong>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une fonction est un programme. Elle a ainsi :</p>
+<ul>
+<li>un nom</li>
+<li>des paramètres d'entrée</li>
+<li>une sortie</li>
+<li>des instructions, appelées <strong><em>corps de la fonction</em></strong></li>
+</ul>
+<p>Une fois définie, on peut l'appeler comme une instruction (sa sortie est affectée à la variable <code class="language-">sortie</code> dans l'exemple ci-après) :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">sortie <span class="token operator">←</span> nom_fonction<span class="token punctuation">(</span>entrée_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> entrée_n<span class="token punctuation">)</span></code></pre>
+</div></div>
+
+<h3>Appels de fonctions</h3>
+<p>On peut définir des fonctions puis les utiliser ensuite comme dans tout langage de programmation. Considérons l'algorithme de recherche :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+
+    e <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
+<p>On peut utiliser le pseudo code de nom <em>recherche</em> dans d'autres pseudo-code comme une fonction. Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">
+t <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+
+trouve <span class="token operator">:=</span> <span class="token builtin">booléen</span>
+trouve <span class="token operator">←</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token keyword">affiche</span> à l'écran trouve</code></pre>
+<p>Est un pseudo-code valide puisque <code class="language-">recherche</code> est bien défini et utilisé correctement (le type de ses paramètres est correct).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Les différentes exécutions de fonctions au sein d'un même algorithmes ne partagent pas leurs variables.</li>
+<li>Les paramètres sont des variables qui sont initialisées au début de l'exécution de la fonction.</li>
+<li>Seuls les objets peuvent être transmis.</li>
+</ul>
+</div></div>
+
+<p>Dans l'exemple précédent, la variable <code class="language-">e</code> définie dans la fonction <code class="language-">recherche</code> n'est pas visible depuis l'algorithme. En revanche, l'objet booléen de retour est lui transmis à l'algorithme via l'instruction <code class="language-pseudocode">rendre</code>.</p>
+<h3>Pseudo-code avec fonctions</h3>
+<p>On peut aussi directement coder des fonctions dans un pseudo-code. Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                   x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+                  <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+
+    e <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+
+<span class="token builtin">algorithme</span> <span class="token function">exorcisme</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">chaîne</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">si</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token string">"Aspergez votre ordinateur d'eau bénite. Vite !"</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token string">"Tout va bien, le tableau n'est pas possédé. Ouf."</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Que va afficher l'exécution de l'algorithme suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">affiche_double</span><span class="token punctuation">(</span>e<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    x <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line">    x <span class="token operator">←</span> <span class="token number">2</span> <span class="token operator">*</span> e</span>
+<span class="highlight-line">    <span class="token keyword">affiche</span> x</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">calculatrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    x <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    x <span class="token operator">←</span> demande un <span class="token builtin">entier</span> à l'utilisateur</span>
+<span class="highlight-line">    affiche_double<span class="token punctuation">(</span>x<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">affiche</span> x</span></code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'entier <code class="language-">x</code> de la fonction est indépendant de l'entier <code class="language-">x</code> défini dans l'algorithme. L'exécution de l'algorithme affichera alors :</p>
+<ol>
+<li>le double de l'entier demandé à l'utilisateur : exécution de la ligne 5</li>
+<li>l'entier demandé à l'utilisateur : exécution de la ligne 13</li>
+</ol>
+</div>
+</details>     
+</div>
+<h3>Tableaux et fonctions</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les objets sont communs à toutes les exécutions d'un même algorithmes. Ils peuvent passer d'une fonction à une autre via les variables.</p>
+</div></div>
+
+<p>Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">modif</span><span class="token punctuation">(</span>U<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+
+    U<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> U<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> U<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token builtin">algorithme</span> <span class="token function">tableau</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+
+    T <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+
+    T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
+    T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">2</span>
+    T<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">affiche</span> T<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+    modif<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+    <span class="token keyword">affiche</span> T<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span></code></pre>
+<p>Va afficher 0 puis 3. En effet :</p>
+<ul>
+<li>lors de l'exécution de la fonction <code class="language-">modif</code> la <strong>variable</strong> <code class="language-">U</code> va être associée à l'<strong>objet</strong> tableau de l'algorithme : la variable <code class="language-">T</code> de l'algorithme est différente de la variable <code class="language-">U</code> de la fonction mais est associé au <strong>même</strong> objet.</li>
+<li>on associe à la variable d'indice 2 de l'objet tableau un nouvel entier valant 3 : on a modifié le tableau défini dans l'algorithme.</li>
+</ul>
+<p>Les tableaux sont les seuls objets défini en pseudo-code qui peuvent être modifiés, ce n'est pas le cas ni des 5 types basiques ni des chaînes.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des tableau que vous passez en paramètres de fonctions. Ils peuvent être modifiés par cette fonction !</p>
+</div></div>
+
+<h2><span id="type"></span>Type d'un algorithme ou d'une fonction</h2>
+<p>Lorsque l'on défini un algorithme ou un pseudo-code on explicite le type des objets en entrées et en sortie :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>signature de fonction</em></strong> associe :</p>
+<ul>
+<li>son type à chaque paramètre (précédé d'un <code class="language-">:</code>)</li>
+<li>le type de sortie (précédé d'un <code class="language-">→</code>)</li>
+</ul>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le <strong><em>type</em></strong> d'une fonction est sa signature.</p>
+</div></div>
+
+<p>Par exemple le type de la fonction <code class="language-">recherche</code> précédente sera tout simplement <code class="language-">([entier], entier) → booléen</code> : on donne le type de ses entrées et de sa sortie.</p>
+<p>Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction <code class="language-">recherche</code> soit définie :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">f <span class="token operator">:=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>
+
+f <span class="token operator">←</span> recherche
+<span class="token keyword">affiche</span> f<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ne confondez pas <code class="language-">nom</code> qui est l'algorithme et <code class="language-">nom(a, b)</code> qui est le résultat de son exécution avec les paramètres <code class="language-">a</code> et <code class="language-">b</code>.</p>
+</div></div>
+
+<h2>Récursivité</h2>
+<p>Le fait que les variables et les noms définies dans les fonctions restent dans le cadre de la fonction actuellement exécuté nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Attention aux conditions d'arrêts pour garantir qu'une fonction ne s'appelle pas indéfiniment.</p>
+</div></div>
+
+<p>Par exemple l'algorithme suivant est une implémentation récursive de l'algorithme <code class="language-">recherche</code> :</p>
+<p><span id="algorithme-recherche-rec"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>     <span class="token comment"># entier recherché dans t</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>   <span class="token comment"># Vrai si x est dans t</span>
+
+    <span class="token keyword">si</span> T<span class="token punctuation">.</span>longueur <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+    <span class="token keyword">sinon si</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> x<span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> recherche<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span></code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
