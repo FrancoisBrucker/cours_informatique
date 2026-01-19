@@ -356,9 +356,14 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>signature de fonction</em></strong> associe :</p>
 <ul>
-<li>son type à chaque paramètre (précédé d'un <code class="language-">:</code>)</li>
-<li>le type de sortie (précédé d'un <code class="language-">→</code>)</li>
+<li>son nom</li>
+<li>le type de chacun de ses paramètres</li>
+<li>le type de sortie</li>
 </ul>
+<p>On le représente ainsi :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_l_algorithme<span class="token punctuation">(</span>type_premier_paramètre<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> type_dernier_paramètre<span class="token punctuation">)</span> <span class="token operator">→</span> type_de_sortie</code></pre>
+<p>Ou, lorsque le nom des paramètre peut-être utile on pourra les ajouter ainsi :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_l_algorithme<span class="token punctuation">(</span>nom_premier_paramètre<span class="token punctuation">:</span> type_premier_paramètre<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> nom_premier_paramètre<span class="token punctuation">:</span> type_dernier_paramètre<span class="token punctuation">)</span> <span class="token operator">→</span> type_de_sortie</code></pre>
 </div></div>
 
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
@@ -368,10 +373,22 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le <strong><em>type</em></strong> d'une fonction est sa signature.</p>
+<p>Le <strong><em>type</em></strong> d'un algorithme est sa signature sans son nom.</p>
 </div></div>
 
-<p>Par exemple le type de la fonction <code class="language-">recherche</code> précédente sera tout simplement <code class="language-">([entier], entier) → booléen</code> : on donne le type de ses entrées et de sa sortie.</p>
+<p>Par exemple pour l'algorithme <code class="language-">recherche</code> :</p>
+<ul>
+<li>sa signature est <code class="language-">recherche([entier], entier) → booléen</code></li>
+<li>son type est <code class="language-">([entier], entier) → booléen</code></li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque le nom des paramètres est significatif, on les ajoutera à la signature. On écrira par exemple <code class="language-">division(dividende: réel, diviseur: réel) → réel</code> plutôt que <code class="language-">division(réel, réel) → réel</code> qui ne nous permet pas directement d'utiliser la fonction.</p>
+</div></div>
+
 <p>Associer un type à une fonction permet lui permet d'être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction <code class="language-">recherche</code> soit définie :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">f <span class="token operator">:=</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>
 
