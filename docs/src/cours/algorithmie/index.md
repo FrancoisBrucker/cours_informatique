@@ -241,6 +241,16 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 [Algorithmes classiques](./projet-algorithmes-classiques){.interne}
 {% endaller %}
 
+<!-- ### Puissance
+
+> TBD à déplacer dans la partie complexité.
+
+{% faire %}
+
+Écrivez un algorithme de signature `puissance(n: entier, p: entier) -> entier` qui rend le plus grand entier $q$ tel que $p^q$ divise $n$.
+
+{% endfaire %} -->
+
 ## <span id="partie-2"></span>Partie II : structures de données
 
 {% prerequis "**Prérequis**" %}
@@ -358,7 +368,11 @@ C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que 
 [Utilisation de structures](./projet-structures){.interne}
 {% endaller %}
 
-### Intermède : Le problème de l'enveloppe convexe
+### Intermède 
+
+Vous en savez maintenant assez pour comprendre et aimer les algorithmes. Nous allons montrer plusieurs exemples de problèmes et d'algorithmes plus intéressant et complexes.
+
+#### Le problème de l'enveloppe convexe
 
 Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
 
@@ -367,6 +381,10 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 {% aller %}
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
+
+#### Algorithmes classiques, mais dur.
+
+> TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, médiane en temps linéaire)
 
 ## <span id="partie-3"></span>Partie III : problèmes
 
