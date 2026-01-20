@@ -86,10 +86,6 @@ Ce cours est composée de plusieurs parties :
 
 > 2h
 
-{% aller %}
-[bases théorique de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
-{% endaller %}
-
 Notions abordées :
 
 - définition d'un programme et d'un algorithme
@@ -98,9 +94,19 @@ Notions abordées :
   - il faut toujours démontrer ce que fait un algorithme
 - ce que ne peut pas faire un algorithme
 
+{% aller %}
+[bases théorique de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
+{% endaller %}
+
 #### Vendredi : écrire des algorithmes
 
-> 2h
+> 4h
+
+Notions abordées :
+
+- écrire des algorithme en pseudo-code (et thèse de Church-Turing)
+- algorithmes itératif et récursifs
+- prouver un algorithme
 
 {% aller %}
 [Écrire des algorithmes en pseudo-code](/cours/algorithmie/pseudo-code){.interne}
@@ -108,17 +114,15 @@ Notions abordées :
 {% aller %}
 [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
 {% endaller %}
-
-Notions abordées :
-
-- écrire des algorithme en pseudo-code (et thèse de Church-Turing)
-- algorithmes itératif et récursifs
-- prouver un algorithme
-  
-> 2h
-
 {% aller %}
 [On s'entraîne](/cours/algorithmie/projet-itératif-récursif/){.interne}
+{% endaller %}
+  
+Si on a le temps, sinon à faire chez soit :
+
+{% aller %}
+- [Projet : techniques de récursion](/cours/algorithmie/projet-techniques-de-récursion){.interne}
+- [exercices non corrigés](/cours/algorithmie/exercices-itératif-récursif){.interne}
 {% endaller %}
 
 ### Semaine 2

@@ -20,11 +20,13 @@ Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
 - les variables doivent être définies avant d'être utilisée
 - une variable ne peut contenir que des objets d'un type donné
 
-Mais cela ne doit pas rendre le code lourd. On se permettra donc, **lorsqu'il n'y a pas d’ambiguïté possible**, l'abus de notations qui crée et affecte une variable en une seule fois :
+Mais cela ne doit pas rendre le code lourd. On se permettra donc, **lorsqu'il n'y a pas d’ambiguïté possible**, l'abus de notations qui crée et affecte une variable en une seule fois comme : 
 
-- comme : `(a := entier) ← 3`{.language-}
-- voir : `a := 3`{.language-} lorsque le type de la variable est clair (ici un entier)
-- ou encore, mais uniquement si cela rend le code plus clair : `a ← 3`{.language-}.
+```pseudocode
+(a := entier) ← 3
+```
+
+Si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement `a := 3`{.language-} pour rendre la formulation plus légère.
 
 Vous verrez aussi parfois cet opérateur remplacé par le mot "soit", en particulier lorsqu'il y a plusieurs variables à créer :
 
@@ -38,6 +40,13 @@ Ou peut-être plus clair :
 a, b, c := entier
 ```
 
+{% attention %}
+
+En pseudo-code on ne se permettra cependant jamais d'initialiser une variable avant de l'avoir définie (comme on le ferai en python).
+
+{% endattention %}
+
+
 ## Affectations multiples
 
 ```pseudocode
@@ -47,8 +56,8 @@ a, b ← c, d
 pour :
 
 ```pseudocode
-a' ← c
-b' ← d
+a' := c
+b' := d
 a ← a'
 b ← b'
 ```
@@ -58,6 +67,35 @@ On utilise des variables intermédiaires pour garantir que `a, b ← b, a`{.lang
 {% endinfo %}
 
 ## Répétitions
+
+### Déclaration des variables
+
+On écrira :
+
+```pseudocode
+
+pour chaque (i := entier) de [a .. b]:
+    # ...
+```
+
+À la place de : 
+
+```pseudocode
+
+i := entier
+pour chaque i de [a .. b]:
+    # ...
+```
+
+Cependant on n'écrira cet abus que lorsque la variable de la boucle n'est utilisé que dans la boucle. Pour que ce soit clair il ne faut pas qui'il existe d'autres variables valant i et utilisées hors de la boucle.
+
+{% attention %}
+Plus généralement on ne définira pas de variable à l'intérieur d'un bloc si :
+
+- ce bloc est une répétition (cela redéfinirait plusieurs fois la variable)
+- la variable est ensuite utilisée en-dehors du bloc
+
+{% endattention %}
 
 ### Nombre constant de répétitions
 
@@ -71,7 +109,7 @@ répéter k fois:
 Pour :
 
 ```pseudocode
-i ← 0
+(i := entier) ← 0
 tant que (i < k):
     i ← i + 1 
     # ...
@@ -99,6 +137,7 @@ pour i=a à i=b:
 Pour :
 
 ```pseudocode
+i := entier
 pour chaque i de [a .. b]:
     # ...
 ```
@@ -106,6 +145,7 @@ pour chaque i de [a .. b]:
 ### Répétitions à pas fixé
 
 ```pseudocode
+i := entier
 pour i de a à b par par pas de k:
     # ...
 ```
@@ -113,6 +153,7 @@ pour i de a à b par par pas de k:
 ou encore :
 
 ```pseudocode
+i := entier
 pour chaque i de [a .. b] par pas de k:
     # ...
 ```
@@ -120,7 +161,7 @@ pour chaque i de [a .. b] par pas de k:
 pour :
 
 ```pseudocode
-i := a
+(i := entier) <- a
 tant que i ≤ b:
   # ...
 

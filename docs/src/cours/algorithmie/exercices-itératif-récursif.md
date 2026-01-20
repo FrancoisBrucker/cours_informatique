@@ -13,6 +13,31 @@ eleventyComputed:
 
 ## Arithmétique
 
+### Entier vers décimal
+
+{% faire %}
+
+Écrivez un algorithme de signature `base10(entier) -> [entier]`{.language-} rendant la forme décimale (un tableau de chiffres allant de 0 à 9) d'un entier. On doit avoir :
+
+```pseudocode
+base10(123) = [3, 2, 1]
+```
+
+{% endfaire %}
+
+### Décimal vers entier
+
+{% faire %}
+
+Écrivez un algorithme de signature `entier([entier]) -> entier`{.language-} rendant la valeur d'un entier écrit en forme décimale. On doit avoir :
+
+```pseudocode
+entier([3, 2, 1]) = 123
+```
+
+{% endfaire %}
+
+
 ### Somme
 
 {% faire %}
@@ -29,7 +54,9 @@ eleventyComputed:
 
 {% endfaire %}
 
-### Puissance
+<!-- ### Puissance
+
+> TBD à déplacer dans la partie complexité.
 
 {% faire %}
 
@@ -37,3 +64,7 @@ eleventyComputed:
 
 {% endfaire %}
 
+## Parenthèses
+
+> TBD uniquement parenthèse itératif et récursif
+> TBD parenthèse et crochets faire récursif. -->

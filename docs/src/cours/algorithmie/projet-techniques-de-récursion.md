@@ -224,7 +224,7 @@ algorithme puissance_2(m: entier, n: entier) → entier:
 C'est bien une récursion terminale puisque le code est équivalent à :
 
 ```pseudocode
-fonction c(m: entier, n: entier) → entier:
+fonction c(m: entier, n: entier) → booléen:
     rendre 2 * m ≥ n
 
 fonction g(m: entier, n: entier) → entier:
@@ -249,7 +249,7 @@ La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux pa
 algorithme factorielle(n: entier) → entier:
     si n == 1:  # condition d'arrêt
         rendre 1
-    f := factorielle(n-1)
+    (f := entier) ← factorielle(n-1)
     rendre n * f
 ```
 
@@ -335,7 +335,7 @@ algorithme u_n(n : entier,
                u0: entier, 
                r : entier
               ) → entier:
-    acc ← 0
+    (acc := entier) ← 0
     tant que n > 0:
         acc ← r + acc
         n ← n - 1
@@ -374,12 +374,12 @@ Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pse
 algorithme pair(n: entier) → booléen
     si n == 0:
         rendre Vrai
-    rendre non impair(n - 1)
+    rendre NON impair(n - 1)
 
 algorithme impair(n: entier) → booléen
     si n == 0:
         rendre Faux
-    rendre non pair(n - 1)
+    rendre NON pair(n - 1)
 
 ```
 

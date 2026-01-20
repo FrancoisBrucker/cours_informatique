@@ -88,13 +88,13 @@ Vous utiliserez des invariants de boucle pour le prouver.
 ```pseudocode/
 algorithme concaténation(début: [entier], fin: [entier]) → [entier]
     t := [entier]{longueur: début.longueur + fin.longueur}
-    i := -1
+    (i := entier) ← -1
 
-    pour chaque j de [0 .. début.longueur[:
+    pour chaque (j := entier) de [0 .. début.longueur[:
         i ← i + 1
         t[i] ← début[j]
 
-    pour chaque j de [0 .. fin.longueur[:
+    pour chaque (j := entier) de [0 .. fin.longueur[:
         i ← i + 1
         t[i] ← fin[j]
 
@@ -156,8 +156,8 @@ Il faut vérifier qu'il existe $0\leq i < T.\text{\small longueur}$ et $0\leq i'
 
 ```pseudocode/
 algorithme intersection_non_vide(T1: [entier], T2: [entier]) → booléen
-    pour chaque x de T1:
-        pour chaque y de T2:
+    pour chaque (x := entier) de T1:
+        pour chaque (y := entier) de T2:
             si x == y:
                 rendre Vrai
     rendre Faux
@@ -192,9 +192,9 @@ Il faut vérifier que pour pour tout $0\leq i < T.\text{\small longueur}$ il exi
 ```pseudocode/
 algorithme égalité_valeurs(T1: [entier], T2: [entier]) → booléen
     trouvé := booléen
-    pour chaque x de T1:
+    pour chaque (x := entier) de T1:
         trouvé ← Faux
-        pour chaque y de T2:
+        pour chaque (y := entier) de T2:
             si x == y:
                 trouvé ← Vrai
         si trouvé == Faux:
@@ -205,7 +205,7 @@ algorithme égalité_valeurs(T1: [entier], T2: [entier]) → booléen
 
 Prouver cet algorithme ne nécessite pas d'invariant de boucle formel, mais il faut faire attention à sa construction.
 
-La boucle 4-6 va chercher à trouver x dans T2 : `trouvé`{.language-} ne peut valoir `Vrai`{.language-} que si c'est le cas. Si ce n'est pas le cas, on peut sortir de l'algorithme (ligne 7-8) puisque `x`{.language-} n'est pas dans `T2`{.language-}.
+La boucle 4-6 va chercher à trouver `x`{.language-} dans `T2`{.language-} : `trouvé`{.language-} ne peut valoir `Vrai`{.language-} que si c'est le cas. Si ce n'est pas le cas, on peut sortir de l'algorithme (ligne 7-8) puisque `x`{.language-} n'est pas dans `T2`{.language-}.
 
 Comme on répète cette boucle intérieure pour tout `x`{.language-} de `T1`{.language-}, l'algorithme est bien correct.
 
@@ -235,7 +235,7 @@ Il faut pouvoir trouver tous les éléments de $T$ dans $T'$. autant de fois qu'
 
 ```pseudocode
 algorithme égalité(T1: [entier], T2: [entier]) → entier
-    pour chaque x de T1:
+    pour chaque  (x := entier) de T1:
         si nombre(T1, x) ≠ nombre(T2, x):
             rendre Faux
     rendre Vrai
@@ -269,8 +269,8 @@ Pour que l'algorithme fonctionne, il faut commencer par connaître la taille du 
 algorithme supprime(T: [entier], v: entier) → [entier]
     T2 := [entier]{longueur: taille t.longueur - nombre(T, v)}
 
-    j := 0
-    pour chaque i de [0, t.longueur[:
+    (j := entier) ← 0
+    pour chaque (i := entier) de [0, t.longueur[:
         si T[i] ≠ v:
             T2[j] ← t[i]
             j ← j + 1
