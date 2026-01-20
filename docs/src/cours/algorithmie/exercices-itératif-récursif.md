@@ -67,4 +67,4 @@ entier([3, 2, 1]) = 123
 ## Parenthèses
 
 > TBD uniquement parenthèse itératif et récursif
-> TBD parenthèse et crochets faire récursif. -->
+> TBD parenthèse et crochets (faire monter i et descendre j) -->
