@@ -214,11 +214,91 @@
 </ul>
 </div></div>
 
-<!-- TBD
+<h2>Polynômes</h2>
+<h3>Valeur</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>écrivez une fonction <code class="language-">valeur</code> telle que</p>
+<ul>
+<li>
+<p><strong>paramètres d'entrée</strong> :</p>
+<ol>
+<li>une liste de $n+1$ réels $[a_0, \dots, a_n]$ $n \geq 0$</li>
+<li>un réel $x$</li>
+</ol>
+</li>
+<li>
+<p><strong>sortie</strong> :</p>
+<ul>
+<li>$\sum_{i=0}^na_i x^i$</li>
+</ul>
+</li>
+</ul>
+</div></div>
 
-Un troisième exemple. Les polynômes par exemple ? 
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On pourra supposer que la fonction puissance $x^n$ existe pour tout réel $x$ et tout entier positif $n$.</p>
+</div></div>
 
--->
+<h3>Somme</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Écrivez une fonction <code class="language-">somme</code> telle que</p>
+<ul>
+<li>
+<p><strong>paramètres d'entrée</strong> :</p>
+<ol>
+<li>une liste de réels $[a_0, \dots, a_n]$</li>
+<li>une liste de réels $[b_0, \dots, b_m]$</li>
+</ol>
+</li>
+<li>
+<p><strong>sortie</strong> :</p>
+<ul>
+<li>$[a_0 + b_0, \dots, a_n+b_n]$ si $n = m$</li>
+<li>$[a_0 + b_0, \dots, a_n+b_n, b_{n+1}, \dots, b_m]$ si $n &lt; m$</li>
+<li>$[a_0 + b_0, \dots, a_m+b_m, a_{m+1}, \dots, a_n]$ si $m &lt; n$</li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<h3>Produit</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Écrivez une fonction <code class="language-">produit</code> telle que</p>
+<ul>
+<li><strong>paramètres d'entrée</strong> :
+<ol>
+<li>une liste de réels $[a_0, \dots, a_n]$</li>
+<li>une liste de réels $[b_0, \dots, b_m]$</li>
+</ol>
+</li>
+<li><strong>sortie</strong> (on suppose):
+<ul>
+<li>une liste $[c_0, \dots, c_{m+n}]$ telle que $c_k = \sum_{i+j=k}a_ib_j$ pour tout $0\leq k \leq m+n$</li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+
 
 </article>
     </main>
