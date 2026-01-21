@@ -104,19 +104,18 @@
 <li>les variables doivent être définies avant d'être utilisée</li>
 <li>une variable ne peut contenir que des objets d'un type donné</li>
 </ul>
-<p>Mais cela ne doit pas rendre le code lourd. On se permettra donc, <strong>lorsqu'il n'y a pas d’ambiguïté possible</strong>, l'abus de notations qui crée et affecte une variable en une seule fois comme :</p>
+<p>Mais cela ne doit pas rendre le code lourd. On se permettra donc, l'abus de notations qui crée et affecte une variable en une seule fois comme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span>a <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">3</span></code></pre>
-<p>Si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement <code class="language-">a := 3</code> pour rendre la formulation plus légère.</p>
-<p>Vous verrez aussi parfois cet opérateur remplacé par le mot &quot;soit&quot;, en particulier lorsqu'il y a plusieurs variables à créer :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">soient a<span class="token punctuation">,</span> b <span class="token keyword">et</span> c trois entiers</code></pre>
-<p>Ou peut-être plus clair :</p>
+<p><strong>Lorsqu'il n'y a pas d’ambiguïté possible</strong>, si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">:=</span> <span class="token number">3</span></code></pre>
+<p>Enfin, pour affecter plusieurs variables en même temps, on se permettra le concis :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c <span class="token operator">:=</span> <span class="token builtin">entier</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En pseudo-code on ne se permettra cependant jamais d'initialiser une variable avant de l'avoir définie (comme on le ferai en python).</p>
+<p>En pseudo-code on ne se permettra cependant jamais d'affecter une variable avant de l'avoir définie (comme on le ferait en python).</p>
 </div></div>
 
 <h2>Affectations multiples</h2>
@@ -167,21 +166,8 @@ i <span class="token operator">:=</span> <span class="token builtin">entier</spa
 <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
    <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span> 
     <span class="token comment"># ...</span></code></pre>
-<h3>Répétitions par borne</h3>
-<p>Tout un tas de variations sont possibles, du moment que ce soit compréhensible. Par exemple :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour</span><span class="token number"> i </span>de a à b<span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<p>Ou encore :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">:=</span> <span class="token builtin">entier</span>
-
-<span class="token keyword">pour</span> i<span class="token operator">=</span>a à i<span class="token operator">=</span>b<span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
-<p>Pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">]</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span></code></pre>
 <h3>Répétitions à pas fixé</h3>
+<p>On a parfois besoin d'utiliser des intervalles <em>&quot;à trous&quot;</em>. Par exemple tous les multiples de 3, ou tous les entiers pairs. On se permettra d'utiliser une variante des boucles comme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">:=</span> <span class="token builtin">entier</span>
 <span class="token keyword">pour</span><span class="token number"> i </span>de a à b par par pas de k<span class="token punctuation">:</span>
     <span class="token comment"># ...</span></code></pre>
@@ -189,12 +175,17 @@ i <span class="token operator">:=</span> <span class="token builtin">entier</spa
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">:=</span> <span class="token builtin">entier</span>
 <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">]</span> par pas de k<span class="token punctuation">:</span>
     <span class="token comment"># ...</span></code></pre>
-<p>pour :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token operator">-</span> a
+<p>Pour :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> a
 <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> b<span class="token punctuation">:</span>
   <span class="token comment"># ...</span>
 
  <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> k</code></pre>
+<p>Vous pourrez aussi utiliser la notation <code class="language-">[a .. b : p]</code> qui étend la notation d'intervalle vu précédemment. et correspond à la liste : contenant les entiers : $a, a + p, \dots, a + ip, a + kp$ avec $a + kp$ le plus grand entier plus petit ou égal à $b$. On pourra alors utiliser le concis et explicite :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a <span class="token punctuation">.</span><span class="token punctuation">.</span> b <span class="token punctuation">:</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span></code></pre>
+<p>à la place des notations précédentes</p>
 <h2>Affectation d'une tranche de tableau</h2>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span>a<span class="token punctuation">:</span>b<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
 <p>pour :</p>

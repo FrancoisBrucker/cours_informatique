@@ -289,15 +289,17 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">nom_de_la_variable <span class="token operator">:=</span> type_des_objets_qu_elle_peut_référencer</code></pre>
 </div></div>
 
-<p>En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ce comportement est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.</p>
-</div></div>
+<p>En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.</p>
+<!-- Pas sur qu'on en ait besoin. Dans le doute j'enlève.
 
+On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée `type`{.language-} qui donne le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de types Par exemple `type 42`{.language-} va rendre `entier`, ou encore :
+
+```pseudocode
+a := entier
+b := type a
+``` 
+
+-->
 <h3>Affectation</h3>
 <p>Une fois la variable crée, on peut lui <strong><em>affecter</em></strong> des objets, par exemple pour notre variable <code class="language-">a</code> crée précédemment :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">←</span> <span class="token number">3</span></code></pre>
@@ -665,21 +667,39 @@ T<span class="token punctuation">[</span><span class="token number">2</span><spa
     instruction<span class="token number"> n
 </span></code></pre>
 <p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code class="language-pseudocode">x</code> (de type de celui des objets stockés dans le tableau) vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
-<p>Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante d'un tableau de chaînes : à l'itération $i$ on examine le $i+1$ ème élément du tableau et on a déjà examiné les $i$ premiers.
-:</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">chaîne</span>
+<p>Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante d'un tableau de chaînes :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
 i <span class="token operator">:=</span> <span class="token builtin">entier</span>
-<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+i <span class="token operator">←</span> <span class="token number">0</span>
+<span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">&lt;</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
     x <span class="token operator">←</span> tableau<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     instruction<span class="token number"> n
-</span></code></pre>
+</span>
+   <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
+<p>Comme on va souvent faire des itérations sur des intervalles d'entiers, on utilise les notations suivantes :</p>
+<ul>
+<li><code class="language-">[a .. b]</code> pour représenter l'intervalle formé des entiers allant de <code>a</code> à <code>b</code> (cet intervalle peut être vide),</li>
+<li><code class="language-">[a .. b[</code> pour représenter l'intervalle fermé des entiers allant de <code>a</code> à <code>b-1</code> (cet intervalle peut être vide),</li>
+<li><code class="language-">]a .. b]</code> pour représenter l'intervalle fermé des entiers allant de <code>a + 1</code> à <code>b</code> (cet intervalle peut être vide),</li>
+<li><code class="language-">]a .. b[</code> pour représenter l'intervalle fermé des entiers allant de <code>a + 1</code> à <code>b -1</code> (cet intervalle peut être vide).</li>
+</ul>
+<p>On peut alors écrire, par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x<span class="token punctuation">,</span><span class="token number"> i </span><span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">10000</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+    x <span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> x</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrire la variante <code class="language-pseudocode">pour chaque</code> avec la forme initiale <code class="language-pseudocode">tant que</code>.</p>
+<p>Écrire le code suivant en utilisant la notation intervalle :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> élément x de tableau<span class="token punctuation">:</span>
+    instruction <span class="token number">1</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    instruction<span class="token number"> n
+</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -699,18 +719,15 @@ i <span class="token operator">:=</span> <span class="token builtin">entier</spa
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
-
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">chaîne</span>
 i <span class="token operator">:=</span> <span class="token builtin">entier</span>
-i <span class="token operator">←</span> <span class="token number">0</span>
-<span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">&lt;</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
     x <span class="token operator">←</span> tableau<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
     instruction <span class="token number">1</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     instruction<span class="token number"> n
-</span>
-   <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
+</span></code></pre>
 </div>
 </details>     
 </div>
