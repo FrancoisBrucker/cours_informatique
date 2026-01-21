@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Problème de l&#39;arrêt d&#39;un algorithme</title>
+    <title>Problème de l&#39;arrêt d&#39;un programme</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Problème de l&#39;arrêt d&#39;un algorithme</h1>
+  <h1>Problème de l&#39;arrêt d&#39;un programme</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/">Bases théoriques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/arrêt-rice/">Problème de l&#39;arrêt d&#39;un algorithme</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/">Bases théoriques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/arrêt-rice/">Problème de l&#39;arrêt d&#39;un programme</a>
 
 </div></div>
 
@@ -129,25 +129,25 @@
 </div></div>
 
 <h2>Problème de l'arrêt</h2>
-<p>Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. Il y a bien sur des cas simples, comme celui-ci qui ne s'arrête pas :</p>
+<p>Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. Il y a bien sur des cas simples, comme celui-ci qui s'arrête :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : compte à rebours
+Entrées :
+    n : un entier strictement positif
+Programme :
+    tant que n est strictement plus grand que 0:
+        dire à voix haute : "Explosion dans"
+        dire a voix haute la valeur de n
+        dire à voix haute : "secondes"
+        attendre 1 seconde
+        décrémenter la valeur de n de 1
+    dire à voix haute : "BOUM."</code></pre>
+<p>Ou celui-ci qui ne s'arrête pas :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : vérité
 Entrées :
     n : un entier strictement positif
 Programme :
     tant que n est strictement plus grand que 0:
         dire à voix haute : "L'informatique c'est magnifique !"</code></pre>
-<p>Ou celui-ci qui l'est clairement :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : compte à rebours
-Entrées :
-    n : un entier strictement positif
-Programme :
-    tant que n est strictement plus grand que 0:
-        dire à voix haute : "Ce programme s'arrête dans"
-        dire a voix haute la valeur de n
-        dire à voix haute : "secondes"
-        attendre 1 seconde
-        décrémenter la valeur de n de 1
-    dire à voix haute : "Ce programme s'arrête."</code></pre>
 <p>Mais si on prend le programme suivant qui implémente <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">la célèbre conjecture de Syracuse</a> :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : syracuse
 Entrées :
