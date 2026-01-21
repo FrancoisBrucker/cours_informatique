@@ -300,7 +300,7 @@ Programme :
 <p>Si :</p>
 <ul>
 <li>$\lim_{n\rightarrow +\infty}u_n = x$</li>
-<li>il existe deux algorithmes $A$ et $B$ tes que :
+<li>il existe deux algorithmes $A$ et $B$ tels que :
 <ul>
 <li>$A(n)$ rende la partie entière de $u_n$</li>
 <li>$B(n)$ rende les $n$ premières décimales de $u_n$</li>
@@ -641,6 +641,15 @@ $$
 <p>Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.</p>
 <p>Mais ces objets existent puisqu'il y a strictement plus de fonction et de réels que d'algorithmes.</p>
 <p>Nous allons donner un exemple de chaque ci-après.</p>
+<h3>Un nombre non calculable : $\Omega$ de Chaitin</h3>
+<p>Nous allons en montrer un nombre non calculable, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
+<p>Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètre dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.</p>
+<p>Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
+<ul>
+<li>égale à 1 si le programme $P_i$ s'arrête</li>
+<li>égale à 0 si le programme $P_i$ se s'arrête pas</li>
+</ul>
+<p>Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, <a href="../arr%C3%AAt-rice" class="interne">le problème de l'arrêt</a> serait décidable.</p>
 <h3><span id="complexité-Kolmogorov"></span> Une Fonction non calculable : la complexité de Kolmogorov</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -669,13 +678,43 @@ $$
 <p>La valeur de la fonction va dépendre de la langue utilisée bien sur. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.</p>
 </div></div>
 
-<p>La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre en base 2 :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">affiche à l'écran la chaîne de caractères "101"</code></pre>
-<p>Mais il faut écrire $\log_{2}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{2}(n) + 42 + 2$ (le nombre en base 10, le texte avant et les deux <code>&quot;</code>). Si ce nombre est gros, on peut fait bien mieux.</p>
+<p>La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">affiche à l'écran la chaîne de caractères "5"</code></pre>
+<p>Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant l'affichage et les deux <code>&quot;</code>). Si ce nombre est gros, on peut fait bien mieux.</p>
 <p>Par exemple :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">affiche à l'écran la concaténation de 1000 caractères "1"</code></pre>
-<p>Possède 57 caractères et permet d'écrire un nombre de 1000 chiffres ! La question du nombre minimal de caractères est donc une question pertinente, ou au moins légitime.</p>
-<p>De plus la fonction $k(n)$ existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">affiche à l'écran 1000 caractères "1" consécutifs</code></pre>
+<p>Possède 49 caractères et permet d'écrire un nombre de 1000 chiffres ! La question du nombre minimal de caractères est donc une question pertinente, ou au moins légitime.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La fonction $k(n)$ existe.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial (le notre possède, on l'a vu $\log_{10}(n) + 42 + 2$ caractères), il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.</p>
+</div>
+</details>     
+</div>
 <p>La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le <a href="../arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">théorème de Rice</a> qui entre en jeu).</p>
 <p>On a maintenant assez de billes pour démontrer la non-calculabilité de la complexité de Kolmogorov :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -685,7 +724,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité de Kolmogorov est non calculable.</p>
+<p>La complexité de Kolmogorov n'est pas calculable.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -721,15 +760,6 @@ affiche n à l'écran</code></pre>
 </div>
 </details>     
 </div>
-<h3>Un nombre non calculable : $\Omega$ de Chaitin</h3>
-<p>Nous allons en montrer un nombre non calculable, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
-<p>Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètre dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.</p>
-<p>Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
-<ul>
-<li>égale à 1 si le programme $P_i$ s'arrête</li>
-<li>égale à 0 si le programme $P_i$ se s'arrête pas</li>
-</ul>
-<p>Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, <a href="../arr%C3%AAt-rice" class="interne">le problème de l'arrêt</a> serait décidable.</p>
 
 
 </article>
