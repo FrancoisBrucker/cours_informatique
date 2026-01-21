@@ -117,9 +117,50 @@ Vous pourrez créer un algorithme récursif qui utilise le fait que si les chaî
 
 {% endinfo %}
 
+## Polynômes
 
-<!-- TBD
+### Valeur
 
-Un troisième exemple. Les polynômes par exemple ? 
+{% faire %}
+écrivez une fonction `valeur`{.language-} telle que
 
--->
+- **paramètres d'entrée** :
+
+  1. une liste de $n+1$ réels $[a_0, \dots, a_n]$ $n \geq 0$
+  2. un réel $x$
+
+- **sortie** :
+  - $\sum_{i=0}^na_i x^i$
+{% endfaire %}
+{% info %}
+On pourra supposer que la fonction puissance $x^n$ existe pour tout réel $x$ et tout entier positif $n$.
+{% endinfo %}
+
+### Somme
+
+{% faire %}
+Écrivez une fonction `somme`{.language-} telle que
+
+- **paramètres d'entrée** :
+
+  1. une liste de réels $[a_0, \dots, a_n]$
+  2. une liste de réels $[b_0, \dots, b_m]$
+
+- **sortie** :
+  - $[a_0 + b_0, \dots, a_n+b_n]$ si $n = m$
+  - $[a_0 + b_0, \dots, a_n+b_n, b_{n+1}, \dots, b_m]$ si $n < m$
+  - $[a_0 + b_0, \dots, a_m+b_m, a_{m+1}, \dots, a_n]$ si $m < n$
+
+{% endfaire %}
+
+### Produit
+
+{% faire %}
+Écrivez une fonction `produit`{.language-} telle que
+
+- **paramètres d'entrée** :
+  1. une liste de réels $[a_0, \dots, a_n]$
+  2. une liste de réels $[b_0, \dots, b_m]$
+- **sortie** (on suppose):
+  - une liste $[c_0, \dots, c_{m+n}]$ telle que $c_k = \sum_{i+j=k}a_ib_j$ pour tout $0\leq k \leq m+n$
+{% endfaire %}

@@ -80,6 +80,7 @@ Ce cours est composée de plusieurs parties :
 ### Semaine 1
 
 > 19/01 au 23/01
+>
 > Algorithmie
 
 #### Mercredi : qu'est-ce qu'un algorithme
@@ -128,7 +129,14 @@ Si on a le temps, sinon à faire chez soit :
 ### Semaine 2
 
 > 26/01 au 30/01
+> 
 > Programmation
+
+Il est **INDISPENSABLE** que vous ayez en tête ce que vous avez fait en développement au S1. Pour cela, suivez et faite la partie suivante du cours qui explicite les notions qui vous seront utiles pour débuter ce semestre :
+
+{% prerequis "**PRÉREQUIS**" %}
+[Bases de programmation en python](/cours/coder-et-développer/bases-programmation/){.interne}
+{% endprerequis %}
 
 #### Mercredi : projet de développement
 
@@ -138,21 +146,35 @@ Si on a le temps, sinon à faire chez soit :
 Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
 {% endattention %}
 
-- base système :
-  - dossiers, fichiers
-  - programmes
-- terminal
-- développement python :
-  - interpréteur
-  - ide vscode
-  - tests
+Notions abordées :
+
+- base système : dossiers, fichiers et programmes
+- utilisation du terminal
+- écrire du code python utilisable et maintenable
+
+{% aller %}
+1. créer un projet python avec vscode
+2. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/){.interne}
+3. [Modules externes python](/cours/coder-et-développer/modules-externes-python/){.interne}
+4. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
+5. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
+{% endaller %}
 
 #### Vendredi : exercices
 
 > 2h
 
-- développer un algorithme
-- on s'entraîne
+{% aller %}
+1. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
+2. [Petits programmes](/cours/coder-et-développer/projet-codes/){.interne} et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
+{% endaller %}
+
+Si on a le temps, sinon à faire chez soit :
+
+{% aller %}
+- [Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
+- [déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
+{% endaller %}
 
 ### Semaine 3
 
@@ -188,7 +210,11 @@ Test de 15min **sur ordinateur** en début de cours sur les thèmes de la semain
 
 > 4h
 
-Complexité et preuves d'algorithmes
+{% attention %}
+Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
+{% endattention %}
+
+Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie que la complexité est cohérente avec celle calculée.
 
 <!-- TBD
 

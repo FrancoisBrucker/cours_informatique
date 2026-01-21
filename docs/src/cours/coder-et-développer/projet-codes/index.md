@@ -59,14 +59,3 @@ Chaque sujet contient son corrigé, mais faites dans l'ordre :
 2. [Éléments de corrigé](./compte-caractere-corrigé){.interne}
 
 {% enddetails %}
-
-## <span id="polynomes"></span>Somme et produits de polynômes
-
-Uniquement des fonctions à créer.
-
-{% exercice %}
-[Sujet](./polynomes-sujet){.interne}
-{% endexercice %}
-{% details "corrigé", "open" %}
-[Éléments de corrigé](./polynomes-corrigé){.interne}
-{% enddetails %}
