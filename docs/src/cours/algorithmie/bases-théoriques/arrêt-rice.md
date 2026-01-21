@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: Problème de l'arrêt d'un algorithme
+title: Problème de l'arrêt d'un programme
 
 eleventyComputed:
   eleventyNavigation:
@@ -37,7 +37,23 @@ Un algorithme est alors un programme qui s'arrête pour tout entier passé en pa
 
 ## Problème de l'arrêt
 
-Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. Il y a bien sur des cas simples, comme celui-ci qui ne s'arrête pas :
+Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. Il y a bien sur des cas simples, comme celui-ci qui s'arrête : 
+
+```text
+Nom : compte à rebours
+Entrées :
+    n : un entier strictement positif
+Programme :
+    tant que n est strictement plus grand que 0:
+        dire à voix haute : "Explosion dans"
+        dire a voix haute la valeur de n
+        dire à voix haute : "secondes"
+        attendre 1 seconde
+        décrémenter la valeur de n de 1
+    dire à voix haute : "BOUM."
+```
+
+Ou celui-ci qui ne s'arrête pas :
 
 ```text
 Nom : vérité
@@ -48,21 +64,6 @@ Programme :
         dire à voix haute : "L'informatique c'est magnifique !"
 ```
 
-Ou celui-ci qui l'est clairement :
-
-```text
-Nom : compte à rebours
-Entrées :
-    n : un entier strictement positif
-Programme :
-    tant que n est strictement plus grand que 0:
-        dire à voix haute : "Ce programme s'arrête dans"
-        dire a voix haute la valeur de n
-        dire à voix haute : "secondes"
-        attendre 1 seconde
-        décrémenter la valeur de n de 1
-    dire à voix haute : "Ce programme s'arrête."
-```
 
 Mais si on prend le programme suivant qui implémente [la célèbre conjecture de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse) :
 
