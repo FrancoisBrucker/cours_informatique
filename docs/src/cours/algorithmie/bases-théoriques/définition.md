@@ -171,7 +171,7 @@ algorithme recherche(T: [entier],
                      x: entier
                     ) → booléen:
 
-    pour chaque e de T:
+    pour chaque (e := entier) de T:
         si e == x:
             rendre Vrai
     rendre Faux
@@ -307,7 +307,6 @@ Ils sont même en bijection de part [le théorème de Cantor-Bernstein](https://
 
 {% endinfo %}
 
-
 La proposition précédente montre que l'on peut représenter toute suite finie d'éléments d'un ensemble fini par une suite finie de `0` et de `1` de façon unique. On en déduit le résultat que tout le monde connaît :
 
 {% note2 "**Définition**" %}
@@ -340,38 +339,71 @@ Dans la première définition [des machines de Turing](https://fr.wikipedia.org/
 
 {% enddetails %}
 
-On peut aller plus loin en représentant les tableaux de suites finies de "0" et de "1" par une unique suite finie de "0" et de "1". Pour cela on peut utiliser l'encodage suivant :
+## Nombres de paramètres d'entrée d'un programme
 
-<span id="définition-algorithme-canonique"></span>
+On vient de voir que tous les objets manipulables par des programmes peuvent être assimilé à des suites finies de `0` et de `1`, bref à des entiers représenté en base 2. On peut aller plus loin en représentant les tableaux de suites finies de "0" et de "1" par une unique suite finie de "0" et de "1". Pour cela on peut utiliser la fonction suivante, qui est une injection de $(\\{0, 1\\})^\star \times (\\{0, 1\\})^\star$ dans $(\\{0, 1\\})^\star$. 
+ 
+<div id="proposition-cartésien"></div>
 
 {% note "**Proposition**" %}
-Tout programme peut s'écrire comme : 
 
-- ayant une seule entrée de la forme d'une suite finie de bits
-- sa sortie, s'il s'arrête, est une suite finie de bits
+Il existe une injection de $(\\{0, 1\\})^\star \times (\\{0, 1\\})^\star$ dans $(\\{0, 1\\})^\star$.
 {% endnote %}
 {% details "preuve", "open" %}
 
+On représente
 On peut utiliser l'encodage suivant :
+
+- le caractère `0` est encodé par la suite `10`
+- le caractère `1` est encodé par la suite `11`
+- le caractère de séparation est encodé par la suite `00`
+
+Ainsi l'élément de `(00110, 110)` de $(\\{0, 1\\})^\star \times (\\{0, 1\\})^\star$ sera encodé par la suite `101011111000111110`. 
+
+Il est clair que cet encodage est unique puisque :
+
+- il sera de longueur paire
+- commence par un 1
+- chaque élément est codé par 2 bit
+
+Ce qui assure que l'on peu retrouver le couple initial à partir de la suite finale.
+
+{% enddetails %}
+
+Cette proposition est vraiment importante Car elle montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $(\\{0, 1\\})^\star$ en un algorithme avec $p-1$ paramètre ! Ceci montre que tout programme peut être écrit avec un unique paramètre dans $(\\{0, 1\\})^\star$. Comme les suites finies de `0` et de `1` sont des entiers écrit en base 2, on obtient le résultat fondamental :
+
+{% attention "**À retenir**" %}
+
+Tout programme peut être écrit comme ayant :
+
+- au plus une entrée entière
+- une sortie entière s'il s'arrête
+
+{% endattention %}
+
+Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière)  que dans $\mathbb{N}$. Étonnant, non ?
+
+Terminons avec un petit exercice pour vois si vous avez compris :
+
+{% exercice %}
+Donnez un encodage permettant d'écrire comme une suite de `0` et de `1`  les listes imbriquées de tableaux de 0 et de 1, comme `[0, [1, [1]], 0]`.
+{% endexercice %}
+{% info %}
+Encodez chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) par son propre code sur 3 bits. 
+{% endinfo %}
+{% details "corrigé" %}
+
+On peut utiliser le codage :
 
 - le caractère `0` est encodé par la suite `100`
 - le caractère `1` est encodé par la suite `101`
-- le caractère de séparation est encodé par la suite `000`
-- le caractère de début de liste est encodé par la suite `010`
-- le caractère de fin de liste est encodé par la suite `001`
+- le caractère de séparation `,` est encodé par la suite `000`
+- le caractère `[` est encodé par la suite `110`
+- le caractère `]` est encodé par la suite `111`
 
-Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000101101100001`. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme `[0, [1, [1]], 0]`, chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) ayant son propre code sur 3 bits. 
+Par exemple `[0, [1, [1]], 0]` sera encodé par : `110100000110101000110101111111000100111`
 
-Ceci nous permet d'encoder tous les paramètres d'un programme sous une unique suite finie de `0` et de `1`.
 {% enddetails %}
-{% note "**Corollaire**" %}
-Tout programme peut s'écrire comme prenant un entier en paramètre et rendant un entier lorsqu'il s'arrête.
-{% endnote %}
-{% details "preuve", "open" %}
-Une suite finie de bits est équivalente à un entier en base 2.
-{% enddetails %}
-
-Enfin, pour ne pas finir essayer de vous pencher sur le problème suivant :
 
 ## Nombre de programmes
 
@@ -444,8 +476,13 @@ Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaîne
 
 <div id="proposition-encodage-algorithme"></div>
 {% note "**Proposition**" %}
-On peut associer à tout programme un entier unique.
+On peut associer à tout programme un entier unique. C'est à dire qu'il existe une injection $N$ de l'ensemble $\mathcal{P}$ de tous les programmes vers l'ensemble des entiers.
 {% endnote %}
+{% details "preuve", "open" %}
+Comme tout programme est une suite finie $c_1 \dots c_n$ de caractère Unicode, on utilise la technique de [la proposition sur les suites binaires](./#paramètres-binaires){.interne} puis lui associer un nombre unique.
+
+{% enddetails %}
+
 
 On déduit immédiatement la proposition suivante :
 
@@ -454,21 +491,137 @@ On déduit immédiatement la proposition suivante :
 Il y a exactement autant de programmes différents que de nombres entiers.
 {% endnote %}
 {% details "preuve", "open" %}
-Comme à chaque algorithme est associé un entier strictement positif unique, on peut les ranger par nombre croissant et considérer la suite d'algorithmes $(A_k)_{k \geq 1}$ telle que :
 
-- $A_1$ est l'algorithme de plus petit nombre associé
+Soit $f: \mathcal{P} \rightarrow \mathbb{N}$ une injection permettant d'associer un entier à un programme donné.
+
+On peut alors ordonner les programmes selon l'ordre induit par $N$. On note :
+
+- $A_1$ est le programme de plus petit nombre associé
 - pour $k > 1$, $A_k$ est l'algorithme est dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $A_{k-1}$
 
 On a alors :
 
-- $A_k$ existe pour entier $k$ (puisqu'il y a une infinité d'algorithmes différents, donc de descriptions différentes)
-- pour tout algorithme $A$, il existe $k$ telle que $A=A_k$
+- $A_k$ existe pour entier $k$ (puisqu'il y a une infinité de programmes différents, donc de descriptions différentes)
+- pour tout programme $P$, il existe $k$ telle que $P=A_k$
 
-Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_k)_{k \geq 1}$ est une bijection entre l'ensemble des algorithmes et l'ensemble des entiers strictement positifs.
+Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_k)_{k \geq 1}$ est une bijection entre l'ensemble des programmes et l'ensemble des entiers strictement positifs.
 
 {% enddetails %}
 
-La preuve ci-dessus est classique. Lorsqu'il y a un nombre infini de choses dénombrable, il y en a autant que d'entiers. C'est pourquoi il y a autant d'entiers pair que d'entiers impair que de multiples de 42.
+La preuve ci-dessus est classique et est basée sur le fait que deux ensembles sont de même cardiaux que s'il existe une bijection entre les deux. Cette définition est évidente lorsque les ensembles sont fini et elle s'étend lorsque les ensemble sont infinis :
+
+{% note2 "**Définition**" %}
+Un ensemble est dénombrable s'il est en bijection avec $\mathbb{N}$.
+{% endnote2 %}
+
+Il faut faire un peut attention avec les infinis, par exemple les deux fonctions suivantes sont des injections :
+
+- $f(n) = 2n$ pour entier positif $n$,
+- $g(n) = 2n-1$ pour entier positif $n$.
+
+Ceci montre que :
+
+- les entiers sont en bijection avec $f(\mathbb{N})$ c'est à dire les entiers pairs
+- les entiers sont en bijection avec $g(\mathbb{N})% c'est à dire les entiers impair
+
+Bref : il y a autant d'entier que d'entier pair que d'entiers impair !
+
+{% attention "**À retenir**" %}
+Ceci montre que lorsqu'il y a un nombre infini d'entiers (_ie._ d'élément d'un ensemble dénombrable), il y en a autant que d'entiers. 
+{% endattention %}
+
+La remarque précédente est un cas particulier d'[un théorème plus général que l'on doit à Cantor et Bernstein](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein) :
+
+{% note "**Proposition**" %}
+S'il y a une injection d'un ensemble $E$ dans une partie $F$ de celui-ci, alors $E$ et $F$ sont en bijection.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+On suppose que $f$ est une injection de $E$ dans $F \subsetneq E$ et on note :
+
+<div>
+$$
+\left\{
+    \begin{array}{l}
+        G_0 = E \backslash F \\
+        G_{i+1} = f(G_i)
+    \end{array}
+\right.
+$$
+</div>
+
+On note alors 
+
+<div>
+$$
+G = \cup_{i \in \mathbb{N}} G_i \subseteq F
+$$
+</div> 
+
+Et $g$ la fonction de $E$ dans $F$ telle que :
+
+<div>
+$$
+g(x) \left\{
+    \begin{array}{ll}
+        f(x) & \text{si } x \in G\\
+        x & \text{sinon}
+    \end{array}
+\right.
+$$
+</div>
+
+Nous allons montrer que $g$ est une bijection de $E$ dans $F$, ce qui conclura la preuve :
+
+- $g$ est une injection car :
+  - si $x \in G$, alors $g(x) = f(x) \in G$ et $g$ est une injection de $G$ dans $G$
+  - si $x \notin G$, $g(x)$ est l'identité $E\backslash G$ dans $E\backslash G$
+- $g$ est une surjection car si $x \in F$, alors il existe un entier $i$ tel que $x \in G_i$. Soit $i^\star$ le plus petit $i^\star$ tel que $x \in G_{i^\star}$. On a $i^\star > 0$ puisque $F \cap G_0 \varphi$ et donc il existe $y \in G_{i^\star -1}$ tel que f(y) = x$
+
+{% enddetails %}
+{% note "**Corollaire (Théorème de Cantor-Bernstein)**" %}
+S'il y a une injection d'un ensemble $A$ dans un ensemble $B$  et une injection de $B$ dans $A$, alors $A$ et $B$ sont en bijection.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Soit :
+
+- $f$ une injection de $A$ vers $B$
+- $g$ une injection de $B$ vers $A$
+
+Donc $f \circ g$ est une injection de $B$ dans $f(A) \subseteq B$ : la proposition précédente montre qu'il existe une bijection $h$ de $B$ dans $f(A)$.
+
+Comme $f$ est une bijection de $f$ dans son image $f(A)$, $h^{-1} \circ f$ est une bijection de $A$ vers $B$ ce qui conclut la preuve.
+
+{% enddetails %}
+{% info %}
+[Référence](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein#Premi%C3%A8re_d%C3%A9monstration)
+{% endinfo %}
+
+Jouer avec l'infini est à la fois rigolo et donne le vertige. De nombreux résultats sont contre-intuitif comme le résultat précédent qui montre qu'il peut y avoir autant d'élément dans un ensemble et une partie de celui-ci. 
+
+On peut grace au résultat précédent démontrer :
+
+{% note "**Proposition**" %}
+
+Les ensembles $\mathbb{N}$ et $\mathbb{Q}$ sont en bijection.
+{% endnote %}
+{% details "preuve", "open" %}
+
+> TBD diagonale de Cantor
+
+{% enddetails %}
+{% note "**Corollaire**" %}
+Il y a autant d'entiers que de fractions entières.
+{% endnote %}
+{% details "preuve", "open" %}
+
+On utilise [la proposition du produit cartésien](./#proposition-cartésien) qui montre qu'il existe une injection de $\mathbb{N}$ dans $\mathbb{Q}$ et comme les entiers sont dans $\mathbb{Q}$ (c'est $n / 1$) il existe une injection de $\mathbb{Q}$ dans $\mathbb{N}$
+
+{% enddetails %}
+
+D'un point de vue informatique, comme tout ce qu'on manipule sont des suites finies de `0` et de `1`, donc des entiers on considérera toujours des ensembles au plus dénombrable.
 
 ### Nombres réels sans algorithme
 
