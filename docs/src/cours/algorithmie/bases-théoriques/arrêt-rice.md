@@ -129,8 +129,10 @@ Supposons que `stop`{.language-} soit un algorithme et construisons le programme
 ```text
 Nom : oups
 Programme :
-    si le retour de l'algorithme stop avec comme entrée le numéro de oups vaut 1:
+    si le retour de l'algorithme stop avec comme entrée le numéro de oups vaut 1 (si stop(oups) == 1):
         faire une boucle infinie
+    sinon:
+        rendre 0
 ```
 
 Le programme `oups`{.language-} ne peut exister. En effet :

@@ -134,7 +134,7 @@ Soit $(u_n)_{n \geq 1}$ une suite réelle.
 Si :
 
 - $\lim_{n\rightarrow +\infty}u_n = x$
-- il existe deux algorithmes $A$ et $B$ tes que :
+- il existe deux algorithmes $A$ et $B$ tels que :
   - $A(n)$ rende la partie entière de $u_n$
   - $B(n)$ rende les $n$ premières décimales de $u_n$
 
@@ -392,6 +392,20 @@ Mais ces objets existent puisqu'il y a strictement plus de fonction et de réels
 
 Nous allons donner un exemple de chaque ci-après.
 
+### Un nombre non calculable : $\Omega$ de Chaitin
+
+Nous allons en montrer un nombre non calculable, dérivé du célèbre [nombre oméga de Chaitin](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin), lui aussi non dénombrable.
+
+Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètre dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.
+
+Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
+
+- égale à 1 si le programme $P_i$ s'arrête
+- égale à 0 si le programme $P_i$ se s'arrête pas
+
+Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, [le problème de l'arrêt](../arrêt-rice){.interne} serait décidable.
+
+
 ### <span id="complexité-Kolmogorov"></span> Une Fonction non calculable : la complexité de Kolmogorov
 
 {% lien %}
@@ -407,30 +421,36 @@ La complexité de Kolmogorov est une fonction $k: \mathbb{N} \rightarrow \mathbb
 La valeur de la fonction va dépendre de la langue utilisée bien sur. Il est probable que la complexité de Kolmogorov allemande soit plus grande que la complexité de Kolmogorov anglaise ou chinoise.
 {% endinfo %}
 
-La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre en base 2 :
+La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme trivial qui écrit directement le nombre :
 
 ```text
-affiche à l'écran la chaîne de caractères "101"
+affiche à l'écran la chaîne de caractères "5"
 ```
 
-Mais il faut écrire $\log_{2}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{2}(n) + 42 + 2$ (le nombre en base 10, le texte avant et les deux `"`). Si ce nombre est gros, on peut fait bien mieux.
+Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant l'affichage et les deux `"`). Si ce nombre est gros, on peut fait bien mieux.
 
 Par exemple :
 
 ```text
-affiche à l'écran la concaténation de 1000 caractères "1"
+affiche à l'écran 1000 caractères "1" consécutifs
 ```
 
-Possède 57 caractères et permet d'écrire un nombre de 1000 chiffres ! La question du nombre minimal de caractères est donc une question pertinente, ou au moins légitime.
+Possède 49 caractères et permet d'écrire un nombre de 1000 chiffres ! La question du nombre minimal de caractères est donc une question pertinente, ou au moins légitime.
 
-De plus la fonction $k(n)$ existe. En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial, il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
+{% note "**Proposition**" %}
+La fonction $k(n)$ existe.
+{% endnote %}
+{% details "preuve", "open" %}
+En rangeant tous les textes possibles par ordre lexicographique : d'abord les textes à 1 caractère, puis les textes à 2 caractères, etc. on va forcement trouver l'algorithme trivial qui donne une réponse. Parmi tous les textes plus petits ou égal à l'algorithme trivial (le notre possède, on l'a vu $\log_{10}(n) + 42 + 2$ caractères), il y en a un nombre fini, on peut en extraire tous les programme (facile, c'est les texte qui veulent dire quelque chose algorithmiquement) et notre algorithme minimum est dedans.
+
+{% enddetails %}
 
 La difficulté réside bien sur dans le fait de savoir si tel ou tel programme rend la notation binaire de $n$ ou pas (c'est encore une fois le [théorème de Rice](../arrêt-rice/#théorème-rice) qui entre en jeu).
 
 On a maintenant assez de billes pour démontrer la non-calculabilité de la complexité de Kolmogorov :
 
 {% note "**Théorème**" %}
-La complexité de Kolmogorov est non calculable.
+La complexité de Kolmogorov n'est pas calculable.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -454,16 +474,3 @@ Le retour de cet algorithme sans paramètre est le plus petit nombre de complexi
 
 Notre hypothèse de départ est donc fausse : la complexité de Kolmogorov n'est pas calculable.
 {% enddetails %}
-
-### Un nombre non calculable : $\Omega$ de Chaitin
-
-Nous allons en montrer un nombre non calculable, dérivé du célèbre [nombre oméga de Chaitin](https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin), lui aussi non dénombrable.
-
-Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètre dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.
-
-Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
-
-- égale à 1 si le programme $P_i$ s'arrête
-- égale à 0 si le programme $P_i$ se s'arrête pas
-
-Ce nombre existe mais n'est évidemment pas calculable car si on pouvait le faire, [le problème de l'arrêt](../arrêt-rice){.interne} serait décidable.
