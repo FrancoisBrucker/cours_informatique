@@ -382,9 +382,12 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
+<!-- 
+
 #### Algorithmes classiques, mais dur.
 
-> TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, médiane en temps linéaire)
+> TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, médiane en temps linéaire, Karatsuba pour la multiplication d'entiers)
+ -->
 
 ## <span id="partie-3"></span>Partie III : problèmes
 

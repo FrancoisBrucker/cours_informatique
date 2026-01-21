@@ -11,7 +11,6 @@ eleventyComputed:
 ---
 
 
-> TBD ici mettre les cols de matrices. Avec les complexités
 ## Tableaux et listes
 
 ### Matrices
@@ -51,6 +50,8 @@ Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?
 > - **Difficulté** : dur
 
 ### Parenthésage
+
+> TBD rappel de l'exo non corrigé. vois qur sa complexité est grande et faire avec pile.
 
 Soit $C$ une expression arithmétique avec des parenthèses et des crochets. On cherche à savoir si le parenthésage est équilibré :
 

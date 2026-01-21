@@ -20,21 +20,19 @@ Le but d'un pseudo-code est d'être explicite, c'est pourquoi :
 - les variables doivent être définies avant d'être utilisée
 - une variable ne peut contenir que des objets d'un type donné
 
-Mais cela ne doit pas rendre le code lourd. On se permettra donc, **lorsqu'il n'y a pas d’ambiguïté possible**, l'abus de notations qui crée et affecte une variable en une seule fois comme : 
+Mais cela ne doit pas rendre le code lourd. On se permettra donc, l'abus de notations qui crée et affecte une variable en une seule fois comme : 
 
 ```pseudocode
 (a := entier) ← 3
 ```
 
-Si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement `a := 3`{.language-} pour rendre la formulation plus légère.
-
-Vous verrez aussi parfois cet opérateur remplacé par le mot "soit", en particulier lorsqu'il y a plusieurs variables à créer :
+**Lorsqu'il n'y a pas d’ambiguïté possible**, si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement :
 
 ```pseudocode
-soient a, b et c trois entiers
+a := 3
 ```
 
-Ou peut-être plus clair :
+Enfin, pour affecter plusieurs variables en même temps, on se permettra le concis :
 
 ```pseudocode
 a, b, c := entier
@@ -42,7 +40,7 @@ a, b, c := entier
 
 {% attention %}
 
-En pseudo-code on ne se permettra cependant jamais d'initialiser une variable avant de l'avoir définie (comme on le ferai en python).
+En pseudo-code on ne se permettra cependant jamais d'affecter une variable avant de l'avoir définie (comme on le ferait en python).
 
 {% endattention %}
 
@@ -115,34 +113,9 @@ tant que (i < k):
     # ...
 ```
 
-### Répétitions par borne
-
-Tout un tas de variations sont possibles, du moment que ce soit compréhensible. Par exemple :
-
-```pseudocode
-i := entier
-pour i de a à b:
-    # ...
-```
-
-Ou encore :
-
-```pseudocode
-i := entier
-
-pour i=a à i=b:
-    # ...
-```
-
-Pour :
-
-```pseudocode
-i := entier
-pour chaque i de [a .. b]:
-    # ...
-```
-
 ### Répétitions à pas fixé
+
+On a parfois besoin d'utiliser des intervalles _"à trous"_. Par exemple tous les multiples de 3, ou tous les entiers pairs. On se permettra d'utiliser une variante des boucles comme :
 
 ```pseudocode
 i := entier
@@ -158,15 +131,25 @@ pour chaque i de [a .. b] par pas de k:
     # ...
 ```
 
-pour :
+Pour :
 
 ```pseudocode
-(i := entier) <- a
+(i := entier) ← a
 tant que i ≤ b:
   # ...
 
   i ← i + k
 ```
+
+Vous pourrez aussi utiliser la notation `[a .. b : p]`{.language-} qui étend la notation d'intervalle vu précédemment. et correspond à la liste : contenant les entiers : $a, a + p, \dots, a + ip, a + kp$ avec $a + kp$ le plus grand entier plus petit ou égal à $b$. On pourra alors utiliser le concis et explicite :
+
+```pseudocode
+i := entier
+pour chaque i de [a .. b : k]:
+    # ...
+```
+
+à la place des notations précédentes
 
 ## Affectation d'une tranche de tableau
 

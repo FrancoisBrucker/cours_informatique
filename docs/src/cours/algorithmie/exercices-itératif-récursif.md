@@ -71,6 +71,7 @@ entier([3, 2, 1]) = 123
 
 ### Uniquement des parenthèses
 
+
 {% faire %}
 
 Écrivez un algorithme permettant de savoir si une chaîne de caractères uniquement formée  des caractères `"("` et `")"` est un bon parenthésage ou pas. Ainsi :
@@ -80,20 +81,32 @@ entier([3, 2, 1]) = 123
 
 {% endfaire %}
 
+### Couple de parenthèses
+
+{% faire %}
+
+Si `s`{.language-} est une chaîne de caractères uniquement formée de parenthèses ouvrante et fermante, écrivez un algorithme de signature `couple(s: chaîne, i: entier) -> entier`{.language-} qui rend l'index de la parenthèse associée à celle d'indice `i`{.language-} ou -1 si elle n'existe pas (et `s` n'est pas un bon parenthésage). Par exemple :
+
+- `parenthèses("(())()", 0) = 3`{.language-}
+- `parenthèses("(())()(", 5) = 4`{.language-}
+- `parenthèses("()))", 2) = -1`{.language-}
+
+{% endfaire %}
+
 
 ### Parenthèses et lettres
 
 {% faire %}
 
-Même question que précédemment mais la chaîne de caractère contient des lettres de l'alphabet en plus des parenthèses ouvrante et fermantes.
-{% endfaire %}
+Écrivez un algorithme permettant de savoir si une chaîne de caractères uniquement formée  des caractères `"("` et `")"` et des lettres de l'alphabet est un bon parenthésage.
 
+{% endfaire %}
 
 ### Parenthèses, crochets et lettres
 
 {% faire %}
 
-Même question que précédemment mais la chaîne de caractère contient des crochets ouvrant (`"["`) et fermants (`"]"`) en plus des des lettres de l'alphabet et des parenthèses ouvrante et fermantes.
+Même question que précédemment mais la chaîne de caractère contient des crochets ouvrants (`"["`) et fermants (`"]"`) en plus des lettres de l'alphabet et des parenthèses ouvrantes et fermantes.
 {% endfaire %}
 {% info %}
 Vous pourrez créer un algorithme récursif qui utilise le fait que si les chaînes `s1` et `s2` sont des parenthésages corrects alors :
@@ -103,3 +116,10 @@ Vous pourrez créer un algorithme récursif qui utilise le fait que si les chaî
 - la chaîne  `s = "[" + s1 + "]" + s3` est un parenthésage correct.
 
 {% endinfo %}
+
+
+<!-- TBD
+
+Un troisième exemple. Les polynômes par exemple ? 
+
+-->

@@ -113,6 +113,7 @@ La seule façon de créer un objet à partir de rien est d'écrire sa valeur. Pa
 ```
 
 Crée un objet entier de valeur `42`
+
 #### Opérations
 
 De façon formelle :
@@ -197,12 +198,18 @@ nom_de_la_variable := type_des_objets_qu_elle_peut_référencer
 
 {% endnote2 %}
 
-En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition.
+En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.
 
-{% info %}
-Ce comportement est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.
+<!-- Pas sur qu'on en ait besoin. Dans le doute j'enlève.
 
-{% endinfo %}
+On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée `type`{.language-} qui donne le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de types Par exemple `type 42`{.language-} va rendre `entier`, ou encore :
+
+```pseudocode
+a := entier
+b := type a
+``` 
+
+-->
 
 ### Affectation
 
@@ -550,24 +557,8 @@ pour chaque élément x d'un tableau:
 
 On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x`{.language-pseudocode} (de type de celui des objets stockés dans le tableau) vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
 
-Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante d'un tableau de chaînes : à l'itération $i$ on examine le $i+1$ ème élément du tableau et on a déjà examiné les $i$ premiers.
-:
+Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante d'un tableau de chaînes : 
 
-```pseudocode
-x := chaîne
-i := entier
-pour chaque i de [0 .. tableau.longueur[:
-    x ← tableau[i]
-
-    instruction 1
-    ...
-    instruction n
-```
-
-{% exercice %}
-Écrire la variante `pour chaque`{.language-pseudocode} avec la forme initiale `tant que`{.language-pseudocode}.
-{% endexercice %}
-{% details "corrigé" %}
 ```pseudocode
 x := entier
 
@@ -582,4 +573,42 @@ tant que i < tableau.longueur:
 
     i ← i + 1
 ```
+
+Comme on va souvent faire des itérations sur des intervalles d'entiers, on utilise les notations suivantes :
+
+- `[a .. b]`{.language-} pour représenter l'intervalle formé des entiers allant de `a` à `b` (cet intervalle peut être vide),
+- `[a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a` à `b-1` (cet intervalle peut être vide),
+- `]a .. b]`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b` (cet intervalle peut être vide),
+- `]a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b -1` (cet intervalle peut être vide).
+
+On peut alors écrire, par exemple :
+
+```pseudocode
+x, i := entier
+pour chaque i de [0 .. 10000[:
+    x ← i + x
+```
+
+{% exercice %}
+Écrire le code suivant en utilisant la notation intervalle : 
+
+```pseudocode
+pour chaque élément x de tableau:
+    instruction 1
+    ...
+    instruction n
+```
+{% endexercice %}
+{% details "corrigé" %}
+```pseudocode
+x := chaîne
+i := entier
+pour chaque i de [0 .. tableau.longueur[:
+    x ← tableau[i]
+
+    instruction 1
+    ...
+    instruction n
+```
+
 {% enddetails %}
