@@ -107,7 +107,11 @@
 <p>Mais cela ne doit pas rendre le code lourd. On se permettra donc, l'abus de notations qui crée et affecte une variable en une seule fois comme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span>a <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">3</span></code></pre>
 <p><strong>Lorsqu'il n'y a pas d’ambiguïté possible</strong>, si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">:=</span> <span class="token number">3</span></code></pre>
+<ul>
+<li><code class="language-">a := 3</code></li>
+<li><code class="language-">T := [entier]{longueur: 3}</code></li>
+</ul>
+<p>Qui crée la variable, l'objets et les affecte l'un à l'autre</p>
 <p>Enfin, pour affecter plusieurs variables en même temps, on se permettra le concis :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c <span class="token operator">:=</span> <span class="token builtin">entier</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
