@@ -28,9 +28,10 @@ Mais cela ne doit pas rendre le code lourd. On se permettra donc, l'abus de nota
 
 **Lorsqu'il n'y a pas d’ambiguïté possible**, si le type d'affectation est déterminable via l'affectation, on pourra se permettre d'écrire directement :
 
-```pseudocode
-a := 3
-```
+- `a := 3`{.language-} 
+- `T := [entier]{longueur: 3}`{.language-} 
+
+Qui crée la variable, l'objets et les affecte l'un à l'autre
 
 Enfin, pour affecter plusieurs variables en même temps, on se permettra le concis :
 

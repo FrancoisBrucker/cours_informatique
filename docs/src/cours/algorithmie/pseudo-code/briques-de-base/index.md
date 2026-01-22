@@ -250,6 +250,8 @@ Après la troisième ligne, le code précédent associe la variable `a`{.languag
 
 {% attention "**À retenir**" %}
 Une variable n'est **pas** un objet, c'est un lien vers un objet qui pourra changer au cours du temps.
+
+Après la définition d'une variable, elle n'est encore liée à aucun objet, va valeur est **indéfinie**. Il ne faut pas l'utiliser avant sa première affectation.
 {% endattention %}
 
 ### Utilisation
@@ -310,28 +312,28 @@ On ne peut utiliser une variable qu'après l'avoir affectée. Utiliser une varia
 {% note2 "**Définition**" %}
 Un **_tableau_** est un conteneur nommé pouvant contenir $n$ variables **de même type**. $n$ est la **_longueur_** ou la **_taille_** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée. Chaque variable du tableau peut être accédée via son **_indice_**, qui est un entier entre $0$ et $n-1$.
 
-Si le tableau est nommé $t$ :
+Si le tableau est nommé $T$ :
 
-- $t.\mbox{longueur}$ sera égal à sa taille.
-- $t[i]$ est sa variable d'indice $i$ si $0 \leq i < n$
-- $t[-i]$ vaut $t[n-i]$ si si $0 < i  \leq n$
+- $T.\mbox{longueur}$ sera égal à sa taille.
+- $T[i]$ est sa variable d'indice $i$ si $0 \leq i < n$
+- $T[-i]$ vaut $t[n-i]$ si si $0 < i  \leq n$
+
+Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : `[type]`{.language-}.
 
 {% endnote2 %}
 
-Créons un tableau pouvant contenir 13 variables de type entier :
+Créons un objet tableau pouvant contenir 13 variables de type entier :
 
 ```pseudocode
-T := [entier]{longueur: 13}
+T := [entier]  # création de la variable pouvant accueillir un tableau d'entier
+
+T <- [entier]{longueur: 13}  # création d'un tableau pouvant contenir 13 variables entières
 ```
 
 {% note2 "**Définition**" %}
-Le format général de la création d'un tableau de longueur $n$ est :
 
-```pseudocode
-nom_du_tableau := [type]{longueur: n}
-```
-
-Le type d'un tableau est défini par le type des objets qu'il contient entre crochet : `[type]`{.language-}.
+- le format général de la création d'une variable tableau : `nom_du_tableau := [type]`{.language-}
+- création d'un tableau de longueur $n$  : `[type]{longueur: n}`{.language-}
 {% endnote2 %}
 
 Un tableau est un mix entre variables et objet : c'est un objet contenant des variables de même type. 
@@ -359,13 +361,15 @@ Mais cette rapidité interne vient avec une complexité supplémentaire : la né
 On utilise un tableau comme une collection de variables, par exemple :
 
 ```pseudocode
-T := [entier]{longueur: 3}
+T := [entier]
+T ← [entier]{longueur: 3}
+
 T[0] ← 41
 T[1] ← 1
 T[2] ← T[0] + T[1]
 ```
 
-La seule opération spécifique à un tableau est sa création qui est un mox entre création d'objet et création de variable, puis on affecte ses variables avant de pouvoir les utiliser.
+La seule opération spécifique à un tableau est sa création qui est un mix entre création d'objet et création de variable, puis on affecte ses variables avant de pouvoir les utiliser.
 
 {% attention "**À retenir**" %}
 Tout comme une variable, une fois le tableau créé, la valeur de chaque case est **indéterminée !** Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.

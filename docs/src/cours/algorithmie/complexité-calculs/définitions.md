@@ -24,21 +24,23 @@ La complexité d'un pseudo-code est la complexité en temps de celui-ci.
 Par exemple le pseudo-code suivant :
 
 ```pseudocode/
+age := entier
 age ← 42
-si ((age ≥ 12) et (age < 20)):
-    personne ← "teenager"
+si ((age ≥ 12) et (age < 18)):
+    personne ← "adolescent"
 ```
 
-- première ligne : 2 instructions
+- première ligne : 1 instruction, création de la variable `age`{.language-}, 
+- deuxième ligne : 2 instructions
   1. Création de l'entier valant 42 : 1 instruction
   2. on affecte l'entier à la variable `age`{.language-} : 1 instruction
-- deuxième ligne : 8 instructions
+- troisième ligne : 8 instructions
   1. faire `age ≥ 12`{.language-}. Pour cela :
      - on crée l'entier valant 12 : 1 instruction
      - on récupère la valeur de `age`{.language-} : 1 instruction
      - on effectue la comparaison : 1 instruction
-  2. faire `age < 20`{.language-}. Pour cela :
-       - on crée l'entier valant 20 : 1 instruction
+  2. faire `age < 18`{.language-}. Pour cela :
+       - on crée l'entier valant 18 : 1 instruction
        - on récupère la valeur de `age`{.language-} : 1 instruction
        - on effectue la comparaison : 1 instruction
   3. faire l'instruction `et`{.language-} : 1 instruction
@@ -47,7 +49,7 @@ si ((age ≥ 12) et (age < 20)):
   1. on crée la chaîne : 1 instruction
   2. puis affecte le résultat : 1 instruction
 
-Un nombre total d'instructions de 12 pour ces trois lignes de pseudo-code.
+Un nombre total d'instructions de 13 pour ces quatre lignes de pseudo-code.
 
 ## Complexité des appels de fonctions
 
@@ -61,22 +63,25 @@ Reprenons par exemple [le code de l'algorithme recherche](../../bases-théorique
 
 ```pseudocode/
 fonction recherche(T: [entier], x: entier) → booléen:
-    pour chaque e de T:
+    pour chaque (e := entier) de T:
         si e == x:
             rendre Vrai
     rendre Faux
 
+T := [entier] 
 T ← [1, 2, 6]
+trouve := entier
 trouve ← recherche(T, 6)
 affiche à l'écran trouve
 ```
 
-1. exécution de la ligne 7 : 8 instructions
-   - création d'un tableau : 1 instruction
+1. exécution de la ligne 7 : 1 instructions ; création d'une variable tableau
+2. exécution de la ligne 8 : 7 instructions
    - création de 3 entiers : 3 instructions
    - affectation des 3 entiers aux indices du tableau :  3 instructions
    - affectation du tableau à une variable : 1 instruction
-2. exécution de la ligne 8 :
+3. exécution de la ligne 9 : 1 instructions ; création d'une variable
+4. exécution de la ligne 10 :
    1. exécution de la fonction recherche (ligne à ligne) :
       1. exécution de la ligne 1 : affectation des paramètres
          1. trouver les objets à mettre en paramètres :
@@ -85,23 +90,25 @@ affiche à l'écran trouve
          2. affecter les paramètres aux variables de la fonction :
             - affectation du premier paramètre à la variable locale `t`{.language-} : 1 instruction
             - affectation du second paramètre à la variable locale `x`{.language-} : 1 instruction
-      2. exécution de la ligne 2 (3 fois) : trouver l'objet du tableau puis l'affecter à `e`{.language-} : 2 instructions
+      2. exécution de la ligne 2 (3 fois)
+         1. uniquement la première fois : on crée la variable `e`{.language-} ; 1 instruction
+         2. les 3 fois : trouver l'objet du tableau puis l'affecter à `e`{.language-} ; $2$ instructions 
       3. exécution de la ligne 3 (3 fois) : un test
          - on trouve les objets associées à `t`{.language-} et `e`{.language-} : 2 instructions
          - on teste l'égalité : 1 instruction
          - on fait le `si`{.language-} : 1 instruction
       4. exécution de la ligne 4 (1 fois) : on arrive à cette ligne à la troisième itération : 2 instructions (une pour créer le booléen, l'autre pour le rendre)
-   2. affection de la variable `trouve`{.language-}
-3. afficher quelque chose à l'écran :
+   2. affection de la variable `trouve`{.language-} : 1 instruction
+5. afficher quelque chose à l'écran :
    - 1 instruction pour trouver l'objet à afficher
    - 1 instruction pour trouver l'afficher
 
-Au total on eu besoin de $8+\underbracket{(4 + 3 \cdot (4+4) + 2)}_{\mbox{recherche(t, 6)}} + 1 + 2$
-instructions c'est à dire $41$ instructions.
+Au total on eu besoin de $1+7+1+\underbracket{(4 + 1 + 3 \cdot (4+4) + 2)}_{\mbox{recherche(t, 6)}} + 1 + 2$
+instructions c'est à dire $43$ instructions.
 
 ## Complexité des accès à un tableau ?
 
-Combien d'instructions nécessite la création et l'accès à un tableau ?
+Combien d'instructions nécessitent la création et l'accès à un tableau ?
 
 On considérera en algorithmie que tous les accès à un élément donné d'un tableau nécessite 1 instruction. Ainsi :
 
@@ -113,7 +120,7 @@ De là l'instruction :
 
 - créer un tableau de taille 42 nécessite  1 instruction
 - créer un tableau de taille $2^{42}$ nécessite  1 instruction
-- `F ← un tableau de taille 42`{.language-} nécessite 2 instructions, une pour la création, la seconde pour l'affectation
+- `F ← [1 .. 42]`{.language-} nécessite 2 instructions, une pour la création du tableau `[1 .. 42]`{.language-}, la seconde pour l'affectation à la variable `F`{.language-} (que l'on suppose déjà créée)
 - `afficher à l'écran F[3]`{.language-} nécessite 2 instructions, une pour retrouver l'objet associé à `F[3]`{.language-}, l'autre pour l'afficher
 - `F[3] ← 42`{.language-} nécessite 2 instructions, une pour créer l'entier `42`{.language-}, l'autre pour l'affecter
 - `F[i] ← 42`{.language-} nécessite 3 instructions, une pour créer l'entier `42`{.language-}, une pour trouver l'objet associé à `i`{.language-} (ce n'est pas une constante) l'autre pour l'affecter
@@ -124,11 +131,11 @@ De là l'instruction :
 Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 144$ :
 
 ```pseudocode/
-F ← un tableau de 10 entiers
+F := [entier]{longueur: 10}
 F[0] ← 1
 F[1] ← 1
 
-i ← 2
+i := 2
 tant que i ≤ 9 :
   F[i] ← F[i - 1] + F[i - 2]
   i ← i + 1
@@ -143,7 +150,7 @@ Explicitez les différentes instructions élémentaires pour justifier la valeur
 
 La complexité de chaque ligne :
 
-- ligne 1 : 2 instructions (une création et une affectation)
+- ligne 1 : 2 instructions (une création **et** une affectation)
 - ligne 2 : 2 instructions (une création et une affectation)
 - ligne 3 : 2 instructions (une création et une affectation)
 - ligne 4 : 0 instruction
@@ -183,11 +190,11 @@ Mais souvent la complexité dépend des paramètres du programme, comme par exem
 
 ```pseudocode/
 algorithme fibonacci(n: entier) → entier:
-  F ← un tableau de n entiers
+  F := [entier]{longueur: n}
   F[0] ← 1
   F[1] ← 1
 
-  i ← 2
+  i := 2
   tant que i < n :
     F[i] ← F[i - 1] + F[i - 2]    
     i ← i + 1
@@ -195,15 +202,16 @@ algorithme fibonacci(n: entier) → entier:
   rendre F[n-1]
 ```
 
-Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 17\cdot n-20$ qui dépend de la valeur du paramètre d'entrée.
+Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 17\cdot n-19$ qui dépend de la valeur du paramètre d'entrée.
 
 {% exercice %}
-Montrez que la complexité est bien de $17\cdot n-20$
+Montrez que la complexité est bien de $17\cdot n-19$
 {% endexercice %}
 {% details "corrigé" %}
-Il y a deux différences :
+Il y a plusieurs différences :
 
 - il faut affecter un objet au paramètre $n$ : 1 instruction supplémentaire
+- il faut trouver la valeur de $n$ pour la création du tableau (ce n'est plus une constante) : 1 instruction supplémentaire
 - on ne rentre plus 8 fois dans la boucle mais $n-2$ fois
 - la case de retour n'est plus une constante mais dépend d'un calcul ($n-1$) : 3 instructions supplémentaires
 
@@ -211,7 +219,7 @@ La complexité est alors :
 
 <div>
 $$
-1 +2+2+2+0+2 + (n-2)\cdot(4 + 9 + 4) + 0 + 3 + 2 = 14 + (n-2) \cdot 17 = 17\cdot n-20
+1 + 1+ +2+2+2+0+2 + (n-2)\cdot(4 + 9 + 4) + 0 + 3 + 2 = 14 + (n-2) \cdot 17 = 17\cdot n-19
 $$
 </div>
 
@@ -221,19 +229,19 @@ Enfin, en règle générale, la complexité dépend trop profondément de la nat
 
 ```pseudocode/
 algorithme recherche(T: [entier], x: entier) → booléen:
-    pour chaque e de T:
+    pour chaque (e := entier) de T:
         si e == x:
             rendre Vrai
     rendre Faux
 ```
 
-La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 10 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; trouver `t[0]`{.language-} puis l'affecter à `e`{.language-} ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $6n + 4$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; $2n$ instruction de l'affectation de la boucle `pour chaque`{.language-} ; $2n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 6i + 4$ où $i$ est la position de la valeur dans le tableau.
+La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 11 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; la création de `e`{.language-} ; trouver `t[0]`{.language-} puis l'affecter à `e`{.language-} ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $6n + 5$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; la création de `e`{.language-} ; $2n$ instruction de l'affectation de la boucle `pour chaque`{.language-} ; $2n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 6i + 5$ où $i$ est la position de la valeur dans le tableau.
 
 Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances _a priori_ sur ses entrées. Pour l'algorithme `rechercher`{.language-} on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.
 
-{% note %}
+{% attention "**À retenir**" %}
 On calcule la complexité d'un algorithme par rapport à un paramètre qui rend compte de la connaissance _a priori_ que l'on a sur les entrées de celui-ci.
-{% endnote %}
+{% endattention %}
 
 ### Connaissances minimales sur les entrées
 
