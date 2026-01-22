@@ -625,58 +625,18 @@ On utilise [la proposition du produit cartésien](./#proposition-cartésien) qui
 
 {% enddetails %}
 
-D'un point de vue informatique, comme tout ce qu'on manipule sont des suites finies de `0` et de `1`, donc des entiers on considérera toujours des ensembles au plus dénombrable.
+D'un point de vue informatique, on conclut de cette partie que tout ce qu'on manipule en informatique sont des suites finies de `0` et de `1`, que ce soit les données ou les programmes eux-même :
 
-### Nombres réels sans algorithme
+{% attention "**À retenir**" %}
 
-Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante car elle montre qu'un algorithme ne peut pas tout faire. En effet :
+On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1`.
 
-<span id="diagonale-cantor"></span>
-{% note "**Théorème**" %}
-Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers strictement positifs.
-{% endnote %}
-{% details "preuve", "open" %}
-On doit cette preuve magnifique au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Elle est basée sur l'argument s'appelant [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
+Connaître les objets "réels" ou les instructions réelles d'un algorithme se faisant via des procédures qui transforment les suites de finies de `0` et de `1` :
 
-On commence en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimale $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
+- en instructions
+- en données à manipuler
 
-On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels avec leurs valeurs selon $f$ :
-
-- on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$
-- on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
-- ...
-- on appelle $r_i$ le $i$ème réel : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1, \dots, r_{i-1} \\}$
-- ...
-
-Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :
-
-- $1$ si le $i$ème chiffre après la virgule de $r_i$ est différent de $1$
-- $2$ si le $i$ème chiffre après la virgule de $r_i$ est $1$
-
-Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els), il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
-
-Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.
-
-{% enddetails %}
-
-Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond. On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu).
-
-{% info %}
-Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/), très bien faite.
-{% endinfo %}
-
-On déduit du théorème précédent que :
-
-{% note "**Proposition**" %}
-
-Il existe des réels pour lesquels il n'existe aucun algorithme $A$ tel que $A(0)$ rende sa partie entière et $A(i)$ sa $i$ème décimale pour $i>0$.
-
-{% endnote %}
-{% details "preuve", "open" %}
-Sinon il y aurait une injection associant à chaque réel son algorithme ce qui est impossible.
-{% enddetails %}
-
-Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard).
+{% endattention %}
 
 ## Algorithmes et démonstration mathématiques
 
@@ -690,3 +650,10 @@ De façon plus précise on a la suite d'équivalences :
 4. [Curry puis Howard qui généralise](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard), en 1950 et 1980, montrent que (2) est équivalent à écrire en terme de [$\lambda$-calcul](https://fr.wikipedia.org/wiki/Lambda-calcul)
 5. [Turing](https://fr.wikipedia.org/wiki/Alan_Turing) démontre en 1937, que (4) est équivalent à écrire une machine de Turing.
 6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3))
+
+
+{% attention "**À retenir**" %}
+
+Algorithmes et démonstrations mathématiques sont deux notions équivalentes.
+
+{% endattention %}
