@@ -17,9 +17,9 @@ La complexité d'un pseudo-code est une mesure associée au pseudo-code. Elle pe
 
 Par défaut, la complexité utilisée est celle en temps :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 La complexité d'un pseudo-code est la complexité en temps de celui-ci.
-{% endnote %}
+{% endnote2 %}
 
 Par exemple le pseudo-code suivant :
 
@@ -247,41 +247,41 @@ On calcule la complexité d'un algorithme par rapport à un paramètre qui rend 
 
 Les connaissances minimales que l'on possède sur les données sont leurs tailles de stockage en mémoire.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 **_la taille des entrées d'un algorithme_** est le nombre de cases mémoires nécessaires pour stocker toutes ses entrées.
-{% endnote %}
+{% endnote2 %}
 
 Dans la partie pseudo-code on a considéré deux types de données :
 
-- les types simples que sont les nombres et les caractères qui sont stockable sur 1 case mémoire
-- les tableaux dont la taille est la somme des tailles de leurs éléments
+- les types simples que sont les nombres et les caractères qui sont stockable sur 1 case mémoire,
+- les tableaux dont la taille est leur longueur multiplié par la taille d'une de ses données.
 
 ### Complexité algorithmique
 
 En prenant en compte les connaissances minimales que l'on a sur les entrées d'un algorithme, sa complexité est définie comme suit :
 
 <div id="complexité"></div>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
-**_La complexité_** $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.
-{% endnote %}
+**_La complexité_** $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec un paramètre $N$ qui décrit les données.
 
-En utilisant la définition ci-dessus, la complexité de l'algorithme `recherche`{.language-} vaut $6N+4$.
+{% endnote2 %}
 
-Comme rien n'est jamais simple, il existe des cas où la connaissance de la taille ne done pas un critère pertinent pour établir une complexité. C'est souvent le cas lorsque les paramètres de l'algorithmes sont de taille fixe, comme pour la fonction `fibonacci(n)`{.language-}, la taille de stockage d'un entier étant de 1 case mémoire.
+En utilisant la définition ci-dessus, la complexité de l'algorithme `recherche`{.language-} vaut $6N+5$, en utilisant la taille du tableau passé en entrée comme donnée.
 
-Si l'on avait calculé la complexité en regroupant les entrées par taille, on aurait eu qu'une seule classe d'entrée et la complexité aurait été infinie... Il a donc fallu supposer que l'on connaissait la valeur de l'entrée pour calculer une complexité finie.
+Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prises par les données comme paramètre. C'est le cas de la fonction `fibonacci(n)`{.language-}, la taille de stockage d'un entier étant toujours 1 case mémoire. On utilise alors souvent la valeur des données comme paramètre, ce qui donne une complexité de $17n -19$.
 
 Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :
 
-{% note %}
+{% attention "**À retenir**" %}
 Lorsque l'on donne une complexité en fonction d'un paramètre, il faut :
 
-- obligatoirement l'**expliciter** (taille de données, valeur d'une entrée, etc)
+- obligatoirement l'**expliciter** (taille des données, valeur d'une entrée, etc)
 - s'assurer que l'on peut calculer ce paramètre pour **toutes les entrées**
 - ne pas oublier que la complexité est le **maximum** du nombre d'instructions pour les exécutions de l'algorithme avec des entrées de paramètre constant (même taille de donnée, même valeur d'entrée, etc)
-  {% endnote %}
+
+{% endattention %}
 
 ## Autres types de complexités
 
@@ -289,26 +289,26 @@ Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant 
 
 ## Complexité min
 
-Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme `recherche`{.language-} par exemple), la complexité prend le maximum ($6N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme `recherche`{.language-}) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme `recherche`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
+Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme `recherche`{.language-} par exemple), la complexité prend le maximum ($6N+5$ où $N$ est la la taille du tableau en entrée pour l'algorithme `recherche`{.language-}) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme `recherche`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
-**_La complexité minimum_** $C_{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.
-{% endnote %}
+**_La complexité minimum_** $C_{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées de paramètre $N$.
+{% endnote2 %}
 
 ## <span id="complexité-temps"></span>Complexité en temps
 
 Lorsqu'un algorithme est codé, on peut l'exécuter et mesurer son temps d'exécution. On peut alors définir la **_complexité en temps_** d'exécution d'un code :
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
-**_La complexité en temps_** $T(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.
-{% endnote %}
+**_La complexité en temps_** $T(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le temps maximum pris pour exécuter le code $A$ avec des entrées de paramètre $N$.
+{% endnote2 %}
 
 Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :
 
-{% note %}
+{% attention "**À retenir**" %}
 Le temps mis pour un code à être exécuté est proportionnelle à la complexité de son pseudo-code associé.
-{% endnote %}
+{% endattention %}
 
 Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.
 
@@ -317,12 +317,12 @@ Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)
 Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est à dire la taille des variables dont il a eu besoin pour fonctionner.
 
 <div id="complexité-spatiale"></div>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
-**_La complexité spatiale_** $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$ (aussi appelée **_complexité en mémoire_**) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.
+**_La complexité spatiale_** $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$ (aussi appelée **_complexité en mémoire_**) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées de paramètre $N$.
 
 On **ne compte pas** dans ce calcul la taille nécessaire pour stocker les différents paramètres de l'algorithme.
-{% endnote %}
+{% endnote2 %}
 
 Par exemple notre fonction `fibonacci(n)`{.language-} nécessite $n+2$ cases mémoires, en plus de ses paramètres, pour fonctionner :
 
@@ -334,7 +334,6 @@ Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la 
 
 ```pseudocode/
 algorithme fibonacci_sobre(n):
-  F ← un tableau de n entiers
   a ← 1
   b ← 1
 
@@ -349,22 +348,29 @@ algorithme fibonacci_sobre(n):
   rendre b
 ```
 
-Il demande beaucoup moins de mémoire, 5 cases mémoires seulement (pour stocker le paramètre $n$ et les 4 variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.
+Il demande beaucoup moins de mémoire, 4 cases mémoires seulement pour stocker les 4 variables ($a$, $b$, $c$ et $i$), sans compter le paramètre $n$, ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.
 
 {% info %}
 Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.
 {% endinfo %}
 
-Complexité et complexité spatiale sont liées puisque chaque affectation d'une variable prend une instruction :
+
+Complexité et complexité spatiale sont liées :
 
 {% note "**Proposition**" %}
-La complexité spatiale est toujours inférieure à la complexité.
+Si toutes les variables définies sont affectées (cela comporte toutes les cases des tableaux), la complexité spatiale est toujours inférieure à la complexité 
 {% endnote %}
+{% details "preuve", "open" %}
+
+Chaque affectation d'une variable prend une instruction.
+
+{% enddetails %}
+
 
 On peut même avoir un encadrement plus précis :
 
 {% note "**Proposition**" %}
-Pour tout algorithme $A(p_1, \dots, p_m)$ dont la taille des entrées vaut $N$ et de complexités $C(N)$ (sa complexité en ombre d'instructions) et $S(N)$ (sa complexité spatiale), on a l'encadrement :
+Pour tout algorithme $A(p_1, \dots, p_m)$ ne manipulant que des tableaux de bits et affectant toutes ses variables tel que sa complexités soit $C(N)$ et sa complexité spatiale $S(N)$, on a l'encadrement :
 
 <div>
 $$
@@ -378,6 +384,6 @@ Avec $L$ le nombre de lignes de l'algorithme.
 
 On sait déjà que $S(n) \leq C(n)$.
 
-Si une même ligne est exécutée deux fois avec la même composition de la mémoire, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(n)}$ fois qui correspond aux nombre maximum de positions de la mémoire.
+Si une même ligne est exécutée deux fois avec la même affectation des variables, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(n)}$ fois qui correspond aux nombre maximum de valeurs différentes que peuvent prendre les $S(N)$ bits utilisés par l'algorithme.
 
 {% enddetails %}

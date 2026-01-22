@@ -178,11 +178,21 @@ On vérifie qu'on sait faire :
 [une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12)
 {% endlien %}
 
+#### Complexité maximale
+
 Cette partie s'intéresse à la notion de complexités pour un algorithme.
 
 {% aller %}
 [Calcul de complexité d'un algorithme](./complexité-calculs){.interne}
 {% endaller %}
+
+Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif){.interne} :
+
+{% aller %}
+[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite){.interne}
+{% endaller %}
+
+#### Complexité d'un problème
 
 Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log de ce cours.
 
@@ -190,13 +200,7 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 [Complexité d'un problème algorithmique](./complexité-problème){.interne}
 {% endaller %}
 
-### <span id="entrainement-complexite"></span>On s'entraîne : calcul de complexité
-
-Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./projet-itératif-récursif){.interne} :
-
-{% aller %}
-[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite){.interne}
-{% endaller %}
+> TBD ajouter des exercices, des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative. Faire dichotomie et recherche de cols.
 
 ### projet : problèmes liés à l'exponentiation
 

@@ -216,7 +216,8 @@ fonction modif(U: [entier]) → ∅:
 
 algorithme tableau() → ∅:
 
-    T := [entier]{longueur: 3}
+    T := [entier]
+    T ← [entier]{longueur: 3}
 
     T[0] ← 1
     T[1] ← 2

@@ -12,16 +12,16 @@ eleventyComputed:
 
 Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité : :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que c'est une (avec $K$ et $k$ deux constantes et $\sim$ l'[équivalent mathématique](https://fr.wikipedia.org/wiki/%C3%89quivalent)) :
 
-- **_complexité constante_** si $C(n) \sim K$
-- **_complexité logarithmique_** si $C(n) \sim K\cdot \ln(n)$
-- **_complexité linéaire_** si $C(n) \sim K\cdot n$
-- **_complexité polynomiale_** $C(n) \sim K\cdot n^k$
-- **_complexité exponentielle_** $C(n) \sim K\cdot k^n$
+- **_complexité constante_** si $C(n) \sim_{+\infty} K$
+- **_complexité logarithmique_** si $C(n) \sim_{+\infty} K\cdot \ln(n)$
+- **_complexité linéaire_** si $C(n) \sim_{+\infty} K\cdot n$
+- **_complexité polynomiale_** $C(n) \sim_{+\infty} K\cdot n^k$
+- **_complexité exponentielle_** $C(n) \sim_{+\infty} K\cdot k^n$
 
-{% endnote %}
+{% endnote2 %}
 
 Les types de complexités ci-dessus sont rangés par ordre, de la moins grande à la plus grande.
 
@@ -94,7 +94,9 @@ $$
 n! \sim \sqrt{2\pi n}(\frac{n}{e})^n
 $$
 
-> TBD preuve <https://www.youtube.com/watch?v=Dgh8673ymdo>
+{% info %}
+[une preuve de la formule](https://www.youtube.com/watch?v=Dgh8673ymdo)
+{% endinfo %}
 
 On a donc que $n!$ est de l'ordre de $n^{n+1/2}$, qui est vachement plus grand que $2^{n}$ qui est déjà gigantesque.
 
@@ -108,6 +110,6 @@ Et la différence s’accroît exponentiellement avec le nombre :
 - $74! = 330788544151938641225953028221253782145683251820934971170611926835411235700971565459250872320000000000000000$
 - $2^{74} = 18889465931478580854784$
 
-{% info %}
+{% attention "**À retenir**" %}
 Si vous pensez que votre algorithme tout bête est de complexité $C(n) = n!$ Réfléchissez-y à deux fois. C'est presque sûrement une erreur... Et si ce n'est est pas une, votre algorithme est inefficace et devrait sûrement être oublié plutôt que montré à votre enseignant.
-{% endinfo %}
+{% endattention %}

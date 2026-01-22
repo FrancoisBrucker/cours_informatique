@@ -184,14 +184,19 @@ Si on a le temps, sinon à faire chez soit :
 Test de 15min **sur ordinateur** en début de cours sur les thèmes de la semaine précédente.
 {% endattention %}
 
-<!-- 
-> TBD pour s'assurer que les prérequis sont ok, faire un DM avant le début du semestre avec du code, du numpy et de la génération de listes.  
--->
+Notions abordées :
 
 - définition
 - complexité spatiale et temporelle
 - calculs de $\mathcal{O}$
 - complexité d'algorithmes itératifs et récursifs
+- complexité d'un problème
+
+{% aller %}
+
+[Complexité d'un algorithme](/cours/algorithmie/complexité-calculs/){.interne}
+
+{% endaller %}
 
 #### Vendredi : exercices
 
@@ -199,6 +204,8 @@ Test de 15min **sur ordinateur** en début de cours sur les thèmes de la semain
 
 - mesure de complexité en code
 - complexité en moyenne
+
+> TBD ajouter des exercices
 
 ### Semaine 4
 
@@ -214,6 +221,15 @@ Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine p
 {% endattention %}
 
 Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie que la complexité est cohérente avec celle calculée.
+
+
+{% aller %}
+
+[Complexité d'un problème](/cours/algorithmie/complexité-problème/){.interne}
+
+{% endaller %}
+
+> TBD ajouter des exercices, des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative.
 
 <!-- TBD
 
