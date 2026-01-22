@@ -58,7 +58,7 @@ La différence entre les approches itératives et récursive est lié au traitem
 Pour expliciter la différence entre les deux approches nous allons utiliser le calcul de la factorielle définie pour tout entier $n\geq 1$ telle que :
 
 $$
-n! = \prod\limits_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
+n! \coloneqq \prod\limits_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
 $$
 
 ### Récursif
@@ -73,9 +73,9 @@ Pour le calcul de la factorielle, si $(n-1)!$ est connu, $n! = n \times ((n-1)!)
 
 <div>
 $$
-n! = \begin{cases}
-1 \text{ si } n=1\\
-n \cdot (n-1)!
+n! \coloneqq \begin{cases}
+1 &\text{si } n=1\\
+n \cdot (n-1)! &\text{sinon }
 \end{cases}
 $$
 </div>

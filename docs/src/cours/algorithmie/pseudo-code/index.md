@@ -59,10 +59,10 @@ Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez do
 
 Plusieurs opérateurs ressemblant à l'égalité sont utilisés en pseudo-code, attention à bien comprendre leurs différences.
 
-- `x := y`{.language-} : on remplace x par y à chaque fois qu'on le voit
-- `x ← y`{.language-} : on affecte x à la valeur de y
-- `x = y`{.language-} : avec les définitions de x et y les 2 variables sont toujours égales (c'est une conséquence)
-- `x == y`{.language-} : vrai si la valeur de x vaut la valeur de y et faux sinon
+- `x := y`{.language-} : on définie `x`{.language-} comme étant `y`{.language-}
+- `x ← y`{.language-} : on affecte `x`{.language-} à la valeur de `y`{.language-}
+- `x = y`{.language-} : avec les définitions et les propriétés de `x`{.language-} et `y`{.language-} les valeurs des eux variables sont toujours égales. C'est une conséquence.
+- `x == y`{.language-} : on teste l'égalité entre les valeurs de `x`{.language-} et de `y`{.language-}. vrai si la valeur de x vaut la valeur de y et faux sinon
 
 ## _"Abus"_ de notation
 

@@ -11,6 +11,9 @@ eleventyComputed:
 
 On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace) (1815-1852) qui est le(a) premier(e) informaticien(ne) de l'histoire. Elle a donné ce nom en hommage à un savant persan du 9ème siècle (né vers 780 et mort en 850 à Bagdad) nommé [Al-Khwârizmî](https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE) qui a publié le premier manuel d'algèbre connu à ce jour.
 
+
+On va montrer quelques propriétés générales d'un programme et d'un algorithme.
+
 ## <span id="algorithme"></span> Algorithme ?
 
 {% note "Définition du '*Petit Robert*'  d'un **algorithme** :" %}
@@ -260,7 +263,7 @@ Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de tout
 {% endnote2 %}
 {% note "**Proposition**" %}
 
-Il existe une injection entre $(\mathcal{A})^\star$ et $(\\{0, 1\\})^\star$ pour tout ensemble fini $\mathcal{A}$.
+Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)) entre $(\mathcal{A})^\star$ et $(\\{0, 1\\})^\star$ pour tout ensemble fini $\mathcal{A}$.
 
 {% endnote %}
 {% details "preuve", "open" %}
@@ -300,12 +303,6 @@ $$
 
 On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i < n}$ un élément de l'ensemble $(\\{0, 1\\})^\star$. 
 {% enddetails %}
-{% info %}
-
-Comme il existe évidemment une injection entre $(\\{0, 1\\})^\star$ et $(\mathcal{A})^\star$ si $\mathcal{A}$ est fini les deux ensembles sont en bijection de part le
-Ils sont même en bijection de part [le théorème de Cantor-Bernstein](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein) (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).
-
-{% endinfo %}
 
 La proposition précédente montre que l'on peut représenter toute suite finie d'éléments d'un ensemble fini par une suite finie de `0` et de `1` de façon unique. On en déduit le résultat que tout le monde connaît :
 
@@ -339,9 +336,19 @@ Dans la première définition [des machines de Turing](https://fr.wikipedia.org/
 
 {% enddetails %}
 
+
+Au final :
+
+{% attention "**À retenir**" %}
+On peut sans perte de généralité supposer que les seuls objets manipulables par un programme sont des suites finies de `0` et de `1`.
+
+Alternativement, on peut aussi sans perte de généralité que les seuls objets manipulables par un programme sont des entiers positifs puisqu'une suite finie de `0` et de `1` est la représentation d'un entier en base 2.
+{% endattention %}
+
+
 ## Nombres de paramètres d'entrée d'un programme
 
-On vient de voir que tous les objets manipulables par des programmes peuvent être assimilé à des suites finies de `0` et de `1`, bref à des entiers représenté en base 2. On peut aller plus loin en représentant les tableaux de suites finies de "0" et de "1" par une unique suite finie de "0" et de "1". Pour cela on peut utiliser la fonction suivante, qui est une injection de $(\\{0, 1\\})^\star \times (\\{0, 1\\})^\star$ dans $(\\{0, 1\\})^\star$. 
+On vient de voir que tous les objets manipulables par des programmes peuvent être assimilé à des suites finies de `0` et de `1`, bref à des entiers représenté en base 2. On peut aller plus loin en représentant les tableaux de suites finies de `0` et de `1` par une unique suite finie de `0` et de `1`.
  
 <div id="proposition-cartésien"></div>
 
@@ -370,20 +377,29 @@ Ce qui assure que l'on peu retrouver le couple initial à partir de la suite fin
 
 {% enddetails %}
 
-Cette proposition est vraiment importante Car elle montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $(\\{0, 1\\})^\star$ en un algorithme avec $p-1$ paramètre ! Ceci montre que tout programme peut être écrit avec un unique paramètre dans $(\\{0, 1\\})^\star$. Comme les suites finies de `0` et de `1` sont des entiers écrit en base 2, on obtient le résultat fondamental :
+Cette proposition est vraiment importante Car elle montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $(\\{0, 1\\})^\star$ en un algorithme avec $p-1$ paramètres dans $(\\{0, 1\\})^\star$ en fusionnant les deux premiers paramètres en utilisant l'injection définie dans la proposition et en les retrouvant en utilisant la procédure inverse au d´´but de l'algorithme !
+
+Ceci montre que tout programme peut être écrit avec un unique paramètre dans $(\\{0, 1\\})^\star$, quite à retrouver les paramètres initiaux en utilisant . Comme les suites finies de `0` et de `1` sont des entiers écrit en base 2, on obtient le résultat fondamental :
 
 {% attention "**À retenir**" %}
 
 Tout programme peut être écrit comme ayant :
 
-- au plus une entrée entière
-- une sortie entière s'il s'arrête
+- au plus une entrée dans $(\\{0, 1\\})^\star$ 
+- une sortie dans $(\\{0, 1\\})^\star$ s'il s'arrête
+
+Ou, de manière équivalente :
+
+Tout programme peut être écrit comme ayant :
+
+- au plus une entrée dans $\mathbb{N}$ 
+- une sortie dans $\mathbb{N}$ s'il s'arrête
 
 {% endattention %}
 
-Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière)  que dans $\mathbb{N}$. Étonnant, non ?
+Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui même en bijection avec à $(\\{0, 1\\})^\star \times (\\{0, 1\\})^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec à $(\\{0, 1\\})^\star$). Étonnant, non ?
 
-Terminons avec un petit exercice pour vois si vous avez compris :
+Terminons avec un petit exercice pour voir si vous avez compris :
 
 {% exercice %}
 Donnez un encodage permettant d'écrire comme une suite de `0` et de `1`  les listes imbriquées de tableaux de 0 et de 1, comme `[0, [1, [1]], 0]`.

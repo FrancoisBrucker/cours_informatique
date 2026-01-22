@@ -40,7 +40,7 @@ Avec :
 
 ## Prérequis
 
-Il est nécessaire d'avoir quelques prérequis avant de commencer ce cours.
+Il est nécessaire d'avoir quelques prérequis avant de commencer ce cours, en particulier vos cours d'informatique du S1.
 
 ### Algorithmie
 
@@ -48,11 +48,7 @@ Avoir une notion de ce qu'est une variable, une instruction et une fonction. Auc
 
 ### Programmation
 
-Il est nécessaire d'avoir des bases de python pour commencer ce cours. Il est **indispensable** que vous relisiez le cours ci-après pour s'assurer que vous avez bien les bases nécessaires en programmation python pour commencer ce cours :
-
-{% aller %}
-[Bases de python](/cours/coder-et-développer/bases-programmation/){.interne}
-{% endaller %}
+Il est nécessaire d'avoir des bases de python pour commencer ce cours.
 
 ## Cours
 
@@ -71,7 +67,6 @@ Ce cours est composée de plusieurs parties :
 
 ### Prérequis
 
-> TBD pour s'assurer que les prérequis sont ok, faire un DM avant le début du semestre avec du code, du numpy et de la génération de listes. 
 
 > TBD remplacer debugueur par TD listes et dictionnaires python.
 
@@ -153,7 +148,7 @@ Notions abordées :
 - écrire du code python utilisable et maintenable
 
 {% aller %}
-1. créer un projet python avec vscode
+1. Rappels : [créer un projet python avec vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne}
 2. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/){.interne}
 3. [Modules externes python](/cours/coder-et-développer/modules-externes-python/){.interne}
 4. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
@@ -188,6 +183,10 @@ Si on a le temps, sinon à faire chez soit :
 {% attention %}
 Test de 15min **sur ordinateur** en début de cours sur les thèmes de la semaine précédente.
 {% endattention %}
+
+<!-- 
+> TBD pour s'assurer que les prérequis sont ok, faire un DM avant le début du semestre avec du code, du numpy et de la génération de listes.  
+-->
 
 - définition
 - complexité spatiale et temporelle

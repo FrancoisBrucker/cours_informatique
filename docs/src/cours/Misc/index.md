@@ -18,6 +18,16 @@ eleventyComputed:
 
 Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, définitions et quelques propriétés sur les probabilités, _etc_) dont nous aurons besoin aux cours des sujets traités. Ils sont assez généraux pour avoir leurs parties à eux mais pas assez _"informatique"_ pour être traité de façon extensive.
 
+
+## Fonction
+
+- ensembles, produit cartésiens et mots
+- injection
+- surjection
+- bijection
+- dénombrable
+- autres infinis
+
 ## Probabilités discrètes
 
 {% aller %}
