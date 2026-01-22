@@ -97,6 +97,7 @@
   
 
   <p>On doit le mot algorithme à <a href="https://fr.wikipedia.org/wiki/Ada_Lovelace">Ada Lovelace</a> (1815-1852) qui est le(a) premier(e) informaticien(ne) de l'histoire. Elle a donné ce nom en hommage à un savant persan du 9ème siècle (né vers 780 et mort en 850 à Bagdad) nommé <a href="https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE">Al-Khwârizmî</a> qui a publié le premier manuel d'algèbre connu à ce jour.</p>
+<p>On va montrer quelques propriétés générales d'un programme et d'un algorithme.</p>
 <h2><span id="algorithme"></span> Algorithme ?</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -375,7 +376,7 @@ Programme :
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Il existe une injection entre $(\mathcal{A})^\star$ et $(\{0, 1\})^\star$ pour tout ensemble fini $\mathcal{A}$.</p>
+<p>Il existe <a href="https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)">une injection</a> entre $(\mathcal{A})^\star$ et $(\{0, 1\})^\star$ pour tout ensemble fini $\mathcal{A}$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -424,15 +425,6 @@ $$
 </div>
 </details>     
 </div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Comme il existe évidemment une injection entre $(\{0, 1\})^\star$ et $(\mathcal{A})^\star$ si $\mathcal{A}$ est fini les deux ensembles sont en bijection de part le
-Ils sont même en bijection de part <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein">le théorème de Cantor-Bernstein</a> (s'il existe une injection de $A$ vers $B$ et une injection de $B$ vers $A$ alors il existe une bijection entre $A$ et $B$).</p>
-</div></div>
-
 <p>La proposition précédente montre que l'on peut représenter toute suite finie d'éléments d'un ensemble fini par une suite finie de <code>0</code> et de <code>1</code> de façon unique. On en déduit le résultat que tout le monde connaît :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -495,8 +487,20 @@ Ils sont même en bijection de part <a href="https://fr.wikipedia.org/wiki/Th%C3
 </div>
 </details>     
 </div>
+<p>Au final :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On peut sans perte de généralité supposer que les seuls objets manipulables par un programme sont des suites finies de <code>0</code> et de <code>1</code>.</p>
+<p>Alternativement, on peut aussi sans perte de généralité que les seuls objets manipulables par un programme sont des entiers positifs puisqu'une suite finie de <code>0</code> et de <code>1</code> est la représentation d'un entier en base 2.</p>
+</div></div>
+
 <h2>Nombres de paramètres d'entrée d'un programme</h2>
-<p>On vient de voir que tous les objets manipulables par des programmes peuvent être assimilé à des suites finies de <code>0</code> et de <code>1</code>, bref à des entiers représenté en base 2. On peut aller plus loin en représentant les tableaux de suites finies de &quot;0&quot; et de &quot;1&quot; par une unique suite finie de &quot;0&quot; et de &quot;1&quot;. Pour cela on peut utiliser la fonction suivante, qui est une injection de $(\{0, 1\})^\star \times (\{0, 1\})^\star$ dans $(\{0, 1\})^\star$.</p>
+<p>On vient de voir que tous les objets manipulables par des programmes peuvent être assimilé à des suites finies de <code>0</code> et de <code>1</code>, bref à des entiers représenté en base 2. On peut aller plus loin en représentant les tableaux de suites finies de <code>0</code> et de <code>1</code> par une unique suite finie de <code>0</code> et de <code>1</code>.</p>
 <div id="proposition-cartésien"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -543,7 +547,8 @@ On peut utiliser l'encodage suivant :</p>
 </div>
 </details>     
 </div>
-<p>Cette proposition est vraiment importante Car elle montre que l'on peut toujours représenter un algorithme à $p &gt; 1$ paramètres dans $(\{0, 1\})^\star$ en un algorithme avec $p-1$ paramètre ! Ceci montre que tout programme peut être écrit avec un unique paramètre dans $(\{0, 1\})^\star$. Comme les suites finies de <code>0</code> et de <code>1</code> sont des entiers écrit en base 2, on obtient le résultat fondamental :</p>
+<p>Cette proposition est vraiment importante Car elle montre que l'on peut toujours représenter un algorithme à $p &gt; 1$ paramètres dans $(\{0, 1\})^\star$ en un algorithme avec $p-1$ paramètres dans $(\{0, 1\})^\star$ en fusionnant les deux premiers paramètres en utilisant l'injection définie dans la proposition et en les retrouvant en utilisant la procédure inverse au d´´but de l'algorithme !</p>
+<p>Ceci montre que tout programme peut être écrit avec un unique paramètre dans $(\{0, 1\})^\star$, quite à retrouver les paramètres initiaux en utilisant . Comme les suites finies de <code>0</code> et de <code>1</code> sont des entiers écrit en base 2, on obtient le résultat fondamental :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -553,13 +558,19 @@ On peut utiliser l'encodage suivant :</p>
 </div><div class="pl-8 mr-8">
 <p>Tout programme peut être écrit comme ayant :</p>
 <ul>
-<li>au plus une entrée entière</li>
-<li>une sortie entière s'il s'arrête</li>
+<li>au plus une entrée dans $(\{0, 1\})^\star$</li>
+<li>une sortie dans $(\{0, 1\})^\star$ s'il s'arrête</li>
+</ul>
+<p>Ou, de manière équivalente :</p>
+<p>Tout programme peut être écrit comme ayant :</p>
+<ul>
+<li>au plus une entrée dans $\mathbb{N}$</li>
+<li>une sortie dans $\mathbb{N}$ s'il s'arrête</li>
 </ul>
 </div></div>
 
-<p>Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière)  que dans $\mathbb{N}$. Étonnant, non ?</p>
-<p>Terminons avec un petit exercice pour vois si vous avez compris :</p>
+<p>Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui même en bijection avec à $(\{0, 1\})^\star \times (\{0, 1\})^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec à $(\{0, 1\})^\star$). Étonnant, non ?</p>
+<p>Terminons avec un petit exercice pour voir si vous avez compris :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">

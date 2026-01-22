@@ -150,7 +150,7 @@
 
 <p>Pour expliciter la différence entre les deux approches nous allons utiliser le calcul de la factorielle définie pour tout entier $n\geq 1$ telle que :</p>
 <p>$$
-n! = \prod\limits_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
+n! \coloneqq \prod\limits_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
 $$</p>
 <h3>Récursif</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -164,9 +164,9 @@ $$</p>
 <p>Pour le calcul de la factorielle, si $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$, on peut écrire l'équation de récurrence :</p>
 <div>
 $$
-n! = \begin{cases}
-1 \text{ si } n=1\\
-n \cdot (n-1)!
+n! \coloneqq \begin{cases}
+1 &\text{si } n=1\\
+n \cdot (n-1)! &\text{sinon }
 \end{cases}
 $$
 </div>
