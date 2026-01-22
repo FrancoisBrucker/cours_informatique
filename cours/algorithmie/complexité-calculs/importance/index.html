@@ -97,20 +97,20 @@
   
 
   <p>Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité : :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que c'est une (avec $K$ et $k$ deux constantes et $\sim$ l'<a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalent mathématique</a>) :</p>
 <ul>
-<li><strong><em>complexité constante</em></strong> si $C(n) \sim K$</li>
-<li><strong><em>complexité logarithmique</em></strong> si $C(n) \sim K\cdot \ln(n)$</li>
-<li><strong><em>complexité linéaire</em></strong> si $C(n) \sim K\cdot n$</li>
-<li><strong><em>complexité polynomiale</em></strong> $C(n) \sim K\cdot n^k$</li>
-<li><strong><em>complexité exponentielle</em></strong> $C(n) \sim K\cdot k^n$</li>
+<li><strong><em>complexité constante</em></strong> si $C(n) \sim_{+\infty} K$</li>
+<li><strong><em>complexité logarithmique</em></strong> si $C(n) \sim_{+\infty} K\cdot \ln(n)$</li>
+<li><strong><em>complexité linéaire</em></strong> si $C(n) \sim_{+\infty} K\cdot n$</li>
+<li><strong><em>complexité polynomiale</em></strong> $C(n) \sim_{+\infty} K\cdot n^k$</li>
+<li><strong><em>complexité exponentielle</em></strong> $C(n) \sim_{+\infty} K\cdot k^n$</li>
 </ul>
 </div></div>
 
@@ -301,9 +301,14 @@
 <p>$$
 n! \sim \sqrt{2\pi n}(\frac{n}{e})^n
 $$</p>
-<blockquote>
-<p>TBD preuve <a href="https://www.youtube.com/watch?v=Dgh8673ymdo">https://www.youtube.com/watch?v=Dgh8673ymdo</a></p>
-</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=Dgh8673ymdo">une preuve de la formule</a></p>
+</div></div>
+
 <p>On a donc que $n!$ est de l'ordre de $n^{n+1/2}$, qui est vachement plus grand que $2^{n}$ qui est déjà gigantesque.</p>
 <p>Par exemple :</p>
 <ul>
@@ -315,11 +320,13 @@ $$</p>
 <li>$74! = 330788544151938641225953028221253782145683251820934971170611926835411235700971565459250872320000000000000000$</li>
 <li>$2^{74} = 18889465931478580854784$</li>
 </ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Si vous pensez que votre algorithme tout bête est de complexité $C(n) = n!$ Réfléchissez-y à deux fois. C'est presque sûrement une erreur... Et si ce n'est est pas une, votre algorithme est inefficace et devrait sûrement être oublié plutôt que montré à votre enseignant.</p>
 </div></div>
 

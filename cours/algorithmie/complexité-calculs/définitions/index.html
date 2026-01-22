@@ -102,9 +102,9 @@
 <li><strong><em>complexité en espace</em></strong> : le nombre de cases mémoires maximales utilisées pendant son exécution.</li>
 </ul>
 <p>Par défaut, la complexité utilisée est celle en temps :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
@@ -407,9 +407,9 @@ $$
 
 <h3>Connaissances minimales sur les entrées</h3>
 <p>Les connaissances minimales que l'on possède sur les données sont leurs tailles de stockage en mémoire.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
@@ -419,34 +419,35 @@ $$
 
 <p>Dans la partie pseudo-code on a considéré deux types de données :</p>
 <ul>
-<li>les types simples que sont les nombres et les caractères qui sont stockable sur 1 case mémoire</li>
-<li>les tableaux dont la taille est la somme des tailles de leurs éléments</li>
+<li>les types simples que sont les nombres et les caractères qui sont stockable sur 1 case mémoire,</li>
+<li>les tableaux dont la taille est leur longueur multiplié par la taille d'une de ses données.</li>
 </ul>
 <h3>Complexité algorithmique</h3>
 <p>En prenant en compte les connaissances minimales que l'on a sur les entrées d'un algorithme, sa complexité est définie comme suit :</p>
 <div id="complexité"></div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité</em></strong> $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité</em></strong> $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec un paramètre $N$ qui décrit les données.</p>
 </div></div>
 
-<p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">recherche</code> vaut $6N+4$.</p>
-<p>Comme rien n'est jamais simple, il existe des cas où la connaissance de la taille ne done pas un critère pertinent pour établir une complexité. C'est souvent le cas lorsque les paramètres de l'algorithmes sont de taille fixe, comme pour la fonction <code class="language-">fibonacci(n)</code>, la taille de stockage d'un entier étant de 1 case mémoire.</p>
-<p>Si l'on avait calculé la complexité en regroupant les entrées par taille, on aurait eu qu'une seule classe d'entrée et la complexité aurait été infinie... Il a donc fallu supposer que l'on connaissait la valeur de l'entrée pour calculer une complexité finie.</p>
+<p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">recherche</code> vaut $6N+5$, en utilisant la taille du tableau passé en entrée comme donnée.</p>
+<p>Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prises par les données comme paramètre. C'est le cas de la fonction <code class="language-">fibonacci(n)</code>, la taille de stockage d'un entier étant toujours 1 case mémoire. On utilise alors souvent la valeur des données comme paramètre, ce qui donne une complexité de $17n -19$.</p>
 <p>Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Lorsque l'on donne une complexité en fonction d'un paramètre, il faut :</p>
 <ul>
-<li>obligatoirement l'<strong>expliciter</strong> (taille de données, valeur d'une entrée, etc)</li>
+<li>obligatoirement l'<strong>expliciter</strong> (taille des données, valeur d'une entrée, etc)</li>
 <li>s'assurer que l'on peut calculer ce paramètre pour <strong>toutes les entrées</strong></li>
 <li>ne pas oublier que la complexité est le <strong>maximum</strong> du nombre d'instructions pour les exécutions de l'algorithme avec des entrées de paramètre constant (même taille de donnée, même valeur d'entrée, etc)</li>
 </ul>
@@ -455,35 +456,37 @@ $$
 <h2>Autres types de complexités</h2>
 <p>Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant la définition précédente. Il existe cependant d'autres types de complexité que l'on pourra utiliser.</p>
 <h2>Complexité min</h2>
-<p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme <code class="language-">recherche</code> par exemple), la complexité prend le maximum ($6N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme <code class="language-">recherche</code>) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme <code class="language-">recherche</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme <code class="language-">recherche</code> par exemple), la complexité prend le maximum ($6N+5$ où $N$ est la la taille du tableau en entrée pour l'algorithme <code class="language-">recherche</code>) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme <code class="language-">recherche</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité minimum</em></strong> $C_{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité minimum</em></strong> $C_{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées de paramètre $N$.</p>
 </div></div>
 
 <h2><span id="complexité-temps"></span>Complexité en temps</h2>
 <p>Lorsqu'un algorithme est codé, on peut l'exécuter et mesurer son temps d'exécution. On peut alors définir la <strong><em>complexité en temps</em></strong> d'exécution d'un code :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité en temps</em></strong> $T(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité en temps</em></strong> $T(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le temps maximum pris pour exécuter le code $A$ avec des entrées de paramètre $N$.</p>
 </div></div>
 
 <p>Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Le temps mis pour un code à être exécuté est proportionnelle à la complexité de son pseudo-code associé.</p>
 </div></div>
 
@@ -491,14 +494,14 @@ $$
 <h2>Complexité spatiale</h2>
 <p>Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est à dire la taille des variables dont il a eu besoin pour fonctionner.</p>
 <div id="complexité-spatiale"></div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité spatiale</em></strong> $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$ (aussi appelée <strong><em>complexité en mémoire</em></strong>) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité spatiale</em></strong> $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$ (aussi appelée <strong><em>complexité en mémoire</em></strong>) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées de paramètre $N$.</p>
 <p>On <strong>ne compte pas</strong> dans ce calcul la taille nécessaire pour stocker les différents paramètres de l'algorithme.</p>
 </div></div>
 
@@ -510,7 +513,6 @@ $$
 </ul>
 <p>Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la suite de Fibonacci :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci_sobre</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">  F <span class="token operator">←</span> un tableau de<span class="token number"> n </span>entiers</span>
 <span class="highlight-line">  a <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line">  b <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
@@ -523,7 +525,7 @@ $$
 <span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">  <span class="token keyword">rendre</span> b</span></code></pre>
-<p>Il demande beaucoup moins de mémoire, 5 cases mémoires seulement (pour stocker le paramètre $n$ et les 4 variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.</p>
+<p>Il demande beaucoup moins de mémoire, 4 cases mémoires seulement pour stocker les 4 variables ($a$, $b$, $c$ et $i$), sans compter le paramètre $n$, ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -532,7 +534,7 @@ $$
 <p>Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.</p>
 </div></div>
 
-<p>Complexité et complexité spatiale sont liées puisque chaque affectation d'une variable prend une instruction :</p>
+<p>Complexité et complexité spatiale sont liées :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -540,9 +542,30 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité spatiale est toujours inférieure à la complexité.</p>
+<p>Si toutes les variables définies sont affectées (cela comporte toutes les cases des tableaux), la complexité spatiale est toujours inférieure à la complexité</p>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Chaque affectation d'une variable prend une instruction.</p>
+</div>
+</details>     
+</div>
 <p>On peut même avoir un encadrement plus précis :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -551,7 +574,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour tout algorithme $A(p_1, \dots, p_m)$ dont la taille des entrées vaut $N$ et de complexités $C(N)$ (sa complexité en ombre d'instructions) et $S(N)$ (sa complexité spatiale), on a l'encadrement :</p>
+<p>Pour tout algorithme $A(p_1, \dots, p_m)$ ne manipulant que des tableaux de bits et affectant toutes ses variables tel que sa complexités soit $C(N)$ et sa complexité spatiale $S(N)$, on a l'encadrement :</p>
 <div>
 $$
 S(N) \leq C(N) \leq L \cdot 2^{S(N)}
@@ -578,7 +601,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>On sait déjà que $S(n) \leq C(n)$.</p>
-<p>Si une même ligne est exécutée deux fois avec la même composition de la mémoire, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(n)}$ fois qui correspond aux nombre maximum de positions de la mémoire.</p>
+<p>Si une même ligne est exécutée deux fois avec la même affectation des variables, l'algorithme va boucler infiniment. Une même instruction ne peut donc être exécutée au maximum que $2^{S(n)}$ fois qui correspond aux nombre maximum de valeurs différentes que peuvent prendre les $S(N)$ bits utilisés par l'algorithme.</p>
 </div>
 </details>     
 </div>
