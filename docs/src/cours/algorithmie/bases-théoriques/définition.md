@@ -629,12 +629,12 @@ D'un point de vue informatique, on conclut de cette partie que tout ce qu'on man
 
 {% attention "**À retenir**" %}
 
-On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1`.
+On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite de finie de `0` et de `1` et rend en sortie une suite finie de `0` et de `1`.
 
-Connaître les objets "réels" ou les instructions réelles d'un algorithme se faisant via des procédures qui transforment les suites de finies de `0` et de `1` :
+Connaître les données ou les instructions "réels" d'un algorithme se fait via des procédures qui transforment les suites de finies de `0` et de `1` :
 
 - en instructions
-- en données à manipuler
+- en données
 
 {% endattention %}
 
