@@ -249,7 +249,7 @@ La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux pa
 algorithme factorielle(n: entier) → entier:
     si n == 1:  # condition d'arrêt
         rendre 1
-    (f := entier) ← factorielle(n-1)
+    f :=  factorielle(n-1)
     rendre n * f
 ```
 
@@ -335,7 +335,7 @@ algorithme u_n(n : entier,
                u0: entier, 
                r : entier
               ) → entier:
-    (acc := entier) ← 0
+    acc := 0
     tant que n > 0:
         acc ← r + acc
         n ← n - 1

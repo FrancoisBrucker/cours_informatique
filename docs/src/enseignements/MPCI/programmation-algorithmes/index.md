@@ -114,10 +114,16 @@ Notions abordées :
 [On s'entraîne](/cours/algorithmie/projet-itératif-récursif/){.interne}
 {% endaller %}
   
-Si on a le temps, sinon à faire chez soit :
+Si on a le temps, sinon à essayer de faire chez soit :
 
 {% aller %}
 [exercices non corrigés](/cours/algorithmie/exercices-itératif-récursif){.interne}
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+[Projet : techniques de récursion](/cours/algorithmie/projet-techniques-de-récursion){.interne}
 {% endaller %}
 
 ### Semaine 2
