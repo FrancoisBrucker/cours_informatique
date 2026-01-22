@@ -135,7 +135,7 @@ Les opérations sont le second moyen de créer des objets. Par exemple le boolé
   - logique : égalité (avec le signe `==`{.language-})
 - opérations sur les bits et les booléens :
   - "négation logique" (non, `NOT`{.language-}, $\neg$),
-  - "et logique" (et, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `||`{.language-}, `OR`{.language-} ou $\lor$)
+  - "et logique" (et, `ET`{.language-}, `&&`{.language-}, `AND`{.language-} ou $\land$), "ou logique" (ou, `OU`{.language-}, `||`{.language-}, `OR`{.language-} ou $\lor$)
 
 ```pseudocode
 40 + 2  # rendra l'objet entier 42

@@ -181,7 +181,7 @@ Pour prouver un algorithme on cherchera prouver ce que fait chaque boucle ou ré
 2. une équation de récurrence plus une condition d'arrêt pour prouver :
    - un algorithme récursif
    - une boucle itérative pouvant être écrite sous forme récursive
-3. [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
+3. [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithmes itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
 
 {% endattention %}
 
@@ -583,7 +583,7 @@ Montrez que l'algorithme récursif précédent calcule bien le pgcd de eux entie
 {% endexercice %}
 {% details "corrigé" %}
 
-- terminaison : La condition de terminaison est `a == b`{.language-}. Si `a \leq b`{.language-}, chaque itération va diminuer strictement la quantité $\vert\\, a = b \\,\vert$ et donc se rapprocher strictement de la condition d'arrêt : notre programme s'arrête pour toute entrée.
+- terminaison : La condition de terminaison est `a == b`{.language-}. Si `a < b`{.language-}, chaque itération va diminuer strictement la quantité $\vert\\, a = b \\,\vert$ et donc se rapprocher strictement de la condition d'arrêt : notre programme s'arrête pour toute entrée.
 
 - correction : si `a == b`{.language-}, son pgcd est bien a (ou b) et sinon on respecte [la définition d'Euclide du pgcd](../bases-théoriques/calculabilité/#algorithme-euclide){.interne}.
 

@@ -169,7 +169,7 @@ algorithme palindrome_pas_rec(T: [entier], i: entier) → booléen
 
 {% exercice %}
 
-L'algorithme `retournement_indice(T: [entier], i: entier) → ∅`{.language-pseudocode} est sous forme terminale, transformez le en programme itératif.
+L'algorithme `retournement_indice(T: [entier], i: entier) → ∅`{.language-pseudocode} [que l'on a déjà vu](../projet-itératif-récursif/#algorithme-retournement){.interne} est sous forme terminale, transformez le en programme itératif.
 
 En déduire un algorithme itératif permettant de retourner un tableau.
 {% endexercice %}
@@ -365,7 +365,7 @@ algorithme pair(n: entier) → booléen
 algorithme impair(n: entier) → booléen
 ```
 
-Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pseudocode} alors que'`impair(0)`{.language-} est `Faux`{.language-pseudocode}.
+Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pseudocode} alors que `impair(0)`{.language-} est `Faux`{.language-pseudocode}.
 
 {% endexercice %}
 {% details "corrigé" %}

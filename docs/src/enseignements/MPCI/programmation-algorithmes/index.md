@@ -117,8 +117,7 @@ Notions abordées :
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-- [Projet : techniques de récursion](/cours/algorithmie/projet-techniques-de-récursion){.interne}
-- [exercices non corrigés](/cours/algorithmie/exercices-itératif-récursif){.interne}
+[exercices non corrigés](/cours/algorithmie/exercices-itératif-récursif){.interne}
 {% endaller %}
 
 ### Semaine 2
