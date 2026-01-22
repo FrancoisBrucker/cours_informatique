@@ -22,6 +22,7 @@ Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, dé
 ## Fonction
 
 - ensembles, produit cartésiens et mots
+- image et image réciproque
 - injection
 - surjection
 - bijection

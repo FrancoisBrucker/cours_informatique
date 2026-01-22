@@ -263,7 +263,7 @@ Pour un ensemble $\mathcal{A}$, on note $(\mathcal{A})^\star$ l'ensemble de tout
 {% endnote2 %}
 {% note "**Proposition**" %}
 
-Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)) entre $(\mathcal{A})^\star$ et $(\\{0, 1\\})^\star$ pour tout ensemble fini $\mathcal{A}$.
+Il existe [une injection](https://fr.wikipedia.org/wiki/Injection_(math%C3%A9matiques)) entre $\mathcal{A}^\star$ et $\\{0, 1\\}^\star$ pour tout ensemble fini $\mathcal{A}$.
 
 {% endnote %}
 {% details "preuve", "open" %}
@@ -301,7 +301,7 @@ $$
 $$
 </div>
 
-On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i < n}$ un élément de l'ensemble $(\\{0, 1\\})^\star$. 
+On associe bien de façon unique à toute chaîne de caractères $(c_i)_{0\leq i < n}$ un élément de l'ensemble $\\{0, 1\\}^\star$. 
 {% enddetails %}
 
 La proposition précédente montre que l'on peut représenter toute suite finie d'éléments d'un ensemble fini par une suite finie de `0` et de `1` de façon unique. On en déduit le résultat que tout le monde connaît :
@@ -323,7 +323,7 @@ Cependant n'utiliser que des tableaux de bits (dont le type est `[bit]`) pour no
 - une chaîne de caractères en utilisant le code utf-8. Par exemple "Yop !" correspond au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)) qui en binaire vaut : `0000010110010110111101110000001000000010`
 
 {% exercice %}
-Montrez qu'il existe une injection entre $(\mathcal{A})^\star$ et $(\\{ 1\\})^\star$.
+Montrez qu'il existe une injection entre $\mathcal{A}^\star$ et $\\{ 1\\}^\star$.
 
 Pourquoi s'embêter avec un deuxième symbole (le `0`) alors ?
 {% endexercice %}
@@ -354,7 +354,7 @@ On vient de voir que tous les objets manipulables par des programmes peuvent êt
 
 {% note "**Proposition**" %}
 
-Il existe une injection de $(\\{0, 1\\})^\star \times (\\{0, 1\\})^\star$ dans $(\\{0, 1\\})^\star$.
+Il existe une injection de $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$ dans $\\{0, 1\\}^\star$.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -365,7 +365,7 @@ On peut utiliser l'encodage suivant :
 - le caractère `1` est encodé par la suite `11`
 - le caractère de séparation est encodé par la suite `00`
 
-Ainsi l'élément de `(00110, 110)` de $(\\{0, 1\\})^\star \times (\\{0, 1\\})^\star$ sera encodé par la suite `101011111000111110`. 
+Ainsi l'élément de `(00110, 110)` de $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$ sera encodé par la suite `101011111000111110`. 
 
 Il est clair que cet encodage est unique puisque :
 
@@ -377,27 +377,26 @@ Ce qui assure que l'on peu retrouver le couple initial à partir de la suite fin
 
 {% enddetails %}
 
-Cette proposition est vraiment importante Car elle montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $(\\{0, 1\\})^\star$ en un algorithme avec $p-1$ paramètres dans $(\\{0, 1\\})^\star$ en fusionnant les deux premiers paramètres en utilisant l'injection définie dans la proposition et en les retrouvant en utilisant la procédure inverse au d´´but de l'algorithme !
+Cette proposition est vraiment importante Car elle montre que l'on peut toujours représenter un algorithme à $p > 1$ paramètres dans $\\{0, 1\\}^\star$ en un algorithme avec $p-1$ paramètres dans $\\{0, 1\\}^\star$ en fusionnant les deux premiers paramètres en utilisant l'injection définie dans la proposition et en les retrouvant en utilisant la procédure inverse au d´´but de l'algorithme !
 
-Ceci montre que tout programme peut être écrit avec un unique paramètre dans $(\\{0, 1\\})^\star$, quite à retrouver les paramètres initiaux en utilisant . Comme les suites finies de `0` et de `1` sont des entiers écrit en base 2, on obtient le résultat fondamental :
+Ceci montre que tout programme peut être écrit avec un unique paramètre dans $\\{0, 1\\}^\star$, quite à retrouver les paramètres initiaux en utilisant . Comme les suites finies de `0` et de `1` sont des entiers écrit en base 2, on obtient le résultat fondamental :
 
 {% attention "**À retenir**" %}
 
 Tout programme peut être écrit comme ayant :
 
-- au plus une entrée dans $(\\{0, 1\\})^\star$ 
-- une sortie dans $(\\{0, 1\\})^\star$ s'il s'arrête
+- au plus une entrée dans $\\{0, 1\\}^\star$ 
+- une sortie dans $\\{0, 1\\}^\star$ s'il s'arrête
 
-Ou, de manière équivalente :
 
-Tout programme peut être écrit comme ayant :
+**De manière équivalente**, tout programme peut être écrit comme ayant :
 
 - au plus une entrée dans $\mathbb{N}$ 
 - une sortie dans $\mathbb{N}$ s'il s'arrête
 
 {% endattention %}
 
-Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui même en bijection avec à $(\\{0, 1\\})^\star \times (\\{0, 1\\})^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec à $(\\{0, 1\\})^\star$). Étonnant, non ?
+Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui même en bijection avec à $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec à $\\{0, 1\\}^\star$). Étonnant, non ?
 
 Terminons avec un petit exercice pour voir si vous avez compris :
 
@@ -538,7 +537,7 @@ Il faut faire un peut attention avec les infinis, par exemple les deux fonctions
 Ceci montre que :
 
 - les entiers sont en bijection avec $f(\mathbb{N})$ c'est à dire les entiers pairs
-- les entiers sont en bijection avec $g(\mathbb{N})% c'est à dire les entiers impair
+- les entiers sont en bijection avec $g(\mathbb{N})$ c'est à dire les entiers impair
 
 Bref : il y a autant d'entier que d'entier pair que d'entiers impair !
 
@@ -558,12 +557,10 @@ On suppose que $f$ est une injection de $E$ dans $F \subsetneq E$ et on note :
 
 <div>
 $$
-\left\{
-    \begin{array}{l}
-        G_0 = E \backslash F \\
-        G_{i+1} = f(G_i)
-    \end{array}
-\right.
+G_i \coloneqq \begin{cases}
+        G_0 = E \backslash F & \text{si } i = 0\\
+        G_{i} = f(G_{i-1}) & \text{sinon }
+    \end{cases}
 $$
 </div>
 
@@ -571,7 +568,7 @@ On note alors
 
 <div>
 $$
-G = \cup_{i \in \mathbb{N}} G_i \subseteq F
+G \coloneqq \cup_{i \in \mathbb{N}} G_i \subseteq F
 $$
 </div> 
 
@@ -579,12 +576,10 @@ Et $g$ la fonction de $E$ dans $F$ telle que :
 
 <div>
 $$
-g(x) \left\{
-    \begin{array}{ll}
+g(x) \coloneqq \begin{cases}
         f(x) & \text{si } x \in G\\
         x & \text{sinon}
-    \end{array}
-\right.
+    \end{cases}
 $$
 </div>
 
@@ -593,7 +588,7 @@ Nous allons montrer que $g$ est une bijection de $E$ dans $F$, ce qui conclura l
 - $g$ est une injection car :
   - si $x \in G$, alors $g(x) = f(x) \in G$ et $g$ est une injection de $G$ dans $G$
   - si $x \notin G$, $g(x)$ est l'identité $E\backslash G$ dans $E\backslash G$
-- $g$ est une surjection car si $x \in F$, alors il existe un entier $i$ tel que $x \in G_i$. Soit $i^\star$ le plus petit $i^\star$ tel que $x \in G_{i^\star}$. On a $i^\star > 0$ puisque $F \cap G_0 \varphi$ et donc il existe $y \in G_{i^\star -1}$ tel que f(y) = x$
+- $g$ est une surjection car si $x \in F$, alors il existe un entier $i$ tel que $x \in G_i$. Soit $i^\star$ le plus petit $i^\star$ tel que $x \in G_{i^\star}$. On a $i^\star > 0$ puisque $F \cap G_0 = \varnothing$ et donc il existe $y \in G_{i^\star -1}$ tel que $f(y) = x$
 
 {% enddetails %}
 {% note "**Corollaire (Théorème de Cantor-Bernstein)**" %}
@@ -625,13 +620,6 @@ Les ensembles $\mathbb{N}$ et $\mathbb{Q}$ sont en bijection.
 {% endnote %}
 {% details "preuve", "open" %}
 
-> TBD diagonale de Cantor
-
-{% enddetails %}
-{% note "**Corollaire**" %}
-Il y a autant d'entiers que de fractions entières.
-{% endnote %}
-{% details "preuve", "open" %}
 
 On utilise [la proposition du produit cartésien](./#proposition-cartésien) qui montre qu'il existe une injection de $\mathbb{N}$ dans $\mathbb{Q}$ et comme les entiers sont dans $\mathbb{Q}$ (c'est $n / 1$) il existe une injection de $\mathbb{Q}$ dans $\mathbb{N}$
 
@@ -681,7 +669,7 @@ On déduit du théorème précédent que :
 
 {% note "**Proposition**" %}
 
-Il existe des réels pour lesquels il n'existe aucun algorithme $A$ tel que $A(i)$ calcule sa $i$ème décimale quelque soit $i$.
+Il existe des réels pour lesquels il n'existe aucun algorithme $A$ tel que $A(0)$ rende sa partie entière et $A(i)$ sa $i$ème décimale pour $i>0$.
 
 {% endnote %}
 {% details "preuve", "open" %}
