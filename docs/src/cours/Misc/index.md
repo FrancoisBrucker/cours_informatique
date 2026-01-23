@@ -26,6 +26,7 @@ Nous mettrons ici divers sujets (essentiellement des rappels mathématiques, dé
 - injection
 - surjection
 - bijection
+- cardinal d'un ensemble infini p20 <https://www-lisic.univ-littoral.fr/~verel/TEACHING/13-14/IASF-M1app/cm01.pdf>
 - dénombrable
 - autres infinis
 

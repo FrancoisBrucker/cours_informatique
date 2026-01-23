@@ -264,13 +264,14 @@ En prenant en compte les connaissances minimales que l'on a sur les entrées d'u
 <div id="complexité"></div>
 {% note2 "**Définition**" %}
 
-**_La complexité_** $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec un paramètre $N$ qui décrit les données.
+**_La complexité_** $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$
+pour des données de paramètre $N$.
 
 {% endnote2 %}
 
-En utilisant la définition ci-dessus, la complexité de l'algorithme `recherche`{.language-} vaut $6N+5$, en utilisant la taille du tableau passé en entrée comme donnée.
+En utilisant la définition ci-dessus, la complexité de l'algorithme `recherche`{.language-} vaut $6N+5$, en utilisant la taille du tableau passé en entrée comme paramètre : pour tout tableau de longueur $N$ passé en paramètre, la complexité maximale est de $6N+5$ instructions.
 
-Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prises par les données comme paramètre. C'est le cas de la fonction `fibonacci(n)`{.language-}, la taille de stockage d'un entier étant toujours 1 case mémoire. On utilise alors souvent la valeur des données comme paramètre, ce qui donne une complexité de $17n -19$.
+Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prises par les données comme paramètre. C'est le cas de la fonction `fibonacci(n)`{.language-}, puisque pour nous la taille de stockage d'un entier sera toujours de 1. On peut alors souvent utiliser la valeur elle même des données comme paramètre, ce qui donne : pour des données de valeur $n$ la complexité de l'algorithme est de de $17n -19$.
 
 Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :
 

@@ -204,6 +204,20 @@ Le terme **fini** de la définition d'un programme/algorithme est crucial : pour
 
 Donc la description du programme ainsi que les données doivent être décrite avec un _"langage"_ formé  avec des [mots d'un alphabet fini](<https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)>).
 
+{% note2 "**Définition**" %}
+
+On appelle :
+
+- **_alphabet_** est un ensemble fini $\mathcal{A}$
+- une **_lettre_** est un élément d'un alphabet
+- un **_mot_** d'un alphabet $\mathcal{A}$ est une suite finie d'élément de $\mathcal{A}$
+- la **_longueur_** d'un mot est lee nombre d'élément de la suite le constituant
+- le **_mot vide_**, de longueur 0, est noté $\epsilon$
+- l'ensemble de tous les mots d'un alphabet $\mathcal{A}$ est noté $\mathcal{A}^\star$
+- un **_language_** est un sous-ensemble de $\mathcal{A}^\star$ (un ensemble, possiblement infini, de mots de $\mathcal{A}^\star$)
+
+{% endnote2 %}
+
 Par exemple le programme suivant qui énumère tous les entiers :
 
 ```text
@@ -545,6 +559,20 @@ Bref : il y a autant d'entier que d'entier pair que d'entiers impair !
 Ceci montre que lorsqu'il y a un nombre infini d'entiers (_ie._ d'élément d'un ensemble dénombrable), il y en a autant que d'entiers. 
 {% endattention %}
 
+À vous, pour voir si vous avez compris :
+
+{% exercice %}
+Montrez que l'ensemble des mots d'un alphabet fini est dénombrable.
+{% endexercice %}
+
+{% details "corrigé" %}
+
+L'alphabet est fini on peut donc ordonner ses lettres, puis ordonner ses mots dans l'ordre du dictionnaire :
+
+le mot vide, puis tous les mots de longueur 1, puis tous ceux de longueur 2, etc.
+
+{% enddetails %}
+
 La remarque précédente est un cas particulier d'[un théorème plus général que l'on doit à Cantor et Bernstein](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cantor-Bernstein) :
 
 {% note "**Proposition**" %}
@@ -612,7 +640,7 @@ Comme $f$ est une bijection de $f$ dans son image $f(A)$, $h^{-1} \circ f$ est u
 
 Jouer avec l'infini est à la fois rigolo et donne le vertige. De nombreux résultats sont contre-intuitif comme le résultat précédent qui montre qu'il peut y avoir autant d'élément dans un ensemble et une partie de celui-ci. 
 
-On peut grace au résultat précédent démontrer :
+On peut grâce au résultat précédent démontrer :
 
 {% note "**Proposition**" %}
 
