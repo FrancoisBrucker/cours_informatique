@@ -675,7 +675,7 @@ On peut définir sans perte de généralité un algorithme comme étant une suit
 {% details "corrigé" %}
 
 Soit $A$ un algorithme qui à partir d'une entrée $E$ donne une sortie $S$.
-Le couple $(E, S)$ est formellement un élément de $\mathbb{Q}$ (on associe la suite finie de `0`0 et de `1` à un nombre écrit en base 2). En utilisant une bijection $f$ entre $\mathbb{Q}$ et $\mathbb{N}$ on peut lui associer un nombre $F(E, S)$ donc une suite finie de `0` et de `1`.
+Le couple $(E, S)$ est formellement un élément de $\mathbb{Q}$ (on associe la suite finie de `0` et de `1` à un nombre écrit en base 2). En utilisant une bijection $f$ entre $\mathbb{Q}$ et $\mathbb{N}$ on peut lui associer un nombre $F(E, S)$ donc une suite finie de `0` et de `1`.
 
 De là on peut associer à notre algorithme l'unique algorithme :
 

@@ -85,7 +85,7 @@ Qui permet d'écrire l'algorithme récursif suivant :
 <div id="algorithme-factorielle-rec"></div>
 
 ```pseudocode
-algorithme factorielle(n: entier  # n > 1
+algorithme factorielle(n: entier  # n ≥ 1
                       ) → entier:
     si n == 1:  # condition d'arrêt
         rendre 1
@@ -372,7 +372,7 @@ Entraînons nous avec l'algorithme suivant, variante itérative de l'algorithme 
 algorithme factorielle_variante(n: entier):
     r := 1
     i := n
-    tant que i ≤ n:
+    tant que i ≥ 1:
         r ← r * i
         i ← i - 1
     rendre r

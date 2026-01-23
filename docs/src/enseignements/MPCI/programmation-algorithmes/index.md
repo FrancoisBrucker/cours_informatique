@@ -110,20 +110,20 @@ Notions abordées :
 {% aller %}
 [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
 {% endaller %}
-{% aller %}
-[On s'entraîne](/cours/algorithmie/projet-itératif-récursif/){.interne}
-{% endaller %}
   
-Si on a le temps, sinon à essayer de faire chez soit :
+Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-[exercices non corrigés](/cours/algorithmie/exercices-itératif-récursif){.interne}
+[On s'entraîne](/cours/algorithmie/projet-itératif-récursif/){.interne}
 {% endaller %}
 
 Pour aller plus loin :
 
 {% aller %}
-[Projet : techniques de récursion](/cours/algorithmie/projet-techniques-de-récursion){.interne}
+
+- [exercices non corrigés](/cours/algorithmie/exercices-itératif-récursif){.interne}
+- [Projet : techniques de récursion](/cours/algorithmie/projet-techniques-de-récursion){.interne}
+
 {% endaller %}
 
 ### Semaine 2
