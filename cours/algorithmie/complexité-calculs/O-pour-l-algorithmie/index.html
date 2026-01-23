@@ -161,9 +161,10 @@
 </div></div>
 
 <p>Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant <a href="../d%C3%A9finitions" class="interne">l'exemple initial de calcul de complexité</a> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">age <span class="token operator">←</span> <span class="token number">42</span></span>
-<span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>age <span class="token operator">≥</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>age <span class="token operator">&lt;</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    personne <span class="token operator">←</span> <span class="token string">"teenager"</span></span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">age <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
+<span class="highlight-line">age <span class="token operator">←</span> <span class="token number">16</span></span>
+<span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>age <span class="token operator">≥</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>age <span class="token operator">&lt;</span> <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    personne <span class="token operator">←</span> <span class="token string">"adolescent"</span></span></code></pre>
 <ul>
 <li>première ligne : 2 instructions donc $\mathcal{O}(1)$ instructions.</li>
 <li>deuxième ligne : 8 instructions donc $\mathcal{O}(1)$ instructions.</li>

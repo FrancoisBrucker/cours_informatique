@@ -121,8 +121,8 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">F<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span></code></pre>
 <p>On a considéré que cette instruction nécessitait 3 lectures de la variable <code class="language-">i</code>. Mais dire que l'on ne lit <code class="language-">i</code> qu'une seule fois aurait-été tout aussi légitime.</p>
 <p>Ou encore le code suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-  <span class="token keyword">affiche</span> à l'écran<span class="token number"> i
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+  <span class="token keyword">affiche</span><span class="token number"> i
 </span></code></pre>
 <p>Où l'on a considéré que l'on ne calculait pas tout l'intervalle à chaque itération et que l'on savait quel était l'élément suivant en 1 instruction, ce qui donne une complexité de $2+ 8\cdot 3 = 29$ :</p>
 <ul>
@@ -137,13 +137,13 @@
 <p>Il aurait été tout aussi légitime de compter différemment, en créant tout le tableau, en stockant la valeur courante, etc. Selon ce que l'on considère le compte serait très différent.</p>
 <h3>Algorithmes équivalents aux comptes très différents</h3>
 <p>Reprenons l'exemple précédent :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-  <span class="token keyword">affiche</span> à l'écran<span class="token number"> i
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+  <span class="token keyword">affiche</span><span class="token number"> i
 </span></code></pre>
 <p>En remplaçant la boucle for par une boucle tant que pour expliciter le calcul, on obtient :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">←</span> <span class="token number">2</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">:=</span> <span class="token number">2</span>
 <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> <span class="token number">9</span><span class="token punctuation">:</span>
-  <span class="token keyword">affiche</span> à l'écran<span class="token number"> i
+  <span class="token keyword">affiche</span><span class="token number"> i
 </span> <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
 <p>Qui est de complexité : $2+1+10(1+1+1) + 9(2+4) = 33 + 9 \cdot 6 = 87$ ce qui semble énorme !</p>
 <p>En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend vers une constante : la différence n'est plus si importante que cela lorsque $n$ devient grand.</p>

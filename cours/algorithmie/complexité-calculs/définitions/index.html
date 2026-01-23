@@ -114,7 +114,7 @@
 
 <p>Par exemple le pseudo-code suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">age <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
-<span class="highlight-line">age <span class="token operator">←</span> <span class="token number">42</span></span>
+<span class="highlight-line">age <span class="token operator">←</span> <span class="token number">16</span></span>
 <span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>age <span class="token operator">≥</span> <span class="token number">12</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>age <span class="token operator">&lt;</span> <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    personne <span class="token operator">←</span> <span class="token string">"adolescent"</span></span></code></pre>
 <ul>
@@ -253,7 +253,8 @@ instructions c'est à dire $43$ instructions.</p>
 </ul>
 <h2>Complexité d'un algorithme</h2>
 <p>Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 144$ :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">F <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">}</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">F <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">F <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">}</span></span>
 <span class="highlight-line">F<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line">F<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
@@ -288,12 +289,13 @@ instructions c'est à dire $43$ instructions.</p>
 <div class="mx-8 pb-2">
 <p>La complexité de chaque ligne :</p>
 <ul>
-<li>ligne 1 : 2 instructions (une création <strong>et</strong> une affectation)</li>
-<li>ligne 2 : 2 instructions (une création et une affectation)</li>
+<li>ligne 1 : 1 instructions</li>
+<li>ligne 2 : 1 instructions</li>
 <li>ligne 3 : 2 instructions (une création et une affectation)</li>
-<li>ligne 4 : 0 instruction</li>
-<li>ligne 5 : 2 instructions (une création et une affectation)</li>
-<li>ligne 6 : 4 instructions
+<li>ligne 4 : 2 instructions (une création et une affectation)</li>
+<li>ligne 5 : 0 instruction</li>
+<li>ligne 6 : 2 instructions (une création et une affectation)</li>
+<li>ligne 7 : 4 instructions
 <ul>
 <li>création de l'entier 9</li>
 <li>récupération de la variable <code class="language-">i</code></li>
@@ -301,7 +303,7 @@ instructions c'est à dire $43$ instructions.</p>
 <li>gestion du <code class="language-">tant que</code></li>
 </ul>
 </li>
-<li>ligne 7 : 9 instructions
+<li>ligne 8 : 9 instructions
 <ul>
 <li>2 créations d'entiers (l'entier 1 et 2)</li>
 <li>3 récupérations de la variable <code class="language-">i</code></li>
@@ -310,7 +312,7 @@ instructions c'est à dire $43$ instructions.</p>
 <li>1 affectation</li>
 </ul>
 </li>
-<li>ligne 8 : 4 instructions
+<li>ligne 9 : 4 instructions
 <ul>
 <li>1 création de l'entier 1</li>
 <li>1 récupération de la variable <code class="language-">i</code></li>
@@ -318,8 +320,8 @@ instructions c'est à dire $43$ instructions.</p>
 <li>1 affectation</li>
 </ul>
 </li>
-<li>ligne 9 : 0 instructions</li>
-<li>ligne 10 : 2 instructions
+<li>ligne 10 : 0 instructions</li>
+<li>ligne 11 : 2 instructions
 <ul>
 <li>1 récupération de l'objet associé à <code class="language-">F[9]</code></li>
 <li>1 instruction <code class="language-">rendre</code></li>
@@ -337,7 +339,8 @@ $$
 </div>
 <p>Mais souvent la complexité dépend des paramètres du programme, comme par exemple le pseudo-code suivant qui rend la $n$ème valeur de la suite de Fibonacci où $n$ est le paramètre de l'algorithme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">  F <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> n<span class="token punctuation">}</span></span>
+<span class="highlight-line">  F <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">  F <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">}</span></span>
 <span class="highlight-line">  F<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line">  F<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
@@ -514,10 +517,11 @@ pour des données de paramètre $N$.</p>
 </ul>
 <p>Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la suite de Fibonacci :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci_sobre</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">  a <span class="token operator">←</span> <span class="token number">1</span></span>
-<span class="highlight-line">  b <span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line">  a <span class="token operator">:=</span> <span class="token number">1</span></span>
+<span class="highlight-line">  b <span class="token operator">:=</span> <span class="token number">1</span></span>
+<span class="highlight-line">  c <span class="token operator">:=</span> <span class="token builtin">entier</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line"> <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">2</span></span>
+<span class="highlight-line"> <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">2</span></span>
 <span class="highlight-line">  <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">&lt;</span><span class="token number"> n </span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    c <span class="token operator">←</span> a <span class="token operator">+</span> b</span>
 <span class="highlight-line">    a <span class="token operator">←</span> b</span>
