@@ -25,7 +25,7 @@ Par exemple le pseudo-code suivant :
 
 ```pseudocode/
 age := entier
-age ← 42
+age ← 16
 si ((age ≥ 12) et (age < 18)):
     personne ← "adolescent"
 ```
@@ -131,7 +131,8 @@ De là l'instruction :
 Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 144$ :
 
 ```pseudocode/
-F := [entier]{longueur: 10}
+F := [entier]
+F ← [entier]{longueur: 10}
 F[0] ← 1
 F[1] ← 1
 
@@ -150,29 +151,30 @@ Explicitez les différentes instructions élémentaires pour justifier la valeur
 
 La complexité de chaque ligne :
 
-- ligne 1 : 2 instructions (une création **et** une affectation)
-- ligne 2 : 2 instructions (une création et une affectation)
+- ligne 1 : 1 instructions
+- ligne 2 : 1 instructions
 - ligne 3 : 2 instructions (une création et une affectation)
-- ligne 4 : 0 instruction
-- ligne 5 : 2 instructions (une création et une affectation)
-- ligne 6 : 4 instructions
+- ligne 4 : 2 instructions (une création et une affectation)
+- ligne 5 : 0 instruction
+- ligne 6 : 2 instructions (une création et une affectation)
+- ligne 7 : 4 instructions
   - création de l'entier 9
   - récupération de la variable `i`{.language-}
   - test logique `≤`{.language-}
   - gestion du `tant que`{.language-}
-- ligne 7 : 9 instructions
+- ligne 8 : 9 instructions
   - 2 créations d'entiers (l'entier 1 et 2)
   - 3 récupérations de la variable `i`{.language-}
   - 2 opérations `-`{.language-}
   - 1 opération `+`{.language-}
   - 1 affectation
-- ligne 8 : 4 instructions
+- ligne 9 : 4 instructions
   - 1 création de l'entier 1
   - 1 récupération de la variable `i`{.language-}
   - 1 opération `+`{.language-}
   - 1 affectation
-- ligne 9 : 0 instructions
-- ligne 10 : 2 instructions
+- ligne 10 : 0 instructions
+- ligne 11 : 2 instructions
   - 1 récupération de l'objet associé à `F[9]`{.language-}
   - 1 instruction `rendre`{.language-}
 
@@ -190,7 +192,8 @@ Mais souvent la complexité dépend des paramètres du programme, comme par exem
 
 ```pseudocode/
 algorithme fibonacci(n: entier) → entier:
-  F := [entier]{longueur: n}
+  F := [entier]
+  F ← [entier]{longueur: 10}
   F[0] ← 1
   F[1] ← 1
 
@@ -335,10 +338,11 @@ Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la 
 
 ```pseudocode/
 algorithme fibonacci_sobre(n):
-  a ← 1
-  b ← 1
+  a := 1
+  b := 1
+  c := entier
 
-  i ← 2
+  i := 2
   tant que i < n :
     c ← a + b
     a ← b

@@ -50,7 +50,7 @@ $$
 
 Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.
 
-Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne} :
+Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../pseudo-code/algorithmes-fonctions/#algorithme-nombre-occurrences){.interne} :
 
 ```pseudocode/
 algorithme nombre(T: [entier], x: entier) → entier:
@@ -63,11 +63,11 @@ algorithme nombre(T: [entier], x: entier) → entier:
 
 Lignes :
 
-2. une affectation : $\mathcal{O}(1)$ opérations
-3. une boucle de $T.\mbox{\small longueur}$ itérations : $\mathcal{O}(T.\mbox{\small longueur})$ opérations
-4. un test : $\mathcal{O}(1)$ opérations
-5. une affectation : $\mathcal{O}(1)$ opérations
-6. retour en $\mathcal{O}(1)$ opération
+1. une affectation : $\mathcal{O}(1)$ opérations
+2. une boucle de $T.\mbox{\small longueur}$ itérations : $\mathcal{O}(T.\mbox{\small longueur})$ opérations
+3. un test : $\mathcal{O}(1)$ opérations
+4. une affectation : $\mathcal{O}(1)$ opérations
+5. retour en $\mathcal{O}(1)$ opération
 
 Les lignes 2,3 et 4 sont effectuées $T.\mbox{\small longueur}$ fois, la complexité totale est donc en :
 

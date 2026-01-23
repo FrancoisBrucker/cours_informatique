@@ -172,8 +172,15 @@ Notions abordées :
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-- [Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
-- [déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
+
+[Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
+
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+[déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
 {% endaller %}
 
 ### Semaine 3
@@ -195,7 +202,6 @@ Notions abordées :
 - complexité spatiale et temporelle
 - calculs de $\mathcal{O}$
 - complexité d'algorithmes itératifs et récursifs
-- complexité d'un problème
 
 {% aller %}
 
@@ -206,6 +212,12 @@ Notions abordées :
 #### Vendredi : exercices
 
 > 2h
+
+{% aller %}
+
+[Projet : calculs de complexité d'un algorithme](/cours/algorithmie/projet-calcul-complexite/){.interne}
+
+{% endaller %}
 
 - mesure de complexité en code
 - complexité en moyenne

@@ -39,8 +39,8 @@ On a considéré que cette instruction nécessitait 3 lectures de la variable `i
 Ou encore le code suivant :
 
 ```pseudocode
-pour chaque i de [2 .. 9]:
-  affiche à l'écran i
+pour chaque (i := entier) de [2 .. 9]:
+  affiche i
 ```
 
 Où l'on a considéré que l'on ne calculait pas tout l'intervalle à chaque itération et que l'on savait quel était l'élément suivant en 1 instruction, ce qui donne une complexité de $2+ 8\cdot 3 = 29$ :
@@ -57,16 +57,16 @@ Il aurait été tout aussi légitime de compter différemment, en créant tout l
 Reprenons l'exemple précédent :
 
 ```pseudocode
-pour chaque i de [2 .. 9]:
-  affiche à l'écran i
+pour chaque (i := entier) de [2 .. 9]:
+  affiche i
 ```
 
 En remplaçant la boucle for par une boucle tant que pour expliciter le calcul, on obtient :
 
 ```pseudocode
-i ← 2
+i := 2
 tant que i ≤ 9:
-  affiche à l'écran i
+  affiche i
   i ← i + 1
 ```
 

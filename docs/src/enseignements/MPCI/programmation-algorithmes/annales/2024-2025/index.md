@@ -1,13 +1,9 @@
 ---
 layout: layout/post.njk
-title: "Annales 2023/2024"
+title: "Annales 2024/2025"
 ---
 
-<!-- début résumé -->
-
-Tests et examens pour l'année scolaire 2023/2024
-
-<!-- end résumé -->
+Tests et examens pour l'année scolaire 2024/2025
 
 ## Tests
 

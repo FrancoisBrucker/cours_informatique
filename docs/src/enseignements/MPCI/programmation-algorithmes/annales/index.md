@@ -15,3 +15,4 @@ Listes d'exercices, tests et examens données pour ce cours.
 4. [2022/2023](./2022-2023){.interne}
 5. [2023/2024](./2023-2024){.interne}
 6. [2024/2025](./2024-2025){.interne}
+7. [2025/2026](./2025-2026){.interne}

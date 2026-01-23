@@ -54,9 +54,10 @@ L'exécution d'**un nombre constant de fois** un bloc d'instruction :
 Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant [l'exemple initial de calcul de complexité](../définitions){.interne} :
 
 ```pseudocode/
-age ← 42
-si ((age ≥ 12) et (age < 20)):
-    personne ← "teenager"
+age := entier
+age ← 16
+si ((age ≥ 12) et (age < 18)):
+    personne ← "adolescent"
 ```
 
 - première ligne : 2 instructions donc $\mathcal{O}(1)$ instructions.
