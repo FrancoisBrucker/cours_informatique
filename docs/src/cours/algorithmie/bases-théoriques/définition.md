@@ -500,7 +500,6 @@ Un **_programme_** est une suite finie $c_1 \dots c_n$ où :
 Un programme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.
 {% enddetails %}
 
-
 Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode. On peut alors utiliser [la proposition sur les suites binaires](./#paramètres-binaires){.interne} pour avoir la proposition suivante :
 
 <div id="proposition-encodage-algorithme"></div>
@@ -665,6 +664,42 @@ Connaître les données ou les instructions "réels" d'un algorithme se fait via
 - en données
 
 {% endattention %}
+
+
+Pour finir, un petit résultat très utile que vous pouvez démontrer :
+
+{% exercice %}
+On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite de finie de `0` et de `1` et rend en sortie `1` ou `0`.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Soit $A$ un algorithme qui à partir d'une entrée $E$ donne une sortie $S$.
+Le couple $(E, S)$ est formellement un élément de $\mathbb{Q}$ (on associe la suite finie de `0`0 et de `1` à un nombre écrit en base 2). En utilisant une bijection $f$ entre $\mathbb{Q}$ et $\mathbb{N}$ on peut lui associer un nombre $F(E, S)$ donc une suite finie de `0` et de `1`.
+
+De là on peut associer à notre algorithme l'unique algorithme :
+
+```
+A'(E):
+    E', S' = f^{-1}(E)
+    S'' = A(E')
+
+    Si S' == S'':
+        rendre 1
+    sinon:
+        rendre 0
+```
+
+
+{% enddetails %}
+{% exercice %}
+Déduire de l'exercice précédent qu'un algorithme peut être vu comme un langage de $\\{0, 1\\}$.
+{% endexercice %}
+{% details "corrigé" %}
+On considère les algorithmes comme vu dans l'exercice précédent, c'est à dire une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite de finie de `0` et de `1` et rend en sortie `1` ou `0`.
+
+Et on associe à un algorithme $A$ le langage formé de toutes les entrées pour lesquelles il rend `1`.
+{% enddetails %}
 
 ## Algorithmes et démonstration mathématiques
 
