@@ -190,6 +190,12 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 [Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite){.interne}
 {% endaller %}
 
+On vérifie qu'on sait faire :
+
+{% aller %}
+[exercices non corrigés](./exercices-calculs-compexités){.interne}
+{% endaller %}
+
 ### Complexité d'un problème
 
 Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log de ce cours.

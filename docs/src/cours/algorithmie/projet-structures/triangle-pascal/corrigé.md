@@ -10,62 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## Algorithme récursif
 
-La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :
-
-- soit $k = 0$ et $\binom{n}{0} = 1$
-- soit $k = n$ et $\binom{n}{n} = 1$
-
-Ce qui donne le code :
-
-<span id="algorithme-binom-rec"></span>
-
-```pseudocode
-algorithme binom(n: entier, k: entier) → entier:
-    si (n == k) ou (k == 0):
-        rendre 1
-    sinon:
-        rendre binom(n-1, k-1) + binom(n - 1, k)
-```
-
-Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de la condition d'arrêt, le programme s'arrête à chaque fois : c'est un algorithme.
-
-L'équation de récursion donne, en fonction de n et k :
-
-<div>
-$$
-\begin{array}{lcl}
-C(n, k) & = & \mathcal{O}(1) + C(n-1, k-1) + C(n-1, k) \\
-&\geq&C(n-1, k-1) + C(n-1, k)\\
-\end{array}
-$$
-</div>
-
-Or comme $C(n, n) = C(n, 0) = \mathcal{O}(1) \geq 1$, on a $C(n, k) \geq \binom{n}{k}$
-
-Or :
-
-<div>
-$$
-\begin{array}{lcl}
-\binom{2n}{n} & = & \binom{2n-1}{n-1} + \binom{2n-1}{n}\\
-              &&  \binom{2n-2}{n-2} + \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
-              &\geq  & \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
-              &\geq & \binom{2n-2}{n-1} + \binom{2n-2}{n-1} + \binom{2n-2}{n}\\
-              &\geq & 2\cdot\binom{2n-2}{n-1}\\
-              &\geq & \dots \\
-              &\geq & 2^k\cdot\binom{2(n-k)}{n-k}\\
-              &\geq & 2^{n}\cdot\binom{n}{0}
-\end{array}
-$$
-</div>
-
-Comme la complexité du calcul récursif de $\binom{n}{k}$ est en $\Omega(\binom{n}{k})$, le calcul de $\binom{2n}{n}$ va prendre un temps de calcul exponentiel $\Omega(2^n)$.
-
-## Algorithme itératif
-
-### v1
+## v1
 
 Première version qui calcule toute la matrice triangulaire inférieure :
 
@@ -118,7 +64,7 @@ En utilisant [la règle de calcul de complexité sur les boucles dépendantes ma
 
 On en déduit que la complexité de l'algorithme `binom`{.language-} est en $\mathcal{O}(nk)$. Comme il faut de plus stocker toute la matrice triangulaire inférieure, sa complexité spatiale est en $\mathcal{O}(nk)$
 
-### v2
+## v2
 
 On va créer un algorithme qui rend uniquement la dernière ligne de la matrice :
 

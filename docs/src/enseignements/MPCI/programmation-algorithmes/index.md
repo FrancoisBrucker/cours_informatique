@@ -224,7 +224,7 @@ Notions abordées :
 {% faire %}
 DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/projet-exponentiation/implémentation-code/){.interne}
 
-**Corrigé :** Après les vacances de février.
+**Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
 
 

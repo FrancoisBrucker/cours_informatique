@@ -30,43 +30,9 @@ $$
 $$
 </div>
 
-## Algorithme récursif
+[On a déjà vu](../../exercices-calculs-compexités/#triangle-de-pascal){.interne} l'approche récursif. Passons à l'approche itérative. 
 
-{% faire %}
-
-Après avoir examiné les conditions d'arrêt, donner un algorithme récursif naïf mimant l'équation de récurrence permettant de calculer le coefficient binomial.
-
-Il devra être de signature : `binom(n: entier, k: entier) → entier`{.language-}
-{% endfaire %}
-
-{% faire %}
-Montrez que la complexité de l'algorithme `binom`{.language-} est en $\Omega(\binom{n}{k})$.
-{% endfaire %}
-
-Nous allons montrer que cette complexité est rédhibitoire pour la plupart des calculs.
-
-{% faire %}
-Montrez que pour $n \geq 1$:
-
-<div>
-$$
-\begin{array}{lcl}
-\binom{2n}{n} & \geq & 2^{n}\\
-\end{array}
-$$
-</div>
-
-{% endfaire %}
-
-{% faire %}
-En déduire que la complexité de notre algorithme est rédhibitoire.
-{% endfaire %}
-
-## Algorithme itératif
-
-La récursion terminale ne fonctionne pas s'il y a, comme pour l'algorithme précédent, une double récursion. Mais on peut tout de même ici en donner une version itérative en utilisant des matrices.
-
-### V1
+## V1
 
 {% faire %}
 Créez un algorithme rendant une matrice triangulaire inférieure $B$ telle que $B[n][k] = \binom{n}{k}$.
@@ -93,7 +59,7 @@ Donnez-en sa complexité spatiale et temporelle.
 
 {% endfaire %}
 
-### V2
+## V2
 
 Comme l'algorithme `binom_matrice(n: entier) → [[entier]]`{.language-} n'a besoin que de la ligne précédente pour créer la ligne de l'itération actuelle, on peut améliorer la complexité spatiale de l'algorithme `binom(n: entier, k:entier) → entier`{.language-} :
 
@@ -116,7 +82,7 @@ Modifiez l'algorithme `ligne_suivante`{.language-} pour le rendre de signature `
 Utilisez le dans `binom(n: entier, k:entier) → entier`{.language-} pour que sa complexité spatiale soit en $\mathcal{O}(k)$.
 {% endfaire %}
 
-## Algorithme avec liste
+## v3
 
 Il faut 2 tableaux de taille au plus $k$ pour faire fonctionner l'algorithme précédent. On peut faire mieux !
 

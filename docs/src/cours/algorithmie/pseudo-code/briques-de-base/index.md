@@ -200,17 +200,6 @@ nom_de_la_variable := type_des_objets_qu_elle_peut_référencer
 
 En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.
 
-<!-- Pas sur qu'on en ait besoin. Dans le doute j'enlève.
-
-On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée `type`{.language-} qui donne le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de types Par exemple `type 42`{.language-} va rendre `entier`, ou encore :
-
-```pseudocode
-a := entier
-b := type a
-``` 
-
--->
-
 ### Affectation
 
 Une fois la variable crée, on peut lui **_affecter_** des objets, par exemple pour notre variable `a`{.language-} crée précédemment :
@@ -306,6 +295,16 @@ Attention cependant :
 {% attention "**À retenir**" %}
 On ne peut utiliser une variable qu'après l'avoir affectée. Utiliser une variable qui n'a été que définie est interdit en algorithmie.
 {% endattention %}
+
+
+### Type d'un objet
+
+On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée `type`{.language-} qui rend le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de variables. Par exemple `type 42`{.language-} va rendre `entier`. Ceci permet d'écrire :
+
+```pseudocode
+a := entier
+b := type a
+``` 
 
 ## <span id="tableaux"></span>Tableaux
 
@@ -580,7 +579,7 @@ tant que i < tableau.longueur:
 
 Comme on va souvent faire des itérations sur des intervalles d'entiers, on utilise les notations suivantes :
 
-- `[a .. b]`{.language-} pour représenter l'intervalle formé des entiers allant de `a` à `b` (cet intervalle peut être vide),
+- `[a .. b]`{.language-} pour représenter l'intervalle formé des entiers allant de `a` à `b` (cet intervalle peut être vide) par incrément de +1,
 - `[a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a` à `b-1` (cet intervalle peut être vide),
 - `]a .. b]`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b` (cet intervalle peut être vide),
 - `]a .. b[`{.language-} pour représenter l'intervalle fermé des entiers allant de `a + 1` à `b -1` (cet intervalle peut être vide).
