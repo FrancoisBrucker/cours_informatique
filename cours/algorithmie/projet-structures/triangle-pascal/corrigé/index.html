@@ -96,48 +96,7 @@
     
   
 
-  <h2>Algorithme récursif</h2>
-<p>La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :</p>
-<ul>
-<li>soit $k = 0$ et $\binom{n}{0} = 1$</li>
-<li>soit $k = n$ et $\binom{n}{n} = 1$</li>
-</ul>
-<p>Ce qui donne le code :</p>
-<p><span id="algorithme-binom-rec"></span></p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> k<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> <span class="token number">1</span>
-    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> binom<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> binom<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span></code></pre>
-<p>Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de la condition d'arrêt, le programme s'arrête à chaque fois : c'est un algorithme.</p>
-<p>L'équation de récursion donne, en fonction de n et k :</p>
-<div>
-$$
-\begin{array}{lcl}
-C(n, k) & = & \mathcal{O}(1) + C(n-1, k-1) + C(n-1, k) \\
-&\geq&C(n-1, k-1) + C(n-1, k)\\
-\end{array}
-$$
-</div>
-<p>Or comme $C(n, n) = C(n, 0) = \mathcal{O}(1) \geq 1$, on a $C(n, k) \geq \binom{n}{k}$</p>
-<p>Or :</p>
-<div>
-$$
-\begin{array}{lcl}
-\binom{2n}{n} & = & \binom{2n-1}{n-1} + \binom{2n-1}{n}\\
-              &&  \binom{2n-2}{n-2} + \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
-              &\geq  & \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
-              &\geq & \binom{2n-2}{n-1} + \binom{2n-2}{n-1} + \binom{2n-2}{n}\\
-              &\geq & 2\cdot\binom{2n-2}{n-1}\\
-              &\geq & \dots \\
-              &\geq & 2^k\cdot\binom{2(n-k)}{n-k}\\
-              &\geq & 2^{n}\cdot\binom{n}{0}
-\end{array}
-$$
-</div>
-<p>Comme la complexité du calcul récursif de $\binom{n}{k}$ est en $\Omega(\binom{n}{k})$, le calcul de $\binom{2n}{n}$ va prendre un temps de calcul exponentiel $\Omega(2^n)$.</p>
-<h2>Algorithme itératif</h2>
-<h3>v1</h3>
+  <h2>v1</h2>
 <p>Première version qui calcule toute la matrice triangulaire inférieure :</p>
 <p><span id="algorithme-binom-matrice"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">binom_matrice</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
@@ -174,7 +133,7 @@ $$
 <p>La complexité est en $\mathcal{O}(1)$ plus la complexité de la fonction <code class="language-">binom_matrice(n: entier) → [[entier]]</code>.</p>
 <p>En utilisant <a href="../../complexit%C3%A9-calculs/complexit%C3%A9-algorithmes/#r%C3%A8gle-croissance" class="interne">la règle de calcul de complexité sur les boucles dépendantes mais croissantes</a>, cette complexité est en $\mathcal{O}(n^2)$.</p>
 <p>On en déduit que la complexité de l'algorithme <code class="language-">binom</code> est en $\mathcal{O}(nk)$. Comme il faut de plus stocker toute la matrice triangulaire inférieure, sa complexité spatiale est en $\mathcal{O}(nk)$</p>
-<h3>v2</h3>
+<h2>v2</h2>
 <p>On va créer un algorithme qui rend uniquement la dernière ligne de la matrice :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">ligne_suivante</span><span class="token punctuation">(</span>l<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     l2 <span class="token operator">←</span> un tableau d'entiers de taille l<span class="token punctuation">.</span>longueur <span class="token operator">+</span><span class="token number">1</span>

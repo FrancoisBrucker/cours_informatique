@@ -290,16 +290,6 @@
 </div></div>
 
 <p>En pseudo-code, comme le principal soucis est la non ambiguïté, une variable ne peut contenir que des objets d'un type spécifié lors de sa définition. Définir une variable avant de l'utiliser est utilisé dans certains langages de programmation (java, rust, go) mais pas d'en d'autres comme le python où une variable peut être associée à des objets de types différents.</p>
-<!-- Pas sur qu'on en ait besoin. Dans le doute j'enlève.
-
-On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée `type`{.language-} qui donne le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de types Par exemple `type 42`{.language-} va rendre `entier`, ou encore :
-
-```pseudocode
-a := entier
-b := type a
-``` 
-
--->
 <h3>Affectation</h3>
 <p>Une fois la variable crée, on peut lui <strong><em>affecter</em></strong> des objets, par exemple pour notre variable <code class="language-">a</code> crée précédemment :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">←</span> <span class="token number">3</span></code></pre>
@@ -394,6 +384,10 @@ a <span class="token operator">←</span> <span class="token number">42</span>
 <p>On ne peut utiliser une variable qu'après l'avoir affectée. Utiliser une variable qui n'a été que définie est interdit en algorithmie.</p>
 </div></div>
 
+<h3>Type d'un objet</h3>
+<p>On aura parfois besoin de connaître le type d'un objet pour définir une variable du même type. On suppose qu'il existera toujours une opération unaire spéciale nommée <code class="language-">type</code> qui rend le type de l'objet passé en paramètre, et que l'on pourra utiliser dans les déclarations de variables. Par exemple <code class="language-">type 42</code> va rendre <code>entier</code>. Ceci permet d'écrire :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">a <span class="token operator">:=</span> <span class="token builtin">entier</span>
+b <span class="token operator">:=</span> type a</code></pre>
 <h2><span id="tableaux"></span>Tableaux</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-700 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -689,7 +683,7 @@ i <span class="token operator">←</span> <span class="token number">0</span>
    <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
 <p>Comme on va souvent faire des itérations sur des intervalles d'entiers, on utilise les notations suivantes :</p>
 <ul>
-<li><code class="language-">[a .. b]</code> pour représenter l'intervalle formé des entiers allant de <code>a</code> à <code>b</code> (cet intervalle peut être vide),</li>
+<li><code class="language-">[a .. b]</code> pour représenter l'intervalle formé des entiers allant de <code>a</code> à <code>b</code> (cet intervalle peut être vide) par incrément de +1,</li>
 <li><code class="language-">[a .. b[</code> pour représenter l'intervalle fermé des entiers allant de <code>a</code> à <code>b-1</code> (cet intervalle peut être vide),</li>
 <li><code class="language-">]a .. b]</code> pour représenter l'intervalle fermé des entiers allant de <code>a + 1</code> à <code>b</code> (cet intervalle peut être vide),</li>
 <li><code class="language-">]a .. b[</code> pour représenter l'intervalle fermé des entiers allant de <code>a + 1</code> à <code>b -1</code> (cet intervalle peut être vide).</li>
