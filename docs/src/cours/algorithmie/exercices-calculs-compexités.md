@@ -141,7 +141,7 @@ fonction copie(T: [entier]) → [entier]:
     rendre T'
 
 
-def maximum(T: [entier]) → entier:
+fonction maximum(T: [entier]) → entier:
     m := 0
     pour chaque (i := entier) de [0 .. T.longueur[:
         if T[m] < T[i]:
@@ -149,7 +149,7 @@ def maximum(T: [entier]) → entier:
     rendre m
 
 
-def minimum(T):
+fonction minimum(T):
     m := 0
     pour chaque (i := entier) de [0 .. T.longueur[:
         if T[m] > T[i]:
@@ -157,7 +157,7 @@ def minimum(T):
     rendre m
 
 
-def recherche(T: [entier], k: entier) → entier:
+algorithme recherche(T: [entier], k: entier) → entier:
     max_value := T[maximum(T)]
     min := 0
 
