@@ -5,8 +5,8 @@ title: "ET"
 
 {% note "**Sujet**" %}
 
-[Étude de l'élément majoritaire](./sujet/main.pdf){.fichier}
+[ET](./sujet/main.pdf){.fichier}
 
-Durée du contrôle : 3h.
+Durée du contrôle : 2h.
 
 {% endnote %}

@@ -407,7 +407,7 @@ Pour démontrer la correction du l'algorithme, on utilise un invariant de boucle
 {% exercice %}
 Montrez que la boucle `tant que`{.language-} de [l'algorithme `factorielle_variante`{.language-}](./#algo-factorielle_variante){.interne} admet l'invariant de boucle suivant :
 
-> **Invariant de boucle :**  À la fin d'une itération de la boucle `tant que`{.language-} : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n$
+> **Invariant de boucle :**  À la fin d'une itération de la boucle `tant que`{.language-} : $r = (i+1) \cdot (i+2) \dots (n-1) \cdot n = n!/i!$
 
 {% endexercice %}
 {% details "corrigé" %}
