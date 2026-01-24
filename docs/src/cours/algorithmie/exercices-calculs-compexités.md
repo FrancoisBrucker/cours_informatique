@@ -173,12 +173,12 @@ algorithme recherche(T: [entier], k: entier) → entier:
 
 {% faire %}
 
-Donnez la complexité de la fonction `recherche(T, k)`{.language-}
+Donnez la complexité de l'algorithme `recherche(T, k)`{.language-}
 
 {% endfaire %}
-{% attention %}
-Pour calculer la complexité de la fonction recherche, il vous faudra également calculer les complexités des fonctions utilisées par celle-ci.
-{% endattention %}
+{% info %}
+Pour calculer la complexité de l'algorithme, il vous faudra également calculer les complexités des fonctions utilisées par celui-ci.
+{% endinfo %}
 
 ### 2
 
@@ -192,18 +192,18 @@ Quel est l'intérêt de la fonction `copie(T)`{.language-} ?
 
 {% faire %}
 
-Démontrez que la fonction `recherche(T, k)`{.language-} rend l'indice du $k$ème plus petit élément de $T$.
+Démontrez que l'algorithme `recherche(T, k)`{.language-} rend l'indice du $k$ème plus petit élément de $T$.
 
 {% endfaire %}
-{% attention %}
-Pour démontrer ce que fait recherche, il vous faudra également trouver et démontrer ce que font les fonctions utilisées par celle-ci.
-{% endattention %}
+{% info %}
+Pour démontrer ce que fait recherche, il vous faudra également trouver et démontrer ce que font les fonctions utilisées par celui-ci.
+{% endinfo %}
 
 ### 4
 
 {% faire %}
 
-Utilisez `recherche(T, k)`{.language-} pour créer un algorithme déterminant l'indice de la médiane d'un tableau. Quelle est sa complexité ?
+Utilisez `recherche(T, k)`{.language-} pour créer un algorithme déterminant l'indice de [la médiane d'un tableau](https://fr.wikipedia.org/wiki/M%C3%A9diane_(statistiques)). Quelle est sa complexité ?
 
 {% endfaire %}
 
