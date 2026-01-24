@@ -304,10 +304,10 @@ $$
 Utilisez le résultat précédent pour créer un algorithme récursif de complexité $\mathcal{O}(n)$ pour calculer $\binom{n}{k}$.
 {% endfaire %}
 {% faire %}
-En utilisant le fait que $\binom{n}{k} = \binom{n}{n-k}$, donnez une borne exacte du nombre de récursion.
+En utilisant le fait que $\binom{n}{k} = \binom{n}{n-k}$, donnez une borne exacte au nombre de récursion.
 {% endfaire %}
 
 {% faire %}
-Pourquoi ne peut-on pas utiliser cet algorithme en pratique ?
+En examinant la signature de cet algorithme, pourquoi ne peut-on pas vraiment l'utiliser en pratique ?
 {% endfaire %}
 
