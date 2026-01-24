@@ -9,6 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD refaire en mettant algo + code
+
 <!-- début résumé -->
 
 Algorithme pour résoudre le problème de la suite additive.

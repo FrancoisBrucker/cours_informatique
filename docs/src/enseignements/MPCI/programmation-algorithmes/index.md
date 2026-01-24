@@ -105,10 +105,8 @@ Notions abordées :
 - prouver un algorithme
 
 {% aller %}
-[Écrire des algorithmes en pseudo-code](/cours/algorithmie/pseudo-code){.interne}
-{% endaller %}
-{% aller %}
-[Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
+1. [Écrire des algorithmes en pseudo-code](/cours/algorithmie/pseudo-code){.interne}
+2. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
 {% endaller %}
   
 Si on a le temps, sinon à faire chez soit :
@@ -172,9 +170,7 @@ Notions abordées :
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-
 [Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
-
 {% endaller %}
 
 Pour aller plus loin :
@@ -219,25 +215,26 @@ Notions abordées :
 
 {% endaller %}
 
-- mesure de complexité en code
-- complexité en moyenne
-
-> TBD ajouter des exercices
 
 ### Semaine 4
 
-> 09/02 au 13/02
+> 16/02 au 20/02
 > Algorithmie
 
-#### Mercredi et vendredi : exercices
+{% faire %}
+DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/projet-exponentiation/implémentation-code/){.interne}
 
-> 4h
+**Corrigé :** Après les vacances de février.
+{% endfaire %}
+
+
+#### Mercredi matin : complexité d'un problème
+
+> 2h
 
 {% attention %}
 Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
 {% endattention %}
-
-Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie que la complexité est cohérente avec celle calculée.
 
 
 {% aller %}
@@ -246,7 +243,51 @@ Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie
 
 {% endaller %}
 
-> TBD ajouter des exercices, des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative.
+> TBD ajouter DM1 de l'année dernière en si on a le temps.
+
+#### Mercredi après-midi : problème de l'exponentiation
+
+
+{% aller %}
+[Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/){.interne}
+{% endaller %}
+
+Si on a le temps, sinon à faire chez soi :
+
+{% aller %}
+[Suite additives](/cours/algorithmie/projet-suite-additive/){.interne}
+{% endaller %}
+
+### Semaine 5
+
+> 09/02 au 13/02
+> Algorithmie
+
+{% aller %}
+
+1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne/){.interne}
+2. [Problème du tri](/cours/algorithmie/problème-tris/){.interne}
+
+{% endaller %}
+
+### Semaine 6
+
+> DS 1 
+>
+> mettre des exercices pour s'entraîner.
+
+
+<!-- TBD
+
+Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie que la complexité est cohérente avec celle calculée.
+
+- mesure de complexité en code
+- complexité en moyenne
+
+ -->
+
+
+
 
 <!-- TBD
 
@@ -261,117 +302,6 @@ Complexité et preuves d'algorithmes sur feuille et implémentation. On vérifie
 
 <!-- 
 
-
-
-
-### Semaine 1
-
-> 20/01 au 24/01
-
-#### Vendredi : qu'est-ce que le code
-
-{% faire "**Prérequis**" %}
-
-Avoir relu et compris [les bases de la programmation](/cours/coder-et-développer/bases-programmation/){.interne}. En particulier :
-
-- [avoir python d'installé](/cours/coder-et-développer/bases-programmation/#installation-développement){.interne} et savoir s'en servir
-- fait le tutoriel de [prise en main de l'éditeur vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/prise-en-main/){.interne}
-
-{% endfaire %}
-{% info %}
-N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
-{% endinfo %}
-
-Parties abordées :
-
-{% aller %}
-
-1. [Connaissances systèmes indispensables](/cours/coder-et-développer/connaissances-système-minimales/){.interne}
-2. [écrire du code](/cours/coder-et-développer/développement/){.interne}, les parties :
-   1. [coder](/cours/coder-et-développer/développement/coder){.interne}
-   2. [projet `hello dev`](/cours/coder-et-développer/développement/tutoriel-hello-dev/){.interne}
-
-{% endaller %}
-
-### Semaine 2
-
-> 27/01 au 31/01
-
-#### Mercredi : écrire des algorithmes
-
-{% aller %}
-
-1. [Écrire des algorithmes en pseudocode](/cours/algorithmie/pseudo-code/){.interne}
-2. [Problèmes algorithmique](/cours/algorithmie#problème-algorithmique){.interne}
-3. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
-
-{% endaller %}
-
-Si on a le temps, on le fait en cours sinon faites le chez vous :
-
-{% aller %}
-
-[On s'entraîne](/cours/algorithmie/projet-itératif-récursif/){.interne}
-
-{% endaller %}
-
-#### Vendredi : écrire du code
-
-{% aller %}
-
-1. [Projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
-2. [Déboguer ses programmes](/cours/coder-et-développer/debugger/){.interne}
-
-{% endaller %}
-
-Si on a le temps, on le fait en cours sinon faites le chez vous :
-
-{% aller %}
-
-[On s'entraîne](/cours/coder-et-développer/projet-codes/){.interne}
-
-{% endaller %}
-
-### Semaine 3
-
-> 03/02 au 07/02
-
-#### Mercredi : complexité algorithmique
-
-{% attention %}
-Test de 15min en début de cours sur **la partie preuve et création d'algorithmes**. Il faudra rendre une feuille de papier.
-{% endattention %}
-{% faire %}
-[Sujet du test 1](./annales/2024-2025/1_test/){.interne}
-{% endfaire %}
-
-Ce cours est basé sur la notion de complexité algorithmique que vous avez du aborder au S1.
-
-{% faire "**Prérequis**" %}
-Reprendre la partie complexité de votre cours de S1.
-  
-{% endfaire  %}
-
-{% info %}
-N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
-{% endinfo %}
-
-Parties abordées :
-
-{% aller %}
-
-1. [Complexité d'un algorithme](/cours/algorithmie/complexité-calculs/){.interne}
-2. [Complexité d'un problème](/cours/algorithmie/complexité-problème/){.interne}
-
-{% endaller %}
-
-Si on a le temps, on le fait en cours sinon faites le chez vous :
-
-{% aller %}
-
-[On s'entraîne](/cours/algorithmie/projet-calcul-complexite/){.interne}
-
-{% endaller %}
 
 #### Vendredi : stockage de données
 

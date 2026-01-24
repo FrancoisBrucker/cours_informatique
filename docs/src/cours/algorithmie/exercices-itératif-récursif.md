@@ -117,7 +117,7 @@ Vous pourrez créer un algorithme récursif qui utilise le fait que si les chaî
 
 {% endinfo %}
 
-## Polynômes
+## <span id="polynômes"></span>Polynômes
 
 ### Valeur
 

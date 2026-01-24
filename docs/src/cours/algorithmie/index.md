@@ -172,13 +172,11 @@ On vérifie qu'on sait faire :
 [exercices non corrigés](./exercices-itératif-récursif){.interne}
 {% endaller %}
 
-### Complexités
+### Complexité d'un algorithme
 
 {% lien %}
 [une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12)
 {% endlien %}
-
-#### Complexité maximale
 
 Cette partie s'intéresse à la notion de complexités pour un algorithme.
 
@@ -192,7 +190,7 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 [Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite){.interne}
 {% endaller %}
 
-#### Complexité d'un problème
+### Complexité d'un problème
 
 Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log de ce cours.
 
@@ -200,15 +198,11 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 [Complexité d'un problème algorithmique](./complexité-problème){.interne}
 {% endaller %}
 
-> TBD ajouter des exercices, des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative. Faire dichotomie et recherche de cols.
-
-### projet : problèmes liés à l'exponentiation
+Projets :
 
 {% aller %}
-[Calculer $x^n$](./projet-exponentiation){.interne}
-{% endaller %}
-{% aller %}
-[Les suites additives](./projet-suite-additive){.interne}
+1. [Calculer $x^n$](./projet-exponentiation){.interne}
+2. [Les suites additives](./projet-suite-additive){.interne}
 {% endaller %}
 
 ### Complexité en moyenne
@@ -217,7 +211,15 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 [Complexité en moyenne](./complexité-moyenne){.interne}
 {% endaller %}
 
-### Algorithmes de tri
+<!-- TBD
+
+- ajouter un projet de de code. avec tableaux numpy, split de valeurs, enlever le ramasse=miette etc pour bien calculer en moyenne en code
+
+- ajouter des exercices avec l'ordi avec plusieurs algos pour un même problème puis amélioration de la constantes multiplicative.
+
+-->
+
+### Problème du tri
 
 {% aller %}
 [Problème du tri](./problème-tris){.interne}
@@ -244,16 +246,6 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 {% aller %}
 [Algorithmes classiques](./projet-algorithmes-classiques){.interne}
 {% endaller %}
-
-<!-- ### Puissance
-
-> TBD à déplacer dans la partie complexité.
-
-{% faire %}
-
-Écrivez un algorithme de signature `puissance(n: entier, p: entier) -> entier` qui rend le plus grand entier $q$ tel que $p^q$ divise $n$.
-
-{% endfaire %} -->
 
 ## <span id="partie-2"></span>Partie II : structures de données
 

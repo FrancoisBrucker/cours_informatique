@@ -4,7 +4,7 @@ title: Projet exponentiation
 
 eleventyNavigation:
   prerequis:
-    - /cours/coder-et-développer/bases-programmation/matplotlib/
+    - /cours/coder-et-développer/tutoriel-matplotlib/
 
 eleventyComputed:
   eleventyNavigation:
