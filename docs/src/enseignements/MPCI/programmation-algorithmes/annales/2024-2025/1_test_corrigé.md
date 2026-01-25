@@ -125,7 +125,7 @@ algorithme somme_rec(a: entier, b: entier) → entier:
 
 ```
 
-La preuve se fait par une récurrence triviale sur $b$.
+La preuve se fait par une récurrence triviale sur $b$ en utilisant le fait que : $a + b = (a + 1) + (b-1)$
 
 #### 4.2
 
@@ -139,4 +139,4 @@ algorithme produit_rec(a: entier, b: entier) → entier:
     rendre somme_rec(produit_rec(a, pred(b)), a)
 ```
 
-La preuve se fait par une récurrence triviale sur $b$ en utilisant le fait que : $ab = a(b-1) + a$ Attention au cas $b=0$ qui doit rendre 0 et pas a.
+La preuve se fait par une récurrence triviale sur $b$ en utilisant le fait que : $ab = a(b-1) + a$. Attention au cas $b=0$ qui doit rendre 0 et pas a.
