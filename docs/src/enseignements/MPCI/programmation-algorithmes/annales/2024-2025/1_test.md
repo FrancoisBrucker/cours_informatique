@@ -38,8 +38,8 @@ On considère le programme suivant définis pour tous `a`{.language-} et `b`{.la
 
 ```pseudocode
 programme somme(a: entier, b: entier) → entier:
-    i ← 0
-    j ← a
+    i := 0
+    j := a
     tant que i ≠ b:
         i ← succ(i)
         j ← succ(j)

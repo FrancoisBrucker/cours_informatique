@@ -78,8 +78,8 @@ L'algorithme est presque identique à somme :
 
 ```pseudocode
 algorithme produit(a: entier, b: entier) → entier
-    i ← 0
-    j ← 0
+    i := 0
+    j := 0
     tant que i ≠ b:
         i ← succ(i)
         j ← somme(j, a)
@@ -103,7 +103,7 @@ algorithme pred(a: entier) → entier
     si a == 0:
         rendre 0
 
-    i ← 0
+    i := 0
     tant que succ(i) ≠ a:
         i ← succ(i)
     rendre i
@@ -120,7 +120,6 @@ Le programme va s'arrêter puisque a est un entier positif. De plus, si $a = 0$ 
 algorithme somme_rec(a: entier, b: entier) → entier:
     si b == 0:
         rendre a
-
     rendre somme_rec(succ(a), pred(b))
 
 ```
