@@ -180,8 +180,8 @@
 <h3>Question 2</h3>
 <p>L'algorithme est presque identique à somme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">produit</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
-   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
-   <span class="token number"> j </span><span class="token operator">←</span> <span class="token number">0</span>
+   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">0</span>
+   <span class="token number"> j </span><span class="token operator">:=</span> <span class="token number">0</span>
     <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≠</span> b<span class="token punctuation">:</span>
        <span class="token number"> i </span><span class="token operator">←</span> succ<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
        <span class="token number"> j </span><span class="token operator">←</span> somme<span class="token punctuation">(</span>j<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
@@ -203,7 +203,7 @@
     <span class="token keyword">si</span> a <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">0</span>
 
-   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
+   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">0</span>
     <span class="token keyword">tant que</span> succ<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">≠</span> a<span class="token punctuation">:</span>
        <span class="token number"> i </span><span class="token operator">←</span> succ<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
     <span class="token keyword">rendre</span><span class="token number"> i
@@ -214,7 +214,6 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme_rec</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> a
-
     <span class="token keyword">rendre</span> somme_rec<span class="token punctuation">(</span>succ<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">,</span> pred<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <p>La preuve se fait par une récurrence triviale sur $b$ en utilisant le fait que : $a + b = (a + 1) + (b-1)$</p>
