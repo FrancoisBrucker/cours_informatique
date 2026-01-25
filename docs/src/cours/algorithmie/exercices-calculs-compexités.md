@@ -284,22 +284,11 @@ Montrez en utilisant l'équation de récursion que :
 
 <div>
 $$
-\binom{n}{k} = \frac{n!}{k!(n-k)!}
+\binom{n}{k} = \frac{n!}{k!(n-k)!} = \frac{n}{k} \binom{n-1}{k-1}
 $$
 </div>
 
 {% endfaire %}
-{% faire %}
-En déduire que :
-
-<div>
-$$
-\binom{n}{k} = \frac{n}{k} \binom{n-1}{k-1}
-$$
-</div>
-
-{% endfaire %}
-
 {% faire %}
 Utilisez le résultat précédent pour créer un algorithme récursif de complexité $\mathcal{O}(n)$ pour calculer $\binom{n}{k}$.
 {% endfaire %}

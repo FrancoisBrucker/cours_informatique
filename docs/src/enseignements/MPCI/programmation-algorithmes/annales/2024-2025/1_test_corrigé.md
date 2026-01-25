@@ -79,7 +79,7 @@ L'algorithme est presque identique à somme :
 ```pseudocode
 algorithme produit(a: entier, b: entier) → entier
     i ← 0
-    j ← a
+    j ← 0
     tant que i ≠ b:
         i ← succ(i)
         j ← somme(j, a)
@@ -91,7 +91,7 @@ L'invariant que l'on va utiliser est : `a * i = j`{.language-}.
 Il se démontre de façon identique à la question 1.1. en remplaçant les `+ 1`{.language-} par des `+ a`{.language-}
 
 {% info %}
-SI la démonstration du 1.1 est bien faite, la _démonstration_ précédente suffit amplement.
+Si la démonstration du 1.1 est bien faite, la _démonstration_ précédente suffit amplement.
 {% endinfo %}
 
 ### Question 3
@@ -136,7 +136,7 @@ algorithme produit_rec(a: entier, b: entier) → entier:
     si pred(b) == 0:
         rendre a
 
-    rendre produit_rec(somme_rec(a, b), pred(b))
+    rendre somme_rec(produit_rec(a, pred(b)), a)
 ```
 
-La preuve se fait par une récurrence triviale sur $b$. Attention au cas $b=0$ qui doit rendre 0 et pas a.
+La preuve se fait par une récurrence triviale sur $b$ en utilisant le fait que : $ab = a(b-1) + a$ Attention au cas $b=0$ qui doit rendre 0 et pas a.

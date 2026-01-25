@@ -227,10 +227,7 @@ DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/p
 **Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
 
-
-#### Mercredi matin : complexité d'un problème
-
-> 2h
+> 4h
 
 {% attention %}
 Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
@@ -239,17 +236,9 @@ Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine p
 
 {% aller %}
 
-[Complexité d'un problème](/cours/algorithmie/complexité-problème/){.interne}
+1. [Complexité d'un problème](/cours/algorithmie/complexité-problème/){.interne}
+2. [Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/){.interne}
 
-{% endaller %}
-
-> TBD ajouter DM1 de l'année dernière en si on a le temps.
-
-#### Mercredi après-midi : problème de l'exponentiation
-
-
-{% aller %}
-[Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/){.interne}
 {% endaller %}
 
 Si on a le temps, sinon à faire chez soi :
@@ -262,6 +251,8 @@ Si on a le temps, sinon à faire chez soi :
 
 > 09/02 au 13/02
 > Algorithmie
+
+> 4h
 
 {% aller %}
 

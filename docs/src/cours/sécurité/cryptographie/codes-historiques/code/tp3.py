@@ -1,6 +1,9 @@
 import random
 
 
+# https://www.reddit.com/r/learnpython/comments/155hx3x/preferred_method_of_reading_from_stdin/
+# https://rosettacode.org/wiki/Vigen%C3%A8re_cipher#Python
+
 def majuscule(texte):
     """rend la chaine texte en majusucle
 
