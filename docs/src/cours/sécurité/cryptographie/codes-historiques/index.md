@@ -148,6 +148,32 @@ Clé     : PROUSTPRO US TP ROUS TPROUS TP ROUST PROUS
 Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW.
 ```
 
+### Algorithme
+
+Je suis tombé [sur cette implémentation en POSIX sh](https://stackoverflow.com/questions/50021770/vigen%c3%a8re-cipher-decryption) (le shell utilisé est bash mais c'est tout à fait POSIX) qui est tout simplement magnifique :
+
+```sh
+#!/bin/sh
+
+a="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+[ $1 ] && ["$1" != "-d"] && echo "Usage: $0 [-d]" && exit 1
+
+m=${1:+-}
+
+printf "string: ";read t
+printf "keyphrase: ";read -s k
+printf "\n"
+for ((i=0;i<${#t};i++)); do
+  p1=${a%%${t:$i:1}*}
+  p2=${a%%${k:$((i%${#k})):1}*}
+  d="${d}${a:$(((${#p1}${m:-+}${#p2})%${#a})):1}"
+done
+echo "$d"
+```
+
+Elle est tout à fait compréhensible en utilisant [cette remarque](https://stackoverflow.com/a/50022917) et [la documentation des substitutions de paramètres](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02).
+
 ### <span id="Vigenère-analyse"></span>Chiffrement
 
 {% lien %}

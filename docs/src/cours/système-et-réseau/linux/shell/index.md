@@ -17,7 +17,8 @@ eleventyComputed:
 > TBD voir <http://aral.iut-rodez.fr/fr/sanchis/enseignement/bash/>
 >
 > TBD variable substitution : <https://www.ibm.com/docs/en/aix/7.1.0?topic=shell-parameter-substitution-in-korn-posix>
-> 
+>
+> POSIX shell documentation : <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/contents.html>
 {% lien %}
 
 - [quelques liens](https://www.youtube.com/watch?v=Jllnhid7O7w)
