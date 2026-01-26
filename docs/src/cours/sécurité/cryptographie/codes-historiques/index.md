@@ -152,7 +152,7 @@ Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW.
 
 Je suis tombé [sur cette implémentation en POSIX sh](https://stackoverflow.com/questions/50021770/vigen%c3%a8re-cipher-decryption) (le shell utilisé est bash mais c'est tout à fait POSIX) qui est tout simplement magnifique :
 
-
+[fichier sh](./code/vig.sh){.interne}
 
 Elle est tout à fait compréhensible en utilisant [cette remarque](https://stackoverflow.com/a/50022917) et [la documentation des substitutions de paramètres](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02).
 

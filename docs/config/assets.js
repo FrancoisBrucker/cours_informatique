@@ -18,7 +18,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/**/!(node_modules)/**/*.{webm,mov,mp4,ogv}");
   
   // data
-  eleventyConfig.addPassthroughCopy("src/**/!(node_modules)/**/*.{txt,edi,csv,json,ipynb,zip,pdf,mat,geojson}");
+  eleventyConfig.addPassthroughCopy("src/**/!(node_modules)/**/*.{txt,edi,csv,json,ipynb,zip,pdf,mat,geojson,sh}");
 
 };
 
