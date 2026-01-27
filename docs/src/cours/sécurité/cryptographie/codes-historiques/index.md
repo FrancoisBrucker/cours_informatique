@@ -10,7 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-En analysant 3 codes historiques, on verra quelques concepts utile pour l'analyse.
+En analysant 3 codes historiques, on verra quelques concepts fondamentaux en cryptographie :
+
+- comment chiffrer
+- comment décrypter un message en utilisant l'information laissée dans le message chiffrée
+- comment rendre un chiffre plus sur.
 
 
 <!-- TBD
@@ -21,6 +25,7 @@ Ajouter code par permutation
 - <https://www.reddit.com/r/crypto/comments/1208h1b/is_permutationbased_crypto_not_catching_on_in_the/>
 
  -->
+
 ## Code de césar
 
 ### <span id="César-chiffre"></span>Chiffrement
@@ -65,27 +70,25 @@ Longtemps je me suis couche de bonne heure.
 On chiffre :
 
 ```
-❯ echo "Longtemps je me suis couché de bonne heure." | recode -f utf8..flat | tr "A-Za-z" "N-ZA-Mn-za-m"
-
-Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.
+❯ echo "Longtemps je me suis couché de bonne heure." | recode -f utf8..flat | tr "a-z" "A-Z" | tr "A-Z" "N-ZA-M"
+YBATGRZCF WR ZR FHVF PBHPUR QR OBAAR URHER.
 ```
 
 On déchiffre. L'intérêt du ROT13 est que c'est le même algorithme pour le chiffrage et le déchiffrage :
 
 ```
-❯ echo "Ybatgrzcf wr zr fhvf pbhpur qr obaar urher." | recode -f utf8..flat | tr "A-Za-z" "N-ZA-Mn-za-m"
+❯ echo "YBATGRZCF WR ZR FHVF PBHPUR QR OBAAR URHER." | tr "A-Z" "N-ZA-M"
+LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE.
 
-Longtemps je me suis couche de bonne heure.
 ```
 
 Le tout en une seule fois (avec des tee pour afficher les résultats intermédiaires) :
 
 ```
-❯ echo "Longtemps je me suis couché de bonne heure." | recode -f utf8..flat | tee /dev/tty | tr "A-Za-z" "N-ZA-Mn-za-m" | tee /dev/tty | tr "A-Za-z" "N-ZA-Mn-za-m"
-
-Longtemps je me suis couche de bonne heure.
-Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.
-Longtemps je me suis couche de bonne heure.
+❯ echo "Longtemps je me suis couché de bonne heure." | recode -f utf8..flat | tr "a-z" "A-Z" | tee /dev/tty | tr "A-Z" "N-ZA-M" | tee /dev/tty | tr "A-Z" "N-ZA-M"
+LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE.
+YBATGRZCF WR ZR FHVF PBHPUR QR OBAAR URHER.
+LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE.
 ```
 
 ### <span id="César-analyse"></span>Cryptanalyse
@@ -143,18 +146,41 @@ Le code de Vigenère est un exemple de ***Codage par blocs*** (*bloc cipher*) : 
 Par exemple, si on encode notre chaîne par `PROUST`, cela revient à encoder toute les 7 lettres par un césar commençant par `P`, toutes les 8 lettres par un césar commençant par `R`, etc... Notre texte se code alors par :
 
 ```
-Message : Longtemps je me suis couché de bonne heure.
+Message : LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE
 Clé     : PROUSTPRO US TP ROUS TPROUS TP ROUST PROUS
-Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW.
+Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW
 ```
 
 ### Algorithme
 
-Je suis tombé [sur cette implémentation en POSIX sh](https://stackoverflow.com/questions/50021770/vigen%c3%a8re-cipher-decryption) (le shell utilisé est bash mais c'est tout à fait POSIX) qui est tout simplement magnifique :
+[Cette implémentation en shell](https://stackoverflow.com/questions/50021770/vigen%c3%a8re-cipher-decryption) (la version ci-dessous est variante POSIX sh du script en lien) du chiffrement de Vigenère est tout simplement magnifique :
 
-[fichier sh](./code/vig.sh){.interne}
+{% raw %}
+```shell
+#!/bin/sh
 
-Elle est tout à fait compréhensible en utilisant [cette remarque](https://stackoverflow.com/a/50022917) et [la documentation des substitutions de paramètres](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02).
+a="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+[ $1 ] && [ "$1" != "-d" ] && echo "Usage: $0 [-d]" && exit 1
+
+m=${1:+-}
+
+printf "string: ";read t
+printf "keyphrase: ";read -s k
+printf "\n"
+for ((i=0;i<${#t};i++)); do
+  p1=${a%%${t:$i:1}*}
+  p2=${a%%${k:$((i%${#k})):1}*}
+  d="${d}${a:$(((${#p1}${m:-+}${#p2})%${#a})):1}"
+done
+echo "$d"
+
+```
+{% endraw %}
+
+{% info %}
+Il est tout à fait compréhensible en utilisant [cette remarque du thread](https://stackoverflow.com/a/50022917) et [la documentation des substitutions de paramètres](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02).
+{% endinfo %}
 
 ### <span id="Vigenère-analyse"></span>Chiffrement
 
@@ -308,4 +334,4 @@ ALarecher ch ed utem psperd ud eMarc elPro
 LZNXXGTTJ LL QH MNME RGJGYH XH FANEG LPJIS
 ```
 
-Ce code est réputé (on va le prouver) inviolable. S'il n'est pas réutilisé.
+Ce code est réputé (on va le prouver) inviolable. Si la clé de chiffrement n'est pas réutilisée.

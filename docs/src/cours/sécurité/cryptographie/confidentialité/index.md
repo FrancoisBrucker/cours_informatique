@@ -15,9 +15,9 @@ Le processus d'envoi d'un message confidentiel entre Alice et Bob décrit préc�
 ```
     Alice    |  Eve   |     Bob
 -------------|--------|--------------
-    m, k     |        |      k
-E(k, m) = c -|-- c ---|----> c
-             |        | D(k, c) = m
+    M, K     |        |      K
+E(K, M) = C -|-- C ---|----> C
+             |        | D(K, C) = M
              |        |
 espace privé | public |    privé
 ```
@@ -32,9 +32,9 @@ On obtient alors le schéma suivant :
 ```
     Alice    |  Eve   |     Bob
 -------------|--------|--------------
-    m, k     |        |      k
-  k ⊕ m = c -|-- c ---|----> c
-             |        |  k ⊕ c = m
+    M, K     |        |      K
+  K ⊕ M = C -|-- C ---|----> C
+             |        |  K ⊕ C = M
              |        |
 espace privé | public |    privé
 ```
@@ -77,13 +77,14 @@ Le schéma de transmission confidentiel devient alors :
     Alice    |         |     Bob
     privé    | public  |    privé
 -------------|---------|--------------
-     m       |         |
+     M       |         |
              |         |
-     a ---v  |         |  v--- b           # générés par un TRNG
-     k <--===|= A = B =|===--> k           # protocole de partage de clé sécurisé
+     a ---.  |         |  .--- b           # générés par un TRNG
+          v  |         |  v
+     K <--===|= A = B =|===--> K           # protocole de partage de clé sécurisé
              |         |
-  k ⊕ m = c -|--- c ---|----> c
-             |         |  k ⊕ c = m
+  K ⊕ M = C -|--- C ---|----> C
+             |         |  K ⊕ C = M
              |         |
 ```
 
@@ -107,7 +108,7 @@ En gros, une fonction $f$ est à sens unique s'il est :
 Ce qui donne la définition suivante :
 
 {% note "**Définition**" %}
-Une fonction $f: \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ dont il existe un algorithme efficace pour la calculer est **_à sens unique_** si pour tout algorithme efficace $A$, la probabilité suivante est négligeable :
+Une fonction $f: \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ dont il existe un algorithme efficace pour la calculer est **_à sens unique_** si pour tout algorithme efficace $F$, la probabilité suivante est négligeable :
 <div>
 $$
 \Pr_{x \xleftarrow{U} \{0, 1\}^t}[f(F(f(x))) = f(x)]
@@ -124,7 +125,7 @@ En utilisant les définitions de efficace et négligeable suivantes :
 - une fonction $f(n)$ est **_négligeable_** si $f(n) = \mathcal{O}(1/n^d)$ pour **tout** entier $d$.
 {% endnote %}
 {% info %}
-On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.
+On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en $+\infty$ pour tout $d$.
 {% endinfo %}
 
 L'intérêt de cette formalisation est que négligeabilité se compose tout comme l'efficacité (somme et produit de polynôme restent des polynômes) :
@@ -186,15 +187,16 @@ On utilise donc un générateur de nombre pseudo-aléatoire cryptographique (_Cr
     Alice    |         |     Bob
     privé    | public  |    privé
 -------------|---------|--------------
-     m       |         |
+     M       |         |
              |         |
-     a ---v  |         |  v--- b           # générés par un TRNG
+     a ---.  |         |  .--- b           # générés par un TRNG
+          v  |         |  v
      k <--===|= A = B =|===--> k           # protocole de partage de clé sécurisé
              |         |
   G(k) = K   |         |  G(k) = K         # générés par un CPRNG
              |         |
-  K ⊕ m = c -|--- c ---|----> c
-             |         |  K ⊕ c = m
+  K ⊕ M = C -|--- C ---|----> C
+             |         |  K ⊕ C = M
 ```
 
 {% aller %}
@@ -274,19 +276,20 @@ Le schéma de transmission se complexifie encore en ajoutant une boucle de chiff
     Alice     |         |     Bob
     privé     | public  |    privé
 --------------|---------|--------------
-     m        |         |
+     M        |         |
               |         |
-     a ---v   |         |  v--- b           # générés par un TRNG
+     a ---.   |         |  .--- b           # générés par un TRNG
+          v   |         |  v
      k <--====|= A = B =|===--> k           # protocole de partage de clé sécurisé
               |         |
----->         |         |
+--i-->        |         |
 |             |         |
-|  G(ki) = K  |         |  G(ki) = K         # générés par un CPRNG
+|  Gi(k) = ki |         | Gi(k) = ki
 |             |         |
-| K ⊕ mi = c -|--- c ---|----> c
-|             |         |  K ⊕ c = mi
-|             |         |  m = mi || m
-----          |         |    
+|ki ⊕ mi = ci-|--- ci --|----> ci
+|             |         |  ki ⊕ ci = mi
+|             |         |  m = m || mi
+-----         |         |    
 ```
 
 Notez qu'il ne faut pas répéter la clé !
@@ -386,11 +389,11 @@ Cette construction permet également de chiffrer **et** déchiffrer rapidement l
 |             |         |
 | F(k,        |         | F(k,              # PRF
 |   iv || i)  |         |   iv || i)
-|   = K       |         |   = K             
+|   = ki      |         |   = ki             
 |             |         |
-| K ⊕ mi = c -|--- c ---|----> c
-|             |         |  K ⊕ c = mi
-|             |         |  m = mi || m
+|ki ⊕ mi = c -|--- c ---|----> c
+|             |         |  ki ⊕ c = mi
+|             |         |  m = m || mi
 ----          |         |    
 ```
 
@@ -409,17 +412,17 @@ De nombreux protocoles cryptographiques l'utilise pour distinguer des encodages 
      a ---v   |         |  v--- b           # générés par un TRNG
      k <--====|= A = B =|===--> k           # protocole de partage de clé sécurisé
               |         |
-    N --------|---------|----> N            # Nonce    
+     N -------|---------|----> N            # Nonce    
               |         |                 
 --i-->        |         |
 |             |         |
 | F(k,        |         | F(k,              # PRF
 |   N || i)   |         |   N || i)
-|   = K       |         |   = K             
+|   = ki      |         |   = ki             
 |             |         |
-| K ⊕ mi = c -|--- c ---|----> c
-|             |         |  K ⊕ c = mi
-|             |         |  m = mi || m
+|ki ⊕ mi = c -|--- c ---|----> c
+|             |         |  ki ⊕ c = mi
+|             |         |  m = m || mi
 ----          |         |    
 ```
 
@@ -442,11 +445,11 @@ En utilisant le chirrfre de Vernam, la transmission sécurisée ressemble finale
 |             |         |
 | F(k,        |         | F(k,              # PRF
 |   N || i)   |         |   N || i)
-|   = K       |         |   = K             
+|   = ki      |         |   = ki             
 |             |         |
-| K ⊕ mi = c -|--- c ---|----> c
-|             |         |  K ⊕ c = mi
-|             |         |  m = mi || m
+|ki ⊕ mi = c -|--- c ---|----> c
+|             |         |  ki ⊕ c = mi
+|             |         |  m = m || mi
 ----          |         |    
 ```
 

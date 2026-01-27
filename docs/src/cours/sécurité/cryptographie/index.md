@@ -76,34 +76,34 @@ La cryptologie, ou science du secret est l'étude des protocoles de sécurités.
 
 ### Cryptographie
 
-Pour qu'un message $m$ puisse passer de Alice à Bob via un canal public sans qu'Eve ne puisse le lire, il faut qu'il soit **_chiffré_** (_encrypted_) par une fonction $E(m) = c$ pendant son passage dans le canal public, puis **_déchiffré_** (_decrypted_) par une autre fonction $D(c) = m$.
+Pour qu'un message $m$ puisse passer de Alice à Bob via un canal public sans qu'Eve ne puisse le lire, il faut qu'il soit **_chiffré_** (_encrypted_) par une fonction $E(M) = C$ pendant son passage dans le canal public, puis **_déchiffré_** (_decrypted_) par une autre fonction $D(C) = M$.
 
 {% info %}
 Les fonctions de chiffrements et de déchiffrements sont appelés _cipher_ en anglais ; le message $m$ est appelé _plain text_ et le message chiffré $c$ : _ciphertext_.
 {% endinfo %}
 
-Mais comme Eve connaît (ou peut soudoyer quelqu'un pour connaître) $E()$ et $D()$, il faut que ces fonctions possèdent un paramètre en plus : une clé $k$ connue uniquement d'Alice et Bob :
+Mais comme Eve connaît (ou peut soudoyer quelqu'un pour connaître) $E()$ et $D()$, il faut que ces fonctions possèdent un paramètre en plus : une clé $K$ connue uniquement d'Alice et Bob :
 
 ```
     Alice    |  Eve   |     Bob
 -------------|--------|--------------
-    m, k     |        |      k
+    M, K     |        |      K
              |        |
-E(k, m) = c -|-- c ---|----> c
-             |        | D(k, c) = m
+E(K, M) = C -|-- C ---|----> C
+             |        | D(K, C) = M
              |        |
 espace privé | public |    privé
 ```
 
-En supposant qu'Eve ne possède pas d'autre information que le message chiffré, si elle veut prendre connaissance de $m$ sans connaître $k$, on dit **_décrypter_** $c$, il lui faut tester $E(k', m)$ pour toutes les combinaisons $k'$ de clés possibles.
+En supposant qu'Eve ne possède pas d'autre information que le message chiffré, si elle veut prendre connaissance de $M$ sans connaître $K$, on dit **_décrypter_** $c$, il lui faut tester $D(K', C)$ pour toutes les combinaisons $K'$ de clés possibles.
 
 La communication est alors confidentielle si le temps nécessaire pour faire tout ces essais est supérieur à la durée de validité du message chiffré.
 
-De part la nature algorithmique de secret, la confidentialité de la transmission de $m$ via $E(k, m)$ n'est garantie que si :
+De part la nature algorithmique de secret, la confidentialité de la transmission de $M$ via $E(K, M)$ n'est garantie que si :
 
-- $D(k, E(k, m)) = m$
-- Eve ne peut obtenir aucune information sur $k$ ou $m$ à partir de $E(k, m)$
-- le temps nécessaire pour décrypter le message en utilisant toutes les clé possible est prohibitif.
+- $D(K, E(K, M)) = M$
+- Eve ne peut obtenir aucune information sur $K$ ou $M$ à partir de $E(K, M)$
+- le temps nécessaire pour décrypter le message en utilisant toutes les clés possibles est prohibitif.
 
 Formalisons tout cela.
 
@@ -116,7 +116,7 @@ Dans toutes leur généralité les fonctions $E$ et $D$ sont définies :
 
 Pour le chiffrement soit effectif, il faut qu'il soit :
 
-- **_cohérent_** : $D(k, E(k, m)) = m$ pour tout $m \in \mathcal{M}$
+- **_cohérent_** : $D(K, E(K, M)) = M$ pour tout $M \in \mathcal{M}$
 - **_efficace_** (_efficient_) : $D$ et $E$ sont des algorithmes polynomiaux et s'ils sont linéaires c'est encore mieux.
 
 On peut se restreindre, sans perte de généralité, aux messages binaires et supposer que $\mathcal{M} = \mathcal{C}$. On a alors :
@@ -172,6 +172,9 @@ Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
 {% aller %}
 [Confidentialité](./confidentialité){.interne}
 {% endaller %}
+{% aller %}
+[Codes actuels](./codes-actuels){.interne}
+{% endaller %}
 
 ## Intégrité
 
@@ -192,10 +195,6 @@ Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
 >
 > - compliqué de faire de générateur bien et rapide. on préfère utiliser une autre techno : la permutation.
 > - envoie de paquet : que faire si un paquet est mauvais ? Il faut tout recommencer pour trouver le bon endroit du code. TBD à voir comment fonctionne le schéma général de renvoie de paquet. qu'est ce qui est chiffré ?
-
-{% aller %}
-[Codes actuels](./codes-actuels){.interne}
-{% endaller %}
 
 ## Bibliographie
 

@@ -19,7 +19,7 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 
 Le but de cette séance est de vous donner les connaissances nécessaire pour avoir un ordinateur pour le développement.
 
-## Utiliser le réseau
+## <span id="eduroam">/span>Utiliser le réseau
 
 Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
 

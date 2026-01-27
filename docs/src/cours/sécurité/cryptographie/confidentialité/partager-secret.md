@@ -28,10 +28,10 @@ Dans le domaine public :
    - Alice choisit un nombre $a$ et envoie à Bob $A = g^a \bmod p$
    - Bob choisit un nombre $b$ et envoie à Bob $B = g^b \bmod p$
 2. Constitution des clés :
-   - Alice construit le secret $k = B^a \bmod p = g^{ab} \bmod p$
-   - Bob construit le secret $k = A^b \bmod p = g^{ab} \bmod p$
+   - Alice construit le secret $K = B^a \bmod p = g^{ab} \bmod p$
+   - Bob construit le secret $K = A^b \bmod p = g^{ab} \bmod p$
 
-Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.
+Au final, Alice et Bob partagent un nombre $K$ compris entre $0$ et $p-1$.
 {% endnote %}
 
 ## Pourquoi ça marche
@@ -55,8 +55,7 @@ L'exponentiation modulaire peut s'écrire comme [l'exponentiation indienne](/cou
 
 ```pseudocode
 algorithme expo(x: entier, y: entier) → entier:
-    r := entier
-    r ← 1
+    r := 1
     tant que y > 0:
         si y est impair:
             r ← r * x mod p     # MULTIPLY
@@ -69,7 +68,7 @@ algorithme expo(x: entier, y: entier) → entier:
 En supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$, la complexité de l'algorithme est en $\mathcal{O}(\log_2(y))$ qui correspond au nombre maximum d'itérations dans la boucle.
 
 {% info %}
-En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. POur plus d'info, n'hésitez pas à consulter [cette partie du cours](/cours/algorithmie/fonctions-booléennes/){.interne}
+En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. Pour plus d'info, n'hésitez pas à consulter [cette partie du cours](/cours/algorithmie/fonctions-booléennes/){.interne}
 {% endinfo %}
 
 Si $x$, $y$ et $p$ sont stockés sur $n$ bits, la complexité est polynomiale puisque $\log_2(y) \leq n$.
@@ -84,62 +83,52 @@ Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorith
 
 ```pseudocode
 algorithme log(x: entier, y: entier, g: entier) → entier:
-    r := entier
-    r ← 1
+    r := 1
     pour chaque i de 0 à p-1:
         si r == y:
             rendre i
         r ← r * g mod p
 ```
 
-En supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$, la complexité de l'algorithme est en $\mathcal{O}(p)$ qui correspond au nombre maximum d'itérations dans la boucle.
+est de complexité $\mathcal{O}(p)$ (le nombre maximum d'itérations dans la boucle) en supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$.
 
-Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}( \cdot 2^{log_2(p)}) = \mathcal{O}( \cdot 2^{n})$.
-
-Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide.
-
-Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits.
-
-Il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.
+Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}( \cdot 2^{log_2(p)}) = \mathcal{O}( \cdot 2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.
 
 Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé [Baby step giant step](https://fr.wikipedia.org/wiki/Baby-step_giant-step) qui échange du temps contre de la mémoire.
 
-Son principe est simple.  Si $0 < m < p$, alors la division euclidienne de $x$ par $m$ donne : $x = i \cdot m + j$ avec :
+Son principe est simple.  
 
-- $0 \leq i \leq p/m$
-- $0 \leq j < m$
 
-Et on a que $y=g^x \mod p$ si et seulement si :
+1. Si $0 < m < p$, alors la division euclidienne de $x$ par $m$ donne : $x = i \cdot m + j$ avec :
 
-<div>
-$$
-g^i = y \cdot (\frac{1}{g}^m)^j
-$$
-</div>
+   - $0 \leq i \leq p/m$
+   - $0 \leq j < m$
+
+2. On a $y=g^x \mod p$ si et seulement si : $g^i = y \cdot ((g^{-1})^m)^j$
 
 Ce qui donne :
 
 ```pseudocode
 algorithme steps(y: entier, g: entier) → entier:
     d := Dict<entier, entier>()
-    c := entier
-    c ← 1
+    c := 1
     
-    pour chaque i de 0 à p/m:
+    pour chaque i de 0 à p/m:       # baby step
         d[c] = i
-        c ← g * c
+        c ← g * c 
 
     si y est une clé de d:          # g^i = y  => x = i * m + 0
         rendre d[y] * m
 
-    c ← expo(expo(g, n-2), m)       # 1/g = g ** (n-2) puisque g ** (n-1) = 1 (petit thm Fermat)
+    c ← expo(expo(g, n-2), m)       # 1/g = g^(n-2) puisque g^(n-1) = 1 (petit thm Fermat)
 
-    pour chaque j de 1 à m-1:
-        si y * c est une clé de d:          # g^i = y  => x = i * m + j
+    pour chaque j de 1 à m-1:       # giant step
+        y ← y * c
+        si c est une clé de d:  # g^i = y  => x = i * m + j
             rendre d[y] * m + j
 ```
 
-La complexité de l'algorithme esr alors clairement de :
+La complexité de l'algorithme est alors clairement de :
 
 - $\mathcal{O}(m)$ en mémoire pour stocker toutes les valeurs dans le dictionnaire
 - $\mathcal{O}(m + p/m)$ en moyenne pour la complexité pour parcourir les 2 boucles et les test (en moyenne du dictionnaire)
@@ -170,10 +159,13 @@ Pour une clé de 128bit et 1 opération par microsecondes :
 
 Les exemples précédents supposent un ordinateur avec un processeur unique et deux algorithmes non optimisés. Pour des algorithmes parallèles et optimisés on peut peut faire bien mieux.
 
-Comme augmenter la taille de la clé augmente exponentiellement le nombre de possibilité cet la taille des clés reste toujours acceptable (doubler la vitesse d'un algorithme permet de traiter dans le même temps de clés à un bit de plus).
+Lorsque la puissance de calcul augmente, il suffit d'augmenter linéairement la taille de la clé puisque cela augmente exponentiellement le nombre de possibilités (doubler la vitesse d'un algorithme permet de traiter dans le même temps de clés à un bit de plus).
 
 
-> TBD : <https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf> et <https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf>
+{% lien %}
+Voir <https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf> ou encore <https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf> pour d'autres algorithmes de résolution.
+{% endlien %}
+
 
 ## Attaque
 
@@ -193,30 +185,51 @@ On préconise donc une taille de clé de 4096b actuellement. Voir [ce doc p35](h
 
 ### Man in the middle
 
-> TBD : pb d'authentification
-> faire le dessin.
+On ne cherche pas à décrypter le code, on se place en intermédiaire de la conversation :
+
+```
+    Alice    |     Mallory       |     Bob
+    privé    |      public       |    privé
+-------------|-------------------|--------------
+     M       |                   |
+             |                   |
+     a ---.  |b' ---.     .--- a'|  .--- b           
+          v  |      v     v      |  v
+     K <--===|= A ===     === B =|===--> K'           # 2 partages de clé sécurisé
+             |                   |
+  K ⊕ M = C -|--- C              |
+             |     K ⊕ C = M     |  
+             |      K' ⊕ M = C' -|----> C'
+             |                   |      K' ⊕ C' = M
+```
+
+Tout se passe comme si Alice parlait à Bob mais ils parlent tous les deux à Mallory qui fait l'intermédiaire : il se fait passer pour Bob auprès d'Alice et d'Alice auprès de Bob.
+
+Il n'y a a priori aucun moyen de se prémunir de ce genre d'attaque si on ne possède pas un mécanisme d'authentification.
+
 
 ### <span id="side-channel-attack"></span>Side channel attack
 
 L'exponentiation indienne peut s'écrire de façon binaire en utilisant le principe [MULTIPLY and SQUARE](/cours/misc/nombres/#exponentiation).
 
 ```
-expo(x, y):
-  r = 1
+algorithme expo(x: [entier], y: [entier]) → [entier]:
+  r := [entier]
+  r ← [1, 0 .. 0]         # 64b par défaut 
   pour chaque i de 0 à n-1:
     si y[i] == 1:
-      r = r * x      # MULTIPLY
-    x = x * x        # SQUARE
+      r ← mult(r, x)      # MULTIPLY
+    x ← mult(x, x)        # SQUARE
   rendre r
 ```
 
-On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu'il vaut 0.
+On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu'il vaut 0. Il est donc possible de connaître la clé :
 
-> TBD le temps est aussi double puisque c'est des multiplications.
-> dnc si on connait le temps mis pour que des 0 ou que des 1 on sait combien de 1 à la clé.
->
-> Mais on peut faire mieux en mesurant le courant !
->
+- soit en analysant en temps réel le fonctionnement de l'algorithme
+- soit en mesurant le temps mis pour réaliser l'algorithme et comparer au mis par le même algorithme avec que des 0 ou des 1 comme clé.
+
+ça a l'air de la science fiction mais c'est tout à fait possible, ne serait-ce qu'en mesurant le courant pris par le processeur !
+
 {% lien %}
 [Algorithmes et simple power analysis](https://perso.telecom-paristech.fr/pacalet/HWSec/lectures/side_channels/l-nb.pdf)
 
@@ -234,15 +247,15 @@ On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu
 
 ## Utilisation de courbes elliptiques
 
+Un des intérêt du protocole de Diffie-Hellmann est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.
+
+
+> TBD à étoffer !
+
 > TBD <https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/>
 > TBD On a besoin que de l'exposant. Cela peut donc se faire dans tout groupe pas obligé d'être dans Z/pZ.
 > TDB exemple avec courbe elliptique.
-
-Un des intérêt du protocole de Diffie-Hellmann est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.
-
 > <https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques>
-
 > TBD taille clé 256b actuellement ([courbe de Bernstein](https://fr.wikipedia.org/wiki/Curve25519))
-
 > Renvoyer à [Courbes elliptiques](/cours/misc/courbes-elliptiques){.interne}
 > pour la def et les propriétés basiques d'une courbe elliptique.

@@ -68,7 +68,7 @@ Plaçons nous à un index $i$ fixé. On a :
 
 <div>
 $$
-Pr[C_i = 0] = Pr[X = 0, Y = 0] + Pr[X = 1, Y = 1]
+Pr[C_i = 0] = Pr[X = 0, Y_i = 0] + Pr[X = 1, Y_i = 1]
 $$
 </div>
 
@@ -83,7 +83,7 @@ Ce qui entraîne que $Pr[X \oplus Y_i = 0] = Pr[X = 0, Y_i = 0] + Pr[X = 1, Y_i 
 
 On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffrer, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.
 
-Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c\oplus m$.
+Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c \oplus m$.
 
 {% attention "**À retenir**" %}
 
@@ -126,13 +126,11 @@ La variable aléatoire $(k \xleftarrow{U} \mathcal{K}) \oplus m$ est uniforme qu
 
 {% enddetails %}
 
-Un attaquant n'a aucune idée de ce que peut être le message puisque tout message peut donnée un chiffre donné : il suffit de prendre la clé $k = $c \oplus m$.
+Un attaquant n'a aucune idée de ce que peut être le message puisque tout message peut donnée un chiffre donné : il suffit de prendre la clé $k = c \oplus m$.
 
 ## Confidentialité parfaite et taille de clé
 
-La code de Vernam semble parfait il est à la fois rapide à faire et inviolable. Son seul défaut est la longueur de la clé qui doit être la même que celle du message. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?
-
-Ceci est cependant une condition nécessaire et suffisante pour tout code à confidentialité parfaite :
+La code de Vernam semble parfait il est à la fois rapide à faire et inviolable. Son seul défaut est la longueur de la clé qui doit être la même que celle du message. Ceci est cependant une condition nécessaire et suffisante pour tout code à confidentialité parfaite :
 
 {% note "**Théorème**" %}
 Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieur ou égal au nombre de messages à chiffrer.
@@ -145,7 +143,13 @@ On en déduit que l'ensemble $\mathcal{M}' = \\{m \vert E(k, m)=c^{\star}, k \in
 
 {% enddetails %}
 
-Tout code utilisable en pratique aura une taille de clé plus petite que le message, on sera donc **assuré** que de l'information sera donné à l'adversaire. Il faudra s'assurer que cette information ne puisse pas être exploitée facilement.
+Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ? Tout code utilisable en pratique aura une taille de clé plus petite que le message :
+
+{% attention "**À retenir**" %}
+On est **assuré** que tout code avec une taille de clé plus petite que la longueur du message (_ie._ tout code utilisé en pratique) va laisser de l'information dans le message chiffré. 
+
+Il faudra s'assurer que cette information ne puisse pas être exploitée facilement par un adversaire.
+{% endattention %}
 
 ## Attention aux conditions d'utilisation
 
