@@ -127,12 +127,12 @@
 </li>
 <li>Constitution des clés :
 <ul>
-<li>Alice construit le secret $k = B^a \bmod p = g^{ab} \bmod p$</li>
-<li>Bob construit le secret $k = A^b \bmod p = g^{ab} \bmod p$</li>
+<li>Alice construit le secret $K = B^a \bmod p = g^{ab} \bmod p$</li>
+<li>Bob construit le secret $K = A^b \bmod p = g^{ab} \bmod p$</li>
 </ul>
 </li>
 </ol>
-<p>Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.</p>
+<p>Au final, Alice et Bob partagent un nombre $K$ compris entre $0$ et $p-1$.</p>
 </div></div>
 
 <h2>Pourquoi ça marche</h2>
@@ -151,8 +151,7 @@
 <h3>Algorithme de transmission</h3>
 <p>L'exponentiation modulaire peut s'écrire comme <a href="/cours_informatique/cours/algorithmie/projet-exponentiation/%C3%A9tude-algorithmique/" class="interne">l'exponentiation indienne</a> en utilisant le principe dit de &quot;<em>square and multiply</em>&quot; :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">expo</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token builtin">entier</span>
-    r <span class="token operator">←</span> <span class="token number">1</span>
+    r <span class="token operator">:=</span> <span class="token number">1</span>
     <span class="token keyword">tant que</span> y <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> y est impair<span class="token punctuation">:</span>
             r <span class="token operator">←</span> r <span class="token operator">*</span> x mod p     <span class="token comment"># MULTIPLY</span>
@@ -166,7 +165,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. POur plus d'info, n'hésitez pas à consulter <a href="/cours_informatique/cours/algorithmie/fonctions-bool%C3%A9ennes/" class="interne">cette partie du cours</a></p>
+<p>En réalité les complexité des opérations arithmétiques ne sont pas en $\mathcal{O}(1)$, mais cela ne change pas le résultat. Pour plus d'info, n'hésitez pas à consulter <a href="/cours_informatique/cours/algorithmie/fonctions-bool%C3%A9ennes/" class="interne">cette partie du cours</a></p>
 </div></div>
 
 <p>Si $x$, $y$ et $p$ sont stockés sur $n$ bits, la complexité est polynomiale puisque $\log_2(y) \leq n$.</p>
@@ -181,49 +180,47 @@
 
 <p>Trouver $x$ à partir de $y=g^x \bmod p$ n'est pas évident. En effet l'algorithme naif suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> g<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token builtin">entier</span>
-    r <span class="token operator">←</span> <span class="token number">1</span>
+    r <span class="token operator">:=</span> <span class="token number">1</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token number">0</span> à p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> r <span class="token operator">==</span> y<span class="token punctuation">:</span>
             <span class="token keyword">rendre</span><span class="token number"> i
 </span>        r <span class="token operator">←</span> r <span class="token operator">*</span> g mod p</code></pre>
-<p>En supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$, la complexité de l'algorithme est en $\mathcal{O}(p)$ qui correspond au nombre maximum d'itérations dans la boucle.</p>
-<p>Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}( \cdot 2^{log_2(p)}) = \mathcal{O}( \cdot 2^{n})$.</p>
-<p>Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide.</p>
-<p>Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits.</p>
-<p>Il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.</p>
+<p>est de complexité $\mathcal{O}(p)$ (le nombre maximum d'itérations dans la boucle) en supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$.</p>
+<p>Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}( \cdot 2^{log_2(p)}) = \mathcal{O}( \cdot 2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.</p>
 <p>Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé <a href="https://fr.wikipedia.org/wiki/Baby-step_giant-step">Baby step giant step</a> qui échange du temps contre de la mémoire.</p>
-<p>Son principe est simple.  Si $0 &lt; m &lt; p$, alors la division euclidienne de $x$ par $m$ donne : $x = i \cdot m + j$ avec :</p>
+<p>Son principe est simple.</p>
+<ol>
+<li>
+<p>Si $0 &lt; m &lt; p$, alors la division euclidienne de $x$ par $m$ donne : $x = i \cdot m + j$ avec :</p>
 <ul>
 <li>$0 \leq i \leq p/m$</li>
 <li>$0 \leq j &lt; m$</li>
 </ul>
-<p>Et on a que $y=g^x \mod p$ si et seulement si :</p>
-<div>
-$$
-g^i = y \cdot (\frac{1}{g}^m)^j
-$$
-</div>
+</li>
+<li>
+<p>On a $y=g^x \mod p$ si et seulement si : $g^i = y \cdot ((g^{-1})^m)^j$</p>
+</li>
+</ol>
 <p>Ce qui donne :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">steps</span><span class="token punctuation">(</span>y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> g<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     d <span class="token operator">:=</span> Dict<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    c <span class="token operator">:=</span> <span class="token builtin">entier</span>
-    c <span class="token operator">←</span> <span class="token number">1</span>
+    c <span class="token operator">:=</span> <span class="token number">1</span>
     
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token number">0</span> à p<span class="token operator">/</span>m<span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token number">0</span> à p<span class="token operator">/</span>m<span class="token punctuation">:</span>       <span class="token comment"># baby step</span>
         d<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token number"> i
-</span>        c <span class="token operator">←</span> g <span class="token operator">*</span> c
+</span>        c <span class="token operator">←</span> g <span class="token operator">*</span> c 
 
     <span class="token keyword">si</span> y est une clé de d<span class="token punctuation">:</span>          <span class="token comment"># g^i = y  => x = i * m + 0</span>
         <span class="token keyword">rendre</span> d<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">*</span> m
 
-    c <span class="token operator">←</span> expo<span class="token punctuation">(</span>expo<span class="token punctuation">(</span>g<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span>       <span class="token comment"># 1/g = g ** (n-2) puisque g ** (n-1) = 1 (petit thm Fermat)</span>
+    c <span class="token operator">←</span> expo<span class="token punctuation">(</span>expo<span class="token punctuation">(</span>g<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span>       <span class="token comment"># 1/g = g^(n-2) puisque g^(n-1) = 1 (petit thm Fermat)</span>
 
-    <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token number">1</span> à m<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">si</span> y <span class="token operator">*</span> c est une clé de d<span class="token punctuation">:</span>          <span class="token comment"># g^i = y  => x = i * m + j</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token number">1</span> à m<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>       <span class="token comment"># giant step</span>
+        y <span class="token operator">←</span> y <span class="token operator">*</span> c
+        <span class="token keyword">si</span> c est une clé de d<span class="token punctuation">:</span>  <span class="token comment"># g^i = y  => x = i * m + j</span>
             <span class="token keyword">rendre</span> d<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">*</span> m <span class="token operator">+</span><span class="token number"> j
 </span></code></pre>
-<p>La complexité de l'algorithme esr alors clairement de :</p>
+<p>La complexité de l'algorithme est alors clairement de :</p>
 <ul>
 <li>$\mathcal{O}(m)$ en mémoire pour stocker toutes les valeurs dans le dictionnaire</li>
 <li>$\mathcal{O}(m + p/m)$ en moyenne pour la complexité pour parcourir les 2 boucles et les test (en moyenne du dictionnaire)</li>
@@ -266,10 +263,15 @@ $$
 <li>l'algorithme baby-step giant step prend de l'ordre de $584942$ ans (ce qui est encore beaucoup mais on change tout de même d'ordre de grandeur).</li>
 </ul>
 <p>Les exemples précédents supposent un ordinateur avec un processeur unique et deux algorithmes non optimisés. Pour des algorithmes parallèles et optimisés on peut peut faire bien mieux.</p>
-<p>Comme augmenter la taille de la clé augmente exponentiellement le nombre de possibilité cet la taille des clés reste toujours acceptable (doubler la vitesse d'un algorithme permet de traiter dans le même temps de clés à un bit de plus).</p>
-<blockquote>
-<p>TBD : <a href="https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf">https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf</a> et <a href="https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf">https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf</a></p>
-</blockquote>
+<p>Lorsque la puissance de calcul augmente, il suffit d'augmenter linéairement la taille de la clé puisque cela augmente exponentiellement le nombre de possibilités (doubler la vitesse d'un algorithme permet de traiter dans le même temps de clés à un bit de plus).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Voir <a href="https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf">https://math.mit.edu/classes/18.783/2022/LectureNotes9.pdf</a> ou encore <a href="https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf">https://www.lix.polytechnique.fr/~morain/MPRI/2013/lecture1.pdf</a> pour d'autres algorithmes de résolution.</p>
+</div></div>
+
 <h2>Attaque</h2>
 <p>Il existe beaucoup de types d'attaques possibles. Explicitons-en quelques unes.</p>
 <h3>Brute force</h3>
@@ -285,26 +287,40 @@ $$
 <p>Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations.</p>
 <p>On préconise donc une taille de clé de 4096b actuellement. Voir <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Publications/TechGuidelines/TG02102/BSI-TR-02102-1.pdf?__blob=publicationFile">ce doc p35</a>.</p>
 <h3>Man in the middle</h3>
-<blockquote>
-<p>TBD : pb d'authentification
-faire le dessin.</p>
-</blockquote>
+<p>On ne cherche pas à décrypter le code, on se place en intermédiaire de la conversation :</p>
+<pre><code>    Alice    |     Mallory       |     Bob
+    privé    |      public       |    privé
+-------------|-------------------|--------------
+     M       |                   |
+             |                   |
+     a ---.  |b' ---.     .--- a'|  .--- b           
+          v  |      v     v      |  v
+     K &lt;--===|= A ===     === B =|===--&gt; K'           # 2 partages de clé sécurisé
+             |                   |
+  K ⊕ M = C -|--- C              |
+             |     K ⊕ C = M     |  
+             |      K' ⊕ M = C' -|----&gt; C'
+             |                   |      K' ⊕ C' = M
+</code></pre>
+<p>Tout se passe comme si Alice parlait à Bob mais ils parlent tous les deux à Mallory qui fait l'intermédiaire : il se fait passer pour Bob auprès d'Alice et d'Alice auprès de Bob.</p>
+<p>Il n'y a a priori aucun moyen de se prémunir de ce genre d'attaque si on ne possède pas un mécanisme d'authentification.</p>
 <h3><span id="side-channel-attack"></span>Side channel attack</h3>
 <p>L'exponentiation indienne peut s'écrire de façon binaire en utilisant le principe <a href="/cours_informatique/cours/misc/nombres/#exponentiation">MULTIPLY and SQUARE</a>.</p>
-<pre><code>expo(x, y):
-  r = 1
+<pre><code>algorithme expo(x: [entier], y: [entier]) → [entier]:
+  r := [entier]
+  r ← [1, 0 .. 0]         # 64b par défaut 
   pour chaque i de 0 à n-1:
     si y[i] == 1:
-      r = r * x      # MULTIPLY
-    x = x * x        # SQUARE
+      r ← mult(r, x)      # MULTIPLY
+    x ← mult(x, x)        # SQUARE
   rendre r
 </code></pre>
-<p>On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu'il vaut 0.</p>
-<blockquote>
-<p>TBD le temps est aussi double puisque c'est des multiplications.
-dnc si on connait le temps mis pour que des 0 ou que des 1 on sait combien de 1 à la clé.</p>
-<p>Mais on peut faire mieux en mesurant le courant !</p>
-</blockquote>
+<p>On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu'il vaut 0. Il est donc possible de connaître la clé :</p>
+<ul>
+<li>soit en analysant en temps réel le fonctionnement de l'algorithme</li>
+<li>soit en mesurant le temps mis pour réaliser l'algorithme et comparer au mis par le même algorithme avec que des 0 ou des 1 comme clé.</li>
+</ul>
+<p>ça a l'air de la science fiction mais c'est tout à fait possible, ne serait-ce qu'en mesurant le courant pris par le processeur !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -328,20 +344,17 @@ dnc si on connait le temps mis pour que des 0 ou que des 1 on sait combien de 1 
 </div></div>
 
 <h2>Utilisation de courbes elliptiques</h2>
+<p>Un des intérêt du protocole de Diffie-Hellmann est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.</p>
+<blockquote>
+<p>TBD à étoffer !</p>
+</blockquote>
 <blockquote>
 <p>TBD <a href="https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/">https://andrea.corbellini.name/2015/05/17/elliptic-curve-cryptography-a-gentle-introduction/</a>
 TBD On a besoin que de l'exposant. Cela peut donc se faire dans tout groupe pas obligé d'être dans Z/pZ.
-TDB exemple avec courbe elliptique.</p>
-</blockquote>
-<p>Un des intérêt du protocole de Diffie-Hellmann est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.</p>
-<blockquote>
-<p><a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques">https://fr.wikipedia.org/wiki/Échange_de_clés_Diffie-Hellman_basé_sur_les_courbes_elliptiques</a></p>
-</blockquote>
-<blockquote>
-<p>TBD taille clé 256b actuellement (<a href="https://fr.wikipedia.org/wiki/Curve25519">courbe de Bernstein</a>)</p>
-</blockquote>
-<blockquote>
-<p>Renvoyer à <a href="/cours_informatique/cours/misc/courbes-elliptiques" class="interne">Courbes elliptiques</a>
+TDB exemple avec courbe elliptique.
+<a href="https://fr.wikipedia.org/wiki/%C3%89change_de_cl%C3%A9s_Diffie-Hellman_bas%C3%A9_sur_les_courbes_elliptiques">https://fr.wikipedia.org/wiki/Échange_de_clés_Diffie-Hellman_basé_sur_les_courbes_elliptiques</a>
+TBD taille clé 256b actuellement (<a href="https://fr.wikipedia.org/wiki/Curve25519">courbe de Bernstein</a>)
+Renvoyer à <a href="/cours_informatique/cours/misc/courbes-elliptiques" class="interne">Courbes elliptiques</a>
 pour la def et les propriétés basiques d'une courbe elliptique.</p>
 </blockquote>
 

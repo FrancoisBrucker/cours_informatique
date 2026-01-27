@@ -96,7 +96,12 @@
     
   
 
-  <p>En analysant 3 codes historiques, on verra quelques concepts utile pour l'analyse.</p>
+  <p>En analysant 3 codes historiques, on verra quelques concepts fondamentaux en cryptographie :</p>
+<ul>
+<li>comment chiffrer</li>
+<li>comment décrypter un message en utilisant l'information laissée dans le message chiffrée</li>
+<li>comment rendre un chiffre plus sur.</li>
+</ul>
 <!-- TBD
 
 Ajouter code par permutation
@@ -200,21 +205,19 @@ $$
 Longtemps je me suis couche de bonne heure.
 </code></pre>
 <p>On chiffre :</p>
-<pre><code>❯ echo &quot;Longtemps je me suis couché de bonne heure.&quot; | recode -f utf8..flat | tr &quot;A-Za-z&quot; &quot;N-ZA-Mn-za-m&quot;
-
-Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.
+<pre><code>❯ echo &quot;Longtemps je me suis couché de bonne heure.&quot; | recode -f utf8..flat | tr &quot;a-z&quot; &quot;A-Z&quot; | tr &quot;A-Z&quot; &quot;N-ZA-M&quot;
+YBATGRZCF WR ZR FHVF PBHPUR QR OBAAR URHER.
 </code></pre>
 <p>On déchiffre. L'intérêt du ROT13 est que c'est le même algorithme pour le chiffrage et le déchiffrage :</p>
-<pre><code>❯ echo &quot;Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.&quot; | recode -f utf8..flat | tr &quot;A-Za-z&quot; &quot;N-ZA-Mn-za-m&quot;
+<pre><code>❯ echo &quot;YBATGRZCF WR ZR FHVF PBHPUR QR OBAAR URHER.&quot; | tr &quot;A-Z&quot; &quot;N-ZA-M&quot;
+LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE.
 
-Longtemps je me suis couche de bonne heure.
 </code></pre>
 <p>Le tout en une seule fois (avec des tee pour afficher les résultats intermédiaires) :</p>
-<pre><code>❯ echo &quot;Longtemps je me suis couché de bonne heure.&quot; | recode -f utf8..flat | tee /dev/tty | tr &quot;A-Za-z&quot; &quot;N-ZA-Mn-za-m&quot; | tee /dev/tty | tr &quot;A-Za-z&quot; &quot;N-ZA-Mn-za-m&quot;
-
-Longtemps je me suis couche de bonne heure.
-Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.
-Longtemps je me suis couche de bonne heure.
+<pre><code>❯ echo &quot;Longtemps je me suis couché de bonne heure.&quot; | recode -f utf8..flat | tr &quot;a-z&quot; &quot;A-Z&quot; | tee /dev/tty | tr &quot;A-Z&quot; &quot;N-ZA-M&quot; | tee /dev/tty | tr &quot;A-Z&quot; &quot;N-ZA-M&quot;
+LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE.
+YBATGRZCF WR ZR FHVF PBHPUR QR OBAAR URHER.
+LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE.
 </code></pre>
 <h3><span id="César-analyse"></span>Cryptanalyse</h3>
 <ol>
@@ -328,14 +331,38 @@ $$
 </div>
 <p>Le code de Vigenère est un exemple de <em><strong>Codage par blocs</strong></em> (<em>bloc cipher</em>) : chaque bloc de $p$ lettres est codé avec le même algorithme.</p>
 <p>Par exemple, si on encode notre chaîne par <code>PROUST</code>, cela revient à encoder toute les 7 lettres par un césar commençant par <code>P</code>, toutes les 8 lettres par un césar commençant par <code>R</code>, etc... Notre texte se code alors par :</p>
-<pre><code>Message : Longtemps je me suis couché de bonne heure.
+<pre><code>Message : LONGTEMPS JE ME SUIS COUCHE DE BONNE HEURE
 Clé     : PROUSTPRO US TP ROUS TPROUS TP ROUST PROUS
-Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW.
+Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW
 </code></pre>
 <h3>Algorithme</h3>
-<p>Je suis tombé <a href="https://stackoverflow.com/questions/50021770/vigen%c3%a8re-cipher-decryption">sur cette implémentation en POSIX sh</a> (le shell utilisé est bash mais c'est tout à fait POSIX) qui est tout simplement magnifique :</p>
-<p><a href="code/vig.sh" class="interne">fichier sh</a></p>
-<p>Elle est tout à fait compréhensible en utilisant <a href="https://stackoverflow.com/a/50022917">cette remarque</a> et <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02">la documentation des substitutions de paramètres</a>.</p>
+<p><a href="https://stackoverflow.com/questions/50021770/vigen%c3%a8re-cipher-decryption">Cette implémentation en shell</a> (la version ci-dessous est variante POSIX sh du script en lien) du chiffrement de Vigenère est tout simplement magnifique :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token shebang important">#!/bin/sh</span>
+
+<span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>
+
+<span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">!=</span> <span class="token string">"-d"</span> <span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"Usage: <span class="token variable">$0</span> [-d]"</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+
+<span class="token assign-left variable">m</span><span class="token operator">=</span><span class="token variable">${1<span class="token operator">:+</span>-}</span>
+
+<span class="token builtin class-name">printf</span> <span class="token string">"string: "</span><span class="token punctuation">;</span><span class="token builtin class-name">read</span> t
+<span class="token builtin class-name">printf</span> <span class="token string">"keyphrase: "</span><span class="token punctuation">;</span><span class="token builtin class-name">read</span> <span class="token parameter variable">-s</span> k
+<span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span>
+<span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>${#t}<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+  <span class="token assign-left variable">p1</span><span class="token operator">=</span><span class="token variable">${a<span class="token operator">%%</span>${t<span class="token operator">:</span>$i<span class="token operator">:</span>1}</span>*<span class="token punctuation">}</span>
+  <span class="token assign-left variable">p2</span><span class="token operator">=</span><span class="token variable">${a<span class="token operator">%%</span>${k<span class="token operator">:</span>$((i<span class="token operator">%</span>${<span class="token operator">#</span>k}</span><span class="token punctuation">))</span>:1<span class="token punctuation">}</span>*<span class="token punctuation">}</span>
+  <span class="token assign-left variable">d</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${d}</span><span class="token variable">${a<span class="token operator">:</span>$(((${<span class="token operator">#</span>p1}</span><span class="token variable">${m<span class="token operator">:-</span>+}</span><span class="token variable">${<span class="token operator">#</span>p2}</span>)%<span class="token variable">${<span class="token operator">#</span>a}</span>)):1}"</span>
+<span class="token keyword">done</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$d</span>"</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il est tout à fait compréhensible en utilisant <a href="https://stackoverflow.com/a/50022917">cette remarque du thread</a> et <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02">la documentation des substitutions de paramètres</a>.</p>
+</div></div>
+
 <h3><span id="Vigenère-analyse"></span>Chiffrement</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -483,7 +510,7 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 ALarecher ch ed utem psperd ud eMarc elPro
 LZNXXGTTJ LL QH MNME RGJGYH XH FANEG LPJIS
 </code></pre>
-<p>Ce code est réputé (on va le prouver) inviolable. S'il n'est pas réutilisé.</p>
+<p>Ce code est réputé (on va le prouver) inviolable. Si la clé de chiffrement n'est pas réutilisée.</p>
 
 
 </article>

@@ -99,9 +99,9 @@
   <p>Le processus d'envoi d'un message confidentiel entre Alice et Bob décrit précédemment doit être ajusté pour être réaliste :</p>
 <pre><code>    Alice    |  Eve   |     Bob
 -------------|--------|--------------
-    m, k     |        |      k
-E(k, m) = c -|-- c ---|----&gt; c
-             |        | D(k, c) = m
+    M, K     |        |      K
+E(K, M) = C -|-- C ---|----&gt; C
+             |        | D(K, C) = M
              |        |
 espace privé | public |    privé
 </code></pre>
@@ -113,9 +113,9 @@ espace privé | public |    privé
 <p>On obtient alors le schéma suivant :</p>
 <pre><code>    Alice    |  Eve   |     Bob
 -------------|--------|--------------
-    m, k     |        |      k
-  k ⊕ m = c -|-- c ---|----&gt; c
-             |        |  k ⊕ c = m
+    M, K     |        |      K
+  K ⊕ M = C -|-- C ---|----&gt; C
+             |        |  K ⊕ C = M
              |        |
 espace privé | public |    privé
 </code></pre>
@@ -158,13 +158,14 @@ espace privé | public |    privé
 <pre><code>    Alice    |         |     Bob
     privé    | public  |    privé
 -------------|---------|--------------
-     m       |         |
+     M       |         |
              |         |
-     a ---v  |         |  v--- b           # générés par un TRNG
-     k &lt;--===|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
+     a ---.  |         |  .--- b           # générés par un TRNG
+          v  |         |  v
+     K &lt;--===|= A = B =|===--&gt; K           # protocole de partage de clé sécurisé
              |         |
-  k ⊕ m = c -|--- c ---|----&gt; c
-             |         |  k ⊕ c = m
+  K ⊕ M = C -|--- C ---|----&gt; C
+             |         |  K ⊕ C = M
              |         |
 </code></pre>
 <h2>Notion de sécurité</h2>
@@ -192,7 +193,7 @@ espace privé | public |    privé
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une fonction $f: \{0, 1\}^t \rightarrow \{0, 1\}^t$ dont il existe un algorithme efficace pour la calculer est <strong><em>à sens unique</em></strong> si pour tout algorithme efficace $A$, la probabilité suivante est négligeable :</p>
+<p>Une fonction $f: \{0, 1\}^t \rightarrow \{0, 1\}^t$ dont il existe un algorithme efficace pour la calculer est <strong><em>à sens unique</em></strong> si pour tout algorithme efficace $F$, la probabilité suivante est négligeable :</p>
 <div>
 $$
 \Pr_{x \xleftarrow{U} \{0, 1\}^t}[f(F(f(x))) = f(x)]
@@ -219,7 +220,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en plus l'infini pour tout $d$.</p>
+<p>On peut de façon équivalente dire que $f(n)$ est négligeable si $f(n)n^d$ tend vers 0 en $+\infty$ pour tout $d$.</p>
 </div></div>
 
 <p>L'intérêt de cette formalisation est que négligeabilité se compose tout comme l'efficacité (somme et produit de polynôme restent des polynômes) :</p>
@@ -304,15 +305,16 @@ Ici faire directement le découpage avec des permutations. Ne plus parler des G(
 <pre><code>    Alice    |         |     Bob
     privé    | public  |    privé
 -------------|---------|--------------
-     m       |         |
+     M       |         |
              |         |
-     a ---v  |         |  v--- b           # générés par un TRNG
+     a ---.  |         |  .--- b           # générés par un TRNG
+          v  |         |  v
      k &lt;--===|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
              |         |
   G(k) = K   |         |  G(k) = K         # générés par un CPRNG
              |         |
-  K ⊕ m = c -|--- c ---|----&gt; c
-             |         |  K ⊕ c = m
+  K ⊕ M = C -|--- C ---|----&gt; C
+             |         |  K ⊕ C = M
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -403,19 +405,20 @@ $$
 <pre><code>    Alice     |         |     Bob
     privé     | public  |    privé
 --------------|---------|--------------
-     m        |         |
+     M        |         |
               |         |
-     a ---v   |         |  v--- b           # générés par un TRNG
+     a ---.   |         |  .--- b           # générés par un TRNG
+          v   |         |  v
      k &lt;--====|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
               |         |
-----&gt;         |         |
+--i--&gt;        |         |
 |             |         |
-|  G(ki) = K  |         |  G(ki) = K         # générés par un CPRNG
+|  Gi(k) = ki |         | Gi(k) = ki
 |             |         |
-| K ⊕ mi = c -|--- c ---|----&gt; c
-|             |         |  K ⊕ c = mi
-|             |         |  m = mi || m
-----          |         |    
+|ki ⊕ mi = ci-|--- ci --|----&gt; ci
+|             |         |  ki ⊕ ci = mi
+|             |         |  m = m || mi
+-----         |         |    
 </code></pre>
 <p>Notez qu'il ne faut pas répéter la clé !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -546,11 +549,11 @@ $$
 |             |         |
 | F(k,        |         | F(k,              # PRF
 |   iv || i)  |         |   iv || i)
-|   = K       |         |   = K             
+|   = ki      |         |   = ki             
 |             |         |
-| K ⊕ mi = c -|--- c ---|----&gt; c
-|             |         |  K ⊕ c = mi
-|             |         |  m = mi || m
+|ki ⊕ mi = c -|--- c ---|----&gt; c
+|             |         |  ki ⊕ c = mi
+|             |         |  m = m || mi
 ----          |         |    
 </code></pre>
 <h2>Nonce</h2>
@@ -564,17 +567,17 @@ $$
      a ---v   |         |  v--- b           # générés par un TRNG
      k &lt;--====|= A = B =|===--&gt; k           # protocole de partage de clé sécurisé
               |         |
-    N --------|---------|----&gt; N            # Nonce    
+     N -------|---------|----&gt; N            # Nonce    
               |         |                 
 --i--&gt;        |         |
 |             |         |
 | F(k,        |         | F(k,              # PRF
 |   N || i)   |         |   N || i)
-|   = K       |         |   = K             
+|   = ki      |         |   = ki             
 |             |         |
-| K ⊕ mi = c -|--- c ---|----&gt; c
-|             |         |  K ⊕ c = mi
-|             |         |  m = mi || m
+|ki ⊕ mi = c -|--- c ---|----&gt; c
+|             |         |  ki ⊕ c = mi
+|             |         |  m = m || mi
 ----          |         |    
 </code></pre>
 <h2>Schéma final de la transmission</h2>
@@ -593,11 +596,11 @@ $$
 |             |         |
 | F(k,        |         | F(k,              # PRF
 |   N || i)   |         |   N || i)
-|   = K       |         |   = K             
+|   = ki      |         |   = ki             
 |             |         |
-| K ⊕ mi = c -|--- c ---|----&gt; c
-|             |         |  K ⊕ c = mi
-|             |         |  m = mi || m
+|ki ⊕ mi = c -|--- c ---|----&gt; c
+|             |         |  ki ⊕ c = mi
+|             |         |  m = m || mi
 ----          |         |    
 </code></pre>
 <p>On appelle ce type de transmission <a href="https://fr.wikipedia.org/wiki/Chiffrement_de_flux">chiffrement de flux</a>, qui est la norme actuellement. Il permet :</p>

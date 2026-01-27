@@ -195,7 +195,7 @@
 </div></div>
 
 <h3>Cryptographie</h3>
-<p>Pour qu'un message $m$ puisse passer de Alice à Bob via un canal public sans qu'Eve ne puisse le lire, il faut qu'il soit <strong><em>chiffré</em></strong> (<em>encrypted</em>) par une fonction $E(m) = c$ pendant son passage dans le canal public, puis <strong><em>déchiffré</em></strong> (<em>decrypted</em>) par une autre fonction $D(c) = m$.</p>
+<p>Pour qu'un message $m$ puisse passer de Alice à Bob via un canal public sans qu'Eve ne puisse le lire, il faut qu'il soit <strong><em>chiffré</em></strong> (<em>encrypted</em>) par une fonction $E(M) = C$ pendant son passage dans le canal public, puis <strong><em>déchiffré</em></strong> (<em>decrypted</em>) par une autre fonction $D(C) = M$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -204,23 +204,23 @@
 <p>Les fonctions de chiffrements et de déchiffrements sont appelés <em>cipher</em> en anglais ; le message $m$ est appelé <em>plain text</em> et le message chiffré $c$ : <em>ciphertext</em>.</p>
 </div></div>
 
-<p>Mais comme Eve connaît (ou peut soudoyer quelqu'un pour connaître) $E()$ et $D()$, il faut que ces fonctions possèdent un paramètre en plus : une clé $k$ connue uniquement d'Alice et Bob :</p>
+<p>Mais comme Eve connaît (ou peut soudoyer quelqu'un pour connaître) $E()$ et $D()$, il faut que ces fonctions possèdent un paramètre en plus : une clé $K$ connue uniquement d'Alice et Bob :</p>
 <pre><code>    Alice    |  Eve   |     Bob
 -------------|--------|--------------
-    m, k     |        |      k
+    M, K     |        |      K
              |        |
-E(k, m) = c -|-- c ---|----&gt; c
-             |        | D(k, c) = m
+E(K, M) = C -|-- C ---|----&gt; C
+             |        | D(K, C) = M
              |        |
 espace privé | public |    privé
 </code></pre>
-<p>En supposant qu'Eve ne possède pas d'autre information que le message chiffré, si elle veut prendre connaissance de $m$ sans connaître $k$, on dit <strong><em>décrypter</em></strong> $c$, il lui faut tester $E(k', m)$ pour toutes les combinaisons $k'$ de clés possibles.</p>
+<p>En supposant qu'Eve ne possède pas d'autre information que le message chiffré, si elle veut prendre connaissance de $M$ sans connaître $K$, on dit <strong><em>décrypter</em></strong> $c$, il lui faut tester $D(K', C)$ pour toutes les combinaisons $K'$ de clés possibles.</p>
 <p>La communication est alors confidentielle si le temps nécessaire pour faire tout ces essais est supérieur à la durée de validité du message chiffré.</p>
-<p>De part la nature algorithmique de secret, la confidentialité de la transmission de $m$ via $E(k, m)$ n'est garantie que si :</p>
+<p>De part la nature algorithmique de secret, la confidentialité de la transmission de $M$ via $E(K, M)$ n'est garantie que si :</p>
 <ul>
-<li>$D(k, E(k, m)) = m$</li>
-<li>Eve ne peut obtenir aucune information sur $k$ ou $m$ à partir de $E(k, m)$</li>
-<li>le temps nécessaire pour décrypter le message en utilisant toutes les clé possible est prohibitif.</li>
+<li>$D(K, E(K, M)) = M$</li>
+<li>Eve ne peut obtenir aucune information sur $K$ ou $M$ à partir de $E(K, M)$</li>
+<li>le temps nécessaire pour décrypter le message en utilisant toutes les clés possibles est prohibitif.</li>
 </ul>
 <p>Formalisons tout cela.</p>
 <h4>Cohérence</h4>
@@ -231,7 +231,7 @@ espace privé | public |    privé
 </ul>
 <p>Pour le chiffrement soit effectif, il faut qu'il soit :</p>
 <ul>
-<li><strong><em>cohérent</em></strong> : $D(k, E(k, m)) = m$ pour tout $m \in \mathcal{M}$</li>
+<li><strong><em>cohérent</em></strong> : $D(K, E(K, M)) = M$ pour tout $M \in \mathcal{M}$</li>
 <li><strong><em>efficace</em></strong> (<em>efficient</em>) : $D$ et $E$ sont des algorithmes polynomiaux et s'ils sont linéaires c'est encore mieux.</li>
 </ul>
 <p>On peut se restreindre, sans perte de généralité, aux messages binaires et supposer que $\mathcal{M} = \mathcal{C}$. On a alors :</p>
@@ -291,6 +291,14 @@ Ceci permet de montrer le principe de Shannon largeur et profondeur de mélange.
 <p><a href="confidentialit%C3%A9" class="interne">Confidentialité</a></p>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="codes-actuels" class="interne">Codes actuels</a></p>
+</div></div>
+
 <h2>Intégrité</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -318,14 +326,6 @@ TBD ok mais pas forcément super pour aujourd'hui et transmission par ordi :</p>
 <li>envoie de paquet : que faire si un paquet est mauvais ? Il faut tout recommencer pour trouver le bon endroit du code. TBD à voir comment fonctionne le schéma général de renvoie de paquet. qu'est ce qui est chiffré ?</li>
 </ul>
 </blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="codes-actuels" class="interne">Codes actuels</a></p>
-</div></div>
-
 <h2>Bibliographie</h2>
 <ul>
 <li><a href="https://www.amazon.fr/Applied-Cryptography-Protocols-Algorithms-Source/dp/1119096723"><em>Applied Cryptography, protocols algorithms and source code in C</em> de Bruce Schneier</a>. Un peu vieux maintenant concernant les algorithmes, mais toujours utile pour une description des protocoles (qui eux sont toujours utilisés)</li>

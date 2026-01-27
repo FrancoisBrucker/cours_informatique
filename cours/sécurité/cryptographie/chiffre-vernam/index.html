@@ -164,7 +164,7 @@ message
 <p>Plaçons nous à un index $i$ fixé. On a :</p>
 <div>
 $$
-Pr[C_i = 0] = Pr[X = 0, Y = 0] + Pr[X = 1, Y = 1]
+Pr[C_i = 0] = Pr[X = 0, Y_i = 0] + Pr[X = 1, Y_i = 1]
 $$
 </div>
 <p>Comme $X$ et $Y_i$ sont indépendants pour tout $i$, on a : $Pr[X = a, Y_i = b] = Pr[X = a]\cdot Pr[Y_i = b]$. Donc :</p>
@@ -177,7 +177,7 @@ $$
 </details>     
 </div>
 <p>On déduit du résultat précédent que si la clé est une variable aléatoire uniforme indépendante du texte à chiffrer, le chiffre $c$ ne donne aucune information sur $m$. Ce résultat est remarquable car il ne présuppose rien sur le message $m$ et prouve bien l'inviolabilité du code de Vernam.</p>
-<p>Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c\oplus m$.</p>
+<p>Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c \oplus m$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -247,10 +247,9 @@ $$
 </div>
 </details>     
 </div>
-<p>Un attaquant n'a aucune idée de ce que peut être le message puisque tout message peut donnée un chiffre donné : il suffit de prendre la clé $k = $c \oplus m$.</p>
+<p>Un attaquant n'a aucune idée de ce que peut être le message puisque tout message peut donnée un chiffre donné : il suffit de prendre la clé $k = c \oplus m$.</p>
 <h2>Confidentialité parfaite et taille de clé</h2>
-<p>La code de Vernam semble parfait il est à la fois rapide à faire et inviolable. Son seul défaut est la longueur de la clé qui doit être la même que celle du message. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?</p>
-<p>Ceci est cependant une condition nécessaire et suffisante pour tout code à confidentialité parfaite :</p>
+<p>La code de Vernam semble parfait il est à la fois rapide à faire et inviolable. Son seul défaut est la longueur de la clé qui doit être la même que celle du message. Ceci est cependant une condition nécessaire et suffisante pour tout code à confidentialité parfaite :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -283,7 +282,18 @@ $$
 </div>
 </details>     
 </div>
-<p>Tout code utilisable en pratique aura une taille de clé plus petite que le message, on sera donc <strong>assuré</strong> que de l'information sera donné à l'adversaire. Il faudra s'assurer que cette information ne puisse pas être exploitée facilement.</p>
+<p>Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ? Tout code utilisable en pratique aura une taille de clé plus petite que le message :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On est <strong>assuré</strong> que tout code avec une taille de clé plus petite que la longueur du message (<em>ie.</em> tout code utilisé en pratique) va laisser de l'information dans le message chiffré.</p>
+<p>Il faudra s'assurer que cette information ne puisse pas être exploitée facilement par un adversaire.</p>
+</div></div>
+
 <h2>Attention aux conditions d'utilisation</h2>
 <p>Le code de Vernam est à confidentialité parfaite mais il y a des conditions d'utilisation très stricte pour que ce soit vrai. Nous allons montrer ici que si on ne les respecte pas, les conséquences peuvent être désastreuses.</p>
 <h3>xor-trick</h3>
