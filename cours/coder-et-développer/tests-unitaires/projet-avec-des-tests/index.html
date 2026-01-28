@@ -104,7 +104,7 @@
 </ul>
 <p>Par exemple, considérons un programme qui va chiffrer un message selon <a href="https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage">le code de césar</a>.</p>
 <h2>Le projet</h2>
-<p>On commence par créer un dossier qui va contenir notre projet. Appelons le <code class="fichier">chiffre_cesar</code>.</p>
+<p>Du point de vue de python un projet est un dossier qui va contenir les différents fichiers python. Appelons le <code class="fichier">chiffre_cesar</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -119,6 +119,20 @@
 </ul>
 </div></div>
 
+<p>Téléchargez le projet :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Téléchargez le fichier <a href="chffre-cesar.zip" class="interne">chiffre-cesar.zip</a> qui contient l'ensemble des fichiers du projet,</li>
+<li>décompressez le fichier,</li>
+<li>ouvrez le dossier dans vscode.</li>
+</ol>
+</div></div>
+
 <h2>Le programme principal</h2>
 <p>Le programme principal est le fichier que l'on va exécuter, on a coutume de l'appeler <code class="fichier">main.py</code></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -131,7 +145,7 @@
 <p>Un projet informatique va contenir de nombreux fichiers, mais un seul sera le programme principal, celui que l'on exécutera avec la commande <code>python main.py</code>.</p>
 </div></div>
 
-<p>Dans notre cas, notre programme sera :</p>
+<p>Dans notre cas, notre programme est :</p>
 <p>fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> texte
 <span class="token keyword">from</span> chiffre <span class="token keyword">import</span> césar_chiffre<span class="token punctuation">,</span> césar_déchiffre
@@ -157,9 +171,18 @@ Texte initial   <span class="token builtin class-name">:</span> ELEONORE M<span 
 Texte chiffré   : JQJTSTWJ R'</span>FITWJ <span class="token operator">!</span>
 Texte déchiffré <span class="token builtin class-name">:</span> ELEONORE M'ADORE <span class="token operator">!</span>
 </code></pre>
+<p>Exécutez le projet :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : exécutez le programme en exécutant la commande <code>python main.py</code>.</p>
+</div></div>
+
 <h2>Fichiers de fonctions</h2>
-<p>Les deux imports correspondent aux fichiers <code class="fichier">texte.py</code> et <code class="fichier">chiffre.py</code> qui sont <strong>dans le même dossier</strong> que notre programme principal.</p>
-<p>Chaque fichier va contenir un ensemble de fonctions de buts similaires.</p>
+<p>Les deux imports du programme principal correspondent aux fichiers <code class="fichier">texte.py</code> et <code class="fichier">chiffre.py</code> qui sont <strong>dans le même dossier</strong> que notre programme principal. Ces deux fichiers contiennent toutes les fonctions nécessaire à l'exécution du programme principal.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -170,6 +193,7 @@ Texte déchiffré <span class="token builtin class-name">:</span> ELEONORE M'ADO
 <p>Pour que l'import dans le fichier <code class="fichier">main.py</code> se passe sans soucis, tous les fichiers de fonctions doivent se trouver dans le dossier du projet.</p>
 </div></div>
 
+<p>Chaque fichier va contenir un ensemble de fonctions de buts similaires.</p>
 <h3>Fonctions texte</h3>
 <p>Fichier <code class="fichier">texte.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> unicodedata
@@ -232,6 +256,38 @@ Texte déchiffré <span class="token builtin class-name">:</span> ELEONORE M'ADO
 <p>Pour que l'import dans les fichiers de tests se passent sans soucis, tous les fichiers de tests doivent se trouver dans le dossier du projet.</p>
 </div></div>
 
+<p>On exécute nos tests dans un terminal dont le dossier courant est le dossier du projet :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> python <span class="token parameter variable">-m</span> pytest
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span> <span class="token builtin class-name">test</span> session starts <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+platform darwin -- Python <span class="token number">3.14</span>.2, pytest-9.0.2, pluggy-1.6.0
+rootdir: ./chiffre-césar
+collected <span class="token number">3</span> items                                                                                        
+
+test_chiffre.py <span class="token punctuation">..</span>                                                                                 <span class="token punctuation">[</span> <span class="token number">66</span>%<span class="token punctuation">]</span>
+test_texte.py <span class="token builtin class-name">.</span>                                                                                    <span class="token punctuation">[</span><span class="token number">100</span>%<span class="token punctuation">]</span>
+
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span> <span class="token number">3</span> passed <span class="token keyword">in</span> <span class="token number">0</span>.00s <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span></code></pre>
+<p>Ouf, tout est ok.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Prenez l'habitude de tester vos fichier en utilisant le terminal.</p>
+</div></div>
+
+<p>Exécutons les tests du projet :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : exécutez les tests en exécutant la commande <code>python -m pytest</code>.</p>
+</div></div>
+
 <h3>Tests des fonctions de texte</h3>
 <p>Fichier <code class="fichier">test_texte.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> texte <span class="token keyword">import</span> conversion
@@ -254,29 +310,6 @@ Texte déchiffré <span class="token builtin class-name">:</span> ELEONORE M'ADO
     <span class="token keyword">assert</span> <span class="token string">"B D"</span> <span class="token operator">==</span> césar_déchiffre<span class="token punctuation">(</span><span class="token string">"D F"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> <span class="token string">"A B"</span> <span class="token operator">==</span> césar_déchiffre<span class="token punctuation">(</span><span class="token string">"Z A"</span><span class="token punctuation">,</span> <span class="token string">"Z"</span><span class="token punctuation">)</span>
 </code></pre>
-<h3>Exécution des tests</h3>
-<p>On exécute nos tests dans le terminal :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pytest
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span> <span class="token builtin class-name">test</span> session starts <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
-platform darwin -- Python <span class="token number">3.14</span>.2, pytest-9.0.2, pluggy-1.6.0
-rootdir: ./chiffre-césar
-collected <span class="token number">3</span> items                                                                                        
-
-test_chiffre.py <span class="token punctuation">..</span>                                                                                 <span class="token punctuation">[</span> <span class="token number">66</span>%<span class="token punctuation">]</span>
-test_texte.py <span class="token builtin class-name">.</span>                                                                                    <span class="token punctuation">[</span><span class="token number">100</span>%<span class="token punctuation">]</span>
-
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span> <span class="token number">3</span> passed <span class="token keyword">in</span> <span class="token number">0</span>.00s <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span></code></pre>
-<p>Ouf, tout est ok.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Prenez l'habitude de tester vos fichier en utilisant le terminal.</p>
-</div></div>
-
 <h2>Liste des fichiers du projet</h2>
 <p>Le projet final contient 5 fichiers :</p>
 <ul>
