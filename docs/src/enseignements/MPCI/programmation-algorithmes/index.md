@@ -163,7 +163,7 @@ Notions abordées :
 
 {% aller %}
 1. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
-2. [un projet informatique](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/){.interne}
+2. [Développer un projet informatique](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/){.interne}
 3. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
 4. [Petits programmes](/cours/coder-et-développer/projet-codes/){.interne} et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
 {% endaller %}
