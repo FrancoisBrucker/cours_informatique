@@ -91,7 +91,7 @@ Notions abordées :
 - ce que ne peut pas faire un algorithme
 
 {% aller %}
-[bases théorique de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
+[bases théoriques de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
 {% endaller %}
 
 #### Vendredi : écrire des algorithmes

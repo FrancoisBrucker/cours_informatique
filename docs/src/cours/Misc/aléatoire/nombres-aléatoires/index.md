@@ -43,7 +43,7 @@ Il existe des moyens de générer des nombres aléatoire, on appelle ces génér
 > TBD avec des dés plusieurs bits avec 1 lancé : <https://stackoverflow.com/questions/20804899/how-to-generate-an-un-biased-random-number-within-an-arbitrary-range-using-the-f/20818831#20818831>
 > TBD présenter niquist
 > TBD quantique, etc.
-
+> TBD ring oscillatro : <https://www.youtube.com/watch?v=fwU8s1BMNlA> <https://www-verimag.imag.fr/~async/CCIS/talk_12/Lubicz_talk.pdf> et <https://pqshield.com/wp-content/uploads/2022/02/2021-1363.pdf>
 ## Entropie
 
 Cependant créer un nombre aléatoire est un processus coûteux en temps et en énergie. On utilisera alors souvent des processus approchés pour extraire de l'aléatoire : générer $n$ bits presque aléatoires à partir de $m < n$ bits vraiment aléatoires.
