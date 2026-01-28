@@ -155,8 +155,6 @@ Notions abordées :
 1. Rappels : [créer un projet python avec vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/){.interne}
 2. [Bases de système d'exploitation](/cours/système-et-réseau/bases-système/){.interne}
 3. [Modules externes python](/cours/coder-et-développer/modules-externes-python/){.interne}
-4. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
-5. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
 {% endaller %}
 
 #### Vendredi : exercices
@@ -164,8 +162,9 @@ Notions abordées :
 > 2h
 
 {% aller %}
-1. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
-2. [Petits programmes](/cours/coder-et-développer/projet-codes/){.interne} et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
+1. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
+2. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
+3. [Petits programmes](/cours/coder-et-développer/projet-codes/){.interne} et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
 {% endaller %}
 
 Si on a le temps, sinon à faire chez soit :
@@ -177,7 +176,8 @@ Si on a le temps, sinon à faire chez soit :
 Pour aller plus loin :
 
 {% aller %}
-[déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
+1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
+2. [déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
 {% endaller %}
 
 ### Semaine 3
