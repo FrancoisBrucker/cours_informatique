@@ -21,13 +21,22 @@ Par exemple, considérons un programme qui va chiffrer un message selon [le code
 
 ## Le projet
 
-On commence par créer un dossier qui va contenir notre projet. Appelons le `chiffre_cesar`{.fichier}.
+Du point de vue de python un projet est un dossier qui va contenir les différents fichiers python. Appelons le `chiffre_cesar`{.fichier}.
 
 {% attention "**À retenir**" %}
 Dans la mesure du possible, le nom des dossiers et des fichiers d'un projet informatiques :
 - ne doivent contenir que des lettres **non accentuées**
 - ne doivent contenir **pas** contenir d'espaces. On sépare les mots par des _underscore_ `_`
 {% endattention %}
+
+
+Téléchargez le projet :
+
+{% faire %}
+1. Téléchargez le fichier [chiffre-cesar.zip](./chffre-cesar.zip){.interne} qui contient l'ensemble des fichiers du projet,
+2. décompressez le fichier,
+3. ouvrez le dossier dans vscode.
+{% endfaire %}
 
 ## Le programme principal
 
@@ -37,7 +46,7 @@ Le programme principal est le fichier que l'on va exécuter, on a coutume de l'a
 Un projet informatique va contenir de nombreux fichiers, mais un seul sera le programme principal, celui que l'on exécutera avec la commande `python main.py`.
 {% endattention %}
 
-Dans notre cas, notre programme sera : 
+Dans notre cas, notre programme est : 
 
 fichier `main.py`{.fichier} :
 
@@ -73,16 +82,22 @@ Texte déchiffré : ELEONORE M'ADORE !
 
 ```
 
+Exécutez le projet :
+
+{% faire %}
+Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : exécutez le programme en exécutant la commande `python main.py`.
+
+{% endfaire %}
+
 ## Fichiers de fonctions
 
-Les deux imports correspondent aux fichiers `texte.py`{.fichier} et `chiffre.py`{.fichier} qui sont **dans le même dossier** que notre programme principal.
-
-Chaque fichier va contenir un ensemble de fonctions de buts similaires.
+Les deux imports du programme principal correspondent aux fichiers `texte.py`{.fichier} et `chiffre.py`{.fichier} qui sont **dans le même dossier** que notre programme principal. Ces deux fichiers contiennent toutes les fonctions nécessaire à l'exécution du programme principal.
 
 {% attention "**À retenir**" %}
 Pour que l'import dans le fichier `main.py`{.fichier} se passe sans soucis, tous les fichiers de fonctions doivent se trouver dans le dossier du projet.
 {% endattention %}
 
+Chaque fichier va contenir un ensemble de fonctions de buts similaires.
 
 ### Fonctions texte
 
@@ -157,6 +172,34 @@ Pour que pytest puisse comprendre que ce sont des fichiers de textes, on fait co
 Pour que l'import dans les fichiers de tests se passent sans soucis, tous les fichiers de tests doivent se trouver dans le dossier du projet.
 {% endattention %}
 
+On exécute nos tests dans un terminal dont le dossier courant est le dossier du projet :
+
+```shell
+$> python -m pytest
+========================================== test session starts ===========================================
+platform darwin -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0
+rootdir: ./chiffre-césar
+collected 3 items                                                                                        
+
+test_chiffre.py ..                                                                                 [ 66%]
+test_texte.py .                                                                                    [100%]
+
+=========================================== 3 passed in 0.00s ============================================
+```
+
+Ouf, tout est ok.
+
+{% attention "**À retenir**" %}
+Prenez l'habitude de tester vos fichier en utilisant le terminal.
+{% endattention %}
+
+Exécutons les tests du projet :
+
+{% faire %}
+Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : exécutez les tests en exécutant la commande `python -m pytest`.
+
+{% endfaire %}
+
 ### Tests des fonctions de texte
 
 Fichier `test_texte.py`{.fichier} :
@@ -188,29 +231,6 @@ def test_césar_déchiffre():
     assert "A B" == césar_déchiffre("Z A", "Z")
 
 ```
-
-### Exécution des tests
-
-On exécute nos tests dans le terminal :
-
-```shell
-python -m pytest
-========================================== test session starts ===========================================
-platform darwin -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0
-rootdir: ./chiffre-césar
-collected 3 items                                                                                        
-
-test_chiffre.py ..                                                                                 [ 66%]
-test_texte.py .                                                                                    [100%]
-
-=========================================== 3 passed in 0.00s ============================================
-```
-
-Ouf, tout est ok.
-
-{% attention "**À retenir**" %}
-Prenez l'habitude de tester vos fichier en utilisant le terminal.
-{% endattention %}
 
 ## Liste des fichiers du projet
 

@@ -185,7 +185,7 @@ Ce n'est cependant pour l'instant pas très pratique :
 
 Pour pallier ces inconvénients on utilise une bibliothèque de test spécialisée : [Pytest](https://docs.pytest.org).
 
-### Installation de la bibliothèque de tests
+## Installation de la bibliothèque de tests
 
 {% lien %}
 [tests avec vscode](https://code.visualstudio.com/docs/python/testing)
@@ -202,7 +202,7 @@ python -m pip install pytest
 1. dans les préférences (_menu file/code > Préférences > settings_) tapez `python.testing.pytestEnabled` dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme [unittest](https://docs.python.org/fr/3.9/library/unittest.html) ou encore [nosetests](https://nose.readthedocs.io/en/latest/), mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).
 2. on configure les tests de notre projet en tapant la commande (dans la [palette de commande](../bases-programmation/éditeur-vscode/prise-en-main/#palette-de-commande){.interne}) : _python : Configure tests_ on choisit _pytest_ puis _. (root)_ qui donne le dossier de départ où aller chercher nos tests
 
-### <span id="utilisation-pytest"></span> Utilisation
+## <span id="utilisation-pytest"></span> Exécuter des tests
 
 {% faire %}
 Supprimez la partie exécution des fonctions de tests dans le fichier `test_projet.py`{.fichier}, pytest le fera pour nous. Votre fichier doit maintenant uniquement contenir le code suivant :
@@ -280,53 +280,3 @@ On peut aussi exécuter les tests directement avec vscode. Pour cela, cliquez su
 3. n'exécuter qu'un seul test
 
 ![vsc-pytest-erlenmeyer](code-projet-pytest-erlenmeyer.png)
-
-### Test du projet
-
-Faisons de vrais tests maintenant.
-
-{% faire %}
-Créez un fichier `le_code.py`{.fichier} et placez-y le code :
-
-```python
-def bonjour(nom):
-    return "bonjour " + nom + " !"
-
-```
-
-{% endfaire %}
-
-On peut maintenant remplacer les tests :
-
-{% faire %}
-Modifiez le fichier `test_projet.py`{.fichier} pour qu'il contienne le code :
-
-```python
-from le_code import bonjour
-
-
-def test_bonjour():
-    assert bonjour("monde") == "bonjour monde !"
-```
-
-Exécutez les tests pour vérifier que votre code fonctionne.
-
-{% endfaire %}
-
-Maintenant que les tests passent, on peut modifier le programme principal.
-
-{% faire %}
-Modifiez le fichier `main.py`{.fichier} pour qu'il contienne le code :
-
-```python
-from le_code import bonjour
-
-print(bonjour("monde"))
-
-```
-
-Exécutez le programme principal.
-
-{% endfaire %}
-
-Félicitations, vous avez fait votre premier projet fonctionnel !
