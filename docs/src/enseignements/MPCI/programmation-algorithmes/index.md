@@ -163,21 +163,21 @@ Notions abordées :
 
 {% aller %}
 1. [tester son code](/cours/coder-et-développer/tests-unitaires/){.interne}
-2. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
-3. [Petits programmes](/cours/coder-et-développer/projet-codes/){.interne} et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
+2. [un projet informatique](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/){.interne}
+3. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
+4. [Petits programmes](/cours/coder-et-développer/projet-codes/){.interne} et [on leur ajoute des tests](/cours/coder-et-développer/projet-codes-tests/){.interne}
 {% endaller %}
 
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-[Tutoriel matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
+[écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
 {% endaller %}
 
 Pour aller plus loin :
 
 {% aller %}
-1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
-2. [déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
+[déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
 {% endaller %}
 
 ### Semaine 3
