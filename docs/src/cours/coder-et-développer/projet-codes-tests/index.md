@@ -27,7 +27,7 @@ Les tests sont écrit par le développeur et leurs buts est qu'ils lui permetten
 
 ## <span id="syracuse"></span>Syracuse
 
-On va ajouter des tests aux fonctions [du sujet sans les tests](../projet-codes/syracuse-sujet){.interne}. Chaque développeur va avoir d'autres tests, ce n'est pas un problème. Il faut juste être honnête avec soit-même et est moralement sur que si ses tests passent le code est correct.
+On va ajouter des tests aux fonctions [du sujet sans les tests](../projet-codes/#syracuse){.interne}. Chaque développeur va avoir d'autres tests, ce n'est pas un problème. Il faut juste être honnête avec soit-même et est moralement sur que si ses tests passent le code est correct.
 
 S'il s'avère que l'on trouve a posteriori un bug pas de problème on rajoute un test et on le corrige. Comme le test reste : le bug ne pourra jamais revenir après une modification du code.
 
@@ -106,7 +106,7 @@ def test_suite_u_0_5():
 
 ## <span id="pendu"></span>Jeu du pendu
 
-Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/pendu-sujet){.interne}.
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/#pendu){.interne}.
 
 {% exercice %}
 Que testeriez vous pour vérifier que la fonction `est_une_lettre`{.language-} fonctionne ? Implémentez ces tests.
@@ -227,11 +227,16 @@ def test_caché():
 
 {% enddetails %}
 
-## <span id="compte-caractere"></span>Le compte est bon
+## <span id="compte-caractère"></span>Le compte est bon
+
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/#compte-caractère){.interne}.
+
 
 Notez qu'on ne teste jamais les programmes `main.py`{.fichier} car ils nécessitent un utilisateur et on veut que nos tests soient automatisés.
+
+
 {% exercice %}
-Ajoutez des tests aux fonctions `donne_prochain_indice`{.language-}, `compte_caractère`{.language-} et `donne_max_doublon`{.language-} [du sujet sans les tests](../projet-codes/compte-caractere-sujet){.interne}.
+Ajoutez des tests aux fonctions `donne_prochain_indice`{.language-}, `compte_caractère`{.language-} et `donne_max_doublon`{.language-}.
 {% endexercice %}
 {% details "corrigé" %}
 

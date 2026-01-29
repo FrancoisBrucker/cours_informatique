@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: "Corrigé : Syracuse"
+title: "Programme : Syracuse"
 
 eleventyComputed:
   eleventyNavigation:
