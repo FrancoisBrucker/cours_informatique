@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Syracuse</title>
+    <title>Programme : Syracuse</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Syracuse</h1>
+  <h1>Programme : Syracuse</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/">On s&#39;entraîne à coder de petits projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/syracuse-sujet/">Syracuse</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/">On s&#39;entraîne à coder de petits projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/syracuse-programme/">Programme : Syracuse</a>
 
 </div></div>
 
@@ -96,41 +96,33 @@
     
   
 
-  <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>En utilisant le fait que le modulo s'écrit <code class="language-">%</code> en python.</p>
-</div></div>
+  <h2>Fichier <code class="fichier">syracuse.py</code></h2>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">syracuse</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> x <span class="token operator">/</span> <span class="token number">2</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">3</span> <span class="token operator">*</span> x <span class="token operator">+</span> <span class="token number">1</span>
 
-<h2>Écrivez une fonction <code class="language-">syracuse</code> telle que</h2>
-<ul>
-<li><strong>entrée</strong> : un entier $x$</li>
-<li><strong>sortie</strong> :
-<ul>
-<li>$x/2$ si $x$ est pair</li>
-<li>$3x + 1$ si $x$ est impair</li>
-</ul>
-</li>
-</ul>
-<h2>2. Une fonction qui rend tous les éléments de la suite de Syracuse associée à un nombre</h2>
-<ul>
-<li><strong>entrée</strong> : un entier $x$</li>
-<li><strong>sortie</strong> : les élément de la suite de Syracuse associée à $x$</li>
-</ul>
-<p>La suite de Syracuse est définie telle que :</p>
-<ul>
-<li>$u_0 =x$</li>
-<li>$u_{n+1} = \mbox{syracuse}(u_n)$</li>
-<li>on s'arrête lorsque $u_n =1$</li>
-</ul>
-<h2>3. Le programme principale demande à l'utilisateur de taper un nombre et rend la suite de Syracuse de ce nombre</h2>
-<ul>
-<li>vous supposerez que l'utilisateur ne se trompe pas (pas besoin de gérer ses erreurs potentielles)</li>
-<li>vous utiliserez <a href="https://docs.python.org/fr/3.13/library/functions.html#input">la fonction <code class="language-">input()</code></a> qui rend une chaîne de caractères tapée par l'utilisateur</li>
-<li><code class="language-">int(x)</code> est l'entier représenté par la chaîne de caractère <code class="language-">x</code>.</li>
-</ul>
+
+<span class="token keyword">def</span> <span class="token function">suite</span><span class="token punctuation">(</span>u_0<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    sortie <span class="token operator">=</span> <span class="token punctuation">[</span>u_0<span class="token punctuation">]</span>
+
+    u_n <span class="token operator">=</span> u_0
+    <span class="token keyword">while</span> u_n <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        u_n <span class="token operator">=</span> syracuse<span class="token punctuation">(</span>u_n<span class="token punctuation">)</span>
+        sortie<span class="token punctuation">.</span>append<span class="token punctuation">(</span>u_n<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> sortie
+</code></pre>
+<h2>Fichier <code class="fichier">main.py</code></h2>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> syracuse <span class="token keyword">import</span> suite
+
+sortie_utilisateur <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Donnez un entier : "</span><span class="token punctuation">)</span>
+
+u_0 <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>sortie_utilisateur<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"suite de Syracuse associée : "</span><span class="token punctuation">,</span> suite<span class="token punctuation">(</span>u_0<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
 
 
 </article>

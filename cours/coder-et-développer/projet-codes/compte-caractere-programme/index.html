@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Corrigé : le compte est bon</title>
+    <title>Programme : le compte est bon</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Corrigé : le compte est bon</h1>
+  <h1>Programme : le compte est bon</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/">On s&#39;entraîne à coder de petits projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/compte-caractere-corrigé/">Corrigé : le compte est bon</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/">On s&#39;entraîne à coder de petits projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-codes/compte-caractere-programme/">Programme : le compte est bon</a>
 
 </div></div>
 
@@ -96,63 +96,7 @@
     
   
 
-  <h2>Question 1</h2>
-<p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">chaîne_entrée <span class="token operator">=</span> <span class="token string">""</span>
-
-<span class="token keyword">while</span> chaîne_entrée <span class="token operator">!=</span> <span class="token string">"sortie"</span><span class="token punctuation">:</span>
-    chaîne_entrée <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Entre une chaîne de caractères : "</span><span class="token punctuation">)</span>
-    caractère_entrée <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Entre un caractère : "</span><span class="token punctuation">)</span>
-
-    index_caractère <span class="token operator">=</span> chaîne_entrée<span class="token punctuation">.</span>find<span class="token punctuation">(</span>caractère_entrée<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Premier index du caractère :"</span><span class="token punctuation">,</span> index_caractère<span class="token punctuation">)</span></code></pre>
-<h2>Question 2</h2>
-<h3><code class="fichier">fonctions.py</code></h3>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">donne_prochain_indice</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">,</span> indice<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    possible_suivant <span class="token operator">=</span> chaîne<span class="token punctuation">.</span>find<span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>indice<span class="token punctuation">]</span><span class="token punctuation">,</span> indice <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">if</span> possible_suivant <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> possible_suivant
-    <span class="token keyword">return</span> <span class="token boolean">None</span>
-</code></pre>
-<h3><code class="fichier">main.py</code></h3>
-<p>On ajoute à la fin du fichier <code class="fichier">main.py</code> les lignes suivantes, dans le bloc <code class="language-">while</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">if</span> index_caractère <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Il n'apparaît pas"</span><span class="token punctuation">)</span>
-    <span class="token keyword">elif</span> donne_prochain_indice<span class="token punctuation">(</span>chaîne_entrée<span class="token punctuation">,</span> index_caractère<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Il apparaît plusieurs fois"</span><span class="token punctuation">)</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Il apparaît une fois"</span><span class="token punctuation">)</span></code></pre>
-<h2>Question 3</h2>
-<h3><code class="fichier">fonctions.py</code></h3>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> compte_caractère<span class="token punctuation">(</span>chaîne<span class="token punctuation">,</span> indice<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    compte <span class="token operator">=</span> <span class="token number">0</span>
-
-    <span class="token keyword">while</span> indice <span class="token operator">!=</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
-        compte <span class="token operator">+=</span> <span class="token number">1</span>
-        indice <span class="token operator">=</span> donne_prochain_indice<span class="token punctuation">(</span>chaîne<span class="token punctuation">,</span> indice<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> compte</code></pre>
-<h3><code class="fichier">main.py</code></h3>
-<p>On ajoute à la fin du fichier <code class="fichier">main.py</code> les lignes suivantes, dans le bloc <code class="language-">while</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">if</span> index_caractère <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"caractère apparaît"</span><span class="token punctuation">,</span> compte_caractère<span class="token punctuation">(</span>chaîne_entrée<span class="token punctuation">,</span> index_caractère<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"fois."</span><span class="token punctuation">)</span></code></pre>
-<h2>Question 4</h2>
-<h3><code class="fichier">fonctions.py</code></h3>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">donne_max_doublon</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    nombre_max <span class="token operator">=</span> <span class="token number">0</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        nombre_max <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>nombre_max<span class="token punctuation">,</span> compte_caractère<span class="token punctuation">(</span>chaîne<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> nombre_max</code></pre>
-<h3><code class="fichier">main.py</code></h3>
-<p>On ajoute à la fin du fichier <code class="fichier">main.py</code> les lignes suivantes, dans le bloc <code class="language-">while</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">if</span> index_caractère <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> index_caractère <span class="token operator">==</span> donne_max_doublon<span class="token punctuation">(</span>chaîne_entrée<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est le max !"</span><span class="token punctuation">)</span></code></pre>
-<h2>Fichiers complets</h2>
-<h3><code class="fichier">fonctions.py</code></h3>
+  <h2>Fichier <code class="fichier">fonctions.py</code></h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">donne_prochain_indice</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">,</span> indice<span class="token punctuation">)</span><span class="token punctuation">:</span>
     possible_suivant <span class="token operator">=</span> chaîne<span class="token punctuation">.</span>find<span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>indice<span class="token punctuation">]</span><span class="token punctuation">,</span> indice <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
@@ -179,7 +123,7 @@
 
     <span class="token keyword">return</span> nombre_max
 </code></pre>
-<h3><code class="fichier">main.py</code></h3>
+<h2>Fichier <code class="fichier">main.py</code></h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> donne_prochain_indice<span class="token punctuation">,</span> compte_caractère<span class="token punctuation">,</span> donne_max_doublon
 
 chaîne_entrée <span class="token operator">=</span> <span class="token string">""</span>
