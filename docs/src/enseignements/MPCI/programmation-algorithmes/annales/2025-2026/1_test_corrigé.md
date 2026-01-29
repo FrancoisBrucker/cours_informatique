@@ -26,7 +26,7 @@ En gros : vous ne réfléchissez pas assez à ce qu'on vous demande de faire. Il
 
 ### Nombre d'algorithmes
 
-Il y a un nombre dénombrable d'algorithme, il y en a donc autant que tout ensemble en bijection avec les entiers, en particuliers tous les multiples de $\pi$ puisque la fonction $f: x \mapsto $x \pi$ est une bijection de $\mathbb{N}4 dans l'ensemble des multiples de $\pi$.
+Il y a un nombre dénombrable d'algorithme, il y en a donc autant que tout ensemble en bijection avec les entiers, en particuliers tous les multiples de $\pi$ puisque la fonction $f: n \mapsto n \cdot \pi$ est une bijection de $\mathbb{N}$ dans l'ensemble des multiples de $\pi$.
 
 ### Algorithme de remplacement
 
