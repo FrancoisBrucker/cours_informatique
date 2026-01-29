@@ -157,6 +157,18 @@ Notions abordées :
 3. [Modules externes python](/cours/coder-et-développer/modules-externes-python/){.interne}
 {% endaller %}
 
+Si on a le temps, sinon à faire chez soit :
+
+{% aller %}
+[Tutorial matplotlib](/cours/coder-et-développer/tutoriel-matplotlib/){.interne}
+{% endaller %}
+
+<!-- TBD
+
+Faire numpy
+
+-->
+
 #### Vendredi : exercices
 
 > 2h

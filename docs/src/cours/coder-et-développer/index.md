@@ -21,15 +21,11 @@ On supposera que vous avez des connaissances scientifiques de base (ie. mathéma
 
 Aucune compétences en informatique préalable n'est nécessaire.
 
-<!-- fin résumé -->
-
 ## <span id="bases"></span>Bases
 
 {% aller %}
 [Bases de la programmation](bases-programmation){.interne}
 {% endaller %}
-
-> TBD faire sorte la partie IV des bases pour la mettre ici : structure.
 
 ### Tutoriel python
 

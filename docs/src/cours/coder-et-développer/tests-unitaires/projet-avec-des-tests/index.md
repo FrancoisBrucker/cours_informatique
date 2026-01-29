@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Un programme avec des tests"
+title: "Un projet avec des tests"
 
 eleventyComputed:
   eleventyNavigation:
@@ -106,17 +106,18 @@ Fichier `texte.py`{.fichier} :
 ```python
 import unicodedata
 
+
 def conversion(texte_avec_accent):
-    liste_caractères_unicode = list(unicodedata.normalize('NFKD', texte_avec_accent))
-    
-    liste_caractères_simple = []
-    for c in liste_caractères_unicode:
+    liste_glyphes_unicode = list(unicodedata.normalize("NFKD", texte_avec_accent))
+
+    liste_caractères = []
+    for c in liste_glyphes_unicode:
         if not unicodedata.combining(c):
-            liste_caractères_simple.append(c)
-        
-    chaîne_sans_accent = ''.join(liste_caractères_simple)
-    texte_en_majuscule = chaîne_sans_accent.upper()
+            liste_caractères.append(c)
     
+    chaîne_sans_accent = "".join(liste_caractères)
+    texte_en_majuscule = chaîne_sans_accent.upper()
+
     return texte_en_majuscule
 
 ```
@@ -132,6 +133,7 @@ Fichier `texte.py`{.fichier} :
 
 ```python
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
 
 def césar_chiffre(texte, cle):
 
@@ -175,16 +177,16 @@ Pour que l'import dans les fichiers de tests se passent sans soucis, tous les fi
 On exécute nos tests dans un terminal dont le dossier courant est le dossier du projet :
 
 ```shell
-$> python -m pytest
-========================================== test session starts ===========================================
-platform darwin -- Python 3.14.2, pytest-9.0.2, pluggy-1.6.0
-rootdir: ./chiffre-césar
-collected 3 items                                                                                        
+python -m pytest
+============================= test session starts ==============================
+platform darwin -- Python 3.14.2, pytest-9.0.1, pluggy-1.6.0
+rootdir: ./chffre-cesar
+collected 8 items                                                              
 
-test_chiffre.py ..                                                                                 [ 66%]
-test_texte.py .                                                                                    [100%]
+test_chiffre.py .....                                                    [ 62%]
+test_texte.py ...                                                        [100%]
 
-=========================================== 3 passed in 0.00s ============================================
+============================== 8 passed in 0.04s ===============================
 ```
 
 Ouf, tout est ok.
@@ -200,6 +202,13 @@ Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : e
 
 {% endfaire %}
 
+Ce que l'on teste est dépendant de chaque développeur : si les tests passent il doit être convaincu que son code est fonctionnel.
+
+{% attention "**À retenir**" %}
+C'est au développeur des fonctions de créer des tests pour elles de tel sorte que s'ils passent il soit persuadé que son code est sans bug (si un bug est découvert plus tard, il suffit de rajouter un test qui le montre puis corriger le code).
+{% endattention %}
+
+
 ### Tests des fonctions de texte
 
 Fichier `test_texte.py`{.fichier} :
@@ -207,7 +216,16 @@ Fichier `test_texte.py`{.fichier} :
 ```python
 from texte import conversion
 
-def test_conversion():
+
+def test_conversion_minuscules_vers_majuscule():
+    assert "ABCDE" == conversion("abcde")
+
+
+def test_conversion_avec_espaces():
+    assert "AB CD" == conversion("ab cd")
+
+
+def test_conversion_avec_accents():
     assert "ABC DE" == conversion("ÀBÇ dè")
 
 ```

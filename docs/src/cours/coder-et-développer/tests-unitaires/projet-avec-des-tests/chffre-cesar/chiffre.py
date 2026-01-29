@@ -1,5 +1,6 @@
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+
 def césar_chiffre(texte, cle):
 
     décalage = ALPHABET.index(cle)
