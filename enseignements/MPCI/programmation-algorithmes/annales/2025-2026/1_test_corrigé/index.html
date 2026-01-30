@@ -105,17 +105,92 @@
 <ul>
 <li>1 pt pour un pseudo-code syntaxiquement correct</li>
 <li>1 pt pour un pseudo-code sémantiquement correct</li>
-<li>1 pt pour la preuve</li>
+<li>1 pt pour la preuve (.5 pour la finitude (qui fonctionne même sur un algorithme sémantiquement faux), .5 pour l'invariant)</li>
 </ul>
 </li>
 </ul>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 5 par $4$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
+<ul>
+<li><strong>un élève moyen</strong> tombe dans les deux pièges mais ne fait pas d'erreurs, ce qui garantit le 10 (1 réponse juste à la première question ; pseudo-code syntaxiquement correct et prouve la finitude pour la seconde question)</li>
+<li><strong>un bon élève</strong> ne tombe que dans un piège ce qui garantit le 14</li>
+<li><strong>un très bon élève</strong> ne tombe dans aucun piège</li>
+</ul>
+</div></div>
+
+<p>La ventilation des notes est :</p>
+<table>
+<thead>
+<tr>
+<th>note/20</th>
+<th>&lt;6</th>
+<th>[6, 8]</th>
+<th>==10</th>
+<th>[12, 14]</th>
+<th>18</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>9</td>
+<td>14</td>
+<td>7</td>
+<td>8</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rang min</td>
+<td>38</td>
+<td>21</td>
+<td>10</td>
+<td>8</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 7.36/20 (1.84/5)</li>
+<li>écart-type : 4.58/20 (1.15/5)</li>
+<li>médiane : 6/20 (1.5/5)</li>
+</ul>
+<p>Un test est brutal. On peut vite avoir une très bonne note comme une note très basse. Ceux qui ont raté ce test ne désespérez pas et révisez/apprenez bien pour les prochains. Cela se rattrape.</p>
+<p>Au global, je trouve que vous n'avez pas assez travaillé pour le test et êtes restés sur vos acquis du premier semestre : cela ne suffit pas. Si ce test sonne comme un signal d'alarme pour vous, c'est bien. Vous savez que je suis là pour répondre à vos questions et vous aider à progresser : il ne faut pas hésiter à me solliciter pendant un cours pour des précisions ou individuellement avant/après un cours.</p>
 <h2>Erreurs fréquemment rencontrées</h2>
-<p>En gros : vous ne réfléchissez pas assez à ce qu'on vous demande de faire. Il y avait un piège par question est vous êtes quasi-tous tombé dans les deux.</p>
-<h3>Nombre d'algorithmes</h3>
-<p>Il y a un nombre dénombrable d'algorithme, il y en a donc autant que tout ensemble en bijection avec les entiers, en particuliers tous les multiples de $\pi$ puisque la fonction $f: n \mapsto n \cdot \pi$ est une bijection de $\mathbb{N}$ dans l'ensemble des multiples de $\pi$.</p>
-<h3>Algorithme de remplacement</h3>
-<p>Une preuve est faite pour pour être juste : en faisant la démonstration vous auriez du voir qu'il y avait un soucis. Le fait que vous arriviez à faire une preuve de correction avec un algorithme faux montre clairement que vous ne faites pas assez attention à ce que vous faites !</p>
-<p>En lisant la question vous avez foncé tête baissé sur la première solution qui vous est venue à l'esprit, solution qui était fausse... Soit vous vous faites trop confiance soit vous n'arrivez pas voir si une démonstration est correcte, mais dans les deux cas il vous faut absolument y remédier.</p>
+<h3>Trop vite</h3>
+<p>Vous ne réfléchissez pas assez à ce qu'on vous demande de faire. Il y avait un piège par question est vous êtes pour beaucoup tombé dans les deux.</p>
+<h3>Pas assez révisé</h3>
+<p>Près de la moitié des étudiants qui n'ont pas vraiment révisé, ce qui se voit tout de suite :</p>
+<ul>
+<li>à la question 1 où vous vous trompez sur des propositions du cours</li>
+<li>à la question 2 où vous n'écrivez pas du pseudocode syntaxiquement correct.</li>
+</ul>
+<h3>Question 1 : nombre d'algorithmes</h3>
+<p>Il y a un nombre dénombrable d'algorithmes ce qui signifie qu'il y en a autant que tout ensemble en bijection avec les entiers. En particuliers tous les multiples de $\pi$ fonctionnent puisque la fonction $f: n \mapsto n \cdot \pi$ est une bijection de $\mathbb{N}$ dans l'ensemble des multiples de $\pi$. C'était le piège.</p>
+<p>Les autres réponses sont fausses, c'est du cours. En particulier, j'ai montré en cours qu'il y a autant de fonction de $\mathbb{N}$ dans $\mathbb{N}$ que de réels ! C'est justement un résultat fondamental : un algorithme est une fonction de $\mathbb{N}$ dans $\mathbb{N}$ mais toutes les fonctions de $\mathbb{N}$ dans $\mathbb{N}$ ne sont pas des algorithmes.</p>
+<h3>Question 2 : algorithme de remplacement</h3>
+<p>Trois fautes courantes :</p>
+<ol>
+<li>vous ne respectez pas la signature demandée : l'algorithme n'est pas sensé rendre quelque chose (et c'est normal puisque le tableau est modifié)</li>
+<li>vous tombez dans le piège : vous écrivez un algorithme syntaxiquement correct mais faux (voir corrigé). En lisant la question vous avez foncé tête baissée sur la première solution qui vous est venue à l'esprit, solution qui était fausse (mais vous auriez du vous en rendre compte en essayant de le prouver). Certains arrivent à faire l'exploit de prouver leur algorithme faux, cela montre clairement que vous ne faites pas assez attention à ce que vous faites !</li>
+<li>Une petite dizaine n'écrivent tout simplement pas du pseudocode correct. Pour cela, relisez les algorithmes du cours et comprenez comment ils sont écrits.</li>
+</ol>
+<p>Une erreur que j'ai vue plusieurs fois et qu'il faut comprendre :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span>
+    <span class="token keyword">si</span> T<span class="token punctuation">[</span>e<span class="token punctuation">]</span> <span class="token operator">==</span> n<span class="token punctuation">:</span>
+        <span class="token comment">#  ...</span></code></pre>
+<p>Ce code est une hérésie :</p>
+<ul>
+<li>pour pouvoir écrire <code class="language-">T[e]</code> il faut que <code class="language-">e</code> soit un indice (un entier de <code class="language-">[0 .. T.longueur[</code>)</li>
+<li>la boucle <code class="language-">pour chaque</code> itère sur les valeurs de <code class="language-">T</code>. Écrire <code class="language-">pour chaque e de T:</code> est équivalent à écrire <code class="language-">pour chaque e de [T[0] .. T[T.longueur -1]]:</code> et donc écrire <code class="language-">T[e]</code>  est une aberration dans la plupart des cas.</li>
+</ul>
 <h2>Corrigé</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
