@@ -1346,9 +1346,9 @@ a:not([class]):active,
   border-style: solid;
 }
 
-.border-amber-700 {
+.border-amber-600 {
   --tw-border-opacity: 1;
-  border-color: rgb(180 83 9 / var(--tw-border-opacity));
+  border-color: rgb(217 119 6 / var(--tw-border-opacity));
 }
 
 .border-amber-800 {
@@ -1521,9 +1521,9 @@ a:not([class]):active,
   font-weight: 700;
 }
 
-.text-amber-700 {
+.text-amber-600 {
   --tw-text-opacity: 1;
-  color: rgb(180 83 9 / var(--tw-text-opacity));
+  color: rgb(217 119 6 / var(--tw-text-opacity));
 }
 
 .text-amber-800 {
