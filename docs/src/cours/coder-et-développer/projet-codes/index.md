@@ -446,11 +446,15 @@ Créer la fonction  `donne_max_doublon(chaîne: str) -> str`{.language-} qui ren
 ```python
 def donne_max_doublon(chaîne):
     nombre_max = 0
+    caractère_max = ""
 
     for i in range(len(chaîne)):
-        nombre_max = max(nombre_max, compte_caractère(chaîne, i))
+        compte_i = compte_caractère(chaîne, i)
+        if compte_i > nombre_max:
+            nombre_max = compte_i
+            caractère_max = chaîne[i]
 
-    return nombre_max
+    return caractère_max
 ```
 
 {% enddetails %}

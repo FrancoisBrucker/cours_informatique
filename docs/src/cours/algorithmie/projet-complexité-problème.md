@@ -15,7 +15,7 @@ Nous montrerons ici quelques problème ainsi que des algorithmes permettant d'at
 ## Col de tableaux
 
 > - **Utilité** : à connaître car un classique des concours (on le donne sans indications...)
-> - **Difficulté** : moyen
+> - **Difficulté** : facile
 
 Le but de cet exercice est d'étudier les **_cols_** d'un tableau.
 
@@ -413,6 +413,11 @@ Le lecteur averti se sera rendu compte que c'est exactement notre complexité.
 {% enddetails  %}
 
 ## Algorithmes arithmétique
+
+
+> - **Utilité** : pour la culture générale et si vous voulez faire de l'informatique plus tard
+> - **Difficulté** : difficile
+
 
 > TBD intro avec le nombre de bit d'un entier
 > dire lorsque nombre infini forcément pas O(1). Exemple binaire
