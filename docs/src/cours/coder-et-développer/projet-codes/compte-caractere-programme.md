@@ -67,9 +67,10 @@ while chaîne_entrée != "sortie":
         print("Il apparaît une fois")
 
     if index_caractère > -1:
-        print("caractère apparaît", compte_caractère(chaîne_entrée, index_caractère), "fois.")
+        nombre = compte_caractère(chaîne_entrée, index_caractère)
+        print("Le caractère apparaît", nombre, "fois.")
 
-        if index_caractère == donne_max_doublon(chaîne_entrée):
+        if nombre == donne_max_doublon(chaîne_entrée):
             print("c'est le max !")
 
 ```

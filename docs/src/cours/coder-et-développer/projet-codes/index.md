@@ -427,7 +427,8 @@ On ajoute à la fin du fichier `main.py`{.fichier} les lignes suivantes, dans le
 
 ```python
     if index_caractère > -1:
-        print("caractère apparaît", compte_caractère(chaîne_entrée, index_caractère), "fois.")
+        nombre = compte_caractère(chaîne_entrée, index_caractère)
+        print("Le caractère apparaît", nombre , "fois.")
 ```
 
 
@@ -438,7 +439,7 @@ Cerise sur le gateau, on cherche à savoir si `caractère_entrée`{.language-} e
 
 
 {% exercice %}
-Créer la fonction  `donne_max_doublon(chaîne: str) -> str`{.language-} qui rend le caractère de `chaîne`{.language-} apparaissant le plus de fois.
+Créer la fonction  `donne_max_doublon(chaîne: str) -> str`{.language-} qui rend nombre maximum de fois où apparaît un même caractère dans `chaîne`{.language-}.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -446,15 +447,11 @@ Créer la fonction  `donne_max_doublon(chaîne: str) -> str`{.language-} qui ren
 ```python
 def donne_max_doublon(chaîne):
     nombre_max = 0
-    caractère_max = ""
 
     for i in range(len(chaîne)):
-        compte_i = compte_caractère(chaîne, i)
-        if compte_i > nombre_max:
-            nombre_max = compte_i
-            caractère_max = chaîne[i]
+        nombre_max = max(nombre_max, compte_caractère(chaîne, i))
 
-    return caractère_max
+    return nombre_max
 ```
 
 {% enddetails %}
@@ -478,7 +475,10 @@ On ajoute à la fin du fichier `main.py`{.fichier} les lignes suivantes, dans le
 
 ```python
     if index_caractère > -1:
-        if index_caractère == donne_max_doublon(chaîne_entrée):
+        nombre = compte_caractère(chaîne_entrée, index_caractère)
+        print("Le caractère apparaît", nombre, "fois.")
+
+        if nombre == donne_max_doublon(chaîne_entrée):
             print("c'est le max !")
 ```
 
