@@ -62,15 +62,6 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 {% enddetails %}
 
-## Tours de Hanoï
-
-> - **Utilité** : classique parmi les classique. La preuve que la complexité est minimale est à connaître
-> - **Difficulté** : moyen
-
-{% aller %}
-[Tours de Hanoi](./tours-hanoi){.interne}
-{% endaller %}
-
 ## Compteur binaire
 
 > - **Utilité** : algorithme à la base de nombreux autres algorithmes d'énumération. A connaître pour son énumération récursive.
@@ -78,15 +69,6 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 {% aller %}
 [Compteur binaire](compteur-binaire){.interne}
-{% endaller %}
-
-## Col de listes
-
-> - **Utilité** : à connaître car un classique des concours (on le donne sans indications...)
-> - **Difficulté** : moyen
-  
-{% aller %}
-[Cols de listes et de matrices](cols){.interne}
 {% endaller %}
 
 ## Tris spéciaux

@@ -400,7 +400,9 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 
 #### Algorithmes classiques, mais dur.
 
-> TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, médiane en temps linéaire, Karatsuba pour la multiplication d'entiers)
+> TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, médiane en temps linéaire)
+
+
  -->
 
 ## <span id="partie-3"></span>Partie III : problèmes
@@ -510,9 +512,9 @@ On rappelle ici tous les exercices que l'on va voir dans les différentes partie
 > TBD rendu avec programmation dynamique dans le cas quelconque 9.4 de <https://info-llg.fr/option-mpsi/pdf/09.dynamique.pdf>
 
 ### autre bidules
+> TBD rendu de pièces par programmation dynamique
 
 > TBD mettre médiane en temps linéaire ici (supprimer la fin de k-select de la partie diviser pour régner).
-> TBD arithmétique binaire et Karatsuba,
 > TBD SUBSET-SUM par programmation dynamique <https://en.wikipedia.org/wiki/Subset_sum_problem#Pseudo-polynomial_time_dynamic_programming_solutions>
 
 > TBD on reprend tous les exos jusque là
