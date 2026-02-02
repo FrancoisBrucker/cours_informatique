@@ -19,7 +19,7 @@ En complément de :
 
 {% prerequis %}
 
-[Algorithmes de polynômes](../exercices-itératif-récursif/#polynômes)
+[Algorithmes de polynômes](../exercices-itératif-récursif/#polynômes){.interne}
 
 {% endprerequis %}
 

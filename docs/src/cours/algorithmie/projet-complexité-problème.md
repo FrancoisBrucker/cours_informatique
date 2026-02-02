@@ -249,7 +249,7 @@ On suppose que cette dernière règle est également respectée dans la configur
 {% lien %}
 [Une interface pour jouer aux tours de Hanoï](http://championmath.free.fr/tourhanoi.htm).
 
-Déplacez les cylindres par glisser/déposer.
+Déplacez les disques par glisser/déposer.
 {% endlien %}
 
 Essayons de résoudre ce problème de façon optimale.
@@ -262,12 +262,12 @@ Donnez un algorithme récursif permettant de résoudre le problème.
 {% info %}
 On pourra supposer que : 
 
-- les cylindres sont des entiers de diamètres allant de 1 à $n$
+- les disques sont des entiers de diamètres allant de 1 à $n$
 - les 3 tours, nommées $A$, $B$ et $C$, seront des tableaux de longueur $n$ contenant :
-  - en 1er élément le nombre de cylindres de la tour
-  - les diamètres de ses cylindres dans l'ordre à partir de l'élément d'indice 1
+  - en 1er élément le nombre de disques de la tour
+  - les diamètres de ses disques dans l'ordre à partir de l'élément d'indice 1
 
-On pourra supposer qu'on a un algorithme `Hanoï(nombre, départ, arrivée, intermédiaire)`{.language-} permettant de déplacer les $n$ cylindres supérieurs d'une tour de départ à une tour d'arrivée avec la dernière tour comme tour de transit.
+On pourra supposer qu'on a un algorithme `Hanoï(nombre, départ, arrivée, intermédiaire)`{.language-} permettant de déplacer les $n$ disques supérieurs d'une tour de départ à une tour d'arrivée avec la dernière tour comme tour de transit.
 
 {% endinfo %}
 {% details "corrigé" %}
@@ -282,15 +282,15 @@ On a donc l'algorithme suivant :
 
 ```pseudocode
 fonction déplace(départ: [entier], arrivée: [entier]):
-    (cylindre := entier) ← départ[départ[0]]
+    (disque := entier) ← départ[départ[0]]
     départ[0] ← départ[0] - 1 
     arrivée[0] ← arrivée[0] + 1 
-    arrivée[arrivée[0]] ← cylindre
+    arrivée[arrivée[0]] ← disque
 
 algorithme Hanoï(nombre: entier, départ: [entier], arrivée: [entier], intermédiaire: [entier]):
     si nombre > 0:
         Hanoï(nombre - 1, départ, intermédiaire, arrivée)  # déplace n-1 à intermédiaire
-        déplace(départ, arrivée)                           # place le premier cylindre
+        déplace(départ, arrivée)                           # place le premier disque
         Hanoï(nombre - 1, intermédiaire, arrivée, départ)  # déplace n-1 de intermédiaire à arrivée
 
 ```
@@ -382,9 +382,9 @@ Peut-on faire mieux ?
 
 Si $D(n)$ est le nombre de déplacements pour résoudre le problème de la tour de Hanoï, il faut donc au moins :
 
-1. déplacer une tour de $n-1$ éléments :nombre de déplacement $D(n-1)$
-2. déplacer un disque 
-3. re-déplacer une tour de $n-1$ éléments : de complexité $D(n-1)$
+1. déplacer une tour de $n-1$ éléments pour pouvoir déplacer le dernier disque  : nombre de déplacement $D(n-1)$
+2. déplacer le dernier disque 
+3. re-déplacer une tour de $n-1$ éléments sur le dernier disque : nombre de déplacement  $D(n-1)$
 
 On a donc l'inégalité : $D(n) \leq 1 + 2 \cdot D(n-1)$ pour tout algorithme de déplacement. Comme on a l'égalité pour notre algorithme, il est optimal.
 
