@@ -439,7 +439,7 @@ Cerise sur le gateau, on cherche à savoir si `caractère_entrée`{.language-} e
 
 
 {% exercice %}
-Créer la fonction  `donne_max_doublon(chaîne: str) -> int`{.language-} qui rend nombre maximum de fois où apparaît un même caractère dans `chaîne`{.language-}.
+Créer la fonction  `donne_max_doublon(chaîne: str) -> int`{.language-} qui rend le nombre maximum de fois où apparaît un même caractère dans `chaîne`{.language-} (le maximum de `compte_caractère(chaîne, i)`{.language-} pour `0 ≤ i < len(chaîne)`{.language-}).
 
 {% endexercice %}
 {% details "corrigé" %}
