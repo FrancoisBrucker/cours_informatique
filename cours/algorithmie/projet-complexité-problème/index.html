@@ -429,7 +429,7 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="http://championmath.free.fr/tourhanoi.htm">Une interface pour jouer aux tours de Hanoï</a>.</p>
-<p>Déplacez les cylindres par glisser/déposer.</p>
+<p>Déplacez les disques par glisser/déposer.</p>
 </div></div>
 
 <p>Essayons de résoudre ce problème de façon optimale.</p>
@@ -447,15 +447,15 @@ $$</p>
 <div class="pl-8 mr-8">
 <p>On pourra supposer que :</p>
 <ul>
-<li>les cylindres sont des entiers de diamètres allant de 1 à $n$</li>
+<li>les disques sont des entiers de diamètres allant de 1 à $n$</li>
 <li>les 3 tours, nommées $A$, $B$ et $C$, seront des tableaux de longueur $n$ contenant :
 <ul>
-<li>en 1er élément le nombre de cylindres de la tour</li>
-<li>les diamètres de ses cylindres dans l'ordre à partir de l'élément d'indice 1</li>
+<li>en 1er élément le nombre de disques de la tour</li>
+<li>les diamètres de ses disques dans l'ordre à partir de l'élément d'indice 1</li>
 </ul>
 </li>
 </ul>
-<p>On pourra supposer qu'on a un algorithme <code class="language-">Hanoï(nombre, départ, arrivée, intermédiaire)</code> permettant de déplacer les $n$ cylindres supérieurs d'une tour de départ à une tour d'arrivée avec la dernière tour comme tour de transit.</p>
+<p>On pourra supposer qu'on a un algorithme <code class="language-">Hanoï(nombre, départ, arrivée, intermédiaire)</code> permettant de déplacer les $n$ disques supérieurs d'une tour de départ à une tour d'arrivée avec la dernière tour comme tour de transit.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -483,15 +483,15 @@ $$</p>
 </ol>
 <p>On a donc l'algorithme suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> déplace<span class="token punctuation">(</span>départ<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> arrivée<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token punctuation">(</span>cylindre <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> départ<span class="token punctuation">[</span>départ<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>disque <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> départ<span class="token punctuation">[</span>départ<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
     départ<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> départ<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span> 
     arrivée<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> arrivée<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> 
-    arrivée<span class="token punctuation">[</span>arrivée<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">←</span> cylindre
+    arrivée<span class="token punctuation">[</span>arrivée<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">←</span> disque
 
 <span class="token builtin">algorithme</span> Hanoï<span class="token punctuation">(</span>nombre<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> départ<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> arrivée<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> intermédiaire<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span> nombre <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
         Hanoï<span class="token punctuation">(</span>nombre <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> départ<span class="token punctuation">,</span> intermédiaire<span class="token punctuation">,</span> arrivée<span class="token punctuation">)</span>  <span class="token comment"># déplace n-1 à intermédiaire</span>
-        déplace<span class="token punctuation">(</span>départ<span class="token punctuation">,</span> arrivée<span class="token punctuation">)</span>                           <span class="token comment"># place le premier cylindre</span>
+        déplace<span class="token punctuation">(</span>départ<span class="token punctuation">,</span> arrivée<span class="token punctuation">)</span>                           <span class="token comment"># place le premier disque</span>
         Hanoï<span class="token punctuation">(</span>nombre <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> intermédiaire<span class="token punctuation">,</span> arrivée<span class="token punctuation">,</span> départ<span class="token punctuation">)</span>  <span class="token comment"># déplace n-1 de intermédiaire à arrivée</span>
 </code></pre>
 <p>Comme les tableau sont mutables, les objets sont déplacés dans le tableau on a besoin de ne rien rendre.</p>
@@ -624,9 +624,9 @@ Peut-on faire mieux ?</p>
 <div class="mx-8 pb-2">
 <p>Si $D(n)$ est le nombre de déplacements pour résoudre le problème de la tour de Hanoï, il faut donc au moins :</p>
 <ol>
-<li>déplacer une tour de $n-1$ éléments :nombre de déplacement $D(n-1)$</li>
-<li>déplacer un disque</li>
-<li>re-déplacer une tour de $n-1$ éléments : de complexité $D(n-1)$</li>
+<li>déplacer une tour de $n-1$ éléments pour pouvoir déplacer le dernier disque  : nombre de déplacement $D(n-1)$</li>
+<li>déplacer le dernier disque</li>
+<li>re-déplacer une tour de $n-1$ éléments sur le dernier disque : nombre de déplacement  $D(n-1)$</li>
 </ol>
 <p>On a donc l'inégalité : $D(n) \leq 1 + 2 \cdot D(n-1)$ pour tout algorithme de déplacement. Comme on a l'égalité pour notre algorithme, il est optimal.</p>
 <p>Le nombre minimal de déplacement est :</p>
