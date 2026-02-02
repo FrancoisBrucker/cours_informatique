@@ -439,7 +439,7 @@ Cerise sur le gateau, on cherche à savoir si `caractère_entrée`{.language-} e
 
 
 {% exercice %}
-Créer la fonction  `donne_max_doublon(chaîne: str) -> int`{.language-} qui rend le nombre maximum de fois où apparaît un même caractère dans `chaîne`{.language-} (le maximum de `compte_caractère(chaîne, i)`{.language-} pour `0 ≤ i < len(chaîne)`{.language-}).
+Créer la fonction  `donne_max_doublon(chaîne: str) -> int`{.language-} qui rend le nombre maximum de fois où apparaît un même caractère dans `chaîne`{.language-}.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -457,6 +457,7 @@ def donne_max_doublon(chaîne):
 {% enddetails %}
 
 {% exercice %}
+
 Dans l'étape 3. de l'algorithme du programme principal, **utilisez la fonction que vous venez de coder** pour  ajouter un affichage qui le nombre maximum de répétition d'un caractère, et affichez un message de victoire si `caractère_entrée`{.language-} réalise ce maximum.
 
 {% endexercice %}
