@@ -13,11 +13,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- 
+
 > TBD refaire en :
 >
 > - utilisant numpy pour les indices
 > - donner le code des fonctions numpy etc.
->
+> -->
+
 
 On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement. On codera et testera nos algorithmes, donc vérifiez que vous avez les prérequis.
 
@@ -142,7 +145,7 @@ Pour mesurer le temps d'exécution d'un algorithme :
 La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
 {% endattention %}
 
-### Comment faire
+### <span id="temporelle-comment-faire"></span>Comment faire
 
 On va utiliser les fonctions simple du module [time](https://docs.python.org/fr/3/library/time.html). Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.
 

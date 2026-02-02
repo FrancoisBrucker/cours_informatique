@@ -189,7 +189,7 @@ Pour aller plus loin :
 
 {% aller %}
 1. [écrire du code lisible et maintenable](/cours/coder-et-développer/écrire-code/coder/){.interne}
-2.[déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
+2. [déboguer son code](/cours/coder-et-développer/débogueur/){.interne}
 {% endaller %}
 
 ### Semaine 3
@@ -197,7 +197,7 @@ Pour aller plus loin :
 > 02/02 au 06/02
 > Algorithmie
 
-#### Mercredi : complexité
+#### Mercredi matin : complexité
 
 > 2h
 
@@ -218,7 +218,7 @@ Notions abordées :
 
 {% endaller %}
 
-#### Vendredi : exercices
+#### mercredi après-midi : exercices
 
 > 2h
 
@@ -234,27 +234,58 @@ Notions abordées :
 > 16/02 au 20/02
 > Algorithmie
 
+#### Mercredi : complexité d'un problème
+
+> 2h
+
+{% attention %}
+Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
+{% endattention %}
+
+Notions abordées :
+
+- complexité d'un problème
+- comment trouver une borne minimum
+
+{% aller %}
+
+[Complexité d'un problème](/cours/algorithmie/complexité-problème/){.interne}
+
+{% endaller %}
+
+Si on a le temps, sinon à faire chez soit :
+
+{% aller %}
+
+[Projet : Complexité d'un problème](/cours/algorithmie/projet-complexité-problème/){.interne}
+
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+
+[exercices sur le problème du doublon](/cours/algorithmie/exercices-problème-doublons/){.interne}
+
+{% endaller %}
+
+#### Jeudi : problème de l'exponentiation
+
+{% aller %}
+
+[Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/){.interne}
+
+{% endaller %}
+
+Si on a le temps, on commencera le DM :
+
 {% faire %}
 DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/projet-exponentiation/implémentation-code/){.interne}
 
 **Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
 
-> 4h
-
-{% attention %}
-Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
-{% endattention %}
-
-
-{% aller %}
-
-1. [Complexité d'un problème](/cours/algorithmie/complexité-problème/){.interne}
-2. [Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/){.interne}
-
-{% endaller %}
-
-Si on a le temps, sinon à faire chez soi :
+Pour aller plus loin :
 
 {% aller %}
 [Suite additives](/cours/algorithmie/projet-suite-additive/){.interne}

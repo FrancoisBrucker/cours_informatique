@@ -54,8 +54,8 @@ Illustrons ceci avec l'algorithme qui calcule [le nombre d'occurrences](../../ps
 
 ```pseudocode/
 algorithme nombre(T: [entier], x: entier) → entier:
-    nb ← 0
-    pour chaque e de T:
+    (nb := entier) ← 0
+    pour chaque (e := entier) de T:
         si e == x:
             nb ← nb + 1
     rendre nb
@@ -105,8 +105,8 @@ La complexité des boucles imbriquées est le produit du nombre de fois où l'on
 Exemple le calcul de $\sum_{1\leq i \leq n}\sum_{1\leq j \leq n} (i+j)$ :
 
 ```pseudocode
-total ← 0
-pour chaque i de [1 .. n]:
+(total := entier) ← 0
+pour chaque (i := entier) de [1 .. n]:
     pour chaque j de [1 .. n]:
         total ← i + j
 rendre total
@@ -140,9 +140,9 @@ Exemple le calcul de $\sum_{1\leq i < n}\sum_{i < j \leq n} (i+j)$ :
 On va vérifier cela avec un exemple :
 
 ```pseudocode
-total ← 0
-pour chaque i de [1 .. n-1]:
-    pour chaque j de [i+1 .. n]:
+(total := entier) ← 0
+pour chaque (i := entier) de [1 .. n-1]:
+    pour chaque (j := entier) de [i+1 .. n]:
         total ← i + j
 Rendre total
 ```
@@ -240,7 +240,7 @@ algorithme factorielle(n: entier) → entier:
     si n == 1:
         rendre 1
 
-    f ← factorielle(n-1)
+    (f := entier) ← factorielle(n-1)
     rendre n * f
 ```
 
@@ -342,8 +342,8 @@ Reprenons l'exemple [l'algorithme du pgcd itératif](../../#algorithme-pgcd){.in
 ```pseudocode/
 algorithme pgcd(a: entier, b: entier) → entier:  # a, b ≥ 0
     tant que min(a, b) > 0:
-        a' ← max(a, b) - min(a, b)
-        b' ← min(a, b)
+        (a' := entier) ← max(a, b) - min(a, b)
+        (b' := entier) ← min(a, b)
         a, b ← a', b'
     
     rendre max(a, b)

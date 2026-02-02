@@ -211,6 +211,18 @@ Projets :
 2. [Les suites additives](./projet-suite-additive){.interne}
 {% endaller %}
 
+On s'entraîne :
+
+{% aller %}
+[Projet : calculs de complexités de problèmes algorithmiques](./projet-complexité-problème){.interne}
+{% endaller %}
+
+On vérifie qu'on sait faire :
+
+{% aller %}
+[exercices problème du doublon](./exercices-problème-doublons){.interne}
+{% endaller %}
+
 ### Complexité en moyenne
 
 {% aller %}

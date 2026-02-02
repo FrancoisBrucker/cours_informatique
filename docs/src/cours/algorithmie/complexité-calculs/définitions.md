@@ -338,11 +338,11 @@ Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la 
 
 ```pseudocode/
 algorithme fibonacci_sobre(n):
-  a := 1
-  b := 1
+  (a := entier) ← 1
+  (b := entier) ← 1
   c := entier
 
-  i := 2
+  (i := entier) ← 2
   tant que i < n :
     c ← a + b
     a ← b
@@ -363,7 +363,7 @@ Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura
 Complexité et complexité spatiale sont liées :
 
 {% note "**Proposition**" %}
-Si toutes les variables définies sont affectées (cela comporte toutes les cases des tableaux), la complexité spatiale est toujours inférieure à la complexité 
+Si toutes les variables définies sont affectées (cela inclut toutes les cases des objets de type tableau), la complexité spatiale est toujours inférieure à la complexité 
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -375,7 +375,9 @@ Chaque affectation d'une variable prend une instruction.
 On peut même avoir un encadrement plus précis :
 
 {% note "**Proposition**" %}
-Pour tout algorithme $A(p_1, \dots, p_m)$ ne manipulant que des tableaux de bits et affectant toutes ses variables tel que sa complexités soit $C(N)$ et sa complexité spatiale $S(N)$, on a l'encadrement :
+Soit $A(p_1, \dots, p_m)$ un algorithme ne manipulant que des tableaux de bits et affectant toutes ses variables.
+
+Si sa complexité est en $C(N)$ et sa complexité spatiale en $S(N)$, on a l'encadrement :
 
 <div>
 $$

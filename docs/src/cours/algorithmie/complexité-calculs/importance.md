@@ -91,7 +91,7 @@ Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en
 Souvent les étudiants veulent que leurs algorithmes soient de complexité $C(n) = n!$. Ce n'est **presque jamais exact** ! En effet, la [formule de Stirling](https://fr.wikipedia.org/wiki/Formule_de_Stirling) donne l'équivalent suivant pour $n!$ :
 
 $$
-n! \sim \sqrt{2\pi n}(\frac{n}{e})^n
+n! \sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n
 $$
 
 {% info %}

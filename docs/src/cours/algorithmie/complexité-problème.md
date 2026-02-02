@@ -125,7 +125,7 @@ Si les données n'ont pas de structure particulière — très souvent — la co
 Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.
 {% endattention %}
 
-A vous :
+À vous :
 
 <span id="problème-max-tableau-complexité"></span>
 {% exercice %}
@@ -313,3 +313,17 @@ Au final, le problème de la _"recherche ordonnée"_ pour un tableau à $n$ él�
 {% note "**Proposition**" %}
 La complexité du problème de la _"recherche ordonnée"_ est en $\Theta(\ln(n))$ où $n$ est la taille du tableau.
 {% endnote %}
+
+
+À vous :
+
+<span id="problème-max-tableau-complexité"></span>
+{% exercice %}
+Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'entiers](../#problème-max-tableau){.interne} ordonné est en $\Theta(1)$
+{% endexercice %}
+{% details "corrigé" %}
+
+Il suffit de toujours prendre le dernier élément qui est forcément le plus grand si le tableau est trié.
+
+{% enddetails %}
+

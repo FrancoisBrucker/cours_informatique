@@ -1,6 +1,6 @@
 from chiffre import césar_chiffre, césar_déchiffre
 
-
+ 
 def test_césar_chiffre_sans_décalage():
     assert "AB" == césar_chiffre("AB", "A")
 

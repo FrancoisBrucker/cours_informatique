@@ -61,10 +61,10 @@ pour chaque (i := entier) de [2 .. 9]:
   affiche i
 ```
 
-En remplaçant la boucle for par une boucle tant que pour expliciter le calcul, on obtient :
+En remplaçant la boucle `pour chaque`{.language-} par une boucle `tant que`{.language-} pour expliciter le calcul, on obtient :
 
 ```pseudocode
-i := 2
+(i := entier) ← 2
 tant que i ≤ 9:
   affiche i
   i ← i + 1
