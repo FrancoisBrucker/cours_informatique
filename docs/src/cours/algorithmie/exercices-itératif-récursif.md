@@ -50,7 +50,7 @@ entier([3, 2, 1]) = 123
 {% endfaire %}
 
 
-### Somme
+### <span id="somme"></span>Somme
 
 {% faire %}
 

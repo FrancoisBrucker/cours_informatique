@@ -482,6 +482,8 @@ Ce qui est impossible : la formule est non satisfiable et il n'existe aucune ent
 
 Tout comme pour le problème du max si on veut additionner deux entiers on les transforme en variables binaire en utilisant le fait qu'un entier $x$ peut s'écrire sous sa forme binaire $x^px^{p-1}\dots x^0$ où $x^i \in \\{0, 1\\}$ et $x = \sum_{0\leq i \leq p}x^i2^i$. On considère l'algorithme suivant qui généralise l'addition sur 1 bit :
 
+> TBD on l'a déjà vu dans les exercices sur les complexités de problèmes mais à taille fixée. Ici on augmente la taille pour faire une vraie somme et on utilise un tableau de retenues par-ce qu'on va avoir besoin de n'utiliser les variables qu'une seule fois sans les réaffecter.
+
 <span id="algorithme-somme_binaire"></span>
 
 ```pseudocode

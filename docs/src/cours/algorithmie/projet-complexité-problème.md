@@ -375,7 +375,7 @@ Hanoi(len(A), A, C, B)
 ### Complexité du problème
 
 {% exercice %}
-Donnez le nombre de déplacement effectué par notre algorithme.
+Donnez le nombre de déplacements effectués par notre algorithme.
 Peut-on faire mieux ?
 {% endexercice %}
 {% details "corrigé" %}
@@ -412,21 +412,267 @@ Le lecteur averti se sera rendu compte que c'est exactement notre complexité.
 
 {% enddetails  %}
 
-## Algorithmes arithmétique
+## <span id="arithmétique"></span>Algorithmes arithmétique
 
 
 > - **Utilité** : pour la culture générale et si vous voulez faire de l'informatique plus tard
 > - **Difficulté** : difficile
 
+On considérera toujours en algorithmie que lorsque l'on manipule des entiers les opérations de sommes et de multiplications sont en $\mathcal{O}(1)$ opérations. Si cette approximation fonctionne lorsque les nombres sont bornés (sur 64 bits usuellement), ce n'est bien sur pas possible si les nombres deviennent très grands où il faut considérer leur représentation interne.
 
-> TBD intro avec le nombre de bit d'un entier
-> dire lorsque nombre infini forcément pas O(1). Exemple binaire
+{% note "**Définition**" %}
 
-### Somme
+On note $u$ la bijection $u: \\{0, 1\\}^\star \rightarrow \mathbb{N}$ telle que :
+
+<div>
+$$
+u([x_0, \dots, x_{n-1}]) = \sum_{i=0}^{n-1}x_i \cdot 2^i
+$$
+</div>
+
+On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\\{0, 1\\}^n$ tel que $u(y) = x \bmod 2^n$
+{% endnote %}
+
+Ainsi :
+
+- $u([0,1,0, 1]) = 10$ (de notation binaire $0\text{\tt b}1010$),
+- $u^{-1}(10) = [0,1,0, 1]$
+- $u_3^{-1}(10) = [0,1,0]$ (de notation binaire $0\text{\tt b}010$)
+- $u_8^{-1}(10) = [0,1,0, 1, 0, 0, 0, 0]$ (de notation binaire $0\text{\tt b}00001010$)
+
+Nous allons voir dans la suite les complexités des opération de somme et de multiplications pour des algorithmes prenants des tableaux de bits en entrées. Pour éviter les cas particuliers embêtant et qui n'apportent pas grand chose algorithmiquement :
+
+{% attention %}
+On considérera toujours ici des entrées de même taille $n$.
+{% endattention %}
+
+### <span id="somme"></span>Addition
+
+Vous allez implémenter l'algorithme de la somme posée ([on y a déjà réfléchit en base 10](../exercices-itératif-récursif/#somme){.interne}) pour des nombres codées sous leur forme binaire.
+
+Sur deux entiers non signés
+
+```
+  100101
++ 001011
+--------
+  110001
+```
+
+Attention à la retenue qui potentiellement augmente la taille de la sortie :
+
+```
+   100101
++  011011
+--------
+  1000000
+```
+
+{% exercice %}
+Écrivez un algorithme de signature `addition(x: [bit], y: [bit]) → [bit]`{.language-} utilisant l'addition posée. On supposera que :
+
+- $x$ et $y$ sont tous deux de longueur $n$
+- la sortie est de taille $n + 1$
+{% endexercice %}
+{% details "corrigé" %}
+
+
+```pseudocode
+algorithme addition(x: [bit],
+                    y: [bit])  # on suppose x et y de même taille
+                    → [bit]    # de la taille de x et y + 1
+
+    (somme := [bit]) ← [bit]{longueur: x.longueur + 1}
+    (retenue := bit) ← 0
+
+    pour chaque (i := entier) de [0 .. x.longueur - 1[:
+        si (x[i] == 1) et (y[i] == 1) et (retenue == 1):
+            somme[i]  ← 1
+            retenue ← 1
+        sinon si ((x[i] == 1) et (retenue == 1)) ou ((y[i] == 1) et (retenue == 1)) ou ((x[i] == 1) et (y[i] == 1)):
+            somme[i]  ← 0
+            retenue  ← 1
+        sinon si (x[i] == 1) ou (y[i] == 1) ou (retenue == 1):
+            somme[i]  ← 1
+            retenue  ← 0
+        sinon:
+            somme[i]  ← 0
+            retenue  ← 0
+    somme[x.longueur] ← retenue
+
+    rendre somme
+```
+
+La preuve de correction vient du fait qu'à la fin de chaque itération, on tout se passe comme si on faisait la somme de 3 bit (`x[i]`{.language-}, `y[i]`{.language-}, et `retenue`{.language-})et que l'on mettait le bit unité dans `somme[i]`{.language-} et la dizaine (en base 2) dans `retenue`{.language-} :
+
+```
+          x[i]
+          y[i]
++       retenue
+-------------
+retenue somme[i]
+```
+
+Les différents cas correspondes à tous les résultats possibles des additions.
+
+{% enddetails %}
+{% exercice %}
+Quelle est la complexité de cet algorithme. Peut-on faire mieux ?
+{% endexercice %}
+{% details "corrigé" %}
+
+Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement en $\Theta(n)$. Comme l'addition nécessite au moins $\Omega(n)$ opérations pour lire les données, on est optimal.
+{% enddetails %}
+
+
+> TBD ici parler par rapport à la valeur u(B). Dire que : 
+> 1. c'est du log par rapport à la valeur, donc monte très doucement
+> 2. comme borné en pratique par 64b (entier jusqu'à $2^64$ donc très grand)
+
+### Soustraction
+
+On va se placer dans le cadre de la soustraction de deux nombres dont le résultat est positif.
+
+{% exercice %}
+Écrivez un algorithme de signature `soustraction(x: [bit], y: [bit]) → [bit]`{.language-} utilisant la soustraction posée. On supposera que $u(x) \geq u(y)$
+{% endexercice %}
+{% details "corrigé" %}
+
+Nos conventions veulent que `x.longueur`{.language-} et `y.longueur`{.language-} soient égales et comme on suppose que $u(x) \geq u(y)$ la sortie sera positive et de la même longueur que $x$.
+
+```pseudocode
+algorithme soustraction(x: [bit],
+                        y: [bit])  # on suppose x et y de même taille et que u(x) ≥ u(y)
+                        → [bit]    # de la taille de x et y
+
+    (différence := [bit]) ← [bit]{longueur: x.longueur}
+    (retenue := bit) ← 0
+
+    pour chaque (i := entier) de [0 .. x.longueur - 1[:
+        si (x[i] == 1) et (y[i] == 1) et (retenue == 1):
+            différence[i]  ← 0
+            retenue ← 1
+        sinon si ((x[i] == 1) et (retenue == 1)) ou ((x[i] == 1) et (y[i] == 1)):
+            différence[i]  ← 0
+            retenue  ← 0
+        sinon si ((y[i] == 1) et (retenue == 1)):
+            différence[i]  ← 0
+            retenue  ← 1
+        sinon si (x[i] == 1):
+            différence[i]  ← 0
+            retenue  ← 0
+        sinon si ((y[i] == 1) ou (retenue == 1)):
+            différence[i]  ← 1
+            retenue  ← 1
+        sinon:
+            différence[i]  ← 0
+            retenue  ← 0
+          
+    rendre différence
+```
+
+La preuve de correction vient du fait qu'à la fin de chaque itération, on tout se passe comme si on faisait `x[i] - (y[i] + retenue)`{.language-} et que l'on mettait le bit unité dans `différence[i]`{.language-} et la dizaine (en base 2) dans `retenue`{.language-} :
+
+```
+            x[i]
+- (         y[i]
+   +      retenue)
+----------------------
+retenue différence[i]
+```
+
+Les différents cas correspondes à tous les résultats possibles des soustraction.
+
+{% enddetails %}
+{% exercice %}
+Quelle est la complexité de cet algorithme. Peut-on faire mieux ?
+{% endexercice %}
+{% details "corrigé" %}
+
+Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement en $\Theta(n)$. Comme la soustraction nécessite au moins $\Omega(n)$ opérations pour lire les données, on est optimal.
+{% enddetails %}
+
+La méthode utilisée permet de gérer les entiers positifs et négatifs, mais [on verra plus tard](../fonctions-booléennes/#complément-à-deux){.interne} un moyen plus efficace de le faire en utilisant [le complément à 2](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
 
 ### Multiplication
 
+La multiplication de deux tableaux de bits 
+{% exercice %}
+Montrez que la complexité du problème de la multiplication de deux entiers sous leur forme binaires à $n$ bit est en $\Omega(n)$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut au moins lire les données, ce qui nécessite au moins $\Omega(n)$ opérations.
+{% enddetails %}
+
+On ne connaît pas d'algorithme de complexité $\mathcal{O}(n)$ et le meilleurs algorithme connu est en $\mathcal{O}(n\ln(n))$. On a cependant longtemps pensé que la complexité du problème de la multiplication était égale à celle de l'algorithme naïf jusqu'à ce que [Anatolii Alexevich Karatsuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba) prouve le contraire en 1962.
+
+
 #### Naive
+
+On utilise la [multiplication posée](https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication). Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.
+
+```
+       100101
+     * 001011
+    ---------
+       100101  = 100101 * 1
+      100101   = 100101 * 1
+     000000    = 100101 * 0
+    100101     = 100101 * 1
+   000000      = 100101 * 0
++ 000000       = 100101 * 0
+------------
+  00110010111
+```
+
+On trouve que $0b100101 \cdot 0b1011 = 0b110010111$ ($37 \cot 11 = 407$).
+
+
+{% exercice %}
+Écrivez un algorithme de signature `multiplication(x: [bit], y: [bit]) → [bit]`{.language-} utilisant la multiplication posée.
+{% endexercice %}
+{% details "corrigé" %}
+
+Nos conventions veulent que `x.longueur`{.language-} et `y.longueur`{.language-} soient égales, la longueur de la sortie sera donc égale à 2 fois la longueur de $x$.
+
+On obtient l'algorithme suivant :
+
+```pseudocode
+algorithme multiplication(x: [bit], y: [bit]) → [bit]
+
+    (résultat := [bit]) ← [bit]{longueur: 2 * x.longueur}
+    résultat[:] ← 0
+
+    retenue := entier
+    temp := entier
+    pour chaque k de [0 .. x.longueur[:
+        retenue ← 0
+        pour chaque i de [0 .. y.longueur[:
+            si y[i] == 1:
+                si (x[i] == 1) et (résultat[i + k] == 1) et (retenue == 1):
+                    résultat[i + k]  ← 1
+                    retenue ← 1
+                sinon si ((x[i] == 1) et (retenue == 1)) ou ((résultat[i + k] == 1) et (retenue == 1)) ou ((x[i] == 1) et (résultat[i + k] == 1)):
+                    somme[i]  ← 0
+                    retenue  ← 1
+                sinon si (x[i] == 1) ou (résultat[i + k] == 1) ou (retenue == 1):
+                    résultat[i + k]  ← 1
+                    retenue  ← 0
+                sinon:
+                    résultat[i + k]  ← 0
+                    retenue  ← 0
+            résultat[k + x.longueur] ← retenue
+    rendre résultat
+```
+
+{% enddetails %}
+{% exercice %}
+Quelle est la complexité de cet algorithme.
+{% endexercice %}
+{% details "corrigé" %}
+La complexité de l'algorithme est en $\mathcal(O)(n^2)$ avec $n$ la longueur des 2 entrées.
+{% enddetails %}
 
 #### Karatsuba
 
@@ -435,12 +681,13 @@ Le lecteur averti se sera rendu compte que c'est exactement notre complexité.
 #### Peut-on mieux faire ?
 
 > TBD borne min
->  Puis parler de Strassen et de l'optimal <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers> et <https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf>
+>  Puis parler de Strassen nlog(n) conjecture. et de l'optimal <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers> et <https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf>
+
+### Conclusion
+
 > conjecture
 > nb tres tres grand pour que ca marche
 > en pratique on fixe la taille
-
-### Conclusion
 
 > TBD c'est pour ça que parfois on sépare somme et multiplication dans le calcul de la complexité (cf. polynôme dans les calculs de complexité).
 

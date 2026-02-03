@@ -10,6 +10,7 @@ eleventyComputed:
 ---
 
 > TBD chapeau
+> TBD voir [calculs arithmétiques](/cours/algorithmie/projet-complexité-problème/#arithmétique){.interne}
 
 [On a vu](../bases-théoriques/calculabilité/#algorithme-fonction){.interne} qu'un algorithme était une fonction $f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$. Nous allons voir celles que l'on peut décrire par [un pseudo-code](../pseudo-code/){.interne}.
 
@@ -356,6 +357,8 @@ Un tableau de bit pourra être interprété de deux façons complémentaires :
 
 #### Non signé
 
+> TBD déjà écrit dans les exos sur la complexité.
+> 
 On utilise la représentation binaire classique :
 
 {% note "**Définition**" %}
@@ -408,7 +411,7 @@ algorithme INC(x: [bit]) → [bit]:
 
 {% enddetails %}
 
-#### Opposé
+#### <span id="complément-à-deux"></span>Opposé
 
 Pour gérer les nombres négatifs, on utilise [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux), qui revient à travailler modulo $2^n$.
 
@@ -923,6 +926,10 @@ Calculer la soustraction de deux tableaux de bit se fait en temps linéaire uniq
 {% endattention %}
 
 #### Multiplication
+
+> TBD on l'a déjà vu dans les exercices sur les complexités de problèmes mais à taille fixée. 
+> TBD voir ce qu'il faut modifier.
+
 
 On utilise la [multiplication posée](https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication). Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.
 
