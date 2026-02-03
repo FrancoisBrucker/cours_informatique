@@ -117,11 +117,15 @@
 
 <span class="token keyword">def</span> <span class="token function">donne_max_doublon</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">)</span><span class="token punctuation">:</span>
     nombre_max <span class="token operator">=</span> <span class="token number">0</span>
+    caractère_max <span class="token operator">=</span> <span class="token string">""</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        nombre_max <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>nombre_max<span class="token punctuation">,</span> compte_caractère<span class="token punctuation">(</span>chaîne<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        compte_i <span class="token operator">=</span> compte_caractère<span class="token punctuation">(</span>chaîne<span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> compte_i <span class="token operator">></span> nombre_max<span class="token punctuation">:</span>
+            nombre_max <span class="token operator">=</span> compte_i
+            caractère_max <span class="token operator">=</span> chaîne<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
-    <span class="token keyword">return</span> nombre_max
+    <span class="token keyword">return</span> caractère_max
 </code></pre>
 <h2>Fichier <code class="fichier">main.py</code></h2>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> donne_prochain_indice<span class="token punctuation">,</span> compte_caractère<span class="token punctuation">,</span> donne_max_doublon
@@ -143,9 +147,10 @@ chaîne_entrée <span class="token operator">=</span> <span class="token string"
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Il apparaît une fois"</span><span class="token punctuation">)</span>
 
     <span class="token keyword">if</span> index_caractère <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"caractère apparaît"</span><span class="token punctuation">,</span> compte_caractère<span class="token punctuation">(</span>chaîne_entrée<span class="token punctuation">,</span> index_caractère<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"fois."</span><span class="token punctuation">)</span>
+        nombre <span class="token operator">=</span> compte_caractère<span class="token punctuation">(</span>chaîne_entrée<span class="token punctuation">,</span> index_caractère<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Le caractère apparaît"</span><span class="token punctuation">,</span> nombre<span class="token punctuation">,</span> <span class="token string">"fois."</span><span class="token punctuation">)</span>
 
-        <span class="token keyword">if</span> index_caractère <span class="token operator">==</span> donne_max_doublon<span class="token punctuation">(</span>chaîne_entrée<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> nombre <span class="token operator">==</span> donne_max_doublon<span class="token punctuation">(</span>chaîne_entrée<span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est le max !"</span><span class="token punctuation">)</span>
 </code></pre>
 
