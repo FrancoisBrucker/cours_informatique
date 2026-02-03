@@ -249,9 +249,9 @@ Puis appliquez la pull request. Si vous retournez dans la vision des commits et 
 
 > TBD un screen
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Préférer toujours faire un rebase lorsque c'est possible, un historique linéaire est toujours mieux qu'une succession de fusions pour pouvoir plus tard s'y retrouver lorsqu'il faudra corriger un bug.
-{% endattention %}
+{% endattention2 %}
 
 ## Ajouter des collaborateurs au projet
 

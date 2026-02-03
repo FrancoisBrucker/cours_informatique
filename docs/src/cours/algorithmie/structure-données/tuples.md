@@ -40,11 +40,11 @@ affiche à l'écran p[1]  # va afficher 25
 
 En revanche, il est impossible de modifier un tuple une fois créé.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Un **_tuple_** est un regroupement fini d'objets de types pouvant être différent.
 
 Ce n'est **pas** un tableau même si on peut accéder à chaque élément d'un tuple par son indice.
-{% endattention %}
+{% endattention2 %}
 
 Un tuple est un type utilisable par un algorithme. Par exemple, le type de [l'algorithme de la division euclidienne](../../prouver-un-algorithme/#algorithme-division-euclidienne) `algorithme division_euclidienne(a: entier, b: entier) → [entier]`{.language-} est bien plus explicite si on l'écrit :
 

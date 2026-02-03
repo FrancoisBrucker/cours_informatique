@@ -32,11 +32,11 @@ structure Pile<T>:
 
 La taille de la pile doit être déterminée à la création. L'implémentation d'une pile nécessitera d'autres attributs comme on va le voir.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La pile se comporte comme une pile d'assiettes, on prend ou on pose toujours celle du dessus de la pile.
 
 Une donnée est traité une fois toutes les données plus récentes traitées. Elle permet de traiter les objets dans l'ordre inverse de leur introduction dans la structure.
-{% endattention %}
+{% endattention2 %}
 
 ## <span id="structure"></span>Implémentation
 

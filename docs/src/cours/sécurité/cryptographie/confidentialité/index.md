@@ -57,9 +57,9 @@ Pour en savoir plus :
 
 Ce qu'il faut en retenir pour nous c'est que :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Générer des nombre vraiment aléatoire avec un ordinateur est possible en utilisant des systèmes physiques embarqués. C'est cependant un processus compliqué et coûteux en temps.
-{% endattention %}
+{% endattention2 %}
 
 ## Partager la clé
 
@@ -136,14 +136,14 @@ L'intérêt de cette formalisation est que négligeabilité se compose tout comm
 - $\epsilon(n) \cdot \epsilon(n)'$ reste négligeable si $\epsilon(n)$ et $\epsilon(n)'$ le sont
 - $p(n) \cdot \epsilon(n)$ reste négligeable si $\epsilon(n)$ l'est et $p(n)$ est efficace
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 On supposera toujours pour la suite que :
 
 - les adversaires n'ont à leurs dispositions que des algorithmes **_efficaces_**, c'est à dire polynomiaux
 - qu'on ne veut consentir qu'une possibilité de réussite **_négligeable_**
 
-{% endattention %}
+{% endattention2 %}
 
 On voit bien l'intérêt pour le chiffrement de ce type de fonction : on cache dans le résultat d'une fonction ce que l'on veut transmettre. C'est ce qu'on a fait avec le logarithme discret dans le protocole de Diffie-Hellman et que l'on fera avec le problème d la factorisation lorsque l'on étudiera le problème de l'authentification.
 

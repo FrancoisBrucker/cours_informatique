@@ -123,9 +123,9 @@ Attention, ce ne sont pas vraiment des fonctions car on ne fait que créer une f
 
 On a donc une propriété sympathique des machines de Turing :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Lorsque le nombre de choix est fini, on peut les simuler par autant d'états différents : on a pas besoin de stocker les possibilités sur le ruban.
-{% endattention %}
+{% endattention2 %}
 
 ## Exemple de composition
 

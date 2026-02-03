@@ -357,11 +357,11 @@ La variable `__buitins__`{.language-} est une des nombreuses variables commença
 
 Nous n'avons pour l'instant que regardé l'espace des variables via la commande `globals()`{.language-} qui permet de trouver les différentes variables de l'interpréteur.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 A tout moment du programme, on pourra créer un nouvel espace de noms : de nombreux espaces de noms pourront être définis, mais il existera toujours **un** espace de noms courant où l'on créera les variables et où on cherchera les noms par défaut.
 
 Cet espace de nommage courant est accessible via la fonction `vars()`{.language-} de python
-{% endattention %}
+{% endattention2 %}
 
 Au départ, l'espace des variables (accessible par la fonction `globals()`{.language-}) est l'espace de nommage courant (accessible par la fonction `vars()`{.language-}). Vérifiez le :
 

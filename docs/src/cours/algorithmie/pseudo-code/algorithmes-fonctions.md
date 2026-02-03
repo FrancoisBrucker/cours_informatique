@@ -141,11 +141,11 @@ affiche à l'écran trouve
 
 Est un pseudo-code valide puisque `recherche`{.language-} est bien défini et utilisé correctement (le type de ses paramètres est correct).
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 - Les différentes exécutions de fonctions au sein d'un même algorithmes ne partagent pas leurs variables.
 - Les paramètres sont des variables qui sont initialisées au début de l'exécution de la fonction.
 - Seuls les objets peuvent être transmis.
-{% endattention %}
+{% endattention2 %}
 
 Dans l'exemple précédent, la variable `e`{.language-} définie dans la fonction `recherche`{.language-} n'est pas visible depuis l'algorithme. En revanche, l'objet booléen de retour est lui transmis à l'algorithme via l'instruction `rendre`{.language-pseudocode}.
 
@@ -203,9 +203,9 @@ L'entier `x`{.language-} de la fonction est indépendant de l'entier `x`{.langua
 
 ### Tableaux et fonctions
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Les objets sont communs à toutes les exécutions d'un même algorithmes. Ils peuvent passer d'une fonction à une autre via les variables.
-{% endattention %}
+{% endattention2 %}
 
 Par exemple :
 
@@ -234,9 +234,9 @@ Va afficher 0 puis 3. En effet :
 
 Les tableaux sont les seuls objets défini en pseudo-code qui peuvent être modifiés, ce n'est pas le cas ni des 5 types basiques ni des chaînes.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des tableau que vous passez en paramètres de fonctions. Ils peuvent être modifiés par cette fonction !
-{% endattention %}
+{% endattention2 %}
 
 ## <span id="type"></span>Type d'un algorithme ou d'une fonction
 

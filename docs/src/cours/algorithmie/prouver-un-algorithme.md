@@ -44,7 +44,7 @@ Tout problème algorithmique pourra toujours s'écrire sous une forme itérative
 
 Avant de définir formellement les deux approches commençons par deux remarques importantes :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Adaptation d'un algorithme aux données :
 
@@ -53,7 +53,7 @@ Adaptation d'un algorithme aux données :
 
 La différence entre les approches itératives et récursive est lié au traitement des deux points précédents.
 
-{% endattention %}
+{% endattention2 %}
 
 Pour expliciter la différence entre les deux approches nous allons utiliser le calcul de la factorielle définie pour tout entier $n\geq 1$ telle que :
 
@@ -173,7 +173,7 @@ Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ce
 
 Il n'existe pas de schéma général permettant de prouver qu'un algorithme résout un problème donné mais comme l'adaptation aux données d'un algorithme se fait dans les boucles ou les récursions, une méthode qui se révèle souvent efficace consiste à trouver des propriétés qui sont conservées à chaque itération ou récursion.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Pour prouver un algorithme on cherchera prouver ce que fait chaque boucle ou récursion. Pour cela on utilisera plusieurs techniques, par ordre de difficulté :
 
@@ -183,7 +183,7 @@ Pour prouver un algorithme on cherchera prouver ce que fait chaque boucle ou ré
    - une boucle itérative pouvant être écrite sous forme récursive
 3. [un invariant de boucle](https://fr.wikipedia.org/wiki/Invariant_de_boucle) pour des algorithmes itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.
 
-{% endattention %}
+{% endattention2 %}
 
 A part les recommandations ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.
 
@@ -242,9 +242,9 @@ L'idée est de démontrer la finitude par récurrence sur $n$.
 
 La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Tout appel récursif doit se rapprocher strictement d'un état de terminaison.
-{% endattention %}
+{% endattention2 %}
 
 Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :
 

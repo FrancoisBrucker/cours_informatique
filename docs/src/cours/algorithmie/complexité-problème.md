@@ -40,7 +40,7 @@ $$
 
 Si on arrive à mettre la même valeur à gauche et à droite on aura trouvé la complexité du problème :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Si l'on arrive à encadrer le problème à gauche par un $\Omega$ et à droite par un $\mathcal{O}$ avec le même algorithme :
 
 $$
@@ -49,7 +49,7 @@ $$
 
 on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'algorithme A le résolvant})$.
 
-{% endattention %}
+{% endattention2 %}
 
 Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.
 

@@ -16,13 +16,13 @@ De plus, lors d'un calcul de complexité amortie on connaît les paramètres de 
 
 Enfin, Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra **jamais** excéder la complexité amortie.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.
 
 Pour ces structures, complexité amortie et maximale sont par abus de langage considérés comme équivalentes.
 
-{% endattention %}
+{% endattention2 %}
 
 La complexité amortie est un concept avancé, utilisée dans deux cas principalement :
 

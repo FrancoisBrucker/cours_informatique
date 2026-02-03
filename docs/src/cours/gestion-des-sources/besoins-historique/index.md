@@ -47,9 +47,9 @@ Dans l'exemple précédent, on a remis dans l'espace de travail un fichier tel q
 
 ## Modification d'historique
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Ne pas faire de modifications d'historique qui impacterait l'origine ! faite un revert/cherry pick/restore à la place.
-{% endattention %}
+{% endattention2 %}
 
 ### reset
 

@@ -678,6 +678,9 @@ La complexité de l'algorithme est en $\mathcal(O)(n^2)$ avec $n$ la longueur de
 
 > TBD [optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba)
 
+> TBD recursive 1 
+> TBD opti recursive 1 avec le -
+
 #### Peut-on mieux faire ?
 
 > TBD borne min

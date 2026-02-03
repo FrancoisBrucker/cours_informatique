@@ -99,9 +99,9 @@ Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe
 
 La définition formelle ci-dessus est équivalente à :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Une réduction de $P_1$ en $P_2$ signifie  que l'on utilise le problème $P_2$ (potentiellement un nombre constant de fois) pour résoudre le problème $P_1$.
-{% endattention %}
+{% endattention2 %}
 
 Pour qu'une réduction ait un sens, il faut que les passages entre les problème $P_1$ et $P_2$ soit de faible complexité. En effet, en notant $C_{P_1}(n)$, $C_{1\rightarrow 2}(n)$, $C_{P_2}(n)$ et $C_{2\rightarrow 1}(n)$ les complexités des algorithmes $P_1$, $A_{1\rightarrow 2}$, $P_2$ et $A_{2\rightarrow 1}$ respectivement on a :
 

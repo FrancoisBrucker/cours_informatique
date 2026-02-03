@@ -97,9 +97,9 @@ Une fois les synchronisations de l'origine vers le serveur locales terminées, l
 
 La principale règle à suivre lorsque l'on participe à un projet avec l'origin est :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On ne modifie pas l'historique de l'origine.
-{% endattention %}
+{% endattention2 %}
 
 Dans l'exemple ci-dessous, l'utilisateur du haut a modifié son historique **et** celui de l'origine. Les commits rouges de l'utilisateur du bas ne sont plus accessibles depuis l'origine (ils sont toujours présent mais sans pointeur de branche. Les retrouver est très compliqué) :
 
@@ -107,9 +107,9 @@ Dans l'exemple ci-dessous, l'utilisateur du haut a modifié son historique **et*
 
 Le corollaire de la règle principale est :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On ne modifie pas son historique commun avec l'origine.
-{% endattention %}
+{% endattention2 %}
 
 Quand on voudra synchroniser notre travaille avec l'origine, il est indispensable que l'origine que l'on connaisse soit une sous-partie de l'origine actuelle : elle a pu évoluer indépendamment de nous mais il faut pouvoir **ajouter** nos commit à l'historique à partir du point d'ancrage connu.
 
@@ -117,9 +117,9 @@ Comme la branche de dév et le main sont sur l'origine, le seul moyen de les fus
 
 ![pas de désynchronisation](./pas-désynchronisation.png)
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 L'historique de toute branche sur l'origin est publique et ne doit pas être altérée.
-{% endattention %}
+{% endattention2 %}
 
 Mais cela n’empêche pas la réécriture d'historique en locale. Tant que vous n'avez pas publié vos commits vous êtes libre de faire ce que vous voulez.
 

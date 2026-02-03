@@ -240,11 +240,11 @@ On suppose que vous avez une clé ssh et que vous l'avez renseigné dans votre c
 
 #### Clonage ssh
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 C'est la méthode à privilégier si vous êtes informaticien. C'est à dire que vous allez faire des commits tous les jours et jongler avec les repos de votre projet.
 
 Sinon, vous pouvez ne pas utiliser cette méthode.
-{% endattention %}
+{% endattention2 %}
 
 MOntrons juste les différences de configuration entre les méthodes précédentes et celle-ci :
 

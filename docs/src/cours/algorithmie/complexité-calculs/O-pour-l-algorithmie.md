@@ -29,9 +29,9 @@ Les constantes additives et multiplicatives ne changent pas l'allure de la compl
 
 Le plus grand intérêt dans le comptage de complexité algorithmique est que [la règle des constantes](../comparaisons-asymptotiques/#OA-constantes-additives){.interne} montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[instructions basiques](../../pseudo-code/briques-de-base/){.interne} est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La complexité d'une instruction basique est de $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.
-{% endattention %}
+{% endattention2 %}
 
 De là :
 
@@ -94,7 +94,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 
 Calculer avec les fonction asymptotiques va nous permettre de donner la complexité sous la forme d'une allure de complexité :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 On cherchera à borner la complexité par une allure de complexité :
 
@@ -103,7 +103,7 @@ On cherchera à borner la complexité par une allure de complexité :
 - ***complexité linéaire*** en $\mathcal{O}(n)$
 - ***complexité polynomiale*** en $\mathcal{O}(n^k)$ avec $k>1$ constant le plus petit possible
 - ***complexité exponentielle*** en $\mathcal{O}(k^n)$ avec $k>1$ constant le plus petit possible
-{% endattention %}
+{% endattention2 %}
 
 Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$), on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.
 

@@ -24,9 +24,9 @@ Une méthode de chiffrement est **_$(t, \epsilon)$-sécurisée_** si tout algori
 
 L'intérêt de la $(t, \epsilon)$-sécurité est qu'elle peut se mesurer expérimentalement. Par exemple si un algorithme brute force teste le déchiffrement pour toutes les clés de taille $s$ possibles et met $t$ secondes pour en tester une, sa probabilité de réussite au bout de $T$ seconde sera de $T \cdot (t/2^s)$. Ceci nous donne une borne maximum pour toute méthode de chiffrement :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Toute méthode de chiffrement avec une clé de $s$ bit est au mieux $(t, \frac{t}{2^s})$-sécurisée avec $t$ le temps mis pour déchiffrer un message.
-{% endattention  %}
+{% endattention2  %}
 
 Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique. Pour cela on commence par déterminer la durée de vie du message chiffré :
 
@@ -127,7 +127,7 @@ Cette méthode permet de formaliser :
 
 C'est cette dernière notion que nous allons maintenant formaliser.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 1. un adversaire motivé et ayant du temps pourra toujours décrypter un message
 2. on peut être en sécurité assez longtemps si la seule attaque possible est l'attaque brute force
@@ -135,7 +135,7 @@ C'est cette dernière notion que nous allons maintenant formaliser.
 
 Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps.
 
-{% endattention %}
+{% endattention2 %}
 
 ## <span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée
 
@@ -148,9 +148,9 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 Si on ne possède que des fonctions négligeable pour décrypter un code on ne peut donc pas arriver à grand chose, ce qui permet d'être en sécurité :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Une méthode de chiffrement pourra être considéré comme  **_sécurisée_** si elle est $(1, f(n))$-sécurisé avec $f(n)$ une fonction négligeable.
-{% endattention %}
+{% endattention2 %}
 
 La sécurité sémantique stipule qu'une méthode doit être sécurisé quelque soit l'algorithme efficace utilisé. Pour obtenir ce genre de résultat sans connaître tous les algorithmes possibles on utilise une modélisation statistique cherchant à mesurer l'écart entre la distribution produite par la méthode et la loi uniforme.
 

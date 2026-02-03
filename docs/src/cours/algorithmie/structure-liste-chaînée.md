@@ -74,9 +74,9 @@ M.suivant ← M3
 
 À la fin de l'exemple on a une liste chaînée commençant au maillon `M`{.language-} et constitué de 3 maillons.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Il n'y a pas de différence entre un maillon et la chaîne qui commence par lui.
-{% endattention %}
+{% endattention2 %}
 
 De la remarque précédente on peut en déduire l'algorithme permettant de déterminer le nombre de maillons (_ie_ la longueur) après un maillon donné :
 

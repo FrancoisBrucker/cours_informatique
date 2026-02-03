@@ -11,7 +11,7 @@ eleventyComputed:
 
 Nous y verrons divers moyens de triturer des tableaux de façon itérative et récursive.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Une fois un algorithme créé, on le teste toujours sur de petites instances en se mettant à la place de l'ordinateur.
 
 - on numérote chaque ligne
@@ -19,7 +19,7 @@ Une fois un algorithme créé, on le teste toujours sur de petites instances en 
 - on exécute ligne à ligne en notant les différents résultats
 - à la fin on vérifie que le retour de l'algorithme est bien correct
 
-{% endattention %}
+{% endattention2 %}
 
 <!-- TBD
 

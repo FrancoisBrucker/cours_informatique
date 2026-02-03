@@ -180,9 +180,9 @@ Ce résultat est remarquable sous (au moins) deux aspects :
 - la complexité en moyenne est égale à la complexité minimale et est en temps constant !
 - ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente) est un truc utile pour démontrer qu'un algorithme est en temps constant !
-{% endattention %}
+{% endattention2 %}
 
 ## Complexité du problème de la reconnaissance
 

@@ -95,9 +95,9 @@ p.y ← -1
 
 On peut bien initialiser partiellement les paramètres (en ne donnant qu'un valeur par défaut à `x` par exemple), mais ce n'est pas recommandé :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Dans la mesure du possible donnez **toujours** une valeur par défaut à tous les attributs.
-{% endattention %}
+{% endattention2 %}
 
 #### Initialisation explicite
 
@@ -210,14 +210,14 @@ Dans le code de l'addition, la notation pointée assure que les variables `x`{.l
 
 ### Résumé
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Une **_structure de données_** est composée :
 
 - d'**_attributs_** qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données). On accède au attributs et aux méthodes d'une structure avec la notation pointée.
 - de **_méthodes_** qui sont des fonctions permettant d’interagir avec une donnée de cette structure.
 
 Une structure de donnée défini un nouveau type qui peut être utilisé ensuite comme un type de base.
-{% endattention %}
+{% endattention2 %}
 
 Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :
 

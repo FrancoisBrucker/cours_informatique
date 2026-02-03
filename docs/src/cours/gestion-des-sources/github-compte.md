@@ -28,7 +28,7 @@ Il faut que ces donnés soient exact. Ceci va vous permettre de valoriser votre 
 - un vrai nom ou un pseudo qui vous représente,
 - une vrai photo, un logo ou un dessin qui vous représente (rechargez la page pour avoir la nouvelle photo)
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Vous êtes responsable du code que vous ajoutez au projet : il **faut** pouvoir identifier toute modification/ajout de code.
-{% endattention %}
+{% endattention2 %}

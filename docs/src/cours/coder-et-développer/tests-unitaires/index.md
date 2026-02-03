@@ -13,9 +13,9 @@ Les tests permettent de vérifier que notre code fonctionne. Ils font partie du 
 
 On y reviendra à de nombreuses reprises :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut pas régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
-{% endattention %}
+{% endattention2 %}
 
 Les tests sont de petites fonctions dont le but est de _tester_ une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en [une assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
 

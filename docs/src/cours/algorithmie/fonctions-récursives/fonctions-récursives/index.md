@@ -198,9 +198,9 @@ g(x)
 
 Tout en conservant la récursive primalité de $f$ et $g$.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La fonction de couplage de Cantor est l'équivalent pour les entiers de ce qu'on a déjà vu pour les chaines de caractères (toute chaîne de caractères peut s'écrire en une suite de `0` et de `1`) : toute suite finie d'entiers peut être représentée par un entier.
-{% endattention %}
+{% endattention2 %}
 
 ## Composition et Séquentialité
 
@@ -213,9 +213,9 @@ g(x)
 
 Cette séquentialité d'exécution d'u pseudo-code, $f$ s'exécute avant $g$, s'interprète comme une [composition](../../bases-théoriques/calculabilité/récursive-primitive/#composition){.interne}. En effet, lors de l'exécution de $f\circ [g](x_1, \dots, x_m)$ on commence par évaluer la fonction $g$ puis on évalue $f$ :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La composition permet de simuler la séquentialité d'un algorithme puisque pour calculer $f\circ g(x)$ il faut d'abord calculer $y=g(x)$ puis calculer $f(y)$.
-{% endattention %}
+{% endattention2 %}
 
 On a alors que le code :
 
@@ -371,9 +371,9 @@ Programme :
 
 On voit que cet algorithme ne rend une réponse que s'il existe $x$ tel que $f(x, x_1, \dots, x_n) = 0$. Ceci est normal puisque la fonction de minimisation n'est possible que pour ces valeurs de $(x_1, \dots, x_n)$.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Contrairement aux fonction récursives primitives, les fonctions récursives ne sont plus obligatoirement définies sur tout $\mathbb{N}^n$.
-{% endattention %}
+{% endattention2 %}
 
 Le même raisonnement que pour les blocs `pour chaque` nous permet d'écrire :
 

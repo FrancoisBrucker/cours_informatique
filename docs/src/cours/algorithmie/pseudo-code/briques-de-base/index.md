@@ -81,9 +81,9 @@ Tous les objets basiques sont considérés de taille fixe. Classiquement :
 
 Se restreindre aux entiers entre $-2^{63}$ à $2^{63}$ n'est pas contraignant en pratique et c'est d'ailleurs ce que beaucoup de langages de programmation font (même souvent ils sont codés sur 32b). Les languages de programmation comme python pour lesquels un entier n'est pas borné considèrent en interne qu'un entier est en fait une suite d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme mais que cela n'interférera pas avec son exécution (on ne créera par exemple pas d'entiers trop grands par exemple).
-{% endattention %}
+{% endattention2 %}
 
 Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**. An algorithmie, on ne préoccupe pas vraiment de ce qu'est la mémoire.cela peut être celle de l'informaticien lecteur ou sur un ordinateur : peu importe.
 
@@ -153,9 +153,9 @@ affiche 42
 
 L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressant lors de l'exécution du pseudo-code. Ne confondez pas un commentaire avec un retour de fonction : ce qui est affiché sort du contrôle du pseudo-code. Dans l'exemple précédent, l'entier 42 est affiché, le pseudo-code n'en a pas conscience.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Pour distinguer le retour de fonction, d'un affichage supprimez tous les affichages de votre pseudo-code et il doit continuer de fonctionner.
-{% endattention %}
+{% endattention2 %}
 
 ## Variables
 
@@ -237,11 +237,11 @@ a ← 2
 
 Après la troisième ligne, le code précédent associe la variable `a`{.language-} à un entier valant 4 et à un entier valant 2 après la cinquième ligne. Il est important de noter que :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Une variable n'est **pas** un objet, c'est un lien vers un objet qui pourra changer au cours du temps.
 
 Après la définition d'une variable, elle n'est encore liée à aucun objet, va valeur est **indéfinie**. Il ne faut pas l'utiliser avant sa première affectation.
-{% endattention %}
+{% endattention2 %}
 
 ### Utilisation
 
@@ -292,9 +292,9 @@ La ligne 4, une instruction composée d'une opération puis d'ue affectation, s'
 
 Attention cependant :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On ne peut utiliser une variable qu'après l'avoir affectée. Utiliser une variable qui n'a été que définie est interdit en algorithmie.
-{% endattention %}
+{% endattention2 %}
 
 
 ### Type d'un objet
@@ -370,15 +370,15 @@ T[2] ← T[0] + T[1]
 
 La seule opération spécifique à un tableau est sa création qui est un mix entre création d'objet et création de variable, puis on affecte ses variables avant de pouvoir les utiliser.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Tout comme une variable, une fois le tableau créé, la valeur de chaque case est **indéterminée !** Il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
-{% endattention %}
+{% endattention2 %}
 
 Toutes les autres opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.
-{% endattention %}
+{% endattention2 %}
 
 Ainsi, on ne peut **pas** affecter un tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 

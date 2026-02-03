@@ -137,17 +137,17 @@ Pour ne pas favoriser une boucle plutôt qu'un autre on prend $m$ tel que $p/m =
 
 On obtient alors une complexité en moyenne et en mémoire de $\mathcal{O}(\sqrt{p})$
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La technique qui consiste à stocker des valeurs intermédiaires pour accélérer le calcul est appelé [compromis temps/mémoire](https://fr.wikipedia.org/wiki/Compromis_temps-m%C3%A9moire) est une technique importante à connaître.
 
 Elle ne fera cependant pas de miracle puisqu'elle est bornée par la taille la mémoire disponible.
-{% endattention  %}
+{% endattention2  %}
 
 Et tout d'un coup avec notre clé de 64b, notre algorithme n'aura plus besoin que de $2^{32}$ opérations. À raison d'une opération par microseconde, il ne faudra plus que 5 millisecondes pour résoudre le problème !
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On considère actuellement que si le [nombre de possibilité à tester est supérieur à $2^{128}$](https://en.wikipedia.org/wiki/Key_size#Brute-force_attack), l'approche brute-force n'est pas profitable car il faudrait un temps de déchiffrage supérieure à la durée de vie du message.
-{% endattention  %}
+{% endattention2  %}
 {% info  %}
 [recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/)
 {% endinfo  %}

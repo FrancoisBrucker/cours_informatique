@@ -32,10 +32,10 @@ structure File<T>:
 
 La taille de la file doit être déterminée à la création. Comme la pile, son implémentation nécessitera d'autres attributs.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Une file est [un **_buffer_**](https://fr.wikipedia.org/wiki/M%C3%A9moire_tampon) permettant de découpler l'arrivée du traitement de données temporelles.
-{% endattention %}
+{% endattention2 %}
 
 ### <span id="structure"></span>Implémentation
 

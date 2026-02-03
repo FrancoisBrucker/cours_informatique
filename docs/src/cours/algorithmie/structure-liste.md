@@ -94,9 +94,9 @@ pour chaque i de [0 .. 2^42[:
     l[i] ← l[i + 1]
 ```
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La liste est une généralisation du tableau permettant de modifier sa longueur.
-{% endattention %}
+{% endattention2 %}
 
 ## Complexités
 
@@ -204,10 +204,10 @@ On appelle ce genre de raisonnement [analyse en complexité amortie](../complexi
 
 La structure de liste est un cas _simple_ où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Dans nos calculs de complexité on utilisera $\mathcal{O}(1)$ comme complexité d'**ajout d'un élément en fin de liste** puisque c'est sa _complexité amortie_.
 
-{% endattention %}
+{% endattention2 %}
 
 ## Bilan
 

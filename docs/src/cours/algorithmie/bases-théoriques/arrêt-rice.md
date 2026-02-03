@@ -147,9 +147,9 @@ Si `oups`{.language-} ne peut pas exister, `stop`{.language-} ne le peut pas non
 
 Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété **démontrable** (donc en temps fini et donc pouvant être écrite comme un algorithme puisqu'une preuve mathématique est un algorithme et réciproquement) qu'auraient tout les algorithmes et qui les différencieraient des programmes. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour ce programme spécifiquement.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Lorsque vous créez des algorithmes, il faut **toujours** démontrer qu'ils s'arrêtent. Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un programme s'arrête.
-{% endattention %}
+{% endattention2 %}
 
 ## Que calcule un algorithme
 
@@ -225,11 +225,11 @@ Il est donc nécessaire :
 - de prouver individuellement tout algorithme que l'on conçoit
 - de tester personnellement toute fonction que l'on code
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Lorsque vous créez des algorithmes, il faut **toujours** :
 
 1. expliciter ce que vous pensez qu'il fait
 2. démontrer qu'il le fait
 
 Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un algorithme fait ce que l'on pense qu'il fait et ce, quelque soit ce qu'on pense qu'il fait.
-{% endattention %}
+{% endattention2 %}

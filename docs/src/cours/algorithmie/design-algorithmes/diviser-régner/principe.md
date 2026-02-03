@@ -35,10 +35,10 @@ On restreint nos données en supprimant les données superflues : c'est le princ
 
 On a utilisé ce principe dans [la dichotomie](../../../projet-algorithmes-classiques/#dichotomie){.interne} par exemple.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On utilise le design **diviser** que lorsqu'il est _facile_ (et rapide) algorithmiquement de trouver un sous-ensemble des données initiales donnant la même solution.
 
-{% endattention %}
+{% endattention2 %}
 
 ### Diviser puis combiner
 
@@ -57,11 +57,11 @@ algorithme diviser_puis_combiner(données):
 
 On a déjà vu ce design lorsque l'on a étudié [le tri fusion](../../problème-tris/algorithme-fusion/){.interne} ou [le tri rapide](../../problème-tris/algorithme-rapide/){.interne}.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On utilise le design **diviser pour régner** que lorsqu'il est _facile_ (et rapide) algorithmiquement de combiner des solutions partielles en une solution globale.
 
 Toute la difficulté réside dans le fait de trouver un découpage du problème initial facile à combiner.
-{% endattention %}
+{% endattention2 %}
 
 On l'a utilisé pour le tri car :
 

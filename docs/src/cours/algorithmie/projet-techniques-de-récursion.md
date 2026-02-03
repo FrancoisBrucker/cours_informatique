@@ -79,11 +79,11 @@ Lorsque l'on crée des algorithmes récursif, on a souvent besoin d'initialiser 
 
 Pour éviter d'avoir des paramètres inutile on _encapsulera_ la fonction récursive dans un algorithme dont le seul but est d'initialiser la récursion.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Cette technique est **à utiliser** dès que l'on a besoin de paramètres récursifs mais non utile pour l'algorithme général.
 
-{% endattention %}
+{% endattention2 %}
 
 Pour savoir si un tableau est un palindrome, l'algorithme sera :
 
@@ -347,9 +347,9 @@ algorithme u_n(n : entier,
 
 Transformer un algorithme récursif en un algorithme avec une récursion terminale revient à ajouter des variables à un programme récursif (ses variables sont ses paramètres).
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La technique de l'accumulateur (_ie._ l'ajout de variables) est fondamentale pour la création d'algorithme récursif.
-{% endattention %}
+{% endattention2 %}
 
 ## Récursion croisée
 

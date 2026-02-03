@@ -34,11 +34,11 @@ Rendez vous dans [la gestion des extensions de vscode](../prise-en-main#extensio
 
 Nous allons créer un premier fichier de code python pour permettre de finaliser l'installation des liens entre l'interpréteur python et vscode.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Avec vscode tout programme qu'on va coder **doit** dépendre d'un **_projet_**. Ce projet est un **dossier** dans lequel seront placés nos fichiers.
 
 Ceci est important car cela permet à vscode de lier les fichiers du projet entre eux (pour les tests par exemple) et nous aider.
-{% endattention %}
+{% endattention2 %}
 
 {% faire %}
 Créez un dossier nommé `hello-world-python`{.fichier} sur votre ordinateur, et ouvrez le avec vscode (_menu Fichier > ouvrir le dossier..._) pour le considérer comme un projet.

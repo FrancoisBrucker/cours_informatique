@@ -50,9 +50,9 @@ Ensuite vient le bloc fonction en lui-même qui ne contient ici qu'une seule lig
 
 Si on exécute le bloc précédent, il ne se passe rien. En effet on n'a fait que définir la fonction. Pour l'utiliser, ajoutez `salutation()`{.language-} à la suite du bloc.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Une **_fonction_** s'utilise toujours en faisant suivre son nom d'une parenthèse contenant ses paramètres séparés par des virgules (notre fonction n'a pour l'instant pas de paramètres). Donner juste son nom ne suffit pas à l'invoquer.
-{% endattention %}
+{% endattention2 %}
 
 ## Nom d'une fonction
 

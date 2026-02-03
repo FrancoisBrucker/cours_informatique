@@ -87,9 +87,9 @@ Mais la **solution cherchée est globale** :
 
 C'est une caractéristique générale :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Un problème pouvant se décrire localement mais dont la solution est globale peut **souvent** se modéliser puis se résoudre à l'aide de graphes.
-{% endattention %}
+{% endattention2 %}
 
 #### Modélisation
 

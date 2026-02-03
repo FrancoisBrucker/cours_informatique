@@ -1,5 +1,6 @@
 import info from "./info.js";
 import attention from "./attention.js";
+import attention2 from "./attention2.js";
 import note from "./note.js";
 import note2 from "./note2.js";
 import faire from "./faire.js";
@@ -19,6 +20,7 @@ export default async function(eleventyConfig) {
     chemin(eleventyConfig);
     lien(eleventyConfig);
     attention(eleventyConfig);
+    attention2(eleventyConfig);
     prerequis(eleventyConfig);
     info(eleventyConfig);
     faire(eleventyConfig);

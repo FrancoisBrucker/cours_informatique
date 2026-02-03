@@ -145,9 +145,9 @@ bloc A:
     instruction n du bloc A
 ```
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 L'indentation permet **toujours** de s'y retrouver.
-{% endattention %}
+{% endattention2 %}
 {% details "blocs dans l'interpréteur" %}
 <span id="interpréteur-blocs"></span>
 

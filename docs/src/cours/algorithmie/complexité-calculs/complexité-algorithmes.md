@@ -121,10 +121,10 @@ La boucle en $i$ est exécuté $n$ fois ($i$ va de 1 à $n$), donc $\mathcal{O}(
 \]
 </p>
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Compter le nombre d'itération d'une boucle avec les $\mathcal{O}()$. Une boucle de $n-3$ exécutions pouvant être avantageusement remplacée par $\mathcal{O}(n)$
 
-{% endattention %}
+{% endattention2 %}
 
 ### <span id="règle-croissance"></span>Boucles dépendantes mais monotones
 
@@ -229,9 +229,9 @@ On retrouve bien le résultat attendu.
 
 Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. On en calcule la complexité en posant une équation qu'il faut résoudre :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.
-{% endattention %}
+{% endattention2 %}
 
 Pour illustrer ce calcul, reprenons [le calcul récursif de la factorielle](../prouver-un-algorithme/#algorithme-factorielle-rec) :
 
@@ -303,7 +303,7 @@ $$
 
 On va pouvoir écrire la complexité de nombreux algorithmes récursifs sous cette forme, n'oubliez pas comment faire :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La solution aux équations de récursion :
 
 <div>
@@ -325,7 +325,7 @@ C(n) = \mathcal{O}(n)
 $$
 </div>
 
-{% endattention %}
+{% endattention2 %}
 
 ## Cas le pire
 

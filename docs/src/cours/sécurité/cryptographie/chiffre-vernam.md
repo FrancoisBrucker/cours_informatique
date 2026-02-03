@@ -85,11 +85,11 @@ On déduit du résultat précédent que si la clé est une variable aléatoire u
 
 Enfin, un chiffre $c$ peut être issu de n'importe quel message original $m$, il suffit de choisir $k = c \oplus m$.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Tout code doit avoir une clé choisie uniformément et indépendante du message.
 
-{% endattention %}
+{% endattention2 %}
 
 [Claude Shannon](https://en.wikipedia.org/wiki/Claude_Shannon#Information_theory), dans son article séminale de 1949 sur la théorie de l'information donne une définition d'un code assurant une confidentialité parfaite :
 
@@ -145,11 +145,11 @@ On en déduit que l'ensemble $\mathcal{M}' = \\{m \vert E(k, m)=c^{\star}, k \in
 
 Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ? Tout code utilisable en pratique aura une taille de clé plus petite que le message :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On est **assuré** que tout code avec une taille de clé plus petite que la longueur du message (_ie._ tout code utilisé en pratique) va laisser de l'information dans le message chiffré. 
 
 Il faudra s'assurer que cette information ne puisse pas être exploitée facilement par un adversaire.
-{% endattention %}
+{% endattention2 %}
 
 ## Attention aux conditions d'utilisation
 

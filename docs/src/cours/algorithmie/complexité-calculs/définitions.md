@@ -120,11 +120,16 @@ De là l'instruction :
 
 - créer un tableau de taille 42 nécessite  1 instruction
 - créer un tableau de taille $2^{42}$ nécessite  1 instruction
-- `F ← [1 .. 42]`{.language-} nécessite 2 instructions, une pour la création du tableau `[1 .. 42]`{.language-}, la seconde pour l'affectation à la variable `F`{.language-} (que l'on suppose déjà créée)
 - `afficher à l'écran F[3]`{.language-} nécessite 2 instructions, une pour retrouver l'objet associé à `F[3]`{.language-}, l'autre pour l'afficher
 - `F[3] ← 42`{.language-} nécessite 2 instructions, une pour créer l'entier `42`{.language-}, l'autre pour l'affecter
 - `F[i] ← 42`{.language-} nécessite 3 instructions, une pour créer l'entier `42`{.language-}, une pour trouver l'objet associé à `i`{.language-} (ce n'est pas une constante) l'autre pour l'affecter
 - `F[i-1] ← 42`{.language-} nécessite 5 instructions, une pour créer l'entier `42`{.language-}, une pour trouver l'objet associé à `i`{.language-}, une pour créer l'entier 1, une pour l'addition et la dernière pour l'affectation.
+- `F ← [1 .. 42]`{.language-} nécessite 86 instructions :
+  -  1 pour la création de l'objet tableau de longueur 42
+  -  42 pour la création des entiers  allant de 1 à 42
+  -  42 pour l'affectation des entiers aux éléments du tableau
+  -  1 pour l'affectation du tableau à la variable `F`{.language-} (que l'on suppose déjà créée)
+
 
 ## Complexité d'un algorithme
 
@@ -193,7 +198,7 @@ Mais souvent la complexité dépend des paramètres du programme, comme par exem
 ```pseudocode/
 algorithme fibonacci(n: entier) → entier:
   F := [entier]
-  F ← [entier]{longueur: 10}
+  F ← [entier]{longueur: n}
   F[0] ← 1
   F[1] ← 1
 
@@ -242,9 +247,9 @@ La complexité de cet algorithme va dépendre de l'endroit où se trouve la vale
 
 Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances _a priori_ sur ses entrées. Pour l'algorithme `rechercher`{.language-} on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On calcule la complexité d'un algorithme par rapport à un paramètre qui rend compte de la connaissance _a priori_ que l'on a sur les entrées de celui-ci.
-{% endattention %}
+{% endattention2 %}
 
 ### Connaissances minimales sur les entrées
 
@@ -278,14 +283,14 @@ Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille pris
 
 Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Lorsque l'on donne une complexité en fonction d'un paramètre, il faut :
 
 - obligatoirement l'**expliciter** (taille des données, valeur d'une entrée, etc)
 - s'assurer que l'on peut calculer ce paramètre pour **toutes les entrées**
 - ne pas oublier que la complexité est le **maximum** du nombre d'instructions pour les exécutions de l'algorithme avec des entrées de paramètre constant (même taille de donnée, même valeur d'entrée, etc)
 
-{% endattention %}
+{% endattention2 %}
 
 ## Autres types de complexités
 
@@ -310,9 +315,9 @@ Lorsqu'un algorithme est codé, on peut l'exécuter et mesurer son temps d'exéc
 
 Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :
 
-{% attention "**À retenir**" %}
-Le temps mis pour un code à être exécuté est proportionnelle à la complexité de son pseudo-code associé.
-{% endattention %}
+{% attention2 "**À retenir**" %}
+Le temps mis pour un code à être exécuté est proportionnelle au nombre d'instructions exécutés de son pseudo-code associé, ce qui implique que la complexité en temps (le temps maximum) est proportionnelle à la complexité en nombre d'instructions (le nombre maximum d'instructions).
+{% endattention2 %}
 
 Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.
 

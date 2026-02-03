@@ -243,11 +243,11 @@ Cette vérification se fait en $\mathcal{O}(n)$.
 
 De là, un algorithme résolvant le problème du sac à dos peut-être utilisé pour résoudre le problème du sac à dos optimal en faisant une dichotomie sur le prix à chercher : s'il existe un sac à dos de prix supérieur a P on double le prix et sinon on le divise par deux. On aura besoin au maximum $\log(sum_{1\leq i \leq n} p_i)$ itérations de l'algorithme de résolution du sac à dos pour trouver une solution au problème du sac à dos optimal.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Les problèmes d'optimisation ne sont pas dans NP, mais leurs versions existentielles le sont.
 
 On trouve alors l'optimum par dichotomie.
-{% endattention %}
+{% endattention2 %}
 
 ### NP-complet
 
@@ -410,9 +410,9 @@ $$
 
 ## Solution par programmation dynamique
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La technique de résolution du sac à dos par programmation dynamique est fondamentale. **Retenez-là** car elle peut-être utilisée dans bon nombre de problèmes concrets !
-{% endattention %}
+{% endattention2 %}
 
 Le problème du sac à dos admet une solution via la programmation dynamique simple et élégante. Soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :
 

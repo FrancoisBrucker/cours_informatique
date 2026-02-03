@@ -290,11 +290,11 @@ Les fonctions récursives primitives sont calculables.
 
 Ca n'a pas l'air comme ça, mais les fonctions récursives primitives permettent de créer toutes les fonctions arithmétiques usuelles (voir [arithmétique de Peano](https://fr.wikipedia.org/wiki/Axiomes_de_Peano)) et ont été utilisées par Gödel pour montrer son [célèbre théorème d'incomplétude](https://perso.ens-lyon.fr/natacha.portier/enseign/logique/GoedelParAlex.pdf).
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Ce type de construction où l'on combine simplement des éléments basiques pour produire des choses complexes est l'essence même de l'informatique et de l'algorithmie.
 
 **Nous n'allons cesser de le montrer dans ce cours.**
-{% endattention %}
+{% endattention2 %}
 
 On peut aussi faire des fonctions plus logiques comme le maximum ou le minimum, ou encore la valeur absolue... Bref, il y a de quoi s'amuser. Par exemple la fonction $\text{eq}_0(x) = 1 \text{ si } x = 0 \text{ et } \text{eq}_0(x) = 0 \text{ sinon}$ est primitive récursive puisque :
 
@@ -352,8 +352,8 @@ $$
 
 {% enddetails %}
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La quasi totalité des fonctions mathématiques usuelles sont primitives récursives, donc calculables uniquement en utilisant des boucles de type _"pour chaque"_.
-{% endattention %}
+{% endattention2 %}
 
 C'est pourquoi on s'est longtemps demandé si calculabilité et fonctions récursives primitives n'étaient pas synonymes. Ce n'est pas le cas, comme nous allons tout de suite le voir.

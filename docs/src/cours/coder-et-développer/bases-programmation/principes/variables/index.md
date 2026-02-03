@@ -181,9 +181,9 @@ Python utilise un mécanisme nommé [ramasse-miettes](https://fr.wikipedia.org/w
 
 ![suppression 4](suppression-4.png)
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Les objets n'existent que tant qu'on pense à eux (qu'on peut les nommer).
-{% endattention %}
+{% endattention2 %}
 
 ## Exercices
 

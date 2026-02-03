@@ -318,9 +318,9 @@ indice : 76543210
 
 Tout tableau de bit peut être interprété de nombreuses manière : entier, réel, caractère, etc :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La signification d'une donnée est dépendante du contexte.
-{% endattention %}
+{% endattention2 %}
 
 Pour éviter toute confusion entre les entiers on écrira :
 
@@ -482,9 +482,9 @@ Comme $u(-x) = -u(x) \bmod 2^n$, on a $u^{-1}(x) = -u^{-1}(2^n -x)$. De là :
 
 Enfin, tout ceci se calcule très vite :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Calculer l'opposé d'un tableau de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
-{% endattention %}
+{% endattention2 %}
 
 #### Signé
 
@@ -894,9 +894,9 @@ algorithme PLUS(x: [bit: n], y: [bit: n]) → [bit: n]
     rendre z
 ```
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Calculer la somme de deux tableaux de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
-{% endattention %}
+{% endattention2 %}
 
 On peut définir les opérations linéaires **pour des tableaux de même taille** :
 
@@ -921,9 +921,9 @@ $$
 
 Cette définition est cohérente puisque $(x + 2^n - y) \bmod 2^n = x -  y \bmod 2^n$. L'utilisation du complément à 2 est donc extrêmement astucieuse et permet d'éviter tout un tas de cas particulier que l'on se trimbale [si l'on utilise uniquement un bit de signe](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux#Probl%C3%A8me_de_la_repr%C3%A9sentation_na%C3%AFve).
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Calculer la soustraction de deux tableaux de bit se fait en temps linéaire uniquement avec une boucle `tant que`{.language-} et la fonction booléenne sur 1 bit `NAND`.
-{% endattention %}
+{% endattention2 %}
 
 #### Multiplication
 
@@ -986,9 +986,9 @@ algorithme FOIS(x: [bit: n], y: [bit: n]) → [bit: n]
 
 La complexité de l'algorithme est en $\mathcal(O)(n^2)$ et on a :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Calculer le produit de deux tableaux de bit se fait en temps quadratique uniquement avec deux boucles `pour chaque`{.language-} et la fonction booléenne sur 1 bit `NAND`.
-{% endattention %}
+{% endattention2 %}
 {% info %}
 Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.
 {% endinfo %}
@@ -1047,9 +1047,9 @@ algorithme FOIS(x: [bit: n], y: [bit: n]) → ([bit: n], [bit: n])
     rendre (q, r)
 ```
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Calculer la division euclidienne de deux tableaux de bit se fait en temps quadratique uniquement avec deux boucles `pour chaque`{.language-} (il y a une soustraction et un test pour chaque itération de la boucle) et la fonction booléenne sur 1 bit `NAND`.
-{% endattention %}
+{% endattention2 %}
 
 #### pgcd
 
@@ -1089,9 +1089,9 @@ algorithme PGCD(x: [bit: n], y: [bit: n]) → [bit: n]
 
 Cet algorithme est très efficace pour les nombres binaires puisque la division par deux est un shift de 1 bit vers la droite :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Calculer le pgcd de deux tableaux de bit se fait en temps quadratique.
-{% endattention %}
+{% endattention2 %}
 
 ## Pseudo-code
 

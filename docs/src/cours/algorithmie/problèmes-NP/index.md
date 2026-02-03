@@ -146,13 +146,13 @@ La définition ci-dessus appelle deux remarques :
 - premièrement le nom a été très mal choisi. Il signifie _Non Déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème peut être résoluble de façon polynomiale par des algorithmes non déterministes (un test si peut avoir plusieurs alors choisi de façon non déterministe). Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type d'algorithme. Nous verrons ces types d'algorithmes plus tard.
 - deuxièmement l'inclusion est stricte. Il existe des problèmes décidables qui ne sont pas dans NP. Ça aussi on le démontrera plus tard lorsque l'on étudiera .
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :
 
 - On peut énumérer toutes les solutions possibles en temps fini, mais en temps exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).
 - On peut vérifier efficacement (en temps polynomial) si une proposition de solution est réellement une solution.
 
-{% endattention %}
+{% endattention2 %}
 
 On pourrait penser qu'il faudrait aussi borner la complexité spatiale. Utiliser un nombre exponentiel de mémoire étant tout autant rédhibitoire que d'utiliser un temps exponentiel.
 
@@ -303,9 +303,9 @@ La complexité de l'algorithme est clairement linéaire : on regarde au pire cha
 
 Même s'il est facile de vérifier si une solution potentielle est une solution, on ne connaît pas d'algorithme polynomial pour résoudre SAT. L'algorithme naïf consistant à tester toutes les solutions possibles prendrait $\mathcal{O}(mn\cdot 2^n)$ opérations ($2^n$ possibilités pour les variables et la taille d'une conjonction de clause est $nm$). Aussi surprenant que cela paraisse, on ne connaît pas d'algorithme fondamentalement meilleur :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Il existe des problèmes faciles à vérifier dont on ne connaît pas d'algorithme efficace pour le résoudre.
-{% endattention %}
+{% endattention2 %}
 
 ### Réduction vers SAT
 
@@ -811,11 +811,11 @@ Il existe un grand nombre de problèmes NP-complet. Juste après la démonstrati
 
 Comme tout problème de NP est un cas particulier de tout problème de NP, ceci signifie ces problèmes sont _universels_. D'un point de vue algorithmique ceci signifie qu'il n'y a pas de lien polynomial entre les entrées et les solutions : ce sont des problèmes sans structure, [il n'y a pas de balle en argent](https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent) pour résoudre magiquement le problème. Il faut tout essayer.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Il faut voir les problèmes NP-complet comme des problèmes sans raccourcis, où il faut _a priori_ tout vérifier car la solution peut se trouver n'importe où _a contrario_ des problèmes polynomiaux où, selon l'entrée, les solutions sont circonscrites à un petit endroit que l'on peut rapidement (en temps polynomial) parcourir.
 
-{% endattention %}
+{% endattention2 %}
 
 ### P et NP
 
@@ -829,9 +829,9 @@ Il existe même un prix d'un million de dollar pour qui donnerai une réponse à
 
 Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Même si la chose n'est pas démontrée on considérera que $P \neq NP$ dans toute la suite de ce cours (et notre vie). Prouver qu'un problème est NP-complet sera donc une garantie que l'on ne pourra pas le résoudre de façon efficace et que l'on peut chercher une solution approchée via un algorithme polynomial.
-{% endattention %}
+{% endattention2 %}
 
 ### Pas dans P ni NPC ?
 

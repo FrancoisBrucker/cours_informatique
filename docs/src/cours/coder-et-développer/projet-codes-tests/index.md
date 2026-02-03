@@ -21,9 +21,9 @@ Or reprend [les exercices de code](../projet-codes/){.interne} et on leur ajoute
 
 Les corriges sont des **propositions** de tests, ce n'est pas la vérité :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Les tests sont écrit par le développeur et leurs buts est qu'ils lui permettent d'être convaincu que le code fonctionne si les tests passent. Ce n'est pas une **preuve** mais permet de continuer à coder tranquillement.
-{% endattention %}
+{% endattention2 %}
 
 ## <span id="syracuse"></span>Syracuse
 

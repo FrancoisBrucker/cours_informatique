@@ -245,9 +245,9 @@ On peut également directement utiliser pytest avec le terminal en tapant `pytho
 Testez l'exécution des tests avec le terminal
 {% endfaire %}
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 pytest exécute toutes les fonctions commençant par `test_`{.fichier} de tous les fichiers commençant par `test_`{.fichier} du projet.
-{% endattention %}
+{% endattention2 %}
 {% faire %}
 Ajoutez une fonction ne commençant pas par `test_`{.fichier} et exécutez les tests " elle ne sera pas exécutée.
 {% endfaire %}

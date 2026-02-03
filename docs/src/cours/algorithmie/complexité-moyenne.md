@@ -125,27 +125,27 @@ Ce n'est pas une preuve, mais ça donne une idée de ce qu'il faut prouver.
 
 Pour tout algorithme, on a les inégalités suivantes :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 $$\mbox{complexité minimale} \leq \mbox{complexité en moyenne} \leq \mbox{complexité (maximale)}$$
 
 La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas.
 
 La complexité en moyenne nous donne ***le nombre d'opérations attendu*** si on exécute l'algorithme (et qu'on a ni beaucoup de chance pour tomber sur la complexité minimale ni pas de chance du tout pour tomber sur la complexité maximale).
-{% endattention %}
+{% endattention2 %}
 
 Ainsi :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 - si la complexité maximale est égale à la complexité en moyenne alors la complexité maximale arrivera souvent
 - si la complexité minimale est égale à la complexité en moyenne alors la complexité minimale arrivera souvent
 - si les trois complexités sont différentes, les cas minimum et maximum arriveront rarement.
 
-{% endattention %}
+{% endattention2 %}
 
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Pour estimer la complexité en moyenne d'un algorithme codé, il suffit de mesurer le temps pris par l'algorithme pour s'exécuter pour des données aléatoires et d'en faire la moyenne (c'est [un estimateur sans biais de la moyenne théorique](https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y)).
-{% endattention %}
+{% endattention2 %}

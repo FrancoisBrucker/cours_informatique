@@ -389,9 +389,9 @@ Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un s
 
 De ce qui découle on en déduit une règle universelle de toute fonction de hash :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Pour une fonction de hash rendant un mot de $p$ bits, il faut $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.
-{% endattention %}
+{% endattention2 %}
 
 ## Utilisation
 

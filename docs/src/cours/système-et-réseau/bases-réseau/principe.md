@@ -62,13 +62,13 @@ Vous verrez aussi un modèle plus ancien (et moins adapté au réseau moderne) a
 
 A l'arrivée c'est le contraire, chaque couche supprime son header avant de passer le message à la couche suivante. Ce principe général de transmission en couches permet de faire communiquer plusieurs machines entre-elles quelques soient leurs emplacement dans le réseau (deux machines éloignées de plusieurs milliers de kilomètres ou deux fois la même machine) du moment que la machine appelante connaisse l'adresse dans le réseau de la machine appelée.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Une communication réseau :
 
 - est asymétrique dans son initiation (initiée par un client et à destination d'un serveur)
 - est symétrique une fois la communication établie.
 - encapsule l'information transmisse à chaque couche traversée
-{% endattention %}
+{% endattention2 %}
 
 ## Adresse
 

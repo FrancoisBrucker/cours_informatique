@@ -157,9 +157,9 @@ Contrairement à une croyance largement rependue en europe, on sait que $\pi$ es
 
 En conclusion :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La quasi-totalité des nombres réels utilisés en mathématiques en tant que tel ($\pi$, $e$, etc) ou comme résultat de fonctions sont calculables : il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$ème décimale.
-{% endattention %}
+{% endattention2 %}
 {% info %}
 Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) son symbole utilisation en calcul formel et son approximation que l'on peut utiliser dans les calculs.
 {% endinfo %}
@@ -224,9 +224,9 @@ On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$. Cet ordre
 
 Comme il existe [autant d'Algorithmes que de nombres entiers](../définition/#proposition-nb-dénombrable-algorithmes){.interne} :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Il existe des fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ intraduisibles par un algorithme.
-{% endattention %}
+{% endattention2 %}
 
 ### Exemple de fonction calculable
 
@@ -263,11 +263,11 @@ Si $a$ et $b$ sont deux entiers positifs et tel que $\min(a, b) > 0$ alors : $\m
 
 Un cas d'usage classique est une fonction qui admet [un développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries) comme quasi toutes les fonctions mathématiques usuelles (comme $x \mapsto \cos(x)$, $x \mapsto \sin(x)$, $x \mapsto \sqrt{x}$, etc)  :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Si vous pensez à une fonction il y a toute les chances qu'elle soit calculable.
 
-{% endattention %}
+{% endattention2 %}
 
 ### Cas limites
 
@@ -317,9 +317,9 @@ Programme :
 
 Dans les deux cas, c'est un algorithme. Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) et donc on ne sait pas lequel des deux algorithmes est le bon.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, sur le problème à résoudre pour le faire
-{% endattention %}
+{% endattention2 %}
 
 On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.
 
@@ -436,11 +436,11 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 
 Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez le comme un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 La fonction de Takeuchi montre que pour résoudre un problème simple il existe des solutions compliquée.
 
 Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.
-{% endattention %}
+{% endattention2 %}
 
 ## <span id="non-calculable"></span>Non calculabilité
 

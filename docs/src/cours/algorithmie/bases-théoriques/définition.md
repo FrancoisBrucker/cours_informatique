@@ -146,7 +146,7 @@ Programme :
     Sinon rendre `Faux`.
 ```
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Un **programme** possède :
 
 - un nom
@@ -155,7 +155,7 @@ Un **programme** possède :
 - une description qui explicite ce qu'il fait.
 
 Si le programme s'arrête quelque soient ses entrées, c'est un **algorithme**.
-{% endattention %}
+{% endattention2 %}
 {% info %}
 Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est _perdu_, le second peut être à nouveau utilisé par au autre programme.
 {% endinfo %}
@@ -249,11 +249,11 @@ Comme une donnée doit être lue en temps finie, elle doit être composée d'une
 
 Une conséquence directe de la proposition précédente est qu'un programme ne peut pas manipuler de nombres réels.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 **Un réel ne l'est pas : c'est une limite**. 
 
 Un réel est une abstraction que l'on peut considérer soit comme une approximation (ne considérer qu'un nombre fini de ses décimales) soit comme un symbole mais jamais en tant que nombre.
-{% endattention %}
+{% endattention2 %}
 
 
 
@@ -353,11 +353,11 @@ Dans la première définition [des machines de Turing](https://fr.wikipedia.org/
 
 Au final :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 On peut sans perte de généralité supposer que les seuls objets manipulables par un programme sont des suites finies de `0` et de `1`.
 
 Alternativement, on peut aussi sans perte de généralité que les seuls objets manipulables par un programme sont des entiers positifs puisqu'une suite finie de `0` et de `1` est la représentation d'un entier en base 2.
-{% endattention %}
+{% endattention2 %}
 
 
 ## Nombres de paramètres d'entrée d'un programme
@@ -395,7 +395,7 @@ Cette proposition est vraiment importante Car elle montre que l'on peut toujours
 
 Ceci montre que tout programme peut être écrit avec un unique paramètre dans $\\{0, 1\\}^\star$, quite à retrouver les paramètres initiaux en utilisant . Comme les suites finies de `0` et de `1` sont des entiers écrit en base 2, on obtient le résultat fondamental :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Tout programme peut être écrit comme ayant :
 
@@ -408,7 +408,7 @@ Tout programme peut être écrit comme ayant :
 - au plus une entrée dans $\mathbb{N}$ 
 - une sortie dans $\mathbb{N}$ s'il s'arrête
 
-{% endattention %}
+{% endattention2 %}
 
 Arrêtez vous un instant sur les conséquences de ce que l'on vient de démontrer : on vient de montrer qu'il y a moins d'élément dans $\mathbb{Q}$ (l'ensemble des fractions entière qui est égal à la division de deux entiers et donc en bijection avec $\mathbb{N} \times \mathbb{N}$ lui même en bijection avec à $\\{0, 1\\}^\star \times \\{0, 1\\}^\star$)  que dans $\mathbb{N}$ (qui est en bijection avec à $\\{0, 1\\}^\star$). Étonnant, non ?
 
@@ -554,9 +554,9 @@ Ceci montre que :
 
 Bref : il y a autant d'entier que d'entier pair que d'entiers impair !
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Ceci montre que lorsqu'il y a un nombre infini d'entiers (_ie._ d'élément d'un ensemble dénombrable), il y en a autant que d'entiers. 
-{% endattention %}
+{% endattention2 %}
 
 À vous, pour voir si vous avez compris :
 
@@ -654,7 +654,7 @@ On utilise [la proposition du produit cartésien](./#proposition-cartésien) qui
 
 D'un point de vue informatique, on conclut de cette partie que tout ce qu'on manipule en informatique sont des suites finies de `0` et de `1`, que ce soit les données ou les programmes eux-même :
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 On peut définir sans perte de généralité un algorithme comme étant une suite finie de `0` et de `1` qui prend en paramètre d'entrée une suite de finie de `0` et de `1` et rend en sortie une suite finie de `0` et de `1`.
 
@@ -663,7 +663,7 @@ Connaître les données ou les instructions "réels" d'un algorithme se fait via
 - en instructions
 - en données
 
-{% endattention %}
+{% endattention2 %}
 
 
 Pour finir, un petit résultat très utile que vous pouvez démontrer :
@@ -715,8 +715,8 @@ De façon plus précise on a la suite d'équivalences :
 6. (en passant, Turing démontre qu'il existe des machines de Turing qui ne s'arrêtent jamais et que savoir si une machine de Turing va s'arrêter est [indécidable](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt), ce qui est équivalent à (3))
 
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Algorithmes et démonstrations mathématiques sont deux notions équivalentes.
 
-{% endattention %}
+{% endattention2 %}

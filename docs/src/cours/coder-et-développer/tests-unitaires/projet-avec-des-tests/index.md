@@ -23,11 +23,11 @@ Par exemple, considérons un programme qui va chiffrer un message selon [le code
 
 Du point de vue de python un projet est un dossier qui va contenir les différents fichiers python. Appelons le `chiffre_cesar`{.fichier}.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Dans la mesure du possible, le nom des dossiers et des fichiers d'un projet informatiques :
 - ne doivent contenir que des lettres **non accentuées**
 - ne doivent contenir **pas** contenir d'espaces. On sépare les mots par des _underscore_ `_`
-{% endattention %}
+{% endattention2 %}
 
 
 Téléchargez le projet :
@@ -42,9 +42,9 @@ Téléchargez le projet :
 
 Le programme principal est le fichier que l'on va exécuter, on a coutume de l'appeler `main.py`{.fichier}
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Un projet informatique va contenir de nombreux fichiers, mais un seul sera le programme principal, celui que l'on exécutera avec la commande `python main.py`.
-{% endattention %}
+{% endattention2 %}
 
 Dans notre cas, notre programme est : 
 
@@ -93,9 +93,9 @@ Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : e
 
 Les deux imports du programme principal correspondent aux fichiers `texte.py`{.fichier} et `chiffre.py`{.fichier} qui sont **dans le même dossier** que notre programme principal. Ces deux fichiers contiennent toutes les fonctions nécessaire à l'exécution du programme principal.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Pour que l'import dans le fichier `main.py`{.fichier} se passe sans soucis, tous les fichiers de fonctions doivent se trouver dans le dossier du projet.
-{% endattention %}
+{% endattention2 %}
 
 Chaque fichier va contenir un ensemble de fonctions de buts similaires.
 
@@ -170,9 +170,9 @@ L'usage veut que l'on utilise un fichier de test par fichier de fonctions.
 
 Pour que pytest puisse comprendre que ce sont des fichiers de textes, on fait commencer les noms de fichiers par `test_`{.fichier}
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Pour que l'import dans les fichiers de tests se passent sans soucis, tous les fichiers de tests doivent se trouver dans le dossier du projet.
-{% endattention %}
+{% endattention2 %}
 
 On exécute nos tests dans un terminal dont le dossier courant est le dossier du projet :
 
@@ -191,9 +191,9 @@ test_texte.py ...                                                        [100%]
 
 Ouf, tout est ok.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Prenez l'habitude de tester vos fichier en utilisant le terminal.
-{% endattention %}
+{% endattention2 %}
 
 Exécutons les tests du projet :
 
@@ -204,9 +204,9 @@ Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : e
 
 Ce que l'on teste est dépendant de chaque développeur : si les tests passent il doit être convaincu que son code est fonctionnel.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 C'est au développeur des fonctions de créer des tests pour elles de tel sorte que s'ils passent il soit persuadé que son code est sans bug (si un bug est découvert plus tard, il suffit de rajouter un test qui le montre puis corriger le code).
-{% endattention %}
+{% endattention2 %}
 
 
 ### Tests des fonctions de texte

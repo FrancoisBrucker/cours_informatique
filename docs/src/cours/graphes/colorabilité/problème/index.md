@@ -195,9 +195,9 @@ clair
 
 Enfin, ces deux types de colorations ont des applications pratiques nombreuses et différentes.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Cette modélisation est très pratique lorsque l'on a des ressources partagées dont on veut maximiser l'utilisation.
-{% endattention %}
+{% endattention2 %}
 
 ### sommets
 

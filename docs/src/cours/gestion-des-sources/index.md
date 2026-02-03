@@ -75,11 +75,11 @@ Ceci implique que chaque copie soit synchronisée par un dépôt référent, un 
 
 Une bonne implémentation consiste **à ne pas sacraliser la mise en commun**. Il faut le faire le souvent pour que tout le monde ait une version claire de l'ensemble **actuel** du projet.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 
 Lorsque vous utilisez un projet en commun il faut avoir un dépôt commun mais ne faut pas en sacraliser la mise en commun avec des règles de soumission stricte ou un superviseur.
 
-{% endattention %}
+{% endattention2 %}
 
 ### Dépôt origin
 

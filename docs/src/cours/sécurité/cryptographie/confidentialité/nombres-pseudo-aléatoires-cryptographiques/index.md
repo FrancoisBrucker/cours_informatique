@@ -52,9 +52,9 @@ Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (
 
 La définition explicite fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la _seed_ choisie.
 
-{% attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 En cryptographie utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de se protéger.
-{% endattention %}
+{% endattention2 %}
 
 Notez qu'un générateur de nombres pseudo-aléatoire sécurisé donne des résultats loin d'être aléatoire, en particulier distribution de sa sortie n'est **pas** uniforme :
 
