@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>sujet Test 2 : programmation</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>sujet Test 2 : programmation</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous avez 15min pour faire le test.</p>
+</div></div>
+
+<h2>Rendu</h2>
+<p>On vous rappelle que toute fonction (hors du programme principal) doit être testée.</p>
+<h3>Type de rendu</h3>
+<p>Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si nécessaire). Commencez donc par créer un projet dans un dossier que vous appellerez <code class="fichier">test2</code>.</p>
+<h3>Éléments de notation</h3>
+<ol>
+<li>3 fichiers dans un projet :
+<ul>
+<li>le programme principal <code class="fichier">main.py</code>,</li>
+<li>les fonctions utilisées <code class="fichier">fonctions.py</code>,</li>
+<li>les tests des fonctions <code class="fichier">test_fonctions.py</code>.</li>
+</ul>
+</li>
+<li>Du joli code : le code doit être passé par black.</li>
+<li>Bons noms :
+<ul>
+<li>de fichiers,</li>
+<li>de variables.</li>
+</ul>
+</li>
+<li>Tests unitaires : toute fonction doit être testée.</li>
+</ol>
+<h2>Sujet</h2>
+<h3>1 Entrée utilisateur</h3>
+<h4>1.1 Code</h4>
+<p>Créez une fonction de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">parenthèses<span class="token punctuation">(</span>s<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">chaîne</span>  <span class="token comment"># la sortie est uniquement composée de parenthèses</span></code></pre>
+<p>Qui rend la restriction de la chaînes <code class="language-">s</code> à ses parenthèses ouvrantes et fermantes.</p>
+<p>Par exemples :</p>
+<ul>
+<li><code class="language-">parenthèses(&quot;(1+2)-3&quot;)</code> doit rendre la chaîne <code class="language-">&quot;()&quot;</code></li>
+<li><code class="language-">parenthèses(&quot;coucou !&quot;)</code> doit rendre la chaîne <code class="language-">&quot;&quot;</code></li>
+<li><code class="language-">parenthèses(&quot;coucou (toi) :)&quot;)</code> doit rendre la chaîne <code class="language-">&quot;())&quot;</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser le fait que <code class="language-">+</code> est l'opérateur de concaténation pour deux chaines en python : <code class="language-">&quot;:&quot; + &quot;)</code> valant <code class="language-">&quot;:)&quot;</code></p>
+</div></div>
+
+<h4>1.2 Programme principal</h4>
+<p>Demandez à l'utilisateur  de rentrer une chaîne de caractères puis affichez la restriction de la chaîne tapée à ses parenthèses. Par exemple :</p>
+<pre><code>Entrez une chaîne de caractères : coucou (toi) :)
+La chaîne contient la suite de parenthèses : ())
+</code></pre>
+<h3>2 Suite</h3>
+<h4>2.1 Code</h4>
+<p>Créez une fonction de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">suite<span class="token punctuation">(</span>s<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>  <span class="token comment"># l'entrée est uniquement composée de parenthèses</span></code></pre>
+<p>Qui rend à partir d'une chaîne de caractères <code class="language-">s</code> uniquement constituée de parenthèses ouvrantes et fermantes un tableau d'entier <code class="language-">t</code> de même longueur tel que <code class="language-">t[i] = 1</code> si <code class="language-">s[i] = '('</code> et <code class="language-">t[i] = -1</code> si <code class="language-">s[i] = ')'</code></p>
+<p>Par exemples :</p>
+<ul>
+<li><code class="language-">suite(&quot;()&quot;)</code> doit rendre la liste <code class="language-">[1, -1]</code></li>
+<li><code class="language-">suite(&quot;&quot;)</code> doit rendre la liste <code class="language-">[]</code></li>
+<li><code class="language-">suite(&quot;())&quot;)</code> doit rendre la liste <code class="language-">[1, -1, -1]</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser la méthode <code class="language-">append</code> des listes qui ajoute un élément en fin de liste.</p>
+</div></div>
+
+<h4>2.2 Programme principal</h4>
+<p>Ajoutez à votre programme principal l'affichage de la suite.</p>
+<p>Par exemple :</p>
+<pre><code>Entrez une chaîne de caractères : coucou (toi) :)
+La chaîne contient la suite de parenthèses : ())
+La suite associée est : [1, -1, -1]
+</code></pre>
+<h3>3 Bon parenthésage</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Langage_de_Dyck">https://fr.wikipedia.org/wiki/Langage_de_Dyck</a></p>
+</div></div>
+
+<p>La suite crée précédemment permet de déterminer si la chaîne initiale est un bon parenthésage. En effet, on peut montrer qu'une liste $t$ définie comme en 2 correspond à un bon parenthésage si et seulement si :</p>
+<p>$\sum_{0 \leq i &lt; m}t[i] \geq 0$ pour tout $0 \leq m &lt; \text{len}(t)$</p>
+<p>Une telle liste est appelée liste de Dyck.</p>
+<h4>3.1 Code</h4>
+<p>Créez une fonction de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">bon_parenthésage<span class="token punctuation">(</span>l<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>  <span class="token comment"># l'entrée est uniquement composée de 1 et de -1</span></code></pre>
+<p>Qui rend à partir d'une liste de 1 et de -1 :</p>
+<ul>
+<li><code>Vrai</code> si la liste en entrée est une liste de Dyck</li>
+<li><code>Faux</code> sinon</li>
+</ul>
+<p>Par exemples :</p>
+<ul>
+<li><code class="language-">bon_parenthésage([1, -1])</code> doit rendre <code class="language-">True</code></li>
+<li><code class="language-">bon_parenthésage([])</code> doit rendre <code class="language-">True</code></li>
+<li><code class="language-">parenthèses([1, -1, -1, 1])</code> doit rendre <code class="language-">False</code></li>
+</ul>
+<h4>3.2 Programme principal</h4>
+<p>Ajoutez à votre programme principal l'affichage de la suite.</p>
+<p>Par exemple :</p>
+<pre><code>Entrez une chaîne de caractères : coucou (toi) :)
+La chaîne contient la suite de parenthèses : ())
+La suite associée est : [1, -1, -1]
+La suite ne correspond pas à un bon parenthésage
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

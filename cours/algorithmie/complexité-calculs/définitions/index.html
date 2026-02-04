@@ -245,11 +245,18 @@ instructions c'est à dire $43$ instructions.</p>
 <ul>
 <li>créer un tableau de taille 42 nécessite  1 instruction</li>
 <li>créer un tableau de taille $2^{42}$ nécessite  1 instruction</li>
-<li><code class="language-">F ← [1 .. 42]</code> nécessite 2 instructions, une pour la création du tableau <code class="language-">[1 .. 42]</code>, la seconde pour l'affectation à la variable <code class="language-">F</code> (que l'on suppose déjà créée)</li>
 <li><code class="language-">afficher à l'écran F[3]</code> nécessite 2 instructions, une pour retrouver l'objet associé à <code class="language-">F[3]</code>, l'autre pour l'afficher</li>
 <li><code class="language-">F[3] ← 42</code> nécessite 2 instructions, une pour créer l'entier <code class="language-">42</code>, l'autre pour l'affecter</li>
 <li><code class="language-">F[i] ← 42</code> nécessite 3 instructions, une pour créer l'entier <code class="language-">42</code>, une pour trouver l'objet associé à <code class="language-">i</code> (ce n'est pas une constante) l'autre pour l'affecter</li>
 <li><code class="language-">F[i-1] ← 42</code> nécessite 5 instructions, une pour créer l'entier <code class="language-">42</code>, une pour trouver l'objet associé à <code class="language-">i</code>, une pour créer l'entier 1, une pour l'addition et la dernière pour l'affectation.</li>
+<li><code class="language-">F ← [1 .. 42]</code> nécessite 86 instructions :
+<ul>
+<li>1 pour la création de l'objet tableau de longueur 42</li>
+<li>42 pour la création des entiers  allant de 1 à 42</li>
+<li>42 pour l'affectation des entiers aux éléments du tableau</li>
+<li>1 pour l'affectation du tableau à la variable <code class="language-">F</code> (que l'on suppose déjà créée)</li>
+</ul>
+</li>
 </ul>
 <h2>Complexité d'un algorithme</h2>
 <p>Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 144$ :</p>
@@ -340,7 +347,7 @@ $$
 <p>Mais souvent la complexité dépend des paramètres du programme, comme par exemple le pseudo-code suivant qui rend la $n$ème valeur de la suite de Fibonacci où $n$ est le paramètre de l'algorithme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">  F <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">  F <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">}</span></span>
+<span class="highlight-line">  F <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> n<span class="token punctuation">}</span></span>
 <span class="highlight-line">  F<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line">  F<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
@@ -398,8 +405,8 @@ $$
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
 <p>La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 11 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; la création de <code class="language-">e</code> ; trouver <code class="language-">t[0]</code> puis l'affecter à <code class="language-">e</code> ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $6n + 5$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; la création de <code class="language-">e</code> ; $2n$ instruction de l'affectation de la boucle <code class="language-">pour chaque</code> ; $2n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 6i + 5$ où $i$ est la position de la valeur dans le tableau.</p>
 <p>Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances <em>a priori</em> sur ses entrées. Pour l'algorithme <code class="language-">rechercher</code> on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
@@ -442,8 +449,8 @@ pour des données de paramètre $N$.</p>
 <p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">recherche</code> vaut $6N+5$, en utilisant la taille du tableau passé en entrée comme paramètre : pour tout tableau de longueur $N$ passé en paramètre, la complexité maximale est de $6N+5$ instructions.</p>
 <p>Lorsque les données sont de taille fixe, on ne peut pas utiliser la taille prises par les données comme paramètre. C'est le cas de la fonction <code class="language-">fibonacci(n)</code>, puisque pour nous la taille de stockage d'un entier sera toujours de 1. On peut alors souvent utiliser la valeur elle même des données comme paramètre, ce qui donne : pour des données de valeur $n$ la complexité de l'algorithme est de de $17n -19$.</p>
 <p>Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
@@ -484,14 +491,14 @@ pour des données de paramètre $N$.</p>
 </div></div>
 
 <p>Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le temps mis pour un code à être exécuté est proportionnelle à la complexité de son pseudo-code associé.</p>
+<p>Le temps mis pour un code à être exécuté est proportionnelle au nombre d'instructions exécutés de son pseudo-code associé, ce qui implique que la complexité en temps (le temps maximum) est proportionnelle à la complexité en nombre d'instructions (le nombre maximum d'instructions).</p>
 </div></div>
 
 <p>Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.</p>

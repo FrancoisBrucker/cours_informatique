@@ -601,7 +601,7 @@ Hanoi<span class="token punctuation">(</span><span class="token builtin">len</sp
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Donnez le nombre de déplacement effectué par notre algorithme.
+<p>Donnez le nombre de déplacements effectués par notre algorithme.
 Peut-on faire mieux ?</p>
 </div></div>
 
@@ -649,33 +649,420 @@ $$
 </div>
 </details>     
 </div>
-<h2>Algorithmes arithmétique</h2>
+<h2><span id="arithmétique"></span>Algorithmes arithmétique</h2>
 <blockquote>
 <ul>
 <li><strong>Utilité</strong> : pour la culture générale et si vous voulez faire de l'informatique plus tard</li>
 <li><strong>Difficulté</strong> : difficile</li>
 </ul>
 </blockquote>
+<p>On considérera toujours en algorithmie que lorsque l'on manipule des entiers les opérations de sommes et de multiplications sont en $\mathcal{O}(1)$ opérations. Si cette approximation fonctionne lorsque les nombres sont bornés (sur 64 bits usuellement), ce n'est bien sur pas possible si les nombres deviennent très grands où il faut considérer leur représentation interne.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On note $u$ la bijection $u: \{0, 1\}^\star \rightarrow \mathbb{N}$ telle que :</p>
+<div>
+$$
+u([x_0, \dots, x_{n-1}]) = \sum_{i=0}^{n-1}x_i \cdot 2^i
+$$
+</div>
+<p>On note $u^{-1}(x)$ l'inverse de $u$ et $u^{-1}_n(x)$ le tableau y de $\{0, 1\}^n$ tel que $u(y) = x \bmod 2^n$</p>
+</div></div>
+
+<p>Ainsi :</p>
+<ul>
+<li>$u([0,1,0, 1]) = 10$ (de notation binaire $0\text{\tt b}1010$),</li>
+<li>$u^{-1}(10) = [0,1,0, 1]$</li>
+<li>$u_3^{-1}(10) = [0,1,0]$ (de notation binaire $0\text{\tt b}010$)</li>
+<li>$u_8^{-1}(10) = [0, 1, 0, 1, 0, 0, 0, 0]$ (de notation binaire $0\text{\tt b}00001010$)</li>
+</ul>
+<p>Nous allons voir dans la suite les complexités des opération de somme et de multiplications pour des algorithmes prenants des tableaux de bits en entrées. Pour éviter les cas particuliers embêtant et qui n'apportent pas grand chose algorithmiquement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On considérera toujours ici des entrées de même taille $n$.</p>
+</div></div>
+
+<h3>Bijection</h3>
+<p>Commençons par écrire la bijection permettant de passer d'un entier à un tableau de bits et réciproquement,</p>
 <blockquote>
-<p>TBD intro avec le nombre de bit d'un entier
-dire lorsque nombre infini forcément pas O(1). Exemple binaire</p>
+<p>TBD 1. trouver max
+TBD 2. faire algo</p>
 </blockquote>
-<h3>Somme</h3>
+<blockquote>
+<p>TBD la puissance de 2 = shift
+TBD garder que le min possible (dernier bit = 1)
+TBD shift([1], n) = 2 ** n</p>
+</blockquote>
+<h3><span id="somme"></span>Addition</h3>
+<p>Vous allez implémenter l'algorithme de la somme posée (<a href="../exercices-it%C3%A9ratif-r%C3%A9cursif/#somme" class="interne">on y a déjà réfléchit en base 10</a>) pour des nombres codées sous leur forme binaire.</p>
+<p>Sur deux entiers non signés</p>
+<pre><code>  100101
++ 001011
+--------
+  110001
+</code></pre>
+<p>Attention à la retenue qui potentiellement augmente la taille de la sortie :</p>
+<pre><code>   100101
++  011011
+--------
+  1000000
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme de signature <code class="language-">addition(x: [bit], y: [bit]) → [bit]</code> utilisant l'addition posée. On supposera que :</p>
+<ul>
+<li>$x$ et $y$ sont tous deux de longueur $n$</li>
+<li>la sortie est de taille $n + 1$</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">addition</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de même taille</span>
+                    <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>    <span class="token comment"># de la taille de x et y + 1</span>
+
+    <span class="token punctuation">(</span>somme <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> x<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">}</span>
+    <span class="token punctuation">(</span>retenue <span class="token operator">:=</span> <span class="token builtin">bit</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            somme<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">1</span>
+            retenue <span class="token operator">←</span> <span class="token number">1</span>
+        <span class="token keyword">sinon si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            somme<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+            retenue  <span class="token operator">←</span> <span class="token number">1</span>
+        <span class="token keyword">sinon si</span> <span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            somme<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">1</span>
+            retenue  <span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+            somme<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+            retenue  <span class="token operator">←</span> <span class="token number">0</span>
+    somme<span class="token punctuation">[</span>x<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> retenue
+
+    <span class="token keyword">rendre</span> somme</code></pre>
+<p>La preuve de correction vient du fait qu'à la fin de chaque itération, on tout se passe comme si on faisait la somme de 3 bit (<code class="language-">x[i]</code>, <code class="language-">y[i]</code>, et <code class="language-">retenue</code>)et que l'on mettait le bit unité dans <code class="language-">somme[i]</code> et la dizaine (en base 2) dans <code class="language-">retenue</code> :</p>
+<pre><code>          x[i]
+          y[i]
++       retenue
+-------------
+retenue somme[i]
+</code></pre>
+<p>Les différents cas correspondes à tous les résultats possibles des additions.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de cet algorithme. Peut-on faire mieux ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement en $\Theta(n)$. Comme l'addition nécessite au moins $\Omega(n)$ opérations pour lire les données, on est optimal.</p>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD ici parler par rapport à la valeur u(B). Dire que :</p>
+<ol>
+<li>c'est du log par rapport à la valeur, donc monte très doucement</li>
+<li>comme borné en pratique par 64b (entier jusqu'à $2^64$ donc très grand)</li>
+</ol>
+</blockquote>
+<h3>Soustraction</h3>
+<p>On va se placer dans le cadre de la soustraction de deux nombres dont le résultat est positif.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme de signature <code class="language-">soustraction(x: [bit], y: [bit]) → [bit]</code> utilisant la soustraction posée. On supposera que $u(x) \geq u(y)$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Nos conventions veulent que <code class="language-">x.longueur</code> et <code class="language-">y.longueur</code> soient égales et comme on suppose que $u(x) \geq u(y)$ la sortie sera positive et de la même longueur que $x$.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">soustraction</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                        y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose x et y de même taille et que u(x) ≥ u(y)</span>
+                        <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>    <span class="token comment"># de la taille de x et y</span>
+
+    <span class="token punctuation">(</span>différence <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
+    <span class="token punctuation">(</span>retenue <span class="token operator">:=</span> <span class="token builtin">bit</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            différence<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+            retenue <span class="token operator">←</span> <span class="token number">1</span>
+        <span class="token keyword">sinon si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            différence<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+            retenue  <span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">sinon si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            différence<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+            retenue  <span class="token operator">←</span> <span class="token number">1</span>
+        <span class="token keyword">sinon si</span> <span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            différence<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+            retenue  <span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">sinon si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            différence<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">1</span>
+            retenue  <span class="token operator">←</span> <span class="token number">1</span>
+        <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+            différence<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+            retenue  <span class="token operator">←</span> <span class="token number">0</span>
+          
+    <span class="token keyword">rendre</span> différence</code></pre>
+<p>La preuve de correction vient du fait qu'à la fin de chaque itération, on tout se passe comme si on faisait <code class="language-">x[i] - (y[i] + retenue)</code> et que l'on mettait le bit unité dans <code class="language-">différence[i]</code> et la dizaine (en base 2) dans <code class="language-">retenue</code> :</p>
+<pre><code>            x[i]
+- (         y[i]
+   +      retenue)
+----------------------
+retenue différence[i]
+</code></pre>
+<p>Les différents cas correspondes à tous les résultats possibles des soustraction.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de cet algorithme. Peut-on faire mieux ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement en $\Theta(n)$. Comme la soustraction nécessite au moins $\Omega(n)$ opérations pour lire les données, on est optimal.</p>
+</div>
+</details>     
+</div>
+<p>La méthode utilisée permet de gérer les entiers positifs et négatifs, mais <a href="../fonctions-bool%C3%A9ennes/#compl%C3%A9ment-%C3%A0-deux" class="interne">on verra plus tard</a> un moyen plus efficace de le faire en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à 2</a></p>
 <h3>Multiplication</h3>
+<p>La multiplication de deux tableaux de bits</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la complexité du problème de la multiplication de deux entiers sous leur forme binaires à $n$ bit est en $\Omega(n)$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut au moins lire les données, ce qui nécessite au moins $\Omega(n)$ opérations.</p>
+</div>
+</details>     
+</div>
+<p>On ne connaît pas d'algorithme de complexité $\mathcal{O}(n)$ et le meilleurs algorithme connu est en $\mathcal{O}(n\ln(n))$. On a cependant longtemps pensé que la complexité du problème de la multiplication était égale à celle de l'algorithme naïf jusqu'à ce que <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba">Anatolii Alexevich Karatsuba</a> prouve le contraire en 1962.</p>
 <h4>Naive</h4>
+<p>On utilise la <a href="https://fr.wikipedia.org/wiki/Multiplication#Techniques_de_multiplication">multiplication posée</a>. Les nombres binaires simplifient grandement le calcul car il suffit de faire des additions.</p>
+<pre><code>       100101
+     * 001011
+    ---------
+       100101  = 100101 * 1
+      100101   = 100101 * 1
+     000000    = 100101 * 0
+    100101     = 100101 * 1
+   000000      = 100101 * 0
++ 000000       = 100101 * 0
+------------
+  00110010111
+</code></pre>
+<p>On trouve que $0b100101 \cdot 0b1011 = 0b110010111$ ($37 \cot 11 = 407$).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme de signature <code class="language-">multiplication(x: [bit], y: [bit]) → [bit]</code> utilisant la multiplication posée.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Nos conventions veulent que <code class="language-">x.longueur</code> et <code class="language-">y.longueur</code> soient égales, la longueur de la sortie sera donc égale à 2 fois la longueur de $x$.</p>
+<p>On obtient l'algorithme suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">multiplication</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>
+
+    <span class="token punctuation">(</span>résultat <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token operator">*</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
+    résultat<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    retenue <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    temp <span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> k de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        retenue <span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> y<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                <span class="token keyword">si</span> <span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>résultat<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    résultat<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">1</span>
+                    retenue <span class="token operator">←</span> <span class="token number">1</span>
+                <span class="token keyword">sinon si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>résultat<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>résultat<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    somme<span class="token punctuation">[</span>i<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+                    retenue  <span class="token operator">←</span> <span class="token number">1</span>
+                <span class="token keyword">sinon si</span> <span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>résultat<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>retenue <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    résultat<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">1</span>
+                    retenue  <span class="token operator">←</span> <span class="token number">0</span>
+                <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+                    résultat<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span>  <span class="token operator">←</span> <span class="token number">0</span>
+                    retenue  <span class="token operator">←</span> <span class="token number">0</span>
+            résultat<span class="token punctuation">[</span>k <span class="token operator">+</span> x<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> retenue
+    <span class="token keyword">rendre</span> résultat</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de cet algorithme.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La complexité de l'algorithme est en $\mathcal(O)(n^2)$ avec $n$ la longueur des 2 entrées.</p>
+</div>
+</details>     
+</div>
 <h4>Karatsuba</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba">optimisation de Karastuba</a></p>
+</div></div>
+
 <blockquote>
-<p>TBD <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba">optimisation de Karastuba</a></p>
+<p>TBD <a href="https://www.youtube.com/watch?v=qKcwuRK9n6U&amp;list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&amp;index=4">https://www.youtube.com/watch?v=qKcwuRK9n6U&amp;list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&amp;index=4</a> tb presentation.
+TBD dire que c'est compliqué. C'est pour donner un exemple de d'algorithme pas évident qui fait mieux que le naif. Il faut toujours chercher à faire mieux...</p>
 </blockquote>
+<blockquote>
+<p>TBD recursive 1
+TBD opti recursive 1 avec le -
+TBD passer des entiers aux tableaux. Parler des shift $2^n$</p>
+</blockquote>
+<p>Ici on va supposer que tout est ok au niveau des tailles :</p>
+<ul>
+<li>[...] * [...] = multiplication</li>
+<li>[...] + [...] = addition</li>
+</ul>
 <h4>Peut-on mieux faire ?</h4>
 <blockquote>
-<p>TBD borne min
-Puis parler de Strassen et de l'optimal <a href="https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers">https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d'entiers</a> et <a href="https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf">https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf</a>
-conjecture
+<p>Puis parler de Strassen nlog(n) conjecture. et de l'optimal <a href="https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers">https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d'entiers</a> et <a href="https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf">https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf</a></p>
+</blockquote>
+<blockquote>
+<p>TBF <a href="https://www.youtube.com/watch?v=qKcwuRK9n6U">https://www.youtube.com/watch?v=qKcwuRK9n6U</a> et <a href="https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/">https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/</a></p>
+</blockquote>
+<h3>Conclusion</h3>
+<blockquote>
+<p>conjecture
 nb tres tres grand pour que ca marche
 en pratique on fixe la taille</p>
 </blockquote>
-<h3>Conclusion</h3>
 <blockquote>
 <p>TBD c'est pour ça que parfois on sépare somme et multiplication dans le calcul de la complexité (cf. polynôme dans les calculs de complexité).</p>
 </blockquote>
