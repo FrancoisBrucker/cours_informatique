@@ -450,12 +450,63 @@ On considérera toujours ici des entrées de même taille $n$.
 
 Commençons par écrire la bijection permettant de passer d'un entier à un tableau de bits et réciproquement,
 
-> TBD 1. trouver max
-> TBD 2. faire algo
+{% exercice %}
+Écrivez un algorithme de signature `u(x: [bit]) → entier`{.language-} de complexité $\Omega(x.\text{longueur})$ qui rend l'entier positif associé au tableau de bits.
+{% endexercice %}
+{% details "corrigé" %}
 
-> TBD la puissance de 2 = shift
-> TBD garder que le min possible (dernier bit = 1)
-> TBD shift([1], n) = 2 ** n
+```pseudocode
+algorithme u(x: [bit]) → entier:
+    (v := entier) ← 0
+    (puissance_2 := entier) ← 1
+    pour chaque (i := entier) de [0 .. x.longueur - 1[:
+        si (x[i] == 1):
+            v ← v + puissance_2
+        puissance_2 ← 2 * puissance_2
+
+    rendre v
+```
+
+La finitude du programme est clair. L'invariant de boucle permettant de prouver l'algorithme est : "à la fin de l'itération $i$, $v = \sum_{0 \leq k  \leq i}x[i] \cdot 2^k$".
+
+{% enddetails %}
+
+{% exercice %}
+Écrivez un algorithme de signature `u_moins_1(n: entier) → [bit]`{.language-} qui rend le tableau de bits associé à l'entier en paramètre. Sa complexité doit être en $\mathcal{O}(\ln(n))$.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme u_moins_1(n: entier) → [bit]:
+    (k := entier) ← 0
+    (puissance_2 := entier) ← 1
+    tant que puissance_2 ≤ n:
+        puissance_2 ← 2 * puissance_2
+        (k := entier) ← k + 1
+    
+    (T := [bit]) ← [bit]{longueur: k}
+    (i := entier) ← 0
+    tant que n > 0:
+        si n est impair:
+            T[i] ← 1
+            n ← n -1
+        sinon:
+            T[i] ← 0
+        n ← n // 2
+        i ← i + 1
+
+```
+
+La finitude du programme est clair. puisque dans les deux boucle on augmente (respectivement diminue) strictement une variable qui stoppe la boucle si elle devient plus grande (respectivement plus petite) qu'un seuil.
+
+POur prouver l'algorithme, on regarde les deux boucles de l'algorithme :
+
+- La première (lignes 4-6) est là pour connaître la longueur du tableau de bit de la sortie en cherchant la première puissance de 2 strictement plus grande que $n$. Comme il y a $\log_2(n)$ itérations de cette boucle la complexité est en $\mathcal{O}(\ln(n))$.
+- La seconde crée le tableau de bit et sit exactement la définition : si $n = \sum_{i=0}^{n-1}x_i \cdot 2^i$ alors $x_i = n \pmod 2^i$.
+
+Les deux boucles ayant $\log_2(n)$ itération et le reste des instructions étant en $\mathcal{O}(1)$ on en déduit que la complexité de l'algorithme est en $\mathcal{O}(\ln(n))$
+
+{% enddetails %}
 
 ### <span id="somme"></span>Addition
 
@@ -535,11 +586,6 @@ Quelle est la complexité de cet algorithme. Peut-on faire mieux ?
 Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement en $\Theta(n)$. Comme l'addition nécessite au moins $\Omega(n)$ opérations pour lire les données, on est optimal.
 {% enddetails %}
 
-
-> TBD ici parler par rapport à la valeur u(B). Dire que : 
-> 1. c'est du log par rapport à la valeur, donc monte très doucement
-> 2. comme borné en pratique par 64b (entier jusqu'à $2^64$ donc très grand)
-
 ### Soustraction
 
 On va se placer dans le cadre de la soustraction de deux nombres dont le résultat est positif.
@@ -605,6 +651,69 @@ Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement
 
 La méthode utilisée permet de gérer les entiers positifs et négatifs, mais [on verra plus tard](../fonctions-booléennes/#complément-à-deux){.interne} un moyen plus efficace de le faire en utilisant [le complément à 2](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
 
+### Améliorations
+
+{% exercice %}
+Que proposez-vous pour permettre :
+
+1. des additions et de soustractions avec des tailles différentes
+2. que la taille de la sortie soit la plus petite possible
+
+Tout en gardant la même complexité.
+{% endexercice %}
+{% details "corrigé" %}
+
+Pour le premier point, on peut garder le même algorithme en copiant les entrées dans deux tableaux originellement remplis de 0 tout deux de longueurs égale au max des longueurs des deux entrées :
+
+```pseudocode
+algorithme opération(x: [bit],
+                     y: [bit])  # on suppose x et y de même taille
+                     → [bit]    # de la taille de x et y + 1
+
+    (x' := [bit]) ← [bit]{longueur: max(x.longueur, y.longueur)}
+    x'[:] ← 0
+    pour chaque (i := entier) de [0 .. x.longueur[:
+        x'[i] ← x[i]
+    (y' := [bit]) ← [bit]{longueur: max(x.longueur, y.longueur)}
+    y'[:] ← 0
+    pour chaque (i := entier) de [0 .. x.longueur[:
+        y'[i] ← y[i]
+
+    #  ... reste de l'algorithme
+```
+
+Les opérations ajoutées sont en $\mathcal{O}(max(x.\text{longueur}, y.\text{longueur}))$ ce qui ne change pas la complexité.
+
+Pour le second point, on peut supprimer tous les derniers élément du tableaux égaux à 0 :
+
+```pseudocode
+algorithme opération(x: [bit],
+                     y: [bit])  # on suppose x et y de même taille
+                     → [bit]    # de la taille de x et y + 1
+
+    #  ... début de l'algorithme
+
+    (i := entier) ← résultat.longueur
+    (on_reste := booléen) ← Vrai
+
+    tant que on_reste:
+        si (i == 0) ou (résultat[i-1] == 1):  # on s'arrête au premier 1 ou si résultat ne contient que des 0
+            on_reste ← Faux
+        sinon:
+            i ← i - 1
+    
+    (résultat' := [bit]) ← [bit]{longueur: i}
+
+    pour chaque i de [0 .. résultat'.longueur[:
+        résultat'[i] ← résultat[i]
+    
+    rendre résultat'
+```
+
+Là encore, cet ajout ne change pas la complexité de l'algorithme.
+
+{% enddetails %}
+
 ### Multiplication
 
 La multiplication de deux tableaux de bits 
@@ -618,6 +727,16 @@ Il faut au moins lire les données, ce qui nécessite au moins $\Omega(n)$ opér
 
 On ne connaît pas d'algorithme de complexité $\mathcal{O}(n)$ et le meilleurs algorithme connu est en $\mathcal{O}(n\ln(n))$. On a cependant longtemps pensé que la complexité du problème de la multiplication était égale à celle de l'algorithme naïf jusqu'à ce que [Anatolii Alexevich Karatsuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba) prouve le contraire en 1962.
 
+Le problème de la multiplication est intéressant à plus d'un titre :
+
+- améliorer l'algorithme naïf est possible mais c'est dur
+- on ne connaît pas la complexité du problème
+- les algorithmes les plus efficaces ne sont pas utilisés en pratique car il ne sont efficaces que pour des nombres astronomiquement grand
+- en pratique dans les ordinateurs c'est une version optimisé de l'algorithme naïf qui est utilisé.
+
+#### Puissances de 2
+
+> TBD on remarque que c'est facile de multiplier un [bit] par une puissance de 2 et on fait l'algorithme.
 
 #### Naive
 
@@ -682,7 +801,7 @@ algorithme multiplication(x: [bit], y: [bit]) → [bit]
 Quelle est la complexité de cet algorithme.
 {% endexercice %}
 {% details "corrigé" %}
-La complexité de l'algorithme est en $\mathcal(O)(n^2)$ avec $n$ la longueur des 2 entrées.
+La complexité de l'algorithme est en $\Theta(n^2)$ avec $n$ la longueur des 2 entrées.
 {% enddetails %}
 
 #### Karatsuba
@@ -690,23 +809,151 @@ La complexité de l'algorithme est en $\mathcal(O)(n^2)$ avec $n$ la longueur de
 {% lien %}
 [optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba)
 {% endlien %}
-> TBD <https://www.youtube.com/watch?v=qKcwuRK9n6U&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=4> tb presentation.
-> TBD dire que c'est compliqué. C'est pour donner un exemple de d'algorithme pas évident qui fait mieux que le naif. Il faut toujours chercher à faire mieux...
 
-> TBD recursive 1 
-> TBD opti recursive 1 avec le -
-> TBD passer des entiers aux tableaux. Parler des shift $2^n$
+On va décrire le procédé utilisé par Karatsuba en plusieurs temps. Pour des raisons de clarté, on va supposer que l'on peut écrire :
+
+- des multiplications de $[bit]$ sans soucis de taille : $[x_0, \cdot x_{p-1}] * [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
+- des additions de $[bit]$ sans soucis de taille : $[x_0, \cdot x_{p-1}] + [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
+- des soustractions de $[bit]$ sans soucis de taille : $[x_0, \cdot x_{p-1}] - [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
+- multiplier des $[bit]$ par $2^n$ (ce qui revient à ajouter $n$ zéros devant le tableau): 2^n \cdot $[x_0, \cdot x_{p-1}] = [0, \dots, 0, x_0, \dots x_{p-1}]$
+
+La principale astuce de la multiplication de Karatsuba est de remarquer que :
+
+<div>
+$$
+[x_0, \dots, x_{2n-1}] = [x_0, \dots, x_{n-1}] + 2^n \cdot [x_n, \dots, x_{2n-1}]
+$$
+</div>
 
 
-Ici on va supposer que tout est ok au niveau des tailles :
+Ce qui permet d'écrire :
 
-- [...] * [...] = multiplication
-- [...] + [...] = addition
+<div>
+$$
+\begin{array}{lcl}
+[x_0, \dots, x_{n-1}] \cdot [y_0, \cdot y_{n-1}] &=& ([x_0, \dots, x_{n // 2}] + 2^{n // 2} \cdot [x_{n // 2}, \dots, x_{n-1}]) \cdot ([y_0, \dots, y_{n // 2}] + 2^{n // 2} \cdot [y_{n // 2}, \dots, y_{n-1}])\\
+&=& 2^n \cdot [x_{n // 2}, \dots, x_{n-1}] \cdot [y_{n // 2}, \dots, y_{n-1}]  \\
+&& + 2^{n // 2} \cdot ([x_0, \dots, x_{n // 2}] \cdot [y_{n // 2}, \dots, y_{n-1}] + [y_0, \dots, y_{n // 2}] \cdot [x_{n // 2}, \dots, x_{n-1}]) \\
+&& + [x_0, \dots, x_{n // 2}] \cdot [y_0, \dots, y_{n // 2}]\\
+\end{array}
+$$
+</div>
+
+Enfin, remarquez que la dernière équation peut aussi s'écrire :
+
+<div>
+$$
+\begin{array}{lcl}
+[x_0, \dots, x_{n-1}] \cdot [y_0, \cdot y_{n-1}] &=& 2^n \cdot [x_{n // 2}, \dots, x_{n-1}] \cdot [y_{n // 2}, \dots, y_{n-1}]  \\
+&& + 2^{n // 2} \cdot ([x_0, \dots, x_{n // 2}] + [x_{n // 2}, \dots, x_{n-1}]) \cdot ([y_0, \dots, y_{n // 2}] + [y_{n // 2}, \dots, y_{n-1}]) \\
+&& - 2^{n // 2} \cdot ([x_{n // 2}, \dots, x_{n -1}] \cdot [y_{n //2}, \dots, y_{n -1}] + [x_0, \dots, x_{n // 2}] \cdot [y_{0}, \dots, y_{n // 2}]) \\
+\end{array}
+$$
+</div>
+
+Ce qui permet d'écrire l'algorithme :
+
+```pseudocode
+algorithme Karatsuba(x: [bit], y: [bit]) → [bit]:  # x et y de même longueur
+    (n := entier) ← x.longueur
+
+    # astuce pour garantir une même taille aux tableaux si la longueur est impaire
+    (x1 := [bit]) ← u_moins_un(n // 2 + 1, x[: n // 2])
+    (x2 := [bit]) ← u_moins_un(n // 2 + 1, x[n // 2 :])
+
+    (y1 := [bit]) ← u_moins_un(n // 2 + 1, y[: n // 2])
+    (y2 := [bit]) ← u_moins_un(n // 2 + 1, y[n // 2 :])
+
+    (x2y2 := [bit]) ← Karatsuba(x2, y2)
+    (x1y1 := [bit]) ← Karatsuba(x1, y1)
+
+    (s1 := [bit]) ← somme(x1, x2)
+    (s2 := [bit]) ← somme(y1, y2)
+    (p := [bit]) ← Karatsuba(s1, s2)
+
+    résultat := [bit]
+
+    résultat ← puissance(n, x2y2)
+    résultat ← somme(résultat, puissance(n // 2, x2y2))
+    résultat ← soustraction(résultat, somme(x2y2, x1y1))
+```
+
+
+{% exercice %}
+Montrez que la complexité $C(n)$ de l'algorithme avec $n$ la longueur des tableaux en entrée suit l'équation de récursion :
+
+<div>
+$$
+C(n) = 3 \cdot C(n / 2) + \mathcal{O}(n)
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Il y a 3 appels à l'algorithme avec des tableaux de tailles divisées par deux et le reste des algorithmes appelés et des opérations est en $\mathcal{O}(n)$
+{% enddetails %}
+
+Cette équation se résout :
+
+{% exercice %}
+Montrez que la complexité $C(n)$ de l'algorithme avec $n$ la longueur des tableaux en entrée vaut :
+
+<div>
+$$
+C(n) = (3^{K} + \sum_{0\leq i \leq K}3^i) \cdot \mathcal{O}(1)
+$$
+</div>
+
+Avec $K = \log_2(n)$.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire que :
+<div>
+$$
+C(n) = \mathcal{O}(3^{\log_2(n)})
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+À vous pour la conclusion :
+
+{% exercice %}
+Montrez que $n^2 = 4^{\log_2(n)}$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+{% exercice %}
+Conclusion pour l'algorithme de Karatsuba ?
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Comme $3^{\log_2(n)} < 4^{\log_2(n)}$, l'algorithme de Karatsuba est bien de complexité strictement plus petite que l'algorithme naïf de multiplication.
+
+{% enddetails %}
+
+Vous le voyez, trouver mieux que l'algorithme naïf n'a pas été simple ! Mais c'est possible. La question brûlante est alors, peut-on faire encore mieux ?
 
 #### Peut-on mieux faire ?
 
-
->  Puis parler de Strassen nlog(n) conjecture. et de l'optimal <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers> et <https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf>
+> TBD Strassen nlog(n) conjecture. et de l'optimal <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers> et <https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf>
 
 > TBF <https://www.youtube.com/watch?v=qKcwuRK9n6U> et <https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/>
 
