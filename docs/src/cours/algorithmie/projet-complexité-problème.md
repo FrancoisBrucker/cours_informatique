@@ -438,13 +438,24 @@ Ainsi :
 - $u([0,1,0, 1]) = 10$ (de notation binaire $0\text{\tt b}1010$),
 - $u^{-1}(10) = [0,1,0, 1]$
 - $u_3^{-1}(10) = [0,1,0]$ (de notation binaire $0\text{\tt b}010$)
-- $u_8^{-1}(10) = [0,1,0, 1, 0, 0, 0, 0]$ (de notation binaire $0\text{\tt b}00001010$)
+- $u_8^{-1}(10) = [0, 1, 0, 1, 0, 0, 0, 0]$ (de notation binaire $0\text{\tt b}00001010$)
 
 Nous allons voir dans la suite les complexités des opération de somme et de multiplications pour des algorithmes prenants des tableaux de bits en entrées. Pour éviter les cas particuliers embêtant et qui n'apportent pas grand chose algorithmiquement :
 
 {% attention %}
 On considérera toujours ici des entrées de même taille $n$.
 {% endattention %}
+
+### Bijection
+
+Commençons par écrire la bijection permettant de passer d'un entier à un tableau de bits et réciproquement,
+
+> TBD 1. trouver max
+> TBD 2. faire algo
+
+> TBD la puissance de 2 = shift
+> TBD garder que le min possible (dernier bit = 1)
+> TBD shift([1], n) = 2 ** n
 
 ### <span id="somme"></span>Addition
 
@@ -676,15 +687,28 @@ La complexité de l'algorithme est en $\mathcal(O)(n^2)$ avec $n$ la longueur de
 
 #### Karatsuba
 
-> TBD [optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba)
+{% lien %}
+[optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba)
+{% endlien %}
+> TBD <https://www.youtube.com/watch?v=qKcwuRK9n6U&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=4> tb presentation.
+> TBD dire que c'est compliqué. C'est pour donner un exemple de d'algorithme pas évident qui fait mieux que le naif. Il faut toujours chercher à faire mieux...
 
 > TBD recursive 1 
 > TBD opti recursive 1 avec le -
+> TBD passer des entiers aux tableaux. Parler des shift $2^n$
+
+
+Ici on va supposer que tout est ok au niveau des tailles :
+
+- [...] * [...] = multiplication
+- [...] + [...] = addition
 
 #### Peut-on mieux faire ?
 
-> TBD borne min
+
 >  Puis parler de Strassen nlog(n) conjecture. et de l'optimal <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers> et <https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf>
+
+> TBF <https://www.youtube.com/watch?v=qKcwuRK9n6U> et <https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/>
 
 ### Conclusion
 

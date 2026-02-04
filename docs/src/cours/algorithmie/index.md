@@ -469,6 +469,12 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 
 <!-- ### Jolis problèmes
 
+
+> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=3>
+
+> TBD strassen et fft <> TBD closest pair <https://www.youtube.com/watch?v=g8_0TAMYOAY&list=PL0YFU3y0Z_gaGD6jZLeuLHTRW0ISFn6AU&index=4>
+>
+
 On place ici quelques problèmes requérant une bonne compréhension algorithmique pour être résolu. Ce sont souvent des problèmes ardus mais la beauté de leur résolution vaut le détour.
 
 #### Subsetsum
@@ -844,6 +850,7 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 [Mélanger un tableau](./projet-mélange){.interne}
 {% endaller %}
 
+> TBD playlist sur algorithme randomisé. <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>
 > TBD pi et nb aléatoire (nombre univers ?) : <https://www2.lbl.gov/Science-Articles/Archive/pi-random.html>
 > TBD nombre aléatoires : <https://xkcd.com/221/> et <https://imgur.com/random-number-generator-bwFWMqQ>
 

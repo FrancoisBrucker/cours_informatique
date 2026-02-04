@@ -111,5 +111,5 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 En code, on utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées que des tableaux (des listes ou des dictionnaires en python par exemple). Il faut connaître la complexité de chacune de ces fonctions et de la manipulation de ces structures pour pouvoir calculer la complexité du code produit, utiliser une méthode plutôt qu'une autre pouvant mener à une augmentation dramatique de la complexité.
 
 {% attention2 "**À retenir**" %}
-Lorsque l'on calcule la complexité d'un code, toutes les méthodes et fonctions doivent être examinées.
+Lorsque l'on calcule la complexité d'un pseudocode, toutes les méthodes et fonctions doivent être examinées.
 {% endattention2 %}
