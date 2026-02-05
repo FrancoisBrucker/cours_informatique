@@ -145,8 +145,8 @@ algorithme trouve_vite(T: [entier]) → entier:    # T.longueur > 1
     si T[-1] <= T[-2]:
         rendre T.longueur - 1
 
-    début ← 0
-    fin ← T.longueur - 1
+    (début := entier) ← 0
+    (fin := entier) ← T.longueur - 1
 
     tant que Vrai:
         milieu ← (fin + début) // 2
@@ -159,6 +159,7 @@ algorithme trouve_vite(T: [entier]) → entier:    # T.longueur > 1
             début ← milieu
 ```
 
+{% endexercice %}
 {% details "code python" %}
 
 ```python/
@@ -185,7 +186,6 @@ def trouve_vite(T):
 ```
 
 {% enddetails %}
-{% endexercice %}
 {% details "corrigé" %}
 
 La preuve d'existence du 1 montre que pour tout $i + 1 < j$, si $T[i] > T[i+1]$ et $T[j] > T[j-1]$, alors il existe un indice $i < k < j$ tel que $k$ soit un col de la matrice.
@@ -412,11 +412,128 @@ Le lecteur averti se sera rendu compte que c'est exactement notre complexité.
 
 {% enddetails  %}
 
+## <span id="point-fixe"></span>Algorithme de recherche de point fixe
+
+> - **Utilité** : exercice classique des concours relevés donc donné sans trop d'explications
+> - **Difficulté** : difficile
+
+Nous allons étudier le problème algorithmique suivant :
+
+{% note2 "**Définition**" %}
+
+Une suite $(a_i)_{0\leq i}$ est dite _ultimement périodique_ si il existe $\lambda$ et $\mu$ tels que :
+
+- les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes
+- $a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$
+
+{% endnote2 %}
+
+{% note2 "**Problème algorithmique**" %}
+
+- Nom : Point fixe
+- Entrée : une suite $(a_i)_{0\leq i}$ ultimement périodique
+- Sortie : le couple $(\lambda, \mu)$
+
+{% endnote2 %}
+
+Cet problème est magnifique car :
+
+- la borne min du problème est minimale,
+- l'algorithme optimal est tout simple mais sa démonstration ne l'est pas.
+
+L'exercice est difficile mais sa beauté vaut le coût qu'on s'y arrache (un peu) les cheveux (si on en a).
+
+### Analyse préliminaire
+
+Une suite  ultimement périodique ressemble à un $\rho$ (rho) :
+
+![rho](rho.png)
+
+{% faire %}
+
+Donnez les $\lambda$ et $\mu$ pour la suite représentée par la figure précédente.
+
+{% endfaire %}
+
+{% faire %}
+
+Montrez que si $(a_i)_{i\geq 0}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.
+
+{% endfaire %}
+{% exercice %}
+Montrez que le problème de la recherche de point fixe de $f$ est en $\Omega(\lambda + \mu)$.
+{% endexercice %}
+
+### Algorithme naïf
+
+> TBD on modélise la suite par une fonction.
+> TBD en O(lambda + mu) mais O(n) en mémoire. pas possible en pratique puisque n >>1
+> TBD en O(n) mais pas possible en pratique puisque n >>1
+> peut-on faire avec moins de mémoire ? Le problème est de savoir si un nombre particulier revient. Donc on peut stocker ceux qu'on a et verifier si on ne l'a pas deja vu : O((lambda + mu)^2) et O(lambda + mu) en mémoire.
+> TBD classique trade off : mémoire/calcul.
+> souvent pas d'autre choix, mais ici c'est possible de ruser !
+
+### Algorithme optimal
+
+Soit $(a_i)_{i\geq 0}$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.
+
+{% faire  "**III.2.1**" %}
+Montrez qu'il existe $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
+{% endfaire %}
+
+> TBD ici avec fonctions.
+
+{% faire  "**III.2.2**" %}
+Montrez que programme suivant est un algorithme qui rend le $a_m$ de la question précédente.
+
+```pseudocode
+programme lièvre_tortue(f: (entier) → entier,
+                        x: entier
+                       ) → entier:
+    (tortue := entier) ← f(x)
+    (lièvre := entier) ← f(f(x))
+
+    tant que tortue ≠ lièvre:
+        tortue ← f(tortue)
+        lièvre ← f(f(lièvre))
+    
+    rendre tortue
+```
+{% endfaire %}
+
+{% info %}
+Vous aurez remarqué qu'un des paramètres du programme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/algorithmes-fonctions/#type).
+{% endinfo %}
+
+{% faire  "**III.2.3**" %}
+Montrez que la complexité de l'algorithme `lièvre_tortue`{.language-} est en $\mathcal{O}(n)$ si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ ?
+{% endfaire %}
+
+
+### III.3
+
+Nous allons chercher ici $a_\mu$ qui est le début du cycle. Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
+
+{% faire  "**III.3.1**" %}
+Montrez que $m$ est un multiple de $\lambda$.
+{% endfaire %}
+{% faire  "**III.3.2**" %}
+Utilisez la question précédente et la nature de $m$ pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$.
+
+{% endfaire %}
+{% faire  "**III.3.3**" %}
+Déduire de ce qui précède un algorithme de complexité temporelle $\mathcal{O}(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$ pour calculer $a_\mu$.
+
+{% endfaire %}
+{% info %}
+Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?
+{% endinfo %}
+
 ## <span id="arithmétique"></span>Algorithmes arithmétique
 
 
 > - **Utilité** : pour la culture générale et si vous voulez faire de l'informatique plus tard
-> - **Difficulté** : difficile
+> - **Difficulté** : très difficile
 
 On considérera toujours en algorithmie que lorsque l'on manipule des entiers les opérations de sommes et de multiplications sont en $\mathcal{O}(1)$ opérations. Si cette approximation fonctionne lorsque les nombres sont bornés (sur 64 bits usuellement), ce n'est bien sur pas possible si les nombres deviennent très grands où il faut considérer leur représentation interne.
 
@@ -731,16 +848,36 @@ Montrez que la complexité du problème de la multiplication de deux entiers sou
 Il faut au moins lire les données, ce qui nécessite au moins $\Omega(n)$ opérations.
 {% enddetails %}
 
-On ne connaît pas d'algorithme de complexité $\mathcal{O}(n)$ et le meilleurs algorithme connu est en $\mathcal{O}(n\ln(n))$. On a cependant longtemps pensé que la complexité du problème de la multiplication était égale à celle de l'algorithme naïf jusqu'à ce que [Anatolii Alexevich Karatsuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba) prouve le contraire en 1962.
+On ne connaît cependant pas d'algorithme de complexité $\mathcal{O}(n)$ et le meilleur algorithme connu est en $\mathcal{O}(n\ln(n))$, que l'on suppose être la complexité du problème. On a cependant longtemps pensé que la complexité du problème de la multiplication était égale à celle de la multiplication posée que l'on apprend en primaire jusqu'à ce que [Anatolii Alexevich Karatsuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba) prouve le contraire en 1962.
 
 Le problème de la multiplication est intéressant à plus d'un titre :
 
 - améliorer l'algorithme naïf est possible mais c'est dur
-- on ne connaît pas la complexité du problème
-- les algorithmes les plus efficaces ne sont pas utilisés en pratique car il ne sont efficaces que pour des nombres astronomiquement grand
-- en pratique dans les ordinateurs c'est une version optimisé de l'algorithme naïf qui est utilisé.
+- on ne connaît pas la complexité du problème mais on a de fortes présomptions
+- les algorithmes les plus efficaces ne sont pas utilisés en pratique car il ne sont efficaces que pour des nombres astronomiquement grand. En pratique dans les ordinateurs c'est une version optimisé de l'algorithme naïf qui est utilisé pour des nombre de tailles fixés (64b).
 
 #### Puissances de 2
+
+Commençons par étudier un cas particulier de la multiplication, celui où un des deux no,bre est une puissance de 2.
+
+{% exercice %}
+Montrez que multiplier un no,bre par une puissance de 2 revient à ajouter des 0 à gauche de sa représentation binaire.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire un algorithme de signature `puissance(n: entier, x: [bit]) → [bit]`{.language-} permettant de rendre $u(2^n \cdot u^{-1}(x))$ avec une complexité optimale.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD complexité O(n)
+> TBD algo
+
+{% enddetails %}
 
 > TBD on remarque que c'est facile de multiplier un [bit] par une puissance de 2 et on fait l'algorithme.
 

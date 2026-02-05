@@ -257,7 +257,10 @@ Réfléchissez-y un instant avant de continuer. Pensez-vous que ce soit possible
 
 ## III. Interlude
 
-Prenons un petit moment pour analyser un autre problème.
+Nous allons montrer que notre problème est équivalent à celui de [la recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe){.interne} que nous avons déjà étudié.
+
+> TBD réorganiser par rapport aux projet. Mettre la partie fonction et suite en regard.
+> TBD dire que le choix de a0 va influencer le temps prit par l'algorithme de résolution mais que in fine quelque soit le départ ça va fonctionner
 
 {% note2 "**Problème algorithmique**" %}
 
