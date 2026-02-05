@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: "sujet Test 2 : programmation
+title: "sujet Test 2 : programmation"
 authors:
   - François Brucker
 ---
