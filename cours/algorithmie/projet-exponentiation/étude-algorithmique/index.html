@@ -103,13 +103,13 @@
 <li>complexité</li>
 </ul>
 <h2><span id="algo-naif"></span> Algorithme naïf</h2>
-<p>Le calcul <em>naïf</em> de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers <strong>strictement positifs</strong> $x$ et $n$, par l'équation suivante :</p>
+<p>Le calcul <em>naïf</em> de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers <strong>strictement positifs</strong> $x$ et $n \geq 1$, par l'équation suivante :</p>
 <div>
 $$
 x^n = \left\{
     \begin{array}{ll}
         x \cdot x^{n-1} & \mbox{si } n > 1 \\
-        x & \mbox{sinon.}
+        x & \mbox{si } n = 1 \\
     \end{array}
 \right.
 $$
@@ -120,7 +120,7 @@ $$
     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> x
     <span class="token keyword">rendre</span> x <span class="token operator">*</span> puissance<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
-<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons <a href="../../projet-techniques-de-r%C3%A9cursion/#r%C3%A9cursion-terminale">la récursion terminale</a>. Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre<code class="language-">r</code>) :</p>
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons <a href="../../projet-techniques-de-r%C3%A9cursion/#r%C3%A9cursion-terminale" class="interne">la récursion terminale</a>. Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre <code class="language-">r</code>) :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">puissance_terminale</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> r<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> r
@@ -128,10 +128,42 @@ $$
 
 <span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     <span class="token keyword">rendre</span> puissance_terminale<span class="token punctuation">(</span>x<span class="token punctuation">,</span> n<span class="token punctuation">,</span> x<span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'algorithme précédent est correct.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On commence par démontrer par récurrence que $\text{puissance\_terminale}(x, n, r) = r \cdot x^{n-1}$.</p>
+<ul>
+<li>initialisation : Pour $n = 1$, on a $\text{puissance\_terminale}(x, 1, r) = r = r \cdot x^{1-1}$. Ok</li>
+<li>on suppose la propriété vraie pour $n-1 \geq 1$ et on considère $n$. On a $\text{puissance\_terminale}(x, n, r) = \text{puissance\_terminale}(x, n-1, r\cdot x) = (r\cdot x) \cdot x^{n-2}$ par hypothèse de récurrence ce qui donne bien $\text{puissance\_terminale}(x, n, r) = r \cdot x^{n-1}$ et conclut la preuve.</li>
+</ul>
+<p>Et on conclut aisément puisque $\text{puissance}(x, n) = \text{puissance\_terminale}(x, n, x) = x \cdot x^{n-1} = x^{n}$</p>
+</div>
+</details>     
+</div>
 <p>Ce permet d'écrire la version itérative par un simple jeu de réécriture :</p>
 <p><span id="algorithme-puissance-naif"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    r <span class="token operator">←</span> x</span>
+<span class="highlight-line">    <span class="token punctuation">(</span>r <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> x</span>
 <span class="highlight-line">    <span class="token keyword">tant que</span><span class="token number"> n </span><span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        r <span class="token operator">←</span> r <span class="token operator">*</span> x</span>
 <span class="highlight-line">       <span class="token number"> n </span><span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
@@ -139,7 +171,7 @@ $$
 <p>Comme l'algorithme est issu d'une réécriture d'un algorithme récursif correct, il l'est forcément. Il ne nous reste donc plus qu'à calculer sa complexité.</p>
 <p>Ligne à ligne :</p>
 <ol>
-<li>une affection : $\mathcal{O}(1)$</li>
+<li>une création et une affection : $\mathcal{O}(1)$</li>
 <li>une soustraction et une affection : $\mathcal{O}(1)$</li>
 <li>une boucle de $\mathcal{O}(n)$ itération (<code class="language-">c</code> vaut initialement <code class="language-">n</code> et est décrémentée de $1$ à chaque itération)</li>
 <li>une multiplication et une affection : $\mathcal{O}(1)$</li>
@@ -182,8 +214,8 @@ $$
 <p>On propose l'algorithme itératif suivant pour résoudre le problème :</p>
 <p><span id="algorithme-puissance-indienne"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    r <span class="token operator">←</span> x</span>
-<span class="highlight-line">    c <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token punctuation">(</span>r <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> x</span>
+<span class="highlight-line">    <span class="token punctuation">(</span>c <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">tant que</span> c <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> c mod <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
@@ -191,7 +223,7 @@ $$
 <span class="highlight-line">            c <span class="token operator">←</span> c <span class="token operator">-</span> <span class="token number">1</span></span>
 <span class="highlight-line">        <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">            x <span class="token operator">←</span> x <span class="token operator">*</span> x</span>
-<span class="highlight-line">            c <span class="token operator">←</span> c <span class="token operator">/</span> <span class="token number">2</span></span>
+<span class="highlight-line">            c <span class="token operator">←</span> c <span class="token operator">//</span> <span class="token number">2</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> r</span></code></pre>
 <h3><span id="marche-rapide"></span> Est-ce que ça marche ?</h3>
@@ -219,7 +251,7 @@ $$
 <h3><span id="preuve-rapide"></span> Preuve de l’algorithme</h3>
 <p>On va montrer que l'invariant de boucle suivant fonctionne. En notant <code class="language-">X</code> la valeur initial de <code class="language-">x</code> en entrée de l'algorithme, on a le très élégant invariant suivant :</p>
 <blockquote>
-<p><strong>Invariant de boucle :</strong> §$r \cdot x^c = X^n$</p>
+<p><strong>Invariant de boucle :</strong> $r \cdot x^c = X^n$</p>
 </blockquote>
 <p>Juste avant la première itération de la boucle, $r = x$, $x = X$ et et $c = n-1$ notre invariant est donc vérifié au départ de l'algorithme. On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :</p>
 <ul>
@@ -247,8 +279,8 @@ $$
 <p>On va le démontrer petit à petit, mais commençons par analyser ligne à ligne la complexité.</p>
 <p>En notant $K$ le nombre de fois où l'on est rentré dans la boucle <code class="language-">tant que</code> de la ligne 4 on a une complexité ligne à ligne de :</p>
 <ol>
-<li>une affectation : $\mathcal{O}(1)$</li>
-<li>une affectation : $\mathcal{O}(1)$</li>
+<li>une création puis une affectation : $\mathcal{O}(1)$</li>
+<li>une création puis une affectation : $\mathcal{O}(1)$</li>
 <li>—</li>
 <li>une comparaison en $\mathcal{O}(1)$ et $K$ itérations de boucle</li>
 <li>une opération de division entière et un test : $\mathcal{O}(1)$</li>
@@ -305,7 +337,7 @@ $$
 <p>On a donc que : <strong>le nombre d'itérations où <code class="language-">c</code> est pair est au pire égal à $\log_2(n)$</strong></p>
 <h4>Nombre de fois où l'on rentre dans la boucle</h4>
 <p>Le nombre de fois où l'on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c'est donc au pire égal à deux fois le nombre de fois où compteur est pair, c'est à dire $2 \cdot \log_2(c)$ pour la valeur initiale de compteur.</p>
-<p>Comme <code class="language-">c</code> vaut initialement <code class="language-">n</code>, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(n))$ donc en $\mathcal{O}(\ln(n))$.</p>
+<p>Comme <code class="language-">c</code> vaut initialement <code class="language-">n</code>, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(n))$ donc en $\mathcal{O}(\ln(n))$ (puisque $\log_2(n) = \ln(n)/\ln(2)$).</p>
 <p>Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l'algorithme en $\mathcal{O}(\ln(n))$.</p>
 <p>Cette complexité est très faible ! Comparez par exemple : $2^{16} = 65536$ opérations et $\log_2(65536) = 16$ opérations.</p>
 <p>Cette différence va aller exponentiellement lorsque compteur augmente, par exemple entre $2^{100} = 1267650600228229401496703205376$ et $100$ opérations</p>
@@ -704,7 +736,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité du problème de l'exponentiation est en $\Theta(\log_2 (n))$.</p>
+<p>La complexité du problème de l'exponentiation est en $\Theta(\ln(n))$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
