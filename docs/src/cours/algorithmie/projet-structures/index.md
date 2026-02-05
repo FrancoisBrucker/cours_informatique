@@ -10,6 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD : sous-chaine aver boyer=moore et surtout rabin karp.
 
 ## Tableaux et listes
 

@@ -209,8 +209,9 @@ Notions abordées :
 
 - définition
 - complexité spatiale et temporelle
-- calculs de $\mathcal{O}$
-- complexité d'algorithmes itératifs et récursifs
+- calculs de $\mathcal{O}$ et cas particulier de $\mathcal{O}(1) = \Theta(1) = \Omega(1)$
+- différence et usage de $\Theta$, $\Omega$ et $\mathcal{O}$
+- règles pour calculer la complexité d'algorithmes itératifs et récursifs
 
 {% aller %}
 
@@ -298,6 +299,11 @@ Pour aller plus loin :
 
 > 4h
 
+{% attention %}
+**Pas** de test cette semaine pour que vous puissiez vous concentrer sur le DM.
+{% endattention %}
+
+
 {% aller %}
 
 1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne/){.interne}
@@ -309,7 +315,7 @@ Pour aller plus loin :
 
 > DS 1 
 >
-> mettre des exercices pour s'entraîner.
+> TBD mettre des exercices pour s'entraîner (ie ds des années précédentes corrigés).
 
 
 <!-- TBD

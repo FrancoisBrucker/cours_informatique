@@ -442,10 +442,6 @@ Ainsi :
 
 Nous allons voir dans la suite les complexités des opération de somme et de multiplications pour des algorithmes prenants des tableaux de bits en entrées. Pour éviter les cas particuliers embêtant et qui n'apportent pas grand chose algorithmiquement :
 
-{% attention %}
-On considérera toujours ici des entrées de même taille $n$.
-{% endattention %}
-
 ### Bijection
 
 Commençons par écrire la bijection permettant de passer d'un entier à un tableau de bits et réciproquement,
@@ -591,7 +587,11 @@ Si $n$ est la taille des entrées, la complexité de l'algorithme est clairement
 On va se placer dans le cadre de la soustraction de deux nombres dont le résultat est positif.
 
 {% exercice %}
-Écrivez un algorithme de signature `soustraction(x: [bit], y: [bit]) → [bit]`{.language-} utilisant la soustraction posée. On supposera que $u(x) \geq u(y)$
+Écrivez un algorithme de signature `soustraction(x: [bit], y: [bit]) → [bit]`{.language-} utilisant la soustraction posée. On supposera que :
+
+- $x$ et $y$ sont tous deux de longueur $n$
+- la sortie est de taille $n + 1$
+- $u(x) \geq u(y)$
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -714,6 +714,12 @@ Là encore, cet ajout ne change pas la complexité de l'algorithme.
 
 {% enddetails %}
 
+
+On considérera par la suite que nos algorithmes ont implémenté ces améliorations et que :
+
+- $\text{addition}(x, y) = u^{-1}(u(x) + u(y))$ et on la notera $x + y$
+- $\text{soustraction}(x, y) = u^{-1}(u(x) - u(y))$ si $u(x) \geq u(y)$ et on la notera $x - y$
+
 ### Multiplication
 
 La multiplication de deux tableaux de bits 
@@ -737,6 +743,8 @@ Le problème de la multiplication est intéressant à plus d'un titre :
 #### Puissances de 2
 
 > TBD on remarque que c'est facile de multiplier un [bit] par une puissance de 2 et on fait l'algorithme.
+
+On considérera par la suite que l'on a : $\text{puissance}(n, x) = u^{-1}(2^n \cdot u(y))$ et on la notera $2^n \cdot y$
 
 #### Naive
 
@@ -810,14 +818,17 @@ La complexité de l'algorithme est en $\Theta(n^2)$ avec $n$ la longueur des 2 e
 [optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba)
 {% endlien %}
 
-On va décrire le procédé utilisé par Karatsuba en plusieurs temps. Pour des raisons de clarté, on va supposer que l'on peut écrire :
+On va décrire le procédé utilisé par Karatsuba en plusieurs temps. Pour des raisons de clarté, on va supposer que l'on a des algorithmes optimaux pour écrire :
 
-- des multiplications de $[bit]$ sans soucis de taille : $[x_0, \cdot x_{p-1}] * [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
 - des additions de $[bit]$ sans soucis de taille : $[x_0, \cdot x_{p-1}] + [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
-- des soustractions de $[bit]$ sans soucis de taille : $[x_0, \cdot x_{p-1}] - [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
-- multiplier des $[bit]$ par $2^n$ (ce qui revient à ajouter $n$ zéros devant le tableau): 2^n \cdot $[x_0, \cdot x_{p-1}] = [0, \dots, 0, x_0, \dots x_{p-1}]$
+- des soustractions de $[bit]$ sans soucis de taille (mais on considère toujours que le résultat doit être positif): $[x_0, \cdot x_{p-1}] - [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
+- multiplier des $[bit]$ par $2^n$ : $2^n \cdot $[x_0, \cdot x_{p-1}] = [0, \dots, 0, x_0, \dots x_{p-1}]$
 
-La principale astuce de la multiplication de Karatsuba est de remarquer que :
+On cherche à effectuer de façon efficace la multiplication de $[bit]$ de même taille : $[x_0, \cdot x_{n-1}]  \cdot \cdot [y_0, \cdot y_{n-1}] = [z_0, \dots z_{m-1}]$ (avec $m \leq 2n$)
+
+Il a longtemps été pensé que l'on ne pouvait pas faire mieux que la multiplication naïve, la solution ne va donc pas consister à en optimiser le fonctionnement. L'idée est d'utiliser un principe [que l'on formalisera plus tard](../design-algorithmes/diviser-régner/){.interne} et qui s'appelle _"diviser pour régner"_. Notre but est d'utiliser la récursion pour effectuer des multiplication sur des tableaux de bits plus petit et espérer gagner en complexité.
+
+Ceci est rendu possible car il est facile de reconstituer un tableau de bit à partir de bouts :
 
 <div>
 $$
@@ -825,8 +836,7 @@ $$
 $$
 </div>
 
-
-Ce qui permet d'écrire :
+En utilisant nos algorithmes optimaux, l'équation précédente s'effectue en $\Omega(n)$. On peut alors développer le produit de deux tableaux de bits :
 
 <div>
 $$
@@ -838,6 +848,17 @@ $$
 \end{array}
 $$
 </div>
+
+On remarque que pour multiplier deux nombres de longueur $n$ il suffit de multiplier des nombres de taille $n//2$ et d'utiliser des sommes et des multiplication par des puissances de 2 que l'on sait faire de façon optimale.
+
+> TBD attention à la taille. Faire avec valeur entier + 1 pour que les deux bouts aient la même taille (donner l'algo)
+> TBD écrire l'algo en exercice.
+> TBD équation complexité puis trouver la valeur.
+> TBD flute. montrer que si strictement plus petit que 4 c'est ok.
+> TBD astuce de Karastuba.
+> TBD faire la fin.
+
+La principale astuce de la multiplication de Karatsuba est de remarquer que puisque la multiplication par une puissance de 2 n'est pas une opération compliquée on peut facilement écrire (et calculer) :
 
 Enfin, remarquez que la dernière équation peut aussi s'écrire :
 

@@ -17,14 +17,14 @@ On va étudier deux algorithmes permettant de calculer $a^b$ à partir de deux e
 
 ## <span id="algo-naif"></span> Algorithme naïf
 
-Le calcul _naïf_ de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers **strictement positifs** $x$ et $n$, par l'équation suivante :
+Le calcul _naïf_ de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers **strictement positifs** $x$ et $n \geq 1$, par l'équation suivante :
 
 <div>
 $$
 x^n = \left\{
     \begin{array}{ll}
         x \cdot x^{n-1} & \mbox{si } n > 1 \\
-        x & \mbox{sinon.}
+        x & \mbox{si } n = 1 \\
     \end{array}
 \right.
 $$
@@ -41,7 +41,7 @@ algorithme puissance(x: entier, n: entier) → entier:
     rendre x * puissance(x, n - 1)
 ```
 
-Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons [la récursion terminale](../../projet-techniques-de-récursion/#récursion-terminale). Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre`r`{.language-}) :
+Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. Commençons donc par transformer l'algorithme récursif en un algorithme itératif. Pour cela utilisons [la récursion terminale](../../projet-techniques-de-récursion/#récursion-terminale){.interne}. Commençons par l'écrire (comme on l'a fait pour la factorielle) sous la forme d'un algorithme récursif terminal, à l'aide d'un accumulateur (la paramètre `r`{.language-}) :
 
 ```pseudocode
 fonction puissance_terminale(x: entier, n: entier, r: entier) → entier:
@@ -53,13 +53,26 @@ algorithme puissance(x: entier, n: entier) → entier:
     rendre puissance_terminale(x, n, x)
 ```
 
+{% exercice %}
+Montrez que l'algorithme précédent est correct.
+{% endexercice %}
+{% details "corrigé" %}
+On commence par démontrer par récurrence que $\text{puissance\\_terminale}(x, n, r) = r \cdot x^{n-1}$.
+
+- initialisation : Pour $n = 1$, on a $\text{puissance\\_terminale}(x, 1, r) = r = r \cdot x^{1-1}$. Ok
+- on suppose la propriété vraie pour $n-1 \geq 1$ et on considère $n$. On a $\text{puissance\\_terminale}(x, n, r) = \text{puissance\\_terminale}(x, n-1, r\cdot x) = (r\cdot x) \cdot x^{n-2}$ par hypothèse de récurrence ce qui donne bien $\text{puissance\\_terminale}(x, n, r) = r \cdot x^{n-1}$ et conclut la preuve.
+
+Et on conclut aisément puisque $\text{puissance}(x, n) = \text{puissance\\_terminale}(x, n, x) = x \cdot x^{n-1} = x^{n}$
+
+{% enddetails %}
+
 Ce permet d'écrire la version itérative par un simple jeu de réécriture :
 
 <span id="algorithme-puissance-naif"></span>
 
 ```pseudocode/
 algorithme puissance(x: entier, n: entier) → entier:
-    r ← x
+    (r := entier) ← x
     tant que n > 1:
         r ← r * x
         n ← n - 1
@@ -70,7 +83,7 @@ Comme l'algorithme est issu d'une réécriture d'un algorithme récursif correct
 
 Ligne à ligne :
 
-1. une affection : $\mathcal{O}(1)$
+1. une création et une affection : $\mathcal{O}(1)$
 2. une soustraction et une affection : $\mathcal{O}(1)$
 3. une boucle de $\mathcal{O}(n)$ itération (`c`{.language-} vaut initialement `n`{.language-} et est décrémentée de $1$ à chaque itération)
 4. une multiplication et une affection : $\mathcal{O}(1)$
@@ -121,8 +134,8 @@ On propose l'algorithme itératif suivant pour résoudre le problème :
 
 ```pseudocode/
 algorithme puissance(x: entier, n: entier) → entier:
-    r ← x
-    c ← n - 1
+    (r := entier) ← x
+    (c := entier) ← n - 1
 
     tant que c > 0:
         si c mod 2 == 1:
@@ -130,7 +143,7 @@ algorithme puissance(x: entier, n: entier) → entier:
             c ← c - 1
         sinon:
             x ← x * x
-            c ← c / 2
+            c ← c // 2
 
     rendre r
 ```
@@ -159,7 +172,7 @@ La variable `c`{.language-} diminue strictement à chaque boucle (ou il diminue 
 
 On va montrer que l'invariant de boucle suivant fonctionne. En notant `X`{.language-} la valeur initial de `x`{.language-} en entrée de l'algorithme, on a le très élégant invariant suivant :
 
-> **Invariant de boucle :** §$r \cdot x^c = X^n$
+> **Invariant de boucle :** $r \cdot x^c = X^n$
 
 Juste avant la première itération de la boucle, $r = x$, $x = X$ et et $c = n-1$ notre invariant est donc vérifié au départ de l'algorithme. On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :
 
@@ -186,8 +199,8 @@ On va le démontrer petit à petit, mais commençons par analyser ligne à ligne
 
 En notant $K$ le nombre de fois où l'on est rentré dans la boucle `tant que`{.language-} de la ligne 4 on a une complexité ligne à ligne de :
 
-1. une affectation : $\mathcal{O}(1)$
-2. une affectation : $\mathcal{O}(1)$
+1. une création puis une affectation : $\mathcal{O}(1)$
+2. une création puis une affectation : $\mathcal{O}(1)$
 3. —
 4. une comparaison en $\mathcal{O}(1)$ et $K$ itérations de boucle
 5. une opération de division entière et un test : $\mathcal{O}(1)$
@@ -254,7 +267,7 @@ On a donc que : **le nombre d'itérations où `c`{.language-} est pair est au pi
 
 Le nombre de fois où l'on rentre dans la boucle est égal au nombre de fois où le compteur est pair plus le nombre de fois où le compteur est impair, c'est donc au pire égal à deux fois le nombre de fois où compteur est pair, c'est à dire $2 \cdot \log_2(c)$ pour la valeur initiale de compteur.
 
-Comme `c`{.language-} vaut initialement `n`{.language-}, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(n))$ donc en $\mathcal{O}(\ln(n))$.
+Comme `c`{.language-} vaut initialement `n`{.language-}, le nombre de fois où l'on rentre dans la boucle est de l'ordre de $\mathcal{O}(\log_2(n))$ donc en $\mathcal{O}(\ln(n))$ (puisque $\log_2(n) = \ln(n)/\ln(2)$).
 
 Comme les autres lignes sont en $\mathcal{O}(1)$ on a une complexité de l'algorithme en $\mathcal{O}(\ln(n))$.
 
@@ -471,7 +484,7 @@ L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplicatio
 Ceci nous permet d'écrire :
 
 {% note "**Proposition**" %}
-La complexité du problème de l'exponentiation est en $\Theta(\log_2 (n))$.
+La complexité du problème de l'exponentiation est en $\Theta(\ln(n))$.
 {% endnote %}
 {% details "preuve", "open" %}
 Comme la complexité de l'algorithme de l'exponentiation indienne est en $\mathcal{O}(\ln(n))$, la proposition précédente permet de conclure.

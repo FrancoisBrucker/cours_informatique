@@ -217,10 +217,10 @@ On s'entraîne :
 [Projet : calculs de complexités de problèmes algorithmiques](./projet-complexité-problème){.interne}
 {% endaller %}
 
-On vérifie qu'on sait faire :
+On vérifie qu'on sait faire avec un projet sans corrigé :
 
 {% aller %}
-[exercices problème du doublon](./exercices-problème-doublons){.interne}
+[exercices : problème du doublon](./exercices-problème-doublons){.interne}
 {% endaller %}
 
 ### Complexité en moyenne
