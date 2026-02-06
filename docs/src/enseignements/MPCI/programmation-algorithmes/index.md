@@ -142,7 +142,7 @@ Il est **INDISPENSABLE** que vous ayez en tête ce que vous avez fait en dévelo
 > 2h
 
 {% attention %}
-Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
+Test de 15min **sur feuille** en début de cours sur les bases théoriques d'un algorithme et la preuve d'algorithme.
 {% endattention %}
 
 Notions abordées :
@@ -202,7 +202,7 @@ Pour aller plus loin :
 > 2h
 
 {% attention %}
-Test de 15min **sur ordinateur** en début de cours sur les thèmes de la semaine précédente.
+Test de 15min **sur ordinateur** en début de cours sur l'écriture de projets informatique.
 {% endattention %}
 
 Notions abordées :
@@ -240,7 +240,7 @@ Notions abordées :
 > 2h
 
 {% attention %}
-Test de 15min **sur feuille** en début de cours sur les thèmes de la semaine précédente.
+Test de 15min **sur feuille** en début de cours sur le calcul de complexités d'un algorithme.
 {% endattention %}
 
 Notions abordées :
@@ -297,10 +297,12 @@ Pour aller plus loin :
 > 09/02 au 13/02
 > Algorithmie
 
+#### Mercredi : tris
+
 > 4h
 
 {% attention %}
-**Pas** de test cette semaine pour que vous puissiez vous concentrer sur le DM.
+Test de 15min **sur papier** en début de cours sur la complexité de problèmes informatique.
 {% endattention %}
 
 
@@ -310,6 +312,12 @@ Pour aller plus loin :
 2. [Problème du tri](/cours/algorithmie/problème-tris/){.interne}
 
 {% endaller %}
+
+#### Vendredi : correction du DM
+
+> 2+h
+ 
+Séance facultative. Venez si vous voulez voir la correction du DM et/ou avez des questions d'ordre algorithmique/code.
 
 ### Semaine 6
 

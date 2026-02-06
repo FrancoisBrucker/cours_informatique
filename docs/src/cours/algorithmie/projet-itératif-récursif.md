@@ -87,7 +87,7 @@ Vous utiliserez des invariants de boucle pour le prouver.
 
 ```pseudocode/
 algorithme concaténation(début: [entier], fin: [entier]) → [entier]
-    t := [entier]{longueur: début.longueur + fin.longueur}
+    (t := [entier]) ← [entier]{longueur: début.longueur + fin.longueur}
     (i := entier) ← -1
 
     pour chaque (j := entier) de [0 .. début.longueur[:
@@ -267,7 +267,7 @@ Pour que l'algorithme fonctionne, il faut commencer par connaître la taille du 
 
 ```pseudocode/
 algorithme supprime(T: [entier], v: entier) → [entier]
-    T2 := [entier]{longueur: taille t.longueur - nombre(T, v)}
+    (T2 := [entier]) ← [entier]{longueur: taille t.longueur - nombre(T, v)}
 
     (j := entier) ← 0
     pour chaque (i := entier) de [0, t.longueur[:
@@ -311,7 +311,7 @@ algorithme supprime_rec(t: [entier], v: entier) → [entier]
     si t.longueur == 0:
         rendre t
 
-    t2 := [entier]{longueur: t.longueur - 1}
+    (t2 := [entier]) ← [entier]{longueur: t.longueur - 1}
     pour i de [0, t2.longueur[:
         t2[i] ← t[i + 1]
     
@@ -345,7 +345,7 @@ Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte 
 ```pseudocode/
 algorithme retournement_indice(T: [entier], i: entier) → ∅
     si T.longueur - 1 - i > i:
-        temp ← T[i]
+        (temp := entier) ← T[i]
         T[i] ← T[T.longueur - 1 - i]
         T[T.longueur - 1 - i] ← temp
 
@@ -420,7 +420,7 @@ algorithme M(n: entier) → entier:
     si n > 100:
         rendre n - 10
     sinon:
-        x ← M(n + 11)
+        (x := entier) ← M(n + 11)
         rendre M(x)
 ```
 
@@ -452,7 +452,7 @@ En déduire une version itérative pour résoudre McCarty.
 
 ```pseudocode/
 algorithme M(n: entier) → entier:
-    c ← 1
+    (c := entier) ← 1
 
     tant que c ≠ 0:
         si n > 100:
