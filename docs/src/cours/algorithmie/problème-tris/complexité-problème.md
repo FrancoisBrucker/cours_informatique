@@ -28,11 +28,16 @@ Par exemple, pour un tableau à trois éléments :
 
 Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations d'un tableau où toutes ses valeurs sont deux à deux différentes.
 
-{% attention2 "**À retenir**" %}
+{% note "**Proposition**" %}
 
-Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix.
+Tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix.
 
-{% endattention2 %}
+{% endnote %}
+{% details "preuve", "open" %}
+
+Il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents et une seule de ces permutation est triée.
+
+{% enddetails %}
 
 ## Borne maximum
 

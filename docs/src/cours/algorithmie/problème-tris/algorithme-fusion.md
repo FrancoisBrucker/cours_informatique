@@ -39,11 +39,11 @@ L'algorithme ci-après le fait de façon optimale, en $\mathcal{O}(\vert T1 \ver
 
 ```pseudocode/
 algorithme combiner(T1: [entier], T2: [entier]) → [entier]:
-    i1 ← 0
-    i2 ← 0
-    T ← un tableau de taille T1.longueur + T2.longueur
+    (i1 := entier) ← 0
+    (i2 := entier) ← 0
+    (T := [entier]) ← [entier]{longueur: T1.longueur + T2.longueur}
 
-    pour chaque i de [0 .. T.longueur[:
+    pour chaque (i := entier) de [0 .. T.longueur[:
         si i2 == T2.longueur:
             T[i] ← T1[i1]
             i1 ← i1 + 1
@@ -95,10 +95,11 @@ Montrer que l'algorithme combiner précédent **n'est pas équivalent** à celui
 
 ```pseudocode/
 algorithme combiner_faux(T1: [entier], T2: [entier]) → [entier]:
-    i1 ← 0
-    i2 ← 0
-    T ← un tableau de taille T1.longueur + T2.longueur
-    pour chaque i de [0 .. T.longueur[:
+    (i1 := entier) ← 0
+    (i2 := entier) ← 0
+    (T := [entier]) ← [entier]{longueur: T1.longueur + T2.longueur}
+
+    pour chaque (i := entier) de [0 .. T.longueur[:
         si (i2 == T2.longueur) ou (T1[i1] < T2[i2]):
             T[i] ← T1[i1]
             i1 ← i1 + 1
@@ -125,13 +126,13 @@ algorithme fusion(T: [entier]) → [entier]:
     si T.longueur < 2:
         rendre nouveau tableau contenant T
     sinon:
-        milieu = T.longueur // 2  # division entière
-        T1 ← nouveau tableau contenant T[:milieu]
-        T2 ← nouveau tableau contenant T[milieu:]
+        (milieu := entier) ← T.longueur // 2  # division entière
+        (T1 := [entier]) ← nouveau tableau contenant T[:milieu]
+        (T2 := [entier]) ← nouveau tableau contenant T[milieu:]
 
-        T1_trié ← fusion(T1)
-        T2_trié ← fusion(T2)
-        T_trié ← combiner(T1_trié, T2_trié)
+        (T1_trié := [entier]) ← fusion(T1)
+        (T2_trié := [entier]) ← fusion(T2)
+        (T_trié := [entier]) ← combiner(T1_trié, T2_trié)
 
         rendre T_trié
 

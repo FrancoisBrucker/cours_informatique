@@ -35,6 +35,7 @@ Ce qui se traduit en pseudo-code :
 
 ```pseudocode
 algorithme insertion(T: [entier])  → ∅:
+    i, j := entier
     pour chaque i de [1 .. T.longueur[:  # boucle principale
         j ← i
         tant que (j > 0) et (T[j] < T[j - 1]):  # boucle intérieure
@@ -202,6 +203,8 @@ Une implémentation courante du tri par insertion est la suivante :
 
 ```pseudocode
 algorithme insertion(T: [entier])  → ∅:
+    i, j, courant := entier
+    
     pour chaque i de [1 .. T.longueur[:
         courant ← T[i]
         j ← i
