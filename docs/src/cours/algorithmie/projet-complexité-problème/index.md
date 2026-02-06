@@ -432,7 +432,7 @@ Une suite $(a_i)_{0\leq i}$ est dite _ultimement périodique_ si il existe $\lam
 
 - Nom : Point fixe
 - Entrée : une suite $(a_i)_{0\leq i}$ ultimement périodique
-- Sortie : le couple $(\lambda, \mu)$
+- Sortie : $\mu$
 
 {% endnote2 %}
 
@@ -449,85 +449,162 @@ Une suite  ultimement périodique ressemble à un $\rho$ (rho) :
 
 ![rho](rho.png)
 
-{% faire %}
+{% exercice %}
 
 Donnez les $\lambda$ et $\mu$ pour la suite représentée par la figure précédente.
 
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
 
-{% faire %}
+- $\lambda = 7$
+- $\mu = 3$
+  
+{% enddetails %}
+
+{% exercice %}
 
 Montrez que si $(a_i)_{i\geq 0}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.
 
-{% endfaire %}
-{% exercice %}
-Montrez que le problème de la recherche de point fixe de $f$ est en $\Omega(\lambda + \mu)$.
 {% endexercice %}
+{% details "corrigé" %}
+
+De pars la définition la suite a $\lambda + \mu -1 $ valeurs distinctes de $a_0$ à $a_{ \mu + \lambda -1}. La somme $\lambda + \mu$ est donc unique. De plus, tous les $m$ tels que $a_{ \mu + m} = a_{ \mu }$, sont multiples d'une valeur qui est l'unique $\lambda$ possible (pour garantir l'unicité des $\lambda + \mu -1 $ premières valeurs de la suite).
+
+{% enddetails %}
+
+{% exercice %}
+Montrez que le problème de la recherche de point fixe de $(a_i)_{i\geq 0}$ est en $\Omega(\lambda + \mu)$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut forcément parcourir les $\lambda + \mu -1$ premiers éléments de la suite pour garantir qu'ils sont tous différents et s'assurer que $a_{ \mu + \lambda} = a_{ \mu }$
+
+{% enddetails %}
 
 ### Algorithme naïf
 
-> TBD on modélise la suite par une fonction.
-> TBD en O(lambda + mu) mais O(n) en mémoire. pas possible en pratique puisque n >>1
-> TBD en O(n) mais pas possible en pratique puisque n >>1
-> peut-on faire avec moins de mémoire ? Le problème est de savoir si un nombre particulier revient. Donc on peut stocker ceux qu'on a et verifier si on ne l'a pas deja vu : O((lambda + mu)^2) et O(lambda + mu) en mémoire.
-> TBD classique trade off : mémoire/calcul.
-> souvent pas d'autre choix, mais ici c'est possible de ruser !
+Résoudre le problème du point fixe va nécessiter un de travail. Commençons par étudier cet algorithme :
+
+```pseudocode
+algorithme point_fixe_naïf(a: (int) → int) → int
+    (i := entier) ← 0
+    (j := entier) ← 0
+
+    tant que Vrai:
+        i ← i + 1
+        j ← 0
+        tant que j < i:
+            si a(i) == a(j):
+                rendre j
+```
+
+Remarquez que le paramètre de l'algorithme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/algorithmes-fonctions/#type).
+
+
+{% exercice %}
+Montrer que l'algorithme `point_fixe_naïf`{.language-} résout le problème du point fixe.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+Quelle est sa complexité ?
+{% endexercice %}
+{% details "corrigé" %}
+
+$\mathcal{O}((\lambda + \mu)^2)$ et $\mathcal{O}(1)$ en mémoire. 
+
+{% enddetails %}
 
 ### Algorithme optimal
 
-Soit $(a_i)_{i\geq 0}$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.
+{% exercice %}
 
-{% faire  "**III.2.1**" %}
-Montrez qu'il existe $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
-{% endfaire %}
+Soit $(a_i)$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$. Montrez qu'il existe $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
 
-> TBD ici avec fonctions.
+{% endexercice %}
+{% details "corrigé" %}
 
-{% faire  "**III.2.2**" %}
-Montrez que programme suivant est un algorithme qui rend le $a_m$ de la question précédente.
+> TBD
+
+{% enddetails %}
+
+L'exercice précédent est la pierre angulaire de l'algorithme optimal ! Cet algorithme s'appelle [l'algorithme du lièvre et de la tortue](https://fr.wikipedia.org/wiki/Algorithme_du_li%C3%A8vre_et_de_la_tortue) et est décrit ci-après :
 
 ```pseudocode
-programme lièvre_tortue(f: (entier) → entier,
-                        x: entier
-                       ) → entier:
-    (tortue := entier) ← f(x)
-    (lièvre := entier) ← f(f(x))
+programme lièvre_tortue(a: (entier) → entier) → entier:
 
-    tant que tortue ≠ lièvre:
-        tortue ← f(tortue)
-        lièvre ← f(f(lièvre))
+    (tortue := entier) ← 0
+    (lièvre := entier) ← 2
+
+    tant que a(tortue) ≠ a(lièvre):
+        tortue ← tortue + 1
+        lièvre ← lièvre + 2
     
     rendre tortue
 ```
-{% endfaire %}
 
-{% info %}
-Vous aurez remarqué qu'un des paramètres du programme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/algorithmes-fonctions/#type).
-{% endinfo %}
+{% exercice %}
+Montrez que l'algorithme précédent rend un indice $m$ tel que :
 
-{% faire  "**III.2.3**" %}
-Montrez que la complexité de l'algorithme `lièvre_tortue`{.language-} est en $\mathcal{O}(n)$ si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ ?
-{% endfaire %}
+- $\mu \leq m \leq \lambda +\mu$ 
+- $a_{m} = a_{2m}$
 
+{% endexercice %}
+{% details "corrigé" %}
 
-### III.3
+> TBD
 
-Nous allons chercher ici $a_\mu$ qui est le début du cycle. Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
+{% enddetails %}
 
-{% faire  "**III.3.1**" %}
-Montrez que $m$ est un multiple de $\lambda$.
-{% endfaire %}
-{% faire  "**III.3.2**" %}
+Et il le fait vite !
+
+{% exercice %}
+Montrez que la complexité de l'algorithme `lièvre_tortue`{.language-} est en $\mathcal{O}(\lambda + \mu)$
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+On peut maintenant s'atteler à trouver $\lambda$ et $\mu$. 
+
+{% exercice %}
+Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$. Montrez que $m$ est un multiple de $\lambda$.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+{% exercice %}
 Utilisez la question précédente et la nature de $m$ pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$.
 
-{% endfaire %}
-{% faire  "**III.3.3**" %}
-Déduire de ce qui précède un algorithme de complexité temporelle $\mathcal{O}(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$ pour calculer $a_\mu$.
+{% endexercice %}
+{% details "corrigé" %}
 
-{% endfaire %}
+> TBD
+
+{% enddetails %}
+
+<div id="point-fixe-mu"></div>
+
+{% exercice %}
+Déduire de ce qui précède un algorithme de signature `mu(a: (entier) → entier) → entier`{.language-} qui résout le problème du point fixe avec une complexité temporelle $\Theta(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$.
+
+{% endexercice %}
 {% info %}
 Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?
 {% endinfo %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
 
 ## <span id="arithmétique"></span>Algorithmes arithmétique
 
@@ -625,7 +702,7 @@ Les deux boucles ayant $\log_2(n)$ itération et le reste des instructions étan
 
 Vous allez implémenter l'algorithme de la somme posée ([on y a déjà réfléchit en base 10](../exercices-itératif-récursif/#somme){.interne}) pour des nombres codées sous leur forme binaire.
 
-Sur deux entiers non signés
+Sur deux entiers :
 
 ```
   100101
@@ -861,7 +938,7 @@ Le problème de la multiplication est intéressant à plus d'un titre :
 Commençons par étudier un cas particulier de la multiplication, celui où un des deux no,bre est une puissance de 2.
 
 {% exercice %}
-Montrez que multiplier un no,bre par une puissance de 2 revient à ajouter des 0 à gauche de sa représentation binaire.
+Montrez que multiplier un nombre par une puissance de 2 revient à ajouter des 0 à gauche de sa représentation binaire.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -878,8 +955,6 @@ En déduire un algorithme de signature `puissance(n: entier, x: [bit]) → [bit]
 > TBD algo
 
 {% enddetails %}
-
-> TBD on remarque que c'est facile de multiplier un [bit] par une puissance de 2 et on fait l'algorithme.
 
 On considérera par la suite que l'on a : $\text{puissance}(n, x) = u^{-1}(2^n \cdot u(y))$ et on la notera $2^n \cdot y$
 
@@ -957,11 +1032,11 @@ La complexité de l'algorithme est en $\Theta(n^2)$ avec $n$ la longueur des 2 e
 
 On va décrire le procédé utilisé par Karatsuba en plusieurs temps. Pour des raisons de clarté, on va supposer que l'on a des algorithmes optimaux pour écrire :
 
-- des additions de $[bit]$ sans soucis de taille : $[x_0, \cdot x_{p-1}] + [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
-- des soustractions de $[bit]$ sans soucis de taille (mais on considère toujours que le résultat doit être positif): $[x_0, \cdot x_{p-1}] - [y_0, \cdot y_{q-1}] = [z_0, \dots z_{r-1}]$
-- multiplier des $[bit]$ par $2^n$ : $2^n \cdot $[x_0, \cdot x_{p-1}] = [0, \dots, 0, x_0, \dots x_{p-1}]$
+- des additions de $[bit]$ sans soucis de taille : $[x_0, \dots, x_{p-1}] + [y_0, \dots, y_{q-1}] = [z_0, \dots z_{r-1}]$
+- des soustractions de $[bit]$ sans soucis de taille (mais on considère toujours que le résultat doit être positif): $[x_0, \cdot x_{p-1}] - [y_0, \dots, y_{q-1}] = [z_0, \dots, z_{r-1}]$
+- multiplier des $[bit]$ par $2^n$ : $2^n \cdot [x_0, \dots, x_{p-1}] = [0, \dots, 0, x_0, \dots, x_{p-1}]$
 
-On cherche à effectuer de façon efficace la multiplication de $[bit]$ de même taille : $[x_0, \cdot x_{n-1}]  \cdot \cdot [y_0, \cdot y_{n-1}] = [z_0, \dots z_{m-1}]$ (avec $m \leq 2n$)
+On cherche à effectuer de façon efficace la multiplication de $[bit]$ de même taille : $[x_0, \dots, x_{n-1}]  \cdot \cdot [y_0, \cdot y_{n-1}] = [z_0, \dots, z_{m-1}]$ (avec $m \leq 2n$)
 
 Il a longtemps été pensé que l'on ne pouvait pas faire mieux que la multiplication naïve, la solution ne va donc pas consister à en optimiser le fonctionnement. L'idée est d'utiliser un principe [que l'on formalisera plus tard](../design-algorithmes/diviser-régner/){.interne} et qui s'appelle _"diviser pour régner"_. Notre but est d'utiliser la récursion pour effectuer des multiplication sur des tableaux de bits plus petit et espérer gagner en complexité.
 
@@ -978,7 +1053,7 @@ En utilisant nos algorithmes optimaux, l'équation précédente s'effectue en $\
 <div>
 $$
 \begin{array}{lcl}
-[x_0, \dots, x_{n-1}] \cdot [y_0, \cdot y_{n-1}] &=& ([x_0, \dots, x_{n // 2}] + 2^{n // 2} \cdot [x_{n // 2}, \dots, x_{n-1}]) \cdot ([y_0, \dots, y_{n // 2}] + 2^{n // 2} \cdot [y_{n // 2}, \dots, y_{n-1}])\\
+[x_0, \dots, x_{n-1}] \cdot [y_0, \dots, y_{n-1}] &=& ([x_0, \dots, x_{n // 2}] + 2^{n // 2} \cdot [x_{n // 2}, \dots, x_{n-1}]) \cdot ([y_0, \dots, y_{n // 2}] + 2^{n // 2} \cdot [y_{n // 2}, \dots, y_{n-1}])\\
 &=& 2^n \cdot [x_{n // 2}, \dots, x_{n-1}] \cdot [y_{n // 2}, \dots, y_{n-1}]  \\
 && + 2^{n // 2} \cdot ([x_0, \dots, x_{n // 2}] \cdot [y_{n // 2}, \dots, y_{n-1}] + [y_0, \dots, y_{n // 2}] \cdot [x_{n // 2}, \dots, x_{n-1}]) \\
 && + [x_0, \dots, x_{n // 2}] \cdot [y_0, \dots, y_{n // 2}]\\
@@ -988,39 +1063,158 @@ $$
 
 On remarque que pour multiplier deux nombres de longueur $n$ il suffit de multiplier des nombres de taille $n//2$ et d'utiliser des sommes et des multiplication par des puissances de 2 que l'on sait faire de façon optimale.
 
-> TBD attention à la taille. Faire avec valeur entier + 1 pour que les deux bouts aient la même taille (donner l'algo)
-> TBD écrire l'algo en exercice.
-> TBD équation complexité puis trouver la valeur.
-> TBD flute. montrer que si strictement plus petit que 4 c'est ok.
-> TBD astuce de Karastuba.
-> TBD faire la fin.
+Pour transformer cette égalité en pseudocode il faut faire un peu attention à la taille de nos tableaux. Si leurs tailles ne sont pas paires les tableaux $[x_0, \dots, x_{n // 2 -1}]$ et $[x_{n // 2}, \dots, x_{n -1}]$ n'ont pas la même taille et cela brise la condition d'application de notre algorithme (les deux entrées doivent être de même taille).
 
-La principale astuce de la multiplication de Karatsuba est de remarquer que puisque la multiplication par une puissance de 2 n'est pas une opération compliquée on peut facilement écrire (et calculer) :
+{% exercice %}
+Montrez que l'astuce suivante permet de séparer un tableau $x$ en 2 sous-tableaux de même taille quelque soit sa longueur $n$ :
 
-Enfin, remarquez que la dernière équation peut aussi s'écrire :
+```pseudocode
+(x := entier) ← x.longueur
 
-<div>
-$$
-\begin{array}{lcl}
-[x_0, \dots, x_{n-1}] \cdot [y_0, \cdot y_{n-1}] &=& 2^n \cdot [x_{n // 2}, \dots, x_{n-1}] \cdot [y_{n // 2}, \dots, y_{n-1}]  \\
-&& + 2^{n // 2} \cdot ([x_0, \dots, x_{n // 2}] + [x_{n // 2}, \dots, x_{n-1}]) \cdot ([y_0, \dots, y_{n // 2}] + [y_{n // 2}, \dots, y_{n-1}]) \\
-&& - 2^{n // 2} \cdot ([x_{n // 2}, \dots, x_{n -1}] \cdot [y_{n //2}, \dots, y_{n -1}] + [x_0, \dots, x_{n // 2}] \cdot [y_{0}, \dots, y_{n // 2}]) \\
-\end{array}
-$$
-</div>
+(x1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+x1[-1] ← 0
+x1[: n // 2] ← x[: n // 2]
+(x2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+x2[n // 2 :] ← x[n // 2 :]
 
-Ce qui permet d'écrire l'algorithme :
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+On peut maintenant écrire le pseudo-code associé à notre équation :
+
+{% exercice %}
+Écrire l'algorithme permettant de multiplier récursivement deux `[bit]`{.language-} de même longueur en utilisant l'équation précédente. 
+
+{% endexercice %}
+{% details "corrigé" %}
 
 ```pseudocode
 algorithme Karatsuba(x: [bit], y: [bit]) → [bit]:  # x et y de même longueur
     (n := entier) ← x.longueur
 
     # astuce pour garantir une même taille aux tableaux si la longueur est impaire
-    (x1 := [bit]) ← u_moins_un(n // 2 + 1, x[: n // 2])
-    (x2 := [bit]) ← u_moins_un(n // 2 + 1, x[n // 2 :])
+    (x1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    x1[-1] ← 0
+    x1[: n // 2] ← x[: n // 2]
+    (x2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    x2[n // 2 :] ← x[n // 2 :]
 
-    (y1 := [bit]) ← u_moins_un(n // 2 + 1, y[: n // 2])
-    (y2 := [bit]) ← u_moins_un(n // 2 + 1, y[n // 2 :])
+    (y1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    y1[-1] ← 0
+    y1[: n // 2] ← y[: n // 2]
+    (y2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    y2[n // 2 :] ← y[n // 2 :]
+
+    (x2y2 := [bit]) ← Karatsuba(x2, y2)
+    (x1y1 := [bit]) ← Karatsuba(x1, y1)
+
+    (x1y2 := [bit]) ← Karatsuba(x1, y2)
+    (x2y1 := [bit]) ← Karatsuba(x2, y1)
+
+    résultat := [bit]
+
+    résultat ← puissance(n, x2y2)
+    résultat ← somme(résultat, puissance(n // 2, somme(x1y2, x2y1)))
+    résultat ← somme(résultat, x1y1)
+```
+
+{% enddetails %}
+{% exercice %}
+Montrer que la complexité de l'algorithme précédent respecte l'équation de récurrence :
+
+<div>
+$$
+C(n) = 4 \cdot C(n / 2) + \mathcal{O}(n)
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+Montrez que la complexité $C(n)$ de l'algorithme avec $n$ la longueur des tableaux en entrée vaut :
+
+<div>
+$$
+C(n) = (4^{K} + \sum_{0\leq i \leq K}4^i) \cdot \mathcal{O}(1)
+$$
+</div>
+
+Avec $K = \log_2(n)$.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire que :
+<div>
+$$
+C(n) = \mathcal{O}(4^{\log_2(n)})
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire que sa complexité est en $C(n) = n^2$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+Flûte ! La complexité n'est pas meilleure que l'algorithme naïf. Tout n'est cependant pas perdu. Si on arrive à diminuer le nombre de récursions, donc le no,bre de multiplications, notre algorithme va être meilleur. Et c'est là que Karatsuba entre en scène, il a en effet remarqué que :
+
+<div>
+$$
+\begin{array}{lcl}
+[x_0, \dots, x_{n-1}] \cdot [y_0, \dots, y_{n-1}] &=& 2^n \cdot [x_{n // 2}, \dots, x_{n-1}] \cdot [y_{n // 2}, \dots, y_{n-1}]  \\
+&& + 2^{n // 2} \cdot ([x_0, \dots, x_{n // 2}] + [x_{n // 2}, \dots, x_{n-1}]) \cdot ([y_0, \dots, y_{n // 2}] + [y_{n // 2}, \dots, y_{n-1}]) \\
+&& - 2^{n // 2} \cdot ([x_{n // 2}, \dots, x_{n -1}] \cdot [y_{n //2}, \dots, y_{n -1}] + [x_0, \dots, x_{n // 2}] \cdot [y_{0}, \dots, y_{n // 2}]) \\
+\end{array}
+$$
+</div>
+
+On a plus besoin que de 3 multiplications ! Adaptons tout de suite notre algorithme :
+
+{% exercice %}
+Modifiez votre algorithme de Karatsuba pour qu'il intègre l'astuce précédente.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme Karatsuba(x: [bit], y: [bit]) → [bit]:  # x et y de même longueur
+    (n := entier) ← x.longueur
+
+    # astuce pour garantir une même taille aux tableaux si la longueur est impaire
+    (x1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    x1[-1] ← 0
+    x1[: n // 2] ← x[: n // 2]
+    (x2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    x2[n // 2 :] ← x[n // 2 :]
+
+    (y1 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    y1[-1] ← 0
+    y1[: n // 2] ← y[: n // 2]
+    (y2 := [bit]) ← [bit]{longueur: n // 2 + (n mod 1)}
+    y2[n // 2 :] ← y[n // 2 :]
 
     (x2y2 := [bit]) ← Karatsuba(x2, y2)
     (x1y1 := [bit]) ← Karatsuba(x1, y1)
@@ -1036,7 +1230,7 @@ algorithme Karatsuba(x: [bit], y: [bit]) → [bit]:  # x et y de même longueur
     résultat ← soustraction(résultat, somme(x2y2, x1y1))
 ```
 
-
+{% enddetails %}
 {% exercice %}
 Montrez que la complexité $C(n)$ de l'algorithme avec $n$ la longueur des tableaux en entrée suit l'équation de récursion :
 
@@ -1050,25 +1244,6 @@ $$
 {% details "corrigé" %}
 
 Il y a 3 appels à l'algorithme avec des tableaux de tailles divisées par deux et le reste des algorithmes appelés et des opérations est en $\mathcal{O}(n)$
-{% enddetails %}
-
-Cette équation se résout :
-
-{% exercice %}
-Montrez que la complexité $C(n)$ de l'algorithme avec $n$ la longueur des tableaux en entrée vaut :
-
-<div>
-$$
-C(n) = (3^{K} + \sum_{0\leq i \leq K}3^i) \cdot \mathcal{O}(1)
-$$
-</div>
-
-Avec $K = \log_2(n)$.
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
-
 {% enddetails %}
 {% exercice %}
 En déduire que :
@@ -1085,10 +1260,10 @@ $$
 
 {% enddetails %}
 
-À vous pour la conclusion :
+Cette formule n'est pas très jolie. Transformons la en quelque chose d'agréable pour conclure.
 
 {% exercice %}
-Montrez que $n^2 = 4^{\log_2(n)}$
+Montrez que $3^{\log_2(n)} = n^{log_2(3)}$
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -1096,14 +1271,16 @@ Montrez que $n^2 = 4^{\log_2(n)}$
 > TBD
 
 {% enddetails %}
-
+{% info %}
+C'est cette astuce qui permet d'avoir des complexité avec des nombres réels en exposant.
+{% endinfo %}
 {% exercice %}
-Conclusion pour l'algorithme de Karatsuba ?
+En déduire que la complexité de l'algorithme de Karatsuba est en $\mathcal{O}(n^{1.585})$. Conclusion par rapport à l'algorithme naïf ?
 
 {% endexercice %}
 {% details "corrigé" %}
 
-Comme $3^{\log_2(n)} < 4^{\log_2(n)}$, l'algorithme de Karatsuba est bien de complexité strictement plus petite que l'algorithme naïf de multiplication.
+Comme $\log_2(3) \simeq 1.58$, l'algorithme de Karatsuba est de complexité $\mathcal{O}(n^{1.59})$,  strictement plus petite que l'algorithme naïf de multiplication en $\mathcal{O}(n^{2})$.
 
 {% enddetails %}
 
@@ -1113,7 +1290,9 @@ Vous le voyez, trouver mieux que l'algorithme naïf n'a pas été simple ! Mais 
 
 > TBD Strassen nlog(n) conjecture. et de l'optimal <https://fr.wikipedia.org/wiki/Algorithme_de_multiplication_d%27entiers> et <https://math.univ-lyon1.fr/~roblot/resources/ens_partie_2.pdf>
 
-> TBF <https://www.youtube.com/watch?v=qKcwuRK9n6U> et <https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/>
+> TBD <https://www.youtube.com/watch?v=qKcwuRK9n6U> et <https://towardsdatascience.com/how-to-perform-fast-multiplications-in-science-using-the-fft-b751fafc2bac/>
+>
+> FFT : <https://informatique.ens-lyon.fr/concours-info/2014/multiplication.pdf>
 
 ### Conclusion
 

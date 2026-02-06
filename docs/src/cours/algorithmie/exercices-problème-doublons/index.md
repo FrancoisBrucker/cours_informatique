@@ -259,9 +259,6 @@ Réfléchissez-y un instant avant de continuer. Pensez-vous que ce soit possible
 
 Nous allons montrer que notre problème est équivalent à celui de [la recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe){.interne} que nous avons déjà étudié.
 
-> TBD réorganiser par rapport aux projet. Mettre la partie fonction et suite en regard.
-> TBD dire que le choix de a0 va influencer le temps prit par l'algorithme de résolution mais que in fine quelque soit le départ ça va fonctionner
-
 {% note2 "**Problème algorithmique**" %}
 
 - Nom : Point fixe
@@ -272,30 +269,21 @@ Nous allons montrer que notre problème est équivalent à celui de [la recherch
 
 {% endnote2 %}
 
-### III.1 Existence
+Commençons par rappeler ce qu'est une suite ultimement périodique :
+
+{% note2 "**Définition**" %}
 
 Une suite $(a_i)_{0\leq i}$ est dite _ultimement périodique_ si il existe $\lambda$ et $\mu$ tels que :
 
 - les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes
 - $a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$
 
-Une suite  ultimement périodique ressemble à un $\rho$ (rho) :
+{% endnote2 %}
 
-![rho](rho.png)
 
-{% faire "**III.1.1**" %}
+Puis associons en une à $f$ :
 
-Donnez les $\lambda$ et $\mu$ pour la suite représentée par la figure précédente.
-
-{% endfaire %}
-
-{% faire  "**III.1.2**" %}
-
-Montrez que si $(a_i)_{i\geq 0}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.
-
-{% endfaire %}
-
-{% faire  "**III.1.3**" %}
+{% faire  "**III.1.1**" %}
 
 Montrez que si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ et $x \in [\\![ 1, n]\\!]$ alors la suite $(a_i)_{0\leq i}$ définie telle que :
 
@@ -305,23 +293,22 @@ Montrez que si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ et $x \in [\\![ 1, n]\\!
 est ultimement périodique.
 
 {% endfaire %}
-{% faire  "**III.1.4**" %}
-Donnez une fonction $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ telle que la suite ultimement périodique associée (comme en III.1.3) avec $a_0 = 1$ a le même $\rho$ que la figure.
+{% faire  "**III.1.2**" %}
+Soit $f$ la fonction telle que $f(i) \coloneqq T[i]$ avec $T = [x, 1, 6, 2, 3, 4, 5]$. Donnez la suite associée lorsque $a_0 = T[0] = x$ pour $x$ allant de 1 à 6.
 
 {% endfaire %}
 
 
 ### III.2
 
-Soit $(a_i)_{i\geq 0}$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.
+{% exercice  "**III.2.1**" %}
+Adaptez l'algorithme du lièvre et de la tortue des suites ultimement périodiaque pour nos fonctions. Sa signature doit être `lièvre_tortue(f: (entier) → entier, x: entier) → entier`{.language-} avec :
 
-{% faire  "**III.2.1**" %}
-Montrez qu'il existe $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
-{% endfaire %}
+- `f`{.language-} la fonction
+- `x`{.language-} l'entier tel que $a_0 = f(x)$
 
-{% faire  "**III.2.2**" %}
-Montrez que programme suivant est un algorithme qui rend le $a_m$ de la question précédente.
-
+{% endexercice %}
+{% details "corrigé" %}
 ```pseudocode
 programme lièvre_tortue(f: (entier) → entier,
                         x: entier
@@ -335,41 +322,21 @@ programme lièvre_tortue(f: (entier) → entier,
     
     rendre tortue
 ```
-{% endfaire %}
 
+{% enddetails %}
 {% info %}
 Vous aurez remarqué qu'un des paramètres du programme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/algorithmes-fonctions/#type).
 {% endinfo %}
 
-{% faire  "**III.2.3**" %}
+{% faire  "**III.2.2**" %}
 Montrez que la complexité de l'algorithme `lièvre_tortue`{.language-} est en $\mathcal{O}(n)$ si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ ?
 {% endfaire %}
 
-
 ### III.3
-
-Nous allons chercher ici $a_\mu$ qui est le début du cycle. Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
-
-{% faire  "**III.3.1**" %}
-Montrez que $m$ est un multiple de $\lambda$.
-{% endfaire %}
-{% faire  "**III.3.2**" %}
-Utilisez la question précédente et la nature de $m$ pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$.
-
-{% endfaire %}
-{% faire  "**III.3.3**" %}
-Déduire de ce qui précède un algorithme de complexité temporelle $\mathcal{O}(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$ pour calculer $a_\mu$.
-
-{% endfaire %}
-{% info %}
-Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?
-{% endinfo %}
-
-### III.4
 
 Nous allons coder cette partie. Pour cela, créez deux fichiers, `point_fixe.py`{.language-} et `test_point_fixe.py`{.language-}, dans lesquels vous créerez les fonctions demandées.
 
-{% faire  "**III.4.1**" %}
+{% faire  "**III.3.1**" %}
 Codez l'algorithme de la question III.2.2. Cet algorithme devra être de signature :
 
 ```pseudocode
@@ -382,9 +349,9 @@ Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et compos�
 - $x = T[0]$
 
 {% endfaire %}
-{% faire  "**III.4.2**" %}
+{% faire  "**III.3.2**" %}
 
-Codez l'algorithme de la question IV.3.3. Cet algorithme devra être de signature :
+Codez l'algorithme `mu` de l'exercice [recherche de points fixe d'une suite ultimement périodique](..//projet-complexité-problème/#point-fixe-mu){.interne} pour nos fonctions. Cet algorithme devra être de signature :
 
 ```pseudocode
 mu(T: [entier]) -> entier
@@ -397,7 +364,7 @@ Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et compos�
 
 {% endfaire %}
 
-{% faire  "**III.4.3**" %}
+{% faire  "**III.3.2**" %}
 
 Dans un nouveau programme principal `main_III.py`{.fichier}, demandez à un utilisateur de rentrer une taille $n$ de tableau. Le programme devra :
 

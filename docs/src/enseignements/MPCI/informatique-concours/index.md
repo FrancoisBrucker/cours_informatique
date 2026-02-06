@@ -22,6 +22,11 @@ Pas forcément un concours que vous passez, mais peut valoir le coup de regarder
 <https://www.concours-commun-inp.fr/fr/epreuves/les-epreuves-orales.html>
 
 ## QCM GEI
+{% lien %}
+<https://www.geiuniv.com/wp-content/uploads/2025/11/Reglement-GEI-UNIV-2026.pdf>
+{% endlien %}
+
+En page 5 du lien ci-dessus vous aurez les écoles qui prennent en compte l'informatique dans leurs QCM. C'est à dire presque toutes.
 
 ### Remarques générales
 
