@@ -80,7 +80,7 @@ Ce qu'on peut déjà dire de notre problème :
 
 ```pseudocode/
 algorithme recherche(T: [entier], x: entier) → booléen:
-    pour chaque e de T:
+    pour chaque (e := entier) de T:
         si e == x:
             rendre Vrai
     rendre Faux
@@ -178,18 +178,19 @@ Ce principe donne l'algorithme suivant :
 
 ```pseudocode
 algorithme recherche_dichotomique(T: [entier], x: entier) → booléen:
-  a ← 0
-  b ← t.longueur - 1
-  si b > a:
-  tant que a ≤ b:
-    m ← (a + b) // 2  # division entière
+  (a := entier) ← 0
+  (b := entier) ← t.longueur - 1
+  m := entier
 
-    si (t[m] == v):
-        rendre Vrai  # m est l'indice
-    si (t[m] < v):
-        a ← m + 1
-    si (t[m] > v):
-        b ← m - 1
+  tant que a ≤ b:
+      m ← (a + b) // 2  # division entière
+
+      si (t[m] == x):
+          rendre Vrai  # m est l'indice
+      si (t[m] < x):
+          a ← m + 1
+      si (t[m] > x):
+          b ← m - 1
 
   rendre Faux
 
@@ -318,6 +319,7 @@ La complexité du problème de la _"recherche ordonnée"_ est en $\Theta(\ln(n))
 À vous :
 
 <span id="problème-max-tableau-complexité"></span>
+
 {% exercice %}
 Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'entiers](../#problème-max-tableau){.interne} ordonné est en $\Theta(1)$
 {% endexercice %}
@@ -325,5 +327,6 @@ Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'
 
 Il suffit de toujours prendre le dernier élément qui est forcément le plus grand si le tableau est trié.
 
+À la différence de la recherche ordonnée où l'élément peut-être n'importe où dans le tableau ($n$ cas à distinguer), ici on sait où il est : il n'y a aucun cas à distinguer.
 {% enddetails %}
 

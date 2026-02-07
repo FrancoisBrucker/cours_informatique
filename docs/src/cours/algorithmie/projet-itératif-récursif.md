@@ -64,7 +64,7 @@ La correction se fait par récurrence sur `n`{.language-} allant de `n = 0`{.lan
 
 1. initialisation : pour `n = 0`{.language-}, le résultat est clair.
 2. hypothèse de récurrence : on suppose que l'algorithme fonctionne pour `n - 1`{.language-}
-3. preuve pour `n - 1`{.language-}. Si l'algorithme fonctionne pour `n - 1`{.language-}, `x`{.language-} contient l'indice max des indices allant de 0 à `n - 1`{.language-} et on rend `x` si `T[x] > T[n]` et `n` sinon : on rend bien l'indice de la valeur maximale du tableau.
+3. preuve pour `n - 1`{.language-}. Si l'algorithme fonctionne pour `n - 1`{.language-}, `x`{.language-} contient l'indice max des indices allant de 0 à `n - 1`{.language-} et on rend `x`{.language-} si `T[x] > T[n]`{.language-} et `n`{.language-} sinon : on rend bien l'indice de la valeur maximale du tableau.
 
 {% enddetails %}
 
