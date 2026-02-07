@@ -178,7 +178,7 @@ $$</p>
 <li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche" class="interne">on a déjà calculé la complexité</a>) résout le problème</li>
 </ul>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>e <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de T<span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
 <span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
@@ -302,18 +302,19 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <p>Ce principe donne l'algorithme suivant :</p>
 <p><span id="algorithme-dichotomie"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-  a <span class="token operator">←</span> <span class="token number">0</span>
-  b <span class="token operator">←</span> t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
-  <span class="token keyword">si</span> b <span class="token operator">></span> a<span class="token punctuation">:</span>
-  <span class="token keyword">tant que</span> a <span class="token operator">≤</span> b<span class="token punctuation">:</span>
-    m <span class="token operator">←</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>  <span class="token comment"># division entière</span>
+  <span class="token punctuation">(</span>a <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+  <span class="token punctuation">(</span>b <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+  m <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">==</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>  <span class="token comment"># m est l'indice</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">&lt;</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        a <span class="token operator">←</span> m <span class="token operator">+</span> <span class="token number">1</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">></span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        b <span class="token operator">←</span> m <span class="token operator">-</span> <span class="token number">1</span>
+  <span class="token keyword">tant que</span> a <span class="token operator">≤</span> b<span class="token punctuation">:</span>
+      m <span class="token operator">←</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>  <span class="token comment"># division entière</span>
+
+      <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">==</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>  <span class="token comment"># m est l'indice</span>
+      <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">&lt;</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          a <span class="token operator">←</span> m <span class="token operator">+</span> <span class="token number">1</span>
+      <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">></span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          b <span class="token operator">←</span> m <span class="token operator">-</span> <span class="token number">1</span>
 
   <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
 </code></pre>
@@ -508,6 +509,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Il suffit de toujours prendre le dernier élément qui est forcément le plus grand si le tableau est trié.</p>
+<p>À la différence de la recherche ordonnée où l'élément peut-être n'importe où dans le tableau ($n$ cas à distinguer), ici on sait où il est : il n'y a aucun cas à distinguer.</p>
 </div>
 </details>     
 </div>
