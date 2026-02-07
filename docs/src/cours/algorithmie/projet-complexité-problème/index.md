@@ -87,14 +87,14 @@ La preuve de la 1ère question montrant qu'il existe forcément un col, l'algori
 
 ```pseudocode
 algorithme trouve(T: [entier]) → entier:  # T.longueur > 1
-    si T[0] <= T[1]:
+    si T[0] ≤ T[1]:
         rend 0
 
-    si T[-1] <= T[-2]:
+    si T[-1] ≤ T[-2]:
         rendre T.longueur - 1
 
     pour chaque (i := entier) de [1 .. T.longueur - 1[:
-        si T[i] <= min(T[i-1], T[i + 1]):
+        si T[i] ≤ min(T[i-1], T[i + 1]):
             rendre i
 
 ```
@@ -117,14 +117,14 @@ On peut aussi utiliser la preuve précédente et _simplifier_ la boucle `pour ch
 
 ```pseudocode
 algorithme trouve(T: [entier]) → entier:  # T.longueur > 1
-    si T[0] <= T[1]:
+    si T[0] ≤ T[1]:
         rend 0
 
-    si T[-1] <= T[-2]:
+    si T[-1] ≤ T[-2]:
         rendre T.longueur - 1
 
     pour chaque (i := entier) de [1 .. T.longueur - 1[:
-        si T[i] <= T[i + 1]:
+        si T[i] ≤ T[i + 1]:
             rendre i
 
 ```
@@ -139,10 +139,10 @@ Démontrez que l'algorithme suivant permet de trouver un col d'un tableau d'enti
 
 ```pseudocode
 algorithme trouve_vite(T: [entier]) → entier:    # T.longueur > 1
-    si T[0] <= T[1]:
+    si T[0] ≤ T[1]:
         rendre 0
 
-    si T[-1] <= T[-2]:
+    si T[-1] ≤ T[-2]:
         rendre T.longueur - 1
 
     (début := entier) ← 0
@@ -150,7 +150,7 @@ algorithme trouve_vite(T: [entier]) → entier:    # T.longueur > 1
 
     tant que Vrai:
         milieu ← (fin + début) // 2
-        si T[milieu] <= min(T[milieu - 1], T[milieu + 1]):
+        si T[milieu] ≤ min(T[milieu - 1], T[milieu + 1]):
             rendre milieu
 
         si T[milieu] > T[milieu - 1]:
@@ -468,7 +468,7 @@ Montrez que si $(a_i)_{i\geq 0}$ est ultimement périodique alors les entiers $\
 {% endexercice %}
 {% details "corrigé" %}
 
-De pars la définition la suite a $\lambda + \mu -1 $ valeurs distinctes de $a_0$ à $a_{ \mu + \lambda -1}. La somme $\lambda + \mu$ est donc unique. De plus, tous les $m$ tels que $a_{ \mu + m} = a_{ \mu }$, sont multiples d'une valeur qui est l'unique $\lambda$ possible (pour garantir l'unicité des $\lambda + \mu -1 $ premières valeurs de la suite).
+De part la définition la suite a $\lambda + \mu -1 $ valeurs distinctes de $a_0$ à $a_{ \mu + \lambda -1}$. La somme $\lambda + \mu$ est donc unique. De plus, tous les $m$ tels que $a_{ \mu + m} = a_{ \mu }$, sont multiples d'une valeur qui est l'unique $\lambda$ possible (pour garantir l'unicité des $\lambda + \mu -1 $ premières valeurs de la suite).
 
 {% enddetails %}
 
@@ -488,7 +488,7 @@ Résoudre le problème du point fixe va nécessiter un de travail. Commençons p
 ```pseudocode
 algorithme point_fixe_naïf(a: (int) → int) → int
     (i := entier) ← 0
-    (j := entier) ← 0
+    (j := entier)
 
     tant que Vrai:
         i ← i + 1
@@ -496,6 +496,7 @@ algorithme point_fixe_naïf(a: (int) → int) → int
         tant que j < i:
             si a(i) == a(j):
                 rendre j
+            j ← j + 1
 ```
 
 Remarquez que le paramètre de l'algorithme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/algorithmes-fonctions/#type).
@@ -506,7 +507,10 @@ Montrer que l'algorithme `point_fixe_naïf`{.language-} résout le problème du 
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+Si la suite est ultimement périodique, il existe $j < i$ tel que $a(i) == a(j)$. Ceci prouve :
+
+- la finitude de notre algorithme
+- son exactitude : puisque pour tout $i>0$ on teste tous les $j < i$
 
 {% enddetails %}
 {% exercice %}
@@ -514,7 +518,19 @@ Quelle est sa complexité ?
 {% endexercice %}
 {% details "corrigé" %}
 
-$\mathcal{O}((\lambda + \mu)^2)$ et $\mathcal{O}(1)$ en mémoire. 
+L'algorithme va s'arrêter au plus petit $i$ tel qu'il existe $j < i$ tel que $a(i) == a(j)$ : $i = \lambda + \mu$ et $j = \mu$. Comme on à essayés tous couples plus petit la complexité est :
+
+
+<div>
+$$
+\begin{array}{lcl}
+C(\lambda, \mu) &=& \sum\limits_{i < \lambda + \mu} {(\sum\limits_{i > j}\mathcal{O}(1))} + \mu \cdot \mathcal{O}(1) \\
+&=& \mathcal{O}((\lambda + \mu)^2) \cdot \mathcal{O}(1) + \mu \cdot \mathcal{O}(1) 
+&=& \mathcal{O}((\lambda + \mu)^2)
+\end{array}
+$$
+</div>
+
 
 {% enddetails %}
 
