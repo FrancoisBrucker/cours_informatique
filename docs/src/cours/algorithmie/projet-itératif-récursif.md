@@ -147,11 +147,8 @@ Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.
 algorithme intersection_non_vide(T1: [entier], T2: [entier]) → booléen
 ```
 
-Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
+Permettant de vérifier s'il existe un élément de `T1`{.language-} qui est égal à un élément de `T2`{.language-}.
 {% endexercice %}
-{% info %}
-Il faut vérifier qu'il existe $0\leq i < T.\text{\small longueur}$ et $0\leq i' < T'.\text{\small longueur}$ tels que $T[i] = T'[i']$.
-{% endinfo %}
 {% details "corrigé" %}
 
 ```pseudocode/
@@ -182,10 +179,10 @@ Prouver cet algorithme ne nécessite pas d'invariant de boucle formel.
 algorithme égalité_valeurs(T1: [entier], T2: [entier]) → booléen
 ```
 
-Permettant de vérifier que deux tableaux d'entiers $T$ et $T'$ contiennent les mêmes valeurs.
+Permettant de vérifier que deux tableaux d'entiers `T1`{.language-} et `T2`{.language-} contiennent les mêmes valeurs.
 {% endexercice %}
 {% info %}
-Il faut vérifier que pour pour tout $0\leq i < T.\text{\small longueur}$ il existe $0\leq i' < T'.\text{\small longueur}$ tel que $T[i] = T'[i']$.
+Il faut vérifier que pour pour tout $0\leq i < T1.\text{\small longueur}$ il existe $0\leq i' < T2.\text{\small longueur}$ tel que $T1[i] = T2[i']$.
 {% endinfo %}
 {% details "corrigé" %}
 

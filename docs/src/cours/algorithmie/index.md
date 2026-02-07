@@ -127,7 +127,7 @@ Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut 
 
 ### Preuve d'algorithme
 
-Puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} on ne peut jamais être sur a priori qu'un algorithme donné résous le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.
+Puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} on ne peut jamais être sur a priori qu'un algorithme donné résout le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.
 
 Par exemple l'algorithme suivant :
 

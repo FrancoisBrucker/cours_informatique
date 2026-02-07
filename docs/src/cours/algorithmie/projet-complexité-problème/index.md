@@ -85,7 +85,7 @@ Vous expliciterez :
 
 La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :
 
-```pseudocode
+```pseudocode/
 algorithme trouve(T: [entier]) → entier:  # T.longueur > 1
     si T[0] ≤ T[1]:
         rend 0
@@ -96,7 +96,6 @@ algorithme trouve(T: [entier]) → entier:  # T.longueur > 1
     pour chaque (i := entier) de [1 .. T.longueur - 1[:
         si T[i] ≤ min(T[i-1], T[i + 1]):
             rendre i
-
 ```
 
 Sa complexité dans le cas le pire a lieu pour les tableaux dont le premier et seul col se trouve à l'avant dernier indice (comme pour la liste $[5, 4, 3, 2, 1, 2]$ par exemple), forçant l'algorithme à :
@@ -438,7 +437,7 @@ Une suite $(a_i)_{0\leq i}$ est dite _ultimement périodique_ si il existe $\lam
 
 Cet problème est magnifique car :
 
-- la borne min du problème est minimale,
+- la complexité du problème est linéaire,
 - l'algorithme optimal est tout simple mais sa démonstration ne l'est pas.
 
 L'exercice est difficile mais sa beauté vaut le coût qu'on s'y arrache (un peu) les cheveux (si on en a).
@@ -543,7 +542,9 @@ Soit $(a_i)$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+lorsque $m = \mu$, on a $a_{2\mu} = a_{\mu + k} =  a_{m + k}$ avec $0 \leq k \leq \lambda$ puisque l'on se trouve sur le cycle de longueur $\lambda$.
+
+Si $k=0$ on a bien trouvé notre $m$ et sinon, comme $a_{2(\mu + p)} = a_{2\mu + 2p} = a_{\mu + 2p + k} = a_{(\mu + p) + p + k}$ en prenant $0 \leq p = \lambda - k < \lambda$ on a bien $a_{2(\mu + p)} = a_{(\mu + p) + \lambda} = a_{(\mu + p)}$ ce qui conclut la preuve.
 
 {% enddetails %}
 
@@ -552,14 +553,13 @@ L'exercice précédent est la pierre angulaire de l'algorithme optimal ! Cet alg
 ```pseudocode
 programme lièvre_tortue(a: (entier) → entier) → entier:
 
-    (tortue := entier) ← 0
+    (tortue := entier) ← 1
     (lièvre := entier) ← 2
 
     tant que a(tortue) ≠ a(lièvre):
         tortue ← tortue + 1
         lièvre ← lièvre + 2
-    
-    rendre tortue
+
 ```
 
 {% exercice %}
@@ -571,7 +571,7 @@ Montrez que l'algorithme précédent rend un indice $m$ tel que :
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+À la fin de chaque étape le lièvre vaut 2 fois la tortue et s'arrête au premier élément ou il y a égalité. O sait que c'est élément est entre $\mu$ et $\lambda + \mu$. 
 
 {% enddetails %}
 
@@ -582,7 +582,7 @@ Montrez que la complexité de l'algorithme `lièvre_tortue`{.language-} est en $
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+Comme la valeur de la tortue est inférieure à $\lambda + \mu$, il n'y a eu au pire que $\lambda + \mu$ itérations d'une boucle en $\mathcal{O}(1)$.
 
 {% enddetails %}
 
@@ -593,7 +593,7 @@ Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$. Montrez q
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+Puisque $m\geq \mu$ on est sur le cycle. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + k\lambda$ ce qui montre que $m$ est u multiple de $\lambda$.
 
 {% enddetails %}
 
@@ -621,6 +621,58 @@ Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?
 > TBD
 
 {% enddetails %}
+
+### Application
+
+L'algorithme du lièvre et de la tortue est très utilisé pour trouver des points fixes de fonctions.
+
+{% note2 "**Problème algorithmique**" %}
+
+- Nom : Point fixe
+- Entrées :
+  - $f: \mathbb{N} \to [\\![ 1, n]\\!]$
+- Sortie : Un couple d'entiers $x$ et $y$ tels que $f(x) = f(y)$
+
+{% endnote2 %}
+
+Commençons par lier nos fonctions à des suite ultimement périodiques :
+
+{% exercice %}
+Montrez que si $f: \mathbb{N} [\\![ 1, n]\\!]$ et $x$ un entier, alors la suite $(a_i)_{0\leq i}$ définie telle que :
+
+- $a_0 = x$
+- $a_i = f(a_{i-1})$ pour $i>0$
+
+est ultimement périodique.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+{% exercice %}
+
+Utilisez la question précédente pour résoudre le problème du point fixe de fonctions
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+
+Modifiez l'algorithme du lièvre et de la tortue pour qu'il permette de résoudre le problème du point fixe d'une fonction.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
 
 ## <span id="arithmétique"></span>Algorithmes arithmétique
 
