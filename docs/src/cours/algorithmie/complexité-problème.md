@@ -327,6 +327,6 @@ Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'
 
 Il suffit de toujours prendre le dernier élément qui est forcément le plus grand si le tableau est trié.
 
-À la différence de la recherche ordonnée où l'élément peut-être n'importe où dans le tableau ($n$ cas à distinguer), ici on sait où il est : il n'y a aucun cas à distinguer.
+À la différence de la recherche ordonnée où l'élément peut-être n'importe où dans le tableau ($n$ cas à distinguer) ici on sait où il est : il n'y a aucun cas à distinguer, juste à rendre le dernier élément du tableau.
 {% enddetails %}
 

@@ -111,7 +111,7 @@ Par exemple :
 
 {% endnote %}
 
-Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](./bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne}, ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=WtetsFQHD9A) ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4)), on se restreindra ici aux problèmes algorithmiques :
+Comme tout problème n'admet pas forcément un algorithme pour le résoudre (par exemple [la complexité de Kolmogorov](./bases-théoriques/calculabilité/#complexité-Kolmogorov){.interne}, ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=w1hdRjPVejA&list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&index=11) ou encore ["le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4)), on se restreindra ici aux problèmes algorithmiques :
 
 <span id="problème-algorithmique"></span>
 

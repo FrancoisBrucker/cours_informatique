@@ -211,4 +211,4 @@ Préparez vous en reprenant les cours et en comprenant les démonstrations. Ce s
 - graphes bi-parti
 - algorithme du lièvre et de la tortue pour :
   - détecter des cycles
-  - trouver des doublons dans un tableau d'entiers ($n$ entiers dont les valeurs vont de $1$ à $n-1$) en $\mathcal{O}(n)$ opérations et $\mathcal{O}(1)$ en mémoire (cf. <https://medium.com/@simrangarg0501/finding-the-duplicate-number-using-floyds-tortoise-and-hare-algorithm-618ced80e98e>)
+  - trouver des doublons dans un tableau d'entiers ($n$ entiers dont les valeurs vont de $1$ à $n-1$) en $\mathcal{O}(n)$ opérations et $\mathcal{O}(1)$ en mémoire

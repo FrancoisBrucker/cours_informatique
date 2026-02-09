@@ -542,9 +542,11 @@ Soit $(a_i)$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.
 {% endexercice %}
 {% details "corrigé" %}
 
-lorsque $m = \mu$, on a $a_{2\mu} = a_{\mu + k} =  a_{m + k}$ avec $0 \leq k \leq \lambda$ puisque l'on se trouve sur le cycle de longueur $\lambda$.
+À chaque étape l'écart entre le lièvre et la tortue est augmenté de 1. Une fois la tortue et le lièvre sur le cycle il va forcément arriver un moment où le lièvre va prendre un tour à la tortue, et ceci va arriver avant que la tortue n'ait fait un tour de cycle complet.
 
-Si $k=0$ on a bien trouvé notre $m$ et sinon, comme $a_{2(\mu + p)} = a_{2\mu + 2p} = a_{\mu + 2p + k} = a_{(\mu + p) + p + k}$ en prenant $0 \leq p = \lambda - k < \lambda$ on a bien $a_{2(\mu + p)} = a_{(\mu + p) + \lambda} = a_{(\mu + p)}$ ce qui conclut la preuve.
+Formalisons ça. Lorsque $m = \mu$, on a $a_{2\mu} = a_{\mu + k} =  a_{m + k}$ avec $0 \leq k \leq \lambda$ puisque l'on se trouve sur le cycle de longueur $\lambda$.
+
+Si $k=0$ ou $k=\lambda$ on a bien trouvé notre $m$ et sinon, comme $a_{2(\mu + p)} = a_{2\mu + 2p} = a_{\mu + 2p + k} = a_{(\mu + p) + p + k}$ en prenant $0 < p = \lambda - k < \lambda$ on a bien $a_{2(\mu + p)} = a_{(\mu + p) + \lambda} = a_{(\mu + p)}$ ce qui conclut la preuve.
 
 {% enddetails %}
 
@@ -593,7 +595,7 @@ Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$. Montrez q
 {% endexercice %}
 {% details "corrigé" %}
 
-Puisque $m\geq \mu$ on est sur le cycle. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + k\lambda$ ce qui montre que $m$ est u multiple de $\lambda$.
+Puisque $m\geq \mu$ on est sur le cycle de longueur $\lambda$. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + k\lambda$ ce qui montre que $m$ est un multiple de $\lambda$.
 
 {% enddetails %}
 
@@ -603,7 +605,9 @@ Utilisez la question précédente et la nature de $m$ pour montrer que $\mu = b 
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+La division entière de $\mu$ par $\lambda$ donne $\mu = b + k \cdot \lambda$ avec $b < lambda$. Comme de plus $\mu \leq m \leq \mu + \lambda$, on a $b + k \cdot \lambda \leq m \leq b + (k + 1) \cdot \lambda$.
+
+Or $m$ est un multiple de $k$, on ne peut donc avoir que $m = (k+1) \cdot \lambda$. En injectant cette égalité dans $\mu$ on obtient : $\mu = b + k \cdot \lambda = b + (m - \lambda)$ ce qui conclut la preuve.
 
 {% enddetails %}
 
@@ -618,7 +622,11 @@ Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?
 {% endinfo %}
 {% details "corrigé" %}
 
-> TBD
+La question précédente a montré que $\mu + m = (\mu + \lambda) + \lambda = \mu + 2\cdot \lambda$.
+
+En faisant partir deux tortue, l'une en 0 et l'autre en $m$, lorsque celle partant en $0$ arrivera en $\mu$ celle parti de $m$ sera en $\mu + m = \mu + 2\cdot \lambda$, donc au même point !
+
+>TBD fin
 
 {% enddetails %}
 
@@ -651,6 +659,8 @@ est ultimement périodique.
 > TBD
 
 {% enddetails %}
+
+>TBD il faut adapter l'algorithme du lievre et de la tortue car le calcul  de a(m) sera trop long. Il faut gardr en memoire am-1.
 
 {% exercice %}
 

@@ -120,8 +120,8 @@ Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarqu
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r := 1  # initialisation
-    i := 1
+    (r := entier) ← 1  # initialisation
+    (i := entier) ← 1
     tant que i ≤ n:  # condition d'arrêt
         r ← r * i
         i ← i + 1
@@ -197,7 +197,7 @@ Considérons l'algorithme suivant, variation de la version itérative de factori
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:  # n ≥ 1
-    produit := 1
+    (produit := entier) ← 1
     pour chaque i de [2 .. n]:
         produit ← produit * i
 
@@ -268,8 +268,8 @@ Considérons l'algorithme itératif suivant :
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r := 1
-    i := 1
+    (r := entier) ← 1
+    (i := entier) ← 1
     tant que i ≤ n:
         r ← r * i
         i ← i + 1
@@ -286,8 +286,8 @@ Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il p
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r := 1
-    i := 1
+    (r := entier) ← 1
+    (i := entier) ← 1
     tant que i ≤ n - 1:
         r ← r * i
         i ← i + 1
@@ -308,8 +308,9 @@ Refaisons la preuve précédente en utilisant un invariant de boucle pour montre
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    r := 1
-    i := 1
+    (r := entier) ← 1
+    (i := entier) ← 1
+
     tant que i ≤ n:
         r ← r * i
         i ← i + 1
@@ -370,8 +371,8 @@ Entraînons nous avec l'algorithme suivant, variante itérative de l'algorithme 
 
 ```pseudocode
 algorithme factorielle_variante(n: entier):
-    r := 1
-    i := n
+    (r := entier) ← 1
+    (i := entier) ← n
     tant que i ≥ 1:
         r ← r * i
         i ← i - 1
@@ -453,7 +454,7 @@ On considère l'algorithme itératif suivant :
 
 ```pseudocode
 algorithme maximum(t: [entier]) → entier:
-    m := t[0]
+    (m := entier) ← t[0]
     pour chaque x de t:
         si m < x:
             m ← x
@@ -493,7 +494,7 @@ Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers élém
 
 ```pseudocode
 algorithme maximum(t: [entier]) → entier:
-    m := t[0]
+    (m := entier) ← t[0]
     x := entier
     pour chaque i de [0 .. t.longueur[:
         x ← t[i]
@@ -551,7 +552,7 @@ Reprenez le premier pseudo-code que vous avez écrit : [nombre d'occurrences](..
 
 ```pseudocode/
 algorithme nombre(T: [entier], x: entier) → entier:
-    nb := 0
+    (nb := entier) ← 0
     pour chaque e de T:
         si e == x:
             nb ← nb + 1
@@ -598,8 +599,8 @@ Vous trouverez ci-après une version itérative de l'algorithme de la division e
 ```pseudocode
 algorithme division_euclidienne(a: entier,
                                 b: entier) → [entier]:
-    r := a
-    q := 0
+    (r := entier) ← a
+    (q := entier) ← 0
     
     tant que r ≥ b:
         r ← r - b
