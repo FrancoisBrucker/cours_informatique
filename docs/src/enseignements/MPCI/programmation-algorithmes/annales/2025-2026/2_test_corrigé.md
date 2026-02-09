@@ -66,7 +66,7 @@ Je suis globalement (**très**) satisfait de votre travail, vous avez travaillé
 
 Les tests font parti du projet et sont une partie importante de la notation. Il est préférable pour avoir une bonne note (et votre Karma !) d'aller moins loin mais de faire des fonction de test de vos fonctions.
 
-Pour que les imports se passent bien, **il ne faut pas ** :
+Pour que les imports se passent bien, **il ne faut pas** :
 
 - exécuter de fonctions dans le fichier `fonctions.py`{.fichier}. Il ne doit contenir que des déclarations de fonctions qui seront exécutés dans votre programme principal via des import. 
 - exécuter les fonctions de test dans le fichier de test. Les fonctions de tests seront exécutées par pytest.
