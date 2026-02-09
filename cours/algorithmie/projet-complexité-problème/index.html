@@ -883,8 +883,9 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>lorsque $m = \mu$, on a $a_{2\mu} = a_{\mu + k} =  a_{m + k}$ avec $0 \leq k \leq \lambda$ puisque l'on se trouve sur le cycle de longueur $\lambda$.</p>
-<p>Si $k=0$ on a bien trouvé notre $m$ et sinon, comme $a_{2(\mu + p)} = a_{2\mu + 2p} = a_{\mu + 2p + k} = a_{(\mu + p) + p + k}$ en prenant $0 \leq p = \lambda - k &lt; \lambda$ on a bien $a_{2(\mu + p)} = a_{(\mu + p) + \lambda} = a_{(\mu + p)}$ ce qui conclut la preuve.</p>
+<p>À chaque étape l'écart entre le lièvre et la tortue est augmenté de 1. Une fois la tortue et le lièvre sur le cycle il va forcément arriver un moment où le lièvre va prendre un tour à la tortue, et ceci va arriver avant que la tortue n'ait fait un tour de cycle complet.</p>
+<p>Formalisons ça. Lorsque $m = \mu$, on a $a_{2\mu} = a_{\mu + k} =  a_{m + k}$ avec $0 \leq k \leq \lambda$ puisque l'on se trouve sur le cycle de longueur $\lambda$.</p>
+<p>Si $k=0$ ou $k=\lambda$ on a bien trouvé notre $m$ et sinon, comme $a_{2(\mu + p)} = a_{2\mu + 2p} = a_{\mu + 2p + k} = a_{(\mu + p) + p + k}$ en prenant $0 &lt; p = \lambda - k &lt; \lambda$ on a bien $a_{2(\mu + p)} = a_{(\mu + p) + \lambda} = a_{(\mu + p)}$ ce qui conclut la preuve.</p>
 </div>
 </details>     
 </div>
@@ -981,7 +982,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Puisque $m\geq \mu$ on est sur le cycle. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + k\lambda$ ce qui montre que $m$ est u multiple de $\lambda$.</p>
+<p>Puisque $m\geq \mu$ on est sur le cycle de longueur $\lambda$. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + k\lambda$ ce qui montre que $m$ est un multiple de $\lambda$.</p>
 </div>
 </details>     
 </div>
@@ -1008,9 +1009,8 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>La division entière de $\mu$ par $\lambda$ donne $\mu = b + k \cdot \lambda$ avec $b &lt; lambda$. Comme de plus $\mu \leq m \leq \mu + \lambda$, on a $b + k \cdot \lambda \leq m \leq b + (k + 1) \cdot \lambda$.</p>
+<p>Or $m$ est un multiple de $k$, on ne peut donc avoir que $m = (k+1) \cdot \lambda$. En injectant cette égalité dans $\mu$ on obtient : $\mu = b + k \cdot \lambda = b + (m - \lambda)$ ce qui conclut la preuve.</p>
 </div>
 </details>     
 </div>
@@ -1046,8 +1046,10 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>La question précédente a montré que $\mu + m = (\mu + \lambda) + \lambda = \mu + 2\cdot \lambda$.</p>
+<p>En faisant partir deux tortue, l'une en 0 et l'autre en $m$, lorsque celle partant en $0$ arrivera en $\mu$ celle parti de $m$ sera en $\mu + m = \mu + 2\cdot \lambda$, donc au même point !</p>
 <blockquote>
-<p>TBD</p>
+<p>TBD fin</p>
 </blockquote>
 </div>
 </details>     
@@ -1107,6 +1109,9 @@ $$
 </div>
 </details>     
 </div>
+<blockquote>
+<p>TBD il faut adapter l'algorithme du lievre et de la tortue car le calcul  de a(m) sera trop long. Il faut gardr en memoire am-1.</p>
+</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">

@@ -216,8 +216,8 @@ $$
 <p>Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $(n + 1)! = (n!) \cdot (n + 1)$ :</p>
 <div id="algorithme-factorielle-iter"></div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token number">1</span>  <span class="token comment"># initialisation</span>
-   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>r <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>  <span class="token comment"># initialisation</span>
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> n<span class="token punctuation">:</span>  <span class="token comment"># condition d'arrêt</span>
         r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> i
 </span>       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
@@ -304,7 +304,7 @@ $$
 <h3>Une relation évidente</h3>
 <p>Considérons l'algorithme suivant, variation de la version itérative de factorielle précédente :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># n ≥ 1</span>
-    produit <span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>produit <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">2</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
         produit <span class="token operator">←</span> produit <span class="token operator">*</span><span class="token number"> i
 </span>
@@ -390,8 +390,8 @@ $$
 <h4><span id="facto-iter"></span> Algorithme itératif</h4>
 <p>Considérons l'algorithme itératif suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token number">1</span>
-   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>r <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> n<span class="token punctuation">:</span>
         r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> i
 </span>       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
@@ -401,8 +401,8 @@ $$
 <h5>Correction</h5>
 <p>Nous allons montrer que l'on peut prouver notre algorithme par récurrence. Il peut en effet se récrire de cette façon :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token number">1</span>
-   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>r <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
         r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> i
 </span>       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
@@ -416,8 +416,9 @@ $$
 <p>Lorsque l'on ne peut pas clairement et rapidement faire une preuve par récurrence, on peut chercher un invariant à la boucle : quelque chose qui est conservé à chaque itération. Cette technique de preuve n'est pas très éloignée des preuves par récurrences, elle est juste plus générale et (de l'avis des informaticiens) plus élégante.</p>
 <p>Refaisons la preuve précédente en utilisant un invariant de boucle pour montrer comment tout ceci peut se faire :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token number">1</span>
-   <span class="token number"> i </span><span class="token operator">:=</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>r <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+
     <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> n<span class="token punctuation">:</span>
         r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> i
 </span>       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
@@ -484,8 +485,8 @@ $$
 <p>Entraînons nous avec l'algorithme suivant, variante itérative de l'algorithme factoriel :</p>
 <div id="algo-factorielle_variante"></div>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle_variante</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> <span class="token number">1</span>
-   <span class="token number"> i </span><span class="token operator">:=</span><span class="token number"> n
+    <span class="token punctuation">(</span>r <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span><span class="token number"> n
 </span>    <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≥</span> <span class="token number">1</span><span class="token punctuation">:</span>
         r <span class="token operator">←</span> r <span class="token operator">*</span><span class="token number"> i
 </span>       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span>
@@ -629,7 +630,7 @@ $$
 <p>On considère l'algorithme itératif suivant :</p>
 <p><span id="algorithme-max-tableau-iter"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    m <span class="token operator">:=</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>m <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword">pour chaque</span> x de t<span class="token punctuation">:</span>
         <span class="token keyword">si</span> m <span class="token operator">&lt;</span> x<span class="token punctuation">:</span>
             m <span class="token operator">←</span> x
@@ -670,7 +671,7 @@ $$
 <h4>Utiliser cette idée de preuve pour créer un invariant</h4>
 <p>Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers éléments du tableaux (il vaut le maximum). Pour que cela fonctionne facilement il faut pouvoir expliciter le numéro de l'itération actuelle de la boucle <code class="language-">pour chaque</code>. On modifie alors notre algorithme pour rendre $i$ explicite :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    m <span class="token operator">:=</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>m <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     x <span class="token operator">:=</span> <span class="token builtin">entier</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> t<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         x <span class="token operator">←</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
@@ -746,7 +747,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">nombre</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    nb <span class="token operator">:=</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token punctuation">(</span>nb <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span></span>
 <span class="highlight-line">    <span class="token keyword">pour chaque</span> e de T<span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
 <span class="highlight-line">            nb <span class="token operator">←</span> nb <span class="token operator">+</span> <span class="token number">1</span></span>
@@ -807,8 +808,8 @@ $$
 <p><span id="algorithme-division-euclidienne"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">division_euclidienne</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span>
                                 b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-    r <span class="token operator">:=</span> a
-    q <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token punctuation">(</span>r <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> a
+    <span class="token punctuation">(</span>q <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
     
     <span class="token keyword">tant que</span> r <span class="token operator">≥</span> b<span class="token punctuation">:</span>
         r <span class="token operator">←</span> r <span class="token operator">-</span> b

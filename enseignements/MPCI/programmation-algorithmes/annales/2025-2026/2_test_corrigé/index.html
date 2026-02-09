@@ -92,13 +92,105 @@
   
 
   <h2>Barème</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Outre les questions, j'ai noté le fait que je puisse :</p>
+<ul>
+<li>lancer le projet en tapant <code>python main.py</code> et qu'il s'exécute sans planter.</li>
+<li>exécuter les tests en tapant <code>python -m pytest</code> et que les tests s'exécutent. Des tests peuvent échouer (le correcteur voit sur quoi vous travailliez, c'est ok) mais votre code doit s'exécuter sans erreur de python.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Vous devez toujours vous assurer d'avoir un projet fonctionnel, même si vous n'avez pas fini le test. Si vous  êtes entrain d'écrire une fonction et qu'elle n'est pas terminée ne l'incluez pas dans le programme principal. Il est en revanche tout à fait autorisé de laisser des tests qui échouent lorsque l'on est entrain de coder une fonction du moment que les tests s'exécutent.</p>
+</div></div>
+
+<h3>Ventilation des points</h3>
+<p>La note du test est sur 7 points répartis comme suit :</p>
+<ul>
+<li>2pt pour la question 1 (1 point pour le code ; 1 point pour les tests)</li>
+<li>2pt pour la question 2 (1 point pour le code ; 1 point pour les tests)</li>
+<li>2pt pour la question 3 (1 point pour le code ; 1 point pour les tests)</li>
+<li>1pt pour du code fonctionnel <code>python main.py</code> et <code>python -m pytest</code> doivent s'exécuter sans problème</li>
+</ul>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 7 par $3$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
+<ul>
+<li><strong>un élève moyen</strong> fait la 1 première question parfaitement, possède du code fonctionnel et à entamé la seconde question ce qui garantit le 10</li>
+<li><strong>un bon élève</strong> fait les 2 premières questions parfaitement et possède du code fonctionnel ce qui vaut 15.</li>
+<li><strong>un très bon élève</strong> fait plus que les 2 premières questions parfaitement.</li>
+</ul>
+</div></div>
+
+<h3>Ventilation des notes</h3>
+<table>
+<thead>
+<tr>
+<th>note/20</th>
+<th>&lt; 10</th>
+<th>[10, 14]</th>
+<th>]14, 16]</th>
+<th>]16, 18]</th>
+<th>]18, 20]</th>
+<th>&gt;20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>8</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>rang min</td>
+<td>42</td>
+<td>34</td>
+<td>26</td>
+<td>10</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 14/20 (4.67/7)</li>
+<li>écart-type : 5.15/20 (1.72/7)</li>
+<li>médiane : 15/20 (5/7)</li>
+</ul>
+<p>Je suis globalement (<strong>très</strong>) satisfait de votre travail, vous avez travaillé et intégré le cours : c'est bien (<a href="https://www.youtube.com/watch?v=Gjqe-n1rh0g">pourvu que ça dure</a> mais aussi <a href="https://www.youtube.com/watch?v=vyk2MZoLST4&amp;list=OLAK5uy_ntRz4sFNPNVhiGTyVR4VsePZzmGG7OPFM&amp;index=8">pourvu xa dure !</a>).</p>
 <h2>Erreurs fréquemment rencontrées</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<h3>Rendus</h3>
+<ul>
+<li>Si vous compressez votre projet, faites en sorte que le correcteur puisse facilement le décompresser. Donc :
+<ul>
+<li>Utilisez une extension. <code class="fichier">test2.zip</code> se décompresse tout seul alors que mon système d'exploitation ne reconnaît pas <code class="fichier">test2</code> (sans extension) comme un fichier valide : je suis obligé d'ajouter l'extension pour que mon explorateur de fichier le décompresse.</li>
+<li>Utilisez un logiciel de compression que tout le monde a par défaut. Donc pas de fichier rar. Uniquement du zip</li>
+</ul>
+</li>
+<li>Le dossier <code class="fichier">__pycache__</code> est généré par python à chaque exécution, il ne fait donc pas parti du code du projet. Supprimez le avant de rendre le projet et/ou avant de le compresser le dossier du projet.</li>
+</ul>
+<h3>Fonction et tests</h3>
+<p>Les tests font parti du projet et sont une partie importante de la notation. Il est préférable pour avoir une bonne note (et votre Karma !) d'aller moins loin mais de faire des fonction de test de vos fonctions.</p>
+<p>Pour que les imports se passent bien, **il ne faut pas ** :</p>
+<ul>
+<li>exécuter de fonctions dans le fichier <code class="fichier">fonctions.py</code>. Il ne doit contenir que des déclarations de fonctions qui seront exécutés dans votre programme principal via des import.</li>
+<li>exécuter les fonctions de test dans le fichier de test. Les fonctions de tests seront exécutées par pytest.</li>
+</ul>
+<h3>Suite de Dyck</h3>
+<p>Vous êtes nombreux à être tombé dans le (tout petit) piège de la question 3.1. Il faut sortir si une somme partielle est négative pas uniquement à la fin. Je vous avais aidé dans le sujet en vous donnant un test qui permettait de le vérifier (<code class="language-">assert not bon_parenthésage([1, -1, -1, 1])</code> qui correspond à la chaîne <code>&quot;())(&quot;</code> qui n'est pas un bon parenthésage).</p>
 <h2>Corrigé</h2>
 <p>Je joins les 3 fichiers de code que j'ai écris.</p>
 <h3><code class="language-">main.py</code></h3>
