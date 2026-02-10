@@ -104,16 +104,19 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La <strong><em>complexité (maximale) d'un problème</em></strong> algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité a plus faible) qui le résout.</p>
+<p>La <strong><em>complexité (maximale) d'un problème</em></strong> algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité la plus faible) qui le résout.</p>
 </div></div>
 
 <p>Cette complexité existe toujours car :</p>
 <ol>
 <li>le problème étant algorithmique il admet au moins un algorithme pour le résoudre.</li>
-<li>Les algorithmes résolvant le problème peuvent être classées selon leurs complexités, entières, et admettent donc un minimum.</li>
+<li>Les algorithmes résolvant le problème peuvent être classées selon leurs complexités et admettent donc un minimum.</li>
 </ol>
-<p>Mais elle peut être difficile à trouver il faut pouvoir raisonner sans avoir tous les algorithmes (une infinité) à sa disposition.</p>
-<p>Cependant, si l'on possède déjà un algorithme pour résoudre le problème, sa complexité est <strong>une borne maximale</strong> de la complexité du problème qu'il résout. Il est également souvent facile de se donner <strong>une borne minimale</strong> de la complexité du problème (même si l'on ne sait pas s'il existe un algorithme pour le résoudre), c'est la taille de la sortie de l'algorithme. On a lors l'encadrement :</p>
+<p>Elle peut cependant être difficile à trouver car il faut pouvoir raisonner sans avoir tous les algorithmes (une infinité) à sa disposition. Mais :</p>
+<ul>
+<li>si l'on possède déjà un algorithme pour résoudre le problème, sa complexité est <strong>une borne maximale</strong> de la complexité du problème qu'il résout</li>
+<li>il est facile de se donner <strong>une borne minimale</strong> de la complexité du problème (même si l'on ne sait pas s'il existe un algorithme pour le résoudre) qui est la taille de la sortie de l'algorithme. On a lors l'encadrement :</li>
+</ul>
 <div>
 $$
 \Omega(\text{taille sortie}) = \text{complexité du problème} = \mathcal{O}(\text{complexité d'un algorithme le résolvant})
@@ -140,7 +143,7 @@ $$</p>
 <p>on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'algorithme A le résolvant})$.</p>
 </div></div>
 
-<p>Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.</p>
+<p>Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau. Cette étude nous permettra de voir plusieurs facettes de ce qu'est un problème algorithmique.</p>
 <h2><span id="recherche"></span>Exemple : recherche d'un élément dans un tableau</h2>
 <p>On va chercher à résoudre le problème suivant :
 <span id="définition-problème-décision"></span></p>
@@ -169,13 +172,13 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>On a utilisé ici le mot clé <strong>question</strong> plutôt que <strong>sortie</strong>. On utilisera cette convention lorsque la sortie est soit OUI soit NON.</p>
-<p>On les appelle <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision">problèmes de décision</a> et sont très important en informatique théorique. On le verra (bien) plus tard.</p>
+<p>On appelle ce genre de problème des <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_d%C3%A9cision">problèmes de décision</a> et ils sont très important en informatique théorique. On le verra (bien) plus tard.</p>
 </div></div>
 
 <p>Ce qu'on peut déjà dire de notre problème :</p>
 <ul>
 <li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
-<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche" class="interne">on a déjà calculé la complexité</a>) résout le problème</li>
+<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la longueur du tableau puisque l'algorithme ci-dessous (dont on <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche" class="interne">on a déjà calculé la complexité</a>) résout le problème</li>
 </ul>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>e <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de T<span class="token punctuation">:</span></span>
@@ -183,22 +186,22 @@ $$</p>
 <span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
 <h3><spans id="complexité-recherche"> Complexité du problème &quot;recherche&quot;</spans></h3>
-<p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $n$ pour répondre.</p>
-<p>Soit alors un tableau $T$ de taille $n$ qui ne contient pas <code class="language-">x</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
+<p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons en effet qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : l'algorithme $A$ n'a pas besoin de regarder toutes les cases du tableau de longueur $n$ en entrée pour répondre.</p>
+<p>Soit alors un tableau $T$ de longueur $n$ qui ne contient pas <code class="language-">x</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
 <p>On crée alors un tableau $T'$ de $n$ cases tel que :</p>
 <ul>
 <li>$T'[i] = T[i]$ si $i \neq i^\star$</li>
-<li>$T'[i^\star] = \mbox{valeur}$</li>
+<li>$T'[i^\star] = x$</li>
 </ul>
 <p>Comme $T$ et $T'$ sont identiques sauf pour la case d'indice $i^\star$,
 si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T'[i^\star]$ lors de son exécution pour $T'$. Il ne pourra donc répondre que la même chose pour $T$ et $T'$, ce qui est impossible puisque la réponse est NON pour $T$ et OUI pour $T'$.</p>
-<p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$ : la complexité du problème de la recherche est en $\Omega(n)$.</p>
+<p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau passé en entrée. Tout algorithme résolvant le problème recherche doit au moins être de complexité $\mathcal{O}(n)$. On peut donc une nouvelle borne minimale pour notre problème : $\Omega(n)$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ca ne veut pas dire qu'il n'existe pas des instances où l'algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute taille $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n'est pas dans tableau).</p>
+<p>Ca ne veut pas dire qu'il n'existe pas des instances où l'algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute longueur $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n'est pas dans tableau).</p>
 </div></div>
 
 <p>Au final on a :</p>
@@ -214,7 +217,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité du problème de la recherche est en $\Theta(n)$ où $n$ est la taille du tableau.</p>
+<p>La complexité du problème de la recherche est en $\Theta(n)$ où $n$ est la longueur du tableau passé en entrée.</p>
 </div></div>
 
 <p>On peut en déduire une règle générale de la complexité d'un problème :</p>
@@ -279,7 +282,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </ul>
 </div></div>
 
-<p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">est_dans_tableau(T)</code>.</p>
+<p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">est_dans_tableau(T)</code>.</p>
 <p>Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
 <h4>Algorithme de la recherche dichotomique</h4>
 <p>Le principe de <a href="https://fr.wikipedia.org/wiki/Recherche_dichotomique">la recherche dichotomique</a> permet de savoir si un entier donné est dans un tableau d'entier trié.</p>
@@ -378,7 +381,7 @@ $$
 \end{array}
 $$
 </div>
-<p>On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la taille du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :</p>
+<p>On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la longueur du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -386,11 +389,11 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'algorithme <code class="language-">recherche_dichotomique</code> résout le problème &quot;recherche ordonnée&quot; en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
+<p>L'algorithme <code class="language-">recherche_dichotomique</code> résout le problème &quot;recherche ordonnée&quot; en $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau).</p>
 </div></div>
 
 <h4><span id="complexité-recherche-ordonnée"></span> Complexité du problème &quot;recherche ordonnée&quot;</h4>
-<p>L'algorithme de la recherche dichotomique résout le problème de la &quot;recherche ordonnée&quot; de façon bien plus efficace que l'algorithme <code class="language-">recherche</code> : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème &quot;recherche ordonnée&quot; est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
+<p>L'algorithme de la recherche dichotomique résout le problème de la &quot;recherche ordonnée&quot; de façon bien plus efficace que l'algorithme <code class="language-">recherche</code> : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème &quot;recherche ordonnée&quot; est alors $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau).</p>
 <p>Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -480,7 +483,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité du problème de la <em>&quot;recherche ordonnée&quot;</em> est en $\Theta(\ln(n))$ où $n$ est la taille du tableau.</p>
+<p>La complexité du problème de la <em>&quot;recherche ordonnée&quot;</em> est en $\Theta(\ln(n))$ où $n$ est la longueur du tableau.</p>
 </div></div>
 
 <p>À vous :</p>
