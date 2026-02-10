@@ -221,8 +221,8 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </div></div>
 
 <p>On peut en déduire une règle générale de la complexité d'un problème :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
@@ -276,26 +276,31 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <p><strong>Problème de décision</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li><strong>nom</strong> : recherche ordonnée</li>
-<li><strong>données</strong> : une valeur et un tableau d'entiers triés par ordre croissant</li>
-<li><strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
+<li><strong>Nom</strong> : recherche ordonnée</li>
+<li><strong>Entrées</strong> :
+<ul>
+<li>un entier $x$</li>
+<li>un tableau d'entiers $T$</li>
+</ul>
+</li>
+<li><strong>Question</strong> : existe-t-il un indice $0\leq i &lt; T.\mbox{\small longueur}$ tel que $T[i] = x$  ?</li>
 </ul>
 </div></div>
 
 <p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">est_dans_tableau(T)</code>.</p>
-<p>Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
+<p>Cependant on utilise souvent un autre algorithme : la recherche dichotomique.</p>
 <h4>Algorithme de la recherche dichotomique</h4>
 <p>Le principe de <a href="https://fr.wikipedia.org/wiki/Recherche_dichotomique">la recherche dichotomique</a> permet de savoir si un entier donné est dans un tableau d'entier trié.</p>
-<p>On cherche à savoir si l'entier $v$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $t$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :</p>
+<p>On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :</p>
 <ul>
-<li>si $t[\,\lfloor (a + b)/2 \rfloor\,] = v$ on a trouvé l'élément</li>
-<li>si $t[\,\lfloor (a + b)/2 \rfloor\,] &gt; v$, l'indice recherché est forcément <strong>avant</strong> $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+<li>si $T[\,\lfloor (a + b)/2 \rfloor\,] = x$ on a trouvé l'élément</li>
+<li>si $T[\,\lfloor (a + b)/2 \rfloor\,] &gt; x$, l'indice recherché est forcément <strong>avant</strong> $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
 <ul>
 <li>$a = \lfloor (a + b)/2 \rfloor + 1$</li>
 <li>$b$ inchangé</li>
 </ul>
 </li>
-<li>si $t[\,\lfloor (a + b)/2 \rfloor\,] &lt; v$, l'indice recherché est forcément <strong>après</strong> $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+<li>si $T[\,\lfloor (a + b)/2 \rfloor\,] &lt; x$, l'indice recherché est forcément <strong>après</strong> $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
 <ul>
 <li>$a$ inchangé</li>
 <li>$b' = \,\lfloor (a + b)/2 \rfloor\, - 1$</li>
@@ -306,7 +311,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <p><span id="algorithme-dichotomie"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
   <span class="token punctuation">(</span>a <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
-  <span class="token punctuation">(</span>b <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+  <span class="token punctuation">(</span>b <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
   m <span class="token operator">:=</span> <span class="token builtin">entier</span>
 
   <span class="token keyword">tant que</span> a <span class="token operator">≤</span> b<span class="token punctuation">:</span>
@@ -381,7 +386,7 @@ $$
 \end{array}
 $$
 </div>
-<p>On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la longueur du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :</p>
+<p>On en conclut le théorème fondamental de la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n) + 1$ itérations (avec $n$ la longueur du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -411,7 +416,7 @@ $$
 <li>...</li>
 <li>soit <code class="language-">x</code> est à l'indice $n-1$ du tableau</li>
 </ul>
-<p>En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations <code>si alors sinon</code>). De là :</p>
+<p>En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise l'instruction <code class="language-">si (expression) alors: ...</code>). De là :</p>
 <p><span id="n-test-2n"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -491,7 +496,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que le problème de <a href="../#probl%C3%A8me-max-tableau" class="interne">la recherche d'un élément maximal d'un tableau d'entiers</a> ordonné est en $\Theta(1)$</p>
+<p>Montrer que le problème de la recherche d'un élément maximal d'un tableau d'entiers ordonné est en $\Theta(1)$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
