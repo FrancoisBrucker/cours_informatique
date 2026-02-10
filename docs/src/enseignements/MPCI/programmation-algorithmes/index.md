@@ -316,7 +316,11 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 #### Vendredi : correction du DM
 
 > 2+h
- 
+
+{% attention %}
+Cette séance n'est pas dans l'emploi du temps. **Elle commence à 13h30 dans votre salle** 
+{% endattention %}
+
 Séance facultative. Venez si vous voulez voir la correction du DM et/ou avez des questions d'ordre algorithmique/code.
 
 ### Semaine 6
