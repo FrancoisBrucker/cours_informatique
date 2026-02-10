@@ -120,11 +120,11 @@ La complexité du problème de la recherche est en $\Theta(n)$ où $n$ est la lo
 
 On peut en déduire une règle générale de la complexité d'un problème :
 
-{%  attention "**À retenir**" %}
+{% attention2 "**À retenir**" %}
 Si les données n'ont pas de structure particulière — très souvent — la complexité d'un problème est au moins égale à la taille de ses données.
 
 Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.
-{% endattention %}
+{% endattention2 %}
 
 À vous :
 
@@ -149,27 +149,29 @@ Un cas particulier courant de recherche est le problème :
 
 {% note "**Problème de décision**" %}
 
-- **nom** : recherche ordonnée
-- **données** : une valeur et un tableau d'entiers triés par ordre croissant
-- **question** : valeur est-elle présente dans le tableau ?
+- **Nom** : recherche ordonnée
+- **Entrées** :
+  - un entier $x$
+  - un tableau d'entiers $T$
+- **Question** : existe-t-il un indice $0\leq i < T.\mbox{\small longueur}$ tel que $T[i] = x$  ?
 
 {% endnote %}
 
 Le problème _"recherche ordonnée"_ est un sous problème de _"recherche"_, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la longueur du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme `est_dans_tableau(T)`{.language-}.
 
-Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.
+Cependant on utilise souvent un autre algorithme : la recherche dichotomique.
 
 #### Algorithme de la recherche dichotomique
 
 Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique) permet de savoir si un entier donné est dans un tableau d'entier trié.
 
-On cherche à savoir si l'entier $v$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $t$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
+On cherche à savoir si l'entier $x$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $T$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
 
-- si $t[\\,\lfloor (a + b)/2 \rfloor\\,] = v$ on a trouvé l'élément
-- si $t[\\,\lfloor (a + b)/2 \rfloor\\,] > v$, l'indice recherché est forcément **avant** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] = x$ on a trouvé l'élément
+- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] > x$, l'indice recherché est forcément **avant** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
   - $a = \lfloor (a + b)/2 \rfloor + 1$
   - $b$ inchangé
-- si $t[\\,\lfloor (a + b)/2 \rfloor\\,] < v$, l'indice recherché est forcément **après** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
+- si $T[\\,\lfloor (a + b)/2 \rfloor\\,] < x$, l'indice recherché est forcément **après** $\lfloor (a + b)/2 \rfloor$. On recommence alors la procédure avec :
   - $a$ inchangé
   - $b' = \\,\lfloor (a + b)/2 \rfloor\\, - 1$
 
@@ -180,7 +182,7 @@ Ce principe donne l'algorithme suivant :
 ```pseudocode
 algorithme recherche_dichotomique(T: [entier], x: entier) → booléen:
   (a := entier) ← 0
-  (b := entier) ← t.longueur - 1
+  (b := entier) ← T.longueur - 1
   m := entier
 
   tant que a ≤ b:
@@ -254,7 +256,7 @@ $$
 $$
 </div>
 
-On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la longueur du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :
+On en conclut le théorème fondamental de la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$ : il y a donc au plus $K \leq \log_2(n) + 1$ itérations (avec $n$ la longueur du tableau). Comme $\log_2(n) = \frac{\ln(n)}{\ln(2)}$ on a :
 
 {% note "**Proposition**" %}
 L'algorithme `recherche_dichotomique`{.language-} résout le problème "recherche ordonnée" en $\mathcal{O}(\ln(n))$ (avec $n$ la longueur du tableau).
@@ -278,7 +280,7 @@ Commençons par remarquer que `x`{.language-} peut se trouver à chaque position
 - ...
 - soit `x`{.language-} est à l'indice $n-1$ du tableau
 
-En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations `si alors sinon`). De là :
+En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise l'instruction `si (expression) alors: ...`{.language-}). De là :
 
 <span id="n-test-2n"></span>
 {% note "**Proposition**" %}
@@ -322,7 +324,7 @@ La complexité du problème de la _"recherche ordonnée"_ est en $\Theta(\ln(n))
 <span id="problème-max-tableau-complexité"></span>
 
 {% exercice %}
-Montrer que le problème de [la recherche d'un élément maximal d'un tableau d'entiers](../#problème-max-tableau){.interne} ordonné est en $\Theta(1)$
+Montrer que le problème de la recherche d'un élément maximal d'un tableau d'entiers ordonné est en $\Theta(1)$
 {% endexercice %}
 {% details "corrigé" %}
 
