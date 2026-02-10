@@ -9,6 +9,7 @@ Tests et examens pour l'année scolaire 2025/2026
 
 1. [Test 1 : Preuve](./1_test.pdf){.interne} / [corrigé](./1_test_corrigé){.interne}
 2. [Test 2 : Programmation](./2_test){.interne} / [corrigé](2_test_corrigé){.interne}
+3. [Test 3 : complexité](./3_test.pdf){.interne} / [corrigé](){.interne}
 
 ## Devoir Maison
 

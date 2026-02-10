@@ -74,7 +74,7 @@ La thèse de Church-Turing a été initialement formulée pour les Machines de T
 
 {% lien %}
 
-Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws) pour une introduction en douceur de la problématique.
+Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws) pour une introduction en douceur à la problématique.
 
 {% endlien %}
 
@@ -127,7 +127,7 @@ Mais comment prouver qu'un algorithme répond bien au problème posé ? Il faut 
 
 ### Preuve d'algorithme
 
-Puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} on ne peut jamais être sur a priori qu'un algorithme donné résout le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.
+Puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](./bases-théoriques/arrêt-rice/#théorème-rice){.interne} on ne peut jamais être sur _a priori_ qu'un algorithme donné résout le problème attendu : il faut faire une démonstration spécifique pour chaque algorithme.
 
 Par exemple l'algorithme suivant :
 
