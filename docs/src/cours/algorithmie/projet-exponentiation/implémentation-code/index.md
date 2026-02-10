@@ -5,6 +5,7 @@ title: Projet exponentiation
 eleventyNavigation:
   prerequis:
     - /cours/coder-et-développer/tutoriel-matplotlib/
+    - /cours/coder-et-développer/débogueur/
 
 eleventyComputed:
   eleventyNavigation:
@@ -70,7 +71,7 @@ Vérifier que vos tests se lancent bien dans le terminal.
 
 Pour les tests, on utilisera les règles suivantes :
 
-{% note %}
+{% attention2 "**À retenir**" %}
 
 Organisation des tests :
 
@@ -78,7 +79,7 @@ Organisation des tests :
 - chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]`{.language-} où `[nom de la fonction_testée]`{.language-} est le nom de la fonction testée (ne mettez pas les `[]`) et `[ce que l'on teste]`{.language-} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
 - un test doit tester **une unique chose**. On peut se permettre d'avoir plusieurs `assert`{.language-} par fonction de test du moment que ce qu'on test peut être qualifié par un nom précis (la partie `[ce que l'on teste]`{.language-} du nom de la fonction de test)
 
-{% endnote %}
+{% endattention2 %}
 
 Terminons cette partie en utilisant le débogueur :
 
@@ -110,12 +111,6 @@ Dans le programme principal, calculez l'exponentiation d'un entier par un autre 
 En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (pour pourrez utiliser un espion et un log breakpoint).
 
 {% endfaire %}
-
-{% attention %}
-Ne supprimez pas les tests de l'algorithme naïf en créant ceux pour l'algorithme rapide ! Vos deux fonctions **DOIVENT** être testées.
-
-Si l'on modifie notre algorithme naif plus tard il faudra toujours qu'il soit testé.
-{% endattention %}
 
 ## Complexité temporelle
 
@@ -184,11 +179,11 @@ Le code précédent utilise une fonction du module [`time`{.language-}](https://
 
 {% endfaire %}
 
-Voua devriez voir que le temps d'exécution de chaque fonction est similaire mais non identique.
+Vous devriez voir que le temps d'exécution de chaque fonction est similaire mais non identique.
 
-{% info %}
+{% attention2 "**À retenir**" %}
 Lorsque l'on calcule des complexités temporelles, on réalise plusieurs mesures pour en rendre la moyenne et ainsi atténuer les fluctuations.
-{% endinfo %}
+{% endattention2 %}
 
 ### Expérimentations
 
@@ -274,7 +269,7 @@ Nous allons dans cette partie représenter graphiquement nos mesures. Nous utili
 
 ### <span id="Matplotlib"></span>Bibliothèque Matplotlib
 
-Commencez par l'installer :
+Si ce n'est ps déjà fait, installez la bibliothèque :
 
 {% faire %}
 Dans un terminal, tapez la commande suivante pour installer [Matplotlib](https://matplotlib.org/) :
@@ -285,11 +280,7 @@ python -m pip install matplotlib
 
 {% endfaire %}
 
-Utiliser cette bibliothèque ne s'improvise pas. Commencez par lire le tutoriel suivant pour en comprendre les bases :
-
-{% aller %}
-Suivez le [tutoriel Matplotlib](/cours/coder-et-développer/bases-programmation/matplotlib/){.interne}. Il est fait pour être utilisé avec un notebook, mais vous devriez pouvoir facilement convertir les exemples pour pouvoir les utiliser dans un fichier python normal.
-{% endaller %}
+Utiliser cette bibliothèque ne s'improvise pas. **Commencez par faire le tutoriel en prérequis** pour en comprendre les bases.
 
 ### Temps naïf
 

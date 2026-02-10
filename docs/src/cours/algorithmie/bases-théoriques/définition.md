@@ -578,7 +578,7 @@ La remarque précédente est un cas particulier d'[un théorème plus général 
 S'il y a une injection d'un ensemble $E$ dans une partie $F$ de celui-ci, alors $E$ et $F$ sont en bijection.
 
 {% endnote %}
-{% details "preuve", "open" %}
+{% details "preuve" %}
 
 On suppose que $f$ est une injection de $E$ dans $F \subsetneq E$ et on note :
 
@@ -621,7 +621,7 @@ Nous allons montrer que $g$ est une bijection de $E$ dans $F$, ce qui conclura l
 {% note "**Corollaire (Théorème de Cantor-Bernstein)**" %}
 S'il y a une injection d'un ensemble $A$ dans un ensemble $B$  et une injection de $B$ dans $A$, alors $A$ et $B$ sont en bijection.
 {% endnote %}
-{% details "preuve", "open" %}
+{% details "preuve" %}
 
 Soit :
 

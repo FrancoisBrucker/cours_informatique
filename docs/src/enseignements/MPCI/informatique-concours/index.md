@@ -15,6 +15,13 @@ eleventyComputed:
 
 Petit recueil de ce qui peut/est déjà tombé au concours.
 
+## Programme de prépa
+
+{% lien %}
+- [Informatique commune](https://sti.eduscol.education.fr/sites/eduscol.education.fr.sti/files/textes/974-programme-informatique-xxsi.pdf)
+- [Informatique MPI](https://www.cpgelachenal.fr/documents/Programme%20informatique%20MP2I-MPI.pdf)
+{% endlien %}
+
 ## Oraux Concours Commun INP
 
 Pas forcément un concours que vous passez, mais peut valoir le coup de regarder puisqu'il y a aussi des corrigés :
@@ -181,9 +188,9 @@ Pour vous entraîner, refaites les exercices/projets durs en algorithmie et thé
 
 ## Centrale
 
+
 {% lien %}
-[Programme](https://www.groupe-centrale.com/wp-content/uploads/2025/01/Programme_des_epreuves_de_la_dominante_informatique_CUEC_2025.pdf
-)
+[concours universitaire](https://www.groupe-centrale.com/concours-universitaire/)
 {% endlien %}
 
 Le programme est gigantesque et regroupe tous les programmes de toutes les licences d'informatique (ainsi que de leurs options) de toute la France... Que vous n'ayez pas tout fait est normal !
