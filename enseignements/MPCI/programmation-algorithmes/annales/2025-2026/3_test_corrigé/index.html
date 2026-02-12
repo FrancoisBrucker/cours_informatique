@@ -92,13 +92,87 @@
   
 
   <h2>Barème</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>J'ai adopté la notation GEI pour les QCM lorsqu'il y a avait plusieurs réponses possibles :</p>
+<ul>
+<li>chaque réponse fausse non cochée : 1pt/nombre de réponses possibles</li>
+<li>chaque réponse vraie cochée : 1pt/nombre de réponses possibles</li>
+</ul>
+<p>C'est très gentil, voir trop gentil. Il est possible que cette notation ne soit pas conservée.</p>
+<h3>Ventilation des points</h3>
+<p>La note du test est sur 6 points, 1pt par question.</p>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 6 par $4$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
+<ul>
+<li><strong>un élève moyen</strong> fait les 3 premières question plus ou moins parfaitement, ce qui assure le 10</li>
+<li><strong>un bon élève</strong> a écrit en plus un algorithme de dichotomie plus ou moins correct, ce qui fait monter la note à 14</li>
+<li><strong>un très bon élève</strong> fait les 3 premières questions parfaitement et écrit un algorithme de dichotomie exacte.</li>
+</ul>
+</div></div>
+
+<h3>Ventilation des notes</h3>
+<table>
+<thead>
+<tr>
+<th>note/20</th>
+<th>&lt; 10</th>
+<th>[10, 12]</th>
+<th>]12, 14]</th>
+<th>]14, 16]</th>
+<th>]16, 20[</th>
+<th>20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>1</td>
+<td>15</td>
+<td>7</td>
+<td>11</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rang min</td>
+<td>42</td>
+<td>38</td>
+<td>24</td>
+<td>16</td>
+<td>6</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 13.1/20 (3.27/6)</li>
+<li>écart-type : 4.01/20 (1.01/6)</li>
+<li>médiane : 13.17/20 (3.29/6)</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Seul 1 élève a en dessous de la moyenne pour absence non justifiée au test.</p>
+</div></div>
+
+<p>Autrement, je suis encore une fois globalement satisfait de votre travail. Attention cependant aux définitions de la complexité, il y a quand même globalement quelques flottements... atténués par la notation très généreuse. Révisez donc tout de même cette partie car même si la base est apprise les fondations ne sont pas encore bien solide et <a href="https://www.youtube.com/watch?v=MpbBc30DbQw&amp;list=PLNPGM2D7aODeeRDxgwwtnwZTAApuJznnu&amp;index=9">les chateaux fait de sable s'écroulent fatalement dans l'eau</a>.</p>
 <h2>Erreurs fréquemment rencontrées</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<h3>Complexité</h3>
+<p>Peut de personnes ont tous juste sur les 2 premières questions. Reprenez le cours pour comprendre où vous vous êtes trompés.</p>
+<h3>Algorithme de la dichotomie</h3>
+<ul>
+<li>Attention, si l'on peut supposer que $f(a)$ et $f(b)$ sont de signe contraire, rien ne dit que $f(a) &lt;0$. Un test possible est de regarder le signe de $f(a) \cdot f((b-a)/2)$.</li>
+<li>Comme on rend le milieu de l'intervalle : le véritable zéro est au maximum différent de $(b-a)2^{n+1}$ de celui rendu.</li>
+<li>le $\epsilon$ correspond à l'erreur sur $x$, pas sa valeur $f(x)$ par rapport à 0.</li>
+</ul>
 <h2>Corrigé</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
