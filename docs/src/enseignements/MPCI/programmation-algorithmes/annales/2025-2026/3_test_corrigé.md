@@ -46,7 +46,7 @@ En 15 minutes :
 Seul 1 élève a en dessous de la moyenne pour absence non justifiée au test.
 {% endinfo %}
 
-Autrement, je suis encore une fois globalement satisfait de votre travail. Attention cependant aux définitions de la complexité, il y a quand même globalement quelques flottements... atténués par la notation très généreuse. Révisez donc tout de même cette partie car même si la base est apprise les fondations ne sont pas encore bien solide et [les chateaux fait de sable s'écroulent fatalement dans l'eau](https://www.youtube.com/watch?v=MpbBc30DbQw&list=PLNPGM2D7aODeeRDxgwwtnwZTAApuJznnu&index=9).
+Autrement, je suis encore une fois globalement satisfait de votre travail. Attention cependant aux définitions de la complexité, il y a quand même globalement quelques flottements... atténués par la notation très généreuse. Révisez donc tout de même cette partie car même si la base est apprise les fondations ne sont pas encore bien solide et [les chateaux fait de sable s'écroulent fatalement dans l'eau](https://www.youtube.com/watch?v=MpbBc30DbQw&list=PLNPGM2D7aODeeRDxgwwtnwZTAApuJznnu&index=9), fût-ce-t-ils [en Espagne](https://www.youtube.com/watch?v=a9i843jr_qo&list=OLAK5uy_n_oWxIoSXBcNKdtpahhNFPpU-KLXAZI-U&index=10).
 
 ## Erreurs fréquemment rencontrées
 
