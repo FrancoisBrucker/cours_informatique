@@ -100,6 +100,8 @@ Des tris utiles dans des cas spécifiques, et dont la complexité semble plus pe
 [Calcul du pgcd](./pgcd){.interne}
 {% endaller %}
 
+<!-- ds 1 L1 25-26
+
 ## {2, 3}-SUM
 
 > - **Utilité** : un classique des concours, sans aucune indications bien sur !
@@ -107,4 +109,4 @@ Des tris utiles dans des cas spécifiques, et dont la complexité semble plus pe
 
 {% aller %}
 [{2, 3}-SUM](./2_3-SUM){.interne}
-{% endaller %}
+{% endaller %} -->
