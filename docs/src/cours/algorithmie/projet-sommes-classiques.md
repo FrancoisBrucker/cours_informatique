@@ -303,19 +303,21 @@ $$
 L'encadrement de l'exercice précédent montre que $H(n) / \ln(n) \to_{+\infty} 1$ [les deux fonctions sont donc équivalentes](https://fr.wikipedia.org/wiki/%C3%89quivalent) en $+\infty$ (ce qui est plus fort que ce qu'on demande)
 {% enddetails %}
 
-## Problème de Bâle
+## <span id="problème-Bâle"></span>Problème de Bâle
+
+<!-- 
 
 > TBD <https://www.youtube.com/watch?v=CC2DG391HmA> en Anglais avec une façon rigolote de dire Bernouilli, mais c'est bien fait.
 
 > TBD une démo <https://www.youtube.com/watch?v=JZiDuryIMQE>
+ -->
+
 
 {% lien %}
 [Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le)
 {% endlien %}
 
 La somme suivante à un nom car le calcul exact de sa limite elle a résisté pendant plusieurs années avant qu'Euler n'en vienne à bout. Son résultat est diablement surprenant :
-
-<span id="problème-Bâle"></span>
 
 <div>
 $$

@@ -160,29 +160,65 @@ Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :
 
 <div>
 $$
-C \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2})) = \mathcal{O}(1)
+C \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
 $$
 </div>
 
-{% info %}
-On a utilisé le fait, [on le démontrera](../../projet-sommes-classiques/){.interne}, que la série est convergente et donc :
+La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée [Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le) et est une série convergente ([on le démontrera](../../projet-sommes-classiques/#problème-Bâle){.interne}). On a donc la proposition surprenante suivante :
+
+{% note "**Proposition**" %}
+La complexité en moyenne du problème de la reconnaissance est en temps constant.
+{% endnote %}
+{% details "preuve", "open" %}
+
+On a utilisé le fait, que la série est convergente et donc :
 
 <div>
 $$
-\sum_{i=1}^n\frac{1}{i^2} = \mathcal{O}(1)
+\sum_{i=1}^n\frac{1}{i^2} \leq \sum_{i=1}^{+\infty} \frac{1}{i^2} \leq 2 = \mathcal{O}(1)
 $$
 </div>
 
-{% endinfo %}
+{% enddetails %}
 
 Ce résultat est remarquable sous (au moins) deux aspects :
 
-- la complexité en moyenne est égale à la complexité minimale et est en temps constant !
-- ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.
-
 {% attention2 "**À retenir**" %}
-Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente) est un truc utile pour démontrer qu'un algorithme est en temps constant !
+
+- Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !
+- Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.
+- Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente) est un truc utile pour démontrer qu'un algorithme est en temps constant.
+
 {% endattention2 %}
+
+Je vois bien dans votre regard que vous ne me croyez pas. Testez donc par vous même avec ce petit code python :
+
+```python
+from random import shuffle
+
+def compte(T):
+    for i in range(len(T)-1):
+        if T[i] > T[i+1]:
+            return i +1
+    return len(T) - 1
+
+
+T = list(range(20))
+
+
+nb = []
+for i in range(100):
+    shuffle(T)
+    nb.append(compte(T))
+
+print(nb)
+print(max(nb))
+
+```
+
+{% faire %}
+Testez le code précédent (chez moi le max était de 4) puis essayez avec des tableaux plus contraint (comme `T = 5 * list(range(4))`{.language-} par exemple)
+{% endfaire %}
 
 ## Complexité du problème de la reconnaissance
 
@@ -191,3 +227,4 @@ Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argum
 {% note "**Proposition**" %}
 La complexité du problème _"est trié ?"_ est de $\Theta(n)$ où $n$ est la taille du tableau en entrée.
 {% endnote %}
+
