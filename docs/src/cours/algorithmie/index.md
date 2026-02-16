@@ -850,7 +850,10 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 [Mélanger un tableau](./projet-mélange){.interne}
 {% endaller %}
 
-> TBD playlist sur algorithme randomisé. <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>
+> TBD playlist sur algorithme randomisé :
+> - <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>
+> - <https://www.youtube.com/watch?v=3ivSUyNu4DA&list=PL278F9gM5aZb8HXAh2yT3QmwyYQZrQUNH>
+> - <https://www.youtube.com/watch?v=01ohO542NMI&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO>
 > TBD pi et nb aléatoire (nombre univers ?) : <https://www2.lbl.gov/Science-Articles/Archive/pi-random.html>
 > TBD nombre aléatoires : <https://xkcd.com/221/> et <https://imgur.com/random-number-generator-bwFWMqQ>
 
@@ -861,3 +864,4 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
 > TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
 > TBD premier et random : <https://www.youtube.com/watch?v=tBzaMfV94uA>
+> TBD advanced algorithm (des idées à prendre) <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->
