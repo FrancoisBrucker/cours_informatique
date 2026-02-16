@@ -325,9 +325,15 @@ Séance facultative. Venez si vous voulez voir la correction du DM et/ou avez de
 
 ### Semaine 6
 
-> DS 1 
+> 2h
 >
-> TBD mettre des exercices pour s'entraîner (ie ds des années précédentes corrigés).
+
+{% attention %}
+Devoir surveillé d'algorithmie. Le programme est tout ce qu'on a vu jusqu'à présent
+{% endattention %}
+
+
+Vous pouvez vous entraîner sur les DS1 des années précédentes dans les annales : faites les exercices avant de regarder les corrigés.
 
 
 <!-- TBD

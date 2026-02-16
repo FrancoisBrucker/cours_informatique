@@ -846,9 +846,10 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 > TBD hasard et algorithmes randomisés.
 
 > TBD méthode probabiliste. premier exemple : <https://www.youtube.com/watch?v=4weMmFZSBtI>
+<!-- 
 {% aller %}
 [Mélanger un tableau](./projet-mélange){.interne}
-{% endaller %}
+{% endaller %} -->
 
 > TBD playlist sur algorithme randomisé :
 > - <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>
