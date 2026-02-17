@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
+> ICI type (int, int)
 Les tuples permettent de créer des types composés. C'est un regroupement d'objets qu'on représente en algorithmie avec des parenthèses :
 
 ```pseudocode

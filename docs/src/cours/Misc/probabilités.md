@@ -91,11 +91,11 @@ On a :
 
 {% note "**Définition**" %}
 
-Soit $\mathbb{P}$ une probabilité sur $\Omega$. La **_probabilité de $B$ sachant $A$_** est définie (pour $A, B \subseteq \Omega$) telle que :
+Soit $\mathbb{P}$ une probabilité sur $\Omega$. La **_probabilité de $A$ sachant $B$_** est définie (pour $A, B \subseteq \Omega$) telle que :
 
 <div>
 $$
-\mathbb{P}_A(B) = \mathbb{P}(B \vert A)\coloneqq \frac{\mathbb{P}(B \cap A)}{\mathbb{P}(A)}
+\mathbb{P}_B(A) = \mathbb{P}(A \vert B)\coloneqq \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}
 $$
 </div>
 
@@ -174,6 +174,18 @@ S'il n'y a pas ambiguïté, on se permettra même d'écrire :
 
 - ${\Pr}[u = x]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$
 - ${\Pr}[X = x]$ si l'on veut expliciter la variable aléatoire $X$
+ 
+Nos notations permettent d'étendre le conditionnement aux variables aléatoires :
+
+{% note "**Définition**" %}
+
+<div>
+$$
+{\Pr}[A \vert B] \coloneqq \frac{\Pr[A\, , \, B]}{\Pr[B]}
+$$
+</div>
+
+{% endnote %}
 
 ### Uniformité et Indépendance
 

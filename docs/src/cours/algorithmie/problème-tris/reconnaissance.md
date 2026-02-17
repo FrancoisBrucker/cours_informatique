@@ -88,71 +88,145 @@ La question est délicate. Il faut se demander quel est le modèle sous-jacent �
 
 Un tableau $T$ d'entiers de longueur $n$ est **_un tableau aléatoire_** s'il résulte de la procédure suivante :
 
-- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation) $\sigma$ de $[0, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
-- $T[i] = \sigma(i)$ pour tout $i \in [0, n-1]$
+- on tire [une permutation](https://fr.wikipedia.org/wiki/Permutation) $\sigma$ de $[0 \\, ..\\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)
+- $T[i] = \sigma(i)$ pour tout $[0 \\, ..\\, n-1]$
 {% endnote %}
+{% info %}
+Dans un tableau aléatoire, toutes les valeurs sont différentes.
+{% endinfo %}
 
 On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés :
 
 {% note "**Proposition**" %}
-Si $T$ est un tableau aléatoire, on a que la probabilité que $T[i] = k$, donc que $T[i]$ soit le $k$ plus petit élément du tableau, vaut :
+Si $T$ est un tableau aléatoire, la probabilité que $T[i] = k$ vaut :
 
 <div>
 $$
-\mathbb{P}(T[i] = k) = \frac{1}{n}
+{\Pr}[T[i] = k] = \frac{1}{n}
 $$
 </div>
 {% endnote %}
 {% details "preuve", "open" %}
 
-Parmi les $n!$ permutations de $[0, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k-1$. La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.
+Parmi les $n!$ permutations de $[0 \\, ..\\, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k$ (on fixe une valeur parmi $n$, il en reste $n-1$ qui font ce qu'elles veulent). La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.
 
 {% enddetails %}
+
+Comme les valeurs d'un tableau aléatoires sont deux à deux différentes, la proposition précédente peut s'interpréter aussi comme :
+
 {% note "**Corollaire**" %}
-Si $T$ est un tableau aléatoire, si $k \leq i$ on a :
+
+La probabilité que $T[i]$ soit le $k$ plus petit élément d'un tableau aléatoire de longueur $n$  vaut $\frac{1}{n}$, quelque soit $k$.
+
+{% endnote %}
+
+Enfin, dernière propriété qui va être utile dans les calculs :
+
+{% note "**Corollaire**" %}
+Si $T$ est un tableau aléatoire, on a :
 
 <div>
 $$
-\mathbb{P}(T[i] = k)) = \frac{1}{i+1}
+{\Pr}[T[i] > k] = \frac{n-1-k}{n}
 $$
 </div>
+
 {% endnote %}
 {% details "preuve", "open" %}
 
-Tout se passe comme si on considérait un tableau aléatoire de taille $i+1$.
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[i] > k] &=& \sum\limits_{u > k}{\Pr}[[T[i] = u]\\
+&=& \sum\limits_{u > k}\frac{1}{n}\\
+&=& \frac{n-1-k}{n}\\
+\end{array}
+$$
+</div>
+
 
 {% enddetails %}
 
 Ce modèle véhicule de nombreuse propriété l'on aimerait avoir pour un tableau de nombres quelconques :
+
 
 {% exercice %}
 Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :
 
 <div>
 $$
-\mathbb{P}(T[u] > T[v]) = \frac{1}{2}
+{\Pr}[T[u] > T[v]] = \frac{1}{2}
 $$
 </div>
 {% endexercice %}
 {% details "corrigé" %}
-Prenons $u$ et $v$ deux indices différents du tableau. Tout se passe comme si on avait un tableau aléatoire de taille 2.
+
+Par définition :
+
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}{\Pr}[T[u] = i \, , \, T[v] > i]
+\end{array}
+$$
+</div>
+
+Puisque les valeurs de $T[u]$ et de $T[v]$ sont différentes mais indépendantes l'une de l'autre, on a :
+
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[T[v] > i \,\vert\, T[v] \neq i])
+\end{array}
+$$
+</div>
+
+
+D'après la proposition précédente et ses deux corollaires :
+
+- ${\Pr}[T[u] = i] = \frac{1}{n}$
+- ${\Pr}[T[v] > i \\,\vert\\, T[v] \neq i] = \frac{\Pr[T[v] > i \\, , \\, T[v] \neq i]}{\Pr[T[v] \neq i]} = \frac{n-1-i}{n} \cdot \frac{1}{\frac{n-1}{n}} = \frac{n-1-i}{n-1}$ (on a que $n-1$ possibilité pour $T[v]$ puisqu'il ne peut pas être égal à $i$)
+
+Ce qui nous permet de conclure :
+
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[T[v] > i \,\vert\, T[v] \neq i])\\
+&=& \sum\limits_{0\leq i< n}(\frac{1}{n} \cdot \frac{n-1-i}{n-1})\\
+&=& \frac{1}{n(n-1)}\sum\limits_{0\leq i< n}(n-1-i)\\
+&=& \frac{1}{n(n-1)}\sum\limits_{0\leq j< n}(j)\\
+&=& \frac{1}{n(n-1)}\cdot \frac{n(n-1)}{2}\\
+&=& \frac{1}{2}\\
+\end{array}
+$$
+</div>
 
 {% enddetails %}
 
-Les propriétés précédentes nous permettent de voir que pour notre algorithme de reconnaissance, si $T$ est un tableau aléatoire alors la probabilité :
 
-- $p_1$ de ne faire que 1 itération est $\mathbb{P}(T[0] > T[1])$ et vaut $1/2$
-- $p_2$ de ne faire que 2 itérations est $\mathbb{P}(T[0] < T[1], T[1] > T[2])$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ (attention, $T[0] < T[1]$ et $T[1] > T[2]$ ne sont pas indépendant, on a donc pas $\mathbb{P}(T[0] < T[1], T[1] > T[2]) = \mathbb{P}(T[0] < T[1])\cdot \mathbb{P}(T[1] > T[2])$)
+
+
+Les propriétés précédentes nous permettent de voir que si $T$ est un tableau aléatoire alors la probabilité pour notre algorithme de reconnaissance fasse exactement :
+
+- 1 itération est $p_1 = {\Pr}[T[0] > T[1]]$ et vaut $1/2$
+- 2 itérations est $p_2 = {\Pr}[T[0] < T[1], T[1] > T[2]]$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ puisqu'il n'y a qu'une permutation de $i$ éléments différents parmi les $i!$ possibles qui est triée (attention, $T[0] < T[1]$ et $T[1] > T[2]$ ne sont **pas** indépendant donc ${\Pr}[T[0] < T[1], T[1] > T[2]] \neq {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2]]$)
 - ...
-- $p_i$ de ne faire que i itérations est la probabilité que $T[:i]$ soit trié mais que $T[:i+1]$ ne le soit pas :  : cette probabilité vaut $\frac{1}{i!} - \frac{1}{(i+1)!}$
+- i itérations est la probabilité que $T[:i]$ soit trié mais que $T[:i+1]$ ne le soit pas : cette probabilité vaut $p_i = \frac{1}{i!} - \frac{1}{(i+1)!}$
 - ...
-- $p_i$ de ne faire que $n$ itérations est la probabilité que $T[:n]$ soit trié mais que $T$ ne le soit pas :  : cette probabilité vaut $\frac{1}{(n-1)!} - \frac{1}{n!}$
+- $n$ itérations est la probabilité que $T[:n]$ soit trié mais que $T$ ne le soit pas : cette probabilité vaut $p_n = \frac{1}{(n-1)!} - \frac{1}{n!}$
 
 Comme chaque itération est de complexité $\mathcal{O}(1)$, la complexité en moyenne sous ce modèle de probabilité vaut :
 
 <div>
 $$
-C= \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))] = \sum_{i=1}^{n-1}(\frac{1}{i!} - \frac{1}{(i+1)!}) \cdot \mathcal{O}(i)) = \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+\begin{array}{lcl}
+C(n) &=& \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))]\\
+ &=& \sum_{i=1}^{n-1}(\frac{1}{i!} - \frac{1}{(i+1)!}) \cdot \mathcal{O}(i)) \\
+ &=& \sum_{i=1}^{n-1}(\frac{(i+1)! - i!}{i! \cdot (i+1)!} \cdot \mathcal{O}(i))\\
+ &=& \sum_{i=1}^{n-1}(\frac{i!\cdot (i+1-1)}{i! \cdot (i+1)!} \cdot \mathcal{O}(i))\\
+ &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+\end{array}
 $$
 </div>
 
@@ -160,7 +234,7 @@ Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :
 
 <div>
 $$
-C \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
+C(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
 $$
 </div>
 
@@ -181,13 +255,13 @@ $$
 
 {% enddetails %}
 
-Ce résultat est remarquable sous (au moins) deux aspects :
+Ce résultat est remarquable :
 
 {% attention2 "**À retenir**" %}
 
 - Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !
 - Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.
-- Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente) est un truc utile pour démontrer qu'un algorithme est en temps constant.
+- Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente) est très utile pour démontrer qu'un algorithme est en temps constant.
 
 {% endattention2 %}
 
@@ -217,7 +291,7 @@ print(max(nb))
 ```
 
 {% faire %}
-Testez le code précédent (chez moi le max était de 4) puis essayez avec des tableaux plus contraint (comme `T = 5 * list(range(4))`{.language-} par exemple)
+Testez le code précédent (chez moi le max était de 4) puis essayez avec des tableaux plus contraint (comme `T = 5 * list(range(4))`{.language-} par exemple pour voir que c'est toujours vrai si le tableau possède quelques égalités)
 {% endfaire %}
 
 ## Complexité du problème de la reconnaissance

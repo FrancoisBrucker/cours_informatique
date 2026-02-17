@@ -10,8 +10,7 @@ eleventyComputed:
 ---
 
 
-
-> TBD faire comme GO. Juste struct. Et ajouter un type méthode qui prend en receiver un objet.
+> TBD forcer les attributs. Ce n'est pas un abus de langage.
 
 
 Un structure de donnée généralise les tuples et est une version algorithmique des objets de la programmation orientée objet. Une fois définis on pourra utiliser une structure comme un nouveau type de variable.

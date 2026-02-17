@@ -566,6 +566,8 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 
 ## <span id="partie-4"></span>Partie IV : structures de données avancées
 
+> TBD dire que en vrai lorsque l'on utilise la mémoire tout doit être fini. Donc plus d'entier mais des u8, u64, plus de réels mais des double ou float.
+> on peut expliciter une variable comme étant un lien vers la mémoire : pointeur
 > TBD ici parler de pointeurs et l'ajouter comme type de base. Distinguer l'objet de son adresse (ie. variable). Tout se passe comme si avant on avait que des pointeurs : un pointeur est comme un objet "variable" Fait pour gagner du temps : on met tout dans la pile par défaut. Cela accélère mais ajoute une complexité. Par défaut un tableau est constitué d'objets mis bout à bout. Permet d'avoir des tableaux de variables comme avant en utilisant des pointeurs.
 >
 > cette architecture est préférée pour des raisons de rapidité : car :
