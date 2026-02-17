@@ -237,9 +237,9 @@ Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle d
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>De façon intuitive</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si les données sont équiprobables, la boucle tant que remontera en moyenne de $\frac{i}{2}$ cases chaque <code class="language-">T[i]</code>. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$</p>
+<p>Le nombre moyen d'itérations de $K_i$ est égal à $\widehat{K_i} = \frac{i}{2}$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -252,20 +252,46 @@ Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle d
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>de façon formelle</p>
+<p>preuve intuitive</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On suppose que le tableau en entrée suive <a href="../reconnaissance/#d%C3%A9finition-mod%C3%A8le-tableau-al%C3%A9atoire" class="interne">le modèle aléatoire</a> et on calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas, ce qui donne le calcul :</p>
+<p>Si les données sont équiprobables, la boucle tant que remontera en moyenne de $\frac{i}{2}$ cases chaque <code class="language-">T[i]</code>.</p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On suppose que le tableau en entrée suive <a href="../reconnaissance/#d%C3%A9finition-mod%C3%A8le-tableau-al%C3%A9atoire" class="interne">le modèle aléatoire</a> et on calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas. Comme le nombre d'itération de la remonté dépend de la valeur de $T[i]$ par rapport aux éléments de $T[:i]$, l'algorithme fait :</p>
+<ul>
+<li>$i$ remontée si $T[i]$ est le plus petit élément de $T[:i+1]$</li>
+<li>...</li>
+<li>$0$ remontée si $T[i]$ est le plus grand élément de $T[:i+1]$</li>
+</ul>
+<p>La probabilité de faire $k$ remontée est donc égale à la probabilité que $T[i]$ soit le $i-k + 1$ ème plus petit élément de $T[:i+1]$. <a href="../reconnaissance/#proba-k-tableau-al%C3%A9atoire" class="interne">Cette probabilité est toujours la même</a> et vaut $\frac{1}{i+1}$ puisque tout se passe comme si on avait une permutation d'un tableau de taille $i+1$ ($T[:i+1]$). Ce qui donne le calcul :</p>
 <div>
 $$
 \begin{array}{lcl}
-\widehat{K_i} &=& \sum_{j=0}^{i}(\mathbb{P}(T[i] = j)\cdot j)\\
-&=& \sum_{j=0}^{i}(\frac{1}{i+1}\cdot j)\\
-&=& \frac{1}{i+1}\cdot \frac{(i+1)\cdot i}{2})\\
+\widehat{K_i} &=& \sum_{k=0}^{i}(\frac{1}{i+1}\cdot k)\\
+&=& \frac{1}{i+1}\cdot \frac{(i+1)\cdot i}{2}\\
 &=& \frac{i}{2}\\
 \end{array}
 $$
@@ -325,7 +351,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Soit $T$ un tableau suivant <a href="../reconnaissance/#d%C3%A9finition-mod%C3%A8le-tableau-al%C3%A9atoire" class="interne">le modèle aléatoire</a>.</p>
-<p>Comme $\mathbb{P}(T[0] &gt; T[i]) = \frac{1}{2}$ pour tout $i &lt; T.\mbox{\small longueur}$, l'espérance de $\vert \{T[i] &gt; T[0] \mid i &gt; 0\}$ vaut $T.\mbox{\small longueur}/2$.</p>
+<p>Comme ${\Pr}(T[0] &gt; T[i]) = \frac{1}{2}$ pour tout $i &lt; T.\mbox{\small longueur}$, l'espérance de $\vert \{T[i] &gt; T[0] \mid i &gt; 0\}$ vaut $T.\mbox{\small longueur}/2$.</p>
 </div>
 </details>     
 </div>

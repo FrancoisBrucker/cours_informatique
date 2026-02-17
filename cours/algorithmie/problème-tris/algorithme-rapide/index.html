@@ -114,7 +114,7 @@
 </div></div>
 
 <h2>pseudo-code</h2>
-<p>En pseudo-code cela donne :</p>
+<p>En pseudo-code cela pourrait donner :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">rapide</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">si</span> T<span class="token punctuation">.</span>longueur <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">rendre</span> une copie de T</span>
@@ -157,6 +157,11 @@
 </div>
 </details>     
 </div>
+<p>Remarquez que l'on a commis quelques abus de notation dans la création du tableau. On peut le faire car :</p>
+<ul>
+<li>on commence à avoir l'habitude d'écrire des algorithmes et on voit très bien comment coder l'abus</li>
+<li>la lisibilité du pseudo-code en est grandement améliorée</li>
+</ul>
 <h2><span id="preuve-rapide"></span> Preuve</h2>
 <p>Comme <code class="language-">rapide</code> est une implémentation de la méthode diviser pour régner : on trie deux tableaux, le premier contenant les éléments plus petit que T[0], l'autre les éléments strictement plus grand puis on les concatène. Son fonctionnement est donc assuré <strong>si</strong> les récursions s'arrêtent.</p>
 <p>C'est effectivement le cas ici puisque les tableaux <code class="language-">T1</code> et <code class="language-">T2</code> sont strictement plus petit que  <code class="language-">T</code> et qu'il y ait une condition d'arrêt sur la taille du tableau.</p>

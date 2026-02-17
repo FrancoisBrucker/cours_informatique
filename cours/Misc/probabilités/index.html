@@ -96,15 +96,16 @@
     
   
 
-  <blockquote>
-<p>TBD <a href="https://mathoverflow.net/questions/358184/probability-of-a-random-variable-greater-than-its-expected-value">https://mathoverflow.net/questions/358184/probability-of-a-random-variable-greater-than-its-expected-value</a>
-chernoff bound, reverse markov inequality,
-Paley–Zygmund inequality <a href="https://en.wikipedia.org/wiki/Paley%E2%80%93Zygmund_inequality">https://en.wikipedia.org/wiki/Paley–Zygmund_inequality</a>
-Chebyshev inequality <a href="https://en.wikipedia.org/wiki/Chebyshev%27s_inequality">https://en.wikipedia.org/wiki/Chebyshev's_inequality</a>
-<a href="https://www.youtube.com/watch?v=lKkyxtzz4Uo">https://www.youtube.com/watch?v=lKkyxtzz4Uo</a>
-thm centrale limite : <a href="https://www.youtube.com/watch?v=FGIxzMGE01A">https://www.youtube.com/watch?v=FGIxzMGE01A</a> et <a href="https://www.youtube.com/watch?v=axA1-yR-KDw">https://www.youtube.com/watch?v=axA1-yR-KDw</a>
-convergences : <a href="https://www.youtube.com/watch?v=KedtZmQ5GyM">https://www.youtube.com/watch?v=KedtZmQ5GyM</a> et <a href="https://www.youtube.com/watch?v=UmSSrXr4ixM&amp;list=PLl7EPYrsru4_usb1yKNUr8wtQGcVP9DZ6">https://www.youtube.com/watch?v=UmSSrXr4ixM&amp;list=PLl7EPYrsru4_usb1yKNUr8wtQGcVP9DZ6</a></p>
-</blockquote>
+  <!-- 
+> TBD <https://mathoverflow.net/questions/358184/probability-of-a-random-variable-greater-than-its-expected-value>
+> chernoff bound, reverse markov inequality,
+> Paley–Zygmund inequality <https://en.wikipedia.org/wiki/Paley%E2%80%93Zygmund_inequality>
+> Chebyshev inequality <https://en.wikipedia.org/wiki/Chebyshev%27s_inequality>
+> <https://www.youtube.com/watch?v=lKkyxtzz4Uo>
+> thm centrale limite : <https://www.youtube.com/watch?v=FGIxzMGE01A> et <https://www.youtube.com/watch?v=axA1-yR-KDw>
+> convergences : <https://www.youtube.com/watch?v=KedtZmQ5GyM> et <https://www.youtube.com/watch?v=UmSSrXr4ixM&list=PLl7EPYrsru4_usb1yKNUr8wtQGcVP9DZ6> 
+> 
+-->
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -255,9 +256,6 @@ $$
 </blockquote>
 <h2>Variables aléatoires</h2>
 <p>Les événements se manifestent via des <strong><em>variable aléatoire</em></strong>. L'univers étant souvent soit inconnu soit trop compliqué pour en tirer quoi que ce soit d'utile.</p>
-<blockquote>
-<p>TBD : deux trucs qui bougent avec le &quot;sachant B&quot;</p>
-</blockquote>
 <h3>Définitions et notations</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -268,8 +266,9 @@ $$
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>variable aléatoire</em></strong> $X$ est une fonction $X : \Omega \rightarrow \mathcal{U}$ ($U$ quelconque a priori) où $(\Omega, \mathbb{P})$ est un espace probabilisé. On note alors :</p>
 <ul>
-<li>$\mathbb{P}\{X = u\} \coloneqq \mathbb{P}(X^{-1}(u))$</li>
-<li>$\mathbb{P}\{X \in U\} \coloneqq \mathbb{P}(X^{-1}(U))$, $u \subseteq \mathcal{U}$</li>
+<li>$\mathbb{P}\{X = u\} \coloneqq \mathbb{P}(X^{-1}(\{u\}))$</li>
+<li>$\mathbb{P}\{X \in U\} \coloneqq \mathbb{P}(X^{-1}(U))$,</li>
+<li>$\mathbb{P}\{X \in U \, , \, Y \in V\} \coloneqq \mathbb{P}(X^{-1}(U) \cap Y^{-1}(V))$ (les deux variables aléatoires sont sur le même espace probabilisé)</li>
 </ul>
 <p>On dira que $X(\omega) = u$ est une <strong><em>réalisation</em></strong> de la variable aléatoire $X$. Cette réalisation est de probabilité $\mathbb{P}\{X = u\}$.</p>
 </div></div>
@@ -290,13 +289,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On définit :</p>
-<div>
-$$
-u \xleftarrow{\mathbb{P}} \mathcal{U}
-$$
-</div>
-<p>Comme étant une variable aléatoire :</p>
+<p>On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :</p>
 <ul>
 <li>prenant ses valeurs dans $\mathcal{U}$</li>
 <li>suivant la loi de probabilité $\mathbb{P}$</li>
@@ -320,8 +313,8 @@ $$
 
 <p>S'il n'y a pas ambiguïté, on se permettra même d'écrire :</p>
 <ul>
-<li>${\Pr}[u = x]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$</li>
-<li>${\Pr}[X = x]$ si l'on veut expliciter la variable aléatoire $X$</li>
+<li>${\Pr}[x = k]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$</li>
+<li>${\Pr}[X = k]$ si l'on veut expliciter la variable aléatoire $X$</li>
 </ul>
 <p>Nos notations permettent d'étendre le conditionnement aux variables aléatoires :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -331,9 +324,10 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
+<p>Pour deux expression $A$ et $B$ on définit le conditionnement come étant :</p>
 <div>
 $$
-{\Pr}[A \vert B] \coloneqq \frac{\Pr[A\, , \, B]}{\Pr[B]}
+{\Pr}[A \,\vert\, B] \coloneqq \frac{\Pr[A\, , \, B]}{\Pr[B]}
 $$
 </div>
 </div></div>
