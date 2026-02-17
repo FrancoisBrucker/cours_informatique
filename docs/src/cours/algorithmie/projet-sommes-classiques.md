@@ -362,14 +362,10 @@ $$
 $$
 </div>
 {% endexercice %}
-{% info "**Indice**" %}
-Pour $i> 1$ vous pourrez remarquer que : $\frac{1}{i(i+1)} \leq \frac{1}{i^2} \leq \frac{1}{i(i-1)}$
-
-{% endinfo %}
 
 {% details "corrigé" %}
 
-En sommant l'indice on obtient :
+Pour $i> 1$ on a clairement $\frac{1}{i(i+1)} \leq \frac{1}{i^2} \leq \frac{1}{i(i-1)}$, et donc en sommant l'indice on obtient :
 <div>
 $$
 \sum_{i=1}^{n}\frac{1}{i(i+1)} \leq \sum_{i=1}^{n}\frac{1}{i^2} \leq 1 + \sum_{i=2}^{n}\frac{1}{i(i-1)}

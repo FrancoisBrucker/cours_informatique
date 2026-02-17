@@ -402,7 +402,7 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 
 > TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, médiane en temps linéaire)
 
-
+> TBD déplacer 2-3 sum ici (il est dans projet-algorithmes-classiques/ pour l'instant)
  -->
 
 ## <span id="partie-3"></span>Partie III : problèmes

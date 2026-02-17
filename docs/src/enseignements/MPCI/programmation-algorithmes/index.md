@@ -332,8 +332,24 @@ Séance facultative. Venez si vous voulez voir la correction du DM et/ou avez de
 Devoir surveillé d'algorithmie. Le programme est tout ce qu'on a vu jusqu'à présent
 {% endattention %}
 
+Pour accélérer vos calculs de complexité :
 
-Vous pouvez vous entraîner sur les DS1 des années précédentes dans les annales : faites les exercices avant de regarder les corrigés.
+{% aller %}
+
+1. [Calculer des sommes pour la complexité d'algorithmes itératifs](/cours/algorithmie/projet-sommes-classiques/){.interne}
+2. [Calculer des sommes pour la complexité d'algorithmes récursifs](/cours/algorithmie/projet-équations-classiques/){.interne}
+
+{% endaller %}
+
+Pour vous entraîner sur des exercices classiques :
+
+{% aller %}
+
+[Algorithmes classiques](/cours/algorithmie/projet-algorithmes-classiques/){.interne}
+
+{% endaller %}
+
+Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des années précédentes dans [les annales](./#annales){.interne}. Comme toujours, faites les exercices avant de regarder les corrigés et qui sait vous allez peut-être même y prendre du plaisir, certains exercices étant diablement jolis.
 
 
 <!-- TBD
@@ -782,6 +798,6 @@ Rendre DM4 pour le vendredi 16 mai [sur amétice](https://ametice.univ-amu.fr/mo
 
 {% endattention %} -->
 
-## Annales
+## <span id="annales"></span>Annales
 
 Les [annales des tests et contrôles](./annales){.interne} de ce cours

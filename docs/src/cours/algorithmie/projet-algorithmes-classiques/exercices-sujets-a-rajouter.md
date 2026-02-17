@@ -17,4 +17,3 @@ eleventyComputed:
 > TBD <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
 
 > TBD bezout : <http://pascal.delahaye1.free.fr/cpge/informatique/cours%20projetes/cp04.pdf>
-
