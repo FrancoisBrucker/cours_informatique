@@ -88,9 +88,9 @@ Allons un peu plus vite :
 La complexité max et min de `combiner`{.language-} est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux `T1`{.language-} et `T2`{.language-} respectivement.
 {% endnote %}
 
-### Attention
+Faites très attention aux conditions lors de votre implémentation. C'est très souvent source d'erreurs quand on va trop vite :
 
-{% exercice %}
+{% exercice "**Attention**" %}
 Montrer que l'algorithme combiner précédent **n'est pas équivalent** à celui-ci :
 
 ```pseudocode/
@@ -114,7 +114,6 @@ algorithme combiner_faux(T1: [entier], T2: [entier]) → [entier]:
 {% details "corrigé" %}
 Si `i2 < T2.longueur`{.language-} mais que `i1 = T1.longueur`{.language-} l'algorithme va planter car il va tenter d'accéder à `T1[i1]`{.language-} qui n'existe pas.
 
-Faites très attention aux conditions. C'est très souvent source d'erreurs quand on va trop vite...
 {% enddetails %}
 
 ## Pseudo-code
@@ -127,8 +126,10 @@ algorithme fusion(T: [entier]) → [entier]:
         rendre nouveau tableau contenant T
     sinon:
         (milieu := entier) ← T.longueur // 2  # division entière
-        (T1 := [entier]) ← nouveau tableau contenant T[:milieu]
-        (T2 := [entier]) ← nouveau tableau contenant T[milieu:]
+        (T1 := [entier]) ← [entier]{T.longueur // 2}
+        T1 ← T[:milieu]
+        (T2 := [entier]) ← {T.longueur // 2 + T.longueur mod 2} # attention aux longueurs impaires
+        T2 ← T[milieu:]
 
         (T1_trié := [entier]) ← fusion(T1)
         (T2_trié := [entier]) ← fusion(T2)

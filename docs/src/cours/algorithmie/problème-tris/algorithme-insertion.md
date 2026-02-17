@@ -152,18 +152,27 @@ Cela signifie que pour chaque itération $i$ :
 - ...
 - `T[i]`{.language-} devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux, et on aura $K_i = i\cdot\mathcal{O}(1)$ pour ceux-ci.
 
-{% note "**De façon intuitive**" %}
-Si les données sont équiprobables, la boucle tant que remontera en moyenne de $\frac{i}{2}$ cases chaque `T[i]`{.language-}. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$
+{% note "**Proposition**" %}
+Le nombre moyen d'itérations de $K_i$ est égal à $\widehat{K_i} = \frac{i}{2}$
 {% endnote %}
-{% details "de façon formelle", "open" %}
-On suppose que le tableau en entrée suive [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne} et on calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas, ce qui donne le calcul :
+{% details "preuve intuitive", "open" %}
+Si les données sont équiprobables, la boucle tant que remontera en moyenne de $\frac{i}{2}$ cases chaque `T[i]`{.language-}.
+{% enddetails %}
+{% details "preuve" %}
+
+On suppose que le tableau en entrée suive [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne} et on calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas. Comme le nombre d'itération de la remonté dépend de la valeur de $T[i]$ par rapport aux éléments de $T[:i]$, l'algorithme fait :
+
+- $i$ remontée si $T[i]$ est le plus petit élément de $T[:i+1]$
+- ...
+- $0$ remontée si $T[i]$ est le plus grand élément de $T[:i+1]$
+
+La probabilité de faire $k$ remontée est donc égale à la probabilité que $T[i]$ soit le $i-k + 1$ ème plus petit élément de $T[:i+1]$. [Cette probabilité est toujours la même](../reconnaissance/#proba-k-tableau-aléatoire){.interne} et vaut $\frac{1}{i+1}$ puisque tout se passe comme si on avait une permutation d'un tableau de taille $i+1$ ($T[:i+1]$). Ce qui donne le calcul :
 
 <div>
 $$
 \begin{array}{lcl}
-\widehat{K_i} &=& \sum_{j=0}^{i}(\mathbb{P}(T[i] = j)\cdot j)\\
-&=& \sum_{j=0}^{i}(\frac{1}{i+1}\cdot j)\\
-&=& \frac{1}{i+1}\cdot \frac{(i+1)\cdot i}{2})\\
+\widehat{K_i} &=& \sum_{k=0}^{i}(\frac{1}{i+1}\cdot k)\\
+&=& \frac{1}{i+1}\cdot \frac{(i+1)\cdot i}{2}\\
 &=& \frac{i}{2}\\
 \end{array}
 $$
@@ -193,7 +202,7 @@ Soit $T$ un tableau suivant [le modèle aléatoire](../reconnaissance/#définiti
 {% details "preuve", "open" %}
 Soit $T$ un tableau suivant [le modèle aléatoire](../reconnaissance/#définition-modèle-tableau-aléatoire){.interne}.
 
-Comme $\mathbb{P}(T[0] > T[i]) = \frac{1}{2}$ pour tout $i < T.\mbox{\small longueur}$, l'espérance de $\vert \\{T[i] > T[0] \mid i > 0\\}$ vaut $T.\mbox{\small longueur}/2$.
+Comme ${\Pr}(T[0] > T[i]) = \frac{1}{2}$ pour tout $i < T.\mbox{\small longueur}$, l'espérance de $\vert \\{T[i] > T[0] \mid i > 0\\}$ vaut $T.\mbox{\small longueur}/2$.
 
 {% enddetails %}
 

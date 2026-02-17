@@ -10,13 +10,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- 
 > TBD <https://mathoverflow.net/questions/358184/probability-of-a-random-variable-greater-than-its-expected-value>
 > chernoff bound, reverse markov inequality,
 > Paley–Zygmund inequality <https://en.wikipedia.org/wiki/Paley%E2%80%93Zygmund_inequality>
 > Chebyshev inequality <https://en.wikipedia.org/wiki/Chebyshev%27s_inequality>
 > <https://www.youtube.com/watch?v=lKkyxtzz4Uo>
 > thm centrale limite : <https://www.youtube.com/watch?v=FGIxzMGE01A> et <https://www.youtube.com/watch?v=axA1-yR-KDw>
-> convergences : <https://www.youtube.com/watch?v=KedtZmQ5GyM> et <https://www.youtube.com/watch?v=UmSSrXr4ixM&list=PLl7EPYrsru4_usb1yKNUr8wtQGcVP9DZ6>
+> convergences : <https://www.youtube.com/watch?v=KedtZmQ5GyM> et <https://www.youtube.com/watch?v=UmSSrXr4ixM&list=PLl7EPYrsru4_usb1yKNUr8wtQGcVP9DZ6> 
+> 
+-->
 
 {% lien %}
 
@@ -122,7 +125,6 @@ clair.
 
 Les événements se manifestent via des **_variable aléatoire_**. L'univers étant souvent soit inconnu soit trop compliqué pour en tirer quoi que ce soit d'utile.
 
-> TBD : deux trucs qui bougent avec le "sachant B"
 
 ### Définitions et notations
 
@@ -130,8 +132,9 @@ Les événements se manifestent via des **_variable aléatoire_**. L'univers ét
 
 Une **_variable aléatoire_** $X$ est une fonction $X : \Omega \rightarrow \mathcal{U}$ ($U$ quelconque a priori) où $(\Omega, \mathbb{P})$ est un espace probabilisé. On note alors :
 
-- $\mathbb{P}\\{X = u\\} \coloneqq \mathbb{P}(X^{-1}(u))$
-- $\mathbb{P}\\{X \in U\\} \coloneqq \mathbb{P}(X^{-1}(U))$, $u \subseteq \mathcal{U}$
+- $\mathbb{P}\\{X = u\\} \coloneqq \mathbb{P}(X^{-1}(\\{u\\}))$
+- $\mathbb{P}\\{X \in U\\} \coloneqq \mathbb{P}(X^{-1}(U))$,
+- $\mathbb{P}\\{X \in U \\, , \\, Y \in V\\} \coloneqq \mathbb{P}(X^{-1}(U) \cap Y^{-1}(V))$ (les deux variables aléatoires sont sur le même espace probabilisé)
 
 On dira que $X(\omega) = u$ est une **_réalisation_** de la variable aléatoire $X$. Cette réalisation est de probabilité $\mathbb{P}\\{X = u\\}$.
 {% endnote %}
@@ -143,15 +146,7 @@ Comme une variable aléatoire est indissociable de sa mesure de probabilité ass
 
 {% note "**Définition**" %}
 
-On définit :
-
-<div>
-$$
-u \xleftarrow{\mathbb{P}} \mathcal{U}
-$$
-</div>
-
-Comme étant une variable aléatoire :
+On définit $u \xleftarrow{\mathbb{P}} \mathcal{U}$ comme étant une variable aléatoire :
 
 - prenant ses valeurs dans $\mathcal{U}$
 - suivant la loi de probabilité $\mathbb{P}$
@@ -172,16 +167,17 @@ $$
 
 S'il n'y a pas ambiguïté, on se permettra même d'écrire :
 
-- ${\Pr}[u = x]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$
-- ${\Pr}[X = x]$ si l'on veut expliciter la variable aléatoire $X$
+- ${\Pr}[x = k]$ si l'on s'intéresse aux réalisations de la variable aléatoire $X$
+- ${\Pr}[X = k]$ si l'on veut expliciter la variable aléatoire $X$
  
 Nos notations permettent d'étendre le conditionnement aux variables aléatoires :
 
 {% note "**Définition**" %}
 
+Pour deux expression $A$ et $B$ on définit le conditionnement come étant :
 <div>
 $$
-{\Pr}[A \vert B] \coloneqq \frac{\Pr[A\, , \, B]}{\Pr[B]}
+{\Pr}[A \,\vert\, B] \coloneqq \frac{\Pr[A\, , \, B]}{\Pr[B]}
 $$
 </div>
 

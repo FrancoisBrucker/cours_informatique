@@ -29,7 +29,7 @@ Les preuves formelles de complexités sont ardues. On ne vous demande pas de les
 
 ## pseudo-code
 
-En pseudo-code cela donne :
+En pseudo-code cela pourrait donner :
 
 ```pseudocode/
 algorithme rapide(T: [entier]) → [entier]:
@@ -64,6 +64,11 @@ def rapide(T):
 Les _list comprehension_ sont un moyen clair et efficace de générer des listes. Utilisez-les !
 
 {% enddetails %}
+
+Remarquez que l'on a commis quelques abus de notation dans la création du tableau. On peut le faire car :
+
+- on commence à avoir l'habitude d'écrire des algorithmes et on voit très bien comment coder l'abus
+- la lisibilité du pseudo-code en est grandement améliorée
 
 ## <span id="preuve-rapide"></span> Preuve
 

@@ -2,6 +2,10 @@
 layout: layout/post.njk
 title: "Reconnaissance d'un tableau trié"
 
+eleventyNavigation:
+  prerequis:
+    - /cours/misc/probabilités/
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -113,6 +117,8 @@ Parmi les $n!$ permutations de $[0 \\, ..\\, n-1]$ il y en a $(n-1)!$ telles que
 {% enddetails %}
 
 Comme les valeurs d'un tableau aléatoires sont deux à deux différentes, la proposition précédente peut s'interpréter aussi comme :
+
+<div id="proba-k-tableau-aléatoire"></div>
 
 {% note "**Corollaire**" %}
 

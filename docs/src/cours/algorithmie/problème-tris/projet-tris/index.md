@@ -9,11 +9,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- 
 > TBD refaire en :
 >
 > - utilisant numpy pour les indices
 > - faire des fonctions qui génèrent des tableaux
 >
+ -->
 
 On code des tris et on vérifie que nos algorithmes fonctionnent.
 
