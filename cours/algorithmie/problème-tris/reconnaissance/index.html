@@ -185,9 +185,17 @@
 </div><div class="pl-8 mr-8">
 <p>Un tableau $T$ d'entiers de longueur $n$ est <strong><em>un tableau aléatoire</em></strong> s'il résulte de la procédure suivante :</p>
 <ul>
-<li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation">une permutation</a> $\sigma$ de $[0, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
-<li>$T[i] = \sigma(i)$ pour tout $i \in [0, n-1]$</li>
+<li>on tire <a href="https://fr.wikipedia.org/wiki/Permutation">une permutation</a> $\sigma$ de $[0 \, ..\, n-1]$ de façon équiprobable (la probabilité de choisir $\sigma$ est $\frac{1}{n!}$)</li>
+<li>$T[i] = \sigma(i)$ pour tout $[0 \, ..\, n-1]$</li>
 </ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans un tableau aléatoire, toutes les valeurs sont différentes.</p>
 </div></div>
 
 <p>On utilise ce modèle par ce qu'il est simple à mettre en œuvre et à manipuler, tout en possédant de nombreuses propriétés :</p>
@@ -198,10 +206,10 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $T$ est un tableau aléatoire, on a que la probabilité que $T[i] = k$, donc que $T[i]$ soit le $k$ plus petit élément du tableau, vaut :</p>
+<p>Si $T$ est un tableau aléatoire, la probabilité que $T[i] = k$ vaut :</p>
 <div>
 $$
-\mathbb{P}(T[i] = k) = \frac{1}{n}
+{\Pr}[T[i] = k] = \frac{1}{n}
 $$
 </div>
 </div></div>
@@ -223,10 +231,11 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Parmi les $n!$ permutations de $[0, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k-1$. La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.</p>
+<p>Parmi les $n!$ permutations de $[0 \, ..\, n-1]$ il y en a $(n-1)!$ telles que $\sigma(i) = k$ (on fixe une valeur parmi $n$, il en reste $n-1$ qui font ce qu'elles veulent). La probabilité d'obtenir une telle permutation est alors $\frac{(n-1)!}{n!} = \frac{1}{n}$.</p>
 </div>
 </details>     
 </div>
+<p>Comme les valeurs d'un tableau aléatoires sont deux à deux différentes, la proposition précédente peut s'interpréter aussi comme :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -234,10 +243,21 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $T$ est un tableau aléatoire, si $k \leq i$ on a :</p>
+<p>La probabilité que $T[i]$ soit le $k$ plus petit élément d'un tableau aléatoire de longueur $n$  vaut $\frac{1}{n}$, quelque soit $k$.</p>
+</div></div>
+
+<p>Enfin, dernière propriété qui va être utile dans les calculs :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Corollaire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $T$ est un tableau aléatoire, on a :</p>
 <div>
 $$
-\mathbb{P}(T[i] = k)) = \frac{1}{i+1}
+{\Pr}[T[i] > k] = \frac{n-1-k}{n}
 $$
 </div>
 </div></div>
@@ -259,7 +279,15 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Tout se passe comme si on considérait un tableau aléatoire de taille $i+1$.</p>
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[i] > k] &=& \sum\limits_{u > k}{\Pr}[[T[i] = u]\\
+&=& \sum\limits_{u > k}\frac{1}{n}\\
+&=& \frac{n-1-k}{n}\\
+\end{array}
+$$
+</div>
 </div>
 </details>     
 </div>
@@ -270,7 +298,7 @@ $$
 <p>Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :</p>
 <div>
 $$
-\mathbb{P}(T[u] > T[v]) = \frac{1}{2}
+{\Pr}[T[u] > T[v]] = \frac{1}{2}
 $$
 </div>
 </div></div>
@@ -292,29 +320,68 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Prenons $u$ et $v$ deux indices différents du tableau. Tout se passe comme si on avait un tableau aléatoire de taille 2.</p>
+<p>Par définition :</p>
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}{\Pr}[T[u] = i \, , \, T[v] > i]
+\end{array}
+$$
+</div>
+<p>Puisque les valeurs de $T[u]$ et de $T[v]$ sont différentes mais indépendantes l'une de l'autre, on a :</p>
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[T[v] > i \,\vert\, T[v] \neq i])
+\end{array}
+$$
+</div>
+<p>D'après la proposition précédente et ses deux corollaires :</p>
+<ul>
+<li>${\Pr}[T[u] = i] = \frac{1}{n}$</li>
+<li>${\Pr}[T[v] &gt; i \,\vert\, T[v] \neq i] = \frac{\Pr[T[v] &gt; i \, , \, T[v] \neq i]}{\Pr[T[v] \neq i]} = \frac{n-1-i}{n} \cdot \frac{1}{\frac{n-1}{n}} = \frac{n-1-i}{n-1}$ (on a que $n-1$ possibilité pour $T[v]$ puisqu'il ne peut pas être égal à $i$)</li>
+</ul>
+<p>Ce qui nous permet de conclure :</p>
+<div>
+$$
+\begin{array}{lcl}
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[T[v] > i \,\vert\, T[v] \neq i])\\
+&=& \sum\limits_{0\leq i< n}(\frac{1}{n} \cdot \frac{n-1-i}{n-1})\\
+&=& \frac{1}{n(n-1)}\sum\limits_{0\leq i< n}(n-1-i)\\
+&=& \frac{1}{n(n-1)}\sum\limits_{0\leq j< n}(j)\\
+&=& \frac{1}{n(n-1)}\cdot \frac{n(n-1)}{2}\\
+&=& \frac{1}{2}\\
+\end{array}
+$$
+</div>
 </div>
 </details>     
 </div>
-<p>Les propriétés précédentes nous permettent de voir que pour notre algorithme de reconnaissance, si $T$ est un tableau aléatoire alors la probabilité :</p>
+<p>Les propriétés précédentes nous permettent de voir que si $T$ est un tableau aléatoire alors la probabilité pour notre algorithme de reconnaissance fasse exactement :</p>
 <ul>
-<li>$p_1$ de ne faire que 1 itération est $\mathbb{P}(T[0] &gt; T[1])$ et vaut $1/2$</li>
-<li>$p_2$ de ne faire que 2 itérations est $\mathbb{P}(T[0] &lt; T[1], T[1] &gt; T[2])$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ (attention, $T[0] &lt; T[1]$ et $T[1] &gt; T[2]$ ne sont pas indépendant, on a donc pas $\mathbb{P}(T[0] &lt; T[1], T[1] &gt; T[2]) = \mathbb{P}(T[0] &lt; T[1])\cdot \mathbb{P}(T[1] &gt; T[2])$)</li>
+<li>1 itération est $p_1 = {\Pr}[T[0] &gt; T[1]]$ et vaut $1/2$</li>
+<li>2 itérations est $p_2 = {\Pr}[T[0] &lt; T[1], T[1] &gt; T[2]]$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ puisqu'il n'y a qu'une permutation de $i$ éléments différents parmi les $i!$ possibles qui est triée (attention, $T[0] &lt; T[1]$ et $T[1] &gt; T[2]$ ne sont <strong>pas</strong> indépendant donc ${\Pr}[T[0] &lt; T[1], T[1] &gt; T[2]] \neq {\Pr}[T[0] &lt; T[1]]\cdot {\Pr}[T[1] &gt; T[2]]$)</li>
 <li>...</li>
-<li>$p_i$ de ne faire que i itérations est la probabilité que $T[:i]$ soit trié mais que $T[:i+1]$ ne le soit pas :  : cette probabilité vaut $\frac{1}{i!} - \frac{1}{(i+1)!}$</li>
+<li>i itérations est la probabilité que $T[:i]$ soit trié mais que $T[:i+1]$ ne le soit pas : cette probabilité vaut $p_i = \frac{1}{i!} - \frac{1}{(i+1)!}$</li>
 <li>...</li>
-<li>$p_i$ de ne faire que $n$ itérations est la probabilité que $T[:n]$ soit trié mais que $T$ ne le soit pas :  : cette probabilité vaut $\frac{1}{(n-1)!} - \frac{1}{n!}$</li>
+<li>$n$ itérations est la probabilité que $T[:n]$ soit trié mais que $T$ ne le soit pas : cette probabilité vaut $p_n = \frac{1}{(n-1)!} - \frac{1}{n!}$</li>
 </ul>
 <p>Comme chaque itération est de complexité $\mathcal{O}(1)$, la complexité en moyenne sous ce modèle de probabilité vaut :</p>
 <div>
 $$
-C= \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))] = \sum_{i=1}^{n-1}(\frac{1}{i!} - \frac{1}{(i+1)!}) \cdot \mathcal{O}(i)) = \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+\begin{array}{lcl}
+C(n) &=& \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))]\\
+ &=& \sum_{i=1}^{n-1}(\frac{1}{i!} - \frac{1}{(i+1)!}) \cdot \mathcal{O}(i)) \\
+ &=& \sum_{i=1}^{n-1}(\frac{(i+1)! - i!}{i! \cdot (i+1)!} \cdot \mathcal{O}(i))\\
+ &=& \sum_{i=1}^{n-1}(\frac{i!\cdot (i+1-1)}{i! \cdot (i+1)!} \cdot \mathcal{O}(i))\\
+ &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+\end{array}
 $$
 </div>
 <p>Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :</p>
 <div>
 $$
-C \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
+C(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
 $$
 </div>
 <p>La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le">Problème de Bâle</a> et est une série convergente (<a href="../../projet-sommes-classiques/#probl%C3%A8me-B%C3%A2le" class="interne">on le démontrera</a>). On a donc la proposition surprenante suivante :</p>
@@ -354,7 +421,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Ce résultat est remarquable sous (au moins) deux aspects :</p>
+<p>Ce résultat est remarquable :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -365,7 +432,7 @@ $$
 <ul>
 <li>Pour le problème de la reconnaissance : la complexité en moyenne est égale à la complexité minimale et est en temps constant !</li>
 <li>Ce n'est pas parce que la complexité augmente qu'elle en devient forcément infinie.</li>
-<li>Borner une complexité par <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente">une série convergente</a> est un truc utile pour démontrer qu'un algorithme est en temps constant.</li>
+<li>Borner une complexité par <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente">une série convergente</a> est très utile pour démontrer qu'un algorithme est en temps constant.</li>
 </ul>
 </div></div>
 
@@ -396,7 +463,7 @@ nb <span class="token operator">=</span> <span class="token punctuation">[</span
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Testez le code précédent (chez moi le max était de 4) puis essayez avec des tableaux plus contraint (comme <code class="language-">T = 5 * list(range(4))</code> par exemple)</p>
+<p>Testez le code précédent (chez moi le max était de 4) puis essayez avec des tableaux plus contraint (comme <code class="language-">T = 5 * list(range(4))</code> par exemple pour voir que c'est toujours vrai si le tableau possède quelques égalités)</p>
 </div></div>
 
 <h2>Complexité du problème de la reconnaissance</h2>
