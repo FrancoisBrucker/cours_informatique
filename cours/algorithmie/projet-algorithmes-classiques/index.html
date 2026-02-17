@@ -109,14 +109,284 @@
 <li><strong>Difficulté</strong> : facile pour la création et la complexité de base</li>
 </ul>
 </blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<p><a href="https://fr.wikipedia.org/wiki/Suite_de_Fibonacci">La suite de Fibonacci</a> est définie par l'équation de récurrence :</p>
+<div>
+$$
+F(n) =
+\begin{cases}
+F(n-1) + F(n-2) \text{ si }n> 2\\
+F(1) = F(2) = 1
+\end{cases}
+$$
+</div>
+<p>Nous allons utiliser cette suite pour donner des techniques utiles pour l'étude d'algorithmes récursifs</p>
+<h3>Valeurs</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p><a href="fibonacci" class="interne">Suite de Fibonacci</a></p>
+<p>En utilisant l'équation de récurrence, montrez que :</p>
+<div>
+$$
+\begin{array}{ccccc}
+\Omega((\sqrt{2})^n)&=&F(n)&=& \mathcal{O}(2^n)
+\end{array}
+$$
+</div>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La suite de Fibonacci est clairement croissante (vous pouvez le prouver par récurrence), ce qui permet d'écrire :</p>
+<div>
+$$
+\begin{array}{ccccc}
+&&F(n) = F(n-1) + F(n-2)&&\\
+2\cdot F(n-2)&\leq&F(n)&\leq& 2\cdot F(n-1)\\
+4\cdot F(n-4)&\leq&F(n)&\leq& 4\cdot F(n-2)\\
+&&\dots&&\\
+2^p\cdot F(n-2p)&\leq&F(n)&\leq& 2^p\cdot F(n-p)\\
+2^{n/2}\cdot F(1)&\leq&F(n)&\leq& 2^n\cdot F(1)\\
+2^{n/2}&\leq&F(n)&\leq& 2^n\\
+(\sqrt{2})^{n}&\leq&F(n)&\leq& 2^n
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>En utilisant le fait que la suite de Fibonacci est <a href="https://fr.wikipedia.org/wiki/Suite_r%C3%A9currente_lin%C3%A9aire">une suite récurrente linéaire</a>, on peut même donner une valeur explicite de chaque valeur. Démontrons le :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant le fait que les deux racines du polynôme $P(X) = X^2 -X-1$ sont $\phi_+ = \frac{1 + \sqrt{5}}{2}$ et $\phi_- = \frac{1 - \sqrt{5}}{2}$, montrez que pour $n&gt;0$ :</p>
+<div>
+$$
+\begin{cases}
+\phi_+^n = F(n)\phi_+ + F(n-1)\\
+\phi_-^n = F(n)\phi_- + F(n-1)\\
+\end{cases}
+$$
+</div>
+<p>En déduire la valeur de $F(n)$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les deux égalités sont clairement vraies (par récurrence) pour tout $n&gt;1$. En les soustrayant et en utilisant le fait que $\phi_+ - \phi_- = \sqrt{5}$ permet de conclure que :</p>
+<div>
+$$
+F(n) = \frac{\phi_+^n - \phi_-^n}{\sqrt{5}}
+$$
+</div>
+</div>
+</details>     
+</div>
+<h3>Fibonacci récursif</h3>
+<p><span id="algorithme-fibonacci-rec"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">2</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que le programme précédent est bien un algorithme qui calcule la valeur de Fibonacci.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut démontrer que ce programme est bien un algorithme car il y a plusieurs récursions !</p>
+<p>Ceci se fait facilement par une récurrence sur $n$ car chaque appel se rapproche strictement de la condition d'arrêt.</p>
+<ol>
+<li>initialisation : <code class="language-">fibonacci_rec(n)</code> admet un nombre fini de récursion pour $n\leq 2$.</li>
+<li>hypothèse de récurrence : <code class="language-">fibonacci_rec(m)</code> admet un nombre fini de récursion pour $m &lt; n$.</li>
+<li>Pour $n$, <code class="language-">fibonacci_rec(n - 1)</code> et <code class="language-">fibonacci_rec(n-2)</code> se terminent en un nombre fini de récursion donc la ligne 4 de l'algorithme aura aussi un nombre fini de récursion.</li>
+</ol>
+<p>Une fois la finitude démontrée la correction est évidente, comme souvent avec les algorithmes récursifs, puisque l'algorithme ne fait que transcrire l'équation de récursion.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la complexité de l'algorithme <code class="language-">fibonacci_rec(n)</code> est en $\Omega(F(n))$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En notant $C(n)$ la complexité de <code class="language-">fibonacci_rec(n)</code>, on a clairement l'équation suivante :</p>
+<div>
+$$
+C(n) = \mathcal{O}(1) + C(n-1) + C(n-2)
+$$
+</div>
+<p>On prouve ensuite par récurrence que si $C(m) = \Omega(F(m))$ pour tout $m &lt; n$ alors :</p>
+<div>
+$$
+C(n) = \mathcal{O}(1) + \Omega(F(n-1)) + \Omega(F(n-2)) = \mathcal{O}(1) + \Omega(F(n-1) + F(n-2)) = \mathcal{O}(1) + \Omega(F(n)) = \Omega(F(n))
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>Sa complexité est rédhibitoire.</p>
+<h3>Récursif terminal</h3>
+<p>L'algorithme récursif est sous optimal car il recalcule plein de fois la même chose. Pour calculer $F(n)$ il calcule deux fois $F(n-2)$, une fois dans la somme et une fois dans le calcul de $F(n-1)$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Utilisez <a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#transformer-rec-terminale" class="interne">la transformation en récursion terminale</a> qui consiste à stocker les variables nécessaires au calcul récursif dans des paramètres (il faudra ici stocker 2 résultats indermédiaires, $F(n-1)$ et $F(n-2)$) pour améliorer la complexité de  l'algorithme récursif.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En utilisant deux accumulateurs, l'un pour $F(n - 1)$, l'autre pour $F(n - 2)$ on obtient :</p>
+<p><span id="algorithme-fibonacci-rec-terminale"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">fibonacci_rec_terminale</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> acc_n_1<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> acc_n_2<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+          <span class="token keyword">rendre</span> acc_n_1
+     <span class="token keyword">sinon si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">1</span><span class="token punctuation">:</span>
+          <span class="token keyword">rendre</span> acc_n_2
+     
+     <span class="token keyword">rendre</span> fibonacci_rec_terminale<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> acc_n_1 <span class="token operator">+</span> acc_n_2<span class="token punctuation">,</span> acc_n_1<span class="token punctuation">)</span>
+
+
+<span class="token builtin">algorithme</span> <span class="token function">fibonacci_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span> fibonacci_rec_terminale<span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p>L'algorithme se termine  puisque le paramètre d'arrêt de la récursion, <code class="language-">n</code>, décroît strictement à chaque appel.</p>
+<p>Par une récurrence triviale sur <code class="language-">n</code>, les paramètres <code class="language-">acc_n_1</code> et <code class="language-">acc_n_2</code> de l'appel de <code class="language-">fibonacci_rec_terminale(n - i, acc_n_1, acc_n_2)</code> valent :</p>
+<ul>
+<li><code class="language-">acc_n_1</code> vaut $F(i + 2)$</li>
+<li><code class="language-">acc_n_2</code> vaut $F(i + 1)$</li>
+</ul>
+<p>Lors du dernier appel on a <code class="language-">fibonacci_rec_terminale(2, acc_n_1, acc_n_2)</code> et donc <code class="language-">acc_n_1</code> vaut $F(n-2 + 2) = F(n)$</p>
+<p>La complexité $C(n)$ de l'algorithme satisfait l'équation de récurrence :</p>
+<div>
+$$
+C(n) = \mathcal{O}(1) + C(n-1)
+$$
+</div>
+<p>On a déjà vu cette récurrence, elle vaut : $C(n) = \mathcal{O}(n)$.</p>
+</div>
+</details>     
+</div>
+<h3>Fibonacci Itératif</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Créez un algorithme itératif calculant $F(n)$ avec une complexité de $\mathcal{O}(n)$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On adapte l'algorithme en récursion terminale :</p>
+<p><span id="algorithme-fibonacci-itératif"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>acc_n_1 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>acc_n_2 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+
+    <span class="token keyword">tant que</span><span class="token number"> n </span><span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
+        temp <span class="token operator">←</span> acc_n_1 
+        acc_n_1 <span class="token operator">←</span> acc_n_1 <span class="token operator">+</span> acc_n_2
+        acc_n_2 <span class="token operator">←</span> acc_n_1
+       <span class="token number"> n </span><span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span>
+    
+    <span class="token keyword">rendre</span> acc_n_1</code></pre>
+<p>Sa correction est claire puisque c'est la transcription de l'algorithme récursif terminal et sa complexité est évidemment $\mathcal{O}(n)$.</p>
+</div>
+</details>     
+</div>
 <h2>$X$ marks the spot</h2>
 <blockquote>
 <ul>
@@ -178,14 +448,428 @@
 <li><strong>Difficulté</strong> : moyen</li>
 </ul>
 </blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<p>Un entier écrit sous forme binaire peut s'écrire comme un tableau $x$ composées de bits (entier valant 0 ou 1). Par exemple l'entier 19 s'écrira $N = [1, 1, 0, 0, 1]$ avec $19 = \sum_i N[i] \cdot 2^i$</p>
+<p>L'algorithme <code class="language-">algorithme successeur(N: [bit]) → vide:</code> suivant prend en paramètre un entier écrit sous sa forme binaire et qui <strong>le modifie</strong> pour que sa valeur soit l'entier suivant. L'algorithme  n'augmente pas la taille en bits de l'entier passé et donc <code class="language-">succ([1, 1, 1, 1])</code> change le tableau en entrée en <code class="language-">[0, 0, 0, 0]</code>.</p>
+<p>Cette fonction permet d'écrire le code suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span>n <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+successeur<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+<span class="token keyword">affiche</span><span class="token number"> n </span>à l'écran</code></pre>
+<p>Qui affichera <code class="language-">[0, 0, 1, 0, 1]</code></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
 <div class="pl-8 mr-8">
-<p><a href="compteur-binaire" class="interne">Compteur binaire</a></p>
+<p>Les fonctions qui ne rendent rien modifient souvent leurs paramètres.</p>
 </div></div>
 
+<h3><span id="successeur"></span>L'algorithme</h3>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">≤</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
+
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">≤</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    i <span class="token operator">=</span> <span class="token number">0</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span></span>
+<span class="highlight-line">        i <span class="token operator">+=</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">if</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span></span></code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Démontrez que l'algorithme précédent répond aux spécifications.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le successeur d'un élément est l'élément plus 1. La somme du dernier bit de <code class="language-">N</code> avec 1 fait alors soit :</p>
+<ul>
+<li>1 si le dernier bit vaut 0</li>
+<li>10 si le dernier bit vaut 1</li>
+</ul>
+<p>Si la somme vaut 10, cela revient à réitérer le processus sur le prochain bit.</p>
+<p>Donc on commence par regarder le bit <code class="language-">N[i]</code> en commençant par le dernier. S'il vaut :</p>
+<ul>
+<li>1 on le place à 0 et on incrémente i</li>
+<li>0 on le place à 1 et on stoppe.</li>
+</ul>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Que valent ses complexités min et max ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La complexité de l'algorithme va dépendre du nombre d'éléments dans la liste en entré. Notons $n = N.\mbox{\small longueur}$.</p>
+<p>On remarque (facilement) que cette complexité vaut $C(n) = K \cdot \mathcal{O}(1)$ où $K$ est le nombre de fois où l'on rentre dans la boucle <code class="language-">tant que</code>. D'où :</p>
+<ul>
+<li>complexité (max) : parcourt toute la liste (pour une liste uniquement constituée): $\mathcal{O}(n)$</li>
+<li>complexité min : parcourt 1 seul élément de la liste (pour une liste se terminant par un 0): $\mathcal{O}(1)$</li>
+</ul>
+</div>
+</details>     
+</div>
+<h3>Complexité en moyenne</h3>
+<p>Analysez selon le nombre en entrée le nombre d'itérations dans la boucle <code class="language-">tant que</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que que le nombre moyen d'itérations de la boucle <code class="language-">tant que</code> sous un modèle que vous expliciterez, vaut :</p>
+<div>
+$$
+W_\text{moy}(N) = \mathcal{O}(1) \cdot \sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}}
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On suppose que chaque nombre décrit par $N$ peut apparaître de façon équiprobable. En posant $n = N.\mbox{\small longueur}$, séparons les $2^n$ nombres possibles en classes selon le nombre d'itérations dans la boucle :</p>
+<ul>
+<li>dernier élément vaut 0 : 0 itération. Vrai pour $2^n/2$ nombres. Probabilité de 1/2.</li>
+<li>derniers éléments valent <code class="language-">[0, 1]</code> : 1 itération. Vrai pour $(2^N/2)/2 = 2^N/4$ nombres. Probabilité de 1/4.</li>
+<li>derniers éléments valent <code class="language-">[0, 1, 1]</code> : 2 itérations. Vrai pour $(2^N/4)/2 = 2^N/8$ nombres. Probabilité de 1/8.</li>
+<li>...</li>
+<li>derniers éléments valent <code class="language-">[0] + i *[1]</code> : i itérations. Vrai pour $(2^N/4)/2 = 2^N/2^{i+1}$ nombres. Probabilité de 1/2^{i+1}.</li>
+<li>le premier élément vaut 0 et tous les autres valent 1 : $N-1$ itérations Vrai pour 1 nombre. Probabilité de 1/2^{N}.</li>
+</ul>
+<p>Le nombre moyen d'itérations dans la boucle vaut alors :</p>
+<div>
+$$
+W_\text{moy}(N) = \mathcal{O}(1) \cdot \sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}}
+$$
+</div>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Conclure que la moyenne de l'algorithme vaut $\mathcal{O}(1)$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a vu que $\sum_{i=0}^{+\infty} i \cdot \frac{1}{2^{i}} = 2$, donc $\sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}} \leq \frac{1}{2}\sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i}} \leq \frac{1}{2}\sum_{i=0}^{+\infty} i \cdot \frac{1}{2^{i}} \leq 1$. Ceci montre que $W_\text{moy}(N) \leq \mathcal{O}(1)$.</p>
+</div>
+</details>     
+</div>
+<p>Que le nombre moyen d'itération valent 1 est assez contre intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :</p>
+<ul>
+<li>on a bien cyclé sur tous les éléments</li>
+<li>en moyenne le nombre d'itération dans la boucle vaut bien 1.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Codez l'algorithme <code class="language-">successeur</code> en python puis :</p>
+<ol>
+<li>modifiez le pour qu'il rende le nombre d'itération dans la boucle effectuée pour calculer le successeur.</li>
+<li>parcourir tous les nombres possible (en partant de $[0] * N$ affichez itérativement les successeurs)</li>
+<li>une fois tous les nombres vus, afficher le nombre moyens d'itération de la boucle while de l'algorithme <code class="language-">successeur</code>.</li>
+</ol>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    K <span class="token operator">=</span> <span class="token number">0</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        K <span class="token operator">+=</span> <span class="token number">1</span>
+
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">if</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> K
+
+
+<span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+    total <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        K <span class="token operator">=</span> successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
+        total <span class="token operator">+=</span> K
+        <span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> total <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">**</span> n
+
+
+x <span class="token operator">=</span> tous<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<h3>Récursif</h3>
+<p><span id="algorithme-compteur-binaire-rec"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">tous_rec</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> à l'écran<span class="token number"> N
+</span>    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>x<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x
+        tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token builtin">algorithme</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+   <span class="token number"> N </span><span class="token operator">←</span> nouveau tableau de <span class="token builtin">bit</span> de taille<span class="token number"> n
+</span>
+    tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> N<span class="token punctuation">.</span>longueur<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>code python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">tous_rec</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> x</span>
+<span class="highlight-line">            tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> i <span class="token operator">-</span>  <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    N <span class="token operator">=</span> n <span class="token operator">*</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">    tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">tous<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span></span></code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'algorithme ci-dessus est une façon récursive d'afficher tous les nombres binaires à $n$ bits.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Chaque récursion modifie le tableau à une position inférieure, cet élément valant d'abord 0, puis 1 lorsque l'on reviendra à cette fonction après la récursion.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est sa complexité en instruction et en mémoire de cet algorithme ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La complexité en mémoire est de $n$, car chaque aucune récursion ne crée de nouveau tableau ! C'est le même tableau qui est modifié à chaque récursion.</p>
+</div>
+</details>     
+</div>
+<h3>Généralisation</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Modifiez <code class="language-">tous(n: [bit])  → vide</code> pour afficher l'ensemble des jets de $n$ dés à 6 faces ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Clairement, l'algorithme suivant fonctionne :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">tous_rec</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">caractère</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> à l'écran<span class="token number"> N
+</span>    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token string">"⚀"</span><span class="token punctuation">,</span> <span class="token string">"⚁"</span><span class="token punctuation">,</span> <span class="token string">"⚂"</span><span class="token punctuation">,</span> <span class="token string">"⚃"</span><span class="token punctuation">,</span> <span class="token string">"⚄"</span><span class="token punctuation">,</span> <span class="token string">"⚅"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x
+        tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token builtin">algorithme</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+   <span class="token number"> N </span><span class="token operator">←</span> nouveau tableau de caractères de taille<span class="token number"> n
+</span>
+    tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<p>Ou en python :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">tous_rec</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token punctuation">[</span><span class="token string">"⚀"</span><span class="token punctuation">,</span> <span class="token string">"⚁"</span><span class="token punctuation">,</span> <span class="token string">"⚂"</span><span class="token punctuation">,</span> <span class="token string">"⚃"</span><span class="token punctuation">,</span> <span class="token string">"⚄"</span><span class="token punctuation">,</span> <span class="token string">"⚅"</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> x</span>
+<span class="highlight-line">            tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> i <span class="token operator">-</span>  <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    N <span class="token operator">=</span> n <span class="token operator">*</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">    tous_rec<span class="token punctuation">(</span>N<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">tous<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span></span></code></pre>
+</div>
+</details>     
+</div>
 <h2>Tris spéciaux</h2>
 <blockquote>
 <ul>
@@ -194,14 +878,256 @@
 </ul>
 </blockquote>
 <p>Des tris utiles dans des cas spécifiques, et dont la complexité semble plus petite que $n\log(n)$. Connaître pourquoi ce n'est (bien sur) pas le cas.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<p>Les tris spéciaux ont des complexités inférieures à $\mathcal{O}(n\log(n))$, ce qui n'est bien sur possible que si l'on se place dans des cas particuliers d'entrées.</p>
+<h3><span id="tri-paquets"></span>Tri par paquets (bucket sort)</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
 <div class="pl-8 mr-8">
-<p><a href="tris-sp%C3%A9ciaux" class="interne">Tris spéciaux</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Tri_par_paquets">Tri par paquets</a></p>
 </div></div>
 
+<p>On veut trier les $n$ objets d'un tableau $\mathcal{E}$ par rapport à leur valeur via <strong>une injection</strong> $f: \mathcal{E} \to [0, m[$ allant de $\mathcal{E}$ dans l'ensemble des entiers de 0 à $m-1$.</p>
+<p><strong><em>Le tri par paquets</em></strong> consiste à créer un tableau de taille $m$ et de ranger chaque élément $o$ de $\mathcal{E}$ dans ce tableau à l'indice $f(o)$. Il suffit ensuite de rendre la restriction de ce tableau aux éléments contenant les éléments de $\mathcal{E}$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrire le pseudocode de cet algorithme. On supposera que l'on cherche à trier $n$ entiers.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On peut utiliser l'algorithme suivant, qui modifie le tableau passé en paramètre :</p>
+<p><span id="algorithme-tri-paquet"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri_paquet</span><span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> f<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>m <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> max<span class="token punctuation">(</span>f<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">|</span> x de E<span class="token punctuation">)</span>
+    <span class="token punctuation">(</span>T <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">}</span>
+    T<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> ∅  <span class="token comment"># ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers</span>
+
+    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>x<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de E<span class="token punctuation">:</span>
+        T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> x
+    
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>x<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de T<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> x <span class="token operator">≠</span> ∅<span class="token punctuation">:</span>
+            E<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> x
+           <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
+<p>Cet algorithme marche car $f$ est une injection, tout éléments de $E$ sera dans T à un indice différent des autres.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité en temps et en mémoire de cet algorithme ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La complexité est en $\mathcal{O}(m)$ en temps <strong>et</strong> en mémoire.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Utilisez cet algorithme pour trier :</p>
+<ol>
+<li>$n$ entiers deux à deux différents.</li>
+<li>comment modifier cet algorithme si les entiers peuvent être égaux ?</li>
+<li>complexité de cet algorithme ?</li>
+</ol>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si l'on veut trier $n$ entiers deux à deux différents, on utilise la fonction identité et la complexité est en $\mathcal{O}(\max(E))$.</p>
+<p>Cet algorithme est utile si on doit trier des objets via une fonction $f: \mathcal{E} \to [0, m[$ où $m$ borné pas trop grand. C'est souvent le cas lorsque l'on utilise des données complexes, pensez à un tableau excel où nos données sont les lignes et l'index le numéro de la ligne (ou une colonne spécifique dont la valeur va de 1 au nombre de lignes).</p>
+<p>Si l'on veut trier des entiers pouvant être égaux, on peut utiliser l'algorithme suivant qui compte dans $T[i]$ le nombre de fois où $i$ est présent dans $E$.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri_paquet</span><span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    m <span class="token operator">←</span> max<span class="token punctuation">(</span>x <span class="token operator">|</span> x de E<span class="token punctuation">)</span>
+    T <span class="token operator">←</span> un nouveau tableau d'<span class="token builtin">entier</span> de taille m <span class="token operator">+</span> <span class="token number">1</span>
+    T<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>  <span class="token comment"># ou m + 1 si on a pas accès à ∅ pour un tableau d'entiers</span>
+
+    <span class="token keyword">pour chaque</span> x de E<span class="token punctuation">:</span>
+        T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+    
+   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">pour</span> x allant de <span class="token number">0</span> à m<span class="token punctuation">:</span>
+        <span class="token keyword">tant que</span> T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+            E<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> x
+           <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
+            T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quand utiliseriez vous cet algorithme pour trier $n$ objets ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il n'y <strong>aucune</strong> relation entre $n$ et $\max(E)$. On peut par exemple tenter de trier le tableau $[1, 2^{10000000}]$, la complexité de notre algorithme sera de $2^{10000000}$ et non pas de 2.</p>
+<p>Ce n'est donc <strong>pas</strong> un algorithme linéaire... Mais il est très efficace si les nombres ne sont pas trop grand devant $n$. Ce qui est souvent le cas en pratique.</p>
+</div>
+</details>     
+</div>
+<p>Rappelez-vous du tri par paquet, on s'en sert parfois dans des problèmes algorithmiques.</p>
+<h3><span id="tri-base"></span>Tri par base</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Tri_par_base">Tri par base</a></p>
+</div></div>
+
+<p>Ce tri s'applique uniquement aux entiers positifs. Notre entrée est une liste $T$ de $n$ de listes de longueur $m$ composées de 0 et de 1 représentant des entiers écrit en base 2 (comme pour le <a href="../compteur-binaire">compteur binaire</a>). Par exemple : $T = [[1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 0, 0]]$ qui correspond aux nombres $[9, 14, 1]$.</p>
+<p>Le principe de ce tri est très simple :</p>
+<ul>
+<li>On considère d'abord le bit de poids le plus faible (<em>ie.</em> le plus à gauche). On crée alors deux tableaux L0 et L1 initialement vides et on va itérativement considérer chaque élément de la liste à trier :
+<ul>
+<li>les entiers dont le bit de poids le plus faible est 0 sont ajoutés à la fin de L0</li>
+<li>les entiers dont le bit de poids le plus faible est 1 sont ajoutés à la fin de L1</li>
+</ul>
+</li>
+<li>On concatène les deux sous-listes T = L0 + L1</li>
+<li>On recommence sur le bit à droite de celui qu'on vient de traiter.</li>
+<li>...</li>
+</ul>
+<p>Les parcours des éléments de T se font, toujours, de la gauche vers la droite.</p>
+<p>Pour notre exemple :</p>
+<ol>
+<li>après premiere boucle : $[[0, 1, 1, 1], [1, 0, 0, 1], [1, 0, 0, 0]]$</li>
+<li>après deuxième boucle : $[[1, 0, 0, 1], [1, 0, 0, 0], [0, 1, 1, 1]]$</li>
+<li>après troisième boucle :$[[1, 0, 0, 1], [1, 0, 0, 0], [0, 1, 1, 1]]$</li>
+<li>après quatrième boucle : $[[1, 0, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1]]$</li>
+</ol>
+<p>Questions :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez le pseudo-code, la preuve et la complexité de cet algorithme.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'algorithme suivant mime exactement le procédé décrit dans le sujet. Nos données étant des tableaux de bits, l'entrée de l'algorithme est un tableau de tableaux de bit. Cela s'écrit : <code class="language-">[[bit]]</code> :</p>
+<p><span id="algorithme-tri-base"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri_base</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅
+    <span class="token punctuation">(</span>L0 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
+    <span class="token punctuation">(</span>i0 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token punctuation">(</span>L1 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
+    <span class="token punctuation">(</span>i1 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">pour</span> <span class="token punctuation">(</span>i<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
+            <span class="token keyword">si</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                L0<span class="token punctuation">[</span>i0<span class="token punctuation">]</span> <span class="token operator">←</span> x
+               <span class="token number"> i0 </span><span class="token operator">←</span><span class="token number"> i0 </span><span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+                L1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">←</span> x
+               <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">pour</span><span class="token number"> j </span>allant <span class="token number">0</span> à i0<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> L0<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+        <span class="token keyword">pour</span><span class="token number"> j </span>allant <span class="token number">0</span> à i1<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>j <span class="token operator">+</span> i0<span class="token punctuation">]</span> <span class="token operator">←</span> L1<span class="token punctuation">[</span>j<span class="token punctuation">]</span></code></pre>
+<p>On prouve cet algorithme par invariant de boucle.</p>
+<blockquote>
+<p><strong>Invariant de boucle</strong> : À la fin de la ième itération, $T$ est trié si on considère uniquement les i derniers bits de chaque élément.</p>
+</blockquote>
+<ol>
+<li>initialisation : à la fin de la première boucle il est clair que les élément finissant par 0 sont placés avant les éléments se finissant par 1.</li>
+<li>récursion : si l'invariant de boucle est vrai à la fin de la i-1 ème itération, les éléments de L0et de L1 seront trié si on considère uniquement les i derniers bits de chaque élément. Comme le $-i$ bit des éléments de L0 vaut 0 et le $-i$ bit des éléments de L1 valent 1 tous les éléments de L0 sont inférieur aux éléments de L1 et en les concaténant on a bien que les $i$ derniers bit des éléments de T sont triées.</li>
+<li>à la fin des <code class="language-">T.longueur</code> itérations, l'invariant de boucle montre que les éléments de $T$ sont bien triés.</li>
+</ol>
+<p>En notant $m$ la taille des tableaux en entrée et $n$ le nombre de données à trier, on a clairement une complexité de $\mathcal{O}(nm)$.</p>
+<p>Si la taille des entiers est fixée, ce qui est le cas au niveau du processeur où tous les entiers sont codés sur 64bits, ce tri est le plus efficace possible : il est linéaire.</p>
+</div>
+</details>     
+</div>
+<p>Comme pour le tri par paquet, il n'y <strong>aucune</strong> relation entre $n$ et $m$. On peut par exemple tenter de trier les tableaux de taille $m=2^n$, la complexité de notre algorithme sera exponentielle.</p>
+<p>Ce n'est donc <strong>pas</strong> un algorithme linéaire en $n$</p>
 <h2>Chaînes de caractères</h2>
 <blockquote>
 <ul>
@@ -209,14 +1135,272 @@
 <li><strong>Difficulté</strong> : facile avec les indications données</li>
 </ul>
 </blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="chaine-caracteres" class="interne">Chaines de caractères</a></p>
+<p>Le but de cet série d'exercices est d'étudier les modifications d'une chaîne de caractères.</p>
+<h3>Sous-séquence</h3>
+<p>Soient deux chaînes de caractères $S_1$ et $S_2$ de longueurs $n_1$ et $n_2$ respectivement.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La chaîne $S_2$ est <strong><em>une sous-séquence</em></strong> de $S_1$ si il existe une fonction strictement croissante $f: [0, n_2[ \to [0, n_1[$ telle que $S_1[f(j)] = S_2[j]$ pour tout $j$ de $[0, n_2[$.</p>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Proposez, prouvez et donnez la complexité d'un algorithme qui détermine si $S_2$ est une sous-séquence de $S_1$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">sous_sequence</span><span class="token punctuation">(</span>S1<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">,</span> S2<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>i1 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token punctuation">(</span>i2 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">tant que</span><span class="token number"> i1 </span><span class="token operator">&lt;</span> S1<span class="token punctuation">.</span>longueur <span class="token keyword">et</span><span class="token number"> i2 </span><span class="token operator">&lt;</span> S2<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> S2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span> <span class="token operator">==</span> S1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">:</span>
+           <span class="token number"> i2 </span><span class="token operator">←</span><span class="token number"> i2 </span><span class="token operator">+</span> <span class="token number">1</span>
+       <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span> <span class="token number">1</span>
+
+    <span class="token keyword">rendre</span><span class="token number"> i2 </span><span class="token operator">==</span> S2<span class="token punctuation">.</span>longueur</code></pre>
+<p>Comme <code ,language-="">i1</code> augmente à chaque itération, la boucle va forcément s'arrêter ce qui finira l'algorithme.</p>
+<p>Enfin l'algorithme fonctionne car <code ,language-="">i2</code> est incrémenté à la première occurrence possible.</p>
+<p>Sa complexité est en $\mathcal{O}(\max(n_1, n_2))$. Cet algorithme est linéaire il est optimal.</p>
+</div>
+</details>     
+</div>
+<h3>Sous-mot</h3>
+<p>Soient deux chaînes de caractères $S_1$ et $S_2$ de longueurs $n_1$ et $n_2$ respectivement.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La chaîne $S_2$ est un <strong><em>sous-mot</em></strong> de $S_1$ s'il existe un indice $i$ tel que $S_2[j] = S_1[i + j]$ pour tout $j$ de $[0, n_2[$.</p>
+</div></div>
+
+<p>Être un sous-mot est plus restrictif qu'être une sous-séquence.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>Proposez, prouver et donner la complexité d'un algorithme simple qui détermine si $S_2$ est un sous-mot de $S_1$.</li>
+<li>Si toutes les lettres de $S_2$ sont deux à deux différentes, donnez un algorithme en $\mathcal{O}(n_1)$ pour résoudre ce problème.</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'algorithme suivant regrade toutes les possibilités pour $S_2$ d'être un sous-mot de $S_1$. Il s'arrête à la première possibilité. Dans le pire des cas, il va effectuer $\mathcal{O}(n_1 \cdot n_2)$ opérations.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">sous_mot</span><span class="token punctuation">(</span>S1<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">,</span> S2<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+    
+    <span class="token keyword">pour chaque</span><span class="token number"> i1 </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> S1<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token punctuation">(</span>i2 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token punctuation">(</span>stop <span class="token operator">:=</span> <span class="token builtin">booléen</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token boolean">Faux</span>
+        <span class="token keyword">tant que</span> <span class="token punctuation">(</span>stop <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>i2 <span class="token operator">&lt;</span> S2<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> S2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span> <span class="token operator">==</span> S1<span class="token punctuation">[</span>i1 <span class="token operator">+</span> i2<span class="token punctuation">]</span><span class="token punctuation">:</span>
+               <span class="token number"> i2 </span><span class="token operator">←</span><span class="token number"> i2 </span><span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+                stop <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+        
+        <span class="token keyword">si</span><span class="token number"> i2 </span><span class="token operator">==</span> S2<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
+<p>Si tous les caractères de $S_2$ sont différents, il n'est pas nécessaire de tout recommencer. On peut utiliser l'optimisation suivante, qui donne la complexité voulue :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">sous_mot</span><span class="token punctuation">(</span>S1<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">,</span> S2<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>i1<span class="token punctuation">,</span><span class="token number"> i2 </span><span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span>
+    stop <span class="token operator">:=</span> <span class="token builtin">booléen</span>
+
+    <span class="token keyword">tant que</span><span class="token number"> i1 </span><span class="token operator">&lt;</span> S1<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+       <span class="token number"> i2 </span><span class="token operator">←</span> <span class="token number">0</span>        
+        stop <span class="token operator">←</span> <span class="token boolean">Faux</span>
+        <span class="token keyword">tant que</span> <span class="token punctuation">(</span>stop <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>i2 <span class="token operator">&lt;</span> S2<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> S2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span> <span class="token operator">==</span> S1<span class="token punctuation">[</span>i1 <span class="token operator">+</span> i2<span class="token punctuation">]</span><span class="token punctuation">:</span>
+               <span class="token number"> i2 </span><span class="token operator">←</span><span class="token number"> i2 </span><span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+                stop <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+        
+        <span class="token keyword">si</span><span class="token number"> i2 </span><span class="token operator">==</span> S2<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+       <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span><span class="token number"> i2
+</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
+</div>
+</details>     
+</div>
+<h3><span id="permutation-circulaire"></span> Permutation circulaire</h3>
+<p>Étant donné un tableau de caractères $S$ de longueur $n$ et un entier $k$, le problème est de transformer $S$ par <strong><em>permutation circulaire</em></strong> en décalant (circulairement) tous les éléments de $S$ de $k$ places. Par exemple, avec $S = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, on obtient $S' = \text{eureLongtempsJeMeSuisCouchéDeBonneH}$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez un algorithme optimal simple, <code class="language-">permutation(S: [caractère], k: entier) →[caractère]</code> qui rend à partir de $S$ et de $k$, un nouveau tableau permutation circulaire de $S$ de $k$ caractères.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La solution est optimale puisqu'elle est en $\mathcal{O}(n)$</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">permutation</span><span class="token punctuation">(</span>S<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">caractère</span><span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">caractère</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    S2 <span class="token operator">←</span> un tableau de<span class="token number"> n </span>caractères
+
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> k <span class="token punctuation">[</span><span class="token punctuation">:</span>
+        S2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> S<span class="token punctuation">[</span>S<span class="token punctuation">.</span>longueur<span class="token operator">-</span>k <span class="token operator">+</span> i<span class="token punctuation">]</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>k <span class="token punctuation">.</span><span class="token punctuation">.</span> S<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        S2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> S<span class="token punctuation">[</span>i<span class="token operator">-</span>k<span class="token punctuation">]</span>
+    
+    <span class="token keyword">rendre</span> S2</code></pre>
+<p>L'algorithme ci-dessus rend un tableau, il est donc facile de faire le décalage.</p>
+</div>
+</details>     
+</div>
+<p>On veut maintenant faire une permutation circulaire sur site, <em>ie.</em> sans utiliser plus que $\mathcal{O}(1)$ place mémoire supplémentaire (il arrive (par exemple quand on étudie le génome) que $n$ soit très grand). Il faut pour cela
+remarquer que permuter circulairement $L$ revient à prendre les $k$ dernières lettres de $L$ et à les mettre en tête. On note $L^R$ la liste $L$ <strong><em>renversée</em></strong> (par exemple, si $L =\text{Couché}$, $L^R = \text{éhcuoC}$).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez un algorithme <code class="language-">retournement(S: [caractère]) → ∅</code> en $\mathcal{O}(n)$ et utilisant $\mathcal{O}(1)$ place mémoire supplémentaire, qui transforme $L$ en $L^R$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si on droit qu'à un nombre constant de variables ceci n'est plus possible. Il faut ruser en utilisant des retournements</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">retournement</span><span class="token punctuation">(</span>S<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">caractère</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> S<span class="token punctuation">.</span>longueur <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+    S<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> S<span class="token punctuation">[</span>S<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">←</span> S<span class="token punctuation">[</span>S<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">,</span> S<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que, si on note $L = AB$, où $B$ est de longueur $k$ (par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, $A =\text{LongtempsJeMeSuisCouchéDeBonneH}$ et $B =\text{eure}$), alors \text{Permut}(L, k) = (A^RB^R)^R$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $(A^R)^R =  A$ et $(AB)^R = B^RA^R$, on a :</p>
+<div>
+$$
+(A^RB^R)^R = ((B^R)^R)((A^R)^R) = BA
+$$
+</div>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Déduisez-en un algorithme de complexité $\mathcal{O}(n)$ qui permute une liste (de longueur $n$), <em>ie.</em> qui transforme $L$ en $\text{Permut}(L,k)$, en utilisant $\mathcal{O}(1)$ espace mémoire supplémentaire.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'algorithme de permutation est alors tout simple :</p>
+<p><span id="algorithme-permutation"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">permutation</span><span class="token punctuation">(</span>S<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">caractère</span><span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    retournement<span class="token punctuation">(</span>S<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    retournement<span class="token punctuation">(</span>S<span class="token punctuation">[</span>k<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    retournement<span class="token punctuation">(</span>S<span class="token punctuation">)</span>
+</code></pre>
+<p>Et sa complexité est bien $\mathcal{O}(n-k) + \mathcal{O}(k) + \mathcal{O}(n) = \mathcal{O}(n)$.</p>
+</div>
+</details>     
+</div>
 <h2>pgcd</h2>
 <blockquote>
 <ul>
@@ -224,14 +1408,343 @@
 <li><strong>Difficulté</strong> : moyen à dur</li>
 </ul>
 </blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<p>On a déjà vu une version de l'algorithme du pgcd. Rappelons -là :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">pgcd</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    a'<span class="token punctuation">,</span> b' <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
+    <span class="token keyword">tant que</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        a' <span class="token operator">←</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+        b' <span class="token operator">←</span> min<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+        a<span class="token punctuation">,</span> b <span class="token operator">←</span> a'<span class="token punctuation">,</span> b'
+    
+    <span class="token keyword">rendre</span> max<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span></code></pre>
+<p>La version couramment utilisée est celle utilisant un modulo (opérateur <code class="language-">%</code> ou <code class="language-">mod</code> en algorithmie) qui converge plus vite.</p>
+<p>Cet algorithme est basé sur le fait que si la division euclidienne de $a$ par $b$ vaut $a = qb + r$ (avec $q$ et $r$ entiers et $r &lt; b$) on a <code class="language-">pgcd(a, b) = pgcd(b, r)</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p><a href="pgcd" class="interne">Calcul du pgcd</a></p>
+<p>Donnez un algorithme récursif calculant le pgcd en utilisant le modulo.</p>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><span id="algorithme-pgcd-modulo"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">pgcd_mod</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+    <span class="token keyword">si</span> b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> a
+    <span class="token keyword">si</span> a <span class="token operator">&lt;</span> b<span class="token punctuation">:</span>
+        a<span class="token punctuation">,</span> b <span class="token operator">←</span> b<span class="token punctuation">,</span> a
+    
+    <span class="token keyword">rendre</span> pgcd_mod<span class="token punctuation">(</span>b<span class="token punctuation">,</span> a mod b<span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<p>Knuth analyse en détails cet algorithme dans le tome 2 (partie 3.5.2) de <a href="https://fr.wikipedia.org/wiki/The_Art_of_Computer_Programming">the art of computer programming</a>. Comme à chaque fois avec Knuth : les résultats sont précis, intéressants et très bien écrits. Je ne peux que vous conseiller d'allez y jeter un coup d'œil nous ne ferons en effet ici qu'effleurer le sujet.</p>
+<h3>Complexité</h3>
+<p>Avant de prouver sa complexité, commencez par :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Démontrez que si $a\geq b$ alors $a \bmod b &lt; \frac{a}{2}$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $a \bmod b &lt; b$, si $b \leq \frac{a}{2}$ la propriété est démontrée et si $b &gt; \frac{a}{2}$ on a $a // b = 1$ et donc $a \bmod b = a - b &lt; \frac{a}{2}$</p>
+</div>
+</details>     
+</div>
+<p>Rappelez vous de cette propriété, elle peut se révéler extrêmement utile pour le calcul de complexité :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Déduire que le nombre de récursions de l'algorithme récursif utilisant le pgcd est inférieur à $\log_2(\max(a, b))$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le nombre de récursions ne peut excéder le nombre de fois où l'on peut diviser $a$ ou $b$ par 2 : il est inférieur à $\log_2(a)$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Si l'opération calculant le modulo est élémentaire, en déduire que la complexité de l'algorithme récursif utilisant le pgcd est en $\mathcal{O}(\ln(\max(a, b)))$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si le calcul du modulo s'effectue en $\mathcal{O}(1)$ opérations, la complexité totale de l'algorithme est en $\mathcal{O}(\ln(\max(a, b)))$, ce qui est très bon !</p>
+</div>
+</details>     
+</div>
+<h3>Pgcd et Fibonacci</h3>
+<p>On va maintenant montrer que cette complexité est atteinte. Pour cela, exhibons d'étranges propriétés des éléments de <a href="../fibonacci/" class="interne">la suite de Fibonacci</a>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Si $F(n)$ est le $n$ème nombre de la suite de Fibonacci, montrez que $F(n) \bmod F(n-1) = F(n-2)$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Par définition, on a $F(n+1) = F(n) + F(n-1)$ et comme $F(n) &gt; F(n-1)$, cette équation est aussi la division euclidienne de $F(n)$ par $F(n-1)$ puisqu'elle est unique.</p>
+</div>
+</details>     
+</div>
+<p>En déduire que :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Il y a exactement $n$ récursions de l'algorithme récursif utilisant le pgcd pour calculer le pgcd de  $F(n+1)$ et $F(n)$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La propriété précédente nous montre que <code class="language-">pgcd_mod(F(n+1), F(n))</code> va appeler <code class="language-">pgcd_mod(F(n), F(n+1) % F(n)) = pgcd_mod(F(n), F(n-1))</code>. Il va donc y avoir $n$ récursion jusqu'à arriver à l'appel de <code class="language-">pgcd_mod(F(1), 0)</code> qui va conclure la récursion.</p>
+</div>
+</details>     
+</div>
+<p>On a même mieux :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Si pour $a&gt; b$ il y a au moins $n$ récursions de l'algorithme récursif, alors $a\geq F(n+1)$ et $b\geq F(n)$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Montrer que ces nombres sont minimaux se fait simplement par récurrence sur le nombre  de récursions.</p>
+<ul>
+<li><strong>initialisation</strong>. Pour qu'il y ait qu moins 1 récursion, il faut que $a \geq b \geq 1 = F(2) = F(1) &gt; 0$.</li>
+<li><strong>récursion</strong>. On suppose que pour faire au moins $k$ itérations il faut que  $a \geq F(k+1)$ et  $b \geq F(k)$. Soit $a \geq b$ deux entiers tels que <code class="language-">pgcd_mod(a, b)</code> effectue $k+1$ itérations. Ceci implique que <code class="language-">pgcd_mod(b, a % b)</code> effectue $k$ itérations, par hypothèse de récursion on a alors que $b \geq F(k+1)$ et $a {\small \%} b \geq F(k)$ et donc $a \geq F(k+1) + F(k) = F(k+2)$.</li>
+</ul>
+<p>Cette propriété permet que l'on peut borner le nombre de récursions par $b$ ! Pour qu'il y ait au moins $n$ récursion, il faut que $a \geq b \geq F(n)$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Si l'opération calculant le modulo est élémentaire, en conclure que la complexité de l'algorithme récursif utilisant le pgcd est en $\mathcal{O}(\ln(\min(a, b)))$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme $F(n) = \mathcal{O}(2^n)$ on en déduit que le nombre de récursions et donc la complexité de <code class="language-">pgcd_mod(a, b)</code> est en $\mathcal{O}(\ln(\min(a, b)))$. Ce qui est à comparer à l'algorithme avec des soustractions dont la complexité était $\mathcal{O}(\min(a, b))$.</p>
+</div>
+</details>     
+</div>
+<p>Si cela vous intéresse, vous pouvez jeter un petit coup d'œil au lien suivant qui liste quelques propriétés liées au pgcd des nombres de la suite de Fibonacci :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://proofwiki.org/wiki/GCD_of_Fibonacci_Numbers">https://proofwiki.org/wiki/GCD_of_Fibonacci_Numbers</a></p>
+</div></div>
+
+<h3>pgcd binaire</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD">https://fr.wikipedia.org/wiki/Algorithme_binaire_de_calcul_du_PGCD</a></p>
+</div></div>
+
+<p>Cet algorithme, répertorié dès le 1er siècle (Knuth cite le <a href="https://fr.wikipedia.org/wiki/Les_Neuf_Chapitres_sur_l%27art_math%C3%A9matique">九章算术</a> chapitre 1 section 6) puis publié dans sa forme actuelle en 1967 par Stein.</p>
+<p><span id="algorithme-pgcd-binaire"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">pgcd_binaire</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>  <span class="token comment"># a, b ≥ 0</span>
+
+    <span class="token keyword">si</span> b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> a
+    <span class="token keyword">si</span> a <span class="token keyword">et</span> b sont pairs<span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token number">2</span> <span class="token operator">*</span> pgcd_binaire<span class="token punctuation">(</span>a <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> b <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">si</span> a est impair <span class="token keyword">et</span> b pair<span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> pgcd_binaire<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">si</span> a est pair <span class="token keyword">et</span> b impair<span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> pgcd_binaire<span class="token punctuation">(</span>a <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">si</span> a <span class="token keyword">et</span> b sont impairs<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> a <span class="token operator">&lt;</span> b<span class="token punctuation">:</span>
+            a<span class="token punctuation">,</span> b <span class="token operator">←</span> b<span class="token punctuation">,</span> a
+        <span class="token keyword">rendre</span> pgcd_binaire<span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">,</span> b<span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'algorithme <code class="language-">pgcd_binaire(a, b)</code> calcule bien le pgcd des deux entiers positifs a et b.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les propriétés utilisées conservent clairement le pgcd et, comme pour l'algorithme du pgcd initial, à chaque récursion le max de $a$ et $b$ sera strictement plus petit : on arrivera forcément à la condition d'arrêt ce qui en fait bien un algorithme.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de cet algorithme ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le calcul de sa complexité se fait comme pour <a href="../projet-exponentiation/%C3%A9tude-algorithmique/#complexit%C3%A9-rapide" class="interne">l'exponentiation indienne</a> et permet de prouver qu'elle est en $\mathcal{O}(\max(a, b))$. L'intérêt de cette version est qu'elle se fait tres simplement en machine où les entiers sont codés par des tableaux de bits et où la multiplication et la division d'un nombre par 2 revient à décaler sa représentation binaire d'un bit vers la droite ou la gauche respectivement.</p>
+<p>Il n'y a pas à calculer le modulo, opération plus complexe.</p>
+</div>
+</details>     
+</div>
 <!-- ds 1 L1 25-26
 
 ## {2, 3}-SUM
