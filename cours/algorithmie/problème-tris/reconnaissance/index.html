@@ -321,7 +321,7 @@ $$
 <p>Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :</p>
 <div>
 $$
-{\Pr}[T[u] > T[v]] = \frac{1}{2}
+{\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}
 $$
 </div>
 </div></div>
@@ -383,31 +383,57 @@ $$
 <p>Les propriétés précédentes nous permettent de voir que si $T$ est un tableau aléatoire alors la probabilité pour notre algorithme de reconnaissance fasse exactement :</p>
 <ul>
 <li>1 itération est $p_1 = {\Pr}[T[0] &gt; T[1]]$ et vaut $1/2$</li>
-<li>2 itérations est $p_2 = {\Pr}[T[0] &lt; T[1], T[1] &gt; T[2]]$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ puisqu'il n'y a qu'une permutation de $i$ éléments différents parmi les $i!$ possibles qui est triée (attention, $T[0] &lt; T[1]$ et $T[1] &gt; T[2]$ ne sont <strong>pas</strong> indépendant donc ${\Pr}[T[0] &lt; T[1], T[1] &gt; T[2]] \neq {\Pr}[T[0] &lt; T[1]]\cdot {\Pr}[T[1] &gt; T[2]]$)</li>
+<li>2 itérations est $p_2 = {\Pr}[T[0] &lt; T[1],\; T[1] &gt; T[2]]$</li>
 <li>...</li>
-<li>i itérations est la probabilité que $T[:i]$ soit trié mais que $T[:i+1]$ ne le soit pas : cette probabilité vaut $p_i = \frac{1}{i!} - \frac{1}{(i+1)!}$</li>
-<li>...</li>
-<li>$n$ itérations est la probabilité que $T[:n]$ soit trié mais que $T$ ne le soit pas : cette probabilité vaut $p_n = \frac{1}{(n-1)!} - \frac{1}{n!}$</li>
+<li>i itérations est  $p_i = {\Pr}[T[0] &lt; T[1],\; T[1] &lt; T[2],\; \dots,\; T[i-2] &lt; T[i-1],\; T[i-i] &gt; T[i]]$</li>
 </ul>
+<p>Les évènements ne sont pas indépendant donc pour $p_2$ on a que :</p>
+<div>
+$$
+{\Pr}[T[0] < T[1],\; T[1] > T[2]] \neq {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2]]
+$$
+</div>
+<p>Mais comme :</p>
+<div>
+$$
+{\Pr}[T[0] < T[1],\; T[1] > T[2]] = {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2] \,\vert\, T[1] > T[0]]
+$$ 
+</div>
+<p>et que :</p>
+<div>
+$$
+{\Pr}[T[1] > T[2] \,\vert\, T[1] > T[0]] \leq {\Pr}[T[1] > T[2]]
+$$
+</div>
+<p>puisque la partie gauche est plus contrainte pour $T[2]$ que la partie de droite (on a la valeur de $T[0]$ qui serait favorable en moins). On en conclut que :</p>
+<div>
+$$
+p_2 \leq \frac{1}{2} \;\cdot\; \frac{1}{2} = \frac{1}{4}
+$$
+</div>
+<p>Un raisonnement identique nous permet de minorer $p_i$ :</p>
+<div>
+$$
+p_i \leq {\Pr}[T[0] < T[1]] \cdot {\Pr}[T[1] < T[2]]\cdot \dots \cdot {\Pr}[T[i-2] < T[i-1]]\cdot {\Pr}[ T[i-i] > T[i]] = \frac{1}{2^i}
+$$
+</div>
 <p>Comme chaque itération est de complexité $\mathcal{O}(1)$, la complexité en moyenne sous ce modèle de probabilité vaut :</p>
 <div>
 $$
 \begin{array}{lcl}
-C(n) &=& \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))]\\
- &=& \sum_{i=1}^{n-1}(\frac{1}{i!} - \frac{1}{(i+1)!}) \cdot \mathcal{O}(i)) \\
- &=& \sum_{i=1}^{n-1}(\frac{(i+1)! - i!}{i! \cdot (i+1)!} \cdot \mathcal{O}(i))\\
- &=& \sum_{i=1}^{n-1}(\frac{i!\cdot (i+1-1)}{i! \cdot (i+1)!} \cdot \mathcal{O}(i))\\
- &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+C_{\text{moy}}(n) &=& \sum_{i=1}^{n-1}[p_i \cdot (i \cdot \mathcal{O}(1))]\\
+ &\leq& \sum_{i=1}^{n-1}\frac{1}{2^i} \cdot \mathcal{O}(i)) \\
+ &\leq& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i}{(2^i)!}))
 \end{array}
 $$
 </div>
-<p>Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :</p>
+<p>Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 (<a href="../../projet-sommes-classiques/#probl%C3%A8me-i/2%5Ei" class="interne">on le démontrera</a>) donc :</p>
 <div>
 $$
-C(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
+C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{i}{2^i})) \leq \mathcal{O}(2) = \mathcal{O}(1)
 $$
 </div>
-<p>La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le">Problème de Bâle</a> et est une série convergente (<a href="../../projet-sommes-classiques/#probl%C3%A8me-B%C3%A2le" class="interne">on le démontrera</a>). On a donc la proposition surprenante suivante :</p>
+<p>On a donc la proposition surprenante suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -418,32 +444,6 @@ $$
 <p>La complexité en moyenne du problème de la reconnaissance est en temps constant.</p>
 </div></div>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On a utilisé le fait, que la série est convergente et donc :</p>
-<div>
-$$
-\sum_{i=1}^n\frac{1}{i^2} \leq \sum_{i=1}^{+\infty} \frac{1}{i^2} \leq 2 = \mathcal{O}(1)
-$$
-</div>
-</div>
-</details>     
-</div>
 <p>Ce résultat est remarquable :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -459,6 +459,28 @@ $$
 </ul>
 </div></div>
 
+<p>Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i = {\Pr}[T[0] &lt; T[1],\; T[1] &lt; T[2], \dots, T[i-2] &lt; T[i-1],\; T[i-i] &gt; T[i]]$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :</p>
+<ul>
+<li>le $i+1$ ème élément n'est pas le plus grand</li>
+<li>les $i$ premiers éléments sont triées</li>
+</ul>
+<p>Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(i+1)!$ possibles. On a donc $p_i = \frac{i}{(i+1)!}$. On obtient alors :</p>
+<div>
+$$
+\begin{array}{lcl}
+C_\text{moy}(n) &=& \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))]\\
+ &=& \sum_{i=1}^{n-1}\frac{i}{(i+1)!} \cdot \mathcal{O}(i)) \\
+ &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+\end{array}
+$$
+</div>
+<p>Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :</p>
+<div>
+$$
+C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
+$$
+</div>
+<p>La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le">Problème de Bâle</a> et est une série convergente (<a href="../../projet-sommes-classiques/#probl%C3%A8me-B%C3%A2le" class="interne">on le démontrera</a>) et on retombe bien sur le même résultat.</p>
 <p>Je vois bien dans votre regard que vous ne me croyez pas. Testez donc par vous même avec ce petit code python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> shuffle
 
