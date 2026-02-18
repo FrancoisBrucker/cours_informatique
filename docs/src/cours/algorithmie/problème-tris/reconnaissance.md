@@ -165,14 +165,14 @@ $$
 $$
 </div>
 {% endexercice %}
-{% details "corrigé" %}
+{% details "corrigé", "open" %}
 
 Par définition :
 
 <div>
 $$
 \begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}{\Pr}[T[u] = i \, , \, T[v] > i]
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}{\Pr}[(T[u] = i) \text{ et } (T[v] > i)]
 \end{array}
 $$
 </div>
@@ -182,7 +182,7 @@ Puisque les valeurs de $T[u]$ et de $T[v]$ sont différentes mais indépendantes
 <div>
 $$
 \begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[T[v] > i \,\vert\, T[v] \neq i])
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[(T[v] > i) \text{ et } (T[v] \neq i)])
 \end{array}
 $$
 </div>
@@ -191,14 +191,14 @@ $$
 D'après la proposition précédente et ses deux corollaires :
 
 - ${\Pr}[T[u] = i] = \frac{1}{n}$
-- ${\Pr}[T[v] > i \\,\vert\\, T[v] \neq i] = \frac{\Pr[T[v] > i \\, , \\, T[v] \neq i]}{\Pr[T[v] \neq i]} = \frac{n-1-i}{n} \cdot \frac{1}{\frac{n-1}{n}} = \frac{n-1-i}{n-1}$ (on a que $n-1$ possibilité pour $T[v]$ puisqu'il ne peut pas être égal à $i$)
+- ${\Pr}[(T[v] > i) \text{ et } (T[v] \neq i)] = \frac{\Pr[(T[v] > i) \text{ et } (T[v] \neq i)]}{\Pr[T[v] \neq i]} = \frac{n-1-i}{n} \cdot \frac{1}{\frac{n-1}{n}} = \frac{n-1-i}{n-1}$ (on a que $n-1$ possibilité pour $T[v]$ puisqu'il ne peut pas être égal à $i$)
 
 Ce qui nous permet de conclure :
 
 <div>
 $$
 \begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[T[v] > i \,\vert\, T[v] \neq i])\\
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[(T[v] > i) \text{ et } (T[v] \neq i)])\\
 &=& \sum\limits_{0\leq i< n}(\frac{1}{n} \cdot \frac{n-1-i}{n-1})\\
 &=& \frac{1}{n(n-1)}\sum\limits_{0\leq i< n}(n-1-i)\\
 &=& \frac{1}{n(n-1)}\sum\limits_{0\leq j< n}(j)\\
@@ -214,15 +214,15 @@ Les propriétés précédentes nous permettent de voir que si $T$ est un tableau
 
 
 - 1 itération est $p_1 = {\Pr}[T[0] > T[1]]$ et vaut $1/2$
-- 2 itérations est $p_2 = {\Pr}[T[0] < T[1],\\; T[1] > T[2]]$
+- 2 itérations est $p_2 = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] > T[2])]$
 - ...
-- i itérations est  $p_i = {\Pr}[T[0] < T[1],\\; T[1] < T[2],\\; \dots,\\; T[i-2] < T[i-1],\\; T[i-i] > T[i]]$
+- i itérations est  $p_i = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] < T[2]) \text{ et } \;\dots\; \text{ et } (T[i-2] < T[i-1]) \text{ et } (T[i-i] > T[i])]$
  
 Les évènements ne sont pas indépendant donc pour $p_2$ on a que :
 
 <div>
 $$
-{\Pr}[T[0] < T[1],\; T[1] > T[2]] \neq {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2]]
+p_2 = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] > T[2])] \neq {\Pr}[T[0] < T[1]] \;\cdot\; {\Pr}[T[1] > T[2]]
 $$
 </div>
 
@@ -230,7 +230,7 @@ Mais comme :
 
 <div>
 $$
-{\Pr}[T[0] < T[1],\; T[1] > T[2]] = {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2] \,\vert\, T[1] > T[0]]
+{\Pr}[(T[0] < T[1]) \text{ et } (T[1] > T[2])] = {\Pr}[(T[0] < T[1])] \;\cdot\; {\Pr}[T[1] > T[2] \;\mid\; T[1] > T[0]]
 $$ 
 </div>
 
@@ -238,7 +238,7 @@ et que :
 
 <div>
 $$
-{\Pr}[T[1] > T[2] \,\vert\, T[1] > T[0]] \leq {\Pr}[T[1] > T[2]]
+{\Pr}[T[1] > T[2] \;\mid\; T[1] > T[0]] \leq {\Pr}[T[1] > T[2]]
 $$
 </div>
 
@@ -254,7 +254,7 @@ $$
 
 <div>
 $$
-p_i \leq {\Pr}[T[0] < T[1]] \cdot {\Pr}[T[1] < T[2]]\cdot \dots \cdot {\Pr}[T[i-2] < T[i-1]]\cdot {\Pr}[ T[i-i] > T[i]] = \frac{1}{2^i}
+p_i \leq {\Pr}[T[0] < T[1]] \cdot {\Pr}[T[1] < T[2]]\cdot \;\dots\; \cdot {\Pr}[T[i-2] < T[i-1]]\cdot {\Pr}[ T[i-i] > T[i]] = \frac{1}{2^i}
 $$
 </div>
 
@@ -263,8 +263,8 @@ Comme chaque itération est de complexité $\mathcal{O}(1)$, la complexité en m
 <div>
 $$
 \begin{array}{lcl}
-C_{\text{moy}}(n) &=& \sum_{i=1}^{n-1}[p_i \cdot (i \cdot \mathcal{O}(1))]\\
- &\leq& \sum_{i=1}^{n-1}\frac{1}{2^i} \cdot \mathcal{O}(i)) \\
+C_{\text{moy}}(n) &=& \sum_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
+ &\leq& \sum_{i=1}^{n-1}(\frac{1}{2^i} \cdot \mathcal{O}(i)) \\
  &\leq& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i}{(2^i)!}))
 \end{array}
 $$
@@ -295,7 +295,7 @@ Ce résultat est remarquable :
 {% endattention2 %}
 
 
-Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i = {\Pr}[T[0] < T[1],\\; T[1] < T[2], \dots, T[i-2] < T[i-1],\\; T[i-i] > T[i]]$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :
+Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] < T[2]) \text{ et } (T[i-2] < T[i-1]) \text{ et } (T[i-i] > T[i])]$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :
 
 - le $i+1$ ème élément n'est pas le plus grand
 - les $i$ premiers éléments sont triées
@@ -305,8 +305,8 @@ Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(
 <div>
 $$
 \begin{array}{lcl}
-C_\text{moy}(n) &=& \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))]\\
- &=& \sum_{i=1}^{n-1}\frac{i}{(i+1)!} \cdot \mathcal{O}(i)) \\
+C_\text{moy}(n) &=& \sum_{i=1}^n(p_i \cdot (i \cdot \mathcal{O}(1)))\\
+ &=& \sum_{i=1}^{n-1}(\frac{i}{(i+1)!} \cdot \mathcal{O}(i)) \\
  &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
 \end{array}
 $$
@@ -322,8 +322,16 @@ $$
 
 La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée [Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le) et est une série convergente ([on le démontrera](../../projet-sommes-classiques/#problème-Bâle){.interne}) et on retombe bien sur le même résultat.
 
+#### Vérification
 
-Je vois bien dans votre regard que vous ne me croyez pas. Testez donc par vous même avec ce petit code python :
+Je vois bien dans votre regard que vous ne me croyez pas. Essayez donc par vous même :
+
+{% faire %}
+Testez le code suivant (chez moi le max était de 4) pour voir que le nombre maximum d'itération est très inférieur à la longueur du tableau (chez moi le max était de 4). 
+
+Puis essayez avec des tableaux plus contraints (comme `T = 5 * list(range(4))`{.language-} par exemple) pour voir que c'est toujours vrai si le tableau possède quelques égalités.
+{% endfaire %}
+
 
 ```python
 from random import shuffle
@@ -348,9 +356,6 @@ print(max(nb))
 
 ```
 
-{% faire %}
-Testez le code précédent (chez moi le max était de 4) puis essayez avec des tableaux plus contraint (comme `T = 5 * list(range(4))`{.language-} par exemple pour voir que c'est toujours vrai si le tableau possède quelques égalités)
-{% endfaire %}
 
 ## Complexité du problème de la reconnaissance
 
