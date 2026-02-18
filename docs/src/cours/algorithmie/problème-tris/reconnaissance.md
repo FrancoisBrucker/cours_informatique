@@ -161,7 +161,7 @@ Montrez que si $T$ est un tableau aléatoire on a pour tout $u \neq v$ :
 
 <div>
 $$
-{\Pr}[T[u] > T[v]] = \frac{1}{2}
+{\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}
 $$
 </div>
 {% endexercice %}
@@ -210,56 +210,79 @@ $$
 
 {% enddetails %}
 
-
-
-
 Les propriétés précédentes nous permettent de voir que si $T$ est un tableau aléatoire alors la probabilité pour notre algorithme de reconnaissance fasse exactement :
 
+
 - 1 itération est $p_1 = {\Pr}[T[0] > T[1]]$ et vaut $1/2$
-- 2 itérations est $p_2 = {\Pr}[T[0] < T[1], T[1] > T[2]]$, donc que $T[:2]$ est trié mais que $T[:3]$ ne l'est pas : cette probabilité vaut $\frac{1}{2!} - \frac{1}{3!}$ puisqu'il n'y a qu'une permutation de $i$ éléments différents parmi les $i!$ possibles qui est triée (attention, $T[0] < T[1]$ et $T[1] > T[2]$ ne sont **pas** indépendant donc ${\Pr}[T[0] < T[1], T[1] > T[2]] \neq {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2]]$)
+- 2 itérations est $p_2 = {\Pr}[T[0] < T[1],\\; T[1] > T[2]]$
 - ...
-- i itérations est la probabilité que $T[:i]$ soit trié mais que $T[:i+1]$ ne le soit pas : cette probabilité vaut $p_i = \frac{1}{i!} - \frac{1}{(i+1)!}$
-- ...
-- $n$ itérations est la probabilité que $T[:n]$ soit trié mais que $T$ ne le soit pas : cette probabilité vaut $p_n = \frac{1}{(n-1)!} - \frac{1}{n!}$
+- i itérations est  $p_i = {\Pr}[T[0] < T[1],\\; T[1] < T[2],\\; \dots,\\; T[i-2] < T[i-1],\\; T[i-i] > T[i]]$
+ 
+Les évènements ne sont pas indépendant donc pour $p_2$ on a que :
+
+<div>
+$$
+{\Pr}[T[0] < T[1],\; T[1] > T[2]] \neq {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2]]
+$$
+</div>
+
+Mais comme :
+
+<div>
+$$
+{\Pr}[T[0] < T[1],\; T[1] > T[2]] = {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2] \,\vert\, T[1] > T[0]]
+$$ 
+</div>
+
+et que :
+
+<div>
+$$
+{\Pr}[T[1] > T[2] \,\vert\, T[1] > T[0]] \leq {\Pr}[T[1] > T[2]]
+$$
+</div>
+
+puisque la partie gauche est plus contrainte pour $T[2]$ que la partie de droite (on a la valeur de $T[0]$ qui serait favorable en moins). On en conclut que :
+
+<div>
+$$
+p_2 \leq \frac{1}{2} \;\cdot\; \frac{1}{2} = \frac{1}{4}
+$$
+</div>
+
+ Un raisonnement identique nous permet de minorer $p_i$ :
+
+<div>
+$$
+p_i \leq {\Pr}[T[0] < T[1]] \cdot {\Pr}[T[1] < T[2]]\cdot \dots \cdot {\Pr}[T[i-2] < T[i-1]]\cdot {\Pr}[ T[i-i] > T[i]] = \frac{1}{2^i}
+$$
+</div>
 
 Comme chaque itération est de complexité $\mathcal{O}(1)$, la complexité en moyenne sous ce modèle de probabilité vaut :
 
 <div>
 $$
 \begin{array}{lcl}
-C(n) &=& \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))]\\
- &=& \sum_{i=1}^{n-1}(\frac{1}{i!} - \frac{1}{(i+1)!}) \cdot \mathcal{O}(i)) \\
- &=& \sum_{i=1}^{n-1}(\frac{(i+1)! - i!}{i! \cdot (i+1)!} \cdot \mathcal{O}(i))\\
- &=& \sum_{i=1}^{n-1}(\frac{i!\cdot (i+1-1)}{i! \cdot (i+1)!} \cdot \mathcal{O}(i))\\
- &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+C_{\text{moy}}(n) &=& \sum_{i=1}^{n-1}[p_i \cdot (i \cdot \mathcal{O}(1))]\\
+ &\leq& \sum_{i=1}^{n-1}\frac{1}{2^i} \cdot \mathcal{O}(i)) \\
+ &\leq& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i}{(2^i)!}))
 \end{array}
 $$
 </div>
 
-Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :
+Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 ([on le démontrera](../../projet-sommes-classiques/#problème-i/2^i){.interne}) donc :
 
 <div>
 $$
-C(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
+C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{i}{2^i})) \leq \mathcal{O}(2) = \mathcal{O}(1)
 $$
 </div>
 
-La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée [Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le) et est une série convergente ([on le démontrera](../../projet-sommes-classiques/#problème-Bâle){.interne}). On a donc la proposition surprenante suivante :
+On a donc la proposition surprenante suivante :
 
 {% note "**Proposition**" %}
 La complexité en moyenne du problème de la reconnaissance est en temps constant.
 {% endnote %}
-{% details "preuve", "open" %}
-
-On a utilisé le fait, que la série est convergente et donc :
-
-<div>
-$$
-\sum_{i=1}^n\frac{1}{i^2} \leq \sum_{i=1}^{+\infty} \frac{1}{i^2} \leq 2 = \mathcal{O}(1)
-$$
-</div>
-
-{% enddetails %}
 
 Ce résultat est remarquable :
 
@@ -270,6 +293,35 @@ Ce résultat est remarquable :
 - Borner une complexité par [une série convergente](https://fr.wikipedia.org/wiki/S%C3%A9rie_convergente) est très utile pour démontrer qu'un algorithme est en temps constant.
 
 {% endattention2 %}
+
+
+Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i = {\Pr}[T[0] < T[1],\\; T[1] < T[2], \dots, T[i-2] < T[i-1],\\; T[i-i] > T[i]]$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :
+
+- le $i+1$ ème élément n'est pas le plus grand
+- les $i$ premiers éléments sont triées
+
+Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(i+1)!$ possibles. On a donc $p_i = \frac{i}{(i+1)!}$. On obtient alors :
+
+<div>
+$$
+\begin{array}{lcl}
+C_\text{moy}(n) &=& \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))]\\
+ &=& \sum_{i=1}^{n-1}\frac{i}{(i+1)!} \cdot \mathcal{O}(i)) \\
+ &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+\end{array}
+$$
+</div>
+
+Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :
+
+<div>
+$$
+C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
+$$
+</div>
+
+La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée [Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le) et est une série convergente ([on le démontrera](../../projet-sommes-classiques/#problème-Bâle){.interne}) et on retombe bien sur le même résultat.
+
 
 Je vois bien dans votre regard que vous ne me croyez pas. Testez donc par vous même avec ce petit code python :
 

@@ -179,6 +179,8 @@ $$
 
 Et pour le cas souvent intéressant en complexité :
 
+<div id="problème-i/2^i"></div>
+
 {% exercice %}
 Montrez que :
 
