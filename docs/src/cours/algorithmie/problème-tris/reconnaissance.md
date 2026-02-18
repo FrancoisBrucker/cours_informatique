@@ -216,7 +216,7 @@ Les propriétés précédentes nous permettent de voir que si $T$ est un tableau
 - 1 itération est $p_1 = {\Pr}[T[0] > T[1]]$ et vaut $1/2$
 - 2 itérations est $p_2 = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] > T[2])]$
 - ...
-- i itérations est  $p_i = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] < T[2]) \text{ et } \;\dots\; \text{ et } (T[i-2] < T[i-1]) \text{ et } (T[i-i] > T[i])]$
+- i itérations est  $p_i = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] < T[2]) \text{ et } \\;\dots\\; \text{ et } (T[i-2] < T[i-1]) \text{ et } (T[i-i] > T[i])]$
  
 Les évènements ne sont pas indépendant donc pour $p_2$ on a que :
 
