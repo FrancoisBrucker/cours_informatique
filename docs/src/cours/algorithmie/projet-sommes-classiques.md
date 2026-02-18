@@ -99,6 +99,7 @@ $$
 
 En complexité c'est souvent avec des puissance de 2 que l'on va jouer. Por le coup, il est utile de connaître les valeurs des sommes car elles sont souvent des calculs intermédiaires :
 
+<div id="problème-1/2^i"></div>
 {% exercice %}
 Montrez que :
 

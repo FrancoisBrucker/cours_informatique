@@ -9,11 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Lors de calculs récursif de complexité, on va de nombreuses fois avoir les mêmes équations à résoudre.
-
-Cette série d'exercice va vous montrer les plus classiques et leur usage dans les calculs de complexité.
-
-Quelques équations de récurrences sont à connaître car elles donnent de complexités très différentes.
+Lors de calculs récursif de complexité, on va de nombreuses fois avoir les mêmes équations à résoudre. Cette série d'exercices va vous montrer les plus classiques et leur usage dans les calculs de complexité. Quelques équations de récurrences sont à connaître car elles donnent de complexités très différentes.
 
 {% exercice %}
 Que vaut $C(n)$ si :
@@ -30,15 +26,27 @@ $$
 {% endexercice %}
 {% details "corrigé" %}
 
+On réitère l'équation de récursion jusqu'à trouver une suite générale avec un paramètre décroissant pour le terme de droite :
 <div>
 $$
 \begin{array}{lcl}
 C(n) &=& \mathcal{O}(1) + C(n - K)\\
      &=& \mathcal{O}(1) + \mathcal{O}(1) + C(n - 2\cdot K)\\
+     &=& \mathcal{O}(1) + \mathcal{O}(1) + (\mathcal{O}(1) + C(n - 2\cdot K - K))\\
+     &=& 3\cdot \mathcal{O}(1) + C(n - 3\cdot K)\\
      &=& \dots\\
      &=& p\cdot \mathcal{O}(1) + C(n - p\cdot K)\\
      &=& \mathcal{O}(p) + C(n - p\cdot K)\\
-     &=& \mathcal{O}(\frac{n}{K}) + C(1)\\
+\end{array}
+$$
+</div>
+
+La formule ci-dessus est vraie **quelque soit** $p$. On peut donc prendre la valeur qui nous arrange. Comme on connaît $C(1)$, si on prend $p$ tel que $n - p\cdot K = 1$, c'est à dire $p = \frac{n-1}{K}$, on a plus d'inconnue à droite de l'égalité :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(\frac{n-1}{K}) + C(1)\\
      &=& \mathcal{O}(n)
 \end{array}
 $$
@@ -60,19 +68,30 @@ $$
 {% endexercice %}
 {% details "corrigé" %}
 
-On fait de même que pour l'exercice précédent :
+On fait de même que pour l'exercice précédent, on cherche une suite générale avec un paramètre décroissant pour le terme de droite :
 
 <div>
 $$
 \begin{array}{lcl}
 C(n) &=& \mathcal{O}(n) + C(n - K)\\
      &=& \mathcal{O}(n) + \mathcal{O}(n - K) + C(n - 2\cdot K)\\
+     &=& \mathcal{O}(n) + \mathcal{O}(n - K) + (\mathcal{O}(n - 2\cdot K) + \mathcal{O}(n - 2\cdot K - K))\\
+     &=& \mathcal{O}(n) + \mathcal{O}(n - K) + \mathcal{O}(n - 2\cdot K) + \mathcal{O}(n - 3\cdot K)\\
      &=& \dots\\
      &=& \sum\limits_{i=0}^{p-1} \mathcal{O}(n - iK) + C(n - p\cdot K)\\
      &=& \mathcal{O}(n\cdot p- K\sum\limits_{i=0}^{p-1} i) + C(n - p\cdot K)\\
      &=& \mathcal{O}(n\cdot p- K\frac{p(p-1)}{2}) + C(n - p\cdot K)\\
      &=& \mathcal{O}(n\cdot p) +\mathcal{O}(p^{2}) + C(n - p\cdot K)\\
-     &=& \mathcal{O}(n\cdot \frac{n}{K}) +\mathcal{O}((\frac{n}{K})^{2}) + C(1)\\
+\end{array}
+$$
+</div>
+
+Comme on connaît $C(1)$m on prend $p$ tel que $n - p\cdot K = 1$, c'est à dire : $p = \frac{n-1}{K}$ :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(n\cdot \frac{n-1}{K}) +\mathcal{O}((\frac{n-1}{K})^{2}) + C(1)\\
      &=& \mathcal{O}(n^2)
 \end{array}
 $$
@@ -103,7 +122,16 @@ C(n) &=& \mathcal{O}(1) + C(\frac{n}{2})\\
      &=& \dots\\
      &=& p\cdot \mathcal{O}(1) + C(\frac{n}{2^p})\\
      &=& \mathcal{O}(p) + C(\frac{n}{2^p})\\
-     &=& \mathcal{O}(\log_2(n)) + C(1)\\
+\end{array}
+$$
+</div>
+
+Si $p=\log_2(n)$, on a $\frac{n}{2^p} = \frac{n}{2^{\log_2(n)}} = \frac{n}{n} =1$, donc :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(\log_2(n)) + C(1)\\
      &=& \mathcal{O}(\ln(n))
 \end{array}
 $$
@@ -131,10 +159,29 @@ $$
 C(n) &=& \mathcal{O}(n) + C(\frac{n}{2})\\
      &=& \mathcal{O}(n) + \mathcal{O}(\frac{n}{2}) + C(\frac{n}{4})\\
      &=& \dots\\
-     &=& \sum\limits_{0\leq i < p} \mathcal{O}(\frac{n}{2^p}) + C(\frac{n}{2^p})\\
-     &=& \mathcal{O}(n\sum\limits_{0\leq i < p}\frac{1}{2^p}) + C(\frac{n}{2^p})\\
+     &=& \sum\limits_{0\leq i < p} \mathcal{O}(\frac{n}{2^i}) + C(\frac{n}{2^p})\\
+     &=& \mathcal{O}(n\sum\limits_{0\leq i < p}\frac{1}{2^i}) + C(\frac{n}{2^p})\\
+\end{array}
+$$
+</div>
+
+[On a vu précédemment](../projet-sommes-classiques/#problème-1/2^i){.interne} que la série $\sum\limits_{0\leq i < p}\frac{1}{2^i}$ était plus petite que 2, donc : $\mathcal{O}(n\sum\limits_{0\leq i < p}\frac{1}{2^i}) = \mathcal{O}(n)$, ce qui simplifie beaucoup notre équation :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(n\sum\limits_{0\leq i < p}\frac{1}{2^i}) + C(\frac{n}{2^p})\\
      &=& \mathcal{O}(n) + C(\frac{n}{2^p})\\
-     &=& \mathcal{O}(n)
+\end{array}
+$$
+</div>
+
+On peut ici tranquillement prendre $p=\log_2(n)$ pour obtenir :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \mathcal{O}(n)
 \end{array}
 $$
 </div>
@@ -194,8 +241,9 @@ $$
 \begin{array}{lcl}
 C(n) &=& \mathcal{O}(n) + 2\cdot C(\frac{n}{2})\\
      &=& \mathcal{O}(n) + 2\cdot \mathcal{O}(\frac{n}{2}) + 4\cdot C(\frac{n}{4})\\
+     &=& \mathcal{O}(n) + \mathcal{O}(n) + 4\cdot C(\frac{n}{4})\\
+     &=& 2 \mathcal{O}(n) + 2^2\cdot C(\frac{n}{2^2})\\
      &=& \dots\\
-     &=& \sum\limits_{0\leq i < p} (\mathcal{O}(n)) + 2^p \cdot C(\frac{n}{2^p})\\
      &=& p\cdot \mathcal{O}(n) + 2^p \cdot C(\frac{n}{2^p})\\
      &=& \mathcal{O}(p\cdot n) + 2^p \cdot C(\frac{n}{2^p})\\
      &=& \mathcal{O}(\log_2(n)\cdot n) + 2^{\log_2(n)} \cdot C(1)\\

@@ -32,3 +32,7 @@ eleventyComputed:
 -  team topologies :
    -  <https://yoan-thirion.gitbook.io/knowledge-base/xtrem-reading/resources/book-notes/team-topologies>
 pair programming : <https://www.youtube.com/watch?v=fbxMV76e7_E>
+- critère débile parce que l'on est pas développeur :
+  - ligne de code<https://www.youtube.com/watch?v=POMqB6tGB74>
+  - pourcentage de lignes testées
+  - 
