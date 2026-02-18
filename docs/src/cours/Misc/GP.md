@@ -31,3 +31,4 @@ eleventyComputed:
   -  safe c'est de la merde <https://www.youtube.com/watch?v=X4-Y9oUlpkE>
 -  team topologies :
    -  <https://yoan-thirion.gitbook.io/knowledge-base/xtrem-reading/resources/book-notes/team-topologies>
+pair programming : <https://www.youtube.com/watch?v=fbxMV76e7_E>
