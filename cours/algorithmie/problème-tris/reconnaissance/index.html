@@ -327,7 +327,7 @@ $$
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -347,7 +347,7 @@ $$
 <div>
 $$
 \begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}{\Pr}[T[u] = i \, , \, T[v] > i]
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}{\Pr}[(T[u] = i) \text{ et } (T[v] > i)]
 \end{array}
 $$
 </div>
@@ -355,20 +355,20 @@ $$
 <div>
 $$
 \begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[T[v] > i \,\vert\, T[v] \neq i])
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[(T[v] > i) \text{ et } (T[v] \neq i)])
 \end{array}
 $$
 </div>
 <p>D'après la proposition précédente et ses deux corollaires :</p>
 <ul>
 <li>${\Pr}[T[u] = i] = \frac{1}{n}$</li>
-<li>${\Pr}[T[v] &gt; i \,\vert\, T[v] \neq i] = \frac{\Pr[T[v] &gt; i \, , \, T[v] \neq i]}{\Pr[T[v] \neq i]} = \frac{n-1-i}{n} \cdot \frac{1}{\frac{n-1}{n}} = \frac{n-1-i}{n-1}$ (on a que $n-1$ possibilité pour $T[v]$ puisqu'il ne peut pas être égal à $i$)</li>
+<li>${\Pr}[(T[v] &gt; i) \text{ et } (T[v] \neq i)] = \frac{\Pr[(T[v] &gt; i) \text{ et } (T[v] \neq i)]}{\Pr[T[v] \neq i]} = \frac{n-1-i}{n} \cdot \frac{1}{\frac{n-1}{n}} = \frac{n-1-i}{n-1}$ (on a que $n-1$ possibilité pour $T[v]$ puisqu'il ne peut pas être égal à $i$)</li>
 </ul>
 <p>Ce qui nous permet de conclure :</p>
 <div>
 $$
 \begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[T[v] > i \,\vert\, T[v] \neq i])\\
+{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[(T[v] > i) \text{ et } (T[v] \neq i)])\\
 &=& \sum\limits_{0\leq i< n}(\frac{1}{n} \cdot \frac{n-1-i}{n-1})\\
 &=& \frac{1}{n(n-1)}\sum\limits_{0\leq i< n}(n-1-i)\\
 &=& \frac{1}{n(n-1)}\sum\limits_{0\leq j< n}(j)\\
@@ -383,26 +383,26 @@ $$
 <p>Les propriétés précédentes nous permettent de voir que si $T$ est un tableau aléatoire alors la probabilité pour notre algorithme de reconnaissance fasse exactement :</p>
 <ul>
 <li>1 itération est $p_1 = {\Pr}[T[0] &gt; T[1]]$ et vaut $1/2$</li>
-<li>2 itérations est $p_2 = {\Pr}[T[0] &lt; T[1],\; T[1] &gt; T[2]]$</li>
+<li>2 itérations est $p_2 = {\Pr}[(T[0] &lt; T[1]) \text{ et } (T[1] &gt; T[2])]$</li>
 <li>...</li>
-<li>i itérations est  $p_i = {\Pr}[T[0] &lt; T[1],\; T[1] &lt; T[2],\; \dots,\; T[i-2] &lt; T[i-1],\; T[i-i] &gt; T[i]]$</li>
+<li>i itérations est  $p_i = {\Pr}[(T[0] &lt; T[1]) \text{ et } (T[1] &lt; T[2]) \text{ et } ;\dots; \text{ et } (T[i-2] &lt; T[i-1]) \text{ et } (T[i-i] &gt; T[i])]$</li>
 </ul>
 <p>Les évènements ne sont pas indépendant donc pour $p_2$ on a que :</p>
 <div>
 $$
-{\Pr}[T[0] < T[1],\; T[1] > T[2]] \neq {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2]]
+p_2 = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] > T[2])] \neq {\Pr}[T[0] < T[1]] \;\cdot\; {\Pr}[T[1] > T[2]]
 $$
 </div>
 <p>Mais comme :</p>
 <div>
 $$
-{\Pr}[T[0] < T[1],\; T[1] > T[2]] = {\Pr}[T[0] < T[1]]\cdot {\Pr}[T[1] > T[2] \,\vert\, T[1] > T[0]]
+{\Pr}[(T[0] < T[1]) \text{ et } (T[1] > T[2])] = {\Pr}[(T[0] < T[1])] \;\cdot\; {\Pr}[T[1] > T[2] \;\mid\; T[1] > T[0]]
 $$ 
 </div>
 <p>et que :</p>
 <div>
 $$
-{\Pr}[T[1] > T[2] \,\vert\, T[1] > T[0]] \leq {\Pr}[T[1] > T[2]]
+{\Pr}[T[1] > T[2] \;\mid\; T[1] > T[0]] \leq {\Pr}[T[1] > T[2]]
 $$
 </div>
 <p>puisque la partie gauche est plus contrainte pour $T[2]$ que la partie de droite (on a la valeur de $T[0]$ qui serait favorable en moins). On en conclut que :</p>
@@ -414,15 +414,15 @@ $$
 <p>Un raisonnement identique nous permet de minorer $p_i$ :</p>
 <div>
 $$
-p_i \leq {\Pr}[T[0] < T[1]] \cdot {\Pr}[T[1] < T[2]]\cdot \dots \cdot {\Pr}[T[i-2] < T[i-1]]\cdot {\Pr}[ T[i-i] > T[i]] = \frac{1}{2^i}
+p_i \leq {\Pr}[T[0] < T[1]] \cdot {\Pr}[T[1] < T[2]]\cdot \;\dots\; \cdot {\Pr}[T[i-2] < T[i-1]]\cdot {\Pr}[ T[i-i] > T[i]] = \frac{1}{2^i}
 $$
 </div>
 <p>Comme chaque itération est de complexité $\mathcal{O}(1)$, la complexité en moyenne sous ce modèle de probabilité vaut :</p>
 <div>
 $$
 \begin{array}{lcl}
-C_{\text{moy}}(n) &=& \sum_{i=1}^{n-1}[p_i \cdot (i \cdot \mathcal{O}(1))]\\
- &\leq& \sum_{i=1}^{n-1}\frac{1}{2^i} \cdot \mathcal{O}(i)) \\
+C_{\text{moy}}(n) &=& \sum_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
+ &\leq& \sum_{i=1}^{n-1}(\frac{1}{2^i} \cdot \mathcal{O}(i)) \\
  &\leq& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i}{(2^i)!}))
 \end{array}
 $$
@@ -459,7 +459,7 @@ $$
 </ul>
 </div></div>
 
-<p>Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i = {\Pr}[T[0] &lt; T[1],\; T[1] &lt; T[2], \dots, T[i-2] &lt; T[i-1],\; T[i-i] &gt; T[i]]$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :</p>
+<p>Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i = {\Pr}[(T[0] &lt; T[1]) \text{ et } (T[1] &lt; T[2]) \text{ et } (T[i-2] &lt; T[i-1]) \text{ et } (T[i-i] &gt; T[i])]$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :</p>
 <ul>
 <li>le $i+1$ ème élément n'est pas le plus grand</li>
 <li>les $i$ premiers éléments sont triées</li>
@@ -468,8 +468,8 @@ $$
 <div>
 $$
 \begin{array}{lcl}
-C_\text{moy}(n) &=& \sum_{i=1}^n[p_i \cdot (i \cdot \mathcal{O}(1))]\\
- &=& \sum_{i=1}^{n-1}\frac{i}{(i+1)!} \cdot \mathcal{O}(i)) \\
+C_\text{moy}(n) &=& \sum_{i=1}^n(p_i \cdot (i \cdot \mathcal{O}(1)))\\
+ &=& \sum_{i=1}^{n-1}(\frac{i}{(i+1)!} \cdot \mathcal{O}(i)) \\
  &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
 \end{array}
 $$
@@ -481,7 +481,18 @@ C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
 $$
 </div>
 <p>La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le">Problème de Bâle</a> et est une série convergente (<a href="../../projet-sommes-classiques/#probl%C3%A8me-B%C3%A2le" class="interne">on le démontrera</a>) et on retombe bien sur le même résultat.</p>
-<p>Je vois bien dans votre regard que vous ne me croyez pas. Testez donc par vous même avec ce petit code python :</p>
+<h4>Vérification</h4>
+<p>Je vois bien dans votre regard que vous ne me croyez pas. Essayez donc par vous même :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Testez le code suivant (chez moi le max était de 4) pour voir que le nombre maximum d'itération est très inférieur à la longueur du tableau (chez moi le max était de 4).</p>
+<p>Puis essayez avec des tableaux plus contraints (comme <code class="language-">T = 5 * list(range(4))</code> par exemple) pour voir que c'est toujours vrai si le tableau possède quelques égalités.</p>
+</div></div>
+
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> shuffle
 
 <span class="token keyword">def</span> <span class="token function">compte</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -502,15 +513,6 @@ nb <span class="token operator">=</span> <span class="token punctuation">[</span
 <span class="token keyword">print</span><span class="token punctuation">(</span>nb<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">max</span><span class="token punctuation">(</span>nb<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Testez le code précédent (chez moi le max était de 4) puis essayez avec des tableaux plus contraint (comme <code class="language-">T = 5 * list(range(4))</code> par exemple pour voir que c'est toujours vrai si le tableau possède quelques égalités)</p>
-</div></div>
-
 <h2>Complexité du problème de la reconnaissance</h2>
 <p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-recherche" class="interne">la complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\Omega(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code> est de $\mathcal{O}(n)$. On en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
