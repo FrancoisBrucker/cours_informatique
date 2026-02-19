@@ -165,7 +165,7 @@ $$
 $$
 </div>
 {% endexercice %}
-{% details "corrigé", "open" %}
+{% details "corrigé" %}
 
 Par définition :
 
