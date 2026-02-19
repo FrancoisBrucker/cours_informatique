@@ -272,6 +272,16 @@ Pour aller plus loin :
 
 #### Jeudi : problème de l'exponentiation
 
+> 2h
+
+<!-- TBD 2026/2027
+
+- faire tout en une fois cours théorique et TP sus la forme d'un cours en incorporant des bouts du tri pour les calculs. Le faire sous la forme d'un cours à copier/coller.
+- ajouter la représentation graphique
+- faire un DM simple de code + algo
+
+ -->
+
 {% aller %}
 
 [Problème de l'exponentiation](/cours/algorithmie/projet-exponentiation/étude-algorithmique/){.interne}
@@ -313,6 +323,19 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 
 {% endaller %}
 
+<!-- TBD 2026/2027
+
+- faire une séance supplémentaire.
+- complexité en moyenne
+- uniquement tris basiques 
+- TP tris basiques. Avec des rappels à l'exponentiation.
+- ajouter une séance de :
+  - calculs de sommes et de récursions
+  - 1h sur les tris rapide et fusion 
+
+ -->
+
+
 #### Vendredi : correction du DM
 
 > 2+h
@@ -337,7 +360,7 @@ Pour accélérer vos calculs de complexité :
 {% aller %}
 
 1. [Calculer des sommes pour la complexité d'algorithmes itératifs](/cours/algorithmie/projet-sommes-classiques/){.interne}
-2. [Calculer des sommes pour la complexité d'algorithmes récursifs](/cours/algorithmie/projet-équations-classiques/){.interne}
+2. [Calculer des équations pour la complexité d'algorithmes récursifs](/cours/algorithmie/projet-équations-classiques/){.interne}
 
 {% endaller %}
 

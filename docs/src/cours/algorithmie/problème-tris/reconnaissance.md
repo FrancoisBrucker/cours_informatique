@@ -246,7 +246,7 @@ puisque la partie gauche est plus contrainte pour $T[2]$ que la partie de droite
 
 <div>
 $$
-p_2 \leq \frac{1}{2} \;\cdot\; \frac{1}{2} = \frac{1}{4}
+p_2 \leq  {\Pr}[T[0] < T[1]] \;\cdot\; {\Pr}[T[1] > T[2]] = \frac{1}{2} \;\cdot\; \frac{1}{2} = \frac{1}{4}
 $$
 </div>
 
@@ -295,12 +295,12 @@ Ce résultat est remarquable :
 {% endattention2 %}
 
 
-Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i = {\Pr}[(T[0] < T[1]) \text{ et } (T[1] < T[2]) \text{ et } (T[i-2] < T[i-1]) \text{ et } (T[i-i] > T[i])]$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :
+Notez que l'on a utilisé un majorant des $p_i$ pour que le calcul soit aisé, mais on peut très bien calculer la valeur exacte de $p_i$ en comptant le nombre de tableaux où ces conditions sont vérifiées. Ce sont exactement les tableaux où :
 
 - le $i+1$ ème élément n'est pas le plus grand
 - les $i$ premiers éléments sont triées
 
-Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(i+1)!$ possibles. On a donc $p_i = \frac{i}{(i+1)!}$. On obtient alors :
+Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(i+1)!$ possibles pour une probabilité de $\frac{i}{(i+1)!}$. Le raisonnement est identique si on ne considère que les $i+1$ premiers éléments de tout tableau et donc $p_i = \frac{i}{(i+1)!}$ pour tout tableau de longueur $n\geq i+1$. On obtient alors :
 
 <div>
 $$
