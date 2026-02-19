@@ -273,22 +273,22 @@ Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(
 <div>
 $$
 \begin{array}{lcl}
-C_\text{moy}(n) &=& \sum_{i=1}^n(p_i \cdot (i \cdot \mathcal{O}(1)))\\
+C_\text{moy}(n) &=& \sum_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
  &=& \sum_{i=1}^{n-1}(\frac{i}{(i+1)!} \cdot \mathcal{O}(i)) \\
  &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
 \end{array}
 $$
 </div>
 
-Comme $i^4 \leq (i+1)!$ pour $i \geq 5$ on a que :
+Comme $i^2 \leq i(i+1)$ on a que :
 
 <div>
 $$
-C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{1}{i^2}))
+C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n-1}(\frac{1}{(i-1)!})) = \mathcal{O}(\sum_{i=0}^{n-2}(\frac{1}{i!}))
 $$
 </div>
 
-La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée [Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le) et est une série convergente ([on le démontrera](../../projet-sommes-classiques/#problème-Bâle){.interne}) et on retombe bien sur le même résultat.
+La série $\sum_{i=0}^{n-2}(\frac{1}{(i)!})$ converge vers $e$ ([$e^x = \sum_{i=0}^{+\infty}(\frac{x^i}{i!})$ pour tout réel $x$](https://fr.wikipedia.org/wiki/Fonction_exponentielle#Par_une_s%C3%A9rie_enti%C3%A8re)) donc comme précédemment $C_\text{moy}(n) = \mathcal{O}(1)$
 
 ##### Vérification expérimentale
 
