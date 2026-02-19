@@ -86,6 +86,8 @@ La complexité minimale de l'algorithme `est_trie`{.language-} est $\mathcal{O}(
 
 La question est délicate. Il faut se demander quel est le modèle sous-jacent à notre tableau de nombres. Si on a aucune information sur la répartition des nombres, on a coutume d'utiliser le modèle suivant :
 
+##### Modèle du tableau aléatoire
+
 <span id="définition-modèle-tableau-aléatoire"></span>
 
 {% note "**Définition**" %}
@@ -167,48 +169,14 @@ $$
 {% endexercice %}
 {% details "corrigé" %}
 
-Par définition :
+Puisque les valeurs de $T$ sont deux à deux différentes on a : ${\Pr}[T[u] > T[v]] + {\Pr}[T[u] < T[v]] = 1$ et comme il y a autant de tableaux pour lesquels $T[u] > T[v]$ que de tableaux pour lesquels $T[u] < T[v]$ (échanger les valeurs de $T[u]$ et $T[v]$ est une bijection entre les 2 ensembles de tableaux) on a ${\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]]$.
 
-<div>
-$$
-\begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}{\Pr}[(T[u] = i) \text{ et } (T[v] > i)]
-\end{array}
-$$
-</div>
+Des deux conditions précédentes on en déduit ${\Pr}[T[u] > T[v]] = {\Pr}[T[u] < T[v]] = \frac{1}{2}$.
 
-Puisque les valeurs de $T[u]$ et de $T[v]$ sont différentes mais indépendantes l'une de l'autre, on a :
-
-<div>
-$$
-\begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[(T[v] > i) \text{ et } (T[v] \neq i)])
-\end{array}
-$$
-</div>
-
-
-D'après la proposition précédente et ses deux corollaires :
-
-- ${\Pr}[T[u] = i] = \frac{1}{n}$
-- ${\Pr}[(T[v] > i) \text{ et } (T[v] \neq i)] = \frac{\Pr[(T[v] > i) \text{ et } (T[v] \neq i)]}{\Pr[T[v] \neq i]} = \frac{n-1-i}{n} \cdot \frac{1}{\frac{n-1}{n}} = \frac{n-1-i}{n-1}$ (on a que $n-1$ possibilité pour $T[v]$ puisqu'il ne peut pas être égal à $i$)
-
-Ce qui nous permet de conclure :
-
-<div>
-$$
-\begin{array}{lcl}
-{\Pr}[T[u] > T[v]] &=& \sum\limits_{0\leq i< n}({\Pr}[T[u] = i] \cdot {\Pr}[(T[v] > i) \text{ et } (T[v] \neq i)])\\
-&=& \sum\limits_{0\leq i< n}(\frac{1}{n} \cdot \frac{n-1-i}{n-1})\\
-&=& \frac{1}{n(n-1)}\sum\limits_{0\leq i< n}(n-1-i)\\
-&=& \frac{1}{n(n-1)}\sum\limits_{0\leq j< n}(j)\\
-&=& \frac{1}{n(n-1)}\cdot \frac{n(n-1)}{2}\\
-&=& \frac{1}{2}\\
-\end{array}
-$$
-</div>
 
 {% enddetails %}
+
+##### Calcul de la complexité
 
 Les propriétés précédentes nous permettent de voir que si $T$ est un tableau aléatoire alors la probabilité pour notre algorithme de reconnaissance fasse exactement :
 
@@ -322,7 +290,7 @@ $$
 
 La série $\sum_{i=1}^{n}\frac{1}{i^2}$ est appelée [Problème de Bâle](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_B%C3%A2le) et est une série convergente ([on le démontrera](../../projet-sommes-classiques/#problème-Bâle){.interne}) et on retombe bien sur le même résultat.
 
-#### Vérification
+##### Vérification expérimentale
 
 Je vois bien dans votre regard que vous ne me croyez pas. Essayez donc par vous même :
 
