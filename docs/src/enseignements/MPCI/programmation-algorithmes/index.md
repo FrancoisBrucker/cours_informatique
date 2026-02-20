@@ -295,6 +295,10 @@ DM1 : faire la partie [Implémentation de l'exponentiation](/cours/algorithmie/p
 
 **Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
+{% info %}
+[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/projet-exponentiation/impl%C3%A9mentation-code/exponentiation)
+{% endinfo %}
+
 
 Pour aller plus loin :
 
@@ -322,7 +326,9 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 2. [Problème du tri](/cours/algorithmie/problème-tris/){.interne}
 
 {% endaller %}
-
+{% info %}
+[Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/probl%C3%A8me-tris/projet-tris/tris)
+{% endinfo %}
 <!-- TBD 2026/2027
 
 - faire une séance supplémentaire.
