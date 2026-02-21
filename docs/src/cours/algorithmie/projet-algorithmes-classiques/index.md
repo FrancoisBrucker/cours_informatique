@@ -649,30 +649,53 @@ Rappelez-vous du tri par paquet, on s'en sert parfois dans des problèmes algori
 {% endlien %}
 
 
-Ce tri s'applique uniquement aux entiers positifs. Notre entrée est une liste $T$ de $n$ de listes de longueur $m$ composées de 0 et de 1 représentant des entiers écrit en base 2 (comme pour le [compteur binaire](../compteur-binaire)). Par exemple : $T = [[1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 0, 0]]$ qui correspond aux nombres $[9, 14, 1]$.
+Ce tri s'applique uniquement aux entiers positifs. Notre entrée est une liste $T$ d'entiers. On va supposer qu'ils sont tous strictement plus petit que $2^N$ ($N=64 + 1$ pour nos machines courantes).
 
-Le principe de ce tri est très simple :
+Le principe de ce tri est très simple et est basé sur le fait que tout nombre peut s'écrire comme une somme de puissances de $2$ (comme pour le [compteur binaire](../compteur-binaire)). Par exemple :
 
-- On considère d'abord le bit de poids le plus faible (_ie._ le plus à gauche). On crée alors deux tableaux L0 et L1 initialement vides et on va itérativement considérer chaque élément de la liste à trier :
-  - les entiers dont le bit de poids le plus faible est 0 sont ajoutés à la fin de L0
-  - les entiers dont le bit de poids le plus faible est 1 sont ajoutés à la fin de L1
-- On concatène les deux sous-listes T = L0 + L1
-- On recommence sur le bit à droite de celui qu'on vient de traiter.
-- ...
+<div>
+$$
+\begin{array}{lcl}
+14 &=& 0 \cdot 2^0 + 1 \cdot 2^1 + 1 \cdot 2^2 + 1 \cdot 2^3\\
+9 &=& 1 \cdot 2^0 + 0 \cdot 2^1 + 0 \cdot 2^2 + 1 \cdot 2^3\\
+1 &=& 1 \cdot 2^0 + 0 \cdot 2^1 + 0 \cdot 2^2 + 0 \cdot 2^3\\
+\end{array}
+$$
+</div>
 
-Les parcours des éléments de T se font, toujours, de la gauche vers la droite.
+Et on a la propriété :
+
+<div>
+$$
+\begin{cases}
+x = \sum\limits_{i=0}\limits^{N-1}a_i \cdot 2^i\\
+a(x)_i = (x // 2^{i}) \bmod 2
+\end{cases}
+$$
+</div>
+
+Le principe de ce tri est très simple Supposons que l'on veuille trier un tableau $T$ de $n$ entiers strictement plus petit que $2^N$.
+
+On effectue la procédure suivante :
+
+Pour $i$ allant de 0 à $N-1$ :
+  1. on crée deux tableaux d'entiers $T0$ et $T1$ de longueur $n$
+  2. pour chaque $x$ de $T$ :
+     1. les entiers $x$ de $T$ tels que $a_i(x)$ est pair sont ajoutés à la fin de $T0$ (le premier élément est ajouté à l'indice $0$, le second à l'indice $1$, etc)
+     2. les entiers $x$ de $T$  tels que $x \bmod 2^{i}$ est impair sont ajoutés à $T1$ (le premier élément est ajouté à l'indice $0$, le second à l'indice $1$, etc)
+  3. Si on a ajouté $i0$ dans $T0$ et $i1$ dans $T1$, on pose $T = T0[:i0] + T1[:i1]$
 
 Pour notre exemple :
 
-1. après premiere boucle : $[[0, 1, 1, 1], [1, 0, 0, 1], [1, 0, 0, 0]]$
-2. après deuxième boucle : $[[1, 0, 0, 1], [1, 0, 0, 0], [0, 1, 1, 1]]$
-3. après troisième boucle :$[[1, 0, 0, 1], [1, 0, 0, 0], [0, 1, 1, 1]]$
-4. après quatrième boucle : $[[1, 0, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1]]$
+1. après premiere boucle : $T = [14, 9, 1]$ et $T0 = [14]$, $T1 = [9, 1]$
+2. après deuxième boucle : $T = [9, 1, 14]$ et $T0 = [9, 1]$, $T1 = [14]$
+3. après troisième boucle :$[9, 1, 14]$ et $T0 = [9, 1]$, $T1 = [14]$
+4. après quatrième boucle : $[1, 9, 14]$ et $T0 = [1]$, $T1 = [9, 14]$
 
 Questions :
 
 {% exercice %}
-Donnez le pseudo-code, la preuve et la complexité de cet algorithme.
+Donnez le pseudo-code, la preuve et la complexité de cet algorithme (on supposera qu'effectuer l'opération $2^i$ est de complexité $\mathcal{O}(1)$, ce qui est le cas pour un processeur réel).
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -681,45 +704,50 @@ L'algorithme suivant mime exactement le procédé décrit dans le sujet. Nos don
 <span id="algorithme-tri-base"></span>
 
 ```pseudocode
-algorithme tri_base(T: [[bit]]) → ∅
-    (L0 := [[bit]]) ← [[bit]]{longueur: T.longueur}
+algorithme tri_base(T: [entier],
+                    N: entier     # T[i] < 2^N pour tout i
+                   ) → ∅
+    (T0 := [entier]) ← [entier]{longueur: T.longueur}
     (i0 := entier) ← 0
 
-    (L1 := [[bit]]) ← [[bit]]{longueur: T.longueur}
+    (T1 := [entier]) ← [entier]{longueur: T.longueur}
     (i1 := entier) ← 0
 
-    pour (i:= entier) de [0 .. T.longueur[:
+    pour (i:= entier) de [0 .. N[:
         pour chaque x de T:
-            si x[i] == 0:
-                L0[i0] ← x
+            si x // 2^i est pair:  # (x // 2^i) mod 2 == 0
+                T0[i0] ← x
                 i0 ← i0 + 1
             sinon:
-                L1[i1] ← x
+                T1[i1] ← x
                 i1 ← i1 + 1
         pour j allant 0 à i0-1:
-            T[j] ← L0[j]
+            T[j] ← T0[j]
         pour j allant 0 à i1-1:
-            T[j + i0] ← L1[j]
+            T[i0 + j] ← T1[j]
 ```
 
 On prouve cet algorithme par invariant de boucle.
 
-> **Invariant de boucle** : À la fin de la ième itération, $T$ est trié si on considère uniquement les i derniers bits de chaque élément.
+> **Invariant de boucle** : À la fin de la ième itération, $T$ est trié si on considère les éléments de $T$ modulo $2^i$
 
-1. initialisation : à la fin de la première boucle il est clair que les élément finissant par 0 sont placés avant les éléments se finissant par 1.
-2. récursion : si l'invariant de boucle est vrai à la fin de la i-1 ème itération, les éléments de L0et de L1 seront trié si on considère uniquement les i derniers bits de chaque élément. Comme le $-i$ bit des éléments de L0 vaut 0 et le $-i$ bit des éléments de L1 valent 1 tous les éléments de L0 sont inférieur aux éléments de L1 et en les concaténant on a bien que les $i$ derniers bit des éléments de T sont triées.
+1. initialisation : à la fin de la première boucle il est clair que les élément $x$ de tels que $a(x)_0 = 0$ sont placés avant les éléments tels que $a(x)_0 = 1$.
+2. récursion : si l'invariant de boucle est vrai à la fin de la i-1 ème itération, les éléments de $T0$ et de $T1$ seront triés si on considère uniquement les éléments modulo $2^i$. Comme $a(x)_i = 0$ pour tous les éléments $x$ de $T0$ et $a(x)_i = 1$ pour tous les éléments $x$ de $T1$ : les éléments de $T0$ sont inférieur aux éléments de T1 si on les considèrent modulo $2^i$.
 3. à la fin des `T.longueur`{.language-} itérations, l'invariant de boucle montre que les éléments de $T$ sont bien triés.
 
-En notant $m$ la taille des tableaux en entrée et $n$ le nombre de données à trier, on a clairement une complexité de $\mathcal{O}(nm)$.
+En notant $n$ la taille du tableau en entrée et $2^N$ une borne maximum des entiers à trier, on a clairement une complexité de $\mathcal{O}(nN)$.
 
 Si la taille des entiers est fixée, ce qui est le cas au niveau du processeur où tous les entiers sont codés sur 64bits, ce tri est le plus efficace possible : il est linéaire.
 
 {% enddetails %}
 
-Comme pour le tri par paquet, il n'y **aucune** relation entre $n$ et $m$. On peut par exemple tenter de trier les tableaux de taille $m=2^n$, la complexité de notre algorithme sera exponentielle.
+Comme pour le tri par paquet, il n'y **aucune** relation entre $n$ et $N$. Si on trie des tableaux tels que $N=2^n$, la complexité de notre algorithme sera exponentielle dans la taille du tableau à trier !.
 
-Ce n'est donc **pas** un algorithme linéaire en $n$
+{% attention2 "**À retenir**" %}
 
+Le tri par base n'est **pas** un algorithme de tri linéaire dans la taille du tableau à trier.
+
+{% endattention2 %}
 
 ## Chaînes de caractères
 

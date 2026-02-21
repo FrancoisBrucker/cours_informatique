@@ -60,4 +60,5 @@ pair programming : <https://www.youtube.com/watch?v=fbxMV76e7_E>
   - bons outils XP (TDD, par programming, )
   - dans equipe CD, ...
   - hope que le management suive ou quelqu'unn qui protege
-- softawe = ingénieur ou artisan ? <https://www.youtube.com/watch?v=8_gAx1B2a10>
+- software = ingénieur ou artisan ? <https://www.youtube.com/watch?v=8_gAx1B2a10>
+- micro-service, bien ou mal ? <https://www.youtube.com/watch?v=LltDdEw1p9w>
