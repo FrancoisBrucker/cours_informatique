@@ -1046,32 +1046,51 @@ x <span class="token operator">=</span> tous<span class="token punctuation">(</s
 <p><a href="https://fr.wikipedia.org/wiki/Tri_par_base">Tri par base</a></p>
 </div></div>
 
-<p>Ce tri s'applique uniquement aux entiers positifs. Notre entrée est une liste $T$ de $n$ de listes de longueur $m$ composées de 0 et de 1 représentant des entiers écrit en base 2 (comme pour le <a href="../compteur-binaire">compteur binaire</a>). Par exemple : $T = [[1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 0, 0]]$ qui correspond aux nombres $[9, 14, 1]$.</p>
-<p>Le principe de ce tri est très simple :</p>
-<ul>
-<li>On considère d'abord le bit de poids le plus faible (<em>ie.</em> le plus à gauche). On crée alors deux tableaux L0 et L1 initialement vides et on va itérativement considérer chaque élément de la liste à trier :
-<ul>
-<li>les entiers dont le bit de poids le plus faible est 0 sont ajoutés à la fin de L0</li>
-<li>les entiers dont le bit de poids le plus faible est 1 sont ajoutés à la fin de L1</li>
-</ul>
+<p>Ce tri s'applique uniquement aux entiers positifs. Notre entrée est une liste $T$ d'entiers. On va supposer qu'ils sont tous strictement plus petit que $2^N$ ($N=64 + 1$ pour nos machines courantes).</p>
+<p>Le principe de ce tri est très simple et est basé sur le fait que tout nombre peut s'écrire comme une somme de puissances de $2$ (comme pour le <a href="../compteur-binaire">compteur binaire</a>). Par exemple :</p>
+<div>
+$$
+\begin{array}{lcl}
+14 &=& 0 \cdot 2^0 + 1 \cdot 2^1 + 1 \cdot 2^2 + 1 \cdot 2^3\\
+9 &=& 1 \cdot 2^0 + 0 \cdot 2^1 + 0 \cdot 2^2 + 1 \cdot 2^3\\
+1 &=& 1 \cdot 2^0 + 0 \cdot 2^1 + 0 \cdot 2^2 + 0 \cdot 2^3\\
+\end{array}
+$$
+</div>
+<p>Et on a la propriété :</p>
+<div>
+$$
+\begin{cases}
+x = \sum\limits_{i=0}\limits^{N-1}a_i \cdot 2^i\\
+a(x)_i = (x // 2^{i}) \bmod 2
+\end{cases}
+$$
+</div>
+<p>Le principe de ce tri est très simple Supposons que l'on veuille trier un tableau $T$ de $n$ entiers strictement plus petit que $2^N$.</p>
+<p>On effectue la procédure suivante :</p>
+<p>Pour $i$ allant de 0 à $N-1$ :</p>
+<ol>
+<li>on crée deux tableaux d'entiers $T0$ et $T1$ de longueur $n$</li>
+<li>pour chaque $x$ de $T$ :
+<ol>
+<li>les entiers $x$ de $T$ tels que $a_i(x)$ est pair sont ajoutés à la fin de $T0$ (le premier élément est ajouté à l'indice $0$, le second à l'indice $1$, etc)</li>
+<li>les entiers $x$ de $T$  tels que $x \bmod 2^{i}$ est impair sont ajoutés à $T1$ (le premier élément est ajouté à l'indice $0$, le second à l'indice $1$, etc)</li>
+</ol>
 </li>
-<li>On concatène les deux sous-listes T = L0 + L1</li>
-<li>On recommence sur le bit à droite de celui qu'on vient de traiter.</li>
-<li>...</li>
-</ul>
-<p>Les parcours des éléments de T se font, toujours, de la gauche vers la droite.</p>
+<li>Si on a ajouté $i0$ dans $T0$ et $i1$ dans $T1$, on pose $T = T0[:i0] + T1[:i1]$</li>
+</ol>
 <p>Pour notre exemple :</p>
 <ol>
-<li>après premiere boucle : $[[0, 1, 1, 1], [1, 0, 0, 1], [1, 0, 0, 0]]$</li>
-<li>après deuxième boucle : $[[1, 0, 0, 1], [1, 0, 0, 0], [0, 1, 1, 1]]$</li>
-<li>après troisième boucle :$[[1, 0, 0, 1], [1, 0, 0, 0], [0, 1, 1, 1]]$</li>
-<li>après quatrième boucle : $[[1, 0, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1]]$</li>
+<li>après premiere boucle : $T = [14, 9, 1]$ et $T0 = [14]$, $T1 = [9, 1]$</li>
+<li>après deuxième boucle : $T = [9, 1, 14]$ et $T0 = [9, 1]$, $T1 = [14]$</li>
+<li>après troisième boucle :$[9, 1, 14]$ et $T0 = [9, 1]$, $T1 = [14]$</li>
+<li>après quatrième boucle : $[1, 9, 14]$ et $T0 = [1]$, $T1 = [9, 14]$</li>
 </ol>
 <p>Questions :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Donnez le pseudo-code, la preuve et la complexité de cet algorithme.</p>
+<p>Donnez le pseudo-code, la preuve et la complexité de cet algorithme (on supposera qu'effectuer l'opération $2^i$ est de complexité $\mathcal{O}(1)$, ce qui est le cas pour un processeur réel).</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1093,41 +1112,52 @@ x <span class="token operator">=</span> tous<span class="token punctuation">(</s
 <div class="mx-8 pb-2">
 <p>L'algorithme suivant mime exactement le procédé décrit dans le sujet. Nos données étant des tableaux de bits, l'entrée de l'algorithme est un tableau de tableaux de bit. Cela s'écrit : <code class="language-">[[bit]]</code> :</p>
 <p><span id="algorithme-tri-base"></span></p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri_base</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅
-    <span class="token punctuation">(</span>L0 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri_base</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    N<span class="token punctuation">:</span> <span class="token builtin">entier</span>     <span class="token comment"># T[i] &lt; 2^N pour tout i</span>
+                   <span class="token punctuation">)</span> <span class="token operator">→</span> ∅
+    <span class="token punctuation">(</span>T0 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
     <span class="token punctuation">(</span>i0 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
 
-    <span class="token punctuation">(</span>L1 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
+    <span class="token punctuation">(</span>T1 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
     <span class="token punctuation">(</span>i1 <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
 
-    <span class="token keyword">pour</span> <span class="token punctuation">(</span>i<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour</span> <span class="token punctuation">(</span>i<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> N<span class="token punctuation">[</span><span class="token punctuation">:</span>
         <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
-            <span class="token keyword">si</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-                L0<span class="token punctuation">[</span>i0<span class="token punctuation">]</span> <span class="token operator">←</span> x
+            <span class="token keyword">si</span> x <span class="token operator">//</span> <span class="token number">2</span><span class="token operator">^</span>i est pair<span class="token punctuation">:</span>  <span class="token comment"># (x // 2^i) mod 2 == 0</span>
+                T0<span class="token punctuation">[</span>i0<span class="token punctuation">]</span> <span class="token operator">←</span> x
                <span class="token number"> i0 </span><span class="token operator">←</span><span class="token number"> i0 </span><span class="token operator">+</span> <span class="token number">1</span>
             <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-                L1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">←</span> x
+                T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">←</span> x
                <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span> <span class="token number">1</span>
         <span class="token keyword">pour</span><span class="token number"> j </span>allant <span class="token number">0</span> à i0<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> L0<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+            T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> T0<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
         <span class="token keyword">pour</span><span class="token number"> j </span>allant <span class="token number">0</span> à i1<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>j <span class="token operator">+</span> i0<span class="token punctuation">]</span> <span class="token operator">←</span> L1<span class="token punctuation">[</span>j<span class="token punctuation">]</span></code></pre>
+            T<span class="token punctuation">[</span>i0 <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">←</span> T1<span class="token punctuation">[</span>j<span class="token punctuation">]</span></code></pre>
 <p>On prouve cet algorithme par invariant de boucle.</p>
 <blockquote>
-<p><strong>Invariant de boucle</strong> : À la fin de la ième itération, $T$ est trié si on considère uniquement les i derniers bits de chaque élément.</p>
+<p><strong>Invariant de boucle</strong> : À la fin de la ième itération, $T$ est trié si on considère les éléments de $T$ modulo $2^i$</p>
 </blockquote>
 <ol>
-<li>initialisation : à la fin de la première boucle il est clair que les élément finissant par 0 sont placés avant les éléments se finissant par 1.</li>
-<li>récursion : si l'invariant de boucle est vrai à la fin de la i-1 ème itération, les éléments de L0et de L1 seront trié si on considère uniquement les i derniers bits de chaque élément. Comme le $-i$ bit des éléments de L0 vaut 0 et le $-i$ bit des éléments de L1 valent 1 tous les éléments de L0 sont inférieur aux éléments de L1 et en les concaténant on a bien que les $i$ derniers bit des éléments de T sont triées.</li>
+<li>initialisation : à la fin de la première boucle il est clair que les élément $x$ de tels que $a(x)_0 = 0$ sont placés avant les éléments tels que $a(x)_0 = 1$.</li>
+<li>récursion : si l'invariant de boucle est vrai à la fin de la i-1 ème itération, les éléments de $T0$ et de $T1$ seront triés si on considère uniquement les éléments modulo $2^i$. Comme $a(x)_i = 0$ pour tous les éléments $x$ de $T0$ et $a(x)_i = 1$ pour tous les éléments $x$ de $T1$ : les éléments de $T0$ sont inférieur aux éléments de T1 si on les considèrent modulo $2^i$.</li>
 <li>à la fin des <code class="language-">T.longueur</code> itérations, l'invariant de boucle montre que les éléments de $T$ sont bien triés.</li>
 </ol>
-<p>En notant $m$ la taille des tableaux en entrée et $n$ le nombre de données à trier, on a clairement une complexité de $\mathcal{O}(nm)$.</p>
+<p>En notant $n$ la taille du tableau en entrée et $2^N$ une borne maximum des entiers à trier, on a clairement une complexité de $\mathcal{O}(nN)$.</p>
 <p>Si la taille des entiers est fixée, ce qui est le cas au niveau du processeur où tous les entiers sont codés sur 64bits, ce tri est le plus efficace possible : il est linéaire.</p>
 </div>
 </details>     
 </div>
-<p>Comme pour le tri par paquet, il n'y <strong>aucune</strong> relation entre $n$ et $m$. On peut par exemple tenter de trier les tableaux de taille $m=2^n$, la complexité de notre algorithme sera exponentielle.</p>
-<p>Ce n'est donc <strong>pas</strong> un algorithme linéaire en $n$</p>
+<p>Comme pour le tri par paquet, il n'y <strong>aucune</strong> relation entre $n$ et $N$. Si on trie des tableaux tels que $N=2^n$, la complexité de notre algorithme sera exponentielle dans la taille du tableau à trier !.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le tri par base n'est <strong>pas</strong> un algorithme de tri linéaire dans la taille du tableau à trier.</p>
+</div></div>
+
 <h2>Chaînes de caractères</h2>
 <blockquote>
 <ul>
