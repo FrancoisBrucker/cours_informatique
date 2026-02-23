@@ -112,7 +112,13 @@ La seule façon de créer un objet à partir de rien est d'écrire sa valeur. Pa
 42
 ```
 
-Crée un objet entier de valeur `42`
+Crée un objet entier de valeur `42`.
+
+On peut aussi demander à l'utilisateur de créer un objet d'un type donné (on suppose que l'utilisateur de ne se trompe pas) :
+
+```pseudocode
+donne entier
+```
 
 #### Opérations
 
@@ -127,10 +133,11 @@ une **_opération_** est une fonction dont l'espace de départ est un produit ca
 Les opérations sont le second moyen de créer des objets. Par exemple le booléen Vrai est créé comme résultat de l'opération `40 > 2`. Les seules opérations définies par défaut dans tout pseudo-code sont peu nombreuses :
 
 - pour les entiers et les réels :
-  - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
+  - arithmétique : addition (`x + y`{.language-}), soustraction (`x - y`{.language-}), multiplication (`x * y`{.language-}), division (`x / y`{.language-})
   - opérations usuelles comme prendre la valeur entière, la valeur absolue, ...
-  - la division entière de deux nombre (`//`{.language-}) et le modulo (`%`{.language-})
+  - la division entière de deux nombre (`//`{.language-}) et le modulo (`mod`{.language-} ou `%`{.language-})
   - logique : égalité (avec le signe `==`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
+  - comparaisons : maximum (`max(x, y)`{.language-}), minimum (`min(x, y)`{.language-})
 - pour les caractères :
   - logique : égalité (avec le signe `==`{.language-})
 - opérations sur les bits et les booléens :
@@ -153,9 +160,13 @@ affiche 42
 
 L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressant lors de l'exécution du pseudo-code. Ne confondez pas un commentaire avec un retour de fonction : ce qui est affiché sort du contrôle du pseudo-code. Dans l'exemple précédent, l'entier 42 est affiché, le pseudo-code n'en a pas conscience.
 
-{% attention2 "**À retenir**" %}
-Pour distinguer le retour de fonction, d'un affichage supprimez tous les affichages de votre pseudo-code et il doit continuer de fonctionner.
-{% endattention2 %}
+On peux afficher plusieurs objets à la suite, par exemple :
+
+```pseudocode
+affiche 40 " plus " 2 " égal " 42
+```
+
+Qui va afficher àla suite les cinq objets : `40`{.language-}, `" plus "`{.language-}, `2`{.language-}, `" égal "`{.language-} et `42`{.language-}
 
 ## Variables
 
@@ -532,9 +543,11 @@ si ((NON (conditionA)) ET (NON (conditionB))):
 
 {% enddetails %}
 
-### <span id="répétition"></span> Répétition
+### <span id="répétition"></span> Répétitions
 
-On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée :
+On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée. Les répétitions en pseudo-code vont prendre deux formes.
+
+#### Boucles `tant que`{.language-}
 
 {% note2 "**Définition**" %}
 
@@ -548,6 +561,8 @@ tant que (condition logique):
 Le ploc précédent est exécuté tant que la condition logique est vraie.
 
 {% endnote2 %}
+
+#### Boucles `pour chaque`{.language-}
 
 Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :
 
@@ -615,3 +630,118 @@ pour chaque i de [0 .. tableau.longueur[:
 ```
 
 {% enddetails %}
+
+#### Sortir d'une boucle avant la fin
+
+On a parfois besoin de sortir d'un bloc de boucle avant la fin de sa condition. On utilise pour cela deux instruction spéciale de sorite de boucle :
+
+- `break`{.language-} : qui termine l'exécution du bloc
+- `continue`{.language-} : qui termine l'itération courante du bloc
+
+##### `break`{.language-}
+
+Par exemple le code suivant qui trouve le pgcd (plus grand commun diviseur) entre deux nombres :
+
+```pseudocode
+x := entier
+y := entier
+
+x ← donne entier
+y ← donne entier
+
+d := entier
+d ← min(x, y)
+
+tant que (d>0):
+
+    si (x mod d == 0) ET (y mod d == 0):
+        affiche "le pgcd vaut " d
+        break
+    d ← d - 1
+```
+
+Qui est équivalent au code suivant, moins lisible :
+
+```pseudocode
+x := entier
+y := entier
+
+x ← donne entier
+y ← donne entier
+
+d := entier
+d ← min(x, y)
+
+sortir := boolean
+sortir ← Faux
+tant que (sortir == Faux) ET (d>0):
+
+    si (x mod d == 0) ET (y mod d == 0):
+        affiche "le pgcd vaut " d
+        sortir ← Vrai
+    si sortir == Faux:
+        d ← d - 1
+```
+
+##### `continue`{.language-}
+
+Par exemple le code suivant qui va afficher tous les diviseurs de x qui ne sont pas des diviseurs de y :
+
+```pseudocode
+x := entier
+y := entier
+
+x ← donne entier
+y ← donne entier
+
+d := entier
+pour chaque d de [1 .. x]:
+    si (y mod d == 0):
+        continue
+
+    si (x mod d == 0):
+        affiche d " divise " x " mais pas " y
+```
+
+Qui est équivalent au code suivant, moins lisible :
+
+```pseudocode
+x := entier
+y := entier
+
+x ← donne entier
+y ← donne entier
+
+d := entier
+pour chaque d de [1 .. x]:
+    si (x mod d == 0) ET (y mod d ≠ 0):
+        affiche d " divise " x " mais pas " y
+```
+
+##### Boucles imbriquées
+
+{% attention %}
+Les instructions `break`{.language-} et `continue`{.language-} n'agissent que dans le bloc dans lequel ils sont définis, ils n'affectent pas les boucles extérieures
+{% endattention %}
+
+Par exemple :
+
+```pseudocode
+x := entier
+y := entier
+
+pour chaque x de [1 .. 3]:
+    pour chaque y de [0 .. 3]:
+        affiche "x = " x "; y = " y
+        si x * y > 2:
+            break
+```
+
+Va afficher :
+
+- `x = 1; y = 0`
+- `x = 1; y = 1`
+- `x = 1; y = 2`
+- `x = 2; y = 0`
+- `x = 2; y = 1`
+- `x = 3; y = 0`

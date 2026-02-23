@@ -62,6 +62,31 @@ Si on a besoin d'information supplémentaire pour qu'un lecteur puisse mieux com
 La description des types de paramètres est reprise du format python : <https://docs.python.org/fr/3.13/library/typing.html>
 {% endlien %}
 
+Tout algorithme se termine par un retour d'un objet (de même type que son type de sortie) avec l'instruction `rendre`{.language-}. Cette instruction est la dernière qu'exécutera l'algorithme ainsi l'algorithme suivant rendra **toujours** 42 :
+
+```pseudocode
+algorithme réponse() → entier: 
+
+    rendre 42
+    rendre 0    # ne sera jamais exécuté
+```
+
+Ne cofondez pas le retour d'un algorithme et un affichage à l'écran. L'algorithme suivant rendra l'entier 0 :
+
+```pseudocode
+algorithme réponse() → entier: 
+
+    affiche 42
+    rendre 0    # ne sera jamais exécuté
+```
+
+L'affichage à l'écran est une **information donnée à l'utilisateur**, l'algorithme s'en fiche et fonctionne tout à fait sans.
+
+{% attention2 "**À retenir**" %}
+Pour distinguer le retour de fonction d'un affichage supprimez tous les affichages de votre pseudo-code et il doit continuer de fonctionner.
+{% endattention2 %}
+
+
 Terminons par un petit exercice :
 
 <span id="algorithme-nombre-occurrences"></span>

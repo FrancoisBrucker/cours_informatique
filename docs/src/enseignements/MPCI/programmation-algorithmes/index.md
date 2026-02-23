@@ -179,6 +179,13 @@ Faire numpy
 3. [Projet pourcentages](/cours/coder-et-développer/projet-pourcentages){.interne}
 {% endaller %}
 
+<!-- TBD
+
+Supprimer le linter du cours, mais insister sur black.
+
+-->
+
+
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
@@ -229,6 +236,15 @@ Notions abordées :
 
 {% endaller %}
 
+<!-- TBD 
+
+Faire une séance de code en pair programming pour mettre en place les mesures de temps d'exécution de code. Avec recherche dun élément dans un tableau :
+
+1- max : O(n)
+2- trié : O(1)
+3- max et min : voir la différence physique mais pas en courbe
+
+-->
 
 ### Semaine 4
 
@@ -380,6 +396,14 @@ Pour vous entraîner sur des exercices classiques :
 
 Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des années précédentes dans [les annales](./#annales){.interne}. Comme toujours, faites les exercices avant de regarder les corrigés et qui sait vous allez peut-être même y prendre du plaisir, certains exercices étant diablement jolis.
 
+
+### Semaine 7
+
+> 2h
+>
+
+- structures de données.
+- DM2 = et de l'année dernière
 
 <!-- TBD
 

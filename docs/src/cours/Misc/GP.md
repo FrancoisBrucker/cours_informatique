@@ -53,6 +53,7 @@ pair programming : <https://www.youtube.com/watch?v=fbxMV76e7_E>
     -  chaque matin séance d'auto-critique avec le standup meeting : as-tu bien travaillé hier ?
     - redevient comme avant. Prise de pouvoir du pouvoir. Quote du mythical man-month :  tout devient affreux avec le temps. Bref, c'est les personnes qui font le projet par les process. Revenir à XP.
 - le scrum guide est en word... <https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-French.pdf>
+- scrum c'est de la merde "entreprise/management" : <https://www.youtube.com/watch?v=Q25lwSfVwF8> et l'original : <https://www.youtube.com/watch?v=fTaOdbUbFmI>
 - microservices (à mettre dans méthodes pour addresser la complexité ?): <https://www.youtube.com/watch?v=KSiW6lJr7O0>, <https://www.youtube.com/watch?v=lTAcCNbJ7KE>, applique le MMM avec well defined api
   - listes de livre : <https://github.com/manjunath5496/Microservices-Books?tab=readme-ov-file>
 - conclusion : être honnete avec soit meme et faire les choses bien :
@@ -62,3 +63,4 @@ pair programming : <https://www.youtube.com/watch?v=fbxMV76e7_E>
   - hope que le management suive ou quelqu'unn qui protege
 - software = ingénieur ou artisan ? <https://www.youtube.com/watch?v=8_gAx1B2a10>
 - micro-service, bien ou mal ? <https://www.youtube.com/watch?v=LltDdEw1p9w>
+- TDD <https://www.youtube.com/watch?v=llaUBH5oayw&list=PLwLLcwQlnXByqD3a13UPeT4SMhc3rdZ8q>

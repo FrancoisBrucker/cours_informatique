@@ -642,10 +642,11 @@ Ce n'est donc **pas** un algorithme linéaire... Mais il est très efficace si l
 
 Rappelez-vous du tri par paquet, on s'en sert parfois dans des problèmes algorithmiques.
 
-### <span id="tri-base"></span>Tri par base
+### <span id="tri-base"></span>Tri par base (radix sort)
 
 {% lien %}
-[Tri par base](https://fr.wikipedia.org/wiki/Tri_par_base)
+- [Tri par base](https://fr.wikipedia.org/wiki/Tri_par_base)
+- [Vidéo de polylog (pour la base 10)](https://www.youtube.com/watch?v=Y95a-8oNqps)
 {% endlien %}
 
 
