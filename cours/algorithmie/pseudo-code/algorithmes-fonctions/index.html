@@ -146,6 +146,27 @@ Programme :
 <p>La description des types de paramètres est reprise du format python : <a href="https://docs.python.org/fr/3.13/library/typing.html">https://docs.python.org/fr/3.13/library/typing.html</a></p>
 </div></div>
 
+<p>Tout algorithme se termine par un retour d'un objet (de même type que son type de sortie) avec l'instruction <code class="language-">rendre</code>. Cette instruction est la dernière qu'exécutera l'algorithme ainsi l'algorithme suivant rendra <strong>toujours</strong> 42 :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> réponse<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span> 
+
+    <span class="token keyword">rendre</span> <span class="token number">42</span>
+    <span class="token keyword">rendre</span> <span class="token number">0</span>    <span class="token comment"># ne sera jamais exécuté</span></code></pre>
+<p>Ne cofondez pas le retour d'un algorithme et un affichage à l'écran. L'algorithme suivant rendra l'entier 0 :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> réponse<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span> 
+
+    <span class="token keyword">affiche</span> <span class="token number">42</span>
+    <span class="token keyword">rendre</span> <span class="token number">0</span>    <span class="token comment"># ne sera jamais exécuté</span></code></pre>
+<p>L'affichage à l'écran est une <strong>information donnée à l'utilisateur</strong>, l'algorithme s'en fiche et fonctionne tout à fait sans.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour distinguer le retour de fonction d'un affichage supprimez tous les affichages de votre pseudo-code et il doit continuer de fonctionner.</p>
+</div></div>
+
 <p>Terminons par un petit exercice :</p>
 <p><span id="algorithme-nombre-occurrences"></span></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">

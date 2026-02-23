@@ -462,7 +462,7 @@ $$
     <span class="token keyword">pour chaque</span> c de conj_clauses<span class="token punctuation">:</span>
         sat <span class="token operator">←</span> <span class="token boolean">Faux</span>
         <span class="token keyword">pour chaque</span> l de c<span class="token punctuation">:</span>
-            <span class="token keyword">si</span> l <span class="token operator">></span> <span class="token number">0</span> ET solution<span class="token punctuation">[</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> l <span class="token operator">></span> <span class="token number">0</span> <span class="token keyword">ET</span> solution<span class="token punctuation">[</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
                 sat <span class="token operator">←</span> <span class="token boolean">Vrai</span>
             <span class="token keyword">si</span> l <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>solution<span class="token punctuation">[</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
                 sat <span class="token operator">←</span> <span class="token boolean">Vrai</span>

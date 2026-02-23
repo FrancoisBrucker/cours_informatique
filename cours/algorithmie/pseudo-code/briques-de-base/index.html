@@ -197,7 +197,9 @@
 <h4>Créer des objets</h4>
 <p>La seule façon de créer un objet à partir de rien est d'écrire sa valeur. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token number">42</span></code></pre>
-<p>Crée un objet entier de valeur <code>42</code></p>
+<p>Crée un objet entier de valeur <code>42</code>.</p>
+<p>On peut aussi demander à l'utilisateur de créer un objet d'un type donné (on suppose que l'utilisateur de ne se trompe pas) :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">donne</span> <span class="token builtin">entier</span></code></pre>
 <h4>Opérations</h4>
 <p>De façon formelle :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -214,10 +216,11 @@
 <ul>
 <li>pour les entiers et les réels :
 <ul>
-<li>arithmétique : addition (<code class="language-">+</code>), soustraction (<code class="language-">-</code>), multiplication (<code class="language-">*</code>), division (<code class="language-">/</code>)</li>
+<li>arithmétique : addition (<code class="language-">x + y</code>), soustraction (<code class="language-">x - y</code>), multiplication (<code class="language-">x * y</code>), division (<code class="language-">x / y</code>)</li>
 <li>opérations usuelles comme prendre la valeur entière, la valeur absolue, ...</li>
-<li>la division entière de deux nombre (<code class="language-">//</code>) et le modulo (<code class="language-">%</code>)</li>
+<li>la division entière de deux nombre (<code class="language-">//</code>) et le modulo (<code class="language-">mod</code> ou <code class="language-">%</code>)</li>
 <li>logique : égalité (avec le signe <code class="language-">==</code>), plus petit que (<code class="language-">&lt;</code>), plus grand que (<code class="language-">&gt;</code>), plus petit ou égal (<code class="language-">≤</code>), plus grand ou égal (<code class="language-">≥</code>)</li>
+<li>comparaisons : maximum (<code class="language-">max(x, y)</code>), minimum (<code class="language-">min(x, y)</code>)</li>
 </ul>
 </li>
 <li>pour les caractères :
@@ -238,16 +241,9 @@
 <p>Enfin, la dernière opération autorisée pour les objet est l'affichage :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">affiche</span> <span class="token number">42</span></code></pre>
 <p>L'affichage est destiné, comme le commentaire, au lecteur du pseudo-code. Son but est de lui montrer des résultats intermédiaires intéressant lors de l'exécution du pseudo-code. Ne confondez pas un commentaire avec un retour de fonction : ce qui est affiché sort du contrôle du pseudo-code. Dans l'exemple précédent, l'entier 42 est affiché, le pseudo-code n'en a pas conscience.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Pour distinguer le retour de fonction, d'un affichage supprimez tous les affichages de votre pseudo-code et il doit continuer de fonctionner.</p>
-</div></div>
-
+<p>On peux afficher plusieurs objets à la suite, par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">affiche</span> <span class="token number">40</span> <span class="token string">" plus "</span> <span class="token number">2</span> <span class="token string">" égal "</span> <span class="token number">42</span></code></pre>
+<p>Qui va afficher àla suite les cinq objets : <code class="language-">40</code>, <code class="language-">&quot; plus &quot;</code>, <code class="language-">2</code>, <code class="language-">&quot; égal &quot;</code> et <code class="language-">42</code></p>
 <h2>Variables</h2>
 <p>Une <strong><em>variable</em></strong> permet de retrouver un objet stocké en mémoire pour sa réutilisation :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -637,15 +633,16 @@ T<span class="token punctuation">[</span><span class="token number">2</span><spa
 <p>Se traduit en :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">si</span> <span class="token punctuation">(</span>conditionA<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># instructions A</span>
-<span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>NON <span class="token punctuation">(</span>conditionA<span class="token punctuation">)</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>conditionB<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>NON <span class="token punctuation">(</span>conditionA<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>conditionB<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># instructions B</span>
-<span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>NON <span class="token punctuation">(</span>conditionA<span class="token punctuation">)</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>NON <span class="token punctuation">(</span>conditionB<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>NON <span class="token punctuation">(</span>conditionA<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>NON <span class="token punctuation">(</span>conditionB<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># instructions C</span></code></pre>
 </div>
 </details>     
 </div>
-<h3><span id="répétition"></span> Répétition</h3>
-<p>On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée :</p>
+<h3><span id="répétition"></span> Répétitions</h3>
+<p>On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée. Les répétitions en pseudo-code vont prendre deux formes.</p>
+<h4>Boucles <code class="language-">tant que</code></h4>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
@@ -661,6 +658,7 @@ T<span class="token punctuation">[</span><span class="token number">2</span><spa
 <p>Le ploc précédent est exécuté tant que la condition logique est vraie.</p>
 </div></div>
 
+<h4>Boucles <code class="language-">pour chaque</code></h4>
 <p>Tout comme l'exécution conditionnelle, la forme précédente suffit pour exprimer toutes les formes de répétition possible, mais on admet la variation suivante, très utile :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> élément x d'un tableau<span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
@@ -732,6 +730,101 @@ i <span class="token operator">:=</span> <span class="token builtin">entier</spa
 </div>
 </details>     
 </div>
+<h4>Sortir d'une boucle avant la fin</h4>
+<p>On a parfois besoin de sortir d'un bloc de boucle avant la fin de sa condition. On utilise pour cela deux instruction spéciale de sorite de boucle :</p>
+<ul>
+<li><code class="language-">break</code> : qui termine l'exécution du bloc</li>
+<li><code class="language-">continue</code> : qui termine l'itération courante du bloc</li>
+</ul>
+<h5><code class="language-">break</code></h5>
+<p>Par exemple le code suivant qui trouve le pgcd (plus grand commun diviseur) entre deux nombres :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
+x <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+y <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+
+d <span class="token operator">:=</span> <span class="token builtin">entier</span>
+d <span class="token operator">←</span> min<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+
+<span class="token keyword">tant que</span> <span class="token punctuation">(</span>d<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>y mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> <span class="token string">"le pgcd vaut "</span> d
+        <span class="token keyword">break</span>
+    d <span class="token operator">←</span> d <span class="token operator">-</span> <span class="token number">1</span></code></pre>
+<p>Qui est équivalent au code suivant, moins lisible :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
+x <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+y <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+
+d <span class="token operator">:=</span> <span class="token builtin">entier</span>
+d <span class="token operator">←</span> min<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+
+sortir <span class="token operator">:=</span> boolean
+sortir <span class="token operator">←</span> <span class="token boolean">Faux</span>
+<span class="token keyword">tant que</span> <span class="token punctuation">(</span>sortir <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>d<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>y mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> <span class="token string">"le pgcd vaut "</span> d
+        sortir <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">si</span> sortir <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">:</span>
+        d <span class="token operator">←</span> d <span class="token operator">-</span> <span class="token number">1</span></code></pre>
+<h5><code class="language-">continue</code></h5>
+<p>Par exemple le code suivant qui va afficher tous les diviseurs de x qui ne sont pas des diviseurs de y :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
+x <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+y <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+
+d <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span> d de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>y mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> d <span class="token string">" divise "</span> x <span class="token string">" mais pas "</span> y</code></pre>
+<p>Qui est équivalent au code suivant, moins lisible :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
+x <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+y <span class="token operator">←</span> <span class="token keyword">donne</span> <span class="token builtin">entier</span>
+
+d <span class="token operator">:=</span> <span class="token builtin">entier</span>
+<span class="token keyword">pour chaque</span> d de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> x<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>y mod d <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> d <span class="token string">" divise "</span> x <span class="token string">" mais pas "</span> y</code></pre>
+<h5>Boucles imbriquées</h5>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les instructions <code class="language-">break</code> et <code class="language-">continue</code> n'agissent que dans le bloc dans lequel ils sont définis, ils n'affectent pas les boucles extérieures</p>
+</div></div>
+
+<p>Par exemple :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
+y <span class="token operator">:=</span> <span class="token builtin">entier</span>
+
+<span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span> y de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> <span class="token string">"x = "</span> x <span class="token string">"; y = "</span> y
+        <span class="token keyword">si</span> x <span class="token operator">*</span> y <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span></code></pre>
+<p>Va afficher :</p>
+<ul>
+<li><code>x = 1; y = 0</code></li>
+<li><code>x = 1; y = 1</code></li>
+<li><code>x = 1; y = 2</code></li>
+<li><code>x = 2; y = 0</code></li>
+<li><code>x = 2; y = 1</code></li>
+<li><code>x = 3; y = 0</code></li>
+</ul>
 
 
 </article>
