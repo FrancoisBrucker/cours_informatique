@@ -12,7 +12,7 @@ eleventyNavigation:
   prerequis:
     - "/cours/coder-et-développer/bases-programmation/"
     - "/cours/coder-et-développer/bases-programmation/notebooks/"
-    - "/cours/coder-et-développer/bases-programmation/matplotlib/"
+    - "/cours/coder-et-développer/tutoriel-matplotlib/"
     - "/cours/coder-et-développer/environnements-virtuels/"
 
 eleventyComputed:

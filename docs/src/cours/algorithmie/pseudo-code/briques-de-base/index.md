@@ -638,6 +638,8 @@ On a parfois besoin de sortir d'un bloc de boucle avant la fin de sa condition. 
 - `break`{.language-} : qui termine l'exécution du bloc
 - `continue`{.language-} : qui termine l'itération courante du bloc
 
+Ces instructions sont utiles si elles permettent de rendre le pseudo-code plus lisible, en séparant le cas général (la condition de la boucle) des cas particuliers (traités avec un `break`{.language-} ou un `continue`{.language-})
+
 ##### `break`{.language-}
 
 Par exemple le code suivant qui trouve le pgcd (plus grand commun diviseur) entre deux nombres :
@@ -653,7 +655,6 @@ d := entier
 d ← min(x, y)
 
 tant que (d>0):
-
     si (x mod d == 0) ET (y mod d == 0):
         affiche "le pgcd vaut " d
         break
@@ -675,7 +676,6 @@ d ← min(x, y)
 sortir := boolean
 sortir ← Faux
 tant que (sortir == Faux) ET (d>0):
-
     si (x mod d == 0) ET (y mod d == 0):
         affiche "le pgcd vaut " d
         sortir ← Vrai
@@ -745,3 +745,5 @@ Va afficher :
 - `x = 2; y = 0`
 - `x = 2; y = 1`
 - `x = 3; y = 0`
+
+L'instruction `break`{.language-} ne sort que de la boucle la plus imbriquée.
