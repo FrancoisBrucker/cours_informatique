@@ -736,6 +736,7 @@ i <span class="token operator">:=</span> <span class="token builtin">entier</spa
 <li><code class="language-">break</code> : qui termine l'exécution du bloc</li>
 <li><code class="language-">continue</code> : qui termine l'itération courante du bloc</li>
 </ul>
+<p>Ces instructions sont utiles si elles permettent de rendre le pseudo-code plus lisible, en séparant le cas général (la condition de la boucle) des cas particuliers (traités avec un <code class="language-">break</code> ou un <code class="language-">continue</code>)</p>
 <h5><code class="language-">break</code></h5>
 <p>Par exemple le code suivant qui trouve le pgcd (plus grand commun diviseur) entre deux nombres :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">x <span class="token operator">:=</span> <span class="token builtin">entier</span>
@@ -748,7 +749,6 @@ d <span class="token operator">:=</span> <span class="token builtin">entier</spa
 d <span class="token operator">←</span> min<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
 
 <span class="token keyword">tant que</span> <span class="token punctuation">(</span>d<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-
     <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>y mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">affiche</span> <span class="token string">"le pgcd vaut "</span> d
         <span class="token keyword">break</span>
@@ -766,7 +766,6 @@ d <span class="token operator">←</span> min<span class="token punctuation">(</
 sortir <span class="token operator">:=</span> boolean
 sortir <span class="token operator">←</span> <span class="token boolean">Faux</span>
 <span class="token keyword">tant que</span> <span class="token punctuation">(</span>sortir <span class="token operator">==</span> <span class="token boolean">Faux</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>d<span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-
     <span class="token keyword">si</span> <span class="token punctuation">(</span>x mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>y mod d <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">affiche</span> <span class="token string">"le pgcd vaut "</span> d
         sortir <span class="token operator">←</span> <span class="token boolean">Vrai</span>
@@ -825,6 +824,7 @@ y <span class="token operator">:=</span> <span class="token builtin">entier</spa
 <li><code>x = 2; y = 1</code></li>
 <li><code>x = 3; y = 0</code></li>
 </ul>
+<p>L'instruction <code class="language-">break</code> ne sort que de la boucle la plus imbriquée.</p>
 
 
 </article>
