@@ -345,6 +345,7 @@ Test de 15min **sur papier** en début de cours sur la complexité de problèmes
 {% info %}
 [Correction du projet de Code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/algorithmie/probl%C3%A8me-tris/projet-tris/tris)
 {% endinfo %}
+
 <!-- TBD 2026/2027
 
 - faire une séance supplémentaire.
@@ -399,11 +400,135 @@ Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des a
 
 ### Semaine 7
 
+> 09/03 au 13/03
+> Algorithmie
+
+#### Mercredi : structures de données
+
 > 2h
 >
 
 - structures de données.
 - DM2 = et de l'année dernière
+
+#### Vendredi : flux de données
+
+> 4h
+>
+
+- pile/file et listes chaînées. Cours puis exercices dessus.
+
+### Semaine 7
+
+> 16/03 au 20/03
+> Algorithmie
+
+#### Mercredi : listes
+
+> 2h
+>
+
+{% attention %}
+Test de 15min **sur papier** en début de cours sur les structures de données.
+{% endattention %}
+
+#### Vendredi : dictionnaires
+
+> 2h
+>
+
+### Semaine 8
+
+> 23/03 au 27/03
+> Programmation
+
+#### Mercredi : programmation objet
+
+> 2h
+>
+
+{% attention %}
+Test de 15min **sur papier** en début de cours sur les listes et les dictionnaires.
+{% endattention %}
+
+#### Vendredi : on s'entraîne
+
+> 2h
+>
+
+### Semaine 9
+
+> 30/03 au 03/04
+> Programmation
+
+#### Mercredi : Héritage
+
+> 4h
+>
+
+{% attention %}
+Test de 15min **sur ordinateur** en début de cours sur les classes et les objets.
+{% endattention %}
+
+### Semaine 10
+
+> 06/04 au 10/04
+> Programmation
+
+#### Mercredi : composition et agrégation
+
+> 2h
+>
+
+{% attention %}
+Test de 15min **sur ordinateur** en début de cours sur l'héritage.
+{% endattention %}
+
+> pour aller plus loin : design pattern
+
+#### Vendredi : on s'entraîne
+
+> 4h
+>
+
+### Semaine 11
+
+> 13/04 au 17/04
+> Algorithmie
+
+#### Mercredi : Problème de l'enveloppe convexe
+
+{% attention %}
+Test de 15min **sur ordinateur** en début de cours sur la composition et l'agrégation.
+{% endattention %}
+
+#### Vendredi : on s'entraîne
+
+> TBD avec pyglet et/matplotlib
+
+### Semaine 12
+
+> 2h
+>
+
+{% attention %}
+Devoir surveillé de programmation. Le programme est tout ce qu'on a vu jusqu'à présent
+{% endattention %}
+
+
+### Semaine 13
+
+> 04/05 au 08/05
+> Programmation
+
+> présrequis : avoir fait du html/css/js pendant les vacances. En faire un DM.
+
+#### Mercredi : serveur web et réseau
+
+#### Vendredi : on s'entraîne
+
+
+
 
 <!-- TBD
 
