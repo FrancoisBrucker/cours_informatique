@@ -391,9 +391,9 @@ $$
 <div>
 $$
 \begin{array}{lcl}
-C_{\text{moy}}(n) &=& \sum_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
- &\leq& \sum_{i=1}^{n-1}(\frac{1}{2^i} \cdot \mathcal{O}(i)) \\
- &\leq& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i}{(2^i)!}))
+C_{\text{moy}}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
+ &\leq& \sum\limits_{i=1}^{n-1}(\mathcal{O}(\frac{i}{2^i})) \\
+ &\leq& \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{i}{2^i}))
 \end{array}
 $$
 </div>
@@ -439,7 +439,7 @@ $$
 $$
 \begin{array}{lcl}
 C_\text{moy}(n) &=& \sum_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
- &=& \sum_{i=1}^{n-1}(\frac{i}{(i+1)!} \cdot \mathcal{O}(i)) \\
+ &=& \sum_{i=1}^{n-1}(\mathcal{O}(\frac{i^2}{(i+1)!} \cdot i)) \\
  &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
 \end{array}
 $$
