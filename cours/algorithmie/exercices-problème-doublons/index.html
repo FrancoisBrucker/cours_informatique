@@ -470,30 +470,19 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une suite $(a_i)_{0\leq i}$ est dite <em>ultimement périodique</em> si il existe $\lambda$ et $\mu$ tels que :</p>
+<p>Une suite $(a_i)_{1\leq i}$ est dite <em>ultimement périodique</em> si il existe $\lambda$ et $\mu$ tels que :</p>
 <ul>
 <li>les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes</li>
 <li>$a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$</li>
 </ul>
 </div></div>
 
-<p>Puis associons en une à $f$ :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>III.1.1</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Montrez que si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ et $x \in [\![ 1, n]\!]$ alors la suite $(a_i)_{0\leq i}$ définie telle que :</p>
+<p>Et son association à $f$. La suite $(a_i)_{1\leq i}$ est ultimement périodique :</p>
 <ul>
-<li>$a_0 = x$</li>
-<li>$a_i = f(a_{i-1})$ pour $i&gt;0$</li>
+<li>$a_1 = x$</li>
+<li>$a_i = f(a_{i-1})$ pour $i&gt;1$</li>
 </ul>
-<p>est ultimement périodique.</p>
-</div></div>
-
+<p>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -502,59 +491,23 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>III.1.2</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $f$ la fonction telle que $f(i) \coloneqq T[i]$ avec $T = [x, 1, 6, 2, 3, 4, 5]$. Donnez la suite associée lorsque $a_0 = T[0] = x$ pour $x$ allant de 1 à 6.</p>
+<p>Soit $f$ la fonction telle que $f(i) \coloneqq T[i]$ avec $T = [x, 1, 6, 2, 3, 4, 5]$. Donnez la suite associée lorsque $a_1 = T[0] = x$ pour $x$ allant de 1 à 6.</p>
 </div></div>
 
 <h3>III.2</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>III.2.1</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Adaptez l'algorithme du lièvre et de la tortue des suites ultimement périodiaque pour nos fonctions. Sa signature doit être <code class="language-">lièvre_tortue(f: (entier) → entier, x: entier) → entier</code> avec :</p>
+<p>Adaptez l'algorithme du lièvre et de la tortue des suites ultimement périodique pour nos fonctions. Sa signature doit être <code class="language-">lièvre_tortue(f: (entier) → entier, x: entier) → entier</code> avec :</p>
 <ul>
 <li><code class="language-">f</code> la fonction</li>
 <li><code class="language-">x</code> l'entier tel que $a_0 = f(x)$</li>
 </ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">programme lièvre_tortue<span class="token punctuation">(</span>f<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">,</span>
-                        x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-                       <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token punctuation">(</span>tortue <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> f<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    <span class="token punctuation">(</span>lièvre <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">tant que</span> tortue <span class="token operator">≠</span> lièvre<span class="token punctuation">:</span>
-        tortue <span class="token operator">←</span> f<span class="token punctuation">(</span>tortue<span class="token punctuation">)</span>
-        lièvre <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>lièvre<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    
-    <span class="token keyword">rendre</span> tortue</code></pre>
-</div>
-</details>     
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Vous aurez remarqué qu'un des paramètres du programme est une fonction. <a href="/cours_informatique/cours/algorithmie/pseudo-code/algorithmes-fonctions/#type">Le type d'une fonction est sa signature</a>.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -565,7 +518,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>III.2.2</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Montrez que la complexité de l'algorithme <code class="language-">lièvre_tortue</code> est en $\mathcal{O}(n)$ si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ ?</p>
+<p>Montrez que la complexité de l'algorithme <code class="language-">lièvre_tortue</code> est en $\mathcal{O}(n)$ si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$</p>
 </div></div>
 
 <h3>III.3</h3>
