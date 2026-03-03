@@ -147,7 +147,7 @@
 </div></div>
 
 <p>Notez que cette condition est différente de celle des <a href="/cours_informatique/cours/misc/al%C3%A9atoire/nombres-pseudo-al%C3%A9atoires/" class="interne">PRNG</a> qui ne supposent que l'uniformité statistique pour $k$ fixé (passent une batterie de tests statistiques).</p>
-<p>Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (avec $s &lt; n$, voir $s &lt;&lt; n$).</p>
+<p>Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (avec $s &lt; t$, voir $s &lt;&lt; t$).</p>
 <p>La définition explicite fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la <em>seed</em> choisie.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -161,13 +161,13 @@
 
 <p>Notez qu'un générateur de nombres pseudo-aléatoire sécurisé donne des résultats loin d'être aléatoire, en particulier distribution de sa sortie n'est <strong>pas</strong> uniforme :</p>
 <ul>
-<li>le nombre de chaînes atteignable depuis sa seed : $2^s$</li>
+<li>le nombre de chaînes atteignables depuis sa seed : $2^s$</li>
 <li>le nombre de chaînes possible : $2^{t} &gt; 2^s$</li>
 </ul>
-<p>Ne nombreuses chaînes ($2^{t-s}$) ne sont atteignables avec notre générateur. L'algorithme <strong>non efficace</strong> $D$ suivant va avoir un avantage non négligeable pour distinguer une sortie de $G$ d'une suite aléatoire :</p>
+<p>Ne nombreuses chaînes ($2^{t-s}$) ne sont pas atteignables avec notre générateur. L'algorithme <strong>non efficace</strong> $D$ suivant va avoir un avantage non négligeable pour distinguer une sortie de $G$ d'une suite aléatoire :</p>
 <ol>
 <li>il calcule $G(k)$ pour tous les $2^s$ valeurs de $k$ possible.</li>
-<li>lorsque le testeur lui montre un mot $m$ de $\{0, 1\}^n$ il répond 1 s'il existe $k$ tel que $G(k)=m$, et 0 sinon.</li>
+<li>lorsque le testeur lui montre un mot $m$ de $\{0, 1\}^t$ il répond 1 s'il existe $k$ tel que $G(k)=m$, et 0 sinon.</li>
 </ol>
 <p>Il reconnaît $G$ avec l'avantage suivant :</p>
 <ul>
@@ -270,7 +270,7 @@ Notez que ceci ne contredit pas la définition puisque l'adversaire n'est pas ef
 $$
 \begin{array}{lcl}
 \epsilon(A) &=& \vert \Pr[A(Y_i(k)) = 1] - \Pr[A(Y_{i+1}(k)) = 1] \vert \\
-&=& \vert \Pr[A({x^k}_1\dots{x^k}_ibu_{n-i+1}\dots u_n) = 1] - \Pr[A({x^k}_{1}\dots{x^k}_{i+1}u_{n-i}\dots u_n) = 1] \vert \\
+&=& \vert \Pr[A({x^k}_1\dots{x^k}_i\; b\; u_{n-i+1}\dots u_n) = 1] - \Pr[A({x^k}_{1}\dots{x^k}_{i+1}u_{n-i}\dots u_n) = 1] \vert \\
 \end{array}
 $$
 </div>
@@ -298,7 +298,7 @@ $$
 
 <p>L'existence de générateur de nombres pseudo-aléatoire sécurisé n'est pas garantie, mais est fortement soupçonnée comme on vale voir.</p>
 <h3><span id="construction-incrémentale"></span> Incrémentale</h3>
-<p>Commençons par voir qu'il suffit d'avoir un générateur de nombres pseudo-aléatoire sécurisé $G: \{0, 1\}^s \rightarrow \{0, 1\}^{s+1}$ pour construire un autre générateur de nombres pseudo-aléatoire sécurisé $G_m: \{0, 1\}^s \rightarrow \{0, 1\}^{m}$ pour tout $m\leq 1$.</p>
+<p>Commençons par voir qu'il suffit d'avoir un générateur de nombres pseudo-aléatoire sécurisé $G: \{0, 1\}^s \rightarrow \{0, 1\}^{s+1}$ pour construire un autre générateur de nombres pseudo-aléatoire sécurisé $G_m: \{0, 1\}^s \rightarrow \{0, 1\}^{m}$ pour tout $m\geq 1$.</p>
 <p><span id="chiffre-CPRNG-incrémental"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -441,8 +441,8 @@ $$
 </div>
 <p>On a alors :</p>
 <ul>
-<li>$Pr_{x \xleftarrow{U} {0, 1}^{s}}[A'(G(x)) = 1] \geq \epsilon$ puisque l'on utilise $A$</li>
-<li>$\Pr_{x \xleftarrow{U} {0, 1}^{2s}}[A'(u) = 1] \leq 1/2^s$ puisqu'il n'y a que $1/2^s$ chance que $u$ correspondent à une image de $G$.</li>
+<li>$Pr_{x \xleftarrow{U} \{0, 1\}^{s}}[A'(G(x)) = 1] \geq \epsilon$ puisque l'on utilise $A$</li>
+<li>$\Pr_{x \xleftarrow{U} \{0, 1\}^{2s}}[A'(u) = 1] \leq 1/2^s$ puisqu'il n'y a que $1/2^s$ chance que $u$ correspondent à une image de $G$.</li>
 </ul>
 <p>Et l'avantage de $A'$ vaut $\epsilon-1/2^s$ qui est non négligeable ce qui est impossible puisque par hypothèse $G$ est un générateurs de nombres pseudo-aléatoire sécurisés.</p>
 </div>
@@ -633,7 +633,7 @@ $$
 </ul>
 <p>Nous allons uniquement survoler son principe, nous y reviendrons en détail lorsque nous étudierons son implémentation dns un chiffrement réel et complet.</p>
 <h4>Principe</h4>
-<p>Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était <a href="https://en.wikipedia.org/wiki/Salsa20">salsa20</a>, un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k ;|; \text{IV}) = Q(K \;\|\; k \;\|\; \text{IV})$.</p>
+<p>Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était <a href="https://en.wikipedia.org/wiki/Salsa20">salsa20</a>, un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k \;\|\; \text{IV}) = Q(K \;\|\; k \;\|\; \text{IV})$.</p>
 <p>Le chiffre final est obtenu en additionnant la permutation à l'entrée :</p>
 <div>
 $$

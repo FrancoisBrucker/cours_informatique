@@ -664,7 +664,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une suite $(a_i)_{0\leq i}$ est dite <em>ultimement périodique</em> si il existe $\lambda$ et $\mu$ tels que :</p>
+<p>Une suite $(a_i)_{1\leq i}$ est dite <em>ultimement périodique</em> si il existe $\lambda$ et $\mu$ tels que :</p>
 <ul>
 <li>les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes</li>
 <li>$a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$</li>
@@ -680,7 +680,7 @@ $$
 </div><div class="pl-8 mr-8">
 <ul>
 <li>Nom : Point fixe</li>
-<li>Entrée : une suite $(a_i)_{0\leq i}$ ultimement périodique</li>
+<li>Entrée : une suite $(a_i)_{1\leq i}$ ultimement périodique</li>
 <li>Sortie : $\mu$</li>
 </ul>
 </div></div>
@@ -717,6 +717,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p><img src="lambda-mu.png" alt="lambda mu"></p>
 <ul>
 <li>$\lambda = 7$</li>
 <li>$\mu = 3$</li>
@@ -727,7 +728,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que si $(a_i)_{i\geq 0}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.</p>
+<p>Montrez que si $(a_i)_{i\geq 1}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -781,7 +782,7 @@ $$
 <h3>Algorithme naïf</h3>
 <p>Résoudre le problème du point fixe va nécessiter un de travail. Commençons par étudier cet algorithme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> point_fixe_naïf<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token punctuation">(</span>int<span class="token punctuation">)</span> <span class="token operator">→</span> int<span class="token punctuation">)</span> <span class="token operator">→</span> int
-    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
     <span class="token punctuation">(</span>j <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>
 
     <span class="token keyword">tant que</span> <span class="token boolean">Vrai</span><span class="token punctuation">:</span>
@@ -818,7 +819,7 @@ $$
 <p>Si la suite est ultimement périodique, il existe $j &lt; i$ tel que $a(i) == a(j)$. Ceci prouve :</p>
 <ul>
 <li>la finitude de notre algorithme</li>
-<li>son exactitude : puisque pour tout $i&gt;0$ on teste tous les $j &lt; i$</li>
+<li>son exactitude : puisque pour tout $i&gt;1$ on teste tous les $j &lt; i$</li>
 </ul>
 </div>
 </details>     
@@ -884,8 +885,11 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>À chaque étape l'écart entre le lièvre et la tortue est augmenté de 1. Une fois la tortue et le lièvre sur le cycle il va forcément arriver un moment où le lièvre va prendre un tour à la tortue, et ceci va arriver avant que la tortue n'ait fait un tour de cycle complet.</p>
-<p>Formalisons ça. Lorsque $m = \mu$, on a $a_{2\mu} = a_{\mu + k} =  a_{m + k}$ avec $0 \leq k \leq \lambda$ puisque l'on se trouve sur le cycle de longueur $\lambda$.</p>
-<p>Si $k=0$ ou $k=\lambda$ on a bien trouvé notre $m$ et sinon, comme $a_{2(\mu + p)} = a_{2\mu + 2p} = a_{\mu + 2p + k} = a_{(\mu + p) + p + k}$ en prenant $0 &lt; p = \lambda - k &lt; \lambda$ on a bien $a_{2(\mu + p)} = a_{(\mu + p) + \lambda} = a_{(\mu + p)}$ ce qui conclut la preuve.</p>
+<p>Formalisons ça. Lorsque $m = \mu$, on est dans le cas de la figure suivante :</p>
+<p><img src="tortue-lapin-1.png" alt="lapin tortue 1"></p>
+<p>Le lapin est déjà sur le cycle et tout se passe comme s'il était en retard de $0 \leq k \leq \lambda$ étapes. Si $k = 0$ ou $k = \lambda$ le lapin est sur la tortue et on a trouvé le point fixe. Sinon, à chaque étape suivante le lapin va se rapprocher de 1 de la tortue et donc après $k$ étapes de plus on est dans le cas suivant :</p>
+<p><img src="tortue-lapin-2.png" alt="lapin tortue 2"></p>
+<p>Le lapin et la tortue sont sur la même valeur.</p>
 </div>
 </details>     
 </div>
@@ -898,7 +902,8 @@ $$
     <span class="token keyword">tant que</span> a<span class="token punctuation">(</span>tortue<span class="token punctuation">)</span> <span class="token operator">≠</span> a<span class="token punctuation">(</span>lièvre<span class="token punctuation">)</span><span class="token punctuation">:</span>
         tortue <span class="token operator">←</span> tortue <span class="token operator">+</span> <span class="token number">1</span>
         lièvre <span class="token operator">←</span> lièvre <span class="token operator">+</span> <span class="token number">2</span>
-</code></pre>
+
+    <span class="token keyword">rendre</span> tortue</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -926,7 +931,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>À la fin de chaque étape le lièvre vaut 2 fois la tortue et s'arrête au premier élément ou il y a égalité. O sait que c'est élément est entre $\mu$ et $\lambda + \mu$.</p>
+<p>À la fin de chaque étape le lièvre vaut 2 fois la tortue et s'arrête au premier élément ou il y a égalité. On sait que cet élément est entre $\mu$ et $\lambda + \mu$.</p>
 </div>
 </details>     
 </div>
@@ -982,14 +987,14 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Puisque $m\geq \mu$ on est sur le cycle de longueur $\lambda$. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + k\lambda$ ce qui montre que $m$ est un multiple de $\lambda$.</p>
+<p>Puisque $m\geq \mu$ on est sur le cycle de longueur $\lambda$. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + p\lambda$ ce qui montre que $m$ est un multiple de $\lambda$.</p>
 </div>
 </details>     
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Utilisez la question précédente et la nature de $m$ pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$.</p>
+<p>Soit $m^\star$ le plus entier tel que $a_{m^\star} = a_{2m^\star}$. Si l'on faisait partir une tortue en $a_0$ et un lièvre en $a_{m^\star}$, montrez qu'ils se rencontreraient en $a_\mu$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1009,8 +1014,11 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>La division entière de $\mu$ par $\lambda$ donne $\mu = b + k \cdot \lambda$ avec $b &lt; lambda$. Comme de plus $\mu \leq m \leq \mu + \lambda$, on a $b + k \cdot \lambda \leq m \leq b + (k + 1) \cdot \lambda$.</p>
-<p>Or $m$ est un multiple de $k$, on ne peut donc avoir que $m = (k+1) \cdot \lambda$. En injectant cette égalité dans $\mu$ on obtient : $\mu = b + k \cdot \lambda = b + (m - \lambda)$ ce qui conclut la preuve.</p>
+<p>L'indice $m^\star$ correspond à l'arrêt de l'algorithme du lièvre et de la tortue :</p>
+<p><img src="tortue-lapin-3.png" alt="lapin tortue 3"></p>
+<p>Avec $k$ la position du premier lièvre lorsque la première tortue arrive en $\mu$ :</p>
+<p><img src="tortue-lapin-4.png" alt="lapin tortue 4"></p>
+<p>On a alors  $2\mu \bmod \lambda = -k \bmod \lambda$ et donc :  $m^\star + 2\mu \bmod \lambda = m^\star - k \bmod \lambda$.</p>
 </div>
 </details>     
 </div>
@@ -1021,14 +1029,6 @@ $$
 <p>Déduire de ce qui précède un algorithme de signature <code class="language-">mu(a: (entier) → entier) → entier</code> qui résout le problème du point fixe avec une complexité temporelle $\Theta(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$.</p>
 </div></div>
 
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?</p>
-</div></div>
-
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1046,11 +1046,22 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>La question précédente a montré que $\mu + m = (\mu + \lambda) + \lambda = \mu + 2\cdot \lambda$.</p>
-<p>En faisant partir deux tortue, l'une en 0 et l'autre en $m$, lorsque celle partant en $0$ arrivera en $\mu$ celle parti de $m$ sera en $\mu + m = \mu + 2\cdot \lambda$, donc au même point !</p>
-<blockquote>
-<p>TBD fin</p>
-</blockquote>
+<p>On applique directement ce que l'on a vu en effectuant deux fois l'algorithme du lièvre et de la tortue avec des départ différents :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> lièvre_tortue<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> départ_tortue<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> départ_lièvre<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+
+    <span class="token punctuation">(</span>tortue <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> départ_tortue
+    <span class="token punctuation">(</span>lièvre <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> départ_lièvre
+
+    <span class="token keyword">tant que</span> a<span class="token punctuation">(</span>tortue<span class="token punctuation">)</span> <span class="token operator">≠</span> a<span class="token punctuation">(</span>lièvre<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        tortue <span class="token operator">←</span> tortue <span class="token operator">+</span> <span class="token number">1</span>
+        lièvre <span class="token operator">←</span> lièvre <span class="token operator">+</span> <span class="token number">2</span>
+    
+    <span class="token keyword">rendre</span> tortue
+
+
+<span class="token builtin">algorithme</span> <span class="token function">mu</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>m_star <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> lièvre_tortue<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> lièvre_tortue<span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> m_star<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1078,10 +1089,10 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que si $f: \mathbb{N} [\![ 1, n]\!]$ et $x$ un entier, alors la suite $(a_i)_{0\leq i}$ définie telle que :</p>
+<p>Montrez que si $f: \mathbb{N}\to  [\![ 1, n]\!]$ et $x$ un entier, alors la suite $(a_i)_{1\leq i}$ définie telle que :</p>
 <ul>
-<li>$a_0 = x$</li>
-<li>$a_i = f(a_{i-1})$ pour $i&gt;0$</li>
+<li>$a_1 = x$</li>
+<li>$a_i = f(a_{i-1})$ pour $i&gt;1$</li>
 </ul>
 <p>est ultimement périodique.</p>
 </div></div>
@@ -1103,19 +1114,16 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>les $a_i$ ne peuvent prendre que $n$ valeurs différentes, il y a donc au moins une égalité entre les $n+1$ premiers éléments de la suite.</p>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD il faut adapter l'algorithme du lievre et de la tortue car le calcul  de a(m) sera trop long. Il faut gardr en memoire am-1.</p>
-</blockquote>
+<p>On peut utiliser l'algorithme du lièvre et de la tortue pour trouver un point fixe en prenant un $a_1$ quelconque entre $1$ et $n$. En effet, la suite étant ultimement périodique si $a_m = a_{2m}$ on a $f(a_{m-1}) = f(f(a_{2m} - 2))$ on peut alors poser $x = a_{m-1}$ et $y=f(a_{2m} - 2)$ et on a bien $f(x) = f(y)$ avec $x\neq y$. Selon le $a_1$ le point fixe pourra être plus ou moins loin, mais on est garanti de le trouver en $\mathcal{O}(n)$ opérations.</p>
+<p>Il nous faut juste garantir que la place mémoire n'est pas rédhibitoire en calculant itérativement les étapes de la suite.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Utilisez la question précédente pour résoudre le problème du point fixe de fonctions</p>
+<p>Adaptez l'algorithme <code class="language-">mu(a: (entier) → entier) → entier</code> pour qu'il puisse trouver le point fixe d'une fonction passée en paramètre et d'un $a_0$. Sa complexité en mémoire doit être en $\mathcal{O}(1)$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1135,38 +1143,26 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Modifiez l'algorithme du lièvre et de la tortue pour qu'il permette de résoudre le problème du point fixe d'une fonction.</p>
-</div></div>
+<p>On calcule itérativement les éléments de la suite ce qui permet de ne pas exploser en place mémoire (on ne stocke pas toute la suite) :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> lièvre_tortue<span class="token punctuation">(</span>f<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> tortue<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> lièvre<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>x <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>
+    <span class="token punctuation">(</span>y <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+    <span class="token keyword">tant que</span> tortue <span class="token operator">≠</span> lièvre<span class="token punctuation">:</span>
+        x <span class="token operator">←</span> tortue
+        y <span class="token operator">←</span> f<span class="token punctuation">(</span>lièvre<span class="token punctuation">)</span>
+
+        tortue <span class="token operator">←</span> f<span class="token punctuation">(</span>tortue<span class="token punctuation">)</span>
+        lièvre <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>lièvre<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">rendre</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">]</span>
+
+
+<span class="token builtin">algorithme</span> <span class="token function">point_fixe</span><span class="token punctuation">(</span>f<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> a1<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>  <span class="token comment"># on suppose que a1 ≠ f(a1)</span>
+                      <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+
+    <span class="token punctuation">(</span>m_star <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> lièvre_tortue<span class="token punctuation">(</span>f<span class="token punctuation">,</span> a1<span class="token punctuation">,</span> f<span class="token punctuation">(</span>a1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">rendre</span> lièvre_tortue<span class="token punctuation">(</span>f<span class="token punctuation">,</span> a1<span class="token punctuation">,</span> m_star<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
