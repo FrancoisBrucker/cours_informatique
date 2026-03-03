@@ -273,63 +273,38 @@ Commençons par rappeler ce qu'est une suite ultimement périodique :
 
 {% note2 "**Définition**" %}
 
-Une suite $(a_i)_{0\leq i}$ est dite _ultimement périodique_ si il existe $\lambda$ et $\mu$ tels que :
+Une suite $(a_i)_{1\leq i}$ est dite _ultimement périodique_ si il existe $\lambda$ et $\mu$ tels que :
 
 - les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes
 - $a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$
 
 {% endnote2 %}
 
+Et son association à $f$. La suite $(a_i)_{1\leq i}$ est ultimement périodique :
 
-Puis associons en une à $f$ :
+- $a_1 = x$
+- $a_i = f(a_{i-1})$ pour $i>1$
 
-{% faire  "**III.1.1**" %}
+.
 
-Montrez que si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ et $x \in [\\![ 1, n]\\!]$ alors la suite $(a_i)_{0\leq i}$ définie telle que :
-
-- $a_0 = x$
-- $a_i = f(a_{i-1})$ pour $i>0$
-
-est ultimement périodique.
-
-{% endfaire %}
 {% faire  "**III.1.2**" %}
-Soit $f$ la fonction telle que $f(i) \coloneqq T[i]$ avec $T = [x, 1, 6, 2, 3, 4, 5]$. Donnez la suite associée lorsque $a_0 = T[0] = x$ pour $x$ allant de 1 à 6.
+Soit $f$ la fonction telle que $f(i) \coloneqq T[i]$ avec $T = [x, 1, 6, 2, 3, 4, 5]$. Donnez la suite associée lorsque $a_1 = T[0] = x$ pour $x$ allant de 1 à 6.
 
 {% endfaire %}
 
 
 ### III.2
 
-{% exercice  "**III.2.1**" %}
-Adaptez l'algorithme du lièvre et de la tortue des suites ultimement périodiaque pour nos fonctions. Sa signature doit être `lièvre_tortue(f: (entier) → entier, x: entier) → entier`{.language-} avec :
+{% faire  "**III.2.1**" %}
+Adaptez l'algorithme du lièvre et de la tortue des suites ultimement périodique pour nos fonctions. Sa signature doit être `lièvre_tortue(f: (entier) → entier, x: entier) → entier`{.language-} avec :
 
 - `f`{.language-} la fonction
 - `x`{.language-} l'entier tel que $a_0 = f(x)$
 
-{% endexercice %}
-{% details "corrigé" %}
-```pseudocode
-programme lièvre_tortue(f: (entier) → entier,
-                        x: entier
-                       ) → entier:
-    (tortue := entier) ← f(x)
-    (lièvre := entier) ← f(f(x))
-
-    tant que tortue ≠ lièvre:
-        tortue ← f(tortue)
-        lièvre ← f(f(lièvre))
-    
-    rendre tortue
-```
-
-{% enddetails %}
-{% info %}
-Vous aurez remarqué qu'un des paramètres du programme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/algorithmes-fonctions/#type).
-{% endinfo %}
+{% endfaire %}
 
 {% faire  "**III.2.2**" %}
-Montrez que la complexité de l'algorithme `lièvre_tortue`{.language-} est en $\mathcal{O}(n)$ si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ ?
+Montrez que la complexité de l'algorithme `lièvre_tortue`{.language-} est en $\mathcal{O}(n)$ si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$
 {% endfaire %}
 
 ### III.3
