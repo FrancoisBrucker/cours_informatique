@@ -48,7 +48,7 @@ Le paramètre de $G$ est appelé _seed_
 
 Notez que cette condition est différente de celle des [PRNG](/cours/misc/aléatoire/nombres-pseudo-aléatoires/){.interne} qui ne supposent que l'uniformité statistique pour $k$ fixé (passent une batterie de tests statistiques).
 
-Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (avec $s < n$, voir $s << n$).
+Avec $G(k)$ une fonction permettant de générer $t$ bits à partir de $s$ bit (avec $s < t$, voir $s << t$).
 
 La définition explicite fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la _seed_ choisie.
 
@@ -58,13 +58,13 @@ En cryptographie utilisez des générateurs fait pour cela. Ils sont plus lent m
 
 Notez qu'un générateur de nombres pseudo-aléatoire sécurisé donne des résultats loin d'être aléatoire, en particulier distribution de sa sortie n'est **pas** uniforme :
 
-- le nombre de chaînes atteignable depuis sa seed : $2^s$
+- le nombre de chaînes atteignables depuis sa seed : $2^s$
 - le nombre de chaînes possible : $2^{t} > 2^s$
 
-Ne nombreuses chaînes ($2^{t-s}$) ne sont atteignables avec notre générateur. L'algorithme **non efficace** $D$ suivant va avoir un avantage non négligeable pour distinguer une sortie de $G$ d'une suite aléatoire :
+Ne nombreuses chaînes ($2^{t-s}$) ne sont pas atteignables avec notre générateur. L'algorithme **non efficace** $D$ suivant va avoir un avantage non négligeable pour distinguer une sortie de $G$ d'une suite aléatoire :
 
 1. il calcule $G(k)$ pour tous les $2^s$ valeurs de $k$ possible.
-2. lorsque le testeur lui montre un mot $m$ de $\\{0, 1\\}^n$ il répond 1 s'il existe $k$ tel que $G(k)=m$, et 0 sinon.
+2. lorsque le testeur lui montre un mot $m$ de $\\{0, 1\\}^t$ il répond 1 s'il existe $k$ tel que $G(k)=m$, et 0 sinon.
 
 Il reconnaît $G$ avec l'avantage suivant :
 
@@ -132,7 +132,7 @@ Supposons qu'il existe $i$ tel que l'on puisse reconnaître $Y_i(k)$ de $Y_{i+1}
 $$
 \begin{array}{lcl}
 \epsilon(A) &=& \vert \Pr[A(Y_i(k)) = 1] - \Pr[A(Y_{i+1}(k)) = 1] \vert \\
-&=& \vert \Pr[A({x^k}_1\dots{x^k}_ibu_{n-i+1}\dots u_n) = 1] - \Pr[A({x^k}_{1}\dots{x^k}_{i+1}u_{n-i}\dots u_n) = 1] \vert \\
+&=& \vert \Pr[A({x^k}_1\dots{x^k}_i\; b\; u_{n-i+1}\dots u_n) = 1] - \Pr[A({x^k}_{1}\dots{x^k}_{i+1}u_{n-i}\dots u_n) = 1] \vert \\
 \end{array}
 $$
 </div>
@@ -156,7 +156,7 @@ L'existence de générateur de nombres pseudo-aléatoire sécurisé n'est pas ga
 
 ### <span id="construction-incrémentale"></span> Incrémentale
 
-Commençons par voir qu'il suffit d'avoir un générateur de nombres pseudo-aléatoire sécurisé $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^{s+1}$ pour construire un autre générateur de nombres pseudo-aléatoire sécurisé $G_m: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^{m}$ pour tout $m\leq 1$.
+Commençons par voir qu'il suffit d'avoir un générateur de nombres pseudo-aléatoire sécurisé $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^{s+1}$ pour construire un autre générateur de nombres pseudo-aléatoire sécurisé $G_m: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^{m}$ pour tout $m\geq 1$.
 
 <span id="chiffre-CPRNG-incrémental"></span>
 
@@ -250,8 +250,8 @@ $$
 
 On a alors :
 
-- $Pr_{x \xleftarrow{U} \{0, 1\}^{s}}[A'(G(x)) = 1] \geq \epsilon$ puisque l'on utilise $A$
-- $\Pr_{x \xleftarrow{U} \{0, 1\}^{2s}}[A'(u) = 1] \leq 1/2^s$ puisqu'il n'y a que $1/2^s$ chance que $u$ correspondent à une image de $G$.
+- $Pr_{x \xleftarrow{U} \\{0, 1\\}^{s}}[A'(G(x)) = 1] \geq \epsilon$ puisque l'on utilise $A$
+- $\Pr_{x \xleftarrow{U} \\{0, 1\\}^{2s}}[A'(u) = 1] \leq 1/2^s$ puisqu'il n'y a que $1/2^s$ chance que $u$ correspondent à une image de $G$.
 
 Et l'avantage de $A'$ vaut $\epsilon-1/2^s$ qui est non négligeable ce qui est impossible puisque par hypothèse $G$ est un générateurs de nombres pseudo-aléatoire sécurisés.
 
@@ -404,7 +404,7 @@ Nous allons uniquement survoler son principe, nous y reviendrons en détail lors
 
 #### Principe
 
-Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était [salsa20](https://en.wikipedia.org/wiki/Salsa20), un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k \;\|\; \text{IV}) = Q(K \\;\\|\\; k \\;\\|\\; \text{IV})$.
+Son cœur est une permutation, mais son implémentation diffère un peu des PRP (la clé fait partie de la valeur d'initiation) car à l'origine chacha20 était [salsa20](https://en.wikipedia.org/wiki/Salsa20), un hash cryptographique. La  proposition de sécurité reste valable puisque cette valeur peut être quelconque et on a dans notre cas la permutation $G(k) = P(k, k \\;\\|\\; \text{IV}) = Q(K \\;\\|\\; k \\;\\|\\; \text{IV})$.
 
 Le chiffre final est obtenu en additionnant la permutation à l'entrée :
 <div>

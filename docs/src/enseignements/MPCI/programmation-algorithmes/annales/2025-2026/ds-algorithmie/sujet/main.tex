@@ -1,0 +1,349 @@
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{mathtools}
+\usepackage{listingsutf8}
+\usepackage{amsfonts}
+\lstset{%
+    inputencoding=utf8,
+    literate=
+        {é}{{\'e}}{1}%
+        {è}{{\`e}}{1}%
+        {à}{{\`a}}{1}%
+        {â}{{\^a}}{1}%
+        {ç}{{\c{c}}}{1}%
+        {œ}{{\oe}}{1}%
+        {ù}{{\`u}}{1}%
+        {É}{{\'E}}{1}%
+        {È}{{\`E}}{1}%
+        {À}{{\`A}}{1}%
+        {Ç}{{\c{C}}}{1}%
+        {Œ}{{\OE}}{1}%
+        {Ê}{{\^E}}{1}%
+        {ê}{{\^e}}{1}%
+        {î}{{\^i}}{1}%
+        {ï}{{\"i}}{1}%
+        {ô}{{\^o}}{1}%
+        {û}{{\^u}}{1}%
+}
+\usepackage{fullpage}
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{setspace}
+\usepackage{todonotes}
+\usepackage{amsthm}
+
+\newtheoremstyle{exostyle}% style name
+{10pt}% above space
+{10pt}% below space
+{}% body font
+{}% indent amount
+{\scshape\bfseries\large}% head font
+{\hfill\vspace{5pt}\newline}% post head punctuation
+{0pt}% Space after theorem head
+{\hfill\thmname{#1}\thmnumber{ #2} -- \thmnote{ #3}}% head spec
+
+\newtheoremstyle{partiestyle}% style name
+{1em}% above space
+{1em}% below space
+{}% body font
+{}% indent amount
+{\bfseries}% head font
+{\vspace{.5em}\newline}% post head punctuation
+{0em}% Space after theorem head
+{\thmnumber{#2} \thmnote{ #3}}% head spec
+
+\newtheoremstyle{questionstyle}% style name
+{.5em}% above space
+{.5em}% below space
+{}% body font
+{}% indent amount
+{\bfseries}% head font
+{}% post head punctuation
+{0em}% Space after theorem head
+{Question \thmnumber{#2 }}% head spec
+
+\theoremstyle{exostyle}
+\newtheorem{exo}{Exercice}
+
+\theoremstyle{partiestyle}
+\newtheorem{partie}{}[exo]
+
+\theoremstyle{questionstyle}
+\newtheorem{question}{Question}[exo]
+\newtheorem{questionpartie}{Question}[partie]
+
+\title{Devoir surveillé : Algorithmes}
+\author{L1 MPCI}
+\date{2 mars 2026 - Durée: 2h}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+{\em\bf Lorsque l'on vous demande d'écrire de décrire ou de donner un algorithme cela signifiera toujours en donner un pseudo-code, justifier de son \underline{exactitude} et de sa \underline{complexité}}
+
+~\\
+
+{\em On rappelle qu'aucun document, ni équipement électrique ou électronique n'est autorisé.
+
+ {\bf Cependant} l'usage d'un marteau-piqueur à percussion sera toléré s'il est utilisé avec un silencieux.}
+\end{center}
+
+
+\vspace*{1cm}
+
+\paragraph{Les exercices de cet examen} :
+\begin{itemize}
+\item sont au nombre de 3;
+\item ont tous le même but, savoir si $b$ est une sous-chaîne de $a$;
+\item sont indépendants (à part le problème à résoudre qui est le même);
+\item sont de difficulté croissante;
+\item sont chacuns constitués de 3 parties de difficultés croissantes.
+\end{itemize}
+
+\paragraph{Élément de notation :}
+\begin{itemize}
+\item  Le nombre de points par partie est capé. {\bf Il est impossible} d'avoir plus de 10/20 (respectivement 16/20) en ne répondant qu'aux questions des premières parties (\textit{resp.} premières et secondes parties) de chaque exercice. {\bf Il n'est cependant pas nécessaire} de répondre à toutes les questions pour avoir 10/20 (\textit{resp.} 16/20);
+\item L'examen est {\bf long} et ce qui semble simple pour l'examinateur ne l'est pas forcément pour l'étudiant et réciproquement. Il pourra être utile de changer d'exercice plutôt que de rester bloqué sur une question, quitte à y revenir plus tard.
+\end{itemize}
+
+
+\paragraph{}{\large \sc Rendez \underline{des copies séparées pour chaque exercice}, ceci vous permettra de d'y revenir au cours de l'examen sans perdre le correcteur.}
+
+\vspace*{1cm}
+
+On définit le problème algorithmique suivant :
+
+\paragraph{Problème :}
+\begin{itemize}
+    \item {\bf Nom :} sous-chaîne
+\item {\bf Entrées :}
+    \begin{itemize}
+        \item \texttt{a} une chaîne de caractères de longueur $n$
+        \item \texttt{b} une chaîne de caractères de longueur $m \leq n$
+    \end{itemize}
+\item {\bf Sortie :} l'indice d'un commencement de $b$ dans $a$ si $b$ est une sous-chaîne de $a$ et $-1$ sinon
+\end{itemize}
+
+\paragraph{Avec la définition suivante :} Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m <n$ respectivement. La chaîne $b$ est une \textbf{\textit{sous-chaîne de $a$ commençant en $i$}} si $b = a[i:i+m]$ (c'est à dire que pour $0 \leq i < n-m$ : $b[k] = a[i+k]$ pour tout $0\leq k<m$).
+
+
+\paragraph{}Par exemple :
+
+\begin{itemize}
+\item $corne$, $douille$ et $oui$ sont des sous-chaînes de $cornegidouille$, mais pas $rouille$ ni $ubu$,
+\item $a$, $na$ et $an$ sont des sous-chaînes de $nananère$. Elles apparaissent à plusieurs endroits.
+\end{itemize}
+
+\clearpage
+
+\begin{exo}[Algorithme Naïf]
+    \begin{partie}[Algorithme python]
+        \label{algo-python-1}
+        \begin{lstlisting}
+                def est_sous_chaîne(a, b):
+                    for i in range(len(a) - len(b) + 1):
+                        trouvé = True
+                        j = 0
+                        while j < len(b):
+                            if b[j] != a[i + j]:
+                                trouvé = False
+                                j = len(b)
+                            else:
+                                j += 1
+                        if trouvé:
+                            return True
+                    return False
+        \end{lstlisting}
+        \begin{questionpartie}
+            \label{algo-pseudo-1}
+            Donnez le pseudo-code associé à l'algorithme python ci-dessus.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Donnez la complexité minimum et maximum de cet algorithme.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Donnez la signature d'un algorithme résolvant le problème "sous-chaîne".
+        \end{questionpartie}
+        \begin{questionpartie}
+            \label{complexite-naif}
+            Modifiez le pseudo-code de la question~\ref{algo-pseudo-1} pour qu'il résolve avec les mêmes complexités le problème "sous-chaîne" (il faudra bien sur démontrer son exactitude).
+        \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Bornes]
+        \begin{questionpartie}
+            Donnez (et justifiez) une borne minimum au problème "sous-chaîne".
+        \end{questionpartie}
+        \begin{questionpartie}
+            Déduire de la question~\ref{complexite-naif} un encadrement de la complexité du problème "sous-chaîne".
+        \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Complexité en moyenne]
+        \begin{questionpartie}
+            En supposant l'équiprobabilité des caractères pour les différentes chaînes, montrez que $\Pr [a[i] = b[j]]$ est une constante quelques soient les indices $i$ et $j$
+        \end{questionpartie}
+        \begin{questionpartie}
+            En déduire la complexité en moyenne de l'algorithme de la question~\ref{complexite-naif}\footnote{Vous pourrez utiliser le fait que $\sum_{0\leq i\leq n}(ip^i) \leq \frac{p}{(1-p)^2}$ pour tout $n\geq 0$ si $p<1$}
+        \end{questionpartie}
+
+    \end{partie}
+
+\end{exo}
+\begin{exo}[Boyer-Moore-Horspool]
+    L'algorithme de Boyer-Moore-Horspool  permet de résoudre le problème "sous-chaîne". Il fonctionne de la façon suivante :
+
+    \begin{enumerate}
+        \item on commence l'algorithme avec $i= 0$
+        \item pour un indice $i$ donné, on fait décroitre un un indice $j$ de $m-1$ à $0$.
+        \begin{itemize}
+            \item si $a[i + j] = b[j]$ pour tout $j$, l'algorithme s'arrête et rend $i$
+            \item sinon, lors de la première non correspondance ($a[i + j] \neq b_j$ et $a[i + j'] = b[j']$ pour $j < j' < m$), l'indice $i$ est {\bf décalé} :
+            \begin{itemize}
+                \item de $m$ cases si $a[i +m-1]$ n'est pas un caractère de $b[:-1]$ (la chaîne $b$ privée du dernier caractère).
+                \item de $m-k-1$ cases où $k$ est l'indice le plus grand dans $b[:-1]$ du caractère $a[i + m -1]$.
+            \end{itemize}
+        \end{itemize}
+        \item si $i> n-m$, l'algorithme s'arrête et rend $-1$ sinon on retourne à l'étape 2
+    \end{enumerate}
+    \begin{partie}[Principe]
+    \begin{questionpartie}
+            Démontrez que ce fonctionnement est bien une façon valide de chercher si $b$ est une sous-chaîne de $a$.
+    \end{questionpartie}
+    \begin{questionpartie}
+            En quoi cette amélioration permet d'aller plus vite que l'algorithme basé sur le code de la question~\ref{algo-python-1} ?
+    \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Décalages]
+        On suppose que les $L$ caractères possibles  (4 caractères possibles si l'on compare des brins d'ADN, 20 si ce sont des protéines et $2^{28}$ si ce sont des chaînes Unicode)  pour les chaînes $a$ et $b$ sont ordonnés et que l'on possède une fonction de signature \texttt{ord(c: caractère) $\rightarrow$ entier} qui à tout caractère rend son ordre ($0$ pour le plus petit caractère et $L-1$ pour le plus grand) en $\mathcal{O}(1)$ opérations.
+        \begin{questionpartie}
+            Écrivez une fonction de signature \texttt{décalage(b: chaîne) $\rightarrow$ [entier]} qui rend un tableau $T$ de taille $L$ tel que $T[ord(c)]$ soit égal au décalage à effectuer pour le caractère $c$ lors de la recherche de $b$ dans une chaîne $a$.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Quelle est la complexité de votre fonction \texttt{décalage(b: chaîne) $\rightarrow$ [entier]} ?
+        \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Recherche]
+        \begin{questionpartie}
+            Écrivez le pseudo-code de l'algorithme de Boyer-Moore-Horspool.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Quelle est la complexité maximale et minimale de l'algorithme de Boyer-Moore-Horspool ?
+        \end{questionpartie}
+        \begin{questionpartie}
+            Quelle est la complexité spatiale de l'algorithme de Boyer-Moore-Horspool ?
+        \end{questionpartie}
+         \begin{questionpartie}
+            En déduire une borne maximum au problème "sous-chaîne".
+        \end{questionpartie}
+        \begin{questionpartie}
+                Quand utiliseriez vous cet algorithme par rapport à l'algorithme naïf ?
+        \end{questionpartie}
+
+
+    \end{partie}
+\end{exo}
+\begin{exo}[Knuth-Morris-Pratt]
+    Cet algorithme est le plus complexe des trois mais, petit {\it spoil}, il est optimal. Tout comme l'algorithme de Boyer-Moore-Horspool il repose sur un tableau de décalage particulier permettant d'accélérer la recherche.
+    
+        \begin{tabbing}
+            ccc\=cccc\=cccc\=cccc\=cccc\=cccc\=\kill
+            \textbf{algorithme} \textsc{KMP}($a$: chaîne, $b$: chaîne) $\rightarrow$ entier{\bf :}\\
+            \>\vline$\,$ $T \leftarrow$\texttt{décalage}($b$)\\
+            \>\vline$\,$ $(i, j \coloneqq \text{entier}) \leftarrow 0, 0$\\
+            \>\vline$\,$\textbf{tant que} $i + j < a.\text{longueur}$ {\bf :}\\
+            \>\vline$\,$\>\vline$\,$ \textbf{si} $a[i + j] == b[j]${\bf :}\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$ $j \leftarrow j +1$\\
+            \>\vline$\,$\>\vline$\,$ \>\vline$\,$ \textbf{si} $j \geq b.\text{longueur}$ {\bf :}\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ \textbf{rendre} $i$\\
+            \>\vline$\,$\>\vline$\,$ \textbf{sinon}{\bf :}\\
+            \>\vline$\,$\>\vline$\,$ \>\vline$\,$ \textbf{si} $j == 0$ {\bf :}\\
+            \>\vline$\,$\>\vline$\,$ \>\vline$\,$\>\vline$\,$ $i \leftarrow i +1$\\
+            \>\vline$\,$\>\vline$\,$ \>\vline$\,$ \textbf{sinon}{\bf :}\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $i \leftarrow i + j - T[j]$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $j \leftarrow T[j]$\\
+            \>\vline$\,$ \textbf{rendre} $-1$\\
+
+        \end{tabbing}
+         La fonction de décalage $\texttt{décalage}(b: \text{\texttt{chaîne}})\rightarrow [\text{\texttt{entier}}]$ rend un tableau $T$ de même longueur $m$ que $b$ tel que :~\\
+            \begin{itemize}
+                \item $T$ est une liste d'entier de longueur $m$
+                \item $T[0] = T[1] = 0$
+                \item pour tout $1 \leq j < m$, $T[j]$ est le plus grand entier $k < j$ tel que $b[:k] = b[j-k:j]$
+            \end{itemize}~\\
+Par exemple on a $[0, 0, 0, 1, 2, 3, 0] = \text{décalage}("ABABACA")$ :~\\
+            \begin{itemize}
+                \item $T[2] = 0$ car $b[2-1:2] = "B" \neq b[:1] = "A"$
+                \item $T[3] = 1$ car $b[3-1:3] ="A" = b[:1] = "A"$ et $b[3-2:3] ="BA" \neq b[:2] = "AB"$
+                \item $T[4] = 2$ car $b[4-2:4] ="AB" = b[:2]$ et $b[4-3:4] ="BAB" \neq b[:3] = "ABA"$
+                \item $T[5] = 3$ car $b[5-3:5] ="ABA" = b[:3]$ et $b[5-4:5] ="BABA" \neq b[:4] = "ABAB"$
+                \item $T[6] = 0$ car $b[6-1] ="C"$ qui n'est pas dans $b[:5] = "A"$
+            \end{itemize}
+    \begin{partie}[Complexité Algorithme]
+        \begin{questionpartie}
+            Montrez qu'à chaque itération soit $i$ soit $i+j$ augmente strictement.
+        \end{questionpartie}
+        \begin{questionpartie}
+            En déduire que la complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n + f(m))$ avec :
+            \begin{itemize}
+                \item $n$ et $m$ les longueurs des chaînes $a$ et $b$,
+                \item $f(m)$ la complexité de la fonction $\text{décalage}(b)$
+            \end{itemize}
+        \end{questionpartie}
+    \end{partie}
+    
+    \stepcounter{question}
+    \begin{question}
+        Montrez l'algorithme de Knuth-Morris-Pratt permet de résoudre le problème "sous-chaîne".
+    \end{question}
+    \stepcounter{partie}
+
+    \begin{partie}[Décalages]
+        La fonction de décalage est extrêmement astucieuse~:\\
+        \begin{tabbing}
+            ccc\=cccc\=cccc\=cccc\=cccc\=cccc\=\kill
+            \textbf{fonction} \textsc{décalage}($b$: chaîne) $\rightarrow$ [entier]{\bf :}\\
+            \>\vline$\,$ $(T \coloneqq [\text{entier}]) \leftarrow [\text{entier}]\{\text{longueur:} b.\text{longueur}\}$\\
+            \>\vline$\,$ $T[0], T[1] \leftarrow 0, 0$\\
+            \>\vline$\,$ $(i, j, k \coloneqq \text{entier}) \leftarrow 2, 2, 0$\\
+            \>\vline$\,$ $(c \coloneqq \text{caractère}) \leftarrow b[j-1]$\\
+            \>\vline$\,$ \textbf{tant que} $i < T.\text{longueur}$ {\bf :}\\
+            \>\vline$\,$\>\vline$\,$ $k \leftarrow T[j-1]$\\
+            \>\vline$\,$\>\vline$\,$ \textbf{si } $c == b[k]$ {\bf :}\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$ $T[i] \leftarrow k + 1$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$ $i \leftarrow i + 1$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$ $j \leftarrow i$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$ $c \leftarrow b[j-1]$\\
+            \>\vline$\,$\>\vline$\,$\textbf{sinon} {\bf :} \\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$ \textbf{si } $k \leq 1$ {\bf :}\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $T[i] \leftarrow 0$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $i \leftarrow i + 1$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $j \leftarrow i$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $c \leftarrow b[j-1]$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$ \textbf{sinon} {\bf :}\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $j \leftarrow k + 1$\\
+            \>\vline$\,$ \textbf{rendre} $T$\\
+        \end{tabbing}
+        \begin{questionpartie}
+            Montrez qu'à chaque itération soit :
+            \begin{itemize}
+                \item $k$ reste constant à 0
+                \item $k$ augmente de 1
+                \item $k$ diminue strictement
+            \end{itemize}
+        \end{questionpartie}
+        \begin{questionpartie}
+            En déduire que la complexité de la fonction \texttt{décalage}(b) est en $\mathcal{O}(m)$ avec $m$ la taille de la chaîne passée en paramètre de la fonction.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Montrez que la fonction décalage correspond bien à celle demandée pour faire fonctionner l'algorithme de Knuth-Morris-Pratt.
+        \end{questionpartie}
+    \end{partie}
+\end{exo}
+\begin{exo}[Exercice secret final et bonus]
+    Déduire de tout ce qui précède la complexité de problème "sous-chaîne".
+\end{exo}
+
+\end{document}

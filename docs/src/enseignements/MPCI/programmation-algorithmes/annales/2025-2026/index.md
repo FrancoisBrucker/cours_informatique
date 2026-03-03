@@ -16,5 +16,7 @@ Tests et examens pour l'année scolaire 2025/2026
 
 ## Devoirs Surveillés
 
+1. [DS : algorithmie](./ds-algorithmie){.interne}
+
 ## Examen terminal
 

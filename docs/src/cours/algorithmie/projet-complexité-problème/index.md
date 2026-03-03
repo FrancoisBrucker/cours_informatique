@@ -420,7 +420,7 @@ Nous allons étudier le problème algorithmique suivant :
 
 {% note2 "**Définition**" %}
 
-Une suite $(a_i)_{0\leq i}$ est dite _ultimement périodique_ si il existe $\lambda$ et $\mu$ tels que :
+Une suite $(a_i)_{1\leq i}$ est dite _ultimement périodique_ si il existe $\lambda$ et $\mu$ tels que :
 
 - les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes
 - $a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$
@@ -430,7 +430,7 @@ Une suite $(a_i)_{0\leq i}$ est dite _ultimement périodique_ si il existe $\lam
 {% note2 "**Problème algorithmique**" %}
 
 - Nom : Point fixe
-- Entrée : une suite $(a_i)_{0\leq i}$ ultimement périodique
+- Entrée : une suite $(a_i)_{1\leq i}$ ultimement périodique
 - Sortie : $\mu$
 
 {% endnote2 %}
@@ -455,6 +455,8 @@ Donnez les $\lambda$ et $\mu$ pour la suite représentée par la figure précéd
 {% endexercice %}
 {% details "corrigé" %}
 
+![lambda mu](lambda-mu.png)
+
 - $\lambda = 7$
 - $\mu = 3$
   
@@ -462,7 +464,7 @@ Donnez les $\lambda$ et $\mu$ pour la suite représentée par la figure précéd
 
 {% exercice %}
 
-Montrez que si $(a_i)_{i\geq 0}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.
+Montrez que si $(a_i)_{i\geq 1}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -486,7 +488,7 @@ Résoudre le problème du point fixe va nécessiter un de travail. Commençons p
 
 ```pseudocode
 algorithme point_fixe_naïf(a: (int) → int) → int
-    (i := entier) ← 0
+    (i := entier) ← 1
     (j := entier)
 
     tant que Vrai:
@@ -509,7 +511,7 @@ Montrer que l'algorithme `point_fixe_naïf`{.language-} résout le problème du 
 Si la suite est ultimement périodique, il existe $j < i$ tel que $a(i) == a(j)$. Ceci prouve :
 
 - la finitude de notre algorithme
-- son exactitude : puisque pour tout $i>0$ on teste tous les $j < i$
+- son exactitude : puisque pour tout $i>1$ on teste tous les $j < i$
 
 {% enddetails %}
 {% exercice %}
@@ -544,9 +546,15 @@ Soit $(a_i)$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.
 
 À chaque étape l'écart entre le lièvre et la tortue est augmenté de 1. Une fois la tortue et le lièvre sur le cycle il va forcément arriver un moment où le lièvre va prendre un tour à la tortue, et ceci va arriver avant que la tortue n'ait fait un tour de cycle complet.
 
-Formalisons ça. Lorsque $m = \mu$, on a $a_{2\mu} = a_{\mu + k} =  a_{m + k}$ avec $0 \leq k \leq \lambda$ puisque l'on se trouve sur le cycle de longueur $\lambda$.
+Formalisons ça. Lorsque $m = \mu$, on est dans le cas de la figure suivante :
 
-Si $k=0$ ou $k=\lambda$ on a bien trouvé notre $m$ et sinon, comme $a_{2(\mu + p)} = a_{2\mu + 2p} = a_{\mu + 2p + k} = a_{(\mu + p) + p + k}$ en prenant $0 < p = \lambda - k < \lambda$ on a bien $a_{2(\mu + p)} = a_{(\mu + p) + \lambda} = a_{(\mu + p)}$ ce qui conclut la preuve.
+![lapin tortue 1](tortue-lapin-1.png)
+
+Le lapin est déjà sur le cycle et tout se passe comme s'il était en retard de $0 \leq k \leq \lambda$ étapes. Si $k = 0$ ou $k = \lambda$ le lapin est sur la tortue et on a trouvé le point fixe. Sinon, à chaque étape suivante le lapin va se rapprocher de 1 de la tortue et donc après $k$ étapes de plus on est dans le cas suivant :
+
+![lapin tortue 2](tortue-lapin-2.png)
+
+Le lapin et la tortue sont sur la même valeur.
 
 {% enddetails %}
 
@@ -562,6 +570,7 @@ programme lièvre_tortue(a: (entier) → entier) → entier:
         tortue ← tortue + 1
         lièvre ← lièvre + 2
 
+    rendre tortue
 ```
 
 {% exercice %}
@@ -573,7 +582,7 @@ Montrez que l'algorithme précédent rend un indice $m$ tel que :
 {% endexercice %}
 {% details "corrigé" %}
 
-À la fin de chaque étape le lièvre vaut 2 fois la tortue et s'arrête au premier élément ou il y a égalité. O sait que c'est élément est entre $\mu$ et $\lambda + \mu$. 
+À la fin de chaque étape le lièvre vaut 2 fois la tortue et s'arrête au premier élément ou il y a égalité. On sait que cet élément est entre $\mu$ et $\lambda + \mu$. 
 
 {% enddetails %}
 
@@ -595,19 +604,24 @@ Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$. Montrez q
 {% endexercice %}
 {% details "corrigé" %}
 
-Puisque $m\geq \mu$ on est sur le cycle de longueur $\lambda$. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + k\lambda$ ce qui montre que $m$ est un multiple de $\lambda$.
+Puisque $m\geq \mu$ on est sur le cycle de longueur $\lambda$. Donc pour que $a_{m} = a_{2m}$ il faut que $2m = m + p\lambda$ ce qui montre que $m$ est un multiple de $\lambda$.
 
 {% enddetails %}
 
 {% exercice %}
-Utilisez la question précédente et la nature de $m$ pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$.
-
+Soit $m^\star$ le plus entier tel que $a_{m^\star} = a_{2m^\star}$. Si l'on faisait partir une tortue en $a_0$ et un lièvre en $a_{m^\star}$, montrez qu'ils se rencontreraient en $a_\mu$.
 {% endexercice %}
 {% details "corrigé" %}
 
-La division entière de $\mu$ par $\lambda$ donne $\mu = b + k \cdot \lambda$ avec $b < lambda$. Comme de plus $\mu \leq m \leq \mu + \lambda$, on a $b + k \cdot \lambda \leq m \leq b + (k + 1) \cdot \lambda$.
+L'indice $m^\star$ correspond à l'arrêt de l'algorithme du lièvre et de la tortue :
 
-Or $m$ est un multiple de $k$, on ne peut donc avoir que $m = (k+1) \cdot \lambda$. En injectant cette égalité dans $\mu$ on obtient : $\mu = b + k \cdot \lambda = b + (m - \lambda)$ ce qui conclut la preuve.
+![lapin tortue 3](tortue-lapin-3.png)
+
+Avec $k$ la position du premier lièvre lorsque la première tortue arrive en $\mu$ :
+
+![lapin tortue 4](tortue-lapin-4.png)
+
+On a alors  $2\mu \bmod \lambda = -k \bmod \lambda$ et donc :  $m^\star + 2\mu \bmod \lambda = m^\star - k \bmod \lambda$.
 
 {% enddetails %}
 
@@ -617,16 +631,26 @@ Or $m$ est un multiple de $k$, on ne peut donc avoir que $m = (k+1) \cdot \lambd
 Déduire de ce qui précède un algorithme de signature `mu(a: (entier) → entier) → entier`{.language-} qui résout le problème du point fixe avec une complexité temporelle $\Theta(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$.
 
 {% endexercice %}
-{% info %}
-Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?
-{% endinfo %}
 {% details "corrigé" %}
+On applique directement ce que l'on a vu en effectuant deux fois l'algorithme du lièvre et de la tortue avec des départ différents :
 
-La question précédente a montré que $\mu + m = (\mu + \lambda) + \lambda = \mu + 2\cdot \lambda$.
+```pseudocode
+fonction lièvre_tortue(a: (entier) → entier, départ_tortue: entier, départ_lièvre: entier) → entier:
 
-En faisant partir deux tortue, l'une en 0 et l'autre en $m$, lorsque celle partant en $0$ arrivera en $\mu$ celle parti de $m$ sera en $\mu + m = \mu + 2\cdot \lambda$, donc au même point !
+    (tortue := entier) ← départ_tortue
+    (lièvre := entier) ← départ_lièvre
 
->TBD fin
+    tant que a(tortue) ≠ a(lièvre):
+        tortue ← tortue + 1
+        lièvre ← lièvre + 2
+    
+    rendre tortue
+
+
+algorithme mu(a: (entier) → entier) → entier:
+    (m_star := entier) ← lièvre_tortue(a, 1, 2)
+    rendre lièvre_tortue(a, 0, m_star)
+```
 
 {% enddetails %}
 
@@ -646,40 +670,55 @@ L'algorithme du lièvre et de la tortue est très utilisé pour trouver des poin
 Commençons par lier nos fonctions à des suite ultimement périodiques :
 
 {% exercice %}
-Montrez que si $f: \mathbb{N} [\\![ 1, n]\\!]$ et $x$ un entier, alors la suite $(a_i)_{0\leq i}$ définie telle que :
+Montrez que si $f: \mathbb{N}\to  [\\![ 1, n]\\!]$ et $x$ un entier, alors la suite $(a_i)_{1\leq i}$ définie telle que :
 
-- $a_0 = x$
-- $a_i = f(a_{i-1})$ pour $i>0$
+- $a_1 = x$
+- $a_i = f(a_{i-1})$ pour $i>1$
 
 est ultimement périodique.
 
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+les $a_i$ ne peuvent prendre que $n$ valeurs différentes, il y a donc au moins une égalité entre les $n+1$ premiers éléments de la suite.
 
 {% enddetails %}
 
->TBD il faut adapter l'algorithme du lievre et de la tortue car le calcul  de a(m) sera trop long. Il faut gardr en memoire am-1.
+On peut utiliser l'algorithme du lièvre et de la tortue pour trouver un point fixe en prenant un $a_1$ quelconque entre $1$ et $n$. En effet, la suite étant ultimement périodique si $a_m = a_{2m}$ on a $f(a_{m-1}) = f(f(a_{2m} - 2))$ on peut alors poser $x = a_{m-1}$ et $y=f(a_{2m} - 2)$ et on a bien $f(x) = f(y)$ avec $x\neq y$. Selon le $a_1$ le point fixe pourra être plus ou moins loin, mais on est garanti de le trouver en $\mathcal{O}(n)$ opérations.
+
+Il nous faut juste garantir que la place mémoire n'est pas rédhibitoire en calculant itérativement les étapes de la suite.
 
 {% exercice %}
 
-Utilisez la question précédente pour résoudre le problème du point fixe de fonctions
+Adaptez l'algorithme `mu(a: (entier) → entier) → entier`{.language-} pour qu'il puisse trouver le point fixe d'une fonction passée en paramètre et d'un $a_0$. Sa complexité en mémoire doit être en $\mathcal{O}(1)$.
 
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+On calcule itérativement les éléments de la suite ce qui permet de ne pas exploser en place mémoire (on ne stocke pas toute la suite) :
 
-{% enddetails %}
-{% exercice %}
 
-Modifiez l'algorithme du lièvre et de la tortue pour qu'il permette de résoudre le problème du point fixe d'une fonction.
+```pseudocode
+fonction lièvre_tortue(f: (entier) → entier, tortue: entier, lièvre: entier) → [entier]:
+    (x := entier)
+    (y := entier)
 
-{% endexercice %}
-{% details "corrigé" %}
+    tant que tortue ≠ lièvre:
+        x ← tortue
+        y ← f(lièvre)
 
-> TBD
+        tortue ← f(tortue)
+        lièvre ← f(f(lièvre))
+    
+    rendre [x, y]
+
+
+algorithme point_fixe(f: (entier) → entier, a1: entier)  # on suppose que a1 ≠ f(a1)
+                      → entier:
+
+    (m_star := entier) ← lièvre_tortue(f, a1, f(a1))[0]
+    rendre lièvre_tortue(f, a1, m_star)
+```
 
 {% enddetails %}
 

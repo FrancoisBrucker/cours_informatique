@@ -289,6 +289,7 @@ Ces structures sont des conteneurs, comme des tableaux, qu permettent de stocker
 
 
 > TBD ajouter un TD/TP sur l'utilité de chaque structure
+> TBD parler de taille (nb actuel) et de capacité (nb max)
 
 ### Listes chaînées
 
@@ -582,8 +583,10 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 > TBD ou alors en parler avec les structures ?
 > TBD ici faire comme en go lorsque tu passes un tableau en paramètre c'est tout le tableau que tu passes
 > TBD pile et mémoire expliciter la pile d'appel. avec passages de paramètres dans les fonctions. On suppose en algo que l'on a pas de soucis mais en C il faut y faire gaffe et en rust c'est interdit. En go le compilateur fait attention (escape pass du compilateur)
+> TBD faire un mix go : prendre une étoile devant les méthodes pour dire que c'est un pointeur qui est pris. Et notation flèche pour les attributs
 
 > TBD <https://research.swtch.com/godata>
+> TBD pointeur = exhibe l'indirection dans les ordi réel. On essaie d'éviter ça. Ex de la mémoire cache -> recopie dans tableau plutôt que tableau de pointeur, utilisation de liste plutôt que liste chaînée des que c'est possible.
 
 {% aller %}
 [Structures de données avancées](./structure-données-avancée){.interne}
@@ -853,6 +856,7 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 [Mélanger un tableau](./projet-mélange){.interne}
 {% endaller %} -->
 
+> TBD <https://www.reddit.com/r/soloboardgaming/comments/1rie0o4/fibonacci_stealth_dice_for_paperandpencil_games/>
 > TBD playlist sur algorithme randomisé :
 > - <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>
 > - <https://www.youtube.com/watch?v=3ivSUyNu4DA&list=PL278F9gM5aZb8HXAh2yT3QmwyYQZrQUNH>

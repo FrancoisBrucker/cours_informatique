@@ -17,9 +17,6 @@ eleventyComputed:
 
 > TBD 
 
-## Listes circulaires
-
-liste circulaires ? Trouver le début.
 
 ## Structures arborées
 

@@ -242,7 +242,7 @@ Or la série des $\sum_{i=1}^{n}(\frac{i}{2^i})$ est toujours plus petite que 2 
 
 <div>
 $$
-C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n}(\frac{i}{2^i})) \leq \mathcal{O}(2) = \mathcal{O}(1)
+C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n}(\frac{i}{2^i})) \leq \mathcal{O}(2) = \mathcal{O}(1)
 $$
 </div>
 
@@ -273,9 +273,9 @@ Pour des tableaux de longueur $i$ il n'y a que $i$ tableaux possibles sur les $(
 <div>
 $$
 \begin{array}{lcl}
-C_\text{moy}(n) &=& \sum_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
- &=& \sum_{i=1}^{n-1}(\mathcal{O}(\frac{i^2}{(i+1)!} \cdot i)) \\
- &=& \mathcal{O}(\sum_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
+C_\text{moy}(n) &=& \sum\limits_{i=1}^{n-1}(p_i \cdot (i \cdot \mathcal{O}(1)))\\
+ &=& \sum\limits_{i=1}^{n-1}(\mathcal{O}(\frac{i^2}{(i+1)!} \cdot i)) \\
+ &=& \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{i^2}{(i+1)!}))
 \end{array}
 $$
 </div>
@@ -284,7 +284,7 @@ Comme $i^2 \leq i(i+1)$ on a que :
 
 <div>
 $$
-C_\text{moy}(n) \leq \mathcal{O}(\sum_{i=1}^{n-1}(\frac{1}{(i-1)!})) = \mathcal{O}(\sum_{i=0}^{n-2}(\frac{1}{i!}))
+C_\text{moy}(n) \leq \mathcal{O}(\sum\limits_{i=1}^{n-1}(\frac{1}{(i-1)!})) = \mathcal{O}(\sum\limits_{i=0}^{n-2}(\frac{1}{i!}))
 $$
 </div>
 

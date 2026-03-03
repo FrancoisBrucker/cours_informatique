@@ -22,21 +22,19 @@ Enfin comme la taille des clés est finie un algorithme brute force arrivera tou
 Une méthode de chiffrement est **_$(t, \epsilon)$-sécurisée_** si tout algorithme passant $t$ secondes à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $0\leq \epsilon \leq 1$.
 {% endnote  %}
 
-L'intérêt de la $(t, \epsilon)$-sécurité est qu'elle peut se mesurer expérimentalement. Par exemple si un algorithme brute force teste le déchiffrement pour toutes les clés de taille $s$ possibles et met $t$ secondes pour en tester une, sa probabilité de réussite au bout de $T$ seconde sera de $T \cdot (t/2^s)$. Ceci nous donne une borne maximum pour toute méthode de chiffrement :
+L'intérêt de la $(t, \epsilon)$-sécurité est qu'elle peut se mesurer expérimentalement. Par exemple si un algorithme brute force teste le déchiffrement pour toutes les clés de taille $s$ possibles et met $t$ secondes pour en tester une, sa probabilité de réussite sera égale au pourcentage de clé testées :  au bout de $T$ secondes il aura testé $\frac{T}{t}$ clés, soit une proportion de  sera de $\frac{T/t}{2^s}$. Ceci nous donne une borne maximum pour toute méthode de chiffrement :
 
 {% attention2 "**À retenir**" %}
-Toute méthode de chiffrement avec une clé de $s$ bit est au mieux $(t, \frac{t}{2^s})$-sécurisée avec $t$ le temps mis pour déchiffrer un message.
+Toute méthode de chiffrement avec une clé de $s$ bit est au mieux $(T, \frac{T}{t\cdot 2^s})$-sécurisée avec $t$ le temps mis pour déchiffrer un message.
 {% endattention2  %}
 
 Il est crucial de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique. Pour cela on commence par déterminer la durée de vie du message chiffré :
 
 {% exercice %}
-Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance sur 100 milliard de déchiffrer un message ?
+Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance sur 100 milliard de déchiffrer un message avec un ordinateur à 10 GHz ?
 {% endexercice %}
 {% details "corrigé" %}
-100 milliard vaut environ $2^{37}$ et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-37})$-sécurisée.
-
-L'algorithme étant brute force, on a : $2^{-37} = \frac{2^{30}}{2^s}$ ce qui donne $s = 67$.
+100 milliard vaut environ $2^{37}$ et 35 ans environ $2^{30}$ secondes. L'ordinateur effectue une instruction (au mieux un test de clé) tous les et $10^{-10}$ secondes, soit environ $2^{-33}$. Comme on veut donc que notre méthode soit : $(2^{30}, 2^{-37})$-sécurisée, on a : $2^{-37} = \frac{2^{30}}{2^{-33} \cdot 2^s}$, ce qui donne $s = 100$
 
 Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, actuellement, on recommande des tailles de clés d'au moins 128bits.
 {% enddetails %}
@@ -82,7 +80,7 @@ Ce paramètre de sécurité permet d'exprimer la $(t, \epsilon)$-sécurité non 
 Tout comme le passage de la complexité temporelle (mesurable) à la complexité en nombre d'opérations (calculable) permet une étude plus théorique des performances d'un algorithme, le paramètre de sécurité va nous permettre de comparer les algorithme de déchiffrement de façon générale et abstraite :
 
 {% note "**Définition**" %}
-L'avantage $\epsilon$ d'un algorithme de décryptage est sa probabilité résoudre le problème pour un temps d'exécution de 1 opération.
+L'avantage $\epsilon$ d'un algorithme de décryptage est sa probabilité de résoudre le problème pour un temps d'exécution de 1 instruction.
 {% endnote %}
 
 Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un temps d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon = \mathcal{O}(\frac{s^d}{2^{s}})$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !
@@ -90,19 +88,19 @@ Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un temps d
 L'augmentation de la taille des clés va certes avoir un effet sur le temps du chiffrage mais ce sera surtout sur l'avantage d'un algorithme de décryptage que cela se fera sentir, s'il est exponentiellement petit par rapport au paramètre de sécurité :
 
 {% exercice %}
-Soit un algorithme dont l'exécution prend $n^3$ operations et qui décryptage un message avec une probabilité de  $\min(1, \frac{2^{40}}{2^n})$. Quel est son avantage ?
+Soit un algorithme dont l'exécution prend $n^3$ instructions et qui décryptage un message avec une probabilité de  $\min(1, \frac{2^{40}}{2^n})$. Quel est son avantage ?
 {% endexercice %}
 {% details "corrigé" %}
 Il est $(n^3, \min(1, \frac{2^{40}}{2^n}))$-sécurisé, son avantage est donc de $\frac{2^{40}}{n^3\cdot 2^n}$.
 {% enddetails %}
 {% exercice %}
-Pour $n=40$, combien faut-il de temps pour qu'il puisse décrypter la méthode de façon certaine ? Quel est son avantage pour $n=50$ et en combien de temps s'exécute-t-il ?
+Pour $n=40$, combien faut-il d'instructions pour qu'il puisse décrypter la méthode de façon certaine ? Quel est son avantage pour $n=50$ et en combien d'instruction s'exécute-t-il ?
 {% endexercice %}
 {% details "corrigé" %}
 
-Pour $n=40$, il aura besoin de $40^3$ secondes pour s'exécuter, c'est à dire un peut moins de 18 heures, et son avantage de sera de 1.
+Pour $n=40$, il aura besoin de $40^3$ instructions pour s'exécuter, c'est à dire un peut moins de 18 heures à une instruction par secondes, et son avantage de sera de 1.
 
-Pour $n=40$, il aura besoin de $50^3$ secondes pour s'exécuter, c'est à dire un peut moins de 35 heures, mais son avantage ne sera plus que de $10^{-3}$.
+Pour $n=40$, il aura besoin de $50^3$ instructions pour s'exécuter, c'est à dire un peut moins de 35 heures à une instruction par secondes, mais son avantage ne sera plus que de $10^{-3}$.
 {% enddetails %}
 
 Autre exemple, où la vitesse de calcul ne bénéficie pas forcément à l'adversaire :
@@ -208,6 +206,10 @@ $$
 {% endnote %}
 
 Si l'adversaire $A$ n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon(A) = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon(A) = 1$.
+
+{% info %}
+Quelque soit l'algorithme utilisé, on pourra toujours supposer que $\Pr[b' = 1 \;\mid\; b = 1] \geq 1/2$ (respectivement $\Pr[b' = 0 \;\mid\; b = 0]$) car sinon il suffit de répondre le contraire de ce que l'algorithme répond pour avoir une probabilité de succès strictement plus grande que $1/2$.
+{% endinfo %}
 
 Pour se fixer les idée commençons par un exemple. On suppose que l'on cherche à différentier deux mots de $\\{0, 1\\}^t$, le premier issu a distribution constante de réalisation $\mathbb{0}$ ($D0$), le second d'une loi uniforme ($D1$). Comme :
 
