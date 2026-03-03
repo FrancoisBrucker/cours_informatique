@@ -400,7 +400,64 @@ Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des a
 
 ### Semaine 7
 
-> 09/03 au 13/03
+> 9/03 au 13/03
+> Programmation
+
+> TBD DM2 = et d'algo de l'année dernière
+
+#### Mercredi : programmation objet
+
+> 2h
+>
+
+#### Vendredi : on s'entraîne
+
+> 4h
+>
+
+### Semaine 8
+
+> 16/03 au 20/03
+> Programmation
+
+#### Mercredi : Composition et agrégation
+
+> 2h
+>
+
+{% attention %}
+Test de 15min **sur ordinateur** en début de cours sur les classes et les objets.
+{% endattention %}
+
+#### Vendredi : on s'entraîne
+
+> 2h
+>
+
+### Semaine 9
+
+> 23/03 27/03
+> Programmation
+
+#### Mercredi : héritage
+
+> 2h
+>
+
+{% attention %}
+Test de 15min **sur ordinateur** en début de cours sur la composition et l'agrégation
+{% endattention %}
+
+> pour aller plus loin : design pattern
+
+#### Vendredi : on s'entraîne
+
+> 2h
+>
+
+### Semaine 10
+
+> 30/03 au 3/03
 > Algorithmie
 
 #### Mercredi : structures de données
@@ -409,16 +466,16 @@ Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des a
 >
 
 - structures de données.
-- DM2 = et de l'année dernière
 
-#### Vendredi : flux de données
 
-> 4h
+#### Vendredi :on s'entraîne
+
+> 2h
 >
 
 - pile/file et listes chaînées. Cours puis exercices dessus.
 
-### Semaine 7
+### Semaine 11
 
 > 16/03 au 20/03
 > Algorithmie
@@ -435,60 +492,6 @@ Test de 15min **sur papier** en début de cours sur les structures de données.
 #### Vendredi : dictionnaires
 
 > 2h
->
-
-### Semaine 8
-
-> 23/03 au 27/03
-> Programmation
-
-#### Mercredi : programmation objet
-
-> 2h
->
-
-{% attention %}
-Test de 15min **sur papier** en début de cours sur les listes et les dictionnaires.
-{% endattention %}
-
-#### Vendredi : on s'entraîne
-
-> 2h
->
-
-### Semaine 9
-
-> 30/03 au 03/04
-> Programmation
-
-#### Mercredi : Héritage
-
-> 4h
->
-
-{% attention %}
-Test de 15min **sur ordinateur** en début de cours sur les classes et les objets.
-{% endattention %}
-
-### Semaine 10
-
-> 06/04 au 10/04
-> Programmation
-
-#### Mercredi : composition et agrégation
-
-> 2h
->
-
-{% attention %}
-Test de 15min **sur ordinateur** en début de cours sur l'héritage.
-{% endattention %}
-
-> pour aller plus loin : design pattern
-
-#### Vendredi : on s'entraîne
-
-> 4h
 >
 
 ### Semaine 11
