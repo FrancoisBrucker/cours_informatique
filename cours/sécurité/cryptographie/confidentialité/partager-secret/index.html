@@ -186,7 +186,7 @@
             <span class="token keyword">rendre</span><span class="token number"> i
 </span>        r <span class="token operator">←</span> r <span class="token operator">*</span> g mod p</code></pre>
 <p>est de complexité $\mathcal{O}(p)$ (le nombre maximum d'itérations dans la boucle) en supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$.</p>
-<p>Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}( \cdot 2^{log_2(p)}) = \mathcal{O}( \cdot 2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.</p>
+<p>Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}(2^{log_2(p)}) = \mathcal{O}(2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.</p>
 <p>Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé <a href="https://fr.wikipedia.org/wiki/Baby-step_giant-step">Baby step giant step</a> qui échange du temps contre de la mémoire.</p>
 <p>Son principe est simple.</p>
 <ol>
@@ -339,7 +339,6 @@
 <li><a href="https://www.youtube.com/watch?v=3v5Von-oNUg">cours du MIT</a></li>
 <li><a href="https://www.youtube.com/watch?v=2-zQp26nbY8">exemples de side channel attack</a></li>
 <li><a href="https://www.youtube.com/watch?v=GPwNFrpd1KU">channel attack autres exemples</a></li>
-<li><a href="https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/">Attaques sur Machines embarquées</a></li>
 </ul>
 </div></div>
 
