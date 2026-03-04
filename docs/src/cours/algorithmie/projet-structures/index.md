@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : sous-chaine aver boyer=moore et surtout rabin karp.
+> TBD : knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88>
 
 ## Tableaux et listes
 

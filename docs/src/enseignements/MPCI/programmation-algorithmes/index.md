@@ -410,6 +410,11 @@ Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des a
 > 2h
 >
 
+Cours Valentin :
+
+- [objet](./objets){.interne}
+- [héritage](./heritage){.interne}
+
 #### Vendredi : on s'entraîne
 
 > 4h
