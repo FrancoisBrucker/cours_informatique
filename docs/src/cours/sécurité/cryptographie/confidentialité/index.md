@@ -223,7 +223,7 @@ Soit $A$ un algorithme efficace d'aun adversaire du jeu de la reconnaissance ave
 $$
 \begin{array}{lcl}
 \epsilon(A) &=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] \vert\\
-&=& \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1]-\\
+&=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1]-\\
 && (\Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1]) \vert\\
 \end{array}
 $$
@@ -236,7 +236,7 @@ $$
 \begin{array}{lcl}
 \epsilon(A) &=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] -\\
 && (\Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_2) = 1]) \vert\\
-&=& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] \vert +\\
+&\leq& \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_1) = 1] - \Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_1) = 1] \vert +\\
 && \vert \Pr_{k\xleftarrow{U}\{0, 1\}^s}[A(G(k)\oplus m_2) = 1] -\Pr_{u\xleftarrow{U}\{0, 1\}^t}[A(u\oplus m_2) = 1] \vert
 \end{array}
 $$

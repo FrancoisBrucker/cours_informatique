@@ -92,7 +92,7 @@ algorithme log(x: entier, y: entier, g: entier) → entier:
 
 est de complexité $\mathcal{O}(p)$ (le nombre maximum d'itérations dans la boucle) en supposant que la complexité de l'addition, la multiplication et le modulo soient de complexité $\mathcal{O}(1)$.
 
-Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}( \cdot 2^{log_2(p)}) = \mathcal{O}( \cdot 2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.
+Comme précédemment, si les entiers sont stockés sur $n=\log_2(p)$ bits, la complexité de l'algorithme est maintenant exponentielle par rapport à la taille $n$ de l'entrée : $\mathcal{O}(2^{log_2(p)}) = \mathcal{O}(2^{n})$. Le nombre de possibilité à essayer va être rédhibitoire, même pour un algorithme très rapide. Par exemple, l'exécution d'un algorithme faisant 1 opération en $10^{-6}$ secondes pour calculer le logarithme discret d'une clé à $64$ bits : il va y avoir de l'ordre de $2^{64}$ opérations. Comme $10^6 \simeq 2^{20}$ il faudra environ $2^{44}$ secondes soit plus de 6 mois.
 
 Attention cependant, le meilleur algorithme n'est souvent pas le naif ! Regardons pas exemple cet algorithme, appelé [Baby step giant step](https://fr.wikipedia.org/wiki/Baby-step_giant-step) qui échange du temps contre de la mémoire.
 
@@ -241,7 +241,6 @@ On remarque qu'il y a deux fois plus de travail lorsque $y[i]$ vaut 1 que lorsqu
 - [cours du MIT](https://www.youtube.com/watch?v=3v5Von-oNUg)
 - [exemples de side channel attack](https://www.youtube.com/watch?v=2-zQp26nbY8)
 - [channel attack autres exemples](https://www.youtube.com/watch?v=GPwNFrpd1KU)
-- [Attaques sur Machines embarquées](https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/)
 
 {% endlien %}
 
