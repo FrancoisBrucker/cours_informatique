@@ -144,7 +144,9 @@ Nous allons voir deux constructions. La première utilisée actuellement, la sec
 > TBD comme pour le chiffrement. Un bloc
 > puis on lie de façon sécurisée.
 
-#### construction par Davies–Meyer
+Il faut pouvoir associer un hash a un bloc de taille fixe et lier chaque blocs pour faire un hash prenant en compte tout le message. On utilise pour cela un [une permutation pseudo-aléatoire sécurisée](../../confidentialité/nombres-pseudo-aléatoires-cryptographiques/#PRP){.interne}, tout comme pour le chiffrement.
+
+#### Hash de un bloc de donnée
 
 {% lien %}
 [Construction Davies–Meyer](https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer)
@@ -201,7 +203,7 @@ Les algorithmes SHA-1 et SHA-2 sont basés sur ce principes. Les permutation sé
 
 Pour cette construction à bloc unique, on peut très bien échanger clé et message dans le PRP sans changer la probabilité de collision. On utilise cette construction pour pouvoir facilement l'étendre à des messages de tailles plus grandes et là il ne faut **pas** échanger clé et message.
 
-#### Extension par Merkel Damgard
+#### Extension à plusieurs blocs
 
 {% lien %}
 
@@ -281,12 +283,12 @@ Les fonctions de hash très utilisés que sont les SHA-1 et SHA-2 sont basées s
 
 > TBD <https://en.wikipedia.org/wiki/BLAKE_(hash_function)> et blake2 sont basés sur chacha20.
 
-En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.
-
 ```shell
 ❯ echo "coucou" | openssl dgst -blake2b512 -c
 BLAKE2B-512(stdin)= d7:51:79:bf:82:77:b6:9c:cb:5e:30:64:d4:3b:d6:b7:ac:7b:ff:93:de:9d:0a:53:07:d0:85:4d:2e:68:52:b1:d5:04:49:0e:5f:7b:91:a3:b9:9f:9b:4c:40:c3:b9:39:4c:56:7c:45:4b:e3:ab:39:a3:f2:cb:59:60:f6:3d:05
 ```
+
+En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.
 
 ### Construction en éponge
 
