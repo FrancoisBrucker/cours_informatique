@@ -376,6 +376,7 @@ On peut même préparer un dictionnaire de ots hachés pour aller plus vite voir
 Le compromis temps/mémoire est une technique importante en cryptanalyse mais aussi dans tout problème d'optimisation.
 {% endnote %}
 
+> [Cryptanalytic Time-Memory tradeof](https://www-ee.stanford.edu/~hellman/publications/36.pdf) et amélioration en rainbow table : [Making a Faster Cryptanalytic Time-Memory trdeof](https://infoscience.epfl.ch/server/api/core/bitstreams/37cd827e-c3a6-4ba3-b68f-8ab7669b4449/content)
 > TBD expliquer et faire exemple.
 >
 > TBD on est assuré que les chaines sont différentes. On ne va pas retomber sur des choses déjà vues.
