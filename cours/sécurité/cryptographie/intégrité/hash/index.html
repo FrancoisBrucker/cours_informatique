@@ -270,7 +270,8 @@
 <p>TBD comme pour le chiffrement. Un bloc
 puis on lie de façon sécurisée.</p>
 </blockquote>
-<h4>construction par Davies–Meyer</h4>
+<p>Il faut pouvoir associer un hash a un bloc de taille fixe et lier chaque blocs pour faire un hash prenant en compte tout le message. On utilise pour cela un <a href="../../confidentialit%C3%A9/nombres-pseudo-al%C3%A9atoires-cryptographiques/#PRP" class="interne">une permutation pseudo-aléatoire sécurisée</a>, tout comme pour le chiffrement.</p>
+<h4>Hash de un bloc de donnée</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -339,7 +340,7 @@ m---|&gt;  P  |   |
 <p>La preuve nécessite un PRP, mais comme on est pas sur que cela existe, les algorithmes mettant en oeuvre ce principe doivent être conçus pour très bien mélanger les bits tout en étant non prédictif (il faut le faire de façon &quot;<em>compliquée</em>&quot;).</p>
 <p>Les algorithmes SHA-1 et SHA-2 sont basés sur ce principes. Les permutation sécurisées utilisées sont appelées <a href="https://fr.wikipedia.org/wiki/Shacal">shacal-1 et shacal-2</a>. Mais on pourrait tout aussi bien utiliser chacha20 pour cela ! Ou son grand frère salsa20 originellement construit pour ça.</p>
 <p>Pour cette construction à bloc unique, on peut très bien échanger clé et message dans le PRP sans changer la probabilité de collision. On utilise cette construction pour pouvoir facilement l'étendre à des messages de tailles plus grandes et là il ne faut <strong>pas</strong> échanger clé et message.</p>
-<h4>Extension par Merkel Damgard</h4>
+<h4>Extension à plusieurs blocs</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -433,9 +434,9 @@ $$
 <blockquote>
 <p>TBD <a href="https://en.wikipedia.org/wiki/BLAKE_(hash_function)">https://en.wikipedia.org/wiki/BLAKE_(hash_function)</a> et blake2 sont basés sur chacha20.</p>
 </blockquote>
-<p>En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coucou"</span> <span class="token operator">|</span> openssl dgst <span class="token parameter variable">-blake2b512</span> <span class="token parameter variable">-c</span>
 BLAKE2B-512<span class="token punctuation">(</span>stdin<span class="token punctuation">)</span><span class="token operator">=</span> d7:51:79:bf:82:77:b6:9c:cb:5e:30:64:d4:3b:d6:b7:ac:7b:ff:93:de:9d:0a:53:07:d0:85:4d:2e:68:52:b1:d5:04:49:0e:5f:7b:91:a3:b9:9f:9b:4c:40:c3:b9:39:4c:56:7c:45:4b:e3:ab:39:a3:f2:cb:59:60:f6:3d:05</code></pre>
+<p>En revanche, SHA-3, le petit nouveau, est basé sur un autre principe que nous allons rapidement aborder maintenant.</p>
 <h3>Construction en éponge</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
