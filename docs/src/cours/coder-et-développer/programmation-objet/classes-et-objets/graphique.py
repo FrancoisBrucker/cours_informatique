@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1,2, figsize=(8, 2.5))
+axes[0].plot([-1, 1, 5], [0, 3, 2])
+axes[0].set_xlabel('Temps t')
+axes[0].set_ylabel('f(t)')
+axes[0].set_title('Courbe de gauche')
+axes[1].plot([x for x in range(-10, 10)])
+axes[1].plot([x ** 2 - 50 for x in range(-10, 10)])
+axes[1].set_axis_off()
+axes[1].set_title('Courbes de droite')
+print(type(fig))
+print(type(axes), axes.shape)
+print(type(axes[0]))
+plt.show()

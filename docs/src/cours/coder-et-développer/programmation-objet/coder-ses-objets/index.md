@@ -9,11 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
 Exemple complet d'utilisation de vscode pour créer des objets en python en prenant pour exemple les objets et les classes crées lors du cours [classes et objets](../classes-et-objets){.interne}.
-
-<!-- end résumé -->
 
 ## Création du projet
 

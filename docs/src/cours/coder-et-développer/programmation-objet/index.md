@@ -5,6 +5,7 @@ title: Programmation Objet
 authors:
   - François Brucker
   - Célia Châtel
+  - Valentin Emiya
 
 eleventyComputed:
   eleventyNavigation:

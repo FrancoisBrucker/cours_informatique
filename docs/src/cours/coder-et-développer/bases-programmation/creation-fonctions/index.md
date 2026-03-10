@@ -270,17 +270,14 @@ def calcul(fct, z):
 
 Le premier paramètre de la fonction `calcul`{.language-} est appelé avec deux paramètres et son résultat est additionné au second paramètre.
 
-La ligne suivante est alors du python correct :
-
-```python
-print(calcul(produit, 8))
-```
-
-Si on a au préalable définit `produit`{.language-} comme une fonction à deux paramètres, comme par exemple :
+La ligne suivante est alors du python correct si on a au préalable définit `produit`{.language-} comme une fonction à deux paramètres :
 
 ```python
 def produit(x, y):
     return x * y
+
+
+print(calcul(produit, 8))
 ```
 
 {% exercice %}
@@ -383,7 +380,7 @@ def recherche(t: [int], x: int) -> bool
 ```
 
 {% info %}
-La plupart du temps, pour de petits programme, ce genre de précision n'est pas importante. Elle ne devient cruciale que lorsque la base de code grossit et que spécifier les types d'entrée évite les bug.
+La plupart du temps, pour de petits programme, ce genre de précision n'est pas importante. Elle ne devient cruciale que lorsque la base de code grossit et que spécifier les types d'entrée évite les bugs.
 
 Mais alors, il est de toute façon plus pertinent d'écrire dans un autre langage que python... Plus adapté au développement de grosses applications comme le java ou encore le rust.
 

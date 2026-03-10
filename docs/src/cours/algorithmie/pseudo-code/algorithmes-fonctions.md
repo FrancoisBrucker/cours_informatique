@@ -168,11 +168,17 @@ Est un pseudo-code valide puisque `recherche`{.language-} est bien défini et ut
 
 {% attention2 "**À retenir**" %}
 - Les différentes exécutions de fonctions au sein d'un même algorithmes ne partagent pas leurs variables.
-- Les paramètres sont des variables qui sont initialisées au début de l'exécution de la fonction.
-- Seuls les objets peuvent être transmis.
+- Les paramètres sont **des variables** qui sont initialisées au début de l'exécution de la fonction.
+- **Seuls** les objets peuvent être transmis.
 {% endattention2 %}
 
-Dans l'exemple précédent, la variable `e`{.language-} définie dans la fonction `recherche`{.language-} n'est pas visible depuis l'algorithme. En revanche, l'objet booléen de retour est lui transmis à l'algorithme via l'instruction `rendre`{.language-pseudocode}.
+
+Dans l'exemple précédent, tout ce passe comme si on disposait de deux ordinateurs, un qui exécute le pseudo-code, l'autre la fonction `recherche`{.language-} :
+
+1. le passage de l'ordinateur effectuant le pseudo-code à l'ordinateur exécutant l'algorithme `recherche`{.language-} se fait en affectant les paramètres de la fonction recherche (ce sont des variables) à des objets manipulés par le pseudo-code : ici un tableau valant `[1, 2, 3]`{.language-}
+2. le passage de l'ordinateur effectuant l'algorithme `recherche`{.language-} à l'ordinateur exécutant le pseudo-code se fait par le retour de la fonction
+
+Dans l'exemple précédent, la variable `e`{.language-} définie dans l'algorithme `recherche`{.language-} n'est pas visible depuis le pseudo-code. En revanche, l'objet booléen de retour est lui transmis au pseudo-code via l'instruction `rendre`{.language-pseudocode}.
 
 ### Pseudo-code avec fonctions
 
@@ -263,7 +269,7 @@ Les tableaux sont les seuls objets défini en pseudo-code qui peuvent être modi
 Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des tableau que vous passez en paramètres de fonctions. Ils peuvent être modifiés par cette fonction !
 {% endattention2 %}
 
-## <span id="type"></span>Type d'un algorithme ou d'une fonction
+## <span id="type"></span>Signature d'un algorithme ou d'une fonction
 
 Lorsque l'on défini un algorithme ou un pseudo-code on explicite le type des objets en entrées et en sortie :
 

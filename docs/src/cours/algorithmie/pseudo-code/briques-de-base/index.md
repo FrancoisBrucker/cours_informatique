@@ -77,7 +77,7 @@ Tous les objets basiques sont considérés de taille fixe. Classiquement :
 - un booléen à une taille de 1bit
 - un caractère à une taille de 32bit si on utilise [les caractères Unicode](https://fr.wikipedia.org/wiki/Unicode)
 - un réel à une taille 64bit si on utilise [la norme IEEE 754 double précision](https://fr.wikipedia.org/wiki/IEEE_754)
-- un entier à une taille de  64bit
+- un entier à une taille de 64bit
 
 Se restreindre aux entiers entre $-2^{63}$ à $2^{63}$ n'est pas contraignant en pratique et c'est d'ailleurs ce que beaucoup de langages de programmation font (même souvent ils sont codés sur 32b). Les languages de programmation comme python pour lesquels un entier n'est pas borné considèrent en interne qu'un entier est en fait une suite d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur.
 

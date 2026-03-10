@@ -63,12 +63,16 @@ Ce cours est composée de plusieurs parties :
 - Structures de données
 - Programmation objet
 
-<!-- 
+<!-- TBD 2026/27
 
-### Prérequis
+Cours en 4 parties et 4 DM :
 
-
-> TBD remplacer debugueur par TD listes et dictionnaires python.
+1. cours intro : DM algo : écrire des algorithmes en python et vérifier expérimentalement leur véracité
+   1. pseudo-code (6h)
+   2. projets et tests (4h) 
+2. cours algo (complexité) et DM code (test/projet/)
+3. cours programmation (objet) et DM algo (et de l'année précédente)
+4. cours algo (structures de données) et DM code (bataille navale)
 
 -->
 
@@ -93,6 +97,19 @@ Notions abordées :
 {% aller %}
 [bases théoriques de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
 {% endaller %}
+
+
+<!-- TBD 2026/27
+
+Donner un premier DM avec les bases de python du S1.
+
+Utilisations de :
+
+- objets, fonctions (et lambdas)
+- listes et dictionnaires
+
+Avec de petits algos
+-->
 
 #### Vendredi : écrire des algorithmes
 
@@ -462,8 +479,10 @@ Test de 15min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 ### Semaine 10
 
-> 30/03 au 3/03
+> 30/03 au 3/04
 > Algorithmie
+
+> TBD DM3 et code de l'année dernière
 
 #### Mercredi : structures de données
 
@@ -479,6 +498,8 @@ Test de 15min **sur ordinateur** en début de cours sur la composition et l'agr�
 >
 
 - pile/file et listes chaînées. Cours puis exercices dessus.
+
+> TBD correction DM2 séance facultative.
 
 ### Semaine 11
 
@@ -513,6 +534,8 @@ Test de 15min **sur ordinateur** en début de cours sur la composition et l'agr�
 #### Vendredi : on s'entraîne
 
 > TBD avec pyglet et/matplotlib
+
+> TBD DM3 et code de l'année dernière
 
 ### Semaine 12
 

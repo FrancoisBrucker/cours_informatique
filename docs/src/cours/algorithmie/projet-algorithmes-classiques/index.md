@@ -1124,7 +1124,7 @@ Il n'y a pas à calculer le modulo, opération plus complexe.
 
 
 
-<!-- ds 1 L1 25-26
+<!-- et 1 L1 25-26
 
 ## {2, 3}-SUM
 
