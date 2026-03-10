@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-Exemple complet d'utilisation de vscode pour créer des objets en python en prenant pour exemple les objets et les classes crées lors du cours [classes et objets](../classes-et-objets){.interne}.
+Exemple complet d'utilisation de vscode pour créer des objets en python en prenant pour exemple [le compteur que l'on a créer précédemment](../classes-et-objets#compteur){.interne}. On va voir un mode opératoire pour créer petit à petit un programme fonctionnel.
 
 ## Création du projet
 
@@ -18,7 +18,7 @@ Exemple complet d'utilisation de vscode pour créer des objets en python en pren
 Cette partie est un rappel de tout ce qu'on a vu sur la création de projet et le codage
 {% endinfo %}
 
-On suit les directives du [projet pourcentages](../../développement/projet-pourcentages#mise-en-place){.interne} pour créer un nouveau projet :
+On suit les directives du [projet pourcentages](../../projet-pourcentages#mise-en-place){.interne} pour créer un nouveau projet :
 
 1. on crée un dossier `coder-objets`{.fichier} dans un explorateur de fichier
 2. on ouvre le dossier `coder-objets`{.fichier} avec vscode, ce qui crée notre projet
@@ -34,7 +34,7 @@ Vous devriez obtenir quelque chose du genre :
 ![exécution python](./exécution-python.png)
 
 {% info %}
-Relisez le tutorial [vsc et python](../../éditeur-vscode/python/#exécuter-programme){.interne} pour se rappeler l'exécution de programmes python avec vscode.
+Relisez le tutorial [vsc et python](../../bases-programmation/éditeur-vscode/python/#exécuter-programme){.interne} pour se rappeler l'exécution de programmes python avec vscode.
 {% endinfo %}
 
 ## Coder ses objets : le compteur
@@ -43,7 +43,25 @@ Nous allons reprendre l'exemple du cours [classes et objets](../classes-et-objet
 
 ![uml compteur](../classes-et-objets/classes-2.png)
 
-On va coder petit à petit la classe.
+On va coder petit à petit la classe en conservant à chaque étape du code exécutable et clair en utilisant les conventions de nommage de python.
+
+{% attention2 "**À retenir : Conventions de nommage en python**" %}
+
+En résumé :
+
+- les noms de variables, de fonctions et de méthodes sont écrites :
+  - tout en minuscules
+  - utilisent le [_Snake case_](https://fr.wikipedia.org/wiki/Snake_case) où les mots sont séparés par des _underscores_ (`_`{.language-})
+- les constantes sont écrites tout en majuscule
+- le noms de classes sont écrites :
+  - avec une majuscule
+  - utilisent le [_Camel case_](https://fr.wikipedia.org/wiki/Camel_case) où les mots sont séparés par des _underscores_ (`_`{.language-})
+- les noms commençant par `__` et se finissant par `__` (comme `__name__`) ont des significations précises
+
+{% endattention2 %}
+{% lien %}
+Toutes les [conventions de nommage de python](https://peps.python.org/pep-0008/#prescriptive-naming-conventions).
+{% endlien %}
 
 ### Préparation du projet
 
@@ -77,6 +95,9 @@ class Compteur:
 - l'implémentation de la classe est placée dans un **fichier** de même nom mais avec une **minuscule**
 
 {% endnote %}
+{% info %}
+En python, beaucoup de choses sont des [conventions](https://en.wikipedia.org/wiki/Convention_over_configuration) (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée. Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façons de faire classiques, décrites dans la [PEP 8](https://peps.python.org/pep-0008/) de python.
+{% endinfo %}
 
 On a utilisé l'instruction [`pass`{.language-}](https://www.docstring.fr/glossaire/pass/) qui ne fait rien. Nous l’utilisons ici car la définition d'une classe crée un bloc (il y a un `:`) et que tout bloc **doit** contenir une instruction.
 

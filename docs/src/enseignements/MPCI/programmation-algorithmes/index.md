@@ -67,7 +67,7 @@ Ce cours est composée de plusieurs parties :
 
 Cours en 4 parties et 4 DM :
 
-1. cours intro : DM algo : écrire des algorithmes en python et vérifier expérimentalement leur véracité
+1. cours intro : DM algo : écrire des algorithmes en python et vérifier expérimentalement leur véracité (faire les monoligneso)
    1. pseudo-code (6h)
    2. projets et tests (4h) 
 2. cours algo (complexité) et DM code (test/projet/)
@@ -434,26 +434,61 @@ Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des a
 
 
 {% faire %}
-DM2 : faire l'ET d'Algorithmie de l'année dernière :[ET algorithmie 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/et-algo/){.interne}
+DM2 : faire l'ET d'Algorithmie de l'année dernière : [sujet examen terminal algorithmie 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/et-algo/){.interne}
 
-**Corrigé :** Le 20 février début d'après-midi.
 {% endfaire %}
-
+{% info %}
+**Corrigé :** Le 3 avril 13h30.
+{% endinfo %}
 
 #### Mercredi : programmation objet
 
 > 2h
 >
 
-Cours Valentin :
+{% aller %}
 
-- [objet](./objets){.interne}
-- [héritage](./heritage){.interne}
+1. [Classes et objets](/cours/coder-et-développer/programmation-objet/classes-et-objets/){.interne}
+2. [Coder ses objets](/cours/coder-et-développer/programmation-objet/coder-ses-objets/){.interne}
+
+{% endaller %}
+
 
 #### Vendredi : on s'entraîne
 
 > 4h
 >
+
+{% info %}
+Je vous conseille très fortement de faire la séance de code en [pair-programming](https://fr.wikipedia.org/wiki/Programmation_en_bin%C3%B4me). **Lisez** le lien ci-après avant vendredi.
+{% endinfo %}
+{% lien %}
+[comment coder en pair-programming](https://martinfowler.com/articles/on-pair-programming.html)
+{% endlien %}
+
+Au programme :
+
+{% aller %}
+
+- [Des dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne}
+- [Jeu de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
+
+{% endaller %}
+
+Puis une partie de cours :
+
+{% aller %}
+[Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
+{% endaller %}
+
+Que l'on applique avec les projets :
+
+{% aller %}
+
+- [Améliorer les dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne}
+- [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne}
+
+{% endaller %}
 
 ### Semaine 8
 
@@ -488,14 +523,16 @@ Test de 15min **sur ordinateur** en début de cours sur les classes et les objet
 Test de 15min **sur ordinateur** en début de cours sur la composition et l'agrégation
 {% endattention %}
 
+
+Cours Valentin :
+- [héritage](./heritage){.interne}
+
 > pour aller plus loin : design pattern
 
 #### Vendredi : on s'entraîne
 
 > 2h
 >
-
-> TBD correction DM à planifier
 
 ### Semaine 10
 
@@ -513,7 +550,7 @@ Test de 15min **sur ordinateur** en début de cours sur la composition et l'agr�
 - structures de données.
 
 
-#### Vendredi :on s'entraîne
+#### Vendredi : on s'entraîne
 
 > 2h
 >

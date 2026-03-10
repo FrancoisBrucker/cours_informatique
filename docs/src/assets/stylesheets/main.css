@@ -120,3 +120,7 @@ code .highlight-line:before {
 .token.comment {
 	color: #549441;
 }
+
+.percent50 {
+  transform: scale(.5)
+}

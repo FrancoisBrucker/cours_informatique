@@ -146,7 +146,7 @@ class Carte:
 Ajoutez à votre classe carte les opérateurs de comparaisons :
 
 {% faire %}
-Codez et testez les [opérateurs de comparaisons](../classes-et-objets/#comparaison){.interne} :
+Codez et testez les [opérateurs de comparaisons](../améliorer-ses-objets#comparaison){.interne} :
 
 - `==`{.language-} qui correspond a à la méthode `__eq__`{.language-}
 - `!=`{.language-} qui correspond a à la méthode `__ne__`{.language-}

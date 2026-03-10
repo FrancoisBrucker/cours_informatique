@@ -39,9 +39,9 @@ c2 = Compteur(1)
 #...
 ```
 
-{% attention %}
+{% attention2 "**À retenir**" %}
 Notez bien que le premier paramètre de la définition de la classe est **TOUJOURS** self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.
-{% endattention %}
+{% endattention2 %}
 
 Et il faut modifier la méthode `incrémente(self)`{.language-} pour qu'elle prenne en compte le pas :
 
