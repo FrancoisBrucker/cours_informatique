@@ -101,20 +101,130 @@
 <li>des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe</li>
 <li>des choses à lui tout seul (sa structure de donnée interne qui constitue ses attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.</li>
 </ul>
-<p>Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa <em>classe</em>. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les <a href="../../bases-programmation/principes/espace-nommage/" class="interne">espaces de noms</a> (<em>namespaces</em>). Cela lui permet de réutiliser le même code pour plusieurs objets.</p>
-<h2>Classes et objets</h2>
-<p>Lorsque l'on écrit du code python, on ne fait que manipuler des objets. Les entiers, les chaines de caractères et même les fonctions peuvent être considérées comme des objets.</p>
-<p>De façon générale, on peut définir un objet et une classe comme :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
+<p>Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa <em>classe</em>. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les <a href="../../bases-programmation/espace-nommage/" class="interne">espaces de noms</a> (<em>namespaces</em>). Cela lui permet de réutiliser le même code pour plusieurs objets.</p>
+<h2>Utiliser des objets</h2>
+<p>Lorsque l'on écrit du code python, on ne fait que manipuler des objets. Les entiers, les chaines de caractères, les listes et même les fonctions <strong>sont</strong> des objets :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">i <span class="token operator">=</span> <span class="token number">43</span>
+s <span class="token operator">=</span> <span class="token string">"coucou"</span>
+l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+f <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">-</span> <span class="token number">1</span></code></pre>
+<p>On peut utiliser des objets via des opérateurs ou des fonctions. Par exemple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Un <strong><em>objet</em></strong> est une structure de données (les champs de la structure de donnée sont appelés <strong><em>attributs</em></strong>) sur laquelle on peut effectuer des opérations (appelées <strong><em>méthodes</em></strong>).</p>
-<p>Pour pouvoir facilement créer une structure particulière et donner un moyen simple d'effectuer les opérations sur celle-ci, on utilise des <strong><em>classes</em></strong> comme patron de ces objets.</p>
+<p>Que fait le code précédent ?</p>
 </div></div>
 
-<p>Pour résumer, une classe :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Dans un interpréteur :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> i <span class="token operator">=</span> <span class="token number">43</span>
+<span class="token operator">>></span><span class="token operator">></span> s <span class="token operator">=</span> <span class="token string">"coucou"</span>
+<span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> f <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">42</span>
+</code></pre>
+<p>Il affiche le résultat de la fonction <code class="language-">f</code> (qui rend un entier valant son paramètre d'entrée moins 1) avec comme paramètre l'entier associé à la variable <code class="language-">i</code> (un entier valant 43).</p>
+</div>
+</details>     
+</div>
+<p>Mais un objet est plus que ça. Il contient à la fois <strong>des données</strong> (les différents caractères d'une chaîne de caractères par exemple) et <strong>des méthodes</strong> permettant d'opérer dessus. Par exemple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Que fait le code précédent ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Dans un interpréteur :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> i <span class="token operator">=</span> <span class="token number">43</span>
+<span class="token operator">>></span><span class="token operator">></span> s <span class="token operator">=</span> <span class="token string">"coucou"</span>
+<span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> f <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+COUCOU
+</code></pre>
+<p>Il affiche le résultat de la méthode <code class="language-">upper</code> appliquée à l'objet associé à la variable <code class="language-">s</code>.</p>
+</div>
+</details>     
+</div>
+<p>Les méthodes sont spécifiques à des types d'objets particulier, ainsi le code suivant ne fonctionne pas, la méthode <code class="language-">upper</code> n'<strong>est pas définie</strong> pour les entiers :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Que fait le code précédent ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Dans un interpréteur :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;python-input-12>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+          <span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span>
+AttributeError<span class="token punctuation">:</span> <span class="token string">'int'</span> <span class="token builtin">object</span> has no attribute <span class="token string">'upper'</span></code></pre>
+<p>Python rend une erreur. Nous comprendrons sa signification profonde plus tard, pour l'instant cela nous indique juste que la méthode <code class="language-">upper</code> n'existe pas pour les entiers : <code class="language-">'int' object has no attribute 'upper'</code></p>
+</div>
+</details>     
+</div>
+<p>Les méthodes sont ainsi associées au type de l'objet. Ce sont des fonctions définis dans l'espace de nom de la classe associé. Ainsi comme le type d'une chaîne de caractères est <code class="language-">str</code> en python :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span></code></pre>
+<p>On peut tout à fait écrire :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>Où on utilise directement la fonction <code>upper</code> des chaînes de caractères. Remarquez que dans ce cas il faut expliciter le paramètre.</p>
+<p>Une classe :</p>
 <ul>
 <li>permet de créer un type d'objet (une structure de donnée précise)</li>
 <li>définit les opérations (méthodes) utilisables par ces objets.</li>
@@ -124,10 +234,9 @@
 <li>possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses <strong>attributs</strong></li>
 <li>possède un lien vers les <strong>méthodes</strong> (définies dans sa classe) qu'il peut utiliser via la <a href="../../m%C3%A9moire-espace-nommage#notation-point%C3%A9e" class="interne">notation pointée</a> : <code class="language-">objet.méthode(paramètre_1, ..., paramètre_n)</code></li>
 </ul>
-<h3>But</h3>
 <p>La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de <em>coder objet</em> car :</p>
 <ul>
-<li>cela favorise la factorisation du code (<a href="../../d%C3%A9veloppement/coder#DRY" class="interne">on ne se répète pas</a>) : on ne définit ses méthodes qu'une seule fois dans les classes</li>
+<li>cela favorise la factorisation du code (<a href="../../%C3%A9crire-code/coder#DRY" class="interne">on ne se répète pas</a>) : on ne définit ses méthodes qu'une seule fois dans les classes</li>
 <li>lisibilité avec la notation <code class="language-">.</code> : on sait clairement à qui s'applique telle ou telle méthode</li>
 <li>compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.</li>
 <li>plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.</li>
@@ -140,25 +249,27 @@
 <p>Ces principes sont mis en œuvre de façon différentes selon les langages mais on retrouvera toujours ces notions.</p>
 </div></div>
 
-<h3>Exemple d'objets en python</h3>
-<h4>Chaîne de caractères</h4>
+<h2>Exemples de classes en python</h2>
+<p>Ce qui caractérise un objet est ce qu'on peut faire avec, c'est à dire ses méthodes. Une classe regroupe un ensemble de méthodes permettant de résoudre un problème spécifique. Que ce problème soit lié au type de données (chaîne de caractères, entier, ...) qu'à leurs usages (mesurer le temps, graphiques, ...).</p>
+<p>Voyons quelques exemple de classes python et leurs usages.</p>
+<h3>Chaîne de caractères</h3>
 <p>Les chaines de caractères sont des objets de la classe (<a href="https://docs.python.org/fr/3/library/string.html">str</a>) :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token string">"une chaîne"</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span></code></pre>
-<p>Les méthodes définies dans la classe <code class="language-">str</code>, comme <code class="language-">upper()</code> par exemple sont utilisables par tous les objets de la classe <code class="language-">str</code> (dans l'exemple ci-après par l'objet <code class="language-">&quot;coucou&quot;</code> et l'objet <code class="language-">&quot;toi&quot;</code>) :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"coucou"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'COUCOU'</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"toi"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'TOI'</span></code></pre>
+<p>Les méthodes définies dans la classe <code class="language-">str</code>, comme <code class="language-">capitalize()</code> par exemple sont utilisables par tous les objets de la classe <code class="language-">str</code> (dans l'exemple ci-après par l'objet <code class="language-">&quot;coucou&quot;</code> et l'objet <code class="language-">&quot;toi&quot;</code>) :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"coucou"</span><span class="token punctuation">.</span>capitalize<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">'Coucou'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"toi"</span><span class="token punctuation">.</span>capitalize<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">'Toi'</span></code></pre>
 <p>La notation pointée permet de dire que c'est la méthode à droite du <code class="language-">.</code> que l'on cherche dans l'objet à gauche du point.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Le code suivant produit une erreur. Pourquoi ?</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> upper<span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> capitalize<span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span>
 Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
   File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
-NameError<span class="token punctuation">:</span> name <span class="token string">'upper'</span> <span class="token keyword">is</span> <span class="token keyword">not</span> defined</code></pre>
+NameError<span class="token punctuation">:</span> name <span class="token string">'capitalize'</span> <span class="token keyword">is</span> <span class="token keyword">not</span> defined</code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -178,20 +289,39 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>C'est la méthode définie dans la classe <code class="language-">str</code> qui s'appelle <code class="language-">upper</code> qui existe...</p>
+<p>C'est la méthode définie dans la classe <code class="language-">str</code> qui s'appelle <code class="language-">capitalize</code> qui existe...</p>
 </div>
 </details>     
 </div>
-<p>Le résultat est différent lorsque l'on applique la méthode <code class="language-">upper</code> à la chaîne de caractères <code class="language-">&quot;bonjour&quot;</code> ou à la chaîne de caractères <code class="language-">&quot;toi&quot;</code> car ces deux chaînes de caractères, bien que de la même classe (<code class="language-">str</code>), sont différents : dans l'un il y a la chaîne &quot;bonjour&quot;, dans l'autres la chaîne &quot;toi&quot;.</p>
-<p>Un objet <code class="language-">str</code> est bien plus que juste ses caractères ! C'est aussi un ensemble de méthodes permettant de les manipuler.</p>
-<h4>Entiers</h4>
+<p>Le résultat est différent lorsque l'on applique la méthode <code class="language-">capitalize</code> à la chaîne de caractères <code class="language-">&quot;bonjour&quot;</code> ou à la chaîne de caractères <code class="language-">&quot;toi&quot;</code> car ces deux chaînes de caractères, bien que de la même classe (<code class="language-">str</code>), sont différents : dans l'un il y a la chaîne &quot;bonjour&quot;, dans l'autres la chaîne &quot;toi&quot;.</p>
+<p>Remarquez que l'application de la méthode ne change pas sa valeur :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s <span class="token operator">=</span> <span class="token string">"coucou"</span>
+<span class="token operator">>></span><span class="token operator">></span> s<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">'COUCOU'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+coucou</code></pre>
+<p>Pour conserver le résultat de la méthode, il faut le placer dans une autre variable :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s_prim <span class="token operator">=</span> s<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s_prim<span class="token punctuation">)</span>
+COUCOU
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+coucou
+</code></pre>
+<p>Enfin, une méthode peut avoir des paramètres  comme la méthode <a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.center"><code class="language-">str.center</code></a> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>center<span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token string">"*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span>coucou<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span></code></pre>
+<p>Et même rendre autre chose que son type d'origine comme la méthode <a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.count"><code class="language-">str.count</code></a>  :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"c"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">2</span></code></pre>
+<h3>Entiers</h3>
 <p>Les entiers sont aussi des objets d'une classe : <code class="language-">int</code>.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'int'</span><span class="token operator">></span></code></pre>
 <p>Contrairement à la classe <code class="language-">str</code>, la classe <code class="language-">int</code> ne définit pas de méthode mais des opérations. Par exemple <code class="language-">__add__</code> définit l'addition d'un entier par un autre objet. C'est pratique que tout soit défini dans la classe , cela nous permettra à nous aussi de faire nos propres additions.</p>
-<p>Les deux écritures sont identiques en python, mais bien sur, nous préférerons la première, bien plus simple à écrire et à comprendre :</p>
+<p>Les trois écritures sont identiques en python, mais bien sur, nous préférerons la première, bien plus simple à écrire et à comprendre :</p>
 <ol>
 <li><code class="language-">1 + 2</code></li>
+<li><code class="language-">int.__add__(1, 2)</code></li>
 <li><code class="language-">(1).__add__(2)</code></li>
 </ol>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -202,17 +332,260 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>Remarquez que l'opération <code class="language-">+</code> n'est pas identique pour <code class="language-">1 + 2</code> et <code class="language-">1.0 + 2</code>. Dans le premier cas c'est l'addition définie dans <code class="language-">int</code> qui est utilisé, dans le second cas c'est celle définie dans <code class="language-">float</code>.</p>
 </div></div>
 
-<h3>Créer des objets</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
+<p>En python les méthodes qui commencent et finissent par deux underscores (le caractère <code>_</code>, aussi parfois improprement appelé <em>tiret-du-huit</em> car c'est ce caractère qui est sous le 8 pour des claviers français PC (ce n'est pas vrai sur mac et encore moins pour d'autres types de claviers)) sont des méthodes utilisées par python dans des cas spécifiques, on ne les utilisera quasi-jamais de façon explicite.</p>
+<h3>Listes</h3>
+<p>Les entiers et les chaînes de caractères sont des objet dit <strong><em>immutable</em></strong> c'est à dire qu'aucune de leurs méthodes ne les modifient : elles ne font que rendre de nouveaux objets. Ce n'est pas le cas des listes.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> l<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+</code></pre>
+<p>La liste <code class="language-">l</code> est <strong>modifiée</strong> par la méthode <a href="https://docs.python.org/fr/3.14/library/stdtypes.html#list.extend"><code class="language-">list.extend</code></a>. Le fait qu'une méthode modifie ou pas l'objet passé en paramètre n'est pas réglementé. Certaines le font d'autres non :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">+</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Mais souvent les méthodes qui ne rendent rien (donc qui rendent <code>None</code>) modifient les objets :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token boolean">None</span>
+</code></pre>
+<p>Terminons cette partie par deux petit exercices pour voir si vous avez compris :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Pour créer des objets d'une classe, on utilise un <strong><em>constructeur</em></strong>.</p>
-<p>En python, le retour de l'<strong><em>exécution d'une classe</em></strong> (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">NomDeLaClasse<span class="token punctuation">(</span>paramètre_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span></code></pre>
+<p>Que produit le code suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"nous irons au bois"</span></code></pre>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Une erreur :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"nous irons au bois"</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;python-input-39>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+    <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"nous irons au bois"</span>
+    <span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">^</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span><span class="token operator">~</span>
+TypeError<span class="token punctuation">:</span> can only concatenate <span class="token builtin">list</span> <span class="token punctuation">(</span><span class="token keyword">not</span> <span class="token string">"str"</span><span class="token punctuation">)</span> to <span class="token builtin">list</span>
+</code></pre>
+<p>Car on ne peut additionner que deux listes.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Que produit le code suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"nous irons au bois"</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Là ça marche car le résultat de <a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.split"><code class="language-">str.split</code></a> est une liste :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"nous irons au bois"</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'nous'</span><span class="token punctuation">,</span> <span class="token string">'irons'</span><span class="token punctuation">,</span> <span class="token string">'au'</span><span class="token punctuation">,</span> <span class="token string">'bois'</span><span class="token punctuation">]</span></code></pre>
+</div>
+</details>     
+</div>
+<h3>Complexes</h3>
+<p>Saviez-vous qu'il y a une classe pour les complexes ?</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">1j</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">0j</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> z <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1j</span> <span class="token operator">*</span><span class="token number">0.5</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">-</span><span class="token number">0.5j</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'complex'</span><span class="token operator">></span>
+</code></pre>
+<p>Un complexe se caractérise par sa partie réelle et sa partie imaginaire. Comment y accéder?</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> z<span class="token punctuation">.</span>real
+<span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> z<span class="token punctuation">.</span>imag
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+<span class="token number">2.0</span> <span class="token operator">-</span><span class="token number">0.5</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'float'</span><span class="token operator">></span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'float'</span><span class="token operator">></span>
+</code></pre>
+<p>Comment calculer le conjugué ?</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> zc <span class="token operator">=</span> z<span class="token punctuation">.</span>conjugate<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>zc<span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">(</span>zc<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">0.5j</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'complex'</span><span class="token operator">></span>
+</code></pre>
+<h3>Dates</h3>
+<p>Ça existe et c'est très pratique !</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> datetime
+année_scolaire <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">(</span>day<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> month<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">,</span> year<span class="token operator">=</span><span class="token number">2024</span><span class="token punctuation">,</span> hour<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">,</span> minute<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span> second<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>année_scolaire<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>année_scolaire<span class="token punctuation">)</span></code></pre>
+<p>Le code précédent va afficher :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'datetime.datetime'</span><span class="token operator">></span>
+<span class="token number">2024</span><span class="token operator">-</span><span class="token number">09</span><span class="token operator">-</span><span class="token number">03</span> <span class="token number">09</span><span class="token punctuation">:</span><span class="token number">00</span><span class="token punctuation">:</span><span class="token number">00</span></code></pre>
+<p>Les attributs de la date sont accessibles :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>année_scolaire<span class="token punctuation">.</span>day<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>année_scolaire<span class="token punctuation">.</span>month<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>année_scolaire<span class="token punctuation">.</span>year<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>année_scolaire<span class="token punctuation">.</span>hour<span class="token punctuation">,</span> année_scolaire<span class="token punctuation">.</span>minute<span class="token punctuation">,</span> année_scolaire<span class="token punctuation">.</span>second<span class="token punctuation">)</span></code></pre>
+<p>Qui va afficher :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token number">3</span>
+<span class="token number">9</span>
+<span class="token number">2024</span>
+<span class="token number">9</span> <span class="token number">0</span> <span class="token number">0</span></code></pre>
+<p>Enfin, on peut prendre la date actuelle :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">now <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>now<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>now<span class="token punctuation">)</span></code></pre>
+<p>Ce qui produira :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'datetime.datetime'</span><span class="token operator">></span>
+<span class="token number">2025</span><span class="token operator">-</span><span class="token number">03</span><span class="token operator">-</span><span class="token number">19</span> <span class="token number">10</span><span class="token punctuation">:</span><span class="token number">49</span><span class="token punctuation">:</span><span class="token number">34.921872</span></code></pre>
+<p>Et on peut manipuler des dates comme des nombres :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">d <span class="token operator">=</span> now <span class="token operator">-</span> année_scolaire
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Mon année scolaire a commencé depuis"</span><span class="token punctuation">,</span> d<span class="token punctuation">.</span>days<span class="token punctuation">,</span> <span class="token string">"jours et"</span><span class="token punctuation">,</span> d<span class="token punctuation">.</span>seconds<span class="token punctuation">,</span> <span class="token string">"secondes."</span><span class="token punctuation">)</span></code></pre>
+<p>Bref, l'usage de d'objets et de classes permet une utilisation intuitive de concepts compliqués à implémenter</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>N'essayez pas de faire des manipulation de dates à la main, il y a plein d'exceptions qui fait que c'est l'enfer à faire correctement.</p>
+</div></div>
+
+<h3>Graphiques</h3>
+<p>Là aussi, ce sont des objet et des classes :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+fig<span class="token punctuation">,</span> axes <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span> figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">2.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_xlabel<span class="token punctuation">(</span><span class="token string">'Temps t'</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_ylabel<span class="token punctuation">(</span><span class="token string">'f(t)'</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">'Courbe de gauche'</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span>x <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>plot<span class="token punctuation">(</span><span class="token punctuation">[</span>x <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">-</span> <span class="token number">50</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_axis_off<span class="token punctuation">(</span><span class="token punctuation">)</span>
+axes<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token string">'Courbes de droite'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>fig<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>axes<span class="token punctuation">)</span><span class="token punctuation">,</span> axes<span class="token punctuation">.</span>shape<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>axes<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Qui va écrire dans le terminal :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'matplotlib.figure.Figure'</span><span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'numpy.ndarray'</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'matplotlib.axes._axes.Axes'</span><span class="token operator">></span>
+</code></pre>
+<p>Et ouvrir une nouvelle fenêtre avec le graphique suivant :</p>
+<p><img src="graphiques.png" alt="graphique"></p>
+<h2>Créer ses propres classes</h2>
+<p>De façon générale, on peut définir un objet et une classe comme :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>objet</em></strong> est une structure de données (les champs de la structure de donnée sont appelés <strong><em>attributs</em></strong>) sur laquelle on peut effectuer des opérations (appelées <strong><em>méthodes</em></strong>).</p>
+<p>Pour pouvoir facilement créer une structure particulière et donner un moyen simple d'effectuer les opérations sur celle-ci, on utilise des <strong><em>classes</em></strong> comme patron de ces objets :</p>
+<ul>
+<li>elles vont gérer la création des objets via un <strong><em>constructeur</em></strong>.</li>
+<li>elles contiennent dans leur espace de noms les différentes <strong><em>méthodes</em></strong> que l'on pourra appliquer</li>
+</ul>
+</div></div>
+
+<p>On crée une classe par rapport à un besoin que l'on veut satisfaire. Supposons que l'on veuille créer une classe compteur qui permettent d'exécuter le code suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></span></code></pre>
+<p>Pour construire cette cette classe, il faut se poser la question :</p>
+<ul>
+<li><em>&quot;que dois-je pouvoir faire avec mon compteur ? &quot;</em> ce qui permettra de déterminer les méthodes de la classe</li>
+<li><em>&quot;que dois-je stocker comme information pour que les méthodes fonctionnent ?&quot;</em> ce qui permettra de déterminer les attributs de chaque objet.</li>
+</ul>
+<h3>Analyse du besoin</h3>
+<p>Ici notre besoin c'est de faire marcher le bout de code d'une façon plausible. Il faut se demander ce que veut l'utilisateur.</p>
+<p>C'est du python.</p>
+<p>Le programme commence par importer le mot <code class="language-">Compteur</code> d'un module nommé <code class="language-">compteur</code> (donc placé dans un fichier  nommé <code>compteur.py</code> dans le dossier du projet) et on l'exécute 2 fois pour l'affecter à 2 noms différents. Pour voir ce que peut être <code class="language-">Compteur</code>, plusieurs indices :</p>
+<ul>
+<li>cela <strong>ne doit pas être</strong> une fonction normale, sinon <code class="language-">c1</code> et <code class="language-">c2</code> seraient identiques.</li>
+<li>le mot <code class="language-">Compteur</code> à une majuscule, ce qui correspond (par convention) en python à des noms de classes</li>
+</ul>
+<blockquote>
+<p>TBD ici</p>
+</blockquote>
+<h3>Modélisation UML</h3>
+<p>On va essayer de comprendre le code pour produire une représentation UML de la classe <code class="language-">Compteur</code>.</p>
+<p>Pour représenter les différentes possibilités offertes par une classe on utilise l'<a href="https://fr.wikipedia.org/wiki/UML_(informatique)">UML</a></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pouvez suivre ce petit <a href="https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html">tutoriel UML</a> pour comprendre sa notation et son utilité.</p>
+</div></div>
+
+<p>L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en UML c'est le diagramme :</p>
+<p><img src="classes-1.png" alt="une classe UML"></p>
+<ul>
+<li>pour chaque attribut on pourra préciser le <em>type</em> (entier, chaîne de caractères, une classe particulière d'objet, ...) si c'est important</li>
+<li>pour chaque méthode on donnera sa <a href="https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction">signature</a> complète (son nom et ses paramètres) pour que l'on puisse l'utiliser.</li>
+</ul>
+<blockquote>
+<p>code puis uml Exemple du compteur</p>
+</blockquote>
+<h3>Modélisation python</h3>
+<blockquote>
+<p>constructeur = nom de la classe</p>
+</blockquote>
+<h3>Python</h3>
+<p>Comme le python va être notre langage de programmation, regardons quelques convention d'usage lorsque l'on programme objet en python.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En python, beaucoup de choses sont des <a href="https://en.wikipedia.org/wiki/Convention_over_configuration">conventions</a> (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée.</p>
+</div></div>
+
+<p>N'hésitez pas à jeter un coup d'œil au <a href="https://docs.python.org/fr/3/tutorial/classes.html">tutoriel de python sur ses classes</a>. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.</p>
+<h4>Constructeur</h4>
+<p>En python, le retour de l'<strong><em>exécution d'une classe</em></strong> (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">NomDeLaClasse<span class="token punctuation">(</span>paramètre_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span></code></pre>
 <p>Ainsi :</p>
 <ul>
 <li><code class="language-">list()</code> : crée un objet de type <code class="language-">list</code> (une liste), sans paramètre.</li>
@@ -229,36 +602,6 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>Certains objets se créent juste avec leur valeur comme les entiers, les réels ou encore les chaines de caractères. En python <code class="language-">3</code> est équivalent à <code class="language-">int(3)</code> par exemple.</p>
 </div></div>
 
-<h2>Outils</h2>
-<p>On va utiliser un outil <em>papier</em> (l'<a href="https://fr.wikipedia.org/wiki/UML_(informatique)">UML</a>) et un outil clavier (le python) pour écrire nos classes.</p>
-<h3>UML</h3>
-<p>L'UML est une façon de représenter des objets et des classes. Nous allons l'utiliser pour décrire les classes que nous allons créer.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Vous pouvez suivre ce petit <a href="https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html">tutoriel UML</a> pour comprendre sa notation et son utilité.</p>
-</div></div>
-
-<p>L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en UML c'est le diagramme :</p>
-<p><img src="classes-1.png" alt="une classe UML"></p>
-<ul>
-<li>pour chaque attribut on pourra préciser le <em>type</em> (entier, chaîne de caractères, une classe particulière d'objet, ...) si c'est important</li>
-<li>pour chaque méthode on donnera sa <a href="https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction">signature</a> complète (son nom et ses paramètres) pour que l'on puisse l'utiliser.</li>
-</ul>
-<h3>Python</h3>
-<p>Comme le python va être notre langage de programmation, regardons quelques convention d'usage lorsque l'on programme objet en python.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>En python, beaucoup de choses sont des <a href="https://en.wikipedia.org/wiki/Convention_over_configuration">conventions</a> (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée.</p>
-</div></div>
-
-<p>N'hésitez pas à jeter un coup d'œil au <a href="https://docs.python.org/fr/3/tutorial/classes.html">tutoriel de python sur ses classes</a>. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.</p>
-<h4>Constructeur</h4>
 <p>En python, le constructeur d'une classe sera <strong>toujours</strong> la méthode : <code class="language-">__init__</code>. C'est une méthode spéciale.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -283,29 +626,6 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <h2>Exemple : le Compteur</h2>
 <p>On souhaite créer un objet <code class="language-">Compteur</code> qui retient le compte de quelque chose et est capable d'ajouter 1 à son compte quand on le lui demande.</p>
 <p>On va tenter de proposer une modélisation UML de cet objet simple, puis de le coder en python.</p>
-<p>A partir d'un exemple de code, on va essayer de :</p>
-<ul>
-<li>voir ce que pourrait faire le code</li>
-<li>en déduire les attributs et les méthodes de la classe</li>
-</ul>
-<h3>Code d'utilisation</h3>
-<p>Cette modélisation doit être capable de répondre au code suivant, dans le fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></span></code></pre>
-<h4>Analyse du programme</h4>
-<p>C'est du python. On va essayer de comprendre le code pour produire une représentation UML de la classe <code class="language-">Compteur</code>.</p>
-<p>Le programme commence par importer le mot <code class="language-">Compteur</code> et on l'exécute 2 fois pour l'affecter à 2 noms différents. Pour voir ce que peut être <code class="language-">Compteur</code>, plusieurs indices :</p>
-<ul>
-<li>cela <strong>ne doit pas être</strong> une fonction normale, sinon <code class="language-">c1</code> et <code class="language-">c2</code> seraient identiques.</li>
-<li>le mot <code class="language-">Compteur</code> à une majuscule, ce qui correspond en python à des noms de classes</li>
-</ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>

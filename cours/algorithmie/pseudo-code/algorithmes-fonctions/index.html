@@ -255,12 +255,17 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 </div><div class="pl-8 mr-8">
 <ul>
 <li>Les différentes exécutions de fonctions au sein d'un même algorithmes ne partagent pas leurs variables.</li>
-<li>Les paramètres sont des variables qui sont initialisées au début de l'exécution de la fonction.</li>
-<li>Seuls les objets peuvent être transmis.</li>
+<li>Les paramètres sont <strong>des variables</strong> qui sont initialisées au début de l'exécution de la fonction.</li>
+<li><strong>Seuls</strong> les objets peuvent être transmis.</li>
 </ul>
 </div></div>
 
-<p>Dans l'exemple précédent, la variable <code class="language-">e</code> définie dans la fonction <code class="language-">recherche</code> n'est pas visible depuis l'algorithme. En revanche, l'objet booléen de retour est lui transmis à l'algorithme via l'instruction <code class="language-pseudocode">rendre</code>.</p>
+<p>Dans l'exemple précédent, tout ce passe comme si on disposait de deux ordinateurs, un qui exécute le pseudo-code, l'autre la fonction <code class="language-">recherche</code> :</p>
+<ol>
+<li>le passage de l'ordinateur effectuant le pseudo-code à l'ordinateur exécutant l'algorithme <code class="language-">recherche</code> se fait en affectant les paramètres de la fonction recherche (ce sont des variables) à des objets manipulés par le pseudo-code : ici un tableau valant <code class="language-">[1, 2, 3]</code></li>
+<li>le passage de l'ordinateur effectuant l'algorithme <code class="language-">recherche</code> à l'ordinateur exécutant le pseudo-code se fait par le retour de la fonction</li>
+</ol>
+<p>Dans l'exemple précédent, la variable <code class="language-">e</code> définie dans l'algorithme <code class="language-">recherche</code> n'est pas visible depuis le pseudo-code. En revanche, l'objet booléen de retour est lui transmis au pseudo-code via l'instruction <code class="language-pseudocode">rendre</code>.</p>
 <h3>Pseudo-code avec fonctions</h3>
 <p>On peut aussi directement coder des fonctions dans un pseudo-code. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -367,7 +372,7 @@ trouve <span class="token operator">←</span> recherche<span class="token punct
 <p>Vérifiez toujours très soigneusement vos algorithmes lorsque vous créez des tableau que vous passez en paramètres de fonctions. Ils peuvent être modifiés par cette fonction !</p>
 </div></div>
 
-<h2><span id="type"></span>Type d'un algorithme ou d'une fonction</h2>
+<h2><span id="type"></span>Signature d'un algorithme ou d'une fonction</h2>
 <p>Lorsque l'on défini un algorithme ou un pseudo-code on explicite le type des objets en entrées et en sortie :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
