@@ -141,6 +141,18 @@ Pour aller plus loin :
 
 {% endaller %}
 
+<!-- TBD année prochaine 
+
+mettre un DM d'algo pour vérifier que Ok niveau algo base.
+
+prog sur l'année en 4 séquences alternée :
+
+1. code et DM algo  de production d'algorithmes idiots en python
+2. algo et DM code  de bonnes pratiques avec tests/code etc.
+3. code et DM algo  ET de l'année passée
+4. algo et DM code  ET de l'année passée
+-->
+
 ### Semaine 2
 
 > 26/01 au 30/01
@@ -420,7 +432,13 @@ Enfin, pour aller plus loin, n'hésitez pas à vous entraîner sur les DS1 des a
 > 9/03 au 13/03
 > Programmation
 
-> TBD DM2 = et d'algo de l'année dernière
+
+{% faire %}
+DM2 : faire l'ET d'Algorithmie de l'année dernière :[ET algorithmie 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/et-algo/){.interne}
+
+**Corrigé :** Le 20 février début d'après-midi.
+{% endfaire %}
+
 
 #### Mercredi : programmation objet
 
@@ -477,16 +495,19 @@ Test de 15min **sur ordinateur** en début de cours sur la composition et l'agr�
 > 2h
 >
 
+> TBD correction DM à planifier
+
 ### Semaine 10
 
 > 30/03 au 3/04
 > Algorithmie
 
-> TBD DM3 et code de l'année dernière
+
+> TBD DM3 : et code de l'année dernière
 
 #### Mercredi : structures de données
 
-> 2h
+> 4h
 >
 
 - structures de données.

@@ -12,5 +12,5 @@ eleventyNavigation:
 ---
 
 - [Enseignements](./enseignements){.interne}
-- [Supports de cours](./cours){.interne}
+- [Cours](./cours){.interne}
 - [Tutoriels](./tutoriels){.interne}
