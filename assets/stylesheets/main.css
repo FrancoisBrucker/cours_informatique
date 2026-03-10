@@ -1692,6 +1692,10 @@ code .highlight-line:before {
   color: #549441;
 }
 
+.percent50 {
+  transform: scale(.5)
+}
+
 .before\:px-1::before {
   content: var(--tw-content);
   padding-left: 0.25rem;
