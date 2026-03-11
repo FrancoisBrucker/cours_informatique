@@ -288,7 +288,3 @@ Les bateaux sont initialement placés de façon aléatoire sur la grille de faç
 Vous affichez ensuite la grille et laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère "💣") et si un bateau est coulé vous affichez le bateau sur la carte avec sa marque (vous pouvez aussi ajouter un message qui sera affiché lorsqu'un bateau est coulé, ce message étant spécifique au type de bateau coulé). 
 
 Vous recommencez cette boucle de gameplay jusqu'à destruction de tous les bateaux de la liste. Une fois le jeu fini, vous indiquerez le nombre de coups qu'il a fallu au joueur pour en venir à bout.
-
-{% info %}
-Pour rendre l'interface de jeu sympathique, vous pourrez utiliser [le module pytermgui](https://github.com/bczsalba/pytermgui) pour gréer une interface textuelle complète.
-{% endinfo %}

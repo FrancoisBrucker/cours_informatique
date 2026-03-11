@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Composition et agrégation
 
 eleventyComputed:
@@ -9,28 +9,27 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 Composition et agrégation permettent de lier des classes entres elles et plus principalement lorsqu'une classe admet comme attribut des objets de l'autre classe.
 
 Ce qui les distingue :
 
 {% note "**Définition** :" %}
 
-* ***agrégation*** : quand les objets utilisés sont créés en dehors de la classe,
-* ***composition*** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
+- **_agrégation_** : quand les objets utilisés sont créés en dehors de la classe,
+- **_composition_** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
 
 {% endnote %}
 
 Il est important de comprendre que si des objets n'ont pas été crées dans la classe qui l'utilise, ils peuvent être connus par d'autres méthodes du programme et donc être modifiées par celles-ci.
 
-Les exemples de composition et d'agrégation de *la vraie vie* sont souvent un peu bizarres. Mais par exemple :
+Les exemples de composition et d'agrégation de _la vraie vie_ sont souvent un peu bizarres. Mais par exemple :
 
-* Un livre est composé de pages : pour créer le livre on a créé les pages : c'est une **composition**
-* Les télécommandes ont besoin de piles pour fonctionner, mais on peut les remplacer : c'est une **agrégation**.
+- Un livre est composé de pages : pour créer le livre on a créé les pages : c'est une **composition**
+- Les télécommandes ont besoin de piles pour fonctionner, mais on peut les remplacer : c'est une **agrégation**.
 
 ## Schémas uml
 
-Lorsque l'on utilise la composition ou l'agrégation de nos classes dans des schéma uml, on liera la classe composé (*resp.* agrégée) à la classe l'utilisant par une flèche. Cette flèche sera différente pour une composition ou une agrégation :
+Lorsque l'on utilise la composition ou l'agrégation de nos classes dans des schéma uml, on liera la classe composé (_resp._ agrégée) à la classe l'utilisant par une flèche. Cette flèche sera différente pour une composition ou une agrégation :
 
 ![uml composition et agrégation](classes-3.png)
 
@@ -38,10 +37,10 @@ Lorsque l'on utilise la composition ou l'agrégation de nos classes dans des sch
 
 Prenons un autre exemple, le panier de fruits. Je voudrais modéliser un panier de fruits. Il doit avoir les propriétés suivantes :
 
-* il doit être vide initialement
-* je dois pouvoir ajouter des fruits dans le panier
-* je dois pouvoir montrer les fruits que j'ai dans le panier
-* je dois pouvoir reprendre un fruit du panier
+- il doit être vide initialement
+- je dois pouvoir ajouter des fruits dans le panier
+- je dois pouvoir montrer les fruits que j'ai dans le panier
+- je dois pouvoir reprendre un fruit du panier
 
 ### Modélisation uml
 
@@ -55,8 +54,8 @@ Pour que l'on puisse faire ces différentes méthodes, il faut que `Panier`{.lan
 
 ### Composition et agrégation
 
-* Le panier est **composé** d'un stock : il est créé avec le panier
-* le stock **agrège** des fruits : ils sont ajoutés par une méthode dans l'objet.
+- Le panier est **composé** d'un stock : il est créé avec le panier
+- le stock **agrège** des fruits : ils sont ajoutés par une méthode dans l'objet.
 
 ### Code python
 
@@ -103,7 +102,7 @@ print(panier.montre_panier())
 Si une classe est composée d'autres objets, ces parties peuvent être modifiées en dehors de la classe, même pour une composition.
 {% endattention %}
 
-Dans notre exemple, une méthode retourne un objet qui est un attribut. Une fois qu'un objet a été *donné* au monde extérieur on ne contrôle plus son état et il peut être utilisé a priori par n'importe quoi d'autre dans le programme.
+Dans notre exemple, une méthode retourne un objet qui est un attribut. Une fois qu'un objet a été _donné_ au monde extérieur on ne contrôle plus son état et il peut être utilisé a priori par n'importe quoi d'autre dans le programme.
 
 Regardez le code suivant :
 
@@ -137,7 +136,7 @@ La 1ère solution est ce qu'on a pour l'instant.
 
 #### 2nde solution
 
-La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode `montre_panier()`{.-} :
+La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode `montre_panier()`{.language-} :
 
 ```python
 class Panier:
@@ -145,7 +144,7 @@ class Panier:
 
     def montre_panier(self):
       return list(self.stock)
-    
+
     #...
 ```
 
@@ -162,7 +161,7 @@ class Panier:
 
     def ajoute(self, fruit):
         self.stock = self.stock + (fruit,)
-    
+
     def supprime(self, fruit):
         stock_temporaire = list(self.stock)
         stock_temporaire.remove(fruit)
@@ -178,7 +177,7 @@ Le fait d'avoir des objets qui ne se modifient pas est appelé [value object](ht
 
 Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on ne peut pas modifier. La seule façon de changer de valeur c'est de recréer de nouveaux objets. Pour que l'utilisation de ce genre d'objets soit fluide, on fait en sorte qu'ils puissent supporter l'opération `==`{.language-}.
 
-Vous avez utilisé des value objects bien souvent en python comme : les  entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les `tuple`{.language-} qui sont des listes non modifiables ou encore les `frozenset`{.language-} sont des ensembles non modifiables.
+Vous avez utilisé des value objects bien souvent en python comme : les entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les `tuple`{.language-} qui sont des listes non modifiables ou encore les `frozenset`{.language-} sont des ensembles non modifiables.
 
 {% note %}
 Une bonne façon de programmer est d'**utiliser par défaut uniquement des objets non modifiables** et que si le besoin s'en fait sentir de les rendre modifiables.
@@ -188,8 +187,8 @@ Une bonne façon de programmer est d'**utiliser par défaut uniquement des objet
 
 Lorsque l'on crée ses propres objets, il est important de tester leurs fonctionnalités. On procède alors ainsi :
 
-* chaque méthode doit être testée
-* chaque test doit être indépendant
+- chaque méthode doit être testée
+- chaque test doit être indépendant
 
 Dans la mesure du possible, on ne teste pas la valeur des attributs. On utilise des méthodes publique pour tester. En effet les attributs montrent l'implémentation de la classe et pas son usage.
 
@@ -227,9 +226,9 @@ def test_supprime_dans_panier():
 
 {% note %}
 
-* pour l'initialisation, on vérifie juste que notre objet existe. Comme il n'a pas de paramètre, on ne peut pas tester grand chose d'autre
-* On crée pour chaque test un nouvel objet, pour être sur que les tests n'interfèrent pas les uns avec les autres
-* Chaque test doit permettre d'utiliser la méthode testée comme elle doit être utilisée dans le code
+- pour l'initialisation, on vérifie juste que notre objet existe. Comme il n'a pas de paramètre, on ne peut pas tester grand chose d'autre
+- On crée pour chaque test un nouvel objet, pour être sur que les tests n'interfèrent pas les uns avec les autres
+- Chaque test doit permettre d'utiliser la méthode testée comme elle doit être utilisée dans le code
 
 {% endnote %}
 
@@ -254,7 +253,7 @@ class Panier:
 
     def supprime(self, fruit):
         self.stock.remove(fruit)
-        
+
 ```
 
 ### Programme principal
