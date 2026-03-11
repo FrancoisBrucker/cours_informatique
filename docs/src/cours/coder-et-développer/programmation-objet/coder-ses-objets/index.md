@@ -223,9 +223,7 @@ coder-objets
 
 ### Coder l'attribut `valeur`{.language-}
 
-Maintenant qu'on est assuré que l'on peut créer des objets, on peut améliorer les fonctionnalités de notre compteur (c'est facile, pour l'instant il ne fait rien). On décide de commencer par ajouter l'attribut `valeur`{.language-} et son accesseur `donne_valeur()`{.language-}
-
-On utilise la boucle de programmation vue précédemment :
+Maintenant qu'on est assuré que l'on peut créer des objets, on peut améliorer les fonctionnalités de notre compteur (c'est facile, pour l'instant il ne fait rien). On décide de commencer par ajouter l'attribut `valeur`{.language-}. On utilise la boucle de programmation vue précédemment :
 
 1. on code une petite fonctionnalité
 2. on vérifie dans le programme principale ou dans un programme principal de test que cette fonctionnalité fonctionne
