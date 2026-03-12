@@ -115,68 +115,6 @@
 </div></div>
 
 <h2>Exécution d'une fonction</h2>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">   i <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x</span>
-<span class="highlight-line">   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">i <span class="token operator">=</span> <span class="token number">2</span></span>
-<span class="highlight-line">x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span></span></code></pre>
-<p>Exécutons le ligne à ligne :</p>
-<ol>
-<li>avant l'exécution de la première ligne :
-<ol>
-<li>on a un unique espace de nommage qui est l'espace des variables
-<img src="fct-cas-1-1.png" alt="cas-1-1"></li>
-</ol>
-</li>
-<li>la ligne 2 définit une fonction de nom <code class="language-">f</code> qui est ajouté à l'espace de noms courant.
-<img src="fct-cas-4-1.png" alt="cas-4-1"></li>
-<li>on passe directement à la ligne 5 puisque les lignes 3 et 4 sont le contenu de la fonction.
-<ol>
-<li>Cette ligne crée un objet entier (valant 2) et l'affecte au nom <code class="language-">i</code>.
-<img src="fct-cas-4-2.png" alt="cas-4-2"></li>
-</ol>
-</li>
-<li>la ligne 6 est encore une affectation. On commence par trouver l'objet à droite du <code>=</code> c'est le résultat de <code class="language-">f(i)</code>. Il faut donc exécuter la fonction <code class="language-">f</code> pour connaître cet objet :
-<ol>
-<li>on cherche l'objet associé à <code class="language-">i</code> qui sera le (premier) paramètre de la fonction</li>
-<li>on crée un espace de noms qui devient l'espace de noms courant :
-<ol>
-<li>l'ancien espace de noms courant devient son parent
-<img src="fct-cas-4-3.png" alt="cas-4-3"></li>
-</ol>
-</li>
-<li>on affecte le premier paramètre de <code class="language-">f</code> au nom <code class="language-">x</code> (le nom du premier paramètre de <code class="language-">f</code> lors de sa définition)
-<ol>
-<li>les nouveaux noms sont <strong>toujours</strong> créés dans l'espace de noms courant
-<img src="fct-cas-4-4.png" alt="cas-4-4"></li>
-</ol>
-</li>
-<li>on exécute la ligne 2 qui est la première ligne de la fonction <code class="language-">f</code> :
-<ol>
-<li>on crée un objet entier (valant 4) qui est le résultat de l'opération à droite du <code class="language-">=</code> (notez que le nom <code class="language-">x</code> est bien défini dans l'espace de noms courant) et on l'affecte au nom <code class="language-">i</code> dans l'espace de noms courant
-<img src="fct-cas-4-5.png" alt="cas-4-5"></li>
-</ol>
-</li>
-<li>on exécute la ligne 3 :
-<ol>
-<li>on crée l'objet résultant de l'opération somme (un entier valant 7)</li>
-<li>la fonction est terminée, son espace de noms courant est détruit</li>
-<li>l'espace de noms courant devient le parent de l'espace de noms détruit
-<img src="fct-cas-4-6.png" alt="cas-4-6"></li>
-<li>on rend l'objet résultat de la fonction</li>
-</ol>
-</li>
-<li>la droite du signe <code class="language-">=</code> de la ligne 6 est trouvée (c'est un entier valant 7) et il est affecté à la variable <code class="language-">x</code> de l'espace de noms courant (qui est à nouveau <code>global</code>)
-<ol>
-<li><img src="fct-cas-4-7.png" alt="cas-4-7"></li>
-<li>les objets sans nom sont détruits
-<img src="fct-cas-4-8.png" alt="cas-4-8"></li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
 <h2>Espaces de nommage parent</h2>
 <p>L'espace de nommage parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de nommage courant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
