@@ -26,13 +26,15 @@ C'est un objet :
 <class 'builtin_function_or_method'>
 ```
 
-On _**exécute**_ l'objet en faisant suivre son nom de parenthèses :
+{% note2 "**Définition**" %}
+On **_exécute_** l'objet en faisant suivre son nom de parenthèses :
 
 ```python
 >>> print()
 
 >>> 
 ```
+{% endnote2 %}
 
 L'exécution de la fonction `print`{.language-} à affiché à l'écran le caractère [retour à la ligne](https://fr.wikipedia.org/wiki/Retour_chariot) ce qui a pour effet d'aller à la ligne.
 
@@ -95,6 +97,7 @@ coucou
 
 ### Retour de fonction
 
+
 L'exécution de toute fonction va retourner un objet. C'est parfois utile (comme [abs](https://docs.python.org/3/library/functions.html#abs)) :
 
 ```python
@@ -121,15 +124,15 @@ Enfin, comme ici on exécute notre code directement dans l'interpréteur python,
 
 ### <span id="paramètres"></span> Paramètres d'une fonction
 
-{% note "**Important**" %}
+{% attention2 "**À retenir**" %}
 Savoir lire la documentation d'une fonction est très important. Cela fait gagner un temps fou de pouvoir utiliser à bon escient tous les paramètres d'une fonction.
-{% endnote %}
+{% endattention2 %}
 
 En regardant [la documentation de la fonction `print`{.language-}](https://docs.python.org/fr/3/library/functions.html#print), on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`{.language-}, `end`{.language-}, `file`{.language-}, `flush`{.language-}) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`{.language-}).
 
-{% note %}
+{% note2 "**Définition**" %}
 Les paramètres sans valeurs par défaut sont **obligatoires** lorsque l'on appelle une fonction, les paramètres ayant une valeur par défaut sont **optionnels**.
-{% endnote %}
+{% endnote2 %}
 
 On cependant bien sur utiliser, en le nommant, un paramètre ayant une valeur par défaut :
 
@@ -140,13 +143,13 @@ coucou***les gens***!
 
 #### Ordre des paramètres
 
-{% note %}
+{% note2 "**Définition**" %}
 Les paramètres d'une fonctions doivent être mis dans cet ordre :
 
 1. **tous** les paramètres sans valeurs par défaut dans l'ordre de la définition
 2. **puis** les paramètres optionnels utilisés sans nom, dans l'ordre de leurs définitions
 3. **puis** les paramètres optionnels utilisés avec leur nom (`nom=valeur`{.language-}) que l'on peut les mettre dans n'importe quel ordre.
-   {% endnote %}
+{% endnote2 %}
 
 {% info %}
 La fonction print n'a pas de nombre déterminé de paramètres sans valeurs par défaut (il y a un `...`), la règle 2 ne s'applique donc pas pour print.
@@ -176,37 +179,6 @@ Peut-on écrire :
 
 {% enddetails %}
 
-#### Paramètres entre crochets dans une définition
-
-On pourra parfois voir des paramètres entre crochet dans la définition de fonction. Par exemple : `complex([real[, imag]])`{.language-} ([documentation de la classe `complex`{.language-}](https://docs.python.org/fr/3/library/functions.html#complex)).
-
-C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela signifie que l'on peut écrire la définition avec ou sans les crochets. Ceci permet d'écrire plusieurs définitions possible en une seule fois. Ainsi la définition `complex([real[, imag]])`{.language-} correspond à trois écritures possibles :
-
-1. crochets extérieurs absents : `complex()`{.language-}
-
-   ```python
-   >>> complex()
-   0j
-   ```
-
-   On vient de créer le complexe nul.
-
-2. crochets extérieurs présents : `complex(real[, imag])`{.language-}. On a à nouveau deux choix :
-
-   1. crochets absents : `complex(real)`{.language-}
-
-      ```python
-      >>> complex(1)
-      (1+0j)
-      ```
-
-   2. crochets présents : `complex(real, imag)`{.language-}
-
-      ```python
-      >>> complex(1, 2)
-      (1+2j)
-      ```
-
 ## Nom d'une classe comme fonction
 
 `int`{.language-}, `float`{.language-}, `complex`{.language-}, `str`{.language-} et `bool`{.language-} permettent de créer des objets du nom du type. Ces classes peuvent être exécutées.
@@ -215,7 +187,7 @@ C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela sign
 En python les fonctions ne sont pas les seules objets pouvant être exécuté. En particulier l'exécution d'une classe permet de créer des objets de ce type.
 {% endnote %}
 
-On a déjà vu cette possibilité dans la partie [objets types et types d'objets](../principes/objets-types){.interne}, c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :
+On a déjà vu cette possibilité dans la partie [objets types et types d'objets](../objets-types){.interne}, c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :
 
 {% exercice %}
 En utilisant [`int()`{.language-}](https://docs.python.org/fr/3/library/functions.html#int) qui crée des entiers, trouvez la représentation décimale du nombre binaire : 1001100011
@@ -270,7 +242,7 @@ Affiche à l'écran ses paramètres.
 Donne le type d'un objet.
 
 {% info %}
-On l'a utilisée dans la partie [objets types et types d'objets](../principes/objets-types){.interne}.
+On l'a utilisée dans la partie [objets types et types d'objets](../objets-types){.interne}.
 {% endinfo %}
 
 ### <span id="len"></span> Fonction `len`{.language-}
@@ -279,7 +251,7 @@ On l'a utilisée dans la partie [objets types et types d'objets](../principes/ob
 <https://docs.python.org/fr/3/library/functions.html#len>
 {% endlien %}
 
-Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'[un conteneur](../structurer-son-code/conteneurs){.interne} que l'on verra plus tard).
+Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'[un conteneur](../../conteneurs){.interne} que l'on verra plus tard).
 
 {% exercice %}
 Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
@@ -324,7 +296,7 @@ objet.méthode(paramètre_1, paramètre_2, ..., paramètre_n)
 
 On applique `méthode`{.language-} à `objet`{.language-} en utilisant les paramètres de la méthode.
 
-{% note "Utilisation des méthodes d'une classe" %}
+{% note "**Utilisation des méthodes d'une classe**" %}
 Supposons que l'on ait un objet de nom `objet`{.language-} et une méthode nommée `méthode`{.language-} associée au type de l'objet de nom `objet`{.language-}.
 
 L'instruction `objet.méthode()`{.language-} exécutera la méthode `méthode`{.language-} pour l'objet `objet`{.language-}. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple `objet.méthode(paramètre_1, paramètre_2)`{.language-}.
@@ -409,7 +381,7 @@ objet.méthode_1().méthode_2()
 
 Signifie que méthode2() est appliquée à l'objet résultat de `objet.méthode_1()`{.language-}.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 L'application des méthodes est **associative à gauche**.
 
 ```python
@@ -422,7 +394,7 @@ est équivalent à :
 (objet.méthode_1()).méthode_2()
 ```
 
-{% endnote %}
+{% endattention2 %}
 
 Ceci se généralise avec $n$ méthodes :
 

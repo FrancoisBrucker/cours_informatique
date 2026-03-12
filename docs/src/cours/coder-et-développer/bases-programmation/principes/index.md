@@ -32,6 +32,15 @@ L'interpréteur python comme intermédiaire entre le code python et son exécuti
 
 On va lister les concepts fondamentaux qui permettent d'utiliser l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.
 
+{% attention2 "**À retenir**" %}
+Dans tous les exemple de code qui suivront, lorsque la ligne de code commencera par `>>>`{.language-} cela signifiera que l'on  a exécuté ce code directement dans l'interpréteur, la ligne suivante montrera le résultat. Par exemple :
+
+```python
+>>> 21 * 2
+42
+```
+
+{% endattention2 %}
 ### Commentaires
 
 Commençons par ne **pas** écrire du python. Dans une ligne de code python, tout ce qui suit un `#`{.language-} n'est pas lu.
@@ -56,9 +65,9 @@ SyntaxError: invalid syntax
 
 Les **_objets_** de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets. Une **_variable_** est un nom qui va représenter un objet.
 
-{% attention %}
+{% attention2 "**À retenir**" %}
 Une variable n'est **pas** un objet, ce n'est qu'un moyen d'y accéder.
-{% endattention %}
+{% endattention2 %}
 
 #### Objets
 

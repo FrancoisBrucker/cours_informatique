@@ -99,22 +99,41 @@ La principale différence entre un éditeur de texte et un notebook est que l'in
 
 Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existantes, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions) ou de données (conteneurs).
 
+{% attention2 "**À retenir**" %}
+Dans tous les exemple de code qui suivront, lorsque l'on écrira du code python, il faudra pour l'exécuter l'écrire dans un fichier. Ne seront visible à l'exécution que les affichages à l'écran. Par exemple le résultat du code :
+
+```python
+print(21 * 2)
+```
+
+Sera l'affichage à l'écran de 42. Le code suivant n'écrira rien à l'écran :
+
+```python
+21 * 2
+```
+
+L'objet produit, un entier valant 42, n'est pas utilisé.
+
+{% endattention2 %}
 {% info %}
-Pour tester le code de cette partie utilisez [l'éditeur vscode](éditeur-vscode){.interne}.
+Il y a donc deux type d'exemples de code :
+
+- ceux commençant par un `>>>`{.language-} dont le but est d'être directement exécuté dans [un interpréteur](./principes/interpréteur/){.language-} et dont on verra directement le résultat de chaque instruction,
+- les programmes dont le but est d'être exécuté via un éditeur comme vscode par exemple et qui consisteront la grande majorité des exemples donnés
 {% endinfo %}
 
 ### Blocs de code
 
 Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en blocs.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Les **_blocs_** en python permettent de grouper des lignes de code qui seront exécutées ensemble sous certaines conditions. Un bloc est toujours défini de la même manière :
 
 - Ce qui va identifier le bloc pour son exécution (une condition, son nombre d'exécution, son nom) et se finit par un `:`{.language-}
 - Les instructions le constituant.
 
-{% endnote %}
+{% endnote2 %}
 
 Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l'indentation (4 espaces par défaut): un bloc est donc une suite d'instructions ayant la même indentation.
 
@@ -147,8 +166,9 @@ bloc A:
 
 {% attention2 "**À retenir**" %}
 L'indentation permet **toujours** de s'y retrouver.
+
 {% endattention2 %}
-{% details "blocs dans l'interpréteur" %}
+{% info %}
 <span id="interpréteur-blocs"></span>
 
 Lorsque l'on crée un bloc avec l'interpréteur, après la première ligne qui défini le bloc (la ligne avec le `:`{.language-}.
@@ -162,14 +182,14 @@ Par exemple l'exemple suivant crée un bloc qui écrit `coucou`{.language} indé
 ...
 ```
 
-Le même bloc écrit dans un notebook puis exécuté aurait été écrit comme ça :
+Le même bloc écrit dans un éditeur puis exécuté aurait été écrit comme ça :
 
 ```python
 while True:
     print("coucou")
 ```
 
-{% enddetails %}
+{% endinfo %}
 
 #### Instructions conditionnelles
 

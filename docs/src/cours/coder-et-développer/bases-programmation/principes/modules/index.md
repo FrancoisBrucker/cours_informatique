@@ -55,7 +55,15 @@ La première ligne du code précédent crée une variable de nom `math`{.languag
 >>>
 ```
 
-Un module contient un objet python appelé _espace de nommage_ et qui permet d'associer des noms à des objets. Représentons ceci graphiquement :
+Un module contient un objet python appelé _espace de nommage_ et qui permet d'associer des noms à des objets.
+
+<div id="définition-espace-nommage"></div>
+
+{% note2 "**Définition**" %}
+Un **_espace de nommage_** est une table de correspondance entre des noms et des objets. C'est un espace de variables "local".
+{% endnote2 %}
+
+Représentons ceci graphiquement :
 
 ![espace de nommage 1](espace-nommage-1.png)
 
@@ -65,9 +73,18 @@ L'espace de nommage (la flèche verte) contient tous les noms définis dans le m
 
 Pour accéder aux objets d'un espace de nommage, on utilise la notation pointée :
 
-{% note "**Définition**" %}
-La notation `A.B` : se lit ainsi on cherche l'objet de nom `B` dans l'espace de nommage de l'objet de nom `A`
-{% endnote %}
+
+<div id="définition-notation pointée"></div>
+
+{% note2 "**Définition**" %}
+Lorsqu'un objet `o`{.langage-} contient un espace de nommage, on peut accéder aux noms qui y sont stockés en utilisant **_la notation pointée_** :
+
+```python
+o.a
+```
+
+La ligne de code précédente rend l'objet de nom `o.a`{.language-} c'est a dire l'objet de nom `a`{.language-} dans l'espace de nom de l'objet de nom `o`{.language-}
+{% endnote2 %}
 
 À l'issue de la seconde ligne on est dans l'état suivant :
 
@@ -134,6 +151,23 @@ Ou encore :
 ```
 
 Notez que dans ce dernier cas, ceci signifie que `pyplot`{.language-} était aussi un module !
+
+{% attention2 "**À retenir**" %}
+La notation pointée est **associative à gauche**. La ligne de code suivante :
+
+```python
+matplotlib.pyplot.axes
+```
+
+Est ainsi équivalente à :
+
+```python
+(matplotlib.pyplot).axes
+```
+
+Le nom `axes`{.language-} est défini dans l'espace de nom de l'objet de nom `matplotlib.pyplot`{.language-}. C'est a dire l'objet associé au nom `pyplot`{.language-} défini dans l'espace de nom de l'objet associé au nom `matplotlib`{.language-}.
+
+{% endattention2 %}
 
 ![espace de nommage plt](espace-nommage-plt.png)
 
