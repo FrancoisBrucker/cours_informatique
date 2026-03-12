@@ -92,7 +92,7 @@ import mon_module
 
 ![import](import-1.png)
 
-Le nom `mon_module`{.language-} correspond à un objet de type module, contenant un espace de nommage. On peut accéder aux noms de son espace avec la notation pointée :
+Le nom `mon_module`{.language-} correspond à un objet de type module, contenant un espace de nommage. On peut accéder aux noms de son espace avec la [notation pointée](../espace-nommage/#notation-pointée){.interne} :
 
 ```python
 mon_module.MA_CONSTANTE

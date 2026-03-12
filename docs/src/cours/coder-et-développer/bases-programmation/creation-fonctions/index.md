@@ -16,7 +16,7 @@ Il n'est jamais bon de copier/coller un bout de programme qui se répète plusie
 ## Définition d'une fonction
 
 {% note %}
-Une **_fonction_** est [un bloc](../blocs){.interne} auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
+Une **_fonction_** est [un bloc](../#blocs){.interne} auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
 
 ```python
 def <nom>(paramètre 1, paramètre 2, ..., paramètre n):
@@ -122,7 +122,9 @@ Il en existe de nombreux autres, python étant friand de ce genre d'opérations.
 
 ## Paramètres d'une fonction
 
-```python
+La fonction suivante nécessite donc un paramètre pour être invoquée :
+
+```python/
 def plus_moins(nombre):
     if nombre > 42:
         print("Supérieur à 42")
@@ -130,31 +132,13 @@ def plus_moins(nombre):
         print("Inférieur à 42")
 ```
 
-Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors `plus_moins(17)`{.language-}.
-La variable nombre sera associée à l'objet entier de valeur 17 dans la fonction. La variable nombre n'existe que dans la fonction.
-
-Python, à chaque exécution d'une fonction crée un espace de nom pour elle. Cet espace de nom sera détruit lorsque la fonction aura fini d'être exécutée. Une fois cet espace de nom crée, il associe le nom du paramètre à l'objet passé en paramètre.
+Pour l'exécuter, il faut lui donner un objet qui sera transmis à la fonction pour son exécution, par exemple : `plus_moins(17)`{.language-}. La variable nombre sera ici associée à l'objet entier de valeur 17 dans la fonction.
 
 {% attention %}
 Les _paramètres_ d'une fonction sont des **noms** de variables qui ne seront connus qu'à l'intérieur de la fonction. À l'exécution de la fonction, le nom de chaque paramètre est associé à l'objet correspondant.
 {% endattention %}
 
-Pour faire en sorte que des variables ne soient connues que pendant l'exécution d'une fonction python utilise les **_espaces de nommage_** que nous avons déjà entre-aperçus [lorsque l'on a parlé de modules](../../principes/modules/){.interne}
-
-Regardons le bout de code suivant, qui utilise la fonction `plus_moins`{.language-} définie précédemment :
-
-```python
-x = 12
-plus_moins(x)
-```
-
-Lorsque python exécute la deuxième du code précédent il va :
-
-1. créer un espace de nommage pour la fonction
-2. regarder les objets passés en paramètre. Ici c'est l'objet associé au nom `x`{.language-}. Python cherche l'objet, c'est un entier valant 12.
-3. python associe chaque objet à son nom **dans** l'espace de nom de la fonction : ici l'entier qui vaut 12 sera appelé `nombre`{.language-} dans la fonction (le nom du paramètre dans la définition de la fonction).
-4. python exécute la fonction.
-5. à la fin de la fonction, l'espace de nom de la fonction est détruit (on ne détruit que les noms, pas les objets associés).
+Entraînons nous à écrire des fonctions avec des paramètres :
 
 {% exercice %}
 Créez et testez une fonction nommée `cube`{.language-} qui prend un entier en paramètre et affiche cet élément au cube.
@@ -185,7 +169,8 @@ puissance(3, 2)
 
 {% enddetails %}
 
-## Paramètres par défaut
+
+Il est possible de donner des paramètres par défaut aux fonctions. Le code suivant par exemple ajoute un paramètre à la fonction `plus_moins`{.language-} et lui donne une valeur par défaut :
 
 ```python
 def plus_moins(nombre, seuil=42):
@@ -202,6 +187,8 @@ On peut alors utiliser la fonction comme précédemment, `plus_moins(20)`{.langu
 Comme le paramètre par défaut est le deuxième on peut aussi l'utiliser sans le nommer : `plus_moins(20, 10)`{.language-}
 {% endinfo %}
 
+Ajoutons un paramètre par défaut à une des fonctions précédemment crées :
+
 {% exercice %}
 Créez et testez une fonction nommée `puissance`{.language-} qui prend deux entiers en paramètre et affiche le premier paramètre élevé à la puissance du second paramètre. Le second paramètre vaut 2 par défaut.
 {% endexercice %}
@@ -216,7 +203,13 @@ def puissance(x, y=2):
 
 ## Retour d'une fonction
 
-Toute fonction peut rendre une valeur. On utilise le mot-clef `return`{.language-} suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l'objet passé en paramètre:
+{% note2 "**Définition**" %}
+Toute fonction rend une valeur. On utilise le mot-clef `return`{.language-} suivi de la valeur à rendre pour cela et ce sera toujours la dernière instruction effectuée.
+
+{% endnote2 %}
+
+
+Par exemple la fonction suivante rend le double de la valeur de l'objet passé en paramètre:
 
 ```python
 def double(valeur):
@@ -224,7 +217,17 @@ def double(valeur):
     return x
 ```
 
-Il ne sert à rien de mettre des instructions après une instruction `return`{.language-} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
+Il ne sert à rien de mettre des instructions après une instruction `return`{.language-} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre.  La fonction suivante rendra par exemple toujours 42, la 5ème ligne n'étant **jamais** exécutée :
+
+```python/
+def double(valeur):
+    x = valeur * 2
+
+    return 42
+    return x
+```
+
+Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
 
 {% faire %}
 Définissez la fonction précédente dans un fichier python puis exécutez là.
@@ -243,21 +246,16 @@ Le code précédent exécute la fonction de nom `double`{.language-} avec comme 
 
 Cette valeur retournée est utilisée par la commande `print`{.language-} pour être affichée à l'écran.
 
-{% attention %}
-Les noms de paramètres d'une fonction et les variables déclarée à l'intérieur de la fonction n'existent qu'à l'intérieur de celle-ci. En dehors de ce blocs, ces variables n'existent plus.
-{% endattention %}
 
-{% exercice %}
-Créez et testez une fonction nommée `puissance`{.language-} qui prend deux entiers en paramètre et rend le premier paramètre élevé à la puissance du second paramètre. Le second paramètre vaut 2 par défaut.
-{% endexercice %}
-{% details "solution" %}
+Enfin, python ajoute ajoute implicitement à toute fonction une dernière ligne avec l'instruction `return None`{.language-} : toute fonction rendra toujours quelque chose, au pire `None`{.language-}. Par exemple la fonction suivante rendra l'objet `None`{.language-} :
 
-```python
-def puissance(x, y=2):
-    return x ** y
+```python/
+def affiche_double(valeur):
+    x = valeur * 2
+    print(x)
 ```
 
-{% enddetails %}
+L'usage veut qu'une fonction qui rende `None`{.language-} soit considérée comme une fonction ne rendant rien.
 
 ## Fonction en paramètre
 
@@ -385,3 +383,62 @@ La plupart du temps, pour de petits programme, ce genre de précision n'est pas 
 Mais alors, il est de toute façon plus pertinent d'écrire dans un autre langage que python... Plus adapté au développement de grosses applications comme le java ou encore le rust.
 
 {% endinfo %}
+
+## <span id="espace-nommage"></span>Espaces de nommages et fonctions
+
+Pour faire en sorte que les noms des paramètres et les variables définies dans le corps de la fonction ne soient pas visible du reste du programme python utilise les **_espaces de nommage_** que nous avons déjà entre-aperçus [lorsque l'on a parlé de modules](../principes/modules/#définition-espace-nommage){.interne}.
+
+
+{% note2 "**Définition**" %}
+Lorsqu'une fonction est exécutée, un espace de nommage initialement vide est créé pour elle. Y seront stocké ses paramètres et toutes les variables créés dans le code de la fonction. Une fois la fonction terminée, l'espace de nom est détruit.
+
+{% endnote2 %}
+{% info %}
+Un espace de nom étant une table de correspondance entre des nom et des objets, les objets créé ne sont pas détruits une fois l'espace de nom détruit, ce qui permet de transmettre, via le retour des fonctions, des objets créés dans la fonction au programme appelant la fonction.
+{% endinfo %}
+
+Illustrons ce mécanisme avec un exemple. On considère le code suivant :
+
+```python/
+def f(x):
+   i = 2 * x
+   return i + 3
+
+i = 2
+x = f(i)
+```
+
+Que l'on exécute ligne à ligne :
+
+1. avant l'exécution de la première ligne :
+   1. on a un unique espace de nommage qui est l'espace des variables
+      ![cas-1-1](fct-cas-1-1.png)
+2. la ligne 2 définit une fonction de nom `f`{.language-} qui est ajouté à l'espace de noms courant.
+   ![cas-4-1](fct-cas-4-1.png)
+3. on passe directement à la ligne 5 puisque les lignes 2 et 3 sont le contenu de la fonction.
+   1. Cette ligne crée un objet entier (valant 2) et l'affecte au nom `i`{.language-}.
+      ![cas-4-2](fct-cas-4-2.png)
+4. la ligne 6 est encore une affectation. On commence par trouver l'objet à droite du `=` c'est le résultat de `f(i)`{.language-}. Il faut donc exécuter la fonction `f`{.language-} pour connaître cet objet :
+   1. on cherche l'objet associé à `i`{.language-} qui sera le (premier) paramètre de la fonction
+   2. on crée un espace de noms dans lequel sera exécuté la fonction. Cet espace est lié à l'espace des variables (c'est la flèche en pointillée) :
+      ![cas-4-3](fct-cas-4-3.png)
+   3. on affecte le premier paramètre de `f`{.language-} au nom `x`{.language-} (le nom du premier paramètre de `f`{.language-} lors de sa définition) :
+         ![cas-4-4](fct-cas-4-4.png)
+   4. on exécute la ligne 2 qui est la première ligne de la fonction `f`{.language-}. On crée un objet entier (valant 4) qui est le résultat de l'opération à droite du `=`{.language-} (notez que le nom `x`{.language-} est bien défini dans l'espace de noms de la fonction) et on l'affecte au nom `i`{.language-} :
+         ![cas-4-5](fct-cas-4-5.png)
+   5. on exécute la ligne 3 :
+      1. on crée l'objet résultant de l'opération somme (un entier valant 7) et qu'on garde comme étant le retour de la fonction
+      2. la fonction est terminée, son espace de noms courant est détruit
+      3. l'espace de noms courant devient l'espace des variables :
+         ![cas-4-6](fct-cas-4-6.png)
+      4. on rend l'objet résultat de la fonction
+   6. la droite du signe `=`{.language-} de la ligne 6 est trouvée (c'est un entier valant 7) et il est affecté à la variable `x`{.language-} de l'espace de noms courant (qui est à nouveau `global`)
+      1. ![cas-4-7](fct-cas-4-7.png)
+      2. les objets sans noms sont détruits
+         ![cas-4-8](fct-cas-4-8.png)
+
+
+
+{% attention2 "**À retenir**" %}
+Les noms de paramètres d'une fonction et les variables déclarée à l'intérieur de la fonction n'existent qu'à l'intérieur de celle-ci. En dehors de ce blocs, ces variables n'existent plus.
+{% endattention2 %}

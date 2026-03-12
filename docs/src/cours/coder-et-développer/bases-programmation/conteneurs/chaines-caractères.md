@@ -22,7 +22,7 @@ Une chaîne de caractères peut être vue comme un conteneur de caractères. On 
 'c'
 ```
 
-Ou même utiliser des [slices de liste](./listes/#slice){.interne} :
+Ou même utiliser des [slices de liste](../listes/#slice){.interne} :
 
 ```python
 >>> "abcdefghijklmnopqrstuvwxyz"[2:15:4]

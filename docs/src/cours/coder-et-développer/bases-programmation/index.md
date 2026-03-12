@@ -122,7 +122,7 @@ Il y a donc deux type d'exemples de code :
 - les programmes dont le but est d'être exécuté via un éditeur comme vscode par exemple et qui consisteront la grande majorité des exemples donnés
 {% endinfo %}
 
-### Blocs de code
+### <span id="blocs"></span> Blocs de code
 
 Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en blocs.
 
