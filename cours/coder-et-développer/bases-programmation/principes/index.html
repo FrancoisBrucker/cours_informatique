@@ -116,6 +116,18 @@
 
 <h2>Éléments de langage</h2>
 <p>On va lister les concepts fondamentaux qui permettent d'utiliser l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Dans tous les exemple de code qui suivront, lorsque la ligne de code commencera par <code class="language-">&gt;&gt;&gt;</code> cela signifiera que l'on  a exécuté ce code directement dans l'interpréteur, la ligne suivante montrera le résultat. Par exemple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token number">21</span> <span class="token operator">*</span> <span class="token number">2</span>
+<span class="token number">42</span></code></pre>
+</div></div>
+
 <h3>Commentaires</h3>
 <p>Commençons par ne <strong>pas</strong> écrire du python. Dans une ligne de code python, tout ce qui suit un <code class="language-">#</code> n'est pas lu.</p>
 <p>Par exemple, le code suivant écrit dans une console ne produit pas d'erreur (il n'est même pas lu...) :</p>
@@ -128,11 +140,13 @@
 SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <h3>Objets et variables</h3>
 <p>Les <strong><em>objets</em></strong> de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets. Une <strong><em>variable</em></strong> est un nom qui va représenter un objet.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Une variable n'est <strong>pas</strong> un objet, ce n'est qu'un moyen d'y accéder.</p>
 </div></div>
 

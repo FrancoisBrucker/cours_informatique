@@ -110,10 +110,19 @@
 <p>C'est un objet :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token keyword">print</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'builtin_function_or_method'</span><span class="token operator">></span></code></pre>
-<p>On <em><strong>exécute</strong></em> l'objet en faisant suivre son nom de parenthèses :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On <strong><em>exécute</em></strong> l'objet en faisant suivre son nom de parenthèses :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token operator">>></span><span class="token operator">></span> </code></pre>
+</div></div>
+
 <p>L'exécution de la fonction <code class="language-">print</code> à affiché à l'écran le caractère <a href="https://fr.wikipedia.org/wiki/Retour_chariot">retour à la ligne</a> ce qui a pour effet d'aller à la ligne.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -195,22 +204,24 @@ coucou
 <li>si le résultat est <code class="language-">None</code> (c'est pour ça que l'interpréteur n'affiche rien après l'instruction <code class="language-">None</code> ni après après avoir affiché <code class="language-">coucou</code> après l'exécution de la fonction <code class="language-">print(&quot;coucou&quot;)</code>)</li>
 </ul>
 <h3><span id="paramètres"></span> Paramètres d'une fonction</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Important</strong></p>
+<p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Savoir lire la documentation d'une fonction est très important. Cela fait gagner un temps fou de pouvoir utiliser à bon escient tous les paramètres d'une fonction.</p>
 </div></div>
 
 <p>En regardant <a href="https://docs.python.org/fr/3/library/functions.html#print">la documentation de la fonction <code class="language-">print</code></a>, on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (<code class="language-">sep</code>, <code class="language-">end</code>, <code class="language-">file</code>, <code class="language-">flush</code>) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut <code>sep</code> vaut <code class="language-">&quot; &quot;</code>).</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Les paramètres sans valeurs par défaut sont <strong>obligatoires</strong> lorsque l'on appelle une fonction, les paramètres ayant une valeur par défaut sont <strong>optionnels</strong>.</p>
 </div></div>
 
@@ -218,11 +229,13 @@ coucou
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">,</span> <span class="token string">"les gens"</span><span class="token punctuation">,</span> <span class="token string">"!"</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"***"</span><span class="token punctuation">)</span>
 coucou<span class="token operator">**</span><span class="token operator">*</span>les gens<span class="token operator">**</span><span class="token operator">*</span>!</code></pre>
 <h4>Ordre des paramètres</h4>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Les paramètres d'une fonctions doivent être mis dans cet ordre :</p>
 <ol>
 <li><strong>tous</strong> les paramètres sans valeurs par défaut dans l'ordre de la définition</li>
@@ -281,32 +294,6 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </div>
 </details>     
 </div>
-<h4>Paramètres entre crochets dans une définition</h4>
-<p>On pourra parfois voir des paramètres entre crochet dans la définition de fonction. Par exemple : <code class="language-">complex([real[, imag]])</code> (<a href="https://docs.python.org/fr/3/library/functions.html#complex">documentation de la classe <code class="language-">complex</code></a>).</p>
-<p>C'est <strong>un raccourci d'écriture</strong>, ce n'est pas une structure python. Cela signifie que l'on peut écrire la définition avec ou sans les crochets. Ceci permet d'écrire plusieurs définitions possible en une seule fois. Ainsi la définition <code class="language-">complex([real[, imag]])</code> correspond à trois écritures possibles :</p>
-<ol>
-<li>
-<p>crochets extérieurs absents : <code class="language-">complex()</code></p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token number">0j</span></code></pre>
-<p>On vient de créer le complexe nul.</p>
-</li>
-<li>
-<p>crochets extérieurs présents : <code class="language-">complex(real[, imag])</code>. On a à nouveau deux choix :</p>
-<ol>
-<li>
-<p>crochets absents : <code class="language-">complex(real)</code></p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">0j</span><span class="token punctuation">)</span></code></pre>
-</li>
-<li>
-<p>crochets présents : <code class="language-">complex(real, imag)</code></p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2j</span><span class="token punctuation">)</span></code></pre>
-</li>
-</ol>
-</li>
-</ol>
 <h2>Nom d'une classe comme fonction</h2>
 <p><code class="language-">int</code>, <code class="language-">float</code>, <code class="language-">complex</code>, <code class="language-">str</code> et <code class="language-">bool</code> permettent de créer des objets du nom du type. Ces classes peuvent être exécutées.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -317,7 +304,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <p>En python les fonctions ne sont pas les seules objets pouvant être exécuté. En particulier l'exécution d'une classe permet de créer des objets de ce type.</p>
 </div></div>
 
-<p>On a déjà vu cette possibilité dans la partie <a href="../principes/objets-types" class="interne">objets types et types d'objets</a>, c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :</p>
+<p>On a déjà vu cette possibilité dans la partie <a href="../objets-types" class="interne">objets types et types d'objets</a>, c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -417,7 +404,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On l'a utilisée dans la partie <a href="../principes/objets-types" class="interne">objets types et types d'objets</a>.</p>
+<p>On l'a utilisée dans la partie <a href="../objets-types" class="interne">objets types et types d'objets</a>.</p>
 </div></div>
 
 <h3><span id="len"></span> Fonction <code class="language-">len</code></h3>
@@ -431,7 +418,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <p><a href="https://docs.python.org/fr/3/library/functions.html#len">https://docs.python.org/fr/3/library/functions.html#len</a></p>
 </div></div>
 
-<p>Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'<a href="../structurer-son-code/conteneurs" class="interne">un conteneur</a> que l'on verra plus tard).</p>
+<p>Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'<a href="../../conteneurs" class="interne">un conteneur</a> que l'on verra plus tard).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -494,7 +481,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p>Utilisation des méthodes d'une classe</p>
+<p><strong>Utilisation des méthodes d'une classe</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Supposons que l'on ait un objet de nom <code class="language-">objet</code> et une méthode nommée <code class="language-">méthode</code> associée au type de l'objet de nom <code class="language-">objet</code>.</p>
 <p>L'instruction <code class="language-">objet.méthode()</code> exécutera la méthode <code class="language-">méthode</code> pour l'objet <code class="language-">objet</code>. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple <code class="language-">objet.méthode(paramètre_1, paramètre_2)</code>.</p>
@@ -636,11 +623,13 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <p>On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple, avec 2 méthodes :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Signifie que méthode2() est appliquée à l'objet résultat de <code class="language-">objet.méthode_1()</code>.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>L'application des méthodes est <strong>associative à gauche</strong>.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>est équivalent à :</p>
