@@ -187,7 +187,7 @@ Créez les constantes :
 - `SEPT`{.language-}, `HUIT`{.language-}, `NEUF`{.language-}, `DIX`{.language-}, `VALET`{.language-}, `DAME`{.language-}, `ROI`{.language-}, `AS`{.language-}
 - `PIQUE`{.language-}, `COEUR`{.language-}, `CARREAU`{.language-}, `TREFLE`{.language-}
 
-En leur associant les chaînes de caractères adéquates.
+En leur associant les entiers adéquats.
 {% endfaire %}
 
 Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des entiers comme 7.
