@@ -16,7 +16,7 @@ eleventyComputed:
 import random
 ```
 
-En réalité, python cherche un fichier qui s'appelle `random.py`{.fichier} et l'exécute. La variables crées sont placés dans l'espace de nommage du module.
+En réalité, python cherche un fichier qui s'appelle `random.py`{.fichier} et l'exécute. La variables crées sont placés dans [l'espace de nommage du module](../principes/modules/#définition-espace-nommage){.interne}.
 
 On peut tout à fait utiliser ce principe, et on va le faire souvent par la suite, pour créer ses propres modules.
 
@@ -88,11 +88,11 @@ import mon_module
 
 {% endnote %}
 
-À la fin de la première instruction on est dans la situation suivante :
+À la fin de l'exécution de l'instruction `import mon_module`{.language-} on est dans la situation suivante :
 
 ![import](import-1.png)
 
-Le nom `mon_module`{.language-} correspond à un objet de type module, contenant un espace de nommage. On peut accéder aux noms de son espace avec la [notation pointée](../espace-nommage/#notation-pointée){.interne} :
+Le nom `mon_module`{.language-} correspond à un objet de type module contenant un espace de nommage. On peut accéder aux noms de son espace avec la [notation pointée](../principes/modules/#définition-notation-pointée){.interne} :
 
 ```python
 mon_module.MA_CONSTANTE

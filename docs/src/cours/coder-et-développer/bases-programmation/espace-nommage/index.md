@@ -9,34 +9,60 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Nous avons déjà abordé la notion d' lorsque :
 
-<!-- TBD
+- on a paré de modules : [l'espace de nommage du module](../principes/modules/#définition-espace-nommage){.interne} et accès aux éléments via [la notation pointée](../principes/modules/#définition-notation-pointée){.interne}
+- on a parlé des fonctions : [l'espace de nommage et fonctions](../création-fonctions/#espace-nommage){.interne}
 
->  reprendre avec la partie variable qui commence à en parler. Pour l'instant pas de dictionnaire !
-> Faire sans et juste dire que chaque fonction ou module a son espace de nommage.
-> juste dire globals() et locals() et dire que c'est une structure de conteneur (le dictionnaire) que l'on verra plus tard. Tout est explicite en python.
-> voir la différence entre locals et globals en code avec l'appel d'une fonction.
- -->
+Les espaces de nommage permettent de lier variables et objets :
 
-Python stocke ses variable dans un objet appelé **_espace de nommage_**.
+- on considère que les objets sont stockés dans **_l'espace des objets_** : cet espace est **unique**
+- on accède aux objets via leurs noms, eux même stockés dans des **_espaces de nommage_** qui sont des objets comme les autres : il y en a de **nombreux**.
 
-Une variable a un nom et est affecté à un objet python. Il est important de dissocier le nom de l'objet pour une variable et surtout la variable de l'objet qu'elle représente.
+Pour chaque _espace de nommage_ :
+
+- il ne peut y avoir 2 noms identiques
+- à chaque nom est associé un objet
+- certains espaces de noms possèdent un parent qui sera utilisé si on ne trouve pas un nom.
+
+De façon formelle :
+
+{% note2 "**Définition**" %}
+Un **_espace de nommage_** est table de correspondance ([un dictionnaire](../conteneurs/dictionnaires){.interne}) associant des noms (les clés) à des objets (les valeurs). 
+Il contient également un lien vers son **_parent_** qui est soit :
+
+- vide
+- un autre espace de nommage
+- l'espace des variables
+{% endnote2 %}
+
+Par exemple les espaces de nommages associés aux modules on par exemple un parent vide et ceux créés par les fonctions dépendant de l'espace de nommage qui les a appelé.
+
+{% attention2 "**À retenir**" %}
+Les espaces de nommages sont utilisés à de nombreux endroits dans python et sont là pour : 
+
+1. gérer les noms et leurs objets associés
+2. séparer les responsabilités et cloisonner les noms auxquels ont accès les différentes parties d'un programme
+{% endattention2  %}
+
+
+Avant de détailler ce mécanisme, commençons par rappeler ce qu'est un nom et un objet pour python.
 
 ## Rappel sur les variables et les objets
 
 Commençons par quelques rappels et précisions sur les variables et leurs liens avec les objets :
 
-{% note %}
-
 - tout ce que manipule un programme est appelé objet.
-- les variables représentent les objets. On dit aussi parfois qu'une variable est une **_référence_** à un objet.
+- les variables sont des noms via lesquels on accède aux objets. On dit aussi parfois qu'une variable est une **_référence_** à un objet.
 
-{% endnote %}
+{% attention2 "**À retenir**" %}
 
 Pour qu'un programme objet fonctionne, on a besoin de deux mécanismes :
 
 - un moyen de stocker des données et de les manipuler (les objets et leurs méthodes)
 - un moyen d'y accéder (les variables)
+
+{% endattention2 %}
 
 ### Objets
 
@@ -47,7 +73,11 @@ Un objet est une structure de donnée générique permettant de gérer tout ce d
 - des modules
 - ...
 
+{% attention2 "**À retenir**" %}
+
 Tout est objet dans un langage objet.
+
+{% endattention2 %}
 
 ### Variables
 
@@ -59,57 +89,126 @@ variable = objet
 
 A gauche de l’opérateur `=`{.language-} se trouve une **variable** (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un **objet**. Dans toute la suite du programme, dès que le programme rencontrera le nom, il le remplacera par l'objet.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Une variable n'est **pas** l'objet, c'est une référence à celui-ci
-{% endnote %}
+{% endattention2 %}
 
 La variable peut être vue comme un **nom** de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.
 
 Pour s'y retrouver et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même nom, elles sont regroupées par ensembles — nommés **espaces de noms** — hiérarchiquement ordonnés.
 
-## <span id="espace-nommage"></span> Espaces de nommage
+## <span id="espace-variable"></span> Espaces des variables
 
-Les espaces de noms sont des objets de python qui permettent de lier variables et objets :
+L'espace des variables peut-être vu comme un espace de nom particulier : c'est celui qui est créé au début de l'exécution de l'interpréteur.
 
-- on considère que les objets sont stockés dans **_l'espace des objets_** : cet espace est **unique**
-- on accède aux objets via leurs noms, eux même stockés dans des **_espaces de nommage_** qui sont des objets comme les autres : il y a de **nombreux** espaces de nommages.
+{% attention2 "**À retenir**" %}
+Au démarrage d'une exécution d'un programme, l'espace des variables est créé. C'est à partir de lui que toutes les variables doivent être atteintes.
+{% endattention2 %}
 
-Pour chaque _espace de nommage_ :
+Au départ, cet espace il ne contient rien, à part des variables spéciales (qui ont des noms commençant et finissant par `__`{.language-}) utilisées par python. On en verra certaines pendant ce cours, mais ce qu'il faut retenir c'est que ces variables permettent à python de fonctionner. Elles sont mises à disposition des développeurs mais on ne les utilisera jamais dans un usage courant.
 
-- il ne peut y avoir 2 noms identiques
-- à chaque nom est associé un objet
-- certains espaces de noms possèdent un parent qui sera utilisé si on ne trouve pas un nom.
-
-{% lien %}
-Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage python](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces), mais la procédure est similaire pour les autres langages à objets.
-{% endlien %}
-
-Lorsque l'on exécute un programme, un premier espace de nommage est créé :
-
-{% note %}
-Au démarrage d'une exécution d'un programme, l'espace de nommage principal, celui où l'on créera les variables, est créé. C'est à partir de lui que toutes les variables doivent être atteintes.
-{% endnote %}
-
-Au départ, il ne contient rien, à part des noms commençant et finissant par `__`{.language-}, qui sont utilisés par python. On en verra certaines pendant ce cours, mais ce qu'il faut retenir c'est que ces variables permettent à python de fonctionner. Elles sont mises à disposition des développeurs mais on ne les utilisera jamais dans un usage courant.
-
-Pour voir les noms définit dans l'espace de noms des variables, on utilise en python la fonction `globals()`{.language-} qui rend un dictionnaire contenant le nom et l'objet associé à chaque variable. Au démarrage de l'interpréteur, il n'y pas grand chose dans globals :
+Pour voir les noms définis dans l'espace de noms des variables, on utilise en python [la fonction `globals()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#globals) qui rend **le** dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.
 
 ```python
->>> globals()
-{
-   '__name__': '__main__', 
-   '__doc__': None, 
-   '__package__': '_pyrepl', 
-   '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, 
-   '__spec__': ModuleSpec(name='_pyrepl.__main__', loader=<_frozen_importlib_external.SourceFileLoader object at 0x100d20fb0>, origin='/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py'), 
-   '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 
-   '__file__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__main__.py', 
-   '__cached__': '/opt/homebrew/Cellar/python@3.13/3.13.0_1/Frameworks/Python.framework/Versions/3.13/lib/python3.13/_pyrepl/__pycache__/__main__.cpython-313.pyc'
-}
+>>> type(globals())
+<class 'dict'>
+>>> globals().keys()
+dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__builtins__'])
 ```
 
-Uniquement des variables internes à python.
+On voit que des variables existent dès le démarrage de python. Ces variables ne sont pas là pour être utilisées par nous mais sont indispensables au bon fonctionnement de python :
 
+- `__name__`{.language-},`__doc__`{.language-}, `__packages__`{.language-}. `__loader__`{.language-} et `__spec__`{.language-} existent pour tout espace de nommage et permettent leur bon fonctionnement
+- `__builtins__`{.language-} est un module propre à l'espace des variables et contient toutes les fonctions de python (il contient les noms `print`, `input`, etc)
+
+{% info %}
+Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit **explicite** : on a accès via ces variables spéciales au fonctionnement interne de python que l'on peut examiner, voir modifier (mais ne le faites pas...)
+
+{% endinfo %}
+
+Ajoutons une variable et vérifions qu'elle est ajoutée à l'espace des variables :
+
+```python
+>>> x = "youhou ! Je suis là !"
+>>> globals().keys()
+dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__builtins__', 'x'])
+```
+
+Notre variable a bien été ajouté à l'espace des noms. Comme c'est un dictionnaire, on peut y accéder directement :
+
+```python
+>>> globals()['x']
+'youhou ! Je suis là !'
+```
+
+Qui est équivalent à :
+
+```python
+>>> print(x)
+'youhou ! Je suis là !'
+```
+
+
+Voir même y ajouter directement des variables. La ligne suivante est équivalente à affecter une nouvelle variable `y`{.language-} :
+
+```python
+>>> globals()['y'] = "je suis un véritable hacker."
+```
+
+Vérifions le :
+
+```python
+>>> print(y)
+je suis un véritable hacker.
+```
+
+{% attention2 "**À retenir**" %}
+L'espace de variable est l'espace de nommage principal. On doit pouvoir accéder à tous les objets via celui-ci.
+
+{% endattention2 %}
+
+## <span id="espace-modules"></span> Espaces de nommage des modules
+
+On a vu qu'un module contenait [un espace de nommage](../principes/modules/#définition-espace-nommage){.interne} auquel on pouvait accéder via [la notation pointée](../principes/modules/#définition-notation-pointée){.interne}.
+
+Tout comme la fonction `globals()`{.language-} permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet `o`{.language-} (en particulier d'un module) en utilisant [la fonction `vars(o)`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#vars).
+
+Testons cela :
+
+{% faire %}
+
+Dans un projet avec vscode créez deux fichiers :
+
+- un fichier `main.py`{.language-} contenant le code :
+  ```python
+
+  import mon_module
+
+  print(vars(mon_module).keys())
+   ```
+- un fichier `mon_module.py`{.language-} vide
+
+{% endfaire %}
+
+Lorsque vous exécutez le fichier 
+> TBD créer un fichier vide et on l'importe.
+> TBD vars permet de connaître l'espace de nom d'un objet qui en possède un.
+> TBD on retrouve les éléments d'avant.
+> TDB voir le __main__
+
+
+> TBD comme globals, un espace de nom est mutable : on utilise = et la notation pointé tout comme on ferait un = pour les variables.
+
+## <span id="espace-variable"></span> Espaces local et hiérarchie des espaces de nommages
+
+> TBD locals 
+> TBD fonctions.
+> TBD trouver une variable au delà de son espace mais affectation dans l'espace locale
+
+> TBD fonctions récursives
+
+
+<!-- 
 ## Exemple
 
 On peut maintenant reprendre un exemple de [la partie variable et objet](../principes/variables/) à l'aune des espace de nommage. Considérons le programme suivant :
@@ -467,4 +566,4 @@ Ce qui montre bien que :
 
 1. un nouvel espace de nommage a été crée pour l'exécution de la fonction
 2. que les paramètres de la fonction sont des variables de ce nouvel espace
-3. que l'espace disparait à la fin de l'exécution de la fonction
+3. que l'espace disparait à la fin de l'exécution de la fonction -->

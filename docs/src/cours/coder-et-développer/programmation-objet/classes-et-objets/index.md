@@ -504,10 +504,7 @@ Pour construire cette cette classe, il faut se poser la question :
 
 ### Analyse du besoin
 
-Ici notre besoin c'est de faire marcher le bout de code d'une façon plausible. Il faut se demander ce que veut l'utilisateur.
-
-
-C'est du python.
+Ici notre besoin c'est de faire marcher le bout de code d'une façon plausible. Il faut se demander ce que veut l'utilisateur de ce code python.
 
 Le programme commence par importer le mot `Compteur`{.language-} d'un module nommé `compteur`{.language-} (donc placé dans un fichier  nommé `compteur.py` dans le dossier du projet) et on l'exécute 2 fois pour l'affecter à 2 noms différents. Pour voir ce que peut être `Compteur`{.language-}, plusieurs indices :
 
@@ -554,7 +551,6 @@ On peut même combiner les diagramme UML ensemble. Par exemple un point et un po
 Ou le classique personne et compte bancaire :
 
 ![personne / compte](uml-exemple-2.png)
-
 
 #### Compteur
 

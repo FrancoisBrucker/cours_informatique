@@ -74,7 +74,7 @@ L'espace de nommage (la flèche verte) contient tous les noms définis dans le m
 Pour accéder aux objets d'un espace de nommage, on utilise la notation pointée :
 
 
-<div id="définition-notation pointée"></div>
+<div id="définition-notation-pointée"></div>
 
 {% note2 "**Définition**" %}
 Lorsqu'un objet `o`{.langage-} contient un espace de nommage, on peut accéder aux noms qui y sont stockés en utilisant **_la notation pointée_** :
