@@ -141,7 +141,7 @@ Dé-commentez la seconde partie de la user story et vérifiez qu'elle fonctionne
 Finalisons les différentes initialisations possible de l'attribut `position`{.language-} :
 
 {% faire %}
-Faites en sorte que l'on puisse choisir la position initiale du dé dans le constructeur. Par défaut, la position du dé doit toujours être de 1. Ajoutez un test correspondant dans le test `test_position()`{.language-}.
+Faites en sorte que l'on doive choisir la position initiale du dé dans le constructeur. Ajoutez un test correspondant dans le test `test_position()`{.language-}.
 {% endfaire %}
 
 ### Méthode `Dé.lancer()`{.language-}
@@ -213,27 +213,4 @@ Créez un fichier `main.py`{.fichier} qui :
 2. lance le dé jusqu'à tant que sa position est différente de la position demandée par l’utilisateur soit trouvée.
 3. le programme affiche le nombre de lancer nécessaire (cela peut être 0)
 
-{% endfaire %}
-
-## Lancers multiples
-
-Pour l'instant, l'utilisation de la méthode `lancer`{.language-} est laborieuse :
-
-- pour connaître la nouvelle position du dé il faut d'abord lancer le dé puis regarder sa position
-- pour lancer deux fois le dé, il faut faire deux lignes
-
-Ce serait tellement bien si on pouvait faire quelques chose du style :
-
-- `print(dé.lancer().position)`{.language-} pour lancer le dé puis retrouver sa position dans la même ligne
-- `dé.lancer().lancer()`{.language-} pour lancer le dé deux fois de suite.
-
-{% exercice %}
-Comment réaliser cela ?
-{% endexercice %}
-{% details "solution" %}
-Il suffit que la méthode rende l'objet (c'est à dire `self`{.language-}) !
-{% enddetails %}
-
-{% faire %}
-Modifiez le code, les tests et le programme principal pour mettre en œuvre cette modification.
 {% endfaire %}

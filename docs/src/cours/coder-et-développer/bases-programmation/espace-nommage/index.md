@@ -119,7 +119,7 @@ dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__bu
 On voit que des variables existent dès le démarrage de python. Ces variables ne sont pas là pour être utilisées par nous mais sont indispensables au bon fonctionnement de python :
 
 - `__name__`{.language-},`__doc__`{.language-}, `__packages__`{.language-}. `__loader__`{.language-} et `__spec__`{.language-} existent pour tout espace de nommage et permettent leur bon fonctionnement
-- `__builtins__`{.language-} est un module propre à l'espace des variables et contient toutes les fonctions de python (il contient les noms `print`, `input`, etc)
+- `__builtins__`{.language-} est un module et contient toutes les fonctions de python (il contient les noms `print`, `input`, etc)
 
 {% info %}
 Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit **explicite** : on a accès via ces variables spéciales au fonctionnement interne de python que l'on peut examiner, voir modifier (mais ne le faites pas...)
@@ -177,20 +177,30 @@ Testons cela :
 
 {% faire %}
 
-Dans un projet avec vscode créez deux fichiers :
+Dans un projet vscode créez deux fichiers :
 
 - un fichier `main.py`{.language-} contenant le code :
   ```python
-
   import mon_module
 
   print(vars(mon_module).keys())
    ```
 - un fichier `mon_module.py`{.language-} vide
 
+Pius exécutez le fichier avec la commande `python main.py`.
+
 {% endfaire %}
 
-Lorsque vous exécutez le fichier 
+Lorsque vous exécutez le fichier `main.py`{.fichier} vous devriez voir :
+
+```
+dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__file__', '__cached__', '__builtins__'])
+```
+
+On retrouve les variables spéciales de l'espace de variables (`__name__`{.language-},`__doc__`{.language-}, `__packages__`{.language-}. `__loader__`{.language-}, `__spec__`{.language-} et `__builtins__`{.language-}) plus deux nouvelles variables :
+
+- `__file__`{.language-}
+- `__file__`{.language-}
 > TBD créer un fichier vide et on l'importe.
 > TBD vars permet de connaître l'espace de nom d'un objet qui en possède un.
 > TBD on retrouve les éléments d'avant.
