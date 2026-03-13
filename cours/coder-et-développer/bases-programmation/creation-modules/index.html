@@ -98,7 +98,7 @@
 
   <p><a href="../principes/modules/" class="interne">On l'a vu</a>, le code suivant importe un module :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random</code></pre>
-<p>En réalité, python cherche un fichier qui s'appelle <code class="fichier">random.py</code> et l'exécute. La variables crées sont placés dans l'espace de nommage du module.</p>
+<p>En réalité, python cherche un fichier qui s'appelle <code class="fichier">random.py</code> et l'exécute. La variables crées sont placés dans <a href="../principes/modules/#d%C3%A9finition-espace-nommage" class="interne">l'espace de nommage du module</a>.</p>
 <p>On peut tout à fait utiliser ce principe, et on va le faire souvent par la suite, pour créer ses propres modules.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -167,9 +167,9 @@
 </ol>
 </div></div>
 
-<p>À la fin de la première instruction on est dans la situation suivante :</p>
+<p>À la fin de l'exécution de l'instruction <code class="language-">import mon_module</code> on est dans la situation suivante :</p>
 <p><img src="import-1.png" alt="import"></p>
-<p>Le nom <code class="language-">mon_module</code> correspond à un objet de type module, contenant un espace de nommage. On peut accéder aux noms de son espace avec la <a href="../espace-nommage/#notation-point%C3%A9e" class="interne">notation pointée</a> :</p>
+<p>Le nom <code class="language-">mon_module</code> correspond à un objet de type module contenant un espace de nommage. On peut accéder aux noms de son espace avec la <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e" class="interne">notation pointée</a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">mon_module<span class="token punctuation">.</span>MA_CONSTANTE</code></pre>
 <p>On cherche le nom <code class="language-">MA_CONSTANTE</code> dans l'espace de nom associé à l'objet de nom <code class="language-">mon_module</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
