@@ -31,6 +31,17 @@ Avant d'écrire des programmes en python, on commence par s'intéresser à ses m
 [Principes](principes){.interne}
 {% endaller %}
 
+
+<!-- TBD 
+
+Faire des exercices : 
+
+- utilisation de modules et de fonctions de python
+- les différents imports possibles
+
+-->
+
+
 ### Exécuter du code python
 
 On a utilisé un interpréteur externe (sur le site <https://basthon.fr/>) pour l'instant. Son utilisation n'est pas tès satisfaisante pour l'instant puisqu'il faut copier/coller chaque ligne dans l'interpréteur.
@@ -230,7 +241,14 @@ Si un bloc de code est exécuté plusieurs fois à l'identique, on aimerait auss
 [Création de fonctions](creation-fonctions){.interne}
 {% endaller %}
 
-## Partie III : Structures des données
+
+<!-- TBD 
+
+Faire des exercices : faire des fonctions
+
+-->
+
+## Partie III : Structures de données
 
 ### <span id="conteneurs"></span>Conteneurs
 
@@ -248,6 +266,14 @@ La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du c
 {% aller %}
 [Objets mutables et non mutables](mutable-immutable){.interne}
 {% endaller %}
+
+
+<!-- TBD 
+
+Faire des exercices : listes et dictionnaires.
+
+-->
+
 
 ## Partie IV : Structures du programme
 
