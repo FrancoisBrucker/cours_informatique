@@ -324,7 +324,7 @@ import math
 math.pi = 3.2
 ```
 
-## <span id="espace-variable"></span> Espaces local et hiérarchie des espaces de nommages
+## <span id="espace-variable"></span> Espaces de nommage courant et hiérarchie des espaces de nommages
 
 L'exécution de fonction nécessite l'utilisation d'espaces de nommages pour
 compartimenter l'usage des variables.
@@ -346,12 +346,61 @@ Cet espace de nommage courant va changer au cours du temps selon le contexte :
 - lors de l'import de module l'espace de nom courant est celui du module
 - lors de l'exécution de fonction l'espace de nommage courant est l'espace créé pour son exécution.
 
+Fixons nous les idées en examinant plusieurs cas.
 
+### Espace des variables
+
+Au démarrage d'un interpréteur l'espace de nommage courant est l'espace des variables. Vérifions le :
+
+```shell
+❯ python
+Python 3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> globals() == locals()
+True
+>>> locals()['__name__']
+'__main__'
+
+```
+
+### Espace créés pour les modules
+
+Lors de l'import d'un module l'espace de nommage courant est celui du module lors de son exécution. Pour vérifier cela créons un fichier nommé `mon_module.py`{.fichier} et mettons y le code :
+
+```python
+print("affichage depuis le module :", locals()["__name__"])
+```
+
+Puis créons un fichier `main.py`{.fichier} qui va importer notre module :
+
+```python
+import mon_module
+
+
+print("affichage depuis le main :", locals()["__name__"])
+```
+
+L'exécution du fichier `main.py`{.fichier} va donner :
+
+```shell
+❯ python main.py
+affichage depuis le module : mon_module
+affichage depuis le main : __main__
+
+```
+
+On voit bien que :
+
+- l'espace de nom courant change pendant l'exécution du module
+- l'import d'un fichier l'exécute et son espace de nommage courant devient l'espace de nom du module
+
+### Espace créés pour les fonctions
+
+> TBD un peu attention à la hiérarchie
 
 ```python
 def f():
       print(locals())
-
 
 def f(x):
       print(locals())
@@ -361,13 +410,39 @@ def f(x):
       print(locals())
       if x > 0:
             f(x-1)
+```
 
+### Espaces hiérarchisées
+
+> TBD recherche et affectation
+> TBD les espaces se mêlent
+
+```python
+def f(x):
+      print(locals())
+      print(globals()["x"])
+x = 42
+f(24)
+
+
+def f(x):
+
+   def g():
+      print(locals())
+      print(x)
+
+   g()
+
+f(42)
 ```
 
 `mon_module.py`{.fichier} :
 
 ```python
-x = "coucou"
+x = 42
+def f():
+      print(x)
+      print(locals())
 
 print(locals()["__name__"])
 ```
@@ -381,14 +456,7 @@ print(locals()["__name__"])
 
 ```
 
-> TBD lors de l'import l'espace de nommage est celui cré pour l'import.
-> 
- Un autre endroit où les espace de nommages sont crées
-> TBD locals 
-> TBD fonctions.
-> TBD trouver une variable au delà de son espace mais affectation dans l'espace locale
 
-> TBD fonctions récursives
 
 
 <!-- 
