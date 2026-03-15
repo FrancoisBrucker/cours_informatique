@@ -9,6 +9,18 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD ici parler de méthodes de classes pour construire des objets. Le meilleur nombre de paramètre = 0
+> TBD dans le améliorer ses objets pour les des faire :
+>   - __str__
+>   - méthode de classe qui crée des d20, d4 en ajoutant dans le constructeur min et max dés que l'on met en cte dans chaque objet
+> TBD mettre le corrigé de chaque code dans le projet (faire un lien dans le cours mpci vers le corrigé)
+> TBD faire l'accesseur pour le point et montrer l'utilité en lisibilité (radial et cartésien)
+> TBD dire pour bloquer l'écriture (avec variable "privé" en python)
+> TBD dire que des conventions :
+>   - constantes
+>   - variables privés
+>   - accesseur
 Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets.
 
 ## Ajout d'un paramètre dans le constructeur

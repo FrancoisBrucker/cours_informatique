@@ -27,6 +27,8 @@ Pour chaque _espace de nommage_ :
 
 De façon formelle :
 
+<span id="définition-espace-nommage"></span>
+
 {% note2 "**Définition**" %}
 Un **_espace de nommage_** est table de correspondance ([un dictionnaire](../conteneurs/dictionnaires){.interne}) associant des noms (les clés) à des objets (les valeurs). 
 Il contient également un lien vers son **_parent_** qui est soit :
@@ -45,6 +47,17 @@ Les espaces de nommages sont utilisés à de nombreux endroits dans python et so
 2. séparer les responsabilités et cloisonner les noms auxquels ont accès les différentes parties d'un programme
 {% endattention2  %}
 
+On accède aux noms (et donc aux objets qu'ils référencent) des espaces de noms d'un objet en utilisant la notation pointée :
+
+<span id="définition-notation-pointée"></span>
+
+{% note2 "**Définition**" %}
+Le **_notation pointée_** permet d'accéder aux noms d'un espace de nommage. Si `o`{.language-} est un objet contenant un espace de nom on peut :
+
+- accéder à un nom `n`{.language-} défini dans l'espace un nom de `o` avec l'instruction `o.n`{.language-} (si on a importé le module random on peut utiliser la fonction `randrange`{.language-} qui y est défini avec l'instruction `random.randrange(1, 7)`{.language-}). 
+- affecter un nom `n`{.language-} dans l'espace un nom de `o` avec l'instruction `o.n = <objet>`{.language-} (par exemple `o.n = 42`{.language-}). 
+
+{% endnote2 %}
 
 Avant de détailler ce mécanisme, commençons par rappeler ce qu'est un nom et un objet pour python.
 
@@ -116,17 +129,38 @@ Pour voir les noms définis dans l'espace de noms des variables, on utilise en p
 dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__builtins__'])
 ```
 
-On voit que des variables existent dès le démarrage de python. Ces variables ne sont pas là pour être utilisées par nous mais sont indispensables au bon fonctionnement de python :
+On voit que des variables existent dès le démarrage de python. Ces variables ne sont pas là pour être utilisées par nous mais sont indispensables au bon fonctionnement de python. Elles existent pour tout espace de nommage et permettent leur bon fonctionnement. En deux mots :
 
-- `__name__`{.language-},`__doc__`{.language-}, `__packages__`{.language-}. `__loader__`{.language-} et `__spec__`{.language-} existent pour tout espace de nommage et permettent leur bon fonctionnement
+- `__name__`{.language-} : désigne le nom de l'espace de nommage pour python.
+- on reverra `__doc__`{.language-}, `__package__`{.language-}, `__loader__`{.language-} et `__spec__`{.language-} lorsque l'on regardera les espaces de noms de modules. Pour l'espace des variables, elles sont non utilisées et valent `None`{.language-}
 - `__builtins__`{.language-} est un module et contient toutes les fonctions de python (il contient les noms `print`, `input`, etc)
 
 {% info %}
-Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit **explicite** : on a accès via ces variables spéciales au fonctionnement interne de python que l'on peut examiner, voir modifier (mais ne le faites pas...)
+Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit **explicite** : on a accès via ces variables spéciales, appelées _dunder_ et commençant et finissant par deux [underscores](https://fr.wikipedia.org/wiki/Tiret_bas).
 
 {% endinfo %}
 
-Ajoutons une variable et vérifions qu'elle est ajoutée à l'espace des variables :
+Regardons un peu tout ça
+
+{% exercice %}
+que vaut `__main__`{.language} dans l'espace des variables ?
+{% endexercice %}
+{% details "corrigé" %}
+On exécute un interpréteur et on regarde la valeur de sa variable :
+
+```shell
+❯ python
+Python 3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> __name__
+'__main__'
+
+```
+
+Le nom de l'espace des variable est `__name__`{.language} pour python.
+{% enddetails %}
+
+Ajoutons une variable et vérifions qu'elle est bien ajoutée à l'espace des variables :
 
 ```python
 >>> x = "youhou ! Je suis là !"
@@ -134,7 +168,7 @@ Ajoutons une variable et vérifions qu'elle est ajoutée à l'espace des variabl
 dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__builtins__', 'x'])
 ```
 
-Notre variable a bien été ajouté à l'espace des noms. Comme c'est un dictionnaire, on peut y accéder directement :
+Notre variable a bien été ajouté à l'espace des noms ! Comme c'est un dictionnaire, on peut y accéder directement :
 
 ```python
 >>> globals()['x']
@@ -147,7 +181,6 @@ Qui est équivalent à :
 >>> print(x)
 'youhou ! Je suis là !'
 ```
-
 
 Voir même y ajouter directement des variables. La ligne suivante est équivalente à affecter une nouvelle variable `y`{.language-} :
 
@@ -173,19 +206,41 @@ On a vu qu'un module contenait [un espace de nommage](../principes/modules/#déf
 
 Tout comme la fonction `globals()`{.language-} permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet `o`{.language-} (en particulier d'un module) en utilisant [la fonction `vars(o)`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#vars).
 
-Testons cela :
+Testons cela en regardant si `print`{.language-} est dans le module `__builtins__`{.language-} :
+
+```python
+>>> 'print' in vars(__builtins__)
+True
+```
+
+Oui ! On peut aussi voir toutes les fonction par défaut de python en exécutant par exemple le bout de code suivant (attention, il y en a beaucoup) :
+
+```python
+for x in vars(__builtins__):
+   print(x)
+```
+
+Regardons de plus prêt les différentes variables définies dans un module :
 
 {% faire %}
 
 Dans un projet vscode créez deux fichiers :
 
 - un fichier `main.py`{.language-} contenant le code :
-  ```python
-  import mon_module
+   ```python
+   import mon_module
 
-  print(vars(mon_module).keys())
+   print(vars(mon_module).keys())
    ```
-- un fichier `mon_module.py`{.language-} vide
+- un fichier `mon_module.py`{.language-} contenant le code suivant :
+   ```python
+   """ Une documentation de mon module 
+   """
+
+   une_variable = 42
+   def une_fonction():
+      print(une_variable)
+   ```
 
 Pius exécutez le fichier avec la commande `python main.py`.
 
@@ -193,24 +248,142 @@ Pius exécutez le fichier avec la commande `python main.py`.
 
 Lorsque vous exécutez le fichier `main.py`{.fichier} vous devriez voir :
 
+```shell
+❯ python main.py
+dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__file__', '__cached__', '__builtins__', 'une_variable', 'une_fonction'])
 ```
-dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__file__', '__cached__', '__builtins__'])
+
+On retrouve bien :
+
+- les variables spéciales de l'espace de variables (`__name__`{.language-},`__doc__`{.language-}, `__packages__`{.language-}. `__loader__`{.language-}, `__spec__`{.language-} et `__builtins__`{.language-})
+-  deux nouvelles variables :
+   -  `__file__`{.language-} : qui contient le nom du fichier contenant le module
+   - `__cached__`{.language-} : qui contient le fichier compilé du module (ce fichier est crée lorsque lors du premier import et accélère les futurs accès)
+- notre variable et notre fonction : `une_variable`{.language-} et `une_fonction`{.language-}
+
+{% exercice %}
+Que valent les différentes variables spéciales sauf `__builtins__`{.fichier} du module `mon_module`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
+
+Le plus simple est d'afficher toutes les variables une à une en ajoutant le code suivant au fichier `main.py`{.fichier}  :
+
+```python
+import mon_module
+
+print(vars(mon_module).keys()) 
+print()
+
+for key, value in vars(mon_module).items():
+    if key != "__builtins__":
+        print("nom :", key, " valeur :", value)
+
 ```
 
-On retrouve les variables spéciales de l'espace de variables (`__name__`{.language-},`__doc__`{.language-}, `__packages__`{.language-}. `__loader__`{.language-}, `__spec__`{.language-} et `__builtins__`{.language-}) plus deux nouvelles variables :
+Son exécution donne :
 
-- `__file__`{.language-}
-- `__file__`{.language-}
-> TBD créer un fichier vide et on l'importe.
-> TBD vars permet de connaître l'espace de nom d'un objet qui en possède un.
-> TBD on retrouve les éléments d'avant.
-> TDB voir le __main__
+```shell
+❯ python main.py
+dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__file__', '__cached__', '__builtins__', 'une_variable', 'une_fonction'])
+
+nom : __name__  valeur : mon_module
+nom : __doc__  valeur : Une documentation de mon module
+
+nom : __package__  valeur :
+nom : __loader__  valeur : <_frozen_importlib_external.SourceFileLoader object at 0x102dab750>
+nom : __spec__  valeur : ModuleSpec(name='mon_module', loader=<_frozen_importlib_external.SourceFileLoader object at 0x102dab750>, origin='/Users/fbrucker/Desktop/prog-objet/mon_module.py')
+nom : __file__  valeur : /Users/fbrucker/Desktop/prog-objet/mon_module.py
+nom : __cached__  valeur : /Users/fbrucker/Desktop/prog-objet/__pycache__/mon_module.cpython-314.pyc
+nom : une_variable  valeur : 42
+nom : une_fonction  valeur : <function une_fonction at 0x102e6aa30>
+
+```
+
+{% enddetails %}
+
+L'exercice précédent vous a montré que :
+
+- le nom du module (`__name__`{.language-}) vaut le nom du fichier et plus `__name__`{.python}. C'est ce qui permet de différentier l'espace des variables de tous les autres espaces de nommage
+- la variables `__doc__`{.language-} vaut la chaîne de caractères du début du fichier ! C'est le moyen que donne python pour créer l'aide d'un module. Si vous tapez dans un interpréteur `help(mon_module)`{.language-} après l'avoir importé vous retrouverez cette chaîne de caractères.
 
 
-> TBD comme globals, un espace de nom est mutable : on utilise = et la notation pointé tout comme on ferait un = pour les variables.
+Enfin, tout comme l'espace de variable on peut ajouter ou modifier des nom qui y sont définis en utilisant la notation pointée :
+
+```python
+import mon_module
+
+mon_module.autre_variable = "quarante-deux"
+```
+
+Il est bien sur non conseillé de le faire par ce qu'on peut **Tout modifier**. Par exemple se conformer à [une loi de l'Indiana](https://www.youtube.com/watch?v=1Bn50keR6UY) :
+
+```python
+
+import math
+
+math.pi = 3.2
+```
 
 ## <span id="espace-variable"></span> Espaces local et hiérarchie des espaces de nommages
 
+L'exécution de fonction nécessite l'utilisation d'espaces de nommages pour
+compartimenter l'usage des variables.
+
+{% note2 "**Définition**" %}
+L'interpréteur possède à chaque instant **_un espace de nommage courant_**  qui est l'espace par défaut des noms :
+
+- python commence par rechercher un nom dans cet espace puis cherche dans l'espace parent s'il n'est pas trouvé
+- python affectera toujours un nom dans cet espace (hors notation pointée)
+
+Par défaut l'espace de nommage courant est l'espace des variables.
+{% endnote2 %}
+
+Pour voir les noms définis dans l'espace de noms courant, on utilise en python [la fonction `locals()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#locals) qui rend **le** dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.
+
+Cet espace de nommage courant va changer au cours du temps selon le contexte :
+
+- au démarrage de l'interpréteur l'espace de nommage courant est l'espace des variables
+- lors de l'import de module l'espace de nom courant est celui du module
+- lors de l'exécution de fonction l'espace de nommage courant est l'espace créé pour son exécution.
+
+
+
+```python
+def f():
+      print(locals())
+
+
+def f(x):
+      print(locals())
+
+
+def f(x):
+      print(locals())
+      if x > 0:
+            f(x-1)
+
+```
+
+`mon_module.py`{.fichier} :
+
+```python
+x = "coucou"
+
+print(locals()["__name__"])
+```
+
+`main.py`{.fichier} :
+
+```python
+
+import mon_module
+print(locals()["__name__"])
+
+```
+
+> TBD lors de l'import l'espace de nommage est celui cré pour l'import.
+> 
+ Un autre endroit où les espace de nommages sont crées
 > TBD locals 
 > TBD fonctions.
 > TBD trouver une variable au delà de son espace mais affectation dans l'espace locale

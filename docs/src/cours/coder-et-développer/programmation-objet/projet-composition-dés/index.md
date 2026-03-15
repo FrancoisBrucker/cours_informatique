@@ -32,13 +32,10 @@ MAX_VALEUR = 6
 
 class Dé:
     def __init__(self, position=1):
-        self._position = 1  # init
-        self.position = position  # utilisation du mutateur
+        self.position = position
 
     def lancer(self):
         self.position = random.randrange(MIN_VALEUR, MAX_VALEUR + 1)
-
-        return self
 
 ```
 
@@ -48,14 +45,18 @@ fichier `test_dé.py`{.fichier} :
 from dé import Dé, MIN_VALEUR, MAX_VALEUR
 
 def test_init():
-    assert type(Dé()) == Dé
+    assert isinstance(Dé(), Dé)
+
 
 def test_position():
     assert Dé().position == 1
     assert Dé(position=3).position == 3
 
+
 def test_lancer():
-    assert MIN_VALEUR <= Dé().lancer().position <= MAX_VALEUR
+    d6 = Dé()
+    d6.lancer()
+    assert MIN_VALEUR <= d6.position <= MAX_VALEUR
 
 
 ```

@@ -175,31 +175,87 @@ Vous avez assez de matière pour coder notre seconde user story :
 Codez la user story *"Ordonnancement"*.
 {% endfaire %}
 
-## Constantes de classes
+## Constantes pour les attributs
 
 Avant de pouvoir finir la partie de création d'une carte, il nous reste un problème à résoudre. Comment indiquer à l'utilisateur les possibilités de valeur et de couleurs et leurs correspondances ?
 
 La solution communément utilisée pour cela est de créer des constantes :
 
-{% faire %}
-Créez les constantes :
+{% exercice %}
+Créez les constantes suivantes dans le fichier `cartes.py` :
 
 - `SEPT`{.language-}, `HUIT`{.language-}, `NEUF`{.language-}, `DIX`{.language-}, `VALET`{.language-}, `DAME`{.language-}, `ROI`{.language-}, `AS`{.language-}
 - `PIQUE`{.language-}, `COEUR`{.language-}, `CARREAU`{.language-}, `TREFLE`{.language-}
 
 En leur associant les entiers adéquats.
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
 
-Il ne faudra qu'utiliser ces constantes pour créer les cartes et ne plus directement utiliser des entiers comme 7.
+On ajoute les constantes directement le module, au dessus de la définition de la classe :
+
+```python
+SEPT = "sept"
+HUIT = "huit"
+NEUF = "neuf"
+DIX = "dix"
+VALET = "valet"
+DAME = "dame"
+ROI = "roi"
+AS = "as"
+
+PIQUE = "pique"
+COEUR = "cœur"
+CARREAU = "carreau"
+TREFLE = "trèfle"
+
+
+VALEURS = [SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS]
+COULEURS = [TREFLE, CARREAU, COEUR, PIQUE]
+
+
+class Carte:
+    #  ... 
+```
+
+Ceci permet dans le programme principal de créer des objets en utilisant ces constantes en ajoutant un import du module directement. Par exemple :
+
+```python
+from carte import Carte
+import carte
+
+c = Carte(carte.SEPT, carte.PIQUE)
+
+```
+
+On pourrait aussi ne faire qu'un seul import :
+
+```python
+import carte
+
+c = carte.Carte(carte.SEPT, carte.PIQUE)
+
+```
+
+Ou importer tous les noms nécessaires :
+
+```python
+from carte import Carte, SEPT, PIQUE
+
+c = Carte(SEPT, PIQUE)
+
+```
+
+Les trois sont possibles, choisissez celui qui vous convient le mieux.
+
+{% enddetails %}
+
+Il faudra utiliser ces constantes pour créer les cartes et ne plus directement utiliser des entiers comme 7.
 
 Par exemple, on écrira `Carte(carte.AS, carte.TREFLE)`{.language-} plutôt que `Carte(13, 4)`{.language-}
 
 {% faire %}
-Utilisez dans le code et les tests les constantes à la place des chaînes de caractères.
+Utilisez dans le code et les tests les constantes à la place des entiers.
 {% endfaire %}
-{% info %}
-Vous n'êtes pas obligé d'importer toutes les constantes, une à une. En utilisant juste `import carte`{.language-}, vous pourrez utiliser `carte.PIQUE`{.language-} (constante `PIQUE`{.language-} dans l'espace de nom de `carte`{.language-}) directement par exemple.
-{% endinfo %}
 
 Enfin, pour grouper ces constantes, vous pourrez :
 
@@ -208,11 +264,22 @@ Enfin, pour grouper ces constantes, vous pourrez :
 Créer deux autres constantes, qui rassemblent les couleurs et les valeurs entre elles :
 
 - `VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)`{.language-}
-- `COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)`{.language-}
+- `COULEURS = [TREFLE, CARREAU, COEUR, PIQUE)`{.language-}
 
 {% endfaire %}
 {% info %}
-Remarquez que l'on a rangé les différentes valeurs par ordre croissant de valeur et de couleur.
+Les deux constante précédentes vous permettrons de facilement créer un jeu de cartes en faisant deux boucles imbriquées :
+
+```python
+from carte import Carte
+import carte
+
+jeu = []
+
+for valeur in carte.VALEURS:
+    for couleur in carte.COULEURS:
+        jeu.append(Carte(valeur, couleur))
+```
 
 {% endinfo %}
 

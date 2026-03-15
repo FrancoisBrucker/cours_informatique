@@ -690,6 +690,9 @@ La première façon d'écrire (`c1.incrémente()`{.language-}) est plus simple �
 
 ### Exécution du code
 
+> TBD faire des dessin d'espace de nommages.
+> TBD objet vide puis init
+> TBD chercher un nom dans un objet puis remontée si nécessaire
 {% note %}
 Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.
 {% endnote %}
