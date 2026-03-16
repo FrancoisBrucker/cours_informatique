@@ -521,8 +521,8 @@ On utilise dans `g`{.language-} l'espace de nom qui l'a défini, c'est à dire l
 Exécution ligne à ligne le code précédent en exhibant les espaces de noms pour comprendre comment tout ça est possible.
 
 1. ligne 6 on est dans le cas suivant : seul un nom est défini dans l'espace des variables
-   ![fct-de-fct-1.png]
+    ![](fct-de-fct-1.png)
 2. ligne 8, la fonction `g`{.language-} est créée et elle est associée à l'espace de nommage de l'exécution de f (qui n'est donc pas détruit à la fin de l'exécution de `f`{.language-} puisque la fonction g existe dans l'espace des variables via le nom `h`{.language-}):
-   ![fct-de-fct-2.png]
+   ![](fct-de-fct-2.png)
 3. lors de l'exécution de la fonction `h`{.language-}, on est dans la configuration suivante son espace de nom est celui ayant cré la fonction, celui de `f`{.language-} :
-   ![fct-de-fct-3.png]
+   ![](fct-de-fct-3.png)
