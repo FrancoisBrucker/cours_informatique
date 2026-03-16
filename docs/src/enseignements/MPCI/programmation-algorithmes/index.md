@@ -475,18 +475,14 @@ Au programme :
 
 {% endaller %}
 
-Puis une partie de cours :
-
-{% aller %}
-[Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
-{% endaller %}
-
-Que l'on applique avec les projets :
+Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
 
-- [Améliorer les dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne}
-- [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne}
+- Cours : [Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
+- Projets associés :
+  - [Améliorer les dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne}
+  - [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne}
 
 {% endaller %}
 
@@ -501,7 +497,7 @@ Que l'on applique avec les projets :
 >
 
 {% attention %}
-Test de 15min **sur ordinateur** en début de cours sur les classes et les objets.
+Test de 15min **sur papier** en début de cours sur les classes et les objets.
 {% endattention %}
 
 #### Vendredi : on s'entraîne
