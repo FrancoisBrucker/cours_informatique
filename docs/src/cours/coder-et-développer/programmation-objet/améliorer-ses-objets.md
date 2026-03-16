@@ -9,6 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- 
 
 > TBD ici parler de méthodes de classes pour construire des objets. Le meilleur nombre de paramètre = 0
 > TBD dans le améliorer ses objets pour les des faire :
@@ -20,7 +21,9 @@ eleventyComputed:
 > TBD dire que des conventions :
 >   - constantes
 >   - variables privés
->   - accesseur
+>   - accesseur -->
+
+
 Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets.
 
 ## Ajout d'un paramètre dans le constructeur
