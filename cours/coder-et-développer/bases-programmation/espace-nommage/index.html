@@ -99,7 +99,7 @@
   <p>Nous avons déjà abordé la notion d' lorsque :</p>
 <ul>
 <li>on a paré de modules : <a href="../principes/modules/#d%C3%A9finition-espace-nommage" class="interne">l'espace de nommage du module</a> et accès aux éléments via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e" class="interne">la notation pointée</a></li>
-<li>on a parlé des fonctions : <a href="../cr%C3%A9ation-fonctions/#espace-nommage" class="interne">l'espace de nommage et fonctions</a></li>
+<li>on a parlé des fonctions : <a href="../creation-fonctions/#espace-nommage" class="interne">l'espace de nommage et fonctions</a></li>
 </ul>
 <p>Les espaces de nommage permettent de lier variables et objets :</p>
 <ul>
@@ -161,7 +161,7 @@ Il contient également un lien vers son <strong><em>parent</em></strong> qui est
 </ul>
 </div></div>
 
-<p>Avant de détailler ce mécanisme, commençons par rappeler ce qu'est un nom et un objet pour python.</p>
+<p>Avant de détailler ce mécanisme et voir ses différentes implications, commençons par rappeler ce qu'est un nom et un objet pour python.</p>
 <h2>Rappel sur les variables et les objets</h2>
 <p>Commençons par quelques rappels et précisions sur les variables et leurs liens avec les objets :</p>
 <ul>
@@ -456,7 +456,7 @@ True
 <span class="token operator">>></span><span class="token operator">></span> locals<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'__name__'</span><span class="token punctuation">]</span>
 <span class="token string">'__main__'</span>
 </code></pre>
-<h3>Espace créés pour les modules</h3>
+<h3>Espaces créés pour les modules</h3>
 <p>Lors de l'import d'un module l'espace de nommage courant est celui du module lors de son exécution. Pour vérifier cela créons un fichier nommé <code class="fichier">mon_module.py</code> et mettons y le code :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"affichage depuis le module :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">"__name__"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p>Puis créons un fichier <code class="fichier">main.py</code> qui va importer notre module :</p>
@@ -471,38 +471,80 @@ affichage depuis le main <span class="token builtin class-name">:</span> __main_
 </code></pre>
 <p>On voit bien que :</p>
 <ul>
-<li>l'espace de nom courant change pendant l'exécution du module</li>
-<li>l'import d'un fichier l'exécute et son espace de nommage courant devient l'espace de nom du module</li>
+<li>l'espace de nom courant change pendant l'exécution du module (la variable <code class="language-">__main__</code> est différente)</li>
+<li>l'import d'un fichier l'exécute et son espace de nommage courant devient l'espace de nom du module (la le paramètre de la fonction <code class="language-">print</code> du module est affichée, donc exécutée)</li>
 </ul>
 <h3>Espace créés pour les fonctions</h3>
-<blockquote>
-<p>TBD un peu attention à la hiérarchie</p>
-</blockquote>
+<p><a href="../creation-fonctions/#espace-nommage" class="interne">Un espace de nommage est créé pour chaque fonction lors de son exécution</a>, on peut s'en rendre compte en examinant les noms de l'espace de nommage courant.</p>
+<p>Examinons plusieurs cas pour se fixer les idées.</p>
+<h4>Simple exécution de fonctions</h4>
+<p>Créons un fichier <code class="fichier">main.py</code> et mettons-y le code suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"dans f :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"programme principal :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+f<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"programme principal après exécution :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>Son exécution va afficher :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python main.py
+programme principal <span class="token builtin class-name">:</span> dict_keys<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'__name__'</span>, <span class="token string">'__doc__'</span>, <span class="token string">'__package__'</span>, <span class="token string">'__loader__'</span>, <span class="token string">'__spec__'</span>, <span class="token string">'__builtins__'</span>, <span class="token string">'__file__'</span>, <span class="token string">'__cached__'</span>, <span class="token string">'f'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+dans f <span class="token builtin class-name">:</span> dict_keys<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+programme principal après exécution <span class="token builtin class-name">:</span> dict_keys<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'__name__'</span>, <span class="token string">'__doc__'</span>, <span class="token string">'__package__'</span>, <span class="token string">'__loader__'</span>, <span class="token string">'__spec__'</span>, <span class="token string">'__builtins__'</span>, <span class="token string">'__file__'</span>, <span class="token string">'__cached__'</span>, <span class="token string">'f'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>On voit que :</p>
+<ul>
+<li>l'espace de nommage local change lors de l'exécution de la fonction</li>
+<li>l'espace de nommage de la fonction ne contient aucune des variables spéciales des espaces de nommages liés aux modules et à l'espace des variables</li>
+</ul>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 
-<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">g</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">h</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+      g<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">rec</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
       <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-            f<span class="token punctuation">(</span>x<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+            rec<span class="token punctuation">(</span>x<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+f<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h3>Espaces hiérarchisées</h3>
 <blockquote>
 <p>TBD recherche et affectation
 TBD les espaces se mêlent</p>
 </blockquote>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">"x"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
 x <span class="token operator">=</span> <span class="token number">42</span>
 f<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span>
 
+<span class="token keyword">def</span> <span class="token function">f_prim</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+x <span class="token operator">=</span> <span class="token number">42</span>
+f_prim<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">g</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   h<span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">h</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
    <span class="token keyword">def</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
       <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
       <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
