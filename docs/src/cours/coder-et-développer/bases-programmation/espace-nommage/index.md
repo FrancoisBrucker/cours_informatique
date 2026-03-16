@@ -12,7 +12,7 @@ eleventyComputed:
 Nous avons déjà abordé la notion d' lorsque :
 
 - on a paré de modules : [l'espace de nommage du module](../principes/modules/#définition-espace-nommage){.interne} et accès aux éléments via [la notation pointée](../principes/modules/#définition-notation-pointée){.interne}
-- on a parlé des fonctions : [l'espace de nommage et fonctions](../création-fonctions/#espace-nommage){.interne}
+- on a parlé des fonctions : [l'espace de nommage et fonctions](../creation-fonctions/#espace-nommage){.interne}
 
 Les espaces de nommage permettent de lier variables et objets :
 
@@ -59,7 +59,7 @@ Le **_notation pointée_** permet d'accéder aux noms d'un espace de nommage. Si
 
 {% endnote2 %}
 
-Avant de détailler ce mécanisme, commençons par rappeler ce qu'est un nom et un objet pour python.
+Avant de détailler ce mécanisme et voir ses différentes implications, commençons par rappeler ce qu'est un nom et un objet pour python.
 
 ## Rappel sur les variables et les objets
 
@@ -363,7 +363,7 @@ True
 
 ```
 
-### Espace créés pour les modules
+### Espaces créés pour les modules
 
 Lors de l'import d'un module l'espace de nommage courant est celui du module lors de son exécution. Pour vérifier cela créons un fichier nommé `mon_module.py`{.fichier} et mettons y le code :
 
@@ -391,25 +391,68 @@ affichage depuis le main : __main__
 
 On voit bien que :
 
-- l'espace de nom courant change pendant l'exécution du module
-- l'import d'un fichier l'exécute et son espace de nommage courant devient l'espace de nom du module
+- l'espace de nom courant change pendant l'exécution du module (la variable `__main__`{.language-} est différente)
+- l'import d'un fichier l'exécute et son espace de nommage courant devient l'espace de nom du module (la le paramètre de la fonction `print`{.language-} du module est affichée, donc exécutée)
 
 ### Espace créés pour les fonctions
 
-> TBD un peu attention à la hiérarchie
+[Un espace de nommage est créé pour chaque fonction lors de son exécution](../creation-fonctions/#espace-nommage){.interne}, on peut s'en rendre compte en examinant les noms de l'espace de nommage courant.
+
+
+Examinons plusieurs cas pour se fixer les idées.
+
+#### Simple exécution de fonctions
+
+Créons un fichier `main.py`{.fichier} et mettons-y le code suivant :
 
 ```python
 def f():
-      print(locals())
+      print("dans f :", locals().keys())
 
-def f(x):
-      print(locals())
+print("programme principal :", locals().keys())
+f()
+print("programme principal après exécution :", locals().keys())
+```
+
+Son exécution va afficher :
+
+```shell
+❯ python main.py
+programme principal : dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__builtins__', '__file__', '__cached__', 'f'])
+dans f : dict_keys([])
+programme principal après exécution : dict_keys(['__name__', '__doc__', '__package__', '__loader__', '__spec__', '__builtins__', '__file__', '__cached__', 'f'])
+
+```
+
+On voit que :
+
+- l'espace de nommage local change lors de l'exécution de la fonction
+- l'espace de nommage de la fonction ne contient aucune des variables spéciales des espaces de nommages liés aux modules et à l'espace des variables
 
 
-def f(x):
-      print(locals())
+```python
+def f():
+      print(locals().keys())
+
+
+def g(x):
+      print(locals().keys())
+
+
+def h(y):
+      print(locals().keys())
+      print(x)
+      g(12)
+      print(locals().keys())
+
+
+def rec(x):
+      print(locals().keys())
       if x > 0:
-            f(x-1)
+            rec(x-1)
+
+print(locals().keys())
+f()
 ```
 
 ### Espaces hiérarchisées
@@ -419,14 +462,27 @@ def f(x):
 
 ```python
 def f(x):
-      print(locals())
-      print(globals()["x"])
+      print(x)
+
 x = 42
 f(24)
 
+def f_prim(y):
+      print(x)
+
+x = 42
+f_prim(24)
+
+
+def g(x):
+   h(42)
+
+def h(y):
+      print(x)
+      print(locals().keys())
+      print(locals().keys())
 
 def f(x):
-
    def g():
       print(locals())
       print(x)

@@ -878,3 +878,8 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 > TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
 > TBD premier et random : <https://www.youtube.com/watch?v=tBzaMfV94uA>
 > TBD advanced algorithm (des idées à prendre) <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->
+> space-time tradeoff : 
+>   - <https://cusack.hope.edu/Algorithms/Content/Techniques/Space-Time%20Tradeoff.html?path=Problems/Foundational/Sorting>
+>   - sac à dos avec prog dynamique
+>   - bucket sort
+>   - <https://www.cs.helsinki.fi/u/mkhkoivi/publications/soda-2010.pdf>

@@ -59,7 +59,7 @@ Les variables sont **toujours** créées dans l'espace de noms courant, mais leu
 
 ```python
 def fact(n):
-   print(vars()["n"])
+   print(locals()["n"])
    if n < 1:
       return 1
    else:
