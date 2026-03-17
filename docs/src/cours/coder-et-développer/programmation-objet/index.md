@@ -57,7 +57,7 @@ On s'entraîne à la création d'objets :
 On s'entraîne en perfectionnant nos dés et cartes :
 
 {% aller %}
-[Accesseur et dés](projet-objets-dés-accesseur){.interne}
+[Des dés différents](projet-objets-dés-accesseur){.interne}
 {% endaller %}
 {% aller %}
 [Protéger les attributs de cartes](projet-objets-cartes-value-object){.interne}

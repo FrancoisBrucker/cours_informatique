@@ -491,6 +491,11 @@ Si on a le temps, sinon à faire chez soit :
 
 {% endaller %}
 
+<!-- TBD 
+
+Modifier les td précédent pour l=mettre les str et repr directement dans les améliorations.
+-->
+
 ### Semaine 8
 
 > 16/03 au 20/03
