@@ -370,24 +370,19 @@ un affichage à l'écran plus convivial :</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>On ajoute les constantes directement le module, au dessus de la définition de la classe :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">SEPT <span class="token operator">=</span> <span class="token string">"sept"</span>
-HUIT <span class="token operator">=</span> <span class="token string">"huit"</span>
-NEUF <span class="token operator">=</span> <span class="token string">"neuf"</span>
-DIX <span class="token operator">=</span> <span class="token string">"dix"</span>
-VALET <span class="token operator">=</span> <span class="token string">"valet"</span>
-DAME <span class="token operator">=</span> <span class="token string">"dame"</span>
-ROI <span class="token operator">=</span> <span class="token string">"roi"</span>
-AS <span class="token operator">=</span> <span class="token string">"as"</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">SEPT <span class="token operator">=</span> <span class="token number">7</span>
+HUIT <span class="token operator">=</span> <span class="token number">8</span>
+NEUF <span class="token operator">=</span> <span class="token number">9</span>
+DIX <span class="token operator">=</span> <span class="token number">10</span>
+VALET <span class="token operator">=</span> <span class="token number">11</span>
+DAME <span class="token operator">=</span> <span class="token number">12</span>
+ROI <span class="token operator">=</span> <span class="token number">13</span>
+AS <span class="token operator">=</span> <span class="token number">14</span>
 
-PIQUE <span class="token operator">=</span> <span class="token string">"pique"</span>
-COEUR <span class="token operator">=</span> <span class="token string">"cœur"</span>
-CARREAU <span class="token operator">=</span> <span class="token string">"carreau"</span>
-TREFLE <span class="token operator">=</span> <span class="token string">"trèfle"</span>
-
-
-VALEURS <span class="token operator">=</span> <span class="token punctuation">[</span>SEPT<span class="token punctuation">,</span> HUIT<span class="token punctuation">,</span> NEUF<span class="token punctuation">,</span> DIX<span class="token punctuation">,</span> VALET<span class="token punctuation">,</span> DAME<span class="token punctuation">,</span> ROI<span class="token punctuation">,</span> AS<span class="token punctuation">]</span>
-COULEURS <span class="token operator">=</span> <span class="token punctuation">[</span>TREFLE<span class="token punctuation">,</span> CARREAU<span class="token punctuation">,</span> COEUR<span class="token punctuation">,</span> PIQUE<span class="token punctuation">]</span>
-
+PIQUE <span class="token operator">=</span> <span class="token number">4</span>
+COEUR <span class="token operator">=</span> <span class="token number">3</span>
+CARREAU <span class="token operator">=</span> <span class="token number">2</span>
+TREFLE <span class="token operator">=</span> <span class="token number">1</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Carte</span><span class="token punctuation">:</span>
     <span class="token comment">#  ... </span></code></pre>
@@ -481,14 +476,14 @@ jeu <span class="token operator">=</span> <span class="token punctuation">[</spa
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.sample"><code class="language-">random.sample</code></a> pour tirer des cartes sans remise d'un paquet.</p>
+<p>Vous pourrez utiliser la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.sample"><code class="language-">random.sample</code></a> pour tirer des cartes sans remise d'un paquet (attention, les cartes ne sont <strong>pas</strong> supprimées du paquet).</p>
 </div></div>
 
 <h2>Jeu</h2>
 <p>Vous pouvez maintenant finir le projet en codant le jeu !</p>
 <p>La règle du jeu est :</p>
 <ol>
-<li>mélangez un jeu de 32 cartes en deux <strong>pioches</strong> de 16 cartes, une pour chaque joueur</li>
+<li>mélangez un jeu de 32 cartes en deux <strong>pioches</strong> de 16 cartes, une pour chaque joueur (vous pourrez commencer par créer un paquet de 32 cartes, puis le mélanger en utilisant <a href="https://docs.python.org/fr/3/library/random.html#random.shuffle"><code class="language-">random.shuffle</code></a> et enfin distributer les 16 première cartes à un joueur et les 16 dernières à l'autre)</li>
 <li>chaque joueur dispose également d'une <strong>défausse</strong>, initialement vide</li>
 <li>N = 1</li>
 <li>chaque joueur dévoile la carte du dessus de leur pioche</li>
