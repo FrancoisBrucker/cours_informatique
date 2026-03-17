@@ -194,24 +194,19 @@ En leur associant les entiers adéquats.
 On ajoute les constantes directement le module, au dessus de la définition de la classe :
 
 ```python
-SEPT = "sept"
-HUIT = "huit"
-NEUF = "neuf"
-DIX = "dix"
-VALET = "valet"
-DAME = "dame"
-ROI = "roi"
-AS = "as"
+SEPT = 7
+HUIT = 8
+NEUF = 9
+DIX = 10
+VALET = 11
+DAME = 12
+ROI = 13
+AS = 14
 
-PIQUE = "pique"
-COEUR = "cœur"
-CARREAU = "carreau"
-TREFLE = "trèfle"
-
-
-VALEURS = [SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS]
-COULEURS = [TREFLE, CARREAU, COEUR, PIQUE]
-
+PIQUE = 4
+COEUR = 3
+CARREAU = 2
+TREFLE = 1
 
 class Carte:
     #  ... 
@@ -303,7 +298,7 @@ Vous avez tous les outils nécessaires pour créer les user story *"voyance"*  :
 Codez la user story *"voyance"*.
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) pour tirer des cartes sans remise d'un paquet.
+Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) pour tirer des cartes sans remise d'un paquet (attention, les cartes ne sont **pas** supprimées du paquet).
 {% endinfo %}
 
 ## Jeu
@@ -312,7 +307,7 @@ Vous pouvez maintenant finir le projet en codant le jeu !
 
 La règle du jeu est :
 
-1. mélangez un jeu de 32 cartes en deux **pioches** de 16 cartes, une pour chaque joueur
+1. mélangez un jeu de 32 cartes en deux **pioches** de 16 cartes, une pour chaque joueur (vous pourrez commencer par créer un paquet de 32 cartes, puis le mélanger en utilisant [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) et enfin distributer les 16 première cartes à un joueur et les 16 dernières à l'autre)
 2. chaque joueur dispose également d'une **défausse**, initialement vide
 3. N = 1
 4. chaque joueur dévoile la carte du dessus de leur pioche

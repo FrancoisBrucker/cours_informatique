@@ -1,58 +1,28 @@
-SEPT = "sept"
-HUIT = "huit"
-NEUF = "neuf"
-DIX = "dix"
-VALET = "valet"
-DAME = "dame"
-ROI = "roi"
-AS = "as"
+SEPT = 7
+HUIT = 8
+NEUF = 9
+DIX = 10
+VALET = 11
+DAME = 12
+ROI = 13
+AS = 14
 
-PIQUE = "pique"
-COEUR = "cœur"
-CARREAU = "carreau"
-TREFLE = "trèfle"
+PIQUE = 4
+COEUR = 3
+CARREAU = 2
+TREFLE = 1
 
 
 VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)
 COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)
 
-
 class Carte:
     def __init__(self, valeur, couleur):
-        self._couleur = couleur
-        self._valeur = valeur
+        self.couleur = couleur
+        self.valeur = valeur
 
-    @property
-    def couleur(self):
-        return self._couleur
+    def texte(self):
+        valeur = ["sept", "huit", "neuf", "dix", "valet", "dame", "roi", "as"]
+        couleur = ["trèfle", "carreau", "cœur", "pique", ]
+        return valeur[self.valeur-7] + " de " + couleur[self.couleur - 1]
 
-    @property
-    def valeur(self):
-        return self._valeur
-
-    def __str__(self):
-        return self.valeur + " de " + self.couleur
-
-    def __repr__(self):
-        return "Carte(" + repr(self.valeur) + ", " + repr(self.couleur) + ")"
-
-    def __eq__(self, other):
-        return (self.valeur == other.valeur) and (self.couleur == other.couleur)
-
-    def __ne__(self, other):
-        return not (self == other)
-
-    def __lt__(self, other):
-        if VALEURS.index(self.valeur) != VALEURS.index(other.valeur):
-            return VALEURS.index(self.valeur) < VALEURS.index(other.valeur)
-
-        return COULEURS.index(self.couleur) < COULEURS.index(other.couleur)
-
-    def __le__(self, other):
-        return (self == other) or (self < other)
-
-    def __gt__(self, other):
-        return not (self <= other)
-
-    def __ge__(self, other):
-        return (self == other) or (self > other)

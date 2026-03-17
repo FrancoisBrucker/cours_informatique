@@ -14,4 +14,4 @@ cartes_piochées = random.sample(paquet, k=3)
 
 # afficher à l'écran les trois cartes, dans l'ordre où elles ont été tirées
 for carte in cartes_piochées:
-    print(carte)
+    print(carte.texte())

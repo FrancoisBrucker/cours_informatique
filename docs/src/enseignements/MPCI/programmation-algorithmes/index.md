@@ -474,6 +474,11 @@ Au programme :
 - [Jeu de cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
 
 {% endaller %}
+{% note %}
+- [corrigé projet dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/code)
+- [corrigé projet cartes]()
+
+{% endnote %}
 
 Si on a le temps, sinon à faire chez soit :
 
