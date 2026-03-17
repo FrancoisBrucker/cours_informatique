@@ -510,10 +510,25 @@ Modifier les td précédent pour l=mettre les str et repr directement dans les a
 Test de 15min **sur papier** en début de cours sur les classes et les objets.
 {% endattention %}
 
+Composer des objets entre-eux :
+
+{% aller %}
+
+[Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation){.interne}
+
+{% endaller %}
+
 #### Vendredi : on s'entraîne
 
 > 2h
 >
+
+{% aller %}
+
+1. [Projet de compositions de dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés){.interne}
+2. [Projet d'agrégation de cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes){.interne}
+
+{% endaller %}
 
 ### Semaine 9
 

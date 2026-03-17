@@ -83,7 +83,7 @@ from carte import Carte
 
 
 def test_constructeur():
-    assert isinstance(Carte(carte.SEPT, carte.TREFLE), Carte
+    assert isinstance(Carte(carte.SEPT, carte.TREFLE), Carte)
 
 
 def test_str():
@@ -99,7 +99,7 @@ def test_attributs():
     assert Carte(carte.SEPT, carte.TREFLE).couleur == carte.TREFLE
 
 
-def test_operator():
+def test_comparaisons():
     assert Carte(carte.DIX, carte.COEUR) == Carte(carte.DIX, carte.COEUR)
     assert Carte(carte.DIX, carte.COEUR) != Carte(carte.DIX, carte.CARREAU)
     assert Carte(carte.DIX, carte.COEUR) <= Carte(carte.DIX, carte.COEUR)
