@@ -14,7 +14,7 @@ Un objet est un bout de code auquel est associé :
 - des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe
 - des choses à lui tout seul (sa structure de donnée interne qui constitue ses attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.
 
-Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa _classe_. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms](../../bases-programmation/espace-nommage/){.interne} (_namespaces_). Cela lui permet de réutiliser le même code pour plusieurs objets.
+Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa _classe_.
 
 ## Utiliser des objets
 
@@ -483,6 +483,8 @@ Pour pouvoir facilement créer une structure particulière et donner un moyen si
 
 {% endnote2 %}
 
+<div id="compteur-code"></div>
+
 On crée une classe par rapport à un besoin que l'on veut satisfaire. Supposons que l'on veuille créer une classe compteur qui permettent d'exécuter le code suivant :
 
 ```python/
@@ -595,29 +597,51 @@ La modélisation UML ne nous indique pas l'implémentation des différentes mét
 N'hésitez pas à jeter un coup d'œil au [tutoriel de python sur ses classes](https://docs.python.org/fr/3/tutorial/classes.html). Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.
 {% endlien %}
 
-#### Classes en python
 
-La définition d'une classe est un bloc python :
+<div id="compteur-classe"></div>
+
+La modélisation UML se transcrit presque mot pour mot en python. En codant la classe suivante dans un fichier nommé `compteur.py`{.fichier} l'exemple va fonctionner :
+
+```python/
+class Compteur:
+    def __init__(self):
+        self.valeur = 0
+
+    def incrémente(self):
+        self.valeur = self.valeur + 1
+
+```
+
+On va détailler plus tard les méthodes et moyens de construire des classes en python mais de l'écriture de la classe compteur on peut d'ores et déjà en déduire que :
+
+- une classe est un bloc python
+- le constructeur est une fonction définie dans le bloc de classe et qui s'appelle `__init__`{.language-}
+- les attributs sont assignés dans l'espace de nom d'un objet nommé `self`{.language-} qui est le premier paramètres de toutes les fonctions définies dans la classe
+- les méthodes sont des fonctions définies dans la classe
+
+## Classes en python
+
+### Définition de classes
+
+La définition d'une classe est un bloc python contenant deux parties :
 
 ```python
 
 class <nom de la classe>:
     def __init__(self, paramètre 1, ..., paramètre n):
-        instruction 1
-        ...
-        instruction p
-    def méthode 1(self, paramètre 1, ..., paramètre n_1):
-        instruction 1
-        ...
-        instruction p_1
-        ...
-    def méthode m(self, paramètre 1, ..., paramètre n_m):
-        instruction 1
-        ...
-        instruction p_m
+        # création des attributs
+        # initialisation de l'objet
+    def méthode(self, paramètre 1, ..., paramètre n_1):
+        # ...
+        # instructions de la méthode
+        # ...
+    # autres méthodes
 ```
 
-En python :
+- La première partie est constituée du constructeur nommé `__init__`{.language-}
+- La seconde parties est constituées des différentes méthodes
+
+En python, toutes les méthodes sont des fonctions définies dans le bloc classe :
 
 - le constructeur d'une classe sera **toujours** la méthode : `__init__`{.language-}. C'est une méthode spéciale.
 - le 1er paramètre de chaque méthode est **toujours** `self`{.language-}. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.
@@ -626,26 +650,36 @@ En python :
 La méthode `__init__`{.language-} n'a pas de `return`{.language-}, mais elle est utilisée dans le processus de création d'un objet.
 {% endattention %}
 
-`self`{.language-} peut souvent paraître magique. Une façon simple de comprendre ce qu'il fait est :
+De façon formelle :
 
-{% note %}
-le premier paramètre de la définition d'une méthode noté `self`{.language-}, est l'objet à gauche du `.`{.language-} lors de l'appel à celle-ci par une notation pointée.
+{% note2 "**Définition**" %}
+Une classe en python est un **_objet de type classe_** contenant [un espace de nommage](../../bases-programmation/espace-nommage/){.interne}.
 
-C'est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes.
-{% endnote %}
+{% endnote2 %}
+
+Reprenons [l'exemple de la classe compteur](./#compteur-code){.interne} et examinons son exécution. à la fin de la ligne 1, on vient d'importer le module `compteur`{.language-} qui [contient uniquement une définition de classe](./#compteur-classe){.interne}, on est dans le cas suivant :
+
+![](compteur-code-1.png)
+
+L'espace de nommage de la classe `Compteur`{.language-} contient deux méthodes (les fonctions définies dans une classes sont appelées méthodes) :
+
+- `__init__`{.language-} qui est le constructeur de la classe
+- `incrémente`{.language-} qui est une méthode
+
+Les deux méthodes prennent comme premier paramètre un objet nommé `self`{.language-}, qui est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes :
+
+{% note2 "**Définition**" %}
+le premier paramètre de toute méthode, noté `self`{.language-}, est l'objet sur lequel on va appliquer la méthode (l'objet à gauche du `.`{.language-} lors de l'appel à celle-ci par une notation pointée).
+
+{% endnote2 %}
 {% info %}
-Vous pouvez appeler ce premier paramètre comme vous voulez, mais c'est **très très** déconseillé car votre code en deviendra moins lisible (tout le monde utilise le nom `self`{.language-}).
+Vous pouvez appeler ce premier paramètre comme vous voulez, mais il est **très très** déconseillé de le faire car votre code en deviendra moins lisible (tout le monde utilise le nom `self`{.language-}).
 {% endinfo %}
 
-#### Création d'un objet
+
+### Création d'un objet
 
 En python, le retour de l'**_exécution d'une classe_** (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :
-
-```python
-NomDeLaClasse(paramètre_1, ..., paramètre_n)
-```
-
-Ainsi :
 
 - `list()`{.language-} : crée un objet de type `list`{.language-} (une liste), sans paramètre.
 - `int()`{.language-} : crée un objet de type `int`{.language-} (un entier) sans paramètre (c'est 0).
@@ -657,104 +691,69 @@ Ainsi :
 Certains objets se créent juste avec leur valeur comme les entiers, les réels ou encore les chaines de caractères. En python `3`{.language-} est équivalent à `int(3)`{.language-} par exemple.
 {% endinfo %}
 
-Python exécute cette instruction de création en :
-
-1. créant un objet vide `o`{.language-} de type `MaClasse`{.language-}
-2. il associe à l'objet un espace de nom dont le parent est l'espace de nom de sa classe
-3. il exécute le constructeur `__init__`{.language-} sur l'objet : `MaClasse.__init__(o, paramètre 1, ..., paramètre n)`{.language-} (c'est pour ça que la méthode `__init__`{.language-} n'a pas de retour)
-4. il rend l'objet `o`{.language-}
-
-#### Compteur
-
-La classe python qui correspond à l'UML précédent est celle-ci, contenu dans le fichier `compteur.py`{.fichier}, placé dans le même dossier que le fichier `main.py`{.fichier} :
+Le code suivant :
 
 ```python
-class Compteur:
-    def __init__(self):
-        self.valeur = 0
-
-    def incrémente(self):
-        self.valeur = self.valeur + 1
-
+o = MaClasse(paramètre_1, ..., paramètre_n)
 ```
 
-La classe `Compteur`{.language-} contient :
+Va créer un objet de type `MaClasse`{.language-} en effectuant les différentes étapes suivantes :
 
-- `__init__`{.language-} est le constructeur : **on déclare tous les attributs d'un objet dans celui-ci**.
-- une méthode : `incrémente`{.language-}
+1. créant un objet vide `o`{.language-} de type `MaClasse`{.language-} contenant un espace de nommage dont le parent est l'espace de nommage de sa classe
+2. il exécute le constructeur `__init__`{.language-} sur l'objet : `MaClasse.__init__(o, paramètre 1, ..., paramètre n)`{.language-} (c'est pour ça que la méthode `__init__`{.language-} n'a pas de retour)
+
+En prenant [l'exemple du compteur](./#compteur-code){.interne}. l'exécution de la ligne 3 (`c1 = Compteur()`{.language-}) se déroule comme suit :
+
+1. Création d'un nouvel objet :
+    ![](compteur-code-2.png)
+2. Exécution du constructeur `__init__`{.language-} avec le nouvel objet en paramètre. À la fon de l'exécution du constructeur on est dans la configuration suivante :
+    ![](compteur-code-3.png)
+
+On refait pareil pour la ligne 4 (`c2 = Compteur()`{.language-}), ce qui fait qu'on se trouve dans l'état suivant :
+
+![](compteur-code-4.png)
+
+Comme le constructeur est toujours appliqué au nouvel objet créé chaque objet va bien avoir des attributs distincts !
+
+{% attention2 "**À retenir**" %}
+En python, les attributs d'un objet **sont explicitement créés** dans le constructeur.
+{% endattention2 %}
 
 
-Par exemple dans le code la ligne `c1.incrémente()`{.language-} sera transformée par python en : `Compteur.incrémente(c1)`{.language-} qui peut se lire : on exécute la fonction `incrémente`{.language-} de l'espace de noms du bloc `Compteur`{.language-} avec comme paramètre `c1`{.language-}.
+### Exécution de méthodes
 
-La première façon d'écrire (`c1.incrémente()`{.language-}) est plus simple à comprendre **pour un humain** et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre **pour un ordinateur** en utilisant les espaces de noms et le passage explicite de l'objet appelant.
+L'exécution de méthodes se fait simplement en utilisant les règles des espaces de nommages et de la notation pointée.
 
-### Exécution du code
+1. on cherche le nom (potentiellement récursivement) dans l'espace de nommage 
+2. l'objet appelant est donné comme premier paramètre de la méthode.
 
-> TBD faire des dessin d'espace de nommages.
-> TBD objet vide puis init
-> TBD chercher un nom dans un objet puis remontée si nécessaire
-{% note %}
-Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.
-{% endnote %}
+Ainsi pour [l'exemple du compteur](./#compteur-code){.interne}, l'exécution de la ligne 5 (`c1.incrémente()`{.language-}) se déroule comme suit :
 
-Dans l'exemple du compteur, lorsque le fichier `main.py`{.fichier} importe le fichier `compteur.py`{.fichier}, la classe `Compteur`{.language-} y est définie. Dans son namespace seront alors placés les noms :
+1. on cherche le nom `incrémente`{.language-} dans l'espace de nommage de `c1`{.language-}. Il n'y est pas
+2. on cherche alors le nom `incrémente`{.language-} dans l'espace de nommage parent, c'est celui de sa classe et on le trouve !
+3. on exécute la méthode `incrémente`{.language-} en plaçant l'objet appelant (ici `c1`{.language-}) en premier paramètre de la méthode
+4. La méthode accède aux différents attributs de l'objet en utilisant la notation pointée ((ici `self.valeur`{.language-}))
 
-- `__init__`{.language-}
-- `incrémente`{.language-}
+Le résultat de l'exécution de la ligne 5 est alors :
 
-Qui correspondent aux noms des 2 méthodes définies dans la classe.
+![](compteur-code-5.png)
 
-De même :
+À vous pour vérifier que vous avez compris :
 
-{% note %}
-Lorsque l'on crée un objet, python lui associe un espace de noms.
+{% exercice %}
+Donnez le schéma des espaces de nommages jusqu'après l'exécution de la ligne 7 de [l'exemple du compteur](./#compteur-code){.interne}.
+{% endexercice %}
+{% details "corrigé" %}
+![](compteur-code-6.png)
+{% enddetails  %}
+{% exercice %}
+Détaillez l'exécution de la ligne 9 de [l'exemple du compteur](./#compteur-code){.interne} (`print(c2.valeur)`{.language-}).
+{% endexercice %}
+{% details "corrigé" %}
 
-Son espace de noms parent est celui de sa classe.
-{% endnote %}
-
-L'espace de noms de l'objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode `__init__`{.language-}, la ligne `self.valeur = 0`{.language-} crée un objet entier (valant 0) et l'affecte au nom `valeur`{.language-} dans l'espace de noms de l'objet nommé `self`{.language-}.
-
-Reprenons le code de `main.py`{.fichier}, et exécutons le ligne à ligne :
-
-```python/
-from compteur import Compteur
-
-c1 = Compteur()
-c2 = Compteur()
-c1.incrémente()
-c2.incrémente()
-c1.incrémente()
-
-print(c2.valeur)
-```
-
-1. lorsque python commence l'exécution du fichier, il crée le namespace global. C'est le namespace le plus haut.
-2. `from compteur import Compteur`{.language-} :
-   1. cherche un fichier `compteur.py`{.fichier} dans le répertoire courant.
-   2. on crée un espace de noms `compteur`
-   3. Python exécute le fichier `compteur.py`{.fichier} (il lit chaque ligne) dans l'espace de noms `compteur`.
-   4. Une fois ceci fait, il prend le nom `Compteur`{.language-} dans cet espace et l'ajoute dans l'espace de noms `global`. On peut donc utiliser le nom `Compteur`{.language-}
-3. `c1 = Compteur()`{.language-} :
-   - en informatique `=`{.language-} n'est pas symétrique. A gauche un nom à droite un objet. Ici ceci signifie que l'on ajoute le nom `c1`{.language-} au namespace global et que sa valeur sera le résultat de `Compteur()`{.language-}
-   - `Compteur()`{.language-} : est le résultat de l'exécution du nom `Compteur`{.language-}. Les parenthèses (et les paramètres éventuels) après un nom l'exécute. (si on avait juste écrit `c1 = Compteur`{.language-} on aurait alors eu un nom `c1`{.language-} qui sera égal à la classe `Compteur`{.language-}).
-   - `Compteur()`{.language-} Exécuter une classe revient à :
-     - créer un objet vide et lui associer un espace de noms vierge
-     - chercher la méthode `__init__`{.language-} de la classe et l'exécuter en passant le nouvel objet en premier paramètre :
-       - pour exécuter une fonction on crée un namespace pour elle.
-       - on place le nom `self`{.language-} qui vaut ici le nouveau namespace créé
-       - la première ligne crée le nom `valeur`{.language-} dans l'espace de noms de l'objet `self`{.language-}
-       - la fonction étant terminée, on supprime l'espace de noms de la fonction (qui contenait le nom `self`{.language-})
-       - on rend l'objet
-   - l'objet créé est associé au nom `c1`{.language-} dans le namespace `global`
-4. idem que la ligne précédente avec un nouvel objet
-5. `c1.incrémente()`{.language-} : python cherche le nom `incrémente`{.language-} dans l'espace de noms de l'objet nommé `c1`{.language-}.
-   1. Il regarde d'abord dans l'objet de nom `c1`{.language-}. Ça n'y est pas (dans l'espace de noms de `c1` il n'y a que le nom `valeur`{.language-}).
-   2. Il regarde donc dans l'espace de noms parent : l'espace de noms de de la classe. Il y est puisqu'`incrémente`{.language-} est une fonction définie.
-   3. On peut maintenant exécuter cette fonction. Comme pour toutes les fonctions définies dans une classe et utilisée par un objet, le premier paramètre est l'objet (le self). Ce mécanisme permet d'utiliser les noms définis dans l'espace de noms de l'objet (ici la valeur de l'objet).
-6. idem que la ligne d'avant
-7. idem que la ligne d'avant
-8. `print(c1.valeur)`{.language-} : comme pour la ligne 5, python cherche le nom `valeur`{.language-} dans l'espace de noms de l'objet nommé `c1`{.language-}. Il le trouve et le rend.
-
-{% note %}
-`objet.nom`{.language-} est **toujours** résolu de façon identique en python : on commence par chercher le nom dans l'objet et si on ne le trouve pas on cherche dans sa classe.
-{% endnote %}
+1. on cherche à exécuter la fonction `print`{.language-} : il faut trouver l'objet qui est son premier paramètre
+2. son paramètre est l'objet associé au nom `valeur`{.language-} dans l'espace de nommage de l'objet associé au nom `c2`{.language-}
+3. le nom `c2`{.language-} existe dans l'espace des variables, c'est un objet de la classe `Compteur`{.language-}
+4. L'espace de nommage de cet objet contient le nom `valeur`{.language-} qui est associé à un entier valant 1 : c'est notre paramètre de la fonction `print`{.language-}
+5. on affiche à l'écran un entier valant 1.
+{% enddetails  %}

@@ -11,8 +11,14 @@ eleventyComputed:
 
 Nous avons déjà abordé la notion d'espace de nommage lorsque :
 
-- on a paré de modules : [l'espace de nommage du module](../principes/modules/#définition-espace-nommage){.interne} et accès aux éléments via [la notation pointée](../principes/modules/#définition-notation-pointée){.interne}
+- on a paré de modules : [l'espace de nommage du module](../principes/modules/#définition-espace-nommage){.interne} et de l'accès à leurs éléments via [la notation pointée](../principes/modules/#définition-notation-pointée){.interne}
 - on a parlé des fonctions : [l'espace de nommage et fonctions](../creation-fonctions/#espace-nommage){.interne}
+
+{% attention %}
+
+Si vous venez de la partie programmation objet et que vous avez oublié ce qu'est un espace de nommage et à quoi ça sert, commencez par vous rafraîchir les idées et relisez les 3 liens précédents qui concernent : espace de nommage de modules, de fonction et notation pointée. Le but de cette partie est de préciser les mécanismes internes qui font fonctionner tout ça.
+
+{% endattention %}
 
 Les espaces de nommage permettent de lier variables et objets :
 
