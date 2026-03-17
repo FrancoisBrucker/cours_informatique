@@ -476,7 +476,7 @@ Au programme :
 {% endaller %}
 {% note %}
 - [corrigé projet dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/code)
-- [corrigé projet cartes]()
+- [corrigé projet cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/code)
 
 {% endnote %}
 
