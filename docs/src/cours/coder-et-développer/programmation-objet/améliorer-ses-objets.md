@@ -434,7 +434,7 @@ class Compteur:
     # ...
 ```
 
-Ce qui nous permet d'écrire le code suivant :
+Ce qui nous permet d'écrire le code suivant qui crée des objets de type compteur en utilisant comme paramètre un autre compteur :
 
 ```python
 
@@ -449,6 +449,15 @@ On voit que les méthodes de classes :
 - sont définies via un décorateur
 - leur premier argument est la classe
 - sont appelées en utilisant la notation pointée depuis la classe
+
+{% note2 "**Définition**" %}
+
+**_Les méthodes de classes_** fonctionnent comme les méthodes classiques sauf que :
+
+- elles sont appelées en utilisant une classe et pas un objet pour la notation pointée
+- le premier paramètre dans leur définition est la classe (nommé `cls`{.language-}) et pas un objet
+
+{% endnote2 %}
 
 ## Code final
 

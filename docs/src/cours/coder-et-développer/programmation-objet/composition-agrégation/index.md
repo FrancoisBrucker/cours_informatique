@@ -292,7 +292,7 @@ from panier import Panier
 
 def test_init():
     panier = Panier()
-    assert panier is not None
+    assert isinstance(panier, Panier)
 
 
 def test_montre_panier_vide():

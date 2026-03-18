@@ -82,7 +82,7 @@ class Personne:
         self.date_naissance = date_naissance
 
     def donne_age(self):
-        return int(abs((self.date_naissance - date.today()).days / 365))
+        return int(abs((self.date_naissance - date.today()).days / 365.2425))
 
 ```
 
