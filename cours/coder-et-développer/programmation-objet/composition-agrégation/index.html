@@ -330,7 +330,7 @@ panier<span class="token punctuation">.</span>supprime<span class="token punctua
 
 <span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     panier <span class="token operator">=</span> Panier<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> panier <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span>
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>panier<span class="token punctuation">,</span> Panier<span class="token punctuation">)</span>
 
 
 <span class="token keyword">def</span> <span class="token function">test_montre_panier_vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
