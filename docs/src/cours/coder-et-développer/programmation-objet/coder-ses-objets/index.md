@@ -55,7 +55,7 @@ En résumé :
 - les constantes sont écrites tout en majuscule
 - le noms de classes sont écrites :
   - avec une majuscule
-  - utilisent le [_Camel case_](https://fr.wikipedia.org/wiki/Camel_case) où les mots sont séparés par des _underscores_ (`_`{.language-})
+  - utilisent le [_Camel case_](https://fr.wikipedia.org/wiki/Camel_case) où les mots sont attachés les uns aux autres mais commencent par une majuscule
 - les noms commençant par `__` et se finissant par `__` (comme `__name__`) ont des significations précises
 
 {% endattention2 %}
