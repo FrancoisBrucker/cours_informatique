@@ -14,6 +14,27 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+<!-- TBD 
+
+à refaire en 
+
+1. mettre l'argumentaire avec les objets partout dans un fichier à part.
+2. 
+3. mettant améliorer ses objets (property, méthodes de classes) à la toute fin. Juste parler à la fin du cours 
+
+- de str et repr comme méthodes spéciales.
+- des comparaisons de cartes
+
+Faire 1h de cours et 3h de code :
+- 1h cours avec compteur
+- 1h TD avec dés
+- 2h TP avec carte.
+
+-->
+
+
+
 La programmation objet est un sujet très commenté. Il existe de nombreux cours en parlant et ce depuis de très longues années. Vous côtoierez donc sur internet des choses très anciennes (aux concepts désuets ou en disgrâce comme l'héritage) aux choses très récentes (aux concepts non encore clairement établis et dont on ne sait s'ils survivront à l'épreuve du temps). Le but ici est de présenter les bases opérationnelles et les raisons fondamentales de ce type de programmation et de pourquoi il est utilisé dans la quasi-totalité des langages actuels.
 
 Ce cours devrait vous permettre de vous lancer dans la programmation objet dans tout langage, mais nous illustrerons tous les principes vues en python. Il restera bien sur des choses à découvrir, des concepts avancés ou encore les subtilités d'utilisation des objets dans divers langages, mais après ce cours vous devriez être bien préparé.
@@ -84,6 +105,16 @@ Reprenons nos objets et combinons les avec d'autres :
 [Héritage](héritage){.interne}
 {% endaller %}
 
+<!-- TBD 
+
+Faire :
+
+1. 1h cours avec exemples bateau 
+2. 1h héritage de dés avec des d4 d6 d20
+3. 2h TD D&D avec des persos.
+
+-->
+
 {% aller %}
 [Projet héritage](projet-héritage){.interne}
 {% endaller %}
@@ -94,8 +125,12 @@ Reprenons nos objets et combinons les avec d'autres :
 [La bataille navale](projet-bataille-navale){.interne}
 {% endaller %}
 
+<!-- TBD
+
 ## Pour aller plus loin : les design pattern
 
 {% aller %}
 [Design Patterns](design-patterns){.interne}
-{% endaller %}
+{% endaller %} 
+
+-->

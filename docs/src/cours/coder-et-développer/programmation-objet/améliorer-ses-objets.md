@@ -9,6 +9,18 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD 
+
+à mettre à la fin :
+
+supprimer str d'ici et ne mettre que repr
+
+parler d'attributs de classes aussi
+
+et enfin pur les property, utiliser : x = property(get, set) <https://docs.python.org/3/library/functions.html#property> et dire que l'on peut aussi le faire avec des décorateur
+-->
+
+
 Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets. Nous allons prendre comme exemple le compteur dont la classe est pour l'instant :
 
 
@@ -421,7 +433,11 @@ Terminons cette partie par une amélioration souvent pratique, les méthodes de 
 - dont le premier paramètre est la classe et non l'objet
 - qui sont utilisées via la classe
 
-Le principal intérêt des méthodes de classes et de permettre des créations alternatives des objets. Par exemple pour notre compteur on pourrait avoir la méthode suivante :
+Le principal intérêt des méthodes de classes et de permettre des créations alternatives des objets. 
+
+### Méthodes de classes
+
+Par exemple pour notre compteur on pourrait avoir la méthode suivante :
 
 ```python
 class Compteur:
@@ -458,6 +474,10 @@ On voit que les méthodes de classes :
 - le premier paramètre dans leur définition est la classe (nommé `cls`{.language-}) et pas un objet
 
 {% endnote2 %}
+
+### Attributs de classes
+
+> TBD
 
 ## Code final
 

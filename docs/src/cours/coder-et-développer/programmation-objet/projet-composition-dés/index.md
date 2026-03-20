@@ -143,10 +143,6 @@ Ajoutez les tests de cette nouvelle classe au fichier `test_dé.py`{.fichier}. V
 
 - qu'après la création d'un objet `TapisVert`{.language-} on dispose bien de 5 dés positionnés sur 1.
 - qu'après avoir lancé les dés, leurs positions sont toujours cohérentes avec le nombre de faces.
-- que `TapisVert`{.language-} donne bien ses dés et non une copie de ceux-ci. Pour réaliser ceci vous pourrez implémenter le test suivant :
-   1. demander les dés d'un objet de type `TapisVert`{.language-}
-   2. modifier la position d'un dé
-   3. redemander les dés de l'objet de type `TapisVert`{.language-} et vérifier que la position du dé est bien celle modifiée
 
 {% endfaire %}
 

@@ -9,6 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD mettre le début en TD avec corrigé puis la fin en TD à eux
+
 Mise en œuvre du mécanisme d'héritage.
 
 {% details "corrigé" %}

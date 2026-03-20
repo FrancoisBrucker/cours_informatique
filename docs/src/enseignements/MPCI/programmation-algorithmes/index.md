@@ -67,11 +67,22 @@ Ce cours est composée de plusieurs parties :
 
 Cours en 4 parties et 4 DM :
 
+0. mettre 4h de rappel du semestre précédent pour le code
 1. cours intro : DM algo : écrire des algorithmes en python et vérifier expérimentalement leur véracité (faire les monolignes et des exercices sur les import)
    1. pseudo-code (6h)
    2. projets et tests (4h) 
 2. cours algo (complexité) et DM code (test/projet/)
 3. cours programmation (objet) et DM algo (et de l'année précédente)
+   1. objets :
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+   2. composition
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+   3. héritage
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+  4. bataille navale : 4h
 4. cours algo (structures de données) et DM code (bataille navale)
 
 -->
@@ -544,6 +555,12 @@ Composer des objets entre-eux :
 Test de 15min **sur ordinateur** en début de cours sur la composition et l'agrégation
 {% endattention %}
 
+
+{% aller %}
+
+[Héritage](/cours/coder-et-développer/programmation-objet/héritage){.interne}
+
+{% endaller %}
 
 Cours Valentin :
 - [héritage](./heritage){.interne}

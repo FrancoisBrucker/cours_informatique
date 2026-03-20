@@ -12,17 +12,49 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus _spécifiques_ que ceux de la classe mère. Quelques exemples qui seront développés par la suite:
+Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus _spécifiques_ que ceux de la classe mère. 
+
+Par exemple (ils seront développés par la suite) :
 
 - dans un contexte de base de données pour gérer une université, on peut envisager
   - une classe mère `Personne`{.language-} comprenant les attributs prénom, nom, date de naissance et une méthode permettant de calculer l'age.
   - des classe filles `Étudiant`{.language-} et `EnseignantChercheur`{.language-} ayant des attributs spécifiques: numéro d'étudiant pour les uns, laboratoire de rattachement pour les autres.
-- dans un contexte mathématique, un polygone est une notion générale avec des cas particuliers: triangle, quadrilatère, pentagone, etc. On peut donc concevoir
+- dans un contexte mathématique, un polygone est une notion générale avec des cas particuliers : triangle, quadrilatère, pentagone, etc. On peut donc concevoir
   - une classe mère `Polygone`{.language-} composée d'une liste de sommets et de méthodes pour calculer le périmètre, l'aire, etc.
   - des classes filles `Triangle`{.language-}, `Quadrilatère`{.language-}, `Pentagone`{.language-}, etc. La classe `Triangle`{.language-} est plus spécifique, et dispose à ce titre de méthodes spécifiques, supplémentaires, qui calculent l'orthocentre, tracent le cercle circonscrit et le cercle inscrit, détermine si le triangle est rectangle, isocèle, équilatéral, etc.
-- dans un contexte de jeu, un personnage est une notion générique qui se décline en plusieurs catégories spécifiques: magicien, guerrière, gobelin, etc.:
+- dans un contexte de jeu, un personnage est une notion générique qui se décline en plusieurs catégories spécifiques: magicien, guerrière, gobelin, _etc_ :
   - la classe mère `Personnage`{.language-} définit des points de vie, un score d'attaque, etc.
-  - les classes filles `Magicien`{.language-}, `Guerrière`{.language-}, `Gobelin`{.language-} y ajoutent des comportements spécifiques à chaque catégorie (sorts, défense, etc.
+  - les classes filles `Magicien`{.language-}, `Guerrière`{.language-}, `Gobelin`{.language-} y ajoutent des comportements spécifiques à chaque catégorie (sorts, défense, _etc_)
+
+## Définitions
+
+{% note2 "**Définition**" %}
+**_L'héritage _** rend compte de la relation _est un_ entre classes. La classe $B$ hérite de $A$ si, de façon équivalente :
+
+- $B$ est un cas particulier de $A$,
+- $A$ est plus générique que $B$,
+- $B$ est une classe ayant au moins toutes les propriétés (méthodes et attributs) de $A$.
+
+On dira que :
+
+- $A$ est **_la classe mère_** de $B$
+- $B$ est **_une classe fille_** de $A$ 
+
+{% endnote2 %}
+
+### UML
+
+{% note %}
+La flèche qui montre la relation d'héritage est :
+![flèche héritage](flèche_héritage.png)
+{% endnote %}
+
+> TBD par défaut les même fonction. Si elle apparaît plusieurs fois : surcharge.
+
+
+### Python
+
+> TBD def et super
 
 ## Utilisation de l'héritage
 
