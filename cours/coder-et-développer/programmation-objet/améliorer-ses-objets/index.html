@@ -96,7 +96,17 @@
     
   
 
-  <p>Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets. Nous allons prendre comme exemple le compteur dont la classe est pour l'instant :</p>
+  <!-- TBD 
+
+à mettre à la fin :
+
+supprimer str d'ici et ne mettre que repr
+
+parler d'attributs de classes aussi
+
+et enfin pur les property, utiliser : x = property(get, set) <https://docs.python.org/3/library/functions.html#property> et dire que l'on peut aussi le faire avec des décorateur
+-->
+<p>Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets. Nous allons prendre comme exemple le compteur dont la classe est pour l'instant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
@@ -459,7 +469,9 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 <li>dont le premier paramètre est la classe et non l'objet</li>
 <li>qui sont utilisées via la classe</li>
 </ul>
-<p>Le principal intérêt des méthodes de classes et de permettre des créations alternatives des objets. Par exemple pour notre compteur on pourrait avoir la méthode suivante :</p>
+<p>Le principal intérêt des méthodes de classes et de permettre des créations alternatives des objets.</p>
+<h3>Méthodes de classes</h3>
+<p>Par exemple pour notre compteur on pourrait avoir la méthode suivante :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
 
@@ -494,6 +506,10 @@ c_copie <span class="token operator">=</span> Compteur<span class="token punctua
 </ul>
 </div></div>
 
+<h3>Attributs de classes</h3>
+<blockquote>
+<p>TBD</p>
+</blockquote>
 <h2>Code final</h2>
 <p>Notre compteur a bien évolué depuis sa première mouture. Il permet maintenant d'être utilisé de façon bien plus intuitive.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>

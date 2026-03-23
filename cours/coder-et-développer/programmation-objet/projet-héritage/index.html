@@ -97,28 +97,44 @@
   
 
   <p>Mise en œuvre du mécanisme d'héritage.</p>
+<!-- 
+
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" >
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
 </svg>
 <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
+
+
+corrigé
+
+
 </div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Faites les exercices vous même avant de regarder la solution.</p>
-<p><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage">Corrigé du code</a></p>
+
+
+
+Faites les exercices vous même avant de regarder la solution.
+
+[Corrigé du code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
+
+
+
 </div>
+
 </details>     
 </div>
+ -->
 <h2>Comptes bancaires</h2>
 <p>Vous allez construire une hiérarchie de produits bancaires.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -139,7 +155,7 @@
 <div class="pl-8 mr-8">
 <p>Créez et testez une classe <code class="language-">Compte</code> qui servira de classe mère. Cette classe doit :</p>
 <ul>
-<li>posséder un titulaire (on suppose que c'est une chaine de caractères)</li>
+<li>posséder un titulaire (on suppose que c'est une chaîne de caractères)</li>
 <li>être créée sans argent déposé initialement.</li>
 <li>permettre de déposer de l'argent.</li>
 <li>permettre de retirer de l'argent (on suppose que l'on peut être à découvert).</li>
@@ -174,7 +190,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez et testez une classe <code class="language-">CompteEpargne</code>. Cette classe doit :</p>
+<p>Créez et testez une classe <code class="language-">CompteÉpargne</code>. Cette classe doit :</p>
 <ul>
 <li>être un <code class="language-">Compte</code></li>
 <li>avoir un taux d'intérêt</li>
@@ -193,7 +209,7 @@
 <div class="pl-8 mr-8">
 <p>Créez et testez une classe <code class="language-">LivretA</code>. Cette classe doit :</p>
 <ul>
-<li>être un <code class="language-">CompteEpargne</code></li>
+<li>être un <code class="language-">CompteÉpargne</code></li>
 <li>avoir un taux d'intérêt de 3% et un plafond de 22950 euros</li>
 </ul>
 </div></div>
@@ -216,7 +232,7 @@
 <div class="pl-8 mr-8">
 <p>Créez et testez une classe <code class="language-">PEL</code>. Cette classe :</p>
 <ul>
-<li>doit être un <code class="language-">CompteEpargne</code></li>
+<li>doit être un <code class="language-">CompteÉpargne</code></li>
 <li>doit avoir un taux d'intérêt de 2% et un plafond de 61200 euros</li>
 <li>ne permet pas de faire de retrait</li>
 </ul>
@@ -225,7 +241,7 @@
 <p>La particularité du PEL est que l'on ne peut plus déposer d'argent dessus après 10 ans. Il faut donc tenir trace de son année de création et de l'année où l'on veut faire des dépôts. Le code de la user story suivante le fait. Faites en sorte que votre code permette de l'exécuter :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">p <span class="token operator">=</span> PEL<span class="token punctuation">(</span><span class="token string">"Ada Lovelace"</span><span class="token punctuation">,</span> année_ouverture<span class="token operator">=</span><span class="token number">1835</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Dépot (1840)"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Dépôt (1840)"</span><span class="token punctuation">)</span>
 p<span class="token punctuation">.</span>dépose<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">1840</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>solde<span class="token punctuation">)</span>
 

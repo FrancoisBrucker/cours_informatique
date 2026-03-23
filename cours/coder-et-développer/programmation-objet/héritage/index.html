@@ -109,7 +109,29 @@
     
   
 
-  <p>Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus <em>spécifiques</em> que ceux de la classe mère. Quelques exemples qui seront développés par la suite:</p>
+  <p>Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus <em>spécifiques</em> que ceux de la classe mère.</p>
+<h2>Définitions</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong><em>L'héritage</em></strong> rend compte de la relation <em>est un</em> entre classes. La classe $B$ hérite de $A$ si, de façon équivalente :</p>
+<ul>
+<li>$B$ est un cas particulier de $A$,</li>
+<li>$A$ est plus générique que $B$,</li>
+<li>$B$ est une classe ayant au moins toutes les propriétés (méthodes et attributs) de $A$.</li>
+</ul>
+<p>On dira que :</p>
+<ul>
+<li>$A$ est <strong><em>la classe mère</em></strong> de $B$</li>
+<li>$B$ est <strong><em>une classe fille</em></strong> de $A$</li>
+</ul>
+</div></div>
+
+<p>Par exemple (ils seront développés par la suite) :</p>
 <ul>
 <li>dans un contexte de base de données pour gérer une université, on peut envisager
 <ul>
@@ -117,56 +139,81 @@
 <li>des classe filles <code class="language-">Étudiant</code> et <code class="language-">EnseignantChercheur</code> ayant des attributs spécifiques: numéro d'étudiant pour les uns, laboratoire de rattachement pour les autres.</li>
 </ul>
 </li>
-<li>dans un contexte mathématique, un polygone est une notion générale avec des cas particuliers: triangle, quadrilatère, pentagone, etc. On peut donc concevoir
+<li>dans un contexte mathématique, un polygone est une notion générale avec des cas particuliers : triangle, quadrilatère, pentagone, etc. On peut donc concevoir
 <ul>
 <li>une classe mère <code class="language-">Polygone</code> composée d'une liste de sommets et de méthodes pour calculer le périmètre, l'aire, etc.</li>
 <li>des classes filles <code class="language-">Triangle</code>, <code class="language-">Quadrilatère</code>, <code class="language-">Pentagone</code>, etc. La classe <code class="language-">Triangle</code> est plus spécifique, et dispose à ce titre de méthodes spécifiques, supplémentaires, qui calculent l'orthocentre, tracent le cercle circonscrit et le cercle inscrit, détermine si le triangle est rectangle, isocèle, équilatéral, etc.</li>
 </ul>
 </li>
-<li>dans un contexte de jeu, un personnage est une notion générique qui se décline en plusieurs catégories spécifiques: magicien, guerrière, gobelin, etc.:
+<li>dans un contexte de jeu, un personnage est une notion générique qui se décline en plusieurs catégories spécifiques: magicien, guerrière, gobelin, <em>etc</em> :
 <ul>
 <li>la classe mère <code class="language-">Personnage</code> définit des points de vie, un score d'attaque, etc.</li>
-<li>les classes filles <code class="language-">Magicien</code>, <code class="language-">Guerrière</code>, <code class="language-">Gobelin</code> y ajoutent des comportements spécifiques à chaque catégorie (sorts, défense, etc.</li>
+<li>les classes filles <code class="language-">Magicien</code>, <code class="language-">Guerrière</code>, <code class="language-">Gobelin</code> y ajoutent des comportements spécifiques à chaque catégorie (sorts, défense, <em>etc</em>)</li>
 </ul>
 </li>
 </ul>
-<h2>Utilisation de l'héritage</h2>
-<p>L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :</p>
-<ol>
-<li>soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille</li>
-<li>soit en appelant directement un attribut ou une méthode de la classe mère.</li>
-</ol>
-<p>L'héritage permet de factoriser du code entre classes similaires :</p>
-<ul>
-<li>lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère</li>
-<li>lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.</li>
-</ul>
-<p>La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).</p>
-<h2>Exemple 1 : personnel de l'université</h2>
-<p>Ce premier exemple va nous permettre de comprendre le mécanisme mis en œuvre dans l'héritage.</p>
-<p>Le diagramme UML représentant sa description dans l'introduction est celle-ci :</p>
-<p><img src="personnel_universit%C3%A9_UML.png" alt="personnel de l'université"></p>
-<p>Les relations d'héritages sont explicités par une flèche spéciale :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<h3>UML</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La flèche qui montre la relation d'héritage est :
 <img src="fl%C3%A8che_h%C3%A9ritage.png" alt="flèche héritage"></p>
 </div></div>
 
-<p>Toutes les classes filles <strong><em>héritent</em></strong> des propriétés (attributs et méthodes des parents) en supposant le code des classes écrites dans le fichier <code class="fichier">personnel.py</code> on peut alors très bien écrire le code suivant bien que la méthode <code class="language-">donne_age</code> ne soit pas définie dans la classe <code class="language-">EnseignantChercheur</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> date
-<span class="token keyword">from</span> personnel <span class="token keyword">import</span> EnseignantChercheur
-
-
-prof_info <span class="token operator">=</span> EnseignantChercheur<span class="token punctuation">(</span><span class="token string">"Turing"</span><span class="token punctuation">,</span> <span class="token string">"Alan"</span><span class="token punctuation">,</span> <span class="token string">"Mathématiques de Cambridge"</span><span class="token punctuation">,</span> date<span class="token punctuation">(</span><span class="token number">1936</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>prof_info<span class="token punctuation">.</span>donne_age<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
-<p>Le principe même de l'héritage est de pouvoir facilement utiliser dans des classes filles des éléments définies dans les classes mères.</p>
-<h3>Code de la classe mère</h3>
-<p>Ce code est classique :</p>
+<p>Par exemple :</p>
+<p><img src="uml-1.png" alt=""></p>
+<ul>
+<li>A est plus générique, B, C, D et E sont plus spécifiques, elles spécialisent A.</li>
+<li>B, C, D héritent de A, ce sont des classes filles ou sous-classes de A, qui est leur classe mère.</li>
+<li>E hérite de B qui hérite de A : C'est donc une sous classe de B et de A</li>
+</ul>
+<p>Par défaut les méthodes et attributs définies dans les classes parentes sont accessibles dans les classes enfants : <strong>on ne les redéfinis pas</strong>.</p>
+<p>Ainsi, en considérant l'UML suivant :</p>
+<p><img src="uml-2.png" alt=""></p>
+<p>On a :</p>
+<ul>
+<li>les objets de la classe B possèdent 2 attributs :
+<ul>
+<li><code class="language-">a1</code> hérité de la classe <code class="language-">A</code></li>
+<li><code class="language-">a2</code> défini dans sa classe</li>
+</ul>
+</li>
+<li>les objets de la classe B possèdent 3 méthodes :
+<ul>
+<li><code class="language-">B()</code> leur constructeur</li>
+<li><code class="language-">m1()</code> hérité de la classe <code class="language-">A</code></li>
+<li><code class="language-">m2()</code> définie dans sa classe</li>
+</ul>
+</li>
+<li>les objets de la classe B <strong>ne possèdent pas</strong> le constructeur <code class="language-">A()</code>, le constructeur est propre à une classe, il ne s'hérite pas.</li>
+<li>les objets des classes B, C et D possèdent une méthode <code class="language-">m2()</code> mais ce n'est pas la même, chacune a son propre code.</li>
+</ul>
+<p>Le diagramme UML montre bien que l'héritage partage des attributs et des méthodes entre classes. Il arrive cependant souvent qu'il faille re-écrire des méthodes pour tenir compte des spécificités des classes filles, en UML on symbolise ceci en re-écrivant l'attribut/méthode re-écrite. Par exemple :</p>
+<p><img src="uml-3.png" alt=""></p>
+<p>La classe <code class="language-">E</code> possède :</p>
+<ul>
+<li>deux attributs :
+<ul>
+<li><code class="language-">a1</code> qu'elle définit</li>
+<li><code class="language-">a2</code> hérité de <code class="language-">B</code></li>
+</ul>
+</li>
+<li>deux méthodes :
+<ul>
+<li><code class="language-">m1()</code> hérité de <code class="language-">A</code></li>
+<li><code class="language-">m2()</code> qu'elle définit</li>
+</ul>
+</li>
+</ul>
+<p>L'exemple du personnel de l'université a pour diagramme UML :</p>
+<p><img src="personnel_universit%C3%A9_UML.png" alt="personnel de l'université"></p>
+<h3>Python</h3>
+<p>L'héritage est une factorisation de code (on partage le code de méthodes entres classes mères et filles), ceci est géré très facilement en python en utilisant <a href="../../bases-programmation/espace-nommage/" class="interne">un espace de nommage</a>.</p>
+<p>En reprenant l'exemple du personnel de l'université, on peut d'ore et déjà écrire la classe mère :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span>  datetime <span class="token keyword">import</span> date
 
 
@@ -187,13 +234,25 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 <p>On a utilisé <a href="https://docs.python.org/fr/3/library/datetime.html#">le module <code class="language-">datetime</code> de python</a> qui est fait pour gérer les dates. Utilisez <strong>toujours</strong> des modules spécifique pour gérer les dates et ne cédez pas à la tentation d'utiliser des chaines de caractères par exemple, vous le payerez tôt ou tard car il y a trop de cas particuliers et de bizarrerie de formats de date (format Américain ? Français ? Chinois ?) pour faire attention à tous les cas soit-même.</p>
 </div></div>
 
-<h3>Classes filles</h3>
 <p>Pour écrire le code des classes filles il faut pouvoir faire deux choses :</p>
 <ol>
 <li>expliciter le fait qu'une classe hérite de l'autre</li>
 <li>utiliser le code de la classe mère dans une classe fille</li>
 </ol>
-<p>Voyons comment tout ça est fait en python (on ajoute les classes filles dans le fichier contenant la classe mère) :</p>
+<p>Pour le premier point, on définit la classe mère d'une classe en faisant suivre le nom de la classe fille, lors de sa définition, par le nom de la classe mère entre parenthèses :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fille</span><span class="token punctuation">(</span>Mère<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ...</span>
+</code></pre>
+<p>Pour le second point on utilise le mot clé <code class="language-">super()</code> suivi du nom de la méthode à utiliser qui lance la recherche du nom en commençant dans l'espace de nommage parent.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html">la fonction super</a></p>
+</div></div>
+
+<p>On peut maintenant coder les deux classes filles :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">class</span> Étudiant<span class="token punctuation">(</span>Personne<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span></span>
@@ -205,31 +264,44 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 <span class="highlight-line">        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span></span>
 <span class="highlight-line">        self<span class="token punctuation">.</span>laboratoire <span class="token operator">=</span> laboratoire</span>
 <span class="highlight-line"></span></code></pre>
-<h3>Définir la classe mère</h3>
-<p>On définit la classe mère d'une classe en faisant suivre le nom de la classe fille, lors de sa définition, par le nom de la classe mère entre parenthèses :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fille</span><span class="token punctuation">(</span>Mère<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-</code></pre>
-<h3>Appels de fonctions de la classe mère</h3>
-<p>Utiliser une méthode de la classe mère dans la classe fille on utilise le mot clé <code class="language-">super()</code> suivi du nom de la méthode à utiliser. Dans l'exemple, le constructeur de la classe fille appelle le constructeur de la classe mère. Remarquez que l'on utilise la méthode <code class="language-">__init__</code> sans utiliser le premier paramètre (<code class="language-">self</code>) qui est implicitement l'objet courant.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html">la fonction super</a></p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'appel des fonctions de la classe mère est obligatoire en python. Si on omettait la ligne 3 dans le code de définition de la classe <code class="language-">Étudiant</code>, ces derniers n'auraient pas d'attributs <code class="language-">nom</code> <code class="language-">prénom</code>, ni <code class="language-">année_naissance</code> définis dans le constructeur de la classe mère, <code class="language-">Personne</code>.</p>
 </div></div>
 
-<p>L'appel des fonctions de la classe mère est obligatoire en python. Si on omettait la ligne 3 dans le code de définition de la classe <code class="language-">Étudiant</code>, ces derniers n'auraient pas d'attributs <code class="language-">nom</code> <code class="language-">prénom</code>, ni <code class="language-">année_naissance</code> définis dans le constructeur de la classe mère, <code class="language-">Personne</code>.</p>
-<h3>Appels de méthodes</h3>
-<p>L'appel de méthodes se fait en &quot;remontant&quot; la hiérarchie jusqu'à trouver la méthode à exécuter. Lors de l'exécution de la ligne <code class="language-">print(prof_info.donne_age())</code>, celà se passe ainsi :</p>
+<p>L'appel de méthodes se fait en &quot;remontant&quot; la hiérarchie jusqu'à trouver la méthode à exécuter. Considérons le code suivant, qui utilise nos classes (en supposant le code des classes écrites dans le fichier <code class="fichier">personnel.py</code>) :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> date
+<span class="token keyword">from</span> personnel <span class="token keyword">import</span> EnseignantChercheur
+
+
+prof_info <span class="token operator">=</span> EnseignantChercheur<span class="token punctuation">(</span><span class="token string">"Turing"</span><span class="token punctuation">,</span> <span class="token string">"Alan"</span><span class="token punctuation">,</span> <span class="token string">"Mathématiques de Cambridge"</span><span class="token punctuation">,</span> date<span class="token punctuation">(</span><span class="token number">1936</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prof_info<span class="token punctuation">.</span>donne_age<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Lors de l'exécution de la ligne <code class="language-">print(prof_info.donne_age())</code>, celà se passe ainsi :</p>
 <ol>
 <li>l'interpréteur python regarde si le nom <code class="language-">donne_age</code> est défini dans l'objet de nom <code class="language-">prof_info</code> : ce n'est pas le cas</li>
 <li>il remonte alors d'un étage dans la hiérarchie et regarde si le nom <code class="language-">donne_age</code> est présent dans la classe de <code class="language-">prof_info</code>, <code class="language-">EnseignantChercheur</code> : ce n'est toujours pas le cas</li>
 <li>on peut encore remonter d'un cran et regarder la classe mère de <code class="language-">EnseignantChercheur</code>, <code class="language-">Personne</code>. Bingo : le nom <code class="language-">donne_age</code> est présent et il est exécuté.</li>
 </ol>
+<h2>Utilisation de l'héritage</h2>
+<p>Le principe même de l'héritage est de pouvoir facilement utiliser dans des classes filles des éléments définies dans les classes mères. L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :</p>
+<ol>
+<li>soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille</li>
+<li>soit en appelant directement un attribut ou une méthode de la classe mère.</li>
+</ol>
+<p>L'héritage permet de factoriser du code entre classes similaires :</p>
+<ul>
+<li>lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère</li>
+<li>lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.</li>
+</ul>
+<p>La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).</p>
 <h2>Hiérarchie des classes</h2>
-<p>Dans un langage objet, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant la classe la plus haute (ici elle s'appelle <code>object</code>).</p>
+<p>Dans un langage objet, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant la classe la plus haute (en python elle s'appelle <code>object</code>).</p>
 <p><img src="h%C3%A9ritage-classes.png" alt="classes héritage"></p>
 <p>Dans la figure précédente :</p>
 <ul>
@@ -247,10 +319,9 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 </div></div>
 
 <p>Le fait que toutes les classes héritent d'<code class="language-">object</code> est très pratique puisque cela permet de créer des comportements par défaut à tous les objets : si une méthode existe dans la classe alors qu'on ne l'a pas définie explicitement, c'est qu'elle est définie dans la classe <code class="language-">object</code>. C'est le cas de la méthode <code class="language-">__str__</code> par exemple.</p>
-<h3>Chercher dans la hiérarchie</h3>
 <p>Supposons que j'ai un objet nommé <code class="language-">obj</code> de classe <code>classe 2</code> qui veut appeler la méthode 1 : <code class="language-">obj.méthode1()</code></p>
 <ol>
-<li><code class="language-">méthode1</code> est d'abord cherchée dans l'espace de nom de <code class="language-">obj</code> : elle n'y est pas.</li>
+<li><code class="language-">méthode1</code> est d'abord cherchée dans l'espace de nommage de <code class="language-">obj</code> : elle n'y est pas.</li>
 <li>elle est alors cherchée dans sa classe, <code>classe 2</code> : celle-ci ne définit pas <code class="language-">méthode1</code></li>
 <li>elle est alors cherchée dans la classe mère de <code>classe 2</code>, <code>classe 1</code> : <code class="language-">méthode1</code> est définie, c'est son code qui est finalement utilisé.</li>
 </ol>
@@ -262,17 +333,6 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 <p>Si l'on arrive jusqu'à la classe <code>object</code> et qu'elle ne contient pas le nom recherché une erreur est lancée.</p>
 </div></div>
 
-<h3>Appeler directement une sous/sur-classe</h3>
-<p>Supposons que dans la définition de <code class="language-">méthode1</code> de la <code>classe 2'</code>, on particularise la méthode <code class="language-">méthode1</code> de la <code>classe 1</code>. On peut alors appeler la méthode <code class="language-">méthode1</code> de la <code>classe 1</code> dans la définition de la <code class="language-">méthode1</code> de la <code>classe 2'</code>.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là, tenter d'utiliser la méthode <code>méthode1</code> de la <code>classe 1'</code> en définissant la méthode <code>méthode1</code> de la <code>classe 2''</code> va en fait exécuter la méthode méthode <code>méthode1</code> de la classe <code>object</code>.</p>
-</div></div>
-
-<h3>Connaître la hiérarchie</h3>
 <p>En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinées lors de la remontée de la hiérarchie, on peut utiliser la méthode <code class="language-">mro()</code>. Par exemple, dans un interpréteur :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span></code></pre>
@@ -499,57 +559,6 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 
     <span class="token keyword">def</span> <span class="token function">lancer_sort</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
         personnage<span class="token punctuation">.</span>vie <span class="token operator">-=</span> self<span class="token punctuation">.</span>attaque_magique</code></pre>
-<h3>Pour aller plus loin</h3>
-<p>Dans l'implémentation de notre classe <code class="language-">Personnage</code>, on ne vérifie pas que notre vie passe en dessous de zéro. Il faut donc vérifier à chaque modification de l'attribut s'il est en dessous de zéro ou pas. Pour cela, on utilise en python les <code class="language-">@property</code> vues dans le <a href="../projet-objets-d%C3%A9s#property" class="interne">projet objets : Dés</a> :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Pour faire plus joli :</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Remplacez la manipulation directe de l'attribut <code class="language-">vie</code> par un <code class="language-">@property</code>.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vie<span class="token punctuation">,</span> attaque<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> vie
-        self<span class="token punctuation">.</span>attaque <span class="token operator">=</span> attaque
-
-    <span class="token keyword">def</span> <span class="token function">se_faire_taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>vie <span class="token operator">=</span> self<span class="token punctuation">.</span>vie <span class="token operator">-</span> personnage<span class="token punctuation">.</span>attaque
-
-    <span class="token keyword">def</span> <span class="token function">taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        personnage<span class="token punctuation">.</span>se_faire_taper<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
-
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">vie</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_vie
-
-    <span class="token decorator annotation punctuation">@vie<span class="token punctuation">.</span>setter</span>
-    <span class="token keyword">def</span> <span class="token function">vie</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> valeur
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>_vie <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> <span class="token number">0</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"je suis mort"</span><span class="token punctuation">)</span></code></pre>
-</div>
-</details>     
-</div>
 <h2>Héritage multiple</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -771,26 +780,6 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </div>
 </details>     
 </div>
-<h2>Accesseurs et héritage</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ul>
-<li><a href="https://docs.python.org/3/library/functions.html#super">documentation de <code class="language-">super()</code></a></li>
-<li><a href="https://gist.github.com/Susensio/979259559e2bebcd0273f1a95d7c1e79">héritage d'accesseur et mutateur en python</a></li>
-</ul>
-</div></div>
-
-<p>La gestion des accesseurs et des mutateurs hérités est <em>&quot;compliquée&quot;</em> en Python. Si vous avez utilisé des <code class="language-">@property</code> vues dans le <a href="../projet-objets-d%C3%A9s#property" class="interne">projet objets : Dés</a> pour votre classe <code class="language-">Dé</code>, il faut un peu tricoter pour les utiliser dans la classe <code class="language-">StatDé</code>.</p>
-<p>Supposons que c'est l'attribut <code class="language-">valeur</code> auquel vous accédez par <code class="language-">@property</code>. Pour appeler :</p>
-<ul>
-<li>l'accesseur de la classe mère dans une classe fille on peut utiliser : <code class="language-">super().valeur</code></li>
-<li>le mutateur de la classe mère dans une classe fille peut être accédé via son nom Python qui est : <code class="language-">super(type(self), type(self)).valeur.fset(self, new_position)</code></li>
-</ul>
-<p>C'est un peu compliqué et vient de l'implémentation de <code class="language-">super()</code> en Python.</p>
-<p>Vous pouvez consulter les deux liens suivants pour un peu mieux comprendre ce qu'on fait</p>
 
 
 </article>
