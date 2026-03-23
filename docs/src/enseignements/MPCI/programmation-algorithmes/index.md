@@ -579,10 +579,7 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 ### Semaine 10
 
 > 30/03 au 3/04
-> Algorithmie
-
-
-> TBD DM3 : et code de l'année dernière
+> Programmation
 
 #### Mercredi : On s'entraîne
 
@@ -612,8 +609,10 @@ Pour aller plus loin :
 Correction du DM2. 
 
 {% attention %}
-Cette séance est facultative, ne venez pas si vous n'y avez pas touché au DM !
+Cette séance est facultative, ne venez que si vous avez touché au DM ! Je ne ferai que répondre aux questions que vous vous posez et des difficultés que vous avez rencontré.
 {% endattention %}
+
+<!-- 
 
 ### Semaine 11
 
@@ -625,12 +624,14 @@ Cette séance est facultative, ne venez pas si vous n'y avez pas touché au DM !
 > 2h
 >
 
+> DM3 : ET code de l'année dernière.
+
 #### Vendredi : dictionnaires
 
 > 2h
 >
 
-### Semaine 11
+### Semaine 12
 
 > 13/04 au 17/04
 > Algorithmie
@@ -647,7 +648,7 @@ Test de 15min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 > TBD DM3 et code de l'année dernière
 
-### Semaine 12
+### Semaine 13
 
 > 2h
 >
@@ -667,7 +668,7 @@ Devoir surveillé de programmation. Le programme est tout ce qu'on a vu jusqu'à
 #### Mercredi : serveur web et réseau
 
 #### Vendredi : on s'entraîne
-
+ -->
 
 
 

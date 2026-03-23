@@ -11,6 +11,8 @@ Tests et examens pour l'année scolaire 2025/2026
 2. [Test 2 : Programmation](./2_test){.interne} / [corrigé](2_test_corrigé){.interne}
 3. [Test 3 : complexité](./3_test.pdf){.interne} / [corrigé](3_test_corrigé){.interne}
 4. [Test 4 : complexité de problème](./4_test.pdf){.interne} / [corrigé](4_test_corrigé){.interne}
+5. [Test 5 : Programmation Orientée Objet (POO)](./5_test.pdf){.interne} / [corrigé](5_test_corrigé){.interne}
+6. [Test 6 : Le retour de la Programmation Orientée Objet (LRPOO)](./6_test){.interne}
 
 ## Devoir Maison
 

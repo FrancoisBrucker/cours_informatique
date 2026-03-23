@@ -17,5 +17,5 @@ authors:
 ## Corrigé
 
 {% lien %}
-[corrigé](../4_test_corrigé.pdf){.interne}
+[corrigé](../5_test_corrigé.pdf){.interne}
 {% endlien %}
