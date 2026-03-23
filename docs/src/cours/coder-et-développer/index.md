@@ -159,6 +159,14 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 [Programmation objet](programmation-objet){.interne}
 {% endaller %}
 
+## Programmation évènementielle
+
+La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
+
+{% aller %}
+[Programmation évènementielle](programmation-évènementielle){.interne}
+{% endaller %}
+
 ## Maintenir et développer du code sûr
 
 ### <span id="gestion-dépendances"></span>Gestion des dépendances
@@ -258,14 +266,4 @@ Enfin, on peut faire en sorte que nos modules/packages soient exécutables direc
 
 {% aller %}
 [Exécuter des modules python](exécution-modules){.interne}
-{% endaller %}
-
-## Programmation évènementielle
-
-> TBD mettre un environnement virtuel
-
-La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
-
-{% aller %}
-[Programmation évènementielle](programmation-évènementielle){.interne}
 {% endaller %}
