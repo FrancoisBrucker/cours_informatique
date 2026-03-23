@@ -9,15 +9,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD mettre le début en TD avec corrigé puis la fin en TD à eux
-
 Mise en œuvre du mécanisme d'héritage.
 
+<!-- 
 {% details "corrigé" %}
 Faites les exercices vous même avant de regarder la solution.
 
 [Corrigé du code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
-{% enddetails %}
+{% enddetails %} -->
 
 ## Comptes bancaires
 
@@ -32,7 +31,7 @@ Commencez par lire tout l'énoncé et créez la représentation UML des différe
 {% faire %}
 Créez et testez une classe `Compte`{.language-} qui servira de classe mère. Cette classe doit :
 
-- posséder un titulaire (on suppose que c'est une chaine de caractères)
+- posséder un titulaire (on suppose que c'est une chaîne de caractères)
 - être créée sans argent déposé initialement.
 - permettre de déposer de l'argent.
 - permettre de retirer de l'argent (on suppose que l'on peut être à découvert).
@@ -59,7 +58,7 @@ Vous implémenterez également la user story suivante :
 ### Compte épargne
 
 {% faire %}
-Créez et testez une classe `CompteEpargne`{.language-}. Cette classe doit :
+Créez et testez une classe `CompteÉpargne`{.language-}. Cette classe doit :
 
 - être un `Compte`{.language-}
 - avoir un taux d'intérêt
@@ -74,7 +73,7 @@ Créez et testez une classe `CompteEpargne`{.language-}. Cette classe doit :
 {% faire %}
 Créez et testez une classe `LivretA`{.language-}. Cette classe doit :
 
-- être un `CompteEpargne`{.language-}
+- être un `CompteÉpargne`{.language-}
 - avoir un taux d'intérêt de 3% et un plafond de 22950 euros
 
 {% endfaire %}
@@ -93,7 +92,7 @@ Vous implémenterez également la user story suivante :
 {% faire %}
 Créez et testez une classe `PEL`{.language-}. Cette classe :
 
-- doit être un `CompteEpargne`{.language-}
+- doit être un `CompteÉpargne`{.language-}
 - doit avoir un taux d'intérêt de 2% et un plafond de 61200 euros
 - ne permet pas de faire de retrait
 
@@ -104,7 +103,7 @@ La particularité du PEL est que l'on ne peut plus déposer d'argent dessus apr�
 ```python
 p = PEL("Ada Lovelace", année_ouverture=1835)
 
-print("Dépot (1840)")
+print("Dépôt (1840)")
 p.dépose(1000, 1840)
 print(p.solde)
 

@@ -68,7 +68,10 @@ Ce cours est composée de plusieurs parties :
 Cours en 4 parties et 4 DM :
 
 0. mettre 4h de rappel du semestre précédent pour le code
-1. cours intro : DM algo : écrire des algorithmes en python et vérifier expérimentalement leur véracité (faire les monolignes et des exercices sur les import)
+   1. import
+   2. notation  pointée
+   3. notion d'espace de nommage
+1. cours intro : DM algo : écrire des algorithmes en python et vérifier expérimentalement leur véracité (faire les mono-lignes et des exercices sur les import)
    1. pseudo-code (6h)
    2. projets et tests (4h) 
 2. cours algo (complexité) et DM code (test/projet/)
@@ -82,7 +85,7 @@ Cours en 4 parties et 4 DM :
    3. héritage
       1. 1h cours + 1h TD avec moi dés
       2. 2h TD cartes
-  4. bataille navale : 4h
+  1. bataille navale : 4h
 4. cours algo (structures de données) et DM code (bataille navale)
 
 -->
@@ -552,7 +555,7 @@ Composer des objets entre-eux :
 >
 
 {% attention %}
-Test de 15min **sur ordinateur** en début de cours sur la composition et l'agrégation
+Test de 30min **sur ordinateur** en début de cours sur la composition et l'agrégation
 {% endattention %}
 
 
@@ -562,15 +565,16 @@ Test de 15min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% endaller %}
 
-Cours Valentin :
-- [héritage](./heritage){.interne}
-
-> pour aller plus loin : design pattern
-
 #### Vendredi : on s'entraîne
 
 > 2h
 >
+
+{% aller %}
+
+[Projet héritage](/cours/coder-et-développer/programmation-objet/projet-héritage){.interne}
+
+{% endaller %}
 
 ### Semaine 10
 
@@ -580,22 +584,36 @@ Cours Valentin :
 
 > TBD DM3 : et code de l'année dernière
 
-#### Mercredi : structures de données
+#### Mercredi : On s'entraîne
 
 > 4h
 >
 
-- structures de données.
+{% aller %}
+
+[Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale){.interne}
+
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+
+[Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne}
+
+{% endaller %}
 
 
-#### Vendredi : on s'entraîne
+#### Vendredi : séance facultative
 
 > 2h
 >
 
-- pile/file et listes chaînées. Cours puis exercices dessus.
+Correction du DM2. 
 
-> TBD correction DM2 séance facultative.
+{% attention %}
+Cette séance est facultative, ne venez pas si vous n'y avez pas touché au DM !
+{% endattention %}
 
 ### Semaine 11
 
@@ -606,10 +624,6 @@ Cours Valentin :
 
 > 2h
 >
-
-{% attention %}
-Test de 15min **sur papier** en début de cours sur les structures de données.
-{% endattention %}
 
 #### Vendredi : dictionnaires
 
