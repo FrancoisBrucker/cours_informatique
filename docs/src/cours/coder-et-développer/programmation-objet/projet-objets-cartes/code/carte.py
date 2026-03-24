@@ -16,13 +16,18 @@ TREFLE = 1
 VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)
 COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)
 
+
 class Carte:
     def __init__(self, valeur, couleur):
         self.couleur = couleur
         self.valeur = valeur
 
     def texte(self):
-        valeur = ["sept", "huit", "neuf", "dix", "valet", "dame", "roi", "as"]
-        couleur = ["trèfle", "carreau", "cœur", "pique", ]
-        return valeur[self.valeur-7] + " de " + couleur[self.couleur - 1]
+        valeur = ["7", "8", "9", "10", "V", "D", "R", "1"]
+        couleur = ["♣︎", "♦", "♥", "♠"]
+        return valeur[self.valeur - 7] + couleur[self.couleur - 1]
 
+    def plus_grande_ou_égale_que(self, other):
+        return (self.valeur > other.valeur) or (
+            (self.valeur == other.valeur) and (self.couleur >= other.couleur)
+        )

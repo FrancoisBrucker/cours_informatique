@@ -12,3 +12,9 @@ def test_lancer():
     dé = Dé()
     dé.lancer()
     assert 1 <= dé.position <= 6
+
+def test_dé_texte():
+    dé = Dé()
+    assert dé.texte() == "⚀"
+    dé.position = 4
+    assert dé.texte() == "⚃"

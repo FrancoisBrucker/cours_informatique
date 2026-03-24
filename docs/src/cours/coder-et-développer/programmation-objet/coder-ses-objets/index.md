@@ -262,11 +262,11 @@ c = Compteur()
 print(c.valeur == 0)
 ```
 
-{% note "**bonne pratique**" %}
-Lorsque l'on teste un objets et ses méthodes, on essaie dans la mesure du possible de ne pas avoir besoin des attributs de classes. On ne vérifie que les résultats de la méthode, pas comment l'objet stocke ses informations.
+{% attention2 "**À retenir**" %}
+Lorsque l'on teste des objets on essaie dans la mesure du possible de ne pas avoir besoin de leurs attributs. On ne vérifie que les résultats des méthodes, pas comment l'objet stocke ses informations.
 
 On teste des **fonctionnalités** pas une **implémentation particulière de celles-ci**.
-{% endnote %}
+{% endattention2 %}
 
 #### Test de la fonctionnalité
 

@@ -233,3 +233,24 @@ else:
 ```
 
 {% enddetails %}
+
+
+> TBD à intégrer au TD
+
+Vous pouvez maintenant finir le projet en codant le jeu !
+
+La règle du jeu est :
+
+1. mélangez un jeu de 32 cartes en deux **pioches** de 16 cartes, une pour chaque joueur (vous pourrez commencer par créer un paquet de 32 cartes, puis le mélanger en utilisant [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) et enfin distributer les 16 première cartes à un joueur et les 16 dernières à l'autre)
+2. chaque joueur dispose également d'une **défausse**, initialement vide
+3. N = 1
+4. chaque joueur dévoile la carte du dessus de leur pioche
+5. le joueur ayant la carte la plus élevée remporte la carte de l'adversaire et pose les deux cartes (la sienne et celle de son adversaire) dans sa défausse
+6. si un joueur n'a plus de cartes dans sa pioche, il mélange les cartes de sa défausse pour en faire un nouvelle pioche
+7. si un joueur n'a plus de carte dans sa pioche, il perd la partie
+8. N = N + 1
+9. si N est inférieur ou au nombre maximum de tour, retour en 4, sinon le jeu s'arrête.
+
+{% faire %}
+Codez le jeu dans un fichier `main.py`{.fichier}
+{% endfaire %}

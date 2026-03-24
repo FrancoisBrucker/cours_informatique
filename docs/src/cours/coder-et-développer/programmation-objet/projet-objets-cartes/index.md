@@ -9,19 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- TBD 
-
-ici ajouter ordre.
-
--->
-
-
 Encore un projet d'initiation dans le codage des objets. On s'intéresse ici aux méthodes spéciales qui permettent d'utiliser les objets comme des nombres.
 
-Vous allez coder une classe `Carte`{.language-}, ce qui permettra par la suite de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
+Vous allez coder une classe `Carte`{.language-}, ce qui permettra dans des projets ultérieurs de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
 
 {% note "**Définition**" %}
-Un ***value object*** est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.
+Un **_value object_** est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.
 {% endnote %}
 
 ## Projet
@@ -158,20 +151,42 @@ Implémentez le constructeur de la classe `Carte`{.fichier} et ses tests en supp
 
 ### Affichage à l'écran
 
-En revanche afficher une carte à l'écran uniquement avec ses attributs entiers n'est pas très parlant. Codons une méthode permettant
-un affichage à l'écran plus convivial :
+En revanche afficher une carte à l'écran uniquement avec ses attributs entiers n'est pas très parlant. Codons, comme on a fait pour les dés, une méthode permettant un affichage à l'écran plus convivial :
 
 {% faire %}
-Codez une méthode `texte`{.language-} d'une carte qui rend une chaîne de caractères. Le code suivant doit pouvoir fonctionner (en supposant que l'entier 13 correspond à l'as et l'entier 1 à pique) :
+Codez une méthode `Carte.texte()`{.language-} d'une carte qui rend une chaîne de caractères. Le code suivant doit pouvoir fonctionner (en supposant que l'entier 13 correspond à l'as et l'entier 1 à pique) :
 
 ```python
 >>> from carte import Carte
->>> ace_pique = Carte(13, 1)
+>>> ace_pique = Carte(13, 4)
 >>> print(ace_pique.texte())
-as de pique
+1♠
 ```
 
 Faites un test de cette méthode en testant la représentation sous la forme d'une chaîne de caractères d'une `Carte`{.language-}.
+{% endfaire %}
+
+### Ordre
+
+Pour savoir si une carte est plus grande qu'une autre, le plus simple est d'ajouter des méthodes permettant de comparer les cartes entre elles.
+
+{% faire %}
+Codez la méthode `Carte.plus_grande_ou_égale_que(other)`{.language-} qui prend une carte en paramètre et rend :
+
+- `True`{.language-} si `self`{.language-} est plus grande ou égale que `other`{.language-}
+- `False`{.language-} sinon 
+
+Le code suivant doit pouvoir fonctionner (en supposant que l'entier 13 correspond à l'as et l'entier 1 à pique) :
+
+```python
+>>> from carte import Carte
+>>> ace_pique = Carte(13, 4)
+>>> valet_trèfle = Carte(11, 1)
+>>> ace_pique.plus_grande_ou_égale_que(valet_trèfle)
+True
+```
+
+Faites des tests de cette méthode.
 {% endfaire %}
 
 ### User story
@@ -263,14 +278,14 @@ Enfin, pour grouper ces constantes, vous pourrez :
 
 {% faire %}
 
-Créer deux autres constantes, qui rassemblent les couleurs et les valeurs entre elles :
+Créer deux autres constantes (on utilise donc [des tuples](../..//bases-programmation/conteneurs/tuples/){.interne}), qui rassemblent les couleurs et les valeurs entre elles :
 
 - `VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)`{.language-}
-- `COULEURS = [TREFLE, CARREAU, COEUR, PIQUE)`{.language-}
+- `COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)`{.language-}
 
 {% endfaire %}
 {% info %}
-Les deux constante précédentes vous permettrons de facilement créer un jeu de cartes en faisant deux boucles imbriquées :
+Les deux constante précédentes vous permettrons de facilement créer un jeu de cartes en faisant deux boucles. imbriquées :
 
 ```python
 from carte import Carte
@@ -305,25 +320,17 @@ Vous avez tous les outils nécessaires pour créer les user story *"voyance"*  :
 Codez la user story *"voyance"*.
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) pour tirer des cartes sans remise d'un paquet (attention, les cartes ne sont **pas** supprimées du paquet).
+Vous pourrez :
+
+1. créez une liste de 32 cartes constituant le paquet
+2. tirer un indice $i$ aléatoire entre 0 et la longueur de la liste
+3. stocker la carte d'indice $i$ et la supprimer du paquet
+4. recommencer si vous an'avez pas tiré toutes les cartes
 {% endinfo %}
 
-## Jeu
-
-Vous pouvez maintenant finir le projet en codant le jeu !
-
-La règle du jeu est :
-
-1. mélangez un jeu de 32 cartes en deux **pioches** de 16 cartes, une pour chaque joueur (vous pourrez commencer par créer un paquet de 32 cartes, puis le mélanger en utilisant [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) et enfin distributer les 16 première cartes à un joueur et les 16 dernières à l'autre)
-2. chaque joueur dispose également d'une **défausse**, initialement vide
-3. N = 1
-4. chaque joueur dévoile la carte du dessus de leur pioche
-5. le joueur ayant la carte la plus élevée remporte la carte de l'adversaire et pose les deux cartes (la sienne et celle de son adversaire) dans sa défausse
-6. si un joueur n'a plus de cartes dans sa pioche, il mélange les cartes de sa défausse pour en faire un nouvelle pioche
-7. si un joueur n'a plus de carte dans sa pioche, il perd la partie
-8. N = N + 1
-9. si N est inférieur ou au nombre maximum de tour, retour en 4, sinon le jeu s'arrête.
+## User story ordonnancement
 
 {% faire %}
-Codez le jeu dans un fichier `main.py`{.fichier}
+Codez la user story *"ordonnancement"*.
 {% endfaire %}
+

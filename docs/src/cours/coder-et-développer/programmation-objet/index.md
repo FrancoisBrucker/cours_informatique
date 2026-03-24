@@ -49,7 +49,11 @@ Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'
 
 ## <span id="classes-objets"></span>Classes et objets
 
-La base de la programmation objet, c'est les classes et comment elles permettent de construire (on dira instancier) des objets.
+### Tout est objet en python
+
+{% aller %}
+[Utiliser des objets en python](introduction){.interne}
+{% endaller %}
 
 ### Concevoir des classes et des objets
 
@@ -105,16 +109,6 @@ Reprenons nos objets et combinons les avec d'autres :
 [Héritage](héritage){.interne}
 {% endaller %}
 
-<!-- TBD 
-
-Faire :
-
-1. 1h cours avec exemples bateau 
-2. 1h héritage de dés avec des d4 d6 d20
-3. 2h TD D&D avec des persos.
-
--->
-
 {% aller %}
 [Projet héritage](projet-héritage){.interne}
 {% endaller %}
@@ -124,6 +118,12 @@ Faire :
 {% aller %}
 [La bataille navale](projet-bataille-navale){.interne}
 {% endaller %}
+
+## Pour aller plus loin
+
+> TBD repr vs str, property, méthodes de classes et méthodes statiques, constantes de classes. 
+
+
 
 <!-- TBD
 

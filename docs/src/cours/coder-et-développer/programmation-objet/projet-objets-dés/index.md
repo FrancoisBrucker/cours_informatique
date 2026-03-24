@@ -190,6 +190,45 @@ Vous pouvez maintenant voir si la user story fonctionne :
 Dé-commentez la dernière partie de la user story et vérifiez qu'elle fonctionne.
 {% endfaire %}
 
+### Affichage
+
+Pour l'instant, lorsque l'on tente d'afficher un dé on obtient le charabia suivant :
+
+```python
+>>> dé = Dé()
+>>> print(dé)
+<__main__.Dé object at 0x10a691010>
+```
+
+Ce qui n'est pas très informatif. On peut bien sur afficher sa position :
+
+```python
+>>> dé = Dé()
+>>> print(dé.position)
+1
+```
+
+Mais représenter un dé par un entier ce n'est pas très joli. Nous allons coder une méthode spécifique pour représenter notre objet sous la forme d'une chaîne de caractère : la méthode `Dé.texte()`{.language-}.
+ 
+{% faire %}
+Créez (et faites les tests) une méthode `Dé.texte()`{.language-} qui permette d'écrire :
+
+```python
+>>> d = Dé()
+>>> print(d.texte())
+⚀
+>>> d.position = 4
+>>> print(d.texte())
+⚃
+```
+
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser les caractères : `"⚀"`{.language-}, `"⚁"`{.language-}, `"⚂"`{.language-}, `"⚃"`{.language-}, `"⚄"`{.language-} et `"⚅"`{.language-} pour vos représentations.
+{% endinfo %}
+
+Vous pourrez maintenant utiliser cette méthode pour l'affichage de tous vos dés, en particulier pour les user stories !
+
 ## Programme principal
 
 Avant de coder le programme principal :

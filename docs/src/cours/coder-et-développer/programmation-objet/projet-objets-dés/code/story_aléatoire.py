@@ -9,4 +9,4 @@ print(dé.position)
 # 3. lancer le dé 10 fois et affiche la position du dé après chaque lancer
 for i in range(10):
    dé.lancer()
-   print(dé.position)
+   print(dé.texte())

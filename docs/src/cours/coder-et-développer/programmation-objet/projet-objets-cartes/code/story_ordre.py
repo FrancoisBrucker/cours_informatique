@@ -18,11 +18,9 @@ max_carte = cartes_piochées[0]
 
 for carte in cartes_piochées:
     print(carte.texte())
-    if (carte.valeur < min_carte.valeur) or \
-       ((carte.valeur == min_carte.valeur) and (carte.couleur < min_carte.couleur)):
+    if min_carte.plus_grande_ou_égale_que(carte):
         min_carte = carte
-    if (carte.valeur > max_carte.valeur) or \
-       ((carte.valeur == max_carte.valeur) and (carte.couleur > max_carte.couleur)):
+    if carte.plus_grande_ou_égale_que(max_carte):
         max_carte = carte
 
 # afficher à l'écran le min et le max des 10 cartes 

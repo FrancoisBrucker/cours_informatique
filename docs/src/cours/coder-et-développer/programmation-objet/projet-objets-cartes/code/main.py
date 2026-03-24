@@ -3,10 +3,6 @@ import random
 import carte
 from carte import Carte
 
-def max_premier(c1, c2):
-   return (c1.valeur > c2.valeur) or \
-          ((c1.valeur == c2.valeur) and (c1.couleur > c2.couleur))
-
 
 paquet = []
 for valeur in carte.VALEURS:
@@ -44,7 +40,7 @@ while N <= MAX_TOUR and min(len(pioche1), len(pioche2)) > 0:
     print("    1 : ", carte1.texte())
     print("    2 : ", carte2.texte())
 
-    if max_premier(carte1, carte2):
+    if carte1.plus_grande_ou_égale_que(carte2):
         défausse1.extend([carte1, carte2])
         print("    Joueur 1 gagne la carte de l'adversaire")
     else:
