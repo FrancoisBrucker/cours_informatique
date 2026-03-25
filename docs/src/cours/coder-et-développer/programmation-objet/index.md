@@ -82,10 +82,10 @@ On s'entraîne à la création d'objets :
 On s'entraîne en perfectionnant nos dés et cartes :
 
 {% aller %}
-[Des dés différents](projet-objets-dés-accesseur){.interne}
+[Améliorons nos dés](projet-objets-dés-amélioration){.interne}
 {% endaller %}
 {% aller %}
-[Protéger les attributs de cartes](projet-objets-cartes-value-object){.interne}
+[Améliorons nos cartes](projet-objets-cartes-amélioration){.interne}
 {% endaller %}
 
 ## Combiner ses objets entre eux

@@ -529,17 +529,28 @@ Composer des objets entre-eux :
 
 {% aller %}
 
-1. [Améliorer les dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne}
+1. [Améliorer les dés](projet-objets-dés-amélioration){.interne}
 2. [Projet de compositions de dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés){.interne}
 {% endaller %}
+{% note %}
+- [corrigé d'amélioration des dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-dés-amélioration/code)
+- [corrigé composition de dés](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-dés/code)
+
+{% endnote %}
+
 
 Si on a le temps, sinon à faire chez soit :
 
 {% aller %}
-1. [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne}
+1. [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-amélioration/){.interne}
 2. [Projet d'agrégation de cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes){.interne}
 
 {% endaller %}
+{% note %}
+- [corrigé d'amélioration des cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-amélioration/code)
+- [corrigé agrégation de cartes](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agrégation-cartes/code)
+
+{% endnote %}
 
 ### Semaine 9
 

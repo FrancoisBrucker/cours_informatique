@@ -149,7 +149,11 @@ class Compteur:
 {% enddetails %}
 
 
-## Attributs privés
+## Attributs
+
+On peut grandement améliorer la gestion des attributs des objets.
+
+### Attributs privés
 
 Il peut arriver que l'on ne veuille pas qu'un attribut soit modifié ou qu'on le modifie à une valeur non possible. Par exemple, on pourrait avoir envie de ne tolérer que des pas non nul mais pour l'instant rien ne nous empêche d'écrire :
 
@@ -206,7 +210,48 @@ class Compteur:
 - en python les variables privées sont précédées d'un `_`{.language-} pour prévenir le développeur qu'il ne faut pas qu'il utilise ces attributs directement (ce n'est qu'une convention)
 - on utilise la fonction assert qui va faire planter le programme si on donne un pas valant 0.
 
-## Représentation sous la forme de chaînes de caractères
+### Attributs de classes
+
+Chaque classe ayant un espace de nommage, rien ne nous empêche de l'utiliser pour autre chose que des méthodes. On peut par exemple écrire ce genre de choses en créant une classe de compteur à pas fixe, qui définit **un attributs de classes**, que l'on peut ensuite utiliser :
+
+```python
+class CompteurFixe:
+    PAS = 1
+
+    def __init__(self, valeur=0):
+        self.valeur = 0
+    
+    def incrémente(self):
+        self.valeur = self.valeur + type(self).PAS
+
+
+```
+
+On utilise explicitement le fait que `PAS`{.language-} est un attribut de la classe de l'objet. Notez que de par le fonctionnement des espaces de nommages, on aura plutôt tendance à écrire la chose suivante qui est équivalente (puisque `PAS`{.language-} n'est pas défini dans l'objet on le cherche dans sa classe):
+
+```python
+class CompteurFixe:
+    PAS = 1
+
+    def __init__(self, valeur=0):
+        self.valeur = valeur
+    
+    def incrémente(self):
+        self.valeur = self.valeur + self.PAS
+
+```
+
+## Méthodes spéciales
+
+Pour rendre l'utilisation des objets pus agréable et intuitive, python va associer des méthodes spécifiques à des actions spécifiques. Ces méthodes sont appelées méthodes spéciales :
+
+{% note2 "**Définition**" %}
+**_Les méthodes spéciales_** de python se présentent sous la forme `__nom_de_la_méthode__`{.language-} et sont utilisés par python dans des cas spécifiques. [La documentation officielle](https://docs.python.org/3/reference/datamodel.html#special-method-names) les liste. Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).
+{% endnote2 %}
+
+On a déjà vu une méthode spéciale : `__init__`{.language-} qui est exécutée lorsque l'on appelle une classe, mais il y en a bien d'autres. Nous allons en voir 2, très pratiques.
+
+### Représentation sous la forme de chaînes de caractères
 
 Essayez de taper dans le fichier `main.py`{.fichier} :
 
@@ -223,10 +268,6 @@ Vous devriez obtenir quelque chose comme :
 
 
 Dans les projets dés et cartes on a créé une méthode `texte()`{.language-} qui rendait une chaîne de caractères pour ce genre de choses, mais python offre une possibilité plus simple en utilisant méthodes spéciales.
-
-{% attention2 "**À retenir**" %}
-**_Les méthodes spéciales_** de python se présentent toujours sous la forme `__nom_de_la_méthode__`{.language-} et sont utilisés par python dans des cas spécifiques. On a déjà vu `__init__`{.language-}, mais il y en a beaucoup d'autres (voir la [documentation officielle](https://docs.python.org/3/reference/datamodel.html#special-method-names)). Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).
-{% endattention2 %}
 
 Ainsi, La méthode spéciale `__str__`{.language-} est utilisée lorsque l'on cherche à transformer un objet en chaîne de caractère avec [la fonction `str()`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#str).
 
@@ -261,7 +302,7 @@ La méthode `__str__`{.language-} permet :
 - de l'afficher à l'écran en utilisant  `print(o)`{.language-} (qui est équivalent à `print(str(o))`{.language-}).
 {% endattention2 %}
 
-## <span id="comparaison"></span> Comparaisons
+### <span id="comparaison"></span> Comparaisons
 
 On pourrait avoir envie de comparer des valeurs de compteurs. On pourrait comparer directement les attributs, mais ce serait tout de même plus simple si l'on pouvait écrire :
 
@@ -318,38 +359,6 @@ class Compteur:
 Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits [dans la documentation](https://docs.python.org/fr/3/reference/datamodel.html#object.__lt__).
 
 {% endlien %}
-
-
-## Attributs de classes
-
-Chaque classe ayant un espace de nommage, rien ne nous empêche de l'utiliser pour autre chose que des méthodes. On peut par exemple écrire ce genre de choses en créant une classe de compteur à pas fixe, qui définit **un attributs de classes**, que l'on peut ensuite utiliser ensuite :
-
-```python
-class CompteurFixe:
-    PAS = 1
-
-    def __init__(self, valeur=0):
-        self.valeur = 0
-    
-    def incrémente(self):
-        self.valeur = self.valeur + type(self).PAS
-
-
-```
-
-On utilise explicitement le fait que `PAS`{.language-} est un attribut de la classe de l'objet. Notez que de par le fonctionnement des espaces de nommages, on aura plutôt tendance à écrire la chose suivante qui est équivalente (puisque `PAS`{.language-} n'est pas défini dans l'objet on le cherche dans sa classe):
-
-```python
-class CompteurFixe:
-    PAS = 1
-
-    def __init__(self, valeur=0):
-        self.valeur = valeur
-    
-    def incrémente(self):
-        self.valeur = self.valeur + self.PAS
-
-```
 
 ## Code final
 

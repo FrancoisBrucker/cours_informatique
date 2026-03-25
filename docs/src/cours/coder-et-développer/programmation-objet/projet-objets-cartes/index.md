@@ -9,9 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Encore un projet d'initiation dans le codage des objets. On s'intéresse ici aux méthodes spéciales qui permettent d'utiliser les objets comme des nombres.
-
-Vous allez coder une classe `Carte`{.language-}, ce qui permettra dans des projets ultérieurs de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
+Encore un projet d'initiation dans le codage des objets. Vous allez coder une classe `Carte`{.language-}, ce qui permettra dans des projets ultérieurs de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
 
 {% note "**Définition**" %}
 Un **_value object_** est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.
@@ -25,9 +23,9 @@ Un **_value object_** est un objet ne pouvant pas être modifié une fois créé
 Créez un dossier `projet-cartes`{.fichier} sur votre ordinateur et ouvrez leu avec visual studio code pour un faire votre projet.
 {% endfaire %}
 
-### Programme principal & User stories
+### But et User stories
 
-Le but du projet est de pouvoir jouer à une variante de [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)) :
+Le but des projets carters est de pouvoir jouer à une variante de [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)) :
 
 {% note "**But**" %}
 
@@ -38,22 +36,6 @@ A chaque tour les deux joueurs prennent la première carte de leur pioche et la 
 Lorsqu'un joueur doit prendre une carte alors que sa pioche est vide, il mélange les cartes de sa défausse qui forment une nouvelle pioche. Si la pioche et la défausse sont vides, le joueur perd la partie.
 
 {% endnote %}
-
-### Carte UML
-
-La pioche et la défausse pouvant être facilement modélisées par des listes, il nous reste à créer une classe Carte pour avoir tous les éléments de base de notre projet.
-
-{% exercice %}
-Proposez une modélisation UML d'une classe Carte pour notre projet. A-t-elle besoin de méthodes ?
-{% endexercice %}
-{% details "solution" %}
-
-On a besoin que d'un constructeur :
-
-![carte UML](./carte_uml.png)
-{% enddetails %}
-
-### User stories
 
 Le projet nécessite de faire plein de choses. Pour vous aider à réaliser ce but, on va se placer des objectifs intermédiaires, sous la forme de user stories.
 
@@ -104,6 +86,21 @@ On ajoutera petit à petit le code permettant d'implémenter la story, au fur et
 {% faire %}
 Créez les deux fichiers de story.
 {% endfaire %}
+
+### Carte UML
+
+La pioche et la défausse pouvant être facilement modélisées par des listes, il nous reste à créer une classe Carte pour avoir tous les éléments de base de notre projet.
+
+{% exercice %}
+Proposez une modélisation UML d'une classe Carte pour notre projet. A-t-elle besoin de méthodes ?
+{% endexercice %}
+{% details "solution" %}
+
+On a besoin que d'un constructeur :
+
+![carte UML](./carte_uml.png)
+{% enddetails %}
+
 
 ## Code
 

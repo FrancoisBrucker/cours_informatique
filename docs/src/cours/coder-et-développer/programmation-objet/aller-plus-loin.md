@@ -291,3 +291,53 @@ class Compteur:
 ```
 
 
+
+## misc
+
+Lorsque l'on écrit `print(ace_pique)`{.language-}, python transforme l'objet en chaîne de caractères avec la commande `str`{.language-} qui elle-même cherche la méthode `__str__`{.language-}. Les trois instructions suivantes sont donc équivalentes :
+
+1. `print(ace_pique)`{.language-}
+2. `print(str(ace_pique))`{.language-}
+3. `print(ace_pique.__str__())`{.language-}
+
+Vous verrez parfois une autre méthode de représentation d'un objet utilisant la commande `repr()`{.language-}. Cette fonction doit permettre de reconstruire l'objet si nécessaire.
+
+Par exemple :
+
+```python
+>>> from carte import Carte
+>>> ace_pique = Carte("as", "pique")
+>>> print(repr(ace_pique))
+Carte('as', 'pique')
+```
+
+On utilise souvent `repr()`{.language-} pour du débogage (donc de l'affichage développeur), alors que `str()`{.language-} est utilisé pour de l'affichage utilisateur.
+
+{% note %}
+
+- on utilise `str(objet)` (créée avec la méthode `__str__`{.language-}) pour un affichage à l'écran. On transforme l'objet en un texte.
+- on utilise `repr(objet)` (créée avec la méthode `__repr__`{.language-}) pour représenter l'objet sous la forme d'une chaîne de caractères. On doit pouvoir reconstruire un objet identique avec la commande [`eval`{.language-}](https://docs.python.org/fr/3/library/functions.html#eval) (`eval(repr(objet))`{.language-} doit rendre un objet similaire à `objet`{.language-}.
+
+{% endnote %}
+
+{% lien %}
+Un petit tuto français pour expliciter les différences entre les deux représentations : <https://www.youtube.com/watch?v=ejGYAnf_X24>
+{% endlien %}
+
+{% exercice %}
+Créez et testez la méthode `__repr__`{.language-}
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+class Carte:
+    # ...
+
+    def __repr__(self):
+        return "Carte(" + repr(self.valeur) + ", " + repr(self.couleur) + ")"
+    
+    # ...
+
+```
+
+{% enddetails %}

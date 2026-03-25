@@ -5,7 +5,8 @@ title:  "sujet Test 6 : Le retour de la programmation orientée objet (et elle e
 ---
 
 {% attention %}
-Vous avez 30min pour faire le test.
+- Vous avez 30min pour faire le test.
+- Vous pouvez pair-programmer (si vous le faites, ajoutez un fichier `participant.txt`{.language-} qui contient les noms et prénoms des participants)
 {% endattention %}
 
 ## Rendu
