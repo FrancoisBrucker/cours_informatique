@@ -4,7 +4,7 @@ title: "Projet composition d'objets : dés"
 
 eleventyNavigation:
   prerequis:
-    - "../projet-objets-dés/"
+    - "../projet-objets-dés-amélioration/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -13,7 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Dans [le premier projets dés](../projet-objets-dés/){.interne}, vous avez codé des classes toutes seules. Dans cette partie on va coder plusieurs classes enchevêtrées.
+Dans les deux précédents projets dés, vous avez codé des classes toutes seules. Dans cette partie on va coder plusieurs classes enchevêtrées.
 
 Pour les besoins de ce projet, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
 
@@ -26,23 +26,39 @@ fichier `dé.py`{.fichier} :
 ```python
 import random
 
-MIN_VALEUR = 1
-MAX_VALEUR = 6
-
-
 class Dé:
+    MIN_VALEUR = 1
+    MAX_VALEUR = 6
+
     def __init__(self, position=1):
         self.position = position
 
     def lancer(self):
-        self.position = random.randrange(MIN_VALEUR, MAX_VALEUR + 1)
+        self.position = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+
+        return self
+
+    def __str__(self):
+        if self.position == 1:
+            return "⚀"
+        elif self.position == 2:
+            return "⚁"
+        elif self.position == 3:
+            return "⚂"
+        elif self.position == 4:
+            return "⚃"
+        elif self.position == 5:
+            return "⚄"
+        else:
+            return "⚅"
 
 ```
 
 fichier `test_dé.py`{.fichier} :
 
 ```python
-from dé import Dé, MIN_VALEUR, MAX_VALEUR
+from dé import Dé
+
 
 def test_init():
     assert isinstance(Dé(), Dé)
@@ -50,14 +66,20 @@ def test_init():
 
 def test_position():
     assert Dé().position == 1
-    assert Dé(position=3).position == 3
+    assert Dé(position=4).position == 4
 
 
 def test_lancer():
-    d6 = Dé()
-    d6.lancer()
-    assert MIN_VALEUR <= d6.position <= MAX_VALEUR
+    dé = Dé()
+    dé.lancer()
+    assert Dé.MIN_VALEUR <= dé.position <= Dé.MAX_VALEUR
 
+
+def test_str():
+    dé = Dé()
+    assert str(dé) == "⚀"
+    dé.position = 4
+    assert str(dé) == "⚃"
 
 ```
 
@@ -88,7 +110,7 @@ Pour illustrer cette étape et progresser dans notre projet de jeu, faisons une 
   1. créer une liste
   2. créer 5 dés que l'on ajoute un à un à la liste
   3. lancer les 5 dés
-  4. afficher les valeurs des dés de la liste
+  4. afficher chaque dés de la liste
 
 {% endnote %}
 
@@ -127,7 +149,7 @@ tapis_vert = TapisVert()
 tapis_vert.lancer()
 
 for dé in tapis_vert.dés:
-    print(dé.position)
+    print(dé)
 ```
 
 {% enddetails %}
@@ -148,27 +170,7 @@ Ajoutez les tests de cette nouvelle classe au fichier `test_dé.py`{.fichier}. V
 
 ### Affichage
 
-Afin de pouvoir coder plus rapidement nos stories, il faut une méthode de représentation de nos objets.
-
-Commençons par le `Dé`{.language-} :
-{% faire %}
-Créez une méthode `Dé.__str__`{.language-} qui permette d'écrire :
-
-```python
->>> from dé import Dé
->>> d = Dé()
->>> d.position = 4
->>> print(d)
-⚃
->>> 
-```
-
-{% endfaire %}
-{% info %}
-Vous pourrez utiliser les caractères : `"⚀"`{.language-}, `"⚁"`{.language-}, `"⚂"`{.language-}, `"⚃"`{.language-}, `"⚄"`{.language-} et `"⚅"`{.language-} pour vos représentations.
-{% endinfo %}
-
-On peut maintenant utiliser `Dé.__str__`{.language-} pour que `TapisVert.__str__`{.language-} soit facile à coder :
+On peut utiliser `Dé.__str__`{.language-} pour que `TapisVert.__str__`{.language-} soit facile à coder :
 
 {% faire %}
 Créez une méthode `TapisVert.__str__`{.language-} qui permette d'écrire :

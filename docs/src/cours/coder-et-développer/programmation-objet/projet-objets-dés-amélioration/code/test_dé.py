@@ -7,16 +7,17 @@ def test_init():
 
 def test_position():
     assert Dé().position == 1
+    assert Dé(position=4).position == 4
 
 
 def test_lancer():
     dé = Dé()
     dé.lancer()
-    assert 1 <= dé.position <= 6
+    assert Dé.MIN_VALEUR <= dé.position <= Dé.MAX_VALEUR
 
 
-def test_dé_texte():
+def test_str():
     dé = Dé()
-    assert dé.texte() == "⚀"
+    assert str(dé) == "⚀"
     dé.position = 4
-    assert dé.texte() == "⚃"
+    assert str(dé) == "⚃"

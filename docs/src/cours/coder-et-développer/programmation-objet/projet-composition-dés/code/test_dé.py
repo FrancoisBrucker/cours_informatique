@@ -1,4 +1,7 @@
-from dé import Dé, MIN_VALEUR, MAX_VALEUR, TapisVert
+from dé import Dé, TapisVert
+
+
+from dé import Dé
 
 
 def test_init():
@@ -7,35 +10,20 @@ def test_init():
 
 def test_position():
     assert Dé().position == 1
-    assert Dé(position=3).position == 3
+    assert Dé(position=4).position == 4
 
 
 def test_lancer():
-    assert MIN_VALEUR <= Dé().lancer().position <= MAX_VALEUR
-
-
-def test_set_position():
     dé = Dé()
-
-    dé.position = 4
-    assert dé.position == 4
-
-    dé.position = 12
-    assert dé.position == MAX_VALEUR
-
-    dé.position = -1
-    assert dé.position == MIN_VALEUR
+    dé.lancer()
+    assert Dé.MIN_VALEUR <= dé.position <= Dé.MAX_VALEUR
 
 
-def test_get_position():
+def test_str():
     dé = Dé()
-
+    assert str(dé) == "⚀"
     dé.position = 4
-    assert dé.position == dé._position
-
-
-def test_dé_str():
-    assert str(Dé()) == "⚀"
+    assert str(dé) == "⚃"
 
 
 def test_tapis_vert_creation():
@@ -52,7 +40,7 @@ def test_tapis_vert_modification():
     assert tapis_vert.dés[2].position == 5
 
 
-def test_tapis_vert_roll():
+def test_tapis_vert_lancer():
     tapis_vert = TapisVert()
     tapis_vert.lancer()
 
@@ -63,11 +51,11 @@ def test_tapis_vert_roll():
 def test_tapis_vert_nombre_positions():
     tapis_vert = TapisVert()
 
-    assert [0, 5, 0, 0, 0, 0, 0] == tapis_vert.nombre_positions()
+    assert [0, 5, 0, 0, 0, 0, 0] == tapis_vert._nombre_positions()
 
     tapis_vert.dés[2].position = 4
 
-    assert [0, 4, 0, 0, 1, 0, 0] == tapis_vert.nombre_positions()
+    assert [0, 4, 0, 0, 1, 0, 0] == tapis_vert._nombre_positions()
 
 
 def test_tapis_vert_nb_des_identiques():

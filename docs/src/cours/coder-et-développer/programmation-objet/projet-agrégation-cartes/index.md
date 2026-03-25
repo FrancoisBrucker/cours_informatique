@@ -4,7 +4,7 @@ title: "Projet agrégation : cartes"
 
 eleventyNavigation:
   prerequis:
-    - "../projet-objets-cartes/"
+    - "../projet-objets-cartes-amélioration/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -13,7 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons ici continuer ce que nous avons commencé lors du projet cartes et utiliser l'agrégation pour pouvoir jouer aux cartes.
+Nous allons ici continuer ce que nous avons commencé lors des précédents projets cartes et utiliser l'agrégation pour pouvoir jouer à la bataille.
 
 Pour les besoins de ce projet, nous allons présupposer que vous avez une classe `Carte`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obligé.e de l'utiliser.
 
@@ -22,106 +22,108 @@ Pour les besoins de ce projet, nous allons présupposer que vous avez une classe
 fichier `carte.py`{.fichier} :
 
 ```python
-SEPT = "sept"
-HUIT = "huit"
-NEUF = "neuf"
-DIX = "dix"
-VALET = "valet"
-DAME = "dame"
-ROI = "roi"
-AS = "as"
-
-PIQUE = "pique"
-COEUR = "cœur"
-CARREAU = "carreau"
-TREFLE = "trèfle"
-
-
-VALEURS = (SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS)
-COULEURS = (TREFLE, CARREAU, COEUR, PIQUE)
+from enum import Enum
 
 
 class Carte:
+    VALEURS = Enum(
+        "valeur",
+        [
+            ("sept", 7),
+            ("huit", 8),
+            ("neuf", 9),
+            ("dix", 10),
+            ("valet", 11),
+            ("dame", 12),
+            ("roi", 13),
+            ("as", 14),
+        ],
+    )
+    COULEURS = Enum(
+        "Couleur", [("pique", 4), ("cœur", 3), ("carreau", 2), ("trèfle", 1)]
+    )
+
     def __init__(self, valeur, couleur):
-        self.couleur = couleur
-        self.valeur = valeur
+        self._couleur = couleur
+        self._valeur = valeur
 
     def __str__(self):
-        return self.valeur + " de " + self.couleur
-
-    def __repr__(self):
-        return "Carte(" + repr(self.valeur) + ", " + repr(self.couleur) + ")"
+        valeur = ["7", "8", "9", "10", "V", "D", "R", "1"]
+        couleur = ["♣︎", "♦", "♥", "♠"]
+        return valeur[self._valeur.value - 7] + couleur[self._couleur.value - 1]
 
     def __eq__(self, other):
-        return (self.valeur == other.valeur) and (self.couleur == other.couleur)
+        return (self._valeur == other._valeur) and (self._couleur == other._couleur)
+
+    def __ge__(self, other):
+        return (self._valeur.value >= other._valeur.value) or (
+            (self._valeur.value == other._valeur.value)
+            and (self._couleur.value >= other._couleur.value)
+        )
 
     def __ne__(self, other):
         return not (self == other)
 
-    def __lt__(self, other):
-        if VALEURS.index(self.valeur) != VALEURS.index(other.valeur):
-            return VALEURS.index(self.valeur) < VALEURS.index(other.valeur)
-
-        return COULEURS.index(self.couleur) < COULEURS.index(other.couleur)
+    def __gt__(self, other):
+        return (self != other) and (self <= other)
 
     def __le__(self, other):
-        return (self == other) or (self < other)
+        return other >= self
 
-    def __gt__(self, other):
-        return not (self <= other)
-
-    def __ge__(self, other):
-        return (self == other) or (self > other)
+    def __lt__(self, other):
+        return other > self
 
 ```
 
 fichier `test_carte.py`{.fichier} :
 
 ```python
-import carte
 from carte import Carte
 
 
 def test_constructeur():
-    assert isinstance(Carte(carte.SEPT, carte.TREFLE), Carte)
+    assert isinstance(Carte(Carte.VALEURS.sept, Carte.COULEURS.trèfle), Carte)
 
 
 def test_str():
-    assert str(Carte(carte.SEPT, carte.TREFLE)) == "sept de trèfle"
+    assert str(Carte(Carte.VALEURS.sept, Carte.COULEURS.trèfle)) == "7♣︎"
 
 
-def test_repr():
-    assert repr(Carte(carte.SEPT, carte.TREFLE)) == "Carte('sept', 'trèfle')"
-
-
-def test_attributs():
-    assert Carte(carte.SEPT, carte.TREFLE).valeur == carte.SEPT
-    assert Carte(carte.SEPT, carte.TREFLE).couleur == carte.TREFLE
-
-
-def test_comparaisons():
-    assert Carte(carte.DIX, carte.COEUR) == Carte(carte.DIX, carte.COEUR)
-    assert Carte(carte.DIX, carte.COEUR) != Carte(carte.DIX, carte.CARREAU)
-    assert Carte(carte.DIX, carte.COEUR) <= Carte(carte.DIX, carte.COEUR)
-    assert Carte(carte.DIX, carte.COEUR) > Carte(carte.DIX, carte.CARREAU)
-    assert Carte(carte.DIX, carte.CARREAU) < Carte(carte.DIX, carte.COEUR)
+def test_operator():
+    dix_cœur = Carte(Carte.VALEURS.dix, Carte.COULEURS.cœur)
+    dix_carreau = Carte(Carte.VALEURS.dix, Carte.COULEURS.carreau)
+    
+    assert dix_cœur == dix_cœur
+    assert dix_cœur != dix_carreau
+    assert dix_cœur <= dix_cœur
+    assert dix_cœur > dix_carreau
+    assert dix_carreau < dix_cœur
 
 ```
 
 {% enddetails %}
 
-Le but du projet est :
 
-{% note "**But du projet**" %}
+Le but des projets carters est de pouvoir jouer à une variante de [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)) :
 
-Implémenter une classe `Deck`{.language-} permettant de regrouper toutes les méthodes nécessaires au maniement d'un ensemble de cartes.
+{% note "**But**" %}
+
+On veut pouvoir mélanger un jeu de 32 cartes (sans joker) puis le séparer en 2 *pioches* de 16 cartes, un tas par joueur.
+
+A chaque tour les deux joueurs prennent la première carte de leur pioche et la révèle. Le joueur ayant la plus grande carte (7 < 8 < 9 < 10 < V < D < R < 1 et si égalité de rang alors : ♠ > ♥ > ♦ > ♣︎) prend les deux cartes et les place dans sa pile de défausse (initialement vide).
+
+Lorsqu'un joueur doit prendre une carte alors que sa pioche est vide, il mélange les cartes de sa défausse qui forment une nouvelle pioche. Si la pioche et la défausse sont vides, le joueur perd la partie.
 
 {% endnote %}
 
+
 ## Classe `Deck`{.language-}
 
+Vous allez implémenter une classe `Deck`{.language-} permettant de regrouper toutes les méthodes nécessaires au maniement d'un ensemble de cartes.
+
+
 {% exercice %}
-En reprenant la dernière partie du [projet objet : cartes](../projet-objets-cartes/){.interne}, proposez une modélisation d'une classe UML d'une classe `Deck`{.language-} permettant de jouer au jeu simplifié de la bataille en précisant son lien avec la classe `Carte`{.language-} si l'on suppose un deck initialement vide.
+Proposez une modélisation d'une classe UML d'une classe `Deck`{.language-} permettant de jouer au jeu simplifié de la bataille en précisant son lien avec la classe `Carte`{.language-} si l'on suppose un deck initialement vide.
  {% endexercice %}
 {% details "corrigé" %}
 
@@ -148,7 +150,7 @@ Créez et testez une méthode `Deck.transfert(deck, nombre)`{.language-} qui tra
 
 {% endfaire %}
 
-## Jeu V2
+## Jeu
 
 {% faire %}
 
