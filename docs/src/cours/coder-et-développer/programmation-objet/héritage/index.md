@@ -248,7 +248,7 @@ Traceback (most recent call last):
 AttributeError: 'EnseignantChercheur' object has no attribute 'mro'
 ```
 
-## Exemple 2 : héritage simple
+## Exemple : héritage simple
 
 L'héritage est une technique objet qui n'est pas utilisée indépendamment du reste. On l'utilise souvent en combinaison d'autres techniques comme la composition.
 
@@ -404,7 +404,7 @@ True
 
 {% endnote %}
 
-## <span id="exemple-D&D"></span> Exemple 3 : donjons et dragons
+## <span id="exemple-D&D"></span> Exemple : donjons et dragons
 
 On va simuler des personnage d'_heroic fantasy_. Pour cela, on commence par créer une classe `Personnage`{.language-} qui sera particularisée petit à petit.
 
