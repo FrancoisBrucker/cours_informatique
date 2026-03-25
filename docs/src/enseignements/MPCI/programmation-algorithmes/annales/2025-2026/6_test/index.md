@@ -133,7 +133,7 @@ $$
 
 Son exécution nécessite un paramètre d'entrée $n$ et se déroule comme suit :
 
-- Tant qu'il existe $i$ tel que $q_i$ divise $n$, on pose $n \leftarrow n \cdot \frac{p_{i^\star}}{p_{i^\star}}$ avec $i^\star$ le plus petit indice $i$ tel que $q_i$ divise $n$.
+- Tant qu'il existe $i$ tel que $q_i$ divise $n$, on pose $n \leftarrow n \cdot \frac{p_{i^\star}}{q_{i^\star}}$ avec $i^\star$ le plus petit indice $i$ tel que $q_i$ divise $n$.
 - Lorsqu'il n'existe plus d'indice $i$ tel que $q_i$ divise $n$, le programme s'arrête et rend $n$.
 
 {% endnote2 %}
@@ -206,9 +206,7 @@ for i in range(10):
 
 ## Pour aller pus loin
 
-On peut faire des choses incroyable en Fractran, mais pour cela il faut considérer tous entiers générés par le programme au cours de son exécution et pas juste rendre le dernier.
-
-Par exemple, 
+On peut faire des choses incroyables en Fractran, mais pour cela il faut considérer tous les entiers générés par le programme au cours de son exécution et pas juste rendre le dernier.
 
 {% faire %}
 Ajoutez à la classe `Fractran` une méthode de signature `Fractran.suite(n: int, N:int): [int]`{.language-}. Si $L$ est la liste rendue par la méthode elle doit être telle que :

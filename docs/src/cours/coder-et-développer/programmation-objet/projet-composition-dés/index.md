@@ -170,10 +170,10 @@ Ajoutez les tests de cette nouvelle classe au fichier `test_dé.py`{.fichier}. V
 
 ### Affichage
 
-On peut utiliser `Dé.__str__`{.language-} pour que `TapisVert.__str__`{.language-} soit facile à coder :
+On peut utiliser `Dé.__str__()`{.language-} pour que `TapisVert.__str__()`{.language-} soit facile à coder :
 
 {% faire %}
-Créez une méthode `TapisVert.__str__`{.language-} qui permette d'écrire :
+Créez une méthode `TapisVert.__str__()`{.language-} qui permette d'écrire :
 
 ```python
 >>> from dé import TapisVert

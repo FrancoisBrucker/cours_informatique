@@ -2,16 +2,16 @@ from carte import Carte
 
 
 def test_constructeur():
-    assert isinstance(Carte(Carte.VALEURS.sept, Carte.COULEURS.trèfle), Carte)
+    assert isinstance(Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle), Carte)
 
 
 def test_str():
-    assert str(Carte(Carte.VALEURS.sept, Carte.COULEURS.trèfle)) == "7♣︎"
+    assert str(Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle)) == "7♣︎"
 
 
 def test_operator():
-    dix_cœur = Carte(Carte.VALEURS.dix, Carte.COULEURS.cœur)
-    dix_carreau = Carte(Carte.VALEURS.dix, Carte.COULEURS.carreau)
+    dix_cœur = Carte(Carte.VALEURS.Dix, Carte.COULEURS.Cœur)
+    dix_carreau = Carte(Carte.VALEURS.Dix, Carte.COULEURS.Carreau)
     
     assert dix_cœur == dix_cœur
     assert dix_cœur != dix_carreau

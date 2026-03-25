@@ -1,74 +1,72 @@
-# import random
+import random
 
-# import carte
-# from carte import Carte
-
-# def max_premier(c1, c2):
-#    return (c1.valeur > c2.valeur) or \
-#           ((c1.valeur == c2.valeur) and (c1.couleur > c2.couleur))
+from carte import Carte
+from deck import Deck, jeu32
 
 
-# paquet = []
-# for valeur in carte.VALEURS:
-#     for couleur in carte.COULEURS:
-#         paquet.append(Carte(valeur, couleur))
+paquet = jeu32()
+paquet.mélange()
 
-# random.shuffle(paquet)
+pioche1 = Deck()
+défausse1 = Deck()
+pioche2 = Deck()
+défausse2 = Deck()
 
-# pioche1 = paquet[:16]
-# défausse1 = []
-# pioche2 = paquet[16:]
-# défausse2 = []
+for _ in range(16):
+    pioche1.ajoute(paquet.pioche())
+    pioche2.ajoute(paquet.pioche())
 
-# MAX_TOUR = 1000
+MAX_TOUR = 1000
 
-# N = 1
+N = 1
 
-# while N <= MAX_TOUR and min(len(pioche1), len(pioche2)) > 0:
-#     print(
-#         "Tour ",
-#         N,
-#         "1 : ",
-#         len(pioche1),
-#         "/",
-#         len(défausse1),
-#         " ; 2 : ",
-#         len(pioche2),
-#         "/",
-#         len(défausse2),
-#     )
+while N <= MAX_TOUR and min(len(pioche1.cartes), len(pioche2.cartes)) > 0:
+    print(
+        "Tour ",
+        N,
+        "1 : ",
+        len(pioche1.cartes),
+        "/",
+        len(défausse1.cartes),
+        " ; 2 : ",
+        len(pioche2.cartes),
+        "/",
+        len(défausse2.cartes),
+    )
 
-#     carte1 = pioche1.pop()
-#     carte2 = pioche2.pop()
+    carte1 = pioche1.pioche()
+    carte2 = pioche2.pioche()
 
-#     print("    1 : ", carte1.texte())
-#     print("    2 : ", carte2.texte())
+    print("    1 : ", carte1)
+    print("    2 : ", carte2)
 
-#     if max_premier(carte1, carte2):
-#         défausse1.extend([carte1, carte2])
-#         print("    Joueur 1 gagne la carte de l'adversaire")
-#     else:
-#         défausse2.extend([carte1, carte2])
-#         print("    Joueur 2 gagne la carte de l'adversaire")
+    if carte2 <= carte1:
+        défausse1.ajoute(carte1)
+        défausse1.ajoute(carte2)
+        print("    Joueur 1 gagne la carte de l'adversaire")
+    else:
+        défausse2.ajoute(carte1)
+        défausse2.ajoute(carte2)
+        print("    Joueur 2 gagne la carte de l'adversaire")
 
-#     if not pioche1:
-#         pioche1 = défausse1
-#         random.shuffle(pioche1)
-#         défausse1 = []
+    if len(pioche1.cartes) == 0:
+        pioche1 = défausse1
+        pioche1.mélange()
+        défausse1 = Deck()
 
-#     if not pioche2:
-#         pioche2 = défausse2
-#         random.shuffle(pioche2)
-#         défausse2 = []
+    if len(pioche2.cartes) == 0:
+        pioche2 = défausse2
+        pioche2.mélange()
+        défausse2 = Deck()
 
-#     N += 1
+    N += 1
 
-#     # input()
+    # input()
 
-# print(N, MAX_TOUR)
-# if not pioche1:
-#     print("joueur 1 gagne.")
-# elif not pioche2:
-#     print("joueur 2 gagne.")
-# else:
-#     print("match nul.")
+print(N, MAX_TOUR)
+if len(pioche1.cartes) == 0:
+    print("joueur 1 gagne.")
+elif len(pioche2.cartes) == 0:
+    print("joueur 2 gagne.")
+else:
+    print("match nul.")

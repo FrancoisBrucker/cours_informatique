@@ -105,7 +105,7 @@ On pourrait ainsi gérer les couleurs ainsi :
 
 ```python
 >>> from enum import Enum
->>> couleur = Enum("Couleur", [("pique", 4), ("cœur", 3), ("carreau", 2), ("trèfle", 1)])
+>>> couleur = Enum("Couleur", [("Pique", 4), ("Cœur", 3), ("Carreau", 2), ("Trèfle", 1)])
 >>> print(couleur.pique.name)
 pique
 >>> print(couleur.pique.value)
