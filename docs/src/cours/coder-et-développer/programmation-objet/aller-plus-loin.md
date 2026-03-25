@@ -289,3 +289,5 @@ class Compteur:
         return other.valeur == self.valeur
 
 ```
+
+

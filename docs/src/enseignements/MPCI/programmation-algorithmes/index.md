@@ -462,11 +462,11 @@ DM2 : faire l'ET d'Algorithmie de l'année dernière : [sujet examen terminal al
 
 {% aller %}
 
-1. [Classes et objets](/cours/coder-et-développer/programmation-objet/classes-et-objets/){.interne}
-2. [Coder ses objets](/cours/coder-et-développer/programmation-objet/coder-ses-objets/){.interne}
+1. [Tout est objet en python](/cours/coder-et-développer/programmation-objet/introduction/){.interne}
+2. [Créer ses classes et leurs objets](/cours/coder-et-développer/programmation-objet/classes-et-objets/){.interne}
+3. [Coder ses objets](/cours/coder-et-développer/programmation-objet/coder-ses-objets/){.interne}
 
 {% endaller %}
-
 
 #### Vendredi : on s'entraîne
 
@@ -494,16 +494,6 @@ Au programme :
 
 {% endnote %}
 
-Si on a le temps, sinon à faire chez soit :
-
-{% aller %}
-
-- Cours : [Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
-- Projets associés :
-  - [Améliorer les dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne}
-  - [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne}
-
-{% endaller %}
 
 <!-- TBD 
 
@@ -527,8 +517,8 @@ Test de 15min **sur papier** en début de cours sur les classes et les objets.
 Composer des objets entre-eux :
 
 {% aller %}
-
-[Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation){.interne}
+1. [Améliorer ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
+2. [Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation){.interne}
 
 {% endaller %}
 
@@ -539,7 +529,14 @@ Composer des objets entre-eux :
 
 {% aller %}
 
-1. [Projet de compositions de dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés){.interne}
+1. [Améliorer les dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne}
+2. [Projet de compositions de dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés){.interne}
+{% endaller %}
+
+Si on a le temps, sinon à faire chez soit :
+
+{% aller %}
+1. [Améliorer les cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne}
 2. [Projet d'agrégation de cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes){.interne}
 
 {% endaller %}
