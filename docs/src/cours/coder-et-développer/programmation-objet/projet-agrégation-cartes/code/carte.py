@@ -49,6 +49,3 @@ class Carte:
     def __lt__(self, other):
         return other > self
 
-
-class Deck:
-    pass
