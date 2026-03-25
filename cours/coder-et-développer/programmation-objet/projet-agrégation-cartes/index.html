@@ -109,7 +109,7 @@
       <ul>
               
               <li>
-                <a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-cartes/">Projet : objets cartes</a>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-cartes-amélioration/">Projet : Amélioration des objets cartes</a>
               </li></ul>
       
 
@@ -119,7 +119,7 @@
     
   
 
-  <p>Nous allons ici continuer ce que nous avons commencé lors du projet cartes et utiliser l'agrégation pour pouvoir jouer aux cartes.</p>
+  <p>Nous allons ici continuer ce que nous avons commencé lors des précédents projets cartes et utiliser l'agrégation pour pouvoir jouer à la bataille.</p>
 <p>Pour les besoins de ce projet, nous allons présupposer que vous avez une classe <code class="language-">Carte</code> qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obligé.e de l'utiliser.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -139,105 +139,101 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>fichier <code class="fichier">carte.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">SEPT <span class="token operator">=</span> <span class="token string">"sept"</span>
-HUIT <span class="token operator">=</span> <span class="token string">"huit"</span>
-NEUF <span class="token operator">=</span> <span class="token string">"neuf"</span>
-DIX <span class="token operator">=</span> <span class="token string">"dix"</span>
-VALET <span class="token operator">=</span> <span class="token string">"valet"</span>
-DAME <span class="token operator">=</span> <span class="token string">"dame"</span>
-ROI <span class="token operator">=</span> <span class="token string">"roi"</span>
-AS <span class="token operator">=</span> <span class="token string">"as"</span>
-
-PIQUE <span class="token operator">=</span> <span class="token string">"pique"</span>
-COEUR <span class="token operator">=</span> <span class="token string">"cœur"</span>
-CARREAU <span class="token operator">=</span> <span class="token string">"carreau"</span>
-TREFLE <span class="token operator">=</span> <span class="token string">"trèfle"</span>
-
-
-VALEURS <span class="token operator">=</span> <span class="token punctuation">(</span>SEPT<span class="token punctuation">,</span> HUIT<span class="token punctuation">,</span> NEUF<span class="token punctuation">,</span> DIX<span class="token punctuation">,</span> VALET<span class="token punctuation">,</span> DAME<span class="token punctuation">,</span> ROI<span class="token punctuation">,</span> AS<span class="token punctuation">)</span>
-COULEURS <span class="token operator">=</span> <span class="token punctuation">(</span>TREFLE<span class="token punctuation">,</span> CARREAU<span class="token punctuation">,</span> COEUR<span class="token punctuation">,</span> PIQUE<span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> enum <span class="token keyword">import</span> Enum
 
 
 <span class="token keyword">class</span> <span class="token class-name">Carte</span><span class="token punctuation">:</span>
+    VALEURS <span class="token operator">=</span> Enum<span class="token punctuation">(</span>
+        <span class="token string">"valeur"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>
+            <span class="token punctuation">(</span><span class="token string">"sept"</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token string">"huit"</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token string">"neuf"</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token string">"dix"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token string">"valet"</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token string">"dame"</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token string">"roi"</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token string">"as"</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">)</span>
+    COULEURS <span class="token operator">=</span> Enum<span class="token punctuation">(</span>
+        <span class="token string">"Couleur"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token string">"pique"</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"cœur"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"carreau"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"trèfle"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token punctuation">)</span>
+
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token punctuation">,</span> couleur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>couleur <span class="token operator">=</span> couleur
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
+        self<span class="token punctuation">.</span>_couleur <span class="token operator">=</span> couleur
+        self<span class="token punctuation">.</span>_valeur <span class="token operator">=</span> valeur
 
     <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur <span class="token operator">+</span> <span class="token string">" de "</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>couleur
-
-    <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">"Carte("</span> <span class="token operator">+</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>couleur<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">")"</span>
+        valeur <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"7"</span><span class="token punctuation">,</span> <span class="token string">"8"</span><span class="token punctuation">,</span> <span class="token string">"9"</span><span class="token punctuation">,</span> <span class="token string">"10"</span><span class="token punctuation">,</span> <span class="token string">"V"</span><span class="token punctuation">,</span> <span class="token string">"D"</span><span class="token punctuation">,</span> <span class="token string">"R"</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">]</span>
+        couleur <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"♣︎"</span><span class="token punctuation">,</span> <span class="token string">"♦"</span><span class="token punctuation">,</span> <span class="token string">"♥"</span><span class="token punctuation">,</span> <span class="token string">"♠"</span><span class="token punctuation">]</span>
+        <span class="token keyword">return</span> valeur<span class="token punctuation">[</span>self<span class="token punctuation">.</span>_valeur<span class="token punctuation">.</span>value <span class="token operator">-</span> <span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">+</span> couleur<span class="token punctuation">[</span>self<span class="token punctuation">.</span>_couleur<span class="token punctuation">.</span>value <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
 
     <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>valeur <span class="token operator">==</span> other<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>couleur <span class="token operator">==</span> other<span class="token punctuation">.</span>couleur<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>_valeur <span class="token operator">==</span> other<span class="token punctuation">.</span>_valeur<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>_couleur <span class="token operator">==</span> other<span class="token punctuation">.</span>_couleur<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__ge__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>_valeur<span class="token punctuation">.</span>value <span class="token operator">>=</span> other<span class="token punctuation">.</span>_valeur<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>
+            <span class="token punctuation">(</span>self<span class="token punctuation">.</span>_valeur<span class="token punctuation">.</span>value <span class="token operator">==</span> other<span class="token punctuation">.</span>_valeur<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+            <span class="token keyword">and</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>_couleur<span class="token punctuation">.</span>value <span class="token operator">>=</span> other<span class="token punctuation">.</span>_couleur<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">__ne__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token keyword">not</span> <span class="token punctuation">(</span>self <span class="token operator">==</span> other<span class="token punctuation">)</span>
 
-    <span class="token keyword">def</span> <span class="token function">__lt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> VALEURS<span class="token punctuation">.</span>index<span class="token punctuation">(</span>self<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span> <span class="token operator">!=</span> VALEURS<span class="token punctuation">.</span>index<span class="token punctuation">(</span>other<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> VALEURS<span class="token punctuation">.</span>index<span class="token punctuation">(</span>self<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span> <span class="token operator">&lt;</span> VALEURS<span class="token punctuation">.</span>index<span class="token punctuation">(</span>other<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
-
-        <span class="token keyword">return</span> COULEURS<span class="token punctuation">.</span>index<span class="token punctuation">(</span>self<span class="token punctuation">.</span>couleur<span class="token punctuation">)</span> <span class="token operator">&lt;</span> COULEURS<span class="token punctuation">.</span>index<span class="token punctuation">(</span>other<span class="token punctuation">.</span>couleur<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">__gt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>self <span class="token operator">!=</span> other<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>self <span class="token operator">&lt;=</span> other<span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">__le__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>self <span class="token operator">==</span> other<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>self <span class="token operator">&lt;</span> other<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> other <span class="token operator">>=</span> self
 
-    <span class="token keyword">def</span> <span class="token function">__gt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token keyword">not</span> <span class="token punctuation">(</span>self <span class="token operator">&lt;=</span> other<span class="token punctuation">)</span>
-
-    <span class="token keyword">def</span> <span class="token function">__ge__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>self <span class="token operator">==</span> other<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>self <span class="token operator">></span> other<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">__lt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> other <span class="token operator">></span> self
 </code></pre>
 <p>fichier <code class="fichier">test_carte.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> carte
-<span class="token keyword">from</span> carte <span class="token keyword">import</span> Carte
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> carte <span class="token keyword">import</span> Carte
 
 
 <span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>SEPT<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>TREFLE<span class="token punctuation">)</span><span class="token punctuation">,</span> Carte<span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>Carte<span class="token punctuation">(</span>Carte<span class="token punctuation">.</span>VALEURS<span class="token punctuation">.</span>sept<span class="token punctuation">,</span> Carte<span class="token punctuation">.</span>COULEURS<span class="token punctuation">.</span>trèfle<span class="token punctuation">)</span><span class="token punctuation">,</span> Carte<span class="token punctuation">)</span>
 
 
 <span class="token keyword">def</span> <span class="token function">test_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>SEPT<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>TREFLE<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"sept de trèfle"</span>
+    <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>Carte<span class="token punctuation">(</span>Carte<span class="token punctuation">.</span>VALEURS<span class="token punctuation">.</span>sept<span class="token punctuation">,</span> Carte<span class="token punctuation">.</span>COULEURS<span class="token punctuation">.</span>trèfle<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"7♣︎"</span>
 
 
-<span class="token keyword">def</span> <span class="token function">test_repr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>SEPT<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>TREFLE<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"Carte('sept', 'trèfle')"</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_attributs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>SEPT<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>TREFLE<span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">==</span> carte<span class="token punctuation">.</span>SEPT
-    <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>SEPT<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>TREFLE<span class="token punctuation">)</span><span class="token punctuation">.</span>couleur <span class="token operator">==</span> carte<span class="token punctuation">.</span>TREFLE
-
-
-<span class="token keyword">def</span> <span class="token function">test_comparaisons</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span> <span class="token operator">==</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span> <span class="token operator">!=</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>CARREAU<span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span> <span class="token operator">></span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>CARREAU<span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>CARREAU<span class="token punctuation">)</span> <span class="token operator">&lt;</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">test_operator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dix_cœur <span class="token operator">=</span> Carte<span class="token punctuation">(</span>Carte<span class="token punctuation">.</span>VALEURS<span class="token punctuation">.</span>dix<span class="token punctuation">,</span> Carte<span class="token punctuation">.</span>COULEURS<span class="token punctuation">.</span>cœur<span class="token punctuation">)</span>
+    dix_carreau <span class="token operator">=</span> Carte<span class="token punctuation">(</span>Carte<span class="token punctuation">.</span>VALEURS<span class="token punctuation">.</span>dix<span class="token punctuation">,</span> Carte<span class="token punctuation">.</span>COULEURS<span class="token punctuation">.</span>carreau<span class="token punctuation">)</span>
+    
+    <span class="token keyword">assert</span> dix_cœur <span class="token operator">==</span> dix_cœur
+    <span class="token keyword">assert</span> dix_cœur <span class="token operator">!=</span> dix_carreau
+    <span class="token keyword">assert</span> dix_cœur <span class="token operator">&lt;=</span> dix_cœur
+    <span class="token keyword">assert</span> dix_cœur <span class="token operator">></span> dix_carreau
+    <span class="token keyword">assert</span> dix_carreau <span class="token operator">&lt;</span> dix_cœur
 </code></pre>
 </div>
 </details>     
 </div>
-<p>Le but du projet est :</p>
+<p>Le but des projets carters est de pouvoir jouer à une variante de <a href="https://fr.wikipedia.org/wiki/Bataille_(jeu)">la bataille</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>But du projet</strong></p>
+<p><strong>But</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Implémenter une classe <code class="language-">Deck</code> permettant de regrouper toutes les méthodes nécessaires au maniement d'un ensemble de cartes.</p>
+<p>On veut pouvoir mélanger un jeu de 32 cartes (sans joker) puis le séparer en 2 <em>pioches</em> de 16 cartes, un tas par joueur.</p>
+<p>A chaque tour les deux joueurs prennent la première carte de leur pioche et la révèle. Le joueur ayant la plus grande carte (7 &lt; 8 &lt; 9 &lt; 10 &lt; V &lt; D &lt; R &lt; 1 et si égalité de rang alors : ♠ &gt; ♥ &gt; ♦ &gt; ♣︎) prend les deux cartes et les place dans sa pile de défausse (initialement vide).</p>
+<p>Lorsqu'un joueur doit prendre une carte alors que sa pioche est vide, il mélange les cartes de sa défausse qui forment une nouvelle pioche. Si la pioche et la défausse sont vides, le joueur perd la partie.</p>
 </div></div>
 
 <h2>Classe <code class="language-">Deck</code></h2>
+<p>Vous allez implémenter une classe <code class="language-">Deck</code> permettant de regrouper toutes les méthodes nécessaires au maniement d'un ensemble de cartes.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En reprenant la dernière partie du <a href="../projet-objets-cartes/" class="interne">projet objet : cartes</a>, proposez une modélisation d'une classe UML d'une classe <code class="language-">Deck</code> permettant de jouer au jeu simplifié de la bataille en précisant son lien avec la classe <code class="language-">Carte</code> si l'on suppose un deck initialement vide.</p>
+<p>Proposez une modélisation d'une classe UML d'une classe <code class="language-">Deck</code> permettant de jouer au jeu simplifié de la bataille en précisant son lien avec la classe <code class="language-">Carte</code> si l'on suppose un deck initialement vide.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -291,108 +287,29 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">(
 <p>Créez et testez une méthode <code class="language-">Deck.transfert(deck, nombre)</code> qui transfère les <code class="language-">nombre</code> premières cartes du deck au deck passé en paramètre.</p>
 </div></div>
 
-<h2>Jeu V2</h2>
+<h2>Jeu</h2>
+<p>Vous pouvez maintenant finir le projet en codant le jeu !</p>
+<p>La règle du jeu est :</p>
+<ol>
+<li>mélangez un jeu de 32 cartes en deux <strong>pioches</strong> de 16 cartes, une pour chaque joueur (vous pourrez commencer par créer un paquet de 32 cartes, puis le mélanger en utilisant <a href="https://docs.python.org/fr/3/library/random.html#random.shuffle"><code class="language-">random.shuffle</code></a> et enfin distributer les 16 première cartes à un joueur et les 16 dernières à l'autre)</li>
+<li>chaque joueur dispose également d'une <strong>défausse</strong>, initialement vide</li>
+<li>N = 1</li>
+<li>chaque joueur dévoile la carte du dessus de leur pioche</li>
+<li>le joueur ayant la carte la plus élevée remporte la carte de l'adversaire et pose les deux cartes (la sienne et celle de son adversaire) dans sa défausse</li>
+<li>si un joueur n'a plus de cartes dans sa pioche, il mélange les cartes de sa défausse pour en faire un nouvelle pioche</li>
+<li>si un joueur n'a plus de carte dans sa pioche, il perd la partie</li>
+<li>N = N + 1</li>
+<li>si N est inférieur ou au nombre maximum de tour, retour en 4, sinon le jeu s'arrête.</li>
+</ol>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Reprenez le jeu de la dernière partie du <a href="../projet-objets-cartes/" class="interne">projet objet : cartes</a> et remplacez ses fonctions par la nouvelle classe <code class="language-">Deck</code>.</p>
+<p>Codez le jeu dans un fichier <code class="fichier">main.py</code></p>
 </div></div>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p><strong>une implémentation du jeu sans <code class="language-">Deck</code></strong></p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
-
-<span class="token keyword">import</span> carte
-<span class="token keyword">from</span> carte <span class="token keyword">import</span> Carte
-
-
-paquet <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> valeur <span class="token keyword">in</span> carte<span class="token punctuation">.</span>VALEURS<span class="token punctuation">:</span>
-    <span class="token keyword">for</span> couleur <span class="token keyword">in</span> carte<span class="token punctuation">.</span>COULEURS<span class="token punctuation">:</span>
-        paquet<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Carte<span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> couleur<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>paquet<span class="token punctuation">)</span>
-
-pioche1 <span class="token operator">=</span> paquet<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">16</span><span class="token punctuation">]</span>
-défausse1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-pioche2 <span class="token operator">=</span> paquet<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
-défausse2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-MAX_TOUR <span class="token operator">=</span> <span class="token number">1000</span>
-
-N <span class="token operator">=</span> <span class="token number">1</span>
-
-<span class="token keyword">while</span> N <span class="token operator">&lt;=</span> MAX_TOUR <span class="token keyword">and</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>pioche1<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pioche2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>
-        <span class="token string">"Tour "</span><span class="token punctuation">,</span>
-        N<span class="token punctuation">,</span>
-        <span class="token string">"1 : "</span><span class="token punctuation">,</span>
-        <span class="token builtin">len</span><span class="token punctuation">(</span>pioche1<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token string">"/"</span><span class="token punctuation">,</span>
-        <span class="token builtin">len</span><span class="token punctuation">(</span>défausse1<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token string">" ; 2 : "</span><span class="token punctuation">,</span>
-        <span class="token builtin">len</span><span class="token punctuation">(</span>pioche2<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token string">"/"</span><span class="token punctuation">,</span>
-        <span class="token builtin">len</span><span class="token punctuation">(</span>défausse2<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">)</span>
-
-    carte1 <span class="token operator">=</span> pioche1<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    carte2 <span class="token operator">=</span> pioche2<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"    1 : "</span><span class="token punctuation">,</span> carte1<span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"    2 : "</span><span class="token punctuation">,</span> carte2<span class="token punctuation">)</span>
-
-    <span class="token keyword">if</span> carte1 <span class="token operator">></span> carte2<span class="token punctuation">:</span>
-        défausse1<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span>carte1<span class="token punctuation">,</span> carte2<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"    Joueur 1 gagne la carte de l'adversaire"</span><span class="token punctuation">)</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        défausse2<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span>carte1<span class="token punctuation">,</span> carte2<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"    Joueur 2 gagne la carte de l'adversaire"</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">if</span> <span class="token keyword">not</span> pioche1<span class="token punctuation">:</span>
-        pioche1 <span class="token operator">=</span> défausse1
-        random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>pioche1<span class="token punctuation">)</span>
-        défausse1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">if</span> <span class="token keyword">not</span> pioche2<span class="token punctuation">:</span>
-        pioche2 <span class="token operator">=</span> défausse2
-        random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>pioche2<span class="token punctuation">)</span>
-        défausse2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">print</span><span class="token punctuation">(</span>pioche1<span class="token punctuation">,</span> pioche2<span class="token punctuation">)</span>
-    N <span class="token operator">+=</span> <span class="token number">1</span>
-
-    <span class="token comment"># input()</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> MAX_TOUR<span class="token punctuation">)</span>
-<span class="token keyword">if</span> <span class="token keyword">not</span> pioche1<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"joueur 1 gagne."</span><span class="token punctuation">)</span>
-<span class="token keyword">elif</span> <span class="token keyword">not</span> pioche2<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"joueur 2 gagne."</span><span class="token punctuation">)</span>
-<span class="token keyword">else</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"match nul."</span><span class="token punctuation">)</span>
-</code></pre>
-</div>
-</details>     
-</div>
 
 
 </article>

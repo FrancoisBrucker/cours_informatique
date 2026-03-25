@@ -85,7 +85,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous avez 30min pour faire le test.</p>
+<ul>
+<li>Vous avez 30min pour faire le test.</li>
+<li>Vous pouvez pair-programmer (si vous le faites, ajoutez un fichier <code class="language-">participant.txt</code> qui contient les noms et prénoms des participants)</li>
+</ul>
 </div></div>
 
 <h2>Rendu</h2>
@@ -97,8 +100,8 @@
 <li>3 fichiers dans un projet :
 <ul>
 <li>le programme principal <code class="fichier">main.py</code>,</li>
-<li>les fonctions utilisées <code class="fichier">fonctions.py</code>,</li>
-<li>les tests des fonctions <code class="fichier">test_fonctions.py</code>.</li>
+<li>les fonctions utilisées <code class="fichier">fractran.py</code>,</li>
+<li>les tests des fonctions <code class="fichier">test_fractran.py</code>.</li>
 </ul>
 </li>
 <li>Du joli code : le code doit être passé par black.</li>
@@ -111,9 +114,270 @@
 <li>Tests unitaires : toute fonction doit être testée.</li>
 </ol>
 <h2>Sujet</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>But</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le but du sujet est de construire un ordinateur !</p>
+</div></div>
+
+<p>On utilisera pour cela <a href="https://fr.wikipedia.org/wiki/FRACTRAN">le FRACTRAN</a> qui est un langage de programmation inventé par John Conway (à qui l'on doit aussi le célèbre <a href="https://fr.wikipedia.org/wiki/Jeu_de_la_vie">jeu de la vie</a>). Nous allons y aller pas à pas, il suffit de suivre les différentes étapes.</p>
+<h3>Fractions</h3>
+<p>On va commencer par coder une classe <code class="language-">Fraction</code> dont le diagramme UML est :</p>
+<p><img src="fractions.png" alt=""></p>
+<ul>
+<li>La méthode <code class="language-">Fraction.est_entier(n)</code> rend un booléen qui est :
+<ul>
+<li><code class="language-">Vrai</code> si le dénominateur de la fraction divise <code class="language-">n</code></li>
+<li><code class="language-">Faux</code> si le dénominateur de la fraction ne divise pas <code class="language-">n</code></li>
+</ul>
+</li>
+<li>La méthode <code class="language-">Fraction.valeur(n)</code> rend l'entier résultant de la multiplication du numérateur et de la division entière entre <code class="language-">n</code> et le dénominateur</li>
+</ul>
+<p>Les tests suivant explicitent ce fonctionnement :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fractran <span class="token keyword">import</span> Fraction
+
+
+<span class="token keyword">def</span> <span class="token function">test_Fraction_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Fraction<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>numérateur <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">assert</span> Fraction<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>dénominateur <span class="token operator">==</span> <span class="token number">2</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_Fraction_est_entier</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Fraction<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>est_entier<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> <span class="token keyword">not</span> Fraction<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>est_entier<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_Fraction_valeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Fraction<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">3</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Implémentez la classe la classe <code class="language-">Fraction</code> dans le fichier <code class="fichier">fractran.py</code> et ses tests dans le fichier <code class="fichier">test_fractran.py</code>.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser le fait qu'en python :</p>
+<ul>
+<li><code class="language-">a // b</code> rend la division entière de <code class="language-">a</code> par <code class="language-">b</code>,</li>
+<li><code class="language-">a % b</code> rend le reste de la division entière  de <code class="language-">a</code> par <code class="language-">b</code>.</li>
+</ul>
+</div></div>
+
+<h3>Facteurs</h3>
+<p>Le langage FRACTAN s'utilise en utilisant la décomposition en facteurs premiers des nombres. On doit donc créer une classe permettant de passer d'un nombre à une décomposition (partielle) en facteurs premiers et réciproquement. Pour cela on crée une classe <code class="language-">Facteur</code> dont le diagramme UML est :</p>
+<p><img src="facteur.png" alt=""></p>
+<ul>
+<li>
+<p>La méthode <code class="language-">Facteur.nombre(L)</code> rend un entier qui vaut le produits des $\text{facteur}[i]^{L[i]}$ pour $0 \leq i &lt; \text{len}(L)$</p>
+</li>
+<li>
+<p>La méthode <code class="language-">Fraction.décomposition(n)</code> rend la liste $L$ qui est la décomposition de $n$ selon les facteurs stockées dans <code class="language">self.facteurs</code>. C'est à dire que le retour $L$ de la méthode est telle que $n$ est divisible par $\text{facteur}[i]^{L[i]}$ mais pas par $\text{facteur}[i]^{L[i] + 1}$ pour tout $0 \leq i &lt; \text{len}(\text{facteur})$.</p>
+</li>
+</ul>
+<p>Les tests suivant explicitent ce fonctionnement :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fractran <span class="token keyword">import</span> Facteur
+
+
+<span class="token keyword">def</span> <span class="token function">test_Facteur_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>facteurs <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_Facteur_nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">7</span> <span class="token operator">**</span> <span class="token number">3</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> test_Facteur_décomposition<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>décomposition<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">assert</span> Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>décomposition<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token operator">**</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Implémentez la classe <code class="language-">Facteur</code> dans le fichier <code class="fichier">fractran.py</code> et ses tests dans le fichier <code class="fichier">test_fractran.py</code>.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser le fait qu'en python  <code class="language-">a ** b</code> rend $a^b$.</p>
+</div></div>
+
+<h3>Fractran</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le Fractran est un langage de programmation où un programme est une liste finie de fractions :</p>
+<div>
+$$
+P = [\frac{p_0}{q_0}, \cdots, \frac{p_i}{q_i}, \cdots, \frac{p_{l-1}}{q_{l-1}} ]
+$$
+</div>
+<p>Son exécution nécessite un paramètre d'entrée $n$ et se déroule comme suit :</p>
+<ul>
+<li>Tant qu'il existe $i$ tel que $q_i$ divise $n$, on pose $n \leftarrow n \cdot \frac{p_{i^\star}}{p_{i^\star}}$ avec $i^\star$ le plus petit indice $i$ tel que $q_i$ divise $n$.</li>
+<li>Lorsqu'il n'existe plus d'indice $i$ tel que $q_i$ divise $n$, le programme s'arrête et rend $n$.</li>
+</ul>
+</div></div>
+
+<p>Par exemple si $P = [\frac{3}{10}, \frac{4}{3}]$ alors $P(14) = 14$ (aucun dénominateur ne divise 14) et $P(15) = 8$ (3 divise 15 ; 10 divise 20 ; 3 divise 6 ; aucune fraction ne divise 8).</p>
+<p>Le code suivant (écrit dans <code class="fichier">fractran.py</code>) implémente cette idée :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fractran</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fractions<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>programme <span class="token operator">=</span> fractions
+
+    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        i <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>programme<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> self<span class="token punctuation">.</span>programme<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>est_entier<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                n <span class="token operator">=</span> self<span class="token punctuation">.</span>programme<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>valeur<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+                i <span class="token operator">=</span> <span class="token number">0</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> n
+    </code></pre>
+<p>Et est basé sur l'uml suivant :</p>
+<p><img src="fractran.png" alt=""></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez le code de la classe dans le fichier <code class="fichier">fractran.py</code> et implémentez des tests de celle-ci dans le fichier <code class="fichier">test_fractran.py</code>.</p>
+</div></div>
+
+<h2>Programme Principal</h2>
+<p>Montrons un peu que le Fractran est un vrai langage de programmation en exhibant les programmes qui permettent de calculer <a href="https://fr.wikipedia.org/wiki/FRACTRAN#Addition">la somme</a> et <a href="https://fr.wikipedia.org/wiki/FRACTRAN#Multiplication">le produit</a> de deux entiers.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code class="fichier">main.py</code> où vous :</p>
+<ol>
+<li>copierez le code suivant,</li>
+<li>ajouterez des commentaires explicitant son fonctionnement.</li>
+</ol>
+</div></div>
+
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fractran <span class="token keyword">import</span> Fractran<span class="token punctuation">,</span> Fraction<span class="token punctuation">,</span> Facteur
+
+facteurs <span class="token operator">=</span> Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Somme :"</span><span class="token punctuation">)</span>
+somme <span class="token operator">=</span> <span class="token punctuation">[</span>Fraction<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        retour <span class="token operator">=</span> Fractran<span class="token punctuation">(</span>somme<span class="token punctuation">)</span><span class="token punctuation">.</span>run<span class="token punctuation">(</span>facteurs<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        décomposition <span class="token operator">=</span> facteurs<span class="token punctuation">.</span>décomposition<span class="token punctuation">(</span>retour<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token string">"+"</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> <span class="token string">"="</span><span class="token punctuation">,</span> décomposition<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"(retour ="</span><span class="token punctuation">,</span> retour<span class="token punctuation">,</span> <span class="token string">"; décomposition ="</span><span class="token punctuation">,</span> décomposition<span class="token punctuation">,</span><span class="token string">")"</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Produit :"</span><span class="token punctuation">)</span>
+produit <span class="token operator">=</span> <span class="token punctuation">[</span>Fraction<span class="token punctuation">(</span><span class="token number">455</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        retour <span class="token operator">=</span> Fractran<span class="token punctuation">(</span>produit<span class="token punctuation">)</span><span class="token punctuation">.</span>run<span class="token punctuation">(</span>facteurs<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        décomposition <span class="token operator">=</span> facteurs<span class="token punctuation">.</span>décomposition<span class="token punctuation">(</span>retour<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token string">"*"</span><span class="token punctuation">,</span> j<span class="token punctuation">,</span> <span class="token string">"="</span><span class="token punctuation">,</span> décomposition<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"(retour ="</span><span class="token punctuation">,</span> retour<span class="token punctuation">,</span> <span class="token string">"décomposition ="</span><span class="token punctuation">,</span> décomposition<span class="token punctuation">,</span> <span class="token string">")"</span><span class="token punctuation">)</span></code></pre>
+<h2>Pour aller pus loin</h2>
+<p>On peut faire des choses incroyable en Fractran, mais pour cela il faut considérer tous entiers générés par le programme au cours de son exécution et pas juste rendre le dernier.</p>
+<p>Par exemple,</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez à la classe <code>Fractran</code> une méthode de signature <code class="language-">Fractran.suite(n: int, N:int): [int]</code>. Si $L$ est la liste rendue par la méthode elle doit être telle que :</p>
+<ul>
+<li>$\text{len}(L) \leq N$</li>
+<li>$L[0]$ soit le paramètre d'entrée $n$ de la méthode</li>
+<li>$L[i]$ soit le $i$ème entier généré par le programme.</li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le paramètre $N$ garanti que tout programme va s'arrêter : on s'arrête après avoir généré $N-1$ entiers.</p>
+</div></div>
+
+<p>Par exemple si $P = [\frac{3}{10}, \frac{4}{3}]$ et $n=15$ :</p>
+<ul>
+<li>si $N \geq 4$ la méthode va rendre $[15, 20, 6, 8]$</li>
+<li>si $N = 2$ la méthode va rendre $[15, 20]$</li>
+</ul>
+<p>Cette nouvelle méthode va nous permettre de générer <a href="https://fr.wikipedia.org/wiki/FRACTRAN#Suite_de_Fibonacci">la suite de Fibonacci</a> ou encore <a href="https://fr.wikipedia.org/wiki/FRACTRAN#Algorithme_de_Conway_des_nombres_premiers">tous les nombres premiers</a> en filtrant la liste sortie par l'algorithme.</p>
+<h3>Suite de Fibonacci</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez dans le programme principal le code suivant et explicitez comment il fonctionne (je ne veux pas de preuve, juste une explication du code python) :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Fibonacci rend les couples (F(n), F(n+1)) :"</span><span class="token punctuation">)</span>
+fibonacci <span class="token operator">=</span> <span class="token punctuation">[</span>Fraction<span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">95</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">57</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">39</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">130</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+          Fraction<span class="token punctuation">(</span><span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+          Fraction<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+sortie_brute <span class="token operator">=</span> Fractran<span class="token punctuation">(</span>fibonacci<span class="token punctuation">)</span><span class="token punctuation">.</span>suite<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span> 
+sortie <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> n <span class="token keyword">in</span> sortie_brute<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>nombre<span class="token punctuation">(</span>Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>décomposition<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        sortie<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>décomposition<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>sortie<span class="token punctuation">)</span>
+</code></pre>
+</div></div>
+
+<h3>Nombres premiers</h3>
+<p>Encore pus fort, la suite des nombres premiers !</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez dans le programme principal le code suivant et explicitez comment il fonctionne (je ne veux pas de preuve, juste une explication du code python) :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Nombres premiers :"</span><span class="token punctuation">)</span>
+crible <span class="token operator">=</span> <span class="token punctuation">[</span>Fraction<span class="token punctuation">(</span><span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">91</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">78</span><span class="token punctuation">,</span> <span class="token number">85</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">51</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">29</span><span class="token punctuation">,</span> <span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+          Fraction<span class="token punctuation">(</span><span class="token number">77</span><span class="token punctuation">,</span> <span class="token number">29</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">95</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">77</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+          Fraction<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Fraction<span class="token punctuation">(</span><span class="token number">55</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+sortie <span class="token operator">=</span> <span class="token punctuation">[</span>Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>décomposition<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token keyword">for</span> n <span class="token keyword">in</span> Fractran<span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">.</span>suite<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">100000</span><span class="token punctuation">)</span> 
+          <span class="token keyword">if</span> n <span class="token operator">==</span> Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>nombre<span class="token punctuation">(</span>Facteur<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>décomposition<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>sortie<span class="token punctuation">)</span></code></pre>
+</div></div>
+
 
 
 </article>
