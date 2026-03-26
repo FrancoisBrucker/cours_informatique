@@ -231,7 +231,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 </div>
 <h2>Attributs</h2>
 <p>On peut grandement améliorer la gestion des attributs des objets.</p>
-<h3>Attributs privés</h3>
+<h3><span id="privé"></span>Attributs privés</h3>
 <p>Il peut arriver que l'on ne veuille pas qu'un attribut soit modifié ou qu'on le modifie à une valeur non possible. Par exemple, on pourrait avoir envie de ne tolérer que des pas non nul mais pour l'instant rien ne nous empêche d'écrire :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
 c<span class="token punctuation">.</span>pas <span class="token operator">=</span> <span class="token number">0</span></code></pre>
@@ -294,7 +294,7 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 <li>en python les variables privées sont précédées d'un <code class="language-">_</code> pour prévenir le développeur qu'il ne faut pas qu'il utilise ces attributs directement (ce n'est qu'une convention)</li>
 <li>on utilise la fonction assert qui va faire planter le programme si on donne un pas valant 0.</li>
 </ul>
-<h3>Attributs de classes</h3>
+<h3><span id="attribut-classe"></span>Attributs de classes</h3>
 <p>Chaque classe ayant un espace de nommage, rien ne nous empêche de l'utiliser pour autre chose que des méthodes. On peut par exemple écrire ce genre de choses en créant une classe de compteur à pas fixe, qui définit <strong>un attributs de classes</strong>, que l'on peut ensuite utiliser :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">CompteurFixe</span><span class="token punctuation">:</span>
     PAS <span class="token operator">=</span> <span class="token number">1</span>
@@ -329,7 +329,7 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 </div></div>
 
 <p>On a déjà vu une méthode spéciale : <code class="language-">__init__</code> qui est exécutée lorsque l'on appelle une classe, mais il y en a bien d'autres. Nous allons en voir 2, très pratiques.</p>
-<h3>Représentation sous la forme de chaînes de caractères</h3>
+<h3><span id="str"></span>Représentation sous la forme de chaînes de caractères</h3>
 <p>Essayez de taper dans le fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span></code></pre>
