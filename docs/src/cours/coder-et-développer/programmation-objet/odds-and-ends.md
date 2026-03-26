@@ -239,12 +239,12 @@ c_copie = Compteur.depuis_compteur(c)
 
 La ligne `@classmethod`{.language-} est ce qu'on appelle un décorateur. Python en utilise un peut partout pour spécifier l'utilisation des fonctions décorées. Par exemple pour définir :
 
-- [les méthodes de classes](https://docs.python.org/3/library/functions.html#classmethod) comme on l'a vu
+- [les méthodes de classes](https://docs.python.org/3/library/functions.html#classmethod)
 - [les méthodes statiques](https://docs.python.org/3/library/functions.html#staticmethod),
 - [les propriétés](https://docs.python.org/fr/3.11/library/functions.html#property)
-- ...
+- et bien d'autres choses encore...
 
-Créer ses propres décorateurs dépasse le cadre de cette introduction, sachez juste les utiliser. Si le sujet vous intéresse vous pourrez cependant regarder le lien suivant :
+Créer ses propres décorateurs dépasse le cadre de cette introduction, sachez juste les reconnaître et utiliser ceux disponibles dans les bibliothèques que vous utilisez. Si le sujet vous intéresse vous pourrez cependant regarder le lien suivant :
 
 {% lien %}
 [Les décorateurs en python](https://realpython.com/primer-on-python-decorators/).
