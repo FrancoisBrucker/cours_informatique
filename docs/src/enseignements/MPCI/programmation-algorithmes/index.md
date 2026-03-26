@@ -608,6 +608,14 @@ Pour aller plus loin :
 
 {% endaller %}
 
+Pour ne pas mourir idiot (à faire si vous êtes intéressés par les métiers du développement) :
+
+
+{% aller %}
+
+[Programmation Par les tests (_Test Driven Development_)](/cours/coder-et-développer/projet-TDD/){.interne}
+
+{% endaller %}
 
 #### Vendredi : séance facultative
 
