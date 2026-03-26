@@ -121,9 +121,9 @@ Reprenons nos objets et combinons les avec d'autres :
 
 ## Pour aller plus loin
 
-> TBD repr vs str, property, méthodes de classes et méthodes statiques, constantes de classes. 
-
-
+{% aller %}
+[Autres améliorations](./odds-and-ends){.interne}
+{% endaller %}
 
 <!-- TBD
 

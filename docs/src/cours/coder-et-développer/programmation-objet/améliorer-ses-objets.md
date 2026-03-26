@@ -153,7 +153,7 @@ class Compteur:
 
 On peut grandement améliorer la gestion des attributs des objets.
 
-### Attributs privés
+### <span id="privé"></span>Attributs privés
 
 Il peut arriver que l'on ne veuille pas qu'un attribut soit modifié ou qu'on le modifie à une valeur non possible. Par exemple, on pourrait avoir envie de ne tolérer que des pas non nul mais pour l'instant rien ne nous empêche d'écrire :
 
@@ -210,7 +210,8 @@ class Compteur:
 - en python les variables privées sont précédées d'un `_`{.language-} pour prévenir le développeur qu'il ne faut pas qu'il utilise ces attributs directement (ce n'est qu'une convention)
 - on utilise la fonction assert qui va faire planter le programme si on donne un pas valant 0.
 
-### Attributs de classes
+
+### <span id="attribut-classe"></span>Attributs de classes
 
 Chaque classe ayant un espace de nommage, rien ne nous empêche de l'utiliser pour autre chose que des méthodes. On peut par exemple écrire ce genre de choses en créant une classe de compteur à pas fixe, qui définit **un attributs de classes**, que l'on peut ensuite utiliser :
 
@@ -251,7 +252,7 @@ Pour rendre l'utilisation des objets pus agréable et intuitive, python va assoc
 
 On a déjà vu une méthode spéciale : `__init__`{.language-} qui est exécutée lorsque l'on appelle une classe, mais il y en a bien d'autres. Nous allons en voir 2, très pratiques.
 
-### Représentation sous la forme de chaînes de caractères
+### <span id="str"></span>Représentation sous la forme de chaînes de caractères
 
 Essayez de taper dans le fichier `main.py`{.fichier} :
 
