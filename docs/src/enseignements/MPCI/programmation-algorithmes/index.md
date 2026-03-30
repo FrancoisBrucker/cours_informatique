@@ -583,6 +583,10 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 [Projet héritage](/cours/coder-et-développer/programmation-objet/projet-héritage){.interne}
 
 {% endaller %}
+{% note %}
+[corrigé projet héritage](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
+
+{% endnote %}
 
 ### Semaine 10
 
