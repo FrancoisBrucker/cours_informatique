@@ -273,7 +273,7 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 
 Comment créer de nouveaux types d'objets utilisable pour nos algorithmes :
 
-> TBD ici faire comme go ajouter un mot clé méthode avec un paramètre au début qui est le reciever.
+> TBD ici faire comme go ajouter un mot clé méthode avec un paramètre au début qui est le receiver.
 
 {% aller %}
 [Structures de données](structure-données){.interne}

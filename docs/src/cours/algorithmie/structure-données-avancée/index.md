@@ -9,6 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD reprendre les objets de base et dire tous de taille fixe. Idem tableau = n * taille du type de sa structure + 1 entier.
+> TBD dire entier = tableau de bits. Par défaut 26b = 2^64 entier. Par défaut on dira que pas de débordement. Parler des négatif avec le complément à 2. Dire qu'on verra ça précisément plus tard et juste donner les bornes
+
+> TDB ici
+> TBD parler de pointeur directement dans les structures.
+> TBD dire que pour python tout est pointeur.
 > TBD à refaire bien propre.
 
 > TBD voir si toutes les structures de <https://www.youtube.com/watch?v=6fnmXX8RK0s> y sont.
