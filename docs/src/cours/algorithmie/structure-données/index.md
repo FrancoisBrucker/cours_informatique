@@ -11,12 +11,11 @@ eleventyComputed:
 
 
 
-> 
 Les variables dans un algorithme ou un programme sont souvent liées. Un nombre complexe par exemple est composée d'une partie réelle et d'une partie imaginaire. Pour rendre compte de ces liens on peut grouper les variables en tuples, voir les structurer en leur ajoutant ds fonctions particulières appelée méthodes.
 
 ## Tuples
 
-Les tuples permettent de créer des types composés.
+Les tuples permettent de créer des types composés :
 
 {% aller %}
 [Tuples](./tuples){.interne}
@@ -24,7 +23,7 @@ Les tuples permettent de créer des types composés.
 
 ## Matrices
 
-La plus simple des structures. On compose le type de base tableau :
+La plus simple des structures, la composition de tableaux :
 
 {% aller %}
 [Manipuler des matrices](./matrices){.interne}

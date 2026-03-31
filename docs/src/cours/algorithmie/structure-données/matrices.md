@@ -12,23 +12,24 @@ eleventyComputed:
 
 > TBD ici liste de liste. Dire que référence vers des objets, ici des tableaux. Il faut les créer
 
-On peut facilement créer des matrices uniquement avec des tableaux. On l'a déjà un peu expérimenté avec [le tri par base](../../projet-algorithmes-classiques//tris-spéciaux/#tri-base){.interne} où les données était des tableaux et surtout [le problème des 8 reines](../../projet-algorithmes-classiques/8-reines){.interne}. Ce type est tellement utilisé en algorithme qu'on le considérera souvent comme un type de base.
+On peut facilement créer des matrices en combinant des tableaux. Ce type est tellement utilisé en algorithme qu'on le considérera souvent comme un type de base.
 
 Pour cela on utilisera le paradigme suivant :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Une matrice de dimension $k$ est constitué d'un tableau de matrices de dimensions $k-1$
-{% endnote %}
+{% endnote2 %}
 
-Une matrice entière $M$ de $n$ lignes et $p$ colonnes sera constitué d'un tableau de $n$ lignes (un tableau de $p$ entiers).
+Ainsi une matrice entière $M$ de $n$ lignes et $p$ colonnes sera constituée d'un tableau de $n$ lignes (chacune étant un tableau de $p$ entiers).
 
 ## Matrice 2D
+
 
 Une matrice d'entiers en deux dimensions sera ainsi un tableau de tableaux, donc de type :
 
 ```pseudocode
-M: [[entier]]
+M := [[entier]]
 ```
 
 ### Création
@@ -36,16 +37,14 @@ M: [[entier]]
 La création d'une matrice $M$ se fait ligne à ligne :
 
 ```pseudocode
-algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier) → [[entier]]:
-    M ← un nouveau tableau de n tableaux d'entiers
+algorithme creation_matrice(n: entier, p:entier) → [[entier]]:
+    M := [[entier]]
+    M ← [[entier]]{longueur: n}
 
-    pour chaque i de [0 .. nb_lignes[:
-        L ← un nouveau tableau de nb_colonnes entiers
-        M[i] ← L
+    pour chaque i de [0 .. n[:
+        M[i] ← [entier]{longueur: p}
     rendre M
 ```
-
-La création et l'affectation initiale d'une matrice est linéaire en sa taille.
 
 Comme lors de la création de tableaux les valeurs sont indéterminées, on a coutume d'initialiser les valeurs de la matrice lors de sa création :
 
@@ -61,7 +60,15 @@ algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entie
     rendre M
 ```
 
-Le nombre d'opération élémentaires pour initialiser la matrice sera alors proportionnelle à sa taille, le nombre de lignes fois le nombre de colonnes.
+Le nombre d'opération élémentaires pour initialiser la matrice sera alors proportionnelle à sa taille :
+
+
+{% attention2 "**À retenir**" %}
+La création et l'affectation initiale d'une matrice est linéaire en sa taille : le nombre de lignes fois le nombre de colonnes.
+
+{% endattention2 %}
+
+
 
 ### Utilisation
 
@@ -80,7 +87,7 @@ Cette utilisation nous permettra d'étendre aux matrice les _abus_ classique des
 Comme la création directe qui prend $\mathcal{O}(n)$ opérations. :
 
 ```pseudocode
-M ← une nouvelle matrice à n ligne et m colonnes
+(M := [[entier]]) ← [[entier]{longueur: p}]{longueur: n}
 ```
 
 Ou encore parler de la matrice `M[a:b][c:d]` qui correspond à une sous matrice de $M$ allant des colonnes d'indice `c`{.language-} à `d-1`{.language-} pour les lignes allant de l'indice `a`{.language-} à `b-1`{.language-}.:
@@ -89,17 +96,22 @@ Ou encore parler de la matrice `M[a:b][c:d]` qui correspond à une sous matrice 
 
 Cette méthode se généralise aisément à des matrices de dimensions supérieures.
 
-Pour créer une matrice de dimension 3 (d1, d2 et d3) :
+Pour créer une matrice de dimension 3 (d1, d2 et d3) dont le type sera un tableau de tableaux de tableaux d'entiers :
 
 ```pseudocode
-M3 ← un nouveau tableau de n tableaux de tableaux
+M: [[[entier]]]
+```
+
+On procède en deux boucles imbriquées :
+
+```pseudocode
+M3 := [[[entier]]]
+M3 ← [[[entier]]]{longueur: d1}
 
 pour chaque i de [0 .. d1[:
-    M2 ← un nouveau tableau de d2 tableaux
-    M3[i] ← M2
+    M3[i] ← [[entier]]{longueur: d2}
     pour chaque j de [0 .. d2[:
-        L ← un nouveau tableau de d3 entiers
-        M2[j] ← L
+        M3[i][j] ← [entier]{longueur: d3}
 ```
 
 Une fois la matrice créée, son utilisation est identique à une matrice en deux dimensions :
@@ -110,11 +122,6 @@ M[i][j][k] ← x
 Affiche à l'écran M[i][j][k]
 ```
 
-Son type sera un un tableau de tableaux de tableaux d'entiers :
-
-```pseudocode
-M: [[[entier]]]
-```
 
 Et tout ceci se généralise à la dimension $k$ bien sur...
 
@@ -123,9 +130,7 @@ Et tout ceci se généralise à la dimension $k$ bien sur...
 La méthode de création présenté nécessite une boucle, ce n'est donc pas une opération élémentaire.
 
 Il faut par exemple $n$ opérations pour créer une matrice de $n$ lignes et $p$ colonnes.
-Ceci n'est souvent pas gênant algorithmiquement car si on utilise une matrice c'est pour utiliser toutes ses lignes et colonnes, ne serait-ce que pour les initialiser (rappelez vous que lorsque l'on crée un tableau ses valeurs sont indéterminées).
-
-Mais si l'on veut pouvoir créer des matrices en 1 unique opération on peut le faire comme le montre la série d'exercice suivant. On utilise cependant peu cette méthode algorithmiquement car son utilisation complexifie l'algorithme sans réel gain car s'il faut initialiser la matrice on ne gagne rien (algorithmiquement) à la créer en $\mathcal{O}(1)$ opération.
+Ceci n'est souvent pas gênant algorithmiquement car si on utilise une matrice c'est pour utiliser toutes ses lignes et colonnes, ne serait-ce que pour les initialiser (rappelez vous que lorsque l'on crée un tableau ses valeurs sont indéterminées). Mais si l'on veut pouvoir créer des matrices en 1 unique opération on peut le faire comme le montre la série d'exercices suivant. On utilise cependant peu cette méthode algorithmiquement car son utilisation complexifie l'algorithme sans réel gain car s'il faut initialiser la matrice on ne gagne rien (algorithmiquement) à la créer en $\mathcal{O}(1)$ opération.
 
 Son réel gain est au niveau de l'implémentation car elle permet de stocker la matrice dans des cases mémoires contiguës ce qui permet une gestion [de la mémoire cache](https://fr.wikipedia.org/wiki/M%C3%A9moire_cache) plus optimale. Ceci dépasse cependant le cadre de ce cours d'algorithmie (rendez vous dans le cours système !)
 
@@ -166,7 +171,7 @@ Comment généraliser ceci à une matrice de dimension supérieure ?
 
 <div>
 $$
-f(c_1, \dots, c_k) = \sum_{1\leq i < k} (c_i - 1) \prod_{i < j}d_j + (c_k-1)
+f(c_1, \dots, c_k) = \sum_{1\leq i < k} (c_i - 1) \prod\limits_{i < j}d_j + (c_k-1)
 $$
 </div>
 
@@ -177,22 +182,22 @@ Comme :
 <div>
 $$
 \begin{array}{lcl}
-\sum_{2\leq i < k} (c_i - 1) \prod_{i < j}d_j + (c_k-1) &\leq & \sum_{2\leq i < k} (d_i - 1) \prod_{i < j}d_j + (d_k-1)\\
-&\leq & \sum_{2\leq i \leq k} \prod_{i \leq j}d_j - \sum_{2\leq i < k} \prod_{i < j}d_j -1\\
-&\leq &  \sum_{2\leq i \leq k} \prod_{i \leq j}d_j - \sum_{3\leq i \leq k} \prod_{i \leq j}d_j -1\\
-&\leq&  \prod_{2 \leq j}d_j -1\\
-&<&  \prod_{2 \leq j}d_j
+\sum_{2\leq i < k} (c_i - 1) \prod\limits_{i < j}d_j + (c_k-1) &\leq & \sum_{2\leq i < k} (d_i - 1) \prod\limits_{i < j}d_j + (d_k-1)\\
+&\leq & \sum_{2\leq i \leq k} \prod\limits_{i \leq j}d_j - \sum_{2\leq i < k} \prod\limits_{i < j}d_j -1\\
+&\leq &  \sum_{2\leq i \leq k} \prod\limits_{i \leq j}d_j - \sum_{3\leq i \leq k} \prod\limits_{i \leq j}d_j -1\\
+&\leq&  \prod\limits_{2 \leq j}d_j -1\\
+&<&  \prod\limits_{2 \leq j}d_j
 \end{array}
 $$
 </div>
 
-On a que $c_1 - 1 = f(c_1, \dots, c_k) \\\;\mbox{ div } \prod_{1 < j}d_j$ et on peut itérer le processus pour obtenir les autres composantes.
+On a que $c_1 - 1 = f(c_1, \dots, c_k) \\\;\mbox{ div } \prod\limits_{1 < j}d_j$ et on peut itérer le processus pour obtenir les autres composantes.
 
 En posant :
 
 - $K_1 = f(c_1, \dots, c_k)$
-- $K_{i+1} = K_i \bmod \prod_{i < j}d_j$
+- $K_{i+1} = K_i \bmod \prod\limits_{i < j}d_j$
 
-On a $c_i = K_i \\\;\mbox{ div } \prod_{i < j}d_j$
+On a $c_i = K_i \\\;\mbox{ div } \prod\limits_{i < j}d_j$
 
 {% enddetails %}
