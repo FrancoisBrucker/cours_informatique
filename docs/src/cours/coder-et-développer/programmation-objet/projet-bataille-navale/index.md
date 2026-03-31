@@ -200,12 +200,6 @@ Vous pourrez tester le fait que :
 
 {% endfaire %}
 
-Pour rendre les choses plus *pythonesques*, transformons cette méthode en attribut avec une `@property`{.language-}
-
-{% faire %}
-En utilisant ce que vous avez fait dans [le projet dés](../projet-objets-dés#property){.interne}, modifier la méthode `Bateau.positions()`{.language-} pour qu'elle soit considérée comme un attribut.
-{% endfaire %}
-
 Testons la fonctionnalité grâce à la user story suivante :
 
 {% note "**User Story**" %}

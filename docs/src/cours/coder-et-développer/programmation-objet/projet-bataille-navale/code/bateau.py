@@ -6,7 +6,6 @@ class Bateau:
         self.vertical = vertical
         self.type = type
 
-    @property
     def positions(self):
         pos = []
         for i in range(self.longueur):

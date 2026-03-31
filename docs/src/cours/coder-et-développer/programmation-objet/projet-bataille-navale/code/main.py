@@ -37,7 +37,7 @@ while True:
 
     grille.tirer(l, c)
     for b in bateaux:
-        if (l, c) in b.positions:
+        if (l, c) in b.positions():
             print("bateau touché !")
             grille.tirer(l, c, "💣")
 

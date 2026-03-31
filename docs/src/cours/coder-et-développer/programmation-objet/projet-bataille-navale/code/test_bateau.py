@@ -22,8 +22,8 @@ def test_paramètres():
 
 
 def test_positions():
-    assert [(2, 3), (2, 4), (2, 5)] == Bateau(2, 3, longueur=3).positions
-    assert [(2, 3), (3, 3), (4, 3)] == Bateau(2, 3, longueur=3, vertical=True).positions
+    assert [(2, 3), (2, 4), (2, 5)] == Bateau(2, 3, longueur=3).positions()
+    assert [(2, 3), (3, 3), (4, 3)] == Bateau(2, 3, longueur=3, vertical=True).positions()
 
 
 def test_coulé():
