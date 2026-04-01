@@ -854,8 +854,9 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 
 ## <span id="partie-6"></span>Partie VI : aléatoire
 
-> TBD hasard et algorithmes randomisés.
-
+> TBD hasard et algorithmes randomisés <https://www.youtube.com/watch?v=NPUc93dnUh4&list=PL0YFU3y0Z_gap24B-pBob7qk4rsEclGU2>
+> TBD universal hashing et compagnie : <https://www.youtube.com/watch?v=D9btHIAk4ac&list=PL278F9gM5aZYa0uH0uOmYLLYUJWegjlI->
+> 
 > TBD méthode probabiliste. premier exemple : <https://www.youtube.com/watch?v=4weMmFZSBtI>
 <!-- 
 {% aller %}
