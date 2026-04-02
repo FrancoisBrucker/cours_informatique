@@ -96,134 +96,167 @@
     
   
 
-  <p>Manipuler des objets ou des structures en algorithmie va nécessiter des opérations élémentaires qu'il faut compter pour en connaître la complexité. On peut classer ces manipulations en trois grandes catégories :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Pour chaque type de donnée (base ou structure) ses <strong><em>complexités</em></strong> sont  :</p>
-<ul>
-<li><strong><em>complexité de création</em></strong> d'un objet de ce type</li>
-<li><strong><em>complexité de suppression</em></strong> d'un objet de ce type</li>
-<li><strong><em>complexité d'opération</em></strong> qui regroupe la complexité de chaque opération ou méthode lié à ce type</li>
-</ul>
-</div></div>
-
-<p>Toutes les manipulations d'objets de type basique (booléens, bit, entiers, réels, caractères et chaines de caractères) ou de type tableau sont en $\mathcal{O}(1)$ opérations. Ce n'est plus le cas lorsque l'on utilise des types plus complexes, on l'a vue avec les listes ou les dictionnaires par exemple.</p>
-<h2>Complexités des structures linéaires</h2>
-<p>Les différences structures linéaires que l'on a vu vont avoir des complexités différentes selon l'opération réalisée. Une analyse fine du problème à résoudre ou de l'algorithme à coder est souvent nécessaire pour choisir la structure la plus adaptée, c'est à dire :</p>
-<ol>
-<li>Utiliser celle qui permettra d'obtenir la complexité la plus faible (utiliser des listes chaînées plutôt que des listes dans des algorithmes récursif par exemple)</li>
-<li>Utiliser celle dont l'utilisation sera la plus simple sans sacrifier totalement complexité (utiliser des dictionnaires plutôt que des listes si les données ne sont pas des indices par exemple)</li>
-</ol>
+  <blockquote>
+<p>TBD à dispatcher bien</p>
+</blockquote>
+<p>Comparons l'usage les différentes structures de stockage de données en notre possession :</p>
 <ul>
 <li>tableaux :
 <ul>
-<li>création : $\mathcal{O}(1)$</li>
-<li>suppression : $\mathcal{O}(1)$</li>
-<li>accéder et modifier un élément via son indice : $\mathcal{O}(1)$</li>
+<li>structure simple</li>
+<li>intérêt : accès au $i$ème élément se fait en $\mathcal{O}(1)$</li>
+<li>défaut : structure statique, on ne peut ajouter/supprimer des éléments</li>
+<li>utilisation : si contrôle stricte de la complexité en temps et en espace crucial</li>
 </ul>
 </li>
 <li>pile :
 <ul>
-<li>création : $\mathcal{O}(1)$</li>
-<li>suppression : $\mathcal{O}(1)$</li>
-<li>append et pop : $\mathcal{O}(1)$</li>
+<li>gestion de flux : LIFO</li>
+<li>utilisation : à la place d'une récursion</li>
 </ul>
 </li>
 <li>file :
 <ul>
-<li>création : $\mathcal{O}(1)$</li>
-<li>suppression : $\mathcal{O}(1)$</li>
-<li>append et pop : $\mathcal{O}(1)$</li>
+<li>gestion de flux : FIFO</li>
+<li>utilisation : buffer</li>
 </ul>
 </li>
-<li>liste :
+<li>listes :
 <ul>
-<li>création : $\mathcal{O}(1)$</li>
-<li>suppression : $\mathcal{O}(1)$</li>
-<li>accéder et modifier un élément via son indice : $\mathcal{O}(1)$</li>
-<li>ajouter un dernier élément : $\mathcal{O}(1)$ (en amortie)</li>
-<li>supprimer le dernier élément : $\mathcal{O}(1)$ (en amortie)</li>
+<li>structure passe partout</li>
+<li>intérêt : ajout et suppression en fin de liste en $\mathcal{O}(1)$, accès au $i$ème élément se fait en $\mathcal{O}(1)$</li>
+<li>défaut : supprimer/ajouter le $i$ème élément se fait en $\mathcal{O}(n-i)$ où $n$ est la taille de la liste.</li>
+<li>utilisation : à la place d'un tableau si on autorise une taille variable et un pic de complexité de temps en temps</li>
 </ul>
 </li>
-<li>dictionnaire :
+<li>dictionnaires :
 <ul>
-<li>création : $\mathcal{O}(1)$</li>
-<li>suppression : $\mathcal{O}(n)$ (avec $n$ la taille des éléments stockés)</li>
-<li>accéder et modifier un élément via sa clé : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)</li>
-<li>ajouter un élément : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)</li>
-<li>supprimer un élément : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)</li>
+<li>clé et valeurs</li>
+<li>intérêt : ajout et suppression et accès à un élément en $\mathcal{O}(1)$ en moyenne.</li>
+<li>défaut : pas d'ordre entre en les éléments stockés, complexité max en $\mathcal{O}(n)$ où $n$ est le nombre d'éléments stockés</li>
+<li>utilisation : lorsque les données ne sont pas des indices et que la complexité en moyenne suffit</li>
+</ul>
+</li>
+<li>listes chaînées :
+<ul>
+<li>structure par morceaux où maillon = chaîne</li>
+<li>intérêt : ajout et suppression en milieu de liste en $\mathcal{O}(1)$</li>
+<li>défaut : trouver le $i$ème élément se fait en $\mathcal{O}(i)$.</li>
+<li>utilisation : pour les programmes récursifs et ceux où on modifie souvent le nombre de données stockées tout en conservant l'ordre des données restantes</li>
 </ul>
 </li>
 </ul>
-<h2>Complexité de structure en python</h2>
-<p>On prend ici l'exemple de python et on analyse la complexité de quelques structures iconiques du langage</p>
-<h3>Listes</h3>
-<p>Le langage python ne connaît pas les tableaux. Il utilise la <a href="https://docs.python.org/fr/3/tutorial/introduction.html#lists">liste</a> à la place. On a donc comme complexité :</p>
-<ul>
-<li><strong>créer et supprimer une liste</strong> de taille $n$ en $\mathcal{O}(1)$ opérations</li>
-<li><strong>récupérer et affecter</strong> l'objet d'indice $i$ d'une liste (objet <code class="language-">t[i]</code>) se fait en $\mathcal{O}(1)$ opérations</li>
-<li><strong>augmenter la taille</strong> d'une liste d'un élément se fait en $\mathcal{O}(1)$ opérations</li>
-<li><strong>supprimer le dernier élément</strong> d'une liste se fait en $\mathcal{O}(1)$ opérations</li>
-</ul>
-<h3>Itérateur</h3>
-<p>La gestion des boucles <code class="language-">pour chaque</code> en python se fait via des itérateurs. Ce sont de petits programmes dont le but est de donner le prochain élément. Par exemple :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-  <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
-<p>Ne commence pas par créer la liste allant de 0 à 999999, mais produit un itérateur qui rend la prochaine valeur en $\mathcal{O}(1)$.</p>
-<p>On a pris ce parti pour l'écriture des boucles en pseudo-code :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">1000000</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
-  <span class="token keyword">affiche</span> x à l'écran</code></pre>
-<p>Prend $\mathcal{O}(1)$ instructions et ne crée pas l'intervalle en entier.</p>
-<h3>Opérations sur les listes python</h3>
-<p>On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau et d'une chaîne de caractères comme valant $\mathcal{O}(1)$. Ceci était un raccourci qu'il nous faut maintenant expliciter car il peut induire en erreur lorsque l'on considères des opérations sur les conteneurs comme la concaténation.</p>
-<p>Les opérations de création d'un conteur (comme un tableau, une liste, un ensemble, ou encore un dictionnaire) possédant $n$ objets est usuellement de complexité en $\mathcal{O}(n)$.</p>
-<p>Si $n$ est une constante la complexité de création est bien $\mathcal{O}(1)$. Comme dans le cas suivant :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
-<p>Mais si $n$ n'est pas une constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(n)$ à $\mathcal{O}(1)$ :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">duplique</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-  <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
-<p>La complexité de la fonction <code class="language-">duplique(x: list) -&gt; list</code> n'est <strong>pas</strong> $\mathcal{O}(1)$ mais bien $\mathcal{O}(\text{len}(x))$.</p>
+ <!-- TBD à dispatcher
+
+#### Complexités des structures linéaires
+
+Les différences structures linéaires que l'on a vu vont avoir des complexités différentes selon l'opération réalisée. Une analyse fine du problème à résoudre ou de l'algorithme à coder est souvent nécessaire pour choisir la structure la plus adaptée, c'est à dire :
+
+1. Utiliser celle qui permettra d'obtenir la complexité la plus faible (utiliser des listes chaînées plutôt que des listes dans des algorithmes récursif par exemple)
+2. Utiliser celle dont l'utilisation sera la plus simple sans sacrifier totalement complexité (utiliser des dictionnaires plutôt que des listes si les données ne sont pas des indices par exemple)
+
+- tableaux :
+  - création : $\mathcal{O}(1)$
+  - suppression : $\mathcal{O}(1)$
+  - accéder et modifier un élément via son indice : $\mathcal{O}(1)$
+- pile :
+  - création : $\mathcal{O}(1)$
+  - suppression : $\mathcal{O}(1)$
+  - append et pop : $\mathcal{O}(1)$
+- file :
+  - création : $\mathcal{O}(1)$
+  - suppression : $\mathcal{O}(1)$
+  - append et pop : $\mathcal{O}(1)$
+- liste :
+  - création : $\mathcal{O}(1)$
+  - suppression : $\mathcal{O}(1)$
+  - accéder et modifier un élément via son indice : $\mathcal{O}(1)$
+  - ajouter un dernier élément : $\mathcal{O}(1)$ (en amortie)
+  - supprimer le dernier élément : $\mathcal{O}(1)$ (en amortie)
+- dictionnaire :
+  - création : $\mathcal{O}(1)$
+  - suppression : $\mathcal{O}(n)$ (avec $n$ la taille des éléments stockés)
+  - accéder et modifier un élément via sa clé : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)
+  - ajouter un élément : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)
+  - supprimer un élément : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)
+
+## Complexité de structure en python
+
+On prend ici l'exemple de python et on analyse la complexité de quelques structures iconiques du langage
+
+### Listes
+
+Le langage python ne connaît pas les tableaux. Il utilise la [liste](https://docs.python.org/fr/3/tutorial/introduction.html#lists) à la place. On a donc comme complexité :
+
+- **créer et supprimer une liste** de taille $n$ en $\mathcal{O}(1)$ opérations
+- **récupérer et affecter** l'objet d'indice $i$ d'une liste (objet `t[i]`{.language-}) se fait en $\mathcal{O}(1)$ opérations
+- **augmenter la taille** d'une liste d'un élément se fait en $\mathcal{O}(1)$ opérations
+- **supprimer le dernier élément** d'une liste se fait en $\mathcal{O}(1)$ opérations
+
+### Itérateur
+
+La gestion des boucles `pour chaque`{.language-} en python se fait via des itérateurs. Ce sont de petits programmes dont le but est de donner le prochain élément. Par exemple :
+
+```python
+for x in range(1000000):
+  print(x)
+```
+
+Ne commence pas par créer la liste allant de 0 à 999999, mais produit un itérateur qui rend la prochaine valeur en $\mathcal{O}(1)$.
+
+On a pris ce parti pour l'écriture des boucles en pseudo-code :
+
+```pseudocode
+pour chaque x de [0 .. 1000000[:
+  affiche x à l'écran
+```
+
+Prend $\mathcal{O}(1)$ instructions et ne crée pas l'intervalle en entier.
+
+### Opérations sur les listes python
+
+On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau et d'une chaîne de caractères comme valant $\mathcal{O}(1)$. Ceci était un raccourci qu'il nous faut maintenant expliciter car il peut induire en erreur lorsque l'on considères des opérations sur les conteneurs comme la concaténation.
+
+Les opérations de création d'un conteur (comme un tableau, une liste, un ensemble, ou encore un dictionnaire) possédant $n$ objets est usuellement de complexité en $\mathcal{O}(n)$.
+
+Si $n$ est une constante la complexité de création est bien $\mathcal{O}(1)$. Comme dans le cas suivant :
+
+```python
+x = [1, 2, 3]
+```
+
+Mais si $n$ n'est pas une constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(n)$ à $\mathcal{O}(1)$ :
+
+```python
+def duplique(x):
+  return list(x)
+```
+
+La complexité de la fonction `duplique(x: list) -> list`{.language-} n'est **pas** $\mathcal{O}(1)$ mais bien $\mathcal{O}(\text{len}(x))$.
+
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité des opérations créant des conteneurs dépend toujours de leurs tailles.</p>
-</div></div>
 
-<p>De là :</p>
-<ul>
-<li>la création d'un conteneur contenant tous les éléments d'un autre conteneur, comme <code class="language-">list(x)</code>, , est de complexité $\mathcal{O}(n) + C$ où :
-<ul>
-<li>$n$ est la taille du conteneur dupliqué</li>
-<li>$C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)</li>
-</ul>
-</li>
-<li>la création d'un conteneur résultant de la concaténation de deux conteurs, comme $x + y$ si $x$ et $y$ sont de conteneurs, est de complexité $\mathcal{O}(n_1 + n_2) + C$ où :
-<ul>
-<li>$n_1$ et $n_2$ sont les tailles des deux conteneurs</li>
-<li>$C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)</li>
-</ul>
-</li>
-</ul>
-<h3>Fonctions et méthodes données de python</h3>
-<p>Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code class="language-">index</code> des listes (comme une <code class="language-">l.index(&quot;?&quot;)</code>) ou encore  la méthode <code class="language-">max</code> de python, qui prend en entrée une liste <code>l</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<p>Sont de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste <code>l</code> et pas $\mathcal{O}(1)$. Il <strong>faut</strong> en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Lorsque vous utilisez des fonctions et des méthodes en python, <strong>il faut toujours vérifier la complexité de celles-ci</strong>. Ce n'est pas toujours $\mathcal{O}(1)$.</p>
-</div></div>
 
+La complexité des opérations créant des conteneurs dépend toujours de leurs tailles.
+
+
+</div></div>
+</div>
+
+
+De là :
+
+- la création d'un conteneur contenant tous les éléments d'un autre conteneur, comme `list(x)`{.language-}, , est de complexité $\mathcal{O}(n) + C$ où :
+  - $n$ est la taille du conteneur dupliqué
+  - $C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)
+- la création d'un conteneur résultant de la concaténation de deux conteurs, comme $x + y$ si $x$ et $y$ sont de conteneurs, est de complexité $\mathcal{O}(n_1 + n_2) + C$ où :
+  - $n_1$ et $n_2$ sont les tailles des deux conteneurs
+  - $C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$) -->
 
 
 </article>
