@@ -21,14 +21,6 @@ Les tuples permettent de créer des types composés :
 [Tuples](./tuples){.interne}
 {% endaller %}
 
-## Matrices
-
-La plus simple des structures, la composition de tableaux :
-
-{% aller %}
-[Manipuler des matrices](./matrices){.interne}
-{% endaller %}
-
 ## Structures
 
 Les tuples permettent de gérer des groupements informels d'objets en créant des types nouveaux par produit cartésien d'anciens types. Si l'on veut aller plus loin et créer des fonctions spécifiquement utilisable pour ces groupements, on utilise [une structure de données](https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es) :

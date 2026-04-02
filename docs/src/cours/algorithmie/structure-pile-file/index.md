@@ -269,3 +269,97 @@ Quelle est la complexité de l'enfilage et du défilage avec cette structure ?
 L'enfilage sera toujours en $\mathcal{O}(1)$, mais le défilage peut prendre $\mathcal{O}({\small longueur})$ dans le pire des cas si la pile `P1`{.language-} est pleine et la pile `P2`{.language-} vide.
 
 {% enddetails %}
+
+
+
+## TBD
+
+## Piles
+
+> - **Utilité** : les piles ça sert toujours. Ces exercices vous montrerons des cas classiques d'utilisation
+> - **Difficulté** : dur
+
+### Parenthésage
+
+> TBD rappel de l'exo non corrigé. vois que sa complexité est grande et faire avec pile.
+
+Soit $C$ une expression arithmétique avec des parenthèses et des crochets. On cherche à savoir si le parenthésage est équilibré :
+
+- `[3 + 3 * (1 + 3)]` sera Ok
+- `[3 + 3 * (1 + 3])` sera pas Ok
+
+On ne vérifiera pas que l'expression est arithmétiquement correcte, c'est à dire que pour nous, `[3 + + 3 (1 + 3)]` sera Ok.
+
+{% exercice %}
+
+Montrer que l'on peut utiliser une pile pour savoir si un parenthésage est équilibré entre les `()` et les `[]`.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme parenthèse(C):
+    P ← une nouvelle pile de caractères
+    pour chaque c de C:
+        si c == "(" ou c == "[":
+            P.empile(c)
+        sinon si c == ")":
+            si P.vide() ou P.dépile() ≠ "(":
+                rendre Faux
+        sinon si c == "]":
+            si P.vide() ou P.dépile() ≠ "[":
+                rendre Faux
+    rendre Vrai
+```
+
+{% enddetails %}
+
+### Calcul d'une expression avec deux piles
+
+Soit $C$ une expression arithmétique avec uniquement des parenthèses, des `+` et des `*`. On suppose qu'elle est arithmétiquement correcte, comme `(3 + 3 * (1 + 3))`
+
+{% exercice %}
+
+Montrer que l'on peut utiliser deux piles (une pour les opérateurs et les parenthèses et l'autre pour les nombres) pour calculer $C$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut faire attention au fait que `*` a une priorité supérieure à `+` : `3 + 4 * 3 = 15`.
+
+On lit l'expression de gauche à droite :
+
+1. si le caractère lu est un nombre on le place dans la pile P2
+2. sinon si le caractère lu est un opérateur O :
+   1. on évalue l'expression comme on la fait avec la notation polonaise inversée :
+      1. pop de P1 dans op
+      2. pop de p2 dans y
+      3. pop de p2 dans x
+      4. x op y = z
+      5. push de z dans P2
+   2. jusqu'à ce que :
+      1. P1 est vide ou
+      2. l'opérateur O a une priorité supérieure à celle sur P1
+   3. place O dans P1
+3. sinon si le caractère lu est une parenthèse ouvrante : on la place dans P1
+4. sinon si le caractère lu est une parenthèse fermante :
+   1. on évalue l'expression jusqu'à trouver une parenthèse ouvrante
+   2. on push le résultat dans P2
+
+Si on a fini de lire l'expression on évalue le reste des deux piles.
+
+{% lien %}
+à 9min13  <https://www.youtube.com/watch?v=2vBVvQTTdXg>
+{% endlien %}
+{% enddetails %}
+
+## Liste chaînée
+
+> TBD dire base des algos récursifs.
+> TBD donner le type récursif associé.
+
+> TBD reprendre exercices suppression/ head, tail , rendre éléments pair et impair/ retournements
+> TBD : knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88>
+
+## Autre structures
+
+- skip list
+- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>

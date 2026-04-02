@@ -10,21 +10,42 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Manipuler des objets ou des structures en algorithmie va nécessiter des opérations élémentaires qu'il faut compter pour en connaître la complexité. On peut classer ces manipulations en trois grandes catégories :
+> TBD à dispatcher bien
 
-{% note "**Définition**" %}
 
-Pour chaque type de donnée (base ou structure) ses **_complexités_** sont  :
+Comparons l'usage les différentes structures de stockage de données en notre possession :
 
-- **_complexité de création_** d'un objet de ce type
-- **_complexité de suppression_** d'un objet de ce type
-- **_complexité d'opération_** qui regroupe la complexité de chaque opération ou méthode lié à ce type
+- tableaux :
+  - structure simple
+  - intérêt : accès au $i$ème élément se fait en $\mathcal{O}(1)$
+  - défaut : structure statique, on ne peut ajouter/supprimer des éléments
+  - utilisation : si contrôle stricte de la complexité en temps et en espace crucial
+- pile :
+  - gestion de flux : LIFO
+  - utilisation : à la place d'une récursion
+- file :
+  - gestion de flux : FIFO
+  - utilisation : buffer
+- listes :
+  - structure passe partout
+  - intérêt : ajout et suppression en fin de liste en $\mathcal{O}(1)$, accès au $i$ème élément se fait en $\mathcal{O}(1)$
+  - défaut : supprimer/ajouter le $i$ème élément se fait en $\mathcal{O}(n-i)$ où $n$ est la taille de la liste.
+  - utilisation : à la place d'un tableau si on autorise une taille variable et un pic de complexité de temps en temps
+- dictionnaires :
+  - clé et valeurs
+  - intérêt : ajout et suppression et accès à un élément en $\mathcal{O}(1)$ en moyenne.
+  - défaut : pas d'ordre entre en les éléments stockés, complexité max en $\mathcal{O}(n)$ où $n$ est le nombre d'éléments stockés
+  - utilisation : lorsque les données ne sont pas des indices et que la complexité en moyenne suffit
+- listes chaînées :
+  - structure par morceaux où maillon = chaîne
+  - intérêt : ajout et suppression en milieu de liste en $\mathcal{O}(1)$
+  - défaut : trouver le $i$ème élément se fait en $\mathcal{O}(i)$.
+  - utilisation : pour les programmes récursifs et ceux où on modifie souvent le nombre de données stockées tout en conservant l'ordre des données restantes
 
-{% endnote %}
 
-Toutes les manipulations d'objets de type basique (booléens, bit, entiers, réels, caractères et chaines de caractères) ou de type tableau sont en $\mathcal{O}(1)$ opérations. Ce n'est plus le cas lorsque l'on utilise des types plus complexes, on l'a vue avec les listes ou les dictionnaires par exemple.
+ <!-- TBD à dispatcher
 
-## Complexités des structures linéaires
+#### Complexités des structures linéaires
 
 Les différences structures linéaires que l'on a vu vont avoir des complexités différentes selon l'opération réalisée. Une analyse fine du problème à résoudre ou de l'algorithme à coder est souvent nécessaire pour choisir la structure la plus adaptée, c'est à dire :
 
@@ -121,19 +142,4 @@ De là :
   - $C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)
 - la création d'un conteneur résultant de la concaténation de deux conteurs, comme $x + y$ si $x$ et $y$ sont de conteneurs, est de complexité $\mathcal{O}(n_1 + n_2) + C$ où :
   - $n_1$ et $n_2$ sont les tailles des deux conteneurs
-  - $C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)
-
-### Fonctions et méthodes données de python
-
-Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode `index`{.language-} des listes (comme une `l.index("?")`{.language-}) ou encore  la méthode `max`{.language-} de python, qui prend en entrée une liste `l` :
-
-```python
-l = [1, 3, 2, 6, 4, 5]
-print(l.max())
-```
-
-Sont de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste `l` et pas $\mathcal{O}(1)$. Il **faut** en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.
-
-{% attention %}
-Lorsque vous utilisez des fonctions et des méthodes en python, **il faut toujours vérifier la complexité de celles-ci**. Ce n'est pas toujours $\mathcal{O}(1)$.
-{% endattention %}
+  - $C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$) -->

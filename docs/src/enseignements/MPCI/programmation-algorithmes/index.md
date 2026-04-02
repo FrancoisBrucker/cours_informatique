@@ -603,6 +603,10 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 [Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale){.interne}
 
 {% endaller %}
+{% note %}
+[corrigé projet bataille navale](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale/code)
+
+{% endnote %}
 
 Pour aller plus loin :
 
@@ -632,64 +636,80 @@ Correction du DM2.
 Cette séance est facultative, ne venez que si vous avez touché au DM ! Je ne ferai que répondre aux questions que vous vous posez et des difficultés que vous avez rencontré.
 {% endattention %}
 
-<!-- 
 
 ### Semaine 11
 
-> 16/03 au 20/03
+> 6/04 au 10/04
 > Algorithmie
 
-#### Mercredi : listes
+{% attention %}
+La séance du mardi 7 avril pour le groupe B est reportée au vendredi 10 à 8h.
+{% endattention %}
+
+{% faire %}
+DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal algorithmie 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/2025-05-26_L1S2_programmation_ET.pdf){.interne}
+
+{% endfaire %}
+{% info %}
+**Corrigé :** Le 17 avril 13h30.
+{% endinfo %}
+
+#### Jeudi : structures de données
 
 > 2h
 >
 
-> DM3 : ET code de l'année dernière.
+{% aller %}
 
-#### Vendredi : dictionnaires
+[Structure matricielle](/cours/algorithmie/structure-matricielle/){.interne}
 
-> 2h
+{% endaller %}
+
+
+#### Vendredi : structures linéaires
+
+> 4h
 >
+
+{% aller %}
+
+1. [Structures de données](/cours/algorithmie/structure-données/){.interne}
+2. pile files et listes chaînées
+
+{% endaller %}
+
+> TBD pile/file/ liste chaînée
 
 ### Semaine 12
 
 > 13/04 au 17/04
 > Algorithmie
 
-#### Mercredi : Problème de l'enveloppe convexe
+#### Mercredi : Listes et dictionnaires
 
-{% attention %}
-Test de 15min **sur ordinateur** en début de cours sur la composition et l'agrégation.
-{% endattention %}
+> TBD listes et dictionnaires
 
-#### Vendredi : on s'entraîne
+#### Vendredi : complexité amortie
 
-> TBD avec pyglet et/matplotlib
-
-> TBD DM3 et code de l'année dernière
+> TBD complexité amortie
 
 ### Semaine 13
 
-> 2h
->
+> 27/04 au 1/05
+> Programmation
 
 {% attention %}
 Devoir surveillé de programmation. Le programme est tout ce qu'on a vu jusqu'à présent
 {% endattention %}
 
 
-### Semaine 13
+### Semaine 14
 
 > 04/05 au 08/05
-> Programmation
+> Algorithmie
 
-> présrequis : avoir fait du html/css/js pendant les vacances. En faire un DM.
-
-#### Mercredi : serveur web et réseau
-
-#### Vendredi : on s'entraîne
- -->
-
+> 4h
+> TBD enveloppe convexe.
 
 
 <!-- TBD

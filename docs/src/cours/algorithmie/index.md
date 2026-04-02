@@ -267,17 +267,28 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 
 ## <span id="partie-2"></span>Partie II : structures de données
 
+
+### Matrices
+
+Les matrices constituent le premier type composé que l'on peut utiliser sans définir d'autres éléments de pseudocode :
+
+{% aller %}
+[Structure Matricielle](structure-matricielle){.interne}
+{% endaller %}
+
+### Structures de données
+
 {% prerequis "**Prérequis**" %}
 [Programmation objet](/cours/coder-et-développer/programmation-objet/){.interne}
 {% endprerequis %}
 
 Comment créer de nouveaux types d'objets utilisable pour nos algorithmes :
 
-> TBD ici faire comme go ajouter un mot clé méthode avec un paramètre au début qui est le receiver.
-
 {% aller %}
 [Structures de données](structure-données){.interne}
 {% endaller %}
+
+### Structures linéaires
 
 Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes : les **_structures linéaires_**.
 
@@ -290,6 +301,15 @@ Ces structures sont des conteneurs, comme des tableaux, qu permettent de stocker
 
 > TBD ajouter un TD/TP sur l'utilité de chaque structure
 > TBD parler de taille (nb actuel) et de capacité (nb max)
+### Pile et file
+
+Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
+
+{% aller %}
+[Structure de pile et file](./structure-pile-file){.interne}
+{% endaller %}
+
+> TBD pile et tas. Montrer la récursion. Et la decurryfication 
 
 ### Listes chaînées
 
@@ -301,25 +321,13 @@ Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit su
 
 > TBD maintenir un ordre PAPS. Faire circulaire. Ex graphes cordés ?
 
-### Pile et file
-
-Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
-
-{% aller %}
-[Structure de pile et file](./structure-pile-file){.interne}
-{% endaller %}
-
-> TBD pile et tas. Montrer la récursion. Et la decurryfication 
-
-### Listes
+### Listes et dictionnaires
 
 La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Nous verrons dans cette partie que l'on peut faire sauter cette contrainte d'un tableau au prix d'un coût négligeable en complexité :
 
 {% aller %}
 [Structure de listes](./structure-liste){.interne}
 {% endaller %}
-
-### Dictionnaires
 
 Si les listes permettent de supprimer la première contrainte de l'utilisation des tableaux qui est de déterminer leurs tailles à la création, elle ne permettent pas de pallier la seconde limitation qui est que l'accès aux éléments se fait _via_ des indices entiers. Cette contrainte peut être levée au prix d'une perte de complexité (on ne peut garantir que de bonnes complexités en moyenne et plus maximale) en utilisant des dictionnaires :
 
@@ -332,40 +340,14 @@ Si les listes permettent de supprimer la première contrainte de l'utilisation d
 
 ### Comparaisons des structures de conteneurs
 
-Comparons l'usage les différentes structures de stockage de données en notre possession :
-
-- tableaux :
-  - structure simple
-  - intérêt : accès au $i$ème élément se fait en $\mathcal{O}(1)$
-  - défaut : structure statique, on ne peut ajouter/supprimer des éléments
-  - utilisation : si contrôle stricte de la complexité en temps et en espace crucial
-- pile :
-  - gestion de flux : LIFO
-  - utilisation : à la place d'une récursion
-- file :
-  - gestion de flux : FIFO
-  - utilisation : buffer
-- listes :
-  - structure passe partout
-  - intérêt : ajout et suppression en fin de liste en $\mathcal{O}(1)$, accès au $i$ème élément se fait en $\mathcal{O}(1)$
-  - défaut : supprimer/ajouter le $i$ème élément se fait en $\mathcal{O}(n-i)$ où $n$ est la taille de la liste.
-  - utilisation : à la place d'un tableau si on autorise une taille variable et un pic de complexité de temps en temps
-- dictionnaires :
-  - clé et valeurs
-  - intérêt : ajout et suppression et accès à un élément en $\mathcal{O}(1)$ en moyenne.
-  - défaut : pas d'ordre entre en les éléments stockés, complexité max en $\mathcal{O}(n)$ où $n$ est le nombre d'éléments stockés
-  - utilisation : lorsque les données ne sont pas des indices et que la complexité en moyenne suffit
-- listes chaînées :
-  - structure par morceaux où maillon = chaîne
-  - intérêt : ajout et suppression en milieu de liste en $\mathcal{O}(1)$
-  - défaut : trouver le $i$ème élément se fait en $\mathcal{O}(i)$.
-  - utilisation : pour les programmes récursifs et ceux où on modifie souvent le nombre de données stockées tout en conservant l'ordre des données restantes
-
-### Complexité de structures
+On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'on veut en faire : on prendra celle de complexité minimale.
 
 {% aller %}
-[Complexités d'une structure et de ses méthodes](./structures-complexité){.interne}
+[Comparaisons des complexités des structures](./structures-complexité){.interne}
 {% endaller %}
+
+
+### Complexité amortie
 
 Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire la méthode append des listes.
 
