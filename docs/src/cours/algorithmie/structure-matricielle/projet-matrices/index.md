@@ -160,7 +160,7 @@ algorithme ligne_suivante(l: [entier]) → [entier]:
     l2[-1] ← 1
 
     pour chaque i de [1 .. l2.longueur - 1[:
-        l2[1] ← l[i] + l[i-1]
+        l2[i] ← l[i] + l[i-1]
 
     rendre l2
 ```
@@ -206,14 +206,13 @@ On peut faire mieux en ne calculant que les $k+1$ premiers éléments de chaque 
 
 ```pseudocode
 fonction ligne_suivante(l: [entier], k: entier) → [entier]:
-    m ← min(k, l.longueur + 1)
-    (l2 := [entier]) ← [entier]{longueur: m + 1}
+    (l2 := [entier]) ← [entier]{longueur: min(k + 1, l.longueur + 1)}
 
     l2[0] ← 1
     l2[-1] ← 1
 
-    pour chaque i de [1 .. m]:
-        l2[1] ← l[i] + l[i-1]
+    pour chaque i de [1 .. l.longueur[:
+        l2[i] ← l[i] + l[i-1]
 
     rendre l2
 
@@ -245,16 +244,13 @@ Utilisez le dans `binom(n: entier, k:entier) → entier`{.language-}.
 
 ```pseudocode
 fonction ligne_suivante(l: [entier], n: entier, k: entier) → ∅:
-    l[0] ← 1
-    l[min(n + 1, k)] ← 1
-
     de j=min(n, k) à j=1 par pas de -1:
         l[j] ← l[j] + l[j-1]
 
 algorithme binom(n: entier, k:entier) → entier:
     (l := [entier]) ← [entier]{longueur: k+1}
+    l[:] ← 1
 
-    l[0] ← 1
     pour j dans [0 .. n-1] fois:
        ligne_suivante(l, j, k)
 
@@ -265,6 +261,110 @@ algorithme binom(n: entier, k:entier) → entier:
 {% enddetails  %}
 
 Cette dernière optimisation ne change pas la complexité spatiale en $\mathcal{O}(k)$, elle ne fait que la diminuer par 2. Cette optimisation est cependant significative si $k$ est grand et, surtout, rend l'algorithme très élégant, avec une seule boucle et un seul tableau.
+
+### Code
+
+{% exercice %}
+Codez les différents exercices en python. Vous pourrez vérifier vos algorithmes en testant que $\binom{10}{4} = 210$
+{% endexercice %}
+{% details "corrigé" %}
+```python
+
+
+# V1
+
+def binom_matrice(n):
+
+    matrice = []
+    
+    for i in range(n+1):
+        ligne = [0] * (i+1)
+
+        matrice.append(ligne)
+        for j in range(i+1):
+            if (j == i) or (j == 0):
+                ligne[j] = 1
+            else:
+                précédent = matrice[i-1]
+                ligne[j] = précédent[j-1] + précédent[j]
+
+    return matrice
+
+
+def binom(n, k):
+    matrice = binom_matrice(n)
+
+    return matrice[n][k]
+
+for l in binom_matrice(10):
+    print(" ".join(str(x).rjust(3) for x in l))
+print("nombre 4 parmi 10 :", binom(10, 4))
+
+# deux lignes suffisent 1
+
+def ligne_suivante(l):
+    l2 = [0] * (len(l) + 1)
+
+    l2[0] = 1
+    l2[-1] = 1
+
+    for i in range(1, len(l2)-1):
+        l2[i] = l[i] + l[i-1]
+
+    return l2
+
+
+def binom(n, k):
+    l = [0]
+    for _ in range(n):
+       l = ligne_suivante(l)
+
+    return l[k]
+
+print("nombre 4 parmi 10 :", binom(10, 4))
+
+
+# deux lignes suffisent 2
+
+def ligne_suivante(l, k):
+    l2 = [0] * min(k + 1, len(l) + 1)
+
+    l2[0] = 1
+    l2[-1] = 1
+
+    for i in range(1, len(l)):
+        l2[i] = l[i] + l[i-1]
+
+    return l2
+
+def binom(n, k):
+    l = [0]
+    for _ in range(n):
+       l =ligne_suivante(l, k)
+
+    return l[k]
+
+print("nombre 4 parmi 10 :", binom(10, 4))
+
+
+# une ligne suffit
+
+def ligne_suivante(l, n, k):
+    for j in range(min(n, k), 0, -1):
+        l[j] = l[j] + l[j-1]
+
+def binom(n, k):
+    l = [1] * (k+1)
+
+    for j in range(n):
+       ligne_suivante(l, j, k)
+       print(l)
+
+    return l[k]
+
+print("nombre 4 parmi 10 :", binom(10, 4))
+```
+{% enddetails %}
 
 ## 8 reines
 
@@ -286,19 +386,105 @@ Nous verrons ici un cas un peu plus général consistant à placer $n$ reines su
 
 On modélise l'échiquier par une matrice `E` à $n$ lignes et $n$ colonnes ($n=8$ pour un échiquier traditionnel): `E[i][j]` correspond à la case à l'intersection de la ligne `i` et de la colonne `j`. Cette case est vraie si une reine y est placée et fausse sinon.
 
-{% faire %}
+{% exercice %}
 Créez un algorithme permettant de créer un échiquier $n \times n$ vide.
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
 
-{% faire %}
+```pseudocode
+algorithme échiquier(n: entier) → [[booléen]]:
+    (E := [[booléen]]) ← [[booléen]]{longueur: n}
+
+    pour chaque i de [0 .. n[:
+        E[i] ← [booléen]{longueur: n}
+        E[:] ← Faux
+
+    rendre E
+```
+
+{% enddetails %}
+
+{% exercice %}
 Écrivez une fonction permettant de savoir si on peut placer une reine à la ligne `i`{.language-} et la colonne `j`{.language-} pour un échiquier donné (de taille quelconque). Elle rendra `Vrai`{.language-} si la reine peut être placée et `Faux`{.language-} sinon.
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
 
-{% faire %}
+On regarde les lignes, les colonnes et les diagonales. Il faut faire attention à :
+
+- ne pas regarder la case (i, j)
+- rester dans les bornes de l'échiquier
+
+```pseudocode
+algorithme position_correcte(E: [[booléen]], i: entier, j: entier) → booléen:
+    (n := entier) ← E.longueur
+    k := entier
+
+    pour k dans [0 .. n[:
+        si (k ≠i) ET E[k][j]:
+            rendre Faux
+
+    pour k dans [0 .. n[:
+        si (k ≠ j) ET E[i][k]:
+            rendre Faux
+
+    pour k dans [1 .. n[:
+        si (i + k < n) ET (j + k < n) ET E[i + k][j + k]:
+            rendre Faux
+        si (i + k < n) ET (j - k > -1) ET E[i + k][j - k]:
+            rendre Faux
+        si (i - k > -1) ET (j + k < n) ET E[i - k][j + k]:
+            rendre Faux
+        si (i - k > -1) ET (j - k > -1) ET E[i - k][j - k]:
+            rendre Faux
+        
+    rendre Vrai
+```
+
+{% enddetails %}
+
+
+{% exercice %}
 En déduire Éun algorithme qui, à partir d'un échiquier de taille quelconque $n$, rend `Vrai`{.language-} si l'échiquier résout le problème des 8 reines et `Faux`{.language-} sinon.
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
+
+
+```pseudocode
+algorithme échiquier_correct(E: [[booléen]]) → booléen::
+    (n := entier) ← E.longueur
+
+    pour (i:= entier) de [0 .. n[:
+        pour (j:= entier) de [0 .. n[:
+            si E[i][j] ET (NON position_correcte(E, i, j)):
+                rendre Faux
+        
+    rendre Vrai
+```
+{% enddetails %}
+
 
 ### Solution par énumération naïve
+
+On peut se restreindre aux échiquiers ayant une reine par ligne pour résoudre le problème générons toutes les possibilités :
+
+{% exercice %}
+En utilisant la partie précédente, créez un algorithme récursif qui affiche à l'écran tous les échiquiers de taille $n$ avec exactement 1 reine par ligne et, pour chaque position vous indiquerez si cette position est correcte ou non.
+{% endexercice %}
+{% details "corrigé" %}
+
+{% enddetails %}
+
+> TBD backtracking pour ne générer que celle correcte.
+
+{% exercice %}
+En utilisant la partie précédente, créez un algorithme récursif qui affiche à l'écran tous les échiquiers possibles avec 8 reines (sans répétitions)
+{% endexercice %}
+{% info %}
+Pour évitez les répétition
+{% endinfo %}
+{% details "corrigé" %}
+
+{% enddetails %}
 
 > On teste tout
 > On positionne les 8 reines une à une : 
