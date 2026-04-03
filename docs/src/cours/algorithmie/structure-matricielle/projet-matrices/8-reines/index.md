@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Corrigé
+title: Les 8 reines
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,6 +10,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD
 
-> TBD ajouter code python
+
+
+
+
+
+## Résolution par énumération
+
+> TBD rec (faire comme DS 1 2025 ENS)
+> TBD iteratif
+

@@ -351,8 +351,17 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 {% endlien %}
 {% enddetails %}
 
+
+### Élément majoritaire
+
+> TBD
+> naif
+> tri
+> pile
+
 ## Liste chaînée
 
+> TBD à déplacer plus loin.
 > TBD dire base des algos récursifs.
 > TBD donner le type récursif associé.
 

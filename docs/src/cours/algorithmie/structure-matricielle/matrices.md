@@ -9,9 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-> TBD ici liste de liste. Dire que référence vers des objets, ici des tableaux. Il faut les créer
-
 On peut facilement créer des matrices en combinant des tableaux. Ce type est tellement utilisé en algorithme qu'on le considérera souvent comme un type de base.
 
 Pour cela on utilisera le paradigme suivant :

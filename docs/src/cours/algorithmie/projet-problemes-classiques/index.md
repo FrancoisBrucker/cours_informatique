@@ -20,8 +20,6 @@ Quelques exemples de problèmes algorithmiques classiques car :
 
 [Élément majoritaire](/enseignements/MPCI/programmation-algorithmes/annales/2023-2024/ds-1/ds1_2023_2024.pdf)
 
-> TBD ajouter le Boyer-Moore
-
 ```pseudocode
 val <— T[0]
 Nb <— 1
@@ -40,18 +38,6 @@ for i <— 1 to len(T) - 1 :
 
 {% aller %}
 [Permutations](./permutations){.interne}
-{% endaller %}
-
-## 8 reines
-
-{% info "**Anecdote cocasse**" %}
-Quand le CEA, qui avait financé les travaux, a demandé à Colmerauer un exemple de problème pratique que pouvait résoudre son nouveau langage [Prolog](https://fr.wikipedia.org/wiki/Prolog), il a répondu le problème des 8 reines.
-
-Pas sûr que les deux interlocuteurs aient la même notion de ce qu'était un _"problème pratique"_.
- {% endinfo %}
-
-{% aller %}
-[Les 8 reines](./8-reines){.interne}
 {% endaller %}
 
 ## Autres problèmes

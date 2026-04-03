@@ -661,7 +661,7 @@ DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal
 
 {% aller %}
 
-[Structure matricielle](/cours/algorithmie/structure-matricielle/){.interne}
+[Structures matricielles](/cours/algorithmie/structure-matricielle/){.interne}
 
 {% endaller %}
 
