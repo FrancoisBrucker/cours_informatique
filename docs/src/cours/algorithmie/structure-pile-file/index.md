@@ -355,9 +355,9 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 ### Élément majoritaire
 
 > TBD
-> naif
-> tri
-> pile
+> naif : ils trouvent
+> tri  : ils trouvent
+> pile : on donne l'algorithme et ils prouvent que c'est ok.
 
 ## Liste chaînée
 

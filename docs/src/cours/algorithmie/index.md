@@ -278,7 +278,7 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 Les matrices constituent le premier type composé que l'on peut utiliser sans définir d'autres éléments de pseudocode :
 
 {% aller %}
-[Matricies](structure-matricielle){.interne}
+[Matrices](structure-matricielle){.interne}
 {% endaller %}
 
 ### Structures de données
