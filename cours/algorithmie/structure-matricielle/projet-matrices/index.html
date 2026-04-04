@@ -556,7 +556,7 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Créez un algorithme permettant de créer un échiquier $n \times n$ vide.</p>
+<p>Créez un algorithme de signature <code class="language-">échiquier(n: entier) → [[booléen]]</code> permettant de créer un échiquier $n \times n$ vide.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -590,7 +590,7 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez une fonction permettant de savoir si on peut placer une reine à la ligne <code class="language-">i</code> et la colonne <code class="language-">j</code> pour un échiquier donné (de taille quelconque). Elle rendra <code class="language-">Vrai</code> si la reine peut être placée et <code class="language-">Faux</code> sinon.</p>
+<p>Écrivez un algorithme de signature <code class="language-">position_correcte(E: [[booléen]], i: entier, j: entier) → booléen</code> permettant de savoir si on peut placer une reine à la ligne <code class="language-">i</code> et la colonne <code class="language-">j</code> pour un échiquier donné (de taille quelconque). Elle rendra <code class="language-">Vrai</code> si la reine peut être placée et <code class="language-">Faux</code> sinon.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -644,7 +644,7 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En déduire Éun algorithme qui, à partir d'un échiquier de taille quelconque $n$, rend <code class="language-">Vrai</code> si l'échiquier résout le problème des 8 reines et <code class="language-">Faux</code> sinon.</p>
+<p>Quelle est la complexité de votre algorithme <code class="language-">position_correcte(E: [[booléen]], i: entier, j: entier) → booléen</code> ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -664,7 +664,34 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">booléen</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span><span class="token punctuation">:</span>
+<p>Elle est en $\mathcal{O}(n)$ avec $n$ le nombre de lignes de l'échiquier.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En déduire un algorithme de signature <code class="language-">échiquier_correct(E: [[booléen]]) → booléen</code> qui, à partir d'un échiquier de taille quelconque $n$, rend <code class="language-">Vrai</code> si l'échiquier résout le problème des 8 reines et <code class="language-">Faux</code> sinon.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">booléen</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
     <span class="token punctuation">(</span>n <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> E<span class="token punctuation">.</span>longueur
 
     <span class="token keyword">pour</span> <span class="token punctuation">(</span>i<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">[</span><span class="token punctuation">:</span>
@@ -676,12 +703,10 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 </div>
 </details>     
 </div>
-<h3>Solution par énumération naïve</h3>
-<p>On peut se restreindre aux échiquiers ayant une reine par ligne pour résoudre le problème générons toutes les possibilités :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la partie précédente, créez un algorithme récursif qui affiche à l'écran tous les échiquiers de taille $n$ avec exactement 1 reine par ligne et, pour chaque position vous indiquerez si cette position est correcte ou non.</p>
+<p>Quelle est la complexité de votre algorithme <code class="language-">échiquier_correct(E: [[booléen]]) → booléen</code> ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -701,16 +726,16 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>Elle est en $\mathcal{O}(n^2)$ avec $n$ le nombre de lignes de l'échiquier.</p>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD backtracking pour ne générer que celle correcte.</p>
-</blockquote>
+<h3>Solution par énumération naïve</h3>
+<p>Comme toute solution correcte ne peut contenir plus d'une reine par ligne, on peut se contenter de ne générer que toutes les positions avec exactement 1 reine par ligne.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la partie précédente, créez un algorithme récursif qui affiche à l'écran tous les échiquiers possibles avec 8 reines (sans répétitions)</p>
+<p>Créez un algorithme récursif génère récursivement tous les échiquiers de taille $n$ avec exactement 1 reine par ligne et affiche à l'écran ceux qui sont corrects.</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -718,7 +743,7 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour évitez les répétition</p>
+<p>Vous pourrez créer un algorithme de signature <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code> qui prend en entrée un échiquier <code class="language-">E</code> donné de taille $n$ ayant une reine sur chaque ligne d'indice strictement inférieur à $i$. Cet algorithme vérifie que $E$ est correct si $i\geq n$ et sinon génère les reines de la ligne $i$ et appelle <code class="language-">tous_les_échiquiers_rec(E, i + 1)</code> pour générer les autres</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -738,53 +763,545 @@ Une reine peut prendre toute pièce qui est sur sa ligne, sa colonne ou sur ses 
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">booléen</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>n <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> E<span class="token punctuation">.</span>longueur
+
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">≥</span> n<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">affiche</span> E à l'écran
+        <span class="token keyword">rendre</span> ∅
+    <span class="token keyword">pour</span> <span class="token punctuation">(</span>j <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+        tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+        E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token boolean">Faux</span>
+
+tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>On teste tout
-On positionne les 8 reines une à une :</p>
-<ul>
-<li>ixj pour tous</li>
-<li>en petit train</li>
-</ul>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelles sont les échiquiers corrects à 4 lignes ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre><code>▢ ♕ ▢ ▢     ▢ ▢ ♕ ▢
+▢ ▢ ▢ ♕     ♕ ▢ ▢ ▢
+♕ ▢ ▢ ▢     ▢ ▢ ▢ ♕
+▢ ▢ ♕ ▢     ▢ ♕ ▢ ▢
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de votre algorithme <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code> en supposant que l'affichage se fait en $\mathcal{O}(1)$ ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il génère tous les échiquiers possibles avec 1 reine par ligne, il y en a $n^n$ et les vérifient en $\mathcal{O}(n^2)$. Sa complexité est donc égale à $\mathcal{O}(n^2 \cdot n^n)$.</p>
+<p>On peut le démontrer rigoureusement en résolvant l'équation de complexité satisfaite par l'algorithme, à savoir :</p>
+<div>
+$$
+\begin{cases}
+C(n) = \mathcal{O}(n^2)\\
+C(i) = n \cdot C(i+1)
+\end{cases}
+$$
+</div>
+</div>
+</details>     
+</div>
 <h3>Solution par énumération V2</h3>
-<blockquote>
-<p>on s'arrête lorsque impossible</p>
-</blockquote>
+<p>Il n'est souvent pas nécessaire de générer toutes les $n$ reines avant de savoir si la position est correcte ou non (par exemple dès que l'on a deux reines sur une même colonne) :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant l'algorithme <code class="language-">position_correcte(E: [[booléen]], i: entier, j: entier) → booléen</code> la partie précédente, améliorez l'algorithme <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code> en arrêtant l'ajout de reines dès que la position est incorrecte.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">booléen</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>n <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> E<span class="token punctuation">.</span>longueur
+
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">≥</span> n<span class="token punctuation">:</span>
+        <span class="token keyword">affiche</span> E à l'écran
+        <span class="token keyword">rendre</span> ∅
+    <span class="token keyword">pour</span> <span class="token punctuation">(</span>j <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        
+        <span class="token keyword">si</span> position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+          tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+          E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token boolean">Faux</span>
+
+tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de votre algorithme <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code> en supposant que l'affichage se fait en $\mathcal{O}(1)$ ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On vérifie à chaque positionnement de reines en $\mathcal{O}(i)$, l'équation de complexité satisfaite par l'algorithme est alors :</p>
+<div>
+$$
+\begin{cases}
+C(n) = \mathcal{O}(1)\\
+C(i) = n \mathcal{O}(i) \cdot \cdot C(i+1)
+\end{cases}
+$$
+</div>
+<p>On retrouve notre complexité de $\mathcal{O}(n^2 \cdot n^n)$.</p>
+</div>
+</details>     
+</div>
 <h3>Solution par permutation</h3>
-<p>On peut cependant faire mieux que juste créer tous les échiquiers possibles.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
+<p>On peut cependant faire mieux que juste créer des échiquiers</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que l'on peut représenter le problème des $n$ reines par une permutation du tableau <code class="language-">[0, ..., n-1]</code>.</p>
+<p>Montrez que l'on peut représenter le problème des $n$ reines par une permutation $P$ du tableau <code class="language-">[0, ..., n-1]</code>.</p>
 </div></div>
 
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
 </svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme deux reines ne peuvent partager une même ligne ou une même colonne : chaque ligne et chaque colonne possèdent exactement une reine. Le tableau $P$ de longueur $n$ tel que $P[i]$ corresponde à l'indice de la colonne de la reine de la ligne $i$ est une permutation de <code class="language-">[0, ..., n-1]</code>.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez un algorithme prenant en paramètre une permutation de <code class="language-">[0, ..., n-1]</code> et rendant <code class="language-">Vrai</code> si la permutation est une solution du problème des 8 reines et <code class="language-">Faux</code> sinon.</p>
+<p>Créez l'algorithme <code class="language-">permutation_correcte(P: [entier], i: entier) → booléen</code> qui prend en paramètre une permutation $P$ et un indice de ligne $i$ et qui rend <code>Vrai</code> si la reine à la ligne d'indice $i$ n'est sur aucune diagonales des reine d'indice $j &lt; i$.</p>
 </div></div>
 
-<blockquote>
-<p>TBD donner un algo qui crée une permutation itérativement (en faisant le petit train)</p>
-</blockquote>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
 </svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">permutation_correcte</span><span class="token punctuation">(</span>P<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>n <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> P<span class="token punctuation">.</span>longueur
+
+    <span class="token keyword">pour</span> <span class="token punctuation">(</span>k<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> i<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">≤</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span><span class="token number"> i </span><span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span><span class="token number"> i </span><span class="token operator">+</span> k <span class="token operator">==</span> P<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+        <span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">≤</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token number"> i </span><span class="token operator">-</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">ET</span> <span class="token punctuation">(</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token number"> i </span><span class="token operator">-</span> k <span class="token operator">==</span> P<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+        
+    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez qu'il est inutile d'examiner toutes les permutations et qu'il suffit souvent de connaître le début d'une permutation pour l'invalider. En déduire une méthode de résolution du problème n'examinant pas toutes les permutations.</p>
+<p>Quelle est la complexité de votre algorithme <code class="language-">permutation_correcte(P: [entier], i:entier) → booléen</code>  ?</p>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Elle est clairement en $\mathcal{O}(n^2)$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'algorithme suivant permet de résoudre le problème des $n$ reine. Quelle est sa complexité ?</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">toutes_les_permutations_rec</span><span class="token punctuation">(</span>P<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>n <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> P<span class="token punctuation">.</span>longueur
+
+    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">==</span> n<span class="token punctuation">:</span>
+        affiche_permutation<span class="token punctuation">(</span>P<span class="token punctuation">)</span>
+        return
+    <span class="token keyword">pour</span> <span class="token punctuation">(</span>j<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> dans <span class="token punctuation">[</span>i <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        Si permutation_correcte<span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            toutes_les_permutations_rec<span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+        P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+toutes_les_permutations_rec<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $P$ est une permutation et si les $i-1$ premières reines sont placées dans la permutation, les valeurs de $P[i:]$ contiennent toutes les positions restantes possible pour la reine que l'on doit placer à la ligne d'indice $i$. L'algorithme teste alors toutes les possibilités et ne continue que lorsqu'il a trouvé une position cohérente pour la reine de la ligne d'indice $i$.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la complexité de votre algorithme <code class="language-">toutes_les_permutations_rec(E: [[booléen]], i: entier)</code> en supposant que l'affichage se fait en $\mathcal{O}(1)$ ?</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser le fait que :</p>
+<div>
+$$
+$\sum_{0 \leq i \leq n} i! \leq \sum_{0 \leq i \leq n} n! \leq (n+1)!$
+$$
+</div>>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On vérifie à chaque positionnement de reines en $\mathcal{O}(i)$, l'équation de complexité satisfaite par l'algorithme est alors :</p>
+<div>
+$$
+\begin{cases}
+C(n) = \mathcal{O}(1)\\
+C(i) = (n-i) \mathcal{O}(i) \cdot \cdot C(i+1)
+\end{cases}
+$$
+</div>
+<p>On à alors $C(0) = \mathcal{O}(\sum_{0 \leq i \leq n} i!)$, donc</p>
+<div>
+$$
+C(0) = \mathcal{O}((n+1)!)
+$$
+</div>
+<p>Ce résultat est très bon puisqu'a priori il faut considérer toutes les permutations <strong>et</strong> les vérifier, ce qui nous prendrait $\mathcal{O}(n^2/cdot n!)$ si on vérifiait uniquement à la fin !</p>
+</div>
+</details>     
+</div>
+<h3>Code</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Codez les différents exercices en python. Vérifiez expérimentalement que :</p>
+<ul>
+<li>l'optimisation de l'algorithme <code class="language-">tous_les_échiquiers_rec(E: [[booléen]], i: entier)</code>  est pertinente en pratique</li>
+<li>l'algorithme <code class="language-">toutes_les_permutations_rec(E: [[booléen]], i: entier)</code> est plus rapide</li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez vérifier vos algorithmes en testant qu'il n'y a que 10 échiquiers corrects pour 5 lignes :</p>
+<pre><code>♕ ▢ ▢ ▢ ▢     ♕ ▢ ▢ ▢ ▢     ▢ ♕ ▢ ▢ ▢     ▢ ♕ ▢ ▢ ▢     ▢ ▢ ♕ ▢ ▢
+▢ ▢ ♕ ▢ ▢     ▢ ▢ ▢ ♕ ▢     ▢ ▢ ▢ ♕ ▢     ▢ ▢ ▢ ▢ ♕     ♕ ▢ ▢ ▢ ▢
+▢ ▢ ▢ ▢ ♕     ▢ ♕ ▢ ▢ ▢     ♕ ▢ ▢ ▢ ▢     ▢ ▢ ♕ ▢ ▢     ▢ ▢ ▢ ♕ ▢
+▢ ♕ ▢ ▢ ▢     ▢ ▢ ▢ ▢ ♕     ▢ ▢ ♕ ▢ ▢     ♕ ▢ ▢ ▢ ▢     ▢ ♕ ▢ ▢ ▢
+▢ ▢ ▢ ♕ ▢     ▢ ▢ ♕ ▢ ▢     ▢ ▢ ▢ ▢ ♕     ▢ ▢ ▢ ♕ ▢     ▢ ▢ ▢ ▢ ♕
+
+
+▢ ▢ ♕ ▢ ▢     ▢ ▢ ▢ ♕ ▢     ▢ ▢ ▢ ♕ ▢     ▢ ▢ ▢ ▢ ♕     ▢ ▢ ▢ ▢ ♕
+▢ ▢ ▢ ▢ ♕     ♕ ▢ ▢ ▢ ▢     ▢ ♕ ▢ ▢ ▢     ▢ ♕ ▢ ▢ ▢     ▢ ▢ ♕ ▢ ▢
+▢ ♕ ▢ ▢ ▢     ▢ ▢ ♕ ▢ ▢     ▢ ▢ ▢ ▢ ♕     ▢ ▢ ▢ ♕ ▢     ♕ ▢ ▢ ▢ ▢
+▢ ▢ ▢ ♕ ▢     ▢ ▢ ▢ ▢ ♕     ▢ ▢ ♕ ▢ ▢     ♕ ▢ ▢ ▢ ▢     ▢ ▢ ▢ ♕ ▢
+♕ ▢ ▢ ▢ ▢     ▢ ♕ ▢ ▢ ▢     ♕ ▢ ▢ ▢ ▢     ▢ ▢ ♕ ▢ ▢     ▢ ♕ ▢ ▢ ▢
+</code></pre>
+<p>Et seulement 4 pour 6 lignes :</p>
+<pre><code>▢ ♕ ▢ ▢ ▢ ▢      ▢ ▢ ♕ ▢ ▢ ▢      ▢ ▢ ▢ ♕ ▢ ▢      ▢ ▢ ▢ ▢ ♕ ▢
+▢ ▢ ▢ ♕ ▢ ▢      ▢ ▢ ▢ ▢ ▢ ♕      ♕ ▢ ▢ ▢ ▢ ▢      ▢ ▢ ♕ ▢ ▢ ▢
+▢ ▢ ▢ ▢ ▢ ♕      ▢ ♕ ▢ ▢ ▢ ▢      ▢ ▢ ▢ ▢ ♕ ▢      ♕ ▢ ▢ ▢ ▢ ▢
+♕ ▢ ▢ ▢ ▢ ▢      ▢ ▢ ▢ ▢ ♕ ▢      ▢ ♕ ▢ ▢ ▢ ▢      ▢ ▢ ▢ ▢ ▢ ♕
+▢ ▢ ♕ ▢ ▢ ▢      ♕ ▢ ▢ ▢ ▢ ▢      ▢ ▢ ▢ ▢ ▢ ♕      ▢ ▢ ▢ ♕ ▢ ▢
+▢ ▢ ▢ ▢ ♕ ▢      ▢ ▢ ▢ ♕ ▢ ▢      ▢ ▢ ♕ ▢ ▢ ▢      ▢ ♕ ▢ ▢ ▢ ▢
+
+</code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> échiquier<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        E<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span> <span class="token operator">*</span> n<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> E
+
+<span class="token keyword">def</span> <span class="token function">affiche</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> l <span class="token keyword">in</span> E<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token keyword">and</span> <span class="token string">"♕"</span> <span class="token keyword">or</span> <span class="token string">"▢"</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> l<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+affiche<span class="token punctuation">(</span>échiquier<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">position_correcte</span><span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">!=</span> i<span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">!=</span> j<span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> k <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> k <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> k <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> k <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+E <span class="token operator">=</span> échiquier<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+E <span class="token operator">=</span> échiquier<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
+E<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token keyword">and</span> <span class="token keyword">not</span> position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token boolean">False</span>
+        
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+
+E <span class="token operator">=</span> échiquier<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
+E<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">)</span>
+E<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># V1 : on pose toutes les reines et on vérifie</span>
+
+<span class="token keyword">def</span> tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> i <span class="token operator">==</span> n<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            affiche<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+        tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+        E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># V2 : on pose les reines une à une</span>
+
+<span class="token keyword">def</span> tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> i <span class="token operator">==</span> n<span class="token punctuation">:</span>
+        affiche<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        
+        <span class="token keyword">if</span> position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+            tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+            E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
+
+tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># Permutations</span>
+
+<span class="token keyword">def</span> <span class="token function">permutation_correcte</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&lt;=</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> i <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> i <span class="token operator">+</span> k <span class="token operator">==</span> P<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&lt;=</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> i <span class="token operator">-</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> i <span class="token operator">-</span> k <span class="token operator">==</span> P<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+
+<span class="token keyword">def</span> <span class="token function">affiche_permutation</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    E <span class="token operator">=</span> échiquier<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
+    affiche<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">toutes_les_permutations_rec</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> i <span class="token operator">==</span> n<span class="token punctuation">:</span>
+        affiche_permutation<span class="token punctuation">(</span>P<span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> permutation_correcte<span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            toutes_les_permutations_rec<span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+        P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+toutes_les_permutations_rec<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
 <h3>Généralisation</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -794,19 +1311,78 @@ On positionne les 8 reines une à une :</p>
 <p><a href="https://interstices.info/le-probleme-des-8-reines-et-au-dela/">https://interstices.info/le-probleme-des-8-reines-et-au-dela/</a></p>
 </div></div>
 
-<h2>Multiplication de matrice</h2>
+<h2>Multiplication de matrices</h2>
+<p>Le problème de la multiplication de matrice est un problème intéressant avec une grande histoire :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm">https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm</a></p>
+</div></div>
+
+<p>Nous allons montrer deux algorithmes.</p>
 <h3>Naif</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez l'algorithme naïf (en $\mathcal{O}(n^3)$)</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+</div>
+</details>     
+</div>
 <blockquote>
 <p>TBD algo en n^3</p>
 </blockquote>
 <h3>Strassen</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen">https://fr.wikipedia.org/wiki/Algorithme_de_Strassen</a></li>
+<li><a href="https://www.youtube.com/watch?v=HdysaWNs1g8">https://www.youtube.com/watch?v=HdysaWNs1g8</a></li>
+</ul>
+</div></div>
+
 <blockquote>
-<p>TBD à partir de la multiplication d'entier qu'on a déjà vu
-TBD <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen">https://fr.wikipedia.org/wiki/Algorithme_de_Strassen</a></p>
+<p><a href="https://www.youtube.com/watch?v=leONsS4LiV4">https://www.youtube.com/watch?v=leONsS4LiV4</a></p>
 </blockquote>
+<h3>Code</h3>
+<blockquote>
+<p>python naif et Strassen puis comparaison temps (ref exponentiel)</p>
+</blockquote>
+<h3>On peut faire mieux !</h3>
 <blockquote>
 <p>TBD on peut faire encore mieux.... limite étant n2</p>
 </blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=HdysaWNs1g8">https://www.youtube.com/watch?v=HdysaWNs1g8</a></p>
+</div></div>
+
 
 
 </article>
