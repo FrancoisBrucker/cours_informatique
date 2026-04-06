@@ -1141,7 +1141,7 @@ Quelle est la complexité de cet algorithme.
 La complexité de l'algorithme est en $\Theta(n^2)$ avec $n$ la longueur des 2 entrées.
 {% enddetails %}
 
-#### Karatsuba
+#### <spin id="Karatsuba"></span>Karatsuba
 
 {% lien %}
 [optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba)

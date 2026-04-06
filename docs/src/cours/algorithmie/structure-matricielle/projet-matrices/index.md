@@ -268,102 +268,12 @@ Cette dernière optimisation ne change pas la complexité spatiale en $\mathcal{
 Codez les différents exercices en python. Vous pourrez vérifier vos algorithmes en testant que $\binom{10}{4} = 210$
 {% endexercice %}
 {% details "corrigé" %}
-```python
+
+{% lien %}
+[`pascal.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/pascal.py)
+{% endlien %}
 
 
-# V1
-
-def binom_matrice(n):
-
-    matrice = []
-    
-    for i in range(n+1):
-        ligne = [0] * (i+1)
-
-        matrice.append(ligne)
-        for j in range(i+1):
-            if (j == i) or (j == 0):
-                ligne[j] = 1
-            else:
-                précédent = matrice[i-1]
-                ligne[j] = précédent[j-1] + précédent[j]
-
-    return matrice
-
-
-def binom(n, k):
-    matrice = binom_matrice(n)
-
-    return matrice[n][k]
-
-for l in binom_matrice(10):
-    print(" ".join(str(x).rjust(3) for x in l))
-print("nombre 4 parmi 10 :", binom(10, 4))
-
-# deux lignes suffisent 1
-
-def ligne_suivante(l):
-    l2 = [0] * (len(l) + 1)
-
-    l2[0] = 1
-    l2[-1] = 1
-
-    for i in range(1, len(l2)-1):
-        l2[i] = l[i] + l[i-1]
-
-    return l2
-
-
-def binom(n, k):
-    l = [0]
-    for _ in range(n):
-       l = ligne_suivante(l)
-
-    return l[k]
-
-print("nombre 4 parmi 10 :", binom(10, 4))
-
-
-# deux lignes suffisent 2
-
-def ligne_suivante(l, k):
-    l2 = [0] * min(k + 1, len(l) + 1)
-
-    l2[0] = 1
-    l2[-1] = 1
-
-    for i in range(1, len(l)):
-        l2[i] = l[i] + l[i-1]
-
-    return l2
-
-def binom(n, k):
-    l = [0]
-    for _ in range(n):
-       l =ligne_suivante(l, k)
-
-    return l[k]
-
-print("nombre 4 parmi 10 :", binom(10, 4))
-
-
-# une ligne suffit
-
-def ligne_suivante(l, n, k):
-    for j in range(min(n, k), 0, -1):
-        l[j] = l[j] + l[j-1]
-
-def binom(n, k):
-    l = [1] * (k+1)
-
-    for j in range(n):
-       ligne_suivante(l, j, k)
-       print(l)
-
-    return l[k]
-
-print("nombre 4 parmi 10 :", binom(10, 4))
-```
 {% enddetails %}
 
 ## 8 reines
@@ -722,136 +632,10 @@ Et seulement 4 pour 6 lignes :
 
 {% endinfo %}
 {% details "corrigé" %}
-```python
-def échiquier(n):
-    E = []
-    for _ in range(n):
-        E.append([False] * n)
-    return E
 
-def affiche(E):
-    print()
-    for l in E:
-        print(" ".join((x and "♕" or "▢") for x in l))
-    print()
-
-affiche(échiquier(10))
-
-def position_correcte(E, i, j):
-    n = len(E)
-
-    for k in range(n):
-        if (k != i) and E[k][j]:
-            return False
-
-    for k in range(n):
-        if (k != j) and E[i][k]:
-            return False
-
-    for k in range(1, n):
-        if (i + k < n) and (j + k < n) and E[i + k][j + k]:
-            return False
-        if (i + k < n) and (j - k > -1) and E[i + k][j - k]:
-            return False
-        if (i - k > -1) and (j + k < n) and E[i - k][j + k]:
-            return False
-        if (i - k > -1) and (j - k > -1) and E[i - k][j - k]:
-            return False
-        
-    return True
-
-E = échiquier(8)
-print(position_correcte(E, 4, 6))
-E = échiquier(8)
-E[4][6] = True
-print(position_correcte(E, 4, 6))
-print(position_correcte(E, 4, 7))
-
-def échiquier_correct(E):
-    n = len(E)
-
-    for i in range(n):
-        for j in range(n):
-            if E[i][j] and not position_correcte(E, i, j):
-                return False
-        
-    return True
-
-
-E = échiquier(8)
-E[4][6] = True
-print(échiquier_correct(E))
-E[4][7] = True
-print(échiquier_correct(E))
-
-# V1 : on pose toutes les reines et on vérifie
-
-def tous_les_échiquiers_rec(E, i=0):
-    n = len(E)
-
-    if i == n:
-        if échiquier_correct(E):
-            affiche(E)
-        return
-    for j in range(n):
-        E[i][j] = True
-        tous_les_échiquiers_rec(E, i+1)
-        E[i][j] = False
-
-tous_les_échiquiers_rec(échiquier(4))
-
-# V2 : on pose les reines une à une
-
-def tous_les_échiquiers_rec(E, i=0):
-    n = len(E)
-
-    if i == n:
-        affiche(E)
-        return
-    for j in range(n):
-        
-        if position_correcte(E, i, j):
-            E[i][j] = True
-            tous_les_échiquiers_rec(E, i+1)
-            E[i][j] = False
-
-tous_les_échiquiers_rec(échiquier(5))
-
-
-# Permutations
-
-def permutation_correcte(P, i):
-    n = len(P)
-
-    for k in range(i):
-        if (0 <= P[i] - i + k < n) and (P[i] - i + k == P[k]):
-            return False
-        if (0 <= P[i] + i - k < n) and (P[i] + i - k == P[k]):
-            return False
-        
-    return True
-
-
-def affiche_permutation(P):
-    E = échiquier(len(P))
-    for i in range(len(P)):
-        E[i][P[i]] = True
-    affiche(E)
-
-def toutes_les_permutations_rec(P, i=0):
-    n = len(P)
-
-    if i == n:
-        affiche_permutation(P)
-        return
-    for j in range(i, n):
-        P[i], P[j] = P[j], P[i]
-        if permutation_correcte(P, i):
-            toutes_les_permutations_rec(P, i+1)
-        P[i], P[j] = P[j], P[i]
-
-toutes_les_permutations_rec(list(range(4)))
-```
+{% lien %}
+[`reines.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/reines.py)
+{% endlien %}
 {% enddetails %}
 
 ### Généralisation
@@ -862,40 +646,338 @@ toutes_les_permutations_rec(list(range(4)))
 
 ## Multiplication de matrices
 
-Le problème de la multiplication de matrice est un problème intéressant avec une grande histoire :
+Le problème de la multiplication de matrice est un problème intéressant [avec une grande histoire](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm). Nous allons montrer ici la méthode naïve et le plus célèbre des algorithme, celui de Strassen. Notez qu'actuellement on peut faire mieux.
 
-{% lien %}
-<https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm>
-{% endlien %}
-
-Nous allons montrer deux algorithmes.
-
-### Naif
+### Création
 
 {% exercice %}
-Écrivez l'algorithme naïf (en $\mathcal{O}(n^3)$)
+Écrivez un algorithme de signature `création_matrice(n: entier, m: entier)  → [[entier]]`{.language-} qui crée une matrice à $n$ lignes et $m$ colonnes dont les valeurs valent toutes 0.
 {% endexercice %}
 {% details "corrigé" %}
+
+```pseudocode
+algorithme création_matrice(n: entier, m: entier)  → [[entier]]:
+    M := [[entier]]
+    M  ← [[entier]]{longueur: n}
+    pour i dans [0 .. m[:
+        M[i] ← [entier]{longueur: m}
+        M[i][:] ← 0
+
+    rendre M
+```
+
 {% enddetails %}
-> TBD algo en n^3
+{% exercice %}
+Écrivez un algorithme de signature `extraction_matrice(M: [[entier]], n1: entier, n2: entier, m1: entier, m2: entier)  → [[entier]]`{.language-} qui rend une nouvelle matrice valant `M[n1:n2][m1:m2]`{.language-}
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme extraction_matrice(M: [[entier]], n1: entier, n2: entier, m1: entier, m2: entier)  → [[entier]]:
+    C = création_matrice(n2-n1, m2-m1)
+    pour chaque i de [n1, n2[:
+        pour chaque j de [m1, m2[:
+            C[i][j] = M[i][j]
+    rendre C
+```
+
+{% enddetails %}
+
+### Somme 
+
+{% exercice %}
+Écrivez un algorithme de signature `somme(A: [[entier]], B: [[entier]])  → [[entier]]`{.language-} qui rend une nouvelle matrice valant `A + B`{.language-}
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme somme(A: [[entier]], B: [[entier]])  → [[entier]]:
+    C ← création_matrice(A.longueur, A[0].longueur)
+
+    pour (i:= entier) dans [0 .. C.longueur[:
+        pour (j:= entier) dans [0 .. C[0].longueur[:
+            C[i][j] ← A[i][j] + B[i][j]
+    rendre C
+```
+{% enddetails %}
+
+### Multiplication Naive
+
+{% exercice %}
+Écrivez l'algorithme naïf de la multiplication de deux matrices (sa complexité sera en $\mathcal{O}(n^3)$ avec $n$ le maximum du nombre de ligne et de colonnes dex deux matrices à multiplier). Il devra être de signature 
+Écrivez un algorithme de signature `multiplication(A: [[entier]], B: [[entier]])  → [[entier]]`{.language-}
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme multiplication(A: [[entier]], B: [[entier]]) → [[entier]]:
+    C ← création_matrice(A.longueur, B[0].longueur)
+
+    pour (i:= entier) dans [0 .. C.longueur[:
+        pour (j:= entier) dans [0 .. C[0].longueur[:
+            pour k dans [0 .. B.longueur[:
+                C[i][j] ← C[i][j] + A[i][k] * B[k][j]
+    rendre C
+```
+{% enddetails %}
+
+### Multiplication de matrices carrées
+
+{% exercice %}
+Montrer que pour le cas d'une multiplication de 2 matrices carrées à $n$ lignes, on peut toujours se ramener au cas où les deux matrices on un nombre de lignes égale à une puissance de 2 sans changer la complexité.
+{% endexercice %}
+{% details "corrigé" %}
+
+Si $n$ est un entier, il existe $p$ tel que $ 2^{p-1} < n \leq 2^p$, donc $2^p\leq 2n$. Si $A$ est une matrice carrée à $n$ on peut alors créer la matrice $A'$ à $2^p$ lignes telles que : 
+
+<div>
+$$
+A'=\begin{pmatrix}
+A & 0\\
+0 & 0
+\end{pmatrix}
+$$
+</div>
+
+Et on aura clairement $A \cdot B = (A' \cdot B')[:n][:n]$. Enfin, comme $A'$ a au pire 4 fois plus d'éléments que $A$, les complexités vont rester les même en $\Theta$.
+
+{% enddetails %}
+
+On va donc considérer pour la suite de ces exercices que les matrices carrées ont un nombre de lignes égale à une puissance de 2.
+
+Avant de décrire d'algorithme de Strassen (pour les matrices carrées avec un nombre de lignes égale à une puissance de 2), commençons par en voir le principe en remarquant que l'on peut écrire la multiplication de 2 matrices carrées $A$ et $B$ ainsi :
+
+
+<div>
+$$
+\begin{matrix}
+&
+\begin{pmatrix}
+    B_{11} &  B_{12}\\
+    B_{21} &  B_{22}\\
+\end{pmatrix}
+\\
+\begin{pmatrix}
+    A_{11} &  A_{12}\\
+    A_{21} &  A_{22}\\
+\end{pmatrix}
+&
+\begin{pmatrix}
+    C_{11} &  C_{12}\\
+    C_{21} &  C_{22}\\
+\end{pmatrix}
+\\
+\end{matrix}
+$$
+</div>
+
+Avec $A_{ij}$, $B_{ij}$ et $C_{ij}$ des matrices carrées telles que pour $1\leq i, j \leq 2$ : $C_{ij} = A_{i1} \cdot B_{1j} + A_{i2} \cdot B_{2j}$
+
+{% exercice %}
+Écrivez un algorithme récursif de multiplication de matrices carrées (avec un nombre de lignes égale à une puissance de 2) de signature `multiplication_rec(A: [[entier]], B: [[entier]]) → [[entier]]`{.language-} utilisant les matrices $A_{ij}$, $B_{ij}$ et $C_{ij}$.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme multiplication_rec(A: [[entier]], B: [[entier]]) → [[entier]]:
+    (n := entier) ← A.longueur
+
+    Si n ≤ 1:
+        rendre [[A[0][0] * B[0][0]]]
+    
+    (A11 := [[entier]]) ← [[entier]{longueur: n // 2}]{longueur: n // 2}
+    A11[:][:] ← A[:n //2][:n //2]
+    (A12 := [[entier]]) ← [[entier]{longueur: n // 2}]{longueur: n // 2}
+    A12[:][:] ← A[:n //2][n //2:]
+    (A21 := [[entier]]) ← [[entier]{longueur: n // 2}]{longueur: n // 2}
+    A21[:][:] ← A[n //2:][:n //2]
+    (A22 := [[entier]]) ← [[entier]{longueur: n // 2}]{longueur: n // 2}
+    A22[:][:] ← A[n //2:][n //2:]
+
+    (B11 := [[entier]]) ← [[entier]{longueur: n // 2}]{longueur: n // 2}
+    B11[:][:] ← B[:n //2][:n //2]
+    (B12 := [[entier]]) ← [[entier]{longueur: n // 2}]{longueur: n // 2}
+    B12[:][:] ← B[:n //2][n //2:]
+    (B21 := [[entier]]) ← [[entier]{longueur: n // 2}]{longueur: n // 2}
+    B21[:][:] ← B[n //2:][:n //2]
+    (B22 := [[entier]]) ← [[entier]{longueur: n // 2}]{longueur: n // 2}
+    B22[:][:] ← B[n //2:][n //2:]
+
+    (C11 := [[entier]]) ← somme(multiplication_rec(A11, B11), multiplication_rec(A12, B21))
+    (C12 := [[entier]]) ← somme(multiplication_rec(A11, B12), multiplication_rec(A12, B22))
+    (C21 := [[entier]]) ← somme(multiplication_rec(A21, B11), multiplication_rec(A22, B21))
+    (C22 := [[entier]]) ← somme(multiplication_rec(A21, B12), multiplication_rec(A22, B22))
+
+    (C := [[entier]]) ← [[entier]{longueur: n}]{longueur: n}
+    C[:n // 2][:n // 2] ← C11[:][:]
+    C[:n // 2][n // 2:] ← C12[:][:]
+    C[n // 2]:[:n // 2] ← C21[:][:]
+    C[n // 2:][n // 2:] ← C22[:][:]
+
+    rendre C
+```
+{% enddetails %}
+{% exercice %}
+Montrez que la complexité de cet algorithme satisfait l'équation de recurrence :
+
+<div>
+$$
+\begin{cases}
+C(1) = \Theta(1)\\
+C(n) = \Theta(n^2) + 8 C(n // 2)
+\end{cases}
+$$
+</div>
+
+
+En conclure que sa complexité est en $Theta(n^3)$ où $n$ est le nombre de lignes des matrices.
+{% endexercice %}
+{% details "corrigé" %}
+L'équation de complexité est claire car toutes les opérations de création et de some sont en $\Theta(n^2)$ et qu'il y a 8 appels récursifs. En triturant cette équation on trouve que pour tout $i$ on a :
+
+<div>
+$$
+\begin{cases}
+C(1) = \Theta(1)\\
+C(n) = i \cdot \Theta(n^2) + 8^i C(n // 2^i)
+\end{cases}
+$$
+</div>
+
+Et donc au final 
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \Theta(\ln(n)n^2) + 8^{\log_2(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + 2^{3\log_2(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + (2^{\log_2(n)})^3\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + n^3\Theta(1)\\
+&=& \Theta(n^3)\\
+\end{array}
+$$
+</div>
+
+{% enddetails %}
+
+Pour gagner en complexité il faut diminuer le nombre d'appels récursif et c'est exactement ce que fait l'algorithme de Strassen avec une astuce de calcul comme on les aime.
 
 ### Strassen
 
 {% lien %}
-- <https://fr.wikipedia.org/wiki/Algorithme_de_Strassen>
-- <https://www.youtube.com/watch?v=HdysaWNs1g8>
+[page wikipédia sur l'algorithme Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen)
+
 {% endlien %}
 
-> <https://www.youtube.com/watch?v=leONsS4LiV4>
+L'astuce qu'a utilisé Strassen est peu ou prou la même que celle utilisée par [Karastuba pour multiplier des entiers](../../projet-complexité-problème/#Karastuba){.interne}. En reprenant les matrices $A_{ij}$ et $B_{ij}$ précédente, il montre que l'on peut créer les matrices $C_{ij}$ en passant par 7 matrices $M_k$ :
+
+<div>
+$$
+\begin{array}{lcl}
+M_1 & =& (A_{11} + A_{22}) \cdot (B_{11} + B_{22}) \\
+M_2 & =& (A_{21} + A_{22}) \cdot B_{11} \\
+M_3 & =& A_{11} \cdot (B_{12} - B_{22}) \\
+M_4 & =& A_{22} \cdot (B_{21} - B_{11}) \\
+M_5 & =& (A_{11} + A_{12}) \cdot B_{22} \\
+M_6 & =& (A_{21} - A_{11}) \cdot (B_{11} + B_{12}) \\
+M_7 & =& (A_{12} - A_{22}) \cdot (B_{21} + B_{22}) 
+\end{array}
+$$
+</div>
+
+Qui permettent d'écrire les matrices $C_{ij}$ :
+
+<div>
+$$
+\begin{array}{lcl}
+C_{11} & =& M_1 + M_4 - M_5 + M_7\\
+C_{12} & =& M_3 + M_5\\
+C_{21} & =& M_2 + M_4\\
+C_{22} & =& M_1 - M_2 - M_3 + M_6\\
+\end{array}
+$$
+</div>
+
+{% exercice %}
+Montrer qu'il suffit de 7 récursion pour écrire l'algorithme de Strassen. En déduire l'équation de complexité que satisfait l'algorithme de Strassen.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut une récursion pur chaque matrice M. Comme le reste des opérations est toujours en $\Theta(n^2)$, on obtient l'équation de récursion :
+
+<div>
+$$
+\begin{cases}
+C(1) = \Theta(1)\\
+C(n) = \Theta(n^2) + & \cdot C(n // 2)
+\end{cases}
+$$
+</div>
+
+{% enddetails %}
+{% exercice %}
+Montrer que la complexité de l'algorithme de Strassen est en $\mathcal{O}(n^{2.807}).
+{% endexercice %}
+{% details "corrigé" %}
+
+En triturant l'équation de récursion on obtient :
+
+<div>
+$$
+\begin{cases}
+C(1) = \Theta(1)\\
+C(n) = i \cdot \Theta(n^2) + 7^i C(n // 2^i)
+\end{cases}
+$$
+</div>
+
+Et donc au final 
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \Theta(\ln(n)n^2) + 7^{\log_2(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + e^{\ln(7)\log_2(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + e^{\ln(7)\ln(n)/\ln(2)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + e^{\log_2(7)\ln(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + n^{\log_2(7)}\Theta(1)\\
+&=& \mathcal{O}(n^{2.807})\\
+\end{array}
+$$
+</div>
+
+L'astuce qui consiste à remarquer que $p^{\log_k(q)} = q^{\log_k(p)}$ est à garder sous le coude. Cela ne sert pas tout le temps, mais quand ça sert, ça sert.
+
+{% enddetails %}
 
 ### Code
 
-> python naif et Strassen puis comparaison temps (ref exponentiel)
+{% exercice %}
+implémentez l'algorithme de Strassen et comparez son exécution à une multiplication naive pur des puissances de 2 allant jusqu'à 1024. Conclusion ?
+{% endexercice %}
+{% details "corrigé" %}
+
+{% lien %}
+[`strassen.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/strassen.py)
+{% endlien %}
+
+
+La création des différentes matrices rend l'algorithme bien plus gourmand que l'algorithme naïf ! C'est pourquoi l'algorithme de Strassen n'est utilisé que pour de grandes matrices et avec d'autres optimisation que ce que l'on a pu faire.
+{% enddetails %}
+
+### Généralisation
+
+> TBD
+
+- Matrices non carrées : On peut les puissances de 2 supérieures en ligne et en colonnes.
+- Inverse de matrices
 
 ### On peut faire mieux !
 
 > TBD on peut faire encore mieux.... limite étant n2
 
 {% lien %}
-<https://www.youtube.com/watch?v=HdysaWNs1g8>
+[histoire des différents algorithmes](https://www.youtube.com/watch?v=xsZk3c7Oxyw)
+[Une expérimentation par LaurieWired](https://www.youtube.com/watch?v=HdysaWNs1g8)
 {% endlien %}
