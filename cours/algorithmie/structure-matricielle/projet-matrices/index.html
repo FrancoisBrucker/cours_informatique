@@ -433,103 +433,17 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
-
-<span class="token comment"># V1</span>
-
-<span class="token keyword">def</span> <span class="token function">binom_matrice</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    matrice <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        ligne <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-
-        matrice<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                ligne<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                précédent <span class="token operator">=</span> matrice<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-                ligne<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> précédent<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> précédent<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
-
-    <span class="token keyword">return</span> matrice
-
-
-<span class="token keyword">def</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    matrice <span class="token operator">=</span> binom_matrice<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> matrice<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span>
-
-<span class="token keyword">for</span> l <span class="token keyword">in</span> binom_matrice<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">.</span>rjust<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> l<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"nombre 4 parmi 10 :"</span><span class="token punctuation">,</span> binom<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token comment"># deux lignes suffisent 1</span>
-
-<span class="token keyword">def</span> <span class="token function">ligne_suivante</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    l2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-    l2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-    l2<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>l2<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        l2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> l<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> l<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">return</span> l2
-
-
-<span class="token keyword">def</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-       l <span class="token operator">=</span> ligne_suivante<span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> l<span class="token punctuation">[</span>k<span class="token punctuation">]</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"nombre 4 parmi 10 :"</span><span class="token punctuation">,</span> binom<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-<span class="token comment"># deux lignes suffisent 2</span>
-
-<span class="token keyword">def</span> <span class="token function">ligne_suivante</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    l2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">min</span><span class="token punctuation">(</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-    l2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-    l2<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        l2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> l<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> l<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">return</span> l2
-
-<span class="token keyword">def</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-       l <span class="token operator">=</span>ligne_suivante<span class="token punctuation">(</span>l<span class="token punctuation">,</span> k<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> l<span class="token punctuation">[</span>k<span class="token punctuation">]</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"nombre 4 parmi 10 :"</span><span class="token punctuation">,</span> binom<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-<span class="token comment"># une ligne suffit</span>
-
-<span class="token keyword">def</span> <span class="token function">ligne_suivante</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> n<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">min</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        l<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> l<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> l<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-<span class="token keyword">def</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-       ligne_suivante<span class="token punctuation">(</span>l<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k<span class="token punctuation">)</span>
-       <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> l<span class="token punctuation">[</span>k<span class="token punctuation">]</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"nombre 4 parmi 10 :"</span><span class="token punctuation">,</span> binom<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/pascal.py"><code class="fichier">pascal.py</code></a></p>
+</div></div>
 </div>
-</details>     
-</div>
+</details></div>
+     
+
 <h2>8 reines</h2>
 <blockquote>
 <ul>
@@ -1171,137 +1085,17 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> échiquier<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    E <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        E<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span> <span class="token operator">*</span> n<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> E
-
-<span class="token keyword">def</span> <span class="token function">affiche</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> l <span class="token keyword">in</span> E<span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token keyword">and</span> <span class="token string">"♕"</span> <span class="token keyword">or</span> <span class="token string">"▢"</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> l<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-affiche<span class="token punctuation">(</span>échiquier<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">position_correcte</span><span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">!=</span> i<span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-
-    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">!=</span> j<span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-
-    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> k <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> k <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>j <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> k <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>j <span class="token operator">-</span> k <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">and</span> E<span class="token punctuation">[</span>i <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-        
-    <span class="token keyword">return</span> <span class="token boolean">True</span>
-
-E <span class="token operator">=</span> échiquier<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-E <span class="token operator">=</span> échiquier<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
-E<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token keyword">and</span> <span class="token keyword">not</span> position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">return</span> <span class="token boolean">False</span>
-        
-    <span class="token keyword">return</span> <span class="token boolean">True</span>
-
-
-E <span class="token operator">=</span> échiquier<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span>
-E<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">)</span>
-E<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token comment"># V1 : on pose toutes les reines et on vérifie</span>
-
-<span class="token keyword">def</span> tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>
-
-    <span class="token keyword">if</span> i <span class="token operator">==</span> n<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> échiquier_correct<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            affiche<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
-        <span class="token keyword">return</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-        tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-        E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
-
-tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token comment"># V2 : on pose les reines une à une</span>
-
-<span class="token keyword">def</span> tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>E<span class="token punctuation">)</span>
-
-    <span class="token keyword">if</span> i <span class="token operator">==</span> n<span class="token punctuation">:</span>
-        affiche<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
-        <span class="token keyword">return</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        
-        <span class="token keyword">if</span> position_correcte<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-            tous_les_échiquiers_rec<span class="token punctuation">(</span>E<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-            E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
-
-tous_les_échiquiers_rec<span class="token punctuation">(</span>échiquier<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-
-<span class="token comment"># Permutations</span>
-
-<span class="token keyword">def</span> <span class="token function">permutation_correcte</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&lt;=</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> i <span class="token operator">+</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> i <span class="token operator">+</span> k <span class="token operator">==</span> P<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">&lt;=</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> i <span class="token operator">-</span> k <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> i <span class="token operator">-</span> k <span class="token operator">==</span> P<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-        
-    <span class="token keyword">return</span> <span class="token boolean">True</span>
-
-
-<span class="token keyword">def</span> <span class="token function">affiche_permutation</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    E <span class="token operator">=</span> échiquier<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        E<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">True</span>
-    affiche<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">toutes_les_permutations_rec</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
-
-    <span class="token keyword">if</span> i <span class="token operator">==</span> n<span class="token punctuation">:</span>
-        affiche_permutation<span class="token punctuation">(</span>P<span class="token punctuation">)</span>
-        <span class="token keyword">return</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-        <span class="token keyword">if</span> permutation_correcte<span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            toutes_les_permutations_rec<span class="token punctuation">(</span>P<span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
-        P<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> P<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-
-toutes_les_permutations_rec<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/reines.py"><code class="fichier">reines.py</code></a></p>
+</div></div>
 </div>
-</details>     
-</div>
+</details></div>
+     
+
 <h3>Généralisation</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -1312,21 +1106,12 @@ toutes_les_permutations_rec<span class="token punctuation">(</span><span class="
 </div></div>
 
 <h2>Multiplication de matrices</h2>
-<p>Le problème de la multiplication de matrice est un problème intéressant avec une grande histoire :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm">https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm</a></p>
-</div></div>
-
-<p>Nous allons montrer deux algorithmes.</p>
-<h3>Naif</h3>
+<p>Le problème de la multiplication de matrice est un problème intéressant <a href="https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm">avec une grande histoire</a>. Nous allons montrer ici la méthode naïve et le plus célèbre des algorithme, celui de Strassen. Notez qu'actuellement on peut faire mieux.</p>
+<h3>Création</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez l'algorithme naïf (en $\mathcal{O}(n^3)$)</p>
+<p>Écrivez un algorithme de signature <code class="language-">création_matrice(n: entier, m: entier)  → [[entier]]</code> qui crée une matrice à $n$ lignes et $m$ colonnes dont les valeurs valent toutes 0.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1346,31 +1131,462 @@ toutes_les_permutations_rec<span class="token punctuation">(</span><span class="
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> création_matrice<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> m<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    M <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    M  <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> n<span class="token punctuation">}</span>
+    <span class="token keyword">pour</span><span class="token number"> i </span>dans <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        M<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> m<span class="token punctuation">}</span>
+        M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">rendre</span> M</code></pre>
 </div>
 </details>     
 </div>
-<blockquote>
-<p>TBD algo en n^3</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme de signature <code class="language-">extraction_matrice(M: [[entier]], n1: entier, n2: entier, m1: entier, m2: entier)  → [[entier]]</code> qui rend une nouvelle matrice valant <code class="language-">M[n1:n2][m1:m2]</code></p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">extraction_matrice</span><span class="token punctuation">(</span>M<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n1<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n2<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> m1<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> m2<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    C <span class="token operator">=</span> création_matrice<span class="token punctuation">(</span>n2<span class="token operator">-</span>n1<span class="token punctuation">,</span> m2<span class="token operator">-</span>m1<span class="token punctuation">)</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>n1<span class="token punctuation">,</span> n2<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span>m1<span class="token punctuation">,</span> m2<span class="token punctuation">[</span><span class="token punctuation">:</span>
+            C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+    <span class="token keyword">rendre</span> C</code></pre>
+</div>
+</details>     
+</div>
+<h3>Somme</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme de signature <code class="language-">somme(A: [[entier]], B: [[entier]])  → [[entier]]</code> qui rend une nouvelle matrice valant <code class="language-">A + B</code></p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">somme</span><span class="token punctuation">(</span>A<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> B<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    C <span class="token operator">←</span> création_matrice<span class="token punctuation">(</span>A<span class="token punctuation">.</span>longueur<span class="token punctuation">,</span> A<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>longueur<span class="token punctuation">)</span>
+
+    <span class="token keyword">pour</span> <span class="token punctuation">(</span>i<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> dans <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> C<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour</span> <span class="token punctuation">(</span>j<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> dans <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> C<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+            C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> A<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> B<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+    <span class="token keyword">rendre</span> C</code></pre>
+</div>
+</details>     
+</div>
+<h3>Multiplication Naive</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez l'algorithme naïf de la multiplication de deux matrices (sa complexité sera en $\mathcal{O}(n^3)$ avec $n$ le maximum du nombre de ligne et de colonnes dex deux matrices à multiplier). Il devra être de signature
+Écrivez un algorithme de signature <code class="language-">multiplication(A: [[entier]], B: [[entier]])  → [[entier]]</code></p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">multiplication</span><span class="token punctuation">(</span>A<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> B<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    C <span class="token operator">←</span> création_matrice<span class="token punctuation">(</span>A<span class="token punctuation">.</span>longueur<span class="token punctuation">,</span> B<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>longueur<span class="token punctuation">)</span>
+
+    <span class="token keyword">pour</span> <span class="token punctuation">(</span>i<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> dans <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> C<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour</span> <span class="token punctuation">(</span>j<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> dans <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> C<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+            <span class="token keyword">pour</span> k dans <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> B<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+                C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> A<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">*</span> B<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+    <span class="token keyword">rendre</span> C</code></pre>
+</div>
+</details>     
+</div>
+<h3>Multiplication de matrices carrées</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que pour le cas d'une multiplication de 2 matrices carrées à $n$ lignes, on peut toujours se ramener au cas où les deux matrices on un nombre de lignes égale à une puissance de 2 sans changer la complexité.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si $n$ est un entier, il existe $p$ tel que $ 2^{p-1} &lt; n \leq 2^p$, donc $2^p\leq 2n$. Si $A$ est une matrice carrée à $n$ on peut alors créer la matrice $A'$ à $2^p$ lignes telles que :</p>
+<div>
+$$
+A'=\begin{pmatrix}
+A & 0\\
+0 & 0
+\end{pmatrix}
+$$
+</div>
+<p>Et on aura clairement $A \cdot B = (A' \cdot B')[:n][:n]$. Enfin, comme $A'$ a au pire 4 fois plus d'éléments que $A$, les complexités vont rester les même en $\Theta$.</p>
+</div>
+</details>     
+</div>
+<p>On va donc considérer pour la suite de ces exercices que les matrices carrées ont un nombre de lignes égale à une puissance de 2.</p>
+<p>Avant de décrire d'algorithme de Strassen (pour les matrices carrées avec un nombre de lignes égale à une puissance de 2), commençons par en voir le principe en remarquant que l'on peut écrire la multiplication de 2 matrices carrées $A$ et $B$ ainsi :</p>
+<div>
+$$
+\begin{matrix}
+&
+\begin{pmatrix}
+    B_{11} &  B_{12}\\
+    B_{21} &  B_{22}\\
+\end{pmatrix}
+\\
+\begin{pmatrix}
+    A_{11} &  A_{12}\\
+    A_{21} &  A_{22}\\
+\end{pmatrix}
+&
+\begin{pmatrix}
+    C_{11} &  C_{12}\\
+    C_{21} &  C_{22}\\
+\end{pmatrix}
+\\
+\end{matrix}
+$$
+</div>
+<p>Avec $A_{ij}$, $B_{ij}$ et $C_{ij}$ des matrices carrées telles que pour $1\leq i, j \leq 2$ : $C_{ij} = A_{i1} \cdot B_{1j} + A_{i2} \cdot B_{2j}$</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez un algorithme récursif de multiplication de matrices carrées (avec un nombre de lignes égale à une puissance de 2) de signature <code class="language-">multiplication_rec(A: [[entier]], B: [[entier]]) → [[entier]]</code> utilisant les matrices $A_{ij}$, $B_{ij}$ et $C_{ij}$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">multiplication_rec</span><span class="token punctuation">(</span>A<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> B<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>n <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> A<span class="token punctuation">.</span>longueur
+
+    Si<span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>A<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> B<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+    
+    <span class="token punctuation">(</span>A11 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    A11<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> A<span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>A12 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    A12<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> A<span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>A21 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    A21<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> A<span class="token punctuation">[</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>A22 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    A22<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> A<span class="token punctuation">[</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+    <span class="token punctuation">(</span>B11 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    B11<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> B<span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>B12 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    B12<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> B<span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>B21 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    B21<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> B<span class="token punctuation">[</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>B22 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">}</span>
+    B22<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> B<span class="token punctuation">[</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n <span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+    <span class="token punctuation">(</span>C11 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> somme<span class="token punctuation">(</span>multiplication_rec<span class="token punctuation">(</span>A11<span class="token punctuation">,</span> B11<span class="token punctuation">)</span><span class="token punctuation">,</span> multiplication_rec<span class="token punctuation">(</span>A12<span class="token punctuation">,</span> B21<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">(</span>C12 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> somme<span class="token punctuation">(</span>multiplication_rec<span class="token punctuation">(</span>A11<span class="token punctuation">,</span> B12<span class="token punctuation">)</span><span class="token punctuation">,</span> multiplication_rec<span class="token punctuation">(</span>A12<span class="token punctuation">,</span> B22<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">(</span>C21 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> somme<span class="token punctuation">(</span>multiplication_rec<span class="token punctuation">(</span>A21<span class="token punctuation">,</span> B11<span class="token punctuation">)</span><span class="token punctuation">,</span> multiplication_rec<span class="token punctuation">(</span>A22<span class="token punctuation">,</span> B21<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">(</span>C22 <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> somme<span class="token punctuation">(</span>multiplication_rec<span class="token punctuation">(</span>A21<span class="token punctuation">,</span> B12<span class="token punctuation">)</span><span class="token punctuation">,</span> multiplication_rec<span class="token punctuation">(</span>A22<span class="token punctuation">,</span> B22<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">(</span>C <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> n<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> n<span class="token punctuation">}</span>
+    C<span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> C11<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+    C<span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> C12<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+    C<span class="token punctuation">[</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">:</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">←</span> C21<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+    C<span class="token punctuation">[</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> C22<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">rendre</span> C</code></pre>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la complexité de cet algorithme satisfait l'équation de recurrence :</p>
+<div>
+$$
+\begin{cases}
+C(1) = \Theta(1)\\
+C(n) = \Theta(n^2) + 8 C(n // 2)
+\end{cases}
+$$
+</div>
+<p>En conclure que sa complexité est en $Theta(n^3)$ où $n$ est le nombre de lignes des matrices.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'équation de complexité est claire car toutes les opérations de création et de some sont en $\Theta(n^2)$ et qu'il y a 8 appels récursifs. En triturant cette équation on trouve que pour tout $i$ on a :</p>
+<div>
+$$
+\begin{cases}
+C(1) = \Theta(1)\\
+C(n) = i \cdot \Theta(n^2) + 8^i C(n // 2^i)
+\end{cases}
+$$
+</div>
+<p>Et donc au final</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \Theta(\ln(n)n^2) + 8^{\log_2(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + 2^{3\log_2(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + (2^{\log_2(n)})^3\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + n^3\Theta(1)\\
+&=& \Theta(n^3)\\
+\end{array}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>Pour gagner en complexité il faut diminuer le nombre d'appels récursif et c'est exactement ce que fait l'algorithme de Strassen avec une astuce de calcul comme on les aime.</p>
 <h3>Strassen</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen">https://fr.wikipedia.org/wiki/Algorithme_de_Strassen</a></li>
-<li><a href="https://www.youtube.com/watch?v=HdysaWNs1g8">https://www.youtube.com/watch?v=HdysaWNs1g8</a></li>
-</ul>
+<p><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen">page wikipédia sur l'algorithme Strassen</a></p>
 </div></div>
 
-<blockquote>
-<p><a href="https://www.youtube.com/watch?v=leONsS4LiV4">https://www.youtube.com/watch?v=leONsS4LiV4</a></p>
-</blockquote>
+<p>L'astuce qu'a utilisé Strassen est peu ou prou la même que celle utilisée par <a href="../../projet-complexit%C3%A9-probl%C3%A8me/#Karastuba" class="interne">Karastuba pour multiplier des entiers</a>. En reprenant les matrices $A_{ij}$ et $B_{ij}$ précédente, il montre que l'on peut créer les matrices $C_{ij}$ en passant par 7 matrices $M_k$ :</p>
+<div>
+$$
+\begin{array}{lcl}
+M_1 & =& (A_{11} + A_{22}) \cdot (B_{11} + B_{22}) \\
+M_2 & =& (A_{21} + A_{22}) \cdot B_{11} \\
+M_3 & =& A_{11} \cdot (B_{12} - B_{22}) \\
+M_4 & =& A_{22} \cdot (B_{21} - B_{11}) \\
+M_5 & =& (A_{11} + A_{12}) \cdot B_{22} \\
+M_6 & =& (A_{21} - A_{11}) \cdot (B_{11} + B_{12}) \\
+M_7 & =& (A_{12} - A_{22}) \cdot (B_{21} + B_{22}) 
+\end{array}
+$$
+</div>
+<p>Qui permettent d'écrire les matrices $C_{ij}$ :</p>
+<div>
+$$
+\begin{array}{lcl}
+C_{11} & =& M_1 + M_4 - M_5 + M_7\\
+C_{12} & =& M_3 + M_5\\
+C_{21} & =& M_2 + M_4\\
+C_{22} & =& M_1 - M_2 - M_3 + M_6\\
+\end{array}
+$$
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer qu'il suffit de 7 récursion pour écrire l'algorithme de Strassen. En déduire l'équation de complexité que satisfait l'algorithme de Strassen.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut une récursion pur chaque matrice M. Comme le reste des opérations est toujours en $\Theta(n^2)$, on obtient l'équation de récursion :</p>
+<div>
+$$
+\begin{cases}
+C(1) = \Theta(1)\\
+C(n) = \Theta(n^2) + & \cdot C(n // 2)
+\end{cases}
+$$
+</div>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que la complexité de l'algorithme de Strassen est en $\mathcal{O}(n^{2.807}).</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>En triturant l'équation de récursion on obtient :</p>
+<div>
+$$
+\begin{cases}
+C(1) = \Theta(1)\\
+C(n) = i \cdot \Theta(n^2) + 7^i C(n // 2^i)
+\end{cases}
+$$
+</div>
+<p>Et donc au final</p>
+<div>
+$$
+\begin{array}{lcl}
+C(n) &=& \Theta(\ln(n)n^2) + 7^{\log_2(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + e^{\ln(7)\log_2(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + e^{\ln(7)\ln(n)/\ln(2)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + e^{\log_2(7)\ln(n)}\Theta(1)\\
+&=& \Theta(\ln(n)n^2) + n^{\log_2(7)}\Theta(1)\\
+&=& \mathcal{O}(n^{2.807})\\
+\end{array}
+$$
+</div>
+<p>L'astuce qui consiste à remarquer que $p^{\log_k(q)} = q^{\log_k(p)}$ est à garder sous le coude. Cela ne sert pas tout le temps, mais quand ça sert, ça sert.</p>
+</div>
+</details>     
+</div>
 <h3>Code</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>implémentez l'algorithme de Strassen et comparez son exécution à une multiplication naive pur des puissances de 2 allant jusqu'à 1024. Conclusion ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/strassen.py"><code class="fichier">strassen.py</code></a></p>
+</div></div>
+</div>
+<p>La création des différentes matrices rend l'algorithme bien plus gourmand que l'algorithme naïf ! C'est pourquoi l'algorithme de Strassen n'est utilisé que pour de grandes matrices et avec d'autres optimisation que ce que l'on a pu faire.</p>
+</details></div>
+     
+
+<h3>Généralisation</h3>
 <blockquote>
-<p>python naif et Strassen puis comparaison temps (ref exponentiel)</p>
+<p>TBD</p>
 </blockquote>
+<ul>
+<li>Matrices non carrées : On peut les puissances de 2 supérieures en ligne et en colonnes.</li>
+<li>Inverse de matrices</li>
+</ul>
 <h3>On peut faire mieux !</h3>
 <blockquote>
 <p>TBD on peut faire encore mieux.... limite étant n2</p>
@@ -1380,7 +1596,8 @@ toutes_les_permutations_rec<span class="token punctuation">(</span><span class="
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=HdysaWNs1g8">https://www.youtube.com/watch?v=HdysaWNs1g8</a></p>
+<p><a href="https://www.youtube.com/watch?v=xsZk3c7Oxyw">histoire des différents algorithmes</a>
+<a href="https://www.youtube.com/watch?v=HdysaWNs1g8">Une expérimentation par LaurieWired</a></p>
 </div></div>
 
 
