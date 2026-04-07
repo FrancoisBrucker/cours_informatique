@@ -15,62 +15,99 @@ Cette structure utilise de façon sous-jacente une [fonctions de hachage](../fon
 
 ## Fonction de hachage utilisée
 
-Dans tout ce qui suit on considérera uniquement des données représentés par un tableau binaire. Ceci permettra de considérer que l'on peut appliquer ses fonctions à n'importe quel type de donnée via leur représentation binaire.
 
-Nos fonctions de hachage seront donc dans toutes leurs généralités de type :
+On supposera l'existence de fonction de hachage :
+
+<div>
+$$
+f: \mathcal{K} \rightarrow [0\mathrel{ {.}\,{.} } m[
+$$
+</div>
+
+Où $\mathcal{K}$ sera l'ensemble des objets de type $K$. Comme on va les utiliser dans des algorithmes, ces fonctions auraient comme propriétés :
+
+- d'être calculable : on peut leur associer un algorithme `f(d: K) → entier`{.language-},
+- d'être rapidement calculable : de complexité linéaire dans la taille de $d$.
+- d'être [utiles](../fonctions-hash/#définition-hachage-utile){.interne}.
+
+
+{% info %}
+
+En pratique,  puisque tout objet informatique peut être représenté une suite de bits, les fonction classiquement utilisées sont de type :
 
 <div>
 $$
 f: \{0, 1\}^\star \rightarrow [0\mathrel{ {.}\,{.} } m[
 $$
 </div>
-
-Puisqu'utilisés dans un algorithme :
-
-- on doit pouvoir les calculer : on peut leur associer un algorithme `f(d: [bit]) → entier`{.language-},
-- ce calcul doit être rapide : de complexité linéaire $\mathcal{O}(d.\mbox{\small longueur})$
-
-De plus, pour que tout se passe bien en moyenne on supposera les supposera [utiles](../fonctions-hash/#définition-hachage-utile){.interne}.
+{% endinfo %}
 
 ## Principe
 
 Le squelette de la structure de dictionnaire est la suivante :
 
 ```pseudocode
-structure Dictionaire<V>:
-    attributs:
-        T: [V] ← tableau de longueur m
-    méthodes:
-        fonction f(clé: [bit]) → entier  # fonction de hachage utile de C dans [0, m[
+structure Dictionnaire<K, V>:
+    T: [V]<longueur: m>  ← [∅ .. ∅]  # tableau de m entrées toutes vies
 
-        fonction get(clé: [bit]) → V:  # valeur ← self[clé] = valeur ← self.get(clé)
-            rendre T[f(clé)]
-        fonction set(clé: [bit], valeur: V) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
-            T[f(clé)] ← valeur
+méthode (d: Dictionnaire<K, V>) f(clé: K) → [0 .. m[ 
+
+méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← self[clé] = valeur ← self.get(clé)
+    rendre d.T[d.f(clé)]
+méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
+    d.T[d.f(clé)] ← valeur
 
 ```
 
-{% info %}
-On utilise [le même abus que pour les listes](../../structure-liste/#structure-getter-setter){.interne} : pour un dictionnaire `d`{.language-} on écrira toujours `d[clé]`{.language-} à la place de `d.get(clé)`{.language-} ou de `d.set(clé, valeur)`{.language-}.
-{% endinfo %}
-
 En deux mots, un dictionnaire est une structure permettant accéder à des _valeurs_ via des _clés_. Elle généralise la structure de tableau où les clés ne peuvent qu'être que des indices.
 
-En supposant que tout objet peut être converti sous sa forme binaire, on peut écrire :
+{% note %}
+On utilise [le même abus que pour les listes](../../structure-liste/#structure-getter-setter){.interne} : pour un dictionnaire `d`{.language-} on écrira toujours `d[clé]`{.language-} à la place de `d.get(clé)`{.language-} ou de `d.set(clé, valeur)`{.language-}.
+{% endnote %}
+
+Enfin, Comme un dictionnaire est un type classique :
+
+<span id="type-list"></span>
+
+{% note "**Type de Dictionnaire**" %}
+Les listes étant très utilisées, on utilisera le type tableau pour les représenter. On écrira ainsi :
 
 ```pseudocode
-rgb ← Dictionaire<entier>
+x := {K: V}
+```
+
+À la place de :
+
+```pseudocode
+x := Dictionnaire<K, V>
+```
+
+On initialisera un dictionnaire vide ainsi :
+
+
+```pseudocode
+x ← {:}
+```
+
+{% endnote %}
+
+On peut ainsi écrire :
+
+```pseudocode
+(rgb := {chaîne: entier}) ← {:} 
 
 rgb["rouge"] ← 230
 rgb["vert"] ← 12
 rgb["bleu"] ← 255
 
-couleur ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + 2^16 * rgb["bleu"]
+(couleur := entier) ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + 2^16 * rgb["bleu"]
 ```
 
-On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si `Dictionaire.f("bleu")`{.language-} =  `Dictionaire.f("rouge")`{.language-} le code précédent ne fonctionnera pas.
+On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si `Dictionnaire.f("bleu")`{.language-} =  `Dictionnaire.f("rouge")`{.language-} le code précédent ne fonctionnera pas.
 
-$m$ est très grand devant le nombre d'objet que l'on veut stocker cette probabilité de collision est tellement faible qu'on peut la considérer comme nulle, mais :
+## Implémentation réelle
+
+Si $m$ est très grand devant le nombre d'objet que l'on veut stocker la probabilité de collisions est tellement faible qu'on peut la considérer comme nulle, mais :
 
 - si on veut garder des tailles de structure raisonnables et donc réduire $m$ au maximum,
 - si on ne peut se permettre une collision de probabilité aussi faible-soit elle
@@ -80,54 +117,6 @@ Il faut trouver un moyen de les gérer aux mieux (c'est à dire avec une complex
 {% info %}
 Notez que cette préoccupation n'est pas toujours utile. Le logiciel git, utilisé quotidiennement pas des millions de personnes ne fait pas de gestion de collision car les probabilités de collision sont trop faibles.
 {% endinfo %}
-
-Enfin, en toute rigueur le premier exemple devrait plutôt s'écrire :
-
-```pseudocode
-rgb ← Dictionaire<entier>
-
-rgb[bin("rouge")] ← 230
-rgb[bin("vert")] ← 12
-rgb[bin("bleu")] ← 255
-
-couleur ← 2^16 * rgb[bin("rouge")] + 2^8 * rgb[bin("vert")] + 2^16 * rgb[bin("bleu")]
-```
-
-En utilisant la fonction `bin`{.language-} qui rend la représentation binaire de l'objet. Pour éviter cette indirection, on peut spécifier un type spécifique aux clés et utiliser la structure suivante, avec deux type génériques :
-
-<span id="structure-deux-types-génériques"></span>
-
-```pseudocode
-structure Dictionaire<C, V>:
-    attributs:
-        T: [V] ← tableau de longueur m
-    méthodes:
-        fonction f(clé: C) → entier  # fonction de hachage utile de C dans [0, m[
-
-        fonction get(clé: C) → V:  # valeur ← self[clé] = valeur ← self.get(clé)
-            rendre T[f(clé)]
-        fonction set(clé: C, valeur: V) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
-            T[f(clé)] ← valeur
-
-```
-
-Ce qui permet d'écrire :
-
-```pseudocode
-rgb ← Dictionaire<chaîne, entier>
-
-rgb["rouge"] ← 230
-rgb["vert"] ← 12
-rgb["bleu"] ← 255
-
-couleur ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + 2^16 * rgb["bleu"]
-```
-
-Pour alléger un peu les notations on ne spécifiera que le type des valeurs dans la suite de cette partie et on supposera, par _abus de notation_ que les clés sont transformés en leur équivalent binaire.
-
-En revanche, dans le reste du cours, on spécifiera très souvent les types de clés et de valeurs pour éviter toute utilisation caché de fonctions (ici la fonction `bin`{.language-}).
-
-## Gestion des collisions
 
 Pour gérer les collisions, on utilise [le théorème fondamental du développement logiciel](https://en.wikipedia.org/wiki/Fundamental_theorem_of_software_engineering) :
 

@@ -22,7 +22,7 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 ```pseudocode
 structure Liste<T>:
     longueur: entier ← 0
-    capacité: entier ← K
+    capacité: entier ← 0
     données: [T] ← [T]{longueur: capacité}
 
 méthode (self: Liste<T>) get(i: entier) → T:  # valeur ← self[i] = valeur ← self.get(i)
@@ -92,6 +92,37 @@ pour chaque i de [0 .. 2^42[:
 {% attention2 "**À retenir**" %}
 La liste est une généralisation du tableau permettant de modifier sa longueur.
 {% endattention2 %}
+
+
+<span id="type-list"></span>
+
+{% note "**Type de Liste**" %}
+Les listes étant très utilisées, on utilisera le type tableau pour les représenter. On écrira ainsi :
+
+```pseudocode
+x := [entier]
+```
+
+Pour décrire soit un tableau, soit une liste. On pourra voir la différence pendant son initialisation :
+
+```pseudocode
+x ← List<entier>{}
+```
+
+Ou encore l'abus de notation :
+
+```pseudocode
+x ← [int]{capacité: 10}
+```
+
+Voir le tout aussi clair puisqu'un tableau à **forcément une longueur** :
+
+```pseudocode
+x ← [int]{}
+```
+
+{% endnote %}
+
 
 ## Complexités
 
