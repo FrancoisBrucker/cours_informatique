@@ -674,11 +674,11 @@ DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal
 {% aller %}
 
 1. [Structures de données](/cours/algorithmie/structure-données/){.interne}
-2. pile files et listes chaînées
+2. [pile et files](/cours/algorithmie/structure-pile-file/){.interne}
+3. [listes chaînées](/cours/algorithmie/structure-liste-chaînée/){.interne}
 
 {% endaller %}
 
-> TBD pile/file/ liste chaînée
 
 ### Semaine 12
 

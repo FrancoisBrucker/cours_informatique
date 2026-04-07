@@ -268,10 +268,8 @@ Comme exercice et pour référence, calcul de sommes classiques et utiles en com
 #### On vérifie qu'on sait faire
 
 > TBD ajouter permutations ET MPCI 2025
-> TBD ajouter le tri de crêpes
 
 ## <span id="partie-2"></span>Partie II : structures de données
-
 
 ### Matrices
 
@@ -305,18 +303,11 @@ Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de
 
 ### Listes chaînées
 
-> TBD première structure infinie
 Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
 
 {% aller %}
 [Les listes chaînées](./structure-liste-chaînée){.interne}
 {% endaller %}
-
-
-## Autre structures
-
-- skip list
-- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
 
 
 ### Listes et dictionnaires
@@ -417,6 +408,12 @@ On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'
 [Tableau, listes chaînées et listes](https://www.youtube.com/watch?v=kPqk07Gpj0A)
 {% endlien %}
 
+### On s'entraîne
+
+> TBD élément majoritaire
+> TBD tri par monotonie
+> TBD petit train
+
 ### Complexité amortie
 
 Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire la méthode append des listes.
@@ -427,12 +424,6 @@ C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que 
 
 {% aller %}
 [Complexité amortie](./complexité-amortie){.interne}
-{% endaller %}
-
-### On s'entraîne : structures
-
-{% aller %}
-[Utilisation de structures](./projet-structures){.interne}
 {% endaller %}
 
 ### Intermède 
@@ -450,6 +441,14 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 {% endaller %}
 
 <!-- 
+
+
+
+## Autre structures
+
+- skip list
+- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
+
 
 #### Algorithmes classiques, mais dur.
 
