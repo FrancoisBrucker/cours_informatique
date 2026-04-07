@@ -105,18 +105,14 @@
 </div></div>
 
 <p>La <strong><em>file</em></strong> est la structure de donnée idéale pour gérer un flux de donnée dont on doit conserver l'ordre. On appelle également cette structure <strong><em>FIFO</em></strong> pour <em>first in, first out</em> : on rend toujours la donnée la plus anciennement stockée. La structure d'une file d'entiers sera alors :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">File</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
+    longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    capacité<span class="token punctuation">:</span> <span class="token builtin">entier</span>
         
-        <span class="token comment">#  autres attributs</span>
-    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token builtin">fonction</span> <span class="token function">enfile</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅  <span class="token comment"># push</span>
-        <span class="token builtin">fonction</span> <span class="token function">defile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T           <span class="token comment"># pop</span>
-        <span class="token builtin">fonction</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>      <span class="token comment"># number</span>
+    <span class="token comment">#  autres attributs</span>
 
-        <span class="token builtin">fonction</span> <span class="token function">vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>       <span class="token comment"># empty</span>
-        <span class="token builtin">fonction</span> <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>     <span class="token comment"># full</span></code></pre>
+méthode <span class="token punctuation">(</span>f<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> enfile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅  <span class="token comment"># push</span>
+méthode <span class="token punctuation">(</span>f<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> défile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T           <span class="token comment"># pop</span></code></pre>
 <p>La taille de la file doit être déterminée à la création. Comme la pile, son implémentation nécessitera d'autres attributs.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -134,33 +130,27 @@
 <li>un indice <code class="language-">fin</code> permettant de savoir où ajouter le prochain élément</li>
 <li>un indice <code class="language-">début</code> permettant de savoir quel prochain élément rendre</li>
 </ul>
-<p>Ces deux indices coïncidaient pour la pile.</p>
+<p>Ces deux indices coïncidaient avec la longueur pour la pile.</p>
 <p><span id="structure-file"></span></p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">File</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-        
-        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> de longueur taille
-        début<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> taille <span class="token operator">-</span> <span class="token number">1</span>
-        fin<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token builtin">fonction</span> <span class="token function">enfile</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>fin<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
-            fin <span class="token operator">←</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> longueur
-        <span class="token builtin">fonction</span> <span class="token function">defile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
-            début <span class="token operator">←</span> <span class="token punctuation">(</span>début <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> longueur
-            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>début<span class="token punctuation">]</span>
-        <span class="token builtin">fonction</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span> <span class="token punctuation">(</span>fin <span class="token operator">-</span> début <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">+</span> taille<span class="token punctuation">)</span> <span class="token operator">%</span> taille
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">File</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
+    longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    capacité<span class="token punctuation">:</span> <span class="token builtin">entier</span>
 
-        <span class="token builtin">fonction</span> <span class="token function">vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-        <span class="token builtin">fonction</span> <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> <span class="token punctuation">(</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> taille<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
+    <span class="token punctuation">(</span>données<span class="token punctuation">:</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> capacité<span class="token punctuation">}</span>
+    début<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> capacité <span class="token operator">-</span> <span class="token number">1</span>
+    fin<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+méthode <span class="token punctuation">(</span>f<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> enfile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>données<span class="token punctuation">[</span>f<span class="token punctuation">.</span>fin<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
+    f<span class="token punctuation">.</span>fin <span class="token operator">←</span> <span class="token punctuation">(</span>f<span class="token punctuation">.</span>fin <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> f<span class="token punctuation">.</span>capacité
+
+    f<span class="token punctuation">.</span>longueur <span class="token operator">←</span> f<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span>
+
+méthode <span class="token punctuation">(</span>f<span class="token punctuation">:</span> File<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> défile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>longueur <span class="token operator">←</span> f<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+    f<span class="token punctuation">.</span>début <span class="token operator">←</span> <span class="token punctuation">(</span>f<span class="token punctuation">.</span>début <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> f<span class="token punctuation">.</span>capacité
+    <span class="token keyword">rendre</span> f<span class="token punctuation">.</span>données<span class="token punctuation">[</span>f<span class="token punctuation">.</span>début<span class="token punctuation">]</span>
+</code></pre>
 <p>On voit facilement que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -173,31 +163,35 @@
 <p>Utiliser une file peut se voire comme une opération élémentaire.</p>
 </div></div>
 
-<p>Prenons un exemple de file d'entiers pour comprendre comment cette implémentation fonctionne.</p>
+<p>Prenons un exemple de file d'entiers pour comprendre comment cette implémentation fonctionne :</p>
 <p>Départ :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">       f
-          d
-File : 0123</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">          fin
+          |  début
+          v  v  
+données : 0123</code></pre>
 <p>Ajout d'un élément 1 :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">        f
-          d  
-File : 0123
-       1   </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">           fin
+           | début
+           v v  
+données : 0123
+          1</code></pre>
 <p>Ajout d'un élément 2 :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         f
-          d  
-File : 0123
-       12 </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">            fin
+            |début
+            vv  
+données : 0123
+          12</code></pre>
 <p>On défile un élément (1) :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         f
-       d  
-File : 0123
-        2 </code></pre>
-<p>Cette implémentation permet une gestion <em>circulaire</em> des données.</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">            fin
+      début |
+          v v  
+données : 0123
+          12</code></pre>
+<p>Notez que l'élément dépilé n'est pas effacé, on ne peut juste plus l'atteindre. Cette implémentation permet une gestion <em>circulaire</em> des données.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Prolongez l'exemple précédent en enfilant successivement 3, 4, et 5 puis en défilant trois fois. Quel est l'état des indices après ces opérations ?</p>
+<p>Prolongez l'exemple précédent en enfilant successivement 3, 4, et 5 puis en défilant tous les élément de la file. Quel est l'état des indices après ces opérations ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -217,54 +211,68 @@ File : 0123
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>Pour comprendre le fonctionnement, on va visuellement supprimer les éléments de la file et ne représenter que les données effectivement conserver (ce n'est pas le cas dans l'implémentation réelle)</p>
 <p>État initial :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         f
-       d  
-File : 0123
-        2 </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">            fin
+      début |
+          v v  
+données : 0123
+           2</code></pre>
 <p>Enfile 3 :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">          f
-       d  
-File : 0123
-        23 </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">             fin
+      début  |
+          v  v  
+données : 0123
+           23</code></pre>
 <p>Enfile 4 :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">       f   
-       d  
-File : 0123
-        234 </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">        fin
+      début  
+          v    
+données : 0123
+           234</code></pre>
 <p>Enfile 5 :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">        f   
-       d  
-File : 0123
-       5234 </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         fin
+      début| 
+          vv   
+données : 0123
+          5234</code></pre>
 <p>Défile (2) :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">        f   
-        d  
-File : 0123
-       5 34 </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         fin
+       début 
+           v   
+données : 0123
+          5 34</code></pre>
 <p>Défile (3) :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">        f   
-         d  
-File : 0123
-       5  4 </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         fin
+           |début 
+           vv   
+données : 0123
+          5  4</code></pre>
 <p>Défile (4) :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">        f   
-          d  
-File : 0123
-       5    </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         fin
+           | début 
+           v v   
+données : 0123
+          5   </code></pre>
+<p>Défile (5) :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         fin
+      début|  
+          vv    
+données : 0123</code></pre>
+<p>Début et fin sont décalé de 1 par rapport à la construction de la structure.</p>
 </div>
 </details>     
 </div>
 <h2>Exemples</h2>
 <h3>Exemple : un buffer</h3>
 <p>Cet exemple montre l'usage classique d'une file. On traite de façon différée les entrées et les sorties dans l'ordre d'arrivée en stockant les données dans une file.</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">buffer <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span>  <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> n<span class="token punctuation">}</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span>buffer <span class="token operator">:=</span> File<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> n<span class="token punctuation">}</span>
 
 <span class="token builtin">fonction</span> écrire<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
     buffer<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>donnée<span class="token punctuation">)</span>
 
 <span class="token builtin">fonction</span> <span class="token function">lire</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">rendre</span> buffer<span class="token punctuation">.</span>defile<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+    <span class="token keyword">rendre</span> buffer<span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Ceci ce passe constamment lorsque l'on lit une vidéo, télécharge un fichier, etc.</p>
 <p>La principale problématique est alors, quelle taille de file choisir pour ne pas perdre des données ?</p>
 <p>Si la fréquence de lecture est inférieure à la fréquence d'écriture, pas de soucis. La taille de la file peut être de 1 entier : entre 2 écritures, on aura au moins une lecture.</p>
@@ -287,20 +295,22 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://hardwaregeeksblog.wordpress.com/wp-content/uploads/2016/12/fifodepthcalculationmadeeasy2.pdf">Taille de file selon le problème de transfert</a></p>
+<p><a href="https://hardwaregeeksblog.wordpress.com/wp-content/uploads/2016/12/fifodepthcalculationmadeeasy2.pdf">Taille de la file selon le problème de transfert</a></p>
 </div></div>
 
 <h3>Exemple : création des entiers binaires</h3>
 <p>On peut aussi utiliser la file comme outil d'énumération. Par exemple pour faire un compteur :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">compteur</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-    F <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">chaîne</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> K<span class="token punctuation">}</span>
+    F <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">chaîne</span><span class="token operator">></span> <span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> K<span class="token punctuation">}</span>
     F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span>
-   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
-   <span class="token number"> j </span><span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token punctuation">(</span>i<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token punctuation">(</span>j<span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">1</span>
+
+    c <span class="token operator">:=</span> <span class="token builtin">chaîne</span> 
     <span class="token keyword">répéter</span><span class="token number"> n </span>fois<span class="token punctuation">:</span>
         c <span class="token operator">←</span> F<span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span>
         afficher à l'écran c
-        <span class="token keyword">si</span><span class="token number"> j </span><span class="token operator">&lt;</span> n<span class="token punctuation">:</span>               <span class="token comment"># limite la taille de la pile</span>
+        <span class="token keyword">si</span><span class="token number"> j </span><span class="token operator">&lt;</span> n<span class="token punctuation">:</span>               <span class="token comment"># limite la taille de la file</span>
             F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>c <span class="token operator">+</span> <span class="token string">"0"</span><span class="token punctuation">)</span>
             F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>c <span class="token operator">+</span> <span class="token string">"1"</span><span class="token punctuation">)</span>
            <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> j </span><span class="token operator">+</span> <span class="token number">2</span></code></pre>
@@ -328,9 +338,9 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Lorsque l'on crée le $n$ème élément que l'on place dans la file, on le crée avec la chaîne de caractères $n_0\dots,n_k$ que l'on vient de sortir de la file.</p>
-<p>Le $n$ nombre est alors de la forme $n_0\dots,n_k0$ ou $n_0\dots,n_k1$. Supposons sans perte de généralité que c'est $n_0\dots,n_k0$.</p>
-<p>Comme on vient de sortir $n_0\dots,n_k = n/2$ de la file et qu'on y a placé $n_0\dots,n_k0 = n$, il y a bien $n/2$ élément dans la pile.</p>
+<p>Lorsque l'on crée le $n$ème élément que l'on place dans la file, on le crée avec la chaîne de caractères $n_0\dots n_k$ que l'on vient de sortir de la file.</p>
+<p>Le $n$ nombre est alors de la forme $n_0\dots n_k0$ ou $n_0\dots n_k1$. Supposons sans perte de généralité que c'est $n_0\dots,n_k0$.</p>
+<p>Comme on vient de sortir $n_0\dots n_k = n/2$ de la file et qu'on y a placé $n_0\dots n_k0 = n$, il y a bien $n/2$ élément dans la file.</p>
 </div>
 </details>     
 </div>

@@ -96,36 +96,26 @@
     
   
 
-  <blockquote>
-<p>TBD liste circulaires.</p>
-</blockquote>
-<p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données (des données à traiter vont arriver tout au long de son exécution), il doit être capable de stocker les données arrivantes avant de pouvoir les traiter une à une.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  <p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données (des données à traiter vont arriver tout au long de son exécution), il doit être capable de stocker les données arrivantes avant de pouvoir les traiter une à une.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Une structure de données permettant de gérer un flux de données de type <code class="language-">Type</code> (tout type fonctionne) doit avoir au moins trois méthodes :</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une structure de données <code class="language-">Flux&lt;T&gt;</code> permettant de gérer un flux de données de type <code class="language-">T</code> (tout type fonctionne) doit avoir au moins deux méthodes :</p>
 <ul>
-<li><code language-pseudocode="">push(donnée: Type) → vide</code> : une méthode de <strong>stockage</strong> d'une donnée dans la structure</li>
-<li><code language-pseudocode="">pop() → Type</code> une méthode permettant de <strong>rendre</strong> une donnée stockée, la donnée est également supprimée de la structure</li>
-<li><code language-pseudocode="">number() → int</code> une méthode permettant de connaître le nombre de données actuellement stockées dans la structure</li>
+<li><code language-pseudocode="">(f: Flux&lt;T&gt;) push(donnée: T) → ∅</code> : une méthode de <strong>stockage</strong> d'une donnée dans la structure</li>
+<li><code language-pseudocode="">(f: Flux&lt;T&gt;) pop() → T</code> une méthode permettant de <strong>rendre</strong> une donnée stockée, la donnée est également supprimée de la structure</li>
+</ul>
+<p>Et deux attributs :</p>
+<ul>
+<li><code language-="">longueur: entier</code> permettant de connaître le nombre de données actuellement stockées dans la structure</li>
+<li><code language-="">capacité: entier</code> permettant de connaître le nombre total de données que peut stocker la structure</li>
 </ul>
 </div></div>
 
-<p>Une structure générale de flux d'entiers serait alors (en ajoutant des méthodes pour savoir si la structure peut accueillir des données) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Flux</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-
-        <span class="token comment"># autres attributs dépendant de la structure réelle</span>
-    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token builtin">fonction</span> <span class="token function">push</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅
-        <span class="token builtin">fonction</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T
-        <span class="token builtin">fonction</span> <span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
-
-        <span class="token builtin">fonction</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>  <span class="token comment"># Vrai si vide</span>
-        <span class="token builtin">fonction</span> <span class="token function">full</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>   <span class="token comment"># Vrai si plein</span></code></pre>
 <p>Les structures de gestion de flux de données se distinguent selon que la donnée rendue soit :</p>
 <ul>
 <li>la plus récente</li>
@@ -162,11 +152,21 @@
 </div></div>
 
 <h2>Deques</h2>
-<p>Souvent, la pile et la file sont réunies en une seule structure : <a href="https://en.wikipedia.org/wiki/Double-ended_queue">le <strong><em>deque</em></strong> (<em>&quot;doubled ended queue&quot;</em>)</a>.</p>
+<p>Souvent, la pile et la file sont réunies en une seule structure : <a href="https://en.wikipedia.org/wiki/Double-ended_queue">le <strong><em>deque</em></strong> (<em>&quot;doubled ended queue&quot;</em>)</a> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Deque</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
+    longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    capacité<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+
+    <span class="token comment"># ...</span>
+
+méthode <span class="token punctuation">(</span>f<span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> enfile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅
+méthode <span class="token punctuation">(</span>f<span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> défile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T
+méthode <span class="token punctuation">(</span>f<span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> empile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅
+méthode <span class="token punctuation">(</span>f<span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que l'on peut facilement ajouter les méthodes <code>empile</code> et <code>depile</code> des piles à notre <a href="file.md/#structure">structure de file</a>.</p>
+<p>Montrer que l'on peut facilement créer une structure de Deck en ajoutant des méthodes <code>empile</code> et <code>dépile</code> des piles à <a href="file/#structure">une structure de file</a>.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -186,38 +186,32 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Deque</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Deque</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
+    longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    capacité<span class="token punctuation">:</span> <span class="token builtin">entier</span>
 
-        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> <span class="token operator">←</span> Tableau de longueur taille
-        début<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> taille <span class="token operator">-</span> <span class="token number">1</span>
-        fin<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token builtin">fonction</span> <span class="token function">empile</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>fin<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
-            fin <span class="token operator">←</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> longueur
-        <span class="token builtin">fonction</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
-            fin <span class="token operator">←</span> <span class="token punctuation">(</span>fin <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">+</span> longueur<span class="token punctuation">)</span> <span class="token operator">%</span> longueur
-            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>fin<span class="token punctuation">]</span>
+    <span class="token punctuation">(</span>données<span class="token punctuation">:</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> capacité<span class="token punctuation">}</span>
+    début<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> capacité <span class="token operator">-</span> <span class="token number">1</span>
+    fin<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
 
-        <span class="token builtin">fonction</span> <span class="token function">enfile</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>fin<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
-            fin <span class="token operator">←</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> longueur
-        <span class="token builtin">fonction</span> <span class="token function">defile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
-            début <span class="token operator">←</span> <span class="token punctuation">(</span>début <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> longueur
-            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>début<span class="token punctuation">]</span>
-        <span class="token builtin">fonction</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span> <span class="token punctuation">(</span>fin <span class="token operator">-</span> début <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">+</span> taille<span class="token punctuation">)</span> <span class="token operator">%</span> taille
+méthode <span class="token punctuation">(</span>d<span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> enfile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    d<span class="token punctuation">.</span>données<span class="token punctuation">[</span>d<span class="token punctuation">.</span>fin<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
+    d<span class="token punctuation">.</span>fin <span class="token operator">←</span> <span class="token punctuation">(</span>d<span class="token punctuation">.</span>fin <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> d<span class="token punctuation">.</span>capacité
 
-        <span class="token builtin">fonction</span> <span class="token function">vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-        <span class="token builtin">fonction</span> <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> <span class="token punctuation">(</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> taille<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
+    d<span class="token punctuation">.</span>longueur <span class="token operator">←</span> d<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span>
+
+méthode <span class="token punctuation">(</span>d<span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> défile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
+    d<span class="token punctuation">.</span>longueur <span class="token operator">←</span> d<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+    d<span class="token punctuation">.</span>début <span class="token operator">←</span> <span class="token punctuation">(</span>f<span class="token punctuation">.</span>début <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> d<span class="token punctuation">.</span>capacité
+    <span class="token keyword">rendre</span> d<span class="token punctuation">.</span>données<span class="token punctuation">[</span>début<span class="token punctuation">]</span>
+
+méthode <span class="token punctuation">(</span>d<span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> empile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+        d<span class="token punctuation">.</span>données<span class="token punctuation">[</span>d<span class="token punctuation">.</span>fin<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
+        d<span class="token punctuation">.</span>fin <span class="token operator">←</span> <span class="token punctuation">(</span>d<span class="token punctuation">.</span>fin <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> d<span class="token punctuation">.</span>capacité
+méthode <span class="token punctuation">(</span>d<span class="token punctuation">:</span> Deque<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
+        d<span class="token punctuation">.</span>fin <span class="token operator">←</span> <span class="token punctuation">(</span>d<span class="token punctuation">.</span>fin <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">+</span> d<span class="token punctuation">.</span>capacité<span class="token punctuation">)</span> <span class="token operator">%</span> d<span class="token punctuation">.</span>capacité
+        <span class="token keyword">rendre</span> d<span class="token punctuation">.</span>données<span class="token punctuation">[</span>fin<span class="token punctuation">]</span>
+</code></pre>
 </div>
 </details>     
 </div>
@@ -230,393 +224,15 @@
 <p>En python, c'est <a href="https://docs.python.org/fr/3.13/library/collections.html#collections.deque">la classe deque</a> du module <a href="https://docs.python.org/fr/3.13/library/collections.html">collections</a> qui contient une série de classes implémentant des structures de données utiles.</p>
 </div></div>
 
-<h2><span id="exercices"></span>Exercices</h2>
-<h3>Parités</h3>
-<p>On se donne deux piles :</p>
-<ul>
-<li><code class="language-">P1</code> contenant des entiers positifs</li>
-<li><code class="language-">P2</code> une pile d'entier initialement vide</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<h2>On s'entraîne</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Écrire un algorithme pour copier dans une pile d'entiers <code class="language-">P2</code> les nombres pairs contenus dans <code class="language-">P1</code>.</p>
-<ul>
-<li>Le contenu de <code class="language-">P1</code> après exécution de l’algorithme doit être identique à celui avant exécution.</li>
-<li>Les nombres pairs dans <code class="language-">P2</code> doivent être dans l’ordre où ils apparaissent dans <code class="language-">P1</code>.</li>
-</ul>
+<p><a href="projet-pile-file" class="interne">Projet pile et file</a></p>
 </div></div>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On utilise une troisième pile où on va placer tous les nombres impairs :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> parité<span class="token punctuation">(</span>P1<span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">,</span> P2<span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-    P3 <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> P1<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
-
-    <span class="token keyword">tant que</span> P1<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
-        x <span class="token operator">←</span> P1<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">si</span> x est pair<span class="token punctuation">:</span>
-            P2<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-        <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-            P3<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-
-    <span class="token keyword">tant que</span> P3<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
-        x <span class="token operator">←</span> P3<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        P1<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
-</div>
-</details>     
-</div>
-<h3>Palindromes</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que l'on peut trouver si une chaîne de caractères est un palindrome en utilisant une pile et une file.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">palindrome</span><span class="token punctuation">(</span>s<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token builtin">caractère</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> longueur de s<span class="token punctuation">}</span>
-    F <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">caractère</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> longueur de s<span class="token punctuation">}</span>
-
-    <span class="token keyword">pour chaque</span> c de s<span class="token punctuation">:</span>
-        P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-        F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-
-    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
-        c1 <span class="token operator">←</span> P<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        c2 <span class="token operator">←</span> F<span class="token punctuation">.</span>defile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-        <span class="token keyword">si</span> c1 <span class="token operator">≠</span> c2<span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></code></pre>
-<p>L'algorithme est correct puisque la pile va dépiler de la fin vers le début et la file du début vers la fin.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Donnez la complexité de votre algorithme.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Les méthodes des piles et des files sont toutes en $\mathcal{O}(1)$ opérations, l'algorithme précédent est de complexité $\mathcal{O}(|s|)$.</p>
-</div>
-</details>     
-</div>
-<h3>Permutation circulaire</h3>
-<p>Soit $T$ un tableau d'entier.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>En utilisant uniquement une file, donnez un algorithme de complexité $\mathcal{O}(T.\mbox{\small longueur})$ permettant de procéder à une permutation circulaire de $T$ de $k$ éléments ($T'[(i + k) \bmod T.\mbox{\small longueur}] = T[i]$ pour tout $i$) <strong>in place</strong> (on doit modifier $T$).</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">permutation</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-    F <span class="token operator">←</span> File<span class="token operator">&lt;</span><span class="token builtin">entier</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
-
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-        F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
-        x <span class="token operator">←</span> F<span class="token punctuation">.</span>defile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        F<span class="token punctuation">.</span>enfile<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> F<span class="token punctuation">.</span>défile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-</div>
-</details>     
-</div>
-<h3><span id="file-avec-pile"></span>Pile et file</h3>
-<p>On dispose uniquement de la structure de donnée de Pile et on souhaite créer, en utilisant deux piles <code class="language-">P1</code> et <code class="language-">P2</code>, une nouvelle structure de File.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Écrire la structure de File en utilisant uniquement 2 piles en attributs.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">File</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-
-        P1 <span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> taille<span class="token punctuation">}</span>
-        P2 <span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> taille<span class="token punctuation">}</span>
-    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token builtin">fonction</span> <span class="token function">enfile</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-            P1<span class="token punctuation">.</span>empiler<span class="token punctuation">(</span>donnée<span class="token punctuation">)</span>
-        <span class="token builtin">fonction</span> <span class="token function">defile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
-            <span class="token keyword">si</span> P2<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">tant que</span> P1<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
-                    x <span class="token operator">←</span> P1<span class="token punctuation">.</span>dépiler<span class="token punctuation">(</span><span class="token punctuation">)</span>
-                    P2<span class="token punctuation">.</span>empiler<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-            <span class="token keyword">rendre</span> P2<span class="token punctuation">.</span>dépiler<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token builtin">fonction</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span> P1<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> P2<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-        <span class="token builtin">fonction</span> <span class="token function">vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span> P1<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">et</span> P2<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token builtin">fonction</span> <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> P1<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> P2<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">≥</span> longueur<span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Quelle est la complexité de l'enfilage et du défilage avec cette structure ?</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>L'enfilage sera toujours en $\mathcal{O}(1)$, mais le défilage peut prendre $\mathcal{O}({\small longueur})$ dans le pire des cas si la pile <code class="language-">P1</code> est pleine et la pile <code class="language-">P2</code> vide.</p>
-</div>
-</details>     
-</div>
-<h2>TBD</h2>
-<h2>Piles</h2>
-<blockquote>
-<ul>
-<li><strong>Utilité</strong> : les piles ça sert toujours. Ces exercices vous montrerons des cas classiques d'utilisation</li>
-<li><strong>Difficulté</strong> : dur</li>
-</ul>
-</blockquote>
-<h3>Parenthésage</h3>
-<blockquote>
-<p>TBD rappel de l'exo non corrigé. vois que sa complexité est grande et faire avec pile.</p>
-</blockquote>
-<p>Soit $C$ une expression arithmétique avec des parenthèses et des crochets. On cherche à savoir si le parenthésage est équilibré :</p>
-<ul>
-<li><code>[3 + 3 * (1 + 3)]</code> sera Ok</li>
-<li><code>[3 + 3 * (1 + 3])</code> sera pas Ok</li>
-</ul>
-<p>On ne vérifiera pas que l'expression est arithmétiquement correcte, c'est à dire que pour nous, <code>[3 + + 3 (1 + 3)]</code> sera Ok.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que l'on peut utiliser une pile pour savoir si un parenthésage est équilibré entre les <code>()</code> et les <code>[]</code>.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> parenthèse<span class="token punctuation">(</span>C<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    P <span class="token operator">←</span> une nouvelle pile de caractères
-    <span class="token keyword">pour chaque</span> c de C<span class="token punctuation">:</span>
-        <span class="token keyword">si</span> c <span class="token operator">==</span> <span class="token string">"("</span> <span class="token keyword">ou</span> c <span class="token operator">==</span> <span class="token string">"["</span><span class="token punctuation">:</span>
-            P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-        <span class="token keyword">sinon si</span> c <span class="token operator">==</span> <span class="token string">")"</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">≠</span> <span class="token string">"("</span><span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-        <span class="token keyword">sinon si</span> c <span class="token operator">==</span> <span class="token string">"]"</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">≠</span> <span class="token string">"["</span><span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></code></pre>
-</div>
-</details>     
-</div>
-<h3>Calcul d'une expression avec deux piles</h3>
-<p>Soit $C$ une expression arithmétique avec uniquement des parenthèses, des <code>+</code> et des <code>*</code>. On suppose qu'elle est arithmétiquement correcte, comme <code>(3 + 3 * (1 + 3))</code></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que l'on peut utiliser deux piles (une pour les opérateurs et les parenthèses et l'autre pour les nombres) pour calculer $C$.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Il faut faire attention au fait que <code>*</code> a une priorité supérieure à <code>+</code> : <code>3 + 4 * 3 = 15</code>.</p>
-<p>On lit l'expression de gauche à droite :</p>
-<ol>
-<li>si le caractère lu est un nombre on le place dans la pile P2</li>
-<li>sinon si le caractère lu est un opérateur O :
-<ol>
-<li>on évalue l'expression comme on la fait avec la notation polonaise inversée :
-<ol>
-<li>pop de P1 dans op</li>
-<li>pop de p2 dans y</li>
-<li>pop de p2 dans x</li>
-<li>x op y = z</li>
-<li>push de z dans P2</li>
-</ol>
-</li>
-<li>jusqu'à ce que :
-<ol>
-<li>P1 est vide ou</li>
-<li>l'opérateur O a une priorité supérieure à celle sur P1</li>
-</ol>
-</li>
-<li>place O dans P1</li>
-</ol>
-</li>
-<li>sinon si le caractère lu est une parenthèse ouvrante : on la place dans P1</li>
-<li>sinon si le caractère lu est une parenthèse fermante :
-<ol>
-<li>on évalue l'expression jusqu'à trouver une parenthèse ouvrante</li>
-<li>on push le résultat dans P2</li>
-</ol>
-</li>
-</ol>
-<p>Si on a fini de lire l'expression on évalue le reste des deux piles.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>à 9min13  <a href="https://www.youtube.com/watch?v=2vBVvQTTdXg">https://www.youtube.com/watch?v=2vBVvQTTdXg</a></p>
-</div></div>
-</div>
-</details></div>
-     
-
-<h3>Élément majoritaire</h3>
-<blockquote>
-<p>TBD
-naif : ils trouvent
-tri  : ils trouvent
-pile : on donne l'algorithme et ils prouvent que c'est ok.</p>
-</blockquote>
-<h2>Liste chaînée</h2>
-<blockquote>
-<p>TBD à déplacer plus loin.
-TBD dire base des algos récursifs.
-TBD donner le type récursif associé.</p>
-</blockquote>
-<blockquote>
-<p>TBD reprendre exercices suppression/ head, tail , rendre éléments pair et impair/ retournements
-TBD : knuth dancing links <a href="https://www.youtube.com/watch?v=_cR9zDlvP88">https://www.youtube.com/watch?v=_cR9zDlvP88</a></p>
-</blockquote>
-<h2>Autre structures</h2>
-<ul>
-<li>skip list</li>
-<li>listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <a href="https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf">https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf</a></li>
-</ul>
 
 
 </article>

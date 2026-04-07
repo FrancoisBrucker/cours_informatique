@@ -104,19 +104,15 @@
 <p><a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">La pile</a></p>
 </div></div>
 
-<p>La pile est une structure de donnée extrêmement utilisée. Elle permet de traiter en priorité la donnée <strong>la plus récemment stockée</strong>. On appelle également cette structure <strong><em>LIFO</em></strong> pour <em>last in, first out</em> : on rend toujours la donnée la plus récemment stockée. La structure d'une pile de type <code class="language-">Type</code> sera alors :</p>
+<p>La pile est une structure de donnée extrêmement utilisée. Elle permet de traiter en priorité la donnée <strong>la plus récemment stockée</strong>. On appelle également cette structure <strong><em>LIFO</em></strong> pour <em>last in, first out</em> : on rend toujours la donnée la plus récemment stockée. La structure d'une pile de type <code class="language-">T</code> sera alors :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    capacité<span class="token punctuation">:</span> <span class="token builtin">entier</span>
         
-        <span class="token comment">#  autres attributs</span>
-    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token builtin">fonction</span> <span class="token function">empile</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅  <span class="token comment"># push</span>
-        <span class="token builtin">fonction</span> <span class="token function">depile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T           <span class="token comment"># pop</span>
-        <span class="token builtin">fonction</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>      <span class="token comment"># number</span>
+    <span class="token comment">#  autres attributs</span>
 
-        <span class="token builtin">fonction</span> <span class="token function">vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>       <span class="token comment"># empty</span>
-        <span class="token builtin">fonction</span> <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>     <span class="token comment"># full</span></code></pre>
+méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> empile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅  <span class="token comment"># push</span>
+méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T           <span class="token comment"># pop</span></code></pre>
 <p>La taille de la pile doit être déterminée à la création. L'implémentation d'une pile nécessitera d'autres attributs comme on va le voir.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -132,38 +128,19 @@
 <h2><span id="structure"></span>Implémentation</h2>
 <p>Une pile générique pourra être implémentée de cette façon :</p>
 <p><span id="structure-pile"></span></p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span><span class="token builtin">Type</span><span class="token operator">></span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        taille<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-        
-        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> <span class="token operator">←</span> nouveau <span class="token punctuation">[</span><span class="token builtin">Type</span><span class="token punctuation">]</span> de longueur taille
-        suivant<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        <span class="token builtin">fonction</span> <span class="token function">empile</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">Type</span><span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>suivant<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
-            suivant <span class="token operator">←</span> suivant <span class="token operator">+</span> <span class="token number">1</span>
-        <span class="token builtin">fonction</span> <span class="token function">depile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
-            suivant <span class="token operator">←</span> suivant <span class="token operator">-</span> <span class="token number">1</span>
-            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>suivant<span class="token punctuation">]</span>
-        <span class="token builtin">fonction</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span> suivant
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">:</span>
+    longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span> <span class="token operator">←</span> <span class="token number">0</span>
+    capacité<span class="token punctuation">:</span> <span class="token builtin">entier</span>
 
-        <span class="token builtin">fonction</span> <span class="token function">vide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-        <span class="token builtin">fonction</span> <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> <span class="token punctuation">(</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> taille<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
-            <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Une méthode peut utiliser une autre méthode : les méthodes <code class="language-">pleine</code> et <code class="language-">vide</code> utilisent <code class="language-">nombre</code>.</p>
-</div></div>
+    <span class="token punctuation">(</span>données<span class="token punctuation">:</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">{</span>longueur<span class="token punctuation">:</span> capacité<span class="token punctuation">}</span>
 
+méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span>Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> empile<span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> T<span class="token punctuation">)</span> <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    p<span class="token punctuation">.</span>données<span class="token punctuation">[</span>p<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span> <span class="token operator">←</span> donnée
+    p<span class="token punctuation">.</span>longueur <span class="token operator">←</span> p<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span>
+
+méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span>Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
+    p<span class="token punctuation">.</span>longueur <span class="token operator">←</span> p<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token keyword">rendre</span> p<span class="token punctuation">.</span>données<span class="token punctuation">[</span>p<span class="token punctuation">.</span>longueur<span class="token punctuation">]</span></code></pre>
 <p>On voit facilement que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -178,21 +155,25 @@
 
 <p>Prenons un exemple avec une pile d'entiers pour comprendre comment cette implémentation fonctionne.</p>
 <p>Départ :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">       s  
-Pile : 0123</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">          longueur
+          v  
+données : 0123</code></pre>
 <p>Ajout d'un élément 1 :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">        s 
-File : 0123
-       1  </code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">           longueur
+           v  
+données : 0123
+          1  </code></pre>
 <p>Ajout d'un élément 2 :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">         s
-File : 0123
-       12</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">            longueur
+            v  
+données : 0123
+          12</code></pre>
 <p>On dépile un élément (2) :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">        s  
-File : 0123
-       1</code></pre>
-<p>Notez qu'une pile s'implémente très facilement en python avec une liste  (c'est même fait pour) :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">           longueur
+           v  
+données : 0123
+          12</code></pre>
+<p>Notez que l'élément dépilé n'est pas effacé, on ne peut juste plus l'atteindre.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -237,7 +218,7 @@ File : 0123
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 <span class="token number">2</span>
 <span class="token operator">>></span><span class="token operator">></span></code></pre>
-<p>Notez que comme une liste python n'a pas de borne, cette implémentation de la pile n'a pas de taille.</p>
+<p>Notez que comme une liste python n'a pas de borne, cette implémentation de la pile n'a pas de capacité.</p>
 </div>
 </details>     
 </div>
@@ -249,19 +230,19 @@ File : 0123
 <li><code>1 + 2</code> on écrit <code>[1, 2, +]</code></li>
 <li><code>1 - (2 + 4)</code> on écrit <code>[1, 2, 4, +, -]</code></li>
 </ul>
-<p>On évalue ensuite l'expression avec une pile <code>P</code></p>
+<p>On évalue ensuite l'expression avec une pile <code>P</code>. On suppose que l'on a un type de donnée <code class="language-">Expression</code> qui permet stocker et des entiers et des opérations.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> évaluation<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    P <span class="token operator">←</span> Pile <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
+    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span>Expression<span class="token operator">></span><span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">}</span>
     <span class="token keyword">pour chaque</span> x de T<span class="token punctuation">:</span>
         <span class="token keyword">si</span> x est un opérateur<span class="token punctuation">:</span>
-            b <span class="token operator">←</span> P<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            a <span class="token operator">←</span> P<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            y <span class="token operator">←</span> a `x` b  <span class="token comment"># effectue l'opération décrite par `x`</span>
+            b <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            a <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            y <span class="token operator">←</span> a `x` b                          <span class="token comment"># effectue l'opération décrite par `x`</span>
             P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
         <span class="token keyword">sinon</span><span class="token punctuation">:</span>
             P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
-    <span class="token keyword">rendre</span> P<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+    <span class="token keyword">rendre</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Faisons l'expérience avec l'expression <code>1 + 2 - (3+4) * (5 + 6)</code> qui devient le tableau <code>[1, 2, +, 3, 4, +, 5, 6, +, *, -]</code>. Les différentes opérations sur la pile par itération de la boucle <code class="language-">pour chaque</code> sont :</p>
 <ol>
 <li><strong>empile</strong> 1</li>
@@ -277,16 +258,8 @@ File : 0123
 <li><strong>dépile</strong> 77 ; <strong>dépile</strong> 3 ; <strong>empile</strong> 3 - 77 = -74</li>
 </ol>
 <p>Le résultat final est le seul élément restant dans la pile, - 74, que l'on dépile à la fin</p>
-<p>Plus besoin de parenthèses !</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Cette notation est appelée <a href="https://fr.wikipedia.org/wiki/Notation_polonaise_inverse"><em>notation polonaise inverse</em></a> et est due à Hamblin. C'est le premier à utiliser directement la notion de pile, inventée par Turing.</p>
+<p>Plus besoin de parenthèses ! Cette notation est appelée <a href="https://fr.wikipedia.org/wiki/Notation_polonaise_inverse"><em>notation polonaise inverse</em></a> et est due à Hamblin. C'est le premier à utiliser directement la notion de pile, inventée par Turing.</p>
 <p>C'est ensuite Dijkstra qui se rendra compte que la pile permet non seulement de stocker des variables mais également de gérer les appels de fonctions (on appelle cela <em>la pile d'appels</em>) et qui permet d'exécuter des fonctions (récursives ou non). On généralise à cette époque la notion de pile et de tas pour gérer les variables, les objets et les appels de fonctions de façon sous-jacente dans tout language de programmation.</p>
-</div></div>
-
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -309,6 +282,14 @@ File : 0123
 </div></div>
 
 <p>La pile est la structure permettant de transformer tout algorithme récursif en un algorithme itératif : il suffit de stocker dans la pile les variables avant de procéder à un appel !</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette technique est celle inventée par Dijkstra pour les appels de fonctions. Elle a permit de structurer le code en fonctions et a fait rentrer l'informatique dans une nouvelle ère, c'est de <strong><em>la programmation structurée</em></strong> (<em>ie</em>: l'utilisation de fonctions).</p>
+</div></div>
+
 <h4>Factoriel</h4>
 <p>Par exemple le calcul naif de la factorielle de façon récursive :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -335,20 +316,20 @@ File : 0123
 <p>Le retour de la fonction récursive, <code class="language-">r</code>, ne sera jamais empilé.</p>
 <p>On obtient le code :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> n<span class="token punctuation">}</span> <span class="token comment"># variables locales : n, r', pos</span>
+    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> n<span class="token punctuation">}</span>  <span class="token comment"># variables locales : n, r', pos</span>
     P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
-        n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>longueur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-        <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>  <span class="token comment"># début de la fonction</span>
+        <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>                   <span class="token comment"># début de la fonction</span>
             <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>      
                 r <span class="token operator">←</span> <span class="token number">1</span>
             <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-                P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># on continue l'appel courant</span>
+                P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment"># on continue l'appel courant</span>
                 P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> r'<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># une fois l'appel récursif fini</span>
-        <span class="token keyword">sinon si</span> pos <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token comment"># après la récursion</span>
-            r' <span class="token operator">←</span> r  <span class="token comment"># le résultat de la récursion précédente</span>
-            r <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">*</span> r'  <span class="token comment"># le résultat actuel</span>
+        <span class="token keyword">sinon si</span> pos <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>             <span class="token comment"># après la récursion</span>
+            r' <span class="token operator">←</span> r                     <span class="token comment"># le résultat de la récursion précédente</span>
+            r <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">*</span> r'                 <span class="token comment"># le résultat actuel</span>
     <span class="token keyword">rendre</span> r</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -393,10 +374,10 @@ File : 0123
 </ol>
 <p>Enfin, on remarque que la variable locale  <code class="language-">r'</code> n'est jamais utilisé dans la récursion. On n'est donc pas obligé de l'empiler :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> n<span class="token punctuation">}</span>
+    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> n<span class="token punctuation">}</span>
     P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
-        n<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>longueur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        n<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>      
@@ -462,10 +443,10 @@ File : 0123
     <span class="token keyword">rendre</span> r</code></pre>
 <p>Ce qui donne :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">^</span>n<span class="token punctuation">}</span>
+    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">^</span>n<span class="token punctuation">}</span>
     P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est fausse<span class="token punctuation">:</span>
-        n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> r''<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>longueur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> r''<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
@@ -547,10 +528,10 @@ File : 0123
 <div class="mx-8 pb-2">
 <p>On a pas besoin de <code class="language-">r''</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>taille<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">^</span>n <span class="token punctuation">}</span>  <span class="token comment"># n, r', pos</span>
+    P <span class="token operator">←</span> Pile<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token operator">></span> <span class="token punctuation">{</span>capacité<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">^</span>n <span class="token punctuation">}</span>  <span class="token comment"># n, r', pos</span>
     P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> ∅<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> est fausse<span class="token punctuation">:</span>
-        n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>depile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">tant que</span> P<span class="token punctuation">.</span>longueur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        n<span class="token punctuation">,</span> r'<span class="token punctuation">,</span> pos <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         <span class="token keyword">si</span> pos <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
