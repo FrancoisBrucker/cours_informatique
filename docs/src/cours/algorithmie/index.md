@@ -312,9 +312,10 @@ Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit su
 
 ### Listes et dictionnaires
 
-> TBD liste chaînée infinie mais a de gros pbs de complexité si on veut l'utiliser comme un tableau L[i] en O(i)
 
-La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Nous verrons dans cette partie que l'on peut faire sauter cette contrainte d'un tableau au prix d'un coût négligeable en complexité :
+La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.
+
+La liste est un compromis très efficace pour réaliser les deux opérations au prix d'un coût négligeable en complexité.
 
 {% aller %}
 [Structure de listes](./structure-liste){.interne}
@@ -411,8 +412,8 @@ On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'
 ### On s'entraîne
 
 > TBD élément majoritaire
+> TBD doublon dans une liste avec dico.
 > TBD tri par monotonie
-> TBD petit train
 
 ### Complexité amortie
 

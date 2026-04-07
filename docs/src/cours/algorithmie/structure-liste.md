@@ -9,10 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-> TBD comme en go : len et cap.
-
-
 Une liste est une amélioration de [la structure de tableau](../pseudo-code/briques-de-base/#tableaux){.interne} et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
 
 {% info %}
@@ -24,45 +20,44 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 <span id="structure-liste"></span>
 
 ```pseudocode
-structure Liste<Type>:
-    attributs:
-        longueur: entier ← 0
-        T: [Type] de longueur longueur
-    méthodes:
-        fonction get(i: entier) → Type:  # valeur ← self[i] = valeur ← self.get(i)
-            rendre T[i]
-        fonction set(i: indice, valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
-            T[i] ← valeur
+structure Liste<T>:
+    longueur: entier ← 0
+    capacité: entier ← K
+    données: [T] ← [T]{longueur: capacité}
 
-        fonction append(x: Type)  → ∅:
-            si longueur == T.longueur:
-                T2 ← T
+méthode (self: Liste<T>) get(i: entier) → T:  # valeur ← self[i] = valeur ← self.get(i)
+    rendre self.données[i]
 
-                longueur ← 0
-                T ← un nouveau tableau de Type de longueur 2 * T2.longueur
-                pour chaque y de T2:
-                    append(y)
+méthode (self: Liste<T>) set(i: entier, valeur: T) → ∅:  # self[i] ← valeur = self.set(i, valeur)
+    self.données[i] ← valeur
 
-                append(x)
-            sinon:
-                T[longueur] ← x
-                longueur ← longueur + 1
-        fonction pop()  → Type:
-            longueur ← longueur - 1
-            rendre T[longueur]
+méthode (self: Liste<T>) append(x: T)  → ∅:
+    si self.longueur == self.capacité:
+        (T2 := [T]) ← self.données
+        self.capacité ← 2 * self.capacité 
+        self.données ← [T]{longueur: self.capacité}
+        pour chaque (i:= entier) de T2.longueur:
+            self.données[i] ← T2[i]
+    self.données[self.longueur] ← x
+    self.longueur ← self.longueur + 1
 
-        fonction insert(pos: entier, x: Type) → ∅:
-            self.append(T[-1])
-            pour chaque i allant de T.longueur - 1 à pos + 1 par pas de -1:
-                T[i] ← T[i-1]
-            T[pos] ← x
-        fonction delete(pos: entier) → Type:
-            r ← T[pos]
-            pour chaque i de [pos .. T.longueur - 1[:
-                T[i] ← T[i+1]
-            self.pop()
+méthode (self: Liste<T>) pop()  → T:
+            self.longueur ← self.longueur - 1
+            rendre self.données[self.longueur]
 
-            return r
+méthode (self: Liste<T>) insert(pos: entier, x: T) → ∅:
+    self.append(∅)
+    pour chaque (i:= entier) allant de self.longueur - 1 à pos + 1 par pas de -1:
+        self.données[i] ← self.données[i-1]
+    self.données[pos] ← x
+
+méthode (self: Liste<T>) delete(pos: entier) → T:
+    (r := T) ← self.données[pos]
+    pour chaque (i := entier) de [pos .. self.longueur - 1[:
+        self.données[i] ← self.données[i+1]
+    self.pop()
+
+    rendre r
 
 ```
 
@@ -112,19 +107,18 @@ La complexité de la création d'une liste est $\mathcal{O}(1)$.
 
 ### Ajout d'un élément
 
-L'ajout d'un élément en fin de liste va être de complexité $\mathcal{O}(T.\mbox{\small longueur})$ dans le pire des cas puisqu'il faut créer un nouveau tableau puis tout recopier. Notez bien que l'on ne peut pas faire mieux puisqu'il est impossible de contrôler l'endroit où l'on crée un nouveau tableau (on ne peut pas le coller à l'ancien tableau).
+L'ajout d'un élément en fin de liste $l$ va être de complexité $\mathcal{O}(l.\mbox{\small capacité})$ dans le pire des cas puisqu'il faut créer un nouveau tableau puis tout recopier. Notez bien que l'on ne peut pas faire mieux puisqu'il est impossible de contrôler l'endroit où l'on crée un nouveau tableau (on ne peut pas le coller à l'ancien tableau).
 
-**Cependant**, on va y revenir plus tard, si l'on vient de créer un nouveau tableau $T$, il ne sera qu'à moitié plein : les $T.\mbox{\small longueur} / 2$ prochains ajout d'éléments se feront en $\mathcal{O}(1)$
- opérations !
+**Cependant**, on va y revenir plus tard, si l'on vient de créer un nouveau tableau, il ne sera qu'à moitié plein : les $l.\mbox{\small capacité} / 2$ prochains ajout d'éléments se feront en $\mathcal{O}(1)$ opérations !
 
 {% note %}
-La complexité de l'ajout d'un élément en fin de liste avec `Liste.append`{.language-} est en $\mathcal{O}(T.\mbox{\small longueur})$ (cas le pire), **mais s'il reste de la place**, elle est en $\mathcal{O}(1)$.
+La complexité de l'ajout d'un élément en fin de liste $l$ avec `Liste.append`{.language-} est en $\mathcal{O}(l.\mbox{\small longueur})$ (cas le pire), **mais s'il reste de la place**, elle est en $\mathcal{O}(1)$.
 {% endnote %}
 
 Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du $i$ème et enfin on affecte le nouvel élément à sa place. Comme il faut toujours déplacer des éléments :
 
 {% note %}
-La complexité de l'**insertion d'un élément à une position quelconque** dans une liste  avec `Liste.insert`{.language-}  est en $\mathcal{O}(T.\mbox{\small longueur})$.
+La complexité de l'**insertion d'un élément à une position quelconque** dans une liste $l$ avec `Liste.insert`{.language-}  est en $\mathcal{O}(l.\mbox{\small longueur})$.
 {% endnote %}
 
 ### Suppression d'un élément
@@ -135,10 +129,10 @@ Pour supprimer le dernier élément d'une liste on n'a qu'une opération à fair
 La complexité de la **suppression du dernier élément d'une liste** avec `Liste.pop`{.language-} est $\mathcal{O}(1)$.
 {% endnote %}
 
-Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$ :
+Si l'on supprime un élément au milieu de la liste, il faut décaler d'une case vers la droite les éléments à partir du i+1 ème :
 
 {% note %}
-La complexité de la suppression d'un élément à une position quelconque dans une liste  avec `Liste.delete`{.language-}  est en $\mathcal{O}(T.\mbox{\small longueur})$.
+La complexité de la suppression d'un élément à une position quelconque dans une liste $l$ avec `Liste.delete`{.language-}  est en $\mathcal{O}(l.\mbox{\small longueur})$.
 {% endnote %}
 
 ## Complexité d'ajout de $N$ éléments à la fin de la structure

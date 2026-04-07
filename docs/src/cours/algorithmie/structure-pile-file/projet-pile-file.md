@@ -266,3 +266,6 @@ algorithme évalue(expression: chaîne) → entier:
 
 {% enddetails %}
 
+## Petit train
+
+> TBD petit train. Ordonnancement avec 1 pile. Si i < j < k  on a pas k < i < j

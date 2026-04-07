@@ -93,3 +93,19 @@ Proposez un algorithme linéaire permettant de changer le sens de rotation de la
 > TBD 
 
 {% enddetails %}
+
+{% exercice %}
+Montrez que l'on peut créer une structure de liste circulaire avec une liste chaînée, et proposez un algorithme linéaire permettant de changer le sens de rotation de la liste circulaire.
+{% endexercice %}
+{% details "corrigé" %}
+
+
+p -> q -> r
+
+1. q -> p
+2. p = q
+3. q = r
+4. r = q. suivant
+5. on continue tant que p ≠ r
+
+{% enddetails %}
