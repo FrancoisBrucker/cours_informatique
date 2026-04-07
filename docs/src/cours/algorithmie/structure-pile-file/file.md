@@ -15,19 +15,16 @@ eleventyComputed:
 
 La **_file_** est la structure de donnée idéale pour gérer un flux de donnée dont on doit conserver l'ordre. On appelle également cette structure **_FIFO_** pour _first in, first out_ : on rend toujours la donnée la plus anciennement stockée. La structure d'une file d'entiers sera alors :
 
-```pseudocode
-structure File<T>:
-    attributs:
-        taille: entier
-        
-        #  autres attributs
-    méthodes:
-        fonction enfile(donnée: T) → ∅  # push
-        fonction defile() → T           # pop
-        fonction nombre() → entier      # number
 
-        fonction vide() → booléen       # empty
-        fonction pleine() → booléen     # full
+```pseudocode
+structure Pile<T>:
+    longueur: entier
+    capacité: entier
+        
+    #  autres attributs
+
+méthode (f: File<T>) enfile(donnée: T) → ∅  # push
+méthode (f: File<T>) défile() → T           # pop
 ```
 
 La taille de la file doit être déterminée à la création. Comme la pile, son implémentation nécessitera d'autres attributs.
@@ -44,36 +41,30 @@ On va utiliser 2 indices pour parcourir le tableau de stockage des données :
 - un indice `fin`{.language-} permettant de savoir où ajouter le prochain élément
 - un indice `début`{.language-} permettant de savoir quel prochain élément rendre
 
-Ces deux indices coïncidaient pour la pile.
+Ces deux indices coïncidaient avec la longueur pour la pile.
 
 <span id="structure-file"></span>
 
 ```pseudocode
-structure File<Type>:
-    attributs:
-        taille: entier
-        
-        T: [Type] ← [Type] de longueur taille
-        début: entier ← taille - 1
-        fin: entier ← 0
-    méthodes:
-        fonction enfile(donnée: Type) → ∅:
-            T[fin] ← donnée
-            fin ← (fin + 1) % longueur
-        fonction defile() → Type:
-            début ← (début + 1) % longueur
-            rendre T[début]
-        fonction nombre() → entier:
-            rendre (fin - début - 1 + taille) % taille
+structure File<T>:
+    longueur: entier
+    capacité: entier
 
-        fonction vide() → booléen:
-            si nombre() == 0:
-                rendre Faux
-            rendre Vrai
-        fonction pleine() → booléen:
-            si (nombre() == taille):
-                rendre Vrai
-            rendre Faux
+    (données: [T]) ← [T]{longueur: capacité}
+    début: entier ← capacité - 1
+    fin: entier ← 0
+
+méthode (f: File<T>) enfile(donnée: T) → ∅:
+    f.données[f.fin] ← donnée
+    f.fin ← (f.fin + 1) % f.capacité
+
+    f.longueur ← f.longueur + 1
+
+méthode (f: File<T>) défile() → T:
+    f.longueur ← f.longueur - 1
+    f.début ← (f.début + 1) % f.capacité
+    rendre f.données[f.début]
+
 ```
 
 On voit facilement que :
@@ -84,112 +75,136 @@ Les complexités de toutes les méthodes de la structure `File`{.language-} sont
 Utiliser une file peut se voire comme une opération élémentaire.
 {% endnote %}
 
-Prenons un exemple de file d'entiers pour comprendre comment cette implémentation fonctionne.
+Prenons un exemple de file d'entiers pour comprendre comment cette implémentation fonctionne :
 
 Départ :
 
 ```text
-       f
-          d
-File : 0123
+          fin
+          |  début
+          v  v  
+données : 0123
 ```
 
 Ajout d'un élément 1 :
 
 ```text
-        f
-          d  
-File : 0123
-       1   
+           fin
+           | début
+           v v  
+données : 0123
+          1
 ```
 
 Ajout d'un élément 2 :
 
 ```text
-         f
-          d  
-File : 0123
-       12 
+            fin
+            |début
+            vv  
+données : 0123
+          12
 ```
 
 On défile un élément (1) :
 
 ```text
-         f
-       d  
-File : 0123
-        2 
+            fin
+      début |
+          v v  
+données : 0123
+          12
 ```
 
-Cette implémentation permet une gestion _circulaire_ des données.
+Notez que l'élément dépilé n'est pas effacé, on ne peut juste plus l'atteindre. Cette implémentation permet une gestion _circulaire_ des données.
 
 {% exercice %}
-Prolongez l'exemple précédent en enfilant successivement 3, 4, et 5 puis en défilant trois fois. Quel est l'état des indices après ces opérations ?
+Prolongez l'exemple précédent en enfilant successivement 3, 4, et 5 puis en défilant tous les élément de la file. Quel est l'état des indices après ces opérations ?
 {% endexercice %}
 {% details "corrigé" %}
+
+Pour comprendre le fonctionnement, on va visuellement supprimer les éléments de la file et ne représenter que les données effectivement conserver (ce n'est pas le cas dans l'implémentation réelle)
 
 État initial :
 
 ```text
-         f
-       d  
-File : 0123
-        2 
+            fin
+      début |
+          v v  
+données : 0123
+           2
 ```
 
 Enfile 3 :
 
 ```text
-          f
-       d  
-File : 0123
-        23 
+             fin
+      début  |
+          v  v  
+données : 0123
+           23
 ```
 
 Enfile 4 :
 
 ```text
-       f   
-       d  
-File : 0123
-        234 
+        fin
+      début  
+          v    
+données : 0123
+           234
 ```
 
 Enfile 5 :
 
 ```text
-        f   
-       d  
-File : 0123
-       5234 
+         fin
+      début| 
+          vv   
+données : 0123
+          5234
 ```
 
 Défile (2) :
 
 ```text
-        f   
-        d  
-File : 0123
-       5 34 
+         fin
+       début 
+           v   
+données : 0123
+          5 34
 ```
 
 Défile (3) :
 
 ```text
-        f   
-         d  
-File : 0123
-       5  4 
+         fin
+           |début 
+           vv   
+données : 0123
+          5  4
 ```
 
 Défile (4) :
 
 ```text
-        f   
-          d  
-File : 0123
-       5    
+         fin
+           | début 
+           v v   
+données : 0123
+          5   
 ```
+
+Défile (5) :
+
+```text
+         fin
+      début|  
+          vv    
+données : 0123
+```   
+
+Début et fin sont décalé de 1 par rapport à la construction de la structure.
 
 {% enddetails %}
 
@@ -200,13 +215,13 @@ File : 0123
 Cet exemple montre l'usage classique d'une file. On traite de façon différée les entrées et les sorties dans l'ordre d'arrivée en stockant les données dans une file.
 
 ```pseudocode
-buffer ← File<entier>  {taille: n}
+(buffer := File<entier>) ← File<entier>{capacité: n}
 
 fonction écrire(donnée: entier) → ∅:
     buffer.enfile(donnée)
 
 fonction lire() → entier:
-    rendre buffer.defile()
+    rendre buffer.défile()
 ```
 
 Ceci ce passe constamment lorsque l'on lit une vidéo, télécharge un fichier, etc.
@@ -234,7 +249,7 @@ $$
 Dans les cas réels, les données sont envoyés par _burst_ continu de $K$ entiers, puis des pauses permettant de lire la fin des données et de vider la file. Ceci permet d'avoir des tailles de buffer raisonnable même si la différence de lecture et d'écriture est grande.
 
 {% lien %}
-[Taille de file selon le problème de transfert](https://hardwaregeeksblog.wordpress.com/wp-content/uploads/2016/12/fifodepthcalculationmadeeasy2.pdf)
+[Taille de la file selon le problème de transfert](https://hardwaregeeksblog.wordpress.com/wp-content/uploads/2016/12/fifodepthcalculationmadeeasy2.pdf)
 {% endlien %}
 
 ### Exemple : création des entiers binaires
@@ -243,14 +258,16 @@ On peut aussi utiliser la file comme outil d'énumération. Par exemple pour fai
 
 ```pseudocode
 algorithme compteur(n: entier) → ∅:
-    F ← File<chaîne> {taille: K}
+    F ← File<chaîne> {capacité: K}
     F.enfile("1")
-    i ← 0
-    j ← 1
+    (i:= entier) ← 0
+    (j:= entier) ← 1
+
+    c := chaîne 
     répéter n fois:
         c ← F.défile()
         afficher à l'écran c
-        si j < n:               # limite la taille de la pile
+        si j < n:               # limite la taille de la file
             F.enfile(c + "0")
             F.enfile(c + "1")
             j ← j + 2
@@ -263,10 +280,10 @@ Montrer que pour l'algorithme précédent fonctionne, il faut une file de taille
 {% endexercice %}
 {% details "corrigé" %}
 
-Lorsque l'on crée le $n$ème élément que l'on place dans la file, on le crée avec la chaîne de caractères $n_0\dots,n_k$ que l'on vient de sortir de la file.
+Lorsque l'on crée le $n$ème élément que l'on place dans la file, on le crée avec la chaîne de caractères $n_0\dots n_k$ que l'on vient de sortir de la file.
 
-Le $n$ nombre est alors de la forme $n_0\dots,n_k0$ ou $n_0\dots,n_k1$. Supposons sans perte de généralité que c'est $n_0\dots,n_k0$.
+Le $n$ nombre est alors de la forme $n_0\dots n_k0$ ou $n_0\dots n_k1$. Supposons sans perte de généralité que c'est $n_0\dots,n_k0$.
 
-Comme on vient de sortir $n_0\dots,n_k = n/2$ de la file et qu'on y a placé $n_0\dots,n_k0 = n$, il y a bien $n/2$ élément dans la pile.
+Comme on vient de sortir $n_0\dots n_k = n/2$ de la file et qu'on y a placé $n_0\dots n_k0 = n$, il y a bien $n/2$ élément dans la file.
 
 {% enddetails %}

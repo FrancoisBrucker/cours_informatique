@@ -954,7 +954,7 @@ L'astuce qui consiste à remarquer que $p^{\log_k(q)} = q^{\log_k(p)}$ est à ga
 ### Code
 
 {% exercice %}
-implémentez l'algorithme de Strassen et comparez son exécution à une multiplication naive pur des puissances de 2 allant jusqu'à 1024. Conclusion ?
+Implémentez l'algorithme de Strassen et comparez son exécution à une multiplication naive pour des puissances de 2 allant jusqu'à 512. Conclusion ?
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -962,8 +962,7 @@ implémentez l'algorithme de Strassen et comparez son exécution à une multipli
 [`strassen.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/strassen.py)
 {% endlien %}
 
-
-La création des différentes matrices rend l'algorithme bien plus gourmand que l'algorithme naïf ! C'est pourquoi l'algorithme de Strassen n'est utilisé que pour de grandes matrices et avec d'autres optimisation que ce que l'on a pu faire.
+La création des différentes matrices rend l'algorithme bien plus gourmand que l'algorithme naïf ! C'est pourquoi l'algorithme de Strassen n'est utilisé que pour de grandes matrices et avec d'autres optimisation que ce que l'on a pu faire : on voit en effet que le rapport de temps entre les 2 temps algorithme augmente (mais très doucement).
 {% enddetails %}
 
 ### Généralisation
@@ -971,13 +970,14 @@ La création des différentes matrices rend l'algorithme bien plus gourmand que 
 > TBD
 
 - Matrices non carrées : On peut les puissances de 2 supérieures en ligne et en colonnes.
-- Inverse de matrices
+- Inverse de matrices : <https://mathworld.wolfram.com/StrassenFormulas.html>
 
 ### On peut faire mieux !
 
 > TBD on peut faire encore mieux.... limite étant n2
+> TBD mais la taille réelles pour lesquelles ces améliorations fonctionnent sont tres grandes.
 
 {% lien %}
-[histoire des différents algorithmes](https://www.youtube.com/watch?v=xsZk3c7Oxyw)
-[Une expérimentation par LaurieWired](https://www.youtube.com/watch?v=HdysaWNs1g8)
+- [histoire des différents algorithmes](https://www.youtube.com/watch?v=xsZk3c7Oxyw)
+- [Une expérimentation de _LaurieWired_](https://www.youtube.com/watch?v=HdysaWNs1g8)
 {% endlien %}

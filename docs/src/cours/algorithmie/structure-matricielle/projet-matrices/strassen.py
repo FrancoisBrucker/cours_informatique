@@ -145,9 +145,8 @@ B = matrice_aléatoire(4, 10)
 affiche(différence(multiplication_naive(A, B), strassen_rec(A, B)))
 print("============")
 
-nb = 1
 
-for p in range(1, 20):
+for p in range(1, 11):
     A = matrice_aléatoire(p, 10)
     B = matrice_aléatoire(p, 10)
     t1 = time.perf_counter()
@@ -160,4 +159,4 @@ for p in range(1, 20):
     t2 = time.perf_counter()
     m2 = t2 - t1
 
-    print(2 ** p, m1, m2)
+    print(2 ** p, "naïf :", m1, "Strassen :", m2, "rapport :", m1/m2)

@@ -281,7 +281,7 @@ Les matrices constituent le premier type composé que l'on peut utiliser sans d�
 [Matrices](structure-matricielle){.interne}
 {% endaller %}
 
-### Structures de données
+### Création de structures de données
 
 {% prerequis "**Prérequis**" %}
 [Programmation objet](/cours/coder-et-développer/programmation-objet/){.interne}
@@ -293,41 +293,35 @@ Comment créer de nouveaux types d'objets utilisable pour nos algorithmes :
 [Structures de données](structure-données){.interne}
 {% endaller %}
 
-### Structures linéaires
-
-Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes : les **_structures linéaires_**.
-
-{% lien %}
-[Structures linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
-{% endlien %}
-
-Ces structures sont des conteneurs, comme des tableaux, qu permettent de stocker des éléments. Selon l'usage que l'on voudra en faire on privilégiera telle ou telle structure.
-
-
-> TBD ajouter un TD/TP sur l'utilité de chaque structure
-> TBD parler de taille (nb actuel) et de capacité (nb max)
+Nous allons définir et utiliser dans la suite de cette partie les **_structures linéaires_**. Ce sont des structures qui, comme les tableaux, stockent des éléments suivant un ordre linéaire. Ces structures sont faites pour répondre de façon optimale à des problèmes courant en algorithmie.
 
 ### Pile et file
 
-Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
+Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivantes avant de pouvoir les traiter une à une. Les deux structures fondamentales utilisées pour cela sont les piles et les files :
 
 {% aller %}
 [Structure de pile et file](./structure-pile-file){.interne}
 {% endaller %}
 
-> TBD pile et tas. Montrer la récursion. Et la decurryfication 
-
 ### Listes chaînées
 
+> TBD première structure infinie
 Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
 
 {% aller %}
 [Les listes chaînées](./structure-liste-chaînée){.interne}
 {% endaller %}
 
-> TBD maintenir un ordre PAPS. Faire circulaire. Ex graphes cordés ?
+
+## Autre structures
+
+- skip list
+- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
+
 
 ### Listes et dictionnaires
+
+> TBD liste chaînée infinie mais a de gros pbs de complexité si on veut l'utiliser comme un tableau L[i] en O(i)
 
 La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Nous verrons dans cette partie que l'on peut faire sauter cette contrainte d'un tableau au prix d'un coût négligeable en complexité :
 
@@ -409,8 +403,6 @@ Lequel ?
 
 {% enddetails %}
 
-
-
 ### Comparaisons des structures de conteneurs
 
 On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'on veut en faire : on prendra celle de complexité minimale.
@@ -419,6 +411,11 @@ On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'
 [Comparaisons des complexités des structures](./structures-complexité){.interne}
 {% endaller %}
 
+> TBD lien suivant à replacer
+
+{% lien %}
+[Tableau, listes chaînées et listes](https://www.youtube.com/watch?v=kPqk07Gpj0A)
+{% endlien %}
 
 ### Complexité amortie
 
@@ -456,13 +453,31 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 
 #### Algorithmes classiques, mais dur.
 
-> TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, médiane en temps linéaire)
+> TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, 
+> 
+> 
+> TBD médiane en temps linéaire dans diviser pour régner.
 
 > TBD déplacer 2-3 sum ici (il est dans projet-algorithmes-classiques/ pour l'instant)
- -->
+>
+
+
+ Élément majoritaire
+
+> TBD
+> naif : ils trouvent
+> tri  : ils trouvent
+> pile : on donne l'algorithme et ils prouvent que c'est ok. 
+> 
+
+
+-->
 
 > TBD ici terminer la partie A de l'algorithmie : Bases
-> TBD ensuite parie B qui commence : confirmé
+> TBD ensuite parie B qui commence : confirmé. Commencer avec modèle s : mémoire et pointeurs.
+> puis logique et algorithmique. puis SAT
+> puis résolutions de pbs.
+> 
 > TBD la parie C sera : avancé
 
 ## <span id="partie-3"></span>Partie III : structures de données avancées
@@ -487,6 +502,8 @@ Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à a
 
 > TBD <https://research.swtch.com/godata>
 > TBD pointeur = exhibe l'indirection dans les ordi réel. On essaie d'éviter ça. Ex de la mémoire cache -> recopie dans tableau plutôt que tableau de pointeur, utilisation de liste plutôt que liste chaînée des que c'est possible.
+
+> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88> avec pointeurs
 
 {% aller %}
 [Structures de données avancées](./structure-données-avancée){.interne}
@@ -650,6 +667,7 @@ Le cas général de 3-SUM est le problème SUBSET-SUM où on cherche juste un en
 > TBD à montrer.
 >
 > TBD <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/> -->
+> TBD : Knuth dancing links <https://www.youtube.com/watch?v=_cR9zDlvP88> avec pointeurs
 
 > TBD ici commence la parie C : avancé
 

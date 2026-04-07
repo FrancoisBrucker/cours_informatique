@@ -67,7 +67,7 @@ entier([3, 2, 1]) = 123
 {% endfaire %}
 
 
-## Bon parenthésage
+## <span id="parenthésage"></span>Bon parenthésage
 
 ### Uniquement des parenthèses
 
