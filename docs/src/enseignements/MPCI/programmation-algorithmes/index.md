@@ -647,7 +647,7 @@ La séance du mardi 7 avril pour le groupe B est reportée au vendredi 10 à 8h.
 {% endattention %}
 
 {% faire %}
-DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal algorithmie 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/2025-05-26_L1S2_programmation_ET.pdf){.interne}
+DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal programmation 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/2025-05-26_L1S2_programmation_ET.pdf){.interne}
 
 {% endfaire %}
 {% info %}
