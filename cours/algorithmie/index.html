@@ -446,8 +446,7 @@
 
 <h4>On vérifie qu'on sait faire</h4>
 <blockquote>
-<p>TBD ajouter permutations ET MPCI 2025
-TBD ajouter le tri de crêpes</p>
+<p>TBD ajouter permutations ET MPCI 2025</p>
 </blockquote>
 <h2><span id="partie-2"></span>Partie II : structures de données</h2>
 <h3>Matrices</h3>
@@ -492,10 +491,7 @@ TBD ajouter le tri de crêpes</p>
 </div></div>
 
 <h3>Listes chaînées</h3>
-<blockquote>
-<p>TBD première structure infinie
-Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la <strong><em>liste chaînée</em></strong> :</p>
-</blockquote>
+<p>Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la <strong><em>liste chaînée</em></strong> :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -504,16 +500,9 @@ Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit su
 <p><a href="structure-liste-cha%C3%AEn%C3%A9e" class="interne">Les listes chaînées</a></p>
 </div></div>
 
-<h2>Autre structures</h2>
-<ul>
-<li>skip list</li>
-<li>listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <a href="https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf">https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf</a></li>
-</ul>
 <h3>Listes et dictionnaires</h3>
-<blockquote>
-<p>TBD liste chaînée infinie mais a de gros pbs de complexité si on veut l'utiliser comme un tableau L[i] en O(i)</p>
-</blockquote>
-<p>La <a href="pseudo-code/briques-de-base/#tableaux" class="interne">structure de tableau</a> est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. Nous verrons dans cette partie que l'on peut faire sauter cette contrainte d'un tableau au prix d'un coût négligeable en complexité :</p>
+<p>La <a href="pseudo-code/briques-de-base/#tableaux" class="interne">structure de tableau</a> est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.</p>
+<p>La liste est un compromis très efficace pour réaliser les deux opérations au prix d'un coût négligeable en complexité.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -736,6 +725,12 @@ le pire.</p>
 <p><a href="https://www.youtube.com/watch?v=kPqk07Gpj0A">Tableau, listes chaînées et listes</a></p>
 </div></div>
 
+<h3>On s'entraîne</h3>
+<blockquote>
+<p>TBD élément majoritaire
+TBD doublon dans une liste avec dico.
+TBD tri par monotonie</p>
+</blockquote>
 <h3>Complexité amortie</h3>
 <p>Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire la méthode append des listes.</p>
 <p>Si dans le premier cas deux recherches successive peuvent prendre $\mathcal{O}(n)$ opérations (si on a pas de chance) ce n'est pas le cas de la seconde où si un premier append prend $\mathcal{O}(n)$ opérations on sait que l'appel suivant ne prendra que $\mathcal{O}(1)$ opérations.</p>
@@ -746,15 +741,6 @@ le pire.</p>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="complexit%C3%A9-amortie" class="interne">Complexité amortie</a></p>
-</div></div>
-
-<h3>On s'entraîne : structures</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="projet-structures" class="interne">Utilisation de structures</a></p>
 </div></div>
 
 <h3>Intermède</h3>
@@ -773,6 +759,14 @@ le pire.</p>
 </div></div>
 
 <!-- 
+
+
+
+## Autre structures
+
+- skip list
+- listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
+
 
 #### Algorithmes classiques, mais dur.
 
