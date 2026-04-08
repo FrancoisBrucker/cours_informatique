@@ -286,8 +286,8 @@ def fact(n):
 
 Remarquez comment la variable pos permet de rediriger les différents appels récursifs. À chaque nouvel appel récursif on empile deux choses :
 
-1. l'ancien appel qui devra continuer à sa nouvelle position une fois l'appel récursif terminée : `P.append((n, r1, 2))`{.language-}
-2. l'appel récursif en lui même qui doit recommencer tout au début du code, en position 1 : `P.append((n-1, r1, 1))`{.language-}
+1. l'ancien appel qui devra continuer à sa nouvelle position une fois l'appel récursif terminée : `P.empile((n, r1, 2))`{.language-}
+2. l'appel récursif en lui même qui doit recommencer tout au début du code, en position 1 : `P.empile((n-1, r1, 1))`{.language-}
 
 Enfin, on remarque que la variable locale  `r'`{.language-} n'est jamais utilisé dans la récursion. On n'est donc pas obligé de l'empiler :
 

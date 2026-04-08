@@ -685,7 +685,7 @@ DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal
 > 13/04 au 17/04
 > Algorithmie
 
-#### Mercredi : Listes et dictionnaires
+#### Mercredi : Listes
 
 
 {% aller %}
@@ -694,18 +694,22 @@ DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal
 
 {% endaller %}
 
-> TBD listes et dictionnaires
-
-
-#### Vendredi : complexité amortie
-
-> TBD complexité amortie
+#### Vendredi : Dictionnaires
 
 {% aller %}
 
 [Structures de dictionnaire](/cours/algorithmie/structure-dictionnaire/){.interne}
 
 {% endaller %}
+
+Si on a le temps, sinon à faire chez vous :
+
+{% aller %}
+
+[Projet Liste et dictionnaires](/cours/algorithmie/projet-liste-dictionnaire/){.interne}
+
+{% endaller %}
+
 
 Pour aller plus loin :
 

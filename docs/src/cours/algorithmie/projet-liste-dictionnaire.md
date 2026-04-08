@@ -9,12 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les listes et les dictionnaires (et les ensembles) permettent d'écrire bien plus facilement des algorithmes qu'avec des tableaux. S'il n'y a aucune contre-indication pour l'utilisation de listes (les complexités sont les mêmes qu'avec un tableau), il faut cependant être contient que l'utilisation de dictionnaires n'est optimale (en $\mathcal{O}(1)$) qu'en moyenne.
+Les listes, les dictionnaires et les ensembles permettent d'écrire bien plus facilement des algorithmes qu'avec des tableaux. S'il n'y a aucune contre-indication pour l'utilisation de listes (les complexités sont les mêmes qu'avec un tableau), il faut cependant être contient que l'utilisation de dictionnaires n'est optimale (en $\mathcal{O}(1)$) qu'en moyenne.
 
-
-> TBD : sortir les ensemble des dictionnaire et leur associer la structure {type}. Comme ça on a les listes avec [type], les dictionnaires avec {type:type} et les ensembles avec {type}.
-
-> TBD exos listes (truc du prix à mettre ici) Tri par monotonies
 
 ## <span id="exercice-fondamental"></span>Exercice fondamental
 
@@ -45,8 +41,8 @@ Créer cet algorithme et calculez-en sa complexité.
 
 ```pseudocode
 algorithme recherche(p : [entier], C: entier) → (entier, entier):
-    pour chaque i de [0 .. p.longueur[:
-        pour chaque j de [i+1 .. p.longueur[:
+    pour chaque (i := entier) de [0 .. p.longueur[:
+        pour chaque (j := entier) de [i+1 .. p.longueur[:
             si p[i] + p[j] == C:
                 rendre (i, j)
     
@@ -80,8 +76,8 @@ algorithme recherche(p : [entier], C: entier) → (entier, entier):
 
     trie p2 par ordre lexicographique croissant  
 
-    i ← 0
-    j ← p2.longueur -1
+    (i := entier) ← 0
+    (j := entier) ← p2.longueur -1
 
     tant que (i < j) et (p2[i][0] + p2[j][0] != C):
         si p2[i][0] + p2[j][0] < C:
@@ -114,10 +110,10 @@ Première version :
 algorithme recherche(p : [entier], C: entier) → (entier, entier):
     d ← nouveau Dictionnaire<entier, entier>
 
-    pour chaque i de [0 .. p.longueur[:
+    pour chaque (i := entier) de [0 .. p.longueur[:
         d[p[i]] ← i
 
-    pour chaque u de [0 .. p.longueur[:
+    pour chaque (u := entier) de [0 .. p.longueur[:
         p2 ← C - p[u] 
         si p2 est dans d:
             v ← d[p2]
@@ -130,7 +126,7 @@ Seconde version sans tout remplir, qui évite les `min`{.language-} et `min`{.la
 algorithme recherche(p : [entier], C: entier) → (entier, entier):
     d ← nouveau Dictionnaire<entier, entier>
 
-    pour chaque i de [0 .. p.longueur[:
+    pour chaque (i := entier) de [0 .. p.longueur[:
         si C - p[i] est dans d:
             rendre (d[C-p[i]], i)
         d[p[i]] ← i
@@ -147,7 +143,7 @@ Proposez une méthode permettant de générer une instance du problème admettan
 {% endexercice %}
 {% details "solution" %}
 
-On tire des p[i] au hasard dans [1, pmax] sans remise puis on choisi deux indices i et j et on pose C = p[i] + p[j]
+On tire des `p[i]`{.language-} au hasard dans `[1, pmax]`{.language-} sans remise puis on choisi deux indices i et j et on pose `C = p[i] + p[j]`{.language-}
 
 {% enddetails %}
 
@@ -211,7 +207,7 @@ def recherche(p, C):
 
 {% enddetails %}
 
-
+## Tri par monotonie
 
 Utilisation des listes pour faire grossir des tableaux.
 
@@ -222,7 +218,7 @@ Utilisation des listes pour faire grossir des tableaux.
 Par exemple si $T = [2,6, 1,3, 3, 5,2,6, 4,0, 1,8,9,1,3, 2,0,1,0]$, alors $[2,6]$, $[1,3,3,5]$, $[2,6]$, $[4]$, $[0, 1,8,9]$, $[1,3]$, $[2]$, $[0,1]$ et $[0]$ sont les monotonies de $T$.
 
 {% exercice %}
-Donnez un algorithme qui, étant donné un tableau $T$ construit un tableau de tableaus d'entiers $L$ tel que chaque élément de $L$ soit une monotonie de $T$ (et vice versa). 
+Donnez un algorithme qui, étant donné un tableau $T$ construit une liste de listes d'entiers $L$ tel que chaque élément de $L$ soit une monotonie de $T$ (et vice versa).
 {% endexercice %}
 {% info %}
 À partir de notre exemple, on obtient :
@@ -275,3 +271,10 @@ Lequel ?
 > TBD
 
 {% enddetails %}
+
+## Doublons dans deux listes
+
+> TBD doublon dans une liste (voir exo tutorat):
+> - sans rien
+> - avec listes et delete (avec astuce du pop du dernier si on s'en fiche de l'ordre en dupliquant les listes)
+> - avec ensemble

@@ -327,6 +327,12 @@ Si les listes permettent de supprimer la première contrainte de l'utilisation d
 [Structure de dictionnaires](./structure-dictionnaire){.interne}
 {% endaller %}
 
+On s'entraîne :
+
+{% aller %}
+[Projet : listes et dictionnaires](./projet-liste-dictionnaire){.interne}
+{% endaller %}
+
 ### Comparaisons des structures de conteneurs
 
 On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'on veut en faire : on prendra celle de complexité minimale.
@@ -344,8 +350,6 @@ On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'
 ### On s'entraîne
 
 > TBD élément majoritaire
-> TBD doublon dans une liste avec dico.
-> TBD tri par monotonie
 
 ### Complexité amortie
 
@@ -868,6 +872,8 @@ Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing C
 [Mélanger un tableau](./projet-mélange){.interne}
 {% endaller %} -->
 
+> TBD vérification probabiliste de la multiplication de 2 matrices : <https://fr.wikipedia.org/wiki/Algorithme_de_Freivalds>
+> 
 > TBD <https://www.reddit.com/r/soloboardgaming/comments/1rie0o4/fibonacci_stealth_dice_for_paperandpencil_games/>
 > TBD playlist sur algorithme randomisé :
 > - <https://www.youtube.com/watch?v=0iOzo04Ziws&list=PL0YFU3y0Z_gbjvT1yDQkwRU9UXahd0BP1>

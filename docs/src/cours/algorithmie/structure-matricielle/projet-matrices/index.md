@@ -967,17 +967,33 @@ La création des différentes matrices rend l'algorithme bien plus gourmand que 
 
 ### Généralisation
 
-> TBD
+{% exercice %}
+Comment généraliseriez vous l'algorithme de Strassen à des matrices non carrées ?
+{% endexercice %}
+{% details "corrigé" %}
 
-- Matrices non carrées : On peut les puissances de 2 supérieures en ligne et en colonnes.
-- Inverse de matrices : <https://mathworld.wolfram.com/StrassenFormulas.html>
+1. On englobe les matrices à multiplier dans des matrices ayant comme dimensions des puissances de 2 en ligne et en colonne. 
+2. on stoppe la récursion lorsqu'une des dimensions vaut $2^0 = 1$ et on multiplie des vecteurs ligne ou colonne.
+
+{% enddetails %}
+
+On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant est de même complexité que celle de la multiplication de matrices. Cela passe par [le complément de Shur](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_de_Schur) d'une matrice. Les deux liens ci-après expliquent tout ça très bien :
+
+{% lien %}
+
+- <https://fr.wikipedia.org/wiki/Complexit%C3%A9_de_la_multiplication_de_matrices#Inversion_de_matrice,_d%C3%A9terminant_et_%C3%A9limination_gaussienne>
+- <https://weimann.users.lmno.cnrs.fr/CM5.pdf>
+
+{% endlien %}
+
 
 ### On peut faire mieux !
 
-> TBD on peut faire encore mieux.... limite étant n2
-> TBD mais la taille réelles pour lesquelles ces améliorations fonctionnent sont tres grandes.
+La limite théorique de la multiplication de deux matrices carrées à $n$ lignes est en $\mathcal{O}(n^2)$ et l'algorithme de Strassen est en $\mathcal{O}(n^{2.804})$. Il en existe d'autres meilleures, voir les lien ci-aaprès :
 
 {% lien %}
 - [histoire des différents algorithmes](https://www.youtube.com/watch?v=xsZk3c7Oxyw)
 - [Une expérimentation de _LaurieWired_](https://www.youtube.com/watch?v=HdysaWNs1g8)
 {% endlien %}
+
+Cependant, comme on l'a vu, ces résultats sont asymptotiques et on ne voit la différence que pour des matrices très très grandes. À l'heure où je tape ces lignes, le meilleur algorithme connu date de 2025 et est en $\mathcal{O}(2^{271})$.
