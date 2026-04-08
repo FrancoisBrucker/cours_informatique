@@ -96,13 +96,7 @@
     
   
 
-  <p>Les listes et les dictionnaires (et les ensembles) permettent d'écrire bien plus facilement des algorithmes qu'avec des tableaux. S'il n'y a aucune contre-indication pour l'utilisation de listes (les complexités sont les mêmes qu'avec un tableau), il faut cependant être contient que l'utilisation de dictionnaires n'est optimale (en $\mathcal{O}(1)$) qu'en moyenne.</p>
-<blockquote>
-<p>TBD : sortir les ensemble des dictionnaire et leur associer la structure {type}. Comme ça on a les listes avec [type], les dictionnaires avec {type:type} et les ensembles avec {type}.</p>
-</blockquote>
-<blockquote>
-<p>TBD exos listes (truc du prix à mettre ici) Tri par monotonies</p>
-</blockquote>
+  <p>Les listes, les dictionnaires et les ensembles permettent d'écrire bien plus facilement des algorithmes qu'avec des tableaux. S'il n'y a aucune contre-indication pour l'utilisation de listes (les complexités sont les mêmes qu'avec un tableau), il faut cependant être contient que l'utilisation de dictionnaires n'est optimale (en $\mathcal{O}(1)$) qu'en moyenne.</p>
 <h2><span id="exercice-fondamental"></span>Exercice fondamental</h2>
 <p>Exercice fondamental pour comprendre l'intérêt des dictionnaires et des listes.</p>
 <p><span id="problème-crédit"></span></p>
@@ -152,8 +146,8 @@
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>p <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> C<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">,</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
-        <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>j <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> C<span class="token punctuation">:</span>
                 <span class="token keyword">rendre</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span>
     
@@ -200,8 +194,8 @@
 
     trie p2 par ordre lexicographique croissant  
 
-   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
-   <span class="token number"> j </span><span class="token operator">←</span> p2<span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number">1</span>
+    <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token punctuation">(</span>j <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> p2<span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number">1</span>
 
     <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> j<span class="token punctuation">)</span> <span class="token keyword">et</span> <span class="token punctuation">(</span>p2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> p2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">!=</span> C<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">si</span> p2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> p2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> C<span class="token punctuation">:</span>
@@ -246,10 +240,10 @@
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">algorithme recherche<span class="token punctuation">(</span>p <span class="token punctuation">:</span> <span class="token punctuation">[</span>entier<span class="token punctuation">]</span><span class="token punctuation">,</span> C<span class="token punctuation">:</span> entier<span class="token punctuation">)</span> → <span class="token punctuation">(</span>entier<span class="token punctuation">,</span> entier<span class="token punctuation">)</span><span class="token punctuation">:</span>
     d ← nouveau Dictionnaire<span class="token operator">&lt;</span>entier<span class="token punctuation">,</span> entier<span class="token operator">></span>
 
-    pour chaque i de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    pour chaque <span class="token punctuation">(</span>i <span class="token operator">:=</span> entier<span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         d<span class="token punctuation">[</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> ← i
 
-    pour chaque u de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    pour chaque <span class="token punctuation">(</span>u <span class="token operator">:=</span> entier<span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         p2 ← C <span class="token operator">-</span> p<span class="token punctuation">[</span>u<span class="token punctuation">]</span> 
         si p2 est dans d<span class="token punctuation">:</span>
             v ← d<span class="token punctuation">[</span>p2<span class="token punctuation">]</span>
@@ -258,7 +252,7 @@
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">algorithme recherche<span class="token punctuation">(</span>p <span class="token punctuation">:</span> <span class="token punctuation">[</span>entier<span class="token punctuation">]</span><span class="token punctuation">,</span> C<span class="token punctuation">:</span> entier<span class="token punctuation">)</span> → <span class="token punctuation">(</span>entier<span class="token punctuation">,</span> entier<span class="token punctuation">)</span><span class="token punctuation">:</span>
     d ← nouveau Dictionnaire<span class="token operator">&lt;</span>entier<span class="token punctuation">,</span> entier<span class="token operator">></span>
 
-    pour chaque i de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    pour chaque <span class="token punctuation">(</span>i <span class="token operator">:=</span> entier<span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
         si C <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> est dans d<span class="token punctuation">:</span>
             rendre <span class="token punctuation">(</span>d<span class="token punctuation">[</span>C<span class="token operator">-</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
         d<span class="token punctuation">[</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> ← i
@@ -291,7 +285,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On tire des p[i] au hasard dans [1, pmax] sans remise puis on choisi deux indices i et j et on pose C = p[i] + p[j]</p>
+<p>On tire des <code class="language-">p[i]</code> au hasard dans <code class="language-">[1, pmax]</code> sans remise puis on choisi deux indices i et j et on pose <code class="language-">C = p[i] + p[j]</code></p>
 </div>
 </details>     
 </div>
@@ -384,6 +378,7 @@
 </div>
 </details>     
 </div>
+<h2>Tri par monotonie</h2>
 <p>Utilisation des listes pour faire grossir des tableaux.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -399,7 +394,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Donnez un algorithme qui, étant donné un tableau $T$ construit un tableau de tableaus d'entiers $L$ tel que chaque élément de $L$ soit une monotonie de $T$ (et vice versa).</p>
+<p>Donnez un algorithme qui, étant donné un tableau $T$ construit une liste de listes d'entiers $L$ tel que chaque élément de $L$ soit une monotonie de $T$ (et vice versa).</p>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -561,6 +556,15 @@ le pire.</p>
 </div>
 </details>     
 </div>
+<h2>Doublons dans deux listes</h2>
+<blockquote>
+<p>TBD doublon dans une liste (voir exo tutorat):</p>
+<ul>
+<li>sans rien</li>
+<li>avec listes et delete (avec astuce du pop du dernier si on s'en fiche de l'ordre en dupliquant les listes)</li>
+<li>avec ensemble</li>
+</ul>
+</blockquote>
 
 
 </article>

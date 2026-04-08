@@ -369,8 +369,8 @@ données : 0123
 </div>
 <p>Remarquez comment la variable pos permet de rediriger les différents appels récursifs. À chaque nouvel appel récursif on empile deux choses :</p>
 <ol>
-<li>l'ancien appel qui devra continuer à sa nouvelle position une fois l'appel récursif terminée : <code class="language-">P.append((n, r1, 2))</code></li>
-<li>l'appel récursif en lui même qui doit recommencer tout au début du code, en position 1 : <code class="language-">P.append((n-1, r1, 1))</code></li>
+<li>l'ancien appel qui devra continuer à sa nouvelle position une fois l'appel récursif terminée : <code class="language-">P.empile((n, r1, 2))</code></li>
+<li>l'appel récursif en lui même qui doit recommencer tout au début du code, en position 1 : <code class="language-">P.empile((n-1, r1, 1))</code></li>
 </ol>
 <p>Enfin, on remarque que la variable locale  <code class="language-">r'</code> n'est jamais utilisé dans la récursion. On n'est donc pas obligé de l'empiler :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
