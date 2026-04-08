@@ -101,4 +101,8 @@ Si les caractères sont équiprobables alors la position dans la chaîne de cara
 
 ##### 1.3.2
 
+On note $p$ la probabilité que deux lettre soient identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j < k$ et que $a[i + k] \neq B[k]$ vaut alors, puisqu'il y a équiprobabilité : $p^{k}(1-p)$
+
+Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle `tant que`{.language-} vaut alors :
+
 > TBD
