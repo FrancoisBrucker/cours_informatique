@@ -96,30 +96,23 @@ La liste est une généralisation du tableau permettant de modifier sa longueur.
 
 <span id="type-list"></span>
 
-{% note "**Type de Liste**" %}
+{% note "**Abus de notation : Type de Liste**" %}
+
 Les listes étant très utilisées, on utilisera le type tableau pour les représenter. On écrira ainsi :
 
 ```pseudocode
 x := [entier]
 ```
 
-Pour décrire soit un tableau, soit une liste. On pourra voir la différence pendant son initialisation :
+Pour décrire soit un tableau, soit une liste. On pourra voir la différence pendant son initialisation avec l'utilisation ou non de l'attribut `longueur`{.language-} :
 
-```pseudocode
-x ← List<entier>{}
-```
+- un tableau doit avoir sa longueur définie,
+- la longueur d'une liste correspond aux nombres d'éléments dans la structure et est donc vide à l'initialisation.
 
-Ou encore l'abus de notation :
+On se permettra alors les abus de languages suivant pour remplacer l'initialisation `x ← Liste<entier>{}`{.language-} :
 
-```pseudocode
-x ← [int]{capacité: 10}
-```
-
-Voir le tout aussi clair puisqu'un tableau à **forcément une longueur** :
-
-```pseudocode
-x ← [int]{}
-```
+- `x ← [entier]{}`{.language-}
+- `x ← [entier]{capacité: 10}`{.language-} si on veut fixer ue capacité initiale
 
 {% endnote %}
 

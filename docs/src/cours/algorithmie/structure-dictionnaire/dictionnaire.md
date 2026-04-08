@@ -48,13 +48,13 @@ Le squelette de la structure de dictionnaire est la suivante :
 
 ```pseudocode
 structure Dictionnaire<K, V>:
-    T: [V]<longueur: m>  ← [∅ .. ∅]  # tableau de m entrées toutes vies
+    T: [V]<longueur: m>  ← [∅ .. ∅]  # tableau de m entrées toutes vides
 
 méthode (d: Dictionnaire<K, V>) f(clé: K) → [0 .. m[ 
 
-méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← self[clé] = valeur ← self.get(clé)
+méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
     rendre d.T[d.f(clé)]
-méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
+méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ← valeur = d.set(clé, valeur)
     d.T[d.f(clé)] ← valeur
 
 ```
@@ -105,7 +105,7 @@ rgb["bleu"] ← 255
 
 On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si `Dictionnaire.f("bleu")`{.language-} =  `Dictionnaire.f("rouge")`{.language-} le code précédent ne fonctionnera pas.
 
-## Implémentation réelle
+## Première implémentation réelle
 
 Si $m$ est très grand devant le nombre d'objet que l'on veut stocker la probabilité de collisions est tellement faible qu'on peut la considérer comme nulle, mais :
 
@@ -131,53 +131,50 @@ _"We can solve any problem by introducing an extra level of indirection."_
 Dans notre cas, l'indirection consiste à stocker les couples (clé, valeur) possibles dans $T[f(i)]$ :
 
 ```pseudocode
-structure Dictionaire<Type>:
-    attributs:
-        T: [Liste<([bit], Type)>] ← tableau de longueur m où chaque élément est initialisé à une liste vide
-    méthodes:
-        fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+structure Dictionnaire<K, V>:
+    T: [Liste<(K, V)>]<longueur: m>  ← [[] .. []]  # tableau de m entrées de listes vides
 
-        fonction get(clé: [bit]) → Type:  # valeur ← self[clé] = valeur ← self.get(clé)
-            pour chaque couple (c, v) de T[f(clé)]:
-                si c == clé:
-                    rendre v
+méthode (d: Dictionnaire<K, V>) f(clé: K) → [0 .. m[ 
 
-        fonction set(clé: [bit], valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
-            l ← T[f(clé)]
-            pour chaque i de [0 à l.longueur[ :
-                c, v ← l[i]
-                si c == clé:
-                    l[i] ← (clé, valeur)
-                    rendre ∅
+méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
+    pour chaque ((c, v) := (K, V)) de d.T[d.f(clé)]:
+        si c == clé:
+            rendre v
 
-            T[f(clé)].append((clé, valeur))
+méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ← valeur = d.set(clé, valeur)
+    (l := [(K, V)]) ← d.T[d.f(clé)]
+    pour chaque (i := entier) de [0 à l.longueur[ :
+        c, v ← l[i]
+        si c == clé:
+            l[i] ← (clé, valeur)
+            rendre ∅
 
-        fonction in(clé: [bit]) → booléen:  # x est dans self = self.in(x)
-            l ← T[f(clé)]
-            pour chaque e de l :
-                c, v ← e
-                si c == clé:
-                    l.delete((c, v))
-                    rendre Vrai
-            rendre Faux
-        fonction delete(clé: [bit]) → ∅:  # supprime x de self = self.delete(x)
-            l ← T[f(clé)]
-            pour chaque e de l :
-                c, v ← e
-                si c == clé:
-                    l.delete((c, v))
-                    rendre ∅
+    d.T[d.f(clé)].append((clé, valeur))
 
+méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
+    (l := [(K, V)]) ← d.T[d.f(clé)]
+    pour chaque ((c, v) := (K, V)) de l :
+        si c == clé:
+            rendre Vrai
+    rendre Faux
+méthode (d: Dictionnaire<K, V>)  delete(clé: K) → ∅:  # supprime x de self = self.delete(x)
+    (l := [(K, V)]) ← d.T[d.f(clé)]
+    pour chaque i de [0 .. l.longueur[:
+        ((c, v) := (K, V)) ← l[i]:
+        si c == clé:
+            l[i], l[-1] = l[-1], l[i]   # astuce pour supprimer en O(1)
+            l.pop()
+            rendre ∅
 ```
 
 Chaque élément du tableau T de la structure est une liste qui stockera les différentes clés ayant même hash.
 
-Comme on peut ajouter des clés, on a ajouté deux méthodes `Dictionaire.in`{.language-} et `Dictionaire.delete`{.language-} permettant respectivement de savoir si une clé est présente dans le dictionnaire et pour supprimer une clé.
+Comme on peut ajouter des clés, on a ajouté deux méthodes `Dictionnaire.in`{.language-} et `Dictionnaire.delete`{.language-} permettant respectivement de savoir si une clé est présente dans le dictionnaire et pour supprimer une clé (remarquez l'astuce utilisée dans la méthode delete. Comme on a pas besoin d'ordre on peut échanger avec le dernier pour utiliser la méthode pop qui est en $\mathcal{O}(1)$).
 
 Reprenons l'exemple précédent :
 
 ```pseudocode
-rgb ← Dictionaire
+(rgb := {chaîne: entier}) ← {:}
 
 rgb["rouge"] ← 230
 rgb["vert"] ← 12
@@ -188,8 +185,8 @@ rgb["bleu"] ← 255
 En supposant que :
 
 - m = 3
-- `Dictionaire.f("vert")`{.language-} = 0
-- `Dictionaire.f("bleu")`{.language-} =  `Dictionaire.f("rouge")`{.language-} = 2
+- `Dictionnaire.f("vert")`{.language-} = 0
+- `Dictionnaire.f("bleu")`{.language-} =  `Dictionnaire.f("rouge")`{.language-} = 2
 
 Le dictionnaire `rgb`{.language-} vaudra :
 
@@ -201,7 +198,7 @@ rgb = [[("vert", 12)],                    # indice 0
 
 ## Complexité de la recherche d'une clé
 
-La complexité de la méthode `Dictionaire.get`{.language-} vaut la somme de ces différentes opérations :
+La complexité de la méthode `Dictionnaire.get`{.language-} vaut la somme de ces différentes opérations :
 
 1. Calcul de $f(\mbox{clé})$
 2. Parcourir la liste des couples $(c, v)$ de la liste $T[f(\mbox{clé})]$ et comparer chaque $c$ à notre clé avec l'opérateur `==`{.language-} pour voir s'il sont égaux.
@@ -248,45 +245,44 @@ La version finale de la structure de dictionnaire est alors :
 
 ```pseudocode
 fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+m0 := entier                     # capacité par défaut d'un dictionnaire
 
-structure Dictionaire<Type>:
-    attributs:
-        taille: entier
+structure Dictionnaire<K, V>:
+    capacité: entier ← m0
+    T: [Liste<(K, V)>]<longueur: capacité>  ← [[] .. []]  # tableau de m entrées de listes vides
 
-        T: [Liste<([bit], Type)>] ← tableau de longueur taille où chaque élément est initialisé à une liste vide
-    méthodes:
-        fonction fa(clé: [bit], m: entier) → entier  # fonction d'adressage
+méthode (d: Dictionnaire<K, V>) fa(clé: K, m: entier) → [0 .. m[  # fonction d'adressage
 
-        fonction get(clé: [bit]) → Type:  # valeur ← self[clé] = valeur ← self.get(clé)
-            pour chaque couple (c, v) de T[fa(f(clé), T.longueur)]:
-                si c == clé:
-                    rendre v
 
-        fonction set(clé: [bit], valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
-            l ← T[fa(f(clé), T.longueur)]
-            pour chaque i de [0 .. l.longueur[ :
-                c, v ← l[i]
-                si c == clé:
-                    l[i] ← (clé, valeur)
-                    rendre ∅
+méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
+    pour chaque ((c, v) := (K, V)) de d.T[d.f(clé, d.capacité)]:
+        si c == clé:
+            rendre v
 
-            T[fa(f(clé), T.longueur)].append((clé, valeur))
+méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ← valeur = d.set(clé, valeur)
+    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
+    pour chaque (i := entier) de [0 à l.longueur[ :
+        c, v ← l[i]
+        si c == clé:
+            l[i] ← (clé, valeur)
+            rendre ∅
 
-        fonction in(clé: [bit]) → booléen:  # x est dans self = self.in(x)
-            l ← T[f(clé)]
-            pour chaque e de l :
-                c, v ← e
-                si c == clé:
-                    l.delete((c, v))
-                    rendre Vrai
-            rendre Faux
-        fonction delete(clé: [bit]) → ∅:  # supprime x de self = self.delete(x)  
-            l ← T[f(clé)]
-            pour chaque e de l :
-                c, v ← e
-                si c == clé:
-                    l.delete((c, v))
-                    rendre ∅
+    d.T[d.f(clé, d.capacité)].append((clé, valeur))
+
+méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
+    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
+    pour chaque ((c, v) := (K, V)) de l :
+        si c == clé:
+            rendre Vrai
+    rendre Faux
+méthode (d: Dictionnaire<K, V>)  delete(clé: K) → ∅:  # supprime x de self = self.delete(x)
+    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
+    pour chaque i de [0 .. l.longueur[:
+        ((c, v) := (K, V)) ← l[i]:
+        si c == clé:
+            l[i], l[-1] = l[-1], l[i]   # astuce pour supprimer en O(1)
+            l.pop()
+            rendre ∅
 
 ```
 
@@ -302,65 +298,59 @@ Enfin, pour minimiser les collisions, on peut redimensionner le tableau si le no
 
 ```pseudocode
 fonction f(clé: [bit]) → entier  # fonction de hachage utile de {0, 1}^* dans [0, m[
+m0 := entier                     # capacité par défaut d'un dictionnaire
 
-structure Dictionaire<Type>:
-    attributs:
-        taille: entier ← 0
+structure Dictionnaire<K, V>:
+    capacité: entier ← m0
+    longueur: entier ← 0
+    T: [Liste<(K, V)>]<longueur: capacité>  ← [[] .. []]  # tableau de m entrées de listes vides
 
-        T: [Liste<([bit], Type)>] ← tableau de longueur taille où chaque élément est initialisé à une liste vide
-    méthodes:
-        fonction fa(clé: [bit], m: entier) → entier  # fonction d'adressage
+méthode (d: Dictionnaire<K, V>) fa(clé: K, m: entier) → [0 .. m[  # fonction d'adressage
 
-        fonction get(clé: [bit]) → Type:  # valeur ← self[clé] = valeur ← self.get(clé)
-            pour chaque couple (c, v) de T[fa(f(clé), T.longueur)]:
-                si c == clé:
-                    rendre v
 
-        fonction set(clé: [bit], valeur: Type) → ∅:  # self[clé] ← valeur = self.set(clé, valeur)
-            l ← T[fa(f(clé), T.longueur)]
-            pour chaque i de [0 .. l.longueur[ :
-                c, v ← l[i]
-                si c == clé:
-                    l[i] ← (clé, valeur)
-                    rendre ∅
+méthode (d: Dictionnaire<K, V>) get(clé: K) → V:  # valeur ← d[clé] = valeur ← d.get(clé)
+    pour chaque ((c, v) := (K, V)) de d.T[d.f(clé, d.capacité)]:
+        si c == clé:
+            rendre v
 
-            si taille == T.longueur:
-                T2 ← T
+méthode (d: Dictionnaire<K, V>) set(clé: K, valeur: V) → ∅:  # d[clé] ← valeur = d.set(clé, valeur)
+    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
+    pour chaque (i := entier) de [0 à l.longueur[ :
+        c, v ← l[i]
+        si c == clé:
+            l[i] ← (clé, valeur)
+            rendre ∅
 
-                taille ← 0
-                T ← un nouveau tableau de Liste<([bit], Type)> de longueur 2 * T2.longueur où chaque élément est initialisé à une liste vide
-                pour chaque l de T2:
-                    pour chaque (c, v) de l:
-                        set(c, v)
+    si d.longueur == d.capacité:
+        (T2 := [Liste<(K, V)>]) ← d.T
 
-                set(clé, valeur)
-            sinon:
-                taille ← taille + 1
+        d.capacité ← 2 * d.capacité
+        d.T ← [Liste<(K, V)>]{longueur: d.capacité}
+        d.T[:] ← []{}
+                
+        pour chaque (l := [(K, V)]) de T2:
+            pour chaque ((c, v) := (K, V)) de l:
+                d.T[d.f(clé, d.capacité)].append((clé, valeur))
 
-                l ← T[fa(f(clé), T.longueur)]
-                pour chaque i de [0 .. l.longueur[ :
-                    c, v ← l[i]
-                    si c == clé:
-                        l[i] ← (clé, valeur)
-                        rendre ∅
+    d.longueur ← d.longueur + 1
+    d.T[d.f(clé, d.capacité)].append((clé, valeur))
 
-                T[fa(f(clé), T.longueur)].append((clé, valeur))
 
-        fonction in(clé: [bit]) → booléen:  # x est dans self = self.in(x)
-            l ← T[f(clé)]
-            pour chaque e de l :
-                c, v ← e
-                si c == clé:
-                    l.delete((c, v))
-                    rendre Vrai
-            rendre Faux
-        fonction delete(clé: [bit]) → ∅:  # supprime x de self = self.delete(x)  
-            l ← T[f(clé)]
-            pour chaque e de l :
-                c, v ← e
-                si c == clé:
-                    l.delete((c, v))
-                    rendre ∅
+méthode (d: Dictionnaire<K, V>) in(clé: K) → booléen:  # x est dans d = d.in(x)
+    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
+    pour chaque ((c, v) := (K, V)) de l :
+        si c == clé:
+            rendre Vrai
+    rendre Faux
+méthode (d: Dictionnaire<K, V>)  delete(clé: K) → ∅:  # supprime x de self = self.delete(x)
+    (l := [(K, V)]) ← d.T[d.f(clé, d.capacité)]
+    pour chaque i de [0 .. l.longueur[:
+        ((c, v) := (K, V)) ← l[i]:
+        si c == clé:
+            d.longueur ← d.longueur - 1
+            l[i], l[-1] ← l[-1], l[i]   # astuce pour supprimer en O(1)
+            l.pop()
+            rendre ∅
 
 ```
 
@@ -392,7 +382,7 @@ La création d'un dictionnaire prend $\mathcal{O}(1)$ opérations.
 La suppression du dictionnaire implique la suppression de toutes les listes stockées :
 
 {% note %}
-La suppression d'une structure de dictionnaire prend $\mathcal{O}(T.\mbox{\small longueur})$ opérations.
+La suppression d'un dictionnaire $d$ prend $\mathcal{O}(d.\mbox{\small capacité})$ opérations.
 {% endnote %}
 
 ### Ajout/recherche et suppression d'un élément
@@ -402,10 +392,10 @@ Les complexités sont identiques car cela revient à chercher si la clé $c$ est
 Cette complexité peut aller de :
 
 - cas le meilleur : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $T[f_m(f(c))]$ est vide
-- cas le pire : $\mathcal{O}(\mbox{taille})$ (en considérant que la complexité de l'opérateur `==`{.language-} vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ vaudra $\mbox{taille}$, le nombre d'éléments stockés.
-- cas moyen : $\mathcal{O}(\frac{\mbox{taille}}{T.\mbox{\small longueur}})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{\mbox{taille}}{T.\mbox{\small longueur}}$ éléments dans la liste $L[fa(f(c), m)]$.
+- cas le pire : $\mathcal{O}(\mbox{longueur})$ (en considérant que la complexité de l'opérateur `==`{.language-} vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ vaudra $\mbox{longueur}$, le nombre d'éléments stockés.
+- cas moyen : $\mathcal{O}(\frac{\mbox{longueur}}{T.\mbox{\small capacité}})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{\mbox{longueur}}{T.\mbox{\small capacité}}$ éléments dans la liste $L[fa(f(c), m)]$.
 
-Comme $\frac{\mbox{taille}}{T.\mbox{\small longueur}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des [$N$ ajouts successifs pour une liste](../../structure-liste/#preuve-liste-ajout){.interne} montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{taille})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :
+Comme $\frac{\mbox{longueur}}{T.\mbox{\small capacité}} \leq 1$ la complexité moyenne de recherche sera de $\mathcal{O}(1)$ et un raisonnement identique à la preuve des [$N$ ajouts successifs pour une liste](../../structure-liste/#preuve-liste-ajout){.interne} montre que la complexité amortie moyenne de l'ajout dun élément dans une liste vaut également $\mathcal{O}(1)$ (la complexité amortie valant $\mathcal{O}(\mbox{longueur})$ puisqu'on pourrait toujours se retrouver dans le cas le pire). On a donc :
 
 {% note "**Proposition**" %}
 La complexité **en moyenne** d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$
@@ -428,7 +418,8 @@ Ils permettent d'utiliser directement les donnés du problèmes sans avoir besoi
 Par exemple :
 
 ```pseudocode
-nombre_pommes ← Dictionnaire<chaîne>
+nombre_pommes := {chaîne: entier} ← {:}
+
 nombre_pommes["fuji"] ← 12
 nombre_pommes["gala"] ← 3
 nombre_pommes["pink lady"] ← 42
@@ -437,8 +428,8 @@ nombre_pommes["pink lady"] ← 42
 Plutôt que de d'abord associer un indice aux données :
 
 ```pseudocode
-pommes_indirection = ["fuji", "gala", "pink lady"]
-nombre_pommes ← Tableau de chaîne de longueur 3
+pommes_indirection := [chaîne] ← ["fuji", "gala", "pink lady"]
+nombre_pommes := [entier] ← [entier]{longueur: 3}
 nombre_pommes[0] ← 12
 nombre_pommes[1] ← 3
 nombre_pommes[2] ← 42
@@ -452,5 +443,5 @@ Si en algorithmie on préférera souvent manipuler les donnés sous la forme d'i
 Initialiser un dictionnaire avec des données se fait en utilisant des accolades comme on le ferait pour spécifier les attributs d'une structure normale. Par exemple :
 
 ```pseudocode
-nombre_pommes ← Dictionaire<entier> {"fuji": 12, "gala": 3, "pink lady": 42}
+nombre_pommes := {chaîne: entier} ← {"fuji": 12, "gala": 3, "pink lady": 42}
 ```
