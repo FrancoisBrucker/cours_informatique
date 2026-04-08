@@ -108,6 +108,59 @@
 <p>TBD</p>
 </blockquote>
 <h2>Corrigé</h2>
+<h3>Exercice 1</h3>
+<h4>1.1 Algorithme python</h4>
+<h5>1.1.1</h5>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> est_sous_chaîne<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+    trouvé <span class="token operator">:=</span> <span class="token builtin">booléen</span>
+   <span class="token number"> j </span><span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> a<span class="token punctuation">.</span>longueur <span class="token operator">-</span> b<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+        trouvé <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+       <span class="token number"> j </span><span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">tant que</span><span class="token number"> j </span><span class="token operator">&lt;</span> b<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+            <span class="token keyword">si</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">≠</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                trouvé <span class="token operator">←</span> <span class="token boolean">Faux</span>
+               <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> j </span><span class="token operator">+</span> <span class="token number">1</span> 
+        <span class="token keyword">si</span> trouvé<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+</code></pre>
+<h5>1.1.2</h5>
+<ul>
+<li>au minimum on ne fait qu'une seule itération pour la boucle <code class="language-">pour chaque</code> et pour la boucle <code class="language-">tant que</code>. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(1)$. Ceci arrive si <code class="language-">a</code> et <code class="language-">b</code> sont de même taille mais ne commencent pas par le même lettre.</li>
+<li>Dans le pire des cas, on fait $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ itérations de la boucle <code class="language-">pour chaque</code> et $\mathcal{O}(b.\text{\small longueur})$ itération de la boucle <code class="language-">tant que</code>. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$. Ceci arrive si <code class="language-">a = x .. x</code> et <code class="language-">b = x ... xy</code>.</li>
+</ul>
+<h5>1.1.3</h5>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">sous_chaîne<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<h5>1.1.4</h5>
+<p>Il faut rendre un indice, pas juste un booléen :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> sous_chaîne<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">chaîne</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    trouvé <span class="token operator">:=</span> <span class="token builtin">booléen</span>
+   <span class="token number"> j </span><span class="token operator">:=</span> <span class="token builtin">entier</span>
+    <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> a<span class="token punctuation">.</span>longueur <span class="token operator">-</span> b<span class="token punctuation">.</span>longueur <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+        trouvé <span class="token operator">←</span> <span class="token boolean">Vrai</span>
+       <span class="token number"> j </span><span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">tant que</span><span class="token number"> j </span><span class="token operator">&lt;</span> b<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+            <span class="token keyword">si</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">≠</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                trouvé <span class="token operator">←</span> <span class="token boolean">Faux</span>
+               <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> j </span><span class="token operator">+</span> <span class="token number">1</span> 
+        <span class="token keyword">si</span> trouvé<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span><span class="token number"> i
+</span>    <span class="token keyword">rendre</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
+<p>La boucle <code class="language-">pour chaque</code> va faire varier $i$ pour toutes ses positions de sous-chaînes possibles et la variable <code class="language-">trouvé</code> ne peut valoir <code>Vrai</code> à la sortie de la boucle <code class="language-">tant que</code> que si $b[j] == a[i + j]$ pour tout $0 \leq j &lt; b.\text{\small longueur}$, donc que si $b$ est une sous-chaîne de $a$</p>
+<h4>1.2 Bornes</h4>
+<h5>1.2.1</h5>
+<p>Il faut au minimum lire les données, c'est à dire vérifier tous les caractères de $a$ et de $b$, la complexité du problème est en $\Omega(a.\text{\small longueur} + b.\text{\small longueur})$.</p>
+<h5>1.2.2</h5>
+<p>Comme la complexité de l'algorithme de la question 1.1.4 est en $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$, la complexité problème est :</p>
+<ul>
+<li>$\Omega(a.\text{\small longueur} + b.\text{\small longueur})$.</li>
+<li>$\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$</li>
+</ul>
+<h4>1.3 Complexité en moyenne</h4>
+<h5>1.3.1</h5>
+<p>Si les caractères sont équiprobables alors la position dans la chaîne de caractère importe peut. La probabilité que 2 caractères de $a$ et de $b$ soient égaux est donc la même que la probabilité de tirer deux fois le même caractère : c'est $\frac{1}{\vert \mathcal{A} \vert}$ où $\mathcal{A}$ est l'ensemble des caractères possibles.</p>
+<h5>1.3.2</h5>
 <blockquote>
 <p>TBD</p>
 </blockquote>
