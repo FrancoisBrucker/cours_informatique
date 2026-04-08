@@ -105,4 +105,16 @@ On note $p$ la probabilité que deux lettre soient identiques. La probabilité q
 
 Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle `tant que`{.language-} vaut alors :
 
-> TBD
+<div>
+$$
+\sum_{k=0}^{b.\text{\small longueur}}k \cdot p^{k}(1-p) \leq \frac{p}{1-p}
+$$
+</div>
+
+Comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$, et que $p$ est une constante, la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$.
+
+### Exercice 2
+
+#### 2.1 Principe
+
+##### 2.1.1
