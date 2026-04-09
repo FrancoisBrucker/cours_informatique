@@ -10,8 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD à dispatcher bien
-
+{% lien %}
+[Tableau, listes chaînées et listes](https://www.youtube.com/watch?v=kPqk07Gpj0A)
+{% endlien %}
 
 Comparons l'usage les différentes structures de stockage de données en notre possession :
 
@@ -29,7 +30,7 @@ Comparons l'usage les différentes structures de stockage de données en notre p
 - listes :
   - structure passe partout
   - intérêt : ajout et suppression en fin de liste en $\mathcal{O}(1)$, accès au $i$ème élément se fait en $\mathcal{O}(1)$
-  - défaut : supprimer/ajouter le $i$ème élément se fait en $\mathcal{O}(n-i)$ où $n$ est la taille de la liste.
+  - défaut : supprimer/ajouter le $i$ème élément se fait en $\mathcal{O}(n-i)$ où $n$ est la taille de la liste, complexité d'ajout en amortie
   - utilisation : à la place d'un tableau si on autorise une taille variable et un pic de complexité de temps en temps
 - dictionnaires :
   - clé et valeurs
@@ -43,9 +44,7 @@ Comparons l'usage les différentes structures de stockage de données en notre p
   - utilisation : pour les programmes récursifs et ceux où on modifie souvent le nombre de données stockées tout en conservant l'ordre des données restantes
 
 
- <!-- TBD à dispatcher
-
-#### Complexités des structures linéaires
+## Complexités algorithmique
 
 Les différences structures linéaires que l'on a vu vont avoir des complexités différentes selon l'opération réalisée. Une analyse fine du problème à résoudre ou de l'algorithme à coder est souvent nécessaire pour choisir la structure la plus adaptée, c'est à dire :
 
@@ -59,11 +58,11 @@ Les différences structures linéaires que l'on a vu vont avoir des complexités
 - pile :
   - création : $\mathcal{O}(1)$
   - suppression : $\mathcal{O}(1)$
-  - append et pop : $\mathcal{O}(1)$
+  - empile et dépile : $\mathcal{O}(1)$
 - file :
   - création : $\mathcal{O}(1)$
   - suppression : $\mathcal{O}(1)$
-  - append et pop : $\mathcal{O}(1)$
+  - enfile et défile : $\mathcal{O}(1)$
 - liste :
   - création : $\mathcal{O}(1)$
   - suppression : $\mathcal{O}(1)$
@@ -77,7 +76,7 @@ Les différences structures linéaires que l'on a vu vont avoir des complexités
   - ajouter un élément : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)
   - supprimer un élément : $\mathcal{O}(1)$ en moyenne ($\mathcal{O}(n)$ avec $n$ la taille des éléments stockés si on a vraiment pas de chance)
 
-## Complexité de structure en python
+## Complexité en python
 
 On prend ici l'exemple de python et on analyse la complexité de quelques structures iconiques du langage
 
@@ -142,4 +141,4 @@ De là :
   - $C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)
 - la création d'un conteneur résultant de la concaténation de deux conteurs, comme $x + y$ si $x$ et $y$ sont de conteneurs, est de complexité $\mathcal{O}(n_1 + n_2) + C$ où :
   - $n_1$ et $n_2$ sont les tailles des deux conteneurs
-  - $C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$) -->
+  - $C$ la complexité de créer un conteneur vide (ici $\mathcal{O}(1)$)

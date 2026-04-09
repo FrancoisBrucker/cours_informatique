@@ -341,19 +341,9 @@ On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'
 [Comparaisons des complexités des structures](./structures-complexité){.interne}
 {% endaller %}
 
-> TBD lien suivant à replacer
-
-{% lien %}
-[Tableau, listes chaînées et listes](https://www.youtube.com/watch?v=kPqk07Gpj0A)
-{% endlien %}
-
-### On s'entraîne
-
-> TBD élément majoritaire
-
 ### Complexité amortie
 
-Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire la méthode append des listes.
+Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire ou la méthode append des listes.
 
 Si dans le premier cas deux recherches successive peuvent prendre $\mathcal{O}(n)$ opérations (si on a pas de chance) ce n'est pas le cas de la seconde où si un premier append prend $\mathcal{O}(n)$ opérations on sait que l'appel suivant ne prendra que $\mathcal{O}(1)$ opérations.
 
@@ -363,13 +353,12 @@ C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que 
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
-### Intermède 
+### Intermède : le problème de l'enveloppe convexe
 
-Vous en savez maintenant assez pour comprendre et aimer les algorithmes. Nous allons montrer plusieurs exemples de problèmes et d'algorithmes plus intéressant et complexes.
+<!-- Vous en savez maintenant assez pour comprendre et aimer les algorithmes. Nous allons montrer plusieurs exemples de problèmes et d'algorithmes plus intéressant et complexes. -->
 
-#### Le problème de l'enveloppe convexe
 
-Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
+Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
 
 > TBD le faire avec des structures. et décomposer le gros pavé qui suit en petits bouts.
 

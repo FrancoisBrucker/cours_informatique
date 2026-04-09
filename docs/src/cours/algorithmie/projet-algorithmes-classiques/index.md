@@ -262,7 +262,7 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 {% enddetails %}
 
-## Compteur binaire
+## <span id="compteur-binaire"></span>Compteur binaire
 
 > - **Utilité** : algorithme à la base de nombreux autres algorithmes d'énumération. A connaître pour son énumération récursive.
 > - **Difficulté** : moyen

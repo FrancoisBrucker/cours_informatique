@@ -31,7 +31,7 @@ La complexité amortie est un concept avancé, utilisée dans deux cas principal
 
 ## Exemple 1 : structure de compteur
 
-Pour illustrer le concept de complexité amortie dans le cadre [du compteur binaire](../analyse/#algorithme-compteur-binaire){.interne}, calculer la complexité amortie de l'algorithme `tous`{.language-} ou de la a fonction `successeur`{.language-} n'a pas vraiment de sens :
+Pour illustrer le concept de complexité amortie dans le cadre [du compteur binaire](../analyses/#algorithme-compteur-binaire){.interne}, calculer la complexité amortie de l'algorithme `tous`{.language-} ou de la a fonction `successeur`{.language-} n'a pas vraiment de sens :
 
 - l'algorithme `tous`{.language-} a toujours la même complexité à chaque appel,
 - la fonction `successeur`{.language-} a bien des complexités différentes selon ses paramètres, mais plusieurs appels successifs peuvent tous avoir la complexité maximale (on prend $N = [1, ..., 1]$ comme paramètre à chaque fois) et la complexité amorties sera égale à la complexité maximale
@@ -42,11 +42,10 @@ En revanche, considérons la structure suivante :
 
 ```pseudocode
 structure Compteur:
-    attributs
-        N: [bit]
-    méthodes
-        fonction suivant() → vide:
-            successeur(N)
+    N: [bit]
+
+méthode (c: Compteur) suivant() → vide:
+            successeur(c.N)
 ```
 
 La méthode `suivant`{.language-} n'a pas de paramètres, analysons sa complexité amortie en l'exécutant successivement $m$ fois.
@@ -54,7 +53,7 @@ La méthode `suivant`{.language-} n'a pas de paramètres, analysons sa complexit
 Par exemple le code suivant :
 
 ```pseudocode
-c ← { N: [1, 0, 0, 1]}
+(c := Compteur) ← Compteur{N: [1, 0, 0, 1]}
 
 pour chaque i de [1 .. 9]:
     c.suivant()
@@ -84,7 +83,7 @@ $$
 $$
 </div>
 
-Puisque ([on l'a vu](../../projet-sommes-classiques/)) $\sum_{0\leq i \leq n}2^i = 2^{n+1}-1$ cette complexité totale vaut : $\mathcal{O}(m)$ et la complexité amortie $\frac{\mathcal{O}(m)}{m} = $\mathcal{O}(1)$ "
+Puisque ([on l'a vu](../../projet-sommes-classiques/)) $\sum_{0\leq i \leq n}2^i = 2^{n+1}-1$ cette complexité totale vaut : $\mathcal{O}(m)$ et la complexité amortie $\frac{\mathcal{O}(m)}{m} = \mathcal{O}(1)$.
 
 {% note %}
 La complexité amortie de la méthode `suivant`{.language-} est $\mathcal{O}(1)$.
@@ -105,10 +104,10 @@ Réfléchissez à ce résultat, il est assez surprenant, non ?.
 On modifie [la structure pile](../../structure-pile-file/pile/#structure-pile){.interne} pour y ajouter la méthode suivante: `k-dépile(k: entier) → Type`{.language-} :
 
 ```pseudocode
-fonction k-dépile(k: entier) → Type:
-    k ← min(k, nombre())
+méthode (p: Pile<T>) k-dépile(k: entier) → T:
+    (k := entier) ← min(k, p.longueur)
     répéter k fois:
-        x ← dépile()
+        x ← p.dépile()
     rendre x
 ```
 
@@ -116,9 +115,9 @@ Si $k = 0$ ou la pile $P$ est vide, la complexité de `k-dépile`{.language-} es
 
 Soit $A$ un algorithme utilisant notre nouvelle pile $P$ via ses méthodes `nombre`{.language-} (de complexité $\mathcal{O}(1)$), `empile`{.language-} (de complexité $\mathcal{O}(1)$) et via la fonction `k-dépile`{.language-} (de complexité $\mathcal{O}(1 + P.\text{nombre()})$). On suppose que l'algorithme effectue $m$ de ces 3 méthodes pendant son exécution et que la somme de ses autres opérations est en $\mathcal{O}(1)$.
 
-{% exercice %}
+{% note "**Question ?**" %}
 Quelle est la complexité totale de ces $m$ exécutions des 3 méthodes pour $A$ ?
-{% endexercice %}
+{% endnote %}
 
 ### Borner la complexité
 
