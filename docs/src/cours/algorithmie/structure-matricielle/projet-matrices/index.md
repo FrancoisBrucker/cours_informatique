@@ -1000,4 +1000,4 @@ La limite théorique de la multiplication de deux matrices carrées à $n$ ligne
 - [Une expérimentation de _LaurieWired_](https://www.youtube.com/watch?v=HdysaWNs1g8)
 {% endlien %}
 
-Cependant, comme on l'a vu, ces résultats sont asymptotiques et on ne voit la différence que pour des matrices très très grandes. À l'heure où je tape ces lignes, le meilleur algorithme connu date de 2025 et est en $\mathcal{O}(2^{271})$.
+Cependant, comme on l'a vu, ces résultats sont asymptotiques et on ne voit la différence que pour des matrices très très grandes. À l'heure où je tape ces lignes, le meilleur algorithme connu date de 2025 et est en $\mathcal{O}(n^{2.271})$.
