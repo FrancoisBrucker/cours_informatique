@@ -919,7 +919,7 @@ $$
 
 {% enddetails %}
 {% exercice %}
-Montrer que la complexité de l'algorithme de Strassen est en $\mathcal{O}(n^{2.807}).
+Montrer que la complexité de l'algorithme de Strassen est en $\mathcal{O}(n^{2.807})$.
 {% endexercice %}
 {% details "corrigé" %}
 
