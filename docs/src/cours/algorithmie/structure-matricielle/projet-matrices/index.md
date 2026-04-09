@@ -964,7 +964,9 @@ Implémentez l'algorithme de Strassen et comparez son exécution à une multipli
 [`strassen.py`{.fichier}](https://github.com/FrancoisBrucker/cours_informatique/blob/main/docs/src/cours/algorithmie/structure-matricielle/projet-matrices/strassen.py)
 {% endlien %}
 
-La création des différentes matrices rend l'algorithme bien plus gourmand que l'algorithme naïf ! C'est pourquoi l'algorithme de Strassen n'est utilisé que pour de grandes matrices et avec d'autres optimisation que ce que l'on a pu faire : on voit en effet que le rapport de temps entre les 2 temps algorithme augmente (mais très doucement).
+L'algorithme de Strassen possède bien plus d'additions et de créations des nouvelles matrices que l'algorithme naïf. Asymptotiquement il est meilleur mais il faut que $n$ soit grand pour ˆ´tre effectivement plus rapide : on voit en effet que le rapport de temps entre les 2 temps algorithme augmente (mais très doucement).
+
+C'est pourquoi l'algorithme de Strassen n'est utilisé que pour de grandes matrices et avec d'autres optimisation que ce que l'on a pu faire (notre code python est loin d'être optimal)
 {% enddetails %}
 
 ### Généralisation
