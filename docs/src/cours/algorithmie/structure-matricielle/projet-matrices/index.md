@@ -648,7 +648,7 @@ Et seulement 4 pour 6 lignes :
 
 ## Multiplication de matrices
 
-Le problème de la multiplication de matrice est un problème intéressant [avec une grande histoire](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm). Nous allons montrer ici la méthode naïve et le plus célèbre des algorithme, celui de Strassen. Notez qu'actuellement on peut faire mieux.
+Le problème de la multiplication de matrice est un problème intéressant [avec une grande histoire](https://en.wikipedia.org/wiki/Matrix_multiplication_algorithm). Nous allons montrer ici la méthode naïve et le plus célèbre des algorithmes, celui de Strassen. Notez qu'actuellement on peut faire mieux.
 
 ### Création
 
