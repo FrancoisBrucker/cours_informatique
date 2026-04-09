@@ -986,9 +986,9 @@ toutes_les_permutations_rec<span class="token punctuation">(</span><span class="
 <p>Vous pourrez utiliser le fait que :</p>
 <div>
 $$
-$\sum_{0 \leq i \leq n} i! \leq \sum_{0 \leq i \leq n} n! \leq (n+1)!$
+\sum_{0 \leq i \leq n} i! \leq \sum_{0 \leq i \leq n} n! \leq (n+1)!
 $$
-</div>>
+</div>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1013,7 +1013,7 @@ $$
 $$
 \begin{cases}
 C(n) = \mathcal{O}(1)\\
-C(i) = (n-i) \mathcal{O}(i) \cdot \cdot C(i+1)
+C(i) = (n-i) \mathcal{O}(i) \cdot C(i+1)
 \end{cases}
 $$
 </div>
@@ -1023,7 +1023,7 @@ $$
 C(0) = \mathcal{O}((n+1)!)
 $$
 </div>
-<p>Ce résultat est très bon puisqu'a priori il faut considérer toutes les permutations <strong>et</strong> les vérifier, ce qui nous prendrait $\mathcal{O}(n^2/cdot n!)$ si on vérifiait uniquement à la fin !</p>
+<p>Ce résultat est très bon puisqu'a priori il faut considérer toutes les permutations <strong>et</strong> les vérifier, ce qui nous prendrait $\mathcal{O}(n^2\cdot n!)$ si on vérifiait uniquement à la fin !</p>
 </div>
 </details>     
 </div>
@@ -1610,7 +1610,7 @@ $$
 </div>
 </details>     
 </div>
-<p>On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant est de même complexité que celle de la multiplication de matrices. Cela passe par <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_de_Schur">le complément de Shur</a> d'une matrice. Les deux liens ci-après expliquent tout ça très bien :</p>
+<p>On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant est de même complexité que celle de la multiplication de matrices. Cela passe par <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_de_Schur">le complément de Schur</a> d'une matrice. Les deux liens ci-après expliquent tout ça très bien :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
