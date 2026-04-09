@@ -79,15 +79,65 @@ Affiche à l'écran M[i][j]
 
 ### _Abus_ de notations
 
-Cette utilisation nous permettra d'étendre aux matrice les _abus_ classique des tranches de tableaux.
+#### Slices
 
-Comme la création directe qui prend $\mathcal{O}(n)$ opérations. :
+On généralisera les slices de tableaux aux matrices. Ainsi `M[a:b][c:d]` correspondra à une sous matrice de $M$ allant des colonnes d'indice `c`{.language-} à `d-1`{.language-} pour les lignes allant de l'indice `a`{.language-} à `b-1`{.language-}.:
+
+Le code suivant :
 
 ```pseudocode
-(M := [[entier]]) ← [[entier]{longueur: p}]{longueur: n}
+M[a:b][c:d] ← 0
 ```
 
-Ou encore parler de la matrice `M[a:b][c:d]` qui correspond à une sous matrice de $M$ allant des colonnes d'indice `c`{.language-} à `d-1`{.language-} pour les lignes allant de l'indice `a`{.language-} à `b-1`{.language-}.:
+Correspondra aux operations suivantes :
+
+```pseudocode
+pour chaque (i := entier) de [a .. b[:
+    pour chaque (j := entier) de [c .. d[:
+        M[i][j] ← 0
+```
+
+{% attention %}
+Ce n'est pas du tout une opération élémentaire
+{% endattention %}
+
+On se permettra aussi d'écrire :
+
+```pseudocode
+M' ← M[a:b][c:d]
+```
+
+Pour remplacer le code :
+
+
+```pseudocode
+M' ← [[entier]]{longueur: d-c}
+
+pour chaque (i := entier) de [c .. d[:
+    M'[i - c] ← [entier]{longueur: b-a}
+    pour chaque (j := entier) de [a .. b[:
+        M'[i-c][j-a] ← M[i][j]
+```
+
+#### Création
+
+On se permettra aussi des abus de notation pour la création. On se permettra ainsi d'écrire :
+
+
+```pseudocode
+(M := [[entier]]) ← [[entier]{longueur: l}]{longueur: c}
+```
+
+à la place de :
+
+```pseudocode
+    M := [[entier]]
+    M ← [[entier]]{longueur: l}
+
+    pour chaque i de [0 .. l[:
+        M[i] ← [entier]{longueur: c}
+    rendre M
+```
 
 ## Généralisation
 
@@ -118,7 +168,6 @@ x ← un entier entré par l'utilisateur
 M[i][j][k] ← x
 Affiche à l'écran M[i][j][k]
 ```
-
 
 Et tout ceci se généralise à la dimension $k$ bien sur...
 
