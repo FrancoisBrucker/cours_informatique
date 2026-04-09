@@ -116,7 +116,7 @@
 <li>comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes</li>
 </ul>
 <h2>Exemple 1 : structure de compteur</h2>
-<p>Pour illustrer le concept de complexité amortie dans le cadre <a href="../analyse/#algorithme-compteur-binaire" class="interne">du compteur binaire</a>, calculer la complexité amortie de l'algorithme <code class="language-">tous</code> ou de la a fonction <code class="language-">successeur</code> n'a pas vraiment de sens :</p>
+<p>Pour illustrer le concept de complexité amortie dans le cadre <a href="../analyses/#algorithme-compteur-binaire" class="interne">du compteur binaire</a>, calculer la complexité amortie de l'algorithme <code class="language-">tous</code> ou de la a fonction <code class="language-">successeur</code> n'a pas vraiment de sens :</p>
 <ul>
 <li>l'algorithme <code class="language-">tous</code> a toujours la même complexité à chaque appel,</li>
 <li>la fonction <code class="language-">successeur</code> a bien des complexités différentes selon ses paramètres, mais plusieurs appels successifs peuvent tous avoir la complexité maximale (on prend $N = [1, ..., 1]$ comme paramètre à chaque fois) et la complexité amorties sera égale à la complexité maximale</li>
@@ -124,14 +124,13 @@
 <p>En revanche, considérons la structure suivante :</p>
 <p><span id="structure-compteur-binaire"></span></p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
-    <span class="token builtin">attributs</span>
-        N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>
-    <span class="token builtin">méthodes</span>
-        <span class="token builtin">fonction</span> <span class="token function">suivant</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-            successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span></code></pre>
+    N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span>
+
+méthode <span class="token punctuation">(</span>c<span class="token punctuation">:</span> Compteur<span class="token punctuation">)</span> suivant<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            successeur<span class="token punctuation">(</span>c<span class="token punctuation">.</span>N<span class="token punctuation">)</span></code></pre>
 <p>La méthode <code class="language-">suivant</code> n'a pas de paramètres, analysons sa complexité amortie en l'exécutant successivement $m$ fois.</p>
 <p>Par exemple le code suivant :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">c <span class="token operator">←</span> <span class="token punctuation">{</span> N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token punctuation">(</span>c <span class="token operator">:=</span> Compteur<span class="token punctuation">)</span> <span class="token operator">←</span> Compteur<span class="token punctuation">{</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
 
 <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     c<span class="token punctuation">.</span>suivant<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
@@ -153,7 +152,7 @@ $$
 \sum_{0\leq i\leq log_2(m)} \mathcal{O}(1)\cdot2^i = \mathcal{O}(1)
 $$
 </div>
-<p>Puisque (<a href="../../projet-sommes-classiques/">on l'a vu</a>) $\sum_{0\leq i \leq n}2^i = 2^{n+1}-1$ cette complexité totale vaut : $\mathcal{O}(m)$ et la complexité amortie $\frac{\mathcal{O}(m)}{m} = $\mathcal{O}(1)$ &quot;</p>
+<p>Puisque (<a href="../../projet-sommes-classiques/">on l'a vu</a>) $\sum_{0\leq i \leq n}2^i = 2^{n+1}-1$ cette complexité totale vaut : $\mathcal{O}(m)$ et la complexité amortie $\frac{\mathcal{O}(m)}{m} = \mathcal{O}(1)$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -175,16 +174,20 @@ $$
 
 <h2>Exemple 2 : la pile</h2>
 <p>On modifie <a href="../../structure-pile-file/pile/#structure-pile" class="interne">la structure pile</a> pour y ajouter la méthode suivante: <code class="language-">k-dépile(k: entier) → Type</code> :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> k<span class="token operator">-</span>dépile<span class="token punctuation">(</span>k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">Type</span><span class="token punctuation">:</span>
-    k <span class="token operator">←</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> nombre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">méthode <span class="token punctuation">(</span>p<span class="token punctuation">:</span> Pile<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">)</span> k<span class="token operator">-</span>dépile<span class="token punctuation">(</span>k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> T<span class="token punctuation">:</span>
+    <span class="token punctuation">(</span>k <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">←</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> p<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span>
     <span class="token keyword">répéter</span> k fois<span class="token punctuation">:</span>
-        x <span class="token operator">←</span> dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        x <span class="token operator">←</span> p<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> x</code></pre>
 <p>Si $k = 0$ ou la pile $P$ est vide, la complexité de <code class="language-">k-dépile</code> est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, P.\text{nombre()}))$. La complexité de <code class="language-">k-dépile</code> est ainsi de $\mathcal{O}(1 + P.\text{nombre()})$.</p>
 <p>Soit $A$ un algorithme utilisant notre nouvelle pile $P$ via ses méthodes <code class="language-">nombre</code> (de complexité $\mathcal{O}(1)$), <code class="language-">empile</code> (de complexité $\mathcal{O}(1)$) et via la fonction <code class="language-">k-dépile</code> (de complexité $\mathcal{O}(1 + P.\text{nombre()})$). On suppose que l'algorithme effectue $m$ de ces 3 méthodes pendant son exécution et que la somme de ses autres opérations est en $\mathcal{O}(1)$.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Question ?</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Quelle est la complexité totale de ces $m$ exécutions des 3 méthodes pour $A$ ?</p>
 </div></div>
 
