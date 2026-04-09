@@ -564,9 +564,10 @@ Vous pourrez utiliser le fait que :
 
 <div>
 $$
-$\sum_{0 \leq i \leq n} i! \leq \sum_{0 \leq i \leq n} n! \leq (n+1)!$
+\sum_{0 \leq i \leq n} i! \leq \sum_{0 \leq i \leq n} n! \leq (n+1)!
 $$
-</div>>
+</div>
+
 {% endinfo %}
 {% details "corrigé" %}
 On vérifie à chaque positionnement de reines en $\mathcal{O}(i)$, l'équation de complexité satisfaite par l'algorithme est alors :
@@ -575,7 +576,7 @@ On vérifie à chaque positionnement de reines en $\mathcal{O}(i)$, l'équation 
 $$
 \begin{cases}
 C(n) = \mathcal{O}(1)\\
-C(i) = (n-i) \mathcal{O}(i) \cdot \cdot C(i+1)
+C(i) = (n-i) \mathcal{O}(i) \cdot C(i+1)
 \end{cases}
 $$
 </div>
@@ -588,7 +589,8 @@ C(0) = \mathcal{O}((n+1)!)
 $$
 </div>
 
- Ce résultat est très bon puisqu'a priori il faut considérer toutes les permutations **et** les vérifier, ce qui nous prendrait $\mathcal{O}(n^2/cdot n!)$ si on vérifiait uniquement à la fin !
+ 
+Ce résultat est très bon puisqu'a priori il faut considérer toutes les permutations **et** les vérifier, ce qui nous prendrait $\mathcal{O}(n^2\cdot n!)$ si on vérifiait uniquement à la fin !
 {% enddetails %}
 
 ### Code
@@ -977,7 +979,7 @@ Comment généraliseriez vous l'algorithme de Strassen à des matrices non carr�
 
 {% enddetails %}
 
-On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant est de même complexité que celle de la multiplication de matrices. Cela passe par [le complément de Shur](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_de_Schur) d'une matrice. Les deux liens ci-après expliquent tout ça très bien :
+On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant est de même complexité que celle de la multiplication de matrices. Cela passe par [le complément de Schur](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_de_Schur) d'une matrice. Les deux liens ci-après expliquent tout ça très bien :
 
 {% lien %}
 

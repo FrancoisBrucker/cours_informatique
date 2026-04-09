@@ -38,7 +38,7 @@ algorithme creation_matrice(n: entier, p:entier) → [[entier]]:
     M := [[entier]]
     M ← [[entier]]{longueur: n}
 
-    pour chaque i de [0 .. n[:
+    pour chaque (i := entier) de [0 .. n[:
         M[i] ← [entier]{longueur: p}
     rendre M
 ```
@@ -49,9 +49,9 @@ Comme lors de la création de tableaux les valeurs sont indéterminées, on a co
 algorithme creation_matrice(nb_lignes: entier, nb_colonnes:entier, valeur: entier) → [[entier]]:
     M ← un nouveau tableau de l tableaux d'entiers
 
-    pour chaque i de [0 .. nb_lignes[:
+    pour chaque (i := entier) de [0 .. nb_lignes[:
         L ← un nouveau tableau de nb_colonnes entiers
-        pour chaque j de [0 .. nb_colonnes[:
+        pour chaque (j := entier) de [0 .. nb_colonnes[:
             L[j] ← valeur
         M[i] ← L
     rendre M
@@ -155,9 +155,9 @@ On procède en deux boucles imbriquées :
 M3 := [[[entier]]]
 M3 ← [[[entier]]]{longueur: d1}
 
-pour chaque i de [0 .. d1[:
+pour chaque (i := entier) de [0 .. d1[:
     M3[i] ← [[entier]]{longueur: d2}
-    pour chaque j de [0 .. d2[:
+    pour chaque (j := entier) de [0 .. d2[:
         M3[i][j] ← [entier]{longueur: d3}
 ```
 
