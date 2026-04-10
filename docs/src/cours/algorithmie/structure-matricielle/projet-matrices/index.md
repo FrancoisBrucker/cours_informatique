@@ -868,7 +868,7 @@ Pour gagner en complexité il faut diminuer le nombre d'appels récursif et c'es
 ### Strassen
 
 {% lien %}
-[page wikipédia sur l'algorithme Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen)
+[page Wikipédia sur l'algorithme Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen)
 
 {% endlien %}
 
@@ -993,7 +993,7 @@ On peut montrer que le calcul de l'inverse d'une matrice ou de son déterminant 
 
 ### On peut faire mieux !
 
-La limite théorique de la multiplication de deux matrices carrées à $n$ lignes est en $\mathcal{O}(n^2)$ et l'algorithme de Strassen est en $\mathcal{O}(n^{2.804})$. Il en existe d'autres meilleures, voir les lien ci-aaprès :
+La limite théorique de la multiplication de deux matrices carrées à $n$ lignes est en $\mathcal{O}(n^2)$ et l'algorithme de Strassen est en $\mathcal{O}(n^{2.804})$. Il en existe d'autres meilleures, voir les lien ci-après :
 
 {% lien %}
 - [histoire des différents algorithmes](https://www.youtube.com/watch?v=xsZk3c7Oxyw)

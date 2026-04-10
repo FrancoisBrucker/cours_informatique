@@ -301,6 +301,7 @@ Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de
 [Structure de pile et file](./structure-pile-file){.interne}
 {% endaller %}
 
+
 ### Listes chaînées
 
 Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit supprimer rapidement un élément en milieu de liste, la **_liste chaînée_** :
@@ -311,7 +312,6 @@ Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit su
 
 
 ### Listes et dictionnaires
-
 
 La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.
 
@@ -387,7 +387,7 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 >
 
 
- Élément majoritaire
+ Élément majoritaire DS 23/24 (enlever la partie diviser pour régner qu'il faut remettre ensuite)
 
 > TBD
 > naif : ils trouvent

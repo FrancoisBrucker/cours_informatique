@@ -698,7 +698,8 @@ DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal
 
 {% aller %}
 
-[Structures de dictionnaire](/cours/algorithmie/structure-dictionnaire/){.interne}
+1. [Structures de dictionnaire](/cours/algorithmie/structure-dictionnaire/){.interne}
+2. [Comparaisons des complexités des structures](/cours/algorithmie/structures-complexité){.interne}
 
 {% endaller %}
 
