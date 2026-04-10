@@ -238,7 +238,7 @@ Ainsi si :
 - $f_l$ est la fréquence de lecture
 - $K$ est le nombre d'entiers à transférer
 
-On aura écrit les $K$ entiers en $K/f_e$ secondes alors pendant ce temps on aura uniquement lu $K\cdot f_l/f_e$ données. La taille $F$ de la file minimale est donc de la différence :
+On aura écrit les $K$ entiers en $K/f_e$ secondes. Pendant ce temps à on aura uniquement lu $K/fe \cdot f_l$ données. La taille $F$ de la file minimale est donc de la différence :
 
 <div>
 $$
