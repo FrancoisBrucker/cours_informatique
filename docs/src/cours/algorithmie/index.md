@@ -369,6 +369,21 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 <!-- 
 
 
+> TBD déplacer 2-3 sum ici (il est dans projet-algorithmes-classiques/ pour l'instant)
+>
+
+#### Algorithmes classiques, mais dur.
+
+- col de matrices
+- élément majoritaire
+- 2-3 SUM
+
+> TBD Élément majoritaire DS 23/24 (enlever la partie diviser pour régner qu'il faut remettre ensuite)
+> TBD
+> naif : ils trouvent
+> tri  : ils trouvent
+> pile : on donne l'algorithme et ils prouvent que c'est ok. 
+> 
 
 ## Autre structures
 
@@ -376,25 +391,14 @@ Autant aimé des algorithmiciens que le problème du tri, mais plus complexe à 
 - listes triées : pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur. Exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
 
 
-#### Algorithmes classiques, mais dur.
 
 > TBD ajouter une partie algorithmes classiques, v2 (les durs : col matrice, 
 > 
 > 
+
+
 > TBD médiane en temps linéaire dans diviser pour régner.
-
-> TBD déplacer 2-3 sum ici (il est dans projet-algorithmes-classiques/ pour l'instant)
->
-
-
- Élément majoritaire DS 23/24 (enlever la partie diviser pour régner qu'il faut remettre ensuite)
-
-> TBD
-> naif : ils trouvent
-> tri  : ils trouvent
-> pile : on donne l'algorithme et ils prouvent que c'est ok. 
-> 
-
+> TBD élément majoritaire dans diviser pour régner.
 
 -->
 

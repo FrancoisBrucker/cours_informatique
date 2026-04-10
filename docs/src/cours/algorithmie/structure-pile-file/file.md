@@ -260,17 +260,16 @@ On peut aussi utiliser la file comme outil d'énumération. Par exemple pour fai
 algorithme compteur(n: entier) → ∅:
     F ← File<chaîne> {capacité: K}
     F.enfile("1")
-    (i:= entier) ← 0
-    (j:= entier) ← 1
+    (i:= entier) ← 1
 
     c := chaîne 
     répéter n fois:
         c ← F.défile()
         afficher à l'écran c
-        si j < n:               # limite la taille de la file
+        si i < n:               # limite la taille de la file
             F.enfile(c + "0")
             F.enfile(c + "1")
-            j ← j + 2
+            i ← i + 2
 ```
 
 L'algorithme va afficher les $n$ premiers entiers sous forme binaire. Il dépend d'une file de taille $K$.

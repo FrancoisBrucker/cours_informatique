@@ -73,7 +73,7 @@ Créez une structure de Deque en utilisant une liste doublement chaînée. Toute
 
 ## Liste circulaire
 
-On modélise un roulement entre $n$ personne par une liste circulaire où l'on peut passer du dernier élément au premier/=.
+On modélise un roulement entre $n$ personne par une liste circulaire où l'on peut passer du dernier élément au premier.
 
 {% exercice %}
 Montrez que l'on peut créer une structure de liste circulaire avec une liste doublement chaînée.
