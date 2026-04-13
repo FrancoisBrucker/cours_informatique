@@ -134,7 +134,7 @@ méthode <span class="token punctuation">(</span>c<span class="token punctuation
 
 <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
     c<span class="token punctuation">.</span>suivant<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>Va afficher à l'écran les valeurs de N suivantes après chaque itération (on a mis des rond autour de l'indice maximum parcouru par l'algorithme suivant):</p>
+<p>Va afficher à l'écran les valeurs de N suivantes après chaque itération (on a mis des ronds autour de l'indice maximum parcouru par l'algorithme suivant):</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">       : 1001
      1 : 0➀01
      2 : ➀101
@@ -146,7 +146,7 @@ méthode <span class="token punctuation">(</span>c<span class="token punctuation
      8 : ➀000
      9 : 0➀00
 </code></pre>
-<p>On voit clairement $N[i]$ est parcouru par la méthode suivant toutes les $2^i$ itérations. <a href="../analyses/#m%C3%A9thode-agr%C3%A9gat" class="interne">L'analyse par agrégat</a> nous indique alors que la complexité des $m$ itérations est :</p>
+<p>On voit clairement $N[i]$ est parcouru par la méthode <code class="language-">suivant</code> toutes les $2^i$ itérations. <a href="../analyses/#m%C3%A9thode-agr%C3%A9gat" class="interne">L'analyse par agrégat</a> nous indique alors que la complexité des $m$ itérations est :</p>
 <div>
 $$
 \sum_{0\leq i\leq log_2(m)} \mathcal{O}(1)\cdot2^i = \mathcal{O}(1)
@@ -162,7 +162,16 @@ $$
 <p>Lorsqu'un programme utilise de nombreuses fois la méthode <code class="language-">suivant</code>, on peut considérer que la complexité d'un appel vaut sa complexité amortie : $\mathcal{O}(1)$.</p>
 </div></div>
 
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La complexité amortie est <strong>une moyenne de complexités maximales</strong> et permet un calcul plus aisé de la complexité : la complexité de tous les appels vaut le nombre d'appels fois la complexité amortie.</p>
+</div></div>
+
 <p>Enfin, remarquez que la complexité amortie de <code>suivant</code> ne dépend par de la longueur de l'attribut $N$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -180,7 +189,7 @@ $$
         x <span class="token operator">←</span> p<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> x</code></pre>
 <p>Si $k = 0$ ou la pile $P$ est vide, la complexité de <code class="language-">k-dépile</code> est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, P.\text{nombre()}))$. La complexité de <code class="language-">k-dépile</code> est ainsi de $\mathcal{O}(1 + P.\text{nombre()})$.</p>
-<p>Soit $A$ un algorithme utilisant notre nouvelle pile $P$ via ses méthodes <code class="language-">nombre</code> (de complexité $\mathcal{O}(1)$), <code class="language-">empile</code> (de complexité $\mathcal{O}(1)$) et via la fonction <code class="language-">k-dépile</code> (de complexité $\mathcal{O}(1 + P.\text{nombre()})$). On suppose que l'algorithme effectue $m$ de ces 3 méthodes pendant son exécution et que la somme de ses autres opérations est en $\mathcal{O}(1)$.</p>
+<p>Soit $A$ un algorithme utilisant notre nouvelle pile $P$ via ses méthodes <code class="language-">empile</code> (de complexité $\mathcal{O}(1)$) et via la fonction <code class="language-">k-dépile</code> (de complexité $\mathcal{O}(1 + P.\text{longueur})$). On suppose que l'algorithme effectue $m$ de ces 2 méthodes pendant son exécution et que la somme de ses autres opérations est en $\mathcal{O}(1)$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -188,21 +197,20 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Question ?</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Quelle est la complexité totale de ces $m$ exécutions des 3 méthodes pour $A$ ?</p>
+<p>Quelle est la complexité totale de ces $m$ exécutions des 2 méthodes pour $A$ ?</p>
 </div></div>
 
 <h3>Borner la complexité</h3>
 <p>La difficulté du calcul vient du fait que la complexité de la fonction <code class="language-">k-dépile</code> n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations <code class="language-">empile</code> avant de la vider entièrement avec une instruction <code class="language-">k-dépile</code>) : la complexité de <code class="language-">k-dépile</code> est bornée par $\mathcal{O}(m)$.</p>
-<p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">nombre</code>, <code class="language-">empile</code> et <code class="language-">k-dépile</code> donc $\mathcal{O}(m^2)$.</p>
+<p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">empile</code> et <code class="language-">k-dépile</code> donc $\mathcal{O}(m^2)$.</p>
 <p>On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :</p>
 <ul>
 <li>Pour que <code class="language-">k-dépile</code> ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations <code class="language-">empile</code> avant. On ne peut donc pas avoir beaucoup d'opérations <code class="language-">k-dépile</code> avec cette grande complexité.</li>
 <li>Après une exécution de <code class="language-">k-dépile</code> avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de <code class="language-">k-dépile</code> seront de complexité très faible.</li>
 </ul>
-<p>Calcul de la complexité amortie. Pour cela, on commence par calculer la complexité des $m$ exécutions en utilisant <a href="../analyses/#m%C3%A9thode-comptable" class="intene">la méthode comptable</a>.</p>
+<p>Calcul de la complexité amortie. Pour cela, on commence par calculer la complexité des $m$ exécutions en utilisant <a href="../analyses/#m%C3%A9thode-comptable" class="interne">la méthode comptable</a>.</p>
 <p>La complexité de <code class="language-">k-dépile</code> étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :</p>
 <ul>
-<li>1 à l'instruction <code class="language-">nombre</code></li>
 <li>2 à l'instruction <code class="language-">empile</code> (on compte son coût d'empilage <strong>et</strong> on crédite directement son coût de dépilage)</li>
 <li>0 à l'instruction <code class="language-">k-dépile</code></li>
 </ul>

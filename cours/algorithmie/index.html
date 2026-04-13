@@ -500,7 +500,7 @@
 <p><a href="structure-liste-cha%C3%AEn%C3%A9e" class="interne">Les listes chaînées</a></p>
 </div></div>
 
-<h3>Listes et dictionnaires</h3>
+<h3>Listes</h3>
 <p>La <a href="pseudo-code/briques-de-base/#tableaux" class="interne">structure de tableau</a> est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.</p>
 <p>La liste est un compromis très efficace pour réaliser les deux opérations au prix d'un coût négligeable en complexité.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -511,6 +511,19 @@
 <p><a href="structure-liste" class="interne">Structure de listes</a></p>
 </div></div>
 
+<h3>Complexité amortie</h3>
+<p>Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire ou la méthode append des listes.</p>
+<p>Si dans le premier cas deux recherches successive peuvent prendre $\mathcal{O}(n)$ opérations (si on a pas de chance) ce n'est pas le cas de la seconde où si un premier append prend $\mathcal{O}(n)$ opérations on sait que l'appel suivant ne prendra que $\mathcal{O}(1)$ opérations.</p>
+<p>C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que l'on fait un calcul en <em>&quot;complexité amortie&quot;</em> pour les listes. Formalisons cette notion :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="complexit%C3%A9-amortie" class="interne">Complexité amortie</a></p>
+</div></div>
+
+<h3>Hash, dictionnaires et ensembles</h3>
 <p>Si les listes permettent de supprimer la première contrainte de l'utilisation des tableaux qui est de déterminer leurs tailles à la création, elle ne permettent pas de pallier la seconde limitation qui est que l'accès aux éléments se fait <em>via</em> des indices entiers. Cette contrainte peut être levée au prix d'une perte de complexité (on ne peut garantir que de bonnes complexités en moyenne et plus maximale) en utilisant des dictionnaires :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -537,18 +550,6 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="structures-complexit%C3%A9" class="interne">Comparaisons des complexités des structures</a></p>
-</div></div>
-
-<h3>Complexité amortie</h3>
-<p>Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire ou la méthode append des listes.</p>
-<p>Si dans le premier cas deux recherches successive peuvent prendre $\mathcal{O}(n)$ opérations (si on a pas de chance) ce n'est pas le cas de la seconde où si un premier append prend $\mathcal{O}(n)$ opérations on sait que l'appel suivant ne prendra que $\mathcal{O}(1)$ opérations.</p>
-<p>C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que l'on fait un calcul en <em>&quot;complexité amortie&quot;</em> pour les listes. Formalisons cette notion :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="complexit%C3%A9-amortie" class="interne">Complexité amortie</a></p>
 </div></div>
 
 <h3>Intermède : le problème de l'enveloppe convexe</h3>
