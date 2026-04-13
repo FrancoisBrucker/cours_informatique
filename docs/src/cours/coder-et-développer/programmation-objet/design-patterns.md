@@ -10,7 +10,10 @@ eleventyComputed:
 ---
 
 
-> TBD : refaire propre.
+> TBD : refaire propre et dans la partie prog avancée : go
+>
+> TBD <https://refine.dev/blog/react-design-patterns/ >
+> TBD <https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur> 
 
 Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou façons de faire, sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
 Il existe 3 grands types de design pattern, on pourra en donner un exemple pour chaque.
