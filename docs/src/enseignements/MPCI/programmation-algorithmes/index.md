@@ -650,9 +650,6 @@ La séance du mardi 7 avril pour le groupe B est reportée au vendredi 10 à 8h.
 DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal programmation 2025](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/2025-05-26_L1S2_programmation_ET.pdf){.interne}
 
 {% endfaire %}
-{% info %}
-**Corrigé :** Le 17 avril 13h30.
-{% endinfo %}
 
 #### Jeudi : structures de données
 
@@ -685,12 +682,17 @@ DM3 : faire l'ET de programmation de l'année dernière : [sujet examen terminal
 > 13/04 au 17/04
 > Algorithmie
 
+{% info %}
+La séance facultative de correction du DM prévue le 17 avril (à 13h30) est annulée.
+{% endinfo %}
+
 #### Mercredi : Listes
 
 
 {% aller %}
 
-[Structures de liste](/cours/algorithmie/structure-liste/){.interne}
+1. [Structures de liste](/cours/algorithmie/structure-liste/){.interne}
+2. [Complexité amortie](/cours/algorithmie/complexité-amortie/){.interne}
 
 {% endaller %}
 
@@ -710,16 +712,6 @@ Si on a le temps, sinon à faire chez vous :
 [Projet Liste et dictionnaires](/cours/algorithmie/projet-liste-dictionnaire/){.interne}
 
 {% endaller %}
-
-
-Pour aller plus loin :
-
-{% aller %}
-
-[Complexité amortie](/cours/algorithmie/complexité-amortie/){.interne}
-
-{% endaller %}
-
 
 ### Semaine 13
 

@@ -10,6 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+. Accelerate + team topology à lire.
 - Base :
   - <https://www.youtube.com/watch?v=ZHpQs46xizQ>
   - <https://martinfowler.com/agile.html>
