@@ -140,7 +140,7 @@ C&=& 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n\\
 $$
 </div>
 
-On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ ([on l'a vu](../../projet-sommes-classiques/){.interne}), ce qui permet d'obtenir :
+On utilise alors le fait que : $\sum_{i=1}^{n} \frac{1}{2^i} = 1 - \frac{1}{2^{n}}$ ([on l'a vu](../../projet-sommes-classiques/#problème-r^i){.interne}), ce qui permet d'obtenir :
 
 <div>
 $$
@@ -185,7 +185,7 @@ Appliquons cette méthode pour calculer la complexité de `tous`{.language-}. La
 
 Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est supérieur à la somme réelle des $k$ coûts.
 
-Enfin, comme à chaque exécution de `successeur`{.language-} un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de `successeur`{.language-} est donc de $C = m$ : l'exécution de `tous(n)`{.language-} est de complexité $\mathcal{O}(2^n)$.
+Enfin, comme à chaque exécution de `successeur`{.language-} un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de `successeur`{.language-} est donc de $C = 2\cdot m$ : l'exécution de `tous(n)`{.language-} va exécuter $m=2^n$ fois `successeur`{.language-}, il est donc de complexité $\mathcal{O}(2\cdot m) = \mathcal{O}(m) = \mathcal{O}(2^{n})$.
 
 ## Analyse par potentiel
 

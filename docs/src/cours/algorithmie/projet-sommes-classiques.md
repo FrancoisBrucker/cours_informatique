@@ -70,6 +70,7 @@ On considère la série suivante :
 
 Montrez que :
 
+<div id="problème-r^i"></div>
 {% exercice %}
 <div>
 $$

@@ -311,7 +311,7 @@ Enfin, très utilisée dans les langages fonctionnels et le cas où l'on doit su
 {% endaller %}
 
 
-### Listes et dictionnaires
+### Listes
 
 La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est la base de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création. D'un autre côté les listes chaînées (ou doublement chaînées) permettent ajouter ou de supprimer des éléments facilement (ceux du début) mais ne permettent pas facilement d'accéder rapidement à un élément particulier.
 
@@ -320,6 +320,20 @@ La liste est un compromis très efficace pour réaliser les deux opérations au 
 {% aller %}
 [Structure de listes](./structure-liste){.interne}
 {% endaller %}
+
+### Complexité amortie
+
+Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire ou la méthode append des listes.
+
+Si dans le premier cas deux recherches successive peuvent prendre $\mathcal{O}(n)$ opérations (si on a pas de chance) ce n'est pas le cas de la seconde où si un premier append prend $\mathcal{O}(n)$ opérations on sait que l'appel suivant ne prendra que $\mathcal{O}(1)$ opérations.
+
+C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que l'on fait un calcul en _"complexité amortie"_ pour les listes. Formalisons cette notion :
+
+{% aller %}
+[Complexité amortie](./complexité-amortie){.interne}
+{% endaller %}
+
+### Hash, dictionnaires et ensembles
 
 Si les listes permettent de supprimer la première contrainte de l'utilisation des tableaux qui est de déterminer leurs tailles à la création, elle ne permettent pas de pallier la seconde limitation qui est que l'accès aux éléments se fait _via_ des indices entiers. Cette contrainte peut être levée au prix d'une perte de complexité (on ne peut garantir que de bonnes complexités en moyenne et plus maximale) en utilisant des dictionnaires :
 
@@ -339,18 +353,6 @@ On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'
 
 {% aller %}
 [Comparaisons des complexités des structures](./structures-complexité){.interne}
-{% endaller %}
-
-### Complexité amortie
-
-Il est parfois compliqué de calculer la complexité d'une méthode quand celle ci n'effectue pas toujours le même nombre d'opération, par exemple la recherche d'un élément dans un dictionnaire ou la méthode append des listes.
-
-Si dans le premier cas deux recherches successive peuvent prendre $\mathcal{O}(n)$ opérations (si on a pas de chance) ce n'est pas le cas de la seconde où si un premier append prend $\mathcal{O}(n)$ opérations on sait que l'appel suivant ne prendra que $\mathcal{O}(1)$ opérations.
-
-C'est pourquoi on parle de complexité en moyenne pour les dictionnaires et que l'on fait un calcul en _"complexité amortie"_ pour les listes. Formalisons cette notion :
-
-{% aller %}
-[Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
 ### Intermède : le problème de l'enveloppe convexe

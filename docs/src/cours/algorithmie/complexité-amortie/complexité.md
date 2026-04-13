@@ -59,7 +59,7 @@ pour chaque i de [1 .. 9]:
     c.suivant()
 ```
 
-Va afficher à l'écran les valeurs de N suivantes après chaque itération (on a mis des rond autour de l'indice maximum parcouru par l'algorithme suivant):
+Va afficher à l'écran les valeurs de N suivantes après chaque itération (on a mis des ronds autour de l'indice maximum parcouru par l'algorithme suivant):
 
 ```text
        : 1001
@@ -75,7 +75,7 @@ Va afficher à l'écran les valeurs de N suivantes après chaque itération (on 
 
 ```
 
-On voit clairement $N[i]$ est parcouru par la méthode suivant toutes les $2^i$ itérations. [L'analyse par agrégat](../analyses/#méthode-agrégat){.interne} nous indique alors que la complexité des $m$ itérations est :
+On voit clairement $N[i]$ est parcouru par la méthode `suivant`{.language-} toutes les $2^i$ itérations. [L'analyse par agrégat](../analyses/#méthode-agrégat){.interne} nous indique alors que la complexité des $m$ itérations est :
 
 <div>
 $$
@@ -91,8 +91,10 @@ La complexité amortie de la méthode `suivant`{.language-} est $\mathcal{O}(1)$
 Lorsqu'un programme utilise de nombreuses fois la méthode `suivant`{.language-}, on peut considérer que la complexité d'un appel vaut sa complexité amortie : $\mathcal{O}(1)$.
 {% endnote %}
 
+{% attention2 "**À retenir**" %}
 La complexité amortie est **une moyenne de complexités maximales** et permet un calcul plus aisé de la complexité : la complexité de tous les appels vaut le nombre d'appels fois la complexité amortie.
 
+{% endattention2 %}
 Enfin, remarquez que la complexité amortie de `suivant` ne dépend par de la longueur de l'attribut $N$.
 
 {% info %}
@@ -113,28 +115,27 @@ méthode (p: Pile<T>) k-dépile(k: entier) → T:
 
 Si $k = 0$ ou la pile $P$ est vide, la complexité de `k-dépile`{.language-} est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, P.\text{nombre()}))$. La complexité de `k-dépile`{.language-} est ainsi de $\mathcal{O}(1 + P.\text{nombre()})$.
 
-Soit $A$ un algorithme utilisant notre nouvelle pile $P$ via ses méthodes `nombre`{.language-} (de complexité $\mathcal{O}(1)$), `empile`{.language-} (de complexité $\mathcal{O}(1)$) et via la fonction `k-dépile`{.language-} (de complexité $\mathcal{O}(1 + P.\text{nombre()})$). On suppose que l'algorithme effectue $m$ de ces 3 méthodes pendant son exécution et que la somme de ses autres opérations est en $\mathcal{O}(1)$.
+Soit $A$ un algorithme utilisant notre nouvelle pile $P$ via ses méthodes `empile`{.language-} (de complexité $\mathcal{O}(1)$) et via la fonction `k-dépile`{.language-} (de complexité $\mathcal{O}(1 + P.\text{longueur})$). On suppose que l'algorithme effectue $m$ de ces 2 méthodes pendant son exécution et que la somme de ses autres opérations est en $\mathcal{O}(1)$.
 
 {% note "**Question ?**" %}
-Quelle est la complexité totale de ces $m$ exécutions des 3 méthodes pour $A$ ?
+Quelle est la complexité totale de ces $m$ exécutions des 2 méthodes pour $A$ ?
 {% endnote %}
 
 ### Borner la complexité
 
 La difficulté du calcul vient du fait que la complexité de la fonction `k-dépile`{.language-} n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations `empile`{.language-} avant de la vider entièrement avec une instruction `k-dépile`{.language-}) : la complexité de `k-dépile`{.language-} est bornée par $\mathcal{O}(m)$.
 
-On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations `nombre`{.language-}, `empile`{.language-} et `k-dépile`{.language-} donc $\mathcal{O}(m^2)$.
+On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations `empile`{.language-} et `k-dépile`{.language-} donc $\mathcal{O}(m^2)$.
 
 On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :
 
 - Pour que `k-dépile`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `empile`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-dépile`{.language-} avec cette grande complexité.
 - Après une exécution de `k-dépile`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-dépile`{.language-} seront de complexité très faible.
 
-Calcul de la complexité amortie. Pour cela, on commence par calculer la complexité des $m$ exécutions en utilisant [la méthode comptable](../analyses/#méthode-comptable){.intene}.
+Calcul de la complexité amortie. Pour cela, on commence par calculer la complexité des $m$ exécutions en utilisant [la méthode comptable](../analyses/#méthode-comptable){.interne}.
 
 La complexité de `k-dépile`{.language-} étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :
 
-- 1 à l'instruction `nombre`{.language-}
 - 2 à l'instruction `empile`{.language-} (on compte son coût d'empilage **et** on crédite directement son coût de dépilage)
 - 0 à l'instruction `k-dépile`{.language-}
 

@@ -222,7 +222,7 @@ L'algorithme utilisé par python pour effectuer le hash est [sipHash](https://en
 
 {% lien %}
 
-- [déscription](https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html)
+- [description](https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html)
 - [Implémentation de SipHash par un de ses créateurs](https://github.com/veorq/SipHash)
 
 {% endlien %}
