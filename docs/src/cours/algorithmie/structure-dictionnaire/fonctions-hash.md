@@ -407,7 +407,7 @@ Cette propriété permet d'utiliser les fonctions de hachage pour :
 - proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
 - créer des structures de données avancées comme les dictionnaires
 
-Les fonctions de hachages sont même utilisées pour stocker les mots de passe sur votre ordinateur, mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique) qui assurent qu'il est _difficile_ :
+Les fonctions de hachages sont même utilisées pour [stocker les mots de passe sur votre ordinateur](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/), ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](/cours/sécurité/cryptographie/intégrité/hash/){.interne} qui assurent qu'il est _difficile_ :
 
 - de trouver $m$ à partir de $h$ tel que $f(m) = h$
 - de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$
