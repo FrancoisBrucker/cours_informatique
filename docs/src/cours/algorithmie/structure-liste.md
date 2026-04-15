@@ -262,6 +262,12 @@ Doit-on augmenter la longueur du tableau de 2 ? De 1.5 ? D'autre chose ? La rép
 <https://www.youtube.com/watch?v=GZPqDvG615k>
 {% endlien %}
 
+> TBD à écrire propre
+> TBD faire une expérimentation
+
+1. pour un seul tableau : <https://en.wikipedia.org/wiki/Dynamic_array#Growth_factor> (qui mène à : <https://web.archive.org/web/20150806162750/http://www.gahcep.com/cpp-internals-stl-vector-part-1/>). Sauvent 1.5 est pris.
+2. Attention, ce n'est plus vrai si on alloue plus d'un seul tableau... pour 2 tableaux le second peux commencer dans la place laissée par l'autre.
+
 ## Utilisation
 
 L'intérêt d'une liste par rapport à un tableau est que l'on peut modifier sa longueur en ajoutant et supprimant des éléments.

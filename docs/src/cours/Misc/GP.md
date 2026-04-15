@@ -10,6 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD une méthode male digérée <https://www.youtube.com/watch?v=9lPqJGLRpdA>
+
 . Accelerate + team topology à lire.
 - Base :
   - <https://www.youtube.com/watch?v=ZHpQs46xizQ>
