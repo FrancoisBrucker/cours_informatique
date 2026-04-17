@@ -100,7 +100,7 @@ rgb["rouge"] ← 230
 rgb["vert"] ← 12
 rgb["bleu"] ← 255
 
-(couleur := entier) ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + 2^16 * rgb["bleu"]
+(couleur := entier) ← 2^16 * rgb["rouge"] + 2^8 * rgb["vert"] + rgb["bleu"]
 ```
 
 On ne peut cependant bien sur pas utiliser cette structure en tant que tel à cause des collisions. Par exemple si `Dictionnaire.f("bleu")`{.language-} =  `Dictionnaire.f("rouge")`{.language-} le code précédent ne fonctionnera pas.

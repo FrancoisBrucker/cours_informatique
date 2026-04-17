@@ -86,7 +86,7 @@ Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m[$ es
 
 {% endnote %}
 
-Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leur hash. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.
+Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leurs hashs. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.
 
 ## Exemples
 
@@ -118,9 +118,7 @@ f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
 $$
 </div>
 
-est une fonction de hachage.
-
-Sous certaines conditions, elle respecte bien les 3 propriétés d'une fonction de hachage utile.
+est une fonction de hachage et elle respecte bien les 3 propriétés d'une fonction de hachage utile.
 
 #### Déterministe
 
@@ -213,7 +211,7 @@ Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hach
 De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme. Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :
 
 {% note %}
-On utilise le modulo comme fonction de hachage avec un nombre $m$ premier.
+On utilise le modulo comme fonction de hachage avec un nombre $m$ premier pour s'assurer que même si les entiers pris ne sont pas équiprobables (ils sont tous pairs par exemple), ils seront tout de même bien répartis.
 {% endnote %}
 
 ### Hash de python
@@ -290,7 +288,7 @@ Pour le deuxième cas :
 <div id="paradoxe-anniversaires"></div>
 
 {% note "**Proposition**" %}
-Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$, c'est à dire sans avoir de collisions est de :
+Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n \geq 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$, c'est à dire sans avoir de collisions est de :
 
 $$
 \bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m})
@@ -306,13 +304,13 @@ A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit diff�
 Ce calcul est plus compliqué que le précédent, mais on peut calculer des valeurs approchées si (comme c'est très souvent le cas) $m$ est très grand devant $n$ :
 
 {% note  "**Proposition**" %}
-Si $m$ est grand devant $n$, la probabilité $p(n, m)$ de tirer $n > 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$ donné) est :
+Si $m$ est grand devant $n$, la probabilité $p(n, m)$ de tirer $n \geq 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$ donné) est :
 
 $$
 p(n, m) \simeq \exp(-\frac{n}{ m})
 $$
 
-Et la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$ vaut :
+Et la probabilité $\bar{p}(n, m)$ de tirer $n \geq 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$ vaut :
 
 $$
 \bar{p}(n, m) \simeq \exp(-\frac{n^2}{2\cdot m})
