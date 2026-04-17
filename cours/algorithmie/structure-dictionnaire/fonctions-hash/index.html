@@ -186,11 +186,31 @@ $$</p>
 <ol>
 <li><strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage</li>
 <li><strong>facilement calculable</strong></li>
-<li><strong>uniforme</strong> : $\mathbb{P}(f(a) = i) = \frac{1}{m}$ pour tout $a\in \mathbb{N}$ et $0 \leq i &lt; m$</li>
+<li><strong>uniforme</strong> : $\Pr[f(a) = i] = \frac{1}{m}$ pour tout $a\in \mathbb{N}$ et $0 \leq i &lt; m$</li>
 </ol>
 </div></div>
 
 <p>Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leurs hashs. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.</p>
+<h2>Utilisation</h2>
+<p>Si la taille du hachage est grand, la probabilité que deux objets différents aient le même hash est très faible (on le verra), c'est pourquoi on considère souvent que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><em>En pratique</em> une fonction de hachage utile est une <strong>injection</strong> de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.},{.} } m]$ ou $\{0, 1\}^k$ selon la fonction utilisée</p>
+</div></div>
+
+<p>Cette propriété permet d'utiliser les fonctions de hachage pour :</p>
+<ul>
+<li>proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.</li>
+<li>créer des structures de données avancées comme les dictionnaires</li>
+</ul>
+<p>Les fonctions de hachages sont même utilisées pour <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">stocker les mots de passe sur votre ordinateur</a>, ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des <a href="/cours_informatique/cours/s%C3%A9curit%C3%A9/cryptographie/int%C3%A9grit%C3%A9/hash/" class="interne">fonctions de hachage cryptographiques</a> qui assurent qu'il est <em>difficile</em> :</p>
+<ul>
+<li>de trouver $m$ à partir de $h$ tel que $f(m) = h$</li>
+<li>de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$</li>
+</ul>
 <h2>Exemples</h2>
 <h3>Une constante</h3>
 <p>La fonction constante :</p>
@@ -526,26 +546,6 @@ $$</p>
 <p>Pour une fonction de hash rendant un mot de $p$ bits, il faut $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.</p>
 </div></div>
 
-<h2>Utilisation</h2>
-<p>On l'a vu, si la taille du hachage est grand, il faut a priori un grand nombre d'objet pour espérer avoir une collision. C'est pourquoi on considère souvent que :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><em>En pratique</em> une fonction de hachage utile est une <strong>injection</strong> de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.},{.} } m]$ ou $\{0, 1\}^k$ selon la fonction utilisée</p>
-</div></div>
-
-<p>Cette propriété permet d'utiliser les fonctions de hachage pour :</p>
-<ul>
-<li>proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.</li>
-<li>créer des structures de données avancées comme les dictionnaires</li>
-</ul>
-<p>Les fonctions de hachages sont même utilisées pour <a href="https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/">stocker les mots de passe sur votre ordinateur</a>, ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des <a href="/cours_informatique/cours/s%C3%A9curit%C3%A9/cryptographie/int%C3%A9grit%C3%A9/hash/" class="interne">fonctions de hachage cryptographiques</a> qui assurent qu'il est <em>difficile</em> :</p>
-<ul>
-<li>de trouver $m$ à partir de $h$ tel que $f(m) = h$</li>
-<li>de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$</li>
-</ul>
 
 
 </article>
