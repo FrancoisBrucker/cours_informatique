@@ -82,11 +82,29 @@ Une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m[$ es
 
 1. **déterministe** : un même message doit toujours avoir la même valeur de hachage
 2. **facilement calculable**
-3. **uniforme** : $\mathbb{P}(f(a) = i) = \frac{1}{m}$ pour tout $a\in \mathbb{N}$ et $0 \leq i < m$
+3. **uniforme** : $\Pr[f(a) = i] = \frac{1}{m}$ pour tout $a\in \mathbb{N}$ et $0 \leq i < m$
 
 {% endnote %}
 
 Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leurs hashs. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.
+
+## Utilisation
+
+Si la taille du hachage est grand, la probabilité que deux objets différents aient le même hash est très faible (on le verra), c'est pourquoi on considère souvent que :
+
+{% note %}
+_En pratique_ une fonction de hachage utile est une **injection** de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.}\,{.} } m]$ ou $\\{0, 1\\}^k$ selon la fonction utilisée
+{% endnote %}
+
+Cette propriété permet d'utiliser les fonctions de hachage pour :
+
+- proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
+- créer des structures de données avancées comme les dictionnaires
+
+Les fonctions de hachages sont même utilisées pour [stocker les mots de passe sur votre ordinateur](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/), ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](/cours/sécurité/cryptographie/intégrité/hash/){.interne} qui assurent qu'il est _difficile_ :
+
+- de trouver $m$ à partir de $h$ tel que $f(m) = h$
+- de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$
 
 ## Exemples
 
@@ -391,21 +409,3 @@ De ce qui découle on en déduit une règle universelle de toute fonction de has
 {% attention2 "**À retenir**" %}
 Pour une fonction de hash rendant un mot de $p$ bits, il faut $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.
 {% endattention2 %}
-
-## Utilisation
-
-On l'a vu, si la taille du hachage est grand, il faut a priori un grand nombre d'objet pour espérer avoir une collision. C'est pourquoi on considère souvent que :
-
-{% note %}
-_En pratique_ une fonction de hachage utile est une **injection** de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.}\,{.} } m]$ ou $\\{0, 1\\}^k$ selon la fonction utilisée
-{% endnote %}
-
-Cette propriété permet d'utiliser les fonctions de hachage pour :
-
-- proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
-- créer des structures de données avancées comme les dictionnaires
-
-Les fonctions de hachages sont même utilisées pour [stocker les mots de passe sur votre ordinateur](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/), ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](/cours/sécurité/cryptographie/intégrité/hash/){.interne} qui assurent qu'il est _difficile_ :
-
-- de trouver $m$ à partir de $h$ tel que $f(m) = h$
-- de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$
