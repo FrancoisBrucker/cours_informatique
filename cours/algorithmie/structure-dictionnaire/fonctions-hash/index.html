@@ -190,7 +190,7 @@ $$</p>
 </ol>
 </div></div>
 
-<p>Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leur hash. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.</p>
+<p>Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leurs hashs. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.</p>
 <h2>Exemples</h2>
 <h3>Une constante</h3>
 <p>La fonction constante :</p>
@@ -213,8 +213,7 @@ f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
 \end{array}
 $$
 </div>
-<p>est une fonction de hachage.</p>
-<p>Sous certaines conditions, elle respecte bien les 3 propriétés d'une fonction de hachage utile.</p>
+<p>est une fonction de hachage et elle respecte bien les 3 propriétés d'une fonction de hachage utile.</p>
 <h4>Déterministe</h4>
 <p>Comme $a \bmod m$ est égal au reste de la division entière de $a$ par $m$ son calcul est bien déterministe.</p>
 <h4>Facilement calculable</h4>
@@ -288,7 +287,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On utilise le modulo comme fonction de hachage avec un nombre $m$ premier.</p>
+<p>On utilise le modulo comme fonction de hachage avec un nombre $m$ premier pour s'assurer que même si les entiers pris ne sont pas équiprobables (ils sont tous pairs par exemple), ils seront tout de même bien répartis.</p>
 </div></div>
 
 <h3>Hash de python</h3>
@@ -393,7 +392,7 @@ $$</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n &gt; 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$, c'est à dire sans avoir de collisions est de :</p>
+<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n \geq 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$, c'est à dire sans avoir de collisions est de :</p>
 <p>$$
 \bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m})
 $$</p>
@@ -428,11 +427,11 @@ $$</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $m$ est grand devant $n$, la probabilité $p(n, m)$ de tirer $n &gt; 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$ donné) est :</p>
+<p>Si $m$ est grand devant $n$, la probabilité $p(n, m)$ de tirer $n \geq 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$ donné) est :</p>
 <p>$$
 p(n, m) \simeq \exp(-\frac{n}{ m})
 $$</p>
-<p>Et la probabilité $\bar{p}(n, m)$ de tirer $n &gt; 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$ vaut :</p>
+<p>Et la probabilité $\bar{p}(n, m)$ de tirer $n \geq 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$ vaut :</p>
 <p>$$
 \bar{p}(n, m) \simeq \exp(-\frac{n^2}{2\cdot m})
 $$</p>
