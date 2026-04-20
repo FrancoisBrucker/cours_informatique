@@ -168,7 +168,7 @@ On peut alors le découper en paquets de $k$ bits (souvent $k = 256$, voir par e
 
 <div>
 $$
-n = \underbracket{0 \cdots 1}_{k} \cdots \underbracket{1 \cdots 0}_{k} \cdots \underbracket{1 \cdots 1}_{k}
+n = \underbracket{0 \cdots 1}_{k}\underbracket{1 \cdots 0}_{k} \cdots \underbracket{1 \cdots 1}_{k}
 $$
 </div>
 
@@ -288,7 +288,7 @@ Faites le test pour votre promo !
 Calculons le précisément.
 
 {% note "**Proposition**" %}
-Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n > 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$ donné) est :
+Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n \geq 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$ donné) est :
 
 $$
 p(n, m) = \left(1-\frac{1}{m}\right)^n
