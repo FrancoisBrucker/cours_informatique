@@ -257,7 +257,7 @@ $$
 <p>On peut alors le découper en paquets de $k$ bits (souvent $k = 256$, voir par exemple l'algorithme <a href="https://fr.wikipedia.org/wiki/SHA-2">sha-2</a>) :</p>
 <div>
 $$
-n = \underbracket{0 \cdots 1}_{k} \cdots \underbracket{1 \cdots 0}_{k} \cdots \underbracket{1 \cdots 1}_{k}
+n = \underbracket{0 \cdots 1}_{k}\underbracket{1 \cdots 0}_{k} \cdots \underbracket{1 \cdots 1}_{k}
 $$
 </div>
 <p>Et calculer le modulo sur chacun de ces paquets indépendamment, puis sommer le tout (en faisant à chaque fois le modulo).</p>
@@ -375,7 +375,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n &gt; 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$ donné) est :</p>
+<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n \geq 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$ donné) est :</p>
 <p>$$
 p(n, m) = \left(1-\frac{1}{m}\right)^n
 $$</p>
