@@ -20,8 +20,8 @@ def test_Facteur_init():
 
 
 def test_Facteur_nombre():
-    assert Facteur([2, 3, 7]).nombre([1, 2]) == (2 ** 1) * (3 ** 2)
-    assert Facteur([2, 3, 7]).nombre([1, 2, 3]) == (2 ** 1) * (3 ** 2) * (7 ** 3)
+    assert Facteur([2, 3, 7]).nombre([1, 2]) == (2**1) * (3**2)
+    assert Facteur([2, 3, 7]).nombre([1, 2, 3]) == (2**1) * (3**2) * (7**3)
 
 
 def test_Facteur_décomposition():

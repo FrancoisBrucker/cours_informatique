@@ -54,4 +54,3 @@ class Facteur:
                 facteurs[i] += 1
             facteurs[i] -= 1
         return facteurs
-
