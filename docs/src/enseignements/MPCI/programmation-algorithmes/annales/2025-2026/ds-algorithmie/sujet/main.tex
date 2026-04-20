@@ -101,7 +101,7 @@
 \item ont tous le même but, savoir si $b$ est une sous-chaîne de $a$;
 \item sont indépendants (à part le problème à résoudre qui est le même);
 \item sont de difficulté croissante;
-\item sont chacuns constitués de 3 parties de difficultés croissantes.
+\item sont chacun constitués de 3 parties de difficultés croissantes.
 \end{itemize}
 
 \paragraph{Élément de notation :}
@@ -197,10 +197,10 @@ On définit le problème algorithmique suivant :
 
     \begin{enumerate}
         \item on commence l'algorithme avec $i= 0$
-        \item pour un indice $i$ donné, on fait décroitre un un indice $j$ de $m-1$ à $0$.
+        \item pour un indice $i$ donné, on fait décroître un indice $j$ de $m-1$ à $0$.
         \begin{itemize}
             \item si $a[i + j] = b[j]$ pour tout $j$, l'algorithme s'arrête et rend $i$
-            \item sinon, lors de la première non correspondance ($a[i + j] \neq b_j$ et $a[i + j'] = b[j']$ pour $j < j' < m$), l'indice $i$ est {\bf décalé} :
+            \item sinon, lors de la première non correspondance ($a[i + j] \neq b[j]$ et $a[i + j'] = b[j']$ pour $j < j' < m$), l'indice $i$ est {\bf décalé} :
             \begin{itemize}
                 \item de $m$ cases si $a[i +m-1]$ n'est pas un caractère de $b[:-1]$ (la chaîne $b$ privée du dernier caractère).
                 \item de $m-k-1$ cases où $k$ est l'indice le plus grand dans $b[:-1]$ du caractère $a[i + m -1]$.

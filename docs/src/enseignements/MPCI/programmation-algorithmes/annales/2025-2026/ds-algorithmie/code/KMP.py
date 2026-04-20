@@ -44,6 +44,5 @@ def sous_chaîne_KMP(a, b):
                 j -= l
     return -1
 
-# print(décalage2("ABABACA"))
 print(décalage("ABABACA"))
 print(sous_chaîne_KMP("ABABAAABABACABCBAB", "ABABACA"))
