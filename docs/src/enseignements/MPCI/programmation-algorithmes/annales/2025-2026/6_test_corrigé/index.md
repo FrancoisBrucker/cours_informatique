@@ -12,7 +12,14 @@ authors:
 
 ## Erreurs fréquemment rencontrées
 
-> TBD
+### Question 1
+
+- J'ai enlevé 25\% des points lorsque vous n'avez pas utilisé le même nom pour le paramètre et l'attribut dans le constructeur
+- Attention au fait que l'on doit utiliser la division entière (qui rend un entier) et pas la division "normale" (qui rend un flottant).
+
+### Question 2
+
+J'ai enlevé 25\% des points lorsque vous n'avez pas utilisé de nom de variables explicite.
 
 ## Corrigé
 

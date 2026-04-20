@@ -32,9 +32,9 @@ $$
 
 Avec :
 
-- $CC = \frac{1}{2}(TUT + TEST)$ où :
-  - $TUT$ est la moyenne formée de la note de tutorat
-  - $TEST$ est la moyenne des tests de débuts de séances.
+- $CC = \frac{1}{4}(TUT + \sum TEST)$ où :
+  - $TUT$ est la moyenne formée de la note des 2 tutorats
+  - $\sum TEST$ est la somme des 3 tests de débuts de séances (3 en algorithmie et 3 en programmation)
 - $DS$ est la note du devoir surveillé
 - $ET$ est l'examen terminal
 
