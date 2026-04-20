@@ -2,7 +2,7 @@ def décalage(b):
     d = {}
     for j in range(len(b) - 1):
         c = b[j]
-        d[c] = j
+        d[c] = len(b) - j - 1
 
     return d
 
@@ -14,10 +14,7 @@ def BMH(a, b):
     j = len(b) - 1
     while i <= len(a) - len(b):
         if a[i + j] != b[j]:
-            if a[i + j] not in décalé:
-                i += len(b)
-            else:
-                i += len(b) - décalé[a[i + j]] - 1
+            i += décalé.get(a[i + j], len(b))
             j = len(b) - 1
         elif j == 0:
             return i

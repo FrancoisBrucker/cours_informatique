@@ -155,6 +155,72 @@ Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j < m$ $
 
 Contrairement à l'algorithme naïf l'indice $i$ peut augmenter de plus que 1 unité. Il peut même augmenter de $m$ si le dernier élément de $a$ n'est pas dans $b$.
 
+
+##### 2.2.1
+
+Le décalage pour l'indice $i$ de $a$ ne dépend que des caractères de $b$ et de leurs positions :
+
+- si le caractère n'est pas dans $b$ on décale de $m$
+- si le caractère est dans $b$ on décale de $m - k - 1$ où $k$ est le plus grand indice où apparaît le caractère. Ceci donne l'algorithme suivant :
+
+```pseudocode
+algorithme décalage(b: chaîne) → [entier]:
+    (m := entier) ← b.longueur
+    T := [entier] ← [entier]{longueur: L}
+    pour chaque (i := entier) de [0 .. L[:
+        T[i] ← m
+    pour chaque (k := entier) de [0 .. b.longueur - 1[:
+        T[ord(b[k])] ← min(T[ord(b[k])], m - k - 1)
+
+    rendre T
+```
+
+
+##### 2.2.2
+
+L'algorithme a deux boucles la première possède $\mathcal{O}(L)$ itérations et la seconde $\mathcal{O}(b.\text{longueur})$ itérations. Comme la fonction `ord`{.language-} est de complexité $\mathcal{O}(1)$ la complexité de l'algorithme est $\mathcal{O}(b.\text{longueur} + L)$.
+
+Comme le nombre de caractères pouvant à priori être aussi grand qu'on veut, $L$ dépend du problème (4, pour de l'ADN, 20 pour des protéines et $2^{28}$ pour des chaînes de caractères Unicode) et ne peut être assimilé à une constante.
+
+#### 2.3 Recherche
+
+##### 2.3.1
+
+```pseudocode
+fonction décalage(b: chaîne) → [entier]:
+    (m := entier) ← b.longueur
+    T := [entier] ← [entier]{longueur: L}
+    pour chaque (i := entier) de [0 .. L[:
+        T[i] ← m
+    pour chaque (k := entier) de [0 .. b.longueur - 1[:
+        T[ord(b[k])] ← min(T[ord(b[k])], m - k - 1)
+
+    rendre T
+
+algorithme BMH(a: chaîne, b: chaîne) → [entier]:
+    (m := entier) ← b.longueur
+    T := [entier] ← [entier]{longueur: L}
+    pour chaque (i := entier) de [0 .. L[:
+        T[i] ← m
+    pour chaque (k := entier) de [0 .. b.longueur - 1[:
+        T[b[k]] ← min(T[b[k]], m - k - 1)
+
+    rendre T
+```
+##### 2.3.2
+
+Dans le pire des cas on se comportera comme l'algorithme naïf. Par exemple si a = "aaaaaaaaaaaaaaaaaa" et b = "baaa" on incrémentera toujours l'indice `i`{.language-} de 1 et l'indice `j`{.language-} ira de $m$ à 0 pour tout indice $i$. Dans ce cas là la complexité sera de $\mathcal{O}(b.\text{longueur} + L + a.\text{longueur} \cdot b.\text{longueur})$.
+
+Dans le meilleur des cas, on augmente $i$ de $m$ a chaque itération, par exemple si a = "aaaaaaaaaaaaaaaaaa" et b = "bbbb". Dans ce cas là la complexité sera de $\mathcal{O}(b.\text{longueur} + L + a.\text{longueur} / b.\text{longueur})$.
+
+##### 2.3.3
+
+La complexité spatiale sera égale a la taille du tableau `T`{.language-} c'est à dire : $\mathcal{O}(L)$ (qui peut être gigantesque).
+
+##### 2.3.4
+
+On utiliserait cet algorithme lorsque $L$ est petit. Dans ce cas là, l'algorithme ira plus vite que l'algorithme naïf puisque sa complexité minimale sera en $\mathcal{O}(b.\text{longueur} + a.\text{longueur} / b.\text{longueur})$.
+
 #### Code python
 
 
