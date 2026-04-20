@@ -159,19 +159,75 @@
 </ul>
 <h4>1.3 Complexité en moyenne</h4>
 <h5>1.3.1</h5>
-<p>Si les caractères sont équiprobables alors la position dans la chaîne de caractère importe peut. La probabilité que 2 caractères de $a$ et de $b$ soient égaux est donc la même que la probabilité de tirer deux fois le même caractère : c'est $\frac{1}{\vert \mathcal{A} \vert}$ où $\mathcal{A}$ est l'ensemble des caractères possibles.</p>
+<p>Si les caractères sont équiprobables alors la position dans la chaîne de caractères importe peu. La probabilité que 2 caractères de $a$ et de $b$ soient égaux est donc la même que la probabilité de tirer deux fois le même caractère : c'est $\frac{1}{\vert \mathcal{A} \vert}$ où $\mathcal{A}$ est l'ensemble des caractères possibles.</p>
 <h5>1.3.2</h5>
-<p>On note $p$ la probabilité que deux lettre soient identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq B[k]$ vaut alors, puisqu'il y a équiprobabilité : $p^{k}(1-p)$</p>
+<p>On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $p(k) = p^{k}(1-p)$</p>
 <p>Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle <code class="language-">tant que</code> vaut alors :</p>
 <div>
 $$
-\sum_{k=0}^{b.\text{\small longueur}}k \cdot p^{k}(1-p) \leq \frac{p}{1-p}
+\sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{1}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \frac{1}{1-p}
 $$
 </div>
-<p>Comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$, et que $p$ est une constante, la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$.</p>
+<p>Comme :</p>
+<ul>
+<li>$p$ est une constante le nombre moyen de passage dans la boucle à $i$ fixé est en $\mathcal{O}(1)$</li>
+<li>chaque passage dans la boucle comptera pour $\mathcal{O}(1)$ opération</li>
+</ul>
+<p>On on en conclut que pour $i$ fixé il y a en moyenne $\mathcal{O}(1)$ opérations d'effectuées.</p>
+<p>Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ i y a $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ valeur différentes de $i$ et donc la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$</p>
+<h4>Code python</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> naïf<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
+        j <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">while</span> j <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
+                j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                j <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> i
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
 <h3>Exercice 2</h3>
 <h4>2.1 Principe</h4>
 <h5>2.1.1</h5>
+<p>Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j &lt; m$ $b$ est bien une sous-chaîne de $a$ en position $i$. Sinon :</p>
+<ul>
+<li>soit $a[i + m -1]$ n'est pas dans $b$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' &lt; i + m$</li>
+<li>soit $a[i + m -1] = b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i &lt; i' &lt; i + m$</li>
+<li>soit $a[i + m -1]$ est dans $b[:-1]$ et la première position plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.</li>
+</ul>
+<h5>2.1.2</h5>
+<p>Contrairement à l'algorithme naïf l'indice $i$ peut augmenter de plus que 1 unité. Il peut même augmenter de $m$ si le dernier élément de $a$ n'est pas dans $b$.</p>
+<h4>Code python</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> décalage<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        c <span class="token operator">=</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+        d<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span> j
+
+    <span class="token keyword">return</span> d
+
+
+<span class="token keyword">def</span> <span class="token function">BMH</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    décalé <span class="token operator">=</span> décalage<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">!=</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token keyword">not</span> <span class="token keyword">in</span> décalé<span class="token punctuation">:</span>
+                i <span class="token operator">+=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                i <span class="token operator">+=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> décalé<span class="token punctuation">[</span>a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span>
+            j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+        <span class="token keyword">elif</span> j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> i
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            j <span class="token operator">-=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+</code></pre>
 
 
 </article>
