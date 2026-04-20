@@ -17,5 +17,5 @@ authors:
 ## Corrigé
 
 {% lien %}
-[code corrigé]()
+[code corrigé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/enseignements/MPCI/programmation-algorithmes/annales/2025-2026/6_test_corrig%C3%A9/code)
 {% endlien %}
