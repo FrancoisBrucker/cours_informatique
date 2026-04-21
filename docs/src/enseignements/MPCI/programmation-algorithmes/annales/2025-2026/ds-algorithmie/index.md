@@ -314,10 +314,10 @@ alors on a aussi $b[k] = b[j + i' - i + k]$ pour $0\leq k < j + i'-i$. Le plus p
 
 ##### 3.3.1
 
-On montre par une récurrence triviale qu'à la fin de chaque itération :
+On montre par une récurrence triviale qu'au début de chaque itération :
 
 - $0 \leq T[l] < l$ pour tout $l>0$ et $T[0] = 0$,
-- $k < j < i$ 
+- $k  < j - 1 < i$ 
 
 De là, les conditions sur $k$ sont également vérifiées.
 
@@ -327,6 +327,15 @@ La variable $i$ est croissante. Lorsque $i$ n'augmente pas c'est $k$ qui diminue
 
 ##### 3.3.3
 
+L'idée est de procéder itérativement. Si on suppose que l'on a toutes les valeurs de $T[l]$ pour $l < i$, on peut trouver $T[l]$ en procédant ainsi :
+
+- si $b[T[i-1]] = b[i-1]$ alors $T[i] = T[i-1] + 1$ puisque l'on peut prolonger la sous-chaîne
+- si $b[T[i-1]] \neq b[i-1]$ on peut poser $j = T[i-1] + 1$. De là :
+  - si $b[T[j-1]] = b[i-1]$ alors $T[i] = T[j-1] + 1$ puisque l'on peut prolonger la sous-chaîne
+  - sinon, si $T[j-1] > 1$, on peut recommencer avec une plus petite chaîne en posant $j = T[j-1] + 1$ et en revenant à l'étape précédente
+  - si $T[j-1] \leq 1$ c'est fini et on a $T[i] = 0$
+
+C'est exactement ce que fait l'algorithme.
 
 ### Exercice 4
 

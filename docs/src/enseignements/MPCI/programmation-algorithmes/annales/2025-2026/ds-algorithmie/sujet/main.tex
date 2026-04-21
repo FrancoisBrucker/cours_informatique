@@ -309,14 +309,14 @@ Par exemple on a $[0, 0, 0, 1, 2, 3, 0] = \text{décalage}("ABABACA")$ :~\\
             \>\vline$\,$\>\vline$\,$ \textbf{si } $c == b[k]$ {\bf :}\\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$ $T[i] \leftarrow k + 1$\\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$ $i \leftarrow i + 1$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$ $c \leftarrow b[i-1]$\\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$ $j \leftarrow i$\\
-            \>\vline$\,$\>\vline$\,$\>\vline$\,$ $c \leftarrow b[j-1]$\\
             \>\vline$\,$\>\vline$\,$\textbf{sinon} {\bf :} \\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$ \textbf{si } $k \leq 1$ {\bf :}\\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $T[i] \leftarrow 0$\\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $i \leftarrow i + 1$\\
+            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $c \leftarrow b[i-1]$\\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $j \leftarrow i$\\
-            \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $c \leftarrow b[j-1]$\\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$ \textbf{sinon} {\bf :}\\
             \>\vline$\,$\>\vline$\,$\>\vline$\,$\>\vline$\,$ $j \leftarrow k + 1$\\
             \>\vline$\,$ \textbf{rendre} $T$\\
