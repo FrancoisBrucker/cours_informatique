@@ -192,11 +192,12 @@ $$
 <h3>Exercice 2</h3>
 <h4>2.1 Principe</h4>
 <h5>2.1.1</h5>
-<p>Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j &lt; m$ $b$ est bien une sous-chaîne de $a$ en position $i$. Sinon :</p>
+<p>Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j &lt; m$ $b$ est bien une sous-chaîne de $a$ en position $i$. Sinon soit :</p>
 <ul>
-<li>soit $a[i + m -1]$ n'est pas dans $b$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' &lt; i + m$</li>
-<li>soit $a[i + m -1] = b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i &lt; i' &lt; i + m$</li>
-<li>soit $a[i + m -1]$ est dans $b[:-1]$ et la première position plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.</li>
+<li>$a[i + m -1] \neq b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' &lt; i + m$</li>
+<li>$a[i + m -1]  \neq b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.</li>
+<li>$a[i + m -1] = b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i &lt; i' &lt; i + m$</li>
+<li>$a[i + m -1] = b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.</li>
 </ul>
 <h5>2.1.2</h5>
 <p>Contrairement à l'algorithme naïf l'indice $i$ peut augmenter de plus que 1 unité. Il peut même augmenter de $m$ si le dernier élément de $a$ n'est pas dans $b$.</p>
@@ -274,6 +275,77 @@ $$
             j <span class="token operator">-=</span> <span class="token number">1</span>
     <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
 </code></pre>
+<h3>Exercice 3</h3>
+<h4>3.1 Complexité de l'algorithme</h4>
+<h5>3.1.1</h5>
+<p>En analysant les cas de l'algorithme, on a soit :</p>
+<ul>
+<li><code class="language-">j ← j + 1</code> et :
+<ul>
+<li><code class="language-">i+j</code> augmente strictement</li>
+<li><code class="language-">i</code> est constant</li>
+</ul>
+</li>
+<li><code class="language-">i ← i + 1</code> et :
+<ul>
+<li><code class="language-">i+j</code> augmente strictement</li>
+<li><code class="language-">i</code>  augmente strictement</li>
+</ul>
+</li>
+<li><code class="language-">i ← i + j - T[j]</code> et <code class="language-">j ← T[j]</code> :
+<ul>
+<li><code class="language-">i+j</code> est constant</li>
+<li><code class="language-">i</code>  augmente strictement puisque par définition $T[j] &lt; j$ pour tout $j$</li>
+</ul>
+</li>
+</ul>
+<h5>3.1.2</h5>
+<p>Les variables $i$ et $i+j$ sont croissantes et l'un des deux augmente strictement à chaque itérations de la boucle <code class="language-">tant que</code>. De là comme :</p>
+<ul>
+<li>après $n$ augmentations de $i$ $i+j \geq n$</li>
+<li>après $n$ augmentations de $i+j$ on a aussi $i+j \geq n$</li>
+</ul>
+<p>Il y a au mieux $n + n$ itérations de la boucle <code class="language-">tant que</code>. Comme toutes les instructions de la boucle sont en $\mathcal{O}(1)$ la complexité totale de l'exécution de la boucle <code class="language-">tant que</code> est en $\mathcal{O}(n)$ et donc la complexité totale de l'algorithme en $\mathcal{O}(n + f(m))$</p>
+<h4>3.2 Preuve de l'algorithme</h4>
+<p>Supposons que l'on soit dans le cas ci-après :</p>
+<pre><code>          i
+a : aaaaaaaaaaaaXaaaaaaaaaaaaaa
+b :       bbbbbbYbbbbbb
+                j
+</code></pre>
+<p>Avec :</p>
+<ul>
+<li>$a[i+k] = b[k]$ pour $0\leq k &lt; j$</li>
+<li>$a[i+j] \neq b[j]$</li>
+</ul>
+<p>S'il existe $i &lt; i' \leq i + j$ tel que $a[i'+k] = b[k]$ pour $0\leq k &lt; j + i'-i$ :</p>
+<pre><code>          i  i'
+a : aaaaaaaaabbbXaaaaaaaaaaaaaa
+b :          BBBbbbYbbbbbb
+                j
+</code></pre>
+<p>alors on a aussi $b[k] = b[j + i' - i + k]$ pour $0\leq k &lt; j + i'-i$. Le plus petit indice $i'$ est donné par la fonction de décalage ! Comme au pire $i' = i + j$ si aucun autre décalage n'est possible on progresse dans la recherche de la sous-chaîne comme le fait l'algorithme.</p>
+<h4>3.3</h4>
+<h5>3.3.1</h5>
+<p>On montre par une récurrence triviale qu'à la fin de chaque itération :</p>
+<ul>
+<li>$0 \leq T[l] &lt; l$ pour tout $l&gt;0$ et $T[0] = 0$,</li>
+<li>$k &lt; j &lt; i$</li>
+</ul>
+<p>De là, les conditions sur $k$ sont également vérifiées.</p>
+<h5>3.3.2</h5>
+<p>La variable $i$ est croissante. Lorsque $i$ n'augmente pas c'est $k$ qui diminue strictement et $k$ ne peut augmenter que si $i$ croit strictement. De là $i$ ne peut rester constant qu'au plus le nombre d'itération ou il a crût strictement : il y a au mieux $2m$ iterations.</p>
+<h5>3.3.3</h5>
+<h3>Exercice 4</h3>
+<ul>
+<li>on a $\Omega(n+m)$ car :
+<ul>
+<li>l'algorithme doit regarder tous les caractères de $b$ sinon on prend <code>b = xxxxx</code> et <code>a = xxxxx</code> et si l'algorithme ne regarde pas tout <code>b</code> on change une lettre</li>
+<li>l'algorithme doit regarder au moins $n-m$ caractères de $a$ sinon on prend <code>b = yxxxx</code> et <code>a = xxxxx</code> et si l'algorithme regarde moins de $n-m$ caractères on change le plus à gauche en <code>y</code></li>
+</ul>
+</li>
+<li>et KMP en $\mathcal{O}(n+m)$</li>
+</ul>
 
 
 </article>
