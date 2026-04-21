@@ -327,15 +327,27 @@ b :          BBBbbbYbbbbbb
 <p>alors on a aussi $b[k] = b[j + i' - i + k]$ pour $0\leq k &lt; j + i'-i$. Le plus petit indice $i'$ est donné par la fonction de décalage ! Comme au pire $i' = i + j$ si aucun autre décalage n'est possible on progresse dans la recherche de la sous-chaîne comme le fait l'algorithme.</p>
 <h4>3.3</h4>
 <h5>3.3.1</h5>
-<p>On montre par une récurrence triviale qu'à la fin de chaque itération :</p>
+<p>On montre par une récurrence triviale qu'au début de chaque itération :</p>
 <ul>
 <li>$0 \leq T[l] &lt; l$ pour tout $l&gt;0$ et $T[0] = 0$,</li>
-<li>$k &lt; j &lt; i$</li>
+<li>$k  &lt; j - 1 &lt; i$</li>
 </ul>
 <p>De là, les conditions sur $k$ sont également vérifiées.</p>
 <h5>3.3.2</h5>
 <p>La variable $i$ est croissante. Lorsque $i$ n'augmente pas c'est $k$ qui diminue strictement et $k$ ne peut augmenter que si $i$ croit strictement. De là $i$ ne peut rester constant qu'au plus le nombre d'itération ou il a crût strictement : il y a au mieux $2m$ iterations.</p>
 <h5>3.3.3</h5>
+<p>L'idée est de procéder itérativement. Si on suppose que l'on a toutes les valeurs de $T[l]$ pour $l &lt; i$, on peut trouver $T[l]$ en procédant ainsi :</p>
+<ul>
+<li>si $b[T[i-1]] = b[i-1]$ alors $T[i] = T[i-1] + 1$ puisque l'on peut prolonger la sous-chaîne</li>
+<li>si $b[T[i-1]] \neq b[i-1]$ on peut poser $j = T[i-1] + 1$. De là :
+<ul>
+<li>si $b[T[j-1]] = b[i-1]$ alors $T[i] = T[j-1] + 1$ puisque l'on peut prolonger la sous-chaîne</li>
+<li>sinon, si $T[j-1] &gt; 1$, on peut recommencer avec une plus petite chaîne en posant $j = T[j-1] + 1$ et en revenant à l'étape précédente</li>
+<li>si $T[j-1] \leq 1$ c'est fini et on a $T[i] = 0$</li>
+</ul>
+</li>
+</ul>
+<p>C'est exactement ce que fait l'algorithme.</p>
 <h3>Exercice 4</h3>
 <ul>
 <li>on a $\Omega(n+m)$ car :
