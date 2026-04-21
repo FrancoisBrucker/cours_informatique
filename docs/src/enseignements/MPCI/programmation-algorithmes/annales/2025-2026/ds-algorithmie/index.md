@@ -144,12 +144,12 @@ def naïf(a, b):
 
 ##### 2.1.1
 
-Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j < m$ $b$ est bien une sous-chaîne de $a$ en position $i$. Sinon :
+Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j < m$ $b$ est bien une sous-chaîne de $a$ en position $i$. Sinon soit :
 
-- soit $a[i + m -1]$ n'est pas dans $b$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' < i + m$
-- soit $a[i + m -1] = b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i < i' < i + m$
-- soit $a[i + m -1]$ est dans $b[:-1]$ et la première position plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.
-
+- $a[i + m -1] \neq b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' < i + m$
+- $a[i + m -1]  \neq b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.
+- $a[i + m -1] = b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i < i' < i + m$
+- $a[i + m -1] = b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.
 
 ##### 2.1.2
 
@@ -253,3 +253,85 @@ def BMH(a, b):
     return -1
 
 ```
+
+
+### Exercice 3
+
+#### 3.1 Complexité de l'algorithme
+
+##### 3.1.1 
+
+En analysant les cas de l'algorithme, on a soit :
+
+- `j ← j + 1`{.language-} et :
+  - `i+j`{.language-} augmente strictement
+  - `i`{.language-} est constant
+- `i ← i + 1`{.language-} et :
+  - `i+j`{.language-} augmente strictement
+  - `i`{.language-}  augmente strictement
+- `i ← i + j - T[j]`{.language-} et `j ← T[j]`{.language-} :
+    - `i+j`{.language-} est constant
+  - `i`{.language-}  augmente strictement puisque par définition $T[j] < j$ pour tout $j$
+
+##### 3.1.2
+
+Les variables $i$ et $i+j$ sont croissantes et l'un des deux augmente strictement à chaque itérations de la boucle `tant que`{.language-}. De là comme :
+
+- après $n$ augmentations de $i$ $i+j \geq n$ 
+- après $n$ augmentations de $i+j$ on a aussi $i+j \geq n$ 
+
+Il y a au mieux $n + n$ itérations de la boucle `tant que`{.language-}. Comme toutes les instructions de la boucle sont en $\mathcal{O}(1)$ la complexité totale de l'exécution de la boucle `tant que`{.language-} est en $\mathcal{O}(n)$ et donc la complexité totale de l'algorithme en $\mathcal{O}(n + f(m))$
+
+#### 3.2 Preuve de l'algorithme
+
+Supposons que l'on soit dans le cas ci-après :
+
+```
+          i
+a : aaaaaaaaaaaaXaaaaaaaaaaaaaa
+b :       bbbbbbYbbbbbb
+                j
+```
+
+Avec :
+
+- $a[i+k] = b[k]$ pour $0\leq k < j$
+- $a[i+j] \neq b[j]$
+
+S'il existe $i < i' \leq i + j$ tel que $a[i'+k] = b[k]$ pour $0\leq k < j + i'-i$ :
+
+```
+          i  i'
+a : aaaaaaaaabbbXaaaaaaaaaaaaaa
+b :          BBBbbbYbbbbbb
+                j
+```
+
+
+alors on a aussi $b[k] = b[j + i' - i + k]$ pour $0\leq k < j + i'-i$. Le plus petit indice $i'$ est donné par la fonction de décalage ! Comme au pire $i' = i + j$ si aucun autre décalage n'est possible on progresse dans la recherche de la sous-chaîne comme le fait l'algorithme.
+
+#### 3.3
+
+##### 3.3.1
+
+On montre par une récurrence triviale qu'à la fin de chaque itération :
+
+- $0 \leq T[l] < l$ pour tout $l>0$ et $T[0] = 0$,
+- $k < j < i$ 
+
+De là, les conditions sur $k$ sont également vérifiées.
+
+##### 3.3.2
+
+La variable $i$ est croissante. Lorsque $i$ n'augmente pas c'est $k$ qui diminue strictement et $k$ ne peut augmenter que si $i$ croit strictement. De là $i$ ne peut rester constant qu'au plus le nombre d'itération ou il a crût strictement : il y a au mieux $2m$ iterations.
+
+##### 3.3.3
+
+
+### Exercice 4
+
+- on a $\Omega(n+m)$ car :
+  - l'algorithme doit regarder tous les caractères de $b$ sinon on prend `b = xxxxx` et `a = xxxxx` et si l'algorithme ne regarde pas tout `b` on change une lettre
+  - l'algorithme doit regarder au moins $n-m$ caractères de $a$ sinon on prend `b = yxxxx` et `a = xxxxx` et si l'algorithme regarde moins de $n-m$ caractères on change le plus à gauche en `y`
+- et KMP en $\mathcal{O}(n+m)$
+
