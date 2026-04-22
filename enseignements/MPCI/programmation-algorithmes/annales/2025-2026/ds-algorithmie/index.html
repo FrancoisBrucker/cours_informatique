@@ -167,14 +167,18 @@
 <h5>1.3.1</h5>
 <p>Si les caractères sont équiprobables alors la position dans la chaîne de caractères importe peu. La probabilité que 2 caractères de $a$ et de $b$ soient égaux est donc la même que la probabilité de tirer deux fois le même caractère : c'est $\frac{1}{\vert \mathcal{A} \vert}$ où $\mathcal{A}$ est l'ensemble des caractères possibles.</p>
 <h5>1.3.2</h5>
-<p>On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $P_k = p^{k}(1-p)$</p>
-<p>Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle <code class="language-">tant que</code> pour un $i$ fixé vaut alors : $\sum_{k=0}^{b.\text{\small longueur} - 1}P_k \cdot (k + 1)$, que l'on peut majorer par :</p>
+<p>On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $P^i_k = p^{k}(1-p)$. De plus, si $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq b[k]$, l'algorithme fera $k+1$ itérations de la boucle <code class="language-">tant que</code>, et comme l'exécution d'une itération de la boucle se fait en $\mathcal{O}(1)$, la complexité de ce traitement sera égal à : $C^i_k = (k+1)\mathcal{O}(1)$. De là la complexité en moyenne à $i$ fixé vaut :</p>
 <div>
 $$
-\sum_{k=0}^{b.\text{\small longueur} - 1}P_k \cdot (k + 1) = \sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{1}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \frac{1}{1-p}
+\sum_{k=0}^{b.\text{\small longueur}-1}P^i_k \cdot C^i_k = \mathcal{O}(1) \cdot \sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{\mathcal{O}(1)}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \mathcal{O}(\frac{1}{1-p})
 $$
 </div>
-<p>Comme $p$ est une constante, le nombre moyen de passage dans la boucle à $i$ fixé est en $\mathcal{O}(1)$. De plus comme toutes les instructions de la boucle sont en $\mathcal{O}(1)$, on on en conclut que pour $i$ fixé il y a en moyenne $\mathcal{O}(1)$ opérations d'effectuées. Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ i y a $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ valeur différentes de $i$ et donc la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$</p>
+<p>Comme $p$ est une constante, la complexité moyenne à $i$ fixé est en $\mathcal{O}(1)$. Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ la complexité en moyenne vaut :</p>
+<div>
+$$
+\sum_{i=0}^{a.\text{\small longueur} - b.\text{\small longueur}}(\sum_{k=0}^{b.\text{\small longueur}-1}P^i_k \cdot C^i_k)  \leq \sum_{i=0}^{a.\text{\small longueur} - b.\text{\small longueur}} \mathcal{O}(1) = \mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})
+$$
+</div>
 <h3>Exercice 2</h3>
 <h4>2.1 Principe</h4>
 <h5>2.1.1</h5>
