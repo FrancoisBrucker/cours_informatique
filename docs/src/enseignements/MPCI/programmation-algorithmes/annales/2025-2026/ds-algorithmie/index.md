@@ -91,7 +91,7 @@ On peut être plus précis en analysant des algorithmes fictifs :
 -  s'il existe un algorithme résolvant le problème qui ne regarde jamais tous les caractères de $b$ sinon on prend `b = xxxxx` et `a = xxxxx` et si l'algorithme ne regarde pas tout `b` on change une des lettres non regardées en `y`.
 - s'il existe un algorithme résolvant le problème qui regarde strictement moins de $a.\text{\small longueur} - b.\text{\small longueur}$ caractères de $a$ on prend `b = yxxxx` et `a = xxxxx` et si l'algorithme regarde moins de $n-m$ caractères de `a` on change le plus à gauche des caractères non regardés en `y`
 
-Les deux conditions montrent que la complexité du problème est en $\Omega(b.\text{\small longueur}) + \Omega(a.\text{\small longueur} - b.\text{\small longueur}) =  Omega(a.\text{\small longueur} + b.\text{\small longueur})$
+Les deux conditions montrent que la complexité du problème est en $\Omega(b.\text{\small longueur}) + \Omega(a.\text{\small longueur} - b.\text{\small longueur}) =  \Omega(a.\text{\small longueur} + b.\text{\small longueur})$
 ##### 1.2.2
 
 Comme la complexité de l'algorithme de la question 1.1.4 est en $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$, la complexité problème est :
@@ -107,42 +107,17 @@ Si les caractères sont équiprobables alors la position dans la chaîne de cara
 
 ##### 1.3.2
 
-On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j < k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $p(k) = p^{k}(1-p)$
+On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j < k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $P_k = p^{k}(1-p)$
 
-Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle `tant que`{.language-} vaut alors :
+Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle `tant que`{.language-} pour un $i$ fixé vaut alors : $\sum_{k=0}^{b.\text{\small longueur} - 1}P_k \cdot (k + 1)$, que l'on peut majorer par :
 
 <div>
 $$
-\sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{1}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \frac{1}{1-p}
+\sum_{k=0}^{b.\text{\small longueur} - 1}P_k \cdot (k + 1) = \sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{1}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \frac{1}{1-p}
 $$
 </div>
 
-Comme :
-
-- $p$ est une constante le nombre moyen de passage dans la boucle à $i$ fixé est en $\mathcal{O}(1)$
-- chaque passage dans la boucle comptera pour $\mathcal{O}(1)$ opération
-
-On on en conclut que pour $i$ fixé il y a en moyenne $\mathcal{O}(1)$ opérations d'effectuées.
-
-Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ i y a $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ valeur différentes de $i$ et donc la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$
-
-#### Code python
-
-```python
-def naïf(a, b):
-    for i in range(len(a) - len(b) + 1):
-        trouvé = True
-        j = 0
-        while j < len(b):
-            if b[j] != a[i + j]:
-                trouvé = False
-                j = len(b)
-            else:
-                j += 1
-        if trouvé:
-            return i
-    return -1
-```
+Comme $p$ est une constante, le nombre moyen de passage dans la boucle à $i$ fixé est en $\mathcal{O}(1)$. De plus comme toutes les instructions de la boucle sont en $\mathcal{O}(1)$, on on en conclut que pour $i$ fixé il y a en moyenne $\mathcal{O}(1)$ opérations d'effectuées. Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ i y a $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ valeur différentes de $i$ et donc la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$
 
 ### Exercice 2
 
@@ -226,40 +201,6 @@ La complexité spatiale sera égale a la taille du tableau `T`{.language-} c'est
 ##### 2.3.4
 
 On utiliserait cet algorithme lorsque $L$ est petit. Dans ce cas là, l'algorithme ira plus vite que l'algorithme naïf puisque sa complexité minimale sera en $\mathcal{O}(b.\text{longueur} + a.\text{longueur} / b.\text{longueur})$.
-
-#### Code python
-
-
-```python
-def décalage(b):
-    d = {}
-    for j in range(len(b) - 1):
-        c = b[j]
-        d[c] = j
-
-    return d
-
-
-def BMH(a, b):
-    décalé = décalage(b)
-
-    i = 0
-    j = len(b) - 1
-    while i <= len(a) - len(b):
-        if a[i + j] != b[j]:
-            if a[i + j] not in décalé:
-                i += len(b)
-            else:
-                i += len(b) - décalé[a[i + j]] - 1
-            j = len(b) - 1
-        elif j == 0:
-            return i
-        else:
-            j -= 1
-    return -1
-
-```
-
 
 ### Exercice 3
 
@@ -347,4 +288,129 @@ C'est exactement ce que fait l'algorithme.
 
 - on a $\Omega(n+m)$ question 1.2.1
 - et KMP en $\mathcal{O}(n+m)$
+
+### Code python
+
+#### Naïf
+
+```python
+def naïf(a, b):
+    for i in range(len(a) - len(b) + 1):
+        trouvé = True
+        j = 0
+        while j < len(b):
+            if b[j] != a[i + j]:
+                trouvé = False
+                j = len(b)
+            else:
+                j += 1
+        if trouvé:
+            return i
+    return -1
+```
+
+#### BMH
+
+
+```python
+def décalage(b):
+    d = {}
+    for j in range(len(b) - 1):
+        c = b[j]
+        d[c] = j
+
+    return d
+
+
+def BMH(a, b):
+    décalé = décalage(b)
+
+    i = 0
+    j = len(b) - 1
+    while i <= len(a) - len(b):
+        if a[i + j] != b[j]:
+            if a[i + j] not in décalé:
+                i += len(b)
+            else:
+                i += len(b) - décalé[a[i + j]] - 1
+            j = len(b) - 1
+        elif j == 0:
+            return i
+        else:
+            j -= 1
+    return -1
+
+```
+
+#### KMP
+
+```python
+def décalage_KMP(b):
+    T_b = [0] * len(b)
+
+    i, j, k = 2, 2, 0
+    c = b[j-1]
+
+    while i < len(b):
+        k = T_b[j-1]
+
+        if c == b[k]:      
+            T_b[i] = k + 1
+            i += 1
+            j = i
+            c = b[j-1]
+        elif k <= 1:
+            T_b[i] = 0
+            i += 1
+            j = i
+            c = b[j-1]
+        else:
+            j = k + 1
+
+    return T_b
+
+def KMP(a, b):
+    Tb = décalage_KMP(b)
+    
+    i = 0
+    j = 0
+
+    while i + j < len(a):
+        if a[i + j] == b[j]:
+            j += 1
+
+            if j >= len(b):
+                return i
+
+        else:
+            if j == 0:
+                i += 1
+            else :
+                l = j - Tb[j]
+                i += l
+                j -= l
+    return -1
+```
+
+#### Affichages
+
+```python
+def affiche(a, b, algo):
+    i = algo(a, b)
+    print(i)
+    if i > -1:
+        print(a)
+        print(" " * i + b)
+    else:
+        print(b, "n'est pas une sous-chaîne de", a)
+
+
+for algo in (naif, BMH, KMP):
+    affiche("ABABAAABABACABCBAB",
+            "ABABACA", algo)
+
+    affiche("ABABAAABABACABCBAB",
+            "ABABABA", algo)
+
+```
 

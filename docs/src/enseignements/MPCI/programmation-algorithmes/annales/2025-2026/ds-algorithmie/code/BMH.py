@@ -1,4 +1,4 @@
-def décalage(b):
+def décalage_BMH(b):
     d = {}
     for j in range(len(b) - 1):
         c = b[j]
@@ -8,7 +8,7 @@ def décalage(b):
 
 
 def BMH(a, b):
-    décalé = décalage(b)
+    décalé = décalage_BMH(b)
 
     i = 0
     j = len(b) - 1
@@ -22,20 +22,4 @@ def BMH(a, b):
             j -= 1
     return -1
 
-
-def affiche(a, b):
-    i = BMH(a, b)
-    print(i)
-    if i > -1:
-        print(a)
-        print(" " * i + b)
-    else:
-        print(b, "n'est pas une sous-chaîne de", a)
-
-
-affiche("ABABAAABABACABCBAB",
-        "ABABACA")
-
-affiche("ABABAAABABACABCBAB",
-        "ABABABA")
 

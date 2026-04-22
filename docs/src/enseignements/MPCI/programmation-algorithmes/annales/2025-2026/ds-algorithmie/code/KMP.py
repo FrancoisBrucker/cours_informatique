@@ -1,4 +1,4 @@
-def décalage(b):
+def décalage_KMP(b):
     T_b = [0] * len(b)
 
     i, j, k = 2, 2, 0
@@ -22,8 +22,8 @@ def décalage(b):
 
     return T_b
 
-def sous_chaîne_KMP(a, b):
-    Tb = décalage(b)
+def KMP(a, b):
+    Tb = décalage_KMP(b)
     
     i = 0
     j = 0
@@ -44,5 +44,5 @@ def sous_chaîne_KMP(a, b):
                 j -= l
     return -1
 
-print(décalage("ABABACA"))
-print(sous_chaîne_KMP("ABABAAABABACABCBAB", "ABABACA"))
+print(décalage_KMP("ABABACA"))
+print(KMP("ABABAAABABACABCBAB", "ABABACA"))
