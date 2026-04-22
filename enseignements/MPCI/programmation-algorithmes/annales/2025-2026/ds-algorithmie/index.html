@@ -156,7 +156,7 @@
 <li>s'il existe un algorithme résolvant le problème qui ne regarde jamais tous les caractères de $b$ sinon on prend <code>b = xxxxx</code> et <code>a = xxxxx</code> et si l'algorithme ne regarde pas tout <code>b</code> on change une des lettres non regardées en <code>y</code>.</li>
 <li>s'il existe un algorithme résolvant le problème qui regarde strictement moins de $a.\text{\small longueur} - b.\text{\small longueur}$ caractères de $a$ on prend <code>b = yxxxx</code> et <code>a = xxxxx</code> et si l'algorithme regarde moins de $n-m$ caractères de <code>a</code> on change le plus à gauche des caractères non regardés en <code>y</code></li>
 </ul>
-<p>Les deux conditions montrent que la complexité du problème est en $\Omega(b.\text{\small longueur}) + \Omega(a.\text{\small longueur} - b.\text{\small longueur}) =  Omega(a.\text{\small longueur} + b.\text{\small longueur})$</p>
+<p>Les deux conditions montrent que la complexité du problème est en $\Omega(b.\text{\small longueur}) + \Omega(a.\text{\small longueur} - b.\text{\small longueur}) =  \Omega(a.\text{\small longueur} + b.\text{\small longueur})$</p>
 <h5>1.2.2</h5>
 <p>Comme la complexité de l'algorithme de la question 1.1.4 est en $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$, la complexité problème est :</p>
 <ul>
@@ -167,34 +167,14 @@
 <h5>1.3.1</h5>
 <p>Si les caractères sont équiprobables alors la position dans la chaîne de caractères importe peu. La probabilité que 2 caractères de $a$ et de $b$ soient égaux est donc la même que la probabilité de tirer deux fois le même caractère : c'est $\frac{1}{\vert \mathcal{A} \vert}$ où $\mathcal{A}$ est l'ensemble des caractères possibles.</p>
 <h5>1.3.2</h5>
-<p>On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $p(k) = p^{k}(1-p)$</p>
-<p>Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle <code class="language-">tant que</code> vaut alors :</p>
+<p>On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j &lt; k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $P_k = p^{k}(1-p)$</p>
+<p>Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle <code class="language-">tant que</code> pour un $i$ fixé vaut alors : $\sum_{k=0}^{b.\text{\small longueur} - 1}P_k \cdot (k + 1)$, que l'on peut majorer par :</p>
 <div>
 $$
-\sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{1}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \frac{1}{1-p}
+\sum_{k=0}^{b.\text{\small longueur} - 1}P_k \cdot (k + 1) = \sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{1}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \frac{1}{1-p}
 $$
 </div>
-<p>Comme :</p>
-<ul>
-<li>$p$ est une constante le nombre moyen de passage dans la boucle à $i$ fixé est en $\mathcal{O}(1)$</li>
-<li>chaque passage dans la boucle comptera pour $\mathcal{O}(1)$ opération</li>
-</ul>
-<p>On on en conclut que pour $i$ fixé il y a en moyenne $\mathcal{O}(1)$ opérations d'effectuées.</p>
-<p>Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ i y a $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ valeur différentes de $i$ et donc la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$</p>
-<h4>Code python</h4>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> naïf<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
-        j <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">while</span> j <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span>
-                trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
-                j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                j <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> i
-    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
+<p>Comme $p$ est une constante, le nombre moyen de passage dans la boucle à $i$ fixé est en $\mathcal{O}(1)$. De plus comme toutes les instructions de la boucle sont en $\mathcal{O}(1)$, on on en conclut que pour $i$ fixé il y a en moyenne $\mathcal{O}(1)$ opérations d'effectuées. Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ i y a $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ valeur différentes de $i$ et donc la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$</p>
 <h3>Exercice 2</h3>
 <h4>2.1 Principe</h4>
 <h5>2.1.1</h5>
@@ -253,34 +233,6 @@ $$
 <p>La complexité spatiale sera égale a la taille du tableau <code class="language-">T</code> c'est à dire : $\mathcal{O}(L)$ (qui peut être gigantesque).</p>
 <h5>2.3.4</h5>
 <p>On utiliserait cet algorithme lorsque $L$ est petit. Dans ce cas là, l'algorithme ira plus vite que l'algorithme naïf puisque sa complexité minimale sera en $\mathcal{O}(b.\text{longueur} + a.\text{longueur} / b.\text{longueur})$.</p>
-<h4>Code python</h4>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> décalage<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        c <span class="token operator">=</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
-        d<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span> j
-
-    <span class="token keyword">return</span> d
-
-
-<span class="token keyword">def</span> <span class="token function">BMH</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    décalé <span class="token operator">=</span> décalage<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
-
-    i <span class="token operator">=</span> <span class="token number">0</span>
-    j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">!=</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token keyword">not</span> <span class="token keyword">in</span> décalé<span class="token punctuation">:</span>
-                i <span class="token operator">+=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
-            <span class="token keyword">else</span><span class="token punctuation">:</span>
-                i <span class="token operator">+=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> décalé<span class="token punctuation">[</span>a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span>
-            j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-        <span class="token keyword">elif</span> j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> i
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            j <span class="token operator">-=</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
-</code></pre>
 <h3>Exercice 3</h3>
 <h4>3.1 Complexité de l'algorithme</h4>
 <h5>3.1.1</h5>
@@ -359,6 +311,113 @@ b :          BBBbbbYbbbbbb
 <li>on a $\Omega(n+m)$ question 1.2.1</li>
 <li>et KMP en $\mathcal{O}(n+m)$</li>
 </ul>
+<h3>Code python</h3>
+<h4>Naïf</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> naïf<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
+        j <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">while</span> j <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
+                j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                j <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> i
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
+<h4>BMH</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> décalage<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        c <span class="token operator">=</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+        d<span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span> j
+
+    <span class="token keyword">return</span> d
+
+
+<span class="token keyword">def</span> <span class="token function">BMH</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    décalé <span class="token operator">=</span> décalage<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">!=</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token keyword">not</span> <span class="token keyword">in</span> décalé<span class="token punctuation">:</span>
+                i <span class="token operator">+=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                i <span class="token operator">+=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> décalé<span class="token punctuation">[</span>a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span>
+            j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+        <span class="token keyword">elif</span> j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> i
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            j <span class="token operator">-=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+</code></pre>
+<h4>KMP</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> décalage_KMP<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T_b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+
+    i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> k <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span>
+    c <span class="token operator">=</span> b<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        k <span class="token operator">=</span> T_b<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+        <span class="token keyword">if</span> c <span class="token operator">==</span> b<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">:</span>      
+            T_b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> k <span class="token operator">+</span> <span class="token number">1</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+            j <span class="token operator">=</span> i
+            c <span class="token operator">=</span> b<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">elif</span> k <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            T_b<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+            j <span class="token operator">=</span> i
+            c <span class="token operator">=</span> b<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            j <span class="token operator">=</span> k <span class="token operator">+</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> T_b
+
+<span class="token keyword">def</span> <span class="token function">KMP</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    Tb <span class="token operator">=</span> décalage_KMP<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+    
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    j <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">while</span> i <span class="token operator">+</span> j <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span> <span class="token operator">==</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            j <span class="token operator">+=</span> <span class="token number">1</span>
+
+            <span class="token keyword">if</span> j <span class="token operator">>=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">return</span> i
+
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                i <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">else</span> <span class="token punctuation">:</span>
+                l <span class="token operator">=</span> j <span class="token operator">-</span> Tb<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+                i <span class="token operator">+=</span> l
+                j <span class="token operator">-=</span> l
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span></code></pre>
+<h4>Affichages</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">affiche</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> algo<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> algo<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> i <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">" "</span> <span class="token operator">*</span> i <span class="token operator">+</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token string">"n'est pas une sous-chaîne de"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+
+
+<span class="token keyword">for</span> algo <span class="token keyword">in</span> <span class="token punctuation">(</span>naif<span class="token punctuation">,</span> BMH<span class="token punctuation">,</span> KMP<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    affiche<span class="token punctuation">(</span><span class="token string">"ABABAAABABACABCBAB"</span><span class="token punctuation">,</span>
+            <span class="token string">"ABABACA"</span><span class="token punctuation">,</span> algo<span class="token punctuation">)</span>
+
+    affiche<span class="token punctuation">(</span><span class="token string">"ABABAAABABACABCBAB"</span><span class="token punctuation">,</span>
+            <span class="token string">"ABABABA"</span><span class="token punctuation">,</span> algo<span class="token punctuation">)</span>
+</code></pre>
 
 
 </article>
