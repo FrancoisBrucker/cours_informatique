@@ -107,17 +107,21 @@ Si les caractères sont équiprobables alors la position dans la chaîne de cara
 
 ##### 1.3.2
 
-On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j < k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $P_k = p^{k}(1-p)$
-
-Pour une position $i$ donnée dans l'algorithme, le nombre moyen de passage dans la boucle `tant que`{.language-} pour un $i$ fixé vaut alors : $\sum_{k=0}^{b.\text{\small longueur} - 1}P_k \cdot (k + 1)$, que l'on peut majorer par :
+On note $p$ la probabilité de tirer avec remise deux lettres identiques. La probabilité que $a[i + j] == b[j]$ pour tout $0 \leq j < k$ et que $a[i + k] \neq b[k]$ vaut alors (puisqu'il y a équiprobabilité) : $P^i_k = p^{k}(1-p)$. De plus, si $a[i + j] == b[j]$ pour tout $0 \leq j < k$ et que $a[i + k] \neq b[k]$, l'algorithme fera $k+1$ itérations de la boucle `tant que`{.language-}, et comme l'exécution d'une itération de la boucle se fait en $\mathcal{O}(1)$, la complexité de ce traitement sera égal à : $C^i_k = (k+1)\mathcal{O}(1)$. De là la complexité en moyenne à $i$ fixé vaut :
 
 <div>
 $$
-\sum_{k=0}^{b.\text{\small longueur} - 1}P_k \cdot (k + 1) = \sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{1}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \frac{1}{1-p}
+\sum_{k=0}^{b.\text{\small longueur}-1}P^i_k \cdot C^i_k = \mathcal{O}(1) \cdot \sum_{k=0}^{b.\text{\small longueur} - 1} (k + 1) \cdot p^{k}(1-p) = \frac{\mathcal{O}(1)}{p} \cdot \sum_{k=1}^{b.\text{\small longueur}} (k) \cdot p^{k}(1-p) \leq \mathcal{O}(\frac{1}{1-p})
 $$
 </div>
 
-Comme $p$ est une constante, le nombre moyen de passage dans la boucle à $i$ fixé est en $\mathcal{O}(1)$. De plus comme toutes les instructions de la boucle sont en $\mathcal{O}(1)$, on on en conclut que pour $i$ fixé il y a en moyenne $\mathcal{O}(1)$ opérations d'effectuées. Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ i y a $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ valeur différentes de $i$ et donc la complexité moyenne vaut : $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$
+Comme $p$ est une constante, la complexité moyenne à $i$ fixé est en $\mathcal{O}(1)$. Enfin, comme $0 \leq i \leq a.\text{\small longueur} - b.\text{\small longueur}$ la complexité en moyenne vaut :
+
+<div>
+$$
+\sum_{i=0}^{a.\text{\small longueur} - b.\text{\small longueur}}(\sum_{k=0}^{b.\text{\small longueur}-1}P^i_k \cdot C^i_k)  \leq \sum_{i=0}^{a.\text{\small longueur} - b.\text{\small longueur}} \mathcal{O}(1) = \mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})
+$$
+</div>
 
 ### Exercice 2
 
