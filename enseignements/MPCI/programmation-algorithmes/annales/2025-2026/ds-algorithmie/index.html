@@ -127,7 +127,7 @@
 </code></pre>
 <h5>1.1.2</h5>
 <ul>
-<li>au minimum on ne fait qu'une seule itération pour la boucle <code class="language-">pour chaque</code> et pour la boucle <code class="language-">tant que</code>. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(1)$. Ceci arrive si <code class="language-">a</code> et <code class="language-">b</code> sont de même taille mais ne commencent pas par le même lettre.</li>
+<li>au minimum on ne fait qu'une seule itération pour la boucle <code class="language-">pour chaque</code>. On ne peut sortir de l'algorithme que si <code class="language-">trouvé</code> est vrai en sortie de la boucle <code class="language-">tant que</code> on a alors fait $\mathcal{O}(b.\text{\small longueur})$ itérations de cette dernière. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(b.\text{\small longueur})$. Ceci arrive si <code class="language-">a</code> commence par <code class="language-">b</code>.</li>
 <li>Dans le pire des cas, on fait $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ itérations de la boucle <code class="language-">pour chaque</code> et $\mathcal{O}(b.\text{\small longueur})$ itération de la boucle <code class="language-">tant que</code>. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$. Ceci arrive si <code class="language-">a = x .. x</code> et <code class="language-">b = x ... xy</code>.</li>
 </ul>
 <h5>1.1.3</h5>
@@ -151,6 +151,12 @@
 <h4>1.2 Bornes</h4>
 <h5>1.2.1</h5>
 <p>Il faut au minimum lire les données, c'est à dire vérifier tous les caractères de $a$ et de $b$, la complexité du problème est en $\Omega(a.\text{\small longueur} + b.\text{\small longueur})$.</p>
+<p>On peut être plus précis en analysant des algorithmes fictifs :</p>
+<ul>
+<li>s'il existe un algorithme résolvant le problème qui ne regarde jamais tous les caractères de $b$ sinon on prend <code>b = xxxxx</code> et <code>a = xxxxx</code> et si l'algorithme ne regarde pas tout <code>b</code> on change une des lettres non regardées en <code>y</code>.</li>
+<li>s'il existe un algorithme résolvant le problème qui regarde strictement moins de $a.\text{\small longueur} - b.\text{\small longueur}$ caractères de $a$ on prend <code>b = yxxxx</code> et <code>a = xxxxx</code> et si l'algorithme regarde moins de $n-m$ caractères de <code>a</code> on change le plus à gauche des caractères non regardés en <code>y</code></li>
+</ul>
+<p>Les deux conditions montrent que la complexité du problème est en $\Omega(b.\text{\small longueur}) + \Omega(a.\text{\small longueur} - b.\text{\small longueur}) =  Omega(a.\text{\small longueur} + b.\text{\small longueur})$</p>
 <h5>1.2.2</h5>
 <p>Comme la complexité de l'algorithme de la question 1.1.4 est en $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$, la complexité problème est :</p>
 <ul>
@@ -350,12 +356,7 @@ b :          BBBbbbYbbbbbb
 <p>C'est exactement ce que fait l'algorithme.</p>
 <h3>Exercice 4</h3>
 <ul>
-<li>on a $\Omega(n+m)$ car :
-<ul>
-<li>l'algorithme doit regarder tous les caractères de $b$ sinon on prend <code>b = xxxxx</code> et <code>a = xxxxx</code> et si l'algorithme ne regarde pas tout <code>b</code> on change une lettre</li>
-<li>l'algorithme doit regarder au moins $n-m$ caractères de $a$ sinon on prend <code>b = yxxxx</code> et <code>a = xxxxx</code> et si l'algorithme regarde moins de $n-m$ caractères on change le plus à gauche en <code>y</code></li>
-</ul>
-</li>
+<li>on a $\Omega(n+m)$ question 1.2.1</li>
 <li>et KMP en $\mathcal{O}(n+m)$</li>
 </ul>
 
