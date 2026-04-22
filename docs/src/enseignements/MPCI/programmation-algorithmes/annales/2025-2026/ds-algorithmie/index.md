@@ -49,7 +49,7 @@ algorithme est_sous_chaîne(a: chaîne, b: chaîne) → booléen:
 
 ##### 1.1.2
 
-- au minimum on ne fait qu'une seule itération pour la boucle `pour chaque`{.language-} et pour la boucle `tant que`{.language-}. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(1)$. Ceci arrive si `a`{.language-} et `b`{.language-} sont de même taille mais ne commencent pas par le même lettre.
+- au minimum on ne fait qu'une seule itération pour la boucle `pour chaque`{.language-}. On ne peut sortir de l'algorithme que si `trouvé`{.language-} est vrai en sortie de la boucle `tant que`{.language-} on a alors fait $\mathcal{O}(b.\text{\small longueur})$ itérations de cette dernière. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(b.\text{\small longueur})$. Ceci arrive si `a`{.language-} commence par `b`{.language-}.
 - Dans le pire des cas, on fait $\mathcal{O}(a.\text{\small longueur} - b.\text{\small longueur})$ itérations de la boucle `pour chaque`{.language-} et $\mathcal{O}(b.\text{\small longueur})$ itération de la boucle `tant que`{.language-}. Comme les autres instructions sont toutes en $\mathcal{O}(1)$, la complexité minimale est alors de $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$. Ceci arrive si `a = x .. x`{.language-} et `b = x ... xy`{.language-}.
 
 ##### 1.1.3
@@ -86,6 +86,12 @@ La boucle `pour chaque`{.language-} va faire varier $i$ pour toutes ses position
 
 Il faut au minimum lire les données, c'est à dire vérifier tous les caractères de $a$ et de $b$, la complexité du problème est en $\Omega(a.\text{\small longueur} + b.\text{\small longueur})$.
 
+On peut être plus précis en analysant des algorithmes fictifs :
+
+-  s'il existe un algorithme résolvant le problème qui ne regarde jamais tous les caractères de $b$ sinon on prend `b = xxxxx` et `a = xxxxx` et si l'algorithme ne regarde pas tout `b` on change une des lettres non regardées en `y`.
+- s'il existe un algorithme résolvant le problème qui regarde strictement moins de $a.\text{\small longueur} - b.\text{\small longueur}$ caractères de $a$ on prend `b = yxxxx` et `a = xxxxx` et si l'algorithme regarde moins de $n-m$ caractères de `a` on change le plus à gauche des caractères non regardés en `y`
+
+Les deux conditions montrent que la complexité du problème est en $\Omega(b.\text{\small longueur}) + \Omega(a.\text{\small longueur} - b.\text{\small longueur}) =  Omega(a.\text{\small longueur} + b.\text{\small longueur})$
 ##### 1.2.2
 
 Comme la complexité de l'algorithme de la question 1.1.4 est en $\mathcal{O}(a.\text{\small longueur} \cdot b.\text{\small longueur})$, la complexité problème est :
@@ -339,8 +345,6 @@ C'est exactement ce que fait l'algorithme.
 
 ### Exercice 4
 
-- on a $\Omega(n+m)$ car :
-  - l'algorithme doit regarder tous les caractères de $b$ sinon on prend `b = xxxxx` et `a = xxxxx` et si l'algorithme ne regarde pas tout `b` on change une lettre
-  - l'algorithme doit regarder au moins $n-m$ caractères de $a$ sinon on prend `b = yxxxx` et `a = xxxxx` et si l'algorithme regarde moins de $n-m$ caractères on change le plus à gauche en `y`
+- on a $\Omega(n+m)$ question 1.2.1
 - et KMP en $\mathcal{O}(n+m)$
 
