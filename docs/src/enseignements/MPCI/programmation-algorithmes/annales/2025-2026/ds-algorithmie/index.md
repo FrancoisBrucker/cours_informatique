@@ -11,16 +11,29 @@ Durée du contrôle : 2h.
 
 {% endnote %}
 {% info %}
-Il y avait deux petites erreurs dans l'énoncé originel. Elles sont corrigés ici.
+Il y avait deux petites erreurs dans l'énoncé originel. J'en ai bien sur tenu compte lors de la correction. Elles sont corrigés dans le sujet ci-dessus qui devrait être exempt d'erreurs.
 {% endinfo %}
+
 
 ## Barème
 
-> TBD
+Chaque exercice était noté sur 10 points :
+
+- exercice 1 : partie 1 sur 4pts ; partie 2 sur 3pts ; partie 3 sur 3pts
+- exercice 2 : partie 1 sur 4pts ; partie 2 sur 3pts ; partie 3 sur 3pts
+- exercice 3 : partie 1 sur 2pts ; partie 2 sur 3pts ; partie 3 sur 5pts
 
 ### Ventilation des notes
 
-> TBD
+|note/20  |< 10  | [10, 11] | ]11, 13]   | ]13, 15] | ]15, 20]  | > 20  
+|---------|----|------------|------------|-------------|-----------|-------
+|nombre   | 17 |   7        |  8         |  5          |  4        | 1
+
+- moyenne : 10.45/20
+- écart-type : 3.94/20
+- médiane : 10.25/20
+
+Je suis un peu déçu. Il y a beaucoup d'imprécisions dans vos réponses et en encore beaucoup trop d'enfumage (des "donc" mal à propos ; des "il est évident que" qui ne le sont pas du tout (voir souvent franchement faux) ; voir deux trois tentatives de fraudes caractérisées). Enfin, pour la plupart vous ne parvenez pas encore à donner l'argument simple et clair qui fait que l'algorithme fonctionne. 
 
 ## Corrigé
 
@@ -131,10 +144,44 @@ $$
 
 Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j < m$ $b$ est bien une sous-chaîne de $a$ en position $i$. Sinon soit :
 
-- $a[i + m -1] \neq b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' < i + m$
-- $a[i + m -1]  \neq b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.
-- $a[i + m -1] = b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i < i' < i + m$
-- $a[i + m -1] = b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.
+1. $a[i + m -1] \neq b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' < i + m$
+2. $a[i + m -1] \neq b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.
+3. $a[i + m -1] = b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i < i' < i + m$
+4. $a[i + m -1] = b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.
+
+```
+
+1.
+
+     i                                  i                
+aaaaaaaaaaAaaaaaaaaaa   ->   aaaaaaaaaaAaaaaaaaaaa     
+     bbbbbB                             bbbbbB         
+          j                                  j         
+
+2.
+
+     i                               i                
+aaaaaaaaaaAaaaaaaaaaa   ->   aaaaaaaaaaAaaaaaaaaaa
+     bbAbbB                          bbAbbB         
+          j                               j         
+
+
+3. 
+
+     i                                  i                
+aaaaaaaaaaAaaaaaaaaaa   ->   aaaaaaaaaaAaaaaaaaaaa     
+     bbbbbA                             bbbbbB         
+          j                                  j         
+
+
+4. 
+
+     i                               i                
+aaaaaaaaaaAaaaaaaaaaa   ->   aaaaaaaaaaAaaaaaaaaaa     
+     bbAbbA                          bbAbbA         
+          j                               j         
+
+```
 
 ##### 2.1.2
 
@@ -155,7 +202,7 @@ algorithme décalage(b: chaîne) → [entier]:
     pour chaque (i := entier) de [0 .. L[:
         T[i] ← m
     pour chaque (k := entier) de [0 .. b.longueur - 1[:
-        T[ord(b[k])] ← min(T[ord(b[k])], m - k - 1)
+        T[ord(b[k])] ← m - k - 1
 
     rendre T
 ```
