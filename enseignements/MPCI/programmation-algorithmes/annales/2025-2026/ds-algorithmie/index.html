@@ -96,17 +96,47 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il y avait deux petites erreurs dans l'énoncé originel. Elles sont corrigés ici.</p>
+<p>Il y avait deux petites erreurs dans l'énoncé originel. J'en ai bien sur tenu compte lors de la correction. Elles sont corrigés dans le sujet ci-dessus qui devrait être exempt d'erreurs.</p>
 </div></div>
 
 <h2>Barème</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Chaque exercice était noté sur 10 points :</p>
+<ul>
+<li>exercice 1 : partie 1 sur 4pts ; partie 2 sur 3pts ; partie 3 sur 3pts</li>
+<li>exercice 2 : partie 1 sur 4pts ; partie 2 sur 3pts ; partie 3 sur 3pts</li>
+<li>exercice 3 : partie 1 sur 2pts ; partie 2 sur 3pts ; partie 3 sur 5pts</li>
+</ul>
 <h3>Ventilation des notes</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<table>
+<thead>
+<tr>
+<th>note/20</th>
+<th>&lt; 10</th>
+<th>[10, 11]</th>
+<th>]11, 13]</th>
+<th>]13, 15]</th>
+<th>]15, 20]</th>
+<th>&gt; 20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>17</td>
+<td>7</td>
+<td>8</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 10.45/20</li>
+<li>écart-type : 3.94/20</li>
+<li>médiane : 10.25/20</li>
+</ul>
+<p>Je suis un peu déçu. Il y a beaucoup d'imprécisions dans vos réponses et en encore beaucoup trop d'enfumage (des &quot;donc&quot; mal à propos ; des &quot;il est évident que&quot; qui ne le sont pas du tout (voir souvent franchement faux) ; voir deux trois tentatives de fraudes caractérisées). Enfin, pour la plupart vous ne parvenez pas encore à donner l'argument simple et clair qui fait que l'algorithme fonctionne.</p>
 <h2>Corrigé</h2>
 <h3>Exercice 1</h3>
 <h4>1.1 Algorithme python</h4>
@@ -183,12 +213,44 @@ $$
 <h4>2.1 Principe</h4>
 <h5>2.1.1</h5>
 <p>Pour une position de $i$ donnée si $a[i + j] = b[j]$ pour tout $0 \leq j &lt; m$ $b$ est bien une sous-chaîne de $a$ en position $i$. Sinon soit :</p>
-<ul>
+<ol>
 <li>$a[i + m -1] \neq b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i \leq i' &lt; i + m$</li>
-<li>$a[i + m -1]  \neq b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.</li>
+<li>$a[i + m -1] \neq b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.</li>
 <li>$a[i + m -1] = b[m-1]$ et n'est pas dans $b[:-1]$ : $b$ ne peut-être une sous-chaîne de $a$ pour tout $i'$ tel que $i &lt; i' &lt; i + m$</li>
 <li>$a[i + m -1] = b[m-1]$ et est dans $b[:-1]$ : la première position plus strictement plus grande que $i$ où $b$ pourra être une sous-chaîne de $a$ sera celle où on fera correspondre $a[i + m -1]$ avec sa plus grande position dans $b$.</li>
-</ul>
+</ol>
+<pre><code>
+1.
+
+     i                                  i                
+aaaaaaaaaaAaaaaaaaaaa   -&gt;   aaaaaaaaaaAaaaaaaaaaa     
+     bbbbbB                             bbbbbB         
+          j                                  j         
+
+2.
+
+     i                               i                
+aaaaaaaaaaAaaaaaaaaaa   -&gt;   aaaaaaaaaaAaaaaaaaaaa
+     bbAbbB                          bbAbbB         
+          j                               j         
+
+
+3. 
+
+     i                                  i                
+aaaaaaaaaaAaaaaaaaaaa   -&gt;   aaaaaaaaaaAaaaaaaaaaa     
+     bbbbbA                             bbbbbB         
+          j                                  j         
+
+
+4. 
+
+     i                               i                
+aaaaaaaaaaAaaaaaaaaaa   -&gt;   aaaaaaaaaaAaaaaaaaaaa     
+     bbAbbA                          bbAbbA         
+          j                               j         
+
+</code></pre>
 <h5>2.1.2</h5>
 <p>Contrairement à l'algorithme naïf l'indice $i$ peut augmenter de plus que 1 unité. Il peut même augmenter de $m$ si le dernier élément de $a$ n'est pas dans $b$.</p>
 <h5>2.2.1</h5>
@@ -203,7 +265,7 @@ $$
     <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>i <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> L<span class="token punctuation">[</span><span class="token punctuation">:</span>
         T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> m
     <span class="token keyword">pour chaque</span> <span class="token punctuation">(</span>k <span class="token operator">:=</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> de <span class="token punctuation">[</span><span class="token number">0</span> <span class="token punctuation">.</span><span class="token punctuation">.</span> b<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">[</span>ord<span class="token punctuation">(</span>b<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> min<span class="token punctuation">(</span>T<span class="token punctuation">[</span>ord<span class="token punctuation">(</span>b<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> m <span class="token operator">-</span> k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        T<span class="token punctuation">[</span>ord<span class="token punctuation">(</span>b<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> m <span class="token operator">-</span> k <span class="token operator">-</span> <span class="token number">1</span>
 
     <span class="token keyword">rendre</span> T</code></pre>
 <h5>2.2.2</h5>
