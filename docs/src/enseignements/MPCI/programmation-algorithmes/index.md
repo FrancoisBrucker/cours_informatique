@@ -723,13 +723,14 @@ Devoir surveillé de programmation. Le programme est tout ce qu'on a vu jusqu'à
 > 4h
 
 {% attention %}
-Emporter votre ordinateur
+Emportez votre ordinateur
 {% endattention %}
 
 > TBD environnement virtuel
 
 {% aller %}
 
+- [environnements virtuels](/coder-et-développer/environnements-virtuels/){.interne}
 - [Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne}
 
 {% endaller %}
