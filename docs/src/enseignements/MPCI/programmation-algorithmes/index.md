@@ -608,15 +608,7 @@ Test de 30min **sur ordinateur** en début de cours sur la composition et l'agr�
 
 {% endnote %}
 
-Pour aller plus loin :
-
-{% aller %}
-
-[Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne}
-
-{% endaller %}
-
-Pour ne pas mourir idiot (à faire si vous êtes intéressés par les métiers du développement) :
+Pour aller plus loin (à faire si vous êtes intéressés par les métiers du développement) :
 
 
 {% aller %}
@@ -726,11 +718,21 @@ Devoir surveillé de programmation. Le programme est tout ce qu'on a vu jusqu'à
 ### Semaine 14
 
 > 04/05 au 08/05
-> Algorithmie
+> Programmation
 
 > 4h
-> TBD enveloppe convexe.
 
+{% attention %}
+Emporter votre ordinateur
+{% endattention %}
+
+> TBD environnement virtuel
+
+{% aller %}
+
+- [Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne}
+
+{% endaller %}
 
 <!-- TBD
 
