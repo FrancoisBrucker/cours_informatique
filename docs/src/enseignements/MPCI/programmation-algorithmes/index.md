@@ -735,8 +735,7 @@ Emportez votre ordinateur
 
 {% endaller %}
 
-C'est la dernière séance : on fait des jeux.
-
+> TBD ajouter git base.
 
 <!-- TBD
 
