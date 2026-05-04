@@ -744,7 +744,11 @@ Emportez votre ordinateur
 
 1. Dépôt
    1. [créez vous un compte github](/cours/gestion-des-sources/dépôt/github-compte/){.interne} 
-   2. déposez le code de votre projet en mettant un readme.
+   2. projet :
+      1. Créez un environnement virtuel pour faire fonctionner le code de votre projet 
+      2. Créez un fichiers `requirements.txt`{.fichier} et ajoutez le à votre projet
+      3. ajouter un fichier `readme.md`{.fichier} à votre projet
+      4. mettez le projet en ligne sur github
 2. [Gestion des sources avec github](/cours/gestion-des-sources/évolution-code/github-projet/){.interne}
 3. [Partager des sources avec github](/cours/gestion-des-sources/partage/github-desktop/){.interne}
 
