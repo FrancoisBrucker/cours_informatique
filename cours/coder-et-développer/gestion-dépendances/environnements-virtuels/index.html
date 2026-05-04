@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/environnements-virtuels/">Environnements virtuels</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/gestion-dépendances/">Gestion des dépendances</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/gestion-dépendances/environnements-virtuels/">Environnements virtuels</a>
 
 </div></div>
 
@@ -108,18 +108,20 @@
 </div></div>
 
 <p>Le but d'un environnement virtuel est de créer un environnement python complet (interpréteur et modules) différent par projet. Ceci permet de contrôler les modules installés et utilisés.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Il est fortement recommandé de créer un environnement virtuel pour <strong>chaque</strong> projet.</p>
 </div></div>
 
 <h2>Environnement python</h2>
 <p><a href="../version-python/#interpr%C3%A9teur-emplacement" class="interne">On a vu que l'interpréteur python était un fichier</a> sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.</p>
 <h3>Emplacement</h3>
-<p>L'ensemble python et module est appelé environnement python et est placé dans un dossier. Le code suivant permet de l'expliciter :</p>
+<p>L'ensemble constitué de l'interpréteur python et des modules est appelé <strong><em>environnement python</em></strong> et est placé dans un dossier. Le code suivant permet de l'expliciter :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"environnement :"</span><span class="token punctuation">,</span> sys<span class="token punctuation">.</span>prefix<span class="token punctuation">)</span></code></pre>
@@ -148,7 +150,7 @@
 <li>un nouveau terminal a été crée par vscode pour ses exécutions</li>
 <li>que le nom correspond à celui du bas.</li>
 </ul>
-<p>En regardant cette arborescence avec la commande <a href="https://en.wikipedia.org/wiki/Tree_(command)">tree</a> dans un terminal, on voit qu'elle contient un grand nombre de dossiers et de fichiers :</p>
+<p>En regardant cette arborescence (avec un explorateur de fichiers par exemple), on voit qu'elle contient un grand nombre de dossiers et de fichiers. J'ai utilisé la commande <a href="https://en.wikipedia.org/wiki/Tree_(command)">tree</a> dans un terminal (il est probable que vous deviez l'installer car cette commande n'est pas là par défaut) :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="highlight-line">❯ tree <span class="token parameter variable">-L</span> <span class="token number">2</span> /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13 </span>
 <span class="highlight-line">/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13</span>
 <span class="highlight-line">├── Headers -<span class="token operator">></span> include/python3.13</span>
@@ -465,23 +467,8 @@ pytest==8.2.1</code></pre>
 <p><a href="https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers">Spécification des modules</a></p>
 </div></div>
 
-<h3>Poetry</h3>
-<p>La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://python-poetry.org/">https://python-poetry.org/</a></p>
-</div></div>
-
-<blockquote>
-<p>TBD : faire un exemple. Attention à ce que venv soit bien dans le dossier du projet</p>
-</blockquote>
 <h3>uv</h3>
-<blockquote>
-<p>TBD : tout en un et en rust.</p>
-</blockquote>
+<p>La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -491,8 +478,13 @@ pytest==8.2.1</code></pre>
 </div></div>
 
 <blockquote>
-<p>TBD : faire un exemple.</p>
+<p>TBD un tuto à rendre plus digeste :</p>
+<ul>
+<li><a href="https://blog.stephane-robert.info/docs/developper/programmation/python/uv/">https://blog.stephane-robert.info/docs/developper/programmation/python/uv/</a></li>
+<li><a href="https://www.youtube.com/watch?v=AIYBol5HEog">https://www.youtube.com/watch?v=AIYBol5HEog</a></li>
+</ul>
 </blockquote>
+<p>Il en existent d'autre, comme <a href="https://python-poetry.org/">poetry</a> par exemple.</p>
 
 
 </article>

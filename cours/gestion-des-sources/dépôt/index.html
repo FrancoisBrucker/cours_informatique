@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Création d&#39;un compte et usage basique de Github</title>
+    <title>Dépot du code source</title>
 
     
 
@@ -71,8 +71,21 @@
       
 <article>
 
-  <h1>Création d&#39;un compte et usage basique de Github</h1>
-  <div>
+  <h1 class="mb-1">Dépot du code source</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">cours</li>
+          
+            <li class="before:content-['•'] before:px-1">projet</li>
+          
+        </ul>
+      </div>
     
 
     
@@ -87,7 +100,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/github-compte/">Création d&#39;un compte et usage basique de Github</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion du code source</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/dépôt/">Dépot du code source</a>
 
 </div></div>
 
@@ -96,30 +109,24 @@
     
   
 
-  <h2><span id="compte-github"></span> Création du compte github</h2>
-<ul>
-<li>On crée ici votre compte github <em>pro</em>, ne mettez pas de bêtises</li>
-<li>Utilisez une adresse mail pérenne (genre votre adresse pro gmail ou votre adresse ecm)</li>
-</ul>
-<h2>Données du profil</h2>
-<p>Allez dans la modification du profile :</p>
-<ul>
-<li>en haut à droite de la fenêtre puis <em>&quot;Your profile&quot;</em></li>
-<li>ou <code>https://github.com/&lt;votre login&gt;</code> en remplaçant <code>&lt;votre login&gt;</code> par votre login.</li>
-</ul>
-<p>Il faut que ces donnés soient exact. Ceci va vous permettre de valoriser votre travail lorsque vous travaillez à plusieurs sur un projet et permettre de vous contacter s'il y a des questions sur le code que vous avez ajouté. Mettez donc au moins :</p>
-<ul>
-<li>un vrai nom ou un pseudo qui vous représente,</li>
-<li>une vrai photo, un logo ou un dessin qui vous représente (rechargez la page pour avoir la nouvelle photo)</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Vous êtes responsable du code que vous ajoutez au projet : il <strong>faut</strong> pouvoir identifier toute modification/ajout de code.</p>
+  <p>Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.</p>
+<h2>Besoins pour un dépôt</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="besoins-d%C3%A9p%C3%B4t/" class="interne">Besoins</a></p>
+</div></div>
+
+<h2>Projet : dépôt github</h2>
+<p>Nous allons utiliser <a href="https://github.com/">https://github.com/</a> comme dépôt commun de nos projet. Le site fonctionne avec logiciel de gestion de sources <a href="https://fr.wikipedia.org/wiki/Git">git</a>. Il en existe d'autres, comme <a href="https://gitlab.com/">https://gitlab.com/</a> par exemple.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="github-compte" class="interne">Création d'un compte github</a></p>
 </div></div>
 
 
