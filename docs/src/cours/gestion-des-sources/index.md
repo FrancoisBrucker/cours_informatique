@@ -7,7 +7,7 @@ authors:
   - François Brucker
 eleventyNavigation:
   prerequis:
-    - "/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/"
+    - "/cours/système-et-réseau/bases-système/bases/fichiers-navigation/"
 resume: "Comment gérer les sources d'un projet avec git et github."
 
 eleventyComputed:
@@ -50,80 +50,47 @@ couper en parties
 3. interne
 -->
 
-## <span id="dépot"></span>Principes : gestion des sources comme un dépôt
+## Principes 
 
-Après avoir examiné les besoins qui impliquent l'utilisation d'un SCM, on en verra une implémentation possible sur une structure distribuée et l'usage qu'on peut en faire au quotidien.
+### <span id="dépot"></span>Dépôt des sources
 
-### Besoins pour un dépôt
-
-{% aller %}
-[Besoins](./besoins-dépôt/){.interne}
-{% endaller %}
-
-### Structure distribuée
-
-Pour que son accès soit facile, il faut que la structure de stockage soit sur le même ordinateur que celui ayant le répertoire de travail.
-
-Si cette solution est idéal lorsque l'on est un unique développeur, elle devient plus complexe à mettre en œuvre si on est plusieurs à travailler sur le projet. Il faut :
-
-1. en avoir une copie de la structure de stockage chez chaque participant,
-2. permettre à plusieurs personnes de travailler sur le même fichier,
-3. permettre le travail asynchrone entre les personnes : une personne va avancer à un endroit pendant qu'une autre travaille sur autre chose
-4. pouvoir reprendre un projet existant avec une nouvelle équipe
-
-Ceci implique que chaque copie soit synchronisée par un dépôt référent, un **_projet référent_** faisant autorité pour tous les participants.
-
-Une bonne implémentation consiste **à ne pas sacraliser la mise en commun**. Il faut le faire le souvent pour que tout le monde ait une version claire de l'ensemble **actuel** du projet.
-
-{% attention2 "**À retenir**" %}
-
-Lorsque vous utilisez un projet en commun il faut avoir un dépôt commun mais ne faut pas en sacraliser la mise en commun avec des règles de soumission stricte ou un superviseur.
-
-{% endattention2 %}
-
-### Dépôt origin
-
-Nous allons utiliser <https://github.com/> comme dépôt commun de nos projet. Le site fonctionne avec logiciel de gestion de sources [git](https://fr.wikipedia.org/wiki/Git). Il en existe d'autres, comme <https://gitlab.com/> par exemple.
+Déposer le code source pour qu'il puisse être utilisé par d'autres.
 
 {% aller %}
-[Création d'un compte github](./github-compte){.interne}
+[Dépôt des sources](./dépôt/){.interne}
 {% endaller %}
 
-### Projet Dépôt
+### Gestion du code source
+
+Gérer les évolutions de son code.
 
 {% aller %}
-[Github come un drive](./github-drive){.interne}
+[Gestion de l'évolution du code source](./évolution-code/){.interne}
 {% endaller %}
 
-## Principes : gestion des sources en local
-
-### Besoins pour une gestion des sources locale
+### Partager du code source
 
 {% aller %}
-[Besoins](./besoins-gestion-sources){.interne}
+[Partager du code source](./partage/){.interne}
 {% endaller %}
 
-### Projet : gestion des sources
+### Bonnes pratiques
 
 {% aller %}
-[Projet uniquement avec github](./github-projet){.interne}
+
+[Bonnes pratiques](./bonnes-pratiques){.interne}
+
 {% endaller %}
 
-## Principes : gestion d'un dépôt distant
-
-### Besoins pour l'utilisation d'un dépôt distant
+## Outils
 
 {% aller %}
-[Besoins](./besoins-origin){.interne}
+
+[Outils](./outils){.interne}
+
 {% endaller %}
 
-### Projet : local et origine
-
-{% aller %}
-[Projet avec github desktop](./github-desktop){.interne}
-{% endaller %}
-
-## Usage courant
+## Pour aller plus loin
 
 Outre ce qu'on a vu au préalable l'usage d'un SCM au quotidien nécessite quelques connaissances supplémentaires qui permettent de que nous allons aborder maintenant.
 
@@ -232,45 +199,9 @@ L'installation et la configuration de git n'est pas très technique. Cela vaut l
 [Configurer et initialiser ses projets git](./git-init){.interne}
 {% endaller %}
 
-## Outils
 
-### App
 
-Outil tout en un pour utiliser github :
 
-{% aller %}
-<https://git-fork.com/>
-{% endaller %}
-
-### Git avec vscode
-
-{% info "**Documentation**" %}
-<https://code.visualstudio.com/docs/editor/versioncontrol#_git-support>
-{% endinfo %}
-
-vscode permet d'utiliser directement les commandes git et possède de nombreux plugins permettant, par exemples :
-
-- d'utiliser github avec l'[extension github](https://code.visualstudio.com/docs/editor/github)
-- de voir le graphe de dépendances avec l'extension [git-graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph) (commande `git-graph.view` pour voir le graphe)
-- de voir l'historique de modification d'un fichier avec l'extension [git-history](https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory) (cliquer droit sur un fichier puis `Git: view file history`)
-- ...
-
-### TUI
-
-{% lien %}
-
-- [lazy git](https://github.com/jesseduffield/lazygit) ([une courte vidéo de présentation](https://www.youtube.com/watch?v=CPLdltN7wgE)) : une excellente application pour git
-- [gh-dash](https://github.com/dlvhdr/gh-dash) : pour github et les pull requests
-
-{% endlien %}
-
-## Bonnes pratiques
-
-{% aller %}
-
-[Bonnes pratiques](./bonnes-pratiques){.interne}
-
-{% endaller %}
 
 ## Porcelaine et plomberie de git
 

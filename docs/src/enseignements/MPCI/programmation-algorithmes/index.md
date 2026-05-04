@@ -726,16 +726,38 @@ Devoir surveillé de programmation. Le programme est tout ce qu'on a vu jusqu'à
 Emportez votre ordinateur
 {% endattention %}
 
-> TBD environnement virtuel
-
 {% aller %}
 
-- [environnements virtuels](/coder-et-développer/environnements-virtuels/){.interne}
-- [Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne}
+1. [gestion des dépendances](/cours/coder-et-développer/gestion-dépendances/){.interne}
+2. [gestion du code source](/cours/gestion-des-sources/){.interne}
+   1. [Dépôt](/cours/gestion-des-sources/dépôt/besoins-dépôt/){.interne}
+   2. [Gestion de l'évolution de son code source](/cours/gestion-des-sources/évolution-code/besoins-gestion-sources/){.interne}
+   3. [Partager du code source](/cours/gestion-des-sources/partage/besoins-origin/){.interne}
+   4. [Bonnes pratiques](/cours/gestion-des-sources/bonnes-pratiques/){.interne} et [outils](/cours/gestion-des-sources/outils){.interne}
 
 {% endaller %}
 
-> TBD ajouter git base.
+
+À vous :
+
+{% aller %}
+
+1. Dépôt
+   1. [créez vous un compte github](/cours/gestion-des-sources/dépôt/github-compte/){.interne} 
+   2. déposez le code de votre projet en mettant un readme.
+2. [Gestion des sources avec github](/cours/gestion-des-sources/évolution-code/github-projet/){.interne}
+3. [Partager des sources avec github](/cours/gestion-des-sources/partage/github-desktop/){.interne}
+
+
+{% endaller %}
+
+Si on a le temps et puisque c'est la dernière séance, faisons des jeux :
+
+{% aller %}
+
+[Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne}
+
+{% endaller %}
 
 <!-- TBD
 

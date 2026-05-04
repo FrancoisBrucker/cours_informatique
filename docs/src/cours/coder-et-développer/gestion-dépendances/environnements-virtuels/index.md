@@ -23,9 +23,9 @@ eleventyComputed:
 
 Le but d'un environnement virtuel est de créer un environnement python complet (interpréteur et modules) différent par projet. Ceci permet de contrôler les modules installés et utilisés.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Il est fortement recommandé de créer un environnement virtuel pour **chaque** projet.
-{% endnote %}
+{% endattention2 %}
 
 ## Environnement python
 
@@ -33,7 +33,7 @@ Il est fortement recommandé de créer un environnement virtuel pour **chaque** 
 
 ### Emplacement
 
-L'ensemble python et module est appelé environnement python et est placé dans un dossier. Le code suivant permet de l'expliciter :
+L'ensemble constitué de l'interpréteur python et des modules est appelé **_environnement python_** et est placé dans un dossier. Le code suivant permet de l'expliciter :
 
 ```python
 import sys
@@ -68,7 +68,7 @@ Remarquez que :
 - un nouveau terminal a été crée par vscode pour ses exécutions
 - que le nom correspond à celui du bas.
 
-En regardant cette arborescence avec la commande [tree](https://en.wikipedia.org/wiki/Tree_(command)) dans un terminal, on voit qu'elle contient un grand nombre de dossiers et de fichiers :
+En regardant cette arborescence (avec un explorateur de fichiers par exemple), on voit qu'elle contient un grand nombre de dossiers et de fichiers. J'ai utilisé la commande [tree](https://en.wikipedia.org/wiki/Tree_(command)) dans un terminal (il est probable que vous deviez l'installer car cette commande n'est pas là par défaut) :
 
 ```shell/
 ❯ tree -L 2 /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13 
@@ -446,22 +446,17 @@ Le lien ci-dessous explicite le format du fichier `requirements.txt`{.fichier} :
 [Spécification des modules](https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers)
 {% endlien %}
 
-### Poetry
-
-La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :
-
-{% lien %}
-<https://python-poetry.org/>
-{% endlien %}
-
-> TBD : faire un exemple. Attention à ce que venv soit bien dans le dossier du projet
-
 ### uv
 
-> TBD : tout en un et en rust.
+La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :
 
 {% lien %}
 <https://github.com/astral-sh/uv>
 {% endlien %}
 
-> TBD : faire un exemple.
+> TBD un tuto à rendre plus digeste :
+> - <https://blog.stephane-robert.info/docs/developper/programmation/python/uv/> 
+> - <https://www.youtube.com/watch?v=AIYBol5HEog>
+
+Il en existent d'autre, comme [poetry](https://python-poetry.org/) par exemple.
+
