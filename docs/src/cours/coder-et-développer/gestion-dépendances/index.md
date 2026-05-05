@@ -35,7 +35,7 @@ Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informa
 
 Chaque version de python va posséder :
 
-- ses propres modules comme `math`{.language-}, `random`{.language-} ou encore `sys``math`{.language-}
+- ses propres modules comme `math`{.language-}, `random`{.language-} ou encore `sys`{.language-}
 - les modules installés par `pip`.
 
 

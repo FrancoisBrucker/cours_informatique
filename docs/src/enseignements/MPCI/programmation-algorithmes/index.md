@@ -742,24 +742,35 @@ Emportez votre ordinateur
 
 {% aller %}
 
-1. Dépôt
+1. Environnement virtuel. Vous allez utiliser [le TP de programmation évènementiel](/cours/coder-et-développer/programmation-évènementielle/projet-arkanoid/){.interne} dont le code est là : [`Arkanoid.zip`{.fichier}](./Arkanoid.zip){.fichier}.
+   1. dézippez le projet et créez-vous un environnement virtuel dans le dossier projet
+   2. ajoutez les modules `pyglet` et `pytest` à cet environnement en utilisant `pip` basé sur l'interpréteur de votre environnement virtuel
+   3. vérifiez que les tests passent et que le code fonctionne avec votre environnement
+   4. créez les fichiers :
+      - `requirements.txt`{.fichier} qui explicite les dépendances
+      - `readme.md`{.fichier} qui explicite comment exécuter le programme et le lien vers le cours.
+2. Dépôt :
    1. [créez vous un compte github](/cours/gestion-des-sources/dépôt/github-compte/){.interne} 
-   2. projet :
-      1. Créez un environnement virtuel pour faire fonctionner le code de votre projet 
-      2. Créez un fichiers `requirements.txt`{.fichier} et ajoutez le à votre projet
-      3. ajouter un fichier `readme.md`{.fichier} à votre projet
-      4. mettez le projet en ligne sur github
-2. [Gestion des sources avec github](/cours/gestion-des-sources/évolution-code/github-projet/){.interne}
-3. [Partager des sources avec github](/cours/gestion-des-sources/partage/github-desktop/){.interne}
+   2. projet mettez le projet en ligne sur github (ne mettez pas l'environnement virtuel ni le dossier `__pycache__`{.fichier} !)
+1. [Gestion des sources avec github](/cours/gestion-des-sources/évolution-code/github-projet/){.interne}
+2. [Partager des sources avec github](/cours/gestion-des-sources/partage/github-desktop/){.interne}
 
 
 {% endaller %}
 
-Si on a le temps et puisque c'est la dernière séance, faisons des jeux :
+Si on a le temps et puisque c'est la dernière séance, suivez le cours suivant pour pouvoir comprendre fonctionnement et recoder le  Arkanoid. :
 
 {% aller %}
 
 [Programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/){.interne}
+
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+
+Lisez la fin du cours de la [gestion du code source](/cours/gestion-des-sources/){.interne} pour pouvoir utiliser git en ligne de commande et comprendre son fonctionnement interne.
 
 {% endaller %}
 
