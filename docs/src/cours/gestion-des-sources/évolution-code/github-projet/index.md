@@ -56,7 +56,7 @@ Voir [ce doc](https://www.designveloper.com/blog/hash-values-sha-1-in-git/) pour
 On a utilisé <https://gitmoji.dev/> pour le commit. Mettre un émoji en premier caractère du message permet de facilement identifier le but du commit.
 {% endinfo %}
 
-Notre projet a maintenant 2 commits. En cliquant sur le texte _32 commits"_, on voit l'historique de notre projet sur la branche principale (`main`) :
+Notre projet a maintenant 2 commits. En cliquant sur le texte _"2 commits"_, on voit l'historique de notre projet sur la branche principale (`main`) :
 
 ![historique](github-historique-main.png)
 
@@ -64,7 +64,7 @@ En cliquant sur le numéro de commit, on voit le détail de celui-ci :
 
 ![historique](github-historique-main-détail.png)
 
-Nous rentrerons plus en détails de ce tout cci signifie un peut plus tard. Mais La façon dont est représenté le commit suit la syntaxe des [GNU `diffutils`](https://www.gnu.org/software/diffutils/manual/diffutils.html). Pour nous :
+Nous rentrerons plus en détails dans ce que tout cela signifie un peut plus tard. Mais La façon dont est représenté le commit suit la syntaxe des [GNU `diffutils`](https://www.gnu.org/software/diffutils/manual/diffutils.html). Pour nous :
 
 1. on a modifié le fichier `programme.txt`{.fichier}
 2. `@@ -0,0 +1, 6 @@` : on a supprimé aucune ligne et on a ajouté les lignes 1 à 6.
@@ -72,7 +72,7 @@ Nous rentrerons plus en détails de ce tout cci signifie un peut plus tard. Mais
 
 ### Modifier un fichier
 
-Nous allons maintenant modifier le fichier `readme.md`{.fichier} qui est aussi un fichier texte écrit au format [Markdown]({{ "/tutoriels/format-markdown.md"  }}). POur que ce fichier soit agréable à la lecture, github le compile en html, mais — en vrai — c'est juste du texte.
+Nous allons maintenant modifier le fichier `readme.md`{.fichier} qui est aussi un fichier texte écrit au format [Markdown]({{ "/tutoriels/format-markdown.md"  }}). Pour que ce fichier soit agréable à la lecture, github le compile en html, mais — en vrai — c'est juste du texte.
 
 1. ![cliquer pour accéder au fichier `readme.md`](github-modification-readme-1.png)
 2. ![cliquer pour éditer le fichier `readme.md`](github-modification-readme-2.png)
@@ -184,7 +184,7 @@ Pour cela :
 >>>>>> [nom de l'autre branche ou de l'autre commit]
 ```
 
-Résoudre un confit consiste à choisir une branche ou à faire un mélange des branches pour arriver à un texte sans les `<<<<<<`, `>>>>>>` et `=====`. Puis cliquez sur `mark as resolved Pour notre problème : ![résolution](github-merge-6.png)
+Résoudre un confit consiste à choisir une branche ou à faire un mélange des branches pour arriver à un texte sans les `<<<<<<`, `>>>>>>` et `=====`. Puis cliquez sur `mark as resolved`. Pour notre problème : ![résolution](github-merge-6.png)
 
 Une fois la fusion exécutée, notre graphe de dépendance est :
 
