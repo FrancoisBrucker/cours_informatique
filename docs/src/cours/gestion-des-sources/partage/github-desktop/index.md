@@ -284,7 +284,7 @@ Et on commit les changements :
 origin : A -> B
 ```
 
-Vous pouvez faire toutes les modifications que vous voulez, , du moment qu'on supprime les références aux commits en conflit.
+Vous pouvez faire toutes les modifications que vous voulez, du moment qu'on supprime les références aux commits en conflit.
 
 > TBD donner des exemple avec le conflit et les modification  on fait une union ou même on fait autre chose.
 
@@ -378,7 +378,7 @@ Mouette
 Pinson du nord
 ```
 
-On a régler un problème dans le rebase. COmme c'était le seul, desktop nous permet de continuer :
+On a réglé un problème dans le rebase. Comme c'était le seul, desktop nous permet de continuer :
 
 ![rebase 2](desktop-rebase-2.png)
 

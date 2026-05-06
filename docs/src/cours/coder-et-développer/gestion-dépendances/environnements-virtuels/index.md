@@ -247,7 +247,7 @@ Dans le projet "virt-python" :
    ![création 1](./vscode-création-1.png)
 3. Choisissez "Venv" si vscode vous propose de choisir
    ![création 2](./vscode-création-2.png)
-4. choisissez un interpréteur. C'est puis qui sera utilisé pour créer l'environnement virtuel. Cela va uniquement déterminer la version de python du nouvel environne,ent, aucun module de l'environnement d'origine ne sera dupliqué
+4. choisissez un interpréteur. C'est lui qui sera utilisé pour créer l'environnement virtuel. Cela va uniquement déterminer la version de python du nouvel environnement, aucun module de l'environnement d'origine ne sera dupliqué
    ![création 3](./vscode-création-3.png)
 5. L'environnement est crée. Si tout s'est bien passé, ce nouvel environnement est devenu celui de vscode :
    ![création 4](./vscode-création-4.png)
@@ -318,7 +318,7 @@ pip     24.2
 
 ## Utilisation
 
-On peut bien sur utiliser vscode et placer l'environne,ent virtuel sur celui que nous venons de créer, on utiliser l'interpréteur directement depuis le terminal :
+On peut bien sur utiliser vscode et placer l'environnement virtuel sur celui que nous venons de créer, on utiliser l'interpréteur directement depuis le terminal :
 
 - sous mac/Linux : `venv/bin/python main.py`
 - sous windows : `venv\Scripts\python main.py`
@@ -404,7 +404,7 @@ Activer permet de ne pas se soucier du chemin, et permet d'avoir les même comma
 Si vous voulez revenir à votre environnement normal, il vous suffit de taper la commande suivante dans le terminal :
 
 ```shell
-desactivate
+deactivate
 ```
 
 ## Gestion des environnements virtuels
