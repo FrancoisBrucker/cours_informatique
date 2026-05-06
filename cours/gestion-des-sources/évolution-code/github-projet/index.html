@@ -156,18 +156,18 @@
 <p>On a utilisé <a href="https://gitmoji.dev/">https://gitmoji.dev/</a> pour le commit. Mettre un émoji en premier caractère du message permet de facilement identifier le but du commit.</p>
 </div></div>
 
-<p>Notre projet a maintenant 2 commits. En cliquant sur le texte <em>32 commits&quot;</em>, on voit l'historique de notre projet sur la branche principale (<code>main</code>) :</p>
+<p>Notre projet a maintenant 2 commits. En cliquant sur le texte <em>&quot;2 commits&quot;</em>, on voit l'historique de notre projet sur la branche principale (<code>main</code>) :</p>
 <p><img src="github-historique-main.png" alt="historique"></p>
 <p>En cliquant sur le numéro de commit, on voit le détail de celui-ci :</p>
 <p><img src="github-historique-main-d%C3%A9tail.png" alt="historique"></p>
-<p>Nous rentrerons plus en détails de ce tout cci signifie un peut plus tard. Mais La façon dont est représenté le commit suit la syntaxe des <a href="https://www.gnu.org/software/diffutils/manual/diffutils.html">GNU <code>diffutils</code></a>. Pour nous :</p>
+<p>Nous rentrerons plus en détails dans ce que tout cela signifie un peut plus tard. Mais La façon dont est représenté le commit suit la syntaxe des <a href="https://www.gnu.org/software/diffutils/manual/diffutils.html">GNU <code>diffutils</code></a>. Pour nous :</p>
 <ol>
 <li>on a modifié le fichier <code class="fichier">programme.txt</code></li>
 <li><code>@@ -0,0 +1, 6 @@</code> : on a supprimé aucune ligne et on a ajouté les lignes 1 à 6.</li>
 <li>à droite on voit les lignes ajoutées en vert avec un <code>+</code> devant elles</li>
 </ol>
 <h3>Modifier un fichier</h3>
-<p>Nous allons maintenant modifier le fichier <code class="fichier">readme.md</code> qui est aussi un fichier texte écrit au format <a href="/cours_informatique/tutoriels/format-markdown.md">Markdown</a>. POur que ce fichier soit agréable à la lecture, github le compile en html, mais — en vrai — c'est juste du texte.</p>
+<p>Nous allons maintenant modifier le fichier <code class="fichier">readme.md</code> qui est aussi un fichier texte écrit au format <a href="/cours_informatique/tutoriels/format-markdown.md">Markdown</a>. Pour que ce fichier soit agréable à la lecture, github le compile en html, mais — en vrai — c'est juste du texte.</p>
 <ol>
 <li><img src="github-modification-readme-1.png" alt="cliquer pour accéder au fichier "></li>
 <li><img src="github-modification-readme-2.png" alt="cliquer pour éditer le fichier "></li>
@@ -260,7 +260,7 @@ feature :           -> D -> E
 ====== autre branche
 [contenu de l'autre branche]
 >>>>>> [nom de l'autre branche ou de l'autre commit]</code></pre>
-<p>Résoudre un confit consiste à choisir une branche ou à faire un mélange des branches pour arriver à un texte sans les <code>&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;</code> et <code>=====</code>. Puis cliquez sur `mark as resolved Pour notre problème : <img src="github-merge-6.png" alt="résolution"></p>
+<p>Résoudre un confit consiste à choisir une branche ou à faire un mélange des branches pour arriver à un texte sans les <code>&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;</code> et <code>=====</code>. Puis cliquez sur <code>mark as resolved</code>. Pour notre problème : <img src="github-merge-6.png" alt="résolution"></p>
 <p>Une fois la fusion exécutée, notre graphe de dépendance est :</p>
 <p><img src="github-merge-7.png" alt="graphe de dépendance après fusion"></p>
 <p>On peut alors supprimer la branche <code>feature</code> qui ne nous est plus d'aucune utilisée. On ne peut donc plus faire de commits sur cette branche, mais son existence est conservée dans l'historique :</p>
