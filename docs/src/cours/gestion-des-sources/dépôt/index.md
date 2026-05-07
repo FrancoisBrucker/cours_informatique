@@ -1,8 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Dépot du code source
-tags: ["cours", "projet"]
+title: Dépôt du code source
 
 eleventyComputed:
   eleventyNavigation:
