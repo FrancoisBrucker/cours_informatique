@@ -9,6 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD 
+
+- desktop linux : voir mail Lisa 
+- préférences pas clair. Leur demander explicitement (avec un faire) d'ajouter le rebase et mettre ma config en cachée
+
+-->
 
 Travailler depuis le site <ahttps://github.com/> uniquement est très limitant. Github est le lieu où est stocké du projet, l'outil qui fait tout fonctionner est [git](https://fr.wikipedia.org/wiki/Git). Avant d'utiliser la ligne de commande qui peut être intimidante, utilisant une application développée par github qui permet d'en utiliser les fonctions les plus courantes.
 

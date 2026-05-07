@@ -1,0 +1,7 @@
+
+\begin{verbatim}
+def notify(self):
+    for observer in self.observer_list:
+        observer.update(self)
+\end{verbatim}
+^^E^^L 

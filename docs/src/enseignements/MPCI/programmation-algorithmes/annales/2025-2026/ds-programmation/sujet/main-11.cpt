@@ -1,0 +1,7 @@
+
+% ### begin random response
+    \correct la valeur par défaut de \verb|param| est 0
+    \leurre \verb|param| vaut 0 dans tous les cas
+    \leurre la méthode n'a pas de paramètre
+% ### end random response
+^^E^^L 

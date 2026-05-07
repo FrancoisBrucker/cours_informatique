@@ -1,0 +1,1 @@
+L'init \verb|deStateObject| n'a pas de paramètre et l'attribut \verb|saved_state| de \verb|Store| est privé.^^E^^L 

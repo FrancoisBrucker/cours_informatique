@@ -1,0 +1,840 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{enumitem,amssymb}
+\usepackage{tabularx}
+\usepackage{calc}
+\usepackage{cprotect}
+
+\usepackage{xcolor}
+
+\usepackage[%
+      a4paper,%
+      textwidth=16cm,%
+      top=2cm,%
+      bottom=2cm,%
+      headheight=25pt,%
+      headsep=12pt,%
+      footskip=25pt]{geometry}%
+      
+
+\usepackage{fancybox}
+\newenvironment{framed}%
+       {\begin{Sbox}\begin{minipage}{\dimexpr\linewidth-2\fboxrule-2\fboxsep}}%
+       {\end{minipage}\end{Sbox}\fbox{\TheSbox}}
+
+
+\usepackage{pifont}
+
+\newcommand{\corrige}{0}
+
+\usepackage{ifthen}
+
+\newcounter{possibility}
+
+\newcommand{\correct}{%
+\addtocounter{possibility}{1}
+\ifthenelse{\equal{\corrige}{0}}%
+    {\item[\ding{\the\numexpr\value{possibility}}]}%
+    {\item[\textcolor{red}{\ding{\the\numexpr\value{possibility}-10}}]}%
+}
+
+\newcommand{\leurre}{%
+
+\addtocounter{possibility}{1}
+\item[\ding{\the\numexpr\value{possibility}}]%
+}
+
+\newcommand{\enonce}[1]{%
+\noindent
+Question~:
+\vspace*{.5\baselineskip}
+
+\noindent
+\begin{framed}
+    #1
+\end{framed}}
+
+\newcommand{\difficulte}[1]{%
+Difficulté : 
+\ifthenelse{#1 > 1 \or #1 = 1}{\ding{72}}{\ding{73}} 
+\ifthenelse{#1 > 2 \or #1 = 2}{\ding{72}}{\ding{73}}
+\ifthenelse{#1 > 3 \or #1 = 3}{\ding{72}}{\ding{73}}
+\ifthenelse{#1 > 3}{S}{}%
+}
+
+
+\newcommand{\possibilites}[1]{%
+
+
+\vspace*{\baselineskip}
+
+
+\noindent
+Cochez l'unique bonne réponse~:
+\vspace*{.5\baselineskip}
+
+\noindent
+\begin{framed}  
+    \begin{enumerate}
+        \setcounter{possibility}{191}
+        #1
+    \end{enumerate}
+\end{framed}}%
+
+\newcommand{\texte}[1][]{%
+
+
+\vspace*{\baselineskip}
+
+
+\noindent
+Écrivez votre réponse~:
+\vspace*{.5\baselineskip}
+
+\noindent
+\begin{framed}
+    \hfill
+    \ifthenelse{\equal{#1}{}}{\vspace*{1cm}}{\vspace*{#1}}    
+\end{framed}}%
+
+
+\newcommand{\pourquoi}[1]{%
+\ifthenelse{\equal{\corrige}{1}}{%
+
+\vspace*{\baselineskip}
+
+
+\noindent
+\textcolor{red}{Élement de solution~:}
+\vspace*{.5\baselineskip}
+
+\noindent
+\begin{framed}
+\textcolor{red}{%
+#1}
+\end{framed}}{}%
+}
+
+
+\newcommand{\chapeau}[1]{%
+
+
+\vspace*{\baselineskip}
+
+
+\noindent
+\begin{framed}
+    #1
+\end{framed}}%
+
+
+% @@@@@@@@@@@@@@@@@@@@@@@@@ uncomment pour le corrigé 
+
+% \renewcommand{\corrige}{1}
+
+% @@@@@@@@@@@@@@@@@@@@@@@@@
+
+\title{Devoir surveillé : Programmation}
+\author{L1 MPCI}
+\date{29 avril 2026 - Durée: 2h}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+{\em On rappelle qu'aucun document, ni équipement électrique ou électronique n'est autorisé.
+
+ {\bf Cependant} l'usage d'une boule en cristal ou d'un tarot divinatoire sera cependant toléré.}
+\end{center}
+
+\vspace*{1cm}
+\noindent
+{\em Les réponses sont à donner directement sur le sujet. Un espace est réservé pour chaque réponse.}
+
+\vspace*{1cm}
+\begin{center}
+\noindent
+\begin{tabular}{|l|p{10cm}|}
+    \hline
+    Nom : & \\
+    \hline
+    Prénom : & \\
+    \hline
+    
+\end{tabular}
+\end{center}
+\vspace*{2cm}
+\noindent
+Barème. Pour chaque question : 
+\begin{itemize}
+    \item ne pas répondre donne 0 point,
+    \item répondre de façon exacte donne : $\mathbf{p}$ points
+    \item répondre de façon inexacte\footnote{le nombre de points négatifs varie pour que si l'on répond de façon aléatoire l'espérance soit nulle} : 
+    \begin{itemize}
+        \item pour une réponse de type VRAI/FAUX : $\mathbf{-p}$ points,
+        \item pour une réponse libre : $\mathbf{-p}$ points,
+        \item pour une réponse de type 1 parmi 3 : $\mathbf{-\frac{p}{2}}$ points.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+
+% ### Debut questions random ###################################
+% ### Question ###################################
+\vbox{%
+\section{}
+
+\difficulte{1}
+
+\enonce{
+Je permets à un objet d'être différent d'un autre objet de la même classe. Je suis~:}
+
+\possibilites{
+% ### begin random response
+    \correct un attribut
+    \leurre une méthode
+    \leurre une constante de classe
+% ### end random response     
+}
+
+\pourquoi{Un objet est composé de méthodes et d'attributs et les méthodes sont communes à tous les objet d'une même classe.}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+
+\difficulte{1}
+
+\enonce{
+Une méthode privée peut être utilisée par une autre méthode définie dans la même classe.}
+
+\possibilites{
+    \leurre faux
+    \correct vrai
+}
+
+\pourquoi{Privé est défini par rapport à ce qui est en dehors de la classe}
+}
+
+
+% ### Question ################################### 
+\vbox{%
+\section{}
+
+\difficulte{1}
+
+\enonce{
+Une méthode privée peut être utilisée par un attribut défini dans la même classe.
+}
+\possibilites{
+    \leurre vrai
+    \correct faux
+}
+
+\pourquoi{Un attribut est une variable, il n'utilise rien.}
+}
+
+
+% ### Question ################################### 
+\section{}
+\chapeau{
+Les deux classes de la figure~\ref{fig:store_uml} sont liées.     
+}
+
+
+\vbox{%
+\subsection{}
+\difficulte{2}
+\enonce{
+Ce lien est :
+}
+
+\cprotect\possibilites{
+% ### begin random response
+    \leurre Une dépendance de \verb|StateObject| pour \verb|Store|
+    \leurre Une dépendance mutuelle des deux classes
+    \correct Une dépendance de \verb|Store| pour \verb|StateObject|
+% ### end random response    
+}
+\cprotect\pourquoi{Un attribut de \verb|Store| est de type \verb|StateObject|.}
+}
+
+
+\vbox{%
+\subsection{}
+\difficulte{2}
+\enonce{
+Ce lien est appelé~: 
+}
+
+\possibilites{
+% ### begin random response    
+    \correct Agrégation
+    \leurre Composition
+    \leurre Héritage
+% ### end random response         
+}
+
+\cprotect\pourquoi{ C'est une agrégation car l'objet de type \verb|StateObject| dans \verb|Store| est importé à l'init il n'est pas créé par \verb|Store|}
+
+}
+
+\vbox{%
+\subsection{}
+\difficulte{2}
+\enonce{
+Il est représenté par~: 
+}
+
+\possibilites{
+% ### begin random response    
+    \correct $\diamond$
+    \leurre$\blacklozenge$
+    \leurre $\triangle$
+% ### end random response         
+}
+
+
+}
+
+
+% ### Question ###################################
+\section{}
+
+\cprotect\chapeau{
+On utilise les deux classes de la figure~\ref{fig:store_uml}. Trois Propositions de code sont données~:
+\begin{enumerate}
+    \item \begin{minipage}{5cm}
+        \begin{verbatim}
+            state = StateObject()
+            state.set_state(1)
+            store = Store(state)
+            store.saved_state = state.get_state()
+        \end{verbatim}
+    \end{minipage}
+    \item \begin{minipage}{5cm}
+            \begin{verbatim}
+                state = StateObject()
+                state.set_state(1)
+                store = Store(state)
+            \end{verbatim}
+        \end{minipage}
+    \item \begin{minipage}{5cm}
+            \begin{verbatim}
+                state = StateObject(1)
+                store = Store(state)
+            \end{verbatim}
+        \end{minipage}        
+\end{enumerate}
+}
+
+\vbox{%
+\subsection{}
+\difficulte{2}
+\enonce{
+    Une seule des 3 propositions est correcte par rapport au schéma UML. Laquelle~?}
+
+\cprotect\possibilites{
+    \correct proposition~2
+    \leurre proposition~1
+    \leurre proposition~3
+}
+
+\cprotect\pourquoi{L'init \verb|deStateObject| n'a pas de paramètre et l'attribut \verb|saved_state| de \verb|Store| est privé.}
+}
+
+\vbox{%
+\subsection{}
+\difficulte{3}
+\enonce{
+    Une seule des 3 propositions est incorrecte en python. Laquelle~?
+}
+
+\cprotect\possibilites{
+    \leurre proposition~1
+    \leurre proposition~2
+    \correct proposition~3
+}
+\pourquoi{La notion de variable privée n'existe pas en python.}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+
+\difficulte{1}
+
+\cprotect\enonce{
+Que représente le premier paramètre (souvent appelé \verb|self|) dans une méthode codée en python ?
+}
+\possibilites{
+% ### begin random response    
+    \leurre la classe à laquelle la méthode appartient 
+    \leurre c'est un paramètre comme un autre sans signification particulière
+    \correct l'objet qui a appelé la méthode
+% ### end random response             
+}
+
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+
+\difficulte{1}
+
+\cprotect\enonce{
+En UML, la description d'une méthode sans paramètre doit posséder des parenthèses (eg: \verb|ma_methode()|)
+}
+
+\possibilites{
+    \correct vrai
+    \leurre faux
+}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+
+\difficulte{2}
+
+\cprotect\enonce{
+En python, pour la méthode définie telle que : 
+\begin{verbatim}
+def ma_methode(self, param=0):
+    # corps de la methode    
+\end{verbatim}
+}
+
+\cprotect\possibilites{
+% ### begin random response    
+    \correct la valeur par défaut de \verb|param| est 0
+    \leurre \verb|param| vaut 0 dans tous les cas
+    \leurre la méthode n'a pas de paramètre
+% ### end random response     
+}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+
+\difficulte{3}
+
+\cprotect\enonce{
+En python, pour la classe définie telle que : 
+\begin{verbatim}
+class GreenCarpet:
+    def __init__(self):
+        self.dices = tuple(Dice() for i in range(5))
+\end{verbatim}
+La relation en \verb|GreenCarpet| et \verb|Dice| est :
+}
+
+\possibilites{
+% ### begin random response 
+    \leurre un héritage
+    \leurre une agrégation
+    \correct une composition
+% ### end random response 
+}
+
+\cprotect\pourquoi{Les objets de type \verb|Dice| sont créés dans le constructeur de \verb|GreenCarpet|.}
+}
+
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+
+\difficulte{2}
+
+\cprotect\enonce{
+En python, pour la classe définie telle que : 
+\begin{verbatim}
+class DiceStat(Dice):
+    def __init__(self, value=1):
+        super().__init__(value)
+        self.stat = dict()
+\end{verbatim}
+La ligne commençant par \verb|super| signifie :
+}
+
+\cprotect\possibilites{
+% ### begin random response 
+    \leurre un appel à la méthode \verb|__init__| pour un objet de type super    
+    \leurre un appel récursif à la méthode \verb|__init__| que l'on est entrain de définir
+    \correct un appel à la méthode \verb|__init__| de la classe \verb|Dice|
+% ### end random response     
+}
+
+\cprotect\pourquoi{\verb|super()| permet d'acceder à l'attribut/méthode à droite du ``.'' pour la classe mère de l'objet, ici \verb|Dice|.}
+}
+
+
+% ### Question ###################################
+\section{}
+
+\chapeau{On considère le diagramme UML de la figure~\ref{fig:student_uml}}
+
+\vbox{%
+\subsection{}
+\difficulte{3}
+
+\enonce{Liens entre les trois classes~:
+}
+
+\cprotect\possibilites{
+% ### begin random response
+    \correct la classe \verb|Student| hérite de la classe \verb|Person|  et il y a une relation d’association (une agrégation ou une  composition) entre la classe \verb|Group| et la classe \verb|Student| 
+    \leurre la classe \verb|Student| hérite de la classe \verb|Person| et la classe \verb|Group| hérite de la classe \verb|Student|
+    \leurre il y a une relation d’association entre la classe \verb|Person| et la classe \verb|Student| (une agrégation ou une composition) et la classe \verb|Group| hérite de la classe \verb|Student|
+% ### end random response         
+}
+}
+
+\vbox{%
+\subsection{}
+\difficulte{2}
+
+\cprotect\enonce{pour une instance de la classe \verb|Student|
+}
+
+\cprotect\possibilites{
+% ### begin random response
+    \correct l'\verb|id| est uniquement décrite par son \verb|name| et son \verb|firstname|
+    \leurre l'\verb|id| est uniquement décrite par son \verb|ine_number|
+    \leurre l'\verb|id| est uniquement décrite par son \verb|ine_number|, son \verb|name| et son \verb|firstname|
+% ### end random response     
+}
+
+\cprotect\pourquoi{\verb|id| est privée et uniquement défini dans la classe \verb|Person|, elle ne peut donc a priori pas être modifiée dans \verb|Student|}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+\difficulte{1}
+
+\cprotect\enonce{Le nom \verb|saved_state| de la  classe \verb|Store| du diagramme de la figure~\ref{fig:store_uml} est :
+}
+
+\cprotect\possibilites{
+% ### begin random response
+    \leurre  une méthode 
+    \leurre  une fonction
+    \correct  un attribut
+% ### end random response    
+}
+}
+
+
+% ### Question ###################################
+\section{}
+
+\cprotect\chapeau{La figure~\ref{fig:observer_uml} montre le diagramme UML du design pattern {\em Observer}. Les objets de la classe \verb|Observer| s'inscrivent à un sujet (via la méthode \verb|add|) pour être prévenus de chaque changement d'état (via la méthode \verb|notify|). Tous les codes demandés sont à écrire en python.}
+
+
+\vbox{%
+\subsection{}
+\difficulte{1}
+
+\cprotect\enonce{Quel est la fonction de ce couple de classe ?
+}
+
+\possibilites{
+% ### begin random response
+    \leurre permet aux objets observant un sujet de le modifier à tout moment
+    \leurre permet au sujet de modifier les objets qui l'observent 
+    \correct permet aux objets observant un sujet d'être informé des changements d'un sujet par celui-ci
+% ### end random response    
+}
+}
+
+\vbox{%
+\subsection{}
+\difficulte{2}
+
+\cprotect\enonce{Un design pattern est un assemblage de classes permettant de résoudre un problème courant en programmation. Proposez un cas d'utilisation du design pattern {\em Observer} (dans le cadre d'une interface graphique par exemple).
+}
+
+\texte[4cm]
+
+\cprotect\pourquoi{
+\begin{verbatim}
+Mise à jour en direct de documents
+\end{verbatim}
+}
+}
+
+\vbox{%
+\subsection{}
+\difficulte{2}
+
+\cprotect\enonce{Ecrivez la méthode \verb|add| de la classe \verb|Subject|, qui ajoute l'objet passé en paramètre à la liste des éléments observant le sujet.
+}
+\texte[3cm]
+
+\cprotect\pourquoi{
+\begin{verbatim}
+def add(self, observer):
+    self.oberver_list.append(observer)
+\end{verbatim}
+}
+}
+
+\vbox{%
+\subsection{}
+\difficulte{3}
+
+\cprotect\enonce{Ecrivez la méthode update de la classe \verb|Observer| qui place dans \verb|subject_state| l'état courant d'objet subject de la classe \verb|Subject| passé en paramètre.
+}
+
+\texte[3cm]
+\cprotect\pourquoi{
+\begin{verbatim}
+def update(self, subject):
+    self.subject_update = subject.get_state()
+\end{verbatim}
+}
+
+}
+
+
+\vbox{%
+\subsection{}
+\difficulte{4}
+
+\cprotect\enonce{Ecrivez la méthode \verb|notify| de \verb|Subject| qui permet la mise à jour des éléments observant le \verb|Subject|
+}
+\texte[3cm]
+\cprotect\pourquoi{
+\begin{verbatim}
+def notify(self):
+    for observer in self.observer_list:
+        observer.update(self)
+\end{verbatim}
+}
+
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+\difficulte{1}
+
+\cprotect\enonce{Quand fait-on un appel à une méthode \verb|__init__| ?
+
+}
+\possibilites{
+% ### begin random response
+    \leurre lors de la création d'une classe
+    \leurre lors de la création d'un attribut
+    \correct lors de la création d'une instance de la classe
+% ### end random response    
+}
+}
+
+% ### Question ###################################
+\vbox{%
+\section{}
+\difficulte{2}
+
+\enonce{Donnez le diagramme UML d’une classe {\em A} ayant les propriétés suivantes :
+\begin{itemize}
+    \item un attribut $att_1$, de type réel, dont l’accès est protégé et qui a comme valeur initiale $3.14$. 
+    \item un attribut $att_2$, librement accessible qui est une série de chaînes de caractères. 
+    \item une méthode $delta$ de visibilité protégée qui utilise un entier $n$ (non modifié), un objet 
+$O$ de la classe {\em B} qu’elle modifie, et qui retourne une valeur booléenne. On ne représentera pas la classe {\em B} sur le diagramme. 
+
+\end{itemize} 
+
+}
+\texte[5cm]
+\cprotect\pourquoi{
+    TBD
+}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+\difficulte{3}
+
+\enonce{Sur un ordinateur, les fichiers sont organisés en {\it répertoires}. Un répertoire est {\it quelque chose} qui contient des fichiers (élémentaires) ou d'autres répertoires.
+Représenter la notion de répertoire par un diagramme UML.
+}
+\texte[5cm]
+
+\cprotect\pourquoi{
+    TBD
+}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+\difficulte{4}
+
+\cprotect\enonce{Si \verb|C| est une classe, donnez la différence entre \verb|c = C| et \verb|c = C()|
+}
+\texte[4cm]
+\pourquoi{La première affectation affecte la classe à une variable, la seconde le résultat de l'``exécution'' de la classe, c'est à dire un objet.
+}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+\difficulte{2}
+
+\cprotect\enonce{Complétez la classe \verb|Student| de la figure~\ref{fig:student_uml} pour que l'on puisse connaitre et modifier la dernière note d'informatique d'un étudiant.
+}
+\texte[4cm]
+
+\pourquoi{on peut soit mettre uniquement un attribut public, soit mettre un setter/getter plus un attribut privé}
+
+}
+
+% ### Question ###################################
+\section{}
+\vbox{%
+\subsection{}
+\difficulte{3}
+
+\cprotect\enonce{Proposez le diagramme UML d'une classe \verb|Conversion| dont l'initialisation prend 3 paramètres :
+\begin{itemize}
+    \item la monnaie à convertir,
+    \item la monnaie dans laquelle convertir,
+    \item un réel représentant le taux de conversion (1 unité de la monnaie à convertir correspond à {\em taux}
+unité de la devise dans laquelle convertir).
+\end{itemize}
+Cette classe doit avoir une méthode permettant de connaître le nombre d'unité de la monnaie dans laquelle convertir à partir d'un nombre d'unité de la monnaie à convertir.
+
+}
+\texte[5cm]
+
+\cprotect\pourquoi{
+    TBD
+}
+}
+
+\vbox{%
+\subsection{}
+\difficulte{4}
+
+\enonce{Implémentez la classe en python
+}
+\texte[5cm]
+
+\cprotect\pourquoi{
+    TBD
+}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+\difficulte{4}
+
+\enonce{A quoi pourrait bien servir le design pattern de la figure~\ref{fig:strategy_uml}~?
+}
+\texte[5cm]
+
+\pourquoi{C'est le pattern strategy. Plusieurs implémentation d'un même problème (algorithme de tris différent par exemple).}
+}
+
+
+% ### Question ###################################
+\vbox{%
+\section{}
+\difficulte{2}
+
+\enonce{On considère une classe Point permettant de créer des points du plan à partir de leurs deux coordonnées : x et y. cette classe contient une méthode add() réalisant l’addition de ces deux points. Comment doit-on décrire cette méthode en UML?
+}
+
+\possibilites{
+% ### begin random response
+    \leurre {\texttt add(self, point : Point): Point}
+    \correct {\texttt add(point: Point): Point}
+    \leurre {\texttt add(x : double, y: double): Point}
+% ### end random response
+}
+
+}
+
+
+% ### fin questions random ###################################
+
+% ################################### DERNIERE QUESTION ###################################
+
+% \vbox{%
+% \section{}
+%
+% \difficulte{0}
+%
+% \enonce{
+% Que signifie le sigle MCO pour vous ?}
+%
+% \possibilites{
+%     \correct Mouloudia Club Oranais
+%     \correct Maintien en Condition Opérationnelle
+%     \correct Menuiserie de la Côte Ouest
+%     \leurre Autre chose que j'explicite dans le texte
+% }
+% \texte[1.5cm]
+% \pourquoi{Les trois explications sont autentiques.}
+% }
+
+
+\newpage
+\section*{Annexes}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=.6]{uml_store_state.png}        
+
+    \cprotect\caption{Le diagramme UML des classes \verb|Store| et \verb|StateObject|.\label{fig:store_uml}}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=.6]{uml_student.png}        
+
+    \cprotect\caption{Le diagramme UML des classes \verb|Person|, \verb|Student| et \verb|Group|.\label{fig:student_uml}}
+\end{figure}
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=.6]{uml_observer.png}        
+
+    \cprotect\caption{Le diagramme UML des classes \verb|Subject| et \verb|Observer|.\label{fig:observer_uml}}
+\end{figure}
+
+
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=.6]{uml_strategy.png}        
+
+    \cprotect\caption{Un design pattern bien utile.\label{fig:strategy_uml}}
+\end{figure}
+\end{document}

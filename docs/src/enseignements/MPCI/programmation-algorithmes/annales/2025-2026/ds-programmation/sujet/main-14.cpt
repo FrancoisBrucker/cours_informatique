@@ -1,0 +1,10 @@
+
+En python, pour la classe définie telle que :
+\begin{verbatim}
+class DiceStat(Dice):
+    def __init__(self, value=1):
+        super().__init__(value)
+        self.stat = dict()
+\end{verbatim}
+La ligne commençant par \verb|super| signifie :
+^^E^^L 

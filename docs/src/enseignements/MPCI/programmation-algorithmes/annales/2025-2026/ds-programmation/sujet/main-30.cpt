@@ -1,0 +1,6 @@
+
+\begin{verbatim}
+def update(self, subject):
+    self.subject_update = subject.get_state()
+\end{verbatim}
+^^E^^L 

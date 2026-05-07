@@ -1,0 +1,7 @@
+
+% ### begin random response
+    \leurre un appel à la méthode \verb|__init__| pour un objet de type super
+    \leurre un appel récursif à la méthode \verb|__init__| que l'on est entrain de définir
+    \correct un appel à la méthode \verb|__init__| de la classe \verb|Dice|
+% ### end random response
+^^E^^L 

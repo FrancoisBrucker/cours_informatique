@@ -1,0 +1,1 @@
+La figure~\ref{fig:observer_uml} montre le diagramme UML du design pattern {\em Observer}. Les objets de la classe \verb|Observer| s'inscrivent à un sujet (via la méthode \verb|add|) pour être prévenus de chaque changement d'état (via la méthode \verb|notify|). Tous les codes demandés sont à écrire en python.^^E^^L 

@@ -1,0 +1,7 @@
+
+En python, pour la méthode définie telle que :
+\begin{verbatim}
+def ma_methode(self, param=0):
+    # corps de la methode
+\end{verbatim}
+^^E^^L 

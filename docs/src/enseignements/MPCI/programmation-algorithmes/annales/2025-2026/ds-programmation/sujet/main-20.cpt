@@ -1,0 +1,1 @@
+\verb|id| est privée et uniquement défini dans la classe \verb|Person|, elle ne peut donc a priori pas être modifiée dans \verb|Student|^^E^^L 

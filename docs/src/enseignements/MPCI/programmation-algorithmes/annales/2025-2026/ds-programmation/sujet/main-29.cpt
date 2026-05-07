@@ -1,0 +1,2 @@
+Ecrivez la méthode update de la classe \verb|Observer| qui place dans \verb|subject_state| l'état courant d'objet subject de la classe \verb|Subject| passé en paramètre.
+^^E^^L 

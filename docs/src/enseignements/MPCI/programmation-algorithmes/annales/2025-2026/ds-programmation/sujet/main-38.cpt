@@ -1,0 +1,10 @@
+Proposez le diagramme UML d'une classe \verb|Conversion| dont l'initialisation prend 3 paramètres :
+\begin{itemize}
+    \item la monnaie à convertir,
+    \item la monnaie dans laquelle convertir,
+    \item un réel représentant le taux de conversion (1 unité de la monnaie à convertir correspond à {\em taux}
+unité de la devise dans laquelle convertir).
+\end{itemize}
+Cette classe doit avoir une méthode permettant de connaître le nombre d'unité de la monnaie dans laquelle convertir à partir d'un nombre d'unité de la monnaie à convertir.
+
+^^E^^L 

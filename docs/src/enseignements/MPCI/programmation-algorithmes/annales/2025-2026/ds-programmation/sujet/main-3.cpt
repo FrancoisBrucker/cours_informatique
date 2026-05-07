@@ -1,0 +1,1 @@
+ C'est une agrégation car l'objet de type \verb|StateObject| dans \verb|Store| est importé à l'init il n'est pas créé par \verb|Store|^^E^^L 

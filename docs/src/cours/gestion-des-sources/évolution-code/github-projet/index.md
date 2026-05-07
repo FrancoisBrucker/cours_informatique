@@ -9,6 +9,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+<!-- TBD 
+
+Refaire : les logs pas clair ?
+mettre du copier/coller des fichiers textes pour que ça aille plus  vite -->
+
+
 On va utiliser l'interface de github pour mettre en œuvre les principales fonctionnalités d'un système de gestion des sources :
 
 - faire des commit

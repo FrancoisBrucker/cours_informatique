@@ -1,0 +1,6 @@
+
+\begin{verbatim}
+def add(self, observer):
+    self.oberver_list.append(observer)
+\end{verbatim}
+^^E^^L 

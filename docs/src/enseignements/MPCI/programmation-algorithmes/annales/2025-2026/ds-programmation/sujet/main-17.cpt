@@ -1,0 +1,7 @@
+
+% ### begin random response
+    \correct la classe \verb|Student| hérite de la classe \verb|Person|  et il y a une relation d’association (une agrégation ou une  composition) entre la classe \verb|Group| et la classe \verb|Student|
+    \leurre la classe \verb|Student| hérite de la classe \verb|Person| et la classe \verb|Group| hérite de la classe \verb|Student|
+    \leurre il y a une relation d’association entre la classe \verb|Person| et la classe \verb|Student| (une agrégation ou une composition) et la classe \verb|Group| hérite de la classe \verb|Student|
+% ### end random response
+^^E^^L 

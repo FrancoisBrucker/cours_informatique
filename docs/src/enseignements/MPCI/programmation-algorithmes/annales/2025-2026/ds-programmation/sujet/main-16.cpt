@@ -1,0 +1,1 @@
+\verb|super()| permet d'acceder à l'attribut/méthode à droite du ``.'' pour la classe mère de l'objet, ici \verb|Dice|.^^E^^L 

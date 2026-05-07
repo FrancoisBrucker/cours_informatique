@@ -1,0 +1,7 @@
+
+% ### begin random response
+    \leurre Une dépendance de \verb|StateObject| pour \verb|Store|
+    \leurre Une dépendance mutuelle des deux classes
+    \correct Une dépendance de \verb|Store| pour \verb|StateObject|
+% ### end random response
+^^E^^L 
