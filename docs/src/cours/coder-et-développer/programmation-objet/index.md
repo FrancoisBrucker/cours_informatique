@@ -31,6 +31,11 @@ Faire 1h de cours et 3h de code :
 - 1h TD avec dés
 - 2h TP avec carte.
 
+Dans UML :
+
+- parler de protégé / public : en python parler des _ pour protéger
+- parler des autres diagbramme UML
+
 -->
 
 

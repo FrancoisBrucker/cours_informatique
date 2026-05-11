@@ -1,3 +1,17 @@
 
-    TBD
+    \begin{itemize}
+        \item Nom : A
+        \item Attributs :
+            \begin{itemize}
+                \item[-] \verb|attr1: float = 3.14|
+                \item[+] \verb|attr2: [str]|
+            \end{itemize}
+        \item Méthodes :
+            \begin{itemize}
+                \item[-] \verb|delta(n: entier, o: B): booléen|
+            \end{itemize}
+    \end{itemize}
+
+
+    On met toujours le type s'il est précisé dans l'énoncé. On  utilisé ici la nomenclature UML qui mets un \verb|-| devant les attributs/méthodes protégés et un \verb|+| s'ils sont publics.
 ^^E^^L 

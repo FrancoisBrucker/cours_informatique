@@ -1,3 +1,12 @@
 
-    TBD
+    \begin{lstlisting}[language=Python]
+        class Conversion:
+            def __init__(self, source, destination, taux):
+                self.source = source
+                self.destination = destination
+                self.taux = taux
+
+            def convertir(self, nombre):
+                return nombre * self.taux
+    \end{lstlisting}
 ^^E^^L 

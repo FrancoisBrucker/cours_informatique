@@ -5,6 +5,8 @@
 \usepackage{tabularx}
 \usepackage{calc}
 \usepackage{cprotect}
+\usepackage{hyperref}
+\usepackage{listings}
 
 \usepackage{xcolor}
 
@@ -106,7 +108,7 @@ Cochez l'unique bonne réponse~:
 
 
 \noindent
-\textcolor{red}{Élement de solution~:}
+\textcolor{red}{Élément de solution~:}
 \vspace*{.5\baselineskip}
 
 \noindent
@@ -309,25 +311,25 @@ Il est représenté par~:
 On utilise les deux classes de la figure~\ref{fig:store_uml}. Trois Propositions de code sont données~:
 \begin{enumerate}
     \item \begin{minipage}{5cm}
-        \begin{verbatim}
+        \begin{lstlisting}[language=Python]
             state = StateObject()
             state.set_state(1)
             store = Store(state)
             store.saved_state = state.get_state()
-        \end{verbatim}
+        \end{lstlisting}
     \end{minipage}
     \item \begin{minipage}{5cm}
-            \begin{verbatim}
+            \begin{lstlisting}[language=Python]
                 state = StateObject()
                 state.set_state(1)
                 store = Store(state)
-            \end{verbatim}
+            \end{lstlisting}
         \end{minipage}
     \item \begin{minipage}{5cm}
-            \begin{verbatim}
+            \begin{lstlisting}[language=Python]
                 state = StateObject(1)
                 store = Store(state)
-            \end{verbatim}
+            \end{lstlisting}
         \end{minipage}        
 \end{enumerate}
 }
@@ -408,12 +410,11 @@ En UML, la description d'une méthode sans paramètre doit posséder des parenth
 
 \cprotect\enonce{
 En python, pour la méthode définie telle que : 
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def ma_methode(self, param=0):
-    # corps de la methode    
-\end{verbatim}
+    # corps de la methode
+\end{lstlisting}
 }
-
 \cprotect\possibilites{
 % ### begin random response    
     \correct la valeur par défaut de \verb|param| est 0
@@ -432,11 +433,11 @@ def ma_methode(self, param=0):
 
 \cprotect\enonce{
 En python, pour la classe définie telle que : 
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 class GreenCarpet:
     def __init__(self):
         self.dices = tuple(Dice() for i in range(5))
-\end{verbatim}
+\end{lstlisting}
 La relation en \verb|GreenCarpet| et \verb|Dice| est :
 }
 
@@ -461,12 +462,12 @@ La relation en \verb|GreenCarpet| et \verb|Dice| est :
 
 \cprotect\enonce{
 En python, pour la classe définie telle que : 
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 class DiceStat(Dice):
     def __init__(self, value=1):
         super().__init__(value)
         self.stat = dict()
-\end{verbatim}
+\end{lstlisting}
 La ligne commençant par \verb|super| signifie :
 }
 
@@ -572,9 +573,8 @@ La ligne commençant par \verb|super| signifie :
 \texte[4cm]
 
 \cprotect\pourquoi{
-\begin{verbatim}
-Mise à jour en direct de documents
-\end{verbatim}
+
+Mise à jour en direct de documents. Voir \url{https://refactoring.guru/fr/design-patterns/observer}
 }
 }
 
@@ -587,10 +587,10 @@ Mise à jour en direct de documents
 \texte[3cm]
 
 \cprotect\pourquoi{
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def add(self, observer):
     self.oberver_list.append(observer)
-\end{verbatim}
+\end{lstlisting}
 }
 }
 
@@ -603,10 +603,10 @@ def add(self, observer):
 
 \texte[3cm]
 \cprotect\pourquoi{
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def update(self, subject):
     self.subject_update = subject.get_state()
-\end{verbatim}
+\end{lstlisting}
 }
 
 }
@@ -620,11 +620,11 @@ def update(self, subject):
 }
 \texte[3cm]
 \cprotect\pourquoi{
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def notify(self):
     for observer in self.observer_list:
         observer.update(self)
-\end{verbatim}
+\end{lstlisting}
 }
 
 }
@@ -664,10 +664,23 @@ $O$ de la classe {\em B} qu’elle modifie, et qui retourne une valeur booléenn
 }
 \texte[5cm]
 \cprotect\pourquoi{
-    TBD
-}
-}
+    \begin{itemize}
+        \item Nom : A 
+        \item Attributs :
+            \begin{itemize}
+                \item[-] \verb|attr1: float = 3.14|
+                \item[+] \verb|attr2: [str]|
+            \end{itemize}
+        \item Méthodes :
+            \begin{itemize}
+                \item[-] \verb|delta(n: entier, o: B): booléen|
+            \end{itemize}
+    \end{itemize}
 
+
+    On met toujours le type s'il est précisé dans l'énoncé. On  utilisé ici la nomenclature UML qui mets un \verb|-| devant les attributs/méthodes protégés et un \verb|+| s'ils sont publics.
+}
+}
 
 % ### Question ###################################
 \vbox{%
@@ -680,7 +693,11 @@ Représenter la notion de répertoire par un diagramme UML.
 \texte[5cm]
 
 \cprotect\pourquoi{
-    TBD
+    L'énoncé ne demande pas grand chose juste qu'un répertoire contienne une liste de fichiers ou de répertoires. Il faut donc :
+    \begin{itemize}
+        \item créer une classe \verb|Élément| qui sera la classe mère des classes \verb|Répertoire| et \verb|Fichier|
+        \item mettre un attribut contenu de type \verb|[Élément]| dans la classe répertoire.
+    \end{itemize}
 }
 }
 
@@ -707,7 +724,7 @@ Représenter la notion de répertoire par un diagramme UML.
 }
 \texte[4cm]
 
-\pourquoi{on peut soit mettre uniquement un attribut public, soit mettre un setter/getter plus un attribut privé}
+\pourquoi{On peut soit mettre uniquement un attribut public, soit mettre un setter/getter plus un attribut privé}
 
 }
 
@@ -730,7 +747,20 @@ Cette classe doit avoir une méthode permettant de connaître le nombre d'unité
 \texte[5cm]
 
 \cprotect\pourquoi{
-    TBD
+    \begin{itemize}
+        \item Nom : Conversion 
+        \item Attributs :
+            \begin{itemize}
+                \item[+] \verb|source: str|
+                \item[+] \verb|destination: str|
+                \item[+] \verb|taux: réel|
+            \end{itemize}
+        \item Méthodes :
+            \begin{itemize}
+                \item[+] \verb|Conversion(source: str, destination: str, taux: réel)|
+                \item[+] \verb|convertir(nombre: réel): réel|
+            \end{itemize}
+    \end{itemize}
 }
 }
 
@@ -743,7 +773,16 @@ Cette classe doit avoir une méthode permettant de connaître le nombre d'unité
 \texte[5cm]
 
 \cprotect\pourquoi{
-    TBD
+    \begin{lstlisting}[language=Python]
+        class Conversion:
+            def __init__(self, source, destination, taux):
+                self.source = source
+                self.destination = destination
+                self.taux = taux
+            
+            def convertir(self, nombre):
+                return nombre * self.taux
+    \end{lstlisting}
 }
 }
 
@@ -757,7 +796,9 @@ Cette classe doit avoir une méthode permettant de connaître le nombre d'unité
 }
 \texte[5cm]
 
-\pourquoi{C'est le pattern strategy. Plusieurs implémentation d'un même problème (algorithme de tris différent par exemple).}
+\pourquoi{C'est le pattern strategy. Plusieurs implémentations d'une solution à un même problème. Par exemple, on implémentes différents algorithmes de tris que l'on utilise selon différents cas d'usage : par exemple le tri par intertion pour des tableaux presque triés et le tri rapide pour des tableau très mélangés.  
+Voir \url{https://refactoring.guru/fr/design-patterns/strategy}.
+}
 }
 
 

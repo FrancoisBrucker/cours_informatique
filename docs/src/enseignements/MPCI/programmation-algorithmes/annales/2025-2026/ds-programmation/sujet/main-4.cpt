@@ -2,25 +2,25 @@
 On utilise les deux classes de la figure~\ref{fig:store_uml}. Trois Propositions de code sont données~:
 \begin{enumerate}
     \item \begin{minipage}{5cm}
-        \begin{verbatim}
+        \begin{lstlisting}[language=Python]
             state = StateObject()
             state.set_state(1)
             store = Store(state)
             store.saved_state = state.get_state()
-        \end{verbatim}
+        \end{lstlisting}
     \end{minipage}
     \item \begin{minipage}{5cm}
-            \begin{verbatim}
+            \begin{lstlisting}[language=Python]
                 state = StateObject()
                 state.set_state(1)
                 store = Store(state)
-            \end{verbatim}
+            \end{lstlisting}
         \end{minipage}
     \item \begin{minipage}{5cm}
-            \begin{verbatim}
+            \begin{lstlisting}[language=Python]
                 state = StateObject(1)
                 store = Store(state)
-            \end{verbatim}
+            \end{lstlisting}
         \end{minipage}
 \end{enumerate}
 ^^E^^L 

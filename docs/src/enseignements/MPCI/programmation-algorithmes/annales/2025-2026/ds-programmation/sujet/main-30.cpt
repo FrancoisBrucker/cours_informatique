@@ -1,6 +1,6 @@
 
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def update(self, subject):
     self.subject_update = subject.get_state()
-\end{verbatim}
+\end{lstlisting}
 ^^E^^L 

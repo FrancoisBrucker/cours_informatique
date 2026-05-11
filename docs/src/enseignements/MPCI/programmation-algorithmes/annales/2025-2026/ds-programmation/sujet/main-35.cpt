@@ -1,3 +1,7 @@
 
-    TBD
+    L'énoncé ne demande pas grand chose juste qu'un répertoire contienne une liste de fichiers ou de répertoires. Il faut donc :
+    \begin{itemize}
+        \item créer une classe \verb|Élément| qui sera la classe mère des classes \verb|Répertoire| et \verb|Fichier|
+        \item mettre un attribut contenu de type \verb|[Élément]| dans la classe répertoire.
+    \end{itemize}
 ^^E^^L 

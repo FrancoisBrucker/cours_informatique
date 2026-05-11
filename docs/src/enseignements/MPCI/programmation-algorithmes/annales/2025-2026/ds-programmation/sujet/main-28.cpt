@@ -1,6 +1,6 @@
 
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def add(self, observer):
     self.oberver_list.append(observer)
-\end{verbatim}
+\end{lstlisting}
 ^^E^^L 

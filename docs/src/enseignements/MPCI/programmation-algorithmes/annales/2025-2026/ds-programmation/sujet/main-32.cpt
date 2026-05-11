@@ -1,7 +1,7 @@
 
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def notify(self):
     for observer in self.observer_list:
         observer.update(self)
-\end{verbatim}
+\end{lstlisting}
 ^^E^^L 

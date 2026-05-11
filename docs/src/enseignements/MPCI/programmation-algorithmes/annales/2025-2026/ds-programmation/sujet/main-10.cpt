@@ -1,7 +1,7 @@
 
 En python, pour la méthode définie telle que :
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 def ma_methode(self, param=0):
     # corps de la methode
-\end{verbatim}
+\end{lstlisting}
 ^^E^^L 

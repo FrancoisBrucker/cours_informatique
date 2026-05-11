@@ -1,9 +1,9 @@
 
 En python, pour la classe définie telle que :
-\begin{verbatim}
+\begin{lstlisting}[language=Python]
 class GreenCarpet:
     def __init__(self):
         self.dices = tuple(Dice() for i in range(5))
-\end{verbatim}
+\end{lstlisting}
 La relation en \verb|GreenCarpet| et \verb|Dice| est :
 ^^E^^L 

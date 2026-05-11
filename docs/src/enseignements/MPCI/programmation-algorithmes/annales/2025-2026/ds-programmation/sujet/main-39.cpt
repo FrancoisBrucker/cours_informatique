@@ -1,3 +1,16 @@
 
-    TBD
+    \begin{itemize}
+        \item Nom : Conversion
+        \item Attributs :
+            \begin{itemize}
+                \item[+] \verb|source: str|
+                \item[+] \verb|destination: str|
+                \item[+] \verb|taux: réel|
+            \end{itemize}
+        \item Méthodes :
+            \begin{itemize}
+                \item[+] \verb|Conversion(source: str, destination: str, taux: réel)|
+                \item[+] \verb|convertir(nombre: réel): réel|
+            \end{itemize}
+    \end{itemize}
 ^^E^^L 
