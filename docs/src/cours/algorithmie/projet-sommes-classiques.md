@@ -141,7 +141,7 @@ Montrez que :
 
 <div>
 $$
-S'_n = \sum_{i=1}^{n}i\cdot r^i = \frac{r^{n+1}(n(r-1) - 1) + r}{(1-r)^2}
+S'_n = \sum_{i=1}^{n}i\cdot r^i = \frac{r^{n+1}}{n+2} \cdot \frac{r + (1+1/n)/(1+2/n)}{(1-r)^2} + \frac{r}{(1-r)^2}
 $$
 </div>
 
@@ -151,18 +151,28 @@ Vous pourrez utiliser le polynôme $P(x) = \sum_{i=1}^nx^i$ et le dériver.
 {% endinfo %}
 {% details "corrigé" %}
 
-On a : $S'_n = rP'(r)$ et donc e n utilisant la formule de l'exercice précédent :
+On a : $S'_n = rP'(r)$ et donc e n utilisant [la formule explicite de $P(x) = \frac{1-x^{n+1}}{1-x}$](./#problème-r^i){.interne}, on a :
 
 <div>
 $$
 \begin{array}{lcl}
-S'_n &=& r\cdot \frac{-(n+1)r^n(1-r)+(1-r^{n+1})}{(1-r)^2}\\
-&=& r\cdot \frac{r^{n}((n+1)(r-1) -r^{n+1} + 1) + r}{(1-r)^2}\\
-&=& r\cdot \frac{r^{n}((n+1)(r-1)-r) + 1}{(1-r)^2}\\
-&=& \frac{r^{n+1}(n(r-1)-1) + r}{(1-r)^2}\\
+P'(x) &=& \frac{-(n+1)r^n(1-r)-(1-r^{n+1})}{(1-r)^2}\\
+&=& \frac{(n+2)\cdot r^{n+1} + (n+1)\cdot r^{n} + 1}{(1-r)^2}\\
 \end{array}
 $$
 </div>
+
+Et donc :
+ 
+<div>
+$$
+\begin{array}{lcl}
+S'_n &=& r\cdot \frac{(n+2)\cdot r^{n+1} + (n+1)\cdot r^{n} + 1}{(1-r)^2}\\
+\end{array}
+$$
+</div>
+
+Ce qui mène au résultat attendu.
 
 {% enddetails %}
 
@@ -178,7 +188,11 @@ S'_n = \begin{cases}
 $$
 </div>
 {% endexercice %}
+{% details "corrigé" %}
 
+Clair car $\frac{r^{n+1}}{n+2}$ tend vers 0 lorsque $n$ tend vers l'infini si $r < 1$
+
+{% enddetails %}
 Et pour le cas souvent intéressant en complexité :
 
 <div id="problème-i/2^i"></div>
