@@ -268,7 +268,7 @@ def fact(n):
     P = []
     P.append((n, None, 1))
     while len(P):
-        n, r1, pos = = P.pop()
+        n, r1, pos = P.pop()
 
         if pos == 1:
             if n < 1:
@@ -421,7 +421,7 @@ Simplifiez le code précédent.
 ```pseudocode
 algorithme fibo(n):
     P ← Pile<(entier, entier, entier)> {capacité: 2^n }  # n, r', pos
-    P.empile((n, ∅, ∅, 1))
+    P.empile((n, ∅, 1))
     tant que P.longueur > 0:
         n, r', pos ← P.dépile()
 
