@@ -355,6 +355,12 @@ On utilisera une structure de donnée plutôt que'une autre selon l'usage que l'
 [Comparaisons des complexités des structures](./structures-complexité){.interne}
 {% endaller %}
 
+<!-- ### On vérifie qu-on a compris
+
+- et 2025-2026 + exo listes etc. 
+- 
+-->
+
 ### Intermède : le problème de l'enveloppe convexe
 
 <!-- Vous en savez maintenant assez pour comprendre et aimer les algorithmes. Nous allons montrer plusieurs exemples de problèmes et d'algorithmes plus intéressant et complexes. -->

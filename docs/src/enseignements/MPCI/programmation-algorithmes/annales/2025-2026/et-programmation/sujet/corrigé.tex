@@ -1,0 +1,637 @@
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{listingsutf8}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\lstset{%
+    language=Python,
+    inputencoding=utf8,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries,
+    showstringspaces=false,
+    backgroundcolor=\color{gray!10},
+    literate=
+        {é}{{\'e}}{1}%
+        {è}{{\`e}}{1}%
+        {à}{{\`a}}{1}%
+        {â}{{\^a}}{1}%
+        {ç}{{\c{c}}}{1}%
+        {œ}{{\oe}}{1}%
+        {ù}{{\`u}}{1}%
+        {É}{{\'E}}{1}%
+        {È}{{\`E}}{1}%
+        {À}{{\`A}}{1}%
+        {Ç}{{\c{C}}}{1}%
+        {Œ}{{\OE}}{1}%
+        {Ê}{{\^E}}{1}%
+        {ê}{{\^e}}{1}%
+        {î}{{\^i}}{1}%
+        {ï}{{\"i}}{1}%
+        {ô}{{\^o}}{1}%
+        {û}{{\^u}}{1}%
+}
+\usepackage{fullpage}
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{amsthm}
+
+\newtheoremstyle{exostyle}
+{10pt}{10pt}{}{}
+{\scshape\bfseries\large}
+{\hfill\vspace{5pt}\newline}{0pt}
+{\hfill\thmname{#1}\thmnumber{ #2} -- \thmnote{ #3}}
+
+\newtheoremstyle{partiestyle}
+{1em}{1em}{}{}{\bfseries}
+{\vspace{.5em}\newline}{0em}
+{\thmnumber{#2} \thmnote{ #3}}
+
+\newtheoremstyle{questionstyle}
+{.5em}{.5em}{}{}{\bfseries}
+{}{0em}{Question \thmnumber{#2 }}
+
+\theoremstyle{exostyle}
+\newtheorem{exo}{Exercice}
+
+\theoremstyle{partiestyle}
+\newtheorem{partie}{}[exo]
+
+\theoremstyle{questionstyle}
+\newtheorem{questionpartie}{Question}[partie]
+
+\newenvironment{reponse}{%
+    \par\smallskip\noindent\textbf{Réponse.}\enspace\ignorespaces
+}{%
+    \par\smallskip
+}
+
+\usepackage{booktabs}
+\usepackage{array}
+
+\title{Corrigé -- Examen terminal: Programmation}
+\author{L1 MPCI}
+\date{28 mai 2026}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+\section*{Barème (total : 20 points)}
+
+\begin{center}
+\begin{tabular}{llr}
+\toprule
+\textbf{Question} & \textbf{Contenu} & \textbf{Points} \\
+\midrule
+\multicolumn{2}{l}{\textit{Exercice 1 — Programmation orientée objet}} & \textbf{8,5} \\
+\midrule
+1.1.1 & Attributs d'instance (liste + types) & 0,5 \\
+1.1.2 & Encapsulation (\texttt{\_}) + méthode \texttt{est\_disponible} & 0,5 \\
+1.1.3 & Méthode \texttt{emprunter} & 0,5 \\
+1.1.4 & Méthode \texttt{\_\_str\_\_} & 0,5 \\
+1.2.1 & \texttt{ajouter} + \texttt{livres\_disponibles} & 0,5 \\
+1.2.2 & \texttt{chercher} + \texttt{emprunter} (Bibliothèque) & 1,5 \\
+1.3.1 & Définition de l'héritage & 0,5 \\
+1.3.2 & Classe \texttt{LivreNumérique} + \texttt{super()} & 0,5 \\
+1.3.3 & Surcharge \texttt{emprunter} & 0,5 \\
+1.3.4 & Surcharge \texttt{\_\_str\_\_} & 0,5 \\
+1.3.5 & Polymorphisme (justification) & 1 \\
+1.4.1 & Boîte UML de \texttt{Livre} & 0,5 \\
+1.4.2 & \texttt{LivreNumérique} + flèche d'héritage & 0,5 \\
+1.4.3 & \texttt{Bibliothèque} + relation avec \texttt{Livre} + multiplicité & 0,5 \\
+\midrule
+\multicolumn{2}{l}{\textit{Exercice 2 — Séparation des responsabilités}} & \textbf{9,5} \\
+\midrule
+2.1.1 & Classification M/V/C des 6 éléments (0,5 pt chacun) & 3 \\
+2.1.2 & Deux inconvénients du code monolithique & 1 \\
+2.1.3 & Parties à réécrire pour une interface web & 1 \\
+2.2.1 & Différence héritage / composition + exemples & 1 \\
+2.2.2 & Constructeur de \texttt{Application} & 0,5 \\
+2.2.3 & Méthode \texttt{emprunter} dans \texttt{Application} & 0,5 \\
+2.3.1 & Diagramme UML \texttt{Application}/\texttt{Bibliothèque} + nature de la relation & 1,5 \\
+2.3.2 & Créer vs recevoir les dépendances (composition vs association) & 1 \\
+\midrule
+\multicolumn{2}{l}{\textit{Exercice 3 — Implémentation du design pattern MVC}} & \textbf{8} \\
+\midrule
+3.1.1 & \texttt{VueTerminal} : 3 méthodes (0,5 pt chacune) & 1,5 \\
+3.2.1 & \texttt{Contrôleur} : \texttt{\_\_init\_\_}, \texttt{afficher\_disponibles}, \texttt{emprunter} & 2 \\
+3.2.2 & \texttt{Contrôleur.lancer} & 1 \\
+3.3.1 & Code de lancement de l'application & 0,5 \\
+3.3.2 & Méthodes requises pour \texttt{VueGraphique} + principe de substitution & 1 \\
+3.4.1 & Diagramme UML complet MVC & 1 \\
+3.4.2 & Ajout \texttt{VueGraphique} + principe de substitution & 1 \\
+\bottomrule
+\textbf{Total} & & \textbf{26} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\clearpage
+
+% ============================================================
+\begin{exo}[Programmation orientée objet]
+
+    \begin{partie}[La classe \texttt{Livre}]
+
+        \begin{questionpartie}
+            Qu'appelle-t-on un \textit{attribut d'instance}~? Listez les attributs d'instance de la classe \texttt{Livre} et donnez leur type.
+        \end{questionpartie}
+        \begin{reponse}
+            Un attribut d'instance est une variable propre à chaque objet, créée dans \texttt{\_\_init\_\_} via \texttt{self}. Chaque instance possède sa propre copie indépendante de ces attributs. La classe \texttt{Livre} en possède trois~:
+            \begin{itemize}
+                \item \texttt{titre} : \texttt{str}
+                \item \texttt{auteur} : \texttt{str}
+                \item \texttt{\_disponible} : \texttt{bool}
+            \end{itemize}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Pourquoi l'attribut \texttt{\_disponible} est-il préfixé d'un tiret bas~? Ajoutez une méthode \texttt{est\_disponible(self) -> bool}.
+        \end{questionpartie}
+        \begin{reponse}
+            Le tiret bas indique par convention que l'attribut est \textit{protégé}~: il ne doit pas être lu ni modifié directement depuis l'extérieur de la classe. On passe par des méthodes dédiées pour respecter l'encapsulation.
+\begin{lstlisting}
+def est_disponible(self) -> bool:
+    return self._disponible
+\end{lstlisting}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Complétez \texttt{emprunter(self) -> bool}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+def emprunter(self) -> bool:
+    if self._disponible:
+        self._disponible = False
+        return True
+    return False
+\end{lstlisting}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Écrivez \texttt{\_\_str\_\_(self) -> str}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+def __str__(self) -> str:
+    etat = "disponible" if self._disponible else "emprunté"
+    return f"{self.titre} ({self.auteur}) [{etat}]"
+\end{lstlisting}
+        \end{reponse}
+
+    \end{partie}
+
+    \begin{partie}[La classe \texttt{Bibliothèque}]
+
+        \begin{questionpartie}
+            Ajoutez \texttt{ajouter} et \texttt{livres\_disponibles}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+def ajouter(self, livre: Livre):
+    self._livres.append(livre)
+
+def livres_disponibles(self) -> list:
+    return [l for l in self._livres if l.est_disponible()]
+\end{lstlisting}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Ajoutez \texttt{chercher} puis \texttt{emprunter}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+def chercher(self, titre: str):
+    for livre in self._livres:
+        if livre.titre == titre:
+            return livre
+    return None
+
+def emprunter(self, titre: str) -> bool:
+    livre = self.chercher(titre)
+    if livre is None:
+        return False
+    return livre.emprunter()
+\end{lstlisting}
+        \end{reponse}
+
+    \end{partie}
+
+    \begin{partie}[Héritage : le livre numérique]
+
+        \begin{questionpartie}
+            Qu'appelle-t-on l'héritage~?
+        \end{questionpartie}
+        \begin{reponse}
+            L'héritage permet à une classe \textit{fille} de reprendre automatiquement les attributs et méthodes d'une classe \textit{parente}. La classe fille est une spécialisation de la parente (relation \og est-un \fg{})~: tout objet de la classe fille \textit{est aussi} un objet de la classe parente. La classe fille peut ajouter de nouveaux membres ou \textit{surcharger} (redéfinir) ceux hérités.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Écrivez la classe \texttt{LivreNumérique} héritant de \texttt{Livre}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+class LivreNumérique(Livre):
+    def __init__(self, titre: str, auteur: str):
+        super().__init__(titre, auteur)
+\end{lstlisting}
+            L'appel à \texttt{super().\_\_init\_\_()} délègue l'initialisation des attributs (\texttt{titre}, \texttt{auteur}, \texttt{\_disponible}) à la classe parente.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Surchargez \texttt{emprunter} pour qu'elle retourne toujours \texttt{True}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+def emprunter(self) -> bool:
+    return True
+\end{lstlisting}
+            On ne modifie pas \texttt{\_disponible}~: un livre numérique est toujours disponible, son état ne change jamais.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Surchargez \texttt{\_\_str\_\_}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+def __str__(self) -> str:
+    return f"{self.titre} ({self.auteur}) [numérique]"
+\end{lstlisting}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Peut-on ajouter un \texttt{LivreNumérique} à une \texttt{Bibliothèque}~? Quel principe illustre ce comportement~?
+        \end{questionpartie}
+        \begin{reponse}
+            Oui. \texttt{Bibliothèque.ajouter} attend un \texttt{Livre}~; or \texttt{LivreNumérique} hérite de \texttt{Livre}, donc tout \texttt{LivreNumérique} \textit{est} un \texttt{Livre} et peut le remplacer partout. Lorsque \texttt{Bibliothèque.emprunter} appellera \texttt{livre.emprunter()}, Python exécutera la version surchargée de \texttt{LivreNumérique}, qui retourne toujours \texttt{True}. Ce mécanisme s'appelle le \textbf{polymorphisme}~: un même appel de méthode produit un comportement différent selon le type réel de l'objet.
+        \end{reponse}
+
+    \end{partie}
+
+    \begin{partie}[Modélisation UML]
+
+        \begin{questionpartie}
+            Dessinez la boîte UML de la classe \texttt{Livre}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{verbatim}
++-----------------------------------+
+|              Livre                |
++-----------------------------------+
+| - titre : str                     |
+| - auteur : str                    |
+| - _disponible : bool              |
++-----------------------------------+
+| + est_disponible() : bool         |
+| + emprunter() : bool              |
+| + __str__() : str                 |
+| + __init__(titre, auteur)         |
++-----------------------------------+
+\end{verbatim}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Ajoutez \texttt{LivreNumérique} au diagramme.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{verbatim}
++-------------------------------+
+|         LivreNumérique        |
++-------------------------------+
+|                               |
++-------------------------------+
+| + emprunter() : bool          |
+| + __str__() : str             |
++-------------------------------+
+            △  (héritage)
+            |
++-----------------------------------+
+|              Livre                |
++-----------------------------------+
+| ...                               |
++-----------------------------------+
+\end{verbatim}
+            La boîte de \texttt{LivreNumérique} ne répète pas les membres hérités~; on n'y inscrit que les méthodes surchargées. L'attribut \texttt{\_disponible} n'apparaît pas car aucun attribut nouveau n'est ajouté.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Ajoutez \texttt{Bibliothèque} au diagramme.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{verbatim}
++-------------------------------+        1..*    +-------+
+|         Bibliothèque          | ------------> | Livre |
++-------------------------------+               +-------+
+| - _livres : list              |
++-------------------------------+
+| + ajouter(livre)              |
+| + chercher(titre) : Livre     |
+| + emprunter(titre) : bool     |
+| + livres_disponibles() : list |
++-------------------------------+
+\end{verbatim}
+            La relation est une \textbf{composition}~: une \texttt{Bibliothèque} contient (et gère la durée de vie de) ses livres. La multiplicité \texttt{1..*} indique qu'une bibliothèque peut contenir un ou plusieurs livres (on peut aussi écrire \texttt{0..*} si une bibliothèque vide est admise).
+        \end{reponse}
+
+    \end{partie}
+\end{exo}
+
+% ============================================================
+\begin{exo}[Séparation des responsabilités]
+
+    \begin{partie}[Analyse]
+
+        \begin{questionpartie}
+            Classifiez les éléments \texttt{(a)} à \texttt{(f)} selon M, V ou C.
+        \end{questionpartie}
+        \begin{reponse}
+            \begin{itemize}
+                \item \texttt{(a)} \texttt{choix = input(...)} \textrightarrow{} \textbf{Vue}~: c'est une saisie utilisateur.
+                \item \texttt{(b)} \texttt{dispo = [l for l in livres if l["dispo"]]} \textrightarrow{} \textbf{Modèle}~: filtrage des données métier.
+                \item \texttt{(c)} \texttt{print(f"- \{l['titre']\}...")} \textrightarrow{} \textbf{Vue}~: affichage d'information à l'écran.
+                \item \texttt{(d)} \texttt{titre = input("Titre : ")} \textrightarrow{} \textbf{Vue}~: saisie utilisateur.
+                \item \texttt{(e)} \texttt{livre = next(...)} \textrightarrow{} \textbf{Modèle}~: recherche dans les données.
+                \item \texttt{(f)} \texttt{livre["dispo"] = False} \textrightarrow{} \textbf{Modèle}~: modification de l'état d'un livre.
+            \end{itemize}
+            Note~: les blocs \texttt{if/elif} qui décident quelle action effectuer selon \texttt{choix} relèvent du \textbf{Contrôleur}.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Donnez deux inconvénients du code monolithique.
+        \end{questionpartie}
+        \begin{reponse}
+            \begin{enumerate}
+                \item \textbf{Non réutilisabilité}~: impossible de changer d'interface (terminal, web, graphique) sans réécrire la totalité de la fonction, y compris la logique métier.
+                \item \textbf{Difficulté de maintenance}~: toute correction ou évolution oblige à lire l'intégralité du code mélangé, avec un risque fort d'introduire des régressions dans des parties sans lien avec la modification.
+            \end{enumerate}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Que faudrait-il réécrire pour passer à une interface web~?
+        \end{questionpartie}
+        \begin{reponse}
+            Toutes les parties \textbf{Vue}~: les \texttt{print(...)} (remplacés par du HTML/JSON) et les \texttt{input(...)} (remplacés par des requêtes HTTP). Dans une architecture MVC correcte, seule la Vue change~; le Modèle (règles métier, données) et le Contrôleur (logique de décision) restent intacts.
+        \end{reponse}
+
+    \end{partie}
+
+    \begin{partie}[Refactoring par composition]
+
+        \begin{questionpartie}
+            Différence entre héritage et composition.
+        \end{questionpartie}
+        \begin{reponse}
+            \begin{itemize}
+                \item \textbf{Héritage} (relation \og est-un \fg{})~: \texttt{LivreNumérique} est un \texttt{Livre}, il hérite de ses attributs et méthodes. On l'utilise quand la classe fille est une spécialisation de la parente.
+                \item \textbf{Composition} (relation \og a-un \fg{})~: \texttt{Bibliothèque} contient des \texttt{Livre}, elle ne les étend pas. On l'utilise quand un objet est composé d'autres objets sans en être une variante.
+            \end{itemize}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Constructeur de \texttt{Application} par composition.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+class Application:
+    def __init__(self):
+        self._bibliotheque = Bibliothèque()
+\end{lstlisting}
+            \texttt{Application} ne hérite pas de \texttt{Bibliothèque}~; elle en \textit{possède} une instance. C'est la composition.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Méthode \texttt{emprunter(self)} de \texttt{Application}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+def emprunter(self):
+    titre = input("Titre : ")
+    succes = self._bibliotheque.emprunter(titre)
+    if succes:
+        print("Emprunté.")
+    else:
+        print("Indisponible ou introuvable.")
+\end{lstlisting}
+            La logique métier (l'emprunt) est maintenant déléguée à \texttt{Bibliothèque}~; la méthode ne manipule plus directement les données.
+        \end{reponse}
+
+    \end{partie}
+
+    \begin{partie}[Modélisation UML]
+
+        \begin{questionpartie}
+            Dessinez le diagramme de classes UML de \texttt{Application} ainsi que son lien avec \texttt{Bibliothèque}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{verbatim}
++-------------------------------+          +-------------------------------+
+|         Application           | <>-----> |         Bibliothèque          |
++-------------------------------+   1    1 +-------------------------------+
+| - _bibliotheque : Bibliothèque|          | - _livres : list              |
++-------------------------------+          +-------------------------------+
+| + emprunter()                 |          | + ajouter(livre)              |
++-------------------------------+          | + chercher(titre)             |
+                                           | + emprunter(titre) : bool     |
+                                           | + livres_disponibles() : list |
+                                           +-------------------------------+
+\end{verbatim}
+            La relation est une \textbf{composition} (losange plein, \texttt{<>}) car \texttt{Application} \textit{crée} la \texttt{Bibliothèque} dans son constructeur et en est propriétaire : si l'application disparaît, la bibliothèque disparaît avec elle. La multiplicité \texttt{1\,:\,1} signifie qu'une \texttt{Application} possède exactement une \texttt{Bibliothèque}. Une simple \textbf{association} (flèche sans losange) s'utiliserait si les deux objets avaient des cycles de vie indépendants.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Créer vs recevoir les dépendances en UML.
+        \end{questionpartie}
+        \begin{reponse}
+            \begin{itemize}
+                \item \textbf{Contrôleur crée ses dépendances}~: relation de \textbf{composition} (losange plein) de \texttt{Contrôleur} vers \texttt{Bibliothèque} et vers \texttt{VueTerminal}. Le Contrôleur possède ces objets.
+                \item \textbf{Contrôleur reçoit ses dépendances}~: relation d'\textbf{association} simple (flèche sans losange). Les objets existent indépendamment du contrôleur.
+            \end{itemize}
+            Le second cas est préférable pour la testabilité~: on peut passer au contrôleur une fausse vue ou un faux modèle (\textit{mock}) lors des tests unitaires, sans modifier le code du contrôleur.
+        \end{reponse}
+
+    \end{partie}
+\end{exo}
+
+% ============================================================
+\begin{exo}[Implémentation du \textit{design pattern} MVC]
+
+    \begin{partie}[La Vue]
+
+        \begin{questionpartie}
+            Implémentez en Python la classe \texttt{VueTerminal}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+class VueTerminal:
+    def afficher_livres(self, livres: list):
+        if not livres:
+            print("Aucun livre disponible.")
+        else:
+            for livre in livres:
+                print(str(livre))
+
+    def afficher_message(self, message: str):
+        print(message)
+
+    def demander_titre(self) -> str:
+        return input("Titre : ")
+\end{lstlisting}
+            La Vue ne contient aucune logique métier~: elle se contente d'afficher et de transmettre les saisies.
+        \end{reponse}
+
+    \end{partie}
+
+    \begin{partie}[Le Contrôleur]
+
+        \begin{questionpartie}
+            Implémentez \texttt{\_\_init\_\_}, \texttt{afficher\_disponibles} et \texttt{emprunter}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+class Contrôleur:
+    def __init__(self, modele: Bibliothèque, vue: VueTerminal):
+        self._modele = modele
+        self._vue = vue
+
+    def afficher_disponibles(self):
+        livres = self._modele.livres_disponibles()
+        self._vue.afficher_livres(livres)
+
+    def emprunter(self):
+        titre = self._vue.demander_titre()
+        succes = self._modele.emprunter(titre)
+        if succes:
+            self._vue.afficher_message("Emprunté avec succès.")
+        else:
+            self._vue.afficher_message("Indisponible ou introuvable.")
+\end{lstlisting}
+            Le Contrôleur ne fait jamais d'affichage direct (pas de \texttt{print}) ni d'accès direct aux données~: il délègue toujours à la Vue ou au Modèle.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Implémentez \texttt{lancer}.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+    def lancer(self):
+        while True:
+            print("1. Livres disponibles  2. Emprunter  0. Quitter")
+            choix = input("Votre choix : ")
+            if choix == "1":
+                self.afficher_disponibles()
+            elif choix == "2":
+                self.emprunter()
+            elif choix == "0":
+                break
+\end{lstlisting}
+            On pourrait déplacer le \texttt{print} et l'\texttt{input} du menu dans la Vue (méthodes \texttt{afficher\_menu} et \texttt{demander\_choix}) pour une séparation encore plus stricte.
+        \end{reponse}
+
+    \end{partie}
+
+    \begin{partie}[Extensibilité]
+
+        \begin{questionpartie}
+            Écrivez le code de lancement de l'application.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{lstlisting}
+modele = Bibliothèque()
+modele.ajouter(Livre("Le Petit Prince", "Antoine de Saint-Exupéry"))
+modele.ajouter(Livre("1984", "George Orwell"))
+
+vue = VueTerminal()
+controleur = Contrôleur(modele, vue)
+controleur.lancer()
+\end{lstlisting}
+        \end{reponse}
+
+        \begin{questionpartie}
+            Quelles méthodes \texttt{VueGraphique} doit-elle posséder~?
+        \end{questionpartie}
+        \begin{reponse}
+            \texttt{VueGraphique} doit exposer exactement les mêmes méthodes que celles appelées par \texttt{Contrôleur} sur la vue~:
+            \begin{itemize}
+                \item \texttt{afficher\_livres(self, livres: list)}
+                \item \texttt{afficher\_message(self, message: str)}
+                \item \texttt{demander\_titre(self) -> str}
+            \end{itemize}
+            C'est le principe de \textbf{substitution}~: \texttt{VueGraphique} peut remplacer \texttt{VueTerminal} partout sans que \texttt{Contrôleur} ne soit modifié, car il n'interagit avec la vue qu'au travers de ces trois méthodes. Pour passer à une interface graphique, seule la ligne \texttt{vue = VueTerminal()} changerait en \texttt{vue = VueGraphique()}~; le reste du code de lancement est inchangé.
+        \end{reponse}
+
+    \end{partie}
+
+    \begin{partie}[Modélisation UML]
+
+        \begin{questionpartie}
+            Diagramme de classes complet de l'architecture MVC.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{verbatim}
++-------------------------------+
+|         Bibliothèque          |
++-------------------------------+    (Modèle)
+| - _livres : list              |
++-------------------------------+
+| + ajouter(livre)              |
+| + chercher(titre)             |
+| + emprunter(titre) : bool     |
+| + livres_disponibles() : list |
++-------------------------------+
+             ^  (association)
+             | 1
++-------------------------------+
+|          Contrôleur           |
++-------------------------------+
+| - _modele : Bibliothèque      |    1
+| - _vue : VueTerminal          | ------->  +-------------------------------+
++-------------------------------+           |         VueTerminal           |
+| + afficher_disponibles()      |           +-------------------------------+
+| + emprunter()                 |           |                               |
+| + lancer()                    |           +-------------------------------+
++-------------------------------+           | + afficher_livres(livres)     |
+                                            | + afficher_message(msg)       |
+                                            | + demander_titre() : str      |
+                                            +-------------------------------+
+\end{verbatim}
+            \texttt{Contrôleur} est associé à \texttt{Bibliothèque} et à \texttt{VueTerminal} (associations simples, sans losange~: il reçoit ses dépendances en paramètre). La multiplicité est \texttt{1} des deux côtés~: un contrôleur utilise exactement un modèle et une vue.
+        \end{reponse}
+
+        \begin{questionpartie}
+            Ajout de \texttt{VueGraphique} et principe de substitution.
+        \end{questionpartie}
+        \begin{reponse}
+\begin{verbatim}
++-------------------------------+
+|         VueTerminal           |  (Vue concrète 1)
++-------------------------------+
+| + afficher_livres(livres)     |
+| + afficher_message(msg)       |
+| + demander_titre() : str      |
++-------------------------------+
+
++-------------------------------+
+|         VueGraphique          |  (Vue concrète 2)
++-------------------------------+
+| + afficher_livres(livres)     |
+| + afficher_message(msg)       |
+| + demander_titre() : str      |
++-------------------------------+
+
+Contrôleur -------> VueTerminal   (ou VueGraphique)
+\end{verbatim}
+            \texttt{VueGraphique} n'hérite pas de \texttt{VueTerminal}~: ce sont deux classes indépendantes qui exposent la même \textit{interface} (mêmes signatures de méthodes). En UML strict on modéliserait une interface \texttt{IVue} dont les deux héritent, mais en Python le typage canard suffit.
+
+            Le diagramme illustre le \textbf{principe de substitution}~: \texttt{Contrôleur} ne connaît que les méthodes \texttt{afficher\_livres}, \texttt{afficher\_message} et \texttt{demander\_titre}. N'importe quel objet proposant ces trois méthodes peut remplacer la vue sans modifier \texttt{Contrôleur}.
+        \end{reponse}
+
+    \end{partie}
+\end{exo}
+
+\end{document}

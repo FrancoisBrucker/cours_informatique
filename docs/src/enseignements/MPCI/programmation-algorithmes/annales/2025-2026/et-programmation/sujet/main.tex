@@ -1,0 +1,408 @@
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{listingsutf8}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\lstset{%
+    language=Python,
+    numbers=left,
+    xleftmargin=2em,
+    inputencoding=utf8,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries,
+    showstringspaces=false,
+    literate=
+        {é}{{\'e}}{1}%
+        {è}{{\`e}}{1}%
+        {à}{{\`a}}{1}%
+        {â}{{\^a}}{1}%
+        {ç}{{\c{c}}}{1}%
+        {œ}{{\oe}}{1}%
+        {ù}{{\`u}}{1}%
+        {É}{{\'E}}{1}%
+        {È}{{\`E}}{1}%
+        {À}{{\`A}}{1}%
+        {Ç}{{\c{C}}}{1}%
+        {Œ}{{\OE}}{1}%
+        {Ê}{{\^E}}{1}%
+        {ê}{{\^e}}{1}%
+        {î}{{\^i}}{1}%
+        {ï}{{\"i}}{1}%
+        {ô}{{\^o}}{1}%
+        {û}{{\^u}}{1}%
+}
+\usepackage{fullpage}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{todonotes}
+\usepackage{amsthm}
+
+\newtheoremstyle{exostyle}
+{10pt}
+{10pt}
+{}
+{}
+{\scshape\bfseries\large}
+{\hfill\vspace{5pt}\newline}
+{0pt}
+{\hfill\thmname{#1}\thmnumber{ #2} -- \thmnote{ #3}}
+
+\newtheoremstyle{partiestyle}
+{1em}
+{1em}
+{}
+{}
+{\bfseries}
+{\vspace{.5em}\newline}
+{0em}
+{\thmnumber{#2} \thmnote{ #3}}
+
+\newtheoremstyle{questionstyle}
+{.5em}
+{.5em}
+{}
+{}
+{\bfseries}
+{}
+{0em}
+{Question \thmnumber{#2 }}
+
+\theoremstyle{exostyle}
+\newtheorem{exo}{Exercice}
+
+\theoremstyle{partiestyle}
+\newtheorem{partie}{}[exo]
+
+\theoremstyle{questionstyle}
+\newtheorem{question}{Question}[exo]
+\newtheorem{questionpartie}{Question}[partie]
+
+\title{Examen terminal: Programmation}
+\author{L1 MPCI}
+\date{28 mai 2026 - Durée: 2h}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+{\em On rappelle qu'aucun document, ni équipement électrique ou électronique n'est autorisé.
+
+{\bf Bien que} une Game Boy Color pourra être utilisée sans le son si vous avez besoin de patienter.}
+\end{center}
+
+\vspace*{1cm}
+
+\paragraph{Objectif de l'examen} Cet examen évalue votre capacité à concevoir et implémenter un programme orienté objet en Python, et à appliquer le \textit{design pattern} MVC (Modèle-Vue-Contrôleur). À travers une application de gestion de bibliothèque, vous serez amenés à définir des classes, à comprendre la séparation des responsabilités, puis à structurer un programme complet en trois composants distincts.
+
+\paragraph{Les exercices de cet examen} :
+\begin{itemize}
+\item sont au nombre de 3 ;
+\item les exercices ne sont pas indépendants mais peuvent être menés en parallèle ;
+\item sont chacun constitués de plusieurs parties de difficultés croissantes ;
+\end{itemize}
+
+\paragraph{}{\large \sc Rendez \underline{des copies séparées pour chaque exercice}, ceci vous permettra de d'y revenir au cours de l'examen sans perdre le correcteur.}
+
+\vfill
+\begin{center}
+    {\small \em Sujet conçu par Claude (et) François.}
+\end{center}
+
+\clearpage
+
+% ============================================================
+\begin{exo}[Programmation orientée objet]
+
+Le contexte de cet exercice est une application de gestion d'une petite bibliothèque personnelle.
+
+    \begin{partie}[La classe \texttt{Livre}]
+
+On vous donne la classe suivante~:
+
+\begin{lstlisting}
+class Livre:
+    def __init__(self, titre, auteur):
+        self.titre = titre
+        self.auteur = auteur
+        self._disponible = True
+\end{lstlisting}
+
+        \begin{questionpartie}
+            Qu'appelle-t-on un \textit{attribut}~? Listez les attributs d'instance de la classe \texttt{Livre} et donnez leur type.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Pourquoi l'attribut \texttt{\_disponible} est-il préfixé d'un tiret bas~? Ajoutez une méthode de nom \texttt{est\_disponible} qui rend sa valeur.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Complétez la méthode suivante. Elle doit retourner \texttt{True} si le livre était disponible (et le marquer comme emprunté), \texttt{False} sinon~:
+
+\begin{lstlisting}
+def emprunter(self):
+    ...
+\end{lstlisting}
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Écrivez la méthode \texttt{\_\_str\_\_}. Elle doit retourner une chaîne du type~:
+            \begin{center}
+                \texttt{"Trilogie spinoziste (Jean-Bernard Pouy) [disponible]"}
+            \end{center}
+            en indiquant \texttt{[disponible]} ou \texttt{[emprunté]} selon l'état du livre.
+        \end{questionpartie}
+
+    \end{partie}
+
+    \begin{partie}[La classe \texttt{Bibliothèque}]
+
+On vous donne le début de la classe suivante~:
+
+\begin{lstlisting}
+class Bibliothèque:
+    def __init__(self):
+        self._livres = []
+\end{lstlisting}
+
+        \begin{questionpartie}
+            Ajoutez une méthode \texttt{Bibliothèque.ajouter(livre)} qui ajoute un livre à une bibliothèque et une méthode \texttt{Bibliothèque.livres\_disponibles()} qui retourne la liste des livres actuellement disponibles.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Ajoutez une méthode \texttt{Bibliothèque.chercher(titre)} qui retourne le \texttt{Livre} dont le titre correspond, ou \texttt{None} si introuvable.
+
+            Puis, en utilisant \texttt{chercher}, ajoutez une méthode \texttt{Bibliothèque.emprunter(titre)} qui tente d'emprunter le livre portant ce titre et retourne \texttt{True} en cas de succès.
+        \end{questionpartie}
+
+    \end{partie}
+
+    \begin{partie}[Héritage : le livre numérique]
+
+        On souhaite modéliser les livres numériques. Contrairement à un livre physique, un livre numérique peut toujours être emprunté : il existe en nombre illimité de copies.
+
+        \begin{questionpartie}
+            Qu'appelle-t-on l'héritage en programmation orientée objet~? Quelle relation établit-il entre une classe parente et une classe fille~?
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Écrivez une classe \texttt{LivreNumérique} qui hérite de \texttt{Livre}. Son constructeur prendra les mêmes paramètres que celui de \texttt{Livre} et appellera le constructeur parent à l'aide de \texttt{super()}.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Surchargez la méthode \texttt{emprunter} dans \texttt{LivreNumérique} de façon à ce qu'elle retourne toujours \texttt{True}, sans modifier l'attribut \texttt{\_disponible}.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Surchargez \texttt{\_\_str\_\_} pour retourner une chaîne indiquant que le livre est numérique, par exemple~:
+            \begin{center}
+                \texttt{"Trilogie spinoziste (Jean-Bernard Pouy) [numérique]"}
+            \end{center}
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Sans modifier la classe \texttt{Bibliothèque}, peut-on lui ajouter un \texttt{LivreNumérique} via \texttt{ajouter}~? La méthode \texttt{emprunter} de \texttt{Bibliothèque} fonctionnera-t-elle correctement avec ce livre~? Quel principe de la programmation orientée objet illustre ce comportement~?
+        \end{questionpartie}
+
+    \end{partie}
+
+    \begin{partie}[Modélisation UML]
+
+        \begin{questionpartie}
+            Dessinez la boîte UML de la classe \texttt{Livre}.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Ajoutez \texttt{LivreNumérique} au diagramme.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Ajoutez \texttt{Bibliothèque} au diagramme.
+        \end{questionpartie}
+
+    \end{partie}
+\end{exo}
+
+% ============================================================
+\begin{exo}[Séparation des responsabilités]
+
+On vous donne le code suivant d'une application de bibliothèque écrite sans aucune architecture particulière~:
+
+\begin{lstlisting}
+def gerer_bibliotheque():
+    livres = []  # liste de dict {"titre": str, "auteur": str, "dispo": bool}
+
+    while True:
+        print("1. Livres disponibles  2. Emprunter  0. Quitter")
+        choix = input("Votre choix : ")                      # (a)
+
+        if choix == "1":
+            dispo = [l for l in livres if l["dispo"]]        # (b)
+            for l in dispo:
+                print(f"- {l['titre']} ({l['auteur']})")     # (c)
+        elif choix == "2":
+            titre = input("Titre : ")                        # (d)
+            livre = next((l for l in livres                  # (e)
+                          if l["titre"] == titre), None)
+            if livre and livre["dispo"]:
+                livre["dispo"] = False                       # (f)
+                print("Emprunté.")
+            else:
+                print("Indisponible ou introuvable.")
+        elif choix == "0":
+            break
+\end{lstlisting}
+
+    \begin{partie}[Analyse]
+
+        Un \textit{design pattern} (ou patron de conception) est une solution générale et réutilisable à un problème récurrent de conception logicielle. Il ne s'agit pas de code prêt à l'emploi, mais d'un modèle qui guide la structure d'un programme.
+
+        \begin{questionpartie}
+            Le \textit{design pattern} MVC découpe une application en trois composants~:
+            \begin{itemize}
+                \item le \textbf{Modèle} gère les données et les règles métier~;
+                \item la \textbf{Vue} gère l'affichage et la saisie~;
+                \item le \textbf{Contrôleur} coordonne le modèle et la vue.
+            \end{itemize}
+            Pour chacun des éléments \texttt{(a)} à \texttt{(f)} du code ci-dessus, indiquez s'il relève du Modèle, de la Vue ou du Contrôleur. Justifiez brièvement.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Donnez deux inconvénients concrets de ce code monolithique (c'est-à-dire où toute la logique, l'affichage et la gestion des données sont mélangés dans une seule et même fonction) par rapport à une architecture MVC.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Un développeur souhaite remplacer l'interface en ligne de commande par une interface web. Quelles parties du code serait-il obligé de réécrire~? Justifiez en vous appuyant sur le MVC.
+        \end{questionpartie}
+    \end{partie}
+
+    \begin{partie}[Refactoring par composition]
+
+        \begin{questionpartie}
+            Quelle est la différence entre héritage et composition~? En vous appuyant sur les classes \texttt{Livre} et \texttt{Bibliothèque}, donnez un exemple de chacune des deux relations.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            On souhaite transformer la fonction \texttt{gerer\_bibliotheque} en une classe \texttt{Application} qui utilise par composition une instance de \texttt{Bibliothèque}. Écrivez le constructeur de \texttt{Application} qui crée et stocke une \texttt{Bibliothèque} vide comme attribut.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Transformez le bloc \texttt{elif choix == "2":} (lignes 13 à 20) en une méthode \texttt{emprunter(self)} de la classe \texttt{Application}, en utilisant l'attribut \texttt{Bibliothèque} créé à la question précédente.
+        \end{questionpartie}
+
+    \end{partie}
+
+    \begin{partie}[Modélisation UML]
+
+        \begin{questionpartie}
+            Dessinez le diagramme de classes UML de la classe \texttt{Application} (définie en partie~2) ainsi que son lien avec la classe \texttt{Bibliothèque}.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Dans l'architecture MVC, le Contrôleur dépend du Modèle et de la Vue. Représentez schématiquement en UML la différence entre~:
+            \begin{itemize}
+                \item un Contrôleur qui \textit{crée} lui-même le Modèle et la Vue dans son constructeur~;
+                \item un Contrôleur qui \textit{reçoit} le Modèle et la Vue en paramètre de son constructeur.
+            \end{itemize}
+            Quelle relation UML correspond à chaque cas~? Quel avantage apporte le second cas~?
+        \end{questionpartie}
+
+    \end{partie}
+\end{exo}
+
+% ============================================================
+\begin{exo}[Implémentation du \textit{design pattern} MVC]
+
+On reprend les classes \texttt{Livre} et \texttt{Bibliothèque} de l'exercice~1.
+
+    \begin{partie}[La Vue]
+
+        On vous donne le diagramme UML suivant~:
+
+        \begin{center}
+        \renewcommand{\arraystretch}{1.0}
+        \begin{tabular}{|p{7cm}|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{VueTerminal}} \\
+        \hline
+        \multicolumn{1}{|c|}{\phantom{(aucun attribut)}} \\
+        \hline
+        \texttt{+ afficher\_livres(livres\,:\,list)} \\
+        \texttt{+ afficher\_message(message\,:\,str)} \\
+        \texttt{+ demander\_titre() : str} \\
+        \hline
+        \end{tabular}
+        \end{center}
+
+        \begin{questionpartie}
+            Implémentez en Python la classe \texttt{VueTerminal}. \texttt{afficher\_livres} affichera chaque livre sur une ligne en utilisant \texttt{str(livre)}~; si la liste est vide, elle affichera \texttt{"Aucun livre disponible."}.
+        \end{questionpartie}
+
+    \end{partie}
+
+    \begin{partie}[Le Contrôleur]
+
+        On vous donne le diagramme UML suivant~:
+
+        \begin{center}
+        \renewcommand{\arraystretch}{1.0}
+        \begin{tabular}{|p{9cm}|}
+        \hline
+        \multicolumn{1}{|c|}{\textbf{Contrôleur}} \\
+        \hline
+        \texttt{- \_modele\,:\,Bibliothèque} \\
+        \texttt{- \_vue\,:\,VueTerminal} \\
+        \hline
+        \texttt{+ \_\_init\_\_(modele\,:\,Bibliothèque,\,vue\,:\,VueTerminal)} \\
+        \texttt{+ afficher\_disponibles()} \\
+        \texttt{+ emprunter()} \\
+        \texttt{+ lancer()} \\
+        \hline
+        \end{tabular}
+        \end{center}
+
+        \begin{questionpartie}
+            Implémentez \texttt{\_\_init\_\_}, \texttt{afficher\_disponibles} et \texttt{emprunter}.
+
+            \texttt{emprunter} doit~: demander un titre via la vue, tenter l'emprunt via le modèle, puis afficher un message de succès ou d'échec via la vue.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Implémentez \texttt{lancer} qui affiche en boucle le menu suivant et appelle la méthode du contrôleur correspondante~:
+            \begin{center}
+                \texttt{1. Livres disponibles \quad 2. Emprunter \quad 0. Quitter}
+            \end{center}
+        \end{questionpartie}
+
+    \end{partie}
+
+    \begin{partie}[Extensibilité]
+
+        \begin{questionpartie}
+            Écrivez le code de lancement de l'application~: créez un modèle, ajoutez-y deux livres, créez une vue et un contrôleur, puis lancez l'application.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            On souhaite remplacer \texttt{VueTerminal} par une classe \texttt{VueGraphique} sans modifier \texttt{Contrôleur}. Quelles méthodes \texttt{VueGraphique} doit-elle obligatoirement posséder~? Justifiez.
+        \end{questionpartie}
+
+    \end{partie}
+
+    \begin{partie}[Modélisation UML]
+
+        \begin{questionpartie}
+            Dessinez le diagramme de classes UML complet de l'architecture MVC implémentée dans cet exercice. Faites apparaître \texttt{Contrôleur}, \texttt{Bibliothèque} et \texttt{VueTerminal} avec leurs attributs, leurs méthodes principales et les relations qui les unissent (nature de chaque relation et multiplicités).
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Ajoutez \texttt{VueGraphique} au diagramme. Quelle relation entretient-elle avec \texttt{VueTerminal}~? Comment le diagramme montre-t-il que \texttt{Contrôleur} peut fonctionner indifféremment avec l'une ou l'autre~?
+        \end{questionpartie}
+
+    \end{partie}
+\end{exo}
+
+\end{document}

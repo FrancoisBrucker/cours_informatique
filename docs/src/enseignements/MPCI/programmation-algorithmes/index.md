@@ -85,7 +85,6 @@ Cours en 4 parties et 4 DM :
    3. héritage
       1. 1h cours + 1h TD avec moi dés
       2. 2h TD cartes
-  1. bataille navale : 4h
 4. cours algo (structures de données) et DM code (bataille navale)
 
 -->
@@ -335,7 +334,7 @@ Pour aller plus loin :
 
 <!-- TBD 2026/2027
 
-- faire tout en une fois cours théorique et TP sus la forme d'un cours en incorporant des bouts du tri pour les calculs. Le faire sous la forme d'un cours à copier/coller.
+- faire tout en une fois cours théorique et TP sous la forme d'un cours en incorporant des bouts du tri pour les calculs. Le faire sous la forme d'un cours à copier/coller.
 - ajouter la représentation graphique
 - faire un DM simple de code + algo
 

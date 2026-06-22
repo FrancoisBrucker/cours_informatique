@@ -23,3 +23,5 @@ Tests et examens pour l'année scolaire 2025/2026
 
 ## Examen terminal
 
+1. [ET : algorithmie](./et-algorithmie){.interne}
+2. [ET : programmation](./et-programmation){.interne}

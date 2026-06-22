@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdflatex -interaction=nonstopmode main.tex)",
+      "Bash(python3 -c ' *)",
+      "Bash(open *)",
+      "Bash(pdflatex -interaction=nonstopmode \"corrigé.tex\")"
+    ]
+  }
+}
