@@ -1,0 +1,18 @@
+<h1><a href="http://CLAUDE.md">CLAUDE.md</a></h1>
+<p>This file provides guidance to Claude Code (<a href="http://claude.ai/code">claude.ai/code</a>) when working with code in this repository.</p>
+<h2>Purpose</h2>
+<p>Exam materials for the L1 MPCI (first-year CS) final programming exam (&quot;Examen terminal: Programmation&quot;), held May 28, 2026. The exam covers inversion counting and skip lists.</p>
+<h2>Structure</h2>
+<ul>
+<li><code>index.md</code> — landing page for the course website (Eleventy/Nunjucks template)</li>
+<li><code>sujet/main.tex</code> — LaTeX source for the exam paper</li>
+<li><code>sujet/code.py</code> — reference Python code (KMP substring search)</li>
+<li><code>sujet/*.png</code> — diagrams embedded in the exam (source: <code>figs.graffle</code>)</li>
+</ul>
+<h2>Building the exam PDF</h2>
+<pre class="language-bash" tabindex="0" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> sujet <span class="token operator">&amp;&amp;</span> pdflatex main.tex</code></pre>
+<p>Run twice if cross-references change. Output: <code>sujet/main.pdf</code>.</p>
+<h2>Editing diagrams</h2>
+<p>Diagrams (<code>skip-list.png</code>, <code>skip-list-régulière.png</code>) are exported from <code>sujet/figs.graffle</code> (OmniGraffle). Edit the <code>.graffle</code> file and re-export to PNG before recompiling LaTeX.</p>
+<h2>Course website</h2>
+<p><code>index.md</code> uses an Eleventy layout (<code>layout/post.njk</code>). The site is built from a parent project; this directory is a content subfolder, not a standalone site.</p>
