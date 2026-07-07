@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>S2 : Programmation</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">S2 : Programmation</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tags : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">formation</li>
+          
+            <li class="before:content-['•'] before:px-1">MPCI</li>
+          
+        </ul>
+      </div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/enseignements/">Enseignements</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/MPCI/">Enseignements MPCI</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/MPCI/programmation/">S2 : Programmation</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Ce cours intitulé <em>Programmation</em> est donné au second semestre de la licence MPCI (<a href="https://ametice.univ-amu.fr/course/view.php?id=129120">lien AMeTICE AMU Informatique S2</a>). Il s'appuie sur le cours de <em>Programmation</em> donné au S1 (<a href="https://ametice.univ-amu.fr/course/view.php?id=125682">lien AMeTICE AMU Informatique S1</a>).</p>
+<p>Ce cours donnera les bases de développement d'un projet informatique en s'appuyant sur le langage python.</p>
+<h2>Note</h2>
+<p>La note de  l'UE résulte de cette formule :</p>
+<p>$$
+\max (\frac{CC+ DS + ET}{3}, ET)
+$$</p>
+<p>Avec :</p>
+<ul>
+<li>$CC = \frac{1}{4}(TUT + \sum TEST)$ où :
+<ul>
+<li>$TUT$ est la moyenne formée de la note des 2 tutorats</li>
+<li>$\sum TEST$ est la somme des autres notes de contrôle continu</li>
+</ul>
+</li>
+<li>$DS$ est la note du devoir surveillé</li>
+<li>$ET$ est l'examen terminal</li>
+</ul>
+<h2>Prérequis</h2>
+<p>Il est nécessaire d'avoir quelques prérequis avant de commencer ce cours, en particulier vos cours d'informatique du S1, en particulier avoir des bases de programmation python.</p>
+<h2>Cours</h2>
+<p>Le cours est disponible via le site d'AMeTICE et en suivant les liens de chaque partie ci-après. Cela ne vous dispense pas de prendre des notes, mais vous aide à la révision ou aux divers prérequis que vous aurez à préparer avant le cours.</p>
+<h2>Plan</h2>
+<!-- TBD 2026/27
+
+Cours en 4 parties et 4 DM :
+
+1. mettre 4h de rappel du semestre précédent pour le code
+   1. import
+   2. notation  pointée
+   3. notion d'espace de nommage
+2. cours intro : DM algo : écrire des algorithmes en python et vérifier expérimentalement leur véracité (faire les mono-lignes et des exercices sur les import)
+   1. pseudo-code (6h)
+   2. projets et tests (4h) 
+3. cours algo (complexité) et DM code (test/projet/)
+4. cours programmation (objet) et DM algo (et de l'année précédente)
+   1. objets :
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+   2. composition
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+   3. héritage
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+5. cours algo (structures de données) et DM code (bataille navale)
+
+-->
+<h3>Partie 1</h3>
+<p>Il est <strong>INDISPENSABLE</strong> que vous ayez en tête ce que vous avez fait en développement au S1. Pour cela, suivez et faite la partie suivante du cours qui explicite les notions qui vous seront utiles pour débuter ce semestre :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>PRÉREQUIS</strong></p>
+</div><div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/enseignements/MPCI/outil-informatique/#eduroam" class="interne">Utilisez le réseau EDUROAM</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/" class="interne">Bases de programmation en python</a></li>
+</ol>
+</div></div>
+
+<h4>Cours : projet de développement</h4>
+<blockquote>
+<p>2h</p>
+</blockquote>
+<p>Notions abordées :</p>
+<ul>
+<li>base système : dossiers, fichiers et programmes</li>
+<li>utilisation du terminal</li>
+<li>écrire du code python utilisable et maintenable</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Rappels : <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/%C3%A9diteur-vscode/" class="interne">créer un projet python avec vscode</a></li>
+<li><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/" class="interne">Bases de système d'exploitation</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/modules-externes-python/" class="interne">Modules externes python</a></li>
+</ol>
+</div></div>
+
+<p>Si on a le temps, sinon à faire chez soit :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/tutoriel-matplotlib/" class="interne">Tutorial matplotlib</a></p>
+</div></div>
+
+<blockquote>
+<p>TBD Faire un DM bases python (basé sur les monolignes):</p>
+<ul>
+<li>variables</li>
+<li>listes</li>
+<li>dictionnaires</li>
+</ul>
+</blockquote>
+<h4>Exercices</h4>
+<blockquote>
+<p>4h</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/tests-unitaires/" class="interne">tester son code</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/tutoriel-hello-dev/" class="interne">Développer un projet informatique</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-pourcentages" class="interne">Projet pourcentages</a></li>
+</ol>
+</div></div>
+
+<blockquote>
+<p>TBD Supprimer le linter du cours, mais insister sur black.</p>
+</blockquote>
+<p>On s'entraîne :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-codes/" class="interne">Petits programmes</a> et <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-codes-tests/" class="interne">on leur ajoute des tests</a></p>
+</div></div>
+
+<p>Pour aller plus loin :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/coder/" class="interne">écrire du code lisible et maintenable</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/d%C3%A9bogueur/" class="interne">déboguer son code</a></li>
+</ol>
+</div></div>
+
+<h3>Partie 2</h3>
+<blockquote>
+<p>9/03 au 13/03
+Programmation</p>
+</blockquote>
+<h4>Cours : programmation objet</h4>
+<blockquote>
+<p>2h</p>
+</blockquote>
+<p>Notions abordées :</p>
+<ul>
+<li>Qu'est-ce qu'un objet ?</li>
+<li>Modélisation UML et en python</li>
+<li>développer un objet grâce à des users stories</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/introduction/" class="interne">Tout est objet en python</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/classes-et-objets/" class="interne">Créer ses classes et leurs objets</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/coder-ses-objets/" class="interne">Coder ses objets</a></li>
+</ol>
+</div></div>
+
+<h4>On s'entraîne</h4>
+<blockquote>
+<p>4h</p>
+</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Je vous conseille très fortement de faire la séance de code en <a href="https://fr.wikipedia.org/wiki/Programmation_en_bin%C3%B4me">pair-programming</a>. <strong>Lisez</strong> le lien ci-après avant vendredi.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://martinfowler.com/articles/on-pair-programming.html">comment coder en pair-programming</a></p>
+</div></div>
+
+<p>Au programme :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/" class="interne">Des dés</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/" class="interne">Jeu de cartes</a></li>
+</ul>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/code">corrigé projet dé</a></li>
+<li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/code">corrigé projet cartes</a></li>
+</ul>
+</div></div>
+
+<!-- TBD 
+
+Modifier les td précédent pour mettre les str et repr directement dans les améliorations.
+-->
+<h3>Partie 3 : Développer un projet</h3>
+<h4>Cours : Composition, agrégation et héritage</h4>
+<blockquote>
+<p>2h</p>
+</blockquote>
+<p>Notions abordées :</p>
+<ul>
+<li>Composer des objet pour développer un projet</li>
+<li>Agrégation</li>
+<li>Composition</li>
+<li>Héritage</li>
+</ul>
+<p>Composer des objets entre-eux :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/am%C3%A9liorer-ses-objets/" class="interne">Améliorer ses objets</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/composition-agr%C3%A9gation" class="interne">Composition et agrégation</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/h%C3%A9ritage" class="interne">Héritage</a></li>
+</ol>
+</div></div>
+
+<blockquote>
+<p>TBD en faire des DM.</p>
+</blockquote>
+<p>À faire chez soit pour s'entraîner :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="projet-objets-d%C3%A9s-am%C3%A9lioration" class="interne">Améliorer les dés</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-d%C3%A9s" class="interne">Projet de compositions de dés</a></li>
+</ol>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code">corrigé d'amélioration des dés</a></li>
+<li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-d%C3%A9s/code">corrigé composition de dés</a></li>
+</ul>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-am%C3%A9lioration/" class="interne">Améliorer les cartes</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agr%C3%A9gation-cartes" class="interne">Projet d'agrégation de cartes</a></li>
+</ol>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-am%C3%A9lioration/code">corrigé d'amélioration des cartes</a></li>
+<li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agr%C3%A9gation-cartes/code">corrigé agrégation de cartes</a></li>
+</ul>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage" class="interne">Projet héritage</a></p>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage">corrigé projet héritage</a></p>
+</div></div>
+
+<h4>Projet</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/gestion-d%C3%A9pendances/" class="interne">gestion des dépendances</a></li>
+<li><a href="/cours_informatique/cours/gestion-des-sources/" class="interne">gestion du code source</a> : mettre son code à disposition via un <a href="/cours_informatique/cours/gestion-des-sources/d%C3%A9p%C3%B4t/besoins-d%C3%A9p%C3%B4t/" class="interne">Dépôt</a></li>
+</ol>
+</div></div>
+
+<blockquote>
+<p>TBD faire un environnement virtuel pour la bataille navale et trouver une lib à ajouter pour le requirement.txt</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale" class="interne">Bataille Navale</a></p>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale/code">corrigé projet bataille navale</a></p>
+</div></div>
+
+<p>Si on a le temps et puisque c'est la dernière séance, pour aller plus loin :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/gestion-des-sources/%C3%A9volution-code/besoins-gestion-sources/" class="interne">Gestion de l'évolution de son code source</a></li>
+<li><a href="/cours_informatique/cours/gestion-des-sources/partage/besoins-origin/" class="interne">Partager du code source</a></li>
+<li><a href="/cours_informatique/cours/gestion-des-sources/bonnes-pratiques/" class="interne">Bonnes pratiques</a> et <a href="/cours_informatique/cours/gestion-des-sources/outils" class="interne">outils</a></li>
+</ol>
+</div></div>
+
+<blockquote>
+<p>TBD à rendre plus propre et à laisser au plus fort.</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
