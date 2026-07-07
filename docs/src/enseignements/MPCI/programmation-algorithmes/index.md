@@ -5,7 +5,7 @@ title: "S2 : Programmation et Algorithmes"
 tags: ["formation", "MPCI"]
 
 eleventyNavigation:
-  order: 2
+  order: 3
 
 eleventyComputed:
   eleventyNavigation:
