@@ -239,6 +239,8 @@ On vérifie qu'on sait faire avec un projet sans corrigé :
 
 ### Problème du tri
 
+<!-- TBD tri par monotonie, voir comment on peut l'améliorer en in place  et finir sur tim sort -->
+
 {% aller %}
 [Problème du tri](./problème-tris){.interne}
 {% endaller %}

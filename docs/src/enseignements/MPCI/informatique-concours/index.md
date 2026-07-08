@@ -3,7 +3,7 @@ layout: layout/post.njk
 title: "S6 : Informatique au concours"
 
 eleventyNavigation:
-  order: 4
+  order: 5
 
 eleventyComputed:
   eleventyNavigation:
