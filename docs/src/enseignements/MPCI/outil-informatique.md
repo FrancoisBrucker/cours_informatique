@@ -17,11 +17,11 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 
 > Ça, c'est mon ordi. Il y en a beaucoup comme ça, mais lui, c'est le mien. Mon ordi, c'est mon meilleur ami.
 
-Le but de cette séance est de vous donner les connaissances nécessaire pour avoir un ordinateur pour le développement.
+Le but de cette séance est de vous donner les connaissances nécessaires pour avoir un ordinateur pour le développement.
 
 ## <span id="eduroam">/span>Utiliser le réseau
 
-Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
+Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des universités européennes.
 
 - login : votre adresse mail
 - mot de passe : celui de l'ent AMU
@@ -56,7 +56,7 @@ Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis l
 Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence à avoir des comportement erratique, signe d'un système malade.
 {% endinfo %}
 {% aller %}
-[installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
+[installation d'un nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
 {% endaller %}
 
 ## Ordinateur pour le développement en python
@@ -140,7 +140,7 @@ Pour utiliser latex, rien de tel qu'un bon tuto :
 
 ### Graphiques
 
-Créer des graphiques scientifique est une science, voir un art. Avoir de bons outils pour le faire aide grandement.
+Créer des graphiques scientifiques est une science, voir un art. Avoir de bons outils pour le faire aide grandement.
 
 {% lien %}
 <http://www.gnuplot.info/>
