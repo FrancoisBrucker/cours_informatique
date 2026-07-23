@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Architecture d&#39;un ordinateur</title>
+    <title>Organisation d&#39;un disque système</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Architecture d&#39;un ordinateur</h1>
+  <h1>Organisation d&#39;un disque système</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/">Architecture d&#39;un ordinateur</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/système/bases/">Connaissances minimales</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/système/bases/fichiers-système/">Organisation d&#39;un disque système</a>
 
 </div></div>
 
@@ -96,60 +96,28 @@
     
   
 
-  <h2>Carte mère</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="carte-m%C3%A8re" class="interne">Carte mère</a></p>
-</div></div>
-
-<h2>Mémoire</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="m%C3%A9moire" class="interne">Mémoire</a></p>
-</div></div>
-
-<h2>Processeur</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="processeur" class="interne">Processeur</a></p>
-</div></div>
-
-<h2>Périphériques</h2>
-<p>On y accède via des protocoles d'accès. Ensuite chaque type de périphérique aura un ou plusieurs protocoles permettant son utilisation.</p>
-<p>Exemple du réseau :</p>
+  <p>Lorsque l'on démarre un ordinateur, <a href="../../but/#d%C3%A9marrage" class="interne">on a vu</a> qu'est chargé le bootloader qui permet de charger le noyau. Ces deux éléments doivent être lues sur un des disque dur de l'ordinateur et font partie du système d'exploitation. De plus un système va avoir besoin de tout un tas de fichiers de configurations et d'un endroit où il va ranger les différents logiciels qu'il utilisera.</p>
+<p>L'organisation de cette structure est différente selon les OS mais on retrouvera toujours ces éléments.</p>
+<h2>Dossiers système</h2>
+<h3>Bootloader et noyau</h3>
+<p>Le bootloader et le noyau se trouvent dans <a href="https://fr.wikipedia.org/wiki/Partition_(informatique)">une partition spéciale</a> du disque dur de démarrage.</p>
+<h3>Fonctionnement interne</h3>
+<p>Répartis dans plusieurs dossiers et contient tous les fichiers nécessaires au bon fonctionnement du système :</p>
 <ul>
-<li>protocole d'accès à la carte : PCie</li>
-<li>protocole d'utilisation :
+<li>les fichiers de configurations</li>
+<li>les applications système (comme systemd sous linux par exemple)</li>
+<li><a href="https://fr.wikipedia.org/wiki/Dynamic_Link_Library">les bibliothèques dynamiques</a></li>
+</ul>
+<h3>Applications</h3>
+<p>Dossier contenant les applications reconnues par le système. Si vous installez un logiciel dans un dossier différent il se peut qu'il ne soit pas automatiquement reconnu.</p>
+<h2>Dossiers Utilisateurs</h2>
+<p>Un dossier spécifique à chaque utilisateur, aussi appelé <strong><em>Maison</em></strong>. Il va contenir tous ses fichiers de données, mais également :</p>
 <ul>
-<li>TCP</li>
-<li>UDP</li>
-<li>...</li>
+<li>ses fichiers de configuration</li>
+<li>ses programmes</li>
 </ul>
-</li>
-</ul>
-<p>Les périphériques présents sur tous les ordinateurs sont les périphériques de stockage, dont nous allons parler plus précisément :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="device-stockage" class="interne">Disques durs et autres périphériques de stockage</a></p>
-</div></div>
-
-<h2><span id="général"></span>Version détaillée</h2>
-<blockquote>
-<p>TBD : à refaire.</p>
-</blockquote>
-<p><img src="sch%C3%A9ma-d%C3%A9taill%C3%A9-ordinateur.png" alt="schéma détaillé"></p>
+<h2>Disques de données</h2>
+<p>Outre le disque système, un ordinateur peut posséder de nombreux autres disques soit fixe, soit amovibles (comme des clés usb)</p>
 
 
 </article>

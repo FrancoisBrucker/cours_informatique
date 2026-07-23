@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Architecture d&#39;un ordinateur</title>
+    <title>Connaissances minimales</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Architecture d&#39;un ordinateur</h1>
+  <h1>Connaissances minimales</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/">Architecture d&#39;un ordinateur</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/système/bases/">Connaissances minimales</a>
 
 </div></div>
 
@@ -96,60 +96,74 @@
     
   
 
-  <h2>Carte mère</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="carte-m%C3%A8re" class="interne">Carte mère</a></p>
-</div></div>
-
-<h2>Mémoire</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="m%C3%A9moire" class="interne">Mémoire</a></p>
-</div></div>
-
-<h2>Processeur</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="processeur" class="interne">Processeur</a></p>
-</div></div>
-
-<h2>Périphériques</h2>
-<p>On y accède via des protocoles d'accès. Ensuite chaque type de périphérique aura un ou plusieurs protocoles permettant son utilisation.</p>
-<p>Exemple du réseau :</p>
+  <p>Le but d'un <a href="https://fr.wikipedia.org/wiki/Ordinateur">ordinateur</a> est de permettre à des utilisateurs d'exécuter des applications. Il est composé de multiples composants qui interagissent entre eux :</p>
 <ul>
-<li>protocole d'accès à la carte : PCie</li>
-<li>protocole d'utilisation :
+<li>le <a href="https://fr.wikipedia.org/wiki/Processeur">processeur</a> : exécute des instructions sur des variables appelés registre (64bits). Instructions et variables sont prisent et manipulées dans la mémoire.</li>
+<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">mémoire vive</a> : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau ou chaque case contient 1 <a href="https://fr.wikipedia.org/wiki/Byte">Byte</a>. Comme on peut accéder à tout élément sans contrainte, cette mémoire est appelée <em>RAM</em> (pour Random Access Memory)</li>
+<li>périphériques, appelés <strong><em>device</em></strong>
 <ul>
-<li>TCP</li>
-<li>UDP</li>
-<li>...</li>
+<li>mémoire non volatile (stockage) : On ne peut pas toujours accéder à tout byte du tableau de stockage indépendamment. Il faut utiliser un protocole. Ces devices sont plus lent que la RAM mais sont non volatiles. Par exemple :
+<ul>
+<li>disques durs : plus lent que la mémoire mais non volatile</li>
+<li>USB : encore plus lent qu'un disque dur mais déplaçable facilement</li>
+</ul>
+</li>
+<li>réseau : encore plus lent que l'USB mais accessible de partout</li>
+<li><a href="https://fr.wikipedia.org/wiki/Interactions_homme-machine">interfaces</a> :
+<ul>
+<li>entrée : clavier/souris</li>
+<li>sortie : écran/imprimante</li>
+<li>entrée/sortie : volant avec retour de force</li>
 </ul>
 </li>
 </ul>
-<p>Les périphériques présents sur tous les ordinateurs sont les périphériques de stockage, dont nous allons parler plus précisément :</p>
+</li>
+</ul>
+<p>En regroupant tous <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_(informatique)">les types de mémoires</a>, on obtient le schéma (très) simplifié suivant :</p>
+<blockquote>
+<p>tbd ajouter carte mère qui fait communiquer tout ça ensemble via un <a href="https://fr.wikipedia.org/wiki/Bus_informatique">bus</a></p>
+</blockquote>
+<p><img src="schema-ordinateur.png" alt="un ordinateur"></p>
+<ul>
+<li>programme = numéro de l'instruction instruction processeur</li>
+<li>au démarrage on charge un endroit du disque dur en mémoire et on exécute ces instructions (codées sur 8 bytes, 64 bits) une à une</li>
+<li>l'instruction sur un endroit du disque dur : montrer liste x86</li>
+<li></li>
+</ul>
+<p>Pour que chaque application n'ait pas à tout gérer (accès au processeur, à la mémoire, au disque dur, au réseau, ...) comme on le ferait avec un circuit imprimé par exemple, on utilise un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation">système d'exploitation</a> (ou <strong><em>OS</em></strong> pour <em>operating system</em>) comme intermédiaire :</p>
+<p>On suppose ici que vous savez minimalement interagir avec votre système d'exploitation en exécutant des applications via un menu ou l'explorateur de fichiers.</p>
+<p>L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement.</p>
+<p>L'élément central qui permet à tous les composants d'un ordinateur de communiquer entre eux est la <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">carte mère</a>.</p>
+<h2>Principes</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="device-stockage" class="interne">Disques durs et autres périphériques de stockage</a></p>
+<p><a href="principes" class="interne">Principes d'un système</a></p>
 </div></div>
 
-<h2><span id="général"></span>Version détaillée</h2>
-<blockquote>
-<p>TBD : à refaire.</p>
-</blockquote>
-<p><img src="sch%C3%A9ma-d%C3%A9taill%C3%A9-ordinateur.png" alt="schéma détaillé"></p>
+<h2>Système de fichiers</h2>
+<p>Quel que soit le système d'exploitation que vous utilisez, les données (ainsi que les applications) sont stockées sous la forme de <strong><em>fichiers</em></strong> organisé en arbre. Il est crucial de savoir y naviguer.</p>
+<h3>Dossiers et fichiers</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="fichiers-navigation" class="interne">Naviguer dans un système de fichiers</a></p>
+</div></div>
+
+<h3>Dossiers et fichiers système</h3>
+<p>Le système d'exploitation a besoin de ses propres fichiers pour fonctionner correctement. Selon le système d'exploitations, ils sont rangés différemment :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="fichiers-syst%C3%A8me" class="interne">Hiérarchie système</a></p>
+</div></div>
+
 
 
 </article>
