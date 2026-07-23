@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Bases système
+title: Système
 
 eleventyComputed:
   eleventyNavigation:
@@ -12,13 +12,28 @@ eleventyComputed:
 
 On suppose ici que vous savez minimalement interagir avec votre système d'exploitation en exécutant des applications via un menu ou l'explorateur de fichiers.
 
-## Bases
+<!-- TBD :
+- alt f4, finder ou truc ubuntu pour connaître applis
+-  
+
+-->
+
+## Partie I : Ordinateur et Applications
 
 {% aller %}
-[Connaissances minimales](bases){.interne}
+[Bases](bases){.interne}
 {% endaller %}
 
-## Le terminal
+
+
+## Partie II : interagir avec le système
+
+- dossier / fichier
+- terminal
+- application utiles
+- installation nouveau système optionnel.
+
+### Le terminal
 
 Le terminal permet d'exécuter rapidement des commandes.
 
@@ -26,8 +41,9 @@ Le terminal permet d'exécuter rapidement des commandes.
 [Terminal](terminal){.interne}
 {% endaller %}
 
-## Installation d'un nouveau système
+### Installation d'un nouveau système
 
 {% aller %}
 [Nouvelle installation d'un système](système-installation){.interne}
 {% endaller %}
+

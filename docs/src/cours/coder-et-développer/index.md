@@ -15,6 +15,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD changement
+
+- formated strings avec exercices
+- retour de fct type cohérent = objet / None ou True/false.
+- `Classe.méthode(paramètres)` pour les méthodes
+- UML attribut/méthodes privées +/-
+- UML diagrammes de fonctionnement ?
+ -->
+
+
 Ce cours est dédié au code informatique. On utilisera le language python comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront cependant transposables dans d'autres langages (comme le javascript ou encore ruby par exemple).
 
 On supposera que vous avez des connaissances scientifiques de base (ie. mathématiques de Lycée) et que vous disposer d'un ordinateur dont vous êtes administrateur.
@@ -24,7 +34,7 @@ Aucune compétences en informatique préalable n'est nécessaire.
 ## <span id="bases"></span>Bases
 
 {% aller %}
-[Bases de la programmation](bases-programmation){.interne}
+[Bases de programmation et du langage python](bases-programmation){.interne}
 {% endaller %}
 
 ### Tutoriel python

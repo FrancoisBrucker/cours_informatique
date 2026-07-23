@@ -15,6 +15,7 @@ eleventyComputed:
 - <https://www.youtube.com/watch?v=lL3ElCmq6jc>
 - liste des ASN France : <https://whoisrequest.com/ip/fr>
 - <https://www.brindereseau.fr/?article=ipv6>
+- <https://fazamhd.com/mental-models/networking/>
 
  -->
 

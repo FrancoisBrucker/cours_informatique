@@ -17,7 +17,10 @@ Cours de système et de réseau. La partie ops de dev**ops**.
 
 Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
 
-## Bases
+## Système
+
+## Réseau
+
 
 ### Système
 

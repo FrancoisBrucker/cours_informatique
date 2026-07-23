@@ -1,6 +1,7 @@
 import { EleventyRenderPlugin, EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+
 import setupMarkdown from './config/markdown/index.js';
 import assetsConfig from "./config/assets.js";
 import filtersConfig from "./config/filters.js";
