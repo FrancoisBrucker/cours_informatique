@@ -53,7 +53,9 @@ Ce schéma s'applique à une vaste gamme d'ordinateur : ordinateur fixe ou porta
 Pour que chaque application n'ait pas à tout gérer (accès au processeur, à la mémoire, au disque dur, au réseau, ...) comme on le ferait avec un circuit imprimé par exemple, on utilise un [système d'exploitation](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation) (ou **_OS_** pour _operating system_) comme intermédiaire. L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. Nous allons présenter ici les principes d'un OS de bureau (W11, Linux Ubuntu, MacOS) actuel.
 
 
-> TBD ici : déplacer les utilisateur/root etc dans la partie II.2 (II.1 = dossiers et fichiers, II.2 = utilisateurs et droits)
+> TBD ici 
+> 
+> TBD déplacer les utilisateur/root etc dans la partie II.2 (II.1 = dossiers et fichiers, II.2 = utilisateurs et droits)
 > 
 On suppose ici que vous savez minimalement interagir avec votre système d'exploitation en exécutant des applications via un menu ou l'explorateur de fichiers.
 
@@ -62,12 +64,13 @@ On suppose ici que vous savez minimalement interagir avec votre système d'explo
 - l'instruction sur un endroit du disque dur : montrer liste x86
 -
 
-## Principes
 
 > Parler d'indirection entre Ordi - os - programme. Ne pas parler de noyau ni d'horloge
 > TBD tout se suite parler de la carte mère qui réveille le noyau. Dire qu'un OS c'est un noyau, des drivers et des format application pour les programmes (co un driver d'exécutable). Noyau est processeur dépendant.
 
 Le but d'un [ordinateur](https://fr.wikipedia.org/wiki/Ordinateur) est de permettre à des utilisateurs d'exécuter des applications. Pour que chaque application n'ait pas à tout gérer (accès au processeur, à la mémoire, au disque dur, au réseau, ...) comme on le ferait avec un circuit imprimé par exemple, on utilise un [système d'exploitation](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation) (ou **_OS_** pour _operating system_) comme intermédiaire :
+
+> TBD supprimer utilisateur et parler directement ici du théorème fondamental de l'ingénierie
 
 ![os](./os.png)
 
