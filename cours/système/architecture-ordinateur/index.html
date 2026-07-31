@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Sécurité</title>
+    <title>Architecture d&#39;un ordinateur</title>
 
     
 
@@ -71,36 +71,10 @@
       
 <article>
 
-  <h1 class="mb-1">Sécurité</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">cours</li>
-          
-            <li class="before:content-['•'] before:px-1">sécurité</li>
-          
-            <li class="before:content-['•'] before:px-1">cryptographie</li>
-          
-        </ul>
-      </div>
+  <h1>Architecture d&#39;un ordinateur</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteur : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">François Brucker</li>
-          
-        </ul>
-      </div>
     
   </div>
 
@@ -113,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/architecture-ordinateur/">Architecture d&#39;un ordinateur</a>
 
 </div></div>
 
@@ -122,108 +96,60 @@
     
   
 
-  <p>Embryon de cours de sécurité. On y verra essentiellement les fondements cryptographiques de la sécurité.</p>
-<!-- TBD
-
-> TBD ajouter  <https://www.youtube.com/watch?v=wfb1WunGtXU> avec le xor pour expliquer diffie hellman.
-> TBD montrer avec openssh comment le faire (voir serious cryptography)
-> TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
-> TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU> double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>
-
-> Trop compliqué. A simplifier pour laisser les preuve et le reste pour les plus intéressés et ne garder que les principes et une preuve max par partie. 
-> Ajourer des TPs.
-
-à lire :
-
-- <https://www.youtube.com/@yousrajaved/videos>
-- <https://www.youtube.com/watch?v=tZse1YyiHdg&list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP>
-- <https://www.youtube.com/watch?v=prI35GmCon4&list=PLm3J0oaFux3ZYpFLwwrlv_EHH9wtH6pnX>
-
-Parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que c'est pour ça que l'authentification commence à être sous d'autre formes (logarithme discret + courbes elliptiques)
-
--->
-<h2>Cryptographie</h2>
+  <h2>Carte mère</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="cryptographie" class="interne">Cryptographie</a></p>
+<p><a href="carte-m%C3%A8re" class="interne">Carte mère</a></p>
 </div></div>
 
-<h2>Communication</h2>
-<h3>key derivation</h3>
+<h2>Mémoire</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="key-derivation" class="interne">Key derivation</a></p>
+<p><a href="m%C3%A9moire" class="interne">Mémoire</a></p>
 </div></div>
 
-<h3>TLS</h3>
-<p>Le protocole derrière toute communication sécurisée</p>
+<h2>Processeur</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="tls" class="interne">Transport Layer Security</a></p>
+<p><a href="processeur" class="interne">Processeur</a></p>
 </div></div>
 
-<h3>https</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=OU-e_Qz-v4U&amp;list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN">https</a></p>
-</div></div>
-
-<p><a href="https://fr.wikipedia.org/wiki/X.509">Certificats X.509</a> :</p>
-<ol>
-<li>certifiant (<em>issuer</em>) :
-<ol>
-<li>nom</li>
-<li>adresse</li>
-</ol>
+<h2>Périphériques</h2>
+<p>On y accède via des protocoles d'accès. Ensuite chaque type de périphérique aura un ou plusieurs protocoles permettant son utilisation.</p>
+<p>Exemple du réseau :</p>
+<ul>
+<li>protocole d'accès à la carte : PCie</li>
+<li>protocole d'utilisation :
+<ul>
+<li>TCP</li>
+<li>UDP</li>
+<li>...</li>
+</ul>
 </li>
-<li>possesseur du certificat (<em>subject</em>) :
-<ol>
-<li>nom</li>
-<li>adresse</li>
-<li>clé publique</li>
-</ol>
-</li>
-<li>plage de validités du certificat (de quand à quand)</li>
-<li>signature du certifiant : un hash du certificat chiffré avec sa clé privée</li>
-</ol>
-<p>Lorsque l'on reçoit la signature :</p>
-<ol>
-<li>hash le certificat</li>
-<li>déchiffre la signature du certificat avec la clé publique du certifiant</li>
-<li>si les hash coincident c'est bon</li>
-</ol>
-<p>Qui certifie :</p>
-<ol>
-<li>root authority délivre des certificat aux intermediate authority</li>
-<li>les intermediate authority certifient :
-<ol>
-<li>d'autres intermediate authority</li>
-<li>des serveur directement</li>
-</ol>
-</li>
-</ol>
-<p>C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance, en allant sur le site web du certifiant pour examiner le certifiant du certifiant, jusqu'à root si nécessaire.</p>
-<h2>OpenPGP</h2>
+</ul>
+<p>Les périphériques présents sur tous les ordinateurs sont les périphériques de stockage, dont nous allons parler plus précisément :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="openPGP" class="interne">OpenPGP</a></p>
+<p><a href="device-stockage" class="interne">Disques durs et autres périphériques de stockage</a></p>
 </div></div>
 
+<h2><span id="général"></span>Version détaillée</h2>
+<blockquote>
+<p>TBD : à refaire.</p>
+</blockquote>
+<p><img src="sch%C3%A9ma-d%C3%A9taill%C3%A9-ordinateur.png" alt="schéma détaillé"></p>
 
 
 </article>

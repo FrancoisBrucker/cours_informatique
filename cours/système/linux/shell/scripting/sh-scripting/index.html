@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Shell scripting</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Shell scripting</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/shell/">Shell</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/shell/scripting/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/shell/scripting/sh-scripting/">Shell scripting</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <ul>
+<li>histoire : <a href="https://www.in-ulm.de/~mascheck/bourne/">https://www.in-ulm.de/~mascheck/bourne/</a></li>
+<li>parameter expansion : <a href="https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02">https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02</a></li>
+</ul>
+<blockquote>
+<p>TBD args et getopts :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=fJSUVGlQ1E8">https://www.youtube.com/watch?v=fJSUVGlQ1E8</a></li>
+<li><a href="https://www.youtube.com/watch?v=5O4SLIDSMqg">https://www.youtube.com/watch?v=5O4SLIDSMqg</a></li>
+<li><a href="https://www.quennec.fr/book/export/html/341">https://www.quennec.fr/book/export/html/341</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<p>sh cheat sheet : &lt;<a href="http://joedog.org/articles-cheat-sheet/">joedog.org/articles-cheat-sheet/</a>&gt;
+<a href="https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash">https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash</a>
+<a href="https://stackoverflow.com/a/5725402">https://stackoverflow.com/a/5725402</a>
+<a href="https://www.commandlinux.com/man-page/man1/sh.1.html">https://www.commandlinux.com/man-page/man1/sh.1.html</a></p>
+</blockquote>
+<p>Les principes d'un bon script sont (voir <a href="https://www.amazon.fr/Classic-Shell-Scripting-Arnold-Robbins/dp/0596005954">classic shell scripting</a>) :</p>
+<ol>
+<li>faire <strong>une seule chose</strong> et sans blabla</li>
+<li>prendre et rendre du texte pas de fichiers binaires</li>
+<li>utiliser les entrés/sorties standard</li>
+<li>vos entrées et vos sorties doivent avoir le même format</li>
+<li>&quot;<em>laisser quelqu'un d'autre faire les choses compliquées</em>&quot; : utiliser d'autres commandes unix</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>À retenir</p>
+</div><div class="pl-8 mr-8">
+<p>Essayer d'être portable. On fait du du sh pour pouvoir être exécuté partout.</p>
+</div></div>
+
+<blockquote>
+<p>TBD faire exemple du rot13 tout au long de ce cours</p>
+</blockquote>
+<p>Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes sans les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=tK9Oc6AEnR4">tuto</a></li>
+<li><a href="https://www.youtube.com/watch?v=KG97VzMjfMg">un autre tuto</a></li>
+</ul>
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/">https://www.gnu.org/software/bash/manual/html_node/</a></p>
+</div></div>
+
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token shebang important">#! /bin/sh -</span>
+</code></pre>
+<h2>Variables d'environnement</h2>
+<h3>python</h3>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">[</span><span class="token string">"PATH"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>environ<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"PORT"</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># print(type(os.environ.get("PORT", 3000))) # attention</span></code></pre>
+<p>Puis :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python variables.py
+$ <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">1456</span> python variables.py</code></pre>
+<h3>node</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs">https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs</a></p>
+</div></div>
+
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PATH</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">PORT</span> <span class="token operator">||</span> <span class="token number">3000</span><span class="token punctuation">)</span></code></pre>
+<h3>env file</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://12factor.net/config">https://12factor.net/config</a></p>
+</div></div>
+
+<p>Il n'est pas commité.</p>
+<ul>
+<li><a href="https://pypi.org/project/python-dotenv/">https://pypi.org/project/python-dotenv/</a></li>
+<li><code>node --env-file-if-exists=.env app.js</code></li>
+<li><a href="https://github.com/motdotla/dotenv">https://github.com/motdotla/dotenv</a></li>
+<li><code>set -a &amp;&amp; source .env &amp;&amp; set +a</code> voir : <a href="https://gist.github.com/mihow/9c7f559807069a03e302605691f85572">shell</a></li>
+</ul>
+<h2>Gestion des paramètres</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://coderwall.com/p/85jnpq/bash-built-in-variables">Gestion des paramètres d'un script</a></p>
+</div></div>
+
+<h2>Fonctions</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://linuxize.com/post/bash-functions/">Fonctions bash en texte</a></li>
+<li><a href="https://www.youtube.com/watch?v=aqvc9kYnz0U&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&amp;index=2">fonctions bash YouTube</a></li>
+</ul>
+</div></div>
+
+<p>Les fonctions ne peuvent rendre qu'un entier, c'est leur code de sortie. Pour le reste effectuez vos sorties sur la sortie standard (avec <code>echo</code>).</p>
+<h2>Structures de contrôle</h2>
+<h3>if/then</h3>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">if</span> 
+commandes
+<span class="token keyword">then</span>
+commandes
+<span class="token keyword">fi</span></code></pre>
+<p>Avec un else :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">if</span> 
+commandes
+<span class="token keyword">then</span>
+commandes
+<span class="token keyword">else</span>
+commandes
+<span class="token keyword">fi</span></code></pre>
+<p>C'est le retour de la dernière commande avant la ligne avec <code>then</code> qui décide du branchement :</p>
+<ul>
+<li>s'il vaut 0 on fait le bloc allant de <code>then</code> à <code>else</code> (ou <code>fi</code> s'il n'y a pas de bloc <code>else</code>)</li>
+<li>sinon on fait le bloc allant de <code>else</code> à <code>fi</code></li>
+</ul>
+<p>Par exemple, en utilisant les commandes <a href="https://man7.org/linux/man-pages/man1/true.1.html"><code>true</code></a> et <a href="https://man7.org/linux/man-pages/man1/false.1.html"><code>false</code></a> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">if</span>
+<span class="token boolean">true</span>
+<span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> oui
+<span class="token keyword">else</span>
+<span class="token builtin class-name">echo</span> non
+<span class="token keyword">fi</span></code></pre>
+<p>Ou encore :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">if</span>
+<span class="token boolean">false</span>
+<span class="token boolean">true</span>
+<span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> oui
+<span class="token keyword">else</span>
+<span class="token builtin class-name">echo</span> non
+<span class="token keyword">fi</span></code></pre>
+<p>On peut aussi avoir la forme où la première commande peut être placée après le if :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">if</span> <span class="token boolean">true</span>
+<span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> oui
+<span class="token keyword">else</span>
+<span class="token builtin class-name">echo</span> non
+<span class="token keyword">fi</span></code></pre>
+<p>La forme précédente qui est très pratique lorsque l'on a qu'une seule commande.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une commande doit précéder l'instruction <code>then</code> si on peut avoir sur une même ligne le if et le then, il faut terminer la commande de test avec un <code>;</code> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">if</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> oui
+<span class="token keyword">else</span>
+<span class="token builtin class-name">echo</span> non
+<span class="token keyword">fi</span></code></pre>
+</div></div>
+
+<p>La commande <a href="https://linux.die.net/man/1/test"><code>test</code></a> qui est aussi la commande <code>[</code> (oui, <code>[</code> est un fichier de <code>/usr/bin</code>) permet de faire de nombreux test courant :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.shellscript.sh/test.html">Utiliser la commande <code>test</code> ou <code>[</code></a></p>
+</div></div>
+
+<p>Bash permet également d'utiliser une construction utilisant <a href="https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS"><code>[[ expression ]]</code></a> qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (<code>[[</code> n'est pas une commande, c'est une instruction interne à bash). Préférez donc les constructions avec <code>[</code> ou <code>test</code>, plus portable.</p>
+<p>Il est possible de tester de nombreuses choses, allant de conditions logique à l'existence de fichiers :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests">comment réaliser des tests en bash</a></p>
+</div></div>
+
+<h3>boucles for/while/until</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html">boucles en bash</a></p>
+</div></div>
+
+<p>Les constructions sont identiques à la construction du if. La seule particularité est la boucle for qui itère sur une suite de mot séparé par des espaces :</p>
+<pre><code>for x in salut les gars
+do                     
+echo $x      
+done                   
+</code></pre>
+<p>Ou, de façon équivalente :</p>
+<pre><code>for x in salut les gars; do
+echo $x      
+done                   
+</code></pre>
+<p>On utilise parfois la boucle <code>while</code> pour lire l'entrée standard, en combinaison avec la commande <a href="https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/les-bases-de-la-programmation-shell/la-commande-read"><code>read</code></a> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">while</span> <span class="token builtin class-name">read</span> line
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span>
+<span class="token keyword">done</span> <span class="token operator">&lt;</span> /dev/stdin</code></pre>
+<p>Ou le redoutable :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token keyword">while</span> <span class="token builtin class-name">read</span> line
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span>
+<span class="token keyword">done</span> <span class="token operator">&lt;</span> <span class="token string">"<span class="token variable">${1<span class="token operator">:-</span><span class="token operator">/</span>dev<span class="token operator">/</span>stdin}</span>"</span></code></pre>
+<p>Qui lit l'entrée standard si le premier paramètre (<code>$1</code>) n'est pas positionné. Cela utilise une spécificité de sh pour <a href="https://github.com/dylanaraps/pure-sh-bible?tab=readme-ov-file#parameter-expansion">gérer les variables</a>.</p>
+<h2>Variables</h2>
+<h3>Métacaractères</h3>
+<p>On a déjà vu <a href="../../bases-linux/commandes#meta-caracteres">les métacaractères du shell</a>, ils commencent par <code>$</code> et peuvent être utilisés dans les scripts :</p>
+<ul>
+<li><code>$?</code> : le code de sortie de la dernière commande</li>
+<li><code>$$</code> : le PID du shell courant</li>
+<li><code>$(expression)</code> : pour exécuter l'expression et donner son affichage comme argument. Par exemple <code>echo $(expr 3 + 4)</code>. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.</li>
+<li><code>$((arithmétique))</code> : pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic">exécuter des opérations arithmétiques</a>, par exemple <code>echo $((3+4))</code></li>
+<li><code>${variable}</code> : pour afficher le contenu d'une variable, par exemple <code>echo ${PAH}</code></li>
+</ul>
+<h3>Variables internes</h3>
+<p>Des variables créés par le shell et pouvant être utilisé dans les scripts. A utiliser avec parcimonie car cela rend vos scripts spécifiques à bash.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://tldp.org/LDP/abs/html/internalvariables.html">https://tldp.org/LDP/abs/html/internalvariables.html</a></p>
+</div></div>
+
+<h2>Process et shell</h2>
+<blockquote>
+<p>TBD mieux faire</p>
+</blockquote>
+<p>Le script est par défaut exécuté dans un nouveau shell. Mais ce n'est pas toujours ce que l'on veut :</p>
+<ul>
+<li><code class="fichier">./truc.sh</code> exécution dans un nouveau shell enfant</li>
+<li><code class="fichier">source ./truc.sh</code> exécution ligne à ligne dans le shell actuel</li>
+<li><code class="fichier">. ./truc.sh</code> exécution ligne à ligne dans le shell actuel (identique à <code>source</code>)</li>
+<li><code class="fichier">exec ./truc.sh</code>` nouveau shell qui remplace le shell existant</li>
+</ul>
+<p>Supposons que vous ayez un fichier exécutable <code class="fichier">pid.sh</code> contenant :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token shebang important">#! /bin/sh</span>
+
+<span class="token builtin class-name">echo</span> <span class="token variable">$$</span></code></pre>
+<ol>
+<li>Le pid du shell courant est accessible avec : <code>echo $$</code></li>
+<li>Le pid précédent est différent du pid du shell exécutant le script : <code>./pid.sh</code></li>
+<li>On devrait retrouver le même pid en tapant : <code>source ./pid.sh</code></li>
+</ol>
+<p>C'est très utile lorsque l'on exécute un fichier de configuration qui doit s'appliquer au shell courant.</p>
+<p>Attention, si vous exécutez <code>exec ./pid.sh</code> le shell faisant le echo vq remplacer le shell courant et donc fermer la fenêtre. Pour l'exécuter sans soucis faite le dans un sous-shell :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">704757</span>
+$ <span class="token function">bash</span>
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">705824</span>
+$ <span class="token builtin class-name">exec</span> ./pid.sh 
+<span class="token number">705824</span>
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">704757</span></code></pre>
+<h2>Getopt</h2>
+<blockquote>
+<p>TBD <a href="https://labex.io/fr/tutorials/shell-bash-getopt-391993">https://labex.io/fr/tutorials/shell-bash-getopt-391993</a></p>
+</blockquote>
+<h2>Bash scripting</h2>
+<blockquote>
+<p>TBD étoffer et vérifier que je ne raconte pas de bêtises.
+TBD dans les systèmes actuels sh = bash</p>
+</blockquote>
+<ul>
+<li><a href="https://michael-herbst.com/teaching/advanced-bash-scripting-2017/">un cours</a></li>
+</ul>
+<h2>on s'amuse avec rot13</h2>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coucou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COUCOU
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COÉCOU
+❯ <span class="token function">man</span> <span class="token function">tr</span>
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:][=e=]"</span> <span class="token string">"[:upper:]e"</span>
+COeCOU
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:][=ea=]"</span> <span class="token string">"[:upper:]ea"</span>
+tr: misplaced equivalence equals sign
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:][=e=]"</span> <span class="token string">"[:upper:]e"</span>
+COeCOU
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=E=]"</span> <span class="token string">"e"</span>
+COeCOU
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécou"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=E=]"</span> <span class="token string">"E"</span>
+COECOU</code></pre>
+<p>Attention :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouê"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=]"</span> <span class="token string">"e"</span> <span class="token operator">|</span>  <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COECOUE</code></pre>
+<p>mais :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=][=a=]"</span> <span class="token string">"ea"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COACOUA</code></pre>
+<p><code>[=e=]</code> correspond à des listes :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">man</span> <span class="token function">tr</span>
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=][=a=]"</span> <span class="token string">"eeeeeeea"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COACOUA
+❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=][=a=]"</span> <span class="token string">"eeeeeeeeeeeeea"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COECOUA</code></pre>
+<p>Mieux vaut tout chaîner :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=e=]"</span> <span class="token string">"e"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"[=a=]"</span> <span class="token string">"a"</span> <span class="token operator">|</span>  <span class="token function">tr</span> <span class="token string">"[:lower:]"</span> <span class="token string">"[:upper:]"</span>
+COECOUA
+</code></pre>
+<p>mais en vrai il vaut mieux utiliser <code>iconv</code> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"coécouå"</span> <span class="token operator">|</span> <span class="token function">iconv</span> <span class="token parameter variable">-c</span> <span class="token parameter variable">-f</span> utf8 <span class="token parameter variable">-t</span> ascii//translit</code></pre>
+<p>sous Linux. Marche pas sous macos (mauvaise lib de libconf).</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
