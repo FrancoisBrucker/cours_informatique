@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Connaissances minimales
+title: Ordinateur et programmes
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,7 +10,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le but d'un [ordinateur](https://fr.wikipedia.org/wiki/Ordinateur) est de permettre à des utilisateurs d'exécuter des applications. Il est composé de multiples composants qui interagissent entre eux :
+<!-- tbd 
+
+parler de système d'exploitation : exploite/utilise l'ordinateur.
+parler de language machine : spécifique au processeur
+parler d'application : programme exécutable spécifique au système d'exploitation
+
+-->
+
+Le but d'un [ordinateur](https://fr.wikipedia.org/wiki/Ordinateur) est de permettre à des utilisateurs d'exécuter des applications. Il est composé de multiples composants physiques qui interagissent entre eux :
 
 - le [processeur](https://fr.wikipedia.org/wiki/Processeur) : exécute des instructions sur des variables appelés registre (64bits). Instructions et variables sont prisent et manipulées dans la mémoire.
 - [mémoire vive](https://fr.wikipedia.org/wiki/M%C3%A9moire_vive) : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau ou chaque case contient 1 [Byte](https://fr.wikipedia.org/wiki/Byte). Comme on peut accéder à tout élément sans contrainte, cette mémoire est appelée _RAM_ (pour Random Access Memory)

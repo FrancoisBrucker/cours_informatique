@@ -32,6 +32,8 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 - <https://www.youtube.com/watch?v=tZse1YyiHdg&list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP>
 - <https://www.youtube.com/watch?v=prI35GmCon4&list=PLm3J0oaFux3ZYpFLwwrlv_EHH9wtH6pnX>
 
+Parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que c'est pour ça que l'authentification commence à être sous d'autre formes (logarithme discret + courbes elliptiques)
+
 -->
 
 ## Cryptographie

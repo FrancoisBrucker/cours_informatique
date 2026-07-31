@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Système et réseau
+title: Système
 tags: ['cours', 'unix', 'système']
 authors:
     - "François Brucker"
@@ -13,32 +13,14 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Cours de système et de réseau. La partie ops de dev**ops**.
+Cours de système.
 
-Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
-
-## Système
-
-## Réseau
-
-
-### Système
+## Partie I : Ordinateur et Programmes
 
 {% aller %}
-[Principes et utilisation d'un système d'exploitation](bases-système){.interne}
+[Ordinateur et Programmes](ordinateur-programmes){.interne}
 {% endaller %}
 
-### Réseau
-
-{% aller %}
-[Principes et utilisation du réseau](bases-réseau){.interne}
-{% endaller %}
-
-### ssh
-
-{% aller %}
-[Connexions ssh](./ssh){.interne}
-{% endaller %}
 
 ## Linux
 
@@ -50,7 +32,7 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 
 > TBD refactor shell <https://effective-shell.com/part-1-transitioning-to-the-shell/navigating-your-system/>
 > TBD <https://tuteurs.ens.fr/unix/> et shell variables <https://tuteurs.ens.fr/unix/shell/variable.html>
-> TBD découper en partie plus digeste
+> TBD découper en parties plus digeste
 > TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>
 > TBD opérateurs shell <https://quennec.fr/book/export/html/272>
 > TBD fibo en sh : <https://quennec.fr/node/640>
@@ -58,29 +40,28 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
 1. Système
    1. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
    2. [Système d'exploitation](./système-exploitation){.interne}
-   3. [Structures de données utiles](./structures-données-système){.interne}
-2. [Bases de réseau](réseau){.interne}
-3. [clients serveurs](./client-serveur){.interne}
-4. [Redirection de ports](redirection-ports-ssh){.interne}
-5. Langages
+   3. [Structures de données utiles](./structures-données){.interne} et [Structures de données système](./structures-données-système){.interne}
+   4. [concurrence](./concurrence) et 
+2. Langages
     1. [langage **C**](./langage-c){.interne}
     2. assembleur
     3. ABI
-6. Gestion des fichiers
+3. Gestion des fichiers
    1. [Fichiers en **C**](fichiers-C){.interne}
    2. [Memory mapping](memory-mapping){.interne}
-7. Gestion des process
+4. Gestion des process
    1. signaux (SIGINT et ctrl+C), attention on ne peut pas tout faire dans une gestion de signal
-   2. fork
+   2. [fork](./fork)
    3. pipe (passe dans le fork)
-8. Concurrence
-   1. IPC
+5. [Concurrence](./concurrence)
+   1. [IPC](./ipc)
       1. fifo, message queues
       2. file locking
    2. Threads
       1. mutex (métaphores ?)
       2. opérations atomique
-9.  Docker
+6.  Docker
+7.  [outil système](./radare2)
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :
