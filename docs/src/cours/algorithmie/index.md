@@ -17,6 +17,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD 
+
+Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
+
+dans la deuxième partie partie faire le modèle classique de la mémoire avec pile/mémoire et pointeurs.
+
+-->
+
+
 Cours d'algorithmie.
 
 {% info %}

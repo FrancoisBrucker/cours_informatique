@@ -15,12 +15,17 @@ eleventyComputed:
 
 Cours de système.
 
-## Partie I : Ordinateur et Programmes
+## Partie I : Ordinateur, programmes et OS
 
 {% aller %}
-[Ordinateur et Programmes](ordinateur-programmes){.interne}
+[Ordinateur, programmes et OS](ordinateur-programmes-OS){.interne}
 {% endaller %}
 
+## Partie II : Stocker et utiliser des données
+
+### II.1 : Dossiers et fichiers
+
+### II.2 : Utilisateurs et droits
 
 ## Linux
 
