@@ -198,11 +198,8 @@ Ce n'est pas parce que l'on peut calculer quelque chose qu'on peut le faire en p
 {% info %}
 Lorsque l'on vous donne ce genre de grandeurs, ayez à l'esprit qu'il n'y a que de l'ordre de $10^{80}$ atomes dans l'univers, ce qui est bien plus petit que $2^{65500}$.
 
-cf. <https://fr.wikipedia.org/wiki/Ordres_de_grandeur_de_nombres#1039_%C3%A0_10100>
+cf. [unités et ordres de grandeur](/cours/misc/unités-ordres-grandeur){.interne}
 {% endinfo %}
-{% lien %}
-[Calcul du nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk)
-{% endlien %}
 
 Les nombres $2 \uparrow^{(m)} n$ vont être liés à la fonction d'Ackermann. Commençons donc par nous familiariser avec :
 

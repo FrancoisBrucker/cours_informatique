@@ -17,6 +17,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD 
+
+Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
+
+dans la deuxième partie partie faire le modèle classique de la mémoire avec pile/mémoire et pointeurs.
+
+-->
+
+
 Cours d'algorithmie.
 
 {% info %}
@@ -470,6 +479,9 @@ Pour voir u peu plus clair dans tous ces problèmes algorithmiques aux complexit
 
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
+> TBD aborder NP via les formules logique et les pbs de décision. existe-t-il < k ?
+> TBD fact est dans NP cap conp et donc prseque sur pqs pas npc. donner le problème de décision associé. <https://cstheory.stackexchange.com/questions/159/is-integer-factorization-an-np-complete-problem>
+> 
 {% aller %}
 [Problèmes NP](./problèmes-NP){.interne}
 {% endaller %}
@@ -479,6 +491,15 @@ Le problème SAT est notre exemple de problème NP-complet. On va le voir sous d
 {% aller %}
 [Problème SAT](./problème-SAT){.interne}
 {% endaller %}
+
+> TBD ici caser les formules logiques, voir les bdd
+> montrer formules logique = sat
+> dire que plus tard on verra algo = sat. Pour l'instant juste sur quelques exemples.
+> p = NP : verifier = trouver ? Si SAT P alors pareil et le montrer et on le montre
+> Ne donner qu'une idée du fait qu'une formule donnée est un sat. Dire qu'on le verra plus tard (partie assembleur)
+> 
+> TBD  le truc de Pascal avec les probas.
+> bus : <https://www.youtube.com/watch?v=hFWFN46kaOo> protocole de communication : <https://www.doc.ic.ac.uk/~eedwards/compsys/10_Slides_CPU_buses.pdf>
 
 ### Intermède : l'algorithme qui résout tout
 

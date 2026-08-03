@@ -18,6 +18,7 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 
 <!-- TBD
 
+> TBD ajouter  <https://www.youtube.com/watch?v=wfb1WunGtXU> avec le xor pour expliquer diffie hellman.
 > TBD montrer avec openssh comment le faire (voir serious cryptography)
 > TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
 > TBD échange de messages avec key generation algorithm : <https://www.youtube.com/watch?v=7uEeE3TUqmU> double ratchet algorithm (<https://www.youtube.com/watch?v=9sO2qdTci-s>). Puis à plusieurs (suite du channel) MLS protocol <https://www.youtube.com/watch?v=FESp2LHd42U>
@@ -30,6 +31,8 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements crypto
 - <https://www.youtube.com/@yousrajaved/videos>
 - <https://www.youtube.com/watch?v=tZse1YyiHdg&list=PLZNqNoh4u1gzKMYgrrgcKK5ozNQ7f_OMP>
 - <https://www.youtube.com/watch?v=prI35GmCon4&list=PLm3J0oaFux3ZYpFLwwrlv_EHH9wtH6pnX>
+
+Parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que c'est pour ça que l'authentification commence à être sous d'autre formes (logarithme discret + courbes elliptiques)
 
 -->
 

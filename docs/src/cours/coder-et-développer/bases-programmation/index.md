@@ -19,6 +19,32 @@ Nous verrons comment est structuré un langage informatique et comment écrire p
 
 Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple et il n'y a aucun prérequis informatique à avoir. Le but est de pouvoir exécuter (de la façon la plus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).
 
+## Exécuter du code python
+
+> interpréteur (comme javascript) python -> interp -> exécution machine (diff des langages exécutés golang)
+> ici : envoyer sur systeme 1 : systeme et execution de code. Principes.
+> utiliser print() et x = 34 (affectation variables)
+> 
+>  Différentes façon d'exécuter du python
+>
+> basthon
+> notebook (bashon) mais surtout colab (re print et exemple avec graphique matplotlib)
+> spyder
+> installer un interpréteur
+> pycharm
+> vscode
+
+## Variables et objets
+
+> stocker et retrouver ses petits
+
+> manipuler des objets via des opérations et des néthodes
+> 
+## Fonctions et modules
+
+> manipuler des objets via des fonctions
+> groupement de fonctions dans des 
+
 ## Partie I : Variables et objets
 
 Coder revient à manipuler des objets via des variables. Nous allons ici définir ces terme et expliciter les différents moyens mis en oeuvre par python (et par extension tous les langages) pour le faire.
@@ -67,6 +93,7 @@ Leur utilisation est particulièrement adaptée pour rédiger et partager des co
 {% endaller %}
 
 #### Spyder
+
 
 {% lien %}
 <https://www.spyder-ide.org/>

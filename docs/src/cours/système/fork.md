@@ -14,7 +14,7 @@ eleventyComputed:
 - voir que les fichiers ouverts le sont pour les 2
 - faire un pipe entre les 2 fork.
 
-pas de ménoire partagées, ils sont différents
+pas de mémoire partagées, ils sont différents
 
 on peut faire un exec pour faire autre chose.
 
