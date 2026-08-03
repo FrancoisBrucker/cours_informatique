@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Ordinateur et programmes</title>
+    <title>Ordinateur, programmes et OS</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Ordinateur et programmes</h1>
+  <h1>Ordinateur, programmes et OS</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/ordinateur-programmes/">Ordinateur et programmes</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/ordinateur-programmes-OS/">Ordinateur, programmes et OS</a>
 
 </div></div>
 
@@ -96,16 +96,11 @@
     
   
 
-  <!-- tbd
+  <!-- TBD 
 
-parler de système d'exploitation : exploite/utilise l'ordinateur.
-parler de language machine : spécifique au processeur
-parler d'application : programme exécutable spécifique au système d'exploitation
+intro : ordi / os et programmes. 
 
 -->
-<blockquote>
-<p>TBD intro : ordi / os et programmes.</p>
-</blockquote>
 <h2>Ordinateur</h2>
 <p>Le but d'un <a href="https://fr.wikipedia.org/wiki/Ordinateur">ordinateur</a> est de permettre à des utilisateurs d'exécuter des applications :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -113,15 +108,15 @@ parler d'application : programme exécutable spécifique au système d'exploitat
   <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p>Définition</p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>ordinateur</em></strong> est composé de multiples composants physiques qui interagissent entre eux via <a href="https://fr.wikipedia.org/wiki/Carte_m%C3%A8re">une carte mère</a> :</p>
 <ul>
-<li>le <a href="https://fr.wikipedia.org/wiki/Processeur">processeur</a> qui exécute des instructions sur des variables appelés registre pouvant contenir 64<a href="https://fr.wikipedia.org/wiki/Bit">bit</a> d'information (un bit est un entier entre 0 et 1).</li>
+<li>le <a href="https://fr.wikipedia.org/wiki/Processeur"><strong><em>processeur</em></strong></a> qui exécute des instructions sur des variables appelés <strong><em>registre</em></strong> pouvant contenir 64<a href="https://fr.wikipedia.org/wiki/Bit">bit</a> d'information (il existe des registres génériques que l'on peut utiliser de façon interchangeable pour de nombreuses instructions et des registres spécialisés dans une tâche bien précise).</li>
 <li>de la mémoire que l'on sépare en 2 grande catégories :
 <ul>
-<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive">la mémoire vive</a> : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau $M$ ou chaque case contient 1<a href="https://fr.wikipedia.org/wiki/Byte">Byte</a> (un Byte est un entier entre 0 et 255 et est stocké sur 8 bits). Le processeur peut lire 8 Bytes consécutifs de la mémoire et les placer dans un de ses registres ou écrire un de ses registre dans 8 cases consécutives de la mémoire (en fait, ceci n'est possible que pour les adresses multiples de 8 : $M[8\cdot i:8\cdot (i +1)]$ pour tout $i$ pour des raisons d'efficacité). Comme on peut accéder à tout élément de la mémoire sans contrainte, cette mémoire est appelée <em>RAM</em> (pour Random Access Memory)</li>
-<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_de_masse">la mémoire de masse ou de stockage</a>, non volatile. On ne peut pas toujours accéder à tout byte du tableau de stockage indépendamment, il faut utiliser un protocole. Ces devices sont plus lent que la RAM mais sont non volatiles. Par exemple :
+<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_vive"><strong><em>la mémoire vive</em></strong></a> : un espace de stockage rapide, mais volatile (se vide lorsque l'on éteint l'ordinateur). Peut-être vu comme un grand tableau $M$ ou chaque case contient 1<a href="https://fr.wikipedia.org/wiki/Byte">Byte</a> (un Byte est un entier entre 0 et 255 et est stocké sur 8 bits). Le processeur peut lire 8 Bytes consécutifs de la mémoire et les placer dans un de ses registres ou écrire un de ses registre dans 8 cases consécutives de la mémoire (en fait, ceci n'est possible que pour les adresses multiples de 8 : $M[8\cdot i:8\cdot (i +1)]$ pour tout $i$ pour des raisons d'efficacité). Comme on peut accéder à tout élément de la mémoire sans contrainte, cette mémoire est appelée <em>RAM</em> (pour Random Access Memory)</li>
+<li><a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_de_masse"><strong><em>la mémoire de masse</em></strong> ou de stockage</a>, non volatile. On ne peut pas toujours accéder à tout byte du tableau de stockage indépendamment, il faut utiliser un protocole. Ces devices sont plus lent que la RAM mais sont non volatiles. Par exemple :
 <ul>
 <li>disques durs : plus lent que la mémoire mais non volatile</li>
 <li>USB : encore plus lent qu'un disque dur mais déplaçable facilement</li>
@@ -129,7 +124,7 @@ parler d'application : programme exécutable spécifique au système d'exploitat
 </li>
 </ul>
 </li>
-<li><a href="https://fr.wikipedia.org/wiki/P%C3%A9riph%C3%A9rique_informatique">des périphériques</a>, appelés <strong><em>device</em></strong>, qui composent tout les autres composants :
+<li><a href="https://fr.wikipedia.org/wiki/P%C3%A9riph%C3%A9rique_informatique">des <strong><em>périphériques</em></strong></a>, appelés <strong><em>device</em></strong>, qui composent tout les autres composants :
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Carte_r%C3%A9seau">carte réseau</a> : encore plus lent que l'USB mais accessible de partout</li>
 <li><a href="https://fr.wikipedia.org/wiki/Interactions_homme-machine">interfaces</a> :
@@ -144,10 +139,221 @@ parler d'application : programme exécutable spécifique au système d'exploitat
 </ul>
 </div></div>
 
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/misc/unit%C3%A9s-ordres-grandeur" class="interne">Unités et ordres de grandeur en informatique</a></p>
+</div></div>
+
 <p>Le schéma (très) simplifié suivant décrit un ordinateur :</p>
 <p><img src="schema-ordinateur.png" alt="un ordinateur"></p>
 <p>Ce schéma s'applique à une vaste gamme d'ordinateur : ordinateur fixe ou portable, mobile, tablette, <em>etc</em>. Ce qui va différentier ce que l'on peut faire avec est certes lié aux périphériques installées et aux capacités du processeur, mais aussi et surtout du système d'exploitation utilisé pour exécuter des applications.</p>
-<h2>OS</h2>
+<h2>Programmes</h2>
+<p>Un programme est une suite d'instructions exécutée l'une après l'autre par le processeur. Ce processus (dont nous verrons (bien) plus tard le fonctionnement détaillé nommé <a href="https://en.wikipedia.org/wiki/Instruction_cycle#Summary_of_stages"><em>fetch-decode-execute</em></a>) est contraint par le schéma de l'ordinateur :</p>
+<ol>
+<li>le seul endroit où peut être stocké un programme est en mémoire : chaque instruction du processeur doit être associé à un nombre binaire.</li>
+<li>le processeur doit connaître la prochaine instruction qu'il doit exécuter : un de ses registres spécialisé nommé <strong><em>pointeur d'instruction</em></strong> (d’abréviation <em>IP</em>) contiendra toujours l'adresse en mémoire de la <strong>prochaine</strong> instruction à exécuter.</li>
+</ol>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Exécuter un programme sur un ordinateur de fait en suivant les étapes suivantes :</p>
+<ol>
+<li>initialisation :
+<ol>
+<li>charger en mémoire la suite d'instructions à effectuer</li>
+<li>placer dans le registre  <code>IP</code> du processeur l'adresse en mémoire de la première instruction à executer</li>
+</ol>
+</li>
+<li>boucle d'exécution du programme :
+<ol>
+<li>étape <strong><em>fetch</em></strong> :
+<ol>
+<li>lire à l'adresse mémoire de <code>IP</code> la prochaine instruction à exécuter (pour les processeurs intel x86, cette instruction peut prendre entre 1 et 15 byte en mémoire), qui devient l'instruction courante</li>
+<li>incrémente <code>IP</code> de la taille de l'instruction courante (la valeur de <code>IP</code> est l'adresse par défaut de l'instruction suivant l'instruction courante)</li>
+</ol>
+</li>
+<li>étape <strong><em>decode</em></strong> : prépare l'instruction courante à être exécuté en chargeant ses paramètres dans des registres si nécessaire</li>
+<li>étape <strong><em>execute</em></strong> : le processeur exécute l'instruction courante</li>
+</ol>
+</li>
+<li>si l'instruction courante n'était pas l'instruction de fin de programme, on retourne à l'étape 2. pour effectuer une nouvelle boucle d'exécution du programme</li>
+</ol>
+</div></div>
+
+<p>La définition ci-dessus amène quelques commentaires.</p>
+<p>Tout d'abord <strong>les registres du processeur  sont les seuls moyens de communication du processeurs</strong> et servent à beaucoup de choses :</p>
+<p>Comme <code>IP</code> doit contenir l'adresse en mémoire de la prochaine instruction à exécuter, sa taille limite la taille maximale de la mémoire qu'un ordinateur peut utiliser.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Pour une taille de registre de 64b, quelle est la taille mémoire maximale en terabyte ($10^{12}$ byte)</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Une case mémoire contient 1B et un nombre de 64b peut être associé en notation binaire à $2^64$ entiers différents. La taille mémoire maximales est donc $2^{64}$Byte, ce qui correspond à $10^{64/\log_2(10)} \simeq 10^{19}$ Byte, donc plus de $10^7$ terabyte.</p>
+<p>Il y a de la marge pour nos ordinateurs actuels...</p>
+</div>
+</details>     
+</div>
+<p>De plus, un programme doit être stocké en mémoire de l'ordinateur pour être exécuté : à chaque instruction est associée une suite finie de 0 et de 1 stockée en mémoire. Par exemple considérons l'instruction
+valide pour un processeur x86 intel consistant à placer la constante 42 dans les 64bits du registre générique <code>RAX</code>. Elle s'écrit en <a href="https://fr.wikipedia.org/wiki/Assembleur">assembleur</a> (le language des processeurs) ainsi  :</p>
+<pre><code>MOV RAX, 42
+</code></pre>
+<p>Et est codée en <a href="https://fr.wikipedia.org/wiki/Langage_machine">langage machine</a> (l'encodage dans la mémoire) sur 10 bytes (on a utilisé ici la notation décimale, un byte correspondant aux entier allant de 0 255) : $72\;\;184\;\;42\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0$ de valeurs binaires :</p>
+<pre><code>01001000  10111000  101010  00000000  00000000  00000000  00000000  00000000  00000000  00000000
+</code></pre>
+<ul>
+<li>$72\;\;184$ correspond au numéro de l'instruction : <em>&quot;place un entier sur 64b dans le registre <code>RAX</code>&quot;</em></li>
+<li>$42\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0$ correspond à l'entier $0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;42 = 42$ en notation <a href="https://fr.wikipedia.org/wiki/Boutisme#Petit-boutisme">petit-boutisme</a> (on écrit les bytes d'un nombre de droite à gauche dans les processeurs intel)</li>
+</ul>
+<p>Si on reprend le cycle d'exécution de cette instruction :</p>
+<ol>
+<li>fetch :
+<ol>
+<li>le registre <code>IP</code> est placé au début de l'instruction. Son code est $72\;\;184\;\;42\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0\;\;0$ qui correspond à l'instruction <em>&quot;place 42 dans le registre <code>RAX</code></em> qui devient l'instruction courante</li>
+<li>le registre <code>IP</code> est incrémenté de 10</li>
+</ol>
+</li>
+<li>decode : l'entier 42 est placé dans un registre tampon du processeur utilisé pour stocker les paramètres</li>
+<li>exécution : la valeur du registre tampon est placé dans le registre <code>RAX</code></li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Effectuez le cycle d'exécution pour l'instruction <code>ADD RBX, RAX</code> de code $72\;\;137\;\;195$ qui ajoute le contenu de <code>RAX</code> au registre <code>RBX</code></p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ol>
+<li>fetch :
+<ol>
+<li>le registre <code>IP</code> est placé au début de l'instruction. Son code est $72\;\;137\;\;195$ qui correspond à l'instruction <em>&quot;ajoute <code>RAX</code> à <code>RBX</code></em> qui devient l'instruction courante</li>
+<li>le registre <code>IP</code> est incrémenté de $3$</li>
+</ol>
+</li>
+<li>decode : rien à faire</li>
+<li>exécution : la valeur du registre <code>RAX</code> est ajoutée au registre <code>RBX</code></li>
+</ol>
+</div>
+</details>     
+</div>
+<p>L'assembleur est très proche du langage machine. Il y a une transcription directe entre une instruction en langage assembleur et son code en langage machine. Par exemple notre instruction <code>ADD RBX, RAX</code> qui correspond au code machine $72\;\;137\;\;195$ se transcrit ainsi :</p>
+<ul>
+<li>$72$ est appelé <em>opcode</em> est détermine la taille des registres que l'on va utiliser. Ici des registres de taille 64 bit (<code>RAX</code> signifie en effet les 64 bits du registre <code>A</code>. Dans certains cas, on pourra utiliser qu'une partie de celui-ci : les 32 premiers bit en écrivant <code>EAX</code>, les 16 premiers en utilisant <code>AX</code>, ou encore les 8 premiers en utilisant <code>AL</code>.)</li>
+<li>$137$ est l'instruction proprement dite et correspond au fait d'ajouter la valeur d'un registre dans un autre</li>
+<li>$195$ qui vaut $11000011$ en binaire se décompose en :
+<ul>
+<li>$11$ qui correspond au fait que l'on veut manipuler 2 registres</li>
+<li>$000$ qui correspond au registre <code>A</code> (ici <code>RAX</code>)</li>
+<li>$011$ qui correspond au registre <code>B</code> (ici <code>RBX</code>)</li>
+</ul>
+</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Comment ajouter 42 au registre <code>RAX</code> en assembleur ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On peut exécuter le programme :</p>
+<pre><code>MOV RBX, 3
+ADD RAX, RBX
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Enfin, toutes ces instructions dépendant du processeur utilisé par l'ordinateur ! Nous avons utilisé ici des jeux d'instructions pour des processeurs de type x64 (les PC). Ces instructions seraient tout à fait différente pour un programme s'exécutant sur un mac par exemple.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un programme dépend du processeur utilisé car les instructions de chaque type de processeur (PC, MAC, mobile) va être différente.</p>
+</div></div>
+
+<p>Mais c'est encore pire que ça. Lorsqu'un processeur veut accéder à un device comme le disque dur il faudra qu'il parle son langage et ce langage va être différent selon le type de device (on ne parle pas à un écran comme on parle à une clé USB) et même selon la marque du device (deux écrans de marque différentes vont avoir des langages différents) : si l'on change de clavier il faut possiblement changer son programme !</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un programme dépend non seulement du processeur utilisé mais également des différents devices de l'ordinateur sur lequel il est exécuté.</p>
+</div></div>
+
+<p>Ce n'est pas raisonnable d'avoir à modifier son programme si l'on change une partie de son ordinateur, c'est pourquoi on n'exécute jamais un programme directement sur un ordinateur, on passe via un système d'exploitation dont le but est de gérer les différences entre matériels.</p>
+<h2>Système d'exploitation</h2>
+<blockquote>
+<p>TBD ici</p>
+</blockquote>
+<!-- tbd
+
+ICI théorème fondamentale de l’ingénierie logicielle
+
+parler de système d'exploitation : exploite/utilise l'ordinateur.
+parler de language machine : spécifique au processeur
+parler d'application : programme exécutable spécifique au système d'exploitation
+
+-->
 <p>Pour que chaque application n'ait pas à tout gérer (accès au processeur, à la mémoire, au disque dur, au réseau, ...) comme on le ferait avec un circuit imprimé par exemple, on utilise un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation">système d'exploitation</a> (ou <strong><em>OS</em></strong> pour <em>operating system</em>) comme intermédiaire. L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. Nous allons présenter ici les principes d'un OS de bureau (W11, Linux Ubuntu, MacOS) actuel.</p>
 <blockquote>
 <p>TBD ici</p>
@@ -166,7 +372,8 @@ TBD tout se suite parler de la carte mère qui réveille le noyau. Dire qu'un OS
 </blockquote>
 <p>Le but d'un <a href="https://fr.wikipedia.org/wiki/Ordinateur">ordinateur</a> est de permettre à des utilisateurs d'exécuter des applications. Pour que chaque application n'ait pas à tout gérer (accès au processeur, à la mémoire, au disque dur, au réseau, ...) comme on le ferait avec un circuit imprimé par exemple, on utilise un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation">système d'exploitation</a> (ou <strong><em>OS</em></strong> pour <em>operating system</em>) comme intermédiaire :</p>
 <blockquote>
-<p>TBD supprimer utilisateur et parler directement ici du théorème fondamental de l'ingénierie</p>
+<p>TBD supprimer utilisateur et parler directement ici du théorème fondamental de l'ingénierie
+TBD remplacer logiciels par applications</p>
 </blockquote>
 <p><img src="os.png" alt="os"></p>
 <h3>Matériel et logiciel</h3>
@@ -364,10 +571,6 @@ D'un point de vue ingénierie, ceci permet en plus de clairement les responsabil
 
 <p>Le groupe des administrateurs systèmes permet de modifier des paramètres systèmes d'exécuter ou stopper des démons et d'installer de nouveaux logiciels. Ces utilisateurs ont moins de pouvoirs que root qui peut tout faire mais permettent d'administrer le système au quotidien.</p>
 <p>Cela permet, si nécessaire, d'installer ou de configurer son système sans être connecté en tant que root en utilisant <a href="https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers">la commande sudo</a> sous Linux par exemple.</p>
-<h2>Programmes</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
 
 
 </article>
