@@ -133,8 +133,49 @@
 </div></div>
 
 <h2>Partie II : Stocker et utiliser des données</h2>
+<blockquote>
+<p>TBD déplacer les utilisateur/root etc dans la partie II.2 (II.1 = dossiers et fichiers, II.2 = utilisateurs et droits)</p>
+</blockquote>
 <h3>II.1 : Dossiers et fichiers</h3>
+<blockquote>
+<p>TBD parler des drivers et fax/ext. pas forcément spécifique à l'os (ex linux) mais pour windows pas vraiment le choix de l'orga dd. Dire qu'on en parlera bien plus précisément plus tard ?</p>
+</blockquote>
 <h3>II.2 : Utilisateurs et droits</h3>
+<p>Si tous les process du user mode pouvaient effectuer tous les appels systèmes sans restriction cela poseraient d'énormes problèmes de sécurité (un process pourrait accéder à toute la mémoire, en particulier celle réservée à d'autres process par exemple) c'est pourquoi chaque process n'a qu'un nombre restreint de possibilités (on appelle ceci <a href="https://fr.wikipedia.org/wiki/Droit_d%27acc%C3%A8s_(informatique)">des droits</a>) gérés via la notion d'utilisateurs.</p>
+<h3>Utilisateurs et groupes</h3>
+<p>Du point de vue du système d'exploitation un utilisateur est une entité permettant d'exécuter des processus. L'utilisateur qui se connecte à l'ordinateur au login est donc un parmi beaucoup d'autres, la plupart n'étant pas associé à une personne physique. Les utilisateurs sont ensuite placés dans des groupes, chaque groupe ayant des droits particuliers.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un utilisateur peut utiliser uniquement les éléments (logiciel, fichier, dossier, ...) qui lui appartiennent ou qui appartiennent à ses groupes.</p>
+</div></div>
+
+<p>Il existe de nombreux groupes et utilisateurs utilisés par le système pour segmenter (et donc sécuriser) les utilisations. Parmi eux, un utilisateur et un groupe se détachent car ils ont plus de droit que les autres.</p>
+<h4>Utilisateur <code>root</code></h4>
+<p>L'utilisateur <code>root</code> est l'utilisateur lié au système d'exploitation. Il est le propriétaire des process (démons) et interfaces du système d'exploitation. Cet utilisateur a ainsi tous les droits (peut aller partout, réserver autant de mémoire qu'il veut, etc).</p>
+<p>Comme <strong>Tout</strong> processus a un propriétaire, l'existence de cet utilisateur est garantie.</p>
+<h4>Groupe des administrateurs systèmes</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Administrateur_syst%C3%A8me">administrateur système</a></p>
+</div></div>
+
+<p>Le groupe des administrateurs systèmes permet de modifier des paramètres systèmes d'exécuter ou stopper des démons et d'installer de nouveaux logiciels. Ces utilisateurs ont moins de pouvoirs que root qui peut tout faire mais permettent d'administrer le système au quotidien.</p>
+<p>Cela permet, si nécessaire, d'installer ou de configurer son système sans être connecté en tant que root en utilisant <a href="https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers">la commande sudo</a> sous Linux par exemple.</p>
+<p>Les démons et les interfaces sont des process comme les autres. Ils sont cependant exécutés par un utilisateur spécial, souvent nommé <a href="https://fr.wikipedia.org/wiki/Utilisateur_root"><code>root</code></a>, qui est le <a href="https://fr.wikipedia.org/wiki/Utilisateur_root">super-utilisateur</a> et est le représentant utilisateur du système.</p>
+<p>quatrième couche pour les OS.</p>
+<ol start="4">
+<li>utilisateurs
+<ul>
+<li>qui à le droit de faire quoi</li>
+</ul>
+</li>
+</ol>
 <h2>Linux</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
