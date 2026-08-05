@@ -33,6 +33,11 @@ Aucune compétences en informatique préalable n'est nécessaire.
 
 ## <span id="bases"></span>Bases
 
+
+> TBD prereiquis systeme 1. Impossible de coder directement en langage machine. On utilise des langages.
+> 1. langage qui transforme en langage machine
+> 2. langage interprétés : TFIL ajoute un interpréteur.
+> 
 {% aller %}
 [Bases de programmation et du langage python](bases-programmation){.interne}
 {% endaller %}

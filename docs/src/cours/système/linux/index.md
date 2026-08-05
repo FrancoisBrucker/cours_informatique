@@ -19,6 +19,7 @@ Merci à :
 
 <!-- 
 
+shell intro <https://www.youtube.com/watch?v=hV3_XZXeDQo>
 > TBD <https://labex.io/linuxjourney>
 > outil shell <https://www.youtube.com/watch?v=yTkygli1OeE>
 > <https://www.youtube.com/watch?v=SU7i3P62cm0&list=PL0ibd6OZI4XIJzwFC6XtsgZEcjEb4J-g->

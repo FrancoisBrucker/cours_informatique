@@ -21,6 +21,7 @@ Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pa
 
 ## Exécuter du code python
 
+
 > interpréteur (comme javascript) python -> interp -> exécution machine (diff des langages exécutés golang)
 > ici : envoyer sur systeme 1 : systeme et execution de code. Principes.
 > utiliser print() et x = 34 (affectation variables)
