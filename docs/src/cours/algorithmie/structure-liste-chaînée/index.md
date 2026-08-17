@@ -13,7 +13,21 @@ eleventyComputed:
 [Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e)
 {% endlien %}
 
+
+<!-- TBD  
+
+Utiliser les listes chainées pour créer des entier : liste chainée de [64]bit
+tuple = paire = produit scalaire. Le reste en dérive.
+ref pour les types :"types and programming language ; a besoin d'un peu de logique + lambda calcul.
+parler ds options de rust = gestion des erreurs
+
+faire un compilateur lisp ?
+
+-->
+
+
 ## Listes chaînées
+
 
 Très utilisé en programmation fonctionnelle, la liste chaînée est une structure pouvant théoriquement ˆ´tre de taille infinie :
 

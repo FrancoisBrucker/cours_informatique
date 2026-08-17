@@ -1,10 +1,13 @@
 ---
 layout: layout/post.njk
 
-title: Bases de programmation et du langage python
+title: Bases de programmation
 authors:
   - François Brucker
   - Pierre Brucker
+
+prerequis:
+    - "/cours/système/ordinateur-programmes-OS/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -13,9 +16,21 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous montrerons dans ce cours les bases du codage en utilisant le langage de programmation [python](<https://fr.wikipedia.org/wiki/Python_(langage)>) dont le site est : <https://www.python.org/>
+Nous montrerons dans ce cours les bases de la programmation en utilisant [le langage python](<https://fr.wikipedia.org/wiki/Python_(langage)>).
+
+{% lien %}
+<https://www.python.org/>
+{% endlien %}
 
 Nous verrons comment est structuré un langage informatique et comment écrire puis exécuter du code.
+
+
+{% attention %}
+Cette partie de cours suppose que vous avez assimilé les prérequis.
+
+Dans le doute : LISEZ LES.
+{% endattention %}
+
 
 Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple et il n'y a aucun prérequis informatique à avoir. Le but est de pouvoir exécuter (de la façon la plus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).
 

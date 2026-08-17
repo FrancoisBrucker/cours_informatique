@@ -21,7 +21,45 @@ eleventyComputed:
 
 Parler de pseudo-code objet dans la 1ère partie : variable lien vers objet en mémoire. Dire que le modèle est ainsi taille de variable fixe vers objet. mutable et non mutable selon ce qu'on peut faire dessus.
 
+Une variable vaut None lorsqu'elle est crée.
+Puis affectée à une valeur explicitement. 
+
+- Il ne faut pas utiliser des variables non initialisé
+- None est réservé aux variables non initialisées (?)
+- un tableau est un objet composé de variables de même type.
+
+- if then = forme pure. Puis else et elif du sucre syntaxique que l'on définira. Va être utile pour la fin ou l'on fera l'equivalence pseudo-code et fonction logique.
+
 dans la deuxième partie partie faire le modèle classique de la mémoire avec pile/mémoire et pointeurs.
+
+
+expliciter ce qu'est la preuve par récurrence <https://fr.wikipedia.org/wiki/Raisonnement_par_r%C3%A9currence> : axiome ou démonstration si ensemble. Ici démonstration car tout est fini. (à démontrer)
+
+dans la partie 1 :
+
+- int et str pas de taille finies
+- dire mémoire = tableau avec indice
+- int composé de bits et str de char (parmi un alphabet fini). Chacun de taille fixe.
+- str n'est pas un tableau : chaque case correspond à un caractère. Montrer la diff entre []char et str dans le cadre du pseudo-code objet.
+- float est aussi fini : approximation d'un réel.
+- une var déclarée vaut None. C'est un emplacement en mémoire réservé aux variables. Chaqeu variable à la même taille = une adresse On lui affecte un objet
+- un tableau est un objet qui contient des variables :
+  - déclaré vaut None
+  - crée chaque case vaut None
+- toute variable déclarée doit être affectée.
+dans la partie 2 :
+- dire que struct défini un type
+- remplacer liste par slice
+- un tableau est un type []T 
+- type simple (ceux qu'on a vu + tableau), ce qui permet déjà de faire des matrices.
+- type composé (tuple et structure)
+- type générique
+
+Dans la partie 3 dictionnaire = pointeur et slice pas. Voir les différences pour le pc non objet.
+
+dans la partie 4 :
+- un tableau est come un str. 
+- il faut ajouter un type adresse : pointeur.
 
 -->
 

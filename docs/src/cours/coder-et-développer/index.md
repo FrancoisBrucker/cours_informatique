@@ -31,16 +31,30 @@ On supposera que vous avez des connaissances scientifiques de base (ie. mathéma
 
 Aucune compétences en informatique préalable n'est nécessaire.
 
-## <span id="bases"></span>Bases
+## <span id="bases"></span>Partie I : Bases
 
 
 > TBD prereiquis systeme 1. Impossible de coder directement en langage machine. On utilise des langages.
 > 1. langage qui transforme en langage machine
 > 2. langage interprétés : TFIL ajoute un interpréteur.
-> 
+
 {% aller %}
-[Bases de programmation et du langage python](bases-programmation){.interne}
+[Bases de programmation](bases-programmation){.interne}
 {% endaller %}
+
+
+## Partie II : Développement d'un projet
+
+- ici fichiers
+- tests etc
+
+## Partie III : Programmation projet
+
+
+## Partie IV : Partager ses projets et les maintenir dans le temps
+
+## TBD à remanier
+
 
 ### Tutoriel python
 
