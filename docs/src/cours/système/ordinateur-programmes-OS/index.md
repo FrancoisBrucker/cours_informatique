@@ -230,18 +230,22 @@ Ne confondez par parallèle et concurrent :
 
 Enfin, le système d'exploitation doit permettre aux programmes de communiquer entre eux via un protocole commun :
 
-![os-application](./os-application.png)
+![os-programme](./os-programme.png)
 
 Un programme est intimement lié au système d'exploitation qui l'exécute. 
 
 {% note2 "**Définition**" %}
 
-On fait la distinction entre deux types de programmes :
+On fait la distinction entre plusieurs types de programmes :
 
 - ceux lancés par l'utilisateur via une interface graphique ou le terminal qu'on appelle **_application_**
 - les programmes en cours d'exécution que l'on appel **_processus_** (une application peut lancer plusieurs processus)
 
 {% endnote2 %}
+
+Une application est à la base un processus. De plus rien n'empêche un processus de lancer lui-même d'autres processus ! 
+
+Enfin, lorsque un processus est en cours d'exécution, le noyau lui donne l'impression qu'il est seul au monde : pour lui il est le seul processus en cours de fonctionnement sur l'ordinateur.
 
 ### Noyau
 
@@ -257,14 +261,16 @@ Un système d'exploitation est constitué de 3 couches :
 
 {% endnote2 %}
 
+### User et kernel mode
+
 Seul le noyau a accès au matériel et a un contrôle total de la machine. 
 
 {% note2 "**Définition**" %}
 
 On distingue deux états d'une machine :
 
-- le _kernel mode_ : le noyau travail
-- le _user mode_ : un process travaille
+- le _kernel mode_ : le noyau travail, il a accès à tout l'ordinateur
+- le _user mode_ : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.
 {% endnote2 %}
 {% lien %}
   [User et Kernel mode sous windows 11](https://learn.microsoft.com/fr-fr/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)
