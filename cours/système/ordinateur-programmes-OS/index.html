@@ -412,7 +412,7 @@ A --------&gt; Intermédiaire --------&gt; B
 </div></div>
 
 <p>Enfin, le système d'exploitation doit permettre aux programmes de communiquer entre eux via un protocole commun :</p>
-<p><img src="os-application.png" alt="os-application"></p>
+<p><img src="os-programme.png" alt="os-programme"></p>
 <p>Un programme est intimement lié au système d'exploitation qui l'exécute.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -421,13 +421,15 @@ A --------&gt; Intermédiaire --------&gt; B
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On fait la distinction entre deux types de programmes :</p>
+<p>On fait la distinction entre plusieurs types de programmes :</p>
 <ul>
 <li>ceux lancés par l'utilisateur via une interface graphique ou le terminal qu'on appelle <strong><em>application</em></strong></li>
 <li>les programmes en cours d'exécution que l'on appel <strong><em>processus</em></strong> (une application peut lancer plusieurs processus)</li>
 </ul>
 </div></div>
 
+<p>Une application est à la base un processus. De plus rien n'empêche un processus de lancer lui-même d'autres processus !</p>
+<p>Enfin, lorsque un processus est en cours d'exécution, le noyau lui donne l'impression qu'il est seul au monde : pour lui il est le seul processus en cours de fonctionnement sur l'ordinateur.</p>
 <h3>Noyau</h3>
 <p>L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. En suivant le <a href="TFIL" class="interne">TFIL</a> ces diverses responsabilités sont séparées en 3 couches :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
@@ -445,6 +447,7 @@ A --------&gt; Intermédiaire --------&gt; B
 </ul>
 </div></div>
 
+<h3>User et kernel mode</h3>
 <p>Seul le noyau a accès au matériel et a un contrôle total de la machine.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -455,8 +458,8 @@ A --------&gt; Intermédiaire --------&gt; B
 </div><div class="pl-8 mr-8">
 <p>On distingue deux états d'une machine :</p>
 <ul>
-<li>le <em>kernel mode</em> : le noyau travail</li>
-<li>le <em>user mode</em> : un process travaille</li>
+<li>le <em>kernel mode</em> : le noyau travail, il a accès à tout l'ordinateur</li>
+<li>le <em>user mode</em> : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.</li>
 </ul>
 </div></div>
 
