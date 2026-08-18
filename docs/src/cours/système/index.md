@@ -6,6 +6,8 @@ tags: ['cours', 'unix', 'système']
 authors:
     - "François Brucker"
 
+date: 2026-01-07
+
 eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"

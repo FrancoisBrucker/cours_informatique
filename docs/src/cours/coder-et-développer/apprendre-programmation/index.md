@@ -1,0 +1,270 @@
+---
+layout: layout/post.njk
+
+title: Coder et développer
+tags: ["code", "python"]
+authors:
+  - François Brucker
+
+resume: "Ce cours est dédié au code informatique. Comment l'écrire, le tester et l'exécuter."
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
+---
+
+
+Ce cours est dédié au code informatique. On utilisera [le language python](https://www.python.org/) comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront transposables dans d'autres langages.
+
+On supposera que vous avez des connaissances scientifiques de base (ie. mathématiques de Lycée) et que vous disposer d'un ordinateur dont vous êtes administrateur.
+
+Aucune compétences en informatique préalable n'est nécessaire.
+
+{% attention "**IA et code**" %}
+
+Les agents IA sont de formidables accélérateurs en développement, **mais** :
+
+- ils n'inventent rien de neuf : ils ne peuvent répondre qu'à des problèmes déjà résolus,
+- ils peuvent (vont parfois) halluciner et donner des solutions qui semblent corrects mais sont fausses en réalité
+
+En temps que développeur **vous avez l'obligation** :
+
+- de préparer le terrain aux agent étant le plus explicite possible dans vos demandes
+- de toujours vérifier le code produit
+- de connaître le fonctionnement de votre projet et pouvoir modifier le code si nécessaire
+
+
+Pour cela : 
+
+- vous devez **appendre** le cours 
+- **faire vous même** les exercices et les TDs pour assimiler les concepts
+- utiliser l'IA dans les projets plus long en vérifiant chaque étape produite
+
+{% endattention %}
+
+## <span id="bases"></span>Partie I : Fondements
+
+
+{% aller %}
+[Fondements de la programmation](fondements-programmation){.interne}
+{% endaller %}
+
+<!-- TBD changement
+
+- formated strings avec exercices
+- retour de fct type cohérent = objet / None ou True/false.
+- `Classe.méthode(paramètres)` pour les méthodes
+ -->
+
+
+## Partie II : Développement d'un projet
+
+- ici fichiers
+- tests etc
+
+## Partie III : Programmation projet
+
+<!-- TBD changement
+
+- UML attribut/méthodes privées +/-
+- UML diagrammes de fonctionnement ?
+ -->
+
+
+## Partie IV : Partager ses projets et les maintenir dans le temps
+
+## TBD à remanier
+
+
+### Tutoriel python
+
+Une fois les bases acquises, terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu de façon plus détaillée :
+
+{% lien %}
+<https://docs.python.org/fr/3/tutorial/index.html>
+{% endlien %}
+
+### On s'entraîne
+
+{% aller %}
+[Petits projets de code](projet-codes){.interne}
+{% endaller %}
+{% aller %}
+[100 mono-lignes](./mono-lignes){.interne}
+{% endaller %}
+
+## <span id="développer"></span>Gestion des données
+
+Avant de pouvoir écrire des programmes conséquents il faut comprendre comment est organisé votre ordinateur et pouvoir minimalement interagir avec son système d'exploitation. Donc lisez la partie consacrée aux bases d'un système d'exploitation avant de continuer :
+
+{% prerequis "**Connaissances système minimales**" %}
+
+[Utiliser son système d'exploitation](/cours/système-et-réseau/bases-système){.interne}
+
+{% endprerequis %}
+{% info "**Etape optionnelle**"%}
+
+L'installation d'un nouveau système est une étape optionnelle, mais si vous avez votre ordinateur depuis longtemps sans vraiment vous en occuper, ou que vous avez des erreurs étranges, il peut-être nécessaire de faire une nouvelle installation.
+
+{% endinfo %}
+
+### Installer des modules externes
+
+Même si python vient avec de nombreux modules d'installés il arrive toujours un moment où l'on devra installer des modules développés par d'autres personnes :
+
+{% aller %}
+[Installer des modules](./modules-externes-python/){.interne}
+{% endaller %}
+
+#### Tutoriel matplotlib
+
+Le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.
+
+{% aller %}
+[Tutoriel Matplotlib](tutoriel-matplotlib){.interne}
+{% endaller %}
+
+Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
+
+#### Tutoriel numpy
+
+> TBD à faire avec les spécificités de l'array et des fonctions sympa.
+
+{% aller %}
+[Tutoriel Numpy](tutoriel-numpy){.interne}
+{% endaller %}
+
+### Stockage des données
+
+#### En mémoire
+
+{% aller %}
+[Données en mémoire](données-mémoire){.interne}
+{% endaller %}
+
+#### Chaîne de caractères
+
+{% aller %}
+[Encodage Unicode](encodage-unicode){.interne}
+{% endaller %}
+
+#### Sur des fichiers
+
+{% aller %}
+[Fichiers](fichiers){.interne}
+{% endaller %}
+
+## Écrire du code
+
+### Corriger son code
+
+Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seulement un excellent outil pour corriger son code, mais également un très bon outil d'apprentissage puisqu'il vous permettra d'assimiler plus rapidement ces notions de variables, d'objets et d'espaces de noms :
+
+{% aller %}
+[Déboguer son code](débogueur){.interne}
+{% endaller %}
+
+### Écrire du code maintenable
+
+Il faut essayer de limiter au maximum la création de bug et, surtout, éviter qu'ils réapparaissent à la suite d'une modification de code.
+
+Mais plutôt que de corriger il vaut mieux éviter que les bugs arrivent
+
+{% aller %}
+[Tester son code](tests-unitaires){.interne}
+{% endaller %}
+
+{% aller %}
+[On s’entraîne : écrire des tests](projet-codes-tests){.interne}
+{% endaller %}
+
+### Écrire du code lisible
+
+{% aller %}
+[Écrire et exécuter du code](écrire-code){.interne}
+{% endaller %}
+
+### On s'entraîne à écrire du code propre qui fonctionne
+
+#### Un projet complet
+
+{% aller %}
+[Projet pourcentage](projet-pourcentages){.interne}
+{% endaller %}
+
+#### On vérifie qu'on sait faire
+
+{% aller %}
+[exercices](exercices-tests){.interne}
+{% endaller %}
+
+## Programmation objet
+
+La programmation objet est un principe de programmation utilisé par la quasi-totalité des langages de programmation. Nes nuances existent bien sur, la programmation objet en rust n'est pas la même qu'en java par exemple, mais quelques principes fondateurs sont utilisés partout.
+
+Nous allons dans cette partie du cours nous atteler à montrer ces principes et leur utilité dans le cadre du langage python.
+
+{% aller %}
+[Programmation objet](programmation-objet){.interne}
+{% endaller %}
+
+## Programmation évènementielle
+
+La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
+
+{% aller %}
+[Programmation évènementielle](programmation-évènementielle){.interne}
+{% endaller %}
+
+## Maintenir et développer du code sûr
+
+### <span id="gestion-dépendances"></span>Gestion des dépendances
+
+{% aller %}
+[Gestion des dépendances](gestion-dépendances){.interne}
+{% endaller %}
+
+### Couverture de code
+
+La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (_ie._ couvertes).
+
+{% aller %}
+[Couverture de code](couverture-de-code){.interne}
+{% endaller %}
+
+### Programmation par les tests
+
+> TBD ajouter couverture du code.
+
+On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (_Test Driven Development_, ou _TDD_)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
+
+{% aller %}
+[Projet de programmation par les tests](projet-TDD){.interne}
+{% endaller %}
+
+### Packages
+
+Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <https://pypi.org/> pour être utilisés par d'autres.
+
+{% lien %}
+[package en python](https://docs.python.org/fr/3/tutorial/modules.html#packages)
+{% endlien %}
+
+Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier `__init__.py`{.fichier} présent dans le dossier.
+
+{% note %}
+Un _package_ est un dossier contenant un fichier `__init__.py`{.fichier}.
+
+- importer le dossier revient à exécuter le fichier `__init__.py`{.fichier}.
+
+- exécuter le dossier avec l'interpréteur revient à exécuter le fichier `__main__.py`{.fichier}.
+
+{% endnote %}
+
+Enfin, on peut faire en sorte que nos modules/packages soient exécutables directement avec un interpréteur :
+
+{% aller %}
+[Exécuter des modules python](exécution-modules){.interne}
+{% endaller %}

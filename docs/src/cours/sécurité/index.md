@@ -7,6 +7,8 @@ authors:
     - "François Brucker"
 resume: "Cours de sécurité. On y verra essentiellement les fondements cryptographiques."
 
+date: 2026-01-09
+
 eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"

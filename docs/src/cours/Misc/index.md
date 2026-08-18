@@ -6,6 +6,7 @@ tags: ["cours", "misc", "probabilités"]
 author: "François Brucker"
 resume: "Nous mettrons ici divers sujets dont nous aurons besoin aux cours des sujets traités. Ils sont assez généraux pour avoir leurs parties à eux mais pas assez informatique pour être traité de façon extensive."
 
+date: 2026-12-31
 
 eleventyComputed:
   eleventyNavigation:

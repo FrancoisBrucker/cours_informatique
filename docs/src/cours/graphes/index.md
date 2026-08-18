@@ -13,6 +13,8 @@ eleventyNavigation:
     - /cours/coder-et-développer/
     - /cours/algorithmie/problèmes-NP/
 
+date: 2026-01-05
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"

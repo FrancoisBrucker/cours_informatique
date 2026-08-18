@@ -8,7 +8,7 @@ authors:
   - François Brucker
 resume: "Un cours d'algorithmie"
 
-eleventyNavigation:
+date: 2026-01-02
 
 eleventyComputed:
   eleventyNavigation:

@@ -8,7 +8,7 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
-
+> 
 <!-- début résumé -->
 
 Utiliser des notebooks pours écrire du code python.
@@ -17,15 +17,22 @@ Utiliser des notebooks pours écrire du code python.
 
 Les notebooks python ont été rendus populaire par la société Jupyter. Stricto sensu, c'est une interface web à [IPython](https://fr.wikipedia.org/wiki/IPython) (une console python conviviale).
 
-## Notebook
 
-### Sur le web
+[Les Notebooks](https://jupyter.org/) sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
 
-Il existe beaucoup de solutions pour utiliser un Notebook sur internet. On peut en citer deux :
-Sur internet :
+Plusieurs possibilités pour acceder à des notebook :
 
-* <https://basthon.fr/> : pour un usage scolaire
-* <https://colab.research.google.com> : pour un usage professionnel. Mais nécessite un compte google pour fonctionner.
+- <https://basthon.fr/> (qui est géré par l'éducation nationale)
+- <https://colab.google/> (qui est géré par google)
+- installer un environnement virtuel
+
+
+Leur utilisation est particulièrement adaptée pour rédiger et partager des comptes-rendus.
+
+## Basthon
+
+
+Il existe beaucoup de solutions pour utiliser un Notebook sur internet. Pour un usage scolaire ou une découverte <https://basthon.fr/>
 
 Regardons à quoi ça correspond :
 
@@ -59,6 +66,19 @@ Vous devriez avoir quelque chose du genre :
 ![console python](notebook-2.png)
 
 Félicitations ! vous avez écrit votre premier notebook !
+
+## Colab
+
+<https://colab.research.google.com> : pour un usage professionnel. Mais nécessite un compte google pour fonctionner.
+
+> TBD
+> - modules
+> - données 
+> - soucis : tout refaire à chaque fois si module à nous et surtout ce que'on fait est chez google.
+
+## Environnement virtuel
+
+> TBD : la solution modulable.
 
 ### Usages
 

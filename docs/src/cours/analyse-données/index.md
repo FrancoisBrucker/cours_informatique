@@ -8,12 +8,7 @@ authors:
 
 resume: "Cours d'analyse des données. Il comporte trois parties, la première consacrée à la visualisation de données, la seconde à la cartographie et la troisième à l'analyse _classique_ de données décrites par des attributs réels."
 
-eleventyNavigation:
-  prerequis:
-    - "/cours/coder-et-développer/bases-programmation/"
-    - "/cours/coder-et-développer/bases-programmation/notebooks/"
-    - "/cours/coder-et-développer/tutoriel-matplotlib/"
-    - "/cours/coder-et-développer/environnements-virtuels/"
+date: 2026-01-04
 
 eleventyComputed:
   eleventyNavigation:
@@ -22,9 +17,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD en chantier...
+
+
 Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse _classique_ de données décrites par des attributs réels et l'autre consacrée à la visualisation de données.
 
-## Rappel
+## Utiliser des notebooks
+
+> TBD mettre ici cours sur les notebooks. [utiliser des notebook](./utiliser-notebooks/){.interne}
+
 
 Il est important que vous ayez compris les bases sur lesquels nous allons coder nos analyses. Ce n'est pas un cours de code, mais comprendre ce que l'on fait vous permettra de créer des analyses plus fines.
 

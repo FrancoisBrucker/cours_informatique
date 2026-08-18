@@ -6,8 +6,9 @@ authors:
   - François Brucker
   - Pierre Brucker
 
-prerequis:
-    - "/cours/système/ordinateur-programmes-OS/"
+eleventyNavigation:
+    prerequis:
+        - "/cours/système/ordinateur-programmes-OS/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -16,47 +17,67 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous montrerons dans ce cours les bases de la programmation en utilisant [le langage python](<https://fr.wikipedia.org/wiki/Python_(langage)>).
 
-{% lien %}
-<https://www.python.org/>
-{% endlien %}
+On a vue dans la partie système (le prérequis) qu'un programme s'exécute via un processeur, instruction par instruction. Presque plus personne ne crée de programmes directement en langage machine, on utilise des langages dit _évolués_ composées d'instructions spécifiques à celui-ci. Un programme d'un langage évolué est alors une suite d'instructions. 
 
-Nous verrons comment est structuré un langage informatique et comment écrire puis exécuter du code.
+{% note2 "**Définition**" %}
+Pour qu'un programme puisse être exécuté par le processeur d'un ordinateur chacune de ses instructions doit être traduite en instructions machine avant son exécution. Il existe trois stratégies pour cela :
+
+- convertir le programme en entier avant exécution. Les langages appliquant cette stratégie sont dit **_langages compilés_** et regroupe des langages comme le Go ou le Rust (ou des dinosaures comme le C ou le C++).
+- convertir les instructions une à une au cours de l'exécution du programme. Les langages appliquant cette stratégie sont dit **_langages interprétés_**, ou encore **_langages de script_** et regroupe des langages comme le python ou le javascript par exemple (ou encore le Ruby)
+- méthode hybride : convertir le programme en entier avant exécution dans un langage un peu plus évolué que le langage machine appelé [bytecode](https://fr.wikipedia.org/wiki/Bytecode). Le java ou le C# sont des langages appliquant cette stratégie.
+
+{% endnote2 %}
+
+Selon l'usage que l'on veut en faire on utilisera l'un ou l'autre de ces langages :
+
+- langages compilés :
+  - **avantages** : la compilation permet de vérifier que tout le programme est correct avant exécution et on peut optimiser le langage machine produit pour le système ou le processeur utilisé.
+  - **inconvénients** : l'étape de compilation est à faire après toute modification du code source et le programme compilé ne fonctionne que sur un système et un processeur donné.
+- langages interprété :
+  - **avantages** : il n'y a pas de différence entre le code source et le programme à exécuter. On peut modifier puis exécuter rapidement du code
+  - **inconvénients** : nécessite un programme, appelé [interpréteur](https://fr.wikipedia.org/wiki/Interpr%C3%A8te_%28informatique%29), qui fait la transcription instruction par instruction
+- bytecode : combine les avantage/inconvénient des deux 
+  - **avantages** : le bytecode est portable (indépendant du système et du processeur) et l'étape de compilation permet d'optimiser le code presque autant qu'avec un langage compilé.
+  - **inconvénients** : nécessite une étape de compilation un programme, et doit être exécuté par un programme appelé [machine virtuelle](https://fr.wikipedia.org/wiki/Machine_virtuelle#Machine_virtuelle_de_haut_niveau)
 
 
-{% attention %}
-Cette partie de cours suppose que vous avez assimilé les prérequis.
+{% attention2 "**À retenir**" %}
+Il n'y a pas de mauvaise stratégie, il faut utiliser le langage adapté à notre situation/projet :
 
-Dans le doute : LISEZ LES.
-{% endattention %}
+- petits projets ou code devant être modifié souvent : langage de script
+- gros projets sur la durée devant être exécuté sur de nombreuses machines différentes : bytecode
+- projets dont la vitesse d'exécution est primordiale : langages compilés
+
+En plus de cela, chaque langage va bien sur avoir sa spécificité, mais rappelez-vous :
+
+> Plus on veut du code rapide (ou optimisé) plus on va passer du temps a l'écrire et moins il sera portable.
+
+{% endattention2 %}
 
 
-Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple et il n'y a aucun prérequis informatique à avoir. Le but est de pouvoir exécuter (de la façon la plus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).
+Nous utiliserons ainsi ici [le langage python](<https://fr.wikipedia.org/wiki/Python_(langage)>) qui est un langage interprété très simple à utiliser. Ce sera l'idéal pour comprendre et assimiler toutes les méthodes et techniques principales en développement.
 
-## Exécuter du code python
+> TBD mettre notebook dans la partie analyse des données : (notebook de basthon) mais surtout collab (re print et exemple avec graphique matplotlib)
+
+## Exécuter du code python avec un interpréteur
+
+{% aller %}
+[Utiliser un interpréteur](./interpréteur-principes){.interne}
+{% endaller %}
 
 
-> interpréteur (comme javascript) python -> interp -> exécution machine (diff des langages exécutés golang)
-> ici : envoyer sur systeme 1 : systeme et execution de code. Principes.
-> utiliser print() et x = 34 (affectation variables)
-> 
->  Différentes façon d'exécuter du python
->
-> basthon
-> notebook (bashon) mais surtout colab (re print et exemple avec graphique matplotlib)
-> spyder
-> installer un interpréteur
-> pycharm
-> vscode
+## Élément de langage
 
-## Variables et objets
+> TBD écrire du code exécutable.
+
+### Variables et objets
 
 > stocker et retrouver ses petits
 
 > manipuler des objets via des opérations et des néthodes
 > 
-## Fonctions et modules
+### Fonctions et modules
 
 > manipuler des objets via des fonctions
 > groupement de fonctions dans des 
@@ -86,54 +107,12 @@ Faire des exercices :
 
 ### Exécuter du code python
 
-On a utilisé un interpréteur externe (sur le site <https://basthon.fr/>) pour l'instant. Son utilisation n'est pas tès satisfaisante pour l'instant puisqu'il faut copier/coller chaque ligne dans l'interpréteur.
-
-La façon classique d'exécuter du code python est d'utiliser un intermédiaire entre l'interpréteur et son code. Nous allons montrer deux façons classiques de le faire.
-
-#### Notebooks
-
-[Les Notebooks](https://jupyter.org/) sont des solutions pratiques lorsque l'on veut exécuter rapidement un petit bout de code ou une série de bouts de codes plus ou moins indépendant : lorsque l'on utilise l'outil informatique pour faire des maths ou de la physique par exemple ; ou encore lorsque l'on fait de la data science.
-
-{% lien %}
-Deux possibilités simples d'acceder à des notebook :
-
-- <https://basthon.fr/> (qui est géré par l'éducation nationale)
-- <https://colab.google/> (qui est géré par google)
-
-{% endlien %}
-
-Leur utilisation est particulièrement adaptée pour rédiger et partager des comptes-rendus.
-
-{% aller %}
-[Notebooks](notebooks){.interne}
-{% endaller %}
-
-#### Spyder
-
-
-{% lien %}
-<https://www.spyder-ide.org/>
-{% endlien %}
-
-Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.
-
-Il fonctionne à la fois comme un notebook ou comme un interpréteur.
-
-{% attention %}
-La commande `Run file` exécute son code dans un nouvel interpréteur **puis** le fusionne avec l'interpréteur courant.
-
-Ce fonctionnement est déroutant...
-{% endattention %}
-
-Si vous voulez faire du développement sérieusement, je vous conseille d'utiliser plutôt la combinaison éditeur + interpréteur ci-dessous.
-
-<!-- TBD
-
-Montrer que le run file est étrange avec une fonction.
-Déf dans le fichier puis exécution dans l'interpréteur.
-Il faudra refaire le même exemple avec vscode et montrer que ça ne marche pas. On a un terminal pas un interpréteur. Il faut tout faire dans le fichier -->
 
 ### <span id="installation-développement"></span>Installer et utiliser un interpréteur python
+
+> installer un interpréteur
+> vscode ou pycharm dans un second temps
+
 
 Jusqu'à présent on a utilisé des interpréteurs externes pour exécuter notre code. Si l'on cherche à créer ses propres programmes, il est préférable d'avoir un interpréteur sur propre ordinateur. Ceci sera plus rapide et permettra à terme d'être paramétrable à l'envie.
 

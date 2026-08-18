@@ -6,6 +6,8 @@ tags: ['cours', 'web', 'front', 'back']
 authors:
     - "François Brucker"
 
+date: 2026-01-08
+
 eleventyNavigation:
     prerequis:
         - "/cours/coder-et-développer/ordinateur-développement/"
