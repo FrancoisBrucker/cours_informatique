@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Bases de programmation
+title: Fondements de la programmation (avec python)
 authors:
   - François Brucker
   - Pierre Brucker
@@ -58,6 +58,11 @@ En plus de cela, chaque langage va bien sur avoir sa spécificité, mais rappele
 
 Nous utiliserons ainsi ici [le langage python](<https://fr.wikipedia.org/wiki/Python_(langage)>) qui est un langage interprété très simple à utiliser. Ce sera l'idéal pour comprendre et assimiler toutes les méthodes et techniques principales en développement.
 
+{% info %}
+
+Nous nous concentrerons sur python, tout ce que nous y verrons s'adaptera _mutatis mutandis_ à tout autre langage de programmation objet.
+
+{% endinfo %}
 > TBD mettre notebook dans la partie analyse des données : (notebook de basthon) mais surtout collab (re print et exemple avec graphique matplotlib)
 
 ## Exécuter du code python avec un interpréteur

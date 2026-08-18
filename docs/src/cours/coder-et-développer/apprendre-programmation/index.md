@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Coder et développer
+title: Apprendre la programmation
 tags: ["code", "python"]
 authors:
   - François Brucker
@@ -48,7 +48,7 @@ Pour cela :
 
 
 {% aller %}
-[Fondements de la programmation](fondements-programmation){.interne}
+[Fondements de la programmation (avec python)](fondements-programmation){.interne}
 {% endaller %}
 
 <!-- TBD changement
