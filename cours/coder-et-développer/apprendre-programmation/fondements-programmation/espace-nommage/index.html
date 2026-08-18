@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Espace de nommage</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Espace de nommage</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fondements-programmation/">Bases de programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fondements-programmation/espace-nommage/">Espace de nommage</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Nous avons déjà abordé la notion d'espace de nommage lorsque :</p>
+<ul>
+<li>on a paré de modules : <a href="../principes/modules/#d%C3%A9finition-espace-nommage" class="interne">l'espace de nommage du module</a> et de l'accès à leurs éléments via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e" class="interne">la notation pointée</a></li>
+<li>on a parlé des fonctions : <a href="../creation-fonctions/#espace-nommage" class="interne">l'espace de nommage et fonctions</a></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous venez de la partie programmation objet et que vous avez oublié ce qu'est un espace de nommage et à quoi ça sert, commencez par vous rafraîchir les idées et relisez les 3 liens précédents qui concernent : espace de nommage de modules, de fonction et notation pointée. Le but de cette partie est de préciser les mécanismes internes qui font fonctionner tout ça.</p>
+</div></div>
+
+<p>Les espaces de nommage permettent de lier variables et objets :</p>
+<ul>
+<li>on considère que les objets sont stockés dans <strong><em>l'espace des objets</em></strong> : cet espace est <strong>unique</strong></li>
+<li>on accède aux objets via leurs noms, eux même stockés dans des <strong><em>espaces de nommage</em></strong> qui sont des objets comme les autres : il y en a de <strong>nombreux</strong>.</li>
+</ul>
+<p>Pour chaque <em>espace de nommage</em> :</p>
+<ul>
+<li>il ne peut y avoir 2 noms identiques</li>
+<li>à chaque nom est associé un objet</li>
+<li>certains espaces de noms possèdent un parent qui sera utilisé pour retrouver un nom.</li>
+</ul>
+<p>De façon formelle :</p>
+<p><span id="définition-espace-nommage"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>espace de nommage</em></strong> est constitué de deux parties :</p>
+<ul>
+<li>une table de correspondance (<a href="../conteneurs/dictionnaires" class="interne">un dictionnaire</a>) associant des noms (les clés) à des objets (les valeurs).</li>
+<li>un lien vers un espace de nommage <strong><em>parent</em></strong> (qui peut être vide)</li>
+</ul>
+</div></div>
+
+<p>Par exemple les espaces de nommages associés aux modules on par exemple un parent vide et ceux créés par les fonctions dépendant de l'espace de nommage qui les a appelé.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les espaces de nommages sont utilisés à de nombreux endroits dans python et sont là pour :</p>
+<ol>
+<li>gérer les noms et leurs objets associés</li>
+<li>séparer les responsabilités et cloisonner les noms auxquels ont accès les différentes parties d'un programme</li>
+</ol>
+</div></div>
+
+<p>On accède aux noms (et donc aux objets qu'ils référencent) des espaces de noms d'un objet en utilisant la notation pointée :</p>
+<p><span id="définition-notation-pointée"></span></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le <strong><em>notation pointée</em></strong> permet d'accéder aux noms d'un espace de nommage. Si <code class="language-">o</code> est un objet contenant un espace de nom on peut :</p>
+<ul>
+<li>accéder à un nom <code class="language-">n</code> défini dans l'espace un nom de <code>o</code> avec l'instruction <code class="language-">o.n</code> (si on a importé le module random on peut utiliser la fonction <code class="language-">randrange</code> qui y est défini avec l'instruction <code class="language-">random.randrange(1, 7)</code>).</li>
+<li>affecter un nom <code class="language-">n</code> dans l'espace un nom de <code>o</code> avec l'instruction <code class="language-">o.n = &lt;objet&gt;</code> (par exemple <code class="language-">o.n = 42</code>).</li>
+</ul>
+</div></div>
+
+<p>Avant de détailler ce mécanisme et voir ses différentes implications, commençons par rappeler ce qu'est un nom et un objet pour python.</p>
+<h2>Rappel sur les variables et les objets</h2>
+<p>Commençons par quelques rappels et précisions sur les variables et leurs liens avec les objets :</p>
+<ul>
+<li>tout ce que manipule un programme est appelé objet.</li>
+<li>les variables sont des noms via lesquels on accède aux objets. On dit aussi parfois qu'une variable est une <strong><em>référence</em></strong> à un objet.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour qu'un programme objet fonctionne, on a besoin de deux mécanismes :</p>
+<ul>
+<li>un moyen de stocker des données et de les manipuler (les objets et leurs méthodes)</li>
+<li>un moyen d'y accéder (les variables)</li>
+</ul>
+</div></div>
+
+<h3>Objets</h3>
+<p>Un objet est une structure de donnée générique permettant de gérer tout ce dont à besoin un programme :</p>
+<ul>
+<li>des données</li>
+<li>des fonctions</li>
+<li>des modules</li>
+<li>...</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout est objet dans un langage objet.</p>
+</div></div>
+
+<h3>Variables</h3>
+<p>Les variables sont des références aux objets. Pour ce faire, on utilise l’opérateur d’affectation <code class="language-">=</code> :</p>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">variable = objet</code></pre>
+<p>A gauche de l’opérateur <code class="language-">=</code> se trouve une <strong>variable</strong> (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un <strong>objet</strong>. Dans toute la suite du programme, dès que le programme rencontrera le nom, il le remplacera par l'objet.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une variable n'est <strong>pas</strong> l'objet, c'est une référence à celui-ci</p>
+</div></div>
+
+<p>La variable peut être vue comme un <strong>nom</strong> de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.</p>
+<p>Pour s'y retrouver et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même nom, elles sont regroupées par ensembles — nommés <strong>espaces de noms</strong> — hiérarchiquement ordonnés.</p>
+<h2><span id="espace-variable"></span> Espaces des variables</h2>
+<p>L'espace des variables peut-être vu comme un espace de nom particulier : c'est celui qui est créé au début de l'exécution de l'interpréteur.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Au démarrage d'une exécution d'un programme, l'espace des variables est créé. C'est un espace de nommage sans parent : c'est à partir de lui que toutes les variables doivent être atteintes.</p>
+</div></div>
+
+<p>Au départ, cet espace il ne contient rien, à part des variables spéciales (qui ont des noms commençant et finissant par <code class="language-">__</code>) utilisées par python. On en verra certaines pendant ce cours, mais ce qu'il faut retenir c'est que ces variables permettent à python de fonctionner. Elles sont mises à disposition des développeurs mais on ne les utilisera jamais dans un usage courant.</p>
+<p>Pour voir les noms définis dans l'espace de noms des variables, on utilise en python <a href="https://docs.python.org/fr/3.14/library/functions.html#globals">la fonction <code class="language-">globals()</code></a> qui rend <strong>le</strong> dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'dict'</span><span class="token operator">></span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
+dict_keys<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'__name__'</span><span class="token punctuation">,</span> <span class="token string">'__doc__'</span><span class="token punctuation">,</span> <span class="token string">'__package__'</span><span class="token punctuation">,</span> <span class="token string">'__loader__'</span><span class="token punctuation">,</span> <span class="token string">'__spec__'</span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>On voit que des variables existent dès le démarrage de python. Ces variables ne sont pas là pour être utilisées par nous mais sont indispensables au bon fonctionnement de python. Elles existent pour tout espace de nommage et permettent leur bon fonctionnement. En deux mots :</p>
+<ul>
+<li><code class="language-">__name__</code> : désigne le nom de l'espace de nommage pour python.</li>
+<li>on reverra <code class="language-">__doc__</code>, <code class="language-">__package__</code>, <code class="language-">__loader__</code> et <code class="language-">__spec__</code> lorsque l'on regardera les espaces de noms de modules. Pour l'espace des variables, elles sont non utilisées et valent <code class="language-">None</code></li>
+<li><code class="language-">__builtins__</code> est un module et contient toutes les fonctions de python (il contient les noms <code>print</code>, <code>input</code>, etc)</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Certains langages vont cacher leur fonctionnement interne à l'utilisateur. Ce n'est pas le cas de python qui veut que tout soit <strong>explicite</strong> : on a accès via ces variables spéciales, appelées <em>dunder</em> et commençant et finissant par deux <a href="https://fr.wikipedia.org/wiki/Tiret_bas">underscores</a>.</p>
+</div></div>
+
+<p>Regardons un peu tout ça</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>que vaut <code class="language">__main__</code> dans l'espace des variables ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On exécute un interpréteur et on regarde la valeur de sa variable :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python
+Python <span class="token number">3.14</span>.3 <span class="token punctuation">(</span>main, Feb  <span class="token number">3</span> <span class="token number">2026</span>, <span class="token number">15</span>:32:20<span class="token punctuation">)</span> <span class="token punctuation">[</span>Clang <span class="token number">17.0</span>.0 <span class="token punctuation">(</span>clang-1700.6.3.2<span class="token punctuation">)</span><span class="token punctuation">]</span> on darwin
+Type <span class="token string">"help"</span>, <span class="token string">"copyright"</span>, <span class="token string">"credits"</span> or <span class="token string">"license"</span> <span class="token keyword">for</span> <span class="token function">more</span> information.
+<span class="token operator">>></span><span class="token operator">></span> __name__
+<span class="token string">'__main__'</span>
+</code></pre>
+<p>Le nom de l'espace des variable est <code class="language">__name__</code> pour python.</p>
+</div>
+</details>     
+</div>
+<p>Ajoutons une variable et vérifions qu'elle est bien ajoutée à l'espace des variables :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token string">"youhou ! Je suis là !"</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
+dict_keys<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'__name__'</span><span class="token punctuation">,</span> <span class="token string">'__doc__'</span><span class="token punctuation">,</span> <span class="token string">'__package__'</span><span class="token punctuation">,</span> <span class="token string">'__loader__'</span><span class="token punctuation">,</span> <span class="token string">'__spec__'</span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">,</span> <span class="token string">'x'</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>Notre variable a bien été ajouté à l'espace des noms ! Comme c'est un dictionnaire, on peut y accéder directement :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'x'</span><span class="token punctuation">]</span>
+<span class="token string">'youhou ! Je suis là !'</span></code></pre>
+<p>Qui est équivalent à :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token string">'youhou ! Je suis là !'</span></code></pre>
+<p>Voir même y ajouter directement des variables. La ligne suivante est équivalente à affecter une nouvelle variable <code class="language-">y</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'y'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"je suis un véritable hacker."</span></code></pre>
+<p>Vérifions le :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+je suis un véritable hacker<span class="token punctuation">.</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'espace de variable est l'espace de nommage principal. On doit pouvoir accéder à tous les objets via celui-ci.</p>
+</div></div>
+
+<h2><span id="espace-modules"></span> Espaces de nommage des modules</h2>
+<p>On a vu qu'un module contenait <a href="../principes/modules/#d%C3%A9finition-espace-nommage" class="interne">un espace de nommage</a> auquel on pouvait accéder via <a href="../principes/modules/#d%C3%A9finition-notation-point%C3%A9e" class="interne">la notation pointée</a>. Tout comme l'espace des variables, cet espace ne contient pas de parent.</p>
+<p>Tout comme la fonction <code class="language-">globals()</code> permet d'accéder au dictionnaire contenant la table de relation entre variables et objets, il est possible d'accéder au dictionnaire contenant les noms stockés dans l'espace de nommage d'un objet <code class="language-">o</code> (en particulier d'un module) en utilisant <a href="https://docs.python.org/fr/3.14/library/functions.html#vars">la fonction <code class="language-">vars(o)</code></a>.</p>
+<p>Testons cela en regardant si <code class="language-">print</code> est dans le module <code class="language-">__builtins__</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">'print'</span> <span class="token keyword">in</span> <span class="token builtin">vars</span><span class="token punctuation">(</span>__builtins__<span class="token punctuation">)</span>
+<span class="token boolean">True</span></code></pre>
+<p>Oui ! On peut aussi voir toutes les fonction par défaut de python en exécutant par exemple le bout de code suivant (attention, il y en a beaucoup) :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">vars</span><span class="token punctuation">(</span>__builtins__<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
+<p>Regardons de plus prêt les différentes variables définies dans un module :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans un projet vscode créez deux fichiers :</p>
+<ul>
+<li>un fichier <code class="language-">main.py</code> contenant le code :<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mon_module
+
+<span class="token keyword">for</span> noms <span class="token keyword">in</span> <span class="token builtin">vars</span><span class="token punctuation">(</span>mon_module<span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+   <span class="token keyword">print</span><span class="token punctuation">(</span>noms<span class="token punctuation">)</span></code></pre>
+</li>
+<li>un fichier <code class="language-">mon_module.py</code> contenant le code suivant :<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">""" Une documentation de mon module 
+"""</span>
+
+une_variable <span class="token operator">=</span> <span class="token number">42</span>
+<span class="token keyword">def</span> <span class="token function">une_fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+   <span class="token keyword">print</span><span class="token punctuation">(</span>une_variable<span class="token punctuation">)</span></code></pre>
+</li>
+</ul>
+<p>Puis exécutez le fichier avec la commande <code>python main.py</code>.</p>
+</div></div>
+
+<p>Lorsque vous exécutez le fichier <code class="fichier">main.py</code> vous devriez voir :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python main.py
+__name__
+__doc__
+__package__
+__loader__
+__spec__
+__builtins__
+__file__
+__cached__
+une_variable
+une_fonction</code></pre>
+<p>On retrouve bien :</p>
+<ul>
+<li>les variables spéciales de l'espace de variables (<code class="language-">__name__</code>,<code class="language-">__doc__</code>, <code class="language-">__packages__</code>. <code class="language-">__loader__</code>, <code class="language-">__spec__</code> et <code class="language-">__builtins__</code>)</li>
+<li>deux nouvelles variables :
+<ul>
+<li><code class="language-">__file__</code> : qui contient le nom du fichier contenant le module</li>
+<li><code class="language-">__cached__</code> : qui contient le fichier compilé du module (ce fichier est crée lorsque lors du premier import et accélère les futurs accès)</li>
+</ul>
+</li>
+<li>notre variable et notre fonction : <code class="language-">une_variable</code> et <code class="language-">une_fonction</code></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Que valent les différentes variables spéciales sauf <code class="fichier">__builtins__</code> du module <code class="language-">mon_module</code> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le plus simple est d'afficher toutes les variables une à une en ajoutant le code suivant au fichier <code class="fichier">main.py</code>  :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mon_module
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">vars</span><span class="token punctuation">(</span>mon_module<span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token keyword">in</span> <span class="token builtin">vars</span><span class="token punctuation">(</span>mon_module<span class="token punctuation">)</span><span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> key <span class="token operator">!=</span> <span class="token string">"__builtins__"</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"nom :"</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token string">" valeur :"</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+</code></pre>
+<p>Son exécution donne :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python main.py
+dict_keys<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'__name__'</span>, <span class="token string">'__doc__'</span>, <span class="token string">'__package__'</span>, <span class="token string">'__loader__'</span>, <span class="token string">'__spec__'</span>, <span class="token string">'__file__'</span>, <span class="token string">'__cached__'</span>, <span class="token string">'__builtins__'</span>, <span class="token string">'une_variable'</span>, <span class="token string">'une_fonction'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+nom <span class="token builtin class-name">:</span> __name__  valeur <span class="token builtin class-name">:</span> mon_module
+nom <span class="token builtin class-name">:</span> __doc__  valeur <span class="token builtin class-name">:</span> Une documentation de mon module
+
+nom <span class="token builtin class-name">:</span> __package__  valeur <span class="token builtin class-name">:</span>
+nom <span class="token builtin class-name">:</span> __loader__  valeur <span class="token builtin class-name">:</span> <span class="token operator">&lt;</span>_frozen_importlib_external.SourceFileLoader object at 0x102dab75<span class="token operator"><span class="token file-descriptor important">0</span>></span>
+nom <span class="token builtin class-name">:</span> __spec__  valeur <span class="token builtin class-name">:</span> ModuleSpec<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">'mon_module'</span>, <span class="token assign-left variable">loader</span><span class="token operator">=</span><span class="token operator">&lt;</span>_frozen_importlib_external.SourceFileLoader object at 0x102dab75<span class="token operator"><span class="token file-descriptor important">0</span>></span>, <span class="token assign-left variable">origin</span><span class="token operator">=</span><span class="token string">'/Users/fbrucker/Desktop/prog-objet/mon_module.py'</span><span class="token punctuation">)</span>
+nom <span class="token builtin class-name">:</span> __file__  valeur <span class="token builtin class-name">:</span> /Users/fbrucker/Desktop/prog-objet/mon_module.py
+nom <span class="token builtin class-name">:</span> __cached__  valeur <span class="token builtin class-name">:</span> /Users/fbrucker/Desktop/prog-objet/__pycache__/mon_module.cpython-314.pyc
+nom <span class="token builtin class-name">:</span> une_variable  valeur <span class="token builtin class-name">:</span> <span class="token number">42</span>
+nom <span class="token builtin class-name">:</span> une_fonction  valeur <span class="token builtin class-name">:</span> <span class="token operator">&lt;</span>function une_fonction at 0x102e6aa3<span class="token operator"><span class="token file-descriptor important">0</span>></span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>L'exercice précédent vous a montré que :</p>
+<ul>
+<li>le nom du module (<code class="language-">__name__</code>) vaut le nom du fichier et plus <code class="python">__name__</code>. C'est ce qui permet de différentier l'espace des variables de tous les autres espaces de nommage</li>
+<li>la variables <code class="language-">__doc__</code> vaut la chaîne de caractères du début du fichier ! C'est le moyen que donne python pour créer l'aide d'un module. Si vous tapez dans un interpréteur <code class="language-">help(mon_module)</code> après l'avoir importé vous retrouverez cette chaîne de caractères.</li>
+</ul>
+<p>Enfin, tout comme l'espace de variable on peut ajouter ou modifier des nom qui y sont définis en utilisant la notation pointée :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mon_module
+
+mon_module<span class="token punctuation">.</span>autre_variable <span class="token operator">=</span> <span class="token string">"quarante-deux"</span></code></pre>
+<p>Il est bien sur non conseillé de le faire par ce qu'on peut <strong>Tout modifier</strong>. Par exemple se conformer à <a href="https://www.youtube.com/watch?v=1Bn50keR6UY">une loi de l'Indiana</a> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
+<span class="token keyword">import</span> math
+
+math<span class="token punctuation">.</span>pi <span class="token operator">=</span> <span class="token number">3.2</span></code></pre>
+<h2><span id="espace-variable"></span> Espaces de nommage courant</h2>
+<p>L'exécution de fonction nécessite l'utilisation d'espaces de nommages pour
+compartimenter l'usage des variables.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'interpréteur possède à chaque instant <strong><em>un espace de nommage courant</em></strong>  qui est l'espace par défaut des noms :</p>
+<ul>
+<li>python commence par rechercher un nom dans cet espace puis cherche dans l'espace parent s'il n'est pas trouvé</li>
+<li>python affectera toujours un nom dans cet espace (hors notation pointée)</li>
+</ul>
+<p>Par défaut l'espace de nommage courant est l'espace des variables.</p>
+</div></div>
+
+<p>Pour voir les noms définis dans l'espace de noms courant, on utilise en python <a href="https://docs.python.org/fr/3.14/library/functions.html#locals">la fonction <code class="language-">locals()</code></a> qui rend <strong>le</strong> dictionnaire dont les clés sont les noms des variables et les valeurs les objets associés.</p>
+<p>Cet espace de nommage courant va changer au cours du temps selon le contexte :</p>
+<ul>
+<li>au démarrage de l'interpréteur l'espace de nommage courant est l'espace des variables</li>
+<li>lors de l'import de module l'espace de nom courant est celui du module</li>
+<li>lors de l'exécution de fonction l'espace de nommage courant est l'espace créé pour son exécution.</li>
+</ul>
+<p>Fixons nous les idées en examinant plusieurs cas.</p>
+<h3>Espace des variables</h3>
+<p>Au démarrage d'un interpréteur l'espace de nommage courant est l'espace des variables. Vérifions le :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python
+Python <span class="token number">3.14</span>.3 <span class="token punctuation">(</span>main, Feb  <span class="token number">3</span> <span class="token number">2026</span>, <span class="token number">15</span>:32:20<span class="token punctuation">)</span> <span class="token punctuation">[</span>Clang <span class="token number">17.0</span>.0 <span class="token punctuation">(</span>clang-1700.6.3.2<span class="token punctuation">)</span><span class="token punctuation">]</span> on darwin
+Type <span class="token string">"help"</span>, <span class="token string">"copyright"</span>, <span class="token string">"credits"</span> or <span class="token string">"license"</span> <span class="token keyword">for</span> <span class="token function">more</span> information.
+<span class="token operator">>></span><span class="token operator">></span> globals<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> locals<span class="token punctuation">(</span><span class="token punctuation">)</span>
+True
+<span class="token operator">>></span><span class="token operator">></span> locals<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'__name__'</span><span class="token punctuation">]</span>
+<span class="token string">'__main__'</span>
+</code></pre>
+<h3>Espaces créés pour les modules</h3>
+<p>Lors de l'import d'un module l'espace de nommage courant est celui du module lors de son exécution. Pour vérifier cela créons un fichier nommé <code class="fichier">mon_module.py</code> et mettons y le code :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"affichage depuis le module :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">"__name__"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>Puis créons un fichier <code class="fichier">main.py</code> qui va importer notre module :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mon_module
+
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"affichage depuis le main :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">"__name__"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>L'exécution du fichier <code class="fichier">main.py</code> va donner :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python main.py
+affichage depuis le module <span class="token builtin class-name">:</span> mon_module
+affichage depuis le main <span class="token builtin class-name">:</span> __main__
+</code></pre>
+<p>On voit bien que :</p>
+<ul>
+<li>l'espace de nom courant change pendant l'exécution du module (la variable <code class="language-">__main__</code> est différente)</li>
+<li>l'import d'un fichier l'exécute et son espace de nommage courant devient l'espace de nom du module (la le paramètre de la fonction <code class="language-">print</code> du module est affichée, donc exécutée)</li>
+</ul>
+<h3>Espace créés pour les fonctions</h3>
+<p><a href="../creation-fonctions/#espace-nommage" class="interne">Un espace de nommage est créé pour chaque fonction lors de son exécution</a>, on peut s'en rendre compte en examinant les noms de l'espace de nommage courant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un espace de nommage est crée lors de chaque <strong>exécution</strong> d'une fonction.</p>
+<p>Cet espace aura un parent non vide qui sera <strong>toujours le même</strong>, celui qui contient la définition de la fonction.</p>
+</div></div>
+
+<p>Créons un fichier <code class="fichier">main.py</code> et mettons-y le code suivant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"espace de nommage courant :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"espace des variables :"</span><span class="token punctuation">,</span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+f<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Son exécution va afficher :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python main.py
+espace de nommage courant <span class="token builtin class-name">:</span> dict_keys<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+espace des variables <span class="token builtin class-name">:</span> dict_keys<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'__name__'</span>, <span class="token string">'__doc__'</span>, <span class="token string">'__package__'</span>, <span class="token string">'__loader__'</span>, <span class="token string">'__spec__'</span>, <span class="token string">'__builtins__'</span>, <span class="token string">'__file__'</span>, <span class="token string">'__cached__'</span>, <span class="token string">'f'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>On voit que :</p>
+<ul>
+<li>l'espace de nommage local change lors de l'exécution de la fonction</li>
+<li>l'espace de nommage de la fonction ne contient aucune des variables spéciales des espaces de nommages liés aux modules et à l'espace des variables</li>
+</ul>
+<p>Lorsque la fonction s'arrête, l'espace de nom courant redevient l'espace de nom ayant appelé la fonction, ce qui permet de faire des fonctions récursives. Par exemple l'exécution de la fonction :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fact</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token number">1</span>
+   <span class="token keyword">else</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> n <span class="token operator">*</span> fact<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<p>Pour <code class="language-">fact(5)</code> produira l'imbrication des différents espaces de nommages :</p>
+<p><img src="rec.png" alt="rec"></p>
+<p>La variable <code class="language-">n</code> existe dans <strong>tous</strong> les espaces de nommages, une fois par appel de la fonction.</p>
+<h2>Hiérarchie des espaces de nommages</h2>
+<p>L'espace de nommage parent permet de hiérarchiser la recherche de noms :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque python cherche à <strong><em>trouver l'objet associé à un nom</em></strong> il procède récursivement :</p>
+<ol>
+<li>l'espace de nommage de recherche est l'espace de nommage courant</li>
+<li>si le nom recherché n'est pas pas dans l'espace de recherche deux cas sont possibles :
+<ul>
+<li>si l'espace de recherche à un parent non vide, il devient l'espace de recherche courant et on recommence l'étape 2.</li>
+<li>si l'espace de recherche à un parent vide : on arrête la recherche et on produit une erreur de type <code class="language-">NameError</code></li>
+</ul>
+</li>
+</ol>
+</div></div>
+
+<p>En revanche, lorsque l'on affecte un nom, la règle est simple :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque python cherche à <strong><em>affecter un objet à un nom</em></strong> il rajoute la correspondance nom/objet au dictionnaire de l'<strong><em>espace de nommage courant</em></strong>.</p>
+</div></div>
+
+<p>Illustrons ceci :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+      y <span class="token operator">=</span> <span class="token number">24</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"espace de nommage courant :"</span><span class="token punctuation">,</span> <span class="token builtin">locals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"la variable x:"</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span>
+
+x <span class="token operator">=</span> <span class="token number">42</span>
+f<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>le code va produire deux affichages :</p>
+<pre><code>&quot;espace de nommage courant : dict_keys(['y'])
+la variable x: 42
+</code></pre>
+<p>Ce qui prouve que :</p>
+<ol>
+<li>la variable <code class="language-">y</code> a bien été créé dans l'espace de nommage de la fonction</li>
+<li>la variable <code class="language-">x</code> n'est pas dans l'espace de nommage de la fonction</li>
+<li>python a cherché (et trouvé) la variable <code class="language-">x</code> dans l'espace de nom parent de la fonction : l'espace des variables</li>
+</ol>
+<p>Ce mécanisme est <strong>très</strong> puissant puisqu'il permet de faire ce genre de choses :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">   <span class="token keyword">def</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">      <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">   <span class="token keyword">return</span> g</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">h <span class="token operator">=</span> f<span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">h<span class="token punctuation">(</span><span class="token punctuation">)</span></span></code></pre>
+<p>On utilise dans <code class="language-">g</code> l'espace de nom qui l'a défini, c'est à dire l'espace de nommage crée lors de l'exécution de la fonction...</p>
+<p>Exécution ligne à ligne le code précédent en exhibant les espaces de noms pour comprendre comment tout ça est possible.</p>
+<ol>
+<li>ligne 6 on est dans le cas suivant : seul un nom est défini dans l'espace des variables
+<img src="fct-de-fct-1.png" alt=""></li>
+<li>ligne 8, la fonction <code class="language-">g</code> est créée et elle est associée à l'espace de nommage de l'exécution de f (qui n'est donc pas détruit à la fin de l'exécution de <code class="language-">f</code> puisque la fonction g existe dans l'espace des variables via le nom <code class="language-">h</code>):
+<img src="fct-de-fct-2.png" alt=""></li>
+<li>lors de l'exécution de la fonction <code class="language-">h</code>, on est dans la configuration suivante son espace de nom est celui ayant cré la fonction, celui de <code class="language-">f</code> :
+<img src="fct-de-fct-3.png" alt=""></li>
+</ol>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
