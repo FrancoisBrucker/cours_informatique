@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Utiliser un interpréteur Python</title>
+    <title>Installer et utiliser un interpréteur</title>
 
     
 
@@ -71,23 +71,10 @@
       
 <article>
 
-  <h1 class="mb-1">Utiliser un interpréteur Python</h1>
-  <div class="mb-4">
+  <h1>Installer et utiliser un interpréteur</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteurs : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">François Brucker</li>
-          
-            <li class="before:content-['•'] before:px-1">Pierre Brucker</li>
-          
-        </ul>
-      </div>
     
   </div>
 
@@ -100,78 +87,60 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fondements-programmation/">Fondements de la programmation (avec python)</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fondements-programmation/interpréteur-principes/">Utiliser un interpréteur Python</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fondements-programmation-tbd/">Fondements de la programmation (avec python)</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fondements-programmation-tbd/interpréteur-installation/">Installer et utiliser un interpréteur</a>
 
 </div></div>
 
-
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/système/ordinateur-programmes-OS/">Ordinateur, programmes et OS</a>
-              </li></ul>
-      
-
-</div></div>
 
 
     
   
 
-  <blockquote>
-<p>TBD utiliser un interpreteur = TFIL</p>
-</blockquote>
-<p>Commençons par le commencement et voyons comment exécuter du code python chez soit.</p>
-<blockquote>
-<p>interpréteur (comme javascript) python -&gt; interp -&gt; exécution machine (diff des langages exécutés golang)
-ici : envoyer sur systeme 1 : systeme et execution de code. Principes.
-utiliser print() et x = 34 (affectation variables)</p>
-<p>Différentes façon d'exécuter du python</p>
-<p>basthon
-spyder</p>
-</blockquote>
-<p>On a utilisé un interpréteur externe (sur le site <a href="https://basthon.fr/">https://basthon.fr/</a>) pour l'instant. Son utilisation n'est pas tès satisfaisante pour l'instant puisqu'il faut copier/coller chaque ligne dans l'interpréteur.</p>
-<p>La façon classique d'exécuter du code python est d'utiliser un intermédiaire entre l'interpréteur et son code. Nous allons montrer deux façons classiques de le faire.</p>
-<h4>Spyder</h4>
+  <p>Nous allons ici installer un interpréteur sur notre machine (si nécessaire sous windows) puis l'utiliser via <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/terminal/" class="interne">un terminal</a>.</p>
+<h2>Installation d'un interpréteur</h2>
+<p>Commençons par installer un interpréteur indépendant de l'application utilisée pour coder. Selon le système d'exploitation, la méthode d'installation est un peu différente :</p>
+<h3>Sous Windows 11</h3>
+<p>Utilisez le Microsoft store.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.spyder-ide.org/">https://www.spyder-ide.org/</a></p>
+<p><a href="https://apps.microsoft.com/search?query=python&amp;hl=fr-FR&amp;gl=FR">Python sur le windows store</a></p>
 </div></div>
 
-<p>Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Et permet d'écrire des programmes tout en conservant un unique interpréteur accessible par une console.</p>
-<p>Il fonctionne à la fois comme un notebook ou comme un interpréteur.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>La commande <code>Run file</code> exécute son code dans un nouvel interpréteur <strong>puis</strong> le fusionne avec l'interpréteur courant.</p>
-<p>Ce fonctionnement est déroutant...</p>
-</div></div>
+<p>Puis installez le via le store.</p>
+<h3>Sous Linux/Ubuntu</h3>
+<p>Python est installé par défaut, mais il ne contient pas le module pip permettant d'installer de nouveaux modules à python. Pour installer pip, tapez dans <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/terminal/" class="interne">un terminal</a> :</p>
+<pre><code>sudo apt install python3-pip
+</code></pre>
+<p>Enfin, la commande pour taper python est <code>python3</code>. Pour avoir le même comportement que sous windows où cette commande s'appelle juste <code>python</code>, vous pouvez installer :</p>
+<pre><code>sudo apt install python-is-python3
+</code></pre>
+<p>Vous pourrez uniquement taper <code>python</code> dans <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/terminal/" class="interne">un terminal</a> pour exécuter l'interpréteur python,</p>
+<h3>Sous Macos</h3>
+<p>De même que sous Linux/Ubuntu, python est installé par défaut, mais il s'appelle <code>python3</code>. Mais avant de pouvoir l'utiliser il vous faudra installer les <em>Apple developer tools</em>, en particulier <a href="https://developer.apple.com/xcode/resources/">xcode</a></p>
+<p>Pour avoir le même comportement que sous windows et Linux où cette commande s'appelle juste <code>python</code>, vous pouvez taper dans <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/terminal/" class="interne">un terminal</a> :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"alias python=python3"</span> <span class="token operator">>></span> ~/.zshrc</code></pre>
+<p>Puis fermez et ouvrez un nouveau terminal pour les modifications soient appliquées.</p>
+<h2>Exécuter l'interpréteur depuis un terminal</h2>
+<p>Ouvrez <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/terminal/" class="interne">un terminal</a> et tapez <code>python</code> puis la touche entrée : vous êtes dans un interpréteur.</p>
+<h3>Powershell</h3>
+<p><img src="powershell.png" alt="powershell"></p>
+<h3>Terminal Linux</h3>
+<p><img src="linux.png" alt="Linux"></p>
+<h3>Terminal mac</h3>
+<p><img src="mac.png" alt="macos"></p>
+<h2>Utiliser et sortir de l'interpréteur</h2>
+<p>Vous pouvez ensuite taper le bonjour universel :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">>></span><span class="token operator">></span> print<span class="token punctuation">(</span><span class="token string">"bonjour Monde !"</span><span class="token punctuation">)</span>
+bonjour Monde <span class="token operator">!</span>
+<span class="token operator">>></span><span class="token operator">></span></code></pre>
+<p>Puis sortir de l'interpréteur en tapant <code class="language-">quit()</code> qui exécute la fonction permettant de sortir de l'interpréteur :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">>></span><span class="token operator">></span> quit<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<p>Si vous voulez faire du développement sérieusement, je vous conseille d'utiliser plutôt la combinaison éditeur + interpréteur ci-dessous.</p>
-<!-- TBD
-
-Montrer que le run file est étrange avec une fonction.
-Déf dans le fichier puis exécution dans l'interpréteur.
-Il faudra refaire le même exemple avec vscode et montrer que ça ne marche pas. On a un terminal pas un interpréteur. Il faut tout faire dans le fichier -->
+❯</code></pre>
+<p>Notez que vous pouvez aussi, sous Linux et mac, taper la combinaison de touches <code>^D</code> (la touche ctrl et la touche D en même temps) pour sortir de l'interpréteur et retourner dans le terminal.</p>
 
 
 </article>

@@ -132,101 +132,51 @@
     
   
 
-  <p>On a vue dans la partie système (le prérequis) qu'un programme s'exécute via un processeur, instruction par instruction. Presque plus personne ne crée de programmes directement en langage machine, on utilise des langages dit <em>évolués</em> composées d'instructions spécifiques à celui-ci. Un programme d'un langage évolué est alors une suite d'instructions.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Pour qu'un programme puisse être exécuté par le processeur d'un ordinateur chacune de ses instructions doit être traduite en instructions machine avant son exécution. Il existe trois stratégies pour cela :</p>
+  <p>Nous allons voir dans cette partie tout ce qui est nécessaire pour exécuter et créer son propre code python. Tout ce que l'on verra ici est applicable pour tous les langages de programmation.</p>
+<p><em>Python</em> est un <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation">langage de programmation</a> inventé en 1991 par <a href="https://fr.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a>. C'est comme une langue mais en beaucoup plus simple car :</p>
 <ul>
-<li>convertir le programme en entier avant exécution. Les langages appliquant cette stratégie sont dit <strong><em>langages compilés</em></strong> et regroupe des langages comme le Go ou le Rust (ou des dinosaures comme le C ou le C++).</li>
-<li>convertir les instructions une à une au cours de l'exécution du programme. Les langages appliquant cette stratégie sont dit <strong><em>langages interprétés</em></strong>, ou encore <strong><em>langages de script</em></strong> et regroupe des langages comme le python ou le javascript par exemple (ou encore le Ruby)</li>
-<li>méthode hybride : convertir le programme en entier avant exécution dans un langage un peu plus évolué que le langage machine appelé <a href="https://fr.wikipedia.org/wiki/Bytecode">bytecode</a>. Le java ou le C# sont des langages appliquant cette stratégie.</li>
+<li>il n'y a pas d'exception</li>
+<li>il y a très peu de vocabulaire de base</li>
+<li>il est structuré en lignes et non en phrase</li>
 </ul>
-</div></div>
-
-<p>Selon l'usage que l'on veut en faire on utilisera l'un ou l'autre de ces langages :</p>
-<ul>
-<li>langages compilés :
-<ul>
-<li><strong>avantages</strong> : la compilation permet de vérifier que tout le programme est correct avant exécution et on peut optimiser le langage machine produit pour le système ou le processeur utilisé.</li>
-<li><strong>inconvénients</strong> : l'étape de compilation est à faire après toute modification du code source et le programme compilé ne fonctionne que sur un système et un processeur donné.</li>
-</ul>
-</li>
-<li>langages interprété :
-<ul>
-<li><strong>avantages</strong> : il n'y a pas de différence entre le code source et le programme à exécuter. On peut modifier puis exécuter rapidement du code</li>
-<li><strong>inconvénients</strong> : nécessite un programme, appelé <a href="https://fr.wikipedia.org/wiki/Interpr%C3%A8te_%28informatique%29">interpréteur</a>, qui fait la transcription instruction par instruction</li>
-</ul>
-</li>
-<li>bytecode : combine les avantage/inconvénient des deux
-<ul>
-<li><strong>avantages</strong> : le bytecode est portable (indépendant du système et du processeur) et l'étape de compilation permet d'optimiser le code presque autant qu'avec un langage compilé.</li>
-<li><strong>inconvénients</strong> : nécessite une étape de compilation un programme, et doit être exécuté par un programme appelé <a href="https://fr.wikipedia.org/wiki/Machine_virtuelle#Machine_virtuelle_de_haut_niveau">machine virtuelle</a></li>
-</ul>
-</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Il n'y a pas de mauvaise stratégie, il faut utiliser le langage adapté à notre situation/projet :</p>
-<ul>
-<li>petits projets ou code devant être modifié souvent : langage de script</li>
-<li>gros projets sur la durée devant être exécuté sur de nombreuses machines différentes : bytecode</li>
-<li>projets dont la vitesse d'exécution est primordiale : langages compilés</li>
-</ul>
-<p>En plus de cela, chaque langage va bien sur avoir sa spécificité, mais rappelez-vous :</p>
-<blockquote>
-<p>Plus on veut du code rapide (ou optimisé) plus on va passer du temps a l'écrire et moins il sera portable.</p>
-</blockquote>
-</div></div>
-
-<p>Nous utiliserons ainsi ici <a href="https://fr.wikipedia.org/wiki/Python_(langage)">le langage python</a> qui est un langage interprété très simple à utiliser. Ce sera l'idéal pour comprendre et assimiler toutes les méthodes et techniques principales en développement.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Nous nous concentrerons sur python, tout ce que nous y verrons s'adaptera <em>mutatis mutandis</em> à tout autre langage de programmation objet.</p>
-</div></div>
-
-<blockquote>
-<p>TBD mettre notebook dans la partie analyse des données : (notebook de basthon) mais surtout collab (re print et exemple avec graphique matplotlib)</p>
-</blockquote>
-<h2>Exécuter du code python avec un interpréteur</h2>
+<p>Son but est de faire faire des choses à un ordinateur.</p>
+<h2>Exécuter du code python</h2>
+<p>On ne peut cependant pas directement donner un texte écrit en python (qu'on appelle <strong><em>code</em></strong> ou <strong><em>programme</em></strong>) à un ordinateur pour qu'il l'exécute car celui-ci ne comprend que le <a href="https://fr.wikipedia.org/wiki/Langage_machine">langage machine</a>, on passe par un intermédiaire, un programme nommé <strong><em>interpréteur python</em></strong>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="interpr%C3%A9teur-principes" class="interne">Utiliser un interpréteur</a></p>
+<p><a href="ex%C3%A9cuter-code/" class="interne">Exécuter du code python</a></p>
 </div></div>
 
-<h2>Élément de langage</h2>
+<h2>Éléments du langage</h2>
 <blockquote>
-<p>TBD écrire du code exécutable.</p>
+<p>TBD ici remonter commentaire plus haut
+code = manipuler des objets.
+et faire 2 parties : les objets (créer et manipuler des objets)</p>
 </blockquote>
-<h3>Variables et objets</h3>
+<p>Faire faire des choses à un ordinateur nécessite de communiquer avec lui via des instructions qui sont structurés comme un langage. Nous allons montrer ici les fondement de tout langage de programmation.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="%C3%A9crire-code/" class="interne">Écrire du code python</a></p>
+</div></div>
+
+<h2>Structurer son code</h2>
 <blockquote>
-<p>stocker et retrouver ses petits</p>
+<p>TBD que faire des opérations on ne peut pas faire grand chose.
+exécution conditionnelles et grouper des instructions entre elles.</p>
 </blockquote>
-<blockquote>
-<p>manipuler des objets via des opérations et des néthodes</p>
-</blockquote>
+<p>Nous avons vu comment</p>
 <h3>Fonctions et modules</h3>
 <blockquote>
 <p>manipuler des objets via des fonctions
 groupement de fonctions dans des</p>
 </blockquote>
 <h2>Partie I : Variables et objets</h2>
-<p>Coder revient à manipuler des objets via des variables. Nous allons ici définir ces terme et expliciter les différents moyens mis en oeuvre par python (et par extension tous les langages) pour le faire.</p>
 <h3>Principes</h3>
 <p>Avant d'écrire des programmes en python, on commence par s'intéresser à ses mécanismes internes en comprenant ce qu'est une instruction python et ce que'on peut faire avec.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
