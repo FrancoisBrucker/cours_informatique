@@ -29,6 +29,7 @@ Son but est de faire faire des choses à un ordinateur.
 
 ## Exécuter du code python
 
+
 On ne peut cependant pas directement donner un texte écrit en python (qu'on appelle **_code_** ou **_programme_**) à un ordinateur pour qu'il l'exécute car celui-ci ne comprend que le [langage machine](https://fr.wikipedia.org/wiki/Langage_machine), on passe par un intermédiaire, un programme nommé **_interpréteur python_**.
 
 {% aller %}
