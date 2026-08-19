@@ -44,7 +44,7 @@ Pour cela :
 
 {% endattention %}
 
-## <span id="bases"></span>Partie I : Fondements
+## Partie I : Fondements
 
 
 {% aller %}
@@ -58,13 +58,18 @@ Pour cela :
 - `Classe.méthode(paramètres)` pour les méthodes
  -->
 
+## Partie II : Modules python
 
-## Partie II : Développement d'un projet
+> TBD pas tout reecrire à la main. Python vient avec des modules puissant
+> ou avec des modules externe utilisés partout. spyder en a deja d'installe comme numpy ou matplotlib.
 
+## Partie III : Développement d'un projet
+
+> TBD plusieurs fichiers + test + vscode
 - ici fichiers
 - tests etc
 
-## Partie III : Programmation projet
+## Partie IV : Programmation objet
 
 <!-- TBD changement
 
@@ -73,7 +78,9 @@ Pour cela :
  -->
 
 
-## Partie IV : Partager ses projets et les maintenir dans le temps
+## Partie V : Partager ses projets
+
+> TBD environnement virtuel + github sous la forme d'un
 
 ## TBD à remanier
 

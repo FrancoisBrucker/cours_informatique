@@ -193,11 +193,11 @@ Ce principe universel est une instanciation de la [deuxième partie du discours 
 
 <div id="TFIL"></div>
 
-{% attention2 "**À retenir**" %}
+{% note2 "**Théorème**" %}
 
-**_Théorème Fondamental de l’Ingénierie Logicielle_** stipule que l'on peut régler tous les problèmes en ajoutant une couche d'indirection.
+Le **_Théorème Fondamental de l’Ingénierie Logicielle_** stipule que l'on peut régler tous les problèmes en ajoutant une couche d'indirection.
 
-{% endattention2 %}
+{% endnote2 %}
 
 On retrouvera ce fonctionnement tout au long de notre découverte du fonctionnement d'un système d'exploitation.
 

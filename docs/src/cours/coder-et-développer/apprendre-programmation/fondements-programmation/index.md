@@ -17,71 +17,46 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Nous allons voir dans cette partie tout ce qui est nécessaire pour exécuter et créer son propre code python. Tout ce que l'on verra ici est applicable pour tous les langages de programmation.
 
-On a vue dans la partie système (le prérequis) qu'un programme s'exécute via un processeur, instruction par instruction. Presque plus personne ne crée de programmes directement en langage machine, on utilise des langages dit _évolués_ composées d'instructions spécifiques à celui-ci. Un programme d'un langage évolué est alors une suite d'instructions. 
+_Python_ est un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation) inventé en 1991 par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum). C'est comme une langue mais en beaucoup plus simple car :
 
-{% note2 "**Définition**" %}
-Pour qu'un programme puisse être exécuté par le processeur d'un ordinateur chacune de ses instructions doit être traduite en instructions machine avant son exécution. Il existe trois stratégies pour cela :
+- il n'y a pas d'exception
+- il y a très peu de vocabulaire de base
+- il est structuré en lignes et non en phrase
 
-- convertir le programme en entier avant exécution. Les langages appliquant cette stratégie sont dit **_langages compilés_** et regroupe des langages comme le Go ou le Rust (ou des dinosaures comme le C ou le C++).
-- convertir les instructions une à une au cours de l'exécution du programme. Les langages appliquant cette stratégie sont dit **_langages interprétés_**, ou encore **_langages de script_** et regroupe des langages comme le python ou le javascript par exemple (ou encore le Ruby)
-- méthode hybride : convertir le programme en entier avant exécution dans un langage un peu plus évolué que le langage machine appelé [bytecode](https://fr.wikipedia.org/wiki/Bytecode). Le java ou le C# sont des langages appliquant cette stratégie.
+Son but est de faire faire des choses à un ordinateur.
 
-{% endnote2 %}
+## Exécuter du code python
 
-Selon l'usage que l'on veut en faire on utilisera l'un ou l'autre de ces langages :
-
-- langages compilés :
-  - **avantages** : la compilation permet de vérifier que tout le programme est correct avant exécution et on peut optimiser le langage machine produit pour le système ou le processeur utilisé.
-  - **inconvénients** : l'étape de compilation est à faire après toute modification du code source et le programme compilé ne fonctionne que sur un système et un processeur donné.
-- langages interprété :
-  - **avantages** : il n'y a pas de différence entre le code source et le programme à exécuter. On peut modifier puis exécuter rapidement du code
-  - **inconvénients** : nécessite un programme, appelé [interpréteur](https://fr.wikipedia.org/wiki/Interpr%C3%A8te_%28informatique%29), qui fait la transcription instruction par instruction
-- bytecode : combine les avantage/inconvénient des deux 
-  - **avantages** : le bytecode est portable (indépendant du système et du processeur) et l'étape de compilation permet d'optimiser le code presque autant qu'avec un langage compilé.
-  - **inconvénients** : nécessite une étape de compilation un programme, et doit être exécuté par un programme appelé [machine virtuelle](https://fr.wikipedia.org/wiki/Machine_virtuelle#Machine_virtuelle_de_haut_niveau)
-
-
-{% attention2 "**À retenir**" %}
-Il n'y a pas de mauvaise stratégie, il faut utiliser le langage adapté à notre situation/projet :
-
-- petits projets ou code devant être modifié souvent : langage de script
-- gros projets sur la durée devant être exécuté sur de nombreuses machines différentes : bytecode
-- projets dont la vitesse d'exécution est primordiale : langages compilés
-
-En plus de cela, chaque langage va bien sur avoir sa spécificité, mais rappelez-vous :
-
-> Plus on veut du code rapide (ou optimisé) plus on va passer du temps a l'écrire et moins il sera portable.
-
-{% endattention2 %}
-
-
-Nous utiliserons ainsi ici [le langage python](<https://fr.wikipedia.org/wiki/Python_(langage)>) qui est un langage interprété très simple à utiliser. Ce sera l'idéal pour comprendre et assimiler toutes les méthodes et techniques principales en développement.
-
-{% info %}
-
-Nous nous concentrerons sur python, tout ce que nous y verrons s'adaptera _mutatis mutandis_ à tout autre langage de programmation objet.
-
-{% endinfo %}
-> TBD mettre notebook dans la partie analyse des données : (notebook de basthon) mais surtout collab (re print et exemple avec graphique matplotlib)
-
-## Exécuter du code python avec un interpréteur
+On ne peut cependant pas directement donner un texte écrit en python (qu'on appelle **_code_** ou **_programme_**) à un ordinateur pour qu'il l'exécute car celui-ci ne comprend que le [langage machine](https://fr.wikipedia.org/wiki/Langage_machine), on passe par un intermédiaire, un programme nommé **_interpréteur python_**.
 
 {% aller %}
-[Utiliser un interpréteur](./interpréteur-principes){.interne}
+[Exécuter du code python](./exécuter-code/){.interne}
 {% endaller %}
 
+## Éléments du langage
 
-## Élément de langage
+> TBD ici remonter commentaire plus haut
+> code = manipuler des objets.
+> et faire 2 parties : les objets (créer et manipuler des objets)
 
-> TBD écrire du code exécutable.
+Faire faire des choses à un ordinateur nécessite de communiquer avec lui via des instructions qui sont structurés comme un langage. Nous allons montrer ici les fondement de tout langage de programmation.
 
-### Variables et objets
 
-> stocker et retrouver ses petits
 
-> manipuler des objets via des opérations et des néthodes
+{% aller %}
+[Écrire du code python](./écrire-code/){.interne}
+{% endaller %}
+
+## Structurer son code
+
+> TBD que faire des opérations on ne peut pas faire grand chose. 
+> exécution conditionnelles et grouper des instructions entre elles.
 > 
+Nous avons vu comment 
+
+
 ### Fonctions et modules
 
 > manipuler des objets via des fonctions
@@ -89,7 +64,6 @@ Nous nous concentrerons sur python, tout ce que nous y verrons s'adaptera _mutat
 
 ## Partie I : Variables et objets
 
-Coder revient à manipuler des objets via des variables. Nous allons ici définir ces terme et expliciter les différents moyens mis en oeuvre par python (et par extension tous les langages) pour le faire.
 
 ### Principes
 
