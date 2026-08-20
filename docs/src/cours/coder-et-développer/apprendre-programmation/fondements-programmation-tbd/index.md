@@ -57,22 +57,7 @@ Faire des exercices :
 
 ## Partie III : Structures de données
 
-### <span id="conteneurs"></span>Conteneurs
 
-Les conteneurs sont des objets contenant d'autres objets. Ils permettent de structurer ses données.
-
-{% aller %}
-[Conteneurs](conteneurs){.interne}
-{% endaller %}
-
-### Mutable et non mutable
-
-{% attention %}
-La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du code clair et optimisé (aucun objet n'est copié) mais est la cause de nombre d'erreurs a priori incompréhensibles si on ne l’appréhende pas bien.
-{% endattention %}
-{% aller %}
-[Objets mutables et non mutables](mutable-immutable){.interne}
-{% endaller %}
 
 
 <!-- TBD 

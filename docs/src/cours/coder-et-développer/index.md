@@ -31,6 +31,9 @@ On utilisera un langage d'application pour chaque partie :
 - Spécialisation et [rust](https://rust-lang.org/fr/)
 
 
+> TBD ?
+> ? faire une partie A2 avec l'objet  et B1 avec le TDD 
+> ou 4 partie en mettant le S2 mpci en partie 2 et renommer apprendre en initiation.
 ## Partie A : Apprendre
 
 {% aller %}

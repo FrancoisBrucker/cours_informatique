@@ -213,7 +213,7 @@ Une chaîne de caractère n'est **pas** un réel ou un entier.
 La conversion de chaînes de caractères en entier ou en réel est très courante lorsque l'on récupère des entrées tapées par un utilisateur qui sont **toujours** des chaînes de caractères
 {% endattention2 %}
 
-### Conversion de booléens
+### <span id="conversion-bool"></span>Conversion de booléens
 
 On effectue souvent ce genre d'opération de façon implicite pour les booléens. Ainsi, un entier est vrai s'il est non nul.
 
@@ -546,7 +546,7 @@ Créer de nouveaux objets avec d'autres objets. Les opérations sur les objets v
 
 Les opérations peuvent s'effectuer sur les trois types numériques que sont les entier (classe `int`{.language-}), les réels (classe `float`{.language-}) et les complexes (classe `complex`{.language-})
 
-#### Opérateurs
+#### <span id="opérateurs"></span>Opérateurs
 
 Outre les classiques opérations :
 
@@ -558,7 +558,7 @@ Outre les classiques opérations :
 python possède aussi :
 
 - `//`{.language-} division entière
-- `%`{.language-} reste de la division
+- `%`{.language-} reste de la division entière
 - `**`{.language-} exposant.
 
 {% exercice %}
@@ -594,7 +594,7 @@ Trois opérateur sont courants pour les chaînes de caractères :
 - la multiplication avec l'opérateur `*`{.language-}
 - test de présence avec l'opérateur `in`{.language-}
 
-#### Concatenation et multiplication
+#### <span id="opérateurs-str"></span>Concatenation et multiplication
 
 Les chaînes de caractères possèdent 2 opérateurs :
 
@@ -758,7 +758,7 @@ Python a choisi cette façon de faire pour permettre des notations abrégées co
 
 ### Immutabilité des objets
 
-Notez que tous les objets basique de python sont **_immutables_** : ils ne peuvent être modifiés. Ainsi, si `x = 41`{.language_}, on est dans la situation suivante :
+Notez que tous les objets basique de python sont **_non modifiables_**. Ainsi, si `x = 41`{.language_}, on est dans la situation suivante :
 
 ![nouvel objet](./nouvel-objet-0.png)
 
@@ -771,6 +771,13 @@ x = x + 1
 On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus accessible va disparaître sous l'action du [ramasse-miettes](../variables/#ramasse-miettes){.interne} :
 
 ![nouvel objet](./nouvel-objet.png)
+
+
+{% attention2 "**À retenir**" %}
+Les  objets basiques de python sont dit **_immutables_** : ils ne peuvent être modifiées après leurs créations. La notion de mutabilité est cruciale dans les langages objets, nous reviendrons souvent sur cette notion qui peut mordre très fort si on ne la comprend pas bien. 
+
+Pour l'instant tout est ok puisque nous n'avons qu'une sorte d'objets et qu'ils sont immutables.
+{% endattention2 %}
 
 ## Fonctions
 

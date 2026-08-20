@@ -246,3 +246,32 @@ On utilise la fonction [`sample`{.language-} du module `random`{.language-}](htt
 ```
 
 {% enddetails %}
+
+
+> TBD ci-après à intégrer
+
+### Listes aléatoires
+
+Mélanger une liste peut se faire avec [le module `random`{.language-} de python](https://docs.python.org/fr/3.14/library/random.html).
+
+Par exemple, la liste de 10 premiers entiers mélangés :
+
+```python
+>>> import random
+>>> L = list(range(10))
+>>> random.shuffle(L)
+>>> L
+[3, 1, 4, 9, 6, 2, 0, 7, 8, 5]
+```
+
+{% info %}
+Notez que la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) ne rend rien. Elle mélange la liste passée en paramètre.
+{% endinfo %}
+
+Ou l'utilisation de [`random.randrange`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) pour créer des liste d'entiers aléatoires. Par exemple une liste de 10 nombres valant 0 ou 1 de façon aléatoire :
+
+```python
+>>> L = [random.randrange(2) for i in range(10)]
+>>> L
+[1, 1, 0, 1, 1, 0, 1, 0, 1, 0]
+```

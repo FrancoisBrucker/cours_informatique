@@ -13,13 +13,7 @@ eleventyComputed:
 <https://docs.python.org/fr/3/tutorial/introduction.html#lists>
 {% endlien %}
 
-Les listes sont la structure principale lorsque l'on veut stocker plusieurs objets. La liste est un conteneur dont on peut accéder les éléments un à un.
-
-{% info %}
-Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
-{% endinfo %}
-
-Une liste est une classe python.
+Les listes sont la structure principale lorsque l'on veut stocker plusieurs objets. La liste est un conteneur dont on peut accéder à son contenu un à un.
 
 ## Création et références
 
@@ -35,7 +29,7 @@ Comme la liste fait partie des conteneurs les plus utilisés de python, on peut 
 x = []
 ```
 
-Les deux instructions précédentes ont créées des liste vides. L'état de l'espace de nommage après l'affectation est :
+Les deux instructions précédentes ont créé des listes vides. L'état de l'espace de nommage après l'affectation est :
 
 ![liste vide](./liste-1.png)
 
@@ -45,24 +39,49 @@ mais on peut aussi directement créer une liste avec des objets dedans :
 x = [1, 4, "douze"]
 ```
 
-L'exemple précédent à créé une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position. L'espace de nommage est alors :
+L'exemple précédent à créé une liste de variables `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position :
 
 ![liste 3 éléments](./liste-2.png)
 
-On voit que les 3 objets ne sont pas contenus dans la liste, elle ne possède qu'une référence vers eux. Explicitons ça :
+{% note2 "**Définition**" %}
+Les variables de la listes sont accessible via leur **_index_** allant de 0 au nombre d'élément moins un. Pour cela on fait suivre le nom de la liste par des `[]` et en mettant l'index voulu :
+
+- le premier élément de la liste `x`{.language-} est associé à la variable `x[0]`{.language-}, ici un entier valant 1
+- le second élément de la liste `x`{.language-} est associé à la variable `x[1]`{.language-}, ici un entier valant 4
+- le troisième élément de la liste `x`{.language-} est associé à la variable `x[2]`{.language-}, ici une chaîne de caractères valant `"douze"`{.language-}.
+
+On peut aussi aller à l'envers :
+
+- le dernier élément de la liste `x`{.language-} est associé à la variable `x[-1]`{.language-},
+- le l'avant dernier élément de la liste `x`{.language-} est associé à la variable `x[-2]`{.language-}, 
+- le l'avant avant dernier élément de la liste `x`{.language-} est associé à la variable `x[-3]`{.language-}, 
+- etc.
+
+Enfin, le nombre d'éléments d'un conteneur, comme une liste, peut être donné par la fonction `len`{.language-}. Pour l'exemple précédent `len(x)`{.language-} sera égal à 3
+
+{% endnote2 %}
+{% attention2 "**À retenir**" %}
+Les 3 objets ne sont pas contenus dans la liste, elle ne possède qu'une référence vers eux.
+{% endattention2 %}
+
+
+Ainsi après exécution du code suivant :
 
 ```python
 réponse = 42
 x = [réponse]
 ```
 
-Ce qui donne comme espace de nommage :
+On aura crée 2 variables `x`{.language-} et `réponse`{.language-} :
 
 ![liste 1 élément](./liste-3.png)
 
-Le premier élément de la liste est aussi associé à la variable `réponse`{.language-}.
+Le premier élément de la liste sera associé à 2 variables :
 
-On peut aussi, bien sur faire ce genre de choses :
+- `x[0]`{.language-},
+- `réponse`{.language-}.
+
+Ce mécanisme permet par exemple de faire ce genre de choses :
 
 ```python
 réponse = 42
@@ -76,77 +95,6 @@ L'espace de nommage est alors :
 
 Remarquez qu'une liste peut avoir une référence à autre liste.
 
-## Affichage
-
-On peut afficher une liste en utilisant la fonction print :
-
-```python
-print([1, 4, "douze"])
-```
-
-## Accès à un élément d'une liste
-
-On accède à un élément de la liste en faisant suivre le nom de la liste par des `[]` et en mettant l'index voulu dans les crochets. Si `x = [1, 4, "douze"]`{.language-}, alors :
-
-```python
->>> x[0]
-1
->>> x[1]
-4
->>> x[2]
-'douze'
-```
-
-Le nombre d'élément d'un conteneur, comme une liste, peut être donné par la fonction `len`{.language-}. Pour l'exemple précédent :
-
-```python
->>> len(x)
-3
-```
-
-Une chaîne de caractère, bien qu'elle ne soit pas une liste stricto sensu peut-être considérée comme une liste composée de caractères : on peut accéder à un caractère particulier de la chaîne comme on le ferait avec une liste.
-
-{% exercice %}
-Quel est la treizième lettre du mot "anticonstitutionnellement" ?
-{% endexercice %}
-{% details "solution" %}
-
-```text
->>> "anticonstitutionnellement"[12]
-'t'
-```
-
-{% enddetails %}
-
-On peut aussi commencer par la fin, d'index -1 :
-
-```python
->>> x[-1]
-'douze'
->>> x[-2]
-4
->>> x[-3]
-1
-```
-
-Pour la chaîne `"PYTHON"`{.language-} :
-
-|            itérable             |  P  |  Y  |  T  |  H  |  O  |  N  |
-| :-----------------------------: | :-: | :-: | :-: | :-: | :-: | :-: |
-| numérotation à partir du début  |  0  |  1  |  2  |  3  |  4  |  5  |
-| numérotation à partir de la fin | -6  | -5  | -4  | -3  | -2  | -1  |
-
-{% exercice %}
-Quel est la quatrième lettre avant la fin du mot "anticonstitutionnellement" ?
-{% endexercice %}
-{% details "solution" %}
-
-```text
->>> "anticonstitutionnellement"[-4]
-'m'
-```
-
-{% enddetails %}
 
 ## Modification d'une liste
 
@@ -157,22 +105,31 @@ Modifier une liste se fait soit en modifiant directement un objet de la liste, s
 On accède à un élément qu'on modifie. Par exemple :
 
 ```python
-x = [1, 4, "douze"]
-print(x)
-x[2] = 12
-print(x)
+>>> x = [1, 4, "douze"]
+>>> print(x)
+[1, 4, 'douze']
+>>> x[2] = 12
+>>> print(x)
+[1, 4, 12]
 ```
 
 L'élément d'une liste est considérée comme une variable que l'on peut modifier. Il est cependant impossible de modifier un élément qui n'existe pas. Par exemple, le code suivant produira une erreur :
 
 ```python
-x = [1, 4, "douze"]
-x[3] = 12
+>>> x = [1, 4, "douze"]
+>>> print(x)
+[1, 4, 'douze']
+>>> x[3] = 12
+Traceback (most recent call last):
+  File "<python-input-17>", line 1, in <module>
+    x[3] = 12
+    ~^^^
+IndexError: list assignment index out of range
 ```
 
 ### Ajout d'un élément
 
-Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../../principes/fonctions-méthodes#méthodes){.interne} des objets de type liste.
+Nous utiliserons essentiellement deux façons d'ajouter des éléments à une liste, tous les deux utilisant des [méthodes](../../fondements-programmation/écrire-code#méthodes){.interne} des objets de type liste.
 
 Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
 
@@ -218,7 +175,7 @@ Il existe d'autres façons, indirectes, de créer des listes, utile lorsque les 
 
 ### Avec range
 
-[La fonction `range`{.language-}](../../bloc-répétition/#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
+[La fonction `range`{.language-}](../../fondements-programmation/structure-code/#range){.interne} qui produit des itérateurs peut également permettre de créer des listes.
 
 Par exemple :
 
@@ -258,7 +215,7 @@ for i in range(10):
 
 ### <span id="list-comprehension"></span> Avec une _list comprehension_
 
-{% lien %}
+{% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>
 {% endlien %}
 
@@ -318,6 +275,25 @@ Créez avec une _list comprehension_ une liste contenant toutes les sommes $i + 
 
 {% enddetails %}
 
+### Avec une évaluation
+
+{% lien "**Documentation**" %}
+<https://docs.python.org/fr/3/library/functions.html#eval>
+{% endlien %}
+
+La fonction `eval`{.language-} évalue une chaîne de caractères comme si c'était une instruction python. Il est donc totalement possible d'écrire ce code :
+
+```python
+L = eval(input("Donnez une liste :"))
+print(L)
+```
+
+Si l'utilisateur a écrit une liste son évaluation produira bien une liste.
+
+{% attention %}
+Ne faite ce genre de chose que si c'est vous l'utilisateur, car cette évaluation va exécuter du code que vous ne maîtrisez pas ! 
+{% endattention %}
+
 ## Itérer sur une liste
 
 En tant que conteneur, une liste est un itérable. Elle peut peut donc faire partie d'une instruction for :
@@ -346,7 +322,7 @@ Quelques listes sont souvent demandées. Voici les moyens en python de les crée
 
 ### Listes d'entiers successifs
 
-On utilise [la fonction `range`{.language-}](../../bloc-répétition/#range){.interne} en combinaison avec le [créateur de liste `list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
+On utilise [La fonction `range`{.language-}](../../fondements-programmation/structure-code/#range){.interne} en combinaison avec le [créateur de liste `list()`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list) qui peut prendre un itérable en paramètre.
 
 Par exemple pour la liste des 10 premiers entiers :
 
@@ -408,32 +384,6 @@ A noter qu'il existe aussi la [fonction `reversed`{.language-}](https://docs.pyt
 >>> L = list(reversed(range(10)))
 >>> L
 [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-```
-
-### Listes aléatoires
-
-Mélanger une liste peut se faire avec [le module `random`{.language-} de python](https://docs.python.org/fr/3.14/library/random.html).
-
-Par exemple, la liste de 10 premiers entiers mélangés :
-
-```python
->>> import random
->>> L = list(range(10))
->>> random.shuffle(L)
->>> L
-[3, 1, 4, 9, 6, 2, 0, 7, 8, 5]
-```
-
-{% info %}
-Notez que la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) ne rend rien. Elle mélange la liste passée en paramètre.
-{% endinfo %}
-
-Ou l'utilisation de [`random.randrange`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) pour créer des liste d'entiers aléatoires. Par exemple une liste de 10 nombres valant 0 ou 1 de façon aléatoire :
-
-```python
->>> L = [random.randrange(2) for i in range(10)]
->>> L
-[1, 1, 0, 1, 1, 0, 1, 0, 1, 0]
 ```
 
 ## Même liste, noms différents
@@ -671,7 +621,7 @@ print(ma_liste[un_indice])
 Utilisez les méthodes `sort`{.language-} et `reverse`{.language-} (qui modifient les listes) pour résoudre l'exercice suivant :
 
 {% exercice %}
-Créez une liste de 20 entiers aléatoire allant de 1 à 10.
+Demandez à l'utilisateur de donner une liste d'entiers
 
 1. afficher cette liste à l'écran
 2. triez cette liste puis affichez là à nouveau
@@ -680,9 +630,7 @@ Créez une liste de 20 entiers aléatoire allant de 1 à 10.
    {% details "solution" %}
 
 ```python
-import random
-
-L = [random.randrange(11) for i in range(20)]
+L = eval(input("Écrivez une liste d'entiers :"))
 print(L)
 
 L.sort()

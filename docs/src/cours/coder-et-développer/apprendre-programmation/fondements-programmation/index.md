@@ -27,12 +27,14 @@ _Python_ est un [langage de programmation](https://fr.wikipedia.org/wiki/Langage
 
 Son but est de faire faire des choses à un ordinateur. Ceci nécessite de communiquer avec lui via des instructions qui sont structurés comme un langage. Nous allons montrer ici les fondement de tout langage de programmation.
 
-Nous allons aborder tout ceci en 3 parties :
+Nous allons aborder tout ceci en 4 parties :
 
 1. Nous verrons dans [la première partie](./#partie-1){.interne} comment exécuter du code  python
 2. Dans [la seconde partie](./#partie-2){.interne} nous nous intéresserons aux objets manipulées par le languages
-3. Enfin [la troisième partie](./#partie-3){.interne} sera consacrée à la structuration du code en blocs permettant d'avoir des comportements complexes via des structures simples.
+3. [La troisième partie](./#partie-3){.interne} quant à elle sera consacrée à la structuration du code en blocs permettant d'avoir des comportements différents selon les données manipulées
+4. Enfin, [la quatrième partie](./#partie-4){.interne} vous apprendra comment créer vos propres fonctions
 
+À l'issue de ces 4 parties, vous aurez les connaissances nécessaires pour créer à partir de rien du code qui puisse répondre à vos besoins.
 
 ## <span id="partie-1"></span>Exécuter du code python
 
@@ -48,10 +50,14 @@ On ne peut cependant pas directement donner un texte écrit en python (qu'on app
 [Écrire du code python](./écrire-code/){.interne}
 {% endaller %}
 
-## <span id="partie-2"></span>Structurer son code
+## <span id="partie-3"></span>Structurer son code
 
 {% aller %}
-[Structurer son code python](./structure-code/){.interne}
+[Structure de contrôle en python](./structure-code/){.interne}
 {% endaller %}
 
 
+## <span id="partie-4"></span>Écrire ses fonctions
+{% aller %}
+[Écrire ses propres fonctions en python](./écrire-fonctions/){.interne}
+{% endaller %}

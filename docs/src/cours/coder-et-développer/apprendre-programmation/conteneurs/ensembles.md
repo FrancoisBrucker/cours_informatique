@@ -24,8 +24,9 @@ Gérer des ensembles rapidement et avec peu de place en mémoire :
 
 {% lien %}
 
+- [Documentation officielle](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)
 - <https://realpython.com/python-sets/>
-- [`set`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)
+
 
 {% endlien %}
 

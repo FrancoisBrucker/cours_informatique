@@ -57,23 +57,40 @@ Pour cela :
 - `Classe.méthode(paramètres)` pour les méthodes
  -->
 
-## Partie II : Conteneurs
+## Partie II : Conteneurs et mutabilité
 
-> TBD conteneur = objets contenant des variables. Python a popularisé ces structures qui sont maintenant universellement utilisées.
-> liste variables = indices
-> set = variables non nommées
-> TBD liste/dictionnaires
+Les conteneurs sont des objets contenant des variables. Python a popularisé ces structures qui sont maintenant universellement utilisées.
 
-## Partie III : Modules python et bibliothèques utiles
+{% aller %}
+[Conteneurs](conteneurs){.interne}
+{% endaller %}
 
-> TBD pas tout reecrire à la main. Python vient avec des modules puissant
-> ou avec des modules externe utilisés partout. spyder en a deja d'installe comme numpy ou matplotlib.
+Les conteneurs sont liés à une notion fondamentale en python et dans tous les langages objets qu'est la mutabilité.
+
+{% attention %}
+La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du code clair et optimisé (aucun objet n'est copié) mais est la cause de nombre d'erreurs a priori incompréhensibles si on ne l’appréhende pas bien.
+{% endattention %}
+{% aller %}
+[Objets mutables et non mutables](mutable-immutable){.interne}
+{% endaller %}
+
+
+## Partie III : Modules python
+
+> TBD 
+> 1. pas tout reecrire à la main. Python vient avec des modules puissant
+> 2. modules externe utilisés partout. spyder en a deja d'installe comme numpy ou matplotlib.
+> 3. créer ses propres modules. Notion d'espace de nommages.
+
 
 ## Partie IV : Développement d'un projet
 
 > TBD plusieurs fichiers + test + vscode
 - ici fichiers
 - tests etc
+
+
+> TBD espace de nommage...
 
 ## Partie V : Programmation objet
 
