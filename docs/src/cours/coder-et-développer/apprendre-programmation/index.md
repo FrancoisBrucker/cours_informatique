@@ -53,23 +53,29 @@ Pour cela :
 
 <!-- TBD changement
 
-- formated strings avec exercices
-- retour de fct type cohérent = objet / None ou True/false.
+- 
 - `Classe.méthode(paramètres)` pour les méthodes
  -->
 
-## Partie II : Modules python
+## Partie II : Conteneurs
+
+> TBD conteneur = objets contenant des variables. Python a popularisé ces structures qui sont maintenant universellement utilisées.
+> liste variables = indices
+> set = variables non nommées
+> TBD liste/dictionnaires
+
+## Partie III : Modules python et bibliothèques utiles
 
 > TBD pas tout reecrire à la main. Python vient avec des modules puissant
 > ou avec des modules externe utilisés partout. spyder en a deja d'installe comme numpy ou matplotlib.
 
-## Partie III : Développement d'un projet
+## Partie IV : Développement d'un projet
 
 > TBD plusieurs fichiers + test + vscode
 - ici fichiers
 - tests etc
 
-## Partie IV : Programmation objet
+## Partie V : Programmation objet
 
 <!-- TBD changement
 
@@ -78,7 +84,7 @@ Pour cela :
  -->
 
 
-## Partie V : Partager ses projets
+## Partie VI : Partager ses projets
 
 > TBD environnement virtuel + github sous la forme d'un
 
