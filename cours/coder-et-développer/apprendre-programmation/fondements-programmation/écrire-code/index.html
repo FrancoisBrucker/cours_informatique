@@ -363,7 +363,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p>La conversion de chaînes de caractères en entier ou en réel est très courante lorsque l'on récupère des entrées tapées par un utilisateur qui sont <strong>toujours</strong> des chaînes de caractères</p>
 </div></div>
 
-<h3>Conversion de booléens</h3>
+<h3><span id="conversion-bool"></span>Conversion de booléens</h3>
 <p>On effectue souvent ce genre d'opération de façon implicite pour les booléens. Ainsi, un entier est vrai s'il est non nul.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -803,7 +803,7 @@ Python utilise un mécanisme nommé <a href="https://fr.wikipedia.org/wiki/Ramas
 <p>Créer de nouveaux objets avec d'autres objets. Les opérations sur les objets vont des opérations arithmétiques (a + b, a - b, ...) aux tests (a &lt; b) en passant par les opérations logiques (a et b).</p>
 <h3>Nombres</h3>
 <p>Les opérations peuvent s'effectuer sur les trois types numériques que sont les entier (classe <code class="language-">int</code>), les réels (classe <code class="language-">float</code>) et les complexes (classe <code class="language-">complex</code>)</p>
-<h4>Opérateurs</h4>
+<h4><span id="opérateurs"></span>Opérateurs</h4>
 <p>Outre les classiques opérations :</p>
 <ul>
 <li><code class="language-">+</code> (addition)</li>
@@ -814,7 +814,7 @@ Python utilise un mécanisme nommé <a href="https://fr.wikipedia.org/wiki/Ramas
 <p>python possède aussi :</p>
 <ul>
 <li><code class="language-">//</code> division entière</li>
-<li><code class="language-">%</code> reste de la division</li>
+<li><code class="language-">%</code> reste de la division entière</li>
 <li><code class="language-">**</code> exposant.</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -864,7 +864,7 @@ Python utilise un mécanisme nommé <a href="https://fr.wikipedia.org/wiki/Ramas
 <li>la multiplication avec l'opérateur <code class="language-">*</code></li>
 <li>test de présence avec l'opérateur <code class="language-">in</code></li>
 </ul>
-<h4>Concatenation et multiplication</h4>
+<h4><span id="opérateurs-str"></span>Concatenation et multiplication</h4>
 <p>Les chaînes de caractères possèdent 2 opérateurs :</p>
 <ul>
 <li>l'addition qui concatène deux chaînes</li>
@@ -1041,12 +1041,23 @@ La réponse universelle est <span class="token number">42</span></code></pre>
 </div></div>
 
 <h3>Immutabilité des objets</h3>
-<p>Notez que tous les objets basique de python sont <strong><em>immutables</em></strong> : ils ne peuvent être modifiés. Ainsi, si <code class="language_">x = 41</code>, on est dans la situation suivante :</p>
+<p>Notez que tous les objets basique de python sont <strong><em>non modifiables</em></strong>. Ainsi, si <code class="language_">x = 41</code>, on est dans la situation suivante :</p>
 <p><img src="nouvel-objet-0.png" alt="nouvel objet"></p>
 <p>En incrémentant <code class="language-">x</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span></code></pre>
 <p>On crée un nouvel objet (un entier valant 42) et l'ancien objet qui n'est plus accessible va disparaître sous l'action du <a href="../variables/#ramasse-miettes" class="interne">ramasse-miettes</a> :</p>
 <p><img src="nouvel-objet.png" alt="nouvel objet"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les  objets basiques de python sont dit <strong><em>immutables</em></strong> : ils ne peuvent être modifiées après leurs créations. La notion de mutabilité est cruciale dans les langages objets, nous reviendrons souvent sur cette notion qui peut mordre très fort si on ne la comprend pas bien.</p>
+<p>Pour l'instant tout est ok puisque nous n'avons qu'une sorte d'objets et qu'ils sont immutables.</p>
+</div></div>
+
 <h2>Fonctions</h2>
 <p>Une fonction est un type d'objet pouvant être exécuté. Par exemple la fonction <code class="language-">print</code>.</p>
 <p>C'est un objet :</p>
