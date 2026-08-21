@@ -9,6 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
 Les tests permettent de vérifier que notre code fonctionne. Ils font partie du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter **tous les tests** pour vérifier que notre programme fonctionne aussi bien qu'avant. Les tests font partie intégrante du projet : ils garantissent que votre programme fonctionne **maintenant**, et pas seulement au moment où vous avez écrit vos tests.
 
 On y reviendra à de nombreuses reprises :

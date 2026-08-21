@@ -44,20 +44,18 @@ Pour cela :
 
 {% endattention %}
 
-## Partie I : Fondements
+## Partie I : Concepts
+
+Les différents concepts de la programmation avec des objets. On apprendra tout ça avec python, mais cela vous aidera dans tous les langages, en particulier ceux à objets.
+
+### I.1 Fondements
 
 
 {% aller %}
 [Fondements de la programmation (avec python)](fondements-programmation){.interne}
 {% endaller %}
 
-<!-- TBD changement
-
-- 
-- `Classe.méthode(paramètres)` pour les méthodes
- -->
-
-## Partie II : Conteneurs et mutabilité
+### I.2 Conteneurs et mutabilité
 
 Les conteneurs sont des objets contenant des variables. Python a popularisé ces structures qui sont maintenant universellement utilisées.
 
@@ -75,24 +73,26 @@ La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du c
 {% endaller %}
 
 
-## Partie III : Modules python
+### I.3 : Modules
 
 > TBD 
-> 1. pas tout reecrire à la main. Python vient avec des modules puissant
+> 1. pas tout réecrire à la main. Python vient avec des modules puissant
 > 2. modules externe utilisés partout. spyder en a deja d'installe comme numpy ou matplotlib.
-> 3. créer ses propres modules. Notion d'espace de nommages.
+> 3. créer ses propres modules. Faire une couche sur les espaces de nommage comme une sorte de conteneur.
 
+### I.4 : On vérifie qu'on a compris
 
-## Partie IV : Développement d'un projet
+> TBD monolignes etc
+
+## Partie II : Développement d'un projet
 
 > TBD plusieurs fichiers + test + vscode
 - ici fichiers
 - tests etc
 
+> TBD ici formalisation des espaces de nommage avec les classes...
 
-> TBD espace de nommage...
-
-## Partie V : Programmation objet
+## Partie III : Programmation objet et évènementielle
 
 <!-- TBD changement
 
@@ -101,9 +101,12 @@ La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du c
  -->
 
 
-## Partie VI : Partager ses projets
+## Partie IV : Partager ses projets
 
 > TBD environnement virtuel + github sous la forme d'un
+
+
+## Partie V : Pour aller plus loin
 
 ## TBD à remanier
 

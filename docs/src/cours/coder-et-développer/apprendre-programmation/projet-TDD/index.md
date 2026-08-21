@@ -9,6 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD idéal pour coder avec l'IA. Attention cependant, l'IA a tendance a faire trop de tests donc comme toujours vérifier ce qu'elle écrit comme tests et modifiez les.
+
 La programmation part les tests n'est pas quelque chose d'instinctif. Elle nécessite :
 
 1. un apprentissage (au départ on se sent nul et comme on aime pas ça on blame la méthode)
