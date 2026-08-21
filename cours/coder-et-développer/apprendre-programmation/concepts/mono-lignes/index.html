@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mono-lignes en python</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Mono-lignes en python</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">Aristide Grange</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/concepts/">Concepts</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/concepts/mono-lignes/">Mono-lignes en python</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Les mono-lignes sont 100 petit exercices que l'on doit à Aristide Grange. Ils permettent de se creuser un peu la tête pour écrire de façon condensé du code python.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="monolignes-questions.pdf" class="interne">Le sujet initial</a> était fait pour une version 2 de python, la version ci-après est une adaptation à python 3.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>Faire le sujet avec une version actuelle de python</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Ce sujet initial montre aussi en creux les évolutions de python :</p>
+<ul>
+<li>la fonction <code class="language-">print</code> prend des parenthèses,</li>
+<li>les f-string sont apparues,</li>
+<li><code class="language-">chr</code> et <code class="language-">ord</code> sont des code unicode maintenant</li>
+<li>la fonction <code class="language-">raw_input</code> a disparu,</li>
+<li><code class="language-">input</code> n'évalue plus automatiquement les entrées,</li>
+<li>la division de deux entiers rend un flottant par défaut,</li>
+<li>le 27e nombre de Mersenne n'est plus affichable directement car il le nombre de chiffres d'un entier est maintenant capé. Pour le calculer, il faut augmenter le nombre maximum de chiffre d'un entier de l'interpréteur.</li>
+</ul>
+<p>Augmenter le nombre de chiffres maximum d'un entier :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
+sys<span class="token punctuation">.</span>set_int_max_str_digits<span class="token punctuation">(</span><span class="token number">15000</span><span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<p>Toutes les réponses tiennent en 1 seule ligne de python. À vous de les trouver !</p>
+<p>Dans la vraie vie on préférera toujours du code explicite et facile à lire plutôt que du code compact, mais cela reste un très bon exercice pour comprendre comment fonctionne un langage informatique en général et python en particulier.</p>
+<h2>Sujet</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On en a déjà vu quelques-une pendant ce cours, à vous de les retrouver.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>Indices</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les fonctions suivantes vous seront utiles :</p>
+<ul>
+<li><a href="https://docs.python.org/fr/3.14/library/functions.html#divmod"><code class="language-">divmod</code></a></li>
+<li><a href="https://docs.python.org/fr/3.14/library/functions.html#input"><code class="language-">input</code></a></li>
+<li><a href="https://docs.python.org/fr/3.14/library/functions.html#chr"><code class="language-">chr</code></a> et <a href="https://docs.python.org/fr/3.14/library/functions.html#ord"><code class="language-">ord</code></a></li>
+<li><a href="https://docs.python.org/fr/3.14/library/functions.html#sum"><code class="language-">sum</code></a></li>
+</ul>
+<p>Les méthodes des :</p>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">listes</a></li>
+<li><a href="https://docs.python.org/fr/3.14/library/string.html#module-string">chaînes de caractères</a></li>
+</ul>
+</div>
+</details>     
+</div>
+<ol>
+<li>Évaluer le nombre d’atomes de l’univers : 1080</li>
+<li>Aﬀecter le 23e <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre premier de Mersenne</a> ($2^{11213}-1$) à une variable <code class="language-">m23</code>.</li>
+<li>Incrémenter <code class="language-">m23</code>.</li>
+<li>Décrémenter <code class="language-">m23</code> (on retrouve le 23e nombre de Mersenne)</li>
+<li>Évaluer 1000/7.</li>
+<li>Évaluer ⌊1000/7⌋.</li>
+<li>Évaluer 1000 mod 7.</li>
+<li>Évaluer en une seule expression le quotient entier et le reste de 1000/7.</li>
+<li>Aﬀecter en une seule instruction le quotient entier et le reste de 1000/7 à deux variables <code class="language-">q</code> et <code class="language-">r</code>.</li>
+<li>Aﬀecter à une variable <code class="language-">c</code> le couple formé de <code class="language-">q</code> et <code class="language-">r</code>.</li>
+<li>Faire les deux exercices précédents en une seule instruction.</li>
+<li>Échanger le contenu des deux variables <code class="language-">q</code> et <code class="language-">r</code>.</li>
+<li>Demander à l’utilisateur son âge et aﬀecter le résultat à une variable <code class="language-">a</code>.</li>
+<li>Demander à l’utilisateur la diﬀérence entre son année de naissance et celle de son voisin, et aﬀecter la valeur absolue à une variable <code class="language-">d</code>.</li>
+<li>Évaluer le nombre de chiﬀres de <code class="language-">m23</code>.</li>
+<li>Quel est le millième chiﬀre de <code class="language-">m23</code> ?</li>
+<li>Quels sont les dix premiers chiﬀres de <code class="language-">m23</code> ?</li>
+<li>Quel est le dernier chiﬀre de <code class="language-">m23</code> (sans utiliser son nombre de chiﬀres) ?</li>
+<li>Quel est le dernier chiﬀre de <code class="language-">m23</code> (utiliser explicitement son nombre de chiﬀres) ?</li>
+<li>Quels sont les dix derniers chiﬀres de <code class="language-">m23</code> ?</li>
+<li>La séquence 123 apparaît-elle dans <code class="language-">m23</code> ?</li>
+<li>À quelle position apparaît 1234 dans <code class="language-">m23</code> ?</li>
+<li>Combien <code class="language-">m23</code> contient-il de 7 ?</li>
+<li>Remplacer tous les 2 par des 7 dans <code class="language-">m23</code> (expression).</li>
+<li>Permuter tous les 2 et les 7 dans <code class="language-">m23</code> (expression).</li>
+<li>Demander à l’utilisateur son prénom et aﬀecter celui-ci à une variable p.</li>
+<li>Demander à l’utilisateur son nom complet (prénom puis nom) et aﬀecter celui-ci à une variable nc.</li>
+<li>Demander à l’utilisateur son nom complet et aﬀecter ses prénom et nom à deux variables <code class="language-">p</code> et <code class="language-">n</code> (on suppose que l’utilisateur à un nom sans espaces).</li>
+<li>Demander à l’utilisateur son nom complet et aﬀecter ses prénom et nom à deux variables <code class="language-">p</code> et <code class="language-">n</code> (l’utilisateur peut être noble ou plus généralement avoir un nom à plusieurs mots).</li>
+<li>L’utilisateur a-t-il bien mis une majuscule à ses prénom et nom ?</li>
+<li>Aﬃcher les prénom (initiale en majuscule) et nom (tout en majuscules).</li>
+<li>Aﬀecter le résultat à une variable nc.</li>
+<li>Aﬃcher « Bonsoir, <em>Prénom NOM</em> !, comment allez-vous ? » en substituant nc à la partie en italiques.</li>
+<li>Aﬃcher « Bonsoir, <em>Prénom</em> <em>NOM</em> !, comment allez-vous ? » en substituant p et n aux parties en italiques.</li>
+<li>Quel est le caractère de code Unicode 126 ?</li>
+<li>Quel intervalle existe-t-il dans la table Unicode entre une majuscule et la minuscule correspondante d'une lettre de l'alphabet ?</li>
+<li>Reproduire les trois lignes ci-dessous (tabulations pour séparer les colonnes) :</li>
+</ol>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">20  a
+100 b
+32  \</code></pre>
+<ol start="38">
+<li>Calculer 14 répétitions de <code class="language-">&quot;Developers ! &quot;</code>.</li>
+<li>Calculer 14 répétitions de <code class="language-">&quot;Developers ! &quot;</code> en supprimant l’espace final.</li>
+<li>Utiliser la fonction help pour aﬃcher la documentation de la fonction <code class="language-">range</code>.</li>
+</ol>
+<p>Solution.
+Exercice 43. Calculer la liste [0,1,2,...,99].
+Solution.
+Exercice 44. Calculer la liste [1,2,3,...,100].
+Solution.
+Exercice 45. Calculer la liste [1,3,5,...,99].
+Solution.
+Exercice 46. Calculer la liste [100,99,98,...,1].
+Solution.
+Exercice 47. Calculer 100
+n=1 n.
+Solution.
+Exercice 48. Aﬀecter à une variable l la liste [-5, -3, -1, 1, 3, 1, 5, 9, 13, 17, 9,
+6, 3, Solution.
+0] (obtenue par concaténation de trois ranges à déterminer).
+3
+Exercice 49. Calculer 20 répétitions de l.
+Solution.
+Exercice 50. Évaluer le minimum, le maximum et la moyenne des éléments de l.
+Solution.
+Exercice 51. Aﬀecter à une variable lm une copie de l.
+Solution.
+Exercice 52. Supprimer le dernier élément de lm.
+Solution.
+Exercice 53. Calculer le nombre de 1 de lm.
+Solution.
+Exercice 54. Calculer l’indice du plus grand élément de lm.
+Solution.
+Exercice 55. Supprimer le premier 1 de lm.
+Solution.
+Exercice 56. Insérer la liste [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;] après le 3e élément de lm.
+Solution.
+Exercice 57. Supprimer cette insertion.
+Solution.
+Exercice 58. Trier lm.
+Solution.
+Exercice 59. Inverser lm.
+Solution.
+Exercice 60. Ajouter la chaîne &quot;fin&quot; au bout de lm.
+Solution.
+Exercice 61. Aﬀecter à une variable e l’ensemble des éléments de l.
+Solution.
+Exercice 62. Calculer la diﬀérence de e d’avec l’ensemble {−5, 0, ..., 20}.
+Solution.
+Exercice 63. Retirer 13 de e.
+Solution.
+Exercice 64. Retirer 20 de e.
+Solution.
+Exercice 65. Ajouter &quot;treize&quot; à e.
+Solution.
+Exercice 67. Supraoesophagal est-il un mot anglais ?
+Solution.
+4
+Exercice 72. Aﬀecter à une variable rep le répertoire téléphonique suivant :
+– Le numéro de Jean est 03 87 65 45 67 ;
+– le numéro de Pierre est 03 87 31 55 21 ;
+– le numéro de Michel est 03 87 12 23 52.
+Solution.
+Exercice 73. Quel est le numéro de Jean ?
+Solution.
+Exercice 74. Modifier le numéro de Michel en 03 84 35 21 00.
+Solution.
+Exercice 75. Ajouter au répertoire Paul, de numéro 03 87 24 56 79.
+Solution.
+Exercice 76. Albert est-il répertorié ?
+Solution.
+Exercice 77. Aﬃcher les noms des personnes répertoriées.
+Solution.
+Exercice 78. Aﬃcher les numéros des personnes répertoriées.
+Solution.
+Exercice 79. Aﬀecter à une liste lc les couples (nom, numéro) des personnes répertoriées.
+Solution.
+Exercice 80. Trier lc par ordre alphabétique décroissant des noms.
+Solution.
+Exercice 81. Supprimer Paul du répertoire.
+Solution.
+Exercice 82. Supprimer un élément arbitraire du répertoire tout en renvoyant sa valeur.
+Solution.
+Exercice 83. Calculer la liste des inverses des entiers naturels positifs inférieurs à 10.
+Solution.
+Exercice 84. Même question pour une borne supérieure saisie par l’utilisateur.
+Solution.
+Exercice 85. Aﬃcher la liste des grains de blé à placer sur l’échiquier de Sessa.
+Solution.
+5
+Exercice 86. Évaluer le nombre total de grains de blé à placer.
+Solution.
+Exercice 87. Concaténer dans l’ordre tous les caractères de codes ASCII entre 32 et 126.
+Solution.
+Exercice 88. Calculer dans Z10 la somme des chiﬀres de m27.
+Solution.
+Exercice 89. Aﬀecter à une variable lengths la liste des longueurs des mots de words.
+Solution.
+Exercice 90. Aﬀecter à une variable maxLength la longueur du plus grand mot.
+Solution.
+Exercice 91. Calculer une liste ln de couples répertoriant, pour chaque longueur de mot, le
+nombre de mots de cette longueur.
+Solution.
+Exercice 92. Même exercice avec un dictionnaire.
+Solution.
+Exercice 93. Aﬀecter à une liste nl une copie de ln avec les couples permutés.
+Solution.
+Exercice 94. Quelle est longueur la plus représentée ?
+Solution.
+Exercice 95. Calculer la liste des diviseurs de 170170.
+Solution.
+Exercice 96. Calculer la liste [[], [0], [0,1], [0,1,2], ..., [0,1,2,...,99]].
+Solution.
+Exercice 97. Calculer la liste [[1], [1,2], [1,2,3], ..., [1,2,3,...,100]].
+Solution.
+Exercice 98. Calculer la liste [1, 3, 6, 10, 15, 21, ..., 5050] (s’aider de l’exercice 47).
+Solution.
+Exercice 99. Calculer la liste (i j : (i, j) ∈[1...10] ×[1...10]).
+Solution.
+Exercice 100. Calculer une liste de listes contenant les tables de Pythagore de 1 à 10.</p>
+<h2>Corrigé</h2>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"></span></code></pre>
+</div>
+</details>     
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

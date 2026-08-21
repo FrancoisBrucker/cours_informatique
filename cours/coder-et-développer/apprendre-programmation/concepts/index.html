@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Fichiers</title>
+    <title>Concepts</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Fichiers</h1>
+  <h1>Concepts</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fichiers/">Fichiers</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/concepts/">Concepts</a>
 
 </div></div>
 
@@ -96,27 +96,34 @@
     
   
 
-  <blockquote>
-<p>TBD mettre les exercices des monolignes.
-Et montrer comment on peut récupérer un fichier texte del'internet ?</p>
-</blockquote>
-<!-- début résumé -->
-<p>Qu'est-ce qu'un fichier et comment l'utiliser.</p>
+  <p>La programmation repose sur quelques concepts (variables, fonctions, ...) partagés par tous les langages. Nous allons nous concentrer sur <strong><em>les langages à objets</em></strong>, dont python fait parti, ou l'on manipule des &quot;<em>objets</em>&quot; référencés par des <em>&quot;variables&quot;</em>. Ces langages forment une grande majorité des langages utilisés (python, javascript, java, ...) et leurs concepts sont majoritairement utilisés dans des langages à <strong><em>structure</em></strong> comme le go ou encore le rust.</p>
+<p>En tout état de cause, ce sont des langages idéals pour commencer à programmer.</p>
+<h2>Fondements</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="structure" class="interne">Qu'est-ce qu'un fichier</a></p>
+<p><a href="fondements-programmation" class="interne">Fondements de la programmation (avec python)</a></p>
 </div></div>
 
-<h2>Fichiers texte</h2>
+<h2>Conteneurs et mutabilité</h2>
+<p>Les conteneurs sont des objets contenant des variables. Python a popularisé ces structures qui sont maintenant universellement utilisées.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="fichiers-texte" class="interne">fichiers texte</a></p>
+<p><a href="conteneurs" class="interne">Conteneurs</a></p>
+</div></div>
+
+<p>Les conteneurs sont liés à une notion fondamentale en python et dans tous les langages objets qu'est la mutabilité.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du code clair et optimisé (aucun objet n'est copié) mais est la cause de nombre d'erreurs a priori incompréhensibles si on ne l’appréhende pas bien.</p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -124,34 +131,76 @@ Et montrer comment on peut récupérer un fichier texte del'internet ?</p>
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="projet-texte" class="interne">projet fichiers texte</a></p>
+<p><a href="mutable-immutable" class="interne">Objets mutables et non mutables</a></p>
 </div></div>
 
-<h2>Fichiers binaire</h2>
+<h2>Chaines de caractères</h2>
+<p>Les chaines de caractères ne sont pas <em>sticto sensu</em> des conteneurs puisqu'elles sont composés de caractères et par de variables, mais elles  partagent de nombreuses propriétés avec les listes comme on va le voir. Elles sont très utilisés lorsqu'un programme doit communiquer avec son utilisateur et python permet de faire beaucoup de choses avec elles :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="fichiers-binaire" class="interne">fichiers binaire</a></p>
+<p><a href="chaines-caract%C3%A8res" class="interne">Chaînes de caractères</a></p>
 </div></div>
 
-<h2>Dossiers et chemins</h2>
+<h2>Modules et espace de nommage</h2>
+<p>Les <a href="https://docs.python.org/fr/3/tutorial/modules.html">modules</a> pythons sont des regroupement de fonctions utiles.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="dossiers-et-chemins" class="interne">dossiers et chemins en python</a></p>
+<p><a href="utilisation-modules" class="interne">Modules et espace de nommages python</a></p>
 </div></div>
 
-<h2>Stocker des données dans un fichier</h2>
+<p>Il existe quelques modules externes à python très utilisés. Ils ne sont pas présent par défaut lorsque l'on installe un nouvel interpréteur mais de nombreuses solutions les intègrent par défaut. C'est le cas de spyder, vous pouvez donc faire les deux tutoriaux suivant sans avoir à installer quoi que ce soit.</p>
+<h3>module <code class="language-">matplotlib</code></h3>
+<p>Le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="projet-donn%C3%A9es" class="interne">fichiers texte pour stocker des données</a></p>
+<p><a href="tutoriel-matplotlib" class="interne">Tutoriel Matplotlib</a></p>
+</div></div>
+
+<p>Si vous avez le choix, je conseille plutôt d'utiliser <a href="https://seaborn.pydata.org/">le module seaborn</a> pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.</p>
+<h3>module <code class="language-">numpy</code></h3>
+<p>Le module numpy est très utilisé pour les calculs scientifique, en particulier matriciels.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="tutoriel-numpy" class="interne">Tutoriel Numpy</a></p>
+</div></div>
+
+<h2>Tutoriel python</h2>
+<p>Terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu, parfois de façon plus détaillée :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3/tutorial/index.html">https://docs.python.org/fr/3/tutorial/index.html</a></p>
+</div></div>
+
+<h2><span id="exercices-fin"></span>On vérifie qu'on a compris</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="projet-codes" class="interne">Petits projets de code</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="mono-lignes" class="interne">100 mono-lignes</a></p>
 </div></div>
 
 
