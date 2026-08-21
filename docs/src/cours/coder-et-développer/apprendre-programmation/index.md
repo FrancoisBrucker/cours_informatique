@@ -52,16 +52,19 @@ Les différents concepts de la programmation avec des objets. On apprendra tout 
 [Concepts de programmation et application en python](./concepts){.interne}
 {% endaller %}
  
-Avant de passer à la partie II, vérifiez bien que vous avez acquis les concepts en faisant [les exercices finaux de la partie I](./concepts/#exercices-fin). Faites en particulier [les 100 mono-lignes](./concepts/mono-lignes/){.interne}, on est parfois surpris de voir qu'on ne maîtrise pas un sujet que l'on croyait facile...
+Avant de passer à la partie II, vérifiez bien que vous avez acquis les concepts en faisant [les exercices finaux de la partie I](./concepts/#exercices-fin){.language-}. 
+
+{% attention %}
+Ne passez pas à la partie suivante sans avoir fait **et compris** [les 84 mono-lignes en python](./concepts/mono-lignes/){.interne}, on est parfois surpris de voir qu'on ne maîtrise finalement pas ce que l'on croyait savoir...
+{% endattention %}
 
 ## Partie II : Développement d'un projet
 
-> TBD plusieurs fichiers + test + vscode
-- ici fichiers
-- tests etc
-- créer ses propres modules
+La première partie nous a appris les concepts fondamentaux d'un langage de programmation à objet et nous a permis d'écrire et d'exécuter un (petit) programme python. Cette partie nous permettra de passer à l'échelle en créant des programmes sur plusieurs fichiers.
 
-> TBD ici formalisation des espaces de nommage avec les classes...
+{% aller %}
+[Coder des projets en python](./programmer-projets){.interne}
+{% endaller %}
 
 ## Partie III : Programmation objet et évènementielle
 

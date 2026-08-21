@@ -90,7 +90,7 @@ Terminez cette partie en faisant le tutoriel de python qui reprend tout ce que n
 [Petits projets de code](projet-codes){.interne}
 {% endaller %}
 {% aller %}
-[100 mono-lignes](./mono-lignes){.interne}
+[mono-lignes en python](./mono-lignes){.interne}
 {% endaller %}
 
 

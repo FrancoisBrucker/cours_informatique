@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: "Mono-lignes en python"
+title: "42 * 2 Mono-lignes en python"
 authors:
   - "Aristide Grange"
 
@@ -13,14 +13,11 @@ eleventyComputed:
 ---
 
 
-Les mono-lignes sont des petits exercices que l'on doit à Aristide Grange. Ils permettent de se creuser un peu la tête pour écrire de façon condensé du code python. 
+Les mono-lignes sont des petits exercices que l'on doit à Aristide Grange. Ils permettent de se creuser un peu la tête pour écrire de façon condensé du code python. J'ai modifié le sujet initial pour qu'il puisse être fait avec une version actuelle de python (il a été fait en 2005 pour une version 2 de python) et ai supprimé quelques questions, en particulier les questions relatives aux fichiers que l'on a pas encore vu.
 
-{% info %}
+{% details "Sujet initial et modifications à apporter si vous voulez le faire une version actuelle de python" %}
+[Le sujet initial](monolignes-questions.pdf){.interne}
 
-[Le sujet initial](monolignes-questions.pdf){.interne} était fait pour une version 2 de python, la version ci-après est une adaptation à python 3.
-
-{% endinfo %}
-{% details "Si vous voulez faire le sujet initial avec une version actuelle de python" %}
 Ce sujet initial montre aussi en creux les évolutions de python : 
 
 - la fonction `print`{.language-} prend des parenthèses,
@@ -28,6 +25,7 @@ Ce sujet initial montre aussi en creux les évolutions de python :
 - `chr`{.language-} et `ord`{.language-} sont des code unicode maintenant
 - la fonction `raw_input`{.language-} a disparu,
 - `input`{.language-} n'évalue plus automatiquement les entrées, 
+- `range`{.language-} ne rend plus une liste mais un itérateur,
 - la division de deux entiers rend un flottant par défaut,
 - le 27e nombre de Mersenne n'est plus affichable directement car il le nombre de chiffres d'un entier est maintenant capé. Pour le calculer, il faut augmenter le nombre maximum de chiffre d'un entier de l'interpréteur.
  
@@ -111,129 +109,143 @@ Les méthodes des :
 38.  Calculer 14 répétitions de `"Developers ! "`{.language-}.
 39.  Calculer 14 répétitions de `"Developers ! "`{.language-} en supprimant l’espace final.
 40. Utiliser la fonction `help`{.language-} pour aﬃcher la documentation de la fonction `range`{.language-}.
-
-Solution.
-Exercice 43. Calculer la liste [0,1,2,...,99].
-Solution.
-Exercice 44. Calculer la liste [1,2,3,...,100].
-Solution.
-Exercice 45. Calculer la liste [1,3,5,...,99].
-Solution.
-Exercice 46. Calculer la liste [100,99,98,...,1].
-Solution.
-Exercice 47. Calculer 100
-n=1 n.
-Solution.
-Exercice 48. Aﬀecter à une variable l la liste [-5, -3, -1, 1, 3, 1, 5, 9, 13, 17, 9,
-6, 3, Solution.
-0] (obtenue par concaténation de trois ranges à déterminer).
-3
-Exercice 49. Calculer 20 répétitions de l.
-Solution.
-Exercice 50. Évaluer le minimum, le maximum et la moyenne des éléments de l.
-Solution.
-Exercice 51. Aﬀecter à une variable lm une copie de l.
-Solution.
-Exercice 52. Supprimer le dernier élément de lm.
-Solution.
-Exercice 53. Calculer le nombre de 1 de lm.
-Solution.
-Exercice 54. Calculer l’indice du plus grand élément de lm.
-Solution.
-Exercice 55. Supprimer le premier 1 de lm.
-Solution.
-Exercice 56. Insérer la liste ["a","b","c"] après le 3e élément de lm.
-Solution.
-Exercice 57. Supprimer cette insertion.
-Solution.
-Exercice 58. Trier lm.
-Solution.
-Exercice 59. Inverser lm.
-Solution.
-Exercice 60. Ajouter la chaîne "fin" au bout de lm.
-Solution.
-Exercice 61. Aﬀecter à une variable e l’ensemble des éléments de l.
-Solution.
-Exercice 62. Calculer la diﬀérence de e d’avec l’ensemble {−5, 0, ..., 20}.
-Solution.
-Exercice 63. Retirer 13 de e.
-Solution.
-Exercice 64. Retirer 20 de e.
-Solution.
-Exercice 65. Ajouter "treize" à e.
-Solution.
-Exercice 67. Supraoesophagal est-il un mot anglais ?
-Solution.
-4
-Exercice 72. Aﬀecter à une variable rep le répertoire téléphonique suivant :
-– Le numéro de Jean est 03 87 65 45 67 ;
-– le numéro de Pierre est 03 87 31 55 21 ;
-– le numéro de Michel est 03 87 12 23 52.
-Solution.
-Exercice 73. Quel est le numéro de Jean ?
-Solution.
-Exercice 74. Modifier le numéro de Michel en 03 84 35 21 00.
-Solution.
-Exercice 75. Ajouter au répertoire Paul, de numéro 03 87 24 56 79.
-Solution.
-Exercice 76. Albert est-il répertorié ?
-Solution.
-Exercice 77. Aﬃcher les noms des personnes répertoriées.
-Solution.
-Exercice 78. Aﬃcher les numéros des personnes répertoriées.
-Solution.
-Exercice 79. Aﬀecter à une liste lc les couples (nom, numéro) des personnes répertoriées.
-Solution.
-Exercice 80. Trier lc par ordre alphabétique décroissant des noms.
-Solution.
-Exercice 81. Supprimer Paul du répertoire.
-Solution.
-Exercice 82. Supprimer un élément arbitraire du répertoire tout en renvoyant sa valeur.
-Solution.
-Exercice 83. Calculer la liste des inverses des entiers naturels positifs inférieurs à 10.
-Solution.
-Exercice 84. Même question pour une borne supérieure saisie par l’utilisateur.
-Solution.
-Exercice 85. Aﬃcher la liste des grains de blé à placer sur l’échiquier de Sessa.
-Solution.
-5
-Exercice 86. Évaluer le nombre total de grains de blé à placer.
-Solution.
-Exercice 87. Concaténer dans l’ordre tous les caractères de codes ASCII entre 32 et 126.
-Solution.
-Exercice 88. Calculer dans Z10 la somme des chiﬀres de m27.
-Solution.
-Exercice 89. Aﬀecter à une variable lengths la liste des longueurs des mots de words.
-Solution.
-Exercice 90. Aﬀecter à une variable maxLength la longueur du plus grand mot.
-Solution.
-Exercice 91. Calculer une liste ln de couples répertoriant, pour chaque longueur de mot, le
-nombre de mots de cette longueur.
-Solution.
-Exercice 92. Même exercice avec un dictionnaire.
-Solution.
-Exercice 93. Aﬀecter à une liste nl une copie de ln avec les couples permutés.
-Solution.
-Exercice 94. Quelle est longueur la plus représentée ?
-Solution.
-Exercice 95. Calculer la liste des diviseurs de 170170.
-Solution.
-Exercice 96. Calculer la liste [[], [0], [0,1], [0,1,2], ..., [0,1,2,...,99]].
-Solution.
-Exercice 97. Calculer la liste [[1], [1,2], [1,2,3], ..., [1,2,3,...,100]].
-Solution.
-Exercice 98. Calculer la liste [1, 3, 6, 10, 15, 21, ..., 5050] (s’aider de l’exercice 47).
-Solution.
-Exercice 99. Calculer la liste (i j : (i, j) ∈[1...10] ×[1...10]).
-Solution.
-Exercice 100. Calculer une liste de listes contenant les tables de Pythagore de 1 à 10.
+41. Calculer la liste $[0, 1, 2,\dots ,99]$.
+42. Calculer la liste $[1,2,3,\dots, 100]$.
+43. Calculer la liste $[1,3,5,\dots,99]$.
+44. Calculer la liste [100,99,98,...,1].
+45. Calculer $\sum_{i=1}^{100}i$.
+46. Aﬀecter à une variable `l`{.language-} la liste $[-5, -3, -1, 1, 3, 1, 5, 9, 13, 17, 9, 6, 3, 0]$ que vous obtiendrez par concaténation de trois listes issues de `range`{.language-} à déterminer.
+47. Calculer 20 répétitions de `l`{.language-}.
+48. Évaluer le minimum, le maximum et la moyenne des éléments de `l`{.language-}.
+49. Aﬀecter à une variable `lm`{.language-} une copie de `l`{.language-}.
+50. Supprimer le dernier élément de `lm`{.language-}.
+51. Calculer le nombre de 1 de `lm`{.language-}.
+52. Calculer l’indice du plus grand élément de `lm`{.language-}.
+53. Supprimer le premier 1 de `lm`{.language-}.
+54. Insérer la liste `["a","b","c"]`{.language-} après le 3e élément de `lm`{.language-}.
+55. Supprimer cette insertion.
+56. Trier `lm`{.language-}.
+57. Inverser `lm`{.language-}.
+58. Ajouter la chaîne "fin" au bout de lm.
+59. Aﬀecter à une variable `e`{.language-} l’ensemble des éléments de `l`{.language-}.
+60. Calculer la diﬀérence de `e`{.language-} d’avec l’ensemble $\\{−5, 0, 5, \dots, 20\\}$.\
+61. Retirer 13 de e.
+62. Ajouter "treize" à e.
+63. Aﬀecter à une variable `rep`{.language-} le répertoire téléphonique suivant :
+  – Le numéro de Jean est 03 87 65 45 67 ;
+  – le numéro de Pierre est 03 87 31 55 21 ;
+  – le numéro de Michel est 03 87 12 23 52.
+64. Quel est le numéro de Jean ?
+65. Modifier le numéro de Michel en 03 84 35 21 00.
+66. Ajouter au répertoire Paul, de numéro 03 87 24 56 79.
+67. Albert est-il répertorié ?
+68. Aﬃcher les noms des personnes répertoriées.
+69. Aﬃcher les numéros des personnes répertoriées.
+70. Aﬀecter à une liste `lc`{.language-} les couples (nom, numéro) des personnes répertoriées.
+71. Trier `lc`{.language-} par ordre alphabétique décroissant des noms.
+72. Supprimer Paul du répertoire.
+73. Supprimer un élément arbitraire du répertoire tout en renvoyant sa valeur.
+74. Calculer la liste des inverses des entiers naturels positifs inférieurs à 10.
+75. Même question pour une borne supérieure saisie par l’utilisateur.
+76. Aﬃcher la liste des grains de blé à placer sur [l’échiquier de Sissa](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27%C3%A9chiquier_de_Sissa).
+77. Évaluer le nombre total de grains de blé à placer.
+78. Concaténer dans l’ordre tous les caractères de codes Unicode entre 32 et 126.
+79. Calculer la liste des diviseurs de $170170$.
+80. $[[], [0], [0,1], [0,1,2], \dots, [0,1,2,...,99]]$.
+81. Calculer la liste $[[1], [1,2], [1,2,3], \dots, [1,2,3,...,100]]$.
+82. Calculer la liste $[\sum_{i=1}^{1}i, \sum_{i=1}^{2}i, \sum_{i=1}^{3}i, \dots, \sum_{i=1}^{100}i]$ (s’aider de l’exercice 45).
+83. Calculer l'ensemble $\\{ i * j \vert 1 \leq i, j\leq 10 \\}$.
+84. Calculer une liste de listes contenant [les tables de Pythagore](https://fr.wikipedia.org/wiki/Table_de_multiplication#Table_usuelle) de 1 à 10.
 
 ## Corrigé
 
 {% details "corrigé" %}
 
 ```python/
-
+print(pow(10, 80))
+m23 = pow(2, 11213) - 1
+m23 += 1
+m23 -= 1
+print(1000 / 7)
+print(1000 // 7)
+print(1000 % 7)
+print(divmod(1000, 7))
+q, r = divmod(1000, 7)
+c = (q, r)
+c = (q, r) = divmod(1000, 7)
+q, r = r, q
+a = int(input("Votre age ? :"))
+d = abs(int(input("Différence de vos années de naissance ? :")))
+print(len(str(m23)))
+print(str(m23)[999])
+print(str(m23)[:10])
+print(str(m23)[-1])
+print(str(m23)[len(str(m23))-1])
+print(str(m23)[-10:])
+print("123" in str(m23))
+print(str(m23).index("1234"))
+print(str(m23).count("7"))
+print(str(m23).replace("2", "7"))
+print(str(m23).replace("2", "x").replace("7", "2").replace("x", "7"))
+p = input("Votre prénom ? :")
+nc = input("Votre nom complet ? :")
+p, n = input("Votre nom complet ? :").split()
+p, n = input("Votre nom complet ? :").split(' ', 1)
+print(p[0].isupper() and n[0].isupper())
+print(p.title(), n.upper())
+nc = p.title() + " " + n.upper()
+print(f"Bonsoir, {nc} !, comment allez-vous ?")
+print(f"Bonsoir, {p} {n} !, comment allez-vous ?")
+print(chr(126))
+print(ord('a') - ord('A'))
+print("20\ta\n100\tb\n32\t\\")
+print("Developers ! " * 14)
+print(("Developers ! " * 14)[:-1])
+help(range)
+print(list(range(100)))
+print(list(range(1, 101)))
+print(list(range(1, 100, 2)))
+print(list(range(100, 0, -1)))
+print(sum(range(1, 101)))
+l = list(range(-5, 5, 2)) + list(range(1, 20, 4)) + list(range(9, -1, -3))
+print(l * 20)
+print(min(l), max(l), sum(l)/len(l))
+lm = l[:]
+del lm[-1]
+print(lm.count(1))
+print(lm.index(max(lm)))
+lm.remove(1)
+lm[3:3] = ["a","b","c"]
+del lm[3:6]
+lm.sort()
+lm.reverse()
+lm.append("fin")
+e = set(l)
+print(e- set(range(-5, 21, 5)))
+e.remove(13)
+e.add("treize")
+rep = {"Jean": "03 87 65 45 67", "Pierre": "03 87 31 55 21", "Michel": "03 87 12 23 52"}
+print(rep["Jean"])
+rep["Michel"] = "03 84 35 21 00"
+rep["Paul"] = "03 87 24 56 79"
+print("Albert" in rep)
+print(list(rep.keys()))
+print(list(rep.values()))
+lc = list(rep.items())
+lc.sort(reverse=True)
+del rep["Paul"]
+print(rep.popitem())
+print([1/n for n in range(1, 11)])
+print([1/n for n in range(1, int(input("borne sup :")))])
+print([2 ** i for i in range(64)])
+print(sum([2 ** i for i in range(64)]))
+print("".join([chr(x) for x in range(32, 127)]))
+print([x for x in range(1, 170171) if 170170 % x == 0])
+print([list(range(i)) for i in range(101)])
+print([list(range(1, i)) for i in range(2, 102)])
+print([sum(range(1, i)) for i in range(2, 102)])
+print({i * j for i in range(1, 11) for j in range(1, 11)})
+print([[i * j for i in range(1, 11)] for j in range(1, 11)])
 ```
 
 {% enddetails %}
