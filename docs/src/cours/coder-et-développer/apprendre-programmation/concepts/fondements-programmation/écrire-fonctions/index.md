@@ -385,7 +385,7 @@ Mais alors, il est de toute façon plus pertinent d'écrire dans un autre langag
 
 {% endinfo %}
 
-## <span id="espace-nommage"></span>Variables et fonctions
+## <span id="variables"></span>Variables et fonctions
 
 {% attention2 "**À retenir**" %}
 Les variables crées dans les fonctions restent dans les fonctions.

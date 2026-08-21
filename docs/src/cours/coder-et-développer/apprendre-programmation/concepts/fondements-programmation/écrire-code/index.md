@@ -639,66 +639,6 @@ J'aime bien faire du python.
 
 {% enddetails %}
 
-#### <span id="f-string"></span>Chaînes formatées
-
-{% lien %}
-
-- [Documentation python sur les chaînes formatées (7.1.1)](https://docs.python.org/fr/3/tutorial/inputoutput.html#tut-f-strings)
-- [Exemples d'utilisation](https://realpython.com/python-f-strings/#formatting-strings-with-pythons-f-string)
-
-{% endlien %}
-
-On peut aussi créer des chaînes en utilisant _implicitement_ la concatenation en utilisant **_les chaines formatées_** (_format-string_ ou encore _f-string_).
-
-Par exemple :
-
-```python
->>> nom = "Ada"
->>> bonjour = f"Bonjour {nom} !"
->>> print(bonjour)
-Bonjour Ada !
-```
-
-Remarquez le `f`{.language-} avant le début de la chaîne, il indique à python qu'il doit remplacer l'expression entre accolade par un objet. Si on oublie le `f`{.language-}, on obtient une chaîne classique :
-
-```python
->>> nom = "Ada"
->>> bonjour = "Bonjour {nom} !"
->>> print(bonjour)
-Bonjour {nom} !
-```
-
-L'utilisation de chaînes formatées remplace une concaténation explicite :
-
-```python
->>> bonjour = "Bonjour " + nom + " !"
->>> print(bonjour)
-Bonjour Ada !
-```
-
-En étant bien plus lisible.
-
-Attention, c'est bien une concaténation à la création de la chaîne. Une chaîne ne va pas se modifier magiquement lorsque l'on modifie une variable :
-
-```python
->>> nom = "Ada"
->>> bonjour = f"Bonjour {nom} !"
->>> print(bonjour)
-Bonjour Ada !
->>> nom = "Dominique"
->>> print(bonjour)
-Bonjour Ada !
-```
-
-Enfin, comme les accolades sont une expression, on peut écrire ce genre de choses :
-
-```python
->>> réponse = f"La réponse universelle est {40 + 2}"
->>> print(réponse)
-La réponse universelle est 42
-```
-
-Et, enfin, si on veut écrire une accolade, on l'insère : `f"{'{'}"`{.language-}.
 
 #### <span id="chaines-in"></span> Test de présence
 

@@ -15,9 +15,7 @@ eleventyComputed:
 Présentation succincte du module <https://matplotlib.org/>  très utilisé en python pour représenter ds graphiques et à la base de la bibliothèque <https://seaborn.pydata.org/>.
 
 {% info %}
-Utilisez un notebook de <https://notebook.basthon.fr/> pour exécuter les divers exemples et exercices.
-
-Si vous utilisez votre propre distribution de python, il vous faudra peut-être installer <https://matplotlib.org/> avec la commande suivante que vous taperez dans un [terminal](/cours/système-et-réseau/bases-système/terminal/bases/){.interne} : `python -m pip install matplotlib` (remplacez `python` par `python3` sous mac ou lLinux)
+Utilisez spyder pour ce tutoriel.
 
 {% endinfo %}
 
@@ -25,43 +23,30 @@ Le module [matplotlib](https://matplotlib.org/) peut être une  difficile à uti
 
 Nous allons présenter une procédure permettant de presque toujours s'en sortir. Au final, lorsque vous aurez les bases de <https://matplotlib.org/> nous ne saurions trop vous conseiller de lui préférer <https://seaborn.pydata.org/> qui est une surcouche de <https://matplotlib.org/> qui est d'une part plus jolie et d'autre part plus rationnelle dans son utilisation.
 
-## Écrire du code avec <https://matplotlib.org/>
+## Écrire du code
 
 Pour cette partie du cours nous aurons besoin de plus que la console. Il faudra en effet exécuter plusieurs lignes de python à la suite. Nous allons utiliser un notebook pour cela.
 
-{% faire %}
-Allez à <https://notebook.basthon.fr/> et ouvrez un nouveau notebook.
-{% endfaire %}
 
-Une fois le notebook ouvert, on pourra écrire plusieurs lignes dans une cellule avant de l'exécuter.
+Commençons par importer les bibliothèques  :
 
-Commençons par importer les bibliothèques dans la première cellule :
-
-1. copier/coller le code ci-dessous dans la première cellule de votre notebook
-2. exécutez la cellule
-
-    ```python
-    import matplotlib as mpl
-    import matplotlib.pyplot as plt
-    import numpy as np
-    ```
-
-Vous devriez arriver à quelque chose du genre :
-
-![matplotlib import](notebook-matplotlib-1.png)
-
-## <span id="code-matplotlib"></span> Un premier graphique
-
-Pour dessiner un graphique, on procédera toujours de la même façon :
-
-1. on crée les données à représenter
-2. créer le graphique avec matplotlib : `fig, ax = plt.subplots(figsize=(20, 5))`{.language-}
-3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`{.language-}
-4. représenter la figure (commande `plt.show()`{.language-}) ou la sauver dans un fichier
-
-Le code suivant permet de représenter la courbe $y=x^2$ :
 
 ```python
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+```
+
+Puis on ajoute le code de dessin de la courbe $y=x^2$. Ce qui donne le code suivant :
+
+```python
+# 0. import des modules
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+
+
 # 1. création des données
 
 x = []
@@ -96,12 +81,12 @@ plt.show()
 ```
 
 {% faire %}
-Copiez/coller le code précédent dans le notebook et exécutez la cellule
+Exécutez le code précédent dans spyder.
 {% endfaire %}
 
-Vous devriez arriver à quelque chose du genre :
+Vous devriez obtenir quelque chose comme ça :
 
-![matplotlib import](notebook-matplotlib-2.png)
+![figure 1](./matplotlib-1.png) 
 
 Essayons de comprendre comment tout ça fonctionne :
 
@@ -109,17 +94,31 @@ Essayons de comprendre comment tout ça fonctionne :
 2. la première ligne de la partie 2 crée les objets matplotlib sur lesquelles tracer les courbes.
     * On utilise ici `ax`{.language-} qui représente un dessin de 20 unités sur 5.
     * on peut paramétrer l'objet `ax`{.language-} pour limiter le graphique.
-3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}. La fonction [`ax.plot`{.language-}](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html) demande d'avoir 2 tableaux $x$ et$ $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.
+3. la troisième partie dessine nos points (reliés par des segments) sur l'objet `ax`{.language-}. La fonction [`ax.plot`{.language-}](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html) demande d'avoir 2 tableaux $x$ et $y$ de même dimensions en paramètre. Elle tracera les points $(x[i], y[i])$ et les reliera entre eux.
 4. enfin, on représente l'objet `ax`{.language-} à l'écran.
+
+
+{% attention2 "**À retenir**" %}
+Pour dessiner un graphique, on procédera toujours de la même façon :
+
+1. on crée les données à représenter
+2. créer le graphique avec matplotlib : `fig, ax = plt.subplots(figsize=(20, 5))`{.language-}
+3. ajouter des choses au dessin : plusieurs commandes ajoutant des choses au dessin, c'est à dire `ax`{.language-}
+4. représenter la figure (commande `plt.show()`{.language-}) ou la sauver dans un fichier
+
+{% endattention2 %}
+
 
 {% info "**Vous pouvez souvent supprimer la partie 2.1 de vos dessins**" %}
 
 Si l'on ne donne pas de limite d'axe, le dessin prendra la taille de ce qui est dessiné. Ceci est parfois pratique lorsque l'on a pas d'idée précise des bornes de notre dessin.
 {% endinfo %}
 
-{% exercice %}
+On vérifie que vous avez compris :
+
+{% faire %}
 Changez la courbe pour représenter $y = \frac{1}{2}x^2$
-{% endexercice %}
+{% endfaire %}
 
 {% exercice %}
 Superposez les courbes $y = x^2$ et $y = \frac{1}{2}x^2$.
@@ -150,7 +149,7 @@ Remarquez que les points ne sont pas représentés, uniquement les segments qui 
 
 ## Sauver une figure
 
-Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 du code de la [partie précédente](./#code-matplotlib){.interne} par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`{.language-}.
+Pour sauver votre graphique au format pdf, vous pouvez remplacez la partie 4 du code de la partie précédente par la ligne : `plt.savefig("graphique.pdf", format="pdf", bbox_inches='tight')`{.language-}.
 
 ## Plusieurs figures
 
@@ -232,8 +231,6 @@ y = [2, 5, 3, 8, 11]
 # 2. créer le dessin (ici ax)
 fig, ax = plt.subplots(figsize=(10, 7))
 
-
-# 2.2 les légendes
 ax.set_title("un histogramme")
 ax.set_xticks(range(len(x)))
 ax.set_xticklabels(x, rotation=45)
@@ -265,8 +262,6 @@ separation = (0.1, 0.1, 0.1, 0.1)
 # 2. créer le dessin (ici ax)
 fig, ax = plt.subplots(figsize=(10, 7))
 
-
-# 2.2 les légendes
 ax.set_title("un camembert")
 
 # 3. ajouter des choses au dessin
@@ -276,7 +271,7 @@ ax.pie(valeurs, explode=separation, labels=nom, autopct='%1.1f%%', shadow=True)
 plt.show()
 ```
 
-## Pimper vos dessins
+## _Pimper_ vos dessins
 
 Un bon point de départ pour explorer els diverses possibilités de `plot`{.language-} est de lire et faire le tutoriel :
 
@@ -289,7 +284,7 @@ Faire une belle figure prend du temps.
 ## Exercices
 
 {% faire %}
-Modifiez le [code du premier graphique](./#code-matplotlib){.interne} pour représenter la courbe $y=x$ où $x$ varie de $0$ à $100000$ par pas de $1000$.
+Modifiez le code du premier graphique pour représenter la courbe $y=x$ où $x$ varie de $0$ à $100000$ par pas de $1000$.
 
 Il pourra être nécessaire de modifier (ou de supprimer les limites des axes partie 2.1 du graphique)
 {% endfaire %}

@@ -9,6 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD mettre ça dans la partie programmation objet : comment fonctionne python.
+
 Nous avons déjà abordé la notion d'espace de nommage lorsque :
 
 - on a paré de modules : [l'espace de nommage du module](../principes/modules/#définition-espace-nommage){.interne} et de l'accès à leurs éléments via [la notation pointée](../principes/modules/#définition-notation-pointée){.interne}

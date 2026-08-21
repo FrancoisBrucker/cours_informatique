@@ -9,7 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
+> TBD mettre les exercices des monolignes. 
+> Et montrer comment on peut récupérer un fichier texte del'internet ?
+> 
 <!-- début résumé -->
 
 Qu'est-ce qu'un fichier et comment l'utiliser.

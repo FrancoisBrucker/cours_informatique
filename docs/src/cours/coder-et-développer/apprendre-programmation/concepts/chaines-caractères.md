@@ -185,13 +185,62 @@ Est-ce que m23 est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
 
 {% enddetails %}
 
-## Chaînes formatées
+#### <span id="f-string"></span>Chaînes formatées
 
-On a déjà vu [les f-string](../principes/opérations/#f-string), on peut faire plus en utilisant :
+{% lien "**Documentation**" %}
 
-- [la méthode `format`](https://docs.python.org/fr/3/library/string.html#formatstrings) qui est la méthode historique de formatage de chaines en python,
-- [les chaînes de modèles](https://docs.python.org/fr/3.13/library/string.html#template-strings) conforme aux [normes d'internationalisation](https://www.i18next.com/).
+<https://docs.python.org/fr/3/tutorial/inputoutput.html#tut-f-strings>
 
-{% info %}
-En python 3.14 les t-string implémentent les template-string directement : <https://davepeck.org/2025/04/11/pythons-new-t-strings/>
-{% endinfo %}
+{% endlien %}
+
+On peut  créer des chaînes en utilisant _implicitement_ la concatenation en utilisant **_les chaines formatées_** (_format-string_ ou encore _f-string_).
+
+Par exemple :
+
+```python
+>>> nom = "Ada"
+>>> bonjour = f"Bonjour {nom} !"
+>>> print(bonjour)
+Bonjour Ada !
+```
+
+Remarquez le `f`{.language-} avant le début de la chaîne, il indique à python qu'il doit remplacer l'expression entre accolade par un objet. Si on oublie le `f`{.language-}, on obtient une chaîne classique :
+
+```python
+>>> nom = "Ada"
+>>> bonjour = "Bonjour {nom} !"
+>>> print(bonjour)
+Bonjour {nom} !
+```
+
+L'utilisation de chaînes formatées remplace une concaténation explicite :
+
+```python
+>>> bonjour = "Bonjour " + nom + " !"
+>>> print(bonjour)
+Bonjour Ada !
+```
+
+En étant bien plus lisible.
+
+Attention, c'est bien une concaténation à la création de la chaîne. Une chaîne ne va pas se modifier magiquement lorsque l'on modifie une variable :
+
+```python
+>>> nom = "Ada"
+>>> bonjour = f"Bonjour {nom} !"
+>>> print(bonjour)
+Bonjour Ada !
+>>> nom = "Dominique"
+>>> print(bonjour)
+Bonjour Ada !
+```
+
+Enfin, comme les accolades sont une expression, on peut écrire ce genre de choses :
+
+```python
+>>> réponse = f"La réponse universelle est {40 + 2}"
+>>> print(réponse)
+La réponse universelle est 42
+```
+
+Et, enfin, si on veut écrire une accolade, on l'insère : `f"{'{'}"`{.language-}.

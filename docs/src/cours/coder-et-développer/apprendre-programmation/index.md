@@ -48,47 +48,18 @@ Pour cela :
 
 Les différents concepts de la programmation avec des objets. On apprendra tout ça avec python, mais cela vous aidera dans tous les langages, en particulier ceux à objets.
 
-### I.1 Fondements
-
-
 {% aller %}
-[Fondements de la programmation (avec python)](fondements-programmation){.interne}
+[Concepts de programmation et application en python](./concepts){.interne}
 {% endaller %}
-
-### I.2 Conteneurs et mutabilité
-
-Les conteneurs sont des objets contenant des variables. Python a popularisé ces structures qui sont maintenant universellement utilisées.
-
-{% aller %}
-[Conteneurs](conteneurs){.interne}
-{% endaller %}
-
-Les conteneurs sont liés à une notion fondamentale en python et dans tous les langages objets qu'est la mutabilité.
-
-{% attention %}
-La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du code clair et optimisé (aucun objet n'est copié) mais est la cause de nombre d'erreurs a priori incompréhensibles si on ne l’appréhende pas bien.
-{% endattention %}
-{% aller %}
-[Objets mutables et non mutables](mutable-immutable){.interne}
-{% endaller %}
-
-
-### I.3 : Modules
-
-> TBD 
-> 1. pas tout réecrire à la main. Python vient avec des modules puissant
-> 2. modules externe utilisés partout. spyder en a deja d'installe comme numpy ou matplotlib.
-> 3. créer ses propres modules. Faire une couche sur les espaces de nommage comme une sorte de conteneur.
-
-### I.4 : On vérifie qu'on a compris
-
-> TBD monolignes etc
+ 
+Avant de passer à la partie II, vérifiez bien que vous avez acquis les concepts en faisant [les exercices finaux de la partie I](./concepts/#exercices-fin). Faites en particulier [les 100 mono-lignes](./concepts/mono-lignes/){.interne}, on est parfois surpris de voir qu'on ne maîtrise pas un sujet que l'on croyait facile...
 
 ## Partie II : Développement d'un projet
 
 > TBD plusieurs fichiers + test + vscode
 - ici fichiers
 - tests etc
+- créer ses propres modules
 
 > TBD ici formalisation des espaces de nommage avec les classes...
 
@@ -108,25 +79,12 @@ La notion de mutabilité d'un objet est cruciale à comprendre. Elle permet du c
 
 ## Partie V : Pour aller plus loin
 
+> TBD package et anatomie d'un espace de nommage.
+
 ## TBD à remanier
 
 
-### Tutoriel python
 
-Une fois les bases acquises, terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu de façon plus détaillée :
-
-{% lien %}
-<https://docs.python.org/fr/3/tutorial/index.html>
-{% endlien %}
-
-### On s'entraîne
-
-{% aller %}
-[Petits projets de code](projet-codes){.interne}
-{% endaller %}
-{% aller %}
-[100 mono-lignes](./mono-lignes){.interne}
-{% endaller %}
 
 ## <span id="développer"></span>Gestion des données
 
@@ -151,23 +109,6 @@ Même si python vient avec de nombreux modules d'installés il arrive toujours u
 [Installer des modules](./modules-externes-python/){.interne}
 {% endaller %}
 
-#### Tutoriel matplotlib
-
-Le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.
-
-{% aller %}
-[Tutoriel Matplotlib](tutoriel-matplotlib){.interne}
-{% endaller %}
-
-Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
-
-#### Tutoriel numpy
-
-> TBD à faire avec les spécificités de l'array et des fonctions sympa.
-
-{% aller %}
-[Tutoriel Numpy](tutoriel-numpy){.interne}
-{% endaller %}
 
 ### Stockage des données
 

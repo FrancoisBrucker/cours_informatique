@@ -8,6 +8,8 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
+
+> TBD à refaire propre
 > 
 <!-- début résumé -->
 

@@ -20,11 +20,8 @@ Rappelez vous qu'il y a 2 exemples de code :
 - les programmes dont le but est d'être exécuté via un éditeur et qui consisteront la grande majorité des exemples donnés.
 {% endinfo %}
 
-Python structure son code en [_blocs_ d'instructions](./#bloc){.interne} qui permettent :
+Python structure son code en [_blocs_ d'instructions](./#bloc){.interne} qui permettent diverses façon de [faire des tests](./#test){.interne} ou de [de répéter du code](./#boucle){.interne}.
 
-- de [faire des tests](./#test){.interne}
-- [de répéter du code](./#boucle){.interne}
-- de [créer ses propres fonctions](./#fonction){.interne}
 
 ## <span id="bloc"></span> Bloc de code
 

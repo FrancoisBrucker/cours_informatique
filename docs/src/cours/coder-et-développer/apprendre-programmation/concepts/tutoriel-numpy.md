@@ -10,7 +10,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD à étoffer, ajouter les création de listes à intervalle fixe
+> TBD 
+> 
+> à étoffer avec les docs de valentin
+> ajouter les création de listes à intervalle fixe
 
 Le [module `numpy`{.language-}](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas _stricto sensu_ des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
 

@@ -63,10 +63,4 @@ qui transforme l'ensemble `{1, 2, 3}`{.language-} en un `frozenset`{.language-}.
 [Dictionnaires](dictionnaires){.interne}
 {% endaller %}
 
-## Chaînes de caractères
-
-Les chaines de caractères ne sont pas _sticto sensu_ des conteneurs puisqu'elles sont composés de caractères et par de variables. Mais comme elles  partagent de nombreuses propriétés avec eux, on a coutume de les mettre dans le même paquet.
-
-{% aller %}
-[Chaînes de caractères](chaines-caractères){.interne}
-{% endaller %}
+Les dictionnaires ne possèdent pas de structure non mutable associée par défaut en python.

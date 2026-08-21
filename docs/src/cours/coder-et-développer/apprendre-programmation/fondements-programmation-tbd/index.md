@@ -43,18 +43,6 @@ La principale différence entre un éditeur de texte et un notebook est que l'in
 
 
 
-## module
-
-<!-- TBD 
-
-Faire des exercices : 
-
-- utilisation de modules et de fonctions de python
-- les différents imports possibles
-
--->
-
-
 ## Partie III : Structures de données
 
 
