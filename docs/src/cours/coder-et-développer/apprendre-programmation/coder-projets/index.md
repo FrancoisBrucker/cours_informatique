@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD prérequis système
+
 - ici fichiers
 - tests etc
 - créer ses propres modules
