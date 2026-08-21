@@ -110,7 +110,7 @@ Les méthodes des :
   ```
 38.  Calculer 14 répétitions de `"Developers ! "`{.language-}.
 39.  Calculer 14 répétitions de `"Developers ! "`{.language-} en supprimant l’espace final.
-40. Utiliser la fonction help pour aﬃcher la documentation de la fonction `range`{.language-}.
+40. Utiliser la fonction `help`{.language-} pour aﬃcher la documentation de la fonction `range`{.language-}.
 
 Solution.
 Exercice 43. Calculer la liste [0,1,2,...,99].
