@@ -13,14 +13,14 @@ eleventyComputed:
 ---
 
 
-Les mono-lignes sont 100 petit exercices que l'on doit à Aristide Grange. Ils permettent de se creuser un peu la tête pour écrire de façon condensé du code python. 
+Les mono-lignes sont des petits exercices que l'on doit à Aristide Grange. Ils permettent de se creuser un peu la tête pour écrire de façon condensé du code python. 
 
 {% info %}
 
 [Le sujet initial](monolignes-questions.pdf){.interne} était fait pour une version 2 de python, la version ci-après est une adaptation à python 3.
 
 {% endinfo %}
-{% details "Faire le sujet avec une version actuelle de python" %}
+{% details "Si vous voulez faire le sujet initial avec une version actuelle de python" %}
 Ce sujet initial montre aussi en creux les évolutions de python : 
 
 - la fonction `print`{.language-} prend des parenthèses,
