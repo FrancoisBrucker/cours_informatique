@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>Plusieurs Core</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">go</li>
-          
-        </ul>
-      </div>
+  <h1>Plusieurs Core</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/architecture-ordinateur/processeur/">Processeur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/architecture-ordinateur/processeur/plusieurs-cores/">Plusieurs Core</a>
 
 </div></div>
 
@@ -109,23 +96,27 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-<p>le go</p>
+  <p>Un processeur possède plusieurs core qui s'exécutent de façon parallèle. Le l'<a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)">architecture ice lake (client)</a> possède 4 cœurs par exemple.</p>
+<p>Pour que tout se passe au mieux, il faut garantir que les ressources partagées comme les disques et la mémoires soient parfaitement accessibles et cohérente pour chaque core.</p>
+<h2>Organisation des cores</h2>
+<p><img src="cores.png" alt="cores"></p>
+<h3>ring</h3>
+<p>Le ring est un bus spécial faisant le lien :</p>
 <ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
+<li>entre les core et le matériel</li>
+<li>entre les cores entre eux</li>
+</ul>
+<h3>Cache L3</h3>
+<p>Le cache L3 est partagé entre tous les cores. Il possède plusieurs accès répartis en <em>slice</em>, se répartissant l'adressage physique. Si chaque core fait tourner des process ayant une plage de mémoire physique différente, ils pourront accéder au cache en parallèle.</p>
+<h2>Multi-process</h2>
+<p>La gestion des process multiples est essentiellement traitées par le noyau ou les thread eux-même.</p>
+<p>Pour éviter tout soucis de <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a>, il <strong>faut</strong> utiliser des mécanismes de protection des données partagées en écriture côté code.</p>
+<p>Le processeur doit juste faire attention à la cohérence des données traitées par chaque core, c'est à dire essentiellement le cache. Ceci se fait habituellement :</p>
 <ul>
-<li>dépendances</li>
-<li>débogueur</li>
+<li>en élargissant le <em>snoop filter</em> aux lignes de caches de tous les core.</li>
+<li>en propageant les invalidations à tous les caches, via le cache L3 partagé (ses enfants sont les caches L2 de chaque core)</li>
 </ul>
-</li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
-</ul>
-</blockquote>
+<p>Ceci ajoute un overhead, mais il est compensé par le gain d'exécution en parallèle des thread, en particulier si les cores se partitionnent (via l'OS) la mémoire physique utilisées (minimise les lignes communes dans deux cache de core différent)</p>
 
 
 </article>

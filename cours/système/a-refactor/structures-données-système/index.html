@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>Structures de données</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">go</li>
-          
-        </ul>
-      </div>
+  <h1>Structures de données</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/structures-données-système/">Structures de données</a>
 
 </div></div>
 
@@ -110,22 +97,51 @@
   
 
   <blockquote>
-<p>TBD</p>
-<p>le go</p>
+<p>TBD à faire bien : problème et structure de donnée solution</p>
+</blockquote>
 <ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
+<li>factorisation : <a href="https://www.youtube.com/watch?v=9ONm1od1QZo">https://www.youtube.com/watch?v=9ONm1od1QZo</a></li>
+<li>pile/tas</li>
+<li>tableau (évite la faute de cache)
 <ul>
-<li>dépendances</li>
-<li>débogueur</li>
+<li>temporalité spatiale</li>
+<li>tableau de tableaux en une dimension (ligne, index des caches)</li>
+<li>flags (dirty bit)</li>
 </ul>
 </li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
+<li>bitmat
+<ul>
+<li>utilité : une information booléenne oui/non, activé/non activé, ...</li>
+<li>où :
+<ul>
+<li>file system (bloc, inode)</li>
+<li>flags</li>
 </ul>
-</blockquote>
+</li>
+</ul>
+</li>
+<li>liste chaînée :
+<ul>
+<li>utilité : ordre linéaire ou un élément peut bouger</li>
+<li>où :
+<ul>
+<li>FAT</li>
+<li>ordonnancement</li>
+</ul>
+</li>
+<li>attention : faute de cache</li>
+</ul>
+</li>
+<li>arbre :
+<ul>
+<li>de recherche nombre</li>
+<li>arbre associatif pour mapper des données</li>
+<li>arbre stockage de données</li>
+</ul>
+</li>
+<li>file (FIFO) : gestion des communications, lecture/écriture fichier</li>
+<li>pile (LIFO) : stockage des variables</li>
+</ul>
 
 
 </article>

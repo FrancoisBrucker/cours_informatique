@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>Interagir avec le système</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">go</li>
-          
-        </ul>
-      </div>
+  <h1>Interagir avec le système</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/">Interagir avec le système</a>
 
 </div></div>
 
@@ -109,23 +96,81 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-<p>le go</p>
-<ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
-<ul>
-<li>dépendances</li>
-<li>débogueur</li>
-</ul>
-</li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
-</ul>
+  <p>Un système est fait pour être utilisé.</p>
+<blockquote>
+<p>TBD pour l'instant OS = exécution de programmes en parallèle et accès aux devices
+il reste 3 choses :</p>
+<ol>
+<li>données</li>
+<li>qui les utilise (séparer le système d'un utilisateur normal et plusieurs utilisateurs)</li>
+<li>comment les utiliser : application et terminal</li>
+</ol>
 </blockquote>
+<ul>
+<li>dossier / fichier</li>
+<li>application utiles</li>
+<li>terminal</li>
+<li>installation nouveau système optionnel.</li>
+</ul>
+<h2>Fichiers et dossiers</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="fichiers-dossiers" class="interne">Fichiers et Dossiers</a></p>
+</div></div>
+
+<h2>Utilisateurs et droits</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="utilisateurs-droits" class="interne">Utilisateurs et droits d'utilisation</a></p>
+</div></div>
+
+<h2>Organisation disque dur système</h2>
+<blockquote>
+<p>TBD reprendre dans la partie refactor.
+TBD montrer les système de fichiers (FAT vs extfs ou nfat, ...)
+TBD système / applications / utilisateur /
+TBD montrer une partition d'un disque dur
+partie cachée (bootloader) pour le noyau.
+dans la partie refactor.
+donner la commande unix et une copie d'écran windows.</p>
+</blockquote>
+<h2>Applications</h2>
+<blockquote>
+<p>TBD utiles pour administrer et utiliser efficacement un système</p>
+</blockquote>
+<h3>Terminal</h3>
+<p>Le terminal permet d'exécuter rapidement des commandes.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="terminal" class="interne">Terminal</a></p>
+</div></div>
+
+<h3>Gestionnaire de paquet</h3>
+<blockquote>
+<p>TBD à déplacer de système installation</p>
+</blockquote>
+<h3>Applications utiles</h3>
+<blockquote>
+<p>TBD à déplacer de système installation</p>
+</blockquote>
+<h2>Bonus : Installation d'un nouveau système</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="syst%C3%A8me-installation" class="interne">Nouvelle installation d'un système</a></p>
+</div></div>
+
 
 
 </article>

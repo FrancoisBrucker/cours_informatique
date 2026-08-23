@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>Sockets réseaux</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">go</li>
-          
-        </ul>
-      </div>
+  <h1>Sockets réseaux</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/ipc/">Sockets réseaux</a>
 
 </div></div>
 
@@ -109,23 +96,61 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-<p>le go</p>
+  <ul>
+<li>
+<p><a href="https://beej.us/guide/bgipc/html/">beej's IPC</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=ck4WvYM9V4c">tcp par le kernel</a>
+Pour le C communication :</p>
+</li>
+<li>
+<p><a href="https://beej.us/guide/bgnet/">Beej's Guide to Network Programming Using Internet Sockets</a></p>
+</li>
+<li>
+<p><a href="https://opensource.com/article/19/4/interprocess-communication-linux-networking">https://opensource.com/article/19/4/interprocess-communication-linux-networking</a></p>
+</li>
+</ul>
+<p>_ <a href="https://stackoverflow.com/questions/28003921/sending-file-descriptor-by-linux-socket/">https://stackoverflow.com/questions/28003921/sending-file-descriptor-by-linux-socket/</a></p>
+<p>Faire en C exemple :</p>
+<pre><code>         pipe         socket
+serveur ------ fork1 --------  client1
+         \
+           --- fork2 --------  client2
+</code></pre>
 <ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
+<li>
+<p>faire un fork. mettre des données dans le stdin de l'un, passer les données par un pipe et les ressortir sur le stdout de l'autre.</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=dhFkwGRSVGk">pipes pour communiquer</a></p>
+</li>
+<li>
+<p><a href="https://www.softprayog.in/programming/interprocess-communication-using-fifos-in-linux">ipc avec fifo</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=dhFkwGRSVGk">named pipe plus rapide que sockets</a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=BU9m45WWqjM">ipC</a></p>
+</li>
+<li>
+<p><a href="https://www.studocu.com/row/document/comsats-university-islamabad/operating-systems/lab-manual-8-abc/50895124">communication par message</a></p>
+</li>
+<li>
+<p><a href="https://www.geeksforgeeks.org/difference-between-pipes-and-message-queues/">message queue vs pipe</a></p>
+</li>
+<li>
+<p>message queue C :</p>
 <ul>
-<li>dépendances</li>
-<li>débogueur</li>
+<li><a href="https://www.baeldung.com/linux/kernel-message-queues">https://www.baeldung.com/linux/kernel-message-queues</a></li>
+<li><a href="https://www.youtube.com/watch?v=fjJliu9iViw">https://www.youtube.com/watch?v=fjJliu9iViw</a></li>
 </ul>
 </li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=Nr31eiB5wgc">https://www.youtube.com/watch?v=Nr31eiB5wgc</a></p>
+</li>
 </ul>
-</blockquote>
 
 
 </article>

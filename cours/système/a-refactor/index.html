@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>A refactor</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
+  <h1 class="mb-1">A refactor</h1>
   <div class="mb-4">
     
       <div class=" px-4 flex items-center">
@@ -80,9 +80,9 @@
         
         <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
           
-            <li class="before:content-['•'] before:px-1">code</li>
+            <li class="before:content-['•'] before:px-1">unix</li>
           
-            <li class="before:content-['•'] before:px-1">go</li>
+            <li class="before:content-['•'] before:px-1">système</li>
           
         </ul>
       </div>
@@ -100,7 +100,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a>
 
 </div></div>
 
@@ -109,21 +109,83 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-<p>le go</p>
-<ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
-<ul>
-<li>dépendances</li>
-<li>débogueur</li>
-</ul>
+  <ol>
+<li>Système
+<ol>
+<li><a href="architecture-ordinateur" class="interne">Architecture d'un ordinateur</a></li>
+<li><a href="syst%C3%A8me-exploitation" class="interne">Système d'exploitation</a></li>
+<li><a href="structures-donn%C3%A9es" class="interne">Structures de données utiles</a> et <a href="structures-donn%C3%A9es-syst%C3%A8me" class="interne">Structures de données système</a></li>
+<li><a href="concurrence">concurrence</a> et</li>
+</ol>
 </li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
+<li>Langages
+<ol>
+<li><a href="langage-c" class="interne">langage <strong>C</strong></a></li>
+<li>assembleur</li>
+<li>ABI</li>
+</ol>
+</li>
+<li>Gestion des fichiers
+<ol>
+<li><a href="fichiers-C" class="interne">Fichiers en <strong>C</strong></a></li>
+<li><a href="memory-mapping" class="interne">Memory mapping</a></li>
+</ol>
+</li>
+<li>Gestion des process
+<ol>
+<li>signaux (SIGINT et ctrl+C), attention on ne peut pas tout faire dans une gestion de signal</li>
+<li><a href="fork">fork</a></li>
+<li>pipe (passe dans le fork)</li>
+</ol>
+</li>
+<li><a href="concurrence">Concurrence</a>
+<ol>
+<li><a href="ipc">IPC</a>
+<ol>
+<li>fifo, message queues</li>
+<li>file locking</li>
+</ol>
+</li>
+<li>Threads
+<ol>
+<li>mutex (métaphores ?)</li>
+<li>opérations atomique</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Docker</li>
+<li><a href="radare2">outil système</a></li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :</p>
+<ul>
+<li>seront toujours à jours</li>
+<li>vous parlez au monde entier en Anglais, il y aura toujours une réponse à vos questions si vous les formulez en anglais</li>
+<li>connaître l'anglais est requis dans votre futur métier, quelqu'il soit.</li>
+</ul>
+</div></div>
+
+<blockquote>
+<p>TBD : structures de données utiles. Ajouter :
+dire que c'est de l'algorithmie &quot;terrain&quot;. Tout est compté au bit pres.</p>
+<ul>
+<li>fifo (communication)</li>
+<li>tcp : communication sécurisé incertain</li>
+<li>sécurité : registre à décalage</li>
+<li>protocole : header/body</li>
+</ul>
+<p>TBD :</p>
+<ul>
+<li>interfacer C et python</li>
+<li>bibliothèques C utiles (glib, gestion des fichiers)</li>
+<li>commencer rapidement par une install de Linux pour pouvoir commencer le DM de suite.</li>
+<li>faire un page générale avec les détails dans d'autres fichiers. Ceci permettra d'en parler sans rentrer dans les détails.</li>
+<li>parler du fait que RSA n'est pas quantique (à cause de la factorisation) et que c'est pour ça que l'authentification commence à être sous d'autre formes (logarithme discret + courbes elliptiques)</li>
 </ul>
 </blockquote>
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>Organisation d&#39;un disque système</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">go</li>
-          
-        </ul>
-      </div>
+  <h1>Organisation d&#39;un disque système</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/">Interagir avec le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/fichiers-système/">Organisation d&#39;un disque système</a>
 
 </div></div>
 
@@ -109,23 +96,28 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-<p>le go</p>
+  <p>Lorsque l'on démarre un ordinateur, <a href="../../but/#d%C3%A9marrage" class="interne">on a vu</a> qu'est chargé le bootloader qui permet de charger le noyau. Ces deux éléments doivent être lues sur un des disque dur de l'ordinateur et font partie du système d'exploitation. De plus un système va avoir besoin de tout un tas de fichiers de configurations et d'un endroit où il va ranger les différents logiciels qu'il utilisera.</p>
+<p>L'organisation de cette structure est différente selon les OS mais on retrouvera toujours ces éléments.</p>
+<h2>Dossiers système</h2>
+<h3>Bootloader et noyau</h3>
+<p>Le bootloader et le noyau se trouvent dans <a href="https://fr.wikipedia.org/wiki/Partition_(informatique)">une partition spéciale</a> du disque dur de démarrage.</p>
+<h3>Fonctionnement interne</h3>
+<p>Répartis dans plusieurs dossiers et contient tous les fichiers nécessaires au bon fonctionnement du système :</p>
 <ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
+<li>les fichiers de configurations</li>
+<li>les applications système (comme systemd sous linux par exemple)</li>
+<li><a href="https://fr.wikipedia.org/wiki/Dynamic_Link_Library">les bibliothèques dynamiques</a></li>
+</ul>
+<h3>Applications</h3>
+<p>Dossier contenant les applications reconnues par le système. Si vous installez un logiciel dans un dossier différent il se peut qu'il ne soit pas automatiquement reconnu.</p>
+<h2>Dossiers Utilisateurs</h2>
+<p>Un dossier spécifique à chaque utilisateur, aussi appelé <strong><em>Maison</em></strong>. Il va contenir tous ses fichiers de données, mais également :</p>
 <ul>
-<li>dépendances</li>
-<li>débogueur</li>
+<li>ses fichiers de configuration</li>
+<li>ses programmes</li>
 </ul>
-</li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
-</ul>
-</blockquote>
+<h2>Disques de données</h2>
+<p>Outre le disque système, un ordinateur peut posséder de nombreux autres disques soit fixe, soit amovibles (comme des clés usb)</p>
 
 
 </article>

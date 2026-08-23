@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>Brew</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">go</li>
-          
-        </ul>
-      </div>
+  <h1>Brew</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/">Interagir avec le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/système-installation/">Installation d&#39;un nouveau système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/système-installation/brew/">Brew</a>
 
 </div></div>
 
@@ -109,23 +96,14 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-<p>le go</p>
-<ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
-<ul>
-<li>dépendances</li>
-<li>débogueur</li>
-</ul>
-</li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
-</ul>
-</blockquote>
+  <p>Lorsque l'on utilise son mac pour le développement, il faut souvent installer tout un tas de logiciels unix.</p>
+<p>Le logiciel <a href="https://brew.sh">https://brew.sh</a> vous permet de faire ça sans soucis.</p>
+<ol>
+<li>installez le en copiant/collant la ligne de commande demandée dans <a href="../../terminal/bases" class="interne">un terminal</a>.</li>
+<li>si vous avez un mac avec une puce M1, il vous faudra également taper la commande <code>echo 'eval $(/opt/homebrew/bin/brew shellenv)' &gt;&gt; $HOME/.zprofile</code></li>
+<li>quittez l'application terminal (&quot;menu du nom de l'application &gt; quitter&quot; ou  <code>cmd + Q</code>), puis la relancer pour que les fichiers de configuration soient à jour.</li>
+</ol>
+<p>Vous pourrez ensuite utiliser des commandes comme <code>brew install python3</code> pour installer python ou encore <code>brew install wezterm</code> pour les plus geek d'entre nous.</p>
 
 
 </article>

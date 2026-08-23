@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>Gestion des erreurs</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">go</li>
-          
-        </ul>
-      </div>
+  <h1>Gestion des erreurs</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/gestion-erreurs/">Gestion des erreurs</a>
 
 </div></div>
 
@@ -109,23 +96,41 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-<p>le go</p>
+  <h2>Codes d'erreurs</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
-<ul>
-<li>dépendances</li>
-<li>débogueur</li>
+<li><a href="https://www.youtube.com/watch?v=IZiUT-ipnj0">erno</a></li>
+<li><a href="https://bulkgpt.ai/blog/what-is-perror-in-c-a-guide-to-error-handling-in-c-programming">perror</a>.</li>
 </ul>
-</li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
-</ul>
+</div></div>
+
+<blockquote>
+<p>TBD exemple</p>
 </blockquote>
+<h2>Fuite de mémoire</h2>
+<ul>
+<li><a href="https://valgrind.org/">https://valgrind.org/</a> (pas encore sur puce M)</li>
+<li><a href="https://www.youtube.com/watch?v=bhhDRm926qA">https://www.youtube.com/watch?v=bhhDRm926qA</a></li>
+</ul>
+<h2>Tests</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=JarMkGWTF8Y">https://www.youtube.com/watch?v=JarMkGWTF8Y</a></li>
+</ul>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h2>Debugger</h2>
+<p>Le debugger de llvm s'appelle <a href="https://lldb.llvm.org/">lldb</a>.</p>
+<ul>
+<li><a href="https://werat.dev/blog/what-a-good-debugger-can-do/">ce que peut faire un debugger</a></li>
+<li><a href="https://www.youtube.com/watch?v=2GV0K9Y2MKA%3E">tutoriel lldb</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb">plugin vscode lldb</a></li>
+<li><a href="https://rderik.com/blog/using-lldb-for-reverse-engineering/">lldb pour le reverse engineering</a></li>
+</ul>
 
 
 </article>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Perfectionnement</title>
+    <title>Préprocesseur</title>
 
     
 
@@ -71,21 +71,8 @@
       
 <article>
 
-  <h1 class="mb-1">Perfectionnement</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">code</li>
-          
-            <li class="before:content-['•'] before:px-1">go</li>
-          
-        </ul>
-      </div>
+  <h1>Préprocesseur</h1>
+  <div>
     
 
     
@@ -100,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/">A refactor</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/compilation/">Compilation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/a-refactor/langage-c/compilation/préprocesseur/">Préprocesseur</a>
 
 </div></div>
 
@@ -109,23 +96,57 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
-<p>le go</p>
+  <p><a href="https://en.wikipedia.org/wiki/C_preprocessor">https://en.wikipedia.org/wiki/C_preprocessor</a>
+<a href="https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html">https://gcc.gnu.org/onlinedocs/cpp/Preprocessor-Output.html</a>
+<a href="http://jhnet.co.uk/articles/cpp_magic">http://jhnet.co.uk/articles/cpp_magic</a></p>
+<blockquote>
+<p>TBD détailler les include, comment on fait etc.</p>
+</blockquote>
+<h2>Premier programme</h2>
+<p>Fichier <code class="fivhier">hello.c</code> :</p>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span></code></pre>
+<p>Le but du préprocesseur est de préparer le code à être compilé. Le préprocesseur lit le fichier à préprocesser et cherche des :</p>
 <ul>
-<li>prérequis : git</li>
-<li>outils de la partie A :
+<li><a href="https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/chapitre5.html">directives</a> à exécuter</li>
+<li><a href="https://gcc.gnu.org/onlinedocs/cpp/Macro-Arguments.html#Macro-Arguments-1">macros</a> à remplacer</li>
+</ul>
+<p>Lorsque le préprocesseur
+Attention, c'est juste du texte qui est remplacé. Il n'y a pas de logique interne.</p>
+<pre><code>clang -E hello.c -o hello.i
+</code></pre>
+<h2>Directives</h2>
+<p>Les directives sont des commandes commençant pas un <code>#</code>. Elles sont de trois types :</p>
 <ul>
-<li>dépendances</li>
-<li>débogueur</li>
+<li><code>#include</code> : pour inclure un fichier
+<ul>
+<li>le nom de fichier peut être entre <code>&lt;&gt;</code> : pour les fichiers dépendant sdu système</li>
+<li>le nom de fichier peut être entre <code>&quot;&quot;</code> : pour les fichiers locaux à votre projet</li>
 </ul>
 </li>
-<li>pointeurs + ramasse miette</li>
-<li>programmation parallèle</li>
-<li>profilage de code ?</li>
-<li>interfaces</li>
+<li><code>#define</code> : pour créer
+<ul>
+<li>des macros</li>
+<li>des constantes. Elles sont habituellement en majuscule pour les reconnaître</li>
 </ul>
+</li>
+<li>les test <code>#ifdef</code>...<code>#endif</code> et <code>#ifndef</code>...<code>#endif</code></li>
+</ul>
+<p>Le fichier produit après préprocession est le fichier contenant les inclusions de fichiers et les macros et constantes remplacées.</p>
+<h3>Remplacement des macros et constantes</h3>
+<p>Les macros et constantes définies par les directives sont remplacées par leur code.</p>
+<p>Il faut faire très attention aux effets de bords avec les macros.</p>
+<blockquote>
+<p>TBD exemple</p>
 </blockquote>
+<p>Bref, n'en faites pas vous même.</p>
 
 
 </article>
