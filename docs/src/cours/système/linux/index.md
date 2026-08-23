@@ -10,6 +10,9 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD à refactor
+
 {% info %}
 Merci à :
 
@@ -18,6 +21,13 @@ Merci à :
 {% endinfo %}
 
 <!-- 
+
+> TBD refactor shell <https://effective-shell.com/part-1-transitioning-to-the-shell/navigating-your-system/>
+> TBD <https://tuteurs.ens.fr/unix/> et shell variables <https://tuteurs.ens.fr/unix/shell/variable.html>
+> TBD découper en parties plus digeste
+> TBD jail : <https://www.youtube.com/watch?v=rGdylV-Up_E>
+> TBD opérateurs shell <https://quennec.fr/book/export/html/272>
+> TBD fibo en sh : <https://quennec.fr/node/640>
 
 shell intro <https://www.youtube.com/watch?v=hV3_XZXeDQo>
 > TBD <https://labex.io/linuxjourney>

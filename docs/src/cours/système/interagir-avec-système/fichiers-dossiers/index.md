@@ -13,16 +13,19 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Pour que l'on puisse utiliser un ordinateur sans avoir besoin d'écrire en mémoire un programme avant de l'exécuter, il est nécessaire d'avoir un moyen de stockage sur un disque. Ceci nous permettra de le recharger à la demande et de le partager. Nous ne verrons pas ici les formats de stockage (qui sont divers et dépendant non seulement du système d'exploitation mais encore du type de mémoire) mais verrons de façon abstraite et universelle, les principes snt identiques quelque soit le medium de stockage et le système d'exploitation, comment stocker des données et des programmes sous la forme de fichiers et de dossiers :.
+
+
 Qu'est-ce qu'un fichier ? Un dossier ? Comment naviguer dans un système de fichier avec le terminal ou l'explorateur de fichier.
 
-{% note %}
-Votre ordinateur est composé de **_fichiers_** et de **_dossiers_** (aussi appelé **_répertoire_**) :
+{% note2 "**Définition**" %}
+Votre ordinateur est composé de **_fichiers_** et de **_dossiers_** (aussi appelé **_répertoires_**) :
 
 - un **_dossier_** est un conteneur qui peut contenir soit d'autres dossiers, soit des fichiers
-- un **_fichier_** est ce que vous pouvez utiliser. C'est une image, du texte, ou encore un programme.
+- un **_fichier_** est une donnée que l'on peut lire ou écrire. C'est une image, du texte, ou encore un programme.
 
 Il existe un dossier spécial, appelé **_racine_** qui est le départ : on peut atteindre tous les fichiers/dossiers de votre ordinateur à partir de celui-ci.
-{% endnote %}
+{% endnote2 %}
 
 Cette organisation est appelée [arborescence de fichiers](<https://fr.wikipedia.org/wiki/R%C3%A9pertoire_(informatique)>) et ressemble à [un arbre enraciné](https://fr.wikipedia.org/wiki/Arbre_enracin%C3%A9) où les fichiers sont des feuilles, comme dans la figure ci-dessous :
 
@@ -97,21 +100,21 @@ Le chemin vers un fichier depuis la racine s'écrit en séparant tous les dossie
 
 Tout fichier ou dossier de l'arborescence de fichiers possède un chemin unique depuis la racine, c'est donc un moyen de l'identifier.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Le chemin du dossier racine est `/`{.fichier}.
-{% endnote %}
+{% endattention2 %}
 
 Un chemin qui commence par `/`{.fichier} est dit **_chemin absolu_**, puisqu'il part de la racine. On a aussi souvent coutume de parler de **_chemin relatif_** lorsqu'il part d'un dossier particulier. Dans l'exemple précédent, en partant du dossier `/Users/fbrucker`{.fichier}, le chemin relatif vers l'image d'Ada est : `Desktop/ada_lovelace.png`{.fichier}.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Un chemin absolu commence **toujours** par `/`{.fichier}. Un chemin qui ne commence **pas** par `/`{.fichier} est **toujours** un chemin relatif.
 
 Le chemin absolu commence à la racine du disque dur, le chemin relatif commence au dossier **courant** (qui dépend du contexte)
-{% endnote %}
+{% endattention2 %}
 
-{% attention %}
+{% info %}
 Sous Windows, on utilise souvent `\`{.fichier} à la place de `/`{.fichier}.
-{% endattention %}
+{% endinfo %}
 
 ### Plusieurs racines
 
@@ -143,9 +146,9 @@ On fait souvent commencer un chemin relatif par `.`{.fichier} pour bien montrer 
 
 L'intérêt principal de ces dossiers est qu'ils permettent de naviguer dans l'arborescence à partir d'un dossier. Par exemple dans un projet, si l'on n'utilise que des chemins relatifs, on pourra facilement déplacer le dossier du projet (voire le donner à une autre personne) sans casser les liens.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Dans un projet, utilisez **toujours** des chemins relatifs lorsque vous donnez des chemins, cela permet de déplacer le dossier sans casser les liens.
-{% endnote %}
+{% endattention2 %}
 
 ## Copier le chemin absolu
 
@@ -175,9 +178,9 @@ Dans l'explorateur de fichiers cliquez droit sur le dossier et copiez le. Puis, 
 
 La _maison_ est le dossier principal d'un utilisateur. C'est à partir de ce dossier qu'il pourra créer et ranger ses données.
 
-{% attention %}
-Il est recommandé que ce dossier ne comporte ni espace ni accent.
-{% endattention %}
+{% info %}
+Il est recommandé que ce dossier ne comporte ni espace ni accent. Cela évitera les problèmes avec l'utilisation de programmes anciens ou faisant ces présuppositions (il y en a plus qu'on ne croit).
+{% endinfo %}
 
 Ce dosser est représenté par le symbole `~`. Ainsi, lorsque vous verrez lun chemin de type : `~/Documents/mon_cv.pdf`{.fichier} cela signifiera que le fichier `mon_cv.pdf`{.fichier} est dans le dossier `Document`{.fichier} de la maison.
 
@@ -197,9 +200,9 @@ Cette extension ne sert à rien pour l'ordinateur, c'est seulement une aide pour
 
 Ainsi, même si l'extension d'un fichier texte est _".txt"_, rien ne vous empêche de la changer en _".exe"_ par exemple. Cela ne change en rien la nature du fichier. Cela cependant apporte de la confusion car certaines applications vont penser que c'est un fichier exécutable et cela va planter quand elles vont tenter de le faire. Enfin, dans un éditeur de texte, l'extension d'un fichier permet de charger une coloration syntaxique par défaut : _".py"_ pour les fichiers python par exemple, _".md"_ pour les fichier markdown.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Ne soyez pas créatifs dans les extensions de fichiers, utilisez celle par défaut selon le type de fichier que vous utilisez.
-{% endnote %}
+{% endattention2 %}
 
 ### Fichiers exécutables
 

@@ -3,6 +3,10 @@ layout: layout/post.njk
 
 title: Coder des projets
 
+eleventyNavigation:
+    prerequis:
+        - "/cours/système/ordinateur-programmes-OS/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -10,20 +14,50 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD prérequis système
+La première partie nous a appris les concepts fondamentaux d'un langage de programmation à objet et nous a permis d'écrire et d'exécuter un (petit) programme python. Cette partie nous permettra de passer à l'échelle en créant des programmes sur plusieurs fichiers et à traiter des données.
+
+
+> TBD ici prérequis
 
 - ici fichiers
 - tests etc
 - créer ses propres modules
 
-> TBD ici formalisation des espaces de nommage avec les classes...
-
-La première partie nous a appris les concepts fondamentaux d'un langage de programmation à objet et nous a permis d'écrire et d'exécuter un (petit) programme python. Cette partie nous permettra de passer à l'échelle en créant des programmes sur plusieurs fichiers et à traiter des données.
+> TBD c'est en codant qu'on devient codeur. On se trompe ou on ne comprends pas. On s'arrête on comprend puis on recommence (lean : 0 déchet on stoppe la ligne de prod. Qualité)
 
 
-## Installer son propre interpréteur
+## Interpréteur IDE et modules externes
 
-> TBD ici vscode + installation de son python.
+> TBD intro sur bien coder et bons outils.
+
+### <span id="installation-développement"></span>Installer et utiliser un interpréteur python
+
+> installer un interpréteur
+> vscode ou pycharm dans un second temps
+
+
+Jusqu'à présent on a utilisé des interpréteurs externes pour exécuter notre code. Si l'on cherche à créer ses propres programmes, il est préférable d'avoir un interpréteur sur propre ordinateur. Ceci sera plus rapide et permettra à terme d'être paramétrable à l'envie.
+
+{% aller %}
+[Installer un interpréteur python](interpréteur-installation){.interne}
+{% endaller %}
+
+Une fois l'interpréteur installé, plutôt que de l'utiliser directement, on utilise un éditeur de texte spécialisé dans l'écriture de code : [un IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement). Il existe plusieurs choix possible, mais le plus utilisé actuellement est vscode.
+
+{% aller %}
+[Éditeur vscode](éditeur-vscode){.interne}
+{% endaller %}
+
+La principale différence entre un éditeur de texte et un notebook est que l'interpréteur est re-exécuté à chaque exécution : il ne garde rien en mémoire de la précédente exécution du code. Ceci permet de faire du code rép´table où toutes les informations sont uniquement contenues dans le fichier que l'on exécute.
+
+## Installer des modules externes
+
+Même si python vient avec de nombreux modules d'installés il arrive toujours un moment où l'on devra installer des modules développés par d'autres personnes :
+
+{% aller %}
+[Installer des modules](./modules-externes-python/){.interne}
+{% endaller %}
+
 
 ## <span id="développer"></span>Gestion des données
 
@@ -40,13 +74,6 @@ L'installation d'un nouveau système est une étape optionnelle, mais si vous av
 
 {% endinfo %}
 
-### Installer des modules externes
-
-Même si python vient avec de nombreux modules d'installés il arrive toujours un moment où l'on devra installer des modules développés par d'autres personnes :
-
-{% aller %}
-[Installer des modules](./modules-externes-python/){.interne}
-{% endaller %}
 
 
 ### Stockage des données
@@ -70,6 +97,10 @@ Même si python vient avec de nombreux modules d'installés il arrive toujours u
 {% endaller %}
 
 ## Écrire du code
+
+### Séparer fonctions et exécutions
+
+> TBD créer ses modules.
 
 ### Corriger son code
 
