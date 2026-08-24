@@ -249,7 +249,7 @@ Enfin, lorsque un processus est en cours d'exécution, le noyau lui donne l'impr
 
 ### Noyau
 
-L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. En suivant le [TFIL](./TFIL){.interne} ces diverses responsabilités sont séparées en 3 couches :
+L'architecture d'un ordinateur et les systèmes d'exploitations ont co-évolué. Les besoins des uns modifiant l'architecture des autres et réciproquement. En suivant le [TFIL](./#TFIL){.interne} ces diverses responsabilités sont séparées en 3 couches :
 
 {% note2 "**Définition**" %}
 
@@ -261,7 +261,7 @@ Un système d'exploitation est constitué de 3 couches :
 
 {% endnote2 %}
 
-### User et kernel mode
+### <span id="kernel-user-mode"></span>User et kernel mode
 
 Seul le noyau a accès au matériel et a un contrôle total de la machine. 
 
@@ -269,8 +269,8 @@ Seul le noyau a accès au matériel et a un contrôle total de la machine.
 
 On distingue deux états d'une machine :
 
-- le _kernel mode_ : le noyau travail, il a accès à tout l'ordinateur
-- le _user mode_ : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.
+- le [_kernel mode_](https://fr.wikipedia.org/wiki/Espace_noyau) : le noyau travail, il a accès à tout l'ordinateur
+- le [_user mode_](https://fr.wikipedia.org/wiki/Espace_utilisateur) : un process travaille, il n'a accès qu'à une portion de la mémoire et doit demander l'autorisation au noyau via des appels systèmes pour accéder aux différents périphériques.
 {% endnote2 %}
 {% lien %}
   [User et Kernel mode sous windows 11](https://learn.microsoft.com/fr-fr/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)

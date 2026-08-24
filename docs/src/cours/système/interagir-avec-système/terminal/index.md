@@ -20,7 +20,3 @@ Qu'est-ce que le terminal ? Comment le trouver et taper des commandes.
 {% aller %}
 [Utilisation courante du terminal](utilisation){.interne}
 {% endaller %}
-
-{% aller %}
-[Utiliser le terminal de vscode](terminal-vscode){.interne}
-{% endaller %}

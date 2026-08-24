@@ -70,7 +70,7 @@ Vous pouvez aussi utiliser le raccourci clavier global `<CTRL> + <ALT> + T` :
 
 ### <span id="explorateur"></span>Via l'explorateur de fichier
 
-[L'explorateur de fichier](../fichiers-navigation/#explorateur){.interne} est un moyen simple d'accéder à un terminal directement placé dans le dossier voulu.
+[L'explorateur de fichier](../../fichiers-dossiers/#explorateur){.interne} est un moyen simple d'accéder à un terminal directement placé dans le dossier voulu.
 
 {% details "sous Windows 11" %}
 
@@ -97,11 +97,13 @@ Cliquer croit sur un dossier dans l'explorateur et choisissez `Open in Terminal`
 
 ### Via vscode
 
-{% lien %}
+[Vscode](https://code.visualstudio.com/) est un IDE populaire et très utilisé pour le développement. Il possède son propre terminal auquel on peut très facilement accéder.
+
+{% lien "**Documentation**" %}
 [Documentation officielle du terminal dans vscode](https://code.visualstudio.com/docs/editor/integrated-terminal)
 {% endlien %}
 
-### Ouvrir ou créer un terminal
+#### Ouvrir ou créer un terminal
 
 On peut ouvrir le terminal courant dans : _menu Affichage  > Terminal_
 
@@ -113,11 +115,11 @@ Les différents panels du dessus du terminal (`PROBLEMES`, `OUTPUT`, `CONSOLE DE
 
 on reste donc 99% du temps sur `TERMINAL` (qui est en sur-brillance).
 
-### Supprimer un terminal
+#### Supprimer un terminal
 
 On peut supprimer (en cliquant sur la poubelle) et créer (_menu Terminal > Nouveau terminal_) autant de terminal que l'on le veut. On peut aussi juste fermer la fenêtre du terminal en cliquant sur la croix.
 
-### Créer un nouveau terminal
+#### Créer un nouveau terminal
 
 Notez bien que _menu Affichage > Terminal_ ouvre le terminal courant, il n'en recrée pas un. C'est donc la commande à utiliser par défaut pour garder l'historique de ses commandes en utilisant la flèche du haut, qui remets la dernière commande utilisée.
 

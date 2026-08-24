@@ -251,13 +251,24 @@ Vous voyez que la fenêtre de variable contient la variable `s`{.language-} qui 
 {% faire %}
 Dans la console tapez la commande `print(s)`{.language-}
 
-
 {% endfaire %}
-
 ![spyder](spyder-3.2.png)
 
+
 {% faire %}
-Quittez et relancez spyder. Vous verrez que le fichier d'instructions est là mais l'interpréteur est vierge (la variable `s`{.language-} n'existe pas) car le fichier n'a pas été exécuté.
+Redémarrez un nouvel interpréteur (_console > restart kernel_) ou dans les options du noyau. 
+{% endfaire %}
+{% info %}
+Quittez et relancez spyder aura le même effet, un nouvel interpréteur est créé à chaque lancement de spyder.
+
+{% endinfo %}
+
+![spyder](spyder-3.15.png)
+
+
+{% faire %}
+
+Vous verrez que le fichier d'instructions est là mais l'interpréteur est vierge (la variable `s`{.language-} n'existe pas) car le fichier n'a pas été exécuté.
 
 1. vérifiez que la variable `s`{.language-} n'existe pas
 2. exécutez les instructions du fichier
@@ -267,4 +278,3 @@ Quittez et relancez spyder. Vous verrez que le fichier d'instructions est là ma
 
 
 ![spyder](spyder-3.3.png)
-

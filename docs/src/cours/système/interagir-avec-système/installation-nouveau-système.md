@@ -41,82 +41,59 @@ L'installation devra très certainement aller sur internet pour récupérer les 
 - notez le nom de votre wifi et son mot de passe.
 {% endfaire %}
 
+
 ## Installation
 
+
+Votre compte utilisateur avec lequel vous allez faire du développement (qui peut être votre compte principal) doit posséder quelques propriétés qui vont vous faire gagner du temps :
+
+- doit être un **_compte administrateur_** (pouvant exécuter la commande [`sudo`](https://www.linuxtricks.fr/wiki/print.php?id=480) si vous êtes sous Linux)
+- votre nom de compte ne doit contenir **_ni espace ni accent_**
+
+Si votre compte ne satisfait pas les deux critères ci-dessus :
+
 {% faire %}
-Procédez à l'installation de votre système en suivant les recommandations ci-après.
+Création d'un compte administrateur :
+
+- [sous Windows 11](https://support.microsoft.com/fr-fr/windows/cr%C3%A9er-un-compte-d-administrateur-ou-d-utilisateur-local-dans-windows-20de74e0-ac7f-3502-a866-32915af2a34d)
+- [sous Macos](https://support.apple.com/fr-fr/guide/mac-help/mchl3e281fc9/mac)
+- [sous Linux/Ubuntu](https://guide.ubuntu-fr.org/desktop/user-add.html)
 {% endfaire %}
 
-### Sous mac
 
-{% lien %}
-<https://support.apple.com/fr-fr/HT204904>
-{% endlien %}
+{% faire %}
+Procédez à l'installation de votre système en suivant les recommandations ci-après :
 
-Notez votre login et mot de passe icloud. Vous en aurez besoin à l'installation
-
-### Sous Windows
-
-{% lien %}
-<https://www.microsoft.com/fr-fr/software-download/windows11>
-
-En suivant les instructions de *Installer une nouvelle installation à l’aide d’un support d’installation*.
-{% endlien %}
-
-### Sous Linux
-
-{% lien %}
-<https://doc.ubuntu-fr.org/installation>
-{% endlien %}
-
-## Mise à jour du système
+- sous mac : <https://support.apple.com/fr-fr/HT204904>
+- sous windows : <https://www.microsoft.com/fr-fr/software-download/windows11> En suivant les instructions de *Installer une nouvelle installation à l’aide d’un support d’installation*.
+- sous Linux : <https://doc.ubuntu-fr.org/installation>
+{% endfaire %}
 
 Une fois installé, il faut mettre le système à jour pour installer les toutes dernières versions.
 
-### Sous Windows 11
+{% faire %}
+Procédez à l'installation de votre système en suivant les recommandations ci-après :
 
-{% lien %}
-[Mise à jour de Windows 11](https://support.microsoft.com/fr-fr/windows/obtenez-la-derni%C3%A8re-mise-%C3%A0-jour-7d20e88c-0568-483a-37bc-c3885390d212)
+- sous mac : <https://support.apple.com/fr-fr/HT201541>
+- sous windows : <https://support.microsoft.com/fr-fr/windows/obtenez-la-derni%C3%A8re-mise-%C3%A0-jour-7d20e88c-0568-483a-37bc-c3885390d212>
+- sous Linux : <https://en.wikipedia.org/wiki/Software_Updater> ou dans un terminal avec la commande : `sudo apt update && sudo apt full-upgrade -y`
+{% endfaire %}
 
-{% endlien %}
+## Installation des Drivers
 
-### Sous Macos
-
-{% lien %}
-
-[Mise à jour de Macos](https://support.apple.com/fr-fr/HT201541)
-
-{% endlien %}
-
-### Sous Linux/Ubuntu
-
-{% lien %}
-
-[Software Updater](https://en.wikipedia.org/wiki/Software_Updater)
-
-{% endlien %}
-
-Ou dans [un terminal](../terminal){.interne} :
-
-```
-sudo apt update && sudo apt full-upgrade -y
-```
-
-### Installation des Drivers
-
-#### Windows 11
+### Windows 11
 
 - carte graphique
 - clavier/souris si nécessaire
 - imprimante
 
-#### Macos
+### Macos
 
 - _icloud_ drive
 - imprimante
 - tablette graphique si vous en avez une
 
-#### Linux/Ubuntu
+### Linux/Ubuntu
 
 - imprimante
 - tablette graphique si vous en avez une

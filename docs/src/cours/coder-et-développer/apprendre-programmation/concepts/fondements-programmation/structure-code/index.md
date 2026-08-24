@@ -38,12 +38,12 @@ Les **_blocs_** en python permettent de grouper des lignes de code qui seront ex
 
 Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l'indentation (4 espaces par défaut): un bloc est donc une suite d'instructions ayant la même indentation.
 
-```text
-type_de_bloc:
-    instruction 1
-    instruction 2
+```txt
+<type de bloc>:
+    <instruction 1>
+    <instruction 2>
     ...
-    instruction n
+    <instruction n>
 ```
 
 Ces différents blocs sont pratiques car ils vont nous permettre :
@@ -53,16 +53,16 @@ Ces différents blocs sont pratiques car ils vont nous permettre :
 
 Les blocs peuvent bien sur se combiner :
 
-```text
-bloc A:
-    instruction 1 du bloc A
-    bloc B:
-        instruction 1 du bloc B
+```txt
+<bloc A>:
+    <instruction 1 du bloc A>
+    <bloc B>:
+        <instruction 1 du bloc B>
         ...
-        instruction m du bloc B
-    instruction 2 du bloc A
+        <instruction m du bloc B>
+    <instruction 2 du bloc A>
     ...
-    instruction n du bloc A
+    <instruction n du bloc A>
 ```
 
 {% attention2 "**À retenir**" %}
@@ -102,20 +102,20 @@ Permet d'exécuter un bloc si une condition logique est vraie :
 
 ```python
 if <condition logique>:
-    instruction 1
-    instruction 2
+    <instruction 1>
+    <instruction 2>
     ...
-    instruction n
+    <instruction n>
 elif <condition logique>:
-    instruction 1
-    instruction 2
+    <instruction 1>
+    <instruction 2>
     ...
-    instruction n
+    <instruction n'>
 else:
-    instruction 1
-    instruction 2
+    <instruction 1>
+    <instruction 2>
     ...
-    instruction n
+    <instruction n''>
 ```
 
 Notez qu'il peut y avoir autant de bloc `elif`{.language-} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-}.
@@ -193,11 +193,11 @@ Deux types de boucles existent en python : les boucles _tant que_ (`while`{.lang
 {% endlien %}
 
 ```python
-while condition_logique:
-    instruction 1
-    instruction 2
+while <condition logique>:
+    <instruction 1>
+    <instruction 2>
     ...
-    instruction n
+    <instruction n>
 ```
 
 Par exemple le bloc `while`{.language-} suivant :
@@ -287,10 +287,10 @@ while b < a:
 
 ```python
 for <nom> in <itérable>:
-    instruction 1
-    instruction 2
+    <instruction 1>
+    <instruction 2>
     ...
-    instruction n
+    <instruction n>
 ```
 
 Le bloc sera exécuté pour chaque élément de l'_itérable_. A chaque exécution, l'élément courant de l'itérateur sera nommé `<nom>`{.language-}.Certaines fonctions vont créer des itérables, la plus connue étant certainement la fonction range que l'on va voir juste après, et certains objets également, comme les chaînes de caractères ([les objets conteneurs](../../conteneurs){.interne} comme les listes, les ensembles ou les dictionnaires que l'on verra plus tard fonctionnent également).

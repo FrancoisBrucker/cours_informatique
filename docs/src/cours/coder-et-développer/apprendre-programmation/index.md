@@ -63,7 +63,7 @@ Ne passez pas à la partie suivante sans avoir fait **et compris** [les 84 mono-
 La première partie nous a appris les concepts fondamentaux d'un langage de programmation à objet et nous a permis d'écrire et d'exécuter un (petit) programme python. Cette partie nous permettra de passer à l'échelle en créant des programmes sur plusieurs fichiers.
 
 {% aller %}
-[Coder des projets en python](./programmer-projets){.interne}
+[Coder des projets en python](./coder-projets){.interne}
 {% endaller %}
 
 ## Partie III : Programmation objet et évènementielle

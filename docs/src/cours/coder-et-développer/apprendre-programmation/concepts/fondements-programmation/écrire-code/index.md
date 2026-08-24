@@ -9,11 +9,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<!-- TBD 
+
+- mettre les paramètres entre <> et pas avec des _
+- faire une définition sur cette convention.
+
+-->
 
 On va lister les concepts fondamentaux qui permettent d'écrire du code python que l'on pourra faire exécuter par l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.
 
 {% attention2 "**À retenir**" %}
-Dans tous les exemple de code qui suivront, lorsque la ligne de code commencera par `>>>`{.language-} cela signifiera que l'on  a exécuté ce code directement dans l'interpréteur, la ligne suivante montrera le résultat. Par exemple :
+Dans tous les exemples de code qui suivront, lorsque la ligne de code commencera par `>>>`{.language-} cela signifiera que l'on  a exécuté ce code directement dans l'interpréteur, la ligne suivante montrera le résultat. Par exemple :
 
 ```python
 >>> 21 * 2
@@ -29,6 +35,10 @@ print(x)
 ```
 
 Il faudra ensuite l'exécuter pour voir son résultat.
+
+{% endattention2 %}
+{% attention2 "**À retenir**" %}
+Dans tous **les instructions** de code qui suivront (pas les résultats donnés par python), lorsqu'un texte est entre `<>`{.language-} cela signifiera que c'est un paramètre variable, ce qu'on peut y mettre étant décrit entre les `<>`{.language-}. Par exemple : `<un entier>`{.language-} fonctionnera en le remplaçant par un entier quelconque.
 
 {% endattention2 %}
 
@@ -145,10 +155,10 @@ Quelle est la classe de chaque objet de base ?
 Le type d'un objet n'est pas modifiable : par exemple un entier (3) n'est pas un réel (3.0) et réciproquement. Il est en revanche possible de créer un nouvel objet du type choisi à partir d'un objet d'un autre type. Pr exemple pour créer un objet te type réel depuis un entier 3, on peut écrire : `float(3)`{.language-}. Ceci se généralise :
 
 {% note2 "**Définition**" %}
-Créer un objet de type `type_a` à partir d'un objet `b` s'écrit :
+Créer un objet de type `<un type>`{.language-} à partir d'un objet `<un objet>`{.language-} s'écrit :
 
-```python
-type_a(b)
+```txt
+<un type>(<un objet>)
 ```
 
 {% endnote2 %}
@@ -209,8 +219,9 @@ Va rendre un objet réel valant 3.1415 à partir d'une chaîne de caractère ave
 Une chaîne de caractère n'est **pas** un réel ou un entier.
 {% endattention %}
 
+La conversion de chaînes de caractères en entier ou en réel est très courante lorsque l'on récupère des entrées tapées par un utilisateur. jen effet :
 {% attention2 "**À retenir**" %}
-La conversion de chaînes de caractères en entier ou en réel est très courante lorsque l'on récupère des entrées tapées par un utilisateur qui sont **toujours** des chaînes de caractères
+Une entrée donnée par un utilisateur est **toujours** une chaîne de caractères.
 {% endattention2 %}
 
 ### <span id="conversion-bool"></span>Conversion de booléens
@@ -289,7 +300,7 @@ Les variables permettent à l'interpréteur de se rappeler d'objets qu'il a cré
 Une variable est un **_nom_** auquel est associé un objet. Pour associer un nom à un objet on utilise **_l’opérateur d’affectation_** `=`{.language-} :
 
 ```txt
-nom = objet
+<un nom> = <un objet>
 ```
 
 À l'issue de l'affectation, la variable à gauche du signe `=` représentera l'objet à droite de celui-ci.
@@ -733,23 +744,29 @@ C'est un objet :
 {% note2 "**Définition**" %}
 On **_exécute_** l'objet en faisant suivre son nom de parenthèses :
 
+```txt
+<nom de la fonction>()
+```
+
+{% endnote2 %}
+
+Par exemple :
 ```python
 >>> print()
 
 >>> 
 ```
-{% endnote2 %}
 
-L'exécution de la fonction `print`{.language-} à affiché à l'écran le caractère [retour à la ligne](https://fr.wikipedia.org/wiki/Retour_chariot) ce qui a pour effet d'aller à la ligne.
+Va exécuter la fonction `print`{.language-} de python qui affiche à l'écran le caractère [retour à la ligne](https://fr.wikipedia.org/wiki/Retour_chariot) ce qui a pour effet d'aller à la ligne.
 
-{% note %}
-De nombreuses fonctions peuvent être exécutées avec des _paramètres_ qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
+{% note2 "**Définition**" %}
+De nombreuses fonctions peuvent être exécutées avec des **_paramètres_** qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
 
-```python
-nom_de_la_fonction(paramètre1, paramètre2, ..., paramètre_n)
+```txt
+<nom de la fonction>(<paramètre 1>, <paramètre 2>, ..., <paramètre n>)
 ```
 
-{% endnote %}
+{% endnote2 %}
 
 Prenons par exemple la fonction print de python :
 
@@ -802,7 +819,19 @@ coucou
 ### Retour de fonction
 
 
-L'exécution de toute fonction va retourner un objet. C'est parfois utile (comme [abs](https://docs.python.org/3/library/functions.html#abs)) :
+L'exécution de toute fonction va retourner un objet. 
+
+
+{% note2 "**Définition**" %}
+Le retour de l'exécution est un objet qui peut être stockée dans une variable via une affectation :
+
+```txt
+<nom de variable> = <nom de la fonction>(<paramètre 1>, <paramètre 2>, ..., <paramètre n>)
+```
+
+{% endnote2 %}
+
+C'est parfois utile (comme [abs](https://docs.python.org/3/library/functions.html#abs)) :
 
 ```python
 >>> x = abs(-10)
@@ -990,29 +1019,29 @@ Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on ve
 
 ## <span id="méthodes"></span> Méthodes
 
-Les méthodes sont un autre moyen d'agir sur un objet. On les utilise de cette façon :
+Les méthodes sont un autre moyen d'agir sur un objet :
 
+{% note2 "**Définition**" %}
 ```python
-objet.méthode(paramètre_1, paramètre_2, ..., paramètre_n)
+<retour de la méthode> = <un objet>.<nom de la méthode>(<paramètre 1>, <paramètre 2>, ..., <paramètre n>)
 ```
 
-On applique `méthode`{.language-} à `objet`{.language-} en utilisant les paramètres de la méthode.
+On applique `<nom de la méthode>`{.language-} (dit méthode appelée) à `<un objet>`{.language-} (dit objet appelant)  en utilisant les paramètres de la méthode. Comme une fonction, on peut récupérer son résultat si nécessaire via une affectation.
+{% endnote2 %}
 
-{% note "**Utilisation des méthodes d'une classe**" %}
-Supposons que l'on ait un objet de nom `objet`{.language-} et une méthode nommée `méthode`{.language-} associée au type de l'objet de nom `objet`{.language-}.
 
-L'instruction `objet.méthode()`{.language-} exécutera la méthode `méthode`{.language-} pour l'objet `objet`{.language-}. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple `objet.méthode(paramètre_1, paramètre_2)`{.language-}.
-{% endnote %}
-
-{% attention %}
+{% attention2 "**À retenir**" %}
 Une méthode ne s'utilise **jamais** seule. Elle s'applique à ce qu'il y a à gauche d'elle.
-{% endattention %}
+{% endattention2 %}
 
 Prenez le temps de regarder les différentes méthodes des classes de base de python. Souvent elle vous permettent de faire rapidement une opération compliquée. C'est en particulier vrai pour les chaînes de caractères et les listes.
 
-### Méthodes des chaînes de caractères
 
-Chaque classe vient avec des méthodes. Si les nombre et booléens ont peu de méthodes, les chaines de caractères par exemple en ont [tout un tas](https://docs.python.org/fr/3/library/stdtypes.html#string-methods).
+Certaines méthodes vont rendre des objets utiles (comme les méthodes de chaîne de caractères), d'autre vont modifier les objets appelants et leur retour sera `None`{.language-} (comme beaucoup de méthodes de liste que l'on verra bientôt).
+
+### Exemple : méthodes des chaînes de caractères
+
+Chaque classe vient avec ses méthodes. Si les nombres et les booléens ont peu de méthodes, les chaines de caractères par exemple en ont [tout un tas](https://docs.python.org/fr/3/library/stdtypes.html#string-methods).
 
 Essayons de les apprendre avec ces petits exercices :
 
@@ -1077,34 +1106,34 @@ Avec le mot "choucroute garnie" et les méthodes [`count`{.language-}](https://d
 
 On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple, avec 2 méthodes :
 
-```python
-objet.méthode_1().méthode_2()
+```txt
+<un objet>.<nom de la méthode 1>().<nom de la méthode 2>()
 ```
 
-Signifie que méthode2() est appliquée à l'objet résultat de `objet.méthode_1()`{.language-}.
+Signifie que `<nom de la méthode 2>`{.language-} est appliquée à l'objet rendu par l'exécution de `<nom de la méthode 2>`{.language-} sur `<un objet>`{.language-}.
 
 {% attention2 "**À retenir**" %}
 L'application des méthodes est **associative à gauche**.
 
-```python
-objet.méthode_1().méthode_2()
+```txt
+<un objet>.<nom de la méthode 1>().<nom de la méthode 2>()
 ```
 
 est équivalent à :
 
-```python
-(objet.méthode_1()).méthode_2()
+```txt
+(<un objet>.<nom de la méthode 1>()).<nom de la méthode 2>()
 ```
 
 {% endattention2 %}
 
 Ceci se généralise avec $n$ méthodes :
 
-```python
-objet.méthode_1().méthode_2(). ... .méthode_n()
+```txt
+<un objet>.<nom de la méthode 1>().<nom de la méthode 2>(). ... .<nom de la méthode n>()
 ```
 
-La méthode `méthode_n()`{.language-} est appliquée au résultat de `objet.méthode_1(). ... .méthode_n-1()`{.language-}
+La méthode `<nom de la méthode n>`{.language-} est appliquée au résultat de `<un objet>.<nom de la méthode 1>().<nom de la méthode 2>(). ... .<nom de la méthode n-1>()`{.language-}
 
 {% exercice %}
 Que fait :
@@ -1139,7 +1168,7 @@ On a donc au final échangé les 2 et les 7 du 23ème nombre premier de Mersenne
 
 {% enddetails %}
 
-### Fonctions vs. méthodes
+## Fonctions vs. méthodes
 
 Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alors qu'une méthode a besoin d'un objet sur lequel elle s'applique (celui avant le `.`{.language-}). Vous pouvez voir ça comme un 1er paramètre indispensable à l'exécution d'une méthode. Considérez le programme suivant :
 
@@ -1156,9 +1185,21 @@ La première ligne crée une chaîne de caractères. La seconde instruction est 
 On peut voir les méthodes comme des fonctions définies dans l'espace de nom de l'objet.
 {% endinfo %}
 
-### Attributs d'une classe
+## Attributs d'un objet
 
-C'est plus rare, mais certaines classes possèdent des également des _attributs_ en plus des méthodes. Ce sont des valeurs associées à l'objet.
+C'est plus rare, mais certaines classes possèdent des également des _attributs_ en plus des méthodes. 
+
+{% note2 "**Définition**" %}
+Un attribut est un nom représentant un objet :
+
+```python
+<retour de la méthode> = <un objet>.<nom de l'attribut>
+```
+
+Un attribut est une variable située dans un objet.
+{% endnote2 %}
+
+Ce sont des valeurs associées à l'objet.
 
 Par exemple les objets de la classe `complex`{.language-} qui possède les attributs `real`{.language-} et `imag`{.language-} pour rendre la partie réelle et imaginaire d'un complexe.
 
@@ -1167,4 +1208,18 @@ Par exemple les objets de la classe `complex`{.language-} qui possède les attri
 1.0
 >>> (1+2j).imag
 2.0
+```
+
+Les attributs d'un complexes sont en _lecture seule_, ce sont des variables que l'on peut lire mais qu'on ne peut pas affecter :
+
+```python
+>>> x = 3 + 2j
+>>> x.real
+3.0
+>>> x.real = 12
+Traceback (most recent call last):
+  File "<python-input-10>", line 1, in <module>
+    x.real = 12
+    ^^^^^^
+AttributeError: readonly attribute
 ```

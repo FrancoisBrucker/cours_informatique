@@ -5,7 +5,7 @@ title: Coder des projets
 
 eleventyNavigation:
     prerequis:
-        - "/cours/système/ordinateur-programmes-OS/"
+        - "/cours/système/interagir-avec-système/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -16,8 +16,11 @@ eleventyComputed:
 
 La première partie nous a appris les concepts fondamentaux d'un langage de programmation à objet et nous a permis d'écrire et d'exécuter un (petit) programme python. Cette partie nous permettra de passer à l'échelle en créant des programmes sur plusieurs fichiers et à traiter des données.
 
+{% attention %}
+Nous allons passer pas mal de temps à créer des fichiers, des dossiers et à utiliser le terminal. **Assurez-vous donc d'avoir lu et compris** les prérequis.
+{% endattention %}
 
-> TBD ici prérequis
+
 
 - ici fichiers
 - tests etc

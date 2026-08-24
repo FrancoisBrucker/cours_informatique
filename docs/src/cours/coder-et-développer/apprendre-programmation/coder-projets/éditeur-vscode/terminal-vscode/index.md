@@ -16,6 +16,8 @@ Différentes manières d'utiliser un terminal avec [visual studio code](https://
 [Documentation officielle du terminal dans vscode](https://code.visualstudio.com/docs/editor/integrated-terminal)
 {% endlien %}
 
+> TBD voir si pas doublon avec la partie terminal du système.
+>
 ## <span id="terminal-intégré"></span> Manipuler le terminal
 
 ### Ouvrir ou créer un terminal

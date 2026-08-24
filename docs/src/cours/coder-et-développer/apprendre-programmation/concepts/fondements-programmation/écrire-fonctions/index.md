@@ -24,13 +24,13 @@ Il n'est jamais bon de copier/coller un bout de programme qui se répète plusie
 Une **_fonction_** est [un bloc](./#bloc){.interne} auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
 
 ```python
-def nom_de_la_fonction(<paramètre_1, paramètre_2, ..., paramètre_n):
-    instruction 1
-    instruction 2
+def <nom de la fonction>(<paramètre 1>, <paramètre 2>, ..., <paramètre n>):
+    <instruction 1>
+    <instruction 2>
     ...
-    instruction n
+    <instruction n>
 
-    return objet
+    return <un objet>
 ```
 
 {% endnote2 %}
