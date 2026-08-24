@@ -96,56 +96,168 @@
     
   
 
-  <blockquote>
-<p>TBD pour l'instant OS = exécution de programmes en parallèle et accès aux devices
-il reste 3 choses :</p>
-<ol>
-<li>données</li>
-<li>qui les utilise (séparer le système d'un utilisateur normal et plusieurs utilisateurs)</li>
-<li>comment les utiliser : application et terminal</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>TBD rester simple (au niveau de google). admin/root (sudo) vs reste.</p>
-</blockquote>
-<p>Si tous les process du user mode pouvaient effectuer tous les appels systèmes sans restriction cela poseraient d'énormes problèmes de sécurité (un process pourrait accéder à toute la mémoire, en particulier celle réservée à d'autres process par exemple) c'est pourquoi chaque process n'a qu'un nombre restreint de possibilités (on appelle ceci <a href="https://fr.wikipedia.org/wiki/Droit_d%27acc%C3%A8s_(informatique)">des droits</a>) gérés via la notion d'utilisateurs.</p>
-<h2>Utilisateurs et groupes</h2>
-<p>Du point de vue du système d'exploitation un utilisateur est une entité permettant d'exécuter des processus. L'utilisateur qui se connecte à l'ordinateur au login est donc un parmi beaucoup d'autres, la plupart n'étant pas associé à une personne physique. Les utilisateurs sont ensuite placés dans des groupes, chaque groupe ayant des droits particuliers.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+  <p><a href="../../ordinateur-programmes-OS/#kernel-user-mode" class="interne">Nous avons vu</a> que le processeur d'un ordinateur peut être en 2 modes :</p>
+<ul>
+<li><em>le kernel mode</em> où l'on peut tout faire et qui est réservé au noyau,</li>
+<li><em>le user mode</em> où l'on ne peut accéder qu'à une partie des instructions et doit effectuer des appels systèmes au noyaux pour effectuer les instructions critiques.</li>
+</ul>
+<p>Cependant si tous les process du user mode pouvaient effectuer tous les appels systèmes sans restriction cela poseraient d'énormes problèmes de sécurité (un process pourrait accéder à toute la mémoire, en particulier celle réservée à d'autres process par exemple) c'est pourquoi chaque process n'a qu'un nombre restreint de possibilités (on appelle ceci <a href="https://fr.wikipedia.org/wiki/Droit_d%27acc%C3%A8s_(informatique)">des droits</a>) gérés via la notion d'utilisateurs.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Cette technique de séparation des pouvoirs via des utilisateurs et des droits s'applique aux processus mais aussi aux fichiers/dossiers.</p>
+</div></div>
+
+<h2>Utilisateurs et groupes</h2>
+<p>Du point de vue du système d'exploitation :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>utilisateur</em></strong>  un utilisateur est une entité permettant d'exécuter des processus.</p>
+<p>Il peut utiliser uniquement les éléments (logiciel, fichier, dossier, ...) qui lui appartiennent ou qui appartiennent à ses groupes.</p>
+</div></div>
+
+<p>L'utilisateur qui se connecte à l'ordinateur au login est donc un parmi beaucoup d'autres, la plupart n'étant pas associé à une personne physique. Les utilisateurs sont ensuite placés dans des groupes, chaque groupe ayant des droits particuliers.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Un utilisateur peut utiliser uniquement les éléments (logiciel, fichier, dossier, ...) qui lui appartiennent ou qui appartiennent à ses groupes.</p>
 </div></div>
 
-<p>Il existe de nombreux groupes et utilisateurs utilisés par le système pour segmenter (et donc sécuriser) les utilisations. Parmi eux, un utilisateur et un groupe se détachent car ils ont plus de droit que les autres.</p>
+<p>Il existe de nombreux groupes et utilisateurs utilisés par le système pour segmenter (et donc sécuriser) les utilisations. Parmi eux, un utilisateur et un groupe se détachent car ils ont plus de droit que les autres ce qui est une nouvelle application du <a href="../../ordinateur-programmes-OS/#TFIL" class="interne">TFIL</a></p>
+<p><img src="utilisateurs.png" alt="utilisateurs"></p>
 <h3>Utilisateur <code>root</code></h3>
-<p>L'utilisateur <code>root</code> est l'utilisateur lié au système d'exploitation. Il est le propriétaire des process (démons) et interfaces du système d'exploitation. Cet utilisateur a ainsi tous les droits (peut aller partout, réserver autant de mémoire qu'il veut, etc).</p>
-<p>Comme <strong>Tout</strong> processus a un propriétaire, l'existence de cet utilisateur est garantie.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Utilisateur_root">Le super-utilisateur</a></p>
+</div></div>
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'<strong><em>utilisateur <code>root</code></em></strong>, aussi appelé <strong><em>super utilisateur</em></strong> est l'utilisateur lié au système d'exploitation. Comme <strong>Tout</strong> processus a un propriétaire il existe toujours et est le propriétaire des process (démons) et interfaces du système d'exploitation.</p>
+</div></div>
+
+<p>Le super-utilisateur a ainsi tous les droits (peut aller partout, réserver autant de mémoire qu'il veut, etc). Il ne faut cependant pas confondre l'utilisateur <code>root</code> et les administrateurs.</p>
 <h3>Groupe des administrateurs systèmes</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Administrateur_syst%C3%A8me">administrateur système</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Administrateur_syst%C3%A8me">L'administrateur système</a></p>
 </div></div>
 
-<p>Le groupe des administrateurs systèmes permet de modifier des paramètres systèmes d'exécuter ou stopper des démons et d'installer de nouveaux logiciels. Ces utilisateurs ont moins de pouvoirs que root qui peut tout faire mais permettent d'administrer le système au quotidien.</p>
-<p>Cela permet, si nécessaire, d'installer ou de configurer son système sans être connecté en tant que root en utilisant <a href="https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers">la commande sudo</a> sous Linux par exemple.</p>
-<p>Les démons et les interfaces sont des process comme les autres. Ils sont cependant exécutés par un utilisateur spécial, souvent nommé <a href="https://fr.wikipedia.org/wiki/Utilisateur_root"><code>root</code></a>, qui est le <a href="https://fr.wikipedia.org/wiki/Utilisateur_root">super-utilisateur</a> et est le représentant utilisateur du système.</p>
-<blockquote>
-<p>TBD quatrième couche pour les OS.
-TBD ici fichiers système</p>
-</blockquote>
-<ol>
-<li>utilisateurs
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong><em>Le groupe des administrateurs systèmes</em></strong> permet de modifier des paramètres systèmes d'exécuter ou stopper des démons et d'installer de nouveaux logiciels. Ces utilisateurs ont moins de pouvoirs que root qui peut tout faire mais permettent d'administrer le système au quotidien.</p>
+</div></div>
+
+<p>Cela permet, si nécessaire, d'installer ou de configurer son système sans être connecté en tant que root. Par exemple :</p>
 <ul>
-<li>qui à le droit de faire quoi</li>
+<li>en utilisant le paramètre <em>exécuter en tant qu'administrateur</em> sous Windows,</li>
+<li>en utilisant <a href="https://www.linuxtricks.fr/wiki/sudo-utiliser-et-parametrer-sudoers">la commande sudo</a> sous Linux/macos.</li>
+</ul>
+<h3>Utilisateurs et groupes spéciaux</h3>
+<p>Dans le monde unix, on a coutume d'avoir un utilisateur par type de service et ne correspondent pas à des utilisateurs réels. On trouvera ainsi souvent :</p>
+<ul>
+<li>un utilisateur <code>web</code> qui est le propriétaire du processus s'occupant du serveur web et est propriétaire des dossiers réservées aux différents site web,</li>
+<li>un utilisateur <code>ssh</code> responsable des connexions sécurisées,</li>
+<li>un utilisateur <code>lpr</code> responsable des serveurs d'impressions,</li>
+<li>...</li>
+</ul>
+<p>Outre les utilisateurs spéciaux, on peut regroupe des utilisateur  dans des groupes à périmètre fixé. On a déjà vu le groupe des administrateurs, mais on peut en créer autant qu'on veut et à la demande.</p>
+<h3>Utilisateurs &quot;normaux&quot;</h3>
+<p>Tous les autres utilisateurs qui ne peuvent exécuter que des programmes simples et ne peuvent écrire que dans leur <em>dossier maison</em>. Pour un ordinateur personnel ce genre d'utilisateur n'existe plus vraiment puisque l'utilisateur principal est souvent aussi administrateur, mais pour de gros système massivement multi-utilisateur comme la gestion d'une université par exemple c'est très courant.</p>
+<h2>Propriété et Droits de fichiers</h2>
+<p>Du point de vue du système d'exploitation la gestion des droits se fait via les dossiers et les fichiers :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les droits d'un processus ou d'un fichier/dossier sont liés à leur <strong><em>Le propriétaire</em></strong> :</p>
+<ul>
+<li>le propriétaire d'un processus est celui qui l'a lancé :
+<ul>
+<li><code>root</code> lance le système d'impression, il en est responsable</li>
+<li>un utilisateur normal lance un jeu, il en est responsable</li>
 </ul>
 </li>
-</ol>
+<li>le propriétaire d'un fichier/dossier est défini pour chaque fichier</li>
+</ul>
+</div></div>
+
+<p>Pour un processus le système d'exploitation décide de ses droits selon le type d'utilisateur de son propriétaire (administrateur, ...). Notez que comme un programme est aussi un fichier, le propriétaire d'un programme est très souvent différent du propriétaire du processus qui exécute le programme.</p>
+<p>Pour un fichier/dossiers, les droits sont déterminés pour chaque utilisateur et sont appelés <strong><em>permissions</em></strong> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Chaque fichier et dossiers va accorder à des utilisateur ou groupe d'utilisateur des <strong><em>permissions</em></strong>. Il y en a trois types :</p>
+<ul>
+<li><strong><em>les droits en lecture</em></strong> :
+<ul>
+<li>pour un fichier : on peut lire le contenu du fichier</li>
+<li>pour un dossier : on peut connaître la liste de ses fichiers/dossiers qu'il contient</li>
+</ul>
+</li>
+<li><strong><em>les droits en écriture</em></strong> :
+<ul>
+<li>pour un fichier : on peut modifier le contenu du fichier</li>
+<li>pour un dossier : on peut ajouter/supprimer des fichiers/dossiers qu'il contient</li>
+</ul>
+</li>
+<li><strong><em>les droits d'exécution</em></strong> :
+<ul>
+<li>pour un fichier : on peut exécuter le fichier comme un programme (ne fonctionne que si le fichier est bien un programme à la base...)</li>
+<li>pour un dossier : on peut se déplacer dans ce dossier pour accéder à son contenu (lire ses fichiers si on en a le droit, aller dans un de ses sous-dossiers)</li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<p>On peut voir les permissions accordés aux différents fichiers via l'explorateur de fichiers. Par exemple le dossier Application de mon mac à les permissions suivantes (clique droit puis lire les information depuis le finder) :</p>
+<p><img src="permissions-1.png" alt="permissions"></p>
+<p>Ces permissions sont différentes de mon dossier Maison :</p>
+<p><img src="permissions-2.png" alt="permissions"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Notez que la gestion précise des droits des fichiers et des process dépend du système d'exploitation. On reparlera de tout ça de façon détaillée lorsque l'on examinera le système d'exploitation Linux.</p>
+</div></div>
+
 
 
 </article>

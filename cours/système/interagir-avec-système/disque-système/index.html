@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Brew</title>
+    <title>Organisation d&#39;un disque système</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Brew</h1>
+  <h1>Organisation d&#39;un disque système</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/">Interagir avec le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/système-installation/">Installation d&#39;un nouveau système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/système-installation/brew/">Brew</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/">Interagir avec le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/disque-système/">Organisation d&#39;un disque système</a>
 
 </div></div>
 
@@ -96,14 +96,53 @@
     
   
 
-  <p>Lorsque l'on utilise son mac pour le développement, il faut souvent installer tout un tas de logiciels unix.</p>
-<p>Le logiciel <a href="https://brew.sh">https://brew.sh</a> vous permet de faire ça sans soucis.</p>
-<ol>
-<li>installez le en copiant/collant la ligne de commande demandée dans <a href="../../terminal/bases" class="interne">un terminal</a>.</li>
-<li>si vous avez un mac avec une puce M1, il vous faudra également taper la commande <code>echo 'eval $(/opt/homebrew/bin/brew shellenv)' &gt;&gt; $HOME/.zprofile</code></li>
-<li>quittez l'application terminal (&quot;menu du nom de l'application &gt; quitter&quot; ou  <code>cmd + Q</code>), puis la relancer pour que les fichiers de configuration soient à jour.</li>
-</ol>
-<p>Vous pourrez ensuite utiliser des commandes comme <code>brew install python3</code> pour installer python ou encore <code>brew install wezterm</code> pour les plus geek d'entre nous.</p>
+  <blockquote>
+<p>TBD montrer une partition d'un disque dur</p>
+</blockquote>
+<p>Le disque dur du système a une structure particulière car il doit :</p>
+<ul>
+<li>permettre l'exécution du noyau</li>
+<li>contenir les divers fichiers et application du système</li>
+</ul>
+<p>L'organisation de cette structure est différente selon les OS mais on retrouvera toujours ces éléments.</p>
+<h2>Bootloader et partitions</h2>
+<p>Lorsque l'on démarre un ordinateur, il faut commencer par trouver le noyau du système d'exploitation appelé <strong><em>bootloader</em></strong>. Le bootloader et le noyau se trouvent dans <a href="https://fr.wikipedia.org/wiki/Partition_(informatique)">une partition spéciale</a> du disque dur de démarrage.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Partition_(informatique)">Une <strong><em>partition</em></strong></a> est une partie d'un disque dur.</p>
+</div></div>
+
+<p>Un disque dur système possédera toujours au moins 2 partitions :</p>
+<ul>
+<li>celle du bootloader qui est toute petite et contient uniquement le noyau</li>
+<li>une partition plus grande contenant le reste du système</li>
+</ul>
+<p>Il peut en avoir bien plus : certains système ont ainsi une partition réservée aux utilisateur, une autre pour les applications, etc. La raison est que les partitions sont isolées les unes des autres, en casser une ne détruit pas les autres par exemple.</p>
+<h2>Dossiers système</h2>
+<p>Si le noyau du système se trouve sur la partition du <em>bootloader</em>, tout le reste du système se trouve sur la partition principale dans un au plusieurs dossiers.</p>
+<p>L'organisation spécifique de ces dossiers dépend du système d'exploitation, par exemple sous windows presque tout est rangé dans le dossier <code class="fichier">\system</code> alors que sous Linux le système est réparti dans plusieurs dossiers. En revanche, on retrouvera toujours les même composants suivant.</p>
+<h3>Fonctionnement interne du système</h3>
+<p>Répartis dans plusieurs dossiers et contient tous les fichiers nécessaires au bon fonctionnement du système :</p>
+<ul>
+<li>les fichiers de configurations</li>
+<li>les applications système (comme systemd sous linux par exemple)</li>
+<li><a href="https://fr.wikipedia.org/wiki/Dynamic_Link_Library">les bibliothèques dynamiques</a></li>
+</ul>
+<h3>Applications</h3>
+<p>Dossier contenant les applications reconnues par le système. Si vous installez un logiciel dans un dossier différent il se peut qu'il ne soit pas automatiquement reconnu.</p>
+<h2>Dossiers Utilisateurs</h2>
+<p>Un dossier spécifique à chaque utilisateur, aussi appelé <strong><em>Maison</em></strong>. Il va contenir tous ses fichiers de données, mais également :</p>
+<ul>
+<li>ses fichiers de configuration</li>
+<li>ses programmes</li>
+</ul>
+<h2>Disques de données</h2>
+<p>Outre le disque système, un ordinateur peut posséder de nombreux autres disques soit fixe, soit amovibles (comme des clés usb).</p>
 
 
 </article>

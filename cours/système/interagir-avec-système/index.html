@@ -96,22 +96,13 @@
     
   
 
-  <p>Un système est fait pour être utilisé.</p>
-<blockquote>
-<p>TBD pour l'instant OS = exécution de programmes en parallèle et accès aux devices
-il reste 3 choses :</p>
-<ol>
-<li>données</li>
-<li>qui les utilise (séparer le système d'un utilisateur normal et plusieurs utilisateurs)</li>
-<li>comment les utiliser : application et terminal</li>
-</ol>
-</blockquote>
+  <p>Un système est fait pour être utilisé. Il doit pour cela permettre :</p>
 <ul>
-<li>dossier / fichier</li>
-<li>application utiles</li>
-<li>terminal</li>
-<li>installation nouveau système optionnel.</li>
+<li>de stocker des données,</li>
+<li>de permettre à différents utilisateurs d'utiliser l'ordinateur en toute sécurité,</li>
+<li>de facilité la vie aux utilisateur en leur permettant de lancer des application ou de modifier leur système de façon conviviale.</li>
 </ul>
+<p>C'est ce que nous voir maintenant en voyant les principes qui sous-tendent ces mécaniques et comment on peut les utiliser au quotidien.</p>
 <h2>Fichiers et dossiers</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -131,21 +122,18 @@ il reste 3 choses :</p>
 </div></div>
 
 <h2>Organisation disque dur système</h2>
-<blockquote>
-<p>TBD reprendre dans la partie refactor.
-TBD montrer les système de fichiers (FAT vs extfs ou nfat, ...)
-TBD système / applications / utilisateur /
-TBD montrer une partition d'un disque dur
-partie cachée (bootloader) pour le noyau.
-dans la partie refactor.
-donner la commande unix et une copie d'écran windows.</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="disque-syst%C3%A8me" class="interne">Organisation d'un disque système</a></p>
+</div></div>
+
 <h2>Applications</h2>
-<blockquote>
-<p>TBD utiles pour administrer et utiliser efficacement un système</p>
-</blockquote>
+<p>D'un point de vue système, il existe des applications utiles à connaître pour pouvoir efficacement s'en server.</p>
 <h3>Terminal</h3>
-<p>Le terminal permet d'exécuter rapidement des commandes.</p>
+<p>Le terminal permet d'exécuter rapidement des commandes. Il est fondamental que vous sachiez vous en servir</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -155,13 +143,89 @@ donner la commande unix et une copie d'écran windows.</p>
 </div></div>
 
 <h3>Gestionnaire de paquet</h3>
-<blockquote>
-<p>TBD à déplacer de système installation</p>
-</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="gestionnaire-paquet" class="interne">Gestionnaire de paquets</a></p>
+</div></div>
+
 <h3>Applications utiles</h3>
-<blockquote>
-<p>TBD à déplacer de système installation</p>
-</blockquote>
+<p>Quelques applications sont indispensables pour utiliser son ordinateur pour le développement. Nous allons présenter ici les plus importantes, installées par défaut et que tout utilisateur doit avoir constamment sous la main.</p>
+<h4>Un navigateur</h4>
+<p>Il en existe de nombreux et tout système en a un par défaut (<a href="https://fr.wikipedia.org/wiki/Microsoft_Edge">edge</a>, <a href="https://fr.wikipedia.org/wiki/Safari_(navigateur_web)">safari</a>, <a href="https://www.google.com/chrome/">chrome</a> ou <a href="https://fr.wikipedia.org/wiki/Mozilla_Firefox">firefox</a>).</p>
+<h4>Un outil de compression/décompression de fichiers</h4>
+<p>Compresser ou décompresser des fichiers est indispensable. Un outil de compression est déjà installé pour les trois systèmes. Pour l'utiliser depuis un explorateur de fichier, il suffit de cliquer droit sur le dossier ou le fichier que vous voulez compresser et choisissez l'item <code>compresser</code> du menu.</p>
+<h4>Un éditeur de texte à tout faire</h4>
+<p>On a souvent besoin de lire ou d'éditer un fichier texte rapidement, que ce soit lire un readme, éditeur un fichier de configuration, corriger rapidement un faute dans un fichier Latex, etc.</p>
+<p>Nous en donnons 3, un par système d'exploitation qui ont l'avantage d'être directement utilisable et qui possèdent une interface graphique.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Windows 11</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Je conseille d'installer <a href="https://notepad-plus-plus.org/">notepad++</a></p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Macos</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>J'aime utiliser l'éditeur <a href="https://coteditor.com/">coteditor</a> pour les petites manipulations de fichiers.</p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous Linux/Ubuntu</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Par défaut, Ubuntu installe l'application <code>Éditeur de texte</code> qui permet d'éditer et de modifier des fichiers textes.</p>
+</div>
+</details>     
+</div>
+<h4>Un IDE générique</h4>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement">IDE</a> permet de créer rapidement des projets. Il en existe de nombreux, allant du très générique au très particulier.</p>
+<p>Actuellement, l'éditeur générique en vogue est <a href="https://code.visualstudio.com/">vscode</a>.</p>
 <h2>Bonus : Installation d'un nouveau système</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

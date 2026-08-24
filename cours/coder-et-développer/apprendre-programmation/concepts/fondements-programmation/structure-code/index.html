@@ -127,26 +127,26 @@
 </div></div>
 
 <p>Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l'indentation (4 espaces par défaut): un bloc est donc une suite d'instructions ayant la même indentation.</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">type_de_bloc:
-    instruction 1
-    instruction 2
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;type de bloc>:
+    &lt;instruction 1>
+    &lt;instruction 2>
     ...
-    instruction n</code></pre>
+    &lt;instruction n></code></pre>
 <p>Ces différents blocs sont pratiques car ils vont nous permettre :</p>
 <ul>
 <li>d'exécuter des blocs conditionnellement</li>
 <li>de répéter des blocs</li>
 </ul>
 <p>Les blocs peuvent bien sur se combiner :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">bloc A:
-    instruction 1 du bloc A
-    bloc B:
-        instruction 1 du bloc B
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;bloc A>:
+    &lt;instruction 1 du bloc A>
+    &lt;bloc B>:
+        &lt;instruction 1 du bloc B>
         ...
-        instruction m du bloc B
-    instruction 2 du bloc A
+        &lt;instruction m du bloc B>
+    &lt;instruction 2 du bloc A>
     ...
-    instruction n du bloc A</code></pre>
+    &lt;instruction n du bloc A></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -187,20 +187,20 @@
 
 <p>Permet d'exécuter un bloc si une condition logique est vraie :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">if</span> <span class="token operator">&lt;</span>condition logique<span class="token operator">></span><span class="token punctuation">:</span>
-    instruction <span class="token number">1</span>
-    instruction <span class="token number">2</span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">1</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">2</span><span class="token operator">></span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction n
+    <span class="token operator">&lt;</span>instruction n<span class="token operator">></span>
 <span class="token keyword">elif</span> <span class="token operator">&lt;</span>condition logique<span class="token operator">></span><span class="token punctuation">:</span>
-    instruction <span class="token number">1</span>
-    instruction <span class="token number">2</span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">1</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">2</span><span class="token operator">></span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction n
+    <span class="token operator">&lt;</span>instruction n'<span class="token operator">></span>
 <span class="token keyword">else</span><span class="token punctuation">:</span>
-    instruction <span class="token number">1</span>
-    instruction <span class="token number">2</span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">1</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">2</span><span class="token operator">></span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction n</code></pre>
+    <span class="token operator">&lt;</span>instruction n<span class="token string">''</span><span class="token operator">></span></code></pre>
 <p>Notez qu'il peut y avoir autant de bloc <code class="language-">elif</code> que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de <code class="language-">else</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -327,11 +327,11 @@ a <span class="token operator">=</span> <span class="token builtin">int</span><s
 <p><a href="https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement">https://docs.python.org/fr/3/reference/compound_stmts.html#the-while-statement</a></p>
 </div></div>
 
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">while</span> condition_logique<span class="token punctuation">:</span>
-    instruction <span class="token number">1</span>
-    instruction <span class="token number">2</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">while</span> <span class="token operator">&lt;</span>condition logique<span class="token operator">></span><span class="token punctuation">:</span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">1</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">2</span><span class="token operator">></span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction n</code></pre>
+    <span class="token operator">&lt;</span>instruction n<span class="token operator">></span></code></pre>
 <p>Par exemple le bloc <code class="language-">while</code> suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">b <span class="token operator">=</span> <span class="token number">6</span>
 <span class="token keyword">while</span> b <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
@@ -459,10 +459,10 @@ b <span class="token operator">=</span> <span class="token number">1</span>
 </div></div>
 
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> <span class="token operator">&lt;</span>nom<span class="token operator">></span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>itérable<span class="token operator">></span><span class="token punctuation">:</span>
-    instruction <span class="token number">1</span>
-    instruction <span class="token number">2</span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">1</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>instruction <span class="token number">2</span><span class="token operator">></span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    instruction n</code></pre>
+    <span class="token operator">&lt;</span>instruction n<span class="token operator">></span></code></pre>
 <p>Le bloc sera exécuté pour chaque élément de l'<em>itérable</em>. A chaque exécution, l'élément courant de l'itérateur sera nommé <code class="language-">&lt;nom&gt;</code>.Certaines fonctions vont créer des itérables, la plus connue étant certainement la fonction range que l'on va voir juste après, et certains objets également, comme les chaînes de caractères (<a href="../../conteneurs" class="interne">les objets conteneurs</a> comme les listes, les ensembles ou les dictionnaires que l'on verra plus tard fonctionnent également).</p>
 <p>L'exécution du code suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> c <span class="token keyword">in</span> <span class="token string">"bonjour"</span><span class="token punctuation">:</span>

@@ -96,7 +96,13 @@
     
   
 
-  <p>On va lister les concepts fondamentaux qui permettent d'écrire du code python que l'on pourra faire exécuter par l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.</p>
+  <!-- TBD 
+
+- mettre les paramètres entre <> et pas avec des _
+- faire une définition sur cette convention.
+
+-->
+<p>On va lister les concepts fondamentaux qui permettent d'écrire du code python que l'on pourra faire exécuter par l'interpréteur python. Ces concepts sont identiques pour tous (ou quasi tous) les langages de programmation objet.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -104,13 +110,23 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Dans tous les exemple de code qui suivront, lorsque la ligne de code commencera par <code class="language-">&gt;&gt;&gt;</code> cela signifiera que l'on  a exécuté ce code directement dans l'interpréteur, la ligne suivante montrera le résultat. Par exemple :</p>
+<p>Dans tous les exemples de code qui suivront, lorsque la ligne de code commencera par <code class="language-">&gt;&gt;&gt;</code> cela signifiera que l'on  a exécuté ce code directement dans l'interpréteur, la ligne suivante montrera le résultat. Par exemple :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token number">21</span> <span class="token operator">*</span> <span class="token number">2</span>
 <span class="token number">42</span></code></pre>
 <p>Si l'on veut passer par l'éditeur on écrira du code de cette façon :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">21</span> <span class="token operator">*</span> <span class="token number">2</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p>Il faudra ensuite l'exécuter pour voir son résultat.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Dans tous <strong>les instructions</strong> de code qui suivront (pas les résultats donnés par python), lorsqu'un texte est entre <code class="language-">&lt;&gt;</code> cela signifiera que c'est un paramètre variable, ce qu'on peut y mettre étant décrit entre les <code class="language-">&lt;&gt;</code>. Par exemple : <code class="language-">&lt;un entier&gt;</code> fonctionnera en le remplaçant par un entier quelconque.</p>
 </div></div>
 
 <ul>
@@ -274,8 +290,8 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Créer un objet de type <code>type_a</code> à partir d'un objet <code>b</code> s'écrit :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">type_a<span class="token punctuation">(</span>b<span class="token punctuation">)</span></code></pre>
+<p>Créer un objet de type <code class="language-">&lt;un type&gt;</code> à partir d'un objet <code class="language-">&lt;un objet&gt;</code> s'écrit :</p>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;un type>(&lt;un objet>)</code></pre>
 </div></div>
 
 <p>On ne peut bien sur pas faire n'importe quoi <code class="language-">int(&quot;deux&quot;)</code> ne crée pas un entier valant 2, mais beaucoup des choses sont possibles.</p>
@@ -353,6 +369,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p>Une chaîne de caractère n'est <strong>pas</strong> un réel ou un entier.</p>
 </div></div>
 
+<p>La conversion de chaînes de caractères en entier ou en réel est très courante lorsque l'on récupère des entrées tapées par un utilisateur. jen effet :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -360,7 +377,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La conversion de chaînes de caractères en entier ou en réel est très courante lorsque l'on récupère des entrées tapées par un utilisateur qui sont <strong>toujours</strong> des chaînes de caractères</p>
+<p>Une entrée donnée par un utilisateur est <strong>toujours</strong> une chaîne de caractères.</p>
 </div></div>
 
 <h3><span id="conversion-bool"></span>Conversion de booléens</h3>
@@ -483,7 +500,7 @@ SyntaxError<span class="token punctuation">:</span> invalid syntax</code></pre>
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une variable est un <strong><em>nom</em></strong> auquel est associé un objet. Pour associer un nom à un objet on utilise <strong><em>l’opérateur d’affectation</em></strong> <code class="language-">=</code> :</p>
-<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">nom = objet</code></pre>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;un nom> = &lt;un objet></code></pre>
 <p>À l'issue de l'affectation, la variable à gauche du signe <code>=</code> représentera l'objet à droite de celui-ci.</p>
 </div></div>
 
@@ -1030,19 +1047,23 @@ J'aime bien faire du python<span class="token punctuation">.</span></code></pre>
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On <strong><em>exécute</em></strong> l'objet en faisant suivre son nom de parenthèses :</p>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;nom de la fonction>()</code></pre>
+</div></div>
+
+<p>Par exemple :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token operator">>></span><span class="token operator">></span> </code></pre>
-</div></div>
-
-<p>L'exécution de la fonction <code class="language-">print</code> à affiché à l'écran le caractère <a href="https://fr.wikipedia.org/wiki/Retour_chariot">retour à la ligne</a> ce qui a pour effet d'aller à la ligne.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<p>Va exécuter la fonction <code class="language-">print</code> de python qui affiche à l'écran le caractère <a href="https://fr.wikipedia.org/wiki/Retour_chariot">retour à la ligne</a> ce qui a pour effet d'aller à la ligne.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>De nombreuses fonctions peuvent être exécutées avec des <em>paramètres</em> qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">nom_de_la_fonction<span class="token punctuation">(</span>paramètre1<span class="token punctuation">,</span> paramètre2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span></code></pre>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>De nombreuses fonctions peuvent être exécutées avec des <strong><em>paramètres</em></strong> qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :</p>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;nom de la fonction>(&lt;paramètre 1>, &lt;paramètre 2>, ..., &lt;paramètre n>)</code></pre>
 </div></div>
 
 <p>Prenons par exemple la fonction print de python :</p>
@@ -1100,7 +1121,19 @@ Help on built<span class="token operator">-</span><span class="token keyword">in
 coucou
 <span class="token operator">>></span><span class="token operator">></span></code></pre>
 <h3>Retour de fonction</h3>
-<p>L'exécution de toute fonction va retourner un objet. C'est parfois utile (comme <a href="https://docs.python.org/3/library/functions.html#abs">abs</a>) :</p>
+<p>L'exécution de toute fonction va retourner un objet.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le retour de l'exécution est un objet qui peut être stockée dans une variable via une affectation :</p>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;nom de variable> = &lt;nom de la fonction>(&lt;paramètre 1>, &lt;paramètre 2>, ..., &lt;paramètre n>)</code></pre>
+</div></div>
+
+<p>C'est parfois utile (comme <a href="https://docs.python.org/3/library/functions.html#abs">abs</a>) :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token builtin">abs</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 <span class="token number">10</span></code></pre>
@@ -1384,31 +1417,32 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </div></div>
 
 <h2><span id="méthodes"></span> Méthodes</h2>
-<p>Les méthodes sont un autre moyen d'agir sur un objet. On les utilise de cette façon :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode<span class="token punctuation">(</span>paramètre_1<span class="token punctuation">,</span> paramètre_2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span></code></pre>
-<p>On applique <code class="language-">méthode</code> à <code class="language-">objet</code> en utilisant les paramètres de la méthode.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<p>Les méthodes sont un autre moyen d'agir sur un objet :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Utilisation des méthodes d'une classe</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Supposons que l'on ait un objet de nom <code class="language-">objet</code> et une méthode nommée <code class="language-">méthode</code> associée au type de l'objet de nom <code class="language-">objet</code>.</p>
-<p>L'instruction <code class="language-">objet.méthode()</code> exécutera la méthode <code class="language-">méthode</code> pour l'objet <code class="language-">objet</code>. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple <code class="language-">objet.méthode(paramètre_1, paramètre_2)</code>.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">&lt;</span>retour de la méthode<span class="token operator">></span> <span class="token operator">=</span> <span class="token operator">&lt;</span>un objet<span class="token operator">></span><span class="token punctuation">.</span><span class="token operator">&lt;</span>nom de la méthode<span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">&lt;</span>paramètre <span class="token number">1</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>paramètre <span class="token number">2</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>paramètre n<span class="token operator">></span><span class="token punctuation">)</span></code></pre>
+<p>On applique <code class="language-">&lt;nom de la méthode&gt;</code> (dit méthode appelée) à <code class="language-">&lt;un objet&gt;</code> (dit objet appelant)  en utilisant les paramètres de la méthode. Comme une fonction, on peut récupérer son résultat si nécessaire via une affectation.</p>
 </div></div>
 
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Une méthode ne s'utilise <strong>jamais</strong> seule. Elle s'applique à ce qu'il y a à gauche d'elle.</p>
 </div></div>
 
 <p>Prenez le temps de regarder les différentes méthodes des classes de base de python. Souvent elle vous permettent de faire rapidement une opération compliquée. C'est en particulier vrai pour les chaînes de caractères et les listes.</p>
-<h3>Méthodes des chaînes de caractères</h3>
-<p>Chaque classe vient avec des méthodes. Si les nombre et booléens ont peu de méthodes, les chaines de caractères par exemple en ont <a href="https://docs.python.org/fr/3/library/stdtypes.html#string-methods">tout un tas</a>.</p>
+<p>Certaines méthodes vont rendre des objets utiles (comme les méthodes de chaîne de caractères), d'autre vont modifier les objets appelants et leur retour sera <code class="language-">None</code> (comme beaucoup de méthodes de liste que l'on verra bientôt).</p>
+<h3>Exemple : méthodes des chaînes de caractères</h3>
+<p>Chaque classe vient avec ses méthodes. Si les nombres et les booléens ont peu de méthodes, les chaines de caractères par exemple en ont <a href="https://docs.python.org/fr/3/library/stdtypes.html#string-methods">tout un tas</a>.</p>
 <p>Essayons de les apprendre avec ces petits exercices :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1532,8 +1566,8 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </details>     
 </div>
 <p>On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple, avec 2 méthodes :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>Signifie que méthode2() est appliquée à l'objet résultat de <code class="language-">objet.méthode_1()</code>.</p>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;un objet>.&lt;nom de la méthode 1>().&lt;nom de la méthode 2>()</code></pre>
+<p>Signifie que <code class="language-">&lt;nom de la méthode 2&gt;</code> est appliquée à l'objet rendu par l'exécution de <code class="language-">&lt;nom de la méthode 2&gt;</code> sur <code class="language-">&lt;un objet&gt;</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -1542,14 +1576,14 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'application des méthodes est <strong>associative à gauche</strong>.</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;un objet>.&lt;nom de la méthode 1>().&lt;nom de la méthode 2>()</code></pre>
 <p>est équivalent à :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">(</span>objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">(&lt;un objet>.&lt;nom de la méthode 1>()).&lt;nom de la méthode 2>()</code></pre>
 </div></div>
 
 <p>Ceci se généralise avec $n$ méthodes :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span>méthode_n<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>La méthode <code class="language-">méthode_n()</code> est appliquée au résultat de <code class="language-">objet.méthode_1(). ... .méthode_n-1()</code></p>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;un objet>.&lt;nom de la méthode 1>().&lt;nom de la méthode 2>(). ... .&lt;nom de la méthode n>()</code></pre>
+<p>La méthode <code class="language-">&lt;nom de la méthode n&gt;</code> est appliquée au résultat de <code class="language-">&lt;un objet&gt;.&lt;nom de la méthode 1&gt;().&lt;nom de la méthode 2&gt;(). ... .&lt;nom de la méthode n-1&gt;()</code></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -1593,7 +1627,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </div>
 </details>     
 </div>
-<h3>Fonctions vs. méthodes</h3>
+<h2>Fonctions vs. méthodes</h2>
 <p>Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alors qu'une méthode a besoin d'un objet sur lequel elle s'applique (celui avant le <code class="language-">.</code>). Vous pouvez voir ça comme un 1er paramètre indispensable à l'exécution d'une méthode. Considérez le programme suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> ma_chaîne <span class="token operator">=</span> <span class="token string">"coucou !"</span>
 <span class="token operator">>></span><span class="token operator">></span> en_majuscules <span class="token operator">=</span> ma_chaîne<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -1608,13 +1642,36 @@ COUCOU !</code></pre>
 <p>On peut voir les méthodes comme des fonctions définies dans l'espace de nom de l'objet.</p>
 </div></div>
 
-<h3>Attributs d'une classe</h3>
-<p>C'est plus rare, mais certaines classes possèdent des également des <em>attributs</em> en plus des méthodes. Ce sont des valeurs associées à l'objet.</p>
+<h2>Attributs d'un objet</h2>
+<p>C'est plus rare, mais certaines classes possèdent des également des <em>attributs</em> en plus des méthodes.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un attribut est un nom représentant un objet :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">&lt;</span>retour de la méthode<span class="token operator">></span> <span class="token operator">=</span> <span class="token operator">&lt;</span>un objet<span class="token operator">></span><span class="token punctuation">.</span><span class="token operator">&lt;</span>nom de l'attribut<span class="token operator">></span></code></pre>
+<p>Un attribut est une variable située dans un objet.</p>
+</div></div>
+
+<p>Ce sont des valeurs associées à l'objet.</p>
 <p>Par exemple les objets de la classe <code class="language-">complex</code> qui possède les attributs <code class="language-">real</code> et <code class="language-">imag</code> pour rendre la partie réelle et imaginaire d'un complexe.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2j</span><span class="token punctuation">)</span><span class="token punctuation">.</span>real
 <span class="token number">1.0</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2j</span><span class="token punctuation">)</span><span class="token punctuation">.</span>imag
 <span class="token number">2.0</span></code></pre>
+<p>Les attributs d'un complexes sont en <em>lecture seule</em>, ce sont des variables que l'on peut lire mais qu'on ne peut pas affecter :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">2j</span>
+<span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">.</span>real
+<span class="token number">3.0</span>
+<span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">.</span>real <span class="token operator">=</span> <span class="token number">12</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;python-input-10>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+    x<span class="token punctuation">.</span>real <span class="token operator">=</span> <span class="token number">12</span>
+    <span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span>
+AttributeError<span class="token punctuation">:</span> readonly attribute</code></pre>
 
 
 </article>
