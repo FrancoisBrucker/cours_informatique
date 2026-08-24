@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Coder des projets</title>
+    <title>Tests Unitaires</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Coder des projets</h1>
+  <h1>Tests Unitaires</h1>
   <div>
     
 
@@ -87,58 +87,17 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/">Coder des projets</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/">Coder des projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/">Écrire du code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/tests-unitaires/">Tests Unitaires</a>
 
 </div></div>
 
-
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/système/interagir-avec-système/">Interagir avec le système</a>
-              </li></ul>
-      
-
-</div></div>
 
 
     
   
 
-  <p>La première partie nous a appris les concepts fondamentaux d'un langage de programmation à objet et nous a permis d'écrire et d'exécuter un (petit) programme python. Cette partie nous permettra de passer à l'échelle en créant des programmes sur plusieurs fichiers et à traiter des données.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Nous allons passer pas mal de temps à créer des fichiers, des dossiers et à utiliser le terminal. <strong>Assurez-vous donc d'avoir lu et compris</strong> les prérequis.</p>
-</div></div>
-
-<p>Cette partie est consacrée aux moyens et méthodes pour écrire des applications :</p>
-<ul>
-<li>dont la durée de vie va dépasser le cadre d'un TD</li>
-<li>dont la portée et le nombre de fonctionnalité peut être importante</li>
-</ul>
-<p>On y verra également que :</p>
-<ul>
-<li>le code en lui même n'est pas important, c'est la fonctionnalité qu'il implémente qui l'est</li>
-<li>on va passer plus de temps à lire du code qu'à l'écrire, il est donc nécessaire d'avoir du code lisible</li>
-</ul>
-<p>Enfin :</p>
+  <p>Les tests permettent de vérifier que notre code fonctionne. Ils font partie du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter <strong>tous les tests</strong> pour vérifier que notre programme fonctionne aussi bien qu'avant. Les tests font partie intégrante du projet : ils garantissent que votre programme fonctionne <strong>maintenant</strong>, et pas seulement au moment où vous avez écrit vos tests.</p>
+<p>On y reviendra à de nombreuses reprises :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -146,35 +105,28 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>C'est en codant qu'on devient codeur. Vous allez passer votre temps à vous tromper ou ne pas comprendre. Ce processus est normal. <strong>MAIS</strong> si vous ne comprenez pas quelque chose  : arrêtez vous et comprenez.</p>
-<p>Ne recommencez pas à coder avant d'avoir compris sinon les incompréhensions vont s'accumuler et vous perdrez au final plus de temps.</p>
+<p>Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'<a href="https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/">il ne peut pas régresser</a>.</p>
 </div></div>
 
-<h2><span id="installation-développement"></span> Outils de développement</h2>
+<p>Les tests sont de petites fonctions dont le but est de <em>tester</em> une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en <a href="https://fr.wikipedia.org/wiki/Assertion">une assertion</a> que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.</p>
+<h2>Créer des tests</h2>
+<p>Commençons par voir comment tester des fonctions.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="outils/" class="interne">Installer les Outils de développement</a></p>
+<p><a href="cr%C3%A9er-des-tests" class="interne">Créer des tests</a></p>
 </div></div>
 
-<h2>Écrire du code</h2>
+<h2>Un projet avec ses tests</h2>
+<p>Maintenant que l'on a vu comment créer des tests, voyons ça dans un projet complet.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="%C3%A9crire-code/" class="interne">Écrire du code</a></p>
-</div></div>
-
-<h2><span id="développer"></span>Gestion des données</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="gestion-donn%C3%A9es" class="interne">Gestion des données</a></p>
+<p><a href="projet-avec-des-tests" class="interne">Un projet avec des tests</a></p>
 </div></div>
 
 
