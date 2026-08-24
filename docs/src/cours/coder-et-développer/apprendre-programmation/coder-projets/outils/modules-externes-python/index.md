@@ -61,19 +61,19 @@ Il existe d'autres méthodes pour installer des modules, mais la technique que n
 
 Pour installer un module avec python, il faut taper la commande :
 
-```shell
-nom-du-programme-python -m pip install nom-du-module-à-installer
+```txt
+<nom du programme python> -m pip install <nom du module à installer>
 ```
 
 Où :
 
-- `nom-du-programme-python` est l'interpréteur python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi c'est : `/usr/bin/python3`{.fichier}. Chez vous c'est peut-être juste `python` (le plus probable).
-- `nom-du-module-à-installer` est le nom de la bibliothèque à installer.
+- `<nom du programme python>` est l'interpréteur python pour lequel on veut installer un package, c'est à dire la première partie de la ligne de commande écrite par vscode. Chez moi c'est : `/usr/bin/python3`{.fichier}. Chez vous c'est peut-être juste `python` (le plus probable).
+- `<nom du module à installer>` est le nom du module à installer.
 
-Cette ligne se comprend ainsi : pour mon python (`nom-du-programme-python`), je veux utiliser le module `pip` (`-m pip`) avec les paramètres `install nom-du-module-à-installer` (on veut installer le module s'appelant `nom-du-module-à-installer`)
+Cette ligne se comprend ainsi : pour mon python (`<nom du programme python>`), je veux utiliser le module `pip` (`-m pip`) avec les paramètres `install <nom du module à installer>` (on veut installer le module s'appelant `<nom du module à installer>`)
 
 {% attention %}
-Un module est **toujours** installé pour un interpréteur particulier. Si vous avez plusieurs interpréteurs, le module ne sera installé que pour celui correspondant au `nom-du-programme-python`
+Un module est **toujours** installé pour un interpréteur particulier. Si vous avez plusieurs interpréteurs, le module ne sera installé que pour celui correspondant au `<nom du programme python>`
 {% endattention %}
 
 Si je veux installer le module `matplotlib` par exemple, ma ligne de commande à taper dans le terminal vscode sera :
@@ -82,7 +82,7 @@ Si je veux installer le module `matplotlib` par exemple, ma ligne de commande à
 /usr/bin/python3 -m pip install matplotlib
 ```
 
-Pour vous, ce sera peut-être différent car le `nom-du-programme-python` sera différent. Pour connaître le nom du programme python à utiliser et trouver un terminal, vous pouvez utiliser ce qu'on a vue dans [la partie sur l'éditeur vscode](../bases-programmation/éditeur-vscode/python/#exécuter-programme){.interne}.
+Pour vous, ce sera peut-être différent car le `<nom du programme python>` sera différent. Pour connaître le nom du programme python à utiliser et trouver un terminal, vous pouvez utiliser ce qu'on a vue dans [la partie sur l'éditeur vscode](../../éditeur-vscode/python/#exécuter-programme){.interne}.
 
 ## Exemple : installation du module matplotlib
 
@@ -123,20 +123,27 @@ Dans le terminal utilisé pour l'exécution du code python, tapez la commande pe
 Chez moi la commande a été `/usr/bin/python3 -m pip install matplotlib`{.fichier}. Le module `matplotlib` étant déjà installé il ne se passe pas grand chose.
 {% enddetails %}
 
+### Utilisation de matplotlib
+
 Vous pouvez maintenant utiliser le module matplotlib avec votre interpréteur !
+
+{% faire %}
+Reprenez [le tutoriel matplotlib](../../../concepts/tutoriel-matplotlib/){.interne} que vous aviez fait avec spyder et refaite le avec vscode et votre propre interpréteur.
+
+{% endfaire %}
 
 ## Modules installés
 
 Le module `pip` permet une gestion fine des modules python. On utilise ce module de la façon suivante :
 
-```shell
-nom-du-programme-python -m pip commande paramètres-séparés-par-des-espaces
+```txt
+<nom du programme python> -m pip <nom de la commande pip> <paramètres séparés par des espaces>
 ```
 
 On a pour l'instant uniquement utilisé la commande `install`, mais il y en a plein d'autre, par exemple l'aide :
 
-```shell
-nom-du-programme-python -m pip help
+```txt
+<nom du programme python> -m pip help
 ```
 
 Ou encore la commande `list` qui liste l'ensemble des modules installé pour l'interpréteur.
@@ -146,11 +153,11 @@ Vérifiez que le module matplotlib est bien installé pour votre interpréteur.
 {% endexercice %}
 {% details "corrigé" %}
 
-```shell
-nom-du-programme-python -m pip list
-```
+Chez moi, cela fait : 
 
-Chez moi, cela fait : `/usr/bin/python3 -m pip list` et on vérifie que `matplotlib` est bien installé.
+```shell
+/usr/bin/python3 -m pip list
+```
 
 {% enddetails %}
 

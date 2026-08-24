@@ -45,6 +45,12 @@ Commençons par faire le tour du propriétaire :
 [vscode et python](python){.interne}
 {% endaller %}
 
+## Terminal vscode et python
+
+{% aller %}
+[Terminal vscode](terminal-vscode){.interne}
+{% endaller %}
+
 ## Préférences
 
 Vscode possède une foultitude de préférences qui le rendent très modulable et lui permettent de s'adapter à (presque) toutes vos envies et besoins.

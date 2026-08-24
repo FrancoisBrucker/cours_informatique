@@ -98,8 +98,8 @@ Ce qui est avant la ligne de commande, c'est à dire `fbrucker@MV-ubuntu:~/Docum
 
 La ligne de commande d'un terminal est toujours composée de la même façon :
 
-```shell
-nom-du-programme paramètre-1-du-programme ... paramètre-n-du-programme
+```txt
+<nom du programme> <paramètre 1> ... <paramètre n>
 ```
 
 Dans notre cas:

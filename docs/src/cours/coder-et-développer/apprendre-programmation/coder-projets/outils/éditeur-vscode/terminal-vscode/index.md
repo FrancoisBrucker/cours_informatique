@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Vscode et terminal
+title: Terminal Vscode et python
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,59 +10,28 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Différentes manières d'utiliser un terminal avec [visual studio code](https://code.visualstudio.com/) avec python.
+Différentes manières d'utiliser un terminal avec [visual studio code](https://code.visualstudio.com/) avec python. [On a déjà vu](/cours/système/interagir-avec-système/terminal/bases/#vscode){.interne} rapidement comment utiliser le terminal dans vscode, nous allons voir ici comment l'utiliser pour exécuter du code python.
 
-{% lien %}
-[Documentation officielle du terminal dans vscode](https://code.visualstudio.com/docs/editor/integrated-terminal)
-{% endlien %}
-
-> TBD voir si pas doublon avec la partie terminal du système.
->
-## <span id="terminal-intégré"></span> Manipuler le terminal
-
-### Ouvrir ou créer un terminal
-
-On peut ouvrir le terminal courant dans : _menu Affichage  > Terminal_
-
-Ce qui donne quelque chose du type :
-
-![terminal dans vscode](./vscode-terminal.png)
-
-Les différents panels du dessus du terminal (`PROBLEMES`, `OUTPUT`, `CONSOLE DE DEBOGAGE` et `TERMINAL`) dans vscode sont des sorties d'autres processus.
-
-on reste donc 99% du temps sur `TERMINAL` (qui est en sur-brillance).
-
-### Supprimer un terminal
-
-On peut supprimer (en cliquant sur la poubelle) et créer (_menu Terminal > Nouveau terminal_) autant de terminal que l'on le veut. On peut aussi juste fermer la fenêtre du terminal en cliquant sur la croix.
-
-### Créer un nouveau terminal
-
-Notez bien que _menu Affichage > Terminal_ ouvre le terminal courant, il n'en recrée pas un. C'est donc la commande à utiliser par défaut pour garder l'historique de ses commandes en utilisant la flèche du haut, qui remets la dernière commande utilisée.
-
-Lorsque vous voulez créer un nouveau terminal, c'est dans _menu Terminal > Nouveau Terminal_ :
-
-![nouveau terminal](./vscode-nouveau-terminal.png)
 
 ## Exécuter du python via le terminal
 
 Vous pouvez utiliser le terminal pour exécuter vos programmes python.
 
 {% faire %}
-Ouvrez ou refaite [le projet d'introduction vscode et python](../éditeur-vscode/python){.interne}
+Ouvrez ou refaite [le projet d'introduction vscode et python](../python){.interne}
 {% endfaire %}
 
 Remarquez que lorsque [vous exécutez le code](../éditeur-vscode/python/#exécuter-programme){.interne}, vscode exécute une ligne de commande dans le terminal :
 
-```
-nom-du-programme-python fichier-à-exécuter
+```txt
+<nom du programme python> <fichier à exécuter>
 ```
 
 Une fois le programme exécuté, vscode vous laisse dans le terminal. Vous pouvez alors facilement re-exécuter votre programme **en tapant sur la flèche du haut** sur votre clavier. Ceci à pour effet de rappeler la commande précédente pour l'exécuter à nouveau en appuyant sur la touche entrée.
 
 <div id="exécuter-programme"></div>
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Cette technique est utile pour connaître l'interpréteur utilisé par vscode.
 
 1. commencez par exécuter un programme python avec le triangle
@@ -70,16 +39,16 @@ Cette technique est utile pour connaître l'interpréteur utilisé par vscode.
 
 Vous aurez alors la commande :
 
-```
-nom-du-programme-python fichier-à-exécuter
+```txt
+<nom du programme python> <fichier à exécuter>
 ```
 
 Vous pouvez alors :
 
-- soit copier le `nom-du-programme-python` pour l'utiliser dans un autre terminal
+- soit copier le `<nom du programme python>` pour l'utiliser dans un autre terminal
 - soit supprimez la fin de la commande (le nom du fichier à exécuter) pour ne garder que le programme python utilisé.
 
-{% endnote %}
+{% endattention2 %}
 
 Nous allons refaire ce processus à la main.
 

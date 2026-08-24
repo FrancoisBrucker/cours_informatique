@@ -95,7 +95,7 @@ Cliquer croit sur un dossier dans l'explorateur et choisissez `Open in Terminal`
 
 {% enddetails %}
 
-### Via vscode
+### <span id="vscode"></span>Via vscode
 
 [Vscode](https://code.visualstudio.com/) est un IDE populaire et très utilisé pour le développement. Il possède son propre terminal auquel on peut très facilement accéder.
 
