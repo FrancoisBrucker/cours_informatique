@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fondements-programmation-tbd/">Fondements de la programmation (avec python)</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/fondements-programmation-tbd/creation-modules/">Modules python</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/">Coder des projets</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/">Écrire du code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/">Modules python</a>
 
 </div></div>
 
@@ -96,19 +96,21 @@
     
   
 
-  <p><a href="../principes/modules/" class="interne">On l'a vu</a>, le code suivant importe un module :</p>
+  <p>Une bonne pratique stipule qu'il faut séparer l'exécution des fonctions. Pour cela, python propose la notion de modules. <a href="../../../concepts/#modules" class="interne">On a déjà utilisé des modules de python</a> en les important. Le code suivant par exemple importe un module :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random</code></pre>
-<p>En réalité, python cherche un fichier qui s'appelle <code class="fichier">random.py</code> et l'exécute. La variables crées sont placés dans <a href="../principes/modules/#d%C3%A9finition-espace-nommage" class="interne">l'espace de nommage du module</a>.</p>
+<p>En réalité, python cherche un fichier qui s'appelle <code class="fichier">random.py</code> et l'exécute dans son propre espace de nommage.</p>
 <p>On peut tout à fait utiliser ce principe, et on va le faire souvent par la suite, pour créer ses propres modules.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Documentation</strong></p>
+</div><div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3/tutorial/modules.html">Documentation python sur les modules</a></p>
 </div></div>
 
-<p>L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi <a href="../%C3%A9diteur-vscode/python/">les consignes du tutoriel vscode et python</a> :</p>
+<p>L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi <a href="../../outils/%C3%A9diteur-vscode/python/" class="interne">les consignes du tutoriel vscode et python</a> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -116,12 +118,13 @@
 <div class="pl-8 mr-8">
 <ol>
 <li>vous avez créé un projet avec vscode</li>
-<li>que tous les fichiers que vous créez sont dans le dossier du projet</li>
-<li>que vous exécutez le code en utilisant le triangle vert</li>
+<li>tous les fichiers que vous créez sont dans le dossier du projet</li>
+<li>vous exécutez le code en utilisant le triangle vert</li>
 </ol>
 <p>Ces consignes précédentes assurent que <strong>vous exécutez votre code python à partir du dossier contenant votre projet</strong>.</p>
 </div></div>
 
+<h2>Création de modules</h2>
 <p>Préparons nos fichiers pour comprendre comment tout ça fonctionne :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
