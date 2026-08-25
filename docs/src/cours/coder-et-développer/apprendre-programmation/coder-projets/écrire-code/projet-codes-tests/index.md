@@ -10,24 +10,24 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Or reprend [les exercices de code](../projet-codes/){.interne} et on leur ajoute des tests.
-
-{% faire %}
-
-- reprenez le code des exercices précédents
-- ajoutez un fichier de tests s'appellant `test_fonctions.py`{.language-}
-
-{% endfaire %}
+On va continuer le refactoring des différents [exercices de code](../../../concepts/projet-codes/){.interne} entamé dans [la partie précédente](../projet-création-modules){.interne} en leur ajoutant des tests.
 
 Les corriges sont des **propositions** de tests, ce n'est pas la vérité :
 
 {% attention2 "**À retenir**" %}
 Les tests sont écrit par le développeur et leurs buts est qu'ils lui permettent d'être convaincu que le code fonctionne si les tests passent. Ce n'est pas une **preuve** mais permet de continuer à coder tranquillement.
+
+Pour ma part, j'aime faire 3 types de tests pour mes fonctions :
+
+- les cas limite
+- un (ou plusieurs si nécessaire) cas particulier
+- un cas général
+
 {% endattention2 %}
 
 ## <span id="syracuse"></span>Syracuse
 
-On va ajouter des tests aux fonctions [du sujet sans les tests](../projet-codes/#syracuse){.interne}. Chaque développeur va avoir d'autres tests, ce n'est pas un problème. Il faut juste être honnête avec soit-même et est moralement sur que si ses tests passent le code est correct.
+On va ajouter des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#syracuse){.interne}. Chaque développeur va avoir d'autres tests, ce n'est pas un problème. Il faut juste être honnête avec soit-même et est moralement sur que si ses tests passent le code est correct.
 
 S'il s'avère que l'on trouve a posteriori un bug pas de problème on rajoute un test et on le corrige. Comme le test reste : le bug ne pourra jamais revenir après une modification du code.
 
@@ -36,14 +36,17 @@ Quels sont les tests qui vous permettraient d'avoir confiance dans le code de la
 {% endexercice %}
 {% details "corrigé" %}
 
-J'aime tester :
+Comme dit, j'aime tester :
 
-- les cas limites
+- les cas limite
 - un cas général
 
 Il faut de plus s'assurer que les tests passent par tous les blocs de code.
 
-Ici on peut par exemple tester les cas limites pair et impair (2 et 1), et un cas général (42 et 111 par exemple).
+Ici on peut par exemple tester :
+
+- les cas limites pair et impair (2 et 1), 
+- un cas général (42 et 111 par exemple).
 {% enddetails %}
 
 {% exercice %}
@@ -71,7 +74,15 @@ def test_syracuse_cas_général():
 ```
 
 {% enddetails %}
+{% faire %}
+Exécutez vos tests :
 
+- avec l'outils de vscode
+- avec le terminal
+{% endfaire %}
+{% attention %}
+Rappelez vous qu'**il ne sert à rien** d'exécuter vos tests avec l'interpréteur, [il faut utiliser pytest](../tests-unitaires/#utilisation-pytest){.interne}.
+{% endattention %}
 {% exercice %}
 Quels sont les tests qui vous permettraient d'avoir confiance dans le code de la fonction `suite`{.language-} ?
 {% endexercice %}
@@ -103,11 +114,17 @@ def test_suite_u_0_5():
 ```
 
 {% enddetails %}
+{% faire %}
+[Exécutez vos tests](../tests-unitaires/#utilisation-pytest){.interne} :
+ 
+
+- avec l'outils de vscode
+- avec le terminal
+{% endfaire %}
 
 ## <span id="pendu"></span>Jeu du pendu
 
-Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/#pendu){.interne}.
-
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#pendu){.interne}. 
 {% exercice %}
 Que testeriez vous pour vérifier que la fonction `est_une_lettre`{.language-} fonctionne ? Implémentez ces tests.
 {% endexercice %}
@@ -173,6 +190,13 @@ def test_caractères():
 ```
 
 {% enddetails %}
+{% faire %}
+[Exécutez vos tests](../tests-unitaires/#utilisation-pytest){.interne} :
+ 
+
+- avec l'outils de vscode
+- avec le terminal
+{% endfaire %}
 
 {% exercice %}
 Que testeriez vous pour vérifier que la fonction `découvre`{.language-} fonctionne ? Implémentez ces tests.
@@ -201,6 +225,13 @@ def test_découvre():
 ```
 
 {% enddetails %}
+{% faire %}
+[Exécutez vos tests](../tests-unitaires/#utilisation-pytest){.interne} :
+ 
+
+- avec l'outils de vscode
+- avec le terminal
+{% endfaire %}
 
 {% exercice %}
 Que testeriez vous pour vérifier que la fonction `caché`{.language-} fonctionne ? Implémentez ces tests.
@@ -226,10 +257,17 @@ def test_caché():
 ```
 
 {% enddetails %}
+{% faire %}
+[Exécutez vos tests](../tests-unitaires/#utilisation-pytest){.interne} :
+ 
+
+- avec l'outils de vscode
+- avec le terminal
+{% endfaire %}
 
 ## <span id="compte-caractère"></span>Le compte est bon
 
-Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-codes/#compte-caractère){.interne}.
+Ajoutez des tests aux fonctions [du sujet sans les tests](../projet-création-modules/#compte-caractère){.interne}. Exécutez vos tests le plus souvent possible.
 
 
 Notez qu'on ne teste jamais les programmes `main.py`{.fichier} car ils nécessitent un utilisateur et on veut que nos tests soient automatisés.

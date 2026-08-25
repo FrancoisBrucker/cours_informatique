@@ -15,8 +15,20 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Ce cours est dédié au code informatique. _Coder_, c'est passer d'un _algorithme papier_ (pseudo-code ou idées) à un programme informatique, appelé **code**. Par extension, on inclura dans cette partie la modification d'un code existant. Le **but** d'un code est d'être exécuté par un ordinateur pour réaliser une tâche.
 
-Ce cours est dédié au code informatique. On utilisera [le language python](https://www.python.org/) comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront transposables dans d'autres langages.
+Pour permettre son exécution, le code est écrit dans un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation). Celui-ci **dépend de la tâche à réaliser** : le code est un outil il faut utiliser celui qui est le plus adapté au résultat voulu.
+
+{% info %}
+Nous utilisons ici [le python](https://www.python.org/) car notre but est ici :
+
+- de coder des algorithmes classiques et python est très proche du pseudo-code.
+- d'apprendre les bonnes pratiques de développement et python est un langage qui permet de les apprendre simplement
+
+Enfin, python est un langage très utilisé dans le monde, que ce soit par des informaticiens ou part des personnes devant utiliser du code informatiques au quotidien (scientifiques, ingénieurs en tous genres, data scientists, etc).
+{% endinfo %}
+
+La très grande majorité des concepts que l'on verra seront transposables dans d'autres langages.
 
 On supposera que vous avez des connaissances scientifiques de base (ie. mathématiques de Lycée) et que vous disposer d'un ordinateur dont vous êtes administrateur.
 

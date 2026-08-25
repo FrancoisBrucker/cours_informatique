@@ -37,14 +37,6 @@ Faire des exercices : listes et dictionnaires.
 
 ## Partie IV : Structures du programme
 
-Structurer son programmes en fichiers.
-
-### Modules
-
-{% aller %}
-[Création de modules](creation-modules){.interne}
-{% endaller %}
-
 ### Espace de nommage
 
 La base de cette séparation en unités fonctionnelles séparée est l'espace de nommage. Nous l'avons déjà entre-aperçu lorsque l'on a parlé de modules et de fonctions, nous allons ici rentrer dans les détails et expliciter comment python trouve un objet associé à un nom.

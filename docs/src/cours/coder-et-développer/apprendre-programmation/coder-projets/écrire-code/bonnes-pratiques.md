@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: Coder
+title: Bonnes pratiques
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,37 +9,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-*Coder* c'est passer d'un algorithme *papier* (pseudo-code ou idées) à un programme informatique, appelé **code**. Par extension, on inclura dans cette partie la modification d'un code existant. Le **but** d'un code est d'être exécuté par un ordinateur pour réaliser une tâche.
-
-Pour permettre son exécution, le code est écrit dans un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation). Celui-ci **dépend de la tâche à réaliser** : le code est un outil il faut utiliser celui qui est le plus adapté au résultat voulu.
-
-{% info %}
-Nous utilisons ici [le python](https://www.python.org/) car notre but est ici :
-
-- de coder des algorithmes classiques et python est très proche du pseudo-code.
-- d'apprendre les bonnes pratiques de développement et python est un langage qui permet de les apprendre simplement
-
-Enfin, python est un langage très utilisé dans le monde, que ce soit par des informaticiens ou part des personnes devant utiliser du code informatiques au quotidien (scientifiques, ingénieurs en tous genres, data scientists, etc).
-{% endinfo %}
-
-Modifier du code est ce vous ferez le plus souvent : on passe son temps à modifier du code plutôt que d'implémenter des algorithmes (c'est ce que l'on appelle [le refactoring](https://fr.wikipedia.org/wiki/R%C3%A9usinage_de_code)).
-
-Il en découle que :
-
-{% note %}
-Vous allez passer plus de temps à **lire** du code qu'à en **écrire**
-{% endnote %}
-
-Comme il faut que : *ce qui se fait souvent doit se faire rapidement*, on utilisera une série de règles pour lire aisément son code et — surtout — se faire comprendre aisément de ses partenaires.
-
-Ces règles sont appelées des ***coding mantra***. Comme toutes les règles, il ne faut pas apprendre ce qu'elle dit, mais pourquoi elle le dit. Par exemple : on ne doit pas passer du temps à chaque lecture pour comprendre ce que fait un bout de code, comment il est organisé ou encore se questionner pour savoir s'il fonctionne : il faut pouvoir aller rapidement là où l'on veut modifier son code et comprendre aisément comment le modifier.
-
 Nous allons maintenant lister les bonnes pratiques fondamentales à posséder lorsque l'on code.
 
 {% note %}
 Les différentes méthodes et mantra que l'on va voir sont issues de [l'*extreme programming* (XP)](https://fr.wikipedia.org/wiki/Extreme_programming), qui date des années 2000 mais dont on à l'impression qu'elle a été écrite hier (voire demain tellement elle est encore novatrice).
 {% endnote %}
+
+Ces règles sont appelées des ***coding mantra***. Comme toutes les règles, il ne faut pas apprendre ce qu'elle dit, mais pourquoi elle le dit. Par exemple : on ne doit pas passer du temps à chaque lecture pour comprendre ce que fait un bout de code, comment il est organisé ou encore se questionner pour savoir s'il fonctionne : il faut pouvoir aller rapidement là où l'on veut modifier son code et comprendre aisément comment le modifier.
 
 ## Quel langage utiliser ?
 
@@ -56,17 +32,24 @@ Tous ces langages sont ***équivalents*** : ce que l'on peut faire dans un langa
 Par exemple, si vous créez d'énormes programmes avec des milliers de lignes de codes, il vaut mieux utiliser un langage comme [le java](https://www.java.com/fr/) ou [le C#](https://docs.microsoft.com/fr-fr/dotnet/csharp/programming-guide/). Ou encore, si vous coder des applications web, on utilisera beaucoup [le javascript](https://developer.mozilla.org/fr/docs/Web/JavaScript).
 
 Bref :
+{% note "**Règle générale**" %}
 
-{% note %}
-On utilise le langage qui est le plus adapté à notre problème.
+On utilise le langage qui est le plus adapté à notre problème :
+
+- en terme de syntaxe
+- de modules utilisables
+
+Si vous utilisez le langage adapté, vous écrirez moins de code et il sera plus clair.
+
 {% endnote %}
 
 Ne faites pas rentrer des carrés dans des ronds en utilisant un langage non adapté à votre problème. Vous allez perdre plus de temps qu'autre chose :
 
-{% note %}
-Un langage informatique n'est **pas** une langue. C'est facile à apprendre !
-{% endnote %}
-
+{% attention2 "**À retenir**" %} 
+ Un langage informatique n'est **pas** une langue. C'est facile à apprendre ! 
+{% endattention2 %} 
+ 
+ 
 ## Noms explicites et découpage fonctionnel
 
 {% note "**Règle générale**" %}
@@ -105,17 +88,19 @@ En plus d'être inutile, les commentaires :
 
 Lorsque l'on utilise [une API](https://fr.wikipedia.org/wiki/Interface_de_programmation), on a en effet jamais accès aux corps des méthodes, mais juste à leurs noms : on a besoin de savoir comment elles fonctionnent sans en connaître le corps :
 
-{% note %}
+{% attention2 "**À retenir**" %} 
 Toutes les méthodes destinées à être utilisées par des clients/utilisateurs différents de l'équipe de développement doivent être documentées.
-{% endnote %}
+{% endattention2 %} 
 
 ## Lisibilité
 
 Un code est fait pour être relu et amélioré. On **doit** privilégier sa lecture à son écriture. Pour que votre équipe ou vous même puissiez le relire plus tard sans faire d'effort de compréhension.
 
-{% note %}
+{% note "**Règle générale**" %}
+
 Écrire du code n'est pas un concours d'érudition.
 {% endnote %}
+
 
 Si on a le choix entre écrire du code utilisant des subtilités algorithmiques ou du langage utilisé mais qui le rend plus difficile à comprendre sans gain réel en complexité on choisira **TOUJOURS** le code lisible ou du code plus basique mais clair.
 
@@ -125,26 +110,30 @@ Si on a le choix entre écrire du code utilisant des subtilités algorithmiques 
 
 Si le fond doit être simple, la forme du code est importante aussi. Il se doit d'être agréable à lire et homogène. L'équipe de développement doit se mettre d'accord sur [un coding style](https://fr.wikipedia.org/wiki/Style_de_programmation). Par défaut on utilise le standard du langage. En python, c'est la  [PEP8](https://www.python.org/dev/peps/pep-0008/)
 
-{% note %}
+{% attention2 "**À retenir**" %} 
 Utilisez un style de programmation homogène pour faciliter la lecture de code. Si possible, automatisez ce processus avec un outil automatique de formatage de code.
-{% endnote %}
+{% endattention2 %} 
 
 ## Efficacité
 
 On ne doit jamais coder de choses inutiles : tout bout de code doit être utilisé au moment où il est écrit.
 
-{% note %}
+{% note "**Règle générale**" %}
+
 On ne codera jamais de fonctionnalités qui ne vont être utiles que plus tard.
 {% endnote %}
+
 
 Car *"plus tard"* le code ne sera plus le même et — le plus souvent — les besoins auront changés : votre fonctionnalités ne sera jamais utilisé... *"plus tard"* veut souvent dire *"jamais"*.
 De plus, du code inutile contraint le développement : il est là, ne sert à rien, mais pas sa seule présence il empêche de modifier le code comme on veut.
 
 En conséquence :
 
-{% note %}
+
+{% attention2 "**À retenir**" %} 
 Tout code qui n'est plus/pas utile doit être immédiatement supprimé.
-{% endnote %}
+
+{% endattention2 %}
 
 Le mieux étant encore de ne jamais l'écrire au départ :
 
@@ -159,12 +148,13 @@ Pour s'assurer que notre code fait bien ce qu'il est sensé faire, on effectuera
 
 Comme on passe son temps à modifier son code, il est nécessaire de conserver ses tests pour pouvoir les exécuter très souvent et vérifier qu'il continue de fonctionner.
 
-Pour cela :
 
-{% note %}
+{% note "**Règle générale**" %}
+
 Lorsque l'on ajoute des fonctionnalités au code ou que l'on corrige un bug, on écrit un test qui vérifie la fonctionnalité ou qui montre que le bug n'existe pas/plus.
 
 Ainsi, puisque les tests sont conservés, ce bug ne pourra plus jamais réapparaître et cette fonctionnalité ne pourra plus disparaître.
+
 {% endnote %}
 
 Une méthode très efficace de programmation consiste même à commencer par écrire le test, **avant** le code testé :
@@ -189,7 +179,7 @@ De là, il est possible qu'un bug dans cette première fonction affecte le code 
 
 Tout ce qu'on vient de voir structure un projet informatique en trois entités :
 
-{% note %}
+{% note "**Règle générale**" %}
 Un projet informatique comporte **toujours** 3 parties d'égales importances :
 
 - le ***programme principal*** (aussi appelé **main**) qui est ce qui sera exécuté

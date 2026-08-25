@@ -10,31 +10,33 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[On l'a vu](../principes/modules/){.interne}, le code suivant importe un module :
+Une bonne pratique stipule qu'il faut séparer l'exécution des fonctions. Pour cela, python propose la notion de modules. [On a déjà utilisé des modules de python](../../../concepts/#modules){.interne} en les important. Le code suivant par exemple importe un module :
 
 ```python
 import random
 ```
 
-En réalité, python cherche un fichier qui s'appelle `random.py`{.fichier} et l'exécute. La variables crées sont placés dans [l'espace de nommage du module](../principes/modules/#définition-espace-nommage){.interne}.
+En réalité, python cherche un fichier qui s'appelle `random.py`{.fichier} et l'exécute dans son propre espace de nommage.
 
 On peut tout à fait utiliser ce principe, et on va le faire souvent par la suite, pour créer ses propres modules.
 
-{% lien %}
+{% lien "**Documentation**" %}
 [Documentation python sur les modules](https://docs.python.org/fr/3/tutorial/modules.html)
 {% endlien %}
 
-L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi [les consignes du tutoriel vscode et python](../éditeur-vscode/python/) :
+L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi [les consignes du tutoriel vscode et python](../../outils/éditeur-vscode/python/){.interne} :
 
 {% info %}
 
 1. vous avez créé un projet avec vscode
-2. que tous les fichiers que vous créez sont dans le dossier du projet
-3. que vous exécutez le code en utilisant le triangle vert
+2. tous les fichiers que vous créez sont dans le dossier du projet
+3. vous exécutez le code en utilisant le triangle vert
 
 Ces consignes précédentes assurent que **vous exécutez votre code python à partir du dossier contenant votre projet**.
 
 {% endinfo %}
+
+## Création de modules
 
 Préparons nos fichiers pour comprendre comment tout ça fonctionne :
 
