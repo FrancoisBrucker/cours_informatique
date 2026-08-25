@@ -9,6 +9,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> à refactor pour :
+> 1. les faire coder et tester. 
+> 2. Ajouter les fonction avec unicodedata directement et leur demander d'ajouter des tests.
+> 3. faire des tests et leur demander de coder la fonction
+
 Un projet informatique va toujours avoir 3 types de fichiers :
 
 - le fichier à exécuter pour lancer notre programme, couramment appelé `main.py`{.fichier}. Ce fichier doit uniquement contenir des interaction avec l'utilisateur.
