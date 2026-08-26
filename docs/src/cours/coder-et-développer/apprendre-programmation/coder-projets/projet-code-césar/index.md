@@ -88,7 +88,10 @@ La manipulation précédente va très vite !
 2. la flèche du haut dans le terminal
 3. le raccourci clavier pour afficher le terminal
 {% endinfo %}
-
+{% lien "**Documentation**" %}
+- <https://code.visualstudio.com/docs/configure/keybindings>
+- [Raccourci sous windows](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)
+{% endlien %}
 
 ### Fonctions chiffre
 
@@ -106,12 +109,12 @@ Créez un fichier `chiffre.py`{.fichier} et son pendant `test_chiffre.py`{.fichi
 
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser jucicieusement (rappelez vous des différentes [méthodes des chaines de caractère](../../concepts/chaines-caractères/#méthodes){.interne}) la chaine `ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"`{.language-} dans vos fonctions 
+Vous pourrez utiliser judicieusement (rappelez vous des différentes [méthodes des chaines de caractère](../../concepts/chaines-caractères/#méthodes){.interne}) la chaine `ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"`{.language-} dans vos fonctions 
 {% endinfo %}
 
 ### Fonctions texte
 
-Le fichier  `texte.py`{.fichier} ne va contenir qu'une seule fonction, qui va transformer toute chaine de caractère en une chaine en majucule non accentuée. Par exemple :
+Le fichier  `texte.py`{.fichier} ne va contenir qu'une seule fonction, qui va transformer toute chaîne de caractère en une chaîne en majuscule non accentuée. Par exemple :
 
 ```python
 import unicodedata
@@ -139,7 +142,7 @@ Créez un fichier `texte.py`{.fichier} contenant la fonction ci-dessus. Créez l
 
 
 {% attention2 "**À retenir**" %}
-Prenez l'habitude de tester vos fichier en utilisant le terminal.
+Sachez refaire la fonction de conversion. Elle est parfois très utile.
 {% endattention2 %}
 
 
