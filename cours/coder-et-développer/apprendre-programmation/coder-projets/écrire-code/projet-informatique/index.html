@@ -252,15 +252,15 @@
 </div></div>
 
 <p>Notre fichier <code class="fichier">README.md</code> :</p>
-<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt"># Projet "Hello dev !"
+<pre class="language-markdown" tabindex="0" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> Projet "Hello dev !"</span>
 
-## À propos
+<span class="token title important"><span class="token punctuation">##</span> À propos</span>
 
 Un exemple de projet en python qui dit bonjour.
 
-## Utilisation
+<span class="token title important"><span class="token punctuation">##</span> Utilisation</span>
 
-Exécutez le fichier `main.py`.
+Exécutez le fichier <span class="token code-snippet code keyword">`main.py`</span>.
 </code></pre>
 <p>Vscode possède une série d'extensions permettant d'ajouter des fonctionnalités. Il existe de nombreuses extensions pour gérer le markdown et vous aller installer <a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Markdown all in one</a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -471,7 +471,38 @@ Exécutez le fichier `main.py`.
 <p>Félicitations, vous avez fait votre premier projet fonctionnel !</p>
 <h2>Code complet du projet</h2>
 <p>Ce projet est un squelette que vous pourrez utiliser dans tous vos projet.</p>
-<p>Le code complet est disponible à <a href=".">cette adresse</a></p>
+<p>Il contient 4 fichiers indispensable à tout projet</p>
+<h3>le programme principal</h3>
+<p>Ici le fichier <code class="fichier">main.py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> bonjour
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">(</span><span class="token string">"monde"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<h3>les fonctions</h3>
+<p>Les différents fichiers contenant les diverses fonctions que va utiliser le programme principal. Nous n'en avons qu'un ici, <code class="fichier">fonctions.py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span>nom<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">"bonjour "</span> <span class="token operator">+</span> nom <span class="token operator">+</span> <span class="token string">" !"</span>
+</code></pre>
+<h3>les tests</h3>
+<p>toute fonction hors programme principal doit être testée. On regroupe habituellement les tests par fichiers de fonctions. Ici nous n'avons qu'un fichier de fonction qui s'appelle <code class="fichier">fonctions.py</code>, nous allons donc avoir un unique fichier de test qui s'appelle <code class="fichier">test_fonctions.py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> bonjour
+
+
+<span class="token keyword">def</span> <span class="token function">test_bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> bonjour<span class="token punctuation">(</span><span class="token string">"monde"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"bonjour monde !"</span>
+</code></pre>
+<h3>la documentation</h3>
+<p>Tout projet doit contenir un fichier expliquant comment l'utiliser. Il s'appelle usuellement <code class="fichier">README.md</code>. Le notre est minimal :</p>
+<pre class="language-markdown" tabindex="0" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> Projet "Hello dev !"</span>
+
+<span class="token title important"><span class="token punctuation">##</span> À propos</span>
+
+Un exemple de projet en python qui dit bonjour.
+
+<span class="token title important"><span class="token punctuation">##</span> Utilisation</span>
+
+Exécutez le fichier <span class="token code-snippet code keyword">`main.py`</span>.
+
+</code></pre>
 
 
 </article>
