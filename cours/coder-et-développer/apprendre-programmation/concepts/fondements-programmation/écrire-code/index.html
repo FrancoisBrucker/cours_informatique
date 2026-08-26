@@ -1441,130 +1441,9 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 
 <p>Prenez le temps de regarder les différentes méthodes des classes de base de python. Souvent elle vous permettent de faire rapidement une opération compliquée. C'est en particulier vrai pour les chaînes de caractères et les listes.</p>
 <p>Certaines méthodes vont rendre des objets utiles (comme les méthodes de chaîne de caractères), d'autre vont modifier les objets appelants et leur retour sera <code class="language-">None</code> (comme beaucoup de méthodes de liste que l'on verra bientôt).</p>
-<h3>Exemple : méthodes des chaînes de caractères</h3>
-<p>Chaque classe vient avec ses méthodes. Si les nombres et les booléens ont peu de méthodes, les chaines de caractères par exemple en ont <a href="https://docs.python.org/fr/3/library/stdtypes.html#string-methods">tout un tas</a>.</p>
-<p>Essayons de les apprendre avec ces petits exercices :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Transformez le 23ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne</a> en une chaîne de caractère</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">11213</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>En utilisant la méthode <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.count"><code class="language-">count</code></a>, comptez le nombre de 0 du 23ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne premier</a>.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Dans un interpréteur :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span>
-<span class="token number">348</span></code></pre>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>En utilisant la méthode <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.replace"><code class="language-">replace</code></a>, changez les 2 en 7 dans le 23ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne premier</a>.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Dans un interpréteur :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"7"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Avec le mot &quot;choucroute garnie&quot; et les méthodes <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.count"><code class="language-">count</code></a>, <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.index"><code class="language-">index</code></a> et <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.rindex"><code class="language-">rindex</code></a> :</p>
-<ul>
-<li>combien y a-t-il de &quot;ou&quot; ?</li>
-<li>quel est l'indice du premier &quot;e&quot; ?</li>
-<li>quel est l'indice du dernier &quot;e&quot; ?</li>
-</ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> mot<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"ou"</span><span class="token punctuation">)</span>
-<span class="token number">2</span>
-<span class="token operator">>></span><span class="token operator">></span> mot<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">)</span>
-<span class="token number">9</span>
-<span class="token operator">>></span><span class="token operator">></span> mot<span class="token punctuation">.</span>rindex<span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">)</span>
-<span class="token number">16</span></code></pre>
-</div>
-</details>     
-</div>
+<p>Par exemple <a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper">la méthode <code class="language-">upper()</code> des chaines de caractères</a> qui rend une nouvelle chaine en majuscule :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"coucou !"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+COUCOU !</code></pre>
 <p>On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple, avec 2 méthodes :</p>
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;un objet>.&lt;nom de la méthode 1>().&lt;nom de la méthode 2>()</code></pre>
 <p>Signifie que <code class="language-">&lt;nom de la méthode 2&gt;</code> est appliquée à l'objet rendu par l'exécution de <code class="language-">&lt;nom de la méthode 2&gt;</code> sur <code class="language-">&lt;un objet&gt;</code>.</p>
@@ -1581,52 +1460,25 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">(&lt;un objet>.&lt;nom de la méthode 1>()).&lt;nom de la méthode 2>()</code></pre>
 </div></div>
 
+<p>Par exemple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"coucou !"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"U"</span><span class="token punctuation">)</span>
+<span class="token number">2</span></code></pre>
+<p>L'exemple ci-dessus utilise :</p>
+<ul>
+<li><a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper">la méthode <code class="language-">upper()</code> des chaines de caractères</a></li>
+<li>l<a href="https://docs.python.org/fr/3.14/library/stdtypes.html#str.count">a méthode <code class="language-">count()</code> des chaines de caractères</a></li>
+</ul>
 <p>Ceci se généralise avec $n$ méthodes :</p>
 <pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">&lt;un objet>.&lt;nom de la méthode 1>().&lt;nom de la méthode 2>(). ... .&lt;nom de la méthode n>()</code></pre>
 <p>La méthode <code class="language-">&lt;nom de la méthode n&gt;</code> est appliquée au résultat de <code class="language-">&lt;un objet&gt;.&lt;nom de la méthode 1&gt;().&lt;nom de la méthode 2&gt;(). ... .&lt;nom de la méthode n-1&gt;()</code></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
 <div class="pl-8 mr-8">
-<p>Que fait :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">11213</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">,</span><span class="token string">"x"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"7"</span><span class="token punctuation">,</span><span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"x"</span><span class="token punctuation">,</span><span class="token string">"7"</span><span class="token punctuation">)</span></code></pre>
+<p>Cela vaut le coup de connaitre quelques méthodes des chaines de caractère en python, elles permettent de résoudre en une ligne des problèmes que l'on rencontre souvent. <a href="../../chaines-caract%C3%A8res" class="interne">Nous en verrons quelques unes plus tard</a>.</p>
 </div></div>
 
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>De part l'associativité à gauche, la commande précédente est équivalente à :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">11213</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">,</span><span class="token string">"x"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"7"</span><span class="token punctuation">,</span><span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"x"</span><span class="token punctuation">,</span><span class="token string">"7"</span><span class="token punctuation">)</span></code></pre>
-<p>Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :</p>
-<ol>
-<li><code class="language-">replace(&quot;x&quot;,&quot;7&quot;)</code> est appliqué à ce qui est à sa gauche donc <code class="language-">str(2 ** 11213 - 1).replace(&quot;2&quot;,&quot;x&quot;).replace(&quot;7&quot;,&quot;2&quot;)</code></li>
-<li><code class="language-">replace(&quot;7&quot;,&quot;2&quot;)</code> est appliqué à ce qui est à sa gauche donc <code class="language-">str(2 ** 11213 - 1).replace(&quot;2&quot;,&quot;x&quot;)</code></li>
-<li><code class="language-">replace(&quot;2&quot;,&quot;x&quot;)</code> est appliqué à ce qui est à sa gauche donc <code class="language-">str(2 ** 11213 - 1)</code></li>
-</ol>
-<p>En remontant les opérations précédentes :</p>
-<ol>
-<li>le résultat de <code class="language-">str(2 ** 11213 - 1)</code> sera une chaîne de caractère représentant le 23ème nombre premier de Mersenne</li>
-<li><code class="language-">str(2 ** 11213 - 1).replace(&quot;2&quot;,&quot;x&quot;)</code> on a remplacé les 2 par des &quot;x&quot; dans la chaîne précédente</li>
-<li><code class="language-">str(2 ** 11213 - 1).replace(&quot;2&quot;,&quot;x&quot;).replace(&quot;7&quot;,&quot;2&quot;)</code> on a remplacé les 7 par des 2 de la chaîne précédente</li>
-<li><code class="language-">str(2 ** 11213 - 1).replace(&quot;2&quot;,&quot;x&quot;).replace(&quot;7&quot;,&quot;2&quot;).replace(&quot;x&quot;,&quot;7&quot;)</code> on a remplacé les &quot;x&quot; par des 2 dans la chaîne précédente</li>
-</ol>
-<p>On a donc au final échangé les 2 et les 7 du 23ème nombre premier de Mersenne</p>
-</div>
-</details>     
-</div>
 <h2>Fonctions vs. méthodes</h2>
 <p>Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alors qu'une méthode a besoin d'un objet sur lequel elle s'applique (celui avant le <code class="language-">.</code>). Vous pouvez voir ça comme un 1er paramètre indispensable à l'exécution d'une méthode. Considérez le programme suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> ma_chaîne <span class="token operator">=</span> <span class="token string">"coucou !"</span>

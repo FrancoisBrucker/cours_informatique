@@ -96,21 +96,7 @@
     
   
 
-  <blockquote>
-<p>à refactor pour :</p>
-<ol>
-<li>les faire coder et tester.</li>
-<li>Ajouter les fonction avec unicodedata directement et leur demander d'ajouter des tests.</li>
-<li>faire des tests et leur demander de coder la fonction</li>
-</ol>
-</blockquote>
-<p>Un projet informatique va toujours avoir 3 types de fichiers :</p>
-<ul>
-<li>le fichier à exécuter pour lancer notre programme, couramment appelé <code class="fichier">main.py</code>. Ce fichier doit uniquement contenir des interaction avec l'utilisateur.</li>
-<li>Toutes les fonctions internes au programme, sont regroupées dans un fichier (ou un ensemble de fichiers)</li>
-<li>Tous les tests des fonctions internes au programme, sont regroupées dans un fichier (ou un ensemble de fichiers)</li>
-</ul>
-<p>Par exemple, considérons un programme qui va chiffrer un message selon <a href="https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage">le code de césar</a>.</p>
+  <p>Vous aller coder ici une méthode de chiffrement/déchiffrement de texte : <a href="https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage">le code de césar</a>.</p>
 <h2>Le projet</h2>
 <p>Du point de vue de python un projet est un dossier qui va contenir les différents fichiers python. Appelons le <code class="fichier">chiffre_cesar</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
@@ -125,20 +111,6 @@
 <li>ne doivent contenir que des lettres <strong>non accentuées</strong></li>
 <li>ne doivent contenir <strong>pas</strong> contenir d'espaces. On sépare les mots par des <em>underscore</em> <code>_</code></li>
 </ul>
-</div></div>
-
-<p>Téléchargez le projet :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ol>
-<li>Téléchargez le fichier <a href="chffre-cesar.zip" class="interne">chiffre-cesar.zip</a> qui contient l'ensemble des fichiers du projet,</li>
-<li>décompressez le fichier,</li>
-<li>ouvrez le dossier dans vscode.</li>
-</ol>
 </div></div>
 
 <h2>Le programme principal</h2>
@@ -171,7 +143,7 @@ déchiffre <span class="token operator">=</span> césar_déchiffre<span class="t
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Texte déchiffré :"</span><span class="token punctuation">,</span> déchiffre<span class="token punctuation">)</span>
 </code></pre>
 <p>On voit que ce fichier demande des choses à un utilisateur et utilise deux importations (<code class="language-">texte</code> et <code class="language-">chiffre</code>) qui correspondent à nos fichiers de fonctions.</p>
-<p>Pour exécuter le fichier, on utilise le terminal dans le dossier du projet :</p>
+<p>Pour exécuter le fichier, on utilise le terminal dans le dossier du projet. Ci-après une exécution possible :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$<span class="token operator">></span> python main.py
 Tapez une chaîne de caractères en français <span class="token builtin class-name">:</span> Éléonore m<span class="token string">'adore !           
 Tapez une lettre de l'</span>alphabet <span class="token punctuation">(</span>clé de chiffrement<span class="token punctuation">)</span> <span class="token builtin class-name">:</span> F
@@ -179,31 +151,75 @@ Texte initial   <span class="token builtin class-name">:</span> ELEONORE M<span 
 Texte chiffré   : JQJTSTWJ R'</span>FITWJ <span class="token operator">!</span>
 Texte déchiffré <span class="token builtin class-name">:</span> ELEONORE M'ADORE <span class="token operator">!</span>
 </code></pre>
-<p>Exécutez le projet :</p>
+<h2>Fichiers de fonctions</h2>
+<p>Là c'est à vous de travailler. On va séparer les fonctions du projet en 2 fichiers :</p>
+<ul>
+<li>un ficher consacré à la mise en forme d'une chaine de caractères</li>
+<li>un ficher consacré au chiffrement/déchiffrement d'un texte écrit en majuscule non accentuées</li>
+</ul>
+<p>Prenez l'habitude de tester intensivement vos fonctions avec le terminal. C'est facile à faire en utilisant des raccourci clavier :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : exécutez le programme en exécutant la commande <code>python main.py</code>.</p>
+<ol>
+<li>ouvrez un terminal dans vscode avec son raccourci clavier (il est visible dans le menu <em>affichage &gt; terminal</em> ou via le les préférences raccourci en tapant &quot;afficher terminal&quot;.).</li>
+<li>exécutez la commande <code>python -m pytest</code>. Une fois que vous l'aurez exécuté si vous tapez la flèche du haut dans un terminal vous allez reprendre la dernière commande tapée</li>
+<li>fermer le terminal pour revenir à votre fenètre de code en utilisant le même raccourci qu'en 1.</li>
+</ol>
 </div></div>
 
-<h2>Fichiers de fonctions</h2>
-<p>Les deux imports du programme principal correspondent aux fichiers <code class="fichier">texte.py</code> et <code class="fichier">chiffre.py</code> qui sont <strong>dans le même dossier</strong> que notre programme principal. Ces deux fichiers contiennent toutes les fonctions nécessaire à l'exécution du programme principal.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Pour que l'import dans le fichier <code class="fichier">main.py</code> se passe sans soucis, tous les fichiers de fonctions doivent se trouver dans le dossier du projet.</p>
+<div class="pl-8 mr-8">
+<p>La manipulation précédente va très vite !</p>
+<ol>
+<li>le raccourci clavier pour afficher le terminal</li>
+<li>la flèche du haut dans le terminal</li>
+<li>le raccourci clavier pour afficher le terminal</li>
+</ol>
 </div></div>
 
-<p>Chaque fichier va contenir un ensemble de fonctions de buts similaires.</p>
+<h3>Fonctions chiffre</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code class="fichier">chiffre.py</code> et son pendant <code class="fichier">test_chiffre.py</code> qui chiffre et déchiffre un texte écrit en majuscule non accentuée. Il doit contenir 2 fonctions :</p>
+<ul>
+<li><code class="language-">césar_chiffre(texte_clair, cle)</code> avec :
+<ul>
+<li><code class="language-">texte_clair</code> une chaine de caractère en majuscule</li>
+<li><code class="language-">clé</code> un caractère en majuscule</li>
+<li>la fonction doit retourner le chiffre de César de <code class="language-">texte</code> selon la <code class="language-">clé</code></li>
+</ul>
+</li>
+<li><code class="language-">césar_déchiffre(texte_chiffré, cle)</code> avec :
+<ul>
+<li><code class="language-">texte_chiffré</code> une chaine de caractère en majuscule</li>
+<li><code class="language-">clé</code> un caractère en majuscule</li>
+<li>la fonction doit retourner le déchiffrement de César de <code class="language-">texte</code> selon la <code class="language-">clé</code></li>
+</ul>
+</li>
+</ul>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser jucicieusement (rappelez vous des différentes <a href="../../concepts/chaines-caract%C3%A8res/#m%C3%A9thodes" class="interne">méthodes des chaines de caractère</a>) la chaine <code class="language-">ALPHABET = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</code> dans vos fonctions</p>
+</div></div>
+
 <h3>Fonctions texte</h3>
-<p>Fichier <code class="fichier">texte.py</code> :</p>
+<p>Le fichier  <code class="fichier">texte.py</code> ne va contenir qu'une seule fonction, qui va transformer toute chaine de caractère en une chaine en majucule non accentuée. Par exemple :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> unicodedata
 
 
@@ -220,64 +236,15 @@ Texte déchiffré <span class="token builtin class-name">:</span> ELEONORE M'ADO
 
     <span class="token keyword">return</span> texte_en_majuscule
 </code></pre>
-<p>Ce fichier continent une unique fonction dont le but est de convertir un texte écrit en français dans le même texte en majuscule et sans accents.</p>
-<p>On voit que ce fichier dépend d'un module python nommé <a href="https://docs.python.org/3/library/unicodedata.html">unicodedata</a>, qui permet de gérer les chaînes de caractères Unicode. Essayez de comprendre comment fonctionne la fonction <code class="language-">conversion</code>.</p>
-<h3>Fonctions chiffre</h3>
-<p>Fichier <code class="fichier">texte.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">ALPHABET <span class="token operator">=</span> <span class="token string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>
-
-
-<span class="token keyword">def</span> césar_chiffre<span class="token punctuation">(</span>texte<span class="token punctuation">,</span> cle<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    décalage <span class="token operator">=</span> ALPHABET<span class="token punctuation">.</span>index<span class="token punctuation">(</span>cle<span class="token punctuation">)</span>
-    texteCesar <span class="token operator">=</span> <span class="token string">""</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> texte<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> x <span class="token keyword">in</span> ALPHABET<span class="token punctuation">:</span>
-            texteCesar <span class="token operator">+=</span> ALPHABET<span class="token punctuation">[</span><span class="token punctuation">(</span>ALPHABET<span class="token punctuation">.</span>index<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">+</span> décalage<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span><span class="token punctuation">]</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            texteCesar <span class="token operator">+=</span> x
-
-    <span class="token keyword">return</span> texteCesar
-
-
-<span class="token keyword">def</span> césar_déchiffre<span class="token punctuation">(</span>texte<span class="token punctuation">,</span> cle<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    décalage <span class="token operator">=</span> ALPHABET<span class="token punctuation">.</span>index<span class="token punctuation">(</span>cle<span class="token punctuation">)</span>
-    texteCesar <span class="token operator">=</span> <span class="token string">""</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> texte<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> x <span class="token keyword">in</span> ALPHABET<span class="token punctuation">:</span>
-            texteCesar <span class="token operator">+=</span> ALPHABET<span class="token punctuation">[</span><span class="token punctuation">(</span>ALPHABET<span class="token punctuation">.</span>index<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">-</span> décalage<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">26</span><span class="token punctuation">]</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            texteCesar <span class="token operator">+=</span> x
-
-    <span class="token keyword">return</span> texteCesar
-</code></pre>
-<p>Les deux fonctions du fichiers <code class="fichier">chiffre.py</code> sont là pour chiffrer et déchiffrer un message selon le code de César.</p>
-<h2>Fichiers de tests</h2>
-<p>L'usage veut que l'on utilise un fichier de test par fichier de fonctions.</p>
-<p>Pour que pytest puisse comprendre que ce sont des fichiers de textes, on fait commencer les noms de fichiers par <code class="fichier">test_</code></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Pour que l'import dans les fichiers de tests se passent sans soucis, tous les fichiers de tests doivent se trouver dans le dossier du projet.</p>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code class="fichier">texte.py</code> contenant la fonction ci-dessus. Créez le fichier <code class="fichier">test_conversion.py</code> testant que cette fonction fait bien ce qu'elle est sensée faire.</p>
 </div></div>
 
-<p>On exécute nos tests dans un terminal dont le dossier courant est le dossier du projet :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pytest
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span> <span class="token builtin class-name">test</span> session starts <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
-platform darwin -- Python <span class="token number">3.14</span>.2, pytest-9.0.1, pluggy-1.6.0
-rootdir: ./chffre-cesar
-collected <span class="token number">8</span> items                                                              
-
-test_chiffre.py <span class="token punctuation">..</span><span class="token punctuation">..</span>.                                                    <span class="token punctuation">[</span> <span class="token number">62</span>%<span class="token punctuation">]</span>
-test_texte.py <span class="token punctuation">..</span>.                                                        <span class="token punctuation">[</span><span class="token number">100</span>%<span class="token punctuation">]</span>
-
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span> <span class="token number">8</span> passed <span class="token keyword">in</span> <span class="token number">0</span>.04s <span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span></code></pre>
-<p>Ouf, tout est ok.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
@@ -286,16 +253,6 @@ test_texte.py <span class="token punctuation">..</span>.                        
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Prenez l'habitude de tester vos fichier en utilisant le terminal.</p>
-</div></div>
-
-<p>Exécutons les tests du projet :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : exécutez les tests en exécutant la commande <code>python -m pytest</code>.</p>
 </div></div>
 
 <p>Ce que l'on teste est dépendant de chaque développeur : si les tests passent il doit être convaincu que son code est fonctionnel.</p>
@@ -309,60 +266,8 @@ test_texte.py <span class="token punctuation">..</span>.                        
 <p>C'est au développeur des fonctions de créer des tests pour elles de tel sorte que s'ils passent il soit persuadé que son code est sans bug (si un bug est découvert plus tard, il suffit de rajouter un test qui le montre puis corriger le code).</p>
 </div></div>
 
-<h3>Tests des fonctions de texte</h3>
-<p>Fichier <code class="fichier">test_texte.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> texte <span class="token keyword">import</span> conversion
-
-
-<span class="token keyword">def</span> <span class="token function">test_conversion_minuscules_vers_majuscule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token string">"ABCDE"</span> <span class="token operator">==</span> conversion<span class="token punctuation">(</span><span class="token string">"abcde"</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_conversion_avec_espaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token string">"AB CD"</span> <span class="token operator">==</span> conversion<span class="token punctuation">(</span><span class="token string">"ab cd"</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_conversion_avec_accents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token string">"ABC DE"</span> <span class="token operator">==</span> conversion<span class="token punctuation">(</span><span class="token string">"ÀBÇ dè"</span><span class="token punctuation">)</span>
-</code></pre>
-<h3>Tests des fonctions de chiffre</h3>
-<p>Fichier <code class="fichier">test_chiffre.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> chiffre <span class="token keyword">import</span> césar_chiffre<span class="token punctuation">,</span> césar_déchiffre
-
-<span class="token keyword">def</span> test_césar_chiffre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token string">"A B"</span> <span class="token operator">==</span> césar_chiffre<span class="token punctuation">(</span><span class="token string">"A B"</span><span class="token punctuation">,</span> <span class="token string">"A"</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token string">"D F"</span> <span class="token operator">==</span> césar_chiffre<span class="token punctuation">(</span><span class="token string">"B D"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token string">"Z A"</span> <span class="token operator">==</span> césar_chiffre<span class="token punctuation">(</span><span class="token string">"A B"</span><span class="token punctuation">,</span> <span class="token string">"Z"</span><span class="token punctuation">)</span>
-
-
-<span class="token keyword">def</span> test_césar_déchiffre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token string">"A B"</span> <span class="token operator">==</span> césar_déchiffre<span class="token punctuation">(</span><span class="token string">"A B"</span><span class="token punctuation">,</span> <span class="token string">"A"</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token string">"B D"</span> <span class="token operator">==</span> césar_déchiffre<span class="token punctuation">(</span><span class="token string">"D F"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token string">"A B"</span> <span class="token operator">==</span> césar_déchiffre<span class="token punctuation">(</span><span class="token string">"Z A"</span><span class="token punctuation">,</span> <span class="token string">"Z"</span><span class="token punctuation">)</span>
-</code></pre>
-<h2>Liste des fichiers du projet</h2>
-<p>Le projet final contient 5 fichiers :</p>
-<ul>
-<li><code class="fichier">chiffre.py</code></li>
-<li><code class="fichier">main.py</code></li>
-<li><code class="fichier">test_chiffre.py</code></li>
-<li><code class="fichier">test_texte.py</code></li>
-<li><code class="fichier">texte.py</code></li>
-</ul>
-<p>Qui se séparent en :</p>
-<ul>
-<li>un programme principal,</li>
-<li>deux fichiers de fonctions,</li>
-<li>deux fichiers de tests, un par fichier de fonctions.</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Si vous regardez les fichiers du dossier du projet, vous vous rendrez compte qu'un dossier <code class="fichier">__pycache__</code> a été ajouté. Il a éte créé par l'interpréteur lors de l'exécution du programme principal. Il ne fait pas parie du projet et sera recréé par l'interpréteur si vous le supprimez.</p>
-</div></div>
-
+<h2>Corrigé</h2>
+<p>Les différents fichiers sont disponible <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/projet-code-c%C3%A9sar/chffre-cesar">ici</a></p>
 
 
 </article>
