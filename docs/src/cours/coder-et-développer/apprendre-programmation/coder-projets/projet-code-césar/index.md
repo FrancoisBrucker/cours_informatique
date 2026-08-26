@@ -9,20 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> à refactor pour :
-> 1. les faire coder et tester. 
-> 2. Ajouter les fonction avec unicodedata directement et leur demander d'ajouter des tests.
-> 3. faire des tests et leur demander de coder la fonction
-
-Un projet informatique va toujours avoir 3 types de fichiers :
-
-- le fichier à exécuter pour lancer notre programme, couramment appelé `main.py`{.fichier}. Ce fichier doit uniquement contenir des interaction avec l'utilisateur.
-- Toutes les fonctions internes au programme, sont regroupées dans un fichier (ou un ensemble de fichiers)
-- Tous les tests des fonctions internes au programme, sont regroupées dans un fichier (ou un ensemble de fichiers)
-
-
-Par exemple, considérons un programme qui va chiffrer un message selon [le code de césar](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage).
-
+Vous aller coder ici une méthode de chiffrement/déchiffrement de texte : [le code de césar](https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage).
 
 ## Le projet
 
@@ -33,15 +20,6 @@ Dans la mesure du possible, le nom des dossiers et des fichiers d'un projet info
 - ne doivent contenir que des lettres **non accentuées**
 - ne doivent contenir **pas** contenir d'espaces. On sépare les mots par des _underscore_ `_`
 {% endattention2 %}
-
-
-Téléchargez le projet :
-
-{% faire %}
-1. Téléchargez le fichier [chiffre-cesar.zip](./chffre-cesar.zip){.interne} qui contient l'ensemble des fichiers du projet,
-2. décompressez le fichier,
-3. ouvrez le dossier dans vscode.
-{% endfaire %}
 
 ## Le programme principal
 
@@ -75,7 +53,7 @@ print("Texte déchiffré :", déchiffre)
 
 On voit que ce fichier demande des choses à un utilisateur et utilise deux importations (`texte`{.language-} et `chiffre`{.language-}) qui correspondent à nos fichiers de fonctions.
 
-Pour exécuter le fichier, on utilise le terminal dans le dossier du projet :
+Pour exécuter le fichier, on utilise le terminal dans le dossier du projet. Ci-après une exécution possible :
 
 ```shell
 $> python main.py
@@ -87,26 +65,53 @@ Texte déchiffré : ELEONORE M'ADORE !
 
 ```
 
-Exécutez le projet :
-
-{% faire %}
-Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : exécutez le programme en exécutant la commande `python main.py`.
-
-{% endfaire %}
-
 ## Fichiers de fonctions
 
-Les deux imports du programme principal correspondent aux fichiers `texte.py`{.fichier} et `chiffre.py`{.fichier} qui sont **dans le même dossier** que notre programme principal. Ces deux fichiers contiennent toutes les fonctions nécessaire à l'exécution du programme principal.
+Là c'est à vous de travailler. On va séparer les fonctions du projet en 2 fichiers :
 
-{% attention2 "**À retenir**" %}
-Pour que l'import dans le fichier `main.py`{.fichier} se passe sans soucis, tous les fichiers de fonctions doivent se trouver dans le dossier du projet.
-{% endattention2 %}
+- un ficher consacré à la mise en forme d'une chaine de caractères
+- un ficher consacré au chiffrement/déchiffrement d'un texte écrit en majuscule non accentuées
 
-Chaque fichier va contenir un ensemble de fonctions de buts similaires.
+
+Prenez l'habitude de tester intensivement vos fonctions avec le terminal. C'est facile à faire en utilisant des raccourci clavier :
+
+{% faire %}
+
+1. ouvrez un terminal dans vscode avec son raccourci clavier (il est visible dans le menu _affichage > terminal_ ou via le les préférences raccourci en tapant "afficher terminal".).
+2. exécutez la commande `python -m pytest`. Une fois que vous l'aurez exécuté si vous tapez la flèche du haut dans un terminal vous allez reprendre la dernière commande tapée
+3. fermer le terminal pour revenir à votre fenètre de code en utilisant le même raccourci qu'en 1.
+
+{% endfaire %}
+{% info %}
+La manipulation précédente va très vite ! 
+1. le raccourci clavier pour afficher le terminal
+2. la flèche du haut dans le terminal
+3. le raccourci clavier pour afficher le terminal
+{% endinfo %}
+
+
+### Fonctions chiffre
+
+{% faire %}
+Créez un fichier `chiffre.py`{.fichier} et son pendant `test_chiffre.py`{.fichier} qui chiffre et déchiffre un texte écrit en majuscule non accentuée. Il doit contenir 2 fonctions :
+
+- `césar_chiffre(texte_clair, cle)`{.language-} avec :
+  - `texte_clair`{.language-} une chaine de caractère en majuscule
+  - `clé`{.language-} un caractère en majuscule
+  - la fonction doit retourner le chiffre de César de `texte`{.language-} selon la `clé`{.language-}
+- `césar_déchiffre(texte_chiffré, cle)`{.language-} avec :
+  - `texte_chiffré`{.language-} une chaine de caractère en majuscule
+  - `clé`{.language-} un caractère en majuscule
+  - la fonction doit retourner le déchiffrement de César de `texte`{.language-} selon la `clé`{.language-}
+
+{% endfaire %}
+{% info %}
+Vous pourrez utiliser jucicieusement (rappelez vous des différentes [méthodes des chaines de caractère](../../concepts/chaines-caractères/#méthodes){.interne}) la chaine `ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"`{.language-} dans vos fonctions 
+{% endinfo %}
 
 ### Fonctions texte
 
-Fichier `texte.py`{.fichier} :
+Le fichier  `texte.py`{.fichier} ne va contenir qu'une seule fonction, qui va transformer toute chaine de caractère en une chaine en majucule non accentuée. Par exemple :
 
 ```python
 import unicodedata
@@ -127,85 +132,16 @@ def conversion(texte_avec_accent):
 
 ```
 
-Ce fichier continent une unique fonction dont le but est de convertir un texte écrit en français dans le même texte en majuscule et sans accents.
+{% faire %}
+Créez un fichier `texte.py`{.fichier} contenant la fonction ci-dessus. Créez le fichier `test_conversion.py`{.fichier} testant que cette fonction fait bien ce qu'elle est sensée faire.
+{% endfaire %}
 
 
-On voit que ce fichier dépend d'un module python nommé [unicodedata](https://docs.python.org/3/library/unicodedata.html), qui permet de gérer les chaînes de caractères Unicode. Essayez de comprendre comment fonctionne la fonction `conversion`{.language-}.
-
-### Fonctions chiffre
-
-Fichier `texte.py`{.fichier} :
-
-```python
-ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-
-def césar_chiffre(texte, cle):
-
-    décalage = ALPHABET.index(cle)
-    texteCesar = ""
-    for x in texte:
-        if x in ALPHABET:
-            texteCesar += ALPHABET[(ALPHABET.index(x) + décalage) % 26]
-        else:
-            texteCesar += x
-
-    return texteCesar
-
-
-def césar_déchiffre(texte, cle):
-
-    décalage = ALPHABET.index(cle)
-    texteCesar = ""
-    for x in texte:
-        if x in ALPHABET:
-            texteCesar += ALPHABET[(ALPHABET.index(x) - décalage) % 26]
-        else:
-            texteCesar += x
-
-    return texteCesar
-
-```
-
-Les deux fonctions du fichiers `chiffre.py`{.fichier} sont là pour chiffrer et déchiffrer un message selon le code de César.
-
-## Fichiers de tests
-
-L'usage veut que l'on utilise un fichier de test par fichier de fonctions.
-
-Pour que pytest puisse comprendre que ce sont des fichiers de textes, on fait commencer les noms de fichiers par `test_`{.fichier}
-
-{% attention2 "**À retenir**" %}
-Pour que l'import dans les fichiers de tests se passent sans soucis, tous les fichiers de tests doivent se trouver dans le dossier du projet.
-{% endattention2 %}
-
-On exécute nos tests dans un terminal dont le dossier courant est le dossier du projet :
-
-```shell
-python -m pytest
-============================= test session starts ==============================
-platform darwin -- Python 3.14.2, pytest-9.0.1, pluggy-1.6.0
-rootdir: ./chffre-cesar
-collected 8 items                                                              
-
-test_chiffre.py .....                                                    [ 62%]
-test_texte.py ...                                                        [100%]
-
-============================== 8 passed in 0.04s ===============================
-```
-
-Ouf, tout est ok.
 
 {% attention2 "**À retenir**" %}
 Prenez l'habitude de tester vos fichier en utilisant le terminal.
 {% endattention2 %}
 
-Exécutons les tests du projet :
-
-{% faire %}
-Ouvrez un terminal dans vscode, vous devriez être dans le dossier du projet : exécutez les tests en exécutant la commande `python -m pytest`.
-
-{% endfaire %}
 
 Ce que l'on teste est dépendant de chaque développeur : si les tests passent il doit être convaincu que son code est fonctionnel.
 
@@ -213,64 +149,6 @@ Ce que l'on teste est dépendant de chaque développeur : si les tests passent i
 C'est au développeur des fonctions de créer des tests pour elles de tel sorte que s'ils passent il soit persuadé que son code est sans bug (si un bug est découvert plus tard, il suffit de rajouter un test qui le montre puis corriger le code).
 {% endattention2 %}
 
+## Corrigé
 
-### Tests des fonctions de texte
-
-Fichier `test_texte.py`{.fichier} :
-
-```python
-from texte import conversion
-
-
-def test_conversion_minuscules_vers_majuscule():
-    assert "ABCDE" == conversion("abcde")
-
-
-def test_conversion_avec_espaces():
-    assert "AB CD" == conversion("ab cd")
-
-
-def test_conversion_avec_accents():
-    assert "ABC DE" == conversion("ÀBÇ dè")
-
-```
-
-### Tests des fonctions de chiffre
-
-Fichier `test_chiffre.py`{.fichier} :
-
-```python
-from chiffre import césar_chiffre, césar_déchiffre
-
-def test_césar_chiffre():
-    assert "A B" == césar_chiffre("A B", "A")
-    assert "D F" == césar_chiffre("B D", "C")
-    assert "Z A" == césar_chiffre("A B", "Z")
-
-
-def test_césar_déchiffre():
-    assert "A B" == césar_déchiffre("A B", "A")
-    assert "B D" == césar_déchiffre("D F", "C")
-    assert "A B" == césar_déchiffre("Z A", "Z")
-
-```
-
-## Liste des fichiers du projet
-
-Le projet final contient 5 fichiers :
-
-- `chiffre.py`{.fichier}
-- `main.py`{.fichier}
-- `test_chiffre.py`{.fichier}
-- `test_texte.py`{.fichier}
-- `texte.py`{.fichier}
-
-Qui se séparent en :
-
-- un programme principal,
-- deux fichiers de fonctions,
-- deux fichiers de tests, un par fichier de fonctions.
-
-{% info %}
-Si vous regardez les fichiers du dossier du projet, vous vous rendrez compte qu'un dossier `__pycache__`{.fichier} a été ajouté. Il a éte créé par l'interpréteur lors de l'exécution du programme principal. Il ne fait pas parie du projet et sera recréé par l'interpréteur si vous le supprimez.
-{% endinfo %}
+Les différents fichiers sont disponible [ici](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/projet-code-c%C3%A9sar/chffre-cesar)

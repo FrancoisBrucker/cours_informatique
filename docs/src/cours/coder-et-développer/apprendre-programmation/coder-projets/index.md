@@ -62,15 +62,16 @@ Mainteneant que l'on connait la façon de procéder, il nous reste à voir comme
 
 ## On s'entraîne
 
-### On vérifie qu'on sait faire
-
-{% aller %}
-[exercices](exercices-tests){.interne}
-{% endaller %}
-
 ### Un projet complet
 
 {% aller %}
 [Code de césar](projet-code-césar){.interne}
 {% endaller %}
 
+### On vérifie qu'on sait faire
+
+Une série d'exercices classique en développement. Certains sont simple d'autre beaucoup (beaucoup) moins, mais c'est un bon indicateur de votre niveau en développement :
+
+{% aller %}
+[exercices](exercices-tests){.interne}
+{% endaller %}

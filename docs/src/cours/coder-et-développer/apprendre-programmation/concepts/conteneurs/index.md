@@ -10,12 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-> TBD > liste variables = indices
-> set = variables non nommées
-> TBD liste/dictionnaires
-
-
 En plus des 6 types de bases, python met à notre disposition plusieurs objets qui peuvent _contenir_ des variables. On appelle ces objets des **_conteneurs_** et ils possèdent de nombreuses propriétés :
 
 - ils sont itérables et peuvent donc être associé à [une boucle for](../fondements-programmation/structure-code/#for)

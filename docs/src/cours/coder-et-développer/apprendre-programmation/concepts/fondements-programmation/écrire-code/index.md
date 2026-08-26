@@ -1039,70 +1039,12 @@ Prenez le temps de regarder les différentes méthodes des classes de base de py
 
 Certaines méthodes vont rendre des objets utiles (comme les méthodes de chaîne de caractères), d'autre vont modifier les objets appelants et leur retour sera `None`{.language-} (comme beaucoup de méthodes de liste que l'on verra bientôt).
 
-### Exemple : méthodes des chaînes de caractères
-
-Chaque classe vient avec ses méthodes. Si les nombres et les booléens ont peu de méthodes, les chaines de caractères par exemple en ont [tout un tas](https://docs.python.org/fr/3/library/stdtypes.html#string-methods).
-
-Essayons de les apprendre avec ces petits exercices :
-
-{% exercice %}
-Transformez le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) en une chaîne de caractère
-{% endexercice %}
-{% details "solution" %}
+Par exemple [la méthode `upper()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper) qui rend une nouvelle chaine en majuscule :
 
 ```python
->>> x = str(2 ** 11213 - 1)
+>>> "coucou !".upper()
+COUCOU !
 ```
-
-{% enddetails %}
-
-{% exercice %}
-En utilisant la méthode [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), comptez le nombre de 0 du 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
-{% endexercice %}
-{% details "solution" %}
-
-Dans un interpréteur :
-
-```python
->>> x.count("0")
-348
-```
-
-{% enddetails %}
-
-{% exercice %}
-En utilisant la méthode [`replace`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.replace), changez les 2 en 7 dans le 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
-{% endexercice %}
-{% details "solution" %}
-
-Dans un interpréteur :
-
-```python
->>> y = int(x.replace("2", "7"))
-```
-
-{% enddetails %}
-
-{% exercice %}
-Avec le mot "choucroute garnie" et les méthodes [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), [`index`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.index) et [`rindex`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.rindex) :
-
-- combien y a-t-il de "ou" ?
-- quel est l'indice du premier "e" ?
-- quel est l'indice du dernier "e" ?
-
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> mot.count("ou")
-2
->>> mot.index("e")
-9
->>> mot.rindex("e")
-16
-```
-
-{% enddetails %}
 
 On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple, avec 2 méthodes :
 
@@ -1127,6 +1069,19 @@ est équivalent à :
 
 {% endattention2 %}
 
+
+Par exemple :
+
+```python
+>>> "coucou !".upper().count("U")
+2
+```
+
+L'exemple ci-dessus utilise :
+
+- [la méthode `upper()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.upper)
+- l[a méthode `count()`{.language-} des chaines de caractères](https://docs.python.org/fr/3.14/library/stdtypes.html#str.count)
+
 Ceci se généralise avec $n$ méthodes :
 
 ```txt
@@ -1135,38 +1090,9 @@ Ceci se généralise avec $n$ méthodes :
 
 La méthode `<nom de la méthode n>`{.language-} est appliquée au résultat de `<un objet>.<nom de la méthode 1>().<nom de la méthode 2>(). ... .<nom de la méthode n-1>()`{.language-}
 
-{% exercice %}
-Que fait :
-
-```python
-str(2 ** 11213 - 1).replace("2","x").replace("7","2").replace("x","7")
-```
-
-{% endexercice %}
-{% details "solution" %}
-
-De part l'associativité à gauche, la commande précédente est équivalente à :
-
-```python
-((str(2 ** 11213 - 1).replace("2","x")).replace("7","2")).replace("x","7")
-```
-
-Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :
-
-1. `replace("x","7")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1).replace("2","x").replace("7","2")`{.language-}
-2. `replace("7","2")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1).replace("2","x")`{.language-}
-3. `replace("2","x")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1)`{.language-}
-
-En remontant les opérations précédentes :
-
-1. le résultat de `str(2 ** 11213 - 1)`{.language-} sera une chaîne de caractère représentant le 23ème nombre premier de Mersenne
-2. `str(2 ** 11213 - 1).replace("2","x")`{.language-} on a remplacé les 2 par des "x" dans la chaîne précédente
-3. `str(2 ** 11213 - 1).replace("2","x").replace("7","2")`{.language-} on a remplacé les 7 par des 2 de la chaîne précédente
-4. `str(2 ** 11213 - 1).replace("2","x").replace("7","2").replace("x","7")`{.language-} on a remplacé les "x" par des 2 dans la chaîne précédente
-
-On a donc au final échangé les 2 et les 7 du 23ème nombre premier de Mersenne
-
-{% enddetails %}
+{% info %}
+Cela vaut le coup de connaitre quelques méthodes des chaines de caractère en python, elles permettent de résoudre en une ligne des problèmes que l'on rencontre souvent. [Nous en verrons quelques unes plus tard](../../chaines-caractères){.interne}.
+{% endinfo %}
 
 ## Fonctions vs. méthodes
 

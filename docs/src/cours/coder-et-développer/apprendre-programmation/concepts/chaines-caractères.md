@@ -111,6 +111,117 @@ Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. 
 
 Les différents encoding possibles sont disponibles [dans la documentation](https://docs.python.org/3/library/codecs.html#standard-encodings).
 
+### <span id="méthodes"></span>Méthodes des chaînes de caractères
+
+Les chaines de caractères ont [tout un tas de méthodes](https://docs.python.org/fr/3/library/stdtypes.html#string-methods).
+
+Essayons de les apprendre avec ces petits exercices :
+
+{% exercice %}
+Transformez le 23ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) ($2^{11213}-1$) en une chaîne de caractère
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> x = str(2 ** 11213 - 1)
+```
+
+{% enddetails %}
+
+{% exercice %}
+En utilisant la méthode [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), comptez le nombre de 0 du 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+{% endexercice %}
+{% details "solution" %}
+
+Dans un interpréteur :
+
+```python
+>>> x.count("0")
+348
+```
+
+{% enddetails %}
+
+{% exercice %}
+En utilisant la méthode [`replace`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.replace), changez les 2 en 7 dans le 23ème [nombre de Mersenne premier](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier).
+{% endexercice %}
+{% details "solution" %}
+
+Dans un interpréteur :
+
+```python
+>>> y = int(x.replace("2", "7"))
+```
+
+{% enddetails %}
+
+{% exercice %}
+Avec les méthodes [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), [`index`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.index) et [`rindex`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.rindex) :
+
+Dans le 23e nombre de Mersenne :
+
+- combien y a-t-il de "42" ?
+- quel est l'indice du premier "42" ?
+- quel est l'indice du dernier "42" ?
+
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> str(2 ** 11213 - 1).count("42")
+33
+>>> str(2 ** 11213 - 1).index("42")
+29
+>>> str(2 ** 11213 - 1).rindex("42")
+3327
+
+```
+
+{% enddetails %}
+{% exercice %}
+Remplacez les 2 par des 7 dans le 23e nombre de Mersenne 
+
+{% endexercice %}
+{% details "solution" %}
+
+Attention, une fois que l'on a changer les 2 en 7 on ne peut pas juste retransformer les 7 en 2... Il faut commencer par mettre les 2 de côté puis transformer les 7 en 2 et enfin reprendre les 2 mis de coté et les transformer en 7 :
+
+```python
+>>> x = str(2 ** 11213 - 1)
+>>> y = x.replace("2","?")
+>>> z = y.replace("7","2")
+>>> t = z.replace("?","7")
+```
+
+On peut le faire en une seule ligne :
+
+```python
+str(2 ** 11213 - 1).replace("2","x").replace("7","2").replace("x","7")
+```
+
+De part l'associativité à gauche, la commande précédente est équivalente à :
+
+```python
+((str(2 ** 11213 - 1).replace("2","x")).replace("7","2")).replace("x","7")
+```
+
+Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :
+
+1. `replace("x","7")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1).replace("2","x").replace("7","2")`{.language-}
+2. `replace("7","2")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1).replace("2","x")`{.language-}
+3. `replace("2","x")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 11213 - 1)`{.language-}
+
+En remontant les opérations précédentes :
+
+1. le résultat de `str(2 ** 11213 - 1)`{.language-} sera une chaîne de caractère représentant le 23ème nombre premier de Mersenne
+2. `str(2 ** 11213 - 1).replace("2","x")`{.language-} on a remplacé les 2 par des "x" dans la chaîne précédente
+3. `str(2 ** 11213 - 1).replace("2","x").replace("7","2")`{.language-} on a remplacé les 7 par des 2 de la chaîne précédente
+4. `str(2 ** 11213 - 1).replace("2","x").replace("7","2").replace("x","7")`{.language-} on a remplacé les "x" par des 2 dans la chaîne précédente
+
+On a donc au final échangé les 2 et les 7 du 23ème nombre premier de Mersenne
+
+{% enddetails %}
+
 ## Exercices
 
 On utilisera [les nombres de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) comme prétexte à la manipulation de chaînes de caractères en python. Ces exercices sont pour une grande partie tirés d'un cours donné il y a quelques temps par Aristide Grange, à l'université Paul Verlaine de Metz.
@@ -244,3 +355,4 @@ La réponse universelle est 42
 ```
 
 Et, enfin, si on veut écrire une accolade, on l'insère : `f"{'{'}"`{.language-}.
+
