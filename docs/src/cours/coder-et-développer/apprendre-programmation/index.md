@@ -80,7 +80,6 @@ La première partie nous a appris les concepts fondamentaux d'un langage de prog
 
 ## Partie III : Programmation objet et évènementielle
 
-
 La programmation objet est un principe de programmation utilisé par la quasi-totalité des langages de programmation. Nes nuances existent bien sur, la programmation objet en rust n'est pas la même qu'en java par exemple, mais quelques principes fondateurs sont utilisés partout.
 
 Nous allons dans cette partie du cours nous atteler à montrer ces principes et leur utilité dans le cadre du langage python.
@@ -89,22 +88,11 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 [Programmation objet](programmation-objet){.interne}
 {% endaller %}
 
-## Programmation évènementielle
-
 La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
 
 {% aller %}
 [Programmation évènementielle](programmation-évènementielle){.interne}
 {% endaller %}
-
-
-{% aller %}
-[Programmation objet](./programmation-objet){.interne}
-{% endaller %}
-{% aller %}
-[Programmation évènementielle](./programmation-évènementielle){.interne}
-{% endaller %}
-
 
 
 ## Partie IV : Partager ses projets
@@ -114,14 +102,8 @@ La programmation évènementielle est un principe de développement très utilis
 
 ## Partie V : Pour aller plus loin
 
-> TBD package et anatomie d'un espace de nommage.
+> TBD package et anatomie d'un espace de nommage. TDD. code coverage
 
-## TBD à remanier
-
-
-
-
-## Maintenir et développer du code sûr
 
 ### <span id="gestion-dépendances"></span>Gestion des dépendances
 
@@ -138,8 +120,6 @@ La couverture de code est un outils essentiel lorsque l'on programme par les tes
 {% endaller %}
 
 ### Programmation par les tests
-
-> TBD ajouter couverture du code.
 
 On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (_Test Driven Development_, ou _TDD_)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
 
