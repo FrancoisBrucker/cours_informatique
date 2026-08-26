@@ -18,9 +18,10 @@ Pour ce projet, on va suivre [les consignes du tutoriel vscode et python](../../
 
 Ces consignes précédentes assurent que **vous exécutez votre code python à partir du dossier contenant votre projet**.
 
-{% info %}
+{% prerequis "**Faites ce prérequis avant de passer aux exercices**" %}
 On va reprendre les différents [exercices de code](../../../concepts/projet-codes/){.interne} pour les transformer en un projet python exécutable avec vscode.
-{% endinfo %}
+
+{% endprerequis %}
 
 ## <span id="syracuse"></span>Syracuse
 

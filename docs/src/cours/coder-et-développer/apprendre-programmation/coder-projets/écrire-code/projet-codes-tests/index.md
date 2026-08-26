@@ -10,7 +10,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On va continuer le refactoring des différents [exercices de code](../../../concepts/projet-codes/){.interne} entamé dans [la partie précédente](../projet-création-modules){.interne} en leur ajoutant des tests.
+On va continuer le refactoring des différents [exercices de code](../../../concepts/projet-codes/){.interne} entamé dans [la partie précédente](../projet-création-modules){.interne} en leur ajoutant des tests :
+
+{% prerequis "**Faites ce prérequis avant de passer aux exercices**" %}
+On reprends [les projets de la création de modules](../projet-création-modules){.interne}.
+
+{% endprerequis %}
+
 
 Les corriges sont des **propositions** de tests, ce n'est pas la vérité :
 

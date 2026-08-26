@@ -65,13 +65,12 @@ Il faut essayer de limiter au maximum la création de bug et, surtout, éviter q
 {% endaller %}
 
 
-### Écrire du code lisible
+### Projet Informatique
 
-> TBD ici. supprimer le linter.
-
+On a toutes les méthodes pour écrire du code, on va pouvoir combiner tout ça pour créer un projet informatique :
 
 {% aller %}
-[Projet Mise en œuvre d'un projet informatique](tutoriel-hello-dev){.interne}
+[Mise en œuvre d'un projet informatique](projet-informatique){.interne}
 {% endaller %}
 {% aller %}
 [On s'entraîne : Projet pourcentage](projet-pourcentages){.interne}

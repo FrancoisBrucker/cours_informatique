@@ -34,9 +34,12 @@ Regardons où l’extension Français a été installé (ou comment l'installer)
 
 ![extensions vscode](vsc-extensions.png)
 
-{% info %}
+{% attention2 "**À retenir**" %}
 Les extensions vscode sont très pratiques. N'hésitez pas à en installer.
-{% endinfo %}
+{% endattention2 %}
+{% lien "**Documentation**" %}
+<https://code.visualstudio.com/docs/configure/extensions/extensions>
+{% endlien %}
 
 ## Workspace vscode
 
