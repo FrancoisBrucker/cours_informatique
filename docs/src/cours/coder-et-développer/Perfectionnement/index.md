@@ -24,3 +24,4 @@ eleventyComputed:
 > - programmation parallèle
 > - profilage de code ?
 > - interfaces
+> - [mémoire](./données-mémoire/){.interne}

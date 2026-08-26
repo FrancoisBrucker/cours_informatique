@@ -72,6 +72,7 @@ On a toutes les méthodes pour écrire du code, on va pouvoir combiner tout ça 
 {% aller %}
 [Mise en œuvre d'un projet informatique](projet-informatique){.interne}
 {% endaller %}
+Un dernier projet guidé avant le grand bain pour être sur que tout soit acquis :
 {% aller %}
 [On s'entraîne : Projet pourcentage](projet-pourcentages){.interne}
 {% endaller %}
@@ -83,18 +84,3 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 {% aller %}
 [Déboguer son code](débogueur){.interne}
 {% endaller %}
-
-## On s'entraîne
-
-### On vérifie qu'on sait faire
-
-{% aller %}
-[exercices](exercices-tests){.interne}
-{% endaller %}
-
-### Un projet complet
-
-{% aller %}
-[Code de césar](projet-avec-des-tests){.interne}
-{% endaller %}
-

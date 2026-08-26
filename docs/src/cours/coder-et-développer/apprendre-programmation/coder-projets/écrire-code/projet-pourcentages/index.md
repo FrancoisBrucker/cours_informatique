@@ -9,12 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Le but de ce cours est de dérouler la création et la mise en œuvre d'un projet, petit à petit.
-
-<!-- end résumé -->
-
 Vous allez créer un projet visant à compter le pourcentage de `0` dans un nombre écrit en binaire.
 
 ## <span id="mise-en-place"></span> Mise en place
@@ -52,11 +46,12 @@ Créer un nouveau projet vscode en ouvrant le dossier `pourcentage_binaire`{.fic
 
 {% faire %}
 
-Créez avec vscode 3 fichiers (que l'on garde vides pour l'instant) dans le projet :
+Créez avec vscode 4 fichiers (que l'on garde vides pour l'instant) dans le projet :
 
 - `main.py`{.fichier} : le programme principal
 - `pourcentage.py`{.fichier} : le code
 - `test_pourcentage.py`{.fichier} : notre fichier de tests
+- `README.md`{.fichier} : la documentation
 
 {% endfaire %}
 
@@ -88,8 +83,7 @@ Dans le fichier `pourcentage.py`{.fichier} créez une fonction `pourcent` dont l
 {% endfaire %}
 {% attention %}
 
-Assurez vous que [le linter](../tutoriel-hello-dev#linter){.interne} soit content. Il ne doit y avoir aucune faute de style.
-
+Assurez vous d'utiliser black le plus souvent possible !
 {% endattention %}
 
 Il n'est pas nécessaire de vérifier :

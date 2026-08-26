@@ -9,12 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD mettre les exercices des monolignes. 
-> Et montrer comment on peut récupérer un fichier texte del'internet ?
-> 
-<!-- début résumé -->
-
 Qu'est-ce qu'un fichier et comment l'utiliser.
+
+## Définition
 
 {% aller %}
 [Qu'est-ce qu'un fichier](structure){.interne}
@@ -30,6 +27,12 @@ Qu'est-ce qu'un fichier et comment l'utiliser.
 [projet fichiers texte](projet-texte){.interne}
 {% endaller %}
 
+Stocker des données dans un fichier :
+
+{% aller %}
+[fichiers texte pour stocker des données](projet-données){.interne}
+{% endaller %}
+
 ## Fichiers binaire
 
 {% aller %}
@@ -42,8 +45,3 @@ Qu'est-ce qu'un fichier et comment l'utiliser.
 [dossiers et chemins en python](dossiers-et-chemins){.interne}
 {% endaller %}
 
-## Stocker des données dans un fichier
-
-{% aller %}
-[fichiers texte pour stocker des données](projet-données){.interne}
-{% endaller %}

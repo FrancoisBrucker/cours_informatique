@@ -15,6 +15,7 @@ Quelques exercices de code à résoudre. On vous demande de créer :
 - un fichier `main.py`{.fichier} pour votre programme principal
 - un fichier `fonction.py`{.fichier} pour vos fonctions
 - un fichier `test_fonction.py`{.fichier} pour vos tests
+- un fichier `README.md`{.fichier} pour votre documentation sur le projet
 
 Ces trois fichiers sont obligatoires.
 
@@ -90,7 +91,3 @@ Trois exemples, triés par difficulté :
 Parfois ça peut un peu piquer niveau difficulté.
 {% endattention %}
 
-<!-- ### Au delà de ce qui est demandé
-
-- [un peu de crypto](support_eleves_cours_6.pdf)
-- remplir [une grille aléatoire de sudoku](https://www.youtube.com/watch?v=2SuvO4Gi7uY) en utilisant [la réduction de paquet d'onde](https://fr.wikipedia.org/wiki/R%C3%A9duction_du_paquet_d'onde) (si si. Voir [ici](https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/) pour une explication et un autre exemple). Attention, parfois cette méthode va rater et il faudra faire du [backtracking](https://fr.wikipedia.org/wiki/Retour_sur_trace) (ne l'implémentez pas ici, cela va au delà de cette semaine) -->

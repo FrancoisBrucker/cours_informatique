@@ -125,7 +125,7 @@ Un projet informatique doit avoir une documentation qui permettent aux utilisate
 
 Notre fichier `README.md`{.fichier} :
 
-```txt
+```markdown
 # Projet "Hello dev !"
 
 ## À propos
@@ -317,4 +317,55 @@ Félicitations, vous avez fait votre premier projet fonctionnel !
 
 Ce projet est un squelette que vous pourrez utiliser dans tous vos projet.
 
-Le code complet est disponible à [cette adresse]()
+Il contient 4 fichiers indispensable à tout projet
+
+### le programme principal
+
+Ici le fichier `main.py`{.fichier} :
+
+```python
+from fonctions import bonjour
+
+print(bonjour("monde"))
+```
+
+### les fonctions
+
+Les différents fichiers contenant les diverses fonctions que va utiliser le programme principal. Nous n'en avons qu'un ici, `fonctions.py`{.fichier} :
+
+```python
+def bonjour(nom):
+    return "bonjour " + nom + " !"
+
+```
+
+### les tests
+
+toute fonction hors programme principal doit être testée. On regroupe habituellement les tests par fichiers de fonctions. Ici nous n'avons qu'un fichier de fonction qui s'appelle `fonctions.py`{.fichier}, nous allons donc avoir un unique fichier de test qui s'appelle `test_fonctions.py`{.fichier} :
+
+```python
+from fonctions import bonjour
+
+
+def test_bonjour():
+    assert bonjour("monde") == "bonjour monde !"
+
+```
+
+### la documentation
+
+Tout projet doit contenir un fichier expliquant comment l'utiliser. Il s'appelle usuellement `README.md`{.fichier}. Le notre est minimal :
+
+```markdown
+# Projet "Hello dev !"
+
+## À propos
+
+Un exemple de projet en python qui dit bonjour.
+
+## Utilisation
+
+Exécutez le fichier `main.py`.
+
+
+```

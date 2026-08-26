@@ -38,6 +38,11 @@ Dans UML :
 
 -->
 
+<!-- TBD changement
+
+- UML attribut/méthodes privées +/-
+- UML diagrammes de fonctionnement ?
+ -->
 
 
 La programmation objet est un sujet très commenté. Il existe de nombreux cours en parlant et ce depuis de très longues années. Vous côtoierez donc sur internet des choses très anciennes (aux concepts désuets ou en disgrâce comme l'héritage) aux choses très récentes (aux concepts non encore clairement établis et dont on ne sait s'ils survivront à l'épreuve du temps). Le but ici est de présenter les bases opérationnelles et les raisons fondamentales de ce type de programmation et de pourquoi il est utilisé dans la quasi-totalité des langages actuels.
