@@ -32,36 +32,46 @@ La position du dé doit être un entier entre 1 et 6.
 Des spécifications précédentes, on doit pouvoir en déterminer la modélisation UML.
 
 
+{% exercice %}
+
+Proposez une modélisation UML de la classe `Dé`{.language-}.
+
+{% endexercice %}
+{% details "corrigé" %}
+![uml](./uml.png)
+{% enddetails %}
+
+### Squelette python
+
 {% faire %}
-
-1. Proposez une modélisation UML de la classe `Dé`{.language-}.
-2. Donnez des exemples de code qui manipulent des objets de cette classe, comme :
-   - créer un objet
-   - afficher sa position à l'écran
-   - modifier sa position
-   - lancer le dé
-
+Créez un dossier `projet-dés`{.fichier} sur votre ordinateur et ouvrez-le avec visual studio code pour un faire votre projet.
 {% endfaire %}
 
-### Code python (squelette)
+On va créer tous les fichiers nécessaires dans le projet, mais avant de coder directement commençons par créer le squelette du projet.
 
-{% attention2 "**À retenir : Conventions de nommage en python**" %}
+{% exercice %}
 
-En résumé :
+Créez le fichier `dé.py`{.fichier} dans le projet et mettez uniquement les méthodes de la classe sans le code proprement dit. 
+{% endexercice %}
+{% info %}
+Pour que votre code soit du code python valide, il faut que chaque bloc ait au moins une instruction. Vous pourrez utiliser l'instruction [`pass`{.language-}](https://www.docstring.fr/glossaire/pass/) qui ne fait rien.
 
-- les noms de variables, de fonctions et de méthodes sont écrites :
-  - tout en minuscules
-  - utilisent le [_Snake case_](https://fr.wikipedia.org/wiki/Snake_case) où les mots sont séparés par des _underscores_ (`_`{.language-})
-- les constantes sont écrites tout en majuscule
-- le noms de classes sont écrites :
-  - avec une majuscule
-  - utilisent le [_Camel case_](https://fr.wikipedia.org/wiki/Camel_case) où les mots sont attachés les uns aux autres mais commencent par une majuscule
-- les noms commençant par `__` et se finissant par `__` (comme `__name__`) ont des significations précises
+{% endinfo %}
+{% details "corrigé" %}
 
-{% endattention2 %}
-{% lien %}
-Toutes les [conventions de nommage de python](https://peps.python.org/pep-0008/#prescriptive-naming-conventions).
-{% endlien %}
+Fichier `dé.py`{.language-} :
+
+```python
+class Dé:
+    def __init__(self):
+        pass
+
+    def lancer(self):
+        pass
+
+```
+
+{% enddetails %}
 
 {% note "**Conventions**" %}
 
@@ -73,18 +83,109 @@ Toutes les [conventions de nommage de python](https://peps.python.org/pep-0008/#
 En python, beaucoup de choses sont des [conventions](https://en.wikipedia.org/wiki/Convention_over_configuration) (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée. Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façons de faire classiques, décrites dans la [PEP 8](https://peps.python.org/pep-0008/) de python.
 {% endinfo %}
 
-> commencer par mimer l'UML avec des méthodes pass.
-On a utilisé l'instruction [`pass`{.language-}](https://www.docstring.fr/glossaire/pass/) qui ne fait rien. Nous l’utilisons ici car la définition d'une classe crée un bloc (il y a un `:`) et que tout bloc **doit** contenir une instruction.
+On a pas fini ! Il faut encore écrire les tests relatifs à notre classe. Pour l'instant on ne peut guère que vérifier que l'on crée bien un objet de la classe `Dé`{.language-}.
+
+{% exercice %}
+
+Créez le fichier `test_dé.py`{.fichier} et testez que le constructeur de la classe `Dé`{.language-} crée bien un objet de la classe `Dé`{.language-}.
+{% endexercice %}
+{% info %}
+Vous pourrez utiliser [la fonction python `isinstance`{.language-}](https://docs.python.org/fr/3.14/library/functions.html#isinstance)
+
+{% endinfo %}
+{% details "corrigé" %}
+
+Fichier `test_dé.py`{.language-} :
+
+```python
+from dé import Dé
 
 
+def test_init():
+   dé = Dé()
+    assert isinstance(dé, Dé)
 
-Faites en particulier attention à la façon dont vous voulez lancer le dé.
 
-## Projet vscode
+```
 
-{% faire %}
-Créez un dossier `projet-dés`{.fichier} sur votre ordinateur et ouvrez-le avec visual studio code pour un faire votre projet.
-{% endfaire %}
+Comme le retour du constructeur est directement l'objet, la variable `dé`{.language-} est inutile et  on peut très bien directement écrire le test suivant :
+
+```python
+from dé import Dé
+
+
+def test_init():
+    assert isinstance(Dé(), Dé)
+
+
+```
+
+Ne confondez pas `Dé`{.language-} est la classe et `Dé()`{.language-} qui est le résultat du constructeur, c'est à dire un objet de la classe `Dé`{.language-}.
+{% enddetails %}
+
+
+Il nous reste une chose à faire pour que notre code python soit conforme à l'UML : la déclaration des attributs. En python les attributs sont affecté dans le constructeur.
+
+
+{% exercice %}
+
+Créez les attributs des objets de la classe `Dé`{.language-}.
+{% endexercice %}
+{% details "corrigé" %}
+
+Fichier `dé.py`{.language-} :
+
+```python
+class Dé:
+    def __init__(self):
+        self.position = 1
+
+    def lancer(self):
+        pass
+
+```
+
+{% enddetails %}
+
+
+{% exercice %}
+
+Ajoutez un test qu projet qui vérifie que l'attribut `position`{.language-}  d'un objet de la classe `Dé`{.language-} fraîchement crée est bien à !
+{% endexercice %}
+{% details "corrigé" %}
+
+Fichier `test_dé.py`{.language-} :
+
+```python
+from dé import Dé
+
+# ...
+
+def test_position():
+   dé = Dé()
+    assert dé.position == 1
+
+
+```
+
+On peut encore une fois raccourcir le test si l'on veut en utilisant directement le retour du constructeur :
+
+```python
+from dé import Dé
+
+# ...
+
+def test_position():
+    assert Dé().position == 1
+
+
+```
+
+{% enddetails %}
+
+## Code Classe
+
+> TBD avec tests.
 
 ## User stories
 
