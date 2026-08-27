@@ -9,24 +9,28 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
-Projet sur le codage d'objets en python. On verra comment créer petit à petit un objet qui corresponde à nos attentes en termes de fonctionnalités tout en étant agréable à utiliser.
-
-<!-- end résumé -->
+Projet sur le codage d'objets en python. Notre but est de pouvoir créer des dés virtuels pour pouvoir [jouer au 421](https://fr.wikipedia.org/wiki/421_(jeu)).
 
 {% note "**Méthode de conception**" %}
 Lorsque l'on crée un objet qui correspond à un objet réel, il faut faire en sorte que le code l'utilise comme on le ferait dans la réalité.
 {% endnote %}
 
-Nous allons montrer le principe précédent en créant petit à petit une classe permettant de jouer aux dés. La classe `Dé`{.language-} doit être capable de :
+## Fonctionnalités d'un Dé
+
+Si on veut pouvoir utiliser nos dés virtuels comme un vrai dé physique, la classe `Dé`{.language-} doit être capable de :
 
 - créer un objet sans paramètre (sa position est alors 1),
-- créer un objet avec une position initiale différente de 1,
+
 - connaître et donner la position du dé,
 - lancer un dé en utilisant une méthode nommée `lancer()`{.language-} qui ne rend **rien**, mais change la position du dé de façon aléatoire.
 
 La position du dé doit être un entier entre 1 et 6.
+
+### Modélisation UML
+
+Des spécifications précédentes, on doit pouvoir en déterminer la modélisation UML.
+
 
 {% faire %}
 
@@ -38,6 +42,41 @@ La position du dé doit être un entier entre 1 et 6.
    - lancer le dé
 
 {% endfaire %}
+
+### Code python (squelette)
+
+{% attention2 "**À retenir : Conventions de nommage en python**" %}
+
+En résumé :
+
+- les noms de variables, de fonctions et de méthodes sont écrites :
+  - tout en minuscules
+  - utilisent le [_Snake case_](https://fr.wikipedia.org/wiki/Snake_case) où les mots sont séparés par des _underscores_ (`_`{.language-})
+- les constantes sont écrites tout en majuscule
+- le noms de classes sont écrites :
+  - avec une majuscule
+  - utilisent le [_Camel case_](https://fr.wikipedia.org/wiki/Camel_case) où les mots sont attachés les uns aux autres mais commencent par une majuscule
+- les noms commençant par `__` et se finissant par `__` (comme `__name__`) ont des significations précises
+
+{% endattention2 %}
+{% lien %}
+Toutes les [conventions de nommage de python](https://peps.python.org/pep-0008/#prescriptive-naming-conventions).
+{% endlien %}
+
+{% note "**Conventions**" %}
+
+- les **noms** de classe commencent par une **majuscule**
+- l'implémentation de la classe est placée dans un **fichier** de même nom mais avec une **minuscule**
+
+{% endnote %}
+{% info %}
+En python, beaucoup de choses sont des [conventions](https://en.wikipedia.org/wiki/Convention_over_configuration) (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée. Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façons de faire classiques, décrites dans la [PEP 8](https://peps.python.org/pep-0008/) de python.
+{% endinfo %}
+
+> commencer par mimer l'UML avec des méthodes pass.
+On a utilisé l'instruction [`pass`{.language-}](https://www.docstring.fr/glossaire/pass/) qui ne fait rien. Nous l’utilisons ici car la définition d'une classe crée un bloc (il y a un `:`) et que tout bloc **doit** contenir une instruction.
+
+
 
 Faites en particulier attention à la façon dont vous voulez lancer le dé.
 

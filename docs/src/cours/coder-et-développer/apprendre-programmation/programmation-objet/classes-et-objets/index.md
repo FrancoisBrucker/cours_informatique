@@ -31,7 +31,13 @@ Pour pouvoir facilement créer une structure particulière et donner un moyen si
 
 <div id="compteur-code"></div>
 
-On crée une classe par rapport à un besoin que l'on veut satisfaire. Supposons que l'on veuille créer une classe compteur qui permettent d'exécuter le code suivant :
+On crée une classe par rapport à un besoin que l'on veut satisfaire. Supposons que l'on veuille créer une classe compteur qui doit satisfaire les besoins suivant :
+
+- créer un compteur de valeur initiale 0,
+- pouvoir ajouter une unité à un compteur via une méthode,
+- connaître la valeur du compteur.
+
+Le code python suivant est correcte et utilise une classe compteur qui satisfait nos besoins :
 
 ```python/
 from compteur import Compteur
@@ -42,41 +48,30 @@ c1.incrémente()
 c2.incrémente()
 c1.incrémente()
 
-print(c2.valeur)
+print(c1.valeur, c2.valeur)
+
 ```
 
-Pour construire cette cette classe, il faut se poser la question :
-
-- _"que dois-je pouvoir faire avec mon compteur ? "_ ce qui permettra de déterminer les méthodes de la classe
-- _"que dois-je stocker comme information pour que les méthodes fonctionnent ?"_ ce qui permettra de déterminer les attributs de chaque objet.
-
-### Analyse du besoin
-
-Ici notre besoin c'est de faire marcher le bout de code d'une façon plausible. Il faut se demander ce que veut l'utilisateur de ce code python.
-
-Le programme commence par importer le mot `Compteur`{.language-} d'un module nommé `compteur`{.language-} (donc placé dans un fichier  nommé `compteur.py` dans le dossier du projet) et on l'exécute 2 fois pour l'affecter à 2 noms différents. Pour voir ce que peut être `Compteur`{.language-}, plusieurs indices :
-
-- cela **ne doit pas être** une fonction normale, sinon `c1`{.language-} et `c2`{.language-} seraient identiques.
-- le mot `Compteur`{.language-} à une majuscule, ce qui correspond (par convention) en python à des noms de classes 
+{% exercice %}
+Que fait le code précédent ? En particulier que va afficher l'instruction `print`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
 
 A la lecture du code, on a donc _envie_ que le code :
 
-1. création de deux compteurs
-2. en incrémente un deux fois et l'autre qu'une seule fois
-3. affiche à l'écran la valeur d'un des compteurs (celui qui a été incrémenté une fois) qu'on suppose égale à 1
+1. crée de deux compteurs de valeur initiales 0,
+2. incrémente le compteur `c1`{.language-} deux fois et le compteur `c2`{.language-} une fois avec **la méthode** `incrémente`{.language-}
+3. affiche à l'écran **l'attribut** `valeur`{.language-} des compteurs `c1`{.language-} et `c2`{.language-}. Cet attribut représente le nombre de fois où chaque compteur a été incrémenté, c'est à dire 2 pour `c1`{.language-} et 1 pour `c2`{.language-}
 
-{% note %}
+{% enddetails %}
+
+Notez que l'on a pas eu besoin du code de `Compteur()`{.language-} ni de `incrémente()`{.language-} pour "_voir_" ce que faisait le code. C'est une de la puissance de la programmation objet :
+
+{% attention2 "**À retenir**" %}
 Un code dont les objets sont bien nommés doit pouvoir se lire et être interprétable sans connaître le corps des fonctions et méthodes utilisées.
-{% endnote %}
+{% endattention2 %}
 
-
-Les fonctionnalités que notre compteur doit avoir sont :
-
-- ajouter une unité à un compteur
-- connaître la valeur du compteur.
-
-Pour que l'on puisse avoir plusieurs compteurs (si on n'a qu'un seul compteur, ce n'est pas la peine de faire des objets), il faut que chaque compteur ait une valeur à lui : `valeur`{.language-} est un attribut. En revanche, on veut pouvoir incrémenter tous les compteurs : `incrémente()`{.language-} est une méthode.
-
+Formalisation cette notion de besoin avec l'UML.
 
 ### Modélisation UML
 
@@ -90,11 +85,18 @@ L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme u
 
 ![une classe UML](classes-1.png)
 
-- pour chaque attribut on pourra préciser le _type_ (entier, chaîne de caractères, une classe particulière d'objet, ...) si c'est important
-- pour chaque méthode on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète (son nom et ses paramètres) pour que l'on puisse l'utiliser.
-- le constructeur de la classe sera désigné par le nom de la classe
+{% note2 "**Définition**" %}
+Un diagramme UML est une boite qui décrit une classe. Elle contient 4 informations  :
 
-On peut même combiner les diagramme UML ensemble. Par exemple un point et un polygone :
+- `<nom de la classe>` qui sera un nom sans espace. En python ce nom sera avec une majuscule.
+- une case pour y placer **les différents attributs**. on précisera le _type_ (entier, chaîne de caractères, une classe particulière d'objet, ...) de chaque attribut
+- **le constructeur** de la classe qui sera exécuté pour créer un objet. On le désigne en UML par le nom de la classe (en python, c'est `__init__`{.language-}) et on en donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète.
+- une case pour toutes **les méthodes** dont on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète.
+
+{% endnote2 %}
+
+
+Par exemple un point et un polygone qui les utilise :
 
 ![point / polygone](uml-exemple-1.png)
 
@@ -102,7 +104,16 @@ Ou le classique personne et compte bancaire :
 
 ![personne / compte](uml-exemple-2.png)
 
+
 #### UML du Compteur
+
+{% attention2 "**À retenir**" %}
+Pour construire le modèle UML d'une classe, il faut se poser les deux questions suivantes :
+
+- _"que dois-je pouvoir faire ? "_ ce qui permettra de déterminer les méthodes de la classe
+- _"que dois-je stocker comme information pour que les méthodes fonctionnent ?"_ ce qui permettra de déterminer les attributs de chaque objet.
+{% endattention2 %}
+
 
 On va essayer de comprendre le code pour produire une représentation UML de la classe `Compteur`{.language-}. L'analyse du besoin que l'on a effectué nous a permit de définir l'usage ue l'on veut faire du compteur :
 
@@ -150,7 +161,7 @@ class Compteur:
 On va détailler plus tard les méthodes et moyens de construire des classes en python mais de l'écriture de la classe compteur on peut d'ores et déjà en déduire que :
 
 - une classe est un bloc python
-- le constructeur est une fonction définie dans le bloc de classe et qui s'appelle `__init__`{.language-}
+- le constructeur est une fonction définie dans le bloc de classe et qui s'appelle `__init__`{.language-} (c'est une méthode spéciale !)
 - les attributs sont assignés dans l'espace de nom d'un objet nommé `self`{.language-} qui est le premier paramètres de toutes les fonctions définies dans la classe
 - les méthodes sont des fonctions définies dans la classe
 
@@ -158,7 +169,7 @@ On va détailler plus tard les méthodes et moyens de construire des classes en 
 
 ### Définition de classes
 
-La définition d'une classe est un bloc python contenant deux parties :
+La définition d'une classe est un bloc python :
 
 ```python
 
@@ -173,22 +184,25 @@ class <nom de la classe>:
     # autres méthodes
 ```
 
-- La première partie est constituée du constructeur nommé `__init__`{.language-}
-- La seconde parties est constituées des différentes méthodes
+Ce bloc contient :
+- le nom de la classe,
+- le constructeur qui sera **toujours** la méthode : `__init__`{.language-}. C'est une méthode spéciale,
+- les méthodes.
 
-En python, toutes les méthodes sont des fonctions définies dans le bloc classe :
+Notez qu'en python on ne décrit pas les différents attributs. On les créera dans le constructeur en utilisant le paramètre `self`{.language-} qui est présent dans **toutes les méthodes** et contient l'objet appelant la méthode (on verra comment en détail ci-après).
 
-- le constructeur d'une classe sera **toujours** la méthode : `__init__`{.language-}. C'est une méthode spéciale.
-- le 1er paramètre de chaque méthode est **toujours** `self`{.language-}. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.
+{% attention2 "**À retenir**" %}
+En python :
 
-{% attention %}
-La méthode `__init__`{.language-} n'a pas de `return`{.language-}, mais elle est utilisée dans le processus de création d'un objet.
-{% endattention %}
+- les attributs sont déclarés dans le constructeur,
+- `__init__`{.language-} n'a pas de `return`{.language-},
+- le constructeur et les méthodes ont toutes comme premier paramètre `self`{.language-} qui contient l'objet appelant.
+{% endattention2 %}
 
 De façon formelle :
 
 {% note2 "**Définition**" %}
-Une classe en python est un **_objet de type classe_** contenant [un espace de nommage](../../bases-programmation/espace-nommage/){.interne}.
+Une classe en python est un **_objet de type classe_** contenant [un espace de nommage](../../concepts/utilisation-modules/#définition-espace-nommage){.interne}.
 
 {% endnote2 %}
 
@@ -292,3 +306,7 @@ Détaillez l'exécution de la ligne 9 de [l'exemple du compteur](./#compteur-cod
 4. L'espace de nommage de cet objet contient le nom `valeur`{.language-} qui est associé à un entier valant 1 : c'est notre paramètre de la fonction `print`{.language-}
 5. on affiche à l'écran un entier valant 1.
 {% enddetails  %}
+
+## Code Python
+
+Le code de la classe compteur est [disponible ici]().

@@ -25,3 +25,4 @@ eleventyComputed:
 > - profilage de code ?
 > - interfaces
 > - [mémoire](./données-mémoire/){.interne}
+> - TDD et design pattern

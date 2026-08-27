@@ -14,6 +14,8 @@ eleventyComputed:
 ---
 
 
+> TBD - créer un objet avec une position initiale différente de 1,
+
 Nous allons améliorer la classé que nous avions crée lors du projet précédent (en prérequis).
 
 {% details "Un code possible du Dé" %}

@@ -124,12 +124,12 @@ Une classe :
 Un objet issu d'une certaine classe :
 
 - possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses **attributs**
-- possède un lien vers les **méthodes** (définies dans sa classe) qu'il peut utiliser via la [notation pointée](../../bases-programmation/espace-nommage/#notation-pointée){.interne} : `objet.méthode(paramètre_1, ..., paramètre_n)`{.language-}
+- possède un lien vers les **méthodes** (définies dans sa classe) qu'il peut utiliser via [la notation pointée](../../concepts/utilisation-modules/#définition-notation-pointée){.interne} : `objet.méthode(paramètre_1, ..., paramètre_n)`{.language-}
 
 {% attention2 "**À retenir**" %}
 La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de _coder objet_ car :
 
-- cela favorise la factorisation du code ([on ne se répète pas](../../écrire-code/coder#DRY){.interne}) : on ne définit ses méthodes qu'une seule fois dans les classes
+- cela favorise la factorisation du code ([on ne se répète pas](../../coder-projets/écrire-code/bonnes-pratiques#DRY){.interne}) : on ne définit ses méthodes qu'une seule fois dans les classes
 - lisibilité avec la notation `.`{.language-} : on sait clairement à qui s'applique telle ou telle méthode
 - compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.
 - plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.
@@ -248,15 +248,37 @@ Les trois écritures sont identiques en python, mais bien sur, nous préféreron
 2. `int.__add__(1, 2)`{.language-}
 3. `(1).__add__(2)`{.language-}
 
-{% info %}
+
 Remarquez que l'opération `+`{.language-} n'est pas identique pour `1 + 2`{.language-} et `1.0 + 2`{.language-}. Dans le premier cas c'est l'addition définie dans `int`{.language-} qui est utilisé, dans le second cas c'est celle définie dans `float`{.language-}.
+
+
+{% attention2 "**À retenir**" %}
+
+**Tout** ce que l'ont peut faire avec un type d'objet est définie pas ses méthodes.
+
+{% endattention2 %}
+
+Certaines méthodes peuvent-être utilisées autrement que via la notation pointée que python détermine (comme la méthode `__add__`{.language-} qui permet d'additionner 2 objets en utilisant l'opérateur `+`). 
+
+{% note2 "**Définition**" %}
+Python définie des **_méthodes spéciales_** que l'on peut utiliser autrement que via la notation pointée. Ces méthodes sont **toujours** définies de la même manière, en commençant et finissant par deux underscores :
+
+```txt
+__<nom de la méthode>__
+```
+
+Ces méthodes sont utilisées par python dans des cas spécifiques, on ne les utilisera quasi-jamais de façon explicite.
+
+{% endnote2 %}
+{% info %}
+Le caractère `_`, aussi parfois improprement appelé _tiret-du-huit_ car c'est ce caractère qui est sous le 8 pour des claviers français PC (ce n'est pas vrai sur mac et encore moins pour d'autres types de claviers).
 {% endinfo %}
 
-En python les méthodes qui commencent et finissent par deux underscores (le caractère `_`, aussi parfois improprement appelé _tiret-du-huit_ car c'est ce caractère qui est sous le 8 pour des claviers français PC (ce n'est pas vrai sur mac et encore moins pour d'autres types de claviers)) sont des méthodes utilisées par python dans des cas spécifiques, on ne les utilisera quasi-jamais de façon explicite.
+Il existe tout un tas de méthodes spéciales et nous en verrons quelques unes tout au long de ce cours. S'il n'est pas utile de toutes les connaître quelques unes sont très pratiques et souvent utilisées. 
 
 ### Listes
 
-Les entiers et les chaînes de caractères sont des objet dit **_immutable_** c'est à dire qu'aucune de leurs méthodes ne les modifient : elles ne font que rendre de nouveaux objets. Ce n'est pas le cas des listes.
+Les entiers et les chaînes de caractères sont [des objets **_immutable_**](../../concepts/mutable-immutable){.interne} c'est à dire qu'aucune de leurs méthodes ne les modifient : elles ne font que rendre de nouveaux objets. Ce n'est pas le cas des listes.
 
 ```python
 >>> l = [1, 2, 3]
@@ -278,7 +300,7 @@ La liste `l`{.language-} est **modifiée** par la méthode [`list.extend`{.langu
 
 ```
 
-Mais souvent les méthodes qui ne rendent rien (donc qui rendent `None`) modifient les objets :
+Mais souvent les méthodes qui ne rendent rien (donc qui rendent `None`{.language-}) modifient les objets :
 
 ```python
 >>> l = [1, 2, 3]
