@@ -227,7 +227,7 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 <p>Un objet issu d'une certaine classe :</p>
 <ul>
 <li>possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses <strong>attributs</strong></li>
-<li>possède un lien vers les <strong>méthodes</strong> (définies dans sa classe) qu'il peut utiliser via la <a href="../../bases-programmation/espace-nommage/#notation-point%C3%A9e" class="interne">notation pointée</a> : <code class="language-">objet.méthode(paramètre_1, ..., paramètre_n)</code></li>
+<li>possède un lien vers les <strong>méthodes</strong> (définies dans sa classe) qu'il peut utiliser via <a href="../../concepts/utilisation-modules/#d%C3%A9finition-notation-point%C3%A9e" class="interne">la notation pointée</a> : <code class="language-">objet.méthode(paramètre_1, ..., paramètre_n)</code></li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -238,7 +238,7 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 </div><div class="pl-8 mr-8">
 <p>La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de <em>coder objet</em> car :</p>
 <ul>
-<li>cela favorise la factorisation du code (<a href="../../%C3%A9crire-code/coder#DRY" class="interne">on ne se répète pas</a>) : on ne définit ses méthodes qu'une seule fois dans les classes</li>
+<li>cela favorise la factorisation du code (<a href="../../coder-projets/%C3%A9crire-code/bonnes-pratiques#DRY" class="interne">on ne se répète pas</a>) : on ne définit ses méthodes qu'une seule fois dans les classes</li>
 <li>lisibilité avec la notation <code class="language-">.</code> : on sait clairement à qui s'applique telle ou telle méthode</li>
 <li>compartimentation du code : chaque partie du code et chaque opération est compartimentée, ce qui permet de les tester et des améliorer indépendamment du reste du code.</li>
 <li>plutôt que de créer un gros programme complexe, on crée plein de petits programmes indépendants (les objets) qui interagissent entre eux.</li>
@@ -337,17 +337,41 @@ coucou
 <li><code class="language-">int.__add__(1, 2)</code></li>
 <li><code class="language-">(1).__add__(2)</code></li>
 </ol>
+<p>Remarquez que l'opération <code class="language-">+</code> n'est pas identique pour <code class="language-">1 + 2</code> et <code class="language-">1.0 + 2</code>. Dans le premier cas c'est l'addition définie dans <code class="language-">int</code> qui est utilisé, dans le second cas c'est celle définie dans <code class="language-">float</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Tout</strong> ce que l'ont peut faire avec un type d'objet est définie pas ses méthodes.</p>
+</div></div>
+
+<p>Certaines méthodes peuvent-être utilisées autrement que via la notation pointée que python détermine (comme la méthode <code class="language-">__add__</code> qui permet d'additionner 2 objets en utilisant l'opérateur <code>+</code>).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Python définie des <strong><em>méthodes spéciales</em></strong> que l'on peut utiliser autrement que via la notation pointée. Ces méthodes sont <strong>toujours</strong> définies de la même manière, en commençant et finissant par deux underscores :</p>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">__&lt;nom de la méthode>__</code></pre>
+<p>Ces méthodes sont utilisées par python dans des cas spécifiques, on ne les utilisera quasi-jamais de façon explicite.</p>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Remarquez que l'opération <code class="language-">+</code> n'est pas identique pour <code class="language-">1 + 2</code> et <code class="language-">1.0 + 2</code>. Dans le premier cas c'est l'addition définie dans <code class="language-">int</code> qui est utilisé, dans le second cas c'est celle définie dans <code class="language-">float</code>.</p>
+<p>Le caractère <code>_</code>, aussi parfois improprement appelé <em>tiret-du-huit</em> car c'est ce caractère qui est sous le 8 pour des claviers français PC (ce n'est pas vrai sur mac et encore moins pour d'autres types de claviers).</p>
 </div></div>
 
-<p>En python les méthodes qui commencent et finissent par deux underscores (le caractère <code>_</code>, aussi parfois improprement appelé <em>tiret-du-huit</em> car c'est ce caractère qui est sous le 8 pour des claviers français PC (ce n'est pas vrai sur mac et encore moins pour d'autres types de claviers)) sont des méthodes utilisées par python dans des cas spécifiques, on ne les utilisera quasi-jamais de façon explicite.</p>
+<p>Il existe tout un tas de méthodes spéciales et nous en verrons quelques unes tout au long de ce cours. S'il n'est pas utile de toutes les connaître quelques unes sont très pratiques et souvent utilisées.</p>
 <h3>Listes</h3>
-<p>Les entiers et les chaînes de caractères sont des objet dit <strong><em>immutable</em></strong> c'est à dire qu'aucune de leurs méthodes ne les modifient : elles ne font que rendre de nouveaux objets. Ce n'est pas le cas des listes.</p>
+<p>Les entiers et les chaînes de caractères sont <a href="../../concepts/mutable-immutable" class="interne">des objets <strong><em>immutable</em></strong></a> c'est à dire qu'aucune de leurs méthodes ne les modifient : elles ne font que rendre de nouveaux objets. Ce n'est pas le cas des listes.</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> l<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
@@ -360,7 +384,7 @@ coucou
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
 </code></pre>
-<p>Mais souvent les méthodes qui ne rendent rien (donc qui rendent <code>None</code>) modifient les objets :</p>
+<p>Mais souvent les méthodes qui ne rendent rien (donc qui rendent <code class="language-">None</code>) modifient les objets :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span>extend<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token boolean">None</span>

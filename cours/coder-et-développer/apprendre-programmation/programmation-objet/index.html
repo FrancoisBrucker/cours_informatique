@@ -111,42 +111,24 @@
     
   
 
-  <!-- TBD 
-
-à refaire en 
-
-1. mettre l'argumentaire avec les objets partout dans un fichier à part.
-2. 
-3. mettant améliorer ses objets (property, méthodes de classes) à la toute fin. Juste parler à la fin du cours 
-
-- de str et repr comme méthodes spéciales.
-- des comparaisons de cartes
-
-Faire 1h de cours et 3h de code :
-- 1h cours avec compteur
-- 1h TD avec dés
-- 2h TP avec carte.
-
-Dans UML :
-
-- parler de protégé / public : en python parler des _ pour protéger
-- parler des autres diagbramme UML
-
--->
-<!-- TBD changement
-
-- UML attribut/méthodes privées +/-
-- UML diagrammes de fonctionnement ?
- -->
-<p>La programmation objet est un sujet très commenté. Il existe de nombreux cours en parlant et ce depuis de très longues années. Vous côtoierez donc sur internet des choses très anciennes (aux concepts désuets ou en disgrâce comme l'héritage) aux choses très récentes (aux concepts non encore clairement établis et dont on ne sait s'ils survivront à l'épreuve du temps). Le but ici est de présenter les bases opérationnelles et les raisons fondamentales de ce type de programmation et de pourquoi il est utilisé dans la quasi-totalité des langages actuels.</p>
+  <p>La programmation objet est un sujet très commenté. Il existe de nombreux cours en parlant et ce depuis de très longues années. Vous côtoierez donc sur internet des choses très anciennes (aux concepts désuets ou en disgrâce comme l'héritage) aux choses très récentes (aux concepts non encore clairement établis et dont on ne sait s'ils survivront à l'épreuve du temps). Le but ici est de présenter les bases opérationnelles et les raisons fondamentales de ce type de programmation et de pourquoi il est utilisé dans la quasi-totalité des langages actuels.</p>
 <p>Ce cours devrait vous permettre de vous lancer dans la programmation objet dans tout langage, mais nous illustrerons tous les principes vues en python. Il restera bien sur des choses à découvrir, des concepts avancés ou encore les subtilités d'utilisation des objets dans divers langages, mais après ce cours vous devriez être bien préparé.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Le but de la programmation objet est d'écrire du code :</p>
 <ul>
 <li>facile à lire</li>
 <li>maintenable</li>
 <li>facile à étendre en ajoutant des fonctionnalités</li>
 </ul>
-<p>Si un concept objet va à l'encontre de ce principe dans votre programme <strong>NE L'UTILISEZ PAS</strong>. C'est souvent vrai pour l'héritage qui n'a d'utilité que dans des cas très précis...</p>
+<p>Si un concept objet va à l'encontre de ce principe dans votre programme <strong>NE L'UTILISEZ PAS</strong>.</p>
+</div></div>
+
 <h2><span id="classes-objets"></span>Classes et objets</h2>
 <h3>Tout est objet en python</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -171,18 +153,10 @@ Dans UML :
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="coder-ses-objets" class="interne">Coder ses objets</a></p>
-</div></div>
-
-<p>On s'entraîne à la création d'objets :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
 <p><a href="projet-objets-d%C3%A9s" class="interne">Projet dés</a></p>
 </div></div>
 
+<p>On s'entraîne à la création d'objets :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -200,7 +174,6 @@ Dans UML :
 <p><a href="am%C3%A9liorer-ses-objets" class="interne">Améliorer ses objets</a></p>
 </div></div>
 
-<p>On s'entraîne en perfectionnant nos dés et cartes :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -209,6 +182,7 @@ Dans UML :
 <p><a href="projet-objets-d%C3%A9s-am%C3%A9lioration" class="interne">Améliorons nos dés</a></p>
 </div></div>
 
+<p>On s'entraîne en perfectionnant nos cartes :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -226,7 +200,6 @@ Dans UML :
 <p><a href="composition-agr%C3%A9gation" class="interne">Composition et agrégation</a></p>
 </div></div>
 
-<p>Reprenons nos objets et combinons les avec d'autres :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -235,6 +208,7 @@ Dans UML :
 <p><a href="projet-composition-d%C3%A9s" class="interne">Projet de compositions de dés</a></p>
 </div></div>
 
+<p>Reprenons nos objets et combinons les avec d'autres :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
