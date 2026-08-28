@@ -277,9 +277,7 @@ Ce qui donnerait le code :
 ```python
 class Compteur:
     def __init__(self, pas=1, valeur=0):
-        assert pas != 0
         self._pas = pas
-
         self.valeur = valeur
 
     # ...
@@ -288,7 +286,6 @@ class Compteur:
         return self._pas
 
     def set_pas(self, pas):
-        assert pas != 0
         self._pas = pas
 
 
@@ -347,6 +344,7 @@ Si vous ne savez pas si c'est l'attribut de classe ou d'objet que vous appelez v
 
 ### property
 
+Les attributs de classes ont un effet de bord sympathique en python qui permet 
 > TBD ici
 > TBD `a = property(get_a, set_a)`
 
