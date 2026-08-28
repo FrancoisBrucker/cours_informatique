@@ -88,6 +88,11 @@ Reprenons nos objets et combinons les avec d'autres :
 {% aller %}
 [Héritage](héritage){.interne}
 {% endaller %}
+{% aller %}
+[dés spécifiques](projet-héritage-dés){.interne}
+{% endaller %}
+
+On implémente les exemples du cours :
 
 {% aller %}
 [Projet héritage](projet-héritage){.interne}

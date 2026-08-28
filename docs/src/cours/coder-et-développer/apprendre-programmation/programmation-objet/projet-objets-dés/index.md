@@ -185,16 +185,85 @@ def test_position():
 
 ## Code Classe
 
-> TBD avec tests.
+Terminons l'implémentation de la classe `Dé`{.language-} en codant la méthode `Dé.lancer()`{.language-}.
+
+Dans la documentation et lorsque l'on décrit une méthode, som nom de la méthode est toujours accolé au nom de la classe qui la définit. Par exemple :  `Dé.lancer()`{.language-} signifie :
+
+- la méthode `lancer`{.language-} de la classe `Dé`{.language-}
+- cette méthode ne prend pas de paramètre.
+
+{% attention2 "**À retenir**" %}
+Lorsque l'on décrit une méthode, on ne montre jamais `self`{.language-}. Ce n'est en effet pas un paramètre de la méthode à proprement parlé, c'est l'**objet** de la méthode : il est à gauche du `.`{.language-} lors de l'appel de la fonction.
+
+On pourrait (mais on ne le fait pas parce que c'est moins clair) replacer le code suivant :
+
+```python
+>>> un_dé = Dé()
+>>> un_dé.lancer()
+```
+
+Par le code ci-après qui est équivalent :
+
+```python
+>>> un_dé = Dé()
+>>> Dé.lancer(un_dé)
+```
+
+{% endattention2 %}
+
+On a toutes les information nécessaire pour le faire : 
+
+{% exercice %}
+Implémentez la méthode `Dé.lancer()`{.language-}. et ses tests.
+{% endexercice %}
+{% info %}
+Utilisez [le module random](https://docs.python.org/fr/3.14/library/random.html) de python
+{% endinfo %}
+{% details "corrigé" %}
+
+Fichier `dé.py`{.language-} :
+
+```python
+class Dé:
+   # ...
+
+    def lancer(self):
+        self.position = random.randrange(1, 6 + 1)
+```
+
+{% enddetails %}
+
+On a pas fini le code puisqu'il manque les tests de la méthode `Dé.lancer()`{.language-} ! On a cependant un soucis car il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la position ne change **sans** que ce soit mal codé). Comme on a besoin que nos fonctionnent toujours, il faut trouver ce qui est toujours vrai après un lancer :
+
+{% exercice %}
+Implémentez un test qui vérifie que la méthode s'est bien exécutée `Dé.lancer()`{.language-} et que la valeur de la position reste entre 1 et 6.
+{% endexercice %}
+{% details "corrigé" %}
+
+Fichier `test_dé.py`{.language-} :
+
+```python
+from dé import Dé
+
+# ...
+
+def test_lancer():
+    dé = Dé()
+    dé.lancer()
+    assert 1 <= dé.position <= 6
+
+```
+
+{% enddetails %}
 
 ## User stories
 
-{% note "Définition" %}
+{% note2 "**Définition**" %}
 Une [user story](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur) est un récit qui nous permet de savoir comment et par qui va être utilisé notre code.
-{% endnote %}
+{% endnote2 %}
 
 L'idée est d'écrire une succession d'actions faites par un utilisateur typique afin de réaliser une tâche précise avec notre programme. Par exemple :
-{% note "**User story**" %}
+{% note2 "**User story**" %}
 
 - Nom : "Aléatoire ?"
 - Utilisateur : un professeur.
@@ -204,9 +273,9 @@ L'idée est d'écrire une succession d'actions faites par un utilisateur typique
   2. afficher à l'écran sa position (ça doit être 1)
   3. lancer le dé 10 fois et affiche la position du dé après chaque lancer. Quelle est la probabilité que le dé ne change jamais ?.
 
-{% endnote %}
+{% endnote2 %}
 
-Essayons de voir ce que donnerait cette user story si on devait la coder :
+Codez cette user story si on devait la coder :
 
 {% exercice %}
 
@@ -235,15 +304,15 @@ for i in range(10):
 
 {% enddetails %}
 
-Comme pour l'instant rien n'est codé :
+La user story fait office de **test fonctionnel** qui permet de vérifier que le code correspond aux attentes des utilisateurs :
 
-{% faire %}
-Commentez les codes python de la user story. A chaque fois que l'on codera une fonctionnalité, on dé-commentera ce qui marchera. A la fin de la session de code, votre user story devra être opérationnelle.
-{% endfaire %}
+{% note2 "**Définition**" %}
+Un **test fonctionnel** est un programme qui démontre les fonctionnalités d'une application. Il est l'implémentation d'une user story.
+{% endnote2 %}
 
-La user story fait office de **test fonctionnel** qui permet de vérifier que le code correspond aux attentes des utilisateurs.
+Au final :
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Un programme aura :
 
 - **toujours** des [tests unitaires](https://fr.wikipedia.org/wiki/Test_unitaire) car ils garantissent que ce que vous avez codé est correct
@@ -251,86 +320,13 @@ Un programme aura :
 
 On exécutera la batterie de tests unitaires à chaque fois que l'on code ou que l'on modifie une fonction, les tests fonctionnels sont exécutés a chaque fois que l'on achève une fonctionnalité.
 
-{% endnote %}
+{% endattention2 %}
 {% info %}
-Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI](../../développement/écrire-code/coder/#YAGNI){.interne}.
+Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI](../../coder-projets/écrire-code/bonnes-pratiques/#YAGNI){.interne}.
 {% endinfo %}
 
-## Code
 
-### Classe vide
-
-{% faire %}
-Crée un ficher `dé.py`{.fichier} contenant une classe `Dé`{.language-} vide et testez avec la fonction de test `test_init()`{.language-} dans un fichier `test_dé.py`{.fichier} que l'on peut créer des objets de cette classe.
-{% endfaire %}
-
-{% faire %}
-Dé-commentez la première partie de la user story et vérifiez qu'elle fonctionne.
-{% endfaire %}
-
-### Attribut `position`{.language-}
-
-{% faire %}
-Ajoutez l'attribut position au dé et assurez vous qu'il est bien initialisé à 1 dans un test nommé `test_position()`{.language-}.
-{% endfaire %}
-
-{% faire %}
-Dé-commentez la seconde partie de la user story et vérifiez qu'elle fonctionne.
-{% endfaire %}
-
-Finalisons les différentes initialisations possible de l'attribut `position`{.language-} :
-
-{% faire %}
-Faites en sorte que l'on doive choisir la position initiale du dé dans le constructeur. Ajoutez un test correspondant dans le test `test_position()`{.language-}.
-{% endfaire %}
-
-### Méthode `Dé.lancer()`{.language-}
-
-{% info %}
-Dans la documentation et lorsque l'on décrit une méthode, som nom de la méthode est toujours accolé au nom de la classe qui la définit. Par exemple :  `Dé.lancer()`{.language-} signifie :
-
-- la méthode `lancer`{.language-} de la classe `Dé`{.language-}
-- cette méthode ne prend pas de paramètre.
-
-{% endinfo %}
-{% attention %}
-Lorsque l'on décrit une méthode, on ne montre jamais `self`{.language-}. Ce n'est en effet pas un paramètre de la méthode à proprement parlé, c'est l'**objet** de la méthode : il est à gauche du `.`{.language-} lors de l'appel de la fonction.
-
-On pourrait (mais on ne le fait pas parce que c'est moins clair) replacer le code suivant :
-
-```python
->>> un_dé = Dé()
->>> un_dé.lancer()
-```
-
-Par le code ci-après qui est équivalent :
-
-```python
->>> un_dé = Dé()
->>> Dé.lancer(un_dé)
-```
-
-{% endattention %}
-
-Il ~~nous~~ vous reste à coder la méthode `Dé.lancer()`{.language-} :
-
-{% faire %}
-Codez la méthode `Dé.lancer()`{.language-} qui modifie aléatoirement la position du dé appelant par un entier allant de 1 à 6.
-{% endfaire %}
-
-Il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la position ne change **sans** que ce soit mal codé), on ne va donc uniquement tester ici que le fait que la méthode lancer s'exécute sans soucis et le résultat reste cohérent :
-
-{% faire %}
-Ajouter un test nommé `test_lancer()`{.language-} qui vérifie que la position d'un dé après un lancer est toujours entre 1 et 6.
-{% endfaire %}
-
-Vous pouvez maintenant voir si la user story fonctionne :
-
-{% faire %}
-Dé-commentez la dernière partie de la user story et vérifiez qu'elle fonctionne.
-{% endfaire %}
-
-### Affichage
+## Affichage
 
 Pour l'instant, lorsque l'on tente d'afficher un dé on obtient le charabia suivant :
 
@@ -382,7 +378,7 @@ Avant de coder le programme principal :
 
 Une fois tout ok, on peut commencer à créer le code du `main.py`{.fichier} :
 
-{% faire %}
+{% exercice %}
 
 Créez un fichier `main.py`{.fichier} qui :
 
@@ -392,4 +388,27 @@ Créez un fichier `main.py`{.fichier} qui :
 2. lance le dé jusqu'à tant que sa position est différente de la position demandée par l’utilisateur soit trouvée.
 3. le programme affiche le nombre de lancer nécessaire (cela peut être 0)
 
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
+
+Fichier `main.py`{.language-} :
+
+```python
+from dé import Dé
+
+position_initiale = int(input("valeur initiale du dé : "))
+position_finale = int(input("position finale du dé : "))
+
+dé = Dé()
+dé.position = position_initiale
+
+nombre_lancer = 0
+while dé.position != position_finale:
+    dé.lancer()
+    nombre_lancer += 1
+
+print("Il a fallu : ", nombre_lancer, "lancers")
+
+```
+
+{% enddetails  %}

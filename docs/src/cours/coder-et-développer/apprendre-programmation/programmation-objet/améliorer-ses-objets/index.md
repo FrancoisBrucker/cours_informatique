@@ -9,10 +9,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD attribut privé.
+> TBD attribut de classe
+> str et repr
 
-Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets. Nous allons prendre comme exemple le compteur dont la classe est pour l'instant :
+Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets. Nous allons prendre comme exemple le compteur.
 
+{% details "Le compteur initial" %}
 
+### `compteur.py`{.fichier}
+
+ 
 ```python
 class Compteur:
     def __init__(self):
@@ -23,6 +30,47 @@ class Compteur:
 
 ```
 
+### `test_compteur.py`{.fichier}
+
+```python
+from compteur import Compteur
+
+
+def test_constructeur():
+    c = Compteur()
+    assert isinstance(c, Compteur)
+
+
+def test_valeur_initiale():
+    c = Compteur()
+    assert c.valeur == 0
+
+
+def test_incrémente():
+    c = Compteur()
+
+    c.incrémente()
+    assert c.valeur == 1
+
+    c.incrémente()
+    assert c.valeur == 2
+```
+
+
+### `main.py`{.fichier}
+
+```python
+from compteur import Compteur
+
+c = Compteur()
+
+c.incrémente()
+print(c.donne_valeur())
+c.incrémente()
+print(c.donne_valeur())
+```
+
+{% enddetails %}
 
 ## Paramètres par défaut
 
@@ -68,7 +116,7 @@ class Compteur:
     # ...
 ```
 
-{% note %}
+{% note2 "**Méthode de programmation**" %}
 On définira **toujours** les différents attributs de l'objet dans le constructeur `__init__`{.language-}.
 On le fera de cette façon :
 
@@ -76,7 +124,7 @@ On le fera de cette façon :
 self.nom_attribut = valeur_attribut
 ```
 
-{% endnote %}
+{% endnote2 %}
 
 Cette façon de faire :
 
@@ -85,9 +133,9 @@ Cette façon de faire :
 
 permet à chaque objet (le paramètre `self`{.language-}) d'être différent tout en utilisant les mêmes méthodes.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.
-{% endnote %}
+{% endattention2 %}
 
 Le souci avec la méthode précédente, c'est que même si le pas est de `1`{.language-}, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
 
@@ -124,7 +172,7 @@ print(c2.valeur)
 ```
 
 {% exercice %}
-Ajoutez au `Compteur`{.language-} un paramètre déterminant sa valeur initiale. Il faudra pouvoir créer des compteurs de multiples façon :
+Ajoutez au `Compteur`{.language-} un paramètre déterminant sa valeur initiale. Il faudra pouvoir créer des compteurs de multiples façon (vous modifierez le test `test_valeur_initiale`{.language-}) :
 
 - `Compteur()`{.language-} : créera un compteur de `valeur=0`{.language-} et de `pas=1`{.language-},
 - `Compteur(3)`{.language-} : créera un compteur de `valeur=0`{.language-} et de `pas=3`{.language-},
@@ -143,6 +191,25 @@ class Compteur:
 
     def incrémente(self):
         self.valeur = self.valeur + self.pas
+
+```
+
+
+Et le test :
+
+```python
+def test_valeur_initiale():
+    c = Compteur()
+    assert c.valeur == 0 and c.pas == 1
+
+    c = Compteur(3, 12)
+    assert c.valeur == 12 and c.pas == 3
+
+    c = Compteur(pas=3)
+    assert c.valeur == 0 and c.pas == 3
+
+    c = Compteur(valeur=12)
+    assert c.valeur == 12 and c.pas == 1
 
 ```
 
@@ -171,21 +238,41 @@ Pour éviter cela, on peut :
 - permettre de modifier l'attribut `pas` qu'en utilisant une méthodes spécifique : un _mutateur_
 
 {% note2 "**Définition**" %}
-Un attribut **_privé_** est un attribut qui ne doit pas être utilisé autre-part que dans les définitions de méthodes de la classe. Les attribut directement utilisables dans le code sont dit **_public_**.
+Un attribut ou une méthode **_privée_** est un attribut/méthode qui ne doit pas être utilisé autre part que dans le code des méthodes de la classe. Les attributs/méthodes directement utilisables dans tout code sont dit **_publics_**.
 
-Tout code voulant accéder ou modifier à cet attribut **doit** passer par son accesseur/mutateur.
+En UML on distingue les attributs/méthodes privés des attributs public en mettant devant le nom de l'attribut :
+- un `-` si l'élément est privé
+- rien ou un `+` si l'élément est public
 {% endnote2 %}
+
+Si l'on veut pouvoir  accéder aux attributs privés d'un objet en dehors des méthodes de ses classes, il faut implémenter un accesseur :
 
 {% note2 "**Définition**" %}
 Un **_accesseur_** (**_getter_**) est une méthode dont le but est de rendre un attribut. On la nomme usuellement : `get_[nom de l'attribut]()`{.language-}
 {% endnote2 %}
 
+Et si l'on veut pouvoir modifier un attributs privés on doit définir un mutateur :
 
 {% note2 "**Définition**" %}
 Un **_mutateur_** (**_setter_**) est une méthode dont le but est de modifier un attribut. On la nomme usuellement : `set_[nom de l'attribut](nouvelle_valeur)`{.language-}
 {% endnote2 %}
 
-En python cela s'écrirait ainsi :
+En rendant l'attribut pas privé on aurait l'UML suivant :
+
+![pas privé](compteur-privé.png)
+
+
+En python :
+
+{% attention2 "**À retenir**" %}
+
+L'usage en python peut que les variables privées soient précédées d'un `_`{.language-} pour prévenir le développeur qu'il ne faut pas qu'il utilise ces attributs directement.
+
+Ce n'est qu'une convention qui signifie : "_on ne touche pas si on ne sait pas ce que l'on fait_".
+
+{% endattention2 %}
+
+Ce qui donnerait le code :
 
 ```python
 class Compteur:
@@ -207,26 +294,35 @@ class Compteur:
 
 ```
 
-- en python les variables privées sont précédées d'un `_`{.language-} pour prévenir le développeur qu'il ne faut pas qu'il utilise ces attributs directement (ce n'est qu'une convention)
-- on utilise la fonction assert qui va faire planter le programme si on donne un pas valant 0.
-
-
 ### <span id="attribut-classe"></span>Attributs de classes
 
-Chaque classe ayant un espace de nommage, rien ne nous empêche de l'utiliser pour autre chose que des méthodes. On peut par exemple écrire ce genre de choses en créant une classe de compteur à pas fixe, qui définit **un attributs de classes**, que l'on peut ensuite utiliser :
+Chaque classe ayant son propre espace de nommage contenant ses méthode, rien ne nous empêche de l'utiliser pour définir des attributs pour la classe.
+
+{% note2 "**Définition**" %}
+Un **_attribut de classe_** (**_getter_**) est un attribut qui est le même pour tout objet de la classe.
+
+En UML le nom d'un attribut de classe est souligné.
+{% endnote2 %}
+
+Par exemple en python on pourrait définir un compteur à pas identique pour tous les éléments de la classe ainsi :
 
 ```python
 class CompteurFixe:
     PAS = 1
 
     def __init__(self, valeur=0):
-        self.valeur = 0
+        self._valeur = 0
     
     def incrémente(self):
-        self.valeur = self.valeur + type(self).PAS
+        self._valeur = self._valeur + type(self).PAS
 
 
 ```
+
+Avec un diagramme UML :
+
+![compteur fixe](compteur-fixe.png)
+
 
 On utilise explicitement le fait que `PAS`{.language-} est un attribut de la classe de l'objet. Notez que de par le fonctionnement des espaces de nommages, on aura plutôt tendance à écrire la chose suivante qui est équivalente (puisque `PAS`{.language-} n'est pas défini dans l'objet on le cherche dans sa classe):
 
@@ -241,6 +337,18 @@ class CompteurFixe:
         self.valeur = self.valeur + self.PAS
 
 ```
+
+{% attention %}
+En python il est tout à fait possible d'avoir un attribut de classe et un attribut d'objet de même nom mais : **CE N'EST PAS UNE BONNE IDÉE**.
+
+
+Si vous ne savez pas si c'est l'attribut de classe ou d'objet que vous appelez via `self.<nom>` (si `<nom>` est à la fois défini pour la classe et pour l'objet, l'attribut de classe va être masqué par l'attribut d'objet) vous allez forcément faire des erreurs.
+{% endattention %}
+
+### property
+
+> TBD ici
+> TBD `a = property(get_a, set_a)`
 
 ## Méthodes spéciales
 

@@ -99,17 +99,16 @@ La programmation évènementielle est un principe de développement très utilis
 
 > TBD environnement virtuel + github sous la forme d'un
 
-
-## Partie V : Pour aller plus loin
-
-> TBD package et anatomie d'un espace de nommage. TDD. code coverage
-
-
 ### <span id="gestion-dépendances"></span>Gestion des dépendances
 
 {% aller %}
 [Gestion des dépendances](gestion-dépendances){.interne}
 {% endaller %}
+
+
+## Partie V : Pour aller plus loin
+
+> TBD package et anatomie d'un espace de nommage. TDD. code coverage
 
 ### Couverture de code
 
@@ -117,14 +116,6 @@ La couverture de code est un outils essentiel lorsque l'on programme par les tes
 
 {% aller %}
 [Couverture de code](couverture-de-code){.interne}
-{% endaller %}
-
-### Programmation par les tests
-
-On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (_Test Driven Development_, ou _TDD_)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
-
-{% aller %}
-[Projet de programmation par les tests](projet-TDD){.interne}
 {% endaller %}
 
 ### Packages

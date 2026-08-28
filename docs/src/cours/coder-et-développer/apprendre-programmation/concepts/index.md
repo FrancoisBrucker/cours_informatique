@@ -57,6 +57,17 @@ Les [modules](https://docs.python.org/fr/3/tutorial/modules.html) pythons sont d
 
 Il existe quelques modules externes à python très utilisés. Ils ne sont pas présent par défaut lorsque l'on installe un nouvel interpréteur mais de nombreuses solutions les intègrent par défaut. C'est le cas de spyder, vous pouvez donc faire les deux tutoriaux suivant sans avoir à installer quoi que ce soit.
 
+### Bibliothèque standard de Python
+
+Python vient avec tout un tas de modules très utiles. Ils sont décrit dans le document ci-après :
+
+{% lien %}
+[La bibliothèque standard de Python](https://docs.python.org/fr/3.14/library/index.html)
+{% endlien %}
+
+Il n'est pas nécessaire de les connaître tous par cœur, mais avant de coder quelque chose, vérifiez que ce n'est pas déjà présent.
+
+
 ### module `matplotlib`{.language-}
 
 Le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.

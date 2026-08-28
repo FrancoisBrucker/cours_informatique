@@ -11,9 +11,9 @@ eleventyComputed:
 
 Encore un projet d'initiation dans le codage des objets. Vous allez coder une classe `Carte`{.language-}, ce qui permettra dans des projets ultérieurs de jouer à la bataille. La classe carte en elle-même ne fera pas grand chose, mais elle illustrera la notion de [value object](https://en.wikipedia.org/wiki/Value_object) :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un **_value object_** est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.
-{% endnote %}
+{% endnote2 %}
 
 ## Projet
 
@@ -181,7 +181,7 @@ Faites des tests de cette méthode.
 Vous avez assez de matière pour coder notre seconde user story :
 
 {% faire %}
-Codez la user story *"Ordonnancement"*.
+Codez la user story _"Ordonnancement"_.
 {% endfaire %}
 
 ## Constantes pour les attributs

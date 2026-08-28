@@ -57,4 +57,4 @@ qui transforme l'ensemble `{1, 2, 3}`{.language-} en un `frozenset`{.language-}.
 [Dictionnaires](dictionnaires){.interne}
 {% endaller %}
 
-Les dictionnaires ne possèdent pas de structure non mutable associée par défaut en python.
+Les dictionnaires possèdent [depuis python 3.15](https://docs.python.org/3.15/whatsnew/3.15.html#whatsnew315-frozendict) leur pendant non mutable sous la forme d'un `frozendict`{.language-}
