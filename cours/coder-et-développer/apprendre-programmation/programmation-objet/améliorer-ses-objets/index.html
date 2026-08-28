@@ -370,9 +370,7 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 <p>Ce qui donnerait le code :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">assert</span> pas <span class="token operator">!=</span> <span class="token number">0</span>
         self<span class="token punctuation">.</span>_pas <span class="token operator">=</span> pas
-
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
 
     <span class="token comment"># ...</span>
@@ -381,7 +379,6 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>_pas
 
     <span class="token keyword">def</span> <span class="token function">set_pas</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">assert</span> pas <span class="token operator">!=</span> <span class="token number">0</span>
         self<span class="token punctuation">.</span>_pas <span class="token operator">=</span> pas
 
 </code></pre>
@@ -431,6 +428,7 @@ c<span class="token punctuation">.</span>pas <span class="token operator">=</spa
 </div></div>
 
 <h3>property</h3>
+<p>Les attributs de classes ont un effet de bord sympathique en python qui permet</p>
 <blockquote>
 <p>TBD ici
 TBD <code>a = property(get_a, set_a)</code></p>
