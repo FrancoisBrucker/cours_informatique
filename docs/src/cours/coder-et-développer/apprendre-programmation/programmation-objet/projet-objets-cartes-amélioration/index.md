@@ -163,3 +163,7 @@ Codez et testez les [opérateurs de comparaisons](../améliorer-ses-objets#compa
 {% info %}
 N'hésitez pas à utiliser des opérateurs déjà codé. Vous pouvez par exemple utiliser les fonctions `==`{.language-} et `<=`{.language-} pour coder les autres les comparaisons.
 {% endinfo %}
+
+## User stories
+
+> TBD adaptez les user stories du projet précédent à cette nouvelle classe.

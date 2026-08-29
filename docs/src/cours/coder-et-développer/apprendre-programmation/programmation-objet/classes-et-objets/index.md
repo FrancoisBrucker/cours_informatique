@@ -309,4 +309,7 @@ Détaillez l'exécution de la ligne 9 de [l'exemple du compteur](./#compteur-cod
 
 ## Code Python
 
-Le code de la classe compteur est [disponible ici](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur).
+{% lien %}
+- [voir le code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur)
+- [télécharger le code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur?name=projet-compteur)
+{% endlien %}

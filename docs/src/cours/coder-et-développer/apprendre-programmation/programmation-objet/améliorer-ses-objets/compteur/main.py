@@ -3,6 +3,7 @@ from compteur import Compteur
 c = Compteur()
 
 c.incrémente()
-print(c.donne_valeur())
+print(c)
 c.incrémente()
-print(c.donne_valeur())
+print(repr(c))
+

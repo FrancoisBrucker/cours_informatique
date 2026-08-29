@@ -9,10 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD attribut privé.
-> TBD attribut de classe
-> str et repr
-
 Nous allons utiliser plusieurs techniques permettant de fluidifier l'usage des objets. Nous allons prendre comme exemple le compteur.
 
 {% details "Le compteur initial" %}
@@ -74,7 +70,11 @@ print(c.donne_valeur())
 
 ## Paramètres par défaut
 
-On souhaite par pouvoir choisir le pas de notre compteur (c'est-à-dire ajouter 2 à chaque fois plutôt que 1 par exemple). Pour faire cela on va ajouter un paramètre dans le constructeur pour que chaque compteur puisse connaître son pas :
+On souhaite par pouvoir choisir le pas de notre compteur (c'est-à-dire ajouter 2 à chaque fois plutôt que 1 par exemple). 
+
+### Ajout d'un paramètre et vérification de sa validité
+
+Pour faire cela on va en première approche ajouter un paramètre dans le constructeur pour que chaque compteur puisse connaître son pas :
 
 Fichier `compteur.py`{.fichier} :
 
@@ -137,6 +137,8 @@ permet à chaque objet (le paramètre `self`{.language-}) d'être différent tou
 Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.
 {% endattention2 %}
 
+### Paramètre par défaut
+
 Le souci avec la méthode précédente, c'est que même si le pas est de `1`{.language-}, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
 
 En python cela donne (fichier `compteur.py`{.fichier}) :
@@ -144,8 +146,9 @@ En python cela donne (fichier `compteur.py`{.fichier}) :
 ```python
 class Compteur:
     def __init__(self, pas=1):
-        self.valeur = 0
         self.pas = pas
+        self.valeur = 0
+        
 
     def incrémente(self):
         self.valeur = self.valeur + self.pas
@@ -186,8 +189,10 @@ Ajoutez au `Compteur`{.language-} un paramètre déterminant sa valeur initiale.
 ```python
 class Compteur:
     def __init__(self, pas=1, valeur=0):
-        self.valeur = valeur
+        assert pas != 0
+
         self.pas = pas
+        self.valeur = valeur
 
     def incrémente(self):
         self.valeur = self.valeur + self.pas
@@ -216,13 +221,63 @@ def test_valeur_initiale():
 {% enddetails %}
 
 
+### Validité des paramètres
+
+Un pas ne peut pas être nul. Ajoutons un garde-fou dans le code pour que ça n'arrive pas :
+
+```python
+class Compteur:
+    def __init__(self, pas=1):
+        assert pas != 0
+
+        self.pas = pas
+        self.valeur = 0
+        
+
+    def incrémente(self):
+        self.valeur = self.valeur + self.pas
+
+```
+
+L'assertion garantie que le pas n'est pas nul et si l'utilisateur tente de créer un compteur avec un pas de 0 le programme va planter avec une `AssertionError`{.language-} :
+
+```python
+>>> c = Compteur(0)
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    c = Compteur(0)
+  File "<python-input-0>", line 3, in __init__
+    assert pas != 0  # garanti que pas est > 0 ou le programme plante
+           ^^^^^^^^
+AssertionError
+
+```
+
+Ajoutons un test qui vérifie que l'assertion fonctionne :
+
+```python
+import pytest
+
+# ...
+
+def test_assertion():
+    with pytest.raises(AssertionError):
+        c = Compteur(0)
+```
+
+Le bloc `with`{.language-} va s'attendre à planter avec une erreur d'assertion. Le test va échouer si ce n'est pas le cas (changez le paramètre de `Compteur(0)`{.language-} dans le test pour le vérifier).
+
+{% attention2 "**À retenir**" %}
+On peut utiliser des `assert`{.language-} pour vérifier la validité d'un paramètre.
+{% endattention2 %}
+
 ## Attributs
 
 On peut grandement améliorer la gestion des attributs des objets.
 
 ### <span id="privé"></span>Attributs privés
 
-Il peut arriver que l'on ne veuille pas qu'un attribut soit modifié ou qu'on le modifie à une valeur non possible. Par exemple, on pourrait avoir envie de ne tolérer que des pas non nul mais pour l'instant rien ne nous empêche d'écrire :
+Notre garde-fou ne fonctionne cependant que lors de la création de l'objet. COmme l'attribut est public on peut très bien écrire :
 
 ```python
 c = Compteur()
@@ -231,11 +286,7 @@ c.pas = 0
 
 Et de créer un compteur qui n'incrémente jamais...
 
-
-Pour éviter cela, on peut :
-
-- restreindre l'accès à l'attribut `pas` : rendre l'attribut _privé_
-- permettre de modifier l'attribut `pas` qu'en utilisant une méthodes spécifique : un _mutateur_
+Pour éviter cela, on peut rendre l'attribut `pas`{.language-} privé ce qui interdit à l’utilisateur d'y acceder.
 
 {% note2 "**Définition**" %}
 Un attribut ou une méthode **_privée_** est un attribut/méthode qui ne doit pas être utilisé autre part que dans le code des méthodes de la classe. Les attributs/méthodes directement utilisables dans tout code sont dit **_publics_**.
@@ -245,38 +296,37 @@ En UML on distingue les attributs/méthodes privés des attributs public en mett
 - rien ou un `+` si l'élément est public
 {% endnote2 %}
 
-Si l'on veut pouvoir  accéder aux attributs privés d'un objet en dehors des méthodes de ses classes, il faut implémenter un accesseur :
+Mais rendre `pas`{.language-} privé interdit complètement à l'utilisateur d'y acceder. Si on veut tout de même lui permettre de connaître et de modifier sa valeur on passe par deux méthodes spécifiques :
+
+- ajouter une méthode publique qui rend la valeur de l'attribut `pas` appelée accesseur
+- ajouter une méthode publique qui modifie l'attribut `pas` (on peut alors vérifier que la modification est légale) appelée mutateur
 
 {% note2 "**Définition**" %}
-Un **_accesseur_** (**_getter_**) est une méthode dont le but est de rendre un attribut. On la nomme usuellement : `get_[nom de l'attribut]()`{.language-}
+- Un **_accesseur_** (**_getter_**) est une méthode dont le but est de rendre un attribut privé. On la nomme usuellement : `get_[nom de l'attribut]()`{.language-}
+- Un **_mutateur_** (**_setter_**) est une méthode dont le but est de modifier un attribut privé. On la nomme usuellement : `set_[nom de l'attribut](nouvelle_valeur)`{.language-}
 {% endnote2 %}
 
-Et si l'on veut pouvoir modifier un attributs privés on doit définir un mutateur :
-
-{% note2 "**Définition**" %}
-Un **_mutateur_** (**_setter_**) est une méthode dont le but est de modifier un attribut. On la nomme usuellement : `set_[nom de l'attribut](nouvelle_valeur)`{.language-}
-{% endnote2 %}
-
-En rendant l'attribut pas privé on aurait l'UML suivant :
+On a alors l'UML suivant :
 
 ![pas privé](compteur-privé.png)
 
-
-En python :
+L'implémentation en python va passer par une convention car pour python tous les attributs sont toujours publics :
 
 {% attention2 "**À retenir**" %}
 
-L'usage en python peut que les variables privées soient précédées d'un `_`{.language-} pour prévenir le développeur qu'il ne faut pas qu'il utilise ces attributs directement.
+L'usage en python peut que les variables privées soient précédées d'un `_`{.language-}. Ceci prévient le développeur qu'il ne faut pas qu'il utilise ces attributs directement.
 
-Ce n'est qu'une convention qui signifie : "_on ne touche pas si on ne sait pas ce que l'on fait_".
+C'est une convention qui signifie : "_on ne touche pas si on ne sait pas ce que l'on fait_".
 
 {% endattention2 %}
 
-Ce qui donnerait le code :
+Ce qui donne le code :
 
 ```python
 class Compteur:
     def __init__(self, pas=1, valeur=0):
+        assert pas != 0
+
         self._pas = pas
         self.valeur = valeur
 
@@ -286,9 +336,24 @@ class Compteur:
         return self._pas
 
     def set_pas(self, pas):
+        assert pas != 0
+
         self._pas = pas
 
 
+```
+
+Et le test :
+
+```python
+def test_accesseur_mutateur():
+    c = Compteur()
+
+    c.set_pas(42)
+    assert c.get_pas() == 42
+
+    with pytest.raises(AssertionError):
+        c.set_pas(0)
 ```
 
 ### <span id="attribut-classe"></span>Attributs de classes
@@ -320,7 +385,6 @@ Avec un diagramme UML :
 
 ![compteur fixe](compteur-fixe.png)
 
-
 On utilise explicitement le fait que `PAS`{.language-} est un attribut de la classe de l'objet. Notez que de par le fonctionnement des espaces de nommages, on aura plutôt tendance à écrire la chose suivante qui est équivalente (puisque `PAS`{.language-} n'est pas défini dans l'objet on le cherche dans sa classe):
 
 ```python
@@ -344,9 +408,93 @@ Si vous ne savez pas si c'est l'attribut de classe ou d'objet que vous appelez v
 
 ### property
 
-Les attributs de classes ont un effet de bord sympathique en python qui permet 
-> TBD ici
-> TBD `a = property(get_a, set_a)`
+{% lien %}
+<https://realpython.com/python-property/>
+{% endlien %}
+
+Les attributs de classes ont un effet de bord sympathique en python qui permet d'utiliser des mutateurs et des accesseur comme si on accédais a un attribut. Rien de tel qu'un exemple pour comprendre. Considérez l'amélioration suivante du `Compteur`{.language-} :
+
+```python/
+class Compteur:
+    def __init__(self, pas=1, valeur=0):
+        assert pas != 0
+
+        self._pas = pas
+        self.valeur = valeur
+
+    # ...
+
+    def get_pas(self):
+        return self._pas
+
+    def set_pas(self, pas):
+        assert pas != 0
+
+        self._pas = pas
+
+    pas = property(get_pas, set_pas)
+
+```
+
+La ligne 14 défini le nom, `pas`{.language-} qui est le résultat de la fonction `property`{.language-}. On peut alors écrire le code suivant :
+
+```python
+c = Compteur()
+print(c.pas)
+c.pas = 42
+```
+
+Qui sera équivalent au code suivant :
+
+```python
+c = Compteur()
+print(c._get_pas())
+c.set_pas(42)
+```
+
+{% attention2 "**À retenir**" %}
+Les `property`{.language-} permettent d'utiliser des mutateurs et des accesseurs comme on utiliserait un attribut.
+
+C'est le meilleur des deux mondes !
+{% endattention2 %}
+
+On n'a plus besoin d'utiliser directement des accesseurs/mutateur on peut les rendre privé :
+
+```python
+class Compteur:
+    def __init__(self, pas=1, valeur=0):
+        assert pas != 0
+
+        self._pas = pas
+        self.valeur = valeur
+
+    # ...
+
+    def _get_pas(self):
+        return self._pas
+
+    def _set_pas(self, pas):
+        assert pas != 0
+
+        self._pas = pas
+
+    pas = property(_get_pas, _set_pas)
+
+```
+
+Et on peut modifier notre test :
+
+```python
+def test_accesseur_mutateur():
+    c = Compteur()
+
+    c.pas = 42
+    assert c.pas == 42
+
+    with pytest.raises(AssertionError):
+        c.pas = 0
+
+```
 
 ## Méthodes spéciales
 
@@ -358,7 +506,7 @@ Pour rendre l'utilisation des objets pus agréable et intuitive, python va assoc
 
 On a déjà vu une méthode spéciale : `__init__`{.language-} qui est exécutée lorsque l'on appelle une classe, mais il y en a bien d'autres. Nous allons en voir 2, très pratiques.
 
-### <span id="str"></span>Représentation sous la forme de chaînes de caractères
+### <span id="str"></span>Représentation sous la forme de texte
 
 Essayez de taper dans le fichier `main.py`{.fichier} :
 
@@ -382,7 +530,9 @@ Ainsi si on défini :
 
 ```python
 class Compteur
+
     # ...
+
     def __str__(self):
         return "Le compteur vaut " + str(self.valeur)
 ```
@@ -408,6 +558,51 @@ La méthode `__str__`{.language-} permet :
 - de transformer un objet `o`{.language-} en chaîne de caractères via la fonctions `str(o)`{.language-}
 - de l'afficher à l'écran en utilisant  `print(o)`{.language-} (qui est équivalent à `print(str(o))`{.language-}).
 {% endattention2 %}
+
+### <span id="repr"></span>Représentation de l'objet
+
+{% lien "**Documentation**" %}
+<https://docs.python.org/3/library/functions.html#repr>
+{% endlien %}
+
+Si la représentation sous forme d'un texte permet à un utilisateur de "lire" l'objet, plusieurs objets de pas différents vont avoir la même représentation. Pour associer à chaque objet une représentation sans ambiguïté et destiné et destiné aux développeurs python fourni la fonction `repr`{.language} qui utilise la méthode spéciale `__repr__`{.language-}.
+
+{% attention2 "**À retenir**" %}
+La méthode `__repr__`{.language-} permet : 
+
+- de transformer un objet `o`{.language-} en chaîne de caractères via la fonctions `repr(o)`{.language-}
+- on a coutume de représenter une chaîne de caractère permettant de recréer l'appel au constructeur permettant de recréer l'objet.
+{% endattention2 %}
+
+Ainsi pour le compteur :
+
+```python
+class Compteur:
+
+    # ...
+
+    def __repr__(self):
+        return f"Compteur(pas={self.pas}, valeur={self.valeur})"
+```
+
+Ce qui donnera :
+
+```python
+>>> c = Compteur()
+>>> c.incremente()
+>>> c.incremente()
+>>> print(repr(c))
+Compteur(pas=1, valeur=2)
+```
+
+La fonction `repr()`{.language-} est souvent utilisée comme débogage pour les développeur car elle exprime distinctement ce que l'objet est, il est donc utile de l'implémenter. Elle esrt aussi utilisée par défaut dans la représentation textuelle des conteneurs :
+
+```python
+>>> c = Compteur()
+>>> l = [c]
+>>> print(l)
+[Compteur(pas=1, valeur=0)]
+```
 
 ### <span id="comparaison"></span> Comparaisons
 
@@ -467,30 +662,55 @@ Les différents opérateurs de comparaison que l'on peut ajouter à nos objets s
 
 {% endlien %}
 
+{% exercice %}
+Ajoutez des tests pour ces comparaisons.
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+def test_comparaisons():
+    assert Compteur(valeur=1) == Compteur(valeur=1)
+    assert Compteur(valeur=1) <= Compteur(valeur=1)
+    
+    assert Compteur(valeur=1) <= Compteur(valeur=2)
+    assert Compteur(valeur=1) < Compteur(valeur=2)
+
+```
+
+{% enddetails %}
+
 ## Code final
 
 Notre compteur a bien évolué depuis sa première mouture. Il permet maintenant d'être utilisé de façon bien plus intuitive.
+
+### `compteur.py`{.fichier}
 
 ```python
 class Compteur:
     def __init__(self, pas=1, valeur=0):
         assert pas != 0
-        self._pas = pas
 
+        self._pas = pas
         self.valeur = valeur
 
-    def get_pas(self):
+    def _get_pas(self):
         return self._pas
 
-    def set_pas(self, pas):
+    def _set_pas(self, pas):
         assert pas != 0
+
         self._pas = pas
 
+    pas = property(_get_pas, _set_pas)
+    
     def incrémente(self):
         self.valeur = self.valeur + self.pas
 
     def __str__(self):
         return "Le compteur vaut " + str(self.valeur)
+
+    def __repr__(self):
+        return f"Compteur(pas={self.pas}, valeur={self.valeur})"
 
     def __lt__(self, other):
         return self.valeur < other.valeur
@@ -502,3 +722,76 @@ class Compteur:
         return other.valeur == self.valeur
 
 ```
+
+### `test_compteur.py`{.fichier}
+
+```python
+import pytest
+from compteur import Compteur
+
+
+def test_constructeur():
+    c = Compteur()
+    assert isinstance(c, Compteur)
+
+
+def test_assertion():
+    with pytest.raises(AssertionError):
+        c = Compteur(0)
+
+def test_valeur_initiale():
+    c = Compteur()
+    assert c.valeur == 0 and c.pas == 1
+
+    c = Compteur(3, 12)
+    assert c.valeur == 12 and c.pas == 3
+
+    c = Compteur(pas=3)
+    assert c.valeur == 0 and c.pas == 3
+
+    c = Compteur(valeur=12)
+    assert c.valeur == 12 and c.pas == 1
+
+
+def test_incrémente():
+    c = Compteur()
+
+    c.incrémente()
+    assert c.valeur == 1
+
+    c.incrémente()
+    assert c.valeur == 2
+
+def test_accesseur_mutateur():
+    c = Compteur()
+
+    c.pas = 42
+    assert c.pas == 42
+
+    with pytest.raises(AssertionError):
+        c.pas = 0
+
+
+def test_comparaisons():
+    assert Compteur(valeur=1) == Compteur(valeur=1)
+    assert Compteur(valeur=1) <= Compteur(valeur=1)
+    
+    assert Compteur(valeur=1) <= Compteur(valeur=2)
+    assert Compteur(valeur=1) < Compteur(valeur=2)
+
+```
+
+### `main.py`{.fichier}
+
+```python
+from compteur import Compteur
+
+c = Compteur()
+
+c.incrémente()
+print(c)
+c.incrémente()
+print(repr(c))
+
+```
+

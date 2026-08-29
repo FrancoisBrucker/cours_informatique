@@ -14,8 +14,6 @@ eleventyComputed:
 ---
 
 
-> TBD - créer un objet avec une position initiale différente de 1,
-
 Nous allons améliorer la classé que nous avions crée lors du projet précédent (en prérequis).
 
 {% details "Un code possible du Dé" %}
@@ -100,6 +98,8 @@ Remplacez la méthode `Dé.texte()`{.language-} par la méthode `Dé.__str__()`{
 Modifiez les tests pour prendre en compte de cette nouvelle méthode.
 {% endfaire %}
 
+> TBD - créer repr
+
 
 ## min et max dans classe
 
@@ -108,3 +108,9 @@ Notre classe `Dé`{.language-} contient 2 [magic numbers](https://fr.wikipedia.o
 {% faire %}
 Créez deux attributs de classes `MIN_VALEUR`{.language-} et `MAX_VALEUR`{.language-} qui vont permettre de supprimer les magics numbers de la méthode `Dé.lancer()`{.language-}
 {% endfaire %}
+
+
+## Comparaisons
+
+> TBD en utilisant collections
+> TBD monter que l'on peut alors trier une liste de dés avec sort.
