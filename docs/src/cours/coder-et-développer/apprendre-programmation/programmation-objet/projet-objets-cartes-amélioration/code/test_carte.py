@@ -8,6 +8,8 @@ def test_constructeur():
 def test_str():
     assert str(Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle)) == "7♣︎"
 
+def test_repr():
+    assert repr(Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle)) == "Carte(Carte.VALEURS.Sept, Carte.COULEURS.Trèfle)"
 
 def test_operator():
     dix_cœur = Carte(Carte.VALEURS.Dix, Carte.COULEURS.Cœur)

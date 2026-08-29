@@ -28,6 +28,25 @@ class Carte:
         couleur = ["♣︎", "♦", "♥", "♠"]
         return valeur[self._valeur.value - 7] + couleur[self._couleur.value - 1]
 
+    def __repr__(self):
+        valeur = [
+            "Carte.VALEURS.Sept",
+            "Carte.VALEURS.Huit",
+            "Carte.VALEURS.Neuf",
+            "Carte.VALEURS.Dix",
+            "Carte.VALEURS.Valet",
+            "Carte.VALEURS.Dame",
+            "Carte.VALEURS.Roi",
+            "Carte.VALEURS.As",
+        ]
+        couleur = [
+            "Carte.COULEURS.Trèfle",
+            "Carte.COULEURS.Carreau",
+            "Carte.COULEURS.Cœur",
+            "Carte.COULEURS.Pique",
+        ]
+        return f"Carte({valeur[self._valeur.value - 7]}, {couleur[self._couleur.value - 1]})"
+
     def __eq__(self, other):
         return (self._valeur == other._valeur) and (self._couleur == other._couleur)
 
@@ -47,4 +66,4 @@ class Carte:
         return other >= self
 
     def __lt__(self, other):
-        return (other > self)
+        return other > self

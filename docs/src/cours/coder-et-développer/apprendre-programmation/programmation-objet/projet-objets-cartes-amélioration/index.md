@@ -124,12 +124,17 @@ Couleur.trèfle
 ```
 
 {% faire %}
-Utilisez des `Enum`{.language-} pour gérer les constantes `VALEURS`{.language-} et `COULEURS`{.language-},puis supprimez les constantes relatives aux différentes valeurs et couleurs individuelles (on n'utilisera que les enum). 
-
+Utilisez des `Enum`{.language-} pour gérer les constantes `VALEURS`{.language-} et `COULEURS`{.language-}, puis supprimez les constantes relatives aux différentes valeurs et couleurs individuelles (on n'utilisera que les enum). 
+{% endfaire %}
+{% faire %}
 Modifiez les tests en conséquence.
 {% endfaire %}
 
 Cette technique est redoutable : elle est à la fois lisible, sans magic number et portable ! Utilisez-la dès que vous voulez gérer des énumérations.
+
+{% faire %}
+Profitez de cette restructuration du code pour implémentez la méthode spéciale `__repr__`{.language-} et restez là en utilisant la fonction `repr`{.language-}.
+{% endfaire %}
 
 ## Comparaisons
 
@@ -163,7 +168,3 @@ Codez et testez les [opérateurs de comparaisons](../améliorer-ses-objets#compa
 {% info %}
 N'hésitez pas à utiliser des opérateurs déjà codé. Vous pouvez par exemple utiliser les fonctions `==`{.language-} et `<=`{.language-} pour coder les autres les comparaisons.
 {% endinfo %}
-
-## User stories
-
-> TBD adaptez les user stories du projet précédent à cette nouvelle classe.
