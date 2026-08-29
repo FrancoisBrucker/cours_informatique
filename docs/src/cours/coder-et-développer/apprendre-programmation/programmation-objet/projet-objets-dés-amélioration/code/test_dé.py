@@ -21,3 +21,15 @@ def test_str():
     assert str(dé) == "⚀"
     dé.position = 4
     assert str(dé) == "⚃"
+
+def test_repr():
+    assert repr(Dé()) == "Dé(position=1)"
+
+def test_lt():
+    d1 = Dé()
+    d2 = Dé()
+    assert not d1 < d2
+
+    d2.position = 5
+    assert d1 < d2
+    assert not d2 < d1

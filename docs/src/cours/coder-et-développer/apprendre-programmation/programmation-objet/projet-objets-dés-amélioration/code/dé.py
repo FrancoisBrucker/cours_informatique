@@ -10,8 +10,6 @@ class Dé:
     def lancer(self):
         self.position = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
 
-        return self
-
     def __str__(self):
         if self.position == 1:
             return "⚀"
@@ -25,3 +23,10 @@ class Dé:
             return "⚄"
         else:
             return "⚅"
+
+    def __repr__(self):
+        return f"Dé(position={self.position})"
+
+    def __lt__(self, other):
+        return self.position < other.position
+

@@ -307,9 +307,9 @@ Détaillez l'exécution de la ligne 9 de [l'exemple du compteur](./#compteur-cod
 5. on affiche à l'écran un entier valant 1.
 {% enddetails  %}
 
-## Code Python
+## Code Python de la classe Compteur
 
 {% lien %}
-- [voir le code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur)
-- [télécharger le code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur?name=projet-compteur)
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur)
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/compteur?filename=projet-compteur)
 {% endlien %}

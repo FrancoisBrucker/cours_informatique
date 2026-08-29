@@ -412,3 +412,10 @@ print("Il a fallu : ", nombre_lancer, "lancers")
 ```
 
 {% enddetails  %}
+
+## Code Python de la classe Dé
+
+{% lien %}
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code)
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/code?filename=projet-dé)
+{% endlien %}
