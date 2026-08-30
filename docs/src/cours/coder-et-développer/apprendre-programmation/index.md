@@ -126,6 +126,6 @@ La couverture de code est un outils essentiel lorsque l'on programme par les tes
 La base de cette séparation en unités fonctionnelles séparée est l'espace de nommage. Nous l'avons déjà entre-aperçu lorsque l'on a parlé de modules et de fonctions, nous allons ici rentrer dans les détails et expliciter comment python trouve un objet associé à un nom.
 
 {% aller %}
-[Anatomie d'un espace de nommage](exécution-modules){.interne}
+[Anatomie d'un espace de nommage](anatomie-espace-nommage){.interne}
 {% endaller %}
 

@@ -27,9 +27,6 @@ Nous allons mettre à profit ce que nous venons d'apprendre sur [la gestion des 
 [Créer un environnement virtuel](environnement-virtuel){.interne}
 {% endaller %}
 
-
-> TBD créer un environnement pour pyglet + test de programme.
-
 ## Principes
 
 {% aller %}
