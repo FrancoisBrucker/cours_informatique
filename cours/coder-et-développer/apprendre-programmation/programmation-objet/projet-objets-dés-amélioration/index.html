@@ -132,10 +132,10 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Faites en sorte que l'on puisse créer des dés avec une position initiale, On doit pouvoir :</p>
+<p>Faites en sorte que l'on puisse créer des dés avec une valeur initiale, On doit pouvoir :</p>
 <ul>
-<li>créer un dé sans paramètre, <code class="language-">Dé()</code>, et sa position doit être sur la position 1</li>
-<li>créer un dé avec un paramètre qi sera sa position par défaut <code class="language-">Dé(4)</code> par exemple.</li>
+<li>créer un dé sans paramètre, <code class="language-">Dé()</code>, et sa valeur doit être sur la valeur 1</li>
+<li>créer un dé avec un paramètre qi sera sa valeur par défaut <code class="language-">Dé(4)</code> par exemple.</li>
 </ul>
 </div></div>
 
@@ -158,8 +158,8 @@
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">dé.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">D</span>é<span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> position<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>position <span class="token operator">=</span> position
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
 </code></pre>
 </div>
 </details>     
@@ -188,9 +188,9 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_dé.py</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">1</span>
-    <span class="token keyword">assert</span> Dé<span class="token punctuation">(</span>position<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">4</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_valeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">assert</span> Dé<span class="token punctuation">(</span>valeur<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">4</span>
 </code></pre>
 <p>On utilise toujours la technique qui consiste à utiliser directement un objet créé via le constructeur.</p>
 </div>
@@ -226,15 +226,15 @@
     <span class="token comment"># ..</span>
 
     <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token string">"⚀"</span>
-        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token string">"⚁"</span>
-        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token string">"⚂"</span>
-        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">:</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token string">"⚃"</span>
-        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token string">"⚄"</span>
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token string">"⚅"</span></code></pre>
@@ -269,7 +269,7 @@
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>dé<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"⚀"</span>
-    dé<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">4</span>
+    dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">4</span>
     <span class="token keyword">assert</span> <span class="token builtin">str</span><span class="token punctuation">(</span>dé<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"⚃"</span>
 </code></pre>
 </div>
@@ -304,10 +304,10 @@
     <span class="token comment"># ..</span>
 
     <span class="token keyword">def</span> <span class="token function">__repr__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"Dé(position=</span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>position<span class="token punctuation">}</span></span><span class="token string">)"</span></span></code></pre>
+        <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"Dé(valeur=</span><span class="token interpolation"><span class="token punctuation">{</span>self<span class="token punctuation">.</span>valeur<span class="token punctuation">}</span></span><span class="token string">)"</span></span></code></pre>
 <p>Fichier <code class="fichier">test_dé.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_repr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"Dé(position=1)"</span>
+    <span class="token keyword">assert</span> <span class="token builtin">repr</span><span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"Dé(valeur=1)"</span>
 </code></pre>
 </div>
 </details>     
@@ -342,11 +342,11 @@
     MIN_VALEUR <span class="token operator">=</span> <span class="token number">1</span>
     MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</span>
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> position<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>position <span class="token operator">=</span> position
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
 
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>position <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MIN_VALEUR<span class="token punctuation">,</span> self<span class="token punctuation">.</span>MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
 </code></pre>
 </div>
 </details>     
@@ -381,7 +381,7 @@
     <span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">__lt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>position <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>position
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>valeur
 </code></pre>
 <p>Fichier <code class="fichier">test_dé.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_lt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -389,7 +389,7 @@
     d2 <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> <span class="token keyword">not</span> d1 <span class="token operator">&lt;</span> d2
 
-    d2<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">5</span>
+    d2<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">5</span>
     <span class="token keyword">assert</span> d1 <span class="token operator">&lt;</span> d2
     <span class="token keyword">assert</span> <span class="token keyword">not</span> d2 <span class="token operator">&lt;</span> d1
 </code></pre>

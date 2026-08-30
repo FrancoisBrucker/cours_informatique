@@ -111,16 +111,16 @@
 <p>Si on veut pouvoir utiliser nos dés virtuels comme un vrai dé physique, la classe <code class="language-">Dé</code> doit être capable de :</p>
 <ul>
 <li>
-<p>créer un objet sans paramètre (sa position est alors 1),</p>
+<p>créer un objet sans paramètre (sa valeur est alors 1),</p>
 </li>
 <li>
-<p>connaître et donner la position du dé,</p>
+<p>connaître et donner la valeur du dé,</p>
 </li>
 <li>
-<p>lancer un dé en utilisant une méthode nommée <code class="language-">lancer()</code> qui ne rend <strong>rien</strong>, mais change la position du dé de façon aléatoire.</p>
+<p>lancer un dé en utilisant une méthode nommée <code class="language-">lancer()</code> qui ne rend <strong>rien</strong>, mais change la valeur du dé de façon aléatoire.</p>
 </li>
 </ul>
-<p>La position du dé doit être un entier entre 1 et 6.</p>
+<p>La valeur du dé doit être un entier entre 1 et 6.</p>
 <h3>Modélisation UML</h3>
 <p>Des spécifications précédentes, on doit pouvoir en déterminer la modélisation UML.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -304,7 +304,7 @@
 <p>Fichier <code class="language-">dé.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">D</span>é<span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">1</span>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">1</span>
 
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">pass</span>
@@ -315,7 +315,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez un test qu projet qui vérifie que l'attribut <code class="language-">position</code>  d'un objet de la classe <code class="language-">Dé</code> fraîchement crée est bien à !</p>
+<p>Ajoutez un test qu projet qui vérifie que l'attribut <code class="language-">valeur</code>  d'un objet de la classe <code class="language-">Dé</code> fraîchement crée est bien à !</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -340,9 +340,9 @@
 
 <span class="token comment"># ...</span>
 
-<span class="token keyword">def</span> <span class="token function">test_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">test_valeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
    dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> dé<span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">assert</span> dé<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">1</span>
 
 </code></pre>
 <p>On peut encore une fois raccourcir le test si l'on veut en utilisant directement le retour du constructeur :</p>
@@ -350,8 +350,8 @@
 
 <span class="token comment"># ...</span>
 
-<span class="token keyword">def</span> <span class="token function">test_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">1</span>
+<span class="token keyword">def</span> <span class="token function">test_valeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">1</span>
 
 </code></pre>
 </div>
@@ -417,15 +417,15 @@
    <span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>position <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">6</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
-<p>On a pas fini le code puisqu'il manque les tests de la méthode <code class="language-">Dé.lancer()</code> ! On a cependant un soucis car il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la position ne change <strong>sans</strong> que ce soit mal codé). Comme on a besoin que nos fonctionnent toujours, il faut trouver ce qui est toujours vrai après un lancer :</p>
+<p>On a pas fini le code puisqu'il manque les tests de la méthode <code class="language-">Dé.lancer()</code> ! On a cependant un soucis car il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la valeur ne change <strong>sans</strong> que ce soit mal codé). Comme on a besoin que nos fonctionnent toujours, il faut trouver ce qui est toujours vrai après un lancer :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Implémentez un test qui vérifie que la méthode s'est bien exécutée <code class="language-">Dé.lancer()</code> et que la valeur de la position reste entre 1 et 6.</p>
+<p>Implémentez un test qui vérifie que la méthode s'est bien exécutée <code class="language-">Dé.lancer()</code> et que la valeur de la valeur reste entre 1 et 6.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -453,7 +453,7 @@
 <span class="token keyword">def</span> <span class="token function">test_lancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
     dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> dé<span class="token punctuation">.</span>position <span class="token operator">&lt;=</span> <span class="token number">6</span>
+    <span class="token keyword">assert</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> dé<span class="token punctuation">.</span>valeur <span class="token operator">&lt;=</span> <span class="token number">6</span>
 </code></pre>
 </div>
 </details>     
@@ -484,8 +484,8 @@
 <li>Actions :
 <ol>
 <li>créer un dé sans paramètre</li>
-<li>afficher à l'écran sa position (ça doit être 1)</li>
-<li>lancer le dé 10 fois et affiche la position du dé après chaque lancer. Quelle est la probabilité que le dé ne change jamais ?.</li>
+<li>afficher à l'écran sa valeur (ça doit être 1)</li>
+<li>lancer le dé 10 fois et affiche la valeur du dé après chaque lancer. Quelle est la probabilité que le dé ne change jamais ?.</li>
 </ol>
 </li>
 </ul>
@@ -515,20 +515,20 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de position en 10 lancers.</p>
+<p>Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de valeur en 10 lancers.</p>
 <p>La user story donnerait en python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
 
 <span class="token comment"># 1. créer un dé sans paramètre</span>
 dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span> 
 
-<span class="token comment"># 2. afficher à l'écran sa position (ça doit être 1)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span>
+<span class="token comment"># 2. afficher à l'écran sa valeur (ça doit être 1)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 
-<span class="token comment"># 3. lancer le dé 10 fois et affiche la position du dé après chaque lancer</span>
+<span class="token comment"># 3. lancer le dé 10 fois et affiche la valeur du dé après chaque lancer</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
    dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-   <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span></code></pre>
+   <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -572,9 +572,9 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">)</span>
 <span class="token operator">&lt;</span>__main__<span class="token punctuation">.</span>Dé <span class="token builtin">object</span> at <span class="token number">0x10a691010</span><span class="token operator">></span></code></pre>
-<p>Ce qui n'est pas très informatif. On peut bien sur afficher sa position :</p>
+<p>Ce qui n'est pas très informatif. On peut bien sur afficher sa valeur :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 <span class="token number">1</span></code></pre>
 <p>Mais représenter un dé par un entier ce n'est pas très joli. Nous allons coder une méthode spécifique pour représenter notre objet sous la forme d'une chaîne de caractère : la méthode <code class="language-">Dé.texte()</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -587,7 +587,7 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>texte<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 ⚀
-<span class="token operator">>></span><span class="token operator">></span> d<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">4</span>
+<span class="token operator">>></span><span class="token operator">></span> d<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">4</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>texte<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 ⚃</code></pre>
 </div></div>
@@ -623,11 +623,11 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 <ol>
 <li>demande à l'utilisateur :
 <ul>
-<li>la position initiale du dé</li>
-<li>la position pour laquelle arrêter les lancers</li>
+<li>la valeur initiale du dé</li>
+<li>la valeur pour laquelle arrêter les lancers</li>
 </ul>
 </li>
-<li>lance le dé jusqu'à tant que sa position est différente de la position demandée par l’utilisateur soit trouvée.</li>
+<li>lance le dé jusqu'à tant que sa valeur est différente de la valeur demandée par l’utilisateur soit trouvée.</li>
 <li>le programme affiche le nombre de lancer nécessaire (cela peut être 0)</li>
 </ol>
 </div></div>
@@ -652,14 +652,14 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 <p>Fichier <code class="language-">main.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
 
-position_initiale <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"valeur initiale du dé : "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-position_finale <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"position finale du dé : "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+valeur_initiale <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"valeur initiale du dé : "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+valeur_finale <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"valeur finale du dé : "</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-dé<span class="token punctuation">.</span>position <span class="token operator">=</span> position_initiale
+dé<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur_initiale
 
 nombre_lancer <span class="token operator">=</span> <span class="token number">0</span>
-<span class="token keyword">while</span> dé<span class="token punctuation">.</span>position <span class="token operator">!=</span> position_finale<span class="token punctuation">:</span>
+<span class="token keyword">while</span> dé<span class="token punctuation">.</span>valeur <span class="token operator">!=</span> valeur_finale<span class="token punctuation">:</span>
     dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
     nombre_lancer <span class="token operator">+=</span> <span class="token number">1</span>
 
