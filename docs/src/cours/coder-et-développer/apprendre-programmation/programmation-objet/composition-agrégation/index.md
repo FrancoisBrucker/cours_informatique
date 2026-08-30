@@ -13,12 +13,12 @@ Composition et agrégation permettent de lier des classes entres elles et plus p
 
 Ce qui les distingue :
 
-{% note "**Définition** :" %}
+{% note2 "**Définition** :" %}
 
 - **_agrégation_** : quand les objets utilisés sont créés en dehors de la classe,
 - **_composition_** : quand les objets utilisés sont créés dans le constructeur de la classe qui les utilise.
 
-{% endnote %}
+{% endnote2 %}
 
 Il est important de comprendre que si des objets n'ont pas été crées dans la classe qui l'utilise, ils peuvent être connus par d'autres méthodes du programme et donc être modifiées par celles-ci.
 
@@ -33,29 +33,21 @@ Lorsque l'on utilise la composition ou l'agrégation de nos classes dans des sch
 
 ![uml composition et agrégation](classes-3.png)
 
-## Exemple du panier de fruit
+## Exemple du panier d'achats
 
-Prenons un autre exemple, le panier de fruits. Je voudrais modéliser un panier de fruits. Il doit avoir les propriétés suivantes :
+Prenons l'exemple du panier d'achat. On veut modéliser la gestion d'un panier sur un site d'achat en ligne. Ce panier aura les propriétés suivantes :
 
-- il doit être vide initialement
-- je dois pouvoir ajouter des fruits dans le panier
-- je dois pouvoir montrer les fruits que j'ai dans le panier
-- je dois pouvoir reprendre un fruit du panier
+- il doit être initialement vide,
+- on doit pouvoir ajouter des items dans le panier,
+- on doit pouvoir montrer les items du panier,
+- on doit pouvoir retirer un item du panier.
+- un item doit avoir un nom et un prix
 
 ### Modélisation uml
 
-Comme à notre habitude commençons par créer une boîte uml presque vide :
-
 ![uml panier](panier_uml_1.png)
 
-Pour que l'on puisse faire ces différentes méthodes, il faut que `Panier`{.language-} puisse stocker ses fruit. On lui ajoute donc un attribut qui sera une liste.
-
-![uml panier](panier_uml_2.png)
-
-### Composition et agrégation
-
-- Le panier est **composé** d'un stock : il est créé avec le panier
-- le stock **agrège** des fruits : ils sont ajoutés par une méthode dans l'objet.
+Le panier **agrège** des Items puisqu'ils sont ajoutés par une méthode dans l'objet.
 
 ### Code python
 
@@ -66,45 +58,139 @@ class Panier:
     def __init__(self):
         self.stock = []
 
-    def ajoute(self, fruit):
-        self.stock.append(fruit)
+    def ajoute(self, item):
+        self.stock.append(item)
 
     def montre_panier(self):
         return self.stock
 
-    def supprime(self, fruit):
-        self.stock.remove(fruit)
+    def supprime(self, item):
+        self.stock.remove(item)
+
+class Item:
+    def __init__(self, nom, prix):
+        self._nom = nom
+        self._prix = prix
+
+
+    def __eq__(self, other):
+        return self._nom == other._nom and self._prix == other._prix
+
+    def __repr__(self):
+        return f"Item({self._nom}, {self._prix})"
+
+    def __str__(self):
+        return f"Un item de nom {self._nom} valant {self._prix} euros."
+
+
 ```
+
+{% exercice %}
+Quels tests feriez vous pour vérifier la véracité de votre code ?
+{% endexercice %}
+{% details "corrigé" %}
+
+fichier `test_panier.py`{.fichier} :
+
+```python
+from panier import Panier, Item
+
+
+def test_init():
+    panier = Panier()
+    assert panier is not None
+
+
+def test_montre_panier_vide():
+    panier = Panier()
+    assert panier.montre_panier() == []
+
+
+def test_ajoute():
+    panier = Panier()
+    panier.ajoute(Item("macbook", 1000))
+    assert panier.montre_panier() == [Item("macbook", 1000),]
+
+
+def test_supprime_dans_panier():
+    panier = Panier()
+    panier.ajoute(Item("macbook", 1000))
+    panier.supprime(Item("macbook", 1000))
+
+    assert panier.montre_panier() == []
+
+def test_item_eq():
+    assert Item("macbook", 1000) == Item("macbook", 1000)
+    assert Item("Rolex", 1000) != Item("macbook", 1000)
+    assert Item("Rolex", 10000) != Item("Rolex", 1000)
+```
+
+Je n'ai pas l'habitude de tester les méthodes `__repr__`{.language-} et `__str__`{.language-} qui ne sont utilisées que pour l'affichage.
+
+{% enddetails %}
 
 On peut alors utiliser notre classe, par exemple :
 
 ```python
+from panier import Panier, Item
+
 panier = Panier()
 
 print(panier.montre_panier())
 
-panier.ajoute("pomme")
+mac = Item("macbook", 1000)
+print(mac)
+panier.ajoute(mac)
 
 print(panier.montre_panier())
 
-panier.ajoute("pomme")
-panier.ajoute("poire")
+panier.ajoute(Item("grosse Rolex", 50000))
 
 print(panier.montre_panier())
 
-panier.supprime("pomme")
+panier.supprime(Item("grosse Rolex", 50000))
 print(panier.montre_panier())
 ```
 
-### Attention
+Dont l'exécution va donner :
+
+```shell
+[]
+Un item de nom macbook valant 1000 euros.
+[Item(macbook, 1000)]
+[Item(macbook, 1000), Item(grosse Rolex, 50000)]
+[Item(macbook, 1000)]
+
+```
+
+Les items sont ajoutés et supprimés du Panier mais ne sont pas crée par lui : c'est bien une agrégation.
+
+{% info %}
+Vous remarquerez que lors de l'affichage d'une liste, c'est la fonction `repr`{.language-} qui est utilisée et non `str`{.language-}.
+{% endinfo %}
+{% exercice %}
+- Commentez la méthode `Item.__str__`{.language-} puis exécutez à nouveau le code. Conclusion ?
+- Décommentez la méthode `Item.__str__`{.language-} et commentez maintenant la méthode `Item.__repr__`{.language-} puis exécutez à nouveau le code. Conclusion ?
+{% endexercice %}
+{% details "corrigé" %}
+La fonction `str`{.language-} utilise la méthode `Item.__repr__`{.language-} si `Item.__str__`{.language-} n'est pas défini, mais pas le contraire.
+
+Si on ne doit coder qu'une seule méthode, c'est `__repr__`{.language-} qu'il faut faire.
+{% enddetails %}
+
+### Composition du stock
+
+Nous avons cependant oublié de compter une composition : le stock. Il est en effet crée par le panier. On est donc plutôt dans le schéma suivant :
+
+![uml panier](panier_uml_2.png)
+
+Cette composition est importante car les listes de python sont mutables :
 
 {% attention %}
-Si une classe est composée d'autres objets, ces parties peuvent être modifiées en dehors de la classe, même pour une composition.
+Si une classe est composée d'autres objets mutables, ces parties peuvent être modifiées en dehors de la classe.
 {% endattention %}
 
-Dans notre exemple, une méthode retourne un objet qui est un attribut. Une fois qu'un objet a été _donné_ au monde extérieur on ne contrôle plus son état et il peut être utilisé a priori par n'importe quoi d'autre dans le programme.
-
-Regardez le code suivant :
+Dans notre cas la méthode `Panier.montre_panier()`{.language-} retourne directement l'attribut `stock`{.language-}. et une fois qu'un objet a été _donné_ au monde extérieur on ne contrôle plus son état. Il peut être utilisé a priori par n'importe quoi d'autre dans le programme comme le montre le code suivant :
 
 ```python
 
@@ -112,31 +198,26 @@ panier = Panier()
 
 print(panier.montre_panier())
 
-panier.ajoute("pomme")
+panier.ajoute(Item("macbook", 1000))
 
 copie = panier.montre_panier()
 
-copie.append("champignon")
+copie.append(Item("fausse rolex", 50))
 print(panier.montre_panier())
 ```
 
-On a ajouté un champignon à notre panier sans que l'objet panier ne le sache !
+On a ajouté une fausse rolex à notre panier sans que le panier ne le sache ! Cela peut poser de gros problème car la méthode `Panier.ajoute_panier(item)`{.language-} fait certainement des vérifications pour ne pas que l'on puisse ajouter de contrefaçons.
 
-Ce n'est pas forcément un problème, sauf si on vérifiait que ce qu'on ajoute dans le panier doit être un fruit.
+Pour que tout se passe comme prévu, il faut donc s'assurer que notre `stock`{.language-} ne uisse être modifié. Ceci peut se faire de 2 façons :
 
-Pour que tout se passe comme prévu, il faut donc s'assurer que pour les attributs , soit :
+1. la méthode `Panier.montre_panier()`{.language-} rend une copie du stock,
+2. notre stock est immutable et et on reconstruit un nouveau stock à chaque ajout d'item.
 
-1. on s'en fiche qu'ils changent
-2. on refait un nouvel objet à nous pour s'assurer qu'il ne changera pas
-3. les objets que l'on retourne et qui sont des attributs sont non modifiables (des entiers, réels, chaînes de caractères, tuples, etc)
+Le choix d'une stratégie ou de l'autre va dépendre du nombre de fois où l'on consulte le panier vs le no,bre de fois où on y ajoute des éléments.
 
-#### 1ère solution
+#### Rendre une copie
 
-La 1ère solution est ce qu'on a pour l'instant.
-
-#### 2nde solution
-
-La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode `montre_panier()`{.language-} :
+On modifie la méthode `montre_panier()`{.language-} :
 
 ```python
 class Panier:
@@ -148,9 +229,9 @@ class Panier:
     #...
 ```
 
-#### 3ère solution
+#### Rendre le stock non mutable.
 
-Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, dans les méthodes `ajoute()`{.language-} et `supprime()`{.language-}. On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python) qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération `+`{.language-} des tuples qui crée un nouvel objet. :
+On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python) qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération `+`{.language-} des tuples qui crée un nouvel objet. :
 
 ```python
 class Panier:
@@ -171,39 +252,27 @@ class Panier:
 
 ```
 
-Selon que l'on aura beaucoup d'ajouts ou beaucoup de visualisation du panier, on choisira l'une ou l'autre solution. Mais si on a pas d'idée, on préférera **toujours** la 3ème solution qui est la plus robuste.
+Selon que l'on aura beaucoup d'ajouts ou beaucoup de visualisation du panier, on choisira l'une ou l'autre solution. Mais si on a pas d'idée, on préférera **toujours** cette solution qui est la plus robuste.
 
-Le fait d'avoir des objets qui ne se modifient pas est appelé [value object](https://en.wikipedia.org/wiki/Value_object).
-
-Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on ne peut pas modifier. La seule façon de changer de valeur c'est de recréer de nouveaux objets. Pour que l'utilisation de ce genre d'objets soit fluide, on fait en sorte qu'ils puissent supporter l'opération `==`{.language-}.
-
-Vous avez utilisé des value objects bien souvent en python comme : les entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les `tuple`{.language-} qui sont des listes non modifiables ou encore les `frozenset`{.language-} sont des ensembles non modifiables.
-
-{% note %}
+{% attention2 "**À retenir**" %}
 Une bonne façon de programmer est d'**utiliser par défaut uniquement des objets non modifiables** et que si le besoin s'en fait sentir de les rendre modifiables.
-{% endnote %}
+{% endattention2 %}
 
-## Tests des objets
+Il ~nous~ vous reste à modifier les tests :
 
-Lorsque l'on crée ses propres objets, il est important de tester leurs fonctionnalités. On procède alors ainsi :
+{% exercice %}
+Modifiez les tests pour qu'ils passent avec notre nouvelle classe `Panier`{.language-}
+{% endexercice %}
+{% details "corrigé" %}
 
-- chaque méthode doit être testée
-- chaque test doit être indépendant
+Il faut vérifier que le stock est un tuple.
 
-Dans la mesure du possible, on ne teste pas la valeur des attributs. On utilise des méthodes publique pour tester. En effet les attributs montrent l'implémentation de la classe et pas son usage.
-
-### Exemple
-
-Par exemple, pour notre panier. Fichier `test_panier.py`{.fichier} :
+fichier `test_panier.py`{.fichier} :
 
 ```python
-from panier import Panier
+from panier import Panier, Item
 
-
-def test_init():
-    panier = Panier()
-    assert panier is not None
-
+# ...
 
 def test_montre_panier_vide():
     panier = Panier()
@@ -212,105 +281,25 @@ def test_montre_panier_vide():
 
 def test_ajoute():
     panier = Panier()
-    panier.ajoute("pomme")
-    assert panier.montre_panier() == ("pomme",)
+    panier.ajoute(Item("macbook", 1000))
+    assert panier.montre_panier() == (Item("macbook", 1000),)
 
 
 def test_supprime_dans_panier():
     panier = Panier()
-    panier.ajoute("pomme")
-    panier.supprime("pomme")
-
-    assert panier.montre_panier() == tuple()
-```
-
-{% note %}
-
-- pour l'initialisation, on vérifie juste que notre objet existe. Comme il n'a pas de paramètre, on ne peut pas tester grand chose d'autre
-- On crée pour chaque test un nouvel objet, pour être sur que les tests n'interfèrent pas les uns avec les autres
-- Chaque test doit permettre d'utiliser la méthode testée comme elle doit être utilisée dans le code
-
-{% endnote %}
-
-## <span id="code-final"></span> Code final
-
-Vous devez avoir 3 fichiers :
-
-### Code de la classe
-
-Fichier : `panier.py`{.fichier}
-
-```python
-class Panier:
-    def __init__(self):
-        self.stock = []
-
-    def ajoute(self, fruit):
-        self.stock.append(fruit)
-
-    def montre_panier(self):
-        return tuple(self.stock)
-
-    def supprime(self, fruit):
-        self.stock.remove(fruit)
-
-```
-
-### Programme principal
-
-Fichier `main.py`{.fichier} :
-
-```python
-from panier import Panier
-
-panier = Panier()
-
-print(panier.montre_panier())
-
-panier.ajoute("pomme")
-
-print(panier.montre_panier())
-
-panier.ajoute("pomme")
-panier.ajoute("poire")
-
-print(panier.montre_panier())
-
-panier.supprime("pomme")
-
-print(panier.montre_panier())
-
-```
-
-### Tests
-
-Fichier `test_panier.py`{.fichier} :
-
-```python
-from panier import Panier
-
-
-def test_init():
-    panier = Panier()
-    assert isinstance(panier, Panier)
-
-
-def test_montre_panier_vide():
-    panier = Panier()
-    assert panier.montre_panier() == tuple()
-
-
-def test_ajoute():
-    panier = Panier()
-    panier.ajoute("pomme")
-    assert panier.montre_panier() == ("pomme",)
-
-
-def test_supprime_dans_panier():
-    panier = Panier()
-    panier.ajoute("pomme")
-    panier.supprime("pomme")
+    panier.ajoute(Item("macbook", 1000))
+    panier.supprime(Item("macbook", 1000))
 
     assert panier.montre_panier() == tuple()
 
+# ...
 ```
+
+{% enddetails %}
+
+## Code Python de la classe Panier
+
+{% lien %}
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/code)
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/code?filename=projet-panier)
+{% endlien %}

@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Exécuter des modules python
+title: Odds and ends sur les modules pythons
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,6 +9,15 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
+
+Quelques particularités sur les modules python :
+
+- comment les exécuter
+- comment les organiser en packages
+
+
+
+## Exécuter des modules
 
 Pour exécuter un module python on peut utiliser l'option `-m` de l'interpréteur python.
 
@@ -86,3 +95,24 @@ Cette différence dans le nom d'une variable permet de différentier les deux ty
 if __name__ == "__main__":
     # code du programme principal
 ```
+
+## Package
+
+Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <https://pypi.org/> pour être utilisés par d'autres.
+
+{% lien %}
+[package en python](https://docs.python.org/fr/3/tutorial/modules.html#packages)
+{% endlien %}
+
+Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier `__init__.py`{.fichier} présent dans le dossier.
+
+{% note %}
+Un _package_ est un dossier contenant un fichier `__init__.py`{.fichier}.
+
+- importer le dossier revient à exécuter le fichier `__init__.py`{.fichier}.
+
+- exécuter le dossier avec l'interpréteur revient à exécuter le fichier `__main__.py`{.fichier}.
+
+{% endnote %}
+
+Enfin, on peut faire en sorte que nos modules/packages soient exécutables directement avec un interpréteur :

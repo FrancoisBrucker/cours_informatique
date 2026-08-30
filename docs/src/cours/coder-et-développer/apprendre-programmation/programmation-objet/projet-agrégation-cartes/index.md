@@ -86,7 +86,7 @@ def test_str():
     assert str(Carte(Carte.VALEURS.sept, Carte.COULEURS.trèfle)) == "7♣︎"
 
 
-def test_operator():
+def test_comparaisons():
     dix_cœur = Carte(Carte.VALEURS.dix, Carte.COULEURS.cœur)
     dix_carreau = Carte(Carte.VALEURS.dix, Carte.COULEURS.carreau)
     

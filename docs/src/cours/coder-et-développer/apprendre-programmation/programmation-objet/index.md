@@ -74,7 +74,7 @@ On s'entraîne en perfectionnant nos cartes :
 [Composition et agrégation](composition-agrégation){.interne}
 {% endaller %}
 {% aller %}
-[Projet de compositions de dés](projet-composition-dés){.interne}
+[Projet de compositions et d'agrégation de dés](projet-composition-aggrégation-dés){.interne}
 {% endaller %}
 
 Reprenons nos objets et combinons les avec d'autres :

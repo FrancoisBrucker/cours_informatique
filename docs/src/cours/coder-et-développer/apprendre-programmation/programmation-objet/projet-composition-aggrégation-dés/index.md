@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Projet composition d'objets : dés"
+title: "Projet composition et agrégation d'objets : dés"
 
 eleventyNavigation:
   prerequis:
@@ -13,8 +13,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-> TBD pattern composition.
 
 Dans les deux précédents projets dés, vous avez codé des classes toutes seules. Dans cette partie on va coder plusieurs classes enchevêtrées.
 
@@ -260,3 +258,15 @@ Pour coder cela de façon simple, vous pourrez coder deux méthodes supports :
 - une méthode qui prend en paramètre un nombre $n$ et qui rend `True`{.language-} s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manière les différentes fonctions demandées.
 
 {% endinfo %}
+
+
+## Agrégation
+
+> TBD 3d6 + 12
+> avec (entier, de, entier). 
+>
+## Pour aller plus loin
+
+> TBD pour aller plus loin :
+> - ajouter add et mul aux des pour que ça marche avec des entiers
+> - que faudrait-il pour que ça marche aussi avec des des et des compositions ?

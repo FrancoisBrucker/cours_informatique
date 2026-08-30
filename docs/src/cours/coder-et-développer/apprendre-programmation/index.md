@@ -78,7 +78,7 @@ La première partie nous a appris les concepts fondamentaux d'un langage de prog
 [Coder des projets en python](./coder-projets){.interne}
 {% endaller %}
 
-## Partie III : Programmation objet et évènementielle
+## Partie III : Programmation objet
 
 La programmation objet est un principe de programmation utilisé par la quasi-totalité des langages de programmation. Nes nuances existent bien sur, la programmation objet en rust n'est pas la même qu'en java par exemple, mais quelques principes fondateurs sont utilisés partout.
 
@@ -88,6 +88,16 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 [Programmation objet](programmation-objet){.interne}
 {% endaller %}
 
+## Partie IV : <span id="gestion-dépendances"></span>Gestion des dépendances
+
+> TBD environnement virtuel + github sous la forme d'un drive
+
+{% aller %}
+[Gestion des dépendances](gestion-dépendances){.interne}
+{% endaller %}
+
+### Partie V : Programmation évènementielle
+
 La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
 
 {% aller %}
@@ -95,20 +105,7 @@ La programmation évènementielle est un principe de développement très utilis
 {% endaller %}
 
 
-## Partie IV : Partager ses projets
-
-> TBD environnement virtuel + github sous la forme d'un
-
-### <span id="gestion-dépendances"></span>Gestion des dépendances
-
-{% aller %}
-[Gestion des dépendances](gestion-dépendances){.interne}
-{% endaller %}
-
-
-## Partie V : Pour aller plus loin
-
-> TBD package et anatomie d'un espace de nommage. TDD. code coverage
+## Partie VI: Pour aller plus loin
 
 ### Couverture de code
 
@@ -118,27 +115,17 @@ La couverture de code est un outils essentiel lorsque l'on programme par les tes
 [Couverture de code](couverture-de-code){.interne}
 {% endaller %}
 
-### Packages
-
-Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <https://pypi.org/> pour être utilisés par d'autres.
-
-{% lien %}
-[package en python](https://docs.python.org/fr/3/tutorial/modules.html#packages)
-{% endlien %}
-
-Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier `__init__.py`{.fichier} présent dans le dossier.
-
-{% note %}
-Un _package_ est un dossier contenant un fichier `__init__.py`{.fichier}.
-
-- importer le dossier revient à exécuter le fichier `__init__.py`{.fichier}.
-
-- exécuter le dossier avec l'interpréteur revient à exécuter le fichier `__main__.py`{.fichier}.
-
-{% endnote %}
-
-Enfin, on peut faire en sorte que nos modules/packages soient exécutables directement avec un interpréteur :
+### Odds and ends sur les modules python
 
 {% aller %}
-[Exécuter des modules python](exécution-modules){.interne}
+[Odds and ends sur les modules python](misc-modules){.interne}
 {% endaller %}
+
+### Anatomie d'un espace de nommage
+
+La base de cette séparation en unités fonctionnelles séparée est l'espace de nommage. Nous l'avons déjà entre-aperçu lorsque l'on a parlé de modules et de fonctions, nous allons ici rentrer dans les détails et expliciter comment python trouve un objet associé à un nom.
+
+{% aller %}
+[Anatomie d'un espace de nommage](exécution-modules){.interne}
+{% endaller %}
+

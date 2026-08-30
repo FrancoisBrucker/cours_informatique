@@ -11,6 +11,8 @@ eleventyComputed:
 
 ---
 
+> TBD faire avec projet et environnement virtuel.
+
 La [programmation événementielle](https://fr.wikipedia.org/wiki/Programmation_%C3%A9v%C3%A9nementielle) est un paradigme de programmation très utiliser dans les interfaces graphiques. Cette méthode consiste à réagir à des événements issus du programme comme de cliquer sur un bouton, appuyer sur une touche, etc.
 
 Le principe est le suivant :
