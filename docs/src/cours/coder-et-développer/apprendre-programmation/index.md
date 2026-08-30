@@ -90,7 +90,7 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 
 ## Partie IV : <span id="gestion-dépendances"></span>Gestion des dépendances
 
-> TBD ici. environnement virtuel + github sous la forme d'un drive
+La plupart des  projets informatiques ont besoin de modules extérieurs pour leur fonctionnement et ce quelque soit le langage de programmation. Nous allons voir comment gérer ces dépendances en python mais le principe est général :
 
 {% aller %}
 [Gestion des dépendances](gestion-dépendances){.interne}
