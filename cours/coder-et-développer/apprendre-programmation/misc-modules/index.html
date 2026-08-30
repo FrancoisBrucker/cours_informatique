@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Exécuter des modules python</title>
+    <title>Odds and ends sur les modules pythons</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Exécuter des modules python</h1>
+  <h1>Odds and ends sur les modules pythons</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/exécution-modules/">Exécuter des modules python</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/misc-modules/">Odds and ends sur les modules pythons</a>
 
 </div></div>
 
@@ -96,7 +96,13 @@
     
   
 
-  <p>Pour exécuter un module python on peut utiliser l'option <code>-m</code> de l'interpréteur python.</p>
+  <p>Quelques particularités sur les modules python :</p>
+<ul>
+<li>comment les exécuter</li>
+<li>comment les organiser en packages</li>
+</ul>
+<h2>Exécuter des modules</h2>
+<p>Pour exécuter un module python on peut utiliser l'option <code>-m</code> de l'interpréteur python.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -175,6 +181,34 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     <span class="token comment"># code du programme principal</span></code></pre>
+<h2>Package</h2>
+<p>Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle <em>package</em>. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <a href="https://pypi.org/">https://pypi.org/</a> pour être utilisés par d'autres.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3/tutorial/modules.html#packages">package en python</a></p>
+</div></div>
+
+<p>Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier <code class="fichier">__init__.py</code> présent dans le dossier.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un <em>package</em> est un dossier contenant un fichier <code class="fichier">__init__.py</code>.</p>
+<ul>
+<li>
+<p>importer le dossier revient à exécuter le fichier <code class="fichier">__init__.py</code>.</p>
+</li>
+<li>
+<p>exécuter le dossier avec l'interpréteur revient à exécuter le fichier <code class="fichier">__main__.py</code>.</p>
+</li>
+</ul>
+</div></div>
+
+<p>Enfin, on peut faire en sorte que nos modules/packages soient exécutables directement avec un interpréteur :</p>
 
 
 </article>
