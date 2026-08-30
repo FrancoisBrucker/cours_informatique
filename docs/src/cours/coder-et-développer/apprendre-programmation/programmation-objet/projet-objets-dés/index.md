@@ -20,12 +20,12 @@ Lorsque l'on crée un objet qui correspond à un objet réel, il faut faire en s
 
 Si on veut pouvoir utiliser nos dés virtuels comme un vrai dé physique, la classe `Dé`{.language-} doit être capable de :
 
-- créer un objet sans paramètre (sa position est alors 1),
+- créer un objet sans paramètre (sa valeur est alors 1),
 
-- connaître et donner la position du dé,
-- lancer un dé en utilisant une méthode nommée `lancer()`{.language-} qui ne rend **rien**, mais change la position du dé de façon aléatoire.
+- connaître et donner la valeur du dé,
+- lancer un dé en utilisant une méthode nommée `lancer()`{.language-} qui ne rend **rien**, mais change la valeur du dé de façon aléatoire.
 
-La position du dé doit être un entier entre 1 et 6.
+La valeur du dé doit être un entier entre 1 et 6.
 
 ### Modélisation UML
 
@@ -138,7 +138,7 @@ Fichier `dé.py`{.language-} :
 ```python
 class Dé:
     def __init__(self):
-        self.position = 1
+        self.valeur = 1
 
     def lancer(self):
         pass
@@ -150,7 +150,7 @@ class Dé:
 
 {% exercice %}
 
-Ajoutez un test qu projet qui vérifie que l'attribut `position`{.language-}  d'un objet de la classe `Dé`{.language-} fraîchement crée est bien à !
+Ajoutez un test qu projet qui vérifie que l'attribut `valeur`{.language-}  d'un objet de la classe `Dé`{.language-} fraîchement crée est bien à !
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -161,9 +161,9 @@ from dé import Dé
 
 # ...
 
-def test_position():
+def test_valeur():
    dé = Dé()
-    assert dé.position == 1
+    assert dé.valeur == 1
 
 
 ```
@@ -175,8 +175,8 @@ from dé import Dé
 
 # ...
 
-def test_position():
-    assert Dé().position == 1
+def test_valeur():
+    assert Dé().valeur == 1
 
 
 ```
@@ -228,15 +228,15 @@ class Dé:
    # ...
 
     def lancer(self):
-        self.position = random.randrange(1, 6 + 1)
+        self.valeur = random.randrange(1, 6 + 1)
 ```
 
 {% enddetails %}
 
-On a pas fini le code puisqu'il manque les tests de la méthode `Dé.lancer()`{.language-} ! On a cependant un soucis car il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la position ne change **sans** que ce soit mal codé). Comme on a besoin que nos fonctionnent toujours, il faut trouver ce qui est toujours vrai après un lancer :
+On a pas fini le code puisqu'il manque les tests de la méthode `Dé.lancer()`{.language-} ! On a cependant un soucis car il est impossible de tester le hasard (on pourrait n'avoir pas de chance et lancer 10 fois le dé sans que la valeur ne change **sans** que ce soit mal codé). Comme on a besoin que nos fonctionnent toujours, il faut trouver ce qui est toujours vrai après un lancer :
 
 {% exercice %}
-Implémentez un test qui vérifie que la méthode s'est bien exécutée `Dé.lancer()`{.language-} et que la valeur de la position reste entre 1 et 6.
+Implémentez un test qui vérifie que la méthode s'est bien exécutée `Dé.lancer()`{.language-} et que la valeur de la valeur reste entre 1 et 6.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -250,7 +250,7 @@ from dé import Dé
 def test_lancer():
     dé = Dé()
     dé.lancer()
-    assert 1 <= dé.position <= 6
+    assert 1 <= dé.valeur <= 6
 
 ```
 
@@ -270,8 +270,8 @@ L'idée est d'écrire une succession d'actions faites par un utilisateur typique
 - Story : On vérifie que le lancer de dé ressemble à de l'aléatoire.
 - Actions :
   1. créer un dé sans paramètre
-  2. afficher à l'écran sa position (ça doit être 1)
-  3. lancer le dé 10 fois et affiche la position du dé après chaque lancer. Quelle est la probabilité que le dé ne change jamais ?.
+  2. afficher à l'écran sa valeur (ça doit être 1)
+  3. lancer le dé 10 fois et affiche la valeur du dé après chaque lancer. Quelle est la probabilité que le dé ne change jamais ?.
 
 {% endnote2 %}
 
@@ -283,7 +283,7 @@ En utilisant la modélisation UML du Dé, codez la user story "Aléatoire" en py
 
 {% endexercice %}
 {% details "corrigé" %}
-Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de position en 10 lancers.
+Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de valeur en 10 lancers.
 
 La user story donnerait en python :
 
@@ -293,13 +293,13 @@ from dé import Dé
 # 1. créer un dé sans paramètre
 dé = Dé() 
 
-# 2. afficher à l'écran sa position (ça doit être 1)
-print(dé.position)
+# 2. afficher à l'écran sa valeur (ça doit être 1)
+print(dé.valeur)
 
-# 3. lancer le dé 10 fois et affiche la position du dé après chaque lancer
+# 3. lancer le dé 10 fois et affiche la valeur du dé après chaque lancer
 for i in range(10):
    dé.lancer()
-   print(dé.position)
+   print(dé.valeur)
 ```
 
 {% enddetails %}
@@ -336,11 +336,11 @@ Pour l'instant, lorsque l'on tente d'afficher un dé on obtient le charabia suiv
 <__main__.Dé object at 0x10a691010>
 ```
 
-Ce qui n'est pas très informatif. On peut bien sur afficher sa position :
+Ce qui n'est pas très informatif. On peut bien sur afficher sa valeur :
 
 ```python
 >>> dé = Dé()
->>> print(dé.position)
+>>> print(dé.valeur)
 1
 ```
 
@@ -353,7 +353,7 @@ Créez (et faites les tests) une méthode `Dé.texte()`{.language-} qui permette
 >>> d = Dé()
 >>> print(d.texte())
 ⚀
->>> d.position = 4
+>>> d.valeur = 4
 >>> print(d.texte())
 ⚃
 ```
@@ -383,9 +383,9 @@ Une fois tout ok, on peut commencer à créer le code du `main.py`{.fichier} :
 Créez un fichier `main.py`{.fichier} qui :
 
 1. demande à l'utilisateur :
-   - la position initiale du dé
-   - la position pour laquelle arrêter les lancers
-2. lance le dé jusqu'à tant que sa position est différente de la position demandée par l’utilisateur soit trouvée.
+   - la valeur initiale du dé
+   - la valeur pour laquelle arrêter les lancers
+2. lance le dé jusqu'à tant que sa valeur est différente de la valeur demandée par l’utilisateur soit trouvée.
 3. le programme affiche le nombre de lancer nécessaire (cela peut être 0)
 
 {% endexercice %}
@@ -396,14 +396,14 @@ Fichier `main.py`{.language-} :
 ```python
 from dé import Dé
 
-position_initiale = int(input("valeur initiale du dé : "))
-position_finale = int(input("position finale du dé : "))
+valeur_initiale = int(input("valeur initiale du dé : "))
+valeur_finale = int(input("valeur finale du dé : "))
 
 dé = Dé()
-dé.position = position_initiale
+dé.valeur = valeur_initiale
 
 nombre_lancer = 0
-while dé.position != position_finale:
+while dé.valeur != valeur_finale:
     dé.lancer()
     nombre_lancer += 1
 

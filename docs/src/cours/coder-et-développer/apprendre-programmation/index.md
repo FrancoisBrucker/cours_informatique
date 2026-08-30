@@ -90,7 +90,7 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 
 ## Partie IV : <span id="gestion-dépendances"></span>Gestion des dépendances
 
-> TBD environnement virtuel + github sous la forme d'un drive
+> TBD ici. environnement virtuel + github sous la forme d'un drive
 
 {% aller %}
 [Gestion des dépendances](gestion-dépendances){.interne}

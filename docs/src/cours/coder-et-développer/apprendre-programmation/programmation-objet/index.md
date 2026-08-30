@@ -89,7 +89,7 @@ Reprenons nos objets et combinons les avec d'autres :
 [Héritage](héritage){.interne}
 {% endaller %}
 {% aller %}
-[dés spécifiques](projet-héritage-dés){.interne}
+[Dés spécifiques](projet-objets-dés-héritage){.interne}
 {% endaller %}
 
 On implémente les exemples du cours :
@@ -103,19 +103,3 @@ On implémente les exemples du cours :
 {% aller %}
 [La bataille navale](projet-bataille-navale){.interne}
 {% endaller %}
-
-## Pour aller plus loin
-
-{% aller %}
-[Autres améliorations](./odds-and-ends){.interne}
-{% endaller %}
-
-<!-- TBD
-
-## Pour aller plus loin : les design pattern
-
-{% aller %}
-[Design Patterns](design-patterns){.interne}
-{% endaller %} 
-
--->

@@ -4,27 +4,36 @@ class Dé:
     MIN_VALEUR = 1
     MAX_VALEUR = 6
 
-    def __init__(self, position=1):
-        self.position = position
+    def __init__(self, valeur=1):
+        self.valeur = valeur
 
     def lancer(self):
-        self.position = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
 
         return self
 
     def __str__(self):
-        if self.position == 1:
+        if self.valeur == 1:
             return "⚀"
-        elif self.position == 2:
+        elif self.valeur == 2:
             return "⚁"
-        elif self.position == 3:
+        elif self.valeur == 3:
             return "⚂"
-        elif self.position == 4:
+        elif self.valeur == 4:
             return "⚃"
-        elif self.position == 5:
+        elif self.valeur == 5:
             return "⚄"
         else:
             return "⚅"
+
+
+class MementoDé:
+    def __init__(self, dé):
+        self.dé = dé
+        self.valeur_sauvée = dé.valeur
+
+    def restore(self):
+        self.dé.valeur = self.valeur_sauvée
 
 
 class TapisVert:
@@ -43,14 +52,14 @@ class TapisVert:
         for dé in self.dés:
             dé.lancer()
 
-    def _nombre_positions(self):
+    def _nombre_valeurs(self):
         count = [0] * 7
         for dé in self.dés:
-            count[dé.position] += 1
+            count[dé.valeur] += 1
         return count
 
     def nb_dés_valeurs_identiques(self, nb):
-        comptes = self._nombre_positions()
+        comptes = self._nombre_valeurs()
 
         for i in range(len(comptes)):
             if comptes[i] >= nb:
@@ -65,3 +74,13 @@ class TapisVert:
 
     def possède_carré(self):
         return self.nb_dés_valeurs_identiques(4)
+
+
+class MementoTapisVert:
+    def __init__(self, tapis_vert):
+        self.tapis_vert = tapis_vert
+        self.valeur_sauvée = [dé.valeur for dé in tapis_vert.dés]
+
+    def restore(self):
+        for dé, valeur_sauvée in zip(self.tapis_vert.dés, self.valeur_sauvée):
+            dé.valeur = valeur_sauvée

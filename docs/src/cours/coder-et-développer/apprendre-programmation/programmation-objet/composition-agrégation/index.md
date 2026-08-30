@@ -166,7 +166,7 @@ Un item de nom macbook valant 1000 euros.
 Les items sont ajoutés et supprimés du Panier mais ne sont pas crée par lui : c'est bien une agrégation.
 
 {% info %}
-Vous remarquerez que lors de l'affichage d'une liste, c'est la fonction `repr`{.language-} qui est utilisée et non `str`{.language-}.
+Vous remarquerez que lors de l'affichage d'une liste, c'est la méthode `__repr__`{.language-} qui est utilisée et non `__str__`{.language-}.
 {% endinfo %}
 {% exercice %}
 - Commentez la méthode `Item.__str__`{.language-} puis exécutez à nouveau le code. Conclusion ?
@@ -177,6 +177,7 @@ La fonction `str`{.language-} utilise la méthode `Item.__repr__`{.language-} si
 
 Si on ne doit coder qu'une seule méthode, c'est `__repr__`{.language-} qu'il faut faire.
 {% enddetails %}
+
 
 ### Composition du stock
 

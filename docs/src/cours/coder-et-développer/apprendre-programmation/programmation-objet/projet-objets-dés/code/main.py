@@ -1,13 +1,13 @@
 from dé import Dé
 
-position_initiale = int(input("valeur initiale du dé : "))
-position_finale = int(input("position finale du dé : "))
+valeur_initiale = int(input("valeur initiale du dé : "))
+valeur_finale = int(input("valeur finale du dé : "))
 
 dé = Dé()
-dé.position = position_initiale
+dé.valeur = valeur_initiale
 
 nombre_lancer = 0
-while dé.position != position_finale:
+while dé.valeur != valeur_finale:
     dé.lancer()
     nombre_lancer += 1
 

@@ -24,10 +24,10 @@ Nous allons améliorer la classé que nous avions crée lors du projet précéde
 ## Valeur par défaut
 
 {% exercice %}
-Faites en sorte que l'on puisse créer des dés avec une position initiale, On doit pouvoir :
+Faites en sorte que l'on puisse créer des dés avec une valeur initiale, On doit pouvoir :
 
-- créer un dé sans paramètre, `Dé()`{.language-}, et sa position doit être sur la position 1
-- créer un dé avec un paramètre qi sera sa position par défaut `Dé(4)`{.language-} par exemple.
+- créer un dé sans paramètre, `Dé()`{.language-}, et sa valeur doit être sur la valeur 1
+- créer un dé avec un paramètre qi sera sa valeur par défaut `Dé(4)`{.language-} par exemple.
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -36,8 +36,8 @@ Fichier `dé.py`{.fichier} :
 
 ```python
 class Dé:
-    def __init__(self, position=1):
-        self.position = position
+    def __init__(self, valeur=1):
+        self.valeur = valeur
 
 ```
 
@@ -50,9 +50,9 @@ Ajoutez des tests pour prendre en compte de cette nouvelle fonctionnalité.
 Fichier `test_dé.py`{.fichier} :
 
 ```python
-def test_position():
-    assert Dé().position == 1
-    assert Dé(position=4).position == 4
+def test_valeur():
+    assert Dé().valeur == 1
+    assert Dé(valeur=4).valeur == 4
 
 ```
 
@@ -74,15 +74,15 @@ class dé:
     # ..
 
     def __str__(self):
-        if self.position == 1:
+        if self.valeur == 1:
             return "⚀"
-        elif self.position == 2:
+        elif self.valeur == 2:
             return "⚁"
-        elif self.position == 3:
+        elif self.valeur == 3:
             return "⚂"
-        elif self.position == 4:
+        elif self.valeur == 4:
             return "⚃"
-        elif self.position == 5:
+        elif self.valeur == 5:
             return "⚄"
         else:
             return "⚅"
@@ -102,7 +102,7 @@ Fichier `test_dé.py`{.fichier} :
 def test_str():
     dé = Dé()
     assert str(dé) == "⚀"
-    dé.position = 4
+    dé.valeur = 4
     assert str(dé) == "⚃"
 
 ```
@@ -121,14 +121,14 @@ class dé:
     # ..
 
     def __repr__(self):
-        return f"Dé(position={self.position})"
+        return f"Dé(valeur={self.valeur})"
 ```
 
 Fichier `test_dé.py`{.fichier} :
 
 ```python
 def test_repr():
-    assert repr(Dé()) == "Dé(position=1)"
+    assert repr(Dé()) == "Dé(valeur=1)"
 
 ```
 
@@ -151,16 +151,15 @@ class dé:
     MIN_VALEUR = 1
     MAX_VALEUR = 6
 
-    def __init__(self, position=1):
-        self.position = position
+    def __init__(self, valeur=1):
+        self.valeur = valeur
 
     def lancer(self):
-        self.position = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
 
 ```
 
 {% enddetails %}
-
 
 ## Comparaisons
 
@@ -177,7 +176,7 @@ class dé:
     # ...
 
     def __lt__(self, other):
-        return self.position < other.position
+        return self.valeur < other.valeur
 
 ```
 
@@ -190,7 +189,7 @@ def test_lt():
     d2 = Dé()
     assert not d1 < d2
 
-    d2.position = 5
+    d2.valeur = 5
     assert d1 < d2
     assert not d2 < d1
 

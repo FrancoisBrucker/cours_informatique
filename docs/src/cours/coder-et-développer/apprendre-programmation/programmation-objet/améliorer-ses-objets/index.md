@@ -522,6 +522,12 @@ La méthode `__repr__`{.language-} permet :
 - on a coutume de représenter une chaîne de caractère permettant de recréer l'appel au constructeur permettant de recréer l'objet.
 {% endattention2 %}
 
+C'est ce que l'on appelle [sérialisation](https://en.wikipedia.org/wiki/Serialization) :
+
+{% note2 "**Définition**" %}
+La sérialisation d'un objet est sa transformation sous une forme textuelle permettant de le reconstituer.
+{% endnote2 %}
+
 Ainsi pour le compteur :
 
 ```python
@@ -543,7 +549,7 @@ Ce qui donnera :
 Compteur(pas=1, valeur=2)
 ```
 
-La fonction `repr()`{.language-} est souvent utilisée comme débogage pour les développeur car elle exprime distinctement ce que l'objet est, il est donc utile de l'implémenter. Elle esrt aussi utilisée par défaut dans la représentation textuelle des conteneurs :
+La fonction `repr()`{.language-} est souvent utilisée comme débogage pour les développeur car elle exprime distinctement ce que l'objet est, il est donc utile de l'implémenter. Elle est aussi utilisée par défaut dans la représentation textuelle des conteneurs :
 
 ```python
 >>> c = Compteur()
@@ -551,6 +557,14 @@ La fonction `repr()`{.language-} est souvent utilisée comme débogage pour les 
 >>> print(l)
 [Compteur(pas=1, valeur=0)]
 ```
+
+
+Il est toujours utile d'avoir une sérialisation de ses objets car on peut l'utiliser aussi pour l'afficher.
+
+{% attention2 "**À retenir**" %}
+En première approche, codez une méthode `__repr__`{.language-} pour toutes vos classes car par défaut si l'on ne définit par `__str__`{.language-}, c'est `__repr__`{.language-} qui est utilisé (le `__str__`{.language-} de la classe object rend le résultat de son `__repr__`{.language-}).
+
+{% endattention2 %}
 
 ### <span id="comparaison"></span> Comparaisons
 

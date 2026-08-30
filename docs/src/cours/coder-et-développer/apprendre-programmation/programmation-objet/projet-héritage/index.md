@@ -11,13 +11,6 @@ eleventyComputed:
 
 Mise en œuvre du mécanisme d'héritage.
 
-<!-- 
-{% details "corrigé" %}
-Faites les exercices vous même avant de regarder la solution.
-
-[Corrigé du code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
-{% enddetails %} -->
-
 ## Comptes bancaires
 
 Vous allez construire une hiérarchie de produits bancaires.
@@ -125,9 +118,9 @@ print(p.solde)
 
 ## Donjons et dragons
 
-### Personnages
+En reprenant [le cours](../héritage#exemple-D&D){.interne}
 
-En reprenant [le cours](../héritage#exemple-D&D){.interne} :
+### Personnages
 
 {% faire %}
 
@@ -153,51 +146,3 @@ Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se r
 
 {% endfaire %}
 
-## Le dé
-
-Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-objets-dés){.interne}. Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé){.interne}.
-
-Le but de cette partie est de compter les moyennes de jets de dés.
-
-### User Story
-
-On commence par créer une user story sur la fonctionnalité que l'on veut ajouter :
-
-{% note "**User Story**" %}
-
-- Nom : "Statistiques descriptives"
-- Utilisateur : un joueur
-- Story : On veut compter les moyennes de jets de dés
-- Actions :
-  1. effectuer 1000 jets de dé
-  2. calculer la moyenne de ces jets
-
-{% endnote %}
-
-{% faire %}
-
-Codez la user story en utilisant uniquement la classe `Dé` dans le fichier `story_moyenne.py`{.fichier}.
-
-{% endfaire %}
-
-### Un dé qui compte
-
-Nous voulons créer une version particulière d'un dé : un dé permettant de conserver les statistiques de ses lancers.
-
-Implémentez la classe `StatDé`{.language-} qui hérite de `Dé`{.language-}, et retient toutes les positions obtenues après un lancer (on ne compte pas les changement direct de positions) et permet de calculer les statistiques associées.
-
-{% faire %}
-
-Vous devez donc écrire et tester pour la classe `StatDé`{.language-} :
-
-- le constructeur `__init__`{.language-} qui ajoute l'attribut `historique`{.language-} qui est une liste pour l'instant vide. N'oubliez pas d'appeler le constructeur de la classe mère pour initialiser le dé.
-- une nouvelle méthode `lancer`{.language-} qui appelle la méthode de la classe mère puis stocke la nouvelle position à la fin d'un de l'attribut `historique`{.language-}.
-- une méthode `moyenne`{.language-} qui renvoie la moyenne de tous les lancés obtenus.
-
-{% endfaire %}
-
-### Programme principal
-
-{% faire %}
-Modifiez la user story pour qu'elle utilise la classe `StatDé`{.language-} à la place de `Dé`{.language-}.
-{% endfaire %}
