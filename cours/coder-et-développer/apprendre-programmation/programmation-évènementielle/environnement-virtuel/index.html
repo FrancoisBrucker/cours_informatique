@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gestion des dépendances</title>
+    <title>Environnement virtuel pour pytglet</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Gestion des dépendances</h1>
+  <h1>Environnement virtuel pour pytglet</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/">Gestion des dépendances</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/">Apprendre la programmation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/programmation-évènementielle/">Programmation évènementielle</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/apprendre-programmation/programmation-évènementielle/environnement-virtuel/">Environnement virtuel pour pytglet</a>
 
 </div></div>
 
@@ -96,35 +96,37 @@
     
   
 
-  <p>Les dépendances d'un projet sont de deux ordres :</p>
-<ul>
-<li>la version du langage : chaque nouvelle version peut amener son lot de modifications par rapport à des versions antérieures</li>
-<li>les modules externes : un projet peut utiliser des dizaines de bibliothèques différentes qu'il faut installer pour être utilisé</li>
-</ul>
-<p>Nous allons ici nous concentrer sur la façon de faire de python, chaque langage va avoir ses propres façon de faire pour gérer ces deux problèmes.</p>
-<h2>Interpréteur</h2>
-<p>Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique. Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est indispensable de pouvoir :</p>
+  <blockquote>
+<p>TBD à faire bien.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
 <ol>
-<li>créer un nouvel interpréteur python pour <strong><em>chaque</em></strong> exécution du programme.</li>
-<li>écrire notre programme en-dehors de tout interpréteur</li>
+<li>Environnement virtuel. Vous allez utiliser <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-%C3%A9v%C3%A8nementielle/projet-arkanoid/" class="interne">le TP de programmation évènementiel</a> dont le code est là : <a href="Arkanoid.zip" class="fichier"><code class="fichier">Arkanoid.zip</code></a>.
+<ol>
+<li>dézippez le projet et créez-vous un environnement virtuel dans le dossier projet</li>
+<li>ajoutez les modules <code>pyglet</code> et <code>pytest</code> à cet environnement en utilisant <code>pip</code> basé sur l'interpréteur de votre environnement virtuel</li>
+<li>vérifiez que les tests passent et que le code fonctionne avec votre environnement</li>
+<li>créez les fichiers :
+<ul>
+<li><code class="fichier">requirements.txt</code> qui explicite les dépendances</li>
+<li><code class="fichier">readme.md</code> qui explicite comment exécuter le programme et le lien vers le cours.</li>
+</ul>
+</li>
 </ol>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="version-python" class="interne">Version de l'interpréteur python</a></p>
-</div></div>
-
-<h2>Créer son environnement python</h2>
-<p>Chaque projet va dépendre de modules externes que vous avez installés avec <code>pip</code>. Mais lorsque vous voulez partager votre travail avec d'autres personnes, il leur faudra aussi installer les différents modules pour utiliser votre projet. De plus, certains de ces modules pourraient être incompatible avec leur version de python ou des modules qu'ils utilisent par ailleurs.</p>
-<p>Python règle ces deux problèmes d'un seul coup en utilisant des environnements virtuels :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="environnements-virtuels" class="interne">Environnements virtuels</a></p>
+</li>
+<li>Dépôt :
+<ol>
+<li><a href="/cours_informatique/cours/gestion-des-sources/d%C3%A9p%C3%B4t/github-compte/" class="interne">créez vous un compte github</a></li>
+<li>projet mettez le projet en ligne sur github (ne mettez pas l'environnement virtuel ni le dossier <code class="fichier">__pycache__</code> !)</li>
+</ol>
+</li>
+<li><a href="/cours_informatique/cours/gestion-des-sources/%C3%A9volution-code/github-projet/" class="interne">Gestion des sources avec github</a></li>
+<li><a href="/cours_informatique/cours/gestion-des-sources/partage/github-desktop/" class="interne">Partager des sources avec github</a></li>
+</ol>
 </div></div>
 
 
