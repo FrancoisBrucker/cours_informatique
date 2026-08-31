@@ -109,361 +109,252 @@
     
   
 
-  <p>24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.</p>
-<!-- TBD 
-
-Modifier le plan pour l'année prochaine. Mettre l'environnement virtuel en fin de 2A, partie IV
-
-voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y mettre l'interpréteur et le debogueur. Ajouter un tuto pour qu'il puisse montrer ce qu'est une variable. l'exécution d'une commande et d'une fonction) 
-
-## Partie I : le système
-
-> TBD Ca c'est JEMNEP
-
-> TBD ici programme python et interpréteur
-> débogueur pour voir comment il s'exécute.
-> le chemin pour savoir où exécuter son python.
-> installer des modules (ici numpy ou matplotlib) sur un python spécifique
-
-## Partie II : un algorithme
-
-> TBD ici JEMNEP : input ≠ return et les fonctions. Un programme qui fait tout
->
-> TBD ici tests et installation de pytest sur le python du système
-
-## Partie III : un programme
-
-> TBD ici JEMNEP : deux fichiers ou on sépare main et fonctions. On dit pourquoi
-> TBD ici dépendances puis prog objet
-> TBD en 3A on ajoute design et TDD
-
-## Partie IV : Le projet
-
-> TBD ici JEMNEP : un zip et le fichier requirement.txt + readme
-> TBD ici git pour le projet
-> puis virtualenv pour la gestion des dépendances.
-
--->
-<h2>Note</h2>
-<ul>
-<li>2 tests de 15min sur papier les 2ème et 3ème lundi (8h-8h15)</li>
-<li><a href="#projet-final" class="interne">un projet à rendre</a> sur github la dernière semaine</li>
-</ul>
-<h2>Partie I : le système</h2>
-<!-- TBD
-
-l'année prochaine mettre lire et écrire du code avant debogueur puis virtualenv dans la partie gérer un projet
-
-en 1A un fichier avec tout puis 2 fichiers avec des imports
-en 2A 3 fichier main/fct et test. 
- 
- -->
-<h3>Cours</h3>
-<blockquote>
-<p>Durée 3h plus questions</p>
-</blockquote>
-<h4>Utiliser le réseau</h4>
-<p>Connectez vous <a href="https://www.eduroam.fr/">au réseau Éduroam</a> qui est le réseau des université européennes.</p>
-<ul>
-<li>login : votre adresse mail</li>
-<li>mot de passe : celui de l'ent ECM</li>
-</ul>
-<p>Sous Linux vous pouvez cocher : <em>aucun certificat CA requis</em>.</p>
-<h4>Connaissances minimales du système d'exploitation</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/bases/principes" class="interne">Principes d'un système d'exploitation</a></p>
-</div></div>
-
-<h4>Installations système complémentaires</h4>
-<p>Outils et logiciels très utiles pour l'utilisation raisonnée de son système.</p>
-<ul>
-<li><strong>sous Windows</strong>, ayez un compte sur le <a href="https://apps.microsoft.com/home?hl=fr-FR&amp;gl=FR">microsoft store</a>.</li>
-<li><strong>sous mac</strong> installez <a href="https://brew.sh/">https://brew.sh/</a> qui vous permettra d'installer de nombreux package unix : <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/syst%C3%A8me-installation/brew/" class="interne">installer brew</a>.</li>
-<li><strong>sous Linux/Ubuntu</strong>, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : <a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/linux/bases-linux/post-installation/" class="interne">post-installation</a></li>
-</ul>
-<p>Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis longtemps, cela peut valoir le coup d'en faire une nouvelle installation. Ceci est optionnel si votre système fonctionne.</p>
+  <p>18h+3h heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Cette étape est <strong>optionnelle</strong>. Ne la faites que si votre ordinateur commence à avoir des comportement erratique, signe d'un système malade.</p>
+<p>Connectez vous <a href="https://www.eduroam.fr/">au réseau Éduroam</a> qui est le réseau des université européennes pour vos travaux en TD/TP.</p>
+<ul>
+<li>login : votre adresse mail</li>
+<li>mot de passe : celui de l'ent ECM</li>
+</ul>
+<p>Sous Linux vous pouvez cocher : <em>aucun certificat CA requis</em>.</p>
 </div></div>
 
+<h2>Partie 0 : Vérification des acquis</h2>
+<p>Utilisez <a href="https://console.basthon.fr/">un interpréteur en ligne</a> ou <a href="https://www.spyder-ide.org/">spyder</a> pour vous rafraîchir la mémoire en python :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/syst%C3%A8me-installation/" class="interne">installation d'u nouveau système</a></p>
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/mono-lignes/" class="interne">84 monolignes en python</a></p>
 </div></div>
 
-<h4>Dossiers et fichiers</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/bases-syst%C3%A8me/bases/interactions/fichiers-navigation/" class="interne">Naviguer dans un système de fichiers</a></p>
-</div></div>
-
-<h4>Ordinateur pour le développement en python</h4>
-<p>Vous aurez besoin d'installer python et un logiciel pour programmer :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/interpr%C3%A9teur/" class="interne">Installer python et un interpréteur</a></p>
-</div></div>
-
-<h4>Interpréteur python</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/version-python/" class="interne">versions de python</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/environnements-virtuels/" class="interne">virtualenv</a> pourquoi et comment avec vscode</li>
-</ol>
-</div></div>
-
-<h4>Exécution (pas à pas) d'un programme</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/debugger/" class="interne">comprendre et corriger un programme grace au déboguer</a>,</li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/donn%C3%A9es-m%C3%A9moire/" class="interne">variables (locales), pile et <em>stackframe</em></a></li>
-</ol>
-</div></div>
-
+<p>Vous devriez être capable de comprendre toutes les solutions et (dans le meilleur des cas) d'en faire une grande partie.</p>
+<h2>Partie I : Projets informatique</h2>
+<h3>Interpréteur python et IDE</h3>
 <blockquote>
-<p>TBD debug avec un environnement virtuel : <a href="https://m-ruminer.medium.com/vscode-and-debugging-python-in-virtual-environments-d975125b455c">https://m-ruminer.medium.com/vscode-and-debugging-python-in-virtual-environments-d975125b455c</a>
-doc <a href="https://code.visualstudio.com/docs/python/debugging">https://code.visualstudio.com/docs/python/debugging</a></p>
+<p>2h cours</p>
 </blockquote>
-<h3>TD</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>faites les tutoriels du cours :
+<li>Interagir avec le système :
 <ol>
-<li>de vscode</li>
-<li>du débogueur</li>
-<li>faites un environnement virtuel, installez matplotlib et <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/matplotlib/" class="interne">faites le tutoriel</a> dans un vscode</li>
+<li><a href="/cours_informatique/cours/syst%C3%A8me/interagir-avec-syst%C3%A8me/fichiers-dossiers/" class="interne">Naviguer dans un système de fichiers</a></li>
+<li><a href="/cours_informatique/cours/syst%C3%A8me/interagir-avec-syst%C3%A8me/terminal/" class="interne">Terminal</a></li>
 </ol>
 </li>
-<li>Utilisez les exercices de la partie <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-codes/" class="interne">on s'entraîne</a> pour :
-<ol>
-<li>installer un environnement virtuel par projet</li>
-<li>comprendre comment fonctionne le débogueur</li>
-<li>faire un code qui fonctionne</li>
-</ol>
-</li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/outils/" class="interne">Installer un interpréteur et un IDE</a></li>
 </ol>
 </div></div>
 
-<h2>Partie II : développement</h2>
-<h3>Écrire du code</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/" class="interne">lire et écrire du code</a></p>
+<p><a href="/cours_informatique/cours/syst%C3%A8me/interagir-avec-syst%C3%A8me/gestionnaire-paquets/" class="interne">Installer des paquets</a></p>
 </div></div>
 
+<h3>Principe de conduite d'un projet informatique</h3>
 <blockquote>
-<p>À retenir : S'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !</p>
+<p>2h TD</p>
 </blockquote>
-<h3>Un programme comme imbrications d'objets</h3>
-<h4>Concevoir des classes et des objets</h4>
+<p>Le premier principe fondamental est de séparer le programme principal des fonctions :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/classes-et-objets/" class="interne">Classes et objets</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/coder-ses-objets/" class="interne">Coder ses objets</a></li>
+<li>Séparer code et fonctions en <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/cr%C3%A9ation-modules/" class="interne">créant ses propres modules</a></li>
+<li>On s'entraîne : <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-cr%C3%A9ation-modules/" class="interne">Projet : création de modules</a></li>
 </ol>
+</div></div>
+
+<p>Le second principe fondamental est que les tests des fonctions fonts partie du projet :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/outils/" class="interne">Tester ses fonctions</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-codes-tests/" class="interne">On s'entraîne à écrire des tests</a></li>
+</ol>
+</div></div>
+
+<h3>À vous</h3>
+<blockquote>
+<p>2h TP</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/bonnes-pratiques/" class="interne">Bonnes pratiques et mantra</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-informatique/" class="interne">Mise en œuvre d'un projet informatique</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-pourcentages/" class="interne">Projet pourcentage</a></li>
+</ol>
+</div></div>
+
+<p>Pour aller plus loin :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/d%C3%A9bogueur/" class="interne">Utiliser le débogueur pour corriger son code</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/exercices-tests/" class="interne">exercices divers</a></li>
+</ol>
+</div></div>
+
+<h2>Partie II : Classes et objets</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À lire avant la séance</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/introduction/" class="interne">Tout est objet en python</a></p>
+</div></div>
+
+<h3>Classe et objets en python</h3>
+<blockquote>
+<p>2h cours</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/" class="interne">Classes et objets</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s/" class="interne">Des dés</a></li>
+</ol>
+</div></div>
+
+<h3>A vous</h3>
+<blockquote>
+<p>2h TP</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-cartes/" class="interne">Projet cartes</a></p>
 </div></div>
 
 <h4>Améliorer ses objets</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/am%C3%A9liorer-ses-objets/" class="interne">Améliorer l'utilisabilité de ses objets</a></p>
-</div></div>
-
-<h4>Combiner ses objets entre eux</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/composition-agr%C3%A9gation/" class="interne">Composition et agrégation d'objets</a></p>
-</div></div>
-
-<h4>Héritage</h4>
+<blockquote>
+<p>2h TD</p>
+</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/h%C3%A9ritage/" class="interne">Héritage</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/" class="interne">on s'entraîne</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/" class="interne">Améliorer ses objets</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/" class="interne">Des dés améliorés</a></li>
 </ol>
 </div></div>
 
-<h3>TD</h3>
-<p>Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le faire en entier.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol start="0">
-<li>Écrire ses tests :
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/tutoriel-hello-dev/" class="interne">projet hello dev</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/%C3%A9crire-code/projet-pourcentages/" class="interne">projet &quot;pourcentages&quot;</a></li>
-</ol>
-</li>
-<li>Coder des objets :
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s/" class="interne">projet dés</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes/" class="interne">projet cartes</a></li>
-</ol>
-</li>
-<li>Améliorer ses objets :
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-d%C3%A9s-accesseur/" class="interne">améliorer les dés grâce aux accesseurs</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-objets-cartes-value-object/" class="interne">améliorer les cartes en protégeant ses attributs</a></li>
-</ol>
-</li>
-<li>Combiner les objets entres-eux :
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-composition-d%C3%A9s/" class="interne">composer des dés</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-agr%C3%A9gation-cartes/" class="interne">composer des cartes</a></li>
-</ol>
-</li>
-</ol>
+<h4>À rendre</h4>
+<blockquote>
+<p>DM à rendre sur github</p>
+</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Travail préparatoire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Mettre son code à disposition via un <a href="/cours_informatique/cours/gestion-des-sources/d%C3%A9p%C3%B4t/" class="interne">Dépôt</a> sur github.</p>
 </div></div>
 
-<h2>Partie III : gestion des sources</h2>
-<!-- > TBD test
-1. mise en oeuvre des tests unitaires
-2. intérêt des tests unitaire dans le développement d'un projet
-3. intérêt de la programmation objet dans le développement d'un projet
-
- -->
-<h3>Cours</h3>
-<!-- > TBD reordonner et faire github puis diff puis ajout d'un utilisateur avant usage. 
-
-Et du coup faire github en cours, puis td puis usage pour voir comment tout ça se fait. 
-(En l'état comme ils ne savent ce qu'il faut faire la partie usage est trop abstraite)
-Puis Comment faire Et enfin apres : la ligne de commande -->
-<!-- > TBD en 1A ne garder que ce que doit être un projet :
-- readme
-- contributing
-- tests
-- requirements
-- doc si nécessaire
-
-Puis on envoie tout sur github comme un drive (sans le .venv !)
--->
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/gestion-des-sources/" class="interne">Gestion des sources</a> (jusqu'à la partie outils) :</p>
-<ol>
-<li><a href="/cours_informatique/cours/gestion-des-sources/principes" class="interne">principes</a></li>
-<li>usage :
-<ol>
-<li><a href="/cours_informatique/cours/gestion-des-sources/usage-quotidien/" class="interne">configuration</a></li>
-<li><a href="/cours_informatique/cours/gestion-des-sources/bonnes-pratiques/" class="interne">bonnes pratiques</a></li>
-</ol>
-</li>
-</ol>
-</div></div>
-
-<h3>TD</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="/cours_informatique/cours/gestion-des-sources/github-origin/compte-github/" class="interne">Création d'un compte Github</a></li>
-<li><a href="/cours_informatique/cours/gestion-des-sources/github-origin/projet-github/" class="interne">Découverte de github</a></li>
-<li><a href="/cours_informatique/cours/gestion-des-sources/github-SCM/projet-github-desktop/" class="interne">SCM avec Github</a></li>
-</ol>
-</div></div>
-
-<h2><span id="projet-final"></span>Projet final</h2>
-<p>À rendre :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Évaluation finale</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Faites <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-bataille-navale/">le projet bataille navale</a> en utilisant tout ce que l'on a vu :</p>
-<ul>
-<li>un environnement virtuel,</li>
-<li>des tests,</li>
-<li>un SCM,</li>
-<li>des commits réguliers.</li>
-</ul>
-<p>Ce projet doit avoir :</p>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-cartes-am%C3%A9lioration/" class="interne">Cartes améliorées</a></p>
+</div></div>
+
+<h2>Partie III : Composition/agrégation et héritage</h2>
+<h3>Composition et agrégation</h3>
+<blockquote>
+<p>2h cours</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
 <ol>
-<li>un fichier <code>.gitignore</code></li>
-<li>un fichier readme pour expliquer comment exécuter votre jeu</li>
-<li>un fichier <code>requirement.txt</code> pour vos dépendances (il doit au moins y avoir <code>pytest</code>)</li>
-<li>au moins un commit par item avec un <code>?</code> à faire.</li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/" class="interne">Composition et agrégation</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-composition-aggr%C3%A9gation-d%C3%A9s/" class="interne">Des compositions de dés</a></li>
 </ol>
 </div></div>
 
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
+<h3>À vous</h3>
+<blockquote>
+<p>2h TP</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>À rendre pour le 17/11 sur <a href="https://moodle.centrale-med.fr/mod/assign/view.php?id=53201">moodle</a> <strong>un unique lien</strong> vers un repo de votre github public.</p>
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-agr%C3%A9gation-cartes/" class="interne">Projet cartes et bataille</a></p>
 </div></div>
 
-<!-- > TBD note avec commit pertinent sur un petit projet
-tbd mettre un .gitignore
- -->
-<h2>Liens</h2>
-<p>Basé sur les cours :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
+<h3>Héritage</h3>
+<blockquote>
+<p>2h cours</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<ul>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper" class="interne">Coder et développer en python</a></li>
-<li><a href="/cours_informatique/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau" class="interne">Système et réseau</a></li>
-</ul>
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/h%C3%A9ritage/" class="interne">Héritage</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-h%C3%A9ritage/" class="interne">Dés spécifiques</a></li>
+</ol>
+</div></div>
+
+<h4>À rendre</h4>
+<blockquote>
+<p>DM à rendre sur github</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-h%C3%A9ritage/" class="interne">Projet Héritage</a></p>
 </div></div>
 
 
