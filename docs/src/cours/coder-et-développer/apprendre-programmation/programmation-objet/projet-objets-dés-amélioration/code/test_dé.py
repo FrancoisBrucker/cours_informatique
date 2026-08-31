@@ -19,7 +19,7 @@ def test_lancer():
 def test_str():
     dé = Dé()
     assert str(dé) == "⚀"
-    dé.valeur = 4
+    dé._valeur = 4
     assert str(dé) == "⚃"
 
 def test_repr():
@@ -30,6 +30,6 @@ def test_lt():
     d2 = Dé()
     assert not d1 < d2
 
-    d2.valeur = 5
+    d2._valeur = 5
     assert d1 < d2
     assert not d2 < d1

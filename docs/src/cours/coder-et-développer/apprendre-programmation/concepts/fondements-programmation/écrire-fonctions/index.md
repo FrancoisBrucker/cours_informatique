@@ -306,7 +306,7 @@ La ligne 7 fonctionne alors comme suit :
 
 {% enddetails %}
 
-## Lambda
+## <span id="lambda"></span>Lambda
 
 {% lien "**Documentation**" %}
 <https://python-reference.readthedocs.io/en/latest/docs/operators/lambda.html>

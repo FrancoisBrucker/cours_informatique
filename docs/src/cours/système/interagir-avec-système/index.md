@@ -51,7 +51,7 @@ Le terminal permet d'exécuter rapidement des commandes. Il est fondamental que 
 ### Gestionnaire de paquet
 
 {% aller %}
-[Gestionnaire de paquets](gestionnaire-paquet){.interne}
+[Gestionnaire de paquets](gestionnaire-paquets){.interne}
 {% endaller %}
 
 ### Applications utiles

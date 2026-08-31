@@ -134,6 +134,54 @@ def test_repr():
 
 {% enddetails %}
 
+## Accesseur pour la valeur
+
+On ne devrait pas pouvoir modifier la valeur d'un dé sans le lancer :
+
+{% exercice %}
+Implémentez un accesseur pour l'attribut `valeur`{.language-}
+{% endexercice %}
+{% details "corrigé" %}
+
+Il y a plusieurs façon de faire. Nous allons montrer une version concise :
+
+Fichier `dé.py`{.fichier} :
+
+```python
+class Dé:
+    def __init__(self, valeur=1):
+        self._valeur = valeur
+
+    valeur = property(lambda self: self._valeur)
+
+    def lancer(self):
+        self._valeur = random.randrange(1, 6 + 1)
+
+    # ...
+```
+
+On utilise le fait que si l'on ne donne qu'un seul argument à la fonction `property`{.language-} on ne donne qu'un accesseur et le mutateur est interdit, et l'accesseur est décrit sous la forme d'[une fonction `lambda`](../../concepts/fondements-programmation/écrire-code/#lambda){.interne} de python très utiles pour ce genre de choses.
+
+Il faut aussi changer le test de `str`{.language-}. On s'autorise à utiliser directement l'attribut `_valeur`{.language-} car les tests font partie du code :
+
+Fichier `test_dé.py`{.fichier} :
+
+```python
+# ...
+
+def test_str():
+    dé = Dé()
+    assert str(dé) == "⚀"
+    dé._valeur = 4
+    assert str(dé) == "⚃"
+
+
+# ...
+
+```
+
+{% enddetails %}
+
 
 ## min et max dans classe
 
@@ -151,11 +199,10 @@ class dé:
     MIN_VALEUR = 1
     MAX_VALEUR = 6
 
-    def __init__(self, valeur=1):
-        self.valeur = valeur
+    # ...
 
     def lancer(self):
-        self.valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
+        self._valeur = random.randrange(self.MIN_VALEUR, self.MAX_VALEUR + 1)
 
 ```
 
@@ -176,7 +223,7 @@ class dé:
     # ...
 
     def __lt__(self, other):
-        return self.valeur < other.valeur
+        return self._valeur < other.valeur
 
 ```
 
@@ -189,7 +236,7 @@ def test_lt():
     d2 = Dé()
     assert not d1 < d2
 
-    d2.valeur = 5
+    d2._valeur = 5
     assert d1 < d2
     assert not d2 < d1
 

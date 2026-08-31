@@ -1,8 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Installation d'un nouveau système
-
+title: Gestionnaire de paquets
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -11,9 +10,9 @@ eleventyComputed:
 ---
 
 
-Sous Linux, Macos et depuis plus récemment sous windows, l'installation d'applications se fait via l'utilisation d'un gestionnaire de package.
+Sous Linux, Macos et depuis plus récemment sous windows, l'installation d'applications se fait via l'utilisation d'[un gestionnaire de paquets](https://fr.wikipedia.org/wiki/Gestionnaire_de_paquets).
 
-## sous mac
+## Macos
 
 ### App store
 
@@ -58,7 +57,7 @@ La commande `sudo` vous demandera votre mot de passe pour vérifier que c'est bi
 
 
 
-## apt
+### apt
 
 
 Par exemple, pour mettre à jour la liste des paquets installables , tapez dans un terminal :
@@ -123,6 +122,7 @@ Il n'y a donc pas de paquets supplémentaires à installer mais les applications
 ## Windows
 
 ### Windows store
+
 Le [Windows store](https://apps.microsoft.com/home?hl=fr-FR&gl=US) va contenir de nombreuses applications, dont certaines utiles pour le développement (comme le langage python par exemple). Cela vaut toujours le coup de vérifier si l'application que l'on cherche à installer n'y est pas mais la plupart des logiciel système n'y sont pas.
 
 
