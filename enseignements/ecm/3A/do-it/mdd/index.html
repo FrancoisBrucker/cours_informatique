@@ -112,24 +112,45 @@
   <p>(18 + 3)h heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests. C'est la suite de ce que vous avez fait en 1A avec JEMNEP et I1 de MIE en 2A. Donc revenez en arrière s'il vous manque des connaissances.</p>
 <h1>Partie I : Travail préparatoire</h1>
 <blockquote>
-<p>3+h</p>
+<p>6h</p>
 </blockquote>
-<h2>Rappel</h2>
-<p>Remise en jambe de ce que vous avez du voir en I1-MIE. Si trop de personne n'ont pas suivi (ou ne se rappellent pas), cette partie prendra plus de temps.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cette partie est un condensé du cours de <a href="/cours_informatique/enseignements/ecm/2A/cdp/" class="interne">MIE-I1</a>. Si vous voulez plus de contenu, n'hésitez pas à y jeter un coup d'œil.</p>
+</div></div>
+
+<h2>Interpréteur, terminal et IDE</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/enseignements/ecm/2A/cdp/" class="interne">Méthode de développement I1-MIE</a></p>
+<ol>
+<li>Interagir avec le système :
+<ol>
+<li><a href="/cours_informatique/cours/syst%C3%A8me/interagir-avec-syst%C3%A8me/fichiers-dossiers/" class="interne">Naviguer dans un système de fichiers</a></li>
+<li><a href="/cours_informatique/cours/syst%C3%A8me/interagir-avec-syst%C3%A8me/terminal/" class="interne">Terminal</a></li>
+</ol>
+</li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/outils/" class="interne">Installer un interpréteur et un IDE</a></li>
+</ol>
 </div></div>
 
-<p>On aura au minimum besoin de savoir :</p>
-<ul>
-<li>utiliser un terminal</li>
-<li>créer et écrire  des projets en python avec la trilogie <em>main/fonction/tests</em></li>
-<li>créer des classes en python</li>
-</ul>
+<h2>structure d'un projet informatique</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Séparer code et fonctions en <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/cr%C3%A9ation-modules/" class="interne">créant ses propres modules</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/outils/" class="interne">Tester ses fonctions</a></li>
+</ol>
+</div></div>
+
 <h2>Gestion des dépendances</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -142,14 +163,23 @@
 </ol>
 </div></div>
 
-<h2>À faire</h2>
-<p>Pour la prochaine fois, trois groupes :</p>
+<h2>Programmation objet en python</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/classes-et-objets/" class="interne">Classes et objets</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/composition-agr%C3%A9gation/" class="interne">Composition et agrégation</a></li>
+</ol>
+</div></div>
+
+<h2>Outils python de gestion de package</h2>
 <ul>
 <li><a href="https://python-poetry.org/">poetry</a></li>
 <li><a href="https://docs.astral.sh/uv/">uv</a></li>
-<li>module et package python : comment les utiliser</li>
 </ul>
-<p>Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités.</p>
 <h1>Partie II</h1>
 <blockquote>
 <p>6h</p>
@@ -184,7 +214,7 @@
 </blockquote>
 <h1>Partie IV</h1>
 <blockquote>
-<p>6h</p>
+<p>3h</p>
 </blockquote>
 <blockquote>
 <p>git vscode et en ligne de commande</p>
