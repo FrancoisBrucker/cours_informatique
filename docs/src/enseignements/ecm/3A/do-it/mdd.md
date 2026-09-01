@@ -17,21 +17,27 @@ eleventyComputed:
 
 # Partie I : Travail préparatoire
 
-> 3+h
+> 6h
 
-## Rappel
+{% info %}
+Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.interne}. Si vous voulez plus de contenu, n'hésitez pas à y jeter un coup d'œil.
+{% endinfo %}
 
-Remise en jambe de ce que vous avez du voir en I1-MIE. Si trop de personne n'ont pas suivi (ou ne se rappellent pas), cette partie prendra plus de temps.
+## Interpréteur, terminal et IDE
 
 {% aller %}
-[Méthode de développement I1-MIE](/enseignements/ecm/2A/cdp/){.interne}
+1. Interagir avec le système :
+   1. [Naviguer dans un système de fichiers](/cours/système/interagir-avec-système/fichiers-dossiers/){.interne}
+   2. [Terminal](/cours/système/interagir-avec-système/terminal/){.interne}
+2. [Installer un interpréteur et un IDE](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
 {% endaller %}
 
-On aura au minimum besoin de savoir :
+## structure d'un projet informatique
 
-- utiliser un terminal
-- créer et écrire  des projets en python avec la trilogie _main/fonction/tests_
-- créer des classes en python
+{% aller %}
+1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/){.interne}
+2. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
+{% endaller %}
 
 ## Gestion des dépendances
 
@@ -41,15 +47,17 @@ On aura au minimum besoin de savoir :
 
 {% endaller %}
 
-## À faire 
+## Programmation objet en python
 
-Pour la prochaine fois, trois groupes :
+{% aller %}
+1. [Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/){.interne}
+2. [Composition et agrégation](/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation/){.interne}
+{% endaller %}
+
+## Outils python de gestion de package
 
 - [poetry](https://python-poetry.org/)
 - [uv](https://docs.astral.sh/uv/)
-- module et package python : comment les utiliser
-
-Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités.
 
 # Partie II
 
@@ -84,7 +92,7 @@ Pour la prochaine fois, trois groupes :
 
 # Partie IV
 
-> 6h
+> 3h
 
 > git vscode et en ligne de commande
 
