@@ -27,6 +27,11 @@ Nous allons mettre à profit ce que nous venons d'apprendre sur [la gestion des 
 [Créer un environnement virtuel](environnement-virtuel){.interne}
 {% endaller %}
 
+<!-- TBD 
+
+projet hello world avec les dés et/ou les cartes. cf old cours de programmation évènementielle.
+ -->
+
 ## Principes
 
 {% aller %}

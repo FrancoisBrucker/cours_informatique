@@ -27,6 +27,12 @@ Remise en jambe de ce que vous avez du voir en I1-MIE. Si trop de personne n'ont
 [Méthode de développement I1-MIE](/enseignements/ecm/2A/cdp/){.interne}
 {% endaller %}
 
+On aura au minimum besoin de savoir :
+
+- utiliser un terminal
+- créer et écrire  des projets en python avec la trilogie _main/fonction/tests_
+- créer des classes en python
+
 ## Gestion des dépendances
 
 {% aller %}
@@ -51,7 +57,9 @@ Préparer un exposé de 5min chacun + support avec biblio et principales fonctio
 
 ## Test Driven Development
 
-> TDD
+{% aller %}
+[Test Driven Development](/cours/coder-et-développer/Perfectionnement/TDD/){.interne}
+{% endaller %}
 
 <!-- TBD 
 

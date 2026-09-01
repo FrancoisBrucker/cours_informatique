@@ -2,6 +2,11 @@
 layout: layout/post.njk 
 title: "Partie 1 / 3"
 
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->
@@ -74,9 +79,9 @@ def test_multiplication():
 
 Nous n'avons pas encore écrit de classe `Dollar`{.language-}, mais on l'utilise déjà...
 
-{% note %}
+{% note2 "**Principe du TDD**" %}
 En TDD on utilise notre code avant de l'écrire. Avoir une idée de comment utiliser le code nous donne une idée de comment il doit fonctionner.
-{% endnote %}
+{% endnote2 %}
 
 L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l'item courant de la todo list) nous montre des choses que l'on doit pouvoir faire, et par là augmente notre todo list avec des choses à implémenter ou des questions auxquelles il va falloir répondre un jour.
 
@@ -122,11 +127,11 @@ ERROR test_monnaie.py
 
 Mais c'est une chance, car les messages d'erreurs vont nous permettre de faire un programme qui fonctionne. Il suffit de les supprimer une à une.
 
-{% note %}
+{% attention2 "**À retenir**" %}
 Apprenez à **lire** les messages d'erreurs !
 
 Il est est souvent plus simple d'exécuter un code et de lire ce qui ne marche pas plutôt qe de réfléchir pour savoir si ça va fonctionner.
-{% endnote %}
+{% endattention2 %}
 
 On va donc lire attentivement les messages d'erreurs de python et les régler petit à petit. Un message d'erreur **est informatif** si on se force à les lire.
 
@@ -339,22 +344,22 @@ Le test nous pose quelques questions quand à l'utilisation de la classe dollar.
 
 La procédure utilisée dans cette étape sera générale :
 
-{% note "**Procédure de programmation en TDD**" %}
+{% note2 "**Principe du TDD**" %}
 
 1. on crée un test
 2. on exécute nos tests et on voit que ça ne marche pas. Le test que l'on vient d'écrire est le seul test qui doit rater : **rouge**
 3. on change le code pour que nos tests fonctionne. Le but est que le test passe donc on peut commettre les pires atrocités pour cela (comme on a fait en mettant directement 10 à montant par exemple). Pour cela, la façon la plus simple est de se laisser guider par l'interpréteur.
 4. Une fois que les tests passent, on est **vert**. A partir de là, on ne modifiera **jamais** de code si tout les tests ne passent pas
 5. on supprime petit à petit les duplications tout en s'assurant que les tests sont toujours vert
-{% endnote %}
+{% endnote2 %}
 
 La méthode qu'on a utilisé pour faire passer nos tests en dupliquant la réponse du test dans le code à un nom :
 
-{% note "**Pattern de TDD**" %}
+{% note2 "**Pattern de TDD**" %}
 
-Dupliquer la réponse du test dans le code est la méthode appelée : ****fake it***.
+Dupliquer la réponse du test dans le code est la méthode appelée : **_fake it_**.
 
-{% endnote %}
+{% endnote2 %}
 
 ## 2 - value object
 
@@ -363,15 +368,15 @@ On veut faire du **clean code that works**. Mais c'est très difficile même pou
   1. on commence par le *that works*
   2. on fini par le *clean code*
 
-{% note %}
+{% attention2 "**À retenir**" %}
 La règle d'un bon code est de procéder par ordre :
 
 1. faire du code qui fonctionne
 2. faire du code propre
 3. faire du code rapide
 
-Il ne faut cependant pas s'arrêter à 1, sinon votre code ne sera pas maintenable dans le temps.
-{% endnote %}
+Il ne faut cependant pas s'arrêter à 1, sinon votre code ne sera pas maintenable dans le temps et surtout ne pas commencer par 3 sinon votre code sera trop compliqué et vous perdrez du temps à coder des choses qui vont très certainement changer plus tard(cf. le mantra "_Premature optimization is the root of all evil_" que l'on doit à Donald Knuth)
+{% endattention2 %}
 
 Que faire maintenant ?
 
@@ -422,9 +427,9 @@ Le *code smell* s'acquiert avec le temps, mais vous pouvez accélérer son acqui
 
 Une façon simple et élégante de régler notre soucis est d'utiliser des objet qui ne peuvent être modifiés.
 
-{% note %}
+{% note2 "**Définition**" %}
 Un objet non modifiable est appelé [**value object**](https://martinfowler.com/bliki/ValueObject.html).
-{% endnote %}
+{% endnote2 %}
 
 C'est super chouette d'avoir des objets non modifiable, on a pas besoin de faire attention à eux : une fois créés ils ne bougent plus.
 
@@ -464,9 +469,11 @@ On exécute nos tests et — comme attendu — ça rate.
 
 Ce coup ci, pas besoin de grandes manipulations pour faire passer le test. Il faut que la méthode *fois* rende un objet `Dollar`{.language-}. Si l'implémentation semble évidente, autant la coder de suite (mais après le test !).  On vient de découvrir une autre règle :
 
-{% note "**Pattern de TDD**" %}
+{% note2 "**Pattern de TDD**" %}
 L'implémentation directe du test est appelée : ***obvious implementation***.
-{% endnote %}
+{% endnote2 %}
+
+Utilisez ce pattern pour :
 
 {% faire %}
 Faite une implémentation de la méthode `fois`{.language-}
@@ -556,11 +563,11 @@ Avec ce code lorsque l'on écrit `x == y`{.language-}, python le re-écrit en : 
 
 Maintenant, les choses sérieuses : on supprime les duplications. On suppose que l'on ne sait pas résoudre le problème. Pour trouver une solution, on utilise le dernier pattern du TDD :
 
-{% note "**Pattern de TDD**" %}
+{% note2 "**Pattern de TDD**" %}
 
 Pour supprimer ds duplications non évidente on utilise la ***triangulation***
 
-{% endnote %}
+{% endnote2 %}
 
 Pour utiliser la triangulation, on écrit deux tests différents pour le même problème : si le test est différent du premier, pour que les deux testent passent en même temps, il faudra supprimer des duplications.
 
@@ -770,10 +777,10 @@ Ceci arrive inévitablement.
 
 On fait petit à petit disparaître des tests les références explicites à l'implémentation des classes. C'est une bonne pratique.
 
-{% note "**Test pattern**" %}
+{% note2 "**Test pattern**" %}
 
  Lorsque l'on teste, il est important de toujours tester du point de vue de l'utilisation. Il faut éviter le plus possible de tester des attributs internes à la classe.
-{% endnote %}
+{% endnote2 %}
 
 ### <span id="todo-list-5.2"></span> Todo list
 

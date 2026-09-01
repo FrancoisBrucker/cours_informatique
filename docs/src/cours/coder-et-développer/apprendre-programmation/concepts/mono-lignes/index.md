@@ -64,15 +64,15 @@ Les méthodes des :
 
 {% enddetails %}
 
-1. Évaluer le nombre d’atomes de l’univers : 1080
+1. Évaluer [le nombre d'atomes dans l'univers](https://www.youtube.com/watch?v=hIpSCJLNqtk): $10^{80}$
 2. Aﬀecter le 23e [nombre premier de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) ($2^{11213}-1$) à une variable `m23`{.language-}.
 3. Incrémenter `m23`{.language-}.
 4. Décrémenter `m23`{.language-} (on retrouve le 23e nombre de Mersenne)
 5. Évaluer 1000/7.
 6. Évaluer ⌊1000/7⌋.
 7. Évaluer 1000 mod 7.
-8. Évaluer en une seule expression le quotient entier et le reste de 1000/7.
-9. Aﬀecter en une seule instruction le quotient entier et le reste de 1000/7 à deux variables `q`{.language-} et `r`{.language-}.
+8. Évaluer en une seule expression le quotient entier et le reste de ⌊1000/7⌋.
+9. Aﬀecter en une seule instruction le quotient entier et le reste de ⌊1000/7⌋ à deux variables `q`{.language-} et `r`{.language-}.
 10. Aﬀecter à une variable `c`{.language-} le couple formé de `q`{.language-} et `r`{.language-}.
 11. Faire les deux exercices précédents en une seule instruction.
 12.  Échanger le contenu des deux variables `q`{.language-} et `r`{.language-}.
@@ -126,11 +126,11 @@ Les méthodes des :
 55. Supprimer cette insertion.
 56. Trier `lm`{.language-}.
 57. Inverser `lm`{.language-}.
-58. Ajouter la chaîne "fin" au bout de lm.
+58. Ajouter la chaîne "fin" au bout de `lm`{.language-}.
 59. Aﬀecter à une variable `e`{.language-} l’ensemble des éléments de `l`{.language-}.
 60. Calculer la diﬀérence de `e`{.language-} d’avec l’ensemble $\\{−5, 0, 5, \dots, 20\\}$.\
-61. Retirer 13 de e.
-62. Ajouter "treize" à e.
+61. Retirer 13 de `e`{.language-}.
+62. Ajouter "treize" à `e`{.language-}.
 63. Aﬀecter à une variable `rep`{.language-} le répertoire téléphonique suivant :
   – Le numéro de Jean est 03 87 65 45 67 ;
   – le numéro de Pierre est 03 87 31 55 21 ;
@@ -154,7 +154,7 @@ Les méthodes des :
 80. $[[], [0], [0,1], [0,1,2], \dots, [0,1,2,...,99]]$.
 81. Calculer la liste $[[1], [1,2], [1,2,3], \dots, [1,2,3,...,100]]$.
 82. Calculer la liste $[\sum_{i=1}^{1}i, \sum_{i=1}^{2}i, \sum_{i=1}^{3}i, \dots, \sum_{i=1}^{100}i]$ (s’aider de l’exercice 45).
-83. Calculer l'ensemble $\\{ i * j \vert 1 \leq i, j\leq 10 \\}$.
+83. Calculer l'ensemble $\\{ i \cdot j \mid 1 \leq i, j\leq 10 \\}$.
 84. Calculer une liste de listes contenant [les tables de Pythagore](https://fr.wikipedia.org/wiki/Table_de_multiplication#Table_usuelle) de 1 à 10.
 
 ## Corrigé

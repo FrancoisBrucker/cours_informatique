@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Projet : TDD"
+title: "Test Driven Development"
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,9 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD idéal pour coder avec l'IA. Attention cependant, l'IA a tendance a faire trop de tests donc comme toujours vérifier ce qu'elle écrit comme tests et modifiez les.
+Nous allons nous intéresser à une méthode de développement née dans les années 2000 mais encore très moderne. Elle est à la base de la méthode [XP](https://fr.wikipedia.org/wiki/Extreme_programming) et se prête très bien avec une programmation aidée par IA si on fait un peu attention (l'IA a tendance a faire trop de tests donc, comme toujours, vérifier ce qu'elle écrit comme tests et modifiez les si nécessaire).
 
-La programmation part les tests n'est pas quelque chose d'instinctif. Elle nécessite :
+Le TDD (_Test Driven Development_) ou **_Programmation part les tests_** (on ne dit malheureusement pas le PPT) est une méthode puissante mais ce n'est pas quelque chose d'instinctif. Elle nécessite :
 
 1. un apprentissage (au départ on se sent nul et comme on aime pas ça on blame la méthode)
 2. d'être appréhendée de façon non dogmatique (on ne test pas tout avant, on utilise juste la fonctionnalité que l'on va coder pour nous permettre de mieux la définir)
@@ -20,9 +20,9 @@ Bref, prenez la comme une voie à suivre. Une fois habitué vous ne pourrez plus
 
 Nous allons suivre le livre [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example) de Kent Beck (Suivez son [twitter](https://twitter.com/kentbeck), ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python. Vous allez apprendre à écrire du code par les tests et pourquoi cela permet permet d'atteindre plus facilement ***le but de la programmation*** :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Le ***But de la programmation*** est de créer du code **propre** qui **fonctionne** (*clean code that works* en version originale).
-{% endnote %}
+{% endnote2 %}
 
 Outre la méthode, nous verrons également quelques techniques pour y arriver de façon claire et pratique, comme des règles de refactoring (issues de [Refactoring: Improving the Design of Existing Code](https://www.amazon.fr/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_2?ie=UTF8&qid=1539066441&sr=8-2) de [Martin Fowler](https://martinfowler.com) (allez voir son site, y'a moult choses chouettes sur le code, l'agile, la vie et le reste)).
 
@@ -30,11 +30,11 @@ Ceci devrait vous permettre de diminuer le nombre de WTFs/minute, qui est le mei
 
 ![WTFs/minute](wtfm.jpg)
 
-{% note %}
+{% info %}
 
-Faites l'effort de suivre cette séance en codant **en même temps** le projet. Tout est donné mais le voir fonctionner pour de vrai est plus impressionnant que de juste le lire.
+Si vous lisez cette partie sans prof, faites l'effort de coder **en même temps** que vous la lisez. Tout est donné mais le voir fonctionner pour de vrai est plus impressionnant que de juste le lire.
 
-{% endnote %}
+{% endinfo %}
 
 On va exécuter les tests un million de fois. Pour éviter la luxation de l'index il faut retenir les raccourcis claviers qui vont vous permettre de lancer les tests sans problème :
 
@@ -67,9 +67,9 @@ Nous n'utiliserons pas ici notre code. Mais il faudra tout faire *from scratch*.
 
 On verra tout au long du cours divers patterns de test et de développement pour que tout aille pour le mieux. Notre but est ici de faire du :
 
-{% note %}
-*clean code that works*
-{% endnote %}
+{% attention2 "**À retenir**" %}
+Le but de la programmation est de produire du *clean code that works*
+{% endattention2 %}
 
 Pour cela on va se fixer quelques règles :
 
@@ -98,18 +98,23 @@ Cela permet de prendre du plaisir à coder :
 - en voyant la todo list diminuer ce qui montre qu'on progresse
 - comme tous les tests sont conservés on sait que l'on ne travaille pas pour rien
 
-{% note %}
-Toutes ces règles visent à diminuer la peur qui bloque tout progrès
-{% endnote %}
+{% attention2 "**À retenir**" %}
+Toutes les règles du TDD visent à diminuer la peur qui bloque tout progrès.
+{% endattention2 %}
 
 ### Code
 
-On va développer petit à petit notre propre application de change en utilisant le TDD. La logique est :
+On va développer petit à petit notre propre application de change en utilisant le TDD :
+
+{% attention2 "**À retenir**" %}
+
 
 - chaque test couvre un petit ajout d'une fonctionnalité
 - la première chose à faire sera de (rapidement et salement) faire fonctionner les tests
 - toute les modifications de code sont effectuées alors que les testent passent
 - le refactoring est fait par petites touches
+
+{% endattention2 %}
 
 ## Déroulé
 
