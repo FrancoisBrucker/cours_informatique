@@ -39,7 +39,7 @@ Utilisez [un interpréteur en ligne](https://console.basthon.fr/) ou [spyder](ht
 
 Vous devriez être capable de comprendre toutes les solutions et (dans le meilleur des cas) d'en faire une grande partie.
 
-## Partie I : Projets informatique 
+## <span id="partie-1"></span>Partie I : Projets informatique 
 
 ### Interpréteur python et IDE
 

@@ -59,11 +59,28 @@ Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.
 - [poetry](https://python-poetry.org/)
 - [uv](https://docs.astral.sh/uv/)
 
-# Partie II
+
+<!-- Pour la prochaine fois, trois groupes :
+
+- [poetry](https://python-poetry.org/)
+- [uv](https://docs.astral.sh/uv/)
+- module et package python : comment les utiliser
+
+Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. -->
+
+# Partie II :  Test Driven Development
 
 > 6h
 
-## Test Driven Development
+{% prerequis %}
+Vous devez pouvoir :
+
+- utiliser un terminal
+- créer et écrire  des projets en python avec la trilogie _main/fonction/tests_
+- créer un environnement virtuel et d'exécuter le projet avec son python,
+- ajouter des modules à l'environnement et créer son fichier `requirements.txt`{.fichier}
+
+{% endprerequis %}
 
 {% aller %}
 [Test Driven Development](/cours/coder-et-développer/Perfectionnement/TDD/){.interne}
