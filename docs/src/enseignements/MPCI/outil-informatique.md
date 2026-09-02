@@ -19,65 +19,90 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 
 Le but de cette séance est de vous donner les connaissances nécessaire pour avoir un ordinateur pour le développement.
 
-## <span id="eduroam">/span>Utiliser le réseau
+## <span id="eduroam"></span>Utiliser le réseau
 
-Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
+[Le réseau Éduroam](https://www.eduroam.fr/) est le réseau des université européennes. Il est disponible partout (pour vous à AMU et à l'ECM) et est gratuit. 
 
-- login : votre adresse mail
-- mot de passe : celui de l'ent AMU
+{% faire %}
+Connectez vous au  réseau WIFI éduroam : 
 
+- **login** : votre adresse mail
+- **mot de passe** : celui de l'ent AMU
+
+{% endfaire %}
 {% info %}
 Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 {% endinfo %}
 
 ## Connaissances minimales du système d'exploitation
 
-### Bases
+Les bases nécessaire pour pouvoir appréhender le fonctionnement d'un ordinateur et pouvoir l'utiliser au quotidien :
 
 {% aller %}
-[Bases d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/){.interne}
+- [Bases d'un système d'exploitation](/cours/système/ordinateur-programmes-OS/){.interne}
+- [le terminal](../terminal/bases/){.interne}.
+- [gestionnaire de paquets](/cours/système/interagir-avec-système/gestionnaire-paquets/){.interne}
 {% endaller %}
 
-### Installations système complémentaires
 
-#### Outils complémentaires
+## Logiciels à installer pour l'informatique
 
-Outils et logiciels très utiles pour l'utilisation raisonnée de son système.
+On va lister ici des logiciels qui vous seront utiles en informatique, mais pas que.
 
-- **sous Windows**, ayez un compte sur le [microsoft store](https://apps.microsoft.com/home?hl=fr-FR&gl=FR).
-- **sous mac** installez <https://brew.sh/> qui vous permettra d'installer de nombreux package unix : [installer brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne}.
-- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/post-installation/){.interne}
+### spyder
 
-#### Nouvelle installation
+{% lien %}
+<https://www.spyder-ide.org/>
+{% endlien %}
 
-Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis longtemps, cela peut valoir le coup d'en faire une nouvelle installation. Ceci est optionnel si votre système fonctionne.
+Le logiciel que vous utiliserez pour faire du python en S1.
 
+- sous Windows et Macos : utilisez le lien donné sur le site
+- sous Linux. Dans un terminal tapez la commande : `sudo apt install spyder` (il vous faudra peut-être aussi installer le paquet ` python3-spyder-kernels` mais essayez sans et dites mois si ça marche)
+
+Pour vérifier que ça fonctionne, lisez la partie du cours qui y est consacrée :
+
+{% aller %}
+[Éditeur Spyder](/cours/coder-et-développer/apprendre-programmation/concepts/fondements-programmation/exécuter-code/#spyder){.interne}
+{% endaller %}
 {% info %}
-Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence à avoir des comportement erratique, signe d'un système malade.
+Retrouvez sous windows et Linux comment suivre la visite guidée (pour l'instant il y a un TBD car je n'ai qu'un mac)
 {% endinfo %}
+
+### vscode
+
+{% lien %}
+<https://code.visualstudio.com/>
+{% endlien %}
+
 {% aller %}
-[installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
+[Prise en main de vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/éditeur-vscode/prise-en-main/){.interne}
 {% endaller %}
 
-## Ordinateur pour le développement en python
-
-Vous aurez besoin d'installer python et un logiciel pour programmer :
+### Interpréteur python
 
 {% aller %}
-[Installer python et un interpréteur](/cours/coder-et-développer/bases-programmation/interpréteur/){.interne}
+[Installer un interpréteur Python](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/interpréteur-installation/){.interne}
 {% endaller %}
+
 
 ## Autre logiciels utiles
 
 On ne donne ici que les moyens d'installer les logiciels. La façon des les utiliser sera expliquée par les enseignants des matières concernées.
 
-### Développement et code
-
-Vous aurez besoin de coder dans quasi toutes les matières. La bonne nouvelle c'est que les logiciels que l'on vous demande d'installer pour les cours d'informatiques (vscode et python, que vous avez déjà du installer) suffisent.
-
 ### Documents scientifiques
 
 Produire des documents scientifiques se fait difficilement avec Word, de part la multiplicité des formules à écrire. La communauté scientifique préfère utiliser le logiciel Latex qui produit, à partir de fichiers textes, des documents pdf de qualité.
+
+
+#### Markdown
+
+Ne nécessite pas à proprement parler de logiciel, c'est une façon d'écrire du texte. 
+
+{% lien %}
+- [tutoriel markdown](https://grafikart.fr/tutoriels/markdown-377)
+- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+{% endlien %}
 
 #### Typst
 
@@ -87,7 +112,7 @@ L'outil actuel pour créer ses documents scientifiques.
 
 - [typst](https://typst.app/#start)
 - [installer typst chez vous](https://github.com/typst/typst)
-
+- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)
 {% endlien %}
 
 #### Latex
@@ -99,6 +124,7 @@ Le prédécesseur de typst.
 - [Page Wikipedia de $\LaTeX$](https://fr.wikipedia.org/wiki/LaTeX)
 - [Ressources sur Tex et Latex](https://www.tug.org/)
 - [latex en ligne](https://www.overleaf.com/)
+- [plugin vscode](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
 {% endlien %}
 
@@ -136,6 +162,12 @@ Pour utiliser latex, rien de tel qu'un bon tuto :
 
 {% lien %}
 <https://www.tuteurs.ens.fr/logiciels/latex/>
+{% endlien %}
+
+Il existe un plugin vscode :
+
+{% lien %}
+<>
 {% endlien %}
 
 ### Graphiques

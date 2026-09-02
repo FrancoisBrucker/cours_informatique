@@ -12,6 +12,28 @@ eleventyComputed:
 
 Sous Linux, Macos et depuis plus récemment sous windows, l'installation d'applications se fait via l'utilisation d'[un gestionnaire de paquets](https://fr.wikipedia.org/wiki/Gestionnaire_de_paquets).
 
+## Windows
+
+### Windows store
+
+Le [Windows store](https://apps.microsoft.com/home?hl=fr-FR&gl=US) va contenir de nombreuses applications, dont certaines utiles pour le développement (comme le langage python par exemple). Cela vaut toujours le coup de vérifier si l'application que l'on cherche à installer n'y est pas mais la plupart des logiciel système n'y sont pas.
+
+
+### Winget
+
+Depuis quelque temps les logiciels systèmes sous windows peuvent s'installer via [winget](https://learn.microsoft.com/fr-fr/windows/package-manager/). Il fonctionne avec [le terminal](../terminal/bases/){.interne} et contient plein d'outils système.
+
+Quelques commandes utiles :
+
+- trouver une application 
+  - spécifique : `winget search <app name>`
+  - lister toutes les applications : `winget list`
+- installer une application : `winget install <app ID>`
+- supprimer an app: `winget uninstall <app ID>`
+- Mettre à jour 
+  - une application : `winget upgrade <app ID>`
+  - toute les applications : `winget upgrade --all`
+
 ## Macos
 
 ### App store
@@ -24,7 +46,7 @@ L'[App store](https://www.apple.com/fr/app-store/) permet d'installer les outils
 <https://brew.sh>
 {% endlien %}
 
-Lorsque l'on utilise son mac pour le développement, il faut souvent installer tout un tas de logiciels unix. Le logiciel brew vous permet de faire ça sans soucis.
+Lorsque l'on utilise son mac pour le développement, il faut souvent installer tout un tas de logiciels unix. Le logiciel brew vous permet de le faire avec [le terminal](../terminal/bases/){.interne}  sans soucis.
 
 1. installez le en copiant/collant la ligne de commande demandée dans un terminal.
 2. si vous avez un mac avec une puce M1, il vous faudra également taper la commande `echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $HOME/.zprofile`
@@ -42,9 +64,7 @@ N'installez **aucun logiciel unix** sous mac à la main. Utilisez toujours [brew
 ## Linux
 
 
-`apt` et `snap` sont deux applications permettant d'installer des applications via le terminal avec un système d'exploitation Linux/Ubuntu.
-
-On utilise en utilise deux, via le terminal :
+`apt` et `snap` sont deux applications permettant d'installer des applications via [le terminal](../terminal/bases/){.interne} avec un système d'exploitation Linux/Ubuntu :
 
 - [apt](https://doc.ubuntu-fr.org/apt) pour les installations Ubuntu
 - [snap](https://doc.ubuntu-fr.org/snap) pour les installations standalone
@@ -117,26 +137,3 @@ La commande `apt` est sensée remplacer `apt-get` pour la plupart des instructio
 L'outils snap permet d'installer des applications, souvent des application tierces non maintenues par les administrateurs de Ubuntu, en incluant directement toutes les dépendances.
 
 Il n'y a donc pas de paquets supplémentaires à installer mais les applications sont souvent plus grosses puisque toutes les dépendances sont directement installées dans l'application (un peu comme une application Macos).
-
-
-## Windows
-
-### Windows store
-
-Le [Windows store](https://apps.microsoft.com/home?hl=fr-FR&gl=US) va contenir de nombreuses applications, dont certaines utiles pour le développement (comme le langage python par exemple). Cela vaut toujours le coup de vérifier si l'application que l'on cherche à installer n'y est pas mais la plupart des logiciel système n'y sont pas.
-
-
-### Winget
-
-Depuis quelque temps les logiciels systèmes sous windows peuvent s'installer via [winget](https://learn.microsoft.com/fr-fr/windows/package-manager/). Il fonctionne avec le terminal et contient plein d'outils système.
-
-Quelques commandes utiles :
-
-- trouver une application 
-  - spécifique : `winget search <app name>`
-  - lister toutes les applications : `winget list`
-- installer une application : `winget install <app ID>`
-- supprimer an app: `winget uninstall <app ID>`
-- Mettre à jour 
-  - une application : `winget upgrade <app ID>`
-  - toute les applications : `winget upgrade --all`
