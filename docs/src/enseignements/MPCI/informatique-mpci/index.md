@@ -178,6 +178,12 @@ Le langage de programmation des divers application est le python,
 
 ##### _Langages, Automates, Grammaires_ (38h)
 
+{% lien %}
+[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP4U17?external=1)
+{% endlien %}
+
+L'objectif de cette  UE est de comprendre le formalisme de machine à état fini et les algorithmes reliés et les utiliser pour la modélisation. Comprendre et utiliser les formalismes d’expression régulières et de grammaires pour modéliser des langages. Comprendre l’utilisation de traduction d’un langage en un autre.
+
 ##### _Algorithmie 2 (résolution de problèmes)_ (38h)
 
 {% lien  %}
