@@ -25,7 +25,7 @@ Cet axe code/théorie se retrouvera dans toutes les UEes de la licence :
 - cours de L2 : axe 50% code / 50% informatique théorique
 - cours de L3 : axe 25% code / 75% informatique théorique
 
-Un informaticien compétent doit avoir des compétences sur tout l'axe, une extrémité nourrissant l'autre.
+Un informaticien compétent doit avoir des compétences sur tout l'axe, une extrémité nourrissant l'autre. 
 
 ## Prérequis et méthode d'apprentissage
 
@@ -33,9 +33,9 @@ Il n'y a **pas de prérequis** à avoir avant d'assister aux cours d'informatiqu
 
 Au départ l'informatique ressemble à ce que vous avez déjà vu au Lycée... Attention : ce n'est que de la ressemblance (c'est pareil pour les maths et la physique. En vrai, vous n'en avez encore jamais fait pour de vrai). Venez avec [l'état d'esprit du débutant](https://fr.wikipedia.org/wiki/Shoshin), travaillez régulièrement et n'hésitez pas à demander à vos professeurs si vous avez des questions et tout se passera bien.
 
-On parle d'informatique mais en vérité il faudrait parler d'informatiques (comme les mathématiques) tant les compétences mobilisées peuvent être diverses. La grande majorité des étudiant va avoir du mal avec une des parties (parfois le code, parfois l'algorithmie, parfois les démonstrations) : il **faut** la travailler. Le déclic de compréhension va se faire pour tout le monde, parfois il faut plus de temps. 
+On parle d'informatique mais en vérité il faudrait parler d'informatiques (comme les mathématiques) tant les compétences mobilisées sont diverses. La grande majorité des étudiants va avoir du mal avec une des parties (parfois le code, parfois l'algorithmie, parfois les démonstrations) : il **faut** la travailler. Le déclic de compréhension va se faire pour tout le monde, parfois il faut plus de temps que pour la majorité des autres étudiants mais c'est normal. 
 
-Enfin, méfiez vous de l'[effet Dunning-Kruger](https://fr.wikipedia.org/wiki/Effet_Dunning-Kruger), moins on en sait plus on croit savoir (on sur-évalue ses connaissances réelles, souvent en L1) et lorsque l'on s'en rend compte on croit que l'on ne sait rien (syndrome de l'imposteur, souvent en L3) : les 2 impressions sont fausses.
+Enfin, méfiez vous de l'[effet Dunning-Kruger](https://fr.wikipedia.org/wiki/Effet_Dunning-Kruger) qui stipule que moins on en sait plus on croit en savoir (on sur-évalue ses connaissances réelles, souvent en L1), souvent suivi plus tard de la descente où on croit que l'on ne sait rien (syndrome de l'imposteur, souvent en L3) : les 2 impressions sont fausses.
 
 {% attention2 "**À retenir**" %}
 Travaillez régulièrement et sérieusement toutes les parties et si vous avez des questions il ne faut pas hésiter à demander à vos professeurs : ils sont là pour ça et sauront mieux vous conseiller qu'une IA.
