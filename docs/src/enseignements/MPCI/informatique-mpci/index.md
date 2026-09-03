@@ -15,8 +15,6 @@ eleventyComputed:
 
 
 > TBD la matière informatique. Matière "incarnée". 
-> TBD c'est neuf. C'est rien de ce que vous avez vu avant mais ca y ressemble...
-Les UEes.
 
 ## Prérequis ?
 
@@ -25,11 +23,32 @@ Les UEes.
 > TBD prérequis : un cerveau en état de marche, de la motivation.
 > TBD soyez pro actif, demandez au prof
 
+## Qu'allez vous y apprendre
+
+> TBD informatique = continuum allant de programmation (code) à l'informatique théorique (maths discrètes) avec algorithmie au milieu
+> TBD axe doigts / tête
+> TBD pas les même compétences. Certains bon en prog d'autres en maths discrète mais un bon infor a des connaissances/compétences dans les 2
+> TBD c'est neuf. C'est rien de ce que vous avez vu avant mais ca y ressemble...
+
 ## UEes d'informatique de la licence MPCI
 
 {% info %}
-Certaines fiches UEes ne sont pas encore à jour. Le descriptif à jour est alors présenté ci-après/
+Certaines fiches UEes ne sont pas encore à jour. Le descriptif détaillé et à jour est alors présenté ci-après.
 {% endinfo %}
+
+Les enseignements d'informatique sont organisés en 3 paliers de connaissances/compétences :
+
+- L1 : niveau novice : bases d'informatique pour tout ["honnête homme"](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme). Vous avez assez de compétences pratique pour coder un petit projet
+- L2 : niveau competent : vous connaissez une vaste gamme de méthodes et d'algorithmes pour vous permettre de résoudre un problème de complexité moyenne, proche d'un problème de référence et avez assez d'expérience de programmation pour coder un projet sur la durée.
+- L3 : niveau avancé : vous pouvez créer vos propres algorithme et avez des connaissances fines concernant les fondements théoriques de l'informatique.
+
+Ils doivent vous permettre de poursuivre en master ou en école d'ingénieur généraliste (ie. non spécialisée en informatique) si vous avez suivi les UEes de tronc commun ou spécialisé en informatique si vous avez suivi toutes les UEes.
+
+Sur l'axe doigt/tête :
+
+- L1 : axe 75% programmation / 25% informatique théorique
+- L2 : axe 50% programmation / 50% informatique théorique
+- L3 : axe 25% programmation / 75% informatique théorique
 
 ### L1
 
@@ -104,6 +123,8 @@ Enfin, nous étudierons comment créer des structures de données, en particulie
 
 ### L2
 
+On entame une transition entre cours de Tronc Commun (S3) et premiers cours d'options (S4). On s'adresse à des étudiants voulant approfondir leurs connaissances en informatique. Les cours sont encore utiles à tous, mais pas indispensable pour ceux faisant un rejet de la matière.
+
 #### S3
 
 ##### _Bases de données et Data science_ (20h)
@@ -121,57 +142,169 @@ Enfin, le cours s’ouvre sur une initiation aux perspectives d’analyse prédi
 
 ##### _Structure de données - arbres et graphes_ (30h)
 
+{% lien %}
+[Fiche UE](https://formations.univ-amu.fr/UE/3SMP/SMP3U12?external=1)
+{% endlien %}
+
+
+La structure de donnée arborée permet de résoudre des problèmes algorithmique bien plus vite qu'avec une structure linéaire comme le tableau. C'est une structure fondamentale en informatique que tout le monde doit connaître.
+
+Objectif : Étudier des structures de données arborées, fondamentales en algorithmique (dictionnaires, files de priorité) ainsi que des algorithmes classiques sur les graphes (plus courts chemins, arbres couvrants de poids minimal, flots maximaux).
+
+L'UE est séparée en deux parties, la première consacrée aux structures arborées et la seconde à la recherche de chemins dans un graphe (plus court chemin, flot, ..)
+
+Notions vues pour la partie "arbres" :
+
+- arbres binaires, arbres d’arité quelconque
+- arbres binaires de recherche, AVL-arbres
+- files de priorité (tas binaires)
+
+Notions vues pour la partie "graphes" :
+
+- parcours
+- plus courts chemins : Dijkstra, Bellman-Ford
+- arbres couvrants de poids minimal
+- flots maximaux
+
+Le langage de programmation des divers application est le python,
+
 #### S4
 
-Premiers cours d'options. On s'adresse à des étudiants voulant approfondir leurs connaissances en informatique.
-
-> TBD encore utile à tous, mais pas indispensable pour ceux ne voulant pas faire de l'informatique leur majeur/mineur.
-
 ##### _Langages, Automates, Grammaires_ (38h)
+
 ##### _Algorithmie 2 (résolution de problèmes)_ (38h)
 
 {% lien  %}
 *fiche UE pas à jour*
 {% endlien %}
 
+Le langage d’application de cette UE sera le Go. Un langage moderne utilisé pour les gros projets informatique 
+
 Cette UE se propose de donner des méthodes de résolution de problèmes connus et des techniques pour les adapter à de nouveaux problèmes. 
 
-Pour cela on commencera par étudier la structure des problèmes solvable par un algorithme (classes P, NP, coNP, ...). De cette étude on dégagera 3 classes de problèmes fondamentaux : 
+Dans le prolongement du cours de S3 sur les structures arborées en algorithmie, on commencera par étudier la structure de graphe. Outre son étude théorique on verra qu’elle est un outil puissant de modélisation permettant de résoudre de façon efficace une vaste gamme de problèmes concrets (on commence par modéliser notre problème sous la forme d'un problème de graphe connu, puis on utilise des algorithmes de résolution de celui-ci pour résoudre notre problème initial).
+
+On verra cependant que certains problèmes de graphe (comme clique par exemple) sont compliquer à résoudre de façon efficace (_ie._ polynomialement) bien qu'ils soit facile de vérifier si une proposition de solution en est une réellement ou non. De façon plus étrange on exhibera des problèmes de graphes équivalents  à clique mais de prime abort totalement différent (trouver le chemin le plus long dans un graphe par exemple). 
+
+Ceci nous amènera à  étudier la structure même des problèmes solvable par un algorithme (on en déduira plusieurs classes de problèmes : P, NP, coNP, ...) ainsi qu'un problème central, le problème de la "_satisfiabilité_" (SAT). Ceci dégagera 3 classes de problèmes fondamentaux : 
 - la classe $P$ des problèmes solvables en temps polynomial,
 - la classe $NP$ des problèmes dont on peut vérifier une solution potentielle en est une en en temps polynomial
 - la classe des problèmes $NP$-complets représentés par le problème SAT
 
-De cette étude on exhibera des problèmes ainsi que des algorithmes permettent de les résoudre soit de façon exacte soit de façon approchée. Ces algorithmes pourront être généralisés en méthodes que l'on pourra mobiliser pour forger des algorithmes permettant résoudre des problèmes similaires : algorithmes gloutons, diviser pour régner, programmation dynamique, ...
+On renversera enfin cette classification en prenant le point de vue des algorithmes : sachant une famille donné d'algorithmes (algorithmes gloutons, diviser pour régner, programmation dynamique, ...), quels problèmes résoudre avec ? Cette étude pratique nous donnera une méthode puissante de résolution de problème : à partir du problème que l'on veut à résoudre on cherchera la famille d'algorithmes qui se prêterait le mieux à sa résolution (exacte ou approchée). 
 
-Enfin, on étudiera une structure très générale, le graphe, que l'on montrera capable de modéliser nombre de problèmes d'optimisation courant. Ceci nous ouvre une autre possibilité pour résoudre un problème : on commence par le modéliser sous la forme d'un problème de graphe connu, puis on utilise des algorithmes de résolution de celui-ci pour résoudre notre problème.
-
-Le langage d'application de cette UE sera le go qui permet une gestion plus fine de la mémoire et des types que le python et est ainsi utilisé pour des projet informatiques important.
+Le langage d'application de cette UE sera le go qui permet une gestion plus fine de la mémoire (avec un type spécial appelé pointeur) et des types que le python et est ainsi utilisé pour des projet informatiques important (et vraiment sympa à utiliser mais plus bas-niveau que python).
 
 ### L3
 
-> TBD cours de spécialité.
->  
+Cours de spécialités. S'adresse à des gens aimant la matière et ayant suivi toutes le UEes précédentes.
+ 
 #### S5
 
 ##### _Intelligence Artificielle et Machine Learning_ (40h)
+
+{% lien  %}
+*fiche UE pas à jour*
+{% endlien %}
+
+Présentation générale du domaine (data science, apprentissage automatique, IA). On y verra en particulier les notions de :
+
+-	Classification
+-	Régression : régression linéaire, régularisation ridge et Lasso ; aspect computationnels
+-	Machine à vecteurs supports (SVM) : cas linéaire et à noyau
+-	Réseaux de neurones : problèmes et modélisation, rétro-propagation du gradient, modèles hybrides avec la physique
+- Apprentissage non-supervisé : clustering, modèles de mélange
+
+Ces notions seront abordées sous la forme de CM/TD/TP. Les TD permettent en particulier de développer les fondements théoriques et mathématiques, et les TP la mise en œuvre des algorithmes et leur utilisation sur des scenarios 
+
+
 ##### _Algorithmie 3 (avancé)_ (40h)
 
 {% lien  %}
 *fiche UE pas à jour*
 {% endlien %}
 
-Cette UE est consacré à l'étude d'algorithmes complexes (et jolis). Elle est composée de deux partie, la première consacrée au graphes (problèmes de coloration, de planarité et de couplage/couverture) et la seconde consacré aux algorithmes de résolution de problèmes classiques efficaces (calcul de la médiane en temps linéaire, programmation dynamique, ...)
+Cette UE est consacré à l'étude d'algorithmes complexes (et jolis). Elle est composée de deux partie, la première consacrée au  problèmes de graphes (problèmes de coloration, de planarité, de couplage/couverture, ...) et la seconde consacré aux algorithmes de résolution de problèmes classiques (calcul de la médiane en temps linéaire, programmation dynamique, ...).
 
 
 #### S6
-
+ 
 ##### _Calculabilité et Sémantique_ (36h)
+
+{% lien  %}
+*fiche UE pas à jour*
+{% endlien %}
+
+Objectif : comprendre la notion de calculabilité, la notion de problème décidables, indécidables et de réduction. Comprendre les notions de complexité en temps et en espace ainsi que les principales classes de complexité associées.
+
+La théorie de la calculabilité cherche à caractériser la notion de « procédure effective » de manière formelle. Nous étudierons les limites de ce qui est ou non calculable, montrerons que cette notion est robuste (différentes variantes d’un modèle, différents modèles). Le modèle principalement considéré sera celui de machine de Turing par lequel seront définies les notions centrales de calculabilité, réduction, complexité.
+
+Plus précisément nous étudierons :
+
+- Machine de Turing : robustesse du modèle (équivalence déterministe/non-déterministe, multi-ruban, etc)
+- Décider et calculer : langage récursif et récursivement énumérable, fonction calculable et semi-calculable.
+- Propriétés de clôture des langages récursifs et récursivement énumérable
+- Existence de fonctions non calculables par dénombrement (diagonale de Cantor)
+- Problème de l'arrêt
+- Réduction : many-one-réduction Turing
+- Théorème de Rice
+- Universalité et complétude
+- Thèse de Church-Turing
+- Modèles de calcul équivalents (λ-calcul, fonctions récursives, RAM, etc)
+- Classes de complexité en temps/ en espace (P, NP, EXP, PSPACE, etc)
+- Théorème de Savitch
+- Réductions, problèmes difficiles, problèmes complets (SAT, QBF)
+- Théorème de Cook
+
 ##### _Logique_ (24h)
+
+{% lien  %}
+*fiche UE pas à jour*
+{% endlien %}
+
+
+Objectif : cette UE constitue une introduction à la théorie de la démonstration. En particulier, on introduire la notion de théorie et celle de modèle. On cherchera à savoir écrire des preuves dans un système formel, ainsi qu’à pouvoir raisonner sur ces preuves.  Enfin, introduction aux assistants de preuves.
+
+Notions abordées : (étant donné le faible volume horaire, certains résultats (en particulier pour la logique du premier ordre) ne seront pas démontrés dans le détail)
+
+- Théorie :
+  - Langage, syntaxe, substitution.
+  - Système de déduction, prouvabilité
+  - Cohérence, extension conservative
+- Modèle
+  - Interprétation sémantique, validité
+  - Complétude
+- Logique propositionnelle :
+  - Déduction naturelle
+  - Logique classique, modèle booléens
+  - Logique intuitionniste, modèle de Kripke
+  - Calcul des séquents, éliminations des coupures
+- Logique du premier ordre
+  - Quantificateurs, variables libres, variables liées
+  - Théorème de complétude
+
+
+Des notions complémentaires abordées en TD/TP :
+
+- SAT, algorithme pour SAT 
+- traduction négative de la logique classique dans la logique intuitionniste
+- λ-calcul, types simples, correspondance de Curry-Howard
+
+Enfin, l’assistant de preuve Coq sera utiliser pour écrire des preuves en TP.
 
 
 ## Projets
 
-> TBD projet académique
-> TBD PPPE site.
+- S2, S3 et S4 : deux projets d'informatique par semestre
+- PPPE L2 : site de la MPCI. Approchez-vous des L2/L3 qui pourront vous renseigner
 
 ## Stages possibles
+
+Deux stages facultatifs en L1 et L2 (juin et/ou juillet) et un stage obligatoire en L3.
+
+De nombreuses possibilités thématiques, demandes à vos prof !
+
+<!-- TBD
+
+liste de projets 
+-->
