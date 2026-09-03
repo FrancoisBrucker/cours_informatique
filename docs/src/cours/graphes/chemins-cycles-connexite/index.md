@@ -224,6 +224,8 @@ Montrez que le degré d'un sommet d'un graphe $k$-connexe est forcément supéri
 S'il existait un sommet avec un degré strictement plus petit que $k$, supprimer tous ses voisin le déconnecterait du reste du graphe ce qui est impossible pour un graphe $k$-connexe.
 {% enddetails %}
 
+> TBD un peu compliqué comme premiere proposition.
+> 
 <span id="2-connexité-cycle"></span>
 
 {% note "**Proposition**" %}
@@ -233,7 +235,7 @@ Soit $G$ un graphe 2-connexe de strictement plus de 2 sommets. Quels que soient 
 
 Le graphe étant connexe, il existe un chemin élémentaire entre $u$ et $v$. Notons le $u = x_1\dots x_p = v$.
 
-Soit $x_i$ le plus grand $i>1$ tel qu'il existe un cycle élémentaire entre $u$ et $x_i$ ($i> 1$ existe car le degré de $u$ est strictement plus grand que 1). Si $i=p$ on a gagné, donc on peut supposer sans perte de généralité que $1< i < p$. Notez que ce cycle ne peut contenir de sommets du chemin $x_{i+1}\dots x_p$
+Soit $x_i$ le plus grand $i>1$ tel qu'il existe un cycle élémentaire contenant $x_1\dots x_i$ ($i> 1$ existe car le degré de $u$ est strictement plus grand que 1. Soit un de ses voisins est un $x_i$ avec $i>1$ soit en supprimant $u$ le graphe reste connexe et il existe un chemin entre $x_1$ et le voisin non dans le chemin). Si $i=p$ on a gagné, donc on peut supposer sans perte de généralité que $1< i < p$. Notez que ce cycle ne peut contenir de sommets du chemin $x_{i+1}\dots x_p$
 
 En supprimant $x_i$ du graphe, il reste connexe et donc il existe un chemin entre $u$ et $v$. Dans ce chemin considérons le plus grand élément, disons $w$, qui fait parti du cycle et $x_j$ le premier élément après $w$ qui fait parti du chemin $x_{i+1}\dots x_p$. Comme $v=x_p$, $w$ et $x_j$ existent. Or la portion de chemin entre $w$ et $x_j$ ne contient aucun élément ni du cycle ni du chemin $x_{i+1}\dots x_p$. On peut donc construire un cycle élémentaire entre $u$ et $x_j$ en allant de $u$ à $w$ puis de de $w$ à $x_j$ et en revenant à $u$ par $x_i$ et l'autre bout du cycle.
 
