@@ -13,22 +13,33 @@ eleventyComputed:
 
 ---
 
+L'informatique est une science "_incarnée_" : les modèles et théorèmes théoriques sont mis en œuvre (on dit implémenté) sur une machine physique appelée ordinateur au moyens de programmes (suites de 0 et de 1 interprétées par un processeur).
 
-> TBD la matière informatique. Matière "incarnée". 
+À ce titre elle va nécessiter des compétences et des connaissances variées (programmation, algorithmie, mathématique discrète, système, ...), que l'on pourrait séparer en un axe allant de la programmation à l'informatique théorique avec en son centre l'algorithmie faisant le lien entre ces deux extrêmes :
 
-## Prérequis ?
+![axe prog/théorique](axe1.png)
 
-> TBD pas besoin d'en avoir fait avant (en plus souvent les meilleurs c'est pas eux)
-> TBD courbe de dunke-bidule.
-> TBD prérequis : un cerveau en état de marche, de la motivation.
-> TBD soyez pro actif, demandez au prof
+Cet axe code/théorie se retrouvera dans toutes les UEes de la licence :
 
-## Qu'allez vous y apprendre
+- cours de L1 : axe 75% code / 25% informatique théorique
+- cours de L2 : axe 50% code / 50% informatique théorique
+- cours de L3 : axe 25% code / 75% informatique théorique
 
-> TBD informatique = continuum allant de programmation (code) à l'informatique théorique (maths discrètes) avec algorithmie au milieu
-> TBD axe doigts / tête
-> TBD pas les même compétences. Certains bon en prog d'autres en maths discrète mais un bon infor a des connaissances/compétences dans les 2
-> TBD c'est neuf. C'est rien de ce que vous avez vu avant mais ca y ressemble...
+Un informaticien compétent doit avoir des compétences sur tout l'axe, une extrémité nourrissant l'autre.
+
+## Prérequis et méthode d'apprentissage
+
+Il n'y a **pas de prérequis** à avoir avant d'assister aux cours d'informatique de la licence MPCI. Si vous avez fait NSI avant ce n'est pas un mal mais l'expérience prouve que ça ne donne pas d'avantage significatif. 
+
+Au départ l'informatique ressemble à ce que vous avez déjà vu au Lycée... Attention : ce n'est que de la ressemblance (c'est pareil pour les maths et la physique. En vrai, vous n'en avez encore jamais fait pour de vrai). Venez avec [l'état d'esprit du débutant](https://fr.wikipedia.org/wiki/Shoshin), travaillez régulièrement et n'hésitez pas à demander à vos professeurs si vous avez des questions et tout se passera bien.
+
+On parle d'informatique mais en vérité il faudrait parler d'informatiques (comme les mathématiques) tant les compétences mobilisées peuvent être diverses. La grande majorité des étudiant va avoir du mal avec une des parties (parfois le code, parfois l'algorithmie, parfois les démonstrations) : il **faut** la travailler. Le déclic de compréhension va se faire pour tout le monde, parfois il faut plus de temps. 
+
+Enfin, méfiez vous de l'[effet Dunning-Kruger](https://fr.wikipedia.org/wiki/Effet_Dunning-Kruger), moins on en sait plus on croit savoir (on sur-évalue ses connaissances réelles, souvent en L1) et lorsque l'on s'en rend compte on croit que l'on ne sait rien (syndrome de l'imposteur, souvent en L3) : les 2 impressions sont fausses.
+
+{% attention2 "**À retenir**" %}
+Travaillez régulièrement et sérieusement toutes les parties et si vous avez des questions il ne faut pas hésiter à demander à vos professeurs : ils sont là pour ça et sauront mieux vous conseiller qu'une IA.
+{% endattention2 %}
 
 ## UEes d'informatique de la licence MPCI
 
@@ -44,11 +55,6 @@ Les enseignements d'informatique sont organisés en 3 paliers de connaissances/c
 
 Ils doivent vous permettre de poursuivre en master ou en école d'ingénieur généraliste (ie. non spécialisée en informatique) si vous avez suivi les UEes de tronc commun ou spécialisé en informatique si vous avez suivi toutes les UEes.
 
-Sur l'axe doigt/tête :
-
-- L1 : axe 75% programmation / 25% informatique théorique
-- L2 : axe 50% programmation / 50% informatique théorique
-- L3 : axe 25% programmation / 75% informatique théorique
 
 ### L1
 
