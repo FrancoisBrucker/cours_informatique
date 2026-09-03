@@ -3,7 +3,7 @@ layout: layout/post.njk
 title: "S5 : Algorithmie avancée"
 
 eleventyNavigation:
-  order: 4
+  order: 5
 
 eleventyComputed:
   eleventyNavigation:

@@ -5,7 +5,7 @@ title: "Algorithmie 2 (résolution de problèmes)"
 tags: ["formation", "MPCI"]
 
 eleventyNavigation:
-  order: 2
+  order: 4
 
 eleventyComputed:
   eleventyNavigation:
