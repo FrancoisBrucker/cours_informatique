@@ -49,11 +49,11 @@ Certaines fiches UEes ne sont pas encore à jour. Le descriptif détaillé et à
 
 Les enseignements d'informatique sont organisés en 3 paliers de connaissances/compétences :
 
-- L1 : niveau novice : bases d'informatique pour tout ["honnête homme"](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme). Vous avez assez de compétences pratique pour coder un petit projet
-- L2 : niveau competent : vous connaissez une vaste gamme de méthodes et d'algorithmes pour vous permettre de résoudre un problème de complexité moyenne, proche d'un problème de référence et avez assez d'expérience de programmation pour coder un projet sur la durée.
-- L3 : niveau avancé : vous pouvez créer vos propres algorithme et avez des connaissances fines concernant les fondements théoriques de l'informatique.
+- L1 : niveau novice. Bases d'informatique pour tout ["honnête homme"](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme). À l'issue de cette année vous aurez assez de compétences pratiques pour coder un petit projet.
+- L2 : niveau competent. Vous apprendrez une vaste gamme de méthodes pour vous permettre de résoudre un problème de complexité moyenne, proche d'un problème de référence. l'issue de cette année vous aurez assez d'expérience de programmation pour coder un projet sur la durée.
+- L3 : niveau avancé. Vous pouvez créer vos propres algorithmes et résoudre des problèmes complexe.  l'issue de cette année vous aurez des connaissances fines concernant les fondements théoriques de l'informatique.
 
-Ils doivent vous permettre de poursuivre en master ou en école d'ingénieur généraliste (ie. non spécialisée en informatique) si vous avez suivi les UEes de tronc commun ou spécialisé en informatique si vous avez suivi toutes les UEes.
+Les parties communes doivent vous permettre de poursuivre en master ou en école d'ingénieur généraliste (_ie._ non spécialisée en informatique) et si vous avez suivi en plus les UEes spécialisées en informatique vous pourrez intégrer tous les master d'informatique et intégrer les école en majeure informatique, même les plus prestigieuses (si vous avez eu d'excellentes notes et appréciations à toutes les UEes).
 
 
 ### L1
