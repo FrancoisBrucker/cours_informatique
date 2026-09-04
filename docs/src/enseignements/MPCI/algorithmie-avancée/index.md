@@ -29,6 +29,39 @@ eleventyComputed:
 
 En trois parties.
 
+> EN chantier.
+
+### Théorie des graphes
+
+> Semaine 1 à ...
+
+Un outil de modélisation puissant pour résoudre (joliment) nombre de problèmes informatique.
+
+{% lien %}
+- [exercices](https://webusers.imj-prg.fr/~benjamin.girard/TD3_LM226.pdf)
+- [Proof from the book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK)
+
+{% endlien %}
+
+#### Cours 1
+
+{% aller %}
+
+1. [Graphes bases](/cours/graphes/structure){.interne} :
+   1. rappel des définitions
+   2. quelques propriétés sur les degrés, les chemins et les cycles
+2. Rappel : [encodage d'un graphe](/cours/graphes/encodage/){.interne}
+3. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/){.interne}
+   1. chemin
+   2. composante connexe
+
+{% endaller %}
+
+Pour la semaine prochaines 2 exposés tiré du proofs from the book.
+
+
+<!-- 
+
 ### Modèles de calculs et classes de problèmes "utiles"
 
 > Semaine 1
@@ -262,7 +295,7 @@ A rendre pour le 18 octobre.
 >    2. faire le premier exercice
 > 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
 
--->
+--> -->
 
 ## Modalités de contrôle
 

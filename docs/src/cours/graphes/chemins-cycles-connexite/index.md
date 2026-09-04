@@ -225,6 +225,10 @@ S'il existait un sommet avec un degré strictement plus petit que $k$, supprimer
 {% enddetails %}
 
 > TBD un peu compliqué comme premiere proposition.
+> TBD transformer en série d'exercices :
+> 1. il existe une cycle simple $x_1\dots x_k y_1 \dots y_p x_1$ car il existe $y_p$ voisin de $x_1$ car 2-connexe et on supprime $x_1$ puis chemin $c$ entre $y_p$ et $x_n$. On s'arrête à $y_1$ le premier de $c$ qui est un $x_i$
+> 2. pour tout cycle simple qui s'arrête en $x_i$ il existe un chemin allant d'un élément du cycle à un $x_j$ avec aucun élément sur le cycle ou le chemin. On supprime $x_i$ puis même argument avec dernier du cycle et suivant sur le chemin.
+> 3. en conclure qu'il existe un cycle entre $x$ et $y$
 > 
 <span id="2-connexité-cycle"></span>
 

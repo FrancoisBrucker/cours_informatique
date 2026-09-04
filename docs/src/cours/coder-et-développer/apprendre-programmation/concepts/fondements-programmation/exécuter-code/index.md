@@ -182,14 +182,13 @@ Téléchargez et exécutez le logiciel Spyder qui se trouve à l'adresse suivant
 Spyder est un éditeur lié à un interpréteur python. L'application est très utilisée lorsque l'on commence à apprendre la programmation. Nous allons utiliser ce logiciel dans cette partie puis, lorsque nous commencerons à progresser, nous changerons de logiciel pour quelque chose de plus utile en développement. Commençons par comprendre  son fonctionnement.
 
 {% faire %}
-Exécutez le logiciel spyder. Et suivez la visite guidée
+Exécutez le logiciel Spyder. Et suivez la visite guidée
 {% endfaire %}
 {% info %}
 Si vous avez fermé la fenêtre de la visite guidée, elle se trouve :
 
-- sous mac : _help > interactive tour_
-- sous windows : TBD
-- sous linux : TBD
+- en anglais : _help > interactive tour_
+- en français : _Aide > visite interactive_
 {% endinfo %}
 
 ![spyder](spyder-1.png)
