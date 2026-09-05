@@ -31,7 +31,14 @@ Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 
 ## Partie 0 : Vérification des acquis
 
-Utilisez [un interpréteur en ligne](https://console.basthon.fr/) ou [spyder](https://www.spyder-ide.org/) pour vous rafraîchir la mémoire en python :
+> 2h cours
+
+{% aller %}
+[Rappels](/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/){.interne}
+{% endaller %}
+
+
+Pour terminer cette partie, utilisez [un interpréteur en ligne](https://console.basthon.fr/) ou [spyder](https://www.spyder-ide.org/) pour vous rafraîchir la mémoire en python :
 
 {% aller %}
 [84 monolignes en python](/cours/coder-et-développer/apprendre-programmation/concepts/mono-lignes/){.interne}
@@ -78,15 +85,17 @@ Le second principe fondamental est que les tests des fonctions fonts partie du p
 
 > 2h TP
 
+Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur moodle :
+
 {% aller %}
-[Bonnes pratiques et mantra](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/bonnes-pratiques/){.interne}
+1. [Bonnes pratiques et mantra](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/bonnes-pratiques/){.interne}
+2. [Mise en œuvre d'un projet informatique](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/){.interne}
 {% endaller %}
 
 
-{% aller %}
-1. [Mise en œuvre d'un projet informatique](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/){.interne}
-2. [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/){.interne}
-{% endaller %}
+{% faire "**Travail à rendre** "%}
+Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/){.interne} qui faudra rendre [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant lundi 14/09 à 8h00**.
+{% endfaire %}
 
 Pour aller plus loin :
 
