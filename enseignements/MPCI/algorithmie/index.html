@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Coder et développer en python</title>
+    <title>S2 : Algorithmie 1 (bases)</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1 class="mb-1">Coder et développer en python</h1>
+  <h1 class="mb-1">S2 : Algorithmie 1 (bases)</h1>
   <div class="mb-4">
     
       <div class=" px-4 flex items-center">
@@ -80,9 +80,9 @@
         
         <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
           
-            <li class="before:content-['•'] before:px-1">enseignement</li>
+            <li class="before:content-['•'] before:px-1">formation</li>
           
-            <li class="before:content-['•'] before:px-1">ECM</li>
+            <li class="before:content-['•'] before:px-1">MPCI</li>
           
         </ul>
       </div>
@@ -100,7 +100,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/enseignements/">Enseignements</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/ecm/">Enseignement à l&#39;ECM</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/ecm/2A/">Enseignements en Deuxième année</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/ecm/2A/cdp/">Coder et développer en python</a>
+<a class="interne" href="/cours_informatique/enseignements/">Enseignements</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/MPCI/">Enseignements MPCI</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/MPCI/algorithmie/">S2 : Algorithmie 1 (bases)</a>
 
 </div></div>
 
@@ -109,33 +109,50 @@
     
   
 
-  <p>18h+3h heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+  <p>Ce cours intitulé <em>Programmation</em> est donné au second semestre de la licence MPCI (<a href="https://ametice.univ-amu.fr/course/view.php?id=129120">lien AMeTICE AMU Informatique S2</a>). Il s'appuie sur le cours de <em>Programmation</em> donné au S1 (<a href="https://ametice.univ-amu.fr/course/view.php?id=125682">lien AMeTICE AMU Informatique S1</a>).</p>
+<p>Ce cours donnera les bases de développement d'un projet informatique en s'appuyant sur le langage python.</p>
+<h2>Note</h2>
+<p>La note de  l'UE résulte de cette formule :</p>
+<p>$$
+\max (\frac{CC+ DS + ET}{3}, ET)
+$$</p>
+<p>Avec :</p>
+<ul>
+<li>$CC = \frac{1}{4}(TUT + \sum TEST)$ où :
+<ul>
+<li>$TUT$ est la moyenne formée de la note des 2 tutorats</li>
+<li>$\sum TEST$ est la somme des autres notes de contrôle continu</li>
+</ul>
+</li>
+<li>$DS$ est la note du devoir surveillé</li>
+<li>$ET$ est l'examen terminal</li>
+</ul>
+<h2>Prérequis</h2>
+<p>Il est nécessaire d'avoir quelques prérequis avant de commencer ce cours, en particulier vos cours d'informatique du S1, en particulier avoir des bases de programmation python. Tout ce dont on aura besoin est disponible dans le cours cours ci-après :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Acquis du S1</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/" class="interne">Fondements de la programmation (avec Python)</a></p>
+</div></div>
+
+<p>Programmer nécessite d'utiliser le web pour lire la doc, técharger des modules, etc. Configurez votre ordinateur pour qu'il puisse utiliser le réseau universitaire EDUROAM :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Connectez vous <a href="https://www.eduroam.fr/">au réseau Éduroam</a> qui est le réseau des université européennes pour vos travaux en TD/TP.</p>
-<ul>
-<li>login : votre adresse mail</li>
-<li>mot de passe : celui de l'ent ECM</li>
-</ul>
-<p>Sous Linux vous pouvez cocher : <em>aucun certificat CA requis</em>.</p>
+<p><a href="/cours_informatique/enseignements/MPCI/outil-informatique/#eduroam" class="interne">Utilisez le réseau EDUROAM</a></p>
 </div></div>
 
-<h2>Partie 0 : Vérification des acquis</h2>
-<blockquote>
-<p>2h cours</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/" class="interne">Rappels</a></p>
-</div></div>
-
-<p>Pour terminer cette partie, utilisez <a href="https://console.basthon.fr/">un interpréteur en ligne</a> ou <a href="https://www.spyder-ide.org/">spyder</a> pour vous rafraîchir la mémoire en python :</p>
+<h2>Cours</h2>
+<p>Le cours est disponible via le site d'AMeTICE et en suivant les liens de chaque partie ci-après. Cela ne vous dispense pas de prendre des notes, mais vous aide à la révision ou aux divers prérequis que vous aurez à préparer avant le cours.</p>
+<h2>Plan</h2>
+<h3>Partie 0 : Vérification des acquis</h3>
+<p>Utilisez <a href="https://console.basthon.fr/">un interpréteur en ligne</a> ou &lt;<a href="https://www.spyder-ide.org/">spyder</a>&gt; pour vous rafraîchir la mémoire en python :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -145,8 +162,8 @@
 </div></div>
 
 <p>Vous devriez être capable de comprendre toutes les solutions et (dans le meilleur des cas) d'en faire une grande partie.</p>
-<h2><span id="partie-1"></span>Partie I : Projets informatique</h2>
-<h3>Interpréteur python et IDE</h3>
+<h3>Partie I : Projets informatique</h3>
+<h4>Interpréteur python et IDE</h4>
 <blockquote>
 <p>2h cours</p>
 </blockquote>
@@ -174,7 +191,7 @@
 <p><a href="/cours_informatique/cours/syst%C3%A8me/interagir-avec-syst%C3%A8me/gestionnaire-paquets/" class="interne">Installer des paquets</a></p>
 </div></div>
 
-<h3>Principe de conduite d'un projet informatique</h3>
+<h4>Principe de conduite d'un projet informatique</h4>
 <blockquote>
 <p>2h TD</p>
 </blockquote>
@@ -202,6 +219,29 @@
 </ol>
 </div></div>
 
+<h4>À vous</h4>
+<blockquote>
+<p>2h TP</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/bonnes-pratiques/" class="interne">Bonnes pratiques et mantra</a></p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-informatique/" class="interne">Mise en œuvre d'un projet informatique</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-pourcentages/" class="interne">Projet pourcentage</a></li>
+</ol>
+</div></div>
+
 <p>Pour aller plus loin :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -214,42 +254,8 @@
 </ol>
 </div></div>
 
-<h3>À rendre</h3>
-<blockquote>
-<p>DM à rendre sur moodle</p>
-</blockquote>
-<p>Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur moodle :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/bonnes-pratiques/" class="interne">Bonnes pratiques et mantra</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-informatique/" class="interne">Mise en œuvre d'un projet informatique</a></li>
-</ol>
-</div></div>
-
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Travail à rendre</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Faite le <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/coder-projets/%C3%A9crire-code/projet-pourcentages/" class="interne">Projet pourcentage</a></p>
-</div></div>
-
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Le travail est à rendre <a href="https://moodle.centrale-med.fr/course/view.php?id=1523">sur moodle</a> <strong>avant mercredi 16/09 à 8h00</strong>.</p>
-</div></div>
-
-<h2>Partie II : Classes et objets</h2>
+<h3>Partie II : Programmation Objet</h3>
+<p>La grosse partie de cette UE.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -260,7 +266,7 @@
 <p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/introduction/" class="interne">Tout est objet en python</a></p>
 </div></div>
 
-<h3>Classe et objets en python</h3>
+<h4>Classes et objets</h4>
 <blockquote>
 <p>2h cours</p>
 </blockquote>
@@ -275,7 +281,6 @@
 </ol>
 </div></div>
 
-<h3>A vous</h3>
 <blockquote>
 <p>2h TP</p>
 </blockquote>
@@ -287,32 +292,18 @@
 <p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-cartes/" class="interne">Projet cartes</a></p>
 </div></div>
 
-<blockquote>
-<p>2h TD</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/" class="interne">Améliorer ses objets</a></li>
-<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/" class="interne">Des dés améliorés</a></li>
-</ol>
-</div></div>
-
-<h4>À rendre</h4>
-<blockquote>
-<p>DM à rendre sur github et ne mettre sur moodle qu'un fichier texte contenant le lien vers le dépôt github.</p>
-</blockquote>
+<h4>DM 1 : améliorer ses objets</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Travail préparatoire</strong></p>
+<p><strong>TRavail préparatoire</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Mettre son code à disposition via un <a href="/cours_informatique/cours/gestion-des-sources/d%C3%A9p%C3%B4t/" class="interne">Dépôt</a> sur github.</p>
+<ol>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/" class="interne">Améliorer ses objets</a></li>
+<li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/" class="interne">Des dés améliorés</a></li>
+</ol>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -320,22 +311,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Travail à rendre</strong></p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mr-8">
 <p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-cartes-am%C3%A9lioration/" class="interne">Cartes améliorées</a></p>
 </div></div>
 
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Le travail est à rendre <strong>sur github</strong> et en mettant le lien vers le déport <a href="https://moodle.centrale-med.fr/course/view.php?id=1523">sur moodle</a> <strong>avant mercredi 23/09 à 8h00</strong>.</p>
-</div></div>
-
-<h2>Partie III : Composition/agrégation et héritage</h2>
-<h3>Composition et agrégation</h3>
+<h4>Composition et agrégation</h4>
 <blockquote>
 <p>2h cours</p>
 </blockquote>
@@ -350,7 +330,6 @@
 </ol>
 </div></div>
 
-<h3>À vous</h3>
 <blockquote>
 <p>2h TP</p>
 </blockquote>
@@ -362,7 +341,7 @@
 <p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-agr%C3%A9gation-cartes/" class="interne">Projet cartes et bataille</a></p>
 </div></div>
 
-<h3>Héritage</h3>
+<h4>Héritage</h4>
 <blockquote>
 <p>2h cours</p>
 </blockquote>
@@ -377,10 +356,18 @@
 </ol>
 </div></div>
 
-<h4>À rendre</h4>
 <blockquote>
-<p>DM à rendre sur github et ne mettre sur moodle qu'un fichier texte contenant le lien vers le dépôt github.</p>
+<p>2h TP</p>
 </blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-h%C3%A9ritage/" class="interne">Projet Héritage</a></p>
+</div></div>
+
+<h4>DM 2</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
@@ -409,14 +396,41 @@
 </ul>
 </div></div>
 
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<h2>Annales</h2>
+<p>Le cours était lié au cours d'algorithmie. Les annales concernent donc les 2 matières. Prenez celle qui concerne la programmation.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le travail est à rendre <strong>sur github</strong> et en mettant le lien vers le déport <a href="https://moodle.centrale-med.fr/course/view.php?id=1523">sur moodle</a> <strong>avant mercredi 23/11 à 8h00</strong>.</p>
+<p><a href="../programmation-algorithmes/annales/">Annales du cours programmation et algorithmes</a></p>
 </div></div>
 
+<!-- TBD 2026/27
+
+Cours en 4 parties et 4 DM :
+
+1. mettre 4h de rappel du semestre précédent pour le code
+   1. import
+   2. notation  pointée
+   3. notion d'espace de nommage
+2. cours intro : DM algo : écrire des algorithmes en python et vérifier expérimentalement leur véracité (faire les mono-lignes et des exercices sur les import)
+   1. pseudo-code (6h)
+   2. projets et tests (4h) 
+3. cours algo (complexité) et DM code (test/projet/)
+4. cours programmation (objet) et DM algo (et de l'année précédente)
+   1. objets :
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+   2. composition
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+   3. héritage
+      1. 1h cours + 1h TD avec moi dés
+      2. 2h TD cartes
+5. cours algo (structures de données) et DM code (bataille navale)
+
+-->
 
 
 </article>
