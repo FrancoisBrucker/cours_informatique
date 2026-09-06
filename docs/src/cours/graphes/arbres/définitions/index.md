@@ -54,20 +54,9 @@ Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est u
 
 Continuons par une borne min sur la connexité :
 
-{% note "**Proposition**" %}
-Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.
-{% endnote %}
-{% details "preuve", "open" %}
+> TBD voir dans la partie connexité la proposition sur <= n-1
 
-Par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.
 
-Pour ce graphe on choisi un sommet, $x$, que l'on supprime du graphe. Ce dernier possède $1 \leq p \leq \delta(x)$ composantes connexes qui respectent l'hypothèse de récurrence : $\vert E_i \vert \geq \vert V_i \vert -1$ pour chacune d'elles. En sommant le tout on a alors :
-
-$$\sum \vert E_i \vert \geq \sum (\vert V_i \vert -1)$$
-
-On conclut en remarquant que $\sum \vert E_i \vert = \vert E \vert - \delta(x) \leq \vert E \vert - p$ et $\sum \vert V_i \vert = V - 1$.
-
-{% enddetails %}
 
 {% exercice %}
 

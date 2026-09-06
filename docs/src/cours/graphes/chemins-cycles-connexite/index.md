@@ -11,26 +11,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Chemins, cycle et connexité dans les graphes : définitions et premières propriétés.
-
-<!-- fin résumé -->
 
 Un graphe $G=(V, E)$ rend compte d'une _relation_ (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette courte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.
 
-> TBD ajout des parcours :
->
-> - BFS
->   - Plus courts chemins (démonstration par rec)
-> - BFS
->   - chemin et cycles/circuit avec BFS (nœud dans la pile)
-
-
 ## Chemin, cycles et circuits
 
+Un chemin (et par extension un cycle) peut avoir de multiples définitions, selon ce que l'on cherche à faire. Commençons par la définition canonique :
+
 <span id="definition-longueur"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin allant de $v_0$ à $v_{k}$** est une suite finie :
 
 $$C = v_0v_1\dots v_i \dots v_{k}$$
@@ -42,11 +31,11 @@ de sommets du graphe telle que :
 
 Le chemin $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (_resp._ arête).
 
-{% endnote %}
+{% endnote2 %}
 
 On peut affaiblir la notion de chemin pour les graphes orienté :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Une **chaîne** est une suite :
 
 $$C = v_0v_1\dots v_i \dots v_{k}$$
@@ -58,12 +47,12 @@ de sommets du graphe telle que :
 
 La chaîne $C$ à une **longueur** de $k$ (c'est le nombre d'arcs).
 
-{% endnote %}
+{% endnote2 %}
 
 Un chemin nous permet de définir un cycle pour les graphes non-orientés :
 
 <span id="définition-cycle"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe non orienté. Un **cycle** est un chemin
 
 $$C = v_0v_1\dots v_i \dots v_k$$
@@ -71,11 +60,11 @@ $$C = v_0v_1\dots v_i \dots v_k$$
 tel que $v_0 = v_k$
 
 La cycle $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes).
-{% endnote %}
+{% endnote2 %}
 
 Pour les graphes orientés, ça se complique un peu car on a coutume de différentier cycle (le sens de l'arc est indifférent) de circuit (on peut parcourir le cycle dans l'ordre) :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Un **cycle** est une suite finie :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
@@ -86,17 +75,17 @@ de sommets du graphe telle que :
 2. les arcs sont deux à deux distinctes.
 3. $v_0 = v_k$
 
-{% endnote %}
+{% endnote2 %}
 
 <span id="définition-circuit"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe orienté. Un **_circuit_** est un cycle :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
 
 de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k$
 
-{% endnote %}
+{% endnote2 %}
 
 Terminons cette partie par un petit exercice :
 
@@ -115,13 +104,13 @@ Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c
 Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent de pouvoir passer plusieurs fois par les mêmes arêtes ou au contraire de ne passer qu'une seule fois par chaque sommet :
 
 <span id="définition-pseudo-"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G = (V, E)$ un graphe orienté. Un **_pseudo-chemin_** est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k$.
-{% endnote  %}
+{% endnote2  %}
 <span id="définition-élémentaire"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G = (V, E)$ un graphe orienté. Un **_chemin élémentaire_** (_resp._ cycle ou circuit élémentaire) est un chemin (_resp._ cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.
-{% endnote  %}
+{% endnote2  %}
 
 {% info %}
 Notez qu'un pseudo-chemin/pseudo-cycle/pseudo-circuit où chaque sommet n'apparaît qu'une seule fois est forcément un chemin/cycle/circuit élémentaire !
@@ -133,8 +122,9 @@ Ces notions sont bien sûr liées comme le montre les deux propositions ci-desso
 
 - De tout pseudo-chemin, pseudo-chaîne, pseudo-cycle ou pseudo-circuit allant de $x$ à $y$ on peut extraire un chemin, chaîne, cycle ou circuit allant de $x$ à $y$.
 - De tout chemin, chaîne, cycle ou circuit allant de $x$ à $y$, on peut extraire un chemin, chaîne, cycle ou circuit élémentaire allant de $x$ à $y$.
-  {% endnote %}
-  {% details "**Preuve**", "open" %}
+
+{% endnote %}
+{% details "**Preuve**", "open" %}
   Nous n'allons faire la preuve que pour les chemins. Les autres preuves sont équivalentes.
 
 Soit $G=(V, E)$ un graphe et $c=v_0 \dots v_p$ un de ses pseudo-chemins qui n'est pas un chemin. Il existe donc $i < j$ tel que $v_iv_{i+1} = v_jv_{j+1}$ et $c'= v_0\dots v_iv_{j+1}\dots v_k$ est un autre pseudo-chemin allant de $v_0$ à $v_k$ ayant strictement moins de répétition d'arêtes que $c$ : on peut itérativement supprimer les répétitions d'arêtes d'un pseudo-chemin pour obtenir un chemin.
@@ -149,25 +139,25 @@ La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou
 ## Connexité
 
 <span id="définition-connexe"></span>
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Un graphe est dit **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.
 
 Si le graphe est orienté :
 
 - il est **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ ou un chemin allant de $y$ à $x$ dans $G$.
 - il est dit **fortement connexe** s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
-  {% endnote %}
+  {% endnote2 %}
 
 La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à _google maps_ où l'on aime bien pouvoir faire des aller-retours.
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G=(V, E)$ un graphe orienté ou non.
 
 - Un **ensemble connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ ou entre $y$ et $x$.
 - Un **ensemble fortement connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ et entre $y$ et $x$.
 - Une **composante (fortement) connexe** $Y \subseteq V$ de $G$ est un ensemble (fortement) connexe maximal pour l'inclusion.
 
-{% endnote %}
+{% endnote2 %}
 
 Les composantes connexes d'un graphe $G$ forment ainsi un Souvent (toujours) si un graphe n'est pas connexe on le partitionnera en ses **composantes connexes** qui peuvent être vues en vertu de la proposition suivante comme des graphes distincts que l'on peut analyser séparément.
 
@@ -194,64 +184,20 @@ Les composantes connexes d'un graphe orienté ne sont pas forcément disjointes,
 
 Enfin, Du point de vue de la connexité, certains sommet ou arêtes sont plus important que d'autres :
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soit $G$ un graphe connexe.
 
 - Un **isthme** est une arête qui déconnecte le graphe si on la supprime
 - Un **nœud d'articulation** est un sommet qui déconnecte le graphe si on le supprime
 
-{% endnote %}
+{% endnote2 %}
 
 Par exemple, dans des réseau routiers, les isthme et les nœuds n'articulations vont créer des bouchons s'ils sont saturés (le tunnel sous Fourvière par exemple).
 
-<span id="k-connexité"></span>
-Finissons par définir la $k$-connexité :
-
-<span id="définition-k-connexité"></span>
-
-{% note "**Définition**" %}
-
-Un graphe est dit $k$-connexe si la suppression de $k-1$ sommet de déconnecte pas $G$.
-
-{% endnote %}
-
-Il est clair qu'un graphe est connexe si et seulement si il est $1$-connexe. Les graphes 2-connexes vont avoir une certaine importance plus tard (lorsque l'on parlera de colorabilité et de planarité des graphes). Ils permettent d'avoir des graphes connexes qui résistent à la suppression d'un sommet. Les cycles sont un exemple canoniques de graphes 2-connexes :
-
-{% exercice %}
-Montrez que le degré d'un sommet d'un graphe $k$-connexe est forcément supérieur au égal à $k$
-{% endexercice %}
-{% details "corrigé" %}
-S'il existait un sommet avec un degré strictement plus petit que $k$, supprimer tous ses voisin le déconnecterait du reste du graphe ce qui est impossible pour un graphe $k$-connexe.
-{% enddetails %}
-
-> TBD un peu compliqué comme premiere proposition.
-> TBD transformer en série d'exercices :
-> 1. il existe une cycle simple $x_1\dots x_k y_1 \dots y_p x_1$ car il existe $y_p$ voisin de $x_1$ car 2-connexe et on supprime $x_1$ puis chemin $c$ entre $y_p$ et $x_n$. On s'arrête à $y_1$ le premier de $c$ qui est un $x_i$
-> 2. pour tout cycle simple qui s'arrête en $x_i$ il existe un chemin allant d'un élément du cycle à un $x_j$ avec aucun élément sur le cycle ou le chemin. On supprime $x_i$ puis même argument avec dernier du cycle et suivant sur le chemin.
-> 3. en conclure qu'il existe un cycle entre $x$ et $y$
-> 
-<span id="2-connexité-cycle"></span>
-
-{% note "**Proposition**" %}
-Soit $G$ un graphe 2-connexe de strictement plus de 2 sommets. Quels que soient $u \neq v$ deux de ses sommets, il existe un cycle élémentaire dans $G$ passant par $u$ et $v$.
-{% endnote %}
-{% details "preuve", "open" %}
-
-Le graphe étant connexe, il existe un chemin élémentaire entre $u$ et $v$. Notons le $u = x_1\dots x_p = v$.
-
-Soit $x_i$ le plus grand $i>1$ tel qu'il existe un cycle élémentaire contenant $x_1\dots x_i$ ($i> 1$ existe car le degré de $u$ est strictement plus grand que 1. Soit un de ses voisins est un $x_i$ avec $i>1$ soit en supprimant $u$ le graphe reste connexe et il existe un chemin entre $x_1$ et le voisin non dans le chemin). Si $i=p$ on a gagné, donc on peut supposer sans perte de généralité que $1< i < p$. Notez que ce cycle ne peut contenir de sommets du chemin $x_{i+1}\dots x_p$
-
-En supprimant $x_i$ du graphe, il reste connexe et donc il existe un chemin entre $u$ et $v$. Dans ce chemin considérons le plus grand élément, disons $w$, qui fait parti du cycle et $x_j$ le premier élément après $w$ qui fait parti du chemin $x_{i+1}\dots x_p$. Comme $v=x_p$, $w$ et $x_j$ existent. Or la portion de chemin entre $w$ et $x_j$ ne contient aucun élément ni du cycle ni du chemin $x_{i+1}\dots x_p$. On peut donc construire un cycle élémentaire entre $u$ et $x_j$ en allant de $u$ à $w$ puis de de $w$ à $x_j$ et en revenant à $u$ par $x_i$ et l'autre bout du cycle.
-
-![2-connexe cycle](./2-connexe-cycle.png)
-
-Comme $j>i$ on a une contradiction.
-
-{% enddetails %}
 
 ## Propriétés fondamentales d'existence
 
-On le verra plus précisément lorsque l'on parlera d'arbres, mais les notions de connexités, de chemins et de cycles (notions globales) sont très liés aux degrés des différents sommets (conditions locales). Les propositions fondamentales d'existence ci après le montrent. Bien qu'elles soient très simples, elles se révèlent souvent utile, soit par les propriétés elles-mêmes soit par leurs schémas de preuves qui s'appliquent très souvent.
+On le verra plus précisément lorsque l'on parlera d'arbres, mais les notions de connexités, de chemins et de cycles (notions globales) sont très liées aux degrés des différents sommets (conditions locales). Les propositions fondamentales d'existence ci après le montrent. Bien qu'elles soient très simples, elles se révèlent souvent utile, soit par les propriétés elles-mêmes soit par leurs schémas de preuves qui s'appliquent très souvent.
 
 Commençons par donner des condition d'existence de chemins et cycles de longueur donnée :
 
@@ -311,6 +257,36 @@ La preuve est identique à l'exercice précédent en allant _à reculons_ dans l
 
 {% enddetails %}
 
+La proposition suivante n'est cependant qu'une implication :
+
+{% exercice %}
+Montrez que pour tout entier $n\geq 1$ il existe un graphe à $n$ sommets qui admet un cycle de longueur $n$ alors que le degré de chaque élément est $2$.
+
+{% endexercice %}
+{% details "corrigé" %}
+On peut prendre le graphe $G=(\\{v_1, \dots, v_n\\}, E)$ avec $E = \\{ v_iv_{i+1} \mid 1 \leq i \leq n \\} \cup \\{ v_1v_n \\}$.
+
+{% enddetails %}
+
+
+Les deux propositions suivantes lient connexité et nombre d'arêtes. On verra plusieurs raffinement des ces deux proposition tout au long du cours, donc garder les en tête :
+
+{% note "**Proposition**" %}
+Tout graphe $G=(V, E)$ connexe contient au minimum $\vert V \vert - 1$ arêtes.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.
+
+Pour ce graphe on choisi un sommet, $x$, que l'on supprime du graphe. Ce dernier possède $1 \leq p \leq \delta(x)$ composantes connexes qui respectent l'hypothèse de récurrence : $\vert E_i \vert \geq \vert V_i \vert -1$ pour chacune d'elles. En sommant le tout on a alors :
+
+$$\sum \vert E_i \vert \geq \sum (\vert V_i \vert -1)$$
+
+On conclut en remarquant que $\sum \vert E_i \vert = \vert E \vert - \delta(x) \leq \vert E \vert - p$ et $\sum \vert V_i \vert = V - 1$.
+
+{% enddetails %}
+
+Notez 
 De même pour garantir la connexité d'un graphe :
 
 <div id="prop-connexe"></div>
@@ -346,14 +322,21 @@ Le graphe $G'$ est donc connexe par hypothèse de récurrence, donc $G$ l'est au
 
 {% enddetails %}
 
-Notez bien que ces propositions ne sont que des implications. Si l'on prend le graphe $G=(\\{v_1, \dots, v_n\\}, E)$ avec $E = \\{ v_iv_{i+1} \mid 1 \leq i \leq n \\} \cup \\{ v_1v_n \\}$ il :
+Notez bien que la proposition précédente n'est qu'une implication :
 
-- est connexe alors qu'il a $n < \frac{(n-1)(n-2)}{2}$ arêtes si $n \geq 5$,
-- admet un cycle de longueur $n$ alors que le degré de chaque élément est $2$.
+{% exercice %}
+Montrez que pour tout entier $n\geq 5$ il existe un graphe à $n$ sommets qui est connexe alors qu'il a $n < \frac{(n-1)(n-2)}{2}$ arêtes si $n \geq 5$,
+
+{% endexercice %}
+{% details "corrigé" %}
+On peut prendre le même graphe que pour l'exercice précédent : $G=(\\{v_1, \dots, v_n\\}, E)$ avec $E = \\{ v_iv_{i+1} \mid 1 \leq i \leq n \\} \cup \\{ v_1v_n \\}$.
+
+{% enddetails %}
+
 
 ## Algorithmes
 
-> Faire en BFS ou DFS.
+> TBD faire en pseudo-code.
 
 On utilisera le graphe suivant pour nos algorithmes :
 
@@ -468,18 +451,6 @@ def les_composantes(G):
 Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on stocke dans un ensemble les sommets déjà vu. On utilise pour cela le mot clé [`continue`{.language-}](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops).
 
 {% enddetails %}
-
-### <span id="algorithme-fortement-connexe"></span> Algorithme de recherche de composante fortement connexe
-
-> TBD avec un DFS
-
-> TBD  connexes
-
-- Kosaraju en 2 passes : <https://www.youtube.com/watch?v=RpgcYiky7uw>
-- Tarjan en une passe : <https://www.youtube.com/watch?v=wUgWX0nc4NY>
-
-> TBD <https://www.youtube.com/watch?v=m2mdGfxs_5E>
-
 
 ### Trouver un chemin
 
@@ -606,7 +577,3 @@ def cycle_non_orienté(G, a):
 
     return chemin[i:] + [début]
 ```
-
-### Trouver une composante 2-connexe
-
-> TBD aussi avec un DFS

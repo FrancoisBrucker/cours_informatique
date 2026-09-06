@@ -47,3 +47,36 @@ Permettent de :
 > TBD propriétés : <https://people.irisa.fr/Francois.Schwarzentruber/algo1/05parcoursprofondeur.pdf>
 
 > TBD application quand il faut aller le plus loin possible
+
+## Applications
+
+
+### Chemins et circuits
+
+> TBD ajout des parcours :
+>
+> - BFS
+>   - Plus courts chemins (démonstration par rec)
+> - BFS
+>   - chemin et cycles/circuit avec BFS (nœud dans la pile)
+
+
+### Composantes connexes
+
+> connexité en BFS et DFS.
+
+### <span id="algorithme-fortement-connexe"></span> Algorithme de recherche de composante fortement connexe
+
+> TBD avec un DFS
+
+> TBD  connexes
+
+- Kosaraju en 2 passes : <https://www.youtube.com/watch?v=RpgcYiky7uw>
+- Tarjan en une passe : <https://www.youtube.com/watch?v=wUgWX0nc4NY>
+
+> TBD <https://www.youtube.com/watch?v=m2mdGfxs_5E>
+>
+
+### Trouver une composante 2-connexe
+
+> TBD aussi avec un DFS

@@ -2,8 +2,8 @@
 layout: layout/post.njk
 
 title: "Mots de Bruijn"
-authors: 
-    - François Brucker
+authors:
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -24,19 +24,19 @@ Commençons par motiver ce projet : **le problème du digicode**
 
 ### Formalisation du problème
 
-Il faut trouver un *mot* de longueur $p$ d'un *alphabet* $\mathcal{A}$ à $n$ caractères (un mot est une suite de $p$ caractère de $\mathcal{A}$).
+Il faut trouver un _mot_ de longueur $p$ d'un _alphabet_ $\mathcal{A}$ à $n$ caractères (un mot est une suite de $p$ caractère de $\mathcal{A}$).
 
 **Exemple :**
 Les mots de longueur $p=3$ de l'alphabet $\\{0, 1\\}$ à $n=2$ caractères. Il y a $n^p = 2^3 = 8$ mots de longueur 3 différents qui sont :
 
-* $000$
-* $001$
-* $010$
-* $011$
-* $100$
-* $101$
-* $110$
-* $111$
+- $000$
+- $001$
+- $010$
+- $011$
+- $100$
+- $101$
+- $110$
+- $111$
 
 Si l'on veut trouver une chaîne de caractère qui contient tous les mots de longueur $p$ d'un alphabet à $n$ caractère on peut coller bout à bout tous les mots.
 
@@ -58,13 +58,13 @@ On utilise la bijection $f$ qui a un mot $m=n_0\dots n_{p-1}$ associe $f(m) = a_
 
 On peut donc se focaliser sur l'énumération des mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$. Soit $m = m_0\dots m_{p-1}$ un mot de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$ tel qu'il existe $m_i \neq q-1$. On note : $\mbox{next}(n, q) = n_0 \dots  {n}_{p-1}$ le mot tel que :
 
-* si $m_{p-1} < q-1$ alors :
-  * $n_i = m_i$ pour $0 \leq i < p-1$
-  * $n_{p-1}$ $= m_{p-1} + 1$
-* si $m_{p-1} = q-1$ alors soit j le plus grand indice tel que $m_j \neq q-1$ :
-  * $n_i = m_i$ pour $i < j$
-  * $n_j = m_j + 1$
-  * $n_i = 0$ pour $i > j$
+- si $m_{p-1} < q-1$ alors :
+  - $n_i = m_i$ pour $0 \leq i < p-1$
+  - $n_{p-1}$ $= m_{p-1} + 1$
+- si $m_{p-1} = q-1$ alors soit j le plus grand indice tel que $m_j \neq q-1$ :
+  - $n_i = m_i$ pour $i < j$
+  - $n_j = m_j + 1$
+  - $n_i = 0$ pour $i > j$
 
 {% exercice %}
 Montrez que la fonction $\mbox{next}()$ permet d'énumérer tous les mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$.
@@ -96,9 +96,11 @@ La longueur la plus petite possible d'une chaîne de caractère qui contiendrait
 
 {% exercice %}
 Montrez que la taille minimale théorique est de :
+
 $$
 1 \cdot p  + (n^p - 1) \cdot 1 = p - 1 + n^p
 $$
+
 caractères.
 {% endexercice %}
 {% details "solution" %}
@@ -113,10 +115,10 @@ Sauf que l'on ne pas pas si une telle chaîne existe...
 
 ## Bruijn et Euler to the rescue
 
-Considérons le graphe **orienté** suivant, appelé *graphe de Bruijn* $B(n, p+1) = (V, E)$ où :
+Considérons le graphe **orienté** suivant, appelé _graphe de Bruijn_ $B(n, p+1) = (V, E)$ où :
 
-* $V$ est l'ensemble des mots de longueur $p$ d'un alphabet à $n$ éléments
-* $xy \in E$ si les $p-1$ derniers caractères de $x$ sont les $p-1$ premiers caractères de $y$
+- $V$ est l'ensemble des mots de longueur $p$ d'un alphabet à $n$ éléments
+- $xy \in E$ si les $p-1$ derniers caractères de $x$ sont les $p-1$ premiers caractères de $y$
 
 {% exercice %}
 Donnez le graphe de Bruijn associé aux mots de longueur 3 de l'alphabet $\\{0, 1\\}$.
@@ -147,10 +149,10 @@ Un cycle eulérien du graphe $B(n, p)$ correspond à une suite comprenant tous l
 que les $p-1$ derniers caractères de l'un sont les $p-1$ premiers caractères de l'autre.
 
 {% exercice %}
-Donnez le cycle eulérien associé a un graphe $B(n, p)$ donné. Vous pourrez vous inspirer de l'[algorithme du cours](../parcours-euleriens#principe-algorithme){.interne} en adaptant chaque fonction au fait que notre graphe est **orienté**. En particulier :
+Donnez le cycle eulérien associé a un graphe $B(n, p)$ donné. Vous pourrez vous inspirer de l'[algorithme du cours](../parcours-eulériens#principe-algorithme){.interne} en adaptant chaque fonction au fait que notre graphe est **orienté**. En particulier :
 
-* la découverte du cycle se fera avec l'algorithme [`circuit(G, a)`{.language-}](../chemins-cycles-connexite#algo-cycle-oriente){.interne}
-* la suppression du cycle dans le graphe (fonction [`supprime(G, c)`{.language-}](../parcours-euleriens#fonction-supprime){.interne}) doit être adaptée en ne supprimant pas l'arc réciproque dans la structure
+- la découverte du cycle se fera avec l'algorithme [`circuit(G, a)`{.language-}](../chemins-cycles-connexite#algo-cycle-oriente){.interne}
+- la suppression du cycle dans le graphe (fonction [`supprime(G, c)`{.language-}](../parcours-euleriens#fonction-supprime){.interne}) doit être adaptée en ne supprimant pas l'arc réciproque dans la structure
 
 {% endexercice %}
 
@@ -166,8 +168,8 @@ La construction ci-dessus est équivalente à commencer par le mot associé à $
 
 Ce mot, appelé **mot de Bruijn** a bien les propriétés suivantes :
 
-* il contient tous les mots de longueur $p$ de l'alphabet à n caractères,
-* il a une taille de $p +(n^p -1)$ caractères
+- il contient tous les mots de longueur $p$ de l'alphabet à n caractères,
+- il a une taille de $p +(n^p -1)$ caractères
 
 {% note "**Conclusion**" %}
 

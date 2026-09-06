@@ -11,7 +11,6 @@ eleventyNavigation:
   prerequis:
     - /cours/algorithmie/complexité-calculs/
     - /cours/coder-et-développer/
-    - /cours/algorithmie/problèmes-NP/
 
 date: 2026-01-05
 
@@ -28,13 +27,71 @@ Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cett
 
 Le cours va être séparé en petites entités qui se suivent pour former un tout que l'on espère cohérent.
 
-## <span id="structure"></span> Structure d'un graphe
+## Introduction générale
+
+### <span id="structure"></span> Structure d'un graphe
 
 {% aller %}
 
 1. [Structure d'un graphe](structure){.interne}
 2. [Encodage de graphes](encodage){.interne}
-3. [Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
+
+{% endaller %}
+
+Connexités :
+
+{% aller %}
+
+[Chemins, cycle et connexité](chemins-cycles-connexite){.interne}
+
+{% endaller %}
+
+### Graphes Eulérien
+
+L'origine de la théorie des graphe :
+
+{% aller %}
+
+[Chemins et cycles Eulérien](parcours-eulériens){.interne}
+
+{% endaller %}
+
+Et une conséquence inattendue :
+
+{% aller %}
+
+[Mots de Bruijn](projet-mots-bruijn){.interne}
+
+{% endaller %}
+
+> TBD projet on le code
+> <https://networkx.org/documentation/stable/reference/drawing.html>
+> <https://networkx.org/documentation/stable/auto_examples/index.html>
+
+### Générer des graphes
+
+> TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
+> TBD on random des nombres dans une borne et on continue
+> TBD connexité <https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf> le montre avec des matrices, nous juste avec un graphe.
+
+### Graphes Hamiltoniens
+
+> TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ?
+
+{% aller %}
+
+1. [Chemins et cycles Hamiltonien](parcours-hamiltoniens){.interne}
+
+
+{% endaller %}
+
+
+
+
+
+{% aller %}
+1. [Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
+2. [Odds and ends](./odds-and-ends/){.interne}
 
 {% endaller %}
 
@@ -52,36 +109,24 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 ### Chemins et cycles
 
-{% aller %}
-
-[Chemins, cycle et connexité](chemins-cycles-connexite){.interne}
-
-{% endaller %}
-
 Projet :
 
 {% aller %}
 
-[Chemins de Taxis](projet-chemin-de-taxi){.interne}
-
+1. [Chemins de Taxis](projet-chemin-de-taxi){.interne}
+2. [Ordonnancement de tâches](parcours-ordonnancement){.interne}
 {% endaller %}
 
 ### Chemins le plus long
 
-{% aller %}
-
-1. [Chemins et cycles Eulérien](parcours-eulériens){.interne}
-2. [Chemins et cycles Hamiltonien](parcours-hamiltoniens){.interne}
-3. [Ordonnancement de tâches](parcours-ordonnancement){.interne}
-
-{% endaller %}
 
 Projets :
 
+> TBD à transformer en voyageur de commerce
+
 {% aller %}
 
-1. [Mots de Bruijn](projet-mots-bruijn){.interne}
-2. [cycle-chemin](./projet-chemins-cycles){.interne}
+1. [cycle-chemin](./projet-chemins-cycles){.interne}
 
 {% endaller %}
 
