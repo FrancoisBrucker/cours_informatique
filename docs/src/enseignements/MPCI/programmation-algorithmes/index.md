@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "S2 : Programmation et Algorithmes"
+title: "S2 : Programmation et Algorithmes (old)"
 
 tags: ["formation", "MPCI"]
 

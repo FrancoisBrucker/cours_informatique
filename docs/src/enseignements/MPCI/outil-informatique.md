@@ -19,6 +19,24 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 
 Le but de cette séance est de vous donner les connaissances nécessaire pour avoir un ordinateur pour le développement.
 
+## Portables AMU
+
+Ceux ayant un portable AMU doivent installer un nouveau système. Rapprochez vous de vos professeur pour qu'on pusse vous le faire.
+
+{% lien %}
+[Distribution Zorin](https://zorin.com/)
+{% endlien %}
+
+<!-- TBD
+
+1. comment faire une clé de boot,
+2. mettre des photos pour l'install : F2 pour le boot loader puis choisir USB en 1
+3. install classique puis mise à jour de paquets
+4. lien vers gestionnaire de paquet Zorin, 
+
+-->
+
+
 ## <span id="eduroam"></span>Utiliser le réseau
 
 [Le réseau Éduroam](https://www.eduroam.fr/) est le réseau des université européennes. Il est disponible partout (pour vous à AMU et à l'ECM) et est gratuit. 
@@ -31,7 +49,7 @@ Connectez vous au  réseau WIFI éduroam :
 
 {% endfaire %}
 {% info %}
-Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
+Sous Linux suivez les instructions de <https://cat.eduroam.org/>
 {% endinfo %}
 
 ## Connaissances minimales du système d'exploitation
@@ -40,7 +58,7 @@ Les bases nécessaire pour pouvoir appréhender le fonctionnement d'un ordinateu
 
 {% aller %}
 - [Bases d'un système d'exploitation](/cours/système/ordinateur-programmes-OS/){.interne}
-- [le terminal](../terminal/bases/){.interne}.
+- [le terminal](/cours/système/interagir-avec-système/terminal/bases/){.interne}.
 - [gestionnaire de paquets](/cours/système/interagir-avec-système/gestionnaire-paquets/){.interne}
 {% endaller %}
 
@@ -74,6 +92,15 @@ Retrouvez sous windows et Linux comment suivre la visite guidée (pour l'instant
 {% lien %}
 <https://code.visualstudio.com/>
 {% endlien %}
+{% info %}
+Sous Linux/Ubuntu, choisissez l'[installation via snap](https://code.visualstudio.com/docs/setup/linux#_snap) dans un terminal :
+
+```
+sudo snap install --classic code
+```
+
+{% endinfo %}
+
 
 {% aller %}
 [Prise en main de vscode](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/éditeur-vscode/prise-en-main/){.interne}

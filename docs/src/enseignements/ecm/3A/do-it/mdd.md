@@ -17,7 +17,7 @@ eleventyComputed:
 
 # Partie I : Travail préparatoire
 
-> 6h
+> 3h
 
 {% info %}
 Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.interne}. Si vous voulez plus de contenu, n'hésitez pas à y jeter un coup d'œil.
@@ -32,7 +32,7 @@ Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.
 2. [Installer un interpréteur et un IDE](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
 {% endaller %}
 
-## structure d'un projet informatique
+## Structure d'un projet informatique
 
 {% aller %}
 1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/){.interne}
@@ -47,26 +47,21 @@ Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.
 
 {% endaller %}
 
-## Programmation objet en python
-
-{% aller %}
-1. [Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/){.interne}
-2. [Composition et agrégation](/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation/){.interne}
-{% endaller %}
-
+<!-- 
 ## Outils python de gestion de package
 
 - [poetry](https://python-poetry.org/)
 - [uv](https://docs.astral.sh/uv/)
-
-
-<!-- Pour la prochaine fois, trois groupes :
+ 
+ Pour la prochaine fois, trois groupes :
 
 - [poetry](https://python-poetry.org/)
 - [uv](https://docs.astral.sh/uv/)
 - module et package python : comment les utiliser
 
-Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. -->
+Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
+-->
+
 
 # Partie II :  Test Driven Development
 
@@ -83,6 +78,10 @@ Vous devez pouvoir :
 {% endprerequis %}
 
 {% aller %}
+[Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/){.interne}
+{% endaller %}
+
+{% aller %}
 [Test Driven Development](/cours/coder-et-développer/Perfectionnement/TDD/){.interne}
 {% endaller %}
 
@@ -92,13 +91,22 @@ Vous devez pouvoir :
 
 -->
 
+<!--
+
 ## À faire 
 
-Pour la prochaine fois, trois groupes :
+Pour la prochaine fois, tous :
 
+
+
+- [design pattern](https://refactoring.guru/design-patterns)
+- [refactoring pattern](https://refactoring.guru/refactoring)
 - tests dans d'autres langages (java, js ou ts, ...)
-- test pattern et refactoring pattern
 - mock et tests
+
+-->
+
+
 
 
 # Partie III
@@ -107,9 +115,10 @@ Pour la prochaine fois, trois groupes :
 
 > Design Pattern
 
+
 # Partie IV
 
-> 3h
+> 6h
 
 > git vscode et en ligne de commande
 

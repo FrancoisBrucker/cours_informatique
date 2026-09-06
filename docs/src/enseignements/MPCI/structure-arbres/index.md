@@ -1,11 +1,11 @@
 ---
 layout: layout/post.njk
-title: "S4 : Algorithmie 2 (résolution de problèmes)"
+title: "S3 : Structure de données - arbres et graphes"
 
 tags: ["formation", "MPCI"]
 
 eleventyNavigation:
-  order: 4
+  order: 3
 
 eleventyComputed:
   eleventyNavigation:
@@ -15,9 +15,4 @@ eleventyComputed:
 ---
 
 
-> TBD plan
-> 1. arbre vers graphe jusqu'à clique.
-> 2. NP et NPc
-> 3. résolution de pb.
->
-> TBD le go en DM.
+> TBD les 10h de TP.

@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "S5 : Algorithmie avancée"
+title: "S5 : Algorithmie 3 (avancée)"
 
 eleventyNavigation:
   order: 5

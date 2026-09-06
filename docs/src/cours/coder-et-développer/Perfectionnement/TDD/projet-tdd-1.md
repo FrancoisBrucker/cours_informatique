@@ -475,9 +475,9 @@ L'implémentation directe du test est appelée : ***obvious implementation***.
 
 Utilisez ce pattern pour :
 
-{% faire %}
+{% exercice %}
 Faite une implémentation de la méthode `fois`{.language-}
-{% endfaire %}
+{% endexercice %}
 
 {% details "solution" %}
 Fichier `monnaie.py`{.fichier} :

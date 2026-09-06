@@ -642,6 +642,12 @@ def test_franc_dollar():
 
 On est maintenant dans une meilleure position qu'au début pour notre projet d'unifier les classes `Franc`{.language-} et `Dollar`{.language-} puisque Le code utilisateur n'est pas au courant qu'il existe deux classes différentes (grâce au *factory*).
 
+{% info %}
+Nos factory sont des fonctions du module python. Une autre solution possible (très utilisée en Java par exemple) est d'utiliser des méthodes de classes.
+
+En python, les méthodes de classes se définissent par le décorateur [`@classmethod`{.language-}](https://docs.python.org/3/library/functions.html#classmethod).
+{% endinfo %}
+
 On va pouvoir passer à la suite qui consiste à les supprimer également dans le code.
 
 ### <span id="todo-list-9.3"></span> Todo list
