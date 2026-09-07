@@ -85,13 +85,35 @@ Et une conséquence inattendue :
 
 {% endaller %}
 
+> TBD ci NP algo
+
+Puis 
+
+### Chemins le plus long
+
+> TBD à transformer en voyageur de commerce
+
+{% aller %}
+
+1. [cycle-chemin](./projet-chemins-cycles){.interne}
+2. couplage et ALM : Christophides. EN 1 une appxoximation puis on fait propre.
+{% endaller %}
 
 
+
+
+
+
+### Chemins de longueur/poids minimum
+
+#### <span id="chemin-problèmes"></span> Problème et algorithmes
 
 
 {% aller %}
+
 1. [Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
 2. [Odds and ends](./odds-and-ends/){.interne}
+> TBD un écart sur combien de graphes différents ? A sommets fixés, et si on réordonne les sommets ?
 
 {% endaller %}
 

@@ -15,7 +15,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-18h+3h heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.
+15h+6h heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.
 
 {% info %}
 
@@ -28,6 +28,29 @@ Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 
 {% endinfo %}
 
+Tous les exercices et rendu sont fait pour être réalisé sans IA :
+
+{% attention "**IA et code**" %}
+
+Les agents IA sont de formidables accélérateurs en développement, **mais** :
+
+- ils n'inventent rien de neuf : ils ne peuvent répondre qu'à des problèmes déjà résolus,
+- ils peuvent (vont parfois) halluciner et donner des solutions qui semblent corrects mais sont fausses en réalité
+
+En temps que développeur **vous avez l'obligation** :
+
+- de préparer le terrain aux agent étant le plus explicite possible dans vos demandes
+- de toujours vérifier le code produit
+- de connaître le fonctionnement de votre projet et pouvoir modifier le code si nécessaire
+
+
+Pour cela : 
+
+- vous devez **appendre** le cours 
+- **faire vous même** les exercices et les TDs pour assimiler les concepts
+- utiliser l'IA dans les projets plus long en vérifiant chaque étape produite
+
+{% endattention %}
 
 ## Partie 0 : Vérification des acquis
 
