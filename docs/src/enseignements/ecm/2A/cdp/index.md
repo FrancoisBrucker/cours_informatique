@@ -54,7 +54,7 @@ Pour cela :
 
 ## Partie 0 : Vérification des acquis
 
-> 2h cours
+> 1h cours
 
 {% aller %}
 [Rappels](/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/){.interne}
@@ -113,7 +113,7 @@ Pour aller plus loin :
 
 ### À rendre
 
-> DM à rendre sur moodle
+> 2h DM à rendre sur moodle
 
 Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur moodle :
 
@@ -148,7 +148,7 @@ Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmatio
 
 ### A vous
 
-> 2h TP
+> 1h TP
 
 {% aller %}
 [Projet cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes/){.interne}
@@ -166,7 +166,7 @@ Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmatio
 
 #### À rendre
 
-> DM à rendre sur github et ne mettre sur moodle qu'un fichier texte contenant le lien vers le dépôt github.
+> 2h DM à rendre sur github et ne mettre sur moodle qu'un fichier texte contenant le lien vers le dépôt github.
 
 {% prerequis "**Travail préparatoire**" %}
 Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dépôt/){.interne} sur github.
@@ -201,7 +201,7 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 ### Héritage
 
-> 2h cours
+> 1h cours
 
 {% aller %}
 1. [Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/héritage/){.interne}
@@ -210,7 +210,7 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 #### À rendre
 
-> DM à rendre sur github et ne mettre sur moodle qu'un fichier texte contenant le lien vers le dépôt github.
+> 2h+ DM à rendre sur github et ne mettre sur moodle qu'un fichier texte contenant le lien vers le dépôt github.
 
 
 
