@@ -24,7 +24,7 @@ Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau
 - login : votre adresse mail
 - mot de passe : celui de l'ent ECM
 
-Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
+Sous Linux suivez les instructions de : <https://cat.eduroam.org/>
 
 {% endinfo %}
 

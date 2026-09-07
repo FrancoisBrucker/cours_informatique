@@ -59,8 +59,29 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 Pour la semaine prochaines 2 exposés tiré du proofs from the book.
 
+#### Cours 2
+
+{% attention %}
+Un exposé du proof from the book
+{% endattention %}
+
+{% aller %}
+
+1. [Cycles eulérien](/cours/graphes/parcours-eulériens/){.interne} :
+2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/projet-mots-bruijn/){.interne}
+
+{% endaller %}
+{% faire %}
+Coder les parcours eulérien et les mots de Bruijn.
+{% endfaire %}
 
 <!-- 
+
+Vous utiliserez la bibliothèque <<https://networkx.org> pour dessiner des graphes.
+> <https://networkx.org/documentation/stable/reference/drawing.html>
+> <https://networkx.org/documentation/stable/auto_examples/index.html>
+
+
 
 ### Modèles de calculs et classes de problèmes "utiles"
 

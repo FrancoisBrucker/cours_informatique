@@ -56,7 +56,7 @@ Si l'on possède l'ensemble $M$ de tous les mots de longueur $p$ de l'alphabet $
 On utilise la bijection $f$ qui a un mot $m=n_0\dots n_{p-1}$ associe $f(m) = a_{n_0}\dots a_{n_{p-1}}$
 {% enddetails %}
 
-On peut donc se focaliser sur l'énumération des mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$. Soit $m = m_0\dots m_{p-1}$ un mot de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$ tel qu'il existe $m_i \neq q-1$. On note : $\mbox{next}(n, q) = n_0 \dots  {n}_{p-1}$ le mot tel que :
+On peut donc se focaliser sur l'énumération des mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$. Soit $m = m_0\dots m_{p-1}$ un mot de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$ tel qu'il existe $m_i \neq q-1$. On note : $\mbox{suivant}(m, q) = n_0 \dots  {n}_{p-1}$ le mot $n$ tel que :
 
 - si $m_{p-1} < q-1$ alors :
   - $n_i = m_i$ pour $0 \leq i < p-1$
@@ -66,33 +66,55 @@ On peut donc se focaliser sur l'énumération des mots de longueur $p$ de l'alph
   - $n_j = m_j + 1$
   - $n_i = 0$ pour $i > j$
 
-{% exercice %}
+{% faire %}
 Montrez que la fonction $\mbox{next}()$ permet d'énumérer tous les mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$.
+{% endfaire %}
+{% exercice %}
+Codez la fonction `suivant(m, q)`{.language-} qui donne le successeur de $n$.
 {% endexercice %}
 {% details "solution" %}
 
 ```python
+
+def suivant(m, q):
+    if m[-1] != q - 1:
+        return m[:-1] + [m[-1] + 1]
+
+    else:
+        i = len(m) - 1
+
+        while i > -1 and m[i] == q - 1:
+            i -= 1
+
+        if i == -1:
+            return m
+        else:
+            return m[:i] + [m[i] + 1] + [0] * (len(m) - i - 1)
+```
+
+Les suites obtenues sont bien deux à deux différentes car elles sont ordonnées lexicographiquement.
+{% enddetails %}
+{% exercice %}
+En déduire un algorithme (que vous coderez), qui rend tous les mots de longueur $p$ d'un alphabet à $q$ caractères.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+
 n = [0] * p
 
 print(n)
 while n != [q-1] * p:
-    n = Next(n, q)
+    n = suivant(n, q)
     print(n)
 ```
 
 Les suites obtenues sont bien deux à deux différentes car elles sont ordonnées lexicographiquement.
 {% enddetails %}
 
-{% exercice %}
-Codez la fonction `next(n, q)`{.language-} qui donne le successeur de $n$.
-{% endexercice %}
-{% exercice %}
-En déduire un algorithme (que vous coderez), qui rend tous les mots de longueur $p$ d'un alphabet à $q$ caractères.
-{% endexercice %}
-
 ### Le plus court
 
-La longueur la plus petite possible d'une chaîne de caractère qui contiendrait tous les mots serait que les mots se chevauchent : les $p-1$ derniers caractères du i-ème mot seraient égaux aux $p-1$ derniers caractères du (i+1)-ème mot.
+La longueur la plus petite possible d'une chaîne de caractères qui contiendrait tous les mots serait que les mots se chevauchent : les $p-1$ derniers caractères du i-ème mot seraient égaux aux $p-1$ derniers caractères du (i+1)-ème mot.
 
 {% exercice %}
 Montrez que la taille minimale théorique est de :
@@ -115,34 +137,37 @@ Sauf que l'on ne pas pas si une telle chaîne existe...
 
 ## Bruijn et Euler to the rescue
 
-Considérons le graphe **orienté** suivant, appelé _graphe de Bruijn_ $B(n, p+1) = (V, E)$ où :
+Considérons le graphe **orienté** suivant, appelé _graphe de Bruijn_ $B(n, p) = (V, E)$ où :
 
-- $V$ est l'ensemble des mots de longueur $p$ d'un alphabet à $n$ éléments
-- $xy \in E$ si les $p-1$ derniers caractères de $x$ sont les $p-1$ premiers caractères de $y$
+- $p > 2$
+- $V$ est l'ensemble des mots de longueur $p-1$ de l'alphabet $[0 .. n[$
+- $xy \in E$ si les $p-2$ derniers caractères de $x$ sont les $p-2$ premiers caractères de $y$
 
 {% exercice %}
-Donnez le graphe de Bruijn associé aux mots de longueur 3 de l'alphabet $\\{0, 1\\}$.
+Donnez le graphe de Bruijn $B(2, 3)$
 {% endexercice %}
 {% details "solution" %}
 ![graphe de Bruijn](./mot_3_01.png)
 {% enddetails %}
 
 {% exercice %}
-Codez l'algorithme qui crée le graphe $B(n, p+1)$ pour l'alphabet des entiers allant de 0 à $n-1$.
-
-Si vous codez le graphe par dictionnaire, il faudra que vos sommets soient des [tuples](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) et non des listes (qui ne peuvent être des clés de dictionnaires ou d'éléments d'ensembles).
+Codez l'algorithme qui crée le graphe $B(n, p)$.
 {% endexercice %}
+{% info %}
+Si vous codez le graphe par dictionnaire, il faudra que vos sommets soient des [tuples](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) et non des listes (qui ne peuvent être des clés de dictionnaires ou d'éléments d'ensembles).
+{% endinfo %}
 
 ### Propriétés
 
-Si $xy$ est un arc du graphe, alors on a que $x = aX$ et $y= Xb$ où $X$ est un mot de longueur $p-1$ et $a$et $b$ des caractères : l'arc correspond au mot de longueur $p + 1$ = $aXb$ et **ce mot n'apparaît qu'une fois** (car à ce mot ne correspond qu'un unique $x$ et $y$).
+Si $xy$ est un arc du graphe, alors on a que $x = aX$ et $y= Xb$ où $X$ est un mot de longueur $p-2$ et $a$ et $b$ des caractères : l'arc correspond au mot de longueur $p$ = $aXb$ et **ce mot n'apparaît qu'une fois** (car à ce mot ne correspond qu'un unique $x$ et $y$).
 
-Réciproquement chaque mot de longueur $p + 1$ pouvant s'écrire sous la forme $aXb$ avec $X$ un mot de longueur $p-1$ et $a$ et $b$ des caractères, tout mot de longueur $p + 1$ est associé à un arc.
+Réciproquement chaque mot de longueur $p$ pouvant s'écrire sous la forme $aXb$ avec $X$ un mot de longueur $p-2$ et $a$ et $b$ des caractères, tout mot de longueur $p$ est associé à un arc.
 
-Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à tous les mots de longueur $p$ dont les $p-1$ derniers caractères correspondent aux $p-1$ premiers caractères de $x$) et $n$ arc sortant (correspondant à tous les mots de longueur $p$ dont les $p-1$ premiers caractères correspondent aux $p-1$ derniers caractères de $x$) :
+Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à tous les mots de longueur $p-1$ dont les $p-2$ derniers caractères correspondent aux $p-2$ premiers caractères de $x$) et $n$ arc sortant (correspondant à tous les mots de longueur $p$ dont les $p-2$ premiers caractères correspondent aux $p-2$ derniers caractères de $x$) :
 
-**le graphe $B(n, p+1)$ est eulérien** pour tout $p$ et tout $n$.
-
+{% attention2 "**À retenir**" %}
+Le graphe $B(n, p)$ est eulérien pour tout $p>2$ et tout $n>1$.
+{% endattention2 %}
 ### Cycle eulérien
 
 Un cycle eulérien du graphe $B(n, p)$ correspond à une suite comprenant tous les mots de longueur $p$. En analysant 3 sommets successifs de ce cycle $u_{i-1}u_iu_{i+1}$ on remarque que le mot correspondant à l'arc $u_{i-1}u_i$ et celui correspondant à l'arc $u_iu_{i+1}$ sont tels
@@ -173,7 +198,7 @@ Ce mot, appelé **mot de Bruijn** a bien les propriétés suivantes :
 
 {% note "**Conclusion**" %}
 
-Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d'un alphabet à $n$ lettres, et ce quelque soit $n$ et $p$.
+Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d'un alphabet à $n$ lettres, et ce quelque soit $n>1$ et $p>2$.
 {% endnote %}
 
 ### Exemple

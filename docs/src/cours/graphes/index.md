@@ -64,11 +64,12 @@ Et une conséquence inattendue :
 
 {% endaller %}
 
-> TBD projet on le code
-> <https://networkx.org/documentation/stable/reference/drawing.html>
-> <https://networkx.org/documentation/stable/auto_examples/index.html>
-
 ### Générer des graphes
+
+Peut-on générer tous les graphes eulérien à $n$ sommets ?
+
+1. générer un graphe
+2. générer tous les graphes.
 
 > TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
 > TBD on random des nombres dans une borne et on continue
