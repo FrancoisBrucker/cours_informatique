@@ -257,7 +257,7 @@ La preuve est identique à l'exercice précédent en allant _à reculons_ dans l
 
 {% enddetails %}
 
-La proposition suivante n'est cependant qu'une implication :
+La proposition précédente n'est cependant qu'une implication :
 
 {% exercice %}
 Montrez que pour tout entier $n\geq 1$ il existe un graphe à $n$ sommets qui admet un cycle de longueur $n$ alors que le degré de chaque élément est $2$.
