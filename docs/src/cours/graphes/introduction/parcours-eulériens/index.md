@@ -307,7 +307,7 @@ J'obtiens, avec les cycles précédents :
 ['3', '1', '2', '5', '4', '6', '5', '3', '4', '2', '3']
 ```
 
-## Généralisation
+## Généralisations
 
 Il existe de nombreuses généralisations aux cycles eulérien. Citons en trois : les chemins eulériens, les circuits eulériens des graphes orientés et les cycles Eulérien des graphes mixtes.
 

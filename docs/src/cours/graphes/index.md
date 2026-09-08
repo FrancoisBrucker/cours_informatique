@@ -29,70 +29,15 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 ## Introduction générale
 
-Une histoire à priori simple dont les ramifications vont nous montrer de nombreuses facettes de la théorie des graphes.
-
-### <span id="structure"></span> Structure d'un graphe
 
 {% aller %}
 
-1. [Structure d'un graphe](structure){.interne}
-2. [Encodage de graphes](encodage){.interne}
+[Introduction](./introduction/){.interne}
 
 {% endaller %}
 
-Connexités :
 
-{% aller %}
-
-[Chemins, cycle et connexité](chemins-cycles-connexite){.interne}
-
-{% endaller %}
-
-### Graphes Eulérien
-
-L'origine de la théorie des graphe :
-
-{% aller %}
-
-[Chemins et cycles Eulérien](parcours-eulériens){.interne}
-
-{% endaller %}
-
-Et une conséquence inattendue (exercice de modélisation) :
-
-{% aller %}
-
-[Mots de Bruijn](projet-mots-bruijn){.interne}
-
-{% endaller %}
-
-### Générer des graphes
-
-Peut-on générer tous les graphes eulérien à $n$ sommets ?
-
-1. générer un graphe
-2. générer tous les graphes.
-
-> TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
-> TBD on random des nombres dans une borne et on continue
-> TBD connexité <https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf> le montre avec des matrices, nous juste avec un graphe.
-
-### Graphes Hamiltoniens
-
-> TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ?
-
-{% aller %}
-
-1. [Chemins et cycles Hamiltonien](parcours-hamiltoniens){.interne}
-2. [cycle-chemin](./projet-chemins-cycles){.interne}
-
-{% endaller %}
-
-> TBD juste algo + ALM et digression sur ALM
-> TBD voir comment faire pour aller mieux -> pb du couplage.
-> TBD à la fin du couplage. Se poser la question de résolution exacte ? NP-complet. et on y va.
-> TBD ci NP algo
-
+> TD le reste est en chantier.
 
 ### Chemins de longueur/poids minimum
 

@@ -67,7 +67,7 @@ On peut donc se focaliser sur l'énumération des mots de longueur $p$ de l'alph
   - $n_i = 0$ pour $i > j$
 
 {% faire %}
-Montrez que la fonction $\mbox{next}()$ permet d'énumérer tous les mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$.
+Montrez que la fonction $\mbox{suivant}()$ permet d'énumérer tous les mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$.
 {% endfaire %}
 {% exercice %}
 Codez la fonction `suivant(m, q)`{.language-} qui donne le successeur de $n$.
@@ -137,11 +137,15 @@ Sauf que l'on ne pas pas si une telle chaîne existe...
 
 ## Bruijn et Euler to the rescue
 
-Considérons le graphe **orienté** suivant, appelé _graphe de Bruijn_ $B(n, p) = (V, E)$ où :
+Considérons le graphe **orienté** suivant, appelé _graphe de Bruijn_ :
 
-- $p > 2$
+{% note2 "**Définition**" %}
+ Le **_graphe de Bruijn_** noté $B(n, p) = (V, E)$ est un graphe orienté défini pour tous $n\geq1$ et $p\geq2$ tel que :
+
 - $V$ est l'ensemble des mots de longueur $p-1$ de l'alphabet $[0 .. n[$
 - $xy \in E$ si les $p-2$ derniers caractères de $x$ sont les $p-2$ premiers caractères de $y$
+
+{% endnote2  %}
 
 {% exercice %}
 Donnez le graphe de Bruijn $B(2, 3)$
@@ -166,8 +170,9 @@ Réciproquement chaque mot de longueur $p$ pouvant s'écrire sous la forme $aXb$
 Enfin, pour un sommet $x$ donné, il possède $n$ arc entrant (correspondant à tous les mots de longueur $p-1$ dont les $p-2$ derniers caractères correspondent aux $p-2$ premiers caractères de $x$) et $n$ arc sortant (correspondant à tous les mots de longueur $p$ dont les $p-2$ premiers caractères correspondent aux $p-2$ derniers caractères de $x$) :
 
 {% attention2 "**À retenir**" %}
-Le graphe $B(n, p)$ est eulérien pour tout $p>2$ et tout $n>1$.
+Le graphe $B(n, p)$ est eulérien pour tout $p\geq2$ et tout $n\geq 1$.
 {% endattention2 %}
+
 ### Cycle eulérien
 
 Un cycle eulérien du graphe $B(n, p)$ correspond à une suite comprenant tous les mots de longueur $p$. En analysant 3 sommets successifs de ce cycle $u_{i-1}u_iu_{i+1}$ on remarque que le mot correspondant à l'arc $u_{i-1}u_i$ et celui correspondant à l'arc $u_iu_{i+1}$ sont tels
@@ -198,7 +203,7 @@ Ce mot, appelé **mot de Bruijn** a bien les propriétés suivantes :
 
 {% note "**Conclusion**" %}
 
-Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d'un alphabet à $n$ lettres, et ce quelque soit $n>1$ et $p>2$.
+Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d'un alphabet à $n$ lettres et ce, quelque soit $n\geq1$ et $p\geq2$.
 {% endnote %}
 
 ### Exemple

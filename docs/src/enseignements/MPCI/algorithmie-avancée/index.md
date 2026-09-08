@@ -35,6 +35,10 @@ En trois parties.
 
 > Semaine 1 à ...
 
+{% lien %}
+[Introduction à la théorie des graphes](/cours/graphes/introduction)
+{% endlien %}
+
 Un outil de modélisation puissant pour résoudre (joliment) nombre de problèmes informatique.
 
 {% lien %}
@@ -47,17 +51,17 @@ Un outil de modélisation puissant pour résoudre (joliment) nombre de problème
 
 {% aller %}
 
-1. [Graphes bases](/cours/graphes/structure){.interne} :
+1. [Graphes bases](/cours/graphes/introduction/structure){.interne} :
    1. rappel des définitions
    2. quelques propriétés sur les degrés, les chemins et les cycles
-2. Rappel : [encodage d'un graphe](/cours/graphes/encodage/){.interne}
-3. [chemins cycles et connexité](/cours/graphes/chemins-cycles-connexite/){.interne}
+2. Rappel : [encodage d'un graphe](/cours/graphes/introduction/encodage/){.interne}
+3. [chemins cycles et connexité](/cours/graphes/introduction/chemins-cycles-connexite/){.interne}
    1. chemin
    2. composante connexe
 
 {% endaller %}
 
-Pour la semaine prochaines 2 exposés tiré du proofs from the book.
+Pour la semaine prochaines, 2 exposés tiré du proofs from the book.
 
 #### Cours 2
 
@@ -67,13 +71,18 @@ Un exposé du proof from the book
 
 {% aller %}
 
-1. [Cycles eulérien](/cours/graphes/parcours-eulériens/){.interne} :
-2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/projet-mots-bruijn/){.interne}
+1. [Cycles eulérien](/cours/graphes/introduction/parcours-eulériens/){.interne} :
+2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/introduction/projet-mots-bruijn/){.interne}
 
 {% endaller %}
 {% faire %}
 Coder les parcours eulérien et les mots de Bruijn.
 {% endfaire %}
+
+
+#### Cours 3
+
+> TBD : graphes eulériens et conséquences.
 
 <!-- 
 
