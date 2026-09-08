@@ -151,90 +151,17 @@
 <p>Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cette structure, à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l'intersection des mathématiques discrètes et de l'informatique théorique — et au cœur de nombre d'applications de tous les jours.</p>
 <p>Le cours va être séparé en petites entités qui se suivent pour former un tout que l'on espère cohérent.</p>
 <h2>Introduction générale</h2>
-<h3><span id="structure"></span> Structure d'un graphe</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<ol>
-<li><a href="structure" class="interne">Structure d'un graphe</a></li>
-<li><a href="encodage" class="interne">Encodage de graphes</a></li>
-</ol>
-</div></div>
-
-<p>Connexités :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="chemins-cycles-connexite" class="interne">Chemins, cycle et connexité</a></p>
-</div></div>
-
-<h3>Graphes Eulérien</h3>
-<p>L'origine de la théorie des graphe :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="parcours-eul%C3%A9riens" class="interne">Chemins et cycles Eulérien</a></p>
-</div></div>
-
-<p>Et une conséquence inattendue :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="projet-mots-bruijn" class="interne">Mots de Bruijn</a></p>
-</div></div>
-
-<h3>Générer des graphes</h3>
-<p>Peut-on générer tous les graphes eulérien à $n$ sommets ?</p>
-<ol>
-<li>générer un graphe</li>
-<li>générer tous les graphes.</li>
-</ol>
-<blockquote>
-<p>TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
-TBD on random des nombres dans une borne et on continue
-TBD connexité <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf</a> le montre avec des matrices, nous juste avec un graphe.</p>
-</blockquote>
-<h3>Graphes Hamiltoniens</h3>
-<blockquote>
-<p>TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ?</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="parcours-hamiltoniens" class="interne">Chemins et cycles Hamiltonien</a></li>
-</ol>
+<p><a href="introduction/" class="interne">Introduction</a></p>
 </div></div>
 
 <blockquote>
-<p>TBD ci NP algo</p>
+<p>TD le reste est en chantier.</p>
 </blockquote>
-<p>Puis</p>
-<h3>Chemins le plus long</h3>
-<blockquote>
-<p>TBD à transformer en voyageur de commerce</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<ol>
-<li><a href="projet-chemins-cycles" class="interne">cycle-chemin</a></li>
-<li>couplage et ALM : Christophides. EN 1 une appxoximation puis on fait propre.</li>
-</ol>
-</div></div>
-
 <h3>Chemins de longueur/poids minimum</h3>
 <h4><span id="chemin-problèmes"></span> Problème et algorithmes</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -286,7 +213,7 @@ TBD connexité <a href="https://www.cambridge.org/core/services/aop-cambridge-co
   </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li><a href="projet-chemins-cycles" class="interne">cycle-chemin</a></li>
+<li></li>
 </ol>
 </div></div>
 

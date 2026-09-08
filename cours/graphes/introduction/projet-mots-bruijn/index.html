@@ -98,7 +98,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/projet-mots-bruijn/">Mots de Bruijn</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/projet-mots-bruijn/">Mots de Bruijn</a>
 
 </div></div>
 
@@ -183,7 +183,7 @@ Dans l'exemple cela donne par exemple le mot : $000001010011100101110111$ de lon
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrez que la fonction $\mbox{next}()$ permet d'énumérer tous les mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$.</p>
+<p>Montrez que la fonction $\mbox{suivant}()$ permet d'énumérer tous les mots de longueur $p$ de l'alphabet $\mathcal{N} = [0, 1, \dots, q-1]$.</p>
 </div></div>
 
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -299,12 +299,21 @@ $$</p>
 <p><strong>Exemple :</strong> La longueur minimale est de $3-1 + 2^3 = 10$, qui est bien plus petit que 24.</p>
 <p>Sauf que l'on ne pas pas si une telle chaîne existe...</p>
 <h2>Bruijn et Euler to the rescue</h2>
-<p>Considérons le graphe <strong>orienté</strong> suivant, appelé <em>graphe de Bruijn</em> $B(n, p) = (V, E)$ où :</p>
+<p>Considérons le graphe <strong>orienté</strong> suivant, appelé <em>graphe de Bruijn</em> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le <strong><em>graphe de Bruijn</em></strong> noté $B(n, p) = (V, E)$ est un graphe orienté défini pour tous $n\geq1$ et $p\geq2$ tel que :</p>
 <ul>
-<li>$p &gt; 2$</li>
 <li>$V$ est l'ensemble des mots de longueur $p-1$ de l'alphabet $[0 .. n[$</li>
 <li>$xy \in E$ si les $p-2$ derniers caractères de $x$ sont les $p-2$ premiers caractères de $y$</li>
 </ul>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -357,7 +366,7 @@ $$</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le graphe $B(n, p)$ est eulérien pour tout $p&gt;2$ et tout $n&gt;1$.</p>
+<p>Le graphe $B(n, p)$ est eulérien pour tout $p\geq2$ et tout $n\geq 1$.</p>
 </div></div>
 
 <h3>Cycle eulérien</h3>
@@ -396,7 +405,7 @@ que les $p-1$ derniers caractères de l'un sont les $p-1$ premiers caractères d
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Conclusion</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d'un alphabet à $n$ lettres, et ce quelque soit $n&gt;1$ et $p&gt;2$.</p>
+<p>Il existe bien un mot de taille minimale ($p +(n^p-1)$ caractères) contenant tous les mots de longueur $p$ d'un alphabet à $n$ lettres et ce, quelque soit $n\geq1$ et $p\geq2$.</p>
 </div></div>
 
 <h3>Exemple</h3>
