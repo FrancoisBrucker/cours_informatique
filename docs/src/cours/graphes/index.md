@@ -29,6 +29,8 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 ## Introduction générale
 
+Une histoire à priori simple dont les ramifications vont nous montrer de nombreuses facettes de la théorie des graphes.
+
 ### <span id="structure"></span> Structure d'un graphe
 
 {% aller %}
@@ -56,7 +58,7 @@ L'origine de la théorie des graphe :
 
 {% endaller %}
 
-Et une conséquence inattendue :
+Et une conséquence inattendue (exercice de modélisation) :
 
 {% aller %}
 
@@ -82,27 +84,14 @@ Peut-on générer tous les graphes eulérien à $n$ sommets ?
 {% aller %}
 
 1. [Chemins et cycles Hamiltonien](parcours-hamiltoniens){.interne}
-
+2. [cycle-chemin](./projet-chemins-cycles){.interne}
 
 {% endaller %}
 
+> TBD juste algo + ALM et digression sur ALM
+> TBD voir comment faire pour aller mieux -> pb du couplage.
+> TBD à la fin du couplage. Se poser la question de résolution exacte ? NP-complet. et on y va.
 > TBD ci NP algo
-
-Puis 
-
-### Chemins le plus long
-
-> TBD à transformer en voyageur de commerce
-
-{% aller %}
-
-1. [cycle-chemin](./projet-chemins-cycles){.interne}
-2. couplage et ALM : Christophides. EN 1 une appxoximation puis on fait propre.
-{% endaller %}
-
-
-
-
 
 
 ### Chemins de longueur/poids minimum
@@ -149,7 +138,7 @@ Projets :
 
 {% aller %}
 
-1. [cycle-chemin](./projet-chemins-cycles){.interne}
+1. 
 
 {% endaller %}
 
