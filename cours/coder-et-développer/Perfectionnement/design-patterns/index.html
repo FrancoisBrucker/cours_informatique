@@ -97,10 +97,7 @@
   
 
   <blockquote>
-<p>TBD <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">https://fr.wikipedia.org/wiki/Modèle-vue-contrôleur</a></p>
-</blockquote>
-<blockquote>
-<p>TBD refactor &lt;./design-patterns-old&gt; et &lt;./design-patterns-corrige&gt;</p>
+<p>TBD refactor <a href="design-patterns-old">old</a> et <a href="design-patterns-corrige">old corrigé</a></p>
 </blockquote>
 <p>Les <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">design patterns</a>, patron de conception ou plus prosaïquement &quot;<em>façons de faire</em>&quot;, sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern">anti-pattern</a>.
 Il existe 3 grands types de <em>design pattern</em>, on en donnera un exemple pour chaque :</p>
@@ -156,13 +153,41 @@ Il existe 3 grands types de <em>design pattern</em>, on en donnera un exemple po
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code">Code initial du dé</a></p>
+<ul>
+<li><a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code">Code initial du dé</a></li>
+<li><a href="https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code?filename=projet-d%C3%A9s">Téléchargement du code</a></li>
+</ul>
 </div></div>
 
 <h2>Les bases</h2>
+<p>On se rappelle comment bien commencer un projet, avec trois fichiers :</p>
+<ul>
+<li>le code</li>
+<li>les tests</li>
+<li>le programme</li>
+</ul>
+<p>On commence avec les 3 fichiers du lien.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>copiez le dossier du code sur votre ordinateur</li>
+<li>ouvrez ce dossier dans vscode, cela sera votre projet</li>
+<li>créez vous y un environnement virtuel</li>
+<li>exécutez les tests et le programme principal pour s'assurer que tout fonctionne.</li>
+</ol>
+</div></div>
+
+<h3><em>Method chaining</em></h3>
 <blockquote>
-<p>TBD: rendre self a roll pour chaîner les actions <a href="https://en.wikipedia.org/wiki/Method_chaining#Design_patterns">https://en.wikipedia.org/wiki/Method_chaining#Design_patterns</a>
-TBD mettre une liste de possibilités pour rendre le tout générique.</p>
+<p>TBD: rendre self a roll pour chaîner les actions <a href="https://en.wikipedia.org/wiki/Method_chaining#Design_patterns">https://en.wikipedia.org/wiki/Method_chaining#Design_patterns</a></p>
+</blockquote>
+<h3>attention aux effets de bord !</h3>
+<blockquote>
+<p>TBD mettre une liste de possibilités pour rendre le tout générique.puis value object.</p>
 </blockquote>
 <p>On se rappelle comment bien commencer un projet, avec trois fichiers :</p>
 <ul>
@@ -391,6 +416,13 @@ savoir lorsqu'un dé change. S'abonner à la valeur ?
 seconde partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
 <a href="https://en.wikipedia.org/wiki/Observer_pattern">https://en.wikipedia.org/wiki/Observer_pattern</a></p>
 </blockquote>
+<h2>Pour aller plus loin</h2>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur">MVC</a> ou <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-pr%C3%A9sentation">MVP</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Fa%C3%A7ade_(patron_de_conception)">facade</a></li>
+<li><a href="https://www.emaxilde.net/posts/2025/02/10/le-singleton-l-anti-pattern-par-excellence.html">pas singleton</a> ou encore <a href="https://maximilianocontieri.com/singleton-the-root-of-all-evil">Singleton: The Root of all Evil</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Law_of_Demeter">Demeter law</a> voir aussi <a href="https://medium.com/vattenfall-tech/the-law-of-demeter-by-example-fd7adbf0c324">https://medium.com/vattenfall-tech/the-law-of-demeter-by-example-fd7adbf0c324</a> ?</li>
+</ul>
 
 
 </article>
