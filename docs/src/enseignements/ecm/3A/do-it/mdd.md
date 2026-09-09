@@ -83,15 +83,11 @@ Dans un projet informatique de moyen/grand ampleur on utilisera plus que des tes
 {% endlien %}
 
 
-Pour la prochaine fois, tous :
+Entrainez vous :
 
 {% faire %}
-Pour la prochaine fois, deux groupes :
-
-- [poetry](https://python-poetry.org/)
-- [uv](https://docs.astral.sh/uv/)
-
-Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
+- [exercice de code](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/){.interne}
+- [advent of code](https://adventofcode.com/)
 {% endfaire %}
 
 
