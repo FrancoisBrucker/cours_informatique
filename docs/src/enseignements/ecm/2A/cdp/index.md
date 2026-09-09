@@ -73,7 +73,7 @@ Vous devriez être capable de comprendre toutes les solutions et (dans le meille
 
 ### Interpréteur python et IDE
 
-> 2h cours
+> 1h cours
 
 {% aller %}
 1. Interagir avec le système :
@@ -87,7 +87,7 @@ Vous devriez être capable de comprendre toutes les solutions et (dans le meille
 
 ### Principe de conduite d'un projet informatique
 
-> 2h TD
+> 1h TD
 
 Le premier principe fondamental est de séparer le programme principal des fonctions :
 
@@ -107,9 +107,29 @@ Le second principe fondamental est que les tests des fonctions fonts partie du p
 Pour aller plus loin :
 
 {% aller %}
-1. [Utiliser le débogueur pour corriger son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/){.interne}
-2. [exercices divers](/cours/coder-et-développer/apprendre-programmation/coder-projets/exercices-tests/){.interne}
+[Utiliser le débogueur pour corriger son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/){.interne}
 {% endaller %}
+
+### À vous
+
+> 2h TP
+
+Les 3 exercices se suivent et prennent les mêmes exemples. Faite un exemple au complet (fonction puis création module puis test) avant de passer à un autre.
+
+{% aller %}
+
+1. [Création de fonctions](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/){.intern/e}
+2. [Séparation main/fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-création-modules/){.interne}
+3. [On ajoute des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/){.interne}
+
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+[exercices divers](/cours/coder-et-développer/apprendre-programmation/coder-projets/exercices-tests/){.interne}
+{% endaller %}
+
 
 ### À rendre
 

@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "L'informatique en licence MPCI"
+title: "Informatique en licence MPCI"
 
 eleventyNavigation:
   order: 0
