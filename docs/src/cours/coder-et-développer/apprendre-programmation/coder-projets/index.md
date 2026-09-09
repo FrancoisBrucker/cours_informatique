@@ -54,7 +54,7 @@ Ne recommencez pas à coder avant d'avoir compris sinon les incompréhensions vo
 
 ## <span id="texte-fichiers"></span>Texte et fichiers texte
 
-Mainteneant que l'on connait la façon de procéder, il nous reste à voir comment faire en sorte que nos programmes soient utiles en créant/gérant/stockant des données sous la forme de fichiers texte :
+Maintenant que l'on connaît la façon de procéder, il nous reste à voir comment faire en sorte que nos programmes soient utiles en créant/gérant/stockant des données sous la forme de fichiers texte :
 
 {% aller %}
 [Gestion des données](gestion-données){.interne}

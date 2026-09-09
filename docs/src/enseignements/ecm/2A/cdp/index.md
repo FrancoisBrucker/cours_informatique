@@ -140,11 +140,17 @@ Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur Moo
 
 
 {% faire "**Travail à rendre** "%}
-Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/){.interne}
+Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/){.interne}. 
 {% endfaire %}
 {% attention %}
- Le travail est à rendre [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 16/09 à 8h00**.
+ Le travail (code + réponse aux questions) est à rendre [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 16/09 à 8h00**.
 {% endattention %}
+{% info %}
+Vous rendrez un dossier contenant :
+- le code (uniquement les fichiers `.py`{.fichier} (main, fonctions et tests), pas le dossier `__pycache__`{.fichier} par exemple,)
+- un ficher texte `réposnes.md`{.fichier} où vous aurez répondu aux questions. Vous utiliserez le format markdown.
+{% endinfo %}
+
 
 
 ## Partie II : Classes et objets
