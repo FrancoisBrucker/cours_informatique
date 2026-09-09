@@ -33,7 +33,9 @@ Les design pattern sont très utilisés par les bibliothèques (par exemple [les
 Le site suivant contient une liste actualisée de design patterns :
 
 {% lien %}
-[Refactoring GURU : design pattern](https://refactoring.guru/design-patterns)
+- [Refactoring GURU : design pattern](https://refactoring.guru/design-patterns)
+- [Refactoring GURU : refactoring pattern](https://refactoring.guru/refactoring)
+
 {% endlien %}
 
 Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solutions évidentes -- et mauvaises -- à des problèmes courants. Là aussi, il est bon de connaître une liste actualisée d'anti-pattern, comme par exemple :
@@ -47,14 +49,12 @@ Nous allons, encore une fois, utiliser la classe `Dé`{.language-} que l'on a ut
 On va partir du [dé amélioré](../../apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne} :
 
 {% lien %}
-[Code du dé](../../apprendre-programmation/programmation-objet/)
+[Code initial du dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code)
 {% endlien %}
-
-> TBD: Un dé avec les faces initiales choisies + la position initiale.
 
 ## Les bases
 
-> TBD: rendre self a roll pour chainer les actions
+> TBD: rendre self a roll pour chaîner les actions <https://en.wikipedia.org/wiki/Method_chaining#Design_patterns>
 > TBD mettre une liste de possibilités pour rendre le tout générique.
 
 On se rappelle comment bien commencer un projet, avec trois fichiers :
