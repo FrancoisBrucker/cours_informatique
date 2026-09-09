@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Design Patterns corrigé</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Design Patterns corrigé</h1>
+  <div class="mb-4">
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Tag : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">mie</li>
+          
+        </ul>
+      </div>
+    
+
+    
+  </div>
+
+  
+
+  <h2>But</h2>
+<p>Eléments de corrigé de la séance  <a href="design-patterns">design patterns</a>.</p>
+<h2>Éléments de cours</h2>
+<p>IL existe 3 grands types de design pattern, on pourra en donner un exemple pour chaque.</p>
+<p>On peut prendre la liste initiale des design pattern du <a href="https://en.wikipedia.org/wiki/Design_Patterns">GOF</a> mais je déconseille singleton qui tient plus de l'anti-pattern que du pattern...</p>
+<p>Pour les trois types, on verra :</p>
+<ul>
+<li><strong>type creational</strong> : <em>factory</em>. Créer les objets via des méthodes presque sans paramètre et avec un nom adapté plutôt qu'avec un contructeur avec des milliers de paramètres</li>
+<li><strong>type structural</strong> : <em>composite</em>. On essayera de le voir dans la prochaine séance.</li>
+<li><strong>type behavioural</strong> : <em>strategy</em>. Même fonction mais algorithmes différents (pour un tri par exemple)</li>
+</ul>
+<p>Parler aussi des anti-pattern, c'est à dire des mauvaises façons de faire qui arrivent d'elles-mêmes si on ne fait pas attention. Voir par exemple : <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">là</a></p>
+<h2>Fun fact</h2>
+<p>Le nom de <em>duck typing</em>  vient des Monty Python et plus particulièrement la séquence où <a href="https://www.youtube.com/watch?v=gUXB_jLiT3A">l'on brûle une sorcière</a> dans Sacré Graal. Le <a href="https://en.wikipedia.org/wiki/Python_(programming_language)#History">nom même du langage</a> vient d'eux et pas de l'<a href="https://www.youtube.com/watch?v=NoX-4Hm1rPU">animal</a>. Les informaticiens ont une passion presque maladive pour les Monthy Python. Par exemple le terme de spam vient aussi d'eux, ou plutôt d'un de <a href="https://www.youtube.com/watch?v=cFrtpT1mKy8">leur sketch</a> de leur émission de la BBC qui s'appelait le Monthy Python's flying circus (un de mes sketch préféré étant l'<a href="https://www.youtube.com/watch?v=1T9Yp-2TYzo">expédition au Kilimandjaro</a> mais on pourrait en citer des dizaines d'autres)),</p>
+<p>Cela ne résout bien sûr pas des problèmes aussi compliqués que <a href="https://www.youtube.com/watch?time_continue=2&amp;v=BKorP55Aqvg">tracer 7 lignes rouges perpendiculaires entre elles</a></p>
+<h2>Première amélioration</h2>
+<p>Il est important que les propriétés d'un objet soient protégées. Ici, on fait rentrer une liste (<code>choices</code>) dans l'objet. Comme on ne veut pas qu'elle puisse être modifiée, il faut la recopier dans l'objet.</p>
+<p>La méthode <code>roll</code> rend <code>self</code> ce qui permet de chainer les instructions et rend possible des choses du genre :
+<code>print(Choice([1, 2, 2, 3]).roll().get_position())</code>. C'est important de comprendre comment tout ça fonctionne :</p>
+<ol>
+<li>on lit de droite à gauche</li>
+<li>on applique la méthode à l'objet à gauche du point.</li>
+<li>puis on remonte les appels pour voir si cela marche.</li>
+</ol>
+<p>Pour l'instruction précédente :</p>
+<ul>
+<li>on affiche à l'écran (c'est la méthode <code>print</code>) l'objet <code>A</code> qui est le résultat de <code>Choice([1, 2, 2, 3]).roll().get_position()</code></li>
+<li>cet objet <code>A</code> est le résultat de la méthode <code>get_position()</code> appliquée à l'objet <code>B</code> qui est <code>Choice([1, 2, 2, 3]).roll()</code></li>
+<li>cet objet est <code>B</code> le résultat de <code>roll()</code> appliqué à l'objet <code>C</code> qui est le résultat de <code>Choice([1, 2, 2, 3])</code></li>
+<li>l'objet <code>C</code> et un objet de classe <code>Choice</code></li>
+</ul>
+<p>On peut donc remonter :</p>
+<ul>
+<li><code>C</code> est un objet de classe Choice</li>
+<li><code>B</code> est le résultat de <code>roll</code> appliqué à <code>C</code>, c'est donc <code>C</code></li>
+<li><code>A</code> est un entier valant 1, 2, ou 3</li>
+<li>on affiche <code>A</code>, c'est à dire 1, 2 ou 3</li>
+</ul>
+<h4><a href="http://choice.py">choice.py</a></h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+
+
+<span class="token keyword">class</span> <span class="token class-name">Choice</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> choices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>choices <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>choices<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_position <span class="token operator">=</span> self<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    
+    <span class="token keyword">def</span> <span class="token function">get_position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_position
+
+    <span class="token keyword">def</span> <span class="token function">roll</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>position <span class="token operator">=</span> self<span class="token punctuation">.</span>choices<span class="token punctuation">[</span>random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>choices<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">return</span> self</code></pre>
+<p>Dans le constructeur, on utilise <code>self.choices[0]</code> car on sait que cela va marcher : c'est un tuple. Si on avait écrit : <code>self._position = choices[0]</code> on essaie d'obtenir le 1er élément du paramètre choices qui peut être un itérable sans être une liste ou un tuple (un ensemble, un dictionnaire).</p>
+<h4><a href="http://tests.py">tests.py</a></h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pytest
+
+<span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
+
+
+<span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>choices <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_initial_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_roll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_copy_choices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    initial_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span>initial_list<span class="token punctuation">)</span>
+    initial_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"CHANGE"</span>
+    d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"a"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_no_modification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        d1<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span></code></pre>
+<h2>factory</h2>
+<p>Ce <a href="https://www.geeksforgeeks.org/design-patterns-set-2-factory-method/">pattern</a> est super pour créer des objets. En gros, plutôt que d'apprendre par cœur des paramètres d'initialisation, les objets courants sont créés par des méthodes.</p>
+<p>On va procéder par étapes.</p>
+<h3>des dés dans le main.</h3>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">a_dice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    N <span class="token operator">=</span> <span class="token number">1000</span>
+    d6 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    results <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> number <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">.</span>append<span class="token punctuation">(</span>d6<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    count <span class="token operator">=</span> Counter<span class="token punctuation">(</span>results<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token keyword">in</span> count<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token string">"proba: "</span><span class="token punctuation">,</span> value <span class="token operator">/</span> N<span class="token punctuation">,</span> <span class="token string">"; number: "</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">two_dice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    N <span class="token operator">=</span> <span class="token number">1000</span>
+    two_d6_choices <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    
+    <span class="token keyword">for</span> i <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            two_d6_choices<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i <span class="token operator">+</span> j<span class="token punctuation">)</span>
+
+    two_d6 <span class="token operator">=</span> Choice<span class="token punctuation">(</span>two_d6_choices<span class="token punctuation">)</span>
+    results <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> number <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        results<span class="token punctuation">.</span>append<span class="token punctuation">(</span>two_d6<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    count <span class="token operator">=</span> Counter<span class="token punctuation">(</span>results<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token keyword">in</span> count<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token string">"proba: "</span><span class="token punctuation">,</span> value <span class="token operator">/</span> N<span class="token punctuation">,</span> <span class="token string">"; number: "</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span></code></pre>
+<h3>On place le tout dans le fichier de la classe</h3>
+<h4><a href="http://choice.py">choice.py</a></h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+
+<span class="token keyword">class</span> <span class="token class-name">Choice</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> choices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>choices <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>choices<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>position <span class="token operator">=</span> self<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>position
+
+    <span class="token keyword">def</span> <span class="token function">roll</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>position <span class="token operator">=</span> self<span class="token punctuation">.</span>choices<span class="token punctuation">[</span>random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>choices<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">return</span> self
+
+
+<span class="token keyword">def</span> <span class="token function">dice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Choice<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    
+
+<span class="token keyword">def</span> <span class="token function">two_dices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span>i <span class="token operator">+</span> j <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<h4><a href="http://tests.py">tests.py</a></h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pytest
+
+<span class="token keyword">from</span> collections <span class="token keyword">import</span> Counter
+
+<span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
+<span class="token keyword">import</span> choice
+
+
+<span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>choices <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_initial_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_roll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_sets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> Choice<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_copy_choices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    initial_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span>initial_list<span class="token punctuation">)</span>
+    initial_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"CHANGE"</span>
+    d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"a"</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_no_modification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        d1<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_factory_dice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d<span class="token punctuation">.</span>choices <span class="token operator">==</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_factory_two_dice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d <span class="token operator">=</span> choice<span class="token punctuation">.</span>two_dices<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> Counter<span class="token punctuation">(</span>d<span class="token punctuation">.</span>choices<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">}</span></code></pre>
+<h2>Memento</h2>
+<p>Pour créer un <a href="https://www.geeksforgeeks.org/memento-design-pattern/">Memento</a>, la façon la plus simple est d'utiliser des conventions. On dira que le Memento fonctionne pour tout objet ayant deux méthodes :</p>
+<ul>
+<li><code>get_position</code></li>
+<li><code>set_position</code></li>
+</ul>
+<p>Ce qui donne :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Memento</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> object_to_save<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_stored_state <span class="token operator">=</span> object_to_save<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>_object_to_restore <span class="token operator">=</span> object_to_save
+    
+    <span class="token keyword">def</span> <span class="token function">restore</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_object_to_restore<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span>self<span class="token punctuation">.</span>_stored_state<span class="token punctuation">)</span></code></pre>
+<h4><a href="http://choice.py">choice.py</a></h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
+
+<span class="token keyword">class</span> <span class="token class-name">Choice</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> choices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>choices <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>choices<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>position <span class="token operator">=</span> self<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>position
+        
+    <span class="token keyword">def</span> <span class="token function">set_position</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> new<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>position <span class="token operator">=</span> new
+        
+
+    <span class="token keyword">def</span> <span class="token function">roll</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span>self<span class="token punctuation">.</span>choices<span class="token punctuation">[</span>random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>choices<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> self
+
+
+<span class="token keyword">def</span> <span class="token function">dice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> Choice<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    
+
+<span class="token keyword">def</span> <span class="token function">two_dices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span>i <span class="token operator">+</span> j <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<h4><a href="http://memento.py">memento.py</a></h4>
+<p>On stocke un état et un objet pour pouvoir le restaurer plus tard :</p>
+<ul>
+<li>l'objet et son état sont stockés à l'initialisation</li>
+<li>une méthode <code>restore()</code> permet de remettre l'objet à l'état qu'il avait à l'initialisation du Memento.</li>
+</ul>
+<h4>test_memento.py</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> choice
+<span class="token keyword">from</span> memento <span class="token keyword">import</span> Memento
+
+
+<span class="token keyword">def</span> <span class="token function">test_memento</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    memento <span class="token operator">=</span> Memento<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
+    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+
+    memento<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span></code></pre>
+<h2>Undo</h2>
+<h4><a href="http://undo.py">undo.py</a></h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> memento <span class="token keyword">import</span> Memento
+
+<span class="token keyword">class</span> <span class="token class-name">Undo</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_actions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">nb_undos</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>_actions<span class="token punctuation">)</span>
+        
+    <span class="token keyword">def</span> <span class="token function">save</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> dice<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>_actions<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Memento<span class="token punctuation">(</span>dice<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">def</span> <span class="token function">restore</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>_actions<span class="token punctuation">:</span>
+            x <span class="token operator">=</span> self<span class="token punctuation">.</span>_actions<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            x<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h4>test_undo.py</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> choice
+<span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
+
+<span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> undo<span class="token punctuation">.</span>nb_undos<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span>
+    
+
+<span class="token keyword">def</span> <span class="token function">test_save_restore_once</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
+    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    
+    
+    <span class="token keyword">assert</span> undo<span class="token punctuation">.</span>nb_undos<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+    
+    undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+<span class="token keyword">def</span> <span class="token function">test_save_restore_several</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    
+    undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
+    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+
+    undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
+    dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+    
+    
+    <span class="token keyword">assert</span> undo<span class="token punctuation">.</span>nb_undos<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">2</span>
+    
+    undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">5</span>
+    <span class="token keyword">assert</span> undo<span class="token punctuation">.</span>nb_undos<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+    
+    undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">assert</span> undo<span class="token punctuation">.</span>nb_undos<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span></code></pre>
+<h4><a href="http://main.py">main.py</a></h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> choice
+<span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
+
+dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
+    dice<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"--------"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>Qui pourra rendre le code suivant :</p>
+<pre><code>    1
+    2
+    4
+    3
+    2
+    5
+    3
+    2
+    4
+    4
+    --------
+    4
+    4
+    2
+    3
+    5
+    2
+    3
+    4
+    2
+    1
+</code></pre>
+<h3>Un undo dans dice</h3>
+<h4><a href="http://choiceUndo.py">choiceUndo.py</a></h4>
+<p>On a bien fait de modifier la méthode <code>roll</code> de <code>Choice</code> pour qu'elle utilise <code>set_position</code>, ceci nous permet de ne modifier que <code>set_position</code> pour la classe <code>ChoiceUndo</code>.</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
+
+<span class="token keyword">class</span> <span class="token class-name">ChoiceUndo</span><span class="token punctuation">(</span>Choice<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> choices<span class="token punctuation">,</span> undo<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>choices<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>undo <span class="token operator">=</span> undo
+
+    <span class="token keyword">def</span> <span class="token function">set_position</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> new<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_position<span class="token punctuation">(</span>new<span class="token punctuation">)</span></code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
