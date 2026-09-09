@@ -645,4 +645,7 @@ def test_comparaisons():
 
 Notre compteur a bien évolué depuis sa première mouture. Il permet maintenant d'être utilisé de façon bien plus intuitive.
 
-> TBD code
+{% lien %}
+- [Code de la classe python](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/compteur)
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/am%C3%A9liorer-ses-objets/compteur?filename=projet-compteur)
+{% endlien %}

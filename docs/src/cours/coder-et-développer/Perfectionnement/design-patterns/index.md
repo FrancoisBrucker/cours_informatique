@@ -9,9 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD <https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur>
 
-> TBD refactor <./design-patterns-old> et <./design-patterns-corrige>
+> TBD refactor [old](./design-patterns-old) et [old corrigé](./design-patterns-corrige)
 
 Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), patron de conception ou plus prosaïquement "_façons de faire_", sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
 Il existe 3 grands types de _design pattern_, on en donnera un exemple pour chaque :
@@ -49,13 +48,36 @@ Nous allons, encore une fois, utiliser la classe `Dé`{.language-} que l'on a ut
 On va partir du [dé amélioré](../../apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne} :
 
 {% lien %}
-[Code initial du dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code)
+
+- [Code initial du dé](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code)
+- [Téléchargement du code](https://download-directory.github.io?url=https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/code?filename=projet-dés)
+
 {% endlien %}
 
 ## Les bases
 
+On se rappelle comment bien commencer un projet, avec trois fichiers :
+
+- le code
+- les tests
+- le programme
+
+On commence avec les 3 fichiers du lien.
+
+{% faire %}
+1. copiez le dossier du code sur votre ordinateur 
+2. ouvrez ce dossier dans vscode, cela sera votre projet
+3. créez vous y un environnement virtuel
+4. exécutez les tests et le programme principal pour s'assurer que tout fonctionne.
+{% endfaire %}
+
+### _Method chaining_
+
 > TBD: rendre self a roll pour chaîner les actions <https://en.wikipedia.org/wiki/Method_chaining#Design_patterns>
-> TBD mettre une liste de possibilités pour rendre le tout générique.
+
+### attention aux effets de bord !
+
+> TBD mettre une liste de possibilités pour rendre le tout générique.puis value object.
 
 On se rappelle comment bien commencer un projet, avec trois fichiers :
 
@@ -312,3 +334,10 @@ Faites le même essai avec 10 utilisations de la méthode `roll()`.
 > savoir lorsqu'un dé change. S'abonner à la valeur ?
 > seconde partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
 > https://en.wikipedia.org/wiki/Observer_pattern
+
+## Pour aller plus loin
+
+- [MVC](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur) ou [MVP](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-pr%C3%A9sentation)
+- [facade](https://fr.wikipedia.org/wiki/Fa%C3%A7ade_(patron_de_conception))
+- [pas singleton](https://www.emaxilde.net/posts/2025/02/10/le-singleton-l-anti-pattern-par-excellence.html) ou encore [Singleton: The Root of all Evil](https://maximilianocontieri.com/singleton-the-root-of-all-evil)
+- [Demeter law](https://en.wikipedia.org/wiki/Law_of_Demeter) voir aussi <https://medium.com/vattenfall-tech/the-law-of-demeter-by-example-fd7adbf0c324> ?
