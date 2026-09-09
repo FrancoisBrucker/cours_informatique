@@ -103,7 +103,7 @@ print("bonjour les gens !")
 
 {% endfaire %}
 
-### Documentation
+### <span id="doc"></span> Documentation
 
 Un projet python avec un fichier `main.py`{.interne} est le moyen classique d'exécuter un fichier. Pour qu'un utilisateur sache ce qu'il exécute, on ajoute un fichier de documentation de projet :
 

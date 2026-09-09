@@ -148,7 +148,7 @@ Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmatio
 {% info %}
 Vous rendrez un dossier contenant :
 - le code (uniquement les fichiers `.py`{.fichier} (main, fonctions et tests), pas le dossier `__pycache__`{.fichier} par exemple,)
-- un ficher texte `réposnes.md`{.fichier} où vous aurez répondu aux questions. Vous utiliserez le format markdown.
+- un ficher texte `réponses.md`{.fichier} où vous aurez répondu aux questions. Vous utiliserez [le format markdown](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/#doc){.interne}.
 {% endinfo %}
 
 
