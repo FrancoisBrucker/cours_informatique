@@ -89,22 +89,15 @@ Vous devriez être capable de comprendre toutes les solutions et (dans le meille
 
 > 1h TD
 
-Le premier principe fondamental est de séparer le programme principal des fonctions :
+Les deux principes fondamentaux lorsque l'on développe un projet informatique est de séparer le programme principal des fonctions et de conserver les tests qui nous on permis de vérifier qu'elles fonctionnent :
 
 {% aller %}
 1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/){.interne}
-2. On s'entraîne : [Projet : création de modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-création-modules/){.interne}
+2. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
 
 {% endaller %}
 
-Le second principe fondamental est que les tests des fonctions fonts partie du projet :
-
-{% aller %}
-1. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
-2. [On s'entraîne à écrire des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/){.interne}
-{% endaller %}
-
-Pour aller plus loin :
+Pour aller plus loin, comment trouver des bugs de façon efficace :
 
 {% aller %}
 [Utiliser le débogueur pour corriger son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/){.interne}
@@ -129,6 +122,9 @@ Pour aller plus loin :
 {% aller %}
 [exercices divers](/cours/coder-et-développer/apprendre-programmation/coder-projets/exercices-tests/){.interne}
 {% endaller %}
+{% info %}
+Vous aurez besoin d'utiliser des fichiers, donc lisez [la partie consacrée aux fichiers du cours](/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/fichiers/){.interne}
+{% endinfo %}
 
 
 ### À rendre
