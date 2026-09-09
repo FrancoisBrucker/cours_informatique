@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title:  "Design Patterns"
+title: "Design Patterns"
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,26 +9,29 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-> TBD : refaire propre et dans la partie prog avancée : go
->
 > TBD <https://refine.dev/blog/react-design-patterns/ >
-> TBD <https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur> 
+> TBD <https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur>
 
-Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou façons de faire, sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
-Il existe 3 grands types de design pattern, on pourra en donner un exemple pour chaque.
+> TBD refactor <./design-patterns-old> et <./design-patterns-corrige>
+
+Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), patron de conception ou plus prosaïquement "_façons de faire_", sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les [erreurs classiques](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html), aussi appelées [anti-pattern](https://fr.wikipedia.org/wiki/Antipattern).
+Il existe 3 grands types de _design pattern_, on en donnera un exemple pour chaque :
+
+- [**_creational_**](https://en.wikipedia.org/wiki/Creational_pattern) qui créent des objets.
+- [**_structural_**](https://en.wikipedia.org/wiki/Structural_pattern) qui mettent les objets en relation.
+- [**_behavioural_**](https://en.wikipedia.org/wiki/Behavioral_pattern) qui regroupent les objets ayant même comportement.
 
 {% info %}
-Le terme de *design pattern* a été initialement donné dans le livre [Design Patterns: Elements of Reusable Object-Oriented Software](https://en.wikipedia.org/wiki/Design_Patterns) pour le langage C++.
+Le terme de _design pattern_ a été initialement donné dans le livre [Design Patterns: Elements of Reusable Object-Oriented Software](https://en.wikipedia.org/wiki/Design_Patterns) pour le langage C++.
 {% endinfo %}
 
-On classe habituellement les designs patterns en trois types :
+Ils permettent de résoudre de façon efficace des problèmes courants en programmation. Il est utile de connaître une liste actuelle de design patterns (certains de la liste originelle, comme [singleton](<https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)>) ne sont plus utilisés et d'autres, comme [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) sont apparus), car ils donnent souvent de bonnes idées pour résoudre les problèmes que l'on se pose.
 
-- [**les types creational**](https://en.wikipedia.org/wiki/Creational_pattern) qui créent des objets.
-- [**les types structural**](https://en.wikipedia.org/wiki/Structural_pattern) qui mettent les objets en relation.
-- [**les types behavioural**](https://en.wikipedia.org/wiki/Behavioral_pattern) qui regroupent les objets ayant même comportement.
+{% attention2 "**À retenir**" %}
+Les design pattern sont très utilisés par les bibliothèques, les reconnaître vous permettra 'aller vite dans la compréhension de celles-ci.
+{% endattention2 %}
 
-Ils permettent de résoudre de façon efficace des problèmes courants en programmation. Il est utile de connaître une liste actuelle de design patterns (certains de la liste originelle, comme [singleton](https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)) ne sont plus utilisés et d'autres, comme [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) sont apparus), car ils donnent souvent de bonnes idées pour résoudre les problèmes que l'on se pose. Le site suivant contient une liste actualisée de design patterns :
+Le site suivant contient une liste actualisée de design patterns :
 
 {% lien %}
 [Refactoring GURU : design pattern](https://refactoring.guru/design-patterns)
@@ -40,11 +43,20 @@ Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solut
 [Quelques anti patterns](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html)
 {% endlien %}
 
-Nous allons, encore une fois, utiliser la classe `Dé`{.language-} et l'*améliorer* selon le problème posé.
+Nous allons, encore une fois, utiliser la classe `Dé`{.language-} que l'on a utilisé intensivement dans [la partie consacrée à la programmation objet](../../apprendre-programmation/programmation-objet/){.interne} et le desin-patterniser selon le problème posé.
+
+On va partir du [dé amélioré](../../apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne} :
+
+{% lien %}
+[Code du dé](../../apprendre-programmation/programmation-objet/)
+{% endlien %}
+
+> TBD: Un dé avec les faces initiales choisies + la position initiale.
 
 ## Les bases
 
-> TBD: Un dé avec les faces initiales choisies + la position initiale.
+> TBD: rendre self a roll pour chainer les actions
+> TBD mettre une liste de possibilités pour rendre le tout générique.
 
 On se rappelle comment bien commencer un projet, avec trois fichiers :
 
@@ -127,7 +139,7 @@ Choice prend l'objet `choices` et le garde. Cela pose plusieurs problèmes. En p
 - si on modifie l'objet passé en paramètre, cela change le comportement de choice.
 - on expose l'attribut `choices` par un attribut public.
 
-Pour résoudre ces soucis on va copier l'objet `choices` et rendre l'attribut non modifiable. Pour cela, on va écrire des tests pour mettre en  lumière le problème puis corriger le code. Il faudra certainement changer d'autres tests dans le processus de réécriture du code.
+Pour résoudre ces soucis on va copier l'objet `choices` et rendre l'attribut non modifiable. Pour cela, on va écrire des tests pour mettre en lumière le problème puis corriger le code. Il faudra certainement changer d'autres tests dans le processus de réécriture du code.
 
 On commence par écrire un petit test :
 
@@ -142,7 +154,7 @@ def test_copy_choices():
 
 Regardez-le planter. Que s'est-il passé ? Puis proposez une solution.
 
-Enfin, on peut tester la deuxième objection avec le test ci-après. Le but de ce test est de vérifier que l'attribut  `choices` est non mutable. Il cherche à produire une erreur : modifier un élément [non mutable](https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747).
+Enfin, on peut tester la deuxième objection avec le test ci-après. Le but de ce test est de vérifier que l'attribut `choices` est non mutable. Il cherche à produire une erreur : modifier un élément [non mutable](https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747).
 
 ```python
 import pytest
@@ -153,7 +165,7 @@ def test_no_modification():
         d1.choices[0] = 2
 ```
 
- La façon dont pytest gère les erreurs est décrite [ici](https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions) : le test précédent est vrai si le code plante et produit une erreur. essayer de comprendre la structure de ce test.
+La façon dont pytest gère les erreurs est décrite [ici](https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions) : le test précédent est vrai si le code plante et produit une erreur. essayer de comprendre la structure de ce test.
 
 ## pattern factory
 
@@ -172,14 +184,14 @@ En revanche, on peut calculer les probabilités d'apparitions de chaque face :
 1. lancez N fois le dé (N = 1000)
 2. comparez les probabilités d'apparition de chaque face par rapport à la théorie (1/6)
 
-Pour aller vite, on pourra utiliser la classe `Counter` du module `collections` de python (voir [la définition](https://docs.python.org/3.7/library/collections.html#collections.Counter), ou [des exemples](https://data-flair.training/blogs/python-counter/)). Le module [collections](https://docs.python.org/3.7/library/collections.html#module-collections) de python, c'est plein de bonnes choses. 
+Pour aller vite, on pourra utiliser la classe `Counter` du module `collections` de python (voir [la définition](https://docs.python.org/3.7/library/collections.html#collections.Counter), ou [des exemples](https://data-flair.training/blogs/python-counter/)). Le module [collections](https://docs.python.org/3.7/library/collections.html#module-collections) de python, c'est plein de bonnes choses.
 
 > N'hésitez pas à regarder les différents modules de la [bibliothèque standard](https://docs.python.org/3.7/library/index.html) de python avant de recoder la roue...
 
 {% info %}
 On prendra soin de créer une constante N, pour éviter l'anti-pattern "magic number"
 {% endinfo %}
-Refaite la même chose pour simuler la somme d'un lancer de 2 dés à 6 faces (2d6 si on jargonne) avec un seul objet `Choice`.  
+Refaite la même chose pour simuler la somme d'un lancer de 2 dés à 6 faces (2d6 si on jargonne) avec un seul objet `Choice`.
 
 ### On place le tout dans le fichier de la classe
 
@@ -230,7 +242,7 @@ La classe Memento doit avoir :
 Vous pouvez par exemple transformer le code ci-après en test(s) :
 
 ```python
-import choice 
+import choice
 
 dice = choice.dice()
 dice.set_position(2)
@@ -253,7 +265,7 @@ Nous pouvons maintenant créer une classe `Undo` (dans le fichier `undo.py`) qui
 Bien sur vous créerez un fichier de tests `test_undo.py` qui testera les 3 fonctionnalités ci-dessus. Une façon d'utiliser les différents objets est décrite ci-après :
 
 ```python
-import choice 
+import choice
 from undo import Undo
 
 dice = choice.dice()

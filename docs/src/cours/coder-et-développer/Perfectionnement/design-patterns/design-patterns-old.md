@@ -14,7 +14,7 @@ Les [design patterns](https://fr.wikipedia.org/wiki/Patron_de_conception), ou fa
 
 Comme ce cours est dispensé en utilisant le langage python, on utilisera beaucoup le typage dynamique de celui-ci pour ces exemples, mais les design pattern fonctionnent quelques soient le langage utilisé (ils ont d'ailleurs [initialement été écrits](https://fr.wikipedia.org/wiki/Design_Patterns) pour le C++).
 
-[Eléments de corrigé]({% link misc/design-patterns-corrige.md %})
+[Elément de corrigé](./design-patterns-corrige)
 
 ## Les bases
 

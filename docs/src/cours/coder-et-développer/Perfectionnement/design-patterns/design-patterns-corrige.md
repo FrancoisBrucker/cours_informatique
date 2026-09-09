@@ -8,7 +8,7 @@ author: "François Brucker"
 
 ## But
 
-Eléments de corrigé de la séance  [design patterns]({% link misc/design-patterns.md %}).
+Eléments de corrigé de la séance  [design patterns](./design-patterns).
 
 
 

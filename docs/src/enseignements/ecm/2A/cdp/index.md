@@ -123,15 +123,15 @@ Pour aller plus loin :
 [exercices divers](/cours/coder-et-développer/apprendre-programmation/coder-projets/exercices-tests/){.interne}
 {% endaller %}
 {% info %}
-Vous aurez besoin d'utiliser des fichiers, donc lisez [la partie consacrée aux fichiers du cours](/cours_informatique/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/fichiers/){.interne}
+Vous aurez besoin d'utiliser des fichiers, donc lisez [la partie consacrée aux fichiers du cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/fichiers/){.interne}
 {% endinfo %}
 
 
 ### À rendre
 
-> 2h DM à rendre sur moodle
+> 2h DM à rendre sur Moodle
 
-Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur moodle :
+Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur Moodle :
 
 {% aller %}
 1. [Bonnes pratiques et mantra](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/bonnes-pratiques/){.interne}
@@ -143,7 +143,7 @@ Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur moo
 Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/){.interne}
 {% endfaire %}
 {% attention %}
- Le travail est à rendre [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 16/09 à 8h00**.
+ Le travail est à rendre [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 16/09 à 8h00**.
 {% endattention %}
 
 
@@ -170,7 +170,9 @@ Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmatio
 [Projet cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes/){.interne}
 {% endaller %}
 
-> 2h TD
+### Rendre ses objets plus conviviaux
+
+> 1h CM / 1h TD
 
 {% aller %}
 
@@ -182,7 +184,7 @@ Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmatio
 
 #### À rendre
 
-> 2h DM à rendre sur github et ne mettre sur moodle qu'un fichier texte contenant le lien vers le dépôt github.
+> 2h DM à rendre sur github et ne mettre sur Moodle qu'un fichier texte contenant le lien vers le dépôt github.
 
 {% prerequis "**Travail préparatoire**" %}
 Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dépôt/){.interne} sur github.
@@ -193,7 +195,7 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 [Cartes améliorées](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes-amélioration/){.interne}
 {% endfaire %}
 {% attention %}
- Le travail est à rendre **sur github** et en mettant le lien vers le déport [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/09 à 8h00**.
+ Le travail est à rendre **sur github** et en mettant le lien vers le déport [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/09 à 8h00**.
 {% endattention %}
 
 ## Partie III : Composition/agrégation et héritage
@@ -226,7 +228,7 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 #### À rendre
 
-> 2h+ DM à rendre sur github et ne mettre sur moodle qu'un fichier texte contenant le lien vers le dépôt github.
+> 2h+ DM à rendre sur github et ne mettre sur Moodle qu'un fichier texte contenant le lien vers le dépôt github.
 
 
 
@@ -250,5 +252,5 @@ Les consignes sont :
 
 {% endfaire %}
 {% attention %}
- Le travail est à rendre **sur github** et en mettant le lien vers le déport [sur moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/11 à 8h00**.
+ Le travail est à rendre **sur github** et en mettant le lien vers le dépôt [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/11 à 8h00**.
 {% endattention %}

@@ -15,7 +15,7 @@ eleventyComputed:
 
 (18 + 3)h heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests. C'est la suite de ce que vous avez fait en 1A avec JEMNEP et I1 de MIE en 2A. Donc revenez en arrière s'il vous manque des connaissances.
 
-# Partie I : Travail préparatoire
+## Partie I : Travail préparatoire
 
 > 3h
 
@@ -23,7 +23,7 @@ eleventyComputed:
 Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.interne}. Si vous voulez plus de contenu, n'hésitez pas à y jeter un coup d'œil.
 {% endinfo %}
 
-## Interpréteur, terminal et IDE
+### Interpréteur, terminal et IDE
 
 {% aller %}
 1. Interagir avec le système :
@@ -32,14 +32,14 @@ Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.
 2. [Installer un interpréteur et un IDE](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
 {% endaller %}
 
-## Structure d'un projet informatique
+### Structure d'un projet informatique
 
 {% aller %}
 1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/){.interne}
 2. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
 {% endaller %}
 
-## Gestion des dépendances
+### Gestion des dépendances
 
 {% aller %}
 1. [création d'un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/){.interne} pour ses projets
@@ -47,23 +47,7 @@ Cette partie est un condensé du cours de [MIE-I1](/enseignements/ecm/2A/cdp/){.
 
 {% endaller %}
 
-<!-- 
-## Outils python de gestion de package
-
-- [poetry](https://python-poetry.org/)
-- [uv](https://docs.astral.sh/uv/)
- 
- Pour la prochaine fois, trois groupes :
-
-- [poetry](https://python-poetry.org/)
-- [uv](https://docs.astral.sh/uv/)
-- module et package python : comment les utiliser
-
-Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
--->
-
-
-# Partie II :  Test Driven Development
+## Partie II :  Test Driven Development
 
 > 6h
 
@@ -77,43 +61,78 @@ Vous devez pouvoir :
 
 {% endprerequis %}
 
+Le cours suivant va vous donner des bases de programmation objet en python :
+
 {% aller %}
 [Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/){.interne}
 {% endaller %}
 
+On va découvrir tous ces concepts via le TD suivant, dont le but est de vous former au TDD :
+
 {% aller %}
 [Test Driven Development](/cours/coder-et-développer/Perfectionnement/TDD/){.interne}
 {% endaller %}
+{% info %}
+Faite le TD de TDD dans un environnement virtuel.
+{% endinfo %}
 
-<!-- TBD 
+Dans un projet informatique de moyen/grand ampleur on utilisera plus que des tests unitaires. Voir par exemple le lien suivant pour une introduction aux différents tests utilisés :
 
-<https://www.youtube.com/watch?v=gnrBqLbj1_Q> 
+{% lien %}
+[Différents types de tests](https://www.youtube.com/watch?v=gnrBqLbj1_Q)
+{% endlien %}
 
--->
-
-<!--
-
-## À faire 
 
 Pour la prochaine fois, tous :
 
+{% faire %}
+Pour la prochaine fois, deux groupes :
+
+- [poetry](https://python-poetry.org/)
+- [uv](https://docs.astral.sh/uv/)
+
+Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
+{% endfaire %}
 
 
-- [design pattern](https://refactoring.guru/design-patterns)
-- [refactoring pattern](https://refactoring.guru/refactoring)
-- tests dans d'autres langages (java, js ou ts, ...)
-- mock et tests
-
--->
-
-
-
-
-# Partie III
+## Partie III
 
 > 3h
 
 > Design Pattern
+
+{% lien %}
+- [design pattern](https://refactoring.guru/design-patterns)
+- [refactoring pattern](https://refactoring.guru/refactoring)
+{% endlien %}
+
+
+On a vu le design pattern composite dans le projet TDD, il en existe de nombreux autres ! Découvrons en quelques uns souvent utiles :
+
+{% aller %}
+[Design pattern](/cours/coder-et-développer/Perfectionnement/design-patterns/){.interne}
+{% endaller %}
+
+Pour la prochaine fois 2 groupes :
+
+
+{% faire %}
+Pour la prochaine fois, deux groupes :
+
+- tests dans d'autres langages (java, js ou ts, ...)
+- mock et tests
+
+Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
+
+{% endfaire %}
+
+<!-- 
+## Outils python de gestion de package
+
+- [poetry](https://python-poetry.org/)
+- [uv](https://docs.astral.sh/uv/)
+ 
+ ->
 
 
 # Partie IV
