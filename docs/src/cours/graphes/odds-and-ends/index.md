@@ -144,6 +144,7 @@ Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes. Une fonction $f: V\to V'$ e
 {% endnote2 %}
 
 > TBD exemple
+> G = ({1, 2, 3, 4}, {12, 23, 34}) et G'=({u, v}, {uv}) et f(x) = f(z) = u ; f(y) = f(t) = v
 
 On le voit dans l'exemple $f$ n'est pas forcément une bijection de $V$ dans $V'$ et l'implication n'est que dans un sens : l'arête  $f(x)f(y)$ peut exister dans $G'$ alors que $xy \notin E$. Pour avoir une correspondance parfaite entre $G$ et $G'$ il faut qu'il existe un **_isomorphisme_** entre eux :
 
@@ -166,7 +167,7 @@ En ce sens, notez que le si et seulement si entre les arêtes n'est pas suffisan
 
 > TBD un chemin de longueur 3 dans une arête. On a bien le ssi mais les deux graphes ne sont clairement pas identiques.
 
-L'identité est toujours un isomorphisme d'un graphe dans lui même, et certains graphes (les graphes complets par exemple) en admettent beaucoup d'autres. On appelle ces isomorphisme d'un graphe dans lui-même des automorphismes :
+L'identité est toujours un isomorphisme d'un graphe dans lui même, et certains graphes (les graphes complets par exemple) en admettent beaucoup d'autres. On appelle ces isomorphismes d'un graphe dans lui-même des automorphismes :
 
 {% note2 "**Définition**" %}
 Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
@@ -198,6 +199,10 @@ Définissons le problème algorithmique associé :
 Si on se donne une fonction $f$ allant de l'ensemble des sommets d'un graphe à un autre, il est facile de vérifier si c'est un isomorphisme entre les deux graphes ou non : le problème de l'isomorphisme de graphe est donc clairement dans NP.
 
 En revanche, on ne connaît pas son status exact : on ne sait ni s'il est NPcomplet, ni s'il est polynomial. [Le meilleur algorithme connu](https://en.wikipedia.org/wiki/Graph_isomorphism_problem) est de complexité $2^{\mathcal{O}(\log^3(n))}$ ce qui est plus que polynomial mais moins qu'exponentiel. On verra que pour certaines classes de graphes, le problème est simple.
+
+
+
+
 
 
 ## $k$-connectivité

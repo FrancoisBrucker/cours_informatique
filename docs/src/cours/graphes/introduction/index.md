@@ -49,6 +49,9 @@ Et une conséquence inattendue (exercice de modélisation) :
 
 > ICI graphes eulériens.
 > 1. combien il y en a 
+>   1. graphes :
+>     1. nombre diff. à sommet fixer
+>     2. pb de l'isomorphisme de graphe (aller plus loin dans une autre partie)
 >   1. idée pour les trouver puis formules
 >   2. générer un graphe aléatoire : Erdos reny. Intro + graphe Rado + isomorphisme
 > 2. distribution des degrés pairs ? Y'en a qui existent pas.
@@ -57,7 +60,7 @@ Et une conséquence inattendue (exercice de modélisation) :
 >   3. les trouver tous ? Au moins aléatoirement.
 
 
-
+> TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
 > TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
 > TBD on random des nombres dans une borne et on continue
 > TBD connexité <https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf> le montre avec des matrices, nous juste avec un graphe.
@@ -69,6 +72,7 @@ Et une conséquence inattendue (exercice de modélisation) :
 > TBD : 
 > 1. définition du problème.
 > 2. cas où on sait le faire :
+>   1. tournoi + méthode probabiliste (cf ds 2026)
 >   1. degrés
 >   2. arbres + partie arbres (déf + ALM)
 >   3. acyclique : et conséquence inattendue sr le BTP
