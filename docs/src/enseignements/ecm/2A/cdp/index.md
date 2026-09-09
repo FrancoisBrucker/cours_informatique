@@ -118,10 +118,9 @@ Les 3 exercices se suivent et prennent les mêmes exemples. Faite un exemple au 
 
 {% aller %}
 
-1. faites vous un environnement virtuel.
-2. [Création de fonctions](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/){.interne}
-3. [Séparation main/fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-création-modules/){.interne}
-4. [On ajoute des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/){.interne}
+1. [Création de fonctions](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/){.interne}
+2. [Séparation main/fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-création-modules/){.interne}
+3. [On ajoute des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/){.interne}
 
 {% endaller %}
 
