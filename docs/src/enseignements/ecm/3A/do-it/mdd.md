@@ -91,6 +91,7 @@ Entrainez vous :
 - [advent of code](https://adventofcode.com/)
 
 {% endfaire %}
+
 Pour la prochaine fois, quatre groupes :
 
 
@@ -104,7 +105,6 @@ Pour la prochaine fois, quatre groupes :
 
 Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
 {% endattention %}
-
 
 
 ## Partie III
