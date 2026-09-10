@@ -61,7 +61,7 @@ Cela semble bien trop ambitieux pour une seule étape. On va la découper, en co
 
 On est habitué depuis la première partie, on commence par faire un test. Ici, on ne va pas trop s'embêter : on va dupliquer le test des dollars pour les Francs.
 
-- heureusement qu'on a un peu modifier les tests avant, non ?
+- heureusement qu'on a un peu modifié les tests avant, non ?
 - on a le droit de commettre les pires péchés pour faire marcher le projet (*that works*), ensuite on fait les choses bien (*clean code*)
 
 Fichier `test_monnaie.py`{.fichier} :
