@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/design-patterns/">Design Patterns</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/">Perfectionnement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/méthode-développement/">Méthodes de développement</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/Perfectionnement/méthode-développement/design-patterns/">Design Patterns</a>
 
 </div></div>
 
@@ -146,8 +146,8 @@ Il existe 3 grands types de <em>design pattern</em>, on en donnera un exemple po
 <p><a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">Quelques anti patterns</a></p>
 </div></div>
 
-<p>Nous allons, encore une fois, utiliser la classe <code class="language-">Dé</code> que l'on a utilisé intensivement dans <a href="../../apprendre-programmation/programmation-objet/" class="interne">la partie consacrée à la programmation objet</a> et le desin-patterniser selon le problème posé.</p>
-<p>On va partir du <a href="../../apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/" class="interne">dé amélioré</a> :</p>
+<p>Nous allons, encore une fois, utiliser la classe <code class="language-">Dé</code> que l'on a utilisé intensivement dans <a href="../../../apprendre-programmation/programmation-objet/" class="interne">la partie consacrée à la programmation objet</a> et le desin-patterniser selon le problème posé.</p>
+<p>On va partir du <a href="../../../apprendre-programmation/programmation-objet/projet-objets-d%C3%A9s-am%C3%A9lioration/" class="interne">dé amélioré</a> :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -182,19 +182,30 @@ Il existe 3 grands types de <em>design pattern</em>, on en donnera un exemple po
 </div></div>
 
 <h3><em>Method chaining</em></h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Method_chaining#Design_patterns"><em>Method chaining</em></a></p>
+</div></div>
+
+<p>On aimerait bien pouvoir chaîner les lancers de dés pour pouvoir par exemple écrire le test :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
+<span class="token comment"># ... </span>
+
+<span class="token keyword">def</span> <span class="token function">test_lancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> Dé<span class="token punctuation">.</span>MIN_VALEUR <span class="token operator">&lt;=</span> dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>valeur <span class="token operator">&lt;=</span> Dé<span class="token punctuation">.</span>MAX_VALEUR
+
+<span class="token comment"># ...</span></code></pre>
+<p>L'idée est que les méthodes modifiant l'objet le rendent ! Ceci ne change pas le code existant on ne fait juste rien du résultat de la méthode mais permet le chaînage</p>
 <blockquote>
-<p>TBD: rendre self a roll pour chaîner les actions <a href="https://en.wikipedia.org/wiki/Method_chaining#Design_patterns">https://en.wikipedia.org/wiki/Method_chaining#Design_patterns</a></p>
+<p>TBD écrire le code
+TBD écrire le test plus cours en exercice.
+TBD il faut que tout marche. Si une erreur au milieu foutu
+TBD ecriture python avec les (). exemple des monolignes avec le replace.</p>
 </blockquote>
-<h3>attention aux effets de bord !</h3>
-<blockquote>
-<p>TBD mettre une liste de possibilités pour rendre le tout générique.puis value object.</p>
-</blockquote>
-<p>On se rappelle comment bien commencer un projet, avec trois fichiers :</p>
-<ul>
-<li>le code</li>
-<li>les tests</li>
-<li>le programme</li>
-</ul>
 <p>On commence avec les 3 fichiers ci-après. Exécutez le main et les tests. Les 3 tests doivent passer.</p>
 <p>Fichier <code class="fichier">main.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
@@ -266,7 +277,10 @@ d6 <span class="token operator">=</span> Choice<span class="token punctuation">(
     d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span></code></pre>
-<h2>Première amélioration</h2>
+<h3>attention aux effets de bord !</h3>
+<blockquote>
+<p>TBD mettre une liste de possibilités pour rendre le tout générique puis value object.</p>
+</blockquote>
 <p>Choice prend l'objet <code>choices</code> et le garde. Cela pose plusieurs problèmes. En particulier :</p>
 <ul>
 <li>si on modifie l'objet passé en paramètre, cela change le comportement de choice.</li>
