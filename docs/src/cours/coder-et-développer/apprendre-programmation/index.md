@@ -105,17 +105,11 @@ La programmation évènementielle est un principe de développement très utilis
 {% endaller %}
 
 
-## Partie VI: Pour aller plus loin
+## Partie VI: Pour aller plus loin sur les modules
 
-### Couverture de code
+### Odds and ends
 
-La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (_ie._ couvertes).
-
-{% aller %}
-[Couverture de code](couverture-de-code){.interne}
-{% endaller %}
-
-### Odds and ends sur les modules python
+Curiosités et propriétés des modules python :
 
 {% aller %}
 [Odds and ends sur les modules python](misc-modules){.interne}

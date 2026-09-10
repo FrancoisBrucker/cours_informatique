@@ -43,9 +43,9 @@ Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solut
 [Quelques anti patterns](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html)
 {% endlien %}
 
-Nous allons, encore une fois, utiliser la classe `Dé`{.language-} que l'on a utilisé intensivement dans [la partie consacrée à la programmation objet](../../apprendre-programmation/programmation-objet/){.interne} et le desin-patterniser selon le problème posé.
+Nous allons, encore une fois, utiliser la classe `Dé`{.language-} que l'on a utilisé intensivement dans [la partie consacrée à la programmation objet](../../../apprendre-programmation/programmation-objet/){.interne} et le desin-patterniser selon le problème posé.
 
-On va partir du [dé amélioré](../../apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne} :
+On va partir du [dé amélioré](../../../apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne} :
 
 {% lien %}
 
@@ -73,17 +73,28 @@ On commence avec les 3 fichiers du lien.
 
 ### _Method chaining_
 
-> TBD: rendre self a roll pour chaîner les actions <https://en.wikipedia.org/wiki/Method_chaining#Design_patterns>
+{% lien %}
+[_Method chaining_](https://en.wikipedia.org/wiki/Method_chaining#Design_patterns)
+{% endlien %}
 
-### attention aux effets de bord !
+On aimerait bien pouvoir chaîner les lancers de dés pour pouvoir par exemple écrire le test :
 
-> TBD mettre une liste de possibilités pour rendre le tout générique.puis value object.
+```python
 
-On se rappelle comment bien commencer un projet, avec trois fichiers :
+# ... 
 
-- le code
-- les tests
-- le programme
+def test_lancer():
+    dé = Dé()
+    assert Dé.MIN_VALEUR <= dé.lancer().valeur <= Dé.MAX_VALEUR
+
+# ...
+```
+
+L'idée est que les méthodes modifiant l'objet le rendent ! Ceci ne change pas le code existant on ne fait juste rien du résultat de la méthode mais permet le chaînage
+> TBD écrire le code 
+> TBD écrire le test plus cours en exercice.
+> TBD il faut que tout marche. Si une erreur au milieu foutu
+> TBD ecriture python avec les (). exemple des monolignes avec le replace.
 
 On commence avec les 3 fichiers ci-après. Exécutez le main et les tests. Les 3 tests doivent passer.
 
@@ -153,7 +164,11 @@ def test_roll():
     assert d1.get_position() == 1
 ```
 
-## Première amélioration
+
+### attention aux effets de bord !
+
+> TBD mettre une liste de possibilités pour rendre le tout générique puis value object.
+
 
 Choice prend l'objet `choices` et le garde. Cela pose plusieurs problèmes. En particulier :
 

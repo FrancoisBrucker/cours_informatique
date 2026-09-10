@@ -70,7 +70,7 @@ Le cours suivant va vous donner des bases de programmation objet en python :
 On va découvrir tous ces concepts via le TD suivant, dont le but est de vous former au TDD :
 
 {% aller %}
-[Test Driven Development](/cours/coder-et-développer/Perfectionnement/TDD/){.interne}
+[Test Driven Development](/cours/coder-et-développer/Perfectionnement/méthode-développement/TDD/){.interne}
 {% endaller %}
 {% info %}
 Faite le TD de TDD dans un environnement virtuel.
@@ -86,9 +86,25 @@ Dans un projet informatique de moyen/grand ampleur on utilisera plus que des tes
 Entrainez vous :
 
 {% faire %}
+
 - [exercice de code](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/){.interne}
 - [advent of code](https://adventofcode.com/)
+
 {% endfaire %}
+Pour la prochaine fois, quatre groupes :
+
+
+{% attention "**Travail à préparer**" %}
+
+
+- [poetry](https://python-poetry.org/)
+- [uv](https://docs.astral.sh/uv/)
+- tests dans d'autres langages (java, js ou ts, ...)
+- mock et tests
+
+Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
+{% endattention %}
+
 
 
 ## Partie III
@@ -106,17 +122,17 @@ Entrainez vous :
 On a vu le design pattern composite dans le projet TDD, il en existe de nombreux autres ! Découvrons en quelques uns souvent utiles :
 
 {% aller %}
-[Design pattern](/cours/coder-et-développer/Perfectionnement/design-patterns/){.interne}
+[Design pattern](/cours/coder-et-développer/Perfectionnement/méthode-développement/design-patterns/){.interne}
 {% endaller %}
 
 Pour la prochaine fois 2 groupes :
 
 
 {% faire %}
-Pour la prochaine fois, deux groupes :
+Pour la prochaine fois, X groupes :
 
-- tests dans d'autres langages (java, js ou ts, ...)
-- mock et tests
+- choisissez un design pattern que l'on a pas  vu à présenter
+- pour quelqu'un qui connaît `git`, comment s'en servir avec vscode.
 
 Préparer un exposé de 5min chacun + support avec biblio et principales fonctionnalités. 
 

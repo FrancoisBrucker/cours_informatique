@@ -26,15 +26,10 @@ eleventyComputed:
 > - interfaces
 > - [mémoire](./données-mémoire/){.interne}
 
+## Méthodes de développement
 
-## TDD
-
-{% aller %}
-[Test Driven Development](./TDD/){.interne}
-{% endaller %}
-
-## Design pattern
+Dernière partie en python avant d'apprendre un nouveau langage. On montre comment développer du code au quotidien.
 
 {% aller %}
-[Design pattern](./design-patterns/){.interne}
+[méthodes de développement](méthode-développement){.interne}
 {% endaller %}
