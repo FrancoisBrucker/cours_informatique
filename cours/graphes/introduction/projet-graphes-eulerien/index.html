@@ -154,74 +154,19 @@ G2 <span class="token operator">=</span> copy<span class="token punctuation">.</
 <p>On aurait pu faire la copie en une ligne avec les <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list comprehension</a> de python : <code class="language-">G2 = {k: set(v) for k, v in G.items()}</code></p>
 </div></div>
 
-<h3>Algorithmes</h3>
-<p>On veut que notre algorithme principal soit de ce type :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> copy
-
-<span class="token keyword">def</span> cycle_eulérien<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    G <span class="token operator">=</span> copy<span class="token punctuation">.</span>deepcopy<span class="token punctuation">(</span>G<span class="token punctuation">)</span>
-
-    cycles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">while</span> G<span class="token punctuation">:</span>
-        c <span class="token operator">=</span> cycle<span class="token punctuation">(</span>G<span class="token punctuation">)</span>
-        cycles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-        supprime_arêtes_du_cycle<span class="token punctuation">(</span>c<span class="token punctuation">,</span> G<span class="token punctuation">)</span>
-        supprime_sommets_degré_zéro<span class="token punctuation">(</span>G<span class="token punctuation">)</span>
-
-    concatène_cycles<span class="token punctuation">(</span>cycles<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> cycles<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>
-<p>Où <code class="language-">cycle(G)</code> est un algorithme permettant de concaténer une liste de cycles en un liste plus petite de cycles disjoints (un seul élément à la fin si ce sont les cycles d'un graphe eulérien connexe).</p>
-<p>On va coder les différents algorithmes !</p>
+<h3>Algorithme de Hierholzer</h3>
+<ol>
+<li>Construction d'un premier cycle élémentaire : partir d'un sommet arbitraire et suivre des arêtes non encore utilisées jusqu'à revenir nécessairement à ce sommet (c'est garanti par la parité des degrés — chaque fois qu'on entre dans un sommet autre que le départ, il reste une arête pour en sortir).</li>
+<li>Extension du circuit : tant qu'il existe un sommet du circuit courant ayant des arêtes non utilisées, on part de ce sommet, on construit un nouveau circuit avec les arêtes restantes (on pourra toujours retomber sur le sommet d'origine !), et on l'insère dans le circuit courant à cet endroit.</li>
+<li>On répète jusqu'à épuisement de toutes les arêtes.</li>
+</ol>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Codez l'algorithme <code class="language-">cycle(G)</code> qui rend un cycle élémentaire $[x_0, \dots, x_p]$ (avec $x_0 = x_p$) d'un graphe où $\delta(x) &gt; 1$ pour tout sommet $x$.</p>
-</div></div>
-
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Trouver un cycle peut se faire en utilisant l'algorithme du cours <a href="../chemins-cycles-connexite#algo-cycle-non-oriente" class="interne"><code class="language-">cycle_non_orienté(G,x)</code></a> (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ, mais comme tous les sommets on un degré strictement positif, on peut prendre n'importe lequel.</p>
-</div></div>
-
-<p>Une fois cet algorithme codé le reste de la boucle est facile à implémenter :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Codez les algorithmes :</p>
-<ul>
-<li><code class="language-">supprime_arêtes_du_cycle(c, G)</code> qui supprimes les arêtes du cycle <code class="language-">c</code> dans <code class="language-">G</code>,</li>
-<li><code class="language-">supprime_sommets_degré_zéro(G)</code> qui supprimes les sommets de <code class="language-">G</code> de degré 0</li>
-</ul>
-</div></div>
-
-<p>Le dernier algorithme à créer est celui concaténant deux cycles. On va suivre le cours pour écrire :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> concatène_cycles<span class="token punctuation">(</span>cycles<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>cycles<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
-        c <span class="token operator">=</span> cycles<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>cycles<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            intersection <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">.</span>intersection<span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>cycles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token keyword">if</span> intersection<span class="token punctuation">:</span>
-                x <span class="token operator">=</span> intersection<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-                cycles<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> concatène<span class="token punctuation">(</span>cycles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> c<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
-                <span class="token keyword">break</span>
-</code></pre>
-<p>Avec l'algorithme <code class="language-">concatène(c1, c2, x)</code> qui rend la concaténations des cycles <code class="language-">c_1</code> et <code class="language-">c_2</code> via <code class="language-">x</code> qui est un somment commun.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Codez les algorithmes <code class="language-">concatène_cycles(cycles)</code> et <code class="language-">concatène(c1, c2, x)</code>.</p>
+<p>Faites l'algorithme sans utiliser de liste chaînée (utilisez des slice de listes) mais supprimez l'arête à chaque fois que vous en voyez une du graphe.</p>
 </div></div>
 
 <h3>Tests</h3>
