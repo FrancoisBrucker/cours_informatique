@@ -302,17 +302,76 @@ $$
 <h2>Algorithme optimal</h2>
 <blockquote>
 <p>TBD à finir.</p>
+<p>TBD écrire algo cycle partant de x</p>
 </blockquote>
-<p>On utilise <a href="https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer">l'algorithme de Hierholzer</a></p>
+<p>On utilise <a href="https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer">l'algorithme de Hierholzer</a> qui implémente l'idée précédente mais l'optimise.</p>
+<p>Il fonctionne via cet algorithme :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">chemin(x, G):
+    
+    soit y un voisin de x dans G.
+    on supprime xy de G
+    c = [x, y]
+    tant que c[-1] ≠ x:
+        soit y un voisin de c[-1]
+        on supprime c[-1]y de G
+        c = c + [y]
+
+    rendre c
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si G est eulérien l'algorithme chemin fonctionne.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Seuls c[0] et c[-1] sont de degrés impair dans le G courant. Comme initialement les sommets de G sont tous de degré pair : on retombera forcément sur c[0] à un moment.</p>
+</div>
+</details>     
+</div>
 <ol>
 <li>Construction d'un premier cycle élémentaire : partir d'un sommet arbitraire et suivre des arêtes non encore utilisées jusqu'à revenir nécessairement à ce sommet (c'est garanti par la parité des degrés — chaque fois qu'on entre dans un sommet autre que le départ, il reste une arête pour en sortir).</li>
-<li>Extension du circuit : tant qu'il existe un sommet du circuit courant ayant des arêtes non utilisées, on part de ce sommet, on construit un nouveau circuit avec les arêtes restantes (on pourra toujours retomber sur le sommet d'origine !), et on l'insère dans le circuit courant à cet endroit.</li>
+<li>Extension du circuit : tant qu'il existe un sommet du circuit courant ayant des arêtes non utilisées, on part de ce sommet, on construit un nouveau circuit avec les arêtes restantes (on pourra toujours retomber sur le sommet d'origine !), et on l'insère dans le circuit courant à cet endroit en repérant la position des nouveaux éléments</li>
 <li>On répète jusqu'à épuisement de toutes les arêtes.</li>
 </ol>
-<blockquote>
-<p>TBD complexité en nombre d'arête si on peut insérer facilement des élément dans les listes (via liste chaînée)
-.</p>
-</blockquote>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">itérativement les cycles avec xi 
+
+T[1] = [x1 ... x1 ... x1 ... x1]
+T[2] = [x2 ... x2]
+...
+
+T[n] = [xn]</code></pre>
+<p>Certaines listes vont être vide. Mais la construction de tout ça se fait en m</p>
+<pre><code>E = T[1]
+T[1] =  vide
+i = 0
+tant que i &lt; |E|:
+    si T[E[i]] non vide
+        E = E[:i] + T[i] + E[i:]
+        T[i] = vide
+    i += 1
+</code></pre>
+<p>puis on concatène petit à petit en ajoutant un à un les élément de la liste i et on stope si on trouve un élément non encore vu : on ajoute tout ses éléments ceci se fait aussi en m si on utilise des liste chaînées par exemple.</p>
 <h2>Généralisations</h2>
 <p>Il existe de nombreuses généralisations aux cycles eulérien. Citons en trois : les chemins eulériens, les circuits eulériens des graphes orientés et les cycles Eulérien des graphes mixtes.</p>
 <h3>Chemin eulérien</h3>
