@@ -1,14 +1,19 @@
-import random
+import random, copy
 
 
-def copie(G):
-    G_copie = dict()
+def cycle_eulérien(G):
+    G = copy.deepcopy(G)
 
-    for x in G:
-        G_copie[x] = set(G[x])
+    cycles = []
+    while G:
+        c = cycle(G)
+        cycles.append(c)
+        supprime_arêtes_du_cycle(c, G)
+        supprime_sommets_degré_zéro(G)
 
-    return G_copie
-
+    # print("les cycles :", cycles)
+    concatène_cycles(cycles)
+    return cycles[0]
 
 def cycle(G):
     if not G:
@@ -35,7 +40,6 @@ def cycle_non_orienté(G, a):
 
     return chemin[i:] + [début]
 
-
 def supprime_arêtes_du_cycle(c, G):
     x = c[0]
     for y in c[1:]:
@@ -51,6 +55,7 @@ def supprime_sommets_degré_zéro(G):
     for x in sommets:
         if len(G[x]) == 0:
             del G[x]
+
 
 
 def décale(cycle, x):
@@ -87,18 +92,7 @@ G = {
     "6": {"4", "5"},
 }
 
-G2 = copie(G)
 
-cycles = []
-while G:
-    c = cycle(G)
-    cycles.append(c)
-    supprime_arêtes_du_cycle(c, G)
-    supprime_sommets_degré_zéro(G)
-
-
-print(cycles)
-concatène_cycles(cycles)
-cycle_eulérien = cycles[0]
+cycle_eulérien =  cycle_eulérien(G)
 
 print(cycle_eulérien)

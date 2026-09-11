@@ -43,7 +43,15 @@ Et une conséquence inattendue (exercice de modélisation) :
 
 {% aller %}
 
-[Mots de Bruijn](projet-mots-bruijn){.interne}
+[Mots de Bruijn](mots-bruijn){.interne}
+
+{% endaller %}
+
+Codons tout ça :
+
+{% aller %}
+
+[Projet : Graphes eulérien](projet-graphes-eulerien){.interne}
 
 {% endaller %}
 
@@ -59,6 +67,7 @@ Et une conséquence inattendue (exercice de modélisation) :
 >   2. suite décroissantes -> graphes EUlérien et généraux
 >   3. les trouver tous ? Au moins aléatoirement.
 
+> TBD MCMC : <https://www.youtube.com/watch?v=nndtTssgtZE>
 
 > TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <https://www.youtube.com/watch?v=4weMmFZSBtI>
 > TBD générer des graphes avec degrés fixe pour essayer nos algorithmes

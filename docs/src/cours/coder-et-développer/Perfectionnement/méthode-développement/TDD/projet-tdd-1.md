@@ -794,7 +794,7 @@ On fait petit à petit disparaître des tests les références explicites à l'i
 - [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 - [X] `__mul__`{.language-}
 
-## Fin de la partie 1
+## <span id="fin"></span> Fin de la partie 1
 
 ### <span id="todo-list-fin-1"></span> Todo list
 

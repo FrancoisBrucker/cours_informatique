@@ -111,57 +111,22 @@ On va se restreindre aux graphes non-orienté. Pour cela, notre codage par dicti
 
 ![exemple Euler](./euler_exemple_1.png)
 
-Il se code en :
-
-```python
-G = {
-    "1": {"2", "3"},
-    "2": {"1", "3", "4", "5"},
-    "3": {"1", "2", "4", "5"},
-    "4": {"2", "3", "5", "6"},
-    "5": {"2", "3", "4", "6"},
-    "6": {"4", "5"},
-}
-```
-
-Ajoutons tout de suite une fonction pour copier le graphe, puisque notre algorithme va petit à petit supprimer ses arêtes :
-
-```python
-def copie(G):
-    G_copie = dict()
-
-    for x in G:
-        G_copie[x] = set(G[x])
-
-    return G_copie
-
-G2 = copie(G)
-```
-
-{% attention %}
-Il faut **aussi** copier les valeurs du dictionnaire (les ensembles) !
-{% endattention %}
-{% info %}
-On aurait pu faire la copie en une ligne avec les [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) de python : `G2 = {x: set(y) for x, y in G.items()}`{.language-}
-{% endinfo %}
+Nous n'allons pas encore nous préoccuper d'encodage du graphe pour les algorithmes : on utilisera celui (ou ceux !) qui impliquera la plus petite complexité.
 
 ### <span id="principe-algorithme"></span> Principe de l'Algorithme
 
-La démonstration de la réciproque donne également un algorithme de construction d'un cycle Eulérien pour un multi-graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :
+La démonstration de la réciproque donne également un algorithme de construction d'un cycle Eulérien pour un graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :
 
-```python
-les_cycles = []
-while G:
-    c = cycle(G)
-    les_cycles.append(c)
-    supprime_arêtes_du_cycle(c, G)
-    supprime_sommets_degré_zéro(G)
+```text
+cycles = []
+tant que G est non vide:
+    soit c un cycle de G
+    ajoute c à la liste cycles
+    supprimer les arêtes de c dans G
+    supprimer les sommets de degré 0 dans G
 
-concatène_cycles(les_cycles)
-cycle_eulérien = cycles[0]
+on concatène les cycles de la liste en un seul cycle qui est eulérien
 ```
-
-Où `cycle(G)` est un algorithme permettant de trouver un cycle pour G. Sur le graphe précédant cela donne :
 
 #### 1ère itération
 
@@ -181,131 +146,64 @@ Enfin, le troisième cycle est $4564$ :
 
 ![exemple Euler](./euler_exemple_4.png)
 
-#### Concaténation des cycles
-
 Une fois le graphe vidé, on concatène les cycles ensemble en collant deux à deux des cycles ayant un élément en commun. Ici, en commençant par concaténer le second $43524$ et troisième cycle $4564$ ensemble en $43524564$. On peut ensuite rajouter le premier cycle faisant commencer le cycle $43524564$ par deux $24564352$ puis en les collant ensemble $24564352312$ pour donner le cycle eulérien final.
 
-### Trouver un cycle
+### Gestion des cycles
 
-Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente){.interne} (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel :
-
-```python
-def cycle(G):
-    if not G:
-        return []
-
-    a = list(G.keys()).pop()
-    return cycle_non_orienté(G, a)
-```
-
-{% info %}
-On a ajouté une _sentinelle_ qui traite le cas où $G$ est vide. Ceci permet de rendre un cycle (même vide) quelque soit le graphe.
-
-Sans cette sentinelle, l'algorithme planterait car on ne peut `pop`{.language-} une liste vide.
-{% endinfo %}
-
-### Décomposition du graphe en cycles
-
-Commençons par créer une fonction qui supprime un cycle du graphe :
-
-<span id="fonction-supprime"></span>
-
-```python
-def supprime_arêtes_du_cycle(c, G):
-    x = c[0]
-    for y in c[1:]:
-        G[x].remove(y)
-        G[y].remove(x)
-
-        x = y
-```
-
-Puis supprimons les sommets de degré zéro :
-
-```python
-def supprime_sommets_degré_zéro(G):
-    sommets = list(G.keys())
-
-    for x in sommets:
-        if len(G[x]) == 0:
-            del G[x]
-```
-
-{% attention %}
-On ne modifie **jamais** ce sur quoi on itère !
-
-Ici on commence par récupérer la liste des sommets de $G$ (les clés du dictionnaire G) avant peut-être de modifier G (supprimer des cls du dictionnaire).
-{% endattention %}
-
-Puis, en affichant les cycles trouvés par l'algorithme général de décomposition :
-
-```python
-les_cycles = []
-while G:
-    c = cycle(G)
-    les_cycles.append(c)
-    supprime_arêtes_du_cycle(c, G)
-    supprime_sommets_degré_zéro(G)
+Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente){.interne} (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel.
 
 
-print(les_cycles)
+Après itération des cycles, j'obtient la liste de cycles :
 
-```
+<div>
+$$
+[[1, 2, 5, 3, 1], [4, 2, 3, 4], [5, 4, 6, 5]]
+$$
+</div>
 
-J'obtiens (il y a d'autres possibilités) :
+Pour concaténer deux cycles ensemble, il faut pouvoir faire commencer deux cycles par le même sommet par un sommet donné `x`{.language-}. Si le cycle est représenté par sa liste $c = [x_0, \dots, x_p]$ avec $x_0 = x_p$ il suffit de faire un décalage de liste. Par exemple le cycle commençant en $x_i$ est :
 
-```python
-[['1', '2', '5', '3', '1'], ['4', '2', '3', '4'], ['5', '4', '6', '5']]
-```
+<div>
+$$
+c[i:] + c[:i] + [c[i]]
+$$
+</div>
 
-### Concaténation de deux cycles
+Puis coller deux cycles $c_1$ et $c_2$ par un sommet commun `x`{.language-} (le premier et les dernier) :
 
-Pour concaténer deux cycles ensemble, il faut pouvoir faire commencer un cycle par un sommet donné `x`{.language-} :
 
-```python
-def décale(cycle, x):
-    cycle = cycle[:-1]
-    i = cycle.index(x)
+<div>
+$$
+c_1 \oplus c_2 = c_1 + c_2[1:]
+$$
+</div>
 
-    return cycle[i:] + cycle[:i] + [cycle[i]]
-```
 
-Puis coller deux cycles par un sommet commun `x`{.language-} :
+Il suffit d'itérer le processus pour deux cycles en cherchant des cycles ayant un élément en commun.  Commençons par concaténer les deux derniers cycles de la liste par le sommet 4 :
 
-```python
-def concatène(c1, c2, x):
-    c1 = décale(c1, x)
-    c2 = décale(c2, x)
+<div>
+$$
+[4, 2, 3, 4] \oplus [5, 4, 6, 5] = [4, 2, 3, 4] \oplus [4, 6, 5, 4] = [4, 2, 3, 6, 5, 4]
+$$
+</div>
 
-    return c1 + c2[1:]
-```
+Notre liste devient :
 
-### Concaténation de tous les cycles
 
-Il suffit d'itérer le processus pour deux cycles en cherchant des cycles ayant un élément en commun :
+<div>
+$$
+[[1, 2, 5, 3, 1], [4, 2, 3, 6, 5, 4]]
+$$
+</div>
 
-```python
-def concatène_cycles(cycles):
-    while len(cycles) > 1:
-        c = cycles.pop()
-        for i in range(len(cycles)):
-            intersection = set(c).intersection(set(cycles[i]))
-            if intersection:
-                x = intersection.pop()
-                cycles[i] = concatène(cycles[i], c, x)
-                break
+On procède de même en concaténant nos cycle avec le sommet 3 :
 
-```
+<div>
+$$
+[1, 2, 5, 3, 1] \oplus [4, 2, 3, 6, 5, 4] = [ 3, 1, 2, 5, 3] \oplus [3, 6, 5, 4, 2, 3] = [3, 1, 2, 5, 4, 6, 5, 3, 4, 2, 3]
+$$
+</div>
 
-{% attention %}
-La fonction `concatène_cycles`{.language-} modifie la liste `cycles`{.language-} passé en paramètres : à la fin de l'algorithme cycles ne contient plus qu'un seul élément : le cycle eulérien.
-{% endattention %}
-
-J'obtiens, avec les cycles précédents :
-
-```python
-['3', '1', '2', '5', '4', '6', '5', '3', '4', '2', '3']
-```
 
 ## Généralisations
 
@@ -347,6 +245,3 @@ Tout circuit rentre et sort de chaque sommet du cycle, on a donc clairement que 
 Réciproquement, [l'exercice sur les degrés d'un graphe orienté](../chemins-cycles-connexite/#exercice-circuit-oriente){.interne} montre l'existence d'un circuit pour des graphes où $\delta^+(x) = \delta^-(x) \geq 1$ pour tout $x$.
 
 {% enddetails %}
-
-Les multi-graphe (orientés) qui possèdent un circuit eulérien sont exactement les multi-graphes où .
-

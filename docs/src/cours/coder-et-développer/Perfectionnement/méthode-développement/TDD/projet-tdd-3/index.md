@@ -16,7 +16,12 @@ Troisième et dernière partie du projet TDD.
 
 <!-- end résumé -->
 
-## Todo list initiale
+## Todo list et code
+
+{% lien %}
+[Code de la partie précédente](../projet-tdd-2/#fin){.interne}
+{% endlien %}
+
 
 - [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
 - [ ] gestion des arrondis (lorsque les montants seront des réels)

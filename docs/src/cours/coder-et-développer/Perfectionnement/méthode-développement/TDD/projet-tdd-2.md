@@ -34,7 +34,11 @@ Cela va être bien présent dans cette partie ou l'on va drastiquement modifier 
 
 Cela permet, en plus d'avoir un feedback immédiat en cas d'erreur (les tests ne passent plus on est **rouge**), d'avoir confiance dans ce que l'on code (si c'est vert c'est quo'n a rien cassé).
 
-## Todo list initiale
+## Todo list et code
+
+{% lien %}
+[Code de la partie précédente](../projet-tdd-1/#fin){.interne}
+{% endlien %}
 
 On reprend la todo list de la fin de la partie 1 :
 
@@ -42,6 +46,7 @@ On reprend la todo list de la fin de la partie 1 :
 - [ ] gestion des arrondis (lorsque les montants seront des réels)
 - [ ] `== None`{.language-}
 - [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+
 
 ## 6 -  les Francs
 
@@ -1425,7 +1430,7 @@ def test_devise():
 - [X] utilisation de devises plutôt que de classes ?
 - [X] supprimer les tests de `Franc`{.language-} ?
 
-## Bilan
+## <span id="fin"></span> Bilan
 
 Vous voyez le développement organique en TDD. On a commencé par deux classes distinctes, puis en codant, on s'est rendu compte qu'elles étaient inutiles et on les a petit à petit supprimées.
 
