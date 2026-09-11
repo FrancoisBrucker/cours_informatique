@@ -204,15 +204,64 @@ $$
 ## Algorithme optimal
 
 > TBD à finir.
+>
+> TBD écrire algo cycle partant de x
 
-On utilise [l'algorithme de Hierholzer](https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer)
+On utilise [l'algorithme de Hierholzer](https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer) qui implémente l'idée précédente mais l'optimise.
+
+Il fonctionne via cet algorithme :
+
+```text
+chemin(x, G):
+    
+    soit y un voisin de x dans G.
+    on supprime xy de G
+    c = [x, y]
+    tant que c[-1] ≠ x:
+        soit y un voisin de c[-1]
+        on supprime c[-1]y de G
+        c = c + [y]
+
+    rendre c
+
+```
+
+{% note2 "**Proposition**" %}
+Si G est eulérien l'algorithme chemin fonctionne.
+{% endnote2 %}
+{% details "preuve", "open" %}
+
+Seuls c[0] et c[-1] sont de degrés impair dans le G courant. Comme initialement les sommets de G sont tous de degré pair : on retombera forcément sur c[0] à un moment.
+{% enddetails %}
 
 1. Construction d'un premier cycle élémentaire : partir d'un sommet arbitraire et suivre des arêtes non encore utilisées jusqu'à revenir nécessairement à ce sommet (c'est garanti par la parité des degrés — chaque fois qu'on entre dans un sommet autre que le départ, il reste une arête pour en sortir).
-2. Extension du circuit : tant qu'il existe un sommet du circuit courant ayant des arêtes non utilisées, on part de ce sommet, on construit un nouveau circuit avec les arêtes restantes (on pourra toujours retomber sur le sommet d'origine !), et on l'insère dans le circuit courant à cet endroit.
+2. Extension du circuit : tant qu'il existe un sommet du circuit courant ayant des arêtes non utilisées, on part de ce sommet, on construit un nouveau circuit avec les arêtes restantes (on pourra toujours retomber sur le sommet d'origine !), et on l'insère dans le circuit courant à cet endroit en repérant la position des nouveaux éléments
 3. On répète jusqu'à épuisement de toutes les arêtes.
 
-> TBD complexité en nombre d'arête si on peut insérer facilement des élément dans les listes (via liste chaînée)
-.
+```text
+itérativement les cycles avec xi 
+
+T[1] = [x1 ... x1 ... x1 ... x1]
+T[2] = [x2 ... x2]
+...
+
+T[n] = [xn]
+```
+
+Certaines listes vont être vide. Mais la construction de tout ça se fait en m
+
+```
+E = T[1]
+T[1] =  vide
+i = 0
+tant que i < |E|:
+    si T[E[i]] non vide
+        E = E[:i] + T[i] + E[i:]
+        T[i] = vide
+    i += 1
+```
+
+puis on concatène petit à petit en ajoutant un à un les élément de la liste i et on stope si on trouve un élément non encore vu : on ajoute tout ses éléments ceci se fait aussi en m si on utilise des liste chaînées par exemple.
 
 ## Généralisations
 

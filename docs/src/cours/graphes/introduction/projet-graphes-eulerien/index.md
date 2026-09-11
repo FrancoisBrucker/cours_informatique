@@ -66,10 +66,12 @@ On aurait pu faire la copie en une ligne avec les [list comprehension](https://d
 3. On répète jusqu'à épuisement de toutes les arêtes.
 
 {% faire %}
-Faites l'algorithme sans utiliser de liste chaînée (utilisez des slice de listes) mais supprimez l'arête à chaque fois que vous en voyez une du graphe.
+Faites l'algorithme. Ne vous posez pas trop de question d'optimisation. Faites le déjà fonctionner.
 
 {% endfaire %}
-
+{% info %}
+On peut épuiser tous les cycles avec le premier élément, puis recentrer le cycle syr le premier élément qui a des
+{% endinfo %}
 ### Tests
 
 Générez aléatoirement des graphes eulériens (comme vu en cours) et mesurez le temps mis :
