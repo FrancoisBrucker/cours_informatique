@@ -38,7 +38,7 @@ Le problème revient maintenant de trouver un cycle qui passe par toutes les ar�
 
 <div id="definition-cycle-eulerien"></div>
 {% note "**Définition**" %}
-Soit $G= (V, E)$ un multi-graphe non orienté. Un **cycle eulérien** de $G$ est un cycle passant par toutes les arêtes du graphe.
+Soit $G= (V, E)$ un **multi-graphe non orienté**. Un **cycle eulérien** de $G$ est un cycle passant par toutes les arêtes du graphe.
 {% endnote %}
 {% info %}
 Comme les arêtes d'un cycle n'y apparaissent qu'une seule fois, un cycle eulérien passe exactement une fois par toutes les arêtes du graphe.
@@ -46,7 +46,7 @@ Comme les arêtes d'un cycle n'y apparaissent qu'une seule fois, un cycle eulér
 
 ### C'est impossible dans l'exemple
 
-Avec notre graphe c'est **impossible** car il faut pouvoir repartir d'un sommet après en être arrivé. Si un tel cycle existait pour tout $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ seraient des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe on en conclut que $\delta(u_i)$ serait paire.
+Avec notre graphe c'est **impossible** car il faut pouvoir repartir d'un sommet après en être arrivé. Si $u_0\dots u_m$ était un tel cycle ($u_0 = u_m$) alors pour tout $u_i$ on aurait que $u_{i-1}u_i$ (pour $0< i$) et $u_iu_{i+1}$ (pour $i < m$) seraient des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête toutes les arêtes de $u_i$ sont dans le cycle et on en conclut que $\delta(u_i)$ est paire.
 
 Comme $\delta(C) = 3$ et est impair, il est impossible de trouver un cycle eulérien dans notre graphe.
 
@@ -54,8 +54,8 @@ Comme $\delta(C) = 3$ et est impair, il est impossible de trouver un cycle eulé
 
 La remarque précédente nous donne une implication importante :
 
-{% note "**Remarque**" %}
-S'il existe un cycle eulérien pour un multi-graphe non-orienté $G$, alors tout sommet de ce graphe est de degré pair.
+{% note "**Proposition**" %}
+**S'il existe** un cycle eulérien pour un multi-graphe non-orienté $G$, **alors** tout sommet de ce graphe est de degré pair.
 {% endnote %}
 
 ### La réciproque sur un exemple ?
@@ -103,9 +103,6 @@ Pour cela, comme le graphe est connexe il va exister deux cycles $C_1$ et $C_2$ 
 
 ## Trouver un cycle Eulérien
 
-Codons l'algorithme de cycle eulérien.
-
-### Encodage
 
 On va se restreindre aux graphes non-orienté. Pour cela, notre codage par dictionnaire fonctionne tout à fait. Prenons par exemple le graphe :
 
@@ -115,7 +112,7 @@ Nous n'allons pas encore nous préoccuper d'encodage du graphe pour les algorith
 
 ### <span id="principe-algorithme"></span> Principe de l'Algorithme
 
-La démonstration de la réciproque donne également un algorithme de construction d'un cycle Eulérien pour un graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :
+La démonstration de la réciproque nous donne un algorithme de construction d'un cycle Eulérien pour un graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :
 
 ```text
 cycles = []
@@ -204,6 +201,18 @@ $$
 $$
 </div>
 
+## Algorithme optimal
+
+> TBD à finir.
+
+On utilise [l'algorithme de Hierholzer](https://fr.wikipedia.org/wiki/Graphe_eul%C3%A9rien#Algorithme_de_Hierholzer)
+
+1. Construction d'un premier cycle élémentaire : partir d'un sommet arbitraire et suivre des arêtes non encore utilisées jusqu'à revenir nécessairement à ce sommet (c'est garanti par la parité des degrés — chaque fois qu'on entre dans un sommet autre que le départ, il reste une arête pour en sortir).
+2. Extension du circuit : tant qu'il existe un sommet du circuit courant ayant des arêtes non utilisées, on part de ce sommet, on construit un nouveau circuit avec les arêtes restantes (on pourra toujours retomber sur le sommet d'origine !), et on l'insère dans le circuit courant à cet endroit.
+3. On répète jusqu'à épuisement de toutes les arêtes.
+
+> TBD complexité en nombre d'arête si on peut insérer facilement des élément dans les listes (via liste chaînée)
+.
 
 ## Généralisations
 

@@ -59,68 +59,15 @@ G2 = copy.deepcopy(G)
 On aurait pu faire la copie en une ligne avec les [list comprehension](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) de python : `G2 = {k: set(v) for k, v in G.items()}`{.language-}
 {% endinfo %}
 
-### Algorithmes
+### Algorithme de Hierholzer
 
-On veut que notre algorithme principal soit de ce type :
-
-
-```python
-import copy
-
-def cycle_eulérien(G):
-    G = copy.deepcopy(G)
-
-    cycles = []
-    while G:
-        c = cycle(G)
-        cycles.append(c)
-        supprime_arêtes_du_cycle(c, G)
-        supprime_sommets_degré_zéro(G)
-
-    concatène_cycles(cycles)
-    return cycles[0]
-```
-
-Où `cycle(G)`{.language-} est un algorithme permettant de concaténer une liste de cycles en un liste plus petite de cycles disjoints (un seul élément à la fin si ce sont les cycles d'un graphe eulérien connexe).
-
-
-On va coder les différents algorithmes !
+1. Construction d'un premier cycle élémentaire : partir d'un sommet arbitraire et suivre des arêtes non encore utilisées jusqu'à revenir nécessairement à ce sommet (c'est garanti par la parité des degrés — chaque fois qu'on entre dans un sommet autre que le départ, il reste une arête pour en sortir).
+2. Extension du circuit : tant qu'il existe un sommet du circuit courant ayant des arêtes non utilisées, on part de ce sommet, on construit un nouveau circuit avec les arêtes restantes (on pourra toujours retomber sur le sommet d'origine !), et on l'insère dans le circuit courant à cet endroit.
+3. On répète jusqu'à épuisement de toutes les arêtes.
 
 {% faire %}
-Codez l'algorithme `cycle(G)`{.language-} qui rend un cycle élémentaire $[x_0, \dots, x_p]$ (avec $x_0 = x_p$) d'un graphe où $\delta(x) > 1$ pour tout sommet $x$.
-{% endfaire %}
-{% info %}
-Trouver un cycle peut se faire en utilisant l'algorithme du cours [`cycle_non_orienté(G,x)`{.language-}](../chemins-cycles-connexite#algo-cycle-non-oriente){.interne} (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ, mais comme tous les sommets on un degré strictement positif, on peut prendre n'importe lequel.
-{% endinfo %}
+Faites l'algorithme sans utiliser de liste chaînée (utilisez des slice de listes) mais supprimez l'arête à chaque fois que vous en voyez une du graphe.
 
-Une fois cet algorithme codé le reste de la boucle est facile à implémenter :
-
-{% faire %}
-Codez les algorithmes :
-- `supprime_arêtes_du_cycle(c, G)`{.language-} qui supprimes les arêtes du cycle `c`{.language-} dans `G`{.language-},
-- `supprime_sommets_degré_zéro(G)`{.language-} qui supprimes les sommets de `G`{.language-} de degré 0
-{% endfaire %}
-
-Le dernier algorithme à créer est celui concaténant deux cycles. On va suivre le cours pour écrire :
-
-```python
-def concatène_cycles(cycles):
-    while len(cycles) > 1:
-        c = cycles.pop()
-        for i in range(len(cycles)):
-            intersection = set(c).intersection(set(cycles[i]))
-            if intersection:
-                x = intersection.pop()
-                cycles[i] = concatène(cycles[i], c, x)
-                break
-
-```
-
-Avec l'algorithme `concatène(c1, c2, x)`{.language-} qui rend la concaténations des cycles `c_1`{.language-} et `c_2`{.language-} via `x`{.language-} qui est un somment commun.
-
-
-{% faire %}
-Codez les algorithmes `concatène_cycles(cycles)`{.language-} et `concatène(c1, c2, x)`{.language-}.
 {% endfaire %}
 
 ### Tests
