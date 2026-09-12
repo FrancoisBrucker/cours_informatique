@@ -157,7 +157,7 @@ Ces fichiers ne doivent pas être ignorés et doivent être ajoutés à la sauve
 <h3>Travailler en local</h3>
 <ul>
 <li>commitez souvent pour pouvoir revenir en arrière si nécessaire</li>
-<li>créez des branches temporaires locale pour vos expérimentations et n'hésitez pas à revenir en arrière</li>
+<li>créez des branches temporaires locales pour vos expérimentations et n'hésitez pas à revenir en arrière</li>
 <li>utilisez un <a href="https://docs.github.com/en/get-started/git-basics/ignoring-files">fichier <code>.gitignore</code></a> pour contrôler les fichier à suivre. Tout fichier doit être soit suivi soit ignoré : ne tolérez pas d'exception sinon vous allez vous perdre et (forcément) faire des erreurs.</li>
 </ul>
 <h3>Récupérer l'état de l'origine</h3>
@@ -218,7 +218,7 @@ Ces fichiers ne doivent pas être ignorés et doivent être ajoutés à la sauve
 </ul>
 </li>
 <li>
-<p>corps du message : à n'utiliser que si nsi vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare</p>
+<p>corps du message : à n'utiliser que si vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare.</p>
 </li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -276,7 +276,7 @@ Ces fichiers ne doivent pas être ignorés et doivent être ajoutés à la sauve
 <p><a href="https://www.youtube.com/watch?v=hG_P6IRAjNQ">Présentation concise des deux méthodes</a> (2min08 et 4min38)</p>
 </div></div>
 
-<p>UN projet sous le git workflow va se représenter de cette façon :</p>
+<p>Un projet sous le git workflow va se représenter de cette façon :</p>
 <p><img src="git_flow_4.png" alt="Git_flow_4"></p>
 <p>Chaque branche va avoir sa sémantique propre qui permet de savoir immédiatement ce que'elle fait :</p>
 <ul>
@@ -287,7 +287,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <li><code>hotfix/&lt;nom hotfix&gt;</code>. Les branches hotfix sont nécessaires pour agir immédiatement sur un statut non désiré de master. Peut se ramifier à partir de master et doit fusionner dans master et develop.</li>
 <li><code>release/&lt;nom release&gt;</code>. Les branches de version prennent en charge la préparation d'une nouvelle version de production. Elles permettent de corriger de nombreux bogues mineurs et de préparer les méta-données pour une version. Peut se ramifier à partir de develop et doit fusionner avec master et develop.</li>
 </ul>
-<p>Le principal soucis, outre son formalisme stricte, est la multiplicité des des branches qui fait qu'on peut facilement s'y perdre.</p>
+<p>Le principal soucis, outre son formalisme stricte, est la multiplicité des branches qui fait qu'on peut facilement s'y perdre.</p>
 <h3>Continuous Integration</h3>
 <p>La continuous integration prend le contre-pied des méthodes précédentes et préconise de minimiser le nombre et la durée des branches au stricte maximum tout en commitant souvent sur la branche principale. Le but ultime de cette méthode est d'avoir le workflow suivant :</p>
 <p><img src="git_flow_1.png" alt="CI"></p>
