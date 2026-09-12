@@ -2,7 +2,7 @@
 layout: layout/post.njk
 
 title: Gestion de l'évolution de son code source
-tags: ["cours", "projet"]
+tags: ["projet"]
 
 eleventyComputed:
   eleventyNavigation:

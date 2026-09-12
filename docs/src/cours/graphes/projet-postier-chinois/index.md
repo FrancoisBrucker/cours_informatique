@@ -108,3 +108,43 @@ Supposons qu'il existe un couplage de poids plus faible.
 
 > TBD <http://biblos.hec.ca/biblio/memoires/m2001no11.pdf>
 > Christofides <https://en.wikipedia.org/wiki/Christofides_algorithm> On verra plus tard que 3/2 approximation avec l'algo exact et 2 approximation avec la 1/2 heuristique
+
+
+### Graphes mixtes
+
+Le cas d'intérêt pratique des circuit eulérien est lorsque l'on utilise des multi-graphes mixtes puisqu'ils permettent de modéliser un réseau routier avec des routes à sens unique ou à double sens et plusieurs routes menant à des mêmes croisements.
+
+{% note "**Définition**" %}
+Soit $G= (V, E, A)$ un multi-graphe mixte. Un **circuit eulérien** de $G$ est alors un circuit de $G$ prenant tous les arc et toutes les arêtes de $G$.
+{% endnote %}
+
+Ce qui est intéressant ici, c'est que la condition nécessaire et suffisante pour que le multi-graphe mixte soit eulérien n'est pas juste l'union des conditions pour les multi-graphes non orienté et orienté. S'il est clair que l'union de ces deux conditions fonctionne (tout se passe comme si on avait deux graphes disjoints que l'on raboute ensuite), la condition nécessaire et suffisante est plus générale comme le montre l'exemple suivant, qui fonctionne mais ne correspond pas à l'union des conditions orientées et non orientées :
+
+![multi euler](./multi-euler.png)
+
+Pour que cela fonctionne, on doit modifier la condition de parité pour prendre en compte les deux types d'arêtes et ajouter une condition dites d'équilibre :
+
+{% note "**Proposition**" %}
+
+Un (multi-)graphe mixte $G$ possède un circuit eulérien si et seulement si :
+
+- il est **pair** : pour tout sommet $x$ le nombre $\delta(x) + \delta^+(x) + \delta^-(x)$ est pair
+- il est **équilibré** : quelque soit $S \subseteq V$ :
+
+$$
+\vert \\{ xy \in A \mid x \in S, y \in V \backslash S\\} \vert - \vert \\{ yx \in A \mid x \in S, y \in V \backslash S\\} \vert \leq \vert \\{ xy \in E \mid x \in S, y \in V \backslash S\\} \vert
+$$
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Tout d'abord, on peut toujours s'arranger pour que $
+\vert \\{ xy \in A \mid x \in S, y \in V \backslash S\\} \vert - \vert \\{ yx \in A \mid x \in S, y \in V \backslash S\\} \vert$ soit positif, au pire on prend le complémentaire $S\backslash V$ de $S$.
+
+La condition d'équilibre est nécessaire puisque si un circuit eulérien existe il faut pouvoir passer un nombre égal de fois de $V$ à $S\backslash V$ et de $S\backslash V$ à $S$. De plus comme pour le circuit eulérien on entre et on sort de chaque sommet à chacune de ses apparition sur le cycle la parité est également nécessaire.
+
+Réciproquement, si le degré est pair, on peut trouver un cycle mixte au multi-graphe mixte en utilisant [la technique classique](../chemins-cycles-connexite/#prop-cycles-graphe){.interne} et en progressant s'il existe un arc ou une arête permettant de faire grandir le chemin, soit en reculant car s'il n'existe pas d'arc sortant du chemin, il existe forcément un arc (ou une arête entrant).
+
+ Le supprimer du graphe va conserver les deux propriétés puisque sur ce cycle, on va rentrer et sortir un nombre égal de fois de tout $V \subseteq V$. On peut donc procéder itérativement, comme on l'a fait pour le multi-graphe non orienté, pour trouver un circuit mixte eulérien à notre multi-graphe mixte.
+
+{% enddetails %}

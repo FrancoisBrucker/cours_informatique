@@ -10,6 +10,8 @@ eleventyNavigation:
     - "/cours/système-et-réseau/bases-système/bases/fichiers-navigation/"
 resume: "Comment gérer les sources d'un projet avec git et github."
 
+date: 2026-01-03
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"

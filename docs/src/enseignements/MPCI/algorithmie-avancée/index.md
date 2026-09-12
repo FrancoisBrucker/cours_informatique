@@ -1,9 +1,9 @@
 ---
 layout: layout/post.njk 
-title: "S5 : Algorithmie avancée"
+title: "S5 : Algorithmie 3 (avancée)"
 
 eleventyNavigation:
-  order: 4
+  order: 5
 
 eleventyComputed:
   eleventyNavigation:
@@ -28,6 +28,69 @@ eleventyComputed:
 ## Programme
 
 En trois parties.
+
+> EN chantier.
+
+### Théorie des graphes
+
+> Semaine 1 à ...
+
+{% lien %}
+[Introduction à la théorie des graphes](/cours/graphes/introduction)
+{% endlien %}
+
+Un outil de modélisation puissant pour résoudre (joliment) nombre de problèmes informatique.
+
+{% lien %}
+- [exercices](https://webusers.imj-prg.fr/~benjamin.girard/TD3_LM226.pdf)
+- [Proof from the book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK)
+
+{% endlien %}
+
+#### Cours 1
+
+{% aller %}
+
+1. [Graphes bases](/cours/graphes/introduction/structure){.interne} :
+   1. rappel des définitions
+   2. quelques propriétés sur les degrés, les chemins et les cycles
+2. Rappel : [encodage d'un graphe](/cours/graphes/introduction/encodage/){.interne}
+3. [chemins cycles et connexité](/cours/graphes/introduction/chemins-cycles-connexite/){.interne}
+   1. chemin
+   2. composante connexe
+
+{% endaller %}
+
+Pour la semaine prochaines, 2 exposés tiré du proofs from the book.
+
+#### Cours 2
+
+{% attention %}
+Un exposé du proof from the book
+{% endattention %}
+
+{% aller %}
+
+1. [Cycles eulérien](/cours/graphes/introduction/parcours-eulériens/){.interne} :
+2. Une conséquence inattendue : [Mots de Bruijn](/cours/graphes/introduction/projet-mots-bruijn/){.interne}
+
+{% endaller %}
+{% faire %}
+Coder les parcours eulérien et les mots de Bruijn.
+{% endfaire %}
+
+
+#### Cours 3
+
+> TBD : graphes eulériens et conséquences.
+
+<!-- 
+
+Vous utiliserez la bibliothèque <<https://networkx.org> pour dessiner des graphes.
+> <https://networkx.org/documentation/stable/reference/drawing.html>
+> <https://networkx.org/documentation/stable/auto_examples/index.html>
+
+
 
 ### Modèles de calculs et classes de problèmes "utiles"
 
@@ -262,7 +325,7 @@ A rendre pour le 18 octobre.
 >    2. faire le premier exercice
 > 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
 
--->
+--> -->
 
 ## Modalités de contrôle
 

@@ -15,295 +15,248 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-24 heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.
+15h+6h heures de cours pour apprendre le python objet, les bases de la gestion des sources avec git et la programmation par les tests.
 
-<!-- TBD 
+{% info %}
 
-Modifier le plan pour l'année prochaine. Mettre l'environnement virtuel en fin de 2A, partie IV
-
-voir ce qui passe pour les 1A et décaler le I et II (le faire sans test mais y mettre l'interpréteur et le debogueur. Ajouter un tuto pour qu'il puisse montrer ce qu'est une variable. l'exécution d'une commande et d'une fonction) 
-
-## Partie I : le système
-
-> TBD Ca c'est JEMNEP
-
-> TBD ici programme python et interpréteur
-> débogueur pour voir comment il s'exécute.
-> le chemin pour savoir où exécuter son python.
-> installer des modules (ici numpy ou matplotlib) sur un python spécifique
-
-## Partie II : un algorithme
-
-> TBD ici JEMNEP : input ≠ return et les fonctions. Un programme qui fait tout
->
-> TBD ici tests et installation de pytest sur le python du système
-
-## Partie III : un programme
-
-> TBD ici JEMNEP : deux fichiers ou on sépare main et fonctions. On dit pourquoi
-> TBD ici dépendances puis prog objet
-> TBD en 3A on ajoute design et TDD
-
-## Partie IV : Le projet
-
-> TBD ici JEMNEP : un zip et le fichier requirement.txt + readme
-> TBD ici git pour le projet
-> puis virtualenv pour la gestion des dépendances.
-
--->
-
-## Note
-
-- 2 tests de 15min sur papier les 2ème et 3ème lundi (8h-8h15)
-- [un projet à rendre](./#projet-final){.interne} sur github la dernière semaine
-
-## Partie I : le système
-
-<!-- TBD
-
-l'année prochaine mettre lire et écrire du code avant debogueur puis virtualenv dans la partie gérer un projet
-
-en 1A un fichier avec tout puis 2 fichiers avec des imports
-en 2A 3 fichier main/fct et test. 
- 
- -->
-### Cours
-
-> Durée 3h plus questions
-
-#### Utiliser le réseau
-
-Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
+Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes pour vos travaux en TD/TP.
 
 - login : votre adresse mail
 - mot de passe : celui de l'ent ECM
 
-Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
+Sous Linux suivez les instructions de : <https://cat.eduroam.org/>
 
-#### Connaissances minimales du système d'exploitation
-
-{% aller %}
-[Principes d'un système d'exploitation](/cours/système-et-réseau/bases-système/bases/principes){.interne}
-{% endaller %}
-
-#### Installations système complémentaires
-
-Outils et logiciels très utiles pour l'utilisation raisonnée de son système.
-
-- **sous Windows**, ayez un compte sur le [microsoft store](https://apps.microsoft.com/home?hl=fr-FR&gl=FR).
-- **sous mac** installez <https://brew.sh/> qui vous permettra d'installer de nombreux package unix : [installer brew](/cours/système-et-réseau/bases-système/système-installation/brew/){.interne}.
-- **sous Linux/Ubuntu**, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
-
-Si votre système est vieux et que vous l'utiliser sans vous en occuper depuis longtemps, cela peut valoir le coup d'en faire une nouvelle installation. Ceci est optionnel si votre système fonctionne.
-
-{% info %}
-Cette étape est **optionnelle**. Ne la faites que si votre ordinateur commence à avoir des comportement erratique, signe d'un système malade.
 {% endinfo %}
+
+Tous les exercices et rendu sont fait pour être réalisé sans IA :
+
+{% attention "**IA et code**" %}
+
+Les agents IA sont de formidables accélérateurs en développement, **mais** :
+
+- ils n'inventent rien de neuf : ils ne peuvent répondre qu'à des problèmes déjà résolus,
+- ils peuvent (vont parfois) halluciner et donner des solutions qui semblent corrects mais sont fausses en réalité
+
+En temps que développeur **vous avez l'obligation** :
+
+- de préparer le terrain aux agent étant le plus explicite possible dans vos demandes
+- de toujours vérifier le code produit
+- de connaître le fonctionnement de votre projet et pouvoir modifier le code si nécessaire
+
+
+Pour cela : 
+
+- vous devez **appendre** le cours 
+- **faire vous même** les exercices et les TDs pour assimiler les concepts
+- utiliser l'IA dans les projets plus long en vérifiant chaque étape produite
+
+{% endattention %}
+
+## Partie 0 : Vérification des acquis
+
+> 1h cours
+
 {% aller %}
-[installation d'u nouveau système](/cours/système-et-réseau/bases-système/système-installation/){.interne}
+[Rappels](/cours/coder-et-d%C3%A9velopper/apprendre-programmation/concepts/){.interne}
 {% endaller %}
 
-#### Dossiers et fichiers
+
+Pour terminer cette partie, utilisez [un interpréteur en ligne](https://console.basthon.fr/) ou [spyder](https://www.spyder-ide.org/) pour vous rafraîchir la mémoire en python :
 
 {% aller %}
-[Naviguer dans un système de fichiers](/cours/système-et-réseau/bases-système/bases/interactions/fichiers-navigation/){.interne}
+[84 monolignes en python](/cours/coder-et-développer/apprendre-programmation/concepts/mono-lignes/){.interne}
 {% endaller %}
 
-#### Ordinateur pour le développement en python
+Vous devriez être capable de comprendre toutes les solutions et (dans le meilleur des cas) d'en faire une grande partie.
 
-Vous aurez besoin d'installer python et un logiciel pour programmer :
+## <span id="partie-1"></span>Partie I : Projets informatique 
+
+### Interpréteur python et IDE
+
+> 1h cours
 
 {% aller %}
-[Installer python et un interpréteur](/cours/coder-et-développer/bases-programmation/interpréteur/){.interne}
+1. Interagir avec le système :
+   1. [Naviguer dans un système de fichiers](/cours/système/interagir-avec-système/fichiers-dossiers/){.interne}
+   2. [Terminal](/cours/système/interagir-avec-système/terminal/){.interne}
+2. [Installer un interpréteur et un IDE](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
 {% endaller %}
+{% info %}
+[Installer des paquets](/cours/système/interagir-avec-système/gestionnaire-paquets/){.interne}
+{% endinfo %}
 
-#### Interpréteur python
+### Principe de conduite d'un projet informatique
 
-{% aller %}
+> 1h TD
 
-1. [versions de python](/cours/coder-et-développer/version-python/){.interne}
-2. [virtualenv](/cours/coder-et-développer/environnements-virtuels/){.interne} pourquoi et comment avec vscode
-
-{% endaller %}
-
-#### Exécution (pas à pas) d'un programme
+Les deux principes fondamentaux lorsque l'on développe un projet informatique est de séparer le programme principal des fonctions et de conserver les tests qui nous on permis de vérifier qu'elles fonctionnent :
 
 {% aller %}
-
-1. [comprendre et corriger un programme grace au déboguer](/cours/coder-et-développer/debugger/){.interne},  
-2. [variables (locales), pile et _stackframe_](/cours/coder-et-développer/données-mémoire/){.interne}
-
-{% endaller %}
-
-> TBD debug avec un environnement virtuel : <https://m-ruminer.medium.com/vscode-and-debugging-python-in-virtual-environments-d975125b455c>
-> doc <https://code.visualstudio.com/docs/python/debugging>
-
-### TD
-
-{% aller %}
-
-1. faites les tutoriels du cours :
-   1. de vscode
-   2. du débogueur
-   3. faites un environnement virtuel, installez matplotlib et [faites le tutoriel](/cours/coder-et-développer/bases-programmation/matplotlib/){.interne} dans un vscode
-2. Utilisez les exercices de la partie [on s'entraîne](/cours/coder-et-développer/projet-codes/){.interne} pour :
-   1. installer un environnement virtuel par projet
-   2. comprendre comment fonctionne le débogueur
-   3. faire un code qui fonctionne
-
-{% endaller %}
-
-## Partie II : développement
-
-### Écrire du code
-
-{% aller %}
-[lire et écrire du code](/cours/coder-et-développer/écrire-code/){.interne}
-{% endaller %}
-
-> À retenir : S'il y a bien une chose que ne doit pas faire une IA, c'est écrire vos tests !
-
-### Un programme comme imbrications d'objets
-
-#### Concevoir des classes et des objets
-
-{% aller %}
-
-1. [Classes et objets](/cours/coder-et-développer/programmation-objet/classes-et-objets/){.interne}
-2. [Coder ses objets](/cours/coder-et-développer/programmation-objet/coder-ses-objets/){.interne}
+1. Séparer code et fonctions en [créant ses propres modules](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/création-modules/){.interne}
+2. [Tester ses fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/outils/){.interne}
 
 {% endaller %}
 
-#### Améliorer ses objets
+Pour aller plus loin, comment trouver des bugs de façon efficace :
+
+{% aller %}
+[Utiliser le débogueur pour corriger son code](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/débogueur/){.interne}
+{% endaller %}
+
+### À vous
+
+> 2h TP
+
+Les 3 exercices se suivent et prennent les mêmes exemples. Faite un exemple au complet (fonction puis création module puis test) avant de passer à un autre.
 
 {% aller %}
 
-[Améliorer l'utilisabilité de ses objets](/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/){.interne}
+1. [Création de fonctions](/cours/coder-et-développer/apprendre-programmation/concepts/projet-codes/){.interne}
+2. [Séparation main/fonctions](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-création-modules/){.interne}
+3. [On ajoute des tests](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-codes-tests/){.interne}
 
 {% endaller %}
 
-#### Combiner ses objets entre eux
+Pour aller plus loin :
+
+{% aller %}
+[exercices divers](/cours/coder-et-développer/apprendre-programmation/coder-projets/exercices-tests/){.interne}
+{% endaller %}
+{% info %}
+Vous aurez besoin d'utiliser des fichiers, donc lisez [la partie consacrée aux fichiers du cours](/cours/coder-et-développer/apprendre-programmation/coder-projets/gestion-données/fichiers/){.interne}
+{% endinfo %}
+
+
+### À rendre
+
+> 2h DM à rendre sur Moodle
+
+Lisez la partie du cours suivant et faire le rendu qu'il faudra déposer sur Moodle :
+
+{% aller %}
+1. [Bonnes pratiques et mantra](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/bonnes-pratiques/){.interne}
+2. [Mise en œuvre d'un projet informatique](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/){.interne}
+{% endaller %}
+
+
+{% faire "**Travail à rendre** "%}
+Faite le [Projet pourcentage](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-pourcentages/){.interne}. 
+{% endfaire %}
+{% attention %}
+ Le travail (code + réponse aux questions) est à rendre [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 16/09 à 8h00**.
+{% endattention %}
+{% info %}
+Vous rendrez un dossier contenant :
+- le code (uniquement les fichiers `.py`{.fichier} (main, fonctions et tests), pas le dossier `__pycache__`{.fichier} par exemple,)
+- un ficher texte `réponses.md`{.fichier} où vous aurez répondu aux questions. Vous utiliserez [le format markdown](/cours/coder-et-développer/apprendre-programmation/coder-projets/écrire-code/projet-informatique/#doc){.interne}.
+{% endinfo %}
+
+
+
+## Partie II : Classes et objets
+
+{% prerequis "**À lire avant la séance**" %}
+[Tout est objet en python](/cours/coder-et-développer/apprendre-programmation/programmation-objet/introduction/){.interne}
+{% endprerequis %}
+
+### Classe et objets en python
+
+> 2h cours
+
+{% aller %}
+1. [Classes et objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/classes-et-objets/){.interne}
+2. [Des dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés/){.interne}
+{% endaller %}
+
+### A vous
+
+> 1h TP
+
+{% aller %}
+[Projet cartes](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes/){.interne}
+{% endaller %}
+
+### Rendre ses objets plus conviviaux
+
+> 1h CM / 1h TD
 
 {% aller %}
 
-[Composition et agrégation d'objets](/cours/coder-et-développer/programmation-objet/composition-agrégation/){.interne}
+1. [Améliorer ses objets](/cours/coder-et-développer/apprendre-programmation/programmation-objet/améliorer-ses-objets/){.interne}
+2. [Des dés améliorés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-amélioration/){.interne}
+
 
 {% endaller %}
 
-#### Héritage
+#### À rendre
+
+> 2h DM à rendre sur github et ne mettre sur Moodle qu'un fichier texte contenant le lien vers le dépôt github.
+
+{% prerequis "**Travail préparatoire**" %}
+Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dépôt/){.interne} sur github.
+{% endprerequis %}
+
+
+{% faire "**Travail à rendre** "%}
+[Cartes améliorées](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-cartes-amélioration/){.interne}
+{% endfaire %}
+{% attention %}
+ Le travail est à rendre **sur github** et en mettant le lien vers le déport [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/09 à 8h00**.
+{% endattention %}
+
+## Partie III : Composition/agrégation et héritage
+
+### Composition et agrégation
+
+> 2h cours
 
 {% aller %}
-
-1. [Héritage](/cours/coder-et-développer/programmation-objet/héritage/){.interne}
-2. [on s'entraîne](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
-
+1. [Composition et agrégation](/cours/coder-et-développer/apprendre-programmation/programmation-objet/composition-agrégation/){.interne}
+2. [Des compositions de dés](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-composition-aggrégation-dés/){.interne}
 {% endaller %}
 
-### TD
+### À vous
 
-Vous pouvez faire dans l'ordre ou choisir un sujet (cartes ou dés) puis le faire en entier.
+> 2h TP
 
 {% aller %}
-
-0. Écrire ses tests :
-   1. [projet hello dev](/cours/coder-et-développer/écrire-code/tutoriel-hello-dev/){.interne}
-   2. [projet "pourcentages"](/cours/coder-et-développer/écrire-code/projet-pourcentages/){.interne}
-1. Coder des objets :
-   1. [projet dés](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne}
-   2. [projet cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
-2. Améliorer ses objets :
-   1. [améliorer les dés grâce aux accesseurs](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne}
-   2. [améliorer les cartes en protégeant ses attributs](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne}
-3. Combiner les objets entres-eux :
-   1. [composer des dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés/){.interne}
-   2. [composer des cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes/){.interne}
-
+[Projet cartes et bataille](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-agrégation-cartes/){.interne}
 {% endaller %}
 
-## Partie III : gestion des sources
+### Héritage
 
-<!-- > TBD test
-1. mise en oeuvre des tests unitaires
-2. intérêt des tests unitaire dans le développement d'un projet
-3. intérêt de la programmation objet dans le développement d'un projet
-
- -->
-
-### Cours
-
-<!-- > TBD reordonner et faire github puis diff puis ajout d'un utilisateur avant usage. 
-
-Et du coup faire github en cours, puis td puis usage pour voir comment tout ça se fait. 
-(En l'état comme ils ne savent ce qu'il faut faire la partie usage est trop abstraite)
-Puis Comment faire Et enfin apres : la ligne de commande -->
-
-<!-- > TBD en 1A ne garder que ce que doit être un projet :
-- readme
-- contributing
-- tests
-- requirements
-- doc si nécessaire
-
-Puis on envoie tout sur github comme un drive (sans le .venv !)
--->
+> 1h cours
 
 {% aller %}
-
-[Gestion des sources](/cours/gestion-des-sources/){.interne} (jusqu'à la partie outils) :
-
-1. [principes](/cours/gestion-des-sources/principes){.interne}
-2. usage :
-   1. [configuration](/cours/gestion-des-sources/usage-quotidien/){.interne}
-   2. [bonnes pratiques](/cours/gestion-des-sources/bonnes-pratiques/){.interne}
-
+1. [Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/héritage/){.interne}
+2. [Dés spécifiques](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-objets-dés-héritage/){.interne}
 {% endaller %}
 
-### TD
+#### À rendre
 
-{% aller %}
+> 2h+ DM à rendre sur github et ne mettre sur Moodle qu'un fichier texte contenant le lien vers le dépôt github.
 
-1. [Création d'un compte Github](/cours/gestion-des-sources/github-origin/compte-github/){.interne}
-2. [Découverte de github](/cours/gestion-des-sources/github-origin/projet-github/){.interne}
-3. [SCM avec Github](/cours/gestion-des-sources/github-SCM/projet-github-desktop/){.interne}
 
-{% endaller %}
 
-## <span id="projet-final"></span>Projet final
+{% prerequis "**Travail préparatoire**" %}
+1. [création d'un environnement virtuel](/cours/coder-et-développer/apprendre-programmation/gestion-dépendances/environnements-virtuels/){.interne} pour ses projets
+2. mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dépôt/){.interne} sur github.
 
-À rendre :
+{% endprerequis %}
 
-{% faire "**Évaluation finale**"%}
 
-Faites [le projet bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/) en utilisant tout ce que l'on a vu :
+{% faire %}
 
-- un environnement virtuel,
-- des tests,
-- un SCM,
-- des commits réguliers.
+Rendre le projet [Bataille Navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale){.interne}. 
 
-Ce projet doit avoir :
+Les consignes sont :
 
-1. un fichier `.gitignore`
-2. un fichier readme pour expliquer comment exécuter votre jeu
-3. un fichier `requirement.txt` pour vos dépendances (il doit au moins y avoir `pytest`)
-4. au moins un commit par item avec un `?` à faire.
+- le projet doit se trouver sur github
+- mettre de la couleur dans vos sorties en utilisant le module <https://github.com/termcolor/termcolor>
+- il doit fonctionner avec un environnement virtuel : le fichier `requirements.txt`{.fichier} est requis
+
 
 {% endfaire %}
 {% attention %}
-À rendre pour le 17/11 sur [moodle](https://moodle.centrale-med.fr/mod/assign/view.php?id=53201) **un unique lien** vers un repo de votre github public.
+ Le travail est à rendre **sur github** et en mettant le lien vers le dépôt [sur Moodle](https://moodle.centrale-med.fr/course/view.php?id=1523) **avant mercredi 23/11 à 8h00**.
 {% endattention %}
-
-<!-- > TBD note avec commit pertinent sur un petit projet
-tbd mettre un .gitignore
- -->
-
-## Liens
-
-Basé sur les cours :
-
-{% lien %}
-
-- [Coder et développer en python](/cours/coder-et-développer){.interne}
-- [Système et réseau](/cours_informatique/cours/système-et-réseau){.interne}
-
-{% endlien %}

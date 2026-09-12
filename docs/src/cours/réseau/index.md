@@ -6,6 +6,8 @@ tags: ['cours', 'réseau']
 authors:
     - "François Brucker"
 
+date: 2026-01-06
+
 eleventyComputed:
     eleventyNavigation:
         key: "{{ page.url }}"

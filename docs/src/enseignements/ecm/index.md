@@ -29,7 +29,7 @@ $
 
 ### <span id="mdd"></span>Méthodes de développement
 
-une série de 3 enseignements orientés développement et axé autour de 3 thèmes :
+une série de 2 enseignements orientés développement et axé autour de 3 thèmes :
 
 - le développement proprement dit : comment écrire du code propre et fonctionnel ([clean code that works](https://www.amazon.com/Test-Driven-Development-Kent-Beck/dp/0321146530))
 - le système : là où sera exécuté le code
@@ -37,13 +37,17 @@ une série de 3 enseignements orientés développement et axé autour de 3 thèm
 
 Chaque année est bâtie sur la précédente mais peut très bien être abordée en autonomie.
 
+<!-- 
+
 #### 1A
 
 Semaine d'Ouverture Scientifique :
 
 {% aller %}
 [JEMNEP](1A/jemnep/){.interne} (bases de la programmation en python)
-{% endaller %}
+{% endaller %} 
+
+-->
 
 #### 2A
 
@@ -55,7 +59,7 @@ S7 MIE :
 
 #### 3A
 
-Dans [le parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
+Temps 1 du [parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
 
 {% aller %}
 [Méthode de développement](3A/do-it/mdd/){.interne}
@@ -63,19 +67,19 @@ Dans [le parcours d'approfondissement Do_It](https://docs.google.com/document/d/
 
 ### Linux
 
-Temps 2 développement `Do_It`
+Temps 3 du [parcours d'approfondissement Do_It](https://docs.google.com/document/d/1My04fL6Ze0MKdTWqivqKpXJ9SGyTtDbFrY2EQBFSPDw/)
 
 {% aller %}
 [Linux et système](3A/do-it/linux/){.interne}
 {% endaller %}
 
-### Cryptographie
+<!-- ### Cryptographie
 
 Temps 3 développement `Do_It` :
 
 {% aller %}
 [Cryptographie](3A/do-it/cryptographie/){.interne}
-{% endaller %}
+{% endaller %} -->
 
 ## Comment apprendre l'informatique dans une école "généraliste"
 

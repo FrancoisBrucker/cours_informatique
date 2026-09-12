@@ -1,0 +1,278 @@
+---
+layout: layout/post.njk
+title: Modules et espace de nommage
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
+---
+
+Un _module_ (aussi appelé _bibliothèque_ ou _library_) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Python vient avec de nombreux modules, par exemple :
+
+- [math](https://docs.python.org/fr/3.14/library/math.html) qui contient les fonctions mathématiques courantes,
+- [random](https://docs.python.org/fr/3.14/library/random.html) qui permet de générer toutes sortes de nombres aléatoires,
+- [pathlib](https://docs.python.org/3/library/pathlib.html) pour naviguer dans l'arborescence du disque dur,
+- ...
+
+{% attention2 "**À retenir**" %}
+Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
+est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de nombreux via sa bibliothèque standard.
+{% endattention2 %}
+{% lien %}
+[Bibliothèque standard de python](https://docs.python.org/fr/3.14/library/index.html)
+{% endlien %}
+
+## Espace de nommage
+
+Pour utiliser un module, il faut commencer par l'importer avec la commande `import`{.language-}. Il existe plusieurs façon de faire, mais toutes fonctionnent sur le même principe : python va lire le module et associer les noms qu'il trouve à un espace de nom. Le mot clé utilisé est `import <nom de module>`{.language-} ou une de ses variations.
+
+Nous allons ici calculer le cos de $\pi/2$. Pour cela commençons par utiliser la méthode explicite qui va nous permettre de montrer le fonctionnement interne de l'utilisation des modules.
+
+On met le nom complet avant chaque appel. Par exemple le code suivant  qui utilise le module `math`{.language-}:
+
+```python/
+import math
+
+pi_sur_deux = math.pi / 2
+print(math.cos(pi_sur_deux))
+```
+
+Regardons ligne à ligne comment se comporte l'interpréteur avec les variables. La première ligne du code précédent crée une variable de nom `math`{.language-} et de type `module`.
+
+```python/
+>>> import math
+>>> type(math)
+<class 'module'>
+>>>
+```
+
+Un module contient un objet python appelé _espace de nommage_ et qui permet d'associer des noms à des objets.
+
+<div id="définition-espace-nommage"></div>
+
+{% note2 "**Définition**" %}
+Un **_espace de nommage_** est un endroit où sont stockées des variables.
+
+C'est un espace de variables "_local_", par opposition à l'espace de variable "_global_" qui est créé au démarrage de l'interpréteur.
+{% endnote2 %}
+{% info %}
+On a déjà vu ce principe avec [l'utilisation de fonction](../fondements-programmation/écrire-fonctions/#variables){.interne} ! En interne python crée un espace de nommage pour les variables créées par l'exécution d'une fonction puis le supprime une fois la fonction terminée.
+{% endinfo %}
+
+Représentons ceci graphiquement :
+
+![espace de nommage 1](espace-nommage-1.png)
+
+L'espace de nommage (la flèche verte) contient tous les noms définis dans le module math (symbolisés par les `...`), en particulier les noms `pi` et `cos`, eux-même liées à des objets. Explicitons-le :
+
+![espace de nommage 2](espace-nommage-2.png)
+
+Pour accéder aux objets d'un espace de nommage, on utilise la notation pointée :
+
+
+<div id="définition-notation-pointée"></div>
+
+{% note2 "**Définition**" %}
+Lorsqu'un objet `o`{.language-} contient un espace de nommage, on peut accéder aux noms qui y sont stockés en utilisant **_la notation pointée_** :
+
+```python
+o.a
+```
+
+La ligne de code précédente rend l'objet de nom `o.a`{.language-} c'est a dire l'objet de nom `a`{.language-} dans l'espace de nom de l'objet de nom `o`{.language-}
+{% endnote2 %}
+
+À l'issue de la seconde ligne on est dans l'état suivant :
+
+![espace de nommage 3](espace-nommage-3.png)
+
+La dernière ligne est alors exécutée de la même manière.
+
+### Importation d'une méthode particulière
+
+On peut aussi importer le module, mais ne pas retenir son nom :
+
+```python
+from math import cos, pi
+```
+
+Après la ligne de l'import on est dans la situation suivante :
+
+![espace de nommage 4](espace-nommage-4.png)
+
+Le module est importé mais est inaccessible, seules les noms de l'import le sont. Le ramasse-miette supprime ensuite les objets inaccessible, ici le module. Donc Au final on a :
+
+![espace de nommage 5](espace-nommage-5.png)
+
+Ce qui nous permet ensuite d'écrire :
+
+```python
+>>> cos(pi / 2)
+6.123233995736766e-17
+```
+
+{% info %}
+Dans cette façon de faire, on associe des noms du module math à l'espace de nom global. Il n'y a aucune manière d'accéder aux autres noms défini dans math avec cette façon de faire.
+{% endinfo %}
+
+### Importation de toutes les fonctions du modules
+
+Une généralisation du cas précédent permet de tout importer :
+
+```python
+>>> from math import *
+>>> log(e)
+1.0
+```
+
+{% attention %}
+Cette méthode est **déconseillée dans la plupart des cas** car on ne sait pas vraiment ce qui a été importé. Ce qui nuit à la lisibilité du code.
+{% endattention %}
+
+### Importation de modules sous la forme d'alias
+
+Quelques bibliothèques très utilisées s'importent avec des alias par exemple :
+
+```python
+import numpy as np
+```
+
+![espace de nommage np](espace-nommage-np.png)
+
+Ou encore :
+
+```python
+import matplotlib.pyplot as plt
+```
+
+Notez que dans ce dernier cas, ceci signifie que `pyplot`{.language-} était aussi un module !
+
+{% attention2 "**À retenir**" %}
+La notation pointée est **associative à gauche**. La ligne de code suivante :
+
+```python
+matplotlib.pyplot.axes
+```
+
+Est ainsi équivalente à :
+
+```python
+(matplotlib.pyplot).axes
+```
+
+Le nom `axes`{.language-} est défini dans l'espace de nom de l'objet de nom `matplotlib.pyplot`{.language-}. C'est a dire l'objet associé au nom `pyplot`{.language-} défini dans l'espace de nom de l'objet associé au nom `matplotlib`{.language-}.
+
+{% endattention2 %}
+
+![espace de nommage plt](espace-nommage-plt.png)
+
+Cette technique permet de raccourcir le nom, il suffira de taper `plt`{.language-} à la place de `matplotlib.pyplot`{.language-} mais cela se fait au **détriment** de la lisibilité. Il n'est donc pas recommandé du tout de le faire avec d'autres bibliothèque même s'il est tout à fait possible d'écrire ce genre d'horreurs :
+
+{% attention "**À ne pas faire**" %}
+```python
+import math as m
+import random as r
+```
+{% endattention %}
+
+
+## Exercices
+
+Un module très utile dans python est le module [random](https://docs.python.org/fr/3/library/random.html)
+
+Utilisez le pour répondre aux questions suivantes :
+
+{% exercice %}
+Générez un entier aléatoire entre 10 et 234.
+{% endexercice %}
+{% details "solution" %}
+
+On utilise la fonction [`randrange`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) :
+
+```python
+>>> import random
+>>> random.randrange(10, 235)
+51
+```
+
+{% enddetails %}
+
+{% exercice %}
+Générez un nombre réel uniformément dans $[0, 1[$
+{% endexercice %}
+{% details "solution" %}
+
+On utilise la fonction [`random`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.random) :
+
+```python
+>>> import random
+>>> random.random()
+0.07350177375024702
+```
+
+{% enddetails %}
+
+{% exercice %}
+Choisissez 2 éléments **avec** remise de la liste `["pomme", "abricot", "orange", "cerise"]`{.language-}
+{% endexercice %}
+{% details "solution" %}
+
+On utilise la fonction [`choices`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.choices) :
+
+```python
+>>> import random
+>>> random.choices(["pomme", "abricot", "orange", "cerise"], k=2)
+['pomme', 'pomme']
+```
+
+{% enddetails %}
+
+{% exercice %}
+Choisissez 2 éléments **sans** remise de la liste `["pomme", "abricot", "orange", "cerise"]`{.language-}
+{% endexercice %}
+{% details "solution" %}
+
+On utilise la fonction [`sample`{.language-} du module `random`{.language-}](https://docs.python.org/fr/3/library/random.html#random.sample) :
+
+```python
+>>> import random
+>>> random.sample(["pomme", "abricot", "orange", "cerise"], k=2)
+['cerise', 'pomme']
+```
+
+{% enddetails %}
+
+{% exercice %}
+Utilisez la fonction [`random.shuffle`{.language-}](https://docs.python.org/fr/3/library/random.html#random.shuffle) pour mélanger la liste  `["pomme", "abricot", "orange", "cerise"]`{.language-}.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> import random
+>>> L = 
+>>> random.shuffle(L)
+>>> L
+[3, 1, 4, 9, 6, 2, 0, 7, 8, 5]
+```
+
+
+Notez que la fonction  ne rend rien. Elle mélange la liste passée en paramètre.
+
+{% enddetails %}
+
+{% exercice %}
+Créez une liste de 20 entiers entre 0 et 9 en utilisant [la fonction `random.randrange`{.language-}](https://docs.python.org/fr/3/library/random.html#random.randrange) 
+
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> L = [random.randrange(10) for i in range(20)]
+>>> L
+[7, 7, 0, 9, 4, 3, 4, 2, 0, 0, 4, 6, 2, 3, 7, 2, 4, 5, 5, 5]
+```
+
+{% enddetails %}
+

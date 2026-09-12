@@ -14,6 +14,8 @@ eleventyComputed:
 
 Séparer versions naïves + TP des méthodes optimales +  TP
 
+voir si on ne l'a pas deja : <https://www.youtube.com/watch?v=ixXOUeBOPJw>
+ajouter le bogus sort
 -->
 
 

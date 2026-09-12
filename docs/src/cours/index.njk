@@ -3,9 +3,6 @@ layout: layout/post.njk
 title: Cours
 tags: ['index']
 
-eleventyNavigation:
-  order: 2
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -20,7 +17,7 @@ Liste des cours qui constituent les différents enseignements.
 
 </p>
 
-  {% for post in collections.cours %}
+{% for post in collections.cours | sort %}
   {% if post.data.tags %}
 
     <div class="my-3 px-2 p-1 border-solid border-2 rounded">
