@@ -70,7 +70,7 @@ La syntaxe des fichiers `.gitignore`{.fichier} est simple à comprendre mais je 
 ### Travailler en local
 
 - commitez souvent pour pouvoir revenir en arrière si nécessaire
-- créez des branches temporaires locale pour vos expérimentations et n'hésitez pas à revenir en arrière
+- créez des branches temporaires locales pour vos expérimentations et n'hésitez pas à revenir en arrière
 - utilisez un [fichier `.gitignore`](https://docs.github.com/en/get-started/git-basics/ignoring-files) pour contrôler les fichier à suivre. Tout fichier doit être soit suivi soit ignoré : ne tolérez pas d'exception sinon vous allez vous perdre et (forcément) faire des erreurs.
 
 ### Récupérer l'état de l'origine
@@ -118,7 +118,7 @@ Message de commit :
     - ...
   - description : en une courte phrase d'une ligne.
 
-- corps du message : à n'utiliser que si nsi vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare
+- corps du message : à n'utiliser que si vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare.
 
 {% lien "**Documentation**"  %}
 <https://gitmoji.dev/>
@@ -161,7 +161,7 @@ La première idée est de consacrer une branche par feature à développer. Une 
 [Présentation concise des deux méthodes](https://www.youtube.com/watch?v=hG_P6IRAjNQ) (2min08 et 4min38)
 {% endlien %}
 
-UN projet sous le git workflow va se représenter de cette façon :
+Un projet sous le git workflow va se représenter de cette façon :
 
 ![Git_flow_4](git_flow_4.png)
 
@@ -174,7 +174,7 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 - `hotfix/<nom hotfix>`. Les branches hotfix sont nécessaires pour agir immédiatement sur un statut non désiré de master. Peut se ramifier à partir de master et doit fusionner dans master et develop.
 - `release/<nom release>`. Les branches de version prennent en charge la préparation d'une nouvelle version de production. Elles permettent de corriger de nombreux bogues mineurs et de préparer les méta-données pour une version. Peut se ramifier à partir de develop et doit fusionner avec master et develop.
 
-Le principal soucis, outre son formalisme stricte, est la multiplicité des des branches qui fait qu'on peut facilement s'y perdre.
+Le principal soucis, outre son formalisme stricte, est la multiplicité des branches qui fait qu'on peut facilement s'y perdre.
 
 ### Continuous Integration
 

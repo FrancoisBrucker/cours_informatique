@@ -61,7 +61,7 @@ En python par exemple, on peut utiliser [la fonction `hash`{.language-}](https:/
 
 De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objets mutables en python. Ainsi `hash([])`{.language-} produira une erreur (`TypeError: unhashable type: 'list'`{.language-}).
 
-La principale raison de l'utilisation es fonctions de hachage est :
+La principale raison de l'utilisation des fonctions de hachage est :
 
 {% note "**Propriété fondamentale des fonctions de hachage**" %}
 Si $f$ est une fonction de hachage, alors :
@@ -98,7 +98,7 @@ _En pratique_ une fonction de hachage utile est une **injection** de l'ensemble 
 
 Cette propriété permet d'utiliser les fonctions de hachage pour :
 
-- proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
+- proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques s'ils ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
 - créer des structures de données avancées comme les dictionnaires
 
 Les fonctions de hachages sont même utilisées pour [stocker les mots de passe sur votre ordinateur](https://patouche.github.io/2015/03/21/stocker-des-mots-de-passe/), ou vérifier que deux objets sont identiques mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](/cours/sécurité/cryptographie/intégrité/hash/){.interne} qui assurent qu'il est _difficile_ :
@@ -121,7 +121,7 @@ f & : & \mathbb{N} & \to & [0\mathrel{ {.}\,{.} } m[ \\
 $$
 </div>
 
-Est une fonction de hachage, mais non utile car elle non uniforme.
+Est une fonction de hachage, mais non utile car elle est non uniforme.
 
 ### Le modulo
 

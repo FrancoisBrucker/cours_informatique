@@ -246,7 +246,7 @@ C'est la méthode à privilégier si vous êtes informaticien. C'est à dire que
 Sinon, vous pouvez ne pas utiliser cette méthode.
 {% endattention2 %}
 
-MOntrons juste les différences de configuration entre les méthodes précédentes et celle-ci :
+Montrons juste les différences de configuration entre les méthodes précédentes et celle-ci :
 
 - Commande de clonage : `git clone git@github.com:Test-cours-ecm/animaux.git`
 - Fichier de configuration :

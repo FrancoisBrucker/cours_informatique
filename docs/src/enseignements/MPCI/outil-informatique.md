@@ -17,7 +17,7 @@ Pour parodier [full metal jacket](https://www.youtube.com/watch?v=fr_hvg7tNbQ) :
 
 > Ça, c'est mon ordi. Il y en a beaucoup comme ça, mais lui, c'est le mien. Mon ordi, c'est mon meilleur ami.
 
-Le but de cette séance est de vous donner les connaissances nécessaire pour avoir un ordinateur pour le développement.
+Le but de cette séance est de vous donner les connaissances nécessaires pour avoir un ordinateur pour le développement.
 
 ## Portables AMU
 
@@ -39,7 +39,7 @@ Ceux ayant un portable AMU doivent installer un nouveau système. Rapprochez vou
 
 ## <span id="eduroam"></span>Utiliser le réseau
 
-[Le réseau Éduroam](https://www.eduroam.fr/) est le réseau des université européennes. Il est disponible partout (pour vous à AMU et à l'ECM) et est gratuit. 
+[Le réseau Éduroam](https://www.eduroam.fr/) est le réseau des universités européennes. Il est disponible partout (pour vous à AMU et à l'ECM) et est gratuit. 
 
 {% faire %}
 Connectez vous au  réseau WIFI éduroam : 
@@ -199,7 +199,7 @@ Il existe un plugin vscode :
 
 ### Graphiques
 
-Créer des graphiques scientifique est une science, voir un art. Avoir de bons outils pour le faire aide grandement.
+Créer des graphiques scientifiques est une science, voir un art. Avoir de bons outils pour le faire aide grandement.
 
 {% lien %}
 <http://www.gnuplot.info/>
