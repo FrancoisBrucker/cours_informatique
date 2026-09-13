@@ -846,26 +846,12 @@ Pour ne rien rendre simple, il existe de nombreux problèmes pour lesquels on ne
 - **Sortie** : Rendre une bijection $\sigma$ de $V_1$ dans $V_2$ telle que $\\{x, y\\}$ est une arête de $G_1$ si et seulement si $\\{\sigma(x), \sigma(y) \\}$ est une arête de $G_2$ (ou `∅`{.language-} si une elle bijection n'existe pas).
   {% endnote %}
 
-Par exemple en considérant les 3 graphes ci dessous :
+> TBD renvoyer à la partie graphe.
 
-![iso graphes](./iso-graphes.png)
+{% lien %}
+[Les définitions d'une excellente chaîne d'informatique](https://www.youtube.com/watch?v=21bMUXO-QYQ)
+{% endlien %}
 
-Il est clair de voir que les 2 premiers sont isomorphes ($\sigma(a) = 1$, $\sigma(b) = 2$, $\sigma(c) = 4$ et $\sigma(d) = 3$) alors que le troisième ne l'est pas.
-
-Mais c'est moins clair avec les deux suivants :
-
-![Petesen iso](./petersen-iso.png)
-
-{% exercice %}
-Montrez que les deux graphes précédents sont isomorphes
-{% endexercice %}
-{% details "corrigé" %}
-
-Le graphe en question est le graphe de Petersen, que l'on peut représenter de plein de jolis façons : <https://mathworld.wolfram.com/PetersenGraph.html>.
-
-![Petesen iso](./petersen-iso-solution.png)
-
-{% enddetails %}
 
 Pour vérifier que la deux graphes $G_1 = (V_1, E_1)$ et $G_2 = (V_2, E_2)$ sont isomorphes avec une fonction $\sigma: V_1 \to V_2$ il faut montrer que :
 

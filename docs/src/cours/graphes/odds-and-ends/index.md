@@ -130,10 +130,6 @@ adjoint de adjoint = graphe
 
 ## Morphismes de graphes
 
-{% lien %}
-[Les définitions d'une excellente chaîne d'informatique](https://www.youtube.com/watch?v=21bMUXO-QYQ)
-{% endlien %}
-
 Les notions définies dans cette partie le seront -- par commodité -- pour des graphes mais elles se généralisent directement à des graphes orienté ou à des multigraphes.
 
 ### Définitions
@@ -154,23 +150,6 @@ Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes.  Une fonction $f: V\to V'$ 
 - $f$ est une bijection
 - $f$ est un morphisme entre $G$ et $G'$
 - $f^{-1}$ est un morphisme entre $G'$ et $G$
-
-{% endnote2 %}
-
-Deux graphes isomorphes sont structurellement équivalents : il existe une bijection $f$ entre les deux ensembles de sommets tel que $xy$ est une arête du premier graphe si et seulement si $f(x)f(y)$ est une arête du second.
-
-C'est à dire que les deux graphes ne diffèrent que par le nom de leurs sommets.
-
-> TBD dire que c'est une relation d'équivalence et que les classes d'équivalences donnent les formes de graphes à $n$ sommets. Donner exemple à 3 ?
-
-En ce sens, notez que le si et seulement si entre les arêtes n'est pas suffisant pour que les graphes soient équivalents
-
-> TBD un chemin de longueur 3 dans une arête. On a bien le ssi mais les deux graphes ne sont clairement pas identiques.
-
-L'identité est toujours un isomorphisme d'un graphe dans lui même, et certains graphes (les graphes complets par exemple) en admettent beaucoup d'autres. On appelle ces isomorphismes d'un graphe dans lui-même des automorphismes :
-
-{% note2 "**Définition**" %}
-Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
 
 {% endnote2 %}
 
@@ -203,22 +182,38 @@ En revanche, on ne connaît pas son status exact : on ne sait ni s'il est NPcomp
 
 
 
+## k-conectivité
 
+La connexité est une notion importante en théorie des graphes et encore plus dans ses applications, en particulier en réseau où le graphe des connexions doit non seulement être connexe mais aussi résistant aux pannes. Le degré de résistance de la connexité d'un graphe à la suppression de ses sommets est appelé $k$-connectivité.
 
-## $k$-connectivité
+> TBD enlever ce qui a déjà été vu pour Hamilton.
 
-<span id="k-connexité"></span>
-Finissons par définir la $k$-connexité :
+### Définitions
 
 <span id="définition-k-connexité"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
-Un graphe est dit $k$-connexe si la suppression de $k-1$ sommet de déconnecte pas $G$.
+Un graphe est dit $k$-connexe si la suppression d'un ensemble quelconque de $k-1$ de ses sommets ne déconnecte pas $G$.
 
-{% endnote %}
+On appelle **_connectivité_** de $G$ et la note $\kappa(G)$, le plus grand $k$ tel que $G$ soit $k$-connexe.
 
-Il est clair qu'un graphe est connexe si et seulement si il est $1$-connexe. Les graphes 2-connexes vont avoir une certaine importance plus tard (lorsque l'on parlera de colorabilité et de planarité des graphes). Ils permettent d'avoir des graphes connexes qui résistent à la suppression d'un sommet. Les cycles sont un exemple canoniques de graphes 2-connexes :
+{% endnote2 %}
+
+Par exemple :
+
+- un chemin est 1-connexe, si on supprime un sommet qui n'est pas une de ses extrémités on le déconnecte,
+- un cycle est 2-connexe puisque supprimer un de ses sommets le transforme en chemin.
+
+La $k$-connexité est bien une généralisation directe de la connexité puisqu'un graphe est connexe si et seulement si il est $1$-connexe. 
+
+{% info %}
+Les graphes 2-connexes vont avoir une certaine importance plus tard (lorsque l'on parlera de colorabilité et de planarité des graphes). 
+{% endinfo %}
+
+### Propriétés
+
+Nous n'allons pas ici nous étendre longuement. On ne va juste parler de ce qui sera important dans la suite de cette introduction :
 
 {% exercice %}
 Montrez que le degré d'un sommet d'un graphe $k$-connexe est forcément supérieur au égal à $k$

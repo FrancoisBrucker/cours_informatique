@@ -186,7 +186,7 @@ Un sous-graphe admet deux cas particuliers :
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté, $V' \subsetneq V$ et $E' \subsetneq V' \times V' \cap E$.
 
 - $G'=(V, E')$ est appelé **_graphe partiel_** ou encore un **_sous-graphe couvrant_** de $G$
-- $G' = (V' , E' \cap V' \times V')$ est dit être un **_sous-graphe induit_** de $G$
+- $G' = (V' , E' \cap V' \times V')$ est dit être un **_sous-graphe induit_** de $G$. On dit que $G'$ est **_la restriction_** de $G$ à $V'$ et est noté $G\vert_{V'}$.
 
 {% endnote2 %}
 
@@ -414,3 +414,77 @@ Pour un graphe orienté avec boucle, chaque arc $uv$ est unique. Il est compté 
 Pour un graphe, chaque arête $uv$ est unique et est comptée 2 fois dans la somme $\sum_x \delta(x)$ (une fois pour $\delta(u)$ et une fois pour $\delta(v)$), donc $\sum_x \delta^+(x) = 2 \mid E \mid$.
 
 {% enddetails %}
+
+
+## Isomorphismes de graphes
+
+Deux graphes sont **_isomorphes_** s'ils sont identique au noms de leurs sommets prêt. Formalisons cette intuition :
+
+{% note2 "**Définition**" %}
+Deux graphes $G = (V, E)$ et $G' = (V', E')$ sont isomorphes s'il existe une bijection $f: V\to V'$ telle que $xy \in E$ si et seulement si $f(x)f(y) \in E'$.
+
+La fonction $f$ est appelé **_isomorphisme_** entre $G$ et $G'$.
+{% endnote2 %}
+{% info %}
+La notion d'isomorphisme se généralise directement à des graphes orienté ou à des multigraphes.
+{% endinfo %}
+
+Cela revient à regarder un graphe juste structurellement, sans noms de sommets :
+
+![iso sans noms](./iso-3-sans-sommets.png)
+
+La relation d'isomorphisme est une relation d'équivalence entre les graphes : si $G$ est isomorphe à $G'$ qui est isomorphe à $G''$ alors $G$ est isomorphe à $G''$. Deux graphes isomorphes auront les mêmes propriétés (puisqu'ils sont structurellement identiques !) :
+
+- même nombre de sommets et d'arêtes,
+- connectivité,
+- même cliques, stables
+- ...
+
+Notez que le fait que $f$ soit une bijection est important ! Les deux graphes ci-dessous ne sont en effet pas identiques aux sommets prêt mais $xy \in E$ si et seulement si $f(x)f(y) \in E'$ :
+
+![non](pas-isomorphe.png)
+
+
+Savoir si deux graphes sont isomorphes n'est pas toujours un problème simple ! 
+
+Par exemple en considérant les 3 graphes ci dessous :
+
+![iso graphes](./iso-graphes.png)
+
+Il est clair de voir que les 2 premiers sont isomorphes ($f(a) = 1$, $f(b) = 2$, $f(c) = 4$ et $f(d) = 3$) alors que le troisième ne l'est pas.
+
+Mais c'est moins clair avec les deux suivants :
+
+![Petesen iso](./petersen-iso.png)
+
+{% exercice %}
+Montrez que les deux graphes précédents sont isomorphes
+{% endexercice %}
+{% details "corrigé" %}
+
+Le graphe en question est le graphe de Petersen, que l'on peut représenter de plein de jolis façons : <https://mathworld.wolfram.com/PetersenGraph.html>.
+
+![Petesen iso](./petersen-iso-solution.png)
+
+{% enddetails %}
+
+C'est pourquoi lorsque l'on énumère des graphes on le fera la plupart du temps à sommets fixés et 2 automorphismes du même graphe seront alors considérés comme différents.
+
+Enfin, on peut chercher les isomorphismes entre un graphe et lui-même. Il en existe toujours au moins un puisque la fonction identité marchera toujours.
+
+{% note2 "**Définition**" %}
+Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
+
+{% endnote2 %}
+
+Attention, ne confonde pas isomorphe, isomorphisme et automorphisme :
+
+![iso et automorphisme](./iso-auto.png)
+
+Les 3 graphes $G_1$, $G_2$ et $G_3$ sont isomorphes (nous n'avons que renuméroté les sommets entre eux), mais seuls $G_1$ et $G_3$ sont automorphes par l'automorphisme qui échange $A$ et $C$. En effet, le graphe $G_2$ n'est pas le graphe $G_1$ puisque le degré de son sommet $B$ vaut 2 : leurs ensembles d'arêtes sont différents. 
+
+{% attention2 "**À retenir**" %}
+- un isomorphisme change le nom des sommets (si les sommets sont les même être les graphes de de départ et d'arrivée, les arêtes peuvent être différentes),
+- un automorphisme cherche les symétries dans un graphe (le graphe d'arrivée est **le même** que le graphe de départ (sommets **et** arêtes)).
+{% endattention2  %}
+

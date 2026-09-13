@@ -136,6 +136,21 @@ De là même manière, si $c=v_0 \dots v_p$ est un chemins non élémentaire, il
 La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou circuit) de longueur nulle ! Ce n'est pas le cas pour tous les autres cas.
 {% endattention %}
 
+Pour tout $n$, il existe deux graphes représentant un chemin ert un cycle :
+
+{% note2 "**Définition**" %}
+Pur tout entier $n$ on note :
+
+- $P_n = (V, E)$ le graphe composé d'un chemin de longueur $n$ :
+    - $V=\\{x_1, \dots, x_n \\}$,
+    - $E = \\{x_ix_{i+1} \mid 1\leq i < n\\}$
+- $C_n = (V, E)$ le graphe composé d'un cycle de longueur $n+1$ :
+    - $V=\\{x_1, \dots, x_n \\}$,
+    - $E = \\{x_ix_{i+1 \pmod n} \mid 1\leq i \leq n\\}$
+{% endnote2 %}
+
+Enfin, on dira qu'un chemin (_resp._ cycle) est induit pour graphe $G$ si la restriction de $G$ aux $n'$ sommets de ce chemin (_resp._ cycle) est $P_{n'}$ (_resp._ $C_{n'}).
+
 ## Connexité
 
 <span id="définition-connexe"></span>
@@ -269,7 +284,9 @@ On peut prendre le graphe $G=(\\{v_1, \dots, v_n\\}, E)$ avec $E = \\{ v_iv_{i+
 {% enddetails %}
 
 
-Les deux propositions suivantes lient connexité et nombre d'arêtes. On verra plusieurs raffinement des ces deux proposition tout au long du cours, donc garder les en tête :
+Les deux propositions suivantes lient connexité, cycles et nombre d'arêtes. Propriété pour les chemins :
+
+<div id="prop-connexe-min"></div>
 
 {% note "**Proposition**" %}
 Tout graphe $G=(V, E)$ connexe contient au minimum $\vert V \vert - 1$ arêtes.
@@ -286,8 +303,24 @@ On conclut en remarquant que $\sum \vert E_i \vert = \vert E \vert - \delta(x) \
 
 {% enddetails %}
 
-Notez 
-De même pour garantir la connexité d'un graphe :
+Propriété pour les cycles :
+
+<div id="prop-connexe-cycles"></div>
+
+{% note "**Proposition**" %}
+Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.
+{% endnote %}
+{% details "preuve", "open" %}
+On suppose qu'il existe un graphe $G= (V, E)$, tel que $\vert E \vert \geq \vert V \vert$ et qu'il n'y ait pas de cycles.
+
+Commençons par remarquer que si $\vert E \vert \geq \vert V \vert$, alors forcément $\vert V \vert \geq 3$ et s'il n'a pas de cycle alors $\vert V \vert > 3$. De là, on peut choisir $G$ avec le plus petit nombre de sommets possible.
+
+S'il existait dans ce graphe un sommet de degré plus petit ou égal à 1, on pourrait le supprimer du graphe et on aurait un graphe $G' = (V', E')$ avec strictement moins de sommets que $G$, tel que $\vert E' \vert \geq \vert V' \vert$ et qui ne contiendrait pas de cycle (on ne peut pas ajouter de cycle en supprimant une arête ou un sommet à un graphe). Ce qui est impossible par choix de $G$.
+
+Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est une propriété qu'on vient de voire](./#prop-cycles-graphe){.interne}) : notre hypothèse était fausse.
+{% enddetails %}
+
+Enfin, on peut garantir la connexité si le graphe a assez d'arêtes :
 
 <div id="prop-connexe"></div>
 {% note "**Proposition**" %}
@@ -354,6 +387,27 @@ L'encodage par défaut des graphes sera toujours celui [par dictionnaires](../en
 {% endnote %}
 
 ### <span id="algorithme-connexe"></span> Algorithme de recherche de composante connexe
+
+Pour garantir la complexité en nombre d'arêtes du graphe on suppose que nos sommets sont les entiers allant de 0 à $n-1$
+
+```pseudocode
+algorithme composante_connexe(G: Graphe, origine: entier) -> liste<entier>:
+    composante <- [False .. False] tableau de taille n de booléen
+    suivant = [origine]
+
+    while suivant:
+        x = suivant.pop()
+
+        for y in G[x]:
+            if composante[y] == False :
+                composante[y] <- True
+                suivant.append(y)
+
+    return [i for i in [0..n-1] if composante[i]]
+```
+
+
+#### En python
 
 ```python/
 def composante_connexe(G, origine):

@@ -29,6 +29,15 @@ Connexités :
 
 {% endaller %}
 
+Les plus simples des graphes connexes :
+
+{% aller %}
+
+[Les Arbres](arbres){.interne}
+
+{% endaller %}
+
+
 ## Graphes Eulérien
 
 L'origine de la théorie des graphe :

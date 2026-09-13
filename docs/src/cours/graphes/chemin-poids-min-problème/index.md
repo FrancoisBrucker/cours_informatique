@@ -25,16 +25,8 @@ Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un **chemin de long
 
 Que l'on généralise souvent aux **graphes (orientés) valués** :
 
-<span id="graphe_valué"></span>
+> TBD déjà dit dans l'intro.
 
-{% note "**Définition**" %}
-Un **graphe (orienté) valué** est un couple $(G, f)$ où :
-
-- $G=(V, E)$ est un graphe (orienté)
-- $f: E \rightarrow \mathbb{R}$
-
-Le **poids** d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un [pseudo-chemin](../chemins-cycles-connexite#définition-pseudo-){.interne} (les arcs peuvent se répéter) $c=v_0\dots v_{k}$, noté $f(c)$, est la somme $\sum_{0\leq i < k}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).
-{% endnote %}
 {% note "**Définition**" %}
 Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un **chemin de poids minimum entre $a$ et $b$** est un chemin $c=v_0 \dots v_{k}$ tel que :
 

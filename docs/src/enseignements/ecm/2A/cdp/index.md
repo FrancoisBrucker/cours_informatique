@@ -217,7 +217,7 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 ### À vous
 
-> 2h TP
+> 1h TP
 
 {% aller %}
 [Projet cartes et bataille](/cours/coder-et-développer/apprendre-programmation/programmation-objet/projet-agrégation-cartes/){.interne}
@@ -225,7 +225,7 @@ Mettre son code à disposition via un [Dépôt](/cours/gestion-des-sources/dép�
 
 ### Héritage
 
-> 1h cours
+> 2h cours
 
 {% aller %}
 1. [Héritage](/cours/coder-et-développer/apprendre-programmation/programmation-objet/héritage/){.interne}

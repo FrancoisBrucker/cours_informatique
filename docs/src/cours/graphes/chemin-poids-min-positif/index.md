@@ -76,6 +76,24 @@ Le principe de l'algorithme de Dijkstra qui cherche un plus court chemin entre d
 2. tant que $W = \\{ uv \mid uv \in E, u \in V', v \in V \backslash V' \\}$ est non vide faire grossir l’arborescence
 3. si le dernier sommet ajouté est $y$, l'algorithme s'arrête et rend le chemin entre $x$ et $y$ dans l'arborescence
 
+
+Ne confondez pas Prim et Dijkstra :
+
+{% exercice %}
+
+- Quelle est la différence entre Prim et Dijkstra ?
+- Montrez que les problèmes qu'ils résolvent sont différents et en déduire que l'arborescence obtenue par l'algorithme de Dijkstra pour un graphe non orienté peut être différente de l'arbre de poids minimum obtenu par Prim
+  {% endexercice %}
+  {% details "solution" %}
+  Le graphe suivant montre que l'arborescence de Dijkstra sera différente de l'arbre de poids minimum donné par Prim.
+
+![Prim vs Dijkstra](./chemin_prim_vs_dijkstra.png)
+
+{% attention %}
+Ne confondez pas les 2 problèmes !
+{% endattention %}
+{% enddetails %}
+
 L'implémentation naïve de cet algorithme serait cependant d'une complexité importante car on recalculerait trop souvent les mêmes choses.
 
 ## <span id="implementation-Dijkstra"></span> Implémentation

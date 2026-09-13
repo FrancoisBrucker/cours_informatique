@@ -37,7 +37,7 @@ On crée une classe par rapport à un besoin que l'on veut satisfaire. Supposons
 - pouvoir ajouter une unité à un compteur via une méthode,
 - connaître la valeur du compteur.
 
-Le code python suivant est correcte et utilise une classe compteur qui satisfait nos besoins :
+Le code python suivant est correct et utilise une classe compteur qui satisfait nos besoins :
 
 ```python/
 from compteur import Compteur

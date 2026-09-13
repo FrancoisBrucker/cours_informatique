@@ -15,8 +15,8 @@ Une méthode classique de résoudre un problème algorithmique ($P_1$) est de le
 $$
 \begin{array}{ccc}
 P_1 & \rightarrow & P_2\\
-\Uparrow &  & \Downarrow\\
-S_1 & \leftRightarrow & S_2
+\Downarrow &  & \Downarrow\\
+S_1 & \leftarrow & S_2
 \end{array}
 $$
 </div>
@@ -24,78 +24,62 @@ $$
 La formalisation de cette opération s'appelle [une réduction](<https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)>) et peut prendre plusieurs formes. Nous en expliciterons certaines qui nous permettrons de :
 
 1. comparer et classer les problèmes algorithmiques.
-2. calculer ou estimer des complexité
+2. calculer ou estimer des complexités
 
 {% info %}
-Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](<https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)>) dont nous ne parlerons pas dans ce cours d'algorithmie.
+Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)) dont nous ne parlerons pas dans ce cours d'algorithmie.
 {% endinfo %}
 
-Commençons par un exemple :
+Commençons par deux exemples.
+
+## Exemples de réduction
+
+Une réduction permet d'utiliser un problème pour en résoudre un autre. En ce sens, le premier problème est plus général que le second.
+
+### Min et max d'un tableau d'entiers relatifs
+
+Le problème de trouver un élément min et celui permettant de trouver un élément max d'un tableau d'entiers relatif sont liés. Si l'on cherche $\min(T)$ le minimum d'un tableau d'entiers relatifs $T$, en posant $T'$ le tableau de même longueur que $T$ tel que $T'[i] = -T[i]$ pour tout indice $i$ alors $\max(T')$ le maximum de $T'$ vaut $-\min(T)$.
+
+La réduction entre les deux problèmes est constituée de deux algorithme :
+
+- le premier, $E$, qui transforme une entrée du problème min (le tableau $T$) en une entrée du problème max (le tableau $T' =  E(T)$)
+- le second, $S$,  qui associe une solution du problème max avec l'entrée transformée ($\max(T') = \max(E(T))$) en une solution du premier problème ($\min(T) = S(\max(E(T)))$).
+
+On peut alors résoudre le problème de la recherche du min d'un tableau d'entier relatifs avec un algorithme permettant de résoudre le problème de la recherche du max d'un tableau d'entier relatifs : le problème du min est en ce sens un cas particulier du problème du max.
 
 {% exercice %}
-Montrez que l'on peut :
-
-1. Transformer l'entrée $T$ d'un problème de la recherche du minimum dans un tableau d'entiers relatifs par une entrée $T'$ du problème de la recherche du maximum dans un tableau d'entiers relatifs,
-2. utiliser le maximum de $T'$ pour trouver le minimum de $T$.
-
-Quelle est la complexité de cet algorithme en fonction de la complexité de l'algorithme utilisé pour rechercher le maximum dans un tableau d'entiers relatifs ?
+Montrez la réciproque : on peut résoudre le problème de la recherche du max d'un tableau d'entier relatifs avec un algorithme permettant de résoudre le problème de la recherche du min d'un tableau d'entier relatifs.
 {% endexercice %}
 {% details "corrigé" %}
-
-Le tableau $T'$ est tel que $T'[x] = -T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = -\max(T')$.
-
-La complexité de passer de $T$ à $T'$ est $\mathcal{O}(n)$ avec $n$ la longueur de $T$ et comme $\min(T) = -\max(T')$, la complexité de passer d'une solution à l'autre est $\mathcal{O}(1)$. La complexité totale est alors en notant $C_{\min}(n)$ et $C_{\max}(n)$ la complexité des deux algorithme de résolution :
-
-<div>
-$$
-C_{\min}(n) = \mathcal{O}(n) + C_{\max}(n) + \mathcal{O}(1)
-$$
-</div>
-
-Comme [on a vu](../complexité-problème/#problème-max-tableau-complexité){.interne} que la recherche du maximum d'un tableau est toujours au moins linéaire on en conclut que $C_{\min}(n) = C_{\max}(n)$
+On fait exactement la même chose.
 {% enddetails %}
 
-On peut même utiliser plusieurs fois l'algorithme $P_2$ :
+Cette procédure permet non seulement de résoudre un problème à partir d'un autre mais donne également des bornes sur la complexité du problème. Dans notre cas la complexité du problème $\min(T)$ est inférieure à la somme des complexités de :
 
-{% exercice %}
-Montrez que si l'on connaît un algorithme permettant de trouver le maximum dans un tableau d'**entiers positifs** on peut :
+1. transformer le tableau $T$ et $E(T)$, ici $\mathcal{O}(\vert T \vert)$,
+2. la complexité du problèmes du maximum, ici encore $\mathcal{O}(\vert T \vert)$ ([on l'a vu](../complexité-problème/#problème-max-tableau-complexité){.interne}),
+3. la complexité du passage de la solution du second problème à une solution du premier problème, ici $\mathcal{O}(1)$.
 
-1. Transformer l'entrée $T$ d'un problème de la recherche du minimum dans un tableau d'entiers **positifs** par une entrée $T'$ du problème de la recherche du maximum dans un tableau d'entiers positifs,
-2. utiliser le maximum de $T'$ pour trouver le minimum de $T$
+Comme la complexité de la recherche du minimum d'un tableau est au moins linéaire (il faut forcément regarder tous les éléments de $T$ avant de décider), on en déduit que sa complexité est bien linéaire.
 
-Quelle est la complexité de cet algorithme en fonction de la complexité de l'algorithme utilisé pour rechercher le maximum dans un tableau d'entiers relatifs ?
+### Min et max d'un tableau d'entiers positifs
 
-{% endexercice %}
-{% details "corrigé" %}
+Si l'on cherche maintenant à résoudre le problème de trouver un élément min en utilisant un algorithme permettant de trouver un élément max d'un tableau d'entiers positif, l'algorithme $\max(T)$, on ne peut plus prendre juste l'opposé du tableau initial.
 
-On ne peut plus prendre juste l'opposé. Mais comme on peut utiliser l'algorithme $\max(T)$, on peut toujours prendre le tableau $T'$ comme étant $T'[x] = \max(T)-T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = \max(T)-\max(T')$.
+Mais on peut utiliser l'algorithme $\max(T)$ plusieurs fois et poser $T'$ comme étant un tableau de même taille que $T$ tel que $T'[x] = \max(T)-T[x]$. Le min est alors : $\min(T) = \max(T)-\max(T')$.
 
-La complexité de passer de $T$ à $T'$ est $\mathcal{O}(n) + C'_{\max}(n)$ (on ne calcule le max qu'une seule fois) avec $n$ la longueur de $T$ et comme $\min(T) = \max(T)-\max(T')$, la complexité de passer d'une solution à l'autre est encore $C_{\max}(n)$. La complexité totale est alors (en notant $C_{\min}(n)$ et $C_{\max}(n)$ la complexité des deux algorithme de résolution) :
+Cette procédure, un peu plus complexe que la précédente, permet à nouveau de résoudre le problème du min avec le problème du max. 
 
-<div>
-$$
-C'_{\min}(n) = \mathcal{O}(n) + C'_{\max}(n) = C'_{\max}(n)
-$$
-</div>
+## Définition
 
-Puisque on a vu dans l'exercice précédent que la recherche du maximum d'un tableau est toujours au moins linéaire.
-
-{% enddetails %}
-
-Selon la complexité des conversions, la complexité du problème général peut-être plus grande que celle du cas particulier. Pour palier ça, on définie un autre type de comparaison, la réduction.
-
-### La réduction
-
-Commençons par définir le cadre général de la réduction :
-
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_1$ en $P_2$ est un couple d'algorithmes $A_{1\rightarrow 2}$ et $A_{2\rightarrow 1}$ tels que :
 
 - Si $E_1$ est une entrée du problème $P_1$ alors $A_{1\rightarrow 2}(E_1)$ est une entrée de du problème $P_2$
 - Si $S_2$ est une solution au problème $P_2$ avec $A_{1\rightarrow 2}(E_1)$ comme entrée alors $A_{2\rightarrow 1}(E_1, S_2)$ est une solution au problème $P_1$ d'entrée $E_1$
 
 Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$.
-{% endnote %}
+{% endnote2 %}
 
 La définition formelle ci-dessus est équivalente à :
 
@@ -113,19 +97,19 @@ $$
 
 Avec :
 
-- $n$ la taille du tableau $E_1$ en entrée de $P_1$
-- $n'$ la taille du tableau en entrée de $P_2$
+- $n$ la taille de l'entrée $E_1$ de $P_1$
+- $n'$ la taille de l'entrée de $P_2$
 - $n''$ la taille de la sortie de l'algorithme $P_2$
 
 Notez bien que comme on cherche à borner la complexité du problème $P_1$, toutes nos complexité doivent dépendre uniquement de $n$ qui est la taille de l'entrée de $P_1$. Selon les complexités de l'aller retour entre $P_1$ et $P_2$ cela va être plus ou moins facile. On défini alors :
 
 <span id="définition-réduction-polynomiale"></span>
 
-{% note "**Définition**" %}
+{% note2 "**Définition**" %}
 
 Une **_réduction polynomiale_** du problème algorithmique $P_1$ au problème algorithmique $P_2$ est une réduction où les passages du problème $P_1$ au problème $P_2$ et du problème $P_2$ au problème $P_1$ sont polynomiales.
 
-{% endnote %}
+{% endnote2 %}
 
 On peut sur le même schéma définir une **_réduction linéaire_** (les passages sont de complexité linéaire), **_reduction logarithmique_** (les passages sont de complexité logarithmique par rapport à la aille de l'entrée), etc. Borner les passages nous permet de faire des démonstration de complexité en utilisant les complexités du problème $P_2$. Par exemple :
 
