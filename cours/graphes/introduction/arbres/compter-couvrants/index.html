@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Arbres</title>
+    <title>Compter les arbres couvrants</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Arbres</h1>
+  <h1>Compter les arbres couvrants</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/arbres/définitions/">Arbres</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/">Introduction à la théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/">Arbres</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/introduction/arbres/compter-couvrants/">Compter les arbres couvrants</a>
 
 </div></div>
 
@@ -96,31 +96,19 @@
     
   
 
-  <p>La proposition précédente est renforcée par le fait que trouver les chemins d'un sommet à tous les autres avec un arbre est très facile : il suffit de faire un parcourt (largeur ou profondeur) pour trouver en $\mathcal{O}(|E|) = \mathcal{O}(|V|)$ opérations l'ensemble des chemins en &quot;remontant&quot;</p>
-<p>On appelle ceci le codage par parent. Formalisons le avec un BFS. On associe à chaque sommet son parent, c'est à dire celui qui l'a fait rentrer dans la structure. L'arbre suivant résulte d'un BFS en 8 :</p>
-<p><img src="codage-p%C3%A8re.png" alt="codage père"></p>
-<p>Pour trouver le chemin entre 5 et 7 on remonte jusqu'au départ du BFS, ici 8 :</p>
-<ul>
-<li><code>5 → 12 → 4 → 8</code></li>
-<li><code>7 → 3 → 4 → 8</code></li>
-</ul>
-<p>On marque les sommet parcouru avec le premier chemin et on s'arrête au premier sommet marqué en parcourant le second chemin. Dans notre cas le premier sommet de la chaîne <code>5 → 12 → 4 → 8</code>  présent dans la seconde chaîne est 4. Le chemin entre 5 et 7 est alors la combinaison des deux chemins : $[5, 12, 4, 3, 7]$.</p>
-<p>La complexité est de $\mathcal{O}(n)$ puisqu'au pire on remonte à la racine 2 fois. Ceci peut être long si le chemin final est tout petit (comme le chemin $[5, 12, 6]$). La solution est de remonter les 2 chemin en même temps d'un sommet itérativement et de s'arrêter au premier sommet marqué par l'un ou l'autre. Par exemple le chemin entre 7 et 12 :</p>
-<ol>
-<li>on remonte d'un cran pour les deux chemins :
-<ol>
-<li>on commence par <code>7 → 3</code> et on marque 3</li>
-<li>puis <code>12 → 4</code> et on marque 4</li>
-</ol>
-</li>
-<li>on continue :
-<ol>
-<li><code>4 → 8</code> : on parque 8</li>
-<li><code>3 → 4</code> : on retombe sur un sommet marqué</li>
-</ol>
-</li>
-</ol>
-<p>Au total on a parcouru au pire 2 fois la longueur du chemin. Notre algorithme est maintenant optimal.</p>
+  <h2>Nombre d'arbres couvrants</h2>
+<blockquote>
+<p>TBD matrice tree. Un exemple d'utilisation de la matrice d'adjacence.</p>
+</blockquote>
+<h2>Tirer un arbre couvrant au hasard</h2>
+<h3>Graphe des arbres couvrants</h3>
+<blockquote>
+<p>TBD markov simple</p>
+</blockquote>
+<h3>Amélioration</h3>
+<blockquote>
+<p>TBD markov sur arbre</p>
+</blockquote>
 
 
 </article>

@@ -319,7 +319,7 @@
 <p>Soit $G = (V, E)$ un (multi-)graphe (non) orienté, $V' \subsetneq V$ et $E' \subsetneq V' \times V' \cap E$.</p>
 <ul>
 <li>$G'=(V, E')$ est appelé <strong><em>graphe partiel</em></strong> ou encore un <strong><em>sous-graphe couvrant</em></strong> de $G$</li>
-<li>$G' = (V' , E' \cap V' \times V')$ est dit être un <strong><em>sous-graphe induit</em></strong> de $G$</li>
+<li>$G' = (V' , E' \cap V' \times V')$ est dit être un <strong><em>sous-graphe induit</em></strong> de $G$. On dit que $G'$ est <strong><em>la restriction</em></strong> de $G$ à $V'$ et est noté $G\vert_{V'}$.</li>
 </ul>
 </div></div>
 
@@ -626,6 +626,100 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 </div>
 </details>     
 </div>
+<h2>Isomorphismes de graphes</h2>
+<p>Deux graphes sont <strong><em>isomorphes</em></strong> s'ils sont identique au noms de leurs sommets prêt. Formalisons cette intuition :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Deux graphes $G = (V, E)$ et $G' = (V', E')$ sont isomorphes s'il existe une bijection $f: V\to V'$ telle que $xy \in E$ si et seulement si $f(x)f(y) \in E'$.</p>
+<p>La fonction $f$ est appelé <strong><em>isomorphisme</em></strong> entre $G$ et $G'$.</p>
+</div></div>
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La notion d'isomorphisme se généralise directement à des graphes orienté ou à des multigraphes.</p>
+</div></div>
+
+<p>Cela revient à regarder un graphe juste structurellement, sans noms de sommets :</p>
+<p><img src="iso-3-sans-sommets.png" alt="iso sans noms"></p>
+<p>La relation d'isomorphisme est une relation d'équivalence entre les graphes : si $G$ est isomorphe à $G'$ qui est isomorphe à $G''$ alors $G$ est isomorphe à $G''$. Deux graphes isomorphes auront les mêmes propriétés (puisqu'ils sont structurellement identiques !) :</p>
+<ul>
+<li>même nombre de sommets et d'arêtes,</li>
+<li>connectivité,</li>
+<li>même cliques, stables</li>
+<li>...</li>
+</ul>
+<p>Notez que le fait que $f$ soit une bijection est important ! Les deux graphes ci-dessous ne sont en effet pas identiques aux sommets prêt mais $xy \in E$ si et seulement si $f(x)f(y) \in E'$ :</p>
+<p><img src="pas-isomorphe.png" alt="non"></p>
+<p>Savoir si deux graphes sont isomorphes n'est pas toujours un problème simple !</p>
+<p>Par exemple en considérant les 3 graphes ci dessous :</p>
+<p><img src="iso-graphes.png" alt="iso graphes"></p>
+<p>Il est clair de voir que les 2 premiers sont isomorphes ($f(a) = 1$, $f(b) = 2$, $f(c) = 4$ et $f(d) = 3$) alors que le troisième ne l'est pas.</p>
+<p>Mais c'est moins clair avec les deux suivants :</p>
+<p><img src="petersen-iso.png" alt="Petesen iso"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que les deux graphes précédents sont isomorphes</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Le graphe en question est le graphe de Petersen, que l'on peut représenter de plein de jolis façons : <a href="https://mathworld.wolfram.com/PetersenGraph.html">https://mathworld.wolfram.com/PetersenGraph.html</a>.</p>
+<p><img src="petersen-iso-solution.png" alt="Petesen iso"></p>
+</div>
+</details>     
+</div>
+<p>C'est pourquoi lorsque l'on énumère des graphes on le fera la plupart du temps à sommets fixés et 2 automorphismes du même graphe seront alors considérés comme différents.</p>
+<p>Enfin, on peut chercher les isomorphismes entre un graphe et lui-même. Il en existe toujours au moins un puisque la fonction identité marchera toujours.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-600 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un isomorphisme d'un graphe dans lui-même est appelé <strong><em>automorphisme</em></strong>.</p>
+</div></div>
+
+<p>Attention, ne confonde pas isomorphe, isomorphisme et automorphisme :</p>
+<p><img src="iso-auto.png" alt="iso et automorphisme"></p>
+<p>Les 3 graphes $G_1$, $G_2$ et $G_3$ sont isomorphes (nous n'avons que renuméroté les sommets entre eux), mais seuls $G_1$ et $G_3$ sont automorphes par l'automorphisme qui échange $A$ et $C$. En effet, le graphe $G_2$ n'est pas le graphe $G_1$ puisque le degré de son sommet $B$ vaut 2 : leurs ensembles d'arêtes sont différents.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-700 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>un isomorphisme change le nom des sommets (si les sommets sont les même être les graphes de de départ et d'arrivée, les arêtes peuvent être différentes),</li>
+<li>un automorphisme cherche les symétries dans un graphe (le graphe d'arrivée est <strong>le même</strong> que le graphe de départ (sommets <strong>et</strong> arêtes)).</li>
+</ul>
+</div></div>
+
 
 
 </article>
