@@ -127,7 +127,17 @@
 <p><a href="arbres" class="interne">Les Arbres</a></p>
 </div></div>
 
-<h2>Graphes Eulérien</h2>
+<h2>Aller d'un sommet à un autre</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="chemins-valuation-min" class="interne">Chemin de valuation minimale dans un graphe</a></p>
+</div></div>
+
+<h2>Parcourir tout le graphe</h2>
+<h3>Graphes Eulérien</h3>
 <p>L'origine de la théorie des graphe :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -159,32 +169,18 @@
 <p>ICI graphes eulériens.</p>
 <ol>
 <li>combien il y en a</li>
-<li>graphes :
-1. nombre diff. à sommet fixer
-2. pb de l'isomorphisme de graphe (aller plus loin dans une autre partie)</li>
+<li>graphes : nombre diff. à sommets fixés</li>
 <li>idée pour les trouver puis formules</li>
-<li>générer un graphe aléatoire : Erdos reny. Intro + graphe Rado + isomorphisme</li>
-<li>distribution des degrés pairs ? Y'en a qui existent pas.</li>
-<li>formule générale + algo pour en trouver 1</li>
-<li>suite décroissantes -&gt; graphes EUlérien et généraux</li>
-<li>les trouver tous ? Au moins aléatoirement.</li>
+<li>générer un graphe aléatoire : Erdos reny. Outils de preuve car  tout existe presque surement dans un graphe aléatoire.</li>
 </ol>
 </blockquote>
-<blockquote>
-<p>TBD MCMC : <a href="https://www.youtube.com/watch?v=nndtTssgtZE">https://www.youtube.com/watch?v=nndtTssgtZE</a></p>
-</blockquote>
-<blockquote>
-<p>TBD existence de ce que l'on cherche avec une forte proba mais impossible à trouver en pratique <a href="https://www.youtube.com/watch?v=4weMmFZSBtI">https://www.youtube.com/watch?v=4weMmFZSBtI</a>
-TBD générer des graphes avec degrés fixe pour essayer nos algorithmes
-TBD on random des nombres dans une borne et on continue
-TBD connexité <a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf">https://www.cambridge.org/core/services/aop-cambridge-core/content/view/4BE766CCFDF1704C196AA182C0C5EC88/S0008414X00044734a.pdf/combinatorial_properties_of_matrices_of_zeros_and_ones.pdf</a> le montre avec des matrices, nous juste avec un graphe.</p>
-</blockquote>
-<h2>Graphes Hamiltoniens</h2>
+<h3>Graphes Hamiltoniens</h3>
 <blockquote>
 <p>TBD ce qu'on a fait avec ds arêtes pourquoi pas le faire avec des sommets ?</p>
 </blockquote>
 <blockquote>
-<p>TBD :</p>
+<p>TBD ici pas approximation. Pas dans l'intro. Garder couplage pour pas dans l'intro.
+TBD :</p>
 <ol>
 <li>définition du problème.</li>
 <li>cas où on sait le faire :</li>
@@ -196,13 +192,7 @@ TBD connexité <a href="https://www.cambridge.org/core/services/aop-cambridge-co
 <li>pas simple : exhaustif avec backtrack + branch and bound</li>
 <li>approximation :
 1. 2-opt
-2. performance garantie :
-<ol>
-<li>algo + ALM</li>
-<li>idée du couplage (avec performance garantie mais si on pouvait faire ça mieux ce serait bien !)</li>
-</ol>
-</li>
-<li>couplage : ici juste complet avec méthode hongroise.</li>
+2. performance garantie :  algo + ALM</li>
 </ol>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
