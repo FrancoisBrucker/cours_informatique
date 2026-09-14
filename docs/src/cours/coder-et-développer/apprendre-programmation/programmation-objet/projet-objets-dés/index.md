@@ -102,7 +102,7 @@ from dé import Dé
 
 
 def test_init():
-   dé = Dé()
+    dé = Dé()
     assert isinstance(dé, Dé)
 
 
@@ -162,7 +162,7 @@ from dé import Dé
 # ...
 
 def test_valeur():
-   dé = Dé()
+    dé = Dé()
     assert dé.valeur == 1
 
 
@@ -298,8 +298,8 @@ print(dé.valeur)
 
 # 3. lancer le dé 10 fois et affiche la valeur du dé après chaque lancer
 for i in range(10):
-   dé.lancer()
-   print(dé.valeur)
+    dé.lancer()
+    print(dé.valeur)
 ```
 
 {% enddetails %}
